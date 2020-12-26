@@ -1,0 +1,56 @@
+project('gnome-image-viewer',
+          version: '40.alpha',
+    meson_version: '>= 0.50.0',
+  default_options: [ 'warning_level=2',
+                   ],
+)
+
+i18n = import('i18n')
+gnome = import('gnome')
+
+dependency('gtk4', version: '>=3.99.4')
+dependency('libhandy-4')
+
+iv_prefix = get_option('prefix')
+iv_bindir = join_paths(iv_prefix, get_option('bindir'))
+iv_localedir = join_paths(iv_prefix, get_option('localedir'))
+iv_datadir = join_paths(iv_prefix, get_option('datadir'))
+iv_pkgdatadir = join_paths(iv_datadir, meson.project_name())
+
+profile = ''
+name_suffix = ''
+version_suffix = ''
+
+if get_option('profile') == 'development'
+  profile = '.Devel'
+  name_suffix = ' ☢'
+  vcs_tag = run_command('git', 'rev-parse', '--short', 'HEAD').stdout().strip()
+  if vcs_tag == ''
+    version_suffix = '-devel'
+  else
+    version_suffix = '-@0@'.format(vcs_tag)
+  endif
+endif
+
+app_id = 'org.gnome.ImageViewer@0@'.format(profile)
+iv_version = meson.project_version() + version_suffix
+
+cargo_sources = files(
+  'Cargo.toml',
+  'Cargo.lock',
+)
+
+conf = configuration_data()
+conf.set('APP_ID', app_id)
+conf.set('PROFILE', profile)
+conf.set('VERSION', iv_version)
+conf.set('bindir', iv_bindir)
+conf.set('localedir', iv_localedir)
+conf.set('pkgdatadir', iv_pkgdatadir)
+
+subdir('data')
+subdir('help')
+subdir('src')
+subdir('po')
+
+meson.add_install_script('build-aux/meson/postinstall.py')

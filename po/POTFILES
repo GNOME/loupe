@@ -1,0 +1,4 @@
+data/org.gnome.ImageViewer.desktop.in
+data/org.gnome.ImageViewer.appdata.xml.in
+data/org.gnome.ImageViewer.gschema.xml
+src/window.ui

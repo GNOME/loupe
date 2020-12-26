@@ -1,0 +1,14 @@
+button.circular {
+  padding: 9px;
+  min-width: 24px;
+  min-height: 24px;
+}
+
+headerbar.osd {
+  background-image: none;
+  border-bottom: 1px solid @borders;
+}
+
+.image-view {
+  background-color: black;
+}

@@ -1,0 +1,67 @@
+{
+    "app-id" : "org.gnome.ImageViewer.Devel",
+    "runtime" : "org.gnome.Platform",
+    "runtime-version" : "master",
+    "sdk" : "org.gnome.Sdk",
+    "sdk-extensions" : [
+        "org.freedesktop.Sdk.Extension.rust-stable"
+    ],
+    "command" : "gnome-image-viewer",
+    "finish-args" : [
+        "--share=network",
+        "--share=ipc",
+        "--socket=fallback-x11",
+        "--socket=wayland",
+        "--device=dri",
+        "--filesystem=host",
+        "--env=RUST_BACKTRACE=1",
+        "--env=RUST_LOG=gnome_image_viewer=debug"
+    ],
+    "build-options" : {
+        "append-path" : "/usr/lib/sdk/rust-stable/bin",
+        "build-args" : [
+            "--share=network"
+        ],
+        "env" : {
+            "CARGO_HOME" : "/run/build/gnome-image-viewer/cargo"
+        }
+    },
+    "cleanup" : [
+        "/include",
+        "/lib/pkgconfig",
+        "/man",
+        "/share/doc",
+        "/share/gtk-doc",
+        "/share/man",
+        "/share/pkgconfig",
+        "*.la",
+        "*.a"
+    ],
+    "modules" : [
+        {
+            "name" : "libhandy4",
+            "buildsystem" : "meson",
+            "sources" : [
+                {
+                    "type" : "git",
+                    "url" : "https://gitlab.gnome.org/exalm/libhandy.git",
+                    "branch" : "gtk4"
+                }
+            ]
+        },
+        {
+            "name" : "gnome-image-viewer",
+            "builddir" : true,
+            "buildsystem" : "meson",
+            "config-opts": [
+                "-Dprofile=development"
+            ],
+            "sources" : [
+                {
+                    "type" : "git",
+                    "url" : "https://gitlab.gnome.org/BrainBlasted/gnome-image-viewer.git"
+                }
+            ]
+        }
+    ]
+}
