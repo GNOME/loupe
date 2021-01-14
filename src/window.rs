@@ -83,11 +83,13 @@ mod imp {
             // CompositeTemplate macro to bind all children at once.
             Self::bind_template_children(klass);
         }
+        fn instance_init(obj: &glib::subclass::InitializingObject<Self::Type>) {
+            obj.init_template();
+        }
     }
 
     impl ObjectImpl for IvWindow {
         fn constructed(&self, obj: &Self::Type) {
-            obj.init_template();
             self.parent_constructed(obj);
 
             if config::PROFILE == ".Devel" {

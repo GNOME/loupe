@@ -119,11 +119,14 @@ mod imp {
             klass.set_template_from_resource("/org/gnome/ImageViewer/gtk/image_view.ui");
             Self::bind_template_children(klass);
         }
+
+        fn instance_init(obj: &glib::subclass::InitializingObject<Self::Type>) {
+            obj.init_template();
+        }
     }
 
     impl ObjectImpl for IvImageView {
         fn constructed(&self, obj: &Self::Type) {
-            obj.init_template();
             self.parent_constructed(obj);
 
             obj.bind_property("header-visible", &self.headerbar.get(), "visible")
