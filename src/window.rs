@@ -99,7 +99,6 @@ mod imp {
             obj.setup_actions();
 
             self.status_page
-                .get() // .get() is needed for now to use template children.
                 .set_icon_name(Some(&format!("{}-symbolic", config::APP_ID)));
 
             // Set help overlay
@@ -112,16 +111,15 @@ mod imp {
             // In this case, we need none to react to the gesture,
             // so "_" is used in all 4 spots.
             self.open_gesture
-                .get()
                 .connect_released(clone!(@weak obj => move |_, _, _, _| {
                     obj.pick_file();
                 }));
 
-            obj.bind_property("fullscreened", &self.image_view.get(), "header-visible")
+            obj.bind_property("fullscreened", &*self.image_view, "header-visible")
                 .flags(glib::BindingFlags::SYNC_CREATE | glib::BindingFlags::BIDIRECTIONAL)
                 .build()
                 .unwrap();
-            obj.bind_property("fullscreened", &self.headerbar.get(), "visible")
+            obj.bind_property("fullscreened", &*self.headerbar, "visible")
                 .flags(
                     glib::BindingFlags::SYNC_CREATE
                         | glib::BindingFlags::BIDIRECTIONAL
@@ -228,7 +226,7 @@ impl IvWindow {
     fn open_with(&self) {
         let imp = imp::IvWindow::from_instance(self);
 
-        if let Some(uri) = imp.image_view.get().uri() {
+        if let Some(uri) = imp.image_view.uri() {
             std::process::Command::new("xdg-open")
                 .arg(uri)
                 .output()
@@ -241,7 +239,7 @@ impl IvWindow {
     fn set_wallpaper(&self) {
         let imp = imp::IvWindow::from_instance(self);
 
-        if let Err(e) = imp.image_view.get().set_wallpaper() {
+        if let Err(e) = imp.image_view.set_wallpaper() {
             log::error!("Failed to set wallpaper: {}", e);
         }
     }
@@ -249,7 +247,7 @@ impl IvWindow {
     fn print(&self) {
         let imp = imp::IvWindow::from_instance(self);
 
-        if let Err(e) = imp.image_view.get().print() {
+        if let Err(e) = imp.image_view.print() {
             log::error!("Failed to print file: {}", e);
         }
     }
@@ -257,8 +255,8 @@ impl IvWindow {
     pub fn set_image_from_file(&self, file: &gio::File) {
         let imp = imp::IvWindow::from_instance(self);
 
-        imp.image_view.get().set_image_from_file(file);
-        imp.stack.get().set_visible_child(&imp.image_view.get());
+        imp.image_view.set_image_from_file(file);
+        imp.stack.set_visible_child(&*imp.image_view);
 
         log::debug!("Loading file: {}", file.get_uri().to_string());
 

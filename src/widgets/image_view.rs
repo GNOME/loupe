@@ -129,20 +129,18 @@ mod imp {
         fn constructed(&self, obj: &Self::Type) {
             self.parent_constructed(obj);
 
-            obj.bind_property("header-visible", &self.headerbar.get(), "visible")
+            obj.bind_property("header-visible", &*self.headerbar, "visible")
                 .flags(glib::BindingFlags::BIDIRECTIONAL)
                 .flags(glib::BindingFlags::SYNC_CREATE)
                 .build()
                 .unwrap();
 
             self.click_gesture
-                .get()
                 .connect_pressed(clone!(@weak obj => move |_, _, x, y| {
                     obj.show_popover_at(x, y);
                 }));
 
             self.press_gesture
-                .get()
                 .connect_pressed(clone!(@weak obj => move |_, x, y| {
                     obj.show_popover_at(x, y);
                 }));
@@ -171,12 +169,12 @@ mod imp {
                 }
                 subclass::Property("primary-menu-model", ..) => {
                     let model: Option<gio::MenuModel> = value.get().unwrap();
-                    self.menu_button.get().set_menu_model(model.as_ref());
+                    self.menu_button.set_menu_model(model.as_ref());
                     *self.menu_model.borrow_mut() = model;
                 }
                 subclass::Property("popover-menu-model", ..) => {
                     let model: Option<gio::MenuModel> = value.get().unwrap();
-                    self.popover.get().set_menu_model(model.as_ref());
+                    self.popover.set_menu_model(model.as_ref());
                     *self.popover_menu_model.borrow_mut() = model;
                 }
                 _ => unimplemented!(),
@@ -197,7 +195,7 @@ mod imp {
     impl WidgetImpl for IvImageView {
         fn size_allocate(&self, widget: &Self::Type, width: i32, height: i32, baseline: i32) {
             self.parent_size_allocate(widget, width, height, baseline);
-            self.popover.get().present();
+            self.popover.present();
         }
     }
 }
@@ -212,7 +210,7 @@ impl IvImageView {
     pub fn set_image_from_file(&self, file: &gio::File) {
         let imp = imp::IvImageView::from_instance(&self);
 
-        imp.picture.get().set_file(Some(file));
+        imp.picture.set_file(Some(file));
     }
 
     pub fn set_wallpaper(&self) -> anyhow::Result<()> {
@@ -238,7 +236,7 @@ impl IvImageView {
     pub fn print(&self) -> anyhow::Result<()> {
         let imp = imp::IvImageView::from_instance(&self);
 
-        let file = imp.picture.get().get_file().context("No file to print")?;
+        let file = imp.picture.get_file().context("No file to print")?;
         let operation = gtk::PrintOperation::new();
         let path = file.get_path().context("No path for current file")?;
         let pb = gdk_pixbuf::Pixbuf::from_file(path)?;
@@ -273,13 +271,12 @@ impl IvImageView {
 
     pub fn uri(&self) -> Option<String> {
         let imp = imp::IvImageView::from_instance(&self);
-        let file = imp.picture.get().get_file()?;
+        let file = imp.picture.get_file()?;
         Some(file.get_uri().to_string())
     }
 
     pub fn show_popover_at(&self, x: f64, y: f64) {
         let imp = imp::IvImageView::from_instance(&self);
-        let popover = imp.popover.get();
 
         let rect = gdk::Rectangle {
             x: x as i32,
@@ -288,7 +285,7 @@ impl IvImageView {
             height: 0,
         };
 
-        popover.set_pointing_to(&rect);
-        popover.popup();
+        imp.popover.set_pointing_to(&rect);
+        imp.popover.popup();
     }
 }
