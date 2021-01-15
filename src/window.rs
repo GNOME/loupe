@@ -24,7 +24,7 @@ use gtk::prelude::*;
 use gtk::subclass::prelude::*;
 use gtk::CompositeTemplate;
 use gtk_macros::*;
-use libhandy::subclass::prelude as hdy;
+use libadwaita::subclass::prelude::*;
 
 use crate::config;
 use crate::widgets::IvImageView;
@@ -50,7 +50,7 @@ mod imp {
         #[template_child]
         pub stack: TemplateChild<gtk::Stack>,
         #[template_child]
-        pub status_page: TemplateChild<libhandy::StatusPage>,
+        pub status_page: TemplateChild<libadwaita::StatusPage>,
         #[template_child]
         pub image_view: TemplateChild<IvImageView>,
         #[template_child]
@@ -60,7 +60,7 @@ mod imp {
     impl ObjectSubclass for IvWindow {
         const NAME: &'static str = "IvWindow";
         type Type = super::IvWindow;
-        type ParentType = libhandy::ApplicationWindow;
+        type ParentType = libadwaita::ApplicationWindow;
         type Instance = glib::subclass::simple::InstanceStruct<Self>;
         type Class = glib::subclass::simple::ClassStruct<Self>;
 
@@ -133,12 +133,12 @@ mod imp {
     impl WidgetImpl for IvWindow {}
     impl WindowImpl for IvWindow {}
     impl ApplicationWindowImpl for IvWindow {}
-    impl hdy::ApplicationWindowImpl for IvWindow {}
+    impl AdwApplicationWindowImpl for IvWindow {}
 }
 
 glib::wrapper! {
     pub struct IvWindow(ObjectSubclass<imp::IvWindow>)
-        @extends gtk::Widget, gtk::Window, gtk::ApplicationWindow, libhandy::ApplicationWindow,
+        @extends gtk::Widget, gtk::Window, gtk::ApplicationWindow, libadwaita::ApplicationWindow,
         @implements gio::ActionMap, gio::ActionGroup;
 }
 
