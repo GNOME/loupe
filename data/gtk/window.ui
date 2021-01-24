@@ -11,6 +11,7 @@
         <child>
           <object class="GtkHeaderBar" id="headerbar">
             <property name="css-classes">titlebar</property>
+            <property name="visible" bind-source="IvWindow" bind-property="fullscreened" bind-flags="sync-create|invert-boolean"/>
             <child type="end">
               <object class="GtkMenuButton" id="menu_button">
                 <property name="icon-name">open-menu-symbolic</property>
@@ -40,6 +41,7 @@
             </child>
             <child>
               <object class="IvImageView" id="image_view">
+                <property name="header-visible" bind-source="IvWindow" bind-property="fullscreened" bind-flags="sync-create"/>
                 <property name="primary-menu-model">primary_menu</property>
                 <property name="popover-menu-model">image_menu</property>
               </object>

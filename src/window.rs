@@ -114,19 +114,6 @@ mod imp {
                 .connect_released(clone!(@weak obj => move |_, _, _, _| {
                     obj.pick_file();
                 }));
-
-            obj.bind_property("fullscreened", &*self.image_view, "header-visible")
-                .flags(glib::BindingFlags::SYNC_CREATE | glib::BindingFlags::BIDIRECTIONAL)
-                .build()
-                .unwrap();
-            obj.bind_property("fullscreened", &*self.headerbar, "visible")
-                .flags(
-                    glib::BindingFlags::SYNC_CREATE
-                        | glib::BindingFlags::BIDIRECTIONAL
-                        | glib::BindingFlags::INVERT_BOOLEAN,
-                )
-                .build()
-                .unwrap();
         }
     }
 
