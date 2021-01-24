@@ -10,7 +10,6 @@
         <property name="orientation">vertical</property>
         <child>
           <object class="GtkHeaderBar" id="headerbar">
-            <property name="show-title-buttons">True</property>
             <property name="css-classes">titlebar</property>
             <child type="end">
               <object class="GtkMenuButton" id="menu_button">
