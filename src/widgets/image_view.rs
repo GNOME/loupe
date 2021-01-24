@@ -130,12 +130,6 @@ mod imp {
         fn constructed(&self, obj: &Self::Type) {
             self.parent_constructed(obj);
 
-            obj.bind_property("header-visible", &*self.headerbar, "visible")
-                .flags(glib::BindingFlags::BIDIRECTIONAL)
-                .flags(glib::BindingFlags::SYNC_CREATE)
-                .build()
-                .unwrap();
-
             self.click_gesture
                 .connect_pressed(clone!(@weak obj => move |_, _, x, y| {
                     obj.show_popover_at(x, y);

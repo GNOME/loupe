@@ -18,6 +18,7 @@
               <object class="GtkHeaderBar" id="headerbar">
                 <property name="valign">start</property>
                 <property name="show-title-buttons">False</property>
+                <property name="visible" bind-source="IvImageView" bind-property="header-visible" bind-flags="sync-create"/>
                 <child type="end">
                   <object class="GtkButton">
                     <property name="margin-start">6</property>
