@@ -24,6 +24,7 @@ use gtk::prelude::*;
 use gtk::subclass::prelude::*;
 use gtk::subclass::widget::WidgetImplExt;
 use gtk::CompositeTemplate;
+use libadwaita::subclass::prelude::*;
 
 use anyhow::Context;
 use ashpd::desktop::wallpaper::{SetOn, WallpaperOptions, WallpaperProxy};
@@ -90,7 +91,7 @@ mod imp {
     impl ObjectSubclass for IvImageView {
         const NAME: &'static str = "IvImageView";
         type Type = super::IvImageView;
-        type ParentType = gtk::Widget;
+        type ParentType = libadwaita::Bin;
         type Instance = subclass::simple::InstanceStruct<Self>;
         type Class = subclass::simple::ClassStruct<Self>;
 
@@ -180,16 +181,6 @@ mod imp {
                 _ => unimplemented!(),
             }
         }
-
-        fn dispose(&self, obj: &Self::Type) {
-            log::debug!("Disposing {}", Self::NAME);
-            if let Some(child) = obj.get_first_child() {
-                while let Some(sibling) = child.get_next_sibling() {
-                    sibling.unparent();
-                }
-                child.unparent();
-            }
-        }
     }
 
     impl WidgetImpl for IvImageView {
@@ -198,11 +189,13 @@ mod imp {
             self.popover.present();
         }
     }
+
+    impl BinImpl for IvImageView {}
 }
 
 glib::wrapper! {
     pub struct IvImageView(ObjectSubclass<imp::IvImageView>)
-        @extends gtk::Widget,
+        @extends gtk::Widget, libadwaita::Bin,
         @implements gtk::Buildable, gtk::ConstraintTarget, gtk::Orientable;
 }
 

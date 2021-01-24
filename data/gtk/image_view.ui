@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
-  <template class="IvImageView" parent="GtkWidget">
+  <template class="IvImageView" parent="AdwBin">
     <property name="css-name">imageview</property>
-    <property name="layout-manager">
-      <object class="GtkBinLayout"/>
-    </property>
-    <child>
+    <property name="child">
       <object class="GtkOverlay">
         <property name="hexpand">True</property>
         <child>
@@ -71,27 +68,27 @@
                     </style>
                   </object>
                 </child>
+                <child>
+                  <object class="GtkGestureClick" id="click_gesture">
+                    <property name="button">3</property>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkGestureLongPress" id="press_gesture">
+                    <property name="touch-only">True</property>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkPopoverMenu" id="popover">
+                    <property name="has-arrow">False</property>
+                  </object>
+                </child>
               </object>
             </child>
           </object>
         </child>
       </object>
-    </child>
-    <child>
-      <object class="GtkGestureClick" id="click_gesture">
-        <property name="button">3</property>
-      </object>
-    </child>
-    <child>
-      <object class="GtkGestureLongPress" id="press_gesture">
-        <property name="touch-only">True</property>
-      </object>
-    </child>
-    <child>
-      <object class="GtkPopoverMenu" id="popover">
-        <property name="has-arrow">False</property>
-      </object>
-    </child>
+    </property>
     <style>
       <class name="image-view"/>
     </style>
