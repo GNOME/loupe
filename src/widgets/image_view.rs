@@ -29,43 +29,15 @@ use libadwaita::subclass::prelude::*;
 use anyhow::Context;
 use ashpd::desktop::wallpaper::{SetOn, WallpaperOptions, WallpaperProxy};
 use ashpd::{BasicResponse as Basic, RequestProxy, Response, WindowIdentifier};
+use once_cell::sync::Lazy;
 use std::cell::{Cell, RefCell};
 
 mod imp {
     use super::*;
     use glib::subclass;
 
-    static PROPERTIES: [subclass::Property; 3] = [
-        subclass::Property("header-visible", |header_visible| {
-            glib::ParamSpec::boolean(
-                header_visible,
-                "Header visible",
-                "Whether or not the headerbar is visible",
-                false,
-                glib::ParamFlags::READWRITE,
-            )
-        }),
-        subclass::Property("primary-menu-model", |primary_menu_model| {
-            glib::ParamSpec::object(
-                primary_menu_model,
-                "Primary Menu Model",
-                "The menu model for the menu button",
-                gio::MenuModel::static_type(),
-                glib::ParamFlags::READWRITE,
-            )
-        }),
-        subclass::Property("popover-menu-model", |popover_menu_model| {
-            glib::ParamSpec::object(
-                popover_menu_model,
-                "Popover Menu Model",
-                "The menu model for the menu button",
-                gio::MenuModel::static_type(),
-                glib::ParamFlags::READWRITE,
-            )
-        }),
-    ];
-
     #[derive(Debug, CompositeTemplate)]
+    #[template(resource = "/org/gnome/ImageViewer/gtk/image_view.ui")]
     pub struct IvImageView {
         #[template_child]
         pub headerbar: TemplateChild<gtk::HeaderBar>,
@@ -92,6 +64,7 @@ mod imp {
         const NAME: &'static str = "IvImageView";
         type Type = super::IvImageView;
         type ParentType = libadwaita::Bin;
+        type Interfaces = ();
         type Instance = subclass::simple::InstanceStruct<Self>;
         type Class = subclass::simple::ClassStruct<Self>;
 
@@ -116,9 +89,7 @@ mod imp {
         }
 
         fn class_init(klass: &mut Self::Class) {
-            klass.install_properties(&PROPERTIES);
-            klass.set_template_from_resource("/org/gnome/ImageViewer/gtk/image_view.ui");
-            Self::bind_template_children(klass);
+            Self::bind_template(klass);
         }
 
         fn instance_init(obj: &glib::subclass::InitializingObject<Self::Type>) {
@@ -127,6 +98,65 @@ mod imp {
     }
 
     impl ObjectImpl for IvImageView {
+        fn properties() -> &'static [glib::ParamSpec] {
+            static PROPERTIES: Lazy<Vec<glib::ParamSpec>> = Lazy::new(|| {
+                vec![
+                    glib::ParamSpec::boolean(
+                        "header-visible",
+                        "Header visible",
+                        "Whether or not the headerbar is visible",
+                        false,
+                        glib::ParamFlags::READWRITE,
+                    ),
+                    glib::ParamSpec::object(
+                        "primary-menu-model",
+                        "Primary Menu Model",
+                        "The menu model for the menu button",
+                        gio::MenuModel::static_type(),
+                        glib::ParamFlags::READWRITE,
+                    ),
+                    glib::ParamSpec::object(
+                        "popover-menu-model",
+                        "Popover Menu Model",
+                        "The menu model for the menu button",
+                        gio::MenuModel::static_type(),
+                        glib::ParamFlags::READWRITE,
+                    ),
+                ]
+            });
+
+            PROPERTIES.as_ref()
+        }
+
+        fn get_property(&self, _obj: &Self::Type, _id: usize, psec: &glib::ParamSpec) -> glib::Value {
+            match psec.get_name() {
+                "header-visible" => self.header_visible.get().to_value(),
+                "primary-menu-model" => self.menu_model.borrow().to_value(),
+                "popover-menu-model" => self.popover_menu_model.borrow().to_value(),
+                _ => unimplemented!(),
+            }
+        }
+
+        fn set_property(&self, _obj: &Self::Type, _id: usize, value: &glib::Value, psec: &glib::ParamSpec) {
+            match psec.get_name() {
+                "header-visible" => {
+                    self.header_visible
+                        .set(value.get().unwrap().unwrap_or_default());
+                }
+                "primary-menu-model" => {
+                    let model: Option<gio::MenuModel> = value.get().unwrap();
+                    self.menu_button.set_menu_model(model.as_ref());
+                    *self.menu_model.borrow_mut() = model;
+                }
+                "popover-menu-model" => {
+                    let model: Option<gio::MenuModel> = value.get().unwrap();
+                    self.popover.set_menu_model(model.as_ref());
+                    *self.popover_menu_model.borrow_mut() = model;
+                }
+                _ => unimplemented!(),
+            }
+        }
+
         fn constructed(&self, obj: &Self::Type) {
             self.parent_constructed(obj);
 
@@ -141,40 +171,6 @@ mod imp {
                 }));
         }
 
-        fn get_property(&self, _obj: &Self::Type, id: usize) -> glib::Value {
-            let prop = &PROPERTIES[id];
-
-            match *prop {
-                subclass::Property("header-visible", ..) => self.header_visible.get().to_value(),
-                subclass::Property("primary-menu-model", ..) => self.menu_model.borrow().to_value(),
-                subclass::Property("popover-menu-model", ..) => {
-                    self.popover_menu_model.borrow().to_value()
-                }
-                _ => unimplemented!(),
-            }
-        }
-
-        fn set_property(&self, _obj: &Self::Type, id: usize, value: &glib::Value) {
-            let prop = &PROPERTIES[id];
-
-            match *prop {
-                subclass::Property("header-visible", ..) => {
-                    self.header_visible
-                        .set(value.get().unwrap().unwrap_or_default());
-                }
-                subclass::Property("primary-menu-model", ..) => {
-                    let model: Option<gio::MenuModel> = value.get().unwrap();
-                    self.menu_button.set_menu_model(model.as_ref());
-                    *self.menu_model.borrow_mut() = model;
-                }
-                subclass::Property("popover-menu-model", ..) => {
-                    let model: Option<gio::MenuModel> = value.get().unwrap();
-                    self.popover.set_menu_model(model.as_ref());
-                    *self.popover_menu_model.borrow_mut() = model;
-                }
-                _ => unimplemented!(),
-            }
-        }
     }
 
     impl WidgetImpl for IvImageView {

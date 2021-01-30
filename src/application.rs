@@ -42,6 +42,7 @@ mod imp {
         const NAME: &'static str = "IvApplication";
         type Type = super::IvApplication;
         type ParentType = gtk::Application;
+        type Interfaces = ();
         type Instance = glib::subclass::simple::InstanceStruct<Self>;
         type Class = glib::subclass::simple::ClassStruct<Self>;
 
