@@ -128,7 +128,12 @@ mod imp {
             PROPERTIES.as_ref()
         }
 
-        fn get_property(&self, _obj: &Self::Type, _id: usize, psec: &glib::ParamSpec) -> glib::Value {
+        fn get_property(
+            &self,
+            _obj: &Self::Type,
+            _id: usize,
+            psec: &glib::ParamSpec,
+        ) -> glib::Value {
             match psec.get_name() {
                 "header-visible" => self.header_visible.get().to_value(),
                 "primary-menu-model" => self.menu_model.borrow().to_value(),
@@ -137,7 +142,13 @@ mod imp {
             }
         }
 
-        fn set_property(&self, _obj: &Self::Type, _id: usize, value: &glib::Value, psec: &glib::ParamSpec) {
+        fn set_property(
+            &self,
+            _obj: &Self::Type,
+            _id: usize,
+            value: &glib::Value,
+            psec: &glib::ParamSpec,
+        ) {
             match psec.get_name() {
                 "header-visible" => {
                     self.header_visible
@@ -170,7 +181,6 @@ mod imp {
                     obj.show_popover_at(x, y);
                 }));
         }
-
     }
 
     impl WidgetImpl for IvImageView {
