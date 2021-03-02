@@ -246,7 +246,7 @@ impl IvImageView {
             op.set_n_pages(1);
         });
 
-        operation.connect_draw_page(clone!(@weak pb => move |op, ctx, _| {
+        operation.connect_draw_page(clone!(@weak pb => move |_, ctx, _| {
             let cr = ctx.get_cairo_context().expect("No cairo context for print context");
             cr.set_source_pixbuf(&pb, 0.0, 0.0);
             cr.paint();
