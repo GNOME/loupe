@@ -115,6 +115,12 @@ mod imp {
                 .connect_released(clone!(@weak obj => move |_, _, _, _| {
                     obj.pick_file();
                 }));
+
+            self.image_view.connect_dimensions_loaded(
+                clone!(@weak obj => move |_, width, height| {
+                    obj.resize_from_dimensions(width, height);
+                }),
+            );
         }
     }
 
@@ -243,10 +249,10 @@ impl IvWindow {
     pub fn set_image_from_file(&self, file: &gio::File) {
         let imp = imp::IvWindow::from_instance(self);
 
+        log::debug!("Loading file: {}", file.get_uri().to_string());
+
         imp.image_view.set_image_from_file(file);
         imp.stack.set_visible_child(&*imp.image_view);
-
-        log::debug!("Loading file: {}", file.get_uri().to_string());
 
         if let Some(name) = file.get_basename() {
             self.set_title(Some(
@@ -280,5 +286,41 @@ impl IvWindow {
             .downcast::<gio::SimpleAction>()
             .unwrap()
             .set_enabled(enabled);
+    }
+
+    // Adapted from https://gitlab.gnome.org/GNOME/eog/-/blob/master/src/eog-window.c:eog_window_obtain_desired_size
+    pub fn resize_from_dimensions(&self, img_width: i32, img_height: i32) {
+        let imp = imp::IvWindow::from_instance(self);
+        let mut final_width = img_width;
+        let mut final_height = img_height;
+
+        let header_height = imp.headerbar.get_height();
+
+        // Ensure the window surface exists
+        if !self.get_realized() {
+            self.realize();
+        }
+
+        let display = gdk::Display::get_default().unwrap();
+        let monitor = display
+            .get_monitor_at_surface(&self.get_native().unwrap().get_surface().unwrap())
+            .unwrap();
+        let monitor_geometry = monitor.get_geometry();
+
+        let monitor_width = monitor_geometry.width;
+        let monitor_height = monitor_geometry.height;
+
+        if img_width > monitor_width || img_height + header_height > monitor_height {
+            let width_factor = (monitor_width as f32 * 0.85) / img_width as f32;
+            let height_factor =
+                (monitor_height as f32 * 0.85 - header_height as f32) / img_height as f32;
+            let factor = width_factor.min(height_factor);
+
+            final_width = (final_width as f32 * factor).round() as i32;
+            final_height = (final_height as f32 * factor).round() as i32;
+        }
+
+        self.set_default_size(final_width, final_height);
+        log::debug!("Window resized to {} x {}", final_width, final_height);
     }
 }

@@ -128,6 +128,26 @@ mod imp {
             PROPERTIES.as_ref()
         }
 
+        fn signals() -> &'static [glib::subclass::Signal] {
+            static SIGNALS: Lazy<Vec<glib::subclass::Signal>> = Lazy::new(|| {
+                vec![subclass::Signal::builder(
+                    // Called when the dimensions of the image
+                    // have been found.
+                    "dimensions-loaded",
+                    &[
+                        // The width of the image
+                        i32::static_type().into(),
+                        // The height of the image
+                        i32::static_type().into(),
+                    ],
+                    glib::Type::UNIT.into(),
+                )
+                .build()]
+            });
+
+            SIGNALS.as_ref()
+        }
+
         fn get_property(
             &self,
             _obj: &Self::Type,
@@ -204,6 +224,21 @@ impl IvImageView {
         let imp = imp::IvImageView::from_instance(&self);
 
         imp.picture.set_file(Some(file));
+
+        if let Err(e) = self.load_dimensions_from_file(file) {
+            log::error!("Could not load image dimensions: {}", e);
+        };
+    }
+
+    fn load_dimensions_from_file(&self, file: &gio::File) -> anyhow::Result<()> {
+        let pb = file.get_path().context("No path for current file")?;
+        let (_, width, height) =
+            gdk_pixbuf::Pixbuf::get_file_info(&pb.as_path()).context("Could not get file info")?;
+
+        log::debug!("Image dimensions: {} x {}", width, height);
+        let _ = self.emit_by_name("dimensions-loaded", &[&width, &height]);
+
+        Ok(())
     }
 
     pub fn set_wallpaper(&self) -> anyhow::Result<()> {
@@ -220,7 +255,7 @@ impl IvImageView {
 
         let request = RequestProxy::new(&imp.connection, &request_handle)?;
         request.on_response(|response: Response<Basic>| {
-            log::debug!("Response is OK: {}", response.is_ok());
+            log::debug!("Wallpaper set: {}", response.is_ok());
         })?;
 
         Ok(())
@@ -280,5 +315,21 @@ impl IvImageView {
 
         imp.popover.set_pointing_to(&rect);
         imp.popover.popup();
+    }
+
+    pub fn connect_dimensions_loaded<F: Fn(&Self, i32, i32) + 'static>(
+        &self,
+        f: F,
+    ) -> glib::SignalHandlerId {
+        self.connect_local("dimensions-loaded", true, move |values| {
+            let view = values[0].get::<Self>().unwrap().unwrap();
+            let width = values[1].get::<i32>().unwrap().unwrap();
+            let height = values[2].get::<i32>().unwrap().unwrap();
+
+            f(&view, width, height);
+
+            None
+        })
+        .unwrap()
     }
 }
