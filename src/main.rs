@@ -42,6 +42,6 @@ fn main() {
     gio::resources_register(&res);
 
     let app = IvApplication::new();
-    let ret = app.run(&std::env::args().collect::<Vec<_>>());
+    let ret = app.run();
     std::process::exit(ret);
 }

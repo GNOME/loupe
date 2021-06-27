@@ -38,22 +38,18 @@ mod imp {
     }
 
     // Sets up the basics for the GObject
+    // The `#[glib::object_subclass] macro implements
+    // some boilerplate code for the object setup, e.g. get_type()
+    #[glib::object_subclass]
     impl ObjectSubclass for IvApplication {
         const NAME: &'static str = "IvApplication";
         type Type = super::IvApplication;
         type ParentType = gtk::Application;
-        type Interfaces = ();
-        type Instance = glib::subclass::simple::InstanceStruct<Self>;
-        type Class = glib::subclass::simple::ClassStruct<Self>;
-
-        // This macro implements some boilerplate code
-        // for the object setup, e.g. get_type()
-        glib::object_subclass!();
 
         // Initialize with default values
         fn new() -> Self {
             let gtk_settings =
-                gtk::Settings::get_default().expect("Could not get default GTK settings");
+                gtk::Settings::default().expect("Could not get default GTK settings");
 
             Self { gtk_settings }
         }
@@ -65,12 +61,12 @@ mod imp {
             self.parent_constructed(obj);
 
             // Set up the CSS and force dark theme
-            let display = gdk::Display::get_default().unwrap();
+            let display = gdk::Display::default().unwrap();
             let provider = gtk::CssProvider::new();
             provider.load_from_resource("/org/gnome/ImageViewer/image-viewer.css");
             gtk::StyleContext::add_provider_for_display(&display, &provider, 600);
             self.gtk_settings
-                .set_property_gtk_application_prefer_dark_theme(true);
+                .set_gtk_application_prefer_dark_theme(true);
 
             // Set up the actions
             obj.setup_actions();
@@ -195,7 +191,7 @@ impl IvApplication {
             .version(config::VERSION)
             .build();
 
-        if let Some(window) = self.get_active_window() {
+        if let Some(window) = self.active_window() {
             dialog.set_modal(true);
             dialog.set_transient_for(Some(&window));
         }

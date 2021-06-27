@@ -60,15 +60,11 @@ mod imp {
         pub popover_menu_model: RefCell<Option<gio::MenuModel>>,
     }
 
+    #[glib::object_subclass]
     impl ObjectSubclass for IvImageView {
         const NAME: &'static str = "IvImageView";
         type Type = super::IvImageView;
         type ParentType = libadwaita::Bin;
-        type Interfaces = ();
-        type Instance = subclass::simple::InstanceStruct<Self>;
-        type Class = subclass::simple::ClassStruct<Self>;
-
-        glib::object_subclass!();
 
         fn new() -> Self {
             let connection =
@@ -92,7 +88,7 @@ mod imp {
             Self::bind_template(klass);
         }
 
-        fn instance_init(obj: &glib::subclass::InitializingObject<Self::Type>) {
+        fn instance_init(obj: &glib::subclass::InitializingObject<Self>) {
             obj.init_template();
         }
     }
@@ -101,21 +97,21 @@ mod imp {
         fn properties() -> &'static [glib::ParamSpec] {
             static PROPERTIES: Lazy<Vec<glib::ParamSpec>> = Lazy::new(|| {
                 vec![
-                    glib::ParamSpec::boolean(
+                    glib::ParamSpec::new_boolean(
                         "header-visible",
                         "Header visible",
                         "Whether or not the headerbar is visible",
                         false,
                         glib::ParamFlags::READWRITE,
                     ),
-                    glib::ParamSpec::object(
+                    glib::ParamSpec::new_object(
                         "primary-menu-model",
                         "Primary Menu Model",
                         "The menu model for the menu button",
                         gio::MenuModel::static_type(),
                         glib::ParamFlags::READWRITE,
                     ),
-                    glib::ParamSpec::object(
+                    glib::ParamSpec::new_object(
                         "popover-menu-model",
                         "Popover Menu Model",
                         "The menu model for the menu button",
@@ -148,13 +144,8 @@ mod imp {
             SIGNALS.as_ref()
         }
 
-        fn get_property(
-            &self,
-            _obj: &Self::Type,
-            _id: usize,
-            psec: &glib::ParamSpec,
-        ) -> glib::Value {
-            match psec.get_name() {
+        fn property(&self, _obj: &Self::Type, _id: usize, psec: &glib::ParamSpec) -> glib::Value {
+            match psec.name() {
                 "header-visible" => self.header_visible.get().to_value(),
                 "primary-menu-model" => self.menu_model.borrow().to_value(),
                 "popover-menu-model" => self.popover_menu_model.borrow().to_value(),
@@ -169,10 +160,9 @@ mod imp {
             value: &glib::Value,
             psec: &glib::ParamSpec,
         ) {
-            match psec.get_name() {
+            match psec.name() {
                 "header-visible" => {
-                    self.header_visible
-                        .set(value.get().unwrap().unwrap_or_default());
+                    self.header_visible.set(value.get::<bool>().unwrap());
                 }
                 "primary-menu-model" => {
                     let model: Option<gio::MenuModel> = value.get().unwrap();
@@ -231,9 +221,9 @@ impl IvImageView {
     }
 
     fn load_dimensions_from_file(&self, file: &gio::File) -> anyhow::Result<()> {
-        let pb = file.get_path().context("No path for current file")?;
+        let pb = file.path().context("No path for current file")?;
         let (_, width, height) =
-            gdk_pixbuf::Pixbuf::get_file_info(&pb.as_path()).context("Could not get file info")?;
+            gdk_pixbuf::Pixbuf::file_info(&pb.as_path()).context("Could not get file info")?;
 
         log::debug!("Image dimensions: {} x {}", width, height);
         let _ = self.emit_by_name("dimensions-loaded", &[&width, &height]);
@@ -264,9 +254,9 @@ impl IvImageView {
     pub fn print(&self) -> anyhow::Result<()> {
         let imp = imp::IvImageView::from_instance(&self);
 
-        let file = imp.picture.get_file().context("No file to print")?;
+        let file = imp.picture.file().context("No file to print")?;
         let operation = gtk::PrintOperation::new();
-        let path = file.get_path().context("No path for current file")?;
+        let path = file.path().context("No path for current file")?;
         let pb = gdk_pixbuf::Pixbuf::from_file(path)?;
 
         let setup = gtk::PageSetup::default();
@@ -282,13 +272,13 @@ impl IvImageView {
         });
 
         operation.connect_draw_page(clone!(@weak pb => move |_, ctx, _| {
-            let cr = ctx.get_cairo_context().expect("No cairo context for print context");
+            let cr = ctx.cairo_context().expect("No cairo context for print context");
             cr.set_source_pixbuf(&pb, 0.0, 0.0);
             cr.paint();
         }));
 
         log::debug!("Running print operation...");
-        let root = self.get_root().context("Could not get root for widget")?;
+        let root = self.root().context("Could not get root for widget")?;
         let window = root
             .downcast_ref::<gtk::Window>()
             .context("Could not downcast to GtkWindow")?;
@@ -299,8 +289,8 @@ impl IvImageView {
 
     pub fn uri(&self) -> Option<String> {
         let imp = imp::IvImageView::from_instance(&self);
-        let file = imp.picture.get_file()?;
-        Some(file.get_uri().to_string())
+        let file = imp.picture.file()?;
+        Some(file.uri().to_string())
     }
 
     pub fn show_popover_at(&self, x: f64, y: f64) {
@@ -322,9 +312,9 @@ impl IvImageView {
         f: F,
     ) -> glib::SignalHandlerId {
         self.connect_local("dimensions-loaded", true, move |values| {
-            let view = values[0].get::<Self>().unwrap().unwrap();
-            let width = values[1].get::<i32>().unwrap().unwrap();
-            let height = values[2].get::<i32>().unwrap().unwrap();
+            let view = values[0].get::<Self>().unwrap();
+            let width = values[1].get::<i32>().unwrap();
+            let height = values[2].get::<i32>().unwrap();
 
             f(&view, width, height);
 
