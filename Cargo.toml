@@ -15,17 +15,20 @@ gdk-pixbuf = "0.14.0"
 gio = "0.14.0"
 glib = "0.14.0"
 cairo-rs = "0.14.0"
-ashpd = "0.1.0"
-libadwaita = "0.1.0-alpha"
+libadwaita = "0.1.0-alpha-3"
+
+[dependencies.ashpd]
+git = "https://github.com/bilelmoussaoui/ashpd"
+features = ["feature_gtk4"]
 
 [dependencies.gtk]
 package = "gtk4"
-version = "0.1.0"
+version = "0.2.0"
 
 [dependencies.gdk]
 package = "gdk4"
-version = "0.1.0"
+version = "0.2.0"
 
 [dependencies.gettext-rs]
-version = "0.4.4"
+version = "0.7.0"
 features = ["gettext-system"]

@@ -27,8 +27,8 @@ use gtk::CompositeTemplate;
 use libadwaita::subclass::prelude::*;
 
 use anyhow::Context;
-use ashpd::desktop::wallpaper::{SetOn, WallpaperOptions, WallpaperProxy};
-use ashpd::{BasicResponse as Basic, RequestProxy, Response, WindowIdentifier};
+use ashpd::desktop::wallpaper;
+use ashpd::WindowIdentifier;
 use once_cell::sync::Lazy;
 use std::cell::{Cell, RefCell};
 
@@ -232,21 +232,11 @@ impl IvImageView {
     }
 
     pub fn set_wallpaper(&self) -> anyhow::Result<()> {
-        let imp = imp::IvImageView::from_instance(&self);
-
         let wallpaper = self.uri().context("No URI for current file")?;
-        let wallpaper_proxy = WallpaperProxy::new(&imp.connection)?;
-
-        let request_handle = wallpaper_proxy.set_wallpaper_uri(
-            WindowIdentifier::default(),
-            &wallpaper,
-            WallpaperOptions::default().set_on(SetOn::Background),
-        )?;
-
-        let request = RequestProxy::new(&imp.connection, &request_handle)?;
-        request.on_response(|response: Response<Basic>| {
-            log::debug!("Wallpaper set: {}", response.is_ok());
-        })?;
+        let ctx = glib::MainContext::default();
+        ctx.spawn_local(async move {
+            set_wallpaper(wallpaper).await;
+        });
 
         Ok(())
     }
@@ -321,5 +311,22 @@ impl IvImageView {
             None
         })
         .unwrap()
+    }
+}
+
+async fn set_wallpaper(uri: String) {
+    match wallpaper::set_from_uri(
+        &WindowIdentifier::default(),
+        &uri,
+        false,
+        wallpaper::SetOn::Background,
+    )
+    .await
+    {
+        Err(e) => log::error!(
+            "Failed to set the wallpaper using the freedesktop portal: {}",
+            e
+        ),
+        Ok(_) => (),
     }
 }
