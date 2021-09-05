@@ -2,6 +2,7 @@
 <interface>
   <template class="IvImageView" parent="AdwBin">
     <property name="css-name">imageview</property>
+    <property name="focusable">True</property>
     <property name="child">
       <object class="GtkOverlay">
         <property name="hexpand">True</property>
@@ -90,6 +91,22 @@
         </child>
       </object>
     </property>
+    <child>
+      <object class="GtkShortcutController">
+        <child>
+          <object class="GtkShortcut">
+            <property name="trigger">Left</property>
+            <property name="action">action(iv.previous)</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkShortcut">
+            <property name="trigger">Right</property>
+            <property name="action">action(iv.next)</property>
+          </object>
+        </child>
+      </object>
+    </child>
     <style>
       <class name="image-view"/>
     </style>

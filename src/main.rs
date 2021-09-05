@@ -22,6 +22,7 @@ use gio::prelude::*;
 
 mod application;
 mod config;
+mod util;
 mod widgets;
 mod window;
 

@@ -32,11 +32,13 @@ use ashpd::WindowIdentifier;
 use once_cell::sync::Lazy;
 use std::cell::{Cell, RefCell};
 
+use crate::util;
+
 mod imp {
     use super::*;
     use glib::subclass;
 
-    #[derive(Debug, CompositeTemplate)]
+    #[derive(Debug, Default, CompositeTemplate)]
     #[template(resource = "/org/gnome/ImageViewer/gtk/image_view.ui")]
     pub struct IvImageView {
         #[template_child]
@@ -52,12 +54,17 @@ mod imp {
         #[template_child]
         pub press_gesture: TemplateChild<gtk::GestureLongPress>,
 
-        pub connection: zbus::Connection,
-        // Cell<T> allows for interior mutability of primitive types.
+        // Cell<T> allows for interior mutability of primitive types
         pub header_visible: Cell<bool>,
         // RefCell<T> does the same for non-primitive types.
         pub menu_model: RefCell<Option<gio::MenuModel>>,
         pub popover_menu_model: RefCell<Option<gio::MenuModel>>,
+
+        pub directory: RefCell<Option<String>>,
+        pub filename: RefCell<Option<String>>,
+        // Path of filenames
+        pub directory_pictures: RefCell<Vec<String>>,
+        pub index: Cell<usize>,
     }
 
     #[glib::object_subclass]
@@ -66,26 +73,16 @@ mod imp {
         type Type = super::IvImageView;
         type ParentType = libadwaita::Bin;
 
-        fn new() -> Self {
-            let connection =
-                zbus::Connection::new_session().expect("Could not create zbus session");
-
-            Self {
-                headerbar: TemplateChild::default(),
-                menu_button: TemplateChild::default(),
-                picture: TemplateChild::default(),
-                popover: TemplateChild::default(),
-                click_gesture: TemplateChild::default(),
-                press_gesture: TemplateChild::default(),
-                connection,
-                header_visible: Cell::new(false),
-                menu_model: RefCell::default(),
-                popover_menu_model: RefCell::default(),
-            }
-        }
-
         fn class_init(klass: &mut Self::Class) {
             Self::bind_template(klass);
+
+            klass.install_action("iv.next", None, move |image_view, _, _| {
+                image_view.next();
+            });
+
+            klass.install_action("iv.previous", None, move |image_view, _, _| {
+                image_view.previous();
+            });
         }
 
         fn instance_init(obj: &glib::subclass::InitializingObject<Self>) {
@@ -118,6 +115,13 @@ mod imp {
                         gio::MenuModel::static_type(),
                         glib::ParamFlags::READWRITE,
                     ),
+                    glib::ParamSpec::new_string(
+                        "filename",
+                        "Filename",
+                        "The filename of the current file",
+                        None,
+                        glib::ParamFlags::READABLE,
+                    ),
                 ]
             });
 
@@ -149,6 +153,7 @@ mod imp {
                 "header-visible" => self.header_visible.get().to_value(),
                 "primary-menu-model" => self.menu_model.borrow().to_value(),
                 "popover-menu-model" => self.popover_menu_model.borrow().to_value(),
+                "filename" => self.filename.borrow().to_value(),
                 _ => unimplemented!(),
             }
         }
@@ -213,11 +218,81 @@ impl IvImageView {
     pub fn set_image_from_file(&self, file: &gio::File) {
         let imp = imp::IvImageView::from_instance(&self);
 
+        if let Some(current_file) = imp.picture.file() {
+            if current_file.path().as_deref() == file.path().as_deref() {
+                return;
+            }
+        }
+
+        self.set_parent_from_file(file);
         imp.picture.set_file(Some(file));
+        self.notify("filename");
+        self.update_action_state();
 
         if let Err(e) = self.load_dimensions_from_file(file) {
             log::error!("Could not load image dimensions: {}", e);
         };
+    }
+
+    fn set_parent_from_file(&self, file: &gio::File) {
+        let imp = imp::IvImageView::from_instance(&self);
+
+        if let Some(parent) = file.parent() {
+            let parent_path = parent.path().map(|p| p.to_str().unwrap().to_string());
+            let mut directory_vec = imp.directory_pictures.borrow_mut();
+
+            if parent_path.as_deref() != imp.directory.borrow().as_deref() {
+                *imp.directory.borrow_mut() = parent_path;
+                directory_vec.clear();
+
+                let enumerator = parent
+                    .enumerate_children(
+                        &format!(
+                            "{},{}",
+                            *gio::FILE_ATTRIBUTE_STANDARD_DISPLAY_NAME,
+                            *gio::FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE
+                        ),
+                        gio::FileQueryInfoFlags::NONE,
+                        gio::NONE_CANCELLABLE,
+                    )
+                    .unwrap();
+
+                // Filter out non-images; For now we support "all" image types.
+                enumerator.for_each(|info| {
+                    if let Ok(info) = info {
+                        if let Some(content_type) = info.content_type().map(|t| t.to_string()) {
+                            let filename = info.display_name().to_string();
+                            log::debug!("Filename: {}", filename);
+                            log::debug!("Mimetype: {}", content_type);
+
+                            if content_type.starts_with("image/") {
+                                log::debug!("{} is an image, adding to the list", filename);
+                                directory_vec.push(filename);
+                            }
+                        }
+                    }
+                });
+
+                // Then sort by name.
+                directory_vec.sort_by(|name_a, name_b| {
+                    util::utf8_collate_key_for_filename(name_a)
+                        .cmp(&util::utf8_collate_key_for_filename(name_b))
+                });
+
+                log::debug!("Sorted files: {:?}", directory_vec);
+            }
+
+            *imp.filename.borrow_mut() = util::get_file_display_name(file);
+
+            imp.index.set(
+                directory_vec
+                    .iter()
+                    .position(|f| Some(f) == imp.filename.borrow().as_ref())
+                    .unwrap(),
+            );
+
+            log::debug!("Current index is {}", imp.index.get());
+        }
     }
 
     fn load_dimensions_from_file(&self, file: &gio::File) -> anyhow::Result<()> {
@@ -229,6 +304,42 @@ impl IvImageView {
         let _ = self.emit_by_name("dimensions-loaded", &[&width, &height]);
 
         Ok(())
+    }
+
+    fn update_image(&self) {
+        let imp = imp::IvImageView::from_instance(&self);
+
+        let path = &format!(
+            "{}/{}",
+            imp.directory.borrow().as_ref().unwrap(),
+            &imp.directory_pictures.borrow()[imp.index.get()]
+        );
+        let file = gio::File::for_path(path);
+        imp.picture.set_file(Some(&file));
+        *imp.filename.borrow_mut() = util::get_file_display_name(&file);
+        self.notify("filename");
+        self.update_action_state();
+    }
+
+    pub fn next(&self) {
+        let imp = imp::IvImageView::from_instance(&self);
+        // TODO: Replace with `Cell::update()` once stabilized
+        imp.index.set(imp.index.get() + 1);
+        self.update_image();
+    }
+
+    pub fn previous(&self) {
+        let imp = imp::IvImageView::from_instance(&self);
+        // TODO: Replace with `Cell::update()` once stabilized
+        imp.index.set(imp.index.get() - 1);
+        self.update_image();
+    }
+
+    pub fn update_action_state(&self) {
+        let imp = imp::IvImageView::from_instance(&self);
+        let index = imp.index.get();
+        self.action_set_enabled("iv.next", index < imp.directory_pictures.borrow().len() - 1);
+        self.action_set_enabled("iv.previous", index > 0);
     }
 
     pub fn set_wallpaper(&self) -> anyhow::Result<()> {
@@ -281,6 +392,11 @@ impl IvImageView {
         let imp = imp::IvImageView::from_instance(&self);
         let file = imp.picture.file()?;
         Some(file.uri().to_string())
+    }
+
+    pub fn filename(&self) -> Option<String> {
+        let imp = imp::IvImageView::from_instance(&self);
+        imp.filename.borrow().to_owned()
     }
 
     pub fn show_popover_at(&self, x: f64, y: f64) {

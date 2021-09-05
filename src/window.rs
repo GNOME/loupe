@@ -112,6 +112,16 @@ mod imp {
                     obj.resize_from_dimensions(width, height);
                 }),
             );
+
+            // Property bindings didn't seem to work here
+            self.image_view.connect_notify_local(
+                Some("filename"),
+                clone!(@weak obj => move |iv, _| {
+                    if let Some(filename) = iv.filename() {
+                        obj.set_title(Some(&filename));
+                    }
+                }),
+            );
         }
     }
 
@@ -244,12 +254,7 @@ impl IvWindow {
 
         imp.image_view.set_image_from_file(file);
         imp.stack.set_visible_child(&*imp.image_view);
-
-        if let Some(name) = file.basename() {
-            self.set_title(Some(
-                name.file_name().expect("Missing name").to_str().unwrap(),
-            ));
-        }
+        imp.image_view.grab_focus();
 
         self.set_actions_enabled(true);
     }
