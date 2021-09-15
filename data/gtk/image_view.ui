@@ -3,6 +3,7 @@
   <template class="IvImageView" parent="AdwBin">
     <property name="css-name">imageview</property>
     <property name="focusable">True</property>
+    <property name="focus-on-click">True</property>
     <property name="child">
       <object class="GtkOverlay">
         <property name="hexpand">True</property>
