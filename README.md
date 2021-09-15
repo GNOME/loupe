@@ -7,7 +7,7 @@ A simple image viewer application written with GTK4 and Rust.
 * [ ] Hover timeout for buttons and fullscreen headerbar
 * [ ] Pan/zoom
 * [ ] GEGL integration
-* [ ] Back/forward navigation
+* [x] Back/forward navigation
 
 ## Building
 
