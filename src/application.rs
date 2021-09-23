@@ -198,6 +198,6 @@ impl IvApplication {
     }
 
     pub fn show_help(&self) {
-        gtk::show_uri(gtk::NONE_WINDOW, "help:gnome-image-viewer", 0);
+        gtk::show_uri(self.active_window().as_ref(), "help:gnome-image-viewer", 0);
     }
 }
