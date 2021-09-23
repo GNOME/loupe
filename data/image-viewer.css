@@ -4,11 +4,6 @@ button.circular {
   min-height: 24px;
 }
 
-headerbar.osd {
-  background-image: none;
-  border-bottom: 1px solid @borders;
-}
-
 .image-view {
   background-color: black;
 }
