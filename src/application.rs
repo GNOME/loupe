@@ -77,8 +77,6 @@ mod imp {
     impl ApplicationImpl for IvApplication {
         fn activate(&self, application: &Self::Type) {
             let window = IvWindow::new(application);
-
-            application.add_window(&window);
             window.present();
         }
 
