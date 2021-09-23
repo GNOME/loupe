@@ -1,5 +1,5 @@
 project('gnome-image-viewer',
-          version: '40.alpha',
+          version: '42.alpha',
     meson_version: '>= 0.50.0',
   default_options: [ 'warning_level=2',
                    ],
