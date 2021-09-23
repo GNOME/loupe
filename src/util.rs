@@ -1,7 +1,7 @@
 use gio::prelude::*;
 use glib::translate::*;
 
-pub fn utf8_collate_key_for_filename(filename: &String) -> String {
+pub fn utf8_collate_key_for_filename(filename: &str) -> String {
     unsafe {
         from_glib_full(glib::ffi::g_utf8_collate_key_for_filename(
             filename.to_glib_none().0,

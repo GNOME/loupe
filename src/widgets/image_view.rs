@@ -431,7 +431,7 @@ impl IvImageView {
 }
 
 async fn set_wallpaper(uri: String) {
-    match wallpaper::set_from_uri(
+    if let Err(e) = wallpaper::set_from_uri(
         &WindowIdentifier::default(),
         &uri,
         false,
@@ -439,10 +439,9 @@ async fn set_wallpaper(uri: String) {
     )
     .await
     {
-        Err(e) => log::error!(
+        log::error!(
             "Failed to set the wallpaper using the freedesktop portal: {}",
             e
-        ),
-        Ok(_) => (),
+        );
     }
 }

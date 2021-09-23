@@ -106,6 +106,7 @@ glib::wrapper! {
 }
 
 // This is where the member functions of IvApplication go.
+#[allow(clippy::new_without_default)]
 impl IvApplication {
     pub fn new() -> Self {
         glib::Object::new(&[
