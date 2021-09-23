@@ -23,6 +23,7 @@ use glib::subclass::prelude::*;
 use gtk::prelude::*;
 use gtk::subclass::prelude::*;
 use gtk_macros::*;
+use libadwaita::subclass::prelude::*;
 
 use crate::config;
 use crate::window::IvWindow;
@@ -44,7 +45,7 @@ mod imp {
     impl ObjectSubclass for IvApplication {
         const NAME: &'static str = "IvApplication";
         type Type = super::IvApplication;
-        type ParentType = gtk::Application;
+        type ParentType = libadwaita::Application;
 
         // Initialize with default values
         fn new() -> Self {
@@ -60,11 +61,7 @@ mod imp {
         fn constructed(&self, obj: &Self::Type) {
             self.parent_constructed(obj);
 
-            // Set up the CSS and force dark theme
-            let display = gdk::Display::default().unwrap();
-            let provider = gtk::CssProvider::new();
-            provider.load_from_resource("/org/gnome/ImageViewer/image-viewer.css");
-            gtk::StyleContext::add_provider_for_display(&display, &provider, 600);
+            // Force dark theme
             self.gtk_settings
                 .set_gtk_application_prefer_dark_theme(true);
 
@@ -93,6 +90,7 @@ mod imp {
     // This is empty, but we still need to provide an
     // empty implementation for each type we subclass.
     impl GtkApplicationImpl for IvApplication {}
+    impl AdwApplicationImpl for IvApplication {}
 }
 
 // Creates a wrapper struct that inherits the functions
@@ -101,7 +99,7 @@ mod imp {
 // IvApplication without casting.
 glib::wrapper! {
     pub struct IvApplication(ObjectSubclass<imp::IvApplication>)
-        @extends gio::Application, gtk::Application,
+        @extends gio::Application, gtk::Application, libadwaita::Application,
         @implements gio::ActionGroup, gio::ActionMap;
 }
 
@@ -112,6 +110,7 @@ impl IvApplication {
         glib::Object::new(&[
             ("application-id", &config::APP_ID.to_string()),
             ("flags", &gio::ApplicationFlags::HANDLES_OPEN),
+            ("resource-base-path", &"/org/gnome/ImageViewer/".to_string()),
         ])
         .unwrap()
     }

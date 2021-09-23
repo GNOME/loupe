@@ -4,6 +4,6 @@
     <file compressed="true" preprocess="xml-stripblanks">gtk/help_overlay.ui</file>
     <file compressed="true" preprocess="xml-stripblanks">gtk/window.ui</file>
     <file compressed="true" preprocess="xml-stripblanks">gtk/image_view.ui</file>
-    <file>image-viewer.css</file>
+    <file>style.css</file>
   </gresource>
 </gresources>
