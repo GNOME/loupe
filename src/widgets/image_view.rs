@@ -44,6 +44,8 @@ mod imp {
         #[template_child]
         pub picture: TemplateChild<gtk::Picture>,
         #[template_child]
+        pub controls: TemplateChild<gtk::Box>,
+        #[template_child]
         pub popover: TemplateChild<gtk::PopoverMenu>,
         #[template_child]
         pub click_gesture: TemplateChild<gtk::GestureClick>,
@@ -103,6 +105,13 @@ mod imp {
                         None,
                         glib::ParamFlags::READABLE,
                     ),
+                    glib::ParamSpec::new_object(
+                        "controls",
+                        "Controls",
+                        "The controls for the image view",
+                        gtk::Box::static_type(),
+                        glib::ParamFlags::READABLE,
+                    ),
                 ]
             });
 
@@ -133,6 +142,7 @@ mod imp {
             match psec.name() {
                 "popover-menu-model" => self.popover_menu_model.borrow().to_value(),
                 "filename" => self.filename.borrow().to_value(),
+                "controls" => self.controls.to_value(),
                 _ => unimplemented!(),
             }
         }

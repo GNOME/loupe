@@ -14,7 +14,7 @@
           </object>
         </child>
         <child type="overlay">
-          <object class="GtkBox">
+          <object class="GtkBox" id="controls">
             <property name="vexpand">True</property>
             <child>
               <object class="GtkButton" id="prev_button">
