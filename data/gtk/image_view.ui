@@ -15,77 +15,49 @@
         </child>
         <child type="overlay">
           <object class="GtkBox">
-            <property name="orientation">vertical</property>
+            <property name="vexpand">True</property>
             <child>
-              <object class="GtkHeaderBar" id="headerbar">
-                <property name="valign">start</property>
-                <property name="show-title-buttons">False</property>
-                <property name="visible" bind-source="IvImageView" bind-property="header-visible" bind-flags="sync-create"/>
-                <child type="end">
-                  <object class="GtkButton">
-                    <property name="margin-start">6</property>
-                    <property name="has-frame">False</property>
-                    <property name="icon-name">view-restore-symbolic</property>
-                    <property name="action-name">win.toggle-fullscreen</property>
-                  </object>
-                </child>
-                <child type="end">
-                  <object class="GtkMenuButton" id="menu_button">
-                    <property name="icon-name">open-menu-symbolic</property>
-                  </object>
-                </child>
+              <object class="GtkButton" id="prev_button">
+                <property name="halign">start</property>
+                <property name="valign">center</property>
+                <property name="margin-start">18</property>
+                <property name="margin-end">18</property>
+                <property name="icon-name">go-previous-symbolic</property>
+                <property name="action-name">iv.previous</property>
                 <style>
                   <class name="osd"/>
+                  <class name="circular"/>
                 </style>
               </object>
             </child>
             <child>
-              <object class="GtkBox">
-                <property name="vexpand">True</property>
-                <child>
-                  <object class="GtkButton" id="prev_button">
-                    <property name="halign">start</property>
-                    <property name="valign">center</property>
-                    <property name="margin-start">18</property>
-                    <property name="margin-end">18</property>
-                    <property name="icon-name">go-previous-symbolic</property>
-                    <property name="action-name">iv.previous</property>
-                    <style>
-                      <class name="osd"/>
-                      <class name="circular"/>
-                    </style>
-                  </object>
-                </child>
-                <child>
-                  <object class="GtkButton" id="next_button">
-                    <property name="hexpand">True</property>
-                    <property name="halign">end</property>
-                    <property name="valign">center</property>
-                    <property name="margin-start">18</property>
-                    <property name="margin-end">18</property>
-                    <property name="icon-name">go-next-symbolic</property>
-                    <property name="action-name">iv.next</property>
-                    <style>
-                      <class name="osd"/>
-                      <class name="circular"/>
-                    </style>
-                  </object>
-                </child>
-                <child>
-                  <object class="GtkGestureClick" id="click_gesture">
-                    <property name="button">3</property>
-                  </object>
-                </child>
-                <child>
-                  <object class="GtkGestureLongPress" id="press_gesture">
-                    <property name="touch-only">True</property>
-                  </object>
-                </child>
-                <child>
-                  <object class="GtkPopoverMenu" id="popover">
-                    <property name="has-arrow">False</property>
-                  </object>
-                </child>
+              <object class="GtkButton" id="next_button">
+                <property name="hexpand">True</property>
+                <property name="halign">end</property>
+                <property name="valign">center</property>
+                <property name="margin-start">18</property>
+                <property name="margin-end">18</property>
+                <property name="icon-name">go-next-symbolic</property>
+                <property name="action-name">iv.next</property>
+                <style>
+                  <class name="osd"/>
+                  <class name="circular"/>
+                </style>
+              </object>
+            </child>
+            <child>
+              <object class="GtkGestureClick" id="click_gesture">
+                <property name="button">3</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkGestureLongPress" id="press_gesture">
+                <property name="touch-only">True</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkPopoverMenu" id="popover">
+                <property name="has-arrow">False</property>
               </object>
             </child>
           </object>

@@ -8,6 +8,10 @@ button.circular {
   background-color: @theme_base_color;
 }
 
+flap.fullscreen-widget dimming, shadow, border, outline {
+  background: none;
+}
+
 .checkerboard {
   background-color: #7f7f7f;
   background-image: linear-gradient(

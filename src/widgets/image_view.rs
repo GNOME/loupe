@@ -42,10 +42,6 @@ mod imp {
     #[template(resource = "/org/gnome/ImageViewer/gtk/image_view.ui")]
     pub struct IvImageView {
         #[template_child]
-        pub headerbar: TemplateChild<gtk::HeaderBar>,
-        #[template_child]
-        pub menu_button: TemplateChild<gtk::MenuButton>,
-        #[template_child]
         pub picture: TemplateChild<gtk::Picture>,
         #[template_child]
         pub popover: TemplateChild<gtk::PopoverMenu>,
@@ -54,9 +50,7 @@ mod imp {
         #[template_child]
         pub press_gesture: TemplateChild<gtk::GestureLongPress>,
 
-        // Cell<T> allows for interior mutability of primitive types
-        pub header_visible: Cell<bool>,
-        // RefCell<T> does the same for non-primitive types.
+        // RefCell<T> allows for interior mutability of non-primitive types.
         pub menu_model: RefCell<Option<gio::MenuModel>>,
         pub popover_menu_model: RefCell<Option<gio::MenuModel>>,
 
@@ -64,6 +58,7 @@ mod imp {
         pub filename: RefCell<Option<String>>,
         // Path of filenames
         pub directory_pictures: RefCell<Vec<String>>,
+        // Cell<T> allows for interior mutability of primitive types
         pub index: Cell<usize>,
     }
 
@@ -94,20 +89,6 @@ mod imp {
         fn properties() -> &'static [glib::ParamSpec] {
             static PROPERTIES: Lazy<Vec<glib::ParamSpec>> = Lazy::new(|| {
                 vec![
-                    glib::ParamSpec::new_boolean(
-                        "header-visible",
-                        "Header visible",
-                        "Whether or not the headerbar is visible",
-                        false,
-                        glib::ParamFlags::READWRITE,
-                    ),
-                    glib::ParamSpec::new_object(
-                        "primary-menu-model",
-                        "Primary Menu Model",
-                        "The menu model for the menu button",
-                        gio::MenuModel::static_type(),
-                        glib::ParamFlags::READWRITE,
-                    ),
                     glib::ParamSpec::new_object(
                         "popover-menu-model",
                         "Popover Menu Model",
@@ -150,8 +131,6 @@ mod imp {
 
         fn property(&self, _obj: &Self::Type, _id: usize, psec: &glib::ParamSpec) -> glib::Value {
             match psec.name() {
-                "header-visible" => self.header_visible.get().to_value(),
-                "primary-menu-model" => self.menu_model.borrow().to_value(),
                 "popover-menu-model" => self.popover_menu_model.borrow().to_value(),
                 "filename" => self.filename.borrow().to_value(),
                 _ => unimplemented!(),
@@ -166,14 +145,6 @@ mod imp {
             psec: &glib::ParamSpec,
         ) {
             match psec.name() {
-                "header-visible" => {
-                    self.header_visible.set(value.get::<bool>().unwrap());
-                }
-                "primary-menu-model" => {
-                    let model: Option<gio::MenuModel> = value.get().unwrap();
-                    self.menu_button.set_menu_model(model.as_ref());
-                    *self.menu_model.borrow_mut() = model;
-                }
                 "popover-menu-model" => {
                     let model: Option<gio::MenuModel> = value.get().unwrap();
                     self.popover.set_menu_model(model.as_ref());

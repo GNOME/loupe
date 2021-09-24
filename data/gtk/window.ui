@@ -6,12 +6,15 @@
     <property name="width-request">360</property>
     <property name="title">Image Viewer</property>
     <property name="content">
-      <object class="GtkBox">
+      <object class="AdwFlap" id="flap">
         <property name="orientation">vertical</property>
-        <child>
+        <property name="fold-policy">never</property>
+        <property name="locked">true</property>
+        <property name="modal">false</property>
+        <property name="flap">
           <object class="GtkHeaderBar" id="headerbar">
             <property name="css-classes">titlebar</property>
-            <property name="visible" bind-source="IvWindow" bind-property="fullscreened" bind-flags="sync-create|invert-boolean"/>
+            <property name="show_title_buttons" bind-source="IvWindow" bind-property="fullscreened" bind-flags="sync-create|invert-boolean"/>
             <child type="end">
               <object class="GtkMenuButton" id="menu_button">
                 <property name="icon-name">open-menu-symbolic</property>
@@ -19,14 +22,14 @@
               </object>
             </child>
             <child type="end">
-              <object class="GtkButton">
+              <object class="GtkButton" id="fullscreen_button">
                 <property name="icon-name">view-fullscreen-symbolic</property>
                 <property name="action-name">win.toggle-fullscreen</property>
               </object>
             </child>
           </object>
-        </child>
-        <child>
+        </property>
+        <property name="content">
           <object class="GtkStack" id="stack">
             <property name="visible-child">status_page</property>
             <property name="vexpand">True</property>
@@ -41,13 +44,14 @@
             </child>
             <child>
               <object class="IvImageView" id="image_view">
-                <property name="header-visible" bind-source="IvWindow" bind-property="fullscreened" bind-flags="sync-create"/>
-                <property name="primary-menu-model">primary_menu</property>
                 <property name="popover-menu-model">image_menu</property>
               </object>
             </child>
           </object>
-        </child>
+        </property>
+        <style>
+          <class name="fullscreen-widget"/>
+        </style>
       </object>
     </property>
   </template>

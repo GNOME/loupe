@@ -52,7 +52,13 @@ mod imp {
         // TemplateChild<T> wrapper, where T is the
         // object type of the template child.
         #[template_child]
+        pub flap: TemplateChild<libadwaita::Flap>,
+        #[template_child]
         pub headerbar: TemplateChild<gtk::HeaderBar>,
+        #[template_child]
+        pub menu_button: TemplateChild<gtk::MenuButton>,
+        #[template_child]
+        pub fullscreen_button: TemplateChild<gtk::Button>,
         #[template_child]
         pub stack: TemplateChild<gtk::Stack>,
         #[template_child]
@@ -76,7 +82,7 @@ mod imp {
 
             // Set up actions
             klass.install_action("win.toggle-fullscreen", None, move |win, _, _| {
-                win.set_fullscreened(!win.is_fullscreened());
+                win.toggle_fullscreen(!win.is_fullscreened());
             });
 
             klass.install_action("win.open", None, move |win, _, _| {
@@ -161,6 +167,31 @@ glib::wrapper! {
 impl IvWindow {
     pub fn new<A: IsA<gtk::Application>>(app: &A) -> Self {
         glib::Object::new(&[("application", app)]).expect("Failed to create IvWindow")
+    }
+
+    fn toggle_fullscreen(&self, fullscreen: bool) {
+        let imp = imp::IvWindow::from_instance(&self);
+
+        if fullscreen {
+            imp.flap.set_fold_policy(libadwaita::FlapFoldPolicy::Always);
+            imp.headerbar.add_css_class("osd");
+            imp.menu_button.unparent();
+            imp.fullscreen_button.unparent();
+            imp.headerbar.pack_end(&*imp.fullscreen_button);
+            imp.headerbar.pack_end(&*imp.menu_button);
+            imp.fullscreen_button.set_icon_name("view-restore-symbolic");
+        } else {
+            imp.flap.set_fold_policy(libadwaita::FlapFoldPolicy::Never);
+            imp.headerbar.remove_css_class("osd");
+            imp.menu_button.unparent();
+            imp.fullscreen_button.unparent();
+            imp.headerbar.pack_end(&*imp.menu_button);
+            imp.headerbar.pack_end(&*imp.fullscreen_button);
+            imp.fullscreen_button
+                .set_icon_name("view-fullscreen-symbolic");
+        }
+
+        self.set_fullscreened(fullscreen);
     }
 
     fn pick_file(&self) {
