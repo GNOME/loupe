@@ -91,13 +91,6 @@ mod imp {
         fn properties() -> &'static [glib::ParamSpec] {
             static PROPERTIES: Lazy<Vec<glib::ParamSpec>> = Lazy::new(|| {
                 vec![
-                    glib::ParamSpec::new_object(
-                        "popover-menu-model",
-                        "Popover Menu Model",
-                        "The menu model for the menu button",
-                        gio::MenuModel::static_type(),
-                        glib::ParamFlags::READWRITE,
-                    ),
                     glib::ParamSpec::new_string(
                         "filename",
                         "Filename",
@@ -140,26 +133,8 @@ mod imp {
 
         fn property(&self, _obj: &Self::Type, _id: usize, psec: &glib::ParamSpec) -> glib::Value {
             match psec.name() {
-                "popover-menu-model" => self.popover_menu_model.borrow().to_value(),
                 "filename" => self.filename.borrow().to_value(),
                 "controls" => self.controls.to_value(),
-                _ => unimplemented!(),
-            }
-        }
-
-        fn set_property(
-            &self,
-            _obj: &Self::Type,
-            _id: usize,
-            value: &glib::Value,
-            psec: &glib::ParamSpec,
-        ) {
-            match psec.name() {
-                "popover-menu-model" => {
-                    let model: Option<gio::MenuModel> = value.get().unwrap();
-                    self.popover.set_menu_model(model.as_ref());
-                    *self.popover_menu_model.borrow_mut() = model;
-                }
                 _ => unimplemented!(),
             }
         }

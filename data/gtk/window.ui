@@ -13,7 +13,6 @@
         <property name="modal">false</property>
         <property name="flap">
           <object class="GtkHeaderBar" id="headerbar">
-            <property name="css-classes">titlebar</property>
             <property name="show_title_buttons" bind-source="IvWindow" bind-property="fullscreened" bind-flags="sync-create|invert-boolean"/>
             <binding name="opacity">
               <lookup type="GtkWidget" name="opacity">
@@ -48,9 +47,7 @@
               </object>
             </child>
             <child>
-              <object class="IvImageView" id="image_view">
-                <property name="popover-menu-model">image_menu</property>
-              </object>
+              <object class="IvImageView" id="image_view"/>
             </child>
           </object>
         </property>
@@ -101,30 +98,6 @@
       <item>
         <attribute name="label" translatable="yes">_About Image Viewer</attribute>
         <attribute name="action">app.about</attribute>
-      </item>
-    </section>
-  </menu>
-  <menu id="image_menu">
-    <section>
-      <item>
-        <attribute name="label" translatable="yes">_Open With…</attribute>
-        <attribute name="action">win.open-with</attribute>
-      </item>
-      <!--<item>
-        <attribute name="label" translatable="yes">_Display On…</attribute>
-        <attribute name="action">win.display-on</attribute>
-      </item>-->
-      <item>
-        <attribute name="label" translatable="yes">_Print…</attribute>
-        <attribute name="action">win.print</attribute>
-      </item>
-      <!--<item>
-        <attribute name="label" translatable="yes">_Rotate</attribute>
-        <attribute name="action">win.rotate-image</attribute>
-      </item>-->
-      <item>
-        <attribute name="label" translatable="yes">_Set As Wallpaper</attribute>
-        <attribute name="action">win.set-wallpaper</attribute>
       </item>
     </section>
   </menu>

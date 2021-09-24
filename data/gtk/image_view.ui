@@ -58,6 +58,7 @@
             <child>
               <object class="GtkPopoverMenu" id="popover">
                 <property name="has-arrow">False</property>
+                <property name="menu-model">image_menu</property>
               </object>
             </child>
           </object>
@@ -84,4 +85,28 @@
       <class name="image-view"/>
     </style>
   </template>
+  <menu id="image_menu">
+    <section>
+      <item>
+        <attribute name="label" translatable="yes">_Open With…</attribute>
+        <attribute name="action">win.open-with</attribute>
+      </item>
+      <!--<item>
+        <attribute name="label" translatable="yes">_Display On…</attribute>
+        <attribute name="action">win.display-on</attribute>
+      </item>-->
+      <item>
+        <attribute name="label" translatable="yes">_Print…</attribute>
+        <attribute name="action">win.print</attribute>
+      </item>
+      <!--<item>
+        <attribute name="label" translatable="yes">_Rotate</attribute>
+        <attribute name="action">win.rotate-image</attribute>
+      </item>-->
+      <item>
+        <attribute name="label" translatable="yes">_Set As Wallpaper</attribute>
+        <attribute name="action">win.set-wallpaper</attribute>
+      </item>
+    </section>
+  </menu>
 </interface>
