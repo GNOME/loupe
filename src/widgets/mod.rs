@@ -17,16 +17,6 @@
 //
 // SPDX-License-Identifier: GPL-3.0-or-later
 
-use glib::prelude::*;
-
 mod image_view;
 
 pub use image_view::IvImageView;
-
-pub fn init() {
-    // For each widget we use in a template,
-    // we need to ensure the type is set up.
-    // This is equivalent to doing g_type_ensure ()
-    // in C.
-    IvImageView::static_type();
-}

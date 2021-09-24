@@ -31,7 +31,6 @@ use application::IvApplication;
 fn main() {
     gtk::init().expect("Failed to initialize GTK.");
     libadwaita::init();
-    widgets::init();
     pretty_env_logger::init();
 
     setlocale(LocaleCategory::LcAll, "");
