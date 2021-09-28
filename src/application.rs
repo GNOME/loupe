@@ -23,6 +23,7 @@ use glib::subclass::prelude::*;
 use gtk::prelude::*;
 use gtk::subclass::prelude::*;
 use gtk_macros::*;
+use libadwaita::prelude::*;
 use libadwaita::subclass::prelude::*;
 
 use crate::config;
@@ -62,8 +63,7 @@ mod imp {
             self.parent_constructed(obj);
 
             // Force dark theme
-            self.gtk_settings
-                .set_gtk_application_prefer_dark_theme(true);
+            obj.style_manager().set_color_scheme(libadwaita::ColorScheme::PreferDark);
 
             // Set up the actions
             obj.setup_actions();
