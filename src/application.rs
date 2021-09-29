@@ -63,7 +63,8 @@ mod imp {
             self.parent_constructed(obj);
 
             // Force dark theme
-            obj.style_manager().set_color_scheme(libadwaita::ColorScheme::PreferDark);
+            obj.style_manager()
+                .set_color_scheme(libadwaita::ColorScheme::PreferDark);
 
             // Set up the actions
             obj.setup_actions();
