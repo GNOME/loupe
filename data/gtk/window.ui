@@ -40,7 +40,7 @@
             <child>
               <object class="AdwStatusPage" id="status_page">
                 <property name="title" translatable="yes">Image Viewer</property>
-                <property name="description" translatable="yes">Click Here Or Drag An Image To View</property>
+                <property name="description" translatable="yes">Click here or drag an image here to open a file.</property>
                 <child>
                   <object class="GtkGestureClick" id="open_gesture"/>
                 </child>
