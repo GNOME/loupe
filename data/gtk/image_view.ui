@@ -24,6 +24,7 @@
                 <property name="margin-end">18</property>
                 <property name="icon-name">go-previous-symbolic</property>
                 <property name="action-name">iv.previous</property>
+                <property name="tooltip-text" translatable="yes">Previous Image</property>
                 <style>
                   <class name="osd"/>
                   <class name="circular"/>
@@ -39,6 +40,7 @@
                 <property name="margin-end">18</property>
                 <property name="icon-name">go-next-symbolic</property>
                 <property name="action-name">iv.next</property>
+                <property name="tooltip-text" translatable="yes">Next Image</property>
                 <style>
                   <class name="osd"/>
                   <class name="circular"/>

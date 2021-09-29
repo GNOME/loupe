@@ -23,12 +23,14 @@
               <object class="GtkMenuButton" id="menu_button">
                 <property name="icon-name">open-menu-symbolic</property>
                 <property name="menu-model">primary_menu</property>
+                <property name="tooltip-text" translatable="yes">Primary Menu</property>
               </object>
             </child>
             <child type="end">
               <object class="GtkButton" id="fullscreen_button">
                 <property name="icon-name">view-fullscreen-symbolic</property>
                 <property name="action-name">win.toggle-fullscreen</property>
+                <property name="tooltip-text" translatable="yes">Toggle Fullscreen</property>
               </object>
             </child>
           </object>
