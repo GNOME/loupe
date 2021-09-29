@@ -15,7 +15,7 @@
         "--device=dri",
         "--filesystem=host",
         "--env=RUST_BACKTRACE=1",
-        "--env=RUST_LOG=gnome_image_viewer=debug"
+        "--env=RUST_LOG=loupe=debug"
     ],
     "build-options" : {
         "append-path" : "/usr/lib/sdk/rust-stable/bin",
