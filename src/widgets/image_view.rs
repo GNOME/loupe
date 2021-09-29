@@ -309,10 +309,12 @@ impl IvImageView {
             op.set_n_pages(1);
         });
 
+        // FIXME: Rework all of this after reading https://cairographics.org/manual/cairo-Image-Surfaces.html
+        // Since I don't know cairo; See also eog-print.c
         operation.connect_draw_page(clone!(@weak pb => move |_, ctx, _| {
             let cr = ctx.cairo_context().expect("No cairo context for print context");
             cr.set_source_pixbuf(&pb, 0.0, 0.0);
-            cr.paint();
+            let _ = cr.paint();
         }));
 
         log::debug!("Running print operation...");
