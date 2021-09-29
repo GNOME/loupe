@@ -356,7 +356,7 @@ async fn set_wallpaper(uri: String) {
     if let Err(e) = wallpaper::set_from_uri(
         &WindowIdentifier::default(),
         &uri,
-        false,
+        true,
         wallpaper::SetOn::Background,
     )
     .await
