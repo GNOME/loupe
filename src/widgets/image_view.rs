@@ -36,7 +36,6 @@ use crate::util;
 
 mod imp {
     use super::*;
-    use glib::subclass;
 
     #[derive(Debug, Default, CompositeTemplate)]
     #[template(resource = "/org/gnome/Loupe/gtk/image_view.ui")]
@@ -58,6 +57,7 @@ mod imp {
 
         pub directory: RefCell<Option<String>>,
         pub filename: RefCell<Option<String>>,
+        pub uri: RefCell<Option<String>>,
         // Path of filenames
         pub directory_pictures: RefCell<Vec<String>>,
         // Cell<T> allows for interior mutability of primitive types
@@ -111,26 +111,6 @@ mod imp {
             PROPERTIES.as_ref()
         }
 
-        fn signals() -> &'static [glib::subclass::Signal] {
-            static SIGNALS: Lazy<Vec<glib::subclass::Signal>> = Lazy::new(|| {
-                vec![subclass::Signal::builder(
-                    // Called when the dimensions of the image
-                    // have been found.
-                    "dimensions-loaded",
-                    &[
-                        // The width of the image
-                        i32::static_type().into(),
-                        // The height of the image
-                        i32::static_type().into(),
-                    ],
-                    glib::Type::UNIT.into(),
-                )
-                .build()]
-            });
-
-            SIGNALS.as_ref()
-        }
-
         fn property(&self, _obj: &Self::Type, _id: usize, psec: &glib::ParamSpec) -> glib::Value {
             match psec.name() {
                 "filename" => self.filename.borrow().to_value(),
@@ -171,23 +151,30 @@ glib::wrapper! {
 }
 
 impl IvImageView {
-    pub fn set_image_from_file(&self, file: &gio::File) {
+    pub fn set_image_from_file(&self, file: &gio::File) -> anyhow::Result<(i32, i32)> {
         let imp = imp::IvImageView::from_instance(&self);
 
         if let Some(current_file) = imp.picture.file() {
             if current_file.path().as_deref() == file.path().as_deref() {
-                return;
+                return Err(anyhow::Error::msg(
+                    "Image is the same as the previous image; Doing nothing.",
+                ));
             }
         }
 
         self.set_parent_from_file(file);
-        imp.picture.set_file(Some(file));
+        let texture = gdk::Texture::from_file(file)?;
+        imp.picture.set_paintable(Some(&texture));
+        *imp.uri.borrow_mut() = Some(file.uri().to_string());
         self.notify("filename");
         self.update_action_state();
 
-        if let Err(e) = self.load_dimensions_from_file(file) {
-            log::error!("Could not load image dimensions: {}", e);
-        };
+        log::debug!(
+            "Image dimensions: {} x {}",
+            texture.width(),
+            texture.height()
+        );
+        Ok((texture.width(), texture.height()))
     }
 
     fn set_parent_from_file(&self, file: &gio::File) {
@@ -251,17 +238,6 @@ impl IvImageView {
         }
     }
 
-    fn load_dimensions_from_file(&self, file: &gio::File) -> anyhow::Result<()> {
-        let pb = file.path().context("No path for current file")?;
-        let (_, width, height) =
-            gdk_pixbuf::Pixbuf::file_info(&pb.as_path()).context("Could not get file info")?;
-
-        log::debug!("Image dimensions: {} x {}", width, height);
-        let _ = self.emit_by_name("dimensions-loaded", &[&width, &height]);
-
-        Ok(())
-    }
-
     fn update_image(&self) {
         let imp = imp::IvImageView::from_instance(&self);
 
@@ -270,8 +246,10 @@ impl IvImageView {
             imp.directory.borrow().as_ref().unwrap(),
             &imp.directory_pictures.borrow()[imp.index.get()]
         );
+
         let file = gio::File::for_path(path);
         imp.picture.set_file(Some(&file));
+        *imp.uri.borrow_mut() = Some(file.uri().to_string());
         *imp.filename.borrow_mut() = util::get_file_display_name(&file);
         self.notify("filename");
         self.update_action_state();
@@ -311,9 +289,12 @@ impl IvImageView {
     pub fn print(&self) -> anyhow::Result<()> {
         let imp = imp::IvImageView::from_instance(&self);
 
-        let file = imp.picture.file().context("No file to print")?;
         let operation = gtk::PrintOperation::new();
-        let path = file.path().context("No path for current file")?;
+        let path = &format!(
+            "{}/{}",
+            imp.directory.borrow().as_ref().unwrap(),
+            &imp.directory_pictures.borrow()[imp.index.get()]
+        );
         let pb = gdk_pixbuf::Pixbuf::from_file(path)?;
 
         let setup = gtk::PageSetup::default();
@@ -346,8 +327,7 @@ impl IvImageView {
 
     pub fn uri(&self) -> Option<String> {
         let imp = imp::IvImageView::from_instance(&self);
-        let file = imp.picture.file()?;
-        Some(file.uri().to_string())
+        imp.uri.borrow().to_owned()
     }
 
     pub fn filename(&self) -> Option<String> {
@@ -367,22 +347,6 @@ impl IvImageView {
 
         imp.popover.set_pointing_to(&rect);
         imp.popover.popup();
-    }
-
-    pub fn connect_dimensions_loaded<F: Fn(&Self, i32, i32) + 'static>(
-        &self,
-        f: F,
-    ) -> glib::SignalHandlerId {
-        self.connect_local("dimensions-loaded", true, move |values| {
-            let view = values[0].get::<Self>().unwrap();
-            let width = values[1].get::<i32>().unwrap();
-            let height = values[2].get::<i32>().unwrap();
-
-            f(&view, width, height);
-
-            None
-        })
-        .unwrap()
     }
 }
 

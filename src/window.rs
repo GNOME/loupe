@@ -134,12 +134,6 @@ mod imp {
                     obj.pick_file();
                 }));
 
-            self.image_view.connect_dimensions_loaded(
-                clone!(@weak obj => move |_, width, height| {
-                    obj.resize_from_dimensions(width, height);
-                }),
-            );
-
             // Property bindings didn't seem to work here
             self.image_view.connect_notify_local(
                 Some("filename"),
@@ -259,12 +253,15 @@ impl IvWindow {
         let imp = imp::IvWindow::from_instance(self);
 
         log::debug!("Loading file: {}", file.uri().to_string());
-
-        imp.image_view.set_image_from_file(file);
-        imp.stack.set_visible_child(&*imp.image_view);
-        imp.image_view.grab_focus();
-
-        self.set_actions_enabled(true);
+        match imp.image_view.set_image_from_file(file) {
+            Ok((width, height)) => {
+                self.resize_from_dimensions(width, height);
+                imp.stack.set_visible_child(&*imp.image_view);
+                imp.image_view.grab_focus();
+                self.set_actions_enabled(true)
+            }
+            Err(e) => log::error!("Could not load file: {}", e.to_string()),
+        }
     }
 
     pub fn set_actions_enabled(&self, enabled: bool) {
