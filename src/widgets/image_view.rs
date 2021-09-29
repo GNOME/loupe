@@ -134,13 +134,7 @@ mod imp {
         }
     }
 
-    impl WidgetImpl for IvImageView {
-        fn size_allocate(&self, widget: &Self::Type, width: i32, height: i32, baseline: i32) {
-            self.parent_size_allocate(widget, width, height, baseline);
-            self.popover.present();
-        }
-    }
-
+    impl WidgetImpl for IvImageView {}
     impl BinImpl for IvImageView {}
 }
 
