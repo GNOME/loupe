@@ -183,7 +183,7 @@ impl IvApplication {
                 String::from("Jakub Steiner"),
                 String::from("Tobias Bernard"),
             ])
-            .copyright("© 2020 The GNOME Project")
+            .copyright("© 2021 The GNOME Project")
             .license_type(gtk::License::Gpl30)
             .program_name("Image Viewer")
             .logo_icon_name(config::APP_ID)
