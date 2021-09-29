@@ -53,4 +53,10 @@ subdir('help')
 subdir('src')
 subdir('po')
 
+# Pre-commit hook for rust formatting
+if get_option('profile') == 'development'
+    message('Setting up git pre-commit hook..')
+    run_command('cp', '-f', 'hooks/pre-commit.hook', '.git/hooks/pre-commit')
+endif
+
 meson.add_install_script('build-aux/meson/postinstall.py')
