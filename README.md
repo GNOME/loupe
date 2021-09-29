@@ -28,6 +28,9 @@ used GNOME Builder to build it, clicking the bar at the top window will
 open a submenu with "Export Bundle". This will create a flatpak bundle, 
 which can be installed on any system that supports flatpak.
 
+**In order for the Loupe flatpak to be able to read the directory images are installed in, you must install a bundle.**
+Once you have a bundle installed, development builds will work properly.
+
 ## Conduct
 
 Loupe operates under the GNOME Code Of Conduct. See the full
