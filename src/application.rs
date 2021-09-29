@@ -110,7 +110,7 @@ impl IvApplication {
         glib::Object::new(&[
             ("application-id", &config::APP_ID.to_string()),
             ("flags", &gio::ApplicationFlags::HANDLES_OPEN),
-            ("resource-base-path", &"/org/gnome/ImageViewer/".to_string()),
+            ("resource-base-path", &"/org/gnome/Loupe/".to_string()),
         ])
         .unwrap()
     }
@@ -198,6 +198,6 @@ impl IvApplication {
     }
 
     pub fn show_help(&self) {
-        gtk::show_uri(self.active_window().as_ref(), "help:gnome-image-viewer", 0);
+        gtk::show_uri(self.active_window().as_ref(), "help:loupe", 0);
     }
 }

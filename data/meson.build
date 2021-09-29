@@ -1,7 +1,7 @@
 desktop_file = i18n.merge_file(
   input: configure_file(
-    input: 'org.gnome.ImageViewer.desktop.in.in',
-    output: 'org.gnome.ImageViewer.desktop.in',
+    input: 'org.gnome.Loupe.desktop.in.in',
+    output: 'org.gnome.Loupe.desktop.in',
     configuration: conf,
   ),
   output: '@0@.desktop'.format(app_id),
@@ -12,7 +12,7 @@ desktop_file = i18n.merge_file(
 )
 
 configure_file(
-    input: 'org.gnome.ImageViewer.service.in',
+    input: 'org.gnome.Loupe.service.in',
     output: '@0@.service'.format(app_id),
     configuration: conf,
     install: true,
@@ -28,8 +28,8 @@ endif
 
 appstream_file = i18n.merge_file(
   input: configure_file(
-    input: 'org.gnome.ImageViewer.appdata.xml.in.in',
-    output: 'org.gnome.ImageViewer.appdata.xml.in',
+    input: 'org.gnome.Loupe.appdata.xml.in.in',
+    output: 'org.gnome.Loupe.appdata.xml.in',
     configuration: conf,
   ),
   output: '@0@.appdata.xml'.format(app_id),
@@ -45,7 +45,7 @@ appstream_file = i18n.merge_file(
 #   )
 # endif
 
-install_data('org.gnome.ImageViewer.gschema.xml',
+install_data('org.gnome.Loupe.gschema.xml',
   install_dir: join_paths(iv_datadir, 'glib-2.0', 'schemas')
 )
 
@@ -56,8 +56,8 @@ if compile_schemas.found()
   )
 endif
 
-gnome.compile_resources('gnome-image-viewer',
-  'gnome_image_viewer.gresource.xml',
+gnome.compile_resources('loupe',
+  'loupe.gresource.xml',
   gresource_bundle: true,
   install: true,
   install_dir: iv_pkgdatadir,

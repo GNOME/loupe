@@ -46,7 +46,7 @@ mod imp {
     // we'd need to have a `new()` function in the
     // `impl ObjectSubclass for $TYPE` section.
     #[derive(Default, Debug, CompositeTemplate)]
-    #[template(resource = "/org/gnome/ImageViewer/gtk/window.ui")]
+    #[template(resource = "/org/gnome/Loupe/gtk/window.ui")]
     pub struct IvWindow {
         // Template children are used with the
         // TemplateChild<T> wrapper, where T is the
@@ -121,7 +121,7 @@ mod imp {
                 .set_icon_name(Some(&format!("{}-symbolic", config::APP_ID)));
 
             // Set help overlay
-            let builder = gtk::Builder::from_resource("/org/gnome/ImageViewer/gtk/help_overlay.ui");
+            let builder = gtk::Builder::from_resource("/org/gnome/Loupe/gtk/help_overlay.ui");
             let help_overlay = builder.object("help_overlay").unwrap();
             obj.set_help_overlay(Some(&help_overlay));
 

@@ -1,4 +1,4 @@
-project('gnome-image-viewer',
+project('loupe',
           version: '42.alpha',
     meson_version: '>= 0.50.0',
   default_options: [ 'warning_level=2',
@@ -32,7 +32,7 @@ if get_option('profile') == 'development'
   endif
 endif
 
-app_id = 'org.gnome.ImageViewer@0@'.format(profile)
+app_id = 'org.gnome.Loupe@0@'.format(profile)
 iv_version = meson.project_version() + version_suffix
 
 cargo_sources = files(

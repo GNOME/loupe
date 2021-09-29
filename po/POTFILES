@@ -1,4 +1,4 @@
-data/org.gnome.ImageViewer.desktop.in
-data/org.gnome.ImageViewer.appdata.xml.in
-data/org.gnome.ImageViewer.gschema.xml
+data/org.gnome.Loupe.desktop.in
+data/org.gnome.Loupe.appdata.xml.in
+data/org.gnome.Loupe.gschema.xml
 src/window.ui

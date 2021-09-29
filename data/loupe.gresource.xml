@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <gresources>
-  <gresource prefix="/org/gnome/ImageViewer">
+  <gresource prefix="/org/gnome/Loupe">
     <file compressed="true" preprocess="xml-stripblanks">gtk/help_overlay.ui</file>
     <file compressed="true" preprocess="xml-stripblanks">gtk/window.ui</file>
     <file compressed="true" preprocess="xml-stripblanks">gtk/image_view.ui</file>

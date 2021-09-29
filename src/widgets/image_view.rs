@@ -39,7 +39,7 @@ mod imp {
     use glib::subclass;
 
     #[derive(Debug, Default, CompositeTemplate)]
-    #[template(resource = "/org/gnome/ImageViewer/gtk/image_view.ui")]
+    #[template(resource = "/org/gnome/Loupe/gtk/image_view.ui")]
     pub struct IvImageView {
         #[template_child]
         pub picture: TemplateChild<gtk::Picture>,

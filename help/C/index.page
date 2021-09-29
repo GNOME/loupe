@@ -4,10 +4,10 @@
       id="index">
 
   <info>
-    <desc>Help for the GNOME Image Viewer.</desc>
+    <desc>Help for Loupe.</desc>
     <title type='link' role="trail"><media its:translate="no" type="image" src="figures/org.gnome.eog-symbolic.svg"/></title>
-    <title type='link'>GNOME Image Viewer</title>
-    <title type='text'>GNOME Image Viewer</title>
+    <title type='link'>Loupe</title>
+    <title type='text'>Loupe</title>
     <credit type="author copyright">
       <name>Christopher Davis</name>
       <email>christopherdavis@gnome.org</email>
@@ -15,5 +15,5 @@
     </credit>
   </info>
 
-<title>GNOME Image Viewer</title>
+<title>Loupe</title>
 </page>

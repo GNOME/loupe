@@ -1,4 +1,4 @@
-# GNOME Image Viewer
+# Loupe
 
 A simple image viewer application written with GTK4 and Rust.
 
@@ -16,8 +16,8 @@ GNOME Builder is the environment used for developing this application. It can us
 recommended you use it.
 
 1. Download [GNOME Builder](https://flathub.org/apps/details/org.gnome.Builder).
-2. In Builder, click the "Clone Repository" button at the bottom, using `git@gitlab.gnome.org/BrainBlasted/gnome-image-viewer.git`
-or `https://gitlab.gnome.org/BrainBlasted/gnome-image-viewer.git` as the URL.
+2. In Builder, click the "Clone Repository" button at the bottom, using `git@gitlab.gnome.org/BrainBlasted/loupe.git`
+or `https://gitlab.gnome.org/BrainBlasted/loupe.git` as the URL.
 3. Click the build button at the top once the project is loaded.
 
 
@@ -30,5 +30,5 @@ which can be installed on any system that supports flatpak.
 
 ## Conduct
 
-GNOME Image Viewer operates under the GNOME Code Of Conduct. See the full
+Loupe operates under the GNOME Code Of Conduct. See the full
 text of the Code Of Conduct [here](CODE_OF_CONDUCT.md).

@@ -34,10 +34,10 @@ fn main() {
     pretty_env_logger::init();
 
     setlocale(LocaleCategory::LcAll, "");
-    bindtextdomain("gnome-image-viewer", config::LOCALEDIR).unwrap();
-    textdomain("gnome-image-viewer").unwrap();
+    bindtextdomain("loupe", config::LOCALEDIR).unwrap();
+    textdomain("loupe").unwrap();
 
-    let res = gio::Resource::load(config::PKGDATADIR.to_owned() + "/gnome-image-viewer.gresource")
+    let res = gio::Resource::load(config::PKGDATADIR.to_owned() + "/loupe.gresource")
         .expect("Could not load resources");
     gio::resources_register(&res);
 

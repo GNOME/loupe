@@ -1,1 +1,1 @@
-i18n.gettext('gnome-image-viewer', preset: 'glib')
+i18n.gettext('loupe', preset: 'glib')

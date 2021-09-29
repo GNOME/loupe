@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=Image Viewer
-Exec=gnome-image-viewer %U
+Exec=loupe %U
 Icon=@APP_ID@
 DBusActivatable=true
 Terminal=false

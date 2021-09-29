@@ -1,12 +1,12 @@
 {
-    "app-id" : "org.gnome.ImageViewer.Devel",
+    "app-id" : "org.gnome.Loupe.Devel",
     "runtime" : "org.gnome.Platform",
     "runtime-version" : "master",
     "sdk" : "org.gnome.Sdk",
     "sdk-extensions" : [
         "org.freedesktop.Sdk.Extension.rust-stable"
     ],
-    "command" : "gnome-image-viewer",
+    "command" : "loupe",
     "finish-args" : [
         "--share=network",
         "--share=ipc",
@@ -23,7 +23,7 @@
             "--share=network"
         ],
         "env" : {
-            "CARGO_HOME" : "/run/build/gnome-image-viewer/cargo"
+            "CARGO_HOME" : "/run/build/loupe/cargo"
         }
     },
     "cleanup" : [
@@ -50,7 +50,7 @@
             ]
         },
         {
-            "name" : "gnome-image-viewer",
+            "name" : "loupe",
             "builddir" : true,
             "buildsystem" : "meson",
             "config-opts": [
@@ -59,7 +59,7 @@
             "sources" : [
                 {
                     "type" : "git",
-                    "url" : "https://gitlab.gnome.org/BrainBlasted/gnome-image-viewer.git"
+                    "url" : "https://gitlab.gnome.org/BrainBlasted/loupe.git"
                 }
             ]
         }
