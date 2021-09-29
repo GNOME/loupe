@@ -22,7 +22,6 @@ use glib::clone;
 use glib::subclass::prelude::*;
 use gtk::prelude::*;
 use gtk::subclass::prelude::*;
-use gtk::subclass::widget::WidgetImplExt;
 use gtk::CompositeTemplate;
 use libadwaita::subclass::prelude::*;
 
