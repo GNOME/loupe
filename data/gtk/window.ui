@@ -9,6 +9,8 @@
       <object class="AdwFlap" id="flap">
         <property name="orientation">vertical</property>
         <property name="fold-policy">never</property>
+        <property name="swipe-to-open">False</property>
+        <property name="swipe-to-close">False</property>
         <property name="locked">true</property>
         <property name="modal">false</property>
         <property name="flap">
