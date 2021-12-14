@@ -8,7 +8,7 @@
       <object class="GtkOverlay">
         <property name="hexpand">True</property>
         <child>
-          <object class="GtkPicture" id="picture">
+          <object class="IvImage" id="picture">
             <property name="halign">center</property>
             <property name="valign">center</property>
           </object>

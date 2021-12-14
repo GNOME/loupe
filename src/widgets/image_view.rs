@@ -32,6 +32,7 @@ use once_cell::sync::Lazy;
 use std::cell::{Cell, RefCell};
 
 use crate::util;
+use crate::widgets::IvImage;
 
 mod imp {
     use super::*;
@@ -40,7 +41,7 @@ mod imp {
     #[template(resource = "/org/gnome/Loupe/gtk/image_view.ui")]
     pub struct IvImageView {
         #[template_child]
-        pub picture: TemplateChild<gtk::Picture>,
+        pub picture: TemplateChild<IvImage>,
         #[template_child]
         pub controls: TemplateChild<gtk::Box>,
         #[template_child]
@@ -156,18 +157,16 @@ impl IvImageView {
         }
 
         self.set_parent_from_file(file);
-        let texture = gdk::Texture::from_file(file)?;
-        imp.picture.set_paintable(Some(&texture));
+        imp.picture.set_file(file);
         *imp.uri.borrow_mut() = Some(file.uri().to_string());
         self.notify("filename");
         self.update_action_state();
 
-        log::debug!(
-            "Image dimensions: {} x {}",
-            texture.width(),
-            texture.height()
-        );
-        Ok((texture.width(), texture.height()))
+        let width = imp.picture.image_width();
+        let height = imp.picture.image_height();
+
+        log::debug!("Image dimensions: {} x {}", width, height);
+        Ok((width, height))
     }
 
     fn set_parent_from_file(&self, file: &gio::File) {
@@ -241,7 +240,7 @@ impl IvImageView {
         );
 
         let file = gio::File::for_path(path);
-        imp.picture.set_file(Some(&file));
+        imp.picture.set_file(&file);
         *imp.uri.borrow_mut() = Some(file.uri().to_string());
         *imp.filename.borrow_mut() = util::get_file_display_name(&file);
         self.notify("filename");

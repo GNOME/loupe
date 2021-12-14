@@ -14,6 +14,7 @@ run_command(
 
 rust_sources = files(
   'widgets/image_view.rs',
+  'widgets/image.rs',
   'widgets/mod.rs',
   'application.rs',
   'config.rs',
