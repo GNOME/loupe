@@ -17,14 +17,11 @@
 //
 // SPDX-License-Identifier: GPL-3.0-or-later
 
-use gio::prelude::*;
+use adw::prelude::*;
+use adw::subclass::prelude::*;
 use glib::clone;
-use glib::subclass::prelude::*;
-use gtk::prelude::*;
 use gtk::subclass::prelude::*;
 use gtk_macros::*;
-use libadwaita::prelude::*;
-use libadwaita::subclass::prelude::*;
 
 use crate::config;
 use crate::window::LpWindow;
@@ -46,7 +43,7 @@ mod imp {
     impl ObjectSubclass for LpApplication {
         const NAME: &'static str = "LpApplication";
         type Type = super::LpApplication;
-        type ParentType = libadwaita::Application;
+        type ParentType = adw::Application;
 
         // Initialize with default values
         fn new() -> Self {
@@ -64,7 +61,7 @@ mod imp {
 
             // Force dark theme
             obj.style_manager()
-                .set_color_scheme(libadwaita::ColorScheme::PreferDark);
+                .set_color_scheme(adw::ColorScheme::PreferDark);
 
             // Set up the actions
             obj.setup_actions();
@@ -100,7 +97,7 @@ mod imp {
 // LpApplication without casting.
 glib::wrapper! {
     pub struct LpApplication(ObjectSubclass<imp::LpApplication>)
-        @extends gio::Application, gtk::Application, libadwaita::Application,
+        @extends gio::Application, gtk::Application, adw::Application,
         @implements gio::ActionGroup, gio::ActionMap;
 }
 

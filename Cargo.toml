@@ -15,7 +15,6 @@ gdk-pixbuf = "0.14"
 gio = "0.14"
 glib = "0.14"
 cairo-rs = "0.14"
-libadwaita = "0.1.0-alpha-6"
 
 [dependencies.ashpd]
 git = "https://github.com/bilelmoussaoui/ashpd"
@@ -28,6 +27,10 @@ version = "0.3"
 [dependencies.gdk]
 package = "gdk4"
 version = "0.3"
+
+[dependencies.adw]
+package = "libadwaita"
+version = "0.1.0-alpha-6"
 
 [dependencies.gettext-rs]
 version = "0.7.0"

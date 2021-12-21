@@ -30,7 +30,7 @@ use application::LpApplication;
 
 fn main() {
     gtk::init().expect("Failed to initialize GTK.");
-    libadwaita::init();
+    adw::init();
     pretty_env_logger::init();
 
     setlocale(LocaleCategory::LcAll, "");

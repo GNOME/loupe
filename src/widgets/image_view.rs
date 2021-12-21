@@ -17,13 +17,12 @@
 //
 // SPDX-License-Identifier: GPL-3.0-or-later
 
+use adw::subclass::prelude::*;
 use gdk::prelude::*;
 use glib::clone;
-use glib::subclass::prelude::*;
 use gtk::prelude::*;
 use gtk::subclass::prelude::*;
 use gtk::CompositeTemplate;
-use libadwaita::subclass::prelude::*;
 
 use anyhow::Context;
 use ashpd::desktop::wallpaper;
@@ -68,7 +67,7 @@ mod imp {
     impl ObjectSubclass for LpImageView {
         const NAME: &'static str = "LpImageView";
         type Type = super::LpImageView;
-        type ParentType = libadwaita::Bin;
+        type ParentType = adw::Bin;
 
         fn class_init(klass: &mut Self::Class) {
             Self::bind_template(klass);
@@ -140,7 +139,7 @@ mod imp {
 
 glib::wrapper! {
     pub struct LpImageView(ObjectSubclass<imp::LpImageView>)
-        @extends gtk::Widget, libadwaita::Bin,
+        @extends gtk::Widget, adw::Bin,
         @implements gtk::Buildable, gtk::ConstraintTarget, gtk::Orientable;
 }
 
