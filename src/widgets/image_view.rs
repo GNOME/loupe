@@ -32,16 +32,16 @@ use once_cell::sync::Lazy;
 use std::cell::{Cell, RefCell};
 
 use crate::util;
-use crate::widgets::IvImage;
+use crate::widgets::LpImage;
 
 mod imp {
     use super::*;
 
     #[derive(Debug, Default, CompositeTemplate)]
     #[template(resource = "/org/gnome/Loupe/gtk/image_view.ui")]
-    pub struct IvImageView {
+    pub struct LpImageView {
         #[template_child]
-        pub picture: TemplateChild<IvImage>,
+        pub picture: TemplateChild<LpImage>,
         #[template_child]
         pub controls: TemplateChild<gtk::Box>,
         #[template_child]
@@ -65,9 +65,9 @@ mod imp {
     }
 
     #[glib::object_subclass]
-    impl ObjectSubclass for IvImageView {
-        const NAME: &'static str = "IvImageView";
-        type Type = super::IvImageView;
+    impl ObjectSubclass for LpImageView {
+        const NAME: &'static str = "LpImageView";
+        type Type = super::LpImageView;
         type ParentType = libadwaita::Bin;
 
         fn class_init(klass: &mut Self::Class) {
@@ -87,7 +87,7 @@ mod imp {
         }
     }
 
-    impl ObjectImpl for IvImageView {
+    impl ObjectImpl for LpImageView {
         fn properties() -> &'static [glib::ParamSpec] {
             static PROPERTIES: Lazy<Vec<glib::ParamSpec>> = Lazy::new(|| {
                 vec![
@@ -134,19 +134,19 @@ mod imp {
         }
     }
 
-    impl WidgetImpl for IvImageView {}
-    impl BinImpl for IvImageView {}
+    impl WidgetImpl for LpImageView {}
+    impl BinImpl for LpImageView {}
 }
 
 glib::wrapper! {
-    pub struct IvImageView(ObjectSubclass<imp::IvImageView>)
+    pub struct LpImageView(ObjectSubclass<imp::LpImageView>)
         @extends gtk::Widget, libadwaita::Bin,
         @implements gtk::Buildable, gtk::ConstraintTarget, gtk::Orientable;
 }
 
-impl IvImageView {
+impl LpImageView {
     pub fn set_image_from_file(&self, file: &gio::File) -> anyhow::Result<(i32, i32)> {
-        let imp = imp::IvImageView::from_instance(&self);
+        let imp = imp::LpImageView::from_instance(&self);
 
         if let Some(current_file) = imp.picture.file() {
             if current_file.path().as_deref() == file.path().as_deref() {
@@ -170,7 +170,7 @@ impl IvImageView {
     }
 
     fn set_parent_from_file(&self, file: &gio::File) {
-        let imp = imp::IvImageView::from_instance(&self);
+        let imp = imp::LpImageView::from_instance(&self);
 
         if let Some(parent) = file.parent() {
             let parent_path = parent.path().map(|p| p.to_str().unwrap().to_string());
@@ -231,7 +231,7 @@ impl IvImageView {
     }
 
     fn update_image(&self) {
-        let imp = imp::IvImageView::from_instance(&self);
+        let imp = imp::LpImageView::from_instance(&self);
 
         let path = &format!(
             "{}/{}",
@@ -248,21 +248,21 @@ impl IvImageView {
     }
 
     pub fn next(&self) {
-        let imp = imp::IvImageView::from_instance(&self);
+        let imp = imp::LpImageView::from_instance(&self);
         // TODO: Replace with `Cell::update()` once stabilized
         imp.index.set(imp.index.get() + 1);
         self.update_image();
     }
 
     pub fn previous(&self) {
-        let imp = imp::IvImageView::from_instance(&self);
+        let imp = imp::LpImageView::from_instance(&self);
         // TODO: Replace with `Cell::update()` once stabilized
         imp.index.set(imp.index.get() - 1);
         self.update_image();
     }
 
     pub fn update_action_state(&self) {
-        let imp = imp::IvImageView::from_instance(&self);
+        let imp = imp::LpImageView::from_instance(&self);
         let index = imp.index.get();
         self.action_set_enabled("iv.next", index < imp.directory_pictures.borrow().len() - 1);
         self.action_set_enabled("iv.previous", index > 0);
@@ -279,7 +279,7 @@ impl IvImageView {
     }
 
     pub fn print(&self) -> anyhow::Result<()> {
-        let imp = imp::IvImageView::from_instance(&self);
+        let imp = imp::LpImageView::from_instance(&self);
 
         let operation = gtk::PrintOperation::new();
         let path = &format!(
@@ -320,17 +320,17 @@ impl IvImageView {
     }
 
     pub fn uri(&self) -> Option<String> {
-        let imp = imp::IvImageView::from_instance(&self);
+        let imp = imp::LpImageView::from_instance(&self);
         imp.uri.borrow().to_owned()
     }
 
     pub fn filename(&self) -> Option<String> {
-        let imp = imp::IvImageView::from_instance(&self);
+        let imp = imp::LpImageView::from_instance(&self);
         imp.filename.borrow().to_owned()
     }
 
     pub fn show_popover_at(&self, x: f64, y: f64) {
-        let imp = imp::IvImageView::from_instance(&self);
+        let imp = imp::LpImageView::from_instance(&self);
 
         let rect = gdk::Rectangle {
             x: x as i32,

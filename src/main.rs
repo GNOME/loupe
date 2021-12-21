@@ -26,7 +26,7 @@ mod util;
 mod widgets;
 mod window;
 
-use application::IvApplication;
+use application::LpApplication;
 
 fn main() {
     gtk::init().expect("Failed to initialize GTK.");
@@ -41,7 +41,7 @@ fn main() {
         .expect("Could not load resources");
     gio::resources_register(&res);
 
-    let app = IvApplication::new();
+    let app = LpApplication::new();
     let ret = app.run();
     std::process::exit(ret);
 }

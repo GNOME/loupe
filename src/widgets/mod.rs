@@ -20,5 +20,5 @@
 mod image;
 mod image_view;
 
-pub use image::IvImage;
-pub use image_view::IvImageView;
+pub use image::LpImage;
+pub use image_view::LpImageView;

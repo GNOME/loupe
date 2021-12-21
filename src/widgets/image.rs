@@ -29,7 +29,7 @@ mod imp {
     use super::*;
 
     #[derive(Debug, Default)]
-    pub struct IvImage {
+    pub struct LpImage {
         pub file: RefCell<Option<gio::File>>,
         pub image_width: Cell<i32>,
         pub image_height: Cell<i32>,
@@ -37,10 +37,10 @@ mod imp {
     }
 
     #[glib::object_subclass]
-    impl ObjectSubclass for IvImage {
-        const NAME: &'static str = "IvImage";
+    impl ObjectSubclass for LpImage {
+        const NAME: &'static str = "LpImage";
         type ParentType = gtk::Widget;
-        type Type = super::IvImage;
+        type Type = super::LpImage;
 
         fn new() -> Self {
             Self {
@@ -52,7 +52,7 @@ mod imp {
         }
     }
 
-    impl ObjectImpl for IvImage {
+    impl ObjectImpl for LpImage {
         fn properties() -> &'static [glib::ParamSpec] {
             static PROPERTIES: Lazy<Vec<glib::ParamSpec>> = Lazy::new(|| {
                 vec![glib::ParamSpec::new_object(
@@ -93,7 +93,7 @@ mod imp {
         }
     }
 
-    impl WidgetImpl for IvImage {
+    impl WidgetImpl for LpImage {
         fn snapshot(&self, widget: &Self::Type, snapshot: &gtk::Snapshot) {
             if let Some(texture) = self.texture.borrow().as_ref() {
                 let width = widget.width() as f64;
@@ -168,18 +168,18 @@ mod imp {
 }
 
 glib::wrapper! {
-    pub struct IvImage(ObjectSubclass<imp::IvImage>) @extends gtk::Widget;
+    pub struct LpImage(ObjectSubclass<imp::LpImage>) @extends gtk::Widget;
 }
 
-impl IvImage {
+impl LpImage {
     pub fn file(&self) -> Option<gio::File> {
-        let imp = imp::IvImage::from_instance(self);
+        let imp = imp::LpImage::from_instance(self);
 
         imp.file.borrow().clone()
     }
 
     pub fn set_file(&self, file: &gio::File) {
-        let imp = imp::IvImage::from_instance(self);
+        let imp = imp::LpImage::from_instance(self);
 
         match gdk::Texture::from_file(file) {
             Ok(texture) => {
@@ -197,12 +197,12 @@ impl IvImage {
     }
 
     pub fn image_width(&self) -> i32 {
-        let imp = imp::IvImage::from_instance(&self);
+        let imp = imp::LpImage::from_instance(&self);
         imp.image_width.get()
     }
 
     pub fn image_height(&self) -> i32 {
-        let imp = imp::IvImage::from_instance(&self);
+        let imp = imp::LpImage::from_instance(&self);
         imp.image_height.get()
     }
 }

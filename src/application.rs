@@ -27,7 +27,7 @@ use libadwaita::prelude::*;
 use libadwaita::subclass::prelude::*;
 
 use crate::config;
-use crate::window::IvWindow;
+use crate::window::LpWindow;
 
 mod imp {
     use super::*;
@@ -35,7 +35,7 @@ mod imp {
     // The basic struct that holds our
     // state and widgets
     #[derive(Debug)]
-    pub struct IvApplication {
+    pub struct LpApplication {
         pub gtk_settings: gtk::Settings,
     }
 
@@ -43,9 +43,9 @@ mod imp {
     // The `#[glib::object_subclass] macro implements
     // some boilerplate code for the object setup, e.g. get_type()
     #[glib::object_subclass]
-    impl ObjectSubclass for IvApplication {
-        const NAME: &'static str = "IvApplication";
-        type Type = super::IvApplication;
+    impl ObjectSubclass for LpApplication {
+        const NAME: &'static str = "LpApplication";
+        type Type = super::LpApplication;
         type ParentType = libadwaita::Application;
 
         // Initialize with default values
@@ -58,7 +58,7 @@ mod imp {
     }
 
     // Overrides GObject vfuncs
-    impl ObjectImpl for IvApplication {
+    impl ObjectImpl for LpApplication {
         fn constructed(&self, obj: &Self::Type) {
             self.parent_constructed(obj);
 
@@ -72,16 +72,16 @@ mod imp {
     }
 
     // Overrides GApplication vfuncs
-    impl ApplicationImpl for IvApplication {
+    impl ApplicationImpl for LpApplication {
         fn activate(&self, application: &Self::Type) {
-            let window = IvWindow::new(application);
+            let window = LpWindow::new(application);
             window.present();
         }
 
         // Handles opening files from the command line or other applications
         fn open(&self, application: &Self::Type, files: &[gio::File], _hint: &str) {
             for file in files {
-                let win = IvWindow::new(application);
+                let win = LpWindow::new(application);
                 win.set_image_from_file(file);
                 win.show();
             }
@@ -90,23 +90,23 @@ mod imp {
 
     // This is empty, but we still need to provide an
     // empty implementation for each type we subclass.
-    impl GtkApplicationImpl for IvApplication {}
-    impl AdwApplicationImpl for IvApplication {}
+    impl GtkApplicationImpl for LpApplication {}
+    impl AdwApplicationImpl for LpApplication {}
 }
 
 // Creates a wrapper struct that inherits the functions
 // from objects listed as @extends or interfaces it @implements.
 // This is what allows us to do e.g. application.quit() on
-// IvApplication without casting.
+// LpApplication without casting.
 glib::wrapper! {
-    pub struct IvApplication(ObjectSubclass<imp::IvApplication>)
+    pub struct LpApplication(ObjectSubclass<imp::LpApplication>)
         @extends gio::Application, gtk::Application, libadwaita::Application,
         @implements gio::ActionGroup, gio::ActionMap;
 }
 
-// This is where the member functions of IvApplication go.
+// This is where the member functions of LpApplication go.
 #[allow(clippy::new_without_default)]
-impl IvApplication {
+impl LpApplication {
     pub fn new() -> Self {
         glib::Object::new(&[
             ("application-id", &config::APP_ID.to_string()),
@@ -155,7 +155,7 @@ impl IvApplication {
             self,
             "new-window",
             clone!(@weak self as app => move |_, _| {
-                let win = IvWindow::new(&app);
+                let win = LpWindow::new(&app);
                 win.show();
             })
         );

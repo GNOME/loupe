@@ -26,7 +26,7 @@ use gtk::CompositeTemplate;
 use libadwaita::subclass::prelude::*;
 
 use crate::config;
-use crate::widgets::IvImageView;
+use crate::widgets::LpImageView;
 
 mod imp {
     use super::*;
@@ -47,7 +47,7 @@ mod imp {
     // `impl ObjectSubclass for $TYPE` section.
     #[derive(Default, Debug, CompositeTemplate)]
     #[template(resource = "/org/gnome/Loupe/gtk/window.ui")]
-    pub struct IvWindow {
+    pub struct LpWindow {
         // Template children are used with the
         // TemplateChild<T> wrapper, where T is the
         // object type of the template child.
@@ -64,15 +64,15 @@ mod imp {
         #[template_child]
         pub status_page: TemplateChild<libadwaita::StatusPage>,
         #[template_child]
-        pub image_view: TemplateChild<IvImageView>,
+        pub image_view: TemplateChild<LpImageView>,
         #[template_child]
         pub open_gesture: TemplateChild<gtk::GestureClick>,
     }
 
     #[glib::object_subclass]
-    impl ObjectSubclass for IvWindow {
-        const NAME: &'static str = "IvWindow";
-        type Type = super::IvWindow;
+    impl ObjectSubclass for LpWindow {
+        const NAME: &'static str = "LpWindow";
+        type Type = super::LpWindow;
         type ParentType = libadwaita::ApplicationWindow;
 
         fn class_init(klass: &mut Self::Class) {
@@ -107,7 +107,7 @@ mod imp {
         }
     }
 
-    impl ObjectImpl for IvWindow {
+    impl ObjectImpl for LpWindow {
         fn constructed(&self, obj: &Self::Type) {
             self.parent_constructed(obj);
 
@@ -146,25 +146,25 @@ mod imp {
         }
     }
 
-    impl WidgetImpl for IvWindow {}
-    impl WindowImpl for IvWindow {}
-    impl ApplicationWindowImpl for IvWindow {}
-    impl AdwApplicationWindowImpl for IvWindow {}
+    impl WidgetImpl for LpWindow {}
+    impl WindowImpl for LpWindow {}
+    impl ApplicationWindowImpl for LpWindow {}
+    impl AdwApplicationWindowImpl for LpWindow {}
 }
 
 glib::wrapper! {
-    pub struct IvWindow(ObjectSubclass<imp::IvWindow>)
+    pub struct LpWindow(ObjectSubclass<imp::LpWindow>)
         @extends gtk::Widget, gtk::Window, gtk::ApplicationWindow, libadwaita::ApplicationWindow,
         @implements gio::ActionMap, gio::ActionGroup;
 }
 
-impl IvWindow {
+impl LpWindow {
     pub fn new<A: IsA<gtk::Application>>(app: &A) -> Self {
-        glib::Object::new(&[("application", app)]).expect("Failed to create IvWindow")
+        glib::Object::new(&[("application", app)]).expect("Failed to create LpWindow")
     }
 
     fn toggle_fullscreen(&self, fullscreen: bool) {
-        let imp = imp::IvWindow::from_instance(&self);
+        let imp = imp::LpWindow::from_instance(&self);
 
         if fullscreen {
             imp.flap.set_fold_policy(libadwaita::FlapFoldPolicy::Always);
@@ -221,7 +221,7 @@ impl IvWindow {
     }
 
     fn open_with(&self) {
-        let imp = imp::IvWindow::from_instance(self);
+        let imp = imp::LpWindow::from_instance(self);
 
         if let Some(uri) = imp.image_view.uri() {
             std::process::Command::new("xdg-open")
@@ -234,7 +234,7 @@ impl IvWindow {
     }
 
     fn set_wallpaper(&self) {
-        let imp = imp::IvWindow::from_instance(self);
+        let imp = imp::LpWindow::from_instance(self);
 
         if let Err(e) = imp.image_view.set_wallpaper() {
             log::error!("Failed to set wallpaper: {}", e);
@@ -242,7 +242,7 @@ impl IvWindow {
     }
 
     fn print(&self) {
-        let imp = imp::IvWindow::from_instance(self);
+        let imp = imp::LpWindow::from_instance(self);
 
         if let Err(e) = imp.image_view.print() {
             log::error!("Failed to print file: {}", e);
@@ -250,7 +250,7 @@ impl IvWindow {
     }
 
     pub fn set_image_from_file(&self, file: &gio::File) {
-        let imp = imp::IvWindow::from_instance(self);
+        let imp = imp::LpWindow::from_instance(self);
 
         log::debug!("Loading file: {}", file.uri().to_string());
         match imp.image_view.set_image_from_file(file) {
@@ -273,7 +273,7 @@ impl IvWindow {
 
     // Adapted from https://gitlab.gnome.org/GNOME/eog/-/blob/master/src/eog-window.c:eog_window_obtain_desired_size
     pub fn resize_from_dimensions(&self, img_width: i32, img_height: i32) {
-        let imp = imp::IvWindow::from_instance(self);
+        let imp = imp::LpWindow::from_instance(self);
         let mut final_width = img_width;
         let mut final_height = img_height;
 

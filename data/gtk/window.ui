@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
-  <template class="IvWindow" parent="AdwApplicationWindow">
+  <template class="LpWindow" parent="AdwApplicationWindow">
     <property name="default-width">600</property>
     <property name="default-height">498</property>
     <property name="width-request">360</property>
@@ -15,7 +15,7 @@
         <property name="modal">false</property>
         <property name="flap">
           <object class="GtkHeaderBar" id="headerbar">
-            <property name="show_title_buttons" bind-source="IvWindow" bind-property="fullscreened" bind-flags="sync-create|invert-boolean"/>
+            <property name="show_title_buttons" bind-source="LpWindow" bind-property="fullscreened" bind-flags="sync-create|invert-boolean"/>
             <binding name="opacity">
               <lookup type="GtkWidget" name="opacity">
                 <lookup name="controls">image_view</lookup>
@@ -51,7 +51,7 @@
               </object>
             </child>
             <child>
-              <object class="IvImageView" id="image_view"/>
+              <object class="LpImageView" id="image_view"/>
             </child>
           </object>
         </property>

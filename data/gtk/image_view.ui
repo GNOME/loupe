@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
-  <template class="IvImageView" parent="AdwBin">
+  <template class="LpImageView" parent="AdwBin">
     <property name="css-name">imageview</property>
     <property name="focusable">True</property>
     <property name="focus-on-click">True</property>
@@ -8,7 +8,7 @@
       <object class="GtkOverlay">
         <property name="hexpand">True</property>
         <child>
-          <object class="IvImage" id="picture">
+          <object class="LpImage" id="picture">
             <property name="halign">center</property>
             <property name="valign">center</property>
           </object>
