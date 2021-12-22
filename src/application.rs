@@ -17,6 +17,8 @@
 //
 // SPDX-License-Identifier: GPL-3.0-or-later
 
+use crate::deps::*;
+
 use adw::prelude::*;
 use adw::subclass::prelude::*;
 use glib::clone;

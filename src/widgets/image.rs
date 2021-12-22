@@ -17,9 +17,9 @@
 //
 // SPDX-License-Identifier: GPL-3.0-or-later
 
-use gdk::prelude::*;
-use gio::subclass::prelude::*;
-use gtk::{graphene, prelude::*, subclass::prelude::*};
+use crate::deps::*;
+
+use gtk::{prelude::*, subclass::prelude::*};
 
 use once_cell::sync::Lazy;
 

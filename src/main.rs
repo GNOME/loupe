@@ -18,13 +18,17 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 
 use gettextrs::*;
-use gio::prelude::*;
+use gtk::gio::{self, prelude::*};
 
 mod application;
 mod config;
 mod util;
 mod widgets;
 mod window;
+
+mod deps {
+    pub use gtk::{gdk, gdk_pixbuf, gio, glib, graphene};
+}
 
 use application::LpApplication;
 
