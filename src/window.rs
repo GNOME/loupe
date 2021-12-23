@@ -65,8 +65,6 @@ mod imp {
         pub status_page: TemplateChild<adw::StatusPage>,
         #[template_child]
         pub image_view: TemplateChild<LpImageView>,
-        #[template_child]
-        pub open_gesture: TemplateChild<gtk::GestureClick>,
     }
 
     #[glib::object_subclass]
@@ -127,14 +125,8 @@ mod imp {
 
             // For callbacks, you will want to reference the GTK docs on
             // the relevant signal to see which parameters you need.
-            // In this case, we need none to react to the gesture,
-            // so "_" is used in all 4 spots.
-            self.open_gesture
-                .connect_released(clone!(@weak obj => move |_, _, _, _| {
-                    obj.pick_file();
-                }));
-
-            // Property bindings didn't seem to work here
+            // In this case, we need one to react to the signal,
+            // so we name it `iv` then use `_` for the other spots.
             self.image_view.connect_notify_local(
                 Some("filename"),
                 clone!(@weak obj => move |iv, _| {
