@@ -201,9 +201,7 @@ impl LpWindow {
         chooser.set_transient_for(Some(self));
 
         let filter = gtk::FileFilter::new();
-        filter
-            .set_property("name", &String::from("Supported image files"))
-            .unwrap();
+        filter.set_property("name", &String::from("Supported image files"));
         filter.add_mime_type("image/*");
         chooser.add_filter(&filter);
 
@@ -290,8 +288,8 @@ impl LpWindow {
             .unwrap();
         let monitor_geometry = monitor.geometry();
 
-        let monitor_width = monitor_geometry.width;
-        let monitor_height = monitor_geometry.height;
+        let monitor_width = monitor_geometry.width();
+        let monitor_height = monitor_geometry.height();
 
         if img_width > monitor_width || img_height + header_height > monitor_height {
             let width_factor = (monitor_width as f32 * 0.85) / img_width as f32;

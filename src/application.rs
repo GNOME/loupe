@@ -173,7 +173,7 @@ impl LpApplication {
         // Builders are a pattern that allow you to create
         // an object and set all relevant properties very
         // easily in a way that's idiomatic to Rust.
-        let dialog = gtk::AboutDialogBuilder::new()
+        let dialog = gtk::AboutDialog::builder()
             .authors(vec![String::from(
                 "Christopher Davis <christopherdavis@gnome.org>",
             )])

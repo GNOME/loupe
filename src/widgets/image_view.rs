@@ -91,14 +91,14 @@ mod imp {
         fn properties() -> &'static [glib::ParamSpec] {
             static PROPERTIES: Lazy<Vec<glib::ParamSpec>> = Lazy::new(|| {
                 vec![
-                    glib::ParamSpec::new_string(
+                    glib::ParamSpecString::new(
                         "filename",
                         "Filename",
                         "The filename of the current file",
                         None,
                         glib::ParamFlags::READABLE,
                     ),
-                    glib::ParamSpec::new_object(
+                    glib::ParamSpecObject::new(
                         "controls",
                         "Controls",
                         "The controls for the image view",
@@ -188,7 +188,7 @@ impl LpImageView {
                             *gio::FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE
                         ),
                         gio::FileQueryInfoFlags::NONE,
-                        gio::NONE_CANCELLABLE,
+                        gio::Cancellable::NONE,
                     )
                     .unwrap();
 
@@ -332,12 +332,7 @@ impl LpImageView {
     pub fn show_popover_at(&self, x: f64, y: f64) {
         let imp = imp::LpImageView::from_instance(&self);
 
-        let rect = gdk::Rectangle {
-            x: x as i32,
-            y: y as i32,
-            width: 0,
-            height: 0,
-        };
+        let rect = gdk::Rectangle::new(x as i32, y as i32, 0, 0);
 
         imp.popover.set_pointing_to(&rect);
         imp.popover.popup();

@@ -9,8 +9,8 @@ gtk-macros = "0.2.0"
 log = "0.4.11"
 once_cell = "1.5.2"
 pretty_env_logger = "0.4.0"
-zbus = "1.3.0"
-zvariant = "2.3.0"
+zbus = "2.0.0-beta.7"
+zvariant = "2.9.0"
 cairo-rs = "0.14"
 
 [dependencies.ashpd]
@@ -19,11 +19,11 @@ features = ["feature_gtk4"]
 
 [dependencies.gtk]
 package = "gtk4"
-version = "0.3"
+git = "https://github.com/gtk-rs/gtk4-rs"
 
 [dependencies.adw]
 package = "libadwaita"
-version = "0.1.0-alpha-6"
+git = "https://gitlab.gnome.org/World/Rust/libadwaita-rs.git"
 
 [dependencies.gettext-rs]
 version = "0.7.0"

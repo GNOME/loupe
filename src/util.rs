@@ -17,7 +17,7 @@ pub fn get_file_display_name(file: &gio::File) -> Option<String> {
         .query_info(
             *gio::FILE_ATTRIBUTE_STANDARD_DISPLAY_NAME,
             gio::FileQueryInfoFlags::empty(),
-            gio::NONE_CANCELLABLE,
+            gio::Cancellable::NONE,
         )
         .ok()?;
 
