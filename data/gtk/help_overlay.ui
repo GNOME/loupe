@@ -29,7 +29,7 @@
             <child>
               <object class="GtkShortcutsShortcut">
                 <property name="title" translatable="yes" context="shortcut window">Show Keyboard Shortcuts</property>
-                <property name="accelerator">&lt;Primary&gt;F1</property>
+                <property name="accelerator">&lt;Primary&gt;question</property>
               </object>
             </child>
             <child>
