@@ -26,6 +26,7 @@ use gtk::subclass::prelude::*;
 use gtk::CompositeTemplate;
 
 use crate::config;
+use crate::util;
 use crate::widgets::LpImageView;
 
 mod imp {
@@ -65,6 +66,8 @@ mod imp {
         pub status_page: TemplateChild<adw::StatusPage>,
         #[template_child]
         pub image_view: TemplateChild<LpImageView>,
+        #[template_child]
+        pub drop_target: TemplateChild<gtk::DropTarget>,
     }
 
     #[glib::object_subclass]
@@ -135,6 +138,39 @@ mod imp {
                     }
                 }),
             );
+
+            self.drop_target.set_types(&[gdk::FileList::static_type()]);
+            self.drop_target.connect_drop(
+                clone!(@weak obj => @default-return false, move |_, value, _, _| {
+                    // Here we use a GValue, which is a dynamic object that can hold different types,
+                    // e.g. strings, numbers, or in this case objects. In order to get the GdkFileList
+                    // from the GValue, we need to use the `get()` method.
+                    //
+                    // We've added type annotations here, and written it as `let list: gdk::FileList = ...`,
+                    // but you might also see places where type arguments are used.
+                    // This line could have been written as `let list = value.get::<gdk::FileList>().unwrap()`.
+                    let list: gdk::FileList = value.get().unwrap();
+
+                    // TODO: Handle this like EOG and make a "directory" out of the given files
+                    let file = list.files().get(0).unwrap().clone();
+                    let info = util::query_attributes(
+                        &file,
+                        vec![&gio::FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE])
+                        .expect("Could not query file info");
+
+                    if info
+                        .content_type()
+                        .map(|t| t.to_string())
+                        .filter(|t| t.starts_with("image/"))
+                        .is_some() {
+                        obj.set_image_from_file(&file, false);
+                    } else {
+                        log::debug!("{} was not a valid image.", file.uri().to_string());
+                    }
+
+                    true
+                }),
+            );
         }
     }
 
@@ -201,7 +237,7 @@ impl LpWindow {
             clone!(@weak self as win, @strong chooser => move |_, resp| {
                 if resp == gtk::ResponseType::Accept {
                     if let Some(file) = chooser.file() {
-                        win.set_image_from_file(&file);
+                        win.set_image_from_file(&file, true);
                     }
                 }
             }),
@@ -239,13 +275,16 @@ impl LpWindow {
         }
     }
 
-    pub fn set_image_from_file(&self, file: &gio::File) {
+    pub fn set_image_from_file(&self, file: &gio::File, resize: bool) {
         let imp = imp::LpWindow::from_instance(self);
 
         log::debug!("Loading file: {}", file.uri().to_string());
         match imp.image_view.set_image_from_file(file) {
             Ok((width, height)) => {
-                self.resize_from_dimensions(width, height);
+                if resize {
+                    self.resize_from_dimensions(width, height);
+                }
+
                 imp.stack.set_visible_child(&*imp.image_view);
                 imp.image_view.grab_focus();
                 self.set_actions_enabled(true)

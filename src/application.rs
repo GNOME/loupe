@@ -81,7 +81,7 @@ mod imp {
         fn open(&self, application: &Self::Type, files: &[gio::File], _hint: &str) {
             for file in files {
                 let win = LpWindow::new(application);
-                win.set_image_from_file(file);
+                win.set_image_from_file(file, true);
                 win.show();
             }
         }

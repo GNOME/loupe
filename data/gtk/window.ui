@@ -61,6 +61,11 @@
             <child>
               <object class="LpImageView" id="image_view"/>
             </child>
+            <child>
+              <object class="GtkDropTarget" id="drop_target">
+                <property name="actions">copy</property>
+              </object>
+            </child>
           </object>
         </property>
         <style>

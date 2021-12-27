@@ -20,6 +20,7 @@ features = ["feature_gtk4"]
 [dependencies.gtk]
 package = "gtk4"
 git = "https://github.com/gtk-rs/gtk4-rs"
+features = ["v4_6"]
 
 [dependencies.adw]
 package = "libadwaita"
