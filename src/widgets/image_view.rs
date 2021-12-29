@@ -271,9 +271,27 @@ impl LpImageView {
     pub fn set_wallpaper(&self) -> anyhow::Result<()> {
         let wallpaper = self.uri().context("No URI for current file")?;
         let ctx = glib::MainContext::default();
-        ctx.spawn_local(async move {
-            set_wallpaper(wallpaper).await;
-        });
+        ctx.spawn_local(clone!(@weak self as view => async move {
+            let status = match wallpaper::set_from_uri(
+                &WindowIdentifier::default(),
+                &wallpaper,
+                true,
+                wallpaper::SetOn::Background,
+            )
+            .await {
+                Ok(_) => "Set as wallpaper.",
+                Err(_) => "Could not set wallpaper.",
+            };
+
+            view.activate_action(
+                "win.show-toast",
+                // We use `1` here because we can't pass enums directly as GVariants,
+                // so we need to use the C int value of the enum.
+                // `TOAST_PRIORITY_NORMAL = 0`, and `TOAST_PRIORITY_HIGH = 1`
+                Some(&(status, 1).to_variant()),
+            )
+            .unwrap();
+        }));
 
         Ok(())
     }
@@ -336,21 +354,5 @@ impl LpImageView {
 
         imp.popover.set_pointing_to(&rect);
         imp.popover.popup();
-    }
-}
-
-async fn set_wallpaper(uri: String) {
-    if let Err(e) = wallpaper::set_from_uri(
-        &WindowIdentifier::default(),
-        &uri,
-        true,
-        wallpaper::SetOn::Background,
-    )
-    .await
-    {
-        log::error!(
-            "Failed to set the wallpaper using the freedesktop portal: {}",
-            e
-        );
     }
 }

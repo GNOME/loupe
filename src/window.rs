@@ -61,6 +61,8 @@ mod imp {
         #[template_child]
         pub fullscreen_button: TemplateChild<gtk::Button>,
         #[template_child]
+        pub toast_overlay: TemplateChild<adw::ToastOverlay>,
+        #[template_child]
         pub stack: TemplateChild<gtk::Stack>,
         #[template_child]
         pub status_page: TemplateChild<adw::StatusPage>,
@@ -100,6 +102,12 @@ mod imp {
 
             klass.install_action("win.print", None, move |win, _, _| {
                 win.print();
+            });
+
+            klass.install_action("win.show-toast", Some("(si)"), move |win, _, var| {
+                if let Some((ref toast, i)) = var.map(|v| v.get::<(String, i32)>()).flatten() {
+                    win.show_toast(toast, adw::ToastPriority::__Unknown(i));
+                }
             });
         }
 
@@ -155,8 +163,12 @@ mod imp {
                     let file = list.files().get(0).unwrap().clone();
                     let info = util::query_attributes(
                         &file,
-                        vec![&gio::FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE])
-                        .expect("Could not query file info");
+                        vec![
+                            &gio::FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE,
+                            &gio::FILE_ATTRIBUTE_STANDARD_DISPLAY_NAME,
+                        ],
+                    )
+                    .expect("Could not query file info");
 
                     if info
                         .content_type()
@@ -165,7 +177,10 @@ mod imp {
                         .is_some() {
                         obj.set_image_from_file(&file, false);
                     } else {
-                        log::debug!("{} was not a valid image.", file.uri().to_string());
+                        obj.show_toast(
+                            &format!("\"{}\" is not a valid image.", info.display_name().to_string()),
+                            adw::ToastPriority::High,
+                        );
                     }
 
                     true
@@ -273,6 +288,15 @@ impl LpWindow {
         if let Err(e) = imp.image_view.print() {
             log::error!("Failed to print file: {}", e);
         }
+    }
+
+    fn show_toast(&self, text: &impl AsRef<str>, priority: adw::ToastPriority) {
+        let imp = imp::LpWindow::from_instance(self);
+
+        let toast = adw::Toast::new(text.as_ref());
+        toast.set_priority(priority);
+
+        imp.toast_overlay.add_toast(&toast);
     }
 
     pub fn set_image_from_file(&self, file: &gio::File, resize: bool) {
