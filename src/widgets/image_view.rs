@@ -146,7 +146,7 @@ glib::wrapper! {
 
 impl LpImageView {
     pub fn set_image_from_file(&self, file: &gio::File) -> anyhow::Result<(i32, i32)> {
-        let imp = imp::LpImageView::from_instance(&self);
+        let imp = self.imp();
 
         if let Some(current_file) = imp.picture.file() {
             if current_file.path().as_deref() == file.path().as_deref() {
@@ -170,7 +170,7 @@ impl LpImageView {
     }
 
     fn set_parent_from_file(&self, file: &gio::File) {
-        let imp = imp::LpImageView::from_instance(&self);
+        let imp = self.imp();
 
         if let Some(parent) = file.parent() {
             let parent_path = parent.path().map(|p| p.to_str().unwrap().to_string());
@@ -231,7 +231,7 @@ impl LpImageView {
     }
 
     fn update_image(&self) {
-        let imp = imp::LpImageView::from_instance(&self);
+        let imp = self.imp();
 
         let path = &format!(
             "{}/{}",
@@ -248,21 +248,21 @@ impl LpImageView {
     }
 
     pub fn next(&self) {
-        let imp = imp::LpImageView::from_instance(&self);
+        let imp = self.imp();
         // TODO: Replace with `Cell::update()` once stabilized
         imp.index.set(imp.index.get() + 1);
         self.update_image();
     }
 
     pub fn previous(&self) {
-        let imp = imp::LpImageView::from_instance(&self);
+        let imp = self.imp();
         // TODO: Replace with `Cell::update()` once stabilized
         imp.index.set(imp.index.get() - 1);
         self.update_image();
     }
 
     pub fn update_action_state(&self) {
-        let imp = imp::LpImageView::from_instance(&self);
+        let imp = self.imp();
         let index = imp.index.get();
         self.action_set_enabled("iv.next", index < imp.directory_pictures.borrow().len() - 1);
         self.action_set_enabled("iv.previous", index > 0);
@@ -297,7 +297,7 @@ impl LpImageView {
     }
 
     pub fn print(&self) -> anyhow::Result<()> {
-        let imp = imp::LpImageView::from_instance(&self);
+        let imp = self.imp();
 
         let operation = gtk::PrintOperation::new();
         let path = &format!(
@@ -338,17 +338,17 @@ impl LpImageView {
     }
 
     pub fn uri(&self) -> Option<String> {
-        let imp = imp::LpImageView::from_instance(&self);
+        let imp = self.imp();
         imp.uri.borrow().to_owned()
     }
 
     pub fn filename(&self) -> Option<String> {
-        let imp = imp::LpImageView::from_instance(&self);
+        let imp = self.imp();
         imp.filename.borrow().to_owned()
     }
 
     pub fn show_popover_at(&self, x: f64, y: f64) {
-        let imp = imp::LpImageView::from_instance(&self);
+        let imp = self.imp();
 
         let rect = gdk::Rectangle::new(x as i32, y as i32, 0, 0);
 

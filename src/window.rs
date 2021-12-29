@@ -207,7 +207,7 @@ impl LpWindow {
     }
 
     fn toggle_fullscreen(&self, fullscreen: bool) {
-        let imp = imp::LpWindow::from_instance(&self);
+        let imp = self.imp();
 
         if fullscreen {
             imp.flap.set_fold_policy(adw::FlapFoldPolicy::Always);
@@ -262,7 +262,7 @@ impl LpWindow {
     }
 
     fn open_with(&self) {
-        let imp = imp::LpWindow::from_instance(self);
+        let imp = self.imp();
 
         if let Some(uri) = imp.image_view.uri() {
             std::process::Command::new("xdg-open")
@@ -275,7 +275,7 @@ impl LpWindow {
     }
 
     fn set_wallpaper(&self) {
-        let imp = imp::LpWindow::from_instance(self);
+        let imp = self.imp();
 
         if let Err(e) = imp.image_view.set_wallpaper() {
             log::error!("Failed to set wallpaper: {}", e);
@@ -283,7 +283,7 @@ impl LpWindow {
     }
 
     fn print(&self) {
-        let imp = imp::LpWindow::from_instance(self);
+        let imp = self.imp();
 
         if let Err(e) = imp.image_view.print() {
             log::error!("Failed to print file: {}", e);
@@ -291,7 +291,7 @@ impl LpWindow {
     }
 
     fn show_toast(&self, text: &impl AsRef<str>, priority: adw::ToastPriority) {
-        let imp = imp::LpWindow::from_instance(self);
+        let imp = self.imp();
 
         let toast = adw::Toast::new(text.as_ref());
         toast.set_priority(priority);
@@ -300,7 +300,7 @@ impl LpWindow {
     }
 
     pub fn set_image_from_file(&self, file: &gio::File, resize: bool) {
-        let imp = imp::LpWindow::from_instance(self);
+        let imp = self.imp();
 
         log::debug!("Loading file: {}", file.uri().to_string());
         match imp.image_view.set_image_from_file(file) {
@@ -326,7 +326,7 @@ impl LpWindow {
 
     // Adapted from https://gitlab.gnome.org/GNOME/eog/-/blob/master/src/eog-window.c:eog_window_obtain_desired_size
     pub fn resize_from_dimensions(&self, img_width: i32, img_height: i32) {
-        let imp = imp::LpWindow::from_instance(self);
+        let imp = self.imp();
         let mut final_width = img_width;
         let mut final_height = img_height;
 

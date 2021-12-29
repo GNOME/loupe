@@ -173,13 +173,13 @@ glib::wrapper! {
 
 impl LpImage {
     pub fn file(&self) -> Option<gio::File> {
-        let imp = imp::LpImage::from_instance(self);
+        let imp = self.imp();
 
         imp.file.borrow().clone()
     }
 
     pub fn set_file(&self, file: &gio::File) {
-        let imp = imp::LpImage::from_instance(self);
+        let imp = self.imp();
 
         match gdk::Texture::from_file(file) {
             Ok(texture) => {
@@ -197,12 +197,12 @@ impl LpImage {
     }
 
     pub fn image_width(&self) -> i32 {
-        let imp = imp::LpImage::from_instance(&self);
+        let imp = self.imp();
         imp.image_width.get()
     }
 
     pub fn image_height(&self) -> i32 {
-        let imp = imp::LpImage::from_instance(&self);
+        let imp = self.imp();
         imp.image_height.get()
     }
 }
