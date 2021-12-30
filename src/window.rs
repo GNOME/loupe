@@ -25,6 +25,9 @@ use gtk::prelude::*;
 use gtk::subclass::prelude::*;
 use gtk::CompositeTemplate;
 
+use ashpd::desktop::open_uri;
+use ashpd::WindowIdentifier;
+
 use crate::config;
 use crate::util;
 use crate::widgets::LpImageView;
@@ -198,7 +201,7 @@ mod imp {
 glib::wrapper! {
     pub struct LpWindow(ObjectSubclass<imp::LpWindow>)
         @extends gtk::Widget, gtk::Window, gtk::ApplicationWindow, adw::ApplicationWindow,
-        @implements gio::ActionMap, gio::ActionGroup;
+        @implements gio::ActionMap, gio::ActionGroup, gtk::Native;
 }
 
 impl LpWindow {
@@ -263,12 +266,22 @@ impl LpWindow {
 
     fn open_with(&self) {
         let imp = self.imp();
+        let ctx = glib::MainContext::default();
 
-        if let Some(uri) = imp.image_view.uri() {
-            std::process::Command::new("xdg-open")
-                .arg(uri)
-                .output()
-                .unwrap();
+        if let Some(file) = imp
+            .image_view
+            .uri()
+            .map(|u| u.trim_start_matches("file://").to_string())
+            .map(|u| std::fs::File::open(u).ok())
+            .flatten()
+        {
+            ctx.spawn_local(clone!(@weak self as win => async move {
+                if let Err(e) =
+                    open_uri::open_file(&WindowIdentifier::from_native(&win).await, &file, true, true).await
+                {
+                    log::error!("Could not open image in external program: {}", e);
+                }
+            }));
         } else {
             log::error!("No URI for current image.")
         }
