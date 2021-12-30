@@ -272,8 +272,13 @@ impl LpImageView {
         let wallpaper = self.uri().context("No URI for current file")?;
         let ctx = glib::MainContext::default();
         ctx.spawn_local(clone!(@weak self as view => async move {
+            let id = WindowIdentifier::from_native(
+                &view.native().expect("View should have a GtkNative"),
+            )
+            .await;
+
             let status = match wallpaper::set_from_uri(
-                &WindowIdentifier::default(),
+                &id,
                 &wallpaper,
                 true,
                 wallpaper::SetOn::Background,
