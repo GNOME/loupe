@@ -342,6 +342,19 @@ impl LpImageView {
         Ok(())
     }
 
+    pub fn copy(&self) -> anyhow::Result<()> {
+        let clipboard = self.clipboard();
+        let imp = self.imp();
+
+        if let Some(texture) = imp.picture.texture() {
+            clipboard.set_texture(&texture);
+        } else {
+            anyhow::bail!("No Image displayed.");
+        }
+
+        Ok(())
+    }
+
     pub fn uri(&self) -> Option<String> {
         let imp = self.imp();
         imp.uri.borrow().to_owned()

@@ -101,6 +101,10 @@
         <attribute name="label" translatable="yes">_Print…</attribute>
         <attribute name="action">win.print</attribute>
       </item>
+      <item>
+        <attribute name="label" translatable="yes">_Copy</attribute>
+        <attribute name="action">win.copy</attribute>
+      </item>
       <!--<item>
         <attribute name="label" translatable="yes">_Rotate</attribute>
         <attribute name="action">win.rotate-image</attribute>

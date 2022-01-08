@@ -205,4 +205,9 @@ impl LpImage {
         let imp = self.imp();
         imp.image_height.get()
     }
+
+    pub fn texture(&self) -> Option<gdk::Texture> {
+        let imp = self.imp();
+        imp.texture.borrow().clone()
+    }
 }

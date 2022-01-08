@@ -107,6 +107,10 @@ mod imp {
                 win.print();
             });
 
+            klass.install_action("win.copy", None, move |win, _, _| {
+                win.copy();
+            });
+
             klass.install_action("win.show-toast", Some("(si)"), move |win, _, var| {
                 if let Some((ref toast, i)) = var.map(|v| v.get::<(String, i32)>()).flatten() {
                     win.show_toast(toast, adw::ToastPriority::__Unknown(i));
@@ -303,6 +307,14 @@ impl LpWindow {
         }
     }
 
+    fn copy(&self) {
+        let imp = self.imp();
+
+        if let Err(e) = imp.image_view.copy() {
+            log::error!("Failed to copy to clipboard: {}", e);
+        }
+    }
+
     fn show_toast(&self, text: &impl AsRef<str>, priority: adw::ToastPriority) {
         let imp = self.imp();
 
@@ -335,6 +347,7 @@ impl LpWindow {
         self.action_set_enabled("win.set-wallpaper", enabled);
         self.action_set_enabled("win.toggle-fullscreen", enabled);
         self.action_set_enabled("win.print", enabled);
+        self.action_set_enabled("win.copy", enabled);
     }
 
     // Adapted from https://gitlab.gnome.org/GNOME/eog/-/blob/master/src/eog-window.c:eog_window_obtain_desired_size

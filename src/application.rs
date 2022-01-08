@@ -164,6 +164,7 @@ impl LpApplication {
         self.set_accels_for_action("app.new-window", &["<Primary>N"]);
         self.set_accels_for_action("win.open", &["<Primary>O"]);
         self.set_accels_for_action("win.print", &["<Primary>P"]);
+        self.set_accels_for_action("win.copy", &["<Primary>C"]);
         self.set_accels_for_action("win.show-help-overlay", &["<Primary>question"]);
         self.set_accels_for_action("win.toggle-fullscreen", &["F11"]);
         self.set_accels_for_action("window.close", &["<Primary>W"]);
