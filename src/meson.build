@@ -20,6 +20,7 @@ rust_sources = files(
   'config.rs',
   'main.rs',
   'util.rs',
+  'thumbnail.rs',
   'window.rs',
 )
 

@@ -31,6 +31,7 @@ use ashpd::WindowIdentifier;
 use once_cell::sync::Lazy;
 use std::cell::{Cell, RefCell};
 
+use crate::thumbnail::Thumbnail;
 use crate::util;
 use crate::widgets::LpImage;
 
@@ -131,6 +132,30 @@ mod imp {
                 .connect_pressed(clone!(@weak obj => move |_, x, y| {
                     obj.show_popover_at(x, y);
                 }));
+
+            let source = gtk::DragSource::new();
+
+            source.connect_prepare(
+                glib::clone!(@weak obj => @default-return None, move |_, _, _| {
+                    match obj.imp().picture.content_provider() {
+                        Ok(content) => Some(content),
+                        Err(e) => {
+                            log::error!("Could not get content provider: {:?}", e);
+                            None
+                        }
+                    }
+                }),
+            );
+
+            source.connect_drag_begin(glib::clone!(@weak obj => move |source, _| {
+                let imp = obj.imp();
+                if let Some(texture) = imp.picture.texture() {
+                    let thumbnail = Thumbnail::new(&texture);
+                    source.set_icon(Some(&thumbnail), 0, 0);
+                };
+            }));
+
+            obj.add_controller(&source);
         }
     }
 

@@ -22,6 +22,7 @@ use gtk::gio::{self, prelude::*};
 
 mod application;
 mod config;
+mod thumbnail;
 mod util;
 mod widgets;
 mod window;
