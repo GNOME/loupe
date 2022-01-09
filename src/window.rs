@@ -364,9 +364,7 @@ impl LpWindow {
         }
 
         let display = gdk::Display::default().unwrap();
-        let monitor = display
-            .monitor_at_surface(&self.native().unwrap().surface().unwrap())
-            .unwrap();
+        let monitor = display.monitor_at_surface(&self.native().unwrap().surface());
         let monitor_geometry = monitor.geometry();
 
         let monitor_width = monitor_geometry.width();

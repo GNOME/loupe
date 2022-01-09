@@ -327,7 +327,7 @@ impl LpImageView {
         // FIXME: Rework all of this after reading https://cairographics.org/manual/cairo-Image-Surfaces.html
         // Since I don't know cairo; See also eog-print.c
         operation.connect_draw_page(clone!(@weak pb => move |_, ctx, _| {
-            let cr = ctx.cairo_context().expect("No cairo context for print context");
+            let cr = ctx.cairo_context();
             cr.set_source_pixbuf(&pb, 0.0, 0.0);
             let _ = cr.paint();
         }));
