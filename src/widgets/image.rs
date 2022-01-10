@@ -98,17 +98,17 @@ mod imp {
             if let Some(texture) = self.texture.borrow().as_ref() {
                 let width = widget.width() as f64;
                 let height = widget.height() as f64;
-                let ratio = texture.intrinsic_aspect_ratio();
+                let texture_ratio = texture.intrinsic_aspect_ratio();
 
-                if ratio == 0.0 {
+                if texture_ratio == 0.0 {
                     texture.snapshot(snapshot.upcast_ref(), width, height);
                 } else {
-                    let pic_ratio = width / height;
+                    let widget_ratio = width / height;
 
-                    let (snapshot_width, snapshot_height) = if ratio > pic_ratio {
-                        (width, width / ratio)
+                    let (snapshot_width, snapshot_height) = if texture_ratio > widget_ratio {
+                        (width, width / texture_ratio)
                     } else {
-                        (height * ratio, height)
+                        (height * texture_ratio, height)
                     };
 
                     let x = (width - snapshot_width.ceil()) / 2.0;
