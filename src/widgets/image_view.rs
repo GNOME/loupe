@@ -29,8 +29,9 @@ use anyhow::Context;
 use ashpd::desktop::wallpaper;
 use ashpd::WindowIdentifier;
 use once_cell::sync::Lazy;
-use std::cell::{Cell, RefCell};
+use std::cell::RefCell;
 
+use crate::file_model::LpFileModel;
 use crate::thumbnail::Thumbnail;
 use crate::util;
 use crate::widgets::LpImage;
@@ -56,13 +57,9 @@ mod imp {
         pub menu_model: RefCell<Option<gio::MenuModel>>,
         pub popover_menu_model: RefCell<Option<gio::MenuModel>>,
 
-        pub directory: RefCell<Option<String>>,
-        pub filename: RefCell<Option<String>>,
+        pub model: RefCell<Option<LpFileModel>>,
+        pub current_file: RefCell<Option<gio::File>>,
         pub uri: RefCell<Option<String>>,
-        // Path of filenames
-        pub directory_pictures: RefCell<Vec<String>>,
-        // Cell<T> allows for interior mutability of primitive types
-        pub index: Cell<usize>,
     }
 
     #[glib::object_subclass]
@@ -112,9 +109,9 @@ mod imp {
             PROPERTIES.as_ref()
         }
 
-        fn property(&self, _obj: &Self::Type, _id: usize, psec: &glib::ParamSpec) -> glib::Value {
+        fn property(&self, obj: &Self::Type, _id: usize, psec: &glib::ParamSpec) -> glib::Value {
             match psec.name() {
-                "filename" => self.filename.borrow().to_value(),
+                "filename" => obj.filename().to_value(),
                 "controls" => self.controls.to_value(),
                 _ => unimplemented!(),
             }
@@ -181,11 +178,10 @@ impl LpImageView {
             }
         }
 
+        imp.current_file.replace(Some(file.clone()));
         self.set_parent_from_file(file);
-        imp.picture.set_file(file);
-        *imp.uri.borrow_mut() = Some(file.uri().to_string());
+        self.update_image(file);
         self.notify("filename");
-        self.update_action_state();
 
         let width = imp.picture.image_width();
         let height = imp.picture.image_height();
@@ -196,101 +192,71 @@ impl LpImageView {
 
     fn set_parent_from_file(&self, file: &gio::File) {
         let imp = self.imp();
+        let mut model = imp.model.borrow_mut();
 
-        if let Some(parent) = file.parent() {
-            let parent_path = parent.path().map(|p| p.to_str().unwrap().to_string());
-            let mut directory_vec = imp.directory_pictures.borrow_mut();
-
-            if parent_path.as_deref() != imp.directory.borrow().as_deref() {
-                *imp.directory.borrow_mut() = parent_path;
-                directory_vec.clear();
-
-                let enumerator = parent
-                    .enumerate_children(
-                        &format!(
-                            "{},{}",
-                            *gio::FILE_ATTRIBUTE_STANDARD_DISPLAY_NAME,
-                            *gio::FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE
-                        ),
-                        gio::FileQueryInfoFlags::NONE,
-                        gio::Cancellable::NONE,
-                    )
-                    .unwrap();
-
-                // Filter out non-images; For now we support "all" image types.
-                enumerator.for_each(|info| {
-                    if let Ok(info) = info {
-                        if let Some(content_type) = info.content_type().map(|t| t.to_string()) {
-                            let filename = info.display_name().to_string();
-                            log::debug!("Filename: {}", filename);
-                            log::debug!("Mimetype: {}", content_type);
-
-                            if content_type.starts_with("image/") {
-                                log::debug!("{} is an image, adding to the list", filename);
-                                directory_vec.push(filename);
-                            }
-                        }
-                    }
-                });
-
-                // Then sort by name.
-                directory_vec.sort_by(|name_a, name_b| {
-                    util::utf8_collate_key_for_filename(name_a)
-                        .cmp(&util::utf8_collate_key_for_filename(name_b))
-                });
-
-                log::debug!("Sorted files: {:?}", directory_vec);
+        if let Some(ref parent) = file.parent() {
+            if let Some(ref m) = *model {
+                if m.directory().map_or(false, |f| !f.equal(parent)) {
+                    *model = Some(LpFileModel::from_directory(parent));
+                    log::debug!("new model created");
+                }
+            } else {
+                *model = Some(LpFileModel::from_directory(parent));
+                log::debug!("new model created");
             }
-
-            *imp.filename.borrow_mut() = util::get_file_display_name(file);
-
-            imp.index.set(
-                directory_vec
-                    .iter()
-                    .position(|f| Some(f) == imp.filename.borrow().as_ref())
-                    .unwrap(),
-            );
-
-            log::debug!("Current index is {}", imp.index.get());
         }
     }
 
-    fn update_image(&self) {
+    fn update_image(&self, file: &gio::File) {
         let imp = self.imp();
 
-        let path = &format!(
-            "{}/{}",
-            imp.directory.borrow().as_ref().unwrap(),
-            &imp.directory_pictures.borrow()[imp.index.get()]
-        );
-
-        let file = gio::File::for_path(path);
-        imp.picture.set_file(&file);
-        *imp.uri.borrow_mut() = Some(file.uri().to_string());
-        *imp.filename.borrow_mut() = util::get_file_display_name(&file);
-        self.notify("filename");
-        self.update_action_state();
+        imp.picture.set_file(file);
+        imp.uri.replace(Some(file.uri().to_string()));
+        self.update_action_state(file);
     }
 
     pub fn next(&self) {
-        let imp = self.imp();
-        // TODO: Replace with `Cell::update()` once stabilized
-        imp.index.set(imp.index.get() + 1);
-        self.update_image();
+        {
+            let imp = self.imp();
+            let b = imp.model.borrow();
+            let model = b.as_ref().unwrap();
+            let mut current_file = imp.current_file.borrow_mut();
+
+            if let Some(file) = current_file.as_mut() {
+                *file = model.next(file).unwrap();
+                self.update_image(file);
+            }
+        }
+
+        self.notify("filename");
     }
 
     pub fn previous(&self) {
-        let imp = self.imp();
-        // TODO: Replace with `Cell::update()` once stabilized
-        imp.index.set(imp.index.get() - 1);
-        self.update_image();
+        {
+            let imp = self.imp();
+            let b = imp.model.borrow();
+            let model = b.as_ref().unwrap();
+            let mut current_file = imp.current_file.borrow_mut();
+
+            if let Some(file) = current_file.as_mut() {
+                *file = model.previous(file).unwrap();
+                self.update_image(file);
+            }
+        }
+
+        self.notify("filename");
     }
 
-    pub fn update_action_state(&self) {
+    pub fn update_action_state(&self, file: &gio::File) {
         let imp = self.imp();
-        let index = imp.index.get();
-        self.action_set_enabled("iv.next", index < imp.directory_pictures.borrow().len() - 1);
-        self.action_set_enabled("iv.previous", index > 0);
+        let b = imp.model.borrow();
+        let model = b.as_ref().unwrap();
+
+        let next_enabled = model.next(file).is_some();
+        let prev_enabled = model.previous(file).is_some();
+
+        self.action_set_enabled("iv.next", next_enabled);
+        self.action_set_enabled("iv.previous", prev_enabled);
     }
 
     pub fn set_wallpaper(&self) -> anyhow::Result<()> {
@@ -330,11 +296,10 @@ impl LpImageView {
         let imp = self.imp();
 
         let operation = gtk::PrintOperation::new();
-        let path = &format!(
-            "{}/{}",
-            imp.directory.borrow().as_ref().unwrap(),
-            &imp.directory_pictures.borrow()[imp.index.get()]
-        );
+        let path = (imp.current_file.borrow().as_ref())
+            .context("No file")?
+            .peek_path()
+            .context("No path")?;
         let pb = gdk_pixbuf::Pixbuf::from_file(path)?;
 
         let setup = gtk::PageSetup::default();
@@ -387,7 +352,9 @@ impl LpImageView {
 
     pub fn filename(&self) -> Option<String> {
         let imp = self.imp();
-        imp.filename.borrow().to_owned()
+        let b = imp.current_file.borrow();
+        let file = b.as_ref()?;
+        util::get_file_display_name(file)
     }
 
     pub fn show_popover_at(&self, x: f64, y: f64) {

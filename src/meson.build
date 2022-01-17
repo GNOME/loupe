@@ -18,6 +18,7 @@ rust_sources = files(
   'widgets/mod.rs',
   'application.rs',
   'config.rs',
+  'file_model.rs',
   'main.rs',
   'util.rs',
   'thumbnail.rs',
