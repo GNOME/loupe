@@ -25,7 +25,7 @@ use gtk::prelude::*;
 use gtk::subclass::prelude::*;
 use gtk::CompositeTemplate;
 
-use anyhow::Context;
+use anyhow::{bail, Context};
 use ashpd::desktop::wallpaper;
 use ashpd::WindowIdentifier;
 use once_cell::sync::Lazy;
@@ -34,7 +34,11 @@ use std::cell::RefCell;
 use crate::file_model::LpFileModel;
 use crate::thumbnail::Thumbnail;
 use crate::util;
-use crate::widgets::LpImage;
+use crate::widgets::LpImagePage;
+
+// Maximum number of pages to load
+// at any given time
+const N_PAGES: u32 = 3;
 
 mod imp {
     use super::*;
@@ -43,23 +47,10 @@ mod imp {
     #[template(resource = "/org/gnome/Loupe/gtk/image_view.ui")]
     pub struct LpImageView {
         #[template_child]
-        pub picture: TemplateChild<LpImage>,
-        #[template_child]
-        pub controls: TemplateChild<gtk::Box>,
-        #[template_child]
-        pub popover: TemplateChild<gtk::PopoverMenu>,
-        #[template_child]
-        pub click_gesture: TemplateChild<gtk::GestureClick>,
-        #[template_child]
-        pub press_gesture: TemplateChild<gtk::GestureLongPress>,
-
-        // RefCell<T> allows for interior mutability of non-primitive types.
-        pub menu_model: RefCell<Option<gio::MenuModel>>,
-        pub popover_menu_model: RefCell<Option<gio::MenuModel>>,
+        pub carousel: TemplateChild<adw::Carousel>,
 
         pub model: RefCell<Option<LpFileModel>>,
-        pub current_file: RefCell<Option<gio::File>>,
-        pub uri: RefCell<Option<String>>,
+        pub filename: RefCell<Option<String>>,
     }
 
     #[glib::object_subclass]
@@ -70,13 +61,14 @@ mod imp {
 
         fn class_init(klass: &mut Self::Class) {
             Self::bind_template(klass);
+            Self::Type::bind_template_callbacks(klass);
 
             klass.install_action("iv.next", None, move |image_view, _, _| {
-                image_view.next();
+                image_view.navigate(adw::NavigationDirection::Forward);
             });
 
             klass.install_action("iv.previous", None, move |image_view, _, _| {
-                image_view.previous();
+                image_view.navigate(adw::NavigationDirection::Back);
             });
         }
 
@@ -88,22 +80,13 @@ mod imp {
     impl ObjectImpl for LpImageView {
         fn properties() -> &'static [glib::ParamSpec] {
             static PROPERTIES: Lazy<Vec<glib::ParamSpec>> = Lazy::new(|| {
-                vec![
-                    glib::ParamSpecString::new(
-                        "filename",
-                        "Filename",
-                        "The filename of the current file",
-                        None,
-                        glib::ParamFlags::READABLE,
-                    ),
-                    glib::ParamSpecObject::new(
-                        "controls",
-                        "Controls",
-                        "The controls for the image view",
-                        gtk::Box::static_type(),
-                        glib::ParamFlags::READABLE,
-                    ),
-                ]
+                vec![glib::ParamSpecString::new(
+                    "filename",
+                    "Filename",
+                    "The filename of the current file",
+                    None,
+                    glib::ParamFlags::READABLE,
+                )]
             });
 
             PROPERTIES.as_ref()
@@ -112,7 +95,6 @@ mod imp {
         fn property(&self, obj: &Self::Type, _id: usize, psec: &glib::ParamSpec) -> glib::Value {
             match psec.name() {
                 "filename" => obj.filename().to_value(),
-                "controls" => self.controls.to_value(),
                 _ => unimplemented!(),
             }
         }
@@ -120,33 +102,16 @@ mod imp {
         fn constructed(&self, obj: &Self::Type) {
             self.parent_constructed(obj);
 
-            self.click_gesture
-                .connect_pressed(clone!(@weak obj => move |_, _, x, y| {
-                    obj.show_popover_at(x, y);
-                }));
-
-            self.press_gesture
-                .connect_pressed(clone!(@weak obj => move |_, x, y| {
-                    obj.show_popover_at(x, y);
-                }));
-
             let source = gtk::DragSource::new();
 
             source.connect_prepare(
                 glib::clone!(@weak obj => @default-return None, move |_, _, _| {
-                    match obj.imp().picture.content_provider() {
-                        Ok(content) => Some(content),
-                        Err(e) => {
-                            log::error!("Could not get content provider: {:?}", e);
-                            None
-                        }
-                    }
+                    obj.current_page().map(|p| p.content_provider())
                 }),
             );
 
             source.connect_drag_begin(glib::clone!(@weak obj => move |source, _| {
-                let imp = obj.imp();
-                if let Some(texture) = imp.picture.texture() {
+                if let Some(texture) = obj.current_page().and_then(|p| p.texture()) {
                     let thumbnail = Thumbnail::new(&texture);
                     source.set_icon(Some(&thumbnail), 0, 0);
                 };
@@ -166,85 +131,116 @@ glib::wrapper! {
         @implements gtk::Buildable, gtk::ConstraintTarget, gtk::Orientable;
 }
 
+#[gtk::template_callbacks]
 impl LpImageView {
-    pub fn set_image_from_file(&self, file: &gio::File) -> anyhow::Result<(i32, i32)> {
-        let imp = self.imp();
-
-        if let Some(current_file) = imp.picture.file() {
-            if current_file.path().as_deref() == file.path().as_deref() {
-                return Err(anyhow::Error::msg(
-                    "Image is the same as the previous image; Doing nothing.",
-                ));
+    pub fn set_image_from_file(&self, file: &gio::File) -> anyhow::Result<()> {
+        if let Some(current_file) = self.current_page().and_then(|p| p.file()) {
+            if current_file.equal(file) {
+                bail!("Image is the same as the previous image; Doing nothing.");
             }
         }
 
-        imp.current_file.replace(Some(file.clone()));
-        self.set_parent_from_file(file);
-        self.update_image(file);
+        self.build_model_from_file(file);
+        self.update_action_state(file);
         self.notify("filename");
 
-        let width = imp.picture.image_width();
-        let height = imp.picture.image_height();
+        // TODO: rework width stuff
+        // let width = imp.picture.image_width();
+        // let height = imp.picture.image_height();
 
-        log::debug!("Image dimensions: {} x {}", width, height);
-        Ok((width, height))
+        // log::debug!("Image dimensions: {} x {}", width, height);
+        // Ok((width, height))
+        Ok(())
     }
 
-    fn set_parent_from_file(&self, file: &gio::File) {
+    // Builds an `LpFileModel`, which is an implementation of `gio::ListModel`
+    // that holds a `gio::File` for each child within the same directory as the
+    // file we pass. This model will update with changes to the directory,
+    // and in turn we'll update our `adw::Carousel`.
+    //
+    // TODO: Properly loading a new model with the same view,
+    // & loading a file from the same directory
+    fn build_model_from_file(&self, file: &gio::File) {
         let imp = self.imp();
-        let mut model = imp.model.borrow_mut();
+        let carousel = &imp.carousel;
 
-        if let Some(ref parent) = file.parent() {
-            if let Some(ref m) = *model {
-                if m.directory().map_or(false, |f| !f.equal(parent)) {
+        {
+            // Here we use a nested scope so that the mutable borrow only lasts as long as we need it
+            let mut model = imp.model.borrow_mut();
+
+            if let Some(ref parent) = file.parent() {
+                if let Some(ref m) = *model {
+                    if m.directory().map_or(false, |f| !f.equal(parent)) {
+                        *model = Some(LpFileModel::from_directory(parent));
+                        log::debug!("new model created");
+                    } else {
+                        // Early return if the parent is equal to the current model's directory
+                        return;
+                    }
+                } else {
                     *model = Some(LpFileModel::from_directory(parent));
                     log::debug!("new model created");
                 }
+            }
+        }
+
+        if let Some(model) = imp.model.borrow().as_ref() {
+            let index = model.index_of(file).unwrap() as u32;
+            imp.filename.replace(util::get_file_display_name(file));
+            carousel.append(&LpImagePage::from_file(file));
+
+            // Here we need to check if we're at the start or end of our directory.
+            // If we are, we try to add two files to the other side. Otherwise,
+            // add one file on each end of the current file.
+            let iterations = if index == 0 || index == model.n_items() - 1 {
+                2
             } else {
-                *model = Some(LpFileModel::from_directory(parent));
-                log::debug!("new model created");
+                1
+            };
+
+            let mut next_file = file.clone();
+            for i in 0..iterations {
+                log::debug!("Loop to find next files: {}", i);
+                if let Some(f) = model.next(&next_file) {
+                    log::debug!("Adding next image URI: {}", f.uri());
+                    carousel.append(&LpImagePage::from_file(&f));
+                    next_file = f;
+                } else {
+                    // Return early if there are no files in this direction;
+                    break;
+                }
+            }
+
+            let mut prev_file = file.clone();
+            for i in 0..iterations {
+                log::debug!("Loop to find prior files: {}", i);
+                if let Some(f) = model.previous(&prev_file) {
+                    log::debug!("Adding previous image URI: {}", f.uri());
+                    carousel.prepend(&LpImagePage::from_file(&f));
+                    prev_file = f;
+                } else {
+                    break;
+                }
             }
         }
     }
 
-    fn update_image(&self, file: &gio::File) {
-        let imp = self.imp();
-
-        imp.picture.set_file(file);
-        imp.uri.replace(Some(file.uri().to_string()));
-        self.update_action_state(file);
-    }
-
-    pub fn next(&self) {
-        {
-            let imp = self.imp();
-            let b = imp.model.borrow();
-            let model = b.as_ref().unwrap();
-            let mut current_file = imp.current_file.borrow_mut();
-
-            if let Some(file) = current_file.as_mut() {
-                *file = model.next(file).unwrap();
-                self.update_image(file);
+    pub fn navigate(&self, direction: adw::NavigationDirection) {
+        let carousel = &self.imp().carousel;
+        let pos = carousel.position().round() as u32;
+        match direction {
+            adw::NavigationDirection::Forward => {
+                if pos < carousel.n_pages() - 1 {
+                    carousel.scroll_to(&carousel.nth_page(pos + 1), true);
+                }
             }
-        }
-
-        self.notify("filename");
-    }
-
-    pub fn previous(&self) {
-        {
-            let imp = self.imp();
-            let b = imp.model.borrow();
-            let model = b.as_ref().unwrap();
-            let mut current_file = imp.current_file.borrow_mut();
-
-            if let Some(file) = current_file.as_mut() {
-                *file = model.previous(file).unwrap();
-                self.update_image(file);
+            adw::NavigationDirection::Back => {
+                if pos > 0 {
+                    carousel.scroll_to(&carousel.nth_page(pos - 1), true)
+                }
             }
-        }
-
-        self.notify("filename");
+            _ => unimplemented!("Navigation direction should only be back or forward."),
+        };
     }
 
     pub fn update_action_state(&self, file: &gio::File) {
@@ -257,6 +253,37 @@ impl LpImageView {
 
         self.action_set_enabled("iv.next", next_enabled);
         self.action_set_enabled("iv.previous", prev_enabled);
+    }
+
+    #[template_callback]
+    fn page_changed_cb(&self, index: u32, carousel: &adw::Carousel) {
+        let imp = self.imp();
+        let b = imp.model.borrow();
+        let model = b.as_ref().unwrap();
+        let current = self.current_page().and_then(|p| p.file()).unwrap();
+        imp.filename.replace(util::get_file_display_name(&current));
+        self.notify("filename");
+        self.update_action_state(&current);
+
+        // We've moved forward
+        if index + 1 == N_PAGES {
+            if let Some(ref next) = model.next(&current) {
+                log::debug!("Next URI: {}", next.uri());
+                // Remove the page at index 0, add a new page at the end
+                carousel.remove(&carousel.nth_page(0));
+                carousel.append(&LpImagePage::from_file(next));
+            }
+        }
+
+        // We've moved backward
+        if index == 0 {
+            if let Some(ref prev) = model.previous(&current) {
+                log::debug!("Previous URI: {}", prev.uri());
+                // Remove the page at the front, add a new page at the back
+                carousel.remove(&carousel.nth_page(carousel.n_pages() - 1));
+                carousel.prepend(&LpImagePage::from_file(prev));
+            }
+        }
     }
 
     pub fn set_wallpaper(&self) -> anyhow::Result<()> {
@@ -293,10 +320,10 @@ impl LpImageView {
     }
 
     pub fn print(&self) -> anyhow::Result<()> {
-        let imp = self.imp();
-
         let operation = gtk::PrintOperation::new();
-        let path = (imp.current_file.borrow().as_ref())
+        let path = self
+            .current_page()
+            .and_then(|p| p.file())
             .context("No file")?
             .peek_path()
             .context("No path")?;
@@ -334,9 +361,8 @@ impl LpImageView {
 
     pub fn copy(&self) -> anyhow::Result<()> {
         let clipboard = self.clipboard();
-        let imp = self.imp();
 
-        if let Some(texture) = imp.picture.texture() {
+        if let Some(texture) = self.current_page().context("No current page")?.texture() {
             clipboard.set_texture(&texture);
         } else {
             anyhow::bail!("No Image displayed.");
@@ -345,24 +371,23 @@ impl LpImageView {
         Ok(())
     }
 
+    fn current_page(&self) -> Option<LpImagePage> {
+        let carousel = &self.imp().carousel;
+        let pos = carousel.position().round() as u32;
+        if carousel.n_pages() > 0 {
+            carousel.nth_page(pos).downcast().ok()
+        } else {
+            None
+        }
+    }
+
     pub fn uri(&self) -> Option<String> {
-        let imp = self.imp();
-        imp.uri.borrow().to_owned()
+        let page = self.current_page().expect("No page");
+        let file = page.file().expect("No file");
+        Some(file.uri().to_string())
     }
 
     pub fn filename(&self) -> Option<String> {
-        let imp = self.imp();
-        let b = imp.current_file.borrow();
-        let file = b.as_ref()?;
-        util::get_file_display_name(file)
-    }
-
-    pub fn show_popover_at(&self, x: f64, y: f64) {
-        let imp = self.imp();
-
-        let rect = gdk::Rectangle::new(x as i32, y as i32, 0, 0);
-
-        imp.popover.set_pointing_to(Some(&rect));
-        imp.popover.popup();
+        self.imp().filename.borrow().clone()
     }
 }

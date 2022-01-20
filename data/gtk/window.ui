@@ -16,11 +16,6 @@
         <property name="flap">
           <object class="GtkHeaderBar" id="headerbar">
             <property name="show_title_buttons" bind-source="LpWindow" bind-property="fullscreened" bind-flags="sync-create|invert-boolean"/>
-            <binding name="opacity">
-              <lookup type="GtkWidget" name="opacity">
-                <lookup name="controls">image_view</lookup>
-              </lookup>
-            </binding>
             <child type="end">
               <object class="GtkMenuButton" id="menu_button">
                 <property name="icon-name">open-menu-symbolic</property>

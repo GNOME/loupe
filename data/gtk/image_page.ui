@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <template class="LpImagePage" parent="AdwBin">
+    <property name="hexpand">True</property>
+    <property name="vexpand">True</property>
+    <property name="child">
+      <object class="GtkStack" id="stack">
+        <property name="transition-type">crossfade</property>
+        <child>
+          <object class="GtkSpinner" id="spinner">
+            <property name="halign">center</property>
+            <property name="valign">center</property>
+            <property name="spinning">True</property>
+          </object>
+        </child>
+        <child>
+          <object class="AdwStatusPage" id="error_page">
+            <property name="icon-name">image-missing-symbolic</property>
+            <property name="title" translatable="yes">Could not Load Image</property>
+            <property name="description" translatable="yes">This image could be corrupted or may use an unsupported file format.</property>
+          </object>
+        </child>
+        <child>
+          <object class="LpImage" id="image">
+            <property name="halign">center</property>
+            <property name="valign">center</property>
+            <child>
+              <object class="GtkGestureClick" id="click_gesture">
+                <property name="button">3</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkGestureLongPress" id="press_gesture">
+                <property name="touch-only">True</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkPopoverMenu" id="popover">
+                <property name="has-arrow">False</property>
+                <property name="menu-model">image_menu</property>
+              </object>
+            </child>
+          </object>
+        </child>
+      </object>
+    </property>
+  </template>
+  <menu id="image_menu">
+    <section>
+      <item>
+        <attribute name="label" translatable="yes">_Open With…</attribute>
+        <attribute name="action">win.open-with</attribute>
+      </item>
+      <!--<item>
+        <attribute name="label" translatable="yes">_Display On…</attribute>
+        <attribute name="action">win.display-on</attribute>
+      </item>-->
+      <item>
+        <attribute name="label" translatable="yes">_Print…</attribute>
+        <attribute name="action">win.print</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">_Copy</attribute>
+        <attribute name="action">win.copy</attribute>
+      </item>
+      <!--<item>
+        <attribute name="label" translatable="yes">_Rotate</attribute>
+        <attribute name="action">win.rotate-image</attribute>
+      </item>-->
+      <item>
+        <attribute name="label" translatable="yes">_Set as Wallpaper</attribute>
+        <attribute name="action">win.set-wallpaper</attribute>
+      </item>
+    </section>
+  </menu>
+</interface>

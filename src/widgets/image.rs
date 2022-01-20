@@ -82,6 +82,12 @@ mod imp {
             obj.set_hexpand(true);
             obj.set_vexpand(true);
         }
+
+        fn dispose(&self, obj: &Self::Type) {
+            while let Some(child) = obj.first_child() {
+                child.unparent();
+            }
+        }
     }
 
     impl WidgetImpl for LpImage {
@@ -184,7 +190,6 @@ impl LpImage {
 
         self.queue_draw();
         self.queue_resize();
-        imp.image_height.get();
     }
 
     pub fn image_width(&self) -> i32 {
@@ -197,12 +202,21 @@ impl LpImage {
         imp.image_height.get()
     }
 
+    pub fn set_texture_with_file(&self, texture: gdk::Texture, source_file: &gio::File) {
+        let imp = self.imp();
+        imp.texture.replace(Some(texture));
+        imp.file.replace(Some(source_file.clone()));
+
+        self.queue_draw();
+        self.queue_resize();
+    }
+
     pub fn texture(&self) -> Option<gdk::Texture> {
         let imp = self.imp();
         imp.texture.borrow().clone()
     }
 
-    pub fn content_provider(&self) -> anyhow::Result<gdk::ContentProvider> {
+    pub fn content_provider(&self) -> gdk::ContentProvider {
         let imp = self.imp();
         let mut contents = vec![];
 
@@ -217,6 +231,6 @@ impl LpImage {
             contents.push(content);
         }
 
-        Ok(gdk::ContentProvider::new_union(contents.as_slice()))
+        gdk::ContentProvider::new_union(contents.as_slice())
     }
 }

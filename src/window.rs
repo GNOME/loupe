@@ -324,15 +324,15 @@ impl LpWindow {
         imp.toast_overlay.add_toast(&toast);
     }
 
-    pub fn set_image_from_file(&self, file: &gio::File, resize: bool) {
+    pub fn set_image_from_file(&self, file: &gio::File, _resize: bool) {
         let imp = self.imp();
 
         log::debug!("Loading file: {}", file.uri().to_string());
         match imp.image_view.set_image_from_file(file) {
-            Ok((width, height)) => {
-                if resize {
-                    self.resize_from_dimensions(width, height);
-                }
+            Ok((/*width, height*/)) => {
+                // if resize {
+                    // self.resize_from_dimensions(width, height);
+                // }
 
                 imp.stack.set_visible_child(&*imp.image_view);
                 imp.image_view.grab_focus();

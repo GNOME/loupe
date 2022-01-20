@@ -8,61 +8,42 @@
       <object class="GtkOverlay">
         <property name="hexpand">True</property>
         <child>
-          <object class="LpImage" id="picture">
-            <property name="halign">center</property>
-            <property name="valign">center</property>
+          <object class="AdwCarousel" id="carousel">
+            <property name="interactive">True</property>
+            <property name="allow-mouse-drag">False</property>
+            <property name="allow-scroll-wheel">False</property>
+            <signal name="page-changed" handler="page_changed_cb" swapped="yes"/>
           </object>
         </child>
         <child type="overlay">
-          <object class="GtkBox" id="controls">
-            <property name="vexpand">True</property>
-            <child>
-              <object class="GtkButton" id="prev_button">
-                <property name="halign">start</property>
-                <property name="valign">center</property>
-                <property name="margin-start">18</property>
-                <property name="margin-end">18</property>
-                <property name="icon-name">go-previous-symbolic</property>
-                <property name="action-name">iv.previous</property>
-                <property name="tooltip-text" translatable="yes">Previous Image</property>
-                <style>
-                  <class name="osd"/>
-                  <class name="circular"/>
-                </style>
-              </object>
-            </child>
-            <child>
-              <object class="GtkButton" id="next_button">
-                <property name="hexpand">True</property>
-                <property name="halign">end</property>
-                <property name="valign">center</property>
-                <property name="margin-start">18</property>
-                <property name="margin-end">18</property>
-                <property name="icon-name">go-next-symbolic</property>
-                <property name="action-name">iv.next</property>
-                <property name="tooltip-text" translatable="yes">Next Image</property>
-                <style>
-                  <class name="osd"/>
-                  <class name="circular"/>
-                </style>
-              </object>
-            </child>
-            <child>
-              <object class="GtkGestureClick" id="click_gesture">
-                <property name="button">3</property>
-              </object>
-            </child>
-            <child>
-              <object class="GtkGestureLongPress" id="press_gesture">
-                <property name="touch-only">True</property>
-              </object>
-            </child>
-            <child>
-              <object class="GtkPopoverMenu" id="popover">
-                <property name="has-arrow">False</property>
-                <property name="menu-model">image_menu</property>
-              </object>
-            </child>
+          <object class="GtkButton" id="prev_button">
+            <property name="halign">start</property>
+            <property name="valign">center</property>
+            <property name="margin-start">18</property>
+            <property name="margin-end">18</property>
+            <property name="icon-name">go-previous-symbolic</property>
+            <property name="action-name">iv.previous</property>
+            <property name="tooltip-text" translatable="yes">Previous Image</property>
+            <style>
+              <class name="osd"/>
+              <class name="circular"/>
+            </style>
+          </object>
+        </child>
+        <child type="overlay">
+          <object class="GtkButton" id="next_button">
+            <property name="hexpand">True</property>
+            <property name="halign">end</property>
+            <property name="valign">center</property>
+            <property name="margin-start">18</property>
+            <property name="margin-end">18</property>
+            <property name="icon-name">go-next-symbolic</property>
+            <property name="action-name">iv.next</property>
+            <property name="tooltip-text" translatable="yes">Next Image</property>
+            <style>
+              <class name="osd"/>
+              <class name="circular"/>
+            </style>
           </object>
         </child>
       </object>
@@ -87,32 +68,4 @@
       <class name="image-view"/>
     </style>
   </template>
-  <menu id="image_menu">
-    <section>
-      <item>
-        <attribute name="label" translatable="yes">_Open With…</attribute>
-        <attribute name="action">win.open-with</attribute>
-      </item>
-      <!--<item>
-        <attribute name="label" translatable="yes">_Display On…</attribute>
-        <attribute name="action">win.display-on</attribute>
-      </item>-->
-      <item>
-        <attribute name="label" translatable="yes">_Print…</attribute>
-        <attribute name="action">win.print</attribute>
-      </item>
-      <item>
-        <attribute name="label" translatable="yes">_Copy</attribute>
-        <attribute name="action">win.copy</attribute>
-      </item>
-      <!--<item>
-        <attribute name="label" translatable="yes">_Rotate</attribute>
-        <attribute name="action">win.rotate-image</attribute>
-      </item>-->
-      <item>
-        <attribute name="label" translatable="yes">_Set as Wallpaper</attribute>
-        <attribute name="action">win.set-wallpaper</attribute>
-      </item>
-    </section>
-  </menu>
 </interface>

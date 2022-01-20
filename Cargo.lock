@@ -863,6 +863,7 @@ version = "0.1.0"
 dependencies = [
  "anyhow",
  "ashpd",
+ "futures-channel",
  "gettext-rs",
  "gtk-macros",
  "gtk4",

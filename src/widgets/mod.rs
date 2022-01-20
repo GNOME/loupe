@@ -18,7 +18,9 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 
 mod image;
+mod image_page;
 mod image_view;
 
 pub use image::LpImage;
+pub use image_page::LpImagePage;
 pub use image_view::LpImageView;
