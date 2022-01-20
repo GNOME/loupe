@@ -14,17 +14,17 @@ zvariant = "2.9.0"
 cairo-rs = "0.14"
 
 [dependencies.ashpd]
-git = "https://github.com/bilelmoussaoui/ashpd"
+version = "0.2.0-beta-1"
 features = ["feature_gtk4"]
 
 [dependencies.gtk]
 package = "gtk4"
-git = "https://github.com/gtk-rs/gtk4-rs"
+version = "0.4.4"
 features = ["v4_6"]
 
 [dependencies.adw]
 package = "libadwaita"
-git = "https://gitlab.gnome.org/World/Rust/libadwaita-rs.git"
+version = "0.1.0"
 
 [dependencies.gettext-rs]
 version = "0.7.0"

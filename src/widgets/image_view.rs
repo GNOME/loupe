@@ -395,7 +395,7 @@ impl LpImageView {
 
         let rect = gdk::Rectangle::new(x as i32, y as i32, 0, 0);
 
-        imp.popover.set_pointing_to(&rect);
+        imp.popover.set_pointing_to(Some(&rect));
         imp.popover.popup();
     }
 }
