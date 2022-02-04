@@ -33,10 +33,8 @@ mod imp {
 
     // The basic struct that holds our
     // state and widgets
-    #[derive(Debug)]
-    pub struct LpApplication {
-        pub gtk_settings: gtk::Settings,
-    }
+    #[derive(Default, Debug)]
+    pub struct LpApplication {}
 
     // Sets up the basics for the GObject
     // The `#[glib::object_subclass] macro implements
@@ -46,14 +44,6 @@ mod imp {
         const NAME: &'static str = "LpApplication";
         type Type = super::LpApplication;
         type ParentType = adw::Application;
-
-        // Initialize with default values
-        fn new() -> Self {
-            let gtk_settings =
-                gtk::Settings::default().expect("Could not get default GTK settings");
-
-            Self { gtk_settings }
-        }
     }
 
     // Overrides GObject vfuncs
