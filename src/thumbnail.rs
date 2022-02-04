@@ -18,7 +18,6 @@ mod imp {
     impl ObjectSubclass for Thumbnail {
         const NAME: &'static str = "Thumbnail";
         type Type = super::Thumbnail;
-        type ParentType = glib::Object;
         type Interfaces = (gdk::Paintable,);
     }
 
