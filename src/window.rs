@@ -185,7 +185,7 @@ mod imp {
                         obj.set_image_from_file(&file, false);
                     } else {
                         obj.show_toast(
-                            &format!("\"{}\" is not a valid image.", info.display_name().to_string()),
+                            &format!("\"{}\" is not a valid image.", info.display_name()),
                             adw::ToastPriority::High,
                         );
                     }
