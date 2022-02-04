@@ -41,15 +41,6 @@ mod imp {
         const NAME: &'static str = "LpImage";
         type ParentType = gtk::Widget;
         type Type = super::LpImage;
-
-        fn new() -> Self {
-            Self {
-                file: RefCell::default(),
-                image_width: Cell::default(),
-                image_height: Cell::default(),
-                texture: RefCell::default(),
-            }
-        }
     }
 
     impl ObjectImpl for LpImage {
