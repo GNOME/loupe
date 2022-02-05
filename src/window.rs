@@ -274,10 +274,10 @@ impl LpWindow {
 
         if let Some(file) = imp
             .image_view
-            .uri()
-            .map(|u| u.trim_start_matches("file://").to_string())
-            .map(|u| std::fs::File::open(u).ok())
-            .flatten()
+            .current_page()
+            .and_then(|p| p.file())
+            .and_then(|f| f.peek_path())
+            .and_then(|p| std::fs::File::open(p).ok())
         {
             ctx.spawn_local(clone!(@weak self as win => async move {
                 if let Err(e) =
@@ -287,7 +287,7 @@ impl LpWindow {
                 }
             }));
         } else {
-            log::error!("No URI for current image.")
+            log::error!("Could not load a path for the current image.")
         }
     }
 

@@ -371,7 +371,7 @@ impl LpImageView {
         Ok(())
     }
 
-    fn current_page(&self) -> Option<LpImagePage> {
+    pub fn current_page(&self) -> Option<LpImagePage> {
         let carousel = &self.imp().carousel;
         let pos = carousel.position().round() as u32;
         if carousel.n_pages() > 0 {
