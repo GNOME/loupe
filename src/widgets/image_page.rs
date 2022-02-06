@@ -73,13 +73,16 @@ mod imp {
             self.parent_constructed(obj);
 
             self.click_gesture
-                .connect_pressed(clone!(@weak obj => move |_, _, x, y| {
+                .connect_pressed(clone!(@weak obj => move |gesture, _, x, y| {
                     obj.show_popover_at(x, y);
+                    gesture.set_state(gtk::EventSequenceState::Claimed);
                 }));
 
             self.press_gesture
-                .connect_pressed(clone!(@weak obj => move |_, x, y| {
+                .connect_pressed(clone!(@weak obj => move |gesture, x, y| {
+                    log::debug!("Long press triggered");
                     obj.show_popover_at(x, y);
+                    gesture.set_state(gtk::EventSequenceState::Claimed);
                 }));
         }
     }
