@@ -103,6 +103,7 @@ mod imp {
             self.parent_constructed(obj);
 
             let source = gtk::DragSource::new();
+            source.set_exclusive(true);
 
             source.connect_prepare(
                 glib::clone!(@weak obj => @default-return None, move |_, _, _| {
