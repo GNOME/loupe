@@ -29,7 +29,7 @@ use anyhow::{bail, Context};
 use ashpd::desktop::wallpaper;
 use ashpd::WindowIdentifier;
 use once_cell::sync::Lazy;
-use std::cell::RefCell;
+use std::cell::{Cell, RefCell};
 
 use crate::file_model::LpFileModel;
 use crate::thumbnail::Thumbnail;
@@ -38,7 +38,7 @@ use crate::widgets::LpImagePage;
 
 // Maximum number of pages to load
 // at any given time
-const N_PAGES: u32 = 3;
+const N_PAGES: u32 = 2;
 
 mod imp {
     use super::*;
@@ -51,6 +51,7 @@ mod imp {
 
         pub model: RefCell<Option<LpFileModel>>,
         pub filename: RefCell<Option<String>>,
+        pub prev_index: Cell<u32>,
     }
 
     #[glib::object_subclass]
@@ -187,42 +188,27 @@ impl LpImageView {
 
         if let Some(model) = imp.model.borrow().as_ref() {
             let index = model.index_of(file).unwrap() as u32;
+            log::debug!("Currently at file {index} in the directory");
             imp.filename.replace(util::get_file_display_name(file));
             carousel.append(&LpImagePage::from_file(file));
 
-            // Here we need to check if we're at the start or end of our directory.
-            // If we are, we try to add two files to the other side. Otherwise,
-            // add one file on each end of the current file.
-            let iterations = if index == 0 || index == model.n_items() - 1 {
-                2
-            } else {
-                1
-            };
-
-            let mut next_file = file.clone();
-            for i in 0..iterations {
-                log::debug!("Loop to find next files: {}", i);
-                if let Some(f) = model.next(&next_file) {
-                    log::debug!("Adding next image URI: {}", f.uri());
-                    carousel.append(&LpImagePage::from_file(&f));
-                    next_file = f;
-                } else {
-                    // Return early if there are no files in this direction;
-                    break;
+            for i in 1..=N_PAGES {
+                if let Some(file) = model.item(index + i).and_then(|o| o.downcast().ok()) {
+                    carousel.append(&LpImagePage::from_file(&file))
                 }
             }
 
-            let mut prev_file = file.clone();
-            for i in 0..iterations {
-                log::debug!("Loop to find prior files: {}", i);
-                if let Some(f) = model.previous(&prev_file) {
-                    log::debug!("Adding previous image URI: {}", f.uri());
-                    carousel.prepend(&LpImagePage::from_file(&f));
-                    prev_file = f;
-                } else {
-                    break;
+            for i in 1..=N_PAGES {
+                if let Some(file) = index
+                    .checked_sub(i)
+                    .and_then(|i| model.item(i))
+                    .and_then(|o| o.downcast().ok())
+                {
+                    carousel.prepend(&LpImagePage::from_file(&file))
                 }
             }
+
+            imp.prev_index.set(index);
         }
     }
 
@@ -257,33 +243,62 @@ impl LpImageView {
     }
 
     #[template_callback]
-    fn page_changed_cb(&self, index: u32, carousel: &adw::Carousel) {
+    fn page_changed_cb(&self, _index: u32, carousel: &adw::Carousel) {
         let imp = self.imp();
         let b = imp.model.borrow();
         let model = b.as_ref().unwrap();
         let current = self.current_page().and_then(|p| p.file()).unwrap();
-        imp.filename.replace(util::get_file_display_name(&current));
-        self.notify("filename");
-        self.update_action_state(&current);
 
-        // We've moved forward
-        if index + 1 == N_PAGES {
-            if let Some(ref next) = model.next(&current) {
-                log::debug!("Next URI: {}", next.uri());
-                // Remove the page at index 0, add a new page at the end
-                carousel.remove(&carousel.nth_page(0));
-                carousel.append(&LpImagePage::from_file(next));
-            }
-        }
+        let model_index = model.index_of(&current).unwrap() as u32;
+        let prev_index = imp.prev_index.get();
 
-        // We've moved backward
-        if index == 0 {
-            if let Some(ref prev) = model.previous(&current) {
-                log::debug!("Previous URI: {}", prev.uri());
-                // Remove the page at the front, add a new page at the back
-                carousel.remove(&carousel.nth_page(carousel.n_pages() - 1));
-                carousel.prepend(&LpImagePage::from_file(prev));
+        if model_index != prev_index {
+            imp.filename.replace(util::get_file_display_name(&current));
+            self.notify("filename");
+            self.update_action_state(&current);
+
+            // We've moved forward
+            if let Some(diff) = model_index.checked_sub(prev_index) {
+                for i in 0..diff {
+                    if prev_index
+                        .checked_sub(N_PAGES)
+                        .and_then(|r| r.checked_sub(i))
+                        .is_some()
+                    {
+                        carousel.remove(&carousel.nth_page(0));
+                    }
+
+                    let s = prev_index + N_PAGES + i + 1;
+                    if s <= model.n_items() {
+                        if let Some(ref file) =
+                            model.item(s).and_then(|o| o.downcast::<gio::File>().ok())
+                        {
+                            carousel.append(&LpImagePage::from_file(file));
+                        }
+                    }
+                }
             }
+
+            // We've moved backward
+            if let Some(diff) = prev_index.checked_sub(model_index) {
+                for i in 0..diff {
+                    let s = prev_index + N_PAGES + i + 1;
+                    if s <= model.n_items() {
+                        carousel.remove(&carousel.nth_page(carousel.n_pages() - 1));
+                    }
+
+                    if let Some(ref file) = prev_index
+                        .checked_sub(N_PAGES)
+                        .and_then(|d| d.checked_sub(i + 1))
+                        .and_then(|d| model.item(d))
+                        .and_then(|i| i.downcast::<gio::File>().ok())
+                    {
+                        carousel.prepend(&LpImagePage::from_file(file));
+                    }
+                }
+            }
+
+            imp.prev_index.set(model_index);
         }
     }
 
