@@ -160,8 +160,7 @@ impl LpImageView {
     // file we pass. This model will update with changes to the directory,
     // and in turn we'll update our `adw::Carousel`.
     //
-    // TODO: Properly loading a new model with the same view,
-    // & loading a file from the same directory
+    // TODO: Loading a file from the same directory
     fn build_model_from_file(&self, file: &gio::File) {
         let imp = self.imp();
         let carousel = &imp.carousel;
@@ -173,6 +172,11 @@ impl LpImageView {
             if let Some(ref parent) = file.parent() {
                 if let Some(ref m) = *model {
                     if m.directory().map_or(false, |f| !f.equal(parent)) {
+                        // Clear the carousel before creating the new model
+                        while carousel.n_pages() > 0 {
+                            carousel.remove(&carousel.nth_page(0));
+                        }
+
                         *model = Some(LpFileModel::from_directory(parent));
                         log::debug!("new model created");
                     } else {
