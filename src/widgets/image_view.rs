@@ -36,9 +36,9 @@ use crate::thumbnail::Thumbnail;
 use crate::util;
 use crate::widgets::LpImagePage;
 
-// Maximum number of pages to load
-// at any given time
-const N_PAGES: u32 = 2;
+// The number of pages we want to buffer
+// on either side of the current page.
+const BUFFER: u32 = 2;
 
 mod imp {
     use super::*;
@@ -253,13 +253,13 @@ impl LpImageView {
         let imp = self.imp();
         let carousel = imp.carousel.get();
 
-        for i in 1..=N_PAGES {
+        for i in 1..=BUFFER {
             if let Some(ref file) = model.file(index + i) {
                 carousel.append(&LpImagePage::from_file(file))
             }
         }
 
-        for i in 1..=N_PAGES {
+        for i in 1..=BUFFER {
             if let Some(ref file) = index.checked_sub(i).and_then(|i| model.file(i)) {
                 carousel.prepend(&LpImagePage::from_file(file))
             }
@@ -321,14 +321,14 @@ impl LpImageView {
             if let Some(diff) = model_index.checked_sub(prev_index) {
                 for i in 0..diff {
                     if prev_index
-                        .checked_sub(N_PAGES)
+                        .checked_sub(BUFFER)
                         .and_then(|r| r.checked_sub(i))
                         .is_some()
                     {
                         carousel.remove(&carousel.nth_page(0));
                     }
 
-                    let s = prev_index + N_PAGES + i + 1;
+                    let s = prev_index + BUFFER + i + 1;
                     if s <= model.n_items() {
                         if let Some(ref file) = model.file(s) {
                             carousel.append(&LpImagePage::from_file(file));
@@ -340,13 +340,13 @@ impl LpImageView {
             // We've moved backward
             if let Some(diff) = prev_index.checked_sub(model_index) {
                 for i in 0..diff {
-                    let s = prev_index + N_PAGES + i + 1;
+                    let s = prev_index + BUFFER + i + 1;
                     if s <= model.n_items() {
                         carousel.remove(&carousel.nth_page(carousel.n_pages() - 1));
                     }
 
                     if let Some(ref file) = prev_index
-                        .checked_sub(N_PAGES)
+                        .checked_sub(BUFFER)
                         .and_then(|d| d.checked_sub(i + 1))
                         .and_then(|d| model.file(d))
                     {
