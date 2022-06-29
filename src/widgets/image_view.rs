@@ -171,10 +171,7 @@ impl LpImageView {
                 if let Some(ref m) = *model {
                     if m.directory().map_or(false, |f| !f.equal(parent)) {
                         // Clear the carousel before creating the new model
-                        while carousel.n_pages() > 0 {
-                            carousel.remove(&carousel.nth_page(0));
-                        }
-
+                        self.clear_carousel(false);
                         *model = Some(LpFileModel::from_directory(parent));
                         log::debug!("new model created");
                     } else {
@@ -194,24 +191,7 @@ impl LpImageView {
             log::debug!("Currently at file {index} in the directory");
             imp.filename.replace(util::get_file_display_name(file));
             carousel.append(&LpImagePage::from_file(file));
-
-            for i in 1..=N_PAGES {
-                if let Some(file) = model.item(index + i).and_then(|o| o.downcast().ok()) {
-                    carousel.append(&LpImagePage::from_file(&file))
-                }
-            }
-
-            for i in 1..=N_PAGES {
-                if let Some(file) = index
-                    .checked_sub(i)
-                    .and_then(|i| model.item(i))
-                    .and_then(|o| o.downcast().ok())
-                {
-                    carousel.prepend(&LpImagePage::from_file(&file))
-                }
-            }
-
-            imp.prev_index.set(index);
+            self.fill_carousel(model, index);
         }
     }
 
@@ -261,33 +241,56 @@ impl LpImageView {
         carousel.scroll_to(&page, true);
 
         // Clear everything on either side, then refill
-        for _ in 0..(carousel.position() as u32) {
-            carousel.remove(&carousel.nth_page(0));
-        }
+        self.clear_carousel(true);
+        self.fill_carousel(model, new_index);
 
-        while carousel.n_pages() > 1 {
-            carousel.remove(&carousel.nth_page(carousel.n_pages() - 1))
-        }
+        drop(guard);
+    }
 
-        // TODO: De-duplicate this into a function for filling from a model
+    // Fills the carousel with items on either side of the given `index` of `model`
+    fn fill_carousel(&self, model: &LpFileModel, index: u32) {
+        let imp = self.imp();
+        let carousel = imp.carousel.get();
+
         for i in 1..=N_PAGES {
-            if let Some(file) = model.item(new_index + i).and_then(|o| o.downcast().ok()) {
-                carousel.append(&LpImagePage::from_file(&file))
+            if let Some(ref file) = model.item(index + i).and_then(|o| o.downcast().ok()) {
+                carousel.append(&LpImagePage::from_file(file))
             }
         }
 
         for i in 1..=N_PAGES {
-            if let Some(file) = new_index
+            if let Some(ref file) = index
                 .checked_sub(i)
                 .and_then(|i| model.item(i))
                 .and_then(|o| o.downcast().ok())
             {
-                carousel.prepend(&LpImagePage::from_file(&file))
+                carousel.prepend(&LpImagePage::from_file(file))
             }
         }
 
-        imp.prev_index.set(new_index);
-        drop(guard);
+        imp.prev_index.set(index);
+    }
+
+    // Clear the carousel, optionally preserving the current position
+    // as a point to refill from
+    fn clear_carousel(&self, preserve_current_page: bool) {
+        let carousel = self.imp().carousel.get();
+
+        if preserve_current_page {
+            // Remove everything before the current page
+            for _ in 0..(carousel.position() as u32) {
+                carousel.remove(&carousel.nth_page(0));
+            }
+
+            // Then everything after
+            while carousel.n_pages() > 1 {
+                carousel.remove(&carousel.nth_page(carousel.n_pages() - 1));
+            }
+        } else {
+            while carousel.n_pages() > 0 {
+                carousel.remove(&carousel.nth_page(0));
+            }
+        }
     }
 
     pub fn update_action_state(&self, file: &gio::File) {
