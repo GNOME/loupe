@@ -191,7 +191,7 @@ impl LpImageView {
             imp.filename.replace(util::get_file_display_name(file));
             carousel.append(&LpImagePage::from_file(file));
             self.fill_carousel(model, index);
-            self.update_action_state(index);
+            self.update_action_state(model, index);
         }
     }
 
@@ -243,7 +243,7 @@ impl LpImageView {
         // Clear everything on either side, then refill
         self.clear_carousel(true);
         self.fill_carousel(model, new_index);
-        self.update_action_state(new_index);
+        self.update_action_state(model, new_index);
 
         drop(guard);
     }
@@ -290,11 +290,7 @@ impl LpImageView {
         }
     }
 
-    pub fn update_action_state(&self, index: u32) {
-        let imp = self.imp();
-        let b = imp.model.borrow();
-        let model = b.as_ref().unwrap();
-
+    pub fn update_action_state(&self, model: &LpFileModel, index: u32) {
         let next_enabled = model.item(index + 1).is_some();
         let prev_enabled = index.checked_sub(1).and_then(|i| model.item(i)).is_some();
 
@@ -315,7 +311,7 @@ impl LpImageView {
         if model_index != prev_index {
             imp.filename.replace(util::get_file_display_name(&current));
             self.notify("filename");
-            self.update_action_state(model_index);
+            self.update_action_state(model, model_index);
 
             // We've moved forward
             if let Some(diff) = model_index.checked_sub(prev_index) {
