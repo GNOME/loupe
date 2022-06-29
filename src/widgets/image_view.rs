@@ -159,8 +159,6 @@ impl LpImageView {
     // that holds a `gio::File` for each child within the same directory as the
     // file we pass. This model will update with changes to the directory,
     // and in turn we'll update our `adw::Carousel`.
-    //
-    // TODO: Loading a file from the same directory
     fn build_model_from_file(&self, file: &gio::File) {
         let imp = self.imp();
         let carousel = &imp.carousel;
@@ -180,7 +178,8 @@ impl LpImageView {
                         *model = Some(LpFileModel::from_directory(parent));
                         log::debug!("new model created");
                     } else {
-                        // Early return if the parent is equal to the current model's directory
+                        log::debug!("Re-using old model and navigating to the current file");
+                        self.navigate_to_file(m, file);
                         return;
                     }
                 } else {
@@ -232,6 +231,63 @@ impl LpImageView {
             }
             _ => unimplemented!("Navigation direction should only be back or forward."),
         };
+    }
+
+    fn navigate_to_file(&self, model: &LpFileModel, file: &gio::File) {
+        let imp = self.imp();
+        let carousel = imp.carousel.get();
+        let current_index = self
+            .current_page()
+            .and_then(|p| p.file())
+            .and_then(|f| model.index_of(&f))
+            .unwrap_or_default() as u32;
+        let new_index = model.index_of(file).unwrap_or_default() as u32;
+
+        // Code style note: I generally don't do early returns like this
+        // in my rust code, but here we do it to avoid code duplication.
+        if new_index == current_index {
+            return;
+        }
+
+        let guard = carousel.freeze_notify();
+        let page = LpImagePage::from_file(file);
+
+        if new_index > current_index {
+            carousel.append(&page);
+        } else {
+            carousel.prepend(&page);
+        }
+
+        carousel.scroll_to(&page, true);
+
+        // Clear everything on either side, then refill
+        for _ in 0..(carousel.position() as u32) {
+            carousel.remove(&carousel.nth_page(0));
+        }
+
+        while carousel.n_pages() > 1 {
+            carousel.remove(&carousel.nth_page(carousel.n_pages() - 1))
+        }
+
+        // TODO: De-duplicate this into a function for filling from a model
+        for i in 1..=N_PAGES {
+            if let Some(file) = model.item(new_index + i).and_then(|o| o.downcast().ok()) {
+                carousel.append(&LpImagePage::from_file(&file))
+            }
+        }
+
+        for i in 1..=N_PAGES {
+            if let Some(file) = new_index
+                .checked_sub(i)
+                .and_then(|i| model.item(i))
+                .and_then(|o| o.downcast().ok())
+            {
+                carousel.prepend(&LpImagePage::from_file(&file))
+            }
+        }
+
+        imp.prev_index.set(new_index);
+        drop(guard);
     }
 
     pub fn update_action_state(&self, file: &gio::File) {
