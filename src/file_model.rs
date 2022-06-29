@@ -115,24 +115,6 @@ impl LpFileModel {
         model
     }
 
-    pub fn previous(&self, current: &gio::File) -> Option<gio::File> {
-        let imp = self.imp();
-
-        let vec = imp.inner.borrow();
-        let index = vec.iter().position(|f| f.equal(current))?;
-
-        vec.get(index.checked_sub(1)?).cloned()
-    }
-
-    pub fn next(&self, current: &gio::File) -> Option<gio::File> {
-        let imp = self.imp();
-
-        let vec = imp.inner.borrow();
-        let index = vec.iter().position(|f| f.equal(current))?;
-
-        vec.get(index + 1).cloned()
-    }
-
     pub fn directory(&self) -> Option<gio::File> {
         self.imp().directory.get().cloned()
     }

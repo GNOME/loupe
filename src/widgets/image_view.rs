@@ -143,7 +143,6 @@ impl LpImageView {
         }
 
         self.build_model_from_file(file);
-        self.update_action_state(file);
         self.notify("filename");
 
         // TODO: rework width stuff
@@ -192,6 +191,7 @@ impl LpImageView {
             imp.filename.replace(util::get_file_display_name(file));
             carousel.append(&LpImagePage::from_file(file));
             self.fill_carousel(model, index);
+            self.update_action_state(index);
         }
     }
 
@@ -243,6 +243,7 @@ impl LpImageView {
         // Clear everything on either side, then refill
         self.clear_carousel(true);
         self.fill_carousel(model, new_index);
+        self.update_action_state(new_index);
 
         drop(guard);
     }
@@ -293,13 +294,13 @@ impl LpImageView {
         }
     }
 
-    pub fn update_action_state(&self, file: &gio::File) {
+    pub fn update_action_state(&self, index: u32) {
         let imp = self.imp();
         let b = imp.model.borrow();
         let model = b.as_ref().unwrap();
 
-        let next_enabled = model.next(file).is_some();
-        let prev_enabled = model.previous(file).is_some();
+        let next_enabled = model.item(index + 1).is_some();
+        let prev_enabled = index.checked_sub(1).and_then(|i| model.item(i)).is_some();
 
         self.action_set_enabled("iv.next", next_enabled);
         self.action_set_enabled("iv.previous", prev_enabled);
@@ -318,7 +319,7 @@ impl LpImageView {
         if model_index != prev_index {
             imp.filename.replace(util::get_file_display_name(&current));
             self.notify("filename");
-            self.update_action_state(&current);
+            self.update_action_state(model_index);
 
             // We've moved forward
             if let Some(diff) = model_index.checked_sub(prev_index) {
