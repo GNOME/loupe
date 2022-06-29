@@ -254,17 +254,13 @@ impl LpImageView {
         let carousel = imp.carousel.get();
 
         for i in 1..=N_PAGES {
-            if let Some(ref file) = model.item(index + i).and_then(|o| o.downcast().ok()) {
+            if let Some(ref file) = model.file(index + i) {
                 carousel.append(&LpImagePage::from_file(file))
             }
         }
 
         for i in 1..=N_PAGES {
-            if let Some(ref file) = index
-                .checked_sub(i)
-                .and_then(|i| model.item(i))
-                .and_then(|o| o.downcast().ok())
-            {
+            if let Some(ref file) = index.checked_sub(i).and_then(|i| model.file(i)) {
                 carousel.prepend(&LpImagePage::from_file(file))
             }
         }
@@ -334,9 +330,7 @@ impl LpImageView {
 
                     let s = prev_index + N_PAGES + i + 1;
                     if s <= model.n_items() {
-                        if let Some(ref file) =
-                            model.item(s).and_then(|o| o.downcast::<gio::File>().ok())
-                        {
+                        if let Some(ref file) = model.file(s) {
                             carousel.append(&LpImagePage::from_file(file));
                         }
                     }
@@ -354,8 +348,7 @@ impl LpImageView {
                     if let Some(ref file) = prev_index
                         .checked_sub(N_PAGES)
                         .and_then(|d| d.checked_sub(i + 1))
-                        .and_then(|d| model.item(d))
-                        .and_then(|i| i.downcast::<gio::File>().ok())
+                        .and_then(|d| model.file(d))
                     {
                         carousel.prepend(&LpImagePage::from_file(file));
                     }
