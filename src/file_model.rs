@@ -124,9 +124,9 @@ impl LpFileModel {
         vec.get(index as usize).cloned()
     }
 
-    pub fn index_of(&self, file: &gio::File) -> Option<usize> {
+    pub fn index_of(&self, file: &gio::File) -> Option<u32> {
         let imp = self.imp();
         let vec = imp.inner.borrow();
-        vec.iter().position(|f| f.equal(file))
+        vec.iter().position(|f| f.equal(file)).map(|p| p as u32)
     }
 }

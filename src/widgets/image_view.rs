@@ -186,7 +186,7 @@ impl LpImageView {
         }
 
         if let Some(model) = imp.model.borrow().as_ref() {
-            let index = model.index_of(file).unwrap() as u32;
+            let index = model.index_of(file).unwrap();
             log::debug!("Currently at file {index} in the directory");
             imp.filename.replace(util::get_file_display_name(file));
             carousel.append(&LpImagePage::from_file(file));
@@ -220,8 +220,8 @@ impl LpImageView {
             .current_page()
             .and_then(|p| p.file())
             .and_then(|f| model.index_of(&f))
-            .unwrap_or_default() as u32;
-        let new_index = model.index_of(file).unwrap_or_default() as u32;
+            .unwrap_or_default();
+        let new_index = model.index_of(file).unwrap_or_default();
 
         // Code style note: I generally don't do early returns like this
         // in my rust code, but here we do it to avoid code duplication.
@@ -309,7 +309,7 @@ impl LpImageView {
         let model = b.as_ref().unwrap();
         let current = self.current_page().and_then(|p| p.file()).unwrap();
 
-        let model_index = model.index_of(&current).unwrap() as u32;
+        let model_index = model.index_of(&current).unwrap();
         let prev_index = imp.prev_index.get();
 
         if model_index != prev_index {
