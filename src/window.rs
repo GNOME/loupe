@@ -240,7 +240,7 @@ impl LpWindow {
 
     fn pick_file(&self) {
         let chooser = gtk::FileChooserNative::new(
-            Some(&"Open Image".to_string()),
+            Some("Open Image"),
             Some(self),
             gtk::FileChooserAction::Open,
             None,
