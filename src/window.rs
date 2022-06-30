@@ -112,7 +112,7 @@ mod imp {
             });
 
             klass.install_action("win.show-toast", Some("(si)"), move |win, _, var| {
-                if let Some((ref toast, i)) = var.map(|v| v.get::<(String, i32)>()).flatten() {
+                if let Some((ref toast, i)) = var.and_then(|v| v.get::<(String, i32)>()) {
                     win.show_toast(toast, adw::ToastPriority::__Unknown(i));
                 }
             });
