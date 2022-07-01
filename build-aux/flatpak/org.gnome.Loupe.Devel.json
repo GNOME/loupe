@@ -1,7 +1,7 @@
 {
     "app-id" : "org.gnome.Loupe.Devel",
     "runtime" : "org.gnome.Platform",
-    "runtime-version" : "master",
+    "runtime-version" : "42",
     "sdk" : "org.gnome.Sdk",
     "sdk-extensions" : [
         "org.freedesktop.Sdk.Extension.rust-stable"
@@ -35,6 +35,23 @@
         "*.a"
     ],
     "modules" : [
+        {
+            "name" : "libadwaita",
+            "buildsystem" : "meson",
+            "config-opts" : [
+                "-Dtests=false",
+                "-Dexamples=false",
+                "-Dvapi=false",
+                "-Dintrospection=disabled"
+            ],
+            "sources" : [
+                {
+                    "type" : "git",
+                    "url" : "https://gitlab.gnome.org/GNOME/libadwaita.git",
+                    "branch" : "main"
+                }
+             ]
+        },
         {
             "name" : "loupe",
             "builddir" : true,
