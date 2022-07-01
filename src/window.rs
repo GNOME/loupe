@@ -312,6 +312,11 @@ impl LpWindow {
 
         if let Err(e) = imp.image_view.copy() {
             log::error!("Failed to copy to clipboard: {}", e);
+        } else {
+            self.show_toast(
+                &"Image copied to clipboard".to_string(),
+                adw::ToastPriority::High,
+            );
         }
     }
 
