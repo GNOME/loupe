@@ -349,6 +349,15 @@ impl LpImageView {
         }
     }
 
+    #[template_callback]
+    fn get_fullscreen_icon(&self, fullscreened: bool) -> &'static str {
+        if fullscreened {
+            "view-restore-symbolic"
+        } else {
+            "view-fullscreen-symbolic"
+        }
+    }
+
     pub fn set_wallpaper(&self) -> anyhow::Result<()> {
         let wallpaper = self.uri().context("No URI for current file")?;
         let ctx = glib::MainContext::default();

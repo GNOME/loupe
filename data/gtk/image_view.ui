@@ -17,12 +17,15 @@
         </child>
         <child type="overlay">
           <object class="GtkBox" id="controls_box">
-            <property name="halign">center</property>
             <property name="valign">end</property>
+            <property name="margin-start">18</property>
+            <property name="margin-end">18</property>
+            <property name="margin-top">18</property>
             <property name="margin-bottom">18</property>
             <property name="spacing">12</property>
             <child>
               <object class="GtkButton" id="prev_button">
+                <property name="halign">start</property>
                 <property name="icon-name">go-previous-symbolic</property>
                 <property name="action-name">iv.previous</property>
                 <property name="tooltip-text" translatable="yes">Previous Image</property>
@@ -37,6 +40,25 @@
                 <property name="icon-name">go-next-symbolic</property>
                 <property name="action-name">iv.next</property>
                 <property name="tooltip-text" translatable="yes">Next Image</property>
+                <style>
+                  <class name="osd"/>
+                  <class name="circular"/>
+                </style>
+              </object>
+            </child>
+            <child>
+              <object class="GtkButton" id="fullscreen_button">
+                <property name="hexpand">True</property>
+                <property name="halign">end</property>
+                <binding name="icon-name">
+                  <closure type="gchararray" function="get_fullscreen_icon">
+                    <lookup type="GtkWindow" name="fullscreened">
+                      <lookup type="GtkWidget" name="root">LpImageView</lookup>
+                    </lookup>
+                  </closure>
+                </binding>
+                <property name="action-name">win.toggle-fullscreen</property>
+                <property name="tooltip-text" translatable="yes">Toggle Fullscreen</property>
                 <style>
                   <class name="osd"/>
                   <class name="circular"/>

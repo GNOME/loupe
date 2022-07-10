@@ -62,8 +62,6 @@ mod imp {
         #[template_child]
         pub menu_button: TemplateChild<gtk::MenuButton>,
         #[template_child]
-        pub fullscreen_button: TemplateChild<gtk::Button>,
-        #[template_child]
         pub toast_overlay: TemplateChild<adw::ToastOverlay>,
         #[template_child]
         pub stack: TemplateChild<gtk::Stack>,
@@ -219,20 +217,9 @@ impl LpWindow {
         if fullscreen {
             imp.flap.set_fold_policy(adw::FlapFoldPolicy::Always);
             imp.headerbar.add_css_class("osd");
-            imp.menu_button.unparent();
-            imp.fullscreen_button.unparent();
-            imp.headerbar.pack_end(&*imp.fullscreen_button);
-            imp.headerbar.pack_end(&*imp.menu_button);
-            imp.fullscreen_button.set_icon_name("view-restore-symbolic");
         } else {
             imp.flap.set_fold_policy(adw::FlapFoldPolicy::Never);
             imp.headerbar.remove_css_class("osd");
-            imp.menu_button.unparent();
-            imp.fullscreen_button.unparent();
-            imp.headerbar.pack_end(&*imp.menu_button);
-            imp.headerbar.pack_end(&*imp.fullscreen_button);
-            imp.fullscreen_button
-                .set_icon_name("view-fullscreen-symbolic");
         }
 
         self.set_fullscreened(fullscreen);
