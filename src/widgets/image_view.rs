@@ -51,7 +51,7 @@ mod imp {
 
         pub model: RefCell<Option<LpFileModel>>,
         pub filename: RefCell<Option<String>>,
-        pub prev_index: Cell<u32>,
+        pub current_model_index: Cell<u32>,
     }
 
     #[glib::object_subclass]
@@ -216,15 +216,9 @@ impl LpImageView {
     fn navigate_to_file(&self, model: &LpFileModel, file: &gio::File) {
         let imp = self.imp();
         let carousel = imp.carousel.get();
-        let current_index = self
-            .current_page()
-            .and_then(|p| p.file())
-            .and_then(|f| model.index_of(&f))
-            .unwrap_or_default();
+        let current_index = imp.current_model_index.get();
         let new_index = model.index_of(file).unwrap_or_default();
 
-        // Code style note: I generally don't do early returns like this
-        // in my rust code, but here we do it to avoid code duplication.
         if new_index == current_index {
             return;
         }
@@ -265,7 +259,7 @@ impl LpImageView {
             }
         }
 
-        imp.prev_index.set(index);
+        imp.current_model_index.set(index);
     }
 
     // Clear the carousel, optionally preserving the current position
@@ -306,7 +300,7 @@ impl LpImageView {
         let current = self.current_page().and_then(|p| p.file()).unwrap();
 
         let model_index = model.index_of(&current).unwrap();
-        let prev_index = imp.prev_index.get();
+        let prev_index = imp.current_model_index.get();
 
         if model_index != prev_index {
             imp.filename.replace(util::get_file_display_name(&current));
@@ -351,7 +345,7 @@ impl LpImageView {
                 }
             }
 
-            imp.prev_index.set(model_index);
+            imp.current_model_index.set(model_index);
         }
     }
 
