@@ -9,7 +9,7 @@ variables:
     BUNDLE: "org.gnome.Loupe.Devel.flatpak"
     MANIFEST_PATH: "build-aux/flatpak/org.gnome.Loupe.Devel.json"
     FLATPAK_MODULE: "loupe"
-    FLATPAK_IMAGE: "registry.gitlab.gnome.org/gnome/gnome-runtime-images/gnome:42"
+    FLATPAK_IMAGE: "registry.gitlab.gnome.org/gnome/gnome-runtime-images/rust_bundle:master"
 
 .flatpak_cache_template: &flatpak_cache
     cache:
