@@ -101,13 +101,7 @@ impl LpFileModel {
             });
 
             // Then sort by name.
-            vec.sort_by(|file_a, file_b| {
-                let name_a = util::get_file_display_name(file_a).unwrap_or_default();
-                let name_b = util::get_file_display_name(file_b).unwrap_or_default();
-
-                util::utf8_collate_key_for_filename(&name_a)
-                    .cmp(&util::utf8_collate_key_for_filename(&name_b))
-            });
+            vec.sort_by(util::compare_by_name);
 
             model.imp().directory.set(directory.clone()).unwrap();
         }
@@ -127,6 +121,8 @@ impl LpFileModel {
     pub fn index_of(&self, file: &gio::File) -> Option<u32> {
         let imp = self.imp();
         let vec = imp.inner.borrow();
-        vec.iter().position(|f| f.equal(file)).map(|p| p as u32)
+        vec.binary_search_by(|a| util::compare_by_name(a, file))
+            .ok()
+            .map(|i| i as u32)
     }
 }
