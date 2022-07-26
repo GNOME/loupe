@@ -33,7 +33,6 @@ use std::cell::{Cell, RefCell};
 
 use crate::file_model::LpFileModel;
 use crate::thumbnail::Thumbnail;
-use crate::util;
 use crate::widgets::LpImagePage;
 
 // The number of pages we want to buffer
@@ -50,7 +49,6 @@ mod imp {
         pub carousel: TemplateChild<adw::Carousel>,
 
         pub model: RefCell<Option<LpFileModel>>,
-        pub filename: RefCell<Option<String>>,
         pub current_model_index: Cell<u32>,
     }
 
@@ -81,11 +79,11 @@ mod imp {
     impl ObjectImpl for LpImageView {
         fn properties() -> &'static [glib::ParamSpec] {
             static PROPERTIES: Lazy<Vec<glib::ParamSpec>> = Lazy::new(|| {
-                vec![glib::ParamSpecString::new(
-                    "filename",
-                    "Filename",
-                    "The filename of the current file",
-                    None,
+                vec![glib::ParamSpecObject::new(
+                    "active-file",
+                    "",
+                    "",
+                    gio::File::static_type(),
                     glib::ParamFlags::READABLE,
                 )]
             });
@@ -95,7 +93,7 @@ mod imp {
 
         fn property(&self, obj: &Self::Type, _id: usize, psec: &glib::ParamSpec) -> glib::Value {
             match psec.name() {
-                "filename" => obj.filename().to_value(),
+                "active-file" => obj.active_file().to_value(),
                 _ => unimplemented!(),
             }
         }
@@ -120,6 +118,11 @@ mod imp {
             }));
 
             obj.add_controller(&source);
+
+            self.carousel
+                .connect_position_notify(clone!(@weak obj => move |_| {
+                    obj.notify("active-file");
+                }));
         }
     }
 
@@ -136,14 +139,14 @@ glib::wrapper! {
 #[gtk::template_callbacks]
 impl LpImageView {
     pub fn set_image_from_file(&self, file: &gio::File) -> anyhow::Result<()> {
-        if let Some(current_file) = self.current_page().and_then(|p| p.file()) {
+        if let Some(current_file) = self.active_file() {
             if current_file.equal(file) {
                 bail!("Image is the same as the previous image; Doing nothing.");
             }
         }
 
         self.build_model_from_file(file);
-        self.notify("filename");
+        self.notify("active-file");
 
         // TODO: rework width stuff
         // let width = imp.picture.image_width();
@@ -188,7 +191,6 @@ impl LpImageView {
         if let Some(model) = imp.model.borrow().as_ref() {
             let index = model.index_of(file).unwrap();
             log::debug!("Currently at file {index} in the directory");
-            imp.filename.replace(util::get_file_display_name(file));
             carousel.append(&LpImagePage::from_file(file));
             self.fill_carousel(model, index);
             self.update_action_state(model, index);
@@ -297,14 +299,12 @@ impl LpImageView {
         let imp = self.imp();
         let b = imp.model.borrow();
         let model = b.as_ref().unwrap();
-        let current = self.current_page().and_then(|p| p.file()).unwrap();
+        let current = self.active_file().unwrap();
 
         let model_index = model.index_of(&current).unwrap();
         let prev_index = imp.current_model_index.get();
 
         if model_index != prev_index {
-            imp.filename.replace(util::get_file_display_name(&current));
-            self.notify("filename");
             self.update_action_state(model, model_index);
 
             // We've moved forward
@@ -394,8 +394,7 @@ impl LpImageView {
     pub fn print(&self) -> anyhow::Result<()> {
         let operation = gtk::PrintOperation::new();
         let path = self
-            .current_page()
-            .and_then(|p| p.file())
+            .active_file()
             .context("No file")?
             .peek_path()
             .context("No path")?;
@@ -454,12 +453,11 @@ impl LpImageView {
     }
 
     pub fn uri(&self) -> Option<String> {
-        let page = self.current_page().expect("No page");
-        let file = page.file().expect("No file");
-        Some(file.uri().to_string())
+        self.active_file().map(|f| f.uri().to_string())
     }
 
-    pub fn filename(&self) -> Option<String> {
-        self.imp().filename.borrow().clone()
+    pub fn active_file(&self) -> Option<gio::File> {
+        let page = self.current_page()?;
+        page.file()
     }
 }
