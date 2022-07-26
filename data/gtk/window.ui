@@ -18,6 +18,12 @@
         <property name="swipe-to-close">False</property>
         <property name="locked">true</property>
         <property name="modal">false</property>
+        <binding name="fold-policy">
+          <closure type="AdwFlapFoldPolicy" function="fold_policy">
+            <lookup name="fullscreened">LpWindow</lookup>
+            <lookup type="AdwFlap" name="reveal-flap">properties_flap</lookup>
+          </closure>
+        </binding>
         <property name="flap">
           <object class="GtkHeaderBar" id="headerbar">
             <property name="show_title_buttons" bind-source="LpWindow" bind-property="fullscreened" bind-flags="sync-create|invert-boolean"/>
@@ -35,39 +41,60 @@
                 <property name="tooltip-text" translatable="yes">Primary Menu</property>
               </object>
             </child>
+            <child type="end">
+              <object class="GtkToggleButton" id="properties_button">
+                <property name="icon-name">help-about-symbolic</property>
+              </object>
+            </child>
           </object>
         </property>
         <property name="content">
           <object class="AdwToastOverlay" id="toast_overlay">
             <property name="child">
-              <object class="GtkStack" id="stack">
-                <property name="visible-child">status_page</property>
-                <property name="vexpand">True</property>
-                <child>
-                  <object class="AdwStatusPage" id="status_page">
-                    <property name="title" translatable="yes">Image Viewer</property>
-                    <property name="description" translatable="yes">Click "Open File…" or drag an image here.</property>
+              <object class="AdwFlap" id="properties_flap">
+                <property name="flap-position">end</property>
+                <property name="fold-policy">never</property>
+                <property name="locked">True</property>
+                <property name="reveal-flap" bind-source="properties_button" bind-property="active" bind-flags="bidirectional|sync-create"/>
+                <property name="content">
+                  <object class="GtkStack" id="stack">
+                    <property name="visible-child">status_page</property>
+                    <property name="vexpand">True</property>
                     <child>
-                      <object class="GtkButton">
-                        <property name="halign">center</property>
-                        <property name="label" translatable="yes">Open File…</property>
-                        <property name="action-name">win.open</property>
-                        <style>
-                          <class name="pill"/>
-                          <class name="suggested-action"/>
-                        </style>
+                      <object class="AdwStatusPage" id="status_page">
+                        <property name="title" translatable="yes">Image Viewer</property>
+                        <property name="description" translatable="yes">Click "Open File…" or drag an image here.</property>
+                        <child>
+                          <object class="GtkButton">
+                            <property name="halign">center</property>
+                            <property name="label" translatable="yes">Open File…</property>
+                            <property name="action-name">win.open</property>
+                            <style>
+                              <class name="pill"/>
+                              <class name="suggested-action"/>
+                            </style>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="LpImageView" id="image_view"/>
+                    </child>
+                    <child>
+                      <object class="GtkDropTarget" id="drop_target">
+                        <property name="actions">copy</property>
                       </object>
                     </child>
                   </object>
-                </child>
-                <child>
-                  <object class="LpImageView" id="image_view"/>
-                </child>
-                <child>
-                  <object class="GtkDropTarget" id="drop_target">
-                    <property name="actions">copy</property>
+                </property>
+                <property name="separator">
+                  <object class="GtkSeparator"/>
+                </property>
+                <property name="flap">
+                  <object class="LpPropertiesView" id="properties_view">
+                    <property name="file" bind-source="image_view" bind-property="active-file" bind-flags="sync-create"/>
                   </object>
-                </child>
+                </property>
               </object>
             </property>
           </object>

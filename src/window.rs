@@ -30,7 +30,7 @@ use ashpd::WindowIdentifier;
 
 use crate::config;
 use crate::util;
-use crate::widgets::LpImageView;
+use crate::widgets::{LpImageView, LpPropertiesView};
 
 mod imp {
     use super::*;
@@ -69,6 +69,8 @@ mod imp {
         pub status_page: TemplateChild<adw::StatusPage>,
         #[template_child]
         pub image_view: TemplateChild<LpImageView>,
+        #[template_child]
+        pub properties_view: TemplateChild<LpPropertiesView>,
         #[template_child]
         pub drop_target: TemplateChild<gtk::DropTarget>,
     }
@@ -209,11 +211,11 @@ impl LpWindow {
         let imp = self.imp();
 
         if fullscreen {
-            imp.flap.set_fold_policy(adw::FlapFoldPolicy::Always);
             imp.headerbar.add_css_class("osd");
+            imp.properties_view.add_css_class("osd")
         } else {
-            imp.flap.set_fold_policy(adw::FlapFoldPolicy::Never);
             imp.headerbar.remove_css_class("osd");
+            imp.properties_view.remove_css_class("osd")
         }
 
         self.set_fullscreened(fullscreen);
@@ -381,5 +383,17 @@ impl LpWindow {
     fn window_title(&self, file: Option<gio::File>) -> String {
         file.and_then(|f| util::get_file_display_name(&f)) // If the file exists, get display name
             .unwrap_or_else(|| String::from("Image Viewer")) // Return that or the default if there's nothing
+    }
+
+    // We also have a closure that returns `adw::FlapFoldPolicy`.
+    // if we aren't fullscreened, or if the properties are revealed,
+    // we unfold the main flap. Otherwise we're always folded.
+    #[template_callback]
+    fn fold_policy(&self, fullscreened: bool, properties_revealed: bool) -> adw::FlapFoldPolicy {
+        if !fullscreened || properties_revealed {
+            adw::FlapFoldPolicy::Never
+        } else {
+            adw::FlapFoldPolicy::Always
+        }
     }
 }

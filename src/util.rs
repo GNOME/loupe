@@ -37,6 +37,25 @@ pub fn query_attributes(file: &gio::File, attributes: Vec<&str>) -> anyhow::Resu
     .context("Failed to query string")
 }
 
+pub async fn query_attributes_future(
+    file: &gio::File,
+    attributes: Vec<&str>,
+) -> anyhow::Result<gio::FileInfo> {
+    let mut attr_str = String::from(*attributes.get(0).context("No attributes")?);
+
+    for attr in &attributes[1..] {
+        write!(attr_str, ",{}", attr)?;
+    }
+
+    file.query_info_future(
+        &attr_str,
+        gio::FileQueryInfoFlags::empty(),
+        glib::Priority::default(),
+    )
+    .await
+    .context("Failed to query attributes")
+}
+
 pub fn compare_by_name(file_a: &gio::File, file_b: &gio::File) -> std::cmp::Ordering {
     let name_a = get_file_display_name(file_a).unwrap_or_default();
     let name_b = get_file_display_name(file_b).unwrap_or_default();

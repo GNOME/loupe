@@ -5,6 +5,8 @@
     <file compressed="true" preprocess="xml-stripblanks">gtk/window.ui</file>
     <file compressed="true" preprocess="xml-stripblanks">gtk/image_page.ui</file>
     <file compressed="true" preprocess="xml-stripblanks">gtk/image_view.ui</file>
+    <file compressed="true" preprocess="xml-stripblanks">gtk/properties_view.ui</file>
     <file>style.css</file>
+    <file>style-hc.css</file>
   </gresource>
 </gresources>

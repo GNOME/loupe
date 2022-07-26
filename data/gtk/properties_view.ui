@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <template class="LpPropertiesView" parent="AdwBin">
+    <property name="width-request">255</property>
+    <property name="child">
+      <object class="AdwPreferencesPage">
+        <child>
+          <object class="AdwPreferencesGroup">
+            <child>
+              <object class="AdwActionRow">
+                <property name="title" translatable="yes">Folder</property>
+                <property name="activatable-widget">folder_button</property>
+                <binding name="subtitle">
+                  <closure type="gchararray" function="folder_name">
+                    <lookup name="file">LpPropertiesView</lookup>
+                  </closure>
+                </binding>
+                <child type="suffix">
+                  <object class="GtkButton" id="folder_button">
+                    <property name="valign">center</property>
+                    <property name="action-name">properties.open-folder</property>
+                    <property name="icon-name">folder-open-symbolic</property>
+                    <property name="tooltip-text" translatable="yes">Open Containing Folder</property>
+                    <style>
+                      <class name="flat"/>
+                    </style>
+                  </object>
+                </child>
+                <style>
+                  <class name="property"/>
+                </style>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="AdwPreferencesGroup">
+            <child>
+              <object class="AdwActionRow">
+                <property name="title" translatable="yes">Image Size</property>
+                <binding name="subtitle">
+                  <lookup name="dimensions">LpPropertiesView</lookup>
+                </binding>
+                <style>
+                  <class name="property"/>
+                </style>
+              </object>
+            </child>
+            <child>
+              <object class="AdwActionRow">
+                <property name="title" translatable="yes">File Type</property>
+                <binding name="subtitle">
+                  <closure type="gchararray" function="file_type">
+                    <lookup name="file-info">LpPropertiesView</lookup>
+                  </closure>
+                </binding>
+                <style>
+                  <class name="property"/>
+                </style>
+              </object>
+            </child>
+            <child>
+              <object class="AdwActionRow">
+                <property name="title" translatable="yes">File Size</property>
+                <binding name="subtitle">
+                  <closure type="gchararray" function="file_size">
+                    <lookup name="file-info">LpPropertiesView</lookup>
+                  </closure>
+                </binding>
+                <style>
+                  <class name="property"/>
+                </style>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="AdwPreferencesGroup">
+            <child>
+              <object class="AdwActionRow">
+                <property name="title" translatable="yes">Created</property>
+                <binding name="subtitle">
+                  <closure type="gchararray" function="created_date">
+                    <lookup name="file-info">LpPropertiesView</lookup>
+                  </closure>
+                </binding>
+                <style>
+                  <class name="property"/>
+                </style>
+              </object>
+            </child>
+            <child>
+              <object class="AdwActionRow">
+                <property name="title" translatable="yes">Modified</property>
+                <binding name="subtitle">
+                  <closure type="gchararray" function="modified_date">
+                    <lookup name="file-info">LpPropertiesView</lookup>
+                  </closure>
+                </binding>
+                <style>
+                  <class name="property"/>
+                </style>
+              </object>
+            </child>
+          </object>
+        </child>
+      </object>
+    </property>
+  </template>
+</interface>
