@@ -377,10 +377,12 @@ impl LpPropertiesView {
 async fn parse_svg_file_future(path: std::path::PathBuf) -> anyhow::Result<svg_metadata::Metadata> {
     let (sender, receiver) = futures_channel::oneshot::channel();
 
-    std::thread::spawn(move || {
-        let result = svg_metadata::Metadata::parse_file(path);
-        let _ = sender.send(result);
-    });
+    let _ = std::thread::Builder::new()
+        .name("Parse SVG".to_string())
+        .spawn(move || {
+            let result = svg_metadata::Metadata::parse_file(path);
+            let _ = sender.send(result);
+        });
 
     receiver.await.unwrap().context("Could not load metadata")
 }

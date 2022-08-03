@@ -152,10 +152,12 @@ impl LpImagePage {
 async fn load_texture_from_file(file: &gio::File) -> Result<gdk::Texture, glib::Error> {
     let (sender, receiver) = futures_channel::oneshot::channel();
 
-    std::thread::spawn(clone!(@weak file => move || {
-        let result = gdk::Texture::from_file(&file);
-        sender.send(result).unwrap()
-    }));
+    let _ = std::thread::Builder::new()
+        .name("Load Texture".to_string())
+        .spawn(clone!(@weak file => move || {
+            let result = gdk::Texture::from_file(&file);
+            sender.send(result).unwrap()
+        }));
 
     receiver.await.unwrap()
 }
