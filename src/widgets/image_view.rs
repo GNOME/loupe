@@ -31,6 +31,8 @@ use ashpd::WindowIdentifier;
 use once_cell::sync::Lazy;
 use std::cell::{Cell, RefCell};
 
+use gtk_macros::spawn;
+
 use crate::file_model::LpFileModel;
 use crate::thumbnail::Thumbnail;
 use crate::widgets::LpImagePage;
@@ -360,8 +362,7 @@ impl LpImageView {
 
     pub fn set_wallpaper(&self) -> anyhow::Result<()> {
         let wallpaper = self.uri().context("No URI for current file")?;
-        let ctx = glib::MainContext::default();
-        ctx.spawn_local(clone!(@weak self as view => async move {
+        spawn!(clone!(@weak self as view => async move {
             let id = WindowIdentifier::from_native(
                 &view.native().expect("View should have a GtkNative"),
             )

@@ -25,6 +25,8 @@ use gtk::prelude::*;
 use gtk::subclass::prelude::*;
 use gtk::CompositeTemplate;
 
+use gtk_macros::spawn;
+
 use once_cell::sync::OnceCell;
 
 use crate::widgets::LpImage;
@@ -106,8 +108,7 @@ impl LpImagePage {
         // via the file chooser portal. I'm not sure how to make this work.
         gtk::RecentManager::default().add_item(&file.uri());
 
-        let ctx = glib::MainContext::default();
-        ctx.spawn_local(clone!(@weak obj, @weak file => async move {
+        spawn!(clone!(@weak obj, @weak file => async move {
             let imp = obj.imp();
             match load_texture_from_file(&file).await {
                 Ok(texture) => {

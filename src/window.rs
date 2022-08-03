@@ -28,6 +28,8 @@ use gtk::CompositeTemplate;
 use ashpd::desktop::open_uri;
 use ashpd::WindowIdentifier;
 
+use gtk_macros::spawn;
+
 use crate::config;
 use crate::util;
 use crate::widgets::{LpImageView, LpPropertiesView};
@@ -253,7 +255,6 @@ impl LpWindow {
 
     fn open_with(&self) {
         let imp = self.imp();
-        let ctx = glib::MainContext::default();
 
         if let Some(file) = imp
             .image_view
@@ -261,7 +262,7 @@ impl LpWindow {
             .and_then(|f| f.peek_path())
             .and_then(|p| std::fs::File::open(p).ok())
         {
-            ctx.spawn_local(clone!(@weak self as win => async move {
+            spawn!(clone!(@weak self as win => async move {
                 if let Err(e) =
                     open_uri::open_file(&WindowIdentifier::from_native(&win).await, &file, true, true).await
                 {

@@ -33,6 +33,8 @@ use futures::future::{AbortHandle, Abortable};
 use once_cell::sync::Lazy;
 use std::cell::RefCell;
 
+use gtk_macros::spawn;
+
 const MB: f64 = 1_000_000.0;
 const KB: f64 = 1_000.0;
 const FALLBACK: &str = "-";
@@ -186,7 +188,6 @@ impl LpPropertiesView {
 
     fn build_file_info(&self, file: &gio::File) {
         let imp = self.imp();
-        let ctx = glib::MainContext::default();
 
         // We need to be able to cancel this future so that
         // changing files before the metadata loads does not cause
@@ -222,7 +223,7 @@ impl LpPropertiesView {
         imp.info_handle.replace(Some(handle));
 
         // ...then spawn the future.
-        ctx.spawn_local(async {
+        spawn!(async {
             let _ = fut.await;
         });
     }
@@ -239,7 +240,6 @@ impl LpPropertiesView {
 
     fn build_dimensions(&self, info: &gio::FileInfo, file: &gio::File) {
         let imp = self.imp();
-        let ctx = glib::MainContext::default();
 
         // Here we do the same thing we do for the rest of the file info.
         let (handle, reg) = AbortHandle::new_pair();
@@ -281,7 +281,7 @@ impl LpPropertiesView {
 
         imp.dimensions_handle.replace(Some(handle));
 
-        ctx.spawn_local(async {
+        spawn!(async {
             let _ = fut.await;
         });
     }
@@ -298,9 +298,7 @@ impl LpPropertiesView {
             .and_then(|f| f.peek_path())
             .and_then(|p| std::fs::File::open(p).ok())
         {
-            let ctx = glib::MainContext::default();
-
-            ctx.spawn_local(clone!(@weak self as view => async move {
+            spawn!(clone!(@weak self as view => async move {
                 let id = WindowIdentifier::from_native(&view.native().expect("No GtkNative for view")).await;
                 if let Err(e) = open_uri::open_directory(&id, &directory).await {
                     log::error!("Could not open parent directory: {e}");
