@@ -381,7 +381,7 @@ async fn parse_svg_file_future(path: std::path::PathBuf) -> anyhow::Result<svg_m
 
     std::thread::spawn(move || {
         let result = svg_metadata::Metadata::parse_file(path);
-        sender.send(result).unwrap()
+        let _ = sender.send(result);
     });
 
     receiver.await.unwrap().context("Could not load metadata")
