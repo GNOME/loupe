@@ -180,7 +180,7 @@ mod imp {
                         obj.set_image_from_file(&file, false);
                     } else {
                         obj.show_toast(
-                            &format!("\"{}\" is not a valid image.", info.display_name()),
+                            format!("\"{}\" is not a valid image.", info.display_name()),
                             adw::ToastPriority::High,
                         );
                     }
@@ -296,14 +296,11 @@ impl LpWindow {
         if let Err(e) = imp.image_view.copy() {
             log::error!("Failed to copy to clipboard: {}", e);
         } else {
-            self.show_toast(
-                &"Image copied to clipboard".to_string(),
-                adw::ToastPriority::High,
-            );
+            self.show_toast("Image copied to clipboard", adw::ToastPriority::High);
         }
     }
 
-    fn show_toast(&self, text: &impl AsRef<str>, priority: adw::ToastPriority) {
+    fn show_toast(&self, text: impl AsRef<str>, priority: adw::ToastPriority) {
         let imp = self.imp();
 
         let toast = adw::Toast::new(text.as_ref());
