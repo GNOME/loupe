@@ -2,14 +2,18 @@ include:
   - project: "GNOME/citemplates"
     file: "flatpak/flatpak-ci-initiative-sdk-extensions.yml"
 
+variables:
+  BUNDLE: "org.gnome.Loupe.Devel.flatpak"
+  MANIFEST_PATH: "build-aux/flatpak/org.gnome.Loupe.Devel.json"
+  FLATPAK_MODULE: "loupe"
+  APP_ID: "org.gnome.Loupe.Devel"
+  RUNTIME_REPO: "https://nightly.gnome.org/gnome-nightly.flatpakrepo"
+
 flatpak:
-  variables:
-    BUNDLE: "org.gnome.Loupe.Devel.flatpak"
-    MANIFEST_PATH: "build-aux/flatpak/org.gnome.Loupe.Devel.json"
-    FLATPAK_MODULE: "loupe"
-    APP_ID: "org.gnome.Loupe.Devel"
-    RUNTIME_REPO: "https://nightly.gnome.org/gnome-nightly.flatpakrepo"
-  extends: ".flatpak"
+  extends: ".flatpak@x86_64"
+
+flatpak@aarch64:
+  extends: ".flatpak@aarch64"
 
 rustfmt:
   image: "rust:slim"
