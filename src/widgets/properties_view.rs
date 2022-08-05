@@ -263,7 +263,13 @@ impl LpPropertiesView {
                                 _ => None::<(f64, f64)>,
                             }
                         })
-                        .map(|(w, h)| format!("{w:.1} \u{D7} {h:.1}"))
+                        .map(|(w, h)| {
+                            if w.fract() != 0.0 || h.fract() != 0.0 {
+                                format!("{w:.1} \u{D7} {h:.1}")
+                            } else {
+                                format!("{w} \u{D7} {h}")
+                            }
+                        })
                 } else {
                     gdk_pixbuf::Pixbuf::file_info_future(path.unwrap())
                         .await
