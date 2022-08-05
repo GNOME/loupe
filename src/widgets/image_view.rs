@@ -18,6 +18,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 
 use crate::deps::*;
+use crate::i18n::*;
 
 use adw::subclass::prelude::*;
 use glib::clone;
@@ -375,8 +376,8 @@ impl LpImageView {
                 wallpaper::SetOn::Background,
             )
             .await {
-                Ok(_) => "Set as wallpaper.",
-                Err(_) => "Could not set wallpaper.",
+                Ok(_) => i18n("Set as wallpaper."),
+                Err(_) => i18n("Could not set wallpaper."),
             };
 
             view.activate_action(

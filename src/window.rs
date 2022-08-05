@@ -18,6 +18,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 
 use crate::deps::*;
+use crate::i18n::*;
 
 use adw::subclass::prelude::*;
 use glib::clone;
@@ -180,7 +181,7 @@ mod imp {
                         obj.set_image_from_file(&file, false);
                     } else {
                         obj.show_toast(
-                            format!("\"{}\" is not a valid image.", info.display_name()),
+                            i18n_f("\"{}\" is not a valid image.", &[&info.display_name()]),
                             adw::ToastPriority::High,
                         );
                     }
@@ -296,7 +297,7 @@ impl LpWindow {
         if let Err(e) = imp.image_view.copy() {
             log::error!("Failed to copy to clipboard: {}", e);
         } else {
-            self.show_toast("Image copied to clipboard", adw::ToastPriority::High);
+            self.show_toast(i18n("Image copied to clipboard"), adw::ToastPriority::High);
         }
     }
 
@@ -380,7 +381,7 @@ impl LpWindow {
     #[template_callback]
     fn window_title(&self, file: Option<gio::File>) -> String {
         file.and_then(|f| util::get_file_display_name(&f)) // If the file exists, get display name
-            .unwrap_or_else(|| String::from("Image Viewer")) // Return that or the default if there's nothing
+            .unwrap_or_else(|| i18n("Image Viewer")) // Return that or the default if there's nothing
     }
 
     // We also have a closure that returns `adw::FlapFoldPolicy`.

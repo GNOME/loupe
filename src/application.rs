@@ -18,6 +18,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 
 use crate::deps::*;
+use crate::i18n::*;
 
 use adw::prelude::*;
 use adw::subclass::prelude::*;
@@ -173,9 +174,9 @@ impl LpApplication {
                 String::from("Jakub Steiner"),
                 String::from("Tobias Bernard"),
             ])
-            .copyright("© 2021 The GNOME Project")
+            .copyright(&i18n("© 2021 The GNOME Project"))
             .license_type(gtk::License::Gpl30)
-            .program_name("Image Viewer")
+            .program_name(&i18n("Image Viewer"))
             .logo_icon_name(config::APP_ID)
             .version(config::VERSION)
             .build();

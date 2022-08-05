@@ -23,6 +23,7 @@ use gtk::gio::{self, prelude::*};
 mod application;
 mod config;
 mod file_model;
+mod i18n;
 mod thumbnail;
 mod util;
 mod widgets;

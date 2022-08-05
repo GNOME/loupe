@@ -12,6 +12,7 @@ pretty_env_logger = "0.4.0"
 futures-channel = "0.3.19"
 futures = "0.3.21"
 svg_metadata = "0.4.2"
+regex = "1.6.0"
 
 [dependencies.ashpd]
 version = "0.2.2"
