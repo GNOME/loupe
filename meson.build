@@ -14,10 +14,10 @@ dependency('libadwaita-1')
 cargo = find_program('cargo', required: true)
 
 iv_prefix = get_option('prefix')
-iv_bindir = join_paths(iv_prefix, get_option('bindir'))
-iv_localedir = join_paths(iv_prefix, get_option('localedir'))
-iv_datadir = join_paths(iv_prefix, get_option('datadir'))
-iv_pkgdatadir = join_paths(iv_datadir, meson.project_name())
+iv_bindir = iv_prefix / get_option('bindir')
+iv_localedir = iv_prefix / get_option('localedir')
+iv_datadir = iv_prefix / get_option('datadir')
+iv_pkgdatadir = iv_datadir / meson.project_name()
 
 profile = ''
 name_suffix = ''

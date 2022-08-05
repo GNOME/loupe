@@ -1,19 +1,19 @@
-scalable_dir = join_paths('hicolor', 'scalable', 'apps')
+scalable_dir = 'hicolor' / 'scalable' / 'apps'
 
 install_data(
-  join_paths(scalable_dir, 'org.gnome.Loupe.svg'),
-  install_dir: join_paths(iv_datadir, 'icons', scalable_dir),
+  scalable_dir / 'org.gnome.Loupe.svg',
+  install_dir: iv_datadir / 'icons' / scalable_dir,
 )
 
 install_data(
-  join_paths(scalable_dir, 'org.gnome.Loupe.Devel.svg'),
-  install_dir: join_paths(iv_datadir, 'icons', scalable_dir),
+  scalable_dir / 'org.gnome.Loupe.Devel.svg',
+  install_dir: iv_datadir / 'icons' / scalable_dir,
 )
 
-symbolic_dir = join_paths('hicolor', 'symbolic', 'apps')
+symbolic_dir = 'hicolor' / 'symbolic' / 'apps'
 
 install_data(
-  join_paths(symbolic_dir, 'org.gnome.Loupe-symbolic.svg'),
-  install_dir: join_paths(iv_datadir, 'icons', symbolic_dir),
+  symbolic_dir / 'org.gnome.Loupe-symbolic.svg',
+  install_dir: iv_datadir / 'icons' / symbolic_dir,
   rename: '@0@-symbolic.svg'.format(app_id)
 )

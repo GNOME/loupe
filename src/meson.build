@@ -7,8 +7,8 @@ configure_file(
 # Copy the config.rs output to the source directory.
 run_command(
   'cp',
-  join_paths(meson.build_root(), 'src', 'config.rs'),
-  join_paths(meson.source_root(), 'src', 'config.rs'),
+  meson.build_root() / 'src' / 'config.rs',
+  meson.source_root() / 'src' / 'config.rs',
   check: true
 )
 

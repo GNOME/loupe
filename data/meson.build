@@ -8,7 +8,7 @@ desktop_file = i18n.merge_file(
   type: 'desktop',
   po_dir: '../po',
   install: true,
-  install_dir: join_paths(iv_datadir, 'applications')
+  install_dir: iv_datadir / 'applications'
 )
 
 configure_file(
@@ -16,7 +16,7 @@ configure_file(
     output: '@0@.service'.format(app_id),
     configuration: conf,
     install: true,
-    install_dir: join_paths(iv_datadir, 'dbus-1', 'services')
+    install_dir: iv_datadir / 'dbus-1' / 'services'
 )
 
 desktop_utils = find_program('desktop-file-validate', required: false)
@@ -35,7 +35,7 @@ appstream_file = i18n.merge_file(
   output: '@0@.appdata.xml'.format(app_id),
   po_dir: '../po',
   install: true,
-  install_dir: join_paths(iv_datadir, 'appdata')
+  install_dir: iv_datadir / 'appdata'
 )
 
 # appstream_util = find_program('appstream-util', required: false)
@@ -46,7 +46,7 @@ appstream_file = i18n.merge_file(
 # endif
 
 install_data('org.gnome.Loupe.gschema.xml',
-  install_dir: join_paths(iv_datadir, 'glib-2.0', 'schemas')
+  install_dir: iv_datadir / 'glib-2.0' / 'schemas'
 )
 
 compile_schemas = find_program('glib-compile-schemas', required: false)
