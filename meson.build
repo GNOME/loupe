@@ -11,6 +11,8 @@ gnome = import('gnome')
 dependency('gtk4', version: '>=4.0.0')
 dependency('libadwaita-1')
 
+cargo = find_program('cargo', required: true)
+
 iv_prefix = get_option('prefix')
 iv_bindir = join_paths(iv_prefix, get_option('bindir'))
 iv_localedir = join_paths(iv_prefix, get_option('localedir'))
