@@ -1,6 +1,6 @@
 project('loupe', 'rust',
           version: '42.alpha',
-    meson_version: '>= 0.50.0',
+    meson_version: '>= 0.59.0',
   default_options: [ 'warning_level=2',
                    ],
 )
@@ -59,4 +59,8 @@ if get_option('profile') == 'development'
     run_command('cp', '-f', 'hooks/pre-commit.hook', '.git/hooks/pre-commit')
 endif
 
-meson.add_install_script('build-aux/meson/postinstall.py')
+gnome.post_install(
+  gtk_update_icon_cache: true,
+  glib_compile_schemas: true,
+  update_desktop_database: true,
+)
