@@ -35,8 +35,6 @@ use std::cell::RefCell;
 
 use gtk_macros::spawn;
 
-const MB: f64 = 1_000_000.0;
-const KB: f64 = 1_000.0;
 const FALLBACK: &str = "-";
 
 mod imp {
@@ -338,21 +336,8 @@ impl LpPropertiesView {
     #[template_callback]
     fn file_size(&self, info: Option<gio::FileInfo>) -> String {
         info.map(|info| {
-            let bytes = info.size() as f64;
-
-            let (mut size, mut unit) = (bytes, "B");
-            let sizes = [(MB, "MB"), (KB, "kB")];
-
-            for (b, u) in sizes {
-                if bytes > b {
-                    let res = bytes / b;
-                    size = res;
-                    unit = u;
-                    break;
-                }
-            }
-
-            String::from(&format!("{size:.1} {unit}"))
+            let size = info.size() as u64;
+            glib::format_size(size).to_string()
         })
         .unwrap_or_else(|| FALLBACK.to_owned())
     }
