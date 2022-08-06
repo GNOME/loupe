@@ -22,7 +22,6 @@ use crate::deps::*;
 use adw::subclass::prelude::*;
 use glib::clone;
 use gtk::prelude::*;
-use gtk::subclass::prelude::*;
 use gtk::CompositeTemplate;
 
 use gtk_macros::spawn;

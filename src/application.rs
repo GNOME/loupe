@@ -23,7 +23,6 @@ use crate::i18n::*;
 use adw::prelude::*;
 use adw::subclass::prelude::*;
 use glib::clone;
-use gtk::subclass::prelude::*;
 use gtk_macros::*;
 
 use crate::config;

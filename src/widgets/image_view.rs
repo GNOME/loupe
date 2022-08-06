@@ -23,7 +23,6 @@ use crate::i18n::*;
 use adw::subclass::prelude::*;
 use glib::clone;
 use gtk::prelude::*;
-use gtk::subclass::prelude::*;
 use gtk::CompositeTemplate;
 
 use anyhow::{bail, Context};
