@@ -164,28 +164,30 @@ impl LpApplication {
         // Builders are a pattern that allow you to create
         // an object and set all relevant properties very
         // easily in a way that's idiomatic to Rust.
-        let dialog = gtk::AboutDialog::builder()
-            .authors(vec![String::from(
+        let about = adw::AboutWindow::builder()
+            .application_name(&i18n("Image Viewer"))
+            .application_icon(config::APP_ID)
+            .version(config::VERSION)
+            .developer_name(&i18n("The GNOME Project"))
+            .website("https://gitlab.gnome.org/BrainBlasted/loupe")
+            .issue_url("https://gitlab.gnome.org/BrainBlasted/loupe/-/issues/new")
+            .developers(vec![String::from(
                 "Christopher Davis <christopherdavis@gnome.org>",
             )])
-            .artists(vec![
+            .designers(vec![
                 String::from("Allan Day"),
                 String::from("Jakub Steiner"),
                 String::from("Tobias Bernard"),
             ])
-            .copyright(&i18n("© 2021 The GNOME Project"))
+            .copyright(&i18n("© 2022 The GNOME Project"))
             .license_type(gtk::License::Gpl30)
-            .program_name(&i18n("Image Viewer"))
-            .logo_icon_name(config::APP_ID)
-            .version(config::VERSION)
             .build();
 
         if let Some(window) = self.active_window() {
-            dialog.set_modal(true);
-            dialog.set_transient_for(Some(&window));
+            about.set_transient_for(Some(&window));
         }
 
-        dialog.show();
+        about.show();
     }
 
     pub fn show_help(&self) {
