@@ -1,7 +1,7 @@
 [package]
 name = "loupe"
 version = "0.1.0"
-edition = "2018"
+edition = "2021"
 
 [dependencies]
 anyhow = "1.0.35"
@@ -15,7 +15,7 @@ svg_metadata = "0.4.2"
 regex = "1.6.0"
 
 [dependencies.ashpd]
-version = "0.2.2"
+version = "0.3"
 features = ["feature_gtk4"]
 
 [dependencies.gtk]
