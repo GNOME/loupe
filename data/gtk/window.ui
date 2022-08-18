@@ -111,6 +111,10 @@
         <attribute name="label" translatable="yes">_New Window</attribute>
         <attribute name="action">app.new-window</attribute>
       </item>
+      <item>
+        <attribute name="label" translatable="yes">_Open…</attribute>
+        <attribute name="action">win.open</attribute>
+      </item>
     </section>
     <section>
       <item>
