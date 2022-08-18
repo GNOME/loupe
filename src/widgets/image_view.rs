@@ -27,6 +27,8 @@ use gtk::CompositeTemplate;
 
 use anyhow::{bail, Context};
 use ashpd::desktop::wallpaper;
+use ashpd::desktop::ResponseError;
+use ashpd::Error;
 use ashpd::WindowIdentifier;
 use once_cell::sync::Lazy;
 use std::cell::{Cell, RefCell};
@@ -360,33 +362,31 @@ impl LpImageView {
         }
     }
 
-    pub fn set_wallpaper(&self) -> anyhow::Result<()> {
-        let wallpaper = self.uri().context("No URI for current file")?;
+    pub fn set_background(&self) -> anyhow::Result<()> {
+        let background = self.uri().context("No URI for current file")?;
         spawn!(clone!(@weak self as view => async move {
             let id = WindowIdentifier::from_native(
                 &view.native().expect("View should have a GtkNative"),
             )
             .await;
 
-            let status = match wallpaper::set_from_uri(
+            let _ = match wallpaper::set_from_uri(
                 &id,
-                &wallpaper,
+                &background,
                 true,
                 wallpaper::SetOn::Background,
             )
             .await {
-                Ok(_) => i18n("Set as wallpaper."),
-                Err(_) => i18n("Could not set wallpaper."),
-            };
-
-            view.activate_action(
-                "win.show-toast",
                 // We use `1` here because we can't pass enums directly as GVariants,
                 // so we need to use the C int value of the enum.
                 // `TOAST_PRIORITY_NORMAL = 0`, and `TOAST_PRIORITY_HIGH = 1`
-                Some(&(status, 1).to_variant()),
-            )
-            .unwrap();
+                Ok(_) => view.activate_action("win.show-toast", Some(&(i18n("Set as background."), 1).to_variant())).unwrap(),
+                Err(err) => {
+                    if !matches!(err, Error::Response(ResponseError::Cancelled)) {
+                        view.activate_action("win.show-toast", Some(&(i18n("Could not set background."), 1).to_variant())).unwrap();
+                    }
+                },
+            };
         }));
 
         Ok(())

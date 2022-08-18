@@ -102,8 +102,8 @@ mod imp {
                 win.open_with();
             });
 
-            klass.install_action("win.set-wallpaper", None, move |win, _, _| {
-                win.set_wallpaper();
+            klass.install_action("win.set-background", None, move |win, _, _| {
+                win.set_background();
             });
 
             klass.install_action("win.print", None, move |win, _, _| {
@@ -274,11 +274,11 @@ impl LpWindow {
         }
     }
 
-    fn set_wallpaper(&self) {
+    fn set_background(&self) {
         let imp = self.imp();
 
-        if let Err(e) = imp.image_view.set_wallpaper() {
-            log::error!("Failed to set wallpaper: {}", e);
+        if let Err(e) = imp.image_view.set_background() {
+            log::error!("Failed to set background: {}", e);
         }
     }
 
@@ -329,7 +329,7 @@ impl LpWindow {
 
     pub fn set_actions_enabled(&self, enabled: bool) {
         self.action_set_enabled("win.open-with", enabled);
-        self.action_set_enabled("win.set-wallpaper", enabled);
+        self.action_set_enabled("win.set-background", enabled);
         self.action_set_enabled("win.toggle-fullscreen", enabled);
         self.action_set_enabled("win.print", enabled);
         self.action_set_enabled("win.copy", enabled);

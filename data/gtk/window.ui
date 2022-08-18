@@ -134,8 +134,8 @@
         <attribute name="action">win.rotate-image</attribute>
       </item>-->
       <item>
-        <attribute name="label" translatable="yes">_Set as Wallpaper</attribute>
-        <attribute name="action">win.set-wallpaper</attribute>
+        <attribute name="label" translatable="yes">_Set as Background…</attribute>
+        <attribute name="action">win.set-background</attribute>
       </item>
     </section>
     <section>
