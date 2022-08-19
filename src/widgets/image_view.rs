@@ -54,6 +54,8 @@ mod imp {
 
         pub model: RefCell<Option<LpFileModel>>,
         pub current_model_index: Cell<u32>,
+
+        pub scrolling: Cell<bool>,
     }
 
     #[glib::object_subclass]
@@ -229,7 +231,6 @@ impl LpImageView {
             return;
         }
 
-        let guard = carousel.freeze_notify();
         let page = LpImagePage::from_file(file);
 
         if new_index > current_index {
@@ -238,14 +239,13 @@ impl LpImageView {
             carousel.prepend(&page);
         }
 
+        // Set a flag and scroll to the page. Our `page-changed` signal handler
+        // will handle clearing and refilling the carousel. This is so we're
+        // not changing the state of the carousel while it's scrolling to the
+        // new page.
+        log::debug!("Scrolling to page for {new_index}");
+        imp.scrolling.set(true);
         carousel.scroll_to(&page, true);
-
-        // Clear everything on either side, then refill
-        self.clear_carousel(true);
-        self.fill_carousel(model, new_index);
-        self.update_action_state(model, new_index);
-
-        drop(guard);
     }
 
     // Fills the carousel with items on either side of the given `index` of `model`
@@ -265,6 +265,7 @@ impl LpImageView {
             }
         }
 
+        log::debug!("Carousel filled, current file at index {index}");
         imp.current_model_index.set(index);
     }
 
@@ -309,48 +310,69 @@ impl LpImageView {
         let prev_index = imp.current_model_index.get();
 
         if model_index != prev_index {
-            self.update_action_state(model, model_index);
-
-            // We've moved forward
-            if let Some(diff) = model_index.checked_sub(prev_index) {
-                for i in 0..diff {
-                    if prev_index
-                        .checked_sub(BUFFER)
-                        .and_then(|r| r.checked_sub(i))
-                        .is_some()
-                    {
-                        carousel.remove(&carousel.nth_page(0));
-                    }
-
-                    let s = prev_index + BUFFER + i + 1;
-                    if s <= model.n_items() {
-                        if let Some(ref file) = model.file(s) {
-                            carousel.append(&LpImagePage::from_file(file));
-                        }
-                    }
-                }
+            if imp.scrolling.get() {
+                log::debug!("Scrolling finished, refilling carousel");
+                imp.scrolling.set(false);
+                // We need to clear the carousel (excluding the current page)
+                // and refill the page buffer.
+                self.clear_carousel(true);
+                self.fill_carousel(model, model_index);
+                self.update_action_state(model, model_index);
+            } else {
+                self.update_page_buffer(model, carousel, model_index, prev_index);
             }
-
-            // We've moved backward
-            if let Some(diff) = prev_index.checked_sub(model_index) {
-                for i in 0..diff {
-                    let s = prev_index + BUFFER + i + 1;
-                    if s <= model.n_items() {
-                        carousel.remove(&carousel.nth_page(carousel.n_pages() - 1));
-                    }
-
-                    if let Some(ref file) = prev_index
-                        .checked_sub(BUFFER)
-                        .and_then(|d| d.checked_sub(i + 1))
-                        .and_then(|d| model.file(d))
-                    {
-                        carousel.prepend(&LpImagePage::from_file(file));
-                    }
-                }
-            }
-
-            imp.current_model_index.set(model_index);
         }
+    }
+
+    fn update_page_buffer(
+        &self,
+        model: &LpFileModel,
+        carousel: &adw::Carousel,
+        model_index: u32,
+        prev_index: u32,
+    ) {
+        let imp = self.imp();
+        self.update_action_state(model, model_index);
+
+        // We've moved forward
+        if let Some(diff) = model_index.checked_sub(prev_index) {
+            for i in 0..diff {
+                if prev_index
+                    .checked_sub(BUFFER)
+                    .and_then(|r| r.checked_sub(i))
+                    .is_some()
+                {
+                    carousel.remove(&carousel.nth_page(0));
+                }
+
+                let s = prev_index + BUFFER + i + 1;
+                if s <= model.n_items() {
+                    if let Some(ref file) = model.file(s) {
+                        carousel.append(&LpImagePage::from_file(file));
+                    }
+                }
+            }
+        }
+
+        // We've moved backward
+        if let Some(diff) = prev_index.checked_sub(model_index) {
+            for i in 0..diff {
+                let s = prev_index + BUFFER + i + 1;
+                if s <= model.n_items() {
+                    carousel.remove(&carousel.nth_page(carousel.n_pages() - 1));
+                }
+
+                if let Some(ref file) = prev_index
+                    .checked_sub(BUFFER)
+                    .and_then(|d| d.checked_sub(i + 1))
+                    .and_then(|d| model.file(d))
+                {
+                    carousel.prepend(&LpImagePage::from_file(file));
+                }
+            }
+        }
+
+        imp.current_model_index.set(model_index);
     }
 
     #[template_callback]
