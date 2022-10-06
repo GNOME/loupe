@@ -28,14 +28,14 @@ endif
 
 appstream_file = i18n.merge_file(
   input: configure_file(
-    input: 'org.gnome.Loupe.appdata.xml.in.in',
-    output: 'org.gnome.Loupe.appdata.xml.in',
+    input: 'org.gnome.Loupe.metainfo.xml.in.in',
+    output: 'org.gnome.Loupe.metainfo.xml.in',
     configuration: conf,
   ),
-  output: '@0@.appdata.xml'.format(app_id),
+  output: '@0@.metainfo.xml'.format(app_id),
   po_dir: '../po',
   install: true,
-  install_dir: iv_datadir / 'appdata'
+  install_dir: iv_datadir / 'metainfo'
 )
 
 # appstream_util = find_program('appstream-util', required: false)

@@ -4,7 +4,7 @@ data/gtk/image_view.ui
 data/gtk/properties_view.ui
 data/gtk/window.ui
 data/org.gnome.Loupe.desktop.in
-data/org.gnome.Loupe.appdata.xml.in
+data/org.gnome.Loupe.metainfo.xml.in
 data/org.gnome.Loupe.gschema.xml
 src/widgets/image_view.rs
 src/widgets/properties_view.rs
