@@ -46,15 +46,15 @@ mod imp {
     impl ObjectImpl for LpFileModel {}
 
     impl ListModelImpl for LpFileModel {
-        fn item_type(&self, _list_model: &Self::Type) -> glib::Type {
+        fn item_type(&self) -> glib::Type {
             gio::File::static_type()
         }
 
-        fn n_items(&self, _list_model: &Self::Type) -> u32 {
+        fn n_items(&self) -> u32 {
             self.inner.borrow().len() as u32
         }
 
-        fn item(&self, _list_model: &Self::Type, position: u32) -> Option<glib::Object> {
+        fn item(&self, position: u32) -> Option<glib::Object> {
             self.inner
                 .borrow()
                 .get(position as usize)
@@ -69,7 +69,7 @@ glib::wrapper! {
 
 impl LpFileModel {
     pub fn from_directory(directory: &gio::File) -> Self {
-        let model = glib::Object::new::<Self>(&[]).expect("Could not create LpFileModel");
+        let model = glib::Object::new::<Self>(&[]);
 
         {
             // Here we use a nested scope so that the mutable borrow only lasts as long as we need it

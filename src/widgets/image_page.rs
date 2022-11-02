@@ -70,8 +70,10 @@ mod imp {
     }
 
     impl ObjectImpl for LpImagePage {
-        fn constructed(&self, obj: &Self::Type) {
-            self.parent_constructed(obj);
+        fn constructed(&self) {
+            let obj = self.instance();
+
+            self.parent_constructed();
 
             self.click_gesture
                 .connect_pressed(clone!(@weak obj => move |gesture, _, x, y| {
@@ -100,7 +102,7 @@ glib::wrapper! {
 
 impl LpImagePage {
     pub fn from_file(file: &gio::File) -> Self {
-        let obj = glib::Object::new::<Self>(&[]).unwrap();
+        let obj = glib::Object::new::<Self>(&[]);
         obj.imp().file.set(file.clone()).unwrap();
 
         // This doesn't work properly for items not explicitly selected

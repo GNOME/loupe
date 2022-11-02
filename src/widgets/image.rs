@@ -58,32 +58,30 @@ mod imp {
             PROPERTIES.as_ref()
         }
 
-        fn property(&self, obj: &Self::Type, _id: usize, pspec: &glib::ParamSpec) -> glib::Value {
+        fn property(&self, _id: usize, pspec: &glib::ParamSpec) -> glib::Value {
+            let obj = self.instance();
             match pspec.name() {
                 "file" => obj.file().to_value(),
                 _ => unimplemented!(),
             }
         }
 
-        fn set_property(
-            &self,
-            obj: &Self::Type,
-            _id: usize,
-            value: &glib::Value,
-            pspec: &glib::ParamSpec,
-        ) {
+        fn set_property(&self, _id: usize, value: &glib::Value, pspec: &glib::ParamSpec) {
+            let obj = self.instance();
             match pspec.name() {
                 "file" => obj.set_file(&value.get().unwrap()),
                 _ => unimplemented!(),
             }
         }
 
-        fn constructed(&self, obj: &Self::Type) {
+        fn constructed(&self) {
+            let obj = self.instance();
             obj.set_hexpand(true);
             obj.set_vexpand(true);
         }
 
-        fn dispose(&self, obj: &Self::Type) {
+        fn dispose(&self) {
+            let obj = self.instance();
             while let Some(child) = obj.first_child() {
                 child.unparent();
             }
@@ -91,14 +89,15 @@ mod imp {
     }
 
     impl WidgetImpl for LpImage {
-        fn snapshot(&self, widget: &Self::Type, snapshot: &gtk::Snapshot) {
+        fn snapshot(&self, snapshot: &gtk::Snapshot) {
             if let Some(texture) = self.texture.borrow().as_ref() {
+                let widget = self.instance();
                 let width = widget.width() as f64;
                 let height = widget.height() as f64;
                 let texture_ratio = texture.intrinsic_aspect_ratio();
 
                 if texture_ratio == 0.0 {
-                    texture.snapshot(snapshot.upcast_ref(), width, height);
+                    texture.snapshot(snapshot, width, height);
                 } else {
                     let widget_ratio = width / height;
 
@@ -113,22 +112,17 @@ mod imp {
 
                     snapshot.save();
                     snapshot.translate(&graphene::Point::new(x as f32, y as f32));
-                    texture.snapshot(snapshot.upcast_ref(), snapshot_width, snapshot_height);
+                    texture.snapshot(snapshot, snapshot_width, snapshot_height);
                     snapshot.restore();
                 }
             }
         }
 
-        fn request_mode(&self, _widget: &Self::Type) -> gtk::SizeRequestMode {
+        fn request_mode(&self) -> gtk::SizeRequestMode {
             gtk::SizeRequestMode::HeightForWidth
         }
 
-        fn measure(
-            &self,
-            _widget: &Self::Type,
-            orienation: gtk::Orientation,
-            for_size: i32,
-        ) -> (i32, i32, i32, i32) {
+        fn measure(&self, orienation: gtk::Orientation, for_size: i32) -> (i32, i32, i32, i32) {
             if let Some(texture) = self.texture.borrow().as_ref() {
                 let default_size = 16.0; // Fall back to default icon size; Just a guess since the API GtkPicture uses is private
                 let measurement = if for_size < 0 { 0 } else { for_size };

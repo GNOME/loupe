@@ -101,7 +101,8 @@ mod imp {
             PROPERTIES.as_ref()
         }
 
-        fn property(&self, obj: &Self::Type, _id: usize, pspec: &glib::ParamSpec) -> glib::Value {
+        fn property(&self, _id: usize, pspec: &glib::ParamSpec) -> glib::Value {
+            let obj = self.instance();
             let prop_name = pspec.name();
 
             match prop_name {
@@ -112,13 +113,8 @@ mod imp {
             }
         }
 
-        fn set_property(
-            &self,
-            obj: &Self::Type,
-            _id: usize,
-            value: &glib::Value,
-            pspec: &glib::ParamSpec,
-        ) {
+        fn set_property(&self, _id: usize, value: &glib::Value, pspec: &glib::ParamSpec) {
+            let obj = self.instance();
             let prop_name = pspec.name();
 
             match prop_name {
@@ -127,8 +123,10 @@ mod imp {
             }
         }
 
-        fn constructed(&self, obj: &Self::Type) {
-            self.parent_constructed(obj);
+        fn constructed(&self) {
+            let obj = self.instance();
+
+            self.parent_constructed();
             obj.action_set_enabled("properties.open-folder", false);
         }
     }
@@ -303,7 +301,7 @@ impl LpPropertiesView {
         {
             spawn!(clone!(@weak self as view => async move {
                 let id = WindowIdentifier::from_native(&view.native().expect("No GtkNative for view")).await;
-                if let Err(e) = open_uri::open_directory(&id, &directory).await {
+                if let Err(e) = open_uri::OpenDirectoryRequest::default().identifier(id).build(&directory).await {
                     log::error!("Could not open parent directory: {e}");
                 };
             }));

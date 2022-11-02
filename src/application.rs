@@ -48,8 +48,10 @@ mod imp {
 
     // Overrides GObject vfuncs
     impl ObjectImpl for LpApplication {
-        fn constructed(&self, obj: &Self::Type) {
-            self.parent_constructed(obj);
+        fn constructed(&self) {
+            let obj = self.instance();
+
+            self.parent_constructed();
 
             // Force dark theme
             obj.style_manager()
@@ -62,15 +64,17 @@ mod imp {
 
     // Overrides GApplication vfuncs
     impl ApplicationImpl for LpApplication {
-        fn activate(&self, application: &Self::Type) {
-            let window = LpWindow::new(application);
+        fn activate(&self) {
+            let application = self.instance();
+            let window = LpWindow::new(&*application);
             window.present();
         }
 
         // Handles opening files from the command line or other applications
-        fn open(&self, application: &Self::Type, files: &[gio::File], _hint: &str) {
+        fn open(&self, files: &[gio::File], _hint: &str) {
+            let application = self.instance();
             for file in files {
-                let win = LpWindow::new(application);
+                let win = LpWindow::new(&*application);
                 win.set_image_from_file(file, true);
                 win.show();
             }
@@ -102,7 +106,6 @@ impl LpApplication {
             ("flags", &gio::ApplicationFlags::HANDLES_OPEN),
             ("resource-base-path", &"/org/gnome/Loupe/".to_string()),
         ])
-        .unwrap()
     }
 
     pub fn setup_actions(&self) {

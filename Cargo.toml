@@ -4,33 +4,34 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-anyhow = "1.0.35"
+anyhow = "1.0.66"
 gtk-macros = "0.3.0"
-log = "0.4.11"
-once_cell = "1.9.0"
+log = "0.4.17"
+once_cell = "1.16.0"
 pretty_env_logger = "0.4.0"
-futures-channel = "0.3.19"
-futures = "0.3.21"
-svg_metadata = "0.4.2"
+futures-channel = "0.3.25"
+futures = "0.3.25"
+svg_metadata = "0.4.3"
 regex = "1.6.0"
+url = "2.3.1"
 
 [dependencies.ashpd]
-version = "0.3"
-features = ["feature_gtk4"]
+version = "0.4.0-alpha.1"
+features = ["gtk4"]
 
 [dependencies.gtk]
 package = "gtk4"
-version = "0.4.4"
+version = "0.5.1"
 features = ["v4_6"]
 
 [dependencies.gio]
 package = "gio"
-version = "0.15.2"
+version = "0.16.2"
 features = ["v2_70"]
 
 [dependencies.adw]
 package = "libadwaita"
-version = "0.2.0-alpha.2"
+version = "0.2.0"
 features = ["v1_2"]
 
 [dependencies.gettext-rs]

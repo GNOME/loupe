@@ -23,7 +23,7 @@ mod imp {
 
     impl ObjectImpl for Thumbnail {}
     impl PaintableImpl for Thumbnail {
-        fn intrinsic_height(&self, _paintable: &Self::Type) -> i32 {
+        fn intrinsic_height(&self) -> i32 {
             let image = self.image.get().unwrap();
             let width = image.intrinsic_width();
             let height = image.intrinsic_height();
@@ -36,7 +36,7 @@ mod imp {
             }
         }
 
-        fn intrinsic_width(&self, _paintable: &Self::Type) -> i32 {
+        fn intrinsic_width(&self) -> i32 {
             let image = self.image.get().unwrap();
             let width = image.intrinsic_width();
             let height = image.intrinsic_height();
@@ -49,17 +49,12 @@ mod imp {
             }
         }
 
-        fn intrinsic_aspect_ratio(&self, _paintable: &Self::Type) -> f64 {
+        fn intrinsic_aspect_ratio(&self) -> f64 {
             self.image.get().unwrap().intrinsic_aspect_ratio()
         }
 
-        fn snapshot(
-            &self,
-            paintable: &Self::Type,
-            snapshot: &gdk::Snapshot,
-            _width: f64,
-            _height: f64,
-        ) {
+        fn snapshot(&self, snapshot: &gdk::Snapshot, _width: f64, _height: f64) {
+            let paintable = self.instance();
             let width = paintable.intrinsic_width() as f64;
             let height = paintable.intrinsic_height() as f64;
 
@@ -79,7 +74,7 @@ glib::wrapper! {
 
 impl Thumbnail {
     pub fn new(paintable: &impl glib::IsA<gdk::Paintable>) -> Self {
-        let object = glib::Object::new::<Self>(&[]).unwrap();
+        let object = glib::Object::new::<Self>(&[]);
         let imp = object.imp();
 
         imp.image.set(paintable.clone().upcast()).unwrap();

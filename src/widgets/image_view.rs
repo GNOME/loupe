@@ -97,15 +97,18 @@ mod imp {
             PROPERTIES.as_ref()
         }
 
-        fn property(&self, obj: &Self::Type, _id: usize, psec: &glib::ParamSpec) -> glib::Value {
+        fn property(&self, _id: usize, psec: &glib::ParamSpec) -> glib::Value {
+            let obj = self.instance();
             match psec.name() {
                 "active-file" => obj.active_file().to_value(),
                 _ => unimplemented!(),
             }
         }
 
-        fn constructed(&self, obj: &Self::Type) {
-            self.parent_constructed(obj);
+        fn constructed(&self) {
+            let obj = self.instance();
+
+            self.parent_constructed();
 
             let source = gtk::DragSource::new();
             source.set_exclusive(true);
@@ -386,28 +389,38 @@ impl LpImageView {
 
     pub fn set_background(&self) -> anyhow::Result<()> {
         let background = self.uri().context("No URI for current file")?;
-        spawn!(clone!(@weak self as view => async move {
+        spawn!(clone!(@weak self as view =>
+         async move {
             let id = WindowIdentifier::from_native(
                 &view.native().expect("View should have a GtkNative"),
             )
             .await;
 
-            let _ = match wallpaper::set_from_uri(
-                &id,
-                &background,
-                true,
-                wallpaper::SetOn::Background,
-            )
-            .await {
+            let _ = match wallpaper::WallpaperRequest::default()
+                .set_on(wallpaper::SetOn::Background)
+                .show_preview(true)
+                .identifier(id)
+                .build_uri(&background)
+                .await
+            {
                 // We use `1` here because we can't pass enums directly as GVariants,
                 // so we need to use the C int value of the enum.
                 // `TOAST_PRIORITY_NORMAL = 0`, and `TOAST_PRIORITY_HIGH = 1`
-                Ok(_) => view.activate_action("win.show-toast", Some(&(i18n("Set as background."), 1).to_variant())).unwrap(),
+                Ok(_) => view
+                    .activate_action(
+                        "win.show-toast",
+                        Some(&(i18n("Set as background."), 1).to_variant()),
+                    )
+                    .unwrap(),
                 Err(err) => {
                     if !matches!(err, Error::Response(ResponseError::Cancelled)) {
-                        view.activate_action("win.show-toast", Some(&(i18n("Could not set background."), 1).to_variant())).unwrap();
+                        view.activate_action(
+                            "win.show-toast",
+                            Some(&(i18n("Could not set background."), 1).to_variant()),
+                        )
+                        .unwrap();
                     }
-                },
+                }
             };
         }));
 
@@ -475,8 +488,9 @@ impl LpImageView {
         }
     }
 
-    pub fn uri(&self) -> Option<String> {
-        self.active_file().map(|f| f.uri().to_string())
+    pub fn uri(&self) -> Option<url::Url> {
+        self.active_file()
+            .and_then(|f| url::Url::parse(&f.uri()).ok())
     }
 
     pub fn active_file(&self) -> Option<gio::File> {

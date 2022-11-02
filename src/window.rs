@@ -127,8 +127,10 @@ mod imp {
     }
 
     impl ObjectImpl for LpWindow {
-        fn constructed(&self, obj: &Self::Type) {
-            self.parent_constructed(obj);
+        fn constructed(&self) {
+            let obj = self.instance();
+
+            self.parent_constructed();
 
             if config::PROFILE == ".Devel" {
                 obj.add_css_class("devel");
@@ -206,7 +208,7 @@ glib::wrapper! {
 #[gtk::template_callbacks]
 impl LpWindow {
     pub fn new<A: IsA<gtk::Application>>(app: &A) -> Self {
-        glib::Object::new(&[("application", app)]).expect("Failed to create LpWindow")
+        glib::Object::new(&[("application", app)])
     }
 
     fn toggle_fullscreen(&self, fullscreen: bool) {
@@ -264,7 +266,11 @@ impl LpWindow {
         {
             spawn!(clone!(@weak self as win => async move {
                 if let Err(e) =
-                    open_uri::open_file(&WindowIdentifier::from_native(&win).await, &file, true, true).await
+                    open_uri::OpenFileRequest::default()
+                    .ask(true)
+                    .writeable(true)
+                    .identifier(WindowIdentifier::from_native(&win).await)
+                    .build_file(&file).await
                 {
                     log::error!("Could not open image in external program: {}", e);
                 }
@@ -345,7 +351,7 @@ impl LpWindow {
 
         // Ensure the window surface exists
         if !self.is_realized() {
-            self.realize();
+            WidgetExt::realize(self);
         }
 
         let display = gdk::Display::default().unwrap();
