@@ -24,6 +24,7 @@ mod application;
 mod config;
 mod file_model;
 mod i18n;
+mod image_metadata;
 mod thumbnail;
 mod util;
 mod widgets;

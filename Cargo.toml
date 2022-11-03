@@ -6,6 +6,7 @@ edition = "2021"
 [dependencies]
 anyhow = "1.0.66"
 gtk-macros = "0.3.0"
+kamadak-exif = "0.5.5"
 log = "0.4.17"
 once_cell = "1.16.0"
 pretty_env_logger = "0.4.0"

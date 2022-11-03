@@ -102,6 +102,10 @@ mod imp {
                 win.open_with();
             });
 
+            klass.install_action("win.rotate-image", None, move |win, _, _| {
+                win.rotate_image();
+            });
+
             klass.install_action("win.set-background", None, move |win, _, _| {
                 win.set_background();
             });
@@ -278,6 +282,10 @@ impl LpWindow {
         } else {
             log::error!("Could not load a path for the current image.")
         }
+    }
+
+    fn rotate_image(&self) {
+        self.imp().image_view.rotate_image()
     }
 
     fn set_background(&self) {

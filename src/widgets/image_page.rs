@@ -132,6 +132,10 @@ impl LpImagePage {
         self.imp().file.get().cloned()
     }
 
+    pub fn image(&self) -> LpImage {
+        self.imp().image.get()
+    }
+
     pub fn texture(&self) -> Option<gdk::Texture> {
         self.imp().image.texture()
     }

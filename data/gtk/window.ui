@@ -129,10 +129,10 @@
         <attribute name="label" translatable="yes">_Print…</attribute>
         <attribute name="action">win.print</attribute>
       </item>
-      <!--<item>
+      <item>
         <attribute name="label" translatable="yes">_Rotate</attribute>
         <attribute name="action">win.rotate-image</attribute>
-      </item>-->
+      </item>
       <item>
         <attribute name="label" translatable="yes">_Set as Background…</attribute>
         <attribute name="action">win.set-background</attribute>

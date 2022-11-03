@@ -387,6 +387,12 @@ impl LpImageView {
         }
     }
 
+    pub fn rotate_image(&self) {
+        if let Some(current_page) = self.current_page() {
+            current_page.image().rotate();
+        }
+    }
+
     pub fn set_background(&self) -> anyhow::Result<()> {
         let background = self.uri().context("No URI for current file")?;
         spawn!(clone!(@weak self as view =>
