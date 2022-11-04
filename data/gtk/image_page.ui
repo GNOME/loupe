@@ -1,5 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
+  <menu id="image_menu">
+    <section>
+      <item>
+        <attribute name="label" translatable="yes">_Open With…</attribute>
+        <attribute name="action">win.open-with</attribute>
+      </item>
+      <!--<item>
+        <attribute name="label" translatable="yes">_Display On…</attribute>
+        <attribute name="action">win.display-on</attribute>
+      </item>-->
+      <item>
+        <attribute name="label" translatable="yes">_Print…</attribute>
+        <attribute name="action">win.print</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">_Copy</attribute>
+        <attribute name="action">win.copy</attribute>
+      </item>
+    </section>
+    <section>
+      <attribute name="label" translatable="yes">Rotate</attribute>
+      <attribute name="display-hint">inline-buttons</attribute>
+      <item>
+        <attribute name="custom">rotate-left</attribute>
+      </item>
+      <item>
+        <attribute name="custom">rotate-right</attribute>
+      </item>
+    </section>
+    <section>
+      <item>
+        <attribute name="label" translatable="yes">_Set as Background…</attribute>
+        <attribute name="action">win.set-background</attribute>
+      </item>
+    </section>
+  </menu>
   <template class="LpImagePage" parent="AdwBin">
     <property name="hexpand">True</property>
     <property name="vexpand">True</property>
@@ -36,6 +72,28 @@
               <object class="GtkPopoverMenu" id="popover">
                 <property name="has-arrow">False</property>
                 <property name="menu-model">image_menu</property>
+                <child type="rotate-left">
+                  <object class="GtkButton">
+                    <property name="icon-name">object-rotate-left-symbolic</property>
+                    <property name="tooltip-text" translatable="yes">Rotate Left</property>
+                    <property name="action-name">win.rotate</property>
+                    <property name="action-target">-90.0</property>
+                    <style>
+                      <class name="flat" />
+                    </style>
+                  </object>
+                </child>
+                <child type="rotate-right">
+                  <object class="GtkButton">
+                    <property name="icon-name">object-rotate-right-symbolic</property>
+                    <property name="tooltip-text" translatable="yes">Rotate Right</property>
+                    <property name="action-name">win.rotate</property>
+                    <property name="action-target">90.0</property>
+                    <style>
+                      <class name="flat" />
+                    </style>
+                  </object>
+                </child>
               </object>
             </child>
           </object>
@@ -43,32 +101,4 @@
       </object>
     </property>
   </template>
-  <menu id="image_menu">
-    <section>
-      <item>
-        <attribute name="label" translatable="yes">_Open With…</attribute>
-        <attribute name="action">win.open-with</attribute>
-      </item>
-      <!--<item>
-        <attribute name="label" translatable="yes">_Display On…</attribute>
-        <attribute name="action">win.display-on</attribute>
-      </item>-->
-      <item>
-        <attribute name="label" translatable="yes">_Print…</attribute>
-        <attribute name="action">win.print</attribute>
-      </item>
-      <item>
-        <attribute name="label" translatable="yes">_Copy</attribute>
-        <attribute name="action">win.copy</attribute>
-      </item>
-      <item>
-        <attribute name="label" translatable="yes">_Rotate</attribute>
-        <attribute name="action">win.rotate-image</attribute>
-      </item>
-      <item>
-        <attribute name="label" translatable="yes">_Set as Background…</attribute>
-        <attribute name="action">win.set-background</attribute>
-      </item>
-    </section>
-  </menu>
 </interface>

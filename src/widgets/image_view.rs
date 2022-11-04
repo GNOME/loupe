@@ -385,9 +385,9 @@ impl LpImageView {
         }
     }
 
-    pub fn rotate_image(&self) {
+    pub fn rotate_image(&self, angle: f64) {
         if let Some(current_page) = self.current_page() {
-            current_page.image().rotate();
+            current_page.image().rotate(angle);
         }
     }
 

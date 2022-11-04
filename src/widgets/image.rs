@@ -102,6 +102,9 @@ mod imp {
 
         fn dispose(&self) {
             let obj = self.instance();
+
+            self.rotation_animation.replace(None);
+
             while let Some(child) = obj.first_child() {
                 child.unparent();
             }
@@ -257,9 +260,9 @@ impl LpImage {
         gdk::ContentProvider::new_union(contents.as_slice())
     }
 
-    pub fn rotate(&self) {
+    pub fn rotate(&self, angle: f64) {
         let target = &self.imp().rotation_target;
-        target.set(target.get() + 90.);
+        target.set(target.get() + angle);
 
         let borrow = self.imp().rotation_animation.borrow();
         let animation = borrow.as_ref().unwrap();

@@ -102,8 +102,8 @@ mod imp {
                 win.open_with();
             });
 
-            klass.install_action("win.rotate-image", None, move |win, _, _| {
-                win.rotate_image();
+            klass.install_action("win.rotate", Some("d"), move |win, _, angle| {
+                win.rotate_image(angle.unwrap().get().unwrap());
             });
 
             klass.install_action("win.set-background", None, move |win, _, _| {
@@ -290,8 +290,8 @@ impl LpWindow {
         }
     }
 
-    fn rotate_image(&self) {
-        self.imp().image_view.rotate_image()
+    fn rotate_image(&self, angle: f64) {
+        self.imp().image_view.rotate_image(angle)
     }
 
     fn set_background(&self) {
@@ -352,6 +352,7 @@ impl LpWindow {
         self.action_set_enabled("win.set-background", enabled);
         self.action_set_enabled("win.toggle-fullscreen", enabled);
         self.action_set_enabled("win.print", enabled);
+        self.action_set_enabled("win.rotate", enabled);
         self.action_set_enabled("win.copy", enabled);
     }
 
