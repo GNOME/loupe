@@ -165,7 +165,13 @@ mod imp {
                     // We've added type annotations here, and written it as `let list: gdk::FileList = ...`,
                     // but you might also see places where type arguments are used.
                     // This line could have been written as `let list = value.get::<gdk::FileList>().unwrap()`.
-                    let list: gdk::FileList = value.get().unwrap();
+                    let list: gdk::FileList = match value.get() {
+                        Ok(list) => list,
+                        Err(err) => {
+                            log::error!("Issue with drop value: {err}");
+                            return false;
+                        }
+                    };
 
                     // TODO: Handle this like EOG and make a "directory" out of the given files
                     let file = list.files().get(0).unwrap().clone();
