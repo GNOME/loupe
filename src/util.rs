@@ -41,7 +41,7 @@ pub async fn query_attributes_future(
     file: &gio::File,
     attributes: Vec<&str>,
 ) -> anyhow::Result<gio::FileInfo> {
-    let mut attr_str = String::from(*attributes.get(0).context("No attributes")?);
+    let mut attr_str = String::from(*attributes.first().context("No attributes")?);
 
     for attr in &attributes[1..] {
         write!(attr_str, ",{}", attr)?;
