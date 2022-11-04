@@ -192,12 +192,6 @@ glib::wrapper! {
 }
 
 impl LpImage {
-    pub fn file(&self) -> Option<gio::File> {
-        let imp = self.imp();
-
-        imp.file.borrow().clone()
-    }
-
     pub fn set_texture_with_file(&self, texture: gdk::Texture, source_file: &gio::File) {
         let imp = self.imp();
 
@@ -214,6 +208,12 @@ impl LpImage {
         imp.mirrored.set(orientation.mirrored);
 
         self.queue_draw();
+    }
+
+    pub fn file(&self) -> Option<gio::File> {
+        let imp = self.imp();
+
+        imp.file.borrow().clone()
     }
 
     pub fn texture(&self) -> Option<gdk::Texture> {

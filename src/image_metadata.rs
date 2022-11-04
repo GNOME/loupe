@@ -8,17 +8,19 @@ pub enum ImageMetadata {
 }
 
 impl ImageMetadata {
-    // TODO: error handling
     pub fn load(file: &gio::File) -> Self {
-        let file = std::fs::File::open(file.path().unwrap()).unwrap();
-        let mut bufreader = std::io::BufReader::new(&file);
-        let exifreader = exif::Reader::new();
+        if let Some(path) = file.path() {
+            if let Ok(file) = std::fs::File::open(path) {
+                let mut bufreader = std::io::BufReader::new(&file);
+                let exifreader = exif::Reader::new();
 
-        if let Ok(exif) = exifreader.read_from_container(&mut bufreader) {
-            Self::Exif(exif)
-        } else {
-            Self::None
+                if let Ok(exif) = exifreader.read_from_container(&mut bufreader) {
+                    return Self::Exif(exif);
+                }
+            }
         }
+
+        Self::None
     }
 
     pub fn orientation(&self) -> Orientation {
@@ -38,10 +40,24 @@ impl ImageMetadata {
     }
 }
 
-// TODO: implement something (that does not fill the complete screen with binary data)
 impl std::fmt::Debug for ImageMetadata {
-    fn fmt(&self, _: &mut std::fmt::Formatter<'_>) -> Result<(), std::fmt::Error> {
-        Ok(())
+    fn fmt(&self, fmt: &mut std::fmt::Formatter<'_>) -> Result<(), std::fmt::Error> {
+        match self {
+            Self::Exif(exif) => {
+                let list = exif.fields().into_iter().map(|f| {
+                    let mut value = f.display_value().to_string();
+                    // Remove long values
+                    if value.len() > 100 {
+                        value = String::from("…");
+                    }
+
+                    (f.ifd_num.to_string(), f.tag.to_string(), value)
+                });
+                fmt.write_str("Exif")?;
+                fmt.debug_list().entries(list).finish()
+            }
+            Self::None => fmt.write_str("None"),
+        }
     }
 }
 
