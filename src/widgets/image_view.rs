@@ -154,15 +154,9 @@ impl LpImageView {
             }
         }
 
-        self.build_model_from_file(file);
+        self.build_model_from_file(file)?;
         self.notify("active-file");
 
-        // TODO: rework width stuff
-        // let width = imp.picture.image_width();
-        // let height = imp.picture.image_height();
-
-        // log::debug!("Image dimensions: {} x {}", width, height);
-        // Ok((width, height))
         Ok(())
     }
 
@@ -170,7 +164,7 @@ impl LpImageView {
     // that holds a `gio::File` for each child within the same directory as the
     // file we pass. This model will update with changes to the directory,
     // and in turn we'll update our `adw::Carousel`.
-    fn build_model_from_file(&self, file: &gio::File) {
+    fn build_model_from_file(&self, file: &gio::File) -> anyhow::Result<()> {
         let imp = self.imp();
         let carousel = &imp.carousel;
 
@@ -183,27 +177,31 @@ impl LpImageView {
                     if m.directory().map_or(false, |f| !f.equal(parent)) {
                         // Clear the carousel before creating the new model
                         self.clear_carousel(false);
-                        *model = Some(LpFileModel::from_directory(parent));
+                        *model = Some(LpFileModel::from_directory(parent)?);
                         log::debug!("new model created");
                     } else {
                         log::debug!("Re-using old model and navigating to the current file");
                         self.navigate_to_file(m, file);
-                        return;
+                        return Ok(());
                     }
                 } else {
-                    *model = Some(LpFileModel::from_directory(parent));
+                    *model = Some(LpFileModel::from_directory(parent)?);
                     log::debug!("new model created");
                 }
             }
         }
 
         if let Some(model) = imp.model.borrow().as_ref() {
-            let index = model.index_of(file).unwrap();
+            let index = model
+                .index_of(file)
+                .context(i18n("File not found in model. (TODO: bad message)"))?;
             log::debug!("Currently at file {index} in the directory");
             carousel.append(&LpImagePage::from_file(file));
             self.fill_carousel(model, index);
             self.update_action_state(model, index);
         }
+
+        Ok(())
     }
 
     pub fn navigate(&self, direction: adw::NavigationDirection) {
@@ -402,7 +400,7 @@ impl LpImageView {
             )
             .await;
 
-            let _ = match wallpaper::WallpaperRequest::default()
+            match wallpaper::WallpaperRequest::default()
                 .set_on(wallpaper::SetOn::Background)
                 .show_preview(true)
                 .identifier(id)

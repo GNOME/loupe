@@ -18,11 +18,13 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 
 use crate::deps::*;
+use crate::i18n::*;
 use crate::util;
 
 use gio::prelude::*;
 use gio::subclass::prelude::*;
 
+use anyhow::Context;
 use once_cell::sync::OnceCell;
 
 use std::cell::RefCell;
@@ -68,7 +70,7 @@ glib::wrapper! {
 }
 
 impl LpFileModel {
-    pub fn from_directory(directory: &gio::File) -> Self {
+    pub fn from_directory(directory: &gio::File) -> anyhow::Result<Self> {
         let model = glib::Object::new::<Self>(&[]);
 
         {
@@ -85,7 +87,7 @@ impl LpFileModel {
                     gio::FileQueryInfoFlags::NONE,
                     gio::Cancellable::NONE,
                 )
-                .unwrap();
+                .context(i18n("Directory does not exist."))?;
 
             // Filter out non-images; For now we support "all" image types.
             enumerator.for_each(|info| {
@@ -106,7 +108,7 @@ impl LpFileModel {
             model.imp().directory.set(directory.clone()).unwrap();
         }
 
-        model
+        Ok(model)
     }
 
     pub fn directory(&self) -> Option<gio::File> {
