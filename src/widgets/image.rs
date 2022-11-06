@@ -26,7 +26,7 @@ use once_cell::unsync::OnceCell;
 use std::cell::{Cell, RefCell};
 
 use crate::i18n::i18n;
-use crate::image_metadata::ImageMetadata;
+use crate::image_metadata::{ImageMetadata, LpImageMetadata};
 use crate::util;
 
 const ZOOM_ANIMATION_DURATION: u32 = 200;
@@ -79,7 +79,7 @@ mod imp {
         pub vadjustment: RefCell<Option<gtk::Adjustment>>,
 
         /// Currently EXIF data
-        pub image_metadata: RefCell<ImageMetadata>,
+        pub image_metadata: RefCell<LpImageMetadata>,
         /// This will often be available earlier than the complete image
         pub image_original_size: Cell<(i32, i32)>,
 
@@ -115,6 +115,9 @@ mod imp {
                     glib::ParamSpecBoolean::builder("is-loaded")
                         .read_only()
                         .build(),
+                    glib::ParamSpecObject::builder::<LpImageMetadata>("metadata")
+                        .read_only()
+                        .build(),
                     glib::ParamSpecDouble::builder("rotation")
                         .explicit_notify()
                         .build(),
@@ -148,6 +151,7 @@ mod imp {
             match pspec.name() {
                 "file" => obj.file().to_value(),
                 "is-loaded" => obj.is_loaded().to_value(),
+                "metadata" => obj.metadata().to_value(),
                 "rotation" => obj.rotation().to_value(),
                 "mirrored" => obj.mirrored().to_value(),
                 "zoom" => obj.zoom().to_value(),
@@ -572,10 +576,12 @@ impl LpImage {
             .await?;
             let orientation = metadata.orientation();
 
-            imp.image_metadata.replace(metadata);
+            imp.image_metadata.replace(LpImageMetadata::from(metadata));
             imp.rotation_target.set(-orientation.rotation);
             imp.rotation.set(-orientation.rotation);
             imp.mirrored.set(orientation.mirrored);
+
+            self.notify("metadata");
 
             log::debug!("Loading image size");
             let (_, x, y) = util::spawn(
@@ -1080,6 +1086,10 @@ impl LpImage {
 
     pub fn widget_width(&self) -> f64 {
         self.width() as f64
+    }
+
+    pub fn metadata(&self) -> LpImageMetadata {
+        self.imp().image_metadata.borrow().clone()
     }
 
     /// Drag and drop content provider

@@ -1,0 +1,125 @@
+#[derive(Debug, Clone, Copy)]
+pub struct GPSLocation {
+    pub latitude: GPSCoord,
+    pub longitude: GPSCoord,
+}
+
+#[derive(Debug, Clone, Copy)]
+pub struct GPSCoord {
+    sing: bool,
+    deg: f64,
+    min: Option<f64>,
+    sec: Option<f64>,
+}
+
+impl GPSCoord {
+    fn to_f64(&self) -> f64 {
+        let sign = if self.sing { 1. } else { -1. };
+
+        let min = self.min.unwrap_or_default();
+        let sec = self.sec.unwrap_or_default();
+
+        sign * (self.deg + min / 60. + sec / 60. / 60.)
+    }
+
+    fn display(&self, reference: &str) -> String {
+        let deg = self.deg;
+
+        if let (Some(min), Some(sec)) = (self.min, self.sec) {
+            format!("{deg}° {min}′ {sec}″ {reference}")
+        } else if let Some(min) = self.min {
+            format!("{deg}° {min}′ {reference}")
+        } else {
+            format!("{deg}° {reference}")
+        }
+    }
+
+    fn latitude_sign(reference: &[Vec<u8>]) -> Option<bool> {
+        let reference = reference.first().and_then(|x| x.first())?;
+        match reference.to_ascii_uppercase() {
+            b'N' => Some(true),
+            b'S' => Some(false),
+            _ => None,
+        }
+    }
+
+    fn longitude_sign(reference: &[Vec<u8>]) -> Option<bool> {
+        let reference = reference.first().and_then(|x| x.first())?;
+        match reference.to_ascii_uppercase() {
+            b'E' => Some(true),
+            b'W' => Some(false),
+            _ => None,
+        }
+    }
+
+    fn position_exif(position: &[exif::Rational]) -> Option<(f64, Option<f64>, Option<f64>)> {
+        Some((
+            position.get(0).map(exif::Rational::to_f64)?,
+            position.get(1).map(exif::Rational::to_f64),
+            position.get(2).map(exif::Rational::to_f64),
+        ))
+    }
+}
+
+impl GPSLocation {
+    pub fn for_exif(
+        latitude: &[exif::Rational],
+        latitude_ref: &[Vec<u8>],
+        longitude: &[exif::Rational],
+        longitude_ref: &[Vec<u8>],
+    ) -> Option<Self> {
+        let (lat_deg, lat_min, lat_sec) = GPSCoord::position_exif(latitude)?;
+        let lat_sign = GPSCoord::latitude_sign(latitude_ref)?;
+
+        let (lon_deg, lon_min, lon_sec) = GPSCoord::position_exif(longitude)?;
+        let lon_sign = GPSCoord::longitude_sign(longitude_ref)?;
+
+        Some(Self {
+            latitude: GPSCoord {
+                sing: lat_sign,
+                deg: lat_deg,
+                min: lat_min,
+                sec: lat_sec,
+            },
+            longitude: GPSCoord {
+                sing: lon_sign,
+                deg: lon_deg,
+                min: lon_min,
+                sec: lon_sec,
+            },
+        })
+    }
+
+    pub fn display(&self) -> String {
+        if let Some(world) = libgweather::Location::world() {
+            let location = world.find_nearest_city(self.latitude.to_f64(), self.longitude.to_f64());
+            if let (Some(city), Some(country)) = (location.city_name(), location.country_name()) {
+                return format!("{city}, {country}");
+            }
+        }
+
+        // fallback
+        self.latitude_display() + "\n" + &self.longitude_display()
+    }
+
+    pub fn latitude_display(&self) -> String {
+        let coord = self.latitude;
+        let reference = if coord.sing { "N" } else { "S" };
+
+        coord.display(reference)
+    }
+
+    pub fn longitude_display(&self) -> String {
+        let coord = self.longitude;
+        let reference = if coord.sing { "E" } else { "W" };
+
+        coord.display(reference)
+    }
+
+    pub fn geo_uri(&self) -> String {
+        let latitude = self.latitude.to_f64();
+        let longitude = self.longitude.to_f64();
+        // six decimal places gives as more than a meter accuracy
+        format!("geo:{latitude:.6},{longitude:.6}")
+    }
+}

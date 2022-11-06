@@ -47,6 +47,51 @@
     ],
     "modules" : [
         {
+            "name": "geocode-glib",
+            "buildsystem": "meson",
+            "config-opts": [
+                "-Denable-installed-tests=false",
+                "-Denable-introspection=false",
+                "-Denable-gtk-doc=false",
+                "-Dsoup2=false"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://download.gnome.org/sources/geocode-glib/3.26/geocode-glib-3.26.4.tar.xz",
+                    "sha256": "2d9a6826d158470449a173871221596da0f83ebdcff98b90c7049089056a37aa",
+                    "x-checker-data": {
+                        "type": "gnome",
+                        "name": "geocode-glib"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "libgweather",
+            "buildsystem": "meson",
+            "config-opts": [
+                "-Denable_vala=false",
+                "-Dgtk_doc=false",
+                "-Dintrospection=false",
+                "-Dtests=false"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://download.gnome.org/sources/libgweather/4.2/libgweather-4.2.0.tar.xz",
+                    "sha256": "af8a812da0d8976a000e1d62572c256086a817323fbf35b066dbfdd8d2ca6203",
+                    "x-checker-data": {
+                        "type": "gnome",
+                        "name": "libgweather",
+                        "versions": {
+                            "<": "40.0"
+                        }
+                    }
+                }
+            ]
+        },
+        {
             "name" : "loupe",
             "builddir" : true,
             "buildsystem" : "meson",

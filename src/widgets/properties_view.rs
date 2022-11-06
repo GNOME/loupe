@@ -34,7 +34,10 @@ use std::cell::RefCell;
 
 use gtk_macros::spawn;
 
-const FALLBACK: &str = "-";
+use crate::image_metadata::LpImageMetadata;
+use crate::widgets::image::LpImage;
+
+const FALLBACK: &str = "–";
 
 mod imp {
     use super::*;
@@ -43,6 +46,10 @@ mod imp {
     #[template(resource = "/org/gnome/Loupe/gtk/properties_view.ui")]
     pub struct LpPropertiesView {
         pub file: RefCell<Option<glib::WeakRef<gio::File>>>,
+        pub image: RefCell<Option<glib::WeakRef<LpImage>>>,
+
+        pub metadata: RefCell<LpImageMetadata>,
+
         pub file_info: RefCell<Option<gio::FileInfo>>,
         pub dimensions: RefCell<Option<String>>,
 
@@ -62,6 +69,10 @@ mod imp {
 
             klass.install_action("properties.open-folder", None, move |properties, _, _| {
                 properties.open_directory();
+            });
+
+            klass.install_action("properties.open-location", None, move |properties, _, _| {
+                properties.open_location();
             });
         }
 
@@ -86,6 +97,12 @@ mod imp {
                         .read_only()
                         .explicit_notify()
                         .build(),
+                    glib::ParamSpecObject::builder::<LpImage>("image")
+                        .explicit_notify()
+                        .build(),
+                    glib::ParamSpecObject::builder::<LpImageMetadata>("metadata")
+                        .read_only()
+                        .build(),
                 ]
             });
 
@@ -98,6 +115,8 @@ mod imp {
 
             match prop_name {
                 "file" => obj.file().to_value(),
+                "image" => obj.image().to_value(),
+                "metadata" => self.metadata.borrow().to_value(),
                 "file-info" => obj.file_info().to_value(),
                 "dimensions" => self.dimensions.borrow().to_value(),
                 _ => unimplemented!("Failed to get property \"{prop_name}\""),
@@ -110,6 +129,7 @@ mod imp {
 
             match prop_name {
                 "file" => obj.set_file(&value.get().ok()),
+                "image" => obj.set_image(&value.get().ok()),
                 _ => unimplemented!(),
             }
         }
@@ -119,6 +139,24 @@ mod imp {
 
             self.parent_constructed();
             obj.action_set_enabled("properties.open-folder", false);
+
+            // watch changes to image metadata
+            obj.property_expression("image")
+                .chain_property::<LpImage>("metadata")
+                .watch(
+                    glib::Object::NONE,
+                    glib::clone!(@weak obj => move || {
+                        let metadata = if let Some(image) = obj.image() {
+                            image.metadata()
+                        } else {
+                            LpImageMetadata::default()
+                        };
+
+                        // set metadata since image might have changed
+                        obj.imp().metadata.replace(metadata);
+                        obj.notify("metadata");
+                    }),
+                );
         }
     }
 
@@ -165,6 +203,18 @@ impl LpPropertiesView {
     fn file(&self) -> Option<gio::File> {
         let imp = self.imp();
         imp.file.borrow().as_ref().and_then(|w| w.upgrade())
+    }
+
+    fn set_image(&self, image: &Option<LpImage>) {
+        let imp = self.imp();
+
+        imp.image.replace(image.as_ref().map(|x| x.downgrade()));
+        self.notify("image");
+    }
+
+    fn image(&self) -> Option<LpImage> {
+        let imp = self.imp();
+        imp.image.borrow().as_ref().and_then(|w| w.upgrade())
     }
 
     fn file_info(&self) -> Option<gio::FileInfo> {
@@ -304,6 +354,26 @@ impl LpPropertiesView {
         }
     }
 
+    /// Open GPS location in apps like Maps via `geo:` URI
+    fn open_location(&self) {
+        if let Some(uri) = self
+            .image()
+            .and_then(|x| x.metadata().gps_location())
+            .map(|x| x.geo_uri())
+        {
+            gio::AppInfo::launch_default_for_uri_async(
+                &uri,
+                gio::AppLaunchContext::NONE,
+                gio::Cancellable::NONE,
+                |result| {
+                    if let Err(err) = result {
+                        log::error!("Failed to show geo URI: {err}")
+                    }
+                },
+            );
+        }
+    }
+
     // In the LpPropertiesView UI file we define a few `gtk::Expression`s
     // that are closures. These closures take either the current `gio::File`
     // or the current file's associated `gio::FileInfo` and process them
@@ -355,6 +425,11 @@ impl LpPropertiesView {
             .and_then(|t| t.format("%x, %X").ok())
             .map(|t| t.to_string())
             .unwrap_or_else(|| FALLBACK.to_owned())
+    }
+
+    #[template_callback]
+    fn has_content(&self, content: Option<String>) -> bool {
+        content.map_or(false, |x| !x.is_empty())
     }
 }
 

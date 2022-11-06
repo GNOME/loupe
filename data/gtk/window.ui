@@ -188,6 +188,13 @@
                 <property name="flap">
                   <object class="LpPropertiesView" id="properties_view">
                     <property name="file" bind-source="image_view" bind-property="active-file" bind-flags="sync-create"/>
+                    <binding name="image">
+                      <lookup name="image">
+                        <lookup name="current-page-strict">
+                          image_view
+                        </lookup>
+                      </lookup>
+                    </binding>
                   </object>
                 </property>
               </object>

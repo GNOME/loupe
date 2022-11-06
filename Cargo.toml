@@ -17,6 +17,7 @@ futures-channel = "0.3.25"
 futures = "0.3.25"
 svg_metadata = "0.4.3"
 url = "2.3.1"
+libgweather = "4.0.0"
 
 [dependencies.ashpd]
 version = "0.4.0-alpha.1"
