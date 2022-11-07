@@ -24,7 +24,7 @@ version_suffix = ''
 
 if get_option('profile') == 'development'
   profile = '.Devel'
-  vcs_tag = run_command('git', 'rev-parse', '--short', 'HEAD').stdout().strip()
+  vcs_tag = run_command('git', 'rev-parse', '--short', 'HEAD', check: false).stdout().strip()
   if vcs_tag == ''
     version_suffix = '-devel'
   else
@@ -56,7 +56,7 @@ subdir('po')
 # Pre-commit hook for rust formatting
 if get_option('profile') == 'development'
     message('Setting up git pre-commit hook..')
-    run_command('cp', '-f', 'hooks/pre-commit.hook', '.git/hooks/pre-commit')
+    run_command('cp', '-f', 'hooks/pre-commit.hook', '.git/hooks/pre-commit', check: false)
 endif
 
 gnome.post_install(
