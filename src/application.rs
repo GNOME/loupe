@@ -161,6 +161,8 @@ impl LpApplication {
         self.set_accels_for_action("win.show-help-overlay", &["<Primary>question"]);
         self.set_accels_for_action("win.toggle-fullscreen", &["F11"]);
         self.set_accels_for_action("window.close", &["<Primary>W"]);
+        self.set_accels_for_action("win.zoom-to(1.0)", &["1"]);
+        self.set_accels_for_action("win.zoom-to(2.0)", &["2"]);
     }
 
     pub fn show_about(&self) {

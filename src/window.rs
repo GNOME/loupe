@@ -32,7 +32,7 @@ use gtk_macros::spawn;
 
 use crate::config;
 use crate::util;
-use crate::widgets::{LpImageView, LpPropertiesView};
+use crate::widgets::{LpImage, LpImagePage, LpImageView, LpPropertiesView};
 
 mod imp {
     use super::*;
@@ -94,6 +94,18 @@ mod imp {
                 win.toggle_fullscreen(!win.is_fullscreened());
             });
 
+            klass.install_action("win.zoom-out", None, move |win, _, _| {
+                win.zoom_out();
+            });
+
+            klass.install_action("win.zoom-in", None, move |win, _, _| {
+                win.zoom_in();
+            });
+
+            klass.install_action("win.zoom-to", Some("d"), move |win, _, level| {
+                win.zoom_to(level.unwrap().get().unwrap());
+            });
+
             klass.install_action("win.open", None, move |win, _, _| {
                 win.pick_file();
             });
@@ -141,6 +153,23 @@ mod imp {
             }
 
             obj.set_actions_enabled(false);
+            self.image_view
+                .property_expression("current-page-strict")
+                .chain_property::<LpImagePage>("image")
+                .chain_property::<LpImage>("best-fit")
+                .watch(
+                    glib::Object::NONE,
+                    glib::clone!(@weak obj => move || {
+                        let enabled = obj
+                            .imp()
+                            .image_view
+                            .current_page()
+                            .map(|page| !page.image().is_best_fit())
+                            .unwrap_or_default();
+
+                        obj.action_set_enabled("win.zoom-out", enabled);
+                    }),
+                );
 
             self.status_page
                 .set_icon_name(Some(&format!("{}-symbolic", config::APP_ID)));
@@ -233,6 +262,18 @@ impl LpWindow {
         }
 
         self.set_fullscreened(fullscreen);
+    }
+
+    fn zoom_out(&self) {
+        self.imp().image_view.zoom_out();
+    }
+
+    fn zoom_in(&self) {
+        self.imp().image_view.zoom_in();
+    }
+
+    fn zoom_to(&self, level: f64) {
+        self.imp().image_view.zoom_to(level);
     }
 
     fn pick_file(&self) {

@@ -57,45 +57,49 @@
           </object>
         </child>
         <child>
-          <object class="LpImage" id="image">
-            <child>
-              <object class="GtkGestureClick" id="click_gesture">
-                <property name="button">3</property>
-              </object>
-            </child>
-            <child>
-              <object class="GtkGestureLongPress" id="press_gesture">
-                <property name="touch-only">True</property>
-              </object>
-            </child>
-            <child>
-              <object class="GtkPopoverMenu" id="popover">
-                <property name="has-arrow">False</property>
-                <property name="menu-model">image_menu</property>
-                <child type="rotate-left">
-                  <object class="GtkButton">
-                    <property name="icon-name">object-rotate-left-symbolic</property>
-                    <property name="tooltip-text" translatable="yes">Rotate Left</property>
-                    <property name="action-name">win.rotate</property>
-                    <property name="action-target">-90.0</property>
-                    <style>
-                      <class name="flat" />
-                    </style>
+          <object class="GtkScrolledWindow" id="scrolled_window">
+            <property name="child">
+              <object class="LpImage" id="image">
+                <child>
+                  <object class="GtkGestureClick" id="click_gesture">
+                    <property name="button">3</property>
                   </object>
                 </child>
-                <child type="rotate-right">
-                  <object class="GtkButton">
-                    <property name="icon-name">object-rotate-right-symbolic</property>
-                    <property name="tooltip-text" translatable="yes">Rotate Right</property>
-                    <property name="action-name">win.rotate</property>
-                    <property name="action-target">90.0</property>
-                    <style>
-                      <class name="flat" />
-                    </style>
+                <child>
+                  <object class="GtkGestureLongPress" id="press_gesture">
+                    <property name="touch-only">True</property>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkPopoverMenu" id="popover">
+                    <property name="has-arrow">False</property>
+                    <property name="menu-model">image_menu</property>
+                    <child type="rotate-left">
+                      <object class="GtkButton">
+                        <property name="icon-name">object-rotate-left-symbolic</property>
+                        <property name="tooltip-text" translatable="yes">Rotate Left</property>
+                        <property name="action-name">win.rotate</property>
+                        <property name="action-target">-90.0</property>
+                        <style>
+                          <class name="flat" />
+                        </style>
+                      </object>
+                    </child>
+                    <child type="rotate-right">
+                      <object class="GtkButton">
+                        <property name="icon-name">object-rotate-right-symbolic</property>
+                        <property name="tooltip-text" translatable="yes">Rotate Right</property>
+                        <property name="action-name">win.rotate</property>
+                        <property name="action-target">90.0</property>
+                        <style>
+                          <class name="flat" />
+                        </style>
+                      </object>
+                    </child>
                   </object>
                 </child>
               </object>
-            </child>
+            </property>
           </object>
         </child>
       </object>

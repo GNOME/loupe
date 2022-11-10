@@ -26,7 +26,7 @@ use gtk::CompositeTemplate;
 
 use gtk_macros::spawn;
 
-use once_cell::sync::OnceCell;
+use once_cell::sync::{Lazy, OnceCell};
 
 use crate::widgets::LpImage;
 
@@ -42,6 +42,8 @@ mod imp {
         pub(super) spinner: TemplateChild<gtk::Spinner>,
         #[template_child]
         pub(super) error_page: TemplateChild<adw::StatusPage>,
+        #[template_child]
+        pub(super) scrolled_window: TemplateChild<gtk::ScrolledWindow>,
         #[template_child]
         pub(super) image: TemplateChild<LpImage>,
         #[template_child]
@@ -70,6 +72,23 @@ mod imp {
     }
 
     impl ObjectImpl for LpImagePage {
+        fn properties() -> &'static [glib::ParamSpec] {
+            static PROPERTIES: Lazy<Vec<glib::ParamSpec>> = Lazy::new(|| {
+                vec![glib::ParamSpecObject::builder::<LpImage>("image")
+                    .read_only()
+                    .build()]
+            });
+
+            PROPERTIES.as_ref()
+        }
+
+        fn property(&self, _id: usize, pspec: &glib::ParamSpec) -> glib::Value {
+            let obj = self.instance();
+            match pspec.name() {
+                "image" => obj.image().to_value(),
+                name => unimplemented!("property {name}"),
+            }
+        }
         fn constructed(&self) {
             let obj = self.instance();
 
@@ -114,7 +133,7 @@ impl LpImagePage {
             match load_texture_from_file(&file).await {
                 Ok(texture) => {
                     imp.image.set_texture_with_file(texture, &file);
-                    imp.stack.set_visible_child(&*imp.image);
+                    imp.stack.set_visible_child(&*imp.scrolled_window);
                     imp.spinner.set_spinning(false);
                 },
                 Err(e) => {

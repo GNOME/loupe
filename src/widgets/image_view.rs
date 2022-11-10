@@ -85,13 +85,14 @@ mod imp {
     impl ObjectImpl for LpImageView {
         fn properties() -> &'static [glib::ParamSpec] {
             static PROPERTIES: Lazy<Vec<glib::ParamSpec>> = Lazy::new(|| {
-                vec![glib::ParamSpecObject::new(
-                    "active-file",
-                    "",
-                    "",
-                    gio::File::static_type(),
-                    glib::ParamFlags::READABLE,
-                )]
+                vec![
+                    glib::ParamSpecObject::builder::<gio::File>("active-file")
+                        .read_only()
+                        .build(),
+                    glib::ParamSpecObject::builder::<LpImagePage>("current-page-strict")
+                        .read_only()
+                        .build(),
+                ]
             });
 
             PROPERTIES.as_ref()
@@ -101,6 +102,7 @@ mod imp {
             let obj = self.instance();
             match psec.name() {
                 "active-file" => obj.active_file().to_value(),
+                "current-page-strict" => obj.current_page_strict().to_value(),
                 _ => unimplemented!(),
             }
         }
@@ -114,8 +116,18 @@ mod imp {
             source.set_exclusive(true);
 
             source.connect_prepare(
-                glib::clone!(@weak obj => @default-return None, move |_, _, _| {
-                    obj.current_page().map(|p| p.content_provider())
+                glib::clone!(@weak obj => @default-return None, move |gesture, _, _| {
+                    let is_scrollable = obj
+                        .current_page()
+                        .map(|p| p.image().is_hscrollable() || p.image().is_vscrollable());
+
+                    // do scrolling if scrollable
+                    if is_scrollable == Some(true) {
+                        gesture.set_state(gtk::EventSequenceState::Denied);
+                        None
+                    } else {
+                        obj.current_page().map(|p| p.content_provider())
+                    }
                 }),
             );
 
@@ -131,6 +143,7 @@ mod imp {
             self.carousel
                 .connect_position_notify(clone!(@weak obj => move |_| {
                     obj.notify("active-file");
+                    obj.notify("current-page-strict");
                 }));
         }
     }
@@ -156,6 +169,7 @@ impl LpImageView {
 
         self.build_model_from_file(file)?;
         self.notify("active-file");
+        self.notify("current-page-strict");
 
         Ok(())
     }
@@ -385,9 +399,27 @@ impl LpImageView {
         }
     }
 
+    pub fn zoom_out(&self) {
+        if let Some(current_page) = self.current_page() {
+            current_page.image().zoom_out();
+        }
+    }
+
+    pub fn zoom_in(&self) {
+        if let Some(current_page) = self.current_page() {
+            current_page.image().zoom_in();
+        }
+    }
+
+    pub fn zoom_to(&self, level: f64) {
+        if let Some(current_page) = self.current_page() {
+            current_page.image().zoom_to(level);
+        }
+    }
+
     pub fn rotate_image(&self, angle: f64) {
         if let Some(current_page) = self.current_page() {
-            current_page.image().rotate(angle);
+            current_page.image().rotate_by(angle);
         }
     }
 
@@ -482,13 +514,34 @@ impl LpImageView {
         Ok(())
     }
 
+    // TODO: check how often we actually want to use this
     pub fn current_page(&self) -> Option<LpImagePage> {
         let carousel = &self.imp().carousel;
         let pos = carousel.position().round() as u32;
-        if carousel.n_pages() > 0 {
+        if carousel.n_pages() > 0 && pos < carousel.n_pages() {
             carousel.nth_page(pos).downcast().ok()
         } else {
             None
+        }
+    }
+
+    /// Returns `None` during animations instead of returning the closest image
+    pub fn current_page_strict(&self) -> Option<LpImagePage> {
+        let carousel = &self.imp().carousel;
+
+        if carousel.position().fract() != 0. {
+            // there is no current page during animations
+            None
+        } else {
+            let pos = carousel.position().round() as u32;
+            if pos >= carousel.n_pages() {
+                log::warn!("Hit AdwCarousel bug");
+                None
+            } else if carousel.n_pages() > 0 {
+                carousel.nth_page(pos).downcast().ok()
+            } else {
+                None
+            }
         }
     }
 

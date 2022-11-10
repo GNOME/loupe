@@ -38,6 +38,18 @@
                 <property name="accelerator">&lt;Primary&gt;q</property>
               </object>
             </child>
+            <child>
+              <object class="GtkShortcutsShortcut">
+                <property name="title" translatable="yes" context="shortcut window">Show with orginal scale</property>
+                <property name="accelerator">1</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkShortcutsShortcut">
+                <property name="title" translatable="yes" context="shortcut window">Show with 200% of orginal scale</property>
+                <property name="accelerator">2</property>
+              </object>
+            </child>
           </object>
         </child>
       </object>

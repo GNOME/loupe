@@ -23,7 +23,7 @@ features = ["gtk4"]
 [dependencies.gtk]
 package = "gtk4"
 version = "0.5.1"
-features = ["v4_6"]
+features = ["v4_8"]
 
 [dependencies.gio]
 package = "gio"
