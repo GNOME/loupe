@@ -98,6 +98,18 @@ mod imp {
                 .target(&adw::PropertyAnimationTarget::new(&*obj, "rotation"))
                 .build();
             self.rotation_animation.replace(Some(rotation_animation));
+
+            let rotation_gesture = gtk::GestureRotate::new();
+            obj.add_controller(&rotation_gesture);
+
+            rotation_gesture.connect_angle_changed(glib::clone!(@weak obj => move |_, angle, _| {
+                obj.set_rotation(obj.imp().rotation_target.get() + angle.to_degrees());
+            }));
+
+            rotation_gesture.connect_end(glib::clone!(@weak obj => move |_, _| {
+                let angle = (obj.rotation() / 90.).round() * 90. - obj.imp().rotation_target.get();
+                obj.rotate(angle);
+            }));
         }
 
         fn dispose(&self) {
