@@ -1044,6 +1044,8 @@ version = "0.1.0"
 dependencies = [
  "anyhow",
  "ashpd",
+ "async-global-executor",
+ "async-std",
  "futures",
  "futures-channel",
  "gettext-rs",

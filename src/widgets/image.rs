@@ -20,12 +20,14 @@ use crate::deps::*;
 
 use adw::{prelude::*, subclass::prelude::*};
 
+use anyhow::Context;
 use once_cell::sync::Lazy;
-
 use once_cell::unsync::OnceCell;
 use std::cell::{Cell, RefCell};
 
+use crate::i18n::i18n;
 use crate::image_metadata::ImageMetadata;
+use crate::util;
 
 const ZOOM_ANIMATION_DURATION: u32 = 200;
 const ROTATION_ANIMATION_DURATION: u32 = 200;
@@ -43,6 +45,9 @@ mod imp {
     pub struct LpImage {
         pub file: RefCell<Option<gio::File>>,
         pub texture: RefCell<Option<gdk::Texture>>,
+        /// Set when image is completely loaded and ready for displaying
+        pub is_loaded: Cell<bool>,
+
         /// Rotation final value (can differ from `rotation` during animation)
         pub rotation_target: Cell<f64>,
         /// Rotated presentation of original image in degrees clockwise
@@ -75,6 +80,8 @@ mod imp {
 
         /// Currently EXIF data
         pub image_metadata: RefCell<ImageMetadata>,
+        /// This will often be available earlier than the complete image
+        pub image_original_size: Cell<(i32, i32)>,
 
         /// Current pointer position
         pub pointer_position: Cell<Option<(f64, f64)>>,
@@ -105,6 +112,9 @@ mod imp {
                     glib::ParamSpecObject::builder::<gio::File>("file")
                         .read_only()
                         .build(),
+                    glib::ParamSpecBoolean::builder("is-loaded")
+                        .read_only()
+                        .build(),
                     glib::ParamSpecDouble::builder("rotation")
                         .explicit_notify()
                         .build(),
@@ -118,6 +128,9 @@ mod imp {
                         .explicit_notify()
                         .build(),
                     glib::ParamSpecBoolean::builder("is-max-zoom")
+                        .read_only()
+                        .build(),
+                    glib::ParamSpecVariant::builder("image-size", glib::VariantTy::TUPLE)
                         .read_only()
                         .build(),
                     glib::ParamSpecOverride::for_interface::<gtk::Scrollable>("hadjustment"),
@@ -134,11 +147,13 @@ mod imp {
             let obj = self.instance();
             match pspec.name() {
                 "file" => obj.file().to_value(),
+                "is-loaded" => obj.is_loaded().to_value(),
                 "rotation" => obj.rotation().to_value(),
                 "mirrored" => obj.mirrored().to_value(),
                 "zoom" => obj.zoom().to_value(),
                 "best-fit" => obj.is_best_fit().to_value(),
                 "is-max-zoom" => obj.is_max_zoom().to_value(),
+                "image-size" => obj.image_size().to_variant().to_value(),
                 // don't use getter functions here sicne they can return a fake adjustment
                 "hadjustment" => self.hadjustment.borrow().to_value(),
                 "vadjustment" => self.vadjustment.borrow().to_value(),
@@ -450,6 +465,81 @@ mod imp {
                 snapshot.restore();
             }
         }
+
+        fn measure(&self, orientation: gtk::Orientation, _for_size: i32) -> (i32, i32, i32, i32) {
+            let (image_width, image_height) = self.instance().image_size();
+
+            if image_width > 0 && image_height > 0 {
+                if let Some(display) = gdk::Display::default() {
+                    if let Some(native) = self.instance().native() {
+                        let hidpi_scale = self.instance().scale_factor() as f64;
+
+                        // get monitor information
+                        let monitor = display.monitor_at_surface(&native.surface());
+                        let monitor_geometry = monitor.geometry();
+                        // TODO: Per documentation those dimensions should not be physical pixels.
+                        // But on Wayland they are physiscal pixels and on X11 not.
+                        // Taking the version that works on Wayland for now.
+                        // <https://gitlab.gnome.org/GNOME/gtk/-/issues/5391>
+                        let monitor_width = monitor_geometry.width() as f64 - 40.;
+                        let monitor_height = monitor_geometry.height() as f64 - 60.;
+
+                        // areas
+                        let monitor_area = monitor_width * monitor_height;
+                        let image_area = image_width as f64 * image_height as f64;
+
+                        let ocuppy_area_factor = if monitor_area < 1024. * 768. {
+                            // for small monitors occupy 80% of the area
+                            0.8
+                        } else {
+                            // for large monitors occupy 30% of the area
+                            0.3
+                        };
+
+                        // factor for width and height that will achive the desired area occupation
+                        // derived from:
+                        // monitor_area * ocuppy_area_factor ==
+                        //   (image_width * size_scale) * (image_height * size_scale)
+                        let size_scale = f64::sqrt(monitor_area / image_area * ocuppy_area_factor);
+                        // ensure that we never increase image size
+                        let target_scale = f64::min(1.0, size_scale);
+                        let mut nat_width = image_width as f64 * target_scale;
+                        let mut nat_height = image_height as f64 * target_scale;
+
+                        // scale down if targeted occupation does not fit in one direction
+                        if nat_width > monitor_width {
+                            nat_width = monitor_width;
+                            nat_height = nat_height * monitor_width / nat_width;
+                        }
+
+                        // same for other direction
+                        if nat_height > monitor_height {
+                            nat_height = monitor_height;
+                            nat_width = nat_width * monitor_height / nat_height;
+                        }
+
+                        let size = match orientation {
+                            gtk::Orientation::Horizontal => (nat_width / hidpi_scale).round(),
+                            gtk::Orientation::Vertical => (nat_height / hidpi_scale).round(),
+                            _ => unreachable!(),
+                        };
+
+                        return (0, size as i32, -1, -1);
+                    }
+                }
+            }
+
+            // fallback if monitor size or image size is not known:
+            // use original image size and hope for the best
+            // TODO: We could use a small default monitor size estimate instead
+            let size = match orientation {
+                gtk::Orientation::Horizontal => image_width,
+                gtk::Orientation::Vertical => image_height,
+                _ => unreachable!(),
+            };
+
+            (0, size, -1, -1)
+        }
     }
 
     impl ScrollableImpl for LpImage {}
@@ -462,26 +552,73 @@ glib::wrapper! {
 }
 
 impl LpImage {
-    pub fn set_texture_with_file(&self, texture: gdk::Texture, source_file: &gio::File) {
+    pub async fn load(&self, file: &gio::File) -> anyhow::Result<()> {
         let imp = self.imp();
 
-        imp.texture.replace(Some(texture));
-        imp.file.replace(Some(source_file.clone()));
+        if let Some(path) = file.path() {
+            imp.file.replace(Some(file.clone()));
 
-        let metadata = ImageMetadata::load(source_file);
-        let orientation = metadata.orientation();
+            if !path.is_file() {
+                return Err(anyhow::Error::msg(i18n("File does not exist")));
+            }
 
-        imp.image_metadata.replace(metadata);
+            log::debug!("Loading file {}", path.display());
 
-        imp.rotation_target.set(-orientation.rotation);
-        imp.rotation.set(-orientation.rotation);
-        imp.mirrored.set(orientation.mirrored);
+            log::debug!("Loading EXIF");
+            let metadata = util::spawn(
+                "image-load-exif",
+                glib::clone!(@strong file => move || ImageMetadata::load(&file)),
+            )
+            .await?;
+            let orientation = metadata.orientation();
 
-        self.configure_adjustments();
+            imp.image_metadata.replace(metadata);
+            imp.rotation_target.set(-orientation.rotation);
+            imp.rotation.set(-orientation.rotation);
+            imp.mirrored.set(orientation.mirrored);
 
-        self.queue_draw();
-        self.queue_allocate();
-        self.queue_resize();
+            log::debug!("Loading image size");
+            let (_, x, y) = util::spawn(
+                "image-load-size",
+                glib::clone!(@strong path => move || gdk_pixbuf::Pixbuf::file_info(&path)),
+            )
+            .await?
+            .context(i18n("Failed to load image size"))?;
+            imp.image_original_size.set((x, y));
+            self.notify("image-size");
+
+            log::debug!("Loading complete image");
+            let texture = util::spawn(
+                "image-load-image",
+                glib::clone!(@strong path => move || {
+                    let pixbuf = gdk_pixbuf::Pixbuf::from_file(&path)?;
+                    log::debug!("Creating texture");
+                    Ok::<_,anyhow::Error>(gdk::Texture::for_pixbuf(&pixbuf))
+                }),
+            )
+            .await?
+            .context(i18n("Failed to load image size"))?;
+
+            imp.texture.replace(Some(texture));
+
+            self.configure_adjustments();
+
+            self.queue_draw();
+            self.queue_allocate();
+            self.queue_resize();
+
+            log::debug!("Image loaded and scheduled for drawing");
+            imp.is_loaded.set(true);
+            self.notify("is-loaded");
+        } else {
+            log::error!("File has not path");
+        }
+
+        Ok(())
+    }
+
+    pub fn is_loaded(&self) -> bool {
+        self.imp().is_loaded.get()
     }
 
     /// Zoom level that makes the image fit in widget
@@ -807,6 +944,17 @@ impl LpImage {
         }
     }
 
+    /// Image size of original image with EXIF rotation applied
+    pub fn image_size(&self) -> (i32, i32) {
+        let orientation = self.imp().image_metadata.borrow().orientation();
+        if orientation.rotation.abs() == 90. {
+            let (x, y) = self.imp().image_original_size.get();
+            (y, x)
+        } else {
+            self.imp().image_original_size.get()
+        }
+    }
+
     /// Image width with current zoom factor and rotation
     ///
     /// During rotation it is an interpolated size that does not
@@ -838,7 +986,7 @@ impl LpImage {
         if let Some(adj) = self.imp().hadjustment.borrow().as_ref() {
             adj.clone()
         } else {
-            log::debug!("Hadjustment not set yet: Using fake object");
+            log::trace!("Hadjustment not set yet: Using fake object");
             gtk::Adjustment::default()
         }
     }
@@ -860,7 +1008,7 @@ impl LpImage {
         if let Some(adj) = self.imp().vadjustment.borrow().as_ref() {
             adj.clone()
         } else {
-            log::debug!("Vadjustment not set yet: Using fake object");
+            log::trace!("Vadjustment not set yet: Using fake object");
             gtk::Adjustment::default()
         }
     }

@@ -53,11 +53,13 @@
           <object class="AdwStatusPage" id="error_page">
             <property name="icon-name">image-missing-symbolic</property>
             <property name="title" translatable="yes">Could not Load Image</property>
-            <property name="description" translatable="yes">This image could be corrupted or may use an unsupported file format.</property>
+            <property name="description" bind-source="LpImagePage" bind-property="error"/>
           </object>
         </child>
         <child>
           <object class="GtkScrolledWindow" id="scrolled_window">
+            <property name="propagate-natural-height">True</property>
+            <property name="propagate-natural-width">True</property>
             <property name="child">
               <object class="LpImage" id="image">
                 <child>

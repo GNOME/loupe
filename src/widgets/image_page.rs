@@ -27,6 +27,7 @@ use gtk::CompositeTemplate;
 use gtk_macros::spawn;
 
 use once_cell::sync::{Lazy, OnceCell};
+use std::cell::RefCell;
 
 use crate::widgets::LpImage;
 
@@ -54,6 +55,9 @@ mod imp {
         pub(super) press_gesture: TemplateChild<gtk::GestureLongPress>,
 
         pub(super) file: OnceCell<gio::File>,
+
+        /// set if an error has occured and is shown on error_page
+        pub(super) error: RefCell<Option<String>>,
     }
 
     #[glib::object_subclass]
@@ -74,9 +78,12 @@ mod imp {
     impl ObjectImpl for LpImagePage {
         fn properties() -> &'static [glib::ParamSpec] {
             static PROPERTIES: Lazy<Vec<glib::ParamSpec>> = Lazy::new(|| {
-                vec![glib::ParamSpecObject::builder::<LpImage>("image")
-                    .read_only()
-                    .build()]
+                vec![
+                    glib::ParamSpecObject::builder::<LpImage>("image")
+                        .read_only()
+                        .build(),
+                    glib::ParamSpecString::builder("error").read_only().build(),
+                ]
             });
 
             PROPERTIES.as_ref()
@@ -86,6 +93,7 @@ mod imp {
             let obj = self.instance();
             match pspec.name() {
                 "image" => obj.image().to_value(),
+                "error" => obj.error().to_value(),
                 name => unimplemented!("property {name}"),
             }
         }
@@ -130,14 +138,15 @@ impl LpImagePage {
 
         spawn!(clone!(@weak obj, @weak file => async move {
             let imp = obj.imp();
-            match load_texture_from_file(&file).await {
-                Ok(texture) => {
-                    imp.image.set_texture_with_file(texture, &file);
+            match imp.image.load(&file).await {
+                Ok(()) => {
                     imp.stack.set_visible_child(&*imp.scrolled_window);
                     imp.spinner.set_spinning(false);
                 },
                 Err(e) => {
+                    imp.error.replace(Some(e.to_string()));
                     imp.stack.set_visible_child(&*imp.error_page);
+                    obj.notify("error");
                     imp.spinner.set_spinning(false);
                     log::error!("Could not load image: {e}");
                 }
@@ -159,6 +168,10 @@ impl LpImagePage {
         self.imp().image.texture()
     }
 
+    pub fn error(&self) -> Option<String> {
+        self.imp().error.borrow().clone()
+    }
+
     pub fn content_provider(&self) -> Option<gdk::ContentProvider> {
         self.imp().image.content_provider()
     }
@@ -171,17 +184,4 @@ impl LpImagePage {
         imp.popover.set_pointing_to(Some(&rect));
         imp.popover.popup();
     }
-}
-
-async fn load_texture_from_file(file: &gio::File) -> Result<gdk::Texture, glib::Error> {
-    let (sender, receiver) = futures_channel::oneshot::channel();
-
-    let _ = std::thread::Builder::new()
-        .name("Load Texture".to_string())
-        .spawn(clone!(@weak file => move || {
-            let result = gdk::Texture::from_file(&file);
-            sender.send(result).unwrap()
-        }));
-
-    receiver.await.unwrap()
 }

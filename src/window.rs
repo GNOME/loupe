@@ -30,6 +30,8 @@ use ashpd::WindowIdentifier;
 
 use gtk_macros::spawn;
 
+use std::cell::RefCell;
+
 use crate::config;
 use crate::util;
 use crate::widgets::{LpImage, LpImagePage, LpImageView, LpPropertiesView};
@@ -77,6 +79,9 @@ mod imp {
         pub properties_view: TemplateChild<LpPropertiesView>,
         #[template_child]
         pub drop_target: TemplateChild<gtk::DropTarget>,
+
+        pub watch_image_size: RefCell<Option<gtk::ExpressionWatch>>,
+        pub watch_image_error: RefCell<Option<gtk::ExpressionWatch>>,
     }
 
     #[glib::object_subclass]
@@ -447,6 +452,56 @@ impl LpWindow {
         self.action_set_enabled("win.zoom-best-fit", enabled);
         self.action_set_enabled("win.zoom-to", enabled);
         self.action_set_enabled("win.toggle-properties", enabled);
+    }
+
+    pub fn image_size_ready(&self) {
+        // if visible for whatever reason, don't do any resize
+        if self.is_visible() {
+            self.disconnect_present_watches();
+            return;
+        }
+
+        let image = self
+            .imp()
+            .image_view
+            .current_page_strict()
+            .map(|page| page.image());
+
+        if let Some(image) = image {
+            if image.image_size() > (0, 0) {
+                log::debug!("Showing window because image size is ready");
+                // this let's the window determine the default size from LpImage's natural size
+                self.set_default_size(-1, -1);
+                self.disconnect_present_watches();
+                self.present();
+            }
+        }
+    }
+
+    pub fn image_error(&self) {
+        if self.is_visible() {
+            self.disconnect_present_watches();
+            return;
+        }
+
+        let current_page = self.imp().image_view.current_page_strict();
+
+        if let Some(page) = current_page {
+            if page.error().is_some() {
+                log::debug!("Showin window because loading image failed");
+                self.disconnect_present_watches();
+                self.present();
+            }
+        }
+    }
+
+    fn disconnect_present_watches(&self) {
+        if let Some(watch) = self.imp().watch_image_size.take() {
+            watch.unwatch();
+        }
+        if let Some(watch) = self.imp().watch_image_error.take() {
+            watch.unwatch();
+        }
     }
 
     // Adapted from https://gitlab.gnome.org/GNOME/eog/-/blob/master/src/eog-window.c:eog_window_obtain_desired_size

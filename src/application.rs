@@ -24,6 +24,7 @@ use adw::prelude::*;
 use adw::subclass::prelude::*;
 
 use crate::config;
+use crate::widgets::{LpImage, LpImagePage};
 use crate::window::LpWindow;
 
 mod imp {
@@ -74,7 +75,35 @@ mod imp {
             for file in files {
                 let win = LpWindow::new(&*application);
                 win.set_image_from_file(file, true);
-                win.show();
+
+                // show window when image size is known
+                let watch = win
+                    .imp()
+                    .image_view
+                    .property_expression("current-page-strict")
+                    .chain_property::<LpImagePage>("image")
+                    .chain_property::<LpImage>("image-size")
+                    .watch(
+                        glib::Object::NONE,
+                        glib::clone!(@weak win => move || {
+                            win.image_size_ready();
+                        }),
+                    );
+                win.imp().watch_image_size.replace(Some(watch));
+
+                // show if loading image errors
+                let watch = win
+                    .imp()
+                    .image_view
+                    .property_expression("current-page-strict")
+                    .chain_property::<LpImagePage>("error")
+                    .watch(
+                        glib::Object::NONE,
+                        glib::clone!(@weak win => move || {
+                            win.image_error();
+                        }),
+                    );
+                win.imp().watch_image_error.replace(Some(watch));
             }
         }
     }

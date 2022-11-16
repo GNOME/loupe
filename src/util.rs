@@ -5,7 +5,7 @@ use glib::translate::*;
 
 use anyhow::Context;
 
-use std::fmt::Write;
+use std::fmt::{Debug, Write};
 
 pub fn utf8_collate_key_for_filename(filename: &str) -> String {
     unsafe {
@@ -61,4 +61,16 @@ pub fn compare_by_name(file_a: &gio::File, file_b: &gio::File) -> std::cmp::Orde
     let name_b = get_file_display_name(file_b).unwrap_or_default();
 
     utf8_collate_key_for_filename(&name_a).cmp(&utf8_collate_key_for_filename(&name_b))
+}
+
+pub async fn spawn<T: Debug + Send + 'static>(
+    name: &str,
+    f: impl Fn() -> T + Send + 'static,
+) -> async_std::io::Result<T> {
+    log::trace!("Starting thread '{name}'");
+
+    Ok(async_std::task::Builder::new()
+        .name(name.to_string())
+        .spawn(async_global_executor::spawn_blocking(f))?
+        .await)
 }

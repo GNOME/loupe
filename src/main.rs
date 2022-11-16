@@ -37,7 +37,7 @@ mod deps {
 use application::LpApplication;
 
 fn main() {
-    pretty_env_logger::init();
+    pretty_env_logger::init_timed();
 
     setlocale(LocaleCategory::LcAll, "");
     bindtextdomain("loupe", config::LOCALEDIR).unwrap();

@@ -81,19 +81,19 @@ impl LpFileModel {
             vec.push(file);
         }
 
-        model.imp().directory.set(directory.clone()).unwrap();
+        model.imp().directory.set(directory).unwrap();
 
         Ok(model)
     }
 
-    pub fn load_directory(&self) -> anyhow::Result<()> {
-        let directory = self.imp().directory.get().unwrap();
+    pub async fn load_directory(&self) -> anyhow::Result<()> {
+        let directory = self.imp().directory.get().unwrap().clone();
 
-        {
-            // Here we use a nested scope so that the mutable borrow only lasts as long as we need it
-            let mut vec = self.imp().inner.borrow_mut();
-            let original_vec: Vec<Option<std::path::PathBuf>> =
-                vec.iter().map(|x| x.path()).collect();
+        let original_vec: Vec<Option<std::path::PathBuf>> =
+            self.imp().inner.borrow().iter().map(|x| x.path()).collect();
+
+        let new_files_result = util::spawn("list-files", move || {
+            let mut vec = Vec::new();
 
             let enumerator = directory
                 .enumerate_children(
@@ -105,7 +105,7 @@ impl LpFileModel {
                     gio::FileQueryInfoFlags::NONE,
                     gio::Cancellable::NONE,
                 )
-                .context(i18n("Directory does not exist."))?;
+                .context(i18n("Could not list other files in directory."))?;
 
             // Filter out non-images; For now we support "all" image types.
             enumerator.for_each(|info| {
@@ -123,8 +123,23 @@ impl LpFileModel {
                 }
             });
 
+            //anyhow::Result::Ok(vec)
+            Ok::<_, anyhow::Error>(vec)
+        })
+        .await;
+
+        let Ok(new_files) = new_files_result else {
+            log::debug!("Thread listing directory canceled.");
+            return Ok(());
+        };
+
+        {
+            // Here we use a nested scope so that the mutable borrow only lasts as long as we need it
+
+            let mut files = self.imp().inner.borrow_mut();
+            files.append(&mut new_files?);
             // Then sort by name.
-            vec.sort_by(util::compare_by_name);
+            files.sort_by(util::compare_by_name);
         }
 
         Ok(())

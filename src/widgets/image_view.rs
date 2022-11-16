@@ -20,9 +20,9 @@
 use crate::deps::*;
 use crate::i18n::*;
 
+use adw::prelude::*;
 use adw::subclass::prelude::*;
 use glib::clone;
-use gtk::prelude::*;
 use gtk::CompositeTemplate;
 
 use anyhow::{bail, Context};
@@ -49,6 +49,10 @@ mod imp {
     #[derive(Debug, Default, CompositeTemplate)]
     #[template(resource = "/org/gnome/Loupe/gtk/image_view.ui")]
     pub struct LpImageView {
+        /// Direct child of this Adw::Bin
+        #[template_child]
+        pub bin_child: TemplateChild<gtk::Widget>,
+
         #[template_child]
         pub carousel: TemplateChild<adw::Carousel>,
 
@@ -56,6 +60,8 @@ mod imp {
         pub current_model_index: Cell<u32>,
 
         pub scrolling: Cell<bool>,
+
+        pub current_page_strict: RefCell<Option<LpImagePage>>,
     }
 
     #[glib::object_subclass]
@@ -112,6 +118,9 @@ mod imp {
 
             self.parent_constructed();
 
+            // Manually mange widget layout, see `WidgetImpl` for details
+            obj.set_layout_manager(gtk::LayoutManager::NONE);
+
             let source = gtk::DragSource::new();
             source.set_exclusive(true);
 
@@ -148,7 +157,40 @@ mod imp {
         }
     }
 
-    impl WidgetImpl for LpImageView {}
+    impl WidgetImpl for LpImageView {
+        /// The main target of this manual implemtation is to provide a good
+        /// natural width that allows to have a neat size for newly opened `LpWindow`s.
+        /// The actual calculation of the image natural width happens in
+        /// the measure function of `LpImage`.
+        ///
+        /// This manual implementation is necessary since AdwCarousel gives the
+        /// largest natural width of all of it's children. But we actually want the
+        /// one of the opened (current) image.
+        fn measure(&self, orientation: gtk::Orientation, for_size: i32) -> (i32, i32, i32, i32) {
+            // Measure child of AdwBin
+            let child_measure @ (child_min, _, _, _) =
+                self.bin_child.measure(orientation, for_size);
+
+            if let Some(page) = self.instance().current_page_strict() {
+                // measure `LpImage`
+                let (_, image_natural, _, _) = page.image().measure(orientation, for_size);
+
+                // Ensure that minimum size is not smaller than the one of the child.
+                // Also ensure that the natural width is not smaller than the minimal size.
+                // Both things are required by GTK.
+                (child_min, i32::max(child_min, image_natural), -1, -1)
+            } else {
+                // If there is no image, just pass through the normal measurement
+                child_measure
+            }
+        }
+
+        /// this is necessary because we do layout manually
+        fn size_allocate(&self, width: i32, height: i32, baseline: i32) {
+            self.bin_child.allocate(width, height, baseline, None);
+        }
+    }
+
     impl BinImpl for LpImageView {}
 }
 
@@ -169,7 +211,6 @@ impl LpImageView {
 
         self.build_model_from_file(file)?;
         self.notify("active-file");
-        self.notify("current-page-strict");
 
         Ok(())
     }
@@ -206,22 +247,35 @@ impl LpImageView {
             } else {
                 let model = LpFileModel::from_file(file)?;
                 *model_store = Some(model.clone());
-                log::debug!("new model created");
+                log::debug!("first model created");
                 model
             }
         };
 
-        carousel.append(&LpImagePage::from_file(file));
+        let page = LpImagePage::from_file(file);
+        imp.current_page_strict.replace(Some(page.clone()));
+        self.notify("current-page-strict");
+
+        carousel.append(&page);
         self.update_action_state(&model, 0);
 
-        model.load_directory()?;
-        let index = model
-            .index_of(file)
-            .context(i18n("File not found in model. (TODO: bad message)"))?;
-        log::debug!("Currently at file {index} in the directory");
+        spawn!(glib::clone!(@weak self as obj, @strong file => async move {
+            if let Err(err) = model.load_directory().await {
+                log::warn!("Failed to load directory: {:?}", err);
+                obj.activate_action("win.show-toast", Some(&(err.to_string(), 1).to_variant()))
+                    .unwrap();
+                return;
+            }
 
-        self.fill_carousel(&model, index);
-        self.update_action_state(&model, index);
+            let index = model
+                .index_of(&file)
+                .context("File not found in model.")
+                .unwrap();
+            log::debug!("Currently at file {index} in the directory");
+
+            obj.fill_carousel(&model, index);
+            obj.update_action_state(&model, index);
+        }));
 
         Ok(())
     }
@@ -323,8 +377,13 @@ impl LpImageView {
     }
 
     #[template_callback]
-    fn page_changed_cb(&self, _index: u32, carousel: &adw::Carousel) {
+    fn page_changed_cb(&self, index: u32, carousel: &adw::Carousel) {
         let imp = self.imp();
+
+        imp.current_page_strict
+            .replace(carousel.nth_page(index).downcast().ok());
+        self.notify("current-page-strict");
+
         let b = imp.model.borrow();
         let model = b.as_ref().unwrap();
         let current = self.active_file().unwrap();
@@ -535,22 +594,7 @@ impl LpImageView {
 
     /// Returns `None` during animations instead of returning the closest image
     pub fn current_page_strict(&self) -> Option<LpImagePage> {
-        let carousel = &self.imp().carousel;
-
-        if carousel.position().fract() != 0. {
-            // there is no current page during animations
-            None
-        } else {
-            let pos = carousel.position().round() as u32;
-            if pos >= carousel.n_pages() {
-                log::warn!("Hit AdwCarousel bug");
-                None
-            } else if carousel.n_pages() > 0 {
-                carousel.nth_page(pos).downcast().ok()
-            } else {
-                None
-            }
-        }
+        self.imp().current_page_strict.borrow().clone()
     }
 
     pub fn uri(&self) -> Option<url::Url> {
