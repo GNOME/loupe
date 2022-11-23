@@ -22,8 +22,6 @@ use crate::i18n::*;
 
 use adw::prelude::*;
 use adw::subclass::prelude::*;
-use glib::clone;
-use gtk_macros::*;
 
 use crate::config;
 use crate::window::LpWindow;
@@ -109,48 +107,28 @@ impl LpApplication {
     }
 
     pub fn setup_actions(&self) {
-        // action! is a macro from gtk_macros
-        // that creates a GSimpleAction with a callback.
-        // clone! is a macro from glib-rs that allows
-        // you to easily handle references in callbacks
-        // without refcycles or leaks.
-        //
-        // When you don't want the callback to keep the
-        // Object alive, pass as @weak. Otherwise, pass
-        // as @strong. Most of the time you will want
-        // to use @weak.
-        action!(
-            self,
-            "about",
-            clone!(@weak self as app => move |_, _| {
-                app.show_about();
-            })
-        );
+        // gio::ActionEntryBuilder allows us to build and store an action on an object
+        // that implements gio::ActionMap. Here we build the application's actions and
+        // add them with add_action_entries().
+        let actions = [
+            gio::ActionEntryBuilder::new("about")
+                .activate(|app: &Self, _, _| app.show_about())
+                .build(),
+            gio::ActionEntryBuilder::new("help")
+                .activate(|app: &Self, _, _| app.show_help())
+                .build(),
+            gio::ActionEntryBuilder::new("quit")
+                .activate(|app: &Self, _, _| app.quit())
+                .build(),
+            gio::ActionEntryBuilder::new("new-window")
+                .activate(|app: &Self, _, _| {
+                    let win = LpWindow::new(app);
+                    win.show();
+                })
+                .build(),
+        ];
 
-        action!(
-            self,
-            "help",
-            clone!(@weak self as app => move |_, _| {
-                app.show_help();
-            })
-        );
-
-        action!(
-            self,
-            "quit",
-            clone!(@weak self as app  => move |_, _| {
-                app.quit();
-            })
-        );
-
-        action!(
-            self,
-            "new-window",
-            clone!(@weak self as app => move |_, _| {
-                let win = LpWindow::new(&app);
-                win.show();
-            })
-        );
+        self.add_action_entries(actions).unwrap();
 
         self.set_accels_for_action("app.help", &["F1"]);
         self.set_accels_for_action("app.quit", &["<Primary>Q"]);

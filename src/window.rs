@@ -159,6 +159,14 @@ mod imp {
                 .chain_property::<LpImage>("best-fit")
                 .watch(
                     glib::Object::NONE,
+                    // clone! is a macro from glib-rs that allows
+                    // you to easily handle references in callbacks
+                    // without refcycles or leaks.
+                    //
+                    // When you don't want the callback to keep the
+                    // Object alive, pass as @weak. Otherwise, pass
+                    // as @strong. Most of the time you will want
+                    // to use @weak.
                     glib::clone!(@weak obj => move || {
                         let enabled = obj
                             .imp()
