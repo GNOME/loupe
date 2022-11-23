@@ -5,7 +5,7 @@ A simple image viewer application written with GTK4 and Rust.
 ## MVP TODO
 
 * [ ] Hover timeout for buttons and fullscreen headerbar
-* [ ] Pan/zoom
+* [x] Pan/zoom
 * [x] Back/forward navigation
 
 ## Building
