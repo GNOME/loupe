@@ -1,0 +1,28 @@
+<Project xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:foaf="http://xmlns.com/foaf/0.1/"
+         xmlns:gnome="http://api.gnome.org/doap-extensions#" xmlns="http://usefulinc.com/ns/doap#">
+  <name xml:lang="en">Loupe</name>
+  <shortdesc xml:lang="en">Image Viewer</shortdesc>
+  <description xml:lang="en">Image Viewer</description>
+
+  <homepage rdf:resource="https://gitlab.gnome.org/BrainBlasted/loupe" />
+  <download-page rdf:resource="https://gitlab.gnome.org/BrainBlasted/loupe" />
+  <bug-database rdf:resource="https://gitlab.gnome.org/BrainBlasted/loupe/-/issues" />
+
+  <programming-language>Rust</programming-language>
+  <platform>GTK 4</platform>
+  <platform>Libadwaita</platform>
+
+  <maintainer>
+    <foaf:Person>
+      <foaf:name>Christopher Davis</foaf:name>
+      <foaf:mbox rdf:resource="mailto:christopherdavis@gnome.org" />
+      <gnome:userid>christopherdavis</gnome:userid>
+    </foaf:Person>
+    <foaf:Person>
+      <foaf:name>Sophie Herold</foaf:name>
+      <foaf:mbox rdf:resource="mailto:sophieherold@gnome.org" />
+      <gnome:userid>sophieherold</gnome:userid>
+    </foaf:Person>
+  </maintainer>
+</Project>
