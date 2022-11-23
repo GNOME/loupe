@@ -148,21 +148,22 @@ impl LpApplication {
         // an object and set all relevant properties very
         // easily in a way that's idiomatic to Rust.
         let about = adw::AboutWindow::builder()
-            .application_name(&i18n("Image Viewer"))
+            .application_name(&i18n("Loupe"))
             .application_icon(config::APP_ID)
             .version(config::VERSION)
-            .developer_name(&i18n("The GNOME Project"))
+            .developer_name(&i18n("Christopher Davis"))
             .website("https://gitlab.gnome.org/BrainBlasted/loupe")
             .issue_url("https://gitlab.gnome.org/BrainBlasted/loupe/-/issues/new")
-            .developers(vec![String::from(
-                "Christopher Davis <christopherdavis@gnome.org>",
-            )])
+            .developers(vec![
+                String::from("Christopher Davis <christopherdavis@gnome.org>"),
+                String::from("Sophie Herold <sophieherold@gnome.org>"),
+            ])
             .designers(vec![
                 String::from("Allan Day"),
                 String::from("Jakub Steiner"),
                 String::from("Tobias Bernard"),
             ])
-            .copyright(&i18n("© 2022 The GNOME Project"))
+            .copyright(&i18n("Copyright © 2020–2022 Christopher Davis et al."))
             .license_type(gtk::License::Gpl30)
             .build();
 

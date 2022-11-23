@@ -450,7 +450,7 @@ impl LpWindow {
     #[template_callback]
     fn window_title(&self, file: Option<gio::File>) -> String {
         file.and_then(|f| util::get_file_display_name(&f)) // If the file exists, get display name
-            .unwrap_or_else(|| i18n("Image Viewer")) // Return that or the default if there's nothing
+            .unwrap_or_else(|| i18n("Loupe")) // Return that or the default if there's nothing
     }
 
     // We also have a closure that returns `adw::FlapFoldPolicy`.
