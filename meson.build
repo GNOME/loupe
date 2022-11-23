@@ -1,5 +1,5 @@
 project('loupe', 'rust',
-          version: '43.alpha',
+          version: '44.alpha',
     meson_version: '>= 0.59.0',
   default_options: [ 'warning_level=2',
                    ],
@@ -8,8 +8,8 @@ project('loupe', 'rust',
 i18n = import('i18n')
 gnome = import('gnome')
 
-dependency('gtk4', version: '>=4.0.0')
-dependency('libadwaita-1')
+dependency('gtk4', version: '>=4.8.0')
+dependency('libadwaita-1', version: '>=1.2.0')
 
 cargo = find_program('cargo', required: true)
 
@@ -44,6 +44,7 @@ conf = configuration_data()
 conf.set('APP_ID', app_id)
 conf.set('PROFILE', profile)
 conf.set('VERSION', iv_version)
+conf.set('BIN_NAME', meson.project_name())
 conf.set('bindir', iv_bindir)
 conf.set('localedir', iv_localedir)
 conf.set('pkgdatadir', iv_pkgdatadir)

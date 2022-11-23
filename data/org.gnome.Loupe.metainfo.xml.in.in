@@ -3,7 +3,47 @@
   <id>@APP_ID@.desktop</id>
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-3.0-or-later</project_license>
+  <name>Loupe</name>
+  <developer_name>Christopher Davis</developer_name>
+  <summary>View images</summary>
   <description>
     <p>A simple image viewer for GNOME</p>
   </description>
+  <url type="homepage">https://gitlab.gnome.org/BrainBlasted/loupe</url>
+  <url type="bugtracker">https://gitlab.gnome.org/BrainBlasted/loupe/issues</url>
+
+  <screenshots>
+    <screenshot type="default">
+      <image>https://gitlab.gnome.org/BrainBlasted/loupe/uploads/863131c1292cb9f1b32fbef39f266bcf/image.png</image>
+    </screenshot>
+  </screenshots>
+
+  <recommends>
+    <control>keyboard</control>
+    <control>pointing</control>
+    <control>touch</control>
+  </recommends>
+  <requires>
+    <display_length compare="ge">360</display_length>
+  </requires>
+
+  <launchable type="desktop-id">@APP_ID@.desktop</launchable>
+  <provides>
+    <binary>@BIN_NAME@</binary>
+  </provides>
+
+  <translation type="gettext">@BIN_NAME@</translation>
+  <content_rating type="oars-1.1" />
+  <custom>
+    <value key="Purism::form_factor">workstation</value>
+    <value key="Purism::form_factor">mobile</value>
+  </custom>
+
+  <releases>
+    <release version="44.0~alpha" date="2022-11-22" type="development">
+      <description>
+        <p>Alpha release. Do not use in production or package.</p>
+      </description>
+    </release>
+  </releases>
 </component>
