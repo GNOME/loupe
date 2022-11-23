@@ -671,7 +671,6 @@ impl LpImage {
                 .build();
 
             animation.connect_done(glib::clone!(@weak self as obj => move |_| {
-                dbg!("animation done");
                 obj.imp().zoom_hscrollbar_transition.set(false);
                 obj.imp().zoom_vscrollbar_transition.set(false);
             }));
@@ -730,6 +729,13 @@ impl LpImage {
         self.set_best_fit(zoom == self.zoom_level_best_fit());
 
         self.zoom_to(zoom);
+    }
+
+    /// Zoom to best fit
+    ///
+    /// Used by shortcut
+    pub fn zoom_best_fit(&self) {
+        self.zoom_to(self.zoom_level_best_fit());
     }
 
     /// Zoom to specific level with animation

@@ -131,16 +131,39 @@ impl LpApplication {
         self.add_action_entries(actions).unwrap();
 
         self.set_accels_for_action("app.help", &["F1"]);
-        self.set_accels_for_action("app.quit", &["<Primary>Q"]);
-        self.set_accels_for_action("app.new-window", &["<Primary>N"]);
-        self.set_accels_for_action("win.open", &["<Primary>O"]);
-        self.set_accels_for_action("win.print", &["<Primary>P"]);
-        self.set_accels_for_action("win.copy", &["<Primary>C"]);
-        self.set_accels_for_action("win.show-help-overlay", &["<Primary>question"]);
+        self.set_accels_for_action("app.quit", &["<Ctrl>Q"]);
+        self.set_accels_for_action("app.new-window", &["<Ctrl>N"]);
+
+        self.set_accels_for_action("win.open", &["<Ctrl>O"]);
+        self.set_accels_for_action("win.print", &["<Ctrl>P"]);
+        self.set_accels_for_action("win.copy", &["<Ctrl>C"]);
+        self.set_accels_for_action("win.show-help-overlay", &["<Ctrl>question"]);
+        self.set_accels_for_action("win.leave-fullscreen", &["Escape"]);
+        self.set_accels_for_action("win.toggle-properties", &["F9"]);
         self.set_accels_for_action("win.toggle-fullscreen", &["F11"]);
-        self.set_accels_for_action("window.close", &["<Primary>W"]);
+
         self.set_accels_for_action("win.zoom-to(1.0)", &["1"]);
         self.set_accels_for_action("win.zoom-to(2.0)", &["2"]);
+        self.set_accels_for_action("win.zoom-best-fit", &["<Ctrl>0", "0"]);
+        self.set_accels_for_action(
+            "win.zoom-in",
+            &[
+                "<Ctrl>plus",
+                "plus",
+                "<Ctrl>equal",
+                "equal",
+                "<Ctrl>KP_Add",
+                "KP_Add",
+            ],
+        );
+        self.set_accels_for_action(
+            "win.zoom-out",
+            &["<Ctrl>minus", "minus", "<Ctrl>KP_Subtract", "KP_Subtract"],
+        );
+        self.set_accels_for_action("win.rotate(90.0)", &["<Ctrl>R"]);
+        self.set_accels_for_action("win.rotate(-90.0)", &["<Ctrl><Shift>R"]);
+
+        self.set_accels_for_action("window.close", &["<Ctrl>W"]);
     }
 
     pub fn show_about(&self) {

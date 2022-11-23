@@ -121,11 +121,24 @@
                     </child>
                   </object>
                 </property>
+                <child>
+                  <!-- Set the shortcut here since it only makes sense if the button is visible -->
+                  <object class="GtkShortcutController">
+                    <property name="scope">managed</property>
+                    <child>
+                      <object class="GtkShortcut">
+                        <property name="trigger">F10</property>
+                        <property name="action">activate</property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
               </object>
             </child>
             <child type="end">
               <object class="GtkToggleButton" id="properties_button">
                 <property name="icon-name">help-about-symbolic</property>
+                <property name="tooltip-text" translatable="yes">Image Properties</property>
               </object>
             </child>
           </object>

@@ -62,6 +62,8 @@ mod imp {
         #[template_child]
         pub headerbar: TemplateChild<gtk::HeaderBar>,
         #[template_child]
+        pub properties_button: TemplateChild<gtk::ToggleButton>,
+        #[template_child]
         pub menu_button: TemplateChild<gtk::MenuButton>,
         #[template_child]
         pub toast_overlay: TemplateChild<adw::ToastOverlay>,
@@ -104,6 +106,20 @@ mod imp {
 
             klass.install_action("win.zoom-to", Some("d"), move |win, _, level| {
                 win.zoom_to(level.unwrap().get().unwrap());
+            });
+
+            klass.install_action("win.zoom-best-fit", None, move |win, _, _| {
+                win.zoom_best_fit();
+            });
+
+            klass.install_action("win.leave-fullscreen", None, move |win, _, _| {
+                win.toggle_fullscreen(false);
+            });
+
+            klass.install_action("win.toggle-properties", None, move |win, _, _| {
+                win.imp()
+                    .properties_button
+                    .set_active(!win.imp().properties_button.is_active());
             });
 
             klass.install_action("win.open", None, move |win, _, _| {
@@ -284,6 +300,12 @@ impl LpWindow {
         self.imp().image_view.zoom_to(level);
     }
 
+    fn zoom_best_fit(&self) {
+        if let Some(page) = self.imp().image_view.current_page() {
+            page.image().zoom_best_fit();
+        }
+    }
+
     fn pick_file(&self) {
         let chooser = gtk::FileChooserNative::new(
             Some("Open Image"),
@@ -403,6 +425,10 @@ impl LpWindow {
         self.action_set_enabled("win.print", enabled);
         self.action_set_enabled("win.rotate", enabled);
         self.action_set_enabled("win.copy", enabled);
+        self.action_set_enabled("win.zoom-best-fit", enabled);
+        self.action_set_enabled("win.zoom-in", enabled);
+        self.action_set_enabled("win.zoom-to", enabled);
+        self.action_set_enabled("win.toggle-properties", enabled);
     }
 
     // Adapted from https://gitlab.gnome.org/GNOME/eog/-/blob/master/src/eog-window.c:eog_window_obtain_desired_size
