@@ -255,7 +255,7 @@ glib::wrapper! {
 #[gtk::template_callbacks]
 impl LpWindow {
     pub fn new<A: IsA<gtk::Application>>(app: &A) -> Self {
-        glib::Object::new(&[("application", app)])
+        glib::Object::builder().property("application", app).build()
     }
 
     fn toggle_fullscreen(&self, fullscreen: bool) {

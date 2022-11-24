@@ -99,11 +99,11 @@ glib::wrapper! {
 #[allow(clippy::new_without_default)]
 impl LpApplication {
     pub fn new() -> Self {
-        glib::Object::new(&[
-            ("application-id", &config::APP_ID.to_string()),
-            ("flags", &gio::ApplicationFlags::HANDLES_OPEN),
-            ("resource-base-path", &"/org/gnome/Loupe/".to_string()),
-        ])
+        glib::Object::builder()
+            .property("application-id", config::APP_ID)
+            .property("flags", gio::ApplicationFlags::HANDLES_OPEN)
+            .property("resource-base-path", "/org/gnome/Loupe")
+            .build()
     }
 
     pub fn setup_actions(&self) {
