@@ -74,27 +74,18 @@ mod imp {
         fn properties() -> &'static [glib::ParamSpec] {
             static PROPERTIES: Lazy<Vec<glib::ParamSpec>> = Lazy::new(|| {
                 vec![
-                    glib::ParamSpecObject::new(
-                        "file",
-                        "",
-                        "",
-                        gio::File::static_type(),
-                        glib::ParamFlags::READWRITE | glib::ParamFlags::EXPLICIT_NOTIFY,
-                    ),
-                    glib::ParamSpecObject::new(
-                        "file-info",
-                        "",
-                        "",
-                        gio::FileInfo::static_type(),
-                        glib::ParamFlags::READABLE | glib::ParamFlags::EXPLICIT_NOTIFY,
-                    ),
-                    glib::ParamSpecString::new(
-                        "dimensions",
-                        "",
-                        "",
-                        Some(FALLBACK),
-                        glib::ParamFlags::READABLE | glib::ParamFlags::EXPLICIT_NOTIFY,
-                    ),
+                    glib::ParamSpecObject::builder::<gio::File>("file")
+                        .explicit_notify()
+                        .build(),
+                    glib::ParamSpecObject::builder::<gio::FileInfo>("file-info")
+                        .read_only()
+                        .explicit_notify()
+                        .build(),
+                    glib::ParamSpecString::builder("dimensions")
+                        .default_value(Some(FALLBACK))
+                        .read_only()
+                        .explicit_notify()
+                        .build(),
                 ]
             });
 
