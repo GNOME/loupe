@@ -182,38 +182,46 @@ impl LpImageView {
         let imp = self.imp();
         let carousel = &imp.carousel;
 
-        {
+        let model = {
             // Here we use a nested scope so that the mutable borrow only lasts as long as we need it
-            let mut model = imp.model.borrow_mut();
+            let mut model_store = imp.model.borrow_mut();
 
-            if let Some(ref parent) = file.parent() {
-                if let Some(ref m) = *model {
-                    if m.directory().map_or(false, |f| !f.equal(parent)) {
-                        // Clear the carousel before creating the new model
-                        self.clear_carousel(false);
-                        *model = Some(LpFileModel::from_directory(parent)?);
-                        log::debug!("new model created");
-                    } else {
-                        log::debug!("Re-using old model and navigating to the current file");
-                        self.navigate_to_file(m, file);
-                        return Ok(());
-                    }
-                } else {
-                    *model = Some(LpFileModel::from_directory(parent)?);
+            if let Some(ref m) = *model_store {
+                let is_same_directory = file
+                    .parent()
+                    .map_or(false, |p| m.directory().map_or(false, |f| !f.equal(&p)));
+
+                if is_same_directory {
+                    // Clear the carousel before creating the new model
+                    self.clear_carousel(false);
+                    let model = LpFileModel::from_file(file)?;
+                    *model_store = Some(model.clone());
                     log::debug!("new model created");
+                    model
+                } else {
+                    log::debug!("Re-using old model and navigating to the current file");
+                    self.navigate_to_file(m, file);
+                    return Ok(());
                 }
+            } else {
+                let model = LpFileModel::from_file(file)?;
+                *model_store = Some(model.clone());
+                log::debug!("new model created");
+                model
             }
-        }
+        };
 
-        if let Some(model) = imp.model.borrow().as_ref() {
-            let index = model
-                .index_of(file)
-                .context(i18n("File not found in model. (TODO: bad message)"))?;
-            log::debug!("Currently at file {index} in the directory");
-            carousel.append(&LpImagePage::from_file(file));
-            self.fill_carousel(model, index);
-            self.update_action_state(model, index);
-        }
+        carousel.append(&LpImagePage::from_file(file));
+        self.update_action_state(&model, 0);
+
+        model.load_directory()?;
+        let index = model
+            .index_of(file)
+            .context(i18n("File not found in model. (TODO: bad message)"))?;
+        log::debug!("Currently at file {index} in the directory");
+
+        self.fill_carousel(&model, index);
+        self.update_action_state(&model, index);
 
         Ok(())
     }

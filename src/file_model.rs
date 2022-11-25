@@ -70,12 +70,30 @@ glib::wrapper! {
 }
 
 impl LpFileModel {
-    pub fn from_directory(directory: &gio::File) -> anyhow::Result<Self> {
+    pub fn from_file(file: &gio::File) -> anyhow::Result<Self> {
         let model = glib::Object::new::<Self>(&[]);
+        let directory = file.parent().context("File has not parent")?;
+        let file =
+            directory.resolve_relative_path(file.basename().context("File has no basename")?);
+
+        {
+            let mut vec = model.imp().inner.borrow_mut();
+            vec.push(file);
+        }
+
+        model.imp().directory.set(directory.clone()).unwrap();
+
+        Ok(model)
+    }
+
+    pub fn load_directory(&self) -> anyhow::Result<()> {
+        let directory = self.imp().directory.get().unwrap();
 
         {
             // Here we use a nested scope so that the mutable borrow only lasts as long as we need it
-            let mut vec = model.imp().inner.borrow_mut();
+            let mut vec = self.imp().inner.borrow_mut();
+            let original_vec: Vec<Option<std::path::PathBuf>> =
+                vec.iter().map(|x| x.path()).collect();
 
             let enumerator = directory
                 .enumerate_children(
@@ -95,8 +113,11 @@ impl LpFileModel {
                     if let Some(content_type) = info.content_type().map(|t| t.to_string()) {
                         if content_type.starts_with("image/") {
                             let name = info.name();
-                            log::debug!("{:?} is an image, adding to the list", name);
-                            vec.push(directory.resolve_relative_path(&name));
+                            let relative_path = directory.resolve_relative_path(&name);
+                            if !original_vec.contains(&relative_path.path()) {
+                                log::debug!("{:?} is an image, adding to the list", name);
+                                vec.push(relative_path);
+                            }
                         }
                     }
                 }
@@ -104,11 +125,9 @@ impl LpFileModel {
 
             // Then sort by name.
             vec.sort_by(util::compare_by_name);
-
-            model.imp().directory.set(directory.clone()).unwrap();
         }
 
-        Ok(model)
+        Ok(())
     }
 
     pub fn directory(&self) -> Option<gio::File> {
