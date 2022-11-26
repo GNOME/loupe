@@ -23,28 +23,20 @@ use gettextrs::gettext;
 use gettextrs::ngettext;
 use gettextrs::npgettext;
 use gettextrs::pgettext;
-use regex::Captures;
-use regex::Regex;
 
 #[allow(dead_code)]
-fn freplace(input: String, args: &[&str]) -> String {
-    let mut parts = input.split("{}");
-    let mut output = parts.next().unwrap_or_default().to_string();
-    for (p, a) in parts.zip(args.iter()) {
-        output += &(a.to_string() + p);
+fn freplace(mut s: String, args: &[&str]) -> String {
+    for arg in args {
+        s = s.replacen("{}", arg, 1);
     }
-    output
+
+    s
 }
 
 #[allow(dead_code)]
-fn kreplace(input: String, kwargs: &[(&str, &str)]) -> String {
-    let mut s = input;
+fn kreplace(mut s: String, kwargs: &[(&str, &str)]) -> String {
     for (k, v) in kwargs {
-        if let Ok(re) = Regex::new(&format!("\\{{{}\\}}", k)) {
-            s = re
-                .replace_all(&s, |_: &Captures<'_>| v.to_string())
-                .to_string();
-        }
+        s = s.replace(&format!("{{{k}}}"), v);
     }
 
     s
