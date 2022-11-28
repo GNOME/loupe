@@ -159,7 +159,7 @@ impl LpImagePage {
         self.imp().image.texture()
     }
 
-    pub fn content_provider(&self) -> gdk::ContentProvider {
+    pub fn content_provider(&self) -> Option<gdk::ContentProvider> {
         self.imp().image.content_provider()
     }
 

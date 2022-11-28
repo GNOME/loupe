@@ -905,21 +905,9 @@ impl LpImage {
     }
 
     /// Drag and drop content provider
-    pub fn content_provider(&self) -> gdk::ContentProvider {
-        let imp = self.imp();
-        let mut contents = vec![];
-
-        if let Some(file) = imp.file.borrow().as_ref() {
-            let content = gdk::ContentProvider::for_value(&file.to_value());
-            contents.push(content);
-        }
-
-        if let Some(texture) = imp.texture.borrow().as_ref() {
-            let bytes = texture.save_to_png_bytes();
-            let content = gdk::ContentProvider::for_bytes("image/png", &bytes);
-            contents.push(content);
-        }
-
-        gdk::ContentProvider::new_union(contents.as_slice())
+    pub fn content_provider(&self) -> Option<gdk::ContentProvider> {
+        let file = self.file()?;
+        let list = gdk::FileList::from_array(&[file]);
+        Some(gdk::ContentProvider::for_value(&list.to_value()))
     }
 }
