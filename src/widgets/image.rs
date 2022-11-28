@@ -317,10 +317,6 @@ mod imp {
             rotation_gesture.connect_end(glib::clone!(@weak obj => move |_, _| {
                 log::debug!("Rotate gesture ended");
 
-                // Set best-fit here as well, since this can end before zoom gesture.
-                // The value of best-fit is relevant for `rotate_by`
-                obj.set_best_fit(obj.zoom() < obj.zoom_level_best_fit());
-
                 let angle = (obj.rotation() / 90.).round() * 90. - obj.imp().rotation_target.get();
                 obj.rotate_by(angle);
             }));
@@ -362,10 +358,8 @@ mod imp {
 
                 let rotation_target = (obj.rotation() / 90.).round() * 90.;
                 if obj.zoom() < obj.zoom_level_best_fit_for_rotation(rotation_target) {
-                    obj.set_best_fit(true);
                     obj.zoom_to(obj.zoom_level_best_fit_for_rotation(rotation_target));
                 } else {
-                    obj.set_best_fit(false);
                     // rubberband if over highest zoom level and sets `zoom_target`
                     obj.zoom_to(obj.zoom());
                 };
@@ -737,8 +731,6 @@ impl LpImage {
     pub fn zoom_in(&self) {
         let zoom = self.zoom() * ZOOM_FACTOR_BUTTON;
 
-        self.set_best_fit(false);
-
         self.zoom_to(zoom);
     }
 
@@ -746,9 +738,7 @@ impl LpImage {
     ///
     /// Used by buttons
     pub fn zoom_out(&self) {
-        let zoom = (self.zoom() / ZOOM_FACTOR_BUTTON).max(self.zoom_level_best_fit());
-
-        self.set_best_fit(zoom == self.zoom_level_best_fit());
+        let zoom = self.zoom() / ZOOM_FACTOR_BUTTON;
 
         self.zoom_to(zoom);
     }
@@ -767,6 +757,19 @@ impl LpImage {
             self.set_max_zoom(true);
         } else {
             self.set_max_zoom(false);
+        }
+
+        // If image is only 1/4 of a zoom step away from best-fit, also
+        // activate best-fit. This avoids bugs with floating point precision
+        // and removes akward minimal zoom steps.
+        let extended_best_fit_threshold =
+            self.zoom_level_best_fit() * (1. + (ZOOM_FACTOR_BUTTON - 1.) / 4.);
+
+        if zoom <= extended_best_fit_threshold {
+            zoom = self.zoom_level_best_fit();
+            self.set_best_fit(true);
+        } else {
+            self.set_best_fit(false);
         }
 
         log::debug!("Zoom to {zoom:.3}");
@@ -793,8 +796,6 @@ impl LpImage {
             self.imp()
                 .zoom_hscrollbar_transition
                 .set(current_vborder.signum() != target_vborder.signum() && current_vborder != 0.);
-
-            self.set_best_fit(zoom <= self.zoom_level_best_fit());
 
             let animation = self.zoom_animation();
 
