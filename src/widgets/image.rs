@@ -729,7 +729,7 @@ impl LpImage {
     ///
     /// Used by buttons
     pub fn zoom_in(&self) {
-        let zoom = self.zoom() * ZOOM_FACTOR_BUTTON;
+        let zoom = self.imp().zoom_target.get() * ZOOM_FACTOR_BUTTON;
 
         self.zoom_to(zoom);
     }
@@ -738,7 +738,7 @@ impl LpImage {
     ///
     /// Used by buttons
     pub fn zoom_out(&self) {
-        let zoom = self.zoom() / ZOOM_FACTOR_BUTTON;
+        let zoom = self.imp().zoom_target.get() / ZOOM_FACTOR_BUTTON;
 
         self.zoom_to(zoom);
     }
