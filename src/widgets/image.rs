@@ -27,12 +27,14 @@ use std::cell::{Cell, RefCell};
 
 use crate::image_metadata::ImageMetadata;
 
-static ZOOM_ANIMATION_DURATION: u32 = 200;
-static ROTATION_ANIMATION_DURATION: u32 = 200;
+const ZOOM_ANIMATION_DURATION: u32 = 200;
+const ROTATION_ANIMATION_DURATION: u32 = 200;
 
-static ZOOM_FACTOR_BUTTON: f64 = 1.5;
-static ZOOM_FACTOR_WHEEL: f64 = 1.3;
-static ZOOM_FACTOR_WHEEL_HI_RES: f64 = 0.1;
+const ZOOM_FACTOR_BUTTON: f64 = 1.5;
+const ZOOM_FACTOR_WHEEL: f64 = 1.3;
+const ZOOM_FACTOR_WHEEL_HI_RES: f64 = 0.1;
+
+const MAX_ZOOM_LEVEL: f64 = 20.0;
 
 mod imp {
     use super::*;
@@ -63,6 +65,8 @@ mod imp {
 
         /// Always fit image into window, causes `zoom` to change automatically
         pub best_fit: Cell<bool>,
+        /// Max zoom level is reached, stored to only send signals on change
+        pub max_zoom: Cell<bool>,
 
         /// Horizontal scrolling
         pub hadjustment: RefCell<Option<gtk::Adjustment>>,
@@ -113,6 +117,9 @@ mod imp {
                     glib::ParamSpecBoolean::builder("best-fit")
                         .explicit_notify()
                         .build(),
+                    glib::ParamSpecBoolean::builder("is-max-zoom")
+                        .read_only()
+                        .build(),
                     glib::ParamSpecOverride::for_interface::<gtk::Scrollable>("hadjustment"),
                     glib::ParamSpecOverride::for_interface::<gtk::Scrollable>("vadjustment"),
                     glib::ParamSpecOverride::for_interface::<gtk::Scrollable>("hscroll-policy"),
@@ -131,6 +138,7 @@ mod imp {
                 "mirrored" => obj.mirrored().to_value(),
                 "zoom" => obj.zoom().to_value(),
                 "best-fit" => obj.is_best_fit().to_value(),
+                "is-max-zoom" => obj.is_max_zoom().to_value(),
                 // don't use getter functions here sicne they can return a fake adjustment
                 "hadjustment" => self.hadjustment.borrow().to_value(),
                 "vadjustment" => self.vadjustment.borrow().to_value(),
@@ -358,7 +366,8 @@ mod imp {
                     obj.zoom_to(obj.zoom_level_best_fit_for_rotation(rotation_target));
                 } else {
                     obj.set_best_fit(false);
-                    obj.imp().zoom_target.set(obj.zoom());
+                    // rubberband if over highest zoom level and sets `zoom_target`
+                    obj.zoom_to(obj.zoom());
                 };
             }));
 
@@ -612,6 +621,19 @@ impl LpImage {
         self.set_zoom_aiming(zoom, self.imp().pointer_position.get())
     }
 
+    pub fn is_max_zoom(&self) -> bool {
+        self.imp().max_zoom.get()
+    }
+
+    fn set_max_zoom(&self, value: bool) {
+        if self.is_max_zoom() == value {
+            return;
+        }
+
+        self.imp().max_zoom.set(value);
+        self.notify("is-max-zoom");
+    }
+
     /// Set zoom level aiming for given position or center if not available
     fn set_zoom_aiming(&self, zoom: f64, aiming: Option<(f64, f64)>) {
         if zoom == self.zoom() || zoom <= 0. {
@@ -739,11 +761,20 @@ impl LpImage {
     }
 
     /// Zoom to specific level with animation
-    pub fn zoom_to(&self, zoom: f64) {
+    pub fn zoom_to(&self, mut zoom: f64) {
+        if zoom >= MAX_ZOOM_LEVEL {
+            zoom = MAX_ZOOM_LEVEL;
+            self.set_max_zoom(true);
+        } else {
+            self.set_max_zoom(false);
+        }
+
         log::debug!("Zoom to {zoom:.3}");
 
+        self.imp().zoom_target.set(zoom);
+
         // abort if already at correct zoom level
-        if zoom == self.zoom() && zoom == self.imp().zoom_target.get() {
+        if zoom == self.zoom() {
             log::debug!("Already at correct zoom level");
             return;
         }
@@ -766,8 +797,6 @@ impl LpImage {
             self.set_best_fit(zoom <= self.zoom_level_best_fit());
 
             let animation = self.zoom_animation();
-
-            self.imp().zoom_target.set(zoom);
 
             animation.set_value_from(self.zoom());
             animation.set_value_to(zoom);

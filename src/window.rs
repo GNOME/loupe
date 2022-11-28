@@ -195,6 +195,25 @@ mod imp {
                     }),
                 );
 
+            // disable zoom-in if at maximum zoom level
+            self.image_view
+                .property_expression("current-page-strict")
+                .chain_property::<LpImagePage>("image")
+                .chain_property::<LpImage>("is-max-zoom")
+                .watch(
+                    glib::Object::NONE,
+                    glib::clone!(@weak obj => move || {
+                        let enabled = obj
+                            .imp()
+                            .image_view
+                            .current_page()
+                            .map(|page| !page.image().is_max_zoom())
+                            .unwrap_or_default();
+
+                        obj.action_set_enabled("win.zoom-in", enabled);
+                    }),
+                );
+
             self.status_page
                 .set_icon_name(Some(&format!("{}-symbolic", config::APP_ID)));
 
@@ -426,7 +445,6 @@ impl LpWindow {
         self.action_set_enabled("win.rotate", enabled);
         self.action_set_enabled("win.copy", enabled);
         self.action_set_enabled("win.zoom-best-fit", enabled);
-        self.action_set_enabled("win.zoom-in", enabled);
         self.action_set_enabled("win.zoom-to", enabled);
         self.action_set_enabled("win.toggle-properties", enabled);
     }
