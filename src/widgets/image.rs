@@ -88,6 +88,8 @@ mod imp {
         pub last_drag_value: Cell<Option<(f64, f64)>>,
 
         widget_dimensions: Cell<(i32, i32)>,
+
+        scale_factor: Cell<i32>,
     }
 
     #[glib::object_subclass]
@@ -172,9 +174,31 @@ mod imp {
             self.zoom.set(1.);
             self.zoom_target.set(1.);
             self.best_fit.set(true);
+            self.scale_factor.set(obj.scale_factor());
 
             self.connect_controllers();
             self.connect_gestures();
+
+            obj.connect_scale_factor_notify(|obj| {
+                let scale_before = obj.imp().scale_factor.get();
+                let scale_now = obj.scale_factor();
+
+                log::debug!("Scale factor change from {scale_before} to {scale_now}");
+
+                obj.zoom_animation().pause();
+
+                if obj.is_best_fit() {
+                    obj.queue_resize();
+                    obj.queue_draw();
+                } else {
+                    let new_zoom =
+                        obj.imp().zoom_target.get() * scale_before as f64 / scale_now as f64;
+                    obj.imp().zoom_target.set(new_zoom);
+                    obj.set_zoom(new_zoom);
+                }
+
+                obj.imp().scale_factor.set(scale_now);
+            });
         }
 
         fn dispose(&self) {
@@ -372,6 +396,7 @@ mod imp {
     impl WidgetImpl for LpImage {
         // called when the widget size might have changed
         fn size_allocate(&self, width: i32, height: i32, _baseline: i32) {
+            dbg!("SIZE ALLOCAT");
             let widget = self.instance();
 
             // ensure there is an actual size change
@@ -395,6 +420,8 @@ mod imp {
                 let widget = self.instance();
                 let widget_width = widget.width() as f64;
                 let widget_height = widget.height() as f64;
+
+                let zoom = widget.zoom() / widget.scale_factor() as f64;
 
                 // make sure the scrollbars are correct
                 widget.configure_adjustments();
@@ -431,7 +458,7 @@ mod imp {
                 if widget.mirrored() {
                     snapshot.scale(-1., 1.);
                 }
-                snapshot.scale(widget.zoom() as f32, widget.zoom() as f32);
+                snapshot.scale(zoom as f32, zoom as f32);
 
                 // scale to actual pixel size
                 // this is needed since usually the texture would just fill the widget
@@ -500,17 +527,19 @@ impl LpImage {
             let rotated = rotation.to_radians().sin().abs();
             let texture_aspect_ratio = texture.width() as f64 / texture.height() as f64;
             let widget_aspect_ratio = self.width() as f64 / self.height() as f64;
+            let widget_phys_width = self.width() as f64 * self.scale_factor() as f64;
+            let widget_phys_height = self.height() as f64 * self.scale_factor() as f64;
 
             let default_zoom = if texture_aspect_ratio > widget_aspect_ratio {
-                (self.width() as f64 / texture.width() as f64).min(1.)
+                (widget_phys_width / texture.width() as f64).min(1.)
             } else {
-                (self.height() as f64 / texture.height() as f64).min(1.)
+                (widget_phys_height / texture.height() as f64).min(1.)
             };
 
             let rotated_zoom = if 1. / texture_aspect_ratio > widget_aspect_ratio {
-                (self.width() as f64 / texture.height() as f64).min(1.)
+                (widget_phys_width / texture.height() as f64).min(1.)
             } else {
-                (self.height() as f64 / texture.width() as f64).min(1.)
+                (widget_phys_height / texture.width() as f64).min(1.)
             };
 
             rotated * rotated_zoom + (1. - rotated) * default_zoom
@@ -818,6 +847,7 @@ impl LpImage {
 
             ((1. - rotated) * texture.width() as f64 + rotated * texture.height() as f64)
                 * self.zoom()
+                / self.scale_factor() as f64
         } else {
             0.
         }
@@ -829,6 +859,7 @@ impl LpImage {
 
             ((1. - rotated) * texture.height() as f64 + rotated * texture.width() as f64)
                 * self.zoom()
+                / self.scale_factor() as f64
         } else {
             0.
         }
