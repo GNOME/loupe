@@ -171,6 +171,9 @@ impl LpApplication {
         self.set_accels_for_action("win.toggle-properties", &["F9"]);
         self.set_accels_for_action("win.toggle-fullscreen", &["F11"]);
 
+        self.set_accels_for_action("win.previous", &["Left"]);
+        self.set_accels_for_action("win.next", &["Right"]);
+
         self.set_accels_for_action("win.zoom-to(1.0)", &["1"]);
         self.set_accels_for_action("win.zoom-to(2.0)", &["2"]);
         self.set_accels_for_action("win.zoom-best-fit", &["<Ctrl>0", "0"]);

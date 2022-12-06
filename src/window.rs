@@ -101,6 +101,18 @@ mod imp {
                 win.toggle_fullscreen(!win.is_fullscreened());
             });
 
+            klass.install_action("win.next", None, move |win, _, _| {
+                win.imp()
+                    .image_view
+                    .navigate(adw::NavigationDirection::Forward);
+            });
+
+            klass.install_action("win.previous", None, move |win, _, _| {
+                win.imp()
+                    .image_view
+                    .navigate(adw::NavigationDirection::Back);
+            });
+
             klass.install_action("win.zoom-out", None, move |win, _, _| {
                 win.zoom_out();
             });
@@ -218,6 +230,28 @@ mod imp {
                         obj.action_set_enabled("win.zoom-in", enabled);
                     }),
                 );
+
+            // action win.previous status
+            self.image_view.connect_notify_local(
+                Some("is-previous-available"),
+                glib::clone!(@weak obj => move |_, _| {
+                    obj.action_set_enabled(
+                        "win.previous",
+                        obj.imp().image_view.is_previous_available(),
+                    );
+                }),
+            );
+
+            // action win.next status
+            self.image_view.connect_notify_local(
+                Some("is-next-available"),
+                glib::clone!(@weak obj => move |_, _| {
+                    obj.action_set_enabled(
+                        "win.next",
+                        obj.imp().image_view.is_next_available(),
+                    );
+                }),
+            );
 
             self.status_page
                 .set_icon_name(Some(&format!("{}-symbolic", config::APP_ID)));

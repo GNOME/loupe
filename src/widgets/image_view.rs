@@ -78,14 +78,6 @@ mod imp {
         fn class_init(klass: &mut Self::Class) {
             Self::bind_template(klass);
             Self::Type::bind_template_callbacks(klass);
-
-            klass.install_action("iv.next", None, move |image_view, _, _| {
-                image_view.navigate(adw::NavigationDirection::Forward);
-            });
-
-            klass.install_action("iv.previous", None, move |image_view, _, _| {
-                image_view.navigate(adw::NavigationDirection::Back);
-            });
         }
 
         fn instance_init(obj: &glib::subclass::InitializingObject<Self>) {
@@ -103,6 +95,12 @@ mod imp {
                     glib::ParamSpecObject::builder::<LpImagePage>("current-page-strict")
                         .read_only()
                         .build(),
+                    glib::ParamSpecBoolean::builder("is-previous-available")
+                        .read_only()
+                        .build(),
+                    glib::ParamSpecBoolean::builder("is-next-available")
+                        .read_only()
+                        .build(),
                 ]
             });
 
@@ -114,6 +112,8 @@ mod imp {
             match psec.name() {
                 "active-file" => obj.active_file().to_value(),
                 "current-page-strict" => obj.current_page_strict().to_value(),
+                "is-previous-available" => obj.is_previous_available().to_value(),
+                "is-next-available" => obj.is_next_available().to_value(),
                 _ => unimplemented!(),
             }
         }
@@ -236,28 +236,31 @@ impl LpImageView {
 
         let model = {
             // Here we use a nested scope so that the mutable borrow only lasts as long as we need it
-            let mut model_store = imp.model.borrow_mut();
 
-            if let Some(ref m) = *model_store {
-                let is_same_directory = file
-                    .parent()
-                    .map_or(false, |p| m.directory().map_or(false, |f| !f.equal(&p)));
+            if imp.model.borrow().is_some() {
+                let is_same_directory = !file.parent().map_or(false, |p| {
+                    imp.model
+                        .borrow()
+                        .as_ref()
+                        .and_then(|x| x.directory())
+                        .map_or(false, |f| !f.equal(&p))
+                });
 
                 if is_same_directory {
+                    log::debug!("Re-using old model and navigating to the current file");
+                    self.navigate_to_file(file);
+                    return Ok(());
+                } else {
                     // Clear the carousel before creating the new model
                     self.clear_carousel(false);
                     let model = LpFileModel::from_file(file)?;
-                    *model_store = Some(model.clone());
+                    imp.model.replace(Some(model.clone()));
                     log::debug!("new model created");
                     model
-                } else {
-                    log::debug!("Re-using old model and navigating to the current file");
-                    self.navigate_to_file(m, file);
-                    return Ok(());
                 }
             } else {
                 let model = LpFileModel::from_file(file)?;
-                *model_store = Some(model.clone());
+                imp.model.replace(Some(model.clone()));
                 log::debug!("first model created");
                 model
             }
@@ -266,9 +269,10 @@ impl LpImageView {
         let page = LpImagePage::from_file(file);
         imp.current_page_strict.replace(Some(page.clone()));
         self.notify("current-page-strict");
+        self.notify("is-previous-available");
+        self.notify("is-next-available");
 
         carousel.append(&page);
-        self.update_action_state(&model, 0);
 
         spawn!(glib::clone!(@weak self as obj, @strong file => async move {
             if let Err(err) = model.load_directory().await {
@@ -285,7 +289,6 @@ impl LpImageView {
             log::debug!("Currently at file {index} in the directory");
 
             obj.fill_carousel(&model, index);
-            obj.update_action_state(&model, index);
         }));
 
         Ok(())
@@ -309,11 +312,16 @@ impl LpImageView {
         };
     }
 
-    fn navigate_to_file(&self, model: &LpFileModel, file: &gio::File) {
+    fn navigate_to_file(&self, file: &gio::File) {
         let imp = self.imp();
+
+        let Some(new_index) = imp.model.borrow().as_ref().and_then(|model| model.index_of(file)) else {
+            log::warn!("Could not navigate to file {:?}", file.path());
+            return;
+        };
+
         let carousel = imp.carousel.get();
         let current_index = imp.current_model_index.get();
-        let new_index = model.index_of(file).unwrap_or_default();
 
         if new_index == current_index {
             return;
@@ -334,6 +342,9 @@ impl LpImageView {
         log::debug!("Scrolling to page for {new_index}");
         imp.scrolling.set(true);
         carousel.scroll_to(&page, true);
+
+        self.notify("is-previous-available");
+        self.notify("is-next-available");
     }
 
     // Fills the carousel with items on either side of the given `index` of `model`
@@ -355,6 +366,9 @@ impl LpImageView {
 
         log::debug!("Carousel filled, current file at index {index}");
         imp.current_model_index.set(index);
+
+        self.notify("is-previous-available");
+        self.notify("is-next-available");
     }
 
     // Clear the carousel, optionally preserving the current position
@@ -377,14 +391,33 @@ impl LpImageView {
                 carousel.remove(&carousel.nth_page(0));
             }
         }
+
+        self.notify("is-previous-available");
+        self.notify("is-next-available");
     }
 
-    pub fn update_action_state(&self, model: &LpFileModel, index: u32) {
-        let next_enabled = model.item(index + 1).is_some();
-        let prev_enabled = index.checked_sub(1).and_then(|i| model.item(i)).is_some();
+    /// Returns `true` if there is an image before the current one
+    pub fn is_previous_available(&self) -> bool {
+        let imp = self.imp();
+        if let Some(model) = imp.model.borrow().as_ref() {
+            imp.current_model_index
+                .get()
+                .checked_sub(1)
+                .and_then(|i| model.item(i))
+                .is_some()
+        } else {
+            false
+        }
+    }
 
-        self.action_set_enabled("iv.next", next_enabled);
-        self.action_set_enabled("iv.previous", prev_enabled);
+    /// Returns `true` if there is an image after the current one
+    pub fn is_next_available(&self) -> bool {
+        let imp = self.imp();
+        if let Some(model) = imp.model.borrow().as_ref() {
+            model.item(imp.current_model_index.get() + 1).is_some()
+        } else {
+            false
+        }
     }
 
     #[template_callback]
@@ -410,7 +443,6 @@ impl LpImageView {
                 // and refill the page buffer.
                 self.clear_carousel(true);
                 self.fill_carousel(model, model_index);
-                self.update_action_state(model, model_index);
             } else {
                 self.update_page_buffer(model, carousel, model_index, prev_index);
             }
@@ -425,7 +457,6 @@ impl LpImageView {
         prev_index: u32,
     ) {
         let imp = self.imp();
-        self.update_action_state(model, model_index);
 
         // We've moved forward
         if let Some(diff) = model_index.checked_sub(prev_index) {
@@ -466,6 +497,8 @@ impl LpImageView {
         }
 
         imp.current_model_index.set(model_index);
+        self.notify("is-previous-available");
+        self.notify("is-next-available");
     }
 
     #[template_callback]

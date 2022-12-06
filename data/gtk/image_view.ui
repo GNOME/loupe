@@ -28,7 +28,7 @@
               <object class="GtkButton" id="prev_button">
                 <property name="halign">start</property>
                 <property name="icon-name">go-previous-symbolic</property>
-                <property name="action-name">iv.previous</property>
+                <property name="action-name">win.previous</property>
                 <property name="tooltip-text" translatable="yes">Previous Image</property>
                 <style>
                   <class name="osd"/>
@@ -39,7 +39,7 @@
             <child>
               <object class="GtkButton" id="next_button">
                 <property name="icon-name">go-next-symbolic</property>
-                <property name="action-name">iv.next</property>
+                <property name="action-name">win.next</property>
                 <property name="tooltip-text" translatable="yes">Next Image</property>
                 <style>
                   <class name="osd"/>
@@ -102,22 +102,6 @@
         </child>
       </object>
     </property>
-    <child>
-      <object class="GtkShortcutController">
-        <child>
-          <object class="GtkShortcut">
-            <property name="trigger">Left</property>
-            <property name="action">action(iv.previous)</property>
-          </object>
-        </child>
-        <child>
-          <object class="GtkShortcut">
-            <property name="trigger">Right</property>
-            <property name="action">action(iv.next)</property>
-          </object>
-        </child>
-      </object>
-    </child>
     <style>
       <class name="image-view"/>
     </style>
