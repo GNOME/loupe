@@ -52,7 +52,12 @@ mod imp {
         /// Direct child of this Adw::Bin
         #[template_child]
         pub bin_child: TemplateChild<gtk::Widget>,
-
+        /// overlayed controls
+        #[template_child]
+        pub controls_box_start: TemplateChild<gtk::Widget>,
+        /// overlayed controls
+        #[template_child]
+        pub controls_box_end: TemplateChild<gtk::Widget>,
         #[template_child]
         pub carousel: TemplateChild<adw::Carousel>,
 
@@ -168,8 +173,14 @@ mod imp {
         /// one of the opened (current) image.
         fn measure(&self, orientation: gtk::Orientation, for_size: i32) -> (i32, i32, i32, i32) {
             // Measure child of AdwBin
-            let child_measure @ (child_min, _, _, _) =
-                self.bin_child.measure(orientation, for_size);
+            let (child_min, child_natural, _, _) = self.bin_child.measure(orientation, for_size);
+
+            // measure size of controls overlays
+            let (overlay1_min, _, _, _) = self.controls_box_start.measure(orientation, for_size);
+            let (overlay2_min, _, _, _) = self.controls_box_end.measure(orientation, for_size);
+
+            // take as minimum whatever is larger
+            let min = i32::max(child_min, overlay1_min + overlay2_min);
 
             if let Some(page) = self.instance().current_page_strict() {
                 // measure `LpImage`
@@ -178,10 +189,10 @@ mod imp {
                 // Ensure that minimum size is not smaller than the one of the child.
                 // Also ensure that the natural width is not smaller than the minimal size.
                 // Both things are required by GTK.
-                (child_min, i32::max(child_min, image_natural), -1, -1)
+                (min, i32::max(min, image_natural), -1, -1)
             } else {
-                // If there is no image, just pass through the normal measurement
-                child_measure
+                // also include controls overlays when mostly passing through child measurements
+                (min, i32::max(child_natural, min), -1, -1)
             }
         }
 
