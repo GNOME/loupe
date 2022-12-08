@@ -2,11 +2,15 @@
 
 A simple image viewer application written with GTK4 and Rust.
 
-## MVP TODO
+![Loupe Screenshot](https://gitlab.gnome.org/BrainBlasted/loupe/uploads/863131c1292cb9f1b32fbef39f266bcf/image.png)
 
-* [ ] Hover timeout for buttons and fullscreen headerbar
-* [x] Pan/zoom
-* [x] Back/forward navigation
+## Installing
+
+The latest version from the main branch is available from the build artifacts.
+
+- [Download Loupe Development Version](https://gitlab.gnome.org/api/v4/projects/13923/jobs/artifacts/main/raw/org.gnome.Loupe.Devel.flatpak?job=flatpak)
+
+This version will not get any automated updates after installation.
 
 ## Building
 
