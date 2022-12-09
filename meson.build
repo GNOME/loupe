@@ -8,8 +8,9 @@ project('loupe', 'rust',
 i18n = import('i18n')
 gnome = import('gnome')
 
-dependency('gtk4', version: '>=4.8.0')
+dependency('gtk4', version: '>=4.9.0')
 dependency('libadwaita-1', version: '>=1.2.0')
+dependency('gweather4', version: '>=4.0.0')
 
 cargo = find_program('cargo', required: true)
 

@@ -20,13 +20,18 @@ use crate::deps::*;
 
 use adw::{prelude::*, subclass::prelude::*};
 
-use anyhow::Context;
+use futures::prelude::*;
 use once_cell::sync::Lazy;
 use once_cell::unsync::OnceCell;
 use std::cell::{Cell, RefCell};
+use tokio_stream::wrappers::ReceiverStream;
+//use tokio_stream::StreamExt;
 
+use std::sync::Arc;
+
+use crate::decoder::{Decoder, DecoderUpdate, Decoding};
 use crate::i18n::i18n;
-use crate::image_metadata::{ImageMetadata, LpImageMetadata};
+use crate::image_metadata::LpImageMetadata;
 use crate::util;
 
 const ZOOM_ANIMATION_DURATION: u32 = 200;
@@ -47,6 +52,8 @@ mod imp {
         pub texture: RefCell<Option<gdk::Texture>>,
         /// Set when image is completely loaded and ready for displaying
         pub is_loaded: Cell<bool>,
+
+        pub decoder: RefCell<Option<Arc<Decoder>>>,
 
         /// Rotation final value (can differ from `rotation` during animation)
         pub rotation_target: Cell<f64>,
@@ -396,13 +403,7 @@ mod imp {
             // ensure there is an actual size change
             if self.widget_dimensions.get() != (width, height) {
                 self.widget_dimensions.set((width, height));
-                // calculate new zoom value for best fit
-                if widget.is_best_fit() {
-                    let best_fit_level = widget.zoom_level_best_fit();
-                    self.zoom.set(best_fit_level);
-                    self.zoom_target.set(best_fit_level);
-                    self.instance().zoom_animation().pause();
-                }
+                widget.configure_best_fit();
             }
 
             widget.configure_adjustments();
@@ -450,7 +451,10 @@ mod imp {
                 if widget.mirrored() {
                     snapshot.scale(-1., 1.);
                 }
-                snapshot.scale(widget.zoom() as f32, widget.zoom() as f32);
+                snapshot.scale(
+                    widget.applicable_zoom() as f32,
+                    widget.applicable_zoom() as f32,
+                );
 
                 // scale to actual pixel size
                 // this is needed since usually the texture would just fill the widget
@@ -559,68 +563,80 @@ impl LpImage {
     pub async fn load(&self, file: &gio::File) -> anyhow::Result<()> {
         let imp = self.imp();
 
-        if let Some(path) = file.path() {
-            imp.file.replace(Some(file.clone()));
+        let Some(path) = file.path() else { log::error!("File has not path"); return Ok(()); };
+        imp.file.replace(Some(file.clone()));
 
-            if !path.is_file() {
-                return Err(anyhow::Error::msg(i18n("File does not exist")));
-            }
-
-            log::debug!("Loading file {}", path.display());
-
-            log::debug!("Loading EXIF");
-            let metadata = util::spawn(
-                "image-load-exif",
-                glib::clone!(@strong file => move || ImageMetadata::load(&file)),
-            )
-            .await?;
-            let orientation = metadata.orientation();
-
-            imp.image_metadata.replace(LpImageMetadata::from(metadata));
-            imp.rotation_target.set(-orientation.rotation);
-            imp.rotation.set(-orientation.rotation);
-            imp.mirrored.set(orientation.mirrored);
-
-            self.notify("metadata");
-
-            log::debug!("Loading image size");
-            let (_, x, y) = util::spawn(
-                "image-load-size",
-                glib::clone!(@strong path => move || gdk_pixbuf::Pixbuf::file_info(&path)),
-            )
-            .await?
-            .context(i18n("Failed to load image size"))?;
-            imp.image_original_size.set((x, y));
-            self.notify("image-size");
-
-            log::debug!("Loading complete image");
-            let texture = util::spawn(
-                "image-load-image",
-                glib::clone!(@strong path => move || {
-                    let pixbuf = gdk_pixbuf::Pixbuf::from_file(&path)?;
-                    log::debug!("Creating texture");
-                    Ok::<_,anyhow::Error>(gdk::Texture::for_pixbuf(&pixbuf))
-                }),
-            )
-            .await?
-            .context(i18n("Failed to load image size"))?;
-
-            imp.texture.replace(Some(texture));
-
-            self.configure_adjustments();
-
-            self.queue_draw();
-            self.queue_allocate();
-            self.queue_resize();
-
-            log::debug!("Image loaded and scheduled for drawing");
-            imp.is_loaded.set(true);
-            self.notify("is-loaded");
-        } else {
-            log::error!("File has not path");
+        if !path.is_file() {
+            return Err(anyhow::Error::msg(i18n("File does not exist")));
         }
 
+        log::debug!("Loading file {}", path.display());
+
+        let (decoder, decoder_update) = util::spawn(
+            "image-init-decoder",
+            glib::clone!(@strong file => move || {
+                Decoder::new(file.clone())
+            }),
+        )
+        .await??;
+
+        glib::MainContext::default().spawn_local(glib::clone!(@weak self as obj => async move {
+            let mut stream = ReceiverStream::new(decoder_update);
+            while let Some(update) = stream.next().await {
+                obj.update(update);
+            }
+        }));
+
+        let decoder = Arc::new(decoder);
+        self.imp().decoder.replace(Some(decoder.clone()));
+
+        tokio::task::spawn_blocking(
+            glib::clone!(@strong decoder => move || decoder.decode(Decoding::new(100, 100))),
+        );
+
         Ok(())
+    }
+
+    pub fn update(&self, update: DecoderUpdate) {
+        log::debug!("Got update: {update:?}");
+
+        let imp = self.imp();
+
+        match update {
+            DecoderUpdate::Metadata(metadata) => {
+                let orientation = metadata.orientation();
+
+                imp.rotation_target.set(-orientation.rotation);
+                imp.rotation.set(-orientation.rotation);
+                imp.mirrored.set(orientation.mirrored);
+                imp.image_metadata.replace(LpImageMetadata::from(metadata));
+
+                self.notify("metadata");
+            }
+            DecoderUpdate::Dimensions((width, height)) => {
+                imp.image_original_size.set((width as i32, height as i32));
+                self.notify("image-size");
+            }
+            DecoderUpdate::Texture(texture) => {
+                imp.texture.replace(Some(texture));
+
+                self.configure_adjustments();
+                self.configure_best_fit();
+
+                self.queue_allocate();
+                self.queue_draw();
+
+                log::debug!("Image loaded and scheduled for drawing");
+                imp.is_loaded.set(true);
+                self.notify("is-loaded");
+            }
+            DecoderUpdate::Error(err) => {
+                log::error!("Async error that we don't show yet {err}");
+            }
+            DecoderUpdate::Format(_) => {
+                todo!()
+            }
+        }
     }
 
     pub fn is_loaded(&self) -> bool {
@@ -644,21 +660,33 @@ impl LpImage {
             let texture_aspect_ratio = texture.width() as f64 / texture.height() as f64;
             let widget_aspect_ratio = self.width() as f64 / self.height() as f64;
 
+            let (image_width, image_height) = self.imp().image_original_size.get();
+
             let default_zoom = if texture_aspect_ratio > widget_aspect_ratio {
-                (self.width() as f64 / texture.width() as f64).min(1.)
+                (self.width() as f64 / image_width as f64).min(1.)
             } else {
-                (self.height() as f64 / texture.height() as f64).min(1.)
+                (self.height() as f64 / image_height as f64).min(1.)
             };
 
             let rotated_zoom = if 1. / texture_aspect_ratio > widget_aspect_ratio {
-                (self.width() as f64 / texture.height() as f64).min(1.)
+                (self.width() as f64 / image_height as f64).min(1.)
             } else {
-                (self.height() as f64 / texture.width() as f64).min(1.)
+                (self.height() as f64 / image_width as f64).min(1.)
             };
 
             rotated * rotated_zoom + (1. - rotated) * default_zoom
         } else {
             1.
+        }
+    }
+
+    fn configure_best_fit(&self) {
+        // calculate new zoom value for best fit
+        if self.is_best_fit() {
+            let best_fit_level = self.zoom_level_best_fit();
+            self.imp().zoom.set(best_fit_level);
+            self.set_zoom_target(best_fit_level);
+            self.zoom_animation().pause();
         }
     }
 
@@ -771,6 +799,13 @@ impl LpImage {
         self.notify("is-max-zoom");
     }
 
+    fn applicable_zoom(&self) -> f64 {
+        let original_width = self.imp().image_original_size.get().0 as f64;
+        let texture_width = self.texture().map(|x| x.width()).unwrap_or(1) as f64;
+
+        self.zoom() * original_width / texture_width
+    }
+
     /// Set zoom level aiming for given position or center if not available
     fn set_zoom_aiming(&self, zoom: f64, aiming: Option<(f64, f64)>) {
         if zoom == self.zoom() || zoom <= 0. {
@@ -818,6 +853,25 @@ impl LpImage {
 
         self.notify("zoom");
         self.queue_draw();
+    }
+
+    fn set_zoom_target(&self, zoom_target: f64) {
+        log::debug!("Setting zoom target {zoom_target}");
+
+        self.imp().zoom_target.set(zoom_target);
+
+        if let Some(decoder) = self.imp().decoder.borrow().as_ref() {
+            if self.is_loaded() {
+                let (width, height) = self.imp().image_original_size.get();
+
+                let request_width = (width as f64 * zoom_target).ceil() as u32;
+                let request_height = (height as f64 * zoom_target).ceil() as u32;
+
+                tokio::task::spawn_blocking(
+                    glib::clone!(@strong decoder => move || decoder.decode(Decoding::new(request_width, request_height))),
+                );
+            }
+        }
     }
 
     /// Animation that makes larger zoom steps (from buttons etc) look smooth
@@ -917,7 +971,7 @@ impl LpImage {
 
         log::debug!("Zoom to {zoom:.3}");
 
-        self.imp().zoom_target.set(zoom);
+        self.set_zoom_target(zoom);
 
         // abort if already at correct zoom level
         if zoom == self.zoom() {
@@ -953,7 +1007,7 @@ impl LpImage {
     /// Image size of original image with EXIF rotation applied
     pub fn image_size(&self) -> (i32, i32) {
         let orientation = self.imp().image_metadata.borrow().orientation();
-        if orientation.rotation.abs() == 90. {
+        if orientation.rotation.abs() == 90. || orientation.rotation.abs() == 270. {
             let (x, y) = self.imp().image_original_size.get();
             (y, x)
         } else {
@@ -971,7 +1025,7 @@ impl LpImage {
             let rotated = self.rotation().to_radians().sin().abs();
 
             ((1. - rotated) * texture.width() as f64 + rotated * texture.height() as f64)
-                * self.zoom()
+                * self.applicable_zoom()
         } else {
             0.
         }
@@ -982,7 +1036,7 @@ impl LpImage {
             let rotated = self.rotation().to_radians().sin().abs();
 
             ((1. - rotated) * texture.height() as f64 + rotated * texture.width() as f64)
-                * self.zoom()
+                * self.applicable_zoom()
         } else {
             0.
         }

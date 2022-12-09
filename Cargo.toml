@@ -19,6 +19,16 @@ svg_metadata = "0.4.3"
 url = "2.3.1"
 libgweather = "4.0.0"
 
+# parallel
+tokio = { version = "1.23.0", features = ["macros", "rt", "rt-multi-thread", "sync"] }
+tokio-stream = "0.1.11"
+
+# decorders
+jpeg-decoder = { version = "0.3.0", default-features=false }
+lcms2 = "5.5.0"
+rgb = "0.8.34"
+image = "0.24.0"
+
 [dependencies.ashpd]
 version = "0.4.0-alpha.1"
 features = ["gtk4"]
