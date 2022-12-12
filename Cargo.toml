@@ -25,13 +25,13 @@ features = ["gtk4"]
 
 [dependencies.gtk]
 package = "gtk4"
-version = "0.5.1"
-features = ["v4_8"]
+version = "0.5.4"
+features = ["v4_10"]
 
 [dependencies.gio]
 package = "gio"
-version = "0.16.2"
-features = ["v2_70"]
+version = "0.16.3"
+features = ["v2_74"]
 
 [dependencies.adw]
 package = "libadwaita"

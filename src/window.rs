@@ -127,8 +127,8 @@ mod imp {
                     .set_active(!win.imp().properties_button.is_active());
             });
 
-            klass.install_action("win.open", None, move |win, _, _| {
-                win.pick_file();
+            klass.install_action_async("win.open", None, |win, _, _| async move {
+                win.pick_file().await;
             });
 
             klass.install_action("win.open-with", None, move |win, _, _| {
@@ -330,34 +330,23 @@ impl LpWindow {
         }
     }
 
-    fn pick_file(&self) {
-        let chooser = gtk::FileChooserNative::new(
-            Some("Open Image"),
-            Some(self),
-            gtk::FileChooserAction::Open,
-            None,
-            None,
-        );
-
-        chooser.set_modal(true);
-        chooser.set_transient_for(Some(self));
+    async fn pick_file(&self) {
+        let filter_store = gio::ListStore::new(gtk::FileFilter::static_type());
 
         let filter = gtk::FileFilter::new();
         filter.set_property("name", &String::from("Supported image files"));
         filter.add_mime_type("image/*");
-        chooser.add_filter(&filter);
+        filter_store.append(&filter);
 
-        chooser.connect_response(
-            clone!(@weak self as win, @strong chooser => move |_, resp| {
-                if resp == gtk::ResponseType::Accept {
-                    if let Some(file) = chooser.file() {
-                        win.set_image_from_file(&file, true);
-                    }
-                }
-            }),
-        );
+        let chooser = gtk::FileDialog::builder()
+            .title(&i18n("Open Image"))
+            .filters(&filter_store)
+            .modal(true)
+            .build();
 
-        chooser.show();
+        if let Ok(Some(file)) = chooser.open_future(Some(self), gio::File::NONE).await {
+            self.set_image_from_file(&file, true);
+        }
     }
 
     fn open_with(&self) {
