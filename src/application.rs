@@ -168,15 +168,16 @@ impl LpApplication {
         self.set_accels_for_action("win.copy", &["<Ctrl>C"]);
         self.set_accels_for_action("win.show-help-overlay", &["<Ctrl>question"]);
         self.set_accels_for_action("win.leave-fullscreen", &["Escape"]);
-        self.set_accels_for_action("win.toggle-properties", &["F9"]);
+        self.set_accels_for_action("win.toggle-properties", &["F9", "<Alt>Return"]);
         self.set_accels_for_action("win.toggle-fullscreen", &["F11"]);
+        self.set_accels_for_action("win.set-background", &["<Ctrl>F8"]);
 
         self.set_accels_for_action("win.previous", &["Left"]);
         self.set_accels_for_action("win.next", &["Right"]);
 
-        self.set_accels_for_action("win.zoom-to(1.0)", &["1"]);
-        self.set_accels_for_action("win.zoom-to(2.0)", &["2"]);
-        self.set_accels_for_action("win.zoom-best-fit", &["<Ctrl>0", "0"]);
+        self.set_accels_for_action("win.zoom-to(1.0)", &["1", "KP_1", "<Ctrl>1", "<Ctrl>KP_1"]);
+        self.set_accels_for_action("win.zoom-to(2.0)", &["2", "KP_2", "<Ctrl>2", "<Ctrl>KP_2"]);
+        self.set_accels_for_action("win.zoom-best-fit", &["0", "KP_0", "<Ctrl>0", "<Ctrl>KP_0"]);
         self.set_accels_for_action(
             "win.zoom-in",
             &[
