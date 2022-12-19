@@ -1,3 +1,5 @@
+use crate::i18n::*;
+
 #[derive(Debug, Clone, Copy)]
 pub struct GPSLocation {
     pub latitude: GPSCoord,
@@ -53,10 +55,24 @@ impl GPSCoord {
     }
 
     fn position_exif(position: &[exif::Rational]) -> Option<(f64, Option<f64>, Option<f64>)> {
+        let (deg, mut min, mut sec) = (position.get(0)?, position.get(1), position.get(2));
+
+        if let (Some(min_), Some(sec_)) = (min, sec) {
+            if min_.denom > 1 && sec_.num == 0 {
+                sec = None;
+            }
+        }
+
+        if let Some(min_) = min {
+            if deg.denom > 1 && min_.num == 0 {
+                min = None;
+            }
+        }
+
         Some((
-            position.get(0).map(exif::Rational::to_f64)?,
-            position.get(1).map(exif::Rational::to_f64),
-            position.get(2).map(exif::Rational::to_f64),
+            deg.to_f64(),
+            min.map(exif::Rational::to_f64),
+            sec.map(exif::Rational::to_f64),
         ))
     }
 }
@@ -93,8 +109,19 @@ impl GPSLocation {
     pub fn display(&self) -> String {
         if let Some(world) = libgweather::Location::world() {
             let location = world.find_nearest_city(self.latitude.to_f64(), self.longitude.to_f64());
-            if let (Some(city), Some(country)) = (location.city_name(), location.country_name()) {
-                return format!("{city}, {country}");
+            let location_exact = libgweather::Location::new_detached(
+                "",
+                None,
+                self.latitude.to_f64(),
+                self.longitude.to_f64(),
+            );
+
+            // do not use city if more than 100 km away
+            if location.distance(&location_exact) < 100. {
+                if let (Some(city), Some(country)) = (location.city_name(), location.country_name())
+                {
+                    return format!("{city}, {country}");
+                }
             }
         }
 
@@ -104,16 +131,28 @@ impl GPSLocation {
 
     pub fn latitude_display(&self) -> String {
         let coord = self.latitude;
-        let reference = if coord.sing { "N" } else { "S" };
+        let reference = if coord.sing {
+            // Translators: short for "north" in GPS coordiante
+            i18n("N")
+        } else {
+            // Translators: short for "south" in GPS coordiante
+            i18n("S")
+        };
 
-        coord.display(reference)
+        coord.display(&reference)
     }
 
     pub fn longitude_display(&self) -> String {
         let coord = self.longitude;
-        let reference = if coord.sing { "E" } else { "W" };
+        let reference = if coord.sing {
+            // Translators: short for "east" in GPS coordiante
+            i18n("E")
+        } else {
+            // Translators: short for "west" in GPS coordiante
+            i18n("W")
+        };
 
-        coord.display(reference)
+        coord.display(&reference)
     }
 
     pub fn geo_uri(&self) -> String {
