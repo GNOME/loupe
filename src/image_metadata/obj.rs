@@ -75,7 +75,7 @@ mod imp {
                         "exposure-time",
                         "iso",
                         "focal-length",
-                        "camera-model",
+                        "maker-model",
                     ]
                     .iter()
                     .map(|name| glib::ParamSpecString::builder(name).read_only().build())
@@ -99,7 +99,7 @@ mod imp {
                 "exposure-time" => metadata.exposure_time().to_value(),
                 "iso" => metadata.iso().to_value(),
                 "focal-length" => metadata.focal_length().to_value(),
-                "camera-model" => metadata.camera_model().to_value(),
+                "maker-model" => metadata.maker_model().to_value(),
                 name => unimplemented!("property {name}"),
             }
         }

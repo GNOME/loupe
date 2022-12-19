@@ -162,9 +162,41 @@ impl ImageMetadata {
         None
     }
 
-    pub fn camera_model(&self) -> Option<String> {
+    /// Combined maker and model info
+    pub fn maker_model(&self) -> Option<String> {
+        if let Some(mut model) = self.model() {
+            if let Some(maker) = self.maker() {
+                // This is to avoid doubling the maker name
+                // Canon for example also puts "Canon" in the model as well
+                // NIKON sometimes puts "NIKON" in model and "NIKON CORPORATION" in maker
+                if model.split_whitespace().next() != maker.split_whitespace().next() {
+                    model = format!("{maker} {model}");
+                }
+            }
+
+            Some(model)
+        } else {
+            self.maker()
+        }
+    }
+
+    pub fn model(&self) -> Option<String> {
         if let Self::Exif(exif) = self {
             if let Some(field) = exif.get_field(exif::Tag::Model, exif::In::PRIMARY) {
+                if let exif::Value::Ascii(value) = &field.value {
+                    if let Some(entry) = value.first() {
+                        return Some(String::from_utf8_lossy(entry).to_string());
+                    }
+                }
+            }
+        }
+
+        None
+    }
+
+    pub fn maker(&self) -> Option<String> {
+        if let Self::Exif(exif) = self {
+            if let Some(field) = exif.get_field(exif::Tag::Make, exif::In::PRIMARY) {
                 if let exif::Value::Ascii(value) = &field.value {
                     if let Some(entry) = value.first() {
                         return Some(String::from_utf8_lossy(entry).to_string());

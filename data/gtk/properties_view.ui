@@ -245,15 +245,15 @@
             </child>
             <child>
               <object class="AdwActionRow">
-                <property name="title" translatable="yes">Camera</property>
+                <property name="title" translatable="yes">Maker, Model</property>
                 <binding name="subtitle">
-                  <lookup name="camera-model">
+                  <lookup name="maker-model">
                     <lookup name="metadata">LpPropertiesView</lookup>
                   </lookup>
                 </binding>
                 <binding name="visible">
                   <closure type="gboolean" function="has_content">
-                    <lookup name="camera-model">
+                    <lookup name="maker-model">
                       <lookup name="metadata">LpPropertiesView</lookup>
                     </lookup>
                   </closure>
