@@ -152,7 +152,7 @@ impl LpApplication {
             gio::ActionEntryBuilder::new("new-window")
                 .activate(|app: &Self, _, _| {
                     let win = LpWindow::new(app);
-                    win.show();
+                    win.present();
                 })
                 .build(),
         ];
@@ -227,7 +227,7 @@ impl LpApplication {
             about.set_transient_for(Some(&window));
         }
 
-        about.show();
+        about.present();
     }
 
     pub fn show_help(&self) {
