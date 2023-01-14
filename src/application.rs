@@ -22,6 +22,8 @@ use crate::i18n::*;
 
 use adw::prelude::*;
 use adw::subclass::prelude::*;
+use glib::clone;
+use gtk_macros::spawn;
 
 use crate::config;
 use crate::widgets::{LpImage, LpImagePage};
@@ -231,6 +233,14 @@ impl LpApplication {
     }
 
     pub fn show_help(&self) {
-        gtk::show_uri(self.active_window().as_ref(), "help:loupe", 0);
+        spawn!(clone!(@weak self as app => async move {
+            let context = app
+                .active_window()
+                .map(|w| gtk::prelude::WidgetExt::display(&w).app_launch_context());
+
+            if let Err(e) = gio::AppInfo::launch_default_for_uri_future("help:loupe", context.as_ref()).await {
+                log::error!("Failed to launch help: {}", e.message());
+            }
+        }));
     }
 }
