@@ -378,7 +378,7 @@ impl LpWindow {
             .modal(true)
             .build();
 
-        if let Ok(Some(file)) = chooser.open_future(Some(self), gio::File::NONE).await {
+        if let Ok(file) = chooser.open_future(Some(self)).await {
             self.set_image_from_file(&file, true);
         }
     }
