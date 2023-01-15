@@ -26,8 +26,6 @@ use glib::clone;
 use gtk::CompositeTemplate;
 
 use anyhow::Context;
-use ashpd::desktop::open_uri;
-use ashpd::WindowIdentifier;
 use futures::future::{AbortHandle, Abortable};
 use once_cell::sync::Lazy;
 use std::cell::RefCell;
@@ -67,9 +65,13 @@ mod imp {
             Self::bind_template(klass);
             Self::Type::bind_template_callbacks(klass);
 
-            klass.install_action("properties.open-folder", None, move |properties, _, _| {
-                properties.open_directory();
-            });
+            klass.install_action_async(
+                "properties.open-folder",
+                None,
+                |properties, _, _| async move {
+                    let _ = properties.open_directory().await;
+                },
+            );
 
             klass.install_action("properties.open-location", None, move |properties, _, _| {
                 properties.open_location();
@@ -339,19 +341,14 @@ impl LpPropertiesView {
         self.notify("dimensions");
     }
 
-    fn open_directory(&self) {
-        if let Some(directory) = self
-            .file()
-            .and_then(|f| f.peek_path())
-            .and_then(|p| std::fs::File::open(p).ok())
-        {
-            spawn!(clone!(@weak self as view => async move {
-                let id = WindowIdentifier::from_native(&view.native().expect("No GtkNative for view")).await;
-                if let Err(e) = open_uri::OpenDirectoryRequest::default().identifier(id).build(&directory).await {
-                    log::error!("Could not open parent directory: {e}");
-                };
-            }));
-        }
+    async fn open_directory(&self) -> anyhow::Result<()> {
+        let launcher = gtk::FileLauncher::new(self.file().as_ref());
+        let win = self.native().and_downcast::<gtk::Window>();
+        if let Err(e) = launcher.open_containing_folder_future(win.as_ref()).await {
+            log::error!("Could not open parent directory: {e}");
+        };
+
+        Ok(())
     }
 
     /// Open GPS location in apps like Maps via `geo:` URI
