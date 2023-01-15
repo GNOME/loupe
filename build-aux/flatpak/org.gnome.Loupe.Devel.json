@@ -91,6 +91,22 @@
                 }
             ]
         },
+        /* Use patched libadwaita version to test the fix */
+        {
+            "name": "libadwaita",
+            "buildsystem": "meson",
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://gitlab.gnome.org/GNOME/libadwaita.git",
+                    "branch": "main"
+                },
+                {
+                    "type": "patch",
+                    "path": "libadwaita-issue-597.patch"
+                }
+            ]
+        },
         {
             "name" : "loupe",
             "builddir" : true,
