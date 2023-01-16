@@ -25,11 +25,6 @@ use glib::clone;
 use gtk::prelude::*;
 use gtk::CompositeTemplate;
 
-use ashpd::desktop::open_uri;
-use ashpd::WindowIdentifier;
-
-use gtk_macros::spawn;
-
 use std::cell::RefCell;
 
 use crate::config;
@@ -143,8 +138,8 @@ mod imp {
                 win.pick_file().await;
             });
 
-            klass.install_action("win.open-with", None, move |win, _, _| {
-                win.open_with();
+            klass.install_action_async("win.open-with", None, |win, _, _| async move {
+                win.open_with().await;
             });
 
             klass.install_action("win.rotate", Some("d"), move |win, _, angle| {
@@ -383,26 +378,16 @@ impl LpWindow {
         }
     }
 
-    fn open_with(&self) {
+    async fn open_with(&self) {
         let imp = self.imp();
 
-        if let Some(file) = imp
-            .image_view
-            .active_file()
-            .and_then(|f| f.peek_path())
-            .and_then(|p| std::fs::File::open(p).ok())
-        {
-            spawn!(clone!(@weak self as win => async move {
-                if let Err(e) =
-                    open_uri::OpenFileRequest::default()
-                    .ask(true)
-                    .writeable(true)
-                    .identifier(WindowIdentifier::from_native(&win).await)
-                    .build_file(&file).await
-                {
+        if let Some(ref file) = imp.image_view.active_file() {
+            let launcher = gtk::FileLauncher::new(Some(file));
+            if let Err(e) = launcher.launch_future(Some(self)).await {
+                if !e.matches(gtk::DialogError::Dismissed) {
                     log::error!("Could not open image in external program: {}", e);
                 }
-            }));
+            }
         } else {
             log::error!("Could not load a path for the current image.")
         }
