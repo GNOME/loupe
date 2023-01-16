@@ -158,7 +158,7 @@
                     <child>
                       <object class="AdwStatusPage" id="status_page">
                         <property name="title" translatable="yes">Loupe</property>
-                        <property name="description" translatable="yes">Click “Open File…” or drag an image here.</property>
+                        <property name="description" translatable="yes">Drag and drop images here</property>
                         <child>
                           <object class="GtkButton">
                             <property name="halign">center</property>
