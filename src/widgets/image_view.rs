@@ -534,42 +534,37 @@ impl LpImageView {
         }
     }
 
-    pub fn set_background(&self) -> anyhow::Result<()> {
+    pub async fn set_background(&self) -> anyhow::Result<()> {
         let background = self.uri().context("No URI for current file")?;
-        spawn!(clone!(@weak self as view =>
-         async move {
-            let id = WindowIdentifier::from_native(
-                &view.native().expect("View should have a GtkNative"),
-            )
-            .await;
+        let native = self.native().expect("View should have a GtkNative");
+        let id = WindowIdentifier::from_native(&native).await;
 
-            match wallpaper::WallpaperRequest::default()
-                .set_on(wallpaper::SetOn::Background)
-                .show_preview(true)
-                .identifier(id)
-                .build_uri(&background)
-                .await
-            {
-                // We use `1` here because we can't pass enums directly as GVariants,
-                // so we need to use the C int value of the enum.
-                // `TOAST_PRIORITY_NORMAL = 0`, and `TOAST_PRIORITY_HIGH = 1`
-                Ok(_) => view
-                    .activate_action(
+        match wallpaper::WallpaperRequest::default()
+            .set_on(wallpaper::SetOn::Background)
+            .show_preview(true)
+            .identifier(id)
+            .build_uri(&background)
+            .await
+        {
+            // We use `1` here because we can't pass enums directly as GVariants,
+            // so we need to use the C int value of the enum.
+            // `TOAST_PRIORITY_NORMAL = 0`, and `TOAST_PRIORITY_HIGH = 1`
+            Ok(_) => self
+                .activate_action(
+                    "win.show-toast",
+                    Some(&(i18n("Set as background."), 1).to_variant()),
+                )
+                .unwrap(),
+            Err(err) => {
+                if !matches!(err, Error::Response(ResponseError::Cancelled)) {
+                    self.activate_action(
                         "win.show-toast",
-                        Some(&(i18n("Set as background."), 1).to_variant()),
+                        Some(&(i18n("Could not set background."), 1).to_variant()),
                     )
-                    .unwrap(),
-                Err(err) => {
-                    if !matches!(err, Error::Response(ResponseError::Cancelled)) {
-                        view.activate_action(
-                            "win.show-toast",
-                            Some(&(i18n("Could not set background."), 1).to_variant()),
-                        )
-                        .unwrap();
-                    }
+                    .unwrap();
                 }
-            };
-        }));
+            }
+        };
 
         Ok(())
     }

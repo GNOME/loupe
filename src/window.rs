@@ -146,8 +146,8 @@ mod imp {
                 win.rotate_image(angle.unwrap().get().unwrap());
             });
 
-            klass.install_action("win.set-background", None, move |win, _, _| {
-                win.set_background();
+            klass.install_action_async("win.set-background", None, |win, _, _| async move {
+                win.set_background().await;
             });
 
             klass.install_action("win.print", None, move |win, _, _| {
@@ -397,10 +397,10 @@ impl LpWindow {
         self.imp().image_view.rotate_image(angle)
     }
 
-    fn set_background(&self) {
+    async fn set_background(&self) {
         let imp = self.imp();
 
-        if let Err(e) = imp.image_view.set_background() {
+        if let Err(e) = imp.image_view.set_background().await {
             log::error!("Failed to set background: {}", e);
         }
     }
