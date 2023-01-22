@@ -593,14 +593,14 @@ impl LpImage {
             log::debug!("Loading complete image");
             let texture = util::spawn(
                 "image-load-image",
-                glib::clone!(@strong path => move || {
-                    let pixbuf = gdk_pixbuf::Pixbuf::from_file(&path)?;
+                glib::clone!(@weak file => @default-return Err(anyhow::Error::msg(i18n("File does not exist"))), move || {
                     log::debug!("Creating texture");
-                    Ok::<_,anyhow::Error>(gdk::Texture::for_pixbuf(&pixbuf))
+                    let texture = gdk::Texture::from_file(&file)?;
+                    Ok::<_,anyhow::Error>(texture)
                 }),
             )
             .await?
-            .context(i18n("Failed to load image size"))?;
+            .context(i18n("Failed to load image"))?;
 
             imp.texture.replace(Some(texture));
 
