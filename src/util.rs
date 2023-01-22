@@ -1,20 +1,10 @@
 use crate::deps::*;
 
 use gio::prelude::*;
-use glib::translate::*;
 
 use anyhow::Context;
 
 use std::fmt::{Debug, Write};
-
-pub fn utf8_collate_key_for_filename(filename: &str) -> String {
-    unsafe {
-        from_glib_full(glib::ffi::g_utf8_collate_key_for_filename(
-            filename.to_glib_none().0,
-            filename.len() as isize,
-        ))
-    }
-}
 
 pub fn get_file_display_name(file: &gio::File) -> Option<String> {
     let info = query_attributes(file, vec![&gio::FILE_ATTRIBUTE_STANDARD_DISPLAY_NAME]).ok()?;
@@ -60,7 +50,10 @@ pub fn compare_by_name(file_a: &gio::File, file_b: &gio::File) -> std::cmp::Orde
     let name_a = get_file_display_name(file_a).unwrap_or_default();
     let name_b = get_file_display_name(file_b).unwrap_or_default();
 
-    utf8_collate_key_for_filename(&name_a).cmp(&utf8_collate_key_for_filename(&name_b))
+    let key_a = glib::FilenameCollationKey::from(name_a);
+    let key_b = glib::FilenameCollationKey::from(name_b);
+
+    key_a.cmp(&key_b)
 }
 
 pub async fn spawn<T: Debug + Send + 'static>(
