@@ -584,12 +584,9 @@ impl LpImage {
             self.notify("metadata");
 
             log::debug!("Loading image size");
-            let (_, x, y) = util::spawn(
-                "image-load-size",
-                glib::clone!(@strong path => move || gdk_pixbuf::Pixbuf::file_info(&path)),
-            )
-            .await?
-            .context(i18n("Failed to load image size"))?;
+            let (_, x, y) = gdk_pixbuf::Pixbuf::file_info_future(path.clone())
+                .await?
+                .context(i18n("Failed to load image size"))?;
             imp.image_original_size.set((x, y));
             self.notify("image-size");
 
