@@ -63,7 +63,7 @@ pub fn compare_by_name(file_a: &gio::File, file_b: &gio::File) -> std::cmp::Orde
     utf8_collate_key_for_filename(&name_a).cmp(&utf8_collate_key_for_filename(&name_b))
 }
 
-pub async fn spawn<T: Debug + Send + 'static>(
+pub async fn spawn_blocking<T: Debug + Send + 'static>(
     name: &str,
     f: impl Fn() -> T + Send + 'static,
 ) -> async_std::io::Result<T> {

@@ -92,7 +92,7 @@ impl LpFileModel {
         let original_vec: Vec<Option<std::path::PathBuf>> =
             self.imp().inner.borrow().iter().map(|x| x.path()).collect();
 
-        let new_files_result = util::spawn("list-files", move || {
+        let new_files_result = util::spawn_blocking("list-files", move || {
             let mut vec = Vec::new();
 
             let enumerator = directory

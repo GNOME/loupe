@@ -569,7 +569,7 @@ impl LpImage {
             log::debug!("Loading file {}", path.display());
 
             log::debug!("Loading EXIF");
-            let metadata = util::spawn(
+            let metadata = util::spawn_blocking(
                 "image-load-exif",
                 glib::clone!(@strong file => move || ImageMetadata::load(&file)),
             )
@@ -584,7 +584,7 @@ impl LpImage {
             self.notify("metadata");
 
             log::debug!("Loading image size");
-            let (_, x, y) = util::spawn(
+            let (_, x, y) = util::spawn_blocking(
                 "image-load-size",
                 glib::clone!(@strong path => move || gdk_pixbuf::Pixbuf::file_info(&path)),
             )
@@ -594,7 +594,7 @@ impl LpImage {
             self.notify("image-size");
 
             log::debug!("Loading complete image");
-            let texture = util::spawn(
+            let texture = util::spawn_blocking(
                 "image-load-image",
                 glib::clone!(@strong path => move || {
                     let pixbuf = gdk_pixbuf::Pixbuf::from_file(&path)?;
