@@ -18,24 +18,23 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 
 use crate::deps::*;
+use crate::widgets::LpImage;
 
 use adw::subclass::prelude::*;
 use glib::clone;
 use gtk::prelude::*;
 use gtk::CompositeTemplate;
-
 use gtk_macros::spawn;
+use once_cell::sync::Lazy;
 
-use once_cell::sync::{Lazy, OnceCell};
 use std::cell::RefCell;
-
-use crate::widgets::LpImage;
+use std::path::{Path, PathBuf};
 
 mod imp {
     use super::*;
 
     #[derive(Debug, Default, CompositeTemplate)]
-    #[template(resource = "/org/gnome/Loupe/gtk/image_page.ui")]
+    #[template(file = "../../data/gtk/image_page.ui")]
     pub struct LpImagePage {
         #[template_child]
         pub(super) stack: TemplateChild<gtk::Stack>,
@@ -53,8 +52,6 @@ mod imp {
         pub(super) click_gesture: TemplateChild<gtk::GestureClick>,
         #[template_child]
         pub(super) press_gesture: TemplateChild<gtk::GestureLongPress>,
-
-        pub(super) file: OnceCell<gio::File>,
 
         /// set if an error has occured and is shown on error_page
         pub(super) error: RefCell<Option<String>>,
@@ -97,6 +94,7 @@ mod imp {
                 name => unimplemented!("property {name}"),
             }
         }
+
         fn constructed(&self) {
             let obj = self.instance();
 
@@ -128,17 +126,20 @@ glib::wrapper! {
 }
 
 impl LpImagePage {
-    pub fn from_file(file: &gio::File) -> Self {
+    pub fn from_path(path: &Path) -> Self {
         let obj = glib::Object::new::<Self>(&[]);
-        obj.imp().file.set(file.clone()).unwrap();
+        let path = path.to_path_buf();
+        let file = gio::File::for_path(&path);
+
+        obj.imp().image.set_file(&file);
 
         // This doesn't work properly for items not explicitly selected
         // via the file chooser portal. I'm not sure how to make this work.
         gtk::RecentManager::default().add_item(&file.uri());
 
-        spawn!(clone!(@weak obj, @weak file => async move {
+        spawn!(clone!(@weak obj, @strong path => async move {
             let imp = obj.imp();
-            match imp.image.load(&file).await {
+            match imp.image.load(&path).await {
                 Ok(()) => {
                     imp.stack.set_visible_child(&*imp.scrolled_window);
                     imp.spinner.set_spinning(false);
@@ -156,8 +157,8 @@ impl LpImagePage {
         obj
     }
 
-    pub fn file(&self) -> Option<gio::File> {
-        self.imp().file.get().cloned()
+    pub fn path(&self) -> PathBuf {
+        self.image().path().unwrap()
     }
 
     pub fn image(&self) -> LpImage {

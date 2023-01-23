@@ -8,11 +8,9 @@
       <object class="GtkOverlay" id="bin_child">
         <property name="hexpand">True</property>
         <child>
-          <object class="AdwCarousel" id="carousel">
-            <property name="interactive">True</property>
-            <property name="allow-mouse-drag">False</property>
-            <property name="allow-scroll-wheel">False</property>
-            <signal name="page-changed" handler="page_changed_cb" swapped="yes"/>
+          <object class="LpSlidingView" id="sliding_view">
+            <signal name="notify::current-page" handler="page_changed_cb" swapped="yes"/>
+            <signal name="target-page-reached" handler="target_page_reached_cb" swapped="yes"/>
           </object>
         </child>
         <child type="overlay">

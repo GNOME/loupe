@@ -18,6 +18,7 @@ futures = "0.3.25"
 svg_metadata = "0.4.3"
 url = "2.3.1"
 libgweather = "4.0.0"
+indexmap = "1.9.2"
 
 [dependencies.ashpd]
 version = "0.4.0-alpha.1"
@@ -26,7 +27,7 @@ features = ["gtk4"]
 [dependencies.gtk]
 package = "gtk4"
 version = "0.5.5"
-features = ["v4_10"]
+features = ["v4_10", "xml_validation"]
 
 [dependencies.gio]
 package = "gio"

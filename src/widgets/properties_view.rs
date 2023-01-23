@@ -41,7 +41,7 @@ mod imp {
     use super::*;
 
     #[derive(Debug, Default, CompositeTemplate)]
-    #[template(resource = "/org/gnome/Loupe/gtk/properties_view.ui")]
+    #[template(file = "../../data/gtk/properties_view.ui")]
     pub struct LpPropertiesView {
         pub file: RefCell<Option<glib::WeakRef<gio::File>>>,
         pub image: RefCell<Option<glib::WeakRef<LpImage>>>,
@@ -130,8 +130,7 @@ mod imp {
             let prop_name = pspec.name();
 
             match prop_name {
-                "file" => obj.set_file(&value.get().ok()),
-                "image" => obj.set_image(&value.get().ok()),
+                "image" => obj.set_image(value.get().ok().as_ref()),
                 _ => unimplemented!(),
             }
         }
@@ -159,6 +158,16 @@ mod imp {
                         obj.notify("metadata");
                     }),
                 );
+
+            // watch changes to image metadata
+            obj.property_expression("image")
+                .chain_property::<LpImage>("path")
+                .watch(
+                    glib::Object::NONE,
+                    glib::clone!(@weak obj => move || {
+                        obj.set_file(obj.image().and_then(|x| x.file()).as_ref());
+                    }),
+                );
         }
     }
 
@@ -174,7 +183,7 @@ glib::wrapper! {
 
 #[gtk::template_callbacks]
 impl LpPropertiesView {
-    fn set_file(&self, file: &Option<gio::File>) {
+    fn set_file(&self, file: Option<&gio::File>) {
         let imp = self.imp();
 
         self.action_set_enabled("properties.open-folder", file.is_some());
@@ -196,10 +205,11 @@ impl LpPropertiesView {
             }
 
             self.build_file_info(file);
-            let weak = file.downgrade();
-            imp.file.replace(Some(weak));
-            self.notify("file");
         }
+
+        let weak = file.map(|x| x.downgrade());
+        imp.file.replace(weak);
+        self.notify("file");
     }
 
     fn file(&self) -> Option<gio::File> {
@@ -207,7 +217,7 @@ impl LpPropertiesView {
         imp.file.borrow().as_ref().and_then(|w| w.upgrade())
     }
 
-    fn set_image(&self, image: &Option<LpImage>) {
+    fn set_image(&self, image: Option<&LpImage>) {
         let imp = self.imp();
 
         imp.image.replace(image.as_ref().map(|x| x.downgrade()));

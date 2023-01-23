@@ -15,7 +15,7 @@ pub struct GPSCoord {
 }
 
 impl GPSCoord {
-    fn to_f64(&self) -> f64 {
+    fn to_f64(self) -> f64 {
         let sign = if self.sing { 1. } else { -1. };
 
         let min = self.min.unwrap_or_default();

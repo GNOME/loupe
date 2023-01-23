@@ -76,13 +76,13 @@ mod imp {
             let application = self.instance();
             for file in files {
                 let win = LpWindow::new(&*application);
-                win.set_image_from_file(file, true);
+                win.set_image_from_path(&file.path().unwrap());
 
                 // show window when image size is known
                 let watch = win
                     .imp()
                     .image_view
-                    .property_expression("current-page-strict")
+                    .property_expression("current-page")
                     .chain_property::<LpImagePage>("image")
                     .chain_property::<LpImage>("image-size")
                     .watch(
@@ -97,7 +97,7 @@ mod imp {
                 let watch = win
                     .imp()
                     .image_view
-                    .property_expression("current-page-strict")
+                    .property_expression("current-page")
                     .chain_property::<LpImagePage>("error")
                     .watch(
                         glib::Object::NONE,

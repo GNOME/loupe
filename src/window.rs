@@ -26,6 +26,7 @@ use gtk::prelude::*;
 use gtk::CompositeTemplate;
 
 use std::cell::RefCell;
+use std::path::Path;
 
 use crate::config;
 use crate::util;
@@ -49,7 +50,7 @@ mod imp {
     // we'd need to have a `new()` function in the
     // `impl ObjectSubclass for $TYPE` section.
     #[derive(Default, Debug, CompositeTemplate)]
-    #[template(resource = "/org/gnome/Loupe/gtk/window.ui")]
+    #[template(file = "../data/gtk/window.ui")]
     pub struct LpWindow {
         // Template children are used with the
         // TemplateChild<T> wrapper, where T is the
@@ -182,7 +183,7 @@ mod imp {
 
             obj.set_actions_enabled(false);
             self.image_view
-                .property_expression("current-page-strict")
+                .property_expression("current-page")
                 .chain_property::<LpImagePage>("image")
                 .chain_property::<LpImage>("best-fit")
                 .watch(
@@ -209,7 +210,7 @@ mod imp {
 
             // disable zoom-in if at maximum zoom level
             self.image_view
-                .property_expression("current-page-strict")
+                .property_expression("current-page")
                 .chain_property::<LpImagePage>("image")
                 .chain_property::<LpImage>("is-max-zoom")
                 .watch(
@@ -225,6 +226,13 @@ mod imp {
                         obj.action_set_enabled("win.zoom-in", enabled);
                     }),
                 );
+
+            self.image_view.connect_notify_local(
+                Some("current-page"),
+                glib::clone!(@weak obj => move |_, _| {
+                        obj.images_available();
+                }),
+            );
 
             // action win.previous status
             self.image_view.connect_notify_local(
@@ -295,7 +303,7 @@ mod imp {
                         .map(|t| t.to_string())
                         .filter(|t| t.starts_with("image/"))
                         .is_some() {
-                        obj.set_image_from_file(&file, false);
+                        obj.set_image_from_path(&file.path().unwrap());
                     } else {
                         obj.show_toast(
                             i18n_f("“{}” is not a valid image.", &[&info.display_name()]),
@@ -374,14 +382,17 @@ impl LpWindow {
             .build();
 
         if let Ok(file) = chooser.open_future(Some(self)).await {
-            self.set_image_from_file(&file, true);
+            self.set_image_from_path(&file.path().unwrap());
+        } else {
+            // TODO: ui error
+            log::error!("Failed to choose file");
         }
     }
 
     async fn open_with(&self) {
         let imp = self.imp();
 
-        if let Some(ref file) = imp.image_view.active_file() {
+        if let Some(ref file) = imp.image_view.current_path().map(gio::File::for_path) {
             let launcher = gtk::FileLauncher::new(Some(file));
             if let Err(e) = launcher.launch_future(Some(self)).await {
                 if !e.matches(gtk::DialogError::Dismissed) {
@@ -432,22 +443,12 @@ impl LpWindow {
         imp.toast_overlay.add_toast(&toast);
     }
 
-    pub fn set_image_from_file(&self, file: &gio::File, _resize: bool) {
+    pub fn set_image_from_path(&self, path: &Path) {
         let imp = self.imp();
 
-        log::debug!("Loading file: {}", file.uri().to_string());
-        match imp.image_view.set_image_from_file(file) {
-            Ok((/*width, height*/)) => {
-                // if resize {
-                    // self.resize_from_dimensions(width, height);
-                // }
-
-                imp.stack.set_visible_child(&*imp.image_view);
-                imp.image_view.grab_focus();
-                self.set_actions_enabled(true)
-            }
-            Err(e) => log::error!("Could not load file: {}", e.to_string()),
-        }
+        log::debug!("Loading file: {path:?}");
+        imp.image_view.set_image_from_path(path);
+        self.set_actions_enabled(true);
     }
 
     pub fn set_actions_enabled(&self, enabled: bool) {
@@ -462,6 +463,18 @@ impl LpWindow {
         self.action_set_enabled("win.toggle-properties", enabled);
     }
 
+    pub fn images_available(&self) {
+        let imp = self.imp();
+
+        if imp.image_view.current_page().is_some() {
+            imp.stack.set_visible_child(&*imp.image_view);
+            imp.image_view.grab_focus();
+        } else {
+            imp.stack.set_visible_child(&*imp.status_page);
+            imp.status_page.grab_focus();
+        }
+    }
+
     pub fn image_size_ready(&self) {
         // if visible for whatever reason, don't do any resize
         if self.is_visible() {
@@ -472,7 +485,7 @@ impl LpWindow {
         let image = self
             .imp()
             .image_view
-            .current_page_strict()
+            .current_page()
             .map(|page| page.image());
 
         if let Some(image) = image {
@@ -492,7 +505,7 @@ impl LpWindow {
             return;
         }
 
-        let current_page = self.imp().image_view.current_page_strict();
+        let current_page = self.imp().image_view.current_page();
 
         if let Some(page) = current_page {
             if page.error().is_some() {
@@ -555,9 +568,17 @@ impl LpWindow {
     // have multiple `match` or `if let` branches, and without needing
     // to unwrap.
     #[template_callback]
-    fn window_title(&self, file: Option<gio::File>) -> String {
-        file.and_then(|f| util::get_file_display_name(&f)) // If the file exists, get display name
-            .unwrap_or_else(|| i18n("Loupe")) // Return that or the default if there's nothing
+    fn window_title(&self, path: glib::variant::Variant) -> String {
+        // ensure that templates are initialized
+        if path.as_maybe().is_none() {
+            i18n("Loupe")
+        } else {
+            self.imp()
+                .image_view
+                .current_file()
+                .and_then(|f| util::get_file_display_name(&f)) // If the file exists, get display name
+                .unwrap_or_else(|| i18n("Loupe")) // Return that or the default if there's nothing
+        }
     }
 
     // We also have a closure that returns `adw::FlapFoldPolicy`.

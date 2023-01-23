@@ -31,7 +31,7 @@ mod widgets;
 mod window;
 
 mod deps {
-    pub use gtk::{gdk, gdk_pixbuf, gio, glib, graphene};
+    pub use gtk::{gdk, gdk_pixbuf, gio, glib, graphene, gsk};
 }
 
 use application::LpApplication;

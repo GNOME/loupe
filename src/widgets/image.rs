@@ -17,17 +17,18 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 
 use crate::deps::*;
-
-use adw::{prelude::*, subclass::prelude::*};
-
-use anyhow::Context;
-use once_cell::sync::Lazy;
-use once_cell::unsync::OnceCell;
-use std::cell::{Cell, RefCell};
-
 use crate::i18n::i18n;
 use crate::image_metadata::{ImageMetadata, LpImageMetadata};
 use crate::util;
+
+use adw::{prelude::*, subclass::prelude::*};
+use anyhow::Context;
+use gtk_macros::spawn;
+use once_cell::sync::Lazy;
+use once_cell::unsync::OnceCell;
+
+use std::cell::{Cell, RefCell};
+use std::path::{Path, PathBuf};
 
 const ZOOM_ANIMATION_DURATION: u32 = 200;
 const ROTATION_ANIMATION_DURATION: u32 = 200;
@@ -44,6 +45,10 @@ mod imp {
     #[derive(Debug, Default)]
     pub struct LpImage {
         pub file: RefCell<Option<gio::File>>,
+        pub path: RefCell<Option<PathBuf>>,
+        pub is_deleted: Cell<bool>,
+        /// Track changes to this image
+        pub file_monitor: RefCell<Option<gio::FileMonitor>>,
         pub texture: RefCell<Option<gdk::Texture>>,
         /// Set when image is completely loaded and ready for displaying
         pub is_loaded: Cell<bool>,
@@ -112,6 +117,12 @@ mod imp {
                     glib::ParamSpecObject::builder::<gio::File>("file")
                         .read_only()
                         .build(),
+                    glib::ParamSpecVariant::builder("path", glib::VariantTy::BYTE_STRING)
+                        .read_only()
+                        .build(),
+                    glib::ParamSpecBoolean::builder("is-deleted")
+                        .read_only()
+                        .build(),
                     glib::ParamSpecBoolean::builder("is-loaded")
                         .read_only()
                         .build(),
@@ -150,6 +161,8 @@ mod imp {
             let obj = self.instance();
             match pspec.name() {
                 "file" => obj.file().to_value(),
+                "path" => obj.path().to_variant().to_value(),
+                "is-deleted" => obj.is_deleted().to_value(),
                 "is-loaded" => obj.is_loaded().to_value(),
                 "metadata" => obj.metadata().to_value(),
                 "rotation" => obj.rotation().to_value(),
@@ -556,42 +569,42 @@ glib::wrapper! {
 }
 
 impl LpImage {
-    pub async fn load(&self, file: &gio::File) -> anyhow::Result<()> {
+    pub async fn load(&self, path: &Path) -> anyhow::Result<()> {
         let imp = self.imp();
+        let path = path.to_path_buf();
+        let file = gio::File::for_path(&path);
+        self.set_file(&file);
 
-        if let Some(path) = file.path() {
-            imp.file.replace(Some(file.clone()));
+        if !path.is_file() {
+            return Err(anyhow::Error::msg(i18n("File does not exist")));
+        }
 
-            if !path.is_file() {
-                return Err(anyhow::Error::msg(i18n("File does not exist")));
-            }
+        log::debug!("Loading file {path:?}");
 
-            log::debug!("Loading file {}", path.display());
+        log::debug!("Loading EXIF");
+        let metadata = util::spawn(
+            "image-load-exif",
+            glib::clone!(@strong path => move || ImageMetadata::load(&path)),
+        )
+        .await?;
+        let orientation = metadata.orientation();
 
-            log::debug!("Loading EXIF");
-            let metadata = util::spawn(
-                "image-load-exif",
-                glib::clone!(@strong file => move || ImageMetadata::load(&file)),
-            )
-            .await?;
-            let orientation = metadata.orientation();
+        imp.image_metadata.replace(LpImageMetadata::from(metadata));
+        imp.rotation_target.set(-orientation.rotation);
+        imp.rotation.set(-orientation.rotation);
+        imp.mirrored.set(orientation.mirrored);
 
-            imp.image_metadata.replace(LpImageMetadata::from(metadata));
-            imp.rotation_target.set(-orientation.rotation);
-            imp.rotation.set(-orientation.rotation);
-            imp.mirrored.set(orientation.mirrored);
+        self.notify("metadata");
 
-            self.notify("metadata");
+        log::debug!("Loading image size");
+        let (_, x, y) = gdk_pixbuf::Pixbuf::file_info_future(path.clone())
+            .await?
+            .context(i18n("Failed to load image size"))?;
+        imp.image_original_size.set((x, y));
+        self.notify("image-size");
 
-            log::debug!("Loading image size");
-            let (_, x, y) = gdk_pixbuf::Pixbuf::file_info_future(path.clone())
-                .await?
-                .context(i18n("Failed to load image size"))?;
-            imp.image_original_size.set((x, y));
-            self.notify("image-size");
-
-            log::debug!("Loading complete image");
-            let texture = util::spawn(
+        log::debug!("Loading complete image");
+        let texture = util::spawn(
                 "image-load-image",
                 glib::clone!(@weak file => @default-return Err(anyhow::Error::msg(i18n("File does not exist"))), move || {
                     log::debug!("Creating texture");
@@ -602,26 +615,27 @@ impl LpImage {
             .await?
             .context(i18n("Failed to load image"))?;
 
-            imp.texture.replace(Some(texture));
+        imp.texture.replace(Some(texture));
 
-            self.configure_adjustments();
+        self.configure_adjustments();
 
-            self.queue_draw();
-            self.queue_allocate();
-            self.queue_resize();
+        self.queue_draw();
+        self.queue_allocate();
+        self.queue_resize();
 
-            log::debug!("Image loaded and scheduled for drawing");
-            imp.is_loaded.set(true);
-            self.notify("is-loaded");
-        } else {
-            log::error!("File has not path");
-        }
+        log::debug!("Image loaded and scheduled for drawing");
+        imp.is_loaded.set(true);
+        self.notify("is-loaded");
 
         Ok(())
     }
 
     pub fn is_loaded(&self) -> bool {
         self.imp().is_loaded.get()
+    }
+
+    pub fn is_deleted(&self) -> bool {
+        self.imp().is_deleted.get()
     }
 
     /// Zoom level that makes the image fit in widget
@@ -660,9 +674,60 @@ impl LpImage {
     }
 
     pub fn file(&self) -> Option<gio::File> {
+        self.imp().file.borrow().clone()
+    }
+
+    pub fn path(&self) -> Option<PathBuf> {
+        self.imp().path.borrow().clone()
+    }
+
+    pub(super) fn set_file(&self, file: &gio::File) {
         let imp = self.imp();
 
-        imp.file.borrow().clone()
+        imp.file.replace(Some(file.clone()));
+        imp.path.replace(file.path());
+        self.notify("path");
+
+        let monitor = file.monitor_file(gio::FileMonitorFlags::WATCH_MOVES, gio::Cancellable::NONE);
+        if let Ok(m) = &monitor {
+            m.connect_changed(
+                glib::clone!(@weak self as obj => move |_, file_a, file_b, event| {
+                    obj.file_changed(event, file_a, file_b);
+                }),
+            );
+        }
+
+        imp.file_monitor.replace(monitor.ok());
+    }
+
+    /// File changed on drive
+    fn file_changed(
+        &self,
+        event: gio::FileMonitorEvent,
+        file_a: &gio::File,
+        file_b: Option<&gio::File>,
+    ) {
+        match event {
+            gio::FileMonitorEvent::Renamed => {
+                if let Some(file) = file_b {
+                    log::debug!("Moved to {:?}", file.path());
+                    self.set_file(file);
+                }
+            }
+            gio::FileMonitorEvent::ChangesDoneHint => {
+                let obj = self.clone();
+                let file = file_a.clone();
+                // TODO: error handling is missing
+                spawn! {async move { let _ = obj.load(&file.path().unwrap()).await; }};
+            }
+            gio::FileMonitorEvent::Deleted
+            | gio::FileMonitorEvent::MovedOut
+            | gio::FileMonitorEvent::Unmounted => {
+                self.imp().is_deleted.set(true);
+                self.notify("is-deleted");
+            }
+            _ => {}
+        }
     }
 
     /// Texture that contains the original image

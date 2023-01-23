@@ -1,10 +1,10 @@
 use crate::deps::*;
 
+use anyhow::Context;
 use gio::prelude::*;
 
-use anyhow::Context;
-
 use std::fmt::{Debug, Write};
+use std::path::Path;
 
 pub fn get_file_display_name(file: &gio::File) -> Option<String> {
     let info = query_attributes(file, vec![&gio::FILE_ATTRIBUTE_STANDARD_DISPLAY_NAME]).ok()?;
@@ -46,9 +46,9 @@ pub async fn query_attributes_future(
     .context("Failed to query attributes")
 }
 
-pub fn compare_by_name(file_a: &gio::File, file_b: &gio::File) -> std::cmp::Ordering {
-    let name_a = get_file_display_name(file_a).unwrap_or_default();
-    let name_b = get_file_display_name(file_b).unwrap_or_default();
+pub fn compare_by_name(file_a: &Path, file_b: &Path) -> std::cmp::Ordering {
+    let name_a = file_a.display().to_string();
+    let name_b = file_b.display().to_string();
 
     let key_a = glib::FilenameCollationKey::from(name_a);
     let key_b = glib::FilenameCollationKey::from(name_b);

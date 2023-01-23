@@ -18,36 +18,35 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 
 use crate::deps::*;
+use crate::file_model::LpFileModel;
 use crate::i18n::*;
+use crate::thumbnail::Thumbnail;
+use crate::widgets::{LpImage, LpImagePage, LpSlidingView};
 
 use adw::prelude::*;
 use adw::subclass::prelude::*;
-use glib::clone;
-use gtk::CompositeTemplate;
-
-use anyhow::{bail, Context};
+use anyhow::Context;
 use ashpd::desktop::wallpaper;
 use ashpd::desktop::ResponseError;
 use ashpd::Error;
 use ashpd::WindowIdentifier;
-use once_cell::sync::Lazy;
-use std::cell::{Cell, RefCell};
-
+use glib::clone;
+use gtk::CompositeTemplate;
 use gtk_macros::spawn;
+use once_cell::sync::Lazy;
 
-use crate::file_model::LpFileModel;
-use crate::thumbnail::Thumbnail;
-use crate::widgets::LpImagePage;
+use std::cell::{Cell, RefCell};
+use std::path::{Path, PathBuf};
 
 // The number of pages we want to buffer
 // on either side of the current page.
-const BUFFER: u32 = 2;
+const BUFFER: usize = 2;
 
 mod imp {
     use super::*;
 
     #[derive(Debug, Default, CompositeTemplate)]
-    #[template(resource = "/org/gnome/Loupe/gtk/image_view.ui")]
+    #[template(file = "../../data/gtk/image_view.ui")]
     pub struct LpImageView {
         /// Direct child of this Adw::Bin
         #[template_child]
@@ -59,14 +58,10 @@ mod imp {
         #[template_child]
         pub controls_box_end: TemplateChild<gtk::Widget>,
         #[template_child]
-        pub carousel: TemplateChild<adw::Carousel>,
+        pub sliding_view: TemplateChild<LpSlidingView>,
 
-        pub model: RefCell<Option<LpFileModel>>,
-        pub current_model_index: Cell<u32>,
-
-        pub scrolling: Cell<bool>,
-
-        pub current_page_strict: RefCell<Option<LpImagePage>>,
+        pub model: RefCell<LpFileModel>,
+        pub preserve_content: Cell<bool>,
     }
 
     #[glib::object_subclass]
@@ -89,10 +84,7 @@ mod imp {
         fn properties() -> &'static [glib::ParamSpec] {
             static PROPERTIES: Lazy<Vec<glib::ParamSpec>> = Lazy::new(|| {
                 vec![
-                    glib::ParamSpecObject::builder::<gio::File>("active-file")
-                        .read_only()
-                        .build(),
-                    glib::ParamSpecObject::builder::<LpImagePage>("current-page-strict")
+                    glib::ParamSpecObject::builder::<LpImagePage>("current-page")
                         .read_only()
                         .build(),
                     glib::ParamSpecBoolean::builder("is-previous-available")
@@ -110,8 +102,7 @@ mod imp {
         fn property(&self, _id: usize, psec: &glib::ParamSpec) -> glib::Value {
             let obj = self.instance();
             match psec.name() {
-                "active-file" => obj.active_file().to_value(),
-                "current-page-strict" => obj.current_page_strict().to_value(),
+                "current-page" => obj.current_page().to_value(),
                 "is-previous-available" => obj.is_previous_available().to_value(),
                 "is-next-available" => obj.is_next_available().to_value(),
                 _ => unimplemented!(),
@@ -125,6 +116,26 @@ mod imp {
 
             // Manually mange widget layout, see `WidgetImpl` for details
             obj.set_layout_manager(gtk::LayoutManager::NONE);
+
+            obj.property_expression("current-page")
+                .chain_property::<LpImagePage>("image")
+                .chain_property::<LpImage>("path")
+                .watch(
+                    glib::Object::NONE,
+                    glib::clone!(@weak obj => move || {
+                        obj.current_image_path_changed();
+                    }),
+                );
+
+            obj.property_expression("current-page")
+                .chain_property::<LpImagePage>("image")
+                .chain_property::<LpImage>("is-deleted")
+                .watch(
+                    glib::Object::NONE,
+                    glib::clone!(@weak obj => move || {
+                        obj.current_image_path_changed();
+                    }),
+                );
 
             let source = gtk::DragSource::new();
             source.set_exclusive(true);
@@ -153,12 +164,6 @@ mod imp {
             }));
 
             obj.add_controller(&source);
-
-            self.carousel
-                .connect_position_notify(clone!(@weak obj => move |_| {
-                    obj.notify("active-file");
-                    obj.notify("current-page-strict");
-                }));
         }
     }
 
@@ -182,7 +187,7 @@ mod imp {
             // take as minimum whatever is larger
             let min = i32::max(child_min, overlay1_min + overlay2_min);
 
-            if let Some(page) = self.instance().current_page_strict() {
+            if let Some(page) = self.instance().current_page() {
                 // measure `LpImage`
                 let (_, image_natural, _, _) = page.image().measure(orientation, for_size);
 
@@ -213,198 +218,215 @@ glib::wrapper! {
 
 #[gtk::template_callbacks]
 impl LpImageView {
-    pub fn set_image_from_file(&self, file: &gio::File) -> anyhow::Result<()> {
-        if let Some(current_file) = self.active_file() {
-            if current_file.equal(file) {
-                bail!("Image is the same as the previous image; Doing nothing.");
-            }
+    pub fn set_image_from_path(&self, path: &Path) {
+        if let Err(err) = self.load_path(path) {
+            log::error!("Failed to load path: {err}");
+            self.activate_action("win.show-toast", Some(&(err.to_string(), 1).to_variant()))
+                .unwrap();
         }
-
-        self.build_model_from_file(file)?;
-        self.notify("active-file");
-
-        Ok(())
     }
 
     // Builds an `LpFileModel`, which is an implementation of `gio::ListModel`
     // that holds a `gio::File` for each child within the same directory as the
     // file we pass. This model will update with changes to the directory,
     // and in turn we'll update our `adw::Carousel`.
-    fn build_model_from_file(&self, file: &gio::File) -> anyhow::Result<()> {
-        let imp = self.imp();
-        let carousel = &imp.carousel;
+    fn load_path(&self, path: &Path) -> anyhow::Result<()> {
+        let sliding_view = self.sliding_view();
+        let directory = path.parent().map(|x| x.to_path_buf());
 
-        let model = {
-            // Here we use a nested scope so that the mutable borrow only lasts as long as we need it
+        let is_same_directory = directory == self.model().directory();
 
-            if imp.model.borrow().is_some() {
-                let is_same_directory = !file.parent().map_or(false, |p| {
-                    imp.model
-                        .borrow()
-                        .as_ref()
-                        .and_then(|x| x.directory())
-                        .map_or(false, |f| !f.equal(&p))
-                });
+        if is_same_directory {
+            log::debug!("Re-using old model and navigating to the current file");
+            self.navigate_to_path(path);
+            return Ok(());
+        }
 
-                if is_same_directory {
-                    log::debug!("Re-using old model and navigating to the current file");
-                    self.navigate_to_file(file);
-                    return Ok(());
-                } else {
-                    // Clear the carousel before creating the new model
-                    self.clear_carousel(false);
-                    let model = LpFileModel::from_file(file)?;
-                    imp.model.replace(Some(model.clone()));
-                    log::debug!("new model created");
-                    model
+        let model = LpFileModel::from_path(path);
+        self.set_model(model);
+        log::debug!("New model created");
+
+        let page = LpImagePage::from_path(path);
+
+        sliding_view.clear();
+        sliding_view.append(&page);
+
+        // List other files in directory
+        if let Some(directory) = directory {
+            let path = path.to_path_buf();
+            spawn!(glib::clone!(@weak self as obj, @strong path => async move {
+                if let Err(err) = obj.model().load_directory(directory).await {
+                    log::warn!("Failed to load directory: {err}");
+                    obj.activate_action("win.show-toast", Some(&(err.to_string(), 1).to_variant()))
+                        .unwrap();
+                    return;
                 }
-            } else {
-                let model = LpFileModel::from_file(file)?;
-                imp.model.replace(Some(model.clone()));
-                log::debug!("first model created");
-                model
-            }
-        };
 
-        let page = LpImagePage::from_file(file);
-        imp.current_page_strict.replace(Some(page.clone()));
-        self.notify("current-page-strict");
-        self.notify("is-previous-available");
-        self.notify("is-next-available");
-
-        carousel.append(&page);
-
-        spawn!(glib::clone!(@weak self as obj, @strong file => async move {
-            if let Err(err) = model.load_directory().await {
-                log::warn!("Failed to load directory: {:?}", err);
-                obj.activate_action("win.show-toast", Some(&(err.to_string(), 1).to_variant()))
-                    .unwrap();
-                return;
-            }
-
-            let index = model
-                .index_of(&file)
-                .context("File not found in model.")
-                .unwrap();
-            log::debug!("Currently at file {index} in the directory");
-
-            obj.fill_carousel(&model, index);
-        }));
+                obj.update_sliding_view(&path);
+            }));
+        }
 
         Ok(())
     }
 
+    /// Move forward or backwards
     pub fn navigate(&self, direction: adw::NavigationDirection) {
-        let carousel = &self.imp().carousel;
-        let pos = carousel.position().round() as u32;
-        match direction {
-            adw::NavigationDirection::Forward => {
-                if pos < carousel.n_pages() - 1 {
-                    carousel.scroll_to(&carousel.nth_page(pos + 1), true);
-                }
+        if let Some(current_path) = self.current_path() {
+            let new_path = match direction {
+                adw::NavigationDirection::Forward => self.model().after(&current_path),
+                adw::NavigationDirection::Back => self.model().before(&current_path),
+                _ => unimplemented!("Navigation direction should only be back or forward."),
+            };
+
+            if let Some(new_path) = new_path {
+                self.scroll_sliding_view(&new_path);
             }
-            adw::NavigationDirection::Back => {
-                if pos > 0 {
-                    carousel.scroll_to(&carousel.nth_page(pos - 1), true)
-                }
-            }
-            _ => unimplemented!("Navigation direction should only be back or forward."),
-        };
+        }
     }
 
-    fn navigate_to_file(&self, file: &gio::File) {
-        let imp = self.imp();
+    /// Used for drag and drop
+    fn navigate_to_path(&self, new_path: &Path) {
+        let sliding_view = self.sliding_view();
 
-        let Some(new_index) = imp.model.borrow().as_ref().and_then(|model| model.index_of(file)) else {
-            log::warn!("Could not navigate to file {:?}", file.path());
-            return;
-        };
-
-        let carousel = imp.carousel.get();
-        let current_index = imp.current_model_index.get();
-
-        if new_index == current_index {
+        if Some(new_path.to_path_buf()) == self.current_path() {
             return;
         }
 
-        let page = LpImagePage::from_file(file);
+        let Some(new_index) = self.model().index_of(new_path) else {
+            log::warn!("Could not navigate to file {new_path:?}");
+            return;
+        };
 
-        if new_index > current_index {
-            carousel.append(&page);
+        let current_index = self
+            .current_path()
+            .and_then(|x| self.model().index_of(&x))
+            .unwrap_or_default();
+
+        let page = if let Some(page) = sliding_view.get(new_path) {
+            page
         } else {
-            carousel.prepend(&page);
+            let page = LpImagePage::from_path(new_path);
+
+            if new_index > current_index {
+                sliding_view.append(&page);
+            } else {
+                sliding_view.prepend(&page);
+            }
+
+            page
+        };
+
+        log::debug!("Scrolling to page for {new_path:?}");
+        self.imp().preserve_content.set(true);
+        sliding_view.scroll_to(&page);
+    }
+
+    /// Ensures the sliding view contains the correct images
+    fn update_sliding_view(&self, current_path: &Path) {
+        log::debug!("Updating sliding_view neighbors for current path {current_path:?}");
+        let sliding_view = self.sliding_view();
+
+        self.imp().preserve_content.set(false);
+
+        let existing = sliding_view.pages();
+        let target = self.model().files_around(current_path, BUFFER);
+
+        // remove old pages
+        for (path, page) in &existing {
+            if !target.contains(path) {
+                sliding_view.remove(page);
+            }
         }
 
-        // Set a flag and scroll to the page. Our `page-changed` signal handler
-        // will handle clearing and refilling the carousel. This is so we're
-        // not changing the state of the carousel while it's scrolling to the
-        // new page.
-        log::debug!("Scrolling to page for {new_index}");
-        imp.scrolling.set(true);
-        carousel.scroll_to(&page, true);
+        // add missing pages or put in correct position
+        for (position, path) in target.iter().enumerate() {
+            if let Some(page) = existing.get(path) {
+                sliding_view.move_to(page, position);
+            } else {
+                sliding_view.insert(&LpImagePage::from_path(path), position);
+            }
+        }
 
         self.notify("is-previous-available");
         self.notify("is-next-available");
     }
 
-    // Fills the carousel with items on either side of the given `index` of `model`
-    fn fill_carousel(&self, model: &LpFileModel, index: u32) {
-        let imp = self.imp();
-        let carousel = imp.carousel.get();
+    fn scroll_sliding_view(&self, path: &Path) {
+        let Some(current_page) = self.sliding_view().pages().remove(path) else {
+            log::error!("Current path not availabel in sliding_view for scrolling: {path:?}");
+            return;
+        };
 
-        for i in 1..=BUFFER {
-            if let Some(ref file) = model.file(index + i) {
-                carousel.append(&LpImagePage::from_file(file))
-            }
-        }
-
-        for i in 1..=BUFFER {
-            if let Some(ref file) = index.checked_sub(i).and_then(|i| model.file(i)) {
-                carousel.prepend(&LpImagePage::from_file(file))
-            }
-        }
-
-        log::debug!("Carousel filled, current file at index {index}");
-        imp.current_model_index.set(index);
-
-        self.notify("is-previous-available");
-        self.notify("is-next-available");
+        self.sliding_view().scroll_to(&current_page);
     }
 
-    // Clear the carousel, optionally preserving the current position
-    // as a point to refill from
-    fn clear_carousel(&self, preserve_current_page: bool) {
-        let carousel = self.imp().carousel.get();
+    fn sliding_view(&self) -> LpSlidingView {
+        self.imp().sliding_view.clone()
+    }
 
-        if preserve_current_page {
-            // Remove everything before the current page
-            for _ in 0..(carousel.position() as u32) {
-                carousel.remove(&carousel.nth_page(0));
-            }
+    fn model(&self) -> LpFileModel {
+        self.imp().model.borrow().clone()
+    }
 
-            // Then everything after
-            while carousel.n_pages() > 1 {
-                carousel.remove(&carousel.nth_page(carousel.n_pages() - 1));
-            }
-        } else {
-            while carousel.n_pages() > 0 {
-                carousel.remove(&carousel.nth_page(0));
+    fn set_model(&self, model: LpFileModel) {
+        model.connect_changed(
+            glib::clone!(@weak self as obj => move || obj.model_content_changed_cb()),
+        );
+        self.imp().model.replace(model);
+    }
+
+    /// Handle files are added or removed from directory
+    fn model_content_changed_cb(&self) {
+        let Some(current_path) = self.current_path() else { return; };
+
+        // LpImage did not get the update yet
+        // Update will be handled by current_image_path_changed
+        if !self.model().contains(&current_path) {
+            return;
+        }
+
+        self.update_sliding_view(&current_path);
+    }
+
+    /// Handle current image being moved or deleted
+    ///
+    /// This is handled separately since we want to delete animations and
+    /// want to still show the same image if renamed.
+    fn current_image_path_changed(&self) {
+        if let Some(image) = self.current_page().map(|x| x.image()) {
+            if image.is_deleted() {
+                self.sliding_view().scroll_to_neighbor();
             }
         }
 
-        self.notify("is-previous-available");
-        self.notify("is-next-available");
+        if let Some(current_path) = self.current_path() {
+            if self.model().contains(&current_path) {
+                if !self.imp().preserve_content.get() {
+                    self.update_sliding_view(&current_path);
+                }
+            }
+        }
+    }
+
+    pub fn current_page(&self) -> Option<LpImagePage> {
+        self.imp().sliding_view.current_page()
+    }
+
+    pub fn current_path(&self) -> Option<PathBuf> {
+        self.imp().sliding_view.current_page().map(|x| x.path())
+    }
+
+    pub fn current_file(&self) -> Option<gio::File> {
+        self.imp()
+            .sliding_view
+            .current_page()
+            .and_then(|x| x.image().file())
     }
 
     /// Returns `true` if there is an image before the current one
     pub fn is_previous_available(&self) -> bool {
-        let imp = self.imp();
-        if let Some(model) = imp.model.borrow().as_ref() {
-            imp.current_model_index
-                .get()
-                .checked_sub(1)
-                .and_then(|i| model.item(i))
-                .is_some()
+        if let Some(path) = self.current_path() {
+            self.model().index_of(&path) != Some(0)
         } else {
             false
         }
@@ -412,93 +434,39 @@ impl LpImageView {
 
     /// Returns `true` if there is an image after the current one
     pub fn is_next_available(&self) -> bool {
-        let imp = self.imp();
-        if let Some(model) = imp.model.borrow().as_ref() {
-            model.item(imp.current_model_index.get() + 1).is_some()
+        if let Some(path) = self.current_path() {
+            let model = self.model();
+            model.index_of(&path) != Some(model.n_files().saturating_sub(1))
         } else {
             false
         }
     }
 
     #[template_callback]
-    fn page_changed_cb(&self, index: u32, carousel: &adw::Carousel) {
-        let imp = self.imp();
+    fn page_changed_cb(&self) {
+        self.notify("current-page");
+        self.notify("is-previous-available");
+        self.notify("is-next-available");
 
-        imp.current_page_strict
-            .replace(carousel.nth_page(index).downcast().ok());
-        self.notify("current-page-strict");
+        let Some(new_page) = self.current_page() else {
+            log::debug!("Page changed but no current page");
+            return;
+        };
 
-        let b = imp.model.borrow();
-        let model = b.as_ref().unwrap();
-        let current = self.active_file().unwrap();
-
-        let model_index = model.index_of(&current).unwrap();
-        let prev_index = imp.current_model_index.get();
-
-        if model_index != prev_index {
-            if imp.scrolling.get() {
-                log::debug!("Scrolling finished, refilling carousel");
-                imp.scrolling.set(false);
-                // We need to clear the carousel (excluding the current page)
-                // and refill the page buffer.
-                self.clear_carousel(true);
-                self.fill_carousel(model, model_index);
-            } else {
-                self.update_page_buffer(model, carousel, model_index, prev_index);
-            }
+        if !self.imp().preserve_content.get() {
+            self.update_sliding_view(&new_page.path());
         }
     }
 
-    fn update_page_buffer(
-        &self,
-        model: &LpFileModel,
-        carousel: &adw::Carousel,
-        model_index: u32,
-        prev_index: u32,
-    ) {
-        let imp = self.imp();
-
-        // We've moved forward
-        if let Some(diff) = model_index.checked_sub(prev_index) {
-            for i in 0..diff {
-                if prev_index
-                    .checked_sub(BUFFER)
-                    .and_then(|r| r.checked_sub(i))
-                    .is_some()
-                {
-                    carousel.remove(&carousel.nth_page(0));
-                }
-
-                let s = prev_index + BUFFER + i + 1;
-                if s <= model.n_items() {
-                    if let Some(ref file) = model.file(s) {
-                        carousel.append(&LpImagePage::from_file(file));
-                    }
-                }
+    #[template_callback]
+    fn target_page_reached_cb(&self) {
+        if self.imp().preserve_content.get() {
+            if let Some(new_page) = self.current_page() {
+                self.update_sliding_view(&new_page.path());
+            } else {
+                log::error!("No LpImagePage");
             }
         }
-
-        // We've moved backward
-        if let Some(diff) = prev_index.checked_sub(model_index) {
-            for i in 0..diff {
-                let s = prev_index + BUFFER + i + 1;
-                if s <= model.n_items() {
-                    carousel.remove(&carousel.nth_page(carousel.n_pages() - 1));
-                }
-
-                if let Some(ref file) = prev_index
-                    .checked_sub(BUFFER)
-                    .and_then(|d| d.checked_sub(i + 1))
-                    .and_then(|d| model.file(d))
-                {
-                    carousel.prepend(&LpImagePage::from_file(file));
-                }
-            }
-        }
-
-        imp.current_model_index.set(model_index);
-        self.notify("is-previous-available");
-        self.notify("is-next-available");
     }
 
     #[template_callback]
@@ -535,7 +503,10 @@ impl LpImageView {
     }
 
     pub async fn set_background(&self) -> anyhow::Result<()> {
-        let background = self.uri().context("No URI for current file")?;
+        let background = self
+            .current_path()
+            .and_then(|p| std::fs::File::open(p).ok())
+            .context(i18n("Failed to open new background image"))?;
         let native = self.native().expect("View should have a GtkNative");
         let id = WindowIdentifier::from_native(&native).await;
 
@@ -543,7 +514,7 @@ impl LpImageView {
             .set_on(wallpaper::SetOn::Background)
             .show_preview(true)
             .identifier(id)
-            .build_uri(&background)
+            .build_file(&background)
             .await
         {
             // We use `1` here because we can't pass enums directly as GVariants,
@@ -571,11 +542,7 @@ impl LpImageView {
 
     pub fn print(&self) -> anyhow::Result<()> {
         let operation = gtk::PrintOperation::new();
-        let path = self
-            .active_file()
-            .context("No file")?
-            .peek_path()
-            .context("No path")?;
+        let path = self.current_path().context("No file")?;
         let pb = gdk_pixbuf::Pixbuf::from_file(path)?;
 
         let setup = gtk::PageSetup::default();
@@ -618,31 +585,5 @@ impl LpImageView {
         }
 
         Ok(())
-    }
-
-    // TODO: check how often we actually want to use this
-    pub fn current_page(&self) -> Option<LpImagePage> {
-        let carousel = &self.imp().carousel;
-        let pos = carousel.position().round() as u32;
-        if carousel.n_pages() > 0 && pos < carousel.n_pages() {
-            carousel.nth_page(pos).downcast().ok()
-        } else {
-            None
-        }
-    }
-
-    /// Returns `None` during animations instead of returning the closest image
-    pub fn current_page_strict(&self) -> Option<LpImagePage> {
-        self.imp().current_page_strict.borrow().clone()
-    }
-
-    pub fn uri(&self) -> Option<url::Url> {
-        self.active_file()
-            .and_then(|f| url::Url::parse(&f.uri()).ok())
-    }
-
-    pub fn active_file(&self) -> Option<gio::File> {
-        let page = self.current_page()?;
-        page.file()
     }
 }

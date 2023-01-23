@@ -21,8 +21,10 @@ mod image;
 mod image_page;
 mod image_view;
 mod properties_view;
+mod sliding_view;
 
 pub use image::LpImage;
 pub use image_page::LpImagePage;
 pub use image_view::LpImageView;
 pub use properties_view::LpPropertiesView;
+pub use sliding_view::LpSlidingView;

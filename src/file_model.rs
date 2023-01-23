@@ -21,81 +21,87 @@ use crate::deps::*;
 use crate::i18n::*;
 use crate::util;
 
-use gio::prelude::*;
-use gio::subclass::prelude::*;
+use std::path::{Path, PathBuf};
 
 use anyhow::Context;
-use once_cell::sync::OnceCell;
-
+use gio::prelude::*;
+use gio::subclass::prelude::*;
+use indexmap::IndexSet;
+use once_cell::sync::{Lazy, OnceCell};
 use std::cell::RefCell;
 
 mod imp {
     use super::*;
+    use gtk::glib::subclass::Signal;
 
     #[derive(Debug, Default)]
     pub struct LpFileModel {
-        pub(super) inner: RefCell<Vec<gio::File>>,
-        pub(super) directory: OnceCell<gio::File>,
+        /// Use and IndexSet such that we can put the elements into an arbitrary order
+        /// while still having fast hash access via `PathBuf`.
+        pub(super) files: RefCell<IndexSet<PathBuf>>,
+        pub(super) directory: OnceCell<PathBuf>,
+        /// Track file changes.
+        pub(super) monitor: OnceCell<gio::FileMonitor>,
     }
 
     #[glib::object_subclass]
     impl ObjectSubclass for LpFileModel {
         const NAME: &'static str = "LpFileModel";
         type Type = super::LpFileModel;
-        type Interfaces = (gio::ListModel,);
     }
 
-    impl ObjectImpl for LpFileModel {}
-
-    impl ListModelImpl for LpFileModel {
-        fn item_type(&self) -> glib::Type {
-            gio::File::static_type()
-        }
-
-        fn n_items(&self) -> u32 {
-            self.inner.borrow().len() as u32
-        }
-
-        fn item(&self, position: u32) -> Option<glib::Object> {
-            self.inner
-                .borrow()
-                .get(position as usize)
-                .map(|f| f.clone().upcast())
+    impl ObjectImpl for LpFileModel {
+        fn signals() -> &'static [Signal] {
+            static SIGNALS: Lazy<Vec<Signal>> =
+                Lazy::new(|| vec![Signal::builder("changed").build()]);
+            SIGNALS.as_ref()
         }
     }
 }
 
 glib::wrapper! {
-    pub struct LpFileModel(ObjectSubclass<imp::LpFileModel>) @implements gio::ListModel;
+    pub struct LpFileModel(ObjectSubclass<imp::LpFileModel>);
+}
+
+impl Default for LpFileModel {
+    fn default() -> Self {
+        glib::Object::new(&[])
+    }
 }
 
 impl LpFileModel {
-    pub fn from_file(file: &gio::File) -> anyhow::Result<Self> {
-        let model = glib::Object::new::<Self>(&[]);
-        let directory = file.parent().context("File has not parent")?;
-        let file =
-            directory.resolve_relative_path(file.basename().context("File has no basename")?);
+    /// Create with a single element
+    pub fn from_path(path: &Path) -> Self {
+        let model = Self::default();
 
         {
-            let mut vec = model.imp().inner.borrow_mut();
-            vec.push(file);
+            let mut vec = model.imp().files.borrow_mut();
+            vec.insert(path.to_path_buf());
         }
 
-        model.imp().directory.set(directory).unwrap();
-
-        Ok(model)
+        model
     }
 
-    pub async fn load_directory(&self) -> anyhow::Result<()> {
-        let directory = self.imp().directory.get().unwrap().clone();
+    /// Load all file from the given directory
+    ///
+    /// This can be used if there are already files present
+    pub async fn load_directory(&self, directory: PathBuf) -> anyhow::Result<()> {
+        self.imp().directory.set(directory.clone()).unwrap();
 
-        let original_vec: Vec<Option<std::path::PathBuf>> =
-            self.imp().inner.borrow().iter().map(|x| x.path()).collect();
+        let monitor = gio::File::for_path(&directory)
+            .monitor_directory(gio::FileMonitorFlags::WATCH_MOVES, gio::Cancellable::NONE)?;
+
+        monitor.connect_changed(
+            glib::clone!(@weak self as obj => move |_monitor, file_a, file_b, event| {
+                obj.file_monitor_cb(event, file_a, file_b);
+            }),
+        );
+        self.imp().monitor.set(monitor).unwrap();
 
         let new_files_result = util::spawn("list-files", move || {
-            let mut vec = Vec::new();
+            let mut files = IndexSet::new();
 
-            let enumerator = directory
+            let enumerator = gio::File::for_path(&directory)
                 .enumerate_children(
                     &format!(
                         "{},{}",
@@ -107,24 +113,20 @@ impl LpFileModel {
                 )
                 .context(i18n("Could not list other files in directory."))?;
 
-            // Filter out non-images; For now we support "all" image types.
             enumerator.for_each(|info| {
                 if let Ok(info) = info {
                     if let Some(content_type) = info.content_type().map(|t| t.to_string()) {
+                        // Filter out non-images; For now we support "all" image types.
                         if content_type.starts_with("image/") {
-                            let name = info.name();
-                            let relative_path = directory.resolve_relative_path(&name);
-                            if !original_vec.contains(&relative_path.path()) {
-                                log::debug!("{:?} is an image, adding to the list", name);
-                                vec.push(relative_path);
-                            }
+                            let path = PathBuf::from_iter([directory.clone(), info.name()]);
+                            log::debug!("{path:?} is an image, adding to the list");
+                            files.insert(path);
                         }
                     }
                 }
             });
 
-            //anyhow::Result::Ok(vec)
-            Ok::<_, anyhow::Error>(vec)
+            Ok::<_, anyhow::Error>(files)
         })
         .await;
 
@@ -133,32 +135,166 @@ impl LpFileModel {
             return Ok(());
         };
 
+        let mut new_files = new_files?;
+
         {
             // Here we use a nested scope so that the mutable borrow only lasts as long as we need it
 
-            let mut files = self.imp().inner.borrow_mut();
-            files.append(&mut new_files?);
+            let mut files = self.imp().files.borrow_mut();
+            for path in files.iter() {
+                new_files.insert(path.clone());
+            }
+            *files = new_files;
             // Then sort by name.
-            files.sort_by(util::compare_by_name);
+            Self::sort(&mut files);
         }
 
         Ok(())
     }
 
-    pub fn directory(&self) -> Option<gio::File> {
+    pub fn directory(&self) -> Option<PathBuf> {
         self.imp().directory.get().cloned()
     }
 
-    pub fn file(&self, index: u32) -> Option<gio::File> {
-        let vec = self.imp().inner.borrow();
-        vec.get(index as usize).cloned()
+    pub fn index_of(&self, path: &Path) -> Option<usize> {
+        self.imp().files.borrow().get_index_of(path)
     }
 
-    pub fn index_of(&self, file: &gio::File) -> Option<u32> {
-        let imp = self.imp();
-        let vec = imp.inner.borrow();
-        vec.binary_search_by(|a| util::compare_by_name(a, file))
-            .ok()
-            .map(|i| i as u32)
+    pub fn n_files(&self) -> usize {
+        self.imp().files.borrow().len()
+    }
+
+    pub fn contains(&self, path: &Path) -> bool {
+        self.imp().files.borrow().contains(path)
+    }
+
+    pub fn before(&self, path: &Path) -> Option<PathBuf> {
+        let index = self.index_of(path)?;
+
+        self.imp()
+            .files
+            .borrow()
+            .get_index(index.checked_sub(1)?)
+            .cloned()
+    }
+
+    pub fn after(&self, path: &Path) -> Option<PathBuf> {
+        let index = self.index_of(path)?;
+
+        self.imp()
+            .files
+            .borrow()
+            .get_index(index.checked_add(1)?)
+            .cloned()
+    }
+
+    /// Returns `n` elements before and after given path
+    pub fn files_around(&self, path: &Path, n: usize) -> IndexSet<PathBuf> {
+        let Some(index) = self.index_of(path) else {
+            log::error!("Path not in model: {path:?}");
+            return IndexSet::new();
+        };
+
+        let reduce = if index < n { n - index } else { 0 };
+
+        self.imp()
+            .files
+            .borrow()
+            .iter()
+            .skip(index.saturating_sub(n))
+            .take(2 * n + 1 - reduce)
+            .cloned()
+            .collect()
+    }
+
+    /// Currently sorts by name
+    fn sort(files: &mut IndexSet<PathBuf>) {
+        files.sort_by(|x, y| util::compare_by_name(x, y));
+    }
+
+    /// Determines if a file is added
+    fn is_image(info: &gio::FileInfo) -> bool {
+        info.content_type()
+            .map(|t| t.to_string())
+            .filter(|t| t.starts_with("image/"))
+            .is_some()
+    }
+
+    fn is_image_file(file: &gio::File) -> bool {
+        let Ok(info) = util::query_attributes(file, vec![&gio::FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE]) else {
+            log::warn!("Could not query file info: {:?}", file.path());
+            return false;
+        };
+
+        Self::is_image(&info)
+    }
+
+    /// Signal that notifies about added/removed files
+    pub fn connect_changed(&self, f: impl Fn() + 'static) {
+        self.connect_local("changed", false, move |_| {
+            f();
+            None
+        });
+    }
+
+    fn file_monitor_cb(
+        &self,
+        event: gio::FileMonitorEvent,
+        file_a: &gio::File,
+        file_b: Option<&gio::File>,
+    ) {
+        let Some(path_a) = file_a.path() else {
+            log::error!("File has no path: {event}");
+            return;
+        };
+        let path_b = file_b.and_then(|x| x.path());
+
+        let changed = match event {
+            gio::FileMonitorEvent::Created
+            | gio::FileMonitorEvent::MovedIn
+            // Changing file content could theoretically make it an image
+            // by adding a magic byte
+            | gio::FileMonitorEvent::ChangesDoneHint
+                if Self::is_image_file(file_a) =>
+            {
+                let mut files = self.imp().files.borrow_mut();
+                let changed = files.insert(path_a);
+                if changed {
+                    Self::sort(&mut files);
+                }
+                changed
+            }
+            gio::FileMonitorEvent::Deleted | gio::FileMonitorEvent::MovedOut | gio::FileMonitorEvent::Unmounted => {
+                let mut files = self.imp().files.borrow_mut();
+                let changed = files.remove(&path_a);
+                if changed {
+                    Self::sort(&mut files);
+                }
+                changed
+            }
+            gio::FileMonitorEvent::Renamed => {
+                if let (Some(path_b), Some(file_b)) = (path_b, file_b) {
+                    let mut changed = false;
+                    {
+                        let mut files = self.imp().files.borrow_mut();
+                        changed |= files.remove(&path_a);
+                        if Self::is_image_file(file_b) {
+                            changed |= files.insert(path_b);
+                            if changed {
+                                Self::sort(&mut files);
+                            }
+                        }
+                    }
+                    changed
+                } else {
+                    false
+                }
+            }
+            _ => false,
+        };
+
+        if changed {
+            self.emit_by_name::<()>("changed", &[]);
+        }
     }
 }
