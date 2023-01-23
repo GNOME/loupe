@@ -38,6 +38,8 @@ features = ["v2_74"]
 package = "libadwaita"
 version = "0.2.0"
 features = ["v1_2"]
+git = "https://gitlab.gnome.org/sophie-h/libadwaita-rs.git"
+branch = "wip/sophie-h/swipeable"
 
 [dependencies.gettext-rs]
 version = "0.7.0"

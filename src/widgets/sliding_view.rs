@@ -15,7 +15,9 @@ use once_cell::sync::{Lazy, OnceCell};
 use std::cell::{Cell, RefCell};
 use std::path::{Path, PathBuf};
 
-static SCROLL_DURATION: u32 = 200;
+static SCROLL_DAMPING_RATIO: f64 = 1.;
+static SCROLL_MASS: f64 = 0.5;
+static SCROLL_STIFFNESS: f64 = 500.;
 
 mod imp {
     use super::*;
@@ -32,7 +34,8 @@ mod imp {
         /// Move position to not break animations when pages are removed/added
         pub(super) position_shift: Cell<f64>,
         /// The animation used to animate image changes
-        pub(super) scroll_animation: OnceCell<adw::TimedAnimation>,
+        pub(super) scroll_animation: OnceCell<adw::SpringAnimation>,
+        pub(super) swipe_tracker: OnceCell<adw::SwipeTracker>,
     }
 
     #[glib::object_subclass]
@@ -40,6 +43,7 @@ mod imp {
         const NAME: &'static str = "LpSlidingView";
         type Type = super::LpSlidingView;
         type ParentType = gtk::Widget;
+        type Interfaces = (adw::Swipeable,);
     }
 
     impl ObjectImpl for LpSlidingView {
@@ -70,7 +74,54 @@ mod imp {
         }
 
         fn constructed(&self) {
+            let obj = self.instance();
+            self.parent_constructed();
+
             self.instance().set_overflow(gtk::Overflow::Hidden);
+
+            let swipe_tracker = adw::SwipeTracker::builder()
+                .swipeable(&*self.instance())
+                .build();
+
+            swipe_tracker.connect_begin_swipe(
+                glib::clone!(@weak obj => move |_| obj.scroll_animation().pause()),
+            );
+
+            swipe_tracker.connect_update_swipe(glib::clone!(@weak obj => move |_, position| {
+                obj.set_position(position);
+            }));
+
+            swipe_tracker.connect_end_swipe(glib::clone!(@weak obj => move |_, velocity, to| {
+                if let Some(page) = obj.page_at(to) {
+                    obj.scroll_to_velocity(&page, velocity);
+                }
+            }));
+
+            self.swipe_tracker.set(swipe_tracker).unwrap();
+
+            // Avoid propagating scoll events to AdwFlap if at the end
+            let scroll_controller =
+                gtk::EventControllerScroll::new(gtk::EventControllerScrollFlags::HORIZONTAL);
+
+            scroll_controller.connect_scroll(
+                glib::clone!(@weak obj => @default-return gtk::Inhibit(false), move |_, x, _| {
+                    if x > 0. {
+                        if let Some(max) = obj.imp().snap_points().last() {
+                            gtk::Inhibit(obj.position() >= *max)
+                        } else {
+                            gtk::Inhibit(true)
+                        }
+                    } else {
+                        if let Some(min) = obj.imp().snap_points().first() {
+                            gtk::Inhibit(obj.position() <= *min)
+                        } else {
+                            gtk::Inhibit(true)
+                        }
+                    }
+                }),
+            );
+
+            obj.add_controller(&scroll_controller);
         }
     }
 
@@ -105,12 +156,43 @@ mod imp {
             }
         }
     }
+
+    impl SwipeableImpl for LpSlidingView {
+        fn progress(&self) -> f64 {
+            self.instance().position()
+        }
+
+        fn distance(&self) -> f64 {
+            let obj = self.instance();
+
+            (obj.allocation().width() as usize * obj.n_pages()) as f64
+        }
+
+        fn snap_points(&self) -> Vec<f64> {
+            let obj = self.instance();
+
+            (0..obj.n_pages())
+                .map(|i| i as f64 - obj.position_shift())
+                .collect()
+        }
+
+        fn cancel_progress(&self) -> f64 {
+            let obj = self.instance();
+            let snap_points = self.snap_points();
+
+            if let (Some(min), Some(max)) = (snap_points.first(), snap_points.last()) {
+                obj.position().round().max(*min).min(*max)
+            } else {
+                0.
+            }
+        }
+    }
 }
 
 glib::wrapper! {
     pub struct LpSlidingView(ObjectSubclass<imp::LpSlidingView>)
         @extends gtk::Widget,
-        @implements gtk::Buildable;
+        @implements gtk::Buildable, adw::Swipeable;
 }
 
 impl LpSlidingView {
@@ -219,16 +301,19 @@ impl LpSlidingView {
 
     /// Move to specified page with animation
     pub fn scroll_to(&self, page: &LpImagePage) {
-        if self.current_page().as_ref() != Some(page) {
-            let index = self.index_of(page).unwrap();
+        self.scroll_to_velocity(page, 0.);
+    }
 
-            let animation = self.scroll_animation();
+    pub fn scroll_to_velocity(&self, page: &LpImagePage, initial_velocity: f64) {
+        let index = self.index_of(page).unwrap();
 
-            animation.set_value_from(self.position());
-            animation.set_value_to(index as f64 - self.position_shift());
-            animation.play();
-            self.set_current_page(Some(page));
-        }
+        let animation = self.scroll_animation();
+
+        animation.set_value_from(self.position());
+        animation.set_value_to(index as f64 - self.position_shift());
+        animation.set_initial_velocity(initial_velocity);
+        animation.play();
+        self.set_current_page(Some(page));
     }
 
     /// Animates removal of current page
@@ -255,6 +340,11 @@ impl LpSlidingView {
         let current_index = self.current_index()?;
         let prev_index = current_index.checked_sub(1)?;
         self.imp().pages.borrow().get(prev_index).cloned()
+    }
+
+    fn page_at(&self, position: f64) -> Option<LpImagePage> {
+        let index = (position + self.position_shift()) as usize;
+        self.imp().pages.borrow().get(index).cloned()
     }
 
     fn n_pages(&self) -> usize {
@@ -310,14 +400,18 @@ impl LpSlidingView {
             .and_then(|x| self.index_of(x))
     }
 
-    fn scroll_animation(&self) -> &adw::TimedAnimation {
+    fn scroll_animation(&self) -> &adw::SpringAnimation {
         self.imp().scroll_animation.get_or_init(|| {
             let target = adw::CallbackAnimationTarget::new(
                 glib::clone!(@weak self as obj => move |position| obj.set_position(position)),
             );
 
-            let animation = adw::TimedAnimation::builder()
-                .duration(SCROLL_DURATION)
+            let animation = adw::SpringAnimation::builder()
+                .spring_params(&adw::SpringParams::new(
+                    SCROLL_DAMPING_RATIO,
+                    SCROLL_MASS,
+                    SCROLL_STIFFNESS,
+                ))
                 .widget(self)
                 .target(&target)
                 .build();
