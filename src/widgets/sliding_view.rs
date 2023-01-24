@@ -35,6 +35,7 @@ mod imp {
         pub(super) position_shift: Cell<f64>,
         /// The animation used to animate image changes
         pub(super) scroll_animation: OnceCell<adw::SpringAnimation>,
+        /// Implements swiping
         pub(super) swipe_tracker: OnceCell<adw::SwipeTracker>,
     }
 
@@ -81,6 +82,7 @@ mod imp {
 
             let swipe_tracker = adw::SwipeTracker::builder()
                 .swipeable(&*self.instance())
+                .reversed(self.is_rtl())
                 .build();
 
             swipe_tracker.connect_begin_swipe(
@@ -99,19 +101,23 @@ mod imp {
 
             self.swipe_tracker.set(swipe_tracker).unwrap();
 
-            // Avoid propagating scoll events to AdwFlap if at the end
+            // Avoid propagating scoll events to AdwFlap if at beginning or end
             let scroll_controller =
                 gtk::EventControllerScroll::new(gtk::EventControllerScrollFlags::HORIZONTAL);
 
             scroll_controller.connect_scroll(
                 glib::clone!(@weak obj => @default-return gtk::Inhibit(false), move |_, x, _| {
-                    if x > 0. {
+                    let direction_sign = if obj.imp().is_rtl() { -1. } else { 1. };
+
+                    if x * direction_sign > 0. {
+                        // check end
                         if let Some(max) = obj.imp().snap_points().last() {
                             gtk::Inhibit(obj.position() >= *max)
                         } else {
                             gtk::Inhibit(true)
                         }
                     } else {
+                        //check beginning
                         if let Some(min) = obj.imp().snap_points().first() {
                             gtk::Inhibit(obj.position() <= *min)
                         } else {
@@ -131,9 +137,14 @@ mod imp {
             let position_shift = self.position_shift.get() as f32;
 
             for (page_index, page) in self.pages.borrow().iter().enumerate() {
+                // reverse page order for RTL languages
+                let direction_sign = if self.is_rtl() { -1. } else { 1. };
+
                 // This positions the pages within the carousel and shifts them
                 // according to the position that should currently be shown.
-                let x = (page_index as f32 - scroll_position - position_shift) * width as f32;
+                let x = direction_sign
+                    * (page_index as f32 - scroll_position - position_shift)
+                    * width as f32;
 
                 let transform = gsk::Transform::new().translate(&graphene::Point::new(x, 0.));
                 page.allocate(width, height, 0, Some(&transform));
@@ -154,6 +165,13 @@ mod imp {
             } else {
                 (0, 0, -1, -1)
             }
+        }
+
+        fn direction_changed(&self, _previous_direction: gtk::TextDirection) {
+            self.swipe_tracker
+                .get()
+                .unwrap()
+                .set_reversed(self.is_rtl());
         }
     }
 
@@ -181,10 +199,17 @@ mod imp {
             let snap_points = self.snap_points();
 
             if let (Some(min), Some(max)) = (snap_points.first(), snap_points.last()) {
-                obj.position().round().max(*min).min(*max)
+                obj.position().round().clamp(*min, *max)
             } else {
                 0.
             }
+        }
+    }
+
+    impl LpSlidingView {
+        fn is_rtl(&self) -> bool {
+            let obj = self.instance();
+            obj.direction() == gtk::TextDirection::Rtl
         }
     }
 }
