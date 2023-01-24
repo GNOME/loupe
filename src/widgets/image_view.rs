@@ -582,11 +582,11 @@ impl LpImageView {
     pub fn copy(&self) -> anyhow::Result<()> {
         let clipboard = self.clipboard();
 
-        if let Some(texture) = self.current_page().context("No current page")?.texture() {
-            clipboard.set_texture(&texture);
-        } else {
-            anyhow::bail!("No Image displayed.");
-        }
+        let content_provider = self
+            .current_page()
+            .context("No current page")?
+            .content_provider();
+        clipboard.set_content(content_provider.as_ref())?;
 
         Ok(())
     }
