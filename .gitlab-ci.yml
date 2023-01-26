@@ -1,6 +1,6 @@
 include:
   - project: "GNOME/citemplates"
-    file: "flatpak/flatpak-ci-initiative-sdk-extensions.yml"
+    file: "flatpak/flatpak_ci_initiative.yml"
 
 variables:
   BUNDLE: "org.gnome.Loupe.Devel.flatpak"
@@ -25,3 +25,44 @@ rustfmt:
     - rustc -Vv && cargo -Vv
     - cargo fmt --version
     - cargo fmt --all -- --check
+
+doc:
+  image: 'quay.io/gnome_infrastructure/gnome-runtime-images:gnome-master'
+  interruptible: true
+  tags:
+    - flatpak
+  artifacts:
+    name: 'Code Documentation'
+    paths:
+      - doc
+  script:
+    # Report the installed versions of the runtime
+    - flatpak info org.gnome.Platform
+    - flatpak info org.gnome.Sdk
+
+    # Print the date, since appstream depends on local timezone
+    - date && date -u
+
+    - rewrite-flatpak-manifest ${MANIFEST_PATH} ${FLATPAK_MODULE} ${CONFIG_OPTS}
+    - flatpak-builder --user --disable-rofiles-fuse --build-only flatpak_app ${MANIFEST_PATH}
+    - flatpak build-finish --socket=x11 --share=network flatpak_app
+    - >
+      xvfb-run -a -s "-screen 0 1024x768x24"
+      flatpak-builder --user --disable-rofiles-fuse --build-shell=${FLATPAK_MODULE} flatpak_app ${MANIFEST_PATH} <<END
+        ninja src/doc
+      END
+    - find .flatpak-builder/build/${FLATPAK_MODULE}/_flatpak_build/
+    - cp -r .flatpak-builder/build/${FLATPAK_MODULE}/_flatpak_build/src/doc doc
+    - chmod -R a=rwx doc
+
+pages:
+  tags:
+    - flatpak
+  script:
+    - mkdir public
+    - mv doc public
+  artifacts:
+    paths:
+      - 'public'
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH

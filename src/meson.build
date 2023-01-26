@@ -56,3 +56,15 @@ copy_binary = custom_target(
     '@OUTPUT@',
   ],
 )
+
+cargo_doc = custom_target(
+  'cargo-doc',
+  build_by_default: false,
+  build_always_stale: true,
+  output: 'doc',
+  console: true,
+  command: [
+    cargo, 'doc',
+    cargo_options + ['--no-deps', '--document-private-items'],
+  ],
+)
