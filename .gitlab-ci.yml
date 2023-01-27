@@ -56,6 +56,7 @@ doc:
     - chmod -R a=rwx doc
 
 pages:
+  stage: deploy
   tags:
     - flatpak
   script:
