@@ -76,7 +76,6 @@
         <property name="modal">false</property>
         <binding name="fold-policy">
           <closure type="AdwFlapFoldPolicy" function="fold_policy">
-            <lookup name="fullscreened">LpWindow</lookup>
             <lookup type="AdwFlap" name="reveal-flap">properties_flap</lookup>
           </closure>
         </binding>

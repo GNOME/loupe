@@ -304,6 +304,18 @@ mod imp {
                 }),
             );
 
+            // Properties status
+            self.properties_button.connect_active_notify(
+                glib::clone!(@weak obj => move |props_btn| {
+                    let imp = obj.imp();
+                    if props_btn.is_active() {
+                        imp.headerbar.remove_css_class("osd");
+                    } else {
+                        imp.headerbar.add_css_class("osd");
+                    }
+                }),
+            );
+
             self.status_page
                 .set_icon_name(Some(&format!("{}-symbolic", config::APP_ID)));
 
@@ -367,16 +379,6 @@ impl LpWindow {
     }
 
     fn toggle_fullscreen(&self, fullscreen: bool) {
-        let imp = self.imp();
-
-        if fullscreen {
-            imp.headerbar.add_css_class("osd");
-            imp.properties_view.add_css_class("osd")
-        } else {
-            imp.headerbar.remove_css_class("osd");
-            imp.properties_view.remove_css_class("osd")
-        }
-
         self.set_fullscreened(fullscreen);
     }
 
@@ -587,6 +589,7 @@ impl LpWindow {
         let imp = self.imp();
 
         if imp.image_view.current_page().is_some() {
+            imp.headerbar.add_css_class("osd");
             imp.stack.set_visible_child(&*imp.image_view);
             self.set_actions_enabled(true);
             imp.image_view.grab_focus();
@@ -676,8 +679,8 @@ impl LpWindow {
     // if we aren't fullscreened, or if the properties are revealed,
     // we unfold the main flap. Otherwise we're always folded.
     #[template_callback]
-    fn fold_policy(&self, fullscreened: bool, properties_revealed: bool) -> adw::FlapFoldPolicy {
-        if !fullscreened || properties_revealed {
+    fn fold_policy(&self, properties_revealed: bool) -> adw::FlapFoldPolicy {
+        if properties_revealed {
             adw::FlapFoldPolicy::Never
         } else {
             adw::FlapFoldPolicy::Always
