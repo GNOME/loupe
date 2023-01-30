@@ -195,6 +195,12 @@ impl LpApplication {
             "win.zoom-out",
             &["<Ctrl>minus", "minus", "<Ctrl>KP_Subtract", "KP_Subtract"],
         );
+
+        self.set_accels_for_action("win.pan-left", &["<Ctrl>Left"]);
+        self.set_accels_for_action("win.pan-right", &["<Ctrl>Right"]);
+        self.set_accels_for_action("win.pan-up", &["<Ctrl>Up"]);
+        self.set_accels_for_action("win.pan-down", &["<Ctrl>Down"]);
+
         self.set_accels_for_action("win.rotate(90.0)", &["<Ctrl>R"]);
         self.set_accels_for_action("win.rotate(-90.0)", &["<Ctrl><Shift>R"]);
 

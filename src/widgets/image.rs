@@ -1053,6 +1053,35 @@ impl LpImage {
         }
     }
 
+    /// Stepwise scrolls inside an image when zoomed in
+    pub fn pan(&self, direction: &gtk::PanDirection) {
+        let sign = match direction {
+            gtk::PanDirection::Left | gtk::PanDirection::Up => -1.,
+            gtk::PanDirection::Right | gtk::PanDirection::Down => 1.,
+            _ => {
+                log::error!("Unkown pan direction {direction:?}");
+                return;
+            }
+        };
+
+        let (adjustment, max) = match direction {
+            gtk::PanDirection::Left | gtk::PanDirection::Right => {
+                (self.hadjustment(), self.max_hadjustment_value())
+            }
+            gtk::PanDirection::Up | gtk::PanDirection::Down => {
+                (self.vadjustment(), self.max_vadjustment_value())
+            }
+            _ => {
+                log::error!("Unkown pan direction {direction:?}");
+                return;
+            }
+        };
+
+        let value = (adjustment.value() + sign * adjustment.step_increment()).clamp(0., max);
+
+        adjustment.set_value(value);
+    }
+
     fn hadjustment(&self) -> gtk::Adjustment {
         if let Some(adj) = self.imp().hadjustment.borrow().as_ref() {
             adj.clone()
@@ -1109,7 +1138,7 @@ impl LpImage {
             0.,
             // upper
             content_width,
-            // arrow button step (probably irrelevant)
+            // arrow button and shortcut step
             widget_width * 0.1,
             // page up/down step
             widget_width * 0.9,
@@ -1128,7 +1157,7 @@ impl LpImage {
             0.,
             // upper
             content_height,
-            // arrow button step (probably irrelevant)
+            // arrow button and shortcut step
             widget_height * 0.1,
             // page up/down step
             widget_height * 0.9,

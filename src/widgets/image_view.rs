@@ -408,6 +408,10 @@ impl LpImageView {
         }
     }
 
+    pub fn current_image(&self) -> Option<LpImage> {
+        self.imp().sliding_view.current_page().map(|x| x.image())
+    }
+
     pub fn current_page(&self) -> Option<LpImagePage> {
         self.imp().sliding_view.current_page()
     }

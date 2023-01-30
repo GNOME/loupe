@@ -125,6 +125,22 @@ mod imp {
                 win.zoom_best_fit();
             });
 
+            klass.install_action("win.pan-up", None, move |win, _, _| {
+                win.pan(&gtk::PanDirection::Up);
+            });
+
+            klass.install_action("win.pan-down", None, move |win, _, _| {
+                win.pan(&gtk::PanDirection::Down);
+            });
+
+            klass.install_action("win.pan-left", None, move |win, _, _| {
+                win.pan(&gtk::PanDirection::Left);
+            });
+
+            klass.install_action("win.pan-right", None, move |win, _, _| {
+                win.pan(&gtk::PanDirection::Right);
+            });
+
             klass.install_action("win.leave-fullscreen", None, move |win, _, _| {
                 win.toggle_fullscreen(false);
             });
@@ -364,6 +380,12 @@ impl LpWindow {
     fn zoom_best_fit(&self) {
         if let Some(page) = self.imp().image_view.current_page() {
             page.image().zoom_best_fit();
+        }
+    }
+
+    fn pan(&self, direction: &gtk::PanDirection) {
+        if let Some(image) = self.imp().image_view.current_image() {
+            image.pan(direction);
         }
     }
 
