@@ -1096,33 +1096,41 @@ impl LpImage {
     /// Configure scrollbars for current situation
     fn configure_adjustments(&self) {
         let hadjustment = self.hadjustment();
-        let content_width = self.image_displayed_width();
+        // round to application pixels to avoid tiny rounding errors from zoom
+        let content_width = self.round(self.image_displayed_width());
         let widget_width = self.widget_width();
 
         hadjustment.configure(
             hadjustment.value().clamp(0., self.max_hadjustment_value()),
+            // lower
             0.,
+            // upper
             content_width,
             // arrow button step (probably irrelevant)
             widget_width * 0.1,
             // page up/down step
             widget_width * 0.9,
-            widget_width.min(content_width),
+            // page size
+            f64::min(widget_width, content_width),
         );
 
         let vadjustment = self.vadjustment();
-        let content_height = self.image_displayed_height();
+        // round to application pixels to avoid tiny rounding errors from zoom
+        let content_height = self.round(self.image_displayed_height());
         let widget_height = self.widget_height();
 
         vadjustment.configure(
             vadjustment.value().clamp(0., self.max_vadjustment_value()),
+            // lower
             0.,
+            // upper
             content_height,
             // arrow button step (probably irrelevant)
             widget_height * 0.1,
             // page up/down step
             widget_height * 0.9,
-            widget_height.min(content_height),
+            // page_size
+            f64::min(widget_height, content_height),
         );
     }
 
@@ -1159,5 +1167,13 @@ impl LpImage {
         let file = self.file()?;
         let list = gdk::FileList::from_array(&[file]);
         Some(gdk::ContentProvider::for_value(&list.to_value()))
+    }
+
+    /// Returns scaling aware rounded application pixel
+    ///
+    /// One physical pixel is 0.5 application pixels
+    pub fn round(&self, number: f64) -> f64 {
+        let scale = self.scale_factor() as f64;
+        (number * scale).round() / scale
     }
 }
