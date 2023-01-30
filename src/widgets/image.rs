@@ -453,10 +453,13 @@ mod imp {
 
                 // vertical centering in widget when no scrolling
                 let x = f64::max((widget_width - widget.image_displayed_width()) / 2.0, 0.);
-                snapshot.translate(&graphene::Point::new(x as f32, 0.));
-
                 let y = f64::max((widget_height - widget.image_displayed_height()) / 2.0, 0.);
-                snapshot.translate(&graphene::Point::new(0., y as f32));
+                // round to pixel values to not have a half pixel offset to physical pixels
+                // the offset would leading to a blury output
+                snapshot.translate(&graphene::Point::new(
+                    widget.round(x) as f32,
+                    widget.round(y) as f32,
+                ));
 
                 // apply the transformations from properties
                 snapshot.rotate(widget.rotation() as f32);
