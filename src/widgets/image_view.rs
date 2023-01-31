@@ -74,6 +74,8 @@ mod imp {
         pub model: RefCell<LpFileModel>,
         pub preserve_content: Cell<bool>,
 
+        pub control_opacity: Cell<f64>,
+
         pub current_image_signals: OnceCell<glib::SignalGroup>,
     }
 
@@ -106,6 +108,11 @@ mod imp {
                     glib::ParamSpecBoolean::builder("is-next-available")
                         .read_only()
                         .build(),
+                    glib::ParamSpecDouble::builder("control-opacity")
+                        .readwrite()
+                        .explicit_notify()
+                        .default_value(1.0 as f64)
+                        .build(),
                 ]
             });
 
@@ -118,6 +125,15 @@ mod imp {
                 "current-page" => obj.current_page().to_value(),
                 "is-previous-available" => obj.is_previous_available().to_value(),
                 "is-next-available" => obj.is_next_available().to_value(),
+                "control-opacity" => obj.control_opacity().to_value(),
+                _ => unimplemented!(),
+            }
+        }
+
+        fn set_property(&self, _id: usize, value: &glib::Value, pspec: &glib::ParamSpec) {
+            let obj = self.obj();
+            match pspec.name() {
+                "control-opacity" => obj.set_control_opacity(value.get().unwrap()),
                 _ => unimplemented!(),
             }
         }
@@ -480,6 +496,19 @@ impl LpImageView {
         } else {
             false
         }
+    }
+
+    /// The current opacity of the view controls
+    pub fn control_opacity(&self) -> f64 {
+        let imp = self.imp();
+        imp.control_opacity.get()
+    }
+
+    /// Sets the current opacity of the view controls
+    pub fn set_control_opacity(&self, opacity: f64) {
+        let imp = self.imp();
+        imp.control_opacity.set(opacity);
+        self.notify("control-opacity");
     }
 
     #[template_callback]

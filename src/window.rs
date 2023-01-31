@@ -26,11 +26,24 @@ use glib::clone;
 use gtk::CompositeTemplate;
 use gtk_macros::spawn;
 
+use once_cell::sync::OnceCell;
+
+use std::cell::RefCell;
 use std::path::{Path, PathBuf};
 
 use crate::config;
 use crate::util::{self, Direction, Position};
 use crate::widgets::{LpImage, LpImageView, LpPropertiesView};
+
+/// The duration when fading out in milliseconds
+const FADE_OUT_DURATION: u32 = 2000;
+/// The duration when fading in milliseconds
+const FADE_IN_DURATION: u32 = 200;
+
+enum FadeDirection {
+    Out,
+    In,
+}
 
 mod imp {
     use super::*;
@@ -75,6 +88,9 @@ mod imp {
         pub properties_view: TemplateChild<LpPropertiesView>,
         #[template_child]
         pub drop_target: TemplateChild<gtk::DropTarget>,
+
+        pub fade_animation: OnceCell<adw::TimedAnimation>,
+        pub motion_timeout_id: RefCell<Option<glib::SourceId>>,
     }
 
     #[glib::object_subclass]
@@ -372,6 +388,18 @@ mod imp {
                     true
                 }),
             );
+
+            // let animation = adw::TimedAnimation::builder()
+            //     // By default the controls are visible, and fade out
+            //     .duration(FADE_OUT_DURATION)
+            //     .easing(adw::Easing::Linear)
+            //     .target(&adw::PropertyAnimationTarget::new(
+            //         &*self.image_view,
+            //         "control-opacity",
+            //     ))
+            //     .build();
+
+            // self.fade_animation.set(animation).unwrap();
         }
     }
 
@@ -664,6 +692,48 @@ impl LpWindow {
         self.action_set_enabled("win.zoom-in", can_zoom_in);
     }
 
+    /// Retrieves or initializes the fade animation
+    fn fade_animation(&self) -> &adw::TimedAnimation {
+        let imp = self.imp();
+
+        let image_view = &*imp.image_view;
+
+        imp.fade_animation.get_or_init(|| {
+            let target = adw::CallbackAnimationTarget::new(
+                glib::clone!(@weak image_view => move |position| image_view.set_control_opacity(position)),
+            );
+
+            let animation = adw::TimedAnimation::builder()
+                .duration(FADE_IN_DURATION)
+                .widget(self)
+                .target(&target)
+                .build();
+
+            animation
+        })
+    }
+
+    /// Fade the controls in or out
+    fn fade_controls(&self, direction: FadeDirection) {
+        let animation = self.fade_animation();
+
+        let (duration, value) = match direction {
+            FadeDirection::Out => (FADE_OUT_DURATION, 0.),
+            FadeDirection::In => (FADE_IN_DURATION, 1.),
+        };
+
+        // Do nothing if we're already animating in the same direction
+        if animation.value_to() == value {
+            return;
+        }
+
+        animation.set_duration(duration);
+        animation.set_value_from(animation.value());
+        animation.set_value_to(value);
+
+        animation.play();
+    }
+
     // In the LpWindow UI file we define a `gtk::Expression`s
     // that is a closure. This closure takes the current `gio::File`
     // and processes it to return a window title.
@@ -696,5 +766,30 @@ impl LpWindow {
         } else {
             adw::FlapFoldPolicy::Always
         }
+    }
+
+    #[template_callback]
+    fn on_motion_cb(&self) {
+        let imp = self.imp();
+
+        if imp.stack.visible_child().as_ref() != Some(&*imp.image_view.upcast_ref()) {
+            return;
+        }
+
+        self.fade_controls(FadeDirection::In);
+
+        if let Some(id) = imp.motion_timeout_id.take() {
+            id.remove();
+        }
+
+        let id = glib::timeout_add_seconds_local(
+            2,
+            clone!(@weak self as win => @default-return glib::Continue(false), move || {
+                win.fade_controls(FadeDirection::Out);
+                glib::Continue(true)
+            }),
+        );
+
+        imp.motion_timeout_id.replace(Some(id));
     }
 }
