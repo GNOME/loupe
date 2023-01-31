@@ -15,6 +15,7 @@
         </child>
         <child type="overlay">
           <object class="GtkBox" id="controls_box_start">
+            <property name="opacity" bind-source="LpImageView" bind-property="control-opacity"/>
             <property name="valign">end</property>
             <property name="halign">start</property>
             <property name="margin-start">18</property>
@@ -49,6 +50,7 @@
         </child>
         <child type="overlay">
           <object class="GtkBox" id="controls_box_end">
+            <property name="opacity" bind-source="LpImageView" bind-property="control-opacity"/>
             <property name="valign">end</property>
             <property name="halign">end</property>
             <property name="margin-start">18</property>
