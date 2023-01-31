@@ -323,6 +323,7 @@ mod imp {
                 glib::clone!(@weak obj => move |props_btn| {
                     let imp = obj.imp();
                     if props_btn.is_active() {
+                        imp.flap.set_reveal_flap(true);
                         imp.headerbar.remove_css_class("osd");
                     } else {
                         imp.headerbar.add_css_class("osd");
@@ -734,6 +735,12 @@ impl LpWindow {
         animation.play();
     }
 
+    /// Whether or not the window is showing images
+    fn images_showing(&self) -> bool {
+        let imp = self.imp();
+        imp.stack.visible_child().as_ref() == Some(&*imp.image_view.upcast_ref())
+    }
+
     // In the LpWindow UI file we define a `gtk::Expression`s
     // that is a closure. This closure takes the current `gio::File`
     // and processes it to return a window title.
@@ -772,7 +779,7 @@ impl LpWindow {
     fn on_motion_cb(&self) {
         let imp = self.imp();
 
-        if imp.stack.visible_child().as_ref() != Some(&*imp.image_view.upcast_ref()) {
+        if !self.images_showing() {
             return;
         }
 
@@ -791,5 +798,30 @@ impl LpWindow {
         );
 
         imp.motion_timeout_id.replace(Some(id));
+    }
+
+    #[template_callback]
+    fn pressed_cb(&self, _n_press: i32, x: f64, y: f64) {
+        let imp = self.imp();
+
+        let header_handles_click = self
+            .translate_coordinates(&*imp.headerbar, x, y)
+            .map(|(x, y)| imp.headerbar.contains(x, y))
+            .unwrap_or_default();
+        let view_handles_click = self
+            .translate_coordinates(&*imp.image_view, x, y)
+            .map(|(x, y)| imp.image_view.handles_click(x, y))
+            .unwrap_or_default();
+        let click_handled = header_handles_click || view_handles_click;
+
+        if !self.images_showing() || imp.properties_button.is_active() || click_handled {
+            return;
+        }
+
+        if self.is_maximized() {
+            self.fullscreen();
+        }
+
+        imp.flap.set_reveal_flap(!imp.flap.reveals_flap());
     }
 }

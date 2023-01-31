@@ -511,6 +511,22 @@ impl LpImageView {
         self.notify("control-opacity");
     }
 
+    /// Whether or not the image view's controls handle a click
+    pub fn handles_click(&self, x: f64, y: f64) -> bool {
+        let imp = self.imp();
+
+        let Some((start_x, start_y)) = self.translate_coordinates(&*imp.controls_box_start, x, y) else {
+            return false;
+        };
+
+        let Some((end_x, end_y)) = self.translate_coordinates(&*imp.controls_box_end, x, y) else {
+            return false;
+        };
+
+        imp.controls_box_start.contains(start_x, start_y)
+            || imp.controls_box_end.contains(end_x, end_y)
+    }
+
     #[template_callback]
     fn page_changed_cb(&self) {
         self.notify("current-page");

@@ -211,5 +211,10 @@
         <signal name="motion" handler="on_motion_cb" swapped="yes"/>
       </object>
     </child>
+    <child>
+      <object class="GtkGestureClick">
+        <signal name="pressed" handler="pressed_cb" swapped="yes"/>
+      </object>
+    </child>
   </template>
 </interface>
