@@ -20,13 +20,14 @@
 use crate::deps::*;
 use crate::i18n::*;
 
+use adw::prelude::*;
 use adw::subclass::prelude::*;
 use glib::clone;
-use gtk::prelude::*;
 use gtk::CompositeTemplate;
+use gtk_macros::spawn;
 
 use std::cell::RefCell;
-use std::path::Path;
+use std::path::{Path, PathBuf};
 
 use crate::config;
 use crate::util;
@@ -175,6 +176,10 @@ mod imp {
                 win.copy();
             });
 
+            klass.install_action_async("win.trash", None, |win, _, _| async move {
+                win.trash().await;
+            });
+
             klass.install_action("win.show-toast", Some("(si)"), move |win, _, var| {
                 if let Some((ref toast, i)) = var.and_then(|v| v.get::<(String, i32)>()) {
                     win.show_toast(toast, adw::ToastPriority::__Unknown(i));
@@ -196,6 +201,10 @@ mod imp {
             if config::PROFILE == ".Devel" {
                 obj.add_css_class("devel");
             }
+
+            // Limit effect of modal dialogs to this window
+            // and keeps the others usable
+            gtk::WindowGroup::new().add_window(&*obj);
 
             obj.set_actions_enabled(false);
             self.image_view
@@ -456,6 +465,85 @@ impl LpWindow {
         }
     }
 
+    async fn trash(&self) {
+        let image_view = self.image_view();
+        let (Some(file), Some(path)) = (image_view.current_file(), image_view.current_path())
+            else { log::error!("No file to trash"); return; };
+
+        let result = file.trash_future(glib::Priority::default()).await;
+
+        match result {
+            Ok(()) => {
+                let toast = adw::Toast::builder()
+                    .title(&i18n("Image moved to trash"))
+                    .button_label(&i18n("Undo"))
+                    .build();
+                toast.connect_button_clicked(glib::clone!(@weak self as win => move |_| {
+                    let path = path.clone();
+                    spawn!(async move {
+                        let result = crate::util::untrash(&path).await;
+                        match result {
+                            Ok(()) => win.image_view().set_image_from_path(&path),
+                            Err(err) => {
+                                log::error!("Failed to untrash {path:?}: {err}");
+                                win.show_toast(
+                                    i18n("Failed to restore image from trash"),
+                                    adw::ToastPriority::High,
+                                );
+                            }
+                        }
+                    });
+                }));
+                self.imp().toast_overlay.add_toast(&toast);
+            }
+            Err(err) => {
+                if Some(gio::IOErrorEnum::NotSupported) == err.kind::<gio::IOErrorEnum>() {
+                    self.delete(&path).await;
+                } else {
+                    log::error!("Failed to delete file {path:?}: {err}");
+                    self.show_toast(
+                        i18n("Failed to move image to trash"),
+                        adw::ToastPriority::Normal,
+                    );
+                }
+            }
+        }
+    }
+
+    /// Permanently delete image
+    ///
+    /// Fallback for when trash no available
+    async fn delete(&self, path: &Path) {
+        let dialog = adw::MessageDialog::builder()
+            .modal(true)
+            .transient_for(self)
+            .heading(&i18n("Permanently Delete Image?"))
+            .body(&i18n_f(
+                "The image “{}” can only be deleted permanently.",
+                &[&PathBuf::from(&path.file_name().unwrap_or_default())
+                    .display()
+                    .to_string()],
+            ))
+            .build();
+
+        dialog.add_responses(&[("cancel", &i18n("Cancel")), ("delete", &i18n("Delete"))]);
+        dialog.set_response_appearance("delete", adw::ResponseAppearance::Destructive);
+
+        if "delete" == dialog.run_future().await {
+            let file = gio::File::for_path(path);
+            let result = file.delete_future(glib::Priority::default()).await;
+
+            if let Err(err) = result {
+                log::error!("Failed to delete file {path:?}: {err}");
+                self.show_toast(i18n("Failed to delete image"), adw::ToastPriority::Normal);
+            }
+        }
+    }
+
+    fn image_view(&self) -> LpImageView {
+        self.imp().image_view.clone()
+    }
+
     fn show_toast(&self, text: impl AsRef<str>, priority: adw::ToastPriority) {
         let imp = self.imp();
 
@@ -480,12 +568,14 @@ impl LpWindow {
         self.action_set_enabled("win.print", enabled);
         self.action_set_enabled("win.rotate", enabled);
         self.action_set_enabled("win.copy", enabled);
+        self.action_set_enabled("win.trash", enabled);
         self.action_set_enabled("win.zoom-best-fit", enabled);
         self.action_set_enabled("win.zoom-to", enabled);
         self.action_set_enabled("win.toggle-properties", enabled);
     }
 
-    pub fn images_available(&self) {
+    /// Handles change in availablilty of images
+    fn images_available(&self) {
         let imp = self.imp();
 
         if imp.image_view.current_page().is_some() {

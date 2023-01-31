@@ -75,8 +75,10 @@ mod imp {
         fn open(&self, files: &[gio::File], _hint: &str) {
             let application = self.instance();
             for file in files {
+                let Some(path) = file.path() else { log::error!("File has no path {}", file.uri()); return; };
+
                 let win = LpWindow::new(&*application);
-                win.set_image_from_path(&file.path().unwrap());
+                win.set_image_from_path(&path);
 
                 // show window when image size is known
                 let watch = win
@@ -168,6 +170,10 @@ impl LpApplication {
         self.set_accels_for_action("win.open", &["<Ctrl>O"]);
         self.set_accels_for_action("win.print", &["<Ctrl>P"]);
         self.set_accels_for_action("win.copy", &["<Ctrl>C"]);
+        self.set_accels_for_action(
+            "win.trash",
+            &["<Ctrl>X", "Delete", "KP_Delete", "BackSpace"],
+        );
         self.set_accels_for_action("win.show-help-overlay", &["<Ctrl>question"]);
         self.set_accels_for_action("win.leave-fullscreen", &["Escape"]);
         self.set_accels_for_action("win.toggle-properties", &["F9", "<Alt>Return"]);

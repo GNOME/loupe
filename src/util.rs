@@ -1,10 +1,12 @@
 use crate::deps::*;
+use crate::i18n::*;
 
-use anyhow::Context;
+use anyhow::{anyhow, Context};
 use gio::prelude::*;
+use once_cell::sync::Lazy;
 
 use std::fmt::{Debug, Write};
-use std::path::Path;
+use std::path::{Path, PathBuf};
 
 pub fn get_file_display_name(file: &gio::File) -> Option<String> {
     let info = query_attributes(file, vec![&gio::FILE_ATTRIBUTE_STANDARD_DISPLAY_NAME]).ok()?;
@@ -54,6 +56,60 @@ pub fn compare_by_name(file_a: &Path, file_b: &Path) -> std::cmp::Ordering {
     let key_b = glib::FilenameCollationKey::from(name_b);
 
     key_a.cmp(&key_b)
+}
+
+static FILE_ATTRIBUTE_TRASH: Lazy<String> = Lazy::new(|| {
+    [
+        *gio::FILE_ATTRIBUTE_STANDARD_NAME,
+        *gio::FILE_ATTRIBUTE_TRASH_ORIG_PATH,
+    ]
+    .join(",")
+});
+
+/// Recover file from trash
+///
+/// This is based on Nautilus' implementation
+/// <https://gitlab.gnome.org/GNOME/glib/-/issues/845>
+pub async fn untrash(path: &Path) -> anyhow::Result<()> {
+    let trash = gio::File::for_uri("trash:///");
+
+    let enumerator = trash
+        .enumerate_children_future(
+            &FILE_ATTRIBUTE_TRASH,
+            gio::FileQueryInfoFlags::NOFOLLOW_SYMLINKS,
+            glib::Priority::default(),
+        )
+        .await?;
+
+    let mut error = Err(anyhow!("Image not found in trash"));
+
+    while let Ok(info) = enumerator
+        .next_files_future(1, glib::Priority::default())
+        .await
+    {
+        let Some(file_info) = info.first()
+            else { break; };
+
+        let Some(original_path) = file_info.attribute_byte_string(&gio::FILE_ATTRIBUTE_TRASH_ORIG_PATH).as_ref().map(PathBuf::from)
+            else { break; };
+
+        if original_path == path {
+            let trash_file = trash.child(file_info.name());
+            let original_file = gio::File::for_path(original_path);
+            error = trash_file
+                .move_future(
+                    &original_file,
+                    gio::FileCopyFlags::NOFOLLOW_SYMLINKS,
+                    glib::Priority::default(),
+                )
+                .0
+                .await
+                .context(i18n("Failed to restore image from trash"));
+            break;
+        }
+    }
+
+    error
 }
 
 pub async fn spawn<T: Debug + Send + 'static>(

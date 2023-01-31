@@ -16,7 +16,10 @@
         "--device=dri",
         "--filesystem=host",
         "--env=RUST_BACKTRACE=1",
-        "--env=RUST_LOG=loupe=debug"
+        "--env=RUST_LOG=loupe=debug",
+        "--talk-name=org.gtk.vfs.*",
+        "--filesystem=xdg-run/gvfs",
+        "--filesystem=xdg-run/gvfsd"
     ],
     "build-options" : {
         "append-path" : "/usr/lib/sdk/rust-stable/bin",
