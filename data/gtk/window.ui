@@ -136,6 +136,11 @@
                 <property name="tooltip-text" translatable="yes">Image Properties</property>
               </object>
             </child>
+            <child>
+              <object class="GtkEventControllerMotion">
+                <signal name="motion" handler="on_header_motion_cb" swapped="yes"/>
+              </object>
+            </child>
           </object>
         </property>
         <property name="content">
@@ -205,11 +210,6 @@
     <child>
       <object class="GtkEventControllerMotion">
         <signal name="motion" handler="on_motion_cb" swapped="yes"/>
-      </object>
-    </child>
-    <child>
-      <object class="GtkGestureClick">
-        <signal name="pressed" handler="pressed_cb" swapped="yes"/>
       </object>
     </child>
   </template>
