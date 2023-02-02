@@ -473,12 +473,27 @@ impl LpImageView {
     }
 
     #[template_callback]
+    /// Called when page change animation completed
     fn target_page_reached_cb(&self) {
+        let current_page = self.current_page();
+
         if self.imp().preserve_content.get() {
-            if let Some(new_page) = self.current_page() {
+            if let Some(new_page) = &current_page {
                 self.update_sliding_view(&new_page.path());
             } else {
                 log::error!("No LpImagePage");
+            }
+        }
+
+        // Reset zoom and rotation of other pages
+        if let Some(new_page) = &current_page {
+            let mut other_pages = self.sliding_view().pages();
+            other_pages.remove(&new_page.path());
+            for (_, page) in other_pages {
+                let image = page.image();
+                image.set_rotation(0.);
+                image.set_best_fit(true);
+                image.zoom_best_fit();
             }
         }
     }
