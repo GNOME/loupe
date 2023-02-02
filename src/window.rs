@@ -39,6 +39,10 @@ use crate::widgets::{LpImage, LpImageView, LpPropertiesView};
 const FADE_OUT_DURATION: u32 = 2000;
 /// The duration when fading in milliseconds
 const FADE_IN_DURATION: u32 = 200;
+/// The timeout in seconds before fading out various widgets
+const FADE_IDLE_TIMEOUT: u32 = 2;
+
+type IdHandle = RefCell<Option<glib::SourceId>>;
 
 enum FadeDirection {
     Out,
@@ -90,7 +94,10 @@ mod imp {
         pub drop_target: TemplateChild<gtk::DropTarget>,
 
         pub fade_animation: OnceCell<adw::TimedAnimation>,
-        pub motion_timeout_id: RefCell<Option<glib::SourceId>>,
+        pub motion_timeout_id: IdHandle,
+
+        pub header_fade_animation: OnceCell<adw::TimedAnimation>,
+        pub header_timeout_id: IdHandle,
     }
 
     #[glib::object_subclass]
@@ -323,13 +330,19 @@ mod imp {
                 glib::clone!(@weak obj => move |props_btn| {
                     let imp = obj.imp();
                     if props_btn.is_active() {
-                        imp.flap.set_reveal_flap(true);
                         imp.headerbar.remove_css_class("osd");
+                        obj.fade_all_in();
                     } else {
                         imp.headerbar.add_css_class("osd");
+                        obj.queue_fade_out_all();
                     }
                 }),
             );
+
+            // Make widgets visible when the focus moves
+            obj.connect_move_focus(|obj, _| {
+                obj.fade_all_in();
+            });
 
             self.status_page
                 .set_icon_name(Some(&format!("{}-symbolic", config::APP_ID)));
@@ -634,6 +647,8 @@ impl LpWindow {
             imp.headerbar.add_css_class("osd");
             imp.stack.set_visible_child(&*imp.image_view);
             imp.image_view.grab_focus();
+
+            self.queue_fade_out_all();
         } else {
             imp.stack.set_visible_child(&*imp.status_page);
             imp.status_page.grab_focus();
@@ -693,20 +708,18 @@ impl LpWindow {
         self.action_set_enabled("win.zoom-in", can_zoom_in);
     }
 
-    /// Retrieves or initializes the fade animation
+    /// Retrieves or initializes the fade animation for the bottom controls
     fn fade_animation(&self) -> &adw::TimedAnimation {
         let imp = self.imp();
 
         let image_view = &*imp.image_view;
 
         imp.fade_animation.get_or_init(|| {
-            let target = adw::CallbackAnimationTarget::new(
-                glib::clone!(@weak image_view => move |position| image_view.set_control_opacity(position)),
-            );
+            let target = adw::PropertyAnimationTarget::new(image_view, "control-opacity");
 
             let animation = adw::TimedAnimation::builder()
                 .duration(FADE_IN_DURATION)
-                .widget(self)
+                .widget(image_view)
                 .target(&target)
                 .build();
 
@@ -714,9 +727,34 @@ impl LpWindow {
         })
     }
 
-    /// Fade the controls in or out
-    fn fade_controls(&self, direction: FadeDirection) {
-        let animation = self.fade_animation();
+    /// Retrieves or initializes the fade animation for the header
+    fn header_fade_animation(&self) -> &adw::TimedAnimation {
+        let imp = self.imp();
+
+        imp.header_fade_animation.get_or_init(|| {
+            let target = adw::PropertyAnimationTarget::new(&*imp.headerbar, "opacity");
+
+            let animation = adw::TimedAnimation::builder()
+                .duration(FADE_IN_DURATION)
+                .widget(&*imp.headerbar)
+                .target(&target)
+                .build();
+
+            animation
+        })
+    }
+
+    /// Trigger a fade animation or change its direction
+    fn fade(&self, animation: &adw::TimedAnimation, direction: FadeDirection) {
+        let widget = animation.widget();
+        let current_target_value: f64 = animation
+            .target()
+            .downcast_ref::<adw::PropertyAnimationTarget>()
+            .map(|t| t.pspec())
+            .map(|p| widget.property(p.name()))
+            .expect(
+                "The animation target has been improperly configured. This should never happen.",
+            );
 
         let (duration, value) = match direction {
             FadeDirection::Out => (FADE_OUT_DURATION, 0.),
@@ -724,21 +762,66 @@ impl LpWindow {
         };
 
         // Do nothing if we're already animating in the same direction
-        if animation.value_to() == value {
+        if (animation.value_to() == value && animation.state() == adw::AnimationState::Playing)
+            || value == current_target_value
+        {
             return;
         }
 
         animation.set_duration(duration);
-        animation.set_value_from(animation.value());
+        animation.set_value_from(current_target_value);
         animation.set_value_to(value);
 
         animation.play();
+    }
+
+    /// Queue a fade animation to play after `FADE_IDLE_TIMEOUT` seconds of inactivity
+    fn queue_fade_out(&self, animation: &adw::TimedAnimation, id_handle: &IdHandle) {
+        if let Some(id) = id_handle.take() {
+            id.remove();
+        }
+
+        let id = glib::timeout_add_seconds_local(
+            FADE_IDLE_TIMEOUT,
+            clone!(@weak self as win, @weak animation => @default-return glib::Continue(false), move || {
+                // Don't fade when the properties are showing
+                if !win.imp().properties_button.is_active() {
+                    win.fade(&animation, FadeDirection::Out);
+                }
+                glib::Continue(true)
+            }),
+        );
+
+        id_handle.replace(Some(id));
+    }
+
+    fn fade_all_in(&self) {
+        self.fade(self.header_fade_animation(), FadeDirection::In);
+        self.fade(self.fade_animation(), FadeDirection::In);
+    }
+
+    /// Queue all controls to fade out after a timeout
+    fn queue_fade_out_all(&self) {
+        let imp = self.imp();
+        self.queue_fade_out(self.header_fade_animation(), &imp.header_timeout_id);
+        self.queue_fade_out(self.fade_animation(), &imp.motion_timeout_id);
     }
 
     /// Whether or not the window is showing images
     fn images_showing(&self) -> bool {
         let imp = self.imp();
         imp.stack.visible_child().as_ref() == Some(&*imp.image_view.upcast_ref())
+    }
+
+    /// Handle motion, fading in `animation` and queing it to be faded out
+    fn handle_motion(&self, animation: &adw::TimedAnimation, id_handle: &IdHandle) {
+        if !self.images_showing() {
+            return;
+        }
+
+        self.fade(&animation, FadeDirection::In);
+
+        self.queue_fade_out(&animation, id_handle);
     }
 
     // In the LpWindow UI file we define a `gtk::Expression`s
@@ -778,50 +861,12 @@ impl LpWindow {
     #[template_callback]
     fn on_motion_cb(&self) {
         let imp = self.imp();
-
-        if !self.images_showing() {
-            return;
-        }
-
-        self.fade_controls(FadeDirection::In);
-
-        if let Some(id) = imp.motion_timeout_id.take() {
-            id.remove();
-        }
-
-        let id = glib::timeout_add_seconds_local(
-            2,
-            clone!(@weak self as win => @default-return glib::Continue(false), move || {
-                win.fade_controls(FadeDirection::Out);
-                glib::Continue(true)
-            }),
-        );
-
-        imp.motion_timeout_id.replace(Some(id));
+        self.handle_motion(&self.fade_animation(), &imp.motion_timeout_id);
     }
 
     #[template_callback]
-    fn pressed_cb(&self, _n_press: i32, x: f64, y: f64) {
+    fn on_header_motion_cb(&self) {
         let imp = self.imp();
-
-        let header_handles_click = self
-            .translate_coordinates(&*imp.headerbar, x, y)
-            .map(|(x, y)| imp.headerbar.contains(x, y))
-            .unwrap_or_default();
-        let view_handles_click = self
-            .translate_coordinates(&*imp.image_view, x, y)
-            .map(|(x, y)| imp.image_view.handles_click(x, y))
-            .unwrap_or_default();
-        let click_handled = header_handles_click || view_handles_click;
-
-        if !self.images_showing() || imp.properties_button.is_active() || click_handled {
-            return;
-        }
-
-        if self.is_maximized() {
-            self.fullscreen();
-        }
-
-        imp.flap.set_reveal_flap(!imp.flap.reveals_flap());
+        self.handle_motion(&self.header_fade_animation(), &imp.header_timeout_id);
     }
 }
