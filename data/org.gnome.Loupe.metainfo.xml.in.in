@@ -7,14 +7,22 @@
   <developer_name>Christopher Davis</developer_name>
   <summary>View images</summary>
   <description>
-    <p>A simple image viewer for GNOME</p>
+    <p>A simple image viewer with allows to browser through your images and inspecting their metadata.</p>
+    <p>The following features are not available yet</p>
+    <ul>
+      <li>Correctly showing SVGs at every zoom-level</li>
+      <li>Interpreting image color profiles</li>
+      <li>Animated image formats</li>
+      <li>Correct HighDPI support</li>
+      <li>Print settings to position the image on the page</li>
+    </ul>
   </description>
-  <url type="homepage">https://gitlab.gnome.org/BrainBlasted/loupe</url>
-  <url type="bugtracker">https://gitlab.gnome.org/BrainBlasted/loupe/issues</url>
+  <url type="homepage">https://gitlab.gnome.org/Incubator/loupe</url>
+  <url type="bugtracker">https://gitlab.gnome.org/Incubator/loupe/issues</url>
 
   <screenshots>
     <screenshot type="default">
-      <image>https://gitlab.gnome.org/BrainBlasted/loupe/uploads/863131c1292cb9f1b32fbef39f266bcf/image.png</image>
+      <image>https://gitlab.gnome.org/Incubator/loupe/uploads/863131c1292cb9f1b32fbef39f266bcf/image.png</image>
     </screenshot>
   </screenshots>
 
@@ -35,14 +43,22 @@
   <translation type="gettext">@BIN_NAME@</translation>
   <content_rating type="oars-1.1" />
   <custom>
+    <value key="GnomeSoftware::key-colors">[(208, 105, 167)]</value>
     <value key="Purism::form_factor">workstation</value>
     <value key="Purism::form_factor">mobile</value>
   </custom>
 
+  <categories>
+    <category>Graphics</category>
+    <category>Viewer</category>
+    <category>GTK</category>
+    <category>GNOME</category>
+  </categories>
+
   <releases>
-    <release version="44.0~alpha" date="2022-11-22" type="development">
+    <release version="44.0" date="2023-02-03">
       <description>
-        <p>Alpha release. Do not use in production or package.</p>
+        <p>Initial release.</p>
       </description>
     </release>
   </releases>

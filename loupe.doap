@@ -5,9 +5,9 @@
   <shortdesc xml:lang="en">Image Viewer</shortdesc>
   <description xml:lang="en">Image Viewer</description>
 
-  <homepage rdf:resource="https://gitlab.gnome.org/BrainBlasted/loupe" />
-  <download-page rdf:resource="https://gitlab.gnome.org/BrainBlasted/loupe" />
-  <bug-database rdf:resource="https://gitlab.gnome.org/BrainBlasted/loupe/-/issues" />
+  <homepage rdf:resource="https://gitlab.gnome.org/Incubator/loupe" />
+  <download-page rdf:resource="https://gitlab.gnome.org/Incubator/loupe" />
+  <bug-database rdf:resource="https://gitlab.gnome.org/Incubator/loupe/-/issues" />
 
   <programming-language>Rust</programming-language>
   <platform>GTK 4</platform>
@@ -19,6 +19,8 @@
       <foaf:mbox rdf:resource="mailto:christopherdavis@gnome.org" />
       <gnome:userid>christopherdavis</gnome:userid>
     </foaf:Person>
+  </maintainer>
+  <maintainer>
     <foaf:Person>
       <foaf:name>Sophie Herold</foaf:name>
       <foaf:mbox rdf:resource="mailto:sophieherold@gnome.org" />

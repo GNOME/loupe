@@ -224,8 +224,8 @@ impl LpApplication {
             .application_icon(config::APP_ID)
             .version(config::VERSION)
             .developer_name(&i18n("Christopher Davis"))
-            .website("https://gitlab.gnome.org/BrainBlasted/loupe")
-            .issue_url("https://gitlab.gnome.org/BrainBlasted/loupe/-/issues/new")
+            .website("https://gitlab.gnome.org/Incubator/loupe")
+            .issue_url("https://gitlab.gnome.org/Incubator/loupe/-/issues/new")
             .developers(vec![
                 String::from("Christopher Davis <christopherdavis@gnome.org>"),
                 String::from("Sophie Herold <sophieherold@gnome.org>"),

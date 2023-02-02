@@ -103,7 +103,7 @@
             "sources" : [
                 {
                     "type" : "git",
-                    "url" : "https://gitlab.gnome.org/BrainBlasted/loupe.git"
+                    "url" : "https://gitlab.gnome.org/Incubator/loupe.git"
                 }
             ]
         }

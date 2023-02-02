@@ -2,7 +2,7 @@
 
 A simple image viewer application written with GTK4 and Rust.
 
-![Loupe Screenshot](https://gitlab.gnome.org/BrainBlasted/loupe/uploads/863131c1292cb9f1b32fbef39f266bcf/image.png)
+![Loupe Screenshot](https://gitlab.gnome.org/Incubator/loupe/uploads/863131c1292cb9f1b32fbef39f266bcf/image.png)
 
 ## Installing
 
@@ -20,8 +20,8 @@ GNOME Builder is the environment used for developing this application. It can us
 recommended you use it.
 
 1. Download [GNOME Builder](https://flathub.org/apps/details/org.gnome.Builder).
-2. In Builder, click the "Clone Repository" button at the bottom, using `git@gitlab.gnome.org/BrainBlasted/loupe.git`
-or `https://gitlab.gnome.org/BrainBlasted/loupe.git` as the URL.
+2. In Builder, click the "Clone Repository" button at the bottom, using `git@gitlab.gnome.org/Incubator/loupe.git`
+or `https://gitlab.gnome.org/Incubator/loupe.git` as the URL.
 3. Click the build button at the top once the project is loaded.
 
 
@@ -35,7 +35,11 @@ which can be installed on any system that supports flatpak.
 **In order for the Loupe flatpak to be able to read the directory images are installed in, you must install a bundle.**
 Once you have a bundle installed, development builds will work properly.
 
-## Conduct
+## Contributing
+
+- [Code Documentation](https://incubator.pages.gitlab.gnome.org/loupe/doc/loupe/)
+
+### Conduct
 
 Loupe operates under the GNOME Code Of Conduct. See the full
 text of the Code Of Conduct [here](CODE_OF_CONDUCT.md).
