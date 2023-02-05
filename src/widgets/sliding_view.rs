@@ -19,6 +19,14 @@ static SCROLL_DAMPING_RATIO: f64 = 1.;
 static SCROLL_MASS: f64 = 0.5;
 static SCROLL_STIFFNESS: f64 = 500.;
 
+/// Space between images in application pixels
+///
+/// This is combined with the percent component
+static PAGE_SPACING_FIXED: f32 = 25.;
+
+/// Space between images as factor of width
+const PAGE_SPACING_PERCENT: f32 = 0.02;
+
 mod imp {
     use super::*;
     use glib::subclass::Signal;
@@ -144,7 +152,7 @@ mod imp {
                 // according to the position that should currently be shown.
                 let x = direction_sign
                     * (page_index as f32 - scroll_position - position_shift)
-                    * width as f32;
+                    * (width as f32 * (1. + PAGE_SPACING_PERCENT) + PAGE_SPACING_FIXED);
 
                 let transform = gsk::Transform::new().translate(&graphene::Point::new(x, 0.));
                 page.allocate(width, height, 0, Some(&transform));
