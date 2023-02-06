@@ -106,6 +106,22 @@ mod imp {
                 win.imp().image_view.navigate(Direction::Back);
             });
 
+            klass.install_action("win.image-right", None, move |win, _, _| {
+                if win.direction() == gtk::TextDirection::Rtl {
+                    win.imp().image_view.navigate(Direction::Back);
+                } else {
+                    win.imp().image_view.navigate(Direction::Forward);
+                }
+            });
+
+            klass.install_action("win.image-left", None, move |win, _, _| {
+                if win.direction() == gtk::TextDirection::Rtl {
+                    win.imp().image_view.navigate(Direction::Forward);
+                } else {
+                    win.imp().image_view.navigate(Direction::Back);
+                }
+            });
+
             klass.install_action("win.first", None, move |win, _, _| {
                 win.imp().image_view.jump(Position::First);
             });
