@@ -30,13 +30,22 @@ use once_cell::unsync::OnceCell;
 use std::cell::{Cell, RefCell};
 use std::path::{Path, PathBuf};
 
+/// Milliseconds
 const ZOOM_ANIMATION_DURATION: u32 = 200;
+/// Milliseconds
 const ROTATION_ANIMATION_DURATION: u32 = 200;
 
+/// Relative to current zoom level
 const ZOOM_FACTOR_BUTTON: f64 = 1.5;
+/// Relative to current zoom level
 const ZOOM_FACTOR_WHEEL: f64 = 1.3;
-const ZOOM_FACTOR_WHEEL_HI_RES: f64 = 0.1;
+/// Relative to current zoom level
+const ZOOM_FACTOR_WHEEL_HI_RES: f64 = 0.001;
 
+/// Relative to best-fit level
+const ZOOM_FACTOR_DOUBLE_TAP: f64 = 2.5;
+
+/// Max zoom level 2000%
 const MAX_ZOOM_LEVEL: f64 = 20.0;
 
 mod imp {
@@ -303,6 +312,33 @@ mod imp {
 
         fn connect_gestures(&self) {
             let obj = self.instance();
+
+            // Double click for fullscreen (mouse/touchpad) or zoom (touch screen)
+            let left_click_gesture = gtk::GestureClick::builder().button(1).build();
+            obj.add_controller(&left_click_gesture);
+            left_click_gesture.connect_pressed(
+                glib::clone!(@weak obj => move |gesture, n_press, x, y| {
+                    // only handle double clicks
+                    if n_press != 2 {
+                        return;
+                    }
+
+                    if gesture.device().map(|x| x.source()) == Some(gdk::InputSource::Touchscreen) {
+                        // zoom
+                        obj.imp().pointer_position.set(Some((x, y)));
+                        if obj.is_best_fit() {
+                            // zoom in
+                            obj.zoom_to(ZOOM_FACTOR_DOUBLE_TAP * obj.zoom_level_best_fit());
+                        } else {
+                            // zoom back out
+                            obj.zoom_best_fit();
+                        }
+                    } else {
+                        // fullscreen
+                        obj.activate_action("win.toggle-fullscreen", None).unwrap();
+                    }
+                }),
+            );
 
             // Drag for moving image around
             let drag_gesture = gtk::GestureDrag::new();

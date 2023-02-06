@@ -63,7 +63,7 @@
             <property name="child">
               <object class="LpImage" id="image">
                 <child>
-                  <object class="GtkGestureClick" id="click_gesture">
+                  <object class="GtkGestureClick" id="right_click_gesture">
                     <property name="button">3</property>
                   </object>
                 </child>

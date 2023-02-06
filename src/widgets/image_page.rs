@@ -49,7 +49,7 @@ mod imp {
         #[template_child]
         pub(super) popover: TemplateChild<gtk::PopoverMenu>,
         #[template_child]
-        pub(super) click_gesture: TemplateChild<gtk::GestureClick>,
+        pub(super) right_click_gesture: TemplateChild<gtk::GestureClick>,
         #[template_child]
         pub(super) press_gesture: TemplateChild<gtk::GestureLongPress>,
 
@@ -100,7 +100,7 @@ mod imp {
 
             self.parent_constructed();
 
-            self.click_gesture
+            self.right_click_gesture
                 .connect_pressed(clone!(@weak obj => move |gesture, _, x, y| {
                     obj.show_popover_at(x, y);
                     gesture.set_state(gtk::EventSequenceState::Claimed);
