@@ -30,7 +30,7 @@ use std::cell::RefCell;
 use std::path::{Path, PathBuf};
 
 use crate::config;
-use crate::util;
+use crate::util::{self, Direction, Position};
 use crate::widgets::{LpImage, LpImagePage, LpImageView, LpPropertiesView};
 
 mod imp {
@@ -99,15 +99,19 @@ mod imp {
             });
 
             klass.install_action("win.next", None, move |win, _, _| {
-                win.imp()
-                    .image_view
-                    .navigate(adw::NavigationDirection::Forward);
+                win.imp().image_view.navigate(Direction::Forward);
             });
 
             klass.install_action("win.previous", None, move |win, _, _| {
-                win.imp()
-                    .image_view
-                    .navigate(adw::NavigationDirection::Back);
+                win.imp().image_view.navigate(Direction::Back);
+            });
+
+            klass.install_action("win.first", None, move |win, _, _| {
+                win.imp().image_view.jump(Position::First);
+            });
+
+            klass.install_action("win.last", None, move |win, _, _| {
+                win.imp().image_view.jump(Position::Last);
             });
 
             klass.install_action("win.zoom-out", None, move |win, _, _| {

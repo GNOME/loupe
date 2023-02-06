@@ -180,8 +180,10 @@ impl LpApplication {
         self.set_accels_for_action("win.toggle-fullscreen", &["F11"]);
         self.set_accels_for_action("win.set-background", &["<Ctrl>F8"]);
 
-        self.set_accels_for_action("win.previous", &["Left"]);
-        self.set_accels_for_action("win.next", &["Right"]);
+        self.set_accels_for_action("win.previous", &["Left", "Page_Down"]);
+        self.set_accels_for_action("win.next", &["Right", "Page_Up"]);
+        self.set_accels_for_action("win.first", &["Home"]);
+        self.set_accels_for_action("win.last", &["End"]);
 
         self.set_accels_for_action("win.zoom-to(1.0)", &["1", "KP_1", "<Ctrl>1", "<Ctrl>KP_1"]);
         self.set_accels_for_action("win.zoom-to(2.0)", &["2", "KP_2", "<Ctrl>2", "<Ctrl>KP_2"]);

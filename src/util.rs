@@ -123,3 +123,15 @@ pub async fn spawn<T: Debug + Send + 'static>(
         .spawn(async_global_executor::spawn_blocking(f))?
         .await)
 }
+
+#[derive(Debug, Clone, Copy)]
+pub enum Position {
+    First,
+    Last,
+}
+
+#[derive(Debug, Clone, Copy)]
+pub enum Direction {
+    Back,
+    Forward,
+}

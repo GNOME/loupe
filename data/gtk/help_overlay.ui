@@ -102,6 +102,18 @@
                 <property name="accelerator">Right</property>
               </object>
             </child>
+            <child>
+              <object class="GtkShortcutsShortcut">
+                <property name="title" translatable="yes" context="shortcut window">First Image</property>
+                <property name="action-name">win.first</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkShortcutsShortcut">
+                <property name="title" translatable="yes" context="shortcut window">Last Image</property>
+                <property name="action-name">win.last</property>
+              </object>
+            </child>
           </object>
         </child>
         <child>

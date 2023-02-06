@@ -21,6 +21,7 @@ use crate::deps::*;
 use crate::file_model::LpFileModel;
 use crate::i18n::*;
 use crate::thumbnail::Thumbnail;
+use crate::util::{Direction, Position};
 use crate::widgets::{LpImage, LpImagePage, LpSlidingView};
 
 use adw::prelude::*;
@@ -270,17 +271,28 @@ impl LpImageView {
     }
 
     /// Move forward or backwards
-    pub fn navigate(&self, direction: adw::NavigationDirection) {
+    pub fn navigate(&self, direction: Direction) {
         if let Some(current_path) = self.current_path() {
             let new_path = match direction {
-                adw::NavigationDirection::Forward => self.model().after(&current_path),
-                adw::NavigationDirection::Back => self.model().before(&current_path),
-                _ => unimplemented!("Navigation direction should only be back or forward."),
+                Direction::Forward => self.model().after(&current_path),
+                Direction::Back => self.model().before(&current_path),
             };
 
             if let Some(new_path) = new_path {
                 self.scroll_sliding_view(&new_path);
             }
+        }
+    }
+
+    /// Jump to position
+    pub fn jump(&self, position: Position) {
+        let new_path = match position {
+            Position::First => self.model().first(),
+            Position::Last => self.model().last(),
+        };
+
+        if let Some(new_path) = new_path {
+            self.navigate_to_path(&new_path);
         }
     }
 

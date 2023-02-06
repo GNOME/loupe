@@ -207,6 +207,16 @@ impl LpFileModel {
             .collect()
     }
 
+    /// Return first path
+    pub fn first(&self) -> Option<PathBuf> {
+        self.imp().files.borrow().first().cloned()
+    }
+
+    /// Returns last path
+    pub fn last(&self) -> Option<PathBuf> {
+        self.imp().files.borrow().last().cloned()
+    }
+
     /// Currently sorts by name
     fn sort(files: &mut IndexSet<PathBuf>) {
         files.sort_by(|x, y| util::compare_by_name(x, y));
