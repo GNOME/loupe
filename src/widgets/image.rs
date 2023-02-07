@@ -380,12 +380,15 @@ mod imp {
             let rotation_gesture = gtk::GestureRotate::new();
             obj.add_controller(&rotation_gesture);
 
-            rotation_gesture.connect_angle_changed(glib::clone!(@weak obj => move |_, angle, _| {
-                // offset for rotate gesture to take effect
-                if angle.abs().to_degrees() > 20. {
-                    obj.set_rotation(obj.imp().rotation_target.get() + angle.to_degrees());
-                }
-            }));
+            rotation_gesture.connect_angle_changed(
+                glib::clone!(@weak obj => move |gesture, _, _| {
+                    let angle = gesture.angle_delta();
+                    // offset for rotate gesture to take effect
+                    if angle.abs().to_degrees() > 20. {
+                        obj.set_rotation(obj.imp().rotation_target.get() + angle.to_degrees());
+                    }
+                }),
+            );
 
             rotation_gesture.connect_end(glib::clone!(@weak obj => move |_, _| {
                 log::debug!("Rotate gesture ended");
