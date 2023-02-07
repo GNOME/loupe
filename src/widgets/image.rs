@@ -45,6 +45,11 @@ const ZOOM_FACTOR_WHEEL_HI_RES: f64 = 0.001;
 /// Relative to best-fit level
 const ZOOM_FACTOR_DOUBLE_TAP: f64 = 2.5;
 
+/// Relative to best-fit and `MAX_ZOOM_LEVEL`
+const ZOOM_FACTOR_MAX_RUBBERBAND: f64 = 2.;
+/// Smaller values make the band feel stiffer
+const RUBBERBANDING_EXPONENT: f64 = 0.4;
+
 /// Max zoom level 2000%
 const MAX_ZOOM_LEVEL: f64 = 20.0;
 
@@ -873,8 +878,29 @@ impl LpImage {
     }
 
     /// Set zoom level aiming for given position or center if not available
-    fn set_zoom_aiming(&self, zoom: f64, aiming: Option<(f64, f64)>) {
-        if zoom == self.zoom() || zoom <= 0. {
+    fn set_zoom_aiming(&self, mut zoom: f64, aiming: Option<(f64, f64)>) {
+        // allow some deviantion from max value for rubberbanding
+        if zoom > MAX_ZOOM_LEVEL {
+            let max_deviation = MAX_ZOOM_LEVEL * ZOOM_FACTOR_MAX_RUBBERBAND;
+            let deviation = zoom / MAX_ZOOM_LEVEL;
+            zoom = f64::min(
+                MAX_ZOOM_LEVEL * deviation.powf(RUBBERBANDING_EXPONENT),
+                max_deviation,
+            );
+        }
+
+        if zoom < self.zoom_level_best_fit() {
+            let minimum = self.zoom_level_best_fit();
+            let max_deviation = minimum / ZOOM_FACTOR_MAX_RUBBERBAND;
+            let deviation = zoom / minimum;
+            zoom = f64::max(
+                minimum * deviation.powf(RUBBERBANDING_EXPONENT),
+                max_deviation,
+            );
+            dbg!(zoom);
+        }
+
+        if zoom == self.zoom() {
             return;
         }
 
