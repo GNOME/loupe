@@ -152,7 +152,7 @@ mod imp {
                 // according to the position that should currently be shown.
                 let x = direction_sign
                     * (page_index as f32 - scroll_position - position_shift)
-                    * (width as f32 * (1. + PAGE_SPACING_PERCENT) + PAGE_SPACING_FIXED);
+                    * (width as f32 + self.page_spacing(width));
 
                 let transform = gsk::Transform::new().translate(&graphene::Point::new(x, 0.));
                 page.allocate(width, height, 0, Some(&transform));
@@ -190,8 +190,9 @@ mod imp {
 
         fn distance(&self) -> f64 {
             let obj = self.instance();
+            let width = obj.allocation().width();
 
-            (obj.allocation().width() as usize * obj.n_pages()) as f64
+            width as f64 + self.page_spacing(width) as f64
         }
 
         fn snap_points(&self) -> Vec<f64> {
@@ -215,6 +216,10 @@ mod imp {
     }
 
     impl LpSlidingView {
+        fn page_spacing(&self, width: i32) -> f32 {
+            width as f32 * PAGE_SPACING_PERCENT + PAGE_SPACING_FIXED
+        }
+
         fn is_rtl(&self) -> bool {
             let obj = self.instance();
             obj.direction() == gtk::TextDirection::Rtl
