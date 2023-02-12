@@ -412,10 +412,8 @@ impl LpImageView {
         }
 
         if let Some(current_path) = self.current_path() {
-            if self.model().contains(&current_path) {
-                if !self.imp().preserve_content.get() {
-                    self.update_sliding_view(&current_path);
-                }
+            if self.model().contains(&current_path) && !self.imp().preserve_content.get() {
+                self.update_sliding_view(&current_path);
             }
         }
     }
