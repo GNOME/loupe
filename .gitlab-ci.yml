@@ -16,7 +16,7 @@ flatpak@aarch64:
   allow_failure: true
   extends: ".flatpak@aarch64"
 
-rustfmt:
+cargo-fmt:
   image: "rust:slim"
   script:
     - rustup component add rustfmt
@@ -76,6 +76,13 @@ cargo-clippy:
       flatpak-builder --user --disable-rofiles-fuse --build-shell=${FLATPAK_MODULE} flatpak_app ${MANIFEST_PATH} <<END
         cargo clippy -- -D warnings
       END
+
+cargo-audit:
+  interruptible: true
+  image: rust
+  script:
+    - cargo install cargo-deny
+    - cargo deny check
 
 pages:
   stage: deploy
