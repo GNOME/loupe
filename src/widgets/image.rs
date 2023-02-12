@@ -416,8 +416,8 @@ mod imp {
                 if gesture.device().map(|x| x.source()) == Some(gdk::InputSource::Touchscreen) {
                     if let p1 @ Some((x1, y1)) = gesture.bounding_box_center() {
                         if let Some((x0, y0)) = obj.imp().zoom_gesture_center.get() {
-                            hadjustment.set_value(hadjustment.value() + x1 - x0);
-                            vadjustment.set_value(vadjustment.value() + y1 - y0);
+                            hadjustment.set_value(hadjustment.value() + x0 - x1);
+                            vadjustment.set_value(vadjustment.value() + y0 - y1);
                         } else {
                             log::warn!("Zoom bounding box center: No previous value");
                         }
