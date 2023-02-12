@@ -172,7 +172,7 @@ mod imp {
         }
 
         fn property(&self, _id: usize, pspec: &glib::ParamSpec) -> glib::Value {
-            let obj = self.instance();
+            let obj = self.obj();
             match pspec.name() {
                 "file" => obj.file().to_value(),
                 "path" => obj.path().to_variant().to_value(),
@@ -194,7 +194,7 @@ mod imp {
         }
 
         fn set_property(&self, _id: usize, value: &glib::Value, pspec: &glib::ParamSpec) {
-            let obj = self.instance();
+            let obj = self.obj();
             match pspec.name() {
                 "rotation" => obj.set_rotation(value.get().unwrap()),
                 "mirrored" => obj.set_mirrored(value.get().unwrap()),
@@ -210,7 +210,7 @@ mod imp {
         fn constructed(&self) {
             self.parent_constructed();
 
-            let obj = self.instance();
+            let obj = self.obj();
             obj.set_hexpand(true);
             obj.set_vexpand(true);
             obj.set_overflow(gtk::Overflow::Hidden);
@@ -224,7 +224,7 @@ mod imp {
         }
 
         fn dispose(&self) {
-            let obj = self.instance();
+            let obj = self.obj();
 
             // remove target fron zoom animation because it's property of this object
             obj.rotation_animation()
@@ -240,7 +240,7 @@ mod imp {
 
     impl LpImage {
         fn connect_controllers(&self) {
-            let obj = self.instance();
+            let obj = self.obj();
 
             // Needed vor having the current cursor position available
             let motion_controller = gtk::EventControllerMotion::new();
@@ -253,7 +253,7 @@ mod imp {
             motion_controller.connect_leave(glib::clone!(@weak obj => move |_| {
                 obj.imp().pointer_position.set(None);
             }));
-            obj.add_controller(&motion_controller);
+            obj.add_controller(motion_controller);
 
             // Zoom via scroll wheels etc
             let scroll_controller =
@@ -312,15 +312,15 @@ mod imp {
                 gtk::Inhibit(true)
             }));
 
-            obj.add_controller(&scroll_controller);
+            obj.add_controller(scroll_controller);
         }
 
         fn connect_gestures(&self) {
-            let obj = self.instance();
+            let obj = self.obj();
 
             // Double click for fullscreen (mouse/touchpad) or zoom (touch screen)
             let left_click_gesture = gtk::GestureClick::builder().button(1).build();
-            obj.add_controller(&left_click_gesture);
+            obj.add_controller(left_click_gesture.clone());
             left_click_gesture.connect_pressed(
                 glib::clone!(@weak obj => move |gesture, n_press, x, y| {
                     // only handle double clicks
@@ -347,7 +347,7 @@ mod imp {
 
             // Drag for moving image around
             let drag_gesture = gtk::GestureDrag::new();
-            obj.add_controller(&drag_gesture);
+            obj.add_controller(drag_gesture.clone());
 
             drag_gesture.connect_drag_begin(glib::clone!(@weak obj => move |gesture, _, _| {
                 if obj.is_hscrollable() || obj.is_vscrollable() {
@@ -378,7 +378,7 @@ mod imp {
 
             // Rotate
             let rotation_gesture = gtk::GestureRotate::new();
-            obj.add_controller(&rotation_gesture);
+            obj.add_controller(rotation_gesture.clone());
 
             rotation_gesture.connect_angle_changed(
                 glib::clone!(@weak obj => move |gesture, _, _| {
@@ -399,7 +399,7 @@ mod imp {
 
             // Zoom
             let zoom_gesture = gtk::GestureZoom::new();
-            obj.add_controller(&zoom_gesture);
+            obj.add_controller(zoom_gesture.clone());
 
             zoom_gesture.connect_begin(glib::clone!(@weak obj => move |gesture, _| {
                 obj.imp()
@@ -448,7 +448,7 @@ mod imp {
     impl WidgetImpl for LpImage {
         // called when the widget size might have changed
         fn size_allocate(&self, width: i32, height: i32, _baseline: i32) {
-            let widget = self.instance();
+            let widget = self.obj();
 
             // ensure there is an actual size change
             if self.widget_dimensions.get() != (width, height) {
@@ -458,7 +458,7 @@ mod imp {
                     let best_fit_level = widget.zoom_level_best_fit();
                     self.zoom.set(best_fit_level);
                     self.zoom_target.set(best_fit_level);
-                    self.instance().zoom_animation().pause();
+                    self.obj().zoom_animation().pause();
                 }
             }
 
@@ -468,7 +468,7 @@ mod imp {
         // called when the widget content should be re-rendered
         fn snapshot(&self, snapshot: &gtk::Snapshot) {
             if let Some(texture) = self.texture.borrow().as_ref() {
-                let widget = self.instance();
+                let widget = self.obj();
                 let widget_width = widget.width() as f64;
                 let widget_height = widget.height() as f64;
 
@@ -531,15 +531,16 @@ mod imp {
         }
 
         fn measure(&self, orientation: gtk::Orientation, _for_size: i32) -> (i32, i32, i32, i32) {
-            let (image_width, image_height) = self.instance().image_size();
+            let (image_width, image_height) = self.obj().image_size();
 
             if image_width > 0 && image_height > 0 {
                 if let Some(display) = gdk::Display::default() {
-                    if let Some(native) = self.instance().native() {
-                        let hidpi_scale = self.instance().scale_factor() as f64;
+                    if let Some(native) = self.obj().native() {
+                        let hidpi_scale = self.obj().scale_factor() as f64;
 
                         // get monitor information
-                        let monitor = display.monitor_at_surface(&native.surface());
+                        // TODO: Get rid of unwrap
+                        let monitor = display.monitor_at_surface(&native.surface()).unwrap();
                         let monitor_geometry = monitor.geometry();
                         // TODO: Per documentation those dimensions should not be physical pixels.
                         // But on Wayland they are physiscal pixels and on X11 not.

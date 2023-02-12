@@ -22,25 +22,23 @@ libgweather = "4.0.0"
 indexmap = "1.9.2"
 
 [dependencies.ashpd]
-version = "0.4.0-alpha.1"
+version = "0.4.0-alpha.3"
 features = ["gtk4"]
 
 [dependencies.gtk]
 package = "gtk4"
-version = "0.5.5"
+version = "0.6.0"
 features = ["v4_10", "xml_validation"]
 
 [dependencies.gio]
 package = "gio"
-version = "0.16.3"
+version = "0.17.0"
 features = ["v2_74"]
 
 [dependencies.adw]
 package = "libadwaita"
-version = "0.2.0"
-features = ["v1_2"]
-git = "https://gitlab.gnome.org/sophie-h/libadwaita-rs.git"
-branch = "wip/sophie-h/swipeable"
+version = "0.3.1"
+features = ["v1_3"]
 
 [dependencies.gettext-rs]
 version = "0.7.0"

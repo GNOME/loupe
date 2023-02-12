@@ -112,7 +112,7 @@ mod imp {
         }
 
         fn property(&self, _id: usize, pspec: &glib::ParamSpec) -> glib::Value {
-            let obj = self.instance();
+            let obj = self.obj();
             let prop_name = pspec.name();
 
             match prop_name {
@@ -126,7 +126,7 @@ mod imp {
         }
 
         fn set_property(&self, _id: usize, value: &glib::Value, pspec: &glib::ParamSpec) {
-            let obj = self.instance();
+            let obj = self.obj();
             let prop_name = pspec.name();
 
             match prop_name {
@@ -136,7 +136,7 @@ mod imp {
         }
 
         fn constructed(&self) {
-            let obj = self.instance();
+            let obj = self.obj();
 
             self.parent_constructed();
             obj.action_set_enabled("properties.open-folder", false);
@@ -254,10 +254,10 @@ impl LpPropertiesView {
                 if let Ok(info) = util::query_attributes_future(
                     &file,
                     vec![
-                        &gio::FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE,
-                        &gio::FILE_ATTRIBUTE_STANDARD_SIZE,
-                        &gio::FILE_ATTRIBUTE_TIME_CREATED,
-                        &gio::FILE_ATTRIBUTE_TIME_MODIFIED,
+                        gio::FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE,
+                        gio::FILE_ATTRIBUTE_STANDARD_SIZE,
+                        gio::FILE_ATTRIBUTE_TIME_CREATED,
+                        gio::FILE_ATTRIBUTE_TIME_MODIFIED,
                     ],
                 )
                 .await {

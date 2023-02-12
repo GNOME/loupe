@@ -101,7 +101,7 @@ mod imp {
         }
 
         fn property(&self, _id: usize, psec: &glib::ParamSpec) -> glib::Value {
-            let obj = self.instance();
+            let obj = self.obj();
             match psec.name() {
                 "current-page" => obj.current_page().to_value(),
                 "is-previous-available" => obj.is_previous_available().to_value(),
@@ -111,12 +111,12 @@ mod imp {
         }
 
         fn constructed(&self) {
-            let obj = self.instance();
+            let obj = self.obj();
 
             self.parent_constructed();
 
             // Manually mange widget layout, see `WidgetImpl` for details
-            obj.set_layout_manager(gtk::LayoutManager::NONE);
+            obj.set_layout_manager(None::<gtk::LayoutManager>);
 
             obj.property_expression("current-page")
                 .chain_property::<LpImagePage>("image")
@@ -164,7 +164,7 @@ mod imp {
                 };
             }));
 
-            obj.add_controller(&source);
+            obj.add_controller(source);
         }
     }
 
@@ -188,7 +188,7 @@ mod imp {
             // take as minimum whatever is larger
             let min = i32::max(child_min, overlay1_min + overlay2_min);
 
-            if let Some(page) = self.instance().current_page() {
+            if let Some(page) = self.obj().current_page() {
                 // measure `LpImage`
                 let (_, image_natural, _, _) = page.image().measure(orientation, for_size);
 
@@ -575,7 +575,7 @@ impl LpImageView {
         let pb = gdk_pixbuf::Pixbuf::from_file(path)?;
 
         let setup = gtk::PageSetup::default();
-        let page_size = gtk::PaperSize::new(Some(&gtk::PAPER_NAME_A4));
+        let page_size = gtk::PaperSize::new(Some(gtk::PAPER_NAME_A4));
         setup.set_paper_size(&page_size);
         operation.set_default_page_setup(Some(&setup));
 

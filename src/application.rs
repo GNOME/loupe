@@ -50,7 +50,7 @@ mod imp {
     // Overrides GObject vfuncs
     impl ObjectImpl for LpApplication {
         fn constructed(&self) {
-            let obj = self.instance();
+            let obj = self.obj();
 
             self.parent_constructed();
 
@@ -66,14 +66,14 @@ mod imp {
     // Overrides GApplication vfuncs
     impl ApplicationImpl for LpApplication {
         fn activate(&self) {
-            let application = self.instance();
+            let application = self.obj();
             let window = LpWindow::new(&*application);
             window.present();
         }
 
         // Handles opening files from the command line or other applications
         fn open(&self, files: &[gio::File], _hint: &str) {
-            let application = self.instance();
+            let application = self.obj();
             for file in files {
                 let Some(path) = file.path() else { log::error!("File has no path {}", file.uri()); return; };
 
@@ -161,7 +161,7 @@ impl LpApplication {
                 .build(),
         ];
 
-        self.add_action_entries(actions).unwrap();
+        self.add_action_entries(actions);
 
         self.set_accels_for_action("app.help", &["F1"]);
         self.set_accels_for_action("app.quit", &["<Ctrl>Q"]);
@@ -220,10 +220,10 @@ impl LpApplication {
         // an object and set all relevant properties very
         // easily in a way that's idiomatic to Rust.
         let about = adw::AboutWindow::builder()
-            .application_name(&i18n("Loupe"))
+            .application_name(i18n("Loupe"))
             .application_icon(config::APP_ID)
             .version(config::VERSION)
-            .developer_name(&i18n("Christopher Davis"))
+            .developer_name(i18n("Christopher Davis"))
             .website("https://gitlab.gnome.org/Incubator/loupe")
             .issue_url("https://gitlab.gnome.org/Incubator/loupe/-/issues/new")
             .developers(vec![
@@ -235,7 +235,7 @@ impl LpApplication {
                 String::from("Jakub Steiner"),
                 String::from("Tobias Bernard"),
             ])
-            .copyright(&i18n("Copyright © 2020–2022 Christopher Davis et al."))
+            .copyright(i18n("Copyright © 2020–2022 Christopher Davis et al."))
             .license_type(gtk::License::Gpl30)
             .build();
 

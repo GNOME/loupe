@@ -69,7 +69,7 @@ mod imp {
         }
 
         fn property(&self, _id: usize, pspec: &glib::ParamSpec) -> glib::Value {
-            let obj = self.instance();
+            let obj = self.obj();
             match pspec.name() {
                 "current-page" => obj.current_page().to_value(),
                 name => unimplemented!("property {name}"),
@@ -83,13 +83,13 @@ mod imp {
         }
 
         fn constructed(&self) {
-            let obj = self.instance();
+            let obj = self.obj();
             self.parent_constructed();
 
-            self.instance().set_overflow(gtk::Overflow::Hidden);
+            self.obj().set_overflow(gtk::Overflow::Hidden);
 
             let swipe_tracker = adw::SwipeTracker::builder()
-                .swipeable(&*self.instance())
+                .swipeable(&*self.obj())
                 .reversed(self.is_rtl())
                 .build();
 
@@ -135,7 +135,7 @@ mod imp {
                 }),
             );
 
-            obj.add_controller(&scroll_controller);
+            obj.add_controller(scroll_controller);
         }
     }
 
@@ -155,12 +155,12 @@ mod imp {
                     * (width as f32 + self.page_spacing(width));
 
                 let transform = gsk::Transform::new().translate(&graphene::Point::new(x, 0.));
-                page.allocate(width, height, 0, Some(&transform));
+                page.allocate(width, height, 0, Some(transform));
             }
         }
 
         fn measure(&self, orientation: gtk::Orientation, for_size: i32) -> (i32, i32, i32, i32) {
-            let obj = self.instance();
+            let obj = self.obj();
 
             for page in self.pages.borrow().iter() {
                 if Some(page) != obj.current_page().as_ref() {
@@ -185,18 +185,18 @@ mod imp {
 
     impl SwipeableImpl for LpSlidingView {
         fn progress(&self) -> f64 {
-            self.instance().position()
+            self.obj().position()
         }
 
         fn distance(&self) -> f64 {
-            let obj = self.instance();
+            let obj = self.obj();
             let width = obj.allocation().width();
 
             width as f64 + self.page_spacing(width) as f64
         }
 
         fn snap_points(&self) -> Vec<f64> {
-            let obj = self.instance();
+            let obj = self.obj();
 
             (0..obj.n_pages())
                 .map(|i| i as f64 - obj.position_shift())
@@ -204,7 +204,7 @@ mod imp {
         }
 
         fn cancel_progress(&self) -> f64 {
-            let obj = self.instance();
+            let obj = self.obj();
             let snap_points = self.snap_points();
 
             if let (Some(min), Some(max)) = (snap_points.first(), snap_points.last()) {
@@ -221,7 +221,7 @@ mod imp {
         }
 
         fn is_rtl(&self) -> bool {
-            let obj = self.instance();
+            let obj = self.obj();
             obj.direction() == gtk::TextDirection::Rtl
         }
     }

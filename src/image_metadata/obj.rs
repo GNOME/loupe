@@ -15,7 +15,7 @@ glib::wrapper! {
 
 impl LpImageMetadata {
     pub fn load(path: &Path) -> Self {
-        let obj = glib::Object::new::<Self>(&[]);
+        let obj = glib::Object::new::<Self>();
 
         let metadata = ImageMetadata::load(path);
         obj.imp().metadata.replace(metadata);
@@ -34,7 +34,7 @@ impl LpImageMetadata {
 
 impl From<ImageMetadata> for LpImageMetadata {
     fn from(metadata: ImageMetadata) -> Self {
-        let obj = glib::Object::new::<Self>(&[]);
+        let obj = glib::Object::new::<Self>();
 
         obj.imp().metadata.replace(metadata);
 
@@ -44,7 +44,7 @@ impl From<ImageMetadata> for LpImageMetadata {
 
 impl Default for LpImageMetadata {
     fn default() -> Self {
-        glib::Object::new(&[])
+        glib::Object::new()
     }
 }
 
@@ -90,7 +90,6 @@ mod imp {
         }
 
         fn property(&self, _id: usize, pspec: &glib::ParamSpec) -> glib::Value {
-            //let obj = self.instance();
             let metadata = self.metadata.borrow();
             match pspec.name() {
                 "has-information" => (!metadata.is_none()).to_value(),

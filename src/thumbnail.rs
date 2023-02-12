@@ -54,7 +54,7 @@ mod imp {
         }
 
         fn snapshot(&self, snapshot: &gdk::Snapshot, _width: f64, _height: f64) {
-            let paintable = self.instance();
+            let paintable = self.obj();
             let width = paintable.intrinsic_width() as f64;
             let height = paintable.intrinsic_height() as f64;
 
@@ -74,7 +74,7 @@ glib::wrapper! {
 
 impl Thumbnail {
     pub fn new(paintable: &impl glib::IsA<gdk::Paintable>) -> Self {
-        let object = glib::Object::new::<Self>(&[]);
+        let object = glib::Object::new::<Self>();
         let imp = object.imp();
 
         imp.image.set(paintable.clone().upcast()).unwrap();

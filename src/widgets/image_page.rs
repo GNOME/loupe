@@ -87,7 +87,7 @@ mod imp {
         }
 
         fn property(&self, _id: usize, pspec: &glib::ParamSpec) -> glib::Value {
-            let obj = self.instance();
+            let obj = self.obj();
             match pspec.name() {
                 "image" => obj.image().to_value(),
                 "error" => obj.error().to_value(),
@@ -96,7 +96,7 @@ mod imp {
         }
 
         fn constructed(&self) {
-            let obj = self.instance();
+            let obj = self.obj();
 
             self.parent_constructed();
 
@@ -127,7 +127,7 @@ glib::wrapper! {
 
 impl LpImagePage {
     pub fn from_path(path: &Path) -> Self {
-        let obj = glib::Object::new::<Self>(&[]);
+        let obj = glib::Object::new::<Self>();
         let path = path.to_path_buf();
         let file = gio::File::for_path(&path);
 

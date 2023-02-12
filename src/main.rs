@@ -35,8 +35,9 @@ mod deps {
 }
 
 use application::LpApplication;
+use deps::*;
 
-fn main() {
+fn main() -> glib::ExitCode {
     pretty_env_logger::init_timed();
 
     setlocale(LocaleCategory::LcAll, "");
@@ -47,7 +48,5 @@ fn main() {
         .expect("Could not load resources");
     gio::resources_register(&res);
 
-    let app = LpApplication::new();
-    let ret = app.run();
-    std::process::exit(ret);
+    LpApplication::new().run()
 }

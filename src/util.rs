@@ -9,7 +9,7 @@ use std::fmt::{Debug, Write};
 use std::path::{Path, PathBuf};
 
 pub fn get_file_display_name(file: &gio::File) -> Option<String> {
-    let info = query_attributes(file, vec![&gio::FILE_ATTRIBUTE_STANDARD_DISPLAY_NAME]).ok()?;
+    let info = query_attributes(file, vec![gio::FILE_ATTRIBUTE_STANDARD_DISPLAY_NAME]).ok()?;
 
     Some(info.display_name().to_string())
 }
@@ -60,8 +60,8 @@ pub fn compare_by_name(file_a: &Path, file_b: &Path) -> std::cmp::Ordering {
 
 static FILE_ATTRIBUTE_TRASH: Lazy<String> = Lazy::new(|| {
     [
-        *gio::FILE_ATTRIBUTE_STANDARD_NAME,
-        *gio::FILE_ATTRIBUTE_TRASH_ORIG_PATH,
+        gio::FILE_ATTRIBUTE_STANDARD_NAME.as_str(),
+        gio::FILE_ATTRIBUTE_TRASH_ORIG_PATH.as_str(),
     ]
     .join(",")
 });
@@ -90,7 +90,7 @@ pub async fn untrash(path: &Path) -> anyhow::Result<()> {
         let Some(file_info) = info.first()
             else { break; };
 
-        let Some(original_path) = file_info.attribute_byte_string(&gio::FILE_ATTRIBUTE_TRASH_ORIG_PATH).as_ref().map(PathBuf::from)
+        let Some(original_path) = file_info.attribute_byte_string(gio::FILE_ATTRIBUTE_TRASH_ORIG_PATH).as_ref().map(PathBuf::from)
             else { break; };
 
         if original_path == path {

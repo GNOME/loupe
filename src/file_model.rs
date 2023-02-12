@@ -65,7 +65,7 @@ glib::wrapper! {
 
 impl Default for LpFileModel {
     fn default() -> Self {
-        glib::Object::new(&[])
+        glib::Object::new()
     }
 }
 
@@ -105,8 +105,8 @@ impl LpFileModel {
                 .enumerate_children(
                     &format!(
                         "{},{}",
-                        *gio::FILE_ATTRIBUTE_STANDARD_NAME,
-                        *gio::FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE
+                        gio::FILE_ATTRIBUTE_STANDARD_NAME,
+                        gio::FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE
                     ),
                     gio::FileQueryInfoFlags::NONE,
                     gio::Cancellable::NONE,
@@ -231,7 +231,7 @@ impl LpFileModel {
     }
 
     fn is_image_file(file: &gio::File) -> bool {
-        let Ok(info) = util::query_attributes(file, vec![&gio::FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE]) else {
+        let Ok(info) = util::query_attributes(file, vec![gio::FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE]) else {
             log::warn!("Could not query file info: {:?}", file.path());
             return false;
         };

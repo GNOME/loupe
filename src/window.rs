@@ -214,7 +214,7 @@ mod imp {
 
     impl ObjectImpl for LpWindow {
         fn constructed(&self) {
-            let obj = self.instance();
+            let obj = self.obj();
 
             self.parent_constructed();
 
@@ -337,8 +337,8 @@ mod imp {
                     let info = util::query_attributes(
                         &file,
                         vec![
-                            &gio::FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE,
-                            &gio::FILE_ATTRIBUTE_STANDARD_DISPLAY_NAME,
+                            gio::FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE,
+                            gio::FILE_ATTRIBUTE_STANDARD_DISPLAY_NAME,
                         ],
                     )
                     .expect("Could not query file info");
@@ -427,7 +427,7 @@ impl LpWindow {
         filter_store.append(&filter);
 
         let chooser = gtk::FileDialog::builder()
-            .title(&i18n("Open Image"))
+            .title(i18n("Open Image"))
             .filters(&filter_store)
             .modal(true)
             .build();
@@ -495,8 +495,8 @@ impl LpWindow {
         match result {
             Ok(()) => {
                 let toast = adw::Toast::builder()
-                    .title(&i18n("Image moved to trash"))
-                    .button_label(&i18n("Undo"))
+                    .title(i18n("Image moved to trash"))
+                    .button_label(i18n("Undo"))
                     .build();
                 toast.connect_button_clicked(glib::clone!(@weak self as win => move |_| {
                     let path = path.clone();
@@ -514,7 +514,7 @@ impl LpWindow {
                         }
                     });
                 }));
-                self.imp().toast_overlay.add_toast(&toast);
+                self.imp().toast_overlay.add_toast(toast);
             }
             Err(err) => {
                 if Some(gio::IOErrorEnum::NotSupported) == err.kind::<gio::IOErrorEnum>() {
@@ -537,8 +537,8 @@ impl LpWindow {
         let dialog = adw::MessageDialog::builder()
             .modal(true)
             .transient_for(self)
-            .heading(&i18n("Permanently Delete Image?"))
-            .body(&i18n_f(
+            .heading(i18n("Permanently Delete Image?"))
+            .body(i18n_f(
                 "The image “{}” can only be deleted permanently.",
                 &[&PathBuf::from(&path.file_name().unwrap_or_default())
                     .display()
@@ -549,7 +549,7 @@ impl LpWindow {
         dialog.add_responses(&[("cancel", &i18n("Cancel")), ("delete", &i18n("Delete"))]);
         dialog.set_response_appearance("delete", adw::ResponseAppearance::Destructive);
 
-        if "delete" == dialog.run_future().await {
+        if "delete" == dialog.choose_future().await {
             let file = gio::File::for_path(path);
             let result = file.delete_future(glib::Priority::default()).await;
 
@@ -570,7 +570,7 @@ impl LpWindow {
         let toast = adw::Toast::new(text.as_ref());
         toast.set_priority(priority);
 
-        imp.toast_overlay.add_toast(&toast);
+        imp.toast_overlay.add_toast(toast);
     }
 
     pub fn set_image_from_path(&self, path: &Path) {
@@ -655,40 +655,6 @@ impl LpWindow {
         if let Some(watch) = self.imp().watch_image_error.take() {
             watch.unwatch();
         }
-    }
-
-    // Adapted from https://gitlab.gnome.org/GNOME/eog/-/blob/master/src/eog-window.c:eog_window_obtain_desired_size
-    pub fn resize_from_dimensions(&self, img_width: i32, img_height: i32) {
-        let imp = self.imp();
-        let mut final_width = img_width;
-        let mut final_height = img_height;
-
-        let header_height = imp.headerbar.height();
-
-        // Ensure the window surface exists
-        if !self.is_realized() {
-            WidgetExt::realize(self);
-        }
-
-        let display = gdk::Display::default().unwrap();
-        let monitor = display.monitor_at_surface(&self.native().unwrap().surface());
-        let monitor_geometry = monitor.geometry();
-
-        let monitor_width = monitor_geometry.width();
-        let monitor_height = monitor_geometry.height();
-
-        if img_width > monitor_width || img_height + header_height > monitor_height {
-            let width_factor = (monitor_width as f32 * 0.85) / img_width as f32;
-            let height_factor =
-                (monitor_height as f32 * 0.85 - header_height as f32) / img_height as f32;
-            let factor = width_factor.min(height_factor);
-
-            final_width = (final_width as f32 * factor).round() as i32;
-            final_height = (final_height as f32 * factor).round() as i32;
-        }
-
-        self.set_default_size(final_width, final_height);
-        log::debug!("Window resized to {} x {}", final_width, final_height);
     }
 
     // In the LpWindow UI file we define a `gtk::Expression`s
