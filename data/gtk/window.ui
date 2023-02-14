@@ -102,7 +102,7 @@
                 <property name="tooltip-text" translatable="yes">Main Menu</property>
                 <property name="primary">True</property>
                 <property name="popover">
-                  <object class="GtkPopoverMenu">
+                  <object class="GtkPopoverMenu" id="menu">
                     <property name="menu-model">primary_menu</property>
                     <child type="rotate-left">
                       <object class="GtkButton">
@@ -139,6 +139,12 @@
             <child>
               <object class="GtkEventControllerMotion">
                 <signal name="motion" handler="on_header_motion_cb" swapped="yes"/>
+              </object>
+            </child>
+            <child>
+              <object class="GtkGestureClick">
+                <property name="touch-only">True</property>
+                <signal name="pressed" handler="on_header_tapped_cb" swapped="yes"/>
               </object>
             </child>
           </object>
@@ -210,6 +216,12 @@
     <child>
       <object class="GtkEventControllerMotion">
         <signal name="motion" handler="on_motion_cb" swapped="yes"/>
+      </object>
+    </child>
+    <child>
+      <object class="GtkGestureClick">
+        <property name="touch-only">True</property>
+        <signal name="pressed" handler="on_view_tapped_cb" swapped="yes"/>
       </object>
     </child>
   </template>

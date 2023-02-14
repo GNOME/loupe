@@ -46,6 +46,13 @@ const FADE_IDLE_TIMEOUT: u32 = 2;
 
 type IdHandle = RefCell<Option<glib::SourceId>>;
 
+#[derive(Debug, Copy, Clone)]
+enum FadingWidget {
+    Header,
+    ViewControls,
+}
+
+#[derive(Debug, Copy, Clone)]
 enum FadeDirection {
     Out,
     In,
@@ -82,6 +89,8 @@ mod imp {
         pub(super) properties_button: TemplateChild<gtk::ToggleButton>,
         #[template_child]
         pub(super) menu_button: TemplateChild<gtk::MenuButton>,
+        #[template_child]
+        pub(super) menu: TemplateChild<gtk::PopoverMenu>,
         #[template_child]
         pub(super) toast_overlay: TemplateChild<adw::ToastOverlay>,
         #[template_child]
@@ -343,7 +352,12 @@ mod imp {
 
             // Make widgets visible when the focus moves
             obj.connect_move_focus(|obj, _| {
-                obj.fade_all_in();
+                let imp = obj.imp();
+
+                if obj.images_showing() && !imp.properties_button.is_active() {
+                    obj.fade_all_in();
+                    obj.queue_fade_out_all();
+                }
             });
 
             self.status_page
@@ -387,18 +401,6 @@ mod imp {
                     true
                 }),
             );
-
-            // let animation = adw::TimedAnimation::builder()
-            //     // By default the controls are visible, and fade out
-            //     .duration(FADE_OUT_DURATION)
-            //     .easing(adw::Easing::Linear)
-            //     .target(&adw::PropertyAnimationTarget::new(
-            //         &*self.image_view,
-            //         "control-opacity",
-            //     ))
-            //     .build();
-
-            // self.fade_animation.set(animation).unwrap();
         }
     }
 
@@ -631,10 +633,13 @@ impl LpWindow {
         let imp = self.imp();
 
         if imp.image_view.current_page().is_some() {
-            imp.headerbar.add_css_class("osd");
             imp.stack.set_visible_child(&*imp.image_view);
             self.set_actions_enabled(true);
             imp.image_view.grab_focus();
+
+            if !imp.properties_button.is_active() {
+                imp.headerbar.add_css_class("osd");
+            }
 
             self.queue_fade_out_all();
         } else {
@@ -751,9 +756,7 @@ impl LpWindow {
         };
 
         // Do nothing if we're already animating in the same direction
-        if (animation.value_to() == value && animation.state() == adw::AnimationState::Playing)
-            || value == current_target_value
-        {
+        if animation.value_to() == value && animation.state() == adw::AnimationState::Playing {
             return;
         }
 
@@ -765,7 +768,18 @@ impl LpWindow {
     }
 
     /// Queue a fade animation to play after `FADE_IDLE_TIMEOUT` seconds of inactivity
-    fn queue_fade_out(&self, animation: &adw::TimedAnimation, id_handle: &IdHandle) {
+    fn queue_fade_out(&self, animation: &adw::TimedAnimation, widget: FadingWidget) {
+        fn handle_for_widget(win: &LpWindow, widget: FadingWidget) -> &IdHandle {
+            let imp = win.imp();
+
+            match widget {
+                FadingWidget::Header => &imp.header_timeout_id,
+                FadingWidget::ViewControls => &imp.motion_timeout_id,
+            }
+        }
+
+        let id_handle = handle_for_widget(self, widget);
+
         if let Some(id) = id_handle.take() {
             id.remove();
         }
@@ -773,11 +787,20 @@ impl LpWindow {
         let id = glib::timeout_add_seconds_local(
             FADE_IDLE_TIMEOUT,
             clone!(@weak self as win, @weak animation => @default-return glib::Continue(false), move || {
-                // Don't fade when the properties are showing
-                if !win.imp().properties_button.is_active() {
+                let imp = win.imp();
+
+                // Don't fade when the properties or primary menu are showing
+                if !imp.properties_button.is_active() && !imp.menu.is_visible() {
                     win.fade(&animation, FadeDirection::Out);
                 }
-                glib::Continue(true)
+
+                let id_handle = handle_for_widget(&win, widget);
+
+                // We don't want to queue up multiple timeouts here.
+                if let Some(id) = id_handle.take() {
+                    id.remove();
+                }
+                glib::Continue(false)
             }),
         );
 
@@ -791,9 +814,8 @@ impl LpWindow {
 
     /// Queue all controls to fade out after a timeout
     fn queue_fade_out_all(&self) {
-        let imp = self.imp();
-        self.queue_fade_out(self.header_fade_animation(), &imp.header_timeout_id);
-        self.queue_fade_out(self.fade_animation(), &imp.motion_timeout_id);
+        self.queue_fade_out(self.header_fade_animation(), FadingWidget::Header);
+        self.queue_fade_out(self.fade_animation(), FadingWidget::ViewControls);
     }
 
     /// Whether or not the window is showing images
@@ -803,14 +825,14 @@ impl LpWindow {
     }
 
     /// Handle motion, fading in `animation` and queing it to be faded out
-    fn handle_motion(&self, animation: &adw::TimedAnimation, id_handle: &IdHandle) {
+    fn handle_motion(&self, animation: &adw::TimedAnimation, widget: FadingWidget) {
         if !self.images_showing() {
             return;
         }
 
         self.fade(&animation, FadeDirection::In);
 
-        self.queue_fade_out(&animation, id_handle);
+        self.queue_fade_out(&animation, widget);
     }
 
     // In the LpWindow UI file we define a `gtk::Expression`s
@@ -849,13 +871,25 @@ impl LpWindow {
 
     #[template_callback]
     fn on_motion_cb(&self) {
-        let imp = self.imp();
-        self.handle_motion(&self.fade_animation(), &imp.motion_timeout_id);
+        self.handle_motion(&self.fade_animation(), FadingWidget::ViewControls);
     }
 
     #[template_callback]
     fn on_header_motion_cb(&self) {
-        let imp = self.imp();
-        self.handle_motion(&self.header_fade_animation(), &imp.header_timeout_id);
+        self.handle_motion(&self.header_fade_animation(), FadingWidget::Header);
+    }
+
+    #[template_callback]
+    fn on_view_tapped_cb(&self) {
+        let animation = self.fade_animation();
+        self.fade(animation, FadeDirection::In);
+        self.queue_fade_out(animation, FadingWidget::ViewControls);
+    }
+
+    #[template_callback]
+    fn on_header_tapped_cb(&self) {
+        let animation = self.header_fade_animation();
+        self.fade(animation, FadeDirection::In);
+        self.queue_fade_out(animation, FadingWidget::Header);
     }
 }
