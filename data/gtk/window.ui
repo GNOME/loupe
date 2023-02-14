@@ -145,12 +145,6 @@
                 <signal name="motion" handler="on_header_motion_cb" swapped="yes"/>
               </object>
             </child>
-            <child>
-              <object class="GtkGestureClick">
-                <property name="touch-only">True</property>
-                <signal name="pressed" handler="on_header_tapped_cb" swapped="yes"/>
-              </object>
-            </child>
           </object>
         </property>
         <property name="content">
@@ -225,7 +219,7 @@
     <child>
       <object class="GtkGestureClick">
         <property name="touch-only">True</property>
-        <signal name="pressed" handler="on_view_tapped_cb" swapped="yes"/>
+        <signal name="released" handler="on_tapped_cb" swapped="yes"/>
       </object>
     </child>
   </template>
