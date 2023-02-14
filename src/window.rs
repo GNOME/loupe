@@ -350,6 +350,17 @@ mod imp {
                 }),
             );
 
+            // Listen to whether or not the menu opens
+            self.menu
+                .connect_visible_notify(glib::clone!(@weak obj => move |popover| {
+                    if popover.is_visible() {
+                        obj.fade_all_in();
+                    } else {
+                        // The popover was just hidden, so fade after timeout
+                        obj.queue_fade_out_all();
+                    }
+                }));
+
             // Make widgets visible when the focus moves
             obj.connect_move_focus(|obj, _| {
                 let imp = obj.imp();
@@ -880,16 +891,8 @@ impl LpWindow {
     }
 
     #[template_callback]
-    fn on_view_tapped_cb(&self) {
-        let animation = self.fade_animation();
-        self.fade(animation, FadeDirection::In);
-        self.queue_fade_out(animation, FadingWidget::ViewControls);
-    }
-
-    #[template_callback]
-    fn on_header_tapped_cb(&self) {
-        let animation = self.header_fade_animation();
-        self.fade(animation, FadeDirection::In);
-        self.queue_fade_out(animation, FadingWidget::Header);
+    fn on_tapped_cb(&self) {
+        self.fade_all_in();
+        self.queue_fade_out_all();
     }
 }
