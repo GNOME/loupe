@@ -8,9 +8,12 @@ A simple image viewer application written with GTK4 and Rust.
 
 The latest version from the main branch is available from the build artifacts.
 
-- [Download Loupe Development Version](https://gitlab.gnome.org/api/v4/projects/13923/jobs/artifacts/main/raw/org.gnome.Loupe.Devel.flatpak?job=flatpak)
+Download bundle for:
 
-This version will not get any automated updates after installation.
+* [x86_64](https://gitlab.gnome.org/api/v4/projects/13923/jobs/artifacts/main/raw/org.gnome.Loupe.Devel.flatpak?job=flatpak) (Average desktop or laptop PC)
+* [aarch64](https://gitlab.gnome.org/api/v4/projects/13923/jobs/artifacts/main/raw/org.gnome.Loupe.Devel.flatpak?job=flatpak@aarch64) (Average phone, tablet, or Apple Silicon devices)
+
+Bundles will not be automatically updated after installation.
 
 ## Building
 
@@ -29,7 +32,7 @@ or `https://gitlab.gnome.org/Incubator/loupe.git` as the URL.
 
 Depending on how you want it installed instructions can differ. If you
 used GNOME Builder to build it, clicking the bar at the top window will 
-open a submenu with "Export Bundle". This will create a flatpak bundle, 
+open a submenu with "Export Bundle". This will create a flatpak bundle,
 which can be installed on any system that supports flatpak.
 
 **In order for the Loupe flatpak to be able to read the directory images are installed in, you must install a bundle.**
