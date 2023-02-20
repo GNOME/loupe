@@ -594,7 +594,7 @@ impl LpWindow {
         self.action_set_enabled("win.toggle-properties", enabled);
     }
 
-    /// Handles change in availablilty of images
+    /// Handles change in availability of images
     fn images_available(&self) {
         let imp = self.imp();
 
@@ -641,7 +641,7 @@ impl LpWindow {
 
         if let Some(page) = current_page {
             if page.error().is_some() {
-                log::debug!("Showin window because loading image failed");
+                log::debug!("Showing window because loading image failed");
                 self.disconnect_present_watches();
                 self.present();
             }

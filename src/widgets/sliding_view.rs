@@ -109,7 +109,7 @@ mod imp {
 
             self.swipe_tracker.set(swipe_tracker).unwrap();
 
-            // Avoid propagating scoll events to AdwFlap if at beginning or end
+            // Avoid propagating scroll events to AdwFlap if at beginning or end
             let scroll_controller =
                 gtk::EventControllerScroll::new(gtk::EventControllerScrollFlags::HORIZONTAL);
 
@@ -356,7 +356,7 @@ impl LpSlidingView {
 
     /// Animates removal of current page
     ///
-    /// Moves to next page if possible, or to previous, or emmediately removes
+    /// Moves to next page if possible, or to previous, or immediately removes
     /// the current page if last remaining.
     pub fn scroll_to_neighbor(&self) {
         if let Some(next_page) = self.next_page() {

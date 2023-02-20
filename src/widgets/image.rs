@@ -84,7 +84,7 @@ mod imp {
         /// Current animation is transitioning from having horizontal scrollbars
         /// to not having them or vice versa.
         pub zoom_hscrollbar_transition: Cell<bool>,
-        /// Same but vor vertical
+        /// Same but for vertical
         pub zoom_vscrollbar_transition: Cell<bool>,
 
         /// Always fit image into window, causes `zoom` to change automatically
@@ -185,7 +185,7 @@ mod imp {
                 "best-fit" => obj.is_best_fit().to_value(),
                 "is-max-zoom" => obj.is_max_zoom().to_value(),
                 "image-size" => obj.image_size().to_variant().to_value(),
-                // don't use getter functions here sicne they can return a fake adjustment
+                // don't use getter functions here since they can return a fake adjustment
                 "hadjustment" => self.hadjustment.borrow().to_value(),
                 "vadjustment" => self.vadjustment.borrow().to_value(),
                 "hscroll-policy" | "vscroll-policy" => gtk::ScrollablePolicy::Minimum.to_value(),
@@ -226,7 +226,7 @@ mod imp {
         fn dispose(&self) {
             let obj = self.obj();
 
-            // remove target fron zoom animation because it's property of this object
+            // remove target from zoom animation because it's property of this object
             obj.rotation_animation()
                 .set_target(&adw::CallbackAnimationTarget::new(|_| {}));
             obj.zoom_animation()
@@ -242,7 +242,7 @@ mod imp {
         fn connect_controllers(&self) {
             let obj = self.obj();
 
-            // Needed vor having the current cursor position available
+            // Needed for having the current cursor position available
             let motion_controller = gtk::EventControllerMotion::new();
             motion_controller.connect_enter(glib::clone!(@weak obj => move |_, x, y| {
                 obj.imp().pointer_position.set(Some((x, y)));
@@ -499,7 +499,7 @@ mod imp {
                 let x = f64::max((widget_width - widget.image_displayed_width()) / 2.0, 0.);
                 let y = f64::max((widget_height - widget.image_displayed_height()) / 2.0, 0.);
                 // round to pixel values to not have a half pixel offset to physical pixels
-                // the offset would leading to a blury output
+                // the offset would leading to a blurry output
                 snapshot.translate(&graphene::Point::new(
                     widget.round(x) as f32,
                     widget.round(y) as f32,
@@ -543,7 +543,7 @@ mod imp {
                         let monitor = display.monitor_at_surface(&native.surface()).unwrap();
                         let monitor_geometry = monitor.geometry();
                         // TODO: Per documentation those dimensions should not be physical pixels.
-                        // But on Wayland they are physiscal pixels and on X11 not.
+                        // But on Wayland they are physical pixels and on X11 not.
                         // Taking the version that works on Wayland for now.
                         // <https://gitlab.gnome.org/GNOME/gtk/-/issues/5391>
                         let monitor_width = monitor_geometry.width() as f64 - 40.;
@@ -553,7 +553,7 @@ mod imp {
                         let monitor_area = monitor_width * monitor_height;
                         let image_area = image_width as f64 * image_height as f64;
 
-                        let ocuppy_area_factor = if monitor_area < 1024. * 768. {
+                        let occupy_area_factor = if monitor_area < 1024. * 768. {
                             // for small monitors occupy 80% of the area
                             0.8
                         } else {
@@ -561,11 +561,11 @@ mod imp {
                             0.3
                         };
 
-                        // factor for width and height that will achive the desired area occupation
+                        // factor for width and height that will achieve the desired area occupation
                         // derived from:
-                        // monitor_area * ocuppy_area_factor ==
+                        // monitor_area * occupy_area_factor ==
                         //   (image_width * size_scale) * (image_height * size_scale)
-                        let size_scale = f64::sqrt(monitor_area / image_area * ocuppy_area_factor);
+                        let size_scale = f64::sqrt(monitor_area / image_area * occupy_area_factor);
                         // ensure that we never increase image size
                         let target_scale = f64::min(1.0, size_scale);
                         let mut nat_width = image_width as f64 * target_scale;
@@ -883,7 +883,7 @@ impl LpImage {
 
     /// Set zoom level aiming for given position or center if not available
     fn set_zoom_aiming(&self, mut zoom: f64, aiming: Option<(f64, f64)>) {
-        // allow some deviantion from max value for rubberbanding
+        // allow some deviation from max value for rubberbanding
         if zoom > MAX_ZOOM_LEVEL {
             let max_deviation = MAX_ZOOM_LEVEL * ZOOM_FACTOR_MAX_RUBBERBAND;
             let deviation = zoom / MAX_ZOOM_LEVEL;
@@ -973,7 +973,7 @@ impl LpImage {
     ///
     /// When zooming by a ratio of `zoom_delta` and wanting to keep position `x`
     /// in the image at the same place in the widget, the returned value is
-    /// the correct value for hadjustment to achive that.
+    /// the correct value for hadjustment to achieve that.
     pub fn hadjustment_corrected_for_zoom(&self, zoom_delta: f64, x: f64) -> f64 {
         let adj = self.hadjustment();
         // Width of bars to the left and right of the image
@@ -1035,7 +1035,7 @@ impl LpImage {
 
         // If image is only 1/4 of a zoom step away from best-fit, also
         // activate best-fit. This avoids bugs with floating point precision
-        // and removes akward minimal zoom steps.
+        // and removes awkward minimal zoom steps.
         let extended_best_fit_threshold =
             self.zoom_level_best_fit() * (1. + (ZOOM_FACTOR_BUTTON - 1.) / 4.);
 
@@ -1125,7 +1125,7 @@ impl LpImage {
             gtk::PanDirection::Left | gtk::PanDirection::Up => -1.,
             gtk::PanDirection::Right | gtk::PanDirection::Down => 1.,
             _ => {
-                log::error!("Unkown pan direction {direction:?}");
+                log::error!("Unknown pan direction {direction:?}");
                 return;
             }
         };
@@ -1138,7 +1138,7 @@ impl LpImage {
                 (self.vadjustment(), self.max_vadjustment_value())
             }
             _ => {
-                log::error!("Unkown pan direction {direction:?}");
+                log::error!("Unknown pan direction {direction:?}");
                 return;
             }
         };

@@ -132,10 +132,10 @@ impl GPSLocation {
     pub fn latitude_display(&self) -> String {
         let coord = self.latitude;
         let reference = if coord.sing {
-            // Translators: short for "north" in GPS coordiante
+            // Translators: short for "north" in GPS coordinate
             i18n("N")
         } else {
-            // Translators: short for "south" in GPS coordiante
+            // Translators: short for "south" in GPS coordinate
             i18n("S")
         };
 
@@ -145,10 +145,10 @@ impl GPSLocation {
     pub fn longitude_display(&self) -> String {
         let coord = self.longitude;
         let reference = if coord.sing {
-            // Translators: short for "east" in GPS coordiante
+            // Translators: short for "east" in GPS coordinate
             i18n("E")
         } else {
-            // Translators: short for "west" in GPS coordiante
+            // Translators: short for "west" in GPS coordinate
             i18n("W")
         };
 

@@ -286,8 +286,8 @@ impl LpPropertiesView {
         self.notify("file-info");
     }
 
-    // Determines the dimensions of the file asyncronously. We do this
-    // asycnhronously to avoid blocking the UI as we parse the file info.
+    // Determines the dimensions of the file asynchronously. We do this
+    // asynchronously to avoid blocking the UI as we parse the file info.
     // In addition, we're loading the image metadata separately from the file
     // here so that the properties sidebar's information can load separately
     // from the current file.

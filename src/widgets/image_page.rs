@@ -53,7 +53,7 @@ mod imp {
         #[template_child]
         pub(super) press_gesture: TemplateChild<gtk::GestureLongPress>,
 
-        /// set if an error has occured and is shown on error_page
+        /// set if an error has occurred and is shown on error_page
         pub(super) error: RefCell<Option<String>>,
     }
 

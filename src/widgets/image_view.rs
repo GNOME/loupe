@@ -169,7 +169,7 @@ mod imp {
     }
 
     impl WidgetImpl for LpImageView {
-        /// The main target of this manual implemtation is to provide a good
+        /// The main target of this manual implementation is to provide a good
         /// natural width that allows to have a neat size for newly opened `LpWindow`s.
         /// The actual calculation of the image natural width happens in
         /// the measure function of `LpImage`.
@@ -365,7 +365,7 @@ impl LpImageView {
 
     fn scroll_sliding_view(&self, path: &Path) {
         let Some(current_page) = self.sliding_view().pages().remove(path) else {
-            log::error!("Current path not availabel in sliding_view for scrolling: {path:?}");
+            log::error!("Current path not available in sliding_view for scrolling: {path:?}");
             return;
         };
 
