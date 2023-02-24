@@ -169,7 +169,7 @@
                     <property name="vexpand">True</property>
                     <child>
                       <object class="AdwStatusPage" id="status_page">
-                        <property name="title" translatable="yes">Loupe</property>
+                        <property name="title" translatable="yes">View Images</property>
                         <property name="description" translatable="yes">Drag and drop images here</property>
                         <child>
                           <object class="GtkButton">
