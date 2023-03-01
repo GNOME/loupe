@@ -22,7 +22,7 @@ iv_pkgdatadir = iv_datadir / meson.project_name()
 profile = ''
 version_suffix = ''
 
-if get_option('profile') == 'development'
+if get_option('profile') != 'release'
   profile = '.Devel'
   vcs_tag = run_command('git', 'rev-parse', '--short', 'HEAD', check: false).stdout().strip()
   if vcs_tag == ''

@@ -18,13 +18,13 @@ run_command(
 cargo_options = [ '--manifest-path', source_root / 'Cargo.toml' ]
 cargo_options += [ '--target-dir', build_root / 'src' ]
 
-if get_option('profile') == 'default'
+if get_option('profile') == 'development'
+  rust_target = 'debug'
+  message('Building in debug mode')
+else
   cargo_options += [ '--release' ]
   rust_target = 'release'
   message('Building in release mode')
-else
-  rust_target = 'debug'
-  message('Building in debug mode')
 endif
 
 cargo_env = { 'CARGO_HOME': build_root / 'cargo-home' }

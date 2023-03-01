@@ -1,9 +1,11 @@
 option(
   'profile',
   type: 'combo',
+  description: 'The build profiles for the application. Use development or ci for the .Devel app ID. ci also produces optimized bundles.',
   choices: [
-    'default',
-    'development'
+    'release',
+    'development',
+    'ci',
   ],
-  value: 'default'
+  value: 'release'
 )
