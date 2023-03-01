@@ -22,10 +22,6 @@
         "--filesystem=xdg-run/gvfsd"
     ],
     "build-options" : {
-        "append-path" : "/usr/lib/sdk/rust-stable/bin",
-        "build-args" : [
-            "--share=network"
-        ],
         "append-path" : "/usr/lib/sdk/rust-stable/bin:/usr/lib/sdk/llvm14/bin",
         "build-args" : [
             "--share=network"
