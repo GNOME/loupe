@@ -37,10 +37,12 @@ const ROTATION_ANIMATION_DURATION: u32 = 200;
 
 /// Relative to current zoom level
 const ZOOM_FACTOR_BUTTON: f64 = 1.5;
-/// Relative to current zoom level
-const ZOOM_FACTOR_WHEEL: f64 = 1.3;
-/// Relative to current zoom level
-const ZOOM_FACTOR_WHEEL_HI_RES: f64 = 0.001;
+/// Zoom 30% per scroll wheel detent
+const ZOOM_FACTOR_SCROLL_WHEEL: f64 = 1.3;
+/// Zoom 0.5% per pixel
+///
+/// This is for scrolling devices that might not exist
+const ZOOM_FACTOR_SCROLL_SURFACE: f64 = 1.005;
 
 /// Relative to best-fit level
 const ZOOM_FACTOR_DOUBLE_TAP: f64 = 2.5;
@@ -276,21 +278,19 @@ mod imp {
                     return gtk::Inhibit(false);
                 }
 
+		// Use exponential scaling since zoom is always multiplicative with the existing value
+		// This is the right thing since `exp(n/2)^2 == exp(n)` (two small steps are the same as one larger step)
                 let (zoom_factor, animated) = match event.unit() {
-                    gdk::ScrollUnit::Wheel => (y.abs() * ZOOM_FACTOR_WHEEL, true),
-                    // TODO: completely untested
-                    gdk::ScrollUnit::Surface => (y.abs() * ZOOM_FACTOR_WHEEL_HI_RES + 1.0, false),
+                    gdk::ScrollUnit::Wheel => (f64::exp( - y * f64::ln(ZOOM_FACTOR_SCROLL_WHEEL)), y.abs() >= 1.),
+                    gdk::ScrollUnit::Surface => (f64::exp( - y * f64::ln(ZOOM_FACTOR_SCROLL_SURFACE)), false),
                     unknown_unit => {
                         log::warn!("Ignoring unknown scroll unit: {unknown_unit}");
                         (1., false)
                     }
                 };
 
-                let zoom = if y > 0. {
-                    obj.imp().zoom_target.get() / zoom_factor
-                } else {
-                    obj.imp().zoom_target.get() * zoom_factor
-                };
+                let zoom =
+                    obj.imp().zoom_target.get() * zoom_factor;
 
                 if zoom > obj.zoom_level_best_fit() {
                     obj.set_best_fit(false);
@@ -298,6 +298,7 @@ mod imp {
                         obj.zoom_to(zoom);
                     } else {
                         obj.set_zoom(zoom);
+                        obj.imp().zoom_target.set(zoom);
                     }
                 } else {
                     obj.set_best_fit(true);
@@ -305,6 +306,7 @@ mod imp {
                         obj.zoom_to(obj.zoom_level_best_fit());
                     } else {
                         obj.set_zoom(obj.zoom_level_best_fit());
+                        obj.imp().zoom_target.set(obj.zoom_level_best_fit());
                     }
                 }
 
