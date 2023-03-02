@@ -137,6 +137,13 @@ mod imp {
 
             obj.add_controller(scroll_controller);
         }
+
+        fn dispose(&self) {
+            let obj = self.obj();
+            while let Some(child) = obj.first_child() {
+                child.unparent();
+            }
+        }
     }
 
     impl WidgetImpl for LpSlidingView {
