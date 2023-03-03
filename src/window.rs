@@ -31,7 +31,7 @@ use std::path::{Path, PathBuf};
 
 use crate::config;
 use crate::util::{self, Direction, Position};
-use crate::widgets::{LpImage, LpImagePage, LpImageView, LpPropertiesView};
+use crate::widgets::{LpImage, LpImageView, LpPropertiesView};
 
 mod imp {
     use super::*;
@@ -227,50 +227,39 @@ mod imp {
             gtk::WindowGroup::new().add_window(&*obj);
 
             obj.set_actions_enabled(false);
-            self.image_view
-                .property_expression("current-page")
-                .chain_property::<LpImagePage>("image")
-                .chain_property::<LpImage>("best-fit")
-                .watch(
-                    glib::Object::NONE,
-                    // clone! is a macro from glib-rs that allows
-                    // you to easily handle references in callbacks
-                    // without refcycles or leaks.
-                    //
-                    // When you don't want the callback to keep the
-                    // Object alive, pass as @weak. Otherwise, pass
-                    // as @strong. Most of the time you will want
-                    // to use @weak.
-                    glib::clone!(@weak obj => move || {
-                        let enabled = obj
-                            .imp()
-                            .image_view
-                            .current_page()
-                            .map(|page| !page.image().is_best_fit())
-                            .unwrap_or_default();
 
-                        obj.action_set_enabled("win.zoom-out", enabled);
-                    }),
-                );
+            let signal_group = self.image_view.current_image_signals();
+            // clone! is a macro from glib-rs that allows
+            // you to easily handle references in callbacks
+            // without refcycles or leaks.
+            //
+            // When you don't want the callback to keep the
+            // Object alive, pass as @weak. Otherwise, pass
+            // as @strong. Most of the time you will want
+            // to use @weak.
+            signal_group.connect_bind_local(glib::clone!(@weak obj => move |_, _| {
+                obj.on_zoom_status_changed()
+            }));
 
-            // disable zoom-in if at maximum zoom level
-            self.image_view
-                .property_expression("current-page")
-                .chain_property::<LpImagePage>("image")
-                .chain_property::<LpImage>("is-max-zoom")
-                .watch(
-                    glib::Object::NONE,
-                    glib::clone!(@weak obj => move || {
-                        let enabled = obj
-                            .imp()
-                            .image_view
-                            .current_page()
-                            .map(|page| !page.image().is_max_zoom())
-                            .unwrap_or_default();
+            let win = &*obj;
+            signal_group.connect_closure(
+                "notify::best-fit",
+                false,
+                // `closure_local!` is similar to `clone`, but you use `@watch` instead of clone.
+                // `@watch` means that this signal will be disconnected when the watched object
+                // is dropped.
+                glib::closure_local!(@watch win => move |_: &LpImage, _: &glib::ParamSpec| {
+                    win.on_zoom_status_changed();
+                }),
+            );
 
-                        obj.action_set_enabled("win.zoom-in", enabled);
-                    }),
-                );
+            signal_group.connect_closure(
+                "notify::is-max-zoom",
+                false,
+                glib::closure_local!(@watch win => move |_: &LpImage, _: &glib::ParamSpec| {
+                    win.on_zoom_status_changed();
+                }),
+            );
 
             self.image_view.connect_notify_local(
                 Some("current-page"),
@@ -359,6 +348,10 @@ mod imp {
                     true
                 }),
             );
+        }
+
+        fn dispose(&self) {
+            self.obj().disconnect_present_watches();
         }
     }
 
@@ -655,6 +648,22 @@ impl LpWindow {
         if let Some(watch) = self.imp().watch_image_error.take() {
             watch.unwatch();
         }
+    }
+
+    fn on_zoom_status_changed(&self) {
+        let can_zoom_out = self
+            .image_view()
+            .current_image()
+            .map(|image| !image.is_best_fit())
+            .unwrap_or_default();
+        let can_zoom_in = self
+            .image_view()
+            .current_image()
+            .map(|image| !image.is_max_zoom())
+            .unwrap_or_default();
+
+        self.action_set_enabled("win.zoom-out", can_zoom_out);
+        self.action_set_enabled("win.zoom-in", can_zoom_in);
     }
 
     // In the LpWindow UI file we define a `gtk::Expression`s

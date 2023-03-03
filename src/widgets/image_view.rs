@@ -433,6 +433,13 @@ impl LpImageView {
         self.imp().sliding_view.current_page().map(|x| x.image())
     }
 
+    pub fn current_image_signals(&self) -> &glib::SignalGroup {
+        self.imp()
+            .current_image_signals
+            .get()
+            .expect("Signal group should be set up during construction")
+    }
+
     pub fn current_page(&self) -> Option<LpImagePage> {
         self.imp().sliding_view.current_page()
     }
