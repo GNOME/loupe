@@ -2,6 +2,16 @@
 <interface>
   <template class="LpPropertiesView" parent="AdwBin">
     <property name="width-request">255</property>
+    <binding name="metadata">
+      <lookup type="LpImage" name="metadata">
+        <lookup type="LpPropertiesView" name="image"/>
+      </lookup>
+    </binding>
+    <binding name="file">
+      <lookup type="LpImage" name="file">
+        <lookup type="LpPropertiesView" name="image"/>
+      </lookup>
+    </binding>
     <property name="child">
       <object class="GtkScrolledWindow">
         <property name="child">

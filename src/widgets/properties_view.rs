@@ -102,9 +102,7 @@ mod imp {
                     glib::ParamSpecObject::builder::<LpImage>("image")
                         .explicit_notify()
                         .build(),
-                    glib::ParamSpecObject::builder::<LpImageMetadata>("metadata")
-                        .read_only()
-                        .build(),
+                    glib::ParamSpecObject::builder::<LpImageMetadata>("metadata").build(),
                 ]
             });
 
@@ -131,6 +129,8 @@ mod imp {
 
             match prop_name {
                 "image" => obj.set_image(value.get().ok().as_ref()),
+                "file" => obj.set_file(value.get().ok().as_ref()),
+                "metadata" => obj.set_metadata(value.get().unwrap()),
                 _ => unimplemented!(),
             }
         }
@@ -140,34 +140,6 @@ mod imp {
 
             self.parent_constructed();
             obj.action_set_enabled("properties.open-folder", false);
-
-            // watch changes to image metadata
-            obj.property_expression("image")
-                .chain_property::<LpImage>("metadata")
-                .watch(
-                    glib::Object::NONE,
-                    glib::clone!(@weak obj => move || {
-                        let metadata = if let Some(image) = obj.image() {
-                            image.metadata()
-                        } else {
-                            LpImageMetadata::default()
-                        };
-
-                        // set metadata since image might have changed
-                        obj.imp().metadata.replace(metadata);
-                        obj.notify("metadata");
-                    }),
-                );
-
-            // watch changes to image metadata
-            obj.property_expression("image")
-                .chain_property::<LpImage>("path")
-                .watch(
-                    glib::Object::NONE,
-                    glib::clone!(@weak obj => move || {
-                        obj.set_file(obj.image().and_then(|x| x.file()).as_ref());
-                    }),
-                );
         }
     }
 
@@ -274,6 +246,12 @@ impl LpPropertiesView {
         spawn!(async {
             let _ = fut.await;
         });
+    }
+
+    fn set_metadata(&self, metadata: LpImageMetadata) {
+        let imp = self.imp();
+        imp.metadata.replace(metadata);
+        self.notify("metadata");
     }
 
     // This is where we handle the results of the future.
