@@ -44,6 +44,8 @@ use std::path::{Path, PathBuf};
 const BUFFER: usize = 2;
 
 mod imp {
+    use once_cell::sync::OnceCell;
+
     use super::*;
 
     #[derive(Debug, Default, CompositeTemplate)]
@@ -63,6 +65,8 @@ mod imp {
 
         pub model: RefCell<LpFileModel>,
         pub preserve_content: Cell<bool>,
+
+        pub current_image_signals: OnceCell<glib::SignalGroup>,
     }
 
     #[glib::object_subclass]
@@ -118,25 +122,32 @@ mod imp {
             // Manually mange widget layout, see `WidgetImpl` for details
             obj.set_layout_manager(None::<gtk::LayoutManager>);
 
-            obj.property_expression("current-page")
-                .chain_property::<LpImagePage>("image")
-                .chain_property::<LpImage>("path")
-                .watch(
-                    glib::Object::NONE,
-                    glib::clone!(@weak obj => move || {
-                        obj.current_image_path_changed();
-                    }),
-                );
+            let signal_group = glib::SignalGroup::new(LpImage::static_type());
+            obj.connect_notify_local(
+                Some("current-page"),
+                clone!(@weak signal_group => move |obj, _| {
+                    signal_group.set_target(obj.current_image().as_ref());
+                }),
+            );
 
-            obj.property_expression("current-page")
-                .chain_property::<LpImagePage>("image")
-                .chain_property::<LpImage>("is-deleted")
-                .watch(
-                    glib::Object::NONE,
-                    glib::clone!(@weak obj => move || {
-                        obj.current_image_path_changed();
-                    }),
-                );
+            let view = &*obj;
+            signal_group.connect_closure(
+                "notify::path",
+                true,
+                glib::closure_local!(@watch view => move |_: LpImage, _: glib::ParamSpec| {
+                    view.current_image_path_changed();
+                }),
+            );
+
+            signal_group.connect_closure(
+                "notify::is-deleted",
+                true,
+                glib::closure_local!(@watch view => move |_: LpImage, _: glib::ParamSpec| {
+                    view.current_image_path_changed();
+                }),
+            );
+
+            self.current_image_signals.set(signal_group).unwrap();
 
             let source = gtk::DragSource::new();
             source.set_exclusive(true);
