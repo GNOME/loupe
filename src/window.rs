@@ -26,7 +26,6 @@ use glib::clone;
 use gtk::CompositeTemplate;
 use gtk_macros::spawn;
 
-use std::cell::RefCell;
 use std::path::{Path, PathBuf};
 
 use crate::config;
@@ -34,6 +33,9 @@ use crate::util::{self, Direction, Position};
 use crate::widgets::{LpImage, LpImageView, LpPropertiesView};
 
 mod imp {
+    use crate::widgets::LpImagePage;
+    use once_cell::sync::OnceCell;
+
     use super::*;
 
     // To use composite templates, you need
@@ -77,8 +79,7 @@ mod imp {
         #[template_child]
         pub drop_target: TemplateChild<gtk::DropTarget>,
 
-        pub watch_image_size: RefCell<Option<gtk::ExpressionWatch>>,
-        pub watch_image_error: RefCell<Option<gtk::ExpressionWatch>>,
+        current_page_signals: OnceCell<glib::SignalGroup>,
     }
 
     #[glib::object_subclass]
@@ -228,7 +229,7 @@ mod imp {
 
             obj.set_actions_enabled(false);
 
-            let signal_group = self.image_view.current_image_signals();
+            let current_image_signals = self.image_view.current_image_signals();
             // clone! is a macro from glib-rs that allows
             // you to easily handle references in callbacks
             // without refcycles or leaks.
@@ -237,12 +238,12 @@ mod imp {
             // Object alive, pass as @weak. Otherwise, pass
             // as @strong. Most of the time you will want
             // to use @weak.
-            signal_group.connect_bind_local(glib::clone!(@weak obj => move |_, _| {
+            current_image_signals.connect_bind_local(glib::clone!(@weak obj => move |_, _| {
                 obj.on_zoom_status_changed()
             }));
 
             let win = &*obj;
-            signal_group.connect_closure(
+            current_image_signals.connect_closure(
                 "notify::best-fit",
                 false,
                 // `closure_local!` is similar to `clone`, but you use `@watch` instead of clone.
@@ -253,7 +254,7 @@ mod imp {
                 }),
             );
 
-            signal_group.connect_closure(
+            current_image_signals.connect_closure(
                 "notify::is-max-zoom",
                 false,
                 glib::closure_local!(@watch win => move |_: &LpImage, _: &glib::ParamSpec| {
@@ -261,12 +262,32 @@ mod imp {
                 }),
             );
 
-            self.image_view.connect_notify_local(
-                Some("current-page"),
-                glib::clone!(@weak obj => move |_, _| {
-                        obj.images_available();
+            current_image_signals.connect_closure(
+                "notify::image-size",
+                false,
+                glib::closure_local!(@watch win => move |_: &LpImage, _: &glib::ParamSpec| {
+                    win.image_size_ready();
                 }),
             );
+
+            let current_page_signals = glib::SignalGroup::new(LpImagePage::static_type());
+            self.image_view.connect_notify_local(
+                Some("current-page"),
+                glib::clone!(@weak obj, @weak current_page_signals => move |view, _| {
+                    current_page_signals.set_target(view.current_page().as_ref());
+                    obj.images_available();
+                }),
+            );
+
+            current_page_signals.connect_closure(
+                "notify::error",
+                false,
+                glib::closure_local!(@watch win => move |_: &LpImagePage, _: &glib::ParamSpec| {
+                    win.image_error();
+                }),
+            );
+
+            self.current_page_signals.set(current_page_signals).unwrap();
 
             // action win.previous status
             self.image_view.connect_notify_local(
@@ -348,10 +369,6 @@ mod imp {
                     true
                 }),
             );
-        }
-
-        fn dispose(&self) {
-            self.obj().disconnect_present_watches();
         }
     }
 
@@ -603,7 +620,6 @@ impl LpWindow {
     pub fn image_size_ready(&self) {
         // if visible for whatever reason, don't do any resize
         if self.is_visible() {
-            self.disconnect_present_watches();
             return;
         }
 
@@ -618,7 +634,6 @@ impl LpWindow {
                 log::debug!("Showing window because image size is ready");
                 // this let's the window determine the default size from LpImage's natural size
                 self.set_default_size(-1, -1);
-                self.disconnect_present_watches();
                 self.present();
             }
         }
@@ -626,7 +641,6 @@ impl LpWindow {
 
     pub fn image_error(&self) {
         if self.is_visible() {
-            self.disconnect_present_watches();
             return;
         }
 
@@ -635,18 +649,8 @@ impl LpWindow {
         if let Some(page) = current_page {
             if page.error().is_some() {
                 log::debug!("Showing window because loading image failed");
-                self.disconnect_present_watches();
                 self.present();
             }
-        }
-    }
-
-    fn disconnect_present_watches(&self) {
-        if let Some(watch) = self.imp().watch_image_size.take() {
-            watch.unwatch();
-        }
-        if let Some(watch) = self.imp().watch_image_error.take() {
-            watch.unwatch();
         }
     }
 
