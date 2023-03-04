@@ -33,9 +33,6 @@ use crate::util::{self, Direction, Position};
 use crate::widgets::{LpImage, LpImageView, LpPropertiesView};
 
 mod imp {
-    use crate::widgets::LpImagePage;
-    use once_cell::sync::OnceCell;
-
     use super::*;
 
     // To use composite templates, you need
@@ -78,8 +75,6 @@ mod imp {
         pub properties_view: TemplateChild<LpPropertiesView>,
         #[template_child]
         pub drop_target: TemplateChild<gtk::DropTarget>,
-
-        current_page_signals: OnceCell<glib::SignalGroup>,
     }
 
     #[glib::object_subclass]
@@ -270,24 +265,20 @@ mod imp {
                 }),
             );
 
-            let current_page_signals = glib::SignalGroup::new(LpImagePage::static_type());
-            self.image_view.connect_notify_local(
-                Some("current-page"),
-                glib::clone!(@weak obj, @weak current_page_signals => move |view, _| {
-                    current_page_signals.set_target(view.current_page().as_ref());
-                    obj.images_available();
-                }),
-            );
-
-            current_page_signals.connect_closure(
+            current_image_signals.connect_closure(
                 "notify::error",
                 false,
-                glib::closure_local!(@watch win => move |_: &LpImagePage, _: &glib::ParamSpec| {
+                glib::closure_local!(@watch win => move |_: &LpImage, _: &glib::ParamSpec| {
                     win.image_error();
                 }),
             );
 
-            self.current_page_signals.set(current_page_signals).unwrap();
+            self.image_view.connect_notify_local(
+                Some("current-page"),
+                glib::clone!(@weak obj => move |_, _| {
+                    obj.images_available();
+                }),
+            );
 
             // action win.previous status
             self.image_view.connect_notify_local(
@@ -647,7 +638,7 @@ impl LpWindow {
         let current_page = self.imp().image_view.current_page();
 
         if let Some(page) = current_page {
-            if page.error().is_some() {
+            if page.image().error().is_some() {
                 log::debug!("Showing window because loading image failed");
                 self.present();
             }

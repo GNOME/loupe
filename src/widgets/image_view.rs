@@ -509,7 +509,7 @@ impl LpImageView {
             other_pages.remove(&new_page.path());
             for (_, page) in other_pages {
                 let image = page.image();
-                image.set_rotation(0.);
+                image.reset_rotation();
                 image.set_best_fit(true);
                 image.zoom_best_fit();
             }

@@ -15,6 +15,34 @@ Download bundle for:
 
 Bundles will not be automatically updated after installation.
 
+## Supported Formats
+
+| Format   | ICC | CICP | EXIF | XMP | Animation | Library                       |
+|----------|-----|------|------|-----|-----------|-------------------------------|
+| JPEG     | ✔   | —    | ✔    | ✘   | —         | image-rs                      |
+| PNG      | ✔   | ✘    | ✔    | ✘   | ✘         | image-rs                      |
+| GIF      | ✘ * | —    | —    | ✘   | ✘         | image-rs                      |
+| WEBP     | —   | —    | ✔    | ✘   | ✘         | image-rs                      |
+| AVIF     | ✔   | ✔    | ✔    | ✘   | ✘         | libheif-rs + libheif (C++)    |
+| HEIC     | ✔   | ✔    | ✔    | ✘   | ✘         | libheif-rs + libheif (C++) ** |
+| TIFF     | ✘   | —    | ✔    | ✘   | —         | image-rs                      |
+| SVG      | ✘   | —    | —    | ✘ * | —         | librsvg                       |
+| BMP      | ✘   | —    | —    | —   | —         | image-rs                      |
+| ICO      | —   | —    | —    | —   | —         | image-rs                      |
+| PNM      | —   | —    | —    | —   | —         | image-rs                      |
+| DDS      | —   | —    | —    | —   | —         | image-rs                      |
+| TGA      | —   | —    | —    | —   | —         | image-rs                      |
+| OpenEXR  | —   | —    | —    | —   | —         | image-rs                      |
+| farbfeld | —   | —    | —    | —   | —         | image-rs                      |
+
+| Symbol | Meaning                                        |
+|--------|------------------------------------------------|
+| *      | Unclear if used in practice, needs research    |
+| **     | Split into plugin because of licensing issues  |
+| ✘      | Supported by format but not implemented yet    |
+| ？      | Unclear if supported by format, needs research |
+| ✔      | Supported                                      |
+
 ## Building
 
 ### GNOME Builder

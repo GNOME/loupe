@@ -91,6 +91,20 @@
             ]
         },
         {
+            "name" : "libheif",
+            "buildsystem" : "cmake",
+            "config-opts": [
+
+            ],
+            "sources" : [
+                {
+                    "type" : "git",
+                    "url" : "https://github.com/strukturag/libheif.git",
+                    "tag" : "v1.15.1"
+                }
+            ]
+        },
+        {
             "name" : "loupe",
             "buildsystem" : "meson",
             "config-opts": [

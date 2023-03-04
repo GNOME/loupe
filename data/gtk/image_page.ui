@@ -53,7 +53,7 @@
           <object class="AdwStatusPage" id="error_page">
             <property name="icon-name">image-missing-symbolic</property>
             <property name="title" translatable="yes">Could not Load Image</property>
-            <property name="description" bind-source="LpImagePage" bind-property="error"/>
+            <property name="description" bind-source="image" bind-property="error"/>
           </object>
         </child>
         <child>

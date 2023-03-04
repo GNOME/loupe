@@ -22,6 +22,7 @@ use gtk::gio::{self, prelude::*};
 
 mod application;
 mod config;
+mod decoder;
 mod file_model;
 mod i18n;
 mod image_metadata;
@@ -31,7 +32,7 @@ mod widgets;
 mod window;
 
 mod deps {
-    pub use gtk::{gdk, gdk_pixbuf, gio, glib, graphene, gsk};
+    pub use gtk::{cairo, gdk, gdk_pixbuf, gio, glib, graphene, gsk};
 }
 
 use application::LpApplication;

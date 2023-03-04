@@ -27,7 +27,6 @@ use gtk::CompositeTemplate;
 use gtk_macros::spawn;
 use once_cell::sync::Lazy;
 
-use std::cell::RefCell;
 use std::path::{Path, PathBuf};
 
 mod imp {
@@ -52,9 +51,6 @@ mod imp {
         pub(super) right_click_gesture: TemplateChild<gtk::GestureClick>,
         #[template_child]
         pub(super) press_gesture: TemplateChild<gtk::GestureLongPress>,
-
-        /// set if an error has occurred and is shown on error_page
-        pub(super) error: RefCell<Option<String>>,
     }
 
     #[glib::object_subclass]
@@ -75,12 +71,9 @@ mod imp {
     impl ObjectImpl for LpImagePage {
         fn properties() -> &'static [glib::ParamSpec] {
             static PROPERTIES: Lazy<Vec<glib::ParamSpec>> = Lazy::new(|| {
-                vec![
-                    glib::ParamSpecObject::builder::<LpImage>("image")
-                        .read_only()
-                        .build(),
-                    glib::ParamSpecString::builder("error").read_only().build(),
-                ]
+                vec![glib::ParamSpecObject::builder::<LpImage>("image")
+                    .read_only()
+                    .build()]
             });
 
             PROPERTIES.as_ref()
@@ -90,7 +83,6 @@ mod imp {
             let obj = self.obj();
             match pspec.name() {
                 "image" => obj.image().to_value(),
-                "error" => obj.error().to_value(),
                 name => unimplemented!("property {name}"),
             }
         }
@@ -112,6 +104,30 @@ mod imp {
                     obj.show_popover_at(x, y);
                     gesture.set_state(gtk::EventSequenceState::Claimed);
                 }));
+
+            obj.image().connect_notify_local(
+                Some("is-loaded"),
+                clone!(@weak obj => move |_,_| {
+                    if obj.image().is_loaded() {
+                        obj.imp()
+                            .stack
+                            .set_visible_child(&*obj.imp().scrolled_window);
+                    }
+                }),
+            );
+
+            obj.image().connect_notify_local(
+                Some("error"),
+                clone!(@weak obj => move |_,_| {
+                    if obj.image().error().is_some() {
+                        obj.imp().stack.set_visible_child(&*obj.imp().error_page);
+                    }
+                }),
+            );
+
+            // Do not waste CPU on spinner if it is not visible
+            self.spinner.connect_map(|s| s.start());
+            self.spinner.connect_unmap(|s| s.stop());
         }
     }
 
@@ -139,19 +155,7 @@ impl LpImagePage {
 
         spawn!(clone!(@weak obj, @strong path => async move {
             let imp = obj.imp();
-            match imp.image.load(&path).await {
-                Ok(()) => {
-                    imp.stack.set_visible_child(&*imp.scrolled_window);
-                    imp.spinner.set_spinning(false);
-                },
-                Err(e) => {
-                    imp.error.replace(Some(e.to_string()));
-                    imp.stack.set_visible_child(&*imp.error_page);
-                    obj.notify("error");
-                    imp.spinner.set_spinning(false);
-                    log::error!("Could not load image: {e}");
-                }
-            }
+            imp.image.load(&path).await;
         }));
 
         obj
@@ -167,10 +171,6 @@ impl LpImagePage {
 
     pub fn texture(&self) -> Option<gdk::Texture> {
         self.imp().image.texture()
-    }
-
-    pub fn error(&self) -> Option<String> {
-        self.imp().error.borrow().clone()
     }
 
     pub fn content_provider(&self) -> Option<gdk::ContentProvider> {

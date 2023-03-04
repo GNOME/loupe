@@ -163,6 +163,7 @@ mod imp {
 
                 let transform = gsk::Transform::new().translate(&graphene::Point::new(x, 0.));
                 page.allocate(width, height, 0, Some(transform));
+                page.image().allocate(width, height, 0, None);
             }
         }
 

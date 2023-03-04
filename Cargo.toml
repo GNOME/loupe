@@ -5,21 +5,32 @@ edition = "2021"
 rust-version = "1.65"
 license = "GPL-3.0-or-later"
 
+[profile.release]
+lto = true
+codegen-units = 1
+
 [dependencies]
-anyhow = "1.0.66"
+anyhow = { version = "1.0.66", features = ["backtrace"] }
+arc-swap = "1.6.0"
 async-global-executor = "2.3.1"
 async-std = "1.12.0"
+futures = "0.3.25"
+futures-channel = "0.3.25"
 gtk-macros = "0.3.0"
+indexmap = "1.9.2"
 kamadak-exif = "0.5.5"
+libgweather = "4.0.0"
 log = "0.4.17"
 once_cell = "1.16.0"
 pretty_env_logger = "0.4.0"
-futures-channel = "0.3.25"
-futures = "0.3.25"
+safe-transmute = "0.11.2"
 svg_metadata = "0.4.3"
 url = "2.3.1"
-libgweather = "4.0.0"
-indexmap = "1.9.2"
+
+# decoders
+image-rs = { package = "image", version = "*", git = "https://github.com/image-rs/image.git" }
+libheif-rs = "0.17.0"
+rsvg = { package = "librsvg", git = "https://gitlab.gnome.org/GNOME/librsvg.git" }
 
 [dependencies.ashpd]
 version = "0.4.0-alpha.3"
@@ -27,7 +38,7 @@ features = ["gtk4"]
 
 [dependencies.gtk]
 package = "gtk4"
-version = "0.6.0"
+version = "0.6.2"
 features = ["v4_10", "xml_validation"]
 
 [dependencies.gio]

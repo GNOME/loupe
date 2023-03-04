@@ -17,18 +17,22 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 
 use crate::deps::*;
+
+use crate::decoder::{self, tiling, Decoder, DecoderUpdate};
 use crate::i18n::i18n;
-use crate::image_metadata::{ImageMetadata, LpImageMetadata};
+use crate::image_metadata::LpImageMetadata;
 use crate::util;
 
 use adw::{prelude::*, subclass::prelude::*};
-use anyhow::Context;
+use arc_swap::ArcSwap;
+use futures::prelude::*;
 use gtk_macros::spawn;
 use once_cell::sync::Lazy;
 use once_cell::unsync::OnceCell;
 
 use std::cell::{Cell, RefCell};
 use std::path::{Path, PathBuf};
+use std::sync::Arc;
 
 /// Milliseconds
 const ZOOM_ANIMATION_DURATION: u32 = 200;
@@ -65,9 +69,13 @@ mod imp {
         pub is_deleted: Cell<bool>,
         /// Track changes to this image
         pub file_monitor: RefCell<Option<gio::FileMonitor>>,
-        pub texture: RefCell<Option<gdk::Texture>>,
-        /// Set when image is completely loaded and ready for displaying
+        pub tiles: Arc<ArcSwap<tiling::TilingStore>>,
+        pub decoder: RefCell<Option<Arc<Decoder>>>,
+
+        /// Set to true when image is ready for displaying
         pub is_loaded: Cell<bool>,
+        /// Set if an error has occurred, shown on error_page
+        pub error: RefCell<Option<String>>,
 
         /// Rotation final value (can differ from `rotation` during animation)
         pub rotation_target: Cell<f64>,
@@ -101,8 +109,6 @@ mod imp {
 
         /// Currently EXIF data
         pub image_metadata: RefCell<LpImageMetadata>,
-        /// This will often be available earlier than the complete image
-        pub image_original_size: Cell<(i32, i32)>,
 
         /// Current pointer position
         pub pointer_position: Cell<Option<(f64, f64)>>,
@@ -142,6 +148,7 @@ mod imp {
                     glib::ParamSpecBoolean::builder("is-loaded")
                         .read_only()
                         .build(),
+                    glib::ParamSpecBoolean::builder("error").read_only().build(),
                     glib::ParamSpecObject::builder::<LpImageMetadata>("metadata")
                         .read_only()
                         .build(),
@@ -180,6 +187,7 @@ mod imp {
                 "path" => obj.path().to_variant().to_value(),
                 "is-deleted" => obj.is_deleted().to_value(),
                 "is-loaded" => obj.is_loaded().to_value(),
+                "error" => obj.error().to_value(),
                 "metadata" => obj.metadata().to_value(),
                 "rotation" => obj.rotation().to_value(),
                 "mirrored" => obj.mirrored().to_value(),
@@ -227,6 +235,8 @@ mod imp {
 
         fn dispose(&self) {
             let obj = self.obj();
+
+            log::debug!("Disposing LpImage");
 
             // remove target from zoom animation because it's property of this object
             obj.rotation_animation()
@@ -455,13 +465,8 @@ mod imp {
             // ensure there is an actual size change
             if self.widget_dimensions.get() != (width, height) {
                 self.widget_dimensions.set((width, height));
-                // calculate new zoom value for best fit
-                if widget.is_best_fit() {
-                    let best_fit_level = widget.zoom_level_best_fit();
-                    self.zoom.set(best_fit_level);
-                    self.zoom_target.set(best_fit_level);
-                    self.obj().zoom_animation().pause();
-                }
+
+                widget.configure_best_fit();
             }
 
             widget.configure_adjustments();
@@ -469,67 +474,88 @@ mod imp {
 
         // called when the widget content should be re-rendered
         fn snapshot(&self, snapshot: &gtk::Snapshot) {
-            if let Some(texture) = self.texture.borrow().as_ref() {
-                let widget = self.obj();
-                let widget_width = widget.width() as f64;
-                let widget_height = widget.height() as f64;
+            let widget = self.obj();
+            let widget_width = widget.width() as f64;
+            let widget_height = widget.height() as f64;
+            let (original_width, original_height) = widget.original_dimensions();
+            let display_width = widget.image_displayed_width();
+            let display_height = widget.image_displayed_height();
 
-                // make sure the scrollbars are correct
-                widget.configure_adjustments();
+            // make sure the scrollbars are correct
+            widget.configure_adjustments();
 
-                snapshot.save();
+            let applicable_zoom = widget.applicable_zoom();
 
-                // apply the scrolling position to the image
-                if let Some(adj) = self.hadjustment.borrow().as_ref() {
-                    let x = -(adj.value() - (adj.upper() - widget_width) / 2.);
-                    snapshot.translate(&graphene::Point::new(x as f32, 0.));
-                }
-                if let Some(adj) = self.vadjustment.borrow().as_ref() {
-                    let y = -(adj.value() - (adj.upper() - widget_height) / 2.);
-                    snapshot.translate(&graphene::Point::new(0., y as f32));
-                }
+            let scaling_filter = gsk::ScalingFilter::Linear;
+            /*
+                            let scaling_filter = if applicable_zoom < 1. {
+                                gsk::ScalingFilter::Trilinear
+                            } else {
+                                gsk::ScalingFilter::Nearest
+                            };
+            */
 
-                // Center image in coordinates.
-                // Needed for rotating around the center of the image, and
-                // mirroring the image does not put it to a completely different position.
-                snapshot.translate(&graphene::Point::new(
-                    (widget_width / 2.) as f32,
-                    (widget_height / 2.) as f32,
-                ));
+            let render_options = tiling::RenderOptions { scaling_filter };
 
-                // vertical centering in widget when no scrolling
-                let x = f64::max((widget_width - widget.image_displayed_width()) / 2.0, 0.);
-                let y = f64::max((widget_height - widget.image_displayed_height()) / 2.0, 0.);
-                // round to pixel values to not have a half pixel offset to physical pixels
-                // the offset would leading to a blurry output
-                snapshot.translate(&graphene::Point::new(
-                    widget.round(x) as f32,
-                    widget.round(y) as f32,
-                ));
+            // Operations on snapshots are coordinate transformations
+            // It might help to read the following code from bottom to top
+            snapshot.save();
 
-                // apply the transformations from properties
-                snapshot.rotate(widget.rotation() as f32);
-                if widget.mirrored() {
-                    snapshot.scale(-1., 1.);
-                }
-                snapshot.scale(widget.zoom() as f32, widget.zoom() as f32);
-
-                // scale to actual pixel size
-                // this is needed since usually the texture would just fill the widget
-                snapshot.scale(
-                    (texture.width() as f64 / widget_width) as f32,
-                    (texture.height() as f64 / widget_height) as f32,
-                );
-
-                // move back to original position
-                snapshot.translate(&graphene::Point::new(
-                    (-widget_width / 2.) as f32,
-                    (-widget_height / 2.) as f32,
-                ));
-
-                texture.snapshot(snapshot, widget_width, widget_height);
-                snapshot.restore();
+            // Apply the scrolling position to the image
+            if let Some(adj) = self.hadjustment.borrow().as_ref() {
+                let x = -(adj.value() - (adj.upper() - display_width) / 2.);
+                snapshot.translate(&graphene::Point::new(x as f32, 0.));
             }
+            if let Some(adj) = self.vadjustment.borrow().as_ref() {
+                let y = -(adj.value() - (adj.upper() - display_height) / 2.);
+                snapshot.translate(&graphene::Point::new(0., y as f32));
+            }
+
+            // Centering in widget when no scrolling (black bars around image)
+            let x = f64::max((widget_width - display_width) / 2.0, 0.).floor();
+            let y = f64::max((widget_height - display_height) / 2.0, 0.).floor();
+            // Round to pixel values to not have a half pixel offset to physical pixels
+            // The offset would leading to a blurry output
+            snapshot.translate(&graphene::Point::new(
+                widget.round(x) as f32,
+                widget.round(y) as f32,
+            ));
+
+            // Apply zoom
+            snapshot.scale(applicable_zoom as f32, applicable_zoom as f32);
+
+            // Put image origin at (0, 0) again with rotation
+            snapshot.translate(&graphene::Point::new(
+                -(original_width as f32 - display_width as f32 / applicable_zoom as f32) / 2.,
+                -(original_height as f32 - display_height as f32 / applicable_zoom as f32) / 2.,
+            ));
+
+            // Undo centering in coordinates
+            snapshot.translate(&graphene::Point::new(
+                original_width as f32 / 2.,
+                original_height as f32 / 2.,
+            ));
+
+            // Apply the transformations from properties
+            snapshot.rotate(widget.rotation() as f32);
+            if widget.mirrored() {
+                snapshot.scale(-1., 1.);
+            }
+
+            // Center image in coordinates.
+            // Needed for rotating around the center of the image, and
+            // mirroring the image does not put it to a completely different position.
+            snapshot.translate(&graphene::Point::new(
+                -original_width as f32 / 2.,
+                -original_height as f32 / 2.,
+            ));
+
+            // Add texture(s)
+            self.tiles
+                .load()
+                .add_to_snapshot(snapshot, applicable_zoom, &render_options);
+
+            snapshot.restore();
         }
 
         fn measure(&self, orientation: gtk::Orientation, _for_size: i32) -> (i32, i32, i32, i32) {
@@ -619,65 +645,83 @@ glib::wrapper! {
 }
 
 impl LpImage {
-    pub async fn load(&self, path: &Path) -> anyhow::Result<()> {
-        let imp = self.imp();
+    pub async fn load(&self, path: &Path) {
         let path = path.to_path_buf();
         let file = gio::File::for_path(&path);
         self.set_file(&file);
 
         if !path.is_file() {
-            return Err(anyhow::Error::msg(i18n("File does not exist")));
+            self.set_error(anyhow::Error::msg(i18n("File does not exist")));
+            return;
         }
 
         log::debug!("Loading file {path:?}");
 
-        log::debug!("Loading EXIF");
-        let metadata = util::spawn(
-            "image-load-exif",
-            glib::clone!(@strong path => move || ImageMetadata::load(&path)),
+        let tiles = &self.imp().tiles;
+        // TODO: Fix two unwraps
+        let (decoder, mut decoder_update) = util::spawn(
+            "image-init-decoder",
+            glib::clone!(@strong file, @strong tiles => move || {
+                Decoder::new(file.clone(), tiles.clone())
+            }),
         )
-        .await?;
-        let orientation = metadata.orientation();
+        .await
+        .unwrap()
+        .unwrap();
 
-        imp.image_metadata.replace(LpImageMetadata::from(metadata));
-        imp.rotation_target.set(-orientation.rotation);
-        imp.rotation.set(-orientation.rotation);
-        imp.mirrored.set(orientation.mirrored);
+        let weak_obj = self.downgrade();
+        spawn!(async move {
+            while let Some(update) = decoder_update.next().await {
+                if let Some(obj) = weak_obj.upgrade() {
+                    obj.update(update);
+                }
+            }
+            log::debug!("Stopped listening to decoder since sender is gone");
+        });
 
-        self.notify("metadata");
+        let decoder = Arc::new(decoder);
+        self.imp().decoder.replace(Some(decoder));
+    }
 
-        log::debug!("Loading image size");
-        let (_, x, y) = gdk_pixbuf::Pixbuf::file_info_future(path.clone())
-            .await?
-            .context(i18n("Failed to load image size"))?;
-        imp.image_original_size.set((x, y));
-        self.notify("image-size");
+    /// Called when decoder sends update
+    pub fn update(&self, update: DecoderUpdate) {
+        let imp = self.imp();
 
-        log::debug!("Loading complete image");
-        let texture = util::spawn(
-                "image-load-image",
-                glib::clone!(@weak file => @default-return Err(anyhow::Error::msg(i18n("File does not exist"))), move || {
-                    log::debug!("Creating texture");
-                    let texture = gdk::Texture::from_file(&file)?;
-                    Ok::<_,anyhow::Error>(texture)
-                }),
-            )
-            .await?
-            .context(i18n("Failed to load image"))?;
+        match update {
+            DecoderUpdate::Metadata(metadata) => {
+                log::debug!("Received metadata");
+                imp.image_metadata.replace(LpImageMetadata::from(metadata));
+                self.notify("metadata");
 
-        imp.texture.replace(Some(texture));
+                self.reset_rotation();
+            }
+            DecoderUpdate::Dimensions => {
+                log::debug!("Received dimensions: {:?}", self.original_dimensions());
+                self.notify("image-size");
+                self.configure_best_fit();
+                self.request_tiles();
+            }
+            DecoderUpdate::Redraw => {
+                if !self.is_loaded() {
+                    self.imp().is_loaded.set(true);
+                    self.notify("is-loaded");
+                }
 
-        self.configure_adjustments();
-
-        self.queue_draw();
-        self.queue_allocate();
-        self.queue_resize();
-
-        log::debug!("Image loaded and scheduled for drawing");
-        imp.is_loaded.set(true);
-        self.notify("is-loaded");
-
-        Ok(())
+                self.queue_draw();
+                imp.tiles.rcu(|tiles| {
+                    let mut new_tiles = (**tiles).clone();
+                    // TODO: Use an area larger than the viewport
+                    new_tiles.cleanup(self.imp().zoom_target.get(), self.viewport());
+                    new_tiles
+                });
+            }
+            DecoderUpdate::Error(err) => {
+                self.set_error(err);
+            }
+            DecoderUpdate::Format(_) => {
+                // TODO: Store and use in image properties
+            }
+        }
     }
 
     pub fn is_loaded(&self) -> bool {
@@ -700,26 +744,34 @@ impl LpImage {
     ///
     /// Used for calculating the required zoom level after rotation
     fn zoom_level_best_fit_for_rotation(&self, rotation: f64) -> f64 {
-        if let Some(texture) = self.texture() {
-            let rotated = rotation.to_radians().sin().abs();
-            let texture_aspect_ratio = texture.width() as f64 / texture.height() as f64;
-            let widget_aspect_ratio = self.width() as f64 / self.height() as f64;
+        let rotated = rotation.to_radians().sin().abs();
+        let (image_width, image_height) = self.original_dimensions();
+        let texture_aspect_ratio = image_width as f64 / image_height as f64;
+        let widget_aspect_ratio = self.width() as f64 / self.height() as f64;
 
-            let default_zoom = if texture_aspect_ratio > widget_aspect_ratio {
-                (self.width() as f64 / texture.width() as f64).min(1.)
-            } else {
-                (self.height() as f64 / texture.height() as f64).min(1.)
-            };
-
-            let rotated_zoom = if 1. / texture_aspect_ratio > widget_aspect_ratio {
-                (self.width() as f64 / texture.height() as f64).min(1.)
-            } else {
-                (self.height() as f64 / texture.width() as f64).min(1.)
-            };
-
-            rotated * rotated_zoom + (1. - rotated) * default_zoom
+        let default_zoom = if texture_aspect_ratio > widget_aspect_ratio {
+            (self.width() as f64 / image_width as f64).min(1.)
         } else {
-            1.
+            (self.height() as f64 / image_height as f64).min(1.)
+        };
+
+        let rotated_zoom = if 1. / texture_aspect_ratio > widget_aspect_ratio {
+            (self.width() as f64 / image_height as f64).min(1.)
+        } else {
+            (self.height() as f64 / image_width as f64).min(1.)
+        };
+
+        rotated * rotated_zoom + (1. - rotated) * default_zoom
+    }
+
+    /// Sets respective output values if best-fit is active
+    fn configure_best_fit(&self) {
+        // calculate new zoom value for best fit
+        if self.is_best_fit() {
+            let best_fit_level = self.zoom_level_best_fit();
+            self.imp().zoom.set(best_fit_level);
+            self.set_zoom_target(best_fit_level);
+            self.zoom_animation().pause();
         }
     }
 
@@ -768,7 +820,7 @@ impl LpImage {
                 let obj = self.clone();
                 let file = file_a.clone();
                 // TODO: error handling is missing
-                spawn! {async move { let _ = obj.load(&file.path().unwrap()).await; }};
+                spawn! {async move { obj.load(&file.path().unwrap()).await; }};
             }
             gio::FileMonitorEvent::Deleted
             | gio::FileMonitorEvent::MovedOut
@@ -782,8 +834,7 @@ impl LpImage {
 
     /// Texture that contains the original image
     pub fn texture(&self) -> Option<gdk::Texture> {
-        let imp = self.imp();
-        imp.texture.borrow().clone()
+        None
     }
 
     fn mirrored(&self) -> bool {
@@ -812,6 +863,14 @@ impl LpImage {
         self.imp().rotation.set(rotation);
         self.notify("rotation");
         self.queue_draw();
+    }
+
+    /// Set rotation and mirroring to the state would have after loading
+    pub fn reset_rotation(&self) {
+        let orientation = self.metadata().orientation();
+        self.imp().rotation_target.set(-orientation.rotation);
+        self.set_mirrored(orientation.mirrored);
+        self.set_rotation(-orientation.rotation);
     }
 
     pub fn rotate_by(&self, angle: f64) {
@@ -883,6 +942,10 @@ impl LpImage {
         self.notify("is-max-zoom");
     }
 
+    fn applicable_zoom(&self) -> f64 {
+        decoder::tiling::zoom_normalize(self.zoom())
+    }
+
     /// Set zoom level aiming for given position or center if not available
     fn set_zoom_aiming(&self, mut zoom: f64, aiming: Option<(f64, f64)>) {
         // allow some deviation from max value for rubberbanding
@@ -903,7 +966,6 @@ impl LpImage {
                 minimum * deviation.powf(RUBBERBANDING_EXPONENT),
                 max_deviation,
             );
-            dbg!(zoom);
         }
 
         if zoom == self.zoom() {
@@ -953,6 +1015,36 @@ impl LpImage {
         self.queue_draw();
     }
 
+    fn set_zoom_target(&self, zoom_target: f64) {
+        log::debug!("Setting zoom target {zoom_target}");
+
+        self.imp().zoom_target.set(zoom_target);
+
+        if self.zoom() == self.imp().zoom_target.get() {
+            self.request_tiles();
+        }
+    }
+
+    fn request_tiles(&self) {
+        if let Some(decoder) = self.imp().decoder.borrow().as_ref() {
+            if self.zoom_animation().state() != adw::AnimationState::Playing {
+                decoder.request(crate::decoder::TileRequest {
+                    viewport: self.viewport(),
+                    zoom: self.imp().zoom_target.get(),
+                });
+            }
+        }
+    }
+
+    fn viewport(&self) -> graphene::Rect {
+        let x = self.hadjustment().value();
+        let y = self.vadjustment().value();
+        let width = self.widget_width();
+        let height = self.widget_height();
+
+        graphene::Rect::new((x) as f32, (y) as f32, (width) as f32, (height) as f32)
+    }
+
     /// Animation that makes larger zoom steps (from buttons etc) look smooth
     fn zoom_animation(&self) -> &adw::TimedAnimation {
         self.imp().zoom_animation.get_or_init(|| {
@@ -965,6 +1057,7 @@ impl LpImage {
             animation.connect_done(glib::clone!(@weak self as obj => move |_| {
                 obj.imp().zoom_hscrollbar_transition.set(false);
                 obj.imp().zoom_vscrollbar_transition.set(false);
+                obj.set_zoom_target(obj.imp().zoom_target.get());
             }));
 
             animation
@@ -1050,7 +1143,7 @@ impl LpImage {
 
         log::debug!("Zoom to {zoom:.3}");
 
-        self.imp().zoom_target.set(zoom);
+        self.set_zoom_target(zoom);
 
         // abort if already at correct zoom level
         if zoom == self.zoom() {
@@ -1058,39 +1151,44 @@ impl LpImage {
             return;
         }
 
-        if let Some(texture) = self.texture() {
-            let current_hborder = self.widget_width() - self.image_displayed_width();
-            let target_hborder = self.widget_width() - texture.width() as f64 * zoom;
+        // wild code
+        let current_hborder = self.widget_width() - self.image_displayed_width();
+        let target_hborder = self.widget_width() - self.image_size().0 as f64 * zoom;
 
-            self.imp()
-                .zoom_hscrollbar_transition
-                .set(current_hborder.signum() != target_hborder.signum() && current_hborder != 0.);
+        self.imp()
+            .zoom_hscrollbar_transition
+            .set(current_hborder.signum() != target_hborder.signum() && current_hborder != 0.);
 
-            let current_vborder = self.widget_height() - self.image_displayed_height();
-            let target_vborder = self.widget_height() - texture.height() as f64 * zoom;
+        let current_vborder = self.widget_height() - self.image_displayed_height();
+        let target_vborder = self.widget_height() - self.image_size().1 as f64 * zoom;
 
-            self.imp()
-                .zoom_hscrollbar_transition
-                .set(current_vborder.signum() != target_vborder.signum() && current_vborder != 0.);
+        self.imp()
+            .zoom_hscrollbar_transition
+            .set(current_vborder.signum() != target_vborder.signum() && current_vborder != 0.);
 
-            let animation = self.zoom_animation();
+        let animation = self.zoom_animation();
 
-            animation.set_value_from(self.zoom());
-            animation.set_value_to(zoom);
-            animation.play();
-        } else {
-            log::error!("No texture to zoom");
-        }
+        animation.set_value_from(self.zoom());
+        animation.set_value_to(zoom);
+        animation.play();
     }
 
     /// Image size of original image with EXIF rotation applied
     pub fn image_size(&self) -> (i32, i32) {
         let orientation = self.imp().image_metadata.borrow().orientation();
-        if orientation.rotation.abs() == 90. {
-            let (x, y) = self.imp().image_original_size.get();
+        if orientation.rotation.abs() == 90. || orientation.rotation.abs() == 270. {
+            let (x, y) = self.original_dimensions();
             (y, x)
         } else {
-            self.imp().image_original_size.get()
+            self.original_dimensions()
+        }
+    }
+
+    fn original_dimensions(&self) -> (i32, i32) {
+        if let Some((width, height)) = self.imp().tiles.load().original_dimensions {
+            (width as i32, height as i32)
+        } else {
+            (0, 0)
         }
     }
 
@@ -1100,25 +1198,19 @@ impl LpImage {
     /// represent the actual size. The size returned might well be
     /// larger than what can actually be displayed within the widget.
     pub fn image_displayed_width(&self) -> f64 {
-        if let Some(texture) = self.texture() {
-            let rotated = self.rotation().to_radians().sin().abs();
+        let (width, height) = self.original_dimensions();
 
-            ((1. - rotated) * texture.width() as f64 + rotated * texture.height() as f64)
-                * self.zoom()
-        } else {
-            0.
-        }
+        let rotated = self.rotation().to_radians().sin().abs();
+
+        ((1. - rotated) * width as f64 + rotated * height as f64) * self.applicable_zoom()
     }
 
     pub fn image_displayed_height(&self) -> f64 {
-        if let Some(texture) = self.texture() {
-            let rotated = self.rotation().to_radians().sin().abs();
+        let (width, height) = self.original_dimensions();
 
-            ((1. - rotated) * texture.height() as f64 + rotated * texture.width() as f64)
-                * self.zoom()
-        } else {
-            0.
-        }
+        let rotated = self.rotation().to_radians().sin().abs();
+
+        ((1. - rotated) * height as f64 + rotated * width as f64) * self.applicable_zoom()
     }
 
     /// Stepwise scrolls inside an image when zoomed in
@@ -1162,10 +1254,9 @@ impl LpImage {
     fn set_hadjustment(&self, adjustment: Option<gtk::Adjustment>) {
         if let Some(adj) = &adjustment {
             adj.connect_value_changed(glib::clone!(@weak self as obj => move |_| {
+                obj.request_tiles();
                 obj.queue_draw();
             }));
-            // TODO: needed?
-            self.queue_allocate();
         }
 
         self.imp().hadjustment.replace(adjustment);
@@ -1184,9 +1275,9 @@ impl LpImage {
     fn set_vadjustment(&self, adjustment: Option<gtk::Adjustment>) {
         if let Some(adj) = &adjustment {
             adj.connect_value_changed(glib::clone!(@weak self as obj => move |_| {
+                obj.request_tiles();
                 obj.queue_draw();
             }));
-            self.queue_allocate();
         }
 
         self.imp().vadjustment.replace(adjustment);
@@ -1201,6 +1292,7 @@ impl LpImage {
         let widget_width = self.widget_width();
 
         hadjustment.configure(
+            // value
             hadjustment.value().clamp(0., self.max_hadjustment_value()),
             // lower
             0.,
@@ -1267,6 +1359,17 @@ impl LpImage {
         let file = self.file()?;
         let list = gdk::FileList::from_array(&[file]);
         Some(gdk::ContentProvider::for_value(&list.to_value()))
+    }
+
+    /// Returns decoding error if one occured
+    pub fn error(&self) -> Option<String> {
+        self.imp().error.borrow().clone()
+    }
+
+    fn set_error(&self, err: anyhow::Error) {
+        log::debug!("Decoding error: {err:?}");
+        self.imp().error.replace(Some(err.to_string()));
+        self.notify("error");
     }
 
     /// Returns scaling aware rounded application pixel
