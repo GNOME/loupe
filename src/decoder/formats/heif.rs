@@ -7,13 +7,17 @@ use gtk::prelude::*;
 
 use anyhow::Context;
 use arc_swap::ArcSwap;
-use libheif_rs::{ColorSpace, HeifContext, Plane, RgbChroma};
+use libheif_rs::{ColorSpace, HeifContext, LibHeif, Plane, RgbChroma};
+use once_cell::sync::Lazy;
 
 use std::path::PathBuf;
 use std::sync::Arc;
 
 #[derive(Debug)]
 pub struct Heif;
+
+/// Loads plugins on first use
+static LIBHEIF: Lazy<LibHeif> = Lazy::new(LibHeif::new);
 
 impl Heif {
     pub fn new(
@@ -55,8 +59,8 @@ impl Heif {
                 RgbChroma::Rgb
             };
 
-            let mut image = handle
-                .decode(ColorSpace::Rgb(rgb_chroma), None)
+            let mut image = LIBHEIF
+                .decode(&handle, ColorSpace::Rgb(rgb_chroma), None)
                 .context(i18n("Failed to decode image"))?;
 
             let plane = image
