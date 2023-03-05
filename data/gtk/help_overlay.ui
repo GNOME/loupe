@@ -11,7 +11,7 @@
             <property name="title" translatable="yes" context="shortcut window">General Shortcuts</property>
             <child>
               <object class="GtkShortcutsShortcut">
-                <property name="title" translatable="yes" context="shortcut window">Show Primary Menu</property>
+                <property name="title" translatable="yes" context="shortcut window">Show Main Menu</property>
                 <property name="accelerator">F10</property>
               </object>
             </child>
