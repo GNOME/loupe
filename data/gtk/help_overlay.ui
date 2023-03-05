@@ -17,6 +17,18 @@
             </child>
             <child>
               <object class="GtkShortcutsShortcut">
+                <property name="title" translatable="yes" context="shortcut window">Copy Image to Clipboard</property>
+                <property name="action-name">win.copy</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkShortcutsShortcut">
+                <property name="title" translatable="yes" context="shortcut window">Move Image to Trash</property>
+                <property name="action-name">win.trash</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkShortcutsShortcut">
                 <property name="title" translatable="yes" context="shortcut window">Toggle Image Properties</property>
                 <property name="action-name">win.toggle-properties</property>
               </object>
