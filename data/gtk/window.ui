@@ -105,6 +105,7 @@
               <object class="GtkMenuButton" id="menu_button">
                 <property name="icon-name">open-menu-symbolic</property>
                 <property name="tooltip-text" translatable="yes">Main Menu</property>
+                <property name="primary">True</property>
                 <property name="popover">
                   <object class="GtkPopoverMenu">
                     <property name="menu-model">primary_menu</property>
@@ -132,18 +133,6 @@
                     </child>
                   </object>
                 </property>
-                <child>
-                  <!-- Set the shortcut here since it only makes sense if the button is visible -->
-                  <object class="GtkShortcutController">
-                    <property name="scope">managed</property>
-                    <child>
-                      <object class="GtkShortcut">
-                        <property name="trigger">F10</property>
-                        <property name="action">activate</property>
-                      </object>
-                    </child>
-                  </object>
-                </child>
               </object>
             </child>
             <child type="end">
