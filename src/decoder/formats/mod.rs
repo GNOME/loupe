@@ -27,6 +27,10 @@ impl ImageFormat {
             ImageFormat::AnimatedGif | ImageFormat::AnimatedWebP | ImageFormat::AnimatedPng
         )
     }
+
+    pub fn is_svg(&self) -> bool {
+        matches!(self, Self::Svg)
+    }
 }
 
 impl std::fmt::Display for ImageFormat {

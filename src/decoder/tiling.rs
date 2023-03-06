@@ -36,6 +36,19 @@ pub struct Tile {
     pub texture: gdk::Texture,
 }
 
+/// Temporary function until HighDPI is sorted out
+///
+/// TODO: Does this has to follow scaling factor?
+#[must_use]
+pub fn round(r: &graphene::Rect) -> graphene::Rect {
+    graphene::Rect::new(
+        r.x().round(),
+        r.y().round(),
+        r.width().round(),
+        r.height().round(),
+    )
+}
+
 impl Tile {
     pub fn area(&self) -> graphene::Rect {
         let bleed = self.bleed as f32;
@@ -62,15 +75,20 @@ impl Tile {
     /// Add tile to snapshot
     ///
     /// This is where parts of images actually land on the screen
-    pub fn add_to_snapshot(&self, snapshot: &gtk::Snapshot, _options: &RenderOptions) {
-        let zoom = self.zoom();
-        let area = self.area().scale(1. / zoom, 1. / zoom);
-        let area_with_bleed = self.area_with_bleed().scale(1. / zoom, 1. / zoom);
+    pub fn add_to_snapshot(&self, snapshot: &gtk::Snapshot, zoom: f64, options: &RenderOptions) {
+        let zoom = zoom as f32;
+        let texture_zoom = self.zoom();
+        let area = round(&self.area().scale(zoom / texture_zoom, zoom / texture_zoom));
+        let area_with_bleed = round(
+            &self
+                .area_with_bleed()
+                .scale(zoom / texture_zoom, zoom / texture_zoom),
+        );
 
         // TODO: do not clip outer bounderies of the image
         snapshot.push_clip(&area);
         snapshot.append_color(&gdk::RGBA::new(0.118, 0.118, 0.118, 1.), &area);
-        snapshot.append_texture(&self.texture, &area_with_bleed);
+        snapshot.append_scaled_texture(&self.texture, options.scaling_filter, &area_with_bleed);
         snapshot.pop();
     }
 
@@ -177,7 +195,7 @@ impl TiledImage {
         log::trace!("Rendering {} tiles", tiles.len());
         // reverse to put least fitting tiles in the background
         for (_, tile) in tiles.iter().rev() {
-            tile.add_to_snapshot(snapshot, options);
+            tile.add_to_snapshot(snapshot, zoom, options);
         }
     }
 

@@ -507,14 +507,16 @@ mod imp {
 
             let applicable_zoom = widget.applicable_zoom();
 
-            let scaling_filter = gsk::ScalingFilter::Linear;
-            /*
-                            let scaling_filter = if applicable_zoom < 1. {
-                                gsk::ScalingFilter::Trilinear
-                            } else {
-                                gsk::ScalingFilter::Nearest
-                            };
-            */
+            let scaling_filter = if self.format.borrow().map_or(false, |x| x.is_svg()) {
+                // Looks better in SVG animations and avoids rendering issues
+                gsk::ScalingFilter::Linear
+            } else if applicable_zoom < 1. {
+                // Uses mipmaps to avoid moiré patterns
+                gsk::ScalingFilter::Trilinear
+            } else {
+                // Show pixels when zooming in because making images blurry looks worse
+                gsk::ScalingFilter::Nearest
+            };
 
             let render_options = tiling::RenderOptions { scaling_filter };
 
@@ -525,25 +527,22 @@ mod imp {
             // Apply the scrolling position to the image
             if let Some(adj) = self.hadjustment.borrow().as_ref() {
                 let x = -(adj.value() - (adj.upper() - display_width) / 2.);
-                snapshot.translate(&graphene::Point::new(x as f32, 0.));
+                snapshot.translate(&graphene::Point::new(widget.round_f64(x) as f32, 0.));
             }
             if let Some(adj) = self.vadjustment.borrow().as_ref() {
                 let y = -(adj.value() - (adj.upper() - display_height) / 2.);
-                snapshot.translate(&graphene::Point::new(0., y as f32));
+                snapshot.translate(&graphene::Point::new(0., widget.round_f64(y) as f32));
             }
 
             // Centering in widget when no scrolling (black bars around image)
-            let x = f64::max((widget_width - display_width) / 2.0, 0.).floor();
-            let y = f64::max((widget_height - display_height) / 2.0, 0.).floor();
+            let x = widget.round_f64(f64::max((widget_width - display_width) / 2.0, 0.));
+            let y = widget.round_f64(f64::max((widget_height - display_height) / 2.0, 0.));
             // Round to pixel values to not have a half pixel offset to physical pixels
             // The offset would leading to a blurry output
             snapshot.translate(&graphene::Point::new(
-                widget.round(x) as f32,
-                widget.round(y) as f32,
+                widget.round_f64(x) as f32,
+                widget.round_f64(y) as f32,
             ));
-
-            // Apply zoom
-            snapshot.scale(applicable_zoom as f32, applicable_zoom as f32);
 
             // Apply rotation and mirroring
             widget.snapshot_rotate_mirror(snapshot, widget.rotation() as f32, widget.mirrored());
@@ -876,7 +875,6 @@ impl LpImage {
 
         let snapshot = gtk::Snapshot::new();
 
-        snapshot.scale(scale, scale);
         self.snapshot_rotate_mirror(
             &snapshot,
             -orientation.rotation as f32,
@@ -1358,7 +1356,7 @@ impl LpImage {
     fn configure_adjustments(&self) {
         let hadjustment = self.hadjustment();
         // round to application pixels to avoid tiny rounding errors from zoom
-        let content_width = self.round(self.image_displayed_width());
+        let content_width = self.round_f64(self.image_displayed_width());
         let widget_width = self.widget_width();
 
         hadjustment.configure(
@@ -1378,7 +1376,7 @@ impl LpImage {
 
         let vadjustment = self.vadjustment();
         // round to application pixels to avoid tiny rounding errors from zoom
-        let content_height = self.round(self.image_displayed_height());
+        let content_height = self.round_f64(self.image_displayed_height());
         let widget_height = self.widget_height();
 
         vadjustment.configure(
@@ -1424,22 +1422,20 @@ impl LpImage {
     ///
     /// After the operation the image is positioned such that it's origin
     /// is a `(0, 0)` again.
-    pub fn snapshot_rotate_mirror(&self, snapshot: &gtk::Snapshot, rotation: f32, mirrored: bool) {
-        let applicable_zoom = self.applicable_zoom();
+    fn snapshot_rotate_mirror(&self, snapshot: &gtk::Snapshot, rotation: f32, mirrored: bool) {
+        if rotation == 0. && !mirrored {
+            return;
+        }
+
+        let zoom = self.applicable_zoom() as f32;
         let (original_width, original_height) = self.original_dimensions();
-        let display_width = self.image_displayed_width();
-        let display_height = self.image_displayed_height();
+        let displayed_width = self.image_displayed_width() as f32;
+        let displayed_height = self.image_displayed_height() as f32;
 
         // Put image origin at (0, 0) again with rotation
         snapshot.translate(&graphene::Point::new(
-            -(original_width as f32 - display_width as f32 / applicable_zoom as f32) / 2.,
-            -(original_height as f32 - display_height as f32 / applicable_zoom as f32) / 2.,
-        ));
-
-        // Undo centering in coordinates
-        snapshot.translate(&graphene::Point::new(
-            original_width as f32 / 2.,
-            original_height as f32 / 2.,
+            self.round_f32(displayed_width / 2.),
+            self.round_f32(displayed_height / 2.),
         ));
 
         // Apply the transformations from properties
@@ -1452,8 +1448,8 @@ impl LpImage {
         // Needed for rotating around the center of the image, and
         // mirroring the image does not put it to a completely different position.
         snapshot.translate(&graphene::Point::new(
-            -original_width as f32 / 2.,
-            -original_height as f32 / 2.,
+            -self.round_f32(original_width as f32 * zoom / 2.),
+            -self.round_f32(original_height as f32 * zoom / 2.),
         ));
     }
 
@@ -1496,8 +1492,22 @@ impl LpImage {
     /// Returns scaling aware rounded application pixel
     ///
     /// One physical pixel is 0.5 application pixels
-    pub fn round(&self, number: f64) -> f64 {
+    pub fn round_f64(&self, number: f64) -> f64 {
+        // Do not round during animation to avoid wiggling around
+        if self.zoom_animation().state() == adw::AnimationState::Playing {
+            return number;
+        }
+
         let scale = self.scale_factor() as f64;
+        (number * scale).round() / scale
+    }
+
+    pub fn round_f32(&self, number: f32) -> f32 {
+        if self.zoom_animation().state() == adw::AnimationState::Playing {
+            return number;
+        }
+
+        let scale = self.scale_factor() as f32;
         (number * scale).round() / scale
     }
 }
