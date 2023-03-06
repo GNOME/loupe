@@ -16,6 +16,17 @@
 //
 // SPDX-License-Identifier: GPL-3.0-or-later
 
+//! A widget that shows images and handles control inputs
+//!
+//! This widget handles showing the right section of the image
+//! with a spicfic zoom level and rotation. It also handles control
+//! input that change those properties.
+//!
+//! While this widget logically coposes the image, decoding images
+//! and composing the textures happens in [`decoder`].
+//!
+//! [`decoder`]: crate::decoder
+
 use crate::deps::*;
 
 use crate::decoder::{self, tiling, Decoder, DecoderUpdate};

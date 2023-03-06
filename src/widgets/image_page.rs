@@ -17,6 +17,10 @@
 //
 // SPDX-License-Identifier: GPL-3.0-or-later
 
+//! A widget that shows the image, a loading screen, or an error page
+//!
+//! This widget also handles showing the context menu.
+
 use crate::deps::*;
 use crate::widgets::LpImage;
 

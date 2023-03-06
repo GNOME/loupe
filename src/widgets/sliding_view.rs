@@ -1,4 +1,4 @@
-//! Sliding view for images
+//! A sliding view widget for images
 //!
 //! This widget it similar to `AdwCarousel`.
 //! Currently, there is no swipe-gesture support since it's not working with

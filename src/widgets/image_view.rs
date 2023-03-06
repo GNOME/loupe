@@ -17,6 +17,14 @@
 //
 // SPDX-License-Identifier: GPL-3.0-or-later
 
+//! A widget that shows the [`LpSlidingView`] and coordinates it's content
+//!
+//! This widget coordinates the content of [`LpSlidingView`] with the
+//! [`LpFileModel`]. It also handles input that changes the image.
+//!
+//! [`LpSlidingView`]: crate::widgets::LpSlidingView
+//! [`LpFileModel`]: crate::file_model::LpFileModel
+
 use crate::deps::*;
 use crate::file_model::LpFileModel;
 use crate::i18n::*;
