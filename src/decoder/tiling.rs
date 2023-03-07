@@ -60,7 +60,7 @@ impl Tile {
     /// Add tile to snapshot
     ///
     /// This is where parts of images actually land on the screen
-    pub fn add_to_snapshot(&self, snapshot: &gtk::Snapshot, options: &RenderOptions) {
+    pub fn add_to_snapshot(&self, snapshot: &gtk::Snapshot, _options: &RenderOptions) {
         let zoom = self.zoom();
         let area = self.area().scale(1. / zoom, 1. / zoom);
         let area_with_bleed = self.area_with_bleed().scale(1. / zoom, 1. / zoom);
@@ -68,7 +68,7 @@ impl Tile {
         // TODO: do not clip outer bounderies of the image
         snapshot.push_clip(&area);
         snapshot.append_color(&gdk::RGBA::new(0.118, 0.118, 0.118, 1.), &area);
-        snapshot.append_scaled_texture(&self.texture, options.scaling_filter, &area_with_bleed);
+        snapshot.append_texture(&self.texture, &area_with_bleed);
         snapshot.pop();
     }
 
