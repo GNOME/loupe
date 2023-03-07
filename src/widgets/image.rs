@@ -70,6 +70,11 @@ const RUBBERBANDING_EXPONENT: f64 = 0.4;
 /// Max zoom level 2000%
 const MAX_ZOOM_LEVEL: f64 = 20.0;
 
+/// Thumbnail size in application pixels
+///
+/// The thumbnail is currently used for drag and drop.
+const THUMBNAIL_SIZE: f32 = 128.;
+
 mod imp {
     use super::*;
 
@@ -488,7 +493,6 @@ mod imp {
             let widget = self.obj();
             let widget_width = widget.width() as f64;
             let widget_height = widget.height() as f64;
-            let (original_width, original_height) = widget.original_dimensions();
             let display_width = widget.image_displayed_width();
             let display_height = widget.image_displayed_height();
 
@@ -535,31 +539,8 @@ mod imp {
             // Apply zoom
             snapshot.scale(applicable_zoom as f32, applicable_zoom as f32);
 
-            // Put image origin at (0, 0) again with rotation
-            snapshot.translate(&graphene::Point::new(
-                -(original_width as f32 - display_width as f32 / applicable_zoom as f32) / 2.,
-                -(original_height as f32 - display_height as f32 / applicable_zoom as f32) / 2.,
-            ));
-
-            // Undo centering in coordinates
-            snapshot.translate(&graphene::Point::new(
-                original_width as f32 / 2.,
-                original_height as f32 / 2.,
-            ));
-
-            // Apply the transformations from properties
-            snapshot.rotate(widget.rotation() as f32);
-            if widget.mirrored() {
-                snapshot.scale(-1., 1.);
-            }
-
-            // Center image in coordinates.
-            // Needed for rotating around the center of the image, and
-            // mirroring the image does not put it to a completely different position.
-            snapshot.translate(&graphene::Point::new(
-                -original_width as f32 / 2.,
-                -original_height as f32 / 2.,
-            ));
+            // Apply rotation and mirroring
+            widget.snapshot_rotate_mirror(snapshot, widget.rotation() as f32, widget.mirrored());
 
             // Add texture(s)
             self.tiles
@@ -843,9 +824,32 @@ impl LpImage {
         }
     }
 
-    /// Texture that contains the original image
-    pub fn texture(&self) -> Option<gdk::Texture> {
-        None
+    /// Returns a thumbnail of the displated image
+    pub fn thumbnail(&self) -> Option<gdk::Paintable> {
+        let (width, height) = self.original_dimensions();
+        let long_side = i32::max(width, height);
+        let orientation = self.metadata().orientation();
+
+        let scale = f32::min(1., THUMBNAIL_SIZE / long_side as f32);
+        let render_options = tiling::RenderOptions {
+            scaling_filter: gsk::ScalingFilter::Trilinear,
+        };
+
+        let snapshot = gtk::Snapshot::new();
+
+        snapshot.scale(scale, scale);
+        self.snapshot_rotate_mirror(
+            &snapshot,
+            -orientation.rotation as f32,
+            orientation.mirrored,
+        );
+
+        self.imp()
+            .tiles
+            .load()
+            .add_to_snapshot(&snapshot, scale as f64, &render_options);
+
+        snapshot.to_paintable(None)
     }
 
     fn mirrored(&self) -> bool {
@@ -1359,6 +1363,43 @@ impl LpImage {
 
     pub fn widget_width(&self) -> f64 {
         self.width() as f64
+    }
+
+    /// Mirrors and rotates snapshot according to arguments
+    ///
+    /// After the operation the image is positioned such that it's origin
+    /// is a `(0, 0)` again.
+    pub fn snapshot_rotate_mirror(&self, snapshot: &gtk::Snapshot, rotation: f32, mirrored: bool) {
+        let applicable_zoom = self.applicable_zoom();
+        let (original_width, original_height) = self.original_dimensions();
+        let display_width = self.image_displayed_width();
+        let display_height = self.image_displayed_height();
+
+        // Put image origin at (0, 0) again with rotation
+        snapshot.translate(&graphene::Point::new(
+            -(original_width as f32 - display_width as f32 / applicable_zoom as f32) / 2.,
+            -(original_height as f32 - display_height as f32 / applicable_zoom as f32) / 2.,
+        ));
+
+        // Undo centering in coordinates
+        snapshot.translate(&graphene::Point::new(
+            original_width as f32 / 2.,
+            original_height as f32 / 2.,
+        ));
+
+        // Apply the transformations from properties
+        snapshot.rotate(rotation);
+        if mirrored {
+            snapshot.scale(-1., 1.);
+        }
+
+        // Center image in coordinates.
+        // Needed for rotating around the center of the image, and
+        // mirroring the image does not put it to a completely different position.
+        snapshot.translate(&graphene::Point::new(
+            -original_width as f32 / 2.,
+            -original_height as f32 / 2.,
+        ));
     }
 
     pub fn metadata(&self) -> LpImageMetadata {

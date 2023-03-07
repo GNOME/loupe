@@ -28,7 +28,6 @@
 use crate::deps::*;
 use crate::file_model::LpFileModel;
 use crate::i18n::*;
-use crate::thumbnail::Thumbnail;
 use crate::util::{Direction, Position};
 use crate::widgets::{LpImage, LpImagePage, LpSlidingView};
 
@@ -177,9 +176,16 @@ mod imp {
             );
 
             source.connect_drag_begin(glib::clone!(@weak obj => move |source, _| {
-                if let Some(texture) = obj.current_page().and_then(|p| p.texture()) {
-                    let thumbnail = Thumbnail::new(&texture);
-                    source.set_icon(Some(&thumbnail), 0, 0);
+                if let Some(paintable) = obj.current_image().and_then(|p| p.thumbnail()) {
+                    // -6 for cursor width, +16 for margin in .drag-icon
+                    source.set_icon(Some(&paintable), paintable.intrinsic_width() / 2 - 6 + 16, -12);
+                    if let Some(drag) = source.drag() {
+                        let drag_icon = gtk::DragIcon::for_drag(&drag);
+                        // Rounds corners, adds outline and shadow
+                        drag_icon.add_css_class("drag-icon");
+                        // Make border-radius clip the image
+                        drag_icon.set_overflow(gtk::Overflow::Hidden);
+                    }
                 };
             }));
 
