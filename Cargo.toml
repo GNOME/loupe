@@ -29,8 +29,8 @@ url = "2.3.1"
 
 # decoders
 image-rs = { package = "image", version = "*", git = "https://github.com/image-rs/image.git" }
-libheif-rs = "0.17.0"
-rsvg = { package = "librsvg", git = "https://gitlab.gnome.org/GNOME/librsvg.git" }
+libheif-rs = "0.18.0"
+librsvg = { git = "https://gitlab.gnome.org/GNOME/librsvg.git" }
 
 [dependencies.ashpd]
 version = "0.4.0-alpha.3"
