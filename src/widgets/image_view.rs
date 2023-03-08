@@ -245,6 +245,10 @@ glib::wrapper! {
 #[gtk::template_callbacks]
 impl LpImageView {
     pub fn set_image_from_path(&self, path: &Path) {
+        // Add image to recently used file. Does not work in Flatpaks:
+        // <https://github.com/flatpak/xdg-desktop-portal/issues/215>
+        gtk::RecentManager::default().add_item(&dbg!(gio::File::for_path(path).uri()));
+
         if let Err(err) = self.load_path(path) {
             log::error!("Failed to load path: {err}");
             self.activate_action("win.show-toast", Some(&(err.to_string(), 1).to_variant()))

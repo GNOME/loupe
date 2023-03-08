@@ -153,10 +153,6 @@ impl LpImagePage {
 
         obj.imp().image.set_file(&file);
 
-        // This doesn't work properly for items not explicitly selected
-        // via the file chooser portal. I'm not sure how to make this work.
-        gtk::RecentManager::default().add_item(&file.uri());
-
         spawn!(clone!(@weak obj, @strong path => async move {
             let imp = obj.imp();
             imp.image.load(&path).await;
