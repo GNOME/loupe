@@ -165,8 +165,11 @@ mod imp {
                     glib::ParamSpecBoolean::builder("is-loaded")
                         .read_only()
                         .build(),
-                    glib::ParamSpecBoolean::builder("error").read_only().build(),
+                    glib::ParamSpecString::builder("error").read_only().build(),
                     glib::ParamSpecObject::builder::<LpImageMetadata>("metadata")
+                        .read_only()
+                        .build(),
+                    glib::ParamSpecString::builder("format-name")
                         .read_only()
                         .build(),
                     glib::ParamSpecDouble::builder("rotation")
@@ -206,6 +209,7 @@ mod imp {
                 "is-loaded" => obj.is_loaded().to_value(),
                 "error" => obj.error().to_value(),
                 "metadata" => obj.metadata().to_value(),
+                "format-name" => obj.format_name().to_value(),
                 "rotation" => obj.rotation().to_value(),
                 "mirrored" => obj.mirrored().to_value(),
                 "zoom" => obj.zoom().to_value(),
@@ -713,6 +717,7 @@ impl LpImage {
             }
             DecoderUpdate::Format(format) => {
                 imp.format.replace(Some(format));
+                self.notify("format-name");
             }
         }
     }
@@ -964,7 +969,7 @@ impl LpImage {
 
     /// Maximal zoom allowed for this image
     fn max_zoom(&self) -> f64 {
-        if let Some(decoder::ImageFormat::Svg) = dbg!(self.format()) {
+        if let Some(decoder::ImageFormat::Svg) = self.format() {
             let (width, height) = self.original_dimensions();
             // Avoid division by 0
             let long_side = f64::max(1., i32::max(width, height) as f64);
@@ -1433,6 +1438,11 @@ impl LpImage {
     /// Image format
     pub fn format(&self) -> Option<decoder::ImageFormat> {
         *self.imp().format.borrow()
+    }
+
+    /// Image format displayable name
+    pub fn format_name(&self) -> Option<String> {
+        self.imp().format.borrow().map(|x| x.to_string())
     }
 
     /// Returns decoding error if one occured

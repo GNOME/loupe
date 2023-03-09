@@ -68,12 +68,12 @@
                 </child>
                 <child>
                   <object class="AdwActionRow">
-                    <property name="title" translatable="yes">File Type</property>
+                    <property name="title" translatable="yes">Image Format</property>
                     <property name="subtitle-selectable">True</property>
                     <binding name="subtitle">
-                      <closure type="gchararray" function="file_type">
-                        <lookup name="file-info">LpPropertiesView</lookup>
-                      </closure>
+                      <lookup type="LpImage" name="format-name">
+                        <lookup type="LpPropertiesView" name="image"/>
+                      </lookup>
                     </binding>
                     <style>
                       <class name="property"/>

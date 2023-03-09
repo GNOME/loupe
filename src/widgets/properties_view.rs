@@ -381,18 +381,6 @@ impl LpPropertiesView {
     }
 
     #[template_callback]
-    fn file_type(&self, info: Option<gio::FileInfo>) -> String {
-        info.and_then(|i| i.content_type())
-            .map(|t| t.to_string())
-            .map(|t| {
-                t.rsplit('/').collect::<Vec<&str>>()[0]
-                    .to_owned()
-                    .to_uppercase()
-            })
-            .unwrap_or_else(|| FALLBACK.to_owned())
-    }
-
-    #[template_callback]
     fn file_size(&self, info: Option<gio::FileInfo>) -> String {
         info.map(|info| {
             let size = info.size() as u64;

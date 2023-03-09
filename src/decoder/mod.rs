@@ -15,25 +15,7 @@ use gtk::graphene;
 use std::io::Read;
 use std::sync::Arc;
 
-pub use formats::RSVG_MAX_SIZE;
-
-#[derive(Clone, Copy, Debug)]
-pub enum ImageFormat {
-    ImageRs(image_rs::ImageFormat),
-    // TODO: Add details about contained format
-    Heif,
-    Svg,
-}
-
-impl std::fmt::Display for ImageFormat {
-    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> Result<(), std::fmt::Error> {
-        match self {
-            Self::ImageRs(format) => write!(f, "{:?}", format),
-            Self::Heif => write!(f, "HEIF"),
-            Self::Svg => write!(f, "SVG"),
-        }
-    }
-}
+pub use formats::{ImageFormat, RSVG_MAX_SIZE};
 
 #[derive(Clone, Copy, Debug)]
 /// Renderer requests new tiles
