@@ -87,6 +87,7 @@ mod imp {
         pub file_monitor: RefCell<Option<gio::FileMonitor>>,
         pub tiles: Arc<ArcSwap<tiling::TilingStore>>,
         pub decoder: RefCell<Option<Arc<Decoder>>>,
+        pub format: RefCell<Option<decoder::ImageFormat>>,
 
         /// Set to true when image is ready for displaying
         pub is_loaded: Cell<bool>,
@@ -710,8 +711,8 @@ impl LpImage {
             DecoderUpdate::Error(err) => {
                 self.set_error(err);
             }
-            DecoderUpdate::Format(_) => {
-                // TODO: Store and use in image properties
+            DecoderUpdate::Format(format) => {
+                imp.format.replace(Some(format));
             }
         }
     }
@@ -961,14 +962,29 @@ impl LpImage {
         decoder::tiling::zoom_normalize(self.zoom())
     }
 
+    /// Maximal zoom allowed for this image
+    fn max_zoom(&self) -> f64 {
+        if let Some(decoder::ImageFormat::Svg) = dbg!(self.format()) {
+            let (width, height) = self.original_dimensions();
+            // Avoid division by 0
+            let long_side = f64::max(1., i32::max(width, height) as f64);
+            // Limit to maz size supported by rsvg
+            f64::min(MAX_ZOOM_LEVEL, decoder::RSVG_MAX_SIZE as f64 / long_side)
+        } else {
+            MAX_ZOOM_LEVEL
+        }
+    }
+
     /// Set zoom level aiming for given position or center if not available
     fn set_zoom_aiming(&self, mut zoom: f64, aiming: Option<(f64, f64)>) {
+        let max_zoom = self.max_zoom();
+
         // allow some deviation from max value for rubberbanding
-        if zoom > MAX_ZOOM_LEVEL {
-            let max_deviation = MAX_ZOOM_LEVEL * ZOOM_FACTOR_MAX_RUBBERBAND;
-            let deviation = zoom / MAX_ZOOM_LEVEL;
+        if zoom > max_zoom {
+            let max_deviation = max_zoom * ZOOM_FACTOR_MAX_RUBBERBAND;
+            let deviation = zoom / max_zoom;
             zoom = f64::min(
-                MAX_ZOOM_LEVEL * deviation.powf(RUBBERBANDING_EXPONENT),
+                max_zoom * deviation.powf(RUBBERBANDING_EXPONENT),
                 max_deviation,
             );
         }
@@ -1136,8 +1152,9 @@ impl LpImage {
 
     /// Zoom to specific level with animation
     pub fn zoom_to(&self, mut zoom: f64) {
-        if zoom >= MAX_ZOOM_LEVEL {
-            zoom = MAX_ZOOM_LEVEL;
+        let max_zoom = self.max_zoom();
+        if zoom >= max_zoom {
+            zoom = max_zoom;
             self.set_max_zoom(true);
         } else {
             self.set_max_zoom(false);
@@ -1411,6 +1428,11 @@ impl LpImage {
         let file = self.file()?;
         let list = gdk::FileList::from_array(&[file]);
         Some(gdk::ContentProvider::for_value(&list.to_value()))
+    }
+
+    /// Image format
+    pub fn format(&self) -> Option<decoder::ImageFormat> {
+        *self.imp().format.borrow()
     }
 
     /// Returns decoding error if one occured

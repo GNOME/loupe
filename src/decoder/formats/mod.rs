@@ -4,6 +4,6 @@ mod svg;
 
 pub use heif::Heif;
 pub use image_rs_other::ImageRsOther;
-pub use svg::Svg;
+pub use svg::{Svg, RSVG_MAX_SIZE};
 
 use super::{Decoder, UpdateSender};

@@ -15,6 +15,8 @@ use gtk::graphene;
 use std::io::Read;
 use std::sync::Arc;
 
+pub use formats::RSVG_MAX_SIZE;
+
 #[derive(Clone, Copy, Debug)]
 pub enum ImageFormat {
     ImageRs(image_rs::ImageFormat),

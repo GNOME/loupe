@@ -11,6 +11,10 @@ use gtk::prelude::*;
 use std::path::PathBuf;
 use std::sync::Arc;
 
+/// Current librsvg limit on maximum dimensions. See
+/// <https://gitlab.gnome.org/GNOME/librsvg/-/issues/938>
+pub const RSVG_MAX_SIZE: u32 = 32_767;
+
 #[derive(Debug)]
 pub struct Svg {
     thread_handle: std::thread::JoinHandle<()>,
@@ -106,9 +110,7 @@ impl Svg {
                                 tile_instructions.tiling.scaled_dimensions();
 
                             // librsvg does not currently support larger images
-                            //
-                            // TODO: We are only creating tiles, maybe this check in librsvg is wrong?
-                            if total_height > 32_767 || total_width > 32_767 {
+                            if total_height > RSVG_MAX_SIZE || total_width > RSVG_MAX_SIZE {
                                 continue;
                             }
 
