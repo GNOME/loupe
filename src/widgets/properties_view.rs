@@ -102,7 +102,9 @@ mod imp {
                     glib::ParamSpecObject::builder::<LpImage>("image")
                         .explicit_notify()
                         .build(),
-                    glib::ParamSpecObject::builder::<LpImageMetadata>("metadata").build(),
+                    glib::ParamSpecObject::builder::<LpImageMetadata>("metadata")
+                        .explicit_notify()
+                        .build(),
                 ]
             });
 
@@ -222,8 +224,8 @@ impl LpPropertiesView {
         // Here we build the future:
         let (handle, reg) = AbortHandle::new_pair();
         let fut = Abortable::new(
-            clone!(@weak self as view, @weak file => async move {
-                if let Ok(info) = util::query_attributes_future(
+            clone!(@weak self as view, @strong file => async move {
+                let info_result = util::query_attributes_future(
                     &file,
                     vec![
                         gio::FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE,
@@ -232,8 +234,11 @@ impl LpPropertiesView {
                         gio::FILE_ATTRIBUTE_TIME_MODIFIED,
                     ],
                 )
-                .await {
-                    view.on_info_loaded(info, &file);
+                .await;
+
+                match info_result {
+                    Ok(info) => view.on_info_loaded(info, &file),
+                    Err(err) => log::warn!("Failed to load file info: {err}"),
                 }
             }),
             reg,
