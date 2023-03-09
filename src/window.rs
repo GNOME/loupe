@@ -533,7 +533,7 @@ impl LpWindow {
 
     /// Permanently delete image
     ///
-    /// Fallback for when trash no available
+    /// Fallback for when trash not available
     async fn delete(&self, path: &Path) {
         let dialog = adw::MessageDialog::builder()
             .modal(true)

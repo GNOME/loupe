@@ -1,7 +1,7 @@
 use crate::deps::*;
 use crate::i18n::*;
 
-use anyhow::{anyhow, Context};
+use anyhow::{anyhow, bail, Context};
 use gio::prelude::*;
 use once_cell::sync::Lazy;
 
@@ -96,15 +96,42 @@ pub async fn untrash(path: &Path) -> anyhow::Result<()> {
         if original_path == path {
             let trash_file = trash.child(file_info.name());
             let original_file = gio::File::for_path(original_path);
+            let mut target_file = original_file.clone();
+
+            // Find available filename if original is used
+            for i in 1.. {
+                if !target_file.query_exists(gio::Cancellable::NONE) {
+                    break;
+                }
+
+                // Construct new name of the form "<filename> (i).<ext>"
+                let Some(path) = original_file.path() else { bail!("File without path") };
+                let mut name = path
+                    .file_stem()
+                    .map(|x| x.to_os_string())
+                    .unwrap_or_default();
+                name.push(format!(" ({i})"));
+
+                // Construct new path
+                let mut new_path = path.clone();
+                new_path.set_file_name(name);
+                if let Some(ext) = path.extension() {
+                    new_path.set_extension(ext);
+                }
+
+                target_file = gio::File::for_path(new_path);
+            }
+
             error = trash_file
                 .move_future(
-                    &original_file,
+                    &target_file,
                     gio::FileCopyFlags::NOFOLLOW_SYMLINKS,
                     glib::Priority::default(),
                 )
                 .0
                 .await
                 .context(i18n("Failed to restore image from trash"));
+
             break;
         }
     }
