@@ -2,6 +2,8 @@
 mod formats;
 pub mod tiling;
 
+pub use formats::ImageDimensionDetails;
+
 use crate::image_metadata::ImageMetadata;
 use formats::*;
 use tiling::TilingStoreExt;
@@ -36,7 +38,7 @@ pub struct UpdateSender {
 /// Signals for renderer
 pub enum DecoderUpdate {
     /// Dimensions of image in `TilingSore` available/updated
-    Dimensions,
+    Dimensions(ImageDimensionDetails),
     /// Metadata available
     Metadata(ImageMetadata),
     /// Image format determined

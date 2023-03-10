@@ -126,6 +126,8 @@ mod imp {
 
         /// Currently EXIF data
         pub image_metadata: RefCell<LpImageMetadata>,
+        /// Image dimension details for SVGs
+        pub dimension_details: RefCell<decoder::ImageDimensionDetails>,
 
         /// Current pointer position
         pub pointer_position: Cell<Option<(f64, f64)>>,
@@ -692,8 +694,9 @@ impl LpImage {
 
                 self.reset_rotation();
             }
-            DecoderUpdate::Dimensions => {
+            DecoderUpdate::Dimensions(dimension_details) => {
                 log::debug!("Received dimensions: {:?}", self.original_dimensions());
+                self.imp().dimension_details.replace(dimension_details);
                 self.notify("image-size");
                 self.configure_best_fit();
                 self.request_tiles();
@@ -1426,6 +1429,10 @@ impl LpImage {
 
     pub fn metadata(&self) -> LpImageMetadata {
         self.imp().image_metadata.borrow().clone()
+    }
+
+    pub fn dimension_details(&self) -> decoder::ImageDimensionDetails {
+        self.imp().dimension_details.borrow().clone()
     }
 
     /// Drag and drop content provider

@@ -58,7 +58,11 @@ impl Svg {
 
             let (original_width, original_height) = svg_dimensions(&renderer);
 
-            tiles.set_original_dimensions((original_width, original_height));
+            let intrisic_dimensions = renderer.intrinsic_dimensions();
+            tiles.set_original_dimensions_full(
+                (original_width, original_height),
+                ImageDimensionDetails::Svg((intrisic_dimensions.width, intrisic_dimensions.height)),
+            );
 
             loop {
                 let tile_request = {

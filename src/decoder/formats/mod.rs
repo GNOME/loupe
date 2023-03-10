@@ -33,3 +33,10 @@ impl std::fmt::Display for ImageFormat {
         }
     }
 }
+
+#[derive(Clone, Debug, Default)]
+pub enum ImageDimensionDetails {
+    Svg((rsvg::Length, rsvg::Length)),
+    #[default]
+    None,
+}

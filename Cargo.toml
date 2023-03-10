@@ -24,7 +24,6 @@ log = "0.4.17"
 once_cell = "1.16.0"
 pretty_env_logger = "0.4.0"
 safe-transmute = "0.11.2"
-svg_metadata = "0.4.3"
 url = "2.3.1"
 
 # decoders

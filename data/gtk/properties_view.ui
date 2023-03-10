@@ -59,7 +59,11 @@
                     <property name="title" translatable="yes">Image Size</property>
                     <property name="subtitle-selectable">True</property>
                     <binding name="subtitle">
-                      <lookup name="dimensions">LpPropertiesView</lookup>
+                      <closure type="gchararray" function="image_size">
+                        <lookup type="LpImage" name="image-size">
+                          <lookup name="image">LpPropertiesView</lookup>
+                         </lookup>
+                      </closure>
                     </binding>
                     <style>
                       <class name="property"/>

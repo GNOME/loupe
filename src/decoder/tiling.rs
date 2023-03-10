@@ -8,7 +8,7 @@
 ///! be re-genearted for each zoom level. It can also be used to allow
 ///! showing large JPEGs etc where the complete decoded image would not
 ///! even fit in the VRAM.
-use super::{DecoderUpdate, UpdateSender};
+use super::{DecoderUpdate, ImageDimensionDetails, UpdateSender};
 use crate::deps::*;
 
 use arc_swap::ArcSwap;
@@ -134,9 +134,17 @@ impl TilingStore {
     }
 
     pub fn set_original_dimensions(&mut self, dimensions: Coordinates) {
+        self.set_original_dimensions_full(dimensions, Default::default());
+    }
+
+    pub fn set_original_dimensions_full(
+        &mut self,
+        dimensions: Coordinates,
+        dimension_details: ImageDimensionDetails,
+    ) {
         self.original_dimensions = Some(dimensions);
         if let Some(updater) = &self.update_sender {
-            updater.send(DecoderUpdate::Dimensions);
+            updater.send(DecoderUpdate::Dimensions(dimension_details));
         }
     }
 
@@ -335,6 +343,11 @@ impl RectExt for graphene::Rect {
 pub trait TilingStoreExt {
     fn push(&self, tile: Tile);
     fn set_original_dimensions(&self, size: Coordinates);
+    fn set_original_dimensions_full(
+        &self,
+        size: Coordinates,
+        dimension_details: ImageDimensionDetails,
+    );
     fn set_update_sender(&self, sender: UpdateSender);
 }
 
@@ -351,6 +364,18 @@ impl TilingStoreExt for ArcSwap<TilingStore> {
         self.rcu(|tiling_store| {
             let mut new_store = (**tiling_store).clone();
             new_store.set_original_dimensions(size);
+            Arc::new(new_store)
+        });
+    }
+
+    fn set_original_dimensions_full(
+        &self,
+        size: Coordinates,
+        dimension_details: ImageDimensionDetails,
+    ) {
+        self.rcu(|tiling_store| {
+            let mut new_store = (**tiling_store).clone();
+            new_store.set_original_dimensions_full(size, dimension_details.clone());
             Arc::new(new_store)
         });
     }
