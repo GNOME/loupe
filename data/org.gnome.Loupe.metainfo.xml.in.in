@@ -7,7 +7,7 @@
   <developer_name>Christopher Davis</developer_name>
   <summary>View images</summary>
   <description>
-    <p>A simple image viewer with allows to browser through your images and inspecting their metadata.</p>
+    <p>A simple image viewer which allows you to browse through your images and inspect their metadata.</p>
     <p>The following features are not available yet</p>
     <ul>
       <li>Correctly showing SVGs at every zoom-level</li>
