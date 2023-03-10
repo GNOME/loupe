@@ -1,0 +1,497 @@
+# Spanish translation for Loupe.
+# Copyright (C) 2023 Loupe's COPYRIGHT HOLDER
+# This file is distributed under the same license as the Loupe package.
+# Daniel Mustieles <daniel.mustieles@gmail.com>, 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Loupe main\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-03-10 07:39+0000\n"
+"PO-Revision-Date: 2023-03-10 10:52+0100\n"
+"Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
+"Language-Team: Spanish - Spain <gnome-es-list@gnome.org>\n"
+"Language: es_ES\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"X-Generator: Gtranslator 42.0\n"
+
+#. If the file exists, get display name
+#: data/org.gnome.Loupe.desktop.in.in:3
+#: data/org.gnome.Loupe.metainfo.xml.in.in:6 data/gtk/window.ui:63
+#: src/application.rs:193 src/window.rs:676 src/window.rs:682
+msgid "Loupe"
+msgstr "Loupe"
+
+#: data/org.gnome.Loupe.desktop.in.in:11
+msgid "Picture;Slideshow;Graphics;Image Viewer;"
+msgstr "foto;imagen;presentación;gráficos;visor;"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:7 src/application.rs:196
+msgid "Christopher Davis"
+msgstr "Christopher Davis"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:8
+msgid "View images"
+msgstr "Ver imágenes"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:10
+msgid ""
+"A simple image viewer with allows to browser through your images and "
+"inspecting their metadata."
+msgstr ""
+"Un sencillo visor de imágenes que le permite explorarlas e inspeccionar sus "
+"metadatos."
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:11
+msgid "The following features are not available yet"
+msgstr "Las siguientes funcionalidades no están disponibles todavía"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:13
+msgid "Correctly showing SVGs at every zoom-level"
+msgstr "Mostrar SVG correctamente en cualquier nivel de ampliación"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:14
+msgid "Interpreting image color profiles"
+msgstr "Interpretando los perfiles de color de la imagen"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:15
+msgid "Animated image formats"
+msgstr "Formatos de imagen animada"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:16
+msgid "Correct HighDPI support"
+msgstr "Soporte de HighDPI corregido"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:17
+msgid "Print settings to position the image on the page"
+msgstr "Mostrar la configuración de ubicación de la imagen en la página"
+
+#: data/gtk/help_overlay.ui:11
+msgctxt "shortcut window"
+msgid "General Shortcuts"
+msgstr "Atajos generales"
+
+#: data/gtk/help_overlay.ui:14
+msgctxt "shortcut window"
+msgid "Show Main Menu"
+msgstr "Mostrar el menú principal"
+
+#: data/gtk/help_overlay.ui:20
+msgctxt "shortcut window"
+msgid "Copy Image to Clipboard"
+msgstr "Copiar imagen al portapapeles"
+
+#: data/gtk/help_overlay.ui:26
+msgctxt "shortcut window"
+msgid "Move Image to Trash"
+msgstr "Mover imagen a la papelera"
+
+#: data/gtk/help_overlay.ui:32
+msgctxt "shortcut window"
+msgid "Toggle Image Properties"
+msgstr "Conmutar las propiedades de la imagen"
+
+#: data/gtk/help_overlay.ui:38
+msgctxt "shortcut window"
+msgid "Set as Background"
+msgstr "Establecer como fondo"
+
+#: data/gtk/help_overlay.ui:44
+msgctxt "shortcut window"
+msgid "Toggle Fullscreen"
+msgstr "Conmutar el modo a pantalla completa"
+
+#: data/gtk/help_overlay.ui:50
+msgctxt "shortcut window"
+msgid "Leave Fullscreen"
+msgstr "Salir del modo a pantalla completa"
+
+#: data/gtk/help_overlay.ui:56
+msgctxt "shortcut window"
+msgid "New Window"
+msgstr "Ventana nueva"
+
+#: data/gtk/help_overlay.ui:62
+msgctxt "shortcut window"
+msgid "Open Help"
+msgstr "Abrir la ayuda"
+
+#: data/gtk/help_overlay.ui:68
+msgctxt "shortcut window"
+msgid "Show Keyboard Shortcuts"
+msgstr "Mostrar los atajos del teclado"
+
+#: data/gtk/help_overlay.ui:74
+msgctxt "shortcut window"
+msgid "Close Window"
+msgstr "Cerrar ventana"
+
+#: data/gtk/help_overlay.ui:80
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "Salir"
+
+#: data/gtk/help_overlay.ui:88
+msgctxt "shortcut window"
+msgid "Navigate Images"
+msgstr "Navegar por las imágenes"
+
+#: data/gtk/help_overlay.ui:92 data/gtk/help_overlay.ui:106
+#: data/gtk/help_overlay.ui:218 data/gtk/help_overlay.ui:232
+msgctxt "shortcut window"
+msgid "Next Image"
+msgstr "Siguiente imagen"
+
+#: data/gtk/help_overlay.ui:99 data/gtk/help_overlay.ui:113
+#: data/gtk/help_overlay.ui:225 data/gtk/help_overlay.ui:239
+msgctxt "shortcut window"
+msgid "Previous Image"
+msgstr "Imagen anterior"
+
+#: data/gtk/help_overlay.ui:119
+msgctxt "shortcut window"
+msgid "First Image"
+msgstr "Primera imagen"
+
+#: data/gtk/help_overlay.ui:125
+msgctxt "shortcut window"
+msgid "Last Image"
+msgstr "Última imagen"
+
+#: data/gtk/help_overlay.ui:133
+msgctxt "shortcut window"
+msgid "Rotate Image"
+msgstr "Rotar imagen"
+
+#: data/gtk/help_overlay.ui:136 data/gtk/help_overlay.ui:257
+msgctxt "shortcut window"
+msgid "Rotate Clockwise"
+msgstr "Rota en sentido horario"
+
+#: data/gtk/help_overlay.ui:142 data/gtk/help_overlay.ui:263
+msgctxt "shortcut window"
+msgid "Rotate Counterclockwise"
+msgstr "Rota en sentido anti-horario"
+
+#: data/gtk/help_overlay.ui:150
+msgctxt "shortcut window"
+msgid "Zoom Image"
+msgstr "Ampliar la imagen"
+
+#: data/gtk/help_overlay.ui:153 data/gtk/help_overlay.ui:245
+msgctxt "shortcut window"
+msgid "Zoom In"
+msgstr "Ampliar"
+
+#: data/gtk/help_overlay.ui:159 data/gtk/help_overlay.ui:251
+msgctxt "shortcut window"
+msgid "Zoom Out"
+msgstr "Reducir"
+
+#: data/gtk/help_overlay.ui:165
+msgctxt "shortcut window"
+msgid "Best Fit"
+msgstr "Mejor ajuste"
+
+#: data/gtk/help_overlay.ui:171
+msgctxt "shortcut window"
+msgid "Original Scale"
+msgstr "Escala original"
+
+#: data/gtk/help_overlay.ui:177
+msgctxt "shortcut window"
+msgid "200% Scale"
+msgstr "Escala 200%"
+
+#: data/gtk/help_overlay.ui:185
+msgctxt "shortcut window"
+msgid "Pan View"
+msgstr "Vista panorámica"
+
+#: data/gtk/help_overlay.ui:188
+msgctxt "shortcut window"
+msgid "Pan Left"
+msgstr ""
+
+#: data/gtk/help_overlay.ui:194
+msgctxt "shortcut window"
+msgid "Pan Right"
+msgstr ""
+
+#: data/gtk/help_overlay.ui:200
+msgctxt "shortcut window"
+msgid "Pan Up"
+msgstr ""
+
+#: data/gtk/help_overlay.ui:206
+msgctxt "shortcut window"
+msgid "Pan Down"
+msgstr ""
+
+#: data/gtk/help_overlay.ui:214
+msgctxt "shortcut window"
+msgid "Gestures"
+msgstr "Gestos"
+
+#: data/gtk/image_page.ui:6 data/gtk/window.ui:16
+msgid "_Open With…"
+msgstr "_Abrir con…"
+
+#: data/gtk/image_page.ui:14 data/gtk/window.ui:24
+msgid "_Print…"
+msgstr "_Imprimir…"
+
+#: data/gtk/image_page.ui:18
+msgid "_Copy"
+msgstr "_Copiar"
+
+#: data/gtk/image_page.ui:23 data/gtk/window.ui:29
+msgid "Rotate"
+msgstr "Rotar"
+
+#: data/gtk/image_page.ui:34 data/gtk/window.ui:40
+msgid "_Set as Background…"
+msgstr "_Establecer como fondo…"
+
+#: data/gtk/image_page.ui:55
+msgid "Could not Load Image"
+msgstr "No se pudo cargar la imagen"
+
+#: data/gtk/image_page.ui:82 data/gtk/window.ui:115
+msgid "Rotate Left"
+msgstr "Rotar a la izquierda"
+
+#: data/gtk/image_page.ui:93 data/gtk/window.ui:126
+msgid "Rotate Right"
+msgstr "Rotar a la derecha"
+
+#: data/gtk/image_view.ui:30
+msgid "Previous Image"
+msgstr "Imagen anterior"
+
+#: data/gtk/image_view.ui:41
+msgid "Next Image"
+msgstr "Siguiente imagen"
+
+#: data/gtk/image_view.ui:70
+msgid "Toggle Fullscreen"
+msgstr "Conmutar el modo a pantalla completa"
+
+#: data/gtk/image_view.ui:81
+msgid "Zoom Out"
+msgstr "Ampliar"
+
+#: data/gtk/image_view.ui:92
+msgid "Zoom In"
+msgstr "Reducir"
+
+#: data/gtk/properties_view.ui:29
+msgid "Folder"
+msgstr "Carpeta"
+
+#: data/gtk/properties_view.ui:42
+msgid "Open Containing Folder"
+msgstr "Abrir la carpeta contenedora"
+
+#: data/gtk/properties_view.ui:59
+msgid "Image Size"
+msgstr "Tamaño de la imagen"
+
+#: data/gtk/properties_view.ui:71
+msgid "File Type"
+msgstr "Tipo de archivo"
+
+#: data/gtk/properties_view.ui:85
+msgid "File Size"
+msgstr "Tamaño del archivo"
+
+#: data/gtk/properties_view.ui:103
+msgid "File Created"
+msgstr "Fecha de creación"
+
+#: data/gtk/properties_view.ui:117
+msgid "File Modified"
+msgstr "Fecha de modificación"
+
+#: data/gtk/properties_view.ui:140
+msgid "Location"
+msgstr "Ubicación"
+
+#: data/gtk/properties_view.ui:160
+msgid "Open Location"
+msgstr "Abrir ubicación"
+
+#: data/gtk/properties_view.ui:173
+msgid "Originally Created"
+msgstr "Creado originalmente"
+
+#: data/gtk/properties_view.ui:194
+msgid "Aperture"
+msgstr "Apertura"
+
+#: data/gtk/properties_view.ui:215
+msgid "Exposure"
+msgstr "Exposición"
+
+#: data/gtk/properties_view.ui:236
+msgid "ISO"
+msgstr "ISO"
+
+#: data/gtk/properties_view.ui:257
+msgid "Focal Length"
+msgstr "Longitud focal"
+
+#: data/gtk/properties_view.ui:278
+msgid "Maker, Model"
+msgstr "Creador, modelo"
+
+#: data/gtk/window.ui:6
+msgid "_New Window"
+msgstr "_Ventana nueva"
+
+#: data/gtk/window.ui:10
+msgid "_Open…"
+msgstr "_Abrir…"
+
+#: data/gtk/window.ui:46
+msgid "_Help"
+msgstr "A_yuda"
+
+#: data/gtk/window.ui:50
+msgid "_Keyboard Shortcuts"
+msgstr "Atajos del _teclado"
+
+#: data/gtk/window.ui:54
+msgid "_About Loupe"
+msgstr "Acer_ca de Loupe"
+
+#: data/gtk/window.ui:107
+msgid "Main Menu"
+msgstr "Menú principal"
+
+#: data/gtk/window.ui:141
+msgid "Image Properties"
+msgstr "Propiedades de la imagen"
+
+#: data/gtk/window.ui:161
+msgid "View Images"
+msgstr "Ver imágenes"
+
+#: data/gtk/window.ui:162
+msgid "Drag and drop images here"
+msgstr "Arrastrar y soltar imágenes aquí"
+
+#: data/gtk/window.ui:166
+msgid "_Open File…"
+msgstr "Ab_rir archivo…"
+
+#: src/application.rs:208
+msgid "Copyright © 2020–2022 Christopher Davis et al."
+msgstr "Copyright © 2020–2022 Christopher Davis y otros"
+
+#: src/file_model.rs:114
+msgid "Could not list other files in directory."
+msgstr "No se pudieron listar los archivos de la carpeta"
+
+#. Translators: short for "north" in GPS coordinate
+#: src/image_metadata/gps.rs:136
+msgid "N"
+msgstr "N"
+
+#. Translators: short for "south" in GPS coordinate
+#: src/image_metadata/gps.rs:139
+msgid "S"
+msgstr "S"
+
+#. Translators: short for "east" in GPS coordinate
+#: src/image_metadata/gps.rs:149
+msgid "E"
+msgstr "E"
+
+#. Translators: short for "west" in GPS coordinate
+#: src/image_metadata/gps.rs:152
+msgid "W"
+msgstr "O"
+
+#. Translators: Date (%x) and time (%X) combined
+#: src/image_metadata/mod.rs:99
+#, c-format
+msgid "%x %X"
+msgstr "%x %X"
+
+#. Translators: Unit for exposure time in seconds
+#: src/image_metadata/mod.rs:131
+msgid "1\\u{2215}{}\\u{202F}s"
+msgstr "1\\u{2215}{}\\u{202F}s"
+
+#. Translators: Unit for focal length in millimeters
+#: src/image_metadata/mod.rs:156
+msgid "{}\\u{202F}mm"
+msgstr "{}\\u{202F}mm"
+
+#: src/widgets/image.rs:646
+msgid "File does not exist"
+msgstr "El archivo no existe"
+
+#: src/widgets/image_view.rs:574
+msgid "Failed to open new background image"
+msgstr "Falló al abrir la nueva imagen de fondo"
+
+#: src/widgets/image_view.rs:591
+msgid "Set as background."
+msgstr "Establecer como fondo."
+
+#: src/widgets/image_view.rs:598
+msgid "Could not set background."
+msgstr "No se pudo establecer como fondo"
+
+#: src/window.rs:355
+msgid "“{}” is not a valid image."
+msgstr "«{}» no es una imagen válida."
+
+#: src/window.rs:431
+msgid "Open Image"
+msgstr "Abrir imagen"
+
+#: src/window.rs:485
+msgid "Image copied to clipboard"
+msgstr "Imagen copiada al portapapeles"
+
+#: src/window.rs:499
+msgid "Image moved to trash"
+msgstr "Imagen movida a la papelera"
+
+#: src/window.rs:500
+msgid "Undo"
+msgstr "Deshacer"
+
+#: src/window.rs:511
+msgid "Failed to restore image from trash"
+msgstr "Falló al restaurar la imagen de la papelera"
+
+#: src/window.rs:526
+msgid "Failed to move image to trash"
+msgstr "Falló al mover la imagen a la papelera"
+
+#: src/window.rs:541
+msgid "Permanently Delete Image?"
+msgstr "¿Quiere eliminar la imagen de manera permanente?"
+
+#: src/window.rs:543
+msgid "The image “{}” can only be deleted permanently."
+msgstr "La imagen «{}» sólo se puede eliminar de manera permanente."
+
+#: src/window.rs:550
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: src/window.rs:550
+msgid "Delete"
+msgstr "Eliminar"
+
+#: src/window.rs:559
+msgid "Failed to delete image"
+msgstr "Falló al eliminar la imagen"
