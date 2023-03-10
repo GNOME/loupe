@@ -26,7 +26,7 @@ impl std::fmt::Debug for ImageMetadata {
     fn fmt(&self, fmt: &mut std::fmt::Formatter<'_>) -> Result<(), std::fmt::Error> {
         match self {
             Self::Exif(exif) => {
-                let list = exif.fields().into_iter().map(|f| {
+                let list = exif.fields().map(|f| {
                     let mut value = f.display_value().to_string();
                     // Remove long values
                     if value.len() > 100 {
