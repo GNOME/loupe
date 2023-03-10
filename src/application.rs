@@ -193,18 +193,16 @@ impl LpApplication {
             .application_name(i18n("Loupe"))
             .application_icon(config::APP_ID)
             .version(config::VERSION)
-            .developer_name(i18n("Christopher Davis"))
+            .developer_name(i18n("The Loupe Team"))
             .website("https://gitlab.gnome.org/Incubator/loupe")
             .issue_url("https://gitlab.gnome.org/Incubator/loupe/-/issues/new")
-            .developers(vec![
-                String::from("Christopher Davis <christopherdavis@gnome.org>"),
-                String::from("Sophie Herold <sophieherold@gnome.org>"),
+            .developers([
+                "Christopher Davis <christopherdavis@gnome.org>",
+                "Sophie Herold <sophieherold@gnome.org>",
             ])
-            .designers(vec![
-                String::from("Allan Day"),
-                String::from("Jakub Steiner"),
-                String::from("Tobias Bernard"),
-            ])
+            .designers(["Allan Day", "Jakub Steiner", "Tobias Bernard"])
+            // Translators: Replace "translator-credits" with your names, one name per line
+            .translator_credits(i18n("translator-credits"))
             .copyright(i18n("Copyright © 2020–2022 Christopher Davis et al."))
             .license_type(gtk::License::Gpl30)
             .build();
