@@ -91,14 +91,14 @@
               <object class="GtkButton">
                 <property name="icon-name">edit-copy-symbolic</property>
                 <property name="action-name">win.copy</property>
-                <property name="tooltip-text">Copy to Clipboard</property>
+                <property name="tooltip-text" translatable="yes">Copy to Clipboard</property>
               </object>
             </child>
             <child type="start">
               <object class="GtkButton">
                 <property name="icon-name">user-trash-symbolic</property>
                 <property name="action-name">win.trash</property>
-                <property name="tooltip-text">Move to Trash</property>
+                <property name="tooltip-text" translatable="yes">Move to Trash</property>
               </object>
             </child>
             <child type="end">
