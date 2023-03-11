@@ -8,16 +8,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-10 13:13+0000\n"
-"PO-Revision-Date: 2023-03-10 16:57+0100\n"
+"POT-Creation-Date: 2023-03-11 01:13+0000\n"
+"PO-Revision-Date: 2023-03-11 08:46+0100\n"
 "Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
 "Language-Team: Slovenian <gnome-si@googlegroups.com>\n"
 "Language: sl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : "
-"n%100==3 || n%100==4 ? 3 : 0);\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || "
+"n%100==4 ? 3 : 0);\n"
 "X-Generator: Poedit 3.2.2\n"
 "X-Poedit-SourceCharset: ISO-8859-1\n"
 
@@ -32,7 +32,7 @@ msgstr "Lupa"
 msgid "Picture;Slideshow;Graphics;Image Viewer;"
 msgstr "Slika; diaprojekcija;grafika;pregledovalnik slik;"
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:7 src/application.rs:196
+#: data/org.gnome.Loupe.metainfo.xml.in.in:7
 msgid "Christopher Davis"
 msgstr "Christopher Davis"
 
@@ -42,11 +42,11 @@ msgstr "Pregledovalnik slik"
 
 #: data/org.gnome.Loupe.metainfo.xml.in.in:10
 msgid ""
-"A simple image viewer with allows to browser through your images and "
-"inspecting their metadata."
+"A simple image viewer which allows you to browse through your images and "
+"inspect their metadata."
 msgstr ""
-"Preprost pregledovalnik slik omogoča pregledovanje slik in "
-"proučevanje njihovih metapodatkov."
+"Preprost pregledovalnik slik omogoča pregledovanje slik in proučevanje "
+"njihovih metapodatkov."
 
 #: data/org.gnome.Loupe.metainfo.xml.in.in:11
 msgid "The following features are not available yet"
@@ -371,6 +371,14 @@ msgstr "_Tipkovne bližnjice‫"
 msgid "_About Loupe"
 msgstr "_O programu Lupa"
 
+#: data/gtk/window.ui:94
+msgid "Copy to Clipboard"
+msgstr "Kopiraj na odložišče"
+
+#: data/gtk/window.ui:101
+msgid "Move to Trash"
+msgstr "Premakni v smeti"
+
 #: data/gtk/window.ui:107
 msgid "Main Menu"
 msgstr "Glavni meni"
@@ -391,9 +399,18 @@ msgstr "Povlecite in spustite slike sem"
 msgid "_Open File…"
 msgstr "_Odpri datoteko …"
 
-#: src/application.rs:208
-msgid "Copyright © 2020–2022 Christopher Davis et al."
-msgstr "Avtorska pravica © 2020–2022 Christopher Davis et al."
+#: src/application.rs:196
+msgid "The Loupe Team"
+msgstr "Ekipa Lupe"
+
+#. Translators: Replace "translator-credits" with your names, one name per line
+#: src/application.rs:205
+msgid "translator-credits"
+msgstr "Martin Srebotnjak <miles@filmsi.net>"
+
+#: src/application.rs:206
+msgid "Copyright © 2020–2023 Christopher Davis et al."
+msgstr "Avtorska pravica © 2020–2023 Christopher Davis et al."
 
 #: src/file_model.rs:114
 msgid "Could not list other files in directory."
@@ -435,7 +452,7 @@ msgstr "1\\u{2215}{}\\u{202F}s"
 msgid "{}\\u{202F}mm"
 msgstr "{}\\u{202F} mm"
 
-#: src/widgets/image.rs:646
+#: src/widgets/image.rs:647
 msgid "File does not exist"
 msgstr "Datoteka ne obstaja"
 
