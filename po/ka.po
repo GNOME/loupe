@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-09 23:24+0000\n"
-"PO-Revision-Date: 2023-03-10 03:05+0100\n"
+"POT-Creation-Date: 2023-03-11 01:13+0000\n"
+"PO-Revision-Date: 2023-03-11 06:44+0100\n"
 "Last-Translator: Ekaterine Papava <papava.e@gtu.ge>\n"
 "Language-Team: Georgian <ka@li.org>\n"
 "Language: ka\n"
@@ -28,7 +28,7 @@ msgstr "Loupe"
 msgid "Picture;Slideshow;Graphics;Image Viewer;"
 msgstr "Picture;Slideshow;Graphics;Image Viewer;"
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:7 src/application.rs:196
+#: data/org.gnome.Loupe.metainfo.xml.in.in:7
 msgid "Christopher Davis"
 msgstr "Christopher Davis"
 
@@ -38,8 +38,8 @@ msgstr "სურათების დათვალიერება"
 
 #: data/org.gnome.Loupe.metainfo.xml.in.in:10
 msgid ""
-"A simple image viewer with allows to browser through your images and "
-"inspecting their metadata."
+"A simple image viewer which allows you to browse through your images and "
+"inspect their metadata."
 msgstr ""
 "სურათების მარტივი დამთვალიერებელი, რომელიც ბრაუზერს თქვენი სურათების "
 "დათვალიერების და მათი მეტამონაცემების ნახვის საშუალებას აძლევს."
@@ -208,7 +208,7 @@ msgstr "200% მასშტაბი"
 #: data/gtk/help_overlay.ui:185
 msgctxt "shortcut window"
 msgid "Pan View"
-msgstr ""
+msgstr "პანორამული ხედი"
 
 #: data/gtk/help_overlay.ui:188
 msgctxt "shortcut window"
@@ -223,12 +223,12 @@ msgstr "პანინგი მარჯვნივ"
 #: data/gtk/help_overlay.ui:200
 msgctxt "shortcut window"
 msgid "Pan Up"
-msgstr ""
+msgstr "პანორამა მაღლა"
 
 #: data/gtk/help_overlay.ui:206
 msgctxt "shortcut window"
 msgid "Pan Down"
-msgstr ""
+msgstr "პანორამა დაბლა"
 
 #: data/gtk/help_overlay.ui:214
 msgctxt "shortcut window"
@@ -367,6 +367,14 @@ msgstr "_კლავიატურის მალსახმობები"
 msgid "_About Loupe"
 msgstr "Loupe-ის _შესახებ"
 
+#: data/gtk/window.ui:94
+msgid "Copy to Clipboard"
+msgstr "ბუფერში კოპირება"
+
+#: data/gtk/window.ui:101
+msgid "Move to Trash"
+msgstr "სანაგვე ყუთში გადატანა"
+
 #: data/gtk/window.ui:107
 msgid "Main Menu"
 msgstr "მთავარი მენიუ"
@@ -387,9 +395,18 @@ msgstr "გადმოათრიეთ და დაყარეთ სურ
 msgid "_Open File…"
 msgstr "_ფაილის გახსნა…"
 
-#: src/application.rs:208
-msgid "Copyright © 2020–2022 Christopher Davis et al."
-msgstr "Copyright © 2020–2022 Christopher Davis და სხვ."
+#: src/application.rs:196
+msgid "The Loupe Team"
+msgstr "Loupe-ის გუნდი"
+
+#. Translators: Replace "translator-credits" with your names, one name per line
+#: src/application.rs:205
+msgid "translator-credits"
+msgstr "ვიღაც, ვინც თარგმნა"
+
+#: src/application.rs:206
+msgid "Copyright © 2020–2023 Christopher Davis et al."
+msgstr "Copyright © 2020–2023 Christopher Davis და სხვ."
 
 #: src/file_model.rs:114
 msgid "Could not list other files in directory."
@@ -431,7 +448,7 @@ msgstr "1\\u{2215}{}\\u{202F}წმ"
 msgid "{}\\u{202F}mm"
 msgstr "{}\\u{202F}მმ"
 
-#: src/widgets/image.rs:646
+#: src/widgets/image.rs:647
 msgid "File does not exist"
 msgstr "ფაილი არ არსებობს"
 
