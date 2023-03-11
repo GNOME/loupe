@@ -1,0 +1,517 @@
+# Greek translation for Loupe.
+# Copyright (C) 2023 Loupe's COPYRIGHT HOLDER
+# This file is distributed under the same license as the Loupe package.
+# Efstathios Iosifidis <eiosifidis@gnome.org>, 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Loupe main\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-03-11 18:20+0000\n"
+"PO-Revision-Date: 2023-03-11 20:53+0200\n"
+"Last-Translator: Efstathios Iosifidis <eiosifidis@gnome.org>\n"
+"Language-Team: Greek <gnome-el-list@gnome.org>\n"
+"Language: el\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.2.2\n"
+
+#. If the file exists, get display name
+#: data/org.gnome.Loupe.desktop.in.in:3
+#: data/org.gnome.Loupe.metainfo.xml.in.in:6 data/gtk/window.ui:63
+#: src/application.rs:193 src/window.rs:676 src/window.rs:682
+msgid "Loupe"
+msgstr ""
+
+#: data/org.gnome.Loupe.desktop.in.in:11
+msgid "Picture;Slideshow;Graphics;Image Viewer;"
+msgstr ""
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:7
+msgid "Christopher Davis"
+msgstr "Christopher Davis"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:8
+msgid "View images"
+msgstr "Προβολή εικόνων"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:10
+msgid ""
+"A simple image viewer which allows you to browse through your images and "
+"inspect their metadata."
+msgstr ""
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:11
+msgid "The following features are not available yet"
+msgstr ""
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:13
+msgid "Correctly showing SVGs at every zoom-level"
+msgstr ""
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:14
+msgid "Interpreting image color profiles"
+msgstr ""
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:15
+msgid "Animated image formats"
+msgstr ""
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:16
+msgid "Correct HighDPI support"
+msgstr ""
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:17
+msgid "Print settings to position the image on the page"
+msgstr ""
+
+#: data/gtk/help_overlay.ui:11
+msgctxt "shortcut window"
+msgid "General Shortcuts"
+msgstr "Γενικές συντομεύσεις"
+
+#: data/gtk/help_overlay.ui:14
+msgctxt "shortcut window"
+msgid "Show Main Menu"
+msgstr "Εμφάνιση κυρίως μενού"
+
+#: data/gtk/help_overlay.ui:20
+msgctxt "shortcut window"
+msgid "Copy Image to Clipboard"
+msgstr "Αντιγραφή εικόνας στο πρόχειρο"
+
+#: data/gtk/help_overlay.ui:26
+msgctxt "shortcut window"
+msgid "Move Image to Trash"
+msgstr "Μετακίνηση εικόνας στα απορρίμματα"
+
+#: data/gtk/help_overlay.ui:32
+msgctxt "shortcut window"
+msgid "Toggle Image Properties"
+msgstr ""
+
+#: data/gtk/help_overlay.ui:38
+msgctxt "shortcut window"
+msgid "Set as Background"
+msgstr "Ορισμός ως παρασκήνιο"
+
+#: data/gtk/help_overlay.ui:44
+msgctxt "shortcut window"
+msgid "Toggle Fullscreen"
+msgstr "Εναλλαγή πλήρους οθόνης"
+
+#: data/gtk/help_overlay.ui:50
+msgctxt "shortcut window"
+msgid "Leave Fullscreen"
+msgstr "Έξοδος από την πλήρη οθόνη"
+
+#: data/gtk/help_overlay.ui:56
+msgctxt "shortcut window"
+msgid "New Window"
+msgstr "Νέο παράθυρο"
+
+#: data/gtk/help_overlay.ui:62
+msgctxt "shortcut window"
+msgid "Open Help"
+msgstr "Άνοιγμα βοήθειας"
+
+#: data/gtk/help_overlay.ui:68
+msgctxt "shortcut window"
+msgid "Show Keyboard Shortcuts"
+msgstr "Εμφάνιση συντομεύσεων πληκτρολογίου"
+
+#: data/gtk/help_overlay.ui:74
+msgctxt "shortcut window"
+msgid "Close Window"
+msgstr "Κλείσιμο παραθύρου"
+
+#: data/gtk/help_overlay.ui:80
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "Έξοδος"
+
+#: data/gtk/help_overlay.ui:88
+msgctxt "shortcut window"
+msgid "Navigate Images"
+msgstr ""
+
+#: data/gtk/help_overlay.ui:92 data/gtk/help_overlay.ui:106
+#: data/gtk/help_overlay.ui:218 data/gtk/help_overlay.ui:232
+msgctxt "shortcut window"
+msgid "Next Image"
+msgstr "Επόμενη εικόνα"
+
+#: data/gtk/help_overlay.ui:99 data/gtk/help_overlay.ui:113
+#: data/gtk/help_overlay.ui:225 data/gtk/help_overlay.ui:239
+msgctxt "shortcut window"
+msgid "Previous Image"
+msgstr "Προηγούμενη εικόνα"
+
+#: data/gtk/help_overlay.ui:119
+msgctxt "shortcut window"
+msgid "First Image"
+msgstr "Πρώτη εικόνα"
+
+#: data/gtk/help_overlay.ui:125
+msgctxt "shortcut window"
+msgid "Last Image"
+msgstr "Τελευταία εικόνα"
+
+#: data/gtk/help_overlay.ui:133
+msgctxt "shortcut window"
+msgid "Rotate Image"
+msgstr "Περιστροφή εικόνας"
+
+#: data/gtk/help_overlay.ui:136 data/gtk/help_overlay.ui:257
+msgctxt "shortcut window"
+msgid "Rotate Clockwise"
+msgstr "Περιστροφή εικόνας δεξιόστροφα"
+
+#: data/gtk/help_overlay.ui:142 data/gtk/help_overlay.ui:263
+msgctxt "shortcut window"
+msgid "Rotate Counterclockwise"
+msgstr "Περιστροφή εικόνας αριστερόστροφα"
+
+#: data/gtk/help_overlay.ui:150
+msgctxt "shortcut window"
+msgid "Zoom Image"
+msgstr "Εστίαση εικόνας"
+
+#: data/gtk/help_overlay.ui:153 data/gtk/help_overlay.ui:245
+msgctxt "shortcut window"
+msgid "Zoom In"
+msgstr "Μεγέθυνση"
+
+#: data/gtk/help_overlay.ui:159 data/gtk/help_overlay.ui:251
+msgctxt "shortcut window"
+msgid "Zoom Out"
+msgstr "Σμίκρυνση"
+
+#: data/gtk/help_overlay.ui:165
+msgctxt "shortcut window"
+msgid "Best Fit"
+msgstr "Καλύτερο ταίριασμα"
+
+#: data/gtk/help_overlay.ui:171
+msgctxt "shortcut window"
+msgid "Original Scale"
+msgstr "Αρχική κλίμακα"
+
+#: data/gtk/help_overlay.ui:177
+msgctxt "shortcut window"
+msgid "200% Scale"
+msgstr ""
+
+#: data/gtk/help_overlay.ui:185
+msgctxt "shortcut window"
+msgid "Pan View"
+msgstr ""
+
+#: data/gtk/help_overlay.ui:188
+msgctxt "shortcut window"
+msgid "Pan Left"
+msgstr ""
+
+#: data/gtk/help_overlay.ui:194
+msgctxt "shortcut window"
+msgid "Pan Right"
+msgstr ""
+
+#: data/gtk/help_overlay.ui:200
+msgctxt "shortcut window"
+msgid "Pan Up"
+msgstr ""
+
+#: data/gtk/help_overlay.ui:206
+msgctxt "shortcut window"
+msgid "Pan Down"
+msgstr ""
+
+#: data/gtk/help_overlay.ui:214
+msgctxt "shortcut window"
+msgid "Gestures"
+msgstr "Xειρονομίες"
+
+#: data/gtk/image_page.ui:6 data/gtk/window.ui:16
+msgid "_Open With…"
+msgstr "Ά_νοιγμα με…"
+
+#: data/gtk/image_page.ui:14 data/gtk/window.ui:24
+msgid "_Print…"
+msgstr "Εκτύπω_ση…"
+
+#: data/gtk/image_page.ui:18
+msgid "_Copy"
+msgstr "Αντι_γραφή"
+
+#: data/gtk/image_page.ui:23 data/gtk/window.ui:29
+msgid "Rotate"
+msgstr "Περιστροφή"
+
+#: data/gtk/image_page.ui:34 data/gtk/window.ui:40
+msgid "_Set as Background…"
+msgstr "_Ορισμός ως παρασκήνιο…"
+
+#: data/gtk/image_page.ui:55
+msgid "Could not Load Image"
+msgstr "Αδυναμία φόρτωσης της εικόνας"
+
+#: data/gtk/image_page.ui:82 data/gtk/window.ui:115
+msgid "Rotate Left"
+msgstr "Περιστροφή αριστερά"
+
+#: data/gtk/image_page.ui:93 data/gtk/window.ui:126
+msgid "Rotate Right"
+msgstr "Περιστροφή δεξιά"
+
+#: data/gtk/image_view.ui:30
+msgid "Previous Image"
+msgstr ""
+
+#: data/gtk/image_view.ui:41
+msgid "Next Image"
+msgstr ""
+
+#: data/gtk/image_view.ui:70
+msgid "Toggle Fullscreen"
+msgstr "Εναλλαγή πλήρους οθόνης"
+
+#: data/gtk/image_view.ui:81
+msgid "Zoom Out"
+msgstr "Σμίκρυνση"
+
+#: data/gtk/image_view.ui:92
+msgid "Zoom In"
+msgstr "Μεγέθυνση"
+
+#: data/gtk/properties_view.ui:29
+msgid "Folder"
+msgstr "Φάκελος"
+
+#: data/gtk/properties_view.ui:42
+msgid "Open Containing Folder"
+msgstr "Άνοιγμα φακέλου που το περιέχει"
+
+#: data/gtk/properties_view.ui:59
+msgid "Image Size"
+msgstr "Μέγεθος εικόνας"
+
+#: data/gtk/properties_view.ui:71
+msgid "File Type"
+msgstr "Τύπος αρχείου"
+
+#: data/gtk/properties_view.ui:85
+msgid "File Size"
+msgstr "Μέγεθος αρχείου"
+
+#: data/gtk/properties_view.ui:103
+msgid "File Created"
+msgstr ""
+
+#: data/gtk/properties_view.ui:117
+msgid "File Modified"
+msgstr ""
+
+#: data/gtk/properties_view.ui:140
+msgid "Location"
+msgstr "Τοποθεσία"
+
+#: data/gtk/properties_view.ui:160
+msgid "Open Location"
+msgstr "Άνοιγμα τοποθεσίας"
+
+#: data/gtk/properties_view.ui:173
+msgid "Originally Created"
+msgstr ""
+
+#: data/gtk/properties_view.ui:194
+msgid "Aperture"
+msgstr "Διάφραγμα"
+
+#: data/gtk/properties_view.ui:215
+msgid "Exposure"
+msgstr "Έκθεση"
+
+#: data/gtk/properties_view.ui:236
+msgid "ISO"
+msgstr "ISO"
+
+#: data/gtk/properties_view.ui:257
+msgid "Focal Length"
+msgstr "Εστιακό μήκος"
+
+#: data/gtk/properties_view.ui:278
+msgid "Maker, Model"
+msgstr ""
+
+#: data/gtk/window.ui:6
+msgid "_New Window"
+msgstr "_Νέο παράθυρο"
+
+#: data/gtk/window.ui:10
+msgid "_Open…"
+msgstr "Ά_νοιγμα…"
+
+#: data/gtk/window.ui:46
+msgid "_Help"
+msgstr "_Βοήθεια"
+
+#: data/gtk/window.ui:50
+msgid "_Keyboard Shortcuts"
+msgstr "Συντομεύσεις _πληκτρολογίου"
+
+#: data/gtk/window.ui:54
+msgid "_About Loupe"
+msgstr ""
+
+#: data/gtk/window.ui:94
+msgid "Copy to Clipboard"
+msgstr "Αντιγραφή στο πρόχειρο"
+
+#: data/gtk/window.ui:101
+msgid "Move to Trash"
+msgstr "Μετακίνηση στα απορρίμματα"
+
+#: data/gtk/window.ui:107
+msgid "Main Menu"
+msgstr "Κυρίως μενού"
+
+#: data/gtk/window.ui:141
+msgid "Image Properties"
+msgstr "Ιδιότητες εικόνας"
+
+#: data/gtk/window.ui:161
+msgid "View Images"
+msgstr "Προβολή εικόνων"
+
+#: data/gtk/window.ui:162
+msgid "Drag and drop images here"
+msgstr "Μεταφορά και απόθεση εικόνων εδώ"
+
+#: data/gtk/window.ui:166
+msgid "_Open File…"
+msgstr "Άνοιγμα αρχείου ..."
+
+#: src/application.rs:196
+msgid "The Loupe Team"
+msgstr ""
+
+#. Translators: Replace "translator-credits" with your names, one name per line
+#: src/application.rs:205
+msgid "translator-credits"
+msgstr ""
+"Ελληνική μεταφραστική ομάδα GNOME\n"
+" Ευστάθιος Ιωσηφίδης <iosifidis@opensuse.org>\n"
+"\n"
+"Για περισσότερες πληροφορίες, επισκεφθείτε τη σελίδα\n"
+"http://gnome.gr/"
+
+#: src/application.rs:206
+msgid "Copyright © 2020–2023 Christopher Davis et al."
+msgstr ""
+
+#: src/file_model.rs:114
+msgid "Could not list other files in directory."
+msgstr ""
+
+#. Translators: short for "north" in GPS coordinate
+#: src/image_metadata/gps.rs:136
+msgid "N"
+msgstr "Β"
+
+#. Translators: short for "south" in GPS coordinate
+#: src/image_metadata/gps.rs:139
+msgid "S"
+msgstr "Ν"
+
+#. Translators: short for "east" in GPS coordinate
+#: src/image_metadata/gps.rs:149
+msgid "E"
+msgstr "Α"
+
+#. Translators: short for "west" in GPS coordinate
+#: src/image_metadata/gps.rs:152
+msgid "W"
+msgstr "Δ"
+
+#. Translators: Date (%x) and time (%X) combined
+#: src/image_metadata/mod.rs:99
+#, c-format
+msgid "%x %X"
+msgstr "%x %X"
+
+#. Translators: Unit for exposure time in seconds
+#: src/image_metadata/mod.rs:131
+msgid "1\\u{2215}{}\\u{202F}s"
+msgstr "1\\u{2215}{}\\u{202F}s"
+
+#. Translators: Unit for focal length in millimeters
+#: src/image_metadata/mod.rs:156
+msgid "{}\\u{202F}mm"
+msgstr "{}\\u{202F}mm"
+
+#: src/widgets/image.rs:647
+msgid "File does not exist"
+msgstr "Το αρχείο δεν υπάρχει"
+
+#: src/widgets/image_view.rs:574
+msgid "Failed to open new background image"
+msgstr ""
+
+#: src/widgets/image_view.rs:591
+msgid "Set as background."
+msgstr "Ορισμός ως παρασκήνιο."
+
+#: src/widgets/image_view.rs:598
+msgid "Could not set background."
+msgstr "Αδυναμία ορισμού ως παρασκήνιο."
+
+#: src/window.rs:355
+msgid "“{}” is not a valid image."
+msgstr ""
+
+#: src/window.rs:431
+msgid "Open Image"
+msgstr "Άνοιγμα εικόνας"
+
+#: src/window.rs:485
+msgid "Image copied to clipboard"
+msgstr ""
+
+#: src/window.rs:499
+msgid "Image moved to trash"
+msgstr ""
+
+#: src/window.rs:500
+msgid "Undo"
+msgstr "Αναίρεση"
+
+#: src/window.rs:511
+msgid "Failed to restore image from trash"
+msgstr ""
+
+#: src/window.rs:526
+msgid "Failed to move image to trash"
+msgstr ""
+
+#: src/window.rs:541
+msgid "Permanently Delete Image?"
+msgstr "Οριστική διαγραφή εικόνας;"
+
+#: src/window.rs:543
+msgid "The image “{}” can only be deleted permanently."
+msgstr ""
+
+#: src/window.rs:550
+msgid "Cancel"
+msgstr "Ακύρωση"
+
+#: src/window.rs:550
+msgid "Delete"
+msgstr "Διαγραφή"
+
+#: src/window.rs:559
+msgid "Failed to delete image"
+msgstr ""
