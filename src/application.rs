@@ -203,7 +203,7 @@ impl LpApplication {
             .designers(["Allan Day", "Jakub Steiner", "Tobias Bernard"])
             // Translators: Replace "translator-credits" with your names, one name per line
             .translator_credits(i18n("translator-credits"))
-            .copyright(i18n("Copyright © 2020–2022 Christopher Davis et al."))
+            .copyright(i18n("Copyright © 2020–2023 Christopher Davis et al."))
             .license_type(gtk::License::Gpl30)
             .build();
 
