@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-11 16:29+0000\n"
-"PO-Revision-Date: 2023-03-11 19:19+0100\n"
+"POT-Creation-Date: 2023-03-11 18:19+0000\n"
+"PO-Revision-Date: 2023-03-12 20:46+0100\n"
 "Last-Translator: Quentin PAGÈS\n"
 "Language-Team: Occitan <totenoc@gmail.com>\n"
 "Language: oc\n"
@@ -26,7 +26,9 @@ msgstr "Lópia"
 
 #: data/org.gnome.Loupe.desktop.in.in:11
 msgid "Picture;Slideshow;Graphics;Image Viewer;"
-msgstr "Imatge ;Diaporama;Grafics;Visualizaira;Visionadora;"
+msgstr ""
+"Imatge;Diaporama;Grafics;Visualizaira;Visionadora;Afichador;Visionadoira;"
+"Visualizador;"
 
 #: data/org.gnome.Loupe.metainfo.xml.in.in:7
 msgid "Christopher Davis"
@@ -41,8 +43,8 @@ msgid ""
 "A simple image viewer which allows you to browse through your images and "
 "inspect their metadata."
 msgstr ""
-"Una visonadora simple d’imatges que vos permet de navegar demest los "
-"imatges e d’examinar lors metadonadas."
+"Una visonadora simple d’imatges que vos permet de navegar demest los imatges "
+"e d’examinar lors metadonadas."
 
 #: data/org.gnome.Loupe.metainfo.xml.in.in:11
 msgid "The following features are not available yet"
@@ -245,7 +247,7 @@ msgstr "_Imprimir…"
 
 #: data/gtk/image_page.ui:18
 msgid "_Copy"
-msgstr "_Copiar…"
+msgstr "_Copiar"
 
 #: data/gtk/image_page.ui:23 data/gtk/window.ui:29
 msgid "Rotate"
@@ -353,7 +355,7 @@ msgstr "_Novèla fenèstra"
 
 #: data/gtk/window.ui:10
 msgid "_Open…"
-msgstr "_Dobrir"
+msgstr "_Dobrir…"
 
 #: data/gtk/window.ui:46
 msgid "_Help"
