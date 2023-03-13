@@ -4,17 +4,19 @@ pub mod tiling;
 
 pub use formats::ImageDimensionDetails;
 
+use crate::deps::*;
+use crate::i18n::*;
 use crate::image_metadata::ImageMetadata;
 use formats::*;
 use tiling::TilingStoreExt;
 
-use anyhow::Context;
+use anyhow::{anyhow, bail, Context};
 use arc_swap::ArcSwap;
 use futures::channel::mpsc;
 use gio::prelude::*;
-use gtk::graphene;
 
 use std::io::Read;
+use std::path::PathBuf;
 use std::sync::Arc;
 
 pub use formats::{ImageFormat, RSVG_MAX_SIZE};
@@ -35,7 +37,7 @@ pub struct UpdateSender {
 }
 
 #[derive(Debug)]
-/// Signals for renderer
+/// Signals for renderer (LpImage)
 pub enum DecoderUpdate {
     /// Dimensions of image in `TilingSore` available/updated
     Dimensions(ImageDimensionDetails),
@@ -89,7 +91,7 @@ impl Decoder {
     ///
     /// The textures will be stored in the passed `TilingStore`.
     /// The renderer should listen to updates from the returned receiver.
-    pub fn new(
+    pub async fn new(
         file: gio::File,
         tiles: Arc<ArcSwap<tiling::TilingStore>>,
     ) -> anyhow::Result<(Self, mpsc::UnboundedReceiver<DecoderUpdate>)> {
@@ -99,38 +101,72 @@ impl Decoder {
         let update_sender = UpdateSender { sender };
         tiles.set_update_sender(update_sender.clone());
 
+        let decoder = gio::spawn_blocking(move || Self::format_decoder(update_sender, path, tiles))
+            .await
+            .map_err(|_| anyhow!("Constructing the FormatDecoder failed unexpectedly"))??;
+
+        Ok((Self { decoder }, receiver))
+    }
+
+    fn format_decoder(
+        update_sender: UpdateSender,
+        path: PathBuf,
+        tiles: Arc<ArcSwap<tiling::TilingStore>>,
+    ) -> anyhow::Result<FormatDecoder> {
         update_sender.send(DecoderUpdate::Metadata(ImageMetadata::load(&path)));
 
         let mut buf = Vec::new();
-        let file = std::fs::File::open(&path)?;
-        file.take(64).read_to_end(&mut buf)?;
-        let format = image_rs::guess_format(&buf);
+        let file = std::fs::File::open(&path).context(i18n("Could not open image"))?;
+        file.take(64)
+            .read_to_end(&mut buf)
+            .context(i18n("Could not read image"))?;
 
-        let decoder = if let Ok(format) = format {
+        // Try magic bytes first and than file name extension
+        let format =
+            image_rs::guess_format(&buf).or_else(|_| image_rs::ImageFormat::from_path(&path));
+
+        if let Ok(format) = format {
             match format {
                 image_rs::ImageFormat::Avif => {
                     update_sender.send(DecoderUpdate::Format(ImageFormat::Heif));
-                    FormatDecoder::Heif(Heif::new(path, update_sender, tiles))
+                    return Ok(FormatDecoder::Heif(Heif::new(path, update_sender, tiles)));
                 }
                 format => {
                     update_sender.send(DecoderUpdate::Format(ImageFormat::ImageRs(format)));
-                    FormatDecoder::ImageRsOther(ImageRsOther::new(path, update_sender, tiles))
+                    return Ok(FormatDecoder::ImageRsOther(ImageRsOther::new(
+                        path,
+                        format,
+                        update_sender,
+                        tiles,
+                    )));
+                }
+            }
+        } else {
+            let file_info = gio::File::for_path(&path)
+                .query_info(
+                    gio::FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE,
+                    gio::FileQueryInfoFlags::NONE,
+                    gio::Cancellable::NONE,
+                )
+                .context("Could not read content type information")?;
+            if let Some(content_type) = file_info
+                .content_type()
+                .as_ref()
+                .and_then(|x| gio::content_type_get_mime_type(x))
+            {
+                // Known things we want to match here are
+                // - image/svg+xml
+                // - image/svg+xml-compressed
+                if content_type.split('+').next() == Some("image/svg") {
+                    update_sender.send(DecoderUpdate::Format(ImageFormat::Svg));
+                    return Ok(FormatDecoder::Svg(Svg::new(path, update_sender, tiles)));
+                } else {
+                    bail!(i18n_f("Unknown image format: {}", &[content_type.as_str()]));
                 }
             }
         }
-        // TODO: Use mime glib mime type detection
-        else if [Some("svg"), Some("svgz")].contains(&path.extension().and_then(|x| x.to_str())) {
-            update_sender.send(DecoderUpdate::Format(ImageFormat::Svg));
-            FormatDecoder::Svg(Svg::new(path, update_sender, tiles))
-        } else if [Some("heic"), Some("avif")].contains(&path.extension().and_then(|x| x.to_str()))
-        {
-            update_sender.send(DecoderUpdate::Format(ImageFormat::Heif));
-            FormatDecoder::Heif(Heif::new(path, update_sender, tiles))
-        } else {
-            return None.context("unknown image format");
-        };
 
-        Ok((Self { decoder }, receiver))
+        bail!(i18n("Unknown image format"))
     }
 
     /// Request missing tiles

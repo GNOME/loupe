@@ -2,37 +2,50 @@
 use super::*;
 use crate::decoder::tiling::{self, TilingStoreExt};
 use crate::deps::*;
+use crate::i18n::*;
 
 use anyhow::Context;
 use arc_swap::ArcSwap;
 use gtk::prelude::*;
 
-use std::path::PathBuf;
+use std::fs::File;
+use std::io::BufReader;
+use std::path::{Path, PathBuf};
 use std::sync::Arc;
 
 #[derive(Debug)]
 pub struct ImageRsOther;
 
 impl ImageRsOther {
+    fn reader(
+        path: &Path,
+        format: image_rs::ImageFormat,
+    ) -> anyhow::Result<image_rs::io::Reader<BufReader<File>>> {
+        let mut reader = image_rs::io::Reader::open(path).context(i18n("Failed to open image"))?;
+        reader.set_format(format);
+        Ok(reader)
+    }
+
     pub fn new(
         path: PathBuf,
+        format: image_rs::ImageFormat,
         updater: UpdateSender,
         tiles: Arc<ArcSwap<tiling::TilingStore>>,
     ) -> Self {
         updater.spawn_error_handled(move || {
-            let dimensions = image_rs::image_dimensions(&path).context("Failed to read image")?;
+            let reader = Self::reader(&path, format)?;
+            let dimensions = reader
+                .into_dimensions()
+                .context("Failed to read image dimensions")?;
 
             tiles.set_original_dimensions(dimensions);
 
-            let mut reader = image_rs::io::Reader::open(&path).context("Failed to open image")?;
+            let mut reader = Self::reader(&path, format)?;
 
             // TODO: Set something huge?
             reader.limits(image_rs::io::Limits::no_limits());
 
-            let reader = reader
-                .with_guessed_format()
-                .context("Failed to open image")?;
-            let dynamic_image = reader.decode().context("Failed to decode image")?;
+            let dynamic_image = reader.decode().context(i18n("Failed to decode image"))?;
 
             let decoded_image = Decoded { dynamic_image };
 

@@ -32,7 +32,6 @@ use crate::deps::*;
 use crate::decoder::{self, tiling, Decoder, DecoderUpdate};
 use crate::i18n::i18n;
 use crate::image_metadata::LpImageMetadata;
-use crate::util;
 
 use adw::{prelude::*, subclass::prelude::*};
 use arc_swap::ArcSwap;
@@ -311,8 +310,8 @@ mod imp {
                     return gtk::Inhibit(false);
                 }
 
-		// Use exponential scaling since zoom is always multiplicative with the existing value
-		// This is the right thing since `exp(n/2)^2 == exp(n)` (two small steps are the same as one larger step)
+                // Use exponential scaling since zoom is always multiplicative with the existing value
+                // This is the right thing since `exp(n/2)^2 == exp(n)` (two small steps are the same as one larger step)
                 let (zoom_factor, animated) = match event.unit() {
                     gdk::ScrollUnit::Wheel => (f64::exp( - y * f64::ln(ZOOM_FACTOR_SCROLL_WHEEL)), y.abs() >= 1.),
                     gdk::ScrollUnit::Surface => (f64::exp( - y * f64::ln(ZOOM_FACTOR_SCROLL_SURFACE)), false),
@@ -657,16 +656,14 @@ impl LpImage {
         log::debug!("Loading file {path:?}");
 
         let tiles = &self.imp().tiles;
-        // TODO: Fix two unwraps
-        let (decoder, mut decoder_update) = util::spawn(
-            "image-init-decoder",
-            glib::clone!(@strong file, @strong tiles => move || {
-                Decoder::new(file.clone(), tiles.clone())
-            }),
-        )
-        .await
-        .unwrap()
-        .unwrap();
+
+        let (decoder, mut decoder_update) = match Decoder::new(file.clone(), tiles.clone()).await {
+            Ok(x) => x,
+            Err(err) => {
+                self.set_error(err);
+                return;
+            }
+        };
 
         let weak_obj = self.downgrade();
         spawn!(async move {
