@@ -8,6 +8,22 @@ use once_cell::sync::Lazy;
 use std::fmt::{Debug, Write};
 use std::path::{Path, PathBuf};
 
+/// Returns localized date + time format
+pub fn datetime_fmt(datetime: &glib::DateTime) -> Option<String> {
+    // Translators: This is the date and time format we use in metadata output etc.
+    // The format has to follow <https://docs.gtk.org/glib/method.DateTime.format.html>
+    // The default is already translated. Don't change if you are not sure what to use.
+    let datetime_format = i18n("%x %X");
+
+    let fmt = datetime.format(&datetime_format);
+
+    if let Err(err) = &fmt {
+        log::error!("Could not format DateTime with '{datetime_format}': {err}");
+    }
+
+    fmt.ok().map(|x| x.to_string())
+}
+
 pub fn get_file_display_name(file: &gio::File) -> Option<String> {
     let info = query_attributes(file, vec![gio::FILE_ATTRIBUTE_STANDARD_DISPLAY_NAME]).ok()?;
 

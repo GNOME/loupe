@@ -10,6 +10,7 @@ pub use gps::GPSLocation;
 pub use obj::LpImageMetadata;
 
 use crate::i18n::*;
+use crate::util;
 
 use gtk::glib;
 
@@ -95,10 +96,7 @@ impl ImageMetadata {
                                 dt.minute.into(),
                                 dt.second.into(),
                             ) {
-                                // Translators: Date (%x) and time (%X) combined
-                                if let Ok(formatted) = datetime.format(&i18n("%x %X")) {
-                                    return Some(formatted.to_string());
-                                }
+                                return util::datetime_fmt(&datetime);
                             }
                         }
                     }

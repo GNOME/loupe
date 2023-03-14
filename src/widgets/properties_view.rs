@@ -355,16 +355,14 @@ impl LpPropertiesView {
     #[template_callback]
     fn created_date(&self, info: Option<gio::FileInfo>) -> String {
         info.and_then(|i| i.creation_date_time())
-            .and_then(|t| t.format("%x, %X").ok())
-            .map(|t| t.to_string())
+            .and_then(|t| util::datetime_fmt(&t))
             .unwrap_or_else(|| FALLBACK.to_owned())
     }
 
     #[template_callback]
     fn modified_date(&self, info: Option<gio::FileInfo>) -> String {
         info.and_then(|i| i.modification_date_time())
-            .and_then(|t| t.format("%x, %X").ok())
-            .map(|t| t.to_string())
+            .and_then(|t| util::datetime_fmt(&t))
             .unwrap_or_else(|| FALLBACK.to_owned())
     }
 
