@@ -43,13 +43,13 @@ mod imp {
     #[derive(Debug, Default, CompositeTemplate)]
     #[template(file = "../../data/gtk/properties_view.ui")]
     pub struct LpPropertiesView {
-        pub file: RefCell<Option<glib::WeakRef<gio::File>>>,
-        pub image: RefCell<Option<glib::WeakRef<LpImage>>>,
+        pub(super) file: RefCell<Option<glib::WeakRef<gio::File>>>,
+        pub(super) image: RefCell<Option<glib::WeakRef<LpImage>>>,
 
-        pub metadata: RefCell<LpImageMetadata>,
+        pub(super) metadata: RefCell<LpImageMetadata>,
 
-        pub file_info: RefCell<Option<gio::FileInfo>>,
-        pub info_handle: RefCell<Option<AbortHandle>>,
+        pub(super) file_info: RefCell<Option<gio::FileInfo>>,
+        pub(super) info_handle: RefCell<Option<AbortHandle>>,
     }
 
     #[glib::object_subclass]

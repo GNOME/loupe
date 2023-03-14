@@ -79,65 +79,65 @@ mod imp {
 
     #[derive(Debug, Default)]
     pub struct LpImage {
-        pub file: RefCell<Option<gio::File>>,
-        pub path: RefCell<Option<PathBuf>>,
-        pub is_deleted: Cell<bool>,
+        pub(super) file: RefCell<Option<gio::File>>,
+        pub(super) path: RefCell<Option<PathBuf>>,
+        pub(super) is_deleted: Cell<bool>,
         /// Track changes to this image
-        pub file_monitor: RefCell<Option<gio::FileMonitor>>,
-        pub tiles: Arc<ArcSwap<tiling::TilingStore>>,
-        pub decoder: RefCell<Option<Arc<Decoder>>>,
-        pub format: RefCell<Option<decoder::ImageFormat>>,
+        pub(super) file_monitor: RefCell<Option<gio::FileMonitor>>,
+        pub(super) tiles: Arc<ArcSwap<tiling::TilingStore>>,
+        pub(super) decoder: RefCell<Option<Arc<Decoder>>>,
+        pub(super) format: RefCell<Option<decoder::ImageFormat>>,
 
         /// Set to true when image is ready for displaying
-        pub is_loaded: Cell<bool>,
+        pub(super) is_loaded: Cell<bool>,
         /// Set if an error has occurred, shown on error_page
-        pub error: RefCell<Option<String>>,
+        pub(super) error: RefCell<Option<String>>,
 
         /// Rotation final value (can differ from `rotation` during animation)
-        pub rotation_target: Cell<f64>,
+        pub(super) rotation_target: Cell<f64>,
         /// Rotated presentation of original image in degrees clockwise
-        pub rotation: Cell<f64>,
+        pub(super) rotation: Cell<f64>,
         // Animates the `rotation` property
-        pub rotation_animation: OnceCell<adw::TimedAnimation>,
+        pub(super) rotation_animation: OnceCell<adw::TimedAnimation>,
         /// Mirrored presentation of original image
-        pub mirrored: Cell<bool>,
+        pub(super) mirrored: Cell<bool>,
 
         /// Displayed zoom level
-        pub zoom: Cell<f64>,
-        pub zoom_animation: OnceCell<adw::TimedAnimation>,
+        pub(super) zoom: Cell<f64>,
+        pub(super) zoom_animation: OnceCell<adw::TimedAnimation>,
         /// Targeted zoom level, might differ from `zoom` when animation is running
-        pub zoom_target: Cell<f64>,
+        pub(super) zoom_target: Cell<f64>,
         /// Current animation is transitioning from having horizontal scrollbars
         /// to not having them or vice versa.
-        pub zoom_hscrollbar_transition: Cell<bool>,
+        pub(super) zoom_hscrollbar_transition: Cell<bool>,
         /// Same but for vertical
-        pub zoom_vscrollbar_transition: Cell<bool>,
+        pub(super) zoom_vscrollbar_transition: Cell<bool>,
 
         /// Always fit image into window, causes `zoom` to change automatically
-        pub best_fit: Cell<bool>,
+        pub(super) best_fit: Cell<bool>,
         /// Max zoom level is reached, stored to only send signals on change
-        pub max_zoom: Cell<bool>,
+        pub(super) max_zoom: Cell<bool>,
 
         /// Horizontal scrolling
-        pub hadjustment: RefCell<Option<gtk::Adjustment>>,
+        pub(super) hadjustment: RefCell<Option<gtk::Adjustment>>,
         /// Vertical scrolling
-        pub vadjustment: RefCell<Option<gtk::Adjustment>>,
+        pub(super) vadjustment: RefCell<Option<gtk::Adjustment>>,
 
         /// Currently EXIF data
-        pub image_metadata: RefCell<LpImageMetadata>,
+        pub(super) image_metadata: RefCell<LpImageMetadata>,
         /// Image dimension details for SVGs
-        pub dimension_details: RefCell<decoder::ImageDimensionDetails>,
+        pub(super) dimension_details: RefCell<decoder::ImageDimensionDetails>,
 
         /// Current pointer position
-        pub pointer_position: Cell<Option<(f64, f64)>>,
+        pub(super) pointer_position: Cell<Option<(f64, f64)>>,
 
         /// Position of fingers during zoom gesture
         ///
         /// Required for calculating delta when moving window on touchscreen.
         /// On touchpad this is only the initial value used as the zoom target.
-        pub zoom_gesture_center: Cell<Option<(f64, f64)>>,
+        pub(super) zoom_gesture_center: Cell<Option<(f64, f64)>>,
         /// Required for calculating delta while moving window around
-        pub last_drag_value: Cell<Option<(f64, f64)>>,
+        pub(super) last_drag_value: Cell<Option<(f64, f64)>>,
 
         widget_dimensions: Cell<(i32, i32)>,
     }

@@ -56,25 +56,25 @@ mod imp {
         // TemplateChild<T> wrapper, where T is the
         // object type of the template child.
         #[template_child]
-        pub flap: TemplateChild<adw::Flap>,
+        pub(super) flap: TemplateChild<adw::Flap>,
         #[template_child]
-        pub headerbar: TemplateChild<gtk::HeaderBar>,
+        pub(super) headerbar: TemplateChild<gtk::HeaderBar>,
         #[template_child]
-        pub properties_button: TemplateChild<gtk::ToggleButton>,
+        pub(super) properties_button: TemplateChild<gtk::ToggleButton>,
         #[template_child]
-        pub menu_button: TemplateChild<gtk::MenuButton>,
+        pub(super) menu_button: TemplateChild<gtk::MenuButton>,
         #[template_child]
-        pub toast_overlay: TemplateChild<adw::ToastOverlay>,
+        pub(super) toast_overlay: TemplateChild<adw::ToastOverlay>,
         #[template_child]
-        pub stack: TemplateChild<gtk::Stack>,
+        pub(super) stack: TemplateChild<gtk::Stack>,
         #[template_child]
-        pub status_page: TemplateChild<adw::StatusPage>,
+        pub(super) status_page: TemplateChild<adw::StatusPage>,
         #[template_child]
-        pub image_view: TemplateChild<LpImageView>,
+        pub(super) image_view: TemplateChild<LpImageView>,
         #[template_child]
-        pub properties_view: TemplateChild<LpPropertiesView>,
+        pub(super) properties_view: TemplateChild<LpPropertiesView>,
         #[template_child]
-        pub drop_target: TemplateChild<gtk::DropTarget>,
+        pub(super) drop_target: TemplateChild<gtk::DropTarget>,
     }
 
     #[glib::object_subclass]

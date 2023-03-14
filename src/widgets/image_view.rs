@@ -60,20 +60,20 @@ mod imp {
     pub struct LpImageView {
         /// Direct child of this Adw::Bin
         #[template_child]
-        pub bin_child: TemplateChild<gtk::Widget>,
+        pub(super) bin_child: TemplateChild<gtk::Widget>,
         /// overlayed controls
         #[template_child]
-        pub controls_box_start: TemplateChild<gtk::Widget>,
+        pub(super) controls_box_start: TemplateChild<gtk::Widget>,
         /// overlayed controls
         #[template_child]
-        pub controls_box_end: TemplateChild<gtk::Widget>,
+        pub(super) controls_box_end: TemplateChild<gtk::Widget>,
         #[template_child]
         pub sliding_view: TemplateChild<LpSlidingView>,
 
-        pub model: RefCell<LpFileModel>,
-        pub preserve_content: Cell<bool>,
+        pub(super) model: RefCell<LpFileModel>,
+        pub(super) preserve_content: Cell<bool>,
 
-        pub current_image_signals: OnceCell<glib::SignalGroup>,
+        pub(super) current_image_signals: OnceCell<glib::SignalGroup>,
     }
 
     #[glib::object_subclass]
