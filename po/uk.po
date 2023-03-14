@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-11 01:13+0000\n"
-"PO-Revision-Date: 2023-03-12 19:22+0200\n"
+"POT-Creation-Date: 2023-03-14 04:10+0000\n"
+"PO-Revision-Date: 2023-03-14 15:01+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -303,51 +303,52 @@ msgstr "Відкрити теку з даними"
 msgid "Image Size"
 msgstr "Розмір зображення"
 
-#: data/gtk/properties_view.ui:71
-msgid "File Type"
-msgstr "Тип файла"
+#: data/gtk/properties_view.ui:75
+#| msgid "Image Properties"
+msgid "Image Format"
+msgstr "Формат зображення"
 
-#: data/gtk/properties_view.ui:85
+#: data/gtk/properties_view.ui:89
 msgid "File Size"
 msgstr "Розмір файла"
 
-#: data/gtk/properties_view.ui:103
+#: data/gtk/properties_view.ui:107
 msgid "File Created"
 msgstr "Файл створено"
 
-#: data/gtk/properties_view.ui:117
+#: data/gtk/properties_view.ui:121
 msgid "File Modified"
 msgstr "Файл змінено"
 
-#: data/gtk/properties_view.ui:140
+#: data/gtk/properties_view.ui:144
 msgid "Location"
 msgstr "Розташування"
 
-#: data/gtk/properties_view.ui:160
+#: data/gtk/properties_view.ui:164
 msgid "Open Location"
 msgstr "Відкрити адресу"
 
-#: data/gtk/properties_view.ui:173
+#: data/gtk/properties_view.ui:177
 msgid "Originally Created"
 msgstr "Вперше створено"
 
-#: data/gtk/properties_view.ui:194
+#: data/gtk/properties_view.ui:198
 msgid "Aperture"
 msgstr "Діафрагма"
 
-#: data/gtk/properties_view.ui:215
+#: data/gtk/properties_view.ui:219
 msgid "Exposure"
 msgstr "Витримка"
 
-#: data/gtk/properties_view.ui:236
+#: data/gtk/properties_view.ui:240
 msgid "ISO"
 msgstr "ISO"
 
-#: data/gtk/properties_view.ui:257
+#: data/gtk/properties_view.ui:261
 msgid "Focal Length"
 msgstr "Фокусна відстань"
 
-#: data/gtk/properties_view.ui:278
+#: data/gtk/properties_view.ui:282
 msgid "Maker, Model"
 msgstr "Виробник, модель"
 
@@ -372,14 +373,10 @@ msgid "_About Loupe"
 msgstr "_Про «Лупе»"
 
 #: data/gtk/window.ui:94
-#| msgctxt "shortcut window"
-#| msgid "Copy Image to Clipboard"
 msgid "Copy to Clipboard"
 msgstr "Скопіювати до буфера"
 
 #: data/gtk/window.ui:101
-#| msgctxt "shortcut window"
-#| msgid "Move Image to Trash"
 msgid "Move to Trash"
 msgstr "Пересунути до смітника"
 
@@ -413,7 +410,6 @@ msgid "translator-credits"
 msgstr "Юрій Чорноіван <yurchor@ukr.net>, 2023"
 
 #: src/application.rs:206
-#| msgid "Copyright © 2020–2022 Christopher Davis et al."
 msgid "Copyright © 2020–2023 Christopher Davis et al."
 msgstr "© Christopher Davis та інші, 2020–2023."
 
@@ -441,23 +437,17 @@ msgstr "С"
 msgid "W"
 msgstr "З"
 
-#. Translators: Date (%x) and time (%X) combined
-#: src/image_metadata/mod.rs:99
-#, c-format
-msgid "%x %X"
-msgstr "%x %X"
-
 #. Translators: Unit for exposure time in seconds
-#: src/image_metadata/mod.rs:131
+#: src/image_metadata/mod.rs:129
 msgid "1\\u{2215}{}\\u{202F}s"
 msgstr "1\\u{2215}{}\\u{202F}с"
 
 #. Translators: Unit for focal length in millimeters
-#: src/image_metadata/mod.rs:156
+#: src/image_metadata/mod.rs:154
 msgid "{}\\u{202F}mm"
 msgstr "{}\\u{202F}мм"
 
-#: src/widgets/image.rs:647
+#: src/widgets/image.rs:652
 msgid "File does not exist"
 msgstr "Файла не існує"
 
@@ -520,3 +510,10 @@ msgstr "Вилучити"
 #: src/window.rs:559
 msgid "Failed to delete image"
 msgstr "Не вдалося вилучити зображення"
+
+#~ msgid "File Type"
+#~ msgstr "Тип файла"
+
+#, c-format
+#~ msgid "%x %X"
+#~ msgstr "%x %X"
