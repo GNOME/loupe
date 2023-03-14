@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-10 02:06+0000\n"
-"PO-Revision-Date: 2023-03-10 09:37+0200\n"
+"POT-Creation-Date: 2023-03-14 04:10+0000\n"
+"PO-Revision-Date: 2023-03-14 12:31+0200\n"
 "Last-Translator: Yosef Or Boczko <yoseforb@gmail.com>\n"
 "Language-Team: Hebrew <>\n"
 "Language: he\n"
@@ -30,7 +30,7 @@ msgstr "לופ"
 msgid "Picture;Slideshow;Graphics;Image Viewer;"
 msgstr "תמונה;תמונות;מצגת;הצגה;גרפיקה;מציג תמונות;"
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:7 src/application.rs:196
+#: data/org.gnome.Loupe.metainfo.xml.in.in:7
 msgid "Christopher Davis"
 msgstr "Christopher Davis"
 
@@ -40,8 +40,8 @@ msgstr "מציג תמונות"
 
 #: data/org.gnome.Loupe.metainfo.xml.in.in:10
 msgid ""
-"A simple image viewer with allows to browser through your images and "
-"inspecting their metadata."
+"A simple image viewer which allows you to browse through your images and "
+"inspect their metadata."
 msgstr "מציג תמונות פשוט המאפשר לדפדף בתמונות שלך ולראות את נתוני התמונות שלך."
 
 #: data/org.gnome.Loupe.metainfo.xml.in.in:11
@@ -299,51 +299,51 @@ msgstr "פתיחת תיקייה מכילה"
 msgid "Image Size"
 msgstr "גודל תמונה"
 
-#: data/gtk/properties_view.ui:71
-msgid "File Type"
-msgstr "סוג קובץ"
+#: data/gtk/properties_view.ui:75
+msgid "Image Format"
+msgstr "תבנית תמונה"
 
-#: data/gtk/properties_view.ui:85
+#: data/gtk/properties_view.ui:89
 msgid "File Size"
 msgstr "גודל קובץ"
 
-#: data/gtk/properties_view.ui:103
+#: data/gtk/properties_view.ui:107
 msgid "File Created"
 msgstr "תאריך יצירת קובץ"
 
-#: data/gtk/properties_view.ui:117
+#: data/gtk/properties_view.ui:121
 msgid "File Modified"
 msgstr "תאריך שינוי קובץ"
 
-#: data/gtk/properties_view.ui:140
+#: data/gtk/properties_view.ui:144
 msgid "Location"
 msgstr "מיקום"
 
-#: data/gtk/properties_view.ui:160
+#: data/gtk/properties_view.ui:164
 msgid "Open Location"
 msgstr "פתיחת מיקום"
 
-#: data/gtk/properties_view.ui:173
+#: data/gtk/properties_view.ui:177
 msgid "Originally Created"
 msgstr "תאריך יצירה מקורי"
 
-#: data/gtk/properties_view.ui:194
+#: data/gtk/properties_view.ui:198
 msgid "Aperture"
 msgstr "צמצם"
 
-#: data/gtk/properties_view.ui:215
+#: data/gtk/properties_view.ui:219
 msgid "Exposure"
 msgstr "חשיפה"
 
-#: data/gtk/properties_view.ui:236
+#: data/gtk/properties_view.ui:240
 msgid "ISO"
 msgstr "ISO"
 
-#: data/gtk/properties_view.ui:257
+#: data/gtk/properties_view.ui:261
 msgid "Focal Length"
 msgstr "אורך מוקד"
 
-#: data/gtk/properties_view.ui:278
+#: data/gtk/properties_view.ui:282
 msgid "Maker, Model"
 msgstr "מצלמה, דגם"
 
@@ -367,6 +367,16 @@ msgstr "_צירופי מקשים"
 msgid "_About Loupe"
 msgstr "_על אודות לופ"
 
+#: data/gtk/window.ui:94
+# msgctxt "shortcut window"
+msgid "Copy to Clipboard"
+msgstr "העתקה ללוח הגזירים"
+
+#: data/gtk/window.ui:101
+# msgctxt "shortcut window"
+msgid "Move to Trash"
+msgstr "העברה לאשפה"
+
 #: data/gtk/window.ui:107
 msgid "Main Menu"
 msgstr "תפריט ראשי"
@@ -387,9 +397,20 @@ msgstr "יש לגרור ולשחרר לכאן תמונות"
 msgid "_Open File…"
 msgstr "_פתיחת קובץ…"
 
-#: src/application.rs:208
-msgid "Copyright © 2020–2022 Christopher Davis et al."
-msgstr "כל הזכויות שמורות © 2020–2022 Christopher Davis ואחרים."
+#: src/application.rs:196
+msgid "The Loupe Team"
+msgstr "צוות לופ"
+
+#. Translators: Replace "translator-credits" with your names, one name per line
+#: src/application.rs:205
+msgid "translator-credits"
+msgstr ""
+"יוסף אור בוצ׳קו <yoseforb@gmail.com>\n"
+"מיזם תרגום GNOME לעברית https://l10n.gnome.org/teams/he/"
+
+#: src/application.rs:206
+msgid "Copyright © 2020–2023 Christopher Davis et al."
+msgstr "כל הזכויות שמורות © 2022-2023 Christopher Davis ואחרים."
 
 #: src/file_model.rs:114
 msgid "Could not list other files in directory."
@@ -415,23 +436,17 @@ msgstr "מז"
 msgid "W"
 msgstr "מע"
 
-#. Translators: Date (%x) and time (%X) combined
-#: src/image_metadata/mod.rs:99
-#, c-format
-msgid "%x %X"
-msgstr "%x %X"
-
 #. Translators: Unit for exposure time in seconds
-#: src/image_metadata/mod.rs:131
+#: src/image_metadata/mod.rs:129
 msgid "1\\u{2215}{}\\u{202F}s"
 msgstr "‏‎1\\u{2215}{}\\u{202F} ש"
 
 #. Translators: Unit for focal length in millimeters
-#: src/image_metadata/mod.rs:156
+#: src/image_metadata/mod.rs:154
 msgid "{}\\u{202F}mm"
 msgstr "‏‎{}\\u{202F} מ״מ"
 
-#: src/widgets/image.rs:646
+#: src/widgets/image.rs:652
 msgid "File does not exist"
 msgstr "הקובץ לא קיים"
 
@@ -494,3 +509,10 @@ msgstr "מחיקה"
 #: src/window.rs:559
 msgid "Failed to delete image"
 msgstr "מחיקת התמונה נכשלה"
+
+#~ msgid "File Type"
+#~ msgstr "סוג קובץ"
+
+#, c-format
+#~ msgid "%x %X"
+#~ msgstr "%x %X"
