@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-11 01:13+0000\n"
-"PO-Revision-Date: 2023-03-11 08:46+0100\n"
+"POT-Creation-Date: 2023-03-14 04:10+0000\n"
+"PO-Revision-Date: 2023-03-14 09:24+0100\n"
 "Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
 "Language-Team: Slovenian <gnome-si@googlegroups.com>\n"
 "Language: sl\n"
@@ -303,51 +303,51 @@ msgstr "Odpri vsebujočo mapo"
 msgid "Image Size"
 msgstr "Velikost slike"
 
-#: data/gtk/properties_view.ui:71
-msgid "File Type"
-msgstr "Vrsta datoteke"
+#: data/gtk/properties_view.ui:75
+msgid "Image Format"
+msgstr "Zapis slike"
 
-#: data/gtk/properties_view.ui:85
+#: data/gtk/properties_view.ui:89
 msgid "File Size"
 msgstr "Velikost datoteke"
 
-#: data/gtk/properties_view.ui:103
+#: data/gtk/properties_view.ui:107
 msgid "File Created"
 msgstr "Datoteka ustvarjena"
 
-#: data/gtk/properties_view.ui:117
+#: data/gtk/properties_view.ui:121
 msgid "File Modified"
 msgstr "Datoteka spremenjena"
 
-#: data/gtk/properties_view.ui:140
+#: data/gtk/properties_view.ui:144
 msgid "Location"
 msgstr "Mesto"
 
-#: data/gtk/properties_view.ui:160
+#: data/gtk/properties_view.ui:164
 msgid "Open Location"
 msgstr "Odpri mesto"
 
-#: data/gtk/properties_view.ui:173
+#: data/gtk/properties_view.ui:177
 msgid "Originally Created"
 msgstr "Prvotno ustvarjeno"
 
-#: data/gtk/properties_view.ui:194
+#: data/gtk/properties_view.ui:198
 msgid "Aperture"
 msgstr "Zaslonka"
 
-#: data/gtk/properties_view.ui:215
+#: data/gtk/properties_view.ui:219
 msgid "Exposure"
 msgstr "Osvetlitev"
 
-#: data/gtk/properties_view.ui:236
+#: data/gtk/properties_view.ui:240
 msgid "ISO"
 msgstr "ISO"
 
-#: data/gtk/properties_view.ui:257
+#: data/gtk/properties_view.ui:261
 msgid "Focal Length"
 msgstr "Goriščna razdalja"
 
-#: data/gtk/properties_view.ui:278
+#: data/gtk/properties_view.ui:282
 msgid "Maker, Model"
 msgstr "Izdelovalec, model"
 
@@ -436,23 +436,17 @@ msgstr "V"
 msgid "W"
 msgstr "Z"
 
-#. Translators: Date (%x) and time (%X) combined
-#: src/image_metadata/mod.rs:99
-#, c-format
-msgid "%x %X"
-msgstr "%x %X"
-
 #. Translators: Unit for exposure time in seconds
-#: src/image_metadata/mod.rs:131
+#: src/image_metadata/mod.rs:129
 msgid "1\\u{2215}{}\\u{202F}s"
 msgstr "1\\u{2215}{}\\u{202F}s"
 
 #. Translators: Unit for focal length in millimeters
-#: src/image_metadata/mod.rs:156
+#: src/image_metadata/mod.rs:154
 msgid "{}\\u{202F}mm"
 msgstr "{}\\u{202F} mm"
 
-#: src/widgets/image.rs:647
+#: src/widgets/image.rs:652
 msgid "File does not exist"
 msgstr "Datoteka ne obstaja"
 
