@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-10 07:39+0000\n"
-"PO-Revision-Date: 2023-03-10 10:52+0100\n"
+"POT-Creation-Date: 2023-03-14 04:10+0000\n"
+"PO-Revision-Date: 2023-03-14 12:48+0100\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: Spanish - Spain <gnome-es-list@gnome.org>\n"
 "Language: es_ES\n"
@@ -29,7 +29,7 @@ msgstr "Loupe"
 msgid "Picture;Slideshow;Graphics;Image Viewer;"
 msgstr "foto;imagen;presentación;gráficos;visor;"
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:7 src/application.rs:196
+#: data/org.gnome.Loupe.metainfo.xml.in.in:7
 msgid "Christopher Davis"
 msgstr "Christopher Davis"
 
@@ -39,8 +39,8 @@ msgstr "Ver imágenes"
 
 #: data/org.gnome.Loupe.metainfo.xml.in.in:10
 msgid ""
-"A simple image viewer with allows to browser through your images and "
-"inspecting their metadata."
+"A simple image viewer which allows you to browse through your images and "
+"inspect their metadata."
 msgstr ""
 "Un sencillo visor de imágenes que le permite explorarlas e inspeccionar sus "
 "metadatos."
@@ -214,22 +214,22 @@ msgstr "Vista panorámica"
 #: data/gtk/help_overlay.ui:188
 msgctxt "shortcut window"
 msgid "Pan Left"
-msgstr ""
+msgstr "Desplazar a la izquierda"
 
 #: data/gtk/help_overlay.ui:194
 msgctxt "shortcut window"
 msgid "Pan Right"
-msgstr ""
+msgstr "Desplazar a la derecha"
 
 #: data/gtk/help_overlay.ui:200
 msgctxt "shortcut window"
 msgid "Pan Up"
-msgstr ""
+msgstr "Desplazar arriba"
 
 #: data/gtk/help_overlay.ui:206
 msgctxt "shortcut window"
 msgid "Pan Down"
-msgstr ""
+msgstr "Desplazar abajo"
 
 #: data/gtk/help_overlay.ui:214
 msgctxt "shortcut window"
@@ -300,51 +300,51 @@ msgstr "Abrir la carpeta contenedora"
 msgid "Image Size"
 msgstr "Tamaño de la imagen"
 
-#: data/gtk/properties_view.ui:71
-msgid "File Type"
-msgstr "Tipo de archivo"
+#: data/gtk/properties_view.ui:75
+msgid "Image Format"
+msgstr "Formato de la imagen"
 
-#: data/gtk/properties_view.ui:85
+#: data/gtk/properties_view.ui:89
 msgid "File Size"
 msgstr "Tamaño del archivo"
 
-#: data/gtk/properties_view.ui:103
+#: data/gtk/properties_view.ui:107
 msgid "File Created"
 msgstr "Fecha de creación"
 
-#: data/gtk/properties_view.ui:117
+#: data/gtk/properties_view.ui:121
 msgid "File Modified"
 msgstr "Fecha de modificación"
 
-#: data/gtk/properties_view.ui:140
+#: data/gtk/properties_view.ui:144
 msgid "Location"
 msgstr "Ubicación"
 
-#: data/gtk/properties_view.ui:160
+#: data/gtk/properties_view.ui:164
 msgid "Open Location"
 msgstr "Abrir ubicación"
 
-#: data/gtk/properties_view.ui:173
+#: data/gtk/properties_view.ui:177
 msgid "Originally Created"
 msgstr "Creado originalmente"
 
-#: data/gtk/properties_view.ui:194
+#: data/gtk/properties_view.ui:198
 msgid "Aperture"
 msgstr "Apertura"
 
-#: data/gtk/properties_view.ui:215
+#: data/gtk/properties_view.ui:219
 msgid "Exposure"
 msgstr "Exposición"
 
-#: data/gtk/properties_view.ui:236
+#: data/gtk/properties_view.ui:240
 msgid "ISO"
 msgstr "ISO"
 
-#: data/gtk/properties_view.ui:257
+#: data/gtk/properties_view.ui:261
 msgid "Focal Length"
 msgstr "Longitud focal"
 
-#: data/gtk/properties_view.ui:278
+#: data/gtk/properties_view.ui:282
 msgid "Maker, Model"
 msgstr "Creador, modelo"
 
@@ -368,6 +368,14 @@ msgstr "Atajos del _teclado"
 msgid "_About Loupe"
 msgstr "Acer_ca de Loupe"
 
+#: data/gtk/window.ui:94
+msgid "Copy to Clipboard"
+msgstr "Copiar al portapapeles"
+
+#: data/gtk/window.ui:101
+msgid "Move to Trash"
+msgstr "Mover a la papelera"
+
 #: data/gtk/window.ui:107
 msgid "Main Menu"
 msgstr "Menú principal"
@@ -388,9 +396,18 @@ msgstr "Arrastrar y soltar imágenes aquí"
 msgid "_Open File…"
 msgstr "Ab_rir archivo…"
 
-#: src/application.rs:208
-msgid "Copyright © 2020–2022 Christopher Davis et al."
-msgstr "Copyright © 2020–2022 Christopher Davis y otros"
+#: src/application.rs:196
+msgid "The Loupe Team"
+msgstr "El equipo de Loupe"
+
+#. Translators: Replace "translator-credits" with your names, one name per line
+#: src/application.rs:205
+msgid "translator-credits"
+msgstr "Daniel Mustieles <daniel.mustieles@gmail.com>, 2023"
+
+#: src/application.rs:206
+msgid "Copyright © 2020–2023 Christopher Davis et al."
+msgstr "Copyright © 2020–2023 Christopher Davis y otros"
 
 #: src/file_model.rs:114
 msgid "Could not list other files in directory."
@@ -416,23 +433,17 @@ msgstr "E"
 msgid "W"
 msgstr "O"
 
-#. Translators: Date (%x) and time (%X) combined
-#: src/image_metadata/mod.rs:99
-#, c-format
-msgid "%x %X"
-msgstr "%x %X"
-
 #. Translators: Unit for exposure time in seconds
-#: src/image_metadata/mod.rs:131
+#: src/image_metadata/mod.rs:129
 msgid "1\\u{2215}{}\\u{202F}s"
 msgstr "1\\u{2215}{}\\u{202F}s"
 
 #. Translators: Unit for focal length in millimeters
-#: src/image_metadata/mod.rs:156
+#: src/image_metadata/mod.rs:154
 msgid "{}\\u{202F}mm"
 msgstr "{}\\u{202F}mm"
 
-#: src/widgets/image.rs:646
+#: src/widgets/image.rs:652
 msgid "File does not exist"
 msgstr "El archivo no existe"
 
@@ -495,3 +506,10 @@ msgstr "Eliminar"
 #: src/window.rs:559
 msgid "Failed to delete image"
 msgstr "Falló al eliminar la imagen"
+
+#~ msgid "File Type"
+#~ msgstr "Tipo de archivo"
+
+#, c-format
+#~ msgid "%x %X"
+#~ msgstr "%x %X"
