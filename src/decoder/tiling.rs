@@ -1,7 +1,7 @@
 ///! Tiled renderer
 ///!
 ///! It is not always feasible or desiareble to store the complete decoded
-///! image in the VRAM. [`TilingStore`] allows to compose the parts of
+///! image in the VRAM. [`TiledImage`] allows to compose the parts of
 ///! the image currently viewed, out of smaller [`Tiles`].
 ///!
 ///! This is especially important for SVGs where every the image has to
@@ -15,7 +15,9 @@ use arc_swap::ArcSwap;
 use gtk::prelude::*;
 
 use std::collections::BTreeMap;
+use std::collections::VecDeque;
 use std::sync::Arc;
+use std::time::Duration;
 
 const ZOOM_SIGNIFICANT_DIGETS: i32 = 6;
 pub const TILE_SIZE: u16 = 4000;
@@ -77,18 +79,72 @@ impl Tile {
     }
 }
 
+/// Buffers multiple images for animations
+///
+/// If the image is not animated, this only contains one image
+#[derive(Clone, Debug, Default)]
+pub struct FrameBuffer {
+    /// The first entry is always the currently shown frame
+    pub images: VecDeque<TiledImage>,
+    pub update_sender: Option<UpdateSender>,
+}
+
+impl FrameBuffer {
+    /// Returns mutable reference to the current image
+    ///
+    /// This is a convenience functions for the case of non-animated images.
+    /// If no image exists yet, a new one is inserted an returned.
+    pub fn current(&mut self) -> &mut TiledImage {
+        if self.images.is_empty() {
+            self.images.push_back(TiledImage::default())
+        }
+        self.images.front_mut().unwrap()
+    }
+
+    pub fn original_dimensions(&self) -> Option<Coordinates> {
+        self.images.front()?.original_dimensions
+    }
+
+    pub fn set_update_sender(&mut self, sender: UpdateSender) {
+        self.update_sender = Some(sender);
+    }
+
+    /// Render the current image into this snapshot
+    pub fn add_to_snapshot(&self, snapshot: &gtk::Snapshot, zoom: f64, options: &RenderOptions) {
+        if let Some(tiling) = self.images.front() {
+            tiling.add_to_snapshot(snapshot, zoom, options);
+        } else {
+            log::error!("Trying to snapshot empty tiling queue");
+        }
+    }
+
+    pub fn cleanup(&mut self, zoom: f64, viewport: graphene::Rect) {
+        self.current().cleanup(zoom, viewport);
+    }
+
+    pub fn contains(&self, zoom: f64, coordinates: Coordinates) -> bool {
+        self.images
+            .front()
+            .map_or(false, |x| x.contains(zoom, coordinates))
+    }
+}
+
 #[derive(Clone, Debug)]
 /// Store tiles for image
-pub struct TilingStore {
+///
+/// This is the common representation for image textures.
+/// I many cases there might only be one tile.
+pub struct TiledImage {
     pub tiles: BTreeMap<ZoomLevel, BTreeMap<Coordinates, Tile>>,
     /// Tile size without bleed
     pub tile_size: u16,
     /// Complete image size
     pub original_dimensions: Option<Coordinates>,
-    pub update_sender: Option<UpdateSender>,
+    /// Delay until to show this frame if animated
+    pub delay: std::time::Duration,
 }
 
-impl Default for TilingStore {
+impl Default for TiledImage {
     fn default() -> Self {
         Self::new(TILE_SIZE)
     }
@@ -99,13 +155,13 @@ pub struct RenderOptions {
     pub scaling_filter: gsk::ScalingFilter,
 }
 
-impl TilingStore {
+impl TiledImage {
     pub fn new(tile_size: u16) -> Self {
-        TilingStore {
+        TiledImage {
             tiles: Default::default(),
             tile_size,
             original_dimensions: None,
-            update_sender: None,
+            delay: Default::default(),
         }
     }
 
@@ -128,28 +184,6 @@ impl TilingStore {
     pub fn push(&mut self, tile: Tile) {
         let map = self.tiles.entry(tile.zoom_level).or_default();
         map.insert(tile.coordinates(), tile);
-        if let Some(updater) = &self.update_sender {
-            updater.send(DecoderUpdate::Redraw);
-        }
-    }
-
-    pub fn set_original_dimensions(&mut self, dimensions: Coordinates) {
-        self.set_original_dimensions_full(dimensions, Default::default());
-    }
-
-    pub fn set_original_dimensions_full(
-        &mut self,
-        dimensions: Coordinates,
-        dimension_details: ImageDimensionDetails,
-    ) {
-        self.original_dimensions = Some(dimensions);
-        if let Some(updater) = &self.update_sender {
-            updater.send(DecoderUpdate::Dimensions(dimension_details));
-        }
-    }
-
-    pub fn set_update_sender(&mut self, sender: UpdateSender) {
-        self.update_sender = Some(sender);
     }
 
     pub fn contains(&self, zoom: f64, coordinates: Coordinates) -> bool {
@@ -340,8 +374,13 @@ impl RectExt for graphene::Rect {
     }
 }
 
-pub trait TilingStoreExt {
+pub trait FrameBufferExt {
     fn push(&self, tile: Tile);
+    fn push_frame(&self, tile: Tile, dimensions: Coordinates, delay: Duration);
+    /// Return true if the next frame should be shown and removes the outdated frame
+    fn frame_timeout(&self, elapsed: Duration) -> bool;
+    /// Returns the number of currently buffered frames
+    fn n_frames(&self) -> usize;
     fn set_original_dimensions(&self, size: Coordinates);
     fn set_original_dimensions_full(
         &self,
@@ -351,21 +390,52 @@ pub trait TilingStoreExt {
     fn set_update_sender(&self, sender: UpdateSender);
 }
 
-impl TilingStoreExt for ArcSwap<TilingStore> {
+impl FrameBufferExt for ArcSwap<FrameBuffer> {
     fn push(&self, tile: Tile) {
         self.rcu(|tiling_store| {
             let mut new_store = (**tiling_store).clone();
-            new_store.push(tile.clone());
+            new_store.current().push(tile.clone());
+            Arc::new(new_store)
+        });
+        if let Some(updater) = &self.load().update_sender {
+            updater.send(DecoderUpdate::Redraw);
+        }
+    }
+
+    fn push_frame(&self, tile: Tile, dimensions: Coordinates, delay: Duration) {
+        let mut store = TiledImage::default();
+        store.push(tile);
+        store.original_dimensions = Some(dimensions);
+        store.delay = delay;
+
+        self.rcu(|tiling_store| {
+            let mut new_store = (**tiling_store).clone();
+            new_store.images.push_back(store.clone());
             Arc::new(new_store)
         });
     }
 
+    fn frame_timeout(&self, elapsed: Duration) -> bool {
+        if let Some(next_frame) = self.load().images.get(1) {
+            if elapsed >= next_frame.delay {
+                self.rcu(|tiling_store| {
+                    let mut new_store = (**tiling_store).clone();
+                    new_store.images.pop_front();
+                    Arc::new(new_store)
+                });
+                return true;
+            }
+        }
+
+        false
+    }
+
+    fn n_frames(&self) -> usize {
+        self.load().images.len()
+    }
+
     fn set_original_dimensions(&self, size: Coordinates) {
-        self.rcu(|tiling_store| {
-            let mut new_store = (**tiling_store).clone();
-            new_store.set_original_dimensions(size);
-            Arc::new(new_store)
-        });
+        self.set_original_dimensions_full(size, Default::default());
     }
 
     fn set_original_dimensions_full(
@@ -375,9 +445,13 @@ impl TilingStoreExt for ArcSwap<TilingStore> {
     ) {
         self.rcu(|tiling_store| {
             let mut new_store = (**tiling_store).clone();
-            new_store.set_original_dimensions_full(size, dimension_details.clone());
+            new_store.current().original_dimensions = Some(size);
             Arc::new(new_store)
         });
+
+        if let Some(updater) = &self.load().update_sender {
+            updater.send(DecoderUpdate::Dimensions(dimension_details));
+        }
     }
 
     fn set_update_sender(&self, sender: UpdateSender) {
@@ -395,7 +469,7 @@ mod test {
 
     #[test]
     fn test_tiling_cleanup() {
-        let mut store = TilingStore::new(2);
+        let mut store = TiledImage::new(2);
 
         let toplevel = Tile {
             position: (0, 0),
@@ -468,7 +542,7 @@ mod test {
 
     #[test]
     fn test_tiling_cleanup_simple() {
-        let mut store = TilingStore::new(2);
+        let mut store = TiledImage::new(2);
 
         let toplevel = Tile {
             position: (0, 0),

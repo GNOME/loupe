@@ -6,14 +6,27 @@ pub use heif::Heif;
 pub use image_rs_other::ImageRsOther;
 pub use svg::{Svg, RSVG_MAX_SIZE};
 
-use super::{Decoder, UpdateSender};
+use super::{Decoder, DecoderUpdate, UpdateSender};
+use crate::i18n::*;
 
 #[derive(Clone, Copy, Debug)]
 pub enum ImageFormat {
     ImageRs(image_rs::ImageFormat),
+    AnimatedGif,
+    AnimatedWebP,
+    AnimatedPng,
     // TODO: Add details about contained format
     Heif,
     Svg,
+}
+
+impl ImageFormat {
+    pub fn is_animated(&self) -> bool {
+        matches!(
+            self,
+            ImageFormat::AnimatedGif | ImageFormat::AnimatedWebP | ImageFormat::AnimatedPng
+        )
+    }
 }
 
 impl std::fmt::Display for ImageFormat {
@@ -28,6 +41,9 @@ impl std::fmt::Display for ImageFormat {
                     write!(f, "{}", debug)
                 }
             }
+            Self::AnimatedGif => write!(f, "{}", i18n("Animated GIF")),
+            Self::AnimatedWebP => write!(f, "{}", i18n("Animated WebP")),
+            Self::AnimatedPng => write!(f, "{}", i18n("Animated PNG")),
             Self::Heif => write!(f, "HEIF Container"),
             Self::Svg => write!(f, "SVG"),
         }

@@ -1,6 +1,6 @@
 ///! Decode using libheif-rs
 use super::*;
-use crate::decoder::tiling::{self, TilingStoreExt};
+use crate::decoder::tiling::{self, FrameBufferExt};
 use crate::deps::*;
 use crate::i18n::*;
 use gtk::prelude::*;
@@ -23,7 +23,7 @@ impl Heif {
     pub fn new(
         path: PathBuf,
         updater: UpdateSender,
-        tiles: Arc<ArcSwap<tiling::TilingStore>>,
+        tiles: Arc<ArcSwap<tiling::FrameBuffer>>,
     ) -> Self {
         log::debug!("Loading HEIF");
         updater.spawn_error_handled(move || {

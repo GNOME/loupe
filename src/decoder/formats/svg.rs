@@ -1,6 +1,6 @@
 ///! Decode using librsvg
 use super::*;
-use crate::decoder::tiling::{self, TilingStoreExt};
+use crate::decoder::tiling::{self, FrameBufferExt};
 use crate::decoder::TileRequest;
 use crate::deps::*;
 
@@ -47,7 +47,7 @@ impl Svg {
     pub fn new(
         path: PathBuf,
         updater: UpdateSender,
-        tiles: Arc<ArcSwap<tiling::TilingStore>>,
+        tiles: Arc<ArcSwap<tiling::FrameBuffer>>,
     ) -> Self {
         let current_request: Arc<std::sync::RwLock<Request>> = Default::default();
         let request_store = current_request.clone();

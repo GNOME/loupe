@@ -8,7 +8,7 @@ use crate::deps::*;
 use crate::i18n::*;
 use crate::image_metadata::ImageMetadata;
 use formats::*;
-use tiling::TilingStoreExt;
+use tiling::FrameBufferExt;
 
 use anyhow::{anyhow, bail, Context};
 use arc_swap::ArcSwap;
@@ -89,11 +89,11 @@ enum FormatDecoder {
 impl Decoder {
     /// Get new image decoder
     ///
-    /// The textures will be stored in the passed `TilingStore`.
+    /// The textures will be stored in the passed `TiledImage`.
     /// The renderer should listen to updates from the returned receiver.
     pub async fn new(
         file: gio::File,
-        tiles: Arc<ArcSwap<tiling::TilingStore>>,
+        tiles: Arc<ArcSwap<tiling::FrameBuffer>>,
     ) -> anyhow::Result<(Self, mpsc::UnboundedReceiver<DecoderUpdate>)> {
         let path = file.path().context("Need a file path")?;
         let (sender, receiver) = mpsc::unbounded();
@@ -111,7 +111,7 @@ impl Decoder {
     fn format_decoder(
         update_sender: UpdateSender,
         path: PathBuf,
-        tiles: Arc<ArcSwap<tiling::TilingStore>>,
+        tiles: Arc<ArcSwap<tiling::FrameBuffer>>,
     ) -> anyhow::Result<FormatDecoder> {
         update_sender.send(DecoderUpdate::Metadata(ImageMetadata::load(&path)));
 
@@ -176,5 +176,13 @@ impl Decoder {
             FormatDecoder::Heif(_) => {}
             _ => {}
         };
+    }
+
+    pub fn fill_frame_buffer(&self) {
+        if let FormatDecoder::ImageRsOther(decoder) = &self.decoder {
+            decoder.fill_frame_buffer();
+        } else {
+            log::error!("Trying to fill frame buffer for decoder without animation support");
+        }
     }
 }

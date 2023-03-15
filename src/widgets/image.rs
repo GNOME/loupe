@@ -29,6 +29,7 @@
 
 use crate::deps::*;
 
+use crate::decoder::tiling::FrameBufferExt;
 use crate::decoder::{self, tiling, Decoder, DecoderUpdate};
 use crate::i18n::i18n;
 use crate::image_metadata::LpImageMetadata;
@@ -84,7 +85,7 @@ mod imp {
         pub(super) is_deleted: Cell<bool>,
         /// Track changes to this image
         pub(super) file_monitor: RefCell<Option<gio::FileMonitor>>,
-        pub(super) tiles: Arc<ArcSwap<tiling::TilingStore>>,
+        pub(super) frame_buffer: Arc<ArcSwap<tiling::FrameBuffer>>,
         pub(super) decoder: RefCell<Option<Arc<Decoder>>>,
         pub(super) format: RefCell<Option<decoder::ImageFormat>>,
 
@@ -138,6 +139,9 @@ mod imp {
         pub(super) zoom_gesture_center: Cell<Option<(f64, f64)>>,
         /// Required for calculating delta while moving window around
         pub(super) last_drag_value: Cell<Option<(f64, f64)>>,
+
+        pub(super) tick_callback: RefCell<Option<gtk::TickCallbackId>>,
+        pub(super) last_animated_frame: Cell<i64>,
 
         widget_dimensions: Cell<(i32, i32)>,
     }
@@ -549,7 +553,7 @@ mod imp {
             widget.snapshot_rotate_mirror(snapshot, widget.rotation() as f32, widget.mirrored());
 
             // Add texture(s)
-            self.tiles
+            self.frame_buffer
                 .load()
                 .add_to_snapshot(snapshot, applicable_zoom, &render_options);
 
@@ -655,7 +659,7 @@ impl LpImage {
 
         log::debug!("Loading file {path:?}");
 
-        let tiles = &self.imp().tiles;
+        let tiles = &self.imp().frame_buffer;
 
         let (decoder, mut decoder_update) = match Decoder::new(file.clone(), tiles.clone()).await {
             Ok(x) => x,
@@ -705,7 +709,7 @@ impl LpImage {
                 }
 
                 self.queue_draw();
-                imp.tiles.rcu(|tiles| {
+                imp.frame_buffer.rcu(|tiles| {
                     let mut new_tiles = (**tiles).clone();
                     // TODO: Use an area larger than the viewport
                     new_tiles.cleanup(self.imp().zoom_target.get(), self.viewport());
@@ -718,8 +722,41 @@ impl LpImage {
             DecoderUpdate::Format(format) => {
                 imp.format.replace(Some(format));
                 self.notify("format-name");
+
+                // Do the animation part for animated formats
+                if format.is_animated() {
+                    let callback_id = self
+                        .add_tick_callback(glib::clone!(@weak self as obj => @default-return glib::Continue(false), move |_, clock| obj.tick_callback(clock)));
+                    imp.tick_callback.replace(Some(callback_id));
+                }
             }
         }
+    }
+
+    /// Roughly called for every frame if image is visible
+    ///
+    /// We handle advancing to the next frame for animated GIFs etc here.
+    fn tick_callback(&self, clock: &gdk::FrameClock) -> glib::Continue {
+        // Do not animate if not visible
+        if !self.is_mapped() {
+            return glib::Continue(true);
+        }
+
+        let elapsed = clock.frame_time() - self.imp().last_animated_frame.get();
+        let duration = std::time::Duration::from_micros(elapsed as u64);
+
+        // Check if it's time to show the next frame
+        if self.imp().frame_buffer.frame_timeout(duration) {
+            // Just draw since frame_timeout updated to new frame
+            self.queue_draw();
+            self.imp().last_animated_frame.set(clock.frame_time());
+            if let Some(decoder) = self.imp().decoder.borrow().as_ref() {
+                // Decode new frame and load it into buffer
+                decoder.fill_frame_buffer();
+            }
+        }
+
+        glib::Continue(true)
     }
 
     pub fn is_loaded(&self) -> bool {
@@ -851,7 +888,7 @@ impl LpImage {
         );
 
         self.imp()
-            .tiles
+            .frame_buffer
             .load()
             .add_to_snapshot(&snapshot, scale as f64, &render_options);
 
@@ -1222,7 +1259,7 @@ impl LpImage {
     }
 
     fn original_dimensions(&self) -> (i32, i32) {
-        if let Some((width, height)) = self.imp().tiles.load().original_dimensions {
+        if let Some((width, height)) = self.imp().frame_buffer.load().original_dimensions() {
             (width as i32, height as i32)
         } else {
             (0, 0)

@@ -17,23 +17,23 @@ Bundles will not be automatically updated after installation.
 
 ## Supported Formats
 
-| Format   | ICC | CICP | EXIF | XMP | Animation | Library                       |
-|----------|-----|------|------|-----|-----------|-------------------------------|
-| JPEG     | ✔   | —    | ✔    | ✘   | —         | image-rs                      |
-| PNG      | ✔   | ✘    | ✔    | ✘   | ✘         | image-rs                      |
-| GIF      | ✘ * | —    | —    | ✘   | ✘         | image-rs                      |
-| WEBP     | —   | —    | ✔    | ✘   | ✘         | image-rs                      |
-| AVIF     | ✔   | ✔    | ✔    | ✘   | ✘         | libheif-rs + libheif (C++)    |
-| HEIC     | ✔   | ✔    | ✔    | ✘   | ✘         | libheif-rs + libheif (C++) ** |
-| TIFF     | ✘   | —    | ✔    | ✘   | —         | image-rs                      |
-| SVG      | ✘   | —    | —    | ✘ * | —         | librsvg                       |
-| BMP      | ✘   | —    | —    | —   | —         | image-rs                      |
-| ICO      | —   | —    | —    | —   | —         | image-rs                      |
-| PNM      | —   | —    | —    | —   | —         | image-rs                      |
-| DDS      | —   | —    | —    | —   | —         | image-rs                      |
-| TGA      | —   | —    | —    | —   | —         | image-rs                      |
-| OpenEXR  | —   | —    | —    | —   | —         | image-rs                      |
-| farbfeld | —   | —    | —    | —   | —         | image-rs                      |
+| Format    | View | Optional | ICC | CICP | EXIF | XMP | Animation | Library                    |
+|-----------|------|----------|-----|------|------|-----|-----------|----------------------------|
+| AVIF      | ✔    | ✔        | ✔   | ✔    | ✔    | ✘   | ✘         | libheif-rs + libheif (C++) |
+| BMP       | ✔    |          | ✘   | —    | —    | —   | —         | image-rs                   |
+| DDS       | ✔    |          | —   | —    | —    | —   | —         | image-rs                   |
+| farbfeld  | ✔    |          | —   | —    | —    | —   | —         | image-rs                   |
+| GIF       | ✔    |          | ✘ * | —    | —    | ✘   | ✔         | image-rs                   |
+| HEIC      | ✔    | ✔        | ✔   | ✔    | ✔    | ✘   | ✘         | libheif-rs + libheif (C++) |
+| ICO       | ✔    |          | —   | —    | —    | —   | —         | image-rs                   |
+| JPEG      | ✔    |          | ✔   | —    | ✔    | ✘   | —         | image-rs                   |
+| OpenEXR   | ✔    |          | —   | —    | —    | —   | —         | image-rs                   |
+| PNG       | ✔    |          | ✔   | ✘    | ✔    | ✘   | ✔         | image-rs                   |
+| PNM       | ✔    |          | —   | —    | —    | —   | —         | image-rs                   |
+| SVG       | ✔    |          | ✘   | —    | —    | ✘ * | —         | librsvg                    |
+| TGA       | ✔    |          | —   | —    | —    | —   | —         | image-rs                   |
+| TIFF      | ✔    |          | ✘   | —    | ✔    | ✘   | —         | image-rs                   |
+| WEBP      | ✔    |          | —   | —    | ✔    | ✘   | ✔         | image-rs                   |
 
 | Symbol | Meaning                                        |
 |--------|------------------------------------------------|

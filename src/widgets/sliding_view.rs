@@ -1,8 +1,6 @@
 //! A sliding view widget for images
 //!
 //! This widget it similar to `AdwCarousel`.
-//! Currently, there is no swipe-gesture support since it's not working with
-//! `GtkScrolledWindow` anyways.
 
 use crate::deps::*;
 use crate::widgets::LpImagePage;
@@ -152,14 +150,25 @@ mod imp {
             let position_shift = self.position_shift.get() as f32;
 
             for (page_index, page) in self.pages.borrow().iter().enumerate() {
+                let page_position = page_index as f32;
+
                 // reverse page order for RTL languages
                 let direction_sign = if self.is_rtl() { -1. } else { 1. };
 
                 // This positions the pages within the carousel and shifts them
                 // according to the position that should currently be shown.
                 let x = direction_sign
-                    * (page_index as f32 - scroll_position - position_shift)
+                    * (page_position - scroll_position - position_shift)
                     * (width as f32 + self.page_spacing(width));
+
+                // Only show visible images
+                if page_position == (scroll_position + position_shift).floor()
+                    || page_position == (scroll_position + position_shift).ceil()
+                {
+                    page.set_visible(true);
+                } else {
+                    page.set_visible(false);
+                }
 
                 let transform = gsk::Transform::new().translate(&graphene::Point::new(x, 0.));
                 page.allocate(width, height, 0, Some(transform));

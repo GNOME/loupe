@@ -1,12 +1,13 @@
 ///! Decode using image-rs
 use super::*;
-use crate::decoder::tiling::{self, TilingStoreExt};
+use crate::decoder::tiling::{self, FrameBufferExt};
 use crate::deps::*;
 use crate::i18n::*;
 
 use anyhow::Context;
 use arc_swap::ArcSwap;
 use gtk::prelude::*;
+use image_rs::AnimationDecoder;
 
 use std::fs::File;
 use std::io::BufReader;
@@ -14,7 +15,20 @@ use std::path::{Path, PathBuf};
 use std::sync::Arc;
 
 #[derive(Debug)]
-pub struct ImageRsOther;
+pub struct ImageRsOther {
+    thread_handle: Option<std::thread::JoinHandle<()>>,
+    abort: Arc<std::sync::RwLock<bool>>,
+}
+
+impl Drop for ImageRsOther {
+    fn drop(&mut self) {
+        if let Some(handle) = &self.thread_handle {
+            let mut abort = self.abort.write().unwrap();
+            *abort = true;
+            handle.thread().unpark();
+        }
+    }
+}
 
 impl ImageRsOther {
     fn reader(
@@ -30,8 +44,38 @@ impl ImageRsOther {
         path: PathBuf,
         format: image_rs::ImageFormat,
         updater: UpdateSender,
-        tiles: Arc<ArcSwap<tiling::TilingStore>>,
+        tiles: Arc<ArcSwap<tiling::FrameBuffer>>,
     ) -> Self {
+        let abort: Arc<std::sync::RwLock<bool>> = Default::default();
+
+        let thread_handle = match format {
+            image_rs::ImageFormat::Gif
+            | image_rs::ImageFormat::WebP
+            | image_rs::ImageFormat::Png => Some(Self::new_animated(
+                path,
+                format,
+                updater,
+                tiles,
+                abort.clone(),
+            )),
+            _ => {
+                Self::new_static(path, format, updater, tiles);
+                None
+            }
+        };
+
+        ImageRsOther {
+            thread_handle,
+            abort,
+        }
+    }
+
+    fn new_static(
+        path: PathBuf,
+        format: image_rs::ImageFormat,
+        updater: UpdateSender,
+        tiles: Arc<ArcSwap<tiling::FrameBuffer>>,
+    ) {
         updater.spawn_error_handled(move || {
             let reader = Self::reader(&path, format)?;
             let dimensions = reader
@@ -42,7 +86,6 @@ impl ImageRsOther {
 
             let mut reader = Self::reader(&path, format)?;
 
-            // TODO: Set something huge?
             reader.limits(image_rs::io::Limits::no_limits());
 
             let dynamic_image = reader.decode().context(i18n("Failed to decode image"))?;
@@ -60,8 +103,109 @@ impl ImageRsOther {
 
             Ok(())
         });
+    }
 
-        ImageRsOther
+    fn new_animated(
+        path: PathBuf,
+        format: image_rs::ImageFormat,
+        updater: UpdateSender,
+        tiles: Arc<ArcSwap<tiling::FrameBuffer>>,
+        abort: Arc<std::sync::RwLock<bool>>,
+    ) -> std::thread::JoinHandle<()> {
+        updater.clone().spawn_error_handled(move || {
+            let mut nth_frame = 1;
+
+            // We are currently decoding for each repetition of the animation
+            // TODO: Check if/how that can be solved differently
+            loop {
+                let file = std::fs::File::open(&path)?;
+
+                let (frames, animated_format) = match format {
+                    image_rs::ImageFormat::Gif => (
+                        image_rs::codecs::gif::GifDecoder::new(file)?.into_frames(),
+                        ImageFormat::AnimatedGif,
+                    ),
+                    image_rs::ImageFormat::WebP => (
+                        image_rs::codecs::webp::WebPDecoder::new(file)?.into_frames(),
+                        ImageFormat::AnimatedWebP,
+                    ),
+                    image_rs::ImageFormat::Png => {
+                        let decoder = image_rs::codecs::png::PngDecoder::new(file)?;
+                        if decoder.is_apng() {
+                            (decoder.apng().into_frames(), ImageFormat::AnimatedPng)
+                        } else {
+                            // Static PNG images need a different decoder
+                            Self::new_static(path, format, updater, tiles);
+                            return Ok(());
+                        }
+                    }
+                    _ => todo!(),
+                };
+
+                for frame in frames {
+                    match frame {
+                        Err(err) => {
+                            log::warn!("Skipping frame: {err}");
+                        }
+                        Ok(frame) => {
+                            if nth_frame == 2 {
+                                // We have at least two frames so this is animated
+                                updater.send(DecoderUpdate::Format(animated_format));
+                                nth_frame = 3;
+                            }
+
+                            let (delay_num, delay_den) = frame.delay().numer_denom_ms();
+                            let delay = std::time::Duration::from_micros(f64::round(
+                                delay_num as f64 * 1000. / delay_den as f64,
+                            )
+                                as u64);
+                            let position = (frame.left(), frame.top());
+                            let rgb_image = frame.into_buffer();
+                            let dimensions = (
+                                rgb_image.width() + position.0,
+                                rgb_image.height() + position.1,
+                            );
+
+                            let dynamic_image = image_rs::DynamicImage::from(rgb_image);
+
+                            let decoded_image = Decoded { dynamic_image };
+
+                            let tile = tiling::Tile {
+                                position,
+                                zoom_level: tiling::zoom_to_level(1.),
+                                bleed: 0,
+                                texture: decoded_image.into_texture(),
+                            };
+
+                            tiles.push_frame(tile, dimensions, delay);
+
+                            if nth_frame == 1 {
+                                updater.send(DecoderUpdate::Dimensions(Default::default()));
+                                updater.send(DecoderUpdate::Redraw);
+                                nth_frame = 2;
+                            }
+                        }
+                    }
+
+                    if tiles.n_frames() >= 3 {
+                        std::thread::park();
+                    }
+
+                    if *abort.read().unwrap() {
+                        log::debug!("Terminating decoder thread.");
+                        return Ok(());
+                    }
+                }
+            }
+        })
+    }
+
+    pub fn fill_frame_buffer(&self) {
+        if let Some(handle) = &self.thread_handle {
+            handle.thread().unpark();
+        } else {
+            log::error!("Trying to wake up one-shot decoder");
+        }
     }
 }
 
