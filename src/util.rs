@@ -166,3 +166,10 @@ pub enum Direction {
     Back,
     Forward,
 }
+
+#[derive(Copy, Clone, Debug)]
+pub enum Gesture {
+    /// Rotate with threshold offset
+    Rotate(f64),
+    Scale,
+}

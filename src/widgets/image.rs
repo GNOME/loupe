@@ -33,6 +33,7 @@ use crate::decoder::tiling::FrameBufferExt;
 use crate::decoder::{self, tiling, Decoder, DecoderUpdate};
 use crate::i18n::i18n;
 use crate::image_metadata::LpImageMetadata;
+use crate::util::Gesture;
 
 use adw::{prelude::*, subclass::prelude::*};
 use arc_swap::ArcSwap;
@@ -65,7 +66,12 @@ const ZOOM_FACTOR_DOUBLE_TAP: f64 = 2.5;
 /// Relative to best-fit and `MAX_ZOOM_LEVEL`
 const ZOOM_FACTOR_MAX_RUBBERBAND: f64 = 2.;
 /// Smaller values make the band feel stiffer
-const RUBBERBANDING_EXPONENT: f64 = 0.4;
+const RUBBERBANDING_EXPONENT: f64 = 0.3;
+
+/// When this scale factor is reached, rotate is deactivated
+const ZOOM_GESTURE_LOCK_THRESHOLD: f64 = 1.2;
+/// When this rotate angle is reached, zoom is deactivated
+const ROTATE_GESTURE_LOCK_THRESHOLD: f64 = 15.;
 
 /// Max zoom level 2000%
 const MAX_ZOOM_LEVEL: f64 = 20.0;
@@ -140,8 +146,13 @@ mod imp {
         /// Required for calculating delta while moving window around
         pub(super) last_drag_value: Cell<Option<(f64, f64)>>,
 
+        /// Ticks callback for animated image formats
         pub(super) tick_callback: RefCell<Option<gtk::TickCallbackId>>,
+        /// Frame block time for currently shown frame
         pub(super) last_animated_frame: Cell<i64>,
+
+        /// Gesture, zoom or rotate, used for the duration of the gesture
+        pub(super) locked_gestured: Cell<Option<Gesture>>,
 
         widget_dimensions: Cell<(i32, i32)>,
         scale_factor: Cell<i32>,
@@ -422,11 +433,30 @@ mod imp {
 
             rotation_gesture.connect_angle_changed(
                 glib::clone!(@weak obj => move |gesture, _, _| {
-                    let angle = gesture.angle_delta();
-                    // offset for rotate gesture to take effect
-                    if angle.abs().to_degrees() > 20. {
-                        obj.set_rotation(obj.imp().rotation_target.get() + angle.to_degrees());
+                    let angle = gesture.angle_delta().to_degrees();
+
+                    // Only reset rotation if scale gesture is locked in
+                    if let Some(Gesture::Scale) = obj.imp().locked_gestured.get() {
+                        obj.imp().rotation.set(obj.imp().rotation_target.get());
+                        return;
                     }
+
+                    // Correct angle by the the angle at the moment of passing the threshold.
+                    // This stops the rotation from suddenly jumping when passing the threshold.
+                    let correction =
+                        if let Some(Gesture::Rotate(correction)) = obj.imp().locked_gestured.get() {
+                            correction
+                        } else if angle.abs() > ROTATE_GESTURE_LOCK_THRESHOLD {
+                            let correction = angle.signum() * ROTATE_GESTURE_LOCK_THRESHOLD;
+                            obj.imp()
+                                .locked_gestured
+                                .set(Some(Gesture::Rotate(correction)));
+                            correction
+                        } else {
+                            return;
+                        };
+
+                    obj.set_rotation(obj.imp().rotation_target.get() + angle - correction);
                 }),
             );
 
@@ -435,6 +465,7 @@ mod imp {
 
                 let angle = (obj.rotation() / 90.).round() * 90. - obj.imp().rotation_target.get();
                 obj.rotate_by(angle);
+                obj.imp().locked_gestured.set(None);
             }));
 
             // Zoom
@@ -452,7 +483,7 @@ mod imp {
                 let vadjustment = obj.vadjustment();
                 let zoom = obj.imp().zoom_target.get() * scale;
 
-                // move image with fingers on touchscreens
+                // Move image with fingers on touchscreens
                 if gesture.device().map(|x| x.source()) == Some(gdk::InputSource::Touchscreen) {
                     if let p1 @ Some((x1, y1)) = gesture.bounding_box_center() {
                         if let Some((x0, y0)) = obj.imp().zoom_gesture_center.get() {
@@ -464,6 +495,17 @@ mod imp {
 
                         obj.imp().zoom_gesture_center.set(p1);
                     }
+                }
+
+                let zoom_out_threshold = 1. / ZOOM_GESTURE_LOCK_THRESHOLD;
+                let zoom_in_threshold = ZOOM_GESTURE_LOCK_THRESHOLD;
+
+                if let Some(Gesture::Rotate(_)) = obj.imp().locked_gestured.get() {
+                    // Do not zoom when rotate is locked in
+                    return;
+                } else if !(zoom_out_threshold..zoom_in_threshold).contains(&scale) {
+                    // Lock in scale when leaving the scale threshold
+                    obj.imp().locked_gestured.set(Some(Gesture::Scale));
                 }
 
                 obj.set_zoom_aiming(zoom, obj.imp().zoom_gesture_center.get());
@@ -479,6 +521,8 @@ mod imp {
                     // rubberband if over highest zoom level and sets `zoom_target`
                     obj.zoom_to(obj.zoom());
                 };
+
+                obj.imp().locked_gestured.set(None);
             }));
 
             zoom_gesture.group_with(&rotation_gesture);
