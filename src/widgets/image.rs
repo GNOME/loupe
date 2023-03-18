@@ -269,10 +269,6 @@ mod imp {
                 .set_target(&adw::CallbackAnimationTarget::new(|_| {}));
             obj.zoom_animation()
                 .set_target(&adw::CallbackAnimationTarget::new(|_| {}));
-
-            while let Some(child) = obj.first_child() {
-                child.unparent();
-            }
         }
     }
 

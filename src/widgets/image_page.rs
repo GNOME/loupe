@@ -46,7 +46,7 @@ mod imp {
         #[template_child]
         pub(super) error_page: TemplateChild<adw::StatusPage>,
         #[template_child]
-        pub(super) scrolled_window: TemplateChild<gtk::ScrolledWindow>,
+        pub(super) image_stack_page: TemplateChild<gtk::Widget>,
         #[template_child]
         pub(super) image: TemplateChild<LpImage>,
         #[template_child]
@@ -115,7 +115,7 @@ mod imp {
                     if obj.image().is_loaded() {
                         obj.imp()
                             .stack
-                            .set_visible_child(&*obj.imp().scrolled_window);
+                            .set_visible_child(&*obj.imp().image_stack_page);
                     }
                 }),
             );
