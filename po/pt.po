@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-14 04:10+0000\n"
-"PO-Revision-Date: 2023-03-16 14:19+0000\n"
+"POT-Creation-Date: 2023-03-16 14:20+0000\n"
+"PO-Revision-Date: 2023-03-18 18:43+0000\n"
 "Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>\n"
 "Language-Team: Portuguese <pt@li.org>\n"
 "Language: pt\n"
@@ -28,8 +28,8 @@ msgstr "Loupe"
 #: data/org.gnome.Loupe.desktop.in.in:11
 msgid "Picture;Slideshow;Graphics;Image Viewer;"
 msgstr ""
-"Imagem;Diaporama;Apresentação;Diapositivos;Grafismos;Gráficos;"
-"Visualizador de imagens;"
+"Imagem;Diaporama;Apresentação;Diapositivos;Grafismos;Gráficos;Visualizador "
+"de imagens;"
 
 #: data/org.gnome.Loupe.metainfo.xml.in.in:7
 msgid "Christopher Davis"
@@ -44,12 +44,12 @@ msgid ""
 "A simple image viewer which allows you to browse through your images and "
 "inspect their metadata."
 msgstr ""
-"Um simples visualizador de imagens que lhe permite navegar através das "
-"suas imagens e inspecionar os seus metadados."
+"Um simples visualizador de imagens que lhe permite navegar através das suas "
+"imagens e inspecionar os seus metadados."
 
 #: data/org.gnome.Loupe.metainfo.xml.in.in:11
 msgid "The following features are not available yet"
-msgstr "As seguintes funcionalidade ainda não estão disponíveis"
+msgstr "As seguintes funcionalidades ainda não estão disponíveis"
 
 #: data/org.gnome.Loupe.metainfo.xml.in.in:13
 msgid "Correctly showing SVGs at every zoom-level"
@@ -94,7 +94,7 @@ msgstr "Enviar a imagem para o lixo"
 #: data/gtk/help_overlay.ui:32
 msgctxt "shortcut window"
 msgid "Toggle Image Properties"
-msgstr "Mostrar/ocultar propriedades da imagem"
+msgstr "Alternar as propriedades da imagem"
 
 #: data/gtk/help_overlay.ui:38
 msgctxt "shortcut window"
@@ -104,7 +104,7 @@ msgstr "Definir como fundo do ambiente de trabalho"
 #: data/gtk/help_overlay.ui:44
 msgctxt "shortcut window"
 msgid "Toggle Fullscreen"
-msgstr "Ecrã inteiro"
+msgstr "Alternar para o modo de ecrã inteiro"
 
 #: data/gtk/help_overlay.ui:50
 msgctxt "shortcut window"
@@ -119,7 +119,7 @@ msgstr "Nova janela"
 #: data/gtk/help_overlay.ui:62
 msgctxt "shortcut window"
 msgid "Open Help"
-msgstr "Abrir a Ajuda"
+msgstr "Abrir a ajuda"
 
 #: data/gtk/help_overlay.ui:68
 msgctxt "shortcut window"
@@ -191,7 +191,7 @@ msgstr "Ampliar"
 #: data/gtk/help_overlay.ui:159 data/gtk/help_overlay.ui:251
 msgctxt "shortcut window"
 msgid "Zoom Out"
-msgstr "Reduzir"
+msgstr "Diminuir"
 
 #: data/gtk/help_overlay.ui:165
 msgctxt "shortcut window"
@@ -280,7 +280,7 @@ msgstr "Imagem seguinte"
 
 #: data/gtk/image_view.ui:70
 msgid "Toggle Fullscreen"
-msgstr "Alternar entre ecrã inteiro"
+msgstr "Alternar para o modo de ecrã inteiro"
 
 #: data/gtk/image_view.ui:81
 msgid "Zoom Out"
@@ -507,7 +507,7 @@ msgstr "Eliminar"
 
 #: src/window.rs:559
 msgid "Failed to delete image"
-msgstr "Falha ao eliminar imagem"
+msgstr "Erro ao eliminar imagem"
 
 #, c-format
 #~ msgid "%x %X"
