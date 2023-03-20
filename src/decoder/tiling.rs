@@ -209,7 +209,9 @@ impl TiledImage {
     ///
     /// TODO: This is the most buggy function ever
     pub fn cleanup(&mut self, zoom: f64, viewport: graphene::Rect) {
-        let Some(original_dimensions) = self.original_dimensions else { log::error!("Too-early cleanup: Original dimension not known"); return; };
+        let Some(original_dimensions) = self.original_dimensions else {
+            log::error!("Too-early cleanup: Original dimension not known"); return;
+        };
 
         let mut kept_tiles = Self::new(self.tile_size);
 
