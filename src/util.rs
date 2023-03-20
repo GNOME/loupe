@@ -155,18 +155,6 @@ pub async fn untrash(path: &Path) -> anyhow::Result<()> {
     error
 }
 
-pub async fn spawn<T: Debug + Send + 'static>(
-    name: &str,
-    f: impl Fn() -> T + Send + 'static,
-) -> async_std::io::Result<T> {
-    log::trace!("Starting thread '{name}'");
-
-    Ok(async_std::task::Builder::new()
-        .name(name.to_string())
-        .spawn(async_global_executor::spawn_blocking(f))?
-        .await)
-}
-
 #[derive(Debug, Clone, Copy)]
 pub enum Position {
     First,

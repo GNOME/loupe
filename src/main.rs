@@ -67,7 +67,9 @@ use application::LpApplication;
 use deps::*;
 
 fn main() -> glib::ExitCode {
-    pretty_env_logger::init_timed();
+    env_logger::Builder::from_default_env()
+        .format_timestamp_millis()
+        .init();
 
     setlocale(LocaleCategory::LcAll, "");
     bindtextdomain("loupe", config::LOCALEDIR).unwrap();

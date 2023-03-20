@@ -98,7 +98,7 @@ impl LpFileModel {
         );
         self.imp().monitor.set(monitor).unwrap();
 
-        let new_files_result = util::spawn("list-files", move || {
+        let new_files_result = gio::spawn_blocking(move || {
             let mut files = IndexSet::new();
 
             let enumerator = gio::File::for_path(&directory)
