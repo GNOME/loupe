@@ -48,6 +48,8 @@ mod imp {
         #[template_child]
         pub(super) image_stack_page: TemplateChild<gtk::Widget>,
         #[template_child]
+        pub(super) scrolled_window: TemplateChild<gtk::ScrolledWindow>,
+        #[template_child]
         pub(super) image: TemplateChild<LpImage>,
         #[template_child]
         pub(super) popover: TemplateChild<gtk::PopoverMenu>,
@@ -163,6 +165,10 @@ impl LpImagePage {
 
     pub fn path(&self) -> PathBuf {
         self.image().path().unwrap()
+    }
+
+    pub fn scrolled_window(&self) -> gtk::ScrolledWindow {
+        self.imp().scrolled_window.clone()
     }
 
     pub fn image(&self) -> LpImage {

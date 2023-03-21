@@ -194,14 +194,7 @@ mod imp {
     }
 
     impl WidgetImpl for LpImageView {
-        /// The main target of this manual implementation is to provide a good
-        /// natural width that allows to have a neat size for newly opened `LpWindow`s.
-        /// The actual calculation of the image natural width happens in
-        /// the measure function of `LpImage`.
-        ///
-        /// This manual implementation is necessary since AdwCarousel gives the
-        /// largest natural width of all of it's children. But we actually want the
-        /// one of the opened (current) image.
+        /// This manual implementation makes sure left an right overlay both fit into the window
         fn measure(&self, orientation: gtk::Orientation, for_size: i32) -> (i32, i32, i32, i32) {
             // Measure child of AdwBin
             let (child_min, child_natural, _, _) = self.bin_child.measure(orientation, for_size);
@@ -212,19 +205,10 @@ mod imp {
 
             // take as minimum whatever is larger
             let min = i32::max(child_min, overlay1_min + overlay2_min);
+            // take as natural whatever is larger
+            let natural = i32::max(child_natural, min);
 
-            if let Some(page) = self.obj().current_page() {
-                // measure `LpImage`
-                let (_, image_natural, _, _) = page.image().measure(orientation, for_size);
-
-                // Ensure that minimum size is not smaller than the one of the child.
-                // Also ensure that the natural width is not smaller than the minimal size.
-                // Both things are required by GTK.
-                (min, i32::max(min, image_natural), -1, -1)
-            } else {
-                // also include controls overlays when mostly passing through child measurements
-                (min, i32::max(child_natural, min), -1, -1)
-            }
+            (min, natural, -1, -1)
         }
 
         /// this is necessary because we do layout manually

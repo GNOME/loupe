@@ -165,14 +165,17 @@ mod imp {
                 if page_position == (scroll_position + position_shift).floor()
                     || page_position == (scroll_position + position_shift).ceil()
                 {
-                    page.set_visible(true);
+                    page.set_child_visible(true);
+                    let transform = gsk::Transform::new().translate(&graphene::Point::new(x, 0.));
+                    page.allocate(width, height, 0, Some(transform));
                 } else {
-                    page.set_visible(false);
+                    page.set_child_visible(false);
                 }
 
-                let transform = gsk::Transform::new().translate(&graphene::Point::new(x, 0.));
-                page.allocate(width, height, 0, Some(transform));
-                page.image().allocate(width, height, 0, None);
+                if !page.scrolled_window().is_mapped() {
+                    // SVG needs to know a widget size before rendering something in LpImage
+                    page.scrolled_window().allocate(width, height, 0, None);
+                }
             }
         }
 
