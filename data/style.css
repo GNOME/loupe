@@ -1,7 +1,7 @@
-button.circular {
-  padding: 9px;
-  min-width: 24px;
-  min-height: 24px;
+/* Overlay controls for next, zoom, fullscreen */
+button.osd.circular {
+  min-width: 42px;
+  min-height: 42px;
 }
 
 .image-view {
