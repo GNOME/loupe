@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-11 18:19+0000\n"
-"PO-Revision-Date: 2023-03-12 20:46+0100\n"
+"POT-Creation-Date: 2023-03-14 04:10+0000\n"
+"PO-Revision-Date: 2023-03-25 14:31+0100\n"
 "Last-Translator: Quentin PAGÈS\n"
 "Language-Team: Occitan <totenoc@gmail.com>\n"
 "Language: oc\n"
@@ -68,7 +68,7 @@ msgstr "Presa en carga HighDPI corrècta"
 
 #: data/org.gnome.Loupe.metainfo.xml.in.in:17
 msgid "Print settings to position the image on the page"
-msgstr ""
+msgstr "Paramètres d’impression per posicionar l’imatge per la pagina"
 
 #: data/gtk/help_overlay.ui:11
 msgctxt "shortcut window"
@@ -215,22 +215,22 @@ msgstr "Vista panoramica"
 #: data/gtk/help_overlay.ui:188
 msgctxt "shortcut window"
 msgid "Pan Left"
-msgstr ""
+msgstr "Desplaçar a esquèrra"
 
 #: data/gtk/help_overlay.ui:194
 msgctxt "shortcut window"
 msgid "Pan Right"
-msgstr ""
+msgstr "Desplaçar a drecha"
 
 #: data/gtk/help_overlay.ui:200
 msgctxt "shortcut window"
 msgid "Pan Up"
-msgstr ""
+msgstr "Desplaçar ennaut"
 
 #: data/gtk/help_overlay.ui:206
 msgctxt "shortcut window"
 msgid "Pan Down"
-msgstr ""
+msgstr "Desplaçar enbàs"
 
 #: data/gtk/help_overlay.ui:214
 msgctxt "shortcut window"
@@ -301,51 +301,51 @@ msgstr "Dobrir lo dossièr contenent"
 msgid "Image Size"
 msgstr "Talha de l'imatge"
 
-#: data/gtk/properties_view.ui:71
-msgid "File Type"
-msgstr "Tipe de fichièr"
+#: data/gtk/properties_view.ui:75
+msgid "Image Format"
+msgstr "Format d'imatge"
 
-#: data/gtk/properties_view.ui:85
+#: data/gtk/properties_view.ui:89
 msgid "File Size"
 msgstr "Talha de fichièr"
 
-#: data/gtk/properties_view.ui:103
+#: data/gtk/properties_view.ui:107
 msgid "File Created"
 msgstr "Creacion del fichièr"
 
-#: data/gtk/properties_view.ui:117
+#: data/gtk/properties_view.ui:121
 msgid "File Modified"
 msgstr "Modificacion del fichièr"
 
-#: data/gtk/properties_view.ui:140
+#: data/gtk/properties_view.ui:144
 msgid "Location"
 msgstr "Emplaçament"
 
-#: data/gtk/properties_view.ui:160
+#: data/gtk/properties_view.ui:164
 msgid "Open Location"
 msgstr "Dobrir l'emplaçament"
 
-#: data/gtk/properties_view.ui:173
+#: data/gtk/properties_view.ui:177
 msgid "Originally Created"
 msgstr "Creacion iniciala"
 
-#: data/gtk/properties_view.ui:194
+#: data/gtk/properties_view.ui:198
 msgid "Aperture"
 msgstr "Dobertura"
 
-#: data/gtk/properties_view.ui:215
+#: data/gtk/properties_view.ui:219
 msgid "Exposure"
 msgstr "Exposicion"
 
-#: data/gtk/properties_view.ui:236
+#: data/gtk/properties_view.ui:240
 msgid "ISO"
 msgstr "ISO"
 
-#: data/gtk/properties_view.ui:257
+#: data/gtk/properties_view.ui:261
 msgid "Focal Length"
 msgstr "Longor focala"
 
-#: data/gtk/properties_view.ui:278
+#: data/gtk/properties_view.ui:282
 msgid "Maker, Model"
 msgstr "Fabricant, modèl"
 
@@ -436,23 +436,17 @@ msgstr "E"
 msgid "W"
 msgstr "O"
 
-#. Translators: Date (%x) and time (%X) combined
-#: src/image_metadata/mod.rs:99
-#, c-format
-msgid "%x %X"
-msgstr "%x %X"
-
 #. Translators: Unit for exposure time in seconds
-#: src/image_metadata/mod.rs:131
+#: src/image_metadata/mod.rs:129
 msgid "1\\u{2215}{}\\u{202F}s"
 msgstr "1\\u{2215}{}\\u{202F}s"
 
 #. Translators: Unit for focal length in millimeters
-#: src/image_metadata/mod.rs:156
+#: src/image_metadata/mod.rs:154
 msgid "{}\\u{202F}mm"
 msgstr "{}\\u{202F}mm"
 
-#: src/widgets/image.rs:647
+#: src/widgets/image.rs:652
 msgid "File does not exist"
 msgstr "Lo fichièr existís pas"
 
@@ -515,3 +509,9 @@ msgstr "Suprimir"
 #: src/window.rs:559
 msgid "Failed to delete image"
 msgstr "Impossible de suprimir l’imatge"
+
+#~ msgid "File Type"
+#~ msgstr "Tipe de fichièr"
+
+#~ msgid "%x %X"
+#~ msgstr "%x %X"
