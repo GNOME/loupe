@@ -6,8 +6,8 @@
 msgid ""
 msgstr "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-11 18:54+0000\n"
-"PO-Revision-Date: 2023-03-12 18:54+0000\n"
+"POT-Creation-Date: 2023-03-14 04:10+0000\n"
+"PO-Revision-Date: 2023-03-26 18:54+0000\n"
 "Last-Translator: Asier Sarasua Garmendia <asiersarasua@ni.eus>\n"
 "Language-Team: Basque <librezale@librezale.eus>\n"
 "Language: eu\n"
@@ -295,51 +295,51 @@ msgstr "Ireki karpeta edukitzailea"
 msgid "Image Size"
 msgstr "Irudiaren tamaina"
 
-#: data/gtk/properties_view.ui:71
-msgid "File Type"
-msgstr "Fitxategi mota"
+#: data/gtk/properties_view.ui:75
+msgid "Image Format"
+msgstr "Irudiaren formatua"
 
-#: data/gtk/properties_view.ui:85
+#: data/gtk/properties_view.ui:89
 msgid "File Size"
 msgstr "Fitxategiaren tamaina"
 
-#: data/gtk/properties_view.ui:103
+#: data/gtk/properties_view.ui:107
 msgid "File Created"
 msgstr "Sorrera-data"
 
-#: data/gtk/properties_view.ui:117
+#: data/gtk/properties_view.ui:121
 msgid "File Modified"
 msgstr "Aldaketa-data"
 
-#: data/gtk/properties_view.ui:140
+#: data/gtk/properties_view.ui:144
 msgid "Location"
 msgstr "Kokalekua"
 
-#: data/gtk/properties_view.ui:160
+#: data/gtk/properties_view.ui:164
 msgid "Open Location"
 msgstr "Ireki kokalekua"
 
-#: data/gtk/properties_view.ui:173
+#: data/gtk/properties_view.ui:177
 msgid "Originally Created"
 msgstr "Jatorrizko sorrera"
 
-#: data/gtk/properties_view.ui:194
+#: data/gtk/properties_view.ui:198
 msgid "Aperture"
 msgstr "Irekiera"
 
-#: data/gtk/properties_view.ui:215
+#: data/gtk/properties_view.ui:219
 msgid "Exposure"
 msgstr "Esposizioa"
 
-#: data/gtk/properties_view.ui:236
+#: data/gtk/properties_view.ui:240
 msgid "ISO"
 msgstr "ISOa"
 
-#: data/gtk/properties_view.ui:257
+#: data/gtk/properties_view.ui:261
 msgid "Focal Length"
 msgstr "Fokuaren luzera"
 
-#: data/gtk/properties_view.ui:278
+#: data/gtk/properties_view.ui:282
 msgid "Maker, Model"
 msgstr "Fabrikatzailea, eredua"
 
@@ -428,23 +428,17 @@ msgstr "E"
 msgid "W"
 msgstr "M"
 
-#. Translators: Date (%x) and time (%X) combined
-#: src/image_metadata/mod.rs:99
-#, c-format
-msgid "%x %X"
-msgstr "%x %X"
-
 #. Translators: Unit for exposure time in seconds
-#: src/image_metadata/mod.rs:131
+#: src/image_metadata/mod.rs:129
 msgid "1\\u{2215}{}\\u{202F}s"
 msgstr "1\\u{2215}{}\\u{202F}s"
 
 #. Translators: Unit for focal length in millimeters
-#: src/image_metadata/mod.rs:156
+#: src/image_metadata/mod.rs:154
 msgid "{}\\u{202F}mm"
 msgstr "{}\\u{202F}mm"
 
-#: src/widgets/image.rs:647
+#: src/widgets/image.rs:652
 msgid "File does not exist"
 msgstr "Fitxategia ez da existitzen"
 
@@ -507,3 +501,10 @@ msgstr "Ezabatu"
 #: src/window.rs:559
 msgid "Failed to delete image"
 msgstr "Huts egin du irudia ezabatzeak"
+
+#~ msgid "File Type"
+#~ msgstr "Fitxategi mota"
+
+#, c-format
+#~ msgid "%x %X"
+#~ msgstr "%x %X"
