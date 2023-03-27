@@ -144,6 +144,7 @@ mod imp {
         pub(super) last_animated_frame: Cell<i64>,
 
         widget_dimensions: Cell<(i32, i32)>,
+        scale_factor: Cell<i32>,
     }
 
     #[glib::object_subclass]
@@ -254,9 +255,14 @@ mod imp {
             self.zoom.set(1.);
             self.zoom_target.set(1.);
             self.best_fit.set(true);
+            self.scale_factor.set(obj.scale_factor());
 
             self.connect_controllers();
             self.connect_gestures();
+
+            obj.connect_scale_factor_notify(|obj| {
+                obj.queue_resize();
+            });
         }
 
         fn dispose(&self) {
@@ -482,16 +488,32 @@ mod imp {
     impl WidgetImpl for LpImage {
         // called when the widget size might have changed
         fn size_allocate(&self, width: i32, height: i32, _baseline: i32) {
-            let widget = self.obj();
+            let obj = self.obj();
 
-            // ensure there is an actual size change
-            if self.widget_dimensions.get() != (width, height) {
-                self.widget_dimensions.set((width, height));
+            let (scale_changed, scale_change) = if obj.scale_factor() != self.scale_factor.get() {
+                let scale_change = obj.scale_factor() as f64 / self.scale_factor.get() as f64;
+                self.scale_factor.set(obj.scale_factor());
+                (true, scale_change)
+            } else {
+                (false, 1.)
+            };
 
-                widget.configure_best_fit();
+            if obj.is_best_fit() {
+                // ensure there is an actual size change
+                if self.widget_dimensions.get() != (width, height) || scale_changed {
+                    obj.configure_best_fit();
+                }
+            } else if scale_changed {
+                // Show same area of the image when scale changes
+                let new_zoom = self.zoom_target.get() * scale_change;
+
+                obj.zoom_animation().pause();
+                self.zoom.set(new_zoom);
+                self.zoom_target.set(new_zoom);
             }
 
-            widget.configure_adjustments();
+            self.widget_dimensions.set((width, height));
+            obj.configure_adjustments();
         }
 
         // called when the widget content should be re-rendered
@@ -518,7 +540,10 @@ mod imp {
                 gsk::ScalingFilter::Nearest
             };
 
-            let render_options = tiling::RenderOptions { scaling_filter };
+            let render_options = tiling::RenderOptions {
+                scaling_filter,
+                scale_factor: widget.scale_factor(),
+            };
 
             // Operations on snapshots are coordinate transformations
             // It might help to read the following code from bottom to top
@@ -775,20 +800,23 @@ impl LpImage {
     /// Used for calculating the required zoom level after rotation
     fn zoom_level_best_fit_for_rotation(&self, rotation: f64) -> f64 {
         let rotated = rotation.to_radians().sin().abs();
-        let (image_width, image_height) = self.original_dimensions();
-        let texture_aspect_ratio = image_width as f64 / image_height as f64;
+        let (image_width, image_height) = (
+            self.original_dimensions().0 as f64 / self.scale_factor() as f64,
+            self.original_dimensions().1 as f64 / self.scale_factor() as f64,
+        );
+        let texture_aspect_ratio = image_width / image_height;
         let widget_aspect_ratio = self.width() as f64 / self.height() as f64;
 
         let default_zoom = if texture_aspect_ratio > widget_aspect_ratio {
-            (self.width() as f64 / image_width as f64).min(1.)
+            (self.width() as f64 / image_width).min(1.)
         } else {
-            (self.height() as f64 / image_height as f64).min(1.)
+            (self.height() as f64 / image_height).min(1.)
         };
 
         let rotated_zoom = if 1. / texture_aspect_ratio > widget_aspect_ratio {
-            (self.width() as f64 / image_height as f64).min(1.)
+            (self.width() as f64 / image_height).min(1.)
         } else {
-            (self.height() as f64 / image_width as f64).min(1.)
+            (self.height() as f64 / image_width).min(1.)
         };
 
         rotated * rotated_zoom + (1. - rotated) * default_zoom
@@ -871,6 +899,7 @@ impl LpImage {
         let scale = f32::min(1., THUMBNAIL_SIZE / long_side as f32);
         let render_options = tiling::RenderOptions {
             scaling_filter: gsk::ScalingFilter::Trilinear,
+            scale_factor: self.scale_factor(),
         };
 
         let snapshot = gtk::Snapshot::new();
@@ -995,7 +1024,7 @@ impl LpImage {
     }
 
     fn applicable_zoom(&self) -> f64 {
-        decoder::tiling::zoom_normalize(self.zoom())
+        decoder::tiling::zoom_normalize(self.zoom()) / self.scale_factor() as f64
     }
 
     /// Maximal zoom allowed for this image
@@ -1103,13 +1132,15 @@ impl LpImage {
         }
     }
 
+    /// Returns the area of the image that is visible in physical pixels
     fn viewport(&self) -> graphene::Rect {
-        let x = self.hadjustment().value();
-        let y = self.vadjustment().value();
-        let width = self.widget_width();
-        let height = self.widget_height();
+        let scale_factor = self.scale_factor() as f32;
+        let x = self.hadjustment().value() as f32 * scale_factor;
+        let y = self.vadjustment().value() as f32 * scale_factor;
+        let width = self.width() as f32 * scale_factor;
+        let height = self.height() as f32 * scale_factor;
 
-        graphene::Rect::new((x) as f32, (y) as f32, (width) as f32, (height) as f32)
+        graphene::Rect::new(x, y, width, height)
     }
 
     /// Animation that makes larger zoom steps (from buttons etc) look smooth

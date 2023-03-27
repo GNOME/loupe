@@ -75,15 +75,16 @@ impl Tile {
     /// Add tile to snapshot
     ///
     /// This is where parts of images actually land on the screen
-    pub fn add_to_snapshot(&self, snapshot: &gtk::Snapshot, zoom: f64, options: &RenderOptions) {
-        let zoom = zoom as f32;
-        let texture_zoom = self.zoom();
-        let area = round(&self.area().scale(zoom / texture_zoom, zoom / texture_zoom));
-        let area_with_bleed = round(
-            &self
-                .area_with_bleed()
-                .scale(zoom / texture_zoom, zoom / texture_zoom),
-        );
+    pub fn add_to_snapshot(
+        &self,
+        snapshot: &gtk::Snapshot,
+        output_zoom: f64,
+        options: &RenderOptions,
+    ) {
+        // Multiply by scale factor to get the image scaled to `zoom` in physical pixels
+        let zoom = output_zoom as f32 * options.scale_factor as f32 / self.zoom();
+        let area = round(&self.area().scale(zoom, zoom));
+        let area_with_bleed = round(&self.area_with_bleed().scale(zoom, zoom));
 
         // TODO: do not clip outer bounderies of the image
         snapshot.push_clip(&area);
@@ -171,6 +172,7 @@ impl Default for TiledImage {
 #[derive(Debug, Clone)]
 pub struct RenderOptions {
     pub scaling_filter: gsk::ScalingFilter,
+    pub scale_factor: i32,
 }
 
 impl TiledImage {
@@ -193,10 +195,18 @@ impl TiledImage {
             .collect();
 
         log::trace!("Rendering {} tiles", tiles.len());
+
+        // Scale from application pixels back to physical pixels
+        snapshot.scale(
+            1. / options.scale_factor as f32,
+            1. / options.scale_factor as f32,
+        );
         // reverse to put least fitting tiles in the background
         for (_, tile) in tiles.iter().rev() {
             tile.add_to_snapshot(snapshot, zoom, options);
         }
+        // reset scale
+        snapshot.scale(options.scale_factor as f32, options.scale_factor as f32);
     }
 
     pub fn push(&mut self, tile: Tile) {
