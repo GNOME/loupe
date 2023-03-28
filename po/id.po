@@ -1,0 +1,507 @@
+# Indonesian translation for Loupe.
+# Copyright (C) 2023 Loupe's COPYRIGHT HOLDER
+# This file is distributed under the same license as the Loupe package.
+# Kukuh Syafaat <kukuhsyafaat@gnome.org>, 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Loupe main\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-03-14 22:16+0000\n"
+"PO-Revision-Date: 2023-03-28 08:37+0700\n"
+"Last-Translator: Kukuh Syafaat <kukuhsyafaat@gnome.org>\n"
+"Language-Team: Indonesian <gnome-l10n-id@googlegroups.com>\n"
+"Language: id\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.2.2\n"
+
+#. If the file exists, get display name
+#: data/org.gnome.Loupe.desktop.in.in:3
+#: data/org.gnome.Loupe.metainfo.xml.in.in:6 data/gtk/window.ui:63
+#: src/application.rs:193 src/window.rs:676 src/window.rs:682
+msgid "Loupe"
+msgstr "Loupe"
+
+#: data/org.gnome.Loupe.desktop.in.in:11
+msgid "Picture;Slideshow;Graphics;Image Viewer;"
+msgstr "Gambaran;Salindia;Grafik;Penampil Gambar;"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:7
+msgid "Christopher Davis"
+msgstr "Christopher Davis"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:8
+msgid "View images"
+msgstr "Lihat gambar"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:10
+msgid ""
+"A simple image viewer which allows you to browse through your images and "
+"inspect their metadata."
+msgstr ""
+"Penampil gambar sederhana yang memungkinkan Anda menelusuri citra dan "
+"memeriksa metadatanya."
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:11
+msgid "The following features are not available yet"
+msgstr "Fitur berikut belum tersedia"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:13
+msgid "Correctly showing SVGs at every zoom-level"
+msgstr "Menampilkan SVG dengan benar di setiap tingkat perbesaran"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:14
+msgid "Interpreting image color profiles"
+msgstr "Menafsirkan profil warna gambar"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:15
+msgid "Animated image formats"
+msgstr "Format gambar animasi"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:16
+msgid "Correct HighDPI support"
+msgstr "Dukungan HighDPI yang benar"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:17
+msgid "Print settings to position the image on the page"
+msgstr "Pengaturan cetak untuk memposisikan gambar di halaman"
+
+#: data/gtk/help_overlay.ui:11
+msgctxt "shortcut window"
+msgid "General Shortcuts"
+msgstr "Pintasan Umum"
+
+#: data/gtk/help_overlay.ui:14
+msgctxt "shortcut window"
+msgid "Show Main Menu"
+msgstr "Tampilkan Menu Utama"
+
+#: data/gtk/help_overlay.ui:20
+msgctxt "shortcut window"
+msgid "Copy Image to Clipboard"
+msgstr "Salin Gambar ke Papan Klip"
+
+#: data/gtk/help_overlay.ui:26
+msgctxt "shortcut window"
+msgid "Move Image to Trash"
+msgstr "Pindahkan Gambar ke Tong Sampah"
+
+#: data/gtk/help_overlay.ui:32
+msgctxt "shortcut window"
+msgid "Toggle Image Properties"
+msgstr "Jungkitkan Properti Gambar"
+
+#: data/gtk/help_overlay.ui:38
+msgctxt "shortcut window"
+msgid "Set as Background"
+msgstr "Jadikan Latar Belakang"
+
+#: data/gtk/help_overlay.ui:44
+msgctxt "shortcut window"
+msgid "Toggle Fullscreen"
+msgstr "Jungkitkan Layar Penuh"
+
+#: data/gtk/help_overlay.ui:50
+msgctxt "shortcut window"
+msgid "Leave Fullscreen"
+msgstr "Tinggalkan Layar Penuh"
+
+#: data/gtk/help_overlay.ui:56
+msgctxt "shortcut window"
+msgid "New Window"
+msgstr "Jendela Baru"
+
+#: data/gtk/help_overlay.ui:62
+msgctxt "shortcut window"
+msgid "Open Help"
+msgstr "Buka Bantuan"
+
+#: data/gtk/help_overlay.ui:68
+msgctxt "shortcut window"
+msgid "Show Keyboard Shortcuts"
+msgstr "Tampilkan Pintasan Papan Tik"
+
+#: data/gtk/help_overlay.ui:74
+msgctxt "shortcut window"
+msgid "Close Window"
+msgstr "Tutup Jendela"
+
+#: data/gtk/help_overlay.ui:80
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "Keluar"
+
+#: data/gtk/help_overlay.ui:88
+msgctxt "shortcut window"
+msgid "Navigate Images"
+msgstr "Arahkan Gambar"
+
+#: data/gtk/help_overlay.ui:92 data/gtk/help_overlay.ui:106
+#: data/gtk/help_overlay.ui:218 data/gtk/help_overlay.ui:232
+msgctxt "shortcut window"
+msgid "Next Image"
+msgstr "Gambar Selanjutnya"
+
+#: data/gtk/help_overlay.ui:99 data/gtk/help_overlay.ui:113
+#: data/gtk/help_overlay.ui:225 data/gtk/help_overlay.ui:239
+msgctxt "shortcut window"
+msgid "Previous Image"
+msgstr "Gambar Sebelumnya"
+
+#: data/gtk/help_overlay.ui:119
+msgctxt "shortcut window"
+msgid "First Image"
+msgstr "Gambar Pertama"
+
+#: data/gtk/help_overlay.ui:125
+msgctxt "shortcut window"
+msgid "Last Image"
+msgstr "Gambar Terakhir"
+
+#: data/gtk/help_overlay.ui:133
+msgctxt "shortcut window"
+msgid "Rotate Image"
+msgstr "Putar Gambar"
+
+#: data/gtk/help_overlay.ui:136 data/gtk/help_overlay.ui:257
+msgctxt "shortcut window"
+msgid "Rotate Clockwise"
+msgstr "Putar Searah Jarum Jam"
+
+#: data/gtk/help_overlay.ui:142 data/gtk/help_overlay.ui:263
+msgctxt "shortcut window"
+msgid "Rotate Counterclockwise"
+msgstr "Putar Berlawanan Arah Jarum Jam"
+
+#: data/gtk/help_overlay.ui:150
+msgctxt "shortcut window"
+msgid "Zoom Image"
+msgstr "Perbesar Gambar"
+
+#: data/gtk/help_overlay.ui:153 data/gtk/help_overlay.ui:245
+msgctxt "shortcut window"
+msgid "Zoom In"
+msgstr "Zum Masuk"
+
+#: data/gtk/help_overlay.ui:159 data/gtk/help_overlay.ui:251
+msgctxt "shortcut window"
+msgid "Zoom Out"
+msgstr "Zum Keluar"
+
+#: data/gtk/help_overlay.ui:165
+msgctxt "shortcut window"
+msgid "Best Fit"
+msgstr "Pas Terbaik"
+
+#: data/gtk/help_overlay.ui:171
+msgctxt "shortcut window"
+msgid "Original Scale"
+msgstr "Skala Asli"
+
+#: data/gtk/help_overlay.ui:177
+msgctxt "shortcut window"
+msgid "200% Scale"
+msgstr "Skala 200%"
+
+#: data/gtk/help_overlay.ui:185
+msgctxt "shortcut window"
+msgid "Pan View"
+msgstr "Tampilan Pan"
+
+#: data/gtk/help_overlay.ui:188
+msgctxt "shortcut window"
+msgid "Pan Left"
+msgstr "Pan Kiri"
+
+#: data/gtk/help_overlay.ui:194
+msgctxt "shortcut window"
+msgid "Pan Right"
+msgstr "Pan Kanan"
+
+#: data/gtk/help_overlay.ui:200
+msgctxt "shortcut window"
+msgid "Pan Up"
+msgstr "Pan Atas"
+
+#: data/gtk/help_overlay.ui:206
+msgctxt "shortcut window"
+msgid "Pan Down"
+msgstr "Geser Bawah"
+
+#: data/gtk/help_overlay.ui:214
+msgctxt "shortcut window"
+msgid "Gestures"
+msgstr "Gestur"
+
+#: data/gtk/image_page.ui:6 data/gtk/window.ui:16
+msgid "_Open With…"
+msgstr "_Buka Dengan…"
+
+#: data/gtk/image_page.ui:14 data/gtk/window.ui:24
+msgid "_Print…"
+msgstr "_Cetak…"
+
+#: data/gtk/image_page.ui:18
+msgid "_Copy"
+msgstr "_Salin"
+
+#: data/gtk/image_page.ui:23 data/gtk/window.ui:29
+msgid "Rotate"
+msgstr "Putar"
+
+#: data/gtk/image_page.ui:34 data/gtk/window.ui:40
+msgid "_Set as Background…"
+msgstr "Atur jadi Latar _Belakang…"
+
+#: data/gtk/image_page.ui:55
+msgid "Could not Load Image"
+msgstr "Tidak Dapat Memuat Gambar"
+
+#: data/gtk/image_page.ui:82 data/gtk/window.ui:115
+msgid "Rotate Left"
+msgstr "Putar Kiri"
+
+#: data/gtk/image_page.ui:93 data/gtk/window.ui:126
+msgid "Rotate Right"
+msgstr "Putar Kanan"
+
+#: data/gtk/image_view.ui:30
+msgid "Previous Image"
+msgstr "Gambar Sebelumnya"
+
+#: data/gtk/image_view.ui:41
+msgid "Next Image"
+msgstr "Gambar Selanjutnya"
+
+#: data/gtk/image_view.ui:70
+msgid "Toggle Fullscreen"
+msgstr "Jungkitkan Layar Penuh"
+
+#: data/gtk/image_view.ui:81
+msgid "Zoom Out"
+msgstr "Zum Keluar"
+
+#: data/gtk/image_view.ui:92
+msgid "Zoom In"
+msgstr "Zum Masuk"
+
+#: data/gtk/properties_view.ui:29
+msgid "Folder"
+msgstr "Folder"
+
+#: data/gtk/properties_view.ui:42
+msgid "Open Containing Folder"
+msgstr "Buka Folder Pemuat"
+
+#: data/gtk/properties_view.ui:59
+msgid "Image Size"
+msgstr "Ukuran Gambar"
+
+#: data/gtk/properties_view.ui:75
+msgid "Image Format"
+msgstr "Format Gambar"
+
+#: data/gtk/properties_view.ui:89
+msgid "File Size"
+msgstr "Ukuran Berkas"
+
+#: data/gtk/properties_view.ui:107
+msgid "File Created"
+msgstr "Berkas Dibuat"
+
+#: data/gtk/properties_view.ui:121
+msgid "File Modified"
+msgstr "Berkas Diubah"
+
+#: data/gtk/properties_view.ui:144
+msgid "Location"
+msgstr "Lokasi"
+
+#: data/gtk/properties_view.ui:164
+msgid "Open Location"
+msgstr "Buka Lokasi"
+
+#: data/gtk/properties_view.ui:177
+msgid "Originally Created"
+msgstr "Awalnya Dibuat"
+
+#: data/gtk/properties_view.ui:198
+msgid "Aperture"
+msgstr "Bukaan"
+
+#: data/gtk/properties_view.ui:219
+msgid "Exposure"
+msgstr "Eksposur"
+
+#: data/gtk/properties_view.ui:240
+msgid "ISO"
+msgstr "ISO"
+
+#: data/gtk/properties_view.ui:261
+msgid "Focal Length"
+msgstr "Panjang Fokal"
+
+#: data/gtk/properties_view.ui:282
+msgid "Maker, Model"
+msgstr "Pembuat, Model"
+
+#: data/gtk/window.ui:6
+msgid "_New Window"
+msgstr "Je_ndela Baru"
+
+#: data/gtk/window.ui:10
+msgid "_Open…"
+msgstr "_Buka…"
+
+#: data/gtk/window.ui:46
+msgid "_Help"
+msgstr "_Bantuan"
+
+#: data/gtk/window.ui:50
+msgid "_Keyboard Shortcuts"
+msgstr "Pintasan Papan _Ketik"
+
+#: data/gtk/window.ui:54
+msgid "_About Loupe"
+msgstr "Tent_ang Loupe"
+
+#: data/gtk/window.ui:94
+msgid "Copy to Clipboard"
+msgstr "Salin ke Papan Klip"
+
+#: data/gtk/window.ui:101
+msgid "Move to Trash"
+msgstr "Pindah ke Tong Sampah"
+
+#: data/gtk/window.ui:107
+msgid "Main Menu"
+msgstr "Menu Utama"
+
+#: data/gtk/window.ui:141
+msgid "Image Properties"
+msgstr "Properti Gambar"
+
+#: data/gtk/window.ui:161
+msgid "View Images"
+msgstr "Lihat Gambar"
+
+#: data/gtk/window.ui:162
+msgid "Drag and drop images here"
+msgstr "Seret dan lepas gambar di sini"
+
+#: data/gtk/window.ui:166
+msgid "_Open File…"
+msgstr "B_uka Berkas…"
+
+#: src/application.rs:196
+msgid "The Loupe Team"
+msgstr "Tim Loupe"
+
+#. Translators: Replace "translator-credits" with your names, one name per line
+#: src/application.rs:205
+msgid "translator-credits"
+msgstr "Kukuh Syafaat <kukuhsyafaat@gnome.org>, 2023."
+
+#: src/application.rs:206
+msgid "Copyright © 2020–2023 Christopher Davis et al."
+msgstr "Hak Cipta © 2020–2023 Christopher Davis et al."
+
+#: src/file_model.rs:114
+msgid "Could not list other files in directory."
+msgstr "Tidak dapat mencantumkan berkas lain di direktori."
+
+#. Translators: short for "north" in GPS coordinate
+#: src/image_metadata/gps.rs:136
+msgid "N"
+msgstr "U"
+
+#. Translators: short for "south" in GPS coordinate
+#: src/image_metadata/gps.rs:139
+msgid "S"
+msgstr "S"
+
+#. Translators: short for "east" in GPS coordinate
+#: src/image_metadata/gps.rs:149
+msgid "E"
+msgstr "T"
+
+#. Translators: short for "west" in GPS coordinate
+#: src/image_metadata/gps.rs:152
+msgid "W"
+msgstr "B"
+
+#. Translators: Unit for exposure time in seconds
+#: src/image_metadata/mod.rs:129
+msgid "1\\u{2215}{}\\u{202F}s"
+msgstr "1\\u{2215}{}\\u{202F}s"
+
+#. Translators: Unit for focal length in millimeters
+#: src/image_metadata/mod.rs:154
+msgid "{}\\u{202F}mm"
+msgstr "{}\\u{202F}mm"
+
+#: src/widgets/image.rs:652
+msgid "File does not exist"
+msgstr "Berkas tidak ada"
+
+#: src/widgets/image_view.rs:574
+msgid "Failed to open new background image"
+msgstr "Gagal membuka gambar latar belakang baru"
+
+#: src/widgets/image_view.rs:591
+msgid "Set as background."
+msgstr "Atur jadi latar belakang."
+
+#: src/widgets/image_view.rs:598
+msgid "Could not set background."
+msgstr "Tidak dapat dijadikan sebagai latar belakang."
+
+#: src/window.rs:355
+msgid "“{}” is not a valid image."
+msgstr "\"{}\" bukanlah gambar yang valid."
+
+#: src/window.rs:431
+msgid "Open Image"
+msgstr "Buka Gambar"
+
+#: src/window.rs:485
+msgid "Image copied to clipboard"
+msgstr "Gambar disalin ke papan klip"
+
+#: src/window.rs:499
+msgid "Image moved to trash"
+msgstr "Gambar dipindahkan ke tong sampah"
+
+#: src/window.rs:500
+msgid "Undo"
+msgstr "Tak jadi"
+
+#: src/window.rs:511
+msgid "Failed to restore image from trash"
+msgstr "Gagal memulihkan gambar dari tong sampah"
+
+#: src/window.rs:526
+msgid "Failed to move image to trash"
+msgstr "Gagal memindahkan gambar ke tong sampah"
+
+#: src/window.rs:541
+msgid "Permanently Delete Image?"
+msgstr "Hapus Gambar Secara Permanen?"
+
+#: src/window.rs:543
+msgid "The image “{}” can only be deleted permanently."
+msgstr "Gambar \"{}\" hanya dapat dihapus secara permanen."
+
+#: src/window.rs:550
+msgid "Cancel"
+msgstr "Batal"
+
+#: src/window.rs:550
+msgid "Delete"
+msgstr "Hapus"
+
+#: src/window.rs:559
+msgid "Failed to delete image"
+msgstr "Gagal menghapus gambar"
