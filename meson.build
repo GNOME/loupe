@@ -1,5 +1,5 @@
 project('loupe', 'rust',
-          version: '44.alpha',
+          version: '44.0',
     meson_version: '>= 0.59.0',
   default_options: [ 'warning_level=2',
                    ],
@@ -8,8 +8,8 @@ project('loupe', 'rust',
 i18n = import('i18n')
 gnome = import('gnome')
 
-dependency('gtk4', version: '>=4.9.4')
-dependency('libadwaita-1', version: '>=1.2.99')
+dependency('gtk4', version: '>=4.10')
+dependency('libadwaita-1', version: '>=1.3')
 dependency('gweather4', version: '>=4.0.0')
 dependency('libheif', version: '>=1.14.2')
 

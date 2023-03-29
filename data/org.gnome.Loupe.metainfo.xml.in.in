@@ -10,11 +10,8 @@
     <p>A simple image viewer which allows you to browse through your images and inspect their metadata.</p>
     <p>The following features are not available yet</p>
     <ul>
-      <li>Correctly showing SVGs at every zoom-level</li>
-      <li>Interpreting image color profiles</li>
-      <li>Animated image formats</li>
-      <li>Correct HighDPI support</li>
-      <li>Print settings to position the image on the page</li>
+      <li>Applying image color profiles</li>
+      <li>Printing</li>
     </ul>
   </description>
   <url type="homepage">https://gitlab.gnome.org/Incubator/loupe</url>
@@ -41,7 +38,7 @@
   </provides>
 
   <translation type="gettext">@BIN_NAME@</translation>
-  <content_rating type="oars-1.1" />
+  <content_rating type="oars-1.1"/>
   <custom>
     <value key="GnomeSoftware::key-colors">[(208, 105, 167)]</value>
     <value key="Purism::form_factor">workstation</value>
@@ -56,10 +53,11 @@
   </categories>
 
   <releases>
-    <release version="44.0" date="2023-02-03">
+    <release version="44.0" date="2023-04-02">
       <description>
         <p>Initial release.</p>
       </description>
     </release>
   </releases>
 </component>
+
