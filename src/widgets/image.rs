@@ -558,6 +558,9 @@ mod imp {
 
             self.widget_dimensions.set((width, height));
             obj.configure_adjustments();
+
+            // Get potentially missing tiles for enlarged viewing area
+            obj.request_tiles();
         }
 
         // called when the widget content should be re-rendered
