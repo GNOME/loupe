@@ -999,6 +999,34 @@ impl LpImage {
         snapshot.to_paintable(None)
     }
 
+    pub fn print_data(&self, scale: f64) -> Option<gdk::Texture> {
+        let orientation = self.metadata().orientation();
+
+        let render_options = tiling::RenderOptions {
+            scaling_filter: gsk::ScalingFilter::Trilinear,
+            background_color: None,
+            scale_factor: 1,
+        };
+
+        let snapshot = gtk::Snapshot::new();
+
+        self.snapshot_rotate_mirror(
+            &snapshot,
+            -orientation.rotation as f32,
+            orientation.mirrored,
+        );
+
+        self.imp()
+            .frame_buffer
+            .load()
+            .add_to_snapshot(&snapshot, scale, &render_options);
+
+        let node = snapshot.to_node()?;
+        let renderer = self.root()?.renderer();
+
+        Some(renderer.render_texture(&node, None))
+    }
+
     fn mirrored(&self) -> bool {
         self.imp().mirrored.get()
     }

@@ -305,11 +305,6 @@ mod imp {
             self.status_page
                 .set_icon_name(Some(&format!("{}-symbolic", config::APP_ID)));
 
-            // Set help overlay
-            let builder = gtk::Builder::from_resource("/org/gnome/Loupe/gtk/help_overlay.ui");
-            let help_overlay = builder.object("help_overlay").unwrap();
-            obj.set_help_overlay(Some(&help_overlay));
-
             self.drop_target.set_types(&[gdk::FileList::static_type()]);
 
             // For callbacks, you will want to reference the GTK docs on

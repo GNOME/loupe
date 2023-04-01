@@ -29,7 +29,7 @@ use crate::deps::*;
 use crate::file_model::LpFileModel;
 use crate::util::gettext::*;
 use crate::util::{Direction, Position};
-use crate::widgets::{LpImage, LpImagePage, LpSlidingView};
+use crate::widgets::{LpImage, LpImagePage, LpPrint, LpSlidingView};
 
 use crate::util::spawn;
 use adw::prelude::*;
@@ -609,6 +609,17 @@ impl LpImageView {
     }
 
     pub fn print(&self) -> anyhow::Result<()> {
+        let image = self
+            .current_image()
+            .context("No current image for printing")?;
+
+        let root = self.root().context("Could not get root for widget")?;
+        let window = root
+            .downcast_ref::<gtk::Window>()
+            .context("Could not downcast to GtkWindow")?;
+
+        LpPrint::new(image, window.clone(), None, None).run();
+
         Ok(())
     }
 

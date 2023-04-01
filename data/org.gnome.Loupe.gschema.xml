@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<schemalist gettext-domain="loupe">
-	<schema id="org.gnome.Loupe" path="/org/gnome/Loupe/">
-	</schema>
-</schemalist>

@@ -22,5 +22,11 @@ row.property label.subtitle {
   margin: 16px;
   border-radius: 5px;
   outline: 2px solid white;
-  box-shadow: 0 0 10px rgba(0.4, 0.4, 0.4, 0.8);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 200);
+}
+
+lpprintpreview {
+  background-color: rgb(240, 240, 240);
+  border-radius: 4px;
+  box-shadow: 0 0 14px 1px black;
 }

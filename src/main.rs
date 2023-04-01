@@ -65,6 +65,9 @@ mod deps {
 use application::LpApplication;
 use deps::*;
 
+static GRESOURCE_BYTES: &[u8] =
+    gvdb_macros::include_gresource_from_dir!("/org/gnome/Loupe", "data/resources");
+
 fn main() -> glib::ExitCode {
     env_logger::Builder::from_default_env()
         .format_timestamp_millis()
@@ -74,9 +77,9 @@ fn main() -> glib::ExitCode {
     bindtextdomain("loupe", config::LOCALEDIR).unwrap();
     textdomain("loupe").unwrap();
 
-    let res = gio::Resource::load(config::PKGDATADIR.to_owned() + "/loupe.gresource")
-        .expect("Could not load resources");
-    gio::resources_register(&res);
+    gio::resources_register(
+        &gio::Resource::from_data(&glib::Bytes::from_static(GRESOURCE_BYTES)).unwrap(),
+    );
 
     LpApplication::new().run()
 }

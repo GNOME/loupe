@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <template class="LpPrint" parent="AdwWindow">
+    <property name="title" translatable="yes">Layout Image</property>
+    <property name="default-width">350</property>
+    <signal name="notify::orientation" handler="orientation_changed" swapped="yes" />
+    <property name="content">
+      <object class="GtkBox">
+        <property name="orientation">vertical</property>
+        <property name="spacing">12</property>
+        <child>
+          <object class="GtkShortcutController">
+            <property name="scope">managed</property>
+            <child>
+              <object class="GtkShortcut">
+                <property name="trigger">Escape|&lt;Ctrl&gt;w</property>
+                <property name="action">action(window.close)</property>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="AdwHeaderBar">
+            <child type="start">
+              <object class="GtkButton">
+                <property name="icon-name">go-previous-symbolic</property>
+                <property name="action-name">print.back</property>
+              </object>
+            </child>
+            <style>
+              <class name="flat" />
+            </style>
+          </object>
+        </child>
+        <child>
+          <object class="GtkBox">
+            <property name="orientation">vertical</property>
+            <property name="vexpand">true</property>
+            <property name="spacing">24</property>
+            <property name="margin-top">18</property>
+            <property name="margin-end">18</property>
+            <property name="margin-bottom">18</property>
+            <property name="margin-start">18</property>
+            <child>
+              <object class="LpPrintPreview" id="preview">
+                <property name="css-name">lpprintpreview</property>
+                <binding name="print">
+                  <constant>LpPrint</constant>
+                </binding>
+              </object>
+            </child>
+            <child>
+              <object class="GtkBox">
+                <property name="halign">center</property>
+                <property name="spacing">36</property>
+                <child>
+                  <object class="GtkBox">
+                    <style>
+                      <class name="linked" />
+                    </style>
+                    <child>
+                      <object class="GtkToggleButton">
+                        <property name="icon-name">page-orientation-portrait-symbolic</property>
+                        <property name="action-name">print.orientation</property>
+                        <property name="action-target">"portrait"</property>
+                        <property name="tooltip-text" translatable="yes">Portrait page orientation</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkToggleButton">
+                        <property name="icon-name">page-orientation-landscape-symbolic</property>
+                        <property name="action-name">print.orientation</property>
+                        <property name="action-target">"landscape"</property>
+                        <property name="tooltip-text" translatable="yes">Landscape page orientation</property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkBox">
+                    <style>
+                      <class name="linked" />
+                    </style>
+                    <child>
+                      <object class="GtkButton">
+                        <property name="icon-name">center-on-page-horizontal-symbolic</property>
+                        <property name="action-name">print.center-horizontally</property>
+                        <property name="tooltip-text" translatable="yes">Center image horizontally</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkButton">
+                        <property name="icon-name">center-on-page-vertical-symbolic</property>
+                        <property name="action-name">print.center-vertically</property>
+                        <property name="tooltip-text" translatable="yes">Center image vertically</property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
+            <child>
+              <object class="GtkListBox">
+                <property name="selection-mode">none</property>
+                <child>
+                  <object class="AdwActionRow">
+                    <property name="title" translatable="yes">Image Width</property>
+                    <child>
+                      <object class="GtkSpinButton" id="width">
+                        <property name="valign">center</property>
+                        <property name="max-width-chars">5</property>
+                        <signal name="value-changed" handler="width_changed" swapped="yes" />
+                      </object>
+                    </child>
+                  </object>
+                </child>
+                <child>
+                  <object class="AdwActionRow">
+                    <property name="title" translatable="yes">Image Scale</property>
+                    <child>
+                      <object class="GtkLabel" id="scale">
+                        <style>
+                          <class name="dim-label" />
+                        </style>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+                <child>
+                  <object class="AdwActionRow">
+                    <property name="title" translatable="yes">Left Margin</property>
+                    <child>
+                      <object class="GtkSpinButton" id="margin_left">
+                        <property name="valign">center</property>
+                        <property name="max-width-chars">5</property>
+                        <signal name="value-changed" handler="margin_left_changed" swapped="yes" />
+                      </object>
+                    </child>
+                  </object>
+                </child>
+                <child>
+                  <object class="AdwActionRow">
+                    <property name="title" translatable="yes">Top Margin</property>
+                    <child>
+                      <object class="GtkSpinButton" id="margin_top">
+                        <property name="valign">center</property>
+                        <property name="max-width-chars">5</property>
+                        <signal name="value-changed" handler="margin_top_changed" swapped="yes" />
+                      </object>
+                    </child>
+                  </object>
+                </child>
+                <child>
+                  <object class="AdwComboRow" id="unit">
+                    <property name="title" translatable="yes">Length Unit</property>
+                    <signal name="notify::selected-item" handler="unit_selected" swapped="yes" />
+                    <property name="model">
+                      <object class="GtkStringList">
+                        <items>
+                          <item>cm</item>
+                          <item>in</item>
+                          <item>px</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+                <style>
+                  <class name="boxed-list" />
+                </style>
+              </object>
+            </child>
+            <child>
+              <object class="GtkButton">
+                <property name="label" translatable="yes">Print</property>
+                <property name="action-name">print.print</property>
+                <property name="halign">center</property>
+                <property name="valign">end</property>
+                <property name="vexpand">true</property>
+                <property name="width-request">160</property>
+                <style>
+                  <class name="suggested-action" />
+                  <class name="pill" />
+                </style>
+              </object>
+            </child>
+          </object>
+        </child>
+      </object>
+    </property>
+  </template>
+</interface>

@@ -38,29 +38,8 @@ appstream_file = i18n.merge_file(
   install_dir: iv_datadir / 'metainfo'
 )
 
-# appstream_util = find_program('appstream-util', required: false)
-# if appstream_util.found()
-#   test('Validate appstream file', appstream_util,
-#     args: ['validate', appstream_file]
-#   )
-# endif
-
-install_data('org.gnome.Loupe.gschema.xml',
-  install_dir: iv_datadir / 'glib-2.0' / 'schemas'
-)
-
-compile_schemas = find_program('glib-compile-schemas', required: false)
-if compile_schemas.found()
-  test('Validate schema file', compile_schemas,
-    args: ['--strict', '--dry-run', meson.current_source_dir()]
-  )
-endif
-
-gnome.compile_resources('loupe',
-  'loupe.gresource.xml',
-  gresource_bundle: true,
-  install: true,
-  install_dir: iv_pkgdatadir,
-)
-
 subdir('icons')
+
+# Post install
+
+gnome.post_install()

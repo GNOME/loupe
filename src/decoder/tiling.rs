@@ -86,6 +86,11 @@ impl Tile {
         let area = round(&self.area().scale(zoom, zoom));
         let area_with_bleed = round(&self.area_with_bleed().scale(zoom, zoom));
 
+        if area_with_bleed.width() < 1. || area_with_bleed.height() < 1. {
+            log::warn!("Trying to draw image with dimensions smaller than 1");
+            return;
+        }
+
         // TODO: do not clip outer bounderies of the image
         snapshot.push_clip(&area);
         if let Some(background_color) = &options.background_color {
