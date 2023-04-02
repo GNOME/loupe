@@ -66,3 +66,9 @@ gnome.post_install(
   glib_compile_schemas: true,
   update_desktop_database: true,
 )
+
+meson.add_dist_script(
+  'build-aux/meson/dist-vendor.sh',
+  join_paths(meson.project_build_root(), 'meson-dist', meson.project_name() + '-' + meson.project_version()),
+  meson.source_root()
+)
