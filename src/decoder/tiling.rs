@@ -88,7 +88,9 @@ impl Tile {
 
         // TODO: do not clip outer bounderies of the image
         snapshot.push_clip(&area);
-        snapshot.append_color(&gdk::RGBA::new(0.118, 0.118, 0.118, 1.), &area);
+        if let Some(background_color) = &options.background_color {
+            snapshot.append_color(background_color, &area);
+        }
         snapshot.append_scaled_texture(&self.texture, options.scaling_filter, &area_with_bleed);
         snapshot.pop();
     }
@@ -173,6 +175,7 @@ impl Default for TiledImage {
 pub struct RenderOptions {
     pub scaling_filter: gsk::ScalingFilter,
     pub scale_factor: i32,
+    pub background_color: Option<gdk::RGBA>,
 }
 
 impl TiledImage {
@@ -402,6 +405,8 @@ impl RectExt for graphene::Rect {
     }
 }
 
+/// We always store [`FrameBuffer`]s in an [`ArcSwap`].
+/// This trait adds convenience functions for this.
 pub trait FrameBufferExt {
     fn push(&self, tile: Tile);
     fn push_frame(&self, tile: Tile, dimensions: Coordinates, delay: Duration);

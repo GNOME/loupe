@@ -173,3 +173,28 @@ pub enum Gesture {
     Rotate(f64),
     Scale,
 }
+
+fn srgb_linear(v: f32) -> f32 {
+    if v <= 0.04045 {
+        v / 12.92
+    } else {
+        ((v + 0.055) / 1.055).powf(2.4)
+    }
+}
+
+/// Relative luminance <https://www.w3.org/WAI/WCAG21/Understanding/contrast-minimum.html#dfn-relative-luminance>
+fn relative_luminance(color: &gdk::RGBA) -> f32 {
+    0.2126 * srgb_linear(color.red())
+        + 0.7152 * srgb_linear(color.green())
+        + 0.0722 * srgb_linear(color.blue())
+}
+
+/// Contrast ratio <https://www.w3.org/WAI/WCAG21/Understanding/contrast-minimum.html#dfn-contrast-ratio>
+pub fn contrast_ratio(color1: &gdk::RGBA, color2: &gdk::RGBA) -> f32 {
+    let la = relative_luminance(color1);
+    let lb = relative_luminance(color2);
+    let l1 = f32::max(la, lb);
+    let l2 = f32::min(la, lb);
+
+    (l1 + 0.05) / (l2 + 0.05)
+}

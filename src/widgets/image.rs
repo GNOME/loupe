@@ -46,6 +46,26 @@ use std::cell::{Cell, RefCell};
 use std::path::{Path, PathBuf};
 use std::sync::Arc;
 
+/// Default background color around images and behind transparent images
+/// `#242424`
+static BACKGROUND_COLOR_DEFAULT: Lazy<gdk::RGBA> =
+    Lazy::new(|| gdk::RGBA::new(36. / 255., 36. / 255., 36. / 255., 1.));
+/// Background color if the default does not give enough contrast for transparent images
+/// `#e8e7e6`
+static BACKGROUND_COLOR_ALTERNATE: Lazy<gdk::RGBA> =
+    Lazy::new(|| gdk::RGBA::new(232. / 255., 231. / 255., 230. / 255., 1.));
+
+/// Consider pixels with less than 70% opacity as being transparent
+static BACKGROUND_GUESS_TRANSPRAENT_PIXEL_THRESHOLD: u8 = (0.70 * 255.) as u8;
+/// Consider 3.5:1 contrast and worse to be bad contrast for a pixel
+static BACKGROUND_GUESS_LOW_CONTRAST_RATIO: f32 = 3.5;
+/// Consider images with more than 10% transparent pixels as transparent
+static BACKGROUND_GUESS_TRANSPRAENT_IMAGE_THRESHOLD: f64 = 0.10;
+/// Consider transparent images with more than 90% pixels bad contrast as bad contrast
+///
+/// Bad contrast image will use the `BACKGROUND_COLOR_ALTERNATE`.
+static BACKGROUND_GUESS_LOW_CONTRAST_TRHESHOLD: f64 = 0.90;
+
 /// Milliseconds
 const ZOOM_ANIMATION_DURATION: u32 = 200;
 /// Milliseconds
@@ -94,6 +114,7 @@ mod imp {
         pub(super) frame_buffer: Arc<ArcSwap<tiling::FrameBuffer>>,
         pub(super) decoder: RefCell<Option<Arc<Decoder>>>,
         pub(super) format: RefCell<Option<decoder::ImageFormat>>,
+        pub(super) background_color: RefCell<Option<gdk::RGBA>>,
 
         /// Set to true when image is ready for displaying
         pub(super) is_loaded: Cell<bool>,
@@ -590,11 +611,18 @@ mod imp {
             let render_options = tiling::RenderOptions {
                 scaling_filter,
                 scale_factor: widget.scale_factor(),
+                background_color: Some(widget.background_color()),
             };
 
             // Operations on snapshots are coordinate transformations
             // It might help to read the following code from bottom to top
             snapshot.save();
+
+            // Add background
+            snapshot.append_color(
+                &widget.background_color(),
+                &graphene::Rect::new(0., 0., widget_width as f32, widget_height as f32),
+            );
 
             // Apply the scrolling position to the image
             if let Some(adj) = self.hadjustment.borrow().as_ref() {
@@ -771,7 +799,7 @@ impl LpImage {
             }
             DecoderUpdate::Redraw => {
                 if !self.is_loaded() {
-                    self.imp().is_loaded.set(true);
+                    imp.is_loaded.set(true);
                     self.notify("is-loaded");
                 }
 
@@ -779,9 +807,12 @@ impl LpImage {
                 imp.frame_buffer.rcu(|tiles| {
                     let mut new_tiles = (**tiles).clone();
                     // TODO: Use an area larger than the viewport
-                    new_tiles.cleanup(self.imp().zoom_target.get(), self.viewport());
+                    new_tiles.cleanup(imp.zoom_target.get(), self.viewport());
                     new_tiles
                 });
+                if self.imp().background_color.borrow().is_none() {
+                    self.set_background_color(self.background_color_guess());
+                }
             }
             DecoderUpdate::Error(err) => {
                 self.set_error(err);
@@ -947,6 +978,7 @@ impl LpImage {
         let render_options = tiling::RenderOptions {
             scaling_filter: gsk::ScalingFilter::Trilinear,
             scale_factor: self.scale_factor(),
+            background_color: Some(self.background_color()),
         };
 
         let snapshot = gtk::Snapshot::new();
@@ -1587,5 +1619,99 @@ impl LpImage {
 
         let scale = self.scale_factor() as f32;
         (number * scale).round() / scale
+    }
+
+    /// Returns the background color that should be used with this image
+    ///
+    /// Returns the default color if no one has been guessed yet
+    pub fn background_color(&self) -> gdk::RGBA {
+        (*self.imp().background_color.borrow()).unwrap_or(*BACKGROUND_COLOR_DEFAULT)
+    }
+
+    pub fn set_background_color(&self, color: Option<gdk::RGBA>) {
+        self.imp().background_color.replace(color);
+    }
+
+    /// Returns a background color that should give suitable contrast with transparent images
+    ///
+    /// For non-transparent images this always returns `BACKGROUND_COLOR_DEFAULT`
+    pub fn background_color_guess(&self) -> Option<gdk::RGBA> {
+        let (width, height) = self.original_dimensions();
+        let max_size = i32::max(width, height);
+
+        // Only use max 200px size scaled image for analysis
+        let zoom = f64::min(1., 200. / max_size as f64);
+
+        let snapshot = gtk::Snapshot::new();
+        let render_options = tiling::RenderOptions {
+            scaling_filter: gsk::ScalingFilter::Nearest,
+            background_color: None,
+            scale_factor: 1,
+        };
+        self.imp()
+            .frame_buffer
+            .load()
+            .add_to_snapshot(&snapshot, zoom, &render_options);
+
+        let node = snapshot.to_node()?;
+
+        let renderer = self.root()?.renderer();
+        if !renderer.is_realized() {
+            return None;
+        }
+
+        let texture = renderer.render_texture(node, None);
+
+        let mut downloader = gdk::TextureDownloader::new(&texture);
+        downloader.set_format(gdk::MemoryFormat::R8g8b8a8);
+        let (bytes, stride) = downloader.download_bytes();
+
+        let mut bytes_iter = bytes.iter();
+        let mut transparent = 0;
+        let mut bad_contrast = 0;
+        'img: loop {
+            for _ in 0..dbg!(texture.width()) {
+                let Some(r) = bytes_iter.next() else { break 'img; };
+                let Some(g) = bytes_iter.next() else { break 'img; };
+                let Some(b) = bytes_iter.next() else { break 'img; };
+                let Some(a) = bytes_iter.next() else { break 'img; };
+
+                // 70% transparency
+                if dbg!(*a) < BACKGROUND_GUESS_TRANSPRAENT_PIXEL_THRESHOLD {
+                    transparent += 1;
+                } else {
+                    let fg = gdk::RGBA::new(
+                        *r as f32 / 255.,
+                        *g as f32 / 255.,
+                        *b as f32 / 255.,
+                        *a as f32 / 255.,
+                    );
+                    let contrast = crate::util::contrast_ratio(&BACKGROUND_COLOR_DEFAULT, &fg);
+
+                    if contrast < BACKGROUND_GUESS_LOW_CONTRAST_RATIO {
+                        bad_contrast += 1;
+                    }
+                }
+            }
+
+            let advance_by = stride - 4 * texture.width() as usize;
+
+            if dbg!(advance_by) > 0 {
+                bytes_iter.nth(advance_by - 1);
+            }
+        }
+
+        let n_pixels = texture.width() * texture.height();
+
+        let part_transparent = transparent as f64 / n_pixels as f64;
+        let part_bad_contrast = bad_contrast as f64 / (n_pixels as f64 - transparent as f64);
+
+        if dbg!(part_transparent) > BACKGROUND_GUESS_TRANSPRAENT_IMAGE_THRESHOLD
+            && dbg!(part_bad_contrast) > BACKGROUND_GUESS_LOW_CONTRAST_TRHESHOLD
+        {
+            Some(*BACKGROUND_COLOR_ALTERNATE)
+        } else {
+            Some(*BACKGROUND_COLOR_DEFAULT)
+        }
     }
 }
