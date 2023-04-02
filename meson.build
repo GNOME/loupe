@@ -52,7 +52,6 @@ conf.set('localedir', iv_localedir)
 conf.set('pkgdatadir', iv_pkgdatadir)
 
 subdir('data')
-subdir('help')
 subdir('src')
 subdir('po')
 
