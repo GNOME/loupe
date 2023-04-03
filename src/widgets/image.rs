@@ -1670,14 +1670,14 @@ impl LpImage {
         let mut transparent = 0;
         let mut bad_contrast = 0;
         'img: loop {
-            for _ in 0..dbg!(texture.width()) {
+            for _ in 0..texture.width() {
                 let Some(r) = bytes_iter.next() else { break 'img; };
                 let Some(g) = bytes_iter.next() else { break 'img; };
                 let Some(b) = bytes_iter.next() else { break 'img; };
                 let Some(a) = bytes_iter.next() else { break 'img; };
 
                 // 70% transparency
-                if dbg!(*a) < BACKGROUND_GUESS_TRANSPRAENT_PIXEL_THRESHOLD {
+                if *a < BACKGROUND_GUESS_TRANSPRAENT_PIXEL_THRESHOLD {
                     transparent += 1;
                 } else {
                     let fg = gdk::RGBA::new(
@@ -1696,7 +1696,7 @@ impl LpImage {
 
             let advance_by = stride - 4 * texture.width() as usize;
 
-            if dbg!(advance_by) > 0 {
+            if advance_by > 0 {
                 bytes_iter.nth(advance_by - 1);
             }
         }
@@ -1706,8 +1706,8 @@ impl LpImage {
         let part_transparent = transparent as f64 / n_pixels as f64;
         let part_bad_contrast = bad_contrast as f64 / (n_pixels as f64 - transparent as f64);
 
-        if dbg!(part_transparent) > BACKGROUND_GUESS_TRANSPRAENT_IMAGE_THRESHOLD
-            && dbg!(part_bad_contrast) > BACKGROUND_GUESS_LOW_CONTRAST_TRHESHOLD
+        if part_transparent > BACKGROUND_GUESS_TRANSPRAENT_IMAGE_THRESHOLD
+            && part_bad_contrast > BACKGROUND_GUESS_LOW_CONTRAST_TRHESHOLD
         {
             Some(*BACKGROUND_COLOR_ALTERNATE)
         } else {
