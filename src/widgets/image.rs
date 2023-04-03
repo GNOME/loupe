@@ -810,8 +810,14 @@ impl LpImage {
                     new_tiles.cleanup(imp.zoom_target.get(), self.viewport());
                     new_tiles
                 });
-                if self.imp().background_color.borrow().is_none() {
-                    self.set_background_color(self.background_color_guess());
+                if imp.background_color.borrow().is_none() {
+                    spawn!(glib::clone!(@weak self as obj => async move {
+                        let color = obj.background_color_guess().await;
+                        obj.set_background_color(color);
+                        if obj.is_mapped() {
+                            obj.queue_draw();
+                        }
+                    }));
                 }
             }
             DecoderUpdate::Error(err) => {
@@ -1635,7 +1641,16 @@ impl LpImage {
     /// Returns a background color that should give suitable contrast with transparent images
     ///
     /// For non-transparent images this always returns `BACKGROUND_COLOR_DEFAULT`
-    pub fn background_color_guess(&self) -> Option<gdk::RGBA> {
+    pub async fn background_color_guess(&self) -> Option<gdk::RGBA> {
+        // Shortcut for formats that don't support transparency
+        if !self
+            .format()
+            .map_or(true, |x| x.is_potentially_transparent())
+        {
+            log::debug!("This format does not support transparency");
+            return Some(*BACKGROUND_COLOR_DEFAULT);
+        }
+
         let (width, height) = self.original_dimensions();
         let max_size = i32::max(width, height);
 
@@ -1660,58 +1675,64 @@ impl LpImage {
             return None;
         }
 
+        // Render the small version of the image and download to RAM
         let texture = renderer.render_texture(node, None);
-
         let mut downloader = gdk::TextureDownloader::new(&texture);
         downloader.set_format(gdk::MemoryFormat::R8g8b8a8);
         let (bytes, stride) = downloader.download_bytes();
 
-        let mut bytes_iter = bytes.iter();
-        let mut transparent = 0;
-        let mut bad_contrast = 0;
-        'img: loop {
-            for _ in 0..texture.width() {
-                let Some(r) = bytes_iter.next() else { break 'img; };
-                let Some(g) = bytes_iter.next() else { break 'img; };
-                let Some(b) = bytes_iter.next() else { break 'img; };
-                let Some(a) = bytes_iter.next() else { break 'img; };
+        gio::spawn_blocking(move || {
+            let mut bytes_iter = bytes.iter();
+            // Number of transparent pixels
+            let mut transparent = 0;
+            // Number of non-transparent pixels with bad contrast
+            let mut bad_contrast = 0;
+            'img: loop {
+                for _ in 0..texture.width() {
+                    let Some(r) = bytes_iter.next() else { break 'img; };
+                    let Some(g) = bytes_iter.next() else { break 'img; };
+                    let Some(b) = bytes_iter.next() else { break 'img; };
+                    let Some(a) = bytes_iter.next() else { break 'img; };
 
-                // 70% transparency
-                if *a < BACKGROUND_GUESS_TRANSPRAENT_PIXEL_THRESHOLD {
-                    transparent += 1;
-                } else {
-                    let fg = gdk::RGBA::new(
-                        *r as f32 / 255.,
-                        *g as f32 / 255.,
-                        *b as f32 / 255.,
-                        *a as f32 / 255.,
-                    );
-                    let contrast = crate::util::contrast_ratio(&BACKGROUND_COLOR_DEFAULT, &fg);
+                    // 70% transparency
+                    if *a < BACKGROUND_GUESS_TRANSPRAENT_PIXEL_THRESHOLD {
+                        transparent += 1;
+                    } else {
+                        let fg = gdk::RGBA::new(
+                            *r as f32 / 255.,
+                            *g as f32 / 255.,
+                            *b as f32 / 255.,
+                            *a as f32 / 255.,
+                        );
+                        let contrast = crate::util::contrast_ratio(&BACKGROUND_COLOR_DEFAULT, &fg);
 
-                    if contrast < BACKGROUND_GUESS_LOW_CONTRAST_RATIO {
-                        bad_contrast += 1;
+                        if contrast < BACKGROUND_GUESS_LOW_CONTRAST_RATIO {
+                            bad_contrast += 1;
+                        }
                     }
+                }
+
+                let advance_by = stride - 4 * texture.width() as usize;
+
+                if advance_by > 0 {
+                    bytes_iter.nth(advance_by - 1);
                 }
             }
 
-            let advance_by = stride - 4 * texture.width() as usize;
+            let n_pixels = texture.width() * texture.height();
 
-            if advance_by > 0 {
-                bytes_iter.nth(advance_by - 1);
+            let part_transparent = transparent as f64 / n_pixels as f64;
+            let part_bad_contrast = bad_contrast as f64 / (n_pixels as f64 - transparent as f64);
+
+            if part_transparent > BACKGROUND_GUESS_TRANSPRAENT_IMAGE_THRESHOLD
+                && part_bad_contrast > BACKGROUND_GUESS_LOW_CONTRAST_TRHESHOLD
+            {
+                Some(*BACKGROUND_COLOR_ALTERNATE)
+            } else {
+                Some(*BACKGROUND_COLOR_DEFAULT)
             }
-        }
-
-        let n_pixels = texture.width() * texture.height();
-
-        let part_transparent = transparent as f64 / n_pixels as f64;
-        let part_bad_contrast = bad_contrast as f64 / (n_pixels as f64 - transparent as f64);
-
-        if part_transparent > BACKGROUND_GUESS_TRANSPRAENT_IMAGE_THRESHOLD
-            && part_bad_contrast > BACKGROUND_GUESS_LOW_CONTRAST_TRHESHOLD
-        {
-            Some(*BACKGROUND_COLOR_ALTERNATE)
-        } else {
-            Some(*BACKGROUND_COLOR_DEFAULT)
-        }
+        })
+        .await
+        .ok()?
     }
 }

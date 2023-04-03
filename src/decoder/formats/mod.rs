@@ -31,6 +31,13 @@ impl ImageFormat {
     pub fn is_svg(&self) -> bool {
         matches!(self, Self::Svg)
     }
+
+    pub fn is_potentially_transparent(&self) -> bool {
+        !matches!(
+            self,
+            Self::ImageRs(image_rs::ImageFormat::Bmp) | Self::ImageRs(image_rs::ImageFormat::Jpeg)
+        )
+    }
 }
 
 impl std::fmt::Display for ImageFormat {
