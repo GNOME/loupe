@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-16 14:20+0000\n"
-"PO-Revision-Date: 2023-03-18 04:27+0330\n"
+"POT-Creation-Date: 2023-04-02 20:03+0000\n"
+"PO-Revision-Date: 2023-04-03 16:21+0330\n"
 "Last-Translator: Danial Behzadi <dani.behzi@ubuntu.com>\n"
 "Language-Team: Persian <fa@li.org>\n"
 "Language: fa\n"
@@ -19,8 +19,8 @@ msgstr ""
 
 #. If the file exists, get display name
 #: data/org.gnome.Loupe.desktop.in.in:3
-#: data/org.gnome.Loupe.metainfo.xml.in.in:6 data/gtk/window.ui:63
-#: src/application.rs:193 src/window.rs:676 src/window.rs:682
+#: data/org.gnome.Loupe.metainfo.xml.in.in:6 data/gtk/window.ui:59
+#: src/application.rs:187 src/window.rs:676 src/window.rs:682
 msgid "Loupe"
 msgstr "لوپ"
 
@@ -42,32 +42,20 @@ msgid ""
 "A simple image viewer which allows you to browse through your images and "
 "inspect their metadata."
 msgstr ""
-"نمایشگر تصویری ساده که می‌گذارد تصویرهایتان را مرور کرده و فراداده‌هایشان "
-"را بررسی کنید."
+"نمایشگر تصویری ساده که می‌گذارد تصویرهایتان را مرور کرده و فراداده‌هایشان را "
+"بررسی کنید."
 
 #: data/org.gnome.Loupe.metainfo.xml.in.in:11
 msgid "The following features are not available yet"
 msgstr "ویژگی‌های زیر هنوز موجود نیستند"
 
 #: data/org.gnome.Loupe.metainfo.xml.in.in:13
-msgid "Correctly showing SVGs at every zoom-level"
-msgstr "نمایش درست SVGها در هر سطح بزرگ‌نمایی"
+msgid "Applying image color profiles"
+msgstr "اعمال کردن نمایه‌های رنگی تصویر"
 
 #: data/org.gnome.Loupe.metainfo.xml.in.in:14
-msgid "Interpreting image color profiles"
-msgstr "تفسیر کردن نمایه‌های رنگی تصویر"
-
-#: data/org.gnome.Loupe.metainfo.xml.in.in:15
-msgid "Animated image formats"
-msgstr "قالب‌های تصویر پویا"
-
-#: data/org.gnome.Loupe.metainfo.xml.in.in:16
-msgid "Correct HighDPI support"
-msgstr "پشتیبانی درست از تفکیک بالا"
-
-#: data/org.gnome.Loupe.metainfo.xml.in.in:17
-msgid "Print settings to position the image on the page"
-msgstr "تنظمیات چاپ برای قرارگیری تصویر روی صفحه"
+msgid "Printing"
+msgstr "چاپ کردن"
 
 #: data/gtk/help_overlay.ui:11
 msgctxt "shortcut window"
@@ -258,13 +246,13 @@ msgstr "_تنظیم به عنوان پس زمینه…"
 
 #: data/gtk/image_page.ui:55
 msgid "Could not Load Image"
-msgstr "نتوانست تصویر را بار کند."
+msgstr "نتوانست تصویر را بار کند"
 
-#: data/gtk/image_page.ui:82 data/gtk/window.ui:115
+#: data/gtk/image_page.ui:88 data/gtk/window.ui:111
 msgid "Rotate Left"
 msgstr "چرخش به چپ"
 
-#: data/gtk/image_page.ui:93 data/gtk/window.ui:126
+#: data/gtk/image_page.ui:99 data/gtk/window.ui:122
 msgid "Rotate Right"
 msgstr "چرخش به راست"
 
@@ -357,55 +345,51 @@ msgid "_Open…"
 msgstr "_گشودن…"
 
 #: data/gtk/window.ui:46
-msgid "_Help"
-msgstr "_راهنما"
-
-#: data/gtk/window.ui:50
 msgid "_Keyboard Shortcuts"
 msgstr "میان‌برهای _صفحه‌کلید"
 
-#: data/gtk/window.ui:54
+#: data/gtk/window.ui:50
 msgid "_About Loupe"
 msgstr "_دربارهٔ لوپ"
 
-#: data/gtk/window.ui:94
+#: data/gtk/window.ui:90
 msgid "Copy to Clipboard"
 msgstr "رونوشت در تخته‌گیره"
 
-#: data/gtk/window.ui:101
+#: data/gtk/window.ui:97
 msgid "Move to Trash"
 msgstr "جابه‌جایی به زباله‌دان"
 
-#: data/gtk/window.ui:107
+#: data/gtk/window.ui:103
 msgid "Main Menu"
 msgstr "فهرست اصلی"
 
-#: data/gtk/window.ui:141
+#: data/gtk/window.ui:137
 msgid "Image Properties"
 msgstr "ویژگی‌های تصویر"
 
-#: data/gtk/window.ui:161
+#: data/gtk/window.ui:157
 msgid "View Images"
 msgstr "دیدن تصویرها"
 
-#: data/gtk/window.ui:162
+#: data/gtk/window.ui:158
 msgid "Drag and drop images here"
 msgstr "تصویرها را این‌جا کشیده و رها کنید"
 
-#: data/gtk/window.ui:166
+#: data/gtk/window.ui:162
 msgid "_Open File…"
 msgstr "_گشودن پرونده…"
 
-#: src/application.rs:196
+#: src/application.rs:190
 msgid "The Loupe Team"
 msgstr "گروه لوپ"
 
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/application.rs:205
+#: src/application.rs:199
 msgid "translator-credits"
 msgstr "دانیال بهزادی <dani.behzi@gmail.com>"
 
-#: src/application.rs:206
+#: src/application.rs:200
 msgid "Copyright © 2020–2023 Christopher Davis et al."
 msgstr "حف رونوشت © ۲۰۲۰–۲۰۲۳ کریستوفر دیویس و همکاران."
 
@@ -443,19 +427,19 @@ msgstr "1\\u{2215}{}\\u{202F}ث"
 msgid "{}\\u{202F}mm"
 msgstr "{}\\u{202F}م‌م"
 
-#: src/widgets/image.rs:652
+#: src/widgets/image.rs:720
 msgid "File does not exist"
 msgstr "پرونده وجود ندارد"
 
-#: src/widgets/image_view.rs:574
+#: src/widgets/image_view.rs:558
 msgid "Failed to open new background image"
 msgstr "شکست در گشودن تصویر پس‌زمینهٔ جدید"
 
-#: src/widgets/image_view.rs:591
+#: src/widgets/image_view.rs:575
 msgid "Set as background."
 msgstr "تنظیم به عنوان پس زمینه."
 
-#: src/widgets/image_view.rs:598
+#: src/widgets/image_view.rs:582
 msgid "Could not set background."
 msgstr "نتوانست پس‌زمینه را تنظیم کند."
 
@@ -506,3 +490,18 @@ msgstr "حذف"
 #: src/window.rs:559
 msgid "Failed to delete image"
 msgstr "شکست در حذف تصویر"
+
+#~ msgid "Correctly showing SVGs at every zoom-level"
+#~ msgstr "نمایش درست SVGها در هر سطح بزرگ‌نمایی"
+
+#~ msgid "Animated image formats"
+#~ msgstr "قالب‌های تصویر پویا"
+
+#~ msgid "Correct HighDPI support"
+#~ msgstr "پشتیبانی درست از تفکیک بالا"
+
+#~ msgid "Print settings to position the image on the page"
+#~ msgstr "تنظمیات چاپ برای قرارگیری تصویر روی صفحه"
+
+#~ msgid "_Help"
+#~ msgstr "_راهنما"
