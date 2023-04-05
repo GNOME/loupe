@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-14 04:10+0000\n"
-"PO-Revision-Date: 2023-03-14 08:09+0100\n"
+"POT-Creation-Date: 2023-04-02 20:03+0000\n"
+"PO-Revision-Date: 2023-04-02 22:31+0200\n"
 "Last-Translator: Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "Language: sv\n"
@@ -20,8 +20,8 @@ msgstr ""
 
 #. If the file exists, get display name
 #: data/org.gnome.Loupe.desktop.in.in:3
-#: data/org.gnome.Loupe.metainfo.xml.in.in:6 data/gtk/window.ui:63
-#: src/application.rs:193 src/window.rs:676 src/window.rs:682
+#: data/org.gnome.Loupe.metainfo.xml.in.in:6 data/gtk/window.ui:59
+#: src/application.rs:187 src/window.rs:676 src/window.rs:682
 msgid "Loupe"
 msgstr "Loupe"
 
@@ -50,24 +50,12 @@ msgid "The following features are not available yet"
 msgstr "Följande funktionalitet är inte ännu tillgänglig"
 
 #: data/org.gnome.Loupe.metainfo.xml.in.in:13
-msgid "Correctly showing SVGs at every zoom-level"
-msgstr "Korrekt visande av SVG-bilder på alla zoomnivåer"
+msgid "Applying image color profiles"
+msgstr "Tillämpar färgprofiler för bilder"
 
 #: data/org.gnome.Loupe.metainfo.xml.in.in:14
-msgid "Interpreting image color profiles"
-msgstr "Tolkning av färgprofiler för bilder"
-
-#: data/org.gnome.Loupe.metainfo.xml.in.in:15
-msgid "Animated image formats"
-msgstr "Animerade bildformat"
-
-#: data/org.gnome.Loupe.metainfo.xml.in.in:16
-msgid "Correct HighDPI support"
-msgstr "Korrekt HighDPI-stöd"
-
-#: data/org.gnome.Loupe.metainfo.xml.in.in:17
-msgid "Print settings to position the image on the page"
-msgstr "Utskriftsinställningar för att positionera bilden på sidan"
+msgid "Printing"
+msgstr "Utskrift"
 
 #: data/gtk/help_overlay.ui:11
 msgctxt "shortcut window"
@@ -260,11 +248,11 @@ msgstr "_Ange som bakgrund…"
 msgid "Could not Load Image"
 msgstr "Kunde inte läsa in bild"
 
-#: data/gtk/image_page.ui:82 data/gtk/window.ui:115
+#: data/gtk/image_page.ui:88 data/gtk/window.ui:111
 msgid "Rotate Left"
 msgstr "Rotera åt vänster"
 
-#: data/gtk/image_page.ui:93 data/gtk/window.ui:126
+#: data/gtk/image_page.ui:99 data/gtk/window.ui:122
 msgid "Rotate Right"
 msgstr "Rotera åt höger"
 
@@ -357,51 +345,47 @@ msgid "_Open…"
 msgstr "Ö_ppna…"
 
 #: data/gtk/window.ui:46
-msgid "_Help"
-msgstr "_Hjälp"
-
-#: data/gtk/window.ui:50
 msgid "_Keyboard Shortcuts"
 msgstr "_Tangentbordsgenvägar"
 
-#: data/gtk/window.ui:54
+#: data/gtk/window.ui:50
 msgid "_About Loupe"
 msgstr "_Om Loupe"
 
-#: data/gtk/window.ui:94
+#: data/gtk/window.ui:90
 msgid "Copy to Clipboard"
 msgstr "Kopiera till urklipp"
 
-#: data/gtk/window.ui:101
+#: data/gtk/window.ui:97
 msgid "Move to Trash"
 msgstr "Flytta till papperskorgen"
 
-#: data/gtk/window.ui:107
+#: data/gtk/window.ui:103
 msgid "Main Menu"
 msgstr "Huvudmeny"
 
-#: data/gtk/window.ui:141
+#: data/gtk/window.ui:137
 msgid "Image Properties"
 msgstr "Bildegenskaper"
 
-#: data/gtk/window.ui:161
+#: data/gtk/window.ui:157
 msgid "View Images"
 msgstr "Visa bilder"
 
-#: data/gtk/window.ui:162
+#: data/gtk/window.ui:158
 msgid "Drag and drop images here"
 msgstr "Dra och släpp bilder här"
 
-#: data/gtk/window.ui:166
+#: data/gtk/window.ui:162
 msgid "_Open File…"
 msgstr "Ö_ppna fil…"
 
-#: src/application.rs:196
+#: src/application.rs:190
 msgid "The Loupe Team"
 msgstr "Loupe-gruppen"
 
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/application.rs:205
+#: src/application.rs:199
 msgid "translator-credits"
 msgstr ""
 "Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
@@ -409,7 +393,7 @@ msgstr ""
 "Skicka synpunkter på översättningen till\n"
 "<tp-sv@listor.tp-sv.se>."
 
-#: src/application.rs:206
+#: src/application.rs:200
 msgid "Copyright © 2020–2023 Christopher Davis et al."
 msgstr "Copyright © 2020–2023 Christopher Davis med flera"
 
@@ -447,19 +431,19 @@ msgstr "1\\u{2215}{}\\u{202F}s"
 msgid "{}\\u{202F}mm"
 msgstr "{}\\u{202F}mm"
 
-#: src/widgets/image.rs:652
+#: src/widgets/image.rs:720
 msgid "File does not exist"
 msgstr "Filen finns inte"
 
-#: src/widgets/image_view.rs:574
+#: src/widgets/image_view.rs:558
 msgid "Failed to open new background image"
 msgstr "Misslyckades med att öppna ny bakgrundsbild"
 
-#: src/widgets/image_view.rs:591
+#: src/widgets/image_view.rs:575
 msgid "Set as background."
 msgstr "Ange som bakgrund."
 
-#: src/widgets/image_view.rs:598
+#: src/widgets/image_view.rs:582
 msgid "Could not set background."
 msgstr "Kunde inte ställa in bakgrund."
 
@@ -510,6 +494,21 @@ msgstr "Ta bort"
 #: src/window.rs:559
 msgid "Failed to delete image"
 msgstr "Misslyckades med att ta bort bild"
+
+#~ msgid "Correctly showing SVGs at every zoom-level"
+#~ msgstr "Korrekt visande av SVG-bilder på alla zoomnivåer"
+
+#~ msgid "Animated image formats"
+#~ msgstr "Animerade bildformat"
+
+#~ msgid "Correct HighDPI support"
+#~ msgstr "Korrekt HighDPI-stöd"
+
+#~ msgid "Print settings to position the image on the page"
+#~ msgstr "Utskriftsinställningar för att positionera bilden på sidan"
+
+#~ msgid "_Help"
+#~ msgstr "_Hjälp"
 
 #~ msgid "File Type"
 #~ msgstr "Filtyp"
