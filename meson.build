@@ -8,8 +8,8 @@ project('loupe', 'rust',
 i18n = import('i18n')
 gnome = import('gnome')
 
-dependency('gtk4', version: '>=4.10')
-dependency('libadwaita-1', version: '>=1.3')
+dependency('gtk4', version: '>=4.11.1')
+dependency('libadwaita-1', version: '>=1.3.0')
 dependency('gweather4', version: '>=4.0.0')
 dependency('libheif', version: '>=1.14.2')
 
