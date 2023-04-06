@@ -1,4 +1,4 @@
-40.1
+44.1
 =======
 Bugfix release after initial feedback:
  - Bump GTK dependency to 4.11.1 because of required fixes for scaled texture
@@ -6,7 +6,7 @@ Bugfix release after initial feedback:
  - #115 Fix WebP support for still images
  - #115 Fix not detecting HEIC files
 
-40.0
+44.0
 =======
 
 Initial release
