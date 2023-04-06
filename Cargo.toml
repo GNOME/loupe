@@ -14,7 +14,6 @@ anyhow = { version = "1.0.66", features = ["backtrace"] }
 arc-swap = "1.6.0"
 env_logger = "0.10.0"
 futures = "0.3.25"
-gtk-macros = "0.3.0"
 indexmap = "1.9.2"
 kamadak-exif = "0.5.5"
 libgweather = "4.2.0"

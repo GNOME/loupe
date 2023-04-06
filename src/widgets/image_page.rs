@@ -24,11 +24,11 @@
 use crate::deps::*;
 use crate::widgets::LpImage;
 
+use crate::util::spawn;
 use adw::subclass::prelude::*;
 use glib::clone;
 use gtk::prelude::*;
 use gtk::CompositeTemplate;
-use gtk_macros::spawn;
 use once_cell::sync::Lazy;
 
 use std::path::{Path, PathBuf};
@@ -155,7 +155,7 @@ impl LpImagePage {
 
         obj.imp().image.set_file(&file);
 
-        spawn!(clone!(@weak obj, @strong path => async move {
+        spawn(clone!(@weak obj, @strong path => async move {
             let imp = obj.imp();
             imp.image.load(&path).await;
         }));

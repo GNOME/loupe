@@ -31,6 +31,7 @@ use crate::i18n::*;
 use crate::util::{Direction, Position};
 use crate::widgets::{LpImage, LpImagePage, LpSlidingView};
 
+use crate::util::spawn;
 use adw::prelude::*;
 use adw::subclass::prelude::*;
 use anyhow::Context;
@@ -40,7 +41,6 @@ use ashpd::Error;
 use ashpd::WindowIdentifier;
 use glib::clone;
 use gtk::CompositeTemplate;
-use gtk_macros::spawn;
 use once_cell::sync::Lazy;
 
 use std::cell::{Cell, RefCell};
@@ -268,7 +268,7 @@ impl LpImageView {
         // List other files in directory
         if let Some(directory) = directory {
             let path = path.to_path_buf();
-            spawn!(glib::clone!(@weak self as obj, @strong path => async move {
+            spawn(glib::clone!(@weak self as obj, @strong path => async move {
                 if let Err(err) = obj.model().load_directory(directory).await {
                     log::warn!("Failed to load directory: {err}");
                     obj.activate_action("win.show-toast", Some(&(err.to_string(), 1).to_variant()))

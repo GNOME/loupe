@@ -35,10 +35,10 @@ use crate::i18n::i18n;
 use crate::image_metadata::LpImageMetadata;
 use crate::util::Gesture;
 
+use crate::util::spawn;
 use adw::{prelude::*, subclass::prelude::*};
 use arc_swap::ArcSwap;
 use futures::prelude::*;
-use gtk_macros::spawn;
 use once_cell::sync::Lazy;
 use once_cell::unsync::OnceCell;
 
@@ -765,7 +765,7 @@ impl LpImage {
         };
 
         let weak_obj = self.downgrade();
-        spawn!(async move {
+        spawn(async move {
             while let Some(update) = decoder_update.next().await {
                 if let Some(obj) = weak_obj.upgrade() {
                     obj.update(update);
@@ -811,7 +811,7 @@ impl LpImage {
                     new_tiles
                 });
                 if imp.background_color.borrow().is_none() {
-                    spawn!(glib::clone!(@weak self as obj => async move {
+                    spawn(glib::clone!(@weak self as obj => async move {
                         let color = obj.background_color_guess().await;
                         obj.set_background_color(color);
                         if obj.is_mapped() {
@@ -962,7 +962,9 @@ impl LpImage {
                 let obj = self.clone();
                 let file = file_a.clone();
                 // TODO: error handling is missing
-                spawn! {async move { obj.load(&file.path().unwrap()).await; }};
+                spawn(async move {
+                    obj.load(&file.path().unwrap()).await;
+                });
             }
             gio::FileMonitorEvent::Deleted
             | gio::FileMonitorEvent::MovedOut

@@ -20,11 +20,11 @@
 use crate::deps::*;
 use crate::i18n::*;
 
+use crate::util::spawn;
 use adw::prelude::*;
 use adw::subclass::prelude::*;
 use glib::clone;
 use gtk::CompositeTemplate;
-use gtk_macros::spawn;
 
 use std::path::{Path, PathBuf};
 
@@ -501,7 +501,7 @@ impl LpWindow {
                     .build();
                 toast.connect_button_clicked(glib::clone!(@weak self as win => move |_| {
                     let path = path.clone();
-                    spawn!(async move {
+                    spawn(async move {
                         let result = crate::util::untrash(&path).await;
                         match result {
                             Ok(()) => win.image_view().set_image_from_path(&path),
