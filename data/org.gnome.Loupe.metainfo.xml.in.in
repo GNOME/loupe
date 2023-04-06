@@ -4,7 +4,7 @@
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-3.0-or-later</project_license>
   <name>Loupe</name>
-  <developer_name>Christopher Davis</developer_name>
+  <developer_name>The Loupe Team</developer_name>
   <summary>View images</summary>
   <description>
     <p>A simple image viewer which allows you to browse through your images and inspect their metadata.</p>
@@ -53,7 +53,15 @@
   </categories>
 
   <releases>
-    <release version="44.0" date="2023-04-02">
+    <release version="44.1" date="2023-04-06">
+      <description>
+        <ul>
+          <li>Fix issues with loading WebP and HEIC images.</li>
+          <li>Fix performance issues with image rendering.</li>
+        </ul>
+      </description>
+    </release>
+    <release version="44.0" date="2023-04-04">
       <description>
         <p>Initial release.</p>
       </description>

@@ -1,0 +1,12 @@
+40.1
+=======
+Bugfix release after initial feedback:
+ - Bump GTK dependency to 4.11.1 because of required fixes for scaled texture
+ - Drop gtk-macros (crate) dependency since it is not needed and lacking a LICENSE files
+ - #115 Fix WebP support for still images
+ - #115 Fix not detecting HEIC files
+
+40.0
+=======
+
+Initial release
