@@ -160,6 +160,11 @@ impl Decoder {
                 if content_type.split('+').next() == Some("image/svg") {
                     update_sender.send(DecoderUpdate::Format(ImageFormat::Svg));
                     return Ok(FormatDecoder::Svg(Svg::new(path, update_sender, tiles)));
+                } else if ["image/avif", "image/heif", "image/heic"]
+                    .contains(&content_type.as_str())
+                {
+                    update_sender.send(DecoderUpdate::Format(ImageFormat::Heif));
+                    return Ok(FormatDecoder::Heif(Heif::new(path, update_sender, tiles)));
                 } else {
                     bail!(i18n_f("Unknown image format: {}", &[content_type.as_str()]));
                 }
