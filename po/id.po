@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-14 22:16+0000\n"
-"PO-Revision-Date: 2023-03-28 08:37+0700\n"
+"POT-Creation-Date: 2023-04-02 20:03+0000\n"
+"PO-Revision-Date: 2023-04-06 18:06+0700\n"
 "Last-Translator: Kukuh Syafaat <kukuhsyafaat@gnome.org>\n"
 "Language-Team: Indonesian <gnome-l10n-id@googlegroups.com>\n"
 "Language: id\n"
@@ -19,8 +19,8 @@ msgstr ""
 
 #. If the file exists, get display name
 #: data/org.gnome.Loupe.desktop.in.in:3
-#: data/org.gnome.Loupe.metainfo.xml.in.in:6 data/gtk/window.ui:63
-#: src/application.rs:193 src/window.rs:676 src/window.rs:682
+#: data/org.gnome.Loupe.metainfo.xml.in.in:6 data/gtk/window.ui:59
+#: src/application.rs:187 src/window.rs:676 src/window.rs:682
 msgid "Loupe"
 msgstr "Loupe"
 
@@ -49,24 +49,12 @@ msgid "The following features are not available yet"
 msgstr "Fitur berikut belum tersedia"
 
 #: data/org.gnome.Loupe.metainfo.xml.in.in:13
-msgid "Correctly showing SVGs at every zoom-level"
-msgstr "Menampilkan SVG dengan benar di setiap tingkat perbesaran"
+msgid "Applying image color profiles"
+msgstr "Menerapkan profil warna gambar"
 
 #: data/org.gnome.Loupe.metainfo.xml.in.in:14
-msgid "Interpreting image color profiles"
-msgstr "Menafsirkan profil warna gambar"
-
-#: data/org.gnome.Loupe.metainfo.xml.in.in:15
-msgid "Animated image formats"
-msgstr "Format gambar animasi"
-
-#: data/org.gnome.Loupe.metainfo.xml.in.in:16
-msgid "Correct HighDPI support"
-msgstr "Dukungan HighDPI yang benar"
-
-#: data/org.gnome.Loupe.metainfo.xml.in.in:17
-msgid "Print settings to position the image on the page"
-msgstr "Pengaturan cetak untuk memposisikan gambar di halaman"
+msgid "Printing"
+msgstr "Pencetakan"
 
 #: data/gtk/help_overlay.ui:11
 msgctxt "shortcut window"
@@ -259,11 +247,11 @@ msgstr "Atur jadi Latar _Belakang…"
 msgid "Could not Load Image"
 msgstr "Tidak Dapat Memuat Gambar"
 
-#: data/gtk/image_page.ui:82 data/gtk/window.ui:115
+#: data/gtk/image_page.ui:88 data/gtk/window.ui:111
 msgid "Rotate Left"
 msgstr "Putar Kiri"
 
-#: data/gtk/image_page.ui:93 data/gtk/window.ui:126
+#: data/gtk/image_page.ui:99 data/gtk/window.ui:122
 msgid "Rotate Right"
 msgstr "Putar Kanan"
 
@@ -356,55 +344,51 @@ msgid "_Open…"
 msgstr "_Buka…"
 
 #: data/gtk/window.ui:46
-msgid "_Help"
-msgstr "_Bantuan"
-
-#: data/gtk/window.ui:50
 msgid "_Keyboard Shortcuts"
 msgstr "Pintasan Papan _Ketik"
 
-#: data/gtk/window.ui:54
+#: data/gtk/window.ui:50
 msgid "_About Loupe"
 msgstr "Tent_ang Loupe"
 
-#: data/gtk/window.ui:94
+#: data/gtk/window.ui:90
 msgid "Copy to Clipboard"
 msgstr "Salin ke Papan Klip"
 
-#: data/gtk/window.ui:101
+#: data/gtk/window.ui:97
 msgid "Move to Trash"
 msgstr "Pindah ke Tong Sampah"
 
-#: data/gtk/window.ui:107
+#: data/gtk/window.ui:103
 msgid "Main Menu"
 msgstr "Menu Utama"
 
-#: data/gtk/window.ui:141
+#: data/gtk/window.ui:137
 msgid "Image Properties"
 msgstr "Properti Gambar"
 
-#: data/gtk/window.ui:161
+#: data/gtk/window.ui:157
 msgid "View Images"
 msgstr "Lihat Gambar"
 
-#: data/gtk/window.ui:162
+#: data/gtk/window.ui:158
 msgid "Drag and drop images here"
 msgstr "Seret dan lepas gambar di sini"
 
-#: data/gtk/window.ui:166
+#: data/gtk/window.ui:162
 msgid "_Open File…"
 msgstr "B_uka Berkas…"
 
-#: src/application.rs:196
+#: src/application.rs:190
 msgid "The Loupe Team"
 msgstr "Tim Loupe"
 
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/application.rs:205
+#: src/application.rs:199
 msgid "translator-credits"
 msgstr "Kukuh Syafaat <kukuhsyafaat@gnome.org>, 2023."
 
-#: src/application.rs:206
+#: src/application.rs:200
 msgid "Copyright © 2020–2023 Christopher Davis et al."
 msgstr "Hak Cipta © 2020–2023 Christopher Davis et al."
 
@@ -442,19 +426,19 @@ msgstr "1\\u{2215}{}\\u{202F}s"
 msgid "{}\\u{202F}mm"
 msgstr "{}\\u{202F}mm"
 
-#: src/widgets/image.rs:652
+#: src/widgets/image.rs:720
 msgid "File does not exist"
 msgstr "Berkas tidak ada"
 
-#: src/widgets/image_view.rs:574
+#: src/widgets/image_view.rs:558
 msgid "Failed to open new background image"
 msgstr "Gagal membuka gambar latar belakang baru"
 
-#: src/widgets/image_view.rs:591
+#: src/widgets/image_view.rs:575
 msgid "Set as background."
 msgstr "Atur jadi latar belakang."
 
-#: src/widgets/image_view.rs:598
+#: src/widgets/image_view.rs:582
 msgid "Could not set background."
 msgstr "Tidak dapat dijadikan sebagai latar belakang."
 
@@ -505,3 +489,18 @@ msgstr "Hapus"
 #: src/window.rs:559
 msgid "Failed to delete image"
 msgstr "Gagal menghapus gambar"
+
+#~ msgid "Correctly showing SVGs at every zoom-level"
+#~ msgstr "Menampilkan SVG dengan benar di setiap tingkat perbesaran"
+
+#~ msgid "Animated image formats"
+#~ msgstr "Format gambar animasi"
+
+#~ msgid "Correct HighDPI support"
+#~ msgstr "Dukungan HighDPI yang benar"
+
+#~ msgid "Print settings to position the image on the page"
+#~ msgstr "Pengaturan cetak untuk memposisikan gambar di halaman"
+
+#~ msgid "_Help"
+#~ msgstr "_Bantuan"
