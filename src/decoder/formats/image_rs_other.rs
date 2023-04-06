@@ -125,10 +125,16 @@ impl ImageRsOther {
                         image_rs::codecs::gif::GifDecoder::new(file)?.into_frames(),
                         ImageFormat::AnimatedGif,
                     ),
-                    image_rs::ImageFormat::WebP => (
-                        image_rs::codecs::webp::WebPDecoder::new(file)?.into_frames(),
-                        ImageFormat::AnimatedWebP,
-                    ),
+                    image_rs::ImageFormat::WebP => {
+                        let decoder = image_rs::codecs::webp::WebPDecoder::new(file)?;
+                        if decoder.has_animation() {
+                            (decoder.into_frames(), ImageFormat::AnimatedWebP)
+                        } else {
+                            // Static WebP images need a different decoder
+                            Self::new_static(path, format, updater, tiles);
+                            return Ok(());
+                        }
+                    }
                     image_rs::ImageFormat::Png => {
                         let decoder = image_rs::codecs::png::PngDecoder::new(file)?;
                         if decoder.is_apng() {
