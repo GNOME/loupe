@@ -31,8 +31,8 @@ use crate::deps::*;
 
 use crate::decoder::tiling::FrameBufferExt;
 use crate::decoder::{self, tiling, Decoder, DecoderUpdate};
-use crate::i18n::i18n;
 use crate::image_metadata::LpImageMetadata;
+use crate::util::gettext::*;
 use crate::util::Gesture;
 
 use crate::util::spawn;
@@ -748,7 +748,7 @@ impl LpImage {
         self.set_file(&file);
 
         if !path.is_file() {
-            self.set_error(anyhow::Error::msg(i18n("File does not exist")));
+            self.set_error(anyhow::Error::msg(gettext("File does not exist")));
             return;
         }
 

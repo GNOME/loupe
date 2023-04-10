@@ -5,8 +5,8 @@ pub mod tiling;
 pub use formats::ImageDimensionDetails;
 
 use crate::deps::*;
-use crate::i18n::*;
 use crate::image_metadata::ImageMetadata;
+use crate::util::gettext::*;
 use formats::*;
 use tiling::FrameBufferExt;
 
@@ -116,10 +116,10 @@ impl Decoder {
         update_sender.send(DecoderUpdate::Metadata(ImageMetadata::load(&path)));
 
         let mut buf = Vec::new();
-        let file = std::fs::File::open(&path).context(i18n("Could not open image"))?;
+        let file = std::fs::File::open(&path).context(gettext("Could not open image"))?;
         file.take(64)
             .read_to_end(&mut buf)
-            .context(i18n("Could not read image"))?;
+            .context(gettext("Could not read image"))?;
 
         // Try magic bytes first and than file name extension
         let format =
@@ -166,12 +166,15 @@ impl Decoder {
                     update_sender.send(DecoderUpdate::Format(ImageFormat::Heif));
                     return Ok(FormatDecoder::Heif(Heif::new(path, update_sender, tiles)));
                 } else {
-                    bail!(i18n_f("Unknown image format: {}", &[content_type.as_str()]));
+                    bail!(gettext_f(
+                        "Unknown image format: {}",
+                        &[content_type.as_str()]
+                    ));
                 }
             }
         }
 
-        bail!(i18n("Unknown image format"))
+        bail!(gettext("Unknown image format"))
     }
 
     /// Request missing tiles

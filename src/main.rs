@@ -53,7 +53,6 @@ mod application;
 mod config;
 mod decoder;
 mod file_model;
-mod i18n;
 mod image_metadata;
 mod util;
 mod widgets;

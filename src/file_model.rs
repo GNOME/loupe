@@ -18,8 +18,8 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 
 use crate::deps::*;
-use crate::i18n::*;
 use crate::util;
+use crate::util::gettext::*;
 
 use std::path::{Path, PathBuf};
 
@@ -111,7 +111,7 @@ impl LpFileModel {
                     gio::FileQueryInfoFlags::NONE,
                     gio::Cancellable::NONE,
                 )
-                .context(i18n("Could not list other files in directory."))?;
+                .context(gettext("Could not list other files in directory."))?;
 
             enumerator.for_each(|info| {
                 if let Ok(info) = info {

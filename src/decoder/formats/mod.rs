@@ -7,7 +7,7 @@ pub use image_rs_other::ImageRsOther;
 pub use svg::{Svg, RSVG_MAX_SIZE};
 
 use super::{Decoder, DecoderUpdate, UpdateSender};
-use crate::i18n::*;
+use crate::util::gettext::*;
 
 #[derive(Clone, Copy, Debug)]
 pub enum ImageFormat {
@@ -52,9 +52,9 @@ impl std::fmt::Display for ImageFormat {
                     write!(f, "{}", debug)
                 }
             }
-            Self::AnimatedGif => write!(f, "{}", i18n("Animated GIF")),
-            Self::AnimatedWebP => write!(f, "{}", i18n("Animated WebP")),
-            Self::AnimatedPng => write!(f, "{}", i18n("Animated PNG")),
+            Self::AnimatedGif => write!(f, "{}", gettext("Animated GIF")),
+            Self::AnimatedWebP => write!(f, "{}", gettext("Animated WebP")),
+            Self::AnimatedPng => write!(f, "{}", gettext("Animated PNG")),
             Self::Heif => write!(f, "HEIF Container"),
             Self::Svg => write!(f, "SVG"),
         }

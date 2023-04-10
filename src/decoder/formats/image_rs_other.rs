@@ -2,7 +2,7 @@
 use super::*;
 use crate::decoder::tiling::{self, FrameBufferExt};
 use crate::deps::*;
-use crate::i18n::*;
+use crate::util::gettext::*;
 
 use anyhow::Context;
 use arc_swap::ArcSwap;
@@ -35,7 +35,8 @@ impl ImageRsOther {
         path: &Path,
         format: image_rs::ImageFormat,
     ) -> anyhow::Result<image_rs::io::Reader<BufReader<File>>> {
-        let mut reader = image_rs::io::Reader::open(path).context(i18n("Failed to open image"))?;
+        let mut reader =
+            image_rs::io::Reader::open(path).context(gettext("Failed to open image"))?;
         reader.set_format(format);
         Ok(reader)
     }
@@ -88,7 +89,7 @@ impl ImageRsOther {
 
             reader.limits(image_rs::io::Limits::no_limits());
 
-            let dynamic_image = reader.decode().context(i18n("Failed to decode image"))?;
+            let dynamic_image = reader.decode().context(gettext("Failed to decode image"))?;
 
             let decoded_image = Decoded { dynamic_image };
 

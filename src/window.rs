@@ -18,7 +18,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 
 use crate::deps::*;
-use crate::i18n::*;
+use crate::util::gettext::*;
 
 use crate::util::spawn;
 use adw::prelude::*;
@@ -352,7 +352,7 @@ mod imp {
                         obj.set_image_from_path(&file.path().unwrap());
                     } else {
                         obj.show_toast(
-                            i18n_f("“{}” is not a valid image.", &[&info.display_name()]),
+                            gettext_f("“{}” is not a valid image.", &[&info.display_name()]),
                             adw::ToastPriority::High,
                         );
                     }
@@ -428,7 +428,7 @@ impl LpWindow {
         filter_store.append(&filter);
 
         let chooser = gtk::FileDialog::builder()
-            .title(i18n("Open Image"))
+            .title(gettext("Open Image"))
             .filters(&filter_store)
             .modal(true)
             .build();
@@ -482,7 +482,10 @@ impl LpWindow {
         if let Err(e) = imp.image_view.copy() {
             log::error!("Failed to copy to clipboard: {}", e);
         } else {
-            self.show_toast(i18n("Image copied to clipboard"), adw::ToastPriority::High);
+            self.show_toast(
+                gettext("Image copied to clipboard"),
+                adw::ToastPriority::High,
+            );
         }
     }
 
@@ -496,8 +499,8 @@ impl LpWindow {
         match result {
             Ok(()) => {
                 let toast = adw::Toast::builder()
-                    .title(i18n("Image moved to trash"))
-                    .button_label(i18n("Undo"))
+                    .title(gettext("Image moved to trash"))
+                    .button_label(gettext("Undo"))
                     .build();
                 toast.connect_button_clicked(glib::clone!(@weak self as win => move |_| {
                     let path = path.clone();
@@ -508,7 +511,7 @@ impl LpWindow {
                             Err(err) => {
                                 log::error!("Failed to untrash {path:?}: {err}");
                                 win.show_toast(
-                                    i18n("Failed to restore image from trash"),
+                                    gettext("Failed to restore image from trash"),
                                     adw::ToastPriority::High,
                                 );
                             }
@@ -523,7 +526,7 @@ impl LpWindow {
                 } else {
                     log::error!("Failed to delete file {path:?}: {err}");
                     self.show_toast(
-                        i18n("Failed to move image to trash"),
+                        gettext("Failed to move image to trash"),
                         adw::ToastPriority::Normal,
                     );
                 }
@@ -538,8 +541,8 @@ impl LpWindow {
         let dialog = adw::MessageDialog::builder()
             .modal(true)
             .transient_for(self)
-            .heading(i18n("Permanently Delete Image?"))
-            .body(i18n_f(
+            .heading(gettext("Permanently Delete Image?"))
+            .body(gettext_f(
                 "The image “{}” can only be deleted permanently.",
                 &[&PathBuf::from(&path.file_name().unwrap_or_default())
                     .display()
@@ -547,7 +550,10 @@ impl LpWindow {
             ))
             .build();
 
-        dialog.add_responses(&[("cancel", &i18n("Cancel")), ("delete", &i18n("Delete"))]);
+        dialog.add_responses(&[
+            ("cancel", &gettext("Cancel")),
+            ("delete", &gettext("Delete")),
+        ]);
         dialog.set_response_appearance("delete", adw::ResponseAppearance::Destructive);
 
         if "delete" == dialog.choose_future().await {
@@ -556,7 +562,10 @@ impl LpWindow {
 
             if let Err(err) = result {
                 log::error!("Failed to delete file {path:?}: {err}");
-                self.show_toast(i18n("Failed to delete image"), adw::ToastPriority::Normal);
+                self.show_toast(
+                    gettext("Failed to delete image"),
+                    adw::ToastPriority::Normal,
+                );
             }
         }
     }
@@ -673,13 +682,13 @@ impl LpWindow {
     fn window_title(&self, path: glib::variant::Variant) -> String {
         // ensure that templates are initialized
         if path.as_maybe().is_none() {
-            i18n("Loupe")
+            gettext("Loupe")
         } else {
             self.imp()
                 .image_view
                 .current_file()
                 .and_then(|f| util::get_file_display_name(&f)) // If the file exists, get display name
-                .unwrap_or_else(|| i18n("Loupe")) // Return that or the default if there's nothing
+                .unwrap_or_else(|| gettext("Loupe")) // Return that or the default if there's nothing
         }
     }
 

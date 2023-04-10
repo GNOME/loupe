@@ -27,7 +27,7 @@
 
 use crate::deps::*;
 use crate::file_model::LpFileModel;
-use crate::i18n::*;
+use crate::util::gettext::*;
 use crate::util::{Direction, Position};
 use crate::widgets::{LpImage, LpImagePage, LpSlidingView};
 
@@ -555,7 +555,7 @@ impl LpImageView {
         let background = self
             .current_path()
             .and_then(|p| std::fs::File::open(p).ok())
-            .context(i18n("Failed to open new background image"))?;
+            .context(gettext("Failed to open new background image"))?;
         let native = self.native().expect("View should have a GtkNative");
         let id = WindowIdentifier::from_native(&native).await;
 
@@ -572,14 +572,14 @@ impl LpImageView {
             Ok(_) => self
                 .activate_action(
                     "win.show-toast",
-                    Some(&(i18n("Set as background."), 1).to_variant()),
+                    Some(&(gettext("Set as background."), 1).to_variant()),
                 )
                 .unwrap(),
             Err(err) => {
                 if !matches!(err, Error::Response(ResponseError::Cancelled)) {
                     self.activate_action(
                         "win.show-toast",
-                        Some(&(i18n("Could not set background."), 1).to_variant()),
+                        Some(&(gettext("Could not set background."), 1).to_variant()),
                     )
                     .unwrap();
                 }

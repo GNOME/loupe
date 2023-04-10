@@ -18,7 +18,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 
 use crate::deps::*;
-use crate::i18n::*;
+use crate::util::gettext::*;
 
 use adw::prelude::*;
 use adw::subclass::prelude::*;
@@ -184,10 +184,10 @@ impl LpApplication {
         // an object and set all relevant properties very
         // easily in a way that's idiomatic to Rust.
         let about = adw::AboutWindow::builder()
-            .application_name(i18n("Loupe"))
+            .application_name(gettext("Loupe"))
             .application_icon(config::APP_ID)
             .version(config::VERSION)
-            .developer_name(i18n("The Loupe Team"))
+            .developer_name(gettext("The Loupe Team"))
             .website("https://gitlab.gnome.org/Incubator/loupe")
             .issue_url("https://gitlab.gnome.org/Incubator/loupe/-/issues/new")
             .developers([
@@ -196,8 +196,8 @@ impl LpApplication {
             ])
             .designers(["Allan Day", "Jakub Steiner", "Tobias Bernard"])
             // Translators: Replace "translator-credits" with your names, one name per line
-            .translator_credits(i18n("translator-credits"))
-            .copyright(i18n("Copyright © 2020–2023 Christopher Davis et al."))
+            .translator_credits(gettext("translator-credits"))
+            .copyright(gettext("Copyright © 2020–2023 Christopher Davis et al."))
             .license_type(gtk::License::Gpl30)
             .build();
 

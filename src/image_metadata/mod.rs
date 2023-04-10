@@ -9,8 +9,8 @@ mod obj;
 pub use gps::GPSLocation;
 pub use obj::LpImageMetadata;
 
-use crate::i18n::*;
 use crate::util;
+use crate::util::gettext::*;
 
 use gtk::glib;
 
@@ -126,7 +126,7 @@ impl ImageMetadata {
                 let exposure = format!("{:.0}", 1. / rational.first()?.to_f32());
 
                 // Translators: Unit for exposure time in seconds
-                return Some(i18n_f("1\u{2215}{}\u{202F}s", &[&exposure]));
+                return Some(gettext_f("1\u{2215}{}\u{202F}s", &[&exposure]));
             }
         }
 
@@ -151,7 +151,7 @@ impl ImageMetadata {
             if let exif::Value::Rational(rational) = &field.value {
                 let length = format!("{:.0}", rational.first()?.to_f32());
                 // Translators: Unit for focal length in millimeters
-                return Some(i18n_f("{}\u{202F}mm", &[&length]));
+                return Some(gettext_f("{}\u{202F}mm", &[&length]));
             }
         }
 

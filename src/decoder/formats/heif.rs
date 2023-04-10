@@ -2,7 +2,7 @@
 use super::*;
 use crate::decoder::tiling::{self, FrameBufferExt};
 use crate::deps::*;
-use crate::i18n::*;
+use crate::util::gettext::*;
 use gtk::prelude::*;
 
 use anyhow::Context;
@@ -28,7 +28,7 @@ impl Heif {
         log::debug!("Loading HEIF");
         updater.spawn_error_handled(move || {
             let ctx = HeifContext::read_from_file(&path.display().to_string())
-                .context(i18n("Failed to read image"))?;
+                .context(gettext("Failed to read image"))?;
             let handle = ctx.primary_image_handle()?;
 
             tiles.set_original_dimensions((handle.width(), handle.height()));
@@ -61,7 +61,7 @@ impl Heif {
 
             let mut image = LIBHEIF
                 .decode(&handle, ColorSpace::Rgb(rgb_chroma), None)
-                .context(i18n("Failed to decode image"))?;
+                .context(gettext("Failed to decode image"))?;
 
             let plane = image
                 .planes_mut()

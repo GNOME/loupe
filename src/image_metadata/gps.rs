@@ -1,4 +1,4 @@
-use crate::i18n::*;
+use crate::util::gettext::*;
 
 #[derive(Debug, Clone, Copy)]
 pub struct GPSLocation {
@@ -133,10 +133,10 @@ impl GPSLocation {
         let coord = self.latitude;
         let reference = if coord.sing {
             // Translators: short for "north" in GPS coordinate
-            i18n("N")
+            gettext("N")
         } else {
             // Translators: short for "south" in GPS coordinate
-            i18n("S")
+            gettext("S")
         };
 
         coord.display(&reference)
@@ -146,10 +146,10 @@ impl GPSLocation {
         let coord = self.longitude;
         let reference = if coord.sing {
             // Translators: short for "east" in GPS coordinate
-            i18n("E")
+            gettext("E")
         } else {
             // Translators: short for "west" in GPS coordinate
-            i18n("W")
+            gettext("W")
         };
 
         coord.display(&reference)

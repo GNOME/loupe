@@ -1,5 +1,7 @@
+pub mod gettext;
+
 use crate::deps::*;
-use crate::i18n::*;
+use crate::util::gettext::*;
 
 use anyhow::{anyhow, bail, Context};
 use gio::prelude::*;
@@ -13,7 +15,7 @@ pub fn datetime_fmt(datetime: &glib::DateTime) -> Option<String> {
     // Translators: This is the date and time format we use in metadata output etc.
     // The format has to follow <https://docs.gtk.org/glib/method.DateTime.format.html>
     // The default is already translated. Don't change if you are not sure what to use.
-    let datetime_format = i18n("%x %X");
+    let datetime_format = gettext("%x %X");
 
     let fmt = datetime.format(&datetime_format);
 
@@ -146,7 +148,7 @@ pub async fn untrash(path: &Path) -> anyhow::Result<()> {
                 )
                 .0
                 .await
-                .context(i18n("Failed to restore image from trash"));
+                .context(gettext("Failed to restore image from trash"));
 
             break;
         }
