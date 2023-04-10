@@ -89,7 +89,7 @@ impl Heif {
                 position: (0, 0),
                 zoom_level: tiling::zoom_to_level(1.),
                 bleed: 0,
-                texture: decoded.into_texture(),
+                texture: decoded.into_texture()?,
             };
 
             tiles.push(tile);
@@ -109,18 +109,21 @@ pub struct Decoded<'a> {
 }
 
 impl<'a> Decoded<'a> {
-    pub fn into_texture(self) -> gdk::Texture {
+    pub fn into_texture(self) -> anyhow::Result<gdk::Texture> {
         let memory_format = match self.rgb_chroma {
             RgbChroma::HdrRgbBe
             | RgbChroma::HdrRgbaBe
             | RgbChroma::HdrRgbLe
             | RgbChroma::HdrRgbaLe => {
-                let transmuted: &mut [u16] =
-                    safe_transmute::transmute_many_pedantic_mut(self.plane.data).unwrap();
-
-                // Scale HDR pixels to 16bit (they are usually 10bit or 12bit)
-                for pixel in transmuted.iter_mut() {
-                    *pixel <<= 16 - self.plane.bits_per_pixel;
+                if let Ok(transmuted) =
+                    safe_transmute::transmute_many_pedantic_mut::<u16>(self.plane.data)
+                {
+                    // Scale HDR pixels to 16bit (they are usually 10bit or 12bit)
+                    for pixel in transmuted.iter_mut() {
+                        *pixel <<= 16 - self.plane.bits_per_pixel;
+                    }
+                } else {
+                    log::error!("Could not transform HDR (16bit) data to u16");
                 }
 
                 if self.has_alpha_channel {
@@ -157,6 +160,6 @@ impl<'a> Decoded<'a> {
             self.plane.stride,
         );
 
-        tex.upcast()
+        Ok(tex.upcast())
     }
 }

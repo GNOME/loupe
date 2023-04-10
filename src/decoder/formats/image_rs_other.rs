@@ -5,7 +5,7 @@ use crate::deps::*;
 use crate::util::gettext::*;
 use crate::util::{BufReadSeek, ToBufRead};
 
-use anyhow::Context;
+use anyhow::{bail, Context};
 use arc_swap::ArcSwap;
 use gtk::prelude::*;
 use image_rs::AnimationDecoder;
@@ -21,8 +21,12 @@ pub struct ImageRsOther {
 impl Drop for ImageRsOther {
     fn drop(&mut self) {
         if let Some(handle) = &self.thread_handle {
-            let mut abort = self.abort.write().unwrap();
-            *abort = true;
+            if let Ok(mut abort) = self.abort.write() {
+                *abort = true;
+            } else {
+                // Don't use log in drop because not sure if always still initialized
+                eprintln!("Unable to write abort signal to decoding thread.");
+            }
             handle.thread().unpark();
         }
     }
@@ -95,7 +99,7 @@ impl ImageRsOther {
                 position: (0, 0),
                 zoom_level: tiling::zoom_to_level(1.),
                 bleed: 0,
-                texture: decoded_image.into_texture(),
+                texture: decoded_image.into_texture()?,
             };
 
             tiles.push(tile);
@@ -179,7 +183,7 @@ impl ImageRsOther {
                                 position,
                                 zoom_level: tiling::zoom_to_level(1.),
                                 bleed: 0,
-                                texture: decoded_image.into_texture(),
+                                texture: decoded_image.into_texture()?,
                             };
 
                             tiles.push_frame(tile, dimensions, delay);
@@ -196,9 +200,13 @@ impl ImageRsOther {
                         std::thread::park();
                     }
 
-                    if *abort.read().unwrap() {
-                        log::debug!("Terminating decoder thread.");
-                        return Ok(());
+                    if let Ok(abort_state) = abort.read().as_deref() {
+                        if *abort_state {
+                            log::debug!("Terminating decoder thread.");
+                            return Ok(());
+                        }
+                    } else {
+                        bail!("Cannot read decoder thread abort instructions.");
                     }
                 }
             }
@@ -219,7 +227,7 @@ pub struct Decoded {
 }
 
 impl Decoded {
-    pub fn into_texture(self) -> gdk::Texture {
+    pub fn into_texture(self) -> anyhow::Result<gdk::Texture> {
         let (n_bytes, memory_format, layout, data) = match self.dynamic_image {
             img @ image_rs::DynamicImage::ImageLuma8(_) => {
                 let buffer = img.to_rgb8();
@@ -299,20 +307,23 @@ impl Decoded {
                     2,
                     gdk::MemoryFormat::R16g16b16a16,
                     buffer.sample_layout(),
-                    safe_transmute::transmute_vec(buffer.into_raw()).unwrap(),
+                    safe_transmute::transmute_vec(buffer.into_raw())
+                        .context("Failed to transform into 16 bit texture")?,
                 )
             }
         };
 
         let bytes = glib::Bytes::from_owned(data);
 
-        gdk::MemoryTexture::new(
+        let texture = gdk::MemoryTexture::new(
             layout.width as i32,
             layout.height as i32,
             memory_format,
             &bytes,
             layout.height_stride * n_bytes,
         )
-        .upcast()
+        .upcast();
+
+        Ok(texture)
     }
 }

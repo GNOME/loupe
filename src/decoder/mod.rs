@@ -77,6 +77,7 @@ impl UpdateSender {
 #[derive(Debug)]
 pub struct Decoder {
     decoder: FormatDecoder,
+    update_sender: UpdateSender,
 }
 
 #[derive(Debug)]
@@ -100,11 +101,23 @@ impl Decoder {
         let update_sender = UpdateSender { sender };
         tiles.set_update_sender(update_sender.clone());
 
-        let decoder = gio::spawn_blocking(move || Self::format_decoder(update_sender, file, tiles))
-            .await
-            .map_err(|_| anyhow!("Constructing the FormatDecoder failed unexpectedly"))??;
+        let decoder = gio::spawn_blocking(
+            glib::clone!(@strong update_sender => move || Self::format_decoder(
+                update_sender,
+                file,
+                tiles
+            )),
+        )
+        .await
+        .map_err(|_| anyhow!("Constructing the FormatDecoder failed unexpectedly"))??;
 
-        Ok((Self { decoder }, receiver))
+        Ok((
+            Self {
+                decoder,
+                update_sender,
+            },
+            receiver,
+        ))
     }
 
     fn format_decoder(
@@ -171,7 +184,11 @@ impl Decoder {
     /// Request missing tiles
     pub fn request(&self, tile_request: TileRequest) {
         match &self.decoder {
-            FormatDecoder::Svg(svg) => svg.request(tile_request, self).unwrap(),
+            FormatDecoder::Svg(svg) => {
+                if let Err(err) = svg.request(tile_request) {
+                    self.update_sender.send(DecoderUpdate::Error(err));
+                }
+            }
             FormatDecoder::Heif(_) => {}
             _ => {}
         };

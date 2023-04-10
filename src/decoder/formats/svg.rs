@@ -36,8 +36,12 @@ impl Request {
 
 impl Drop for Svg {
     fn drop(&mut self) {
-        let mut request = self.current_request.write().unwrap();
-        *request = Request::Exit;
+        if let Ok(mut request) = self.current_request.write() {
+            *request = Request::Exit;
+        } else {
+            // Don't use log in drop because not sure if always still initialized
+            eprintln!("Unable to write exit request: RwLock is poisoned.");
+        }
         self.thread_handle.thread().unpark();
     }
 }
@@ -65,7 +69,7 @@ impl Svg {
 
             loop {
                 let tile_request = {
-                    let mut request = request_store.write().unwrap();
+                    let mut request = request_store.write().ok().context("RwLock is poisoned")?;
                     let value = request.clone();
                     *request = Request::None;
                     value
@@ -90,7 +94,12 @@ impl Svg {
                         let relevant_tiles = tiling.relevant_tiles(&tile_request.viewport);
 
                         for tile_instructions in relevant_tiles {
-                            if request_store.read().unwrap().is_waiting() {
+                            if request_store
+                                .read()
+                                .ok()
+                                .context("RwLock is poisoned")?
+                                .is_waiting()
+                            {
                                 break;
                             }
 
@@ -139,7 +148,7 @@ impl Svg {
                                 ),
                                 zoom_level: tiling::zoom_to_level(tile_instructions.tiling.zoom),
                                 bleed: 2,
-                                texture: decoded_image.into_texture(),
+                                texture: decoded_image.into_texture()?,
                             };
 
                             tiles.push(tile.clone());
@@ -157,8 +166,12 @@ impl Svg {
         }
     }
 
-    pub fn request(&self, request: TileRequest, _abstract_decoder: &Decoder) -> anyhow::Result<()> {
-        let mut current_request = self.current_request.write().unwrap();
+    pub fn request(&self, request: TileRequest) -> anyhow::Result<()> {
+        let mut current_request = self
+            .current_request
+            .write()
+            .ok()
+            .context("RwLock is poisoned")?;
         *current_request = Request::Tile(request);
         self.thread_handle.thread().unpark();
 
@@ -200,7 +213,7 @@ struct Decoded {
 }
 
 impl Decoded {
-    pub fn into_texture(self) -> gdk::Texture {
+    pub fn into_texture(self) -> anyhow::Result<gdk::Texture> {
         let memory_format = {
             #[cfg(target_endian = "little")]
             {
@@ -217,8 +230,13 @@ impl Decoded {
         let height = self.surface.height();
         let stride = self.surface.stride() as usize;
 
-        let bytes = glib::Bytes::from_owned(self.surface.take_data().unwrap().to_vec());
+        let bytes = glib::Bytes::from_owned(
+            self.surface
+                .take_data()
+                .context("Cairo surface already taken")?
+                .to_vec(),
+        );
 
-        gdk::MemoryTexture::new(width, height, memory_format, &bytes, stride).upcast()
+        Ok(gdk::MemoryTexture::new(width, height, memory_format, &bytes, stride).upcast())
     }
 }
