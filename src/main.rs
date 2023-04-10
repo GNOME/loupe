@@ -72,8 +72,15 @@ fn main() -> glib::ExitCode {
         .init();
 
     setlocale(LocaleCategory::LcAll, "");
-    bindtextdomain("loupe", config::LOCALEDIR).unwrap();
-    textdomain("loupe").unwrap();
+    if let Err(err) = bindtextdomain("loupe", config::LOCALEDIR) {
+        log::error!(
+            "Failed to bind gettext domain loupe in {}: {err}",
+            config::LOCALEDIR
+        );
+    }
+    if let Err(err) = textdomain("loupe") {
+        log::error!("Failed to set gettext domain: {err}");
+    }
 
     let res = gio::Resource::load(config::PKGDATADIR.to_owned() + "/loupe.gresource")
         .expect("Could not load resources");
