@@ -17,7 +17,12 @@ pub fn datetime_fmt(datetime: &glib::DateTime) -> Option<String> {
     // The default is already translated. Don't change if you are not sure what to use.
     let datetime_format = gettext("%x %X");
 
-    let fmt = datetime.format(&datetime_format);
+    let local_datetime = datetime.to_local();
+
+    let fmt = local_datetime
+        .as_ref()
+        .unwrap_or(datetime)
+        .format(&datetime_format);
 
     if let Err(err) = &fmt {
         log::error!("Could not format DateTime with '{datetime_format}': {err}");
