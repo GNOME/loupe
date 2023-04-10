@@ -654,72 +654,73 @@ mod imp {
             if image_width > 0 && image_height > 0 {
                 if let Some(display) = gdk::Display::default() {
                     if let Some(native) = self.obj().native() {
-                        let hidpi_scale = self.obj().scale_factor() as f64;
+                        if let Some(monitor) = display.monitor_at_surface(&native.surface()) {
+                            let hidpi_scale = self.obj().scale_factor() as f64;
 
-                        // get monitor information
-                        // TODO: Get rid of unwrap
-                        let monitor = display.monitor_at_surface(&native.surface()).unwrap();
-                        let monitor_geometry = monitor.geometry();
-                        // TODO: Per documentation those dimensions should not be physical pixels.
-                        // But on Wayland they are physical pixels and on X11 not.
-                        // Taking the version that works on Wayland for now.
-                        // <https://gitlab.gnome.org/GNOME/gtk/-/issues/5391>
-                        let monitor_width = monitor_geometry.width() as f64 - 40.;
-                        let monitor_height = monitor_geometry.height() as f64 - 60.;
+                            let monitor_geometry = monitor.geometry();
+                            // TODO: Per documentation those dimensions should not be physical pixels.
+                            // But on Wayland they are physical pixels and on X11 not.
+                            // Taking the version that works on Wayland for now.
+                            // <https://gitlab.gnome.org/GNOME/gtk/-/issues/5391>
+                            let monitor_width = monitor_geometry.width() as f64 - 40.;
+                            let monitor_height = monitor_geometry.height() as f64 - 60.;
 
-                        // areas
-                        let monitor_area = monitor_width * monitor_height;
-                        let image_area = image_width as f64 * image_height as f64;
+                            // areas
+                            let monitor_area = monitor_width * monitor_height;
+                            let image_area = image_width as f64 * image_height as f64;
 
-                        let occupy_area_factor = if monitor_area < 1024. * 768. {
-                            // for small monitors occupy 80% of the area
-                            0.8
-                        } else {
-                            // for large monitors occupy 30% of the area
-                            0.3
-                        };
+                            let occupy_area_factor = if monitor_area < 1024. * 768. {
+                                // for small monitors occupy 80% of the area
+                                0.8
+                            } else {
+                                // for large monitors occupy 30% of the area
+                                0.3
+                            };
 
-                        // factor for width and height that will achieve the desired area occupation
-                        // derived from:
-                        // monitor_area * occupy_area_factor ==
-                        //   (image_width * size_scale) * (image_height * size_scale)
-                        let size_scale = f64::sqrt(monitor_area / image_area * occupy_area_factor);
-                        // ensure that we never increase image size
-                        let target_scale = f64::min(1.0, size_scale);
-                        let mut nat_width = image_width as f64 * target_scale;
-                        let mut nat_height = image_height as f64 * target_scale;
+                            // factor for width and height that will achieve the desired area occupation
+                            // derived from:
+                            // monitor_area * occupy_area_factor ==
+                            //   (image_width * size_scale) * (image_height * size_scale)
+                            let size_scale =
+                                f64::sqrt(monitor_area / image_area * occupy_area_factor);
+                            // ensure that we never increase image size
+                            let target_scale = f64::min(1.0, size_scale);
+                            let mut nat_width = image_width as f64 * target_scale;
+                            let mut nat_height = image_height as f64 * target_scale;
 
-                        // scale down if targeted occupation does not fit in one direction
-                        if nat_width > monitor_width {
-                            nat_width = monitor_width;
-                            nat_height = nat_height * monitor_width / nat_width;
+                            // scale down if targeted occupation does not fit in one direction
+                            if nat_width > monitor_width {
+                                nat_width = monitor_width;
+                                nat_height = nat_height * monitor_width / nat_width;
+                            }
+
+                            // same for other direction
+                            if nat_height > monitor_height {
+                                nat_height = monitor_height;
+                                nat_width = nat_width * monitor_height / nat_height;
+                            }
+
+                            let size = match orientation {
+                                gtk::Orientation::Horizontal => (nat_width / hidpi_scale).round(),
+                                gtk::Orientation::Vertical => (nat_height / hidpi_scale).round(),
+                                _ => unreachable!(),
+                            };
+
+                            return (0, size as i32, -1, -1);
                         }
-
-                        // same for other direction
-                        if nat_height > monitor_height {
-                            nat_height = monitor_height;
-                            nat_width = nat_width * monitor_height / nat_height;
-                        }
-
-                        let size = match orientation {
-                            gtk::Orientation::Horizontal => (nat_width / hidpi_scale).round(),
-                            gtk::Orientation::Vertical => (nat_height / hidpi_scale).round(),
-                            _ => unreachable!(),
-                        };
-
-                        return (0, size as i32, -1, -1);
                     }
                 }
             }
 
             // fallback if monitor size or image size is not known:
             // use original image size and hope for the best
-            // TODO: We could use a small default monitor size estimate instead
             let size = match orientation {
                 gtk::Orientation::Horizontal => image_width,
                 gtk::Orientation::Vertical => image_height,
                 _ => unreachable!(),
             };
+
+            log::warn!("Not enough information available to calculate fitting window size");
 
             (0, size, -1, -1)
         }
