@@ -53,6 +53,11 @@ static BACKGROUND_COLOR_DEFAULT: Lazy<gdk::RGBA> =
 static BACKGROUND_COLOR_ALTERNATE: Lazy<gdk::RGBA> =
     Lazy::new(|| gdk::RGBA::new(232. / 255., 231. / 255., 230. / 255., 1.));
 
+static BACKGROUND_COLOR_DEFAULT_LIGHT_MODE: Lazy<gdk::RGBA> =
+    Lazy::new(|| gdk::RGBA::new(250. / 255., 250. / 255., 250. / 255., 1.));
+static BACKGROUND_COLOR_ALTERNATE_LIGHT_MODE: Lazy<gdk::RGBA> =
+    Lazy::new(|| gdk::RGBA::new(103. / 255., 101. / 255., 110. / 255., 1.));
+
 /// Consider pixels with less than 70% opacity as being transparent
 static BACKGROUND_GUESS_TRANSPRAENT_PIXEL_THRESHOLD: u8 = (0.70 * 255.) as u8;
 /// Consider 3.5:1 contrast and worse to be bad contrast for a pixel
@@ -288,6 +293,16 @@ mod imp {
             obj.connect_scale_factor_notify(|obj| {
                 obj.queue_resize();
             });
+
+            adw::StyleManager::default().connect_dark_notify(glib::clone!(@weak obj => move |_| {
+                spawn(async move {
+                    let color = obj.background_color_guess().await;
+                    obj.set_background_color(color);
+                    if obj.is_mapped() {
+                        obj.queue_draw();
+                    }
+                });
+            }));
         }
 
         fn dispose(&self) {
@@ -1618,11 +1633,27 @@ impl LpImage {
     ///
     /// Returns the default color if no one has been guessed yet
     pub fn background_color(&self) -> gdk::RGBA {
-        (*self.imp().background_color.borrow()).unwrap_or(*BACKGROUND_COLOR_DEFAULT)
+        (*self.imp().background_color.borrow()).unwrap_or_else(Self::default_background_color)
     }
 
     pub fn set_background_color(&self, color: Option<gdk::RGBA>) {
         self.imp().background_color.replace(color);
+    }
+
+    pub fn default_background_color() -> gdk::RGBA {
+        if adw::StyleManager::default().is_dark() {
+            *BACKGROUND_COLOR_DEFAULT
+        } else {
+            *BACKGROUND_COLOR_DEFAULT_LIGHT_MODE
+        }
+    }
+
+    pub fn alternate_background_color() -> gdk::RGBA {
+        if adw::StyleManager::default().is_dark() {
+            *BACKGROUND_COLOR_ALTERNATE
+        } else {
+            *BACKGROUND_COLOR_ALTERNATE_LIGHT_MODE
+        }
     }
 
     /// Returns a background color that should give suitable contrast with transparent images
@@ -1635,7 +1666,7 @@ impl LpImage {
             .map_or(true, |x| x.is_potentially_transparent())
         {
             log::debug!("This format does not support transparency");
-            return Some(*BACKGROUND_COLOR_DEFAULT);
+            return Some(Self::default_background_color());
         }
 
         let (width, height) = self.original_dimensions();
@@ -1668,6 +1699,10 @@ impl LpImage {
         downloader.set_format(gdk::MemoryFormat::R8g8b8a8);
         let (bytes, stride) = downloader.download_bytes();
 
+        // Get here because only available in main thread
+        let alternate_color = Self::alternate_background_color();
+        let default_color = Self::default_background_color();
+
         gio::spawn_blocking(move || {
             let mut bytes_iter = bytes.iter();
             // Number of transparent pixels
@@ -1691,7 +1726,7 @@ impl LpImage {
                             *b as f32 / 255.,
                             *a as f32 / 255.,
                         );
-                        let contrast = crate::util::contrast_ratio(&BACKGROUND_COLOR_DEFAULT, &fg);
+                        let contrast = crate::util::contrast_ratio(&default_color, &fg);
 
                         if contrast < BACKGROUND_GUESS_LOW_CONTRAST_RATIO {
                             bad_contrast += 1;
@@ -1714,9 +1749,9 @@ impl LpImage {
             if part_transparent > BACKGROUND_GUESS_TRANSPRAENT_IMAGE_THRESHOLD
                 && part_bad_contrast > BACKGROUND_GUESS_LOW_CONTRAST_TRHESHOLD
             {
-                Some(*BACKGROUND_COLOR_ALTERNATE)
+                Some(alternate_color)
             } else {
-                Some(*BACKGROUND_COLOR_DEFAULT)
+                Some(default_color)
             }
         })
         .await
