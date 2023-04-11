@@ -11,7 +11,7 @@ use indexmap::IndexMap;
 use once_cell::sync::{Lazy, OnceCell};
 
 use std::cell::{Cell, RefCell};
-use std::path::{Path, PathBuf};
+//use std::path::{Path, PathBuf};
 
 static SCROLL_DAMPING_RATIO: f64 = 1.;
 static SCROLL_MASS: f64 = 0.5;
@@ -266,6 +266,11 @@ impl LpSlidingView {
 
     /// Add page to the specified position
     pub fn insert(&self, page: &LpImagePage, pos: usize) {
+        if pos > self.n_pages() {
+            log::error!("Invalid insert position {pos} for {}", page.file().uri());
+            return;
+        }
+
         let current_index = self.current_index();
 
         let previous_sibling = self.imp().pages.borrow().get(pos).cloned();
@@ -290,7 +295,7 @@ impl LpSlidingView {
             }
             self.shift_position(current_index);
         } else {
-            log::error!("Page to move not found");
+            log::error!("Page to move not found: {}", page.file().uri());
         }
     }
 
@@ -338,22 +343,23 @@ impl LpSlidingView {
     }
 
     /// Gives all pages with hash access via their path
-    pub fn pages(&self) -> IndexMap<PathBuf, LpImagePage> {
+    pub fn pages(&self) -> IndexMap<glib::GString, LpImagePage> {
         self.imp()
             .pages
             .borrow()
             .iter()
             .cloned()
-            .map(|x| (x.path(), x))
+            .map(|x| (x.file().uri(), x))
             .collect()
     }
 
-    pub fn get(&self, path: &Path) -> Option<LpImagePage> {
+    pub fn get(&self, file: &gio::File) -> Option<LpImagePage> {
+        let uri = file.uri();
         self.imp()
             .pages
             .borrow()
             .iter()
-            .find(|x| x.path() == path)
+            .find(|x| x.file().uri() == uri)
             .cloned()
     }
 
@@ -363,15 +369,17 @@ impl LpSlidingView {
     }
 
     pub fn scroll_to_velocity(&self, page: &LpImagePage, initial_velocity: f64) {
-        let index = self.index_of(page).unwrap();
+        if let Some(index) = self.index_of(page) {
+            let animation = self.scroll_animation();
 
-        let animation = self.scroll_animation();
-
-        animation.set_value_from(self.position());
-        animation.set_value_to(index as f64 - self.position_shift());
-        animation.set_initial_velocity(initial_velocity);
-        animation.play();
-        self.set_current_page(Some(page));
+            animation.set_value_from(self.position());
+            animation.set_value_to(index as f64 - self.position_shift());
+            animation.set_initial_velocity(initial_velocity);
+            animation.play();
+            self.set_current_page(Some(page));
+        } else {
+            log::error!("Page not in LpSlidingView {}", page.file().uri());
+        }
     }
 
     /// Animates removal of current page

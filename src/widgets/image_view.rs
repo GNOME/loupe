@@ -228,12 +228,12 @@ glib::wrapper! {
 
 #[gtk::template_callbacks]
 impl LpImageView {
-    pub fn set_image_from_path(&self, path: &Path) {
+    pub fn set_image_from_file(&self, file: &gio::File) {
         // Add image to recently used file. Does not work in Flatpaks:
         // <https://github.com/flatpak/xdg-desktop-portal/issues/215>
-        gtk::RecentManager::default().add_item(&gio::File::for_path(path).uri());
+        gtk::RecentManager::default().add_item(&file.uri());
 
-        if let Err(err) = self.load_path(path) {
+        if let Err(err) = self.load_file(file) {
             log::error!("Failed to load path: {err}");
             self.activate_action("win.show-toast", Some(&(err.to_string(), 1).to_variant()))
                 .unwrap();
@@ -244,39 +244,43 @@ impl LpImageView {
     // that holds a `gio::File` for each child within the same directory as the
     // file we pass. This model will update with changes to the directory,
     // and in turn we'll update our `adw::Carousel`.
-    fn load_path(&self, path: &Path) -> anyhow::Result<()> {
+    fn load_file(&self, file: &gio::File) -> anyhow::Result<()> {
         let sliding_view = self.sliding_view();
-        let directory = path.parent().map(|x| x.to_path_buf());
+        let directory = file.parent();
 
-        let is_same_directory = directory == self.model().directory();
+        let is_same_directory = if let (Some(d1), Some(d2)) = (&directory, self.model().directory())
+        {
+            d1.equal(&d2)
+        } else {
+            false
+        };
 
         if is_same_directory {
             log::debug!("Re-using old model and navigating to the current file");
-            self.navigate_to_path(path);
+            self.navigate_to_file(file);
             return Ok(());
         }
 
-        let model = LpFileModel::from_path(path);
+        let model = LpFileModel::from_file(file);
         self.set_model(model);
         log::debug!("New model created");
 
-        let page = LpImagePage::from_path(path);
+        let page = LpImagePage::from_file(file);
 
         sliding_view.clear();
         sliding_view.append(&page);
 
         // List other files in directory
         if let Some(directory) = directory {
-            let path = path.to_path_buf();
-            spawn(glib::clone!(@weak self as obj, @strong path => async move {
-                if let Err(err) = obj.model().load_directory(directory).await {
+            spawn(glib::clone!(@weak self as obj, @strong file => async move {
+                if let Err(err) = obj.model().load_directory(directory.clone()).await {
                     log::warn!("Failed to load directory: {err}");
                     obj.activate_action("win.show-toast", Some(&(err.to_string(), 1).to_variant()))
                         .unwrap();
                     return;
                 }
 
-                obj.update_sliding_view(&path);
+                obj.update_sliding_view(&file);
             }));
         }
 
@@ -285,52 +289,54 @@ impl LpImageView {
 
     /// Move forward or backwards
     pub fn navigate(&self, direction: Direction) {
-        if let Some(current_path) = self.current_path() {
-            let new_path = match direction {
-                Direction::Forward => self.model().after(&current_path),
-                Direction::Back => self.model().before(&current_path),
+        if let Some(current_file) = self.current_file() {
+            let new_file = match direction {
+                Direction::Forward => self.model().after(&current_file),
+                Direction::Back => self.model().before(&current_file),
             };
 
-            if let Some(new_path) = new_path {
-                self.scroll_sliding_view(&new_path);
+            if let Some(new_file) = new_file {
+                self.scroll_sliding_view(&new_file);
             }
         }
     }
 
     /// Jump to position
     pub fn jump(&self, position: Position) {
-        let new_path = match position {
+        let new_file = match position {
             Position::First => self.model().first(),
             Position::Last => self.model().last(),
         };
 
-        if let Some(new_path) = new_path {
-            self.navigate_to_path(&new_path);
+        if let Some(new_file) = new_file {
+            self.navigate_to_file(&new_file);
         }
     }
 
     /// Used for drag and drop
-    fn navigate_to_path(&self, new_path: &Path) {
+    fn navigate_to_file(&self, new_file: &gio::File) {
         let sliding_view = self.sliding_view();
 
-        if Some(new_path.to_path_buf()) == self.current_path() {
-            return;
+        if let Some(current_file) = self.current_file() {
+            if new_file.equal(&current_file) {
+                return;
+            }
         }
 
-        let Some(new_index) = self.model().index_of(new_path) else {
-            log::warn!("Could not navigate to file {new_path:?}");
+        let Some(new_index) = self.model().index_of(new_file) else {
+            log::warn!("Could not navigate to file {}", new_file.uri());
             return;
         };
 
         let current_index = self
-            .current_path()
+            .current_file()
             .and_then(|x| self.model().index_of(&x))
             .unwrap_or_default();
 
-        let page = if let Some(page) = sliding_view.get(new_path) {
+        let page = if let Some(page) = sliding_view.get(&new_file) {
             page
         } else {
-            let page = LpImagePage::from_path(new_path);
+            let page = LpImagePage::from_file(new_file);
 
             if new_index > current_index {
                 sliding_view.append(&page);
@@ -341,34 +347,37 @@ impl LpImageView {
             page
         };
 
-        log::debug!("Scrolling to page for {new_path:?}");
+        log::debug!("Scrolling to page for {}", new_file.uri());
         self.imp().preserve_content.set(true);
         sliding_view.scroll_to(&page);
     }
 
     /// Ensures the sliding view contains the correct images
-    fn update_sliding_view(&self, current_path: &Path) {
-        log::debug!("Updating sliding_view neighbors for current path {current_path:?}");
+    fn update_sliding_view(&self, current_file: &gio::File) {
+        log::debug!(
+            "Updating sliding_view neighbors for current path {}",
+            current_file.uri()
+        );
         let sliding_view = self.sliding_view();
 
         self.imp().preserve_content.set(false);
 
-        let existing = sliding_view.pages();
-        let target = self.model().files_around(current_path, BUFFER);
+        let existing = dbg!(sliding_view.pages());
+        let target = dbg!(self.model().files_around(current_file, BUFFER));
 
         // remove old pages
-        for (path, page) in &existing {
-            if !target.contains(path) {
-                sliding_view.remove(page);
+        for (uri, page) in &existing {
+            if !target.contains_key(uri) {
+                sliding_view.remove(dbg!(page));
             }
         }
 
         // add missing pages or put in correct position
-        for (position, path) in target.iter().enumerate() {
-            if let Some(page) = existing.get(path) {
-                sliding_view.move_to(page, position);
+        for (position, (_, file)) in target.iter().enumerate() {
+            if let Some(page) = existing.get(&file.uri()) {
+                sliding_view.move_to(page, dbg!(position));
             } else {
-                sliding_view.insert(&LpImagePage::from_path(path), position);
+                sliding_view.insert(&LpImagePage::from_file(file), dbg!(position));
             }
         }
 
@@ -376,9 +385,9 @@ impl LpImageView {
         self.notify("is-next-available");
     }
 
-    fn scroll_sliding_view(&self, path: &Path) {
-        let Some(current_page) = self.sliding_view().pages().remove(path) else {
-            log::error!("Current path not available in sliding_view for scrolling: {path:?}");
+    fn scroll_sliding_view(&self, file: &gio::File) {
+        let Some(current_page) = self.sliding_view().pages().remove(&file.uri()) else {
+            log::error!("Current path not available in sliding_view for scrolling: {}", file.uri());
             return;
         };
 
@@ -402,15 +411,15 @@ impl LpImageView {
 
     /// Handle files are added or removed from directory
     fn model_content_changed_cb(&self) {
-        let Some(current_path) = self.current_path() else { return; };
+        let Some(current_file) = self.current_file() else { return; };
 
         // LpImage did not get the update yet
         // Update will be handled by current_image_path_changed
-        if !self.model().contains(&current_path) {
+        if !self.model().contains(&current_file) {
             return;
         }
 
-        self.update_sliding_view(&current_path);
+        self.update_sliding_view(&current_file);
     }
 
     /// Handle current image being moved or deleted
@@ -424,9 +433,9 @@ impl LpImageView {
             }
         }
 
-        if let Some(current_path) = self.current_path() {
-            if self.model().contains(&current_path) && !self.imp().preserve_content.get() {
-                self.update_sliding_view(&current_path);
+        if let Some(current_file) = self.current_file() {
+            if self.model().contains(&current_file) && !self.imp().preserve_content.get() {
+                self.update_sliding_view(&current_file);
             }
         }
     }
@@ -446,8 +455,11 @@ impl LpImageView {
         self.imp().sliding_view.current_page()
     }
 
-    pub fn current_path(&self) -> Option<PathBuf> {
-        self.imp().sliding_view.current_page().map(|x| x.path())
+    pub fn current_uri(&self) -> Option<glib::GString> {
+        self.imp()
+            .sliding_view
+            .current_page()
+            .map(|x| x.file().uri())
     }
 
     pub fn current_file(&self) -> Option<gio::File> {
@@ -459,8 +471,8 @@ impl LpImageView {
 
     /// Returns `true` if there is an image before the current one
     pub fn is_previous_available(&self) -> bool {
-        if let Some(path) = self.current_path() {
-            self.model().index_of(&path) != Some(0)
+        if let Some(file) = self.current_file() {
+            self.model().index_of(&file) != Some(0)
         } else {
             false
         }
@@ -468,9 +480,9 @@ impl LpImageView {
 
     /// Returns `true` if there is an image after the current one
     pub fn is_next_available(&self) -> bool {
-        if let Some(path) = self.current_path() {
+        if let Some(file) = self.current_file() {
             let model = self.model();
-            model.index_of(&path) != Some(model.n_files().saturating_sub(1))
+            model.index_of(&file) != Some(model.n_files().saturating_sub(1))
         } else {
             false
         }
@@ -488,7 +500,7 @@ impl LpImageView {
         };
 
         if !self.imp().preserve_content.get() {
-            self.update_sliding_view(&new_page.path());
+            self.update_sliding_view(&new_page.file());
         }
     }
 
@@ -499,7 +511,7 @@ impl LpImageView {
 
         if self.imp().preserve_content.get() {
             if let Some(new_page) = &current_page {
-                self.update_sliding_view(&new_page.path());
+                self.update_sliding_view(&new_page.file());
             } else {
                 log::error!("No LpImagePage");
             }
@@ -508,7 +520,7 @@ impl LpImageView {
         // Reset zoom and rotation of other pages
         if let Some(new_page) = &current_page {
             let mut other_pages = self.sliding_view().pages();
-            other_pages.remove(&new_page.path());
+            other_pages.remove(&new_page.file().uri());
             for (_, page) in other_pages {
                 let image = page.image();
                 image.reset_rotation();
@@ -552,18 +564,18 @@ impl LpImageView {
     }
 
     pub async fn set_background(&self) -> anyhow::Result<()> {
-        let background = self
-            .current_path()
-            .and_then(|p| std::fs::File::open(p).ok())
-            .context(gettext("Failed to open new background image"))?;
-        let native = self.native().expect("View should have a GtkNative");
+        let uri = self
+            .current_file()
+            .and_then(|f| url::Url::parse(f.uri().as_str()).ok())
+            .context("Invalid URL for background image")?;
+        let native = self.native().context("View should have a GtkNative")?;
         let id = WindowIdentifier::from_native(&native).await;
 
         match wallpaper::WallpaperRequest::default()
             .set_on(wallpaper::SetOn::Background)
             .show_preview(true)
             .identifier(id)
-            .build_file(&background)
+            .build_uri(&uri)
             .await
         {
             // We use `1` here because we can't pass enums directly as GVariants,
@@ -590,37 +602,6 @@ impl LpImageView {
     }
 
     pub fn print(&self) -> anyhow::Result<()> {
-        let operation = gtk::PrintOperation::new();
-        let path = self.current_path().context("No file")?;
-        let pb = gdk_pixbuf::Pixbuf::from_file(path)?;
-
-        let setup = gtk::PageSetup::default();
-        let page_size = gtk::PaperSize::new(Some(gtk::PAPER_NAME_A4));
-        setup.set_paper_size(&page_size);
-        operation.set_default_page_setup(Some(&setup));
-
-        let settings = gtk::PrintSettings::default();
-        operation.set_print_settings(Some(&settings));
-
-        operation.connect_begin_print(move |op, _| {
-            op.set_n_pages(1);
-        });
-
-        // FIXME: Rework all of this after reading https://cairographics.org/manual/cairo-Image-Surfaces.html
-        // Since I don't know cairo; See also eog-print.c
-        operation.connect_draw_page(clone!(@weak pb => move |_, ctx, _| {
-            let cr = ctx.cairo_context();
-            cr.set_source_pixbuf(&pb, 0.0, 0.0);
-            let _ = cr.paint();
-        }));
-
-        log::debug!("Running print operation...");
-        let root = self.root().context("Could not get root for widget")?;
-        let window = root
-            .downcast_ref::<gtk::Window>()
-            .context("Could not downcast to GtkWindow")?;
-        operation.run(gtk::PrintOperationAction::PrintDialog, Some(window))?;
-
         Ok(())
     }
 

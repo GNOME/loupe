@@ -72,10 +72,8 @@ mod imp {
         fn open(&self, files: &[gio::File], _hint: &str) {
             let application = self.obj();
             for file in files {
-                let Some(path) = file.path() else { log::error!("File has no path {}", file.uri()); return; };
-
                 let win = LpWindow::new(&*application);
-                win.set_image_from_path(&path);
+                win.set_image_from_file(&file);
             }
         }
     }

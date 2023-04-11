@@ -66,10 +66,7 @@ pub async fn query_attributes_future(
     .context("Failed to query attributes")
 }
 
-pub fn compare_by_name(file_a: &Path, file_b: &Path) -> std::cmp::Ordering {
-    let name_a = file_a.display().to_string();
-    let name_b = file_b.display().to_string();
-
+pub fn compare_by_name(name_a: &glib::GString, name_b: &glib::GString) -> std::cmp::Ordering {
     let key_a = glib::FilenameCollationKey::from(name_a);
     let key_b = glib::FilenameCollationKey::from(name_b);
 

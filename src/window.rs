@@ -349,7 +349,7 @@ mod imp {
                         .map(|t| t.to_string())
                         .filter(|t| t.starts_with("image/"))
                         .is_some() {
-                        obj.set_image_from_path(&file.path().unwrap());
+                        obj.set_image_from_file(&file);
                     } else {
                         obj.show_toast(
                             gettext_f("“{}” is not a valid image.", &[&info.display_name()]),
@@ -434,17 +434,16 @@ impl LpWindow {
             .build();
 
         if let Ok(file) = chooser.open_future(Some(self)).await {
-            self.set_image_from_path(&file.path().unwrap());
+            self.set_image_from_file(&file);
         } else {
-            // TODO: ui error
-            log::error!("Failed to choose file");
+            log::debug!("File dialog canceled or file not readable");
         }
     }
 
     async fn open_with(&self) {
         let imp = self.imp();
 
-        if let Some(ref file) = imp.image_view.current_path().map(gio::File::for_path) {
+        if let Some(ref file) = imp.image_view.current_file() {
             let launcher = gtk::FileLauncher::new(Some(file));
             if let Err(e) = launcher.launch_future(Some(self)).await {
                 if !e.matches(gtk::DialogError::Dismissed) {
@@ -491,7 +490,7 @@ impl LpWindow {
 
     async fn trash(&self) {
         let image_view = self.image_view();
-        let (Some(file), Some(path)) = (image_view.current_file(), image_view.current_path())
+        let (Some(file), Some(path)) = (image_view.current_file(), image_view.current_file().and_then(|x| x.path()))
             else { log::error!("No file to trash"); return; };
 
         let result = file.trash_future(glib::Priority::default()).await;
@@ -507,7 +506,7 @@ impl LpWindow {
                     spawn(async move {
                         let result = crate::util::untrash(&path).await;
                         match result {
-                            Ok(()) => win.image_view().set_image_from_path(&path),
+                            Ok(()) => win.image_view().set_image_from_file(&gio::File::for_path(&path)),
                             Err(err) => {
                                 log::error!("Failed to untrash {path:?}: {err}");
                                 win.show_toast(
@@ -583,11 +582,11 @@ impl LpWindow {
         imp.toast_overlay.add_toast(toast);
     }
 
-    pub fn set_image_from_path(&self, path: &Path) {
+    pub fn set_image_from_file(&self, file: &gio::File) {
         let imp = self.imp();
 
-        log::debug!("Loading file: {path:?}");
-        imp.image_view.set_image_from_path(path);
+        log::debug!("Loading file: {}", file.uri());
+        imp.image_view.set_image_from_file(file);
         self.set_actions_enabled(true);
     }
 

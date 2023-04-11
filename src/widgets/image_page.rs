@@ -31,7 +31,7 @@ use gtk::prelude::*;
 use gtk::CompositeTemplate;
 use once_cell::sync::Lazy;
 
-use std::path::{Path, PathBuf};
+use std::path::PathBuf;
 
 mod imp {
     use super::*;
@@ -148,23 +148,21 @@ glib::wrapper! {
 }
 
 impl LpImagePage {
-    pub fn from_path(path: &Path) -> Self {
+    pub fn from_file(file: &gio::File) -> Self {
         let obj = glib::Object::new::<Self>();
-        let path = path.to_path_buf();
-        let file = gio::File::for_path(&path);
 
         obj.imp().image.set_file(&file);
 
-        spawn(clone!(@weak obj, @strong path => async move {
+        spawn(clone!(@weak obj, @strong file => async move {
             let imp = obj.imp();
-            imp.image.load(&path).await;
+            imp.image.load(&file).await;
         }));
 
         obj
     }
 
-    pub fn path(&self) -> PathBuf {
-        self.image().path().unwrap()
+    pub fn file(&self) -> gio::File {
+        self.image().file().unwrap()
     }
 
     pub fn scrolled_window(&self) -> gtk::ScrolledWindow {

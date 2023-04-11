@@ -43,7 +43,7 @@ use once_cell::sync::Lazy;
 use once_cell::unsync::OnceCell;
 
 use std::cell::{Cell, RefCell};
-use std::path::{Path, PathBuf};
+use std::path::PathBuf;
 use std::sync::Arc;
 
 /// Default background color around images and behind transparent images
@@ -742,9 +742,8 @@ glib::wrapper! {
 }
 
 impl LpImage {
-    pub async fn load(&self, path: &Path) {
-        let path = path.to_path_buf();
-        let file = gio::File::for_path(&path);
+    pub async fn load(&self, file: &gio::File) {
+        let path = file.path().unwrap();
         self.set_file(&file);
 
         if !path.is_file() {
@@ -963,7 +962,7 @@ impl LpImage {
                 let file = file_a.clone();
                 // TODO: error handling is missing
                 spawn(async move {
-                    obj.load(&file.path().unwrap()).await;
+                    obj.load(&file).await;
                 });
             }
             gio::FileMonitorEvent::Deleted

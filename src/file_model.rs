@@ -21,12 +21,11 @@ use crate::deps::*;
 use crate::util;
 use crate::util::gettext::*;
 
-use std::path::{Path, PathBuf};
-
 use anyhow::Context;
 use gio::prelude::*;
 use gio::subclass::prelude::*;
-use indexmap::IndexSet;
+use glib::GString;
+use indexmap::{IndexMap, IndexSet};
 use once_cell::sync::{Lazy, OnceCell};
 use std::cell::RefCell;
 
@@ -38,8 +37,8 @@ mod imp {
     pub struct LpFileModel {
         /// Use and IndexSet such that we can put the elements into an arbitrary order
         /// while still having fast hash access via `PathBuf`.
-        pub(super) files: RefCell<IndexSet<PathBuf>>,
-        pub(super) directory: OnceCell<PathBuf>,
+        pub(super) files: RefCell<IndexMap<GString, gio::File>>,
+        pub(super) directory: OnceCell<gio::File>,
         /// Track file changes.
         pub(super) monitor: OnceCell<gio::FileMonitor>,
     }
@@ -71,12 +70,12 @@ impl Default for LpFileModel {
 
 impl LpFileModel {
     /// Create with a single element
-    pub fn from_path(path: &Path) -> Self {
+    pub fn from_file(file: &gio::File) -> Self {
         let model = Self::default();
 
         {
             let mut vec = model.imp().files.borrow_mut();
-            vec.insert(path.to_path_buf());
+            vec.insert(file.uri(), file.clone());
         }
 
         model
@@ -85,10 +84,10 @@ impl LpFileModel {
     /// Load all file from the given directory
     ///
     /// This can be used if there are already files present
-    pub async fn load_directory(&self, directory: PathBuf) -> anyhow::Result<()> {
+    pub async fn load_directory(&self, directory: gio::File) -> anyhow::Result<()> {
         self.imp().directory.set(directory.clone()).unwrap();
 
-        let monitor = gio::File::for_path(&directory)
+        let monitor = directory
             .monitor_directory(gio::FileMonitorFlags::WATCH_MOVES, gio::Cancellable::NONE)?;
 
         monitor.connect_changed(
@@ -99,9 +98,9 @@ impl LpFileModel {
         self.imp().monitor.set(monitor).unwrap();
 
         let new_files_result = gio::spawn_blocking(move || {
-            let mut files = IndexSet::new();
+            let mut files = IndexMap::new();
 
-            let enumerator = gio::File::for_path(&directory)
+            let enumerator = directory
                 .enumerate_children(
                     &format!(
                         "{},{}",
@@ -118,9 +117,8 @@ impl LpFileModel {
                     if let Some(content_type) = info.content_type().map(|t| t.to_string()) {
                         // Filter out non-images; For now we support "all" image types.
                         if content_type.starts_with("image/") {
-                            let path = PathBuf::from_iter([directory.clone(), info.name()]);
-                            log::debug!("{path:?} is an image, adding to the list");
-                            files.insert(path);
+                            let file = directory.child(info.name());
+                            files.insert(file.uri(), file);
                         }
                     }
                 }
@@ -141,8 +139,8 @@ impl LpFileModel {
             // Here we use a nested scope so that the mutable borrow only lasts as long as we need it
 
             let mut files = self.imp().files.borrow_mut();
-            for path in files.iter() {
-                new_files.insert(path.clone());
+            for (uri, file) in files.iter() {
+                new_files.insert(uri.clone(), file.clone());
             }
             *files = new_files;
             // Then sort by name.
@@ -152,47 +150,49 @@ impl LpFileModel {
         Ok(())
     }
 
-    pub fn directory(&self) -> Option<PathBuf> {
+    pub fn directory(&self) -> Option<gio::File> {
         self.imp().directory.get().cloned()
     }
 
-    pub fn index_of(&self, path: &Path) -> Option<usize> {
-        self.imp().files.borrow().get_index_of(path)
+    pub fn index_of(&self, file: &gio::File) -> Option<usize> {
+        self.imp().files.borrow().get_index_of(&file.uri())
     }
 
     pub fn n_files(&self) -> usize {
         self.imp().files.borrow().len()
     }
 
-    pub fn contains(&self, path: &Path) -> bool {
-        self.imp().files.borrow().contains(path)
+    pub fn contains(&self, file: &gio::File) -> bool {
+        self.imp().files.borrow().contains_key(&file.uri())
     }
 
-    pub fn before(&self, path: &Path) -> Option<PathBuf> {
-        let index = self.index_of(path)?;
+    pub fn before(&self, file: &gio::File) -> Option<gio::File> {
+        let index = self.index_of(&file)?;
 
         self.imp()
             .files
             .borrow()
             .get_index(index.checked_sub(1)?)
+            .map(|x| x.1)
             .cloned()
     }
 
-    pub fn after(&self, path: &Path) -> Option<PathBuf> {
-        let index = self.index_of(path)?;
+    pub fn after(&self, file: &gio::File) -> Option<gio::File> {
+        let index = self.index_of(file)?;
 
         self.imp()
             .files
             .borrow()
             .get_index(index.checked_add(1)?)
+            .map(|x| x.1)
             .cloned()
     }
 
     /// Returns `n` elements before and after given path
-    pub fn files_around(&self, path: &Path, n: usize) -> IndexSet<PathBuf> {
-        let Some(index) = self.index_of(path) else {
-            log::error!("Path not in model: {path:?}");
-            return IndexSet::new();
+    pub fn files_around(&self, file: &gio::File, n: usize) -> IndexMap<GString, gio::File> {
+        let Some(index) = self.index_of(file) else {
+            log::error!("URI not in model: {}", file.uri());
+            return IndexMap::new();
         };
 
         let reduce = if index < n { n - index } else { 0 };
@@ -203,23 +203,23 @@ impl LpFileModel {
             .iter()
             .skip(index.saturating_sub(n))
             .take(2 * n + 1 - reduce)
-            .cloned()
+            .map(|(k, v)| (k.clone(), v.clone()))
             .collect()
     }
 
     /// Return first path
-    pub fn first(&self) -> Option<PathBuf> {
-        self.imp().files.borrow().first().cloned()
+    pub fn first(&self) -> Option<gio::File> {
+        self.imp().files.borrow().first().map(|x| x.1).cloned()
     }
 
     /// Returns last path
-    pub fn last(&self) -> Option<PathBuf> {
-        self.imp().files.borrow().last().cloned()
+    pub fn last(&self) -> Option<gio::File> {
+        self.imp().files.borrow().last().map(|x| x.1).cloned()
     }
 
     /// Currently sorts by name
-    fn sort(files: &mut IndexSet<PathBuf>) {
-        files.sort_by(|x, y| util::compare_by_name(x, y));
+    fn sort(files: &mut IndexMap<GString, gio::File>) {
+        files.sort_by(|_, x, _, y| util::compare_by_name(&x.uri(), &y.uri()));
     }
 
     /// Determines if a file is added
@@ -253,12 +253,6 @@ impl LpFileModel {
         file_a: &gio::File,
         file_b: Option<&gio::File>,
     ) {
-        let Some(path_a) = file_a.path() else {
-            log::error!("File has no path: {event}");
-            return;
-        };
-        let path_b = file_b.and_then(|x| x.path());
-
         let changed = match event {
             gio::FileMonitorEvent::Created
             | gio::FileMonitorEvent::MovedIn
@@ -268,7 +262,7 @@ impl LpFileModel {
                 if Self::is_image_file(file_a) =>
             {
                 let mut files = self.imp().files.borrow_mut();
-                let changed = files.insert(path_a);
+                let changed = files.insert(file_a.uri(),file_a.clone()).is_some();
                 if changed {
                     Self::sort(&mut files);
                 }
@@ -276,20 +270,20 @@ impl LpFileModel {
             }
             gio::FileMonitorEvent::Deleted | gio::FileMonitorEvent::MovedOut | gio::FileMonitorEvent::Unmounted => {
                 let mut files = self.imp().files.borrow_mut();
-                let changed = files.remove(&path_a);
+                let changed = files.remove(&file_a.uri()).is_some();
                 if changed {
                     Self::sort(&mut files);
                 }
                 changed
             }
             gio::FileMonitorEvent::Renamed => {
-                if let (Some(path_b), Some(file_b)) = (path_b, file_b) {
+                if let Some(file_b) = file_b {
                     let mut changed = false;
                     {
                         let mut files = self.imp().files.borrow_mut();
-                        changed |= files.remove(&path_a);
+                        changed |= files.remove(&file_a.uri()).is_some();
                         if Self::is_image_file(file_b) {
-                            changed |= files.insert(path_b);
+                            changed |= files.insert(file_b.uri(), file_b.clone()).is_some();
                             if changed {
                                 Self::sort(&mut files);
                             }

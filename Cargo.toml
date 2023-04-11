@@ -25,6 +25,7 @@ safe-transmute = "0.11.2"
 image-rs = { package = "image", version = "0.24.6" }
 libheif-rs = "0.19.0"
 librsvg = { git = "https://gitlab.gnome.org/GNOME/librsvg.git", rev = "2.56.0" }
+url = "2.3.1"
 
 [dependencies.ashpd]
 version = "0.4.0"
