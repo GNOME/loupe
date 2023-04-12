@@ -1,9 +1,6 @@
-vulnerability = "deny"
-unmaintained = "deny"
-yanked = "deny"
-notice = "warn"
-
 [advisories]
+yanked = "deny"
+
 # A list of advisory IDs to ignore. Note that ignored advisories will still
 # output a note when they are encountered.
 ignore = [
