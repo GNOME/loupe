@@ -653,7 +653,12 @@ mod imp {
             ));
 
             // Apply rotation and mirroring
-            widget.snapshot_rotate_mirror(snapshot, widget.rotation() as f32, widget.mirrored());
+            widget.snapshot_rotate_mirror(
+                snapshot,
+                widget.rotation() as f32,
+                widget.mirrored(),
+                applicable_zoom,
+            );
 
             // Add texture(s)
             self.frame_buffer
@@ -978,7 +983,7 @@ impl LpImage {
 
     /// Returns a thumbnail of the displated image
     pub fn thumbnail(&self) -> Option<gdk::Paintable> {
-        let (width, height) = self.original_dimensions();
+        let (width, height) = self.image_size();
         let long_side = i32::max(width, height);
         let orientation = self.metadata().orientation();
 
@@ -995,6 +1000,7 @@ impl LpImage {
             &snapshot,
             -orientation.rotation as f32,
             orientation.mirrored,
+            scale as f64,
         );
 
         self.imp()
@@ -1384,19 +1390,27 @@ impl LpImage {
     /// represent the actual size. The size returned might well be
     /// larger than what can actually be displayed within the widget.
     pub fn image_displayed_width(&self) -> f64 {
-        let (width, height) = self.original_dimensions();
-
-        let rotated = self.rotation().to_radians().sin().abs();
-
-        ((1. - rotated) * width as f64 + rotated * height as f64) * self.applicable_zoom()
+        self.image_width(self.applicable_zoom())
     }
 
     pub fn image_displayed_height(&self) -> f64 {
+        self.image_height(self.applicable_zoom())
+    }
+
+    pub fn image_width(&self, zoom: f64) -> f64 {
         let (width, height) = self.original_dimensions();
 
         let rotated = self.rotation().to_radians().sin().abs();
 
-        ((1. - rotated) * height as f64 + rotated * width as f64) * self.applicable_zoom()
+        ((1. - rotated) * width as f64 + rotated * height as f64) * zoom
+    }
+
+    pub fn image_height(&self, zoom: f64) -> f64 {
+        let (width, height) = self.original_dimensions();
+
+        let rotated = self.rotation().to_radians().sin().abs();
+
+        ((1. - rotated) * height as f64 + rotated * width as f64) * zoom
     }
 
     /// Stepwise scrolls inside an image when zoomed in
@@ -1540,20 +1554,25 @@ impl LpImage {
     ///
     /// After the operation the image is positioned such that it's origin
     /// is a `(0, 0)` again.
-    fn snapshot_rotate_mirror(&self, snapshot: &gtk::Snapshot, rotation: f32, mirrored: bool) {
+    fn snapshot_rotate_mirror(
+        &self,
+        snapshot: &gtk::Snapshot,
+        rotation: f32,
+        mirrored: bool,
+        zoom: f64,
+    ) {
         if rotation == 0. && !mirrored {
             return;
         }
 
-        let zoom = self.applicable_zoom() as f32;
         let (original_width, original_height) = self.original_dimensions();
-        let displayed_width = self.image_displayed_width() as f32;
-        let displayed_height = self.image_displayed_height() as f32;
+        let width = self.image_width(zoom) as f32;
+        let height = self.image_height(zoom) as f32;
 
         // Put image origin at (0, 0) again with rotation
         snapshot.translate(&graphene::Point::new(
-            self.round_f32(displayed_width / 2.),
-            self.round_f32(displayed_height / 2.),
+            self.round_f32(width / 2.),
+            self.round_f32(height / 2.),
         ));
 
         // Apply the transformations from properties
@@ -1566,8 +1585,8 @@ impl LpImage {
         // Needed for rotating around the center of the image, and
         // mirroring the image does not put it to a completely different position.
         snapshot.translate(&graphene::Point::new(
-            -self.round_f32(original_width as f32 * zoom / 2.),
-            -self.round_f32(original_height as f32 * zoom / 2.),
+            -self.round_f32(original_width as f32 * zoom as f32 / 2.),
+            -self.round_f32(original_height as f32 * zoom as f32 / 2.),
         ));
     }
 
