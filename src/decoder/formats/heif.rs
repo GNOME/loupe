@@ -2,14 +2,16 @@
 use super::*;
 use crate::decoder::tiling::{self, FrameBufferExt};
 use crate::deps::*;
+use crate::util;
 use crate::util::gettext::*;
 use crate::util::ToBufRead;
 
 use anyhow::Context;
 use arc_swap::ArcSwap;
 use gtk::prelude::*;
-use libheif_rs::{ColorSpace, HeifContext, LibHeif, Plane, RgbChroma};
+use libheif_rs::{ColorProfile, ColorSpace, HeifContext, LibHeif, Plane, RgbChroma};
 use once_cell::sync::Lazy;
+use rgb::AsPixels;
 
 use std::sync::Arc;
 
@@ -73,6 +75,21 @@ impl Heif {
                 .decode(&handle, ColorSpace::Rgb(rgb_chroma), None)
                 .context(gettext("Failed to decode image"))?;
 
+            let icc_profile = if let Some(profile) = handle.color_profile_raw() {
+                if [
+                    libheif_rs::color_profile_types::R_ICC,
+                    libheif_rs::color_profile_types::PROF,
+                ]
+                .contains(&profile.profile_type())
+                {
+                    Some(profile.data)
+                } else {
+                    None
+                }
+            } else {
+                None
+            };
+
             let plane = image
                 .planes_mut()
                 .interleaved
@@ -83,6 +100,7 @@ impl Heif {
                 has_alpha_channel: handle.has_alpha_channel(),
                 pre_multiplied_alpha: handle.is_premultiplied_alpha(),
                 rgb_chroma,
+                icc_profile,
             };
 
             let tile = tiling::Tile {
@@ -106,6 +124,7 @@ pub struct Decoded<'a> {
     has_alpha_channel: bool,
     pre_multiplied_alpha: bool,
     rgb_chroma: RgbChroma,
+    icc_profile: Option<Vec<u8>>,
 }
 
 impl<'a> Decoded<'a> {
@@ -150,7 +169,19 @@ impl<'a> Decoded<'a> {
             RgbChroma::C444 => unreachable!(),
         };
 
-        let bytes = glib::Bytes::from_owned(self.plane.data.to_vec());
+        let mut buffer = self.plane.data.to_vec();
+
+        if let Some(icc_profile) = &self.icc_profile {
+            if memory_format == gdk::MemoryFormat::R8g8b8 {
+                util::new_trafo::<rgb::RGB8>(icc_profile, lcms2::PixelFormat::RGB_8)?
+                    .transform_in_place(buffer.as_pixels_mut());
+            } else if memory_format == gdk::MemoryFormat::R8g8b8a8 {
+                util::new_trafo::<rgb::RGBA8>(icc_profile, lcms2::PixelFormat::RGBA_8)?
+                    .transform_in_place(buffer.as_pixels_mut());
+            }
+        }
+
+        let bytes = glib::Bytes::from_owned(buffer);
 
         let tex = gdk::MemoryTexture::new(
             self.plane.width as i32,

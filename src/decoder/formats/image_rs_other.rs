@@ -2,13 +2,15 @@
 use super::*;
 use crate::decoder::tiling::{self, FrameBufferExt};
 use crate::deps::*;
+use crate::util;
 use crate::util::gettext::*;
 use crate::util::{BufReadSeek, ToBufRead};
 
 use anyhow::{bail, Context};
 use arc_swap::ArcSwap;
 use gtk::prelude::*;
-use image_rs::AnimationDecoder;
+use image_rs::{AnimationDecoder, ImageDecoder};
+use rgb::AsPixels;
 
 use std::sync::Arc;
 
@@ -87,13 +89,38 @@ impl ImageRsOther {
 
             tiles.set_original_dimensions(dimensions);
 
-            let mut reader = Self::reader(&file, format)?;
+            let (icc_profile, dynamic_image) = match format {
+                image_rs::ImageFormat::Jpeg => {
+                    let reader = file.to_buf_read()?;
+                    let mut decoder = image_rs::codecs::jpeg::JpegDecoder::new(reader)?;
+                    let _ = decoder.set_limits(image_rs::io::Limits::no_limits());
+                    let icc_profile = decoder.icc_profile();
+                    let dynamic_image = image_rs::DynamicImage::from_decoder(decoder)
+                        .context(gettext("Failed to decode image"))?;
+                    (icc_profile, dynamic_image)
+                }
+                image_rs::ImageFormat::Png => {
+                    let reader = file.to_buf_read()?;
+                    let mut decoder = image_rs::codecs::png::PngDecoder::new(reader)?;
+                    let _ = decoder.set_limits(image_rs::io::Limits::no_limits());
+                    let icc_profile = decoder.icc_profile();
+                    let dynamic_image = image_rs::DynamicImage::from_decoder(decoder)
+                        .context(gettext("Failed to decode image"))?;
+                    (icc_profile, dynamic_image)
+                }
+                _ => {
+                    let mut reader = Self::reader(&file, format)?;
+                    reader.limits(image_rs::io::Limits::no_limits());
+                    let dynamic_image =
+                        reader.decode().context(gettext("Failed to decode image"))?;
+                    (None, dynamic_image)
+                }
+            };
 
-            reader.limits(image_rs::io::Limits::no_limits());
-
-            let dynamic_image = reader.decode().context(gettext("Failed to decode image"))?;
-
-            let decoded_image = Decoded { dynamic_image };
+            let decoded_image = Decoded {
+                dynamic_image,
+                icc_profile,
+            };
 
             let tile = tiling::Tile {
                 position: (0, 0),
@@ -177,7 +204,10 @@ impl ImageRsOther {
 
                             let dynamic_image = image_rs::DynamicImage::from(rgb_image);
 
-                            let decoded_image = Decoded { dynamic_image };
+                            let decoded_image = Decoded {
+                                dynamic_image,
+                                icc_profile: None,
+                            };
 
                             let tile = tiling::Tile {
                                 position,
@@ -224,6 +254,7 @@ impl ImageRsOther {
 
 pub struct Decoded {
     dynamic_image: image_rs::DynamicImage,
+    icc_profile: Option<Vec<u8>>,
 }
 
 impl Decoded {
@@ -247,18 +278,30 @@ impl Decoded {
                     buffer.into_raw(),
                 )
             }
-            image_rs::DynamicImage::ImageRgb8(buffer) => (
-                1,
-                gdk::MemoryFormat::R8g8b8,
-                buffer.sample_layout(),
-                buffer.into_raw(),
-            ),
-            image_rs::DynamicImage::ImageRgba8(buffer) => (
-                1,
-                gdk::MemoryFormat::R8g8b8a8,
-                buffer.sample_layout(),
-                buffer.into_raw(),
-            ),
+            image_rs::DynamicImage::ImageRgb8(mut buffer) => {
+                if let Some(icc_profile) = &self.icc_profile {
+                    util::new_trafo::<rgb::RGB8>(icc_profile, lcms2::PixelFormat::RGB_8)?
+                        .transform_in_place(buffer.as_pixels_mut());
+                }
+                (
+                    1,
+                    gdk::MemoryFormat::R8g8b8,
+                    buffer.sample_layout(),
+                    buffer.into_raw(),
+                )
+            }
+            image_rs::DynamicImage::ImageRgba8(mut buffer) => {
+                if let Some(icc_profile) = &self.icc_profile {
+                    util::new_trafo::<rgb::RGBA8>(icc_profile, lcms2::PixelFormat::RGBA_8)?
+                        .transform_in_place(buffer.as_pixels_mut());
+                }
+                (
+                    1,
+                    gdk::MemoryFormat::R8g8b8a8,
+                    buffer.sample_layout(),
+                    buffer.into_raw(),
+                )
+            }
             img @ image_rs::DynamicImage::ImageLuma16(_) => {
                 let buffer = img.to_rgb16();
                 (

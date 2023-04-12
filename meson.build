@@ -12,6 +12,7 @@ dependency('gtk4', version: '>=4.11.1')
 dependency('libadwaita-1', version: '>=1.3.0')
 dependency('gweather4', version: '>=4.0.0')
 dependency('libheif', version: '>=1.14.2')
+dependency('lcms2', version: '>=2.12.0')
 
 cargo = find_program('cargo', required: true)
 

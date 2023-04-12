@@ -228,3 +228,20 @@ pub fn spawn<R: 'static, F: std::future::Future<Output = R> + 'static>(
     let ctx = glib::MainContext::default();
     ctx.spawn_local(f)
 }
+
+pub fn new_trafo<F: Copy>(
+    icc_profile: &[u8],
+    src_format: lcms2::PixelFormat,
+) -> anyhow::Result<lcms2::Transform<F, F>> {
+    let src_profile = lcms2::Profile::new_icc(icc_profile)?;
+
+    let target_profile = lcms2::Profile::new_srgb();
+
+    Ok(lcms2::Transform::new(
+        &src_profile,
+        src_format,
+        &target_profile,
+        src_format,
+        lcms2::Intent::Perceptual,
+    )?)
+}
