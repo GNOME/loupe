@@ -44,7 +44,6 @@ use gtk::CompositeTemplate;
 use once_cell::sync::Lazy;
 
 use std::cell::{Cell, RefCell};
-use std::path::{Path, PathBuf};
 
 // The number of pages we want to buffer
 // on either side of the current page.
@@ -139,7 +138,7 @@ mod imp {
 
             let view = &*obj;
             signal_group.connect_closure(
-                "notify::path",
+                "notify::file",
                 true,
                 glib::closure_local!(@watch view => move |_: LpImage, _: glib::ParamSpec| {
                     view.current_image_path_changed();
@@ -333,7 +332,7 @@ impl LpImageView {
             .and_then(|x| self.model().index_of(&x))
             .unwrap_or_default();
 
-        let page = if let Some(page) = sliding_view.get(&new_file) {
+        let page = if let Some(page) = sliding_view.get(new_file) {
             page
         } else {
             let page = LpImagePage::from_file(new_file);
@@ -362,22 +361,22 @@ impl LpImageView {
 
         self.imp().preserve_content.set(false);
 
-        let existing = dbg!(sliding_view.pages());
-        let target = dbg!(self.model().files_around(current_file, BUFFER));
+        let existing = sliding_view.pages();
+        let target = self.model().files_around(current_file, BUFFER);
 
         // remove old pages
         for (uri, page) in &existing {
             if !target.contains_key(uri) {
-                sliding_view.remove(dbg!(page));
+                sliding_view.remove(page);
             }
         }
 
         // add missing pages or put in correct position
         for (position, (_, file)) in target.iter().enumerate() {
             if let Some(page) = existing.get(&file.uri()) {
-                sliding_view.move_to(page, dbg!(position));
+                sliding_view.move_to(page, position);
             } else {
-                sliding_view.insert(&LpImagePage::from_file(file), dbg!(position));
+                sliding_view.insert(&LpImagePage::from_file(file), position);
             }
         }
 

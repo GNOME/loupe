@@ -3,14 +3,14 @@ use super::*;
 use crate::decoder::tiling::{self, FrameBufferExt};
 use crate::deps::*;
 use crate::util::gettext::*;
-use gtk::prelude::*;
+use crate::util::ToBufRead;
 
 use anyhow::Context;
 use arc_swap::ArcSwap;
+use gtk::prelude::*;
 use libheif_rs::{ColorSpace, HeifContext, LibHeif, Plane, RgbChroma};
 use once_cell::sync::Lazy;
 
-use std::path::PathBuf;
 use std::sync::Arc;
 
 #[derive(Debug)]
@@ -21,14 +21,24 @@ static LIBHEIF: Lazy<LibHeif> = Lazy::new(LibHeif::new);
 
 impl Heif {
     pub fn new(
-        path: PathBuf,
+        file: gio::File,
         updater: UpdateSender,
         tiles: Arc<ArcSwap<tiling::FrameBuffer>>,
     ) -> Self {
         log::debug!("Loading HEIF");
         updater.spawn_error_handled(move || {
-            let ctx = HeifContext::read_from_file(&path.display().to_string())
-                .context(gettext("Failed to read image"))?;
+            let file_size = file
+                .query_info(
+                    gio::FILE_ATTRIBUTE_STANDARD_SIZE,
+                    gio::FileQueryInfoFlags::NONE,
+                    gio::Cancellable::NONE,
+                )
+                .context(gettext("Failed to read image file information"))?
+                .size();
+            let buf_reader = file.to_buf_read()?;
+            let stream_reader = libheif_rs::StreamReader::new(buf_reader, file_size as u64);
+            let ctx = HeifContext::read_from_reader(Box::new(stream_reader))
+                .context(gettext("Failed to decode image"))?;
             let handle = ctx.primary_image_handle()?;
 
             tiles.set_original_dimensions((handle.width(), handle.height()));

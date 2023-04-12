@@ -32,7 +32,6 @@ use crate::deps::*;
 use crate::decoder::tiling::FrameBufferExt;
 use crate::decoder::{self, tiling, Decoder, DecoderUpdate};
 use crate::image_metadata::LpImageMetadata;
-use crate::util::gettext::*;
 use crate::util::Gesture;
 
 use crate::util::spawn;
@@ -43,7 +42,6 @@ use once_cell::sync::Lazy;
 use once_cell::unsync::OnceCell;
 
 use std::cell::{Cell, RefCell};
-use std::path::PathBuf;
 use std::sync::Arc;
 
 /// Default background color around images and behind transparent images
@@ -107,7 +105,6 @@ mod imp {
     #[derive(Debug, Default)]
     pub struct LpImage {
         pub(super) file: RefCell<Option<gio::File>>,
-        pub(super) path: RefCell<Option<PathBuf>>,
         pub(super) is_deleted: Cell<bool>,
         /// Track changes to this image
         pub(super) file_monitor: RefCell<Option<gio::FileMonitor>>,
@@ -194,9 +191,6 @@ mod imp {
                     glib::ParamSpecObject::builder::<gio::File>("file")
                         .read_only()
                         .build(),
-                    glib::ParamSpecVariant::builder("path", glib::VariantTy::BYTE_STRING)
-                        .read_only()
-                        .build(),
                     glib::ParamSpecBoolean::builder("is-deleted")
                         .read_only()
                         .build(),
@@ -242,7 +236,6 @@ mod imp {
             let obj = self.obj();
             match pspec.name() {
                 "file" => obj.file().to_value(),
-                "path" => obj.path().to_variant().to_value(),
                 "is-deleted" => obj.is_deleted().to_value(),
                 "is-loaded" => obj.is_loaded().to_value(),
                 "error" => obj.error().to_value(),
@@ -743,15 +736,9 @@ glib::wrapper! {
 
 impl LpImage {
     pub async fn load(&self, file: &gio::File) {
-        let path = file.path().unwrap();
-        self.set_file(&file);
+        log::debug!("Loading file {}", file.uri());
 
-        if !path.is_file() {
-            self.set_error(anyhow::Error::msg(gettext("File does not exist")));
-            return;
-        }
-
-        log::debug!("Loading file {path:?}");
+        self.set_file(file);
 
         let tiles = &self.imp().frame_buffer;
 
@@ -920,16 +907,10 @@ impl LpImage {
         self.imp().file.borrow().clone()
     }
 
-    pub fn path(&self) -> Option<PathBuf> {
-        self.imp().path.borrow().clone()
-    }
-
     pub(super) fn set_file(&self, file: &gio::File) {
         let imp = self.imp();
 
         imp.file.replace(Some(file.clone()));
-        imp.path.replace(file.path());
-        self.notify("path");
 
         let monitor = file.monitor_file(gio::FileMonitorFlags::WATCH_MOVES, gio::Cancellable::NONE);
         if let Ok(m) = &monitor {
@@ -953,7 +934,7 @@ impl LpImage {
         match event {
             gio::FileMonitorEvent::Renamed => {
                 if let Some(file) = file_b {
-                    log::debug!("Moved to {:?}", file.path());
+                    log::debug!("Moved to {}", file.uri());
                     self.set_file(file);
                 }
             }

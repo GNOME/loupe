@@ -59,7 +59,7 @@
     <property name="title" translatable="yes">Loupe</property>
     <binding name="title">
       <closure type="gchararray" function="window_title">
-        <lookup name="path">
+        <lookup name="file">
           <lookup name="image">
             <lookup name="current-page">image_view</lookup>
           </lookup>

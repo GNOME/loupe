@@ -3,15 +3,13 @@ use super::*;
 use crate::decoder::tiling::{self, FrameBufferExt};
 use crate::deps::*;
 use crate::util::gettext::*;
+use crate::util::{BufReadSeek, ToBufRead};
 
 use anyhow::Context;
 use arc_swap::ArcSwap;
 use gtk::prelude::*;
 use image_rs::AnimationDecoder;
 
-use std::fs::File;
-use std::io::BufReader;
-use std::path::{Path, PathBuf};
 use std::sync::Arc;
 
 #[derive(Debug)]
@@ -32,17 +30,17 @@ impl Drop for ImageRsOther {
 
 impl ImageRsOther {
     fn reader(
-        path: &Path,
+        file: &gio::File,
         format: image_rs::ImageFormat,
-    ) -> anyhow::Result<image_rs::io::Reader<BufReader<File>>> {
-        let mut reader =
-            image_rs::io::Reader::open(path).context(gettext("Failed to open image"))?;
+    ) -> anyhow::Result<image_rs::io::Reader<Box<dyn BufReadSeek>>> {
+        let buf_read = file.to_buf_read()?;
+        let mut reader = image_rs::io::Reader::new(buf_read);
         reader.set_format(format);
         Ok(reader)
     }
 
     pub fn new(
-        path: PathBuf,
+        file: gio::File,
         format: image_rs::ImageFormat,
         updater: UpdateSender,
         tiles: Arc<ArcSwap<tiling::FrameBuffer>>,
@@ -53,14 +51,14 @@ impl ImageRsOther {
             image_rs::ImageFormat::Gif
             | image_rs::ImageFormat::WebP
             | image_rs::ImageFormat::Png => Some(Self::new_animated(
-                path,
+                file,
                 format,
                 updater,
                 tiles,
                 abort.clone(),
             )),
             _ => {
-                Self::new_static(path, format, updater, tiles);
+                Self::new_static(file, format, updater, tiles);
                 None
             }
         };
@@ -72,20 +70,20 @@ impl ImageRsOther {
     }
 
     fn new_static(
-        path: PathBuf,
+        file: gio::File,
         format: image_rs::ImageFormat,
         updater: UpdateSender,
         tiles: Arc<ArcSwap<tiling::FrameBuffer>>,
     ) {
         updater.spawn_error_handled(move || {
-            let reader = Self::reader(&path, format)?;
+            let reader = Self::reader(&file, format)?;
             let dimensions = reader
                 .into_dimensions()
                 .context("Failed to read image dimensions")?;
 
             tiles.set_original_dimensions(dimensions);
 
-            let mut reader = Self::reader(&path, format)?;
+            let mut reader = Self::reader(&file, format)?;
 
             reader.limits(image_rs::io::Limits::no_limits());
 
@@ -107,7 +105,7 @@ impl ImageRsOther {
     }
 
     fn new_animated(
-        path: PathBuf,
+        file: gio::File,
         format: image_rs::ImageFormat,
         updater: UpdateSender,
         tiles: Arc<ArcSwap<tiling::FrameBuffer>>,
@@ -119,30 +117,30 @@ impl ImageRsOther {
             // We are currently decoding for each repetition of the animation
             // TODO: Check if/how that can be solved differently
             loop {
-                let file = std::fs::File::open(&path)?;
+                let buf_reader = file.to_buf_read()?;
 
                 let (frames, animated_format) = match format {
                     image_rs::ImageFormat::Gif => (
-                        image_rs::codecs::gif::GifDecoder::new(file)?.into_frames(),
+                        image_rs::codecs::gif::GifDecoder::new(buf_reader)?.into_frames(),
                         ImageFormat::AnimatedGif,
                     ),
                     image_rs::ImageFormat::WebP => {
-                        let decoder = image_rs::codecs::webp::WebPDecoder::new(file)?;
+                        let decoder = image_rs::codecs::webp::WebPDecoder::new(buf_reader)?;
                         if decoder.has_animation() {
                             (decoder.into_frames(), ImageFormat::AnimatedWebP)
                         } else {
                             // Static WebP images need a different decoder
-                            Self::new_static(path, format, updater, tiles);
+                            Self::new_static(file, format, updater, tiles);
                             return Ok(());
                         }
                     }
                     image_rs::ImageFormat::Png => {
-                        let decoder = image_rs::codecs::png::PngDecoder::new(file)?;
+                        let decoder = image_rs::codecs::png::PngDecoder::new(buf_reader)?;
                         if decoder.is_apng() {
                             (decoder.apng().into_frames(), ImageFormat::AnimatedPng)
                         } else {
                             // Static PNG images need a different decoder
-                            Self::new_static(path, format, updater, tiles);
+                            Self::new_static(file, format, updater, tiles);
                             return Ok(());
                         }
                     }

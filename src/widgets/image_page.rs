@@ -31,8 +31,6 @@ use gtk::prelude::*;
 use gtk::CompositeTemplate;
 use once_cell::sync::Lazy;
 
-use std::path::PathBuf;
-
 mod imp {
     use super::*;
 
@@ -151,7 +149,7 @@ impl LpImagePage {
     pub fn from_file(file: &gio::File) -> Self {
         let obj = glib::Object::new::<Self>();
 
-        obj.imp().image.set_file(&file);
+        obj.imp().image.set_file(file);
 
         spawn(clone!(@weak obj, @strong file => async move {
             let imp = obj.imp();

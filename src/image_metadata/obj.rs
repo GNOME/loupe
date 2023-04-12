@@ -7,17 +7,16 @@ use gtk::glib;
 use once_cell::sync::Lazy;
 
 use std::cell::RefCell;
-use std::path::Path;
 
 glib::wrapper! {
     pub struct LpImageMetadata(ObjectSubclass<imp::LpImageMetadata>);
 }
 
 impl LpImageMetadata {
-    pub fn load(path: &Path) -> Self {
+    pub fn load(file: &gio::File) -> Self {
         let obj = glib::Object::new::<Self>();
 
-        let metadata = ImageMetadata::load(path);
+        let metadata = ImageMetadata::load(file);
         obj.imp().metadata.replace(metadata);
 
         obj

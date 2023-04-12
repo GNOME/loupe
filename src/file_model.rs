@@ -25,7 +25,7 @@ use anyhow::Context;
 use gio::prelude::*;
 use gio::subclass::prelude::*;
 use glib::GString;
-use indexmap::{IndexMap, IndexSet};
+use indexmap::IndexMap;
 use once_cell::sync::{Lazy, OnceCell};
 use std::cell::RefCell;
 
@@ -35,8 +35,8 @@ mod imp {
 
     #[derive(Debug, Default)]
     pub struct LpFileModel {
-        /// Use and IndexSet such that we can put the elements into an arbitrary order
-        /// while still having fast hash access via `PathBuf`.
+        /// Use and IndexMap such that we can put the elements into an arbitrary order
+        /// while still having fast hash access via file URI.
         pub(super) files: RefCell<IndexMap<GString, gio::File>>,
         pub(super) directory: OnceCell<gio::File>,
         /// Track file changes.
@@ -167,7 +167,7 @@ impl LpFileModel {
     }
 
     pub fn before(&self, file: &gio::File) -> Option<gio::File> {
-        let index = self.index_of(&file)?;
+        let index = self.index_of(file)?;
 
         self.imp()
             .files
@@ -188,7 +188,7 @@ impl LpFileModel {
             .cloned()
     }
 
-    /// Returns `n` elements before and after given path
+    /// Returns `n` elements before and after given file
     pub fn files_around(&self, file: &gio::File, n: usize) -> IndexMap<GString, gio::File> {
         let Some(index) = self.index_of(file) else {
             log::error!("URI not in model: {}", file.uri());
@@ -207,12 +207,12 @@ impl LpFileModel {
             .collect()
     }
 
-    /// Return first path
+    /// Return first file
     pub fn first(&self) -> Option<gio::File> {
         self.imp().files.borrow().first().map(|x| x.1).cloned()
     }
 
-    /// Returns last path
+    /// Returns last file
     pub fn last(&self) -> Option<gio::File> {
         self.imp().files.borrow().last().map(|x| x.1).cloned()
     }
@@ -232,7 +232,7 @@ impl LpFileModel {
 
     fn is_image_file(file: &gio::File) -> bool {
         let Ok(info) = util::query_attributes(file, vec![gio::FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE]) else {
-            log::warn!("Could not query file info: {:?}", file.path());
+            log::warn!("Could not query file info: {}", file.uri());
             return false;
         };
 

@@ -678,9 +678,9 @@ impl LpWindow {
     // have multiple `match` or `if let` branches, and without needing
     // to unwrap.
     #[template_callback]
-    fn window_title(&self, path: glib::variant::Variant) -> String {
+    fn window_title(&self, file: Option<&gio::File>) -> String {
         // ensure that templates are initialized
-        if path.as_maybe().is_none() {
+        if file.is_none() {
             gettext("Loupe")
         } else {
             self.imp()

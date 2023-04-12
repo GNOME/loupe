@@ -9,12 +9,11 @@ mod obj;
 pub use gps::GPSLocation;
 pub use obj::LpImageMetadata;
 
-use crate::util;
 use crate::util::gettext::*;
+use crate::util::{self, ToBufRead};
 
-use gtk::glib;
-
-use std::path::Path;
+use crate::deps::*;
+use gio::prelude::*;
 
 #[derive(Default)]
 pub enum ImageMetadata {
@@ -45,10 +44,9 @@ impl std::fmt::Debug for ImageMetadata {
 }
 
 impl ImageMetadata {
-    pub fn load(path: &Path) -> Self {
-        log::debug!("Loading metadata for {:?}", path);
-        if let Ok(file) = std::fs::File::open(path) {
-            let mut bufreader = std::io::BufReader::new(&file);
+    pub fn load(file: &gio::File) -> Self {
+        log::debug!("Loading metadata for {}", file.uri());
+        if let Ok(mut bufreader) = file.to_buf_read() {
             let exifreader = exif::Reader::new();
 
             if let Ok(exif) = exifreader.read_from_container(&mut bufreader) {

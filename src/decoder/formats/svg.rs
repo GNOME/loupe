@@ -8,7 +8,6 @@ use anyhow::Context;
 use arc_swap::ArcSwap;
 use gtk::prelude::*;
 
-use std::path::PathBuf;
 use std::sync::Arc;
 
 /// Current librsvg limit on maximum dimensions. See
@@ -45,7 +44,7 @@ impl Drop for Svg {
 
 impl Svg {
     pub fn new(
-        path: PathBuf,
+        file: gio::File,
         updater: UpdateSender,
         tiles: Arc<ArcSwap<tiling::FrameBuffer>>,
     ) -> Self {
@@ -53,7 +52,7 @@ impl Svg {
         let request_store = current_request.clone();
 
         let thread_handle = updater.spawn_error_handled(move || {
-            let handle = rsvg::Loader::new().read_path(path)?;
+            let handle = rsvg::Loader::new().read_file(&file, gio::Cancellable::NONE)?;
             let renderer = rsvg::CairoRenderer::new(&handle);
 
             let (original_width, original_height) = svg_dimensions(&renderer);
@@ -85,7 +84,7 @@ impl Svg {
                             tile_size: tiling::TILE_SIZE,
                             original_dimensions: (original_width, original_height),
                             zoom: tile_request.zoom,
-                            bleed: 2,
+                            bleed: 0,
                         };
 
                         let relevant_tiles = tiling.relevant_tiles(&tile_request.viewport);

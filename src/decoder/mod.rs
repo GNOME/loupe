@@ -7,16 +7,16 @@ pub use formats::ImageDimensionDetails;
 use crate::deps::*;
 use crate::image_metadata::ImageMetadata;
 use crate::util::gettext::*;
+use crate::util::ToBufRead;
 use formats::*;
 use tiling::FrameBufferExt;
 
-use anyhow::{anyhow, bail, Context};
+use anyhow::{anyhow, bail, Context, Result};
 use arc_swap::ArcSwap;
 use futures::channel::mpsc;
 use gio::prelude::*;
 
 use std::io::Read;
-use std::path::PathBuf;
 use std::sync::Arc;
 
 pub use formats::{ImageFormat, RSVG_MAX_SIZE};
@@ -95,13 +95,12 @@ impl Decoder {
         file: gio::File,
         tiles: Arc<ArcSwap<tiling::FrameBuffer>>,
     ) -> anyhow::Result<(Self, mpsc::UnboundedReceiver<DecoderUpdate>)> {
-        let path = file.path().context("Need a file path")?;
         let (sender, receiver) = mpsc::unbounded();
 
         let update_sender = UpdateSender { sender };
         tiles.set_update_sender(update_sender.clone());
 
-        let decoder = gio::spawn_blocking(move || Self::format_decoder(update_sender, path, tiles))
+        let decoder = gio::spawn_blocking(move || Self::format_decoder(update_sender, file, tiles))
             .await
             .map_err(|_| anyhow!("Constructing the FormatDecoder failed unexpectedly"))??;
 
@@ -110,31 +109,23 @@ impl Decoder {
 
     fn format_decoder(
         update_sender: UpdateSender,
-        path: PathBuf,
+        file: gio::File,
         tiles: Arc<ArcSwap<tiling::FrameBuffer>>,
     ) -> anyhow::Result<FormatDecoder> {
-        update_sender.send(DecoderUpdate::Metadata(ImageMetadata::load(&path)));
+        update_sender.send(DecoderUpdate::Metadata(ImageMetadata::load(&file)));
 
-        let mut buf = Vec::new();
-        let file = std::fs::File::open(&path).context(gettext("Could not open image"))?;
-        file.take(64)
-            .read_to_end(&mut buf)
-            .context(gettext("Could not read image"))?;
+        let format = Self::guess_format(&file)?;
 
-        // Try magic bytes first and than file name extension
-        let format =
-            image_rs::guess_format(&buf).or_else(|_| image_rs::ImageFormat::from_path(&path));
-
-        if let Ok(format) = format {
+        if let Some(format) = format {
             match format {
                 image_rs::ImageFormat::Avif => {
                     update_sender.send(DecoderUpdate::Format(ImageFormat::Heif));
-                    return Ok(FormatDecoder::Heif(Heif::new(path, update_sender, tiles)));
+                    return Ok(FormatDecoder::Heif(Heif::new(file, update_sender, tiles)));
                 }
                 format => {
                     update_sender.send(DecoderUpdate::Format(ImageFormat::ImageRs(format)));
                     return Ok(FormatDecoder::ImageRsOther(ImageRsOther::new(
-                        path,
+                        file,
                         format,
                         update_sender,
                         tiles,
@@ -142,7 +133,7 @@ impl Decoder {
                 }
             }
         } else {
-            let file_info = gio::File::for_path(&path)
+            let file_info = file
                 .query_info(
                     gio::FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE,
                     gio::FileQueryInfoFlags::NONE,
@@ -159,12 +150,12 @@ impl Decoder {
                 // - image/svg+xml-compressed
                 if content_type.split('+').next() == Some("image/svg") {
                     update_sender.send(DecoderUpdate::Format(ImageFormat::Svg));
-                    return Ok(FormatDecoder::Svg(Svg::new(path, update_sender, tiles)));
+                    return Ok(FormatDecoder::Svg(Svg::new(file, update_sender, tiles)));
                 } else if ["image/avif", "image/heif", "image/heic"]
                     .contains(&content_type.as_str())
                 {
                     update_sender.send(DecoderUpdate::Format(ImageFormat::Heif));
-                    return Ok(FormatDecoder::Heif(Heif::new(path, update_sender, tiles)));
+                    return Ok(FormatDecoder::Heif(Heif::new(file, update_sender, tiles)));
                 } else {
                     bail!(gettext_f(
                         "Unknown image format: {}",
@@ -191,6 +182,27 @@ impl Decoder {
             decoder.fill_frame_buffer();
         } else {
             log::error!("Trying to fill frame buffer for decoder without animation support");
+        }
+    }
+
+    fn guess_format(file: &gio::File) -> anyhow::Result<Option<image_rs::ImageFormat>> {
+        let mut buf = Vec::new();
+        let fs_file = file
+            .to_buf_read()
+            .context(gettext("Could not open image"))?;
+        fs_file
+            .take(64)
+            .read_to_end(&mut buf)
+            .context(gettext("Could not read image"))?;
+
+        // Try magic bytes first and than file name extension
+
+        if let Ok(format) = image_rs::guess_format(&buf) {
+            Ok(Some(format))
+        } else if let Some(basename) = file.basename() {
+            Ok(image_rs::ImageFormat::from_path(basename).ok())
+        } else {
+            Ok(None)
         }
     }
 }
