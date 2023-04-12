@@ -143,6 +143,14 @@ impl FrameBuffer {
         self.current().cleanup(zoom, viewport);
     }
 
+    /// Delete all stored information
+    ///
+    /// Used when reloading image
+    pub fn reset(&mut self) {
+        self.update_sender = None;
+        self.images.clear();
+    }
+
     pub fn contains(&self, zoom: f64, coordinates: Coordinates) -> bool {
         self.images
             .front()
@@ -410,6 +418,7 @@ impl RectExt for graphene::Rect {
 pub trait FrameBufferExt {
     fn push(&self, tile: Tile);
     fn push_frame(&self, tile: Tile, dimensions: Coordinates, delay: Duration);
+    fn reset(&self);
     /// Return true if the next frame should be shown and removes the outdated frame
     fn frame_timeout(&self, elapsed: Duration) -> bool;
     /// Returns the number of currently buffered frames
@@ -444,6 +453,14 @@ impl FrameBufferExt for ArcSwap<FrameBuffer> {
         self.rcu(|tiling_store| {
             let mut new_store = (**tiling_store).clone();
             new_store.images.push_back(store.clone());
+            Arc::new(new_store)
+        });
+    }
+
+    fn reset(&self) {
+        self.rcu(|tiling_store| {
+            let mut new_store = (**tiling_store).clone();
+            new_store.reset();
             Arc::new(new_store)
         });
     }

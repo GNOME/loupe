@@ -742,6 +742,10 @@ impl LpImage {
         self.set_file(file);
 
         let tiles = &self.imp().frame_buffer;
+        // Delete all stored textures for reloads
+        tiles.reset();
+        // Reset background color for reloads
+        self.set_background_color(None);
 
         let (decoder, mut decoder_update) = match Decoder::new(file.clone(), tiles.clone()).await {
             Ok(x) => x,
