@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-16 01:22+0000\n"
-"PO-Revision-Date: 2023-03-16 09:43+0100\n"
+"POT-Creation-Date: 2023-04-06 21:19+0000\n"
+"PO-Revision-Date: 2023-04-13 19:09+0200\n"
 "Last-Translator: \n"
 "Language-Team: Galician <gnome-gl-list@gnome.org>\n"
 "Language: gl\n"
@@ -19,8 +19,8 @@ msgstr ""
 
 #. If the file exists, get display name
 #: data/org.gnome.Loupe.desktop.in.in:3
-#: data/org.gnome.Loupe.metainfo.xml.in.in:6 data/gtk/window.ui:63
-#: src/application.rs:193 src/window.rs:676 src/window.rs:682
+#: data/org.gnome.Loupe.metainfo.xml.in.in:6 data/gtk/window.ui:59
+#: src/application.rs:187 src/window.rs:676 src/window.rs:682
 msgid "Loupe"
 msgstr "Loupe"
 
@@ -28,9 +28,9 @@ msgstr "Loupe"
 msgid "Picture;Slideshow;Graphics;Image Viewer;"
 msgstr "Imaxes;Panorama;Gráficos;Visor de imaxes;"
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:7
-msgid "Christopher Davis"
-msgstr "Christopher Davis"
+#: data/org.gnome.Loupe.metainfo.xml.in.in:7 src/application.rs:190
+msgid "The Loupe Team"
+msgstr "O equipo de Loupe"
 
 #: data/org.gnome.Loupe.metainfo.xml.in.in:8
 msgid "View images"
@@ -41,32 +41,20 @@ msgid ""
 "A simple image viewer which allows you to browse through your images and "
 "inspect their metadata."
 msgstr ""
-"Un visor de imaxes sinxelo que lle permite explorar as súas imaxes e ver "
-"os seus metadatos."
+"Un visor de imaxes sinxelo que lle permite explorar as súas imaxes e ver os "
+"seus metadatos."
 
 #: data/org.gnome.Loupe.metainfo.xml.in.in:11
 msgid "The following features are not available yet"
 msgstr "As seguintes características non están dispoñíbeis"
 
 #: data/org.gnome.Loupe.metainfo.xml.in.in:13
-msgid "Correctly showing SVGs at every zoom-level"
-msgstr "Mostrar correctamente SVGs en calquera nivel de zoom"
+msgid "Applying image color profiles"
+msgstr "Aplicando perfiles de cor de imaxe"
 
 #: data/org.gnome.Loupe.metainfo.xml.in.in:14
-msgid "Interpreting image color profiles"
-msgstr "Interpretar perfiles de cor das imaxes"
-
-#: data/org.gnome.Loupe.metainfo.xml.in.in:15
-msgid "Animated image formats"
-msgstr "Formados de imaxes animados"
-
-#: data/org.gnome.Loupe.metainfo.xml.in.in:16
-msgid "Correct HighDPI support"
-msgstr "Compatibilidade con HighDPI correcto"
-
-#: data/org.gnome.Loupe.metainfo.xml.in.in:17
-msgid "Print settings to position the image on the page"
-msgstr ""
+msgid "Printing"
+msgstr "Imprimindo"
 
 #: data/gtk/help_overlay.ui:11
 msgctxt "shortcut window"
@@ -259,11 +247,11 @@ msgstr "_Estabelecer como fondo…"
 msgid "Could not Load Image"
 msgstr "Non foi posíbel cargar a imaxe"
 
-#: data/gtk/image_page.ui:82 data/gtk/window.ui:115
+#: data/gtk/image_page.ui:88 data/gtk/window.ui:111
 msgid "Rotate Left"
 msgstr "Rotar á esquerda"
 
-#: data/gtk/image_page.ui:93 data/gtk/window.ui:126
+#: data/gtk/image_page.ui:99 data/gtk/window.ui:122
 msgid "Rotate Right"
 msgstr "Rotar á dereita"
 
@@ -356,61 +344,53 @@ msgid "_Open…"
 msgstr "_Abrir…"
 
 #: data/gtk/window.ui:46
-msgid "_Help"
-msgstr "_Axuda"
-
-#: data/gtk/window.ui:50
 msgid "_Keyboard Shortcuts"
 msgstr "Atallos de _teclado"
 
-#: data/gtk/window.ui:54
+#: data/gtk/window.ui:50
 msgid "_About Loupe"
 msgstr "_Sobre Loupe"
 
-#: data/gtk/window.ui:94
+#: data/gtk/window.ui:90
 msgid "Copy to Clipboard"
 msgstr "Copiar ao portapapeis"
 
-#: data/gtk/window.ui:101
+#: data/gtk/window.ui:97
 msgid "Move to Trash"
 msgstr "Mover ao lixo"
 
-#: data/gtk/window.ui:107
+#: data/gtk/window.ui:103
 msgid "Main Menu"
 msgstr "Menú principal"
 
-#: data/gtk/window.ui:141
+#: data/gtk/window.ui:137
 msgid "Image Properties"
 msgstr "Propiedades da imaxe"
 
-#: data/gtk/window.ui:161
+#: data/gtk/window.ui:157
 msgid "View Images"
 msgstr "Ver imaxes"
 
-#: data/gtk/window.ui:162
+#: data/gtk/window.ui:158
 msgid "Drag and drop images here"
 msgstr "Arrastre e solte imaxes aquí"
 
-#: data/gtk/window.ui:166
+#: data/gtk/window.ui:162
 msgid "_Open File…"
 msgstr "_Abrir ficheiro…"
 
-#: src/application.rs:196
-msgid "The Loupe Team"
-msgstr "O equipo de Loupe"
-
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/application.rs:205
+#: src/application.rs:199
 msgid "translator-credits"
 msgstr "Fran Diéguez <frandieguez@gnome.org>, 2009-2023"
 
-#: src/application.rs:206
+#: src/application.rs:200
 msgid "Copyright © 2020–2023 Christopher Davis et al."
 msgstr "Copyright © 2020–2023 Christopher Davis e outros."
 
 #: src/file_model.rs:114
 msgid "Could not list other files in directory."
-msgstr "Non foi posíbel listar outros ficheiros no cartafol"
+msgstr "Non foi posíbel listar outros ficheiros no cartafol."
 
 #. Translators: short for "north" in GPS coordinate
 #: src/image_metadata/gps.rs:136
@@ -435,26 +415,26 @@ msgstr "O"
 #. Translators: Unit for exposure time in seconds
 #: src/image_metadata/mod.rs:129
 msgid "1\\u{2215}{}\\u{202F}s"
-msgstr ""
+msgstr "1\\u{2215}{}\\u{202F}s"
 
 #. Translators: Unit for focal length in millimeters
 #: src/image_metadata/mod.rs:154
 msgid "{}\\u{202F}mm"
-msgstr ""
+msgstr "{}\\u{202F}mm"
 
-#: src/widgets/image.rs:652
+#: src/widgets/image.rs:751
 msgid "File does not exist"
-msgstr ""
+msgstr "O ficheiro non existe"
 
-#: src/widgets/image_view.rs:574
+#: src/widgets/image_view.rs:558
 msgid "Failed to open new background image"
-msgstr ""
+msgstr "Produciuse un fallo ao abrir a nova imaxe de fondo"
 
-#: src/widgets/image_view.rs:591
+#: src/widgets/image_view.rs:575
 msgid "Set as background."
 msgstr "Estabelecer como fondo."
 
-#: src/widgets/image_view.rs:598
+#: src/widgets/image_view.rs:582
 msgid "Could not set background."
 msgstr "Non foi posíbel establecela como fondo."
 
@@ -484,15 +464,15 @@ msgstr "Produciuse un fallo ao restaurar a imaxe do lixo"
 
 #: src/window.rs:526
 msgid "Failed to move image to trash"
-msgstr ""
+msgstr "Produciuse un fallo ao mover a imaxe ao lixo"
 
 #: src/window.rs:541
 msgid "Permanently Delete Image?"
-msgstr ""
+msgstr "Desexa eliminar a imaxe de forma permanente?"
 
 #: src/window.rs:543
 msgid "The image “{}” can only be deleted permanently."
-msgstr ""
+msgstr "A imaxe «{}» só se pode eliminar de forma permantente."
 
 #: src/window.rs:550
 msgid "Cancel"
@@ -504,4 +484,19 @@ msgstr "Eliminar"
 
 #: src/window.rs:559
 msgid "Failed to delete image"
-msgstr ""
+msgstr "Produciuse un fallo ao eliminar a imaxe"
+
+#~ msgid "Christopher Davis"
+#~ msgstr "Christopher Davis"
+
+#~ msgid "Correctly showing SVGs at every zoom-level"
+#~ msgstr "Mostrar correctamente SVGs en calquera nivel de zoom"
+
+#~ msgid "Animated image formats"
+#~ msgstr "Formados de imaxes animados"
+
+#~ msgid "Correct HighDPI support"
+#~ msgstr "Compatibilidade con HighDPI correcto"
+
+#~ msgid "_Help"
+#~ msgstr "_Axuda"
