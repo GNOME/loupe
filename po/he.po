@@ -7,22 +7,22 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-14 04:10+0000\n"
-"PO-Revision-Date: 2023-03-14 12:31+0200\n"
-"Last-Translator: Yosef Or Boczko <yoseforb@gmail.com>\n"
+"POT-Creation-Date: 2023-04-06 21:19+0000\n"
+"PO-Revision-Date: 2023-04-13 14:26+0300\n"
+"Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <>\n"
 "Language: he\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n==2 ? 1 : n>10 && n%10==0 ? "
-"2 : 3)\n"
-"X-Generator: Gtranslator 42.0\n"
+"2 : 3);\n"
+"X-Generator: Poedit 3.2.2\n"
 
 #. If the file exists, get display name
 #: data/org.gnome.Loupe.desktop.in.in:3
-#: data/org.gnome.Loupe.metainfo.xml.in.in:6 data/gtk/window.ui:63
-#: src/application.rs:193 src/window.rs:676 src/window.rs:682
+#: data/org.gnome.Loupe.metainfo.xml.in.in:6 data/gtk/window.ui:59
+#: src/application.rs:187 src/window.rs:676 src/window.rs:682
 msgid "Loupe"
 msgstr "לופ"
 
@@ -30,9 +30,9 @@ msgstr "לופ"
 msgid "Picture;Slideshow;Graphics;Image Viewer;"
 msgstr "תמונה;תמונות;מצגת;הצגה;גרפיקה;מציג תמונות;"
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:7
-msgid "Christopher Davis"
-msgstr "Christopher Davis"
+#: data/org.gnome.Loupe.metainfo.xml.in.in:7 src/application.rs:190
+msgid "The Loupe Team"
+msgstr "צוות לופ"
 
 #: data/org.gnome.Loupe.metainfo.xml.in.in:8
 msgid "View images"
@@ -49,24 +49,12 @@ msgid "The following features are not available yet"
 msgstr "התכונות הבאות עדיין אינן זמינות"
 
 #: data/org.gnome.Loupe.metainfo.xml.in.in:13
-msgid "Correctly showing SVGs at every zoom-level"
-msgstr "הצגה תקינה של תמונות SVG בכל רמת תקריב"
-
-#: data/org.gnome.Loupe.metainfo.xml.in.in:14
-msgid "Interpreting image color profiles"
+msgid "Applying image color profiles"
 msgstr "החלת פרופילי צבע על תמונה"
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:15
-msgid "Animated image formats"
-msgstr "תבניות תמונות מונפשות"
-
-#: data/org.gnome.Loupe.metainfo.xml.in.in:16
-msgid "Correct HighDPI support"
-msgstr "תמיכה טובה בהבחנה גבוהה"
-
-#: data/org.gnome.Loupe.metainfo.xml.in.in:17
-msgid "Print settings to position the image on the page"
-msgstr "הגדות הדפסה למיקום התמונה בדף"
+#: data/org.gnome.Loupe.metainfo.xml.in.in:14
+msgid "Printing"
+msgstr "הדפסה"
 
 #: data/gtk/help_overlay.ui:11
 msgctxt "shortcut window"
@@ -208,27 +196,27 @@ msgstr "‏200% קנה מידה"
 #: data/gtk/help_overlay.ui:185
 msgctxt "shortcut window"
 msgid "Pan View"
-msgstr ""
+msgstr "תצוגת סריקה"
 
 #: data/gtk/help_overlay.ui:188
 msgctxt "shortcut window"
 msgid "Pan Left"
-msgstr ""
+msgstr "סריקה לשמאל"
 
 #: data/gtk/help_overlay.ui:194
 msgctxt "shortcut window"
 msgid "Pan Right"
-msgstr ""
+msgstr "סריקה לימין"
 
 #: data/gtk/help_overlay.ui:200
 msgctxt "shortcut window"
 msgid "Pan Up"
-msgstr ""
+msgstr "סריקה למעלה"
 
 #: data/gtk/help_overlay.ui:206
 msgctxt "shortcut window"
 msgid "Pan Down"
-msgstr ""
+msgstr "סריקה למטה"
 
 #: data/gtk/help_overlay.ui:214
 msgctxt "shortcut window"
@@ -259,11 +247,11 @@ msgstr "ה_גדרה כרקע…"
 msgid "Could not Load Image"
 msgstr "לא ניתן לטעון את התמונה"
 
-#: data/gtk/image_page.ui:82 data/gtk/window.ui:115
+#: data/gtk/image_page.ui:88 data/gtk/window.ui:111
 msgid "Rotate Left"
 msgstr "סיבוב שמאלה"
 
-#: data/gtk/image_page.ui:93 data/gtk/window.ui:126
+#: data/gtk/image_page.ui:99 data/gtk/window.ui:122
 msgid "Rotate Right"
 msgstr "סיבוב ימינה"
 
@@ -353,68 +341,60 @@ msgstr "_חלון חדש"
 
 #: data/gtk/window.ui:10
 msgid "_Open…"
-msgstr "_פתיחה..."
+msgstr "_פתיחה…"
 
 #: data/gtk/window.ui:46
-msgid "_Help"
-msgstr "_עזרה"
-
-#: data/gtk/window.ui:50
 msgid "_Keyboard Shortcuts"
 msgstr "_צירופי מקשים"
 
-#: data/gtk/window.ui:54
+#: data/gtk/window.ui:50
 msgid "_About Loupe"
 msgstr "_על אודות לופ"
 
-#: data/gtk/window.ui:94
 # msgctxt "shortcut window"
+#: data/gtk/window.ui:90
 msgid "Copy to Clipboard"
 msgstr "העתקה ללוח הגזירים"
 
-#: data/gtk/window.ui:101
 # msgctxt "shortcut window"
+#: data/gtk/window.ui:97
 msgid "Move to Trash"
 msgstr "העברה לאשפה"
 
-#: data/gtk/window.ui:107
+#: data/gtk/window.ui:103
 msgid "Main Menu"
 msgstr "תפריט ראשי"
 
-#: data/gtk/window.ui:141
+#: data/gtk/window.ui:137
 msgid "Image Properties"
 msgstr "מאפייני תמונה"
 
-#: data/gtk/window.ui:161
+#: data/gtk/window.ui:157
 msgid "View Images"
 msgstr "מציג תמונות"
 
-#: data/gtk/window.ui:162
+#: data/gtk/window.ui:158
 msgid "Drag and drop images here"
 msgstr "יש לגרור ולשחרר לכאן תמונות"
 
-#: data/gtk/window.ui:166
+#: data/gtk/window.ui:162
 msgid "_Open File…"
 msgstr "_פתיחת קובץ…"
 
-#: src/application.rs:196
-msgid "The Loupe Team"
-msgstr "צוות לופ"
-
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/application.rs:205
+#: src/application.rs:199
 msgid "translator-credits"
 msgstr ""
 "יוסף אור בוצ׳קו <yoseforb@gmail.com>\n"
 "מיזם תרגום GNOME לעברית https://l10n.gnome.org/teams/he/"
 
-#: src/application.rs:206
+#: src/application.rs:200
 msgid "Copyright © 2020–2023 Christopher Davis et al."
 msgstr "כל הזכויות שמורות © 2022-2023 Christopher Davis ואחרים."
 
 #: src/file_model.rs:114
 msgid "Could not list other files in directory."
-msgstr ""
+msgstr "לא ניתן להציג קבצים נוספים בתיקייה."
 
 #. Translators: short for "north" in GPS coordinate
 #: src/image_metadata/gps.rs:136
@@ -446,19 +426,19 @@ msgstr "‏‎1\\u{2215}{}\\u{202F} ש"
 msgid "{}\\u{202F}mm"
 msgstr "‏‎{}\\u{202F} מ״מ"
 
-#: src/widgets/image.rs:652
+#: src/widgets/image.rs:751
 msgid "File does not exist"
 msgstr "הקובץ לא קיים"
 
-#: src/widgets/image_view.rs:574
+#: src/widgets/image_view.rs:558
 msgid "Failed to open new background image"
 msgstr "נכשלה פתיחת תמונת רקע חדשה"
 
-#: src/widgets/image_view.rs:591
+#: src/widgets/image_view.rs:575
 msgid "Set as background."
 msgstr "הגדרת התמונה כרקע."
 
-#: src/widgets/image_view.rs:598
+#: src/widgets/image_view.rs:582
 msgid "Could not set background."
 msgstr "לא ניתן לקבוע כרקע."
 
@@ -509,6 +489,24 @@ msgstr "מחיקה"
 #: src/window.rs:559
 msgid "Failed to delete image"
 msgstr "מחיקת התמונה נכשלה"
+
+#~ msgid "Christopher Davis"
+#~ msgstr "Christopher Davis"
+
+#~ msgid "Correctly showing SVGs at every zoom-level"
+#~ msgstr "הצגה תקינה של תמונות SVG בכל רמת תקריב"
+
+#~ msgid "Animated image formats"
+#~ msgstr "תבניות תמונות מונפשות"
+
+#~ msgid "Correct HighDPI support"
+#~ msgstr "תמיכה טובה בהבחנה גבוהה"
+
+#~ msgid "Print settings to position the image on the page"
+#~ msgstr "הגדות הדפסה למיקום התמונה בדף"
+
+#~ msgid "_Help"
+#~ msgstr "_עזרה"
 
 #~ msgid "File Type"
 #~ msgstr "סוג קובץ"
