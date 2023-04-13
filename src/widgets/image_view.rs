@@ -564,12 +564,6 @@ impl LpImageView {
         }
     }
 
-    pub fn zoom_to(&self, level: f64) {
-        if let Some(current_page) = self.current_page() {
-            current_page.image().zoom_to(level);
-        }
-    }
-
     pub fn rotate_image(&self, angle: f64) {
         if let Some(current_page) = self.current_page() {
             current_page.image().rotate_by(angle);

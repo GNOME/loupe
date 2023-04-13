@@ -370,23 +370,11 @@ mod imp {
                 let zoom =
                     obj.imp().zoom_target.get() * zoom_factor;
 
-                if zoom > obj.zoom_level_best_fit() {
-                    obj.set_best_fit(false);
                     if animated {
                         obj.zoom_to(zoom);
                     } else {
-                        obj.set_zoom(zoom);
-                        obj.imp().zoom_target.set(zoom);
+                        obj.zoom_to_full(zoom, false, false);
                     }
-                } else {
-                    obj.set_best_fit(true);
-                    if animated {
-                        obj.zoom_to(obj.zoom_level_best_fit());
-                    } else {
-                        obj.set_zoom(obj.zoom_level_best_fit());
-                        obj.imp().zoom_target.set(obj.zoom_level_best_fit());
-                    }
-                }
 
                 // do not propagate event to scrolled window
                 gtk::Inhibit(true)
@@ -1311,7 +1299,18 @@ impl LpImage {
     }
 
     /// Zoom to specific level with animation
-    pub fn zoom_to(&self, mut zoom: f64) {
+    pub fn zoom_to(&self, zoom: f64) {
+        self.zoom_to_full(zoom, true, true);
+    }
+
+    /// Zoom to specific level with animation not snapping to best-fit
+    ///
+    /// Used for zooming to 100% or 200%
+    pub fn zoom_to_exact(&self, zoom: f64) {
+        self.zoom_to_full(zoom, true, false);
+    }
+
+    fn zoom_to_full(&self, mut zoom: f64, animated: bool, snap_best_fit: bool) {
         let max_zoom = self.max_zoom();
         if zoom >= max_zoom {
             zoom = max_zoom;
@@ -1320,11 +1319,14 @@ impl LpImage {
             self.set_max_zoom(false);
         }
 
-        // If image is only 1/4 of a zoom step away from best-fit, also
-        // activate best-fit. This avoids bugs with floating point precision
-        // and removes awkward minimal zoom steps.
-        let extended_best_fit_threshold =
-            self.zoom_level_best_fit() * (1. + (ZOOM_FACTOR_BUTTON - 1.) / 4.);
+        let extended_best_fit_threshold = if snap_best_fit {
+            // If image is only 1/4 of a zoom step away from best-fit, also
+            // activate best-fit. This avoids bugs with floating point precision
+            // and removes awkward minimal zoom steps.
+            self.zoom_level_best_fit() * (1. + (ZOOM_FACTOR_BUTTON - 1.) / 4.)
+        } else {
+            self.zoom_level_best_fit()
+        };
 
         if zoom <= extended_best_fit_threshold {
             zoom = self.zoom_level_best_fit();
@@ -1343,26 +1345,30 @@ impl LpImage {
             return;
         }
 
-        // wild code
-        let current_hborder = self.widget_width() - self.image_displayed_width();
-        let target_hborder = self.widget_width() - self.image_size().0 as f64 * zoom;
+        if animated {
+            // wild code
+            let current_hborder = self.widget_width() - self.image_displayed_width();
+            let target_hborder = self.widget_width() - self.image_size().0 as f64 * zoom;
 
-        self.imp()
-            .zoom_hscrollbar_transition
-            .set(current_hborder.signum() != target_hborder.signum() && current_hborder != 0.);
+            self.imp()
+                .zoom_hscrollbar_transition
+                .set(current_hborder.signum() != target_hborder.signum() && current_hborder != 0.);
 
-        let current_vborder = self.widget_height() - self.image_displayed_height();
-        let target_vborder = self.widget_height() - self.image_size().1 as f64 * zoom;
+            let current_vborder = self.widget_height() - self.image_displayed_height();
+            let target_vborder = self.widget_height() - self.image_size().1 as f64 * zoom;
 
-        self.imp()
-            .zoom_hscrollbar_transition
-            .set(current_vborder.signum() != target_vborder.signum() && current_vborder != 0.);
+            self.imp()
+                .zoom_hscrollbar_transition
+                .set(current_vborder.signum() != target_vborder.signum() && current_vborder != 0.);
 
-        let animation = self.zoom_animation();
+            let animation = self.zoom_animation();
 
-        animation.set_value_from(self.zoom());
-        animation.set_value_to(zoom);
-        animation.play();
+            animation.set_value_from(self.zoom());
+            animation.set_value_to(zoom);
+            animation.play();
+        } else {
+            self.set_zoom(zoom)
+        }
     }
 
     /// Image size of original image with EXIF rotation applied

@@ -147,8 +147,14 @@ impl LpApplication {
         self.set_accels_for_action("win.first", &["Home"]);
         self.set_accels_for_action("win.last", &["End"]);
 
-        self.set_accels_for_action("win.zoom-to(1.0)", &["1", "KP_1", "<Ctrl>1", "<Ctrl>KP_1"]);
-        self.set_accels_for_action("win.zoom-to(2.0)", &["2", "KP_2", "<Ctrl>2", "<Ctrl>KP_2"]);
+        self.set_accels_for_action(
+            "win.zoom-to-exact(1.0)",
+            &["1", "KP_1", "<Ctrl>1", "<Ctrl>KP_1"],
+        );
+        self.set_accels_for_action(
+            "win.zoom-to-exact(2.0)",
+            &["2", "KP_2", "<Ctrl>2", "<Ctrl>KP_2"],
+        );
         self.set_accels_for_action("win.zoom-best-fit", &["0", "KP_0", "<Ctrl>0", "<Ctrl>KP_0"]);
         self.set_accels_for_action(
             "win.zoom-in",

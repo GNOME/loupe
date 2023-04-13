@@ -134,8 +134,8 @@ mod imp {
                 win.zoom_in();
             });
 
-            klass.install_action("win.zoom-to", Some("d"), move |win, _, level| {
-                win.zoom_to(level.unwrap().get().unwrap());
+            klass.install_action("win.zoom-to-exact", Some("d"), move |win, _, level| {
+                win.zoom_to_exact(level.unwrap().get().unwrap());
             });
 
             klass.install_action("win.zoom-best-fit", None, move |win, _, _| {
@@ -391,8 +391,10 @@ impl LpWindow {
         self.imp().image_view.zoom_in();
     }
 
-    fn zoom_to(&self, level: f64) {
-        self.imp().image_view.zoom_to(level);
+    fn zoom_to_exact(&self, level: f64) {
+        if let Some(image) = self.imp().image_view.current_image() {
+            image.zoom_to_exact(level);
+        }
     }
 
     fn zoom_best_fit(&self) {
@@ -579,7 +581,7 @@ impl LpWindow {
         self.action_set_enabled("win.copy", enabled);
         self.action_set_enabled("win.trash", enabled);
         self.action_set_enabled("win.zoom-best-fit", enabled);
-        self.action_set_enabled("win.zoom-to", enabled);
+        self.action_set_enabled("win.zoom-to-exact", enabled);
         self.action_set_enabled("win.toggle-properties", enabled);
     }
 
