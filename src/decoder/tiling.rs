@@ -19,8 +19,8 @@ use std::collections::VecDeque;
 use std::sync::Arc;
 use std::time::Duration;
 
-const ZOOM_SIGNIFICANT_DIGETS: i32 = 6;
-pub const TILE_SIZE: u16 = 4000;
+const ZOOM_SIGNIFICANT_DIGITS: i32 = 6;
+pub const MIN_TILE_SIZE: u16 = 500;
 
 pub type ZoomLevel = u32;
 pub type Coordinate = u32;
@@ -93,11 +93,23 @@ impl Tile {
 
         // TODO: do not clip outer bounderies of the image
         snapshot.push_clip(&area);
+        // TODO: do not clip outer boundaries of the image
         if let Some(background_color) = &options.background_color {
-            snapshot.append_color(background_color, &area);
+            snapshot.append_color(background_color, &area_with_bleed);
         }
         snapshot.append_scaled_texture(&self.texture, options.scaling_filter, &area_with_bleed);
         snapshot.pop();
+
+        if std::env::var_os("LOUPE_TILING_DEBUG").map_or(false, |x| x.len() > 0) {
+            snapshot.append_inset_shadow(
+                &gsk::RoundedRect::from_rect(area, 0.),
+                &gdk::RGBA::new(1., 0., 0., 0.7),
+                0.,
+                0.,
+                10.,
+                0.,
+            );
+        }
     }
 
     fn coordinates(&self) -> Coordinates {
@@ -163,25 +175,23 @@ impl FrameBuffer {
     }
 }
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, Default)]
 /// Store tiles for image
 ///
 /// This is the common representation for image textures.
 /// I many cases there might only be one tile.
 pub struct TiledImage {
-    pub tiles: BTreeMap<ZoomLevel, BTreeMap<Coordinates, Tile>>,
-    /// Tile size without bleed
-    pub tile_size: u16,
+    pub tile_layers: BTreeMap<ZoomLevel, TileLayer>,
     /// Complete image size
     pub original_dimensions: Option<Coordinates>,
     /// Delay until to show this frame if animated
     pub delay: std::time::Duration,
 }
 
-impl Default for TiledImage {
-    fn default() -> Self {
-        Self::new(TILE_SIZE)
-    }
+#[derive(Clone, Debug)]
+pub struct TileLayer {
+    tiles: BTreeMap<Coordinates, Tile>,
+    covering: Covering,
 }
 
 #[derive(Debug, Clone)]
@@ -192,21 +202,12 @@ pub struct RenderOptions {
 }
 
 impl TiledImage {
-    pub fn new(tile_size: u16) -> Self {
-        TiledImage {
-            tiles: Default::default(),
-            tile_size,
-            original_dimensions: None,
-            delay: Default::default(),
-        }
-    }
-
     /// Render tiles as image
     ///
     /// This is what actually draws the image
     pub fn add_to_snapshot(&self, snapshot: &gtk::Snapshot, zoom: f64, options: &RenderOptions) {
         let tiles: Vec<_> = self
-            .iter_rendering_priority(zoom)
+            .iter_tiles_rendering_priority(zoom)
             .flat_map(|(_, tiles)| tiles)
             .collect();
 
@@ -226,103 +227,189 @@ impl TiledImage {
     }
 
     pub fn push(&mut self, tile: Tile) {
-        let map = self.tiles.entry(tile.zoom_level).or_default();
-        map.insert(tile.coordinates(), tile);
+        let layer = self
+            .tile_layers
+            .entry(tile.zoom_level)
+            .or_insert_with(|| TileLayer {
+                tiles: Default::default(),
+                covering: Covering::Simple,
+            });
+        layer.tiles.insert(tile.coordinates(), tile);
+    }
+
+    pub fn push_tile(&mut self, tiling: Tiling, position: Coordinates, texture: gdk::Texture) {
+        let tile = Tile {
+            position,
+            texture,
+            zoom_level: zoom_to_level(tiling.zoom),
+            bleed: tiling.bleed,
+        };
+
+        let layer = self
+            .tile_layers
+            .entry(tile.zoom_level)
+            .or_insert_with(|| TileLayer {
+                tiles: Default::default(),
+                covering: Covering::Tiling(tiling),
+            });
+
+        layer.tiles.insert(tile.coordinates(), tile);
+    }
+
+    pub fn get_layer_tiling_or_default(&mut self, zoom: f64, viewport: graphene::Rect) -> Tiling {
+        let zoom_level = zoom_to_level(zoom);
+        if let Some(TileLayer {
+            covering: Covering::Tiling(tiling),
+            ..
+        }) = self.tile_layers.get(&zoom_level)
+        {
+            return *tiling;
+        };
+
+        let tiling = Tiling {
+            origin: (viewport.x() as u32, viewport.y() as u32),
+            tile_width: u16::max(MIN_TILE_SIZE, viewport.width() as u16),
+            tile_height: u16::max(MIN_TILE_SIZE, viewport.height() as u16),
+            zoom,
+            bleed: 0,
+            original_dimensions: self.original_dimensions.unwrap_or_default(),
+        };
+
+        self.tile_layers.insert(
+            zoom_level,
+            TileLayer {
+                tiles: Default::default(),
+                covering: Covering::Tiling(tiling),
+            },
+        );
+
+        tiling
     }
 
     pub fn contains(&self, zoom: f64, coordinates: Coordinates) -> bool {
-        let Some(tile_plane) = self.tiles.get(&zoom_to_level(zoom)) else { return false };
+        let Some(tile_layer) = self.tile_layers.get(&zoom_to_level(zoom)) else { return false };
 
-        tile_plane.contains_key(&coordinates)
+        tile_layer.tiles.contains_key(&coordinates)
     }
 
     /// Tiles ordered by how good they are suited for the zoom level
-    pub fn iter_rendering_priority(
+    pub fn iter_tiles_rendering_priority(
         &self,
         zoom: f64,
     ) -> impl Iterator<Item = (&ZoomLevel, &BTreeMap<Coordinates, Tile>)> {
+        self.iter_rendering_priority(zoom)
+            .map(|(level, layer)| (level, &layer.tiles))
+    }
+
+    pub fn iter_rendering_priority(
+        &self,
+        zoom: f64,
+    ) -> impl Iterator<Item = (&ZoomLevel, &TileLayer)> {
         let zoom_level = zoom_to_level(zoom);
-        self.tiles
+        self.tile_layers
             // Tiles at zoom level and with better resolution
             .range(zoom_level..)
             // Afterwards try tiles with worse resolution
-            .chain(self.tiles.range(..zoom_level).rev())
+            .chain(self.tile_layers.range(..zoom_level).rev())
     }
 
     /// Viewport within zoom coordinates
     ///
+    /// preserve_area: Slightly larger than the viewport, area for which we want tiles
     /// TODO: This is the most buggy function ever
-    pub fn cleanup(&mut self, zoom: f64, viewport: graphene::Rect) {
-        let Some(original_dimensions) = self.original_dimensions else { log::error!("Too-early cleanup: Original dimension not known"); return; };
-
-        let mut kept_tiles = Self::new(self.tile_size);
+    pub fn cleanup(&mut self, zoom: f64, preserve_area: graphene::Rect) {
+        let zoom = zoom_normalize(zoom);
+        let mut kept_tiles = Self::default();
 
         // Always work with 100% zoom level for tiles
-        let mut missing_tiles = vec![viewport.scale(1. / zoom as f32, 1. / zoom as f32)];
+        let preserve_area_100 = preserve_area.scale(1. / zoom as f32, 1. / zoom as f32);
+        let mut missing_tiles = vec![preserve_area_100];
 
-        // Keep tiles in top layer
+        // Keep tiles in total-zoom-out layer
         // TODO: Change the top layer if window size changes
-        if let Some(top_layer) = self.tiles.iter().next() {
-            for tile in top_layer.1.values() {
-                kept_tiles.push(tile.clone());
+        if let Some((_, top_layer)) = self.tile_layers.iter().next() {
+            for tile in top_layer.tiles.values() {
+                if let Covering::Tiling(tiling) = top_layer.covering {
+                    kept_tiles.push_tile(tiling, tile.position, tile.texture.clone());
+                } else {
+                    return;
+                }
             }
         }
 
         // Put all tiles in correct processing order
         let stored_tiles = self.iter_rendering_priority(zoom);
 
-        for (zoom_level, tiles) in stored_tiles {
-            let tile_zoom = level_to_zoom(*zoom_level);
+        for (zoom_level, tile_layer) in stored_tiles {
+            // This should always be tiled since "Simple" would be in total-zoom-out layer
+            if let Covering::Tiling(tiling) = tile_layer.covering {
+                let tiles = &tile_layer.tiles;
+                let tile_zoom = level_to_zoom(*zoom_level);
 
-            let mut next_missing_tiles = vec![];
+                let mut next_missing_tiles = vec![];
 
-            // Tiling for this zoom level and viewport
-            let tiling = Tiling {
-                tile_size: self.tile_size,
-                original_dimensions,
-                zoom: tile_zoom,
-                bleed: 2,
-            };
+                // Tiling for this zoom level and viewport
 
-            for mut tile_instruction in tiling.relevant_tiles(&viewport) {
-                // scale to 100% reference
-                tile_instruction.area = tile_instruction
-                    .area
-                    .scale(1. / tile_zoom as f32, 1. / tile_zoom as f32);
+                let preserve_area_tiling =
+                    preserve_area_100.scale(tiling.zoom as f32, tiling.zoom as f32);
+                for mut tile_instruction in tiling.relevant_tiles(&preserve_area_tiling) {
+                    // scale to 100% reference
+                    tile_instruction.area = tile_instruction
+                        .area
+                        .scale(1. / tile_zoom as f32, 1. / tile_zoom as f32);
 
-                // Determine if tile of this zoom level has overlap with a missing tile
-                let mut intersections = missing_tiles
-                    .iter()
-                    .filter(|missing| tile_instruction.area.is_intersected(missing))
-                    .peekable();
+                    // Determine if tile of this zoom level has overlap with a missing tile
+                    let mut intersections = missing_tiles
+                        .iter()
+                        .filter(|missing| tile_instruction.area.is_intersected(missing))
+                        .peekable();
 
-                if intersections.peek().is_some() {
-                    if let Some(tile) = tiles.get(&tile_instruction.coordinates) {
-                        // we have this tile and can provide it
-                        kept_tiles.push(tile.clone());
-                    } else {
-                        for missing in missing_tiles.iter() {
-                            if let Some(overlap) = missing.intersection(&tile_instruction.area) {
-                                next_missing_tiles.push(overlap);
+                    if intersections.peek().is_some() {
+                        if let Some(tile) = tiles.get(&tile_instruction.coordinates) {
+                            // we have this tile and can provide it
+                            kept_tiles.push_tile(tiling, tile.position, tile.texture.clone());
+                        } else {
+                            for missing in missing_tiles.iter() {
+                                if let Some(overlap) = missing.intersection(&tile_instruction.area)
+                                {
+                                    next_missing_tiles.push(overlap);
+                                }
                             }
                         }
                     }
                 }
-            }
 
-            missing_tiles = next_missing_tiles;
+                missing_tiles = next_missing_tiles;
+            } else {
+                log::error!("Images should never have multiple 'Simple' layers: {tile_layer:?}");
+            }
         }
 
-        kept_tiles.tiles.values().flat_map(|x| x.iter()).count();
+        log::trace!(
+            "Cleanup kept {} tiles",
+            kept_tiles
+                .tile_layers
+                .values()
+                .flat_map(|x| x.tiles.iter())
+                .count()
+        );
 
-        self.tiles = kept_tiles.tiles;
+        self.tile_layers = kept_tiles.tile_layers;
     }
+}
+
+#[derive(Debug, Clone, Copy)]
+pub enum Covering {
+    Simple,
+    Tiling(Tiling),
 }
 
 #[derive(Debug, Clone, Copy)]
 /// Abstract definition of a tiling
 pub struct Tiling {
-    pub tile_size: u16,
+    pub origin: Coordinates,
+    pub tile_width: u16,
+    pub tile_height: u16,
     pub original_dimensions: Coordinates,
     pub zoom: f64,
     pub bleed: u8,
@@ -337,37 +424,54 @@ impl Tiling {
         )
     }
 
+    pub fn origin_shift_x(&self) -> f32 {
+        let width = self.origin.0 as f32;
+        let rem = width.rem_euclid(self.tile_width as f32);
+        if rem > 0. {
+            rem - self.tile_width as f32
+        } else {
+            0.
+        }
+    }
+
+    pub fn origin_shift_y(&self) -> f32 {
+        let height = self.origin.1 as f32;
+        let rem = height.rem_euclid(self.tile_height as f32);
+        if rem > 0. {
+            rem - self.tile_height as f32
+        } else {
+            0.
+        }
+    }
+
     /// Returns relevant tiles
     ///
     /// This gives what tiles are needed for convering the `preload_area`.
     /// Decoders use the [`TileInstructions`] to know what they have to render.
     pub fn relevant_tiles(&self, preload_area: &graphene::Rect) -> Vec<TileInstructions> {
-        let tile_size = self.tile_size as f32;
+        let original_width = self.scaled_dimensions().0 as f32;
+        let original_height = self.scaled_dimensions().1 as f32;
 
-        let x0 = (preload_area.x() / tile_size).floor() * tile_size;
-        let x1 = ((preload_area.x() + preload_area.width()) / tile_size).ceil() * tile_size;
-        let y0 = (preload_area.y() / tile_size).floor() * tile_size;
-        let y1 = ((preload_area.y() + preload_area.height()) / tile_size).ceil() * tile_size;
+        let tile_width = self.tile_width as f32;
+        let tile_height = self.tile_height as f32;
+
+        let x0 = (preload_area.x() / tile_width).floor() * tile_width + self.origin_shift_x();
+        let x1 = ((preload_area.x() + preload_area.width()) / tile_width).ceil() * tile_width
+            + self.origin_shift_x();
+        let y0 = (preload_area.y() / tile_height).floor() * tile_height + self.origin_shift_y();
+        let y1 = ((preload_area.y() + preload_area.height()) / tile_height).ceil() * tile_height
+            + self.origin_shift_y();
 
         let mut tiles = Vec::new();
-        for x in (x0 as u32..x1 as u32).step_by(self.tile_size.into()) {
-            for y in (y0 as u32..y1 as u32).step_by(self.tile_size.into()) {
-                let width = tile_size
-                    + f32::min(
-                        0.,
-                        self.scaled_dimensions().0 as f32 - (x as f32 + tile_size),
-                    );
-                let height = tile_size
-                    + f32::min(
-                        0.,
-                        self.scaled_dimensions().1 as f32 - (y as f32 + tile_size),
-                    );
+        for x in (x0 as i32..=x1 as i32).step_by(self.tile_width.into()) {
+            for y in (y0 as i32..=y1 as i32).step_by(self.tile_height.into()) {
+                let area = graphene::Rect::new(x as f32, y as f32, tile_width, tile_height);
+                let Some(restricted_area) = area.restrict(original_width, original_height) else { continue; };
 
-                let area = graphene::Rect::new(x as f32, y as f32, width, height);
                 let tile = TileInstructions {
                     tiling: *self,
-                    area,
-                    coordinates: (x, y),
+                    area: restricted_area,
+                    coordinates: (restricted_area.x() as u32, restricted_area.y() as u32),
                 };
                 tiles.push(tile);
             }
@@ -383,6 +487,7 @@ impl Tiling {
 /// Instruction for decoder to generate this tile
 pub struct TileInstructions {
     pub tiling: Tiling,
+
     pub area: graphene::Rect,
     pub coordinates: Coordinates,
 }
@@ -397,11 +502,11 @@ impl TileInstructions {
 /// Integer zoom levels are used because they are hashable
 /// and ignore tiny float calculation errors.
 pub fn zoom_to_level(zoom: f64) -> u32 {
-    (zoom * 10_f64.powi(ZOOM_SIGNIFICANT_DIGETS)) as u32
+    (zoom * 10_f64.powi(ZOOM_SIGNIFICANT_DIGITS)) as u32
 }
 
 pub fn level_to_zoom(zoom_level: u32) -> f64 {
-    zoom_level as f64 * 10_f64.powi(-ZOOM_SIGNIFICANT_DIGETS)
+    zoom_level as f64 * 10_f64.powi(-ZOOM_SIGNIFICANT_DIGITS)
 }
 
 pub fn zoom_normalize(zoom: f64) -> f64 {
@@ -410,11 +515,42 @@ pub fn zoom_normalize(zoom: f64) -> f64 {
 
 trait RectExt {
     fn is_intersected(&self, b: &graphene::Rect) -> bool;
+    fn restrict(&self, max_width: f32, max_height: f32) -> Option<graphene::Rect>;
 }
 
 impl RectExt for graphene::Rect {
     fn is_intersected(&self, b: &graphene::Rect) -> bool {
         self.intersection(b).is_some()
+    }
+
+    fn restrict(&self, max_width: f32, max_height: f32) -> Option<graphene::Rect> {
+        let mut x = self.x();
+        let mut y = self.y();
+        let mut width = self.width();
+        let mut height = self.height();
+
+        if x < 0. {
+            width += x;
+            x = 0.;
+        }
+        if y < 0. {
+            height += y;
+            y = 0.;
+        }
+
+        if x + width > max_width {
+            width = max_width - x;
+        }
+
+        if y + height > max_height {
+            height = max_height - y;
+        }
+
+        if width <= 0. || height <= 0. {
+            return None;
+        }
+
+        Some(Self::new(x, y, width, height))
     }
 }
 
@@ -422,8 +558,10 @@ impl RectExt for graphene::Rect {
 /// This trait adds convenience functions for this.
 pub trait FrameBufferExt {
     fn push(&self, tile: Tile);
+    fn push_tile(&self, tiling: Tiling, position: Coordinates, texture: gdk::Texture);
     fn push_frame(&self, tile: Tile, dimensions: Coordinates, delay: Duration);
     fn reset(&self);
+    fn get_layer_tiling_or_default(&self, zoom: f64, viewport: graphene::Rect) -> Tiling;
     /// Return true if the next frame should be shown and removes the outdated frame
     fn frame_timeout(&self, elapsed: Duration) -> bool;
     /// Returns the number of currently buffered frames
@@ -442,6 +580,19 @@ impl FrameBufferExt for ArcSwap<FrameBuffer> {
         self.rcu(|tiling_store| {
             let mut new_store = (**tiling_store).clone();
             new_store.current().push(tile.clone());
+            Arc::new(new_store)
+        });
+        if let Some(updater) = &self.load().update_sender {
+            updater.send(DecoderUpdate::Redraw);
+        }
+    }
+
+    fn push_tile(&self, tiling: Tiling, position: Coordinates, texture: gdk::Texture) {
+        self.rcu(|tiling_store| {
+            let mut new_store = (**tiling_store).clone();
+            new_store
+                .current()
+                .push_tile(tiling, position, texture.clone());
             Arc::new(new_store)
         });
         if let Some(updater) = &self.load().update_sender {
@@ -468,6 +619,20 @@ impl FrameBufferExt for ArcSwap<FrameBuffer> {
             new_store.reset();
             Arc::new(new_store)
         });
+    }
+
+    fn get_layer_tiling_or_default(&self, zoom: f64, viewport: graphene::Rect) -> Tiling {
+        let mut tiling = None;
+        self.rcu(|tiling_store| {
+            let mut new_store = (**tiling_store).clone();
+            tiling = Some(
+                new_store
+                    .current()
+                    .get_layer_tiling_or_default(zoom, viewport),
+            );
+            Arc::new(new_store)
+        });
+        tiling.unwrap()
     }
 
     fn frame_timeout(&self, elapsed: Duration) -> bool {
@@ -515,123 +680,5 @@ impl FrameBufferExt for ArcSwap<FrameBuffer> {
             new_store.set_update_sender(sender.clone());
             Arc::new(new_store)
         });
-    }
-}
-
-#[cfg(test)]
-mod test {
-    use super::*;
-
-    #[test]
-    fn test_tiling_cleanup() {
-        let mut store = TiledImage::new(2);
-
-        let toplevel = Tile {
-            position: (0, 0),
-            zoom_level: zoom_to_level(1.),
-            bleed: 0,
-            texture: gdk::MemoryTexture::new(
-                4,
-                4,
-                gdk::MemoryFormat::R8g8b8,
-                &glib::Bytes::from_static(&[0; 4 * 4 * 3]),
-                4 * 3,
-            )
-            .upcast(),
-        };
-        store.push(toplevel);
-
-        let right_level = Tile {
-            position: (0, 0),
-            zoom_level: zoom_to_level(1.5),
-            bleed: 0,
-            texture: gdk::MemoryTexture::new(
-                2,
-                2,
-                gdk::MemoryFormat::R8g8b8,
-                &glib::Bytes::from_static(&[0; 2 * 2 * 3]),
-                2 * 3,
-            )
-            .upcast(),
-        };
-        store.push(right_level);
-
-        let low_level = Tile {
-            position: (2, 0),
-            zoom_level: zoom_to_level(1.6),
-            bleed: 0,
-            texture: gdk::MemoryTexture::new(
-                2,
-                2,
-                gdk::MemoryFormat::R8g8b8,
-                &glib::Bytes::from_static(&[0; 2 * 2 * 3]),
-                2 * 3,
-            )
-            .upcast(),
-        };
-        store.push(low_level);
-
-        let overlapped = Tile {
-            position: (0, 0),
-            zoom_level: zoom_to_level(1.7),
-            bleed: 0,
-            texture: gdk::MemoryTexture::new(
-                2,
-                2,
-                gdk::MemoryFormat::R8g8b8,
-                &glib::Bytes::from_static(&[0; 2 * 2 * 3]),
-                2 * 3,
-            )
-            .upcast(),
-        };
-        store.push(overlapped);
-
-        store.cleanup(1.5, graphene::Rect::new(0., 0., 4. * 1.5, 4. * 1.5));
-
-        assert!(store.tiles.get(&1000000).unwrap().get(&(0, 0)).is_some());
-        assert!(store.tiles.get(&1500000).unwrap().get(&(0, 0)).is_some());
-        assert!(store.tiles.get(&1600000).unwrap().get(&(2, 0)).is_some());
-        // TODO: This should pass, but it does not
-        //assert!(store.tiles.get(&1700000).is_none());
-    }
-
-    #[test]
-    fn test_tiling_cleanup_simple() {
-        let mut store = TiledImage::new(2);
-
-        let toplevel = Tile {
-            position: (0, 0),
-            zoom_level: zoom_to_level(1.),
-            bleed: 0,
-            texture: gdk::MemoryTexture::new(
-                4,
-                4,
-                gdk::MemoryFormat::R8g8b8,
-                &glib::Bytes::from_static(&[0; 4 * 4 * 3]),
-                4 * 3,
-            )
-            .upcast(),
-        };
-        store.push(toplevel);
-
-        let detailled = Tile {
-            position: (2, 2),
-            zoom_level: zoom_to_level(2.),
-            bleed: 0,
-            texture: gdk::MemoryTexture::new(
-                4,
-                4,
-                gdk::MemoryFormat::R8g8b8,
-                &glib::Bytes::from_static(&[0; 4 * 4 * 3]),
-                4 * 3,
-            )
-            .upcast(),
-        };
-        store.push(detailled);
-
-        store.cleanup(1.5, graphene::Rect::new(0., 0., 20., 20.));
-
-        assert!(store.tiles.get(&1000000).unwrap().get(&(0, 0)).is_some());
-        assert!(store.tiles.get(&2000000).unwrap().get(&(2, 2)).is_some());
     }
 }

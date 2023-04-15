@@ -27,6 +27,7 @@ pub use formats::{ImageFormat, RSVG_MAX_SIZE};
 /// This happens for initial loading or when zoom level or viewing area changes.
 pub struct TileRequest {
     pub viewport: graphene::Rect,
+    pub area: graphene::Rect,
     pub zoom: f64,
 }
 

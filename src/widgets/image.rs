@@ -806,7 +806,7 @@ impl LpImage {
                 imp.frame_buffer.rcu(|tiles| {
                     let mut new_tiles = (**tiles).clone();
                     // TODO: Use an area larger than the viewport
-                    new_tiles.cleanup(imp.zoom_target.get(), self.viewport());
+                    new_tiles.cleanup(imp.zoom_target.get(), self.preload_area());
                     new_tiles
                 });
                 if imp.background_color.borrow().is_none() {
@@ -1235,7 +1235,8 @@ impl LpImage {
         if let Some(decoder) = self.imp().decoder.borrow().as_ref() {
             if self.zoom_animation().state() != adw::AnimationState::Playing {
                 decoder.request(crate::decoder::TileRequest {
-                    viewport: self.viewport(),
+                    viewport: self.viewport().inset_r(-3., -3.),
+                    area: self.preload_area(),
                     zoom: self.imp().zoom_target.get(),
                 });
             }
@@ -1251,6 +1252,11 @@ impl LpImage {
         let height = self.height() as f32 * scale_factor;
 
         graphene::Rect::new(x, y, width, height)
+    }
+
+    fn preload_area(&self) -> graphene::Rect {
+        let viewport = self.viewport();
+        viewport.inset_r(-viewport.width() / 3., -viewport.height() / 3.)
     }
 
     /// Animation that makes larger zoom steps (from buttons etc) look smooth

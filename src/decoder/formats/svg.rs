@@ -84,14 +84,10 @@ impl Svg {
                         break;
                     }
                     Request::Tile(tile_request) => {
-                        let tiling = tiling::Tiling {
-                            tile_size: tiling::TILE_SIZE,
-                            original_dimensions: (original_width, original_height),
-                            zoom: tile_request.zoom,
-                            bleed: 0,
-                        };
+                        let tiling = tiles
+                            .get_layer_tiling_or_default(tile_request.zoom, tile_request.viewport);
 
-                        let relevant_tiles = tiling.relevant_tiles(&tile_request.viewport);
+                        let relevant_tiles = tiling.relevant_tiles(&tile_request.area);
 
                         for tile_instructions in relevant_tiles {
                             if request_store
@@ -117,7 +113,7 @@ impl Svg {
                                 area.height() as i32,
                             )?;
 
-                            let context = cairo::Context::new(surface.clone())?;
+                            let context = cairo::Context::new(&surface)?;
                             let (total_width, total_height) =
                                 tile_instructions.tiling.scaled_dimensions();
 
@@ -141,17 +137,13 @@ impl Svg {
 
                             let decoded_image = Decoded { surface };
 
-                            let tile = tiling::Tile {
-                                position: (
-                                    tile_instructions.area.x() as u32,
-                                    tile_instructions.area.y() as u32,
-                                ),
-                                zoom_level: tiling::zoom_to_level(tile_instructions.tiling.zoom),
-                                bleed: 2,
-                                texture: decoded_image.into_texture()?,
-                            };
+                            let position = (
+                                tile_instructions.area.x() as u32,
+                                tile_instructions.area.y() as u32,
+                            );
+                            let texture = decoded_image.into_texture()?;
 
-                            tiles.push(tile.clone());
+                            tiles.push_tile(tiling, position, texture);
                         }
                     }
                 }
