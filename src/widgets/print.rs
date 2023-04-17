@@ -1,5 +1,6 @@
 //! The print layout widget that also coordinates the print process
 
+use crate::decoder;
 use crate::deps::*;
 use crate::widgets::{LpImage, LpPrintPreview};
 
@@ -395,30 +396,41 @@ impl LpPrint {
 
         let cairo_dpi = print_context.dpi_x();
 
-        let (orig_width, _) = image.image_size();
+        let (orig_width, orig_height) = image.image_size();
 
         let texture_scale = self.user_width() / orig_width as f64;
         let cairo_scale = cairo_dpi / self.dpi();
 
-        let texture = image.print_data(texture_scale).unwrap();
+        let cairo_surface = if let Some(decoder::ImageFormat::Svg) = image.format() {
+            // Render SVG to exact needed sizes
+            // TODO: This should be async
+            decoder::formats::Svg::render_print(
+                &image.file().unwrap(),
+                (orig_width as f64 * texture_scale) as i32,
+                (orig_height as f64 * texture_scale) as i32,
+            )
+            .unwrap()
+        } else {
+            let texture = image.print_data(texture_scale).unwrap();
 
-        let mut downloader = gdk::TextureDownloader::new(&texture);
-        downloader.set_format(gdk::MemoryFormat::B8g8r8a8Premultiplied);
+            let mut downloader = gdk::TextureDownloader::new(&texture);
+            downloader.set_format(gdk::MemoryFormat::B8g8r8a8Premultiplied);
 
-        let (data, stride) = downloader.download_bytes();
-        let data = data.to_vec();
+            let (data, stride) = downloader.download_bytes();
+            let data = data.to_vec();
 
-        let width = texture.width();
-        let height = texture.height();
+            let width = texture.width();
+            let height = texture.height();
 
-        let cairo_surface = cairo::ImageSurface::create_for_data(
-            data,
-            cairo::Format::ARgb32,
-            width,
-            height,
-            stride as i32,
-        )
-        .unwrap();
+            cairo::ImageSurface::create_for_data(
+                data,
+                cairo::Format::ARgb32,
+                width,
+                height,
+                stride as i32,
+            )
+            .unwrap()
+        };
 
         let cairo_context = print_context.cairo_context();
         cairo_context.scale(cairo_scale, cairo_scale);

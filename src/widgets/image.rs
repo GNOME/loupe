@@ -1014,6 +1014,7 @@ impl LpImage {
             &snapshot,
             -orientation.rotation as f32,
             orientation.mirrored,
+            scale,
         );
 
         self.imp()

@@ -1,5 +1,5 @@
 ///! Decodes several image formats
-mod formats;
+pub mod formats;
 pub mod tiling;
 
 pub use formats::ImageDimensionDetails;

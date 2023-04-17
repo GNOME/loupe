@@ -177,6 +177,26 @@ impl Svg {
 
         Ok(())
     }
+
+    pub fn render_print(
+        file: &gio::File,
+        width: i32,
+        height: i32,
+    ) -> anyhow::Result<cairo::ImageSurface> {
+        let handle = rsvg::Loader::new().read_file(file, gio::Cancellable::NONE)?;
+        let renderer = rsvg::CairoRenderer::new(&handle);
+        let surface = cairo::ImageSurface::create(cairo::Format::ARgb32, width, height)?;
+        let context = cairo::Context::new(&surface)?;
+        renderer
+            .render_document(
+                &context,
+                &cairo::Rectangle::new(0., 0., width as f64, height as f64),
+            )
+            .context("Failed to render image")?;
+        drop(context);
+
+        Ok(surface)
+    }
 }
 
 pub fn svg_dimensions(renderer: &rsvg::CairoRenderer) -> (u32, u32) {
