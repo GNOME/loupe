@@ -1,3 +1,48 @@
+mime_types = []
+
+# image-rs
+mime_types += [
+  'image/jpeg',
+  'image/png',
+  'image/gif',
+  'image/webp',
+  'image/tiff',
+  # TGA
+  'image/x-tga',
+  # DDS
+  'image/vnd-ms.dds',
+  'image/x-dds',
+  'image/bmp',
+  # .ico
+  'image/vnd.microsoft.icon',
+  # HDR
+  'image/vnd.radiance',
+  # OpenEXR
+  'image/x-exr',
+  # PNM
+  'image/x-portable-bitmap',
+  'image/x-portable-graymap',
+  'image/x-portable-pixmap',
+  'image/x-portable-anymap',
+  # Qoi's MIME type is being worked on.
+  # See: https://github.com/phoboslab/qoi/issues/167
+  'image/x-qoi',
+]
+
+# SVG
+mime_types += [
+  'image/svg+xml',
+  'image/svg+xml-compressed',
+]
+
+# HEIF
+mime_types += [
+  'image/avif',
+  'image/heic',
+]
+
+conf.set('MIME_TYPES', ';'.join(mime_types) + ';')
+
 desktop_file = i18n.merge_file(
   input: configure_file(
     input: 'org.gnome.Loupe.desktop.in.in',
