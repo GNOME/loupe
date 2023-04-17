@@ -325,37 +325,25 @@ mod imp {
                     // We've added type annotations here, and written it as `let list: gdk::FileList = ...`,
                     // but you might also see places where type arguments are used.
                     // This line could have been written as `let list = value.get::<gdk::FileList>().unwrap()`.
-                    let list: gdk::FileList = match value.get() {
-                        Ok(list) => list,
+                    let mut files = match value.get::<gdk::FileList>() {
+                        Ok(list) => list.files(),
                         Err(err) => {
                             log::error!("Issue with drop value: {err}");
                             return false;
                         }
                     };
 
-                    // TODO: Handle this like EOG and make a "directory" out of the given files
-                    let file = list.files().get(0).unwrap().clone();
-                    let info = util::query_attributes(
-                        &file,
-                        vec![
-                            gio::FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE,
-                            gio::FILE_ATTRIBUTE_STANDARD_DISPLAY_NAME,
-                        ],
-                    )
-                    .expect("Could not query file info");
-
-                    if info
-                        .content_type()
-                        .map(|t| t.to_string())
-                        .filter(|t| t.starts_with("image/"))
-                        .is_some() {
-                        obj.set_image_from_file(&file);
+                    if files.len() > 1 {
+                        obj.image_view().set_images_from_files(files);
+                    } else if let Some(file) = files.pop() {
+                        obj.image_view().set_image_from_file(file);
                     } else {
-                        obj.show_toast(
-                            gettext_f("“{}” is not a valid image.", &[&info.display_name()]),
-                            adw::ToastPriority::High,
-                        );
+                        log::error!("Dropped FileList was empty");
+                        return false;
                     }
+
+                    // Maybe one day this will actually work
+                    obj.present();
 
                     true
                 }),
@@ -434,7 +422,7 @@ impl LpWindow {
             .build();
 
         if let Ok(file) = chooser.open_future(Some(self)).await {
-            self.set_image_from_file(&file);
+            self.image_view().set_image_from_file(file);
         } else {
             log::debug!("File dialog canceled or file not readable");
         }
@@ -506,7 +494,7 @@ impl LpWindow {
                     spawn(async move {
                         let result = crate::util::untrash(&path).await;
                         match result {
-                            Ok(()) => win.image_view().set_image_from_file(&gio::File::for_path(&path)),
+                            Ok(()) => win.image_view().set_image_from_file(gio::File::for_path(&path)),
                             Err(err) => {
                                 log::error!("Failed to untrash {path:?}: {err}");
                                 win.show_toast(
@@ -569,7 +557,7 @@ impl LpWindow {
         }
     }
 
-    fn image_view(&self) -> LpImageView {
+    pub fn image_view(&self) -> LpImageView {
         self.imp().image_view.clone()
     }
 
@@ -580,14 +568,6 @@ impl LpWindow {
         toast.set_priority(priority);
 
         imp.toast_overlay.add_toast(toast);
-    }
-
-    pub fn set_image_from_file(&self, file: &gio::File) {
-        let imp = self.imp();
-
-        log::debug!("Loading file: {}", file.uri());
-        imp.image_view.set_image_from_file(file);
-        self.set_actions_enabled(true);
     }
 
     pub fn set_actions_enabled(&self, enabled: bool) {

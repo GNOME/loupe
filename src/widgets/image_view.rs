@@ -227,15 +227,35 @@ glib::wrapper! {
 
 #[gtk::template_callbacks]
 impl LpImageView {
-    pub fn set_image_from_file(&self, file: &gio::File) {
+    pub fn set_image_from_file(&self, file: gio::File) {
         // Add image to recently used file. Does not work in Flatpaks:
         // <https://github.com/flatpak/xdg-desktop-portal/issues/215>
         gtk::RecentManager::default().add_item(&file.uri());
 
-        if let Err(err) = self.load_file(file) {
-            log::error!("Failed to load path: {err}");
-            self.activate_action("win.show-toast", Some(&(err.to_string(), 1).to_variant()))
-                .unwrap();
+        self.load_file(file);
+    }
+
+    pub fn set_images_from_files(&self, files: Vec<gio::File>) {
+        let recent_manager = gtk::RecentManager::default();
+        for file in files.iter() {
+            recent_manager.add_item(&file.uri());
+        }
+        self.load_files(files);
+    }
+
+    fn load_files(&self, files: Vec<gio::File>) {
+        let sliding_view = self.sliding_view();
+
+        if let Some(first) = files.first().cloned() {
+            let model = LpFileModel::from_files(files);
+            self.set_model(model);
+            let page = LpImagePage::from_file(&first);
+
+            sliding_view.clear();
+            sliding_view.append(&page);
+            self.update_sliding_view(&first);
+        } else {
+            log::error!("File list was empty");
         }
     }
 
@@ -243,8 +263,7 @@ impl LpImageView {
     // that holds a `gio::File` for each child within the same directory as the
     // file we pass. This model will update with changes to the directory,
     // and in turn we'll update our `adw::Carousel`.
-    fn load_file(&self, file: &gio::File) -> anyhow::Result<()> {
-        let sliding_view = self.sliding_view();
+    fn load_file(&self, file: gio::File) {
         let directory = file.parent();
 
         let is_same_directory = if let (Some(d1), Some(d2)) = (&directory, self.model().directory())
@@ -256,18 +275,15 @@ impl LpImageView {
 
         if is_same_directory {
             log::debug!("Re-using old model and navigating to the current file");
-            self.navigate_to_file(file);
-            return Ok(());
+            self.navigate_to_file(&file);
+            return;
         }
 
-        let model = LpFileModel::from_file(file);
+        let model = LpFileModel::from_file(file.clone());
         self.set_model(model);
         log::debug!("New model created");
 
-        let page = LpImagePage::from_file(file);
-
-        sliding_view.clear();
-        sliding_view.append(&page);
+        self.update_sliding_view(&file);
 
         // List other files in directory
         if let Some(directory) = directory {
@@ -282,8 +298,6 @@ impl LpImageView {
                 obj.update_sliding_view(&file);
             }));
         }
-
-        Ok(())
     }
 
     /// Move forward or backwards

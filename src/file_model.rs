@@ -70,12 +70,18 @@ impl Default for LpFileModel {
 
 impl LpFileModel {
     /// Create with a single element
-    pub fn from_file(file: &gio::File) -> Self {
+    pub fn from_file(file: gio::File) -> Self {
+        Self::from_files(vec![file])
+    }
+
+    pub fn from_files(files: Vec<gio::File>) -> Self {
         let model = Self::default();
 
         {
             let mut vec = model.imp().files.borrow_mut();
-            vec.insert(file.uri(), file.clone());
+            for file in files {
+                vec.insert(file.uri(), file);
+            }
         }
 
         model

@@ -73,7 +73,7 @@ mod imp {
             let application = self.obj();
             for file in files {
                 let win = LpWindow::new(&*application);
-                win.set_image_from_file(file);
+                win.image_view().set_image_from_file(file.clone());
             }
         }
     }
