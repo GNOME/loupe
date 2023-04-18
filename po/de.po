@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-14 04:18+0000\n"
-"PO-Revision-Date: 2023-03-14 23:19+0100\n"
+"POT-Creation-Date: 2023-04-07 10:47+0000\n"
+"PO-Revision-Date: 2023-04-13 01:18+0200\n"
 "Last-Translator: Philipp Kiemle <philipp.kiemle@gmail.com>\n"
 "Language-Team: German <gnome-de@gnome.org>\n"
 "Language: de\n"
@@ -23,8 +23,8 @@ msgstr ""
 
 #. If the file exists, get display name
 #: data/org.gnome.Loupe.desktop.in.in:3
-#: data/org.gnome.Loupe.metainfo.xml.in.in:6 data/gtk/window.ui:63
-#: src/application.rs:193 src/window.rs:676 src/window.rs:682
+#: data/org.gnome.Loupe.metainfo.xml.in.in:6 data/gtk/window.ui:59
+#: src/application.rs:187 src/window.rs:676 src/window.rs:682
 msgid "Loupe"
 msgstr "Loupe"
 
@@ -34,9 +34,9 @@ msgstr ""
 "Picture;Slideshow;Graphics;Image Viewer;Bild;Foto;Diaschau;Grafik;"
 "Bildbetrachter;"
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:7
-msgid "Christopher Davis"
-msgstr "Christopher Davis"
+#: data/org.gnome.Loupe.metainfo.xml.in.in:7 src/application.rs:190
+msgid "The Loupe Team"
+msgstr "Das Loupe-Team"
 
 #: data/org.gnome.Loupe.metainfo.xml.in.in:8
 msgid "View images"
@@ -55,24 +55,13 @@ msgid "The following features are not available yet"
 msgstr "Die folgenden Funktionen sind noch nicht verfügbar"
 
 #: data/org.gnome.Loupe.metainfo.xml.in.in:13
-msgid "Correctly showing SVGs at every zoom-level"
-msgstr "SVGs in jeder Vergrößerungsstufe richtig anzeigen"
+#, fuzzy
+msgid "Applying image color profiles"
+msgstr "Farbprofile von Bildern werden angewendet"
 
 #: data/org.gnome.Loupe.metainfo.xml.in.in:14
-msgid "Interpreting image color profiles"
-msgstr "Farbprofile von Bildern interpretieren"
-
-#: data/org.gnome.Loupe.metainfo.xml.in.in:15
-msgid "Animated image formats"
-msgstr "Animierte Bildformate"
-
-#: data/org.gnome.Loupe.metainfo.xml.in.in:16
-msgid "Correct HighDPI support"
-msgstr "Korrekte HighDPI-Unterstützung"
-
-#: data/org.gnome.Loupe.metainfo.xml.in.in:17
-msgid "Print settings to position the image on the page"
-msgstr "Druckeinstellungen zur Positionierung des Bildes auf der Seite"
+msgid "Printing"
+msgstr "Drucken"
 
 #: data/gtk/help_overlay.ui:11
 msgctxt "shortcut window"
@@ -212,7 +201,6 @@ msgid "200% Scale"
 msgstr "200% Vergrößerung"
 
 #: data/gtk/help_overlay.ui:185
-#, fuzzy
 msgctxt "shortcut window"
 msgid "Pan View"
 msgstr "Ansicht schwenken"
@@ -266,11 +254,11 @@ msgstr "Als _Hintergrund festlegen …"
 msgid "Could not Load Image"
 msgstr "Bild konnte nicht geladen werden"
 
-#: data/gtk/image_page.ui:82 data/gtk/window.ui:115
+#: data/gtk/image_page.ui:88 data/gtk/window.ui:111
 msgid "Rotate Left"
 msgstr "Nach links drehen"
 
-#: data/gtk/image_page.ui:93 data/gtk/window.ui:126
+#: data/gtk/image_page.ui:99 data/gtk/window.ui:122
 msgid "Rotate Right"
 msgstr "Nach rechts drehen"
 
@@ -363,57 +351,49 @@ msgid "_Open…"
 msgstr "Ö_ffnen …"
 
 #: data/gtk/window.ui:46
-msgid "_Help"
-msgstr "_Hilfe"
-
-#: data/gtk/window.ui:50
 msgid "_Keyboard Shortcuts"
 msgstr "Tasten_kürzel"
 
-#: data/gtk/window.ui:54
+#: data/gtk/window.ui:50
 msgid "_About Loupe"
 msgstr "_Info zu Loupe"
 
-#: data/gtk/window.ui:94
+#: data/gtk/window.ui:90
 msgid "Copy to Clipboard"
 msgstr "In Zwischenablage kopieren"
 
-#: data/gtk/window.ui:101
+#: data/gtk/window.ui:97
 msgid "Move to Trash"
 msgstr "In Papierkorb verschieben"
 
-#: data/gtk/window.ui:107
+#: data/gtk/window.ui:103
 msgid "Main Menu"
 msgstr "Hauptmenü"
 
-#: data/gtk/window.ui:141
+#: data/gtk/window.ui:137
 msgid "Image Properties"
 msgstr "Bildeigenschaften"
 
-#: data/gtk/window.ui:161
+#: data/gtk/window.ui:157
 msgid "View Images"
 msgstr "Bilder betrachten"
 
-#: data/gtk/window.ui:162
+#: data/gtk/window.ui:158
 msgid "Drag and drop images here"
 msgstr "Bilder hierher ziehen und ablegen"
 
-#: data/gtk/window.ui:166
+#: data/gtk/window.ui:162
 msgid "_Open File…"
 msgstr "_Datei öffnen …"
 
-#: src/application.rs:196
-msgid "The Loupe Team"
-msgstr "Das Loupe-Team"
-
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/application.rs:205
+#: src/application.rs:199
 msgid "translator-credits"
 msgstr ""
 "Jürgen Benvenuti <gastornis@posteo.org>, 2023.\n"
 "Philipp Kiemle <philipp.kiemle@gmail.com, 2023."
 
-#: src/application.rs:206
+#: src/application.rs:200
 msgid "Copyright © 2020–2023 Christopher Davis et al."
 msgstr "Copyright © 2020–2023 Christopher Davis et al."
 
@@ -451,20 +431,20 @@ msgstr "1\\u{2215}{}\\u{202F}s"
 msgid "{}\\u{202F}mm"
 msgstr "{}\\u{202F}mm"
 
-#: src/widgets/image.rs:652
+#: src/widgets/image.rs:751
 msgid "File does not exist"
 msgstr "Datei existiert nicht"
 
-#: src/widgets/image_view.rs:574
+#: src/widgets/image_view.rs:558
 msgid "Failed to open new background image"
 msgstr "Neues Hintergrundbild konnte nicht geöffnet werden"
 
 # https://gitlab.gnome.org/Incubator/loupe/-/issues/102 - pk
-#: src/widgets/image_view.rs:591
+#: src/widgets/image_view.rs:575
 msgid "Set as background."
 msgstr "Als Hintergrund festgelegt."
 
-#: src/widgets/image_view.rs:598
+#: src/widgets/image_view.rs:582
 msgid "Could not set background."
 msgstr "Konnte nicht als Hintergrund festgelegt werden."
 
@@ -515,6 +495,24 @@ msgstr "Löschen"
 #: src/window.rs:559
 msgid "Failed to delete image"
 msgstr "Bild konnte nicht gelöscht werden"
+
+#~ msgid "Christopher Davis"
+#~ msgstr "Christopher Davis"
+
+#~ msgid "Correctly showing SVGs at every zoom-level"
+#~ msgstr "SVGs in jeder Vergrößerungsstufe richtig anzeigen"
+
+#~ msgid "Animated image formats"
+#~ msgstr "Animierte Bildformate"
+
+#~ msgid "Correct HighDPI support"
+#~ msgstr "Korrekte HighDPI-Unterstützung"
+
+#~ msgid "Print settings to position the image on the page"
+#~ msgstr "Druckeinstellungen zur Positionierung des Bildes auf der Seite"
+
+#~ msgid "_Help"
+#~ msgstr "_Hilfe"
 
 #~ msgid "File Type"
 #~ msgstr "Dateityp"
