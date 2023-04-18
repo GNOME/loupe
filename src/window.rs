@@ -586,9 +586,11 @@ impl LpWindow {
 
         if imp.image_view.current_page().is_some() {
             imp.stack.set_visible_child(&*imp.image_view);
+            self.set_actions_enabled(true);
             imp.image_view.grab_focus();
         } else {
             imp.stack.set_visible_child(&*imp.status_page);
+            self.set_actions_enabled(false);
             imp.status_page.grab_focus();
         }
     }
