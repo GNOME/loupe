@@ -572,7 +572,14 @@ impl LpImageView {
             Ok(_) => self
                 .activate_action(
                     "win.show-toast",
-                    Some(&(gettext("Set as background."), 1).to_variant()),
+                    Some(
+                        &(
+                            // Translators: This is a toast notification, informing the user that an image has been set as background.
+                            gettext("Set as background."),
+                            1,
+                        )
+                            .to_variant(),
+                    ),
                 )
                 .unwrap(),
             Err(err) => {
