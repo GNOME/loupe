@@ -1,6 +1,8 @@
-// image_view.rs
-//
-// Copyright 2020 Christopher Davis <christopherdavis@gnome.org>
+// Copyright (c) 2020-2023 Christopher Davis
+// Copyright (c) 2022-2023 Sophie Herold
+// Copyright (c) 2022 Elton A Rodrigues
+// Copyright (c) 2022 Maximiliano Sandoval R
+// Copyright (c) 2023 Philipp Kiemle
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
