@@ -1,10 +1,11 @@
+data/resources/gtk/help-overlay.ui
+
 data/org.gnome.Loupe.desktop.in.in
 data/org.gnome.Loupe.metainfo.xml.in.in
-data/org.gnome.Loupe.gschema.xml
 
-data/gtk/help_overlay.ui
 data/gtk/image_page.ui
 data/gtk/image_view.ui
+data/gtk/print.ui
 data/gtk/properties_view.ui
 data/gtk/window.ui
 
