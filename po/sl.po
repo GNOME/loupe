@@ -7,9 +7,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-02 20:03+0000\n"
-"PO-Revision-Date: 2023-04-04 08:26+0200\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/Incubator/loupe/-/issues\n"
+"POT-Creation-Date: 2023-04-19 21:36+0000\n"
+"PO-Revision-Date: 2023-04-20 00:11+0200\n"
 "Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
 "Language-Team: Slovenian <gnome-si@googlegroups.com>\n"
 "Language: sl\n"
@@ -20,212 +20,6 @@ msgstr ""
 "n%100==4 ? 3 : 0);\n"
 "X-Generator: Poedit 3.2.2\n"
 "X-Poedit-SourceCharset: ISO-8859-1\n"
-
-#. If the file exists, get display name
-#: data/org.gnome.Loupe.desktop.in.in:3
-#: data/org.gnome.Loupe.metainfo.xml.in.in:6 data/gtk/window.ui:59
-#: src/application.rs:187 src/window.rs:676 src/window.rs:682
-msgid "Loupe"
-msgstr "Lupa"
-
-#: data/org.gnome.Loupe.desktop.in.in:11
-msgid "Picture;Slideshow;Graphics;Image Viewer;"
-msgstr "Slika; diaprojekcija;grafika;pregledovalnik slik;"
-
-#: data/org.gnome.Loupe.metainfo.xml.in.in:7
-msgid "Christopher Davis"
-msgstr "Christopher Davis"
-
-#: data/org.gnome.Loupe.metainfo.xml.in.in:8
-msgid "View images"
-msgstr "Pregledovalnik slik"
-
-#: data/org.gnome.Loupe.metainfo.xml.in.in:10
-msgid ""
-"A simple image viewer which allows you to browse through your images and "
-"inspect their metadata."
-msgstr ""
-"Preprost pregledovalnik slik omogoča pregledovanje slik in proučevanje "
-"njihovih metapodatkov."
-
-#: data/org.gnome.Loupe.metainfo.xml.in.in:11
-msgid "The following features are not available yet"
-msgstr "Naslednje funkcije še niso na voljo"
-
-#: data/org.gnome.Loupe.metainfo.xml.in.in:13
-msgid "Applying image color profiles"
-msgstr "Uveljavljanje barvnih profilov slik"
-
-#: data/org.gnome.Loupe.metainfo.xml.in.in:14
-msgid "Printing"
-msgstr "Tiskanje"
-
-#: data/gtk/help_overlay.ui:11
-msgctxt "shortcut window"
-msgid "General Shortcuts"
-msgstr "Splošne bližnjice"
-
-#: data/gtk/help_overlay.ui:14
-msgctxt "shortcut window"
-msgid "Show Main Menu"
-msgstr "Pokaži glavni meni"
-
-#: data/gtk/help_overlay.ui:20
-msgctxt "shortcut window"
-msgid "Copy Image to Clipboard"
-msgstr "Kopiraj sliko na odložišče"
-
-#: data/gtk/help_overlay.ui:26
-msgctxt "shortcut window"
-msgid "Move Image to Trash"
-msgstr "Premakni sliko v smeti"
-
-#: data/gtk/help_overlay.ui:32
-msgctxt "shortcut window"
-msgid "Toggle Image Properties"
-msgstr "Preklopi lastnosti slike"
-
-#: data/gtk/help_overlay.ui:38
-msgctxt "shortcut window"
-msgid "Set as Background"
-msgstr "Določi kot sliko ozadja"
-
-#: data/gtk/help_overlay.ui:44
-msgctxt "shortcut window"
-msgid "Toggle Fullscreen"
-msgstr "Preklopi celozaslonski način"
-
-#: data/gtk/help_overlay.ui:50
-msgctxt "shortcut window"
-msgid "Leave Fullscreen"
-msgstr "Zapusti celozaslonski način"
-
-#: data/gtk/help_overlay.ui:56
-msgctxt "shortcut window"
-msgid "New Window"
-msgstr "Novo okno"
-
-#: data/gtk/help_overlay.ui:62
-msgctxt "shortcut window"
-msgid "Open Help"
-msgstr "Odpri pomoč"
-
-#: data/gtk/help_overlay.ui:68
-msgctxt "shortcut window"
-msgid "Show Keyboard Shortcuts"
-msgstr "Pokaže tipkovne bližnjice"
-
-#: data/gtk/help_overlay.ui:74
-msgctxt "shortcut window"
-msgid "Close Window"
-msgstr "Zapre okno"
-
-#: data/gtk/help_overlay.ui:80
-msgctxt "shortcut window"
-msgid "Quit"
-msgstr "Izhod"
-
-#: data/gtk/help_overlay.ui:88
-msgctxt "shortcut window"
-msgid "Navigate Images"
-msgstr "Krmarjenje po slikah"
-
-#: data/gtk/help_overlay.ui:92 data/gtk/help_overlay.ui:106
-#: data/gtk/help_overlay.ui:218 data/gtk/help_overlay.ui:232
-msgctxt "shortcut window"
-msgid "Next Image"
-msgstr "Naslednja slika"
-
-#: data/gtk/help_overlay.ui:99 data/gtk/help_overlay.ui:113
-#: data/gtk/help_overlay.ui:225 data/gtk/help_overlay.ui:239
-msgctxt "shortcut window"
-msgid "Previous Image"
-msgstr "Predhodnja slika"
-
-#: data/gtk/help_overlay.ui:119
-msgctxt "shortcut window"
-msgid "First Image"
-msgstr "Prva slika"
-
-#: data/gtk/help_overlay.ui:125
-msgctxt "shortcut window"
-msgid "Last Image"
-msgstr "Zadnja slika"
-
-#: data/gtk/help_overlay.ui:133
-msgctxt "shortcut window"
-msgid "Rotate Image"
-msgstr "Zavrti sliko"
-
-#: data/gtk/help_overlay.ui:136 data/gtk/help_overlay.ui:257
-msgctxt "shortcut window"
-msgid "Rotate Clockwise"
-msgstr "Zasukaj v smeri urinega kazalca"
-
-#: data/gtk/help_overlay.ui:142 data/gtk/help_overlay.ui:263
-msgctxt "shortcut window"
-msgid "Rotate Counterclockwise"
-msgstr "Zasukaj v nasprotni smeri urinega kazalca"
-
-#: data/gtk/help_overlay.ui:150
-msgctxt "shortcut window"
-msgid "Zoom Image"
-msgstr "Povečaj sliko"
-
-#: data/gtk/help_overlay.ui:153 data/gtk/help_overlay.ui:245
-msgctxt "shortcut window"
-msgid "Zoom In"
-msgstr "Povečaj"
-
-#: data/gtk/help_overlay.ui:159 data/gtk/help_overlay.ui:251
-msgctxt "shortcut window"
-msgid "Zoom Out"
-msgstr "Pomanjšaj"
-
-#: data/gtk/help_overlay.ui:165
-msgctxt "shortcut window"
-msgid "Best Fit"
-msgstr "Najboljše prileganje"
-
-#: data/gtk/help_overlay.ui:171
-msgctxt "shortcut window"
-msgid "Original Scale"
-msgstr "Izvirno merilo"
-
-#: data/gtk/help_overlay.ui:177
-msgctxt "shortcut window"
-msgid "200% Scale"
-msgstr "200 % povečava"
-
-#: data/gtk/help_overlay.ui:185
-msgctxt "shortcut window"
-msgid "Pan View"
-msgstr "Pogled s zasukom"
-
-#: data/gtk/help_overlay.ui:188
-msgctxt "shortcut window"
-msgid "Pan Left"
-msgstr "Zasukaj levo"
-
-#: data/gtk/help_overlay.ui:194
-msgctxt "shortcut window"
-msgid "Pan Right"
-msgstr "Zasukaj desno"
-
-#: data/gtk/help_overlay.ui:200
-msgctxt "shortcut window"
-msgid "Pan Up"
-msgstr "Zasukaj navzgor"
-
-#: data/gtk/help_overlay.ui:206
-msgctxt "shortcut window"
-msgid "Pan Down"
-msgstr "Zasukaj navzdol"
-
-#: data/gtk/help_overlay.ui:214
-msgctxt "shortcut window"
-msgid "Gestures"
-msgstr "Kretnje"
 
 #: data/gtk/image_page.ui:6 data/gtk/window.ui:16
 msgid "_Open With…"
@@ -278,6 +72,52 @@ msgstr "Pomanjšaj"
 #: data/gtk/image_view.ui:92
 msgid "Zoom In"
 msgstr "Povečaj"
+
+#: data/gtk/print.ui:4
+msgid "Layout Image"
+msgstr "Postavitev slike"
+
+#: data/gtk/print.ui:66
+msgid "Portrait page orientation"
+msgstr "Pokončna usmerjenost strani"
+
+#: data/gtk/print.ui:74
+msgid "Landscape page orientation"
+msgstr "Ležeča usmerjenost strani"
+
+#: data/gtk/print.ui:88
+#, fuzzy
+msgid "Center image horizontally"
+msgstr "Sredini sliko vodoravno"
+
+#: data/gtk/print.ui:95
+#, fuzzy
+msgid "Center image vertically"
+msgstr "Sredini sliko navpično"
+
+#: data/gtk/print.ui:107
+msgid "Image Width"
+msgstr "Širina slike"
+
+#: data/gtk/print.ui:119
+msgid "Image Scale"
+msgstr "Merilo slike"
+
+#: data/gtk/print.ui:131
+msgid "Left Margin"
+msgstr "Levi rob"
+
+#: data/gtk/print.ui:143
+msgid "Top Margin"
+msgstr "Zgornji rob"
+
+#: data/gtk/print.ui:155
+msgid "Length Unit"
+msgstr "Enota dolžine"
+
+#: data/gtk/print.ui:175
+msgid "Print"
+msgstr "Natisni"
 
 #: data/gtk/properties_view.ui:29
 msgid "Folder"
@@ -355,6 +195,13 @@ msgstr "_Tipkovne bližnjice‫"
 msgid "_About Loupe"
 msgstr "_O programu Lupa"
 
+#. If the file exists, get display name
+#: data/gtk/window.ui:59 data/org.gnome.Loupe.desktop.in.in:3
+#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/application.rs:191
+#: src/window.rs:665 src/window.rs:671
+msgid "Loupe"
+msgstr "Lupa"
+
 #: data/gtk/window.ui:90
 msgid "Copy to Clipboard"
 msgstr "Kopiraj na odložišče"
@@ -383,113 +230,354 @@ msgstr "Povlecite in spustite slike sem"
 msgid "_Open File…"
 msgstr "_Odpri datoteko …"
 
-#: src/application.rs:190
+#: data/org.gnome.Loupe.desktop.in.in:11
+msgid "Picture;Slideshow;Graphics;Image Viewer;"
+msgstr "Slika; diaprojekcija;grafika;pregledovalnik slik;"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:7 src/application.rs:194
 msgid "The Loupe Team"
 msgstr "Ekipa Lupe"
 
+#: data/org.gnome.Loupe.metainfo.xml.in.in:8
+msgid "View images"
+msgstr "Pregledovalnik slik"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:10
+msgid ""
+"A simple image viewer which allows you to browse through your images and "
+"inspect their metadata."
+msgstr ""
+"Preprost pregledovalnik slik omogoča pregledovanje slik in proučevanje "
+"njihovih metapodatkov."
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:11
+msgid "The following features are not available yet"
+msgstr "Naslednje funkcije še niso na voljo"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:13
+msgid "Applying image color profiles"
+msgstr "Uveljavljanje barvnih profilov slik"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:14
+msgid "Printing"
+msgstr "Tiskanje"
+
+#: data/resources/gtk/help-overlay.ui:11
+msgctxt "shortcut window"
+msgid "General Shortcuts"
+msgstr "Splošne bližnjice"
+
+#: data/resources/gtk/help-overlay.ui:14
+msgctxt "shortcut window"
+msgid "Show Main Menu"
+msgstr "Pokaži glavni meni"
+
+#: data/resources/gtk/help-overlay.ui:20
+msgctxt "shortcut window"
+msgid "Copy Image to Clipboard"
+msgstr "Kopiraj sliko na odložišče"
+
+#: data/resources/gtk/help-overlay.ui:26
+msgctxt "shortcut window"
+msgid "Move Image to Trash"
+msgstr "Premakni sliko v smeti"
+
+#: data/resources/gtk/help-overlay.ui:32
+msgctxt "shortcut window"
+msgid "Toggle Image Properties"
+msgstr "Preklopi lastnosti slike"
+
+#: data/resources/gtk/help-overlay.ui:38
+msgctxt "shortcut window"
+msgid "Set as Background"
+msgstr "Določi kot sliko ozadja"
+
+#: data/resources/gtk/help-overlay.ui:44
+msgctxt "shortcut window"
+msgid "Toggle Fullscreen"
+msgstr "Preklopi celozaslonski način"
+
+#: data/resources/gtk/help-overlay.ui:50
+msgctxt "shortcut window"
+msgid "Leave Fullscreen"
+msgstr "Zapusti celozaslonski način"
+
+#: data/resources/gtk/help-overlay.ui:56
+msgctxt "shortcut window"
+msgid "New Window"
+msgstr "Novo okno"
+
+#: data/resources/gtk/help-overlay.ui:62
+msgctxt "shortcut window"
+msgid "Open Help"
+msgstr "Odpri pomoč"
+
+#: data/resources/gtk/help-overlay.ui:68
+msgctxt "shortcut window"
+msgid "Show Keyboard Shortcuts"
+msgstr "Pokaže tipkovne bližnjice"
+
+#: data/resources/gtk/help-overlay.ui:74
+msgctxt "shortcut window"
+msgid "Close Window"
+msgstr "Zapre okno"
+
+#: data/resources/gtk/help-overlay.ui:80
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "Izhod"
+
+#: data/resources/gtk/help-overlay.ui:88
+msgctxt "shortcut window"
+msgid "Navigate Images"
+msgstr "Krmarjenje po slikah"
+
+#: data/resources/gtk/help-overlay.ui:92 data/resources/gtk/help-overlay.ui:106
+#: data/resources/gtk/help-overlay.ui:218
+#: data/resources/gtk/help-overlay.ui:232
+msgctxt "shortcut window"
+msgid "Next Image"
+msgstr "Naslednja slika"
+
+#: data/resources/gtk/help-overlay.ui:99 data/resources/gtk/help-overlay.ui:113
+#: data/resources/gtk/help-overlay.ui:225
+#: data/resources/gtk/help-overlay.ui:239
+msgctxt "shortcut window"
+msgid "Previous Image"
+msgstr "Predhodnja slika"
+
+#: data/resources/gtk/help-overlay.ui:119
+msgctxt "shortcut window"
+msgid "First Image"
+msgstr "Prva slika"
+
+#: data/resources/gtk/help-overlay.ui:125
+msgctxt "shortcut window"
+msgid "Last Image"
+msgstr "Zadnja slika"
+
+#: data/resources/gtk/help-overlay.ui:133
+msgctxt "shortcut window"
+msgid "Rotate Image"
+msgstr "Zavrti sliko"
+
+#: data/resources/gtk/help-overlay.ui:136
+#: data/resources/gtk/help-overlay.ui:257
+msgctxt "shortcut window"
+msgid "Rotate Clockwise"
+msgstr "Zasukaj v smeri urinega kazalca"
+
+#: data/resources/gtk/help-overlay.ui:142
+#: data/resources/gtk/help-overlay.ui:263
+msgctxt "shortcut window"
+msgid "Rotate Counterclockwise"
+msgstr "Zasukaj v nasprotni smeri urinega kazalca"
+
+#: data/resources/gtk/help-overlay.ui:150
+msgctxt "shortcut window"
+msgid "Zoom Image"
+msgstr "Povečaj sliko"
+
+#: data/resources/gtk/help-overlay.ui:153
+#: data/resources/gtk/help-overlay.ui:245
+msgctxt "shortcut window"
+msgid "Zoom In"
+msgstr "Povečaj"
+
+#: data/resources/gtk/help-overlay.ui:159
+#: data/resources/gtk/help-overlay.ui:251
+msgctxt "shortcut window"
+msgid "Zoom Out"
+msgstr "Pomanjšaj"
+
+#: data/resources/gtk/help-overlay.ui:165
+msgctxt "shortcut window"
+msgid "Best Fit"
+msgstr "Najboljše prileganje"
+
+#: data/resources/gtk/help-overlay.ui:171
+msgctxt "shortcut window"
+msgid "Original Scale"
+msgstr "Izvirno merilo"
+
+#: data/resources/gtk/help-overlay.ui:177
+msgctxt "shortcut window"
+msgid "200% Scale"
+msgstr "200 % povečava"
+
+#: data/resources/gtk/help-overlay.ui:185
+msgctxt "shortcut window"
+msgid "Pan View"
+msgstr "Pogled s zasukom"
+
+#: data/resources/gtk/help-overlay.ui:188
+msgctxt "shortcut window"
+msgid "Pan Left"
+msgstr "Zasukaj levo"
+
+#: data/resources/gtk/help-overlay.ui:194
+msgctxt "shortcut window"
+msgid "Pan Right"
+msgstr "Zasukaj desno"
+
+#: data/resources/gtk/help-overlay.ui:200
+msgctxt "shortcut window"
+msgid "Pan Up"
+msgstr "Zasukaj navzgor"
+
+#: data/resources/gtk/help-overlay.ui:206
+msgctxt "shortcut window"
+msgid "Pan Down"
+msgstr "Zasukaj navzdol"
+
+#: data/resources/gtk/help-overlay.ui:214
+msgctxt "shortcut window"
+msgid "Gestures"
+msgstr "Kretnje"
+
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/application.rs:199
+#: src/application.rs:203
 msgid "translator-credits"
 msgstr "Martin Srebotnjak <miles@filmsi.net>"
 
-#: src/application.rs:200
+#: src/application.rs:204
 msgid "Copyright © 2020–2023 Christopher Davis et al."
 msgstr "Avtorska pravica © 2020–2023 Christopher Davis et al."
 
-#: src/file_model.rs:114
+#: src/decoder/formats/heif.rs:55
+msgid "Failed to read image file information"
+msgstr "Branje informacij o slikovni datoteki ni uspelo"
+
+#: src/decoder/formats/heif.rs:60 src/decoder/formats/heif.rs:93
+#: src/decoder/formats/image_rs_other.rs:116
+#: src/decoder/formats/image_rs_other.rs:125
+#: src/decoder/formats/image_rs_other.rs:132
+msgid "Failed to decode image"
+msgstr "Dekodiranje slike ni uspelo"
+
+#: src/decoder/formats/mod.rs:72
+msgid "Animated GIF"
+msgstr "Animirani GIF"
+
+#: src/decoder/formats/mod.rs:73
+msgid "Animated WebP"
+msgstr "Animirani webP"
+
+#: src/decoder/formats/mod.rs:74
+msgid "Animated PNG"
+msgstr "Animirani PNG"
+
+#: src/decoder/mod.rs:192
+msgid "Unknown image format: {}"
+msgstr "Neznan zapis slike: {}"
+
+#: src/decoder/mod.rs:199
+msgid "Unknown image format"
+msgstr "Neznan slikovni zapis"
+
+#: src/decoder/mod.rs:227
+msgid "Could not open image"
+msgstr "Slike ni bilo mogoče odpreti"
+
+#: src/decoder/mod.rs:231
+msgid "Could not read image"
+msgstr "Slike ni bilo mogoče prebrati"
+
+#: src/file_model.rs:118
 msgid "Could not list other files in directory."
 msgstr "Drugih datotek v mapi ni bilo mogoče navesti."
 
 #. Translators: short for "north" in GPS coordinate
-#: src/image_metadata/gps.rs:136
+#: src/image_metadata/gps.rs:154
 msgid "N"
 msgstr "S"
 
 #. Translators: short for "south" in GPS coordinate
-#: src/image_metadata/gps.rs:139
+#: src/image_metadata/gps.rs:157
 msgid "S"
 msgstr "J"
 
 #. Translators: short for "east" in GPS coordinate
-#: src/image_metadata/gps.rs:149
+#: src/image_metadata/gps.rs:167
 msgid "E"
 msgstr "V"
 
 #. Translators: short for "west" in GPS coordinate
-#: src/image_metadata/gps.rs:152
+#: src/image_metadata/gps.rs:170
 msgid "W"
 msgstr "Z"
 
 #. Translators: Unit for exposure time in seconds
-#: src/image_metadata/mod.rs:129
+#: src/image_metadata/mod.rs:144
 msgid "1\\u{2215}{}\\u{202F}s"
 msgstr "1\\u{2215}{}\\u{202F}s"
 
 #. Translators: Unit for focal length in millimeters
-#: src/image_metadata/mod.rs:154
+#: src/image_metadata/mod.rs:169
 msgid "{}\\u{202F}mm"
 msgstr "{}\\u{202F} mm"
 
-#: src/widgets/image.rs:720
-msgid "File does not exist"
-msgstr "Datoteka ne obstaja"
+#. Translators: This is the date and time format we use in metadata output etc.
+#. The format has to follow <https://docs.gtk.org/glib/method.DateTime.format.html>
+#. The default is already translated. Don't change if you are not sure what to use.
+#: src/util/mod.rs:36
+#, c-format
+msgid "%x %X"
+msgstr "%x %X"
 
-#: src/widgets/image_view.rs:558
-msgid "Failed to open new background image"
-msgstr "Odpiranje nove slike ozadja ni uspelo"
-
-#: src/widgets/image_view.rs:575
-msgid "Set as background."
-msgstr "Določi kot sliko ozadja."
-
-#: src/widgets/image_view.rs:582
-msgid "Could not set background."
-msgstr "Ozadja ni bilo mogoče nastaviti."
-
-#: src/window.rs:355
-msgid "“{}” is not a valid image."
-msgstr "»{}« ni veljavna slikovna datoteka."
-
-#: src/window.rs:431
-msgid "Open Image"
-msgstr "Odpri sliko"
-
-#: src/window.rs:485
-msgid "Image copied to clipboard"
-msgstr "Slika, kopirana na odložišče"
-
-#: src/window.rs:499
-msgid "Image moved to trash"
-msgstr "Slika, premaknjena v smeti"
-
-#: src/window.rs:500
-msgid "Undo"
-msgstr "Razveljavi"
-
-#: src/window.rs:511
+#: src/util/mod.rs:171 src/window.rs:500
 msgid "Failed to restore image from trash"
 msgstr "Obnovitev slike iz smeti ni uspela"
 
-#: src/window.rs:526
+#: src/util/mod.rs:192
+msgid "Failed to open image"
+msgstr "Odpiranje slike ni uspelo"
+
+#. Translators: This is a toast notification, informing the user that an image has been set as background.
+#: src/widgets/image_view.rs:599
+msgid "Set as background."
+msgstr "Določi kot sliko ozadja."
+
+#: src/widgets/image_view.rs:610
+msgid "Could not set background."
+msgstr "Ozadja ni bilo mogoče nastaviti."
+
+#: src/window.rs:418
+msgid "Open Image"
+msgstr "Odpri sliko"
+
+#: src/window.rs:472
+msgid "Image copied to clipboard"
+msgstr "Slika, kopirana na odložišče"
+
+#: src/window.rs:488
+msgid "Image moved to trash"
+msgstr "Slika, premaknjena v smeti"
+
+#: src/window.rs:489
+msgid "Undo"
+msgstr "Razveljavi"
+
+#: src/window.rs:515
 msgid "Failed to move image to trash"
 msgstr "Premikanje slike v smeti ni uspelo"
 
-#: src/window.rs:541
+#: src/window.rs:530
 msgid "Permanently Delete Image?"
 msgstr "Ali želite trajno izbrisati sliko?"
 
-#: src/window.rs:543
+#: src/window.rs:532
 msgid "The image “{}” can only be deleted permanently."
 msgstr "Sliko »{}« je mogoče le trajno izbrisati."
 
-#: src/window.rs:550
+#: src/window.rs:540
 msgid "Cancel"
 msgstr "Prekliči"
 
-#: src/window.rs:550
+#: src/window.rs:541
 msgid "Delete"
 msgstr "Izbriši"
 
-#: src/window.rs:559
+#: src/window.rs:552
 msgid "Failed to delete image"
 msgstr "Brisanje slike ni uspelo"
