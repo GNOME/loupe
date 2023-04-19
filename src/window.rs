@@ -341,10 +341,10 @@ mod imp {
                 glib::clone!(@weak obj => move |props_btn| {
                     let imp = obj.imp();
                     if props_btn.is_active() {
-                        imp.headerbar.remove_css_class("osd");
+                        imp.headerbar.remove_css_class("headerbar-osd");
                         obj.fade_all_in();
                     } else {
-                        imp.headerbar.add_css_class("osd");
+                        imp.headerbar.add_css_class("headerbar-osd");
                         obj.queue_fade_out_all();
                     }
                 }),
@@ -649,7 +649,7 @@ impl LpWindow {
             imp.image_view.grab_focus();
 
             if !imp.properties_button.is_active() {
-                imp.headerbar.add_css_class("osd");
+                imp.headerbar.add_css_class("headerbar-osd");
             }
 
             self.queue_fade_out_all();
