@@ -7,18 +7,27 @@ variables:
   MANIFEST_PATH: "build-aux/flatpak/org.gnome.Loupe.Devel.json"
   FLATPAK_MODULE: "loupe"
   APP_ID: "org.gnome.Loupe.Devel"
-  CONFIG_OPTS: "-Dprofile=ci"
   RUNTIME_REPO: "https://nightly.gnome.org/gnome-nightly.flatpakrepo"
 
 flatpak:
   extends: ".flatpak@x86_64"
+  interruptible: true
+  variables:
+     # We are running tests manually
+    RUN_TESTS: "0"
+    CONFIG_OPTS: "-Dprofile=ci"
 
 flatpak@aarch64:
-  allow_failure: true
   extends: ".flatpak@aarch64"
+  allow_failure: true
+  interruptible: true
+  variables:
+    RUN_TESTS: "0"
+    CONFIG_OPTS: "-Dprofile=ci"
 
 cargo-fmt:
   image: "rust:slim"
+  interruptible: true
   script:
     - rustup component add rustfmt
     # Create blank versions of our configured files
@@ -46,7 +55,7 @@ cargo-doc:
     - date && date -u
 
     - rewrite-flatpak-manifest ${MANIFEST_PATH} ${FLATPAK_MODULE} ${CONFIG_OPTS}
-    - flatpak-builder --user --disable-rofiles-fuse --build-only flatpak_app ${MANIFEST_PATH}
+    - flatpak-builder --user --disable-rofiles-fuse --force-clean --keep-build-dirs --stop-at=${FLATPAK_MODULE} flatpak_app ${MANIFEST_PATH}
     - flatpak build-finish --socket=x11 --share=network flatpak_app
     - >
       xvfb-run -a -s "-screen 0 1024x768x24"
@@ -70,12 +79,34 @@ cargo-clippy:
     - date && date -u
 
     - rewrite-flatpak-manifest ${MANIFEST_PATH} ${FLATPAK_MODULE} ${CONFIG_OPTS}
-    - flatpak-builder --user --disable-rofiles-fuse --build-only flatpak_app ${MANIFEST_PATH}
+    - flatpak-builder --user --disable-rofiles-fuse --force-clean --keep-build-dirs --stop-at=${FLATPAK_MODULE} flatpak_app ${MANIFEST_PATH}
     - flatpak build-finish --socket=x11 --share=network flatpak_app
     - >
       xvfb-run -a -s "-screen 0 1024x768x24"
       flatpak-builder --user --disable-rofiles-fuse --build-shell=${FLATPAK_MODULE} flatpak_app ${MANIFEST_PATH} <<END
         cargo clippy -- -D warnings
+      END
+
+cargo-test:
+  image: 'quay.io/gnome_infrastructure/gnome-runtime-images:gnome-master'
+  interruptible: true
+  tags:
+    - flatpak
+  script:
+    # Report the installed versions of the runtime
+    - flatpak info org.gnome.Platform
+    - flatpak info org.gnome.Sdk
+
+    # Print the date, since appstream depends on local timezone
+    - date && date -u
+
+    - rewrite-flatpak-manifest ${MANIFEST_PATH} ${FLATPAK_MODULE} ${CONFIG_OPTS}
+    - flatpak-builder --user --disable-rofiles-fuse --force-clean --keep-build-dirs --stop-at=${FLATPAK_MODULE} flatpak_app ${MANIFEST_PATH}
+    - flatpak build-finish --socket=x11 --share=network flatpak_app
+    - >
+      xvfb-run -a -s "-screen 0 1024x768x24"
+      flatpak-builder --user --disable-rofiles-fuse --build-shell=${FLATPAK_MODULE} flatpak_app ${MANIFEST_PATH} <<END
+        cargo test
       END
 
 cargo-audit:
