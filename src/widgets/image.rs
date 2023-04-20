@@ -60,12 +60,8 @@ static BACKGROUND_COLOR_DEFAULT_LIGHT_MODE: Lazy<gdk::RGBA> =
 static BACKGROUND_COLOR_ALTERNATE_LIGHT_MODE: Lazy<gdk::RGBA> =
     Lazy::new(|| gdk::RGBA::new(103. / 255., 101. / 255., 110. / 255., 1.));
 
-/// Consider pixels with less than 70% opacity as being transparent
-static BACKGROUND_GUESS_TRANSPRAENT_PIXEL_THRESHOLD: u8 = (0.70 * 255.) as u8;
 /// Consider 3.5:1 contrast and worse to be bad contrast for a pixel
 static BACKGROUND_GUESS_LOW_CONTRAST_RATIO: f32 = 3.5;
-/// Consider images with more than 10% transparent pixels as transparent
-static BACKGROUND_GUESS_TRANSPRAENT_IMAGE_THRESHOLD: f64 = 0.10;
 /// Consider transparent images with more than 90% pixels bad contrast as bad contrast
 ///
 /// Bad contrast image will use the `BACKGROUND_COLOR_ALTERNATE`.
@@ -1774,7 +1770,7 @@ impl LpImage {
         gio::spawn_blocking(move || {
             let mut bytes_iter = bytes.iter();
             // Number of transparent pixels
-            let mut transparent = 0;
+            let mut completely_transparent = 0;
             // Number of non-transparent pixels with bad contrast
             let mut bad_contrast = 0;
             'img: loop {
@@ -1785,8 +1781,8 @@ impl LpImage {
                     let Some(a) = bytes_iter.next() else { break 'img; };
 
                     // 70% transparency
-                    if *a < BACKGROUND_GUESS_TRANSPRAENT_PIXEL_THRESHOLD {
-                        transparent += 1;
+                    if *a == 0 {
+                        completely_transparent += 1;
                     } else {
                         let fg = gdk::RGBA::new(
                             *r as f32 / 255.,
@@ -1811,12 +1807,13 @@ impl LpImage {
 
             let n_pixels = texture.width() * texture.height();
 
-            let part_transparent = transparent as f64 / n_pixels as f64;
-            let part_bad_contrast = bad_contrast as f64 / (n_pixels as f64 - transparent as f64);
+            let part_bad_contrast = if completely_transparent < n_pixels {
+                bad_contrast as f64 / (n_pixels as f64 - completely_transparent as f64)
+            } else {
+                1.
+            };
 
-            if part_transparent > BACKGROUND_GUESS_TRANSPRAENT_IMAGE_THRESHOLD
-                && part_bad_contrast > BACKGROUND_GUESS_LOW_CONTRAST_TRHESHOLD
-            {
+            if part_bad_contrast > BACKGROUND_GUESS_LOW_CONTRAST_TRHESHOLD {
                 Some(alternate_color)
             } else {
                 Some(default_color)
