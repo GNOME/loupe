@@ -67,22 +67,11 @@
       </closure>
     </binding>
     <property name="content">
-      <object class="AdwFlap" id="flap">
+      <object class="GtkBox">
         <property name="orientation">vertical</property>
-        <property name="fold-policy">never</property>
-        <property name="swipe-to-open">False</property>
-        <property name="swipe-to-close">False</property>
-        <property name="locked">true</property>
-        <property name="modal">false</property>
-        <binding name="fold-policy">
-          <closure type="AdwFlapFoldPolicy" function="fold_policy">
-            <lookup name="fullscreened">LpWindow</lookup>
-            <lookup type="AdwFlap" name="reveal-flap">properties_flap</lookup>
-          </closure>
-        </binding>
-        <property name="flap">
+        <child>
           <object class="GtkHeaderBar" id="headerbar">
-            <property name="show_title_buttons" bind-source="LpWindow" bind-property="fullscreened" bind-flags="sync-create|invert-boolean"/>
+            <property name="show-title-buttons" bind-source="LpWindow" bind-property="fullscreened" bind-flags="sync-create|invert-boolean"/>
             <child type="start">
               <object class="GtkButton">
                 <property name="icon-name">edit-copy-symbolic</property>
@@ -138,8 +127,8 @@
               </object>
             </child>
           </object>
-        </property>
-        <property name="content">
+        </child>
+        <child>
           <object class="AdwToastOverlay" id="toast_overlay">
             <property name="child">
               <object class="AdwFlap" id="properties_flap">
@@ -197,10 +186,7 @@
               </object>
             </property>
           </object>
-        </property>
-        <style>
-          <class name="fullscreen-widget"/>
-        </style>
+        </child>
       </object>
     </property>
     <child>

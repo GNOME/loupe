@@ -68,8 +68,6 @@ mod imp {
         // TemplateChild<T> wrapper, where T is the
         // object type of the template child.
         #[template_child]
-        pub(super) flap: TemplateChild<adw::Flap>,
-        #[template_child]
         pub(super) headerbar: TemplateChild<gtk::HeaderBar>,
         #[template_child]
         pub(super) properties_button: TemplateChild<gtk::ToggleButton>,
@@ -780,18 +778,6 @@ impl LpWindow {
                 .current_file()
                 .and_then(|f| util::get_file_display_name(&f)) // If the file exists, get display name
                 .unwrap_or_else(|| gettext("Loupe")) // Return that or the default if there's nothing
-        }
-    }
-
-    // We also have a closure that returns `adw::FlapFoldPolicy`.
-    // if we aren't fullscreened, or if the properties are revealed,
-    // we unfold the main flap. Otherwise we're always folded.
-    #[template_callback]
-    fn fold_policy(&self, fullscreened: bool, properties_revealed: bool) -> adw::FlapFoldPolicy {
-        if !fullscreened || properties_revealed {
-            adw::FlapFoldPolicy::Never
-        } else {
-            adw::FlapFoldPolicy::Always
         }
     }
 

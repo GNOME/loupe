@@ -4,7 +4,7 @@ button.osd.circular {
   min-height: 42px;
 }
 
-flap.fullscreen-widget dimming, shadow, border, outline {
+shadow, border, outline {
   background: none;
 }
 
