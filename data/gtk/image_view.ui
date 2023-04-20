@@ -60,24 +60,6 @@
             <property name="margin-bottom">18</property>
             <property name="spacing">12</property>
             <child>
-              <object class="GtkButton" id="fullscreen_button">
-                <property name="halign">end</property>
-                <binding name="icon-name">
-                  <closure type="gchararray" function="get_fullscreen_icon">
-                    <lookup type="GtkWindow" name="fullscreened">
-                      <lookup type="GtkWidget" name="root">LpImageView</lookup>
-                    </lookup>
-                  </closure>
-                </binding>
-                <property name="action-name">win.toggle-fullscreen</property>
-                <property name="tooltip-text" translatable="yes">Toggle Fullscreen</property>
-                <style>
-                  <class name="osd"/>
-                  <class name="circular"/>
-                </style>
-              </object>
-            </child>
-            <child>
               <object class="GtkButton" id="zoom_out">
                 <property name="icon-name">zoom-out-symbolic</property>
                 <property name="action-name">win.zoom-out</property>
@@ -93,6 +75,24 @@
                 <property name="icon-name">zoom-in-symbolic</property>
                 <property name="action-name">win.zoom-in</property>
                 <property name="tooltip-text" translatable="yes">Zoom In</property>
+                <style>
+                  <class name="osd"/>
+                  <class name="circular"/>
+                </style>
+              </object>
+            </child>
+            <child>
+              <object class="GtkButton" id="fullscreen_button">
+                <property name="halign">end</property>
+                <binding name="icon-name">
+                  <closure type="gchararray" function="get_fullscreen_icon">
+                    <lookup type="GtkWindow" name="fullscreened">
+                      <lookup type="GtkWidget" name="root">LpImageView</lookup>
+                    </lookup>
+                  </closure>
+                </binding>
+                <property name="action-name">win.toggle-fullscreen</property>
+                <property name="tooltip-text" translatable="yes">Toggle Fullscreen</property>
                 <style>
                   <class name="osd"/>
                   <class name="circular"/>
