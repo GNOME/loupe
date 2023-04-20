@@ -203,5 +203,12 @@
         </style>
       </object>
     </property>
+    <child>
+      <object class="GtkEventControllerMotion" id="motion_controller">
+        <signal name="motion" handler="on_motion_cb" swapped="yes"/>
+        <signal name="enter" handler="on_motion_cb" swapped="yes"/>
+	<signal name="leave" handler="on_motion_cb" swapped="yes"/>
+      </object>
+    </child>
   </template>
 </interface>

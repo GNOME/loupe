@@ -45,6 +45,9 @@
                 </style>
               </object>
             </child>
+            <child>
+              <object class="GtkEventControllerMotion" id="controls_box_start_events" />
+            </child>
           </object>
         </child>
         <child type="overlay">
@@ -95,6 +98,9 @@
                   <class name="circular"/>
                 </style>
               </object>
+            </child>
+            <child>
+              <object class="GtkEventControllerMotion" id="controls_box_end_events" />
             </child>
           </object>
         </child>

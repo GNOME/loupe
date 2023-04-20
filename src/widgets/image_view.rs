@@ -65,9 +65,14 @@ mod imp {
         /// overlayed controls
         #[template_child]
         pub(super) controls_box_start: TemplateChild<gtk::Widget>,
+        #[template_child]
+        pub(super) controls_box_start_events: TemplateChild<gtk::EventControllerMotion>,
         /// overlayed controls
         #[template_child]
         pub(super) controls_box_end: TemplateChild<gtk::Widget>,
+        #[template_child]
+        pub(super) controls_box_end_events: TemplateChild<gtk::EventControllerMotion>,
+
         #[template_child]
         pub sliding_view: TemplateChild<LpSlidingView>,
 
@@ -411,6 +416,22 @@ impl LpImageView {
 
     fn sliding_view(&self) -> LpSlidingView {
         self.imp().sliding_view.clone()
+    }
+
+    pub fn controls_box_start(&self) -> gtk::Widget {
+        self.imp().controls_box_start.clone()
+    }
+
+    pub fn controls_box_start_events(&self) -> gtk::EventControllerMotion {
+        self.imp().controls_box_start_events.clone()
+    }
+
+    pub fn controls_box_end(&self) -> gtk::Widget {
+        self.imp().controls_box_end.clone()
+    }
+
+    pub fn controls_box_end_events(&self) -> gtk::EventControllerMotion {
+        self.imp().controls_box_end_events.clone()
     }
 
     fn model(&self) -> LpFileModel {

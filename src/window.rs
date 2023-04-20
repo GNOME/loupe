@@ -28,11 +28,21 @@ use adw::subclass::prelude::*;
 use glib::clone;
 use gtk::CompositeTemplate;
 
+use once_cell::sync::OnceCell;
+
+use std::cell::RefCell;
 use std::path::{Path, PathBuf};
 
 use crate::config;
 use crate::util::{self, Direction, Position};
 use crate::widgets::{LpImage, LpImageView, LpPropertiesView};
+
+/// Animation duration for showing overlay buttons in milliseconds
+const SHOW_CONTROLS_ANIMATION_DURATION: u32 = 200;
+/// Animation duration for hiding overlay buttons in milliseconds
+const HIDE_CONTROLS_ANIMATION_DURATION: u32 = 1000;
+/// Time of inactivity after which controls will be hidden in seconds
+const HIDE_CONTROLS_IDLE_TIMEOUT: u32 = 3;
 
 mod imp {
     use super::*;
@@ -77,6 +87,12 @@ mod imp {
         pub(super) properties_view: TemplateChild<LpPropertiesView>,
         #[template_child]
         pub(super) drop_target: TemplateChild<gtk::DropTarget>,
+        #[template_child]
+        pub(super) motion_controller: TemplateChild<gtk::EventControllerMotion>,
+
+        pub(super) show_controls_animation: OnceCell<adw::TimedAnimation>,
+        pub(super) hide_controls_animation: OnceCell<adw::TimedAnimation>,
+        pub(super) hide_controls_timeout: RefCell<Option<glib::SourceId>>,
     }
 
     #[glib::object_subclass]
@@ -304,6 +320,12 @@ mod imp {
                 }),
             );
 
+            // Make widgets visible when the focus moves
+            obj.connect_move_focus(|obj, _| {
+                obj.show_controls();
+                obj.queue_hide_controls();
+            });
+
             self.status_page
                 .set_icon_name(Some(&format!("{}-symbolic", config::APP_ID)));
 
@@ -367,16 +389,6 @@ impl LpWindow {
     }
 
     fn toggle_fullscreen(&self, fullscreen: bool) {
-        let imp = self.imp();
-
-        if fullscreen {
-            imp.headerbar.add_css_class("osd");
-            imp.properties_view.add_css_class("osd")
-        } else {
-            imp.headerbar.remove_css_class("osd");
-            imp.properties_view.remove_css_class("osd")
-        }
-
         self.set_fullscreened(fullscreen);
     }
 
@@ -590,6 +602,8 @@ impl LpWindow {
             imp.stack.set_visible_child(&*imp.image_view);
             self.set_actions_enabled(true);
             imp.image_view.grab_focus();
+
+            self.queue_hide_controls();
         } else {
             imp.stack.set_visible_child(&*imp.status_page);
             self.set_actions_enabled(false);
@@ -650,6 +664,103 @@ impl LpWindow {
         self.action_set_enabled("win.zoom-in", can_zoom_in);
     }
 
+    fn set_control_opacity(&self, opacity: f64) {
+        self.image_view().controls_box_start().set_opacity(opacity);
+        self.image_view().controls_box_end().set_opacity(opacity);
+    }
+
+    fn controls_opacity(&self) -> f64 {
+        self.image_view().controls_box_start().opacity()
+    }
+
+    /// Animation to show controls
+    fn show_controls_animation(&self) -> &adw::TimedAnimation {
+        self.imp().show_controls_animation.get_or_init(|| {
+            let target = adw::CallbackAnimationTarget::new(glib::clone!(
+                @weak self as obj => move |opacity| obj.set_control_opacity(opacity)
+            ));
+
+            adw::TimedAnimation::builder()
+                .duration(SHOW_CONTROLS_ANIMATION_DURATION)
+                .widget(&self.image_view())
+                .target(&target)
+                .value_to(1.)
+                .build()
+        })
+    }
+
+    /// Animation to hide controls
+    fn hide_controls_animation(&self) -> &adw::TimedAnimation {
+        self.imp().hide_controls_animation.get_or_init(|| {
+            let target = adw::CallbackAnimationTarget::new(glib::clone!(
+                @weak self as obj => move |opacity| obj.set_control_opacity(opacity)
+            ));
+
+            adw::TimedAnimation::builder()
+                .duration(HIDE_CONTROLS_ANIMATION_DURATION)
+                .widget(&self.image_view())
+                .target(&target)
+                .value_to(0.)
+                .build()
+        })
+    }
+
+    /// Queue a fade animation to play after `HIDE_CONTROLS_IDLE_TIMEOUT` seconds of inactivity
+    fn queue_hide_controls(&self) {
+        self.dequeue_hide_controls();
+
+        let new_timeout = glib::timeout_add_seconds_local_once(
+            HIDE_CONTROLS_IDLE_TIMEOUT,
+            glib::clone!(@weak self as win => move || {
+                win.imp().hide_controls_timeout.take();
+                win.hide_controls();
+            }),
+        );
+
+        self.imp().hide_controls_timeout.replace(Some(new_timeout));
+    }
+
+    fn dequeue_hide_controls(&self) {
+        if let Some(current_timeout) = self.imp().hide_controls_timeout.take() {
+            current_timeout.remove();
+        }
+    }
+
+    fn is_controls_visible(&self) -> bool {
+        if self.hide_controls_animation().state() == adw::AnimationState::Playing {
+            return false;
+        }
+
+        self.image_view().controls_box_start().opacity() == 1.
+            || self.show_controls_animation().state() == adw::AnimationState::Playing
+    }
+
+    /// Start animation to show controls
+    fn show_controls(&self) {
+        if !self.is_controls_visible() {
+            self.hide_controls_animation().pause();
+            self.show_controls_animation()
+                .set_value_from(self.controls_opacity());
+            self.show_controls_animation().play();
+        }
+    }
+
+    /// Start animation to hide controls
+    fn hide_controls(&self) {
+        if self.is_controls_visible() {
+            self.show_controls_animation().pause();
+            self.hide_controls_animation()
+                .set_value_from(self.controls_opacity());
+            self.hide_controls_animation().play();
+        }
+    }
+
+    /// Whether or not the window is showing images
+    fn is_showing_image(&self) -> bool {
+        let imp = self.imp();
+        imp.stack.visible_child().as_ref() == Some(imp.image_view.upcast_ref())
+    }
+
     // In the LpWindow UI file we define a `gtk::Expression`s
     // that is a closure. This closure takes the current `gio::File`
     // and processes it to return a window title.
@@ -681,6 +792,31 @@ impl LpWindow {
             adw::FlapFoldPolicy::Never
         } else {
             adw::FlapFoldPolicy::Always
+        }
+    }
+
+    #[template_callback]
+    fn on_motion_cb(&self) {
+        let controller = &self.imp().motion_controller;
+        if controller.current_event_time() == 0 {
+            return;
+        }
+
+        self.show_controls();
+        // Only queue animation if not over controls and there is an image shown
+        if !self
+            .image_view()
+            .controls_box_start_events()
+            .contains_pointer()
+            && !self
+                .image_view()
+                .controls_box_end_events()
+                .contains_pointer()
+            && self.is_showing_image()
+        {
+            self.queue_hide_controls();
+        } else {
+            self.dequeue_hide_controls();
         }
     }
 }
