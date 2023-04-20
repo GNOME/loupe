@@ -6,9 +6,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-02 20:03+0000\n"
-"PO-Revision-Date: 2023-04-06 18:06+0700\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/Incubator/loupe/-/issues\n"
+"POT-Creation-Date: 2023-04-19 21:36+0000\n"
+"PO-Revision-Date: 2023-04-20 11:24+0700\n"
 "Last-Translator: Kukuh Syafaat <kukuhsyafaat@gnome.org>\n"
 "Language-Team: Indonesian <gnome-l10n-id@googlegroups.com>\n"
 "Language: id\n"
@@ -16,212 +16,6 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 3.2.2\n"
-
-#. If the file exists, get display name
-#: data/org.gnome.Loupe.desktop.in.in:3
-#: data/org.gnome.Loupe.metainfo.xml.in.in:6 data/gtk/window.ui:59
-#: src/application.rs:187 src/window.rs:676 src/window.rs:682
-msgid "Loupe"
-msgstr "Loupe"
-
-#: data/org.gnome.Loupe.desktop.in.in:11
-msgid "Picture;Slideshow;Graphics;Image Viewer;"
-msgstr "Gambaran;Salindia;Grafik;Penampil Gambar;"
-
-#: data/org.gnome.Loupe.metainfo.xml.in.in:7
-msgid "Christopher Davis"
-msgstr "Christopher Davis"
-
-#: data/org.gnome.Loupe.metainfo.xml.in.in:8
-msgid "View images"
-msgstr "Lihat gambar"
-
-#: data/org.gnome.Loupe.metainfo.xml.in.in:10
-msgid ""
-"A simple image viewer which allows you to browse through your images and "
-"inspect their metadata."
-msgstr ""
-"Penampil gambar sederhana yang memungkinkan Anda menelusuri citra dan "
-"memeriksa metadatanya."
-
-#: data/org.gnome.Loupe.metainfo.xml.in.in:11
-msgid "The following features are not available yet"
-msgstr "Fitur berikut belum tersedia"
-
-#: data/org.gnome.Loupe.metainfo.xml.in.in:13
-msgid "Applying image color profiles"
-msgstr "Menerapkan profil warna gambar"
-
-#: data/org.gnome.Loupe.metainfo.xml.in.in:14
-msgid "Printing"
-msgstr "Pencetakan"
-
-#: data/gtk/help_overlay.ui:11
-msgctxt "shortcut window"
-msgid "General Shortcuts"
-msgstr "Pintasan Umum"
-
-#: data/gtk/help_overlay.ui:14
-msgctxt "shortcut window"
-msgid "Show Main Menu"
-msgstr "Tampilkan Menu Utama"
-
-#: data/gtk/help_overlay.ui:20
-msgctxt "shortcut window"
-msgid "Copy Image to Clipboard"
-msgstr "Salin Gambar ke Papan Klip"
-
-#: data/gtk/help_overlay.ui:26
-msgctxt "shortcut window"
-msgid "Move Image to Trash"
-msgstr "Pindahkan Gambar ke Tong Sampah"
-
-#: data/gtk/help_overlay.ui:32
-msgctxt "shortcut window"
-msgid "Toggle Image Properties"
-msgstr "Jungkitkan Properti Gambar"
-
-#: data/gtk/help_overlay.ui:38
-msgctxt "shortcut window"
-msgid "Set as Background"
-msgstr "Jadikan Latar Belakang"
-
-#: data/gtk/help_overlay.ui:44
-msgctxt "shortcut window"
-msgid "Toggle Fullscreen"
-msgstr "Jungkitkan Layar Penuh"
-
-#: data/gtk/help_overlay.ui:50
-msgctxt "shortcut window"
-msgid "Leave Fullscreen"
-msgstr "Tinggalkan Layar Penuh"
-
-#: data/gtk/help_overlay.ui:56
-msgctxt "shortcut window"
-msgid "New Window"
-msgstr "Jendela Baru"
-
-#: data/gtk/help_overlay.ui:62
-msgctxt "shortcut window"
-msgid "Open Help"
-msgstr "Buka Bantuan"
-
-#: data/gtk/help_overlay.ui:68
-msgctxt "shortcut window"
-msgid "Show Keyboard Shortcuts"
-msgstr "Tampilkan Pintasan Papan Tik"
-
-#: data/gtk/help_overlay.ui:74
-msgctxt "shortcut window"
-msgid "Close Window"
-msgstr "Tutup Jendela"
-
-#: data/gtk/help_overlay.ui:80
-msgctxt "shortcut window"
-msgid "Quit"
-msgstr "Keluar"
-
-#: data/gtk/help_overlay.ui:88
-msgctxt "shortcut window"
-msgid "Navigate Images"
-msgstr "Arahkan Gambar"
-
-#: data/gtk/help_overlay.ui:92 data/gtk/help_overlay.ui:106
-#: data/gtk/help_overlay.ui:218 data/gtk/help_overlay.ui:232
-msgctxt "shortcut window"
-msgid "Next Image"
-msgstr "Gambar Selanjutnya"
-
-#: data/gtk/help_overlay.ui:99 data/gtk/help_overlay.ui:113
-#: data/gtk/help_overlay.ui:225 data/gtk/help_overlay.ui:239
-msgctxt "shortcut window"
-msgid "Previous Image"
-msgstr "Gambar Sebelumnya"
-
-#: data/gtk/help_overlay.ui:119
-msgctxt "shortcut window"
-msgid "First Image"
-msgstr "Gambar Pertama"
-
-#: data/gtk/help_overlay.ui:125
-msgctxt "shortcut window"
-msgid "Last Image"
-msgstr "Gambar Terakhir"
-
-#: data/gtk/help_overlay.ui:133
-msgctxt "shortcut window"
-msgid "Rotate Image"
-msgstr "Putar Gambar"
-
-#: data/gtk/help_overlay.ui:136 data/gtk/help_overlay.ui:257
-msgctxt "shortcut window"
-msgid "Rotate Clockwise"
-msgstr "Putar Searah Jarum Jam"
-
-#: data/gtk/help_overlay.ui:142 data/gtk/help_overlay.ui:263
-msgctxt "shortcut window"
-msgid "Rotate Counterclockwise"
-msgstr "Putar Berlawanan Arah Jarum Jam"
-
-#: data/gtk/help_overlay.ui:150
-msgctxt "shortcut window"
-msgid "Zoom Image"
-msgstr "Perbesar Gambar"
-
-#: data/gtk/help_overlay.ui:153 data/gtk/help_overlay.ui:245
-msgctxt "shortcut window"
-msgid "Zoom In"
-msgstr "Zum Masuk"
-
-#: data/gtk/help_overlay.ui:159 data/gtk/help_overlay.ui:251
-msgctxt "shortcut window"
-msgid "Zoom Out"
-msgstr "Zum Keluar"
-
-#: data/gtk/help_overlay.ui:165
-msgctxt "shortcut window"
-msgid "Best Fit"
-msgstr "Pas Terbaik"
-
-#: data/gtk/help_overlay.ui:171
-msgctxt "shortcut window"
-msgid "Original Scale"
-msgstr "Skala Asli"
-
-#: data/gtk/help_overlay.ui:177
-msgctxt "shortcut window"
-msgid "200% Scale"
-msgstr "Skala 200%"
-
-#: data/gtk/help_overlay.ui:185
-msgctxt "shortcut window"
-msgid "Pan View"
-msgstr "Tampilan Pan"
-
-#: data/gtk/help_overlay.ui:188
-msgctxt "shortcut window"
-msgid "Pan Left"
-msgstr "Pan Kiri"
-
-#: data/gtk/help_overlay.ui:194
-msgctxt "shortcut window"
-msgid "Pan Right"
-msgstr "Pan Kanan"
-
-#: data/gtk/help_overlay.ui:200
-msgctxt "shortcut window"
-msgid "Pan Up"
-msgstr "Pan Atas"
-
-#: data/gtk/help_overlay.ui:206
-msgctxt "shortcut window"
-msgid "Pan Down"
-msgstr "Geser Bawah"
-
-#: data/gtk/help_overlay.ui:214
-msgctxt "shortcut window"
-msgid "Gestures"
-msgstr "Gestur"
 
 #: data/gtk/image_page.ui:6 data/gtk/window.ui:16
 msgid "_Open With…"
@@ -274,6 +68,50 @@ msgstr "Zum Keluar"
 #: data/gtk/image_view.ui:92
 msgid "Zoom In"
 msgstr "Zum Masuk"
+
+#: data/gtk/print.ui:4
+msgid "Layout Image"
+msgstr "Gambar Tata Letak"
+
+#: data/gtk/print.ui:66
+msgid "Portrait page orientation"
+msgstr "Orientasi halaman potret"
+
+#: data/gtk/print.ui:74
+msgid "Landscape page orientation"
+msgstr "Orientasi halaman lanskap"
+
+#: data/gtk/print.ui:88
+msgid "Center image horizontally"
+msgstr "Gambar tengah secara horizontal"
+
+#: data/gtk/print.ui:95
+msgid "Center image vertically"
+msgstr "Gambar tengah secara vertikal"
+
+#: data/gtk/print.ui:107
+msgid "Image Width"
+msgstr "Lebar Gambar"
+
+#: data/gtk/print.ui:119
+msgid "Image Scale"
+msgstr "Skala Gambar"
+
+#: data/gtk/print.ui:131
+msgid "Left Margin"
+msgstr "Margin Kiri"
+
+#: data/gtk/print.ui:143
+msgid "Top Margin"
+msgstr "Marjin bagian atas, dalam milimeter."
+
+#: data/gtk/print.ui:155
+msgid "Length Unit"
+msgstr "Satuan Panjang"
+
+#: data/gtk/print.ui:175
+msgid "Print"
+msgstr "Cetak"
 
 #: data/gtk/properties_view.ui:29
 msgid "Folder"
@@ -351,6 +189,13 @@ msgstr "Pintasan Papan _Ketik"
 msgid "_About Loupe"
 msgstr "Tent_ang Loupe"
 
+#. If the file exists, get display name
+#: data/gtk/window.ui:59 data/org.gnome.Loupe.desktop.in.in:3
+#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/application.rs:191
+#: src/window.rs:665 src/window.rs:671
+msgid "Loupe"
+msgstr "Loupe"
+
 #: data/gtk/window.ui:90
 msgid "Copy to Clipboard"
 msgstr "Salin ke Papan Klip"
@@ -379,122 +224,372 @@ msgstr "Seret dan lepas gambar di sini"
 msgid "_Open File…"
 msgstr "B_uka Berkas…"
 
-#: src/application.rs:190
+#: data/org.gnome.Loupe.desktop.in.in:11
+msgid "Picture;Slideshow;Graphics;Image Viewer;"
+msgstr "Gambaran;Salindia;Grafik;Penampil Gambar;"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:7 src/application.rs:194
 msgid "The Loupe Team"
 msgstr "Tim Loupe"
 
+#: data/org.gnome.Loupe.metainfo.xml.in.in:8
+msgid "View images"
+msgstr "Lihat gambar"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:10
+msgid ""
+"A simple image viewer which allows you to browse through your images and "
+"inspect their metadata."
+msgstr ""
+"Penampil gambar sederhana yang memungkinkan Anda menelusuri citra dan "
+"memeriksa metadatanya."
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:11
+msgid "The following features are not available yet"
+msgstr "Fitur berikut belum tersedia"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:13
+msgid "Applying image color profiles"
+msgstr "Menerapkan profil warna gambar"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:14
+msgid "Printing"
+msgstr "Pencetakan"
+
+#: data/resources/gtk/help-overlay.ui:11
+msgctxt "shortcut window"
+msgid "General Shortcuts"
+msgstr "Pintasan Umum"
+
+#: data/resources/gtk/help-overlay.ui:14
+msgctxt "shortcut window"
+msgid "Show Main Menu"
+msgstr "Tampilkan Menu Utama"
+
+#: data/resources/gtk/help-overlay.ui:20
+msgctxt "shortcut window"
+msgid "Copy Image to Clipboard"
+msgstr "Salin Gambar ke Papan Klip"
+
+#: data/resources/gtk/help-overlay.ui:26
+msgctxt "shortcut window"
+msgid "Move Image to Trash"
+msgstr "Pindahkan Gambar ke Tong Sampah"
+
+#: data/resources/gtk/help-overlay.ui:32
+msgctxt "shortcut window"
+msgid "Toggle Image Properties"
+msgstr "Jungkitkan Properti Gambar"
+
+#: data/resources/gtk/help-overlay.ui:38
+msgctxt "shortcut window"
+msgid "Set as Background"
+msgstr "Jadikan Latar Belakang"
+
+#: data/resources/gtk/help-overlay.ui:44
+msgctxt "shortcut window"
+msgid "Toggle Fullscreen"
+msgstr "Jungkitkan Layar Penuh"
+
+#: data/resources/gtk/help-overlay.ui:50
+msgctxt "shortcut window"
+msgid "Leave Fullscreen"
+msgstr "Tinggalkan Layar Penuh"
+
+#: data/resources/gtk/help-overlay.ui:56
+msgctxt "shortcut window"
+msgid "New Window"
+msgstr "Jendela Baru"
+
+#: data/resources/gtk/help-overlay.ui:62
+msgctxt "shortcut window"
+msgid "Open Help"
+msgstr "Buka Bantuan"
+
+#: data/resources/gtk/help-overlay.ui:68
+msgctxt "shortcut window"
+msgid "Show Keyboard Shortcuts"
+msgstr "Tampilkan Pintasan Papan Tik"
+
+#: data/resources/gtk/help-overlay.ui:74
+msgctxt "shortcut window"
+msgid "Close Window"
+msgstr "Tutup Jendela"
+
+#: data/resources/gtk/help-overlay.ui:80
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "Keluar"
+
+#: data/resources/gtk/help-overlay.ui:88
+msgctxt "shortcut window"
+msgid "Navigate Images"
+msgstr "Arahkan Gambar"
+
+#: data/resources/gtk/help-overlay.ui:92 data/resources/gtk/help-overlay.ui:106
+#: data/resources/gtk/help-overlay.ui:218
+#: data/resources/gtk/help-overlay.ui:232
+msgctxt "shortcut window"
+msgid "Next Image"
+msgstr "Gambar Selanjutnya"
+
+#: data/resources/gtk/help-overlay.ui:99 data/resources/gtk/help-overlay.ui:113
+#: data/resources/gtk/help-overlay.ui:225
+#: data/resources/gtk/help-overlay.ui:239
+msgctxt "shortcut window"
+msgid "Previous Image"
+msgstr "Gambar Sebelumnya"
+
+#: data/resources/gtk/help-overlay.ui:119
+msgctxt "shortcut window"
+msgid "First Image"
+msgstr "Gambar Pertama"
+
+#: data/resources/gtk/help-overlay.ui:125
+msgctxt "shortcut window"
+msgid "Last Image"
+msgstr "Gambar Terakhir"
+
+#: data/resources/gtk/help-overlay.ui:133
+msgctxt "shortcut window"
+msgid "Rotate Image"
+msgstr "Putar Gambar"
+
+#: data/resources/gtk/help-overlay.ui:136
+#: data/resources/gtk/help-overlay.ui:257
+msgctxt "shortcut window"
+msgid "Rotate Clockwise"
+msgstr "Putar Searah Jarum Jam"
+
+#: data/resources/gtk/help-overlay.ui:142
+#: data/resources/gtk/help-overlay.ui:263
+msgctxt "shortcut window"
+msgid "Rotate Counterclockwise"
+msgstr "Putar Berlawanan Arah Jarum Jam"
+
+#: data/resources/gtk/help-overlay.ui:150
+msgctxt "shortcut window"
+msgid "Zoom Image"
+msgstr "Perbesar Gambar"
+
+#: data/resources/gtk/help-overlay.ui:153
+#: data/resources/gtk/help-overlay.ui:245
+msgctxt "shortcut window"
+msgid "Zoom In"
+msgstr "Zum Masuk"
+
+#: data/resources/gtk/help-overlay.ui:159
+#: data/resources/gtk/help-overlay.ui:251
+msgctxt "shortcut window"
+msgid "Zoom Out"
+msgstr "Zum Keluar"
+
+#: data/resources/gtk/help-overlay.ui:165
+msgctxt "shortcut window"
+msgid "Best Fit"
+msgstr "Pas Terbaik"
+
+#: data/resources/gtk/help-overlay.ui:171
+msgctxt "shortcut window"
+msgid "Original Scale"
+msgstr "Skala Asli"
+
+#: data/resources/gtk/help-overlay.ui:177
+msgctxt "shortcut window"
+msgid "200% Scale"
+msgstr "Skala 200%"
+
+#: data/resources/gtk/help-overlay.ui:185
+msgctxt "shortcut window"
+msgid "Pan View"
+msgstr "Tampilan Pan"
+
+#: data/resources/gtk/help-overlay.ui:188
+msgctxt "shortcut window"
+msgid "Pan Left"
+msgstr "Pan Kiri"
+
+#: data/resources/gtk/help-overlay.ui:194
+msgctxt "shortcut window"
+msgid "Pan Right"
+msgstr "Pan Kanan"
+
+#: data/resources/gtk/help-overlay.ui:200
+msgctxt "shortcut window"
+msgid "Pan Up"
+msgstr "Pan Atas"
+
+#: data/resources/gtk/help-overlay.ui:206
+msgctxt "shortcut window"
+msgid "Pan Down"
+msgstr "Geser Bawah"
+
+#: data/resources/gtk/help-overlay.ui:214
+msgctxt "shortcut window"
+msgid "Gestures"
+msgstr "Gestur"
+
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/application.rs:199
+#: src/application.rs:203
 msgid "translator-credits"
 msgstr "Kukuh Syafaat <kukuhsyafaat@gnome.org>, 2023."
 
-#: src/application.rs:200
+#: src/application.rs:204
 msgid "Copyright © 2020–2023 Christopher Davis et al."
 msgstr "Hak Cipta © 2020–2023 Christopher Davis et al."
 
-#: src/file_model.rs:114
+#: src/decoder/formats/heif.rs:55
+msgid "Failed to read image file information"
+msgstr "Gagal membaca informasi berkas gambar"
+
+#: src/decoder/formats/heif.rs:60 src/decoder/formats/heif.rs:93
+#: src/decoder/formats/image_rs_other.rs:116
+#: src/decoder/formats/image_rs_other.rs:125
+#: src/decoder/formats/image_rs_other.rs:132
+msgid "Failed to decode image"
+msgstr "Gagal memecahkan kode gambar"
+
+#: src/decoder/formats/mod.rs:72
+msgid "Animated GIF"
+msgstr "GIF animasi"
+
+#: src/decoder/formats/mod.rs:73
+msgid "Animated WebP"
+msgstr "WebP animasi"
+
+#: src/decoder/formats/mod.rs:74
+msgid "Animated PNG"
+msgstr "PNG animasi"
+
+#: src/decoder/mod.rs:192
+msgid "Unknown image format: {}"
+msgstr "Format gambar tidak diketahui: {}"
+
+#: src/decoder/mod.rs:199
+msgid "Unknown image format"
+msgstr "Format gambar tidak dikenal."
+
+#: src/decoder/mod.rs:227
+msgid "Could not open image"
+msgstr "Tidak bisa membuka gambar"
+
+#: src/decoder/mod.rs:231
+msgid "Could not read image"
+msgstr "Tidak bisa membaca gambar"
+
+#: src/file_model.rs:118
 msgid "Could not list other files in directory."
 msgstr "Tidak dapat mencantumkan berkas lain di direktori."
 
 #. Translators: short for "north" in GPS coordinate
-#: src/image_metadata/gps.rs:136
+#: src/image_metadata/gps.rs:154
 msgid "N"
 msgstr "U"
 
 #. Translators: short for "south" in GPS coordinate
-#: src/image_metadata/gps.rs:139
+#: src/image_metadata/gps.rs:157
 msgid "S"
 msgstr "S"
 
 #. Translators: short for "east" in GPS coordinate
-#: src/image_metadata/gps.rs:149
+#: src/image_metadata/gps.rs:167
 msgid "E"
 msgstr "T"
 
 #. Translators: short for "west" in GPS coordinate
-#: src/image_metadata/gps.rs:152
+#: src/image_metadata/gps.rs:170
 msgid "W"
 msgstr "B"
 
 #. Translators: Unit for exposure time in seconds
-#: src/image_metadata/mod.rs:129
+#: src/image_metadata/mod.rs:144
 msgid "1\\u{2215}{}\\u{202F}s"
 msgstr "1\\u{2215}{}\\u{202F}s"
 
 #. Translators: Unit for focal length in millimeters
-#: src/image_metadata/mod.rs:154
+#: src/image_metadata/mod.rs:169
 msgid "{}\\u{202F}mm"
 msgstr "{}\\u{202F}mm"
 
-#: src/widgets/image.rs:720
-msgid "File does not exist"
-msgstr "Berkas tidak ada"
+#. Translators: This is the date and time format we use in metadata output etc.
+#. The format has to follow <https://docs.gtk.org/glib/method.DateTime.format.html>
+#. The default is already translated. Don't change if you are not sure what to use.
+#: src/util/mod.rs:36
+#, c-format
+msgid "%x %X"
+msgstr "%x %X"
 
-#: src/widgets/image_view.rs:558
-msgid "Failed to open new background image"
-msgstr "Gagal membuka gambar latar belakang baru"
-
-#: src/widgets/image_view.rs:575
-msgid "Set as background."
-msgstr "Atur jadi latar belakang."
-
-#: src/widgets/image_view.rs:582
-msgid "Could not set background."
-msgstr "Tidak dapat dijadikan sebagai latar belakang."
-
-#: src/window.rs:355
-msgid "“{}” is not a valid image."
-msgstr "\"{}\" bukanlah gambar yang valid."
-
-#: src/window.rs:431
-msgid "Open Image"
-msgstr "Buka Gambar"
-
-#: src/window.rs:485
-msgid "Image copied to clipboard"
-msgstr "Gambar disalin ke papan klip"
-
-#: src/window.rs:499
-msgid "Image moved to trash"
-msgstr "Gambar dipindahkan ke tong sampah"
-
-#: src/window.rs:500
-msgid "Undo"
-msgstr "Tak jadi"
-
-#: src/window.rs:511
+#: src/util/mod.rs:171 src/window.rs:500
 msgid "Failed to restore image from trash"
 msgstr "Gagal memulihkan gambar dari tong sampah"
 
-#: src/window.rs:526
+#: src/util/mod.rs:192
+msgid "Failed to open image"
+msgstr "Gagal membuka gambar"
+
+#. Translators: This is a toast notification, informing the user that an image has been set as background.
+#: src/widgets/image_view.rs:599
+msgid "Set as background."
+msgstr "Atur jadi latar belakang."
+
+#: src/widgets/image_view.rs:610
+msgid "Could not set background."
+msgstr "Tidak dapat dijadikan sebagai latar belakang."
+
+#: src/window.rs:418
+msgid "Open Image"
+msgstr "Buka Gambar"
+
+#: src/window.rs:472
+msgid "Image copied to clipboard"
+msgstr "Gambar disalin ke papan klip"
+
+#: src/window.rs:488
+msgid "Image moved to trash"
+msgstr "Gambar dipindahkan ke tong sampah"
+
+#: src/window.rs:489
+msgid "Undo"
+msgstr "Tak jadi"
+
+#: src/window.rs:515
 msgid "Failed to move image to trash"
 msgstr "Gagal memindahkan gambar ke tong sampah"
 
-#: src/window.rs:541
+#: src/window.rs:530
 msgid "Permanently Delete Image?"
 msgstr "Hapus Gambar Secara Permanen?"
 
-#: src/window.rs:543
+#: src/window.rs:532
 msgid "The image “{}” can only be deleted permanently."
 msgstr "Gambar \"{}\" hanya dapat dihapus secara permanen."
 
-#: src/window.rs:550
+#: src/window.rs:540
 msgid "Cancel"
 msgstr "Batal"
 
-#: src/window.rs:550
+#: src/window.rs:541
 msgid "Delete"
 msgstr "Hapus"
 
-#: src/window.rs:559
+#: src/window.rs:552
 msgid "Failed to delete image"
 msgstr "Gagal menghapus gambar"
 
+#~ msgid "Christopher Davis"
+#~ msgstr "Christopher Davis"
+
+#~ msgid "File does not exist"
+#~ msgstr "Berkas tidak ada"
+
+#~ msgid "Failed to open new background image"
+#~ msgstr "Gagal membuka gambar latar belakang baru"
+
+#~ msgid "“{}” is not a valid image."
+#~ msgstr "\"{}\" bukanlah gambar yang valid."
+
 #~ msgid "Correctly showing SVGs at every zoom-level"
 #~ msgstr "Menampilkan SVG dengan benar di setiap tingkat perbesaran"
-
-#~ msgid "Animated image formats"
-#~ msgstr "Format gambar animasi"
 
 #~ msgid "Correct HighDPI support"
 #~ msgstr "Dukungan HighDPI yang benar"
