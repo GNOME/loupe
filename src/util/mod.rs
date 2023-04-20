@@ -251,7 +251,7 @@ pub fn new_trafo<F: Copy>(
     icc_profile: &[u8],
     src_format: lcms2::PixelFormat,
 ) -> anyhow::Result<lcms2::Transform<F, F>> {
-    let src_profile = lcms2::Profile::new_icc(icc_profile)?;
+    let src_profile = lcms2::Profile::new_icc(icc_profile).context("Invalid ICC profile")?;
 
     let target_profile = lcms2::Profile::new_srgb();
 
@@ -262,4 +262,15 @@ pub fn new_trafo<F: Copy>(
         src_format,
         lcms2::Intent::Perceptual,
     )?)
+}
+
+pub fn appply_icc_profile<F: Copy>(
+    icc_profile: &[u8],
+    src_format: lcms2::PixelFormat,
+    buf: &mut [F],
+) {
+    match new_trafo(icc_profile, src_format) {
+        Ok(trafo) => trafo.transform_in_place(buf),
+        Err(err) => log::warn!("Failed to apply ICC profile: {err}"),
+    }
 }

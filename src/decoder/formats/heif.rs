@@ -190,11 +190,17 @@ impl<'a> Decoded<'a> {
 
         if let Some(icc_profile) = &self.icc_profile {
             if memory_format == gdk::MemoryFormat::R8g8b8 {
-                util::new_trafo::<rgb::RGB8>(icc_profile, lcms2::PixelFormat::RGB_8)?
-                    .transform_in_place(buffer.as_pixels_mut());
+                util::appply_icc_profile::<rgb::RGB8>(
+                    icc_profile,
+                    lcms2::PixelFormat::RGB_8,
+                    buffer.as_pixels_mut(),
+                );
             } else if memory_format == gdk::MemoryFormat::R8g8b8a8 {
-                util::new_trafo::<rgb::RGBA8>(icc_profile, lcms2::PixelFormat::RGBA_8)?
-                    .transform_in_place(buffer.as_pixels_mut());
+                util::appply_icc_profile::<rgb::RGBA8>(
+                    icc_profile,
+                    lcms2::PixelFormat::RGBA_8,
+                    buffer.as_pixels_mut(),
+                );
             }
         }
 
