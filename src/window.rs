@@ -72,8 +72,6 @@ mod imp {
         #[template_child]
         pub(super) properties_button: TemplateChild<gtk::ToggleButton>,
         #[template_child]
-        pub(super) menu_button: TemplateChild<gtk::MenuButton>,
-        #[template_child]
         pub(super) toast_overlay: TemplateChild<adw::ToastOverlay>,
         #[template_child]
         pub(super) stack: TemplateChild<gtk::Stack>,
@@ -238,7 +236,7 @@ mod imp {
             // and keeps the others usable
             gtk::WindowGroup::new().add_window(&*obj);
 
-            obj.set_actions_enabled(false);
+            obj.images_available();
 
             let current_image_signals = self.image_view.current_image_signals();
             // clone! is a macro from glib-rs that allows
@@ -596,15 +594,18 @@ impl LpWindow {
     fn images_available(&self) {
         let imp = self.imp();
 
-        if imp.image_view.current_page().is_some() {
-            imp.stack.set_visible_child(&*imp.image_view);
-            self.set_actions_enabled(true);
-            imp.image_view.grab_focus();
+        let shows_image = imp.image_view.current_page().is_some();
 
+        imp.properties_button.set_sensitive(shows_image);
+        self.set_actions_enabled(shows_image);
+
+        if shows_image {
+            imp.stack.set_visible_child(&*imp.image_view);
+            imp.image_view.grab_focus();
             self.queue_hide_controls();
         } else {
+            imp.properties_button.set_active(false);
             imp.stack.set_visible_child(&*imp.status_page);
-            self.set_actions_enabled(false);
             imp.status_page.grab_focus();
         }
     }
