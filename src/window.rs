@@ -672,9 +672,15 @@ impl LpWindow {
         self.action_set_enabled("win.zoom-in", can_zoom_in);
     }
 
-    fn set_control_opacity(&self, opacity: f64) {
+    fn set_control_opacity(&self, opacity: f64, hiding: bool) {
         self.image_view().controls_box_start().set_opacity(opacity);
         self.image_view().controls_box_end().set_opacity(opacity);
+
+        if self.is_fullscreened() && hiding && opacity < 0.9 {
+            self.set_cursor(gdk::Cursor::from_name("none", None).as_ref());
+        } else {
+            self.set_cursor(None);
+        }
     }
 
     fn controls_opacity(&self) -> f64 {
@@ -685,7 +691,7 @@ impl LpWindow {
     fn show_controls_animation(&self) -> &adw::TimedAnimation {
         self.imp().show_controls_animation.get_or_init(|| {
             let target = adw::CallbackAnimationTarget::new(glib::clone!(
-                @weak self as obj => move |opacity| obj.set_control_opacity(opacity)
+                @weak self as obj => move |opacity| obj.set_control_opacity(opacity, false)
             ));
 
             adw::TimedAnimation::builder()
@@ -701,7 +707,7 @@ impl LpWindow {
     fn hide_controls_animation(&self) -> &adw::TimedAnimation {
         self.imp().hide_controls_animation.get_or_init(|| {
             let target = adw::CallbackAnimationTarget::new(glib::clone!(
-                @weak self as obj => move |opacity| obj.set_control_opacity(opacity)
+                @weak self as obj => move |opacity| obj.set_control_opacity(opacity, true)
             ));
 
             adw::TimedAnimation::builder()
@@ -799,8 +805,17 @@ impl LpWindow {
         }
 
         self.show_controls();
-        // Only queue animation if not over controls and there is an image shown
-        if !self
+
+        if self.can_hide_controls() {
+            self.queue_hide_controls();
+        } else {
+            self.dequeue_hide_controls();
+        }
+    }
+
+    /// Only hide controls if cursor not over controls and there is an image shown
+    fn can_hide_controls(&self) -> bool {
+        !self
             .image_view()
             .controls_box_start_events()
             .contains_pointer()
@@ -809,10 +824,14 @@ impl LpWindow {
                 .controls_box_end_events()
                 .contains_pointer()
             && self.is_showing_image()
-        {
-            self.queue_hide_controls();
-        } else {
-            self.dequeue_hide_controls();
+    }
+
+    #[template_callback]
+    fn on_fullscreened(&self) {
+        if !self.is_fullscreened() {
+            self.set_cursor(None);
+            self.show_controls();
         }
+        self.queue_hide_controls();
     }
 }

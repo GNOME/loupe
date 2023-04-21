@@ -57,6 +57,7 @@
     <property name="default-height">498</property>
     <property name="width-request">360</property>
     <property name="title" translatable="yes">Loupe</property>
+    <signal name="notify::fullscreened" handler="on_fullscreened" swapped="yes"/>"
     <binding name="title">
       <closure type="gchararray" function="window_title">
         <lookup name="file">
