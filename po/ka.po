@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/Incubator/loupe/-/issues\n"
-"POT-Creation-Date: 2023-04-19 21:36+0000\n"
-"PO-Revision-Date: 2023-04-20 07:34+0200\n"
+"POT-Creation-Date: 2023-04-21 16:11+0000\n"
+"PO-Revision-Date: 2023-04-22 00:25+0200\n"
 "Last-Translator: Ekaterine Papava <papava.e@gtu.ge>\n"
 "Language-Team: Georgian <ka@li.org>\n"
 "Language: ka\n"
@@ -41,11 +41,11 @@ msgstr "ფონად დაყენე_ბა…"
 msgid "Could not Load Image"
 msgstr "გამოსახულების ჩატვირთვის შეცდომა"
 
-#: data/gtk/image_page.ui:88 data/gtk/window.ui:111
+#: data/gtk/image_page.ui:88 data/gtk/window.ui:100
 msgid "Rotate Left"
 msgstr "მარცხნივ შებრუნება"
 
-#: data/gtk/image_page.ui:99 data/gtk/window.ui:122
+#: data/gtk/image_page.ui:99 data/gtk/window.ui:111
 msgid "Rotate Right"
 msgstr "მარჯვნივ შებრუნება"
 
@@ -57,17 +57,17 @@ msgstr "წინა გამოსახულება"
 msgid "Next Image"
 msgstr "შემდეგი გამოსახულება"
 
-#: data/gtk/image_view.ui:70
-msgid "Toggle Fullscreen"
-msgstr "მთელ ეკრანზე გატანის ჩართ/გამორთ"
-
-#: data/gtk/image_view.ui:81
+#: data/gtk/image_view.ui:66
 msgid "Zoom Out"
 msgstr "დაპატარავება"
 
-#: data/gtk/image_view.ui:92
+#: data/gtk/image_view.ui:77
 msgid "Zoom In"
 msgstr "გადიდება"
+
+#: data/gtk/image_view.ui:95
+msgid "Toggle Fullscreen"
+msgstr "მთელ ეკრანზე გატანის ჩართ/გამორთ"
 
 #: data/gtk/print.ui:4
 msgid "Layout Image"
@@ -192,35 +192,35 @@ msgstr "Loupe-ის _შესახებ"
 #. If the file exists, get display name
 #: data/gtk/window.ui:59 data/org.gnome.Loupe.desktop.in.in:3
 #: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/application.rs:191
-#: src/window.rs:665 src/window.rs:671
+#: src/window.rs:784 src/window.rs:790
 msgid "Loupe"
 msgstr "Loupe"
 
-#: data/gtk/window.ui:90
+#: data/gtk/window.ui:79
 msgid "Copy to Clipboard"
 msgstr "ბუფერში კოპირება"
 
-#: data/gtk/window.ui:97
+#: data/gtk/window.ui:86
 msgid "Move to Trash"
 msgstr "სანაგვე ყუთში გადატანა"
 
-#: data/gtk/window.ui:103
+#: data/gtk/window.ui:92
 msgid "Main Menu"
 msgstr "მთავარი მენიუ"
 
-#: data/gtk/window.ui:137
+#: data/gtk/window.ui:126
 msgid "Image Properties"
 msgstr "გამოსახულების თვისებები"
 
-#: data/gtk/window.ui:157
+#: data/gtk/window.ui:146
 msgid "View Images"
 msgstr "სურათების დათვალიერება"
 
-#: data/gtk/window.ui:158
+#: data/gtk/window.ui:147
 msgid "Drag and drop images here"
 msgstr "გადმოათრიეთ და დაყარეთ სურათები აქ"
 
-#: data/gtk/window.ui:162
+#: data/gtk/window.ui:151
 msgid "_Open File…"
 msgstr "_ფაილის გახსნა…"
 
@@ -461,19 +461,19 @@ msgstr "ანიმირებული WebP"
 msgid "Animated PNG"
 msgstr "ანიმირებული PNG"
 
-#: src/decoder/mod.rs:192
+#: src/decoder/mod.rs:189
 msgid "Unknown image format: {}"
 msgstr "გამოსახულების უცნობი ფორმატი: {}"
 
-#: src/decoder/mod.rs:199
+#: src/decoder/mod.rs:194
 msgid "Unknown image format"
 msgstr "გამოსახულების უცნობი ფორმატი"
 
-#: src/decoder/mod.rs:227
+#: src/decoder/mod.rs:222
 msgid "Could not open image"
 msgstr "გამოსახულების გახსნის შეცდომა"
 
-#: src/decoder/mod.rs:231
+#: src/decoder/mod.rs:226
 msgid "Could not read image"
 msgstr "გამოსახულების წაკითხვის შეცდომა"
 
@@ -519,7 +519,7 @@ msgstr "{}\\u{202F}მმ"
 msgid "%x %X"
 msgstr "%x %X"
 
-#: src/util/mod.rs:171 src/window.rs:500
+#: src/util/mod.rs:171 src/window.rs:517
 msgid "Failed to restore image from trash"
 msgstr "გამოსახულების სანაგვე ყუთიდან აღდგენის შეცდომა"
 
@@ -528,51 +528,59 @@ msgid "Failed to open image"
 msgstr "გამოსახულების გახსნის შეცდომა"
 
 #. Translators: This is a toast notification, informing the user that an image has been set as background.
-#: src/widgets/image_view.rs:599
+#: src/widgets/image_view.rs:620
 msgid "Set as background."
 msgstr "ფონად დაყენება."
 
-#: src/widgets/image_view.rs:610
+#: src/widgets/image_view.rs:631
 msgid "Could not set background."
 msgstr "ფონად დაყენების შეცდომა."
 
-#: src/window.rs:418
+#: src/window.rs:421
+msgid "Supported image formats"
+msgstr "გამოსახულების მხარდაჭერილი ფორმატები"
+
+#: src/window.rs:427
+msgid "All files"
+msgstr "ყველა ფაილი"
+
+#: src/window.rs:434
 msgid "Open Image"
 msgstr "გამოსახულების გახსნა"
 
-#: src/window.rs:472
+#: src/window.rs:489
 msgid "Image copied to clipboard"
 msgstr "სურათი ბუფერში დაკოპირდა"
 
-#: src/window.rs:488
+#: src/window.rs:505
 msgid "Image moved to trash"
 msgstr "სურათი გადატანილია სანაგვე ყუთში"
 
-#: src/window.rs:489
+#: src/window.rs:506
 msgid "Undo"
 msgstr "დაბრუნება"
 
-#: src/window.rs:515
+#: src/window.rs:532
 msgid "Failed to move image to trash"
 msgstr "ფაილების სანაგვე ყუთში გადატანის შეცდომა"
 
-#: src/window.rs:530
+#: src/window.rs:547
 msgid "Permanently Delete Image?"
 msgstr "წავშალო გამოსახულება სამუდამოდ?"
 
-#: src/window.rs:532
+#: src/window.rs:549
 msgid "The image “{}” can only be deleted permanently."
 msgstr "გამოსახულება \"{}\" მხოლოდ სამუდამოდ შეგიძლიათ წაშალოთ."
 
-#: src/window.rs:540
+#: src/window.rs:557
 msgid "Cancel"
 msgstr "გუქმება"
 
-#: src/window.rs:541
+#: src/window.rs:558
 msgid "Delete"
 msgstr "წაშლა"
 
-#: src/window.rs:552
+#: src/window.rs:569
 msgid "Failed to delete image"
 msgstr "გამოსახულების წაშლის შეცდომა"
 
