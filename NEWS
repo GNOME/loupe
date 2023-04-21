@@ -1,3 +1,29 @@
+44.2
+=======
+- Use GFile instead of direct file access
+- Do not crash when monitor info is not available
+- Get rid of many unwraps and report issues to UI instead, just to be safe
+- #130 Fix displayed times are wrong because they do not respect timezones
+- Add basic support for ICC color profiles
+- Support opening multiple files via drag and drop
+- Fix textures and background color not updating when image data changed
+- #124 Fix not defaulting to light background color in light theme
+- Fix thumbnail is broken for auto-rotated (EXIF) images
+- #120 Fix high-res scroll wheel issues
+- #134 Fix 100%/200% shortcuts ending up at best-fit when window size close to 100%/200%
+- Add printing support
+- Center new tilings in the viewport, making the first rendered tile cover the viewport already
+- Allow dragging (panning) the image with middle button
+- Generate list of mime types in meson and fix list of formats
+- Set actions enabled state based on UI property status, not manually everywhere
+- Add and update license headers with script based on commit info
+- Hide overlay controls after inactivity
+- Remove OSD from HeaderBar in fullscreen
+- Drop AdwFlap for HeaderBar
+- Make properties button insensitive if no image shown/loading
+- Move 'toggle fullscreen' button from inner to outer position
+- Add 'all files' filter option to file chooser
+
 44.1
 =======
 Bugfix release after initial feedback:

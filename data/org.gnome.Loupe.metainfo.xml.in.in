@@ -53,6 +53,16 @@
   </categories>
 
   <releases>
+    <release version="44.2" date="2023-04-21">
+      <description>
+        <p>This release brings many small tweaks and a hand full of bug fixes. The larger changes are:</p>
+        <ul>
+          <li>New image printing feature.</li>
+          <li>Support ICC color profiles for JPEG, HEIC, and AVIF.</li>
+          <li>Hide overlay buttons after inactivity.</li>
+        </ul>
+      </description>
+    </release>
     <release version="44.1" date="2023-04-06">
       <description>
         <ul>
