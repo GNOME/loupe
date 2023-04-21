@@ -171,7 +171,7 @@ impl Decoder {
                     gio::Cancellable::NONE,
                 )
                 .context("Could not read content type information")?;
-            if let Some(content_type) = file_info
+            if let Some(mime_type) = file_info
                 .content_type()
                 .as_ref()
                 .and_then(|x| gio::content_type_get_mime_type(x))
@@ -179,19 +179,14 @@ impl Decoder {
                 // Known things we want to match here are
                 // - image/svg+xml
                 // - image/svg+xml-compressed
-                if content_type.split('+').next() == Some("image/svg") {
+                if mime_type.split('+').next() == Some("image/svg") {
                     update_sender.send(DecoderUpdate::Format(ImageFormat::Svg));
                     return Ok(FormatDecoder::Svg(Svg::new(file, update_sender, tiles)));
-                } else if ["image/avif", "image/heif", "image/heic"]
-                    .contains(&content_type.as_str())
-                {
+                } else if ["image/avif", "image/heif", "image/heic"].contains(&mime_type.as_str()) {
                     update_sender.send(DecoderUpdate::Format(ImageFormat::Heif));
                     return Ok(FormatDecoder::Heif(Heif::new(file, update_sender, tiles)));
                 } else {
-                    bail!(gettext_f(
-                        "Unknown image format: {}",
-                        &[content_type.as_str()]
-                    ));
+                    bail!(gettext_f("Unknown image format: {}", &[mime_type.as_str()]));
                 }
             }
         }

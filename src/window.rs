@@ -415,16 +415,25 @@ impl LpWindow {
     }
 
     async fn pick_file(&self) {
-        let filter_store = gio::ListStore::new(gtk::FileFilter::static_type());
+        let filter_list = gio::ListStore::new(gtk::FileFilter::static_type());
 
-        let filter = gtk::FileFilter::new();
-        filter.set_property("name", &String::from("Supported image files"));
-        filter.add_mime_type("image/*");
-        filter_store.append(&filter);
+        let filter_supported_formats = gtk::FileFilter::new();
+        filter_supported_formats.set_name(Some(&gettext("Supported image formats")));
+        filter_supported_formats.add_mime_type("image/*");
+        // Manual support for Farbfeld since it has no mime type
+        filter_supported_formats.add_suffix("ff");
+
+        let filter_all_files = gtk::FileFilter::new();
+        filter_all_files.set_name(Some(&gettext("All files")));
+        filter_all_files.add_pattern("*");
+
+        filter_list.append(&filter_supported_formats);
+        filter_list.append(&filter_all_files);
 
         let chooser = gtk::FileDialog::builder()
             .title(gettext("Open Image"))
-            .filters(&filter_store)
+            .filters(&filter_list)
+            .default_filter(&filter_supported_formats)
             .modal(true)
             .build();
 
