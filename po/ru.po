@@ -6,9 +6,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-02 20:03+0000\n"
-"PO-Revision-Date: 2023-04-02 23:22+0300\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/Incubator/loupe/-/issues\n"
+"POT-Creation-Date: 2023-04-21 16:11+0000\n"
+"PO-Revision-Date: 2023-04-21 21:04+0300\n"
 "Last-Translator: Aleksandr Melman <Alexmelman88@gmail.com>\n"
 "Language-Team: \n"
 "Language: ru_RU\n"
@@ -18,212 +18,6 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
 "X-Generator: Poedit 3.2.2\n"
-
-#. If the file exists, get display name
-#: data/org.gnome.Loupe.desktop.in.in:3
-#: data/org.gnome.Loupe.metainfo.xml.in.in:6 data/gtk/window.ui:59
-#: src/application.rs:187 src/window.rs:676 src/window.rs:682
-msgid "Loupe"
-msgstr "Loupe"
-
-#: data/org.gnome.Loupe.desktop.in.in:11
-msgid "Picture;Slideshow;Graphics;Image Viewer;"
-msgstr "Изображение;Слайд-шоу;Графика;Просмотрщик изображений;"
-
-#: data/org.gnome.Loupe.metainfo.xml.in.in:7
-msgid "Christopher Davis"
-msgstr "Christopher Davis"
-
-#: data/org.gnome.Loupe.metainfo.xml.in.in:8
-msgid "View images"
-msgstr "Просмотр изображений"
-
-#: data/org.gnome.Loupe.metainfo.xml.in.in:10
-msgid ""
-"A simple image viewer which allows you to browse through your images and "
-"inspect their metadata."
-msgstr ""
-"Простой просмотрщик изображений, позволяющий просматривать изображения и "
-"проверять их метаданные."
-
-#: data/org.gnome.Loupe.metainfo.xml.in.in:11
-msgid "The following features are not available yet"
-msgstr "Следующие функции пока недоступны"
-
-#: data/org.gnome.Loupe.metainfo.xml.in.in:13
-msgid "Applying image color profiles"
-msgstr "Применение цветовых профилей изображения"
-
-#: data/org.gnome.Loupe.metainfo.xml.in.in:14
-msgid "Printing"
-msgstr "Печать"
-
-#: data/gtk/help_overlay.ui:11
-msgctxt "shortcut window"
-msgid "General Shortcuts"
-msgstr "Общие комбинации клавиш"
-
-#: data/gtk/help_overlay.ui:14
-msgctxt "shortcut window"
-msgid "Show Main Menu"
-msgstr "Показать главное меню"
-
-#: data/gtk/help_overlay.ui:20
-msgctxt "shortcut window"
-msgid "Copy Image to Clipboard"
-msgstr "Копировать изображение в буфер обмена"
-
-#: data/gtk/help_overlay.ui:26
-msgctxt "shortcut window"
-msgid "Move Image to Trash"
-msgstr "Отправить изображение в корзину"
-
-#: data/gtk/help_overlay.ui:32
-msgctxt "shortcut window"
-msgid "Toggle Image Properties"
-msgstr "Переключить свойства изображения"
-
-#: data/gtk/help_overlay.ui:38
-msgctxt "shortcut window"
-msgid "Set as Background"
-msgstr "Установить как фон"
-
-#: data/gtk/help_overlay.ui:44
-msgctxt "shortcut window"
-msgid "Toggle Fullscreen"
-msgstr "Переключить полноэкранный режим"
-
-#: data/gtk/help_overlay.ui:50
-msgctxt "shortcut window"
-msgid "Leave Fullscreen"
-msgstr "Покинуть полноэкранный режим"
-
-#: data/gtk/help_overlay.ui:56
-msgctxt "shortcut window"
-msgid "New Window"
-msgstr "Новое окно"
-
-#: data/gtk/help_overlay.ui:62
-msgctxt "shortcut window"
-msgid "Open Help"
-msgstr "Открыть справку"
-
-#: data/gtk/help_overlay.ui:68
-msgctxt "shortcut window"
-msgid "Show Keyboard Shortcuts"
-msgstr "Показать комбинации клавиш"
-
-#: data/gtk/help_overlay.ui:74
-msgctxt "shortcut window"
-msgid "Close Window"
-msgstr "Закрыть окно"
-
-#: data/gtk/help_overlay.ui:80
-msgctxt "shortcut window"
-msgid "Quit"
-msgstr "Закрыть"
-
-#: data/gtk/help_overlay.ui:88
-msgctxt "shortcut window"
-msgid "Navigate Images"
-msgstr "Навигация по изображениям"
-
-#: data/gtk/help_overlay.ui:92 data/gtk/help_overlay.ui:106
-#: data/gtk/help_overlay.ui:218 data/gtk/help_overlay.ui:232
-msgctxt "shortcut window"
-msgid "Next Image"
-msgstr "Следующее изображение"
-
-#: data/gtk/help_overlay.ui:99 data/gtk/help_overlay.ui:113
-#: data/gtk/help_overlay.ui:225 data/gtk/help_overlay.ui:239
-msgctxt "shortcut window"
-msgid "Previous Image"
-msgstr "Предыдущее изображение"
-
-#: data/gtk/help_overlay.ui:119
-msgctxt "shortcut window"
-msgid "First Image"
-msgstr "Первое изображение"
-
-#: data/gtk/help_overlay.ui:125
-msgctxt "shortcut window"
-msgid "Last Image"
-msgstr "Последнее изображение"
-
-#: data/gtk/help_overlay.ui:133
-msgctxt "shortcut window"
-msgid "Rotate Image"
-msgstr "Вращение изображения"
-
-#: data/gtk/help_overlay.ui:136 data/gtk/help_overlay.ui:257
-msgctxt "shortcut window"
-msgid "Rotate Clockwise"
-msgstr "Повернуть по часовой стрелке"
-
-#: data/gtk/help_overlay.ui:142 data/gtk/help_overlay.ui:263
-msgctxt "shortcut window"
-msgid "Rotate Counterclockwise"
-msgstr "Повернуть против часовой стрелки"
-
-#: data/gtk/help_overlay.ui:150
-msgctxt "shortcut window"
-msgid "Zoom Image"
-msgstr "Масштаб изображения"
-
-#: data/gtk/help_overlay.ui:153 data/gtk/help_overlay.ui:245
-msgctxt "shortcut window"
-msgid "Zoom In"
-msgstr "Увеличить"
-
-#: data/gtk/help_overlay.ui:159 data/gtk/help_overlay.ui:251
-msgctxt "shortcut window"
-msgid "Zoom Out"
-msgstr "Уменьшить"
-
-#: data/gtk/help_overlay.ui:165
-msgctxt "shortcut window"
-msgid "Best Fit"
-msgstr "Наиболее подходящий масштаб"
-
-#: data/gtk/help_overlay.ui:171
-msgctxt "shortcut window"
-msgid "Original Scale"
-msgstr "Оригинальный масштаб"
-
-#: data/gtk/help_overlay.ui:177
-msgctxt "shortcut window"
-msgid "200% Scale"
-msgstr "Масштаб 200%"
-
-#: data/gtk/help_overlay.ui:185
-msgctxt "shortcut window"
-msgid "Pan View"
-msgstr "Панорамный вид"
-
-#: data/gtk/help_overlay.ui:188
-msgctxt "shortcut window"
-msgid "Pan Left"
-msgstr "Влево на панораме"
-
-#: data/gtk/help_overlay.ui:194
-msgctxt "shortcut window"
-msgid "Pan Right"
-msgstr "Вправо на панораме"
-
-#: data/gtk/help_overlay.ui:200
-msgctxt "shortcut window"
-msgid "Pan Up"
-msgstr "Вверх на панораме"
-
-#: data/gtk/help_overlay.ui:206
-msgctxt "shortcut window"
-msgid "Pan Down"
-msgstr "Вниз на панораме"
-
-#: data/gtk/help_overlay.ui:214
-msgctxt "shortcut window"
-msgid "Gestures"
-msgstr "Жесты"
 
 #: data/gtk/image_page.ui:6 data/gtk/window.ui:16
 msgid "_Open With…"
@@ -249,11 +43,11 @@ msgstr "_Установить как фон…"
 msgid "Could not Load Image"
 msgstr "Не удалось загрузить изображение"
 
-#: data/gtk/image_page.ui:88 data/gtk/window.ui:111
+#: data/gtk/image_page.ui:88 data/gtk/window.ui:100
 msgid "Rotate Left"
 msgstr "Повернуть влево"
 
-#: data/gtk/image_page.ui:99 data/gtk/window.ui:122
+#: data/gtk/image_page.ui:99 data/gtk/window.ui:111
 msgid "Rotate Right"
 msgstr "Повернуть вправо"
 
@@ -265,17 +59,61 @@ msgstr "Предыдущее изображение"
 msgid "Next Image"
 msgstr "Следующее изображение"
 
-#: data/gtk/image_view.ui:70
-msgid "Toggle Fullscreen"
-msgstr "Переключить полноэкранный режим"
-
-#: data/gtk/image_view.ui:81
+#: data/gtk/image_view.ui:66
 msgid "Zoom Out"
 msgstr "Уменьшить"
 
-#: data/gtk/image_view.ui:92
+#: data/gtk/image_view.ui:77
 msgid "Zoom In"
 msgstr "Увеличить"
+
+#: data/gtk/image_view.ui:95
+msgid "Toggle Fullscreen"
+msgstr "Переключить полноэкранный режим"
+
+#: data/gtk/print.ui:4
+msgid "Layout Image"
+msgstr "Макет изображения"
+
+#: data/gtk/print.ui:66
+msgid "Portrait page orientation"
+msgstr "Портретная ориентация страницы"
+
+#: data/gtk/print.ui:74
+msgid "Landscape page orientation"
+msgstr "Ландшафтная ориентация страницы"
+
+#: data/gtk/print.ui:88
+msgid "Center image horizontally"
+msgstr "Центрирование изображения по горизонтали"
+
+#: data/gtk/print.ui:95
+msgid "Center image vertically"
+msgstr "Центрирование изображения по вертикали"
+
+#: data/gtk/print.ui:107
+msgid "Image Width"
+msgstr "Ширина изображения"
+
+#: data/gtk/print.ui:119
+msgid "Image Scale"
+msgstr "Масштаб изображения"
+
+#: data/gtk/print.ui:131
+msgid "Left Margin"
+msgstr "Левый отступ"
+
+#: data/gtk/print.ui:143
+msgid "Top Margin"
+msgstr "Верхний отступ"
+
+#: data/gtk/print.ui:155
+msgid "Length Unit"
+msgstr "Единица длины"
+
+#: data/gtk/print.ui:175
+msgid "Print"
+msgstr "Печать"
 
 #: data/gtk/properties_view.ui:29
 msgid "Folder"
@@ -353,150 +191,415 @@ msgstr "_Комбинации клавиш"
 msgid "_About Loupe"
 msgstr "_О приложении"
 
-#: data/gtk/window.ui:90
+#. If the file exists, get display name
+#: data/gtk/window.ui:59 data/org.gnome.Loupe.desktop.in.in:3
+#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/application.rs:191
+#: src/window.rs:784 src/window.rs:790
+msgid "Loupe"
+msgstr "Loupe"
+
+#: data/gtk/window.ui:79
 msgid "Copy to Clipboard"
 msgstr "Копировать в буфер обмена"
 
-#: data/gtk/window.ui:97
+#: data/gtk/window.ui:86
 msgid "Move to Trash"
 msgstr "Отправить в корзину"
 
-#: data/gtk/window.ui:103
+#: data/gtk/window.ui:92
 msgid "Main Menu"
 msgstr "Главное меню"
 
-#: data/gtk/window.ui:137
+#: data/gtk/window.ui:126
 msgid "Image Properties"
 msgstr "Свойства изображения"
 
-#: data/gtk/window.ui:157
+#: data/gtk/window.ui:146
 msgid "View Images"
 msgstr "Просмотр изображений"
 
-#: data/gtk/window.ui:158
+#: data/gtk/window.ui:147
 msgid "Drag and drop images here"
 msgstr "Перетащите изображения сюда"
 
-#: data/gtk/window.ui:162
+#: data/gtk/window.ui:151
 msgid "_Open File…"
 msgstr "_Открыть файл…"
 
-#: src/application.rs:190
+#: data/org.gnome.Loupe.desktop.in.in:11
+msgid "Picture;Slideshow;Graphics;Image Viewer;"
+msgstr "Изображение;Слайд-шоу;Графика;Просмотрщик изображений;"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:7 src/application.rs:194
 msgid "The Loupe Team"
 msgstr "The Loupe Team"
 
+#: data/org.gnome.Loupe.metainfo.xml.in.in:8
+msgid "View images"
+msgstr "Просмотр изображений"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:10
+msgid ""
+"A simple image viewer which allows you to browse through your images and "
+"inspect their metadata."
+msgstr ""
+"Простой просмотрщик изображений, позволяющий просматривать изображения и "
+"проверять их метаданные."
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:11
+msgid "The following features are not available yet"
+msgstr "Следующие функции пока недоступны"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:13
+msgid "Applying image color profiles"
+msgstr "Применение цветовых профилей изображения"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:14
+msgid "Printing"
+msgstr "Печать"
+
+#: data/resources/gtk/help-overlay.ui:11
+msgctxt "shortcut window"
+msgid "General Shortcuts"
+msgstr "Общие комбинации клавиш"
+
+#: data/resources/gtk/help-overlay.ui:14
+msgctxt "shortcut window"
+msgid "Show Main Menu"
+msgstr "Показать главное меню"
+
+#: data/resources/gtk/help-overlay.ui:20
+msgctxt "shortcut window"
+msgid "Copy Image to Clipboard"
+msgstr "Копировать изображение в буфер обмена"
+
+#: data/resources/gtk/help-overlay.ui:26
+msgctxt "shortcut window"
+msgid "Move Image to Trash"
+msgstr "Отправить изображение в корзину"
+
+#: data/resources/gtk/help-overlay.ui:32
+msgctxt "shortcut window"
+msgid "Toggle Image Properties"
+msgstr "Переключить свойства изображения"
+
+#: data/resources/gtk/help-overlay.ui:38
+msgctxt "shortcut window"
+msgid "Set as Background"
+msgstr "Установить как фон"
+
+#: data/resources/gtk/help-overlay.ui:44
+msgctxt "shortcut window"
+msgid "Toggle Fullscreen"
+msgstr "Переключить полноэкранный режим"
+
+#: data/resources/gtk/help-overlay.ui:50
+msgctxt "shortcut window"
+msgid "Leave Fullscreen"
+msgstr "Покинуть полноэкранный режим"
+
+#: data/resources/gtk/help-overlay.ui:56
+msgctxt "shortcut window"
+msgid "New Window"
+msgstr "Новое окно"
+
+#: data/resources/gtk/help-overlay.ui:62
+msgctxt "shortcut window"
+msgid "Open Help"
+msgstr "Открыть справку"
+
+#: data/resources/gtk/help-overlay.ui:68
+msgctxt "shortcut window"
+msgid "Show Keyboard Shortcuts"
+msgstr "Показать комбинации клавиш"
+
+#: data/resources/gtk/help-overlay.ui:74
+msgctxt "shortcut window"
+msgid "Close Window"
+msgstr "Закрыть окно"
+
+#: data/resources/gtk/help-overlay.ui:80
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "Закрыть"
+
+#: data/resources/gtk/help-overlay.ui:88
+msgctxt "shortcut window"
+msgid "Navigate Images"
+msgstr "Навигация по изображениям"
+
+#: data/resources/gtk/help-overlay.ui:92 data/resources/gtk/help-overlay.ui:106
+#: data/resources/gtk/help-overlay.ui:218
+#: data/resources/gtk/help-overlay.ui:232
+msgctxt "shortcut window"
+msgid "Next Image"
+msgstr "Следующее изображение"
+
+#: data/resources/gtk/help-overlay.ui:99 data/resources/gtk/help-overlay.ui:113
+#: data/resources/gtk/help-overlay.ui:225
+#: data/resources/gtk/help-overlay.ui:239
+msgctxt "shortcut window"
+msgid "Previous Image"
+msgstr "Предыдущее изображение"
+
+#: data/resources/gtk/help-overlay.ui:119
+msgctxt "shortcut window"
+msgid "First Image"
+msgstr "Первое изображение"
+
+#: data/resources/gtk/help-overlay.ui:125
+msgctxt "shortcut window"
+msgid "Last Image"
+msgstr "Последнее изображение"
+
+#: data/resources/gtk/help-overlay.ui:133
+msgctxt "shortcut window"
+msgid "Rotate Image"
+msgstr "Вращение изображения"
+
+#: data/resources/gtk/help-overlay.ui:136
+#: data/resources/gtk/help-overlay.ui:257
+msgctxt "shortcut window"
+msgid "Rotate Clockwise"
+msgstr "Повернуть по часовой стрелке"
+
+#: data/resources/gtk/help-overlay.ui:142
+#: data/resources/gtk/help-overlay.ui:263
+msgctxt "shortcut window"
+msgid "Rotate Counterclockwise"
+msgstr "Повернуть против часовой стрелки"
+
+#: data/resources/gtk/help-overlay.ui:150
+msgctxt "shortcut window"
+msgid "Zoom Image"
+msgstr "Масштаб изображения"
+
+#: data/resources/gtk/help-overlay.ui:153
+#: data/resources/gtk/help-overlay.ui:245
+msgctxt "shortcut window"
+msgid "Zoom In"
+msgstr "Увеличить"
+
+#: data/resources/gtk/help-overlay.ui:159
+#: data/resources/gtk/help-overlay.ui:251
+msgctxt "shortcut window"
+msgid "Zoom Out"
+msgstr "Уменьшить"
+
+#: data/resources/gtk/help-overlay.ui:165
+msgctxt "shortcut window"
+msgid "Best Fit"
+msgstr "Наиболее подходящий масштаб"
+
+#: data/resources/gtk/help-overlay.ui:171
+msgctxt "shortcut window"
+msgid "Original Scale"
+msgstr "Оригинальный масштаб"
+
+#: data/resources/gtk/help-overlay.ui:177
+msgctxt "shortcut window"
+msgid "200% Scale"
+msgstr "Масштаб 200%"
+
+#: data/resources/gtk/help-overlay.ui:185
+msgctxt "shortcut window"
+msgid "Pan View"
+msgstr "Панорамный вид"
+
+#: data/resources/gtk/help-overlay.ui:188
+msgctxt "shortcut window"
+msgid "Pan Left"
+msgstr "Влево на панораме"
+
+#: data/resources/gtk/help-overlay.ui:194
+msgctxt "shortcut window"
+msgid "Pan Right"
+msgstr "Вправо на панораме"
+
+#: data/resources/gtk/help-overlay.ui:200
+msgctxt "shortcut window"
+msgid "Pan Up"
+msgstr "Вверх на панораме"
+
+#: data/resources/gtk/help-overlay.ui:206
+msgctxt "shortcut window"
+msgid "Pan Down"
+msgstr "Вниз на панораме"
+
+#: data/resources/gtk/help-overlay.ui:214
+msgctxt "shortcut window"
+msgid "Gestures"
+msgstr "Жесты"
+
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/application.rs:199
+#: src/application.rs:203
 msgid "translator-credits"
 msgstr "Aleksandr Melman <alexmelman88@gmail.com>, 2023"
 
-#: src/application.rs:200
+#: src/application.rs:204
 msgid "Copyright © 2020–2023 Christopher Davis et al."
 msgstr "Авторское право © 2020-2023 Christopher Davis и др."
 
-#: src/file_model.rs:114
+#: src/decoder/formats/heif.rs:55
+msgid "Failed to read image file information"
+msgstr "Не удалось прочитать информацию о файле изображения"
+
+#: src/decoder/formats/heif.rs:60 src/decoder/formats/heif.rs:93
+#: src/decoder/formats/image_rs_other.rs:116
+#: src/decoder/formats/image_rs_other.rs:125
+#: src/decoder/formats/image_rs_other.rs:132
+msgid "Failed to decode image"
+msgstr "Не удалось расшифровать изображение"
+
+#: src/decoder/formats/mod.rs:72
+msgid "Animated GIF"
+msgstr "Анимированный GIF"
+
+#: src/decoder/formats/mod.rs:73
+msgid "Animated WebP"
+msgstr "Анимированный WebP"
+
+#: src/decoder/formats/mod.rs:74
+msgid "Animated PNG"
+msgstr "Анимированный PNG"
+
+#: src/decoder/mod.rs:189
+msgid "Unknown image format: {}"
+msgstr "Неизвестный формат изображения: {}"
+
+#: src/decoder/mod.rs:194
+msgid "Unknown image format"
+msgstr "Неизвестный формат изображения"
+
+#: src/decoder/mod.rs:222
+msgid "Could not open image"
+msgstr "Не удалось открыть изображение"
+
+#: src/decoder/mod.rs:226
+msgid "Could not read image"
+msgstr "Не удалось прочитать изображение"
+
+#: src/file_model.rs:118
 msgid "Could not list other files in directory."
 msgstr "Не удалось перечислить другие файлы в каталоге."
 
 #. Translators: short for "north" in GPS coordinate
-#: src/image_metadata/gps.rs:136
+#: src/image_metadata/gps.rs:154
 msgid "N"
 msgstr "С"
 
 #. Translators: short for "south" in GPS coordinate
-#: src/image_metadata/gps.rs:139
+#: src/image_metadata/gps.rs:157
 msgid "S"
 msgstr "Ю"
 
 #. Translators: short for "east" in GPS coordinate
-#: src/image_metadata/gps.rs:149
+#: src/image_metadata/gps.rs:167
 msgid "E"
 msgstr "В"
 
 #. Translators: short for "west" in GPS coordinate
-#: src/image_metadata/gps.rs:152
+#: src/image_metadata/gps.rs:170
 msgid "W"
 msgstr "З"
 
 #. Translators: Unit for exposure time in seconds
-#: src/image_metadata/mod.rs:129
+#: src/image_metadata/mod.rs:144
 msgid "1\\u{2215}{}\\u{202F}s"
 msgstr "1\\u{2215}{}\\u{202F}s"
 
 #. Translators: Unit for focal length in millimeters
-#: src/image_metadata/mod.rs:154
+#: src/image_metadata/mod.rs:169
 msgid "{}\\u{202F}mm"
 msgstr "{}\\u{202F}mm"
 
-#: src/widgets/image.rs:720
-msgid "File does not exist"
-msgstr "Файл не существует"
+#. Translators: This is the date and time format we use in metadata output etc.
+#. The format has to follow <https://docs.gtk.org/glib/method.DateTime.format.html>
+#. The default is already translated. Don't change if you are not sure what to use.
+#: src/util/mod.rs:36
+#, c-format
+msgid "%x %X"
+msgstr "%x %X"
 
-#: src/widgets/image_view.rs:558
-msgid "Failed to open new background image"
-msgstr "Не удалось открыть новое фоновое изображение"
-
-#: src/widgets/image_view.rs:575
-msgid "Set as background."
-msgstr "Установить как фон."
-
-#: src/widgets/image_view.rs:582
-msgid "Could not set background."
-msgstr "Не удалось установить фон."
-
-#: src/window.rs:355
-msgid "“{}” is not a valid image."
-msgstr "\"{}\" не является допустимым изображением."
-
-#: src/window.rs:431
-msgid "Open Image"
-msgstr "Открыть изображение"
-
-#: src/window.rs:485
-msgid "Image copied to clipboard"
-msgstr "Изображение скопировано в буфер обмена"
-
-#: src/window.rs:499
-msgid "Image moved to trash"
-msgstr "Изображение отправлено в корзину"
-
-#: src/window.rs:500
-msgid "Undo"
-msgstr "Отменить"
-
-#: src/window.rs:511
+#: src/util/mod.rs:171 src/window.rs:517
 msgid "Failed to restore image from trash"
 msgstr "Не удалось восстановить изображение из корзины"
 
-#: src/window.rs:526
+#: src/util/mod.rs:192
+msgid "Failed to open image"
+msgstr "Не удалось открыть изображение"
+
+#. Translators: This is a toast notification, informing the user that an image has been set as background.
+#: src/widgets/image_view.rs:620
+msgid "Set as background."
+msgstr "Установить как фон."
+
+#: src/widgets/image_view.rs:631
+msgid "Could not set background."
+msgstr "Не удалось установить фон."
+
+#: src/window.rs:421
+msgid "Supported image formats"
+msgstr "Поддерживаемые форматы изображения"
+
+#: src/window.rs:427
+msgid "All files"
+msgstr "Все файлы"
+
+#: src/window.rs:434
+msgid "Open Image"
+msgstr "Открыть изображение"
+
+#: src/window.rs:489
+msgid "Image copied to clipboard"
+msgstr "Изображение скопировано в буфер обмена"
+
+#: src/window.rs:505
+msgid "Image moved to trash"
+msgstr "Изображение отправлено в корзину"
+
+#: src/window.rs:506
+msgid "Undo"
+msgstr "Отменить"
+
+#: src/window.rs:532
 msgid "Failed to move image to trash"
 msgstr "Не удалось отправить изображение в корзину"
 
-#: src/window.rs:541
+#: src/window.rs:547
 msgid "Permanently Delete Image?"
 msgstr "Удалить изображение безвозвратно?"
 
-#: src/window.rs:543
+#: src/window.rs:549
 msgid "The image “{}” can only be deleted permanently."
 msgstr "Изображение \"{}\" может быть удалено только безвозвратно."
 
-#: src/window.rs:550
+#: src/window.rs:557
 msgid "Cancel"
 msgstr "Отменить"
 
-#: src/window.rs:550
+#: src/window.rs:558
 msgid "Delete"
 msgstr "Удалить"
 
-#: src/window.rs:559
+#: src/window.rs:569
 msgid "Failed to delete image"
 msgstr "Не удалось удалить изображение"
 
+#~ msgid "Christopher Davis"
+#~ msgstr "Christopher Davis"
+
+#~ msgid "File does not exist"
+#~ msgstr "Файл не существует"
+
+#~ msgid "Failed to open new background image"
+#~ msgstr "Не удалось открыть новое фоновое изображение"
+
+#~ msgid "“{}” is not a valid image."
+#~ msgstr "\"{}\" не является допустимым изображением."
+
 #~ msgid "Correctly showing SVGs at every zoom-level"
 #~ msgstr "Корректное отображение SVG на каждом уровне масштабирования"
-
-#~ msgid "Animated image formats"
-#~ msgstr "Форматы анимированных изображений"
 
 #~ msgid "Correct HighDPI support"
 #~ msgstr "Корректная поддержка HighDPI"
@@ -509,7 +612,3 @@ msgstr "Не удалось удалить изображение"
 
 #~ msgid "File Type"
 #~ msgstr "Тип файла"
-
-#, c-format
-#~ msgid "%x %X"
-#~ msgstr "%x %X"
