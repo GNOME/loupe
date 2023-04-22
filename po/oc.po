@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/Incubator/loupe/-/issues\n"
-"POT-Creation-Date: 2023-04-19 21:36+0000\n"
-"PO-Revision-Date: 2023-04-21 10:40+0200\n"
+"POT-Creation-Date: 2023-04-21 16:11+0000\n"
+"PO-Revision-Date: 2023-04-22 12:45+0200\n"
 "Last-Translator: Quentin PAGÈS\n"
 "Language-Team: Occitan <totenoc@gmail.com>\n"
 "Language: oc\n"
@@ -41,11 +41,11 @@ msgstr "Definir coma _rèireplan…"
 msgid "Could not Load Image"
 msgstr "Cargament impossible de l’imatge"
 
-#: data/gtk/image_page.ui:88 data/gtk/window.ui:111
+#: data/gtk/image_page.ui:88 data/gtk/window.ui:100
 msgid "Rotate Left"
 msgstr "Pivotar cap a esquèrra"
 
-#: data/gtk/image_page.ui:99 data/gtk/window.ui:122
+#: data/gtk/image_page.ui:99 data/gtk/window.ui:111
 msgid "Rotate Right"
 msgstr "Pivotar cap a drecha"
 
@@ -57,17 +57,17 @@ msgstr "Imatge precedent"
 msgid "Next Image"
 msgstr "Imatge seguent"
 
-#: data/gtk/image_view.ui:70
-msgid "Toggle Fullscreen"
-msgstr "Alternar lo mòde ecran complèt"
-
-#: data/gtk/image_view.ui:81
+#: data/gtk/image_view.ui:66
 msgid "Zoom Out"
 msgstr "Reduire"
 
-#: data/gtk/image_view.ui:92
+#: data/gtk/image_view.ui:77
 msgid "Zoom In"
 msgstr "Agrandir"
+
+#: data/gtk/image_view.ui:95
+msgid "Toggle Fullscreen"
+msgstr "Alternar lo mòde ecran complèt"
 
 #: data/gtk/print.ui:4
 msgid "Layout Image"
@@ -192,35 +192,35 @@ msgstr "_A prepaus de Lópia"
 #. If the file exists, get display name
 #: data/gtk/window.ui:59 data/org.gnome.Loupe.desktop.in.in:3
 #: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/application.rs:191
-#: src/window.rs:665 src/window.rs:671
+#: src/window.rs:784 src/window.rs:790
 msgid "Loupe"
 msgstr "Lópia"
 
-#: data/gtk/window.ui:90
+#: data/gtk/window.ui:79
 msgid "Copy to Clipboard"
 msgstr "Copiar al quichapapièrs"
 
-#: data/gtk/window.ui:97
+#: data/gtk/window.ui:86
 msgid "Move to Trash"
 msgstr "Metre dins l'escobilhièr"
 
-#: data/gtk/window.ui:103
+#: data/gtk/window.ui:92
 msgid "Main Menu"
 msgstr "Menú principal"
 
-#: data/gtk/window.ui:137
+#: data/gtk/window.ui:126
 msgid "Image Properties"
 msgstr "Proprietats de l'imatge"
 
-#: data/gtk/window.ui:157
+#: data/gtk/window.ui:146
 msgid "View Images"
 msgstr "Veire los imatges"
 
-#: data/gtk/window.ui:158
+#: data/gtk/window.ui:147
 msgid "Drag and drop images here"
 msgstr "Lisatz e depausatz los imatges aquí"
 
-#: data/gtk/window.ui:162
+#: data/gtk/window.ui:151
 msgid "_Open File…"
 msgstr "_Dobrir un fichièr…"
 
@@ -463,19 +463,19 @@ msgstr "WebP animat"
 msgid "Animated PNG"
 msgstr "PNG animat"
 
-#: src/decoder/mod.rs:192
+#: src/decoder/mod.rs:189
 msgid "Unknown image format: {}"
 msgstr "Formats d’imatges desconegut : {}"
 
-#: src/decoder/mod.rs:199
+#: src/decoder/mod.rs:194
 msgid "Unknown image format"
 msgstr "Format d'imatge desconegut"
 
-#: src/decoder/mod.rs:227
+#: src/decoder/mod.rs:222
 msgid "Could not open image"
 msgstr "Dubertura impossibla de l’imatge"
 
-#: src/decoder/mod.rs:231
+#: src/decoder/mod.rs:226
 msgid "Could not read image"
 msgstr "Lectura impossibla de l’imatge"
 
@@ -521,7 +521,7 @@ msgstr "{}\\u{202F}mm"
 msgid "%x %X"
 msgstr "%x %X"
 
-#: src/util/mod.rs:171 src/window.rs:500
+#: src/util/mod.rs:171 src/window.rs:517
 msgid "Failed to restore image from trash"
 msgstr "Fracàs de la restauracion de l’imatge a partir de l’escobilhièr"
 
@@ -530,51 +530,59 @@ msgid "Failed to open image"
 msgstr "Impossible de dobrir l’imatge"
 
 #. Translators: This is a toast notification, informing the user that an image has been set as background.
-#: src/widgets/image_view.rs:599
+#: src/widgets/image_view.rs:620
 msgid "Set as background."
 msgstr "Definir coma rèireplan."
 
-#: src/widgets/image_view.rs:610
+#: src/widgets/image_view.rs:631
 msgid "Could not set background."
 msgstr "Impossible de definir coma rèireplan."
 
-#: src/window.rs:418
+#: src/window.rs:421
+msgid "Supported image formats"
+msgstr "Format d'imatge suportats"
+
+#: src/window.rs:427
+msgid "All files"
+msgstr "Totes los fichièrs"
+
+#: src/window.rs:434
 msgid "Open Image"
 msgstr "Dobrir un imatge"
 
-#: src/window.rs:472
+#: src/window.rs:489
 msgid "Image copied to clipboard"
 msgstr "Imatge copiat al quichapapièrs"
 
-#: src/window.rs:488
+#: src/window.rs:505
 msgid "Image moved to trash"
 msgstr "Imatge desplaçat a l'escobilhièr"
 
-#: src/window.rs:489
+#: src/window.rs:506
 msgid "Undo"
 msgstr "Desfar"
 
-#: src/window.rs:515
+#: src/window.rs:532
 msgid "Failed to move image to trash"
 msgstr "Impossible de desplaçar l’imatge cap a l'escobilhièr"
 
-#: src/window.rs:530
+#: src/window.rs:547
 msgid "Permanently Delete Image?"
 msgstr "Suprimir l’imatge irreversiblament ?"
 
-#: src/window.rs:532
+#: src/window.rs:549
 msgid "The image “{}” can only be deleted permanently."
 msgstr "L’imatge « {} » se pòt pas suprimir per totjorn."
 
-#: src/window.rs:540
+#: src/window.rs:557
 msgid "Cancel"
 msgstr "Anullada"
 
-#: src/window.rs:541
+#: src/window.rs:558
 msgid "Delete"
 msgstr "Suprimir"
 
-#: src/window.rs:552
+#: src/window.rs:569
 msgid "Failed to delete image"
 msgstr "Impossible de suprimir l’imatge"
 
