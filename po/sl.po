@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/Incubator/loupe/-/issues\n"
-"POT-Creation-Date: 2023-04-19 21:36+0000\n"
-"PO-Revision-Date: 2023-04-20 00:11+0200\n"
+"POT-Creation-Date: 2023-04-21 16:11+0000\n"
+"PO-Revision-Date: 2023-04-22 09:44+0200\n"
 "Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
 "Language-Team: Slovenian <gnome-si@googlegroups.com>\n"
 "Language: sl\n"
@@ -45,11 +45,11 @@ msgstr "_Nastavi za ozadje …"
 msgid "Could not Load Image"
 msgstr "Slike ni mogoče naložiti"
 
-#: data/gtk/image_page.ui:88 data/gtk/window.ui:111
+#: data/gtk/image_page.ui:88 data/gtk/window.ui:100
 msgid "Rotate Left"
 msgstr "Zavrti v levo"
 
-#: data/gtk/image_page.ui:99 data/gtk/window.ui:122
+#: data/gtk/image_page.ui:99 data/gtk/window.ui:111
 msgid "Rotate Right"
 msgstr "Zavrti v desno"
 
@@ -61,17 +61,17 @@ msgstr "Predhodnja slika"
 msgid "Next Image"
 msgstr "Naslednja slika"
 
-#: data/gtk/image_view.ui:70
-msgid "Toggle Fullscreen"
-msgstr "Preklopi celozaslonski način"
-
-#: data/gtk/image_view.ui:81
+#: data/gtk/image_view.ui:66
 msgid "Zoom Out"
 msgstr "Pomanjšaj"
 
-#: data/gtk/image_view.ui:92
+#: data/gtk/image_view.ui:77
 msgid "Zoom In"
 msgstr "Povečaj"
+
+#: data/gtk/image_view.ui:95
+msgid "Toggle Fullscreen"
+msgstr "Preklopi celozaslonski način"
 
 #: data/gtk/print.ui:4
 msgid "Layout Image"
@@ -86,12 +86,10 @@ msgid "Landscape page orientation"
 msgstr "Ležeča usmerjenost strani"
 
 #: data/gtk/print.ui:88
-#, fuzzy
 msgid "Center image horizontally"
 msgstr "Sredini sliko vodoravno"
 
 #: data/gtk/print.ui:95
-#, fuzzy
 msgid "Center image vertically"
 msgstr "Sredini sliko navpično"
 
@@ -198,35 +196,35 @@ msgstr "_O programu Lupa"
 #. If the file exists, get display name
 #: data/gtk/window.ui:59 data/org.gnome.Loupe.desktop.in.in:3
 #: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/application.rs:191
-#: src/window.rs:665 src/window.rs:671
+#: src/window.rs:784 src/window.rs:790
 msgid "Loupe"
 msgstr "Lupa"
 
-#: data/gtk/window.ui:90
+#: data/gtk/window.ui:79
 msgid "Copy to Clipboard"
 msgstr "Kopiraj na odložišče"
 
-#: data/gtk/window.ui:97
+#: data/gtk/window.ui:86
 msgid "Move to Trash"
 msgstr "Premakni v smeti"
 
-#: data/gtk/window.ui:103
+#: data/gtk/window.ui:92
 msgid "Main Menu"
 msgstr "Glavni meni"
 
-#: data/gtk/window.ui:137
+#: data/gtk/window.ui:126
 msgid "Image Properties"
 msgstr "Lastnosti slike"
 
-#: data/gtk/window.ui:157
+#: data/gtk/window.ui:146
 msgid "View Images"
 msgstr "Pokaži slike"
 
-#: data/gtk/window.ui:158
+#: data/gtk/window.ui:147
 msgid "Drag and drop images here"
 msgstr "Povlecite in spustite slike sem"
 
-#: data/gtk/window.ui:162
+#: data/gtk/window.ui:151
 msgid "_Open File…"
 msgstr "_Odpri datoteko …"
 
@@ -467,19 +465,19 @@ msgstr "Animirani webP"
 msgid "Animated PNG"
 msgstr "Animirani PNG"
 
-#: src/decoder/mod.rs:192
+#: src/decoder/mod.rs:189
 msgid "Unknown image format: {}"
 msgstr "Neznan zapis slike: {}"
 
-#: src/decoder/mod.rs:199
+#: src/decoder/mod.rs:194
 msgid "Unknown image format"
 msgstr "Neznan slikovni zapis"
 
-#: src/decoder/mod.rs:227
+#: src/decoder/mod.rs:222
 msgid "Could not open image"
 msgstr "Slike ni bilo mogoče odpreti"
 
-#: src/decoder/mod.rs:231
+#: src/decoder/mod.rs:226
 msgid "Could not read image"
 msgstr "Slike ni bilo mogoče prebrati"
 
@@ -525,7 +523,7 @@ msgstr "{}\\u{202F} mm"
 msgid "%x %X"
 msgstr "%x %X"
 
-#: src/util/mod.rs:171 src/window.rs:500
+#: src/util/mod.rs:171 src/window.rs:517
 msgid "Failed to restore image from trash"
 msgstr "Obnovitev slike iz smeti ni uspela"
 
@@ -534,50 +532,58 @@ msgid "Failed to open image"
 msgstr "Odpiranje slike ni uspelo"
 
 #. Translators: This is a toast notification, informing the user that an image has been set as background.
-#: src/widgets/image_view.rs:599
+#: src/widgets/image_view.rs:620
 msgid "Set as background."
 msgstr "Določi kot sliko ozadja."
 
-#: src/widgets/image_view.rs:610
+#: src/widgets/image_view.rs:631
 msgid "Could not set background."
 msgstr "Ozadja ni bilo mogoče nastaviti."
 
-#: src/window.rs:418
+#: src/window.rs:421
+msgid "Supported image formats"
+msgstr "Podprte vrste slik"
+
+#: src/window.rs:427
+msgid "All files"
+msgstr "Vse datoteke"
+
+#: src/window.rs:434
 msgid "Open Image"
 msgstr "Odpri sliko"
 
-#: src/window.rs:472
+#: src/window.rs:489
 msgid "Image copied to clipboard"
 msgstr "Slika, kopirana na odložišče"
 
-#: src/window.rs:488
+#: src/window.rs:505
 msgid "Image moved to trash"
 msgstr "Slika, premaknjena v smeti"
 
-#: src/window.rs:489
+#: src/window.rs:506
 msgid "Undo"
 msgstr "Razveljavi"
 
-#: src/window.rs:515
+#: src/window.rs:532
 msgid "Failed to move image to trash"
 msgstr "Premikanje slike v smeti ni uspelo"
 
-#: src/window.rs:530
+#: src/window.rs:547
 msgid "Permanently Delete Image?"
 msgstr "Ali želite trajno izbrisati sliko?"
 
-#: src/window.rs:532
+#: src/window.rs:549
 msgid "The image “{}” can only be deleted permanently."
 msgstr "Sliko »{}« je mogoče le trajno izbrisati."
 
-#: src/window.rs:540
+#: src/window.rs:557
 msgid "Cancel"
 msgstr "Prekliči"
 
-#: src/window.rs:541
+#: src/window.rs:558
 msgid "Delete"
 msgstr "Izbriši"
 
-#: src/window.rs:552
+#: src/window.rs:569
 msgid "Failed to delete image"
 msgstr "Brisanje slike ni uspelo"
