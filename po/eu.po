@@ -5,231 +5,15 @@
 #
 msgid ""
 msgstr "Project-Id-Version: Loupe main\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-14 04:10+0000\n"
-"PO-Revision-Date: 2023-03-26 18:54+0000\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/Incubator/loupe/-/issues\n"
+"POT-Creation-Date: 2023-04-21 16:11+0000\n"
+"PO-Revision-Date: 2023-04-22 18:54+0000\n"
 "Last-Translator: Asier Sarasua Garmendia <asiersarasua@ni.eus>\n"
 "Language-Team: Basque <librezale@librezale.eus>\n"
 "Language: eu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-
-#. If the file exists, get display name
-#: data/org.gnome.Loupe.desktop.in.in:3
-#: data/org.gnome.Loupe.metainfo.xml.in.in:6 data/gtk/window.ui:63
-#: src/application.rs:193 src/window.rs:676 src/window.rs:682
-msgid "Loupe"
-msgstr "Loupe"
-
-#: data/org.gnome.Loupe.desktop.in.in:11
-msgid "Picture;Slideshow;Graphics;Image Viewer;"
-msgstr "Argazkia;Aurkezpena;Grafikoak;Irudi-ikustailea;"
-
-#: data/org.gnome.Loupe.metainfo.xml.in.in:7
-msgid "Christopher Davis"
-msgstr "Christopher Davis"
-
-#: data/org.gnome.Loupe.metainfo.xml.in.in:8
-msgid "View images"
-msgstr "Ikusi irudiak"
-
-#: data/org.gnome.Loupe.metainfo.xml.in.in:10
-msgid ""
-"A simple image viewer which allows you to browse through your images and "
-"inspect their metadata."
-msgstr "Irudiak arakatzeko eta haien metadatuak ikusteko balio duen irudi-ikustaile sinplea."
-
-#: data/org.gnome.Loupe.metainfo.xml.in.in:11
-msgid "The following features are not available yet"
-msgstr "Honako eginbideak ez daude erabilgarri oraindik"
-
-#: data/org.gnome.Loupe.metainfo.xml.in.in:13
-msgid "Correctly showing SVGs at every zoom-level"
-msgstr "SVGak edozein zoom-mailatan zuzen erakustea"
-
-#: data/org.gnome.Loupe.metainfo.xml.in.in:14
-msgid "Interpreting image color profiles"
-msgstr "Irudien kolore-profilak interpretatzea"
-
-#: data/org.gnome.Loupe.metainfo.xml.in.in:15
-msgid "Animated image formats"
-msgstr "Irudi-formatu animatuak"
-
-#: data/org.gnome.Loupe.metainfo.xml.in.in:16
-msgid "Correct HighDPI support"
-msgstr "HighDPI euskarri zuzena"
-
-#: data/org.gnome.Loupe.metainfo.xml.in.in:17
-msgid "Print settings to position the image on the page"
-msgstr "Irudia orrialdean ongi kokatzeko inprimatze-ezarpenak"
-
-#: data/gtk/help_overlay.ui:11
-msgctxt "shortcut window"
-msgid "General Shortcuts"
-msgstr "Lasterbide orokorrak"
-
-#: data/gtk/help_overlay.ui:14
-msgctxt "shortcut window"
-msgid "Show Main Menu"
-msgstr "Erakutsi menu nagusia"
-
-#: data/gtk/help_overlay.ui:20
-msgctxt "shortcut window"
-msgid "Copy Image to Clipboard"
-msgstr "Kopiatu irudia arbelera"
-
-#: data/gtk/help_overlay.ui:26
-msgctxt "shortcut window"
-msgid "Move Image to Trash"
-msgstr "Bota irudia zakarrontzira"
-
-#: data/gtk/help_overlay.ui:32
-msgctxt "shortcut window"
-msgid "Toggle Image Properties"
-msgstr "Txandakatu irudiaren propietateak"
-
-#: data/gtk/help_overlay.ui:38
-msgctxt "shortcut window"
-msgid "Set as Background"
-msgstr "Ezarri atzeko plano gisa"
-
-#: data/gtk/help_overlay.ui:44
-msgctxt "shortcut window"
-msgid "Toggle Fullscreen"
-msgstr "Txandakatu pantaila osoa"
-
-#: data/gtk/help_overlay.ui:50
-msgctxt "shortcut window"
-msgid "Leave Fullscreen"
-msgstr "Irten pantaila osotik"
-
-#: data/gtk/help_overlay.ui:56
-msgctxt "shortcut window"
-msgid "New Window"
-msgstr "Leiho berria"
-
-#: data/gtk/help_overlay.ui:62
-msgctxt "shortcut window"
-msgid "Open Help"
-msgstr "Ireki laguntza"
-
-#: data/gtk/help_overlay.ui:68
-msgctxt "shortcut window"
-msgid "Show Keyboard Shortcuts"
-msgstr "Erakutsi lasterbideak"
-
-#: data/gtk/help_overlay.ui:74
-msgctxt "shortcut window"
-msgid "Close Window"
-msgstr "Itxi leihoa"
-
-#: data/gtk/help_overlay.ui:80
-msgctxt "shortcut window"
-msgid "Quit"
-msgstr "Irten"
-
-#: data/gtk/help_overlay.ui:88
-msgctxt "shortcut window"
-msgid "Navigate Images"
-msgstr "Arakatu irudiak"
-
-#: data/gtk/help_overlay.ui:92 data/gtk/help_overlay.ui:106
-#: data/gtk/help_overlay.ui:218 data/gtk/help_overlay.ui:232
-msgctxt "shortcut window"
-msgid "Next Image"
-msgstr "Hurrengo irudia"
-
-#: data/gtk/help_overlay.ui:99 data/gtk/help_overlay.ui:113
-#: data/gtk/help_overlay.ui:225 data/gtk/help_overlay.ui:239
-msgctxt "shortcut window"
-msgid "Previous Image"
-msgstr "Aurreko irudia"
-
-#: data/gtk/help_overlay.ui:119
-msgctxt "shortcut window"
-msgid "First Image"
-msgstr "Lehen irudia"
-
-#: data/gtk/help_overlay.ui:125
-msgctxt "shortcut window"
-msgid "Last Image"
-msgstr "Azken irudia"
-
-#: data/gtk/help_overlay.ui:133
-msgctxt "shortcut window"
-msgid "Rotate Image"
-msgstr "Biratu irudia"
-
-#: data/gtk/help_overlay.ui:136 data/gtk/help_overlay.ui:257
-msgctxt "shortcut window"
-msgid "Rotate Clockwise"
-msgstr "Biratu erlojuaren noranzkoan"
-
-#: data/gtk/help_overlay.ui:142 data/gtk/help_overlay.ui:263
-msgctxt "shortcut window"
-msgid "Rotate Counterclockwise"
-msgstr "Biratu erlojuaren noranzkoaren aurka"
-
-#: data/gtk/help_overlay.ui:150
-msgctxt "shortcut window"
-msgid "Zoom Image"
-msgstr "Zooma irudira"
-
-#: data/gtk/help_overlay.ui:153 data/gtk/help_overlay.ui:245
-msgctxt "shortcut window"
-msgid "Zoom In"
-msgstr "Handiagotu"
-
-#: data/gtk/help_overlay.ui:159 data/gtk/help_overlay.ui:251
-msgctxt "shortcut window"
-msgid "Zoom Out"
-msgstr "Txikiagotu"
-
-#: data/gtk/help_overlay.ui:165
-msgctxt "shortcut window"
-msgid "Best Fit"
-msgstr "Egokiena"
-
-#: data/gtk/help_overlay.ui:171
-msgctxt "shortcut window"
-msgid "Original Scale"
-msgstr "Jatorrizko eskala"
-
-#: data/gtk/help_overlay.ui:177
-msgctxt "shortcut window"
-msgid "200% Scale"
-msgstr "%200eko eskala"
-
-#: data/gtk/help_overlay.ui:185
-msgctxt "shortcut window"
-msgid "Pan View"
-msgstr "Ikuspegi panoramikoa"
-
-#: data/gtk/help_overlay.ui:188
-msgctxt "shortcut window"
-msgid "Pan Left"
-msgstr "Eraman ezkerrera"
-
-#: data/gtk/help_overlay.ui:194
-msgctxt "shortcut window"
-msgid "Pan Right"
-msgstr "Eraman eskuinera"
-
-#: data/gtk/help_overlay.ui:200
-msgctxt "shortcut window"
-msgid "Pan Up"
-msgstr "Eraman gora"
-
-#: data/gtk/help_overlay.ui:206
-msgctxt "shortcut window"
-msgid "Pan Down"
-msgstr "Eraman behera"
-
-#: data/gtk/help_overlay.ui:214
-msgctxt "shortcut window"
-msgid "Gestures"
-msgstr "Keinuak"
 
 #: data/gtk/image_page.ui:6 data/gtk/window.ui:16
 msgid "_Open With…"
@@ -255,11 +39,11 @@ msgstr "Ezarri _atzeko plano gisa…"
 msgid "Could not Load Image"
 msgstr "Ezin da irudia kargatu"
 
-#: data/gtk/image_page.ui:82 data/gtk/window.ui:115
+#: data/gtk/image_page.ui:88 data/gtk/window.ui:100
 msgid "Rotate Left"
 msgstr "Biratu ezkerrera"
 
-#: data/gtk/image_page.ui:93 data/gtk/window.ui:126
+#: data/gtk/image_page.ui:99 data/gtk/window.ui:111
 msgid "Rotate Right"
 msgstr "Biratu eskuinera"
 
@@ -271,17 +55,61 @@ msgstr "Aurreko irudia"
 msgid "Next Image"
 msgstr "Hurrengo irudia"
 
-#: data/gtk/image_view.ui:70
-msgid "Toggle Fullscreen"
-msgstr "Txandakatu pantaila osoa"
-
-#: data/gtk/image_view.ui:81
+#: data/gtk/image_view.ui:66
 msgid "Zoom Out"
 msgstr "Txikiagotu"
 
-#: data/gtk/image_view.ui:92
+#: data/gtk/image_view.ui:77
 msgid "Zoom In"
 msgstr "Handiagotu"
+
+#: data/gtk/image_view.ui:95
+msgid "Toggle Fullscreen"
+msgstr "Txandakatu pantaila osoa"
+
+#: data/gtk/print.ui:4
+msgid "Layout Image"
+msgstr "Irudiaren diseinua"
+
+#: data/gtk/print.ui:66
+msgid "Portrait page orientation"
+msgstr "Oriaren orientazio bertikala"
+
+#: data/gtk/print.ui:74
+msgid "Landscape page orientation"
+msgstr "Orriaren orientazio horizontala"
+
+#: data/gtk/print.ui:88
+msgid "Center image horizontally"
+msgstr "Zentratu irudia horizontalean"
+
+#: data/gtk/print.ui:95
+msgid "Center image vertically"
+msgstr "Zentratu irudia bertikalean"
+
+#: data/gtk/print.ui:107
+msgid "Image Width"
+msgstr "Irudiaren zabalera"
+
+#: data/gtk/print.ui:119
+msgid "Image Scale"
+msgstr "Irudiaren eskala"
+
+#: data/gtk/print.ui:131
+msgid "Left Margin"
+msgstr "Ezkerreko marjina"
+
+#: data/gtk/print.ui:143
+msgid "Top Margin"
+msgstr "Goiko marjina"
+
+#: data/gtk/print.ui:155
+msgid "Length Unit"
+msgstr "Luzera-unitatea"
+
+#: data/gtk/print.ui:175
+msgid "Print"
+msgstr "Inprimatu"
 
 #: data/gtk/properties_view.ui:29
 msgid "Folder"
@@ -352,159 +180,429 @@ msgid "_Open…"
 msgstr "_Ireki..."
 
 #: data/gtk/window.ui:46
-msgid "_Help"
-msgstr "_Laguntza"
-
-#: data/gtk/window.ui:50
 msgid "_Keyboard Shortcuts"
 msgstr "Las_ter-teklak"
 
-#: data/gtk/window.ui:54
+#: data/gtk/window.ui:50
 msgid "_About Loupe"
 msgstr "Loupe aplikazioari _buruz"
 
-#: data/gtk/window.ui:94
+#. If the file exists, get display name
+#: data/gtk/window.ui:59 data/org.gnome.Loupe.desktop.in.in:3
+#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/application.rs:191
+#: src/window.rs:784 src/window.rs:790
+msgid "Loupe"
+msgstr "Loupe"
+
+#: data/gtk/window.ui:79
 msgid "Copy to Clipboard"
 msgstr "Kopiatu arbelean"
 
-#: data/gtk/window.ui:101
+#: data/gtk/window.ui:86
 msgid "Move to Trash"
 msgstr "Bota zakarrontzira"
 
-#: data/gtk/window.ui:107
+#: data/gtk/window.ui:92
 msgid "Main Menu"
 msgstr "Menu nagusia"
 
-#: data/gtk/window.ui:141
+#: data/gtk/window.ui:126
 msgid "Image Properties"
 msgstr "Irudiaren propietateak"
 
-#: data/gtk/window.ui:161
+#: data/gtk/window.ui:146
 msgid "View Images"
 msgstr "Ikusi irudiak"
 
-#: data/gtk/window.ui:162
+#: data/gtk/window.ui:147
 msgid "Drag and drop images here"
 msgstr "Arrastatu eta jaregin irudiak hemen"
 
-#: data/gtk/window.ui:166
+#: data/gtk/window.ui:151
 msgid "_Open File…"
 msgstr "Ireki _fitxategia…"
 
-#: src/application.rs:196
+#: data/org.gnome.Loupe.desktop.in.in:11
+msgid "Picture;Slideshow;Graphics;Image Viewer;"
+msgstr "Argazkia;Aurkezpena;Grafikoak;Irudi-ikustailea;"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:7 src/application.rs:194
 msgid "The Loupe Team"
 msgstr "Loupe taldea"
 
+#: data/org.gnome.Loupe.metainfo.xml.in.in:8
+msgid "View images"
+msgstr "Ikusi irudiak"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:10
+msgid ""
+"A simple image viewer which allows you to browse through your images and "
+"inspect their metadata."
+msgstr "Irudiak arakatzeko eta haien metadatuak ikusteko balio duen irudi-ikustaile sinplea."
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:11
+msgid "The following features are not available yet"
+msgstr "Honako eginbideak ez daude erabilgarri oraindik"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:13
+msgid "Applying image color profiles"
+msgstr "Irudien kolore-profilak aplikatzea"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:14
+msgid "Printing"
+msgstr "Inprimatzea"
+
+#: data/resources/gtk/help-overlay.ui:11
+msgctxt "shortcut window"
+msgid "General Shortcuts"
+msgstr "Lasterbide orokorrak"
+
+#: data/resources/gtk/help-overlay.ui:14
+msgctxt "shortcut window"
+msgid "Show Main Menu"
+msgstr "Erakutsi menu nagusia"
+
+#: data/resources/gtk/help-overlay.ui:20
+msgctxt "shortcut window"
+msgid "Copy Image to Clipboard"
+msgstr "Kopiatu irudia arbelera"
+
+#: data/resources/gtk/help-overlay.ui:26
+msgctxt "shortcut window"
+msgid "Move Image to Trash"
+msgstr "Bota irudia zakarrontzira"
+
+#: data/resources/gtk/help-overlay.ui:32
+msgctxt "shortcut window"
+msgid "Toggle Image Properties"
+msgstr "Txandakatu irudiaren propietateak"
+
+#: data/resources/gtk/help-overlay.ui:38
+msgctxt "shortcut window"
+msgid "Set as Background"
+msgstr "Ezarri atzeko plano gisa"
+
+#: data/resources/gtk/help-overlay.ui:44
+msgctxt "shortcut window"
+msgid "Toggle Fullscreen"
+msgstr "Txandakatu pantaila osoa"
+
+#: data/resources/gtk/help-overlay.ui:50
+msgctxt "shortcut window"
+msgid "Leave Fullscreen"
+msgstr "Irten pantaila osotik"
+
+#: data/resources/gtk/help-overlay.ui:56
+msgctxt "shortcut window"
+msgid "New Window"
+msgstr "Leiho berria"
+
+#: data/resources/gtk/help-overlay.ui:62
+msgctxt "shortcut window"
+msgid "Open Help"
+msgstr "Ireki laguntza"
+
+#: data/resources/gtk/help-overlay.ui:68
+msgctxt "shortcut window"
+msgid "Show Keyboard Shortcuts"
+msgstr "Erakutsi lasterbideak"
+
+#: data/resources/gtk/help-overlay.ui:74
+msgctxt "shortcut window"
+msgid "Close Window"
+msgstr "Itxi leihoa"
+
+#: data/resources/gtk/help-overlay.ui:80
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "Irten"
+
+#: data/resources/gtk/help-overlay.ui:88
+msgctxt "shortcut window"
+msgid "Navigate Images"
+msgstr "Arakatu irudiak"
+
+#: data/resources/gtk/help-overlay.ui:92 data/resources/gtk/help-overlay.ui:106
+#: data/resources/gtk/help-overlay.ui:218
+#: data/resources/gtk/help-overlay.ui:232
+msgctxt "shortcut window"
+msgid "Next Image"
+msgstr "Hurrengo irudia"
+
+#: data/resources/gtk/help-overlay.ui:99 data/resources/gtk/help-overlay.ui:113
+#: data/resources/gtk/help-overlay.ui:225
+#: data/resources/gtk/help-overlay.ui:239
+msgctxt "shortcut window"
+msgid "Previous Image"
+msgstr "Aurreko irudia"
+
+#: data/resources/gtk/help-overlay.ui:119
+msgctxt "shortcut window"
+msgid "First Image"
+msgstr "Lehen irudia"
+
+#: data/resources/gtk/help-overlay.ui:125
+msgctxt "shortcut window"
+msgid "Last Image"
+msgstr "Azken irudia"
+
+#: data/resources/gtk/help-overlay.ui:133
+msgctxt "shortcut window"
+msgid "Rotate Image"
+msgstr "Biratu irudia"
+
+#: data/resources/gtk/help-overlay.ui:136
+#: data/resources/gtk/help-overlay.ui:257
+msgctxt "shortcut window"
+msgid "Rotate Clockwise"
+msgstr "Biratu erlojuaren noranzkoan"
+
+#: data/resources/gtk/help-overlay.ui:142
+#: data/resources/gtk/help-overlay.ui:263
+msgctxt "shortcut window"
+msgid "Rotate Counterclockwise"
+msgstr "Biratu erlojuaren noranzkoaren aurka"
+
+#: data/resources/gtk/help-overlay.ui:150
+msgctxt "shortcut window"
+msgid "Zoom Image"
+msgstr "Zooma irudira"
+
+#: data/resources/gtk/help-overlay.ui:153
+#: data/resources/gtk/help-overlay.ui:245
+msgctxt "shortcut window"
+msgid "Zoom In"
+msgstr "Handiagotu"
+
+#: data/resources/gtk/help-overlay.ui:159
+#: data/resources/gtk/help-overlay.ui:251
+msgctxt "shortcut window"
+msgid "Zoom Out"
+msgstr "Txikiagotu"
+
+#: data/resources/gtk/help-overlay.ui:165
+msgctxt "shortcut window"
+msgid "Best Fit"
+msgstr "Egokiena"
+
+#: data/resources/gtk/help-overlay.ui:171
+msgctxt "shortcut window"
+msgid "Original Scale"
+msgstr "Jatorrizko eskala"
+
+#: data/resources/gtk/help-overlay.ui:177
+msgctxt "shortcut window"
+msgid "200% Scale"
+msgstr "%200eko eskala"
+
+#: data/resources/gtk/help-overlay.ui:185
+msgctxt "shortcut window"
+msgid "Pan View"
+msgstr "Ikuspegi panoramikoa"
+
+#: data/resources/gtk/help-overlay.ui:188
+msgctxt "shortcut window"
+msgid "Pan Left"
+msgstr "Eraman ezkerrera"
+
+#: data/resources/gtk/help-overlay.ui:194
+msgctxt "shortcut window"
+msgid "Pan Right"
+msgstr "Eraman eskuinera"
+
+#: data/resources/gtk/help-overlay.ui:200
+msgctxt "shortcut window"
+msgid "Pan Up"
+msgstr "Eraman gora"
+
+#: data/resources/gtk/help-overlay.ui:206
+msgctxt "shortcut window"
+msgid "Pan Down"
+msgstr "Eraman behera"
+
+#: data/resources/gtk/help-overlay.ui:214
+msgctxt "shortcut window"
+msgid "Gestures"
+msgstr "Keinuak"
+
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/application.rs:205
+#: src/application.rs:203
 msgid "translator-credits"
 msgstr "translator-credits"
 
-#: src/application.rs:206
+#: src/application.rs:204
 msgid "Copyright © 2020–2023 Christopher Davis et al."
 msgstr "Copyright © 2020–2023 Christopher Davis et al."
 
-#: src/file_model.rs:114
+#: src/decoder/formats/heif.rs:55
+msgid "Failed to read image file information"
+msgstr "Huts egin du irudi-fitxategiaren informazioa irakurtzeak"
+
+#: src/decoder/formats/heif.rs:60 src/decoder/formats/heif.rs:93
+#: src/decoder/formats/image_rs_other.rs:116
+#: src/decoder/formats/image_rs_other.rs:125
+#: src/decoder/formats/image_rs_other.rs:132
+msgid "Failed to decode image"
+msgstr "Huts egin du irudia deskodetzeak"
+
+#: src/decoder/formats/mod.rs:72
+msgid "Animated GIF"
+msgstr "GIF animatua"
+
+#: src/decoder/formats/mod.rs:73
+msgid "Animated WebP"
+msgstr "WebP animatua"
+
+#: src/decoder/formats/mod.rs:74
+msgid "Animated PNG"
+msgstr "PNG animatua"
+
+#: src/decoder/mod.rs:189
+msgid "Unknown image format: {}"
+msgstr "Irudi-formatu ezezaguna: {}"
+
+#: src/decoder/mod.rs:194
+msgid "Unknown image format"
+msgstr "Irudi-formatu ezezaguna"
+
+#: src/decoder/mod.rs:222
+msgid "Could not open image"
+msgstr "Ezin da irudia ireki"
+
+#: src/decoder/mod.rs:226
+msgid "Could not read image"
+msgstr "Ezin da irudia irakurri"
+
+#: src/file_model.rs:118
 msgid "Could not list other files in directory."
 msgstr "Ezin dira direktorioko beste fitxategiak zerrendatu."
 
 #. Translators: short for "north" in GPS coordinate
-#: src/image_metadata/gps.rs:136
+#: src/image_metadata/gps.rs:154
 msgid "N"
 msgstr "I"
 
 #. Translators: short for "south" in GPS coordinate
-#: src/image_metadata/gps.rs:139
+#: src/image_metadata/gps.rs:157
 msgid "S"
 msgstr "H"
 
 #. Translators: short for "east" in GPS coordinate
-#: src/image_metadata/gps.rs:149
+#: src/image_metadata/gps.rs:167
 msgid "E"
 msgstr "E"
 
 #. Translators: short for "west" in GPS coordinate
-#: src/image_metadata/gps.rs:152
+#: src/image_metadata/gps.rs:170
 msgid "W"
 msgstr "M"
 
 #. Translators: Unit for exposure time in seconds
-#: src/image_metadata/mod.rs:129
+#: src/image_metadata/mod.rs:144
 msgid "1\\u{2215}{}\\u{202F}s"
 msgstr "1\\u{2215}{}\\u{202F}s"
 
 #. Translators: Unit for focal length in millimeters
-#: src/image_metadata/mod.rs:154
+#: src/image_metadata/mod.rs:169
 msgid "{}\\u{202F}mm"
 msgstr "{}\\u{202F}mm"
 
-#: src/widgets/image.rs:652
-msgid "File does not exist"
-msgstr "Fitxategia ez da existitzen"
+#. Translators: This is the date and time format we use in metadata output etc.
+#. The format has to follow <https://docs.gtk.org/glib/method.DateTime.format.html>
+#. The default is already translated. Don't change if you are not sure what to use.
+#: src/util/mod.rs:36
+#, c-format
+msgid "%x %X"
+msgstr "%x %X"
 
-#: src/widgets/image_view.rs:574
-msgid "Failed to open new background image"
-msgstr "Huts egin du atzeko planoko irudi berria irekitzeak"
-
-#: src/widgets/image_view.rs:591
-msgid "Set as background."
-msgstr "Ezarri atzeko plano gisa."
-
-#: src/widgets/image_view.rs:598
-msgid "Could not set background."
-msgstr "Ezin da atzeko planoa ezarri."
-
-#: src/window.rs:355
-msgid "“{}” is not a valid image."
-msgstr "“{}” ez da baliozko irudia."
-
-#: src/window.rs:431
-msgid "Open Image"
-msgstr "Ireki irudia"
-
-#: src/window.rs:485
-msgid "Image copied to clipboard"
-msgstr "Irudia arbelean kopiatu da"
-
-#: src/window.rs:499
-msgid "Image moved to trash"
-msgstr "Irudia zakarrontzira eraman da"
-
-#: src/window.rs:500
-msgid "Undo"
-msgstr "Desegin"
-
-#: src/window.rs:511
+#: src/util/mod.rs:171 src/window.rs:517
 msgid "Failed to restore image from trash"
 msgstr "Ezin izan da irudia zakarrontzitik leheneratu"
 
-#: src/window.rs:526
+#: src/util/mod.rs:192
+msgid "Failed to open image"
+msgstr "Huts egin du irudia irekitzeak"
+
+#. Translators: This is a toast notification, informing the user that an image has been set as background.
+#: src/widgets/image_view.rs:620
+msgid "Set as background."
+msgstr "Ezarri atzeko plano gisa"
+
+#: src/widgets/image_view.rs:631
+msgid "Could not set background."
+msgstr "Ezin da atzeko planoa ezarri."
+
+#: src/window.rs:421
+msgid "Supported image formats"
+msgstr "Onartutako irudi-formatuak"
+
+#: src/window.rs:427
+msgid "All files"
+msgstr "Fitxategi guztiak"
+
+#: src/window.rs:434
+msgid "Open Image"
+msgstr "Ireki irudia"
+
+#: src/window.rs:489
+msgid "Image copied to clipboard"
+msgstr "Irudia arbelean kopiatu da"
+
+#: src/window.rs:505
+msgid "Image moved to trash"
+msgstr "Irudia zakarrontzira eraman da"
+
+#: src/window.rs:506
+msgid "Undo"
+msgstr "Desegin"
+
+#: src/window.rs:532
 msgid "Failed to move image to trash"
 msgstr "Huts egin du irudia zakarrontzira botatzeak"
 
-#: src/window.rs:541
+#: src/window.rs:547
 msgid "Permanently Delete Image?"
 msgstr "Irudia betiko ezabatu?"
 
-#: src/window.rs:543
+#: src/window.rs:549
 msgid "The image “{}” can only be deleted permanently."
 msgstr "“{}” irudia betiko ezabatuko da."
 
-#: src/window.rs:550
+#: src/window.rs:557
 msgid "Cancel"
 msgstr "Utzi"
 
-#: src/window.rs:550
+#: src/window.rs:558
 msgid "Delete"
 msgstr "Ezabatu"
 
-#: src/window.rs:559
+#: src/window.rs:569
 msgid "Failed to delete image"
 msgstr "Huts egin du irudia ezabatzeak"
 
+#~ msgid "Christopher Davis"
+#~ msgstr "Christopher Davis"
+
+#~ msgid "Correctly showing SVGs at every zoom-level"
+#~ msgstr "SVGak edozein zoom-mailatan zuzen erakustea"
+
+#~ msgid "Correct HighDPI support"
+#~ msgstr "HighDPI euskarri zuzena"
+
+#~ msgid "Print settings to position the image on the page"
+#~ msgstr "Irudia orrialdean ongi kokatzeko inprimatze-ezarpenak"
+
+#~ msgid "_Help"
+#~ msgstr "_Laguntza"
+
+#~ msgid "File does not exist"
+#~ msgstr "Fitxategia ez da existitzen"
+
+#~ msgid "Failed to open new background image"
+#~ msgstr "Huts egin du atzeko planoko irudi berria irekitzeak"
+
+#~ msgid "“{}” is not a valid image."
+#~ msgstr "“{}” ez da baliozko irudia."
+
 #~ msgid "File Type"
 #~ msgstr "Fitxategi mota"
-
-#, c-format
-#~ msgid "%x %X"
-#~ msgstr "%x %X"
