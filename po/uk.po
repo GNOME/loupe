@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/Incubator/loupe/-/issues\n"
-"POT-Creation-Date: 2023-04-19 21:36+0000\n"
-"PO-Revision-Date: 2023-04-20 15:45+0300\n"
+"POT-Creation-Date: 2023-04-21 16:11+0000\n"
+"PO-Revision-Date: 2023-04-22 21:19+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -43,11 +43,11 @@ msgstr "З_робити фоновим зображенням…"
 msgid "Could not Load Image"
 msgstr "Не вдалося завантажити зображення"
 
-#: data/gtk/image_page.ui:88 data/gtk/window.ui:111
+#: data/gtk/image_page.ui:88 data/gtk/window.ui:100
 msgid "Rotate Left"
 msgstr "Обернути ліворуч"
 
-#: data/gtk/image_page.ui:99 data/gtk/window.ui:122
+#: data/gtk/image_page.ui:99 data/gtk/window.ui:111
 msgid "Rotate Right"
 msgstr "Обернути праворуч"
 
@@ -59,21 +59,19 @@ msgstr "Попереднє зображення"
 msgid "Next Image"
 msgstr "Наступне зображення"
 
-#: data/gtk/image_view.ui:70
-msgid "Toggle Fullscreen"
-msgstr "Увімкнути/вимкнути повноекранний режим"
-
-#: data/gtk/image_view.ui:81
+#: data/gtk/image_view.ui:66
 msgid "Zoom Out"
 msgstr "Зменшити"
 
-#: data/gtk/image_view.ui:92
+#: data/gtk/image_view.ui:77
 msgid "Zoom In"
 msgstr "Збільшити"
 
+#: data/gtk/image_view.ui:95
+msgid "Toggle Fullscreen"
+msgstr "Увімкнути/вимкнути повноекранний режим"
+
 #: data/gtk/print.ui:4
-#| msgctxt "shortcut window"
-#| msgid "Last Image"
 msgid "Layout Image"
 msgstr "Компонування зображення"
 
@@ -94,12 +92,10 @@ msgid "Center image vertically"
 msgstr "Зображення за центром вертикально"
 
 #: data/gtk/print.ui:107
-#| msgid "Image Size"
 msgid "Image Width"
 msgstr "Ширина зображення"
 
 #: data/gtk/print.ui:119
-#| msgid "Image Size"
 msgid "Image Scale"
 msgstr "Масштаб зображення"
 
@@ -116,7 +112,6 @@ msgid "Length Unit"
 msgstr "Одиниця довжини"
 
 #: data/gtk/print.ui:175
-#| msgid "Printing"
 msgid "Print"
 msgstr "Надрукувати"
 
@@ -199,35 +194,35 @@ msgstr "_Про «Лупе»"
 #. If the file exists, get display name
 #: data/gtk/window.ui:59 data/org.gnome.Loupe.desktop.in.in:3
 #: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/application.rs:191
-#: src/window.rs:665 src/window.rs:671
+#: src/window.rs:784 src/window.rs:790
 msgid "Loupe"
 msgstr "Лупе"
 
-#: data/gtk/window.ui:90
+#: data/gtk/window.ui:79
 msgid "Copy to Clipboard"
 msgstr "Скопіювати до буфера"
 
-#: data/gtk/window.ui:97
+#: data/gtk/window.ui:86
 msgid "Move to Trash"
 msgstr "Пересунути до смітника"
 
-#: data/gtk/window.ui:103
+#: data/gtk/window.ui:92
 msgid "Main Menu"
 msgstr "Головне меню"
 
-#: data/gtk/window.ui:137
+#: data/gtk/window.ui:126
 msgid "Image Properties"
 msgstr "Властивості зображення"
 
-#: data/gtk/window.ui:157
+#: data/gtk/window.ui:146
 msgid "View Images"
 msgstr "Перегляд зображень"
 
-#: data/gtk/window.ui:158
+#: data/gtk/window.ui:147
 msgid "Drag and drop images here"
 msgstr "Перетягніть і скиньте зображення тут"
 
-#: data/gtk/window.ui:162
+#: data/gtk/window.ui:151
 msgid "_Open File…"
 msgstr "_Відкрити файл…"
 
@@ -448,7 +443,6 @@ msgid "Copyright © 2020–2023 Christopher Davis et al."
 msgstr "© Christopher Davis та інші, 2020–2023."
 
 #: src/decoder/formats/heif.rs:55
-#| msgid "Failed to restore image from trash"
 msgid "Failed to read image file information"
 msgstr "Не вдалось прочитати відомості щодо файла зображення"
 
@@ -456,7 +450,6 @@ msgstr "Не вдалось прочитати відомості щодо фа�
 #: src/decoder/formats/image_rs_other.rs:116
 #: src/decoder/formats/image_rs_other.rs:125
 #: src/decoder/formats/image_rs_other.rs:132
-#| msgid "Failed to delete image"
 msgid "Failed to decode image"
 msgstr "Не вдалося декодувати зображення"
 
@@ -472,23 +465,19 @@ msgstr "Анімований WebP"
 msgid "Animated PNG"
 msgstr "Анімований PNG"
 
-#: src/decoder/mod.rs:192
-#| msgid "Animated image formats"
+#: src/decoder/mod.rs:189
 msgid "Unknown image format: {}"
 msgstr "Невідомий формат зображення: {}"
 
-#: src/decoder/mod.rs:199
-#| msgid "Animated image formats"
+#: src/decoder/mod.rs:194
 msgid "Unknown image format"
 msgstr "Невідомий формат зображення"
 
-#: src/decoder/mod.rs:227
-#| msgid "Could not Load Image"
+#: src/decoder/mod.rs:222
 msgid "Could not open image"
 msgstr "Не вдалося відкрити зображення"
 
-#: src/decoder/mod.rs:231
-#| msgid "Could not Load Image"
+#: src/decoder/mod.rs:226
 msgid "Could not read image"
 msgstr "Не вдалося прочитати зображення"
 
@@ -534,61 +523,69 @@ msgstr "{}\\u{202F}мм"
 msgid "%x %X"
 msgstr "%x %X"
 
-#: src/util/mod.rs:171 src/window.rs:500
+#: src/util/mod.rs:171 src/window.rs:517
 msgid "Failed to restore image from trash"
 msgstr "Не вдалося відновити зображення зі смітника"
 
 #: src/util/mod.rs:192
-#| msgid "Failed to delete image"
 msgid "Failed to open image"
 msgstr "Не вдалося відкрити зображення"
 
 #. Translators: This is a toast notification, informing the user that an image has been set as background.
-#: src/widgets/image_view.rs:599
+#: src/widgets/image_view.rs:620
 msgid "Set as background."
 msgstr "Встановити як фонове зображення."
 
-#: src/widgets/image_view.rs:610
+#: src/widgets/image_view.rs:631
 msgid "Could not set background."
 msgstr "Не вдалося встановити фонове зображення."
 
-#: src/window.rs:418
+#: src/window.rs:421
+#| msgid "Unknown image format"
+msgid "Supported image formats"
+msgstr "Підтримувані формати зображень"
+
+#: src/window.rs:427
+msgid "All files"
+msgstr "усі файли"
+
+#: src/window.rs:434
 msgid "Open Image"
 msgstr "Відкрити зображення"
 
-#: src/window.rs:472
+#: src/window.rs:489
 msgid "Image copied to clipboard"
 msgstr "Зображення скопійовано до буфера обміну"
 
-#: src/window.rs:488
+#: src/window.rs:505
 msgid "Image moved to trash"
 msgstr "Зображення пересунуто до смітника"
 
-#: src/window.rs:489
+#: src/window.rs:506
 msgid "Undo"
 msgstr "Скасувати"
 
-#: src/window.rs:515
+#: src/window.rs:532
 msgid "Failed to move image to trash"
 msgstr "Не вдалося пересунути зображення до смітника"
 
-#: src/window.rs:530
+#: src/window.rs:547
 msgid "Permanently Delete Image?"
 msgstr "Остаточно вилучити зображення?"
 
-#: src/window.rs:532
+#: src/window.rs:549
 msgid "The image “{}” can only be deleted permanently."
 msgstr "Зображення «{}» можна вилучити лише остаточно."
 
-#: src/window.rs:540
+#: src/window.rs:557
 msgid "Cancel"
 msgstr "Скасувати"
 
-#: src/window.rs:541
+#: src/window.rs:558
 msgid "Delete"
 msgstr "Вилучити"
 
-#: src/window.rs:552
+#: src/window.rs:569
 msgid "Failed to delete image"
 msgstr "Не вдалося вилучити зображення"
 
