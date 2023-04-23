@@ -190,8 +190,12 @@ mod imp {
                 win.open_with().await;
             });
 
-            klass.install_action("win.rotate", Some("d"), move |win, _, angle| {
-                win.rotate_image(angle.unwrap().get().unwrap());
+            klass.install_action("win.rotate_cw", None, |win, _, _| {
+                win.rotate_image(90.0);
+            });
+
+            klass.install_action("win.rotate_ccw", None, |win, _, _| {
+                win.rotate_image(-90.0);
             });
 
             klass.install_action_async("win.set-background", None, |win, _, _| async move {
@@ -591,7 +595,8 @@ impl LpWindow {
         self.action_set_enabled("win.set-background", enabled);
         self.action_set_enabled("win.toggle-fullscreen", enabled);
         self.action_set_enabled("win.print", enabled);
-        self.action_set_enabled("win.rotate", enabled);
+        self.action_set_enabled("win.rotate_cw", enabled);
+        self.action_set_enabled("win.rotate_ccw", enabled);
         self.action_set_enabled("win.copy", enabled);
         self.action_set_enabled("win.trash", enabled);
         self.action_set_enabled("win.zoom-best-fit", enabled);

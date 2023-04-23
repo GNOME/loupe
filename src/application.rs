@@ -174,8 +174,8 @@ impl LpApplication {
         self.set_accels_for_action("win.pan-up", &["<Ctrl>Up"]);
         self.set_accels_for_action("win.pan-down", &["<Ctrl>Down"]);
 
-        self.set_accels_for_action("win.rotate(90.0)", &["<Ctrl>R"]);
-        self.set_accels_for_action("win.rotate(-90.0)", &["<Ctrl><Shift>R"]);
+        self.set_accels_for_action("win.rotate_cw", &["<Ctrl>R"]);
+        self.set_accels_for_action("win.rotate_ccw", &["<Ctrl><Shift>R"]);
 
         self.set_accels_for_action("window.close", &["<Ctrl>W"]);
     }

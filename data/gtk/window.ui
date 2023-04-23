@@ -99,8 +99,7 @@
                       <object class="GtkButton">
                         <property name="icon-name">object-rotate-left-symbolic</property>
                         <property name="tooltip-text" translatable="yes">Rotate Left</property>
-                        <property name="action-name">win.rotate</property>
-                        <property name="action-target">-90.0</property>
+                        <property name="action-name">win.rotate_ccw</property>
                         <style>
                           <class name="flat" />
                         </style>
@@ -110,8 +109,7 @@
                       <object class="GtkButton">
                         <property name="icon-name">object-rotate-right-symbolic</property>
                         <property name="tooltip-text" translatable="yes">Rotate Right</property>
-                        <property name="action-name">win.rotate</property>
-                        <property name="action-target">90.0</property>
+                        <property name="action-name">win.rotate_cw</property>
                         <style>
                           <class name="flat" />
                         </style>

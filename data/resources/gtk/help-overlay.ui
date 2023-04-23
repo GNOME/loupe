@@ -134,13 +134,13 @@
             <child>
               <object class="GtkShortcutsShortcut">
                 <property name="title" translatable="yes" context="shortcut window">Rotate Clockwise</property>
-                <property name="accelerator">&lt;Ctrl&gt;R</property>
+                <property name="action-name">win.rotate_cw</property>
               </object>
             </child>
             <child>
               <object class="GtkShortcutsShortcut">
                 <property name="title" translatable="yes" context="shortcut window">Rotate Counterclockwise</property>
-                <property name="accelerator">&lt;Ctrl&gt;&lt;Shift&gt;R</property>
+                <property name="action-name">win.rotate_ccw</property>
               </object>
             </child>
           </object>
