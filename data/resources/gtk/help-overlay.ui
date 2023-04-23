@@ -24,7 +24,7 @@
             <child>
               <object class="GtkShortcutsShortcut">
                 <property name="title" translatable="yes" context="shortcut window">Move Image to Trash</property>
-                <property name="action-name">win.trash</property>
+                <property name="accelerator">Delete</property>
               </object>
             </child>
             <child>
