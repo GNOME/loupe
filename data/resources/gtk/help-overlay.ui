@@ -59,12 +59,6 @@
             </child>
             <child>
               <object class="GtkShortcutsShortcut">
-                <property name="title" translatable="yes" context="shortcut window">Open Help</property>
-                <property name="action-name">app.help</property>
-              </object>
-            </child>
-            <child>
-              <object class="GtkShortcutsShortcut">
                 <property name="title" translatable="yes" context="shortcut window">Show Keyboard Shortcuts</property>
                 <property name="action-name">win.show-help-overlay</property>
               </object>
