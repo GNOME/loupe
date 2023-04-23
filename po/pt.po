@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/Incubator/loupe/-/issues\n"
-"POT-Creation-Date: 2023-04-19 21:36+0000\n"
-"PO-Revision-Date: 2023-04-21 15:37+0100\n"
+"POT-Creation-Date: 2023-04-21 16:11+0000\n"
+"PO-Revision-Date: 2023-04-23 12:57+0100\n"
 "Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>\n"
 "Language-Team: Portuguese <pt@li.org>\n"
 "Language: pt\n"
@@ -42,11 +42,11 @@ msgstr "_Definir como fundo do ambiente de trabalho…"
 msgid "Could not Load Image"
 msgstr "Não foi possível carregar a imagem"
 
-#: data/gtk/image_page.ui:88 data/gtk/window.ui:111
+#: data/gtk/image_page.ui:88 data/gtk/window.ui:100
 msgid "Rotate Left"
 msgstr "Rodar para a esquerda"
 
-#: data/gtk/image_page.ui:99 data/gtk/window.ui:122
+#: data/gtk/image_page.ui:99 data/gtk/window.ui:111
 msgid "Rotate Right"
 msgstr "Rodar para a direita"
 
@@ -58,17 +58,17 @@ msgstr "Imagem anterior"
 msgid "Next Image"
 msgstr "Imagem seguinte"
 
-#: data/gtk/image_view.ui:70
-msgid "Toggle Fullscreen"
-msgstr "Alternar para o modo de ecrã inteiro"
-
-#: data/gtk/image_view.ui:81
+#: data/gtk/image_view.ui:66
 msgid "Zoom Out"
 msgstr "Diminuir"
 
-#: data/gtk/image_view.ui:92
+#: data/gtk/image_view.ui:77
 msgid "Zoom In"
 msgstr "Aumentar"
+
+#: data/gtk/image_view.ui:95
+msgid "Toggle Fullscreen"
+msgstr "Alternar para o modo de ecrã inteiro"
 
 #: data/gtk/print.ui:4
 msgid "Layout Image"
@@ -193,35 +193,35 @@ msgstr "_Acerca do Loupe"
 #. If the file exists, get display name
 #: data/gtk/window.ui:59 data/org.gnome.Loupe.desktop.in.in:3
 #: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/application.rs:191
-#: src/window.rs:665 src/window.rs:671
+#: src/window.rs:784 src/window.rs:790
 msgid "Loupe"
 msgstr "Loupe"
 
-#: data/gtk/window.ui:90
+#: data/gtk/window.ui:79
 msgid "Copy to Clipboard"
 msgstr "Copiar para a área de transferência"
 
-#: data/gtk/window.ui:97
+#: data/gtk/window.ui:86
 msgid "Move to Trash"
 msgstr "Enviar para o Lixo"
 
-#: data/gtk/window.ui:103
+#: data/gtk/window.ui:92
 msgid "Main Menu"
 msgstr "Menu principal"
 
-#: data/gtk/window.ui:137
+#: data/gtk/window.ui:126
 msgid "Image Properties"
 msgstr "Propriedades da imagem"
 
-#: data/gtk/window.ui:157
+#: data/gtk/window.ui:146
 msgid "View Images"
 msgstr "Ver imagens"
 
-#: data/gtk/window.ui:158
+#: data/gtk/window.ui:147
 msgid "Drag and drop images here"
 msgstr "Arrastar e largar imagens para aqui"
 
-#: data/gtk/window.ui:162
+#: data/gtk/window.ui:151
 msgid "_Open File…"
 msgstr "A_brir ficheiro…"
 
@@ -464,19 +464,19 @@ msgstr "WebP animado"
 msgid "Animated PNG"
 msgstr "PNG animado"
 
-#: src/decoder/mod.rs:192
+#: src/decoder/mod.rs:189
 msgid "Unknown image format: {}"
 msgstr "Formato de imagem desconhecido: {}"
 
-#: src/decoder/mod.rs:199
+#: src/decoder/mod.rs:194
 msgid "Unknown image format"
 msgstr "Formato de imagem desconhecido"
 
-#: src/decoder/mod.rs:227
+#: src/decoder/mod.rs:222
 msgid "Could not open image"
 msgstr "Não foi possível abrir a imagem"
 
-#: src/decoder/mod.rs:231
+#: src/decoder/mod.rs:226
 msgid "Could not read image"
 msgstr "Não foi possível ler a imagem"
 
@@ -522,7 +522,7 @@ msgstr "{}\\u{202F}mm"
 msgid "%x %X"
 msgstr "%x %X"
 
-#: src/util/mod.rs:171 src/window.rs:500
+#: src/util/mod.rs:171 src/window.rs:517
 msgid "Failed to restore image from trash"
 msgstr "Falha ao restaurar a imagem do lixo"
 
@@ -531,51 +531,59 @@ msgid "Failed to open image"
 msgstr "Falha ao abrir a imagem"
 
 #. Translators: This is a toast notification, informing the user that an image has been set as background.
-#: src/widgets/image_view.rs:599
+#: src/widgets/image_view.rs:620
 msgid "Set as background."
 msgstr "Definir como fundo do ambiente de trabalho."
 
-#: src/widgets/image_view.rs:610
+#: src/widgets/image_view.rs:631
 msgid "Could not set background."
 msgstr "Não foi possível definir o fundo do ambiente de trabalho."
 
-#: src/window.rs:418
+#: src/window.rs:421
+msgid "Supported image formats"
+msgstr "Formatos de imagem suportados"
+
+#: src/window.rs:427
+msgid "All files"
+msgstr "Todos os ficheiros"
+
+#: src/window.rs:434
 msgid "Open Image"
 msgstr "Abrir imagem"
 
-#: src/window.rs:472
+#: src/window.rs:489
 msgid "Image copied to clipboard"
 msgstr "Imagem copiada para a área de transferência"
 
-#: src/window.rs:488
+#: src/window.rs:505
 msgid "Image moved to trash"
 msgstr "Imagem enviada para o lixo"
 
-#: src/window.rs:489
+#: src/window.rs:506
 msgid "Undo"
 msgstr "Anular"
 
-#: src/window.rs:515
+#: src/window.rs:532
 msgid "Failed to move image to trash"
 msgstr "Falha ao enviar a imagem para a lixo"
 
-#: src/window.rs:530
+#: src/window.rs:547
 msgid "Permanently Delete Image?"
 msgstr "Eliminar a imagem permanentemente?"
 
-#: src/window.rs:532
+#: src/window.rs:549
 msgid "The image “{}” can only be deleted permanently."
 msgstr "A imagem \"{}\" apenas pode ser eliminada permanentemente."
 
-#: src/window.rs:540
+#: src/window.rs:557
 msgid "Cancel"
 msgstr "Cancelar"
 
-#: src/window.rs:541
+#: src/window.rs:558
 msgid "Delete"
 msgstr "Eliminar"
 
-#: src/window.rs:552
+#: src/window.rs:569
 msgid "Failed to delete image"
 msgstr "Erro ao eliminar imagem"
 
