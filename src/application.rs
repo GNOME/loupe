@@ -132,10 +132,7 @@ impl LpApplication {
         self.set_accels_for_action("win.open", &["<Ctrl>O"]);
         self.set_accels_for_action("win.print", &["<Ctrl>P"]);
         self.set_accels_for_action("win.copy", &["<Ctrl>C"]);
-        self.set_accels_for_action(
-            "win.trash",
-            &["<Ctrl>X", "Delete", "KP_Delete", "BackSpace"],
-        );
+        self.set_accels_for_action("win.trash", &["Delete", "KP_Delete", "BackSpace"]);
         self.set_accels_for_action("win.show-help-overlay", &["<Ctrl>question"]);
         self.set_accels_for_action("win.leave-fullscreen", &["Escape"]);
         self.set_accels_for_action("win.toggle-properties", &["F9", "<Alt>Return"]);
