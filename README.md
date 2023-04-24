@@ -2,7 +2,7 @@
 
 A simple image viewer application written with GTK4 and Rust.
 
-![Loupe Screenshot](https://gitlab.gnome.org/Incubator/loupe/uploads/863131c1292cb9f1b32fbef39f266bcf/image.png)
+![Loupe Screenshot](https://gitlab.gnome.org/Incubator/loupe/uploads/24c80abc88fccb5fc9f2f08de6a7a5ea/screenshot1.png)
 
 ## Installing
 
