@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/Incubator/loupe/-/issues\n"
-"POT-Creation-Date: 2023-04-21 16:11+0000\n"
-"PO-Revision-Date: 2023-04-22 00:25+0200\n"
+"POT-Creation-Date: 2023-04-24 23:59+0000\n"
+"PO-Revision-Date: 2023-04-25 06:27+0200\n"
 "Last-Translator: Ekaterine Papava <papava.e@gtu.ge>\n"
 "Language-Team: Georgian <ka@li.org>\n"
 "Language: ka\n"
@@ -237,24 +237,8 @@ msgid "View images"
 msgstr "სურათების დათვალიერება"
 
 #: data/org.gnome.Loupe.metainfo.xml.in.in:10
-msgid ""
-"A simple image viewer which allows you to browse through your images and "
-"inspect their metadata."
-msgstr ""
-"სურათების მარტივი დამთვალიერებელი, რომელიც ბრაუზერს თქვენი სურათების "
-"დათვალიერების და მათი მეტამონაცემების ნახვის საშუალებას აძლევს."
-
-#: data/org.gnome.Loupe.metainfo.xml.in.in:11
-msgid "The following features are not available yet"
-msgstr "ეს თვისებები ჯერჯერობით მიუწვდომელია"
-
-#: data/org.gnome.Loupe.metainfo.xml.in.in:13
-msgid "Applying image color profiles"
-msgstr "გამოსახულების ფერის პროფილების გადატარება"
-
-#: data/org.gnome.Loupe.metainfo.xml.in.in:14
-msgid "Printing"
-msgstr "დაბეჭდვა"
+msgid "Browse through your images and inspect their metadata."
+msgstr "დაათვალიერეთ თქვენი სურათები და მათი მეტამონაცემები."
 
 #: data/resources/gtk/help-overlay.ui:11
 msgctxt "shortcut window"
@@ -583,6 +567,15 @@ msgstr "წაშლა"
 #: src/window.rs:569
 msgid "Failed to delete image"
 msgstr "გამოსახულების წაშლის შეცდომა"
+
+#~ msgid "The following features are not available yet"
+#~ msgstr "ეს თვისებები ჯერჯერობით მიუწვდომელია"
+
+#~ msgid "Applying image color profiles"
+#~ msgstr "გამოსახულების ფერის პროფილების გადატარება"
+
+#~ msgid "Printing"
+#~ msgstr "დაბეჭდვა"
 
 #~ msgid "Christopher Davis"
 #~ msgstr "Christopher Davis"
