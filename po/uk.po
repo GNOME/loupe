@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/Incubator/loupe/-/issues\n"
-"POT-Creation-Date: 2023-04-21 16:11+0000\n"
-"PO-Revision-Date: 2023-04-22 21:19+0300\n"
+"POT-Creation-Date: 2023-04-24 23:59+0000\n"
+"PO-Revision-Date: 2023-04-25 22:37+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -241,24 +241,12 @@ msgid "View images"
 msgstr "Перегляд зображень"
 
 #: data/org.gnome.Loupe.metainfo.xml.in.in:10
-msgid ""
-"A simple image viewer which allows you to browse through your images and "
-"inspect their metadata."
+#| msgid ""
+#| "A simple image viewer which allows you to browse through your images and "
+#| "inspect their metadata."
+msgid "Browse through your images and inspect their metadata."
 msgstr ""
-"Проста програма для перегляду зображень, за допомогою якої можна здійснювати "
-"навігацію вашими зображеннями і переглядати їхні метадані."
-
-#: data/org.gnome.Loupe.metainfo.xml.in.in:11
-msgid "The following features are not available yet"
-msgstr "Наведеними нижче можливостями ще не можна скористатися"
-
-#: data/org.gnome.Loupe.metainfo.xml.in.in:13
-msgid "Applying image color profiles"
-msgstr "Застосовуємо профілі кольорів зображення"
-
-#: data/org.gnome.Loupe.metainfo.xml.in.in:14
-msgid "Printing"
-msgstr "Друк"
+"Здійснюйте навігацію вашими зображеннями і переглядайте їхні метадані."
 
 #: data/resources/gtk/help-overlay.ui:11
 msgctxt "shortcut window"
@@ -541,7 +529,6 @@ msgid "Could not set background."
 msgstr "Не вдалося встановити фонове зображення."
 
 #: src/window.rs:421
-#| msgid "Unknown image format"
 msgid "Supported image formats"
 msgstr "Підтримувані формати зображень"
 
@@ -588,6 +575,15 @@ msgstr "Вилучити"
 #: src/window.rs:569
 msgid "Failed to delete image"
 msgstr "Не вдалося вилучити зображення"
+
+#~ msgid "The following features are not available yet"
+#~ msgstr "Наведеними нижче можливостями ще не можна скористатися"
+
+#~ msgid "Applying image color profiles"
+#~ msgstr "Застосовуємо профілі кольорів зображення"
+
+#~ msgid "Printing"
+#~ msgstr "Друк"
 
 #~ msgid "Christopher Davis"
 #~ msgstr "Christopher Davis"
