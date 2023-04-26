@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/Incubator/loupe/-/issues\n"
-"POT-Creation-Date: 2023-04-21 16:11+0000\n"
-"PO-Revision-Date: 2023-04-22 09:44+0200\n"
+"POT-Creation-Date: 2023-04-24 23:59+0000\n"
+"PO-Revision-Date: 2023-04-26 13:00+0200\n"
 "Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
 "Language-Team: Slovenian <gnome-si@googlegroups.com>\n"
 "Language: sl\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || "
 "n%100==4 ? 3 : 0);\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.3\n"
 "X-Poedit-SourceCharset: ISO-8859-1\n"
 
 #: data/gtk/image_page.ui:6 data/gtk/window.ui:16
@@ -241,24 +241,8 @@ msgid "View images"
 msgstr "Pregledovalnik slik"
 
 #: data/org.gnome.Loupe.metainfo.xml.in.in:10
-msgid ""
-"A simple image viewer which allows you to browse through your images and "
-"inspect their metadata."
-msgstr ""
-"Preprost pregledovalnik slik omogoča pregledovanje slik in proučevanje "
-"njihovih metapodatkov."
-
-#: data/org.gnome.Loupe.metainfo.xml.in.in:11
-msgid "The following features are not available yet"
-msgstr "Naslednje funkcije še niso na voljo"
-
-#: data/org.gnome.Loupe.metainfo.xml.in.in:13
-msgid "Applying image color profiles"
-msgstr "Uveljavljanje barvnih profilov slik"
-
-#: data/org.gnome.Loupe.metainfo.xml.in.in:14
-msgid "Printing"
-msgstr "Tiskanje"
+msgid "Browse through your images and inspect their metadata."
+msgstr "Brskajte po slikah in preverite njihove metapodatke."
 
 #: data/resources/gtk/help-overlay.ui:11
 msgctxt "shortcut window"
