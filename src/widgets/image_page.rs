@@ -39,11 +39,13 @@ mod imp {
         #[template_child]
         pub(super) stack: TemplateChild<gtk::Stack>,
         #[template_child]
-        pub(super) spinner: TemplateChild<gtk::Spinner>,
+        pub(super) spinner_page: TemplateChild<gtk::Widget>,
         #[template_child]
         pub(super) error_page: TemplateChild<adw::StatusPage>,
         #[template_child]
         pub(super) image_stack_page: TemplateChild<gtk::Widget>,
+        #[template_child]
+        pub(super) spinner: TemplateChild<gtk::Spinner>,
         #[template_child]
         pub(super) scrolled_window: TemplateChild<gtk::ScrolledWindow>,
         #[template_child]
@@ -108,10 +110,20 @@ mod imp {
                     gesture.set_state(gtk::EventSequenceState::Claimed);
                 }));
 
+            self.stack
+                .connect_visible_child_notify(clone!(@weak obj => move |stack| {
+                    let imp = obj.imp();
+                    let spinner_visible =
+                        stack.visible_child().as_ref() == Some(imp.spinner_page.upcast_ref());
+                    // Hide spinner for crossfading into other content since it does not look great
+                    imp.spinner.set_visible(spinner_visible);
+                }));
+
             obj.image().connect_notify_local(
                 Some("is-loaded"),
                 clone!(@weak obj => move |_,_| {
                     if obj.image().is_loaded() {
+                        log::debug!("Showing image");
                         obj.imp()
                             .stack
                             .set_visible_child(&*obj.imp().image_stack_page);
@@ -127,7 +139,6 @@ mod imp {
                     }
                 }),
             );
-
             // Do not waste CPU on spinner if it is not visible
             self.spinner.connect_map(|s| s.start());
             self.spinner.connect_unmap(|s| s.stop());
