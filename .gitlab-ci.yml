@@ -1,5 +1,6 @@
 include:
   - project: "GNOME/citemplates"
+    ref: "6590a039dbc39df54b42114994436251024db20e"
     file: "flatpak/flatpak_ci_initiative.yml"
 
 variables:
