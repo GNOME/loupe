@@ -1,6 +1,6 @@
 // Copyright (c) 2020-2023 Christopher Davis
 // Copyright (c) 2022-2023 Sophie Herold
-// Copyright (c) 2022 Sabri Ünal
+// Copyright (c) 2022-2023 Sabri Ünal
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
