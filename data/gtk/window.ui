@@ -68,11 +68,28 @@
       </closure>
     </binding>
     <property name="content">
-      <object class="GtkBox">
-        <property name="orientation">vertical</property>
-        <child>
-          <object class="GtkHeaderBar" id="headerbar">
-            <property name="show-title-buttons" bind-source="LpWindow" bind-property="fullscreened" bind-flags="sync-create|invert-boolean"/>
+      <object class="AdwToolbarView" id="toolbar_view">
+        <binding name="top-bar-style">
+          <closure type="AdwToolbarStyle" function="top_bar_style">
+            <lookup name="fullscreened">LpWindow</lookup>
+            <lookup name="active">properties_button</lookup>
+            <lookup name="active">primary_menu</lookup>
+          </closure>
+        </binding>
+        <binding name="extend-content-to-top-edge">
+          <closure type="gboolean" function="extend_to_top">
+            <lookup name="fullscreened">LpWindow</lookup>
+            <lookup name="active">properties_button</lookup>
+            <lookup name="active">primary_menu</lookup>
+          </closure>
+        </binding>
+        <child type="top">
+          <object class="AdwHeaderBar" id="headerbar">
+            <property name="show-end-title-buttons" bind-source="LpWindow" bind-property="fullscreened" bind-flags="sync-create|invert-boolean"/>
+            <property name="show-start-title-buttons" bind-source="LpWindow" bind-property="fullscreened" bind-flags="sync-create|invert-boolean"/>"
+            <style>
+              <class name="fullscreen-osd" />
+            </style>
             <child type="start">
               <object class="GtkButton">
                 <property name="icon-name">edit-copy-symbolic</property>
@@ -88,7 +105,7 @@
               </object>
             </child>
             <child type="end">
-              <object class="GtkMenuButton">
+              <object class="GtkMenuButton" id="primary_menu">
                 <property name="icon-name">open-menu-symbolic</property>
                 <property name="tooltip-text" translatable="yes">Main Menu</property>
                 <property name="primary">True</property>
@@ -125,9 +142,12 @@
                 <property name="tooltip-text" translatable="yes">Image Properties</property>
               </object>
             </child>
+            <child>
+              <object class="GtkEventControllerMotion" id="headerbar_events" />
+            </child>
           </object>
         </child>
-        <child>
+        <property name="content">
           <object class="AdwToastOverlay" id="toast_overlay">
             <property name="child">
               <object class="AdwFlap" id="properties_flap">
@@ -185,14 +205,14 @@
               </object>
             </property>
           </object>
-        </child>
+        </property>
       </object>
     </property>
     <child>
       <object class="GtkEventControllerMotion" id="motion_controller">
         <signal name="motion" handler="on_motion_cb" swapped="yes"/>
         <signal name="enter" handler="on_motion_cb" swapped="yes"/>
-	<signal name="leave" handler="on_motion_cb" swapped="yes"/>
+        <signal name="leave" handler="on_motion_cb" swapped="yes"/>
       </object>
     </child>
   </template>

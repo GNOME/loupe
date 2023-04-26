@@ -72,7 +72,11 @@ mod imp {
         // TemplateChild<T> wrapper, where T is the
         // object type of the template child.
         #[template_child]
-        pub(super) headerbar: TemplateChild<gtk::HeaderBar>,
+        pub(super) toolbar_view: TemplateChild<adw::ToolbarView>,
+        #[template_child]
+        pub(super) headerbar: TemplateChild<adw::HeaderBar>,
+        #[template_child]
+        pub(super) headerbar_events: TemplateChild<gtk::EventControllerMotion>,
         #[template_child]
         pub(super) properties_button: TemplateChild<gtk::ToggleButton>,
         #[template_child]
@@ -87,6 +91,7 @@ mod imp {
         pub(super) properties_view: TemplateChild<LpPropertiesView>,
         #[template_child]
         pub(super) drop_target: TemplateChild<gtk::DropTarget>,
+        /// Motion controller for complete window
         #[template_child]
         pub(super) motion_controller: TemplateChild<gtk::EventControllerMotion>,
 
@@ -298,6 +303,10 @@ mod imp {
                 glib::closure_local!(@watch win => move |_: &LpImage, _: &glib::ParamSpec| {
                     win.image_error();
                 }),
+            );
+
+            self.toolbar_view.connect_top_bar_style_notify(
+                glib::clone!(@weak obj => move |_| obj.on_top_bar_style_notify()),
             );
 
             self.image_view.connect_notify_local(
@@ -590,6 +599,10 @@ impl LpWindow {
         self.imp().image_view.clone()
     }
 
+    pub fn headerbar(&self) -> adw::HeaderBar {
+        self.imp().headerbar.clone()
+    }
+
     fn show_toast(&self, text: impl AsRef<str>, priority: adw::ToastPriority) {
         let imp = self.imp();
 
@@ -690,6 +703,12 @@ impl LpWindow {
     fn set_control_opacity(&self, opacity: f64, hiding: bool) {
         self.image_view().controls_box_start().set_opacity(opacity);
         self.image_view().controls_box_end().set_opacity(opacity);
+
+        if self.is_headerbar_flat() {
+            self.headerbar().set_opacity(opacity);
+        } else {
+            self.headerbar().set_opacity(1.);
+        }
 
         if self.is_fullscreened() && hiding && opacity < 0.9 {
             self.set_cursor(gdk::Cursor::from_name("none", None).as_ref());
@@ -839,6 +858,7 @@ impl LpWindow {
                 .controls_box_end_events()
                 .contains_pointer()
             && self.is_showing_image()
+            && (!self.is_headerbar_flat() || !self.imp().headerbar_events.contains_pointer())
     }
 
     #[template_callback]
@@ -848,5 +868,40 @@ impl LpWindow {
             self.show_controls();
         }
         self.queue_hide_controls();
+    }
+
+    fn is_headerbar_flat(&self) -> bool {
+        matches!(
+            self.imp().toolbar_view.top_bar_style(),
+            adw::ToolbarStyle::Flat
+        )
+    }
+
+    fn on_top_bar_style_notify(&self) {
+        if self.is_headerbar_flat() {
+            // Bring headerbar opacity in sync with controls
+            self.headerbar().set_opacity(self.controls_opacity());
+        } else {
+            self.headerbar().set_opacity(1.);
+        }
+    }
+
+    #[template_callback]
+    fn extend_to_top(&self, fullscreened: bool, show_properties: bool, show_menu: bool) -> bool {
+        fullscreened && !show_properties && !show_menu
+    }
+
+    #[template_callback]
+    fn top_bar_style(
+        &self,
+        fullscreened: bool,
+        show_properties: bool,
+        show_menu: bool,
+    ) -> adw::ToolbarStyle {
+        if self.extend_to_top(fullscreened, show_properties, show_menu) {
+            adw::ToolbarStyle::Flat
+        } else {
+            adw::ToolbarStyle::Raised
+        }
     }
 }
