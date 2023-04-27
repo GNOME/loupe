@@ -27,7 +27,6 @@
                 <child>
                   <object class="AdwActionRow">
                     <property name="title" translatable="yes">Folder</property>
-                    <property name="subtitle-selectable">True</property>
                     <property name="activatable-widget">folder_button</property>
                     <binding name="subtitle">
                       <closure type="gchararray" function="folder_name">
@@ -142,7 +141,6 @@
                 <child>
                   <object class="AdwActionRow">
                     <property name="title" translatable="yes">Location</property>
-                    <property name="subtitle-selectable">True</property>
                     <property name="activatable-widget">location_button</property>
                     <binding name="subtitle">
                       <lookup name="location">
