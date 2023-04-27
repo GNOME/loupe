@@ -33,7 +33,15 @@ use rgb::AsPixels;
 use std::sync::Arc;
 
 #[derive(Debug)]
-pub struct Heif;
+pub struct Heif {
+    cancellable: gio::Cancellable,
+}
+
+impl Drop for Heif {
+    fn drop(&mut self) {
+        self.cancellable.cancel();
+    }
+}
 
 /// Loads plugins on first use
 static LIBHEIF: Lazy<LibHeif> = Lazy::new(LibHeif::new);
@@ -45,6 +53,9 @@ impl Heif {
         tiles: Arc<ArcSwap<tiling::FrameBuffer>>,
     ) -> Self {
         log::debug!("Loading HEIF");
+        let cancellable = gio::Cancellable::new();
+        let cancellable_ = cancellable.clone();
+
         updater.spawn_error_handled(move || {
             let file_size = file
                 .query_info(
@@ -54,7 +65,7 @@ impl Heif {
                 )
                 .context(gettext("Failed to read image file information"))?
                 .size();
-            let buf_reader = file.to_buf_read()?;
+            let buf_reader = file.to_buf_read(&cancellable)?;
             let stream_reader = libheif_rs::StreamReader::new(buf_reader, file_size as u64);
             let ctx = HeifContext::read_from_reader(Box::new(stream_reader))
                 .context(gettext("Failed to decode image"))?;
@@ -132,7 +143,9 @@ impl Heif {
             Ok(())
         });
 
-        Heif
+        Heif {
+            cancellable: cancellable_,
+        }
     }
 }
 

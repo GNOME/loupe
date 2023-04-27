@@ -63,7 +63,8 @@ impl std::fmt::Debug for ImageMetadata {
 impl ImageMetadata {
     pub fn load(file: &gio::File) -> Self {
         log::debug!("Loading metadata for {}", file.uri());
-        if let Ok(mut bufreader) = file.to_buf_read() {
+        // TODO: make possible to cancel
+        if let Ok(mut bufreader) = file.to_buf_read(&gio::Cancellable::new()) {
             let exifreader = exif::Reader::new();
 
             if let Ok(exif) = exifreader.read_from_container(&mut bufreader) {

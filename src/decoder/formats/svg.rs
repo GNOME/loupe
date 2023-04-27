@@ -35,13 +35,13 @@ pub const RSVG_MAX_SIZE: u32 = 32_767;
 pub struct Svg {
     thread_handle: std::thread::JoinHandle<()>,
     current_request: Arc<std::sync::RwLock<Request>>,
+    cancellable: gio::Cancellable,
 }
 
 #[derive(Default, Debug, Clone)]
 enum Request {
     #[default]
     None,
-    Exit,
     Tile(TileRequest),
 }
 
@@ -53,12 +53,7 @@ impl Request {
 
 impl Drop for Svg {
     fn drop(&mut self) {
-        if let Ok(mut request) = self.current_request.write() {
-            *request = Request::Exit;
-        } else {
-            // Don't use log in drop because not sure if always still initialized
-            eprintln!("Unable to write exit request: RwLock is poisoned.");
-        }
+        self.cancellable.cancel();
         self.thread_handle.thread().unpark();
     }
 }
@@ -71,9 +66,11 @@ impl Svg {
     ) -> Self {
         let current_request: Arc<std::sync::RwLock<Request>> = Default::default();
         let request_store = current_request.clone();
+        let cancellable = gio::Cancellable::new();
+        let cancellable_ = cancellable.clone();
 
         let thread_handle = updater.spawn_error_handled(move || {
-            let handle = rsvg::Loader::new().read_file(&file, gio::Cancellable::NONE)?;
+            let handle = rsvg::Loader::new().read_file(&file, Some(&cancellable))?;
             let renderer = rsvg::CairoRenderer::new(&handle);
 
             let (original_width, original_height) = svg_dimensions(&renderer);
@@ -92,14 +89,16 @@ impl Svg {
                     value
                 };
 
+                if cancellable.is_cancelled() {
+                    log::debug!("Terminating SVG decoder thread");
+                    break;
+                }
+
                 match tile_request {
                     Request::None => {
                         std::thread::park();
                     }
-                    Request::Exit => {
-                        log::debug!("Terminating decoder thread.");
-                        break;
-                    }
+
                     Request::Tile(tile_request) => {
                         let tiling = tiles
                             .get_layer_tiling_or_default(tile_request.zoom, tile_request.viewport);
@@ -172,6 +171,7 @@ impl Svg {
         Self {
             thread_handle,
             current_request,
+            cancellable: cancellable_,
         }
     }
 

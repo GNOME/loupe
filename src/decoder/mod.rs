@@ -217,8 +217,9 @@ impl Decoder {
 
     fn guess_format(file: &gio::File) -> anyhow::Result<Option<image_rs::ImageFormat>> {
         let mut buf = Vec::new();
+        // TODO: allow to cancel
         let fs_file = file
-            .to_buf_read()
+            .to_buf_read(&gio::Cancellable::new())
             .context(gettext("Could not open image"))?;
         fs_file
             .take(64)

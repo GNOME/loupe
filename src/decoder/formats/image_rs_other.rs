@@ -23,7 +23,7 @@ use crate::util;
 use crate::util::gettext::*;
 use crate::util::{BufReadSeek, ToBufRead};
 
-use anyhow::{bail, Context};
+use anyhow::Context;
 use arc_swap::ArcSwap;
 use gtk::prelude::*;
 use image_rs::{AnimationDecoder, ImageDecoder};
@@ -34,18 +34,13 @@ use std::sync::Arc;
 #[derive(Debug)]
 pub struct ImageRsOther {
     thread_handle: Option<std::thread::JoinHandle<()>>,
-    abort: Arc<std::sync::RwLock<bool>>,
+    cancellable: gio::Cancellable,
 }
 
 impl Drop for ImageRsOther {
     fn drop(&mut self) {
         if let Some(handle) = &self.thread_handle {
-            if let Ok(mut abort) = self.abort.write() {
-                *abort = true;
-            } else {
-                // Don't use log in drop because not sure if always still initialized
-                eprintln!("Unable to write abort signal to decoding thread.");
-            }
+            self.cancellable.cancel();
             handle.thread().unpark();
         }
     }
@@ -55,8 +50,9 @@ impl ImageRsOther {
     fn reader(
         file: &gio::File,
         format: image_rs::ImageFormat,
+        cancellable: &gio::Cancellable,
     ) -> anyhow::Result<image_rs::io::Reader<Box<dyn BufReadSeek>>> {
-        let buf_read = file.to_buf_read()?;
+        let buf_read = file.to_buf_read(cancellable)?;
         let mut reader = image_rs::io::Reader::new(buf_read);
         reader.set_format(format);
         Ok(reader)
@@ -68,7 +64,7 @@ impl ImageRsOther {
         updater: UpdateSender,
         tiles: Arc<ArcSwap<tiling::FrameBuffer>>,
     ) -> Self {
-        let abort: Arc<std::sync::RwLock<bool>> = Default::default();
+        let cancellable = gio::Cancellable::new();
 
         let thread_handle = match format {
             image_rs::ImageFormat::Gif
@@ -78,17 +74,17 @@ impl ImageRsOther {
                 format,
                 updater,
                 tiles,
-                abort.clone(),
+                cancellable.clone(),
             )),
             _ => {
-                Self::new_static(file, format, updater, tiles);
+                Self::new_static(file, format, updater, tiles, cancellable.clone());
                 None
             }
         };
 
         ImageRsOther {
             thread_handle,
-            abort,
+            cancellable,
         }
     }
 
@@ -97,9 +93,10 @@ impl ImageRsOther {
         format: image_rs::ImageFormat,
         updater: UpdateSender,
         tiles: Arc<ArcSwap<tiling::FrameBuffer>>,
+        cancellable: gio::Cancellable,
     ) {
         updater.spawn_error_handled(move || {
-            let reader = Self::reader(&file, format)?;
+            let reader = Self::reader(&file, format, &cancellable)?;
             let dimensions = reader
                 .into_dimensions()
                 .context("Failed to read image dimensions")?;
@@ -108,7 +105,7 @@ impl ImageRsOther {
 
             let (icc_profile, dynamic_image) = match format {
                 image_rs::ImageFormat::Jpeg => {
-                    let reader = file.to_buf_read()?;
+                    let reader = file.to_buf_read(&cancellable)?;
                     let mut decoder = image_rs::codecs::jpeg::JpegDecoder::new(reader)?;
                     let _ = decoder.set_limits(image_rs::io::Limits::no_limits());
                     let icc_profile = decoder.icc_profile();
@@ -117,7 +114,7 @@ impl ImageRsOther {
                     (icc_profile, dynamic_image)
                 }
                 image_rs::ImageFormat::Png => {
-                    let reader = file.to_buf_read()?;
+                    let reader = file.to_buf_read(&cancellable)?;
                     let mut decoder = image_rs::codecs::png::PngDecoder::new(reader)?;
                     let _ = decoder.set_limits(image_rs::io::Limits::no_limits());
                     let icc_profile = decoder.icc_profile();
@@ -126,7 +123,7 @@ impl ImageRsOther {
                     (icc_profile, dynamic_image)
                 }
                 _ => {
-                    let mut reader = Self::reader(&file, format)?;
+                    let mut reader = Self::reader(&file, format, &cancellable)?;
                     reader.limits(image_rs::io::Limits::no_limits());
                     let dynamic_image =
                         reader.decode().context(gettext("Failed to decode image"))?;
@@ -157,7 +154,7 @@ impl ImageRsOther {
         format: image_rs::ImageFormat,
         updater: UpdateSender,
         tiles: Arc<ArcSwap<tiling::FrameBuffer>>,
-        abort: Arc<std::sync::RwLock<bool>>,
+        cancellable: gio::Cancellable,
     ) -> std::thread::JoinHandle<()> {
         updater.clone().spawn_error_handled(move || {
             let mut nth_frame = 1;
@@ -165,7 +162,7 @@ impl ImageRsOther {
             // We are currently decoding for each repetition of the animation
             // TODO: Check if/how that can be solved differently
             loop {
-                let buf_reader = file.to_buf_read()?;
+                let buf_reader = file.to_buf_read(&cancellable)?;
 
                 let (frames, animated_format) = match format {
                     image_rs::ImageFormat::Gif => (
@@ -178,7 +175,7 @@ impl ImageRsOther {
                             (decoder.into_frames(), ImageFormat::AnimatedWebP)
                         } else {
                             // Static WebP images need a different decoder
-                            Self::new_static(file, format, updater, tiles);
+                            Self::new_static(file, format, updater, tiles, cancellable);
                             return Ok(());
                         }
                     }
@@ -188,7 +185,7 @@ impl ImageRsOther {
                             (decoder.apng().into_frames(), ImageFormat::AnimatedPng)
                         } else {
                             // Static PNG images need a different decoder
-                            Self::new_static(file, format, updater, tiles);
+                            Self::new_static(file, format, updater, tiles, cancellable);
                             return Ok(());
                         }
                     }
@@ -247,13 +244,9 @@ impl ImageRsOther {
                         std::thread::park();
                     }
 
-                    if let Ok(abort_state) = abort.read().as_deref() {
-                        if *abort_state {
-                            log::debug!("Terminating decoder thread.");
-                            return Ok(());
-                        }
-                    } else {
-                        bail!("Cannot read decoder thread abort instructions.");
+                    if cancellable.is_cancelled() {
+                        log::debug!("Terminating decoder thread.");
+                        return Ok(());
                     }
                 }
             }
