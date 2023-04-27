@@ -38,12 +38,15 @@ use crate::config;
 use crate::util::{self, Direction, Position};
 use crate::widgets::{LpImage, LpImageView, LpPropertiesView};
 
+/// Show window after X milliseconds even if image dimensions are not known yet
+const SHOW_WINDOW_AFTER: u64 = 2000;
+
 /// Animation duration for showing overlay buttons in milliseconds
 const SHOW_CONTROLS_ANIMATION_DURATION: u32 = 200;
 /// Animation duration for hiding overlay buttons in milliseconds
 const HIDE_CONTROLS_ANIMATION_DURATION: u32 = 1000;
-/// Time of inactivity after which controls will be hidden in seconds
-const HIDE_CONTROLS_IDLE_TIMEOUT: u32 = 3;
+/// Time of inactivity after which controls will be hidden in milliseconds
+const HIDE_CONTROLS_IDLE_TIMEOUT: u64 = 3000;
 
 mod imp {
     use super::*;
@@ -240,6 +243,11 @@ mod imp {
             // Limit effect of modal dialogs to this window
             // and keeps the others usable
             gtk::WindowGroup::new().add_window(&*obj);
+
+            glib::timeout_add_local_once(
+                std::time::Duration::from_millis(SHOW_WINDOW_AFTER),
+                glib::clone!(@weak obj => move || if !obj.is_visible() { obj.present() }),
+            );
 
             obj.on_images_available();
 
@@ -726,12 +734,12 @@ impl LpWindow {
         })
     }
 
-    /// Queue a fade animation to play after `HIDE_CONTROLS_IDLE_TIMEOUT` seconds of inactivity
+    /// Queue a fade animation to play after `HIDE_CONTROLS_IDLE_TIMEOUT` of inactivity
     fn queue_hide_controls(&self) {
         self.dequeue_hide_controls();
 
-        let new_timeout = glib::timeout_add_seconds_local_once(
-            HIDE_CONTROLS_IDLE_TIMEOUT,
+        let new_timeout = glib::timeout_add_local_once(
+            std::time::Duration::from_millis(HIDE_CONTROLS_IDLE_TIMEOUT),
             glib::clone!(@weak self as win => move || {
                 win.imp().hide_controls_timeout.take();
                 win.hide_controls();
