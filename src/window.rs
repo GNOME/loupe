@@ -241,7 +241,7 @@ mod imp {
             // and keeps the others usable
             gtk::WindowGroup::new().add_window(&*obj);
 
-            obj.images_available();
+            obj.on_images_available();
 
             let current_image_signals = self.image_view.current_image_signals();
             // clone! is a macro from glib-rs that allows
@@ -295,7 +295,7 @@ mod imp {
             self.image_view.connect_notify_local(
                 Some("current-page"),
                 glib::clone!(@weak obj => move |_, _| {
-                    obj.images_available();
+                    obj.on_images_available();
                 }),
             );
 
@@ -606,7 +606,7 @@ impl LpWindow {
     }
 
     /// Handles change in availability of images
-    fn images_available(&self) {
+    fn on_images_available(&self) {
         let imp = self.imp();
 
         let shows_image = imp.image_view.current_page().is_some();
@@ -619,9 +619,10 @@ impl LpWindow {
             imp.image_view.grab_focus();
             self.queue_hide_controls();
         } else {
-            imp.properties_button.set_active(false);
             imp.stack.set_visible_child(&*imp.status_page);
             imp.status_page.grab_focus();
+            // Leave fullscreen since status page has no controls to leave it
+            self.set_fullscreened(false);
         }
     }
 
