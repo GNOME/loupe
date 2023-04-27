@@ -428,6 +428,7 @@ mod imp {
                 }
 
                 if obj.is_hscrollable() || obj.is_vscrollable() {
+                    obj.cancel_deceleration();
                     obj.set_cursor(gdk::Cursor::from_name("grabbing", None).as_ref());
                     obj.imp().last_drag_value.set(Some((0., 0.)));
                 } else {
@@ -456,6 +457,9 @@ mod imp {
             // Rotate
             let rotation_gesture = gtk::GestureRotate::new();
             obj.add_controller(rotation_gesture.clone());
+
+            rotation_gesture
+                .connect_begin(glib::clone!(@weak obj => move |_,_|obj.cancel_deceleration()));
 
             rotation_gesture.connect_angle_changed(
                 glib::clone!(@weak obj => move |gesture, _, _| {
@@ -499,6 +503,7 @@ mod imp {
             obj.add_controller(zoom_gesture.clone());
 
             zoom_gesture.connect_begin(glib::clone!(@weak obj => move |gesture, _| {
+                obj.cancel_deceleration();
                 obj.imp()
                     .zoom_gesture_center
                     .set(gesture.bounding_box_center());
@@ -1596,6 +1601,21 @@ impl LpImage {
 
     pub fn is_vscrollable(&self) -> bool {
         self.max_vadjustment_value() != 0.
+    }
+
+    /// Cancel kinetic scrolling movements, needed for some gestures
+    ///
+    /// If deceleration is not canceled gestures become buggy.
+    fn cancel_deceleration(&self) {
+        if let Some(scrolled_window) = self
+            .parent()
+            .and_then(|x| x.downcast::<gtk::ScrolledWindow>().ok())
+        {
+            scrolled_window.set_kinetic_scrolling(false);
+            scrolled_window.set_kinetic_scrolling(true);
+        } else {
+            log::error!("Could not find GtkScrolledWindow parent to cancel deceleration");
+        }
     }
 
     pub fn widget_height(&self) -> f64 {
