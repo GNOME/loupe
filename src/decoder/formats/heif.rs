@@ -23,7 +23,7 @@ use crate::util;
 use crate::util::gettext::*;
 use crate::util::ToBufRead;
 
-use anyhow::Context;
+use anyhow::{anyhow, bail, Context};
 use arc_swap::ArcSwap;
 use gtk::prelude::*;
 use libheif_rs::{ColorProfile, ColorSpace, HeifContext, LibHeif, Plane, RgbChroma};
@@ -56,7 +56,7 @@ impl Heif {
         let cancellable = gio::Cancellable::new();
         let cancellable_ = cancellable.clone();
 
-        updater.spawn_error_handled(move || {
+        updater.clone().spawn_error_handled(move || {
             let file_size = file
                 .query_info(
                     gio::FILE_ATTRIBUTE_STANDARD_SIZE,
@@ -99,9 +99,17 @@ impl Heif {
                 RgbChroma::Rgb
             };
 
-            let mut image = LIBHEIF
-                .decode(&handle, ColorSpace::Rgb(rgb_chroma), None)
-                .context(gettext("Failed to decode image"))?;
+            let image_result = LIBHEIF.decode(&handle, ColorSpace::Rgb(rgb_chroma), None);
+
+            let mut image = match image_result {
+                Err(err)
+                    if matches!(err.sub_code, libheif_rs::HeifErrorSubCode::UnsupportedCodec) =>
+                {
+                    updater.send(DecoderUpdate::UnsupportedFormat);
+                    bail!(anyhow!(err).context(gettext("Unknown image format")));
+                }
+                image => image.context(gettext("Failed to decode image"))?,
+            };
 
             let icc_profile = if let Some(profile) = handle.color_profile_raw() {
                 if [

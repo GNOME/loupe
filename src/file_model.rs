@@ -222,6 +222,10 @@ impl LpFileModel {
         self.imp().files.borrow().last().map(|x| x.1).cloned()
     }
 
+    pub fn remove(&self, file: &gio::File) -> Option<gio::File> {
+        self.imp().files.borrow_mut().remove(&file.uri())
+    }
+
     /// Currently sorts by name
     fn sort(files: &mut IndexMap<GString, gio::File>) {
         files.sort_by(|_, x, _, y| util::compare_by_name(&x.uri(), &y.uri()));

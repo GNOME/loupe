@@ -63,6 +63,8 @@ pub enum DecoderUpdate {
     Metadata(ImageMetadata),
     /// Image format determined
     Format(ImageFormat),
+    /// Image format not supported or unknown
+    UnsupportedFormat,
     /// New image data available, redraw
     Redraw,
     /// And error occured during decoding
@@ -113,13 +115,13 @@ impl Decoder {
     pub async fn new(
         file: gio::File,
         tiles: Arc<ArcSwap<tiling::FrameBuffer>>,
-    ) -> anyhow::Result<(Self, mpsc::UnboundedReceiver<DecoderUpdate>)> {
+    ) -> (Result<Self, ()>, mpsc::UnboundedReceiver<DecoderUpdate>) {
         let (sender, receiver) = mpsc::unbounded();
 
         let update_sender = UpdateSender { sender };
         tiles.set_update_sender(update_sender.clone());
 
-        let decoder = gio::spawn_blocking(
+        let format_decoder = gio::spawn_blocking(
             glib::clone!(@strong update_sender => move || Self::format_decoder(
                 update_sender,
                 file,
@@ -127,15 +129,20 @@ impl Decoder {
             )),
         )
         .await
-        .map_err(|_| anyhow!("Constructing the FormatDecoder failed unexpectedly"))??;
+        .map_err(|_| anyhow!("Constructing the FormatDecoder failed unexpectedly"));
 
-        Ok((
-            Self {
+        let decoder = match format_decoder {
+            Ok(Ok(decoder)) => Ok(Self {
                 decoder,
                 update_sender,
-            },
-            receiver,
-        ))
+            }),
+            Err(err) | Ok(Err(err)) => {
+                update_sender.send(DecoderUpdate::Error(err));
+                Err(())
+            }
+        };
+
+        (decoder, receiver)
     }
 
     fn format_decoder(
@@ -186,11 +193,13 @@ impl Decoder {
                     update_sender.send(DecoderUpdate::Format(ImageFormat::Heif));
                     return Ok(FormatDecoder::Heif(Heif::new(file, update_sender, tiles)));
                 } else {
+                    update_sender.send(DecoderUpdate::UnsupportedFormat);
                     bail!(gettext_f("Unknown image format: {}", &[mime_type.as_str()]));
                 }
             }
         }
 
+        update_sender.send(DecoderUpdate::UnsupportedFormat);
         bail!(gettext("Unknown image format"))
     }
 
