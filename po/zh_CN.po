@@ -3,13 +3,12 @@
 # This file is distributed under the same license as the Loupe package.
 # Nanling <neithern@outlook.com>, 2023.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-18 21:45+0000\n"
-"PO-Revision-Date: 2023-03-19 10:30+0800\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/Incubator/loupe/-/issues\n"
+"POT-Creation-Date: 2023-04-21 16:11+0000\n"
+"PO-Revision-Date: 2023-04-22 11:26+0800\n"
 "Last-Translator: Nanling <neithern@outlook.com>\n"
 "Language-Team: Chinese - China <i18n-zh@googlegroups.com>\n"
 "Language: zh_CN\n"
@@ -18,224 +17,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0\n"
 "X-Generator: Gtranslator 42.0\n"
-
-#. If the file exists, get display name
-#: data/org.gnome.Loupe.desktop.in.in:3
-#: data/org.gnome.Loupe.metainfo.xml.in.in:6 data/gtk/window.ui:63
-#: src/application.rs:193 src/window.rs:676 src/window.rs:682
-msgid "Loupe"
-msgstr "放大镜"
-
-#: data/org.gnome.Loupe.desktop.in.in:11
-msgid "Picture;Slideshow;Graphics;Image Viewer;"
-msgstr ""
-"Picture;Slideshow;Graphics;Image Viewer;图片;图片查看器;幻灯片;图像;图像查看"
-"器;"
-
-#: data/org.gnome.Loupe.metainfo.xml.in.in:7
-msgid "Christopher Davis"
-msgstr "Christopher Davis"
-
-#: data/org.gnome.Loupe.metainfo.xml.in.in:8
-msgid "View images"
-msgstr "查看图像"
-
-#: data/org.gnome.Loupe.metainfo.xml.in.in:10
-msgid ""
-"A simple image viewer which allows you to browse through your images and "
-"inspect their metadata."
-msgstr "一个简单的图像浏览器，允许你浏览你的图像并检查其元数据。"
-
-#: data/org.gnome.Loupe.metainfo.xml.in.in:11
-msgid "The following features are not available yet"
-msgstr "以下功能还不能使用"
-
-#: data/org.gnome.Loupe.metainfo.xml.in.in:13
-msgid "Correctly showing SVGs at every zoom-level"
-msgstr "在每个缩放级别正确显示SVG"
-
-#: data/org.gnome.Loupe.metainfo.xml.in.in:14
-msgid "Interpreting image color profiles"
-msgstr "解释图像颜色配置文件"
-
-#: data/org.gnome.Loupe.metainfo.xml.in.in:15
-msgid "Animated image formats"
-msgstr "动画图像格式"
-
-#: data/org.gnome.Loupe.metainfo.xml.in.in:16
-msgid "Correct HighDPI support"
-msgstr "正确的高DPI支持"
-
-#: data/org.gnome.Loupe.metainfo.xml.in.in:17
-msgid "Print settings to position the image on the page"
-msgstr "打印设置，以在页面上定位图像"
-
-#: data/gtk/help_overlay.ui:11
-msgctxt "shortcut window"
-msgid "General Shortcuts"
-msgstr "常规快捷键"
-
-#: data/gtk/help_overlay.ui:14
-msgctxt "shortcut window"
-msgid "Show Main Menu"
-msgstr "显示主菜单"
-
-#: data/gtk/help_overlay.ui:20
-msgctxt "shortcut window"
-msgid "Copy Image to Clipboard"
-msgstr "复制到剪贴板"
-
-#: data/gtk/help_overlay.ui:26
-msgctxt "shortcut window"
-msgid "Move Image to Trash"
-msgstr "移至回收站"
-
-#: data/gtk/help_overlay.ui:32
-msgctxt "shortcut window"
-msgid "Toggle Image Properties"
-msgstr "切换图像属性"
-
-#: data/gtk/help_overlay.ui:38
-msgctxt "shortcut window"
-msgid "Set as Background"
-msgstr "设为背景"
-
-#: data/gtk/help_overlay.ui:44
-msgctxt "shortcut window"
-msgid "Toggle Fullscreen"
-msgstr "切换全屏"
-
-#: data/gtk/help_overlay.ui:50
-msgctxt "shortcut window"
-msgid "Leave Fullscreen"
-msgstr "退出全屏"
-
-#: data/gtk/help_overlay.ui:56
-msgctxt "shortcut window"
-msgid "New Window"
-msgstr "新建窗口"
-
-#: data/gtk/help_overlay.ui:62
-msgctxt "shortcut window"
-msgid "Open Help"
-msgstr "打开帮助"
-
-#: data/gtk/help_overlay.ui:68
-msgctxt "shortcut window"
-msgid "Show Keyboard Shortcuts"
-msgstr "显示快捷键"
-
-#: data/gtk/help_overlay.ui:74
-msgctxt "shortcut window"
-msgid "Close Window"
-msgstr "关闭窗口"
-
-#: data/gtk/help_overlay.ui:80
-msgctxt "shortcut window"
-msgid "Quit"
-msgstr "退出"
-
-#: data/gtk/help_overlay.ui:88
-msgctxt "shortcut window"
-msgid "Navigate Images"
-msgstr "导航图像"
-
-#: data/gtk/help_overlay.ui:92 data/gtk/help_overlay.ui:106
-#: data/gtk/help_overlay.ui:218 data/gtk/help_overlay.ui:232
-msgctxt "shortcut window"
-msgid "Next Image"
-msgstr "下一个图像"
-
-#: data/gtk/help_overlay.ui:99 data/gtk/help_overlay.ui:113
-#: data/gtk/help_overlay.ui:225 data/gtk/help_overlay.ui:239
-msgctxt "shortcut window"
-msgid "Previous Image"
-msgstr "上一个图像"
-
-#: data/gtk/help_overlay.ui:119
-msgctxt "shortcut window"
-msgid "First Image"
-msgstr "第一个图像"
-
-#: data/gtk/help_overlay.ui:125
-msgctxt "shortcut window"
-msgid "Last Image"
-msgstr "最后一个图像"
-
-#: data/gtk/help_overlay.ui:133
-msgctxt "shortcut window"
-msgid "Rotate Image"
-msgstr "旋转图像"
-
-#: data/gtk/help_overlay.ui:136 data/gtk/help_overlay.ui:257
-msgctxt "shortcut window"
-msgid "Rotate Clockwise"
-msgstr "顺时针旋转"
-
-#: data/gtk/help_overlay.ui:142 data/gtk/help_overlay.ui:263
-msgctxt "shortcut window"
-msgid "Rotate Counterclockwise"
-msgstr "逆时针旋转"
-
-#: data/gtk/help_overlay.ui:150
-msgctxt "shortcut window"
-msgid "Zoom Image"
-msgstr "缩放图像"
-
-#: data/gtk/help_overlay.ui:153 data/gtk/help_overlay.ui:245
-msgctxt "shortcut window"
-msgid "Zoom In"
-msgstr "放大"
-
-#: data/gtk/help_overlay.ui:159 data/gtk/help_overlay.ui:251
-msgctxt "shortcut window"
-msgid "Zoom Out"
-msgstr "缩小"
-
-#: data/gtk/help_overlay.ui:165
-msgctxt "shortcut window"
-msgid "Best Fit"
-msgstr "最适合"
-
-#: data/gtk/help_overlay.ui:171
-msgctxt "shortcut window"
-msgid "Original Scale"
-msgstr "原始比例"
-
-#: data/gtk/help_overlay.ui:177
-msgctxt "shortcut window"
-msgid "200% Scale"
-msgstr "200% 缩放"
-
-#: data/gtk/help_overlay.ui:185
-msgctxt "shortcut window"
-msgid "Pan View"
-msgstr "平移查看"
-
-#: data/gtk/help_overlay.ui:188
-msgctxt "shortcut window"
-msgid "Pan Left"
-msgstr "向左平移"
-
-#: data/gtk/help_overlay.ui:194
-msgctxt "shortcut window"
-msgid "Pan Right"
-msgstr "向右平移"
-
-#: data/gtk/help_overlay.ui:200
-msgctxt "shortcut window"
-msgid "Pan Up"
-msgstr "向上平移"
-
-#: data/gtk/help_overlay.ui:206
-msgctxt "shortcut window"
-msgid "Pan Down"
-msgstr "向下平移"
-
-#: data/gtk/help_overlay.ui:214
-msgctxt "shortcut window"
-msgid "Gestures"
-msgstr "手势"
 
 #: data/gtk/image_page.ui:6 data/gtk/window.ui:16
 msgid "_Open With…"
@@ -261,11 +42,11 @@ msgstr "设为背景(_S)…"
 msgid "Could not Load Image"
 msgstr "无法加载图像"
 
-#: data/gtk/image_page.ui:88 data/gtk/window.ui:115
+#: data/gtk/image_page.ui:88 data/gtk/window.ui:100
 msgid "Rotate Left"
 msgstr "向左旋转"
 
-#: data/gtk/image_page.ui:99 data/gtk/window.ui:126
+#: data/gtk/image_page.ui:99 data/gtk/window.ui:111
 msgid "Rotate Right"
 msgstr "向右旋转"
 
@@ -277,17 +58,61 @@ msgstr "上一个图像"
 msgid "Next Image"
 msgstr "下一个图像"
 
-#: data/gtk/image_view.ui:70
-msgid "Toggle Fullscreen"
-msgstr "切换全屏"
-
-#: data/gtk/image_view.ui:81
+#: data/gtk/image_view.ui:66
 msgid "Zoom Out"
 msgstr "缩小"
 
-#: data/gtk/image_view.ui:92
+#: data/gtk/image_view.ui:77
 msgid "Zoom In"
 msgstr "放大"
+
+#: data/gtk/image_view.ui:95
+msgid "Toggle Fullscreen"
+msgstr "切换全屏"
+
+#: data/gtk/print.ui:4
+msgid "Layout Image"
+msgstr "布局图像"
+
+#: data/gtk/print.ui:66
+msgid "Portrait page orientation"
+msgstr "纵向页面方向"
+
+#: data/gtk/print.ui:74
+msgid "Landscape page orientation"
+msgstr "横向页面方向"
+
+#: data/gtk/print.ui:88
+msgid "Center image horizontally"
+msgstr "图像横向居中"
+
+#: data/gtk/print.ui:95
+msgid "Center image vertically"
+msgstr "图像纵向居中"
+
+#: data/gtk/print.ui:107
+msgid "Image Width"
+msgstr "图像尺寸"
+
+#: data/gtk/print.ui:119
+msgid "Image Scale"
+msgstr "图像缩放"
+
+#: data/gtk/print.ui:131
+msgid "Left Margin"
+msgstr "左侧边距"
+
+#: data/gtk/print.ui:143
+msgid "Top Margin"
+msgstr "顶部边距"
+
+#: data/gtk/print.ui:155
+msgid "Length Unit"
+msgstr "长度单位"
+
+#: data/gtk/print.ui:175
+msgid "Print"
+msgstr "打印"
 
 #: data/gtk/properties_view.ui:29
 msgid "Folder"
@@ -358,156 +183,428 @@ msgid "_Open…"
 msgstr "打开(_P)…"
 
 #: data/gtk/window.ui:46
-msgid "_Help"
-msgstr "帮助(_H)"
-
-#: data/gtk/window.ui:50
 msgid "_Keyboard Shortcuts"
 msgstr "快捷键(_K)"
 
-#: data/gtk/window.ui:54
+#: data/gtk/window.ui:50
 msgid "_About Loupe"
 msgstr "关于(_A)"
 
-#: data/gtk/window.ui:94
+#. If the file exists, get display name
+#: data/gtk/window.ui:59 data/org.gnome.Loupe.desktop.in.in:3
+#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/application.rs:191
+#: src/window.rs:784 src/window.rs:790
+msgid "Loupe"
+msgstr "放大镜"
+
+#: data/gtk/window.ui:79
 msgid "Copy to Clipboard"
 msgstr "复制到剪贴板"
 
-#: data/gtk/window.ui:101
+#: data/gtk/window.ui:86
 msgid "Move to Trash"
 msgstr "移至回收站"
 
-#: data/gtk/window.ui:107
+#: data/gtk/window.ui:92
 msgid "Main Menu"
 msgstr "主菜单"
 
-#: data/gtk/window.ui:141
+#: data/gtk/window.ui:126
 msgid "Image Properties"
 msgstr "图像属性"
 
-#: data/gtk/window.ui:161
+#: data/gtk/window.ui:146
 msgid "View Images"
 msgstr "查看图像"
 
-#: data/gtk/window.ui:162
+#: data/gtk/window.ui:147
 msgid "Drag and drop images here"
 msgstr "拖放图片到这里"
 
-#: data/gtk/window.ui:166
+#: data/gtk/window.ui:151
 msgid "_Open File…"
 msgstr "打开文件…"
 
-#: src/application.rs:196
+#: data/org.gnome.Loupe.desktop.in.in:11
+msgid "Picture;Slideshow;Graphics;Image Viewer;"
+msgstr ""
+"Picture;Slideshow;Graphics;Image Viewer;图片;图片查看器;幻灯片;图像;图像查看"
+"器;"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:7 src/application.rs:194
 msgid "The Loupe Team"
 msgstr "Loupe 团队"
 
+#: data/org.gnome.Loupe.metainfo.xml.in.in:8
+msgid "View images"
+msgstr "查看图像"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:10
+msgid ""
+"A simple image viewer which allows you to browse through your images and "
+"inspect their metadata."
+msgstr "一个简单的图像浏览器，允许你浏览你的图像并检查其元数据。"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:11
+msgid "The following features are not available yet"
+msgstr "以下功能还不能使用"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:13
+msgid "Applying image color profiles"
+msgstr "应用图像颜色配置文件"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:14
+msgid "Printing"
+msgstr "打印"
+
+#: data/resources/gtk/help-overlay.ui:11
+msgctxt "shortcut window"
+msgid "General Shortcuts"
+msgstr "常规快捷键"
+
+#: data/resources/gtk/help-overlay.ui:14
+msgctxt "shortcut window"
+msgid "Show Main Menu"
+msgstr "显示主菜单"
+
+#: data/resources/gtk/help-overlay.ui:20
+msgctxt "shortcut window"
+msgid "Copy Image to Clipboard"
+msgstr "复制到剪贴板"
+
+#: data/resources/gtk/help-overlay.ui:26
+msgctxt "shortcut window"
+msgid "Move Image to Trash"
+msgstr "移至回收站"
+
+#: data/resources/gtk/help-overlay.ui:32
+msgctxt "shortcut window"
+msgid "Toggle Image Properties"
+msgstr "切换图像属性"
+
+#: data/resources/gtk/help-overlay.ui:38
+msgctxt "shortcut window"
+msgid "Set as Background"
+msgstr "设为背景"
+
+#: data/resources/gtk/help-overlay.ui:44
+msgctxt "shortcut window"
+msgid "Toggle Fullscreen"
+msgstr "切换全屏"
+
+#: data/resources/gtk/help-overlay.ui:50
+msgctxt "shortcut window"
+msgid "Leave Fullscreen"
+msgstr "退出全屏"
+
+#: data/resources/gtk/help-overlay.ui:56
+msgctxt "shortcut window"
+msgid "New Window"
+msgstr "新建窗口"
+
+#: data/resources/gtk/help-overlay.ui:62
+msgctxt "shortcut window"
+msgid "Open Help"
+msgstr "打开帮助"
+
+#: data/resources/gtk/help-overlay.ui:68
+msgctxt "shortcut window"
+msgid "Show Keyboard Shortcuts"
+msgstr "显示快捷键"
+
+#: data/resources/gtk/help-overlay.ui:74
+msgctxt "shortcut window"
+msgid "Close Window"
+msgstr "关闭窗口"
+
+#: data/resources/gtk/help-overlay.ui:80
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "退出"
+
+#: data/resources/gtk/help-overlay.ui:88
+msgctxt "shortcut window"
+msgid "Navigate Images"
+msgstr "导航图像"
+
+#: data/resources/gtk/help-overlay.ui:92 data/resources/gtk/help-overlay.ui:106
+#: data/resources/gtk/help-overlay.ui:218
+#: data/resources/gtk/help-overlay.ui:232
+msgctxt "shortcut window"
+msgid "Next Image"
+msgstr "下一个图像"
+
+#: data/resources/gtk/help-overlay.ui:99 data/resources/gtk/help-overlay.ui:113
+#: data/resources/gtk/help-overlay.ui:225
+#: data/resources/gtk/help-overlay.ui:239
+msgctxt "shortcut window"
+msgid "Previous Image"
+msgstr "上一个图像"
+
+#: data/resources/gtk/help-overlay.ui:119
+msgctxt "shortcut window"
+msgid "First Image"
+msgstr "第一个图像"
+
+#: data/resources/gtk/help-overlay.ui:125
+msgctxt "shortcut window"
+msgid "Last Image"
+msgstr "最后一个图像"
+
+#: data/resources/gtk/help-overlay.ui:133
+msgctxt "shortcut window"
+msgid "Rotate Image"
+msgstr "旋转图像"
+
+#: data/resources/gtk/help-overlay.ui:136
+#: data/resources/gtk/help-overlay.ui:257
+msgctxt "shortcut window"
+msgid "Rotate Clockwise"
+msgstr "顺时针旋转"
+
+#: data/resources/gtk/help-overlay.ui:142
+#: data/resources/gtk/help-overlay.ui:263
+msgctxt "shortcut window"
+msgid "Rotate Counterclockwise"
+msgstr "逆时针旋转"
+
+#: data/resources/gtk/help-overlay.ui:150
+msgctxt "shortcut window"
+msgid "Zoom Image"
+msgstr "缩放图像"
+
+#: data/resources/gtk/help-overlay.ui:153
+#: data/resources/gtk/help-overlay.ui:245
+msgctxt "shortcut window"
+msgid "Zoom In"
+msgstr "放大"
+
+#: data/resources/gtk/help-overlay.ui:159
+#: data/resources/gtk/help-overlay.ui:251
+msgctxt "shortcut window"
+msgid "Zoom Out"
+msgstr "缩小"
+
+#: data/resources/gtk/help-overlay.ui:165
+msgctxt "shortcut window"
+msgid "Best Fit"
+msgstr "最适合"
+
+#: data/resources/gtk/help-overlay.ui:171
+msgctxt "shortcut window"
+msgid "Original Scale"
+msgstr "原始比例"
+
+#: data/resources/gtk/help-overlay.ui:177
+msgctxt "shortcut window"
+msgid "200% Scale"
+msgstr "200% 缩放"
+
+#: data/resources/gtk/help-overlay.ui:185
+msgctxt "shortcut window"
+msgid "Pan View"
+msgstr "平移查看"
+
+#: data/resources/gtk/help-overlay.ui:188
+msgctxt "shortcut window"
+msgid "Pan Left"
+msgstr "向左平移"
+
+#: data/resources/gtk/help-overlay.ui:194
+msgctxt "shortcut window"
+msgid "Pan Right"
+msgstr "向右平移"
+
+#: data/resources/gtk/help-overlay.ui:200
+msgctxt "shortcut window"
+msgid "Pan Up"
+msgstr "向上平移"
+
+#: data/resources/gtk/help-overlay.ui:206
+msgctxt "shortcut window"
+msgid "Pan Down"
+msgstr "向下平移"
+
+#: data/resources/gtk/help-overlay.ui:214
+msgctxt "shortcut window"
+msgid "Gestures"
+msgstr "手势"
+
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/application.rs:205
+#: src/application.rs:203
 msgid "translator-credits"
 msgstr "Nanling <neithern@outlook.com>"
 
-#: src/application.rs:206
+#: src/application.rs:204
 msgid "Copyright © 2020–2023 Christopher Davis et al."
 msgstr "Copyright © 2020-2023 Christopher Davis 等人。"
 
-#: src/file_model.rs:114
+#: src/decoder/formats/heif.rs:55
+msgid "Failed to read image file information"
+msgstr "读取图像文件信息失败"
+
+#: src/decoder/formats/heif.rs:60 src/decoder/formats/heif.rs:93
+#: src/decoder/formats/image_rs_other.rs:116
+#: src/decoder/formats/image_rs_other.rs:125
+#: src/decoder/formats/image_rs_other.rs:132
+msgid "Failed to decode image"
+msgstr "解码图像失败"
+
+#: src/decoder/formats/mod.rs:72
+msgid "Animated GIF"
+msgstr "GIF 动画"
+
+#: src/decoder/formats/mod.rs:73
+msgid "Animated WebP"
+msgstr "WebP 动画"
+
+#: src/decoder/formats/mod.rs:74
+msgid "Animated PNG"
+msgstr "PNG 动画"
+
+#: src/decoder/mod.rs:189
+msgid "Unknown image format: {}"
+msgstr "未知图像格式：{}"
+
+#: src/decoder/mod.rs:194
+msgid "Unknown image format"
+msgstr "未知图像格式"
+
+#: src/decoder/mod.rs:222
+msgid "Could not open image"
+msgstr "无法打开图像"
+
+#: src/decoder/mod.rs:226
+msgid "Could not read image"
+msgstr "无法读取图像"
+
+#: src/file_model.rs:118
 msgid "Could not list other files in directory."
 msgstr "无法列出目录中的其他文件。"
 
 #. Translators: short for "north" in GPS coordinate
-#: src/image_metadata/gps.rs:136
+#: src/image_metadata/gps.rs:154
 msgid "N"
 msgstr "北"
 
 #. Translators: short for "south" in GPS coordinate
-#: src/image_metadata/gps.rs:139
+#: src/image_metadata/gps.rs:157
 msgid "S"
 msgstr "南"
 
 #. Translators: short for "east" in GPS coordinate
-#: src/image_metadata/gps.rs:149
+#: src/image_metadata/gps.rs:167
 msgid "E"
 msgstr "东"
 
 #. Translators: short for "west" in GPS coordinate
-#: src/image_metadata/gps.rs:152
+#: src/image_metadata/gps.rs:170
 msgid "W"
 msgstr "西"
 
 #. Translators: Unit for exposure time in seconds
-#: src/image_metadata/mod.rs:129
+#: src/image_metadata/mod.rs:144
 msgid "1\\u{2215}{}\\u{202F}s"
 msgstr "1\\u{2215}{}\\u{202F}s"
 
 #. Translators: Unit for focal length in millimeters
-#: src/image_metadata/mod.rs:154
+#: src/image_metadata/mod.rs:169
 msgid "{}\\u{202F}mm"
 msgstr "{}\\u{202F}mm"
 
-#: src/widgets/image.rs:652
-msgid "File does not exist"
-msgstr "文件不存在"
+#. Translators: This is the date and time format we use in metadata output etc.
+#. The format has to follow <https://docs.gtk.org/glib/method.DateTime.format.html>
+#. The default is already translated. Don't change if you are not sure what to use.
+#: src/util/mod.rs:36
+#, c-format
+msgid "%x %X"
+msgstr "%x %X"
 
-#: src/widgets/image_view.rs:574
-msgid "Failed to open new background image"
-msgstr "打开新背景图片失败"
-
-#: src/widgets/image_view.rs:591
-msgid "Set as background."
-msgstr "已设为背景。"
-
-#: src/widgets/image_view.rs:598
-msgid "Could not set background."
-msgstr "无法设为背景。"
-
-#: src/window.rs:355
-msgid "“{}” is not a valid image."
-msgstr "“{}” 不是一个有效的图像。"
-
-#: src/window.rs:431
-msgid "Open Image"
-msgstr "打开图像"
-
-#: src/window.rs:485
-msgid "Image copied to clipboard"
-msgstr "图像已复制到剪贴板上"
-
-#: src/window.rs:499
-msgid "Image moved to trash"
-msgstr "图片已移至回收站"
-
-#: src/window.rs:500
-msgid "Undo"
-msgstr "撤销"
-
-#: src/window.rs:511
+#: src/util/mod.rs:171 src/window.rs:517
 msgid "Failed to restore image from trash"
 msgstr "从垃圾箱中恢复图像失败"
 
-#: src/window.rs:526
+#: src/util/mod.rs:192
+msgid "Failed to open image"
+msgstr "打开图像失败"
+
+#. Translators: This is a toast notification, informing the user that an image has been set as background.
+#: src/widgets/image_view.rs:620
+msgid "Set as background."
+msgstr "已设为背景。"
+
+#: src/widgets/image_view.rs:631
+msgid "Could not set background."
+msgstr "无法设为背景。"
+
+#: src/window.rs:421
+msgid "Supported image formats"
+msgstr "支持的图像格式"
+
+#: src/window.rs:427
+msgid "All files"
+msgstr "所有文件"
+
+#: src/window.rs:434
+msgid "Open Image"
+msgstr "打开图像"
+
+#: src/window.rs:489
+msgid "Image copied to clipboard"
+msgstr "图像已复制到剪贴板上"
+
+#: src/window.rs:505
+msgid "Image moved to trash"
+msgstr "图片已移至回收站"
+
+#: src/window.rs:506
+msgid "Undo"
+msgstr "撤销"
+
+#: src/window.rs:532
 msgid "Failed to move image to trash"
 msgstr "将图像移至回收站失败"
 
-#: src/window.rs:541
+#: src/window.rs:547
 msgid "Permanently Delete Image?"
 msgstr "永久删除图像？"
 
-#: src/window.rs:543
+#: src/window.rs:549
 msgid "The image “{}” can only be deleted permanently."
 msgstr "“{}” 只能被永久删除。"
 
-#: src/window.rs:550
+#: src/window.rs:557
 msgid "Cancel"
 msgstr "取消"
 
-#: src/window.rs:550
+#: src/window.rs:558
 msgid "Delete"
 msgstr "删除"
 
-#: src/window.rs:559
+#: src/window.rs:569
 msgid "Failed to delete image"
 msgstr "删除图像失败"
 
-#, c-format
-#~ msgid "%x %X"
-#~ msgstr "%x %X"
+#~ msgid "Christopher Davis"
+#~ msgstr "Christopher Davis"
+
+#~ msgid "Correctly showing SVGs at every zoom-level"
+#~ msgstr "在每个缩放级别正确显示SVG"
+
+#~ msgid "Correct HighDPI support"
+#~ msgstr "正确的高DPI支持"
+
+#~ msgid "Print settings to position the image on the page"
+#~ msgstr "打印设置，以在页面上定位图像"
+
+#~ msgid "_Help"
+#~ msgstr "帮助(_H)"
+
+#~ msgid "File does not exist"
+#~ msgstr "文件不存在"
+
+#~ msgid "Failed to open new background image"
+#~ msgstr "打开新背景图片失败"
+
+#~ msgid "“{}” is not a valid image."
+#~ msgstr "“{}” 不是一个有效的图像。"
