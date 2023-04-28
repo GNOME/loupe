@@ -1,0 +1,569 @@
+# Friulian translation for Loupe.
+# Copyright (C) 2023 Loupe's COPYRIGHT HOLDER
+# This file is distributed under the same license as the Loupe package.
+# Fabio Tomat <f.t.public@gmail.com>, 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Loupe main\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/Incubator/loupe/-/issues\n"
+"POT-Creation-Date: 2023-04-28 05:36+0000\n"
+"PO-Revision-Date: 2023-04-28 10:59+0200\n"
+"Last-Translator: \n"
+"Language-Team: Friulian <fur@li.org>\n"
+"Language: fur\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.2.2\n"
+
+#: data/gtk/image_page.ui:6 data/gtk/window.ui:16
+msgid "_Open With…"
+msgstr "_Vierç cun…"
+
+#: data/gtk/image_page.ui:14 data/gtk/window.ui:24
+msgid "_Print…"
+msgstr "Stam_pe…"
+
+#: data/gtk/image_page.ui:18
+msgid "_Copy"
+msgstr "_Copie"
+
+#: data/gtk/image_page.ui:23 data/gtk/window.ui:29
+msgid "Rotate"
+msgstr "Volte"
+
+#: data/gtk/image_page.ui:34 data/gtk/window.ui:40
+msgid "_Set as Background…"
+msgstr "Met come _fondâl…"
+
+#: data/gtk/image_page.ui:55
+msgid "Could not Load Image"
+msgstr "Impussibil cjariâ la imagjin"
+
+#: data/gtk/image_page.ui:88 data/gtk/window.ui:101
+msgid "Rotate Left"
+msgstr "Zire a çampe"
+
+#: data/gtk/image_page.ui:98 data/gtk/window.ui:111
+msgid "Rotate Right"
+msgstr "Zire a diestre"
+
+#: data/gtk/image_view.ui:30
+msgid "Previous Image"
+msgstr "Imagjin precedente"
+
+#: data/gtk/image_view.ui:41
+msgid "Next Image"
+msgstr "Imagjin sucessive"
+
+#: data/gtk/image_view.ui:66
+msgid "Zoom Out"
+msgstr "Impiçulìs"
+
+#: data/gtk/image_view.ui:77
+msgid "Zoom In"
+msgstr "Ingrandìs"
+
+#: data/gtk/image_view.ui:95
+msgid "Toggle Fullscreen"
+msgstr "Comute modalitât plen visôr"
+
+#: data/gtk/print.ui:4
+msgid "Image Layout"
+msgstr "Disposizion imagjin"
+
+#: data/gtk/print.ui:66
+msgid "Portrait page orientation"
+msgstr "Orientament pagjine verticâl"
+
+#: data/gtk/print.ui:74
+msgid "Landscape page orientation"
+msgstr "Orientament pagjine orizontâl"
+
+#: data/gtk/print.ui:88
+msgid "Center image horizontally"
+msgstr "Centre la imagjin in orizontâl"
+
+#: data/gtk/print.ui:95
+msgid "Center image vertically"
+msgstr "Centre la imagjin in verticâl"
+
+#: data/gtk/print.ui:107
+msgid "Image Width"
+msgstr "Largjece de imagjin"
+
+#: data/gtk/print.ui:119
+msgid "Image Scale"
+msgstr "Scjale de imagjin"
+
+#: data/gtk/print.ui:131
+msgid "Left Margin"
+msgstr "Margjin di çampe"
+
+#: data/gtk/print.ui:143
+msgid "Top Margin"
+msgstr "Margjin superiôr"
+
+#: data/gtk/print.ui:155
+msgid "Length Unit"
+msgstr "Unitât de lungjece"
+
+#: data/gtk/print.ui:175
+msgid "Print"
+msgstr "Stampe"
+
+#: data/gtk/properties_view.ui:29
+msgid "Folder"
+msgstr "Cartele"
+
+#: data/gtk/properties_view.ui:42
+msgid "Open Containing Folder"
+msgstr "Vierç cartele che e conten"
+
+#: data/gtk/properties_view.ui:59
+msgid "Image Size"
+msgstr "Dimension de imagjin"
+
+#: data/gtk/properties_view.ui:75
+msgid "Image Format"
+msgstr "Formât de imagjin"
+
+#: data/gtk/properties_view.ui:89
+msgid "File Size"
+msgstr "Dimension dal file"
+
+#: data/gtk/properties_view.ui:107
+msgid "File Created"
+msgstr "File creât"
+
+#: data/gtk/properties_view.ui:121
+msgid "File Modified"
+msgstr "File modificât"
+
+#: data/gtk/properties_view.ui:144
+msgid "Location"
+msgstr "Posizion"
+
+#: data/gtk/properties_view.ui:164
+msgid "Open Location"
+msgstr "Vierç posizion"
+
+#: data/gtk/properties_view.ui:177
+msgid "Originally Created"
+msgstr "Creât in origjin"
+
+#: data/gtk/properties_view.ui:198
+msgid "Aperture"
+msgstr "Viertidure"
+
+#: data/gtk/properties_view.ui:219
+msgid "Exposure"
+msgstr "Esposizion"
+
+#: data/gtk/properties_view.ui:240
+msgid "ISO"
+msgstr "ISO"
+
+#: data/gtk/properties_view.ui:261
+msgid "Focal Length"
+msgstr "Lungjece focâl"
+
+#: data/gtk/properties_view.ui:282
+msgid "Maker, Model"
+msgstr "Produtôr, model"
+
+#: data/gtk/window.ui:6
+msgid "_New Window"
+msgstr "_Gnûf Barcon"
+
+#: data/gtk/window.ui:10
+msgid "_Open…"
+msgstr "_Vierç…"
+
+#: data/gtk/window.ui:46
+msgid "_Keyboard Shortcuts"
+msgstr "Scurtis di _tastiere"
+
+#: data/gtk/window.ui:50
+msgid "_About Loupe"
+msgstr "_Informazions su Loupe"
+
+#. If the file exists, get display name
+#: data/gtk/window.ui:59 data/org.gnome.Loupe.desktop.in.in:3
+#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/application.rs:188
+#: src/window.rs:796 src/window.rs:802
+msgid "Loupe"
+msgstr "Loupe"
+
+#: data/gtk/window.ui:80
+msgid "Copy to Clipboard"
+msgstr "Copie intes notis"
+
+#: data/gtk/window.ui:87
+msgid "Move to Trash"
+msgstr "Sposte te scovacere"
+
+#: data/gtk/window.ui:93
+msgid "Main Menu"
+msgstr "Menù principâl"
+
+#: data/gtk/window.ui:125
+msgid "Image Properties"
+msgstr "Propietâts de imagjin"
+
+#: data/gtk/window.ui:145
+msgid "View Images"
+msgstr "Visualize imagjins"
+
+#: data/gtk/window.ui:146
+msgid "Drag and drop images here"
+msgstr "Strissine e mole lis imagjins achì"
+
+#: data/gtk/window.ui:150
+msgid "_Open File…"
+msgstr "_Vierç file…"
+
+#: data/org.gnome.Loupe.desktop.in.in:11
+msgid "Picture;Slideshow;Graphics;Image Viewer;"
+msgstr "Imagjin;Figure;Presentazion;Grafiche;Visualizadôr imagjin;"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:7 src/application.rs:191
+msgid "The Loupe Team"
+msgstr "Il grup di Loupe"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:8
+msgid "View images"
+msgstr "Visualize imagjins"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:10
+msgid "Browse through your images and inspect their metadata."
+msgstr "Sgarfe tra lis tôs imagjins e ispezione i lôr metadâts."
+
+#: data/resources/gtk/help-overlay.ui:11
+msgctxt "shortcut window"
+msgid "General Shortcuts"
+msgstr "Scurtis gjenerichis"
+
+#: data/resources/gtk/help-overlay.ui:14
+msgctxt "shortcut window"
+msgid "Show Main Menu"
+msgstr "Mostre il menù principâl"
+
+#: data/resources/gtk/help-overlay.ui:20
+msgctxt "shortcut window"
+msgid "Copy Image to Clipboard"
+msgstr "Copie la imagjin intes notis"
+
+#: data/resources/gtk/help-overlay.ui:26
+msgctxt "shortcut window"
+msgid "Move Image to Trash"
+msgstr "Sposte la imagjin te scovacere"
+
+#: data/resources/gtk/help-overlay.ui:32
+msgctxt "shortcut window"
+msgid "Toggle Image Properties"
+msgstr "Comute proprietâts de imagjin"
+
+#: data/resources/gtk/help-overlay.ui:38
+msgctxt "shortcut window"
+msgid "Set as Background"
+msgstr "Met come fonts"
+
+#: data/resources/gtk/help-overlay.ui:44
+msgctxt "shortcut window"
+msgid "Toggle Fullscreen"
+msgstr "Comute la modalitât plen visôr"
+
+#: data/resources/gtk/help-overlay.ui:50
+msgctxt "shortcut window"
+msgid "Leave Fullscreen"
+msgstr "Jes dal plen visôr"
+
+#: data/resources/gtk/help-overlay.ui:56
+msgctxt "shortcut window"
+msgid "New Window"
+msgstr "Gnûf barcon"
+
+#: data/resources/gtk/help-overlay.ui:62
+msgctxt "shortcut window"
+msgid "Open Help"
+msgstr "Vierç il jutori"
+
+#: data/resources/gtk/help-overlay.ui:68
+msgctxt "shortcut window"
+msgid "Show Keyboard Shortcuts"
+msgstr "Mostre lis scurtis di tastiere"
+
+#: data/resources/gtk/help-overlay.ui:74
+msgctxt "shortcut window"
+msgid "Close Window"
+msgstr "Siere il barcon"
+
+#: data/resources/gtk/help-overlay.ui:80
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "Jes"
+
+#: data/resources/gtk/help-overlay.ui:88
+msgctxt "shortcut window"
+msgid "Navigate Images"
+msgstr "Navighe tra lis imagjins"
+
+#: data/resources/gtk/help-overlay.ui:92 data/resources/gtk/help-overlay.ui:106
+#: data/resources/gtk/help-overlay.ui:218
+#: data/resources/gtk/help-overlay.ui:232
+msgctxt "shortcut window"
+msgid "Next Image"
+msgstr "Imagjin sucessive"
+
+#: data/resources/gtk/help-overlay.ui:99 data/resources/gtk/help-overlay.ui:113
+#: data/resources/gtk/help-overlay.ui:225
+#: data/resources/gtk/help-overlay.ui:239
+msgctxt "shortcut window"
+msgid "Previous Image"
+msgstr "Imagjin precedente"
+
+#: data/resources/gtk/help-overlay.ui:119
+msgctxt "shortcut window"
+msgid "First Image"
+msgstr "Prime imagjin"
+
+#: data/resources/gtk/help-overlay.ui:125
+msgctxt "shortcut window"
+msgid "Last Image"
+msgstr "Ultime imagjin"
+
+#: data/resources/gtk/help-overlay.ui:133
+msgctxt "shortcut window"
+msgid "Rotate Image"
+msgstr "Volte la imagjin"
+
+#: data/resources/gtk/help-overlay.ui:136
+#: data/resources/gtk/help-overlay.ui:257
+msgctxt "shortcut window"
+msgid "Rotate Clockwise"
+msgstr "Volte in sens orari"
+
+#: data/resources/gtk/help-overlay.ui:142
+#: data/resources/gtk/help-overlay.ui:263
+msgctxt "shortcut window"
+msgid "Rotate Counterclockwise"
+msgstr "Volte in sens antiorari"
+
+#: data/resources/gtk/help-overlay.ui:150
+msgctxt "shortcut window"
+msgid "Zoom Image"
+msgstr "Ingrandìs la imagjin"
+
+#: data/resources/gtk/help-overlay.ui:153
+#: data/resources/gtk/help-overlay.ui:245
+msgctxt "shortcut window"
+msgid "Zoom In"
+msgstr "Ingrandìs"
+
+#: data/resources/gtk/help-overlay.ui:159
+#: data/resources/gtk/help-overlay.ui:251
+msgctxt "shortcut window"
+msgid "Zoom Out"
+msgstr "Impiçulìs"
+
+#: data/resources/gtk/help-overlay.ui:165
+msgctxt "shortcut window"
+msgid "Best Fit"
+msgstr "Adate"
+
+#: data/resources/gtk/help-overlay.ui:171
+msgctxt "shortcut window"
+msgid "Original Scale"
+msgstr "Scjale origjinâl"
+
+#: data/resources/gtk/help-overlay.ui:177
+msgctxt "shortcut window"
+msgid "200% Scale"
+msgstr "Scjale al 200%"
+
+#: data/resources/gtk/help-overlay.ui:185
+msgctxt "shortcut window"
+msgid "Pan View"
+msgstr "Viodude panoramiche"
+
+#: data/resources/gtk/help-overlay.ui:188
+msgctxt "shortcut window"
+msgid "Pan Left"
+msgstr "Slargje a çampe"
+
+#: data/resources/gtk/help-overlay.ui:194
+msgctxt "shortcut window"
+msgid "Pan Right"
+msgstr "Slargje a diestre"
+
+#: data/resources/gtk/help-overlay.ui:200
+msgctxt "shortcut window"
+msgid "Pan Up"
+msgstr "Slargje in sù"
+
+#: data/resources/gtk/help-overlay.ui:206
+msgctxt "shortcut window"
+msgid "Pan Down"
+msgstr "Slargje in jù"
+
+#: data/resources/gtk/help-overlay.ui:214
+msgctxt "shortcut window"
+msgid "Gestures"
+msgstr "Mots"
+
+#. Translators: Replace "translator-credits" with your names, one name per line
+#: src/application.rs:200
+msgid "translator-credits"
+msgstr "Fabio Tomat <f.t.public@gmail.com>, 2023"
+
+#: src/application.rs:201
+msgid "Copyright © 2020–2023 Christopher Davis et al."
+msgstr "Copyright © 2020–2023 Christopher Davis e altris"
+
+#: src/decoder/formats/heif.rs:55
+msgid "Failed to read image file information"
+msgstr "Nol è stât pussibil lei lis informazions dal file imagjin"
+
+#: src/decoder/formats/heif.rs:60 src/decoder/formats/heif.rs:93
+#: src/decoder/formats/image_rs_other.rs:116
+#: src/decoder/formats/image_rs_other.rs:125
+#: src/decoder/formats/image_rs_other.rs:132
+msgid "Failed to decode image"
+msgstr "Nol è stât pussibil decodificâ la imagjin"
+
+#: src/decoder/formats/mod.rs:72
+msgid "Animated GIF"
+msgstr "GIF animade"
+
+#: src/decoder/formats/mod.rs:73
+msgid "Animated WebP"
+msgstr "WebP animât"
+
+#: src/decoder/formats/mod.rs:74
+msgid "Animated PNG"
+msgstr "PNG animât"
+
+#: src/decoder/mod.rs:189
+msgid "Unknown image format: {}"
+msgstr "Formât imagjin no cognossût: {}"
+
+#: src/decoder/mod.rs:194
+msgid "Unknown image format"
+msgstr "Formât imagjin no cognossût"
+
+#: src/decoder/mod.rs:222
+msgid "Could not open image"
+msgstr "Impussibil vierzi la imagjin"
+
+#: src/decoder/mod.rs:226
+msgid "Could not read image"
+msgstr "Impussibil lei la imagjin"
+
+#: src/file_model.rs:118
+msgid "Could not list other files in directory."
+msgstr "Impussibil listâ i altris files te cartele."
+
+#. Translators: short for "north" in GPS coordinate
+#: src/image_metadata/gps.rs:154
+msgid "N"
+msgstr "N"
+
+#. Translators: short for "south" in GPS coordinate
+#: src/image_metadata/gps.rs:157
+msgid "S"
+msgstr "S"
+
+#. Translators: short for "east" in GPS coordinate
+#: src/image_metadata/gps.rs:167
+msgid "E"
+msgstr "E"
+
+#. Translators: short for "west" in GPS coordinate
+#: src/image_metadata/gps.rs:170
+msgid "W"
+msgstr "O"
+
+#. Translators: Unit for exposure time in seconds
+#: src/image_metadata/mod.rs:144
+msgid "1\\u{2215}{}\\u{202F}s"
+msgstr "1\\u{2215}{}\\u{202F}s"
+
+#. Translators: Unit for focal length in millimeters
+#: src/image_metadata/mod.rs:169
+msgid "{}\\u{202F}mm"
+msgstr "{}\\u{202F}mm"
+
+#. Translators: This is the date and time format we use in metadata output etc.
+#. The format has to follow <https://docs.gtk.org/glib/method.DateTime.format.html>
+#. The default is already translated. Don't change if you are not sure what to use.
+#: src/util/mod.rs:36
+#, c-format
+msgid "%x %X"
+msgstr "%x %X"
+
+#: src/util/mod.rs:171 src/window.rs:522
+msgid "Failed to restore image from trash"
+msgstr "Nol è stât pussibil ripristinâ de scovacere la imagjin"
+
+#: src/util/mod.rs:192
+msgid "Failed to open image"
+msgstr "Nol è stât pussibil vierzi la imagjin"
+
+#. Translators: This is a toast notification, informing the user that an image has been set as background.
+#: src/widgets/image_view.rs:620
+msgid "Set as background."
+msgstr "Metût come fondâl."
+
+#: src/widgets/image_view.rs:631
+msgid "Could not set background."
+msgstr "Impussibil configurâ il fondâl."
+
+#: src/window.rs:426
+msgid "Supported image formats"
+msgstr "Formâts imagjin supuartâts."
+
+#: src/window.rs:432
+msgid "All files"
+msgstr "Ducj i files"
+
+#: src/window.rs:439
+msgid "Open Image"
+msgstr "Vierç imagjin"
+
+#: src/window.rs:494
+msgid "Image copied to clipboard"
+msgstr "Imagjin copiade intes notis"
+
+#: src/window.rs:510
+msgid "Image moved to trash"
+msgstr "Imagjin spostade te scovacere"
+
+#: src/window.rs:511
+msgid "Undo"
+msgstr "Disfe"
+
+#: src/window.rs:537
+msgid "Failed to move image to trash"
+msgstr "Nol è stât pussibil spostâ la imagjin te scovacere"
+
+#: src/window.rs:552
+msgid "Permanently Delete Image?"
+msgstr "Eliminâ par simpri la imagjin?"
+
+#: src/window.rs:554
+msgid "The image “{}” can only be deleted permanently."
+msgstr "Tu puedis dome eliminâ par simpri la imagjin “{}”."
+
+#: src/window.rs:562
+msgid "Cancel"
+msgstr "Anule"
+
+#: src/window.rs:563
+msgid "Delete"
+msgstr "Elimine"
+
+#: src/window.rs:574
+msgid "Failed to delete image"
+msgstr "Nol è stât pussibil eliminâ la imagjin"
