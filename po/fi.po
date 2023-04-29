@@ -6,9 +6,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-28 04:33+0000\n"
-"PO-Revision-Date: 2023-03-30 20:52+0300\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/Incubator/loupe/-/issues\n"
+"POT-Creation-Date: 2023-04-27 02:21+0000\n"
+"PO-Revision-Date: 2023-04-29 14:51+0300\n"
 "Last-Translator: Jiri Grönroos <jiri.gronroos+l10n@iki.fi>\n"
 "Language-Team: Finnish <lokalisointi-lista@googlegroups.com>\n"
 "Language: fi\n"
@@ -17,222 +17,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 3.2.2\n"
-
-#. If the file exists, get display name
-#: data/org.gnome.Loupe.desktop.in.in:3
-#: data/org.gnome.Loupe.metainfo.xml.in.in:6 data/gtk/window.ui:63
-#: src/application.rs:193 src/window.rs:676 src/window.rs:682
-msgid "Loupe"
-msgstr "Loupe"
-
-#: data/org.gnome.Loupe.desktop.in.in:11
-msgid "Picture;Slideshow;Graphics;Image Viewer;"
-msgstr "Picture;Slideshow;Graphics;Image Viewer;kuvakatselin;diaesitys;"
-
-#: data/org.gnome.Loupe.metainfo.xml.in.in:7
-msgid "Christopher Davis"
-msgstr "Christopher Davis"
-
-#: data/org.gnome.Loupe.metainfo.xml.in.in:8
-msgid "View images"
-msgstr ""
-
-#: data/org.gnome.Loupe.metainfo.xml.in.in:10
-msgid ""
-"A simple image viewer which allows you to browse through your images and "
-"inspect their metadata."
-msgstr ""
-
-#: data/org.gnome.Loupe.metainfo.xml.in.in:11
-msgid "The following features are not available yet"
-msgstr ""
-
-#: data/org.gnome.Loupe.metainfo.xml.in.in:13
-msgid "Correctly showing SVGs at every zoom-level"
-msgstr ""
-
-#: data/org.gnome.Loupe.metainfo.xml.in.in:14
-msgid "Interpreting image color profiles"
-msgstr ""
-
-#: data/org.gnome.Loupe.metainfo.xml.in.in:15
-msgid "Animated image formats"
-msgstr ""
-
-#: data/org.gnome.Loupe.metainfo.xml.in.in:16
-msgid "Correct HighDPI support"
-msgstr ""
-
-#: data/org.gnome.Loupe.metainfo.xml.in.in:17
-msgid "Print settings to position the image on the page"
-msgstr ""
-
-#: data/gtk/help_overlay.ui:11
-msgctxt "shortcut window"
-msgid "General Shortcuts"
-msgstr "Yleiset pikanäppäimet"
-
-#: data/gtk/help_overlay.ui:14
-msgctxt "shortcut window"
-msgid "Show Main Menu"
-msgstr "Näytä päävalikko"
-
-#: data/gtk/help_overlay.ui:20
-msgctxt "shortcut window"
-msgid "Copy Image to Clipboard"
-msgstr "Kopioi kuva leikepöydälle"
-
-#: data/gtk/help_overlay.ui:26
-msgctxt "shortcut window"
-msgid "Move Image to Trash"
-msgstr "Siirrä kuva roskakoriin"
-
-#: data/gtk/help_overlay.ui:32
-msgctxt "shortcut window"
-msgid "Toggle Image Properties"
-msgstr "Näytä/piilota kuvan ominaisuudet"
-
-#: data/gtk/help_overlay.ui:38
-msgctxt "shortcut window"
-msgid "Set as Background"
-msgstr "Aseta taustakuvaksi"
-
-#: data/gtk/help_overlay.ui:44
-msgctxt "shortcut window"
-msgid "Toggle Fullscreen"
-msgstr "Koko näyttö päälle/pois"
-
-#: data/gtk/help_overlay.ui:50
-msgctxt "shortcut window"
-msgid "Leave Fullscreen"
-msgstr "Poistu koko näytön tilasta"
-
-#: data/gtk/help_overlay.ui:56
-msgctxt "shortcut window"
-msgid "New Window"
-msgstr "Uusi ikkuna"
-
-#: data/gtk/help_overlay.ui:62
-msgctxt "shortcut window"
-msgid "Open Help"
-msgstr "Avaa ohje"
-
-#: data/gtk/help_overlay.ui:68
-msgctxt "shortcut window"
-msgid "Show Keyboard Shortcuts"
-msgstr "Näytä pikanäppäimet"
-
-#: data/gtk/help_overlay.ui:74
-msgctxt "shortcut window"
-msgid "Close Window"
-msgstr "Sulje ikkuna"
-
-#: data/gtk/help_overlay.ui:80
-msgctxt "shortcut window"
-msgid "Quit"
-msgstr "Lopeta"
-
-#: data/gtk/help_overlay.ui:88
-msgctxt "shortcut window"
-msgid "Navigate Images"
-msgstr "Kuvien välillä liikkuminen"
-
-#: data/gtk/help_overlay.ui:92 data/gtk/help_overlay.ui:106
-#: data/gtk/help_overlay.ui:218 data/gtk/help_overlay.ui:232
-msgctxt "shortcut window"
-msgid "Next Image"
-msgstr "Seuraava kuva"
-
-#: data/gtk/help_overlay.ui:99 data/gtk/help_overlay.ui:113
-#: data/gtk/help_overlay.ui:225 data/gtk/help_overlay.ui:239
-msgctxt "shortcut window"
-msgid "Previous Image"
-msgstr "Edellinen kuva"
-
-#: data/gtk/help_overlay.ui:119
-msgctxt "shortcut window"
-msgid "First Image"
-msgstr "Ensimmäinen kuva"
-
-#: data/gtk/help_overlay.ui:125
-msgctxt "shortcut window"
-msgid "Last Image"
-msgstr "Viimeinen kuva"
-
-#: data/gtk/help_overlay.ui:133
-msgctxt "shortcut window"
-msgid "Rotate Image"
-msgstr "Kierrä kuvaa"
-
-#: data/gtk/help_overlay.ui:136 data/gtk/help_overlay.ui:257
-msgctxt "shortcut window"
-msgid "Rotate Clockwise"
-msgstr "Kierrä myötäpäivään"
-
-#: data/gtk/help_overlay.ui:142 data/gtk/help_overlay.ui:263
-msgctxt "shortcut window"
-msgid "Rotate Counterclockwise"
-msgstr "Kierrä vastapäivään"
-
-#: data/gtk/help_overlay.ui:150
-msgctxt "shortcut window"
-msgid "Zoom Image"
-msgstr "Suurenna kuvaa"
-
-#: data/gtk/help_overlay.ui:153 data/gtk/help_overlay.ui:245
-msgctxt "shortcut window"
-msgid "Zoom In"
-msgstr "Lähennä"
-
-#: data/gtk/help_overlay.ui:159 data/gtk/help_overlay.ui:251
-msgctxt "shortcut window"
-msgid "Zoom Out"
-msgstr "Loitonna"
-
-#: data/gtk/help_overlay.ui:165
-msgctxt "shortcut window"
-msgid "Best Fit"
-msgstr "Paras sovitus"
-
-#: data/gtk/help_overlay.ui:171
-msgctxt "shortcut window"
-msgid "Original Scale"
-msgstr "Alkuperäinen skaalaus"
-
-#: data/gtk/help_overlay.ui:177
-msgctxt "shortcut window"
-msgid "200% Scale"
-msgstr "200 %:in skaalaus"
-
-#: data/gtk/help_overlay.ui:185
-msgctxt "shortcut window"
-msgid "Pan View"
-msgstr ""
-
-#: data/gtk/help_overlay.ui:188
-msgctxt "shortcut window"
-msgid "Pan Left"
-msgstr ""
-
-#: data/gtk/help_overlay.ui:194
-msgctxt "shortcut window"
-msgid "Pan Right"
-msgstr ""
-
-#: data/gtk/help_overlay.ui:200
-msgctxt "shortcut window"
-msgid "Pan Up"
-msgstr ""
-
-#: data/gtk/help_overlay.ui:206
-msgctxt "shortcut window"
-msgid "Pan Down"
-msgstr ""
-
-#: data/gtk/help_overlay.ui:214
-msgctxt "shortcut window"
-msgid "Gestures"
-msgstr "Eleet"
 
 #: data/gtk/image_page.ui:6 data/gtk/window.ui:16
 msgid "_Open With…"
@@ -258,11 +42,11 @@ msgstr "_Aseta taustakuvaksi…"
 msgid "Could not Load Image"
 msgstr "Kuvaa ei voitu ladata"
 
-#: data/gtk/image_page.ui:88 data/gtk/window.ui:115
+#: data/gtk/image_page.ui:88 data/gtk/window.ui:101
 msgid "Rotate Left"
 msgstr "Kierrä vasemmalle"
 
-#: data/gtk/image_page.ui:99 data/gtk/window.ui:126
+#: data/gtk/image_page.ui:98 data/gtk/window.ui:111
 msgid "Rotate Right"
 msgstr "Kierrä oikealle"
 
@@ -274,17 +58,61 @@ msgstr "Edellinen kuva"
 msgid "Next Image"
 msgstr "Seuraava kuva"
 
-#: data/gtk/image_view.ui:70
-msgid "Toggle Fullscreen"
-msgstr "Koko näyttö päälle/pois"
-
-#: data/gtk/image_view.ui:81
+#: data/gtk/image_view.ui:66
 msgid "Zoom Out"
 msgstr "Loitonna"
 
-#: data/gtk/image_view.ui:92
+#: data/gtk/image_view.ui:77
 msgid "Zoom In"
 msgstr "Lähennä"
+
+#: data/gtk/image_view.ui:95
+msgid "Toggle Fullscreen"
+msgstr "Koko näyttö päälle/pois"
+
+#: data/gtk/print.ui:4
+msgid "Image Layout"
+msgstr "Kuvan asettelu"
+
+#: data/gtk/print.ui:66
+msgid "Portrait page orientation"
+msgstr "Pystysuuntainen sivu"
+
+#: data/gtk/print.ui:74
+msgid "Landscape page orientation"
+msgstr "Vaakasuuntainen sivu"
+
+#: data/gtk/print.ui:88
+msgid "Center image horizontally"
+msgstr "Keskitä kuva vaakasuunnassa"
+
+#: data/gtk/print.ui:95
+msgid "Center image vertically"
+msgstr "Keskitä kuva pystysuunnassa"
+
+#: data/gtk/print.ui:107
+msgid "Image Width"
+msgstr "Kuvan leveys"
+
+#: data/gtk/print.ui:119
+msgid "Image Scale"
+msgstr "Kuvan skaalaus"
+
+#: data/gtk/print.ui:131
+msgid "Left Margin"
+msgstr "Vasen reunus"
+
+#: data/gtk/print.ui:143
+msgid "Top Margin"
+msgstr "Yläreunus"
+
+#: data/gtk/print.ui:155
+msgid "Length Unit"
+msgstr "Pituuden yksikkö"
+
+#: data/gtk/print.ui:175
+msgid "Print"
+msgstr "Tulosta"
 
 #: data/gtk/properties_view.ui:29
 msgid "Folder"
@@ -355,152 +183,403 @@ msgid "_Open…"
 msgstr "_Avaa…"
 
 #: data/gtk/window.ui:46
-msgid "_Help"
-msgstr "O_hje"
-
-#: data/gtk/window.ui:50
 msgid "_Keyboard Shortcuts"
 msgstr "_Pikanäppäimet"
 
-#: data/gtk/window.ui:54
+#: data/gtk/window.ui:50
 msgid "_About Loupe"
 msgstr "_Tietoja - Loupe"
 
-#: data/gtk/window.ui:94
+#. If the file exists, get display name
+#: data/gtk/window.ui:59 data/org.gnome.Loupe.desktop.in.in:3
+#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/application.rs:188
+#: src/window.rs:796 src/window.rs:802
+msgid "Loupe"
+msgstr "Loupe"
+
+#: data/gtk/window.ui:80
 msgid "Copy to Clipboard"
 msgstr "Kopioi leikepöydälle"
 
-#: data/gtk/window.ui:101
+#: data/gtk/window.ui:87
 msgid "Move to Trash"
 msgstr "Siirrä roskakoriin"
 
-#: data/gtk/window.ui:107
+#: data/gtk/window.ui:93
 msgid "Main Menu"
 msgstr "Päävalikko"
 
-#: data/gtk/window.ui:141
+#: data/gtk/window.ui:125
 msgid "Image Properties"
 msgstr "Kuvan ominaisuudet"
 
-#: data/gtk/window.ui:161
+#: data/gtk/window.ui:145
 msgid "View Images"
 msgstr "Katso kuvia"
 
-#: data/gtk/window.ui:162
+#: data/gtk/window.ui:146
 msgid "Drag and drop images here"
 msgstr "Vedä ja pudota kuvat tähän"
 
-#: data/gtk/window.ui:166
+#: data/gtk/window.ui:150
 msgid "_Open File…"
 msgstr "_Avaa tiedosto…"
 
-#: src/application.rs:196
+#: data/org.gnome.Loupe.desktop.in.in:11
+msgid "Picture;Slideshow;Graphics;Image Viewer;"
+msgstr "Picture;Slideshow;Graphics;Image Viewer;kuvakatselin;diaesitys;"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:7 src/application.rs:191
 msgid "The Loupe Team"
 msgstr "Loupe-tiimi"
 
+#: data/org.gnome.Loupe.metainfo.xml.in.in:8
+msgid "View images"
+msgstr "Katsele kuvia"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:10
+msgid "Browse through your images and inspect their metadata."
+msgstr "Selaa kuvia ja tutki niiden metatietoja."
+
+#: data/resources/gtk/help-overlay.ui:11
+msgctxt "shortcut window"
+msgid "General Shortcuts"
+msgstr "Yleiset pikanäppäimet"
+
+#: data/resources/gtk/help-overlay.ui:14
+msgctxt "shortcut window"
+msgid "Show Main Menu"
+msgstr "Näytä päävalikko"
+
+#: data/resources/gtk/help-overlay.ui:20
+msgctxt "shortcut window"
+msgid "Copy Image to Clipboard"
+msgstr "Kopioi kuva leikepöydälle"
+
+#: data/resources/gtk/help-overlay.ui:26
+msgctxt "shortcut window"
+msgid "Move Image to Trash"
+msgstr "Siirrä kuva roskakoriin"
+
+#: data/resources/gtk/help-overlay.ui:32
+msgctxt "shortcut window"
+msgid "Toggle Image Properties"
+msgstr "Näytä/piilota kuvan ominaisuudet"
+
+#: data/resources/gtk/help-overlay.ui:38
+msgctxt "shortcut window"
+msgid "Set as Background"
+msgstr "Aseta taustakuvaksi"
+
+#: data/resources/gtk/help-overlay.ui:44
+msgctxt "shortcut window"
+msgid "Toggle Fullscreen"
+msgstr "Koko näyttö päälle/pois"
+
+#: data/resources/gtk/help-overlay.ui:50
+msgctxt "shortcut window"
+msgid "Leave Fullscreen"
+msgstr "Poistu koko näytön tilasta"
+
+#: data/resources/gtk/help-overlay.ui:56
+msgctxt "shortcut window"
+msgid "New Window"
+msgstr "Uusi ikkuna"
+
+#: data/resources/gtk/help-overlay.ui:62
+msgctxt "shortcut window"
+msgid "Open Help"
+msgstr "Avaa ohje"
+
+#: data/resources/gtk/help-overlay.ui:68
+msgctxt "shortcut window"
+msgid "Show Keyboard Shortcuts"
+msgstr "Näytä pikanäppäimet"
+
+#: data/resources/gtk/help-overlay.ui:74
+msgctxt "shortcut window"
+msgid "Close Window"
+msgstr "Sulje ikkuna"
+
+#: data/resources/gtk/help-overlay.ui:80
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "Lopeta"
+
+#: data/resources/gtk/help-overlay.ui:88
+msgctxt "shortcut window"
+msgid "Navigate Images"
+msgstr "Kuvien välillä liikkuminen"
+
+#: data/resources/gtk/help-overlay.ui:92 data/resources/gtk/help-overlay.ui:106
+#: data/resources/gtk/help-overlay.ui:218
+#: data/resources/gtk/help-overlay.ui:232
+msgctxt "shortcut window"
+msgid "Next Image"
+msgstr "Seuraava kuva"
+
+#: data/resources/gtk/help-overlay.ui:99 data/resources/gtk/help-overlay.ui:113
+#: data/resources/gtk/help-overlay.ui:225
+#: data/resources/gtk/help-overlay.ui:239
+msgctxt "shortcut window"
+msgid "Previous Image"
+msgstr "Edellinen kuva"
+
+#: data/resources/gtk/help-overlay.ui:119
+msgctxt "shortcut window"
+msgid "First Image"
+msgstr "Ensimmäinen kuva"
+
+#: data/resources/gtk/help-overlay.ui:125
+msgctxt "shortcut window"
+msgid "Last Image"
+msgstr "Viimeinen kuva"
+
+#: data/resources/gtk/help-overlay.ui:133
+msgctxt "shortcut window"
+msgid "Rotate Image"
+msgstr "Kierrä kuvaa"
+
+#: data/resources/gtk/help-overlay.ui:136
+#: data/resources/gtk/help-overlay.ui:257
+msgctxt "shortcut window"
+msgid "Rotate Clockwise"
+msgstr "Kierrä myötäpäivään"
+
+#: data/resources/gtk/help-overlay.ui:142
+#: data/resources/gtk/help-overlay.ui:263
+msgctxt "shortcut window"
+msgid "Rotate Counterclockwise"
+msgstr "Kierrä vastapäivään"
+
+#: data/resources/gtk/help-overlay.ui:150
+msgctxt "shortcut window"
+msgid "Zoom Image"
+msgstr "Suurenna kuvaa"
+
+#: data/resources/gtk/help-overlay.ui:153
+#: data/resources/gtk/help-overlay.ui:245
+msgctxt "shortcut window"
+msgid "Zoom In"
+msgstr "Lähennä"
+
+#: data/resources/gtk/help-overlay.ui:159
+#: data/resources/gtk/help-overlay.ui:251
+msgctxt "shortcut window"
+msgid "Zoom Out"
+msgstr "Loitonna"
+
+#: data/resources/gtk/help-overlay.ui:165
+msgctxt "shortcut window"
+msgid "Best Fit"
+msgstr "Paras sovitus"
+
+#: data/resources/gtk/help-overlay.ui:171
+msgctxt "shortcut window"
+msgid "Original Scale"
+msgstr "Alkuperäinen skaalaus"
+
+#: data/resources/gtk/help-overlay.ui:177
+msgctxt "shortcut window"
+msgid "200% Scale"
+msgstr "200 %:in skaalaus"
+
+#: data/resources/gtk/help-overlay.ui:185
+msgctxt "shortcut window"
+msgid "Pan View"
+msgstr "Panoroi näkymää"
+
+#: data/resources/gtk/help-overlay.ui:188
+msgctxt "shortcut window"
+msgid "Pan Left"
+msgstr "Panoroi vasemmalle"
+
+#: data/resources/gtk/help-overlay.ui:194
+msgctxt "shortcut window"
+msgid "Pan Right"
+msgstr "Panoroi oikealle"
+
+#: data/resources/gtk/help-overlay.ui:200
+msgctxt "shortcut window"
+msgid "Pan Up"
+msgstr "Panoroi ylös"
+
+#: data/resources/gtk/help-overlay.ui:206
+msgctxt "shortcut window"
+msgid "Pan Down"
+msgstr "Panoroi alas"
+
+#: data/resources/gtk/help-overlay.ui:214
+msgctxt "shortcut window"
+msgid "Gestures"
+msgstr "Eleet"
+
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/application.rs:205
+#: src/application.rs:200
 msgid "translator-credits"
 msgstr "Jiri Grönroos"
 
-#: src/application.rs:206
+#: src/application.rs:201
 msgid "Copyright © 2020–2023 Christopher Davis et al."
 msgstr "Tekijänoikeus © 2020–2023 Christopher Davis ja muut"
 
-#: src/file_model.rs:114
+#: src/decoder/formats/heif.rs:55
+msgid "Failed to read image file information"
+msgstr "Kuvatiedoston tietojen lukeminen epäonnistui"
+
+#: src/decoder/formats/heif.rs:60 src/decoder/formats/heif.rs:93
+#: src/decoder/formats/image_rs_other.rs:116
+#: src/decoder/formats/image_rs_other.rs:125
+#: src/decoder/formats/image_rs_other.rs:132
+msgid "Failed to decode image"
+msgstr "Kuvan tulkinta epäonnistui"
+
+#: src/decoder/formats/mod.rs:72
+msgid "Animated GIF"
+msgstr "Animoitu GIF"
+
+#: src/decoder/formats/mod.rs:73
+msgid "Animated WebP"
+msgstr "Animoitu WebP"
+
+#: src/decoder/formats/mod.rs:74
+msgid "Animated PNG"
+msgstr "Animoitu PNG"
+
+#: src/decoder/mod.rs:189
+msgid "Unknown image format: {}"
+msgstr "Tuntematon kuvamuoto: {}"
+
+#: src/decoder/mod.rs:194
+msgid "Unknown image format"
+msgstr "Tuntematon kuvamuoto"
+
+#: src/decoder/mod.rs:222
+msgid "Could not open image"
+msgstr "Kuvaa ei voitu avata"
+
+#: src/decoder/mod.rs:226
+msgid "Could not read image"
+msgstr "Kuvaa ei voitu lukea"
+
+#: src/file_model.rs:118
 msgid "Could not list other files in directory."
 msgstr "Muita kansion tiedostoja ei voitu listata."
 
 #. Translators: short for "north" in GPS coordinate
-#: src/image_metadata/gps.rs:136
+#: src/image_metadata/gps.rs:154
 msgid "N"
-msgstr ""
+msgstr "N"
 
 #. Translators: short for "south" in GPS coordinate
-#: src/image_metadata/gps.rs:139
+#: src/image_metadata/gps.rs:157
 msgid "S"
-msgstr ""
+msgstr "S"
 
 #. Translators: short for "east" in GPS coordinate
-#: src/image_metadata/gps.rs:149
+#: src/image_metadata/gps.rs:167
 msgid "E"
-msgstr ""
+msgstr "E"
 
 #. Translators: short for "west" in GPS coordinate
-#: src/image_metadata/gps.rs:152
+#: src/image_metadata/gps.rs:170
 msgid "W"
-msgstr ""
+msgstr "W"
 
 #. Translators: Unit for exposure time in seconds
-#: src/image_metadata/mod.rs:129
+#: src/image_metadata/mod.rs:144
 msgid "1\\u{2215}{}\\u{202F}s"
 msgstr "1\\u{2215}{}\\u{202F} s"
 
 #. Translators: Unit for focal length in millimeters
-#: src/image_metadata/mod.rs:154
+#: src/image_metadata/mod.rs:169
 msgid "{}\\u{202F}mm"
 msgstr "{}\\u{202F} mm"
 
-#: src/widgets/image.rs:651
-msgid "File does not exist"
-msgstr "Tiedostoa ei ole olemassa"
+#. Translators: This is the date and time format we use in metadata output etc.
+#. The format has to follow <https://docs.gtk.org/glib/method.DateTime.format.html>
+#. The default is already translated. Don't change if you are not sure what to use.
+#: src/util/mod.rs:36
+#, c-format
+msgid "%x %X"
+msgstr "%x %X"
 
-#: src/widgets/image_view.rs:574
-msgid "Failed to open new background image"
-msgstr "Uuden taustakuvan avaaminen epäonnistui"
-
-#: src/widgets/image_view.rs:591
-msgid "Set as background."
-msgstr "Aseta taustakuvaksi."
-
-#: src/widgets/image_view.rs:598
-msgid "Could not set background."
-msgstr "Taustakuvaa ei voitu asettaa."
-
-#: src/window.rs:355
-msgid "“{}” is not a valid image."
-msgstr "“{}” ei ole kelvollinen kuva."
-
-#: src/window.rs:431
-msgid "Open Image"
-msgstr "Avaa kuva"
-
-#: src/window.rs:485
-msgid "Image copied to clipboard"
-msgstr "Kuva kopioitu leikepöydälle"
-
-#: src/window.rs:499
-msgid "Image moved to trash"
-msgstr "Kuva siirretty roskakoriin"
-
-#: src/window.rs:500
-msgid "Undo"
-msgstr "Kumoa"
-
-#: src/window.rs:511
+#: src/util/mod.rs:171 src/window.rs:522
 msgid "Failed to restore image from trash"
 msgstr "Kuvan palauttaminen roskakorista epäonnistui"
 
-#: src/window.rs:526
+#: src/util/mod.rs:192
+msgid "Failed to open image"
+msgstr "Kuvan avaaminen epäonnistui"
+
+#. Translators: This is a toast notification, informing the user that an image has been set as background.
+#: src/widgets/image_view.rs:620
+msgid "Set as background."
+msgstr "Aseta taustakuvaksi."
+
+#: src/widgets/image_view.rs:631
+msgid "Could not set background."
+msgstr "Taustakuvaa ei voitu asettaa."
+
+#: src/window.rs:426
+msgid "Supported image formats"
+msgstr "Tuetut kuvamuodot"
+
+#: src/window.rs:432
+msgid "All files"
+msgstr "Kaikki tiedostot"
+
+#: src/window.rs:439
+msgid "Open Image"
+msgstr "Avaa kuva"
+
+#: src/window.rs:494
+msgid "Image copied to clipboard"
+msgstr "Kuva kopioitu leikepöydälle"
+
+#: src/window.rs:510
+msgid "Image moved to trash"
+msgstr "Kuva siirretty roskakoriin"
+
+#: src/window.rs:511
+msgid "Undo"
+msgstr "Kumoa"
+
+#: src/window.rs:537
 msgid "Failed to move image to trash"
 msgstr "Kuvan siirtäminen roskakoriin epäonnistui"
 
-#: src/window.rs:541
+#: src/window.rs:552
 msgid "Permanently Delete Image?"
 msgstr "Poistetaanko kuva pysyvästi?"
 
-#: src/window.rs:543
+#: src/window.rs:554
 msgid "The image “{}” can only be deleted permanently."
 msgstr "Kuva “{}” on mahdollista poistaa vain pysyvästi."
 
-#: src/window.rs:550
+#: src/window.rs:562
 msgid "Cancel"
 msgstr "Peru"
 
-#: src/window.rs:550
+#: src/window.rs:563
 msgid "Delete"
 msgstr "Poista"
 
-#: src/window.rs:559
+#: src/window.rs:574
 msgid "Failed to delete image"
 msgstr "Kuvan poistaminen epäonnistui"
+
+#~ msgid "Christopher Davis"
+#~ msgstr "Christopher Davis"
+
+#~ msgid "_Help"
+#~ msgstr "O_hje"
+
+#~ msgid "File does not exist"
+#~ msgstr "Tiedostoa ei ole olemassa"
+
+#~ msgid "Failed to open new background image"
+#~ msgstr "Uuden taustakuvan avaaminen epäonnistui"
+
+#~ msgid "“{}” is not a valid image."
+#~ msgstr "“{}” ei ole kelvollinen kuva."
