@@ -256,6 +256,11 @@ mod imp {
 
             obj.on_images_available();
 
+            let gesture_click = gtk::GestureClick::new();
+            gesture_click
+                .connect_pressed(glib::clone!(@weak obj => move |_, _, _, _| obj.on_click()));
+            obj.add_controller(gesture_click);
+
             let current_image_signals = self.image_view.current_image_signals();
             // clone! is a macro from glib-rs that allows
             // you to easily handle references in callbacks
@@ -828,6 +833,16 @@ impl LpWindow {
                 .current_file()
                 .and_then(|f| util::get_file_display_name(&f)) // If the file exists, get display name
                 .unwrap_or_else(|| gettext("Loupe")) // Return that or the default if there's nothing
+        }
+    }
+
+    fn on_click(&self) {
+        self.show_controls();
+
+        if self.can_hide_controls() {
+            self.queue_hide_controls();
+        } else {
+            self.dequeue_hide_controls();
         }
     }
 
