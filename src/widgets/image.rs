@@ -878,7 +878,7 @@ impl LpImage {
     ///
     /// During image rotation the image does not actually fit into widget.
     /// Instead the level is interpolated between zoom levels
-    fn zoom_level_best_fit(&self) -> f64 {
+    pub fn zoom_level_best_fit(&self) -> f64 {
         self.zoom_level_best_fit_for_rotation(self.rotation())
     }
 
@@ -1142,7 +1142,7 @@ impl LpImage {
     }
 
     /// Maximal zoom allowed for this image
-    fn max_zoom(&self) -> f64 {
+    pub fn max_zoom(&self) -> f64 {
         if let Some(decoder::ImageFormat::Svg) = self.format() {
             let (width, height) = self.original_dimensions();
             // Avoid division by 0

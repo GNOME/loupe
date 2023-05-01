@@ -168,6 +168,10 @@ impl LpApplication {
             "win.zoom-out",
             &["<Ctrl>minus", "minus", "<Ctrl>KP_Subtract", "KP_Subtract"],
         );
+        self.set_accels_for_action(
+            "win.zoom-to-dialog",
+            &["<Ctrl>g"],
+        );
 
         self.set_accels_for_action("win.pan-left", &["<Ctrl>Left"]);
         self.set_accels_for_action("win.pan-right", &["<Ctrl>Right"]);

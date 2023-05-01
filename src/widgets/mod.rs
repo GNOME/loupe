@@ -23,6 +23,7 @@ mod print;
 mod print_preview;
 mod properties_view;
 mod sliding_view;
+mod zoom_to;
 
 pub use image::LpImage;
 pub use image_page::LpImagePage;
@@ -31,3 +32,4 @@ pub use print::LpPrint;
 pub use print_preview::LpPrintPreview;
 pub use properties_view::LpPropertiesView;
 pub use sliding_view::LpSlidingView;
+pub use zoom_to::LpZoomTo;

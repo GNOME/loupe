@@ -22,6 +22,7 @@
 
 use crate::deps::*;
 use crate::util::gettext::*;
+use crate::widgets::LpZoomTo;
 
 use crate::util::spawn;
 use adw::prelude::*;
@@ -155,6 +156,10 @@ mod imp {
 
             klass.install_action("win.zoom-best-fit", None, move |win, _, _| {
                 win.zoom_best_fit();
+            });
+
+            klass.install_action("win.zoom-to-dialog", None, move |win, _, _| {
+                LpZoomTo::new(win.clone()).present();
             });
 
             klass.install_action("win.pan-up", None, move |win, _, _| {
