@@ -88,7 +88,7 @@
             <property name="show-end-title-buttons" bind-source="LpWindow" bind-property="fullscreened" bind-flags="sync-create|invert-boolean"/>
             <property name="show-start-title-buttons" bind-source="LpWindow" bind-property="fullscreened" bind-flags="sync-create|invert-boolean"/>"
             <style>
-              <class name="fullscreen-osd" />
+              <class name="fullscreen-osd"/>
             </style>
             <child type="start">
               <object class="GtkButton">
@@ -118,7 +118,7 @@
                         <property name="tooltip-text" translatable="yes">Rotate Left</property>
                         <property name="action-name">win.rotate_ccw</property>
                         <style>
-                          <class name="flat" />
+                          <class name="flat"/>
                         </style>
                       </object>
                     </child>
@@ -128,7 +128,7 @@
                         <property name="tooltip-text" translatable="yes">Rotate Right</property>
                         <property name="action-name">win.rotate_cw</property>
                         <style>
-                          <class name="flat" />
+                          <class name="flat"/>
                         </style>
                       </object>
                     </child>
@@ -143,7 +143,7 @@
               </object>
             </child>
             <child>
-              <object class="GtkEventControllerMotion" id="headerbar_events" />
+              <object class="GtkEventControllerMotion" id="headerbar_events"/>
             </child>
           </object>
         </child>
@@ -208,12 +208,6 @@
         </property>
       </object>
     </property>
-    <child>
-      <object class="GtkEventControllerMotion" id="motion_controller">
-        <signal name="motion" handler="on_motion_cb" swapped="yes"/>
-        <signal name="enter" handler="on_motion_cb" swapped="yes"/>
-        <signal name="leave" handler="on_motion_cb" swapped="yes"/>
-      </object>
-    </child>
   </template>
 </interface>
+

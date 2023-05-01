@@ -31,7 +31,7 @@ use gtk::CompositeTemplate;
 
 use once_cell::sync::OnceCell;
 
-use std::cell::RefCell;
+use std::cell::{Cell, RefCell};
 use std::path::{Path, PathBuf};
 
 use crate::config;
@@ -92,8 +92,8 @@ mod imp {
         #[template_child]
         pub(super) drop_target: TemplateChild<gtk::DropTarget>,
         /// Motion controller for complete window
-        #[template_child]
-        pub(super) motion_controller: TemplateChild<gtk::EventControllerMotion>,
+        pub(super) motion_controller: gtk::EventControllerMotion,
+        pub(super) pointer_position: Cell<(f64, f64)>,
 
         pub(super) show_controls_animation: OnceCell<adw::TimedAnimation>,
         pub(super) hide_controls_animation: OnceCell<adw::TimedAnimation>,
@@ -260,6 +260,12 @@ mod imp {
             gesture_click
                 .connect_pressed(glib::clone!(@weak obj => move |_, _, _, _| obj.on_click()));
             obj.add_controller(gesture_click);
+
+            self.motion_controller
+                .connect_motion(glib::clone!(@weak obj => move |_, x, y| obj.on_motion((x,y))));
+            self.motion_controller
+                .connect_enter(glib::clone!(@weak obj => move |_, x, y| obj.on_motion((x,y))));
+            obj.add_controller(self.motion_controller.clone());
 
             let current_image_signals = self.image_view.current_image_signals();
             // clone! is a macro from glib-rs that allows
@@ -846,12 +852,16 @@ impl LpWindow {
         }
     }
 
-    #[template_callback]
-    fn on_motion_cb(&self) {
-        let controller = &self.imp().motion_controller;
-        if controller.current_event_time() == 0 {
+    fn on_motion(&self, pointer_position: (f64, f64)) {
+        let imp = self.imp();
+
+        // Check if position really changed since swipe gesture sends change event with same position.
+        // Also, don't connect this to "leave" because swipe also sends fake "leave" events when
+        // the widget under the cursor changes.
+        if imp.pointer_position.get() == pointer_position {
             return;
         }
+        imp.pointer_position.set(pointer_position);
 
         self.show_controls();
 
