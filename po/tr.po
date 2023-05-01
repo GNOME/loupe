@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/Incubator/loupe/-/issues\n"
-"POT-Creation-Date: 2023-04-19 21:36+0000\n"
-"PO-Revision-Date: 2023-04-20 09:44+0300\n"
+"POT-Creation-Date: 2023-04-23 20:45+0000\n"
+"PO-Revision-Date: 2023-04-24 00:44+0300\n"
 "Last-Translator: Sabri Ünal <libreajans@gmail.com>\n"
 "Language-Team: Turkish <gnome-turk@gnome.org>\n"
 "Language: tr\n"
@@ -44,11 +44,11 @@ msgstr "_Arka Plan Olarak Ayarla…"
 msgid "Could not Load Image"
 msgstr "Görüntü yüklenemedi"
 
-#: data/gtk/image_page.ui:88 data/gtk/window.ui:111
+#: data/gtk/image_page.ui:88 data/gtk/window.ui:100
 msgid "Rotate Left"
 msgstr "Sola Döndür"
 
-#: data/gtk/image_page.ui:99 data/gtk/window.ui:122
+#: data/gtk/image_page.ui:99 data/gtk/window.ui:111
 msgid "Rotate Right"
 msgstr "Sağa Döndür"
 
@@ -60,17 +60,17 @@ msgstr "Önceki Görüntü"
 msgid "Next Image"
 msgstr "Sonraki Görüntü"
 
-#: data/gtk/image_view.ui:70
-msgid "Toggle Fullscreen"
-msgstr "Tam Ekranı Aç/Kapat"
-
-#: data/gtk/image_view.ui:81
+#: data/gtk/image_view.ui:66
 msgid "Zoom Out"
 msgstr "Uzaklaştır"
 
-#: data/gtk/image_view.ui:92
+#: data/gtk/image_view.ui:77
 msgid "Zoom In"
 msgstr "Yakınlaştır"
+
+#: data/gtk/image_view.ui:95
+msgid "Toggle Fullscreen"
+msgstr "Tam Ekranı Aç/Kapat"
 
 #: data/gtk/print.ui:4
 msgid "Layout Image"
@@ -195,35 +195,35 @@ msgstr "Loupe _Hakkında"
 #. If the file exists, get display name
 #: data/gtk/window.ui:59 data/org.gnome.Loupe.desktop.in.in:3
 #: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/application.rs:191
-#: src/window.rs:665 src/window.rs:671
+#: src/window.rs:784 src/window.rs:790
 msgid "Loupe"
 msgstr "Loupe"
 
-#: data/gtk/window.ui:90
+#: data/gtk/window.ui:79
 msgid "Copy to Clipboard"
 msgstr "Panoya Kopyala"
 
-#: data/gtk/window.ui:97
+#: data/gtk/window.ui:86
 msgid "Move to Trash"
 msgstr "Çöpe Taşı"
 
-#: data/gtk/window.ui:103
+#: data/gtk/window.ui:92
 msgid "Main Menu"
 msgstr "Ana Menü"
 
-#: data/gtk/window.ui:137
+#: data/gtk/window.ui:126
 msgid "Image Properties"
 msgstr "Görüntü Özellikleri"
 
-#: data/gtk/window.ui:157
+#: data/gtk/window.ui:146
 msgid "View Images"
 msgstr "Görüntüleri Görüntüle"
 
-#: data/gtk/window.ui:158
+#: data/gtk/window.ui:147
 msgid "Drag and drop images here"
 msgstr "Görüntüleri sürükleyip buraya bırakın"
 
-#: data/gtk/window.ui:162
+#: data/gtk/window.ui:151
 msgid "_Open File…"
 msgstr "Dosya _Aç…"
 
@@ -406,7 +406,7 @@ msgstr "%200 Ölçekleme"
 #: data/resources/gtk/help-overlay.ui:185
 msgctxt "shortcut window"
 msgid "Pan View"
-msgstr "Kaydırma Görünümü"
+msgstr "Görünüm Kaydırma"
 
 #: data/resources/gtk/help-overlay.ui:188
 msgctxt "shortcut window"
@@ -467,20 +467,19 @@ msgstr "Canlandırmalı WebP"
 msgid "Animated PNG"
 msgstr "Canlandırmalı PNG"
 
-#: src/decoder/mod.rs:192
-#| msgid "Animated image formats"
+#: src/decoder/mod.rs:189
 msgid "Unknown image format: {}"
 msgstr "Bilinmeyen görüntü biçimi: {}"
 
-#: src/decoder/mod.rs:199
+#: src/decoder/mod.rs:194
 msgid "Unknown image format"
 msgstr "Bilinmeyen görüntü biçimi"
 
-#: src/decoder/mod.rs:227
+#: src/decoder/mod.rs:222
 msgid "Could not open image"
 msgstr "Görüntü açılamadı"
 
-#: src/decoder/mod.rs:231
+#: src/decoder/mod.rs:226
 msgid "Could not read image"
 msgstr "Görüntü okunamadı"
 
@@ -526,7 +525,7 @@ msgstr "{}\\u{202F}mm"
 msgid "%x %X"
 msgstr "%x %X"
 
-#: src/util/mod.rs:171 src/window.rs:500
+#: src/util/mod.rs:171 src/window.rs:517
 msgid "Failed to restore image from trash"
 msgstr "Görüntü çöpten geri yüklenemedi"
 
@@ -535,51 +534,59 @@ msgid "Failed to open image"
 msgstr "Görüntü açılamadı"
 
 #. Translators: This is a toast notification, informing the user that an image has been set as background.
-#: src/widgets/image_view.rs:599
+#: src/widgets/image_view.rs:620
 msgid "Set as background."
 msgstr "Arka plan olarak ayarla."
 
-#: src/widgets/image_view.rs:610
+#: src/widgets/image_view.rs:631
 msgid "Could not set background."
 msgstr "Arka plan olarak ayarlanamadı."
 
-#: src/window.rs:418
+#: src/window.rs:421
+msgid "Supported image formats"
+msgstr "Desteklenen görüntü biçimleri"
+
+#: src/window.rs:427
+msgid "All files"
+msgstr "Tüm dosyalar"
+
+#: src/window.rs:434
 msgid "Open Image"
 msgstr "Görüntü Aç"
 
-#: src/window.rs:472
+#: src/window.rs:489
 msgid "Image copied to clipboard"
 msgstr "Görüntü panoya kopyalandı"
 
-#: src/window.rs:488
+#: src/window.rs:505
 msgid "Image moved to trash"
 msgstr "Görüntü çöpe taşındı"
 
-#: src/window.rs:489
+#: src/window.rs:506
 msgid "Undo"
 msgstr "Geri Al"
 
-#: src/window.rs:515
+#: src/window.rs:532
 msgid "Failed to move image to trash"
 msgstr "Görüntü çöpe taşınamadı"
 
-#: src/window.rs:530
+#: src/window.rs:547
 msgid "Permanently Delete Image?"
 msgstr "Görüntü Kalıcı Olarak Silinsin mi?"
 
-#: src/window.rs:532
+#: src/window.rs:549
 msgid "The image “{}” can only be deleted permanently."
 msgstr "“{}” görüntüsü yalnızca kalıcı olarak silinebilir."
 
-#: src/window.rs:540
+#: src/window.rs:557
 msgid "Cancel"
 msgstr "İptal Et"
 
-#: src/window.rs:541
+#: src/window.rs:558
 msgid "Delete"
 msgstr "Sil"
 
-#: src/window.rs:552
+#: src/window.rs:569
 msgid "Failed to delete image"
 msgstr "Görüntü silinemedi"
 
