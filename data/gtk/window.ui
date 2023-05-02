@@ -56,6 +56,7 @@
     <property name="default-width">600</property>
     <property name="default-height">498</property>
     <property name="width-request">360</property>
+    <property name="height-request">360</property>
     <property name="title" translatable="yes">Loupe</property>
     <signal name="notify::fullscreened" handler="on_fullscreened" swapped="yes"/>"
     <binding name="title">
@@ -67,6 +68,20 @@
         </lookup>
       </closure>
     </binding>
+    <child>
+      <object class="AdwBreakpoint">
+        <condition>min-width: 590px</condition>
+        <setter object="properties_flap" property="orientation">horizontal</setter>
+        <setter object="stack" property="visible">true</setter>"
+      </object>
+    </child>
+    <child>
+      <object class="AdwBreakpoint">
+        <condition>max-width: 590px</condition>
+        <setter object="properties_flap" property="orientation">vertical</setter>
+        <setter object="stack" property="visible">true</setter>""
+      </object>
+    </child>
     <property name="content">
       <object class="AdwToolbarView" id="toolbar_view">
         <binding name="top-bar-style">
@@ -147,7 +162,7 @@
             </child>
           </object>
         </child>
-        <property name="content">
+        <child>
           <object class="AdwToastOverlay" id="toast_overlay">
             <property name="child">
               <object class="AdwFlap" id="properties_flap">
@@ -193,6 +208,7 @@
                 </property>
                 <property name="flap">
                   <object class="LpPropertiesView" id="properties_view">
+                    <property name="vexpand">true</property>
                     <binding name="image">
                       <lookup name="image">
                         <lookup name="current-page">
@@ -205,7 +221,7 @@
               </object>
             </property>
           </object>
-        </property>
+        </child>
       </object>
     </property>
   </template>
