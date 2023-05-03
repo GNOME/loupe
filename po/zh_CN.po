@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/Incubator/loupe/-/issues\n"
-"POT-Creation-Date: 2023-04-21 16:11+0000\n"
-"PO-Revision-Date: 2023-04-22 11:26+0800\n"
+"POT-Creation-Date: 2023-04-28 17:51+0000\n"
+"PO-Revision-Date: 2023-05-03 16:40+0800\n"
 "Last-Translator: Nanling <neithern@outlook.com>\n"
 "Language-Team: Chinese - China <i18n-zh@googlegroups.com>\n"
 "Language: zh_CN\n"
@@ -42,11 +42,11 @@ msgstr "设为背景(_S)…"
 msgid "Could not Load Image"
 msgstr "无法加载图像"
 
-#: data/gtk/image_page.ui:88 data/gtk/window.ui:100
+#: data/gtk/image_page.ui:88 data/gtk/window.ui:101
 msgid "Rotate Left"
 msgstr "向左旋转"
 
-#: data/gtk/image_page.ui:99 data/gtk/window.ui:111
+#: data/gtk/image_page.ui:98 data/gtk/window.ui:111
 msgid "Rotate Right"
 msgstr "向右旋转"
 
@@ -71,8 +71,8 @@ msgid "Toggle Fullscreen"
 msgstr "切换全屏"
 
 #: data/gtk/print.ui:4
-msgid "Layout Image"
-msgstr "布局图像"
+msgid "Image Layout"
+msgstr "图像布局"
 
 #: data/gtk/print.ui:66
 msgid "Portrait page orientation"
@@ -192,36 +192,36 @@ msgstr "关于(_A)"
 
 #. If the file exists, get display name
 #: data/gtk/window.ui:59 data/org.gnome.Loupe.desktop.in.in:3
-#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/application.rs:191
-#: src/window.rs:784 src/window.rs:790
+#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/application.rs:188
+#: src/window.rs:796 src/window.rs:802
 msgid "Loupe"
 msgstr "放大镜"
 
-#: data/gtk/window.ui:79
+#: data/gtk/window.ui:80
 msgid "Copy to Clipboard"
 msgstr "复制到剪贴板"
 
-#: data/gtk/window.ui:86
+#: data/gtk/window.ui:87
 msgid "Move to Trash"
 msgstr "移至回收站"
 
-#: data/gtk/window.ui:92
+#: data/gtk/window.ui:93
 msgid "Main Menu"
 msgstr "主菜单"
 
-#: data/gtk/window.ui:126
+#: data/gtk/window.ui:125
 msgid "Image Properties"
 msgstr "图像属性"
 
-#: data/gtk/window.ui:146
+#: data/gtk/window.ui:145
 msgid "View Images"
 msgstr "查看图像"
 
-#: data/gtk/window.ui:147
+#: data/gtk/window.ui:146
 msgid "Drag and drop images here"
 msgstr "拖放图片到这里"
 
-#: data/gtk/window.ui:151
+#: data/gtk/window.ui:150
 msgid "_Open File…"
 msgstr "打开文件…"
 
@@ -231,7 +231,7 @@ msgstr ""
 "Picture;Slideshow;Graphics;Image Viewer;图片;图片查看器;幻灯片;图像;图像查看"
 "器;"
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:7 src/application.rs:194
+#: data/org.gnome.Loupe.metainfo.xml.in.in:7 src/application.rs:191
 msgid "The Loupe Team"
 msgstr "Loupe 团队"
 
@@ -240,22 +240,8 @@ msgid "View images"
 msgstr "查看图像"
 
 #: data/org.gnome.Loupe.metainfo.xml.in.in:10
-msgid ""
-"A simple image viewer which allows you to browse through your images and "
-"inspect their metadata."
-msgstr "一个简单的图像浏览器，允许你浏览你的图像并检查其元数据。"
-
-#: data/org.gnome.Loupe.metainfo.xml.in.in:11
-msgid "The following features are not available yet"
-msgstr "以下功能还不能使用"
-
-#: data/org.gnome.Loupe.metainfo.xml.in.in:13
-msgid "Applying image color profiles"
-msgstr "应用图像颜色配置文件"
-
-#: data/org.gnome.Loupe.metainfo.xml.in.in:14
-msgid "Printing"
-msgstr "打印"
+msgid "Browse through your images and inspect their metadata."
+msgstr "浏览您的图像并检查其元数据。"
 
 #: data/resources/gtk/help-overlay.ui:11
 msgctxt "shortcut window"
@@ -431,11 +417,11 @@ msgid "Gestures"
 msgstr "手势"
 
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/application.rs:203
+#: src/application.rs:200
 msgid "translator-credits"
 msgstr "Nanling <neithern@outlook.com>"
 
-#: src/application.rs:204
+#: src/application.rs:201
 msgid "Copyright © 2020–2023 Christopher Davis et al."
 msgstr "Copyright © 2020-2023 Christopher Davis 等人。"
 
@@ -520,7 +506,7 @@ msgstr "{}\\u{202F}mm"
 msgid "%x %X"
 msgstr "%x %X"
 
-#: src/util/mod.rs:171 src/window.rs:517
+#: src/util/mod.rs:171 src/window.rs:522
 msgid "Failed to restore image from trash"
 msgstr "从垃圾箱中恢复图像失败"
 
@@ -537,53 +523,65 @@ msgstr "已设为背景。"
 msgid "Could not set background."
 msgstr "无法设为背景。"
 
-#: src/window.rs:421
+#: src/window.rs:426
 msgid "Supported image formats"
 msgstr "支持的图像格式"
 
-#: src/window.rs:427
+#: src/window.rs:432
 msgid "All files"
 msgstr "所有文件"
 
-#: src/window.rs:434
+#: src/window.rs:439
 msgid "Open Image"
 msgstr "打开图像"
 
-#: src/window.rs:489
+#: src/window.rs:494
 msgid "Image copied to clipboard"
 msgstr "图像已复制到剪贴板上"
 
-#: src/window.rs:505
+#: src/window.rs:510
 msgid "Image moved to trash"
 msgstr "图片已移至回收站"
 
-#: src/window.rs:506
+#: src/window.rs:511
 msgid "Undo"
 msgstr "撤销"
 
-#: src/window.rs:532
+#: src/window.rs:537
 msgid "Failed to move image to trash"
 msgstr "将图像移至回收站失败"
 
-#: src/window.rs:547
+#: src/window.rs:552
 msgid "Permanently Delete Image?"
 msgstr "永久删除图像？"
 
-#: src/window.rs:549
+#: src/window.rs:554
 msgid "The image “{}” can only be deleted permanently."
 msgstr "“{}” 只能被永久删除。"
 
-#: src/window.rs:557
+#: src/window.rs:562
 msgid "Cancel"
 msgstr "取消"
 
-#: src/window.rs:558
+#: src/window.rs:563
 msgid "Delete"
 msgstr "删除"
 
-#: src/window.rs:569
+#: src/window.rs:574
 msgid "Failed to delete image"
 msgstr "删除图像失败"
+
+#~ msgid "Layout Image"
+#~ msgstr "布局图像"
+
+#~ msgid "The following features are not available yet"
+#~ msgstr "以下功能还不能使用"
+
+#~ msgid "Applying image color profiles"
+#~ msgstr "应用图像颜色配置文件"
+
+#~ msgid "Printing"
+#~ msgstr "打印"
 
 #~ msgid "Christopher Davis"
 #~ msgstr "Christopher Davis"
