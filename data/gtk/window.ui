@@ -162,7 +162,7 @@
             </child>
           </object>
         </child>
-        <child>
+        <property name="content">
           <object class="AdwToastOverlay" id="toast_overlay">
             <property name="child">
               <object class="AdwFlap" id="properties_flap">
@@ -221,7 +221,7 @@
               </object>
             </property>
           </object>
-        </child>
+        </property>
       </object>
     </property>
   </template>

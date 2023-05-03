@@ -210,8 +210,14 @@ mod imp {
             let (overlay1_min, _, _, _) = self.controls_box_start.measure(orientation, for_size);
             let (overlay2_min, _, _, _) = self.controls_box_end.measure(orientation, for_size);
 
+            let overlay_min = match orientation {
+                gtk::Orientation::Horizontal => overlay1_min + overlay2_min,
+                gtk::Orientation::Vertical => i32::max(overlay1_min, overlay2_min),
+                _ => unreachable!(),
+            };
+
             // take as minimum whatever is larger
-            let min = i32::max(child_min, overlay1_min + overlay2_min);
+            let min = i32::max(child_min, overlay_min);
             // take as natural whatever is larger
             let natural = i32::max(child_natural, min);
 
