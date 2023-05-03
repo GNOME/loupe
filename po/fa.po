@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/Incubator/loupe/-/issues\n"
-"POT-Creation-Date: 2023-04-24 23:59+0000\n"
-"PO-Revision-Date: 2023-04-25 03:56+0330\n"
+"POT-Creation-Date: 2023-04-27 02:21+0000\n"
+"PO-Revision-Date: 2023-05-03 12:26+0330\n"
 "Last-Translator: Danial Behzadi <dani.behzi@ubuntu.com>\n"
 "Language-Team: Persian <fa@li.org>\n"
 "Language: fa\n"
@@ -41,11 +41,11 @@ msgstr "_تنظیم به عنوان پس زمینه…"
 msgid "Could not Load Image"
 msgstr "نتوانست تصویر را بار کند"
 
-#: data/gtk/image_page.ui:88 data/gtk/window.ui:100
+#: data/gtk/image_page.ui:88 data/gtk/window.ui:101
 msgid "Rotate Left"
 msgstr "چرخش به چپ"
 
-#: data/gtk/image_page.ui:99 data/gtk/window.ui:111
+#: data/gtk/image_page.ui:98 data/gtk/window.ui:111
 msgid "Rotate Right"
 msgstr "چرخش به راست"
 
@@ -70,8 +70,8 @@ msgid "Toggle Fullscreen"
 msgstr "تغییر وضعیت تمام‌صفحه"
 
 #: data/gtk/print.ui:4
-msgid "Layout Image"
-msgstr "تصویر چینش"
+msgid "Image Layout"
+msgstr "چینش تصویر"
 
 #: data/gtk/print.ui:66
 msgid "Portrait page orientation"
@@ -191,45 +191,44 @@ msgstr "_دربارهٔ لوپ"
 
 #. If the file exists, get display name
 #: data/gtk/window.ui:59 data/org.gnome.Loupe.desktop.in.in:3
-#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/application.rs:191
-#: src/window.rs:784 src/window.rs:790
+#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/application.rs:188
+#: src/window.rs:796 src/window.rs:802
 msgid "Loupe"
 msgstr "لوپ"
 
-#: data/gtk/window.ui:79
+#: data/gtk/window.ui:80
 msgid "Copy to Clipboard"
 msgstr "رونوشت در تخته‌گیره"
 
-#: data/gtk/window.ui:86
+#: data/gtk/window.ui:87
 msgid "Move to Trash"
 msgstr "جابه‌جایی به زباله‌دان"
 
-#: data/gtk/window.ui:92
+#: data/gtk/window.ui:93
 msgid "Main Menu"
 msgstr "فهرست اصلی"
 
-#: data/gtk/window.ui:126
+#: data/gtk/window.ui:125
 msgid "Image Properties"
 msgstr "ویژگی‌های تصویر"
 
-#: data/gtk/window.ui:146
+#: data/gtk/window.ui:145
 msgid "View Images"
 msgstr "دیدن تصویرها"
 
-#: data/gtk/window.ui:147
+#: data/gtk/window.ui:146
 msgid "Drag and drop images here"
 msgstr "تصویرها را این‌جا کشیده و رها کنید"
 
-#: data/gtk/window.ui:151
+#: data/gtk/window.ui:150
 msgid "_Open File…"
 msgstr "_گشودن پرونده…"
 
 #: data/org.gnome.Loupe.desktop.in.in:11
 msgid "Picture;Slideshow;Graphics;Image Viewer;"
-msgstr ""
-"Picture;Slideshow;Graphics;Image Viewer;عکس;نگاره;تصویر;اسلاید\"گرافیک;"
+msgstr "Picture;Slideshow;Graphics;Image Viewer;عکس;نگاره;تصویر;اسلاید\"گرافیک;"
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:7 src/application.rs:194
+#: data/org.gnome.Loupe.metainfo.xml.in.in:7 src/application.rs:191
 msgid "The Loupe Team"
 msgstr "گروه لوپ"
 
@@ -415,11 +414,11 @@ msgid "Gestures"
 msgstr "حرکت‌ها"
 
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/application.rs:203
+#: src/application.rs:200
 msgid "translator-credits"
 msgstr "دانیال بهزادی <dani.behzi@gmail.com>"
 
-#: src/application.rs:204
+#: src/application.rs:201
 msgid "Copyright © 2020–2023 Christopher Davis et al."
 msgstr "حف رونوشت © ۲۰۲۰–۲۰۲۳ کریستوفر دیویس و همکاران."
 
@@ -504,7 +503,7 @@ msgstr "{}\\u{202F}م‌م"
 msgid "%x %X"
 msgstr "%x %X"
 
-#: src/util/mod.rs:171 src/window.rs:517
+#: src/util/mod.rs:171 src/window.rs:522
 msgid "Failed to restore image from trash"
 msgstr "شکست در بازگردانی تصویر از زباله‌دان"
 
@@ -521,53 +520,56 @@ msgstr "تنظیم به عنوان پس زمینه."
 msgid "Could not set background."
 msgstr "نتوانست پس‌زمینه را تنظیم کند."
 
-#: src/window.rs:421
+#: src/window.rs:426
 msgid "Supported image formats"
 msgstr "قالب‌های تصویر پشتیبانی‌شده"
 
-#: src/window.rs:427
+#: src/window.rs:432
 msgid "All files"
 msgstr "تمام پرونده‌ها"
 
-#: src/window.rs:434
+#: src/window.rs:439
 msgid "Open Image"
 msgstr "گشودن تصویر"
 
-#: src/window.rs:489
+#: src/window.rs:494
 msgid "Image copied to clipboard"
 msgstr "تصویر در تخته‌گیره رونوشت شد"
 
-#: src/window.rs:505
+#: src/window.rs:510
 msgid "Image moved to trash"
 msgstr "تصویر به زباله‌دان جابه‌جا شد"
 
-#: src/window.rs:506
+#: src/window.rs:511
 msgid "Undo"
 msgstr "برگردان"
 
-#: src/window.rs:532
+#: src/window.rs:537
 msgid "Failed to move image to trash"
 msgstr "شکست در جابه‌جایی تصویر به زباله‌دان"
 
-#: src/window.rs:547
+#: src/window.rs:552
 msgid "Permanently Delete Image?"
 msgstr "حذف همیشگی تصویر؟"
 
-#: src/window.rs:549
+#: src/window.rs:554
 msgid "The image “{}” can only be deleted permanently."
 msgstr "تصویر «{}» تنها می‌تواند برای همیشه حذف شود."
 
-#: src/window.rs:557
+#: src/window.rs:562
 msgid "Cancel"
 msgstr "لغو"
 
-#: src/window.rs:558
+#: src/window.rs:563
 msgid "Delete"
 msgstr "حذف"
 
-#: src/window.rs:569
+#: src/window.rs:574
 msgid "Failed to delete image"
 msgstr "شکست در حذف تصویر"
+
+#~ msgid "Layout Image"
+#~ msgstr "تصویر چینش"
 
 #~ msgid "The following features are not available yet"
 #~ msgstr "ویژگی‌های زیر هنوز موجود نیستند"
