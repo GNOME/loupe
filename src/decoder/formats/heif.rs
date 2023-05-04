@@ -19,6 +19,7 @@
 use super::*;
 use crate::decoder::tiling::{self, FrameBufferExt};
 use crate::deps::*;
+use crate::image_metadata::ImageMetadata;
 use crate::util;
 use crate::util::gettext::*;
 use crate::util::ToBufRead;
@@ -70,6 +71,13 @@ impl Heif {
             let ctx = HeifContext::read_from_reader(Box::new(stream_reader))
                 .context(gettext("Failed to decode image"))?;
             let handle = ctx.primary_image_handle()?;
+
+            let mut metadata = Self::exif(&handle, &file);
+
+            // TODO: Later use libheif 1.16 to get info if there is a transformation
+            metadata.heif_transform = true;
+
+            updater.send(DecoderUpdate::Metadata(metadata));
 
             tiles.set_original_dimensions((handle.width(), handle.height()));
 
@@ -154,6 +162,36 @@ impl Heif {
         Heif {
             cancellable: cancellable_,
         }
+    }
+
+    fn exif(handle: &libheif_rs::ImageHandle, file: &gio::File) -> ImageMetadata {
+        let mut meta_ids = vec![0];
+        handle.metadata_block_ids(&mut meta_ids, b"Exif");
+
+        if let Some(meta_id) = meta_ids.first() {
+            match handle.metadata(*meta_id) {
+                Ok(mut exif_bytes) => {
+                    if let Some(skip) = exif_bytes
+                        .get(0..4)
+                        .map(|x| u32::from_be_bytes(x.try_into().unwrap()) as usize)
+                    {
+                        if exif_bytes.len() > skip + 4 {
+                            exif_bytes.drain(0..skip + 4);
+                            return ImageMetadata::from_exif_bytes(exif_bytes);
+                        } else {
+                            log::warn!("EXIF data has far too few bytes in {}", file.uri());
+                        }
+                    } else {
+                        log::warn!("EXIF data has far too few bytes in {}", file.uri());
+                    }
+                }
+                Err(err) => {
+                    log::warn!("Unable to decode EXIF data for {}: {err}", file.uri());
+                }
+            }
+        }
+
+        ImageMetadata::default()
     }
 }
 

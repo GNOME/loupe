@@ -150,8 +150,6 @@ impl Decoder {
         file: gio::File,
         tiles: Arc<ArcSwap<tiling::FrameBuffer>>,
     ) -> anyhow::Result<FormatDecoder> {
-        update_sender.send(DecoderUpdate::Metadata(ImageMetadata::load(&file)));
-
         let format = Self::guess_format(&file)?;
 
         if let Some(format) = format {

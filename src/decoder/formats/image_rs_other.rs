@@ -19,6 +19,7 @@
 use super::*;
 use crate::decoder::tiling::{self, FrameBufferExt};
 use crate::deps::*;
+use crate::image_metadata::ImageMetadata;
 use crate::util;
 use crate::util::gettext::*;
 use crate::util::{BufReadSeek, ToBufRead};
@@ -95,7 +96,9 @@ impl ImageRsOther {
         tiles: Arc<ArcSwap<tiling::FrameBuffer>>,
         cancellable: gio::Cancellable,
     ) {
-        updater.spawn_error_handled(move || {
+        updater.clone().spawn_error_handled(move || {
+            updater.send(DecoderUpdate::Metadata(ImageMetadata::load(&file)));
+
             let reader = Self::reader(&file, format, &cancellable)?;
             let dimensions = reader
                 .into_dimensions()
@@ -157,6 +160,8 @@ impl ImageRsOther {
         cancellable: gio::Cancellable,
     ) -> std::thread::JoinHandle<()> {
         updater.clone().spawn_error_handled(move || {
+            updater.send(DecoderUpdate::Metadata(ImageMetadata::load(&file)));
+
             let mut nth_frame = 1;
 
             // We are currently decoding for each repetition of the animation

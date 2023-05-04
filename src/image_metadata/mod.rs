@@ -33,29 +33,27 @@ use crate::deps::*;
 use gio::prelude::*;
 
 #[derive(Default)]
-pub enum ImageMetadata {
-    Exif(exif::Exif),
-    #[default]
-    None,
+pub struct ImageMetadata {
+    pub exif: Option<exif::Exif>,
+    pub heif_transform: bool,
 }
 
 impl std::fmt::Debug for ImageMetadata {
     fn fmt(&self, fmt: &mut std::fmt::Formatter<'_>) -> Result<(), std::fmt::Error> {
-        match self {
-            Self::Exif(exif) => {
-                let list = exif.fields().map(|f| {
-                    let mut value = f.display_value().to_string();
-                    // Remove long values
-                    if value.len() > 100 {
-                        value = String::from("…");
-                    }
+        if let Some(exif) = &self.exif {
+            let list = exif.fields().map(|f| {
+                let mut value = f.display_value().to_string();
+                // Remove long values
+                if value.len() > 100 {
+                    value = String::from("…");
+                }
 
-                    (f.ifd_num.to_string(), f.tag.to_string(), value)
-                });
-                fmt.write_str("Exif")?;
-                fmt.debug_list().entries(list).finish()
-            }
-            Self::None => fmt.write_str("None"),
+                (f.ifd_num.to_string(), f.tag.to_string(), value)
+            });
+            fmt.write_str("Exif")?;
+            fmt.debug_list().entries(list).finish()
+        } else {
+            fmt.write_str("Empty")
         }
     }
 }
@@ -67,36 +65,54 @@ impl ImageMetadata {
         if let Ok(mut bufreader) = file.to_buf_read(&gio::Cancellable::new()) {
             let exifreader = exif::Reader::new();
 
-            if let Ok(exif) = exifreader.read_from_container(&mut bufreader) {
-                return Self::Exif(exif);
-            }
+            let exif = exifreader.read_from_container(&mut bufreader).ok();
+            return Self {
+                exif,
+                ..Default::default()
+            };
         }
 
-        Self::None
+        Self::default()
     }
 
-    pub fn is_none(&self) -> bool {
-        matches!(self, Self::None)
+    pub fn from_exif_bytes(bytes: Vec<u8>) -> Self {
+        let reader = exif::Reader::new();
+        match reader.read_raw(bytes) {
+            Ok(exif) => Self {
+                exif: Some(exif),
+                ..Default::default()
+            },
+            Err(err) => {
+                log::warn!("Failed to decoder EXIF bytes: {err}");
+                Self::default()
+            }
+        }
+    }
+
+    pub fn has_information(&self) -> bool {
+        self.exif.is_some()
     }
 
     pub fn orientation(&self) -> Orientation {
-        match self {
-            Self::Exif(exif) => {
-                if let Some(orientation) = exif
-                    .get_field(exif::Tag::Orientation, exif::In::PRIMARY)
-                    .and_then(|x| x.value.get_uint(0))
-                {
-                    Orientation::from(orientation)
-                } else {
-                    Orientation::default()
-                }
+        if self.heif_transform {
+            // HEIF library already does it's transformations on its own
+            Orientation::default()
+        } else if let Some(exif) = &self.exif {
+            if let Some(orientation) = exif
+                .get_field(exif::Tag::Orientation, exif::In::PRIMARY)
+                .and_then(|x| x.value.get_uint(0))
+            {
+                Orientation::from(orientation)
+            } else {
+                Orientation::default()
             }
-            Self::None => Orientation::default(),
+        } else {
+            Orientation::default()
         }
     }
 
     pub fn originally_created(&self) -> Option<String> {
-        if let Self::Exif(exif) = self {
+        if let Some(exif) = &self.exif {
             if let Some(field) = exif
                 .get_field(exif::Tag::DateTimeOriginal, exif::In::PRIMARY)
                 .or_else(|| exif.get_field(exif::Tag::DateTime, exif::In::PRIMARY))
@@ -126,7 +142,7 @@ impl ImageMetadata {
     }
 
     pub fn f_number(&self) -> Option<String> {
-        if let Self::Exif(exif) = self {
+        if let Some(exif) = &self.exif {
             if let Some(field) = exif.get_field(exif::Tag::FNumber, exif::In::PRIMARY) {
                 return Some(format!("ƒ\u{2215}{}", field.display_value()));
             }
@@ -136,7 +152,7 @@ impl ImageMetadata {
     }
 
     pub fn exposure_time(&self) -> Option<String> {
-        if let Self::Exif(exif) = self {
+        if let Some(exif) = &self.exif {
             let field = exif.get_field(exif::Tag::ExposureTime, exif::In::PRIMARY)?;
             if let exif::Value::Rational(rational) = &field.value {
                 let exposure = format!("{:.0}", 1. / rational.first()?.to_f32());
@@ -150,7 +166,7 @@ impl ImageMetadata {
     }
 
     pub fn iso(&self) -> Option<String> {
-        if let Self::Exif(exif) = self {
+        if let Some(exif) = &self.exif {
             if let Some(field) =
                 exif.get_field(exif::Tag::PhotographicSensitivity, exif::In::PRIMARY)
             {
@@ -162,7 +178,7 @@ impl ImageMetadata {
     }
 
     pub fn focal_length(&self) -> Option<String> {
-        if let Self::Exif(exif) = self {
+        if let Some(exif) = &self.exif {
             let field = exif.get_field(exif::Tag::FocalLength, exif::In::PRIMARY)?;
             if let exif::Value::Rational(rational) = &field.value {
                 let length = format!("{:.0}", rational.first()?.to_f32());
@@ -193,7 +209,7 @@ impl ImageMetadata {
     }
 
     pub fn model(&self) -> Option<String> {
-        if let Self::Exif(exif) = self {
+        if let Some(exif) = &self.exif {
             if let Some(field) = exif.get_field(exif::Tag::Model, exif::In::PRIMARY) {
                 if let exif::Value::Ascii(value) = &field.value {
                     if let Some(entry) = value.first() {
@@ -207,7 +223,7 @@ impl ImageMetadata {
     }
 
     pub fn maker(&self) -> Option<String> {
-        if let Self::Exif(exif) = self {
+        if let Some(exif) = &self.exif {
             if let Some(field) = exif.get_field(exif::Tag::Make, exif::In::PRIMARY) {
                 if let exif::Value::Ascii(value) = &field.value {
                     if let Some(entry) = value.first() {
@@ -221,7 +237,7 @@ impl ImageMetadata {
     }
 
     pub fn gps_location(&self) -> Option<GPSLocation> {
-        if let Self::Exif(exif) = self {
+        if let Some(exif) = &self.exif {
             if let (Some(latitude), Some(latitude_ref), Some(longitude), Some(longitude_ref)) = (
                 exif.get_field(exif::Tag::GPSLatitude, exif::In::PRIMARY),
                 exif.get_field(exif::Tag::GPSLatitudeRef, exif::In::PRIMARY),

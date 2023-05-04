@@ -108,7 +108,7 @@ mod imp {
         fn property(&self, _id: usize, pspec: &glib::ParamSpec) -> glib::Value {
             let metadata = self.metadata.borrow();
             match pspec.name() {
-                "has-information" => (!metadata.is_none()).to_value(),
+                "has-information" => (metadata.has_information()).to_value(),
                 "originally-created" => metadata.originally_created().to_value(),
                 "location" => metadata.gps_location().map(|x| x.display()).to_value(),
                 "f-number" => metadata.f_number().to_value(),
