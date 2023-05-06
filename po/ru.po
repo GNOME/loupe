@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/Incubator/loupe/-/issues\n"
-"POT-Creation-Date: 2023-04-21 16:11+0000\n"
-"PO-Revision-Date: 2023-04-21 21:04+0300\n"
-"Last-Translator: Aleksandr Melman <Alexmelman88@gmail.com>\n"
+"POT-Creation-Date: 2023-04-27 02:21+0000\n"
+"PO-Revision-Date: 2023-04-30 17:23+1000\n"
+"Last-Translator: Ser82-png <asvmail.as@gmail.com>\n"
 "Language-Team: \n"
 "Language: ru_RU\n"
 "MIME-Version: 1.0\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.0.1\n"
 
 #: data/gtk/image_page.ui:6 data/gtk/window.ui:16
 msgid "_Open With…"
@@ -43,11 +43,11 @@ msgstr "_Установить как фон…"
 msgid "Could not Load Image"
 msgstr "Не удалось загрузить изображение"
 
-#: data/gtk/image_page.ui:88 data/gtk/window.ui:100
+#: data/gtk/image_page.ui:88 data/gtk/window.ui:101
 msgid "Rotate Left"
 msgstr "Повернуть влево"
 
-#: data/gtk/image_page.ui:99 data/gtk/window.ui:111
+#: data/gtk/image_page.ui:98 data/gtk/window.ui:111
 msgid "Rotate Right"
 msgstr "Повернуть вправо"
 
@@ -72,7 +72,7 @@ msgid "Toggle Fullscreen"
 msgstr "Переключить полноэкранный режим"
 
 #: data/gtk/print.ui:4
-msgid "Layout Image"
+msgid "Image Layout"
 msgstr "Макет изображения"
 
 #: data/gtk/print.ui:66
@@ -157,7 +157,7 @@ msgstr "Первоначально создано"
 
 #: data/gtk/properties_view.ui:198
 msgid "Aperture"
-msgstr "Апертура"
+msgstr "Диафрагма"
 
 #: data/gtk/properties_view.ui:219
 msgid "Exposure"
@@ -193,36 +193,36 @@ msgstr "_О приложении"
 
 #. If the file exists, get display name
 #: data/gtk/window.ui:59 data/org.gnome.Loupe.desktop.in.in:3
-#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/application.rs:191
-#: src/window.rs:784 src/window.rs:790
+#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/application.rs:188
+#: src/window.rs:796 src/window.rs:802
 msgid "Loupe"
 msgstr "Loupe"
 
-#: data/gtk/window.ui:79
+#: data/gtk/window.ui:80
 msgid "Copy to Clipboard"
 msgstr "Копировать в буфер обмена"
 
-#: data/gtk/window.ui:86
+#: data/gtk/window.ui:87
 msgid "Move to Trash"
 msgstr "Отправить в корзину"
 
-#: data/gtk/window.ui:92
+#: data/gtk/window.ui:93
 msgid "Main Menu"
 msgstr "Главное меню"
 
-#: data/gtk/window.ui:126
+#: data/gtk/window.ui:125
 msgid "Image Properties"
 msgstr "Свойства изображения"
 
-#: data/gtk/window.ui:146
+#: data/gtk/window.ui:145
 msgid "View Images"
 msgstr "Просмотр изображений"
 
-#: data/gtk/window.ui:147
+#: data/gtk/window.ui:146
 msgid "Drag and drop images here"
 msgstr "Перетащите изображения сюда"
 
-#: data/gtk/window.ui:151
+#: data/gtk/window.ui:150
 msgid "_Open File…"
 msgstr "_Открыть файл…"
 
@@ -230,7 +230,7 @@ msgstr "_Открыть файл…"
 msgid "Picture;Slideshow;Graphics;Image Viewer;"
 msgstr "Изображение;Слайд-шоу;Графика;Просмотрщик изображений;"
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:7 src/application.rs:194
+#: data/org.gnome.Loupe.metainfo.xml.in.in:7 src/application.rs:191
 msgid "The Loupe Team"
 msgstr "The Loupe Team"
 
@@ -239,24 +239,8 @@ msgid "View images"
 msgstr "Просмотр изображений"
 
 #: data/org.gnome.Loupe.metainfo.xml.in.in:10
-msgid ""
-"A simple image viewer which allows you to browse through your images and "
-"inspect their metadata."
-msgstr ""
-"Простой просмотрщик изображений, позволяющий просматривать изображения и "
-"проверять их метаданные."
-
-#: data/org.gnome.Loupe.metainfo.xml.in.in:11
-msgid "The following features are not available yet"
-msgstr "Следующие функции пока недоступны"
-
-#: data/org.gnome.Loupe.metainfo.xml.in.in:13
-msgid "Applying image color profiles"
-msgstr "Применение цветовых профилей изображения"
-
-#: data/org.gnome.Loupe.metainfo.xml.in.in:14
-msgid "Printing"
-msgstr "Печать"
+msgid "Browse through your images and inspect their metadata."
+msgstr "Просматривайте изображения и проверяяте их метаданные."
 
 #: data/resources/gtk/help-overlay.ui:11
 msgctxt "shortcut window"
@@ -432,11 +416,11 @@ msgid "Gestures"
 msgstr "Жесты"
 
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/application.rs:203
+#: src/application.rs:200
 msgid "translator-credits"
 msgstr "Aleksandr Melman <alexmelman88@gmail.com>, 2023"
 
-#: src/application.rs:204
+#: src/application.rs:201
 msgid "Copyright © 2020–2023 Christopher Davis et al."
 msgstr "Авторское право © 2020-2023 Christopher Davis и др."
 
@@ -521,7 +505,7 @@ msgstr "{}\\u{202F}mm"
 msgid "%x %X"
 msgstr "%x %X"
 
-#: src/util/mod.rs:171 src/window.rs:517
+#: src/util/mod.rs:171 src/window.rs:522
 msgid "Failed to restore image from trash"
 msgstr "Не удалось восстановить изображение из корзины"
 
@@ -538,53 +522,65 @@ msgstr "Установить как фон."
 msgid "Could not set background."
 msgstr "Не удалось установить фон."
 
-#: src/window.rs:421
+#: src/window.rs:426
 msgid "Supported image formats"
 msgstr "Поддерживаемые форматы изображения"
 
-#: src/window.rs:427
+#: src/window.rs:432
 msgid "All files"
 msgstr "Все файлы"
 
-#: src/window.rs:434
+#: src/window.rs:439
 msgid "Open Image"
 msgstr "Открыть изображение"
 
-#: src/window.rs:489
+#: src/window.rs:494
 msgid "Image copied to clipboard"
 msgstr "Изображение скопировано в буфер обмена"
 
-#: src/window.rs:505
+#: src/window.rs:510
 msgid "Image moved to trash"
 msgstr "Изображение отправлено в корзину"
 
-#: src/window.rs:506
+#: src/window.rs:511
 msgid "Undo"
 msgstr "Отменить"
 
-#: src/window.rs:532
+#: src/window.rs:537
 msgid "Failed to move image to trash"
 msgstr "Не удалось отправить изображение в корзину"
 
-#: src/window.rs:547
+#: src/window.rs:552
 msgid "Permanently Delete Image?"
 msgstr "Удалить изображение безвозвратно?"
 
-#: src/window.rs:549
+#: src/window.rs:554
 msgid "The image “{}” can only be deleted permanently."
 msgstr "Изображение \"{}\" может быть удалено только безвозвратно."
 
-#: src/window.rs:557
+#: src/window.rs:562
 msgid "Cancel"
 msgstr "Отменить"
 
-#: src/window.rs:558
+#: src/window.rs:563
 msgid "Delete"
 msgstr "Удалить"
 
-#: src/window.rs:569
+#: src/window.rs:574
 msgid "Failed to delete image"
 msgstr "Не удалось удалить изображение"
+
+#~ msgid "Layout Image"
+#~ msgstr "Макет изображения"
+
+#~ msgid "The following features are not available yet"
+#~ msgstr "Следующие функции пока недоступны"
+
+#~ msgid "Applying image color profiles"
+#~ msgstr "Применение цветовых профилей изображения"
+
+#~ msgid "Printing"
+#~ msgstr "Печать"
 
 #~ msgid "Christopher Davis"
 #~ msgstr "Christopher Davis"
