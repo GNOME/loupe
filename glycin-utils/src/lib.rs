@@ -53,7 +53,7 @@ pub enum MemoryFormat {
 }
 
 pub struct Communication<'a> {
-    dbus_connection: zbus::Connection,
+    _dbus_connection: zbus::Connection,
     decoding_update: DecodingUpdateProxy<'a>,
 }
 
@@ -73,7 +73,7 @@ impl<'a> Communication<'a> {
             .expect("Failed to create decoding update proxy");
 
         Communication {
-            dbus_connection,
+            _dbus_connection: dbus_connection,
             decoding_update,
         }
     }
@@ -85,12 +85,11 @@ impl<'a> Communication<'a> {
             .expect("Failed to send image info");
     }
     pub async fn send_frame(&self, message: Frame) {
-        dbg!("MESSAGE!");
-        dbg!(self
+        self
             .decoding_update
             .send_frame(message)
             .await
-            .expect("Failed to send image frame"));
+            .expect("Failed to send image frame");
     }
 }
 

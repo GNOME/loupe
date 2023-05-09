@@ -1,6 +1,9 @@
-use gio::prelude::*;
 use glycin_utils::*;
 use std::ffi::OsString;
+use std::io::Read;
+use std::io::Seek;
+use std::os::fd::AsRawFd;
+use std::os::fd::FromRawFd;
 
 fn main() {
     println!("1");
@@ -26,7 +29,7 @@ async fn xmain() {
         .unwrap();
 
     let update = DecodingUpdate;
-    let zbus = zbus::ConnectionBuilder::unix_stream(unix_stream)
+    let _zbus = zbus::ConnectionBuilder::unix_stream(unix_stream)
         .p2p()
         .server(&zbus::Guid::generate())
         .auth_mechanisms(&[zbus::AuthMechanism::Anonymous])
@@ -49,6 +52,22 @@ impl DecodingUpdate {
         dbg!(message);
     }
     async fn send_frame(&self, message: Frame) {
-        dbg!(message);
+        dbg!(&message);
+        let Texture::MemFd(fd) = message.texture;
+        let mfd = memfd::Memfd::try_from_fd(fd.as_raw_fd()).unwrap();
+        mfd.add_seals(&[
+            memfd::FileSeal::SealShrink,
+            memfd::FileSeal::SealGrow,
+            memfd::FileSeal::SealWrite,
+            memfd::FileSeal::SealSeal,
+        ])
+        .unwrap();
+
+        let mut file = mfd.into_file();
+        file.rewind();
+
+        let mut buf = String::new();
+        file.read_to_string(&mut buf).unwrap();
+        dbg!(buf);
     }
 }

@@ -572,6 +572,7 @@ dependencies = [
  "gio",
  "glib",
  "glycin-utils",
+ "memfd",
  "zbus",
 ]
 

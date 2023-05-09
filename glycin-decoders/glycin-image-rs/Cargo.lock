@@ -450,6 +450,8 @@ version = "0.1.0"
 dependencies = [
  "async-std",
  "glycin-utils",
+ "memfd",
+ "memmap2",
  "zbus",
 ]
 
@@ -563,6 +565,15 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "ffc89ccdc6e10d6907450f753537ebc5c5d3460d2e4e62ea74bd571db62c0f9e"
 dependencies = [
  "rustix",
+]
+
+[[package]]
+name = "memmap2"
+version = "0.6.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "7f9ff02d2efdc645fca1ee55f45545b996e7da776b5b60c4e170334457551693"
+dependencies = [
+ "libc",
 ]
 
 [[package]]

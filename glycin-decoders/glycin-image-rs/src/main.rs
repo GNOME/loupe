@@ -1,7 +1,6 @@
 use glycin_utils::*;
-use std::os::fd::FromRawFd;
 use std::os::fd::IntoRawFd;
-use std::os::unix::net::UnixStream;
+use std::io::Write;
 
 fn main() {
     dbg!("Decoder started");
@@ -10,7 +9,16 @@ fn main() {
 
 async fn decoder() {
     let communication = Communication::new().await;
-    let file = std::fs::File::open("/etc/os-release").unwrap();
+
+    let memfd = memfd::MemfdOptions::default().allow_sealing(true).create("xyz").unwrap();
+    let mut file = memfd.into_file();
+    file.set_len(16).unwrap();
+
+    let mut mmap = unsafe { memmap::MmapMut::map_mut(&file).unwrap() };
+    mmap[0] = 66;
+
+    drop(mmap);
+
     let fd = dbg!(file.into_raw_fd());
     let frame = Frame {
         width: 1,
@@ -22,10 +30,6 @@ async fn decoder() {
         cicp: None.into(),
         //pub delay: Optional<Duration>,
     };
-    dbg!("send frame");
-
     communication.send_frame(frame).await;
     std::future::pending::<()>().await;
-
-    dbg!("bye");
 }
