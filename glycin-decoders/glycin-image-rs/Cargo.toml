@@ -8,3 +8,4 @@ edition = "2021"
 [dependencies]
 async-std = "1.12.0"
 zbus = "3.12.0"
+glycin-utils = { path = "../../glycin-utils/" }

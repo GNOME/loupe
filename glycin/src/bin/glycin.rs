@@ -1,4 +1,5 @@
 use gio::prelude::*;
+use glycin_utils::*;
 use std::ffi::OsString;
 
 fn main() {
@@ -24,29 +25,30 @@ async fn xmain() {
         )])
         .unwrap();
 
-    let greeter = DecodingUpdate { count: 0 };
+    let update = DecodingUpdate;
     let zbus = zbus::ConnectionBuilder::unix_stream(unix_stream)
         .p2p()
         .server(&zbus::Guid::generate())
         .auth_mechanisms(&[zbus::AuthMechanism::Anonymous])
-        .serve_at("/org/gnome/glycin", greeter)
+        .serve_at("/org/gnome/glycin", update)
         .unwrap()
         .build()
         .await
         .unwrap();
 
+    dbg!("waiting");
     std::future::pending::<()>().await;
+    dbg!("bye");
 }
 
-struct DecodingUpdate {
-    count: u64,
-}
+struct DecodingUpdate;
 
-#[zbus::dbus_interface(name = "org.gnome.glycin")]
+#[zbus::dbus_interface(name = "org.gnome.glycin.DecodingUpdate")]
 impl DecodingUpdate {
-    // Can be `async` as well.
-    fn say_hello(&mut self, name: &str) -> String {
-        self.count += 1;
-        format!("Hello {}! I have been called {} times.", name, self.count)
+    async fn send_image_info(&self, message: ImageInfo) {
+        dbg!(message);
+    }
+    async fn send_frame(&self, message: Frame) {
+        dbg!(message);
     }
 }

@@ -1,33 +1,31 @@
+use glycin_utils::*;
 use std::os::fd::FromRawFd;
+use std::os::fd::IntoRawFd;
 use std::os::unix::net::UnixStream;
+
 fn main() {
-    println!("hey");
-    async_std::task::block_on(xmain());
+    dbg!("Decoder started");
+    async_std::task::block_on(decoder());
 }
 
-async fn xmain() {
-    let unix_stream = unsafe { UnixStream::from_raw_fd(3) };
+async fn decoder() {
+    let communication = Communication::new().await;
+    let file = std::fs::File::open("/etc/os-release").unwrap();
+    let fd = dbg!(file.into_raw_fd());
+    let frame = Frame {
+        width: 1,
+        height: 1,
+        stride: 3,
+        memory_format: MemoryFormat::R8g8b8,
+        texture: Texture::MemFd(fd.into()),
+        iccp: None.into(),
+        cicp: None.into(),
+        //pub delay: Optional<Duration>,
+    };
+    dbg!("send frame");
 
-    println!("Hello, world!");
-    let connection = zbus::ConnectionBuilder::unix_stream(unix_stream)
-        .p2p()
-        .auth_mechanisms(&[zbus::AuthMechanism::Anonymous])
-        .build()
-        .await
-        .unwrap();
+    communication.send_frame(frame).await;
+    std::future::pending::<()>().await;
 
-            let proxy = MyGreeterProxy::new(&connection).await.unwrap();
-    let reply = proxy.say_hello("Maria").await.unwrap();
-    println!("{reply}");
+    dbg!("bye");
 }
-
-use zbus::{Connection, Result, dbus_proxy};
-
-#[zbus::dbus_proxy(
-    interface = "org.gnome.glycin",
-    default_path = "/org/gnome/glycin"
-)]
-trait MyGreeter {
-    async fn say_hello(&self, name: &str) -> Result<String>;
-}
-

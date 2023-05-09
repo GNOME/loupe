@@ -1,11 +1,11 @@
 use serde::{Deserialize, Serialize};
-use std::num::NonZeroU32;
+//use std::num::NonZeroU32;
 use std::os::fd::FromRawFd;
 use std::os::unix::net::UnixStream;
-use std::time::Duration;
-use zbus::zvariant::{Optional, Type};
+//use std::time::Duration;
+use zbus::zvariant::{self, Optional, Type};
 
-#[derive(Deserialize, Serialize, Type)]
+#[derive(Deserialize, Serialize, Type, Debug)]
 pub struct ImageInfo {
     pub width: u32,
     pub height: u32,
@@ -14,7 +14,7 @@ pub struct ImageInfo {
     pub transformations_applied: bool,
 }
 
-#[derive(Deserialize, Serialize, Type)]
+#[derive(Deserialize, Serialize, Type, Debug)]
 pub struct Frame {
     pub width: u32,
     pub height: u32,
@@ -26,12 +26,12 @@ pub struct Frame {
     //pub delay: Optional<Duration>,
 }
 
-#[derive(Deserialize, Serialize, Type)]
+#[derive(Deserialize, Serialize, Type, Debug)]
 pub enum Texture {
-    MemFd(u32),
+    MemFd(zvariant::Fd),
 }
 
-#[derive(Deserialize, Serialize, Type)]
+#[derive(Deserialize, Serialize, Type, Debug)]
 pub enum MemoryFormat {
     B8g8r8a8Premultiplied,
     A8r8g8b8Premultiplied,
@@ -46,7 +46,6 @@ pub enum MemoryFormat {
     R16g16b16a16Premultiplied,
     R16g16b16a16,
     R16g16b16Float,
-    R16g16b16a16FloatPremultiplied,
     R16g16b16a16Float,
     R32g32b32Float,
     R32g32b32a32FloatPremultiplied,
@@ -59,32 +58,46 @@ pub struct Communication<'a> {
 }
 
 impl<'a> Communication<'a> {
-    async fn new() -> zbus::Result<Communication<'a>> {
+    pub async fn new() -> Communication<'a> {
         let unix_stream = unsafe { UnixStream::from_raw_fd(3) };
 
         let dbus_connection = zbus::ConnectionBuilder::unix_stream(unix_stream)
             .p2p()
             .auth_mechanisms(&[zbus::AuthMechanism::Anonymous])
             .build()
-            .await?;
+            .await
+            .expect("Failed to create private DBus connection");
 
-        let decoding_update = DecodingUpdateProxy::new(&dbus_connection).await?;
+        let decoding_update = DecodingUpdateProxy::new(&dbus_connection)
+            .await
+            .expect("Failed to create decoding update proxy");
 
-        Ok(Communication {
+        Communication {
             dbus_connection,
             decoding_update,
-        })
+        }
     }
 
-    async fn send_image_info(&self, message: ImageInfo) {
+    pub async fn send_image_info(&self, message: ImageInfo) {
         self.decoding_update
             .send_image_info(message)
             .await
             .expect("Failed to send image info");
     }
+    pub async fn send_frame(&self, message: Frame) {
+        dbg!("MESSAGE!");
+        dbg!(self
+            .decoding_update
+            .send_frame(message)
+            .await
+            .expect("Failed to send image frame"));
+    }
 }
 
-#[zbus::dbus_proxy(interface = "org.gnome.glycin.in", default_path = "/org/gnome/glycin")]
+#[zbus::dbus_proxy(
+    interface = "org.gnome.glycin.DecodingUpdate",
+    default_path = "/org/gnome/glycin"
+)]
 trait DecodingUpdate {
     async fn send_image_info(&self, message: ImageInfo) -> zbus::Result<()>;
     async fn send_frame(&self, message: Frame) -> zbus::Result<()>;
