@@ -1,9 +1,53 @@
+pub mod image_rs;
+
 use serde::{Deserialize, Serialize};
 //use std::num::NonZeroU32;
 use std::os::fd::FromRawFd;
 use std::os::unix::net::UnixStream;
 //use std::time::Duration;
+use std::ops::{Deref, DerefMut};
+use std::os::fd::{AsRawFd, RawFd};
 use zbus::zvariant::{self, Optional, Type};
+
+pub struct SharedMemory {
+    mmap: memmap::MmapMut,
+    fd: RawFd,
+}
+
+impl SharedMemory {
+    pub fn new(size: u64) -> Self {
+        let memfd = memfd::MemfdOptions::default()
+            .allow_sealing(true)
+            .create("glycin-texture")
+            .expect("Failed to create memfd");
+        let fd = memfd.as_raw_fd();
+
+        let mut file = memfd.into_file();
+        file.set_len(size).expect("Failed to set memfd size");
+
+        let mmap = unsafe { memmap::MmapMut::map_mut(&file) }.expect("Mailed to mmap memfd");
+
+        Self { mmap, fd }
+    }
+
+    pub fn into_texture(self) -> Texture {
+        Texture::MemFd(self.fd.into())
+    }
+}
+
+impl Deref for SharedMemory {
+    type Target = [u8];
+
+    fn deref(&self) -> &[u8] {
+        self.mmap.deref()
+    }
+}
+
+impl DerefMut for SharedMemory {
+    fn deref_mut(&mut self) -> &mut [u8] {
+        self.mmap.deref_mut()
+    }
+}
 
 #[derive(Deserialize, Serialize, Type, Debug)]
 pub struct ImageInfo {
@@ -50,6 +94,10 @@ pub enum MemoryFormat {
     R32g32b32Float,
     R32g32b32a32FloatPremultiplied,
     R32g32b32a32Float,
+    L8,
+    L8a8,
+    L16,
+    L16a16,
 }
 
 pub struct Communication<'a> {
@@ -85,8 +133,7 @@ impl<'a> Communication<'a> {
             .expect("Failed to send image info");
     }
     pub async fn send_frame(&self, message: Frame) {
-        self
-            .decoding_update
+        self.decoding_update
             .send_frame(message)
             .await
             .expect("Failed to send image frame");

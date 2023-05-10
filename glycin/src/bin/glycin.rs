@@ -55,16 +55,22 @@ impl DecodingUpdate {
         dbg!(&message);
         let Texture::MemFd(fd) = message.texture;
         let mfd = memfd::Memfd::try_from_fd(fd.as_raw_fd()).unwrap();
+
+        // 🦭
         mfd.add_seals(&[
             memfd::FileSeal::SealShrink,
             memfd::FileSeal::SealGrow,
-            memfd::FileSeal::SealWrite,
             memfd::FileSeal::SealSeal,
         ])
         .unwrap();
 
         let mut file = mfd.into_file();
         file.rewind();
+
+        let mut mmap = unsafe { memmap::Mmap::map(&file).unwrap() };
+
+        let raw_bytes = unsafe { glib::ffi::g_bytes_new(mmap.as_ptr() as *const _, mmap.len()) };
+        let bytes = unsafe { glib::Bytes::from_glib_ptr_borrow(raw_bytes as *const _) };
 
         let mut buf = String::new();
         file.read_to_string(&mut buf).unwrap();

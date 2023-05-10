@@ -6,6 +6,12 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+image = { version = "0.24.6", optional = true }
 memfd = "0.6.3"
 serde = { version = "1.0.162", features = ["derive"] }
 zbus = "3.12.0"
+memmap = { package = "memmap2", version = "0.6.0" }
+
+[features]
+default = ["image-rs"]
+image-rs = ["image"]
