@@ -9,27 +9,14 @@ fn main() {
 
 async fn decoder() {
     let communication = Communication::new().await;
+    let path = "/home/herold/loupetest/DSCN0029.jpg";
 
-    let memfd = memfd::MemfdOptions::default().allow_sealing(true).create("xyz").unwrap();
-    let mut file = memfd.into_file();
-    file.set_len(16).unwrap();
+    let file = std::fs::File::open(path).unwrap();
 
-    let mut mmap = unsafe { memmap::MmapMut::map_mut(&file).unwrap() };
-    mmap[0] = 66;
+    let decoder = image::codecs::jpeg::JpegDecoder::new(file).unwrap();
 
-    drop(mmap);
+    let (frame, _memory) = Frame::from_decoder(decoder);
 
-    let fd = dbg!(file.into_raw_fd());
-    let frame = Frame {
-        width: 1,
-        height: 1,
-        stride: 3,
-        memory_format: MemoryFormat::R8g8b8,
-        texture: Texture::MemFd(fd.into()),
-        iccp: None.into(),
-        cicp: None.into(),
-        //pub delay: Optional<Duration>,
-    };
     communication.send_frame(frame).await;
     std::future::pending::<()>().await;
 }

@@ -589,6 +589,7 @@ version = "0.1.0"
 dependencies = [
  "async-std",
  "glycin-utils",
+ "image",
  "memfd",
  "memmap2",
  "zbus",
@@ -601,6 +602,7 @@ dependencies = [
  "image",
  "memfd",
  "memmap2",
+ "nix",
  "serde",
  "zbus",
 ]
@@ -835,6 +837,7 @@ dependencies = [
  "cfg-if",
  "libc",
  "memoffset 0.7.1",
+ "pin-utils",
  "static_assertions",
 ]
 

@@ -6,12 +6,16 @@ use std::os::fd::FromRawFd;
 use std::os::unix::net::UnixStream;
 //use std::time::Duration;
 use std::ops::{Deref, DerefMut};
-use std::os::fd::{AsRawFd, RawFd};
+use std::os::fd::{AsRawFd, OwnedFd, RawFd};
 use zbus::zvariant::{self, Optional, Type};
+use std::os::fd::AsFd;
+use std::os::fd::IntoRawFd;
+use std::fs;
 
+#[derive(Debug)]
 pub struct SharedMemory {
-    mmap: memmap::MmapMut,
-    fd: RawFd,
+    memfd_file: fs::File,
+    pub mmap: memmap::MmapMut,
 }
 
 impl SharedMemory {
@@ -20,18 +24,18 @@ impl SharedMemory {
             .allow_sealing(true)
             .create("glycin-texture")
             .expect("Failed to create memfd");
-        let fd = memfd.as_raw_fd();
+        dbg!(&memfd);
+        //let fd = memfd.as_raw_fd();
+        let mut memfd_file = memfd.into_file();
+        memfd_file.set_len(size).expect("Failed to set memfd size");
 
-        let mut file = memfd.into_file();
-        file.set_len(size).expect("Failed to set memfd size");
+        let mmap = unsafe { memmap::MmapMut::map_mut(&memfd_file) }.expect("Mailed to mmap memfd");
 
-        let mmap = unsafe { memmap::MmapMut::map_mut(&file) }.expect("Mailed to mmap memfd");
-
-        Self { mmap, fd }
+        Self { mmap, memfd_file }
     }
 
-    pub fn into_texture(self) -> Texture {
-        Texture::MemFd(self.fd.into())
+    pub fn into_texture(self) -> (Texture, fs::File) {
+            (Texture::MemFd(self.memfd_file.as_raw_fd().into()), self.memfd_file)
     }
 }
 

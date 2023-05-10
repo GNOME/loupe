@@ -517,6 +517,7 @@ version = "0.1.0"
 dependencies = [
  "image",
  "memfd",
+ "memmap2",
  "serde",
  "zbus",
 ]
@@ -674,6 +675,15 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "ffc89ccdc6e10d6907450f753537ebc5c5d3460d2e4e62ea74bd571db62c0f9e"
 dependencies = [
  "rustix",
+]
+
+[[package]]
+name = "memmap2"
+version = "0.6.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "a0aa1b505aeecb0adb017db2b6a79a17a38e64f882a201f05e9de8a982cd6096"
+dependencies = [
+ "libc",
 ]
 
 [[package]]
