@@ -66,27 +66,12 @@ impl DecodingUpdate {
         ])
         .unwrap();
 
-        let mut file = mfd.into_file();
-        file.rewind().unwrap();
+        //let mut file = mfd.into_file();
+        //file.rewind().unwrap();
+        let fd = mfd.as_raw_fd();
 
-        let mmap = unsafe { memmap::Mmap::map(&file).unwrap() };
-
-        dbg!(mmap.len());
-        dbg!(mmap[0]);
-
-        /*
-        let raw_bytes = unsafe { glib::ffi::g_bytes_new_static(mmap.as_ptr() as *const _, mmap.len()) };
-        let bytes = unsafe { glib::Bytes::from_glib_ptr_borrow(raw_bytes as *const _) };
-        */
-
-             let bytes :glib::Bytes =   unsafe {
-            glib::translate::from_glib_full(glib::ffi::g_bytes_new_static(
-                mmap.as_ptr() as *const _,
-                mmap.len(),
-            ))
-        };
-
-        dbg!(bytes[0]);
+        let mmap = unsafe { glib::ffi::g_mapped_file_new_from_fd(fd, glib::ffi::GFALSE,std::ptr::null_mut() ) };
+        let bytes: glib::Bytes = unsafe { glib::translate::from_glib_full(glib::ffi::g_mapped_file_get_bytes(mmap)) };
 
         let texture = gdk::MemoryTexture::new(
             frame.width.try_into().unwrap(),
@@ -101,12 +86,12 @@ impl DecodingUpdate {
         dbg!("creating snapshot");
         texture.snapshot(&snapshot, texture.width() as f64, texture.height() as f64);
         dbg!("snapshot created");
-        snapshot.to_node().unwrap().write_to_file("/home/herold/node.node").unwrap();
+        snapshot
+            .to_node()
+            .unwrap()
+            .write_to_file("/home/herold/node.node")
+            .unwrap();
         dbg!("snapshot written");
-
-        //let mut buf = String::new();
-        //file.read_to_string(&mut buf).unwrap();
-        //dbg!(buf);
     }
 }
 

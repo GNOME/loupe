@@ -10,13 +10,9 @@ fn main() {
 async fn decoder() {
     let communication = Communication::new().await;
     let path = "/home/herold/loupetest/DSCN0029.jpg";
-
     let file = std::fs::File::open(path).unwrap();
-
     let decoder = image::codecs::jpeg::JpegDecoder::new(file).unwrap();
-
-    let (frame, _memory) = Frame::from_decoder(decoder);
+    let frame = Frame::from_decoder(decoder);
 
     communication.send_frame(frame).await;
-    std::future::pending::<()>().await;
 }

@@ -5,37 +5,38 @@ use serde::{Deserialize, Serialize};
 use std::os::fd::FromRawFd;
 use std::os::unix::net::UnixStream;
 //use std::time::Duration;
+use std::ffi::CString;
+use std::fs;
 use std::ops::{Deref, DerefMut};
-use std::os::fd::{AsRawFd, OwnedFd, RawFd};
-use zbus::zvariant::{self, Optional, Type};
 use std::os::fd::AsFd;
 use std::os::fd::IntoRawFd;
-use std::fs;
+use std::os::fd::{AsRawFd, OwnedFd, RawFd};
+use zbus::zvariant::{self, Optional, Type};
 
 #[derive(Debug)]
 pub struct SharedMemory {
-    memfd_file: fs::File,
+    memfd: RawFd,
     pub mmap: memmap::MmapMut,
 }
 
 impl SharedMemory {
     pub fn new(size: u64) -> Self {
-        let memfd = memfd::MemfdOptions::default()
-            .allow_sealing(true)
-            .create("glycin-texture")
-            .expect("Failed to create memfd");
-        dbg!(&memfd);
-        //let fd = memfd.as_raw_fd();
-        let mut memfd_file = memfd.into_file();
-        memfd_file.set_len(size).expect("Failed to set memfd size");
+        let memfd = nix::sys::memfd::memfd_create(
+            &CString::new("glycin-frame").unwrap(),
+            nix::sys::memfd::MemFdCreateFlag::MFD_CLOEXEC
+                | nix::sys::memfd::MemFdCreateFlag::MFD_ALLOW_SEALING,
+        )
+        .expect("Failed to create memfd");
+        nix::unistd::ftruncate(memfd, size.try_into().expect("Required memory too large"))
+            .expect("Failed to set memfd size");
+        let mmap = unsafe { memmap::MmapMut::map_mut(&memfd) }.expect("Mailed to mmap memfd");
 
-        let mmap = unsafe { memmap::MmapMut::map_mut(&memfd_file) }.expect("Mailed to mmap memfd");
-
-        Self { mmap, memfd_file }
+        Self { mmap, memfd }
     }
 
-    pub fn into_texture(self) -> (Texture, fs::File) {
-            (Texture::MemFd(self.memfd_file.as_raw_fd().into()), self.memfd_file)
+    pub fn into_texture(self) -> Texture {
+        let owned_fd = unsafe { zvariant::OwnedFd::from_raw_fd(self.memfd) };
+        Texture::MemFd(owned_fd)
     }
 }
 
@@ -76,7 +77,7 @@ pub struct Frame {
 
 #[derive(Deserialize, Serialize, Type, Debug)]
 pub enum Texture {
-    MemFd(zvariant::Fd),
+    MemFd(zvariant::OwnedFd),
 }
 
 #[derive(Deserialize, Serialize, Type, Debug)]
