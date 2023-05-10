@@ -62,6 +62,7 @@ impl DecodingUpdate {
         mfd.add_seals(&[
             memfd::FileSeal::SealShrink,
             memfd::FileSeal::SealGrow,
+            memfd::FileSeal::SealWrite,
             memfd::FileSeal::SealSeal,
         ])
         .unwrap();
@@ -70,8 +71,11 @@ impl DecodingUpdate {
         //file.rewind().unwrap();
         let fd = mfd.as_raw_fd();
 
-        let mmap = unsafe { glib::ffi::g_mapped_file_new_from_fd(fd, glib::ffi::GFALSE,std::ptr::null_mut() ) };
-        let bytes: glib::Bytes = unsafe { glib::translate::from_glib_full(glib::ffi::g_mapped_file_get_bytes(mmap)) };
+        let bytes: glib::Bytes = unsafe {
+            let mmap =
+                glib::ffi::g_mapped_file_new_from_fd(fd, glib::ffi::GFALSE, std::ptr::null_mut());
+            glib::translate::from_glib_full(glib::ffi::g_mapped_file_get_bytes(mmap))
+        };
 
         let texture = gdk::MemoryTexture::new(
             frame.width.try_into().unwrap(),
