@@ -7,15 +7,21 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/Incubator/loupe/-/issues\n"
-"POT-Creation-Date: 2023-04-24 23:59+0000\n"
-"PO-Revision-Date: 2023-04-26 01:30+0200\n"
-"Last-Translator: \n"
-"Language-Team: Galician <gnome-gl-list@gnome.org>\n"
+"POT-Creation-Date: 2023-04-27 02:21+0000\n"
+"PO-Revision-Date: 2023-05-11 12:34+0200\n"
+"Last-Translator: Fran Dieguez <frandieguez@gnome.org>\n"
+"Language-Team: Galician <proxecto@trasno.gal>\n"
 "Language: gl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Gtranslator 42.0\n"
+"X-DL-Team: gl\n"
+"X-DL-Module: Loupe\n"
+"X-DL-Branch: main\n"
+"X-DL-Domain: po\n"
+"X-DL-State: None\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
 #: data/gtk/image_page.ui:6 data/gtk/window.ui:16
 msgid "_Open With…"
@@ -41,11 +47,11 @@ msgstr "_Estabelecer como fondo…"
 msgid "Could not Load Image"
 msgstr "Non foi posíbel cargar a imaxe"
 
-#: data/gtk/image_page.ui:88 data/gtk/window.ui:100
+#: data/gtk/image_page.ui:88 data/gtk/window.ui:101
 msgid "Rotate Left"
 msgstr "Rotar á esquerda"
 
-#: data/gtk/image_page.ui:99 data/gtk/window.ui:111
+#: data/gtk/image_page.ui:98 data/gtk/window.ui:111
 msgid "Rotate Right"
 msgstr "Rotar á dereita"
 
@@ -70,8 +76,10 @@ msgid "Toggle Fullscreen"
 msgstr "Trocar pantalla completa"
 
 #: data/gtk/print.ui:4
-msgid "Layout Image"
-msgstr "Disposición de imaxe"
+#, fuzzy
+#| msgid "Image Format"
+msgid "Image Layout"
+msgstr "Formato da imaxe"
 
 #: data/gtk/print.ui:66
 msgid "Portrait page orientation"
@@ -191,36 +199,36 @@ msgstr "_Sobre Loupe"
 
 #. If the file exists, get display name
 #: data/gtk/window.ui:59 data/org.gnome.Loupe.desktop.in.in:3
-#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/application.rs:191
-#: src/window.rs:784 src/window.rs:790
+#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/application.rs:188
+#: src/window.rs:796 src/window.rs:802
 msgid "Loupe"
 msgstr "Loupe"
 
-#: data/gtk/window.ui:79
+#: data/gtk/window.ui:80
 msgid "Copy to Clipboard"
 msgstr "Copiar ao portapapeis"
 
-#: data/gtk/window.ui:86
+#: data/gtk/window.ui:87
 msgid "Move to Trash"
 msgstr "Mover ao lixo"
 
-#: data/gtk/window.ui:92
+#: data/gtk/window.ui:93
 msgid "Main Menu"
 msgstr "Menú principal"
 
-#: data/gtk/window.ui:126
+#: data/gtk/window.ui:125
 msgid "Image Properties"
 msgstr "Propiedades da imaxe"
 
-#: data/gtk/window.ui:146
+#: data/gtk/window.ui:145
 msgid "View Images"
 msgstr "Ver imaxes"
 
-#: data/gtk/window.ui:147
+#: data/gtk/window.ui:146
 msgid "Drag and drop images here"
 msgstr "Arrastre e solte imaxes aquí"
 
-#: data/gtk/window.ui:151
+#: data/gtk/window.ui:150
 msgid "_Open File…"
 msgstr "_Abrir ficheiro…"
 
@@ -228,7 +236,7 @@ msgstr "_Abrir ficheiro…"
 msgid "Picture;Slideshow;Graphics;Image Viewer;"
 msgstr "Imaxes;Panorama;Gráficos;Visor de imaxes;"
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:7 src/application.rs:194
+#: data/org.gnome.Loupe.metainfo.xml.in.in:7 src/application.rs:191
 msgid "The Loupe Team"
 msgstr "O equipo de Loupe"
 
@@ -386,27 +394,27 @@ msgstr "Escala 200%"
 #: data/resources/gtk/help-overlay.ui:185
 msgctxt "shortcut window"
 msgid "Pan View"
-msgstr ""
+msgstr "Arrastrar vista"
 
 #: data/resources/gtk/help-overlay.ui:188
 msgctxt "shortcut window"
 msgid "Pan Left"
-msgstr ""
+msgstr "Arrastrar á esquerda"
 
 #: data/resources/gtk/help-overlay.ui:194
 msgctxt "shortcut window"
 msgid "Pan Right"
-msgstr ""
+msgstr "Arrastrar á dereita"
 
 #: data/resources/gtk/help-overlay.ui:200
 msgctxt "shortcut window"
 msgid "Pan Up"
-msgstr ""
+msgstr "Arrastrar arriba"
 
 #: data/resources/gtk/help-overlay.ui:206
 msgctxt "shortcut window"
 msgid "Pan Down"
-msgstr ""
+msgstr "Arrastrar abaixo"
 
 #: data/resources/gtk/help-overlay.ui:214
 msgctxt "shortcut window"
@@ -414,11 +422,11 @@ msgid "Gestures"
 msgstr "Xestos"
 
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/application.rs:203
+#: src/application.rs:200
 msgid "translator-credits"
 msgstr "Fran Diéguez <frandieguez@gnome.org>, 2009-2023"
 
-#: src/application.rs:204
+#: src/application.rs:201
 msgid "Copyright © 2020–2023 Christopher Davis et al."
 msgstr "Copyright © 2020–2023 Christopher Davis e outros."
 
@@ -503,7 +511,7 @@ msgstr "{}\\u{202F}mm"
 msgid "%x %X"
 msgstr "%x %X"
 
-#: src/util/mod.rs:171 src/window.rs:517
+#: src/util/mod.rs:171 src/window.rs:522
 msgid "Failed to restore image from trash"
 msgstr "Produciuse un fallo ao restaurar a imaxe do lixo"
 
@@ -520,53 +528,56 @@ msgstr "Estabelecer como fondo."
 msgid "Could not set background."
 msgstr "Non foi posíbel establecela como fondo."
 
-#: src/window.rs:421
+#: src/window.rs:426
 msgid "Supported image formats"
 msgstr "Formatos de imaxe admitidos"
 
-#: src/window.rs:427
+#: src/window.rs:432
 msgid "All files"
 msgstr "Todos os ficheiros"
 
-#: src/window.rs:434
+#: src/window.rs:439
 msgid "Open Image"
 msgstr "Abrir imaxe"
 
-#: src/window.rs:489
+#: src/window.rs:494
 msgid "Image copied to clipboard"
 msgstr "Imaxe copiada ao portapapeis"
 
-#: src/window.rs:505
+#: src/window.rs:510
 msgid "Image moved to trash"
 msgstr "Imaxe movida ao lixo"
 
-#: src/window.rs:506
+#: src/window.rs:511
 msgid "Undo"
 msgstr "Desfacer"
 
-#: src/window.rs:532
+#: src/window.rs:537
 msgid "Failed to move image to trash"
 msgstr "Produciuse un fallo ao mover a imaxe ao lixo"
 
-#: src/window.rs:547
+#: src/window.rs:552
 msgid "Permanently Delete Image?"
 msgstr "Desexa eliminar a imaxe de forma permanente?"
 
-#: src/window.rs:549
+#: src/window.rs:554
 msgid "The image “{}” can only be deleted permanently."
 msgstr "A imaxe «{}» só se pode eliminar de forma permantente."
 
-#: src/window.rs:557
+#: src/window.rs:562
 msgid "Cancel"
 msgstr "Cancelar"
 
-#: src/window.rs:558
+#: src/window.rs:563
 msgid "Delete"
 msgstr "Eliminar"
 
-#: src/window.rs:569
+#: src/window.rs:574
 msgid "Failed to delete image"
 msgstr "Produciuse un fallo ao eliminar a imaxe"
+
+#~ msgid "Layout Image"
+#~ msgstr "Disposición de imaxe"
 
 #~ msgid "The following features are not available yet"
 #~ msgstr "As seguintes características non están dispoñíbeis"
