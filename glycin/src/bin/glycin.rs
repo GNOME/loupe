@@ -1,5 +1,5 @@
 use glycin_utils::*;
-use std::ffi::OsString;
+use std::ffi::{OsStr, OsString};
 use std::io::Read;
 use std::io::Seek;
 use std::os::fd::AsRawFd;
@@ -24,11 +24,20 @@ async fn xmain() {
 
     let subprocess = gio::SubprocessLauncher::new(gio::SubprocessFlags::NONE);
     subprocess.take_fd(fd_decoder, 3);
-    subprocess
-        .spawn(&[&OsString::from(
-            "/home/herold/.cargo-target/debug/glycin-image-rs",
-        )])
-        .unwrap();
+    let args = [
+        "bwrap",
+        "--unshare-all",
+        "--die-with-parent",
+        "--chdir",
+        "/",
+        "--ro-bind",
+        "/",
+        "/",
+        "--dev",
+        "/dev",
+        "/home/herold/.cargo-target/debug/glycin-image-rs",
+    ];
+    subprocess.spawn(&args.map(OsStr::new)).unwrap();
 
     let update = DecodingUpdate;
     let _zbus = zbus::ConnectionBuilder::unix_stream(unix_stream)
