@@ -1,3 +1,24 @@
+44.3
+=======
+- Hide cursor together with controls when fullscreened
+- Remove ctrl+x shortcut for deleting images
+- Fix 'delete' action appearing too long in help overlay
+- Split rotate actions making it possible to use them in help overlay
+- Cancel GFile loading when decoder is dropped
+- Make crossfade from spinner page to image work
+- Don't make activatable row subtitles selectable in properties view
+- Disable "open folder" action for non-native files (GTK doesn't support it)
+- Leave fullscreen when status page is shown
+- Skip unsupported formats when sliding through images
+- Show window after 2 seconds if dimension are not yet known
+- Cancel scroll deceleration on gesture use
+- Hide headerbar on idle in fullscreen
+- Show controls on mouse click
+- Better solution for not registering swipes as cursor motion
+- Use AdwBreakpoint to move properties below the image for narrow windows
+- Fix vertical minimum size in measure for LpImageView
+- Ignore EXIF rotation info for now in HEIF formats
+
 44.2
 =======
 - Use GFile instead of direct file access

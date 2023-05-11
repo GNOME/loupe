@@ -53,6 +53,16 @@
   </categories>
 
   <releases>
+    <release version="44.3" date="2023-05-12">
+      <description>
+        <p>This release brings many small tweaks and a hand full of bug fixes. The more prominent changes are:</p>
+        <ul>
+          <li>Hide headerbar and cursor on idle in fullscreen.</li>
+          <li>Skip unsupported image formats when going through images.</li>
+          <li>Show image properties below image for small windows.</li>
+        </ul>
+      </description>
+    </release>
     <release version="44.2" date="2023-04-21">
       <description>
         <p>This release brings many small tweaks and a hand full of bug fixes. The larger changes are:</p>
