@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <Project xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
          xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:foaf="http://xmlns.com/foaf/0.1/"
          xmlns:gnome="http://api.gnome.org/doap-extensions#" xmlns="http://usefulinc.com/ns/doap#">
@@ -5,9 +6,9 @@
   <shortdesc xml:lang="en">Image Viewer</shortdesc>
   <description xml:lang="en">Image Viewer</description>
 
-  <homepage rdf:resource="https://gitlab.gnome.org/Incubator/loupe" />
-  <download-page rdf:resource="https://gitlab.gnome.org/Incubator/loupe" />
-  <bug-database rdf:resource="https://gitlab.gnome.org/Incubator/loupe/-/issues" />
+  <homepage rdf:resource="https://apps.gnome.org/app/org.gnome.Loupe" />
+  <download-page rdf:resource="https://gitlab.gnome.org/GNOME/Incubator/loupe" />
+  <bug-database rdf:resource="https://gitlab.gnome.org/GNOME/Incubator/loupe/-/issues" />
 
   <programming-language>Rust</programming-language>
   <platform>GTK 4</platform>
