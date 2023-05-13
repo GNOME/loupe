@@ -126,13 +126,19 @@ other-checks:
 
 pages:
   stage: deploy
-  tags:
-    - flatpak
+  dependencies:
+    - cargo-doc
   script:
     - mkdir public
     - mv doc public
   artifacts:
     paths:
-      - 'public'
+      - public
   rules:
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+
+nightly:
+  extends: ".publish_nightly"
+  stage: deploy
+  dependencies:
+    - flatpak
