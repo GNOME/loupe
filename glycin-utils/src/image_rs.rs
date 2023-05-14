@@ -1,4 +1,18 @@
-use super::{Frame, MemoryFormat, SharedMemory};
+use super::{Frame, ImageInfo, MemoryFormat, SharedMemory};
+
+impl ImageInfo {
+    pub fn from_decoder<'a, T: image::ImageDecoder<'a>>(decoder: &mut T) -> Self {
+        let (width, height) = decoder.dimensions();
+
+        Self {
+            width,
+            height,
+            exif: None.into(),
+            xmp: None.into(),
+            transformations_applied: false,
+        }
+    }
+}
 
 impl Frame {
     pub fn from_decoder<'a, T: image::ImageDecoder<'a>>(mut decoder: T) -> Self {
@@ -9,11 +23,11 @@ impl Frame {
         let stride = (width * u32::from(color_type.bytes_per_pixel()))
             .try_into()
             .unwrap();
-        let iccp = decoder.icc_profile().into();
+        //let iccp = decoder.icc_profile().into();
 
         let mut memory = SharedMemory::new(decoder.total_bytes());
+        //let mut buf = vec![0; decoder.total_bytes() as usize];
         decoder.read_image(&mut memory).unwrap();
-        dbg!(&memory[0..24]);
         let texture = memory.into_texture();
 
         Self {
@@ -22,7 +36,7 @@ impl Frame {
             memory_format,
             stride,
             texture,
-            iccp,
+            iccp: None.into(),
             cicp: None.into(),
         }
     }

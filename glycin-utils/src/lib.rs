@@ -54,17 +54,29 @@ impl DerefMut for SharedMemory {
 
 #[derive(Deserialize, Serialize, Type, Debug)]
 pub struct DecodingRequest {
-    pub fd: zvariant::Fd,
+    pub fd: zvariant::OwnedFd,
     //pub mime_type: String,
 }
 
-#[derive(Deserialize, Serialize, Type, Debug, Default)]
+#[derive(Deserialize, Serialize, Type, Debug)]
 pub struct ImageInfo {
     pub width: u32,
     pub height: u32,
     pub exif: Optional<Vec<u8>>,
     pub xmp: Optional<Vec<u8>>,
     pub transformations_applied: bool,
+}
+
+impl ImageInfo {
+    pub fn new(width: u32, height: u32) -> Self {
+        Self {
+            width,
+            height,
+            exif: None.into(),
+            xmp: None.into(),
+            transformations_applied: false,
+        }
+    }
 }
 
 #[derive(Deserialize, Serialize, Type, Debug)]
@@ -109,82 +121,62 @@ pub enum MemoryFormat {
     L16a16,
 }
 
-pub struct Communication<'a> {
+pub struct Communication {
     _dbus_connection: zbus::Connection,
-    decoding_update: DecodingUpdateProxy<'a>,
 }
 
-pub type DecodeFrame<T> = Box<dyn Fn(T) -> Result<Frame, Error> + Send + Sync >;
-pub type DecoderInit = Box<dyn Fn(fs::File) -> Result<Frame, Error> + Send + Sync >;
-
-impl<'a> Communication<'a> {
-    pub async fn new(decoder: Box<dyn Decoder>) -> Communication<'a> {
+impl Communication {
+    pub async fn new(decoder: Box<dyn Decoder>) -> Self {
         let unix_stream = unsafe { UnixStream::from_raw_fd(3) };
 
-        let instruction_handler = DecodingInstruction {decoder};
+        let instruction_handler = DecodingInstruction {
+            decoder,
+            req: Default::default(),
+        };
         let dbus_connection = zbus::ConnectionBuilder::unix_stream(unix_stream)
             .p2p()
             .auth_mechanisms(&[zbus::AuthMechanism::Anonymous])
-            .serve_at("/org/gnome/glycin", instruction_handler).expect("Failed to setup instruction handler")
+            .serve_at("/org/gnome/glycin", instruction_handler)
+            .expect("Failed to setup instruction handler")
             .build()
             .await
             .expect("Failed to create private DBus connection");
 
-        let decoding_update = DecodingUpdateProxy::new(&dbus_connection)
-            .await
-            .expect("Failed to create decoding update proxy");
-
         Communication {
             _dbus_connection: dbus_connection,
-            decoding_update,
         }
     }
-
-    pub async fn send_image_info(&self, message: ImageInfo) {
-        self.decoding_update
-            .send_image_info(message)
-            .await
-            .expect("Failed to send image info");
-    }
-    pub async fn send_frame(&self, message: Frame) {
-        self.decoding_update
-            .send_frame(message)
-            .await
-            .expect("Failed to send image frame");
-    }
 }
 
-#[zbus::dbus_proxy(
-    interface = "org.gnome.glycin.DecodingUpdate",
-    default_path = "/org/gnome/glycin"
-)]
-trait DecodingUpdate {
-    async fn send_image_info(&self, message: ImageInfo) -> zbus::Result<()>;
-    async fn send_frame(&self, message: Frame) -> zbus::Result<()>;
-}
-
-pub trait Decoder:  Send + Sync {
+pub trait Decoder: Send + Sync {
     fn init(&self, file: fs::File) -> Result<ImageInfo, String>;
     fn decode_frame(&self) -> Result<Frame, String>;
 }
 
 struct DecodingInstruction {
     decoder: Box<dyn Decoder>,
+    req: Mutex<Option<DecodingRequest>>,
 }
-
+use std::sync::Mutex;
 #[zbus::dbus_interface(name = "org.gnome.glycin.DecodingInstruction")]
 impl DecodingInstruction {
-    async fn decoding_request(&self, message: DecodingRequest
-    ) -> Result<Frame, Error> {
-        dbg!(&message);
+    async fn init(&self, message: DecodingRequest) -> Result<ImageInfo, Error> {
         let fd = message.fd.as_raw_fd();
         let file = unsafe { fs::File::from_raw_fd(fd) };
 
-todo!()
-        //(self.decoder)(file)
+        *self.req.lock().unwrap() = Some(message);
+
+        let image_info = self.decoder.init(file).unwrap();
+
+        Ok(image_info)
+    }
+
+    async fn decode_frame(&self) -> Result<Frame, Error> {
+        let frame = self.decoder.decode_frame().unwrap();
+        dbg!("returned", &frame);
+        Ok(frame)
     }
 }
-
 
 #[derive(zbus::DBusError, Debug)]
 #[dbus_error(prefix = "org.gnome.glycin.Error")]
@@ -193,5 +185,3 @@ pub enum Error {
     ZBus(zbus::Error),
     Other(String),
 }
-
-

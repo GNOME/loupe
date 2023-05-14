@@ -810,6 +810,7 @@ dependencies = [
  "gtk4",
  "memfd",
  "memmap2",
+ "nix",
  "zbus",
 ]
 

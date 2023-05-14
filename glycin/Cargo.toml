@@ -14,3 +14,4 @@ memfd = "0.6.3"
 memmap = { package = "memmap2", version = "0.6.0" }
 gdk = { package = "gdk4", version = "0.6.3", features = ["v4_10"] }
 gtk4 = "0.6.6"
+nix = "0.26.2"

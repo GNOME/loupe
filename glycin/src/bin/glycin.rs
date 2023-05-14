@@ -1,32 +1,35 @@
 use glycin_utils::*;
+use gtk4::prelude::*;
 use std::ffi::OsStr;
+use std::fs;
 use std::io::Read;
 use std::os::fd::AsRawFd;
-
-use gtk4::prelude::*;
+use std::os::fd::FromRawFd;
+use std::sync::{Arc, Mutex};
+use zbus::zvariant;
 
 fn main() {
-    println!("1");
-    let path = "/home/herold/loupetest/DSCN0029.jpg";
+    let path = "/home/herold/loupetest/DSCN002-pro.jpg";
     let file = gio::File::for_path(path);
     let cancellable = gio::Cancellable::new();
 
     async_std::task::block_on(async {
         let decoder = DecoderProcess::new().await;
-        decoder.decode(&file, &cancellable).await;
+        dbg!(decoder.init(file, cancellable).await.unwrap());
+
+        dbg!(decoder._file_transfer.lock().unwrap().is_some());
+        dbg!(decoder.decode_frame().await);
 
         dbg!("waiting");
         std::future::pending::<()>().await;
-        dbg!("bye");
     });
-    //w(&file, &cancellable);
-    //async_std::task::block_on(xmain());
 }
 
 #[derive(Clone)]
 pub struct DecoderProcess<'a> {
     dbus_connection: zbus::Connection,
     decoding_instruction: DecodingInstructionProxy<'a>,
+    _file_transfer: Arc<Mutex<Option<std::os::unix::net::UnixStream>>>,
 }
 
 impl<'a> DecoderProcess<'a> {
@@ -56,13 +59,10 @@ impl<'a> DecoderProcess<'a> {
         ];
         subprocess.spawn(&args.map(OsStr::new)).unwrap();
 
-        let update = DecodingUpdate;
         let dbus_connection = zbus::ConnectionBuilder::unix_stream(unix_stream)
             .p2p()
             .server(&zbus::Guid::generate())
             .auth_mechanisms(&[zbus::AuthMechanism::Anonymous])
-            .serve_at("/org/gnome/glycin", update)
-            .unwrap()
             .build()
             .await
             .unwrap();
@@ -74,73 +74,41 @@ impl<'a> DecoderProcess<'a> {
         Self {
             dbus_connection,
             decoding_instruction,
+            _file_transfer: Default::default(),
         }
     }
 
-    pub async fn decode(&self, file: &gio::File, cancellable: &gio::Cancellable) {
-        let (mut writer, remote_reader) = std::os::unix::net::UnixStream::pair().unwrap();
+    pub async fn init(
+        &self,
+        file: gio::File,
+        cancellable: gio::Cancellable,
+    ) -> Result<ImageInfo, Error> {
+        let (remote_reader, mut writer) = std::os::unix::net::UnixStream::pair().unwrap();
+        let file_transfer = self._file_transfer.clone();
 
-        writer.set_nonblocking(true).unwrap();
-        remote_reader.set_nonblocking(true).unwrap();
+        std::thread::spawn(move || {
+            let mut reader = file.read(Some(&cancellable)).unwrap().into_read();
+            let mut buf = vec![0; BUF_SIZE];
 
-        writer
-            .set_write_timeout(Some(std::time::Duration::from_secs(60)))
-            .unwrap();
-
-        let con = self.dbus_connection.clone();
-        async_std::task::spawn(async move {
-            let decoding_instruction = DecodingInstructionProxy::new(&con)
-                .await
-                .expect("Failed to create decoding instruction proxy");
-            decoding_instruction
-                .decoding_request(DecodingRequest {
-                    fd: remote_reader.as_raw_fd().into(),
-                })
-                .await
-                .unwrap();
-        });
-        dbg!("reader");
-
-        let mut reader = file.read(Some(cancellable)).unwrap().into_read();
-
-        let mut buf = vec![0; BUF_SIZE];
-
-        loop {
-            dbg!("reading");
-            let n = reader.read(&mut buf).unwrap();
-            dbg!("read");
-            dbg!(n);
-
-            if n == 0 {
-                break;
+            loop {
+                let n = reader.read(&mut buf).unwrap();
+                if dbg!(n) == 0 {
+                    break;
+                }
+                writer.write_all(&buf[..n]).unwrap();
             }
+        });
 
-            dbg!("write");
-            writer.write_all(&buf[..n]).unwrap();
-        }
+        self.decoding_instruction
+            .init(DecodingRequest {
+                fd: unsafe { zvariant::OwnedFd::from_raw_fd(remote_reader.as_raw_fd()) },
+            })
+            .await
     }
-}
 
-use std::io::Write;
-const BUF_SIZE: usize = u16::MAX as usize;
+    async fn decode_frame(&self) -> gdk::Texture {
+        let frame = self.decoding_instruction.decode_frame().await.unwrap();
 
-#[zbus::dbus_proxy(
-    interface = "org.gnome.glycin.DecodingInstruction",
-    default_path = "/org/gnome/glycin"
-)]
-trait DecodingInstruction {
-    async fn decoding_request(&self, message: DecodingRequest) -> zbus::Result<()>;
-}
-
-struct DecodingUpdate;
-
-#[zbus::dbus_interface(name = "org.gnome.glycin.DecodingUpdate")]
-impl DecodingUpdate {
-    async fn send_image_info(&self, message: ImageInfo) {
-        dbg!(message);
-    }
-    async fn send_frame(&self, frame: Frame) {
-        dbg!(&frame);
         let Texture::MemFd(fd) = frame.texture;
         let mfd = memfd::Memfd::try_from_fd(fd.as_raw_fd()).unwrap();
 
@@ -153,8 +121,6 @@ impl DecodingUpdate {
         ])
         .unwrap();
 
-        //let mut file = mfd.into_file();
-        //file.rewind().unwrap();
         let fd = mfd.as_raw_fd();
 
         let bytes: glib::Bytes = unsafe {
@@ -173,16 +139,27 @@ impl DecodingUpdate {
 
         gtk4::init().unwrap();
         let snapshot = gtk4::Snapshot::new();
-        dbg!("creating snapshot");
         texture.snapshot(&snapshot, texture.width() as f64, texture.height() as f64);
-        dbg!("snapshot created");
         snapshot
             .to_node()
             .unwrap()
             .write_to_file("/home/herold/node.node")
             .unwrap();
-        dbg!("snapshot written");
+
+        texture.upcast()
     }
+}
+
+use std::io::Write;
+const BUF_SIZE: usize = u16::MAX as usize;
+
+#[zbus::dbus_proxy(
+    interface = "org.gnome.glycin.DecodingInstruction",
+    default_path = "/org/gnome/glycin"
+)]
+trait DecodingInstruction {
+    async fn init(&self, message: DecodingRequest) -> Result<ImageInfo, Error>;
+    async fn decode_frame(&self) -> Result<Frame, Error>;
 }
 
 fn gdk_memory_format(format: MemoryFormat) -> gdk::MemoryFormat {
