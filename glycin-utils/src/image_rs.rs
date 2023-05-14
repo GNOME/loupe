@@ -23,10 +23,9 @@ impl Frame {
         let stride = (width * u32::from(color_type.bytes_per_pixel()))
             .try_into()
             .unwrap();
-        //let iccp = decoder.icc_profile().into();
+        let iccp = decoder.icc_profile().into();
 
         let mut memory = SharedMemory::new(decoder.total_bytes());
-        //let mut buf = vec![0; decoder.total_bytes() as usize];
         decoder.read_image(&mut memory).unwrap();
         let texture = memory.into_texture();
 
@@ -36,7 +35,7 @@ impl Frame {
             memory_format,
             stride,
             texture,
-            iccp: None.into(),
+            iccp,
             cicp: None.into(),
         }
     }
