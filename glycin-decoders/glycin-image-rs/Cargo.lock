@@ -592,6 +592,7 @@ dependencies = [
  "image",
  "memfd",
  "memmap2",
+ "once_cell",
  "zbus",
 ]
 

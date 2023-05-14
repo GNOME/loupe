@@ -1,58 +1,135 @@
 use glycin_utils::*;
-use std::ffi::{OsStr, OsString};
+use std::ffi::OsStr;
 use std::io::Read;
-use std::io::Seek;
 use std::os::fd::AsRawFd;
-use std::os::fd::FromRawFd;
 
 use gtk4::prelude::*;
 
 fn main() {
     println!("1");
-    async_std::task::block_on(xmain());
+    let path = "/home/herold/loupetest/DSCN0029.jpg";
+    let file = gio::File::for_path(path);
+    let cancellable = gio::Cancellable::new();
+
+    async_std::task::block_on(async {
+        let decoder = DecoderProcess::new().await;
+        decoder.decode(&file, &cancellable).await;
+
+        dbg!("waiting");
+        std::future::pending::<()>().await;
+        dbg!("bye");
+    });
+    //w(&file, &cancellable);
+    //async_std::task::block_on(xmain());
 }
 
-async fn xmain() {
-    println!("2");
-    let (unix_stream, fd_decoder) = std::os::unix::net::UnixStream::pair().unwrap();
-    unix_stream
-        .set_nonblocking(true)
-        .expect("Couldn't set nonblocking");
-    fd_decoder
-        .set_nonblocking(true)
-        .expect("Couldn't set nonblocking");
+#[derive(Clone)]
+pub struct DecoderProcess<'a> {
+    dbus_connection: zbus::Connection,
+    decoding_instruction: DecodingInstructionProxy<'a>,
+}
 
-    let subprocess = gio::SubprocessLauncher::new(gio::SubprocessFlags::NONE);
-    subprocess.take_fd(fd_decoder, 3);
-    let args = [
-        "bwrap",
-        "--unshare-all",
-        "--die-with-parent",
-        "--chdir",
-        "/",
-        "--ro-bind",
-        "/",
-        "/",
-        "--dev",
-        "/dev",
-        "/home/herold/.cargo-target/debug/glycin-image-rs",
-    ];
-    subprocess.spawn(&args.map(OsStr::new)).unwrap();
+impl<'a> DecoderProcess<'a> {
+    pub async fn new() -> DecoderProcess<'a> {
+        let (unix_stream, fd_decoder) = std::os::unix::net::UnixStream::pair().unwrap();
+        unix_stream
+            .set_nonblocking(true)
+            .expect("Couldn't set nonblocking");
+        fd_decoder
+            .set_nonblocking(true)
+            .expect("Couldn't set nonblocking");
 
-    let update = DecodingUpdate;
-    let _zbus = zbus::ConnectionBuilder::unix_stream(unix_stream)
-        .p2p()
-        .server(&zbus::Guid::generate())
-        .auth_mechanisms(&[zbus::AuthMechanism::Anonymous])
-        .serve_at("/org/gnome/glycin", update)
-        .unwrap()
-        .build()
-        .await
-        .unwrap();
+        let subprocess = gio::SubprocessLauncher::new(gio::SubprocessFlags::NONE);
+        subprocess.take_fd(fd_decoder, 3);
+        let args = [
+            "bwrap",
+            "--unshare-all",
+            "--die-with-parent",
+            "--chdir",
+            "/",
+            "--ro-bind",
+            "/",
+            "/",
+            "--dev",
+            "/dev",
+            "/home/herold/.cargo-target/debug/glycin-image-rs",
+        ];
+        subprocess.spawn(&args.map(OsStr::new)).unwrap();
 
-    dbg!("waiting");
-    std::future::pending::<()>().await;
-    dbg!("bye");
+        let update = DecodingUpdate;
+        let dbus_connection = zbus::ConnectionBuilder::unix_stream(unix_stream)
+            .p2p()
+            .server(&zbus::Guid::generate())
+            .auth_mechanisms(&[zbus::AuthMechanism::Anonymous])
+            .serve_at("/org/gnome/glycin", update)
+            .unwrap()
+            .build()
+            .await
+            .unwrap();
+
+        let decoding_instruction = DecodingInstructionProxy::new(&dbus_connection)
+            .await
+            .expect("Failed to create decoding instruction proxy");
+
+        Self {
+            dbus_connection,
+            decoding_instruction,
+        }
+    }
+
+    pub async fn decode(&self, file: &gio::File, cancellable: &gio::Cancellable) {
+        let (mut writer, remote_reader) = std::os::unix::net::UnixStream::pair().unwrap();
+
+        writer.set_nonblocking(true).unwrap();
+        remote_reader.set_nonblocking(true).unwrap();
+
+        writer
+            .set_write_timeout(Some(std::time::Duration::from_secs(60)))
+            .unwrap();
+
+        let con = self.dbus_connection.clone();
+        async_std::task::spawn(async move {
+            let decoding_instruction = DecodingInstructionProxy::new(&con)
+                .await
+                .expect("Failed to create decoding instruction proxy");
+            decoding_instruction
+                .decoding_request(DecodingRequest {
+                    fd: remote_reader.as_raw_fd().into(),
+                })
+                .await
+                .unwrap();
+        });
+        dbg!("reader");
+
+        let mut reader = file.read(Some(cancellable)).unwrap().into_read();
+
+        let mut buf = vec![0; BUF_SIZE];
+
+        loop {
+            dbg!("reading");
+            let n = reader.read(&mut buf).unwrap();
+            dbg!("read");
+            dbg!(n);
+
+            if n == 0 {
+                break;
+            }
+
+            dbg!("write");
+            writer.write_all(&buf[..n]).unwrap();
+        }
+    }
+}
+
+use std::io::Write;
+const BUF_SIZE: usize = u16::MAX as usize;
+
+#[zbus::dbus_proxy(
+    interface = "org.gnome.glycin.DecodingInstruction",
+    default_path = "/org/gnome/glycin"
+)]
+trait DecodingInstruction {
+    async fn decoding_request(&self, message: DecodingRequest) -> zbus::Result<()>;
 }
 
 struct DecodingUpdate;
@@ -94,7 +171,7 @@ impl DecodingUpdate {
             frame.stride.try_into().unwrap(),
         );
 
-        gtk4::init();
+        gtk4::init().unwrap();
         let snapshot = gtk4::Snapshot::new();
         dbg!("creating snapshot");
         texture.snapshot(&snapshot, texture.width() as f64, texture.height() as f64);
