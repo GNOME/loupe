@@ -1,5 +1,4 @@
 use glycin_utils::*;
-use std::fs;
 use std::sync::Mutex;
 
 fn main() {
@@ -7,7 +6,7 @@ fn main() {
 }
 
 async fn listener() {
-   let _x = Communication::new(Box::new(ImgDecoder::default())).await;
+    let _connection = Communication::new(Box::<ImgDecoder>::default()).await;
     std::future::pending::<()>().await;
 }
 
@@ -25,10 +24,8 @@ impl Decoder for ImgDecoder {
     }
 
     fn decode_frame(&self) -> Result<Frame, DecoderError> {
-        let decoder =
-            std::mem::take(&mut *self.decoder.lock().unwrap()).context_internal()?;
+        let decoder = std::mem::take(&mut *self.decoder.lock().unwrap()).context_internal()?;
         let frame = Frame::from_decoder(decoder);
         Ok(frame)
     }
 }
-

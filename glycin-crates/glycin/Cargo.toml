@@ -1,8 +1,13 @@
 [package]
 name = "glycin"
-version = "0.1.0"
-edition = "2021"
-license = "LGPL-3.0-or-later"
+version.workspace = true
+authors.workspace = true
+description.workspace = true
+license.workspace = true
+homepage.workspace = true
+repository.workspace = true
+edition.workspace = true
+rust-version.workspace = true
 
 [dependencies]
 async-std = "1.12.0"

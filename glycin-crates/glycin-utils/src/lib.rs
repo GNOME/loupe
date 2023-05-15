@@ -1,19 +1,15 @@
 pub mod image_rs;
 
+pub use anyhow;
+use anyhow::Context;
+use gettextrs::gettext;
 use serde::{Deserialize, Serialize};
-//use std::num::NonZeroU32;
 use std::ffi::CString;
-use std::fs;
 use std::ops::{Deref, DerefMut};
-use std::os::fd::FromRawFd;
-use std::os::fd::{AsRawFd, RawFd};
+use std::os::fd::{FromRawFd, IntoRawFd, RawFd};
+pub use std::os::unix::net::UnixStream;
 use std::time::Duration;
 use zbus::zvariant::{self, Optional, Type};
-use anyhow::Context;
-pub use anyhow;
-use gettextrs::gettext;
-
-pub use std::os::unix::net::UnixStream;
 
 #[derive(Debug)]
 pub struct SharedMemory {
@@ -31,7 +27,7 @@ impl SharedMemory {
         .expect("Failed to create memfd");
         nix::unistd::ftruncate(memfd, size.try_into().expect("Required memory too large"))
             .expect("Failed to set memfd size");
-        let mmap = unsafe { memmap::MmapMut::map_mut(&memfd) }.expect("Mailed to mmap memfd");
+        let mmap = unsafe { memmap::MmapMut::map_mut(memfd) }.expect("Mailed to mmap memfd");
 
         Self { mmap, memfd }
     }
@@ -133,10 +129,7 @@ impl Communication {
     pub async fn new(decoder: Box<dyn Decoder>) -> Self {
         let unix_stream = unsafe { UnixStream::from_raw_fd(3) };
 
-        let instruction_handler = DecodingInstruction {
-            decoder,
-            req: Default::default(),
-        };
+        let instruction_handler = DecodingInstruction { decoder };
         let dbus_connection = zbus::ConnectionBuilder::unix_stream(unix_stream)
             .p2p()
             .auth_mechanisms(&[zbus::AuthMechanism::Anonymous])
@@ -159,16 +152,13 @@ pub trait Decoder: Send + Sync {
 
 struct DecodingInstruction {
     decoder: Box<dyn Decoder>,
-    req: Mutex<Option<DecodingRequest>>,
 }
-use std::sync::Mutex;use std::os::fd::IntoRawFd;
+
 #[zbus::dbus_interface(name = "org.gnome.glycin.DecodingInstruction")]
 impl DecodingInstruction {
     async fn init(&self, message: DecodingRequest) -> Result<ImageInfo, DBusError> {
         let fd = message.fd.into_raw_fd();
         let stream = unsafe { UnixStream::from_raw_fd(fd) };
-
-        //*self.req.lock().unwrap() = Some(message);
 
         let image_info = self.decoder.init(stream).unwrap();
 
@@ -196,7 +186,7 @@ impl From<DecoderError> for DBusError {
     fn from(err: DecoderError) -> Self {
         match err {
             DecoderError::DecodingError(msg) => Self::DecodingError(msg),
-             DecoderError::InternalDecoderError => Self::InternalDecoderError,
+            DecoderError::InternalDecoderError => Self::InternalDecoderError,
             DecoderError::UnsupportedImageFormat => Self::UnsupportedImageFormat,
         }
     }
@@ -207,14 +197,12 @@ pub enum DecoderError {
     DecodingError(String),
     InternalDecoderError,
     UnsupportedImageFormat,
-
 }
 
 impl std::fmt::Display for DecoderError {
-fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> Result<(), std::fmt::Error> {
-    write!(f, "something")
-
-}
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> Result<(), std::fmt::Error> {
+        write!(f, "something")
+    }
 }
 
 impl std::error::Error for DecoderError {}
@@ -234,33 +222,31 @@ pub trait GenericContexts<T> {
 
 impl<T, E> GenericContexts<T> for Result<T, E>
 where
-    E: std::error::Error + Send + Sync + 'static, {
-
+    E: std::error::Error + Send + Sync + 'static,
+{
     fn context_failed(self) -> anyhow::Result<T> {
         self.with_context(|| gettext("Failed to decode image"))
     }
-
 
     fn context_internal(self) -> Result<T, DecoderError> {
         self.map_err(|_| DecoderError::InternalDecoderError)
     }
 
-        fn context_unsupported(self) -> Result<T, DecoderError> {
+    fn context_unsupported(self) -> Result<T, DecoderError> {
         self.map_err(|_| DecoderError::UnsupportedImageFormat)
     }
 }
 
-impl<T> GenericContexts<T> for Option<T>{
+impl<T> GenericContexts<T> for Option<T> {
     fn context_failed(self) -> anyhow::Result<T> {
         self.with_context(|| gettext("Failed to decode image"))
     }
 
     fn context_internal(self) -> Result<T, DecoderError> {
-        self.ok_or_else(|| DecoderError::InternalDecoderError)
+        self.ok_or(DecoderError::InternalDecoderError)
     }
 
-        fn context_unsupported(self) -> Result<T, DecoderError> {
-        self.ok_or_else(|| DecoderError::UnsupportedImageFormat)
+    fn context_unsupported(self) -> Result<T, DecoderError> {
+        self.ok_or(DecoderError::UnsupportedImageFormat)
     }
 }
-

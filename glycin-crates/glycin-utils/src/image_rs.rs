@@ -20,9 +20,7 @@ impl Frame {
 
         let memory_format = MemoryFormat::from(color_type);
         let (width, height) = decoder.dimensions();
-        let stride = (width * u32::from(color_type.bytes_per_pixel()))
-            .try_into()
-            .unwrap();
+        let stride = width * u32::from(color_type.bytes_per_pixel());
         let iccp = decoder.icc_profile().into();
 
         let mut memory = SharedMemory::new(decoder.total_bytes());
@@ -59,4 +57,3 @@ impl From<image::ColorType> for MemoryFormat {
         }
     }
 }
-
