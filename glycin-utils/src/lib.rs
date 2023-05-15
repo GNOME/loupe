@@ -2,14 +2,18 @@ pub mod image_rs;
 
 use serde::{Deserialize, Serialize};
 //use std::num::NonZeroU32;
-use std::os::fd::FromRawFd;
-use std::os::unix::net::UnixStream;
-//use std::time::Duration;
 use std::ffi::CString;
 use std::fs;
 use std::ops::{Deref, DerefMut};
+use std::os::fd::FromRawFd;
 use std::os::fd::{AsRawFd, RawFd};
+use std::time::Duration;
 use zbus::zvariant::{self, Optional, Type};
+use anyhow::Context;
+pub use anyhow;
+use gettextrs::gettext;
+
+pub use std::os::unix::net::UnixStream;
 
 #[derive(Debug)]
 pub struct SharedMemory {
@@ -88,7 +92,7 @@ pub struct Frame {
     pub texture: Texture,
     pub iccp: Optional<Vec<u8>>,
     pub cicp: Optional<Vec<u8>>,
-    //pub delay: Optional<Duration>,
+    pub delay: Optional<Duration>,
 }
 
 #[derive(Deserialize, Serialize, Type, Debug)]
@@ -149,29 +153,29 @@ impl Communication {
 }
 
 pub trait Decoder: Send + Sync {
-    fn init(&self, file: fs::File) -> Result<ImageInfo, String>;
-    fn decode_frame(&self) -> Result<Frame, String>;
+    fn init(&self, stream: UnixStream) -> Result<ImageInfo, DecoderError>;
+    fn decode_frame(&self) -> Result<Frame, DecoderError>;
 }
 
 struct DecodingInstruction {
     decoder: Box<dyn Decoder>,
     req: Mutex<Option<DecodingRequest>>,
 }
-use std::sync::Mutex;
+use std::sync::Mutex;use std::os::fd::IntoRawFd;
 #[zbus::dbus_interface(name = "org.gnome.glycin.DecodingInstruction")]
 impl DecodingInstruction {
-    async fn init(&self, message: DecodingRequest) -> Result<ImageInfo, Error> {
-        let fd = message.fd.as_raw_fd();
-        let file = unsafe { fs::File::from_raw_fd(fd) };
+    async fn init(&self, message: DecodingRequest) -> Result<ImageInfo, DBusError> {
+        let fd = message.fd.into_raw_fd();
+        let stream = unsafe { UnixStream::from_raw_fd(fd) };
 
-        *self.req.lock().unwrap() = Some(message);
+        //*self.req.lock().unwrap() = Some(message);
 
-        let image_info = self.decoder.init(file).unwrap();
+        let image_info = self.decoder.init(stream).unwrap();
 
         Ok(image_info)
     }
 
-    async fn decode_frame(&self) -> Result<Frame, Error> {
+    async fn decode_frame(&self) -> Result<Frame, DBusError> {
         let frame = self.decoder.decode_frame().unwrap();
         dbg!("returned", &frame);
         Ok(frame)
@@ -180,8 +184,83 @@ impl DecodingInstruction {
 
 #[derive(zbus::DBusError, Debug)]
 #[dbus_error(prefix = "org.gnome.glycin.Error")]
-pub enum Error {
+pub enum DBusError {
     #[dbus_error(zbus_error)]
     ZBus(zbus::Error),
-    Other(String),
+    DecodingError(String),
+    InternalDecoderError,
+    UnsupportedImageFormat,
 }
+
+impl From<DecoderError> for DBusError {
+    fn from(err: DecoderError) -> Self {
+        match err {
+            DecoderError::DecodingError(msg) => Self::DecodingError(msg),
+             DecoderError::InternalDecoderError => Self::InternalDecoderError,
+            DecoderError::UnsupportedImageFormat => Self::UnsupportedImageFormat,
+        }
+    }
+}
+
+#[derive(Debug)]
+pub enum DecoderError {
+    DecodingError(String),
+    InternalDecoderError,
+    UnsupportedImageFormat,
+
+}
+
+impl std::fmt::Display for DecoderError {
+fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> Result<(), std::fmt::Error> {
+    write!(f, "something")
+
+}
+}
+
+impl std::error::Error for DecoderError {}
+
+impl From<anyhow::Error> for DecoderError {
+    fn from(err: anyhow::Error) -> Self {
+        eprintln!("Decoding error: {err:?}");
+        Self::DecodingError(format!("{err}"))
+    }
+}
+
+pub trait GenericContexts<T> {
+    fn context_failed(self) -> anyhow::Result<T>;
+    fn context_internal(self) -> Result<T, DecoderError>;
+    fn context_unsupported(self) -> Result<T, DecoderError>;
+}
+
+impl<T, E> GenericContexts<T> for Result<T, E>
+where
+    E: std::error::Error + Send + Sync + 'static, {
+
+    fn context_failed(self) -> anyhow::Result<T> {
+        self.with_context(|| gettext("Failed to decode image"))
+    }
+
+
+    fn context_internal(self) -> Result<T, DecoderError> {
+        self.map_err(|_| DecoderError::InternalDecoderError)
+    }
+
+        fn context_unsupported(self) -> Result<T, DecoderError> {
+        self.map_err(|_| DecoderError::UnsupportedImageFormat)
+    }
+}
+
+impl<T> GenericContexts<T> for Option<T>{
+    fn context_failed(self) -> anyhow::Result<T> {
+        self.with_context(|| gettext("Failed to decode image"))
+    }
+
+    fn context_internal(self) -> Result<T, DecoderError> {
+        self.ok_or_else(|| DecoderError::InternalDecoderError)
+    }
+
+        fn context_unsupported(self) -> Result<T, DecoderError> {
+        self.ok_or_else(|| DecoderError::UnsupportedImageFormat)
+    }
+}
+

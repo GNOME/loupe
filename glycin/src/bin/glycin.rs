@@ -1,15 +1,13 @@
 use glycin_utils::*;
 use gtk4::prelude::*;
 use std::ffi::OsStr;
-use std::fs;
 use std::io::Read;
 use std::os::fd::AsRawFd;
 use std::os::fd::FromRawFd;
-use std::sync::{Arc, Mutex};
 use zbus::zvariant;
 
 fn main() {
-    let path = "/home/herold/loupetest/DSCN002-pro.jpg";
+    let path = "/home/herold/loupetest/house.png";
     let file = gio::File::for_path(path);
     let cancellable = gio::Cancellable::new();
 
@@ -17,7 +15,6 @@ fn main() {
         let decoder = DecoderProcess::new().await;
         dbg!(decoder.init(file, cancellable).await.unwrap());
 
-        dbg!(decoder._file_transfer.lock().unwrap().is_some());
         dbg!(decoder.decode_frame().await);
 
         dbg!("waiting");
@@ -27,9 +24,8 @@ fn main() {
 
 #[derive(Clone)]
 pub struct DecoderProcess<'a> {
-    dbus_connection: zbus::Connection,
+    _dbus_connection: zbus::Connection,
     decoding_instruction: DecodingInstructionProxy<'a>,
-    _file_transfer: Arc<Mutex<Option<std::os::unix::net::UnixStream>>>,
 }
 
 impl<'a> DecoderProcess<'a> {
@@ -72,9 +68,8 @@ impl<'a> DecoderProcess<'a> {
             .expect("Failed to create decoding instruction proxy");
 
         Self {
-            dbus_connection,
+            _dbus_connection: dbus_connection,
             decoding_instruction,
-            _file_transfer: Default::default(),
         }
     }
 
@@ -82,9 +77,8 @@ impl<'a> DecoderProcess<'a> {
         &self,
         file: gio::File,
         cancellable: gio::Cancellable,
-    ) -> Result<ImageInfo, Error> {
+    ) -> Result<ImageInfo, DBusError> {
         let (remote_reader, mut writer) = std::os::unix::net::UnixStream::pair().unwrap();
-        let file_transfer = self._file_transfer.clone();
 
         std::thread::spawn(move || {
             let mut reader = file.read(Some(&cancellable)).unwrap().into_read();
@@ -158,8 +152,8 @@ const BUF_SIZE: usize = u16::MAX as usize;
     default_path = "/org/gnome/glycin"
 )]
 trait DecodingInstruction {
-    async fn init(&self, message: DecodingRequest) -> Result<ImageInfo, Error>;
-    async fn decode_frame(&self) -> Result<Frame, Error>;
+    async fn init(&self, message: DecodingRequest) -> Result<ImageInfo, DBusError>;
+    async fn decode_frame(&self) -> Result<Frame, DBusError>;
 }
 
 fn gdk_memory_format(format: MemoryFormat) -> gdk::MemoryFormat {

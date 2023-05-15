@@ -9,9 +9,11 @@ edition = "2021"
 image = { version = "0.24.6", optional = true }
 memfd = "0.6.3"
 serde = { version = "1.0.162", features = ["derive"] }
-zbus = "3.12.0"
+zbus = "3.13.1"
 memmap = { package = "memmap2", version = "0.6.0" }
 nix = "0.26.2"
+anyhow = { version = "1.0.71", features = ["backtrace"] }
+gettext-rs = { version = "0.7.0", features = ["gettext-system"] }
 
 [features]
 default = ["image-rs"]

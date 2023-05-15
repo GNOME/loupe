@@ -8,7 +8,7 @@ license = "LGPL-3.0-or-later"
 async-std = "1.12.0"
 gio = "0.17.9"
 glib = "0.17.9"
-zbus = "3.12.0"
+zbus = "3.13.1"
 glycin-utils = { path = "../glycin-utils/" }
 memfd = "0.6.3"
 memmap = { package = "memmap2", version = "0.6.0" }

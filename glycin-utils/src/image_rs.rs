@@ -37,6 +37,7 @@ impl Frame {
             texture,
             iccp,
             cicp: None.into(),
+            delay: None.into(),
         }
     }
 }
@@ -58,3 +59,4 @@ impl From<image::ColorType> for MemoryFormat {
         }
     }
 }
+
