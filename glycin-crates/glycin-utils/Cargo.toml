@@ -20,5 +20,4 @@ anyhow = { version = "1.0.71", features = ["backtrace"] }
 gettext-rs = { version = "0.7.0", features = ["gettext-system"] }
 
 [features]
-default = ["image-rs"]
 image-rs = ["image"]

@@ -1,15 +1,18 @@
+#[cfg(feature = "image-rs")]
 pub mod image_rs;
 
 pub use anyhow;
+pub use std::os::unix::net::UnixStream;
+
 use anyhow::Context;
 use gettextrs::gettext;
 use serde::{Deserialize, Serialize};
+use zbus::zvariant::{self, Optional, Type};
+
 use std::ffi::CString;
 use std::ops::{Deref, DerefMut};
 use std::os::fd::{FromRawFd, IntoRawFd, RawFd};
-pub use std::os::unix::net::UnixStream;
 use std::time::Duration;
-use zbus::zvariant::{self, Optional, Type};
 
 #[derive(Debug)]
 pub struct SharedMemory {
@@ -19,6 +22,7 @@ pub struct SharedMemory {
 
 impl SharedMemory {
     pub fn new(size: u64) -> Self {
+        // TODO: use memfd crate again
         let memfd = nix::sys::memfd::memfd_create(
             &CString::new("glycin-frame").unwrap(),
             nix::sys::memfd::MemFdCreateFlag::MFD_CLOEXEC
