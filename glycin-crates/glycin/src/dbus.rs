@@ -1,7 +1,7 @@
 //! Internal DBus API
 
+use gdk::prelude::*;
 use glycin_utils::*;
-use gtk4::prelude::*;
 use std::ffi::OsStr;
 use std::io::Read;
 use std::os::fd::AsRawFd;
@@ -63,7 +63,7 @@ impl<'a> DecoderProcess<'a> {
         &self,
         file: gio::File,
         cancellable: gio::Cancellable,
-    ) -> Result<ImageInfo, DBusError> {
+    ) -> Result<ImageInfo, Error> {
         let (remote_reader, mut writer) = std::os::unix::net::UnixStream::pair().unwrap();
 
         std::thread::spawn(move || {
@@ -72,7 +72,7 @@ impl<'a> DecoderProcess<'a> {
 
             loop {
                 let n = reader.read(&mut buf).unwrap();
-                if dbg!(n) == 0 {
+                if n == 0 {
                     break;
                 }
                 writer.write_all(&buf[..n]).unwrap();
@@ -86,8 +86,8 @@ impl<'a> DecoderProcess<'a> {
             .await
     }
 
-    pub async fn decode_frame(&self) -> gdk::Texture {
-        let frame = self.decoding_instruction.decode_frame().await.unwrap();
+    pub async fn decode_frame(&self) -> Result<gdk::Texture, Error> {
+        let frame = self.decoding_instruction.decode_frame().await?;
 
         let Texture::MemFd(fd) = frame.texture;
         let mfd = memfd::Memfd::try_from_fd(fd.as_raw_fd()).unwrap();
@@ -117,16 +117,7 @@ impl<'a> DecoderProcess<'a> {
             frame.stride.try_into().unwrap(),
         );
 
-        gtk4::init().unwrap();
-        let snapshot = gtk4::Snapshot::new();
-        texture.snapshot(&snapshot, texture.width() as f64, texture.height() as f64);
-        snapshot
-            .to_node()
-            .unwrap()
-            .write_to_file("/home/herold/node.node")
-            .unwrap();
-
-        texture.upcast()
+        Ok(texture.upcast())
     }
 }
 
@@ -138,12 +129,16 @@ const BUF_SIZE: usize = u16::MAX as usize;
     default_path = "/org/gnome/glycin"
 )]
 trait DecodingInstruction {
-    async fn init(&self, message: DecodingRequest) -> Result<ImageInfo, DBusError>;
-    async fn decode_frame(&self) -> Result<Frame, DBusError>;
+    async fn init(&self, message: DecodingRequest) -> Result<ImageInfo, Error>;
+    async fn decode_frame(&self) -> Result<Frame, Error>;
 }
 
 fn gdk_memory_format(format: MemoryFormat) -> gdk::MemoryFormat {
     match format {
+        MemoryFormat::L8 => unimplemented!(),
+        MemoryFormat::L8a8 => unimplemented!(),
+        MemoryFormat::L16 => unimplemented!(),
+        MemoryFormat::L16a16 => unimplemented!(),
         MemoryFormat::B8g8r8a8Premultiplied => gdk::MemoryFormat::B8g8r8a8Premultiplied,
         MemoryFormat::A8r8g8b8Premultiplied => gdk::MemoryFormat::A8r8g8b8Premultiplied,
         MemoryFormat::R8g8b8a8Premultiplied => gdk::MemoryFormat::R8g8b8a8Premultiplied,
@@ -163,9 +158,5 @@ fn gdk_memory_format(format: MemoryFormat) -> gdk::MemoryFormat {
             gdk::MemoryFormat::R32g32b32a32FloatPremultiplied
         }
         MemoryFormat::R32g32b32a32Float => gdk::MemoryFormat::R32g32b32a32Float,
-        MemoryFormat::L8 => unimplemented!(),
-        MemoryFormat::L8a8 => unimplemented!(),
-        MemoryFormat::L16 => unimplemented!(),
-        MemoryFormat::L16a16 => unimplemented!(),
     }
 }

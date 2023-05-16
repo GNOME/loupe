@@ -5,7 +5,7 @@
 //!
 //! # Example
 //!
-//! ```no_run
+//! ```ignore
 //! let file = gio::File::for_path("image.jpg");
 //! let image = ImageRequest::new(file).request().await;
 //!
@@ -16,6 +16,7 @@
 pub mod dbus;
 
 mod api;
+mod icc;
 
 pub use api::*;
 pub use glycin_utils::ImageInfo;

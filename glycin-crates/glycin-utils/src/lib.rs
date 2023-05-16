@@ -163,7 +163,7 @@ struct DecodingInstruction {
 
 #[zbus::dbus_interface(name = "org.gnome.glycin.DecodingInstruction")]
 impl DecodingInstruction {
-    async fn init(&self, message: DecodingRequest) -> Result<ImageInfo, DBusError> {
+    async fn init(&self, message: DecodingRequest) -> Result<ImageInfo, Error> {
         let fd = message.fd.into_raw_fd();
         let stream = unsafe { UnixStream::from_raw_fd(fd) };
 
@@ -172,16 +172,15 @@ impl DecodingInstruction {
         Ok(image_info)
     }
 
-    async fn decode_frame(&self) -> Result<Frame, DBusError> {
+    async fn decode_frame(&self) -> Result<Frame, Error> {
         let frame = self.decoder.decode_frame().unwrap();
-        dbg!("returned", &frame);
         Ok(frame)
     }
 }
 
 #[derive(zbus::DBusError, Debug)]
 #[dbus_error(prefix = "org.gnome.glycin.Error")]
-pub enum DBusError {
+pub enum Error {
     #[dbus_error(zbus_error)]
     ZBus(zbus::Error),
     DecodingError(String),
@@ -189,7 +188,7 @@ pub enum DBusError {
     UnsupportedImageFormat,
 }
 
-impl From<DecoderError> for DBusError {
+impl From<DecoderError> for Error {
     fn from(err: DecoderError) -> Self {
         match err {
             DecoderError::DecodingError(msg) => Self::DecodingError(msg),
@@ -208,7 +207,13 @@ pub enum DecoderError {
 
 impl std::fmt::Display for DecoderError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> Result<(), std::fmt::Error> {
-        write!(f, "something")
+        match self {
+            Self::DecodingError(err) => write!(f, "{err}"),
+            Self::InternalDecoderError => {
+                write!(f, "{}", gettext("Internal error while interpreting image"))
+            }
+            Self::UnsupportedImageFormat => write!(f, "{}", gettext("Unsupported image format")),
+        }
     }
 }
 

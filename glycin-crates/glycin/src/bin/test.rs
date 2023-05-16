@@ -6,9 +6,12 @@ fn main() {
 
     async_std::task::block_on(async {
         let image_request = ImageRequest::new(file);
-        let image = image_request.request().await;
+        let image = image_request.request().await.unwrap();
 
-        let height = image.info().height;
+        let info = image.info();
         let texture = image.next_frame().await;
+
+        dbg!(info);
+        dbg!(&texture);
     });
 }
