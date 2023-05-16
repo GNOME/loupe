@@ -1,3 +1,5 @@
+//! Internal DBus API
+
 use glycin_utils::*;
 use gtk4::prelude::*;
 use std::ffi::OsStr;
@@ -5,22 +7,6 @@ use std::io::Read;
 use std::os::fd::AsRawFd;
 use std::os::fd::FromRawFd;
 use zbus::zvariant;
-
-fn main() {
-    let path = "/home/herold/loupetest/house.png";
-    let file = gio::File::for_path(path);
-    let cancellable = gio::Cancellable::new();
-
-    async_std::task::block_on(async {
-        let decoder = DecoderProcess::new().await;
-        dbg!(decoder.init(file, cancellable).await.unwrap());
-
-        dbg!(decoder.decode_frame().await);
-
-        dbg!("waiting");
-        std::future::pending::<()>().await;
-    });
-}
 
 #[derive(Clone)]
 pub struct DecoderProcess<'a> {
@@ -100,7 +86,7 @@ impl<'a> DecoderProcess<'a> {
             .await
     }
 
-    async fn decode_frame(&self) -> gdk::Texture {
+    pub async fn decode_frame(&self) -> gdk::Texture {
         let frame = self.decoding_instruction.decode_frame().await.unwrap();
 
         let Texture::MemFd(fd) = frame.texture;

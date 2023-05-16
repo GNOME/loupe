@@ -1,3 +1,5 @@
+//! Utilities for building glycin decoders
+
 #[cfg(feature = "image-rs")]
 pub mod image_rs;
 
@@ -62,6 +64,7 @@ pub struct DecodingRequest {
     //pub mime_type: String,
 }
 
+/// Various image metadata
 #[derive(Deserialize, Serialize, Type, Debug)]
 pub struct ImageInfo {
     pub width: u32,
