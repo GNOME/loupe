@@ -103,7 +103,7 @@ pub enum Texture {
     MemFd(zvariant::OwnedFd),
 }
 
-#[derive(Deserialize, Serialize, Type, Debug)]
+#[derive(Deserialize, Serialize, Type, Debug, Clone, Copy)]
 pub enum MemoryFormat {
     B8g8r8a8Premultiplied,
     A8r8g8b8Premultiplied,
@@ -126,6 +126,45 @@ pub enum MemoryFormat {
     L8a8,
     L16,
     L16a16,
+}
+
+impl MemoryFormat {
+    pub const fn n_bytes(self) -> MemoryFormatBytes {
+        match self {
+            MemoryFormat::L8 => MemoryFormatBytes::B1,
+            MemoryFormat::L8a8 => MemoryFormatBytes::B2,
+            MemoryFormat::L16 => MemoryFormatBytes::B2,
+            MemoryFormat::L16a16 => MemoryFormatBytes::B4,
+            MemoryFormat::B8g8r8a8Premultiplied => MemoryFormatBytes::B4,
+            MemoryFormat::A8r8g8b8Premultiplied => MemoryFormatBytes::B4,
+            MemoryFormat::R8g8b8a8Premultiplied => MemoryFormatBytes::B4,
+            MemoryFormat::B8g8r8a8 => MemoryFormatBytes::B4,
+            MemoryFormat::A8r8g8b8 => MemoryFormatBytes::B4,
+            MemoryFormat::R8g8b8a8 => MemoryFormatBytes::B4,
+            MemoryFormat::A8b8g8r8 => MemoryFormatBytes::B4,
+            MemoryFormat::R8g8b8 => MemoryFormatBytes::B3,
+            MemoryFormat::B8g8r8 => MemoryFormatBytes::B3,
+            MemoryFormat::R16g16b16 => MemoryFormatBytes::B6,
+            MemoryFormat::R16g16b16a16Premultiplied => MemoryFormatBytes::B8,
+            MemoryFormat::R16g16b16a16 => MemoryFormatBytes::B8,
+            MemoryFormat::R16g16b16Float => MemoryFormatBytes::B6,
+            MemoryFormat::R16g16b16a16Float => MemoryFormatBytes::B8,
+            MemoryFormat::R32g32b32Float => MemoryFormatBytes::B12,
+            MemoryFormat::R32g32b32a32FloatPremultiplied => MemoryFormatBytes::B16,
+            MemoryFormat::R32g32b32a32Float => MemoryFormatBytes::B16,
+        }
+    }
+}
+
+pub enum MemoryFormatBytes {
+    B1 = 1,
+    B2 = 2,
+    B3 = 3,
+    B4 = 4,
+    B6 = 6,
+    B8 = 8,
+    B12 = 12,
+    B16 = 16,
 }
 
 pub struct Communication {

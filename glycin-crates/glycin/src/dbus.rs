@@ -2,11 +2,12 @@
 
 use gdk::prelude::*;
 use glycin_utils::*;
+use zbus::zvariant;
+
 use std::ffi::OsStr;
 use std::io::Read;
 use std::os::fd::AsRawFd;
 use std::os::fd::FromRawFd;
-use zbus::zvariant;
 
 #[derive(Clone)]
 pub struct DecoderProcess<'a> {
@@ -89,9 +90,13 @@ impl<'a> DecoderProcess<'a> {
     pub async fn decode_frame(&self) -> Result<gdk::Texture, Error> {
         let frame = self.decoding_instruction.decode_frame().await?;
 
-        let Texture::MemFd(fd) = frame.texture;
-        let mfd = memfd::Memfd::try_from_fd(fd.as_raw_fd()).unwrap();
+        // TODO: collect as warning
+        crate::icc::apply_transformation(&frame).unwrap();
 
+        let Texture::MemFd(fd) = frame.texture;
+        let raw_fd = fd.as_raw_fd();
+
+        let mfd = memfd::Memfd::try_from_fd(fd).unwrap();
         // 🦭
         mfd.add_seals(&[
             memfd::FileSeal::SealShrink,
@@ -101,11 +106,12 @@ impl<'a> DecoderProcess<'a> {
         ])
         .unwrap();
 
-        let fd = mfd.as_raw_fd();
-
         let bytes: glib::Bytes = unsafe {
-            let mmap =
-                glib::ffi::g_mapped_file_new_from_fd(fd, glib::ffi::GFALSE, std::ptr::null_mut());
+            let mmap = glib::ffi::g_mapped_file_new_from_fd(
+                raw_fd,
+                glib::ffi::GFALSE,
+                std::ptr::null_mut(),
+            );
             glib::translate::from_glib_full(glib::ffi::g_mapped_file_get_bytes(mmap))
         };
 
@@ -133,7 +139,7 @@ trait DecodingInstruction {
     async fn decode_frame(&self) -> Result<Frame, Error>;
 }
 
-fn gdk_memory_format(format: MemoryFormat) -> gdk::MemoryFormat {
+const fn gdk_memory_format(format: MemoryFormat) -> gdk::MemoryFormat {
     match format {
         MemoryFormat::L8 => unimplemented!(),
         MemoryFormat::L8a8 => unimplemented!(),
