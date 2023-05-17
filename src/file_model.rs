@@ -121,7 +121,7 @@ impl LpFileModel {
                 if let Ok(info) = info {
                     if let Some(content_type) = info.content_type().map(|t| t.to_string()) {
                         // Filter out non-images; For now we support "all" image types.
-                        if content_type.starts_with("image/") {
+                        if content_type.starts_with("image/") && !info.is_hidden() {
                             let file = directory.child(info.name());
                             files.insert(file.uri(), file);
                         }
