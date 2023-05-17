@@ -60,10 +60,7 @@ impl<'a> DecoderProcess<'a> {
         }
     }
 
-    pub async fn init(
-        &self,
-        gfile_worker: GFileWorker
-    ) -> Result<ImageInfo, Error> {
+    pub async fn init(&self, gfile_worker: GFileWorker) -> Result<ImageInfo, Error> {
         let (remote_reader, writer) = std::os::unix::net::UnixStream::pair().unwrap();
 
         gfile_worker.write_to(writer);
@@ -156,31 +153,25 @@ const fn gdk_memory_format(format: MemoryFormat) -> gdk::MemoryFormat {
 }
 
 pub struct GFileWorker {
-    out_stream: MutexGuardArc<Option<UnixStream>>,
-    first_bytes: Arc<Mutex<Vec<u8>>>,
+    writer_send: Sender<UnixStream>,
+    first_bytes_recv: Receiver<Vec<u8>>,
 }
-use async_std::sync::{Arc, Mutex, MutexGuardArc};
-use std::ops::Deref;
+use async_std::channel::{Receiver, Sender};
 impl GFileWorker {
     pub fn spawn(file: gio::File) -> GFileWorker {
         let cancellable = gio::Cancellable::new();
 
-        let writer_mutex: Arc<Mutex<Option<UnixStream>>> = Default::default();
-        let out_stream = writer_mutex.try_lock_arc().unwrap();
-
-        let first_bytes: Arc<Mutex<Vec<u8>>> = Default::default();
-        let mut first_bytes_out = first_bytes.try_lock_arc().unwrap();
+        let (writer_send, writer_recv) = async_std::channel::bounded(1);
+        let (first_bytes_send, first_bytes_recv) = async_std::channel::bounded(1);
 
         std::thread::spawn(move || {
             let mut reader = file.read(Some(&cancellable)).unwrap().into_read();
             let mut buf = vec![0; BUF_SIZE];
 
             let n = reader.read(&mut buf).unwrap();
-            *first_bytes_out = buf[..n].to_vec();
-            drop(first_bytes_out);
+            first_bytes_send.try_send(buf[..n].to_vec()).unwrap();
 
-            let mut writer_guard = async_std::task::block_on(writer_mutex.lock_arc());
-            let writer = writer_guard.as_mut().unwrap();
+            let mut writer: UnixStream = async_std::task::block_on(writer_recv.recv()).unwrap();
 
             writer.write_all(&buf[..n]).unwrap();
 
@@ -194,16 +185,16 @@ impl GFileWorker {
         });
 
         GFileWorker {
-            out_stream,
-            first_bytes,
+            writer_send,
+            first_bytes_recv,
         }
     }
 
-    pub fn write_to(mut self, stream: UnixStream) {
-        *self.out_stream = Some(stream);
+    pub fn write_to(self, stream: UnixStream) {
+        self.writer_send.try_send(stream).unwrap();
     }
 
-    pub async fn head(&self) -> impl Deref<Target = Vec<u8>> {
-        self.first_bytes.lock_arc().await
+    pub async fn head(&self) -> Vec<u8> {
+        self.first_bytes_recv.recv().await.unwrap()
     }
 }
