@@ -6,7 +6,6 @@ use std::os::fd::AsRawFd;
 
 pub fn apply_transformation(frame: &Frame) -> anyhow::Result<()> {
     if let Some(iccp) = frame.iccp.as_ref() {
-        dbg!("ICC!");
         let Texture::MemFd(fd) = &frame.texture;
         let raw_fd = fd.as_raw_fd();
         let mut mmap = unsafe { memmap::MmapMut::map_mut(raw_fd) }.unwrap();

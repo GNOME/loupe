@@ -14,16 +14,24 @@ impl ImageRequest {
     }
 
     pub async fn request<'a>(self) -> Result<Image<'a>> {
+        let gfile_worker = GFileWorker::spawn(self.file.clone());
+        let mime_type = Self::guess_mime_type(&gfile_worker).await.unwrap();
+        dbg!(mime_type);
+
         let process = DecoderProcess::new().await;
-        let info = process
-            .init(self.file.clone(), gio::Cancellable::new())
-            .await?;
+        let info = process.init(gfile_worker).await?;
 
         Ok(Image {
             process,
             info,
             request: self,
         })
+    }
+
+    async fn guess_mime_type(gfile_worker: &GFileWorker) -> Result<glib::GString> {
+        let (content_type_data, _) = gio::content_type_guess(None::<String>, &gfile_worker.head().await);
+
+        Ok(content_type_data)
     }
 }
 
