@@ -5,12 +5,15 @@
 //!
 //! # Example
 //!
-//! ```ignore
+//! ```no_run
+//! # use glycin::*;
+//! # async_std::task::block_on(async {
 //! let file = gio::File::for_path("image.jpg");
-//! let image = ImageRequest::new(file).request().await;
+//! let image = ImageRequest::new(file).request().await?;
 //!
 //! let height = image.info().height;
-//! let texture = image.next_frame().await;
+//! let texture = image.next_frame().await?;
+//! # Ok::<(), Error>(()) });
 //! ```
 
 pub mod dbus;

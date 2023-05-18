@@ -2,7 +2,9 @@ use crate::dbus::*;
 use gio::prelude::*;
 use glycin_utils::*;
 
-pub type Result<T> = std::result::Result<T, crate::dbus::Error>;
+pub use crate::dbus::Error;
+
+pub type Result<T> = std::result::Result<T, Error>;
 
 /// Image request builder
 pub struct ImageRequest {

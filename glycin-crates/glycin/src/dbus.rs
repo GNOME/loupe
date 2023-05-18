@@ -239,6 +239,7 @@ impl GFileWorker {
         let sender = std::mem::take(&mut *self.writer_send.lock().unwrap());
 
         sender
+            // TODO: this fails if write_to is called a second time
             .unwrap()
             .send(stream)
             .or(Err(Error::InternalCommunicationCanceled))

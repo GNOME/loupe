@@ -208,7 +208,7 @@ impl DecodingInstruction {
         let fd = message.fd.into_raw_fd();
         let stream = unsafe { UnixStream::from_raw_fd(fd) };
 
-        let image_info = self.decoder.init(stream).unwrap();
+        let image_info = self.decoder.init(stream)?;
 
         Ok(image_info)
     }
