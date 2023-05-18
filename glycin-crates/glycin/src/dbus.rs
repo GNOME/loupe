@@ -5,7 +5,6 @@ use glycin_utils::*;
 use zbus::zvariant;
 
 use std::ffi::OsStr;
-use std::io::Read;
 use std::os::fd::AsRawFd;
 use std::os::fd::FromRawFd;
 
@@ -17,7 +16,7 @@ pub struct DecoderProcess<'a> {
 }
 
 impl<'a> DecoderProcess<'a> {
-    pub async fn new(mime_type: &glib::GString) -> DecoderProcess<'a> {
+    pub async fn new(mime_type: &glib::GString) -> Result<DecoderProcess<'a>, Error> {
         let decoders = std::collections::HashMap::from([(
             "image/jpeg",
             "/home/herold/.cargo-target/debug/glycin-image-rs",
@@ -25,7 +24,7 @@ impl<'a> DecoderProcess<'a> {
 
         let decoder = decoders.get(mime_type.as_str()).unwrap();
 
-        let (unix_stream, fd_decoder) = std::os::unix::net::UnixStream::pair().unwrap();
+        let (unix_stream, fd_decoder) = std::os::unix::net::UnixStream::pair()?;
         unix_stream
             .set_nonblocking(true)
             .expect("Couldn't set nonblocking");
@@ -48,7 +47,7 @@ impl<'a> DecoderProcess<'a> {
             "/dev",
             decoder,
         ];
-        subprocess.spawn(&args.map(OsStr::new)).unwrap();
+        subprocess.spawn(&args.map(OsStr::new))?;
 
         let dbus_connection = zbus::ConnectionBuilder::unix_stream(unix_stream)
             .p2p()
@@ -62,15 +61,15 @@ impl<'a> DecoderProcess<'a> {
             .await
             .expect("Failed to create decoding instruction proxy");
 
-        Self {
+        Ok(Self {
             _dbus_connection: dbus_connection,
             decoding_instruction,
             mime_type: mime_type.to_string(),
-        }
+        })
     }
 
     pub async fn init(&self, gfile_worker: GFileWorker) -> Result<ImageInfo, Error> {
-        let (remote_reader, writer) = std::os::unix::net::UnixStream::pair().unwrap();
+        let (remote_reader, writer) = std::os::unix::net::UnixStream::pair()?;
 
         gfile_worker.write_to(writer);
 
@@ -88,11 +87,11 @@ impl<'a> DecoderProcess<'a> {
         futures::pin_mut!(reader_error);
 
         futures::select! {
-            res = result => res.map(|_| ()),
+            res = result => res.map(|_| ()).map_err(Into::into),
             res = reader_error.fuse() => res,
         }?;
 
-        image_info.await
+        image_info.await.map_err(Into::into)
     }
 
     pub async fn decode_frame(&self) -> Result<gdk::Texture, Error> {
@@ -143,8 +142,8 @@ const BUF_SIZE: usize = u16::MAX as usize;
     default_path = "/org/gnome/glycin"
 )]
 trait DecodingInstruction {
-    async fn init(&self, message: DecodingRequest) -> Result<ImageInfo, Error>;
-    async fn decode_frame(&self) -> Result<Frame, Error>;
+    async fn init(&self, message: DecodingRequest) -> Result<ImageInfo, RemoteError>;
+    async fn decode_frame(&self) -> Result<Frame, RemoteError>;
 }
 
 const fn gdk_memory_format(format: MemoryFormat) -> gdk::MemoryFormat {
@@ -196,22 +195,22 @@ impl GFileWorker {
 
         std::thread::spawn(move || {
             Self::handle_errors(error_send, move || {
-                let mut reader = gfile.read(Some(&cancellable)).unwrap().into_read();
+                let reader = gfile.read(Some(&cancellable))?;
                 let mut buf = vec![0; BUF_SIZE];
 
-                let n = reader.read(&mut buf).unwrap();
+                let n = reader.read(&mut buf, Some(&cancellable))?;
                 first_bytes_send.try_send(buf[..n].to_vec()).unwrap();
 
                 let mut writer: UnixStream = async_std::task::block_on(writer_recv.recv()).unwrap();
 
-                writer.write_all(&buf[..n]).unwrap();
+                writer.write_all(&buf[..n])?;
 
                 loop {
-                    let n = reader.read(&mut buf).unwrap();
+                    let n = reader.read(&mut buf, Some(&cancellable))?;
                     if n == 0 {
                         break;
                     }
-                    writer.write_all(&buf[..n]).unwrap();
+                    writer.write_all(&buf[..n])?;
                 }
 
                 Ok(())
@@ -250,3 +249,44 @@ impl GFileWorker {
         self.first_bytes_recv.recv().await.unwrap()
     }
 }
+
+#[derive(Debug)]
+pub enum Error {
+    RemoteError(RemoteError),
+    GLibError(glib::Error),
+    StdIoError(std::io::Error),
+}
+
+//type RemoteError = glycin_utils::Error;
+
+impl From<RemoteError> for Error {
+    fn from(err: RemoteError) -> Self {
+        Self::RemoteError(err)
+    }
+}
+
+impl From<glib::Error> for Error {
+    fn from(err: glib::Error) -> Self {
+        Self::GLibError(err)
+    }
+}
+
+impl From<std::io::Error> for Error {
+    fn from(err: std::io::Error) -> Self {
+        Self::StdIoError(err)
+    }
+}
+
+impl std::fmt::Display for Error {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> StdResult<(), std::fmt::Error> {
+        match self {
+            Self::RemoteError(err) => write!(f, "{err}"),
+            Self::GLibError(err) => write!(f, "{err}"),
+            Self::StdIoError(err) => write!(f, "{err}"),
+        }
+    }
+}
+
+impl std::error::Error for Error {}
+
+pub type StdResult<T, E> = std::result::Result<T, E>;

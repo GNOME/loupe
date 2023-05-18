@@ -69,16 +69,18 @@ pub struct DecodingRequest {
 pub struct ImageInfo {
     pub width: u32,
     pub height: u32,
+    pub format_name: String,
     pub exif: Optional<Vec<u8>>,
     pub xmp: Optional<Vec<u8>>,
     pub transformations_applied: bool,
 }
 
 impl ImageInfo {
-    pub fn new(width: u32, height: u32) -> Self {
+    pub fn new(width: u32, height: u32, format_name: String) -> Self {
         Self {
             width,
             height,
+            format_name,
             exif: None.into(),
             xmp: None.into(),
             transformations_applied: false,
@@ -202,7 +204,7 @@ struct DecodingInstruction {
 
 #[zbus::dbus_interface(name = "org.gnome.glycin.DecodingInstruction")]
 impl DecodingInstruction {
-    async fn init(&self, message: DecodingRequest) -> Result<ImageInfo, Error> {
+    async fn init(&self, message: DecodingRequest) -> Result<ImageInfo, RemoteError> {
         let fd = message.fd.into_raw_fd();
         let stream = unsafe { UnixStream::from_raw_fd(fd) };
 
@@ -211,15 +213,14 @@ impl DecodingInstruction {
         Ok(image_info)
     }
 
-    async fn decode_frame(&self) -> Result<Frame, Error> {
-        let frame = self.decoder.decode_frame().unwrap();
-        Ok(frame)
+    async fn decode_frame(&self) -> Result<Frame, RemoteError> {
+        self.decoder.decode_frame().map_err(Into::into)
     }
 }
 
 #[derive(zbus::DBusError, Debug, Clone)]
 #[dbus_error(prefix = "org.gnome.glycin.Error")]
-pub enum Error {
+pub enum RemoteError {
     #[dbus_error(zbus_error)]
     ZBus(zbus::Error),
     DecodingError(String),
@@ -227,7 +228,7 @@ pub enum Error {
     UnsupportedImageFormat,
 }
 
-impl From<DecoderError> for Error {
+impl From<DecoderError> for RemoteError {
     fn from(err: DecoderError) -> Self {
         match err {
             DecoderError::DecodingError(msg) => Self::DecodingError(msg),

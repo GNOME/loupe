@@ -19,4 +19,4 @@ mod api;
 mod icc;
 
 pub use api::*;
-pub use glycin_utils::{Error, ImageInfo};
+pub use glycin_utils::{ImageInfo, RemoteError};

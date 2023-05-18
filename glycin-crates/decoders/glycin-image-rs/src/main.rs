@@ -18,14 +18,14 @@ pub struct ImgDecoder {
 impl Decoder for ImgDecoder {
     fn init(&self, stream: UnixStream) -> Result<ImageInfo, DecoderError> {
         let mut decoder = image::codecs::jpeg::JpegDecoder::new(stream).context_failed()?;
-        let image_info = ImageInfo::from_decoder(&mut decoder);
+        let image_info = ImageInfo::from_decoder(&mut decoder, "JPEG");
         *self.decoder.lock().unwrap() = Some(decoder);
         Ok(image_info)
     }
 
     fn decode_frame(&self) -> Result<Frame, DecoderError> {
         let decoder = std::mem::take(&mut *self.decoder.lock().unwrap()).context_internal()?;
-        let frame = Frame::from_decoder(decoder);
+        let frame = Frame::from_decoder(decoder).context_failed()?;
         Ok(frame)
     }
 }

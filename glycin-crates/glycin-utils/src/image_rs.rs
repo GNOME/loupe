@@ -1,21 +1,20 @@
 use super::{Frame, ImageInfo, MemoryFormat, SharedMemory};
 
 impl ImageInfo {
-    pub fn from_decoder<'a, T: image::ImageDecoder<'a>>(decoder: &mut T) -> Self {
+    pub fn from_decoder<'a, T: image::ImageDecoder<'a>>(
+        decoder: &mut T,
+        format_name: impl ToString,
+    ) -> Self {
         let (width, height) = decoder.dimensions();
 
-        Self {
-            width,
-            height,
-            exif: None.into(),
-            xmp: None.into(),
-            transformations_applied: false,
-        }
+        Self::new(width, height, format_name.to_string())
     }
 }
 
 impl Frame {
-    pub fn from_decoder<'a, T: image::ImageDecoder<'a>>(mut decoder: T) -> Self {
+    pub fn from_decoder<'a, T: image::ImageDecoder<'a>>(
+        mut decoder: T,
+    ) -> Result<Self, image::ImageError> {
         let color_type = decoder.color_type();
 
         let memory_format = MemoryFormat::from(color_type);
@@ -24,10 +23,10 @@ impl Frame {
         let iccp = decoder.icc_profile().into();
 
         let mut memory = SharedMemory::new(decoder.total_bytes());
-        decoder.read_image(&mut memory).unwrap();
+        decoder.read_image(&mut memory)?;
         let texture = memory.into_texture();
 
-        Self {
+        Ok(Self {
             width,
             height,
             memory_format,
@@ -36,7 +35,7 @@ impl Frame {
             iccp,
             cicp: None.into(),
             delay: None.into(),
-        }
+        })
     }
 }
 

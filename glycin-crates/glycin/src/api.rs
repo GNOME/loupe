@@ -2,7 +2,7 @@ use crate::dbus::*;
 use gio::prelude::*;
 use glycin_utils::*;
 
-pub type Result<T> = std::result::Result<T, Error>;
+pub type Result<T> = std::result::Result<T, crate::dbus::Error>;
 
 /// Image request builder
 pub struct ImageRequest {
@@ -20,9 +20,9 @@ impl ImageRequest {
 
     pub async fn request<'a>(mut self) -> Result<Image<'a>> {
         let gfile_worker = GFileWorker::spawn(self.file.clone());
-        let mime_type = Self::guess_mime_type(&gfile_worker).await.unwrap();
+        let mime_type = Self::guess_mime_type(&gfile_worker).await?;
 
-        let process = DecoderProcess::new(&mime_type).await;
+        let process = DecoderProcess::new(&mime_type).await?;
         let info = process.init(gfile_worker).await?;
 
         self.mime_type = Some(mime_type);
@@ -56,7 +56,7 @@ pub struct Image<'a> {
 
 impl<'a> Image<'a> {
     pub async fn next_frame(&self) -> Result<gdk::Texture> {
-        self.process.decode_frame().await
+        self.process.decode_frame().await.map_err(Into::into)
     }
 
     pub fn info(&self) -> &ImageInfo {
