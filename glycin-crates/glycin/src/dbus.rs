@@ -16,7 +16,11 @@ pub struct DecoderProcess<'a> {
 }
 
 impl<'a> DecoderProcess<'a> {
-    pub async fn new() -> DecoderProcess<'a> {
+    pub async fn new(mime_type: &glib::GString) -> DecoderProcess<'a> {
+        let decoders = std::collections::HashMap::from([("image/jpeg","/home/herold/.cargo-target/debug/glycin-image-rs")]);
+
+        let decoder = decoders.get(mime_type.as_str()).unwrap();
+
         let (unix_stream, fd_decoder) = std::os::unix::net::UnixStream::pair().unwrap();
         unix_stream
             .set_nonblocking(true)
@@ -38,7 +42,7 @@ impl<'a> DecoderProcess<'a> {
             "/",
             "--dev",
             "/dev",
-            "/home/herold/.cargo-target/debug/glycin-image-rs",
+            decoder,
         ];
         subprocess.spawn(&args.map(OsStr::new)).unwrap();
 
@@ -153,19 +157,21 @@ const fn gdk_memory_format(format: MemoryFormat) -> gdk::MemoryFormat {
 }
 
 pub struct GFileWorker {
+    file: gio::File,
     writer_send: Sender<UnixStream>,
     first_bytes_recv: Receiver<Vec<u8>>,
 }
 use async_std::channel::{Receiver, Sender};
 impl GFileWorker {
     pub fn spawn(file: gio::File) -> GFileWorker {
+        let gfile = file.clone();
         let cancellable = gio::Cancellable::new();
 
         let (writer_send, writer_recv) = async_std::channel::bounded(1);
         let (first_bytes_send, first_bytes_recv) = async_std::channel::bounded(1);
 
         std::thread::spawn(move || {
-            let mut reader = file.read(Some(&cancellable)).unwrap().into_read();
+            let mut reader = gfile.read(Some(&cancellable)).unwrap().into_read();
             let mut buf = vec![0; BUF_SIZE];
 
             let n = reader.read(&mut buf).unwrap();
@@ -185,6 +191,7 @@ impl GFileWorker {
         });
 
         GFileWorker {
+            file,
             writer_send,
             first_bytes_recv,
         }
@@ -192,6 +199,10 @@ impl GFileWorker {
 
     pub fn write_to(self, stream: UnixStream) {
         self.writer_send.try_send(stream).unwrap();
+    }
+
+    pub fn file(&self) -> &gio::File {
+        &self.file
     }
 
     pub async fn head(&self) -> Vec<u8> {
