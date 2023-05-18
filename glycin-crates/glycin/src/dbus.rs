@@ -1,5 +1,8 @@
 //! Internal DBus API
 
+use futures::channel::oneshot;
+use futures::future;
+use futures::FutureExt;
 use gdk::prelude::*;
 use glycin_utils::*;
 use zbus::zvariant;
@@ -7,6 +10,7 @@ use zbus::zvariant;
 use std::ffi::OsStr;
 use std::os::fd::AsRawFd;
 use std::os::fd::FromRawFd;
+use std::sync::Arc;
 
 #[derive(Clone)]
 pub struct DecoderProcess<'a> {
@@ -22,7 +26,7 @@ impl<'a> DecoderProcess<'a> {
             "/home/herold/.cargo-target/debug/glycin-image-rs",
         )]);
 
-        let decoder = decoders.get(mime_type.as_str()).unwrap();
+        let decoder = decoders.get(mime_type.as_str()).expect("TODO");
 
         let (unix_stream, fd_decoder) = std::os::unix::net::UnixStream::pair()?;
         unix_stream
@@ -54,8 +58,7 @@ impl<'a> DecoderProcess<'a> {
             .server(&zbus::Guid::generate())
             .auth_mechanisms(&[zbus::AuthMechanism::Anonymous])
             .build()
-            .await
-            .unwrap();
+            .await?;
 
         let decoding_instruction = DecodingInstructionProxy::new(&dbus_connection)
             .await
@@ -71,23 +74,21 @@ impl<'a> DecoderProcess<'a> {
     pub async fn init(&self, gfile_worker: GFileWorker) -> Result<ImageInfo, Error> {
         let (remote_reader, writer) = std::os::unix::net::UnixStream::pair()?;
 
-        gfile_worker.write_to(writer);
+        gfile_worker.write_to(writer)?;
 
         let fd = unsafe { zvariant::OwnedFd::from_raw_fd(remote_reader.as_raw_fd()) };
         let mime_type = self.mime_type.clone();
 
-        // futures::try_join!(image_info, gfile_worker.error())
-        let mut result = self
+        let image_info = self
             .decoding_instruction
             .init(DecodingRequest { fd, mime_type })
             .shared();
-        let image_info = result.clone();
 
         let reader_error = gfile_worker.error();
         futures::pin_mut!(reader_error);
 
         futures::select! {
-            res = result => res.map(|_| ()).map_err(Into::into),
+            res = image_info.clone() => res.map(|_| ()).map_err(Into::into),
             res = reader_error.fuse() => res,
         }?;
 
@@ -176,22 +177,19 @@ const fn gdk_memory_format(format: MemoryFormat) -> gdk::MemoryFormat {
 
 pub struct GFileWorker {
     file: gio::File,
-    writer_send: Sender<UnixStream>,
-    first_bytes_recv: Receiver<Vec<u8>>,
-    error_recv: Receiver<Result<(), Error>>,
+    writer_send: Mutex<Option<oneshot::Sender<UnixStream>>>,
+    first_bytes_recv: future::Shared<oneshot::Receiver<Arc<Vec<u8>>>>,
+    error_recv: future::Shared<oneshot::Receiver<Result<(), Error>>>,
 }
-
-use async_std::channel::{Receiver, Sender};
-use futures::FutureExt;
-
+use std::sync::Mutex;
 impl GFileWorker {
     pub fn spawn(file: gio::File) -> GFileWorker {
         let gfile = file.clone();
         let cancellable = gio::Cancellable::new();
 
-        let (writer_send, writer_recv) = async_std::channel::bounded(1);
-        let (first_bytes_send, first_bytes_recv) = async_std::channel::bounded(1);
-        let (error_send, error_recv) = async_std::channel::bounded(1);
+        let (error_send, error_recv) = oneshot::channel();
+        let (first_bytes_send, first_bytes_recv) = oneshot::channel();
+        let (writer_send, writer_recv) = oneshot::channel();
 
         std::thread::spawn(move || {
             Self::handle_errors(error_send, move || {
@@ -199,11 +197,15 @@ impl GFileWorker {
                 let mut buf = vec![0; BUF_SIZE];
 
                 let n = reader.read(&mut buf, Some(&cancellable))?;
-                first_bytes_send.try_send(buf[..n].to_vec()).unwrap();
+                let first_bytes = Arc::new(buf[..n].to_vec());
+                first_bytes_send
+                    .send(first_bytes.clone())
+                    .or(Err(Error::InternalCommunicationCanceled))?;
 
-                let mut writer: UnixStream = async_std::task::block_on(writer_recv.recv()).unwrap();
+                let mut writer: UnixStream = async_std::task::block_on(writer_recv)?;
 
-                writer.write_all(&buf[..n])?;
+                writer.write_all(&first_bytes)?;
+                drop(first_bytes);
 
                 loop {
                     let n = reader.read(&mut buf, Some(&cancellable))?;
@@ -219,19 +221,27 @@ impl GFileWorker {
 
         GFileWorker {
             file,
-            writer_send,
-            first_bytes_recv,
-            error_recv,
+            writer_send: Mutex::new(Some(writer_send)),
+            first_bytes_recv: first_bytes_recv.shared(),
+            error_recv: error_recv.shared(),
         }
     }
 
-    fn handle_errors(error_send: Sender<Result<(), Error>>, f: impl Fn() -> Result<(), Error>) {
+    fn handle_errors(
+        error_send: oneshot::Sender<Result<(), Error>>,
+        f: impl FnOnce() -> Result<(), Error>,
+    ) {
         let result = f();
-        let _result = error_send.try_send(result);
+        let _result = error_send.send(result);
     }
 
-    pub fn write_to(&self, stream: UnixStream) {
-        self.writer_send.try_send(stream).unwrap();
+    pub fn write_to(&self, stream: UnixStream) -> Result<(), Error> {
+        let sender = std::mem::take(&mut *self.writer_send.lock().unwrap());
+
+        sender
+            .unwrap()
+            .send(stream)
+            .or(Err(Error::InternalCommunicationCanceled))
     }
 
     pub fn file(&self) -> &gio::File {
@@ -239,25 +249,32 @@ impl GFileWorker {
     }
 
     pub async fn error(&self) -> Result<(), Error> {
-        match self.error_recv.recv().await {
+        match self.error_recv.clone().await {
             Ok(result) => result,
             Err(_) => Ok(()),
         }
     }
 
-    pub async fn head(&self) -> Vec<u8> {
-        self.first_bytes_recv.recv().await.unwrap()
+    pub async fn head(&self) -> Result<Arc<Vec<u8>>, Error> {
+        futures::select!(
+            err = self.error_recv.clone() => err?,
+            _bytes = self.first_bytes_recv.clone() => Ok(()),
+        )?;
+
+        match self.first_bytes_recv.clone().await {
+            Err(_) => self.error_recv.clone().await?.map(|_| Default::default()),
+            Ok(bytes) => Ok(bytes),
+        }
     }
 }
 
-#[derive(Debug)]
+#[derive(Debug, Clone)]
 pub enum Error {
     RemoteError(RemoteError),
     GLibError(glib::Error),
-    StdIoError(std::io::Error),
+    StdIoError(Arc<std::io::Error>),
+    InternalCommunicationCanceled,
 }
-
-//type RemoteError = glycin_utils::Error;
 
 impl From<RemoteError> for Error {
     fn from(err: RemoteError) -> Self {
@@ -273,7 +290,19 @@ impl From<glib::Error> for Error {
 
 impl From<std::io::Error> for Error {
     fn from(err: std::io::Error) -> Self {
-        Self::StdIoError(err)
+        Self::StdIoError(Arc::new(err))
+    }
+}
+
+impl From<oneshot::Canceled> for Error {
+    fn from(_err: oneshot::Canceled) -> Self {
+        Self::InternalCommunicationCanceled
+    }
+}
+
+impl From<zbus::Error> for Error {
+    fn from(err: zbus::Error) -> Self {
+        Self::RemoteError(RemoteError::ZBus(err))
     }
 }
 
@@ -283,6 +312,9 @@ impl std::fmt::Display for Error {
             Self::RemoteError(err) => write!(f, "{err}"),
             Self::GLibError(err) => write!(f, "{err}"),
             Self::StdIoError(err) => write!(f, "{err}"),
+            Self::InternalCommunicationCanceled => {
+                write!(f, "Internal communication was unexpectedly canceled")
+            }
         }
     }
 }

@@ -8,6 +8,10 @@ repository = "https://gitlab.gnome.org/GNOME/Incubator/loupe"
 edition = "2021"
 rust-version = "1.65.0"
 
+[profile.release]
+lto = true
+codegen-units = 1
+
 [workspace]
 members = [
     "glycin",

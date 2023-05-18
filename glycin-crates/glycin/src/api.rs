@@ -36,7 +36,7 @@ impl ImageRequest {
 
     async fn guess_mime_type(gfile_worker: &GFileWorker) -> Result<glib::GString> {
         let (content_type_data, unsure) =
-            gio::content_type_guess(None::<String>, &gfile_worker.head().await);
+            gio::content_type_guess(None::<String>, &gfile_worker.head().await?);
         if unsure {
             if let Some(filename) = gfile_worker.file().basename() {
                 return Ok(gio::content_type_guess(Some(filename), &[]).0);
