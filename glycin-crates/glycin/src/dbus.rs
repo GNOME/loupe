@@ -77,9 +77,22 @@ impl<'a> DecoderProcess<'a> {
         let fd = unsafe { zvariant::OwnedFd::from_raw_fd(remote_reader.as_raw_fd()) };
         let mime_type = self.mime_type.clone();
 
-        self.decoding_instruction
+        // futures::try_join!(image_info, gfile_worker.error())
+        let mut result = self
+            .decoding_instruction
             .init(DecodingRequest { fd, mime_type })
-            .await
+            .shared();
+        let image_info = result.clone();
+
+        let reader_error = gfile_worker.error();
+        futures::pin_mut!(reader_error);
+
+        futures::select! {
+            res = result => res.map(|_| ()),
+            res = reader_error.fuse() => res,
+        }?;
+
+        image_info.await
     }
 
     pub async fn decode_frame(&self) -> Result<gdk::Texture, Error> {
@@ -166,8 +179,12 @@ pub struct GFileWorker {
     file: gio::File,
     writer_send: Sender<UnixStream>,
     first_bytes_recv: Receiver<Vec<u8>>,
+    error_recv: Receiver<Result<(), Error>>,
 }
+
 use async_std::channel::{Receiver, Sender};
+use futures::FutureExt;
+
 impl GFileWorker {
     pub fn spawn(file: gio::File) -> GFileWorker {
         let gfile = file.clone();
@@ -175,40 +192,58 @@ impl GFileWorker {
 
         let (writer_send, writer_recv) = async_std::channel::bounded(1);
         let (first_bytes_send, first_bytes_recv) = async_std::channel::bounded(1);
+        let (error_send, error_recv) = async_std::channel::bounded(1);
 
         std::thread::spawn(move || {
-            let mut reader = gfile.read(Some(&cancellable)).unwrap().into_read();
-            let mut buf = vec![0; BUF_SIZE];
+            Self::handle_errors(error_send, move || {
+                let mut reader = gfile.read(Some(&cancellable)).unwrap().into_read();
+                let mut buf = vec![0; BUF_SIZE];
 
-            let n = reader.read(&mut buf).unwrap();
-            first_bytes_send.try_send(buf[..n].to_vec()).unwrap();
-
-            let mut writer: UnixStream = async_std::task::block_on(writer_recv.recv()).unwrap();
-
-            writer.write_all(&buf[..n]).unwrap();
-
-            loop {
                 let n = reader.read(&mut buf).unwrap();
-                if n == 0 {
-                    break;
-                }
+                first_bytes_send.try_send(buf[..n].to_vec()).unwrap();
+
+                let mut writer: UnixStream = async_std::task::block_on(writer_recv.recv()).unwrap();
+
                 writer.write_all(&buf[..n]).unwrap();
-            }
+
+                loop {
+                    let n = reader.read(&mut buf).unwrap();
+                    if n == 0 {
+                        break;
+                    }
+                    writer.write_all(&buf[..n]).unwrap();
+                }
+
+                Ok(())
+            })
         });
 
         GFileWorker {
             file,
             writer_send,
             first_bytes_recv,
+            error_recv,
         }
     }
 
-    pub fn write_to(self, stream: UnixStream) {
+    fn handle_errors(error_send: Sender<Result<(), Error>>, f: impl Fn() -> Result<(), Error>) {
+        let result = f();
+        let _result = error_send.try_send(result);
+    }
+
+    pub fn write_to(&self, stream: UnixStream) {
         self.writer_send.try_send(stream).unwrap();
     }
 
     pub fn file(&self) -> &gio::File {
         &self.file
+    }
+
+    pub async fn error(&self) -> Result<(), Error> {
+        match self.error_recv.recv().await {
+            Ok(result) => result,
+            Err(_) => Ok(()),
+        }
     }
 
     pub async fn head(&self) -> Vec<u8> {

@@ -65,7 +65,7 @@ pub struct DecodingRequest {
 }
 
 /// Various image metadata
-#[derive(Deserialize, Serialize, Type, Debug)]
+#[derive(Deserialize, Serialize, Type, Debug, Clone)]
 pub struct ImageInfo {
     pub width: u32,
     pub height: u32,
@@ -217,7 +217,7 @@ impl DecodingInstruction {
     }
 }
 
-#[derive(zbus::DBusError, Debug)]
+#[derive(zbus::DBusError, Debug, Clone)]
 #[dbus_error(prefix = "org.gnome.glycin.Error")]
 pub enum Error {
     #[dbus_error(zbus_error)]
