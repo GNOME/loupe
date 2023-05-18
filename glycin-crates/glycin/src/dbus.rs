@@ -13,11 +13,15 @@ use std::os::fd::FromRawFd;
 pub struct DecoderProcess<'a> {
     _dbus_connection: zbus::Connection,
     decoding_instruction: DecodingInstructionProxy<'a>,
+    mime_type: String,
 }
 
 impl<'a> DecoderProcess<'a> {
     pub async fn new(mime_type: &glib::GString) -> DecoderProcess<'a> {
-        let decoders = std::collections::HashMap::from([("image/jpeg","/home/herold/.cargo-target/debug/glycin-image-rs")]);
+        let decoders = std::collections::HashMap::from([(
+            "image/jpeg",
+            "/home/herold/.cargo-target/debug/glycin-image-rs",
+        )]);
 
         let decoder = decoders.get(mime_type.as_str()).unwrap();
 
@@ -61,6 +65,7 @@ impl<'a> DecoderProcess<'a> {
         Self {
             _dbus_connection: dbus_connection,
             decoding_instruction,
+            mime_type: mime_type.to_string(),
         }
     }
 
@@ -69,10 +74,11 @@ impl<'a> DecoderProcess<'a> {
 
         gfile_worker.write_to(writer);
 
+        let fd = unsafe { zvariant::OwnedFd::from_raw_fd(remote_reader.as_raw_fd()) };
+        let mime_type = self.mime_type.clone();
+
         self.decoding_instruction
-            .init(DecodingRequest {
-                fd: unsafe { zvariant::OwnedFd::from_raw_fd(remote_reader.as_raw_fd()) },
-            })
+            .init(DecodingRequest { fd, mime_type })
             .await
     }
 

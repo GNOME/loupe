@@ -61,7 +61,7 @@ impl DerefMut for SharedMemory {
 #[derive(Deserialize, Serialize, Type, Debug)]
 pub struct DecodingRequest {
     pub fd: zvariant::OwnedFd,
-    //pub mime_type: String,
+    pub mime_type: String,
 }
 
 /// Various image metadata

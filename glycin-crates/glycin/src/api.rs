@@ -12,7 +12,10 @@ pub struct ImageRequest {
 
 impl ImageRequest {
     pub fn new(file: gio::File) -> Self {
-        Self { file, mime_type: None }
+        Self {
+            file,
+            mime_type: None,
+        }
     }
 
     pub async fn request<'a>(mut self) -> Result<Image<'a>> {
