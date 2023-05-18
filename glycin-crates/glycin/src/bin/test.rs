@@ -2,18 +2,24 @@ use gdk::prelude::*;
 use glycin::*;
 
 fn main() {
-    let path = "/home/herold/loupetest/DSCN0029-pro.jpg";
-    let file = gio::File::for_path(path);
+    let images = std::fs::read_dir("images").unwrap();
 
-    async_std::task::block_on(async {
-        let image_request = ImageRequest::new(file);
-        let image = image_request.request().await.unwrap();
+    for entry in images {
+        eprintln!("{entry:?}");
+        let path = entry.unwrap().path();
+        let file = gio::File::for_path(&path);
 
-        let info = image.info();
-        let texture = image.next_frame().await.unwrap();
+        async_std::task::block_on(async move {
+            let image_request = ImageRequest::new(file);
+            let image = image_request.request().await.unwrap();
 
-        dbg!(info);
-        dbg!(&texture);
-        texture.save_to_png("test-out.png").unwrap();
-    });
+            let info = image.info();
+            let texture = image.next_frame().await.unwrap();
+
+            //dbg!(info);
+            //dbg!(&texture);
+            let out_path = std::path::PathBuf::from_iter(&["out".into(), path]);
+            texture.save_to_png(out_path).unwrap();
+        });
+    }
 }

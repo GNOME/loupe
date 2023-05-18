@@ -21,10 +21,16 @@ pub struct DecoderProcess<'a> {
 
 impl<'a> DecoderProcess<'a> {
     pub async fn new(mime_type: &glib::GString) -> Result<DecoderProcess<'a>, Error> {
-        let decoders = std::collections::HashMap::from([(
-            "image/jpeg",
-            "/home/herold/.cargo-target/debug/glycin-image-rs",
-        )]);
+        let decoders = std::collections::HashMap::from([
+            (
+                "image/jpeg",
+                "/home/herold/.cargo-target/debug/glycin-image-rs",
+            ),
+            (
+                "image/png",
+                "/home/herold/.cargo-target/debug/glycin-image-rs",
+            ),
+        ]);
 
         let decoder = decoders.get(mime_type.as_str()).expect("TODO");
 
