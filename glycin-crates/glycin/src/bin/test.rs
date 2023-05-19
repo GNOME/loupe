@@ -10,15 +10,17 @@ fn main() {
         let file = gio::File::for_path(&path);
 
         async_std::task::block_on(async move {
-            let image_request = ImageRequest::new(file);
-            let image = image_request.request().await.unwrap();
+            let cancellable = gio::Cancellable::new();
+            let image_request = ImageRequest::new(file).cancellable(cancellable);
 
-            let info = image.info();
+            let image = image_request.request().await.unwrap();
             let texture = image.next_frame().await.unwrap();
 
-            //dbg!(info);
-            //dbg!(&texture);
-            let out_path = std::path::PathBuf::from_iter(&["out".into(), path]);
+            let mut extension = path.extension().unwrap().to_os_string();
+            extension.push(".png");
+            let out_path =
+                std::path::PathBuf::from_iter(&["out".into(), path.with_extension(extension)]);
+
             texture.save_to_png(out_path).unwrap();
         });
     }

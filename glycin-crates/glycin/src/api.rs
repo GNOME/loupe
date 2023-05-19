@@ -7,9 +7,11 @@ pub use crate::dbus::Error;
 pub type Result<T> = std::result::Result<T, Error>;
 
 /// Image request builder
+#[derive(Debug)]
 pub struct ImageRequest {
     file: gio::File,
     mime_type: Option<glib::GString>,
+    cancellable: Option<gio::Cancellable>,
 }
 
 impl ImageRequest {
@@ -17,14 +19,20 @@ impl ImageRequest {
         Self {
             file,
             mime_type: None,
+            cancellable: None,
         }
     }
 
+    pub fn cancellable(mut self, cancellable: impl IsA<gio::Cancellable>) -> Self {
+        self.cancellable = Some(cancellable.upcast());
+        self
+    }
+
     pub async fn request<'a>(mut self) -> Result<Image<'a>> {
-        let gfile_worker = GFileWorker::spawn(self.file.clone());
+        let gfile_worker = GFileWorker::spawn(self.file.clone(), self.cancellable.clone());
         let mime_type = Self::guess_mime_type(&gfile_worker).await?;
 
-        let process = DecoderProcess::new(&mime_type).await?;
+        let process = DecoderProcess::new(&mime_type, self.cancellable.as_ref()).await?;
         let info = process.init(gfile_worker).await?;
 
         self.mime_type = Some(mime_type);
@@ -50,6 +58,7 @@ impl ImageRequest {
 }
 
 /// Image handle containing metadata and allowing frame requests
+#[derive(Debug)]
 pub struct Image<'a> {
     request: ImageRequest,
     process: DecoderProcess<'a>,
@@ -67,5 +76,13 @@ impl<'a> Image<'a> {
 
     pub fn request(&self) -> &ImageRequest {
         &self.request
+    }
+}
+
+impl Drop for ImageRequest {
+    fn drop(&mut self) {
+        if let Some(cancellable) = &self.cancellable {
+            cancellable.cancel();
+        }
     }
 }

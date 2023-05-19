@@ -12,7 +12,7 @@ use std::os::fd::AsRawFd;
 use std::os::fd::FromRawFd;
 use std::sync::Arc;
 
-#[derive(Clone)]
+#[derive(Clone, Debug)]
 pub struct DecoderProcess<'a> {
     _dbus_connection: zbus::Connection,
     decoding_instruction: DecodingInstructionProxy<'a>,
@@ -20,7 +20,10 @@ pub struct DecoderProcess<'a> {
 }
 
 impl<'a> DecoderProcess<'a> {
-    pub async fn new(mime_type: &glib::GString) -> Result<DecoderProcess<'a>, Error> {
+    pub async fn new(
+        mime_type: &glib::GString,
+        cancellable: Option<&gio::Cancellable>,
+    ) -> Result<DecoderProcess<'a>, Error> {
         let decoders = std::collections::HashMap::from([
             (
                 "image/jpeg",
@@ -42,8 +45,8 @@ impl<'a> DecoderProcess<'a> {
             .set_nonblocking(true)
             .expect("Couldn't set nonblocking");
 
-        let subprocess = gio::SubprocessLauncher::new(gio::SubprocessFlags::NONE);
-        subprocess.take_fd(fd_decoder, 3);
+        let subprocess_launcher = gio::SubprocessLauncher::new(gio::SubprocessFlags::NONE);
+        subprocess_launcher.take_fd(fd_decoder, 3);
         let args = [
             "bwrap",
             "--unshare-all",
@@ -57,7 +60,11 @@ impl<'a> DecoderProcess<'a> {
             "/dev",
             decoder,
         ];
-        subprocess.spawn(&args.map(OsStr::new))?;
+        let subprocess = subprocess_launcher.spawn(&args.map(OsStr::new))?;
+
+        if let Some(cancellable) = cancellable {
+            cancellable.connect_cancelled_local(move |_| subprocess.force_exit());
+        }
 
         let dbus_connection = zbus::ConnectionBuilder::unix_stream(unix_stream)
             .p2p()
@@ -189,9 +196,8 @@ pub struct GFileWorker {
 }
 use std::sync::Mutex;
 impl GFileWorker {
-    pub fn spawn(file: gio::File) -> GFileWorker {
+    pub fn spawn(file: gio::File, cancellable: Option<gio::Cancellable>) -> GFileWorker {
         let gfile = file.clone();
-        let cancellable = gio::Cancellable::new();
 
         let (error_send, error_recv) = oneshot::channel();
         let (first_bytes_send, first_bytes_recv) = oneshot::channel();
@@ -199,10 +205,10 @@ impl GFileWorker {
 
         std::thread::spawn(move || {
             Self::handle_errors(error_send, move || {
-                let reader = gfile.read(Some(&cancellable))?;
+                let reader = gfile.read(cancellable.as_ref())?;
                 let mut buf = vec![0; BUF_SIZE];
 
-                let n = reader.read(&mut buf, Some(&cancellable))?;
+                let n = reader.read(&mut buf, cancellable.as_ref())?;
                 let first_bytes = Arc::new(buf[..n].to_vec());
                 first_bytes_send
                     .send(first_bytes.clone())
@@ -214,7 +220,7 @@ impl GFileWorker {
                 drop(first_bytes);
 
                 loop {
-                    let n = reader.read(&mut buf, Some(&cancellable))?;
+                    let n = reader.read(&mut buf, cancellable.as_ref())?;
                     if n == 0 {
                         break;
                     }
