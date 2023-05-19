@@ -174,10 +174,19 @@ pub struct Communication {
 }
 
 impl Communication {
-    pub async fn new(decoder: Box<dyn Decoder>) -> Self {
+    pub fn spawn(decoder: impl Decoder + 'static) {
+        async_std::task::block_on(async move {
+            let _connection = Communication::new(decoder).await;
+            std::future::pending::<()>().await;
+        })
+    }
+
+    pub async fn new(decoder: impl Decoder + 'static) -> Self {
         let unix_stream = unsafe { UnixStream::from_raw_fd(3) };
 
-        let instruction_handler = DecodingInstruction { decoder };
+        let instruction_handler = DecodingInstruction {
+            decoder: Box::new(decoder),
+        };
         let dbus_connection = zbus::ConnectionBuilder::unix_stream(unix_stream)
             .p2p()
             .auth_mechanisms(&[zbus::AuthMechanism::Anonymous])

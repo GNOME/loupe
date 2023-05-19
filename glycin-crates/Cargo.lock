@@ -942,7 +942,6 @@ dependencies = [
 name = "glycin-image-rs"
 version = "0.0.1"
 dependencies = [
- "async-std",
  "glycin-utils",
  "image",
 ]
@@ -952,9 +951,9 @@ name = "glycin-utils"
 version = "0.0.1"
 dependencies = [
  "anyhow",
+ "async-std",
  "gettext-rs",
  "image",
- "memfd",
  "memmap2",
  "nix",
  "serde",
