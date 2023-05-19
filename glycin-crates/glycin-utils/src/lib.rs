@@ -194,7 +194,7 @@ impl Communication {
 }
 
 pub trait Decoder: Send + Sync {
-    fn init(&self, stream: UnixStream) -> Result<ImageInfo, DecoderError>;
+    fn init(&self, stream: UnixStream, mime_type: String) -> Result<ImageInfo, DecoderError>;
     fn decode_frame(&self) -> Result<Frame, DecoderError>;
 }
 
@@ -208,7 +208,7 @@ impl DecodingInstruction {
         let fd = message.fd.into_raw_fd();
         let stream = unsafe { UnixStream::from_raw_fd(fd) };
 
-        let image_info = self.decoder.init(stream)?;
+        let image_info = self.decoder.init(stream, message.mime_type)?;
 
         Ok(image_info)
     }
