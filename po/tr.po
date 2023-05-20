@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/Incubator/loupe/-/issues\n"
-"POT-Creation-Date: 2023-04-23 20:45+0000\n"
-"PO-Revision-Date: 2023-04-24 00:44+0300\n"
+"POT-Creation-Date: 2023-05-01 10:55+0000\n"
+"PO-Revision-Date: 2023-05-08 22:49+0300\n"
 "Last-Translator: Sabri Ünal <libreajans@gmail.com>\n"
 "Language-Team: Turkish <gnome-turk@gnome.org>\n"
 "Language: tr\n"
@@ -44,11 +44,11 @@ msgstr "_Arka Plan Olarak Ayarla…"
 msgid "Could not Load Image"
 msgstr "Görüntü yüklenemedi"
 
-#: data/gtk/image_page.ui:88 data/gtk/window.ui:100
+#: data/gtk/image_page.ui:88 data/gtk/window.ui:101
 msgid "Rotate Left"
 msgstr "Sola Döndür"
 
-#: data/gtk/image_page.ui:99 data/gtk/window.ui:111
+#: data/gtk/image_page.ui:98 data/gtk/window.ui:111
 msgid "Rotate Right"
 msgstr "Sağa Döndür"
 
@@ -73,8 +73,8 @@ msgid "Toggle Fullscreen"
 msgstr "Tam Ekranı Aç/Kapat"
 
 #: data/gtk/print.ui:4
-msgid "Layout Image"
-msgstr "Yerleşim Görüntüsü"
+msgid "Image Layout"
+msgstr "Görüntü Yerleşimi"
 
 #: data/gtk/print.ui:66
 msgid "Portrait page orientation"
@@ -194,36 +194,36 @@ msgstr "Loupe _Hakkında"
 
 #. If the file exists, get display name
 #: data/gtk/window.ui:59 data/org.gnome.Loupe.desktop.in.in:3
-#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/application.rs:191
-#: src/window.rs:784 src/window.rs:790
+#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/application.rs:188
+#: src/window.rs:796 src/window.rs:802
 msgid "Loupe"
 msgstr "Loupe"
 
-#: data/gtk/window.ui:79
+#: data/gtk/window.ui:80
 msgid "Copy to Clipboard"
 msgstr "Panoya Kopyala"
 
-#: data/gtk/window.ui:86
+#: data/gtk/window.ui:87
 msgid "Move to Trash"
 msgstr "Çöpe Taşı"
 
-#: data/gtk/window.ui:92
+#: data/gtk/window.ui:93
 msgid "Main Menu"
 msgstr "Ana Menü"
 
-#: data/gtk/window.ui:126
+#: data/gtk/window.ui:125
 msgid "Image Properties"
 msgstr "Görüntü Özellikleri"
 
-#: data/gtk/window.ui:146
+#: data/gtk/window.ui:145
 msgid "View Images"
 msgstr "Görüntüleri Görüntüle"
 
-#: data/gtk/window.ui:147
+#: data/gtk/window.ui:146
 msgid "Drag and drop images here"
 msgstr "Görüntüleri sürükleyip buraya bırakın"
 
-#: data/gtk/window.ui:151
+#: data/gtk/window.ui:150
 msgid "_Open File…"
 msgstr "Dosya _Aç…"
 
@@ -232,7 +232,7 @@ msgid "Picture;Slideshow;Graphics;Image Viewer;"
 msgstr ""
 "Resim;Slayt Gösterisi;Grafikler;Görseller;Resim Gösterici;Görüntü Gösterici;"
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:7 src/application.rs:194
+#: data/org.gnome.Loupe.metainfo.xml.in.in:7 src/application.rs:191
 msgid "The Loupe Team"
 msgstr "Loupe Takımı"
 
@@ -241,24 +241,8 @@ msgid "View images"
 msgstr "Görüntüleri göster"
 
 #: data/org.gnome.Loupe.metainfo.xml.in.in:10
-msgid ""
-"A simple image viewer which allows you to browse through your images and "
-"inspect their metadata."
-msgstr ""
-"Görüntülerinize göz atmanıza ve üst verilerini incelemenize izin veren basit "
-"resim görüntüleyici."
-
-#: data/org.gnome.Loupe.metainfo.xml.in.in:11
-msgid "The following features are not available yet"
-msgstr "Aşağıdaki özellikler henüz kullanılamıyor"
-
-#: data/org.gnome.Loupe.metainfo.xml.in.in:13
-msgid "Applying image color profiles"
-msgstr "Görüntü renk profilleri uygulanıyor"
-
-#: data/org.gnome.Loupe.metainfo.xml.in.in:14
-msgid "Printing"
-msgstr "Yazdırma"
+msgid "Browse through your images and inspect their metadata."
+msgstr "Görüntülerinize göz atın ve üst verilerini inceleyin."
 
 #: data/resources/gtk/help-overlay.ui:11
 msgctxt "shortcut window"
@@ -434,13 +418,13 @@ msgid "Gestures"
 msgstr "Hareketler"
 
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/application.rs:203
+#: src/application.rs:200
 msgid "translator-credits"
 msgstr ""
 "Sabri Ünal <libreajans@gmail.com>\n"
 "Emin Tufan Çetin <etcetin@gmail.com>"
 
-#: src/application.rs:204
+#: src/application.rs:201
 msgid "Copyright © 2020–2023 Christopher Davis et al."
 msgstr "Telif Hakkı © 2020–2023 Christopher Davis et al."
 
@@ -525,7 +509,7 @@ msgstr "{}\\u{202F}mm"
 msgid "%x %X"
 msgstr "%x %X"
 
-#: src/util/mod.rs:171 src/window.rs:517
+#: src/util/mod.rs:171 src/window.rs:522
 msgid "Failed to restore image from trash"
 msgstr "Görüntü çöpten geri yüklenemedi"
 
@@ -542,53 +526,65 @@ msgstr "Arka plan olarak ayarla."
 msgid "Could not set background."
 msgstr "Arka plan olarak ayarlanamadı."
 
-#: src/window.rs:421
+#: src/window.rs:426
 msgid "Supported image formats"
 msgstr "Desteklenen görüntü biçimleri"
 
-#: src/window.rs:427
+#: src/window.rs:432
 msgid "All files"
 msgstr "Tüm dosyalar"
 
-#: src/window.rs:434
+#: src/window.rs:439
 msgid "Open Image"
 msgstr "Görüntü Aç"
 
-#: src/window.rs:489
+#: src/window.rs:494
 msgid "Image copied to clipboard"
 msgstr "Görüntü panoya kopyalandı"
 
-#: src/window.rs:505
+#: src/window.rs:510
 msgid "Image moved to trash"
 msgstr "Görüntü çöpe taşındı"
 
-#: src/window.rs:506
+#: src/window.rs:511
 msgid "Undo"
 msgstr "Geri Al"
 
-#: src/window.rs:532
+#: src/window.rs:537
 msgid "Failed to move image to trash"
 msgstr "Görüntü çöpe taşınamadı"
 
-#: src/window.rs:547
+#: src/window.rs:552
 msgid "Permanently Delete Image?"
 msgstr "Görüntü Kalıcı Olarak Silinsin mi?"
 
-#: src/window.rs:549
+#: src/window.rs:554
 msgid "The image “{}” can only be deleted permanently."
 msgstr "“{}” görüntüsü yalnızca kalıcı olarak silinebilir."
 
-#: src/window.rs:557
+#: src/window.rs:562
 msgid "Cancel"
 msgstr "İptal Et"
 
-#: src/window.rs:558
+#: src/window.rs:563
 msgid "Delete"
 msgstr "Sil"
 
-#: src/window.rs:569
+#: src/window.rs:574
 msgid "Failed to delete image"
 msgstr "Görüntü silinemedi"
+
+#~ msgid "Layout Image"
+#~ msgstr "Yerleşim Görüntüsü"
+
+#~ msgid "The following features are not available yet"
+#~ msgstr "Aşağıdaki özellikler henüz kullanılamıyor"
+
+#~ msgid "Applying image color profiles"
+#~ msgstr "Görüntü renk profilleri uygulanıyor"
+
+#~ msgid "Printing"
+#~ msgstr "Yazdırma"
 
 #~ msgid "Christopher Davis"
 #~ msgstr "Christopher Davis"
