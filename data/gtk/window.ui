@@ -194,7 +194,18 @@
                       </object>
                     </child>
                     <child>
-                      <object class="LpImageView" id="image_view"/>
+                      <object class="LpImageView" id="image_view">
+                        <child>
+                          <object class="GtkGestureClick" id="forward_click_gesture">
+                            <property name="button">9</property>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="GtkGestureClick" id="backward_click_gesture">
+                            <property name="button">8</property>
+                          </object>
+                        </child>
+                      </object>
                     </child>
                     <child>
                       <object class="GtkDropTarget" id="drop_target">

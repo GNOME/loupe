@@ -91,6 +91,12 @@ mod imp {
         pub(super) properties_view: TemplateChild<LpPropertiesView>,
         #[template_child]
         pub(super) drop_target: TemplateChild<gtk::DropTarget>,
+
+        #[template_child]
+        pub(super) forward_click_gesture: TemplateChild<gtk::GestureClick>,
+        #[template_child]
+        pub(super) backward_click_gesture: TemplateChild<gtk::GestureClick>,
+
         /// Motion controller for complete window
         pub(super) motion_controller: gtk::EventControllerMotion,
         pub(super) pointer_position: Cell<(f64, f64)>,
@@ -240,6 +246,15 @@ mod imp {
             let obj = self.obj();
 
             self.parent_constructed();
+
+            self.forward_click_gesture
+                .connect_pressed(clone!(@weak obj => move |_,_,_,_| {
+                    obj.image_view().navigate(Direction::Forward);
+                }));
+            self.backward_click_gesture
+                .connect_pressed(clone!(@weak obj => move |_,_,_,_| {
+                    obj.image_view().navigate(Direction::Back);
+                }));
 
             if config::PROFILE == ".Devel" {
                 obj.add_css_class("devel");
