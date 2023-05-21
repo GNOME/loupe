@@ -190,6 +190,11 @@ impl LpImagePage {
 
         let rect = gdk::Rectangle::new(x as i32, y as i32, 0, 0);
 
+        if self.direction() == gtk::TextDirection::Rtl {
+            imp.popover.set_halign(gtk::Align::End);
+        } else {
+            imp.popover.set_halign(gtk::Align::Start);
+        }
         imp.popover.set_pointing_to(Some(&rect));
         imp.popover.popup();
     }
