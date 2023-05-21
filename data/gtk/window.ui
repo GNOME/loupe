@@ -182,7 +182,7 @@
                         <child>
                           <object class="GtkButton">
                             <property name="halign">center</property>
-                            <property name="label" translatable="yes">_Open File…</property>
+                            <property name="label" translatable="yes">_Open Files…</property>
                             <property name="use-underline">True</property>
                             <property name="action-name">win.open</property>
                             <style>

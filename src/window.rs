@@ -485,8 +485,16 @@ impl LpWindow {
             .modal(true)
             .build();
 
-        if let Ok(file) = chooser.open_future(Some(self)).await {
-            self.image_view().set_image_from_file(file);
+        if let Ok(selected) = chooser.open_multiple_future(Some(self)).await {
+            let images: Vec<_> = selected
+                .into_iter()
+                .filter_map(|files| {
+                    files
+                        .ok()
+                        .and_then(|object| object.downcast::<gio::File>().ok())
+                })
+                .collect();
+            self.image_view().set_images_from_files(images);
         } else {
             log::debug!("File dialog canceled or file not readable");
         }
