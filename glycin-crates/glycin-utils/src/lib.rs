@@ -14,6 +14,7 @@ use zbus::zvariant::{self, Optional, Type};
 use std::ffi::CString;
 use std::ops::{Deref, DerefMut};
 use std::os::fd::{FromRawFd, IntoRawFd, RawFd};
+use std::sync::Mutex;
 use std::time::Duration;
 
 #[derive(Debug)]
@@ -98,6 +99,23 @@ pub struct Frame {
     pub iccp: Optional<Vec<u8>>,
     pub cicp: Optional<Vec<u8>>,
     pub delay: Optional<Duration>,
+}
+
+impl Frame {
+    pub fn new(width: u32, height: u32, memory_format: MemoryFormat, texture: Texture) -> Self {
+        let stride = memory_format.n_bytes() as u32 * width;
+
+        Self {
+            width,
+            height,
+            stride,
+            memory_format,
+            texture,
+            iccp: None.into(),
+            cicp: None.into(),
+            delay: None.into(),
+        }
+    }
 }
 
 #[derive(Deserialize, Serialize, Type, Debug)]
@@ -185,7 +203,7 @@ impl Communication {
         let unix_stream = unsafe { UnixStream::from_raw_fd(3) };
 
         let instruction_handler = DecodingInstruction {
-            decoder: Box::new(decoder),
+            decoder: Mutex::new(Box::new(decoder)),
         };
         let dbus_connection = zbus::ConnectionBuilder::unix_stream(unix_stream)
             .p2p()
@@ -202,13 +220,13 @@ impl Communication {
     }
 }
 
-pub trait Decoder: Send + Sync {
+pub trait Decoder: Send {
     fn init(&self, stream: UnixStream, mime_type: String) -> Result<ImageInfo, DecoderError>;
     fn decode_frame(&self) -> Result<Frame, DecoderError>;
 }
 
 struct DecodingInstruction {
-    decoder: Box<dyn Decoder>,
+    decoder: Mutex<Box<dyn Decoder>>,
 }
 
 #[zbus::dbus_interface(name = "org.gnome.glycin.DecodingInstruction")]
@@ -217,13 +235,21 @@ impl DecodingInstruction {
         let fd = message.fd.into_raw_fd();
         let stream = unsafe { UnixStream::from_raw_fd(fd) };
 
-        let image_info = self.decoder.init(stream, message.mime_type)?;
+        let image_info = self
+            .decoder
+            .lock()
+            .or(Err(RemoteError::InternalDecoderError))?
+            .init(stream, message.mime_type)?;
 
         Ok(image_info)
     }
 
     async fn decode_frame(&self) -> Result<Frame, RemoteError> {
-        self.decoder.decode_frame().map_err(Into::into)
+        self.decoder
+            .lock()
+            .or(Err(RemoteError::InternalDecoderError))?
+            .decode_frame()
+            .map_err(Into::into)
     }
 }
 

@@ -27,11 +27,11 @@ impl<'a> DecoderProcess<'a> {
         let decoders = std::collections::HashMap::from([
             (
                 "image/jpeg",
-                "/home/herold/.cargo-target/release/glycin-image-rs",
+                "/home/herold/.cargo-target/debug/glycin-image-rs",
             ),
             (
                 "image/png",
-                "/home/herold/.cargo-target/release/glycin-image-rs",
+                "/home/herold/.cargo-target/debug/glycin-image-rs",
             ),
         ]);
 

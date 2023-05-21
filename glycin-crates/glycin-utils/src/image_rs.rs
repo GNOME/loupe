@@ -19,23 +19,16 @@ impl Frame {
 
         let memory_format = MemoryFormat::from(color_type);
         let (width, height) = decoder.dimensions();
-        let stride = width * u32::from(color_type.bytes_per_pixel());
         let iccp = decoder.icc_profile().into();
 
         let mut memory = SharedMemory::new(decoder.total_bytes());
         decoder.read_image(&mut memory)?;
         let texture = memory.into_texture();
 
-        Ok(Self {
-            width,
-            height,
-            memory_format,
-            stride,
-            texture,
-            iccp,
-            cicp: None.into(),
-            delay: None.into(),
-        })
+        let mut frame = Self::new(width, height, memory_format, texture);
+        frame.iccp = iccp;
+
+        Ok(frame)
     }
 }
 

@@ -11,4 +11,4 @@ rust-version.workspace = true
 
 [dependencies]
 glycin-utils = { path = "../../glycin-utils/", features = ["image-rs"] }
-image = "0.24.6"
+image = "*"
