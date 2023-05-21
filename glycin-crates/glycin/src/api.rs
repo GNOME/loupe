@@ -66,8 +66,16 @@ pub struct Image<'a> {
 }
 
 impl<'a> Image<'a> {
-    pub async fn next_frame(&self) -> Result<gdk::Texture> {
+    pub async fn next_frame(&self) -> Result<Frame> {
         self.process.decode_frame().await.map_err(Into::into)
+    }
+
+    pub async fn texture(self) -> Result<gdk::Texture> {
+        self.process
+            .decode_frame()
+            .await
+            .map(|x| x.texture)
+            .map_err(Into::into)
     }
 
     pub fn info(&self) -> &ImageInfo {
@@ -85,4 +93,9 @@ impl Drop for ImageRequest {
             cancellable.cancel();
         }
     }
+}
+
+pub struct Frame {
+    pub texture: gdk::Texture,
+    pub delay: Option<std::time::Duration>,
 }

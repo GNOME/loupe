@@ -1,5 +1,7 @@
 //! Internal DBus API
 
+use crate::api;
+
 use futures::channel::oneshot;
 use futures::future;
 use futures::FutureExt;
@@ -33,6 +35,11 @@ impl<'a> DecoderProcess<'a> {
                 "image/png",
                 "/home/herold/.cargo-target/debug/glycin-image-rs",
             ),
+            (
+                "image/gif",
+                "/home/herold/.cargo-target/debug/glycin-image-rs",
+            ),
+            ("image/avif", "/home/herold/.cargo-target/debug/glycin-heif"),
         ]);
 
         let decoder = decoders.get(mime_type.as_str()).expect("TODO");
@@ -108,7 +115,7 @@ impl<'a> DecoderProcess<'a> {
         image_info.await.map_err(Into::into)
     }
 
-    pub async fn decode_frame(&self) -> Result<gdk::Texture, Error> {
+    pub async fn decode_frame(&self) -> Result<api::Frame, Error> {
         let frame = self.decoding_instruction.decode_frame().await?;
 
         // TODO: collect as warning
@@ -144,7 +151,10 @@ impl<'a> DecoderProcess<'a> {
             frame.stride.try_into().unwrap(),
         );
 
-        Ok(texture.upcast())
+        Ok(api::Frame {
+            texture: texture.upcast(),
+            delay: frame.delay.into(),
+        })
     }
 }
 

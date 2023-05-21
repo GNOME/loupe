@@ -24,6 +24,8 @@ pub struct ImgDecoder {
 fn worker(decoder: ImageRsDecoder<Reader>, data: Reader, mime_type: String, send: Sender<Frame>) {
     let mut decoder = Some(decoder);
 
+    std::thread::park();
+
     let mut nth_frame = 1;
 
     loop {
@@ -41,9 +43,13 @@ fn worker(decoder: ImageRsDecoder<Reader>, data: Reader, mime_type: String, send
                     nth_frame += 1;
 
                     let (delay_num, delay_den) = frame.delay().numer_denom_ms();
-                    let delay = std::time::Duration::from_micros(f64::round(
-                        delay_num as f64 * 1000. / delay_den as f64,
-                    ) as u64);
+
+                    let delay = if delay_num == 0 || delay_den == 0 {
+                        None
+                    } else {
+                        let micros = f64::round(delay_num as f64 * 1000. / delay_den as f64) as u64;
+                        Some(std::time::Duration::from_micros(micros))
+                    };
 
                     let buffer = frame.into_buffer();
 
@@ -60,9 +66,14 @@ fn worker(decoder: ImageRsDecoder<Reader>, data: Reader, mime_type: String, send
                     let texture = memory.into_texture();
 
                     let mut out_frame = Frame::new(width, height, memory_format, texture);
-                    out_frame.delay = Some(delay).into();
+                    out_frame.delay = delay.into();
 
                     send.send(out_frame).unwrap();
+
+                    // If not really an animation no need to keep the thread around
+                    if delay.is_none() {
+                        return;
+                    }
                 }
             }
 
@@ -112,6 +123,7 @@ impl Decoder for ImgDecoder {
 pub enum ImageRsDecoder<T: std::io::Read> {
     Jpeg(codecs::jpeg::JpegDecoder<T>),
     Png(codecs::png::PngDecoder<T>),
+    Gif(codecs::gif::GifDecoder<T>),
 }
 
 impl ImageRsDecoder<Reader> {
@@ -119,6 +131,7 @@ impl ImageRsDecoder<Reader> {
         Ok(match mime_type {
             "image/jpeg" => Self::Jpeg(codecs::jpeg::JpegDecoder::new(data).context_failed()?),
             "image/png" => Self::Png(codecs::png::PngDecoder::new(data).context_failed()?),
+            "image/gif" => Self::Gif(codecs::gif::GifDecoder::new(data).context_failed()?),
             _ => return Err(DecoderError::UnsupportedImageFormat),
         })
     }
@@ -129,6 +142,7 @@ impl<'a, T: std::io::Read + 'a> ImageRsDecoder<T> {
         match self {
             Self::Jpeg(d) => ImageInfo::from_decoder(d, "JPEG"),
             Self::Png(d) => ImageInfo::from_decoder(d, "PNG"),
+            Self::Gif(d) => ImageInfo::from_decoder(d, "GIF"),
         }
     }
 
@@ -136,12 +150,14 @@ impl<'a, T: std::io::Read + 'a> ImageRsDecoder<T> {
         match self {
             Self::Jpeg(d) => Frame::from_decoder(d),
             Self::Png(d) => Frame::from_decoder(d),
+            Self::Gif(d) => Frame::from_decoder(d),
         }
     }
 
     fn into_frames(self) -> Option<image::Frames<'a>> {
         match self {
             Self::Png(d) => Some(d.apng().into_frames()),
+            Self::Gif(d) => Some(d.into_frames()),
             _ => None,
         }
     }
@@ -149,6 +165,7 @@ impl<'a, T: std::io::Read + 'a> ImageRsDecoder<T> {
     fn is_animated(&self) -> bool {
         match self {
             Self::Png(d) => d.is_apng(),
+            Self::Gif(_) => true,
             _ => false,
         }
     }
