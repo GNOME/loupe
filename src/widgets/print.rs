@@ -418,7 +418,7 @@ impl LpPrint {
         let texture_scale = self.user_width() / orig_width as f64;
         let cairo_scale = cairo_dpi / self.dpi();
 
-        let cairo_surface = if let Some(decoder::ImageFormat::Svg) = image.format() {
+        let cairo_surface = if image.format().map_or(false, |x| x.is_svg()) {
             // Render SVG to exact needed sizes
             // TODO: This should be async
             decoder::formats::Svg::render_print(

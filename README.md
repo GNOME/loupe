@@ -18,38 +18,15 @@ Bundles will not be automatically updated after installation.
 ## Features
 
 - Fast GPU accelerated image rendering with tiled rendering for SVGs
+- Extendable and sandboxed (expect SVG) image decoding with 
+- Support for more than 15 image formats by default
 - Extensive support for touchpad and touchscreen gestures
-- Build-in support for more than 15 image formats
 - Accessible presentation of the most important metadata
 - Sleek but powerful interface developed in conjunction with GNOME Human Interface Guidelines
 
 ## Supported Formats
 
-| Format   | View | Optional | ICC | CICP | EXIF | XMP | Animation | Library                    |
-|----------|------|----------|-----|------|------|-----|-----------|----------------------------|
-| AVIF     | ✔    | ✔        | ✔   | ✔    | ✔    | ✘   | ✘         | libheif-rs + libheif (C++) |
-| BMP      | ✔    |          | ✘   | —    | —    | —   | —         | image-rs                   |
-| DDS      | ✔    |          | —   | —    | —    | —   | —         | image-rs                   |
-| farbfeld | ✔    |          | —   | —    | —    | —   | —         | image-rs                   |
-| QOI      | ✔    |          | —   | —    | —    | —   | —         | image-rs                   |
-| GIF      | ✔    |          | ✘ * | —    | —    | ✘   | ✔         | image-rs                   |
-| HEIC     | ✔    | ✔        | ✔   | ✔    | ✔    | ✘   | ✘         | libheif-rs + libheif (C++) |
-| ICO      | ✔    |          | —   | —    | —    | —   | —         | image-rs                   |
-| JPEG     | ✔    |          | ✔   | —    | ✔    | ✘   | —         | image-rs                   |
-| OpenEXR  | ✔    |          | —   | —    | —    | —   | —         | image-rs                   |
-| PNG      | ✔    |          | ✔   | ✘    | ✔    | ✘   | ✔         | image-rs                   |
-| PNM      | ✔    |          | —   | —    | —    | —   | —         | image-rs                   |
-| SVG      | ✔    |          | ✘   | —    | —    | ✘ * | —         | librsvg                    |
-| TGA      | ✔    |          | —   | —    | —    | —   | —         | image-rs                   |
-| TIFF     | ✔    |          | ✘   | —    | ✔    | ✘   | —         | image-rs                   |
-| WEBP     | ✔    |          | —   | —    | ✔    | ✘   | ✔         | image-rs                   |
-
-| Symbol | Meaning                                        |
-|--------|------------------------------------------------|
-| *      | Unclear if used in practice, needs research    |
-| ✘      | Supported by format but not implemented yet    |
-| ？      | Unclear if supported by format, needs research |
-| ✔      | Supported                                      |
+Loupe uses [glycin](https://gitlab.gnome.org/sophie-h/glycin) for loading images. You can check [glycin's README](https://gitlab.gnome.org/sophie-h/glycin#supported-image-formats) for more details about the formats supported by the default loaders. However, glycin supports adding loaders for additional formats. Therefore, the supported formats on your system may vary and might be changed by installing or removing glycin loaders.
 
 ## Building
 

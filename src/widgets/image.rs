@@ -608,7 +608,7 @@ mod imp {
 
             let applicable_zoom = widget.applicable_zoom();
 
-            let scaling_filter = if self.format.borrow().map_or(false, |x| x.is_svg()) {
+            let scaling_filter = if self.format.borrow().as_ref().map_or(false, |x| x.is_svg()) {
                 // Looks better in SVG animations and avoids rendering issues
                 gsk::ScalingFilter::Linear
             } else if applicable_zoom < 1. {
@@ -770,7 +770,7 @@ impl LpImage {
         // Reset background color for reloads
         self.set_background_color(None);
 
-        let (decoder_res, mut decoder_update) = Decoder::new(file.clone(), tiles.clone()).await;
+        let (decoder, mut decoder_update) = Decoder::new(file.clone(), tiles.clone()).await;
 
         let weak_obj = self.downgrade();
         spawn(async move {
@@ -782,10 +782,7 @@ impl LpImage {
             log::debug!("Stopped listening to decoder since sender is gone");
         });
 
-        if let Ok(decoder) = decoder_res {
-            let decoder = Arc::new(decoder);
-            self.imp().decoder.replace(Some(decoder));
-        }
+        self.imp().decoder.replace(Some(Arc::new(decoder)));
     }
 
     /// Called when decoder sends update
@@ -836,13 +833,11 @@ impl LpImage {
             DecoderUpdate::Format(format) => {
                 imp.format.replace(Some(format));
                 self.notify("format-name");
-
-                // Do the animation part for animated formats
-                if format.is_animated() {
-                    let callback_id = self
+            }
+            DecoderUpdate::Animated => {
+                let callback_id = self
                         .add_tick_callback(glib::clone!(@weak self as obj => @default-return glib::Continue(false), move |_, clock| obj.tick_callback(clock)));
-                    imp.tick_callback.replace(Some(callback_id));
-                }
+                imp.tick_callback.replace(Some(callback_id));
             }
             DecoderUpdate::UnsupportedFormat => {
                 if !self.is_unsupported() {
@@ -1160,7 +1155,7 @@ impl LpImage {
 
     /// Maximal zoom allowed for this image
     fn max_zoom(&self) -> f64 {
-        if let Some(decoder::ImageFormat::Svg) = self.format() {
+        if self.format().map_or(false, |x| x.is_svg()) {
             let (width, height) = self.original_dimensions();
             // Avoid division by 0
             let long_side = f64::max(1., i32::max(width, height) as f64);
@@ -1684,12 +1679,12 @@ impl LpImage {
 
     /// Image format
     pub fn format(&self) -> Option<decoder::ImageFormat> {
-        *self.imp().format.borrow()
+        self.imp().format.borrow().clone()
     }
 
     /// Image format displayable name
     pub fn format_name(&self) -> Option<String> {
-        self.imp().format.borrow().map(|x| x.to_string())
+        self.imp().format.borrow().as_ref().map(|x| x.to_string())
     }
 
     /// Returns decoding error if one occured

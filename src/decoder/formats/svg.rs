@@ -15,7 +15,7 @@
 //
 // SPDX-License-Identifier: GPL-3.0-or-later
 
-///! Decode using librsvg
+//! Decode using librsvg
 use super::*;
 use crate::decoder::tiling::{self, FrameBufferExt};
 use crate::decoder::TileRequest;

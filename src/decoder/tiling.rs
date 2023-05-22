@@ -15,16 +15,16 @@
 //
 // SPDX-License-Identifier: GPL-3.0-or-later
 
-///! Tiled renderer
-///!
-///! It is not always feasible or desiareble to store the complete decoded
-///! image in the VRAM. [`TiledImage`] allows to compose the parts of
-///! the image currently viewed, out of smaller [`Tiles`].
-///!
-///! This is especially important for SVGs where every the image has to
-///! be re-genearted for each zoom level. It can also be used to allow
-///! showing large JPEGs etc where the complete decoded image would not
-///! even fit in the VRAM.
+//! Tiled renderer
+//!
+//! It is not always feasible or desiareble to store the complete decoded
+//! image in the VRAM. [`TiledImage`] allows to compose the parts of
+//! the image currently viewed, out of smaller [`Tiles`].
+//!
+//! This is especially important for SVGs where every the image has to
+//! be re-genearted for each zoom level. It can also be used to allow
+//! showing large JPEGs etc where the complete decoded image would not
+//! even fit in the VRAM.
 use super::{DecoderUpdate, ImageDimensionDetails, UpdateSender};
 use crate::deps::*;
 

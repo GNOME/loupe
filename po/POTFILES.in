@@ -7,8 +7,7 @@ data/org.gnome.Loupe.desktop.in.in
 data/org.gnome.Loupe.metainfo.xml.in.in
 data/resources/gtk/help-overlay.ui
 src/application.rs
-src/decoder/formats/heif.rs
-src/decoder/formats/image_rs_other.rs
+src/decoder/formats/glycin_proxy.rs
 src/decoder/formats/mod.rs
 src/decoder/formats/svg.rs
 src/decoder/mod.rs

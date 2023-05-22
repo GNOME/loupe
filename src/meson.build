@@ -27,6 +27,10 @@ else
   message('Building in release mode')
 endif
 
+if get_option('disable-glycin-sandbox')
+  cargo_options += [ '--features', 'disable-glycin-sandbox' ]
+endif
+
 cargo_env = { 'CARGO_HOME': build_root / 'cargo-home' }
 
 cargo_build = custom_target(

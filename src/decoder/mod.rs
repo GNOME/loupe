@@ -15,7 +15,7 @@
 //
 // SPDX-License-Identifier: GPL-3.0-or-later
 
-///! Decodes several image formats
+//! Decodes several image formats
 pub mod formats;
 pub mod tiling;
 
@@ -23,17 +23,14 @@ pub use formats::ImageDimensionDetails;
 
 use crate::deps::*;
 use crate::image_metadata::ImageMetadata;
-use crate::util::gettext::*;
-use crate::util::ToBufRead;
 use formats::*;
 use tiling::FrameBufferExt;
 
-use anyhow::{anyhow, bail, Context, Result};
+use anyhow::Result;
 use arc_swap::ArcSwap;
 use futures::channel::mpsc;
 use gio::prelude::*;
 
-use std::io::Read;
 use std::sync::Arc;
 
 pub use formats::{ImageFormat, RSVG_MAX_SIZE};
@@ -67,6 +64,8 @@ pub enum DecoderUpdate {
     UnsupportedFormat,
     /// New image data available, redraw
     Redraw,
+    /// Start animation
+    Animated,
     /// And error occured during decoding
     Error(anyhow::Error),
 }
@@ -102,9 +101,8 @@ pub struct Decoder {
 
 #[derive(Debug)]
 enum FormatDecoder {
-    ImageRsOther(ImageRsOther),
+    Glycin(Glycin),
     Svg(Svg),
-    Heif(Heif),
 }
 
 impl Decoder {
@@ -115,31 +113,16 @@ impl Decoder {
     pub async fn new(
         file: gio::File,
         tiles: Arc<ArcSwap<tiling::FrameBuffer>>,
-    ) -> (Result<Self, ()>, mpsc::UnboundedReceiver<DecoderUpdate>) {
+    ) -> (Self, mpsc::UnboundedReceiver<DecoderUpdate>) {
         let (sender, receiver) = mpsc::unbounded();
 
         let update_sender = UpdateSender { sender };
         tiles.set_update_sender(update_sender.clone());
 
-        let format_decoder = gio::spawn_blocking(
-            glib::clone!(@strong update_sender => move || Self::format_decoder(
-                update_sender,
-                file,
-                tiles
-            )),
-        )
-        .await
-        .map_err(|_| anyhow!("Constructing the FormatDecoder failed unexpectedly"));
-
-        let decoder = match format_decoder {
-            Ok(Ok(decoder)) => Ok(Self {
-                decoder,
-                update_sender,
-            }),
-            Err(err) | Ok(Err(err)) => {
-                update_sender.send(DecoderUpdate::Error(err));
-                Err(())
-            }
+        let format_decoder = Self::format_decoder(update_sender.clone(), file, tiles);
+        let decoder = Self {
+            decoder: format_decoder,
+            update_sender,
         };
 
         (decoder, receiver)
@@ -149,33 +132,12 @@ impl Decoder {
         update_sender: UpdateSender,
         file: gio::File,
         tiles: Arc<ArcSwap<tiling::FrameBuffer>>,
-    ) -> anyhow::Result<FormatDecoder> {
-        let format = Self::guess_format(&file)?;
-
-        if let Some(format) = format {
-            match format {
-                image_rs::ImageFormat::Avif => {
-                    update_sender.send(DecoderUpdate::Format(ImageFormat::Heif));
-                    return Ok(FormatDecoder::Heif(Heif::new(file, update_sender, tiles)));
-                }
-                format => {
-                    update_sender.send(DecoderUpdate::Format(ImageFormat::ImageRs(format)));
-                    return Ok(FormatDecoder::ImageRsOther(ImageRsOther::new(
-                        file,
-                        format,
-                        update_sender,
-                        tiles,
-                    )));
-                }
-            }
-        } else {
-            let file_info = file
-                .query_info(
-                    gio::FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE,
-                    gio::FileQueryInfoFlags::NONE,
-                    gio::Cancellable::NONE,
-                )
-                .context("Could not read content type information")?;
+    ) -> FormatDecoder {
+        if let Ok(file_info) = file.query_info(
+            gio::FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE,
+            gio::FileQueryInfoFlags::NONE,
+            gio::Cancellable::NONE,
+        ) {
             if let Some(mime_type) = file_info
                 .content_type()
                 .as_ref()
@@ -185,62 +147,32 @@ impl Decoder {
                 // - image/svg+xml
                 // - image/svg+xml-compressed
                 if mime_type.split('+').next() == Some("image/svg") {
-                    update_sender.send(DecoderUpdate::Format(ImageFormat::Svg));
-                    return Ok(FormatDecoder::Svg(Svg::new(file, update_sender, tiles)));
-                } else if ["image/avif", "image/heif", "image/heic"].contains(&mime_type.as_str()) {
-                    update_sender.send(DecoderUpdate::Format(ImageFormat::Heif));
-                    return Ok(FormatDecoder::Heif(Heif::new(file, update_sender, tiles)));
-                } else {
-                    update_sender.send(DecoderUpdate::UnsupportedFormat);
-                    bail!(gettext_f("Unknown image format: {}", &[mime_type.as_str()]));
+                    update_sender.send(DecoderUpdate::Format(ImageFormat::new(
+                        mime_type.into(),
+                        "SVG".into(),
+                    )));
+                    return FormatDecoder::Svg(Svg::new(file, update_sender, tiles));
                 }
             }
         }
 
-        update_sender.send(DecoderUpdate::UnsupportedFormat);
-        bail!(gettext("Unknown image format"))
+        FormatDecoder::Glycin(Glycin::new(file, update_sender, tiles))
     }
 
     /// Request missing tiles
     pub fn request(&self, tile_request: TileRequest) {
-        match &self.decoder {
-            FormatDecoder::Svg(svg) => {
-                if let Err(err) = svg.request(tile_request) {
-                    self.update_sender.send(DecoderUpdate::Error(err));
-                }
+        if let FormatDecoder::Svg(svg) = &self.decoder {
+            if let Err(err) = svg.request(tile_request) {
+                self.update_sender.send(DecoderUpdate::Error(err));
             }
-            FormatDecoder::Heif(_) => {}
-            _ => {}
-        };
-    }
-
-    pub fn fill_frame_buffer(&self) {
-        if let FormatDecoder::ImageRsOther(decoder) = &self.decoder {
-            decoder.fill_frame_buffer();
-        } else {
-            log::error!("Trying to fill frame buffer for decoder without animation support");
         }
     }
 
-    fn guess_format(file: &gio::File) -> anyhow::Result<Option<image_rs::ImageFormat>> {
-        let mut buf = Vec::new();
-        // TODO: allow to cancel
-        let fs_file = file
-            .to_buf_read(&gio::Cancellable::new())
-            .context(gettext("Could not open image"))?;
-        fs_file
-            .take(64)
-            .read_to_end(&mut buf)
-            .context(gettext("Could not read image"))?;
-
-        // Try magic bytes first and than file name extension
-
-        if let Ok(format) = image_rs::guess_format(&buf) {
-            Ok(Some(format))
-        } else if let Some(basename) = file.basename() {
-            Ok(image_rs::ImageFormat::from_path(basename).ok())
+    pub fn fill_frame_buffer(&self) {
+        if let FormatDecoder::Glycin(decoder) = &self.decoder {
+            decoder.fill_frame_buffer();
         } else {
-            Ok(None)
+            log::error!("Trying to fill frame buffer for decoder without animation support");
         }
     }
 }

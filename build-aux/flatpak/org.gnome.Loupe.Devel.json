@@ -9,7 +9,6 @@
     ],
     "command" : "loupe",
     "finish-args" : [
-        "--share=network",
         "--share=ipc",
         "--socket=fallback-x11",
         "--socket=wayland",
@@ -120,8 +119,8 @@
                     "tag" : "v1.0.11"
                 }
             ]
-	},
-	{
+        },
+        {
             "name" : "libheif",
             "buildsystem" : "cmake",
             "config-opts": [
@@ -146,7 +145,18 @@
                 {
                     "type" : "git",
                     "url" : "https://github.com/strukturag/libheif.git",
-                    "tag" : "v1.15.1"
+                    "tag" : "v1.16.2"
+                }
+            ]
+        },
+        {
+            "name" : "glycin",
+            "buildsystem" : "meson",
+            "sources" : [
+                {
+                    "type" : "git",
+                    "url" : "https://gitlab.gnome.org/sophie-h/glycin.git",
+                    "commit" : "2e3f9add120a4913e559729d361d6d7e5d010f2b"
                 }
             ]
         },
@@ -154,7 +164,8 @@
             "name" : "loupe",
             "buildsystem" : "meson",
             "config-opts": [
-                "-Dprofile=development"
+                "-Dprofile=development",
+                "-Ddisable-glycin-sandbox=true"
             ],
             "sources" : [
                 {

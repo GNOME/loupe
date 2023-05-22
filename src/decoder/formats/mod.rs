@@ -15,66 +15,40 @@
 //
 // SPDX-License-Identifier: GPL-3.0-or-later
 
-mod heif;
-mod image_rs_other;
+mod glycin_proxy;
 mod svg;
 
-pub use heif::Heif;
-pub use image_rs_other::ImageRsOther;
+pub use glycin_proxy::Glycin;
 pub use svg::{Svg, RSVG_MAX_SIZE};
 
 use super::{DecoderUpdate, UpdateSender};
-use crate::util::gettext::*;
 
-#[derive(Clone, Copy, Debug)]
-pub enum ImageFormat {
-    ImageRs(image_rs::ImageFormat),
-    AnimatedGif,
-    AnimatedWebP,
-    AnimatedPng,
-    // TODO: Add details about contained format
-    Heif,
-    Svg,
+#[derive(Clone, Debug)]
+pub struct ImageFormat {
+    mime_type: glycin::MimeType,
+    name: String,
 }
 
 impl ImageFormat {
-    pub fn is_animated(&self) -> bool {
-        matches!(
-            self,
-            ImageFormat::AnimatedGif | ImageFormat::AnimatedWebP | ImageFormat::AnimatedPng
-        )
+    pub fn new(mime_type: glycin::MimeType, name: String) -> Self {
+        Self { mime_type, name }
     }
 
     pub fn is_svg(&self) -> bool {
-        matches!(self, Self::Svg)
+        matches!(
+            self.mime_type.as_str(),
+            "image/svg+xml" | "image/svg+xml-compressed"
+        )
     }
 
     pub fn is_potentially_transparent(&self) -> bool {
-        !matches!(
-            self,
-            Self::ImageRs(image_rs::ImageFormat::Bmp) | Self::ImageRs(image_rs::ImageFormat::Jpeg)
-        )
+        !matches!(self.mime_type.as_str(), "image/bmp" | "image/jpeg")
     }
 }
 
 impl std::fmt::Display for ImageFormat {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> Result<(), std::fmt::Error> {
-        match self {
-            Self::ImageRs(format) => {
-                let debug = format!("{:?}", format);
-                if debug.len() <= 4 {
-                    // uppercase abbreviations
-                    write!(f, "{}", debug.to_uppercase())
-                } else {
-                    write!(f, "{}", debug)
-                }
-            }
-            Self::AnimatedGif => write!(f, "{}", gettext("Animated GIF")),
-            Self::AnimatedWebP => write!(f, "{}", gettext("Animated WebP")),
-            Self::AnimatedPng => write!(f, "{}", gettext("Animated PNG")),
-            Self::Heif => write!(f, "HEIF Container"),
-            Self::Svg => write!(f, "SVG"),
-        }
+        write!(f, "{}", self.name)
     }
 }
 
