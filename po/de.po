@@ -9,17 +9,18 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
-"Report-Msgid-Bugs-To: https://gitlab.gnome.org/Incubator/loupe/-/issues\n"
-"POT-Creation-Date: 2023-05-04 19:13+0000\n"
-"PO-Revision-Date: 2023-05-07 18:34+0200\n"
-"Last-Translator: Philipp Kiemle <philipp.kiemle@gmail.com>\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/Incubator/loupe/-/"
+"issues\n"
+"POT-Creation-Date: 2023-05-23 11:29+0000\n"
+"PO-Revision-Date: 2023-05-24 10:34+0200\n"
+"Last-Translator: Jürgen Benvenuti <gastornis@posteo.org>\n"
 "Language-Team: German <gnome-de@gnome.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.1.1\n"
 
 #: data/gtk/image_page.ui:6 data/gtk/window.ui:16
 msgid "_Open With…"
@@ -196,7 +197,7 @@ msgstr "_Info zu Loupe"
 #. If the file exists, get display name
 #: data/gtk/window.ui:60 data/org.gnome.Loupe.desktop.in.in:3
 #: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/application.rs:188
-#: src/window.rs:835 src/window.rs:841
+#: src/window.rs:858 src/window.rs:864
 msgid "Loupe"
 msgstr "Loupe"
 
@@ -225,8 +226,8 @@ msgid "Drag and drop images here"
 msgstr "Bilder hierher ziehen und ablegen"
 
 #: data/gtk/window.ui:185
-msgid "_Open File…"
-msgstr "_Datei öffnen …"
+msgid "_Open Files…"
+msgstr "_Dateien öffnen …"
 
 #: data/org.gnome.Loupe.desktop.in.in:11
 msgid "Picture;Slideshow;Graphics;Image Viewer;"
@@ -293,128 +294,123 @@ msgstr "Neues Fenster"
 
 #: data/resources/gtk/help-overlay.ui:62
 msgctxt "shortcut window"
-msgid "Open Help"
-msgstr "Hilfe öffnen"
-
-#: data/resources/gtk/help-overlay.ui:68
-msgctxt "shortcut window"
 msgid "Show Keyboard Shortcuts"
 msgstr "Tastenkürzel anzeigen"
 
-#: data/resources/gtk/help-overlay.ui:74
+#: data/resources/gtk/help-overlay.ui:68
 msgctxt "shortcut window"
 msgid "Close Window"
 msgstr "Fenster schließen"
 
-#: data/resources/gtk/help-overlay.ui:80
+#: data/resources/gtk/help-overlay.ui:74
 msgctxt "shortcut window"
 msgid "Quit"
 msgstr "Beenden"
 
-#: data/resources/gtk/help-overlay.ui:88
+#: data/resources/gtk/help-overlay.ui:82
 msgctxt "shortcut window"
 msgid "Navigate Images"
 msgstr "Bilder durchblättern"
 
-#: data/resources/gtk/help-overlay.ui:92 data/resources/gtk/help-overlay.ui:106
-#: data/resources/gtk/help-overlay.ui:218
-#: data/resources/gtk/help-overlay.ui:232
+#: data/resources/gtk/help-overlay.ui:86 data/resources/gtk/help-overlay.ui:100
+#: data/resources/gtk/help-overlay.ui:212
+#: data/resources/gtk/help-overlay.ui:226
 msgctxt "shortcut window"
 msgid "Next Image"
 msgstr "Nächstes Bild"
 
-#: data/resources/gtk/help-overlay.ui:99 data/resources/gtk/help-overlay.ui:113
-#: data/resources/gtk/help-overlay.ui:225
-#: data/resources/gtk/help-overlay.ui:239
+#: data/resources/gtk/help-overlay.ui:93 data/resources/gtk/help-overlay.ui:107
+#: data/resources/gtk/help-overlay.ui:219
+#: data/resources/gtk/help-overlay.ui:233
 msgctxt "shortcut window"
 msgid "Previous Image"
 msgstr "Vorheriges Bild"
 
-#: data/resources/gtk/help-overlay.ui:119
+#: data/resources/gtk/help-overlay.ui:113
 msgctxt "shortcut window"
 msgid "First Image"
 msgstr "Erstes Bild"
 
-#: data/resources/gtk/help-overlay.ui:125
+#: data/resources/gtk/help-overlay.ui:119
 msgctxt "shortcut window"
 msgid "Last Image"
 msgstr "Letztes Bild"
 
-#: data/resources/gtk/help-overlay.ui:133
+#: data/resources/gtk/help-overlay.ui:127
 msgctxt "shortcut window"
 msgid "Rotate Image"
 msgstr "Bild drehen"
 
-#: data/resources/gtk/help-overlay.ui:136
-#: data/resources/gtk/help-overlay.ui:257
+#: data/resources/gtk/help-overlay.ui:130
+#: data/resources/gtk/help-overlay.ui:251
 msgctxt "shortcut window"
 msgid "Rotate Clockwise"
 msgstr "Im Uhrzeigersinn drehen"
 
-#: data/resources/gtk/help-overlay.ui:142
-#: data/resources/gtk/help-overlay.ui:263
+#: data/resources/gtk/help-overlay.ui:136
+#: data/resources/gtk/help-overlay.ui:257
 msgctxt "shortcut window"
 msgid "Rotate Counterclockwise"
 msgstr "Gegen den Uhrzeigersinn drehen"
 
-#: data/resources/gtk/help-overlay.ui:150
+#: data/resources/gtk/help-overlay.ui:144
 msgctxt "shortcut window"
 msgid "Zoom Image"
 msgstr "Bild vergrößern"
 
-#: data/resources/gtk/help-overlay.ui:153
-#: data/resources/gtk/help-overlay.ui:245
+#: data/resources/gtk/help-overlay.ui:147
+#: data/resources/gtk/help-overlay.ui:239
 msgctxt "shortcut window"
 msgid "Zoom In"
 msgstr "Ansicht vergrößern"
 
-#: data/resources/gtk/help-overlay.ui:159
-#: data/resources/gtk/help-overlay.ui:251
+#: data/resources/gtk/help-overlay.ui:153
+#: data/resources/gtk/help-overlay.ui:245
 msgctxt "shortcut window"
 msgid "Zoom Out"
 msgstr "Ansicht verkleinern"
 
-#: data/resources/gtk/help-overlay.ui:165
+#: data/resources/gtk/help-overlay.ui:159
 msgctxt "shortcut window"
 msgid "Best Fit"
 msgstr "Einpassen"
 
-#: data/resources/gtk/help-overlay.ui:171
+#: data/resources/gtk/help-overlay.ui:165
 msgctxt "shortcut window"
 msgid "Original Scale"
 msgstr "Originalgröße"
 
-#: data/resources/gtk/help-overlay.ui:177
+#: data/resources/gtk/help-overlay.ui:171
 msgctxt "shortcut window"
 msgid "200% Scale"
 msgstr "200% Vergrößerung"
 
-#: data/resources/gtk/help-overlay.ui:185
+#: data/resources/gtk/help-overlay.ui:179
 msgctxt "shortcut window"
 msgid "Pan View"
 msgstr "Ansicht schwenken"
 
-#: data/resources/gtk/help-overlay.ui:188
+#: data/resources/gtk/help-overlay.ui:182
 msgctxt "shortcut window"
 msgid "Pan Left"
 msgstr "Nach links schwenken"
 
-#: data/resources/gtk/help-overlay.ui:194
+#: data/resources/gtk/help-overlay.ui:188
 msgctxt "shortcut window"
 msgid "Pan Right"
 msgstr "Nach rechts schwenken"
 
-#: data/resources/gtk/help-overlay.ui:200
+#: data/resources/gtk/help-overlay.ui:194
 msgctxt "shortcut window"
 msgid "Pan Up"
 msgstr "Nach oben schwenken"
 
-#: data/resources/gtk/help-overlay.ui:206
+#: data/resources/gtk/help-overlay.ui:200
 msgctxt "shortcut window"
 msgid "Pan Down"
 msgstr "Nach unten schwenken"
 
-#: data/resources/gtk/help-overlay.ui:214
+#: data/resources/gtk/help-overlay.ui:208
 msgctxt "shortcut window"
 msgid "Gestures"
 msgstr "Gesten"
@@ -511,7 +507,7 @@ msgstr "{}\\u{202F}mm"
 msgid "%x %X"
 msgstr "%x %X"
 
-#: src/util/mod.rs:171 src/window.rs:550
+#: src/util/mod.rs:171 src/window.rs:573
 msgid "Failed to restore image from trash"
 msgstr "Bild konnte nicht aus Papierkorb wiederhergestellt werden"
 
@@ -529,53 +525,57 @@ msgstr "Als Hintergrund festgelegt."
 msgid "Could not set background."
 msgstr "Konnte nicht als Hintergrund festgelegt werden."
 
-#: src/window.rs:454
+#: src/window.rs:469
 msgid "Supported image formats"
 msgstr "Unterstützte Bildformate"
 
-#: src/window.rs:460
+#: src/window.rs:475
 msgid "All files"
 msgstr "Alle Dateien"
 
-#: src/window.rs:467
+#: src/window.rs:482
 msgid "Open Image"
 msgstr "Bild öffnen"
 
-#: src/window.rs:522
+#: src/window.rs:545
 msgid "Image copied to clipboard"
 msgstr "Bild in Zwischenablage kopiert"
 
-#: src/window.rs:538
+#: src/window.rs:561
 msgid "Image moved to trash"
 msgstr "Bild in Papierkorb verschoben"
 
-#: src/window.rs:539
+#: src/window.rs:562
 msgid "Undo"
 msgstr "Rückgängig"
 
-#: src/window.rs:565
+#: src/window.rs:588
 msgid "Failed to move image to trash"
 msgstr "Bild konnte nicht in Papierkorb verschoben werden"
 
-#: src/window.rs:580
+#: src/window.rs:603
 msgid "Permanently Delete Image?"
 msgstr "Bild dauerhaft löschen?"
 
-#: src/window.rs:582
+#: src/window.rs:605
 msgid "The image “{}” can only be deleted permanently."
 msgstr "Das Bild »{}« kann nur dauerhaft gelöscht werden."
 
-#: src/window.rs:590
+#: src/window.rs:613
 msgid "Cancel"
 msgstr "Abbrechen"
 
-#: src/window.rs:591
+#: src/window.rs:614
 msgid "Delete"
 msgstr "Löschen"
 
-#: src/window.rs:602
+#: src/window.rs:625
 msgid "Failed to delete image"
 msgstr "Bild konnte nicht gelöscht werden"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Open Help"
+#~ msgstr "Hilfe öffnen"
 
 #~ msgid "The following features are not available yet"
 #~ msgstr "Die folgenden Funktionen sind noch nicht verfügbar"
