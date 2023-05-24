@@ -37,8 +37,7 @@ use crate::util::spawn;
 use adw::prelude::*;
 use adw::subclass::prelude::*;
 use anyhow::Context;
-use ashpd::desktop::wallpaper;
-use ashpd::desktop::ResponseError;
+use ashpd::desktop::{wallpaper, ResponseError};
 use ashpd::Error;
 use ashpd::WindowIdentifier;
 use glib::clone;
@@ -640,6 +639,7 @@ impl LpImageView {
             .identifier(id)
             .build_uri(&uri)
             .await
+            .and_then(|req| req.response())
         {
             // We use `1` here because we can't pass enums directly as GVariants,
             // so we need to use the C int value of the enum.
