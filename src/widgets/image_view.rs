@@ -41,6 +41,7 @@ use ashpd::desktop::{wallpaper, ResponseError};
 use ashpd::Error;
 use ashpd::WindowIdentifier;
 use glib::clone;
+use glib::translate::IntoGlib;
 use gtk::CompositeTemplate;
 use once_cell::sync::Lazy;
 
@@ -303,7 +304,7 @@ impl LpImageView {
             spawn(glib::clone!(@weak self as obj, @strong file => async move {
                 if let Err(err) = obj.model().load_directory(directory.clone()).await {
                     log::warn!("Failed to load directory: {err}");
-                    obj.activate_action("win.show-toast", Some(&(err.to_string(), 1).to_variant()))
+                    obj.activate_action("win.show-toast", Some(&(err.to_string(), adw::ToastPriority::High.into_glib()).to_variant()))
                         .unwrap();
                     return;
                 }
@@ -641,9 +642,6 @@ impl LpImageView {
             .await
             .and_then(|req| req.response())
         {
-            // We use `1` here because we can't pass enums directly as GVariants,
-            // so we need to use the C int value of the enum.
-            // `TOAST_PRIORITY_NORMAL = 0`, and `TOAST_PRIORITY_HIGH = 1`
             Ok(_) => self
                 .activate_action(
                     "win.show-toast",
@@ -651,7 +649,7 @@ impl LpImageView {
                         &(
                             // Translators: This is a toast notification, informing the user that an image has been set as background.
                             gettext("Set as background."),
-                            1,
+                            adw::ToastPriority::High.into_glib(),
                         )
                             .to_variant(),
                     ),
@@ -661,7 +659,13 @@ impl LpImageView {
                 if !matches!(err, Error::Response(ResponseError::Cancelled)) {
                     self.activate_action(
                         "win.show-toast",
-                        Some(&(gettext("Could not set background."), 1).to_variant()),
+                        Some(
+                            &(
+                                gettext("Could not set background."),
+                                adw::ToastPriority::High.into_glib(),
+                            )
+                                .to_variant(),
+                        ),
                     )
                     .unwrap();
                 }
