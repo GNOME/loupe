@@ -7,18 +7,19 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
-"Report-Msgid-Bugs-To: https://gitlab.gnome.org/Incubator/loupe/-/issues\n"
-"POT-Creation-Date: 2023-04-27 02:21+0000\n"
-"PO-Revision-Date: 2023-04-28 22:46+0200\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/Incubator/loupe/-/"
+"issues\n"
+"POT-Creation-Date: 2023-05-23 11:29+0000\n"
+"PO-Revision-Date: 2023-05-26 09:36+0200\n"
 "Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
 "Language-Team: Slovenian <gnome-si@googlegroups.com>\n"
 "Language: sl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || "
-"n%100==4 ? 3 : 0);\n"
-"X-Generator: Poedit 3.3\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
+"%100==4 ? 3 : 0);\n"
+"X-Generator: Poedit 2.2.1\n"
 "X-Poedit-SourceCharset: ISO-8859-1\n"
 
 #: data/gtk/image_page.ui:6 data/gtk/window.ui:16
@@ -41,15 +42,15 @@ msgstr "Zavrti"
 msgid "_Set as Background…"
 msgstr "_Nastavi za ozadje …"
 
-#: data/gtk/image_page.ui:55
+#: data/gtk/image_page.ui:63
 msgid "Could not Load Image"
 msgstr "Slike ni mogoče naložiti"
 
-#: data/gtk/image_page.ui:88 data/gtk/window.ui:101
+#: data/gtk/image_page.ui:96 data/gtk/window.ui:133
 msgid "Rotate Left"
 msgstr "Zavrti v levo"
 
-#: data/gtk/image_page.ui:98 data/gtk/window.ui:111
+#: data/gtk/image_page.ui:106 data/gtk/window.ui:143
 msgid "Rotate Right"
 msgstr "Zavrti v desno"
 
@@ -121,59 +122,59 @@ msgstr "Natisni"
 msgid "Folder"
 msgstr "Mapa"
 
-#: data/gtk/properties_view.ui:42
+#: data/gtk/properties_view.ui:41
 msgid "Open Containing Folder"
 msgstr "Odpri vsebujočo mapo"
 
-#: data/gtk/properties_view.ui:59
+#: data/gtk/properties_view.ui:58
 msgid "Image Size"
 msgstr "Velikost slike"
 
-#: data/gtk/properties_view.ui:75
+#: data/gtk/properties_view.ui:74
 msgid "Image Format"
 msgstr "Zapis slike"
 
-#: data/gtk/properties_view.ui:89
+#: data/gtk/properties_view.ui:88
 msgid "File Size"
 msgstr "Velikost datoteke"
 
-#: data/gtk/properties_view.ui:107
+#: data/gtk/properties_view.ui:106
 msgid "File Created"
 msgstr "Datoteka ustvarjena"
 
-#: data/gtk/properties_view.ui:121
+#: data/gtk/properties_view.ui:120
 msgid "File Modified"
 msgstr "Datoteka spremenjena"
 
-#: data/gtk/properties_view.ui:144
+#: data/gtk/properties_view.ui:143
 msgid "Location"
 msgstr "Mesto"
 
-#: data/gtk/properties_view.ui:164
+#: data/gtk/properties_view.ui:162
 msgid "Open Location"
 msgstr "Odpri mesto"
 
-#: data/gtk/properties_view.ui:177
+#: data/gtk/properties_view.ui:175
 msgid "Originally Created"
 msgstr "Prvotno ustvarjeno"
 
-#: data/gtk/properties_view.ui:198
+#: data/gtk/properties_view.ui:196
 msgid "Aperture"
 msgstr "Zaslonka"
 
-#: data/gtk/properties_view.ui:219
+#: data/gtk/properties_view.ui:217
 msgid "Exposure"
 msgstr "Osvetlitev"
 
-#: data/gtk/properties_view.ui:240
+#: data/gtk/properties_view.ui:238
 msgid "ISO"
 msgstr "ISO"
 
-#: data/gtk/properties_view.ui:261
+#: data/gtk/properties_view.ui:259
 msgid "Focal Length"
 msgstr "Goriščna razdalja"
 
-#: data/gtk/properties_view.ui:282
+#: data/gtk/properties_view.ui:280
 msgid "Maker, Model"
 msgstr "Izdelovalec, model"
 
@@ -194,39 +195,39 @@ msgid "_About Loupe"
 msgstr "_O programu Lupa"
 
 #. If the file exists, get display name
-#: data/gtk/window.ui:59 data/org.gnome.Loupe.desktop.in.in:3
+#: data/gtk/window.ui:60 data/org.gnome.Loupe.desktop.in.in:3
 #: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/application.rs:188
-#: src/window.rs:796 src/window.rs:802
+#: src/window.rs:858 src/window.rs:864
 msgid "Loupe"
 msgstr "Lupa"
 
-#: data/gtk/window.ui:80
+#: data/gtk/window.ui:112
 msgid "Copy to Clipboard"
 msgstr "Kopiraj na odložišče"
 
-#: data/gtk/window.ui:87
+#: data/gtk/window.ui:119
 msgid "Move to Trash"
 msgstr "Premakni v smeti"
 
-#: data/gtk/window.ui:93
+#: data/gtk/window.ui:125
 msgid "Main Menu"
 msgstr "Glavni meni"
 
-#: data/gtk/window.ui:125
+#: data/gtk/window.ui:157
 msgid "Image Properties"
 msgstr "Lastnosti slike"
 
-#: data/gtk/window.ui:145
+#: data/gtk/window.ui:180
 msgid "View Images"
 msgstr "Pokaži slike"
 
-#: data/gtk/window.ui:146
+#: data/gtk/window.ui:181
 msgid "Drag and drop images here"
 msgstr "Povlecite in spustite slike sem"
 
-#: data/gtk/window.ui:150
-msgid "_Open File…"
-msgstr "_Odpri datoteko …"
+#: data/gtk/window.ui:185
+msgid "_Open Files…"
+msgstr "_Odpri datoteke …"
 
 #: data/org.gnome.Loupe.desktop.in.in:11
 msgid "Picture;Slideshow;Graphics;Image Viewer;"
@@ -291,128 +292,123 @@ msgstr "Novo okno"
 
 #: data/resources/gtk/help-overlay.ui:62
 msgctxt "shortcut window"
-msgid "Open Help"
-msgstr "Odpri pomoč"
-
-#: data/resources/gtk/help-overlay.ui:68
-msgctxt "shortcut window"
 msgid "Show Keyboard Shortcuts"
 msgstr "Pokaže tipkovne bližnjice"
 
-#: data/resources/gtk/help-overlay.ui:74
+#: data/resources/gtk/help-overlay.ui:68
 msgctxt "shortcut window"
 msgid "Close Window"
 msgstr "Zapre okno"
 
-#: data/resources/gtk/help-overlay.ui:80
+#: data/resources/gtk/help-overlay.ui:74
 msgctxt "shortcut window"
 msgid "Quit"
 msgstr "Izhod"
 
-#: data/resources/gtk/help-overlay.ui:88
+#: data/resources/gtk/help-overlay.ui:82
 msgctxt "shortcut window"
 msgid "Navigate Images"
 msgstr "Krmarjenje po slikah"
 
-#: data/resources/gtk/help-overlay.ui:92 data/resources/gtk/help-overlay.ui:106
-#: data/resources/gtk/help-overlay.ui:218
-#: data/resources/gtk/help-overlay.ui:232
+#: data/resources/gtk/help-overlay.ui:86 data/resources/gtk/help-overlay.ui:100
+#: data/resources/gtk/help-overlay.ui:212
+#: data/resources/gtk/help-overlay.ui:226
 msgctxt "shortcut window"
 msgid "Next Image"
 msgstr "Naslednja slika"
 
-#: data/resources/gtk/help-overlay.ui:99 data/resources/gtk/help-overlay.ui:113
-#: data/resources/gtk/help-overlay.ui:225
-#: data/resources/gtk/help-overlay.ui:239
+#: data/resources/gtk/help-overlay.ui:93 data/resources/gtk/help-overlay.ui:107
+#: data/resources/gtk/help-overlay.ui:219
+#: data/resources/gtk/help-overlay.ui:233
 msgctxt "shortcut window"
 msgid "Previous Image"
 msgstr "Predhodnja slika"
 
-#: data/resources/gtk/help-overlay.ui:119
+#: data/resources/gtk/help-overlay.ui:113
 msgctxt "shortcut window"
 msgid "First Image"
 msgstr "Prva slika"
 
-#: data/resources/gtk/help-overlay.ui:125
+#: data/resources/gtk/help-overlay.ui:119
 msgctxt "shortcut window"
 msgid "Last Image"
 msgstr "Zadnja slika"
 
-#: data/resources/gtk/help-overlay.ui:133
+#: data/resources/gtk/help-overlay.ui:127
 msgctxt "shortcut window"
 msgid "Rotate Image"
 msgstr "Zavrti sliko"
 
-#: data/resources/gtk/help-overlay.ui:136
-#: data/resources/gtk/help-overlay.ui:257
+#: data/resources/gtk/help-overlay.ui:130
+#: data/resources/gtk/help-overlay.ui:251
 msgctxt "shortcut window"
 msgid "Rotate Clockwise"
 msgstr "Zasukaj v smeri urinega kazalca"
 
-#: data/resources/gtk/help-overlay.ui:142
-#: data/resources/gtk/help-overlay.ui:263
+#: data/resources/gtk/help-overlay.ui:136
+#: data/resources/gtk/help-overlay.ui:257
 msgctxt "shortcut window"
 msgid "Rotate Counterclockwise"
 msgstr "Zasukaj v nasprotni smeri urinega kazalca"
 
-#: data/resources/gtk/help-overlay.ui:150
+#: data/resources/gtk/help-overlay.ui:144
 msgctxt "shortcut window"
 msgid "Zoom Image"
 msgstr "Povečaj sliko"
 
-#: data/resources/gtk/help-overlay.ui:153
-#: data/resources/gtk/help-overlay.ui:245
+#: data/resources/gtk/help-overlay.ui:147
+#: data/resources/gtk/help-overlay.ui:239
 msgctxt "shortcut window"
 msgid "Zoom In"
 msgstr "Povečaj"
 
-#: data/resources/gtk/help-overlay.ui:159
-#: data/resources/gtk/help-overlay.ui:251
+#: data/resources/gtk/help-overlay.ui:153
+#: data/resources/gtk/help-overlay.ui:245
 msgctxt "shortcut window"
 msgid "Zoom Out"
 msgstr "Pomanjšaj"
 
-#: data/resources/gtk/help-overlay.ui:165
+#: data/resources/gtk/help-overlay.ui:159
 msgctxt "shortcut window"
 msgid "Best Fit"
 msgstr "Najboljše prileganje"
 
-#: data/resources/gtk/help-overlay.ui:171
+#: data/resources/gtk/help-overlay.ui:165
 msgctxt "shortcut window"
 msgid "Original Scale"
 msgstr "Izvirno merilo"
 
-#: data/resources/gtk/help-overlay.ui:177
+#: data/resources/gtk/help-overlay.ui:171
 msgctxt "shortcut window"
 msgid "200% Scale"
 msgstr "200 % povečava"
 
-#: data/resources/gtk/help-overlay.ui:185
+#: data/resources/gtk/help-overlay.ui:179
 msgctxt "shortcut window"
 msgid "Pan View"
 msgstr "Pogled s zasukom"
 
-#: data/resources/gtk/help-overlay.ui:188
+#: data/resources/gtk/help-overlay.ui:182
 msgctxt "shortcut window"
 msgid "Pan Left"
 msgstr "Zasukaj levo"
 
-#: data/resources/gtk/help-overlay.ui:194
+#: data/resources/gtk/help-overlay.ui:188
 msgctxt "shortcut window"
 msgid "Pan Right"
 msgstr "Zasukaj desno"
 
-#: data/resources/gtk/help-overlay.ui:200
+#: data/resources/gtk/help-overlay.ui:194
 msgctxt "shortcut window"
 msgid "Pan Up"
 msgstr "Zasukaj navzgor"
 
-#: data/resources/gtk/help-overlay.ui:206
+#: data/resources/gtk/help-overlay.ui:200
 msgctxt "shortcut window"
 msgid "Pan Down"
 msgstr "Zasukaj navzdol"
 
-#: data/resources/gtk/help-overlay.ui:214
+#: data/resources/gtk/help-overlay.ui:208
 msgctxt "shortcut window"
 msgid "Gestures"
 msgstr "Kretnje"
@@ -426,16 +422,20 @@ msgstr "Martin Srebotnjak <miles@filmsi.net>"
 msgid "Copyright © 2020–2023 Christopher Davis et al."
 msgstr "Avtorska pravica © 2020–2023 Christopher Davis et al."
 
-#: src/decoder/formats/heif.rs:55
+#: src/decoder/formats/heif.rs:67
 msgid "Failed to read image file information"
 msgstr "Branje informacij o slikovni datoteki ni uspelo"
 
-#: src/decoder/formats/heif.rs:60 src/decoder/formats/heif.rs:93
+#: src/decoder/formats/heif.rs:72 src/decoder/formats/heif.rs:119
 #: src/decoder/formats/image_rs_other.rs:116
 #: src/decoder/formats/image_rs_other.rs:125
 #: src/decoder/formats/image_rs_other.rs:132
 msgid "Failed to decode image"
 msgstr "Dekodiranje slike ni uspelo"
+
+#: src/decoder/formats/heif.rs:117 src/decoder/mod.rs:201
+msgid "Unknown image format"
+msgstr "Neznan slikovni zapis"
 
 #: src/decoder/formats/mod.rs:72
 msgid "Animated GIF"
@@ -449,19 +449,15 @@ msgstr "Animirani webP"
 msgid "Animated PNG"
 msgstr "Animirani PNG"
 
-#: src/decoder/mod.rs:189
+#: src/decoder/mod.rs:195
 msgid "Unknown image format: {}"
 msgstr "Neznan zapis slike: {}"
 
-#: src/decoder/mod.rs:194
-msgid "Unknown image format"
-msgstr "Neznan slikovni zapis"
-
-#: src/decoder/mod.rs:222
+#: src/decoder/mod.rs:230
 msgid "Could not open image"
 msgstr "Slike ni bilo mogoče odpreti"
 
-#: src/decoder/mod.rs:226
+#: src/decoder/mod.rs:234
 msgid "Could not read image"
 msgstr "Slike ni bilo mogoče prebrati"
 
@@ -490,12 +486,12 @@ msgid "W"
 msgstr "Z"
 
 #. Translators: Unit for exposure time in seconds
-#: src/image_metadata/mod.rs:144
+#: src/image_metadata/mod.rs:161
 msgid "1\\u{2215}{}\\u{202F}s"
 msgstr "1\\u{2215}{}\\u{202F}s"
 
 #. Translators: Unit for focal length in millimeters
-#: src/image_metadata/mod.rs:169
+#: src/image_metadata/mod.rs:186
 msgid "{}\\u{202F}mm"
 msgstr "{}\\u{202F} mm"
 
@@ -507,7 +503,7 @@ msgstr "{}\\u{202F} mm"
 msgid "%x %X"
 msgstr "%x %X"
 
-#: src/util/mod.rs:171 src/window.rs:522
+#: src/util/mod.rs:171 src/window.rs:573
 msgid "Failed to restore image from trash"
 msgstr "Obnovitev slike iz smeti ni uspela"
 
@@ -516,58 +512,58 @@ msgid "Failed to open image"
 msgstr "Odpiranje slike ni uspelo"
 
 #. Translators: This is a toast notification, informing the user that an image has been set as background.
-#: src/widgets/image_view.rs:620
+#: src/widgets/image_view.rs:653
 msgid "Set as background."
 msgstr "Določi kot sliko ozadja."
 
-#: src/widgets/image_view.rs:631
+#: src/widgets/image_view.rs:664
 msgid "Could not set background."
 msgstr "Ozadja ni bilo mogoče nastaviti."
 
-#: src/window.rs:426
+#: src/window.rs:469
 msgid "Supported image formats"
 msgstr "Podprte vrste slik"
 
-#: src/window.rs:432
+#: src/window.rs:475
 msgid "All files"
 msgstr "Vse datoteke"
 
-#: src/window.rs:439
+#: src/window.rs:482
 msgid "Open Image"
 msgstr "Odpri sliko"
 
-#: src/window.rs:494
+#: src/window.rs:545
 msgid "Image copied to clipboard"
 msgstr "Slika, kopirana na odložišče"
 
-#: src/window.rs:510
+#: src/window.rs:561
 msgid "Image moved to trash"
 msgstr "Slika, premaknjena v smeti"
 
-#: src/window.rs:511
+#: src/window.rs:562
 msgid "Undo"
 msgstr "Razveljavi"
 
-#: src/window.rs:537
+#: src/window.rs:588
 msgid "Failed to move image to trash"
 msgstr "Premikanje slike v smeti ni uspelo"
 
-#: src/window.rs:552
+#: src/window.rs:603
 msgid "Permanently Delete Image?"
 msgstr "Ali želite trajno izbrisati sliko?"
 
-#: src/window.rs:554
+#: src/window.rs:605
 msgid "The image “{}” can only be deleted permanently."
 msgstr "Sliko »{}« je mogoče le trajno izbrisati."
 
-#: src/window.rs:562
+#: src/window.rs:613
 msgid "Cancel"
 msgstr "Prekliči"
 
-#: src/window.rs:563
+#: src/window.rs:614
 msgid "Delete"
 msgstr "Izbriši"
 
-#: src/window.rs:574
+#: src/window.rs:625
 msgid "Failed to delete image"
 msgstr "Brisanje slike ni uspelo"
