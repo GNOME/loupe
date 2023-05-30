@@ -71,10 +71,8 @@ mod imp {
         // Handles opening files from the command line or other applications
         fn open(&self, files: &[gio::File], _hint: &str) {
             let application = self.obj();
-            for file in files {
-                let win = LpWindow::new(&*application);
-                win.image_view().set_image_from_file(file.clone());
-            }
+            let win = LpWindow::new(&*application);
+            win.image_view().set_images_from_files(files.to_vec());
         }
     }
 

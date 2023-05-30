@@ -388,7 +388,7 @@ mod imp {
                     // We've added type annotations here, and written it as `let list: gdk::FileList = ...`,
                     // but you might also see places where type arguments are used.
                     // This line could have been written as `let list = value.get::<gdk::FileList>().unwrap()`.
-                    let mut files = match value.get::<gdk::FileList>() {
+                    let files = match value.get::<gdk::FileList>() {
                         Ok(list) => list.files(),
                         Err(err) => {
                             log::error!("Issue with drop value: {err}");
@@ -396,10 +396,8 @@ mod imp {
                         }
                     };
 
-                    if files.len() > 1 {
+                    if !files.is_empty() {
                         obj.image_view().set_images_from_files(files);
-                    } else if let Some(file) = files.pop() {
-                        obj.image_view().set_image_from_file(file);
                     } else {
                         log::error!("Dropped FileList was empty");
                         return false;
@@ -566,7 +564,7 @@ impl LpWindow {
                     spawn(async move {
                         let result = crate::util::untrash(&path).await;
                         match result {
-                            Ok(()) => win.image_view().set_image_from_file(gio::File::for_path(&path)),
+                            Ok(()) => win.image_view().set_images_from_files(vec![gio::File::for_path(&path)]),
                             Err(err) => {
                                 log::error!("Failed to untrash {path:?}: {err}");
                                 win.show_toast(

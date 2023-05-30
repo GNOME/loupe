@@ -241,20 +241,19 @@ glib::wrapper! {
 
 #[gtk::template_callbacks]
 impl LpImageView {
-    pub fn set_image_from_file(&self, file: gio::File) {
+    pub fn set_images_from_files(&self, files: Vec<gio::File>) {
         // Add image to recently used file. Does not work in Flatpaks:
         // <https://github.com/flatpak/xdg-desktop-portal/issues/215>
-        gtk::RecentManager::default().add_item(&file.uri());
-
-        self.load_file(file);
-    }
-
-    pub fn set_images_from_files(&self, files: Vec<gio::File>) {
         let recent_manager = gtk::RecentManager::default();
         for file in files.iter() {
             recent_manager.add_item(&file.uri());
         }
-        self.load_files(files);
+
+        if files.len() == 1 {
+            self.load_file(files[0].clone());
+        } else {
+            self.load_files(files);
+        }
     }
 
     fn load_files(&self, files: Vec<gio::File>) {
