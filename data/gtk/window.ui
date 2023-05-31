@@ -70,13 +70,6 @@
     </binding>
     <child>
       <object class="AdwBreakpoint">
-        <condition>min-width: 590px</condition>
-        <setter object="properties_flap" property="orientation">horizontal</setter>
-        <setter object="stack" property="visible">true</setter>
-      </object>
-    </child>
-    <child>
-      <object class="AdwBreakpoint">
         <condition>max-width: 590px</condition>
         <setter object="properties_flap" property="orientation">vertical</setter>
         <setter object="stack" property="visible">true</setter>
