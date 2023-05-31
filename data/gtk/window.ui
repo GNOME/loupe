@@ -70,7 +70,7 @@
     </binding>
     <child>
       <object class="AdwBreakpoint">
-        <condition>max-width: 590px</condition>
+        <condition>max-width: 590sp</condition>
         <setter object="properties_flap" property="orientation">vertical</setter>
       </object>
     </child>
