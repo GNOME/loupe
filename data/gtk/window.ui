@@ -58,7 +58,7 @@
     <property name="width-request">360</property>
     <property name="height-request">360</property>
     <property name="title" translatable="yes">Loupe</property>
-    <signal name="notify::fullscreened" handler="on_fullscreened" swapped="yes"/>"
+    <signal name="notify::fullscreened" handler="on_fullscreened" swapped="yes"/>
     <binding name="title">
       <closure type="gchararray" function="window_title">
         <lookup name="file">
@@ -72,14 +72,14 @@
       <object class="AdwBreakpoint">
         <condition>min-width: 590px</condition>
         <setter object="properties_flap" property="orientation">horizontal</setter>
-        <setter object="stack" property="visible">true</setter>"
+        <setter object="stack" property="visible">true</setter>
       </object>
     </child>
     <child>
       <object class="AdwBreakpoint">
         <condition>max-width: 590px</condition>
         <setter object="properties_flap" property="orientation">vertical</setter>
-        <setter object="stack" property="visible">true</setter>""
+        <setter object="stack" property="visible">true</setter>
       </object>
     </child>
     <property name="content">
@@ -237,4 +237,3 @@
     </property>
   </template>
 </interface>
-
