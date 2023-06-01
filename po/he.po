@@ -6,9 +6,10 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
-"Report-Msgid-Bugs-To: https://gitlab.gnome.org/Incubator/loupe/-/issues\n"
-"POT-Creation-Date: 2023-04-27 02:21+0000\n"
-"PO-Revision-Date: 2023-04-29 21:22+0300\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/Incubator/loupe/-/"
+"issues\n"
+"POT-Creation-Date: 2023-05-23 11:29+0000\n"
+"PO-Revision-Date: 2023-06-01 14:34+0300\n"
 "Last-Translator: Yosef Or Boczko <yoseforb@gmail.com>\n"
 "Language-Team: Hebrew <yoseforb@gmail.com>\n"
 "Language: he\n"
@@ -16,8 +17,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n==2 ? 1 : n>10 && n%10==0 ? "
-"2 : 3)\n"
-"X-Generator: Gtranslator 42.0\n"
+"2 : 3);\n"
+"X-Generator: Poedit 3.2.2\n"
 
 #: data/gtk/image_page.ui:6 data/gtk/window.ui:16
 msgid "_Open With…"
@@ -39,15 +40,15 @@ msgstr "סיבוב"
 msgid "_Set as Background…"
 msgstr "ה_גדרה כרקע…"
 
-#: data/gtk/image_page.ui:55
+#: data/gtk/image_page.ui:63
 msgid "Could not Load Image"
 msgstr "לא ניתן לטעון את התמונה"
 
-#: data/gtk/image_page.ui:88 data/gtk/window.ui:101
+#: data/gtk/image_page.ui:96 data/gtk/window.ui:133
 msgid "Rotate Left"
 msgstr "סיבוב שמאלה"
 
-#: data/gtk/image_page.ui:98 data/gtk/window.ui:111
+#: data/gtk/image_page.ui:106 data/gtk/window.ui:143
 msgid "Rotate Right"
 msgstr "סיבוב ימינה"
 
@@ -119,59 +120,59 @@ msgstr "הדפסה"
 msgid "Folder"
 msgstr "תיקייה"
 
-#: data/gtk/properties_view.ui:42
+#: data/gtk/properties_view.ui:41
 msgid "Open Containing Folder"
 msgstr "פתיחת תיקייה מכילה"
 
-#: data/gtk/properties_view.ui:59
+#: data/gtk/properties_view.ui:58
 msgid "Image Size"
 msgstr "גודל תמונה"
 
-#: data/gtk/properties_view.ui:75
+#: data/gtk/properties_view.ui:74
 msgid "Image Format"
 msgstr "תבנית תמונה"
 
-#: data/gtk/properties_view.ui:89
+#: data/gtk/properties_view.ui:88
 msgid "File Size"
 msgstr "גודל קובץ"
 
-#: data/gtk/properties_view.ui:107
+#: data/gtk/properties_view.ui:106
 msgid "File Created"
 msgstr "תאריך יצירת קובץ"
 
-#: data/gtk/properties_view.ui:121
+#: data/gtk/properties_view.ui:120
 msgid "File Modified"
 msgstr "תאריך שינוי קובץ"
 
-#: data/gtk/properties_view.ui:144
+#: data/gtk/properties_view.ui:143
 msgid "Location"
 msgstr "מיקום"
 
-#: data/gtk/properties_view.ui:164
+#: data/gtk/properties_view.ui:162
 msgid "Open Location"
 msgstr "פתיחת מיקום"
 
-#: data/gtk/properties_view.ui:177
+#: data/gtk/properties_view.ui:175
 msgid "Originally Created"
 msgstr "תאריך יצירה מקורי"
 
-#: data/gtk/properties_view.ui:198
+#: data/gtk/properties_view.ui:196
 msgid "Aperture"
 msgstr "צמצם"
 
-#: data/gtk/properties_view.ui:219
+#: data/gtk/properties_view.ui:217
 msgid "Exposure"
 msgstr "חשיפה"
 
-#: data/gtk/properties_view.ui:240
+#: data/gtk/properties_view.ui:238
 msgid "ISO"
 msgstr "ISO"
 
-#: data/gtk/properties_view.ui:261
+#: data/gtk/properties_view.ui:259
 msgid "Focal Length"
 msgstr "אורך מוקד"
 
-#: data/gtk/properties_view.ui:282
+#: data/gtk/properties_view.ui:280
 msgid "Maker, Model"
 msgstr "מצלמה, דגם"
 
@@ -192,41 +193,41 @@ msgid "_About Loupe"
 msgstr "_על אודות לופ"
 
 #. If the file exists, get display name
-#: data/gtk/window.ui:59 data/org.gnome.Loupe.desktop.in.in:3
+#: data/gtk/window.ui:60 data/org.gnome.Loupe.desktop.in.in:3
 #: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/application.rs:188
-#: src/window.rs:796 src/window.rs:802
+#: src/window.rs:858 src/window.rs:864
 msgid "Loupe"
 msgstr "לופ"
 
 # msgctxt "shortcut window"
-#: data/gtk/window.ui:80
+#: data/gtk/window.ui:112
 msgid "Copy to Clipboard"
 msgstr "העתקה ללוח הגזירים"
 
 # msgctxt "shortcut window"
-#: data/gtk/window.ui:87
+#: data/gtk/window.ui:119
 msgid "Move to Trash"
 msgstr "העברה לאשפה"
 
-#: data/gtk/window.ui:93
+#: data/gtk/window.ui:125
 msgid "Main Menu"
 msgstr "תפריט ראשי"
 
-#: data/gtk/window.ui:125
+#: data/gtk/window.ui:157
 msgid "Image Properties"
 msgstr "מאפייני תמונה"
 
-#: data/gtk/window.ui:145
+#: data/gtk/window.ui:180
 msgid "View Images"
 msgstr "מציג תמונות"
 
-#: data/gtk/window.ui:146
+#: data/gtk/window.ui:181
 msgid "Drag and drop images here"
 msgstr "יש לגרור ולשחרר לכאן תמונות"
 
-#: data/gtk/window.ui:150
-msgid "_Open File…"
-msgstr "_פתיחת קובץ…"
+#: data/gtk/window.ui:185
+msgid "_Open Files…"
+msgstr "_פתיחת קבצים…"
 
 #: data/org.gnome.Loupe.desktop.in.in:11
 msgid "Picture;Slideshow;Graphics;Image Viewer;"
@@ -291,128 +292,123 @@ msgstr "חלון חדש"
 
 #: data/resources/gtk/help-overlay.ui:62
 msgctxt "shortcut window"
-msgid "Open Help"
-msgstr "פתיחת עזרה"
-
-#: data/resources/gtk/help-overlay.ui:68
-msgctxt "shortcut window"
 msgid "Show Keyboard Shortcuts"
 msgstr "הצגת צירופי מקשים"
 
-#: data/resources/gtk/help-overlay.ui:74
+#: data/resources/gtk/help-overlay.ui:68
 msgctxt "shortcut window"
 msgid "Close Window"
 msgstr "סגירת חלון"
 
-#: data/resources/gtk/help-overlay.ui:80
+#: data/resources/gtk/help-overlay.ui:74
 msgctxt "shortcut window"
 msgid "Quit"
 msgstr "יציאה"
 
-#: data/resources/gtk/help-overlay.ui:88
+#: data/resources/gtk/help-overlay.ui:82
 msgctxt "shortcut window"
 msgid "Navigate Images"
 msgstr "ניווט תמונות"
 
-#: data/resources/gtk/help-overlay.ui:92 data/resources/gtk/help-overlay.ui:106
-#: data/resources/gtk/help-overlay.ui:218
-#: data/resources/gtk/help-overlay.ui:232
+#: data/resources/gtk/help-overlay.ui:86 data/resources/gtk/help-overlay.ui:100
+#: data/resources/gtk/help-overlay.ui:212
+#: data/resources/gtk/help-overlay.ui:226
 msgctxt "shortcut window"
 msgid "Next Image"
 msgstr "תמונה הבאה"
 
-#: data/resources/gtk/help-overlay.ui:99 data/resources/gtk/help-overlay.ui:113
-#: data/resources/gtk/help-overlay.ui:225
-#: data/resources/gtk/help-overlay.ui:239
+#: data/resources/gtk/help-overlay.ui:93 data/resources/gtk/help-overlay.ui:107
+#: data/resources/gtk/help-overlay.ui:219
+#: data/resources/gtk/help-overlay.ui:233
 msgctxt "shortcut window"
 msgid "Previous Image"
 msgstr "תמונה הקודמת"
 
-#: data/resources/gtk/help-overlay.ui:119
+#: data/resources/gtk/help-overlay.ui:113
 msgctxt "shortcut window"
 msgid "First Image"
 msgstr "תמונה ראשונה"
 
-#: data/resources/gtk/help-overlay.ui:125
+#: data/resources/gtk/help-overlay.ui:119
 msgctxt "shortcut window"
 msgid "Last Image"
 msgstr "תמונה אחרונה"
 
-#: data/resources/gtk/help-overlay.ui:133
+#: data/resources/gtk/help-overlay.ui:127
 msgctxt "shortcut window"
 msgid "Rotate Image"
 msgstr "סיבוב תמונה"
 
-#: data/resources/gtk/help-overlay.ui:136
-#: data/resources/gtk/help-overlay.ui:257
+#: data/resources/gtk/help-overlay.ui:130
+#: data/resources/gtk/help-overlay.ui:251
 msgctxt "shortcut window"
 msgid "Rotate Clockwise"
 msgstr "סיבוב עם כיוון השעון"
 
-#: data/resources/gtk/help-overlay.ui:142
-#: data/resources/gtk/help-overlay.ui:263
+#: data/resources/gtk/help-overlay.ui:136
+#: data/resources/gtk/help-overlay.ui:257
 msgctxt "shortcut window"
 msgid "Rotate Counterclockwise"
 msgstr "סיבוב נגד כיוון השעון"
 
-#: data/resources/gtk/help-overlay.ui:150
+#: data/resources/gtk/help-overlay.ui:144
 msgctxt "shortcut window"
 msgid "Zoom Image"
 msgstr "תקריב תמונה"
 
-#: data/resources/gtk/help-overlay.ui:153
-#: data/resources/gtk/help-overlay.ui:245
+#: data/resources/gtk/help-overlay.ui:147
+#: data/resources/gtk/help-overlay.ui:239
 msgctxt "shortcut window"
 msgid "Zoom In"
 msgstr "התקרבות"
 
-#: data/resources/gtk/help-overlay.ui:159
-#: data/resources/gtk/help-overlay.ui:251
+#: data/resources/gtk/help-overlay.ui:153
+#: data/resources/gtk/help-overlay.ui:245
 msgctxt "shortcut window"
 msgid "Zoom Out"
 msgstr "התרחקות"
 
-#: data/resources/gtk/help-overlay.ui:165
+#: data/resources/gtk/help-overlay.ui:159
 msgctxt "shortcut window"
 msgid "Best Fit"
 msgstr "ההתאמה הטובה ביותר"
 
-#: data/resources/gtk/help-overlay.ui:171
+#: data/resources/gtk/help-overlay.ui:165
 msgctxt "shortcut window"
 msgid "Original Scale"
 msgstr "קנה מידה מקורי"
 
-#: data/resources/gtk/help-overlay.ui:177
+#: data/resources/gtk/help-overlay.ui:171
 msgctxt "shortcut window"
 msgid "200% Scale"
 msgstr "‏200% קנה מידה"
 
-#: data/resources/gtk/help-overlay.ui:185
+#: data/resources/gtk/help-overlay.ui:179
 msgctxt "shortcut window"
 msgid "Pan View"
 msgstr "תצוגת סריקה"
 
-#: data/resources/gtk/help-overlay.ui:188
+#: data/resources/gtk/help-overlay.ui:182
 msgctxt "shortcut window"
 msgid "Pan Left"
 msgstr "סריקה לשמאל"
 
-#: data/resources/gtk/help-overlay.ui:194
+#: data/resources/gtk/help-overlay.ui:188
 msgctxt "shortcut window"
 msgid "Pan Right"
 msgstr "סריקה לימין"
 
-#: data/resources/gtk/help-overlay.ui:200
+#: data/resources/gtk/help-overlay.ui:194
 msgctxt "shortcut window"
 msgid "Pan Up"
 msgstr "סריקה למעלה"
 
-#: data/resources/gtk/help-overlay.ui:206
+#: data/resources/gtk/help-overlay.ui:200
 msgctxt "shortcut window"
 msgid "Pan Down"
 msgstr "סריקה למטה"
 
-#: data/resources/gtk/help-overlay.ui:214
+#: data/resources/gtk/help-overlay.ui:208
 msgctxt "shortcut window"
 msgid "Gestures"
 msgstr "מחוות"
@@ -428,16 +424,20 @@ msgstr ""
 msgid "Copyright © 2020–2023 Christopher Davis et al."
 msgstr "כל הזכויות שמורות © 2022-2023 Christopher Davis ואחרים."
 
-#: src/decoder/formats/heif.rs:55
+#: src/decoder/formats/heif.rs:67
 msgid "Failed to read image file information"
 msgstr "קריאת נתוני קובץ התמונה נכשלה"
 
-#: src/decoder/formats/heif.rs:60 src/decoder/formats/heif.rs:93
+#: src/decoder/formats/heif.rs:72 src/decoder/formats/heif.rs:119
 #: src/decoder/formats/image_rs_other.rs:116
 #: src/decoder/formats/image_rs_other.rs:125
 #: src/decoder/formats/image_rs_other.rs:132
 msgid "Failed to decode image"
 msgstr "פענוח התמונה נכשל"
+
+#: src/decoder/formats/heif.rs:117 src/decoder/mod.rs:201
+msgid "Unknown image format"
+msgstr "תצורת התמונה אינה מוכרת"
 
 #: src/decoder/formats/mod.rs:72
 msgid "Animated GIF"
@@ -451,19 +451,15 @@ msgstr "תמונה מונפשת WebP"
 msgid "Animated PNG"
 msgstr "תמונה מונפשת PNG"
 
-#: src/decoder/mod.rs:189
+#: src/decoder/mod.rs:195
 msgid "Unknown image format: {}"
 msgstr "תצורת התמונה אינה מוכרת: {}"
 
-#: src/decoder/mod.rs:194
-msgid "Unknown image format"
-msgstr "תצורת התמונה אינה מוכרת"
-
-#: src/decoder/mod.rs:222
+#: src/decoder/mod.rs:230
 msgid "Could not open image"
 msgstr "לא ניתן לפתוח את התמונה"
 
-#: src/decoder/mod.rs:226
+#: src/decoder/mod.rs:234
 msgid "Could not read image"
 msgstr "לא ניתן לקרוא את התמונה"
 
@@ -492,12 +488,12 @@ msgid "W"
 msgstr "מע"
 
 #. Translators: Unit for exposure time in seconds
-#: src/image_metadata/mod.rs:144
+#: src/image_metadata/mod.rs:161
 msgid "1\\u{2215}{}\\u{202F}s"
 msgstr "‏‎1\\u{2215}{}\\u{202F} ש"
 
 #. Translators: Unit for focal length in millimeters
-#: src/image_metadata/mod.rs:169
+#: src/image_metadata/mod.rs:186
 msgid "{}\\u{202F}mm"
 msgstr "‏‎{}\\u{202F} מ״מ"
 
@@ -509,7 +505,7 @@ msgstr "‏‎{}\\u{202F} מ״מ"
 msgid "%x %X"
 msgstr "%x %X"
 
-#: src/util/mod.rs:171 src/window.rs:522
+#: src/util/mod.rs:171 src/window.rs:573
 msgid "Failed to restore image from trash"
 msgstr "שחזור התמונה מהאשפה נכשלה"
 
@@ -518,61 +514,65 @@ msgid "Failed to open image"
 msgstr "פתיחת התמונה נכשלה"
 
 #. Translators: This is a toast notification, informing the user that an image has been set as background.
-#: src/widgets/image_view.rs:620
+#: src/widgets/image_view.rs:653
 msgid "Set as background."
 msgstr "הגדרת התמונה כרקע."
 
-#: src/widgets/image_view.rs:631
+#: src/widgets/image_view.rs:664
 msgid "Could not set background."
 msgstr "לא ניתן לקבוע כרקע."
 
-#: src/window.rs:426
+#: src/window.rs:469
 msgid "Supported image formats"
 msgstr "תבניות תמונה נתמכות"
 
-#: src/window.rs:432
+#: src/window.rs:475
 msgid "All files"
 msgstr "כל הקבצים"
 
-#: src/window.rs:439
+#: src/window.rs:482
 msgid "Open Image"
 msgstr "פתיחת תמונה"
 
-#: src/window.rs:494
+#: src/window.rs:545
 msgid "Image copied to clipboard"
 msgstr "תמונה הועתקה ללוח הגזירים"
 
-#: src/window.rs:510
+#: src/window.rs:561
 msgid "Image moved to trash"
 msgstr "תמונה הוערה לאשפה"
 
-#: src/window.rs:511
+#: src/window.rs:562
 msgid "Undo"
 msgstr "ביטול"
 
-#: src/window.rs:537
+#: src/window.rs:588
 msgid "Failed to move image to trash"
 msgstr "העברת התמונה לאשפה נכשלה"
 
-#: src/window.rs:552
+#: src/window.rs:603
 msgid "Permanently Delete Image?"
 msgstr "למחוק את התמונה לצמיתות?"
 
-#: src/window.rs:554
+#: src/window.rs:605
 msgid "The image “{}” can only be deleted permanently."
 msgstr "ניתן למחוק את התמונה „{}” רק לצמיתות."
 
-#: src/window.rs:562
+#: src/window.rs:613
 msgid "Cancel"
 msgstr "ביטול"
 
-#: src/window.rs:563
+#: src/window.rs:614
 msgid "Delete"
 msgstr "מחיקה"
 
-#: src/window.rs:574
+#: src/window.rs:625
 msgid "Failed to delete image"
 msgstr "מחיקת התמונה נכשלה"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Open Help"
+#~ msgstr "פתיחת עזרה"
 
 # msgctxt "shortcut window"
 #~ msgid "Layout Image"
