@@ -109,9 +109,10 @@ impl LpFileModel {
             let enumerator = directory
                 .enumerate_children(
                     &format!(
-                        "{},{}",
+                        "{},{},{}",
                         gio::FILE_ATTRIBUTE_STANDARD_NAME,
-                        gio::FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE
+                        gio::FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE,
+                        gio::FILE_ATTRIBUTE_STANDARD_IS_HIDDEN,
                     ),
                     gio::FileQueryInfoFlags::NONE,
                     gio::Cancellable::NONE,
