@@ -168,44 +168,51 @@
                 <property name="locked">True</property>
                 <property name="reveal-flap" bind-source="properties_button" bind-property="active" bind-flags="bidirectional|sync-create"/>
                 <property name="content">
-                  <object class="GtkStack" id="stack">
-                    <property name="visible-child">status_page</property>
-                    <property name="vexpand">True</property>
-                    <child>
-                      <object class="AdwStatusPage" id="status_page">
-                        <property name="title" translatable="yes">View Images</property>
-                        <property name="description" translatable="yes">Drag and drop images here</property>
-                        <child>
-                          <object class="GtkButton">
-                            <property name="halign">center</property>
-                            <property name="label" translatable="yes">_Open Files…</property>
-                            <property name="use-underline">True</property>
-                            <property name="action-name">win.open</property>
-                            <style>
-                              <class name="pill"/>
-                              <class name="suggested-action"/>
-                            </style>
-                          </object>
-                        </child>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="LpImageView" id="image_view">
-                        <child>
-                          <object class="GtkGestureClick" id="forward_click_gesture">
-                            <property name="button">9</property>
-                          </object>
-                        </child>
-                        <child>
-                          <object class="GtkGestureClick" id="backward_click_gesture">
-                            <property name="button">8</property>
-                          </object>
-                        </child>
-                      </object>
-                    </child>
+                  <object class="GtkOverlay" id="drop_area_overlay">
+                    <style>
+                      <class name="custom-drag-n-drop-highlight"/>
+                    </style>
                     <child>
                       <object class="GtkDropTarget" id="drop_target">
                         <property name="actions">copy</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkStack" id="stack">
+                        <property name="visible-child">status_page</property>
+                        <property name="vexpand">True</property>
+                        <child>
+                          <object class="AdwStatusPage" id="status_page">
+                            <property name="title" translatable="yes">View Images</property>
+                            <property name="description" translatable="yes">Drag and drop images here</property>
+                            <child>
+                              <object class="GtkButton">
+                                <property name="halign">center</property>
+                                <property name="label" translatable="yes">_Open Files…</property>
+                                <property name="use-underline">True</property>
+                                <property name="action-name">win.open</property>
+                                <style>
+                                  <class name="pill"/>
+                                  <class name="suggested-action"/>
+                                </style>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="LpImageView" id="image_view">
+                            <child>
+                              <object class="GtkGestureClick" id="forward_click_gesture">
+                                <property name="button">9</property>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkGestureClick" id="backward_click_gesture">
+                                <property name="button">8</property>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
                       </object>
                     </child>
                   </object>

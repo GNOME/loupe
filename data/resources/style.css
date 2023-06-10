@@ -29,6 +29,15 @@ row.property label.subtitle {
   box-shadow: 0 0 10px rgba(0, 0, 0, 200);
 }
 
+.custom-drag-n-drop-highlight {
+  box-shadow: none;
+}
+.lp-dragging-area-highlight {
+  border-radius: 8px;
+  background-color: alpha(@accent_color, 0.35);
+  border: 2px @accent_color solid;
+}
+
 lpprintpreview {
   background-color: rgb(240, 240, 240);
   border-radius: 4px;

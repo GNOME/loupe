@@ -88,8 +88,12 @@ mod imp {
         pub(super) image_view: TemplateChild<LpImageView>,
         #[template_child]
         pub(super) properties_view: TemplateChild<LpPropertiesView>,
+
+        #[template_child]
+        pub(super) drop_area_overlay: TemplateChild<gtk::Overlay>,
         #[template_child]
         pub(super) drop_target: TemplateChild<gtk::DropTarget>,
+        pub(super) drop_area_highlight_widget: OnceCell<gtk::Widget>,
 
         #[template_child]
         pub(super) forward_click_gesture: TemplateChild<gtk::GestureClick>,
@@ -374,12 +378,41 @@ mod imp {
 
             self.drop_target.set_types(&[gdk::FileList::static_type()]);
 
+            // # Drag and drop stuff ---
+
+            // - Define widget used as a visual cue for users trying to drag-n-drop
+            self.drop_area_highlight_widget.set({
+                const MARGIN: i32 = 24;
+                gtk::Box::builder()
+                    .margin_top(MARGIN).margin_bottom(MARGIN).margin_start(MARGIN).margin_end(MARGIN)
+                    .css_classes(["lp-dragging-area-highlight"])
+                    .can_target(false)
+                    .build()
+                    .upcast() // Upcasting to fit into the required `gtk::Widget` type
+            }).expect("Drop area highlight widget was defined twice");
+
+            // - Adds the widget on drag enter
+            self.drop_target.connect_enter(
+                clone!(@weak obj => @default-return gdk::DragAction::COPY, move |_drop_target, _x, _y| {
+                    obj.toggle_drop_area_highlight(true);
+                    gdk::DragAction::COPY
+                })
+            );
+
+            // - Removes the widget on drag leave
+            self.drop_target.connect_leave(clone!(@weak obj => move |_drop_target| {
+                obj.toggle_drop_area_highlight(false);
+            }));
+
             // For callbacks, you will want to reference the GTK docs on
             // the relevant signal to see which parameters you need.
             // In this case, we need only need the GValue,
             // so we name it `value` then use `_` for the other spots.
             self.drop_target.connect_drop(
                 clone!(@weak obj => @default-return false, move |_, value, _, _| {
+                    // - Removes the widget on drag completion
+                    obj.toggle_drop_area_highlight(false);
+
                     // Here we use a GValue, which is a dynamic object that can hold different types,
                     // e.g. strings, numbers, or in this case objects. In order to get the GdkFileList
                     // from the GValue, we need to use the `get()` method.
@@ -914,6 +947,36 @@ impl LpWindow {
                 .contains_pointer()
             && self.is_showing_image()
             && (!self.is_headerbar_flat() || !self.imp().headerbar_events.contains_pointer())
+    }
+
+    /// Displays visual feedback for users trying to drag and drop
+    fn toggle_drop_area_highlight(&self, display: bool) {
+        let overlay = &self.imp().drop_area_overlay;
+        let widget = self.imp().drop_area_highlight_widget.get()
+            .expect("`drop_area_highlight_widget` needs to be defined before being toggled");
+
+        // Create fade in animation. Will be reversed to make a fade-out.
+        let animation = adw::TimedAnimation::new(
+            widget, 0.0, 1.0, 250, adw::PropertyAnimationTarget::new(widget, "opacity")
+        );
+
+        if display && widget.parent().is_none() {
+            // Overlay widget
+            overlay.add_overlay(widget);
+            // Hide controls to avoid messy superpositions
+            self.hide_controls()
+        } else if !display && widget.parent().is_some() {
+            // Reverse the fade-in animation
+            animation.set_reverse(true);
+            // Remove overlay after animation end
+            animation.connect_done(|animation| {
+                let widget = animation.widget();
+                let overlay = widget.parent().and_downcast::<gtk::Overlay>().unwrap();
+                overlay.remove_overlay(&widget);
+            });
+        };
+
+        animation.play();
     }
 
     #[template_callback]
