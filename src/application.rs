@@ -188,8 +188,8 @@ impl LpApplication {
             .application_icon(config::APP_ID)
             .version(config::VERSION)
             .developer_name(gettext("The Loupe Team"))
-            .website("https://gitlab.gnome.org/Incubator/loupe")
-            .issue_url("https://gitlab.gnome.org/Incubator/loupe/-/issues/new")
+            .website("https://gitlab.gnome.org/GNOME/Incubator/loupe")
+            .issue_url("https://gitlab.gnome.org/GNOME/Incubator/loupe/-/issues/new")
             .developers([
                 "Christopher Davis <christopherdavis@gnome.org>",
                 "Sophie Herold <sophieherold@gnome.org>",

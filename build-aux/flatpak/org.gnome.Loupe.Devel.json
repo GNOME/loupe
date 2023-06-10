@@ -170,7 +170,7 @@
             "sources" : [
                 {
                     "type" : "git",
-                    "url" : "https://gitlab.gnome.org/Incubator/loupe.git"
+                    "url" : "https://gitlab.gnome.org/GNOME/Incubator/loupe.git"
                 }
             ]
         }

@@ -2,7 +2,7 @@
 
 An image viewer application written with GTK 4, Libadwaita and Rust.
 
-![Loupe Screenshot](https://gitlab.gnome.org/Incubator/loupe/uploads/24c80abc88fccb5fc9f2f08de6a7a5ea/screenshot1.png)
+![Loupe Screenshot](https://gitlab.gnome.org/GNOME/Incubator/loupe/uploads/24c80abc88fccb5fc9f2f08de6a7a5ea/screenshot1.png)
 
 ## Installing
 
@@ -36,8 +36,8 @@ GNOME Builder is the environment used for developing this application. It can us
 recommended you use it.
 
 1. Download [GNOME Builder](https://flathub.org/apps/details/org.gnome.Builder).
-2. In Builder, click the "Clone Repository" button at the bottom, using `git@gitlab.gnome.org/Incubator/loupe.git`
-or `https://gitlab.gnome.org/Incubator/loupe.git` as the URL.
+2. In Builder, click the "Clone Repository" button at the bottom, using `git@ssh.gitlab.gnome.org:GNOME/Incubator/loupe.git`
+or `https://gitlab.gnome.org/GNOME/Incubator/loupe.git` as the URL.
 3. Click the build button at the top once the project is loaded.
 
 
@@ -53,7 +53,7 @@ Once you have a bundle installed, development builds will work properly.
 
 ## Contributing
 
-- [Code Documentation](https://incubator.pages.gitlab.gnome.org/loupe/doc/loupe/)
+- [Code Documentation](https://gnome.pages.gitlab.gnome.org/Incubator/loupe/doc/loupe/)
 
 ### Conduct
 
