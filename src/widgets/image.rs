@@ -1418,7 +1418,8 @@ impl LpImage {
             animation.set_value_to(zoom);
             animation.play();
         } else {
-            self.set_zoom(zoom)
+            self.set_zoom(zoom);
+            self.set_zoom_target(zoom);
         }
     }
 
