@@ -344,8 +344,8 @@ mod imp {
 
             scroll_controller.connect_scroll(glib::clone!(@weak obj => @default-return gtk::Inhibit(false), move |event, _, y| {
                 // use Ctrl key as modifier for vertical scrolling
-                if event.current_event_state() == gdk::ModifierType::CONTROL_MASK
-                    || event.current_event_state() == gdk::ModifierType::SHIFT_MASK
+                if event.current_event_state().contains(gdk::ModifierType::CONTROL_MASK)
+                    || event.current_event_state().contains(gdk::ModifierType::SHIFT_MASK)
                 {
                     // propagate event to scrolled window
                     return gtk::Inhibit(false);
