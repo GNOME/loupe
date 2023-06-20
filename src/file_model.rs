@@ -273,7 +273,7 @@ impl LpFileModel {
                 if Self::is_image_file(file_a) =>
             {
                 let mut files = self.imp().files.borrow_mut();
-                let changed = files.insert(file_a.uri(),file_a.clone()).is_some();
+                let changed = files.insert(file_a.uri(),file_a.clone()).is_none();
                 if changed {
                     Self::sort(&mut files);
                 }
@@ -281,11 +281,7 @@ impl LpFileModel {
             }
             gio::FileMonitorEvent::Deleted | gio::FileMonitorEvent::MovedOut | gio::FileMonitorEvent::Unmounted => {
                 let mut files = self.imp().files.borrow_mut();
-                let changed = files.remove(&file_a.uri()).is_some();
-                if changed {
-                    Self::sort(&mut files);
-                }
-                changed
+                files.remove(&file_a.uri()).is_some()
             }
             gio::FileMonitorEvent::Renamed => {
                 if let Some(file_b) = file_b {
@@ -294,7 +290,7 @@ impl LpFileModel {
                         let mut files = self.imp().files.borrow_mut();
                         changed |= files.remove(&file_a.uri()).is_some();
                         if Self::is_image_file(file_b) {
-                            changed |= files.insert(file_b.uri(), file_b.clone()).is_some();
+                            changed |= files.insert(file_b.uri(), file_b.clone()).is_none();
                             if changed {
                                 Self::sort(&mut files);
                             }
