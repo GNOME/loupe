@@ -1081,19 +1081,18 @@ dependencies = [
 
 [[package]]
 name = "glycin"
-version = "0.0.1"
-source = "git+https://gitlab.gnome.org/sophie-h/glycin.git#2e3f9add120a4913e559729d361d6d7e5d010f2b"
+version = "0.1.0-alpha.2"
+source = "git+https://gitlab.gnome.org/sophie-h/glycin.git#c85bff97db98c311a278816fd0efbc28173a2419"
 dependencies = [
  "anyhow",
  "async-std",
  "futures",
  "gdk4",
  "gio",
- "glib",
  "glycin-utils",
  "lcms2",
  "memfd",
- "memmap2 0.6.2",
+ "memmap2 0.7.0",
  "nix",
  "rgb",
  "safe-transmute",
@@ -1102,13 +1101,13 @@ dependencies = [
 
 [[package]]
 name = "glycin-utils"
-version = "0.0.1"
-source = "git+https://gitlab.gnome.org/sophie-h/glycin.git#2e3f9add120a4913e559729d361d6d7e5d010f2b"
+version = "0.1.0-alpha.2"
+source = "git+https://gitlab.gnome.org/sophie-h/glycin.git#c85bff97db98c311a278816fd0efbc28173a2419"
 dependencies = [
  "anyhow",
  "async-std",
  "gettext-rs",
- "memmap2 0.6.2",
+ "memmap2 0.7.0",
  "nix",
  "serde",
  "zbus",
@@ -1688,9 +1687,9 @@ dependencies = [
 
 [[package]]
 name = "memmap2"
-version = "0.6.2"
+version = "0.7.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "6d28bba84adfe6646737845bc5ebbfa2c08424eb1c37e94a1fd2a82adb56a872"
+checksum = "180d4b35be83d33392d1d1bfbd2ae1eca7ff5de1a94d3fc87faaa99a069e7cbd"
 dependencies = [
  "libc",
 ]
