@@ -562,6 +562,7 @@ impl LpWindow {
                 let toast = adw::Toast::builder()
                     .title(gettext("Image moved to trash"))
                     .button_label(gettext("Undo"))
+                    .priority(adw::ToastPriority::High)
                     .build();
                 toast.connect_button_clicked(glib::clone!(@weak self as win => move |_| {
                     let path = path.clone();
