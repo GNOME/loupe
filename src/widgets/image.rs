@@ -951,6 +951,8 @@ impl LpImage {
         }
 
         imp.file_monitor.replace(monitor.ok());
+
+        self.notify("file");
     }
 
     /// File changed on drive
