@@ -1798,6 +1798,7 @@ impl LpImage {
         let default_color = Self::default_background_color();
 
         gio::spawn_blocking(move || {
+            let mut has_transparency = false;
             let mut bytes_iter = bytes.iter();
             // Number of transparent pixels
             let mut completely_transparent = 0;
@@ -1810,7 +1811,10 @@ impl LpImage {
                     let Some(b) = bytes_iter.next() else { break 'img; };
                     let Some(a) = bytes_iter.next() else { break 'img; };
 
-                    // 70% transparency
+                    if *a < 255 {
+                        has_transparency = true;
+                    }
+
                     if *a == 0 {
                         completely_transparent += 1;
                     } else {
@@ -1833,6 +1837,11 @@ impl LpImage {
                 if advance_by > 0 {
                     bytes_iter.nth(advance_by - 1);
                 }
+            }
+
+            if !has_transparency {
+                log::debug!("This image does not have transparency");
+                return Some(default_color);
             }
 
             let n_pixels = texture.width() * texture.height();
