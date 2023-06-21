@@ -19,6 +19,7 @@
 
 use crate::decoder;
 use crate::deps::*;
+use crate::util::gettext::*;
 use crate::widgets::{LpImage, LpPrintPreview};
 
 use adw::prelude::*;
@@ -29,6 +30,70 @@ use once_cell::sync::OnceCell;
 
 use std::cell::{Cell, RefCell};
 
+#[derive(Default, Clone, Copy)]
+struct PageAlignment {
+    horizontal: HAlignment,
+    vertical: VAlignment,
+}
+
+#[derive(Default, Clone, Copy)]
+enum HAlignment {
+    Left,
+    #[default]
+    Center,
+    Right,
+}
+
+#[derive(Default, Clone, Copy)]
+enum VAlignment {
+    Top,
+    #[default]
+    Middle,
+    Bottom,
+}
+
+impl From<&str> for PageAlignment {
+    fn from(s: &str) -> Self {
+        let alignment = match s {
+            "top" => (HAlignment::Center, VAlignment::Top),
+            "center" => (HAlignment::Center, VAlignment::Middle),
+            "bottom" => (HAlignment::Center, VAlignment::Bottom),
+            "left" => (HAlignment::Left, VAlignment::Middle),
+            "right" => (HAlignment::Right, VAlignment::Middle),
+            pos => {
+                log::error!("Unkown alignment '{pos}'");
+                (HAlignment::default(), VAlignment::default())
+            }
+        };
+
+        Self::from(alignment)
+    }
+}
+
+impl From<(HAlignment, VAlignment)> for PageAlignment {
+    fn from((horizontal, vertical): (HAlignment, VAlignment)) -> Self {
+        Self {
+            horizontal,
+            vertical,
+        }
+    }
+}
+
+impl std::fmt::Display for PageAlignment {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> Result<(), std::fmt::Error> {
+        let s = match (self.horizontal, self.vertical) {
+            (HAlignment::Center, VAlignment::Top) => gettext("Top"),
+            (HAlignment::Center, VAlignment::Middle) => gettext("Center"),
+            (HAlignment::Center, VAlignment::Bottom) => gettext("Bottom"),
+            (HAlignment::Left, VAlignment::Middle) => gettext("Left"),
+            (HAlignment::Right, VAlignment::Middle) => gettext("Right"),
+            _ => String::from("Unsupported (Error)"),
+        };
+
+        f.write_str(&s)
+    }
+}
+
 mod imp {
     use super::*;
 
@@ -37,17 +102,23 @@ mod imp {
     #[properties(wrapper_type = super::LpPrint)]
     pub struct LpPrint {
         #[template_child]
+        pub(super) title: TemplateChild<adw::WindowTitle>,
+        #[template_child]
         pub(super) preview: TemplateChild<LpPrintPreview>,
 
         // ListBox entries
         #[template_child]
+        pub(super) alignment: TemplateChild<adw::ComboRow>,
+
+        #[template_child]
+        pub(super) margin_horizontal: TemplateChild<adw::SpinRow>,
+        #[template_child]
+        pub(super) margin_vertical: TemplateChild<adw::SpinRow>,
+
+        #[template_child]
         pub(super) width: TemplateChild<adw::SpinRow>,
         #[template_child]
         pub(super) scale: TemplateChild<gtk::Label>,
-        #[template_child]
-        pub(super) margin_left: TemplateChild<adw::SpinRow>,
-        #[template_child]
-        pub(super) margin_top: TemplateChild<adw::SpinRow>,
         #[template_child]
         pub(super) unit: TemplateChild<adw::ComboRow>,
 
@@ -84,14 +155,6 @@ mod imp {
                 print.back().await;
             });
 
-            klass.install_action("print.center-horizontally", None, |print, _, _| {
-                print.center_horizontally();
-            });
-
-            klass.install_action("print.center-vertically", None, |print, _, _| {
-                print.center_vertically();
-            });
-
             klass.install_property_action("print.orientation", "orientation");
         }
 
@@ -111,13 +174,31 @@ mod imp {
             obj.set_transient_for(Some(&obj.parent_window()));
             obj.set_modal(true);
 
+            self.alignment.connect_selected_notify(
+                glib::clone!(@weak obj => move |_| obj.on_margin_vertical_changed()),
+            );
+            self.alignment
+                .set_expression(Some(gtk::ClosureExpression::new::<glib::GString>(
+                    [] as [gtk::Expression; 0],
+                    glib::closure!(
+                        |s: gtk::StringObject| PageAlignment::from(s.string().as_str()).to_string()
+                    ),
+                )));
+
+            gtk::ClosureExpression::new::<glib::GString>(
+                [] as [gtk::Expression; 0],
+                glib::closure!(
+                    |s: gtk::StringObject| PageAlignment::from(s.string().as_str()).to_string()
+                ),
+            );
+
             self.width
                 .connect_value_notify(glib::clone!(@weak obj => move |_| obj.on_width_changed()));
-            self.margin_left.connect_value_notify(
-                glib::clone!(@weak obj => move |_| obj.on_margin_left_changed()),
+            self.margin_horizontal.connect_value_notify(
+                glib::clone!(@weak obj => move |_| obj.on_margin_horizontal_changed()),
             );
-            self.margin_top.connect_value_notify(
-                glib::clone!(@weak obj => move |_| obj.on_margin_top_changed()),
+            self.margin_vertical.connect_value_notify(
+                glib::clone!(@weak obj => move |_| obj.on_margin_vertical_changed()),
             );
 
             self.print_operation
@@ -135,36 +216,52 @@ mod imp {
                 op.set_n_pages(1);
             });
 
-            self.print_operation.connect_draw_page(
-                glib::clone!(@weak obj => move |_operation, _context, _page_nr| {
-                        let imp = obj.imp();
+            self.print_operation.connect_draw_page(glib::clone!(@weak obj =>
+                move |operation, _context, _page_nr| {
+                    let imp = obj.imp();
 
-                        imp.width.adjustment().set_step_increment(1.);
-                        imp.width.adjustment().set_page_increment(5.);
-                        imp.margin_left.adjustment().set_step_increment(1.);
-                        imp.margin_left.adjustment().set_page_increment(5.);
-                        imp.margin_top.adjustment().set_step_increment(1.);
-                        imp.margin_top.adjustment().set_page_increment(5.);
+                    let basename = obj
+                        .image()
+                        .file()
+                        .and_then(|f| f.basename())
+                        .map(|x| x.display().to_string())
+                        .unwrap_or_default();
+                    imp.title.set_title(&gettext_f(
+                        // Translators: {} is a placeholder for the filename
+                        "Print {}",
+                        &[&basename],
+                    ));
+                    if let Some(printer) = operation.print_settings().and_then(|x| x.printer()) {
+                        imp.title.set_subtitle(&printer);
+                    }
 
-                obj.set_ranges();
+                    imp.width.adjustment().set_step_increment(1.);
+                    imp.width.adjustment().set_page_increment(5.);
+                    imp.margin_horizontal.adjustment().set_step_increment(1.);
+                    imp.margin_horizontal.adjustment().set_page_increment(5.);
+                    imp.margin_vertical.adjustment().set_step_increment(1.);
+                    imp.margin_vertical.adjustment().set_page_increment(5.);
 
-                        imp.width.set_value(obj.image().image_size().0 as f64);
-                        obj.center_horizontally();
+                    obj.set_ranges();
 
-                        obj.unit_selected();
+                    imp.width.set_value(obj.image().image_size().0 as f64);
+                    // TODO: Select center
+                    //obj.center_horizontally();
 
-                        imp.print_operation.cancel();
+                    obj.unit_selected();
 
-                        let orientation = match obj.page_setup().orientation() {
-                            gtk::PageOrientation::Portrait => "portrait",
-                            gtk::PageOrientation::Landscape => "landscape",
-                            _ => "other",
-                        };
-                        obj.set_orientation(orientation);
+                    imp.print_operation.cancel();
 
-                        obj.set_visible(true);
-                    }),
-            );
+                    let orientation = match obj.page_setup().orientation() {
+                        gtk::PageOrientation::Portrait => "portrait",
+                        gtk::PageOrientation::Landscape => "landscape",
+                        _ => "other",
+                    };
+                    obj.set_orientation(orientation);
+
+                    obj.set_visible(true);
+                }
+            ));
         }
 
         fn properties() -> &'static [glib::ParamSpec] {
@@ -233,9 +330,27 @@ impl LpPrint {
         self.draw_preview();
     }
 
+    fn user_alignment(&self) -> PageAlignment {
+        let s = self
+            .imp()
+            .alignment
+            .selected_item()
+            .and_then(|x| x.downcast::<gtk::StringObject>().ok())
+            .map(|x| x.string())
+            .unwrap_or_default();
+
+        PageAlignment::from(s.as_str())
+    }
+
     /// Returns user selected image width in pixels
     pub fn user_width(&self) -> f64 {
         f64::max(1., self.imp().width.value() / self.unit_factor())
+    }
+
+    pub fn user_height(&self) -> f64 {
+        let (_, orig_height) = self.image().image_size();
+
+        f64::max(1., orig_height as f64 * self.user_scale())
     }
 
     /// Returns scaling of the original image based on selected image size
@@ -245,48 +360,55 @@ impl LpPrint {
         self.user_width() / orig_width as f64
     }
 
-    pub fn on_margin_left_changed(&self) {
+    pub fn on_margin_horizontal_changed(&self) {
         self.draw_preview();
     }
 
     /// Returns user selected left margin in pixels
-    pub fn user_margin_left(&self) -> f64 {
-        self.imp().margin_left.value() / self.unit_factor()
+    pub fn user_margin_horizontal(&self) -> f64 {
+        self.imp().margin_horizontal.value() / self.unit_factor()
     }
 
-    pub fn on_margin_top_changed(&self) {
+    pub fn effective_margin_left(&self) -> f64 {
+        match self.user_alignment().horizontal {
+            HAlignment::Left => self.user_margin_horizontal(),
+            HAlignment::Center => (self.paper_width() - self.user_width()) / 2.,
+            HAlignment::Right => {
+                self.paper_width() - self.user_width() - self.user_margin_horizontal()
+            }
+        }
+    }
+
+    pub fn paper_width(&self) -> f64 {
+        self.page_setup().paper_width(gtk::Unit::Inch) * self.dpi()
+    }
+
+    pub fn paper_height(&self) -> f64 {
+        self.page_setup().paper_height(gtk::Unit::Inch) * self.dpi()
+    }
+
+    pub fn on_margin_vertical_changed(&self) {
         self.draw_preview();
     }
 
     /// Returns user selected top margin in pixels
-    pub fn user_margin_top(&self) -> f64 {
-        self.imp().margin_top.value() / self.unit_factor()
+    pub fn user_margin_vertical(&self) -> f64 {
+        self.imp().margin_vertical.value() / self.unit_factor()
+    }
+
+    pub fn effective_margin_top(&self) -> f64 {
+        match self.user_alignment().vertical {
+            VAlignment::Top => self.user_margin_vertical(),
+            VAlignment::Middle => (self.paper_height() - self.user_height()) / 2.,
+            VAlignment::Bottom => {
+                self.paper_height() - self.user_height() - self.user_margin_vertical()
+            }
+        }
     }
 
     /// Redraws the preview widget child
     fn draw_preview(&self) {
         self.imp().preview.queue_resize();
-    }
-
-    /// Centers the image horizontally
-    fn center_horizontally(&self) {
-        let margin_left =
-            (self.page_setup().paper_width(gtk::Unit::Inch) * self.dpi() - self.user_width()) / 2.;
-
-        self.imp()
-            .margin_left
-            .set_value(margin_left * self.unit_factor());
-    }
-
-    /// Centers the image vertically
-    fn center_vertically(&self) {
-        let user_height = self.image().image_size().1 as f64 * self.user_scale();
-        let margin_top =
-            (self.page_setup().paper_height(gtk::Unit::Inch) * self.dpi() - user_height) / 2.;
-
-        self.imp()
-            .margin_top
-            .set_value(margin_top * self.unit_factor());
     }
 
     /// Sets the allowed ranges for the spin button based on current unit
@@ -300,15 +422,18 @@ impl LpPrint {
             self.page_setup().page_width(gtk::Unit::Inch) * self.dpi() * self.unit_factor();
         imp.width.set_range(self.unit_factor(), max_width);
 
-        let min_left_margin =
-            self.page_setup().left_margin(gtk::Unit::Inch) * self.dpi() * self.unit_factor();
-        imp.margin_left
-            .set_range(min_left_margin, min_left_margin + max_width);
+        let min_horizontal_margin = f64::max(
+            self.page_setup().left_margin(gtk::Unit::Inch),
+            self.page_setup().right_margin(gtk::Unit::Inch),
+        ) * self.dpi()
+            * self.unit_factor();
+        imp.margin_horizontal
+            .set_range(min_horizontal_margin, min_horizontal_margin + max_width);
 
-        let min_top_margin =
+        let min_vertical_margin =
             self.page_setup().top_margin(gtk::Unit::Inch) * self.dpi() * self.unit_factor();
-        imp.margin_top
-            .set_range(min_top_margin, min_top_margin + max_height);
+        imp.margin_vertical
+            .set_range(min_vertical_margin, min_vertical_margin + max_height);
     }
 
     #[template_callback]
@@ -339,8 +464,8 @@ impl LpPrint {
 
         let update_factor = unit_factor / self.unit_factor();
         let width = imp.width.value() * update_factor;
-        let margin_left = imp.margin_left.value() * update_factor;
-        let margin_top = imp.margin_top.value() * update_factor;
+        let margin_horizontal = imp.margin_horizontal.value() * update_factor;
+        let margin_vertical = imp.margin_vertical.value() * update_factor;
 
         self.set_unit_factor(unit_factor);
         self.set_ranges();
@@ -348,11 +473,11 @@ impl LpPrint {
         imp.width.set_digits(digits);
         imp.width.set_value(width);
 
-        imp.margin_left.set_digits(digits);
-        imp.margin_left.set_value(margin_left);
+        imp.margin_horizontal.set_digits(digits);
+        imp.margin_horizontal.set_value(margin_horizontal);
 
-        imp.margin_top.set_digits(digits);
-        imp.margin_top.set_value(margin_top);
+        imp.margin_vertical.set_digits(digits);
+        imp.margin_vertical.set_value(margin_vertical);
     }
 
     pub fn run(&self) {
@@ -461,10 +586,10 @@ impl LpPrint {
         let cairo_context = print_context.cairo_context();
         cairo_context.scale(cairo_scale, cairo_scale);
 
-        let margin_left =
-            self.user_margin_left() - self.page_setup().left_margin(gtk::Unit::Inch) * self.dpi();
-        let margin_top =
-            self.user_margin_top() - self.page_setup().top_margin(gtk::Unit::Inch) * self.dpi();
+        let margin_left = self.effective_margin_left()
+            - self.page_setup().left_margin(gtk::Unit::Inch) * self.dpi();
+        let margin_top = self.effective_margin_top()
+            - self.page_setup().top_margin(gtk::Unit::Inch) * self.dpi();
 
         cairo_context
             .set_source_surface(cairo_surface, margin_left, margin_top)

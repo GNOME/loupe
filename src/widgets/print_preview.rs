@@ -79,8 +79,8 @@ mod imp {
             snapshot.save();
 
             let scale = obj.print().user_scale() * self.display_scale();
-            let margin_left = obj.print().user_margin_left() * self.display_scale();
-            let margin_top = obj.print().user_margin_top() * self.display_scale();
+            let margin_left = obj.print().effective_margin_left() * self.display_scale();
+            let margin_top = obj.print().effective_margin_top() * self.display_scale();
 
             if let Some(texture) = self.obj().print().image().print_data(scale) {
                 let area = graphene::Rect::new(
