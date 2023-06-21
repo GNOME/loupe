@@ -110,27 +110,15 @@
                   <object class="AdwPreferencesGroup">
                     <property name="title" translatable="yes">Margins</property>
                     <child>
-                      <object class="AdwActionRow">
+                      <object class="AdwSpinRow" id="margin_left">
                         <property name="title" translatable="yes">Horizontal</property>
-                        <child>
-                          <object class="GtkSpinButton" id="margin_left">
-                            <property name="valign">center</property>
-                            <property name="max-width-chars">5</property>
-                            <signal name="value-changed" handler="margin_left_changed" swapped="yes" />
-                          </object>
-                        </child>
+                        <property name="digits">2</property>
                       </object>
                     </child>
                     <child>
-                      <object class="AdwActionRow">
+                      <object class="AdwSpinRow" id="margin_top">
                         <property name="title" translatable="yes">Vertical</property>
-                        <child>
-                          <object class="GtkSpinButton" id="margin_top">
-                            <property name="valign">center</property>
-                            <property name="max-width-chars">5</property>
-                            <signal name="value-changed" handler="margin_top_changed" swapped="yes" />
-                          </object>
-                        </child>
+                        <property name="digits">2</property>
                       </object>
                     </child>
                   </object>
@@ -139,15 +127,9 @@
                   <object class="AdwPreferencesGroup">
                     <property name="title" translatable="yes">Image Size</property>
                     <child>
-                      <object class="AdwActionRow">
+                      <object class="AdwSpinRow" id="width">
                         <property name="title" translatable="yes">Width</property>
-                        <child>
-                          <object class="GtkSpinButton" id="width">
-                            <property name="valign">center</property>
-                            <property name="max-width-chars">5</property>
-                            <signal name="value-changed" handler="width_changed" swapped="yes" />
-                          </object>
-                        </child>
+                        <property name="digits">2</property>
                       </object>
                     </child>
                     <child>

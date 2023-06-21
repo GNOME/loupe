@@ -41,13 +41,13 @@ mod imp {
 
         // ListBox entries
         #[template_child]
-        pub(super) width: TemplateChild<gtk::SpinButton>,
+        pub(super) width: TemplateChild<adw::SpinRow>,
         #[template_child]
         pub(super) scale: TemplateChild<gtk::Label>,
         #[template_child]
-        pub(super) margin_left: TemplateChild<gtk::SpinButton>,
+        pub(super) margin_left: TemplateChild<adw::SpinRow>,
         #[template_child]
-        pub(super) margin_top: TemplateChild<gtk::SpinButton>,
+        pub(super) margin_top: TemplateChild<adw::SpinRow>,
         #[template_child]
         pub(super) unit: TemplateChild<adw::ComboRow>,
 
@@ -111,6 +111,15 @@ mod imp {
             obj.set_transient_for(Some(&obj.parent_window()));
             obj.set_modal(true);
 
+            self.width
+                .connect_value_notify(glib::clone!(@weak obj => move |_| obj.on_width_changed()));
+            self.margin_left.connect_value_notify(
+                glib::clone!(@weak obj => move |_| obj.on_margin_left_changed()),
+            );
+            self.margin_top.connect_value_notify(
+                glib::clone!(@weak obj => move |_| obj.on_margin_top_changed()),
+            );
+
             self.print_operation
                 .set_print_settings(Some(&obj.print_settings()));
             self.print_operation.set_allow_async(true);
@@ -130,9 +139,12 @@ mod imp {
                 glib::clone!(@weak obj => move |_operation, _context, _page_nr| {
                         let imp = obj.imp();
 
-                        imp.width.set_increments(1., 5.);
-                        imp.margin_left.set_increments(1., 5.);
-                        imp.margin_top.set_increments(1., 5.);
+                        imp.width.adjustment().set_step_increment(1.);
+                        imp.width.adjustment().set_page_increment(5.);
+                        imp.margin_left.adjustment().set_step_increment(1.);
+                        imp.margin_left.adjustment().set_page_increment(5.);
+                        imp.margin_top.adjustment().set_step_increment(1.);
+                        imp.margin_top.adjustment().set_page_increment(5.);
 
                 obj.set_ranges();
 
@@ -213,8 +225,7 @@ impl LpPrint {
         self.print_settings().resolution() as f64
     }
 
-    #[template_callback]
-    pub fn width_changed(&self) {
+    pub fn on_width_changed(&self) {
         self.imp()
             .scale
             .set_label(&format!("{:.2}\u{202F}%", self.user_scale() * 100.));
@@ -234,8 +245,7 @@ impl LpPrint {
         self.user_width() / orig_width as f64
     }
 
-    #[template_callback]
-    pub fn margin_left_changed(&self) {
+    pub fn on_margin_left_changed(&self) {
         self.draw_preview();
     }
 
@@ -244,8 +254,7 @@ impl LpPrint {
         self.imp().margin_left.value() / self.unit_factor()
     }
 
-    #[template_callback]
-    pub fn margin_top_changed(&self) {
+    pub fn on_margin_top_changed(&self) {
         self.draw_preview();
     }
 
