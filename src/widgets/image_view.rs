@@ -54,7 +54,7 @@ use std::cell::{Cell, RefCell};
 const BUFFER: usize = 2;
 
 mod imp {
-    use once_cell::sync::OnceCell;
+    use std::cell::OnceCell;
 
     use super::*;
 

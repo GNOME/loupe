@@ -27,9 +27,9 @@ use crate::widgets::LpImagePage;
 use adw::prelude::*;
 use adw::subclass::prelude::*;
 use indexmap::IndexMap;
-use once_cell::sync::{Lazy, OnceCell};
+use once_cell::sync::Lazy;
 
-use std::cell::{Cell, RefCell};
+use std::cell::{Cell, OnceCell, RefCell};
 
 static SCROLL_DAMPING_RATIO: f64 = 1.;
 static SCROLL_MASS: f64 = 0.5;

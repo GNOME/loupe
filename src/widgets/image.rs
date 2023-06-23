@@ -41,9 +41,8 @@ use adw::{prelude::*, subclass::prelude::*};
 use arc_swap::ArcSwap;
 use futures::prelude::*;
 use once_cell::sync::Lazy;
-use once_cell::unsync::OnceCell;
 
-use std::cell::{Cell, RefCell};
+use std::cell::{Cell, OnceCell, RefCell};
 use std::sync::Arc;
 
 /// Default background color around images and behind transparent images

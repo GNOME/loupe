@@ -30,9 +30,7 @@ use adw::subclass::prelude::*;
 use glib::clone;
 use gtk::CompositeTemplate;
 
-use once_cell::sync::OnceCell;
-
-use std::cell::{Cell, RefCell};
+use std::cell::{Cell, OnceCell, RefCell};
 use std::path::{Path, PathBuf};
 
 use crate::config;

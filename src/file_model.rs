@@ -26,8 +26,8 @@ use gio::prelude::*;
 use gio::subclass::prelude::*;
 use glib::GString;
 use indexmap::IndexMap;
-use once_cell::sync::{Lazy, OnceCell};
-use std::cell::RefCell;
+use once_cell::sync::Lazy;
+use std::cell::{OnceCell, RefCell};
 
 mod imp {
     use super::*;
