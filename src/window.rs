@@ -655,7 +655,6 @@ impl LpWindow {
         self.action_set_enabled("win.rotate_cw", enabled);
         self.action_set_enabled("win.rotate_ccw", enabled);
         self.action_set_enabled("win.copy", enabled);
-        self.action_set_enabled("win.trash", enabled);
         self.action_set_enabled("win.zoom-best-fit", enabled);
         self.action_set_enabled("win.zoom-to-exact", enabled);
         self.action_set_enabled("win.toggle-properties", enabled);
@@ -669,6 +668,12 @@ impl LpWindow {
 
         imp.properties_button.set_sensitive(shows_image);
         self.set_actions_enabled(shows_image);
+        self.action_set_enabled(
+            "win.trash",
+            imp.image_view
+                .current_file()
+                .is_some_and(|file| file.is_native()),
+        );
 
         if shows_image {
             imp.stack.set_visible_child(&*imp.image_view);
