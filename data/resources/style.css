@@ -8,7 +8,9 @@ button.osd.circular {
   background: rgba(0, 0, 0, 0.65);
 }
 
-shadow, border, outline {
+shadow,
+border,
+outline {
   background: none;
 }
 
@@ -32,10 +34,10 @@ row.property label.subtitle {
 .custom-drag-n-drop-highlight {
   box-shadow: none;
 }
+
 .lp-dragging-area-highlight {
   border-radius: 8px;
-  background-color: alpha(@accent_color, 0.35);
-  border: 2px @accent_color solid;
+  background-color: alpha(@blue_2, 0.35);
 }
 
 lpprintpreview {

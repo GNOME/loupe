@@ -97,7 +97,7 @@
         <child type="top">
           <object class="AdwHeaderBar" id="headerbar">
             <property name="show-end-title-buttons" bind-source="LpWindow" bind-property="fullscreened" bind-flags="sync-create|invert-boolean"/>
-            <property name="show-start-title-buttons" bind-source="LpWindow" bind-property="fullscreened" bind-flags="sync-create|invert-boolean"/>"
+            <property name="show-start-title-buttons" bind-source="LpWindow" bind-property="fullscreened" bind-flags="sync-create|invert-boolean"/>
             <style>
               <class name="fullscreen-osd"/>
             </style>
@@ -168,19 +168,28 @@
                 <property name="locked">True</property>
                 <property name="reveal-flap" bind-source="properties_button" bind-property="active" bind-flags="bidirectional|sync-create"/>
                 <property name="content">
-                  <object class="GtkOverlay" id="drop_area_overlay">
-                    <style>
-                      <class name="custom-drag-n-drop-highlight"/>
-                    </style>
-                    <child>
-                      <object class="GtkDropTarget" id="drop_target">
-                        <property name="actions">copy</property>
+                  <object class="LpDragOverlay" id="drag_overlay">
+                    <property name="overlayed">
+                      <object class="AdwBin">
+                        <property name="margin-top">24</property>
+                        <property name="margin-bottom">24</property>
+                        <property name="margin-start">24</property>
+                        <property name="margin-end">24</property>
+                        <property name="can-target">false</property>
+                        <style>
+                          <class name="lp-dragging-area-highlight"/>
+                        </style>
                       </object>
-                    </child>
-                    <child>
+                    </property>
+                    <property name="child">
                       <object class="GtkStack" id="stack">
                         <property name="visible-child">status_page</property>
                         <property name="vexpand">True</property>
+                        <child>
+                          <object class="GtkDropTarget" id="drop_target">
+                            <property name="actions">copy</property>
+                          </object>
+                        </child>
                         <child>
                           <object class="AdwStatusPage" id="status_page">
                             <property name="title" translatable="yes">View Images</property>
@@ -214,7 +223,7 @@
                           </object>
                         </child>
                       </object>
-                    </child>
+                    </property>
                   </object>
                 </property>
                 <property name="separator">

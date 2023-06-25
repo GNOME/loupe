@@ -20,6 +20,7 @@ src/image_metadata/obj.rs
 src/main.rs
 src/util/gettext.rs
 src/util/mod.rs
+src/widgets/drag_overlay.rs
 src/widgets/image.rs
 src/widgets/image_page.rs
 src/widgets/image_view.rs
