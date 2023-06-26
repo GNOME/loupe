@@ -94,6 +94,60 @@ impl std::fmt::Display for PageAlignment {
     }
 }
 
+#[derive(Default, Clone, Copy)]
+enum Unit {
+    Centimeter,
+    Inch,
+    #[default]
+    Pixel,
+    Percent,
+}
+
+impl<T: AsRef<str>> From<T> for Unit {
+    fn from(s: T) -> Self {
+        match s.as_ref() {
+            "cm" => Self::Centimeter,
+            "in" => Self::Inch,
+            "px" => Self::Pixel,
+            "%" => Self::Percent,
+            unit => {
+                log::error!("Unknown unit '{unit}'");
+                Self::default()
+            }
+        }
+    }
+}
+
+impl Unit {
+    fn factor(&self, dpi: f64, total_size: i32) -> f64 {
+        match self {
+            Self::Centimeter => 2.54 / dpi,
+            Self::Inch => 1. / dpi,
+            Self::Pixel => 1.,
+            Self::Percent => 100. / total_size as f64,
+        }
+    }
+
+    fn digits(&self) -> u32 {
+        match self {
+            Self::Centimeter => 2,
+            Self::Inch => 2,
+            Self::Pixel => 0,
+            Self::Percent => 2,
+        }
+    }
+
+    fn ceil(&self, num: f64) -> f64 {
+        let f = 10_f64.powi(self.digits() as i32);
+        (num * f).ceil() / f
+    }
+
+    fn floor(&self, num: f64) -> f64 {
+        let f = 10_f64.powi(self.digits() as i32);
+        (num * f).floor() / f
+    }
+}
+
 mod imp {
     use super::*;
 
@@ -111,16 +165,24 @@ mod imp {
         pub(super) alignment: TemplateChild<adw::ComboRow>,
 
         #[template_child]
+        pub(super) margin_unit: TemplateChild<gtk::DropDown>,
+        #[property(get, set)]
+        pub(super) margin_unit_factor: Cell<f64>,
+        #[template_child]
         pub(super) margin_horizontal: TemplateChild<adw::SpinRow>,
         #[template_child]
         pub(super) margin_vertical: TemplateChild<adw::SpinRow>,
 
         #[template_child]
+        pub(super) size_unit: TemplateChild<gtk::DropDown>,
+        #[property(get, set)]
+        pub(super) width_unit_factor: Cell<f64>,
+        #[property(get, set)]
+        pub(super) height_unit_factor: Cell<f64>,
+        #[template_child]
         pub(super) width: TemplateChild<adw::SpinRow>,
         #[template_child]
         pub(super) scale: TemplateChild<gtk::Label>,
-        #[template_child]
-        pub(super) unit: TemplateChild<adw::ComboRow>,
 
         #[property(get, set, builder().construct_only())]
         pub(super) image: OnceCell<LpImage>,
@@ -133,8 +195,6 @@ mod imp {
 
         #[property(get, set)]
         pub(super) orientation: RefCell<String>,
-        #[property(get, set)]
-        pub(super) unit_factor: Cell<f64>,
     }
 
     #[glib::object_subclass]
@@ -169,7 +229,9 @@ mod imp {
 
             let obj = self.obj();
 
-            obj.set_unit_factor(1.);
+            obj.set_width_unit_factor(1.);
+            obj.set_height_unit_factor(1.);
+            obj.set_margin_unit_factor(1.);
 
             obj.set_transient_for(Some(&obj.parent_window()));
             obj.set_modal(true);
@@ -177,6 +239,7 @@ mod imp {
             self.alignment.connect_selected_notify(
                 glib::clone!(@weak obj => move |_| obj.on_margin_vertical_changed()),
             );
+
             self.alignment
                 .set_expression(Some(gtk::ClosureExpression::new::<glib::GString>(
                     [] as [gtk::Expression; 0],
@@ -185,13 +248,13 @@ mod imp {
                     ),
                 )));
 
-            gtk::ClosureExpression::new::<glib::GString>(
-                [] as [gtk::Expression; 0],
-                glib::closure!(
-                    |s: gtk::StringObject| PageAlignment::from(s.string().as_str()).to_string()
-                ),
+            self.margin_unit.connect_selected_notify(
+                glib::clone!(@weak obj => move |_| obj.on_margin_unit_changed()),
             );
 
+            self.size_unit.connect_selected_notify(
+                glib::clone!(@weak obj => move |_| obj.on_size_unit_changed()),
+            );
             self.width
                 .connect_value_notify(glib::clone!(@weak obj => move |_| obj.on_width_changed()));
             self.margin_horizontal.connect_value_notify(
@@ -228,7 +291,7 @@ mod imp {
                         .unwrap_or_default();
                     imp.title.set_title(&gettext_f(
                         // Translators: {} is a placeholder for the filename
-                        "Print {}",
+                        "Print “{}”",
                         &[&basename],
                     ));
                     if let Some(printer) = operation.print_settings().and_then(|x| x.printer()) {
@@ -245,10 +308,9 @@ mod imp {
                     obj.set_ranges();
 
                     imp.width.set_value(obj.image().image_size().0 as f64);
-                    // TODO: Select center
-                    //obj.center_horizontally();
 
-                    obj.unit_selected();
+                    obj.on_margin_unit_changed();
+                    obj.on_size_unit_changed();
 
                     imp.print_operation.cancel();
 
@@ -309,13 +371,26 @@ impl LpPrint {
         obj
     }
 
-    pub fn unit(&self) -> glib::GString {
-        self.imp()
-            .unit
-            .selected_item()
-            .and_downcast::<gtk::StringObject>()
-            .map(|x| x.string())
-            .unwrap_or_default()
+    fn size_unit(&self) -> Unit {
+        Unit::from(
+            self.imp()
+                .size_unit
+                .selected_item()
+                .and_downcast::<gtk::StringObject>()
+                .map(|x| x.string())
+                .unwrap_or_default(),
+        )
+    }
+
+    fn margin_unit(&self) -> Unit {
+        Unit::from(
+            self.imp()
+                .margin_unit
+                .selected_item()
+                .and_downcast::<gtk::StringObject>()
+                .map(|x| x.string())
+                .unwrap_or_default(),
+        )
     }
 
     pub fn dpi(&self) -> f64 {
@@ -344,7 +419,7 @@ impl LpPrint {
 
     /// Returns user selected image width in pixels
     pub fn user_width(&self) -> f64 {
-        f64::max(1., self.imp().width.value() / self.unit_factor())
+        f64::max(1., self.imp().width.value() / self.width_unit_factor())
     }
 
     pub fn user_height(&self) -> f64 {
@@ -366,7 +441,7 @@ impl LpPrint {
 
     /// Returns user selected left margin in pixels
     pub fn user_margin_horizontal(&self) -> f64 {
-        self.imp().margin_horizontal.value() / self.unit_factor()
+        self.imp().margin_horizontal.value() / self.margin_unit_factor()
     }
 
     pub fn effective_margin_left(&self) -> f64 {
@@ -393,7 +468,7 @@ impl LpPrint {
 
     /// Returns user selected top margin in pixels
     pub fn user_margin_vertical(&self) -> f64 {
-        self.imp().margin_vertical.value() / self.unit_factor()
+        self.imp().margin_vertical.value() / self.margin_unit_factor()
     }
 
     pub fn effective_margin_top(&self) -> f64 {
@@ -415,25 +490,31 @@ impl LpPrint {
     fn set_ranges(&self) {
         let imp = self.imp();
 
-        let max_height =
-            self.page_setup().page_height(gtk::Unit::Inch) * self.dpi() * self.unit_factor();
+        let size_unit = self.size_unit();
+        let max_height = self.page_setup().page_height(gtk::Unit::Inch) * self.dpi();
+        let max_width = self.page_setup().page_width(gtk::Unit::Inch) * self.dpi();
+        imp.width.set_range(
+            size_unit.ceil(self.width_unit_factor()),
+            size_unit.floor(max_width * self.width_unit_factor()),
+        );
 
-        let max_width =
-            self.page_setup().page_width(gtk::Unit::Inch) * self.dpi() * self.unit_factor();
-        imp.width.set_range(self.unit_factor(), max_width);
-
+        let margin_unit = self.margin_unit();
         let min_horizontal_margin = f64::max(
             self.page_setup().left_margin(gtk::Unit::Inch),
             self.page_setup().right_margin(gtk::Unit::Inch),
         ) * self.dpi()
-            * self.unit_factor();
-        imp.margin_horizontal
-            .set_range(min_horizontal_margin, min_horizontal_margin + max_width);
+            * self.margin_unit_factor();
+        imp.margin_horizontal.set_range(
+            margin_unit.ceil(min_horizontal_margin),
+            margin_unit.floor(min_horizontal_margin + max_width * self.margin_unit_factor()),
+        );
 
         let min_vertical_margin =
-            self.page_setup().top_margin(gtk::Unit::Inch) * self.dpi() * self.unit_factor();
-        imp.margin_vertical
-            .set_range(min_vertical_margin, min_vertical_margin + max_height);
+            self.page_setup().top_margin(gtk::Unit::Inch) * self.dpi() * self.margin_unit_factor();
+        imp.margin_vertical.set_range(
+            margin_unit.ceil(min_vertical_margin),
+            margin_unit.floor(min_vertical_margin + max_height * self.margin_unit_factor()),
+        );
     }
 
     #[template_callback]
@@ -448,35 +529,42 @@ impl LpPrint {
         self.draw_preview();
     }
 
-    #[template_callback]
-    pub fn unit_selected(&self) {
+    fn on_size_unit_changed(&self) {
         let imp = self.imp();
 
-        let (unit_factor, digits) = match self.unit().as_str() {
-            "cm" => (2.54 / self.dpi(), 2),
-            "in" => (1. / self.dpi(), 2),
-            "px" => (1., 0),
-            unit => {
-                log::error!("Unknown unit '{unit}'");
-                (1., 2)
-            }
-        };
+        let (orig_width, orig_height) = self.image().image_size();
 
-        let update_factor = unit_factor / self.unit_factor();
-        let width = imp.width.value() * update_factor;
+        let unit = self.size_unit();
+        let width_factor = unit.factor(self.dpi(), orig_width);
+        let height_factor = unit.factor(self.dpi(), orig_height);
+
+        let width = imp.width.value() * width_factor / self.width_unit_factor();
+
+        self.set_width_unit_factor(width_factor);
+        self.set_height_unit_factor(height_factor);
+        self.set_ranges();
+
+        imp.width.set_digits(unit.digits());
+        imp.width.set_value(width);
+    }
+
+    fn on_margin_unit_changed(&self) {
+        let imp = self.imp();
+
+        let unit = self.margin_unit();
+        let unit_factor = unit.factor(self.dpi(), 1);
+
+        let update_factor = unit_factor / self.margin_unit_factor();
         let margin_horizontal = imp.margin_horizontal.value() * update_factor;
         let margin_vertical = imp.margin_vertical.value() * update_factor;
 
-        self.set_unit_factor(unit_factor);
+        self.set_margin_unit_factor(unit_factor);
         self.set_ranges();
 
-        imp.width.set_digits(digits);
-        imp.width.set_value(width);
-
-        imp.margin_horizontal.set_digits(digits);
+        imp.margin_horizontal.set_digits(unit.digits());
         imp.margin_horizontal.set_value(margin_horizontal);
 
-        imp.margin_vertical.set_digits(digits);
+        imp.margin_vertical.set_digits(unit.digits());
         imp.margin_vertical.set_value(margin_vertical);
     }
 

@@ -54,3 +54,7 @@ lpprintpreviewpage {
   background-color: #f0f0f0;
   box-shadow: 0 0 14px 3px #666;
 }
+
+dropdown.flat button:not(:hover) {
+  background: none;
+}
