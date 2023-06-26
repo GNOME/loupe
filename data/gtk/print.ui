@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
   <template class="LpPrint" parent="AdwWindow">
-    <property name="default-width">600</property>
+    <property name="default-width">900</property>
+    <property name="default-height">650</property>
     <signal name="notify::orientation" handler="orientation_changed" swapped="yes" />
     <child>
       <object class="GtkShortcutController">
@@ -42,9 +43,8 @@
           </object>
         </child>
         <property name="content">
-          <object class="GtkBox">
-            <property name="orientation">horizontal</property>
-            <child>
+          <object class="AdwOverlaySplitView">
+            <property name="sidebar">
               <object class="AdwPreferencesPage">
                 <property name="halign">start</property>
                 <property name="width-request">300</property>
@@ -151,17 +151,18 @@
                   </object>
                 </child>
               </object>
-            </child>
-            <child>
+            </property>
+            <property name="content">
               <object class="LpPrintPreview" id="preview">
-                <property name="valign">center</property>
-                <property name="halign">center</property>
-                <property name="css-name">lpprintpreview</property>
+                <property name="vexpand">true</property>
+                <property name="hexpand">true</property>
+                <property name="width-request">260</property>
+                <property name="height-request">260</property>
                 <binding name="print">
                   <constant>LpPrint</constant>
                 </binding>
               </object>
-            </child>
+            </property>
           </object>
         </property>
       </object>

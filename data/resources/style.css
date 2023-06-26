@@ -46,7 +46,11 @@ row.property label.subtitle {
 }
 
 lpprintpreview {
-  background-color: rgb(240, 240, 240);
-  border-radius: 4px;
-  box-shadow: 0 0 14px 1px black;
+  background-color: #858585;
+  padding: 30px;
+}
+
+lpprintpreviewpage {
+  background-color: #f0f0f0;
+  box-shadow: 0 0 14px 3px #666;
 }
