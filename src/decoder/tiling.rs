@@ -653,15 +653,18 @@ impl FrameBufferExt for ArcSwap<FrameBuffer> {
     }
 
     fn frame_timeout(&self, elapsed: Duration) -> bool {
-        if let Some(next_frame) = self.load().images.get(1) {
-            if elapsed >= next_frame.delay {
-                self.rcu(|tiling_store| {
-                    let mut new_store = (**tiling_store).clone();
-                    new_store.images.pop_front();
-                    Arc::new(new_store)
-                });
-                return true;
-            }
+        if self
+            .load()
+            .images
+            .get(1)
+            .is_some_and(|next_frame| elapsed >= next_frame.delay)
+        {
+            self.rcu(|tiling_store| {
+                let mut new_store = (**tiling_store).clone();
+                new_store.images.pop_front();
+                Arc::new(new_store)
+            });
+            return true;
         }
 
         false

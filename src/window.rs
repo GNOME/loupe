@@ -699,13 +699,11 @@ impl LpWindow {
             .current_page()
             .map(|page| page.image());
 
-        if let Some(image) = image {
-            if image.image_size() > (0, 0) {
-                log::debug!("Showing window because image size is ready");
-                // this let's the window determine the default size from LpImage's natural size
-                self.set_default_size(-1, -1);
-                self.present();
-            }
+        if image.is_some_and(|img| img.image_size() > (0, 0)) {
+            log::debug!("Showing window because image size is ready");
+            // this let's the window determine the default size from LpImage's natural size
+            self.set_default_size(-1, -1);
+            self.present();
         }
     }
 
@@ -716,11 +714,9 @@ impl LpWindow {
 
         let current_page = self.imp().image_view.current_page();
 
-        if let Some(page) = current_page {
-            if page.image().error().is_some() {
-                log::debug!("Showing window because loading image failed");
-                self.present();
-            }
+        if current_page.is_some_and(|page| page.image().error().is_some()) {
+            log::debug!("Showing window because loading image failed");
+            self.present();
         }
     }
 

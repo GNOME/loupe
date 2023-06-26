@@ -142,10 +142,12 @@ impl ImageMetadata {
     }
 
     pub fn f_number(&self) -> Option<String> {
-        if let Some(exif) = &self.exif {
-            if let Some(field) = exif.get_field(exif::Tag::FNumber, exif::In::PRIMARY) {
-                return Some(format!("ƒ\u{2215}{}", field.display_value()));
-            }
+        if let Some(field) = self
+            .exif
+            .as_ref()
+            .and_then(|exif| exif.get_field(exif::Tag::FNumber, exif::In::PRIMARY))
+        {
+            return Some(format!("ƒ\u{2215}{}", field.display_value()));
         }
 
         None

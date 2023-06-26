@@ -81,10 +81,8 @@ impl GPSCoord {
             }
         }
 
-        if let Some(min_) = min {
-            if deg.denom > 1 && min_.num == 0 {
-                min = None;
-            }
+        if min.is_some_and(|min_| deg.denom > 1 && min_.num == 0) {
+            min = None;
         }
 
         Some((

@@ -345,10 +345,11 @@ impl LpImageView {
     fn navigate_to_file(&self, new_file: &gio::File) {
         let sliding_view = self.sliding_view();
 
-        if let Some(current_file) = self.current_file() {
-            if new_file.equal(&current_file) {
-                return;
-            }
+        if self
+            .current_file()
+            .is_some_and(|current_file| current_file.equal(new_file))
+        {
+            return;
         }
 
         let Some(new_index) = self.model().index_of(new_file) else {
