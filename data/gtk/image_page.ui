@@ -88,6 +88,7 @@
             </child>
             <child>
               <object class="GtkPopoverMenu" id="popover">
+                <property name="halign">start</property>
                 <property name="has-arrow">False</property>
                 <property name="menu-model">image_menu</property>
                 <child type="rotate-left">
