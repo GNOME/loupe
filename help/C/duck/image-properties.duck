@@ -1,0 +1,20 @@
+= Image Properties
+  [topic]
+@link[guide >index#additional-features]
+
+@desc View detailed properties of the selected image.
+
+Loupe allows users to view an image's properties. All images will have the following
+basic properties:
+
+* Image size
+* Image format
+* File size
+* File creation date
+* File modification date
+
+If the file has $link[href="https://en.wikipedia.org/wiki/Exif"](Exif) metadata, it
+will be shown below the basic properties.
+
+To view the selected image's properties, press the $gui(Image Properties)
+($media[type="image" src="figures/help-about-symbolic.svg"](help-about-symbolic)) button.

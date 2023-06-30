@@ -1,0 +1,24 @@
+= Sending Images To Other Apps
+  [topic]
+@link[guide >index#additional-features]
+
+@desc Learn how to send, copy, and drag images from Loupe to other apps.
+
+== "Open With…" Action
+
+[steps]
+* Click the $gui[style="menuitem"](Open With…) menu item. A dialog with a list of applications will appear.
+* Select the application you want to open the image with.
+
+== Copy & Paste
+
+[steps]
+* Click the $gui(Copy to Clipboard) ($media[type="image" src="figures/edit-copy-symbolic.svg"](edit-copy-symbolic)) button. A toast notifying you that the image is in your clipboard will appear.
+* Paste your image in your application of choice.
+
+== Drag & Drop
+
+[steps]
+* Zoom out from the image completely.
+* Click and hold the selected image.
+* Drag the image to your application of choice.

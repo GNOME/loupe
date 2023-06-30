@@ -1,0 +1,10 @@
+= Moving Images to Trash
+  [topic]
+@link[guide >index#additional-features]
+
+@desc Move unwanted images to the trash directly from Loupe.
+
+If a user wants to remove an image, they can press the $gui(Move To Trash)
+($media[type="image" src="figures/user-trash-symbolic.svg"](user-trash-symbolic))
+button. A toast will appear allowing them to restore the image with the $gui(Undo)
+button.

@@ -1,0 +1,48 @@
+= Viewing Images
+  [topic]
+@link[guide >index#getting-started]
+
+@desc Learn how to view an image at different scales and orientations.
+
+== Zooming
+
+Users can zoom in with the $gui(Zoom In) ($media[type="image" src="figures/zoom-in-symbolic.svg"](zoom-in-symbolic))
+button and zoom out with the $gui(Zoom Out) ($media[type="image" src="figures/zoom-out-symbolic.svg"](zoom-out-symbolic))
+button. They can also use the following keyboard shortcuts:
+
+* $keyseq($key(Ctrl)$key(+)) or $key(+) to zoom in.
+* $keyseq($key(Ctrl)$key(-)) or $key(-) to zoom out.
+* $keyseq($key(Ctrl)$key(0)) or $key(0) to zoom to the best fitting size for the window size.
+* $keyseq($key(Ctrl)$key(1)) or $key(1) to zoom to the image's original scale.
+* $keyseq($key(Ctrl)$key(2)) or $key(2) to zoom to 200% of the image's original scale.
+
+Touchpad and touchscreen users can also zoom with a two-finger pinch gesture.
+
+== Panning
+
+Mouse and touchpad users can pan the view when zoomed in by clicking and dragging the image.
+Touchscreen users can use a single-finger drag gesture to pan the view. Users with a keyboard
+can also use the following keyboard shortcuts:
+
+* $keyseq($key(Ctrl)$key(←)) to pan left.
+* $keyseq($key(Ctrl)$key(→)) to pan right.
+* $keyseq($key(Ctrl)$key(↑)) to pan up.
+* $keyseq($key(Ctrl)$key(↓)) to pan down.
+
+== Rotating
+
+Users can use the $gui(Rotate Right) ($media[type="image" src="figures/object-rotate-right-symbolic.svg"](object-rotate-right-symbolic))
+and $gui(Rotate Left) ($media[type="image" src="figures/object-rotate-left-symbolic.svg"](object-rotate-left-symbolic))
+buttons under $gui[style="menuitem"](Rotate) in the main menu to rotate clockwise and
+counter-clockwise. They can also use the following keyboard shortcuts:
+
+* $keyseq($key(Ctrl)$key(R)) to rotate clockwise.
+* $keyseq($key(Ctrl)$key(Shift)$key(R)) to rotate counter-clockwise.
+
+Touchpad and touchscreen users can also use a two-finger rotate gesture.
+
+== Fullscreen
+
+Loupe has a simple fullscreen mode. Users can toggle fullscreen mode by pressing the $gui(Toggle Fullscreen)
+($media[type="image" src="figures/view-fullscreen-symbolic.svg"](view-fullscreen-symbolic) / $media[type="image" src="figures/view-restore-symbolic.svg"](view-restore-symbolic)) button.
+Keyboard users can also use $key(F11) to toggle fullscreen mode.

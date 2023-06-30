@@ -1,0 +1,49 @@
+= Opening Images
+  [topic]
+@link[guide >index#getting-started]
+
+@desc Open and browse through pictures via the file chooser, file manager, or drag and drop.
+
+== Opening Files
+
+=== From The File Chooser
+
+Loupe allows users to pick images with the file chooser at any time.
+
+[steps]
+* Click the $gui(Open Files…) button, the $gui[style="menuitem"](Open…) menu item, or press $keyseq($key(Ctrl)$key(O)). The $gui(Open Image) file dialog will appear.
+* Select the image you want to open, then click $gui(Open).
+
+Loupe will open with the selected image showing, and the other images in the directory can be reached by browsing.
+
+=== From The File Manager
+
+Users can also open images in Loupe directly from their file manager.
+
+[steps]
+* Open your preferred file manager application.
+* Navigate to the image you want to view in Loupe.
+* If Loupe is set as your default image viewer, use the file manager's function for opening files.
+* If Loupe is not your default image viewer, you will need to select $gui(Open With…) or similar in the file manager, and pick Loupe.
+
+=== Drag & Drop
+
+Loupe also accepts local image files dragged from other applications.
+
+[steps]
+* In the source application, begin dragging the image.
+* Drag the image over the Loupe main window. A blue highlighted area should appear.
+* Drop the image while it's still hovered over the main window.
+
+== Browsing
+
+When opening an image from the file chooser or file manager, Loupe will load other files
+in the parent directory of the image and sort them in alphabetical order. Users can
+browse the other images in the directory with the $gui(Previous Image) ($media[type="image" src="figures/go-previous-symbolic.svg"](go-previous-symbolic))
+and $gui(Next Image) ($media[type="image" src="figures/go-next-symbolic.svg"](go-next-symbolic)) buttons.
+Keyboard users can also use the following shortcuts:
+
+* $key(→) to go to the next image.
+* $key(←) to go to the previous image.
+* $key(Home) to jump to the first image in the directory.
+* $key(End) to jump to the last image in the directory.
