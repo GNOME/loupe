@@ -29,6 +29,7 @@ use gtk::CompositeTemplate;
 use once_cell::sync::OnceCell;
 
 use std::cell::{Cell, RefCell};
+use std::rc::Rc;
 
 #[derive(Default, Clone, Copy)]
 struct PageAlignment {
@@ -50,6 +51,27 @@ enum VAlignment {
     #[default]
     Middle,
     Bottom,
+}
+
+/// Scope guard for non user ui changes
+///
+/// Creates a context in which other signals know that changes are not user input
+#[derive(Default, Clone, Debug)]
+struct UiUpdates {
+    disabled: Rc<Cell<bool>>,
+}
+
+impl UiUpdates {
+    pub fn disable(&self) -> Self {
+        self.disabled.set(true);
+        self.clone()
+    }
+}
+
+impl Drop for UiUpdates {
+    fn drop(&mut self) {
+        self.disabled.set(false);
+    }
 }
 
 impl From<&str> for PageAlignment {
@@ -146,6 +168,11 @@ impl Unit {
         let f = 10_f64.powi(self.digits() as i32);
         (num * f).floor() / f
     }
+
+    fn round(&self, num: f64) -> f64 {
+        let f = 10_f64.powi(self.digits() as i32);
+        (num * f).round() / f
+    }
 }
 
 mod imp {
@@ -180,21 +207,25 @@ mod imp {
         #[property(get, set)]
         pub(super) height_unit_factor: Cell<f64>,
         #[template_child]
+        pub(super) fill_space: TemplateChild<adw::SwitchRow>,
+        #[template_child]
         pub(super) width: TemplateChild<adw::SpinRow>,
         #[template_child]
-        pub(super) scale: TemplateChild<gtk::Label>,
+        pub(super) height: TemplateChild<adw::SpinRow>,
 
-        #[property(get, set, builder().construct_only())]
+        #[property(get, set, construct_only)]
         pub(super) image: OnceCell<LpImage>,
-        #[property(get, set, builder().construct_only())]
+        #[property(get, set, construct_only)]
         pub(super) parent_window: OnceCell<gtk::Window>,
-        #[property(get, set, builder().construct_only())]
+        #[property(get, set, construct_only)]
         pub(super) print_settings: OnceCell<gtk::PrintSettings>,
         #[property(get)]
         pub(super) print_operation: gtk::PrintOperation,
 
-        #[property(get, set)]
+        #[property(get, set=Self::set_orientation)]
         pub(super) orientation: RefCell<String>,
+
+        pub(super) ui_updates: UiUpdates,
     }
 
     #[glib::object_subclass]
@@ -248,21 +279,28 @@ mod imp {
                     ),
                 )));
 
+            // Margin signals
             self.margin_unit.connect_selected_notify(
                 glib::clone!(@weak obj => move |_| obj.on_margin_unit_changed()),
             );
-
-            self.size_unit.connect_selected_notify(
-                glib::clone!(@weak obj => move |_| obj.on_size_unit_changed()),
-            );
-            self.width
-                .connect_value_notify(glib::clone!(@weak obj => move |_| obj.on_width_changed()));
             self.margin_horizontal.connect_value_notify(
                 glib::clone!(@weak obj => move |_| obj.on_margin_horizontal_changed()),
             );
             self.margin_vertical.connect_value_notify(
                 glib::clone!(@weak obj => move |_| obj.on_margin_vertical_changed()),
             );
+
+            // Size signals
+            self.size_unit.connect_selected_notify(
+                glib::clone!(@weak obj => move |_| obj.on_size_unit_changed()),
+            );
+            self.fill_space.connect_active_notify(
+                glib::clone!(@weak obj => move |_| obj.on_fill_space_changed()),
+            );
+            self.width
+                .connect_value_notify(glib::clone!(@weak obj => move |_| obj.on_width_changed()));
+            self.height
+                .connect_value_notify(glib::clone!(@weak obj => move |_| obj.on_height_changed()));
 
             self.print_operation
                 .set_print_settings(Some(&obj.print_settings()));
@@ -300,6 +338,8 @@ mod imp {
 
                     imp.width.adjustment().set_step_increment(1.);
                     imp.width.adjustment().set_page_increment(5.);
+                    imp.height.adjustment().set_step_increment(1.);
+                    imp.height.adjustment().set_page_increment(5.);
                     imp.margin_horizontal.adjustment().set_step_increment(1.);
                     imp.margin_horizontal.adjustment().set_page_increment(5.);
                     imp.margin_vertical.adjustment().set_step_increment(1.);
@@ -340,6 +380,24 @@ mod imp {
     impl WidgetImpl for LpPrint {}
     impl WindowImpl for LpPrint {}
     impl AdwWindowImpl for LpPrint {}
+
+    impl LpPrint {
+        pub fn set_orientation(&self, orientation: String) {
+            let obj = self.obj();
+            let _ui_updates_disabled = obj.disable_ui_updates();
+
+            self.orientation.replace(orientation);
+
+            let orientation = if obj.orientation() == "landscape" {
+                gtk::PageOrientation::Landscape
+            } else {
+                gtk::PageOrientation::Portrait
+            };
+            obj.page_setup().set_orientation(orientation);
+            obj.set_ranges();
+            obj.draw_preview();
+        }
+    }
 }
 glib::wrapper! {
     pub struct LpPrint(ObjectSubclass<imp::LpPrint>)
@@ -371,6 +429,14 @@ impl LpPrint {
         obj
     }
 
+    fn ui_updates(&self) -> bool {
+        !self.imp().ui_updates.disabled.get()
+    }
+
+    fn disable_ui_updates(&self) -> UiUpdates {
+        self.imp().ui_updates.disable()
+    }
+
     fn size_unit(&self) -> Unit {
         Unit::from(
             self.imp()
@@ -398,11 +464,30 @@ impl LpPrint {
     }
 
     pub fn on_width_changed(&self) {
-        self.imp()
-            .scale
-            .set_label(&format!("{:.2}\u{202F}%", self.user_scale() * 100.));
+        if self.ui_updates() {
+            let _ui_updates_disabled = self.disable_ui_updates();
+            // Disable 'fill space' when manually changing size
+            self.imp().fill_space.set_active(false);
+            self.update_height();
+            self.draw_preview();
+        }
+    }
 
-        self.draw_preview();
+    pub fn on_height_changed(&self) {
+        if self.ui_updates() {
+            let imp = self.imp();
+            let _ui_updates_disabled = self.disable_ui_updates();
+            // Disable 'fill space' when manually changing size
+            imp.fill_space.set_active(false);
+
+            let (orig_width, orig_height) = self.image().image_size();
+            let width = self
+                .size_unit()
+                .round(imp.height.value() * orig_width as f64 / orig_height as f64);
+            imp.width.set_value(width);
+
+            self.draw_preview();
+        }
     }
 
     fn user_alignment(&self) -> PageAlignment {
@@ -436,6 +521,11 @@ impl LpPrint {
     }
 
     pub fn on_margin_horizontal_changed(&self) {
+        if self.fill_space() {
+            let _ui_updates_disabled = self.disable_ui_updates();
+            self.update_width();
+            self.update_height();
+        }
         self.draw_preview();
     }
 
@@ -463,6 +553,11 @@ impl LpPrint {
     }
 
     pub fn on_margin_vertical_changed(&self) {
+        if self.fill_space() {
+            let _ui_updates_disabled = self.disable_ui_updates();
+            self.update_width();
+            self.update_height();
+        }
         self.draw_preview();
     }
 
@@ -497,6 +592,10 @@ impl LpPrint {
             size_unit.ceil(self.width_unit_factor()),
             size_unit.floor(max_width * self.width_unit_factor()),
         );
+        imp.height.set_range(
+            size_unit.ceil(self.width_unit_factor()),
+            size_unit.floor(max_height * self.height_unit_factor()),
+        );
 
         let margin_unit = self.margin_unit();
         let min_horizontal_margin = f64::max(
@@ -517,16 +616,36 @@ impl LpPrint {
         );
     }
 
-    #[template_callback]
-    pub fn orientation_changed(&self) {
-        let orientation = if self.orientation() == "landscape" {
-            gtk::PageOrientation::Landscape
+    fn fill_space_width(&self) -> f64 {
+        let width1 = self.page_setup().page_width(gtk::Unit::Inch) * self.dpi();
+
+        let height = self.page_setup().page_height(gtk::Unit::Inch) * self.dpi();
+        let (orig_width, orig_height) = self.image().image_size();
+        let width2 = height * orig_width as f64 / orig_height as f64;
+
+        f64::min(width1, width2)
+    }
+
+    fn update_width(&self) {
+        if self.fill_space() {
+            let value = self
+                .size_unit()
+                .floor(self.fill_space_width() * self.width_unit_factor());
+            self.imp().width.set_value(value);
+        }
+    }
+
+    fn update_height(&self) {
+        let (orig_width, orig_height) = self.image().image_size();
+        if self.fill_space() {
+            let height = self.fill_space_width() * orig_height as f64 / orig_width as f64;
+            let value = self.size_unit().floor(height * self.height_unit_factor());
+            self.imp().height.set_value(value);
         } else {
-            gtk::PageOrientation::Portrait
-        };
-        self.page_setup().set_orientation(orientation);
-        self.set_ranges();
-        self.draw_preview();
+            let height = self.user_width() * orig_height as f64 / orig_width as f64;
+            let value = self.size_unit().floor(height * self.height_unit_factor());
+            self.imp().height.set_value(value);
+        }
     }
 
     fn on_size_unit_changed(&self) {
@@ -539,13 +658,19 @@ impl LpPrint {
         let height_factor = unit.factor(self.dpi(), orig_height);
 
         let width = imp.width.value() * width_factor / self.width_unit_factor();
+        let height = imp.height.value() * height_factor / self.height_unit_factor();
 
         self.set_width_unit_factor(width_factor);
         self.set_height_unit_factor(height_factor);
+
+        let _ui_updates_disabled = self.disable_ui_updates();
         self.set_ranges();
 
         imp.width.set_digits(unit.digits());
         imp.width.set_value(width);
+
+        imp.height.set_digits(unit.digits());
+        imp.height.set_value(height);
     }
 
     fn on_margin_unit_changed(&self) {
@@ -566,6 +691,19 @@ impl LpPrint {
 
         imp.margin_vertical.set_digits(unit.digits());
         imp.margin_vertical.set_value(margin_vertical);
+    }
+
+    pub fn fill_space(&self) -> bool {
+        self.imp().fill_space.is_active()
+    }
+
+    fn on_fill_space_changed(&self) {
+        if self.fill_space() {
+            let _ui_updates_disabled = self.disable_ui_updates();
+            self.update_width();
+            self.update_height();
+            self.draw_preview();
+        }
     }
 
     pub fn run(&self) {

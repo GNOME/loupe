@@ -3,7 +3,6 @@
   <template class="LpPrint" parent="AdwWindow">
     <property name="default-width">900</property>
     <property name="default-height">650</property>
-    <signal name="notify::orientation" handler="orientation_changed" swapped="yes" />
     <child>
       <object class="GtkShortcutController">
         <property name="scope">managed</property>
@@ -152,20 +151,18 @@
                       </object>
                     </property>
                     <child>
+                      <object class="AdwSwitchRow" id="fill_space">
+                        <property name="title" translatable="yes">Fill Space</property>
+                      </object>
+                    </child>
+                    <child>
                       <object class="AdwSpinRow" id="width">
                         <property name="title" translatable="yes">Width</property>
                       </object>
                     </child>
                     <child>
-                      <object class="AdwActionRow">
-                        <property name="title" translatable="yes">Scale</property>
-                        <child>
-                          <object class="GtkLabel" id="scale">
-                            <style>
-                              <class name="dim-label" />
-                            </style>
-                          </object>
-                        </child>
+                      <object class="AdwSpinRow" id="height">
+                        <property name="title" translatable="yes">Height</property>
                       </object>
                     </child>
                   </object>
