@@ -53,6 +53,26 @@
   </categories>
 
   <releases>
+    <release version="45~alpha" type="development" date="2023-05-12">
+      <description>
+        <ul>
+          <li>Add help</li>
+          <li>Disable trashing for non-native files</li>
+          <li>Give toast for latest deleted file priority over the others</li>
+          <li>Only list supported image formats in file chooser</li>
+          <li>Do not guess a potentially different background color for opaque images</li>
+          <li>Fix incorrect updates when deleting or changing images</li>
+          <li>Fix SVG zooming with high-res scroll-wheels</li>
+          <li>Use glycin for sandboxed extendable image loading expect for SVG</li>
+          <li>Remove backspace as a trash shortcut</li>
+          <li>Change command line to open all given images in one window</li>
+          <li>Do not show “Set as Background” if operation was aborted</li>
+          <li>Let the user select multiple files to open in file chooser</li>
+          <li>Support forward and back mouse buttons</li>
+          <li>Correctly align right-click menu</li>
+        </ul>
+      </description>
+    </release>
     <release version="44.3" date="2023-05-12">
       <description>
         <p>This release brings many small tweaks and a hand full of bug fixes. The more prominent changes are:</p>

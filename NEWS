@@ -1,3 +1,20 @@
+45.alpha
+=======
+- Add help
+- Disable trashing for non-native files
+- Give toast for latest deleted file priority over the others
+- Only list supported image formats in file chooser
+- Do not guess a potentially different background color for opaque images
+- Fix incorrect updates when deleting or changing images
+- Fix SVG zooming with high-res scroll-wheels
+- Use glycin for sandboxed extendable image loading expect for SVG
+- Remove backspace as a trash shortcut
+- Change command line to open all given images in one window
+- Do not show "Set as Background" if operation was aborted
+- Let the user select multiple files to open in file chooser
+- Support forward and back mouse buttons
+- Correctly align right-click menu
+
 44.3
 =======
 - Hide cursor together with controls when fullscreened
