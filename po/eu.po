@@ -5,9 +5,9 @@
 #
 msgid ""
 msgstr "Project-Id-Version: Loupe main\n"
-"Report-Msgid-Bugs-To: https://gitlab.gnome.org/Incubator/loupe/-/issues\n"
-"POT-Creation-Date: 2023-05-11 18:16+0000\n"
-"PO-Revision-Date: 2023-05-13 18:54+0000\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/Incubator/loupe/-/issues\n"
+"POT-Creation-Date: 2023-06-20 10:21+0000\n"
+"PO-Revision-Date: 2023-07-02 18:54+0000\n"
 "Last-Translator: Asier Sarasua Garmendia <asiersarasua@ni.eus>\n"
 "Language-Team: Basque <librezale@librezale.eus>\n"
 "Language: eu\n"
@@ -39,11 +39,11 @@ msgstr "Ezarri _atzeko plano gisa…"
 msgid "Could not Load Image"
 msgstr "Ezin da irudia kargatu"
 
-#: data/gtk/image_page.ui:96 data/gtk/window.ui:133
+#: data/gtk/image_page.ui:96 data/gtk/window.ui:125
 msgid "Rotate Left"
 msgstr "Biratu ezkerrera"
 
-#: data/gtk/image_page.ui:106 data/gtk/window.ui:143
+#: data/gtk/image_page.ui:106 data/gtk/window.ui:135
 msgid "Rotate Right"
 msgstr "Biratu eskuinera"
 
@@ -189,44 +189,44 @@ msgstr "Loupe aplikazioari _buruz"
 
 #. If the file exists, get display name
 #: data/gtk/window.ui:60 data/org.gnome.Loupe.desktop.in.in:3
-#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/application.rs:188
-#: src/window.rs:835 src/window.rs:841
+#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/application.rs:187
+#: src/window.rs:857 src/window.rs:863
 msgid "Loupe"
 msgstr "Loupe"
 
-#: data/gtk/window.ui:112
+#: data/gtk/window.ui:104
 msgid "Copy to Clipboard"
 msgstr "Kopiatu arbelean"
 
-#: data/gtk/window.ui:119
+#: data/gtk/window.ui:111
 msgid "Move to Trash"
 msgstr "Bota zakarrontzira"
 
-#: data/gtk/window.ui:125
+#: data/gtk/window.ui:117
 msgid "Main Menu"
 msgstr "Menu nagusia"
 
-#: data/gtk/window.ui:157
+#: data/gtk/window.ui:149
 msgid "Image Properties"
 msgstr "Irudiaren propietateak"
 
-#: data/gtk/window.ui:180
+#: data/gtk/window.ui:172
 msgid "View Images"
 msgstr "Ikusi irudiak"
 
-#: data/gtk/window.ui:181
+#: data/gtk/window.ui:173
 msgid "Drag and drop images here"
 msgstr "Arrastatu eta jaregin irudiak hemen"
 
-#: data/gtk/window.ui:185
-msgid "_Open File…"
-msgstr "Ireki _fitxategia…"
+#: data/gtk/window.ui:177
+msgid "_Open Files…"
+msgstr "Ireki _fitxategiak…"
 
 #: data/org.gnome.Loupe.desktop.in.in:11
 msgid "Picture;Slideshow;Graphics;Image Viewer;"
 msgstr "Argazkia;Aurkezpena;Grafikoak;Irudi-ikustailea;"
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:7 src/application.rs:191
+#: data/org.gnome.Loupe.metainfo.xml.in.in:7 src/application.rs:190
 msgid "The Loupe Team"
 msgstr "Loupe taldea"
 
@@ -407,54 +407,15 @@ msgid "Gestures"
 msgstr "Keinuak"
 
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/application.rs:200
+#: src/application.rs:199
 msgid "translator-credits"
 msgstr "translator-credits"
 
-#: src/application.rs:201
+#: src/application.rs:200
 msgid "Copyright © 2020–2023 Christopher Davis et al."
 msgstr "Copyright © 2020–2023 Christopher Davis et al."
 
-#: src/decoder/formats/heif.rs:67
-msgid "Failed to read image file information"
-msgstr "Huts egin du irudi-fitxategiaren informazioa irakurtzeak"
-
-#: src/decoder/formats/heif.rs:72 src/decoder/formats/heif.rs:119
-#: src/decoder/formats/image_rs_other.rs:116
-#: src/decoder/formats/image_rs_other.rs:125
-#: src/decoder/formats/image_rs_other.rs:132
-msgid "Failed to decode image"
-msgstr "Huts egin du irudia deskodetzeak"
-
-#: src/decoder/formats/heif.rs:117 src/decoder/mod.rs:201
-msgid "Unknown image format"
-msgstr "Irudi-formatu ezezaguna"
-
-#: src/decoder/formats/mod.rs:72
-msgid "Animated GIF"
-msgstr "GIF animatua"
-
-#: src/decoder/formats/mod.rs:73
-msgid "Animated WebP"
-msgstr "WebP animatua"
-
-#: src/decoder/formats/mod.rs:74
-msgid "Animated PNG"
-msgstr "PNG animatua"
-
-#: src/decoder/mod.rs:195
-msgid "Unknown image format: {}"
-msgstr "Irudi-formatu ezezaguna: {}"
-
-#: src/decoder/mod.rs:230
-msgid "Could not open image"
-msgstr "Ezin da irudia ireki"
-
-#: src/decoder/mod.rs:234
-msgid "Could not read image"
-msgstr "Ezin da irudia irakurri"
-
-#: src/file_model.rs:118
+#: src/file_model.rs:120
 msgid "Could not list other files in directory."
 msgstr "Ezin dira direktorioko beste fitxategiak zerrendatu."
 
@@ -496,7 +457,7 @@ msgstr "{}\\u{202F}mm"
 msgid "%x %X"
 msgstr "%x %X"
 
-#: src/util/mod.rs:171 src/window.rs:550
+#: src/util/mod.rs:171 src/window.rs:572
 msgid "Failed to restore image from trash"
 msgstr "Ezin izan da irudia zakarrontzitik leheneratu"
 
@@ -505,61 +466,88 @@ msgid "Failed to open image"
 msgstr "Huts egin du irudia irekitzeak"
 
 #. Translators: This is a toast notification, informing the user that an image has been set as background.
-#: src/widgets/image_view.rs:653
+#: src/widgets/image_view.rs:652
 msgid "Set as background."
 msgstr "Ezarri atzeko plano gisa"
 
-#: src/widgets/image_view.rs:664
+#: src/widgets/image_view.rs:665
 msgid "Could not set background."
 msgstr "Ezin da atzeko planoa ezarri."
 
-#: src/window.rs:454
+#: src/window.rs:468
 msgid "Supported image formats"
 msgstr "Onartutako irudi-formatuak"
 
-#: src/window.rs:460
+#: src/window.rs:474
 msgid "All files"
 msgstr "Fitxategi guztiak"
 
-#: src/window.rs:467
+#: src/window.rs:481
 msgid "Open Image"
 msgstr "Ireki irudia"
 
-#: src/window.rs:522
+#: src/window.rs:544
 msgid "Image copied to clipboard"
 msgstr "Irudia arbelean kopiatu da"
 
-#: src/window.rs:538
+#: src/window.rs:560
 msgid "Image moved to trash"
 msgstr "Irudia zakarrontzira eraman da"
 
-#: src/window.rs:539
+#: src/window.rs:561
 msgid "Undo"
 msgstr "Desegin"
 
-#: src/window.rs:565
+#: src/window.rs:587
 msgid "Failed to move image to trash"
 msgstr "Huts egin du irudia zakarrontzira botatzeak"
 
-#: src/window.rs:580
+#: src/window.rs:602
 msgid "Permanently Delete Image?"
 msgstr "Irudia betiko ezabatu?"
 
-#: src/window.rs:582
+#: src/window.rs:604
 msgid "The image “{}” can only be deleted permanently."
 msgstr "“{}” irudia betiko ezabatuko da."
 
-#: src/window.rs:590
+#: src/window.rs:612
 msgid "Cancel"
 msgstr "Utzi"
 
-#: src/window.rs:591
+#: src/window.rs:613
 msgid "Delete"
 msgstr "Ezabatu"
 
-#: src/window.rs:602
+#: src/window.rs:624
 msgid "Failed to delete image"
 msgstr "Huts egin du irudia ezabatzeak"
+
+#~ msgid "Failed to read image file information"
+#~ msgstr "Huts egin du irudi-fitxategiaren informazioa irakurtzeak"
+
+#~ msgid "Failed to decode image"
+#~ msgstr "Huts egin du irudia deskodetzeak"
+
+#~ msgid "Unknown image format"
+#~ msgstr "Irudi-formatu ezezaguna"
+
+#~ msgid "Animated GIF"
+#~ msgstr "GIF animatua"
+
+#~ msgid "Animated WebP"
+#~ msgstr "WebP animatua"
+
+#~ msgid "Animated PNG"
+#~ msgstr "PNG animatua"
+
+#~ msgid "Unknown image format: {}"
+#~ msgstr "Irudi-formatu ezezaguna: {}"
+
+#~ msgid "Could not open image"
+#~ msgstr "Ezin da irudia ireki"
+
+#~ msgid "Could not read image"
+#~ msgstr "Ezin da irudia irakurri"
 
 #~ msgid "Layout Image"
 #~ msgstr "Irudiaren diseinua"
