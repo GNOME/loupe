@@ -125,11 +125,17 @@ pub async fn untrash(path: &Path) -> anyhow::Result<()> {
         .next_files_future(1, glib::Priority::default())
         .await
     {
-        let Some(file_info) = info.first()
-            else { break; };
+        let Some(file_info) = info.first() else {
+            break;
+        };
 
-        let Some(original_path) = file_info.attribute_byte_string(gio::FILE_ATTRIBUTE_TRASH_ORIG_PATH).as_ref().map(PathBuf::from)
-            else { break; };
+        let Some(original_path) = file_info
+            .attribute_byte_string(gio::FILE_ATTRIBUTE_TRASH_ORIG_PATH)
+            .as_ref()
+            .map(PathBuf::from)
+        else {
+            break;
+        };
 
         if original_path == path {
             let trash_file = trash.child(file_info.name());
@@ -143,7 +149,9 @@ pub async fn untrash(path: &Path) -> anyhow::Result<()> {
                 }
 
                 // Construct new name of the form "<filename> (i).<ext>"
-                let Some(path) = original_file.path() else { bail!("File without path") };
+                let Some(path) = original_file.path() else {
+                    bail!("File without path")
+                };
                 let mut name = path
                     .file_stem()
                     .map(|x| x.to_os_string())

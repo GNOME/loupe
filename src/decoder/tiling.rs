@@ -304,7 +304,9 @@ impl TiledImage {
     }
 
     pub fn contains(&self, zoom: f64, coordinates: Coordinates) -> bool {
-        let Some(tile_layer) = self.tile_layers.get(&zoom_to_level(zoom)) else { return false };
+        let Some(tile_layer) = self.tile_layers.get(&zoom_to_level(zoom)) else {
+            return false;
+        };
 
         tile_layer.tiles.contains_key(&coordinates)
     }
@@ -483,7 +485,9 @@ impl Tiling {
         for x in (x0 as i32..=x1 as i32).step_by(self.tile_width.into()) {
             for y in (y0 as i32..=y1 as i32).step_by(self.tile_height.into()) {
                 let area = graphene::Rect::new(x as f32, y as f32, tile_width, tile_height);
-                let Some(restricted_area) = area.restrict(original_width, original_height) else { continue; };
+                let Some(restricted_area) = area.restrict(original_width, original_height) else {
+                    continue;
+                };
 
                 let tile = TileInstructions {
                     tiling: *self,

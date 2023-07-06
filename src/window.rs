@@ -550,8 +550,13 @@ impl LpWindow {
 
     async fn trash(&self) {
         let image_view = self.image_view();
-        let (Some(file), Some(path)) = (image_view.current_file(), image_view.current_file().and_then(|x| x.path()))
-            else { log::error!("No file to trash"); return; };
+        let (Some(file), Some(path)) = (
+            image_view.current_file(),
+            image_view.current_file().and_then(|x| x.path()),
+        ) else {
+            log::error!("No file to trash");
+            return;
+        };
 
         let result = file.trash_future(glib::Priority::default()).await;
 

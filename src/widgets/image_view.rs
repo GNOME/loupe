@@ -416,7 +416,10 @@ impl LpImageView {
 
     fn scroll_sliding_view(&self, file: &gio::File) {
         let Some(current_page) = self.sliding_view().pages().remove(&file.uri()) else {
-            log::error!("Current path not available in sliding_view for scrolling: {}", file.uri());
+            log::error!(
+                "Current path not available in sliding_view for scrolling: {}",
+                file.uri()
+            );
             return;
         };
 
@@ -482,7 +485,9 @@ impl LpImageView {
 
     /// Handle files are added or removed from directory
     fn model_content_changed_cb(&self) {
-        let Some(current_file) = self.current_file() else { return; };
+        let Some(current_file) = self.current_file() else {
+            return;
+        };
 
         // LpImage did not get the update yet
         // Update will be handled by current_image_path_changed

@@ -242,7 +242,9 @@ impl LpFileModel {
     }
 
     fn is_image_file(file: &gio::File) -> bool {
-        let Ok(info) = util::query_attributes(file, vec![gio::FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE]) else {
+        let Ok(info) =
+            util::query_attributes(file, vec![gio::FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE])
+        else {
             log::warn!("Could not query file info: {}", file.uri());
             return false;
         };

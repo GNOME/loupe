@@ -1805,10 +1805,18 @@ impl LpImage {
             let mut bad_contrast = 0;
             'img: loop {
                 for _ in 0..texture.width() {
-                    let Some(r) = bytes_iter.next() else { break 'img; };
-                    let Some(g) = bytes_iter.next() else { break 'img; };
-                    let Some(b) = bytes_iter.next() else { break 'img; };
-                    let Some(a) = bytes_iter.next() else { break 'img; };
+                    let Some(r) = bytes_iter.next() else {
+                        break 'img;
+                    };
+                    let Some(g) = bytes_iter.next() else {
+                        break 'img;
+                    };
+                    let Some(b) = bytes_iter.next() else {
+                        break 'img;
+                    };
+                    let Some(a) = bytes_iter.next() else {
+                        break 'img;
+                    };
 
                     if *a < 255 {
                         has_transparency = true;
