@@ -6,6 +6,7 @@ data/gtk/window.ui
 data/org.gnome.Loupe.desktop.in.in
 data/org.gnome.Loupe.metainfo.xml.in.in
 data/resources/gtk/help-overlay.ui
+src/about.rs
 src/application.rs
 src/decoder/formats/glycin_proxy.rs
 src/decoder/formats/mod.rs

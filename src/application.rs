@@ -18,8 +18,8 @@
 //
 // SPDX-License-Identifier: GPL-3.0-or-later
 
+use crate::about;
 use crate::deps::*;
-use crate::util::gettext::*;
 use crate::util::spawn;
 
 use adw::prelude::*;
@@ -112,7 +112,10 @@ impl LpApplication {
         // add them with add_action_entries().
         let actions = [
             gio::ActionEntryBuilder::new("about")
-                .activate(|app: &Self, _, _| app.show_about())
+                .activate(|app: &Self, _, _| {
+                    let app = app.clone();
+                    spawn(async move { app.show_about().await });
+                })
                 .build(),
             gio::ActionEntryBuilder::new("help")
                 .activate(|app: &Self, _, _| app.show_help())
@@ -185,27 +188,8 @@ impl LpApplication {
         self.set_accels_for_action("window.close", &["<Ctrl>W"]);
     }
 
-    pub fn show_about(&self) {
-        // Builders are a pattern that allow you to create
-        // an object and set all relevant properties very
-        // easily in a way that's idiomatic to Rust.
-        let about = adw::AboutWindow::builder()
-            .application_name(gettext("Loupe"))
-            .application_icon(config::APP_ID)
-            .version(config::VERSION)
-            .developer_name(gettext("The Loupe Team"))
-            .website("https://gitlab.gnome.org/GNOME/Incubator/loupe")
-            .issue_url("https://gitlab.gnome.org/GNOME/Incubator/loupe/-/issues/new")
-            .developers([
-                "Christopher Davis <christopherdavis@gnome.org>",
-                "Sophie Herold <sophieherold@gnome.org>",
-            ])
-            .designers(["Allan Day", "Jakub Steiner", "Tobias Bernard"])
-            // Translators: Replace "translator-credits" with your names, one name per line
-            .translator_credits(gettext("translator-credits"))
-            .copyright(gettext("Copyright © 2020–2023 Christopher Davis et al."))
-            .license_type(gtk::License::Gpl30)
-            .build();
+    pub async fn show_about(&self) {
+        let about = about::window().await;
 
         if let Some(window) = self.active_window() {
             about.set_transient_for(Some(&window));
