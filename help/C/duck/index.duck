@@ -1,11 +1,11 @@
-= $media[type="image" its:translate="no" src="figures/org.gnome.Loupe.svg" height="48px" width="48px"] Loupe Image Viewer
+= $media[type="image" its:translate="no" src="figures/org.gnome.Loupe.svg" height="48px" width="48px"] Image Viewer (Loupe)
   [guide]
 
 @desc Browse through your images and inspect their metadata.
 
 == Introduction
 
-Loupe is an image viewer that supports modern image formats. It provides:
+Iamge Viewer is an image viewer that supports modern image formats. It provides:
 
 * Fast GPU accelerated image rendering with tiled rendering for SVGs
 * Extendable and sandboxed raster image decoding

@@ -862,13 +862,13 @@ impl LpWindow {
     fn window_title(&self, file: Option<&gio::File>) -> String {
         // ensure that templates are initialized
         if file.is_none() {
-            gettext("Loupe")
+            gettext("Image Viewer")
         } else {
             self.imp()
                 .image_view
                 .current_file()
                 .and_then(|f| util::get_file_display_name(&f)) // If the file exists, get display name
-                .unwrap_or_else(|| gettext("Loupe")) // Return that or the default if there's nothing
+                .unwrap_or_else(|| gettext("Image Viewer")) // Return that or the default if there's nothing
         }
     }
 

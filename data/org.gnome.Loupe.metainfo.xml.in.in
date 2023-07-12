@@ -3,7 +3,7 @@
   <id>@APP_ID@.desktop</id>
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-3.0-or-later</project_license>
-  <name>Loupe</name>
+  <name>Image Viewer</name>
   <developer_name>The Loupe Team</developer_name>
   <summary>View images</summary>
   <description>

@@ -15,7 +15,7 @@
   <title>Opening Files</title>
   <section>
    <title>From The File Chooser</title>
-   <p>Loupe allows users to pick images with the file chooser at any time.</p>
+   <p>Image Viewer allows users to pick images with the file chooser at any time.</p>
    <steps>
     <item>
      <p>Click the <gui>Open Files…</gui> button, the <gui style="menuitem">Open…</gui> menu item, or press <keyseq><key>Ctrl</key><key>O</key></keyseq>. The <gui>Open Image</gui> file dialog will appear.</p>
@@ -24,7 +24,7 @@
      <p>Select the image you want to open, then click <gui>Open</gui>.</p>
     </item>
    </steps>
-   <p>Loupe will open with the selected image showing, and the other images in the directory can be reached by browsing.</p>
+   <p>Image Viewer will open with the selected image showing, and the other images in the directory can be reached by browsing.</p>
   </section>
   <section>
    <title>From The File Manager</title>
@@ -37,16 +37,16 @@
      <p>Navigate to the image you want to view in Loupe.</p>
     </item>
     <item>
-     <p>If Loupe is set as your default image viewer, use the file manager's function for opening files.</p>
+     <p>If Image Viewer is set as your default image viewer, use the file manager's function for opening files.</p>
     </item>
     <item>
-     <p>If Loupe is not your default image viewer, you will need to select <gui>Open With…</gui> or similar in the file manager, and pick Loupe.</p>
+     <p>If Image Viewer is not your default image viewer, you will need to select <gui>Open With…</gui> or similar in the file manager, and pick Image Viewer.</p>
     </item>
    </steps>
   </section>
   <section>
    <title>Drag &amp; Drop</title>
-   <p>Loupe also accepts local image files dragged from other applications.</p>
+   <p>Image Viewer also accepts local image files dragged from other applications.</p>
    <steps>
     <item>
      <p>In the source application, begin dragging the image.</p>

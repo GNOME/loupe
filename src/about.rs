@@ -24,7 +24,7 @@ pub async fn window() -> adw::AboutWindow {
     // an object and set all relevant properties very
     // easily in a way that's idiomatic to Rust.
     adw::AboutWindow::builder()
-        .application_name(gettext("Loupe"))
+        .application_name(gettext("Image Viewer"))
         .application_icon(config::APP_ID)
         .version(config::VERSION)
         .developer_name(gettext("The Loupe Team"))

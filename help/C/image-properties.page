@@ -11,7 +11,7 @@
   <desc>View detailed properties of the selected image.</desc>
  </info>
  <title>Image Properties</title>
- <p>Loupe allows users to view an image's properties. All images will have the following
+ <p>Image Viewer allows users to view an image's properties. All images will have the following
  basic properties:</p>
  <list>
   <item>

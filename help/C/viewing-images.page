@@ -73,7 +73,7 @@
  </section>
  <section>
   <title>Fullscreen</title>
-  <p>Loupe has a simple fullscreen mode. Users can toggle fullscreen mode by pressing the <gui>Toggle Fullscreen</gui>
+  <p>Image Viewer has a simple fullscreen mode. Users can toggle fullscreen mode by pressing the <gui>Toggle Fullscreen</gui>
   (<media type="image" src="figures/view-fullscreen-symbolic.svg">view-fullscreen-symbolic</media> / <media type="image" src="figures/view-restore-symbolic.svg">view-restore-symbolic</media>) button.
   Keyboard users can also use <key>F11</key> to toggle fullscreen mode.</p>
  </section>

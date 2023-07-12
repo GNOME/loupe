@@ -1,5 +1,5 @@
 <!--
-Thanks for getting in touch with the Loupe project
+Thanks for getting in touch with the Image Viewer (Loupe) project
 
 Please select one of the issue templates above.
 

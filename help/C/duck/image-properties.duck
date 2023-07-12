@@ -4,7 +4,7 @@
 
 @desc View detailed properties of the selected image.
 
-Loupe allows users to view an image's properties. All images will have the following
+Image Viewer allows users to view an image's properties. All images will have the following
 basic properties:
 
 * Image size

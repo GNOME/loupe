@@ -2,7 +2,7 @@
   [topic]
 @link[guide >index#technical-information]
 
-Loupe uses $link[href=https://gitlab.gnome.org/sophie-h/glycin](glycin) for
+Image Viewer uses $link[href=https://gitlab.gnome.org/sophie-h/glycin](glycin) for
 loading images. You can check $link[href=https://gitlab.gnome.org/sophie-h/glycin#supported-image-formats](glycin's README)
 for more details about the formats supported by the default loaders and the features
 provided by each format.

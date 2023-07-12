@@ -51,7 +51,7 @@
         <attribute name="action">win.show-help-overlay</attribute>
       </item>
       <item>
-        <attribute name="label" translatable="yes">_About Loupe</attribute>
+        <attribute name="label" translatable="yes">_About Image Viewer</attribute>
         <attribute name="action">app.about</attribute>
       </item>
     </section>
@@ -61,7 +61,7 @@
     <property name="default-height">498</property>
     <property name="width-request">360</property>
     <property name="height-request">360</property>
-    <property name="title" translatable="yes">Loupe</property>
+    <property name="title" translatable="yes">Image Viewer</property>
     <signal name="notify::fullscreened" handler="on_fullscreened" swapped="yes"/>
     <binding name="title">
       <closure type="gchararray" function="window_title">
