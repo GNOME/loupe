@@ -7,7 +7,13 @@
   <developer_name>The Loupe Team</developer_name>
   <summary>View images</summary>
   <description>
-    <p>Browse through your images and inspect their metadata.</p>
+    <p>Browse through your images and inspect their metadata with:</p>
+    <ul>
+      <li>Fast GPU accelerated image rendering</li>
+      <li>Tiled rendering for vector graphics</li>
+      <li>Extendable and sandboxed raster image decoding</li>
+      <li>Accessible presentation of the most important metadata.</li>
+    </ul>
   </description>
   <url type="homepage">https://apps.gnome.org/app/org.gnome.Loupe/</url>
   <url type="bugtracker">https://gitlab.gnome.org/GNOME/Incubator/loupe/issues</url>
@@ -108,4 +114,3 @@
     </release>
   </releases>
 </component>
-
