@@ -16,16 +16,16 @@
     </ul>
   </description>
   <url type="homepage">https://apps.gnome.org/app/org.gnome.Loupe/</url>
-  <url type="bugtracker">https://gitlab.gnome.org/GNOME/Incubator/loupe/issues</url>
+  <url type="bugtracker">https://gitlab.gnome.org/GNOME/loupe/issues</url>
   <url type="translate">https://l10n.gnome.org/module/loupe/</url>
   <url type="donation">https://www.gnome.org/donate/</url>
 
   <screenshots>
     <screenshot type="default">
-      <image>https://gitlab.gnome.org/GNOME/Incubator/loupe/uploads/24c80abc88fccb5fc9f2f08de6a7a5ea/screenshot1.png</image>
+      <image>https://gitlab.gnome.org/GNOME/loupe/uploads/24c80abc88fccb5fc9f2f08de6a7a5ea/screenshot1.png</image>
     </screenshot>
     <screenshot>
-      <image>https://gitlab.gnome.org/GNOME/Incubator/loupe/uploads/eec7ea6a6a0a49517e2a887f9f31b738/screenshot2.png</image>
+      <image>https://gitlab.gnome.org/GNOME/loupe/uploads/eec7ea6a6a0a49517e2a887f9f31b738/screenshot2.png</image>
     </screenshot>
   </screenshots>
 

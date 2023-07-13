@@ -7,8 +7,8 @@
   <description xml:lang="en">Image Viewer</description>
 
   <homepage rdf:resource="https://apps.gnome.org/app/org.gnome.Loupe" />
-  <download-page rdf:resource="https://gitlab.gnome.org/GNOME/Incubator/loupe" />
-  <bug-database rdf:resource="https://gitlab.gnome.org/GNOME/Incubator/loupe/-/issues" />
+  <download-page rdf:resource="https://gitlab.gnome.org/GNOME/loupe" />
+  <bug-database rdf:resource="https://gitlab.gnome.org/GNOME/loupe/-/issues" />
 
   <programming-language>Rust</programming-language>
   <platform>GTK 4</platform>
