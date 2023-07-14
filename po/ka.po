@@ -8,9 +8,9 @@ msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/Incubator/loupe/-/"
 "issues\n"
-"POT-Creation-Date: 2023-07-12 19:19+0000\n"
-"PO-Revision-Date: 2023-07-13 07:05+0200\n"
-"Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
+"POT-Creation-Date: 2023-07-13 22:02+0000\n"
+"PO-Revision-Date: 2023-07-14 06:56+0200\n"
+"Last-Translator: Ekaterine Papava <papava.e@gtu.ge>\n"
 "Language-Team: Georgian <ka@li.org>\n"
 "Language: ka\n"
 "MIME-Version: 1.0\n"
@@ -191,15 +191,15 @@ msgid "_Keyboard Shortcuts"
 msgstr "_კლავიატურის მალსახმობები"
 
 #: data/gtk/window.ui:54
-msgid "_About Loupe"
-msgstr "Loupe-ის _შესახებ"
+msgid "_About Image Viewer"
+msgstr "სურათების დამთვალიერებლის შესახებ"
 
 #. If the file exists, get display name
 #: data/gtk/window.ui:64 data/org.gnome.Loupe.desktop.in.in:3
 #: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:27 src/window.rs:865
 #: src/window.rs:871
-msgid "Loupe"
-msgstr "Loupe"
+msgid "Image Viewer"
+msgstr "სურათების გალერეა"
 
 #: data/gtk/window.ui:108
 msgid "Copy to Clipboard"
@@ -230,8 +230,8 @@ msgid "_Open Files…"
 msgstr "_ფაილების გახსნა…"
 
 #: data/org.gnome.Loupe.desktop.in.in:11
-msgid "Picture;Slideshow;Graphics;Image Viewer;"
-msgstr "Picture;Slideshow;Graphics;Image Viewer;"
+msgid "Picture;Slideshow;Graphics;Loupe;"
+msgstr "Picture;Slideshow;Graphics;ლუპა;"
 
 #: data/org.gnome.Loupe.metainfo.xml.in.in:7 src/about.rs:30
 msgid "The Loupe Team"
@@ -549,6 +549,12 @@ msgstr "წაშლა"
 #: src/window.rs:631
 msgid "Failed to delete image"
 msgstr "გამოსახულების წაშლის შეცდომა"
+
+#~ msgid "_About Loupe"
+#~ msgstr "Loupe-ის _შესახებ"
+
+#~ msgid "Loupe"
+#~ msgstr "Loupe"
 
 #~ msgid "Failed to read image file information"
 #~ msgstr "გამოსახულების ფაილის ინფორმაციის წაკითხვის შეცდომა"
