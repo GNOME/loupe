@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/Incubator/loupe/-/"
 "issues\n"
-"POT-Creation-Date: 2023-07-02 14:24+0000\n"
-"PO-Revision-Date: 2023-07-05 06:55+0200\n"
+"POT-Creation-Date: 2023-07-14 14:07+0000\n"
+"PO-Revision-Date: 2023-07-14 19:34+0200\n"
 "Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
 "Language-Team: Slovenian <gnome-si@googlegroups.com>\n"
 "Language: sl\n"
@@ -195,15 +195,15 @@ msgid "_Keyboard Shortcuts"
 msgstr "_Tipkovne bližnjice‫"
 
 #: data/gtk/window.ui:54
-msgid "_About Loupe"
-msgstr "_O programu Lupa"
+msgid "_About Image Viewer"
+msgstr "_O Pregledovalniku slik"
 
 #. If the file exists, get display name
 #: data/gtk/window.ui:64 data/org.gnome.Loupe.desktop.in.in:3
-#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/application.rs:193
-#: src/window.rs:860 src/window.rs:866
-msgid "Loupe"
-msgstr "Lupa"
+#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:27 src/window.rs:865
+#: src/window.rs:871
+msgid "Image Viewer"
+msgstr "Pregledovalnik slik"
 
 #: data/gtk/window.ui:108
 msgid "Copy to Clipboard"
@@ -234,10 +234,11 @@ msgid "_Open Files…"
 msgstr "_Odpri datoteke …"
 
 #: data/org.gnome.Loupe.desktop.in.in:11
-msgid "Picture;Slideshow;Graphics;Image Viewer;"
-msgstr "Slika; diaprojekcija;grafika;pregledovalnik slik;"
+msgid "Picture;Slideshow;Graphics;Loupe;"
+msgstr ""
+"Slika; diaprojekcija;projekcija;grafika;pregledovalnik slik;lupa;loupe;"
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:7 src/application.rs:196
+#: data/org.gnome.Loupe.metainfo.xml.in.in:7 src/about.rs:30
 msgid "The Loupe Team"
 msgstr "Ekipa Lupe"
 
@@ -246,8 +247,24 @@ msgid "View images"
 msgstr "Pregledovalnik slik"
 
 #: data/org.gnome.Loupe.metainfo.xml.in.in:10
-msgid "Browse through your images and inspect their metadata."
-msgstr "Brskajte po slikah in preverite njihove metapodatke."
+msgid "Browse through your images and inspect their metadata with:"
+msgstr "Brskajte po slikah in preverite njihove metapodatke z:"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:12
+msgid "Fast GPU accelerated image rendering"
+msgstr "Hitro, z GPE pohitreno izrisovanje slik"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:13
+msgid "Tiled rendering for vector graphics"
+msgstr "Tlakovano izrisovanje vektorske grafike"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:14
+msgid "Extendable and sandboxed raster image decoding"
+msgstr "Razširljivo in pred sesutjem varno dekodiranje rastrskih slik"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:15
+msgid "Accessible presentation of the most important metadata."
+msgstr "Dostopna predstavitev najpomembnejših metapodatkov."
 
 #: data/resources/gtk/help-overlay.ui:11
 msgctxt "shortcut window"
@@ -423,11 +440,11 @@ msgid "Gestures"
 msgstr "Kretnje"
 
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/application.rs:205
+#: src/about.rs:39
 msgid "translator-credits"
 msgstr "Martin Srebotnjak <miles@filmsi.net>"
 
-#: src/application.rs:206
+#: src/about.rs:40
 msgid "Copyright © 2020–2023 Christopher Davis et al."
 msgstr "Avtorska pravica © 2020–2023 Christopher Davis et al."
 
@@ -473,20 +490,20 @@ msgstr "{}\\u{202F} mm"
 msgid "%x %X"
 msgstr "%x %X"
 
-#: src/util/mod.rs:171 src/window.rs:574
+#: src/util/mod.rs:179 src/window.rs:579
 msgid "Failed to restore image from trash"
 msgstr "Obnovitev slike iz smeti ni uspela"
 
-#: src/util/mod.rs:192
+#: src/util/mod.rs:200
 msgid "Failed to open image"
 msgstr "Odpiranje slike ni uspelo"
 
 #. Translators: This is a toast notification, informing the user that an image has been set as background.
-#: src/widgets/image_view.rs:653
+#: src/widgets/image_view.rs:658
 msgid "Set as background."
 msgstr "Določi kot sliko ozadja."
 
-#: src/widgets/image_view.rs:666
+#: src/widgets/image_view.rs:671
 msgid "Could not set background."
 msgstr "Ozadja ni bilo mogoče nastaviti."
 
@@ -506,34 +523,34 @@ msgstr "Odpri sliko"
 msgid "Image copied to clipboard"
 msgstr "Slika, kopirana na odložišče"
 
-#: src/window.rs:561
+#: src/window.rs:566
 msgid "Image moved to trash"
 msgstr "Slika, premaknjena v smeti"
 
-#: src/window.rs:562
+#: src/window.rs:567
 msgid "Undo"
 msgstr "Razveljavi"
 
-#: src/window.rs:589
+#: src/window.rs:594
 msgid "Failed to move image to trash"
 msgstr "Premikanje slike v smeti ni uspelo"
 
-#: src/window.rs:604
+#: src/window.rs:609
 msgid "Permanently Delete Image?"
 msgstr "Ali želite trajno izbrisati sliko?"
 
-#: src/window.rs:606
+#: src/window.rs:611
 msgid "The image “{}” can only be deleted permanently."
 msgstr "Sliko »{}« je mogoče le trajno izbrisati."
 
-#: src/window.rs:614
+#: src/window.rs:619
 msgid "Cancel"
 msgstr "Prekliči"
 
-#: src/window.rs:615
+#: src/window.rs:620
 msgid "Delete"
 msgstr "Izbriši"
 
-#: src/window.rs:626
+#: src/window.rs:631
 msgid "Failed to delete image"
 msgstr "Brisanje slike ni uspelo"
