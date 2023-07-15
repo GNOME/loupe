@@ -8,11 +8,11 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
-"Report-Msgid-Bugs-To: https://gitlab.gnome.org/Incubator/loupe/-/issues\n"
-"POT-Creation-Date: 2023-05-01 10:55+0000\n"
-"PO-Revision-Date: 2023-05-08 22:49+0300\n"
-"Last-Translator: Sabri Ünal <libreajans@gmail.com>\n"
-"Language-Team: Turkish <gnome-turk@gnome.org>\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
+"POT-Creation-Date: 2023-07-14 17:35+0000\n"
+"PO-Revision-Date: 2023-07-15 18:43+0300\n"
+"Last-Translator: Emin Tufan Çetin <etcetin@gmail.com>\n"
+"Language-Team: Turkish <takim@gnome.org.tr>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -40,15 +40,15 @@ msgstr "Döndür"
 msgid "_Set as Background…"
 msgstr "_Arka Plan Olarak Ayarla…"
 
-#: data/gtk/image_page.ui:55
+#: data/gtk/image_page.ui:63
 msgid "Could not Load Image"
 msgstr "Görüntü yüklenemedi"
 
-#: data/gtk/image_page.ui:88 data/gtk/window.ui:101
+#: data/gtk/image_page.ui:97 data/gtk/window.ui:129
 msgid "Rotate Left"
 msgstr "Sola Döndür"
 
-#: data/gtk/image_page.ui:98 data/gtk/window.ui:111
+#: data/gtk/image_page.ui:107 data/gtk/window.ui:139
 msgid "Rotate Right"
 msgstr "Sağa Döndür"
 
@@ -120,59 +120,59 @@ msgstr "Yazdır"
 msgid "Folder"
 msgstr "Klasör"
 
-#: data/gtk/properties_view.ui:42
+#: data/gtk/properties_view.ui:41
 msgid "Open Containing Folder"
 msgstr "İçeren Klasörü Aç"
 
-#: data/gtk/properties_view.ui:59
+#: data/gtk/properties_view.ui:58
 msgid "Image Size"
 msgstr "Görüntü Boyutu"
 
-#: data/gtk/properties_view.ui:75
+#: data/gtk/properties_view.ui:74
 msgid "Image Format"
 msgstr "Görüntü Biçimi"
 
-#: data/gtk/properties_view.ui:89
+#: data/gtk/properties_view.ui:88
 msgid "File Size"
 msgstr "Dosya Boyutu"
 
-#: data/gtk/properties_view.ui:107
+#: data/gtk/properties_view.ui:106
 msgid "File Created"
 msgstr "Oluşturulma"
 
-#: data/gtk/properties_view.ui:121
+#: data/gtk/properties_view.ui:120
 msgid "File Modified"
 msgstr "Değiştirilme"
 
-#: data/gtk/properties_view.ui:144
+#: data/gtk/properties_view.ui:143
 msgid "Location"
 msgstr "Konum"
 
-#: data/gtk/properties_view.ui:164
+#: data/gtk/properties_view.ui:162
 msgid "Open Location"
 msgstr "Konumu Aç"
 
-#: data/gtk/properties_view.ui:177
+#: data/gtk/properties_view.ui:175
 msgid "Originally Created"
 msgstr "Özgün Oluşturulma"
 
-#: data/gtk/properties_view.ui:198
+#: data/gtk/properties_view.ui:196
 msgid "Aperture"
 msgstr "Açıklık"
 
-#: data/gtk/properties_view.ui:219
+#: data/gtk/properties_view.ui:217
 msgid "Exposure"
 msgstr "Pozlama"
 
-#: data/gtk/properties_view.ui:240
+#: data/gtk/properties_view.ui:238
 msgid "ISO"
 msgstr "ISO"
 
-#: data/gtk/properties_view.ui:261
+#: data/gtk/properties_view.ui:259
 msgid "Focal Length"
 msgstr "Odak Uzaklığı"
 
-#: data/gtk/properties_view.ui:282
+#: data/gtk/properties_view.ui:280
 msgid "Maker, Model"
 msgstr "Üretici, Model"
 
@@ -185,54 +185,57 @@ msgid "_Open…"
 msgstr "_Aç…"
 
 #: data/gtk/window.ui:46
+msgid "_Help"
+msgstr "_Yardım"
+
+#: data/gtk/window.ui:50
 msgid "_Keyboard Shortcuts"
 msgstr "_Klavye Kısayolları"
 
-#: data/gtk/window.ui:50
-msgid "_About Loupe"
-msgstr "Loupe _Hakkında"
+#: data/gtk/window.ui:54
+msgid "_About Image Viewer"
+msgstr "Resim Görüntüleyici _Hakkında"
 
 #. If the file exists, get display name
-#: data/gtk/window.ui:59 data/org.gnome.Loupe.desktop.in.in:3
-#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/application.rs:188
-#: src/window.rs:796 src/window.rs:802
-msgid "Loupe"
-msgstr "Loupe"
+#: data/gtk/window.ui:64 data/org.gnome.Loupe.desktop.in.in:3
+#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:27 src/window.rs:865
+#: src/window.rs:871
+msgid "Image Viewer"
+msgstr "Resim Görüntüleyici"
 
-#: data/gtk/window.ui:80
+#: data/gtk/window.ui:108
 msgid "Copy to Clipboard"
 msgstr "Panoya Kopyala"
 
-#: data/gtk/window.ui:87
+#: data/gtk/window.ui:115
 msgid "Move to Trash"
 msgstr "Çöpe Taşı"
 
-#: data/gtk/window.ui:93
+#: data/gtk/window.ui:121
 msgid "Main Menu"
 msgstr "Ana Menü"
 
-#: data/gtk/window.ui:125
+#: data/gtk/window.ui:153
 msgid "Image Properties"
 msgstr "Görüntü Özellikleri"
 
-#: data/gtk/window.ui:145
+#: data/gtk/window.ui:176
 msgid "View Images"
 msgstr "Görüntüleri Görüntüle"
 
-#: data/gtk/window.ui:146
+#: data/gtk/window.ui:177
 msgid "Drag and drop images here"
 msgstr "Görüntüleri sürükleyip buraya bırakın"
 
-#: data/gtk/window.ui:150
-msgid "_Open File…"
+#: data/gtk/window.ui:181
+msgid "_Open Files…"
 msgstr "Dosya _Aç…"
 
 #: data/org.gnome.Loupe.desktop.in.in:11
-msgid "Picture;Slideshow;Graphics;Image Viewer;"
-msgstr ""
-"Resim;Slayt Gösterisi;Grafikler;Görseller;Resim Gösterici;Görüntü Gösterici;"
+msgid "Picture;Slideshow;Graphics;Loupe;"
+msgstr "Resim;Fotoğraf;Slayt Gösterisi;Grafikler;Görseller;Loupe;"
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:7 src/application.rs:191
+#: data/org.gnome.Loupe.metainfo.xml.in.in:7 src/about.rs:30
 msgid "The Loupe Team"
 msgstr "Loupe Takımı"
 
@@ -241,8 +244,24 @@ msgid "View images"
 msgstr "Görüntüleri göster"
 
 #: data/org.gnome.Loupe.metainfo.xml.in.in:10
-msgid "Browse through your images and inspect their metadata."
-msgstr "Görüntülerinize göz atın ve üst verilerini inceleyin."
+msgid "Browse through your images and inspect their metadata with:"
+msgstr "Görüntülerinize göz atın ve üst verilerini şunlarla inceleyin:"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:12
+msgid "Fast GPU accelerated image rendering"
+msgstr "Hızlı, GPU hızlandırmalı resim sahneleme"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:13
+msgid "Tiled rendering for vector graphics"
+msgstr "Vektör grafikler için bölünmüş sahneleme"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:14
+msgid "Extendable and sandboxed raster image decoding"
+msgstr "Genişletilebilir ve yalıtılmış taramalı görsel çözme"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:15
+msgid "Accessible presentation of the most important metadata."
+msgstr "Çoğu önemli üst verinin erişilebilir gösterimi."
 
 #: data/resources/gtk/help-overlay.ui:11
 msgctxt "shortcut window"
@@ -418,86 +437,47 @@ msgid "Gestures"
 msgstr "Hareketler"
 
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/application.rs:200
+#: src/about.rs:39
 msgid "translator-credits"
 msgstr ""
 "Sabri Ünal <libreajans@gmail.com>\n"
 "Emin Tufan Çetin <etcetin@gmail.com>"
 
-#: src/application.rs:201
+#: src/about.rs:40
 msgid "Copyright © 2020–2023 Christopher Davis et al."
 msgstr "Telif Hakkı © 2020–2023 Christopher Davis et al."
 
-#: src/decoder/formats/heif.rs:55
-msgid "Failed to read image file information"
-msgstr "Görüntü dosyası bilgisi okunamadı"
-
-#: src/decoder/formats/heif.rs:60 src/decoder/formats/heif.rs:93
-#: src/decoder/formats/image_rs_other.rs:116
-#: src/decoder/formats/image_rs_other.rs:125
-#: src/decoder/formats/image_rs_other.rs:132
-msgid "Failed to decode image"
-msgstr "Görüntü kodu çözülemedi"
-
-#: src/decoder/formats/mod.rs:72
-msgid "Animated GIF"
-msgstr "Canlandırmalı GIF"
-
-#: src/decoder/formats/mod.rs:73
-msgid "Animated WebP"
-msgstr "Canlandırmalı WebP"
-
-#: src/decoder/formats/mod.rs:74
-msgid "Animated PNG"
-msgstr "Canlandırmalı PNG"
-
-#: src/decoder/mod.rs:189
-msgid "Unknown image format: {}"
-msgstr "Bilinmeyen görüntü biçimi: {}"
-
-#: src/decoder/mod.rs:194
-msgid "Unknown image format"
-msgstr "Bilinmeyen görüntü biçimi"
-
-#: src/decoder/mod.rs:222
-msgid "Could not open image"
-msgstr "Görüntü açılamadı"
-
-#: src/decoder/mod.rs:226
-msgid "Could not read image"
-msgstr "Görüntü okunamadı"
-
-#: src/file_model.rs:118
+#: src/file_model.rs:120
 msgid "Could not list other files in directory."
 msgstr "Dizindeki diğer dosyalar listelenemedi."
 
 #. Translators: short for "north" in GPS coordinate
-#: src/image_metadata/gps.rs:154
+#: src/image_metadata/gps.rs:152
 msgid "N"
 msgstr "K"
 
 #. Translators: short for "south" in GPS coordinate
-#: src/image_metadata/gps.rs:157
+#: src/image_metadata/gps.rs:155
 msgid "S"
 msgstr "G"
 
 #. Translators: short for "east" in GPS coordinate
-#: src/image_metadata/gps.rs:167
+#: src/image_metadata/gps.rs:165
 msgid "E"
 msgstr "D"
 
 #. Translators: short for "west" in GPS coordinate
-#: src/image_metadata/gps.rs:170
+#: src/image_metadata/gps.rs:168
 msgid "W"
 msgstr "B"
 
 #. Translators: Unit for exposure time in seconds
-#: src/image_metadata/mod.rs:144
+#: src/image_metadata/mod.rs:163
 msgid "1\\u{2215}{}\\u{202F}s"
 msgstr "1\\u{2215}{}\\u{202F}sn"
 
 #. Translators: Unit for focal length in millimeters
-#: src/image_metadata/mod.rs:169
+#: src/image_metadata/mod.rs:188
 msgid "{}\\u{202F}mm"
 msgstr "{}\\u{202F}mm"
 
@@ -509,106 +489,100 @@ msgstr "{}\\u{202F}mm"
 msgid "%x %X"
 msgstr "%x %X"
 
-#: src/util/mod.rs:171 src/window.rs:522
+#: src/util/mod.rs:179 src/window.rs:579
 msgid "Failed to restore image from trash"
 msgstr "Görüntü çöpten geri yüklenemedi"
 
-#: src/util/mod.rs:192
+#: src/util/mod.rs:200
 msgid "Failed to open image"
 msgstr "Görüntü açılamadı"
 
 #. Translators: This is a toast notification, informing the user that an image has been set as background.
-#: src/widgets/image_view.rs:620
+#: src/widgets/image_view.rs:658
 msgid "Set as background."
 msgstr "Arka plan olarak ayarla."
 
-#: src/widgets/image_view.rs:631
+#: src/widgets/image_view.rs:671
 msgid "Could not set background."
 msgstr "Arka plan olarak ayarlanamadı."
 
-#: src/window.rs:426
+#: src/window.rs:466
 msgid "Supported image formats"
 msgstr "Desteklenen görüntü biçimleri"
 
-#: src/window.rs:432
+#: src/window.rs:475
 msgid "All files"
 msgstr "Tüm dosyalar"
 
-#: src/window.rs:439
+#: src/window.rs:482
 msgid "Open Image"
 msgstr "Görüntü Aç"
 
-#: src/window.rs:494
+#: src/window.rs:545
 msgid "Image copied to clipboard"
 msgstr "Görüntü panoya kopyalandı"
 
-#: src/window.rs:510
+#: src/window.rs:566
 msgid "Image moved to trash"
 msgstr "Görüntü çöpe taşındı"
 
-#: src/window.rs:511
+#: src/window.rs:567
 msgid "Undo"
 msgstr "Geri Al"
 
-#: src/window.rs:537
+#: src/window.rs:594
 msgid "Failed to move image to trash"
 msgstr "Görüntü çöpe taşınamadı"
 
-#: src/window.rs:552
+#: src/window.rs:609
 msgid "Permanently Delete Image?"
 msgstr "Görüntü Kalıcı Olarak Silinsin mi?"
 
-#: src/window.rs:554
+#: src/window.rs:611
 msgid "The image “{}” can only be deleted permanently."
 msgstr "“{}” görüntüsü yalnızca kalıcı olarak silinebilir."
 
-#: src/window.rs:562
+#: src/window.rs:619
 msgid "Cancel"
 msgstr "İptal Et"
 
-#: src/window.rs:563
+#: src/window.rs:620
 msgid "Delete"
 msgstr "Sil"
 
-#: src/window.rs:574
+#: src/window.rs:631
 msgid "Failed to delete image"
 msgstr "Görüntü silinemedi"
 
-#~ msgid "Layout Image"
-#~ msgstr "Yerleşim Görüntüsü"
+#~ msgid "_About Loupe"
+#~ msgstr "Loupe _Hakkında"
 
-#~ msgid "The following features are not available yet"
-#~ msgstr "Aşağıdaki özellikler henüz kullanılamıyor"
+#~ msgid "Loupe"
+#~ msgstr "Loupe"
 
-#~ msgid "Applying image color profiles"
-#~ msgstr "Görüntü renk profilleri uygulanıyor"
+#~ msgid "Failed to read image file information"
+#~ msgstr "Görüntü dosyası bilgisi okunamadı"
 
-#~ msgid "Printing"
-#~ msgstr "Yazdırma"
+#~ msgid "Failed to decode image"
+#~ msgstr "Görüntü kodu çözülemedi"
 
-#~ msgid "Christopher Davis"
-#~ msgstr "Christopher Davis"
+#~ msgid "Unknown image format"
+#~ msgstr "Bilinmeyen görüntü biçimi"
 
-#~ msgid "File does not exist"
-#~ msgstr "Dosya yok"
+#~ msgid "Animated GIF"
+#~ msgstr "Canlandırmalı GIF"
 
-#~ msgid "Failed to open new background image"
-#~ msgstr "Yeni arka plan görüntüsü açılamadı"
+#~ msgid "Animated WebP"
+#~ msgstr "Canlandırmalı WebP"
 
-#~ msgid "“{}” is not a valid image."
-#~ msgstr "“{}” geçerli bir görüntü değil."
+#~ msgid "Animated PNG"
+#~ msgstr "Canlandırmalı PNG"
 
-#~ msgid "Correctly showing SVGs at every zoom-level"
-#~ msgstr "SVG'leri her yakınlaştırma düzeyinde doğru gösterme"
+#~ msgid "Unknown image format: {}"
+#~ msgstr "Bilinmeyen görüntü biçimi: {}"
 
-#~ msgid "Correct HighDPI support"
-#~ msgstr "Doğru Yüksek Çözünürlük desteği"
+#~ msgid "Could not open image"
+#~ msgstr "Görüntü açılamadı"
 
-#~ msgid "Print settings to position the image on the page"
-#~ msgstr "Görüntüyü sayfada konumlandırmak için yazdırma ayarları"
-
-#~ msgid "File Type"
-#~ msgstr "Dosya Türü"
-
-#~ msgid "_Help"
-#~ msgstr "_Yardım"
+#~ msgid "Could not read image"
+#~ msgstr "Görüntü okunamadı"
