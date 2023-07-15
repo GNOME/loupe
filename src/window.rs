@@ -377,23 +377,10 @@ mod imp {
 
             self.drop_target.set_types(&[gdk::FileList::static_type()]);
 
-            //only accept drops from out side the app
-            //https://gitlab.gnome.org/GNOME/Incubator/loupe/-/merge_requests/244#note_1788260
+            // Only accept drops from external sources or different windows
             self.drop_target.connect_accept(
                 clone!(@weak obj => @default-return false, move |_drop_target, drop| {
-                    //drag is between Loupe windows
-                    if let Some(drop) = drop.drag() {
-                        let file = drop
-                            .content()
-                            .value(gdk::FileList::static_type())
-                            .ok()
-                            .and_then(|value| value.get::<gdk::FileList>().ok())
-                            .and_then(|files| files.files().first().and_then(|file| file.path()));
-                        let current_image = obj.image_view().current_file().and_then(|file| file.path());
-                        return file.ne(&current_image);
-                    }
-                    //drag from another window, should always be accepted
-                    true
+                    drop.drag().is_none() || drop.drag() != obj.image_view().drag_source().drag()
                 }),
             );
 

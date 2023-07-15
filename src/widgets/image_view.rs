@@ -78,6 +78,8 @@ mod imp {
         #[template_child]
         pub sliding_view: TemplateChild<LpSlidingView>,
 
+        pub drag_source: gtk::DragSource,
+
         pub(super) model: RefCell<LpFileModel>,
         pub(super) preserve_content: Cell<bool>,
 
@@ -164,10 +166,9 @@ mod imp {
 
             self.current_image_signals.set(signal_group).unwrap();
 
-            let source = gtk::DragSource::new();
-            source.set_exclusive(true);
+            self.drag_source.set_exclusive(true);
 
-            source.connect_prepare(
+            self.drag_source.connect_prepare(
                 glib::clone!(@weak obj => @default-return None, move |gesture, _, _| {
                     let is_scrollable = obj
                         .current_page()
@@ -184,7 +185,7 @@ mod imp {
                 }),
             );
 
-            source.connect_drag_begin(glib::clone!(@weak obj => move |source, _| {
+            self.drag_source.connect_drag_begin(glib::clone!(@weak obj => move |source, _| {
                 if let Some(paintable) = obj.current_image().and_then(|p| p.thumbnail()) {
                     // -6 for cursor width, +16 for margin in .drag-icon
                     source.set_icon(Some(&paintable), paintable.intrinsic_width() / 2 - 6 + 16, -12);
@@ -198,7 +199,7 @@ mod imp {
                 };
             }));
 
-            obj.add_controller(source);
+            obj.add_controller(self.drag_source.clone());
         }
     }
 
@@ -543,6 +544,10 @@ impl LpImageView {
             .sliding_view
             .current_page()
             .and_then(|x| x.image().file())
+    }
+
+    pub fn drag_source(&self) -> gtk::DragSource {
+        self.imp().drag_source.clone()
     }
 
     /// Returns `true` if there is an image before the current one
