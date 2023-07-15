@@ -16,10 +16,11 @@
 //
 // SPDX-License-Identifier: GPL-3.0-or-later
 
-use gtk::{glib, prelude::*};
+use crate::deps::*;
+use adw::prelude::*;
 
 mod imp {
-    use std::cell::RefCell;
+    use once_cell::sync::OnceCell;
 
     use adw::subclass::prelude::*;
     use glib::{ParamSpec, Properties, Value};
@@ -37,9 +38,8 @@ mod imp {
         pub overlayed: Option<gtk::Widget>,
         pub overlay: gtk::Overlay,
         pub revealer: gtk::Revealer,
-        #[property(set = Self::set_drop_target, get, explicit_notify)]
-        pub drop_target: RefCell<Option<gtk::DropTarget>>,
-        pub handler_id: RefCell<Option<glib::SignalHandlerId>>,
+        #[property(set = Self::set_drop_target, get, explicit_notify, construct_only)]
+        pub drop_target: OnceCell<gtk::DropTarget>,
     }
 
     #[glib::object_subclass]
@@ -47,6 +47,10 @@ mod imp {
         const NAME: &'static str = "LpDragOverlay";
         type Type = super::LpDragOverlay;
         type ParentType = adw::Bin;
+
+        fn class_init(klass: &mut Self::Class) {
+            klass.set_css_name("lpdragoverlay");
+        }
     }
 
     impl ObjectImpl for LpDragOverlay {
@@ -88,29 +92,17 @@ mod imp {
             self.revealer.set_child(overlayed.as_ref());
         }
 
-        pub fn set_drop_target(&self, drop_target: &gtk::DropTarget) {
-            if let Some(target) = self.drop_target.borrow_mut().take() {
-                self.obj().remove_controller(&target);
-
-                if let Some(handler_id) = self.handler_id.borrow_mut().take() {
-                    target.disconnect(handler_id);
-                }
-            }
-
-            let handler_id = drop_target.connect_current_drop_notify(
+        pub fn set_drop_target(&self, drop_target: gtk::DropTarget) {
+            drop_target.connect_current_drop_notify(
                 glib::clone!(@weak self.revealer as revealer => move |target| {
                     let reveal = target.current_drop().is_some();
                     revealer.set_reveal_child(reveal);
                 }),
             );
-            self.handler_id.replace(Some(handler_id));
 
-            // avoid `gtk_event_controller_get_widget (controller) == NULL` failing
-            if drop_target.widget().is_visible() {
-                self.obj().add_controller(drop_target.clone());
-                self.drop_target.replace(Some(drop_target.clone()));
-                self.obj().notify("drop-target");
-            }
+            self.drop_target.set(drop_target).unwrap();
+
+            self.obj().notify("drop-target");
         }
     }
 }

@@ -169,12 +169,9 @@
                 <property name="reveal-flap" bind-source="properties_button" bind-property="active" bind-flags="bidirectional|sync-create"/>
                 <property name="content">
                   <object class="LpDragOverlay" id="drag_overlay">
+                    <property name="drop_target">drop_target</property>
                     <property name="overlayed">
                       <object class="AdwBin">
-                        <property name="margin-top">24</property>
-                        <property name="margin-bottom">24</property>
-                        <property name="margin-start">24</property>
-                        <property name="margin-end">24</property>
                         <property name="can-target">false</property>
                         <style>
                           <class name="lp-dragging-area-highlight"/>
@@ -185,6 +182,9 @@
                       <object class="GtkStack" id="stack">
                         <property name="visible-child">status_page</property>
                         <property name="vexpand">True</property>
+                        <style>
+                          <class name="drop-widget" />
+                        </style>
                         <child>
                           <object class="GtkDropTarget" id="drop_target">
                             <property name="actions">copy</property>

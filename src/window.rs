@@ -419,7 +419,6 @@ mod imp {
                     true
                 }),
             );
-            self.drag_overlay.set_drop_target(&*self.drop_target);
         }
     }
 
