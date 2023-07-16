@@ -2,8 +2,8 @@
 // Copyright (c) 2022-2023 Sophie Herold
 // Copyright (c) 2022 Elton A Rodrigues
 // Copyright (c) 2022 Maximiliano Sandoval R
-// Copyright (c) 2023 Huan Nguyen
 // Copyright (c) 2023 FineFindus
+// Copyright (c) 2023 Huan Nguyen
 // Copyright (c) 2023 Philipp Kiemle
 //
 // This program is free software: you can redistribute it and/or modify

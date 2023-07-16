@@ -1,4 +1,4 @@
-// Copyright (c) 2022  Maximiliano Sandoval R <msandova@gnome.org>
+// Copyright (c) 2023 Sophie Herold
 // Copyright (c) 2023 FineFindus
 //
 // This program is free software: you can redistribute it and/or modify
@@ -15,6 +15,10 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 // SPDX-License-Identifier: GPL-3.0-or-later
+
+//! A widget that shows an overlay when dragging an image over the window
+//!
+//! This implementation is inspired by [Amberol](https://gitlab.gnome.org/World/amberol)
 
 use crate::deps::*;
 use adw::prelude::*;

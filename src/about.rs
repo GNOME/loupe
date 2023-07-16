@@ -1,3 +1,4 @@
+// Copyright (c) 2023 Christopher Davis
 // Copyright (c) 2023 Sophie Herold
 //
 // This program is free software: you can redistribute it and/or modify

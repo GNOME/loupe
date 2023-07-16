@@ -2,7 +2,9 @@
 // Copyright (c) 2022-2023 Sophie Herold
 // Copyright (c) 2022 Elton A Rodrigues
 // Copyright (c) 2022 Maximiliano Sandoval R
-// Copyright (c) 2023 Huan Nguyen
+// Copyright (c) 2023 FineFindus
+// Copyright (c) 2023 qwel
+// Copyright (c) 2023 Huan Thieu Nguyen
 // Copyright (c) 2023 Sabri Ünal
 // Copyright (c) 2023 Lubosz Sarnecki
 //

@@ -1,4 +1,4 @@
-// Copyright (c) 2021-2022 Christopher Davis
+// Copyright (c) 2021-2023 Christopher Davis
 // Copyright (c) 2022-2023 Sophie Herold
 // Copyright (c) 2022 Maximiliano Sandoval R
 // Copyright (c) 2023 Lubosz Sarnecki

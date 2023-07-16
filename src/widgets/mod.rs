@@ -1,4 +1,5 @@
 // Copyright (c) 2020-2022 Christopher Davis
+// Copyright (c) 2023 FineFindus
 // Copyright (c) 2023 Sophie Herold
 //
 // This program is free software: you can redistribute it and/or modify
