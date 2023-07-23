@@ -5,6 +5,7 @@ button.osd.circular {
 }
 
 .fullscreen revealer:not(.raised) .fullscreen-osd {
+  color: rgba(255, 255, 255, 0.9);
   background: rgba(0, 0, 0, 0.65);
 }
 
