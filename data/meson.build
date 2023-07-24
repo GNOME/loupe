@@ -41,6 +41,11 @@ mime_types += [
   'image/heic',
 ]
 
+# JXL
+mime_types += [
+  'image/jxl',
+]
+
 conf.set('MIME_TYPES', ';'.join(mime_types) + ';')
 
 desktop_file = i18n.merge_file(
