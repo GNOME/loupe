@@ -2,13 +2,15 @@
 # Copyright (C) 2023 Free Software Foundation, Inc.
 # This file is distributed under the same license as the Loupe package.
 #
+# Balázs Meskó <mesko.balazs at fsf dot hu>, 2023.
 # Balázs Úr <ur.balazs at fsf dot hu>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-06 21:19+0000\n"
-"PO-Revision-Date: 2023-04-13 23:44+0200\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/Incubator/loupe/-/issues"
+"\n"
+"POT-Creation-Date: 2023-07-14 14:07+0000\n"
+"PO-Revision-Date: 2023-07-27 01:21+0200\n"
 "Last-Translator: Balázs Úr <ur.balazs at fsf dot hu>\n"
 "Language-Team: Hungarian <openscope at fsf dot hu>\n"
 "Language: hu\n"
@@ -16,214 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 22.08.2\n"
-
-#. If the file exists, get display name
-#: data/org.gnome.Loupe.desktop.in.in:3
-#: data/org.gnome.Loupe.metainfo.xml.in.in:6 data/gtk/window.ui:59
-#: src/application.rs:187 src/window.rs:676 src/window.rs:682
-msgid "Loupe"
-msgstr "Loupe"
-
-#: data/org.gnome.Loupe.desktop.in.in:11
-msgid "Picture;Slideshow;Graphics;Image Viewer;"
-msgstr "Fénykép;Kép;Diavetítés;Grafika;Képnézegető;"
-
-#: data/org.gnome.Loupe.metainfo.xml.in.in:7 src/application.rs:190
-msgid "The Loupe Team"
-msgstr "A Loupe csapata"
-
-#: data/org.gnome.Loupe.metainfo.xml.in.in:8
-msgid "View images"
-msgstr "Képek megtekintése"
-
-#: data/org.gnome.Loupe.metainfo.xml.in.in:10
-msgid ""
-"A simple image viewer which allows you to browse through your images and "
-"inspect their metadata."
-msgstr ""
-"Egy egyszerű képnézegető, amely lehetővé teszi a képek böngészését és a "
-"metaadataik vizsgálatát."
-
-#: data/org.gnome.Loupe.metainfo.xml.in.in:11
-msgid "The following features are not available yet"
-msgstr "A következő funkciók még nem érhetők el"
-
-#: data/org.gnome.Loupe.metainfo.xml.in.in:13
-#| msgid "Interpreting image color profiles"
-msgid "Applying image color profiles"
-msgstr "A kép színprofiljainak alkalmazása"
-
-#: data/org.gnome.Loupe.metainfo.xml.in.in:14
-msgid "Printing"
-msgstr "Nyomtatás"
-
-#: data/gtk/help_overlay.ui:11
-msgctxt "shortcut window"
-msgid "General Shortcuts"
-msgstr "Általános gyorsbillentyűk"
-
-#: data/gtk/help_overlay.ui:14
-msgctxt "shortcut window"
-msgid "Show Main Menu"
-msgstr "Főmenü megjelenítése"
-
-#: data/gtk/help_overlay.ui:20
-msgctxt "shortcut window"
-msgid "Copy Image to Clipboard"
-msgstr "Kép másolása a vágólapra"
-
-#: data/gtk/help_overlay.ui:26
-msgctxt "shortcut window"
-msgid "Move Image to Trash"
-msgstr "Kép áthelyezése a kukába"
-
-#: data/gtk/help_overlay.ui:32
-msgctxt "shortcut window"
-msgid "Toggle Image Properties"
-msgstr "Képtulajdonságok be- és kikapcsolása"
-
-#: data/gtk/help_overlay.ui:38
-msgctxt "shortcut window"
-msgid "Set as Background"
-msgstr "Beállítás háttérként"
-
-#: data/gtk/help_overlay.ui:44
-msgctxt "shortcut window"
-msgid "Toggle Fullscreen"
-msgstr "Teljes képernyős mód be- és kikapcsolása"
-
-#: data/gtk/help_overlay.ui:50
-msgctxt "shortcut window"
-msgid "Leave Fullscreen"
-msgstr "Kilépés a teljes képernyős módból"
-
-#: data/gtk/help_overlay.ui:56
-msgctxt "shortcut window"
-msgid "New Window"
-msgstr "Új ablak"
-
-#: data/gtk/help_overlay.ui:62
-msgctxt "shortcut window"
-msgid "Open Help"
-msgstr "Súgó megnyitása"
-
-#: data/gtk/help_overlay.ui:68
-msgctxt "shortcut window"
-msgid "Show Keyboard Shortcuts"
-msgstr "Gyorsbillentyűk megjelenítése"
-
-#: data/gtk/help_overlay.ui:74
-msgctxt "shortcut window"
-msgid "Close Window"
-msgstr "Ablak bezárása"
-
-#: data/gtk/help_overlay.ui:80
-msgctxt "shortcut window"
-msgid "Quit"
-msgstr "Kilépés"
-
-#: data/gtk/help_overlay.ui:88
-msgctxt "shortcut window"
-msgid "Navigate Images"
-msgstr "Képek navigálása"
-
-#: data/gtk/help_overlay.ui:92 data/gtk/help_overlay.ui:106
-#: data/gtk/help_overlay.ui:218 data/gtk/help_overlay.ui:232
-msgctxt "shortcut window"
-msgid "Next Image"
-msgstr "Következő kép"
-
-#: data/gtk/help_overlay.ui:99 data/gtk/help_overlay.ui:113
-#: data/gtk/help_overlay.ui:225 data/gtk/help_overlay.ui:239
-msgctxt "shortcut window"
-msgid "Previous Image"
-msgstr "Előző kép"
-
-#: data/gtk/help_overlay.ui:119
-msgctxt "shortcut window"
-msgid "First Image"
-msgstr "Első kép"
-
-#: data/gtk/help_overlay.ui:125
-msgctxt "shortcut window"
-msgid "Last Image"
-msgstr "Utolsó kép"
-
-#: data/gtk/help_overlay.ui:133
-msgctxt "shortcut window"
-msgid "Rotate Image"
-msgstr "Kép forgatása"
-
-#: data/gtk/help_overlay.ui:136 data/gtk/help_overlay.ui:257
-msgctxt "shortcut window"
-msgid "Rotate Clockwise"
-msgstr "Forgatás jobbra"
-
-#: data/gtk/help_overlay.ui:142 data/gtk/help_overlay.ui:263
-msgctxt "shortcut window"
-msgid "Rotate Counterclockwise"
-msgstr "Forgatás balra"
-
-#: data/gtk/help_overlay.ui:150
-msgctxt "shortcut window"
-msgid "Zoom Image"
-msgstr "Kép nagyítása"
-
-#: data/gtk/help_overlay.ui:153 data/gtk/help_overlay.ui:245
-msgctxt "shortcut window"
-msgid "Zoom In"
-msgstr "Nagyítás"
-
-#: data/gtk/help_overlay.ui:159 data/gtk/help_overlay.ui:251
-msgctxt "shortcut window"
-msgid "Zoom Out"
-msgstr "Kicsinyítés"
-
-#: data/gtk/help_overlay.ui:165
-msgctxt "shortcut window"
-msgid "Best Fit"
-msgstr "Legjobb illeszkedés"
-
-#: data/gtk/help_overlay.ui:171
-msgctxt "shortcut window"
-msgid "Original Scale"
-msgstr "Eredeti méret"
-
-#: data/gtk/help_overlay.ui:177
-msgctxt "shortcut window"
-msgid "200% Scale"
-msgstr "200%-os méret"
-
-#: data/gtk/help_overlay.ui:185
-msgctxt "shortcut window"
-msgid "Pan View"
-msgstr "Pásztázás nézet"
-
-#: data/gtk/help_overlay.ui:188
-msgctxt "shortcut window"
-msgid "Pan Left"
-msgstr "Pásztázás balra"
-
-#: data/gtk/help_overlay.ui:194
-msgctxt "shortcut window"
-msgid "Pan Right"
-msgstr "Pásztázás jobbra"
-
-#: data/gtk/help_overlay.ui:200
-msgctxt "shortcut window"
-msgid "Pan Up"
-msgstr "Pásztázás fel"
-
-#: data/gtk/help_overlay.ui:206
-msgctxt "shortcut window"
-msgid "Pan Down"
-msgstr "Pásztázás le"
-
-#: data/gtk/help_overlay.ui:214
-msgctxt "shortcut window"
-msgid "Gestures"
-msgstr "Kézmozdulatok"
+"X-Generator: Lokalize 23.04.1\n"
 
 #: data/gtk/image_page.ui:6 data/gtk/window.ui:16
 msgid "_Open With…"
@@ -245,15 +40,15 @@ msgstr "Forgatás"
 msgid "_Set as Background…"
 msgstr "_Beállítás háttérként…"
 
-#: data/gtk/image_page.ui:55
+#: data/gtk/image_page.ui:63
 msgid "Could not Load Image"
 msgstr "Nem sikerült betölteni a képet"
 
-#: data/gtk/image_page.ui:88 data/gtk/window.ui:111
+#: data/gtk/image_page.ui:97 data/gtk/window.ui:129
 msgid "Rotate Left"
 msgstr "Forgatás balra"
 
-#: data/gtk/image_page.ui:99 data/gtk/window.ui:122
+#: data/gtk/image_page.ui:107 data/gtk/window.ui:139
 msgid "Rotate Right"
 msgstr "Forgatás jobbra"
 
@@ -265,75 +60,123 @@ msgstr "Előző kép"
 msgid "Next Image"
 msgstr "Következő kép"
 
-#: data/gtk/image_view.ui:70
-msgid "Toggle Fullscreen"
-msgstr "Teljes képernyős mód be- és kikapcsolása"
-
-#: data/gtk/image_view.ui:81
+#: data/gtk/image_view.ui:66
 msgid "Zoom Out"
 msgstr "Kicsinyítés"
 
-#: data/gtk/image_view.ui:92
+#: data/gtk/image_view.ui:77
 msgid "Zoom In"
 msgstr "Nagyítás"
+
+#: data/gtk/image_view.ui:95
+msgid "Toggle Fullscreen"
+msgstr "Teljes képernyős mód be- és kikapcsolása"
+
+#: data/gtk/print.ui:4
+#| msgid "Image Format"
+msgid "Image Layout"
+msgstr "Kép elrendezése"
+
+#: data/gtk/print.ui:66
+msgid "Portrait page orientation"
+msgstr "Álló laptájolás"
+
+#: data/gtk/print.ui:74
+msgid "Landscape page orientation"
+msgstr "Fekvő laptájolás"
+
+#: data/gtk/print.ui:88
+msgid "Center image horizontally"
+msgstr "Kép középre igazítása vízszintesen"
+
+#: data/gtk/print.ui:95
+msgid "Center image vertically"
+msgstr "Kép középre igazítása függőlegesen"
+
+#: data/gtk/print.ui:107
+#| msgid "Image Size"
+msgid "Image Width"
+msgstr "Kép szélessége"
+
+#: data/gtk/print.ui:119
+#| msgid "Image Size"
+msgid "Image Scale"
+msgstr "Kép méretezése"
+
+#: data/gtk/print.ui:131
+msgid "Left Margin"
+msgstr "Bal margó"
+
+#: data/gtk/print.ui:143
+msgid "Top Margin"
+msgstr "Felső margó"
+
+#: data/gtk/print.ui:155
+msgid "Length Unit"
+msgstr "Hosszmértékegység"
+
+#: data/gtk/print.ui:175
+#| msgid "Printing"
+msgid "Print"
+msgstr "Nyomtatás"
 
 #: data/gtk/properties_view.ui:29
 msgid "Folder"
 msgstr "Mappa"
 
-#: data/gtk/properties_view.ui:42
+#: data/gtk/properties_view.ui:41
 msgid "Open Containing Folder"
 msgstr "Tartalmazó mappa megnyitása"
 
-#: data/gtk/properties_view.ui:59
+#: data/gtk/properties_view.ui:58
 msgid "Image Size"
 msgstr "Kép mérete"
 
-#: data/gtk/properties_view.ui:75
+#: data/gtk/properties_view.ui:74
 msgid "Image Format"
 msgstr "Kép formátuma"
 
-#: data/gtk/properties_view.ui:89
+#: data/gtk/properties_view.ui:88
 msgid "File Size"
 msgstr "Fájl mérete"
 
-#: data/gtk/properties_view.ui:107
+#: data/gtk/properties_view.ui:106
 msgid "File Created"
 msgstr "Fájl létrehozva"
 
-#: data/gtk/properties_view.ui:121
+#: data/gtk/properties_view.ui:120
 msgid "File Modified"
 msgstr "Fájl módosítva"
 
-#: data/gtk/properties_view.ui:144
+#: data/gtk/properties_view.ui:143
 msgid "Location"
 msgstr "Hely"
 
-#: data/gtk/properties_view.ui:164
+#: data/gtk/properties_view.ui:162
 msgid "Open Location"
 msgstr "Hely megnyitása"
 
-#: data/gtk/properties_view.ui:177
+#: data/gtk/properties_view.ui:175
 msgid "Originally Created"
 msgstr "Eredetileg létrehozva"
 
-#: data/gtk/properties_view.ui:198
+#: data/gtk/properties_view.ui:196
 msgid "Aperture"
 msgstr "Rekesz"
 
-#: data/gtk/properties_view.ui:219
+#: data/gtk/properties_view.ui:217
 msgid "Exposure"
 msgstr "Expozíció"
 
-#: data/gtk/properties_view.ui:240
+#: data/gtk/properties_view.ui:238
 msgid "ISO"
 msgstr "ISO"
 
-#: data/gtk/properties_view.ui:261
+#: data/gtk/properties_view.ui:259
 msgid "Focal Length"
 msgstr "Gyújtótávolság"
 
-#: data/gtk/properties_view.ui:282
+#: data/gtk/properties_view.ui:280
 msgid "Maker, Model"
 msgstr "Gyártó, modell"
 
@@ -346,144 +189,379 @@ msgid "_Open…"
 msgstr "_Megnyitás…"
 
 #: data/gtk/window.ui:46
+msgid "_Help"
+msgstr "_Súgó"
+
+#: data/gtk/window.ui:50
 msgid "_Keyboard Shortcuts"
 msgstr "_Gyorsbillentyűk"
 
-#: data/gtk/window.ui:50
-msgid "_About Loupe"
-msgstr "A Loupe _névjegye"
+#: data/gtk/window.ui:54
+msgid "_About Image Viewer"
+msgstr "A Képmegjelenítő _névjegye"
 
-#: data/gtk/window.ui:90
+#. If the file exists, get display name
+#: data/gtk/window.ui:64 data/org.gnome.Loupe.desktop.in.in:3
+#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:27 src/window.rs:865
+#: src/window.rs:871
+#| msgid "Image Size"
+msgid "Image Viewer"
+msgstr "Képmegjelenítő"
+
+#: data/gtk/window.ui:108
 msgid "Copy to Clipboard"
 msgstr "Másolás a vágólapra"
 
-#: data/gtk/window.ui:97
+#: data/gtk/window.ui:115
 msgid "Move to Trash"
 msgstr "Áthelyezés a kukába"
 
-#: data/gtk/window.ui:103
+#: data/gtk/window.ui:121
 msgid "Main Menu"
 msgstr "Főmenü"
 
-#: data/gtk/window.ui:137
+#: data/gtk/window.ui:153
 msgid "Image Properties"
 msgstr "Kép tulajdonságai"
 
-#: data/gtk/window.ui:157
+#: data/gtk/window.ui:176
 msgid "View Images"
 msgstr "Képek megtekintése"
 
-#: data/gtk/window.ui:158
+#: data/gtk/window.ui:177
 msgid "Drag and drop images here"
 msgstr "Fogja meg és húzza ide a képeket"
 
-#: data/gtk/window.ui:162
-msgid "_Open File…"
-msgstr "Fájl _megnyitása…"
+#: data/gtk/window.ui:181
+#| msgid "_Open File…"
+msgid "_Open Files…"
+msgstr "Fájlok _megnyitása…"
+
+#: data/org.gnome.Loupe.desktop.in.in:11
+#| msgid "Picture;Slideshow;Graphics;Image Viewer;"
+msgid "Picture;Slideshow;Graphics;Loupe;"
+msgstr "Fénykép;Kép;Diavetítés;Grafika;Loupe;"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:7 src/about.rs:30
+msgid "The Loupe Team"
+msgstr "A Loupe csapata"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:8
+msgid "View images"
+msgstr "Képek megtekintése"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:10
+#| msgid ""
+#| "A simple image viewer which allows you to browse through your images and "
+#| "inspect their metadata."
+msgid "Browse through your images and inspect their metadata with:"
+msgstr ""
+"Böngésszen a képek között, és vizsgálja meg a metaadataikat a következőkkel:"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:12
+msgid "Fast GPU accelerated image rendering"
+msgstr "Gyors GPU-gyorsított képmegjelenítés"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:13
+msgid "Tiled rendering for vector graphics"
+msgstr "Csempés megjelenítés vektorgrafikákhoz"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:14
+msgid "Extendable and sandboxed raster image decoding"
+msgstr "Kiterjeszthető és biztonságos környezetbe zárt raszteres képdekódolás"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:15
+msgid "Accessible presentation of the most important metadata."
+msgstr "A legfontosabb metaadatok akadálymentes megjelenítése."
+
+#: data/resources/gtk/help-overlay.ui:11
+msgctxt "shortcut window"
+msgid "General Shortcuts"
+msgstr "Általános gyorsbillentyűk"
+
+#: data/resources/gtk/help-overlay.ui:14
+msgctxt "shortcut window"
+msgid "Show Main Menu"
+msgstr "Főmenü megjelenítése"
+
+#: data/resources/gtk/help-overlay.ui:20
+msgctxt "shortcut window"
+msgid "Copy Image to Clipboard"
+msgstr "Kép másolása a vágólapra"
+
+#: data/resources/gtk/help-overlay.ui:26
+msgctxt "shortcut window"
+msgid "Move Image to Trash"
+msgstr "Kép áthelyezése a kukába"
+
+#: data/resources/gtk/help-overlay.ui:32
+msgctxt "shortcut window"
+msgid "Toggle Image Properties"
+msgstr "Képtulajdonságok be- és kikapcsolása"
+
+#: data/resources/gtk/help-overlay.ui:38
+msgctxt "shortcut window"
+msgid "Set as Background"
+msgstr "Beállítás háttérként"
+
+#: data/resources/gtk/help-overlay.ui:44
+msgctxt "shortcut window"
+msgid "Toggle Fullscreen"
+msgstr "Teljes képernyős mód be- és kikapcsolása"
+
+#: data/resources/gtk/help-overlay.ui:50
+msgctxt "shortcut window"
+msgid "Leave Fullscreen"
+msgstr "Kilépés a teljes képernyős módból"
+
+#: data/resources/gtk/help-overlay.ui:56
+msgctxt "shortcut window"
+msgid "New Window"
+msgstr "Új ablak"
+
+#: data/resources/gtk/help-overlay.ui:62
+msgctxt "shortcut window"
+msgid "Open Help"
+msgstr "Súgó megnyitása"
+
+#: data/resources/gtk/help-overlay.ui:68
+msgctxt "shortcut window"
+msgid "Show Keyboard Shortcuts"
+msgstr "Gyorsbillentyűk megjelenítése"
+
+#: data/resources/gtk/help-overlay.ui:74
+msgctxt "shortcut window"
+msgid "Close Window"
+msgstr "Ablak bezárása"
+
+#: data/resources/gtk/help-overlay.ui:80
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "Kilépés"
+
+#: data/resources/gtk/help-overlay.ui:88
+msgctxt "shortcut window"
+msgid "Navigate Images"
+msgstr "Képek navigálása"
+
+#: data/resources/gtk/help-overlay.ui:92 data/resources/gtk/help-overlay.ui:106
+#: data/resources/gtk/help-overlay.ui:218
+#: data/resources/gtk/help-overlay.ui:232
+msgctxt "shortcut window"
+msgid "Next Image"
+msgstr "Következő kép"
+
+#: data/resources/gtk/help-overlay.ui:99 data/resources/gtk/help-overlay.ui:113
+#: data/resources/gtk/help-overlay.ui:225
+#: data/resources/gtk/help-overlay.ui:239
+msgctxt "shortcut window"
+msgid "Previous Image"
+msgstr "Előző kép"
+
+#: data/resources/gtk/help-overlay.ui:119
+msgctxt "shortcut window"
+msgid "First Image"
+msgstr "Első kép"
+
+#: data/resources/gtk/help-overlay.ui:125
+msgctxt "shortcut window"
+msgid "Last Image"
+msgstr "Utolsó kép"
+
+#: data/resources/gtk/help-overlay.ui:133
+msgctxt "shortcut window"
+msgid "Rotate Image"
+msgstr "Kép forgatása"
+
+#: data/resources/gtk/help-overlay.ui:136
+#: data/resources/gtk/help-overlay.ui:257
+msgctxt "shortcut window"
+msgid "Rotate Clockwise"
+msgstr "Forgatás jobbra"
+
+#: data/resources/gtk/help-overlay.ui:142
+#: data/resources/gtk/help-overlay.ui:263
+msgctxt "shortcut window"
+msgid "Rotate Counterclockwise"
+msgstr "Forgatás balra"
+
+#: data/resources/gtk/help-overlay.ui:150
+msgctxt "shortcut window"
+msgid "Zoom Image"
+msgstr "Kép nagyítása"
+
+#: data/resources/gtk/help-overlay.ui:153
+#: data/resources/gtk/help-overlay.ui:245
+msgctxt "shortcut window"
+msgid "Zoom In"
+msgstr "Nagyítás"
+
+#: data/resources/gtk/help-overlay.ui:159
+#: data/resources/gtk/help-overlay.ui:251
+msgctxt "shortcut window"
+msgid "Zoom Out"
+msgstr "Kicsinyítés"
+
+#: data/resources/gtk/help-overlay.ui:165
+msgctxt "shortcut window"
+msgid "Best Fit"
+msgstr "Legjobb illeszkedés"
+
+#: data/resources/gtk/help-overlay.ui:171
+msgctxt "shortcut window"
+msgid "Original Scale"
+msgstr "Eredeti méret"
+
+#: data/resources/gtk/help-overlay.ui:177
+msgctxt "shortcut window"
+msgid "200% Scale"
+msgstr "200%-os méret"
+
+#: data/resources/gtk/help-overlay.ui:185
+msgctxt "shortcut window"
+msgid "Pan View"
+msgstr "Pásztázás nézet"
+
+#: data/resources/gtk/help-overlay.ui:188
+msgctxt "shortcut window"
+msgid "Pan Left"
+msgstr "Pásztázás balra"
+
+#: data/resources/gtk/help-overlay.ui:194
+msgctxt "shortcut window"
+msgid "Pan Right"
+msgstr "Pásztázás jobbra"
+
+#: data/resources/gtk/help-overlay.ui:200
+msgctxt "shortcut window"
+msgid "Pan Up"
+msgstr "Pásztázás fel"
+
+#: data/resources/gtk/help-overlay.ui:206
+msgctxt "shortcut window"
+msgid "Pan Down"
+msgstr "Pásztázás le"
+
+#: data/resources/gtk/help-overlay.ui:214
+msgctxt "shortcut window"
+msgid "Gestures"
+msgstr "Kézmozdulatok"
 
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/application.rs:199
+#: src/about.rs:39
 msgid "translator-credits"
-msgstr "Úr Balázs <ur dot balazs at fsf dot hu>, 2023."
+msgstr ""
+"Meskó Balázs <mesko dot balazs at fsf dot hu>, 2023.\n"
+"Úr Balázs <ur dot balazs at fsf dot hu>, 2023."
 
-#: src/application.rs:200
+#: src/about.rs:40
 msgid "Copyright © 2020–2023 Christopher Davis et al."
 msgstr "Copyright © 2020–2023 Christopher Davis és mások."
 
-#: src/file_model.rs:114
+#: src/file_model.rs:120
 msgid "Could not list other files in directory."
 msgstr "Nem sikerült felsorolni egyéb fájlokat a könyvtárban."
 
 #. Translators: short for "north" in GPS coordinate
-#: src/image_metadata/gps.rs:136
+#: src/image_metadata/gps.rs:152
 msgid "N"
 msgstr "É"
 
 #. Translators: short for "south" in GPS coordinate
-#: src/image_metadata/gps.rs:139
+#: src/image_metadata/gps.rs:155
 msgid "S"
 msgstr "D"
 
 #. Translators: short for "east" in GPS coordinate
-#: src/image_metadata/gps.rs:149
+#: src/image_metadata/gps.rs:165
 msgid "E"
 msgstr "K"
 
 #. Translators: short for "west" in GPS coordinate
-#: src/image_metadata/gps.rs:152
+#: src/image_metadata/gps.rs:168
 msgid "W"
 msgstr "Ny"
 
 #. Translators: Unit for exposure time in seconds
-#: src/image_metadata/mod.rs:129
+#: src/image_metadata/mod.rs:163
 msgid "1\\u{2215}{}\\u{202F}s"
 msgstr "1\\u{2215}{}\\u{202F}s"
 
 #. Translators: Unit for focal length in millimeters
-#: src/image_metadata/mod.rs:154
+#: src/image_metadata/mod.rs:188
 msgid "{}\\u{202F}mm"
 msgstr "{}\\u{202F}mm"
 
-#: src/widgets/image.rs:751
-msgid "File does not exist"
-msgstr "A fájl nem létezik"
+#. Translators: This is the date and time format we use in metadata output etc.
+#. The format has to follow <https://docs.gtk.org/glib/method.DateTime.format.html>
+#. The default is already translated. Don't change if you are not sure what to use.
+#: src/util/mod.rs:36
+#, c-format
+msgid "%x %X"
+msgstr "%x %X"
 
-#: src/widgets/image_view.rs:558
-msgid "Failed to open new background image"
-msgstr "Nem sikerült megnyitni az új háttérképet"
-
-#: src/widgets/image_view.rs:575
-msgid "Set as background."
-msgstr "Beállítás háttérként."
-
-#: src/widgets/image_view.rs:582
-msgid "Could not set background."
-msgstr "Nem sikerült beállítani a hátteret."
-
-#: src/window.rs:355
-msgid "“{}” is not a valid image."
-msgstr "A(z) „{}” nem érvényes kép."
-
-#: src/window.rs:431
-msgid "Open Image"
-msgstr "Kép megnyitása"
-
-#: src/window.rs:485
-msgid "Image copied to clipboard"
-msgstr "A kép lemásolva a vágólapra"
-
-#: src/window.rs:499
-msgid "Image moved to trash"
-msgstr "A kép áthelyezve a kukába"
-
-#: src/window.rs:500
-msgid "Undo"
-msgstr "Visszavonás"
-
-#: src/window.rs:511
+#: src/util/mod.rs:179 src/window.rs:579
 msgid "Failed to restore image from trash"
 msgstr "Nem sikerült helyreállítani a képet a kukából"
 
-#: src/window.rs:526
+#: src/util/mod.rs:200
+#| msgid "Failed to delete image"
+msgid "Failed to open image"
+msgstr "Nem sikerült megnyitni a képet"
+
+#. Translators: This is a toast notification, informing the user that an image has been set as background.
+#: src/widgets/image_view.rs:658
+msgid "Set as background."
+msgstr "Beállítás háttérként."
+
+#: src/widgets/image_view.rs:671
+msgid "Could not set background."
+msgstr "Nem sikerült beállítani a hátteret."
+
+#: src/window.rs:466
+msgid "Supported image formats"
+msgstr "Támogatott képformátumok"
+
+#: src/window.rs:475
+msgid "All files"
+msgstr "Összes fájl"
+
+#: src/window.rs:482
+msgid "Open Image"
+msgstr "Kép megnyitása"
+
+#: src/window.rs:545
+msgid "Image copied to clipboard"
+msgstr "A kép lemásolva a vágólapra"
+
+#: src/window.rs:566
+msgid "Image moved to trash"
+msgstr "A kép áthelyezve a kukába"
+
+#: src/window.rs:567
+msgid "Undo"
+msgstr "Visszavonás"
+
+#: src/window.rs:594
 msgid "Failed to move image to trash"
 msgstr "Nem sikerült áthelyezni a képet a kukába"
 
-#: src/window.rs:541
+#: src/window.rs:609
 msgid "Permanently Delete Image?"
 msgstr "Véglegesen törli a képet?"
 
-#: src/window.rs:543
+#: src/window.rs:611
 msgid "The image “{}” can only be deleted permanently."
 msgstr "A(z) „{}” kép csak véglegesen törölhető."
 
-#: src/window.rs:550
+#: src/window.rs:619
 msgid "Cancel"
 msgstr "Mégse"
 
-#: src/window.rs:550
+#: src/window.rs:620
 msgid "Delete"
 msgstr "Törlés"
 
-#: src/window.rs:559
+#: src/window.rs:631
 msgid "Failed to delete image"
 msgstr "Nem sikerült törölni a képet"
