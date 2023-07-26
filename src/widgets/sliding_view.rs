@@ -107,6 +107,8 @@ mod imp {
             let swipe_tracker = adw::SwipeTracker::builder()
                 .swipeable(&*self.obj())
                 .reversed(self.is_rtl())
+                .lower_overshoot(true)
+                .upper_overshoot(true)
                 .build();
 
             swipe_tracker.connect_begin_swipe(
