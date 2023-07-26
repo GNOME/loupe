@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/Incubator/loupe/-/"
 "issues\n"
-"POT-Creation-Date: 2023-05-23 11:29+0000\n"
-"PO-Revision-Date: 2023-05-26 21:06+0100\n"
+"POT-Creation-Date: 2023-07-14 14:07+0000\n"
+"PO-Revision-Date: 2023-07-26 12:00+0100\n"
 "Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>\n"
 "Language-Team: Portuguese <pt@li.org>\n"
 "Language: pt\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.3.1\n"
+"X-Generator: Poedit 3.3.2\n"
 
 #: data/gtk/image_page.ui:6 data/gtk/window.ui:16
 msgid "_Open With…"
@@ -43,11 +43,11 @@ msgstr "_Definir como fundo do ambiente de trabalho…"
 msgid "Could not Load Image"
 msgstr "Não foi possível carregar a imagem"
 
-#: data/gtk/image_page.ui:96 data/gtk/window.ui:133
+#: data/gtk/image_page.ui:97 data/gtk/window.ui:129
 msgid "Rotate Left"
 msgstr "Rodar para a esquerda"
 
-#: data/gtk/image_page.ui:106 data/gtk/window.ui:143
+#: data/gtk/image_page.ui:107 data/gtk/window.ui:139
 msgid "Rotate Right"
 msgstr "Rodar para a direita"
 
@@ -184,56 +184,59 @@ msgid "_Open…"
 msgstr "A_brir…"
 
 #: data/gtk/window.ui:46
+msgid "_Help"
+msgstr "_Ajuda"
+
+#: data/gtk/window.ui:50
 msgid "_Keyboard Shortcuts"
 msgstr "_Teclas de atalho"
 
-#: data/gtk/window.ui:50
-msgid "_About Loupe"
-msgstr "_Acerca do Loupe"
+#: data/gtk/window.ui:54
+msgid "_About Image Viewer"
+msgstr "_Acerca do Visualizador de imagens"
 
 #. If the file exists, get display name
-#: data/gtk/window.ui:60 data/org.gnome.Loupe.desktop.in.in:3
-#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/application.rs:188
-#: src/window.rs:858 src/window.rs:864
-msgid "Loupe"
-msgstr "Loupe"
+#: data/gtk/window.ui:64 data/org.gnome.Loupe.desktop.in.in:3
+#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:27 src/window.rs:865
+#: src/window.rs:871
+msgid "Image Viewer"
+msgstr "Visualizador de imagens"
 
-#: data/gtk/window.ui:112
+#: data/gtk/window.ui:108
 msgid "Copy to Clipboard"
 msgstr "Copiar para a área de transferência"
 
-#: data/gtk/window.ui:119
+#: data/gtk/window.ui:115
 msgid "Move to Trash"
 msgstr "Enviar para o Lixo"
 
-#: data/gtk/window.ui:125
+#: data/gtk/window.ui:121
 msgid "Main Menu"
 msgstr "Menu principal"
 
-#: data/gtk/window.ui:157
+#: data/gtk/window.ui:153
 msgid "Image Properties"
 msgstr "Propriedades da imagem"
 
-#: data/gtk/window.ui:180
+#: data/gtk/window.ui:176
 msgid "View Images"
 msgstr "Ver imagens"
 
-#: data/gtk/window.ui:181
+#: data/gtk/window.ui:177
 msgid "Drag and drop images here"
 msgstr "Arrastar e largar imagens para aqui"
 
-#: data/gtk/window.ui:185
-#| msgid "_Open File…"
+#: data/gtk/window.ui:181
 msgid "_Open Files…"
 msgstr "A_brir ficheiros…"
 
 #: data/org.gnome.Loupe.desktop.in.in:11
-msgid "Picture;Slideshow;Graphics;Image Viewer;"
+msgid "Picture;Slideshow;Graphics;Loupe;"
 msgstr ""
 "Imagem;Diaporama;Apresentação;Diapositivos;Grafismos;Gráficos;Visualizador "
-"de imagens;"
+"de imagens;Loupe;"
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:7 src/application.rs:191
+#: data/org.gnome.Loupe.metainfo.xml.in.in:7 src/about.rs:30
 msgid "The Loupe Team"
 msgstr "A equipa do Loupe"
 
@@ -242,8 +245,24 @@ msgid "View images"
 msgstr "Ver imagens"
 
 #: data/org.gnome.Loupe.metainfo.xml.in.in:10
-msgid "Browse through your images and inspect their metadata."
-msgstr "Navegue pelas suas imagens e inspecione os seus metadados."
+msgid "Browse through your images and inspect their metadata with:"
+msgstr "Navegue pelas suas imagens e inspecione os seus metadados com:"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:12
+msgid "Fast GPU accelerated image rendering"
+msgstr "Renderização rápida de imagens acelerada por GPU"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:13
+msgid "Tiled rendering for vector graphics"
+msgstr "Renderização em mosaico para gráficos vetoriais"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:14
+msgid "Extendable and sandboxed raster image decoding"
+msgstr "Descodificação de imagem rasterizada extensível e em área restrita"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:15
+msgid "Accessible presentation of the most important metadata."
+msgstr "Apresentação acessível dos metadados mais importantes."
 
 #: data/resources/gtk/help-overlay.ui:11
 msgctxt "shortcut window"
@@ -292,206 +311,172 @@ msgstr "Nova janela"
 
 #: data/resources/gtk/help-overlay.ui:62
 msgctxt "shortcut window"
+msgid "Open Help"
+msgstr "Abrir a ajuda"
+
+#: data/resources/gtk/help-overlay.ui:68
+msgctxt "shortcut window"
 msgid "Show Keyboard Shortcuts"
 msgstr "Mostrar teclas de atalho"
 
-#: data/resources/gtk/help-overlay.ui:68
+#: data/resources/gtk/help-overlay.ui:74
 msgctxt "shortcut window"
 msgid "Close Window"
 msgstr "Fechar janela"
 
-#: data/resources/gtk/help-overlay.ui:74
+#: data/resources/gtk/help-overlay.ui:80
 msgctxt "shortcut window"
 msgid "Quit"
 msgstr "Sair"
 
-#: data/resources/gtk/help-overlay.ui:82
+#: data/resources/gtk/help-overlay.ui:88
 msgctxt "shortcut window"
 msgid "Navigate Images"
 msgstr "Navegar pelas imagens"
 
-#: data/resources/gtk/help-overlay.ui:86 data/resources/gtk/help-overlay.ui:100
-#: data/resources/gtk/help-overlay.ui:212
-#: data/resources/gtk/help-overlay.ui:226
+#: data/resources/gtk/help-overlay.ui:92 data/resources/gtk/help-overlay.ui:106
+#: data/resources/gtk/help-overlay.ui:218
+#: data/resources/gtk/help-overlay.ui:232
 msgctxt "shortcut window"
 msgid "Next Image"
 msgstr "Imagem seguinte"
 
-#: data/resources/gtk/help-overlay.ui:93 data/resources/gtk/help-overlay.ui:107
-#: data/resources/gtk/help-overlay.ui:219
-#: data/resources/gtk/help-overlay.ui:233
+#: data/resources/gtk/help-overlay.ui:99 data/resources/gtk/help-overlay.ui:113
+#: data/resources/gtk/help-overlay.ui:225
+#: data/resources/gtk/help-overlay.ui:239
 msgctxt "shortcut window"
 msgid "Previous Image"
 msgstr "Imagem anterior"
 
-#: data/resources/gtk/help-overlay.ui:113
+#: data/resources/gtk/help-overlay.ui:119
 msgctxt "shortcut window"
 msgid "First Image"
 msgstr "Primeira imagem"
 
-#: data/resources/gtk/help-overlay.ui:119
+#: data/resources/gtk/help-overlay.ui:125
 msgctxt "shortcut window"
 msgid "Last Image"
 msgstr "Última imagem"
 
-#: data/resources/gtk/help-overlay.ui:127
+#: data/resources/gtk/help-overlay.ui:133
 msgctxt "shortcut window"
 msgid "Rotate Image"
 msgstr "Rodar imagem"
 
-#: data/resources/gtk/help-overlay.ui:130
-#: data/resources/gtk/help-overlay.ui:251
+#: data/resources/gtk/help-overlay.ui:136
+#: data/resources/gtk/help-overlay.ui:257
 msgctxt "shortcut window"
 msgid "Rotate Clockwise"
 msgstr "Rodar no sentido dos ponteiros do relógio"
 
-#: data/resources/gtk/help-overlay.ui:136
-#: data/resources/gtk/help-overlay.ui:257
+#: data/resources/gtk/help-overlay.ui:142
+#: data/resources/gtk/help-overlay.ui:263
 msgctxt "shortcut window"
 msgid "Rotate Counterclockwise"
 msgstr "Rodar no sentido contrário aos ponteiros do relógio"
 
-#: data/resources/gtk/help-overlay.ui:144
+#: data/resources/gtk/help-overlay.ui:150
 msgctxt "shortcut window"
 msgid "Zoom Image"
 msgstr "Ampliar imagem"
 
-#: data/resources/gtk/help-overlay.ui:147
-#: data/resources/gtk/help-overlay.ui:239
+#: data/resources/gtk/help-overlay.ui:153
+#: data/resources/gtk/help-overlay.ui:245
 msgctxt "shortcut window"
 msgid "Zoom In"
 msgstr "Ampliar"
 
-#: data/resources/gtk/help-overlay.ui:153
-#: data/resources/gtk/help-overlay.ui:245
+#: data/resources/gtk/help-overlay.ui:159
+#: data/resources/gtk/help-overlay.ui:251
 msgctxt "shortcut window"
 msgid "Zoom Out"
 msgstr "Diminuir"
 
-#: data/resources/gtk/help-overlay.ui:159
+#: data/resources/gtk/help-overlay.ui:165
 msgctxt "shortcut window"
 msgid "Best Fit"
 msgstr "Melhor ajuste"
 
-#: data/resources/gtk/help-overlay.ui:165
+#: data/resources/gtk/help-overlay.ui:171
 msgctxt "shortcut window"
 msgid "Original Scale"
 msgstr "Escala original"
 
-#: data/resources/gtk/help-overlay.ui:171
+#: data/resources/gtk/help-overlay.ui:177
 msgctxt "shortcut window"
 msgid "200% Scale"
 msgstr "Escala de 200%"
 
-#: data/resources/gtk/help-overlay.ui:179
+#: data/resources/gtk/help-overlay.ui:185
 msgctxt "shortcut window"
 msgid "Pan View"
 msgstr "Vista panorâmica"
 
-#: data/resources/gtk/help-overlay.ui:182
+#: data/resources/gtk/help-overlay.ui:188
 msgctxt "shortcut window"
 msgid "Pan Left"
 msgstr "Deslocar à esquerda"
 
-#: data/resources/gtk/help-overlay.ui:188
+#: data/resources/gtk/help-overlay.ui:194
 msgctxt "shortcut window"
 msgid "Pan Right"
 msgstr "Deslocar à direita"
 
-#: data/resources/gtk/help-overlay.ui:194
+#: data/resources/gtk/help-overlay.ui:200
 msgctxt "shortcut window"
 msgid "Pan Up"
 msgstr "Deslocar para cima"
 
-#: data/resources/gtk/help-overlay.ui:200
+#: data/resources/gtk/help-overlay.ui:206
 msgctxt "shortcut window"
 msgid "Pan Down"
 msgstr "Deslocar para baixo"
 
-#: data/resources/gtk/help-overlay.ui:208
+#: data/resources/gtk/help-overlay.ui:214
 msgctxt "shortcut window"
 msgid "Gestures"
 msgstr "Gestos"
 
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/application.rs:200
+#: src/about.rs:39
 msgid "translator-credits"
 msgstr "Hugo Carvalho <hugokarvalho@hotmail.com>"
 
-#: src/application.rs:201
+#: src/about.rs:40
 msgid "Copyright © 2020–2023 Christopher Davis et al."
 msgstr "Copyright © 2020–2023 Christopher Davis et al."
 
-#: src/decoder/formats/heif.rs:67
-msgid "Failed to read image file information"
-msgstr "Falha ao ler informação do ficheiro de imagem"
-
-#: src/decoder/formats/heif.rs:72 src/decoder/formats/heif.rs:119
-#: src/decoder/formats/image_rs_other.rs:116
-#: src/decoder/formats/image_rs_other.rs:125
-#: src/decoder/formats/image_rs_other.rs:132
-msgid "Failed to decode image"
-msgstr "Falha ao descodificar a imagem"
-
-#: src/decoder/formats/heif.rs:117 src/decoder/mod.rs:201
-msgid "Unknown image format"
-msgstr "Formato de imagem desconhecido"
-
-#: src/decoder/formats/mod.rs:72
-msgid "Animated GIF"
-msgstr "GIF animado"
-
-#: src/decoder/formats/mod.rs:73
-msgid "Animated WebP"
-msgstr "WebP animado"
-
-#: src/decoder/formats/mod.rs:74
-msgid "Animated PNG"
-msgstr "PNG animado"
-
-#: src/decoder/mod.rs:195
-msgid "Unknown image format: {}"
-msgstr "Formato de imagem desconhecido: {}"
-
-#: src/decoder/mod.rs:230
-msgid "Could not open image"
-msgstr "Não foi possível abrir a imagem"
-
-#: src/decoder/mod.rs:234
-msgid "Could not read image"
-msgstr "Não foi possível ler a imagem"
-
-#: src/file_model.rs:118
+#: src/file_model.rs:120
 msgid "Could not list other files in directory."
 msgstr "Não foi possível listar outros ficheiros no diretório."
 
 #. Translators: short for "north" in GPS coordinate
-#: src/image_metadata/gps.rs:154
+#: src/image_metadata/gps.rs:152
 msgid "N"
 msgstr "N"
 
 #. Translators: short for "south" in GPS coordinate
-#: src/image_metadata/gps.rs:157
+#: src/image_metadata/gps.rs:155
 msgid "S"
 msgstr "S"
 
 #. Translators: short for "east" in GPS coordinate
-#: src/image_metadata/gps.rs:167
+#: src/image_metadata/gps.rs:165
 msgid "E"
 msgstr "E"
 
 #. Translators: short for "west" in GPS coordinate
-#: src/image_metadata/gps.rs:170
+#: src/image_metadata/gps.rs:168
 msgid "W"
 msgstr "O"
 
 #. Translators: Unit for exposure time in seconds
-#: src/image_metadata/mod.rs:161
+#: src/image_metadata/mod.rs:163
 msgid "1\\u{2215}{}\\u{202F}s"
 msgstr "1\\u{2215}{}\\u{202F}s"
 
 #. Translators: Unit for focal length in millimeters
-#: src/image_metadata/mod.rs:186
+#: src/image_metadata/mod.rs:188
 msgid "{}\\u{202F}mm"
 msgstr "{}\\u{202F}mm"
 
@@ -503,24 +488,24 @@ msgstr "{}\\u{202F}mm"
 msgid "%x %X"
 msgstr "%x %X"
 
-#: src/util/mod.rs:171 src/window.rs:573
+#: src/util/mod.rs:179 src/window.rs:579
 msgid "Failed to restore image from trash"
 msgstr "Falha ao restaurar a imagem do lixo"
 
-#: src/util/mod.rs:192
+#: src/util/mod.rs:200
 msgid "Failed to open image"
 msgstr "Falha ao abrir a imagem"
 
 #. Translators: This is a toast notification, informing the user that an image has been set as background.
-#: src/widgets/image_view.rs:653
+#: src/widgets/image_view.rs:658
 msgid "Set as background."
 msgstr "Definir como fundo do ambiente de trabalho."
 
-#: src/widgets/image_view.rs:664
+#: src/widgets/image_view.rs:671
 msgid "Could not set background."
 msgstr "Não foi possível definir o fundo do ambiente de trabalho."
 
-#: src/window.rs:469
+#: src/window.rs:466
 msgid "Supported image formats"
 msgstr "Formatos de imagem suportados"
 
@@ -536,41 +521,70 @@ msgstr "Abrir imagem"
 msgid "Image copied to clipboard"
 msgstr "Imagem copiada para a área de transferência"
 
-#: src/window.rs:561
+#: src/window.rs:566
 msgid "Image moved to trash"
 msgstr "Imagem enviada para o lixo"
 
-#: src/window.rs:562
+#: src/window.rs:567
 msgid "Undo"
 msgstr "Anular"
 
-#: src/window.rs:588
+#: src/window.rs:594
 msgid "Failed to move image to trash"
 msgstr "Falha ao enviar a imagem para a lixo"
 
-#: src/window.rs:603
+#: src/window.rs:609
 msgid "Permanently Delete Image?"
 msgstr "Eliminar a imagem permanentemente?"
 
-#: src/window.rs:605
+#: src/window.rs:611
 msgid "The image “{}” can only be deleted permanently."
 msgstr "A imagem \"{}\" apenas pode ser eliminada permanentemente."
 
-#: src/window.rs:613
+#: src/window.rs:619
 msgid "Cancel"
 msgstr "Cancelar"
 
-#: src/window.rs:614
+#: src/window.rs:620
 msgid "Delete"
 msgstr "Eliminar"
 
-#: src/window.rs:625
+#: src/window.rs:631
 msgid "Failed to delete image"
 msgstr "Erro ao eliminar imagem"
 
-#~ msgctxt "shortcut window"
-#~ msgid "Open Help"
-#~ msgstr "Abrir a ajuda"
+#~ msgid "_About Loupe"
+#~ msgstr "_Acerca do Loupe"
+
+#~ msgid "Loupe"
+#~ msgstr "Loupe"
+
+#~ msgid "Failed to read image file information"
+#~ msgstr "Falha ao ler informação do ficheiro de imagem"
+
+#~ msgid "Failed to decode image"
+#~ msgstr "Falha ao descodificar a imagem"
+
+#~ msgid "Unknown image format"
+#~ msgstr "Formato de imagem desconhecido"
+
+#~ msgid "Animated GIF"
+#~ msgstr "GIF animado"
+
+#~ msgid "Animated WebP"
+#~ msgstr "WebP animado"
+
+#~ msgid "Animated PNG"
+#~ msgstr "PNG animado"
+
+#~ msgid "Unknown image format: {}"
+#~ msgstr "Formato de imagem desconhecido: {}"
+
+#~ msgid "Could not open image"
+#~ msgstr "Não foi possível abrir a imagem"
+
+#~ msgid "Could not read image"
+#~ msgstr "Não foi possível ler a imagem"
 
 #~ msgid "Layout Image"
 #~ msgstr "Disposição de imagem"
@@ -604,6 +618,3 @@ msgstr "Erro ao eliminar imagem"
 
 #~ msgid "Print settings to position the image on the page"
 #~ msgstr "Definições de impressão para posicionar a imagem na página"
-
-#~ msgid "_Help"
-#~ msgstr "_Ajuda"
