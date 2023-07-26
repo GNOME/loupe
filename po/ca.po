@@ -1,0 +1,558 @@
+# Catalan translation for Loupe.
+# Copyright (C) 2023 Loupe's COPYRIGHT HOLDER
+# This file is distributed under the same license as the Loupe package.
+# Jordi Mas i Hernàndez, <jmas@softcatala.org>, 2023
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Loupe main\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
+"POT-Creation-Date: 2023-07-24 15:45+0000\n"
+"PO-Revision-Date: 2023-07-24 15:45+0000\n"
+"Last-Translator: Jordi Mas i Hernàndez, <jmas@softcatala.org>\n"
+"Language-Team: Catalan <gnome@llistes.softcatala.org>\n"
+"Language: ca\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: data/gtk/image_page.ui:6 data/gtk/window.ui:16
+msgid "_Open With…"
+msgstr "_Obre amb…"
+
+#: data/gtk/image_page.ui:14 data/gtk/window.ui:24
+msgid "_Print…"
+msgstr "_Imprimeix…"
+
+#: data/gtk/image_page.ui:18
+msgid "_Copy"
+msgstr "_Copia"
+
+#: data/gtk/image_page.ui:23 data/gtk/window.ui:29
+msgid "Rotate"
+msgstr "Gira"
+
+#: data/gtk/image_page.ui:34 data/gtk/window.ui:40
+msgid "_Set as Background…"
+msgstr "_Estableix com a fons…"
+
+#: data/gtk/image_page.ui:63
+msgid "Could not Load Image"
+msgstr "No s'ha pogut carregar la imatge"
+
+#: data/gtk/image_page.ui:97 data/gtk/window.ui:129
+msgid "Rotate Left"
+msgstr "Gira a l'esquerra"
+
+#: data/gtk/image_page.ui:107 data/gtk/window.ui:139
+msgid "Rotate Right"
+msgstr "Gira cap a la dreta"
+
+#: data/gtk/image_view.ui:30
+msgid "Previous Image"
+msgstr "Imatge anterior"
+
+#: data/gtk/image_view.ui:41
+msgid "Next Image"
+msgstr "Imatge següent"
+
+#: data/gtk/image_view.ui:66
+msgid "Zoom Out"
+msgstr "Allunya"
+
+#: data/gtk/image_view.ui:77
+msgid "Zoom In"
+msgstr "Amplia"
+
+#: data/gtk/image_view.ui:95
+msgid "Toggle Fullscreen"
+msgstr "Commuta la pantalla completa"
+
+#: data/gtk/print.ui:4
+msgid "Image Layout"
+msgstr "Disposició de la imatge"
+
+#: data/gtk/print.ui:66
+msgid "Portrait page orientation"
+msgstr "Orientació de la pàgina vertical"
+
+#: data/gtk/print.ui:74
+msgid "Landscape page orientation"
+msgstr "Orientació apaïsada de la pàgina"
+
+#: data/gtk/print.ui:88
+msgid "Center image horizontally"
+msgstr "Centra la imatge horitzontalment"
+
+#: data/gtk/print.ui:95
+msgid "Center image vertically"
+msgstr "Centra la imatge verticalment"
+
+#: data/gtk/print.ui:107
+msgid "Image Width"
+msgstr "Amplada de la imatge"
+
+#: data/gtk/print.ui:119
+msgid "Image Scale"
+msgstr "Escala de la imatge"
+
+#: data/gtk/print.ui:131
+msgid "Left Margin"
+msgstr "Marge esquerre"
+
+#: data/gtk/print.ui:143
+msgid "Top Margin"
+msgstr "Marge superior"
+
+#: data/gtk/print.ui:155
+msgid "Length Unit"
+msgstr "Unitat de longitud"
+
+#: data/gtk/print.ui:175
+msgid "Print"
+msgstr "Imprimeix"
+
+#: data/gtk/properties_view.ui:29
+msgid "Folder"
+msgstr "Carpeta"
+
+#: data/gtk/properties_view.ui:41
+msgid "Open Containing Folder"
+msgstr "Obre la carpeta contenidora"
+
+#: data/gtk/properties_view.ui:58
+msgid "Image Size"
+msgstr "Mida de la imatge"
+
+#: data/gtk/properties_view.ui:74
+msgid "Image Format"
+msgstr "Format de la imatge"
+
+#: data/gtk/properties_view.ui:88
+msgid "File Size"
+msgstr "Mida del fitxer"
+
+#: data/gtk/properties_view.ui:106
+msgid "File Created"
+msgstr "Fitxer creat"
+
+#: data/gtk/properties_view.ui:120
+msgid "File Modified"
+msgstr "Fitxer modificat"
+
+#: data/gtk/properties_view.ui:143
+msgid "Location"
+msgstr "Ubicació"
+
+#: data/gtk/properties_view.ui:162
+msgid "Open Location"
+msgstr "Obre la ubicació"
+
+#: data/gtk/properties_view.ui:175
+msgid "Originally Created"
+msgstr "Creat originalment"
+
+#: data/gtk/properties_view.ui:196
+msgid "Aperture"
+msgstr "Obertura"
+
+#: data/gtk/properties_view.ui:217
+msgid "Exposure"
+msgstr "Exposició"
+
+#: data/gtk/properties_view.ui:238
+msgid "ISO"
+msgstr "ISO"
+
+#: data/gtk/properties_view.ui:259
+msgid "Focal Length"
+msgstr "Longitud focal"
+
+#: data/gtk/properties_view.ui:280
+msgid "Maker, Model"
+msgstr "Fabricant, model"
+
+#: data/gtk/window.ui:6
+msgid "_New Window"
+msgstr "_Finestra nova"
+
+#: data/gtk/window.ui:10
+msgid "_Open…"
+msgstr "_Obre…"
+
+#: data/gtk/window.ui:46
+msgid "_Help"
+msgstr "_Ajuda"
+
+#: data/gtk/window.ui:50
+msgid "_Keyboard Shortcuts"
+msgstr "_Dreceres de teclat"
+
+#: data/gtk/window.ui:54
+msgid "_About Image Viewer"
+msgstr "_Quant al Visualitzador d'imatges"
+
+#. If the file exists, get display name
+#: data/gtk/window.ui:64 data/org.gnome.Loupe.desktop.in.in:3
+#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:28 src/window.rs:878
+#: src/window.rs:884
+msgid "Image Viewer"
+msgstr "Visualitzador d'imatges"
+
+#: data/gtk/window.ui:108
+msgid "Copy to Clipboard"
+msgstr "Copia al porta-retalls"
+
+#: data/gtk/window.ui:115
+msgid "Move to Trash"
+msgstr "Mou a la paperera"
+
+#: data/gtk/window.ui:121
+msgid "Main Menu"
+msgstr "Menú principal"
+
+#: data/gtk/window.ui:153
+msgid "Image Properties"
+msgstr "Propietats de la imatge"
+
+#: data/gtk/window.ui:195
+msgid "View Images"
+msgstr "Visualitza les imatges"
+
+#: data/gtk/window.ui:196
+msgid "Drag and drop images here"
+msgstr "Arrossegueu i deixeu anar les imatges aquí"
+
+#: data/gtk/window.ui:200
+msgid "_Open Files…"
+msgstr "_Obre fitxers…"
+
+#: data/org.gnome.Loupe.desktop.in.in:11
+msgid "Picture;Slideshow;Graphics;Loupe;"
+msgstr "Imatge;Disposició;Gràfics;Loupe;"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:7 src/about.rs:31
+msgid "The Loupe Team"
+msgstr "L'equip del Loupe"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:8
+msgid "View images"
+msgstr "Visualitza les imatges"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:10
+msgid "Browse through your images and inspect their metadata with:"
+msgstr ""
+"Navegueu a través de les vostres imatges i inspeccioneu les seves metadades "
+"amb:"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:12
+msgid "Fast GPU accelerated image rendering"
+msgstr "Renderització ràpida d'imatges accelerades de la GPU"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:13
+msgid "Tiled rendering for vector graphics"
+msgstr "Renderització en mosaic per a gràfics vectorials"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:14
+msgid "Extendable and sandboxed raster image decoding"
+msgstr "Descodificació d'imatges ràster extensibles i en un entorn aïllat"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:15
+msgid "Accessible presentation of the most important metadata."
+msgstr "Presentació accessible de les metadades més importants."
+
+#: data/resources/gtk/help-overlay.ui:11
+msgctxt "shortcut window"
+msgid "General Shortcuts"
+msgstr "Dreceres generals"
+
+#: data/resources/gtk/help-overlay.ui:14
+msgctxt "shortcut window"
+msgid "Show Main Menu"
+msgstr "Mostra el menú principal"
+
+#: data/resources/gtk/help-overlay.ui:20
+msgctxt "shortcut window"
+msgid "Copy Image to Clipboard"
+msgstr "Copia la imatge al porta-retalls"
+
+#: data/resources/gtk/help-overlay.ui:26
+msgctxt "shortcut window"
+msgid "Move Image to Trash"
+msgstr "Mou la imatge a la paperera"
+
+#: data/resources/gtk/help-overlay.ui:32
+msgctxt "shortcut window"
+msgid "Toggle Image Properties"
+msgstr "Commuta les propietats de la imatge"
+
+#: data/resources/gtk/help-overlay.ui:38
+msgctxt "shortcut window"
+msgid "Set as Background"
+msgstr "Estableix com a fons"
+
+#: data/resources/gtk/help-overlay.ui:44
+msgctxt "shortcut window"
+msgid "Toggle Fullscreen"
+msgstr "Commuta la pantalla completa"
+
+#: data/resources/gtk/help-overlay.ui:50
+msgctxt "shortcut window"
+msgid "Leave Fullscreen"
+msgstr "Surt de la pantalla completa"
+
+#: data/resources/gtk/help-overlay.ui:56
+msgctxt "shortcut window"
+msgid "New Window"
+msgstr "Finestra nova"
+
+#: data/resources/gtk/help-overlay.ui:62
+msgctxt "shortcut window"
+msgid "Open Help"
+msgstr "Obre l'ajuda"
+
+#: data/resources/gtk/help-overlay.ui:68
+msgctxt "shortcut window"
+msgid "Show Keyboard Shortcuts"
+msgstr "Mostra les dreceres de teclat"
+
+#: data/resources/gtk/help-overlay.ui:74
+msgctxt "shortcut window"
+msgid "Close Window"
+msgstr "Tanca la finestra"
+
+#: data/resources/gtk/help-overlay.ui:80
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "Surt"
+
+#: data/resources/gtk/help-overlay.ui:88
+msgctxt "shortcut window"
+msgid "Navigate Images"
+msgstr "Navega per les imatges"
+
+#: data/resources/gtk/help-overlay.ui:92
+#: data/resources/gtk/help-overlay.ui:106
+#: data/resources/gtk/help-overlay.ui:218
+#: data/resources/gtk/help-overlay.ui:232
+msgctxt "shortcut window"
+msgid "Next Image"
+msgstr "Imatge següent"
+
+#: data/resources/gtk/help-overlay.ui:99
+#: data/resources/gtk/help-overlay.ui:113
+#: data/resources/gtk/help-overlay.ui:225
+#: data/resources/gtk/help-overlay.ui:239
+msgctxt "shortcut window"
+msgid "Previous Image"
+msgstr "Imatge anterior"
+
+#: data/resources/gtk/help-overlay.ui:119
+msgctxt "shortcut window"
+msgid "First Image"
+msgstr "Primera imatge"
+
+#: data/resources/gtk/help-overlay.ui:125
+msgctxt "shortcut window"
+msgid "Last Image"
+msgstr "Última imatge"
+
+#: data/resources/gtk/help-overlay.ui:133
+msgctxt "shortcut window"
+msgid "Rotate Image"
+msgstr "Gira la imatge"
+
+#: data/resources/gtk/help-overlay.ui:136
+#: data/resources/gtk/help-overlay.ui:257
+msgctxt "shortcut window"
+msgid "Rotate Clockwise"
+msgstr "Gira en sentit horari"
+
+#: data/resources/gtk/help-overlay.ui:142
+#: data/resources/gtk/help-overlay.ui:263
+msgctxt "shortcut window"
+msgid "Rotate Counterclockwise"
+msgstr "Gira en sentit antihorari"
+
+#: data/resources/gtk/help-overlay.ui:150
+msgctxt "shortcut window"
+msgid "Zoom Image"
+msgstr "Zoom de la imatge"
+
+#: data/resources/gtk/help-overlay.ui:153
+#: data/resources/gtk/help-overlay.ui:245
+msgctxt "shortcut window"
+msgid "Zoom In"
+msgstr "Amplia"
+
+#: data/resources/gtk/help-overlay.ui:159
+#: data/resources/gtk/help-overlay.ui:251
+msgctxt "shortcut window"
+msgid "Zoom Out"
+msgstr "Allunya"
+
+#: data/resources/gtk/help-overlay.ui:165
+msgctxt "shortcut window"
+msgid "Best Fit"
+msgstr "Millor ajust"
+
+#: data/resources/gtk/help-overlay.ui:171
+msgctxt "shortcut window"
+msgid "Original Scale"
+msgstr "Escala original"
+
+#: data/resources/gtk/help-overlay.ui:177
+msgctxt "shortcut window"
+msgid "200% Scale"
+msgstr "Escala del 200%"
+
+#: data/resources/gtk/help-overlay.ui:185
+msgctxt "shortcut window"
+msgid "Pan View"
+msgstr "Visualització panoràmica"
+
+#: data/resources/gtk/help-overlay.ui:188
+msgctxt "shortcut window"
+msgid "Pan Left"
+msgstr "Panoràmica esquerra"
+
+#: data/resources/gtk/help-overlay.ui:194
+msgctxt "shortcut window"
+msgid "Pan Right"
+msgstr "Panoràmica dreta"
+
+#: data/resources/gtk/help-overlay.ui:200
+msgctxt "shortcut window"
+msgid "Pan Up"
+msgstr "Panoràmica amunt"
+
+#: data/resources/gtk/help-overlay.ui:206
+msgctxt "shortcut window"
+msgid "Pan Down"
+msgstr "Panoràmica cap avall"
+
+#: data/resources/gtk/help-overlay.ui:214
+msgctxt "shortcut window"
+msgid "Gestures"
+msgstr "Gestos"
+
+#. Translators: Replace "translator-credits" with your names, one name per
+#. line
+#: src/about.rs:40
+msgid "translator-credits"
+msgstr "Jordi Mas i Hernàndez, <jmas@softcatala.org>, 2023"
+
+#: src/about.rs:41
+msgid "Copyright © 2020–2023 Christopher Davis et al."
+msgstr "Copyright . 2020–2023 Christopher Davis et al."
+
+#: src/file_model.rs:120
+msgid "Could not list other files in directory."
+msgstr "No s'han pogut llistar altres fitxers al directori."
+
+#. Translators: short for "north" in GPS coordinate
+#: src/image_metadata/gps.rs:153
+msgid "N"
+msgstr "N"
+
+#. Translators: short for "south" in GPS coordinate
+#: src/image_metadata/gps.rs:156
+msgid "S"
+msgstr "S"
+
+#. Translators: short for "east" in GPS coordinate
+#: src/image_metadata/gps.rs:166
+msgid "E"
+msgstr "E"
+
+#. Translators: short for "west" in GPS coordinate
+#: src/image_metadata/gps.rs:169
+msgid "W"
+msgstr "O"
+
+#. Translators: Unit for exposure time in seconds
+#: src/image_metadata/mod.rs:164
+msgid "1\\u{2215}{}\\u{202F}s"
+msgstr "1\\u{2215}{}\\u{202F}s"
+
+#. Translators: Unit for focal length in millimeters
+#: src/image_metadata/mod.rs:189
+msgid "{}\\u{202F}mm"
+msgstr "{}\\u{202F}mm"
+
+#. Translators: This is the date and time format we use in metadata output
+#. etc.
+#. The format has to follow
+#. <https://docs.gtk.org/glib/method.DateTime.format.html>
+#. The default is already translated. Don't change if you are not sure what to
+#. use.
+#: src/util/mod.rs:36
+#, c-format
+msgid "%x %X"
+msgstr "%x %X"
+
+#: src/util/mod.rs:179 src/window.rs:592
+msgid "Failed to restore image from trash"
+msgstr "No s'ha pogut restaurar la imatge de la paperera"
+
+#: src/util/mod.rs:200
+msgid "Failed to open image"
+msgstr "No s'ha pogut obrir la imatge"
+
+#. Translators: This is a toast notification, informing the user that an image
+#. has been set as background.
+#: src/widgets/image_view.rs:663
+msgid "Set as background."
+msgstr "Estableix com a fons."
+
+#: src/widgets/image_view.rs:676
+msgid "Could not set background."
+msgstr "No s'ha pogut establir el fons."
+
+#: src/window.rs:479
+msgid "Supported image formats"
+msgstr "Formats d'imatge admesos"
+
+#: src/window.rs:488
+msgid "All files"
+msgstr "Tots els fitxers"
+
+#: src/window.rs:495
+msgid "Open Image"
+msgstr "Obre una imatge"
+
+#: src/window.rs:558
+msgid "Image copied to clipboard"
+msgstr "Imatge copiada al porta-retalls"
+
+#: src/window.rs:579
+msgid "Image moved to trash"
+msgstr "S'ha mogut la imatge a la paperera"
+
+#: src/window.rs:580
+msgid "Undo"
+msgstr "Desfés"
+
+#: src/window.rs:607
+msgid "Failed to move image to trash"
+msgstr "No s'ha pogut moure la imatge a la paperera"
+
+#: src/window.rs:622
+msgid "Permanently Delete Image?"
+msgstr "Voleu suprimir permanentment la imatge?"
+
+#: src/window.rs:624
+msgid "The image “{}” can only be deleted permanently."
+msgstr "La imatge «{}» només es pot suprimir permanentment."
+
+#: src/window.rs:632
+msgid "Cancel"
+msgstr "Cancel·la"
+
+#: src/window.rs:633
+msgid "Delete"
+msgstr "Suprimeix"
+
+#: src/window.rs:644
+msgid "Failed to delete image"
+msgstr "No s'ha pogut suprimir la imatge"
