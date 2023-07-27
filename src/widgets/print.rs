@@ -140,6 +140,22 @@ impl<T: AsRef<str>> From<T> for Unit {
     }
 }
 
+impl std::fmt::Display for Unit {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> Result<(), std::fmt::Error> {
+        let s = match self {
+            // Translators: Shorthand for centimeter
+            Self::Centimeter => gettext("cm"),
+            // Translators: Shorthand for inch
+            Self::Inch => gettext("in"),
+            // Translators: Shorthand for pixel
+            Self::Pixel => gettext("px"),
+            Self::Percent => String::from("%"),
+        };
+
+        f.write_str(&s)
+    }
+}
+
 impl Unit {
     fn factor(&self, dpi: f64, total_size: i32) -> f64 {
         match self {
@@ -172,6 +188,13 @@ impl Unit {
     fn round(&self, num: f64) -> f64 {
         let f = 10_f64.powi(self.digits() as i32);
         (num * f).round() / f
+    }
+
+    fn expression() -> gtk::ClosureExpression {
+        gtk::ClosureExpression::new::<glib::GString>(
+            [] as [gtk::Expression; 0],
+            glib::closure!(|s: gtk::StringObject| Self::from(s.string().as_str()).to_string()),
+        )
     }
 }
 
@@ -283,6 +306,7 @@ mod imp {
             self.margin_unit.connect_selected_notify(
                 glib::clone!(@weak obj => move |_| obj.on_margin_unit_changed()),
             );
+            self.margin_unit.set_expression(Some(Unit::expression()));
             self.margin_horizontal.connect_value_notify(
                 glib::clone!(@weak obj => move |_| obj.on_margin_horizontal_changed()),
             );
@@ -294,6 +318,7 @@ mod imp {
             self.size_unit.connect_selected_notify(
                 glib::clone!(@weak obj => move |_| obj.on_size_unit_changed()),
             );
+            self.size_unit.set_expression(Some(Unit::expression()));
             self.fill_space.connect_active_notify(
                 glib::clone!(@weak obj => move |_| obj.on_fill_space_changed()),
             );
