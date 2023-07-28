@@ -290,9 +290,8 @@ mod imp {
             obj.set_transient_for(Some(&obj.parent_window()));
             obj.set_modal(true);
 
-            self.alignment.connect_selected_notify(
-                glib::clone!(@weak obj => move |_| obj.on_margin_vertical_changed()),
-            );
+            self.alignment
+                .connect_selected_notify(glib::clone!(@weak obj => move |_| obj.draw_preview()));
 
             self.alignment
                 .set_expression(Some(gtk::ClosureExpression::new::<glib::GString>(
@@ -361,21 +360,26 @@ mod imp {
                         imp.title.set_subtitle(&printer);
                     }
 
+                    imp.margin_horizontal.adjustment().set_step_increment(0.5);
+                    imp.margin_horizontal.adjustment().set_page_increment(2.5);
+                    imp.margin_vertical.adjustment().set_step_increment(0.5);
+                    imp.margin_vertical.adjustment().set_page_increment(2.5);
+
                     imp.width.adjustment().set_step_increment(1.);
                     imp.width.adjustment().set_page_increment(5.);
                     imp.height.adjustment().set_step_increment(1.);
                     imp.height.adjustment().set_page_increment(5.);
-                    imp.margin_horizontal.adjustment().set_step_increment(1.);
-                    imp.margin_horizontal.adjustment().set_page_increment(5.);
-                    imp.margin_vertical.adjustment().set_step_increment(1.);
-                    imp.margin_vertical.adjustment().set_page_increment(5.);
 
+                    let _ui_updates_disabled = obj.disable_ui_updates();
                     obj.set_ranges();
-
-                    imp.width.set_value(obj.image().image_size().0 as f64);
-
                     obj.on_margin_unit_changed();
                     obj.on_size_unit_changed();
+
+                    let size_unit = obj.size_unit();
+                    imp.width.set_value(
+                        size_unit
+                            .round(obj.image().image_size().0 as f64 * obj.width_unit_factor()),
+                    );
 
                     imp.print_operation.cancel();
 
@@ -546,12 +550,15 @@ impl LpPrint {
     }
 
     pub fn on_margin_horizontal_changed(&self) {
-        if self.fill_space() {
+        if self.ui_updates() {
             let _ui_updates_disabled = self.disable_ui_updates();
-            self.update_width();
-            self.update_height();
+            self.set_ranges();
+            if self.fill_space() {
+                self.update_width();
+                self.update_height();
+            }
+            self.draw_preview();
         }
-        self.draw_preview();
     }
 
     /// Returns user selected left margin in pixels
@@ -578,12 +585,16 @@ impl LpPrint {
     }
 
     pub fn on_margin_vertical_changed(&self) {
-        if self.fill_space() {
+        if self.ui_updates() {
             let _ui_updates_disabled = self.disable_ui_updates();
-            self.update_width();
-            self.update_height();
+            self.set_ranges();
+            if self.fill_space() {
+                let _ui_updates_disabled = self.disable_ui_updates();
+                self.update_width();
+                self.update_height();
+            }
+            self.draw_preview();
         }
-        self.draw_preview();
     }
 
     /// Returns user selected top margin in pixels
@@ -610,9 +621,29 @@ impl LpPrint {
     fn set_ranges(&self) {
         let imp = self.imp();
 
+        let margin_unit = self.margin_unit();
+        let min_horizontal_margin = f64::max(
+            self.page_setup().left_margin(gtk::Unit::Inch),
+            self.page_setup().right_margin(gtk::Unit::Inch),
+        ) * self.dpi();
+        let min_vertical_margin = f64::max(
+            self.page_setup().top_margin(gtk::Unit::Inch),
+            self.page_setup().bottom_margin(gtk::Unit::Inch),
+        ) * self.dpi();
+
+        imp.margin_horizontal.set_range(
+            margin_unit.ceil(min_horizontal_margin * self.margin_unit_factor()),
+            margin_unit.floor((self.paper_width() / 2.) * self.margin_unit_factor()),
+        );
+        imp.margin_vertical.set_range(
+            margin_unit.ceil(min_vertical_margin * self.margin_unit_factor()),
+            margin_unit.floor((self.paper_height() / 2.) * self.margin_unit_factor()),
+        );
+
         let size_unit = self.size_unit();
-        let max_height = self.page_setup().page_height(gtk::Unit::Inch) * self.dpi();
-        let max_width = self.page_setup().page_width(gtk::Unit::Inch) * self.dpi();
+        let max_width = self.paper_width() - 2. * self.user_margin_horizontal();
+        let max_height = self.paper_height() - 2. * self.user_margin_vertical();
+
         imp.width.set_range(
             size_unit.ceil(self.width_unit_factor()),
             size_unit.floor(max_width * self.width_unit_factor()),
@@ -621,30 +652,12 @@ impl LpPrint {
             size_unit.ceil(self.width_unit_factor()),
             size_unit.floor(max_height * self.height_unit_factor()),
         );
-
-        let margin_unit = self.margin_unit();
-        let min_horizontal_margin = f64::max(
-            self.page_setup().left_margin(gtk::Unit::Inch),
-            self.page_setup().right_margin(gtk::Unit::Inch),
-        ) * self.dpi()
-            * self.margin_unit_factor();
-        imp.margin_horizontal.set_range(
-            margin_unit.ceil(min_horizontal_margin),
-            margin_unit.floor(min_horizontal_margin + max_width * self.margin_unit_factor()),
-        );
-
-        let min_vertical_margin =
-            self.page_setup().top_margin(gtk::Unit::Inch) * self.dpi() * self.margin_unit_factor();
-        imp.margin_vertical.set_range(
-            margin_unit.ceil(min_vertical_margin),
-            margin_unit.floor(min_vertical_margin + max_height * self.margin_unit_factor()),
-        );
     }
 
     fn fill_space_width(&self) -> f64 {
-        let width1 = self.page_setup().page_width(gtk::Unit::Inch) * self.dpi();
+        let width1 = self.paper_width() - 2. * self.user_margin_horizontal();
 
-        let height = self.page_setup().page_height(gtk::Unit::Inch) * self.dpi();
+        let height = self.paper_height() - 2. * self.user_margin_vertical();
         let (orig_width, orig_height) = self.image().image_size();
         let width2 = height * orig_width as f64 / orig_height as f64;
 
@@ -675,6 +688,7 @@ impl LpPrint {
 
     fn on_size_unit_changed(&self) {
         let imp = self.imp();
+        let _ui_updates_disabled = self.disable_ui_updates();
 
         let (orig_width, orig_height) = self.image().image_size();
 
@@ -696,10 +710,13 @@ impl LpPrint {
 
         imp.height.set_digits(unit.digits());
         imp.height.set_value(height);
+
+        self.draw_preview();
     }
 
     fn on_margin_unit_changed(&self) {
         let imp = self.imp();
+        let _ui_updates_disabled = self.disable_ui_updates();
 
         let unit = self.margin_unit();
         let unit_factor = unit.factor(self.dpi(), 1);
@@ -716,6 +733,8 @@ impl LpPrint {
 
         imp.margin_vertical.set_digits(unit.digits());
         imp.margin_vertical.set_value(margin_vertical);
+
+        self.draw_preview();
     }
 
     pub fn fill_space(&self) -> bool {
