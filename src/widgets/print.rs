@@ -641,7 +641,7 @@ impl LpPrint {
         );
 
         let size_unit = self.size_unit();
-        let max_width = self.paper_width() - 2. * self.user_margin_horizontal();
+        let max_width = self.fill_space_width();
         let max_height = self.paper_height() - 2. * self.user_margin_vertical();
 
         imp.width.set_range(
@@ -664,6 +664,12 @@ impl LpPrint {
         f64::min(width1, width2)
     }
 
+    fn fill_space_height(&self) -> f64 {
+        let (orig_width, orig_height) = self.image().image_size();
+
+        self.fill_space_width() * orig_height as f64 / orig_width as f64
+    }
+
     fn update_width(&self) {
         if self.fill_space() {
             let value = self
@@ -674,16 +680,14 @@ impl LpPrint {
     }
 
     fn update_height(&self) {
-        let (orig_width, orig_height) = self.image().image_size();
-        if self.fill_space() {
-            let height = self.fill_space_width() * orig_height as f64 / orig_width as f64;
-            let value = self.size_unit().floor(height * self.height_unit_factor());
-            self.imp().height.set_value(value);
+        let height = if self.fill_space() {
+            self.fill_space_height()
         } else {
-            let height = self.user_width() * orig_height as f64 / orig_width as f64;
-            let value = self.size_unit().floor(height * self.height_unit_factor());
-            self.imp().height.set_value(value);
-        }
+            self.user_height()
+        };
+
+        let value = self.size_unit().round(height * self.height_unit_factor());
+        self.imp().height.set_value(value);
     }
 
     fn on_size_unit_changed(&self) {
