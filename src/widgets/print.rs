@@ -380,6 +380,20 @@ mod imp {
                             .round(obj.image().image_size().0 as f64 * obj.width_unit_factor()),
                     );
 
+                    // Default to inch for USA and Liberia
+                    if let Some(unit_locale) = getlocale(gettextrs::LocaleCategory::LcMeasurement) {
+                        if let Some(locale) = unit_locale
+                            .split(|x| *x == b'_')
+                            .nth(1)
+                            .and_then(|x| x.get(0..2))
+                        {
+                            if locale == b"US" || locale == b"LR" {
+                                imp.margin_unit.set_selected(Unit::Inch as u32);
+                                imp.size_unit.set_selected(Unit::Inch as u32);
+                            }
+                        }
+                    }
+
                     imp.print_operation.cancel();
 
                     let orientation = match obj.page_setup().orientation() {
@@ -901,4 +915,16 @@ extern "C" {
         min: std::ffi::c_double,
         max: std::ffi::c_double,
     );
+}
+
+// TODO: Upstream to gettext if possible
+pub fn getlocale(category: gettextrs::LocaleCategory) -> Option<Vec<u8>> {
+    unsafe {
+        let ret = gettext_sys::setlocale(category as i32, std::ptr::null());
+        if ret.is_null() {
+            None
+        } else {
+            Some(std::ffi::CStr::from_ptr(ret).to_bytes().to_owned())
+        }
+    }
 }

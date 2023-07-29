@@ -52,3 +52,7 @@ features = ["v1_4"]
 [dependencies.gettext-rs]
 version = "0.7.0"
 features = ["gettext-system"]
+
+[dependencies.gettext-sys]
+version = "0.21.3"
+features = ["gettext-system"]
