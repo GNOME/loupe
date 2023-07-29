@@ -700,7 +700,7 @@ impl LpImageView {
             .downcast_ref::<gtk::Window>()
             .context("Could not downcast to GtkWindow")?;
 
-        LpPrint::new(image, window.clone(), None, None).run();
+        LpPrint::new(image, window.clone(), None, None).run()?;
 
         Ok(())
     }

@@ -55,7 +55,8 @@ enum VAlignment {
 
 /// Scope guard for non user ui changes
 ///
-/// Creates a context in which other signals know that changes are not user input
+/// Creates a context in which other signals know that changes are not user input.
+/// This avoids things like loops between value change signals.
 #[derive(Default, Clone, Debug)]
 struct UiUpdates {
     disabled: Rc<Cell<bool>>,
@@ -306,12 +307,10 @@ mod imp {
                 glib::clone!(@weak obj => move |_| obj.on_margin_unit_changed()),
             );
             self.margin_unit.set_expression(Some(Unit::expression()));
-            self.margin_horizontal.connect_value_notify(
-                glib::clone!(@weak obj => move |_| obj.on_margin_horizontal_changed()),
-            );
-            self.margin_vertical.connect_value_notify(
-                glib::clone!(@weak obj => move |_| obj.on_margin_vertical_changed()),
-            );
+            self.margin_horizontal
+                .connect_value_notify(glib::clone!(@weak obj => move |_| obj.on_margin_changed()));
+            self.margin_vertical
+                .connect_value_notify(glib::clone!(@weak obj => move |_| obj.on_margin_changed()));
 
             // Size signals
             self.size_unit.connect_selected_notify(
@@ -390,7 +389,7 @@ mod imp {
                     };
                     obj.set_orientation(orientation);
 
-                    obj.set_visible(true);
+                    obj.present();
                 }
             ));
         }
@@ -458,10 +457,25 @@ impl LpPrint {
         obj
     }
 
+    /// Starts print preparation process by showing the print dialog
+    pub fn run(&self) -> Result<(), glib::Error> {
+        self.print_operation()
+            .run(
+                gtk::PrintOperationAction::PrintDialog,
+                self.imp().parent_window.get(),
+            )
+            .map(|_| ())
+    }
+
+    /// Returns if the current update is caused by user input
+    ///
+    /// If ui input is changed via code, this is set to `false`
+    /// via `disable_ui_updates` before.
     fn ui_updates(&self) -> bool {
         !self.imp().ui_updates.disabled.get()
     }
 
+    /// Creates scope guard that allows ui changes via code afterwards
     fn disable_ui_updates(&self) -> UiUpdates {
         self.imp().ui_updates.disable()
     }
@@ -536,6 +550,7 @@ impl LpPrint {
         f64::max(1., self.imp().width.value() / self.width_unit_factor())
     }
 
+    /// Returns user selected image height in pixels
     pub fn user_height(&self) -> f64 {
         let (_, orig_height) = self.image().image_size();
 
@@ -549,7 +564,7 @@ impl LpPrint {
         self.user_width() / orig_width as f64
     }
 
-    pub fn on_margin_horizontal_changed(&self) {
+    pub fn on_margin_changed(&self) {
         if self.ui_updates() {
             let _ui_updates_disabled = self.disable_ui_updates();
             self.set_ranges();
@@ -566,6 +581,7 @@ impl LpPrint {
         self.imp().margin_horizontal.value() / self.margin_unit_factor()
     }
 
+    /// Returns left margin that positions the image according to user settings
     pub fn effective_margin_left(&self) -> f64 {
         match self.user_alignment().horizontal {
             HAlignment::Left => self.user_margin_horizontal(),
@@ -576,25 +592,14 @@ impl LpPrint {
         }
     }
 
+    /// Returns width of physical paper in pixels
     pub fn paper_width(&self) -> f64 {
         self.page_setup().paper_width(gtk::Unit::Inch) * self.dpi()
     }
 
+    /// Returns height of physical paper in pixels
     pub fn paper_height(&self) -> f64 {
         self.page_setup().paper_height(gtk::Unit::Inch) * self.dpi()
-    }
-
-    pub fn on_margin_vertical_changed(&self) {
-        if self.ui_updates() {
-            let _ui_updates_disabled = self.disable_ui_updates();
-            self.set_ranges();
-            if self.fill_space() {
-                let _ui_updates_disabled = self.disable_ui_updates();
-                self.update_width();
-                self.update_height();
-            }
-            self.draw_preview();
-        }
     }
 
     /// Returns user selected top margin in pixels
@@ -654,6 +659,7 @@ impl LpPrint {
         );
     }
 
+    /// Returns width that makes the image fill the page
     fn fill_space_width(&self) -> f64 {
         let width1 = self.paper_width() - 2. * self.user_margin_horizontal();
 
@@ -664,12 +670,14 @@ impl LpPrint {
         f64::min(width1, width2)
     }
 
+    /// Returns height that makes the image fill the page
     fn fill_space_height(&self) -> f64 {
         let (orig_width, orig_height) = self.image().image_size();
 
         self.fill_space_width() * orig_height as f64 / orig_width as f64
     }
 
+    /// Updates width according to margins if fill space is activated
     fn update_width(&self) {
         if self.fill_space() {
             let value = self
@@ -679,6 +687,7 @@ impl LpPrint {
         }
     }
 
+    /// Updates height according to width
     fn update_height(&self) {
         let height = if self.fill_space() {
             self.fill_space_height()
@@ -741,6 +750,7 @@ impl LpPrint {
         self.draw_preview();
     }
 
+    /// Returns if the option to fill the page with the image is activated
     pub fn fill_space(&self) -> bool {
         self.imp().fill_space.is_active()
     }
@@ -752,15 +762,6 @@ impl LpPrint {
             self.update_height();
             self.draw_preview();
         }
-    }
-
-    pub fn run(&self) {
-        self.print_operation()
-            .run(
-                gtk::PrintOperationAction::PrintDialog,
-                self.imp().parent_window.get(),
-            )
-            .unwrap();
     }
 
     pub fn page_setup(&self) -> gtk::PageSetup {
@@ -776,7 +777,11 @@ impl LpPrint {
             self.print_operation().print_settings(),
             Some(self.print_operation().default_page_setup()),
         );
-        print.run();
+        let res = print.run();
+
+        if let Err(err) = res {
+            log::warn!("Print dialog error: {err}");
+        }
     }
 
     /// Initialize actual print operation
@@ -806,12 +811,14 @@ impl LpPrint {
             }),
         );
 
-        print_operation
-            .run(
-                gtk::PrintOperationAction::Print,
-                Some(&self.parent_window()),
-            )
-            .unwrap();
+        let res = print_operation.run(
+            gtk::PrintOperationAction::Print,
+            Some(&self.parent_window()),
+        );
+
+        if let Err(err) = res {
+            log::warn!("Print error: {err}");
+        }
     }
 
     /// Draw PDF for printing
