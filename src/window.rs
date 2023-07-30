@@ -969,7 +969,8 @@ impl LpWindow {
         if self.extend_to_top(fullscreened, show_properties, show_menu) {
             adw::ToolbarStyle::Flat
         } else {
-            adw::ToolbarStyle::Raised
+            // Use the border variant of raised to avoid shadows over images
+            adw::ToolbarStyle::__Unknown(2)
         }
     }
 }
