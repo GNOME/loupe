@@ -142,3 +142,4 @@ nightly:
   stage: deploy
   dependencies:
     - flatpak
+    - flatpak@aarch64
