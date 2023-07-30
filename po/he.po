@@ -6,10 +6,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
-"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/Incubator/loupe/-/"
-"issues\n"
-"POT-Creation-Date: 2023-07-14 14:07+0000\n"
-"PO-Revision-Date: 2023-07-15 21:14+0300\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
+"POT-Creation-Date: 2023-07-15 18:15+0000\n"
+"PO-Revision-Date: 2023-07-30 09:51+0300\n"
 "Last-Translator: Yosef Or Boczko <yoseforb@gmail.com>\n"
 "Language-Team: Hebrew <yoseforb@gmail.com>\n"
 "Language: he\n"
@@ -17,8 +16,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n==2 ? 1 : n>10 && n%10==0 ? "
-"2 : 3)\n"
-"X-Generator: Gtranslator 42.0\n"
+"2 : 3);\n"
+"X-Generator: Poedit 3.3.2\n"
 
 #: data/gtk/image_page.ui:6 data/gtk/window.ui:16
 msgid "_Open With…"
@@ -26,11 +25,11 @@ msgstr "_פתיחה באמצעות…"
 
 #: data/gtk/image_page.ui:14 data/gtk/window.ui:24
 msgid "_Print…"
-msgstr "_הדפסה…"
+msgstr "ה_דפסה…"
 
 #: data/gtk/image_page.ui:18
 msgid "_Copy"
-msgstr "_העתקה"
+msgstr "ה_עתקה"
 
 #: data/gtk/image_page.ui:23 data/gtk/window.ui:29
 msgid "Rotate"
@@ -186,7 +185,7 @@ msgstr "_פתיחה…"
 
 #: data/gtk/window.ui:46
 msgid "_Help"
-msgstr "_עזרה"
+msgstr "ע_זרה"
 
 #: data/gtk/window.ui:50
 msgid "_Keyboard Shortcuts"
@@ -194,7 +193,7 @@ msgstr "_צירופי מקשים"
 
 #: data/gtk/window.ui:54
 msgid "_About Image Viewer"
-msgstr "על _אודות מציג התמונות"
+msgstr "על מציג ה_תמונות"
 
 #. If the file exists, get display name
 #: data/gtk/window.ui:64 data/org.gnome.Loupe.desktop.in.in:3
@@ -251,19 +250,19 @@ msgstr "דפדוף בתמונות ובנתוני התמונות שלך עם:"
 
 #: data/org.gnome.Loupe.metainfo.xml.in.in:12
 msgid "Fast GPU accelerated image rendering"
-msgstr ""
+msgstr "עיבוד תמונה בהאצת מעבד גרפי מהיר"
 
 #: data/org.gnome.Loupe.metainfo.xml.in.in:13
 msgid "Tiled rendering for vector graphics"
-msgstr ""
+msgstr "עיבוד באריחים של גרפיקה וקטורית"
 
 #: data/org.gnome.Loupe.metainfo.xml.in.in:14
 msgid "Extendable and sandboxed raster image decoding"
-msgstr ""
+msgstr "פענוח תמונות מפת סיביות בסביבה מבודדת שאפשר להרחיב"
 
 #: data/org.gnome.Loupe.metainfo.xml.in.in:15
 msgid "Accessible presentation of the most important metadata."
-msgstr ""
+msgstr "ייצוג נגיש של נתוני העל החשובים ביותר."
 
 #: data/resources/gtk/help-overlay.ui:11
 msgctxt "shortcut window"
