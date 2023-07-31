@@ -429,6 +429,7 @@ mod imp {
 
                 if obj.is_hscrollable() || obj.is_vscrollable() {
                     obj.cancel_deceleration();
+                    gesture.set_state(gtk::EventSequenceState::Claimed);
                     obj.set_cursor(gdk::Cursor::from_name("grabbing", None).as_ref());
                     obj.imp().last_drag_value.set(Some((0., 0.)));
                 } else {

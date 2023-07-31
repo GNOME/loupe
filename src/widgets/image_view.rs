@@ -176,6 +176,7 @@ mod imp {
                         gesture.set_state(gtk::EventSequenceState::Denied);
                         None
                     } else {
+                        gesture.set_state(gtk::EventSequenceState::Claimed);
                         obj.current_page().and_then(|p| p.content_provider())
                     }
                 }),
