@@ -174,8 +174,11 @@ mod imp {
                         .current_page()
                         .map(|p| p.image().is_hscrollable() || p.image().is_vscrollable());
 
-                    // do scrolling if scrollable
-                    if is_scrollable == Some(true) {
+                    if is_scrollable == Some(true)
+                        || gesture.device().map(|x| x.source())
+                            == Some(gdk::InputSource::Touchscreen)
+                    {
+                        // Do scrolling if scrollable and no drag and drop on touchscreen
                         gesture.set_state(gtk::EventSequenceState::Denied);
                         None
                     } else {
