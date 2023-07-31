@@ -421,14 +421,16 @@ mod imp {
 
             drag_gesture.connect_drag_begin(glib::clone!(@weak obj => move |gesture, _, _| {
                 // Allow only left and middle button
-                if ![1, 2].contains(&gesture.current_button()) {
+                if ![1, 2].contains(&gesture.current_button())
+                    // Drag gesture for touchscreens is handled by ScrolledWindow
+                    || gesture.device().map(|x| x.source()) == Some(gdk::InputSource::Touchscreen)
+                {
                     gesture.set_state(gtk::EventSequenceState::Denied);
                     return;
                 }
 
                 if obj.is_hscrollable() || obj.is_vscrollable() {
                     obj.cancel_deceleration();
-                    gesture.set_state(gtk::EventSequenceState::Claimed);
                     obj.set_cursor(gdk::Cursor::from_name("grabbing", None).as_ref());
                     obj.imp().last_drag_value.set(Some((0., 0.)));
                 } else {
