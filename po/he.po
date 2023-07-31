@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/Incubator/loupe/-/issues\n"
-"POT-Creation-Date: 2023-04-19 21:36+0000\n"
-"PO-Revision-Date: 2023-04-20 17:01+0300\n"
+"POT-Creation-Date: 2023-04-27 02:21+0000\n"
+"PO-Revision-Date: 2023-04-29 21:22+0300\n"
 "Last-Translator: Yosef Or Boczko <yoseforb@gmail.com>\n"
 "Language-Team: Hebrew <yoseforb@gmail.com>\n"
 "Language: he\n"
@@ -43,11 +43,11 @@ msgstr "ה_גדרה כרקע…"
 msgid "Could not Load Image"
 msgstr "לא ניתן לטעון את התמונה"
 
-#: data/gtk/image_page.ui:88 data/gtk/window.ui:111
+#: data/gtk/image_page.ui:88 data/gtk/window.ui:101
 msgid "Rotate Left"
 msgstr "סיבוב שמאלה"
 
-#: data/gtk/image_page.ui:99 data/gtk/window.ui:122
+#: data/gtk/image_page.ui:98 data/gtk/window.ui:111
 msgid "Rotate Right"
 msgstr "סיבוב ימינה"
 
@@ -59,21 +59,20 @@ msgstr "התמונה הקודמת"
 msgid "Next Image"
 msgstr "התמונה הבאה"
 
-#: data/gtk/image_view.ui:70
-msgid "Toggle Fullscreen"
-msgstr "שינוי מצב מסך מלא"
-
-#: data/gtk/image_view.ui:81
+#: data/gtk/image_view.ui:66
 msgid "Zoom Out"
 msgstr "התרחקות"
 
-#: data/gtk/image_view.ui:92
+#: data/gtk/image_view.ui:77
 msgid "Zoom In"
 msgstr "התקרבות"
 
+#: data/gtk/image_view.ui:95
+msgid "Toggle Fullscreen"
+msgstr "שינוי מצב מסך מלא"
+
 #: data/gtk/print.ui:4
-# msgctxt "shortcut window"
-msgid "Layout Image"
+msgid "Image Layout"
 msgstr "פריסת תמונה"
 
 #: data/gtk/print.ui:66
@@ -194,38 +193,38 @@ msgstr "_על אודות לופ"
 
 #. If the file exists, get display name
 #: data/gtk/window.ui:59 data/org.gnome.Loupe.desktop.in.in:3
-#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/application.rs:191
-#: src/window.rs:665 src/window.rs:671
+#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/application.rs:188
+#: src/window.rs:796 src/window.rs:802
 msgid "Loupe"
 msgstr "לופ"
 
 # msgctxt "shortcut window"
-#: data/gtk/window.ui:90
+#: data/gtk/window.ui:80
 msgid "Copy to Clipboard"
 msgstr "העתקה ללוח הגזירים"
 
 # msgctxt "shortcut window"
-#: data/gtk/window.ui:97
+#: data/gtk/window.ui:87
 msgid "Move to Trash"
 msgstr "העברה לאשפה"
 
-#: data/gtk/window.ui:103
+#: data/gtk/window.ui:93
 msgid "Main Menu"
 msgstr "תפריט ראשי"
 
-#: data/gtk/window.ui:137
+#: data/gtk/window.ui:125
 msgid "Image Properties"
 msgstr "מאפייני תמונה"
 
-#: data/gtk/window.ui:157
+#: data/gtk/window.ui:145
 msgid "View Images"
 msgstr "מציג תמונות"
 
-#: data/gtk/window.ui:158
+#: data/gtk/window.ui:146
 msgid "Drag and drop images here"
 msgstr "יש לגרור ולשחרר לכאן תמונות"
 
-#: data/gtk/window.ui:162
+#: data/gtk/window.ui:150
 msgid "_Open File…"
 msgstr "_פתיחת קובץ…"
 
@@ -233,7 +232,7 @@ msgstr "_פתיחת קובץ…"
 msgid "Picture;Slideshow;Graphics;Image Viewer;"
 msgstr "תמונה;תמונות;מצגת;הצגה;גרפיקה;מציג תמונות;"
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:7 src/application.rs:194
+#: data/org.gnome.Loupe.metainfo.xml.in.in:7 src/application.rs:191
 msgid "The Loupe Team"
 msgstr "צוות לופ"
 
@@ -242,22 +241,8 @@ msgid "View images"
 msgstr "מציג תמונות"
 
 #: data/org.gnome.Loupe.metainfo.xml.in.in:10
-msgid ""
-"A simple image viewer which allows you to browse through your images and "
-"inspect their metadata."
-msgstr "מציג תמונות פשוט המאפשר לדפדף בתמונות שלך ולראות את נתוני התמונות שלך."
-
-#: data/org.gnome.Loupe.metainfo.xml.in.in:11
-msgid "The following features are not available yet"
-msgstr "התכונות הבאות עדיין אינן זמינות"
-
-#: data/org.gnome.Loupe.metainfo.xml.in.in:13
-msgid "Applying image color profiles"
-msgstr "החלת פרופילי צבע על תמונה"
-
-#: data/org.gnome.Loupe.metainfo.xml.in.in:14
-msgid "Printing"
-msgstr "הדפסה"
+msgid "Browse through your images and inspect their metadata."
+msgstr "דפדוף בתמונות ובנתוני התמונות שלך."
 
 #: data/resources/gtk/help-overlay.ui:11
 msgctxt "shortcut window"
@@ -433,13 +418,13 @@ msgid "Gestures"
 msgstr "מחוות"
 
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/application.rs:203
+#: src/application.rs:200
 msgid "translator-credits"
 msgstr ""
 "יוסף אור בוצ׳קו <yoseforb@gmail.com>\n"
 "מיזם תרגום GNOME לעברית https://l10n.gnome.org/teams/he/"
 
-#: src/application.rs:204
+#: src/application.rs:201
 msgid "Copyright © 2020–2023 Christopher Davis et al."
 msgstr "כל הזכויות שמורות © 2022-2023 Christopher Davis ואחרים."
 
@@ -466,19 +451,19 @@ msgstr "תמונה מונפשת WebP"
 msgid "Animated PNG"
 msgstr "תמונה מונפשת PNG"
 
-#: src/decoder/mod.rs:192
+#: src/decoder/mod.rs:189
 msgid "Unknown image format: {}"
 msgstr "תצורת התמונה אינה מוכרת: {}"
 
-#: src/decoder/mod.rs:199
+#: src/decoder/mod.rs:194
 msgid "Unknown image format"
 msgstr "תצורת התמונה אינה מוכרת"
 
-#: src/decoder/mod.rs:227
+#: src/decoder/mod.rs:222
 msgid "Could not open image"
 msgstr "לא ניתן לפתוח את התמונה"
 
-#: src/decoder/mod.rs:231
+#: src/decoder/mod.rs:226
 msgid "Could not read image"
 msgstr "לא ניתן לקרוא את התמונה"
 
@@ -524,7 +509,7 @@ msgstr "‏‎{}\\u{202F} מ״מ"
 msgid "%x %X"
 msgstr "%x %X"
 
-#: src/util/mod.rs:171 src/window.rs:500
+#: src/util/mod.rs:171 src/window.rs:522
 msgid "Failed to restore image from trash"
 msgstr "שחזור התמונה מהאשפה נכשלה"
 
@@ -533,53 +518,74 @@ msgid "Failed to open image"
 msgstr "פתיחת התמונה נכשלה"
 
 #. Translators: This is a toast notification, informing the user that an image has been set as background.
-#: src/widgets/image_view.rs:599
+#: src/widgets/image_view.rs:620
 msgid "Set as background."
 msgstr "הגדרת התמונה כרקע."
 
-#: src/widgets/image_view.rs:610
+#: src/widgets/image_view.rs:631
 msgid "Could not set background."
 msgstr "לא ניתן לקבוע כרקע."
 
-#: src/window.rs:418
+#: src/window.rs:426
+msgid "Supported image formats"
+msgstr "תבניות תמונה נתמכות"
+
+#: src/window.rs:432
+msgid "All files"
+msgstr "כל הקבצים"
+
+#: src/window.rs:439
 msgid "Open Image"
 msgstr "פתיחת תמונה"
 
-#: src/window.rs:472
+#: src/window.rs:494
 msgid "Image copied to clipboard"
 msgstr "תמונה הועתקה ללוח הגזירים"
 
-#: src/window.rs:488
+#: src/window.rs:510
 msgid "Image moved to trash"
 msgstr "תמונה הוערה לאשפה"
 
-#: src/window.rs:489
+#: src/window.rs:511
 msgid "Undo"
 msgstr "ביטול"
 
-#: src/window.rs:515
+#: src/window.rs:537
 msgid "Failed to move image to trash"
 msgstr "העברת התמונה לאשפה נכשלה"
 
-#: src/window.rs:530
+#: src/window.rs:552
 msgid "Permanently Delete Image?"
 msgstr "למחוק את התמונה לצמיתות?"
 
-#: src/window.rs:532
+#: src/window.rs:554
 msgid "The image “{}” can only be deleted permanently."
 msgstr "ניתן למחוק את התמונה „{}” רק לצמיתות."
 
-#: src/window.rs:540
+#: src/window.rs:562
 msgid "Cancel"
 msgstr "ביטול"
 
-#: src/window.rs:541
+#: src/window.rs:563
 msgid "Delete"
 msgstr "מחיקה"
 
-#: src/window.rs:552
+#: src/window.rs:574
 msgid "Failed to delete image"
 msgstr "מחיקת התמונה נכשלה"
+
+# msgctxt "shortcut window"
+#~ msgid "Layout Image"
+#~ msgstr "פריסת תמונה"
+
+#~ msgid "The following features are not available yet"
+#~ msgstr "התכונות הבאות עדיין אינן זמינות"
+
+#~ msgid "Applying image color profiles"
+#~ msgstr "החלת פרופילי צבע על תמונה"
+
+#~ msgid "Printing"
+#~ msgstr "הדפסה"
 
 #~ msgid "File does not exist"
 #~ msgstr "הקובץ לא קיים"

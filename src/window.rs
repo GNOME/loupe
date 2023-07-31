@@ -2,6 +2,7 @@
 // Copyright (c) 2022-2023 Sophie Herold
 // Copyright (c) 2022 Elton A Rodrigues
 // Copyright (c) 2022 Maximiliano Sandoval R
+// Copyright (c) 2023 Sabri Ünal
 // Copyright (c) 2023 Lubosz Sarnecki
 //
 // This program is free software: you can redistribute it and/or modify
@@ -37,12 +38,15 @@ use crate::config;
 use crate::util::{self, Direction, Position};
 use crate::widgets::{LpImage, LpImageView, LpPropertiesView};
 
+/// Show window after X milliseconds even if image dimensions are not known yet
+const SHOW_WINDOW_AFTER: u64 = 2000;
+
 /// Animation duration for showing overlay buttons in milliseconds
 const SHOW_CONTROLS_ANIMATION_DURATION: u32 = 200;
 /// Animation duration for hiding overlay buttons in milliseconds
 const HIDE_CONTROLS_ANIMATION_DURATION: u32 = 1000;
-/// Time of inactivity after which controls will be hidden in seconds
-const HIDE_CONTROLS_IDLE_TIMEOUT: u32 = 3;
+/// Time of inactivity after which controls will be hidden in milliseconds
+const HIDE_CONTROLS_IDLE_TIMEOUT: u64 = 3000;
 
 mod imp {
     use super::*;
@@ -68,7 +72,11 @@ mod imp {
         // TemplateChild<T> wrapper, where T is the
         // object type of the template child.
         #[template_child]
-        pub(super) headerbar: TemplateChild<gtk::HeaderBar>,
+        pub(super) toolbar_view: TemplateChild<adw::ToolbarView>,
+        #[template_child]
+        pub(super) headerbar: TemplateChild<adw::HeaderBar>,
+        #[template_child]
+        pub(super) headerbar_events: TemplateChild<gtk::EventControllerMotion>,
         #[template_child]
         pub(super) properties_button: TemplateChild<gtk::ToggleButton>,
         #[template_child]
@@ -83,6 +91,7 @@ mod imp {
         pub(super) properties_view: TemplateChild<LpPropertiesView>,
         #[template_child]
         pub(super) drop_target: TemplateChild<gtk::DropTarget>,
+        /// Motion controller for complete window
         #[template_child]
         pub(super) motion_controller: TemplateChild<gtk::EventControllerMotion>,
 
@@ -190,8 +199,12 @@ mod imp {
                 win.open_with().await;
             });
 
-            klass.install_action("win.rotate", Some("d"), move |win, _, angle| {
-                win.rotate_image(angle.unwrap().get().unwrap());
+            klass.install_action("win.rotate_cw", None, |win, _, _| {
+                win.rotate_image(90.0);
+            });
+
+            klass.install_action("win.rotate_ccw", None, |win, _, _| {
+                win.rotate_image(-90.0);
             });
 
             klass.install_action_async("win.set-background", None, |win, _, _| async move {
@@ -236,7 +249,12 @@ mod imp {
             // and keeps the others usable
             gtk::WindowGroup::new().add_window(&*obj);
 
-            obj.images_available();
+            glib::timeout_add_local_once(
+                std::time::Duration::from_millis(SHOW_WINDOW_AFTER),
+                glib::clone!(@weak obj => move || if !obj.is_visible() { obj.present() }),
+            );
+
+            obj.on_images_available();
 
             let current_image_signals = self.image_view.current_image_signals();
             // clone! is a macro from glib-rs that allows
@@ -287,10 +305,14 @@ mod imp {
                 }),
             );
 
+            self.toolbar_view.connect_top_bar_style_notify(
+                glib::clone!(@weak obj => move |_| obj.on_top_bar_style_notify()),
+            );
+
             self.image_view.connect_notify_local(
                 Some("current-page"),
                 glib::clone!(@weak obj => move |_, _| {
-                    obj.images_available();
+                    obj.on_images_available();
                 }),
             );
 
@@ -577,6 +599,10 @@ impl LpWindow {
         self.imp().image_view.clone()
     }
 
+    pub fn headerbar(&self) -> adw::HeaderBar {
+        self.imp().headerbar.clone()
+    }
+
     fn show_toast(&self, text: impl AsRef<str>, priority: adw::ToastPriority) {
         let imp = self.imp();
 
@@ -591,7 +617,8 @@ impl LpWindow {
         self.action_set_enabled("win.set-background", enabled);
         self.action_set_enabled("win.toggle-fullscreen", enabled);
         self.action_set_enabled("win.print", enabled);
-        self.action_set_enabled("win.rotate", enabled);
+        self.action_set_enabled("win.rotate_cw", enabled);
+        self.action_set_enabled("win.rotate_ccw", enabled);
         self.action_set_enabled("win.copy", enabled);
         self.action_set_enabled("win.trash", enabled);
         self.action_set_enabled("win.zoom-best-fit", enabled);
@@ -600,7 +627,7 @@ impl LpWindow {
     }
 
     /// Handles change in availability of images
-    fn images_available(&self) {
+    fn on_images_available(&self) {
         let imp = self.imp();
 
         let shows_image = imp.image_view.current_page().is_some();
@@ -613,9 +640,10 @@ impl LpWindow {
             imp.image_view.grab_focus();
             self.queue_hide_controls();
         } else {
-            imp.properties_button.set_active(false);
             imp.stack.set_visible_child(&*imp.status_page);
             imp.status_page.grab_focus();
+            // Leave fullscreen since status page has no controls to leave it
+            self.set_fullscreened(false);
         }
     }
 
@@ -672,9 +700,21 @@ impl LpWindow {
         self.action_set_enabled("win.zoom-in", can_zoom_in);
     }
 
-    fn set_control_opacity(&self, opacity: f64) {
+    fn set_control_opacity(&self, opacity: f64, hiding: bool) {
         self.image_view().controls_box_start().set_opacity(opacity);
         self.image_view().controls_box_end().set_opacity(opacity);
+
+        if self.is_headerbar_flat() {
+            self.headerbar().set_opacity(opacity);
+        } else {
+            self.headerbar().set_opacity(1.);
+        }
+
+        if self.is_fullscreened() && hiding && opacity < 0.9 {
+            self.set_cursor(gdk::Cursor::from_name("none", None).as_ref());
+        } else {
+            self.set_cursor(None);
+        }
     }
 
     fn controls_opacity(&self) -> f64 {
@@ -685,7 +725,7 @@ impl LpWindow {
     fn show_controls_animation(&self) -> &adw::TimedAnimation {
         self.imp().show_controls_animation.get_or_init(|| {
             let target = adw::CallbackAnimationTarget::new(glib::clone!(
-                @weak self as obj => move |opacity| obj.set_control_opacity(opacity)
+                @weak self as obj => move |opacity| obj.set_control_opacity(opacity, false)
             ));
 
             adw::TimedAnimation::builder()
@@ -701,7 +741,7 @@ impl LpWindow {
     fn hide_controls_animation(&self) -> &adw::TimedAnimation {
         self.imp().hide_controls_animation.get_or_init(|| {
             let target = adw::CallbackAnimationTarget::new(glib::clone!(
-                @weak self as obj => move |opacity| obj.set_control_opacity(opacity)
+                @weak self as obj => move |opacity| obj.set_control_opacity(opacity, true)
             ));
 
             adw::TimedAnimation::builder()
@@ -713,12 +753,12 @@ impl LpWindow {
         })
     }
 
-    /// Queue a fade animation to play after `HIDE_CONTROLS_IDLE_TIMEOUT` seconds of inactivity
+    /// Queue a fade animation to play after `HIDE_CONTROLS_IDLE_TIMEOUT` of inactivity
     fn queue_hide_controls(&self) {
         self.dequeue_hide_controls();
 
-        let new_timeout = glib::timeout_add_seconds_local_once(
-            HIDE_CONTROLS_IDLE_TIMEOUT,
+        let new_timeout = glib::timeout_add_local_once(
+            std::time::Duration::from_millis(HIDE_CONTROLS_IDLE_TIMEOUT),
             glib::clone!(@weak self as win => move || {
                 win.imp().hide_controls_timeout.take();
                 win.hide_controls();
@@ -799,8 +839,17 @@ impl LpWindow {
         }
 
         self.show_controls();
-        // Only queue animation if not over controls and there is an image shown
-        if !self
+
+        if self.can_hide_controls() {
+            self.queue_hide_controls();
+        } else {
+            self.dequeue_hide_controls();
+        }
+    }
+
+    /// Only hide controls if cursor not over controls and there is an image shown
+    fn can_hide_controls(&self) -> bool {
+        !self
             .image_view()
             .controls_box_start_events()
             .contains_pointer()
@@ -809,10 +858,50 @@ impl LpWindow {
                 .controls_box_end_events()
                 .contains_pointer()
             && self.is_showing_image()
-        {
-            self.queue_hide_controls();
+            && (!self.is_headerbar_flat() || !self.imp().headerbar_events.contains_pointer())
+    }
+
+    #[template_callback]
+    fn on_fullscreened(&self) {
+        if !self.is_fullscreened() {
+            self.set_cursor(None);
+            self.show_controls();
+        }
+        self.queue_hide_controls();
+    }
+
+    fn is_headerbar_flat(&self) -> bool {
+        matches!(
+            self.imp().toolbar_view.top_bar_style(),
+            adw::ToolbarStyle::Flat
+        )
+    }
+
+    fn on_top_bar_style_notify(&self) {
+        if self.is_headerbar_flat() {
+            // Bring headerbar opacity in sync with controls
+            self.headerbar().set_opacity(self.controls_opacity());
         } else {
-            self.dequeue_hide_controls();
+            self.headerbar().set_opacity(1.);
+        }
+    }
+
+    #[template_callback]
+    fn extend_to_top(&self, fullscreened: bool, show_properties: bool, show_menu: bool) -> bool {
+        fullscreened && !show_properties && !show_menu
+    }
+
+    #[template_callback]
+    fn top_bar_style(
+        &self,
+        fullscreened: bool,
+        show_properties: bool,
+        show_menu: bool,
+    ) -> adw::ToolbarStyle {
+        if self.extend_to_top(fullscreened, show_properties, show_menu) {
+            adw::ToolbarStyle::Flat
+        } else {
+            adw::ToolbarStyle::Raised
         }
     }
 }

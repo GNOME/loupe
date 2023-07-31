@@ -43,10 +43,18 @@
       <object class="GtkStack" id="stack">
         <property name="transition-type">crossfade</property>
         <child>
-          <object class="GtkSpinner" id="spinner">
-            <property name="halign">center</property>
-            <property name="valign">center</property>
-            <property name="spinning">True</property>
+          <object class="AdwBin" id="spinner_page">
+            <property name="hexpand">true</property>
+            <property name="vexpand">true</property>
+            <child>
+              <object class="GtkSpinner" id="spinner">
+                <property name="height-request">24</property>
+                <property name="width-request">24</property>
+                <property name="halign">center</property>
+                <property name="valign">center</property>
+                <property name="spinning">True</property>
+              </object>
+            </child>
           </object>
         </child>
         <child>
@@ -86,10 +94,9 @@
                   <object class="GtkButton">
                     <property name="icon-name">object-rotate-left-symbolic</property>
                     <property name="tooltip-text" translatable="yes">Rotate Left</property>
-                    <property name="action-name">win.rotate</property>
-                    <property name="action-target">-90.0</property>
+                    <property name="action-name">win.rotate_ccw</property>
                     <style>
-                      <class name="flat" />
+                      <class name="flat"/>
                     </style>
                   </object>
                 </child>
@@ -97,10 +104,9 @@
                   <object class="GtkButton">
                     <property name="icon-name">object-rotate-right-symbolic</property>
                     <property name="tooltip-text" translatable="yes">Rotate Right</property>
-                    <property name="action-name">win.rotate</property>
-                    <property name="action-target">90.0</property>
+                    <property name="action-name">win.rotate_cw</property>
                     <style>
-                      <class name="flat" />
+                      <class name="flat"/>
                     </style>
                   </object>
                 </child>
@@ -112,3 +118,4 @@
     </property>
   </template>
 </interface>
+

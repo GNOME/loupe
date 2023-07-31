@@ -150,7 +150,10 @@ impl LpPropertiesView {
     fn set_file(&self, file: Option<&gio::File>) {
         let imp = self.imp();
 
-        self.action_set_enabled("properties.open-folder", file.is_some());
+        self.action_set_enabled(
+            "properties.open-folder",
+            file.map_or(false, |x| x.is_native()),
+        );
 
         if let Some(file) = file {
             if let Some(current_file) = self.file() {

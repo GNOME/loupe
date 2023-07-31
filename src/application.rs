@@ -1,6 +1,6 @@
 // Copyright (c) 2020-2023 Christopher Davis
 // Copyright (c) 2022-2023 Sophie Herold
-// Copyright (c) 2022 Sabri Ünal
+// Copyright (c) 2022-2023 Sabri Ünal
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -132,10 +132,7 @@ impl LpApplication {
         self.set_accels_for_action("win.open", &["<Ctrl>O"]);
         self.set_accels_for_action("win.print", &["<Ctrl>P"]);
         self.set_accels_for_action("win.copy", &["<Ctrl>C"]);
-        self.set_accels_for_action(
-            "win.trash",
-            &["<Ctrl>X", "Delete", "KP_Delete", "BackSpace"],
-        );
+        self.set_accels_for_action("win.trash", &["Delete", "KP_Delete", "BackSpace"]);
         self.set_accels_for_action("win.show-help-overlay", &["<Ctrl>question"]);
         self.set_accels_for_action("win.leave-fullscreen", &["Escape"]);
         self.set_accels_for_action("win.toggle-properties", &["F9", "<Alt>Return"]);
@@ -177,8 +174,8 @@ impl LpApplication {
         self.set_accels_for_action("win.pan-up", &["<Ctrl>Up"]);
         self.set_accels_for_action("win.pan-down", &["<Ctrl>Down"]);
 
-        self.set_accels_for_action("win.rotate(90.0)", &["<Ctrl>R"]);
-        self.set_accels_for_action("win.rotate(-90.0)", &["<Ctrl><Shift>R"]);
+        self.set_accels_for_action("win.rotate_cw", &["<Ctrl>R"]);
+        self.set_accels_for_action("win.rotate_ccw", &["<Ctrl><Shift>R"]);
 
         self.set_accels_for_action("window.close", &["<Ctrl>W"]);
     }

@@ -109,6 +109,7 @@ mod imp {
     pub struct LpImage {
         pub(super) file: RefCell<Option<gio::File>>,
         pub(super) is_deleted: Cell<bool>,
+        pub(super) is_unsupported: Cell<bool>,
         /// Track changes to this image
         pub(super) file_monitor: RefCell<Option<gio::FileMonitor>>,
         pub(super) frame_buffer: Arc<ArcSwap<tiling::FrameBuffer>>,
@@ -200,6 +201,9 @@ mod imp {
                     glib::ParamSpecBoolean::builder("is-loaded")
                         .read_only()
                         .build(),
+                    glib::ParamSpecBoolean::builder("is-unsupported")
+                        .read_only()
+                        .build(),
                     glib::ParamSpecString::builder("error").read_only().build(),
                     glib::ParamSpecObject::builder::<LpImageMetadata>("metadata")
                         .read_only()
@@ -241,6 +245,7 @@ mod imp {
                 "file" => obj.file().to_value(),
                 "is-deleted" => obj.is_deleted().to_value(),
                 "is-loaded" => obj.is_loaded().to_value(),
+                "is-unsupported" => obj.is_unsupported().to_value(),
                 "error" => obj.error().to_value(),
                 "metadata" => obj.metadata().to_value(),
                 "format-name" => obj.format_name().to_value(),
@@ -423,6 +428,7 @@ mod imp {
                 }
 
                 if obj.is_hscrollable() || obj.is_vscrollable() {
+                    obj.cancel_deceleration();
                     obj.set_cursor(gdk::Cursor::from_name("grabbing", None).as_ref());
                     obj.imp().last_drag_value.set(Some((0., 0.)));
                 } else {
@@ -451,6 +457,9 @@ mod imp {
             // Rotate
             let rotation_gesture = gtk::GestureRotate::new();
             obj.add_controller(rotation_gesture.clone());
+
+            rotation_gesture
+                .connect_begin(glib::clone!(@weak obj => move |_,_|obj.cancel_deceleration()));
 
             rotation_gesture.connect_angle_changed(
                 glib::clone!(@weak obj => move |gesture, _, _| {
@@ -494,6 +503,7 @@ mod imp {
             obj.add_controller(zoom_gesture.clone());
 
             zoom_gesture.connect_begin(glib::clone!(@weak obj => move |gesture, _| {
+                obj.cancel_deceleration();
                 obj.imp()
                     .zoom_gesture_center
                     .set(gesture.bounding_box_center());
@@ -759,13 +769,7 @@ impl LpImage {
         // Reset background color for reloads
         self.set_background_color(None);
 
-        let (decoder, mut decoder_update) = match Decoder::new(file.clone(), tiles.clone()).await {
-            Ok(x) => x,
-            Err(err) => {
-                self.set_error(err);
-                return;
-            }
-        };
+        let (decoder_res, mut decoder_update) = Decoder::new(file.clone(), tiles.clone()).await;
 
         let weak_obj = self.downgrade();
         spawn(async move {
@@ -777,8 +781,10 @@ impl LpImage {
             log::debug!("Stopped listening to decoder since sender is gone");
         });
 
-        let decoder = Arc::new(decoder);
-        self.imp().decoder.replace(Some(decoder));
+        if let Ok(decoder) = decoder_res {
+            let decoder = Arc::new(decoder);
+            self.imp().decoder.replace(Some(decoder));
+        }
     }
 
     /// Called when decoder sends update
@@ -837,6 +843,12 @@ impl LpImage {
                     imp.tick_callback.replace(Some(callback_id));
                 }
             }
+            DecoderUpdate::UnsupportedFormat => {
+                if !self.is_unsupported() {
+                    imp.is_unsupported.set(true);
+                    self.notify("is-unsupported");
+                }
+            }
         }
     }
 
@@ -872,6 +884,10 @@ impl LpImage {
 
     pub fn is_deleted(&self) -> bool {
         self.imp().is_deleted.get()
+    }
+
+    pub fn is_unsupported(&self) -> bool {
+        self.imp().is_unsupported.get()
     }
 
     /// Zoom level that makes the image fit in widget
@@ -1585,6 +1601,21 @@ impl LpImage {
 
     pub fn is_vscrollable(&self) -> bool {
         self.max_vadjustment_value() != 0.
+    }
+
+    /// Cancel kinetic scrolling movements, needed for some gestures
+    ///
+    /// If deceleration is not canceled gestures become buggy.
+    fn cancel_deceleration(&self) {
+        if let Some(scrolled_window) = self
+            .parent()
+            .and_then(|x| x.downcast::<gtk::ScrolledWindow>().ok())
+        {
+            scrolled_window.set_kinetic_scrolling(false);
+            scrolled_window.set_kinetic_scrolling(true);
+        } else {
+            log::error!("Could not find GtkScrolledWindow parent to cancel deceleration");
+        }
     }
 
     pub fn widget_height(&self) -> f64 {

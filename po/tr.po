@@ -8,9 +8,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-02 23:36+0000\n"
-"PO-Revision-Date: 2023-04-06 18:13+0300\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/Incubator/loupe/-/issues\n"
+"POT-Creation-Date: 2023-04-23 20:45+0000\n"
+"PO-Revision-Date: 2023-04-24 00:44+0300\n"
 "Last-Translator: Sabri Ünal <libreajans@gmail.com>\n"
 "Language-Team: Turkish <gnome-turk@gnome.org>\n"
 "Language: tr\n"
@@ -18,214 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 3.1.1\n"
-
-#. If the file exists, get display name
-#: data/org.gnome.Loupe.desktop.in.in:3
-#: data/org.gnome.Loupe.metainfo.xml.in.in:6 data/gtk/window.ui:59
-#: src/application.rs:187 src/window.rs:676 src/window.rs:682
-msgid "Loupe"
-msgstr "Loupe"
-
-#: data/org.gnome.Loupe.desktop.in.in:11
-msgid "Picture;Slideshow;Graphics;Image Viewer;"
-msgstr ""
-"Resim;Slayt Gösterisi;Grafikler;Görseller;Resim Gösterici;Görüntü Gösterici;"
-
-#: data/org.gnome.Loupe.metainfo.xml.in.in:7
-msgid "Christopher Davis"
-msgstr "Christopher Davis"
-
-#: data/org.gnome.Loupe.metainfo.xml.in.in:8
-msgid "View images"
-msgstr "Görüntüleri göster"
-
-#: data/org.gnome.Loupe.metainfo.xml.in.in:10
-msgid ""
-"A simple image viewer which allows you to browse through your images and "
-"inspect their metadata."
-msgstr ""
-"Görüntülerinize göz atmanıza ve üst verilerini incelemenize izin veren basit "
-"resim görüntüleyici."
-
-#: data/org.gnome.Loupe.metainfo.xml.in.in:11
-msgid "The following features are not available yet"
-msgstr "Aşağıdaki özellikler henüz kullanılamıyor"
-
-#: data/org.gnome.Loupe.metainfo.xml.in.in:13
-msgid "Applying image color profiles"
-msgstr "Görüntü renk profilleri uygulanıyor"
-
-#: data/org.gnome.Loupe.metainfo.xml.in.in:14
-msgid "Printing"
-msgstr "Yazdırma"
-
-#: data/gtk/help_overlay.ui:11
-msgctxt "shortcut window"
-msgid "General Shortcuts"
-msgstr "Genel Kısayollar"
-
-#: data/gtk/help_overlay.ui:14
-msgctxt "shortcut window"
-msgid "Show Main Menu"
-msgstr "Ana Menüyü Göster"
-
-#: data/gtk/help_overlay.ui:20
-msgctxt "shortcut window"
-msgid "Copy Image to Clipboard"
-msgstr "Görüntüyü Panoya Kopyala"
-
-#: data/gtk/help_overlay.ui:26
-msgctxt "shortcut window"
-msgid "Move Image to Trash"
-msgstr "Görüntüyü Çöpe Taşı"
-
-#: data/gtk/help_overlay.ui:32
-msgctxt "shortcut window"
-msgid "Toggle Image Properties"
-msgstr "Görüntü Özelliklerini Aç/Kapat"
-
-#: data/gtk/help_overlay.ui:38
-msgctxt "shortcut window"
-msgid "Set as Background"
-msgstr "Arka Plan Olarak Ayarla"
-
-#: data/gtk/help_overlay.ui:44
-msgctxt "shortcut window"
-msgid "Toggle Fullscreen"
-msgstr "Tam Ekranı Aç/Kapat"
-
-#: data/gtk/help_overlay.ui:50
-msgctxt "shortcut window"
-msgid "Leave Fullscreen"
-msgstr "Tam Ekrandan Çık"
-
-#: data/gtk/help_overlay.ui:56
-msgctxt "shortcut window"
-msgid "New Window"
-msgstr "Yeni Pencere"
-
-#: data/gtk/help_overlay.ui:62
-msgctxt "shortcut window"
-msgid "Open Help"
-msgstr "Yardımı Aç"
-
-#: data/gtk/help_overlay.ui:68
-msgctxt "shortcut window"
-msgid "Show Keyboard Shortcuts"
-msgstr "Klavye Kısayollarını Göster"
-
-#: data/gtk/help_overlay.ui:74
-msgctxt "shortcut window"
-msgid "Close Window"
-msgstr "Pencereyi Kapat"
-
-#: data/gtk/help_overlay.ui:80
-msgctxt "shortcut window"
-msgid "Quit"
-msgstr "Çık"
-
-#: data/gtk/help_overlay.ui:88
-msgctxt "shortcut window"
-msgid "Navigate Images"
-msgstr "Görüntülerde Gezin"
-
-#: data/gtk/help_overlay.ui:92 data/gtk/help_overlay.ui:106
-#: data/gtk/help_overlay.ui:218 data/gtk/help_overlay.ui:232
-msgctxt "shortcut window"
-msgid "Next Image"
-msgstr "Sonraki Görüntü"
-
-#: data/gtk/help_overlay.ui:99 data/gtk/help_overlay.ui:113
-#: data/gtk/help_overlay.ui:225 data/gtk/help_overlay.ui:239
-msgctxt "shortcut window"
-msgid "Previous Image"
-msgstr "Önceki Görüntü"
-
-#: data/gtk/help_overlay.ui:119
-msgctxt "shortcut window"
-msgid "First Image"
-msgstr "İlk Görüntü"
-
-#: data/gtk/help_overlay.ui:125
-msgctxt "shortcut window"
-msgid "Last Image"
-msgstr "Son Görüntü"
-
-#: data/gtk/help_overlay.ui:133
-msgctxt "shortcut window"
-msgid "Rotate Image"
-msgstr "Görüntüyü Döndür"
-
-#: data/gtk/help_overlay.ui:136 data/gtk/help_overlay.ui:257
-msgctxt "shortcut window"
-msgid "Rotate Clockwise"
-msgstr "Saat Yönünde Döndür"
-
-#: data/gtk/help_overlay.ui:142 data/gtk/help_overlay.ui:263
-msgctxt "shortcut window"
-msgid "Rotate Counterclockwise"
-msgstr "Saat Yönünün Tersine Döndür"
-
-#: data/gtk/help_overlay.ui:150
-msgctxt "shortcut window"
-msgid "Zoom Image"
-msgstr "Görüntü Yakınlaştırma"
-
-#: data/gtk/help_overlay.ui:153 data/gtk/help_overlay.ui:245
-msgctxt "shortcut window"
-msgid "Zoom In"
-msgstr "Yakınlaştır"
-
-#: data/gtk/help_overlay.ui:159 data/gtk/help_overlay.ui:251
-msgctxt "shortcut window"
-msgid "Zoom Out"
-msgstr "Uzaklaştır"
-
-#: data/gtk/help_overlay.ui:165
-msgctxt "shortcut window"
-msgid "Best Fit"
-msgstr "En Uygun"
-
-#: data/gtk/help_overlay.ui:171
-msgctxt "shortcut window"
-msgid "Original Scale"
-msgstr "Özgün Ölçekleme"
-
-#: data/gtk/help_overlay.ui:177
-msgctxt "shortcut window"
-msgid "200% Scale"
-msgstr "%200 Ölçekleme"
-
-#: data/gtk/help_overlay.ui:185
-msgctxt "shortcut window"
-msgid "Pan View"
-msgstr "Kaydırma Görünümü"
-
-#: data/gtk/help_overlay.ui:188
-msgctxt "shortcut window"
-msgid "Pan Left"
-msgstr "Sola Kaydır"
-
-#: data/gtk/help_overlay.ui:194
-msgctxt "shortcut window"
-msgid "Pan Right"
-msgstr "Sağa Kaydır"
-
-#: data/gtk/help_overlay.ui:200
-msgctxt "shortcut window"
-msgid "Pan Up"
-msgstr "Yukarı Kaydır"
-
-#: data/gtk/help_overlay.ui:206
-msgctxt "shortcut window"
-msgid "Pan Down"
-msgstr "Aşağı Kaydır"
-
-#: data/gtk/help_overlay.ui:214
-msgctxt "shortcut window"
-msgid "Gestures"
-msgstr "Hareketler"
+"X-Generator: Poedit 3.2.2\n"
 
 #: data/gtk/image_page.ui:6 data/gtk/window.ui:16
 msgid "_Open With…"
@@ -251,11 +44,11 @@ msgstr "_Arka Plan Olarak Ayarla…"
 msgid "Could not Load Image"
 msgstr "Görüntü yüklenemedi"
 
-#: data/gtk/image_page.ui:88 data/gtk/window.ui:111
+#: data/gtk/image_page.ui:88 data/gtk/window.ui:100
 msgid "Rotate Left"
 msgstr "Sola Döndür"
 
-#: data/gtk/image_page.ui:99 data/gtk/window.ui:122
+#: data/gtk/image_page.ui:99 data/gtk/window.ui:111
 msgid "Rotate Right"
 msgstr "Sağa Döndür"
 
@@ -267,17 +60,61 @@ msgstr "Önceki Görüntü"
 msgid "Next Image"
 msgstr "Sonraki Görüntü"
 
-#: data/gtk/image_view.ui:70
-msgid "Toggle Fullscreen"
-msgstr "Tam Ekranı Aç/Kapat"
-
-#: data/gtk/image_view.ui:81
+#: data/gtk/image_view.ui:66
 msgid "Zoom Out"
 msgstr "Uzaklaştır"
 
-#: data/gtk/image_view.ui:92
+#: data/gtk/image_view.ui:77
 msgid "Zoom In"
 msgstr "Yakınlaştır"
+
+#: data/gtk/image_view.ui:95
+msgid "Toggle Fullscreen"
+msgstr "Tam Ekranı Aç/Kapat"
+
+#: data/gtk/print.ui:4
+msgid "Layout Image"
+msgstr "Yerleşim Görüntüsü"
+
+#: data/gtk/print.ui:66
+msgid "Portrait page orientation"
+msgstr "Dikey sayfa yönelimi"
+
+#: data/gtk/print.ui:74
+msgid "Landscape page orientation"
+msgstr "Yatay sayfa yönelimi"
+
+#: data/gtk/print.ui:88
+msgid "Center image horizontally"
+msgstr "Görüntüyü yatay ortala"
+
+#: data/gtk/print.ui:95
+msgid "Center image vertically"
+msgstr "Görüntüyü dikey ortala"
+
+#: data/gtk/print.ui:107
+msgid "Image Width"
+msgstr "Görüntü Genişliği"
+
+#: data/gtk/print.ui:119
+msgid "Image Scale"
+msgstr "Görüntü Ölçekle"
+
+#: data/gtk/print.ui:131
+msgid "Left Margin"
+msgstr "Sol Kenar Boşluğu"
+
+#: data/gtk/print.ui:143
+msgid "Top Margin"
+msgstr "Üst Kenar Boşluğu"
+
+#: data/gtk/print.ui:155
+msgid "Length Unit"
+msgstr "Uzunluk Birimi"
+
+#: data/gtk/print.ui:175
+msgid "Print"
+msgstr "Yazdır"
 
 #: data/gtk/properties_view.ui:29
 msgid "Folder"
@@ -355,152 +192,418 @@ msgstr "_Klavye Kısayolları"
 msgid "_About Loupe"
 msgstr "Loupe _Hakkında"
 
-#: data/gtk/window.ui:90
+#. If the file exists, get display name
+#: data/gtk/window.ui:59 data/org.gnome.Loupe.desktop.in.in:3
+#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/application.rs:191
+#: src/window.rs:784 src/window.rs:790
+msgid "Loupe"
+msgstr "Loupe"
+
+#: data/gtk/window.ui:79
 msgid "Copy to Clipboard"
 msgstr "Panoya Kopyala"
 
-#: data/gtk/window.ui:97
+#: data/gtk/window.ui:86
 msgid "Move to Trash"
 msgstr "Çöpe Taşı"
 
-#: data/gtk/window.ui:103
+#: data/gtk/window.ui:92
 msgid "Main Menu"
 msgstr "Ana Menü"
 
-#: data/gtk/window.ui:137
+#: data/gtk/window.ui:126
 msgid "Image Properties"
 msgstr "Görüntü Özellikleri"
 
-#: data/gtk/window.ui:157
+#: data/gtk/window.ui:146
 msgid "View Images"
 msgstr "Görüntüleri Görüntüle"
 
-#: data/gtk/window.ui:158
+#: data/gtk/window.ui:147
 msgid "Drag and drop images here"
 msgstr "Görüntüleri sürükleyip buraya bırakın"
 
-#: data/gtk/window.ui:162
+#: data/gtk/window.ui:151
 msgid "_Open File…"
 msgstr "Dosya _Aç…"
 
-#: src/application.rs:190
+#: data/org.gnome.Loupe.desktop.in.in:11
+msgid "Picture;Slideshow;Graphics;Image Viewer;"
+msgstr ""
+"Resim;Slayt Gösterisi;Grafikler;Görseller;Resim Gösterici;Görüntü Gösterici;"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:7 src/application.rs:194
 msgid "The Loupe Team"
 msgstr "Loupe Takımı"
 
+#: data/org.gnome.Loupe.metainfo.xml.in.in:8
+msgid "View images"
+msgstr "Görüntüleri göster"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:10
+msgid ""
+"A simple image viewer which allows you to browse through your images and "
+"inspect their metadata."
+msgstr ""
+"Görüntülerinize göz atmanıza ve üst verilerini incelemenize izin veren basit "
+"resim görüntüleyici."
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:11
+msgid "The following features are not available yet"
+msgstr "Aşağıdaki özellikler henüz kullanılamıyor"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:13
+msgid "Applying image color profiles"
+msgstr "Görüntü renk profilleri uygulanıyor"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:14
+msgid "Printing"
+msgstr "Yazdırma"
+
+#: data/resources/gtk/help-overlay.ui:11
+msgctxt "shortcut window"
+msgid "General Shortcuts"
+msgstr "Genel Kısayollar"
+
+#: data/resources/gtk/help-overlay.ui:14
+msgctxt "shortcut window"
+msgid "Show Main Menu"
+msgstr "Ana Menüyü Göster"
+
+#: data/resources/gtk/help-overlay.ui:20
+msgctxt "shortcut window"
+msgid "Copy Image to Clipboard"
+msgstr "Görüntüyü Panoya Kopyala"
+
+#: data/resources/gtk/help-overlay.ui:26
+msgctxt "shortcut window"
+msgid "Move Image to Trash"
+msgstr "Görüntüyü Çöpe Taşı"
+
+#: data/resources/gtk/help-overlay.ui:32
+msgctxt "shortcut window"
+msgid "Toggle Image Properties"
+msgstr "Görüntü Özelliklerini Aç/Kapat"
+
+#: data/resources/gtk/help-overlay.ui:38
+msgctxt "shortcut window"
+msgid "Set as Background"
+msgstr "Arka Plan Olarak Ayarla"
+
+#: data/resources/gtk/help-overlay.ui:44
+msgctxt "shortcut window"
+msgid "Toggle Fullscreen"
+msgstr "Tam Ekranı Aç/Kapat"
+
+#: data/resources/gtk/help-overlay.ui:50
+msgctxt "shortcut window"
+msgid "Leave Fullscreen"
+msgstr "Tam Ekrandan Çık"
+
+#: data/resources/gtk/help-overlay.ui:56
+msgctxt "shortcut window"
+msgid "New Window"
+msgstr "Yeni Pencere"
+
+#: data/resources/gtk/help-overlay.ui:62
+msgctxt "shortcut window"
+msgid "Open Help"
+msgstr "Yardımı Aç"
+
+#: data/resources/gtk/help-overlay.ui:68
+msgctxt "shortcut window"
+msgid "Show Keyboard Shortcuts"
+msgstr "Klavye Kısayollarını Göster"
+
+#: data/resources/gtk/help-overlay.ui:74
+msgctxt "shortcut window"
+msgid "Close Window"
+msgstr "Pencereyi Kapat"
+
+#: data/resources/gtk/help-overlay.ui:80
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "Çık"
+
+#: data/resources/gtk/help-overlay.ui:88
+msgctxt "shortcut window"
+msgid "Navigate Images"
+msgstr "Görüntülerde Gezin"
+
+#: data/resources/gtk/help-overlay.ui:92 data/resources/gtk/help-overlay.ui:106
+#: data/resources/gtk/help-overlay.ui:218
+#: data/resources/gtk/help-overlay.ui:232
+msgctxt "shortcut window"
+msgid "Next Image"
+msgstr "Sonraki Görüntü"
+
+#: data/resources/gtk/help-overlay.ui:99 data/resources/gtk/help-overlay.ui:113
+#: data/resources/gtk/help-overlay.ui:225
+#: data/resources/gtk/help-overlay.ui:239
+msgctxt "shortcut window"
+msgid "Previous Image"
+msgstr "Önceki Görüntü"
+
+#: data/resources/gtk/help-overlay.ui:119
+msgctxt "shortcut window"
+msgid "First Image"
+msgstr "İlk Görüntü"
+
+#: data/resources/gtk/help-overlay.ui:125
+msgctxt "shortcut window"
+msgid "Last Image"
+msgstr "Son Görüntü"
+
+#: data/resources/gtk/help-overlay.ui:133
+msgctxt "shortcut window"
+msgid "Rotate Image"
+msgstr "Görüntüyü Döndür"
+
+#: data/resources/gtk/help-overlay.ui:136
+#: data/resources/gtk/help-overlay.ui:257
+msgctxt "shortcut window"
+msgid "Rotate Clockwise"
+msgstr "Saat Yönünde Döndür"
+
+#: data/resources/gtk/help-overlay.ui:142
+#: data/resources/gtk/help-overlay.ui:263
+msgctxt "shortcut window"
+msgid "Rotate Counterclockwise"
+msgstr "Saat Yönünün Tersine Döndür"
+
+#: data/resources/gtk/help-overlay.ui:150
+msgctxt "shortcut window"
+msgid "Zoom Image"
+msgstr "Görüntü Yakınlaştırma"
+
+#: data/resources/gtk/help-overlay.ui:153
+#: data/resources/gtk/help-overlay.ui:245
+msgctxt "shortcut window"
+msgid "Zoom In"
+msgstr "Yakınlaştır"
+
+#: data/resources/gtk/help-overlay.ui:159
+#: data/resources/gtk/help-overlay.ui:251
+msgctxt "shortcut window"
+msgid "Zoom Out"
+msgstr "Uzaklaştır"
+
+#: data/resources/gtk/help-overlay.ui:165
+msgctxt "shortcut window"
+msgid "Best Fit"
+msgstr "En Uygun"
+
+#: data/resources/gtk/help-overlay.ui:171
+msgctxt "shortcut window"
+msgid "Original Scale"
+msgstr "Özgün Ölçekleme"
+
+#: data/resources/gtk/help-overlay.ui:177
+msgctxt "shortcut window"
+msgid "200% Scale"
+msgstr "%200 Ölçekleme"
+
+#: data/resources/gtk/help-overlay.ui:185
+msgctxt "shortcut window"
+msgid "Pan View"
+msgstr "Görünüm Kaydırma"
+
+#: data/resources/gtk/help-overlay.ui:188
+msgctxt "shortcut window"
+msgid "Pan Left"
+msgstr "Sola Kaydır"
+
+#: data/resources/gtk/help-overlay.ui:194
+msgctxt "shortcut window"
+msgid "Pan Right"
+msgstr "Sağa Kaydır"
+
+#: data/resources/gtk/help-overlay.ui:200
+msgctxt "shortcut window"
+msgid "Pan Up"
+msgstr "Yukarı Kaydır"
+
+#: data/resources/gtk/help-overlay.ui:206
+msgctxt "shortcut window"
+msgid "Pan Down"
+msgstr "Aşağı Kaydır"
+
+#: data/resources/gtk/help-overlay.ui:214
+msgctxt "shortcut window"
+msgid "Gestures"
+msgstr "Hareketler"
+
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/application.rs:199
+#: src/application.rs:203
 msgid "translator-credits"
 msgstr ""
 "Sabri Ünal <libreajans@gmail.com>\n"
 "Emin Tufan Çetin <etcetin@gmail.com>"
 
-#: src/application.rs:200
+#: src/application.rs:204
 msgid "Copyright © 2020–2023 Christopher Davis et al."
 msgstr "Telif Hakkı © 2020–2023 Christopher Davis et al."
 
-#: src/file_model.rs:114
+#: src/decoder/formats/heif.rs:55
+msgid "Failed to read image file information"
+msgstr "Görüntü dosyası bilgisi okunamadı"
+
+#: src/decoder/formats/heif.rs:60 src/decoder/formats/heif.rs:93
+#: src/decoder/formats/image_rs_other.rs:116
+#: src/decoder/formats/image_rs_other.rs:125
+#: src/decoder/formats/image_rs_other.rs:132
+msgid "Failed to decode image"
+msgstr "Görüntü kodu çözülemedi"
+
+#: src/decoder/formats/mod.rs:72
+msgid "Animated GIF"
+msgstr "Canlandırmalı GIF"
+
+#: src/decoder/formats/mod.rs:73
+msgid "Animated WebP"
+msgstr "Canlandırmalı WebP"
+
+#: src/decoder/formats/mod.rs:74
+msgid "Animated PNG"
+msgstr "Canlandırmalı PNG"
+
+#: src/decoder/mod.rs:189
+msgid "Unknown image format: {}"
+msgstr "Bilinmeyen görüntü biçimi: {}"
+
+#: src/decoder/mod.rs:194
+msgid "Unknown image format"
+msgstr "Bilinmeyen görüntü biçimi"
+
+#: src/decoder/mod.rs:222
+msgid "Could not open image"
+msgstr "Görüntü açılamadı"
+
+#: src/decoder/mod.rs:226
+msgid "Could not read image"
+msgstr "Görüntü okunamadı"
+
+#: src/file_model.rs:118
 msgid "Could not list other files in directory."
 msgstr "Dizindeki diğer dosyalar listelenemedi."
 
 #. Translators: short for "north" in GPS coordinate
-#: src/image_metadata/gps.rs:136
+#: src/image_metadata/gps.rs:154
 msgid "N"
 msgstr "K"
 
 #. Translators: short for "south" in GPS coordinate
-#: src/image_metadata/gps.rs:139
+#: src/image_metadata/gps.rs:157
 msgid "S"
 msgstr "G"
 
 #. Translators: short for "east" in GPS coordinate
-#: src/image_metadata/gps.rs:149
+#: src/image_metadata/gps.rs:167
 msgid "E"
 msgstr "D"
 
 #. Translators: short for "west" in GPS coordinate
-#: src/image_metadata/gps.rs:152
+#: src/image_metadata/gps.rs:170
 msgid "W"
 msgstr "B"
 
 #. Translators: Unit for exposure time in seconds
-#: src/image_metadata/mod.rs:129
+#: src/image_metadata/mod.rs:144
 msgid "1\\u{2215}{}\\u{202F}s"
 msgstr "1\\u{2215}{}\\u{202F}sn"
 
 #. Translators: Unit for focal length in millimeters
-#: src/image_metadata/mod.rs:154
+#: src/image_metadata/mod.rs:169
 msgid "{}\\u{202F}mm"
 msgstr "{}\\u{202F}mm"
 
-#: src/widgets/image.rs:751
-msgid "File does not exist"
-msgstr "Dosya yok"
+#. Translators: This is the date and time format we use in metadata output etc.
+#. The format has to follow <https://docs.gtk.org/glib/method.DateTime.format.html>
+#. The default is already translated. Don't change if you are not sure what to use.
+#: src/util/mod.rs:36
+#, c-format
+msgid "%x %X"
+msgstr "%x %X"
 
-#: src/widgets/image_view.rs:558
-msgid "Failed to open new background image"
-msgstr "Yeni arka plan görüntüsü açılamadı"
-
-#: src/widgets/image_view.rs:575
-msgid "Set as background."
-msgstr "Arka plan olarak ayarla."
-
-#: src/widgets/image_view.rs:582
-msgid "Could not set background."
-msgstr "Arka plan olarak ayarlanamadı."
-
-#: src/window.rs:355
-msgid "“{}” is not a valid image."
-msgstr "“{}” geçerli bir görüntü değil."
-
-#: src/window.rs:431
-msgid "Open Image"
-msgstr "Görüntü Aç"
-
-#: src/window.rs:485
-msgid "Image copied to clipboard"
-msgstr "Görüntü panoya kopyalandı"
-
-#: src/window.rs:499
-msgid "Image moved to trash"
-msgstr "Görüntü çöpe taşındı"
-
-#: src/window.rs:500
-msgid "Undo"
-msgstr "Geri Al"
-
-#: src/window.rs:511
+#: src/util/mod.rs:171 src/window.rs:517
 msgid "Failed to restore image from trash"
 msgstr "Görüntü çöpten geri yüklenemedi"
 
-#: src/window.rs:526
+#: src/util/mod.rs:192
+msgid "Failed to open image"
+msgstr "Görüntü açılamadı"
+
+#. Translators: This is a toast notification, informing the user that an image has been set as background.
+#: src/widgets/image_view.rs:620
+msgid "Set as background."
+msgstr "Arka plan olarak ayarla."
+
+#: src/widgets/image_view.rs:631
+msgid "Could not set background."
+msgstr "Arka plan olarak ayarlanamadı."
+
+#: src/window.rs:421
+msgid "Supported image formats"
+msgstr "Desteklenen görüntü biçimleri"
+
+#: src/window.rs:427
+msgid "All files"
+msgstr "Tüm dosyalar"
+
+#: src/window.rs:434
+msgid "Open Image"
+msgstr "Görüntü Aç"
+
+#: src/window.rs:489
+msgid "Image copied to clipboard"
+msgstr "Görüntü panoya kopyalandı"
+
+#: src/window.rs:505
+msgid "Image moved to trash"
+msgstr "Görüntü çöpe taşındı"
+
+#: src/window.rs:506
+msgid "Undo"
+msgstr "Geri Al"
+
+#: src/window.rs:532
 msgid "Failed to move image to trash"
 msgstr "Görüntü çöpe taşınamadı"
 
-#: src/window.rs:541
+#: src/window.rs:547
 msgid "Permanently Delete Image?"
 msgstr "Görüntü Kalıcı Olarak Silinsin mi?"
 
-#: src/window.rs:543
+#: src/window.rs:549
 msgid "The image “{}” can only be deleted permanently."
 msgstr "“{}” görüntüsü yalnızca kalıcı olarak silinebilir."
 
-#: src/window.rs:550
+#: src/window.rs:557
 msgid "Cancel"
 msgstr "İptal Et"
 
-#: src/window.rs:550
+#: src/window.rs:558
 msgid "Delete"
 msgstr "Sil"
 
-#: src/window.rs:559
+#: src/window.rs:569
 msgid "Failed to delete image"
 msgstr "Görüntü silinemedi"
 
+#~ msgid "Christopher Davis"
+#~ msgstr "Christopher Davis"
+
+#~ msgid "File does not exist"
+#~ msgstr "Dosya yok"
+
+#~ msgid "Failed to open new background image"
+#~ msgstr "Yeni arka plan görüntüsü açılamadı"
+
+#~ msgid "“{}” is not a valid image."
+#~ msgstr "“{}” geçerli bir görüntü değil."
+
 #~ msgid "Correctly showing SVGs at every zoom-level"
 #~ msgstr "SVG'leri her yakınlaştırma düzeyinde doğru gösterme"
-
-#~ msgid "Animated image formats"
-#~ msgstr "Canlandırılmış görüntü biçimleri"
 
 #~ msgid "Correct HighDPI support"
 #~ msgstr "Doğru Yüksek Çözünürlük desteği"
@@ -513,7 +616,3 @@ msgstr "Görüntü silinemedi"
 
 #~ msgid "_Help"
 #~ msgstr "_Yardım"
-
-#, c-format
-#~ msgid "%x %X"
-#~ msgstr "%x %X"

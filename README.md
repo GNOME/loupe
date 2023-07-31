@@ -1,8 +1,8 @@
 # Loupe
 
-A simple image viewer application written with GTK4 and Rust.
+An image viewer application written with GTK 4, Libadwaita and Rust.
 
-![Loupe Screenshot](https://gitlab.gnome.org/Incubator/loupe/uploads/863131c1292cb9f1b32fbef39f266bcf/image.png)
+![Loupe Screenshot](https://gitlab.gnome.org/Incubator/loupe/uploads/24c80abc88fccb5fc9f2f08de6a7a5ea/screenshot1.png)
 
 ## Installing
 
@@ -15,30 +15,38 @@ Download bundle for:
 
 Bundles will not be automatically updated after installation.
 
+## Features
+
+- Fast GPU accelerated image rendering with tiled rendering for SVGs
+- Extensive support for touchpad and touchscreen gestures
+- Build-in support for more than 15 image formats
+- Accessible presentation of the most important metadata
+- Sleek but powerful interface developed in conjunction with GNOME Human Interface Guidelines
+
 ## Supported Formats
 
-| Format    | View | Optional | ICC | CICP | EXIF | XMP | Animation | Library                    |
-|-----------|------|----------|-----|------|------|-----|-----------|----------------------------|
-| AVIF      | ✔    | ✔        | ✔   | ✔    | ✔    | ✘   | ✘         | libheif-rs + libheif (C++) |
-| BMP       | ✔    |          | ✘   | —    | —    | —   | —         | image-rs                   |
-| DDS       | ✔    |          | —   | —    | —    | —   | —         | image-rs                   |
-| farbfeld  | ✔    |          | —   | —    | —    | —   | —         | image-rs                   |
-| GIF       | ✔    |          | ✘ * | —    | —    | ✘   | ✔         | image-rs                   |
-| HEIC      | ✔    | ✔        | ✔   | ✔    | ✔    | ✘   | ✘         | libheif-rs + libheif (C++) |
-| ICO       | ✔    |          | —   | —    | —    | —   | —         | image-rs                   |
-| JPEG      | ✔    |          | ✔   | —    | ✔    | ✘   | —         | image-rs                   |
-| OpenEXR   | ✔    |          | —   | —    | —    | —   | —         | image-rs                   |
-| PNG       | ✔    |          | ✔   | ✘    | ✔    | ✘   | ✔         | image-rs                   |
-| PNM       | ✔    |          | —   | —    | —    | —   | —         | image-rs                   |
-| SVG       | ✔    |          | ✘   | —    | —    | ✘ * | —         | librsvg                    |
-| TGA       | ✔    |          | —   | —    | —    | —   | —         | image-rs                   |
-| TIFF      | ✔    |          | ✘   | —    | ✔    | ✘   | —         | image-rs                   |
-| WEBP      | ✔    |          | —   | —    | ✔    | ✘   | ✔         | image-rs                   |
+| Format   | View | Optional | ICC | CICP | EXIF | XMP | Animation | Library                    |
+|----------|------|----------|-----|------|------|-----|-----------|----------------------------|
+| AVIF     | ✔    | ✔        | ✔   | ✔    | ✔    | ✘   | ✘         | libheif-rs + libheif (C++) |
+| BMP      | ✔    |          | ✘   | —    | —    | —   | —         | image-rs                   |
+| DDS      | ✔    |          | —   | —    | —    | —   | —         | image-rs                   |
+| farbfeld | ✔    |          | —   | —    | —    | —   | —         | image-rs                   |
+| QOI      | ✔    |          | —   | —    | —    | —   | —         | image-rs                   |
+| GIF      | ✔    |          | ✘ * | —    | —    | ✘   | ✔         | image-rs                   |
+| HEIC     | ✔    | ✔        | ✔   | ✔    | ✔    | ✘   | ✘         | libheif-rs + libheif (C++) |
+| ICO      | ✔    |          | —   | —    | —    | —   | —         | image-rs                   |
+| JPEG     | ✔    |          | ✔   | —    | ✔    | ✘   | —         | image-rs                   |
+| OpenEXR  | ✔    |          | —   | —    | —    | —   | —         | image-rs                   |
+| PNG      | ✔    |          | ✔   | ✘    | ✔    | ✘   | ✔         | image-rs                   |
+| PNM      | ✔    |          | —   | —    | —    | —   | —         | image-rs                   |
+| SVG      | ✔    |          | ✘   | —    | —    | ✘ * | —         | librsvg                    |
+| TGA      | ✔    |          | —   | —    | —    | —   | —         | image-rs                   |
+| TIFF     | ✔    |          | ✘   | —    | ✔    | ✘   | —         | image-rs                   |
+| WEBP     | ✔    |          | —   | —    | ✔    | ✘   | ✔         | image-rs                   |
 
 | Symbol | Meaning                                        |
 |--------|------------------------------------------------|
 | *      | Unclear if used in practice, needs research    |
-| **     | Split into plugin because of licensing issues  |
 | ✘      | Supported by format but not implemented yet    |
 | ？      | Unclear if supported by format, needs research |
 | ✔      | Supported                                      |

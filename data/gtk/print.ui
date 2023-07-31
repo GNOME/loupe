@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
   <template class="LpPrint" parent="AdwWindow">
-    <property name="title" translatable="yes">Layout Image</property>
+    <property name="title" translatable="yes">Image Layout</property>
     <property name="default-width">350</property>
     <signal name="notify::orientation" handler="orientation_changed" swapped="yes" />
     <property name="content">

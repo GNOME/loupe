@@ -7,19 +7,19 @@
   <developer_name>The Loupe Team</developer_name>
   <summary>View images</summary>
   <description>
-    <p>A simple image viewer which allows you to browse through your images and inspect their metadata.</p>
-    <p>The following features are not available yet</p>
-    <ul>
-      <li>Applying image color profiles</li>
-      <li>Printing</li>
-    </ul>
+    <p>Browse through your images and inspect their metadata.</p>
   </description>
-  <url type="homepage">https://gitlab.gnome.org/Incubator/loupe</url>
+  <url type="homepage">https://apps.gnome.org/app/org.gnome.Loupe/</url>
   <url type="bugtracker">https://gitlab.gnome.org/Incubator/loupe/issues</url>
+  <url type="translate">https://l10n.gnome.org/module/loupe/</url>
+  <url type="donation">https://www.gnome.org/donate/</url>
 
   <screenshots>
     <screenshot type="default">
-      <image>https://gitlab.gnome.org/Incubator/loupe/uploads/863131c1292cb9f1b32fbef39f266bcf/image.png</image>
+      <image>https://gitlab.gnome.org/Incubator/loupe/uploads/24c80abc88fccb5fc9f2f08de6a7a5ea/screenshot1.png</image>
+    </screenshot>
+    <screenshot>
+      <image>https://gitlab.gnome.org/Incubator/loupe/uploads/eec7ea6a6a0a49517e2a887f9f31b738/screenshot2.png</image>
     </screenshot>
   </screenshots>
 

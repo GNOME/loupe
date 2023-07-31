@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/Incubator/loupe/-/issues\n"
-"POT-Creation-Date: 2023-04-21 16:11+0000\n"
-"PO-Revision-Date: 2023-04-22 21:19+0300\n"
+"POT-Creation-Date: 2023-04-27 02:21+0000\n"
+"PO-Revision-Date: 2023-04-29 19:18+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -43,11 +43,11 @@ msgstr "З_робити фоновим зображенням…"
 msgid "Could not Load Image"
 msgstr "Не вдалося завантажити зображення"
 
-#: data/gtk/image_page.ui:88 data/gtk/window.ui:100
+#: data/gtk/image_page.ui:88 data/gtk/window.ui:101
 msgid "Rotate Left"
 msgstr "Обернути ліворуч"
 
-#: data/gtk/image_page.ui:99 data/gtk/window.ui:111
+#: data/gtk/image_page.ui:98 data/gtk/window.ui:111
 msgid "Rotate Right"
 msgstr "Обернути праворуч"
 
@@ -72,7 +72,8 @@ msgid "Toggle Fullscreen"
 msgstr "Увімкнути/вимкнути повноекранний режим"
 
 #: data/gtk/print.ui:4
-msgid "Layout Image"
+#| msgid "Image Format"
+msgid "Image Layout"
 msgstr "Компонування зображення"
 
 #: data/gtk/print.ui:66
@@ -193,36 +194,36 @@ msgstr "_Про «Лупе»"
 
 #. If the file exists, get display name
 #: data/gtk/window.ui:59 data/org.gnome.Loupe.desktop.in.in:3
-#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/application.rs:191
-#: src/window.rs:784 src/window.rs:790
+#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/application.rs:188
+#: src/window.rs:796 src/window.rs:802
 msgid "Loupe"
 msgstr "Лупе"
 
-#: data/gtk/window.ui:79
+#: data/gtk/window.ui:80
 msgid "Copy to Clipboard"
 msgstr "Скопіювати до буфера"
 
-#: data/gtk/window.ui:86
+#: data/gtk/window.ui:87
 msgid "Move to Trash"
 msgstr "Пересунути до смітника"
 
-#: data/gtk/window.ui:92
+#: data/gtk/window.ui:93
 msgid "Main Menu"
 msgstr "Головне меню"
 
-#: data/gtk/window.ui:126
+#: data/gtk/window.ui:125
 msgid "Image Properties"
 msgstr "Властивості зображення"
 
-#: data/gtk/window.ui:146
+#: data/gtk/window.ui:145
 msgid "View Images"
 msgstr "Перегляд зображень"
 
-#: data/gtk/window.ui:147
+#: data/gtk/window.ui:146
 msgid "Drag and drop images here"
 msgstr "Перетягніть і скиньте зображення тут"
 
-#: data/gtk/window.ui:151
+#: data/gtk/window.ui:150
 msgid "_Open File…"
 msgstr "_Відкрити файл…"
 
@@ -232,7 +233,7 @@ msgstr ""
 "Picture;Slideshow;Graphics;Image Viewer;зображення;картинка;показ;слайдів;"
 "графіка;перегляд;зображення;"
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:7 src/application.rs:194
+#: data/org.gnome.Loupe.metainfo.xml.in.in:7 src/application.rs:191
 msgid "The Loupe Team"
 msgstr "Команда «Лупе»"
 
@@ -241,24 +242,9 @@ msgid "View images"
 msgstr "Перегляд зображень"
 
 #: data/org.gnome.Loupe.metainfo.xml.in.in:10
-msgid ""
-"A simple image viewer which allows you to browse through your images and "
-"inspect their metadata."
+msgid "Browse through your images and inspect their metadata."
 msgstr ""
-"Проста програма для перегляду зображень, за допомогою якої можна здійснювати "
-"навігацію вашими зображеннями і переглядати їхні метадані."
-
-#: data/org.gnome.Loupe.metainfo.xml.in.in:11
-msgid "The following features are not available yet"
-msgstr "Наведеними нижче можливостями ще не можна скористатися"
-
-#: data/org.gnome.Loupe.metainfo.xml.in.in:13
-msgid "Applying image color profiles"
-msgstr "Застосовуємо профілі кольорів зображення"
-
-#: data/org.gnome.Loupe.metainfo.xml.in.in:14
-msgid "Printing"
-msgstr "Друк"
+"Здійснюйте навігацію вашими зображеннями і переглядайте їхні метадані."
 
 #: data/resources/gtk/help-overlay.ui:11
 msgctxt "shortcut window"
@@ -434,11 +420,11 @@ msgid "Gestures"
 msgstr "Жести"
 
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/application.rs:203
+#: src/application.rs:200
 msgid "translator-credits"
 msgstr "Юрій Чорноіван <yurchor@ukr.net>, 2023"
 
-#: src/application.rs:204
+#: src/application.rs:201
 msgid "Copyright © 2020–2023 Christopher Davis et al."
 msgstr "© Christopher Davis та інші, 2020–2023."
 
@@ -523,7 +509,7 @@ msgstr "{}\\u{202F}мм"
 msgid "%x %X"
 msgstr "%x %X"
 
-#: src/util/mod.rs:171 src/window.rs:517
+#: src/util/mod.rs:171 src/window.rs:522
 msgid "Failed to restore image from trash"
 msgstr "Не вдалося відновити зображення зі смітника"
 
@@ -540,54 +526,65 @@ msgstr "Встановити як фонове зображення."
 msgid "Could not set background."
 msgstr "Не вдалося встановити фонове зображення."
 
-#: src/window.rs:421
-#| msgid "Unknown image format"
+#: src/window.rs:426
 msgid "Supported image formats"
 msgstr "Підтримувані формати зображень"
 
-#: src/window.rs:427
+#: src/window.rs:432
 msgid "All files"
 msgstr "усі файли"
 
-#: src/window.rs:434
+#: src/window.rs:439
 msgid "Open Image"
 msgstr "Відкрити зображення"
 
-#: src/window.rs:489
+#: src/window.rs:494
 msgid "Image copied to clipboard"
 msgstr "Зображення скопійовано до буфера обміну"
 
-#: src/window.rs:505
+#: src/window.rs:510
 msgid "Image moved to trash"
 msgstr "Зображення пересунуто до смітника"
 
-#: src/window.rs:506
+#: src/window.rs:511
 msgid "Undo"
 msgstr "Скасувати"
 
-#: src/window.rs:532
+#: src/window.rs:537
 msgid "Failed to move image to trash"
 msgstr "Не вдалося пересунути зображення до смітника"
 
-#: src/window.rs:547
+#: src/window.rs:552
 msgid "Permanently Delete Image?"
 msgstr "Остаточно вилучити зображення?"
 
-#: src/window.rs:549
+#: src/window.rs:554
 msgid "The image “{}” can only be deleted permanently."
 msgstr "Зображення «{}» можна вилучити лише остаточно."
 
-#: src/window.rs:557
+#: src/window.rs:562
 msgid "Cancel"
 msgstr "Скасувати"
 
-#: src/window.rs:558
+#: src/window.rs:563
 msgid "Delete"
 msgstr "Вилучити"
 
-#: src/window.rs:569
+#: src/window.rs:574
 msgid "Failed to delete image"
 msgstr "Не вдалося вилучити зображення"
+
+#~ msgid "Layout Image"
+#~ msgstr "Компонування зображення"
+
+#~ msgid "The following features are not available yet"
+#~ msgstr "Наведеними нижче можливостями ще не можна скористатися"
+
+#~ msgid "Applying image color profiles"
+#~ msgstr "Застосовуємо профілі кольорів зображення"
+
+#~ msgid "Printing"
+#~ msgstr "Друк"
 
 #~ msgid "Christopher Davis"
 #~ msgstr "Christopher Davis"

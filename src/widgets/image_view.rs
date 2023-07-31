@@ -256,7 +256,7 @@ impl LpImageView {
         if let Some(first) = files.first().cloned() {
             let model = LpFileModel::from_files(files);
             self.set_model(model);
-            let page = LpImagePage::from_file(&first);
+            let page = self.new_image_page(&first);
 
             sliding_view.clear();
             sliding_view.append(&page);
@@ -356,7 +356,7 @@ impl LpImageView {
         let page = if let Some(page) = sliding_view.get(new_file) {
             page
         } else {
-            let page = LpImagePage::from_file(new_file);
+            let page = self.new_image_page(new_file);
 
             if new_index > current_index {
                 sliding_view.append(&page);
@@ -397,7 +397,7 @@ impl LpImageView {
             if let Some(page) = existing.get(&file.uri()) {
                 sliding_view.move_to(page, position);
             } else {
-                sliding_view.insert(&LpImagePage::from_file(file), position);
+                sliding_view.insert(&self.new_image_page(file), position);
             }
         }
 
@@ -436,6 +436,32 @@ impl LpImageView {
 
     fn model(&self) -> LpFileModel {
         self.imp().model.borrow().clone()
+    }
+
+    /// Create new image that communicates updates to file model
+    fn new_image_page(&self, file: &gio::File) -> LpImagePage {
+        let page = LpImagePage::from_file(file);
+
+        page.image().connect_notify_local(
+            Some("is-unsupported"),
+            glib::clone!(@weak self as obj => move |image, _| {
+                if image.is_unsupported() {
+                    if obj.current_image().as_ref() == Some(image) {
+                        log::debug!(
+                            "Image format unsupported but not removing since current image"
+                        );
+                        return;
+                    }
+
+                    if let Some(file) = image.file() {
+                        log::debug!("Removing image with unsupported format {:?}", file.uri());
+                        obj.model().remove(&file);
+                    }
+                }
+            }),
+        );
+
+        page
     }
 
     fn set_model(&self, model: LpFileModel) {

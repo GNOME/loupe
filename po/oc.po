@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/Incubator/loupe/-/issues\n"
-"POT-Creation-Date: 2023-04-21 16:11+0000\n"
-"PO-Revision-Date: 2023-04-22 12:45+0200\n"
+"POT-Creation-Date: 2023-04-27 02:21+0000\n"
+"PO-Revision-Date: 2023-04-28 14:22+0200\n"
 "Last-Translator: Quentin PAGÈS\n"
 "Language-Team: Occitan <totenoc@gmail.com>\n"
 "Language: oc\n"
@@ -41,11 +41,11 @@ msgstr "Definir coma _rèireplan…"
 msgid "Could not Load Image"
 msgstr "Cargament impossible de l’imatge"
 
-#: data/gtk/image_page.ui:88 data/gtk/window.ui:100
+#: data/gtk/image_page.ui:88 data/gtk/window.ui:101
 msgid "Rotate Left"
 msgstr "Pivotar cap a esquèrra"
 
-#: data/gtk/image_page.ui:99 data/gtk/window.ui:111
+#: data/gtk/image_page.ui:98 data/gtk/window.ui:111
 msgid "Rotate Right"
 msgstr "Pivotar cap a drecha"
 
@@ -70,8 +70,8 @@ msgid "Toggle Fullscreen"
 msgstr "Alternar lo mòde ecran complèt"
 
 #: data/gtk/print.ui:4
-msgid "Layout Image"
-msgstr "Imatge de disposicion"
+msgid "Image Layout"
+msgstr "Disposicion de l'imatge"
 
 #: data/gtk/print.ui:66
 msgid "Portrait page orientation"
@@ -191,36 +191,36 @@ msgstr "_A prepaus de Lópia"
 
 #. If the file exists, get display name
 #: data/gtk/window.ui:59 data/org.gnome.Loupe.desktop.in.in:3
-#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/application.rs:191
-#: src/window.rs:784 src/window.rs:790
+#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/application.rs:188
+#: src/window.rs:796 src/window.rs:802
 msgid "Loupe"
 msgstr "Lópia"
 
-#: data/gtk/window.ui:79
+#: data/gtk/window.ui:80
 msgid "Copy to Clipboard"
 msgstr "Copiar al quichapapièrs"
 
-#: data/gtk/window.ui:86
+#: data/gtk/window.ui:87
 msgid "Move to Trash"
 msgstr "Metre dins l'escobilhièr"
 
-#: data/gtk/window.ui:92
+#: data/gtk/window.ui:93
 msgid "Main Menu"
 msgstr "Menú principal"
 
-#: data/gtk/window.ui:126
+#: data/gtk/window.ui:125
 msgid "Image Properties"
 msgstr "Proprietats de l'imatge"
 
-#: data/gtk/window.ui:146
+#: data/gtk/window.ui:145
 msgid "View Images"
 msgstr "Veire los imatges"
 
-#: data/gtk/window.ui:147
+#: data/gtk/window.ui:146
 msgid "Drag and drop images here"
 msgstr "Lisatz e depausatz los imatges aquí"
 
-#: data/gtk/window.ui:151
+#: data/gtk/window.ui:150
 msgid "_Open File…"
 msgstr "_Dobrir un fichièr…"
 
@@ -230,7 +230,7 @@ msgstr ""
 "Imatge;Diaporama;Grafics;Visualizaira;Visionadora;Afichador;Visionadoira;"
 "Visualizador;"
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:7 src/application.rs:194
+#: data/org.gnome.Loupe.metainfo.xml.in.in:7 src/application.rs:191
 msgid "The Loupe Team"
 msgstr "La còla de Lópia"
 
@@ -239,24 +239,8 @@ msgid "View images"
 msgstr "Veire los imatges"
 
 #: data/org.gnome.Loupe.metainfo.xml.in.in:10
-msgid ""
-"A simple image viewer which allows you to browse through your images and "
-"inspect their metadata."
-msgstr ""
-"Una visonadora simple d’imatges que vos permet de navegar demest los imatges "
-"e d’examinar lors metadonadas."
-
-#: data/org.gnome.Loupe.metainfo.xml.in.in:11
-msgid "The following features are not available yet"
-msgstr "Las foncionalitats seguentas son pas encara disponiblas"
-
-#: data/org.gnome.Loupe.metainfo.xml.in.in:13
-msgid "Applying image color profiles"
-msgstr "Aplicacion dels perfils de colors d’imatge"
-
-#: data/org.gnome.Loupe.metainfo.xml.in.in:14
-msgid "Printing"
-msgstr "Impression"
+msgid "Browse through your images and inspect their metadata."
+msgstr "Navegatz demest vòstres imatges e d’examinatz lors metadonadas."
 
 #: data/resources/gtk/help-overlay.ui:11
 msgctxt "shortcut window"
@@ -432,11 +416,11 @@ msgid "Gestures"
 msgstr "Gèstes"
 
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/application.rs:203
+#: src/application.rs:200
 msgid "translator-credits"
 msgstr "Quentin PAGÈS"
 
-#: src/application.rs:204
+#: src/application.rs:201
 msgid "Copyright © 2020–2023 Christopher Davis et al."
 msgstr "Copyright © 2020–2023 Christopher Davis e d’autres."
 
@@ -521,7 +505,7 @@ msgstr "{}\\u{202F}mm"
 msgid "%x %X"
 msgstr "%x %X"
 
-#: src/util/mod.rs:171 src/window.rs:517
+#: src/util/mod.rs:171 src/window.rs:522
 msgid "Failed to restore image from trash"
 msgstr "Fracàs de la restauracion de l’imatge a partir de l’escobilhièr"
 
@@ -538,53 +522,65 @@ msgstr "Definir coma rèireplan."
 msgid "Could not set background."
 msgstr "Impossible de definir coma rèireplan."
 
-#: src/window.rs:421
+#: src/window.rs:426
 msgid "Supported image formats"
 msgstr "Format d'imatge suportats"
 
-#: src/window.rs:427
+#: src/window.rs:432
 msgid "All files"
 msgstr "Totes los fichièrs"
 
-#: src/window.rs:434
+#: src/window.rs:439
 msgid "Open Image"
 msgstr "Dobrir un imatge"
 
-#: src/window.rs:489
+#: src/window.rs:494
 msgid "Image copied to clipboard"
 msgstr "Imatge copiat al quichapapièrs"
 
-#: src/window.rs:505
+#: src/window.rs:510
 msgid "Image moved to trash"
 msgstr "Imatge desplaçat a l'escobilhièr"
 
-#: src/window.rs:506
+#: src/window.rs:511
 msgid "Undo"
 msgstr "Desfar"
 
-#: src/window.rs:532
+#: src/window.rs:537
 msgid "Failed to move image to trash"
 msgstr "Impossible de desplaçar l’imatge cap a l'escobilhièr"
 
-#: src/window.rs:547
+#: src/window.rs:552
 msgid "Permanently Delete Image?"
 msgstr "Suprimir l’imatge irreversiblament ?"
 
-#: src/window.rs:549
+#: src/window.rs:554
 msgid "The image “{}” can only be deleted permanently."
 msgstr "L’imatge « {} » se pòt pas suprimir per totjorn."
 
-#: src/window.rs:557
+#: src/window.rs:562
 msgid "Cancel"
 msgstr "Anullada"
 
-#: src/window.rs:558
+#: src/window.rs:563
 msgid "Delete"
 msgstr "Suprimir"
 
-#: src/window.rs:569
+#: src/window.rs:574
 msgid "Failed to delete image"
 msgstr "Impossible de suprimir l’imatge"
+
+#~ msgid "Layout Image"
+#~ msgstr "Imatge de disposicion"
+
+#~ msgid "The following features are not available yet"
+#~ msgstr "Las foncionalitats seguentas son pas encara disponiblas"
+
+#~ msgid "Applying image color profiles"
+#~ msgstr "Aplicacion dels perfils de colors d’imatge"
+
+#~ msgid "Printing"
+#~ msgstr "Impression"
 
 #~ msgid "Christopher Davis"
 #~ msgstr "Christopher Davis"

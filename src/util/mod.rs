@@ -182,13 +182,13 @@ pub trait BufReadSeek: std::io::BufRead + std::io::Seek {}
 impl BufReadSeek for std::io::BufReader<gio::InputStreamRead<gio::FileInputStream>> {}
 
 pub trait ToBufRead {
-    fn to_buf_read(&self) -> anyhow::Result<Box<dyn BufReadSeek>>;
+    fn to_buf_read(&self, cancellable: &gio::Cancellable) -> anyhow::Result<Box<dyn BufReadSeek>>;
 }
 
 impl ToBufRead for gio::File {
-    fn to_buf_read(&self) -> anyhow::Result<Box<dyn BufReadSeek>> {
+    fn to_buf_read(&self, cancellable: &gio::Cancellable) -> anyhow::Result<Box<dyn BufReadSeek>> {
         let read = self
-            .read(gio::Cancellable::NONE)
+            .read(Some(cancellable))
             .context(gettext("Failed to open image"))?
             .into_read();
 

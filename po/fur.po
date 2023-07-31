@@ -1,17 +1,17 @@
-# Georgian translation for Loupe.
+# Friulian translation for Loupe.
 # Copyright (C) 2023 Loupe's COPYRIGHT HOLDER
 # This file is distributed under the same license as the Loupe package.
-# Ekaterine Papava <papava.e@gtu.ge>, 2023.
+# Fabio Tomat <f.t.public@gmail.com>, 2023.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/Incubator/loupe/-/issues\n"
-"POT-Creation-Date: 2023-04-27 02:21+0000\n"
-"PO-Revision-Date: 2023-04-27 05:45+0200\n"
-"Last-Translator: Ekaterine Papava <papava.e@gtu.ge>\n"
-"Language-Team: Georgian <ka@li.org>\n"
-"Language: ka\n"
+"POT-Creation-Date: 2023-04-28 05:36+0000\n"
+"PO-Revision-Date: 2023-04-28 10:59+0200\n"
+"Last-Translator: \n"
+"Language-Team: Friulian <fur@li.org>\n"
+"Language: fur\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -19,147 +19,147 @@ msgstr ""
 
 #: data/gtk/image_page.ui:6 data/gtk/window.ui:16
 msgid "_Open With…"
-msgstr "_გამხსნელი პროგრამა…"
+msgstr "_Vierç cun…"
 
 #: data/gtk/image_page.ui:14 data/gtk/window.ui:24
 msgid "_Print…"
-msgstr "_ბეჭდვა…"
+msgstr "Stam_pe…"
 
 #: data/gtk/image_page.ui:18
 msgid "_Copy"
-msgstr "_კოპირება"
+msgstr "_Copie"
 
 #: data/gtk/image_page.ui:23 data/gtk/window.ui:29
 msgid "Rotate"
-msgstr "დატრიალება"
+msgstr "Volte"
 
 #: data/gtk/image_page.ui:34 data/gtk/window.ui:40
 msgid "_Set as Background…"
-msgstr "ფონად დაყენე_ბა…"
+msgstr "Met come _fondâl…"
 
 #: data/gtk/image_page.ui:55
 msgid "Could not Load Image"
-msgstr "გამოსახულების ჩატვირთვის შეცდომა"
+msgstr "Impussibil cjariâ la imagjin"
 
 #: data/gtk/image_page.ui:88 data/gtk/window.ui:101
 msgid "Rotate Left"
-msgstr "მარცხნივ შებრუნება"
+msgstr "Zire a çampe"
 
 #: data/gtk/image_page.ui:98 data/gtk/window.ui:111
 msgid "Rotate Right"
-msgstr "მარჯვნივ შებრუნება"
+msgstr "Zire a diestre"
 
 #: data/gtk/image_view.ui:30
 msgid "Previous Image"
-msgstr "წინა გამოსახულება"
+msgstr "Imagjin precedente"
 
 #: data/gtk/image_view.ui:41
 msgid "Next Image"
-msgstr "შემდეგი გამოსახულება"
+msgstr "Imagjin sucessive"
 
 #: data/gtk/image_view.ui:66
 msgid "Zoom Out"
-msgstr "დაპატარავება"
+msgstr "Impiçulìs"
 
 #: data/gtk/image_view.ui:77
 msgid "Zoom In"
-msgstr "გადიდება"
+msgstr "Ingrandìs"
 
 #: data/gtk/image_view.ui:95
 msgid "Toggle Fullscreen"
-msgstr "მთელ ეკრანზე გატანის ჩართ/გამორთ"
+msgstr "Comute modalitât plen visôr"
 
 #: data/gtk/print.ui:4
 msgid "Image Layout"
-msgstr "გამოსახულების განლაგება"
+msgstr "Disposizion imagjin"
 
 #: data/gtk/print.ui:66
 msgid "Portrait page orientation"
-msgstr "გვერდის პორტრეტული ორიენტაცია"
+msgstr "Orientament pagjine verticâl"
 
 #: data/gtk/print.ui:74
 msgid "Landscape page orientation"
-msgstr "გვერდის ლანდშაფტური ორიენტაცა"
+msgstr "Orientament pagjine orizontâl"
 
 #: data/gtk/print.ui:88
 msgid "Center image horizontally"
-msgstr "გამოსახულების ჰორიზონტალურად დაცენტრება"
+msgstr "Centre la imagjin in orizontâl"
 
 #: data/gtk/print.ui:95
 msgid "Center image vertically"
-msgstr "გამოსახულების ვერტიკალურად დაცენტრება"
+msgstr "Centre la imagjin in verticâl"
 
 #: data/gtk/print.ui:107
 msgid "Image Width"
-msgstr "გამოსახულების სიგანე"
+msgstr "Largjece de imagjin"
 
 #: data/gtk/print.ui:119
 msgid "Image Scale"
-msgstr "გამოსახულების მასშტაბი"
+msgstr "Scjale de imagjin"
 
 #: data/gtk/print.ui:131
 msgid "Left Margin"
-msgstr "მარცხენა ზღვარი"
+msgstr "Margjin di çampe"
 
 #: data/gtk/print.ui:143
 msgid "Top Margin"
-msgstr "ზედა ზღვარი"
+msgstr "Margjin superiôr"
 
 #: data/gtk/print.ui:155
 msgid "Length Unit"
-msgstr "სიგრძის ერთეული"
+msgstr "Unitât de lungjece"
 
 #: data/gtk/print.ui:175
 msgid "Print"
-msgstr "დაბეჭდვა"
+msgstr "Stampe"
 
 #: data/gtk/properties_view.ui:29
 msgid "Folder"
-msgstr "საქაღალდე"
+msgstr "Cartele"
 
 #: data/gtk/properties_view.ui:42
 msgid "Open Containing Folder"
-msgstr "შემცველი საქაღალდის გახსნა"
+msgstr "Vierç cartele che e conten"
 
 #: data/gtk/properties_view.ui:59
 msgid "Image Size"
-msgstr "გამოსახულების ზომა"
+msgstr "Dimension de imagjin"
 
 #: data/gtk/properties_view.ui:75
 msgid "Image Format"
-msgstr "გამოსახულების ფორმატი"
+msgstr "Formât de imagjin"
 
 #: data/gtk/properties_view.ui:89
 msgid "File Size"
-msgstr "ფაილის ზომა"
+msgstr "Dimension dal file"
 
 #: data/gtk/properties_view.ui:107
 msgid "File Created"
-msgstr "ფაილი შეიქმნა"
+msgstr "File creât"
 
 #: data/gtk/properties_view.ui:121
 msgid "File Modified"
-msgstr "შეცვლილი ფაილი"
+msgstr "File modificât"
 
 #: data/gtk/properties_view.ui:144
 msgid "Location"
-msgstr "დებარეობა"
+msgstr "Posizion"
 
 #: data/gtk/properties_view.ui:164
 msgid "Open Location"
-msgstr "მდებარეობის გახსნა"
+msgstr "Vierç posizion"
 
 #: data/gtk/properties_view.ui:177
 msgid "Originally Created"
-msgstr "თავიდან შეიქმნა"
+msgstr "Creât in origjin"
 
 #: data/gtk/properties_view.ui:198
 msgid "Aperture"
-msgstr "დიაფრაგმის მნიშვნელობა"
+msgstr "Viertidure"
 
 #: data/gtk/properties_view.ui:219
 msgid "Exposure"
-msgstr "ექსპოზიცია"
+msgstr "Esposizion"
 
 #: data/gtk/properties_view.ui:240
 msgid "ISO"
@@ -167,27 +167,27 @@ msgstr "ISO"
 
 #: data/gtk/properties_view.ui:261
 msgid "Focal Length"
-msgstr "ფოკალური მანძილი"
+msgstr "Lungjece focâl"
 
 #: data/gtk/properties_view.ui:282
 msgid "Maker, Model"
-msgstr "მწარმოებელი, მოდელი"
+msgstr "Produtôr, model"
 
 #: data/gtk/window.ui:6
 msgid "_New Window"
-msgstr "_ახალი ფანჯარა"
+msgstr "_Gnûf Barcon"
 
 #: data/gtk/window.ui:10
 msgid "_Open…"
-msgstr "გახსნა…"
+msgstr "_Vierç…"
 
 #: data/gtk/window.ui:46
 msgid "_Keyboard Shortcuts"
-msgstr "_კლავიატურის მალსახმობები"
+msgstr "Scurtis di _tastiere"
 
 #: data/gtk/window.ui:50
 msgid "_About Loupe"
-msgstr "Loupe-ის _შესახებ"
+msgstr "_Informazions su Loupe"
 
 #. If the file exists, get display name
 #: data/gtk/window.ui:59 data/org.gnome.Loupe.desktop.in.in:3
@@ -198,302 +198,302 @@ msgstr "Loupe"
 
 #: data/gtk/window.ui:80
 msgid "Copy to Clipboard"
-msgstr "ბუფერში კოპირება"
+msgstr "Copie intes notis"
 
 #: data/gtk/window.ui:87
 msgid "Move to Trash"
-msgstr "სანაგვე ყუთში გადატანა"
+msgstr "Sposte te scovacere"
 
 #: data/gtk/window.ui:93
 msgid "Main Menu"
-msgstr "მთავარი მენიუ"
+msgstr "Menù principâl"
 
 #: data/gtk/window.ui:125
 msgid "Image Properties"
-msgstr "გამოსახულების თვისებები"
+msgstr "Propietâts de imagjin"
 
 #: data/gtk/window.ui:145
 msgid "View Images"
-msgstr "სურათების დათვალიერება"
+msgstr "Visualize imagjins"
 
 #: data/gtk/window.ui:146
 msgid "Drag and drop images here"
-msgstr "გადმოათრიეთ და დაყარეთ სურათები აქ"
+msgstr "Strissine e mole lis imagjins achì"
 
 #: data/gtk/window.ui:150
 msgid "_Open File…"
-msgstr "_ფაილის გახსნა…"
+msgstr "_Vierç file…"
 
 #: data/org.gnome.Loupe.desktop.in.in:11
 msgid "Picture;Slideshow;Graphics;Image Viewer;"
-msgstr "Picture;Slideshow;Graphics;Image Viewer;"
+msgstr "Imagjin;Figure;Presentazion;Grafiche;Visualizadôr imagjin;"
 
 #: data/org.gnome.Loupe.metainfo.xml.in.in:7 src/application.rs:191
 msgid "The Loupe Team"
-msgstr "Loupe-ის გუნდი"
+msgstr "Il grup di Loupe"
 
 #: data/org.gnome.Loupe.metainfo.xml.in.in:8
 msgid "View images"
-msgstr "სურათების დათვალიერება"
+msgstr "Visualize imagjins"
 
 #: data/org.gnome.Loupe.metainfo.xml.in.in:10
 msgid "Browse through your images and inspect their metadata."
-msgstr "დაათვალიერეთ თქვენი სურათები და მათი მეტამონაცემები."
+msgstr "Sgarfe tra lis tôs imagjins e ispezione i lôr metadâts."
 
 #: data/resources/gtk/help-overlay.ui:11
 msgctxt "shortcut window"
 msgid "General Shortcuts"
-msgstr "საერთო მალსახმობები"
+msgstr "Scurtis gjenerichis"
 
 #: data/resources/gtk/help-overlay.ui:14
 msgctxt "shortcut window"
 msgid "Show Main Menu"
-msgstr "მთავარი მენიუს ჩვენება"
+msgstr "Mostre il menù principâl"
 
 #: data/resources/gtk/help-overlay.ui:20
 msgctxt "shortcut window"
 msgid "Copy Image to Clipboard"
-msgstr "გამოსახულების ბუფერში კოპირება"
+msgstr "Copie la imagjin intes notis"
 
 #: data/resources/gtk/help-overlay.ui:26
 msgctxt "shortcut window"
 msgid "Move Image to Trash"
-msgstr "გამოსახულების სანაგვე ყუთში გადატანა"
+msgstr "Sposte la imagjin te scovacere"
 
 #: data/resources/gtk/help-overlay.ui:32
 msgctxt "shortcut window"
 msgid "Toggle Image Properties"
-msgstr "გამოსახულების თვისებების გადართვა"
+msgstr "Comute proprietâts de imagjin"
 
 #: data/resources/gtk/help-overlay.ui:38
 msgctxt "shortcut window"
 msgid "Set as Background"
-msgstr "ფონად დაყენება"
+msgstr "Met come fonts"
 
 #: data/resources/gtk/help-overlay.ui:44
 msgctxt "shortcut window"
 msgid "Toggle Fullscreen"
-msgstr "მთელ ეკრანზე გატანის ჩართ/გამორთ"
+msgstr "Comute la modalitât plen visôr"
 
 #: data/resources/gtk/help-overlay.ui:50
 msgctxt "shortcut window"
 msgid "Leave Fullscreen"
-msgstr "დატოვე მთელს ეკრანზე"
+msgstr "Jes dal plen visôr"
 
 #: data/resources/gtk/help-overlay.ui:56
 msgctxt "shortcut window"
 msgid "New Window"
-msgstr "ახალი ფანჯარა"
+msgstr "Gnûf barcon"
 
 #: data/resources/gtk/help-overlay.ui:62
 msgctxt "shortcut window"
 msgid "Open Help"
-msgstr "დახმარების მენიუ"
+msgstr "Vierç il jutori"
 
 #: data/resources/gtk/help-overlay.ui:68
 msgctxt "shortcut window"
 msgid "Show Keyboard Shortcuts"
-msgstr "კლავიატურის მალსახმობების ჩვენება"
+msgstr "Mostre lis scurtis di tastiere"
 
 #: data/resources/gtk/help-overlay.ui:74
 msgctxt "shortcut window"
 msgid "Close Window"
-msgstr "ფანჯრის დახურვა"
+msgstr "Siere il barcon"
 
 #: data/resources/gtk/help-overlay.ui:80
 msgctxt "shortcut window"
 msgid "Quit"
-msgstr "გამორთვა"
+msgstr "Jes"
 
 #: data/resources/gtk/help-overlay.ui:88
 msgctxt "shortcut window"
 msgid "Navigate Images"
-msgstr "ნავიგაცია გამოსახულებებში"
+msgstr "Navighe tra lis imagjins"
 
 #: data/resources/gtk/help-overlay.ui:92 data/resources/gtk/help-overlay.ui:106
 #: data/resources/gtk/help-overlay.ui:218
 #: data/resources/gtk/help-overlay.ui:232
 msgctxt "shortcut window"
 msgid "Next Image"
-msgstr "შემდეგი გამოსახულება"
+msgstr "Imagjin sucessive"
 
 #: data/resources/gtk/help-overlay.ui:99 data/resources/gtk/help-overlay.ui:113
 #: data/resources/gtk/help-overlay.ui:225
 #: data/resources/gtk/help-overlay.ui:239
 msgctxt "shortcut window"
 msgid "Previous Image"
-msgstr "წინა გამოსახულება"
+msgstr "Imagjin precedente"
 
 #: data/resources/gtk/help-overlay.ui:119
 msgctxt "shortcut window"
 msgid "First Image"
-msgstr "პირველი გამოსახულება"
+msgstr "Prime imagjin"
 
 #: data/resources/gtk/help-overlay.ui:125
 msgctxt "shortcut window"
 msgid "Last Image"
-msgstr "ბოლო გამოსახულება"
+msgstr "Ultime imagjin"
 
 #: data/resources/gtk/help-overlay.ui:133
 msgctxt "shortcut window"
 msgid "Rotate Image"
-msgstr "გამოსახულების შემობრუნება"
+msgstr "Volte la imagjin"
 
 #: data/resources/gtk/help-overlay.ui:136
 #: data/resources/gtk/help-overlay.ui:257
 msgctxt "shortcut window"
 msgid "Rotate Clockwise"
-msgstr "საათის ისრის მიმართულებით შებრუნება"
+msgstr "Volte in sens orari"
 
 #: data/resources/gtk/help-overlay.ui:142
 #: data/resources/gtk/help-overlay.ui:263
 msgctxt "shortcut window"
 msgid "Rotate Counterclockwise"
-msgstr "საათის ისრის საწინააღმდეგო მიმართულებით შებრუნება"
+msgstr "Volte in sens antiorari"
 
 #: data/resources/gtk/help-overlay.ui:150
 msgctxt "shortcut window"
 msgid "Zoom Image"
-msgstr "გამოსახულების გადიდება"
+msgstr "Ingrandìs la imagjin"
 
 #: data/resources/gtk/help-overlay.ui:153
 #: data/resources/gtk/help-overlay.ui:245
 msgctxt "shortcut window"
 msgid "Zoom In"
-msgstr "გადიდება"
+msgstr "Ingrandìs"
 
 #: data/resources/gtk/help-overlay.ui:159
 #: data/resources/gtk/help-overlay.ui:251
 msgctxt "shortcut window"
 msgid "Zoom Out"
-msgstr "დაპატარავება"
+msgstr "Impiçulìs"
 
 #: data/resources/gtk/help-overlay.ui:165
 msgctxt "shortcut window"
 msgid "Best Fit"
-msgstr "საუკეთესოდ ჩატევა"
+msgstr "Adate"
 
 #: data/resources/gtk/help-overlay.ui:171
 msgctxt "shortcut window"
 msgid "Original Scale"
-msgstr "საწყისი მასშტაბი"
+msgstr "Scjale origjinâl"
 
 #: data/resources/gtk/help-overlay.ui:177
 msgctxt "shortcut window"
 msgid "200% Scale"
-msgstr "200% მასშტაბი"
+msgstr "Scjale al 200%"
 
 #: data/resources/gtk/help-overlay.ui:185
 msgctxt "shortcut window"
 msgid "Pan View"
-msgstr "პანორამული ხედი"
+msgstr "Viodude panoramiche"
 
 #: data/resources/gtk/help-overlay.ui:188
 msgctxt "shortcut window"
 msgid "Pan Left"
-msgstr "პანინგი მარცხნივ"
+msgstr "Slargje a çampe"
 
 #: data/resources/gtk/help-overlay.ui:194
 msgctxt "shortcut window"
 msgid "Pan Right"
-msgstr "პანინგი მარჯვნივ"
+msgstr "Slargje a diestre"
 
 #: data/resources/gtk/help-overlay.ui:200
 msgctxt "shortcut window"
 msgid "Pan Up"
-msgstr "პანორამა მაღლა"
+msgstr "Slargje in sù"
 
 #: data/resources/gtk/help-overlay.ui:206
 msgctxt "shortcut window"
 msgid "Pan Down"
-msgstr "პანორამა დაბლა"
+msgstr "Slargje in jù"
 
 #: data/resources/gtk/help-overlay.ui:214
 msgctxt "shortcut window"
 msgid "Gestures"
-msgstr "ჟესტები"
+msgstr "Mots"
 
 #. Translators: Replace "translator-credits" with your names, one name per line
 #: src/application.rs:200
 msgid "translator-credits"
-msgstr "ვიღაც, ვინც თარგმნა"
+msgstr "Fabio Tomat <f.t.public@gmail.com>, 2023"
 
 #: src/application.rs:201
 msgid "Copyright © 2020–2023 Christopher Davis et al."
-msgstr "Copyright © 2020–2023 Christopher Davis და სხვ."
+msgstr "Copyright © 2020–2023 Christopher Davis e altris"
 
 #: src/decoder/formats/heif.rs:55
 msgid "Failed to read image file information"
-msgstr "გამოსახულების ფაილის ინფორმაციის წაკითხვის შეცდომა"
+msgstr "Nol è stât pussibil lei lis informazions dal file imagjin"
 
 #: src/decoder/formats/heif.rs:60 src/decoder/formats/heif.rs:93
 #: src/decoder/formats/image_rs_other.rs:116
 #: src/decoder/formats/image_rs_other.rs:125
 #: src/decoder/formats/image_rs_other.rs:132
 msgid "Failed to decode image"
-msgstr "გამოსახულების გაშიფვრის შეცდომა"
+msgstr "Nol è stât pussibil decodificâ la imagjin"
 
 #: src/decoder/formats/mod.rs:72
 msgid "Animated GIF"
-msgstr "ანიმირებული GIF"
+msgstr "GIF animade"
 
 #: src/decoder/formats/mod.rs:73
 msgid "Animated WebP"
-msgstr "ანიმირებული WebP"
+msgstr "WebP animât"
 
 #: src/decoder/formats/mod.rs:74
 msgid "Animated PNG"
-msgstr "ანიმირებული PNG"
+msgstr "PNG animât"
 
 #: src/decoder/mod.rs:189
 msgid "Unknown image format: {}"
-msgstr "გამოსახულების უცნობი ფორმატი: {}"
+msgstr "Formât imagjin no cognossût: {}"
 
 #: src/decoder/mod.rs:194
 msgid "Unknown image format"
-msgstr "გამოსახულების უცნობი ფორმატი"
+msgstr "Formât imagjin no cognossût"
 
 #: src/decoder/mod.rs:222
 msgid "Could not open image"
-msgstr "გამოსახულების გახსნის შეცდომა"
+msgstr "Impussibil vierzi la imagjin"
 
 #: src/decoder/mod.rs:226
 msgid "Could not read image"
-msgstr "გამოსახულების წაკითხვის შეცდომა"
+msgstr "Impussibil lei la imagjin"
 
 #: src/file_model.rs:118
 msgid "Could not list other files in directory."
-msgstr "საქაღალდეში სხვა ფაილების სიის გამოტანის შეცდომა."
+msgstr "Impussibil listâ i altris files te cartele."
 
 #. Translators: short for "north" in GPS coordinate
 #: src/image_metadata/gps.rs:154
 msgid "N"
-msgstr "ჩრდ"
+msgstr "N"
 
 #. Translators: short for "south" in GPS coordinate
 #: src/image_metadata/gps.rs:157
 msgid "S"
-msgstr "სამხ"
+msgstr "S"
 
 #. Translators: short for "east" in GPS coordinate
 #: src/image_metadata/gps.rs:167
 msgid "E"
-msgstr "მი"
+msgstr "E"
 
 #. Translators: short for "west" in GPS coordinate
 #: src/image_metadata/gps.rs:170
 msgid "W"
-msgstr "ოთხ"
+msgstr "O"
 
 #. Translators: Unit for exposure time in seconds
 #: src/image_metadata/mod.rs:144
 msgid "1\\u{2215}{}\\u{202F}s"
-msgstr "1\\u{2215}{}\\u{202F}წმ"
+msgstr "1\\u{2215}{}\\u{202F}s"
 
 #. Translators: Unit for focal length in millimeters
 #: src/image_metadata/mod.rs:169
 msgid "{}\\u{202F}mm"
-msgstr "{}\\u{202F}მმ"
+msgstr "{}\\u{202F}mm"
 
 #. Translators: This is the date and time format we use in metadata output etc.
 #. The format has to follow <https://docs.gtk.org/glib/method.DateTime.format.html>
@@ -505,104 +505,65 @@ msgstr "%x %X"
 
 #: src/util/mod.rs:171 src/window.rs:522
 msgid "Failed to restore image from trash"
-msgstr "გამოსახულების სანაგვე ყუთიდან აღდგენის შეცდომა"
+msgstr "Nol è stât pussibil ripristinâ de scovacere la imagjin"
 
 #: src/util/mod.rs:192
 msgid "Failed to open image"
-msgstr "გამოსახულების გახსნის შეცდომა"
+msgstr "Nol è stât pussibil vierzi la imagjin"
 
 #. Translators: This is a toast notification, informing the user that an image has been set as background.
 #: src/widgets/image_view.rs:620
 msgid "Set as background."
-msgstr "ფონად დაყენება."
+msgstr "Metût come fondâl."
 
 #: src/widgets/image_view.rs:631
 msgid "Could not set background."
-msgstr "ფონად დაყენების შეცდომა."
+msgstr "Impussibil configurâ il fondâl."
 
 #: src/window.rs:426
 msgid "Supported image formats"
-msgstr "გამოსახულების მხარდაჭერილი ფორმატები"
+msgstr "Formâts imagjin supuartâts."
 
 #: src/window.rs:432
 msgid "All files"
-msgstr "ყველა ფაილი"
+msgstr "Ducj i files"
 
 #: src/window.rs:439
 msgid "Open Image"
-msgstr "გამოსახულების გახსნა"
+msgstr "Vierç imagjin"
 
 #: src/window.rs:494
 msgid "Image copied to clipboard"
-msgstr "სურათი ბუფერში დაკოპირდა"
+msgstr "Imagjin copiade intes notis"
 
 #: src/window.rs:510
 msgid "Image moved to trash"
-msgstr "სურათი გადატანილია სანაგვე ყუთში"
+msgstr "Imagjin spostade te scovacere"
 
 #: src/window.rs:511
 msgid "Undo"
-msgstr "დაბრუნება"
+msgstr "Disfe"
 
 #: src/window.rs:537
 msgid "Failed to move image to trash"
-msgstr "ფაილების სანაგვე ყუთში გადატანის შეცდომა"
+msgstr "Nol è stât pussibil spostâ la imagjin te scovacere"
 
 #: src/window.rs:552
 msgid "Permanently Delete Image?"
-msgstr "წავშალო გამოსახულება სამუდამოდ?"
+msgstr "Eliminâ par simpri la imagjin?"
 
 #: src/window.rs:554
 msgid "The image “{}” can only be deleted permanently."
-msgstr "გამოსახულება \"{}\" მხოლოდ სამუდამოდ შეგიძლიათ წაშალოთ."
+msgstr "Tu puedis dome eliminâ par simpri la imagjin “{}”."
 
 #: src/window.rs:562
 msgid "Cancel"
-msgstr "გუქმება"
+msgstr "Anule"
 
 #: src/window.rs:563
 msgid "Delete"
-msgstr "წაშლა"
+msgstr "Elimine"
 
 #: src/window.rs:574
 msgid "Failed to delete image"
-msgstr "გამოსახულების წაშლის შეცდომა"
-
-#~ msgid "Layout Image"
-#~ msgstr "გამოსახულების განლაგება"
-
-#~ msgid "The following features are not available yet"
-#~ msgstr "ეს თვისებები ჯერჯერობით მიუწვდომელია"
-
-#~ msgid "Applying image color profiles"
-#~ msgstr "გამოსახულების ფერის პროფილების გადატარება"
-
-#~ msgid "Printing"
-#~ msgstr "დაბეჭდვა"
-
-#~ msgid "Christopher Davis"
-#~ msgstr "Christopher Davis"
-
-#~ msgid "File does not exist"
-#~ msgstr "ფაილი არ არსებობს"
-
-#~ msgid "Failed to open new background image"
-#~ msgstr "ახალი ფონის სურათის გახსნის შეცდომა"
-
-#~ msgid "“{}” is not a valid image."
-#~ msgstr "“{}” სწორი გამოსახულება არაა."
-
-#~ msgid "Correctly showing SVGs at every zoom-level"
-#~ msgstr "SVG ფაილების სწორად ჩვენება მათი გადიდებისას"
-
-#~ msgid "Correct HighDPI support"
-#~ msgstr "HighDPI-ის სწორი მხარდაჭერა"
-
-#~ msgid "Print settings to position the image on the page"
-#~ msgstr "დაბეჭდვის პარამეტრები გამოსახულების გვერდზე მოსათავსებლად"
-
-#~ msgid "_Help"
-#~ msgstr "_დახმარება"
-
-#~ msgid "File Type"
-#~ msgstr "ფაილის ტიპი"
+msgstr "Nol è stât pussibil eliminâ la imagjin"
