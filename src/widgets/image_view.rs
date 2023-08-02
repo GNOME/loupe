@@ -139,7 +139,7 @@ mod imp {
             // Manually mange widget layout, see `WidgetImpl` for details
             obj.set_layout_manager(None::<gtk::LayoutManager>);
 
-            let signal_group = glib::SignalGroup::new(LpImage::static_type());
+            let signal_group = glib::SignalGroup::new::<LpImage>();
             obj.connect_notify_local(
                 Some("current-page"),
                 clone!(@weak signal_group => move |obj, _| {

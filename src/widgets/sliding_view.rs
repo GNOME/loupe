@@ -132,22 +132,30 @@ mod imp {
                 gtk::EventControllerScroll::new(gtk::EventControllerScrollFlags::HORIZONTAL);
 
             scroll_controller.connect_scroll(
-                glib::clone!(@weak obj => @default-return gtk::Inhibit(false), move |_, x, _| {
+                glib::clone!(@weak obj => @default-return glib::Propagation::Proceed, move |_, x, _| {
                     let direction_sign = if obj.imp().is_rtl() { -1. } else { 1. };
 
                     if x * direction_sign > 0. {
                         // check end
                         if let Some(max) = obj.imp().snap_points().last() {
-                            gtk::Inhibit(obj.position() >= *max)
+                            if obj.position() >= *max {
+                                glib::Propagation::Stop
+                            } else {
+                                glib::Propagation::Proceed
+                            }
                         } else {
-                            gtk::Inhibit(true)
+                            glib::Propagation::Stop
                         }
                     } else {
                         //check beginning
                         if let Some(min) = obj.imp().snap_points().first() {
-                            gtk::Inhibit(obj.position() <= *min)
+                            if obj.position() <= *min {
+                                glib::Propagation::Stop
+                            } else {
+                                glib::Propagation::Proceed
+                            }
                         } else {
-                            gtk::Inhibit(true)
+                            glib::Propagation::Stop
                         }
                     }
                 }),

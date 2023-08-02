@@ -473,7 +473,7 @@ impl LpWindow {
     }
 
     async fn pick_file(&self) {
-        let filter_list = gio::ListStore::new(gtk::FileFilter::static_type());
+        let filter_list = gio::ListStore::new::<gtk::FileFilter>();
 
         let filter_supported_formats = gtk::FileFilter::new();
         filter_supported_formats.set_name(Some(&gettext("Supported image formats")));

@@ -341,13 +341,13 @@ mod imp {
             let scroll_controller =
                 gtk::EventControllerScroll::new(gtk::EventControllerScrollFlags::VERTICAL);
 
-            scroll_controller.connect_scroll(glib::clone!(@weak obj => @default-return gtk::Inhibit(false), move |event, _, y| {
+            scroll_controller.connect_scroll(glib::clone!(@weak obj => @default-return glib::Propagation::Proceed, move |event, _, y| {
                 // use Ctrl key as modifier for vertical scrolling
                 if event.current_event_state().contains(gdk::ModifierType::CONTROL_MASK)
                     || event.current_event_state().contains(gdk::ModifierType::SHIFT_MASK)
                 {
                     // propagate event to scrolled window
-                    return gtk::Inhibit(false);
+                    return glib::Propagation::Proceed;
                 }
 
                 // touchpads do zoom via gestures only
@@ -355,7 +355,7 @@ mod imp {
                     == Some(gdk::InputSource::Touchpad)
                 {
                     // propagate event to scrolled window
-                    return gtk::Inhibit(false);
+                    return glib::Propagation::Proceed;
                 }
 
                 // Use exponential scaling since zoom is always multiplicative with the existing value
@@ -379,7 +379,7 @@ mod imp {
                     }
 
                 // do not propagate event to scrolled window
-                gtk::Inhibit(true)
+                glib::Propagation::Stop
             }));
 
             obj.add_controller(scroll_controller);
@@ -837,7 +837,7 @@ impl LpImage {
             }
             DecoderUpdate::Animated => {
                 let callback_id = self
-                        .add_tick_callback(glib::clone!(@weak self as obj => @default-return glib::Continue(false), move |_, clock| obj.tick_callback(clock)));
+                        .add_tick_callback(glib::clone!(@weak self as obj => @default-return glib::ControlFlow::Break, move |_, clock| obj.tick_callback(clock)));
                 imp.tick_callback.replace(Some(callback_id));
             }
             DecoderUpdate::UnsupportedFormat => {
@@ -852,10 +852,10 @@ impl LpImage {
     /// Roughly called for every frame if image is visible
     ///
     /// We handle advancing to the next frame for animated GIFs etc here.
-    fn tick_callback(&self, clock: &gdk::FrameClock) -> glib::Continue {
+    fn tick_callback(&self, clock: &gdk::FrameClock) -> glib::ControlFlow {
         // Do not animate if not visible
         if !self.is_mapped() {
-            return glib::Continue(true);
+            return glib::ControlFlow::Continue;
         }
 
         let elapsed = clock.frame_time() - self.imp().last_animated_frame.get();
@@ -872,7 +872,7 @@ impl LpImage {
             }
         }
 
-        glib::Continue(true)
+        glib::ControlFlow::Continue
     }
 
     pub fn is_loaded(&self) -> bool {
