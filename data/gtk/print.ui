@@ -66,7 +66,7 @@
                                 <property name="icon-name">page-orientation-portrait-symbolic</property>
                                 <property name="action-name">print.orientation</property>
                                 <property name="action-target">"portrait"</property>
-                                <property name="tooltip-text" translatable="yes">Portrait page orientation</property>
+                                <property name="tooltip-text" translatable="yes">Portrait Page Orientation</property>
                               </object>
                             </child>
                             <child>
@@ -74,7 +74,7 @@
                                 <property name="icon-name">page-orientation-landscape-symbolic</property>
                                 <property name="action-name">print.orientation</property>
                                 <property name="action-target">"landscape"</property>
-                                <property name="tooltip-text" translatable="yes">Landscape page orientation</property>
+                                <property name="tooltip-text" translatable="yes">Landscape Page Orientation</property>
                               </object>
                             </child>
                           </object>
@@ -104,7 +104,7 @@
                     <property name="title" translatable="yes">Margins</property>
                     <property name="header-suffix">
                       <object class="GtkDropDown" id="margin_unit">
-                        <property name="tooltip-text" translatable="yes">Margin units</property>
+                        <property name="tooltip-text" translatable="yes">Margin Units</property>
                         <style>
                           <class name="flat"/>
                         </style>
@@ -136,7 +136,7 @@
                     <property name="title" translatable="yes">Image Size</property>
                     <property name="header-suffix">
                       <object class="GtkDropDown" id="size_unit">
-                        <property name="tooltip-text" translatable="yes">Image size units</property>"
+                        <property name="tooltip-text" translatable="yes">Image Size Units</property>"
                         <style>
                           <class name="flat"/>
                         </style>
