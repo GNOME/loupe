@@ -93,15 +93,21 @@ impl LpFileModel {
     pub async fn load_directory(&self, directory: gio::File) -> anyhow::Result<()> {
         self.imp().directory.set(directory.clone()).unwrap();
 
-        let monitor = directory
-            .monitor_directory(gio::FileMonitorFlags::WATCH_MOVES, gio::Cancellable::NONE)?;
-
-        monitor.connect_changed(
-            glib::clone!(@weak self as obj => move |_monitor, file_a, file_b, event| {
-                obj.file_monitor_cb(event, file_a, file_b);
-            }),
-        );
-        self.imp().monitor.set(monitor).unwrap();
+        let monitor =
+            directory.monitor_directory(gio::FileMonitorFlags::WATCH_MOVES, gio::Cancellable::NONE);
+        match monitor {
+            Ok(monitor) => {
+                monitor.connect_changed(
+                    glib::clone!(@weak self as obj => move |_monitor, file_a, file_b, event| {
+                        obj.file_monitor_cb(event, file_a, file_b);
+                    }),
+                );
+                self.imp().monitor.set(monitor).unwrap();
+            }
+            Err(err) => {
+                log::info!("Cannot monitor directory: {err}");
+            }
+        }
 
         let new_files_result = gio::spawn_blocking(move || {
             let mut files = IndexMap::new();
