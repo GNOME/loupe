@@ -23,6 +23,7 @@ use crate::deps::*;
 
 use anyhow::Context;
 use arc_swap::ArcSwap;
+use async_channel as mpsc;
 use gtk::prelude::*;
 
 use std::sync::Arc;
@@ -33,7 +34,7 @@ pub const RSVG_MAX_SIZE: u32 = 32_767;
 
 #[derive(Debug)]
 pub struct Svg {
-    thread_handle: std::thread::JoinHandle<()>,
+    wakeup: mpsc::Sender<()>,
     current_request: Arc<std::sync::RwLock<Request>>,
     cancellable: gio::Cancellable,
 }
@@ -54,7 +55,7 @@ impl Request {
 impl Drop for Svg {
     fn drop(&mut self) {
         self.cancellable.cancel();
-        self.thread_handle.thread().unpark();
+        let _ = self.wakeup.try_send(());
     }
 }
 
@@ -68,22 +69,37 @@ impl Svg {
         let request_store = current_request.clone();
         let cancellable = gio::Cancellable::new();
         let cancellable_ = cancellable.clone();
+        let (wakeup, wakeup_resv) = mpsc::unbounded();
 
-        let thread_handle = updater.spawn_error_handled(move || {
-            let handle = rsvg::Loader::new().read_file(&file, Some(&cancellable))?;
-            let renderer = rsvg::CairoRenderer::new(&handle);
+        updater.clone().spawn_error_handled(async move {
+            let mut image_request = glycin::ImageRequest::new(file);
 
-            let (original_width, original_height) = svg_dimensions(&renderer);
+            #[cfg(feature = "disable-glycin-sandbox")]
+            image_request.sandbox_mechanism(Some(glycin::SandboxMechanism::NotSandboxed));
 
-            let intrisic_dimensions = renderer.intrinsic_dimensions();
+            image_request.cancellable(cancellable.clone());
+
+            let image = image_request.request().await?;
+
+            let dimensions = if let Some(string) = image.info().dimensions_text.as_ref() {
+                ImageDimensionDetails::Svg(string.to_string())
+            } else {
+                ImageDimensionDetails::None
+            };
+
             tiles.set_original_dimensions_full(
-                (original_width, original_height),
-                ImageDimensionDetails::Svg((intrisic_dimensions.width, intrisic_dimensions.height)),
+                (image.info().width, image.info().height),
+                dimensions,
             );
+
+            updater.send(DecoderUpdate::Format(ImageFormat::new(
+                image.mime_type(),
+                image.format_name(),
+            )));
 
             loop {
                 let tile_request = {
-                    let mut request = request_store.write().ok().context("RwLock is poisoned")?;
+                    let mut request = request_store.write().unwrap();
                     let value = request.clone();
                     *request = Request::None;
                     value
@@ -96,7 +112,10 @@ impl Svg {
 
                 match tile_request {
                     Request::None => {
-                        std::thread::park();
+                        let result = wakeup_resv.recv().await;
+                        if result.is_err() {
+                            return Ok(());
+                        }
                     }
 
                     Request::Tile(tile_request) => {
@@ -106,12 +125,7 @@ impl Svg {
                         let relevant_tiles = tiling.relevant_tiles(&tile_request.area);
 
                         for tile_instructions in relevant_tiles {
-                            if request_store
-                                .read()
-                                .ok()
-                                .context("RwLock is poisoned")?
-                                .is_waiting()
-                            {
+                            if request_store.read().ok().unwrap().is_waiting() {
                                 break;
                             }
 
@@ -122,44 +136,27 @@ impl Svg {
                                 continue;
                             }
 
-                            let area = tile_instructions.area_with_bleed();
-                            let surface = cairo::ImageSurface::create(
-                                cairo::Format::ARgb32,
-                                area.width() as i32,
-                                area.height() as i32,
-                            )?;
-
-                            let context = cairo::Context::new(&surface)?;
                             let (total_width, total_height) =
                                 tile_instructions.tiling.scaled_dimensions();
+                            let area = tile_instructions.area_with_bleed();
 
-                            // librsvg does not currently support larger images
-                            if total_height > RSVG_MAX_SIZE || total_width > RSVG_MAX_SIZE {
-                                continue;
-                            }
+                            let frame_request = glycin::FrameRequest::new()
+                                .scale(total_width, total_height)
+                                .clip(
+                                    area.x() as u32,
+                                    area.y() as u32,
+                                    area.width() as u32,
+                                    area.height() as u32,
+                                );
 
-                            renderer
-                                .render_document(
-                                    &context,
-                                    &cairo::Rectangle::new(
-                                        -area.x() as f64,
-                                        -area.y() as f64,
-                                        total_width as f64,
-                                        total_height as f64,
-                                    ),
-                                )
-                                .context("Failed to render image")?;
-                            drop(context);
-
-                            let decoded_image = Decoded { surface };
+                            let frame = image.specific_frame(frame_request).await?;
 
                             let position = (
                                 tile_instructions.area.x() as u32,
                                 tile_instructions.area.y() as u32,
                             );
-                            let texture = decoded_image.into_texture()?;
 
-                            tiles.push_tile(tiling, position, texture);
+                            tiles.push_tile(tiling, position, frame.texture);
                         }
                     }
                 }
@@ -169,7 +166,7 @@ impl Svg {
         });
 
         Self {
-            thread_handle,
+            wakeup,
             current_request,
             cancellable: cancellable_,
         }
@@ -182,90 +179,22 @@ impl Svg {
             .ok()
             .context("RwLock is poisoned")?;
         *current_request = Request::Tile(request);
-        self.thread_handle.thread().unpark();
+        self.wakeup.try_send(())?;
 
         Ok(())
     }
 
-    pub fn render_print(
-        file: &gio::File,
-        width: i32,
-        height: i32,
-    ) -> anyhow::Result<cairo::ImageSurface> {
-        let handle = rsvg::Loader::new().read_file(file, gio::Cancellable::NONE)?;
-        let renderer = rsvg::CairoRenderer::new(&handle);
-        let surface = cairo::ImageSurface::create(cairo::Format::ARgb32, width, height)?;
-        let context = cairo::Context::new(&surface)?;
-        renderer
-            .render_document(
-                &context,
-                &cairo::Rectangle::new(0., 0., width as f64, height as f64),
-            )
-            .context("Failed to render image")?;
-        drop(context);
+    pub fn render_print(file: &gio::File, width: i32, height: i32) -> anyhow::Result<gdk::Texture> {
+        #[allow(unused_mut)]
+        let mut image_request = glycin::ImageRequest::new(file.clone());
 
-        Ok(surface)
-    }
-}
+        #[cfg(feature = "disable-glycin-sandbox")]
+        image_request.sandbox_mechanism(Some(glycin::SandboxMechanism::NotSandboxed));
 
-pub fn svg_dimensions(renderer: &rsvg::CairoRenderer) -> (u32, u32) {
-    if let Some((width, height)) = renderer.intrinsic_size_in_pixels() {
-        (width.ceil() as u32, height.ceil() as u32)
-    } else {
-        match renderer.intrinsic_dimensions() {
-            rsvg::IntrinsicDimensions {
-                width:
-                    rsvg::Length {
-                        length: width,
-                        unit: rsvg::LengthUnit::Percent,
-                    },
-                height:
-                    rsvg::Length {
-                        length: height,
-                        unit: rsvg::LengthUnit::Percent,
-                    },
-                vbox: Some(vbox),
-            } => (
-                (width * vbox.width()).ceil() as u32,
-                (height * vbox.height()).ceil() as u32,
-            ),
-            dimensions => {
-                log::warn!("Failed to parse SVG dimensions: {dimensions:?}");
-                (300, 300)
-            }
-        }
-    }
-}
+        let image = async_std::task::block_on(image_request.request())?;
+        let frame_request = glycin::FrameRequest::new().scale(width as u32, height as u32);
+        let frame = async_std::task::block_on(image.specific_frame(frame_request))?;
 
-struct Decoded {
-    surface: cairo::ImageSurface,
-}
-
-impl Decoded {
-    pub fn into_texture(self) -> anyhow::Result<gdk::Texture> {
-        let memory_format = {
-            #[cfg(target_endian = "little")]
-            {
-                gdk::MemoryFormat::B8g8r8a8
-            }
-
-            #[cfg(target_endian = "big")]
-            {
-                gdk::MemoryFormat::A8r8g8b8
-            }
-        };
-
-        let width = self.surface.width();
-        let height = self.surface.height();
-        let stride = self.surface.stride() as usize;
-
-        let bytes = glib::Bytes::from_owned(
-            self.surface
-                .take_data()
-                .context("Cairo surface already taken")?
-                .to_vec(),
-        );
-
-        Ok(gdk::MemoryTexture::new(width, height, memory_format, &bytes, stride).upcast())
+        Ok(frame.texture)
     }
 }

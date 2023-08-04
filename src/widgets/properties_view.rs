@@ -306,31 +306,7 @@ impl LpPropertiesView {
     fn image_size(&self, _image_size: Option<glib::Variant>) -> String {
         if let Some(image) = self.image() {
             match image.dimension_details() {
-                ImageDimensionDetails::Svg((width, height))
-                    if width.unit != rsvg::LengthUnit::Px
-                        && height.unit != rsvg::LengthUnit::Px =>
-                {
-                    // Percent is not stored as percentile
-                    let width_factor = if width.unit == rsvg::LengthUnit::Percent {
-                        100.
-                    } else {
-                        1.
-                    };
-                    let height_factor = if height.unit == rsvg::LengthUnit::Percent {
-                        100.
-                    } else {
-                        1.
-                    };
-
-                    // Only show two digits
-                    let width_n = (width.length * width_factor * 100.).round() / 100.;
-                    let height_n = (height.length * height_factor * 100.).round() / 100.;
-
-                    let width_unit = width.unit;
-                    let height_unit = height.unit;
-
-                    format!("{width_n}\u{202F}{width_unit} \u{D7} {height_n}\u{202F}{height_unit}")
-                }
+                ImageDimensionDetails::Svg(string) => string,
                 _ => {
                     let (width, height) = image.image_size();
                     if width > 0 && height > 0 {

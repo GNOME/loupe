@@ -847,7 +847,7 @@ impl LpPrint {
         let texture_scale = self.user_width() / orig_width as f64;
         let cairo_scale = cairo_dpi / self.dpi();
 
-        let cairo_surface = if image.format().map_or(false, |x| x.is_svg()) {
+        let texture = if image.format().map_or(false, |x| x.is_svg()) {
             // Render SVG to exact needed sizes
             // TODO: This should be async
             decoder::formats::Svg::render_print(
@@ -857,8 +857,10 @@ impl LpPrint {
             )
             .unwrap()
         } else {
-            let texture = image.print_data(texture_scale).unwrap();
+            image.print_data(texture_scale).unwrap()
+        };
 
+        let cairo_surface = {
             let mut downloader = gdk::TextureDownloader::new(&texture);
             downloader.set_format(gdk::MemoryFormat::B8g8r8a8Premultiplied);
 

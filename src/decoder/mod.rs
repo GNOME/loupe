@@ -80,14 +80,21 @@ impl UpdateSender {
     }
 
     /// Send occuring errors to renderer
-    pub fn spawn_error_handled<F>(&self, f: F) -> std::thread::JoinHandle<()>
+    pub fn spawn_error_handled<F>(&self, f: F) -> glib::JoinHandle<()>
     where
-        F: FnOnce() -> Result<(), anyhow::Error> + Send + 'static,
+        F: std::future::Future<Output = Result<(), glycin::Error>> + Send + 'static,
     {
         let update_sender = self.clone();
-        std::thread::spawn(move || {
-            if let Err(err) = f() {
-                update_sender.send(DecoderUpdate::Error(err));
+        glib::MainContext::default().spawn(async move {
+            let update_sender = update_sender.clone();
+
+            let result: Result<(), glycin::Error> = f.await;
+
+            if let Err(err) = result {
+                if err.unsupported_format().is_some() {
+                    update_sender.send(DecoderUpdate::UnsupportedFormat);
+                }
+                update_sender.send(DecoderUpdate::Error(err.into()));
             }
         })
     }

@@ -51,96 +51,84 @@ impl Glycin {
 
         let (next_frame_send, next_frame_recv) = async_channel::bounded(2);
 
-        glib::MainContext::default().spawn(async move {
-            let update_sender = updater.clone();
+        updater.clone().spawn_error_handled(async move {
+            let mut image_request = glycin::ImageRequest::new(file);
 
-            let result: Result<(), glycin::Error> = async move {
-                let mut image_request = glycin::ImageRequest::new(file);
+            #[cfg(feature = "disable-glycin-sandbox")]
+            image_request.sandbox_mechanism(Some(glycin::SandboxMechanism::NotSandboxed));
 
-                #[cfg(feature = "disable-glycin-sandbox")]
-                image_request.sandbox_mechanism(Some(glycin::SandboxMechanism::NotSandboxed));
+            image_request.cancellable(cancellable_);
 
-                image_request.cancellable(cancellable_);
+            let image = image_request.request().await?;
 
-                let image = image_request.request().await?;
-
-                if let Some(exif_raw) = image.info().exif.clone().into() {
-                    updater.send(DecoderUpdate::Metadata(ImageMetadata::from_exif_bytes(
-                        exif_raw,
-                    )));
-                }
-
-                let dimensions = (image.info().width, image.info().height);
-                tiles.set_original_dimensions(dimensions);
-
-                updater.send(DecoderUpdate::Format(ImageFormat::new(
-                    image.mime_type(),
-                    image.format_name(),
+            if let Some(exif_raw) = image.info().exif.clone().into() {
+                updater.send(DecoderUpdate::Metadata(ImageMetadata::from_exif_bytes(
+                    exif_raw,
                 )));
+            }
 
-                let frame = image.next_frame().await?;
+            let dimensions = (image.info().width, image.info().height);
+            tiles.set_original_dimensions(dimensions);
 
-                if let Some(delay) = frame.delay {
-                    updater.send(DecoderUpdate::Animated);
+            updater.send(DecoderUpdate::Format(ImageFormat::new(
+                image.mime_type(),
+                image.format_name(),
+            )));
 
-                    let position = (0, 0);
+            let frame = image.next_frame().await?;
 
-                    let tile = tiling::Tile {
-                        position,
-                        zoom_level: tiling::zoom_to_level(1.),
-                        bleed: 0,
-                        texture: frame.texture,
-                    };
+            if let Some(delay) = frame.delay {
+                updater.send(DecoderUpdate::Animated);
 
-                    tiles.push_frame(tile, dimensions, delay);
-                    updater.send(DecoderUpdate::Redraw);
+                let position = (0, 0);
 
-                    loop {
-                        if next_frame_recv.recv().await.is_ok() {
-                            loop {
-                                let frame = image.next_frame().await?;
+                let tile = tiling::Tile {
+                    position,
+                    zoom_level: tiling::zoom_to_level(1.),
+                    bleed: 0,
+                    texture: frame.texture,
+                };
 
-                                let position = (0, 0);
+                tiles.push_frame(tile, dimensions, delay);
+                updater.send(DecoderUpdate::Redraw);
 
-                                let tile = tiling::Tile {
-                                    position,
-                                    zoom_level: tiling::zoom_to_level(1.),
-                                    bleed: 0,
-                                    texture: frame.texture,
-                                };
+                loop {
+                    if next_frame_recv.recv().await.is_ok() {
+                        loop {
+                            let frame = image.next_frame().await?;
 
-                                tiles.push_frame(tile, dimensions, delay);
+                            let position = (0, 0);
 
-                                if tiles.n_frames() >= FRAME_BUFFER {
-                                    break;
-                                }
+                            let tile = tiling::Tile {
+                                position,
+                                zoom_level: tiling::zoom_to_level(1.),
+                                bleed: 0,
+                                texture: frame.texture,
+                            };
+
+                            tiles.push_frame(tile, dimensions, delay);
+
+                            if tiles.n_frames() >= FRAME_BUFFER {
+                                break;
                             }
-                        } else {
-                            log::debug!("Animation handler gone");
-                            return Ok(());
                         }
+                    } else {
+                        log::debug!("Animation handler gone");
+                        return Ok(());
                     }
-                } else {
-                    let tile = tiling::Tile {
-                        position: (0, 0),
-                        zoom_level: tiling::zoom_to_level(1.),
-                        bleed: 0,
-                        texture: frame.texture,
-                    };
-
-                    tiles.push(tile);
                 }
+            } else {
+                let tile = tiling::Tile {
+                    position: (0, 0),
+                    zoom_level: tiling::zoom_to_level(1.),
+                    bleed: 0,
+                    texture: frame.texture,
+                };
 
-                Ok(())
+                tiles.push(tile);
             }
-            .await;
 
-            if let Err(err) = result {
-                if err.unsupported_format().is_some() {
-                    update_sender.send(DecoderUpdate::UnsupportedFormat);
-                }
-                update_sender.send(DecoderUpdate::Error(err.into()));
-            }
+            Ok(())
         });
 
         Self {
