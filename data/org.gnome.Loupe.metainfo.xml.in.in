@@ -59,9 +59,19 @@
   </categories>
 
   <releases>
-    <release version="45~alpha" type="development" date="2023-05-12">
+    <release version="45~beta" type="development" date="2023-08-05">
       <description>
         <ul>
+          <li>Newly designed print dialog</li>
+          <li>Added sandboxing for SVG rendering by using glycin</li>
+          <li>Use RaisedBorder for HeaderBar to avoid shadow over images</li>
+          <li>Fix browsing images on SMB shares not working</li>
+          <li>Fix touchscreen gestures not working when zoomed in</li>
+          <li>Fix touchscreen swipe only working on second attempt</li>
+          <li>Added JpegXL support via new glycin version</li>
+          <li>Added overshoot for swipe gesture</li>
+          <li>New custom style for drop targets</li>
+          <li>Changed name to Image Viewer</li>
           <li>Add help</li>
           <li>Disable trashing for non-native files</li>
           <li>Give toast for latest deleted file priority over the others</li>

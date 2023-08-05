@@ -1,3 +1,16 @@
+45.beta
+=======
+- Newly designed print dialog
+- Added sandboxing for SVG rendering by using glycin
+- Use RaisedBorder for HeaderBar to avoid shadow over images
+- Fix browsing images on SMB shares not working
+- Fix touchscreen gestures not working when zoomed in
+- Fix touchscreen swipe only working on second attempt
+- Added JpegXL support via new glycin version
+- Added overshoot for swipe gesture
+- New custom style for drop targets
+- Changed name to Image Viewer
+
 45.alpha
 =======
 - Add help
