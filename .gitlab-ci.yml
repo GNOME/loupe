@@ -142,4 +142,9 @@ nightly:
   stage: deploy
   dependencies:
     - flatpak
+
+nightly@aarch64:
+  extends: ".publish_nightly"
+  stage: deploy
+  dependencies:
     - flatpak@aarch64
