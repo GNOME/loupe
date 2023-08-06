@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2023-08-04 19:16+0000\n"
-"PO-Revision-Date: 2023-08-05 14:28+0200\n"
+"POT-Creation-Date: 2023-08-06 02:44+0000\n"
+"PO-Revision-Date: 2023-08-06 14:32+0200\n"
 "Last-Translator: Daniel Rusek <mail@asciiwolf.com>\n"
 "Language-Team: Czech <gnome-cs-list@gnome.org>\n"
 "Language: cs\n"
@@ -70,49 +70,69 @@ msgstr "Oddálit"
 msgid "Toggle Fullscreen"
 msgstr "Přepnout zobrazení na celou obrazovku"
 
-#: data/gtk/print.ui:4
-msgid "Image Layout"
-msgstr "Rozložení obrázku"
+#: data/gtk/print.ui:29
+msgid "Back"
+msgstr "Zpět"
 
-#: data/gtk/print.ui:66
-msgid "Portrait page orientation"
-msgstr "Orientace stránky na výšku"
-
-#: data/gtk/print.ui:74
-msgid "Landscape page orientation"
-msgstr "Orientace stránky na šířku"
-
-#: data/gtk/print.ui:88
-msgid "Center image horizontally"
-msgstr "Zarovnat obrázek horizontálně na střed"
-
-#: data/gtk/print.ui:95
-msgid "Center image vertically"
-msgstr "Zarovnat obrázek vertikálně na střed"
-
-#: data/gtk/print.ui:107
-msgid "Image Width"
-msgstr "Šířka obrázku"
-
-#: data/gtk/print.ui:119
-msgid "Image Scale"
-msgstr "Zvětšení obrázku"
-
-#: data/gtk/print.ui:131
-msgid "Left Margin"
-msgstr "Levé odsazení"
-
-#: data/gtk/print.ui:143
-msgid "Top Margin"
-msgstr "Horní odsazení"
-
-#: data/gtk/print.ui:155
-msgid "Length Unit"
-msgstr "Jednotka délky"
-
-#: data/gtk/print.ui:175
+#: data/gtk/print.ui:36
 msgid "Print"
 msgstr "Vytisknout"
+
+#: data/gtk/print.ui:54
+msgid "Layout"
+msgstr "Rozložení"
+
+#: data/gtk/print.ui:57
+msgid "Orientation"
+msgstr "Orientace"
+
+#: data/gtk/print.ui:69
+msgid "Portrait Page Orientation"
+msgstr "Orientace stránky na výšku"
+
+#: data/gtk/print.ui:77
+msgid "Landscape Page Orientation"
+msgstr "Orientace stránky na šířku"
+
+#: data/gtk/print.ui:86
+msgid "Alignment"
+msgstr "Zarovnání"
+
+#: data/gtk/print.ui:104
+msgid "Margins"
+msgstr "Okraje"
+
+#: data/gtk/print.ui:107
+msgid "Margin Units"
+msgstr "Jednotky okrajů"
+
+#: data/gtk/print.ui:124
+msgid "Horizontal"
+msgstr "Horizontální"
+
+#: data/gtk/print.ui:129
+msgid "Vertical"
+msgstr "Vertikální"
+
+#: data/gtk/print.ui:136 data/gtk/properties_view.ui:58
+msgid "Image Size"
+msgstr "Velikost obrázku"
+
+#: data/gtk/print.ui:139
+msgid "Image Size Units"
+msgstr "Jednotky velikosti obrázku"
+
+#: data/gtk/print.ui:157
+msgid "Fill Space"
+msgstr "Vyplnit prostor"
+
+#: data/gtk/print.ui:162
+msgid "Width"
+msgstr "Šířka"
+
+#: data/gtk/print.ui:167
+msgid "Height"
+msgstr "Výška"
 
 #: data/gtk/properties_view.ui:29
 msgid "Folder"
@@ -121,10 +141,6 @@ msgstr "Složka"
 #: data/gtk/properties_view.ui:41
 msgid "Open Containing Folder"
 msgstr "Otevřít složku umístění"
-
-#: data/gtk/properties_view.ui:58
-msgid "Image Size"
-msgstr "Velikost obrázku"
 
 #: data/gtk/properties_view.ui:74
 msgid "Image Format"
@@ -502,6 +518,47 @@ msgstr "Nastaveno jako pozadí."
 msgid "Could not set background."
 msgstr "Nepodařilo se nastavit pozadí."
 
+#: src/widgets/print.rs:108
+msgid "Top"
+msgstr "Horní"
+
+#: src/widgets/print.rs:109
+msgid "Center"
+msgstr "Střed"
+
+#: src/widgets/print.rs:110
+msgid "Bottom"
+msgstr "Spodní"
+
+#: src/widgets/print.rs:111
+msgid "Left"
+msgstr "Levé"
+
+#: src/widgets/print.rs:112
+msgid "Right"
+msgstr "Pravé"
+
+#. Translators: Shorthand for centimeter
+#: src/widgets/print.rs:148
+msgid "cm"
+msgstr "cm"
+
+#. Translators: Shorthand for inch
+#: src/widgets/print.rs:150
+msgid "in"
+msgstr "in"
+
+#. Translators: Shorthand for pixel
+#: src/widgets/print.rs:152
+msgid "px"
+msgstr "px"
+
+#. Translators: {} is a placeholder for the filename
+#: src/widgets/print.rs:355
+#| msgid "_Print…"
+msgid "Print “{}”"
+msgstr "Tisk „{}“"
+
 #: src/window.rs:479
 msgid "Supported image formats"
 msgstr "Podporované formáty obrázků"
@@ -549,3 +606,18 @@ msgstr "Smazat"
 #: src/window.rs:644
 msgid "Failed to delete image"
 msgstr "Nepodařilo se smazat obrázek"
+
+#~ msgid "Center image horizontally"
+#~ msgstr "Zarovnat obrázek horizontálně na střed"
+
+#~ msgid "Center image vertically"
+#~ msgstr "Zarovnat obrázek vertikálně na střed"
+
+#~ msgid "Image Scale"
+#~ msgstr "Zvětšení obrázku"
+
+#~ msgid "Left Margin"
+#~ msgstr "Levé odsazení"
+
+#~ msgid "Length Unit"
+#~ msgstr "Jednotka délky"
