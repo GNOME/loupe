@@ -5,9 +5,9 @@
 #
 msgid ""
 msgstr "Project-Id-Version: Loupe main\n"
-"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/Incubator/loupe/-/issues\n"
-"POT-Creation-Date: 2023-07-14 14:07+0000\n"
-"PO-Revision-Date: 2023-07-30 18:54+0000\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
+"POT-Creation-Date: 2023-08-06 02:44+0000\n"
+"PO-Revision-Date: 2023-08-06 18:54+0000\n"
 "Last-Translator: Asier Sarasua Garmendia <asiersarasua@ni.eus>\n"
 "Language-Team: Basque <librezale@librezale.eus>\n"
 "Language: eu\n"
@@ -67,49 +67,69 @@ msgstr "Handiagotu"
 msgid "Toggle Fullscreen"
 msgstr "Txandakatu pantaila osoa"
 
-#: data/gtk/print.ui:4
-msgid "Image Layout"
-msgstr "Irudiaren diseinua"
+#: data/gtk/print.ui:29
+msgid "Back"
+msgstr "Atzera"
 
-#: data/gtk/print.ui:66
-msgid "Portrait page orientation"
-msgstr "Oriaren orientazio bertikala"
-
-#: data/gtk/print.ui:74
-msgid "Landscape page orientation"
-msgstr "Orriaren orientazio horizontala"
-
-#: data/gtk/print.ui:88
-msgid "Center image horizontally"
-msgstr "Zentratu irudia horizontalean"
-
-#: data/gtk/print.ui:95
-msgid "Center image vertically"
-msgstr "Zentratu irudia bertikalean"
-
-#: data/gtk/print.ui:107
-msgid "Image Width"
-msgstr "Irudiaren zabalera"
-
-#: data/gtk/print.ui:119
-msgid "Image Scale"
-msgstr "Irudiaren eskala"
-
-#: data/gtk/print.ui:131
-msgid "Left Margin"
-msgstr "Ezkerreko marjina"
-
-#: data/gtk/print.ui:143
-msgid "Top Margin"
-msgstr "Goiko marjina"
-
-#: data/gtk/print.ui:155
-msgid "Length Unit"
-msgstr "Luzera-unitatea"
-
-#: data/gtk/print.ui:175
+#: data/gtk/print.ui:36
 msgid "Print"
 msgstr "Inprimatu"
+
+#: data/gtk/print.ui:54
+msgid "Layout"
+msgstr "Diseinua"
+
+#: data/gtk/print.ui:57
+msgid "Orientation"
+msgstr "Orientazioa"
+
+#: data/gtk/print.ui:69
+msgid "Portrait Page Orientation"
+msgstr "Orriaren orientazio bertikala"
+
+#: data/gtk/print.ui:77
+msgid "Landscape Page Orientation"
+msgstr "Orriaren orientazio horizontala"
+
+#: data/gtk/print.ui:86
+msgid "Alignment"
+msgstr "Lerrokatzea"
+
+#: data/gtk/print.ui:104
+msgid "Margins"
+msgstr "Marjinak"
+
+#: data/gtk/print.ui:107
+msgid "Margin Units"
+msgstr "Marjina-unitateak"
+
+#: data/gtk/print.ui:124
+msgid "Horizontal"
+msgstr "Horizontala"
+
+#: data/gtk/print.ui:129
+msgid "Vertical"
+msgstr "Bertikala"
+
+#: data/gtk/print.ui:136 data/gtk/properties_view.ui:58
+msgid "Image Size"
+msgstr "Irudi-tamaina"
+
+#: data/gtk/print.ui:139
+msgid "Image Size Units"
+msgstr "Irudi-tamainaren unitateak"
+
+#: data/gtk/print.ui:157
+msgid "Fill Space"
+msgstr "Betegarri-espazioa"
+
+#: data/gtk/print.ui:162
+msgid "Width"
+msgstr "Zabalera"
+
+#: data/gtk/print.ui:167
+msgid "Height"
+msgstr "Altuera"
 
 #: data/gtk/properties_view.ui:29
 msgid "Folder"
@@ -118,10 +138,6 @@ msgstr "Karpeta"
 #: data/gtk/properties_view.ui:41
 msgid "Open Containing Folder"
 msgstr "Ireki karpeta edukitzailea"
-
-#: data/gtk/properties_view.ui:58
-msgid "Image Size"
-msgstr "Irudiaren tamaina"
 
 #: data/gtk/properties_view.ui:74
 msgid "Image Format"
@@ -193,8 +209,8 @@ msgstr "Irudi-ikustaileari _buruz"
 
 #. If the file exists, get display name
 #: data/gtk/window.ui:64 data/org.gnome.Loupe.desktop.in.in:3
-#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:27 src/window.rs:865
-#: src/window.rs:871
+#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:28 src/window.rs:878
+#: src/window.rs:884
 msgid "Image Viewer"
 msgstr "Irudi-ikustailea"
 
@@ -214,15 +230,15 @@ msgstr "Menu nagusia"
 msgid "Image Properties"
 msgstr "Irudiaren propietateak"
 
-#: data/gtk/window.ui:176
+#: data/gtk/window.ui:195
 msgid "View Images"
 msgstr "Ikusi irudiak"
 
-#: data/gtk/window.ui:177
+#: data/gtk/window.ui:196
 msgid "Drag and drop images here"
 msgstr "Arrastatu eta jaregin irudiak hemen"
 
-#: data/gtk/window.ui:181
+#: data/gtk/window.ui:200
 msgid "_Open Files…"
 msgstr "Ireki _fitxategiak…"
 
@@ -230,7 +246,7 @@ msgstr "Ireki _fitxategiak…"
 msgid "Picture;Slideshow;Graphics;Loupe;"
 msgstr "Argazkia;aurkezpena;Grafikoak;Loupe;"
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:7 src/about.rs:30
+#: data/org.gnome.Loupe.metainfo.xml.in.in:7 src/about.rs:31
 msgid "The Loupe Team"
 msgstr "Loupe taldea"
 
@@ -432,45 +448,45 @@ msgid "Gestures"
 msgstr "Keinuak"
 
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/about.rs:39
+#: src/about.rs:40
 msgid "translator-credits"
 msgstr "translator-credits"
 
-#: src/about.rs:40
+#: src/about.rs:41
 msgid "Copyright © 2020–2023 Christopher Davis et al."
 msgstr "Copyright © 2020–2023 Christopher Davis et al."
 
-#: src/file_model.rs:120
+#: src/file_model.rs:126
 msgid "Could not list other files in directory."
 msgstr "Ezin dira direktorioko beste fitxategiak zerrendatu."
 
 #. Translators: short for "north" in GPS coordinate
-#: src/image_metadata/gps.rs:152
+#: src/image_metadata/gps.rs:153
 msgid "N"
 msgstr "I"
 
 #. Translators: short for "south" in GPS coordinate
-#: src/image_metadata/gps.rs:155
+#: src/image_metadata/gps.rs:156
 msgid "S"
 msgstr "H"
 
 #. Translators: short for "east" in GPS coordinate
-#: src/image_metadata/gps.rs:165
+#: src/image_metadata/gps.rs:166
 msgid "E"
 msgstr "E"
 
 #. Translators: short for "west" in GPS coordinate
-#: src/image_metadata/gps.rs:168
+#: src/image_metadata/gps.rs:169
 msgid "W"
 msgstr "M"
 
 #. Translators: Unit for exposure time in seconds
-#: src/image_metadata/mod.rs:163
+#: src/image_metadata/mod.rs:164
 msgid "1\\u{2215}{}\\u{202F}s"
 msgstr "1\\u{2215}{}\\u{202F}s"
 
 #. Translators: Unit for focal length in millimeters
-#: src/image_metadata/mod.rs:188
+#: src/image_metadata/mod.rs:189
 msgid "{}\\u{202F}mm"
 msgstr "{}\\u{202F}mm"
 
@@ -482,7 +498,7 @@ msgstr "{}\\u{202F}mm"
 msgid "%x %X"
 msgstr "%x %X"
 
-#: src/util/mod.rs:179 src/window.rs:579
+#: src/util/mod.rs:179 src/window.rs:592
 msgid "Failed to restore image from trash"
 msgstr "Ezin izan da irudia zakarrontzitik leheneratu"
 
@@ -491,61 +507,116 @@ msgid "Failed to open image"
 msgstr "Huts egin du irudia irekitzeak"
 
 #. Translators: This is a toast notification, informing the user that an image has been set as background.
-#: src/widgets/image_view.rs:658
+#: src/widgets/image_view.rs:666
 msgid "Set as background."
 msgstr "Ezarri atzeko plano gisa"
 
-#: src/widgets/image_view.rs:671
+#: src/widgets/image_view.rs:679
 msgid "Could not set background."
 msgstr "Ezin da atzeko planoa ezarri."
 
-#: src/window.rs:466
+#: src/widgets/print.rs:108
+msgid "Top"
+msgstr "Goian"
+
+#: src/widgets/print.rs:109
+msgid "Center"
+msgstr "Erdian"
+
+#: src/widgets/print.rs:110
+msgid "Bottom"
+msgstr "Behean"
+
+#: src/widgets/print.rs:111
+msgid "Left"
+msgstr "Ezkerrean"
+
+#: src/widgets/print.rs:112
+msgid "Right"
+msgstr "Eskuinean"
+
+#. Translators: Shorthand for centimeter
+#: src/widgets/print.rs:148
+msgid "cm"
+msgstr "cm"
+
+#. Translators: Shorthand for inch
+#: src/widgets/print.rs:150
+msgid "in"
+msgstr "hazbete"
+
+#. Translators: Shorthand for pixel
+#: src/widgets/print.rs:152
+msgid "px"
+msgstr "px"
+
+#. Translators: {} is a placeholder for the filename
+#: src/widgets/print.rs:355
+msgid "Print “{}”"
+msgstr "Inprimatu “{}”"
+
+#: src/window.rs:479
 msgid "Supported image formats"
 msgstr "Onartutako irudi-formatuak"
 
-#: src/window.rs:475
+#: src/window.rs:488
 msgid "All files"
 msgstr "Fitxategi guztiak"
 
-#: src/window.rs:482
+#: src/window.rs:495
 msgid "Open Image"
 msgstr "Ireki irudia"
 
-#: src/window.rs:545
+#: src/window.rs:558
 msgid "Image copied to clipboard"
 msgstr "Irudia arbelean kopiatu da"
 
-#: src/window.rs:566
+#: src/window.rs:579
 msgid "Image moved to trash"
 msgstr "Irudia zakarrontzira eraman da"
 
-#: src/window.rs:567
+#: src/window.rs:580
 msgid "Undo"
 msgstr "Desegin"
 
-#: src/window.rs:594
+#: src/window.rs:607
 msgid "Failed to move image to trash"
 msgstr "Huts egin du irudia zakarrontzira botatzeak"
 
-#: src/window.rs:609
+#: src/window.rs:622
 msgid "Permanently Delete Image?"
 msgstr "Irudia betiko ezabatu?"
 
-#: src/window.rs:611
+#: src/window.rs:624
 msgid "The image “{}” can only be deleted permanently."
 msgstr "“{}” irudia betiko ezabatuko da."
 
-#: src/window.rs:619
+#: src/window.rs:632
 msgid "Cancel"
 msgstr "Utzi"
 
-#: src/window.rs:620
+#: src/window.rs:633
 msgid "Delete"
 msgstr "Ezabatu"
 
-#: src/window.rs:631
+#: src/window.rs:644
 msgid "Failed to delete image"
 msgstr "Huts egin du irudia ezabatzeak"
+
+#~ msgid "Center image horizontally"
+#~ msgstr "Zentratu irudia horizontalean"
+
+#~ msgid "Center image vertically"
+#~ msgstr "Zentratu irudia bertikalean"
+
+#~ msgid "Image Scale"
+#~ msgstr "Irudiaren eskala"
+
+#~ msgid "Left Margin"
+#~ msgstr "Ezkerreko marjina"
+
+#~ msgid "Length Unit"
+#~ msgstr "Luzera-unitatea"
 
 #~ msgid "_About Loupe"
 #~ msgstr "Loupe aplikazioari _buruz"
