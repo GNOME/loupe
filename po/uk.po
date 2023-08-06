@@ -6,10 +6,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
-"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/Incubator/loupe/-/issues"
-"\n"
-"POT-Creation-Date: 2023-07-14 14:07+0000\n"
-"PO-Revision-Date: 2023-07-17 23:47+0300\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
+"POT-Creation-Date: 2023-08-06 02:44+0000\n"
+"PO-Revision-Date: 2023-08-06 15:37+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -72,49 +71,76 @@ msgstr "Збільшити"
 msgid "Toggle Fullscreen"
 msgstr "Увімкнути/вимкнути повноекранний режим"
 
-#: data/gtk/print.ui:4
-msgid "Image Layout"
-msgstr "Компонування зображення"
+#: data/gtk/print.ui:29
+msgid "Back"
+msgstr "Назад"
 
-#: data/gtk/print.ui:66
-msgid "Portrait page orientation"
-msgstr "Книжкова орієнтація сторінки"
-
-#: data/gtk/print.ui:74
-msgid "Landscape page orientation"
-msgstr "Альбомна орієнтація сторінки"
-
-#: data/gtk/print.ui:88
-msgid "Center image horizontally"
-msgstr "Зображення за центром горизонтально"
-
-#: data/gtk/print.ui:95
-msgid "Center image vertically"
-msgstr "Зображення за центром вертикально"
-
-#: data/gtk/print.ui:107
-msgid "Image Width"
-msgstr "Ширина зображення"
-
-#: data/gtk/print.ui:119
-msgid "Image Scale"
-msgstr "Масштаб зображення"
-
-#: data/gtk/print.ui:131
-msgid "Left Margin"
-msgstr "Лівий відступ"
-
-#: data/gtk/print.ui:143
-msgid "Top Margin"
-msgstr "Верхнє поле"
-
-#: data/gtk/print.ui:155
-msgid "Length Unit"
-msgstr "Одиниця довжини"
-
-#: data/gtk/print.ui:175
+#: data/gtk/print.ui:36
 msgid "Print"
 msgstr "Надрукувати"
+
+#: data/gtk/print.ui:54
+#| msgid "Image Layout"
+msgid "Layout"
+msgstr "Компонування"
+
+#: data/gtk/print.ui:57
+#| msgid "Open Location"
+msgid "Orientation"
+msgstr "Орієнтація"
+
+#: data/gtk/print.ui:69
+#| msgid "Portrait page orientation"
+msgid "Portrait Page Orientation"
+msgstr "Книжкова орієнтація сторінки"
+
+#: data/gtk/print.ui:77
+#| msgid "Landscape page orientation"
+msgid "Landscape Page Orientation"
+msgstr "Альбомна орієнтація сторінки"
+
+#: data/gtk/print.ui:86
+msgid "Alignment"
+msgstr "Вирівнювання"
+
+#: data/gtk/print.ui:104
+#| msgid "Top Margin"
+msgid "Margins"
+msgstr "Поля"
+
+#: data/gtk/print.ui:107
+msgid "Margin Units"
+msgstr "Одиниці виміру полів"
+
+#: data/gtk/print.ui:124
+msgid "Horizontal"
+msgstr "Горизонтально"
+
+#: data/gtk/print.ui:129
+msgid "Vertical"
+msgstr "Вертикально"
+
+#: data/gtk/print.ui:136 data/gtk/properties_view.ui:58
+msgid "Image Size"
+msgstr "Розмір зображення"
+
+#: data/gtk/print.ui:139
+#| msgid "Image Size"
+msgid "Image Size Units"
+msgstr "Одиниці виміру розміру зображення"
+
+#: data/gtk/print.ui:157
+msgid "Fill Space"
+msgstr "Заповнити місце"
+
+#: data/gtk/print.ui:162
+#| msgid "Image Width"
+msgid "Width"
+msgstr "Ширина"
+
+#: data/gtk/print.ui:167
+msgid "Height"
+msgstr "Висота"
 
 #: data/gtk/properties_view.ui:29
 msgid "Folder"
@@ -123,10 +149,6 @@ msgstr "Тека"
 #: data/gtk/properties_view.ui:41
 msgid "Open Containing Folder"
 msgstr "Відкрити теку з даними"
-
-#: data/gtk/properties_view.ui:58
-msgid "Image Size"
-msgstr "Розмір зображення"
 
 #: data/gtk/properties_view.ui:74
 msgid "Image Format"
@@ -198,9 +220,8 @@ msgstr "_Про «Перегляд зображень»"
 
 #. If the file exists, get display name
 #: data/gtk/window.ui:64 data/org.gnome.Loupe.desktop.in.in:3
-#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:27 src/window.rs:865
-#: src/window.rs:871
-#| msgid "Image Size"
+#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:28 src/window.rs:878
+#: src/window.rs:884
 msgid "Image Viewer"
 msgstr "Перегляд зображень"
 
@@ -220,26 +241,25 @@ msgstr "Головне меню"
 msgid "Image Properties"
 msgstr "Властивості зображення"
 
-#: data/gtk/window.ui:176
+#: data/gtk/window.ui:195
 msgid "View Images"
 msgstr "Перегляд зображень"
 
-#: data/gtk/window.ui:177
+#: data/gtk/window.ui:196
 msgid "Drag and drop images here"
 msgstr "Перетягніть і скиньте зображення тут"
 
-#: data/gtk/window.ui:181
+#: data/gtk/window.ui:200
 msgid "_Open Files…"
 msgstr "_Відкрити файли…"
 
 #: data/org.gnome.Loupe.desktop.in.in:11
-#| msgid "Picture;Slideshow;Graphics;Image Viewer;"
 msgid "Picture;Slideshow;Graphics;Loupe;"
 msgstr ""
-"Picture;Slideshow;Graphics;Loupe;зображення;картинка;показ;слайдів;"
-"графіка;перегляд;зображення;лупе;"
+"Picture;Slideshow;Graphics;Loupe;зображення;картинка;показ;слайдів;графіка;"
+"перегляд;зображення;лупе;"
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:7 src/about.rs:30
+#: data/org.gnome.Loupe.metainfo.xml.in.in:7 src/about.rs:31
 msgid "The Loupe Team"
 msgstr "Команда «Лупе»"
 
@@ -444,45 +464,45 @@ msgid "Gestures"
 msgstr "Жести"
 
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/about.rs:39
+#: src/about.rs:40
 msgid "translator-credits"
 msgstr "Юрій Чорноіван <yurchor@ukr.net>, 2023"
 
-#: src/about.rs:40
+#: src/about.rs:41
 msgid "Copyright © 2020–2023 Christopher Davis et al."
 msgstr "© Christopher Davis та інші, 2020–2023."
 
-#: src/file_model.rs:120
+#: src/file_model.rs:126
 msgid "Could not list other files in directory."
 msgstr "Не вдалося отримати список інших файлів у каталозі."
 
 #. Translators: short for "north" in GPS coordinate
-#: src/image_metadata/gps.rs:152
+#: src/image_metadata/gps.rs:153
 msgid "N"
 msgstr "Пн"
 
 #. Translators: short for "south" in GPS coordinate
-#: src/image_metadata/gps.rs:155
+#: src/image_metadata/gps.rs:156
 msgid "S"
 msgstr "Пд"
 
 #. Translators: short for "east" in GPS coordinate
-#: src/image_metadata/gps.rs:165
+#: src/image_metadata/gps.rs:166
 msgid "E"
 msgstr "С"
 
 #. Translators: short for "west" in GPS coordinate
-#: src/image_metadata/gps.rs:168
+#: src/image_metadata/gps.rs:169
 msgid "W"
 msgstr "З"
 
 #. Translators: Unit for exposure time in seconds
-#: src/image_metadata/mod.rs:163
+#: src/image_metadata/mod.rs:164
 msgid "1\\u{2215}{}\\u{202F}s"
 msgstr "1\\u{2215}{}\\u{202F}с"
 
 #. Translators: Unit for focal length in millimeters
-#: src/image_metadata/mod.rs:188
+#: src/image_metadata/mod.rs:189
 msgid "{}\\u{202F}mm"
 msgstr "{}\\u{202F}мм"
 
@@ -494,7 +514,7 @@ msgstr "{}\\u{202F}мм"
 msgid "%x %X"
 msgstr "%x %X"
 
-#: src/util/mod.rs:179 src/window.rs:579
+#: src/util/mod.rs:179 src/window.rs:592
 msgid "Failed to restore image from trash"
 msgstr "Не вдалося відновити зображення зі смітника"
 
@@ -503,61 +523,121 @@ msgid "Failed to open image"
 msgstr "Не вдалося відкрити зображення"
 
 #. Translators: This is a toast notification, informing the user that an image has been set as background.
-#: src/widgets/image_view.rs:658
+#: src/widgets/image_view.rs:666
 msgid "Set as background."
 msgstr "Встановити як фонове зображення."
 
-#: src/widgets/image_view.rs:671
+#: src/widgets/image_view.rs:679
 msgid "Could not set background."
 msgstr "Не вдалося встановити фонове зображення."
 
-#: src/window.rs:466
+#: src/widgets/print.rs:108
+msgid "Top"
+msgstr "Вгорі"
+
+#: src/widgets/print.rs:109
+msgid "Center"
+msgstr "За центром"
+
+#: src/widgets/print.rs:110
+msgid "Bottom"
+msgstr "Внизу"
+
+#: src/widgets/print.rs:111
+#| msgctxt "shortcut window"
+#| msgid "Pan Left"
+msgid "Left"
+msgstr "Ліворуч"
+
+#: src/widgets/print.rs:112
+#| msgctxt "shortcut window"
+#| msgid "Pan Right"
+msgid "Right"
+msgstr "Праворуч"
+
+#. Translators: Shorthand for centimeter
+#: src/widgets/print.rs:148
+msgid "cm"
+msgstr "см"
+
+#. Translators: Shorthand for inch
+#: src/widgets/print.rs:150
+msgid "in"
+msgstr "дюйм"
+
+#. Translators: Shorthand for pixel
+#: src/widgets/print.rs:152
+msgid "px"
+msgstr "пк"
+
+#. Translators: {} is a placeholder for the filename
+#: src/widgets/print.rs:355
+#| msgid "_Print…"
+msgid "Print “{}”"
+msgstr "Надрукувати «{}»"
+
+#: src/window.rs:479
 msgid "Supported image formats"
 msgstr "Підтримувані формати зображень"
 
-#: src/window.rs:475
+#: src/window.rs:488
 msgid "All files"
 msgstr "усі файли"
 
-#: src/window.rs:482
+#: src/window.rs:495
 msgid "Open Image"
 msgstr "Відкрити зображення"
 
-#: src/window.rs:545
+#: src/window.rs:558
 msgid "Image copied to clipboard"
 msgstr "Зображення скопійовано до буфера обміну"
 
-#: src/window.rs:566
+#: src/window.rs:579
 msgid "Image moved to trash"
 msgstr "Зображення пересунуто до смітника"
 
-#: src/window.rs:567
+#: src/window.rs:580
 msgid "Undo"
 msgstr "Скасувати"
 
-#: src/window.rs:594
+#: src/window.rs:607
 msgid "Failed to move image to trash"
 msgstr "Не вдалося пересунути зображення до смітника"
 
-#: src/window.rs:609
+#: src/window.rs:622
 msgid "Permanently Delete Image?"
 msgstr "Остаточно вилучити зображення?"
 
-#: src/window.rs:611
+#: src/window.rs:624
 msgid "The image “{}” can only be deleted permanently."
 msgstr "Зображення «{}» можна вилучити лише остаточно."
 
-#: src/window.rs:619
+#: src/window.rs:632
 msgid "Cancel"
 msgstr "Скасувати"
 
-#: src/window.rs:620
+#: src/window.rs:633
 msgid "Delete"
 msgstr "Вилучити"
 
-#: src/window.rs:631
+#: src/window.rs:644
 msgid "Failed to delete image"
 msgstr "Не вдалося вилучити зображення"
+
+#~ msgid "Center image horizontally"
+#~ msgstr "Зображення за центром горизонтально"
+
+#~ msgid "Center image vertically"
+#~ msgstr "Зображення за центром вертикально"
+
+#~ msgid "Image Scale"
+#~ msgstr "Масштаб зображення"
+
+#~ msgid "Left Margin"
+#~ msgstr "Лівий відступ"
+
+#~ msgid "Length Unit"
+#~ msgstr "Одиниця довжини"
 
 #~ msgid "_About Loupe"
 #~ msgstr "_Про «Лупе»"
