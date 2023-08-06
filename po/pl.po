@@ -7,10 +7,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: loupe\n"
-"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/Incubator/loupe/-/"
-"issues\n"
-"POT-Creation-Date: 2023-07-14 14:07+0000\n"
-"PO-Revision-Date: 2023-07-16 13:37+0200\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
+"POT-Creation-Date: 2023-08-06 02:44+0000\n"
+"PO-Revision-Date: 2023-08-06 17:44+0200\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <community-poland@mozilla.org>\n"
 "Language: pl\n"
@@ -72,49 +71,69 @@ msgstr "Powiększa"
 msgid "Toggle Fullscreen"
 msgstr "Przełącza pełny ekran"
 
-#: data/gtk/print.ui:4
-msgid "Image Layout"
-msgstr "Ułożenie obrazu"
+#: data/gtk/print.ui:29
+msgid "Back"
+msgstr "Wstecz"
 
-#: data/gtk/print.ui:66
-msgid "Portrait page orientation"
-msgstr "Pionowa orientacja strony"
-
-#: data/gtk/print.ui:74
-msgid "Landscape page orientation"
-msgstr "Pozioma orientacja strony"
-
-#: data/gtk/print.ui:88
-msgid "Center image horizontally"
-msgstr "Wyśrodkowanie obrazu w poziomie"
-
-#: data/gtk/print.ui:95
-msgid "Center image vertically"
-msgstr "Wyśrodkowanie obrazu w pionie"
-
-#: data/gtk/print.ui:107
-msgid "Image Width"
-msgstr "Szerokość obrazu"
-
-#: data/gtk/print.ui:119
-msgid "Image Scale"
-msgstr "Powiększenie obrazu"
-
-#: data/gtk/print.ui:131
-msgid "Left Margin"
-msgstr "Lewy margines"
-
-#: data/gtk/print.ui:143
-msgid "Top Margin"
-msgstr "Górny margines"
-
-#: data/gtk/print.ui:155
-msgid "Length Unit"
-msgstr "Jednostka długości"
-
-#: data/gtk/print.ui:175
+#: data/gtk/print.ui:36
 msgid "Print"
 msgstr "Wydrukuj"
+
+#: data/gtk/print.ui:54
+msgid "Layout"
+msgstr "Ułożenie"
+
+#: data/gtk/print.ui:57
+msgid "Orientation"
+msgstr "Orientacja"
+
+#: data/gtk/print.ui:69
+msgid "Portrait Page Orientation"
+msgstr "Pionowa orientacja strony"
+
+#: data/gtk/print.ui:77
+msgid "Landscape Page Orientation"
+msgstr "Pozioma orientacja strony"
+
+#: data/gtk/print.ui:86
+msgid "Alignment"
+msgstr "Wyrównanie"
+
+#: data/gtk/print.ui:104
+msgid "Margins"
+msgstr "Marginesy"
+
+#: data/gtk/print.ui:107
+msgid "Margin Units"
+msgstr "Jednostki marginesów"
+
+#: data/gtk/print.ui:124
+msgid "Horizontal"
+msgstr "Poziomy"
+
+#: data/gtk/print.ui:129
+msgid "Vertical"
+msgstr "Pionowy"
+
+#: data/gtk/print.ui:136 data/gtk/properties_view.ui:58
+msgid "Image Size"
+msgstr "Wymiary obrazu"
+
+#: data/gtk/print.ui:139
+msgid "Image Size Units"
+msgstr "Jednostki wymiarów obrazu"
+
+#: data/gtk/print.ui:157
+msgid "Fill Space"
+msgstr "Wypełnienie miejsca"
+
+#: data/gtk/print.ui:162
+msgid "Width"
+msgstr "Szerokość"
+
+#: data/gtk/print.ui:167
+msgid "Height"
+msgstr "Wysokość"
 
 #: data/gtk/properties_view.ui:29
 msgid "Folder"
@@ -123,10 +142,6 @@ msgstr "Katalog"
 #: data/gtk/properties_view.ui:41
 msgid "Open Containing Folder"
 msgstr "Otwiera katalog zawierający"
-
-#: data/gtk/properties_view.ui:58
-msgid "Image Size"
-msgstr "Wymiary obrazu"
 
 #: data/gtk/properties_view.ui:74
 msgid "Image Format"
@@ -198,8 +213,8 @@ msgstr "_O programie"
 
 #. If the file exists, get display name
 #: data/gtk/window.ui:64 data/org.gnome.Loupe.desktop.in.in:3
-#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:27 src/window.rs:865
-#: src/window.rs:871
+#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:28 src/window.rs:878
+#: src/window.rs:884
 msgid "Image Viewer"
 msgstr "Przeglądarka obrazów"
 
@@ -219,15 +234,15 @@ msgstr "Menu główne"
 msgid "Image Properties"
 msgstr "Właściwości obrazu"
 
-#: data/gtk/window.ui:176
+#: data/gtk/window.ui:195
 msgid "View Images"
 msgstr "Wyświetlanie obrazów"
 
-#: data/gtk/window.ui:177
+#: data/gtk/window.ui:196
 msgid "Drag and drop images here"
 msgstr "Tutaj można przeciągać obrazy"
 
-#: data/gtk/window.ui:181
+#: data/gtk/window.ui:200
 msgid "_Open Files…"
 msgstr "_Otwórz pliki…"
 
@@ -237,7 +252,7 @@ msgstr ""
 "Obraz;Obrazy;Obrazek;Obrazki;Pokaz slajdów;Grafika;Grafiki;Przeglądarka "
 "obrazów;Zdjęcie;Zdjęcia;Fotografia;Fotografie;Loupe;"
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:7 src/about.rs:30
+#: data/org.gnome.Loupe.metainfo.xml.in.in:7 src/about.rs:31
 msgid "The Loupe Team"
 msgstr "Zespół Loupe"
 
@@ -440,47 +455,47 @@ msgid "Gestures"
 msgstr "Gesty"
 
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/about.rs:39
+#: src/about.rs:40
 msgid "translator-credits"
 msgstr ""
 "Piotr Drąg <piotrdrag@gmail.com>, 2023\n"
 "Aviary.pl <community-poland@mozilla.org>, 2023"
 
-#: src/about.rs:40
+#: src/about.rs:41
 msgid "Copyright © 2020–2023 Christopher Davis et al."
 msgstr "Copyright © 2020-2023 Christopher Davis i inni"
 
-#: src/file_model.rs:120
+#: src/file_model.rs:126
 msgid "Could not list other files in directory."
 msgstr "Nie można wyświetlić listy pozostałych plików w katalogu."
 
 #. Translators: short for "north" in GPS coordinate
-#: src/image_metadata/gps.rs:152
+#: src/image_metadata/gps.rs:153
 msgid "N"
 msgstr "N"
 
 #. Translators: short for "south" in GPS coordinate
-#: src/image_metadata/gps.rs:155
+#: src/image_metadata/gps.rs:156
 msgid "S"
 msgstr "S"
 
 #. Translators: short for "east" in GPS coordinate
-#: src/image_metadata/gps.rs:165
+#: src/image_metadata/gps.rs:166
 msgid "E"
 msgstr "E"
 
 #. Translators: short for "west" in GPS coordinate
-#: src/image_metadata/gps.rs:168
+#: src/image_metadata/gps.rs:169
 msgid "W"
 msgstr "W"
 
 #. Translators: Unit for exposure time in seconds
-#: src/image_metadata/mod.rs:163
+#: src/image_metadata/mod.rs:164
 msgid "1\\u{2215}{}\\u{202F}s"
 msgstr "1\\u{2215}{}\\u{202F}s"
 
 #. Translators: Unit for focal length in millimeters
-#: src/image_metadata/mod.rs:188
+#: src/image_metadata/mod.rs:189
 msgid "{}\\u{202F}mm"
 msgstr "{}\\u{202F}mm"
 
@@ -492,7 +507,7 @@ msgstr "{}\\u{202F}mm"
 msgid "%x %X"
 msgstr "%x %X"
 
-#: src/util/mod.rs:179 src/window.rs:579
+#: src/util/mod.rs:179 src/window.rs:592
 msgid "Failed to restore image from trash"
 msgstr "Przywrócenie obrazu z kosza się nie powiodło"
 
@@ -501,58 +516,98 @@ msgid "Failed to open image"
 msgstr "Otwarcie obrazu się nie powiodło"
 
 #. Translators: This is a toast notification, informing the user that an image has been set as background.
-#: src/widgets/image_view.rs:658
+#: src/widgets/image_view.rs:666
 msgid "Set as background."
 msgstr "Ustawiono jako tło."
 
-#: src/widgets/image_view.rs:671
+#: src/widgets/image_view.rs:679
 msgid "Could not set background."
 msgstr "Nie można ustawić tła."
 
-#: src/window.rs:466
+#: src/widgets/print.rs:108
+msgid "Top"
+msgstr "Na górze"
+
+#: src/widgets/print.rs:109
+msgid "Center"
+msgstr "Na środku"
+
+#: src/widgets/print.rs:110
+msgid "Bottom"
+msgstr "Na dole"
+
+#: src/widgets/print.rs:111
+msgid "Left"
+msgstr "Po lewej"
+
+#: src/widgets/print.rs:112
+msgid "Right"
+msgstr "Po prawej"
+
+#. Translators: Shorthand for centimeter
+#: src/widgets/print.rs:148
+msgid "cm"
+msgstr "cm"
+
+#. Translators: Shorthand for inch
+#: src/widgets/print.rs:150
+msgid "in"
+msgstr "in"
+
+#. Translators: Shorthand for pixel
+#: src/widgets/print.rs:152
+msgid "px"
+msgstr "px"
+
+#. Translators: {} is a placeholder for the filename
+#: src/widgets/print.rs:355
+msgid "Print “{}”"
+msgstr "Wydrukowanie „{}”"
+
+#: src/window.rs:479
 msgid "Supported image formats"
 msgstr "Obsługiwane formaty obrazów"
 
-#: src/window.rs:475
+#: src/window.rs:488
 msgid "All files"
 msgstr "Wszystkie pliki"
 
-#: src/window.rs:482
+#: src/window.rs:495
 msgid "Open Image"
 msgstr "Otwarcie obrazu"
 
-#: src/window.rs:545
+#: src/window.rs:558
 msgid "Image copied to clipboard"
 msgstr "Skopiowano obraz do schowka"
 
-#: src/window.rs:566
+#: src/window.rs:579
 msgid "Image moved to trash"
 msgstr "Przeniesiono obraz do kosza"
 
-#: src/window.rs:567
+#: src/window.rs:580
 msgid "Undo"
 msgstr "Cofnij"
 
-#: src/window.rs:594
+#: src/window.rs:607
 msgid "Failed to move image to trash"
 msgstr "Przeniesienie obrazu do kosza się nie powiodło"
 
-#: src/window.rs:609
+#: src/window.rs:622
 msgid "Permanently Delete Image?"
 msgstr "Trwale usunąć obraz?"
 
-#: src/window.rs:611
+#: src/window.rs:624
 msgid "The image “{}” can only be deleted permanently."
 msgstr "Obraz „{}” nie może zostać przeniesiony do kosza."
 
-#: src/window.rs:619
+#: src/window.rs:632
 msgid "Cancel"
 msgstr "Anuluj"
 
-#: src/window.rs:620
+#: src/window.rs:633
 msgid "Delete"
 msgstr "Usuń"
 
-#: src/window.rs:631
+#: src/window.rs:644
 msgid "Failed to delete image"
 msgstr "Usunięcie obrazu się nie powiodło"
