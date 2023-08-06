@@ -894,29 +894,6 @@ impl LpPrint {
     }
 }
 
-trait AdwSpinRowExt {
-    fn set_range(&self, min: f64, max: f64);
-}
-
-use glib::translate::*;
-
-impl AdwSpinRowExt for adw::SpinRow {
-    fn set_range(&self, min: f64, max: f64) {
-        unsafe {
-            adw_spin_row_set_range(self.to_glib_none().0, min, max);
-        }
-    }
-}
-
-#[link(name = "adwaita-1")]
-extern "C" {
-    pub fn adw_spin_row_set_range(
-        self_: *mut adw::ffi::AdwSpinRow,
-        min: std::ffi::c_double,
-        max: std::ffi::c_double,
-    );
-}
-
 // TODO: Upstream to gettext if possible
 pub fn getlocale(category: gettextrs::LocaleCategory) -> Option<Vec<u8>> {
     unsafe {
