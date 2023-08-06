@@ -7,10 +7,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
-"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/Incubator/loupe/-/"
-"issues\n"
-"POT-Creation-Date: 2023-07-14 14:07+0000\n"
-"PO-Revision-Date: 2023-07-14 19:34+0200\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
+"POT-Creation-Date: 2023-08-06 02:44+0000\n"
+"PO-Revision-Date: 2023-08-06 12:51+0200\n"
 "Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
 "Language-Team: Slovenian <gnome-si@googlegroups.com>\n"
 "Language: sl\n"
@@ -74,49 +73,69 @@ msgstr "Povečaj"
 msgid "Toggle Fullscreen"
 msgstr "Preklopi celozaslonski način"
 
-#: data/gtk/print.ui:4
-msgid "Image Layout"
-msgstr "Postavitev slike"
+#: data/gtk/print.ui:29
+msgid "Back"
+msgstr "Nazaj"
 
-#: data/gtk/print.ui:66
-msgid "Portrait page orientation"
-msgstr "Pokončna usmerjenost strani"
-
-#: data/gtk/print.ui:74
-msgid "Landscape page orientation"
-msgstr "Ležeča usmerjenost strani"
-
-#: data/gtk/print.ui:88
-msgid "Center image horizontally"
-msgstr "Sredini sliko vodoravno"
-
-#: data/gtk/print.ui:95
-msgid "Center image vertically"
-msgstr "Sredini sliko navpično"
-
-#: data/gtk/print.ui:107
-msgid "Image Width"
-msgstr "Širina slike"
-
-#: data/gtk/print.ui:119
-msgid "Image Scale"
-msgstr "Merilo slike"
-
-#: data/gtk/print.ui:131
-msgid "Left Margin"
-msgstr "Levi rob"
-
-#: data/gtk/print.ui:143
-msgid "Top Margin"
-msgstr "Zgornji rob"
-
-#: data/gtk/print.ui:155
-msgid "Length Unit"
-msgstr "Enota dolžine"
-
-#: data/gtk/print.ui:175
+#: data/gtk/print.ui:36
 msgid "Print"
 msgstr "Natisni"
+
+#: data/gtk/print.ui:54
+msgid "Layout"
+msgstr "Postavitev"
+
+#: data/gtk/print.ui:57
+msgid "Orientation"
+msgstr "Usmerjenost"
+
+#: data/gtk/print.ui:69
+msgid "Portrait Page Orientation"
+msgstr "Pokončna usmerjenost strani"
+
+#: data/gtk/print.ui:77
+msgid "Landscape Page Orientation"
+msgstr "Ležeča usmerjenost strani"
+
+#: data/gtk/print.ui:86
+msgid "Alignment"
+msgstr "Poravnava"
+
+#: data/gtk/print.ui:104
+msgid "Margins"
+msgstr "Robovi"
+
+#: data/gtk/print.ui:107
+msgid "Margin Units"
+msgstr "Merske enote robov"
+
+#: data/gtk/print.ui:124
+msgid "Horizontal"
+msgstr "Vodoravno"
+
+#: data/gtk/print.ui:129
+msgid "Vertical"
+msgstr "Navpično"
+
+#: data/gtk/print.ui:136 data/gtk/properties_view.ui:58
+msgid "Image Size"
+msgstr "Velikost slike"
+
+#: data/gtk/print.ui:139
+msgid "Image Size Units"
+msgstr "Enote velikosti slike"
+
+#: data/gtk/print.ui:157
+msgid "Fill Space"
+msgstr "Zapolni prostor"
+
+#: data/gtk/print.ui:162
+msgid "Width"
+msgstr "Širina"
+
+#: data/gtk/print.ui:167
+msgid "Height"
+msgstr "Višina"
 
 #: data/gtk/properties_view.ui:29
 msgid "Folder"
@@ -125,10 +144,6 @@ msgstr "Mapa"
 #: data/gtk/properties_view.ui:41
 msgid "Open Containing Folder"
 msgstr "Odpri vsebujočo mapo"
-
-#: data/gtk/properties_view.ui:58
-msgid "Image Size"
-msgstr "Velikost slike"
 
 #: data/gtk/properties_view.ui:74
 msgid "Image Format"
@@ -200,8 +215,8 @@ msgstr "_O Pregledovalniku slik"
 
 #. If the file exists, get display name
 #: data/gtk/window.ui:64 data/org.gnome.Loupe.desktop.in.in:3
-#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:27 src/window.rs:865
-#: src/window.rs:871
+#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:28 src/window.rs:878
+#: src/window.rs:884
 msgid "Image Viewer"
 msgstr "Pregledovalnik slik"
 
@@ -221,15 +236,15 @@ msgstr "Glavni meni"
 msgid "Image Properties"
 msgstr "Lastnosti slike"
 
-#: data/gtk/window.ui:176
+#: data/gtk/window.ui:195
 msgid "View Images"
 msgstr "Pokaži slike"
 
-#: data/gtk/window.ui:177
+#: data/gtk/window.ui:196
 msgid "Drag and drop images here"
 msgstr "Povlecite in spustite slike sem"
 
-#: data/gtk/window.ui:181
+#: data/gtk/window.ui:200
 msgid "_Open Files…"
 msgstr "_Odpri datoteke …"
 
@@ -238,7 +253,7 @@ msgid "Picture;Slideshow;Graphics;Loupe;"
 msgstr ""
 "Slika; diaprojekcija;projekcija;grafika;pregledovalnik slik;lupa;loupe;"
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:7 src/about.rs:30
+#: data/org.gnome.Loupe.metainfo.xml.in.in:7 src/about.rs:31
 msgid "The Loupe Team"
 msgstr "Ekipa Lupe"
 
@@ -440,45 +455,45 @@ msgid "Gestures"
 msgstr "Kretnje"
 
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/about.rs:39
+#: src/about.rs:40
 msgid "translator-credits"
 msgstr "Martin Srebotnjak <miles@filmsi.net>"
 
-#: src/about.rs:40
+#: src/about.rs:41
 msgid "Copyright © 2020–2023 Christopher Davis et al."
 msgstr "Avtorska pravica © 2020–2023 Christopher Davis et al."
 
-#: src/file_model.rs:120
+#: src/file_model.rs:126
 msgid "Could not list other files in directory."
 msgstr "Drugih datotek v mapi ni bilo mogoče navesti."
 
 #. Translators: short for "north" in GPS coordinate
-#: src/image_metadata/gps.rs:152
+#: src/image_metadata/gps.rs:153
 msgid "N"
 msgstr "S"
 
 #. Translators: short for "south" in GPS coordinate
-#: src/image_metadata/gps.rs:155
+#: src/image_metadata/gps.rs:156
 msgid "S"
 msgstr "J"
 
 #. Translators: short for "east" in GPS coordinate
-#: src/image_metadata/gps.rs:165
+#: src/image_metadata/gps.rs:166
 msgid "E"
 msgstr "V"
 
 #. Translators: short for "west" in GPS coordinate
-#: src/image_metadata/gps.rs:168
+#: src/image_metadata/gps.rs:169
 msgid "W"
 msgstr "Z"
 
 #. Translators: Unit for exposure time in seconds
-#: src/image_metadata/mod.rs:163
+#: src/image_metadata/mod.rs:164
 msgid "1\\u{2215}{}\\u{202F}s"
 msgstr "1\\u{2215}{}\\u{202F}s"
 
 #. Translators: Unit for focal length in millimeters
-#: src/image_metadata/mod.rs:188
+#: src/image_metadata/mod.rs:189
 msgid "{}\\u{202F}mm"
 msgstr "{}\\u{202F} mm"
 
@@ -490,7 +505,7 @@ msgstr "{}\\u{202F} mm"
 msgid "%x %X"
 msgstr "%x %X"
 
-#: src/util/mod.rs:179 src/window.rs:579
+#: src/util/mod.rs:179 src/window.rs:592
 msgid "Failed to restore image from trash"
 msgstr "Obnovitev slike iz smeti ni uspela"
 
@@ -499,58 +514,98 @@ msgid "Failed to open image"
 msgstr "Odpiranje slike ni uspelo"
 
 #. Translators: This is a toast notification, informing the user that an image has been set as background.
-#: src/widgets/image_view.rs:658
+#: src/widgets/image_view.rs:666
 msgid "Set as background."
 msgstr "Določi kot sliko ozadja."
 
-#: src/widgets/image_view.rs:671
+#: src/widgets/image_view.rs:679
 msgid "Could not set background."
 msgstr "Ozadja ni bilo mogoče nastaviti."
 
-#: src/window.rs:466
+#: src/widgets/print.rs:108
+msgid "Top"
+msgstr "Zgoraj"
+
+#: src/widgets/print.rs:109
+msgid "Center"
+msgstr "Na sredini"
+
+#: src/widgets/print.rs:110
+msgid "Bottom"
+msgstr "Spodaj"
+
+#: src/widgets/print.rs:111
+msgid "Left"
+msgstr "Levo"
+
+#: src/widgets/print.rs:112
+msgid "Right"
+msgstr "Desno"
+
+#. Translators: Shorthand for centimeter
+#: src/widgets/print.rs:148
+msgid "cm"
+msgstr "cm"
+
+#. Translators: Shorthand for inch
+#: src/widgets/print.rs:150
+msgid "in"
+msgstr "pal."
+
+#. Translators: Shorthand for pixel
+#: src/widgets/print.rs:152
+msgid "px"
+msgstr "sl. točk"
+
+#. Translators: {} is a placeholder for the filename
+#: src/widgets/print.rs:355
+msgid "Print “{}”"
+msgstr "Natisni »{}«"
+
+#: src/window.rs:479
 msgid "Supported image formats"
 msgstr "Podprte vrste slik"
 
-#: src/window.rs:475
+#: src/window.rs:488
 msgid "All files"
 msgstr "Vse datoteke"
 
-#: src/window.rs:482
+#: src/window.rs:495
 msgid "Open Image"
 msgstr "Odpri sliko"
 
-#: src/window.rs:545
+#: src/window.rs:558
 msgid "Image copied to clipboard"
 msgstr "Slika, kopirana na odložišče"
 
-#: src/window.rs:566
+#: src/window.rs:579
 msgid "Image moved to trash"
 msgstr "Slika, premaknjena v smeti"
 
-#: src/window.rs:567
+#: src/window.rs:580
 msgid "Undo"
 msgstr "Razveljavi"
 
-#: src/window.rs:594
+#: src/window.rs:607
 msgid "Failed to move image to trash"
 msgstr "Premikanje slike v smeti ni uspelo"
 
-#: src/window.rs:609
+#: src/window.rs:622
 msgid "Permanently Delete Image?"
 msgstr "Ali želite trajno izbrisati sliko?"
 
-#: src/window.rs:611
+#: src/window.rs:624
 msgid "The image “{}” can only be deleted permanently."
 msgstr "Sliko »{}« je mogoče le trajno izbrisati."
 
-#: src/window.rs:619
+#: src/window.rs:632
 msgid "Cancel"
 msgstr "Prekliči"
 
-#: src/window.rs:620
+#: src/window.rs:633
 msgid "Delete"
 msgstr "Izbriši"
 
-#: src/window.rs:631
+#: src/window.rs:644
 msgid "Failed to delete image"
 msgstr "Brisanje slike ni uspelo"
