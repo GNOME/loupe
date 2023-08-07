@@ -7,10 +7,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
-"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/Incubator/loupe/-/"
-"issues\n"
-"POT-Creation-Date: 2023-07-14 14:07+0000\n"
-"PO-Revision-Date: 2023-07-29 14:14+0800\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
+"POT-Creation-Date: 2023-08-06 02:44+0000\n"
+"PO-Revision-Date: 2023-08-07 16:22+0800\n"
 "Last-Translator: lumingzh <lumingzh@qq.com>\n"
 "Language-Team: Chinese - China <i18n-zh@googlegroups.com>\n"
 "Language: zh_CN\n"
@@ -72,49 +71,69 @@ msgstr "放大"
 msgid "Toggle Fullscreen"
 msgstr "切换全屏"
 
-#: data/gtk/print.ui:4
-msgid "Image Layout"
-msgstr "图像布局"
+#: data/gtk/print.ui:29
+msgid "Back"
+msgstr "返回"
 
-#: data/gtk/print.ui:66
-msgid "Portrait page orientation"
-msgstr "纵向页面方向"
-
-#: data/gtk/print.ui:74
-msgid "Landscape page orientation"
-msgstr "横向页面方向"
-
-#: data/gtk/print.ui:88
-msgid "Center image horizontally"
-msgstr "图像横向居中"
-
-#: data/gtk/print.ui:95
-msgid "Center image vertically"
-msgstr "图像纵向居中"
-
-#: data/gtk/print.ui:107
-msgid "Image Width"
-msgstr "图像尺寸"
-
-#: data/gtk/print.ui:119
-msgid "Image Scale"
-msgstr "图像缩放"
-
-#: data/gtk/print.ui:131
-msgid "Left Margin"
-msgstr "左侧边距"
-
-#: data/gtk/print.ui:143
-msgid "Top Margin"
-msgstr "顶部边距"
-
-#: data/gtk/print.ui:155
-msgid "Length Unit"
-msgstr "长度单位"
-
-#: data/gtk/print.ui:175
+#: data/gtk/print.ui:36
 msgid "Print"
 msgstr "打印"
+
+#: data/gtk/print.ui:54
+msgid "Layout"
+msgstr "布局"
+
+#: data/gtk/print.ui:57
+msgid "Orientation"
+msgstr "方向"
+
+#: data/gtk/print.ui:69
+msgid "Portrait Page Orientation"
+msgstr "纵向页面方向"
+
+#: data/gtk/print.ui:77
+msgid "Landscape Page Orientation"
+msgstr "横向页面方向"
+
+#: data/gtk/print.ui:86
+msgid "Alignment"
+msgstr "对齐"
+
+#: data/gtk/print.ui:104
+msgid "Margins"
+msgstr "边界"
+
+#: data/gtk/print.ui:107
+msgid "Margin Units"
+msgstr "边界单位"
+
+#: data/gtk/print.ui:124
+msgid "Horizontal"
+msgstr "水平"
+
+#: data/gtk/print.ui:129
+msgid "Vertical"
+msgstr "竖直"
+
+#: data/gtk/print.ui:136 data/gtk/properties_view.ui:58
+msgid "Image Size"
+msgstr "图像尺寸"
+
+#: data/gtk/print.ui:139
+msgid "Image Size Units"
+msgstr "图像尺寸单位"
+
+#: data/gtk/print.ui:157
+msgid "Fill Space"
+msgstr "填充空间"
+
+#: data/gtk/print.ui:162
+msgid "Width"
+msgstr "宽度"
+
+#: data/gtk/print.ui:167
+msgid "Height"
+msgstr "高度"
 
 #: data/gtk/properties_view.ui:29
 msgid "Folder"
@@ -123,10 +142,6 @@ msgstr "文件夹"
 #: data/gtk/properties_view.ui:41
 msgid "Open Containing Folder"
 msgstr "打开所属文件夹"
-
-#: data/gtk/properties_view.ui:58
-msgid "Image Size"
-msgstr "图像尺寸"
 
 #: data/gtk/properties_view.ui:74
 msgid "Image Format"
@@ -198,8 +213,8 @@ msgstr "关于图像查看器(_A)"
 
 #. If the file exists, get display name
 #: data/gtk/window.ui:64 data/org.gnome.Loupe.desktop.in.in:3
-#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:27 src/window.rs:865
-#: src/window.rs:871
+#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:28 src/window.rs:878
+#: src/window.rs:884
 msgid "Image Viewer"
 msgstr "图像查看器"
 
@@ -219,15 +234,15 @@ msgstr "主菜单"
 msgid "Image Properties"
 msgstr "图像属性"
 
-#: data/gtk/window.ui:176
+#: data/gtk/window.ui:195
 msgid "View Images"
 msgstr "查看图像"
 
-#: data/gtk/window.ui:177
+#: data/gtk/window.ui:196
 msgid "Drag and drop images here"
 msgstr "拖放图片到这里"
 
-#: data/gtk/window.ui:181
+#: data/gtk/window.ui:200
 msgid "_Open Files…"
 msgstr "打开文件(_O)…"
 
@@ -235,7 +250,7 @@ msgstr "打开文件(_O)…"
 msgid "Picture;Slideshow;Graphics;Loupe;"
 msgstr "Picture;Slideshow;Graphics;Loupe;图片;幻灯片;图像;照片;图形;"
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:7 src/about.rs:30
+#: data/org.gnome.Loupe.metainfo.xml.in.in:7 src/about.rs:31
 msgid "The Loupe Team"
 msgstr "Loupe 团队"
 
@@ -437,47 +452,47 @@ msgid "Gestures"
 msgstr "手势"
 
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/about.rs:39
+#: src/about.rs:40
 msgid "translator-credits"
 msgstr ""
 "Nanling <neithern@outlook.com>\n"
 "lumingzh <lumingzh@qq.com>"
 
-#: src/about.rs:40
+#: src/about.rs:41
 msgid "Copyright © 2020–2023 Christopher Davis et al."
 msgstr "Copyright © 2020-2023 Christopher Davis 等人。"
 
-#: src/file_model.rs:120
+#: src/file_model.rs:126
 msgid "Could not list other files in directory."
 msgstr "无法列出目录中的其他文件。"
 
 #. Translators: short for "north" in GPS coordinate
-#: src/image_metadata/gps.rs:152
+#: src/image_metadata/gps.rs:153
 msgid "N"
 msgstr "北"
 
 #. Translators: short for "south" in GPS coordinate
-#: src/image_metadata/gps.rs:155
+#: src/image_metadata/gps.rs:156
 msgid "S"
 msgstr "南"
 
 #. Translators: short for "east" in GPS coordinate
-#: src/image_metadata/gps.rs:165
+#: src/image_metadata/gps.rs:166
 msgid "E"
 msgstr "东"
 
 #. Translators: short for "west" in GPS coordinate
-#: src/image_metadata/gps.rs:168
+#: src/image_metadata/gps.rs:169
 msgid "W"
 msgstr "西"
 
 #. Translators: Unit for exposure time in seconds
-#: src/image_metadata/mod.rs:163
+#: src/image_metadata/mod.rs:164
 msgid "1\\u{2215}{}\\u{202F}s"
 msgstr "1\\u{2215}{}\\u{202F}秒"
 
 #. Translators: Unit for focal length in millimeters
-#: src/image_metadata/mod.rs:188
+#: src/image_metadata/mod.rs:189
 msgid "{}\\u{202F}mm"
 msgstr "{}\\u{202F}毫米"
 
@@ -489,7 +504,7 @@ msgstr "{}\\u{202F}毫米"
 msgid "%x %X"
 msgstr "%x %X"
 
-#: src/util/mod.rs:179 src/window.rs:579
+#: src/util/mod.rs:179 src/window.rs:592
 msgid "Failed to restore image from trash"
 msgstr "从垃圾箱中恢复图像失败"
 
@@ -498,61 +513,116 @@ msgid "Failed to open image"
 msgstr "打开图像失败"
 
 #. Translators: This is a toast notification, informing the user that an image has been set as background.
-#: src/widgets/image_view.rs:658
+#: src/widgets/image_view.rs:666
 msgid "Set as background."
 msgstr "已设为背景。"
 
-#: src/widgets/image_view.rs:671
+#: src/widgets/image_view.rs:679
 msgid "Could not set background."
 msgstr "无法设为背景。"
 
-#: src/window.rs:466
+#: src/widgets/print.rs:108
+msgid "Top"
+msgstr "顶部"
+
+#: src/widgets/print.rs:109
+msgid "Center"
+msgstr "中心"
+
+#: src/widgets/print.rs:110
+msgid "Bottom"
+msgstr "底部"
+
+#: src/widgets/print.rs:111
+msgid "Left"
+msgstr "左侧"
+
+#: src/widgets/print.rs:112
+msgid "Right"
+msgstr "右侧"
+
+#. Translators: Shorthand for centimeter
+#: src/widgets/print.rs:148
+msgid "cm"
+msgstr "cm"
+
+#. Translators: Shorthand for inch
+#: src/widgets/print.rs:150
+msgid "in"
+msgstr "in"
+
+#. Translators: Shorthand for pixel
+#: src/widgets/print.rs:152
+msgid "px"
+msgstr "px"
+
+#. Translators: {} is a placeholder for the filename
+#: src/widgets/print.rs:355
+msgid "Print “{}”"
+msgstr "打印“{}”"
+
+#: src/window.rs:479
 msgid "Supported image formats"
 msgstr "支持的图像格式"
 
-#: src/window.rs:475
+#: src/window.rs:488
 msgid "All files"
 msgstr "所有文件"
 
-#: src/window.rs:482
+#: src/window.rs:495
 msgid "Open Image"
 msgstr "打开图像"
 
-#: src/window.rs:545
+#: src/window.rs:558
 msgid "Image copied to clipboard"
 msgstr "图像已复制到剪贴板上"
 
-#: src/window.rs:566
+#: src/window.rs:579
 msgid "Image moved to trash"
 msgstr "图片已移至回收站"
 
-#: src/window.rs:567
+#: src/window.rs:580
 msgid "Undo"
 msgstr "撤销"
 
-#: src/window.rs:594
+#: src/window.rs:607
 msgid "Failed to move image to trash"
 msgstr "将图像移至回收站失败"
 
-#: src/window.rs:609
+#: src/window.rs:622
 msgid "Permanently Delete Image?"
 msgstr "永久删除图像？"
 
-#: src/window.rs:611
+#: src/window.rs:624
 msgid "The image “{}” can only be deleted permanently."
 msgstr "“{}” 只能被永久删除。"
 
-#: src/window.rs:619
+#: src/window.rs:632
 msgid "Cancel"
 msgstr "取消"
 
-#: src/window.rs:620
+#: src/window.rs:633
 msgid "Delete"
 msgstr "删除"
 
-#: src/window.rs:631
+#: src/window.rs:644
 msgid "Failed to delete image"
 msgstr "删除图像失败"
+
+#~ msgid "Center image horizontally"
+#~ msgstr "图像横向居中"
+
+#~ msgid "Center image vertically"
+#~ msgstr "图像纵向居中"
+
+#~ msgid "Image Scale"
+#~ msgstr "图像缩放"
+
+#~ msgid "Left Margin"
+#~ msgstr "左侧边距"
+
+#~ msgid "Length Unit"
+#~ msgstr "长度单位"
 
 #~ msgid "_About Loupe"
 #~ msgstr "关于(_A)"
