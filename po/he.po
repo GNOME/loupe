@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2023-07-15 18:15+0000\n"
-"PO-Revision-Date: 2023-07-30 09:51+0300\n"
+"POT-Creation-Date: 2023-08-06 02:44+0000\n"
+"PO-Revision-Date: 2023-08-08 16:30+0300\n"
 "Last-Translator: Yosef Or Boczko <yoseforb@gmail.com>\n"
 "Language-Team: Hebrew <yoseforb@gmail.com>\n"
 "Language: he\n"
@@ -16,8 +16,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n==2 ? 1 : n>10 && n%10==0 ? "
-"2 : 3);\n"
-"X-Generator: Poedit 3.3.2\n"
+"2 : 3)\n"
+"X-Generator: Gtranslator 42.0\n"
 
 #: data/gtk/image_page.ui:6 data/gtk/window.ui:16
 msgid "_Open With…"
@@ -71,49 +71,69 @@ msgstr "התקרבות"
 msgid "Toggle Fullscreen"
 msgstr "שינוי מצב מסך מלא"
 
-#: data/gtk/print.ui:4
-msgid "Image Layout"
-msgstr "פריסת תמונה"
+#: data/gtk/print.ui:29
+msgid "Back"
+msgstr "אחורה"
 
-#: data/gtk/print.ui:66
-msgid "Portrait page orientation"
-msgstr "כיוון תמונה לאורך"
-
-#: data/gtk/print.ui:74
-msgid "Landscape page orientation"
-msgstr "כיוון תמונה לרוחב"
-
-#: data/gtk/print.ui:88
-msgid "Center image horizontally"
-msgstr "מרכוז אופקי של התמונה"
-
-#: data/gtk/print.ui:95
-msgid "Center image vertically"
-msgstr "מרכוז אנכי של התמונה"
-
-#: data/gtk/print.ui:107
-msgid "Image Width"
-msgstr "רוחב תמונה"
-
-#: data/gtk/print.ui:119
-msgid "Image Scale"
-msgstr "קנה מידה של התמונה"
-
-#: data/gtk/print.ui:131
-msgid "Left Margin"
-msgstr "שול שמאלי"
-
-#: data/gtk/print.ui:143
-msgid "Top Margin"
-msgstr "שול עליון"
-
-#: data/gtk/print.ui:155
-msgid "Length Unit"
-msgstr "יחידת אורך"
-
-#: data/gtk/print.ui:175
+#: data/gtk/print.ui:36
 msgid "Print"
 msgstr "הדפסה"
+
+#: data/gtk/print.ui:54
+msgid "Layout"
+msgstr "פריסה"
+
+#: data/gtk/print.ui:57
+msgid "Orientation"
+msgstr "כיוון"
+
+#: data/gtk/print.ui:69
+msgid "Portrait Page Orientation"
+msgstr "כיוון עמוד לאורך"
+
+#: data/gtk/print.ui:77
+msgid "Landscape Page Orientation"
+msgstr "כיוון עמוד לרוחב"
+
+#: data/gtk/print.ui:86
+msgid "Alignment"
+msgstr "יישור"
+
+#: data/gtk/print.ui:104
+msgid "Margins"
+msgstr "שוליים"
+
+#: data/gtk/print.ui:107
+msgid "Margin Units"
+msgstr "יחידות שול"
+
+#: data/gtk/print.ui:124
+msgid "Horizontal"
+msgstr "אופקי"
+
+#: data/gtk/print.ui:129
+msgid "Vertical"
+msgstr "אנכי"
+
+#: data/gtk/print.ui:136 data/gtk/properties_view.ui:58
+msgid "Image Size"
+msgstr "גודל תמונה"
+
+#: data/gtk/print.ui:139
+msgid "Image Size Units"
+msgstr "יחידות גודל תמונה"
+
+#: data/gtk/print.ui:157
+msgid "Fill Space"
+msgstr "מרווח מילוי"
+
+#: data/gtk/print.ui:162
+msgid "Width"
+msgstr "רוחב"
+
+#: data/gtk/print.ui:167
+msgid "Height"
+msgstr "גובה"
 
 #: data/gtk/properties_view.ui:29
 msgid "Folder"
@@ -122,10 +142,6 @@ msgstr "תיקייה"
 #: data/gtk/properties_view.ui:41
 msgid "Open Containing Folder"
 msgstr "פתיחת תיקייה מכילה"
-
-#: data/gtk/properties_view.ui:58
-msgid "Image Size"
-msgstr "גודל תמונה"
 
 #: data/gtk/properties_view.ui:74
 msgid "Image Format"
@@ -197,8 +213,8 @@ msgstr "על מציג ה_תמונות"
 
 #. If the file exists, get display name
 #: data/gtk/window.ui:64 data/org.gnome.Loupe.desktop.in.in:3
-#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:27 src/window.rs:865
-#: src/window.rs:871
+#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:28 src/window.rs:878
+#: src/window.rs:884
 msgid "Image Viewer"
 msgstr "מציג תמונות"
 
@@ -220,15 +236,15 @@ msgstr "תפריט ראשי"
 msgid "Image Properties"
 msgstr "מאפייני תמונה"
 
-#: data/gtk/window.ui:176
+#: data/gtk/window.ui:195
 msgid "View Images"
 msgstr "מציג תמונות"
 
-#: data/gtk/window.ui:177
+#: data/gtk/window.ui:196
 msgid "Drag and drop images here"
 msgstr "יש לגרור ולשחרר לכאן תמונות"
 
-#: data/gtk/window.ui:181
+#: data/gtk/window.ui:200
 msgid "_Open Files…"
 msgstr "_פתיחת קבצים…"
 
@@ -236,7 +252,7 @@ msgstr "_פתיחת קבצים…"
 msgid "Picture;Slideshow;Graphics;Loupe;"
 msgstr "תמונה;תמונות;מצגת;הצגה;גרפיקה;מציג תמונות;לופ;"
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:7 src/about.rs:30
+#: data/org.gnome.Loupe.metainfo.xml.in.in:7 src/about.rs:31
 msgid "The Loupe Team"
 msgstr "צוות לופ"
 
@@ -438,47 +454,47 @@ msgid "Gestures"
 msgstr "מחוות"
 
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/about.rs:39
+#: src/about.rs:40
 msgid "translator-credits"
 msgstr ""
 "יוסף אור בוצ׳קו <yoseforb@gmail.com>\n"
 "מיזם תרגום GNOME לעברית https://l10n.gnome.org/teams/he/"
 
-#: src/about.rs:40
+#: src/about.rs:41
 msgid "Copyright © 2020–2023 Christopher Davis et al."
 msgstr "כל הזכויות שמורות © 2022-2023 Christopher Davis ואחרים."
 
-#: src/file_model.rs:120
+#: src/file_model.rs:126
 msgid "Could not list other files in directory."
 msgstr "לא ניתן להציג קבצים נוספים בתיקייה."
 
 #. Translators: short for "north" in GPS coordinate
-#: src/image_metadata/gps.rs:152
+#: src/image_metadata/gps.rs:153
 msgid "N"
 msgstr "צ"
 
 #. Translators: short for "south" in GPS coordinate
-#: src/image_metadata/gps.rs:155
+#: src/image_metadata/gps.rs:156
 msgid "S"
 msgstr "ד"
 
 #. Translators: short for "east" in GPS coordinate
-#: src/image_metadata/gps.rs:165
+#: src/image_metadata/gps.rs:166
 msgid "E"
 msgstr "מז"
 
 #. Translators: short for "west" in GPS coordinate
-#: src/image_metadata/gps.rs:168
+#: src/image_metadata/gps.rs:169
 msgid "W"
 msgstr "מע"
 
 #. Translators: Unit for exposure time in seconds
-#: src/image_metadata/mod.rs:163
+#: src/image_metadata/mod.rs:164
 msgid "1\\u{2215}{}\\u{202F}s"
 msgstr "‏‎1\\u{2215}{}\\u{202F} ש"
 
 #. Translators: Unit for focal length in millimeters
-#: src/image_metadata/mod.rs:188
+#: src/image_metadata/mod.rs:189
 msgid "{}\\u{202F}mm"
 msgstr "‏‎{}\\u{202F} מ״מ"
 
@@ -490,7 +506,7 @@ msgstr "‏‎{}\\u{202F} מ״מ"
 msgid "%x %X"
 msgstr "%x %X"
 
-#: src/util/mod.rs:179 src/window.rs:579
+#: src/util/mod.rs:179 src/window.rs:592
 msgid "Failed to restore image from trash"
 msgstr "שחזור התמונה מהאשפה נכשלה"
 
@@ -499,61 +515,118 @@ msgid "Failed to open image"
 msgstr "פתיחת התמונה נכשלה"
 
 #. Translators: This is a toast notification, informing the user that an image has been set as background.
-#: src/widgets/image_view.rs:658
+#: src/widgets/image_view.rs:666
 msgid "Set as background."
 msgstr "הגדרת התמונה כרקע."
 
-#: src/widgets/image_view.rs:671
+#: src/widgets/image_view.rs:679
 msgid "Could not set background."
 msgstr "לא ניתן לקבוע כרקע."
 
-#: src/window.rs:466
+#: src/widgets/print.rs:108
+msgid "Top"
+msgstr "למעלה"
+
+#: src/widgets/print.rs:109
+msgid "Center"
+msgstr "מרכז"
+
+#: src/widgets/print.rs:110
+msgid "Bottom"
+msgstr "למטה"
+
+#: src/widgets/print.rs:111
+# msgctxt "shortcut window"
+msgid "Left"
+msgstr "שמאל"
+
+#: src/widgets/print.rs:112
+# msgctxt "shortcut window"
+msgid "Right"
+msgstr "ימין"
+
+#. Translators: Shorthand for centimeter
+#: src/widgets/print.rs:148
+msgid "cm"
+msgstr "ס״מ"
+
+#. Translators: Shorthand for inch
+#: src/widgets/print.rs:150
+msgid "in"
+msgstr "אינ׳"
+
+#. Translators: Shorthand for pixel
+#: src/widgets/print.rs:152
+msgid "px"
+msgstr "פיקסלים"
+
+#. Translators: {} is a placeholder for the filename
+#: src/widgets/print.rs:355
+msgid "Print “{}”"
+msgstr "הדפסת „{}”"
+
+#: src/window.rs:479
 msgid "Supported image formats"
 msgstr "תבניות תמונה נתמכות"
 
-#: src/window.rs:475
+#: src/window.rs:488
 msgid "All files"
 msgstr "כל הקבצים"
 
-#: src/window.rs:482
+#: src/window.rs:495
 msgid "Open Image"
 msgstr "פתיחת תמונה"
 
-#: src/window.rs:545
+#: src/window.rs:558
 msgid "Image copied to clipboard"
 msgstr "תמונה הועתקה ללוח הגזירים"
 
-#: src/window.rs:566
+#: src/window.rs:579
 msgid "Image moved to trash"
 msgstr "תמונה הוערה לאשפה"
 
-#: src/window.rs:567
+#: src/window.rs:580
 msgid "Undo"
 msgstr "ביטול"
 
-#: src/window.rs:594
+#: src/window.rs:607
 msgid "Failed to move image to trash"
 msgstr "העברת התמונה לאשפה נכשלה"
 
-#: src/window.rs:609
+#: src/window.rs:622
 msgid "Permanently Delete Image?"
 msgstr "למחוק את התמונה לצמיתות?"
 
-#: src/window.rs:611
+#: src/window.rs:624
 msgid "The image “{}” can only be deleted permanently."
 msgstr "ניתן למחוק את התמונה „{}” רק לצמיתות."
 
-#: src/window.rs:619
+#: src/window.rs:632
 msgid "Cancel"
 msgstr "ביטול"
 
-#: src/window.rs:620
+#: src/window.rs:633
 msgid "Delete"
 msgstr "מחיקה"
 
-#: src/window.rs:631
+#: src/window.rs:644
 msgid "Failed to delete image"
 msgstr "מחיקת התמונה נכשלה"
+
+#~ msgid "Center image horizontally"
+#~ msgstr "מרכוז אופקי של התמונה"
+
+#~ msgid "Center image vertically"
+#~ msgstr "מרכוז אנכי של התמונה"
+
+#~ msgid "Image Scale"
+#~ msgstr "קנה מידה של התמונה"
+
+#~ msgid "Left Margin"
+#~ msgstr "שול שמאלי"
+
+#~ msgid "Length Unit"
+#~ msgstr "יחידת אורך"
 
 #~ msgid "_About Loupe"
 #~ msgstr "_על אודות לופ"
