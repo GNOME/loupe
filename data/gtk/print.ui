@@ -26,7 +26,7 @@
             </property>
             <child type="start">
               <object class="GtkButton">
-                <property name="label" translatable="yes">Back</property>
+                <property name="label" translatable="yes" comments="Translators: Go back to previous page">Back</property>
                 <property name="action-name">print.back</property>
                 <property name="can-shrink">true</property>
               </object>
