@@ -965,9 +965,19 @@ impl LpImage {
     ) {
         match event {
             gio::FileMonitorEvent::Renamed => {
-                if let Some(file) = file_b {
+                if let Some(file) = file_b.cloned() {
                     log::debug!("Moved to {}", file.uri());
-                    self.set_file(file);
+                    // current file got replaced with a new one
+                    let file_replace = self.file().map_or(false, |x| x.equal(&file));
+                    self.set_file(&file);
+                    if file_replace {
+                        log::debug!("Image got replaced");
+                        let obj = self.clone();
+                        // TODO: error handling is missing
+                        spawn(async move {
+                            obj.load(&file).await;
+                        });
+                    }
                 }
             }
             gio::FileMonitorEvent::ChangesDoneHint => {
