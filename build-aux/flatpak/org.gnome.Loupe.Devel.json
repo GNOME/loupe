@@ -156,7 +156,7 @@
                 {
                     "type" : "git",
                     "url" : "https://gitlab.gnome.org/sophie-h/glycin.git",
-                    "tag" : "0.1.beta"
+                    "tag" : "0.1.beta.2"
                 }
             ]
         },
