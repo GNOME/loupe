@@ -1,3 +1,9 @@
+45.beta.1
+=======
+
+- Reload images when the file is replaced by moving another file at it's place
+- Update dependencies
+
 45.beta
 =======
 - Newly designed print dialog

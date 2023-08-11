@@ -59,9 +59,10 @@
   </categories>
 
   <releases>
-    <release version="45~beta" type="development" date="2023-08-05">
+    <release version="45~beta1" type="development" date="2023-08-11">
       <description>
         <ul>
+          <li>Reload images when the file is replaced by moving another file at it's place</li>
           <li>Newly designed print dialog</li>
           <li>Added sandboxing for SVG rendering by using glycin</li>
           <li>Use RaisedBorder for HeaderBar to avoid shadow over images</li>
