@@ -7,16 +7,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2023-07-20 10:16+0000\n"
-"PO-Revision-Date: 2023-07-23 17:00+0300\n"
+"POT-Creation-Date: 2023-08-12 17:08+0000\n"
+"PO-Revision-Date: 2023-08-12 23:23+0300\n"
 "Last-Translator: Yuras Shumovich <shumovichy@gmail.com>\n"
 "Language-Team: Belarusian <i18n-bel-gnome@googlegroups.com>\n"
 "Language: be\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 3.3.1\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Poedit 3.3.2\n"
 
 #: data/gtk/image_page.ui:6 data/gtk/window.ui:16
 msgid "_Open With…"
@@ -70,49 +71,70 @@ msgstr "Павялічыць"
 msgid "Toggle Fullscreen"
 msgstr "Пераключыць поўнаэкранны рэжым"
 
-#: data/gtk/print.ui:4
-msgid "Image Layout"
-msgstr "Размяшчэнне выявы"
+#. Translators: Go back to previous page
+#: data/gtk/print.ui:29
+msgid "Back"
+msgstr "Назад"
 
-#: data/gtk/print.ui:66
-msgid "Portrait page orientation"
-msgstr "Партрэтная арыентацыя старонкі"
-
-#: data/gtk/print.ui:74
-msgid "Landscape page orientation"
-msgstr "Альбомная арыентацыя старонкі"
-
-#: data/gtk/print.ui:88
-msgid "Center image horizontally"
-msgstr "Цэнтраваць выяву па гарызанталі"
-
-#: data/gtk/print.ui:95
-msgid "Center image vertically"
-msgstr "Цэнтраваць выяву па вертыкалі"
-
-#: data/gtk/print.ui:107
-msgid "Image Width"
-msgstr "Шырыня выявы"
-
-#: data/gtk/print.ui:119
-msgid "Image Scale"
-msgstr "Маштабаванне выявы"
-
-#: data/gtk/print.ui:131
-msgid "Left Margin"
-msgstr "Левы водступ"
-
-#: data/gtk/print.ui:143
-msgid "Top Margin"
-msgstr "Верхні водступ"
-
-#: data/gtk/print.ui:155
-msgid "Length Unit"
-msgstr "Адзінкі даўжыні"
-
-#: data/gtk/print.ui:175
+#: data/gtk/print.ui:36
 msgid "Print"
 msgstr "Друк"
+
+#: data/gtk/print.ui:54
+msgid "Layout"
+msgstr "Размяшчэнне"
+
+#: data/gtk/print.ui:57
+msgid "Orientation"
+msgstr "Арыентацыя"
+
+#: data/gtk/print.ui:69
+msgid "Portrait Page Orientation"
+msgstr "Партрэтная арыентацыя старонкі"
+
+#: data/gtk/print.ui:77
+msgid "Landscape Page Orientation"
+msgstr "Альбомная арыентацыя старонкі"
+
+#: data/gtk/print.ui:86
+msgid "Alignment"
+msgstr "Выраўноўванне"
+
+#: data/gtk/print.ui:104
+msgid "Margins"
+msgstr "Водступы"
+
+#: data/gtk/print.ui:107
+msgid "Margin Units"
+msgstr "Адзінкі вымярэння для водступаў"
+
+#: data/gtk/print.ui:124
+msgid "Horizontal"
+msgstr "Гарызантальны"
+
+#: data/gtk/print.ui:129
+msgid "Vertical"
+msgstr "Вертыкальны"
+
+#: data/gtk/print.ui:136 data/gtk/properties_view.ui:58
+msgid "Image Size"
+msgstr "Памер выявы"
+
+#: data/gtk/print.ui:139
+msgid "Image Size Units"
+msgstr "Адзінкі памеру выявы"
+
+#: data/gtk/print.ui:157
+msgid "Fill Space"
+msgstr "Запаўненне прасторы"
+
+#: data/gtk/print.ui:162
+msgid "Width"
+msgstr "Шырыня"
+
+#: data/gtk/print.ui:167
+msgid "Height"
+msgstr "Вышыня"
 
 #: data/gtk/properties_view.ui:29
 msgid "Folder"
@@ -121,10 +143,6 @@ msgstr "Папка"
 #: data/gtk/properties_view.ui:41
 msgid "Open Containing Folder"
 msgstr "Адкрыць папку, якая змяшчае файл"
-
-#: data/gtk/properties_view.ui:58
-msgid "Image Size"
-msgstr "Памер выявы"
 
 #: data/gtk/properties_view.ui:74
 msgid "Image Format"
@@ -444,7 +462,7 @@ msgstr "Юрась Шумовіч <shumovichy@gmail.com>"
 msgid "Copyright © 2020–2023 Christopher Davis et al."
 msgstr "Аўтарскае права © 2020–2023 Christopher Davis і інш."
 
-#: src/file_model.rs:120
+#: src/file_model.rs:126
 msgid "Could not list other files in directory."
 msgstr "Не ўдалося скласці спіс іншых файлаў у каталогу."
 
@@ -495,13 +513,53 @@ msgid "Failed to open image"
 msgstr "Не ўдалося адкрыць выяву"
 
 #. Translators: This is a toast notification, informing the user that an image has been set as background.
-#: src/widgets/image_view.rs:663
+#: src/widgets/image_view.rs:666
 msgid "Set as background."
 msgstr "Задаць як фон."
 
-#: src/widgets/image_view.rs:676
+#: src/widgets/image_view.rs:679
 msgid "Could not set background."
 msgstr "Не ўдалося задаць фон."
+
+#: src/widgets/print.rs:108
+msgid "Top"
+msgstr "Зверху"
+
+#: src/widgets/print.rs:109
+msgid "Center"
+msgstr "Па цэнтры"
+
+#: src/widgets/print.rs:110
+msgid "Bottom"
+msgstr "Знізу"
+
+#: src/widgets/print.rs:111
+msgid "Left"
+msgstr "Злева"
+
+#: src/widgets/print.rs:112
+msgid "Right"
+msgstr "Справа"
+
+#. Translators: Shorthand for centimeter
+#: src/widgets/print.rs:148
+msgid "cm"
+msgstr "см"
+
+#. Translators: Shorthand for inch
+#: src/widgets/print.rs:150
+msgid "in"
+msgstr "цалі"
+
+#. Translators: Shorthand for pixel
+#: src/widgets/print.rs:152
+msgid "px"
+msgstr "пікселі"
+
+#. Translators: {} is a placeholder for the filename
+#: src/widgets/print.rs:355
+msgid "Print “{}”"
+msgstr "Друк «{}»"
 
 #: src/window.rs:479
 msgid "Supported image formats"
@@ -550,3 +608,18 @@ msgstr "Выдаліць"
 #: src/window.rs:644
 msgid "Failed to delete image"
 msgstr "Не ўдалося выдаліць выяву"
+
+#~ msgid "Center image horizontally"
+#~ msgstr "Цэнтраваць выяву па гарызанталі"
+
+#~ msgid "Center image vertically"
+#~ msgstr "Цэнтраваць выяву па вертыкалі"
+
+#~ msgid "Image Scale"
+#~ msgstr "Маштабаванне выявы"
+
+#~ msgid "Left Margin"
+#~ msgstr "Левы водступ"
+
+#~ msgid "Length Unit"
+#~ msgstr "Адзінкі даўжыні"
