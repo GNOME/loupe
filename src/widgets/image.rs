@@ -592,8 +592,12 @@ mod imp {
             self.widget_dimensions.set((width, height));
             obj.configure_adjustments();
 
-            // Get potentially missing tiles for enlarged viewing area
-            obj.request_tiles();
+            // Avoid updates for first size_allocate with zoom not set yet
+            if obj.is_loaded() {
+                // Get potentially missing tiles for enlarged viewing area
+
+                obj.request_tiles();
+            }
         }
 
         // called when the widget content should be re-rendered
@@ -1251,6 +1255,10 @@ impl LpImage {
     }
 
     fn set_zoom_target(&self, zoom_target: f64) {
+        if self.imp().zoom_target.get() == zoom_target {
+            return;
+        }
+
         log::debug!("Setting zoom target {zoom_target}");
 
         self.imp().zoom_target.set(zoom_target);
