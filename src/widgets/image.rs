@@ -818,7 +818,6 @@ impl LpImage {
                 self.queue_draw();
                 imp.frame_buffer.rcu(|tiles| {
                     let mut new_tiles = (**tiles).clone();
-                    // TODO: Use an area larger than the viewport
                     new_tiles.cleanup(imp.zoom_target.get(), self.preload_area());
                     new_tiles
                 });
@@ -1271,8 +1270,13 @@ impl LpImage {
     fn request_tiles(&self) {
         if let Some(decoder) = self.imp().decoder.borrow().as_ref() {
             if self.zoom_animation().state() != adw::AnimationState::Playing {
+                // Force minimum tile size of 1000x1000 since with smaller
+                // tiles the tiled rendering advantage disappears
+                let x_inset = f32::min(-3., (self.viewport().width() - 1000.) / 2.);
+                let y_inset = f32::min(-3., (self.viewport().height() - 1000.) / 2.);
+
                 decoder.request(crate::decoder::TileRequest {
-                    viewport: self.viewport().inset_r(-3., -3.),
+                    viewport: self.viewport().inset_r(x_inset, y_inset),
                     area: self.preload_area(),
                     zoom: self.imp().zoom_target.get(),
                 });
