@@ -35,7 +35,7 @@ features = ["gtk4"]
 [dependencies.gtk]
 package = "gtk4"
 version = "0.7.1"
-features = ["v4_10", "xml_validation"]
+features = ["v4_12", "xml_validation"]
 
 [dependencies.gio]
 package = "gio"

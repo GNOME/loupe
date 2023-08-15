@@ -518,6 +518,7 @@ impl LpWindow {
 
         if let Some(ref file) = imp.image_view.current_file() {
             let launcher = gtk::FileLauncher::new(Some(file));
+            launcher.set_always_ask(true);
             if let Err(e) = launcher.launch_future(Some(self)).await {
                 if !e.matches(gtk::DialogError::Dismissed) {
                     log::error!("Could not open image in external program: {}", e);
