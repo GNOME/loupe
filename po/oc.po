@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2023-08-06 02:44+0000\n"
-"PO-Revision-Date: 2023-08-11 17:32+0200\n"
+"POT-Creation-Date: 2023-08-11 15:32+0000\n"
+"PO-Revision-Date: 2023-08-15 11:13+0200\n"
 "Last-Translator: Quentin PAGÈS\n"
 "Language-Team: Occitan <totenoc@gmail.com>\n"
 "Language: oc\n"
@@ -69,6 +69,7 @@ msgstr "Agrandir"
 msgid "Toggle Fullscreen"
 msgstr "Alternar lo mòde ecran complèt"
 
+#. Translators: Go back to previous page
 #: data/gtk/print.ui:29
 msgid "Back"
 msgstr "Tornar"
@@ -268,15 +269,15 @@ msgstr "Rendut d’imgate accelerat GPU rapid"
 
 #: data/org.gnome.Loupe.metainfo.xml.in.in:13
 msgid "Tiled rendering for vector graphics"
-msgstr ""
+msgstr "Rendut en mosaïc dels grafics vectorials"
 
 #: data/org.gnome.Loupe.metainfo.xml.in.in:14
 msgid "Extendable and sandboxed raster image decoding"
-msgstr ""
+msgstr "Descodatges d’imatges matriciala extensibles e nauc de sabla"
 
 #: data/org.gnome.Loupe.metainfo.xml.in.in:15
 msgid "Accessible presentation of the most important metadata."
-msgstr ""
+msgstr "Presentacion accessibla de la màger part de las metadonadas."
 
 #: data/resources/gtk/help-overlay.ui:11
 msgctxt "shortcut window"
