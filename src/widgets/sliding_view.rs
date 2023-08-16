@@ -238,6 +238,8 @@ mod imp {
 
         fn distance(&self) -> f64 {
             let obj = self.obj();
+            // TODO: Fix deprecation
+            #[allow(deprecated)]
             let width = obj.allocation().width();
 
             width as f64 + self.page_spacing(width) as f64
