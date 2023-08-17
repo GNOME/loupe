@@ -2,7 +2,7 @@
 
 An image viewer application written with GTK 4, Libadwaita and Rust.
 
-![Image Viewer Screenshot](https://gitlab.gnome.org/GNOME/loupe/uploads/24c80abc88fccb5fc9f2f08de6a7a5ea/screenshot1.png)
+![Image Viewer Screenshot](https://static.gnome.org/appdata/gnome-45/loupe/loupe-main.png)
 
 ## Installing
 
@@ -18,7 +18,7 @@ Bundles will not be automatically updated after installation.
 ## Features
 
 - Fast GPU accelerated image rendering with tiled rendering for SVGs
-- Extendable and sandboxed (expect SVG) image decoding
+- Extendable and sandboxed image decoding
 - Support for more than 15 image formats by default
 - Extensive support for touchpad and touchscreen gestures
 - Accessible presentation of the most important metadata
