@@ -11,7 +11,7 @@
     <ul>
       <li>Fast GPU accelerated image rendering</li>
       <li>Tiled rendering for vector graphics</li>
-      <li>Extendable and sandboxed raster image decoding</li>
+      <li>Extendable and sandboxed image decoding</li>
       <li>Accessible presentation of the most important metadata.</li>
     </ul>
   </description>
@@ -22,10 +22,16 @@
 
   <screenshots>
     <screenshot type="default">
-      <image>https://gitlab.gnome.org/GNOME/loupe/uploads/24c80abc88fccb5fc9f2f08de6a7a5ea/screenshot1.png</image>
+      <image>https://static.gnome.org/appdata/gnome-45/loupe/loupe-main.png</image>
     </screenshot>
     <screenshot>
-      <image>https://gitlab.gnome.org/GNOME/loupe/uploads/eec7ea6a6a0a49517e2a887f9f31b738/screenshot2.png</image>
+      <image>https://static.gnome.org/appdata/gnome-45/loupe/loupe-properties.png</image>
+    </screenshot>
+    <screenshot>
+      <image>https://static.gnome.org/appdata/gnome-45/loupe/loupe-print.png</image>
+    </screenshot>
+    <screenshot>
+      <image>https://static.gnome.org/appdata/gnome-45/loupe/loupe-svg.png</image>
     </screenshot>
   </screenshots>
 
