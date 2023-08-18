@@ -6,10 +6,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
-"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/Incubator/loupe/-/"
-"issues\n"
-"POT-Creation-Date: 2023-07-14 14:07+0000\n"
-"PO-Revision-Date: 2023-07-18 19:44+0300\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
+"POT-Creation-Date: 2023-08-16 17:48+0000\n"
+"PO-Revision-Date: 2023-08-18 19:33+0300\n"
 "Last-Translator: Jiri Grönroos <jiri.gronroos+l10n@iki.fi>\n"
 "Language-Team: Finnish <lokalisointi-lista@googlegroups.com>\n"
 "Language: fi\n"
@@ -71,49 +70,70 @@ msgstr "Lähennä"
 msgid "Toggle Fullscreen"
 msgstr "Koko näyttö päälle/pois"
 
-#: data/gtk/print.ui:4
-msgid "Image Layout"
-msgstr "Kuvan asettelu"
+#. Translators: Go back to previous page
+#: data/gtk/print.ui:29
+msgid "Back"
+msgstr "Takaisin"
 
-#: data/gtk/print.ui:66
-msgid "Portrait page orientation"
-msgstr "Pystysuuntainen sivu"
-
-#: data/gtk/print.ui:74
-msgid "Landscape page orientation"
-msgstr "Vaakasuuntainen sivu"
-
-#: data/gtk/print.ui:88
-msgid "Center image horizontally"
-msgstr "Keskitä kuva vaakasuunnassa"
-
-#: data/gtk/print.ui:95
-msgid "Center image vertically"
-msgstr "Keskitä kuva pystysuunnassa"
-
-#: data/gtk/print.ui:107
-msgid "Image Width"
-msgstr "Kuvan leveys"
-
-#: data/gtk/print.ui:119
-msgid "Image Scale"
-msgstr "Kuvan skaalaus"
-
-#: data/gtk/print.ui:131
-msgid "Left Margin"
-msgstr "Vasen reunus"
-
-#: data/gtk/print.ui:143
-msgid "Top Margin"
-msgstr "Yläreunus"
-
-#: data/gtk/print.ui:155
-msgid "Length Unit"
-msgstr "Pituuden yksikkö"
-
-#: data/gtk/print.ui:175
+#: data/gtk/print.ui:36
 msgid "Print"
 msgstr "Tulosta"
+
+#: data/gtk/print.ui:54
+msgid "Layout"
+msgstr "Asettelu"
+
+#: data/gtk/print.ui:57
+msgid "Orientation"
+msgstr "Suunta"
+
+#: data/gtk/print.ui:69
+msgid "Portrait Page Orientation"
+msgstr "Pystysuuntainen sivun suuntaus"
+
+#: data/gtk/print.ui:77
+msgid "Landscape Page Orientation"
+msgstr "Vaakasuuntainen sivun suuntaus"
+
+#: data/gtk/print.ui:86
+msgid "Alignment"
+msgstr "Tasaus"
+
+#: data/gtk/print.ui:104
+msgid "Margins"
+msgstr "Reunukset"
+
+#: data/gtk/print.ui:107
+msgid "Margin Units"
+msgstr "Reunusyksiköt"
+
+#: data/gtk/print.ui:124
+msgid "Horizontal"
+msgstr "Vaakasuunta"
+
+#: data/gtk/print.ui:129
+msgid "Vertical"
+msgstr "Pystysuunta"
+
+#: data/gtk/print.ui:136 data/gtk/properties_view.ui:58
+msgid "Image Size"
+msgstr "Kuvan koko"
+
+#: data/gtk/print.ui:139
+msgid "Image Size Units"
+msgstr "Kuvan kokoyksiköt"
+
+#: data/gtk/print.ui:157
+msgid "Fill Space"
+msgstr "Täytä tila"
+
+#: data/gtk/print.ui:162
+msgid "Width"
+msgstr "Leveys"
+
+#: data/gtk/print.ui:167
+msgid "Height"
+msgstr "Korkeus"
 
 #: data/gtk/properties_view.ui:29
 msgid "Folder"
@@ -122,10 +142,6 @@ msgstr "Kansio"
 #: data/gtk/properties_view.ui:41
 msgid "Open Containing Folder"
 msgstr "Avaa sisältävä kansio"
-
-#: data/gtk/properties_view.ui:58
-msgid "Image Size"
-msgstr "Kuvan koko"
 
 #: data/gtk/properties_view.ui:74
 msgid "Image Format"
@@ -197,8 +213,8 @@ msgstr "_Tietoja - Kuvakatselin"
 
 #. If the file exists, get display name
 #: data/gtk/window.ui:64 data/org.gnome.Loupe.desktop.in.in:3
-#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:27 src/window.rs:865
-#: src/window.rs:871
+#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:28 src/window.rs:879
+#: src/window.rs:885
 msgid "Image Viewer"
 msgstr "Kuvakatselin"
 
@@ -218,24 +234,23 @@ msgstr "Päävalikko"
 msgid "Image Properties"
 msgstr "Kuvan ominaisuudet"
 
-#: data/gtk/window.ui:176
+#: data/gtk/window.ui:195
 msgid "View Images"
 msgstr "Katso kuvia"
 
-#: data/gtk/window.ui:177
+#: data/gtk/window.ui:196
 msgid "Drag and drop images here"
 msgstr "Vedä ja pudota kuvat tähän"
 
-#: data/gtk/window.ui:181
+#: data/gtk/window.ui:200
 msgid "_Open Files…"
 msgstr "_Avaa tiedostoja…"
 
 #: data/org.gnome.Loupe.desktop.in.in:11
 msgid "Picture;Slideshow;Graphics;Loupe;"
-msgstr ""
-"Picture;Slideshow;Graphics;Image Viewer;kuvakatselin;diaesitys;grafiikka;"
+msgstr "Picture;Slideshow;Graphics;Image Viewer;kuvakatselin;diaesitys;grafiikka;"
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:7 src/about.rs:30
+#: data/org.gnome.Loupe.metainfo.xml.in.in:7 src/about.rs:31
 msgid "The Loupe Team"
 msgstr "Loupe-tiimi"
 
@@ -437,45 +452,45 @@ msgid "Gestures"
 msgstr "Eleet"
 
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/about.rs:39
+#: src/about.rs:40
 msgid "translator-credits"
 msgstr "Jiri Grönroos"
 
-#: src/about.rs:40
+#: src/about.rs:41
 msgid "Copyright © 2020–2023 Christopher Davis et al."
 msgstr "Tekijänoikeus © 2020–2023 Christopher Davis ja muut"
 
-#: src/file_model.rs:120
+#: src/file_model.rs:126
 msgid "Could not list other files in directory."
 msgstr "Muita kansion tiedostoja ei voitu listata."
 
 #. Translators: short for "north" in GPS coordinate
-#: src/image_metadata/gps.rs:152
+#: src/image_metadata/gps.rs:153
 msgid "N"
 msgstr "N"
 
 #. Translators: short for "south" in GPS coordinate
-#: src/image_metadata/gps.rs:155
+#: src/image_metadata/gps.rs:156
 msgid "S"
 msgstr "S"
 
 #. Translators: short for "east" in GPS coordinate
-#: src/image_metadata/gps.rs:165
+#: src/image_metadata/gps.rs:166
 msgid "E"
 msgstr "E"
 
 #. Translators: short for "west" in GPS coordinate
-#: src/image_metadata/gps.rs:168
+#: src/image_metadata/gps.rs:169
 msgid "W"
 msgstr "W"
 
 #. Translators: Unit for exposure time in seconds
-#: src/image_metadata/mod.rs:163
+#: src/image_metadata/mod.rs:164
 msgid "1\\u{2215}{}\\u{202F}s"
 msgstr "1\\u{2215}{}\\u{202F} s"
 
 #. Translators: Unit for focal length in millimeters
-#: src/image_metadata/mod.rs:188
+#: src/image_metadata/mod.rs:189
 msgid "{}\\u{202F}mm"
 msgstr "{}\\u{202F} mm"
 
@@ -487,7 +502,7 @@ msgstr "{}\\u{202F} mm"
 msgid "%x %X"
 msgstr "%x %X"
 
-#: src/util/mod.rs:179 src/window.rs:579
+#: src/util/mod.rs:179 src/window.rs:593
 msgid "Failed to restore image from trash"
 msgstr "Kuvan palauttaminen roskakorista epäonnistui"
 
@@ -496,61 +511,117 @@ msgid "Failed to open image"
 msgstr "Kuvan avaaminen epäonnistui"
 
 #. Translators: This is a toast notification, informing the user that an image has been set as background.
-#: src/widgets/image_view.rs:658
+#: src/widgets/image_view.rs:666
 msgid "Set as background."
 msgstr "Aseta taustakuvaksi."
 
-#: src/widgets/image_view.rs:671
+#: src/widgets/image_view.rs:679
 msgid "Could not set background."
 msgstr "Taustakuvaa ei voitu asettaa."
 
-#: src/window.rs:466
+#: src/widgets/print.rs:108
+msgid "Top"
+msgstr "Ylhäällä"
+
+#: src/widgets/print.rs:109
+msgid "Center"
+msgstr "Keskellä"
+
+#: src/widgets/print.rs:110
+msgid "Bottom"
+msgstr "Alhaalla"
+
+#: src/widgets/print.rs:111
+msgid "Left"
+msgstr "Vasemmalla"
+
+#: src/widgets/print.rs:112
+msgid "Right"
+msgstr "Oikealla"
+
+#. Translators: Shorthand for centimeter
+#: src/widgets/print.rs:148
+msgid "cm"
+msgstr "cm"
+
+#. Translators: Shorthand for inch
+#: src/widgets/print.rs:150
+msgid "in"
+msgstr "in"
+
+#. Translators: Shorthand for pixel
+#: src/widgets/print.rs:152
+msgid "px"
+msgstr "px"
+
+#. Translators: {} is a placeholder for the filename
+#: src/widgets/print.rs:355
+#| msgid "_Print…"
+msgid "Print “{}”"
+msgstr "Tulosta “{}”"
+
+#: src/window.rs:479
 msgid "Supported image formats"
 msgstr "Tuetut kuvamuodot"
 
-#: src/window.rs:475
+#: src/window.rs:488
 msgid "All files"
 msgstr "Kaikki tiedostot"
 
-#: src/window.rs:482
+#: src/window.rs:495
 msgid "Open Image"
 msgstr "Avaa kuva"
 
-#: src/window.rs:545
+#: src/window.rs:559
 msgid "Image copied to clipboard"
 msgstr "Kuva kopioitu leikepöydälle"
 
-#: src/window.rs:566
+#: src/window.rs:580
 msgid "Image moved to trash"
 msgstr "Kuva siirretty roskakoriin"
 
-#: src/window.rs:567
+#: src/window.rs:581
 msgid "Undo"
 msgstr "Kumoa"
 
-#: src/window.rs:594
+#: src/window.rs:608
 msgid "Failed to move image to trash"
 msgstr "Kuvan siirtäminen roskakoriin epäonnistui"
 
-#: src/window.rs:609
+#: src/window.rs:623
 msgid "Permanently Delete Image?"
 msgstr "Poistetaanko kuva pysyvästi?"
 
-#: src/window.rs:611
+#: src/window.rs:625
 msgid "The image “{}” can only be deleted permanently."
 msgstr "Kuva “{}” on mahdollista poistaa vain pysyvästi."
 
-#: src/window.rs:619
+#: src/window.rs:633
 msgid "Cancel"
 msgstr "Peru"
 
-#: src/window.rs:620
+#: src/window.rs:634
 msgid "Delete"
 msgstr "Poista"
 
-#: src/window.rs:631
+#: src/window.rs:645
 msgid "Failed to delete image"
 msgstr "Kuvan poistaminen epäonnistui"
+
+#~ msgid "Center image horizontally"
+#~ msgstr "Keskitä kuva vaakasuunnassa"
+
+#~ msgid "Center image vertically"
+#~ msgstr "Keskitä kuva pystysuunnassa"
+
+#~ msgid "Image Scale"
+#~ msgstr "Kuvan skaalaus"
+
+#~ msgid "Left Margin"
+#~ msgstr "Vasen reunus"
+
+#~ msgid "Length Unit"
+#~ msgstr "Pituuden yksikkö"
 
 #~ msgid "_About Loupe"
 #~ msgstr "_Tietoja - Loupe"
