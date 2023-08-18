@@ -54,8 +54,8 @@ impl Glycin {
         updater.clone().spawn_error_handled(async move {
             let mut image_request = glycin::ImageRequest::new(file);
 
-            #[cfg(feature = "disable-glycin-sandbox")]
-            image_request.sandbox_mechanism(Some(glycin::SandboxMechanism::NotSandboxed));
+            // #[cfg(feature = "disable-glycin-sandbox")]
+            // image_request.sandbox_mechanism(Some(glycin::SandboxMechanism::NotSandboxed));
 
             image_request.cancellable(cancellable_);
 

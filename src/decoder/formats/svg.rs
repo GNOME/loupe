@@ -74,8 +74,8 @@ impl Svg {
         updater.clone().spawn_error_handled(async move {
             let mut image_request = glycin::ImageRequest::new(file);
 
-            #[cfg(feature = "disable-glycin-sandbox")]
-            image_request.sandbox_mechanism(Some(glycin::SandboxMechanism::NotSandboxed));
+            //#[cfg(feature = "disable-glycin-sandbox")]
+            //image_request.sandbox_mechanism(Some(glycin::SandboxMechanism::NotSandboxed));
 
             image_request.cancellable(cancellable.clone());
 
@@ -188,8 +188,8 @@ impl Svg {
         #[allow(unused_mut)]
         let mut image_request = glycin::ImageRequest::new(file.clone());
 
-        #[cfg(feature = "disable-glycin-sandbox")]
-        image_request.sandbox_mechanism(Some(glycin::SandboxMechanism::NotSandboxed));
+        //  #[cfg(feature = "disable-glycin-sandbox")]
+        //  image_request.sandbox_mechanism(Some(glycin::SandboxMechanism::NotSandboxed));
 
         let image = async_std::task::block_on(image_request.request())?;
         let frame_request = glycin::FrameRequest::new().scale(width as u32, height as u32);
