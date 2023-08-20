@@ -6,10 +6,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
-"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/Incubator/loupe/-/"
-"issues\n"
-"POT-Creation-Date: 2023-07-14 14:07+0000\n"
-"PO-Revision-Date: 2023-07-29 09:51+0300\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
+"POT-Creation-Date: 2023-08-16 17:48+0000\n"
+"PO-Revision-Date: 2023-08-20 23:36+0300\n"
 "Last-Translator: Efstathios Iosifidis <iosifidis@opensuse.org>\n"
 "Language-Team: Greek <gnome-el-list@gnome.org>\n"
 "Language: el\n"
@@ -71,49 +70,70 @@ msgstr "Μεγέθυνση"
 msgid "Toggle Fullscreen"
 msgstr "Εναλλαγή πλήρους οθόνης"
 
-#: data/gtk/print.ui:4
-msgid "Image Layout"
-msgstr "Διάταξη εικόνας"
+#. Translators: Go back to previous page
+#: data/gtk/print.ui:29
+msgid "Back"
+msgstr "Πίσω"
 
-#: data/gtk/print.ui:66
-msgid "Portrait page orientation"
-msgstr "Κατακόρυφος προσανατολισμός σελίδας"
-
-#: data/gtk/print.ui:74
-msgid "Landscape page orientation"
-msgstr "Οριζόντιος προσανατολισμός σελίδας"
-
-#: data/gtk/print.ui:88
-msgid "Center image horizontally"
-msgstr "Κεντράρισμα εικόνας οριζόντια"
-
-#: data/gtk/print.ui:95
-msgid "Center image vertically"
-msgstr "Κεντράρισμα εικόνας κατακόρυφα"
-
-#: data/gtk/print.ui:107
-msgid "Image Width"
-msgstr "Πλάτος εικόνας"
-
-#: data/gtk/print.ui:119
-msgid "Image Scale"
-msgstr "Κλίμακα εικόνας"
-
-#: data/gtk/print.ui:131
-msgid "Left Margin"
-msgstr "Αριστερό περιθώριο"
-
-#: data/gtk/print.ui:143
-msgid "Top Margin"
-msgstr "Άνω περιθώριο"
-
-#: data/gtk/print.ui:155
-msgid "Length Unit"
-msgstr "Μονάδα μήκους"
-
-#: data/gtk/print.ui:175
+#: data/gtk/print.ui:36
 msgid "Print"
 msgstr "Εκτύπωση"
+
+#: data/gtk/print.ui:54
+msgid "Layout"
+msgstr "Διάταξη"
+
+#: data/gtk/print.ui:57
+msgid "Orientation"
+msgstr "Προσανατολισμός"
+
+#: data/gtk/print.ui:69
+msgid "Portrait Page Orientation"
+msgstr "Κατακόρυφος προσανατολισμός σελίδας"
+
+#: data/gtk/print.ui:77
+msgid "Landscape Page Orientation"
+msgstr "Οριζόντιος προσανατολισμός σελίδας"
+
+#: data/gtk/print.ui:86
+msgid "Alignment"
+msgstr "Στοίχιση"
+
+#: data/gtk/print.ui:104
+msgid "Margins"
+msgstr "Περιθώρια"
+
+#: data/gtk/print.ui:107
+msgid "Margin Units"
+msgstr "Μονάδες περιθωρίου"
+
+#: data/gtk/print.ui:124
+msgid "Horizontal"
+msgstr "Οριζόντια"
+
+#: data/gtk/print.ui:129
+msgid "Vertical"
+msgstr "Κατακόρυφα"
+
+#: data/gtk/print.ui:136 data/gtk/properties_view.ui:58
+msgid "Image Size"
+msgstr "Μέγεθος εικόνας"
+
+#: data/gtk/print.ui:139
+msgid "Image Size Units"
+msgstr "Μονάδες μεγέθους εικόνας"
+
+#: data/gtk/print.ui:157
+msgid "Fill Space"
+msgstr ""
+
+#: data/gtk/print.ui:162
+msgid "Width"
+msgstr "Πλάτος"
+
+#: data/gtk/print.ui:167
+msgid "Height"
+msgstr "Ύψος"
 
 #: data/gtk/properties_view.ui:29
 msgid "Folder"
@@ -122,10 +142,6 @@ msgstr "Φάκελος"
 #: data/gtk/properties_view.ui:41
 msgid "Open Containing Folder"
 msgstr "Άνοιγμα φακέλου που το περιέχει"
-
-#: data/gtk/properties_view.ui:58
-msgid "Image Size"
-msgstr "Μέγεθος εικόνας"
 
 #: data/gtk/properties_view.ui:74
 msgid "Image Format"
@@ -193,12 +209,12 @@ msgstr "Συντομεύσεις _πληκτρολογίου"
 
 #: data/gtk/window.ui:54
 msgid "_About Image Viewer"
-msgstr ""
+msgstr "_Περί του Προβολή εικόνων"
 
 #. If the file exists, get display name
 #: data/gtk/window.ui:64 data/org.gnome.Loupe.desktop.in.in:3
-#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:27 src/window.rs:865
-#: src/window.rs:871
+#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:28 src/window.rs:879
+#: src/window.rs:885
 msgid "Image Viewer"
 msgstr "Πρόγραμμα προβολής εικόνων"
 
@@ -218,23 +234,23 @@ msgstr "Κυρίως μενού"
 msgid "Image Properties"
 msgstr "Ιδιότητες εικόνας"
 
-#: data/gtk/window.ui:176
+#: data/gtk/window.ui:195
 msgid "View Images"
 msgstr "Προβολή εικόνων"
 
-#: data/gtk/window.ui:177
+#: data/gtk/window.ui:196
 msgid "Drag and drop images here"
 msgstr "Μεταφορά και απόθεση εικόνων εδώ"
 
-#: data/gtk/window.ui:181
+#: data/gtk/window.ui:200
 msgid "_Open Files…"
 msgstr "_Άνοιγμα αρχείων…"
 
 #: data/org.gnome.Loupe.desktop.in.in:11
 msgid "Picture;Slideshow;Graphics;Loupe;"
-msgstr ""
+msgstr "Εικόνα;Προβολή διαφανειών;Γραφικά;Loupe;"
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:7 src/about.rs:30
+#: data/org.gnome.Loupe.metainfo.xml.in.in:7 src/about.rs:31
 msgid "The Loupe Team"
 msgstr "Η ομάδα Loupe"
 
@@ -244,15 +260,15 @@ msgstr "Προβολή εικόνων"
 
 #: data/org.gnome.Loupe.metainfo.xml.in.in:10
 msgid "Browse through your images and inspect their metadata with:"
-msgstr ""
+msgstr "Περιηγηθείτε στις εικόνες σας και επιθεωρήστε τα μεταδεδομένα τους με:"
 
 #: data/org.gnome.Loupe.metainfo.xml.in.in:12
 msgid "Fast GPU accelerated image rendering"
-msgstr ""
+msgstr "Γρήγορη απόδοση εικόνας με επιτάχυνση GPU"
 
 #: data/org.gnome.Loupe.metainfo.xml.in.in:13
 msgid "Tiled rendering for vector graphics"
-msgstr ""
+msgstr "Απόδοση με πλακάκια για διανυσματικά γραφικά"
 
 #: data/org.gnome.Loupe.metainfo.xml.in.in:14
 msgid "Extendable and sandboxed raster image decoding"
@@ -260,7 +276,7 @@ msgstr ""
 
 #: data/org.gnome.Loupe.metainfo.xml.in.in:15
 msgid "Accessible presentation of the most important metadata."
-msgstr ""
+msgstr "Προσβάσιμη παρουσίαση των πιο σημαντικών μεταδεδομένων."
 
 #: data/resources/gtk/help-overlay.ui:11
 msgctxt "shortcut window"
@@ -436,7 +452,7 @@ msgid "Gestures"
 msgstr "Xειρονομίες"
 
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/about.rs:39
+#: src/about.rs:40
 msgid "translator-credits"
 msgstr ""
 "Ελληνική μεταφραστική ομάδα GNOME\n"
@@ -445,41 +461,41 @@ msgstr ""
 "Για περισσότερες πληροφορίες, επισκεφθείτε τη σελίδα\n"
 "http://gnome.gr/"
 
-#: src/about.rs:40
+#: src/about.rs:41
 msgid "Copyright © 2020–2023 Christopher Davis et al."
-msgstr ""
+msgstr "Πνευματικά Δικαιώματα © 2020–2023 Christopher Davis et al."
 
-#: src/file_model.rs:120
+#: src/file_model.rs:126
 msgid "Could not list other files in directory."
 msgstr ""
 
 #. Translators: short for "north" in GPS coordinate
-#: src/image_metadata/gps.rs:152
+#: src/image_metadata/gps.rs:153
 msgid "N"
 msgstr "Β"
 
 #. Translators: short for "south" in GPS coordinate
-#: src/image_metadata/gps.rs:155
+#: src/image_metadata/gps.rs:156
 msgid "S"
 msgstr "Ν"
 
 #. Translators: short for "east" in GPS coordinate
-#: src/image_metadata/gps.rs:165
+#: src/image_metadata/gps.rs:166
 msgid "E"
 msgstr "Α"
 
 #. Translators: short for "west" in GPS coordinate
-#: src/image_metadata/gps.rs:168
+#: src/image_metadata/gps.rs:169
 msgid "W"
 msgstr "Δ"
 
 #. Translators: Unit for exposure time in seconds
-#: src/image_metadata/mod.rs:163
+#: src/image_metadata/mod.rs:164
 msgid "1\\u{2215}{}\\u{202F}s"
 msgstr "1\\u{2215}{}\\u{202F}s"
 
 #. Translators: Unit for focal length in millimeters
-#: src/image_metadata/mod.rs:188
+#: src/image_metadata/mod.rs:189
 msgid "{}\\u{202F}mm"
 msgstr "{}\\u{202F}mm"
 
@@ -491,7 +507,7 @@ msgstr "{}\\u{202F}mm"
 msgid "%x %X"
 msgstr "%x %X"
 
-#: src/util/mod.rs:179 src/window.rs:579
+#: src/util/mod.rs:179 src/window.rs:593
 msgid "Failed to restore image from trash"
 msgstr "Αποτυχία επαναφοράς εικόνας από τον κάδο απορριμμάτων"
 
@@ -500,61 +516,116 @@ msgid "Failed to open image"
 msgstr "Αποτυχία ανοίγματος εικόνας"
 
 #. Translators: This is a toast notification, informing the user that an image has been set as background.
-#: src/widgets/image_view.rs:658
+#: src/widgets/image_view.rs:666
 msgid "Set as background."
 msgstr "Ορισμός ως παρασκήνιο."
 
-#: src/widgets/image_view.rs:671
+#: src/widgets/image_view.rs:679
 msgid "Could not set background."
 msgstr "Αδυναμία ορισμού ως παρασκήνιο."
 
-#: src/window.rs:466
+#: src/widgets/print.rs:108
+msgid "Top"
+msgstr "Επάνω"
+
+#: src/widgets/print.rs:109
+msgid "Center"
+msgstr "Κέντρο"
+
+#: src/widgets/print.rs:110
+msgid "Bottom"
+msgstr "Κάτω"
+
+#: src/widgets/print.rs:111
+msgid "Left"
+msgstr "Αριστερά"
+
+#: src/widgets/print.rs:112
+msgid "Right"
+msgstr "Δεξιά"
+
+#. Translators: Shorthand for centimeter
+#: src/widgets/print.rs:148
+msgid "cm"
+msgstr "εκ"
+
+#. Translators: Shorthand for inch
+#: src/widgets/print.rs:150
+msgid "in"
+msgstr "in"
+
+#. Translators: Shorthand for pixel
+#: src/widgets/print.rs:152
+msgid "px"
+msgstr "px"
+
+#. Translators: {} is a placeholder for the filename
+#: src/widgets/print.rs:355
+msgid "Print “{}”"
+msgstr "Εκτύπωση “{}”"
+
+#: src/window.rs:479
 msgid "Supported image formats"
 msgstr "Υποστηριζόμενες μορφές εικόνας"
 
-#: src/window.rs:475
+#: src/window.rs:488
 msgid "All files"
 msgstr "Όλα τα αρχεία"
 
-#: src/window.rs:482
+#: src/window.rs:495
 msgid "Open Image"
 msgstr "Άνοιγμα εικόνας"
 
-#: src/window.rs:545
+#: src/window.rs:559
 msgid "Image copied to clipboard"
 msgstr "Η εικόνα αντιγράφηκε στο πρόχειρο"
 
-#: src/window.rs:566
+#: src/window.rs:580
 msgid "Image moved to trash"
 msgstr "Η εικόνα μετακινήθηκε στον κάδο απορριμμάτων"
 
-#: src/window.rs:567
+#: src/window.rs:581
 msgid "Undo"
 msgstr "Αναίρεση"
 
-#: src/window.rs:594
+#: src/window.rs:608
 msgid "Failed to move image to trash"
 msgstr "Αποτυχία μετακίνησης της εικόνας στον κάδο απορριμμάτων"
 
-#: src/window.rs:609
+#: src/window.rs:623
 msgid "Permanently Delete Image?"
 msgstr "Οριστική διαγραφή εικόνας;"
 
-#: src/window.rs:611
+#: src/window.rs:625
 msgid "The image “{}” can only be deleted permanently."
 msgstr "Η εικόνα \"{}\" μπορεί να διαγραφεί μόνο οριστικά."
 
-#: src/window.rs:619
+#: src/window.rs:633
 msgid "Cancel"
 msgstr "Ακύρωση"
 
-#: src/window.rs:620
+#: src/window.rs:634
 msgid "Delete"
 msgstr "Διαγραφή"
 
-#: src/window.rs:631
+#: src/window.rs:645
 msgid "Failed to delete image"
-msgstr ""
+msgstr "Αποτυχία διαγραφής εικόνας"
+
+#~ msgid "Center image horizontally"
+#~ msgstr "Κεντράρισμα εικόνας οριζόντια"
+
+#~ msgid "Center image vertically"
+#~ msgstr "Κεντράρισμα εικόνας κατακόρυφα"
+
+#~ msgid "Image Scale"
+#~ msgstr "Κλίμακα εικόνας"
+
+#~ msgid "Left Margin"
+#~ msgstr "Αριστερό περιθώριο"
+
+#~ msgid "Length Unit"
+#~ msgstr "Μονάδα μήκους"
 
 #~ msgid "Christopher Davis"
 #~ msgstr "Christopher Davis"
