@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2023-08-06 02:44+0000\n"
-"PO-Revision-Date: 2023-08-06 15:37+0300\n"
+"POT-Creation-Date: 2023-08-21 16:23+0000\n"
+"PO-Revision-Date: 2023-08-21 23:04+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -71,6 +71,7 @@ msgstr "Збільшити"
 msgid "Toggle Fullscreen"
 msgstr "Увімкнути/вимкнути повноекранний режим"
 
+#. Translators: Go back to previous page
 #: data/gtk/print.ui:29
 msgid "Back"
 msgstr "Назад"
@@ -80,22 +81,18 @@ msgid "Print"
 msgstr "Надрукувати"
 
 #: data/gtk/print.ui:54
-#| msgid "Image Layout"
 msgid "Layout"
 msgstr "Компонування"
 
 #: data/gtk/print.ui:57
-#| msgid "Open Location"
 msgid "Orientation"
 msgstr "Орієнтація"
 
 #: data/gtk/print.ui:69
-#| msgid "Portrait page orientation"
 msgid "Portrait Page Orientation"
 msgstr "Книжкова орієнтація сторінки"
 
 #: data/gtk/print.ui:77
-#| msgid "Landscape page orientation"
 msgid "Landscape Page Orientation"
 msgstr "Альбомна орієнтація сторінки"
 
@@ -104,7 +101,6 @@ msgid "Alignment"
 msgstr "Вирівнювання"
 
 #: data/gtk/print.ui:104
-#| msgid "Top Margin"
 msgid "Margins"
 msgstr "Поля"
 
@@ -125,7 +121,6 @@ msgid "Image Size"
 msgstr "Розмір зображення"
 
 #: data/gtk/print.ui:139
-#| msgid "Image Size"
 msgid "Image Size Units"
 msgstr "Одиниці виміру розміру зображення"
 
@@ -134,7 +129,6 @@ msgid "Fill Space"
 msgstr "Заповнити місце"
 
 #: data/gtk/print.ui:162
-#| msgid "Image Width"
 msgid "Width"
 msgstr "Ширина"
 
@@ -220,8 +214,8 @@ msgstr "_Про «Перегляд зображень»"
 
 #. If the file exists, get display name
 #: data/gtk/window.ui:64 data/org.gnome.Loupe.desktop.in.in:3
-#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:28 src/window.rs:878
-#: src/window.rs:884
+#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:28 src/window.rs:879
+#: src/window.rs:885
 msgid "Image Viewer"
 msgstr "Перегляд зображень"
 
@@ -282,9 +276,9 @@ msgid "Tiled rendering for vector graphics"
 msgstr "Плиткової обробки для векторної графіки"
 
 #: data/org.gnome.Loupe.metainfo.xml.in.in:14
-msgid "Extendable and sandboxed raster image decoding"
-msgstr ""
-"Придатного до розширення та ізольоване декодування растрових зображень"
+#| msgid "Extendable and sandboxed raster image decoding"
+msgid "Extendable and sandboxed image decoding"
+msgstr "Придатного до розширення та ізольоване декодування зображень"
 
 #: data/org.gnome.Loupe.metainfo.xml.in.in:15
 msgid "Accessible presentation of the most important metadata."
@@ -514,7 +508,7 @@ msgstr "{}\\u{202F}мм"
 msgid "%x %X"
 msgstr "%x %X"
 
-#: src/util/mod.rs:179 src/window.rs:592
+#: src/util/mod.rs:179 src/window.rs:593
 msgid "Failed to restore image from trash"
 msgstr "Не вдалося відновити зображення зі смітника"
 
@@ -544,14 +538,10 @@ msgid "Bottom"
 msgstr "Внизу"
 
 #: src/widgets/print.rs:111
-#| msgctxt "shortcut window"
-#| msgid "Pan Left"
 msgid "Left"
 msgstr "Ліворуч"
 
 #: src/widgets/print.rs:112
-#| msgctxt "shortcut window"
-#| msgid "Pan Right"
 msgid "Right"
 msgstr "Праворуч"
 
@@ -572,7 +562,6 @@ msgstr "пк"
 
 #. Translators: {} is a placeholder for the filename
 #: src/widgets/print.rs:355
-#| msgid "_Print…"
 msgid "Print “{}”"
 msgstr "Надрукувати «{}»"
 
@@ -588,39 +577,39 @@ msgstr "усі файли"
 msgid "Open Image"
 msgstr "Відкрити зображення"
 
-#: src/window.rs:558
+#: src/window.rs:559
 msgid "Image copied to clipboard"
 msgstr "Зображення скопійовано до буфера обміну"
 
-#: src/window.rs:579
+#: src/window.rs:580
 msgid "Image moved to trash"
 msgstr "Зображення пересунуто до смітника"
 
-#: src/window.rs:580
+#: src/window.rs:581
 msgid "Undo"
 msgstr "Скасувати"
 
-#: src/window.rs:607
+#: src/window.rs:608
 msgid "Failed to move image to trash"
 msgstr "Не вдалося пересунути зображення до смітника"
 
-#: src/window.rs:622
+#: src/window.rs:623
 msgid "Permanently Delete Image?"
 msgstr "Остаточно вилучити зображення?"
 
-#: src/window.rs:624
+#: src/window.rs:625
 msgid "The image “{}” can only be deleted permanently."
 msgstr "Зображення «{}» можна вилучити лише остаточно."
 
-#: src/window.rs:632
+#: src/window.rs:633
 msgid "Cancel"
 msgstr "Скасувати"
 
-#: src/window.rs:633
+#: src/window.rs:634
 msgid "Delete"
 msgstr "Вилучити"
 
-#: src/window.rs:644
+#: src/window.rs:645
 msgid "Failed to delete image"
 msgstr "Не вдалося вилучити зображення"
 
