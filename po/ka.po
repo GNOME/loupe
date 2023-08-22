@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2023-08-06 02:44+0000\n"
-"PO-Revision-Date: 2023-08-06 06:12+0200\n"
+"POT-Creation-Date: 2023-08-21 16:23+0000\n"
+"PO-Revision-Date: 2023-08-22 05:03+0200\n"
 "Last-Translator: Ekaterine Papava <papava.e@gtu.ge>\n"
 "Language-Team: Georgian <ka@li.org>\n"
 "Language: ka\n"
@@ -69,6 +69,7 @@ msgstr "გადიდება"
 msgid "Toggle Fullscreen"
 msgstr "მთელ ეკრანზე გატანის ჩართ/გამორთ"
 
+#. Translators: Go back to previous page
 #: data/gtk/print.ui:29
 msgid "Back"
 msgstr "უკან"
@@ -211,8 +212,8 @@ msgstr "სურათების დამთვალიერებლი�
 
 #. If the file exists, get display name
 #: data/gtk/window.ui:64 data/org.gnome.Loupe.desktop.in.in:3
-#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:28 src/window.rs:878
-#: src/window.rs:884
+#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:28 src/window.rs:879
+#: src/window.rs:885
 msgid "Image Viewer"
 msgstr "სურათების გალერეა"
 
@@ -269,8 +270,8 @@ msgid "Tiled rendering for vector graphics"
 msgstr "ნაწილ-ნაწილ რენდერი ვექტორული გრაფიკისთვის"
 
 #: data/org.gnome.Loupe.metainfo.xml.in.in:14
-msgid "Extendable and sandboxed raster image decoding"
-msgstr "გაფართოებადი და სენდბოქსში ჩაკეტილი რასტრული გამოსახულების დეკოდერი"
+msgid "Extendable and sandboxed image decoding"
+msgstr "გაფართოებადი და სენდბოქსში ჩაკეტილი გამოსახულების დეკოდერი"
 
 #: data/org.gnome.Loupe.metainfo.xml.in.in:15
 msgid "Accessible presentation of the most important metadata."
@@ -500,7 +501,7 @@ msgstr "{}\\u{202F}მმ"
 msgid "%x %X"
 msgstr "%x %X"
 
-#: src/util/mod.rs:179 src/window.rs:592
+#: src/util/mod.rs:179 src/window.rs:593
 msgid "Failed to restore image from trash"
 msgstr "გამოსახულების სანაგვე ყუთიდან აღდგენის შეცდომა"
 
@@ -554,7 +555,6 @@ msgstr "px"
 
 #. Translators: {} is a placeholder for the filename
 #: src/widgets/print.rs:355
-#| msgid "_Print…"
 msgid "Print “{}”"
 msgstr "“{}”-ის დაბეჭდვა"
 
@@ -570,39 +570,39 @@ msgstr "ყველა ფაილი"
 msgid "Open Image"
 msgstr "გამოსახულების გახსნა"
 
-#: src/window.rs:558
+#: src/window.rs:559
 msgid "Image copied to clipboard"
 msgstr "სურათი ბუფერში დაკოპირდა"
 
-#: src/window.rs:579
+#: src/window.rs:580
 msgid "Image moved to trash"
 msgstr "სურათი გადატანილია სანაგვე ყუთში"
 
-#: src/window.rs:580
+#: src/window.rs:581
 msgid "Undo"
 msgstr "დაბრუნება"
 
-#: src/window.rs:607
+#: src/window.rs:608
 msgid "Failed to move image to trash"
 msgstr "ფაილების სანაგვე ყუთში გადატანის შეცდომა"
 
-#: src/window.rs:622
+#: src/window.rs:623
 msgid "Permanently Delete Image?"
 msgstr "წავშალო გამოსახულება სამუდამოდ?"
 
-#: src/window.rs:624
+#: src/window.rs:625
 msgid "The image “{}” can only be deleted permanently."
 msgstr "გამოსახულება \"{}\" მხოლოდ სამუდამოდ შეგიძლიათ წაშალოთ."
 
-#: src/window.rs:632
+#: src/window.rs:633
 msgid "Cancel"
 msgstr "გუქმება"
 
-#: src/window.rs:633
+#: src/window.rs:634
 msgid "Delete"
 msgstr "წაშლა"
 
-#: src/window.rs:644
+#: src/window.rs:645
 msgid "Failed to delete image"
 msgstr "გამოსახულების წაშლის შეცდომა"
 
