@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2023-07-24 15:45+0000\n"
-"PO-Revision-Date: 2023-07-24 15:45+0000\n"
+"POT-Creation-Date: 2023-08-21 16:23+0000\n"
+"PO-Revision-Date: 2023-08-24 15:45+0000\n"
 "Last-Translator: Jordi Mas i Hernàndez, <jmas@softcatala.org>\n"
 "Language-Team: Catalan <gnome@llistes.softcatala.org>\n"
 "Language: ca\n"
@@ -68,49 +68,70 @@ msgstr "Amplia"
 msgid "Toggle Fullscreen"
 msgstr "Commuta la pantalla completa"
 
-#: data/gtk/print.ui:4
-msgid "Image Layout"
-msgstr "Disposició de la imatge"
+#. Translators: Go back to previous page
+#: data/gtk/print.ui:29
+msgid "Back"
+msgstr "Enrere"
 
-#: data/gtk/print.ui:66
-msgid "Portrait page orientation"
-msgstr "Orientació de la pàgina vertical"
-
-#: data/gtk/print.ui:74
-msgid "Landscape page orientation"
-msgstr "Orientació apaïsada de la pàgina"
-
-#: data/gtk/print.ui:88
-msgid "Center image horizontally"
-msgstr "Centra la imatge horitzontalment"
-
-#: data/gtk/print.ui:95
-msgid "Center image vertically"
-msgstr "Centra la imatge verticalment"
-
-#: data/gtk/print.ui:107
-msgid "Image Width"
-msgstr "Amplada de la imatge"
-
-#: data/gtk/print.ui:119
-msgid "Image Scale"
-msgstr "Escala de la imatge"
-
-#: data/gtk/print.ui:131
-msgid "Left Margin"
-msgstr "Marge esquerre"
-
-#: data/gtk/print.ui:143
-msgid "Top Margin"
-msgstr "Marge superior"
-
-#: data/gtk/print.ui:155
-msgid "Length Unit"
-msgstr "Unitat de longitud"
-
-#: data/gtk/print.ui:175
+#: data/gtk/print.ui:36
 msgid "Print"
 msgstr "Imprimeix"
+
+#: data/gtk/print.ui:54
+msgid "Layout"
+msgstr "Disposició"
+
+#: data/gtk/print.ui:57
+msgid "Orientation"
+msgstr "Orientació"
+
+#: data/gtk/print.ui:69
+msgid "Portrait Page Orientation"
+msgstr "Orientació de la pàgina vertical"
+
+#: data/gtk/print.ui:77
+msgid "Landscape Page Orientation"
+msgstr "Orientació vertical de la pàgina"
+
+#: data/gtk/print.ui:86
+msgid "Alignment"
+msgstr "Alineació"
+
+#: data/gtk/print.ui:104
+msgid "Margins"
+msgstr "Marges"
+
+#: data/gtk/print.ui:107
+msgid "Margin Units"
+msgstr "Unitats del marge"
+
+#: data/gtk/print.ui:124
+msgid "Horizontal"
+msgstr "Horitzontal"
+
+#: data/gtk/print.ui:129
+msgid "Vertical"
+msgstr "Vertical"
+
+#: data/gtk/print.ui:136 data/gtk/properties_view.ui:58
+msgid "Image Size"
+msgstr "Mida de la imatge"
+
+#: data/gtk/print.ui:139
+msgid "Image Size Units"
+msgstr "Unitats de mida de la imatge"
+
+#: data/gtk/print.ui:157
+msgid "Fill Space"
+msgstr "Omple l'espai"
+
+#: data/gtk/print.ui:162
+msgid "Width"
+msgstr "Amplada"
+
+#: data/gtk/print.ui:167
+msgid "Height"
+msgstr "Alçada"
 
 #: data/gtk/properties_view.ui:29
 msgid "Folder"
@@ -119,10 +140,6 @@ msgstr "Carpeta"
 #: data/gtk/properties_view.ui:41
 msgid "Open Containing Folder"
 msgstr "Obre la carpeta contenidora"
-
-#: data/gtk/properties_view.ui:58
-msgid "Image Size"
-msgstr "Mida de la imatge"
 
 #: data/gtk/properties_view.ui:74
 msgid "Image Format"
@@ -194,8 +211,8 @@ msgstr "_Quant al Visualitzador d'imatges"
 
 #. If the file exists, get display name
 #: data/gtk/window.ui:64 data/org.gnome.Loupe.desktop.in.in:3
-#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:28 src/window.rs:878
-#: src/window.rs:884
+#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:28 src/window.rs:879
+#: src/window.rs:885
 msgid "Image Viewer"
 msgstr "Visualitzador d'imatges"
 
@@ -254,7 +271,7 @@ msgid "Tiled rendering for vector graphics"
 msgstr "Renderització en mosaic per a gràfics vectorials"
 
 #: data/org.gnome.Loupe.metainfo.xml.in.in:14
-msgid "Extendable and sandboxed raster image decoding"
+msgid "Extendable and sandboxed image decoding"
 msgstr "Descodificació d'imatges ràster extensibles i en un entorn aïllat"
 
 #: data/org.gnome.Loupe.metainfo.xml.in.in:15
@@ -446,7 +463,7 @@ msgstr "Jordi Mas i Hernàndez, <jmas@softcatala.org>, 2023"
 msgid "Copyright © 2020–2023 Christopher Davis et al."
 msgstr "Copyright . 2020–2023 Christopher Davis et al."
 
-#: src/file_model.rs:120
+#: src/file_model.rs:126
 msgid "Could not list other files in directory."
 msgstr "No s'han pogut llistar altres fitxers al directori."
 
@@ -491,7 +508,7 @@ msgstr "{}\\u{202F}mm"
 msgid "%x %X"
 msgstr "%x %X"
 
-#: src/util/mod.rs:179 src/window.rs:592
+#: src/util/mod.rs:179 src/window.rs:593
 msgid "Failed to restore image from trash"
 msgstr "No s'ha pogut restaurar la imatge de la paperera"
 
@@ -501,13 +518,53 @@ msgstr "No s'ha pogut obrir la imatge"
 
 #. Translators: This is a toast notification, informing the user that an image
 #. has been set as background.
-#: src/widgets/image_view.rs:663
+#: src/widgets/image_view.rs:666
 msgid "Set as background."
 msgstr "Estableix com a fons."
 
-#: src/widgets/image_view.rs:676
+#: src/widgets/image_view.rs:679
 msgid "Could not set background."
 msgstr "No s'ha pogut establir el fons."
+
+#: src/widgets/print.rs:108
+msgid "Top"
+msgstr "A dalt"
+
+#: src/widgets/print.rs:109
+msgid "Center"
+msgstr "Centre"
+
+#: src/widgets/print.rs:110
+msgid "Bottom"
+msgstr "Inferior"
+
+#: src/widgets/print.rs:111
+msgid "Left"
+msgstr "Esquerra"
+
+#: src/widgets/print.rs:112
+msgid "Right"
+msgstr "Dreta"
+
+#. Translators: Shorthand for centimeter
+#: src/widgets/print.rs:148
+msgid "cm"
+msgstr "cm"
+
+#. Translators: Shorthand for inch
+#: src/widgets/print.rs:150
+msgid "in"
+msgstr "in"
+
+#. Translators: Shorthand for pixel
+#: src/widgets/print.rs:152
+msgid "px"
+msgstr "px"
+
+#. Translators: {} is a placeholder for the filename
+#: src/widgets/print.rs:355
+msgid "Print “{}”"
+msgstr "_Imprimeix «{}»"
 
 #: src/window.rs:479
 msgid "Supported image formats"
@@ -521,38 +578,38 @@ msgstr "Tots els fitxers"
 msgid "Open Image"
 msgstr "Obre una imatge"
 
-#: src/window.rs:558
+#: src/window.rs:559
 msgid "Image copied to clipboard"
 msgstr "Imatge copiada al porta-retalls"
 
-#: src/window.rs:579
+#: src/window.rs:580
 msgid "Image moved to trash"
 msgstr "S'ha mogut la imatge a la paperera"
 
-#: src/window.rs:580
+#: src/window.rs:581
 msgid "Undo"
 msgstr "Desfés"
 
-#: src/window.rs:607
+#: src/window.rs:608
 msgid "Failed to move image to trash"
 msgstr "No s'ha pogut moure la imatge a la paperera"
 
-#: src/window.rs:622
+#: src/window.rs:623
 msgid "Permanently Delete Image?"
 msgstr "Voleu suprimir permanentment la imatge?"
 
-#: src/window.rs:624
+#: src/window.rs:625
 msgid "The image “{}” can only be deleted permanently."
 msgstr "La imatge «{}» només es pot suprimir permanentment."
 
-#: src/window.rs:632
+#: src/window.rs:633
 msgid "Cancel"
 msgstr "Cancel·la"
 
-#: src/window.rs:633
+#: src/window.rs:634
 msgid "Delete"
 msgstr "Suprimeix"
 
-#: src/window.rs:644
+#: src/window.rs:645
 msgid "Failed to delete image"
 msgstr "No s'ha pogut suprimir la imatge"
