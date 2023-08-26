@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2023-08-06 02:44+0000\n"
-"PO-Revision-Date: 2023-08-06 11:01+0300\n"
+"POT-Creation-Date: 2023-08-21 16:23+0000\n"
+"PO-Revision-Date: 2023-08-22 12:28+0300\n"
 "Last-Translator: Artur So <arturios2005@mail.ru>\n"
 "Language-Team: \n"
 "Language: ru_RU\n"
@@ -71,6 +71,7 @@ msgstr "Увеличить"
 msgid "Toggle Fullscreen"
 msgstr "Переключить полноэкранный режим"
 
+#. Translators: Go back to previous page
 #: data/gtk/print.ui:29
 msgid "Back"
 msgstr "Назад"
@@ -213,8 +214,8 @@ msgstr "_О приложении"
 
 #. If the file exists, get display name
 #: data/gtk/window.ui:64 data/org.gnome.Loupe.desktop.in.in:3
-#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:28 src/window.rs:878
-#: src/window.rs:884
+#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:28 src/window.rs:879
+#: src/window.rs:885
 msgid "Image Viewer"
 msgstr "Просмотрщик изображений"
 
@@ -271,8 +272,8 @@ msgid "Tiled rendering for vector graphics"
 msgstr "Плиточного рендеринга для векторной графики"
 
 #: data/org.gnome.Loupe.metainfo.xml.in.in:14
-msgid "Extendable and sandboxed raster image decoding"
-msgstr "Расширяемого и изолированного декодирования растровых изображений"
+msgid "Extendable and sandboxed image decoding"
+msgstr "Расширяемого и изолированного декодирования изображений"
 
 #: data/org.gnome.Loupe.metainfo.xml.in.in:15
 msgid "Accessible presentation of the most important metadata."
@@ -502,7 +503,7 @@ msgstr "{}\\u{202F}mm"
 msgid "%x %X"
 msgstr "%x %X"
 
-#: src/util/mod.rs:179 src/window.rs:592
+#: src/util/mod.rs:179 src/window.rs:593
 msgid "Failed to restore image from trash"
 msgstr "Не удалось восстановить изображение из корзины"
 
@@ -571,39 +572,39 @@ msgstr "Все файлы"
 msgid "Open Image"
 msgstr "Открыть изображение"
 
-#: src/window.rs:558
+#: src/window.rs:559
 msgid "Image copied to clipboard"
 msgstr "Изображение скопировано в буфер обмена"
 
-#: src/window.rs:579
+#: src/window.rs:580
 msgid "Image moved to trash"
 msgstr "Изображение отправлено в корзину"
 
-#: src/window.rs:580
+#: src/window.rs:581
 msgid "Undo"
 msgstr "Отменить"
 
-#: src/window.rs:607
+#: src/window.rs:608
 msgid "Failed to move image to trash"
 msgstr "Не удалось отправить изображение в корзину"
 
-#: src/window.rs:622
+#: src/window.rs:623
 msgid "Permanently Delete Image?"
 msgstr "Удалить изображение безвозвратно?"
 
-#: src/window.rs:624
+#: src/window.rs:625
 msgid "The image “{}” can only be deleted permanently."
 msgstr "Изображение «{}» может быть удалено только безвозвратно."
 
-#: src/window.rs:632
+#: src/window.rs:633
 msgid "Cancel"
 msgstr "Отменить"
 
-#: src/window.rs:633
+#: src/window.rs:634
 msgid "Delete"
 msgstr "Удалить"
 
-#: src/window.rs:644
+#: src/window.rs:645
 msgid "Failed to delete image"
 msgstr "Не удалось удалить изображение"
 
