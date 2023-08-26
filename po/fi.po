@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2023-08-16 17:48+0000\n"
-"PO-Revision-Date: 2023-08-18 19:33+0300\n"
+"POT-Creation-Date: 2023-08-21 16:23+0000\n"
+"PO-Revision-Date: 2023-08-26 21:44+0300\n"
 "Last-Translator: Jiri Grönroos <jiri.gronroos+l10n@iki.fi>\n"
 "Language-Team: Finnish <lokalisointi-lista@googlegroups.com>\n"
 "Language: fi\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.3.1\n"
+"X-Generator: Poedit 3.3.2\n"
 
 #: data/gtk/image_page.ui:6 data/gtk/window.ui:16
 msgid "_Open With…"
@@ -271,8 +271,8 @@ msgid "Tiled rendering for vector graphics"
 msgstr "Vektorigrafiikan laatoitettu piirto"
 
 #: data/org.gnome.Loupe.metainfo.xml.in.in:14
-msgid "Extendable and sandboxed raster image decoding"
-msgstr "Rasterikuvien laajennettava ja eristetty käsittely"
+msgid "Extendable and sandboxed image decoding"
+msgstr "Laajennettavaa ja eristettyä kuvien käsittelyä"
 
 #: data/org.gnome.Loupe.metainfo.xml.in.in:15
 msgid "Accessible presentation of the most important metadata."
@@ -556,7 +556,6 @@ msgstr "px"
 
 #. Translators: {} is a placeholder for the filename
 #: src/widgets/print.rs:355
-#| msgid "_Print…"
 msgid "Print “{}”"
 msgstr "Tulosta “{}”"
 
