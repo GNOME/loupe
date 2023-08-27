@@ -502,6 +502,14 @@ impl LpWindow {
             .modal(true)
             .build();
 
+        chooser.set_initial_folder(
+            self.image_view()
+                .current_image()
+                .and_then(|x| x.file())
+                .and_then(|x| x.parent())
+                .as_ref(),
+        );
+
         if let Ok(selected) = chooser.open_multiple_future(Some(self)).await {
             let images: Vec<_> = selected
                 .into_iter()
