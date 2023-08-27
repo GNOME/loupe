@@ -691,7 +691,7 @@ impl LpWindow {
             "win.trash",
             imp.image_view
                 .current_file()
-                .is_some_and(|file| file.is_native()),
+                .is_some_and(|file| file.path().is_some()),
         );
 
         if shows_image {
