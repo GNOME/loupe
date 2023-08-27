@@ -5,7 +5,7 @@
 
 == Introduction
 
-Iamge Viewer is an image viewer that supports modern image formats. It provides:
+Image Viewer is an image viewer that supports modern image formats. It provides:
 
 * Fast GPU accelerated image rendering with tiled rendering for SVGs
 * Extendable and sandboxed raster image decoding

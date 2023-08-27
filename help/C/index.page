@@ -12,7 +12,7 @@
  <title><media type="image" its:translate="no" src="figures/org.gnome.Loupe.svg" height="48px" width="48px"/> Image Viewer (Loupe)</title>
  <section>
   <title>Introduction</title>
-  <p>Iamge Viewer is an image viewer that supports modern image formats. It provides:</p>
+  <p>Image Viewer is an image viewer that supports modern image formats. It provides:</p>
   <list>
    <item>
     <p>Fast GPU accelerated image rendering with tiled rendering for SVGs</p>
