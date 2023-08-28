@@ -4,15 +4,16 @@
 #
 # Jürgen Benvenuti <gastornis@posteo.org>, 2023.
 # Philipp Kiemle <philipp.kiemle@gmail.com>, 2023.
+# Tim Sabsch <tim@sabsch.com>, 2023.
 #
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2023-08-06 02:44+0000\n"
-"PO-Revision-Date: 2023-08-08 13:41+0200\n"
-"Last-Translator: Philipp Kiemle <philipp.kiemle@gmail.com>\n"
+"POT-Creation-Date: 2023-08-21 17:59+0000\n"
+"PO-Revision-Date: 2023-08-28 20:43+0200\n"
+"Last-Translator: Tim Sabsch <tim@sabsch.com>\n"
 "Language-Team: German <gnome-de@gnome.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -73,6 +74,7 @@ msgstr "Ansicht vergrößern"
 msgid "Toggle Fullscreen"
 msgstr "Vollbild ein- oder ausschalten"
 
+#. Translators: Go back to previous page
 #: data/gtk/print.ui:29
 msgid "Back"
 msgstr "Zurück"
@@ -107,7 +109,7 @@ msgstr "Ränder"
 
 #: data/gtk/print.ui:107
 msgid "Margin Units"
-msgstr ""
+msgstr "Einheiten der Ränder"
 
 #: data/gtk/print.ui:124
 msgid "Horizontal"
@@ -215,8 +217,8 @@ msgstr "_Info zu Bildbetrachter"
 
 #. If the file exists, get display name
 #: data/gtk/window.ui:64 data/org.gnome.Loupe.desktop.in.in:3
-#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:28 src/window.rs:878
-#: src/window.rs:884
+#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:28 src/window.rs:879
+#: src/window.rs:885
 msgid "Image Viewer"
 msgstr "Bildbetrachter"
 
@@ -266,19 +268,19 @@ msgstr "Durchstöbern Sie Ihre Bilder und sehen Sie deren Metadaten ein mit:"
 
 #: data/org.gnome.Loupe.metainfo.xml.in.in:12
 msgid "Fast GPU accelerated image rendering"
-msgstr ""
+msgstr "Schnelle GPU-beschleunigte Bildsynthese"
 
 #: data/org.gnome.Loupe.metainfo.xml.in.in:13
 msgid "Tiled rendering for vector graphics"
-msgstr ""
+msgstr "Gekachelte Bildsynthese für Vektorgrafiken"
 
 #: data/org.gnome.Loupe.metainfo.xml.in.in:14
-msgid "Extendable and sandboxed raster image decoding"
-msgstr ""
+msgid "Extendable and sandboxed image decoding"
+msgstr "Erweiterbare Bilddecodierung mit Sandboxing"
 
 #: data/org.gnome.Loupe.metainfo.xml.in.in:15
 msgid "Accessible presentation of the most important metadata."
-msgstr ""
+msgstr "Zugängliche Darstellung der wichtigsten Metadaten."
 
 #: data/resources/gtk/help-overlay.ui:11
 msgctxt "shortcut window"
@@ -458,7 +460,8 @@ msgstr "Gesten"
 msgid "translator-credits"
 msgstr ""
 "Jürgen Benvenuti <gastornis@posteo.org>, 2023.\n"
-"Philipp Kiemle <philipp.kiemle@gmail.com, 2023."
+"Philipp Kiemle <philipp.kiemle@gmail.com, 2023.\n"
+"Tim Sabsch <tim@sabsch.com>, 2023"
 
 #: src/about.rs:41
 msgid "Copyright © 2020–2023 Christopher Davis et al."
@@ -506,7 +509,7 @@ msgstr "{}\\u{202F}mm"
 msgid "%x %X"
 msgstr "%x %X"
 
-#: src/util/mod.rs:179 src/window.rs:592
+#: src/util/mod.rs:179 src/window.rs:593
 msgid "Failed to restore image from trash"
 msgstr "Bild konnte nicht aus Papierkorb wiederhergestellt werden"
 
@@ -576,39 +579,39 @@ msgstr "Alle Dateien"
 msgid "Open Image"
 msgstr "Bild öffnen"
 
-#: src/window.rs:558
+#: src/window.rs:559
 msgid "Image copied to clipboard"
 msgstr "Bild in Zwischenablage kopiert"
 
-#: src/window.rs:579
+#: src/window.rs:580
 msgid "Image moved to trash"
 msgstr "Bild in Papierkorb verschoben"
 
-#: src/window.rs:580
+#: src/window.rs:581
 msgid "Undo"
 msgstr "Rückgängig"
 
-#: src/window.rs:607
+#: src/window.rs:608
 msgid "Failed to move image to trash"
 msgstr "Bild konnte nicht in Papierkorb verschoben werden"
 
-#: src/window.rs:622
+#: src/window.rs:623
 msgid "Permanently Delete Image?"
 msgstr "Bild dauerhaft löschen?"
 
-#: src/window.rs:624
+#: src/window.rs:625
 msgid "The image “{}” can only be deleted permanently."
 msgstr "Das Bild »{}« kann nur dauerhaft gelöscht werden."
 
-#: src/window.rs:632
+#: src/window.rs:633
 msgid "Cancel"
 msgstr "Abbrechen"
 
-#: src/window.rs:633
+#: src/window.rs:634
 msgid "Delete"
 msgstr "Löschen"
 
-#: src/window.rs:644
+#: src/window.rs:645
 msgid "Failed to delete image"
 msgstr "Bild konnte nicht gelöscht werden"
 
