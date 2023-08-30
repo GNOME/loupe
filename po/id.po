@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2023-08-06 02:44+0000\n"
-"PO-Revision-Date: 2023-08-08 20:32+0700\n"
+"POT-Creation-Date: 2023-08-21 16:23+0000\n"
+"PO-Revision-Date: 2023-08-30 13:12+0700\n"
 "Last-Translator: Kukuh Syafaat <kukuhsyafaat@gnome.org>\n"
 "Language-Team: Indonesian <gnome-l10n-id@googlegroups.com>\n"
 "Language: id\n"
@@ -69,6 +69,7 @@ msgstr "Zum Masuk"
 msgid "Toggle Fullscreen"
 msgstr "Jungkitkan Layar Penuh"
 
+#. Translators: Go back to previous page
 #: data/gtk/print.ui:29
 msgid "Back"
 msgstr "Mundur"
@@ -211,8 +212,8 @@ msgstr "Tent_ang Penampil Gambar"
 
 #. If the file exists, get display name
 #: data/gtk/window.ui:64 data/org.gnome.Loupe.desktop.in.in:3
-#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:28 src/window.rs:878
-#: src/window.rs:884
+#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:28 src/window.rs:879
+#: src/window.rs:885
 msgid "Image Viewer"
 msgstr "Penampil Gambar"
 
@@ -269,8 +270,8 @@ msgid "Tiled rendering for vector graphics"
 msgstr "Rendering ubin untuk grafik vektor"
 
 #: data/org.gnome.Loupe.metainfo.xml.in.in:14
-msgid "Extendable and sandboxed raster image decoding"
-msgstr "Penguraian gambar raster yang dapat diperluas dan di-sandbox"
+msgid "Extendable and sandboxed image decoding"
+msgstr "Penguraian gambar yang dapat diperluas dan di-sandbox"
 
 #: data/org.gnome.Loupe.metainfo.xml.in.in:15
 msgid "Accessible presentation of the most important metadata."
@@ -500,7 +501,7 @@ msgstr "{}\\u{202F}mm"
 msgid "%x %X"
 msgstr "%x %X"
 
-#: src/util/mod.rs:179 src/window.rs:592
+#: src/util/mod.rs:179 src/window.rs:593
 msgid "Failed to restore image from trash"
 msgstr "Gagal memulihkan gambar dari tong sampah"
 
@@ -569,39 +570,39 @@ msgstr "Semua berkas"
 msgid "Open Image"
 msgstr "Buka Gambar"
 
-#: src/window.rs:558
+#: src/window.rs:559
 msgid "Image copied to clipboard"
 msgstr "Gambar disalin ke papan klip"
 
-#: src/window.rs:579
+#: src/window.rs:580
 msgid "Image moved to trash"
 msgstr "Gambar dipindahkan ke tong sampah"
 
-#: src/window.rs:580
+#: src/window.rs:581
 msgid "Undo"
 msgstr "Tak jadi"
 
-#: src/window.rs:607
+#: src/window.rs:608
 msgid "Failed to move image to trash"
 msgstr "Gagal memindahkan gambar ke tong sampah"
 
-#: src/window.rs:622
+#: src/window.rs:623
 msgid "Permanently Delete Image?"
 msgstr "Hapus Gambar Secara Permanen?"
 
-#: src/window.rs:624
+#: src/window.rs:625
 msgid "The image “{}” can only be deleted permanently."
 msgstr "Gambar \"{}\" hanya dapat dihapus secara permanen."
 
-#: src/window.rs:632
+#: src/window.rs:633
 msgid "Cancel"
 msgstr "Batal"
 
-#: src/window.rs:633
+#: src/window.rs:634
 msgid "Delete"
 msgstr "Hapus"
 
-#: src/window.rs:644
+#: src/window.rs:645
 msgid "Failed to delete image"
 msgstr "Gagal menghapus gambar"
 
