@@ -85,6 +85,11 @@
             <lookup name="fullscreened">LpWindow</lookup>
             <lookup name="active">properties_button</lookup>
             <lookup name="active">primary_menu</lookup>
+            <lookup name="image">
+              <lookup name="current-page">
+                image_view
+              </lookup>
+            </lookup>
           </closure>
         </binding>
         <binding name="extend-content-to-top-edge">

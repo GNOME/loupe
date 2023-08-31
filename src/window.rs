@@ -966,8 +966,10 @@ impl LpWindow {
         fullscreened: bool,
         show_properties: bool,
         show_menu: bool,
+        current_image: Option<LpImage>,
     ) -> adw::ToolbarStyle {
-        if self.extend_to_top(fullscreened, show_properties, show_menu) {
+        // Flat headerbar for empty state and fullscreen
+        if current_image.is_none() || self.extend_to_top(fullscreened, show_properties, show_menu) {
             adw::ToolbarStyle::Flat
         } else {
             // Use the border variant of raised to avoid shadows over images
