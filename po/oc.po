@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2023-08-11 15:32+0000\n"
-"PO-Revision-Date: 2023-08-15 11:13+0200\n"
+"POT-Creation-Date: 2023-08-21 16:23+0000\n"
+"PO-Revision-Date: 2023-09-01 19:48+0200\n"
 "Last-Translator: Quentin PAGÈS\n"
 "Language-Team: Occitan <totenoc@gmail.com>\n"
 "Language: oc\n"
@@ -212,8 +212,8 @@ msgstr "A _prepaus del Visionador d'imatges"
 
 #. If the file exists, get display name
 #: data/gtk/window.ui:64 data/org.gnome.Loupe.desktop.in.in:3
-#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:28 src/window.rs:878
-#: src/window.rs:884
+#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:28 src/window.rs:879
+#: src/window.rs:885
 msgid "Image Viewer"
 msgstr "Visionador d'imatges"
 
@@ -272,8 +272,8 @@ msgid "Tiled rendering for vector graphics"
 msgstr "Rendut en mosaïc dels grafics vectorials"
 
 #: data/org.gnome.Loupe.metainfo.xml.in.in:14
-msgid "Extendable and sandboxed raster image decoding"
-msgstr "Descodatges d’imatges matriciala extensibles e nauc de sabla"
+msgid "Extendable and sandboxed image decoding"
+msgstr "Descodatges d’imatges extensibles e nauc de sabla"
 
 #: data/org.gnome.Loupe.metainfo.xml.in.in:15
 msgid "Accessible presentation of the most important metadata."
@@ -503,7 +503,7 @@ msgstr "{}\\u{202F}mm"
 msgid "%x %X"
 msgstr "%x %X"
 
-#: src/util/mod.rs:179 src/window.rs:592
+#: src/util/mod.rs:179 src/window.rs:593
 msgid "Failed to restore image from trash"
 msgstr "Fracàs de la restauracion de l’imatge a partir de l’escobilhièr"
 
@@ -572,39 +572,39 @@ msgstr "Totes los fichièrs"
 msgid "Open Image"
 msgstr "Dobrir un imatge"
 
-#: src/window.rs:558
+#: src/window.rs:559
 msgid "Image copied to clipboard"
 msgstr "Imatge copiat al quichapapièrs"
 
-#: src/window.rs:579
+#: src/window.rs:580
 msgid "Image moved to trash"
 msgstr "Imatge desplaçat a l'escobilhièr"
 
-#: src/window.rs:580
+#: src/window.rs:581
 msgid "Undo"
 msgstr "Desfar"
 
-#: src/window.rs:607
+#: src/window.rs:608
 msgid "Failed to move image to trash"
 msgstr "Impossible de desplaçar l’imatge cap a l'escobilhièr"
 
-#: src/window.rs:622
+#: src/window.rs:623
 msgid "Permanently Delete Image?"
 msgstr "Suprimir l’imatge irreversiblament ?"
 
-#: src/window.rs:624
+#: src/window.rs:625
 msgid "The image “{}” can only be deleted permanently."
 msgstr "L’imatge « {} » se pòt pas suprimir per totjorn."
 
-#: src/window.rs:632
+#: src/window.rs:633
 msgid "Cancel"
 msgstr "Anullada"
 
-#: src/window.rs:633
+#: src/window.rs:634
 msgid "Delete"
 msgstr "Suprimir"
 
-#: src/window.rs:644
+#: src/window.rs:645
 msgid "Failed to delete image"
 msgstr "Impossible de suprimir l’imatge"
 
