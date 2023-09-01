@@ -11,16 +11,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2023-08-21 17:59+0000\n"
-"PO-Revision-Date: 2023-08-28 20:43+0200\n"
-"Last-Translator: Tim Sabsch <tim@sabsch.com>\n"
+"POT-Creation-Date: 2023-08-31 14:13+0000\n"
+"PO-Revision-Date: 2023-08-31 20:03+0200\n"
+"Last-Translator: Jürgen Benvenuti <gastornis@posteo.org>\n"
 "Language-Team: German <gnome-de@gnome.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.3.2\n"
+"X-Generator: Poedit 3.3.1\n"
 
 #: data/gtk/image_page.ui:6 data/gtk/window.ui:16
 msgid "_Open With…"
@@ -46,11 +46,11 @@ msgstr "Als _Hintergrund festlegen …"
 msgid "Could not Load Image"
 msgstr "Bild konnte nicht geladen werden"
 
-#: data/gtk/image_page.ui:97 data/gtk/window.ui:129
+#: data/gtk/image_page.ui:97 data/gtk/window.ui:134
 msgid "Rotate Left"
 msgstr "Nach links drehen"
 
-#: data/gtk/image_page.ui:107 data/gtk/window.ui:139
+#: data/gtk/image_page.ui:107 data/gtk/window.ui:144
 msgid "Rotate Right"
 msgstr "Nach rechts drehen"
 
@@ -222,31 +222,31 @@ msgstr "_Info zu Bildbetrachter"
 msgid "Image Viewer"
 msgstr "Bildbetrachter"
 
-#: data/gtk/window.ui:108
+#: data/gtk/window.ui:113
 msgid "Copy to Clipboard"
 msgstr "In Zwischenablage kopieren"
 
-#: data/gtk/window.ui:115
+#: data/gtk/window.ui:120
 msgid "Move to Trash"
 msgstr "In Papierkorb verschieben"
 
-#: data/gtk/window.ui:121
+#: data/gtk/window.ui:126
 msgid "Main Menu"
 msgstr "Hauptmenü"
 
-#: data/gtk/window.ui:153
+#: data/gtk/window.ui:158
 msgid "Image Properties"
 msgstr "Bildeigenschaften"
 
-#: data/gtk/window.ui:195
+#: data/gtk/window.ui:200
 msgid "View Images"
 msgstr "Bilder betrachten"
 
-#: data/gtk/window.ui:196
+#: data/gtk/window.ui:201
 msgid "Drag and drop images here"
 msgstr "Bilder hierher ziehen und ablegen"
 
-#: data/gtk/window.ui:200
+#: data/gtk/window.ui:205
 msgid "_Open Files…"
 msgstr "_Dateien öffnen …"
 
@@ -428,27 +428,27 @@ msgstr "200% Vergrößerung"
 #: data/resources/gtk/help-overlay.ui:185
 msgctxt "shortcut window"
 msgid "Pan View"
-msgstr "Ansicht schwenken"
+msgstr "Ansicht verschieben"
 
 #: data/resources/gtk/help-overlay.ui:188
 msgctxt "shortcut window"
 msgid "Pan Left"
-msgstr "Nach links schwenken"
+msgstr "Nach links schieben"
 
 #: data/resources/gtk/help-overlay.ui:194
 msgctxt "shortcut window"
 msgid "Pan Right"
-msgstr "Nach rechts schwenken"
+msgstr "Nach rechts schieben"
 
 #: data/resources/gtk/help-overlay.ui:200
 msgctxt "shortcut window"
 msgid "Pan Up"
-msgstr "Nach oben schwenken"
+msgstr "Nach oben schieben"
 
 #: data/resources/gtk/help-overlay.ui:206
 msgctxt "shortcut window"
 msgid "Pan Down"
-msgstr "Nach unten schwenken"
+msgstr "Nach unten schieben"
 
 #: data/resources/gtk/help-overlay.ui:214
 msgctxt "shortcut window"
@@ -460,7 +460,7 @@ msgstr "Gesten"
 msgid "translator-credits"
 msgstr ""
 "Jürgen Benvenuti <gastornis@posteo.org>, 2023.\n"
-"Philipp Kiemle <philipp.kiemle@gmail.com, 2023.\n"
+"Philipp Kiemle <philipp.kiemle@gmail.com>, 2023.\n"
 "Tim Sabsch <tim@sabsch.com>, 2023"
 
 #: src/about.rs:41
