@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2023-08-20 20:37+0000\n"
-"PO-Revision-Date: 2023-08-20 19:50-0700\n"
+"POT-Creation-Date: 2023-08-21 16:23+0000\n"
+"PO-Revision-Date: 2023-09-02 08:40-0700\n"
 "Last-Translator: A S Alam <aalam@satluj.org>\n"
 "Language-Team: Punjabi <punjab-translation@googlegroups.com>\n"
 "Language: pa\n"
@@ -272,8 +272,9 @@ msgid "Tiled rendering for vector graphics"
 msgstr "ਵੈਕਟਰ ਗਰਾਫ਼ਿਕਸ ਲਈ ਟਾਈਲ ਦੇ ਰੂਪ ਵਿੱਚ ਪੇਸ਼ਕਾਰੀ"
 
 #: data/org.gnome.Loupe.metainfo.xml.in.in:14
-msgid "Extendable and sandboxed raster image decoding"
-msgstr "ਫ਼ੈਲਣਯੋਗ ਅਤੇ ਸੈਂਡਬਾਕਸ ਰਾਸਟਰ ਚਿੱਤਰ ਡੀਕੋਡਿੰਗ"
+#| msgid "Extendable and sandboxed raster image decoding"
+msgid "Extendable and sandboxed image decoding"
+msgstr "ਫ਼ੈਲਣਯੋਗ ਅਤੇ ਸੈਂਡਬਾਕਸ ਚਿੱਤਰ ਡੀਕੋਡਿੰਗ"
 
 #: data/org.gnome.Loupe.metainfo.xml.in.in:15
 msgid "Accessible presentation of the most important metadata."
