@@ -1,9 +1,11 @@
-45.beta.2
+45.rc
 =======
 
 - Always ask which program to use for "Open With…"
 - SVG: Force minimum tile size of 1000x1000
 - SVG: Don't render first tiles with zoom=1
+- Empty state: Use flat headerbar
+- Fix non-native files with path cannot be deleted
 - Update screenshots
 
 45.beta.1
