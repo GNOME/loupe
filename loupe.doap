@@ -21,11 +21,4 @@
       <gnome:userid>christopherdavis</gnome:userid>
     </foaf:Person>
   </maintainer>
-  <maintainer>
-    <foaf:Person>
-      <foaf:name>Sophie Herold</foaf:name>
-      <foaf:mbox rdf:resource="mailto:sophieherold@gnome.org" />
-      <gnome:userid>sophieherold</gnome:userid>
-    </foaf:Person>
-  </maintainer>
 </Project>
