@@ -6,16 +6,16 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
-"POT-Creation-Date: 2023-07-27 21:12+0000\n"
-"PO-Revision-Date: 2023-07-28 16:42+0300\n"
+"POT-Creation-Date: 2023-09-01 19:56+0000\n"
+"PO-Revision-Date: 2023-09-03 20:49+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : "
-"n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n"
+"%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Generator: Lokalize 20.12.0\n"
 
 #. Put one translator per line, in the form NAME <EMAIL>, YEAR1, YEAR2
@@ -747,7 +747,8 @@ msgstr ""
 #. (itstool) path: info/desc
 #: C/index.page:10
 msgid "Browse through your images and inspect their metadata."
-msgstr "Здійснюйте навігацію вашими зображеннями і переглядайте їхні метадані."
+msgstr ""
+"Здійснюйте навігацію вашими зображеннями і переглядайте їхні метадані."
 
 #. (itstool) path: page/title
 #: C/index.page:12
@@ -761,8 +762,11 @@ msgstr "Вступ"
 
 #. (itstool) path: section/p
 #: C/index.page:15
+#| msgid ""
+#| "Iamge Viewer is an image viewer that supports modern image formats. It "
+#| "provides:"
 msgid ""
-"Iamge Viewer is an image viewer that supports modern image formats. It "
+"Image Viewer is an image viewer that supports modern image formats. It "
 "provides:"
 msgstr ""
 "«Переглядач зображень» є програмою для перегляду зображень, у якій "
