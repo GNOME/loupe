@@ -6,9 +6,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-06 21:25+0000\n"
-"PO-Revision-Date: 2023-07-24 17:42+0200\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
+"POT-Creation-Date: 2023-08-21 16:23+0000\n"
+"PO-Revision-Date: 2023-09-02 11:29+0200\n"
 "Last-Translator: Alan Mortensen <alanmortensen.am@gmail.com>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
 "Language: da\n"
@@ -17,212 +17,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 3.0.1\n"
-
-#. If the file exists, get display name
-#: data/org.gnome.Loupe.desktop.in.in:3
-#: data/org.gnome.Loupe.metainfo.xml.in.in:6 data/gtk/window.ui:59
-#: src/application.rs:187 src/window.rs:676 src/window.rs:682
-msgid "Loupe"
-msgstr "Loupe"
-
-#: data/org.gnome.Loupe.desktop.in.in:11
-msgid "Picture;Slideshow;Graphics;Image Viewer;"
-msgstr "Billede;Slideshow;Præsentation;Grafik;Billedfremviser;"
-
-#: data/org.gnome.Loupe.metainfo.xml.in.in:7 src/application.rs:190
-msgid "The Loupe Team"
-msgstr "Holdet bag Loupe"
-
-#: data/org.gnome.Loupe.metainfo.xml.in.in:8
-msgid "View images"
-msgstr "Få vist billeder"
-
-#: data/org.gnome.Loupe.metainfo.xml.in.in:10
-msgid ""
-"A simple image viewer which allows you to browse through your images and "
-"inspect their metadata."
-msgstr ""
-"Et enkelt program til visning af billeder som lader dig gennemse dine "
-"billeder og inspicere deres metadata."
-
-#: data/org.gnome.Loupe.metainfo.xml.in.in:11
-msgid "The following features are not available yet"
-msgstr "Følgende funktioner er endnu ikke tilgængelige"
-
-#: data/org.gnome.Loupe.metainfo.xml.in.in:13
-msgid "Applying image color profiles"
-msgstr "Anvendelse af farveprofiler på billeder"
-
-#: data/org.gnome.Loupe.metainfo.xml.in.in:14
-msgid "Printing"
-msgstr "Udskrivning"
-
-#: data/gtk/help_overlay.ui:11
-msgctxt "shortcut window"
-msgid "General Shortcuts"
-msgstr "Generelle genveje"
-
-#: data/gtk/help_overlay.ui:14
-msgctxt "shortcut window"
-msgid "Show Main Menu"
-msgstr "Vis hovedmenu"
-
-#: data/gtk/help_overlay.ui:20
-msgctxt "shortcut window"
-msgid "Copy Image to Clipboard"
-msgstr "Kopiér billede til udklipsholder"
-
-#: data/gtk/help_overlay.ui:26
-msgctxt "shortcut window"
-msgid "Move Image to Trash"
-msgstr "Flyt billede til papirkurv"
-
-#: data/gtk/help_overlay.ui:32
-msgctxt "shortcut window"
-msgid "Toggle Image Properties"
-msgstr "Vis/skjul billedegenskaber"
-
-#: data/gtk/help_overlay.ui:38
-msgctxt "shortcut window"
-msgid "Set as Background"
-msgstr "Angiv som skrivebordsbaggrund"
-
-#: data/gtk/help_overlay.ui:44
-msgctxt "shortcut window"
-msgid "Toggle Fullscreen"
-msgstr "Slå fuldskærm til/fra"
-
-#: data/gtk/help_overlay.ui:50
-msgctxt "shortcut window"
-msgid "Leave Fullscreen"
-msgstr "Forlad fuldskærmstilstand"
-
-#: data/gtk/help_overlay.ui:56
-msgctxt "shortcut window"
-msgid "New Window"
-msgstr "Nyt vindue"
-
-#: data/gtk/help_overlay.ui:62
-msgctxt "shortcut window"
-msgid "Open Help"
-msgstr "Åbn hjælp"
-
-#: data/gtk/help_overlay.ui:68
-msgctxt "shortcut window"
-msgid "Show Keyboard Shortcuts"
-msgstr "Vis tastaturgenveje"
-
-#: data/gtk/help_overlay.ui:74
-msgctxt "shortcut window"
-msgid "Close Window"
-msgstr "Luk vindue"
-
-#: data/gtk/help_overlay.ui:80
-msgctxt "shortcut window"
-msgid "Quit"
-msgstr "Afslut"
-
-#: data/gtk/help_overlay.ui:88
-msgctxt "shortcut window"
-msgid "Navigate Images"
-msgstr "Navigér billeder"
-
-#: data/gtk/help_overlay.ui:92 data/gtk/help_overlay.ui:106
-#: data/gtk/help_overlay.ui:218 data/gtk/help_overlay.ui:232
-msgctxt "shortcut window"
-msgid "Next Image"
-msgstr "Næste billede"
-
-#: data/gtk/help_overlay.ui:99 data/gtk/help_overlay.ui:113
-#: data/gtk/help_overlay.ui:225 data/gtk/help_overlay.ui:239
-msgctxt "shortcut window"
-msgid "Previous Image"
-msgstr "Forrige billede"
-
-#: data/gtk/help_overlay.ui:119
-msgctxt "shortcut window"
-msgid "First Image"
-msgstr "Første billede"
-
-#: data/gtk/help_overlay.ui:125
-msgctxt "shortcut window"
-msgid "Last Image"
-msgstr "Sidste billede"
-
-#: data/gtk/help_overlay.ui:133
-msgctxt "shortcut window"
-msgid "Rotate Image"
-msgstr "Rotér billede"
-
-#: data/gtk/help_overlay.ui:136 data/gtk/help_overlay.ui:257
-msgctxt "shortcut window"
-msgid "Rotate Clockwise"
-msgstr "Rotér med uret"
-
-#: data/gtk/help_overlay.ui:142 data/gtk/help_overlay.ui:263
-msgctxt "shortcut window"
-msgid "Rotate Counterclockwise"
-msgstr "Rotér mod uret"
-
-#: data/gtk/help_overlay.ui:150
-msgctxt "shortcut window"
-msgid "Zoom Image"
-msgstr "Zoom"
-
-#: data/gtk/help_overlay.ui:153 data/gtk/help_overlay.ui:245
-msgctxt "shortcut window"
-msgid "Zoom In"
-msgstr "Forstør"
-
-#: data/gtk/help_overlay.ui:159 data/gtk/help_overlay.ui:251
-msgctxt "shortcut window"
-msgid "Zoom Out"
-msgstr "Formindsk"
-
-#: data/gtk/help_overlay.ui:165
-msgctxt "shortcut window"
-msgid "Best Fit"
-msgstr "Bedste tilpasning"
-
-#: data/gtk/help_overlay.ui:171
-msgctxt "shortcut window"
-msgid "Original Scale"
-msgstr "Oprindelig skalering"
-
-#: data/gtk/help_overlay.ui:177
-msgctxt "shortcut window"
-msgid "200% Scale"
-msgstr "200 % skalering"
-
-#: data/gtk/help_overlay.ui:185
-msgctxt "shortcut window"
-msgid "Pan View"
-msgstr "Panorér visning"
-
-#: data/gtk/help_overlay.ui:188
-msgctxt "shortcut window"
-msgid "Pan Left"
-msgstr "Panorér til venstre"
-
-#: data/gtk/help_overlay.ui:194
-msgctxt "shortcut window"
-msgid "Pan Right"
-msgstr "Panorér til højre"
-
-#: data/gtk/help_overlay.ui:200
-msgctxt "shortcut window"
-msgid "Pan Up"
-msgstr "Panorér op"
-
-#: data/gtk/help_overlay.ui:206
-msgctxt "shortcut window"
-msgid "Pan Down"
-msgstr "Panorér ned"
-
-#: data/gtk/help_overlay.ui:214
-msgctxt "shortcut window"
-msgid "Gestures"
-msgstr "Berøringsbevægelser"
 
 #: data/gtk/image_page.ui:6 data/gtk/window.ui:16
 msgid "_Open With…"
@@ -244,15 +38,15 @@ msgstr "Rotér"
 msgid "_Set as Background…"
 msgstr "Vælg som _baggrund …"
 
-#: data/gtk/image_page.ui:55
+#: data/gtk/image_page.ui:63
 msgid "Could not Load Image"
 msgstr "Kunne ikke indlæse billedet"
 
-#: data/gtk/image_page.ui:88 data/gtk/window.ui:111
+#: data/gtk/image_page.ui:97 data/gtk/window.ui:129
 msgid "Rotate Left"
 msgstr "Rotér venstre om"
 
-#: data/gtk/image_page.ui:99 data/gtk/window.ui:122
+#: data/gtk/image_page.ui:107 data/gtk/window.ui:139
 msgid "Rotate Right"
 msgstr "Rotér højre om"
 
@@ -264,75 +58,137 @@ msgstr "Forrige billede"
 msgid "Next Image"
 msgstr "Næste billede"
 
-#: data/gtk/image_view.ui:70
-msgid "Toggle Fullscreen"
-msgstr "Slå fuldskærm til/fra"
-
-#: data/gtk/image_view.ui:81
+#: data/gtk/image_view.ui:66
 msgid "Zoom Out"
 msgstr "Formindsk"
 
-#: data/gtk/image_view.ui:92
+#: data/gtk/image_view.ui:77
 msgid "Zoom In"
 msgstr "Forstør"
+
+#: data/gtk/image_view.ui:95
+msgid "Toggle Fullscreen"
+msgstr "Slå fuldskærm til/fra"
+
+#. Translators: Go back to previous page
+#: data/gtk/print.ui:29
+msgid "Back"
+msgstr "Tilbage"
+
+#: data/gtk/print.ui:36
+msgid "Print"
+msgstr "Udskriv"
+
+#: data/gtk/print.ui:54
+msgid "Layout"
+msgstr "Layout"
+
+#: data/gtk/print.ui:57
+msgid "Orientation"
+msgstr "Orientering"
+
+# Af sammenhængen frmegår det, at det er sidens orientering, så det er derfor overflødigt at have med
+#: data/gtk/print.ui:69
+msgid "Portrait Page Orientation"
+msgstr "Portræt"
+
+#: data/gtk/print.ui:77
+msgid "Landscape Page Orientation"
+msgstr "Landskab"
+
+#: data/gtk/print.ui:86
+msgid "Alignment"
+msgstr "Justering"
+
+#: data/gtk/print.ui:104
+msgid "Margins"
+msgstr "Margener"
+
+#: data/gtk/print.ui:107
+msgid "Margin Units"
+msgstr "Margenenheder"
+
+#: data/gtk/print.ui:124
+msgid "Horizontal"
+msgstr "Vandret"
+
+#: data/gtk/print.ui:129
+msgid "Vertical"
+msgstr "Lodret"
+
+#: data/gtk/print.ui:136 data/gtk/properties_view.ui:58
+msgid "Image Size"
+msgstr "Billedstørrelse"
+
+#: data/gtk/print.ui:139
+msgid "Image Size Units"
+msgstr "Enheder for billedstørrelse"
+
+#: data/gtk/print.ui:157
+msgid "Fill Space"
+msgstr "Udfyldningsmellemrum"
+
+#: data/gtk/print.ui:162
+msgid "Width"
+msgstr "Bredde"
+
+#: data/gtk/print.ui:167
+msgid "Height"
+msgstr "Højde"
 
 #: data/gtk/properties_view.ui:29
 msgid "Folder"
 msgstr "Mappe"
 
-#: data/gtk/properties_view.ui:42
+#: data/gtk/properties_view.ui:41
 msgid "Open Containing Folder"
 msgstr "Åbn ophavsmappe"
 
-#: data/gtk/properties_view.ui:59
-msgid "Image Size"
-msgstr "Billedstørrelse"
-
-#: data/gtk/properties_view.ui:75
+#: data/gtk/properties_view.ui:74
 msgid "Image Format"
 msgstr "Billedformat"
 
-#: data/gtk/properties_view.ui:89
+#: data/gtk/properties_view.ui:88
 msgid "File Size"
 msgstr "Filstørrelse"
 
-#: data/gtk/properties_view.ui:107
+#: data/gtk/properties_view.ui:106
 msgid "File Created"
 msgstr "Fil oprettet"
 
-#: data/gtk/properties_view.ui:121
+#: data/gtk/properties_view.ui:120
 msgid "File Modified"
 msgstr "Fil ændret"
 
-#: data/gtk/properties_view.ui:144
+#: data/gtk/properties_view.ui:143
 msgid "Location"
 msgstr "Placering"
 
-#: data/gtk/properties_view.ui:164
+#: data/gtk/properties_view.ui:162
 msgid "Open Location"
 msgstr "Åbn placering"
 
-#: data/gtk/properties_view.ui:177
+#: data/gtk/properties_view.ui:175
 msgid "Originally Created"
 msgstr "Oprindeligt oprettet"
 
-#: data/gtk/properties_view.ui:198
+#: data/gtk/properties_view.ui:196
 msgid "Aperture"
 msgstr "Blænde"
 
-#: data/gtk/properties_view.ui:219
+#: data/gtk/properties_view.ui:217
 msgid "Exposure"
 msgstr "Eksponering"
 
-#: data/gtk/properties_view.ui:240
+#: data/gtk/properties_view.ui:238
 msgid "ISO"
 msgstr "ISO"
 
-#: data/gtk/properties_view.ui:261
+#: data/gtk/properties_view.ui:259
 msgid "Focal Length"
 msgstr "Brændvidde"
 
-#: data/gtk/properties_view.ui:282
+#: data/gtk/properties_view.ui:280
 msgid "Maker, Model"
 msgstr "Producent, model"
 
@@ -345,43 +201,259 @@ msgid "_Open…"
 msgstr "_Åbn …"
 
 #: data/gtk/window.ui:46
+msgid "_Help"
+msgstr "_Hjælp"
+
+#: data/gtk/window.ui:50
 msgid "_Keyboard Shortcuts"
 msgstr "_Tastaturgenveje"
 
-#: data/gtk/window.ui:50
-msgid "_About Loupe"
-msgstr "_Om loupe"
+#: data/gtk/window.ui:54
+msgid "_About Image Viewer"
+msgstr "_Om Billedfremviser"
 
-#: data/gtk/window.ui:90
+#. If the file exists, get display name
+#: data/gtk/window.ui:64 data/org.gnome.Loupe.desktop.in.in:3
+#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:28 src/window.rs:879
+#: src/window.rs:885
+msgid "Image Viewer"
+msgstr "Billedfremviser"
+
+#: data/gtk/window.ui:108
 msgid "Copy to Clipboard"
 msgstr "Kopiér til udklipsholder"
 
-#: data/gtk/window.ui:97
+#: data/gtk/window.ui:115
 msgid "Move to Trash"
 msgstr "Flyt til papirkurv"
 
-#: data/gtk/window.ui:103
+#: data/gtk/window.ui:121
 msgid "Main Menu"
 msgstr "Hovedmenu"
 
-#: data/gtk/window.ui:137
+#: data/gtk/window.ui:153
 msgid "Image Properties"
 msgstr "Billedegenskaber"
 
-#: data/gtk/window.ui:157
+#: data/gtk/window.ui:195
 msgid "View Images"
 msgstr "Få vist billeder"
 
-#: data/gtk/window.ui:158
+#: data/gtk/window.ui:196
 msgid "Drag and drop images here"
 msgstr "Træk og slip billeder her"
 
-#: data/gtk/window.ui:162
-msgid "_Open File…"
-msgstr "_Åbn fil …"
+#: data/gtk/window.ui:200
+msgid "_Open Files…"
+msgstr "_Åbn filer …"
+
+#: data/org.gnome.Loupe.desktop.in.in:11
+msgid "Picture;Slideshow;Graphics;Loupe;"
+msgstr "Billede;Slideshow;Præsentation;Grafik;Loupe;"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:7 src/about.rs:31
+msgid "The Loupe Team"
+msgstr "Holdet bag Loupe"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:8
+msgid "View images"
+msgstr "Få vist billeder"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:10
+msgid "Browse through your images and inspect their metadata with:"
+msgstr "Gennemse dine billeder og inspicér deres metadata med:"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:12
+msgid "Fast GPU accelerated image rendering"
+msgstr "Hurtig GPU-accelereret billedgengivelse"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:13
+msgid "Tiled rendering for vector graphics"
+msgstr "Flisegengivelse til vektorgrafik"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:14
+msgid "Extendable and sandboxed image decoding"
+msgstr "Billedafkodning i sandkassetilstand som kan udvides"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:15
+msgid "Accessible presentation of the most important metadata."
+msgstr "Tilgængelig præsentation af de vigtigste metadata."
+
+#: data/resources/gtk/help-overlay.ui:11
+msgctxt "shortcut window"
+msgid "General Shortcuts"
+msgstr "Generelle genveje"
+
+#: data/resources/gtk/help-overlay.ui:14
+msgctxt "shortcut window"
+msgid "Show Main Menu"
+msgstr "Vis hovedmenu"
+
+#: data/resources/gtk/help-overlay.ui:20
+msgctxt "shortcut window"
+msgid "Copy Image to Clipboard"
+msgstr "Kopiér billede til udklipsholder"
+
+#: data/resources/gtk/help-overlay.ui:26
+msgctxt "shortcut window"
+msgid "Move Image to Trash"
+msgstr "Flyt billede til papirkurv"
+
+#: data/resources/gtk/help-overlay.ui:32
+msgctxt "shortcut window"
+msgid "Toggle Image Properties"
+msgstr "Vis/skjul billedegenskaber"
+
+#: data/resources/gtk/help-overlay.ui:38
+msgctxt "shortcut window"
+msgid "Set as Background"
+msgstr "Angiv som skrivebordsbaggrund"
+
+#: data/resources/gtk/help-overlay.ui:44
+msgctxt "shortcut window"
+msgid "Toggle Fullscreen"
+msgstr "Slå fuldskærm til/fra"
+
+#: data/resources/gtk/help-overlay.ui:50
+msgctxt "shortcut window"
+msgid "Leave Fullscreen"
+msgstr "Forlad fuldskærmstilstand"
+
+#: data/resources/gtk/help-overlay.ui:56
+msgctxt "shortcut window"
+msgid "New Window"
+msgstr "Nyt vindue"
+
+#: data/resources/gtk/help-overlay.ui:62
+msgctxt "shortcut window"
+msgid "Open Help"
+msgstr "Åbn hjælp"
+
+#: data/resources/gtk/help-overlay.ui:68
+msgctxt "shortcut window"
+msgid "Show Keyboard Shortcuts"
+msgstr "Vis tastaturgenveje"
+
+#: data/resources/gtk/help-overlay.ui:74
+msgctxt "shortcut window"
+msgid "Close Window"
+msgstr "Luk vindue"
+
+#: data/resources/gtk/help-overlay.ui:80
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "Afslut"
+
+#: data/resources/gtk/help-overlay.ui:88
+msgctxt "shortcut window"
+msgid "Navigate Images"
+msgstr "Navigér billeder"
+
+#: data/resources/gtk/help-overlay.ui:92 data/resources/gtk/help-overlay.ui:106
+#: data/resources/gtk/help-overlay.ui:218
+#: data/resources/gtk/help-overlay.ui:232
+msgctxt "shortcut window"
+msgid "Next Image"
+msgstr "Næste billede"
+
+#: data/resources/gtk/help-overlay.ui:99 data/resources/gtk/help-overlay.ui:113
+#: data/resources/gtk/help-overlay.ui:225
+#: data/resources/gtk/help-overlay.ui:239
+msgctxt "shortcut window"
+msgid "Previous Image"
+msgstr "Forrige billede"
+
+#: data/resources/gtk/help-overlay.ui:119
+msgctxt "shortcut window"
+msgid "First Image"
+msgstr "Første billede"
+
+#: data/resources/gtk/help-overlay.ui:125
+msgctxt "shortcut window"
+msgid "Last Image"
+msgstr "Sidste billede"
+
+#: data/resources/gtk/help-overlay.ui:133
+msgctxt "shortcut window"
+msgid "Rotate Image"
+msgstr "Rotér billede"
+
+#: data/resources/gtk/help-overlay.ui:136
+#: data/resources/gtk/help-overlay.ui:257
+msgctxt "shortcut window"
+msgid "Rotate Clockwise"
+msgstr "Rotér med uret"
+
+#: data/resources/gtk/help-overlay.ui:142
+#: data/resources/gtk/help-overlay.ui:263
+msgctxt "shortcut window"
+msgid "Rotate Counterclockwise"
+msgstr "Rotér mod uret"
+
+#: data/resources/gtk/help-overlay.ui:150
+msgctxt "shortcut window"
+msgid "Zoom Image"
+msgstr "Zoom"
+
+#: data/resources/gtk/help-overlay.ui:153
+#: data/resources/gtk/help-overlay.ui:245
+msgctxt "shortcut window"
+msgid "Zoom In"
+msgstr "Forstør"
+
+#: data/resources/gtk/help-overlay.ui:159
+#: data/resources/gtk/help-overlay.ui:251
+msgctxt "shortcut window"
+msgid "Zoom Out"
+msgstr "Formindsk"
+
+#: data/resources/gtk/help-overlay.ui:165
+msgctxt "shortcut window"
+msgid "Best Fit"
+msgstr "Bedste tilpasning"
+
+#: data/resources/gtk/help-overlay.ui:171
+msgctxt "shortcut window"
+msgid "Original Scale"
+msgstr "Oprindelig skalering"
+
+#: data/resources/gtk/help-overlay.ui:177
+msgctxt "shortcut window"
+msgid "200% Scale"
+msgstr "200 % skalering"
+
+#: data/resources/gtk/help-overlay.ui:185
+msgctxt "shortcut window"
+msgid "Pan View"
+msgstr "Panorér visning"
+
+#: data/resources/gtk/help-overlay.ui:188
+msgctxt "shortcut window"
+msgid "Pan Left"
+msgstr "Panorér til venstre"
+
+#: data/resources/gtk/help-overlay.ui:194
+msgctxt "shortcut window"
+msgid "Pan Right"
+msgstr "Panorér til højre"
+
+#: data/resources/gtk/help-overlay.ui:200
+msgctxt "shortcut window"
+msgid "Pan Up"
+msgstr "Panorér op"
+
+#: data/resources/gtk/help-overlay.ui:206
+msgctxt "shortcut window"
+msgid "Pan Down"
+msgstr "Panorér ned"
+
+#: data/resources/gtk/help-overlay.ui:214
+msgctxt "shortcut window"
+msgid "Gestures"
+msgstr "Berøringsbevægelser"
 
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/application.rs:199
+#: src/about.rs:40
 msgid "translator-credits"
 msgstr ""
 "Alan Mortensen\n"
@@ -389,104 +461,174 @@ msgstr ""
 "Dansk-gruppen <dansk@dansk-gruppen.dk>\n"
 "Mere info: http://www.dansk-gruppen.dk"
 
-#: src/application.rs:200
+#: src/about.rs:41
 msgid "Copyright © 2020–2023 Christopher Davis et al."
-msgstr "Ophavsret © 2020–2023 Christopher Davis m.fl"
+msgstr "Ophavsret © 2020–2023 Christopher Davis m.fl."
 
-#: src/file_model.rs:114
+#: src/file_model.rs:126
 msgid "Could not list other files in directory."
 msgstr "Kunne ikke vise andre filer i mappen."
 
 #. Translators: short for "north" in GPS coordinate
-#: src/image_metadata/gps.rs:136
+#: src/image_metadata/gps.rs:153
 msgid "N"
 msgstr "N"
 
 #. Translators: short for "south" in GPS coordinate
-#: src/image_metadata/gps.rs:139
+#: src/image_metadata/gps.rs:156
 msgid "S"
 msgstr "S"
 
 #. Translators: short for "east" in GPS coordinate
-#: src/image_metadata/gps.rs:149
+#: src/image_metadata/gps.rs:166
 msgid "E"
 msgstr "Ø"
 
 #. Translators: short for "west" in GPS coordinate
-#: src/image_metadata/gps.rs:152
+#: src/image_metadata/gps.rs:169
 msgid "W"
 msgstr "V"
 
 #. Translators: Unit for exposure time in seconds
-#: src/image_metadata/mod.rs:129
+#: src/image_metadata/mod.rs:164
 msgid "1\\u{2215}{}\\u{202F}s"
 msgstr "1\\u{2215}{}\\u{202F}s"
 
 #. Translators: Unit for focal length in millimeters
-#: src/image_metadata/mod.rs:154
+#: src/image_metadata/mod.rs:189
 msgid "{}\\u{202F}mm"
 msgstr "{}\\u{202F}mm"
 
-#: src/widgets/image.rs:751
-msgid "File does not exist"
-msgstr "Filen findes ikke"
+#. Translators: This is the date and time format we use in metadata output etc.
+#. The format has to follow <https://docs.gtk.org/glib/method.DateTime.format.html>
+#. The default is already translated. Don't change if you are not sure what to use.
+#: src/util/mod.rs:36
+#, c-format
+msgid "%x %X"
+msgstr "%x %X"
 
-#: src/widgets/image_view.rs:558
-msgid "Failed to open new background image"
-msgstr "Kunne ikke åbne nyt baggrundsbillede"
-
-#: src/widgets/image_view.rs:575
-msgid "Set as background."
-msgstr "Vælg som baggrund."
-
-#: src/widgets/image_view.rs:582
-msgid "Could not set background."
-msgstr "Kunne ikke sætte som baggrund."
-
-#: src/window.rs:355
-msgid "“{}” is not a valid image."
-msgstr "“{}” er ikke et gyldigt billede."
-
-#: src/window.rs:431
-msgid "Open Image"
-msgstr "Åbn billede"
-
-#: src/window.rs:485
-msgid "Image copied to clipboard"
-msgstr "Billede kopieret til udklipsholder"
-
-#: src/window.rs:499
-msgid "Image moved to trash"
-msgstr "Billede flyttet til papirkurv"
-
-#: src/window.rs:500
-msgid "Undo"
-msgstr "Fortryd"
-
-#: src/window.rs:511
+#: src/util/mod.rs:179 src/window.rs:593
 msgid "Failed to restore image from trash"
 msgstr "Kunne ikke gendanne billede fra papirkurven"
 
-#: src/window.rs:526
+#: src/util/mod.rs:200
+msgid "Failed to open image"
+msgstr "Kunne ikke åbne billedet"
+
+#. Translators: This is a toast notification, informing the user that an image has been set as background.
+#: src/widgets/image_view.rs:666
+msgid "Set as background."
+msgstr "Vælg som baggrund."
+
+#: src/widgets/image_view.rs:679
+msgid "Could not set background."
+msgstr "Kunne ikke sætte som baggrund."
+
+#: src/widgets/print.rs:108
+msgid "Top"
+msgstr "Øverst"
+
+#: src/widgets/print.rs:109
+msgid "Center"
+msgstr "Midten"
+
+#: src/widgets/print.rs:110
+msgid "Bottom"
+msgstr "Nederst"
+
+#: src/widgets/print.rs:111
+msgid "Left"
+msgstr "Venstre"
+
+#: src/widgets/print.rs:112
+msgid "Right"
+msgstr "Højre"
+
+#. Translators: Shorthand for centimeter
+#: src/widgets/print.rs:148
+msgid "cm"
+msgstr "cm"
+
+#. Translators: Shorthand for inch
+#: src/widgets/print.rs:150
+msgid "in"
+msgstr "in"
+
+#. Translators: Shorthand for pixel
+#: src/widgets/print.rs:152
+msgid "px"
+msgstr "px"
+
+#. Translators: {} is a placeholder for the filename
+#: src/widgets/print.rs:355
+msgid "Print “{}”"
+msgstr "Udskriv “{}”"
+
+#: src/window.rs:479
+msgid "Supported image formats"
+msgstr "Understøttede billedformater"
+
+#: src/window.rs:488
+msgid "All files"
+msgstr "Alle filer"
+
+#: src/window.rs:495
+msgid "Open Image"
+msgstr "Åbn billede"
+
+#: src/window.rs:559
+msgid "Image copied to clipboard"
+msgstr "Billede kopieret til udklipsholder"
+
+#: src/window.rs:580
+msgid "Image moved to trash"
+msgstr "Billede flyttet til papirkurv"
+
+#: src/window.rs:581
+msgid "Undo"
+msgstr "Fortryd"
+
+#: src/window.rs:608
 msgid "Failed to move image to trash"
 msgstr "Kunne ikke flytte billede til papirkurven"
 
-#: src/window.rs:541
+#: src/window.rs:623
 msgid "Permanently Delete Image?"
 msgstr "Slet billedet permanent?"
 
-#: src/window.rs:543
+#: src/window.rs:625
 msgid "The image “{}” can only be deleted permanently."
 msgstr "Billedet “{}” kan kun slettes permanent."
 
-#: src/window.rs:550
+#: src/window.rs:633
 msgid "Cancel"
 msgstr "Annullér"
 
-#: src/window.rs:550
+#: src/window.rs:634
 msgid "Delete"
 msgstr "Slet"
 
-#: src/window.rs:559
+#: src/window.rs:645
 msgid "Failed to delete image"
 msgstr "Kunne ikke slette billedet"
+
+#~ msgid "Loupe"
+#~ msgstr "Loupe"
+
+#~ msgid "The following features are not available yet"
+#~ msgstr "Følgende funktioner er endnu ikke tilgængelige"
+
+#~ msgid "Applying image color profiles"
+#~ msgstr "Anvendelse af farveprofiler på billeder"
+
+#~ msgid "_About Loupe"
+#~ msgstr "_Om loupe"
+
+#~ msgid "File does not exist"
+#~ msgstr "Filen findes ikke"
+
+#~ msgid "Failed to open new background image"
+#~ msgstr "Kunne ikke åbne nyt baggrundsbillede"
+
+#~ msgid "“{}” is not a valid image."
+#~ msgstr "“{}” er ikke et gyldigt billede."
