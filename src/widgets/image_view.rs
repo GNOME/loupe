@@ -472,6 +472,9 @@ impl LpImageView {
                     if let Some(file) = image.file() {
                         log::debug!("Removing image with unsupported format {:?}", file.uri());
                         obj.model().remove(&file);
+                        if let Some(current_file) = obj.current_file() {
+                            obj.update_sliding_view(&current_file);
+                        }
                     }
                 }
             }),
