@@ -379,10 +379,14 @@ mod imp {
 
             self.drop_target.set_types(&[gdk::FileList::static_type()]);
 
-            // Only accept drops from external sources or different windows
             self.drop_target.connect_accept(
                 clone!(@weak obj => @default-return false, move |_drop_target, drop| {
-                    drop.drag().is_none() || drop.drag() != obj.image_view().drag_source().drag()
+                    // Only accept drops from external sources or different windows
+                    let different_source = drop.drag().is_none() || drop.drag() != obj.image_view().drag_source().drag();
+                    // We have to do this manually since we are overwriting the default handler
+                    let correct_format = drop.formats().contains_type(gdk::FileList::static_type());
+
+                    different_source && correct_format
                 }),
             );
 
