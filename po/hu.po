@@ -7,10 +7,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
-"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/Incubator/loupe/-/issues"
-"\n"
-"POT-Creation-Date: 2023-07-14 14:07+0000\n"
-"PO-Revision-Date: 2023-07-27 01:21+0200\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
+"POT-Creation-Date: 2023-08-21 16:23+0000\n"
+"PO-Revision-Date: 2023-09-05 21:23+0200\n"
 "Last-Translator: Balázs Úr <ur.balazs at fsf dot hu>\n"
 "Language-Team: Hungarian <openscope at fsf dot hu>\n"
 "Language: hu\n"
@@ -18,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 23.04.1\n"
+"X-Generator: Lokalize 23.04.3\n"
 
 #: data/gtk/image_page.ui:6 data/gtk/window.ui:16
 msgid "_Open With…"
@@ -72,53 +71,77 @@ msgstr "Nagyítás"
 msgid "Toggle Fullscreen"
 msgstr "Teljes képernyős mód be- és kikapcsolása"
 
-#: data/gtk/print.ui:4
-#| msgid "Image Format"
-msgid "Image Layout"
-msgstr "Kép elrendezése"
+#. Translators: Go back to previous page
+#: data/gtk/print.ui:29
+msgid "Back"
+msgstr "Vissza"
 
-#: data/gtk/print.ui:66
-msgid "Portrait page orientation"
-msgstr "Álló laptájolás"
-
-#: data/gtk/print.ui:74
-msgid "Landscape page orientation"
-msgstr "Fekvő laptájolás"
-
-#: data/gtk/print.ui:88
-msgid "Center image horizontally"
-msgstr "Kép középre igazítása vízszintesen"
-
-#: data/gtk/print.ui:95
-msgid "Center image vertically"
-msgstr "Kép középre igazítása függőlegesen"
-
-#: data/gtk/print.ui:107
-#| msgid "Image Size"
-msgid "Image Width"
-msgstr "Kép szélessége"
-
-#: data/gtk/print.ui:119
-#| msgid "Image Size"
-msgid "Image Scale"
-msgstr "Kép méretezése"
-
-#: data/gtk/print.ui:131
-msgid "Left Margin"
-msgstr "Bal margó"
-
-#: data/gtk/print.ui:143
-msgid "Top Margin"
-msgstr "Felső margó"
-
-#: data/gtk/print.ui:155
-msgid "Length Unit"
-msgstr "Hosszmértékegység"
-
-#: data/gtk/print.ui:175
-#| msgid "Printing"
+#: data/gtk/print.ui:36
 msgid "Print"
 msgstr "Nyomtatás"
+
+#: data/gtk/print.ui:54
+#| msgid "Image Layout"
+msgid "Layout"
+msgstr "Elrendezés"
+
+#: data/gtk/print.ui:57
+#| msgid "Open Location"
+msgid "Orientation"
+msgstr "Tájolás"
+
+#: data/gtk/print.ui:69
+#| msgid "Portrait page orientation"
+msgid "Portrait Page Orientation"
+msgstr "Álló laptájolás"
+
+#: data/gtk/print.ui:77
+#| msgid "Landscape page orientation"
+msgid "Landscape Page Orientation"
+msgstr "Fekvő laptájolás"
+
+#: data/gtk/print.ui:86
+msgid "Alignment"
+msgstr "Igazítás"
+
+#: data/gtk/print.ui:104
+#| msgid "Top Margin"
+msgid "Margins"
+msgstr "Margók"
+
+#: data/gtk/print.ui:107
+msgid "Margin Units"
+msgstr "Margó mértékegységei"
+
+#: data/gtk/print.ui:124
+msgid "Horizontal"
+msgstr "Vízszintes"
+
+#: data/gtk/print.ui:129
+msgid "Vertical"
+msgstr "Függőleges"
+
+#: data/gtk/print.ui:136 data/gtk/properties_view.ui:58
+msgid "Image Size"
+msgstr "Kép mérete"
+
+#: data/gtk/print.ui:139
+#| msgid "Image Size"
+msgid "Image Size Units"
+msgstr "Képméret mértékegységei"
+
+#: data/gtk/print.ui:157
+msgid "Fill Space"
+msgstr "Hely kitöltése"
+
+#: data/gtk/print.ui:162
+#| msgid "Image Width"
+msgid "Width"
+msgstr "Szélesség"
+
+#: data/gtk/print.ui:167
+msgid "Height"
+msgstr "Magasság"
 
 #: data/gtk/properties_view.ui:29
 msgid "Folder"
@@ -127,10 +150,6 @@ msgstr "Mappa"
 #: data/gtk/properties_view.ui:41
 msgid "Open Containing Folder"
 msgstr "Tartalmazó mappa megnyitása"
-
-#: data/gtk/properties_view.ui:58
-msgid "Image Size"
-msgstr "Kép mérete"
 
 #: data/gtk/properties_view.ui:74
 msgid "Image Format"
@@ -202,9 +221,8 @@ msgstr "A Képmegjelenítő _névjegye"
 
 #. If the file exists, get display name
 #: data/gtk/window.ui:64 data/org.gnome.Loupe.desktop.in.in:3
-#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:27 src/window.rs:865
-#: src/window.rs:871
-#| msgid "Image Size"
+#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:28 src/window.rs:879
+#: src/window.rs:885
 msgid "Image Viewer"
 msgstr "Képmegjelenítő"
 
@@ -224,25 +242,23 @@ msgstr "Főmenü"
 msgid "Image Properties"
 msgstr "Kép tulajdonságai"
 
-#: data/gtk/window.ui:176
+#: data/gtk/window.ui:195
 msgid "View Images"
 msgstr "Képek megtekintése"
 
-#: data/gtk/window.ui:177
+#: data/gtk/window.ui:196
 msgid "Drag and drop images here"
 msgstr "Fogja meg és húzza ide a képeket"
 
-#: data/gtk/window.ui:181
-#| msgid "_Open File…"
+#: data/gtk/window.ui:200
 msgid "_Open Files…"
 msgstr "Fájlok _megnyitása…"
 
 #: data/org.gnome.Loupe.desktop.in.in:11
-#| msgid "Picture;Slideshow;Graphics;Image Viewer;"
 msgid "Picture;Slideshow;Graphics;Loupe;"
 msgstr "Fénykép;Kép;Diavetítés;Grafika;Loupe;"
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:7 src/about.rs:30
+#: data/org.gnome.Loupe.metainfo.xml.in.in:7 src/about.rs:31
 msgid "The Loupe Team"
 msgstr "A Loupe csapata"
 
@@ -251,9 +267,6 @@ msgid "View images"
 msgstr "Képek megtekintése"
 
 #: data/org.gnome.Loupe.metainfo.xml.in.in:10
-#| msgid ""
-#| "A simple image viewer which allows you to browse through your images and "
-#| "inspect their metadata."
 msgid "Browse through your images and inspect their metadata with:"
 msgstr ""
 "Böngésszen a képek között, és vizsgálja meg a metaadataikat a következőkkel:"
@@ -267,8 +280,9 @@ msgid "Tiled rendering for vector graphics"
 msgstr "Csempés megjelenítés vektorgrafikákhoz"
 
 #: data/org.gnome.Loupe.metainfo.xml.in.in:14
-msgid "Extendable and sandboxed raster image decoding"
-msgstr "Kiterjeszthető és biztonságos környezetbe zárt raszteres képdekódolás"
+#| msgid "Extendable and sandboxed raster image decoding"
+msgid "Extendable and sandboxed image decoding"
+msgstr "Kiterjeszthető és biztonságos környezetbe zárt képdekódolás"
 
 #: data/org.gnome.Loupe.metainfo.xml.in.in:15
 msgid "Accessible presentation of the most important metadata."
@@ -448,47 +462,47 @@ msgid "Gestures"
 msgstr "Kézmozdulatok"
 
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/about.rs:39
+#: src/about.rs:40
 msgid "translator-credits"
 msgstr ""
 "Meskó Balázs <mesko dot balazs at fsf dot hu>, 2023.\n"
 "Úr Balázs <ur dot balazs at fsf dot hu>, 2023."
 
-#: src/about.rs:40
+#: src/about.rs:41
 msgid "Copyright © 2020–2023 Christopher Davis et al."
 msgstr "Copyright © 2020–2023 Christopher Davis és mások."
 
-#: src/file_model.rs:120
+#: src/file_model.rs:126
 msgid "Could not list other files in directory."
 msgstr "Nem sikerült felsorolni egyéb fájlokat a könyvtárban."
 
 #. Translators: short for "north" in GPS coordinate
-#: src/image_metadata/gps.rs:152
+#: src/image_metadata/gps.rs:153
 msgid "N"
 msgstr "É"
 
 #. Translators: short for "south" in GPS coordinate
-#: src/image_metadata/gps.rs:155
+#: src/image_metadata/gps.rs:156
 msgid "S"
 msgstr "D"
 
 #. Translators: short for "east" in GPS coordinate
-#: src/image_metadata/gps.rs:165
+#: src/image_metadata/gps.rs:166
 msgid "E"
 msgstr "K"
 
 #. Translators: short for "west" in GPS coordinate
-#: src/image_metadata/gps.rs:168
+#: src/image_metadata/gps.rs:169
 msgid "W"
 msgstr "Ny"
 
 #. Translators: Unit for exposure time in seconds
-#: src/image_metadata/mod.rs:163
+#: src/image_metadata/mod.rs:164
 msgid "1\\u{2215}{}\\u{202F}s"
 msgstr "1\\u{2215}{}\\u{202F}s"
 
 #. Translators: Unit for focal length in millimeters
-#: src/image_metadata/mod.rs:188
+#: src/image_metadata/mod.rs:189
 msgid "{}\\u{202F}mm"
 msgstr "{}\\u{202F}mm"
 
@@ -500,68 +514,112 @@ msgstr "{}\\u{202F}mm"
 msgid "%x %X"
 msgstr "%x %X"
 
-#: src/util/mod.rs:179 src/window.rs:579
+#: src/util/mod.rs:179 src/window.rs:593
 msgid "Failed to restore image from trash"
 msgstr "Nem sikerült helyreállítani a képet a kukából"
 
 #: src/util/mod.rs:200
-#| msgid "Failed to delete image"
 msgid "Failed to open image"
 msgstr "Nem sikerült megnyitni a képet"
 
 #. Translators: This is a toast notification, informing the user that an image has been set as background.
-#: src/widgets/image_view.rs:658
+#: src/widgets/image_view.rs:666
 msgid "Set as background."
 msgstr "Beállítás háttérként."
 
-#: src/widgets/image_view.rs:671
+#: src/widgets/image_view.rs:679
 msgid "Could not set background."
 msgstr "Nem sikerült beállítani a hátteret."
 
-#: src/window.rs:466
+#: src/widgets/print.rs:108
+msgid "Top"
+msgstr "Fent"
+
+#: src/widgets/print.rs:109
+msgid "Center"
+msgstr "Középre"
+
+#: src/widgets/print.rs:110
+msgid "Bottom"
+msgstr "Lent"
+
+#: src/widgets/print.rs:111
+#| msgctxt "shortcut window"
+#| msgid "Pan Left"
+msgid "Left"
+msgstr "Balra"
+
+#: src/widgets/print.rs:112
+#| msgctxt "shortcut window"
+#| msgid "Pan Right"
+msgid "Right"
+msgstr "Jobbra"
+
+#. Translators: Shorthand for centimeter
+#: src/widgets/print.rs:148
+msgid "cm"
+msgstr "cm"
+
+#. Translators: Shorthand for inch
+#: src/widgets/print.rs:150
+msgid "in"
+msgstr "in"
+
+#. Translators: Shorthand for pixel
+#: src/widgets/print.rs:152
+msgid "px"
+msgstr "képpont"
+
+#. Translators: {} is a placeholder for the filename
+#: src/widgets/print.rs:355
+#| msgid "_Print…"
+msgid "Print “{}”"
+msgstr "„{}” nyomtatása"
+
+#: src/window.rs:479
 msgid "Supported image formats"
 msgstr "Támogatott képformátumok"
 
-#: src/window.rs:475
+#: src/window.rs:488
 msgid "All files"
 msgstr "Összes fájl"
 
-#: src/window.rs:482
+#: src/window.rs:495
 msgid "Open Image"
 msgstr "Kép megnyitása"
 
-#: src/window.rs:545
+#: src/window.rs:559
 msgid "Image copied to clipboard"
 msgstr "A kép lemásolva a vágólapra"
 
-#: src/window.rs:566
+#: src/window.rs:580
 msgid "Image moved to trash"
 msgstr "A kép áthelyezve a kukába"
 
-#: src/window.rs:567
+#: src/window.rs:581
 msgid "Undo"
 msgstr "Visszavonás"
 
-#: src/window.rs:594
+#: src/window.rs:608
 msgid "Failed to move image to trash"
 msgstr "Nem sikerült áthelyezni a képet a kukába"
 
-#: src/window.rs:609
+#: src/window.rs:623
 msgid "Permanently Delete Image?"
 msgstr "Véglegesen törli a képet?"
 
-#: src/window.rs:611
+#: src/window.rs:625
 msgid "The image “{}” can only be deleted permanently."
 msgstr "A(z) „{}” kép csak véglegesen törölhető."
 
-#: src/window.rs:619
+#: src/window.rs:633
 msgid "Cancel"
 msgstr "Mégse"
 
-#: src/window.rs:620
+#: src/window.rs:634
 msgid "Delete"
 msgstr "Törlés"
 
-#: src/window.rs:631
+#: src/window.rs:645
 msgid "Failed to delete image"
 msgstr "Nem sikerült törölni a képet"
