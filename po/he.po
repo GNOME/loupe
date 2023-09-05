@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2023-08-06 02:44+0000\n"
-"PO-Revision-Date: 2023-08-08 16:30+0300\n"
+"POT-Creation-Date: 2023-08-21 16:23+0000\n"
+"PO-Revision-Date: 2023-09-05 16:26+0300\n"
 "Last-Translator: Yosef Or Boczko <yoseforb@gmail.com>\n"
 "Language-Team: Hebrew <yoseforb@gmail.com>\n"
 "Language: he\n"
@@ -16,8 +16,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n==2 ? 1 : n>10 && n%10==0 ? "
-"2 : 3)\n"
-"X-Generator: Gtranslator 42.0\n"
+"2 : 3);\n"
+"X-Generator: Poedit 3.3.2\n"
 
 #: data/gtk/image_page.ui:6 data/gtk/window.ui:16
 msgid "_Open With…"
@@ -71,6 +71,7 @@ msgstr "התקרבות"
 msgid "Toggle Fullscreen"
 msgstr "שינוי מצב מסך מלא"
 
+#. Translators: Go back to previous page
 #: data/gtk/print.ui:29
 msgid "Back"
 msgstr "אחורה"
@@ -213,8 +214,8 @@ msgstr "על מציג ה_תמונות"
 
 #. If the file exists, get display name
 #: data/gtk/window.ui:64 data/org.gnome.Loupe.desktop.in.in:3
-#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:28 src/window.rs:878
-#: src/window.rs:884
+#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:28 src/window.rs:879
+#: src/window.rs:885
 msgid "Image Viewer"
 msgstr "מציג תמונות"
 
@@ -273,8 +274,8 @@ msgid "Tiled rendering for vector graphics"
 msgstr "עיבוד באריחים של גרפיקה וקטורית"
 
 #: data/org.gnome.Loupe.metainfo.xml.in.in:14
-msgid "Extendable and sandboxed raster image decoding"
-msgstr "פענוח תמונות מפת סיביות בסביבה מבודדת שאפשר להרחיב"
+msgid "Extendable and sandboxed image decoding"
+msgstr "פענוח תמונות בסביבה מבודדת שאפשר להרחיב"
 
 #: data/org.gnome.Loupe.metainfo.xml.in.in:15
 msgid "Accessible presentation of the most important metadata."
@@ -506,7 +507,7 @@ msgstr "‏‎{}\\u{202F} מ״מ"
 msgid "%x %X"
 msgstr "%x %X"
 
-#: src/util/mod.rs:179 src/window.rs:592
+#: src/util/mod.rs:179 src/window.rs:593
 msgid "Failed to restore image from trash"
 msgstr "שחזור התמונה מהאשפה נכשלה"
 
@@ -535,13 +536,13 @@ msgstr "מרכז"
 msgid "Bottom"
 msgstr "למטה"
 
-#: src/widgets/print.rs:111
 # msgctxt "shortcut window"
+#: src/widgets/print.rs:111
 msgid "Left"
 msgstr "שמאל"
 
-#: src/widgets/print.rs:112
 # msgctxt "shortcut window"
+#: src/widgets/print.rs:112
 msgid "Right"
 msgstr "ימין"
 
@@ -577,39 +578,39 @@ msgstr "כל הקבצים"
 msgid "Open Image"
 msgstr "פתיחת תמונה"
 
-#: src/window.rs:558
+#: src/window.rs:559
 msgid "Image copied to clipboard"
 msgstr "תמונה הועתקה ללוח הגזירים"
 
-#: src/window.rs:579
+#: src/window.rs:580
 msgid "Image moved to trash"
 msgstr "תמונה הוערה לאשפה"
 
-#: src/window.rs:580
+#: src/window.rs:581
 msgid "Undo"
 msgstr "ביטול"
 
-#: src/window.rs:607
+#: src/window.rs:608
 msgid "Failed to move image to trash"
 msgstr "העברת התמונה לאשפה נכשלה"
 
-#: src/window.rs:622
+#: src/window.rs:623
 msgid "Permanently Delete Image?"
 msgstr "למחוק את התמונה לצמיתות?"
 
-#: src/window.rs:624
+#: src/window.rs:625
 msgid "The image “{}” can only be deleted permanently."
 msgstr "ניתן למחוק את התמונה „{}” רק לצמיתות."
 
-#: src/window.rs:632
+#: src/window.rs:633
 msgid "Cancel"
 msgstr "ביטול"
 
-#: src/window.rs:633
+#: src/window.rs:634
 msgid "Delete"
 msgstr "מחיקה"
 
-#: src/window.rs:644
+#: src/window.rs:645
 msgid "Failed to delete image"
 msgstr "מחיקת התמונה נכשלה"
 
