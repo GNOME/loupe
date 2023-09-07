@@ -1,15 +1,15 @@
 # Turkish translation for Loupe.
 # Copyright (C) 2023 Loupe's COPYRIGHT HOLDER
 # This file is distributed under the same license as the Loupe package.
-# 
+#
 # Sabri Ünal <libreajans@gmail.com>, 2023.
 # Emin Tufan Çetin <etcetin@gmail.com>, 2023.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
-"POT-Creation-Date: 2023-08-27 16:47+0000\n"
-"PO-Revision-Date: 2023-08-28 22:35+0300\n"
+"POT-Creation-Date: 2023-09-01 19:56+0000\n"
+"PO-Revision-Date: 2023-09-04 12:36+0300\n"
 "Last-Translator: Sabri Ünal <libreajans@gmail.com>\n"
 "Language-Team: Turkish <takim@gnome.org.tr>\n"
 "Language: tr\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 3.1.1\n"
+"X-Generator: Poedit 3.2.2\n"
 
 #. Put one translator per line, in the form NAME <EMAIL>, YEAR1, YEAR2
 msgctxt "_"
@@ -752,7 +752,7 @@ msgstr "Giriş"
 #. (itstool) path: section/p
 #: C/index.page:15
 msgid ""
-"Iamge Viewer is an image viewer that supports modern image formats. It "
+"Image Viewer is an image viewer that supports modern image formats. It "
 "provides:"
 msgstr ""
 "Resim Gösterici, modern resim biçimlerini destekleyen bir resim "
