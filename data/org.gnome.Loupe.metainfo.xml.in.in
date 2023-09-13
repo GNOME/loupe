@@ -65,7 +65,7 @@
   </categories>
 
   <releases>
-    <release version="45~rc" type="development" date="2023-09-03">
+    <release version="45.0" type="development" date="2023-09-16">
       <description>
         <p>This is the first release as the new default image viewer for GNOME. Besides many other
           changes, this version brings:</p>
