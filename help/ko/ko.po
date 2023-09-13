@@ -1,0 +1,743 @@
+# Korean translation for loupe.
+# Copyright (C) 2023 loupe's COPYRIGHT HOLDER
+# This file is distributed under the same license as the loupe package.
+# Seong-ho Cho <shcho@gnome.org>, 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: loupe main\n"
+"POT-Creation-Date: 2023-09-10 17:47+0000\n"
+"PO-Revision-Date: 2023-09-13 14:00+0900\n"
+"Last-Translator: Seong-ho Cho <shcho@gnome.org>\n"
+"Language-Team: Korean <gnome-kr@googlegroups.com>\n"
+"Language: ko\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 3.3.2\n"
+
+#. Put one translator per line, in the form NAME <EMAIL>, YEAR1, YEAR2
+msgctxt "_"
+msgid "translator-credits"
+msgstr "조성호 <shcho@gnome.org>, 2023"
+
+#. (itstool) path: info/desc
+#: C/viewing-images.page:11
+msgid "Learn how to view an image at different scales and orientations."
+msgstr "그림을 다른 확대율 및 방향으로 보는 방법을 알아봅니다."
+
+#. (itstool) path: page/title
+#: C/viewing-images.page:13
+msgid "Viewing Images"
+msgstr "그림 보기"
+
+#. (itstool) path: section/title
+#: C/viewing-images.page:15
+msgid "Zooming"
+msgstr "확대"
+
+#. (itstool) path: p/media
+#. This is a reference to an external file such as an image or video. When
+#. the file changes, the md5 hash will change to let you know you need to
+#. update your localized copy. The msgstr is not used at all. Set it to
+#. whatever you like once you have updated your copy of the file.
+#: C/viewing-images.page:16
+msgctxt "_"
+msgid ""
+"external ref='figures/zoom-in-symbolic.svg' "
+"md5='7e94a36ae229fe2cfb97481937300ad3'"
+msgstr ""
+
+#. (itstool) path: p/media
+#. This is a reference to an external file such as an image or video. When
+#. the file changes, the md5 hash will change to let you know you need to
+#. update your localized copy. The msgstr is not used at all. Set it to
+#. whatever you like once you have updated your copy of the file.
+#: C/viewing-images.page:17
+msgctxt "_"
+msgid ""
+"external ref='figures/zoom-out-symbolic.svg' "
+"md5='c05c42cb3d95bf3bc7f49ccd8dcca510'"
+msgstr ""
+
+#. (itstool) path: section/p
+#: C/viewing-images.page:16
+msgid ""
+"Users can zoom in with the <gui>Zoom In</gui> (<media type=\"image\" "
+"src=\"figures/zoom-in-symbolic.svg\">zoom-in-symbolic</media>) button and "
+"zoom out with the <gui>Zoom Out</gui> (<media type=\"image\" src=\"figures/"
+"zoom-out-symbolic.svg\">zoom-out-symbolic</media>) button. They can also use "
+"the following keyboard shortcuts:"
+msgstr ""
+"<gui>확대</gui> (<media type=\"image\" src=\"figures/zoom-in-symbolic."
+"svg\">zoom-in-symbolic</media>) 단추를 눌러 확대하거나 <gui>축소</gui> "
+"(<media type=\"image\" src=\"figures/zoom-out-symbolic.svg\">zoom-out-"
+"symbolic</media>) 단추를 눌러 축소할 수 있습니다. 다음 키보드 바로가기 키를 "
+"활용할 수도 있습니다:"
+
+#. (itstool) path: item/p
+#: C/viewing-images.page:21
+msgid ""
+"<keyseq><key>Ctrl</key><key>+</key></keyseq> or <key>+</key> to zoom in."
+msgstr "<keyseq><key>Ctrl</key><key>+</key></keyseq> or <key>+</key>: 확대."
+
+#. (itstool) path: item/p
+#: C/viewing-images.page:24
+msgid ""
+"<keyseq><key>Ctrl</key><key>-</key></keyseq> or <key>-</key> to zoom out."
+msgstr "<keyseq><key>Ctrl</key><key>-</key></keyseq> or <key>-</key>: 축소."
+
+#. (itstool) path: item/p
+#: C/viewing-images.page:27
+msgid ""
+"<keyseq><key>Ctrl</key><key>0</key></keyseq> or <key>0</key> to zoom to the "
+"best fitting size for the window size."
+msgstr ""
+"<keyseq><key>Ctrl</key><key>0</key></keyseq> or <key>0</key>: 창 크기에 맞게 "
+"확대율 조정."
+
+#. (itstool) path: item/p
+#: C/viewing-images.page:30
+msgid ""
+"<keyseq><key>Ctrl</key><key>1</key></keyseq> or <key>1</key> to zoom to the "
+"image's original scale."
+msgstr ""
+"<keyseq><key>Ctrl</key><key>1</key></keyseq> or <key>1</key>: 그림 원래 크기"
+"로 복귀."
+
+#. (itstool) path: item/p
+#: C/viewing-images.page:33
+msgid ""
+"<keyseq><key>Ctrl</key><key>2</key></keyseq> or <key>2</key> to zoom to 200% "
+"of the image's original scale."
+msgstr ""
+"<keyseq><key>Ctrl</key><key>2</key></keyseq> or <key>2</key>: 2배 확대."
+
+#. (itstool) path: section/p
+#: C/viewing-images.page:36
+msgid ""
+"Touchpad and touchscreen users can also zoom with a two-finger pinch gesture."
+msgstr ""
+"터치패드와 터치 화면 사용자는 두 손가락 오므리기 동작으로 확대할 수 있습니다."
+
+#. (itstool) path: section/title
+#: C/viewing-images.page:39
+msgid "Panning"
+msgstr "이동"
+
+#. (itstool) path: section/p
+#: C/viewing-images.page:40
+msgid ""
+"Mouse and touchpad users can pan the view when zoomed in by clicking and "
+"dragging the image. Touchscreen users can use a single-finger drag gesture "
+"to pan the view. Users with a keyboard can also use the following keyboard "
+"shortcuts:"
+msgstr ""
+"마우스와 터치패드 사용자는 확대한 그림을 누르고 끌어 위치를 옮기면서 볼 수 있"
+"습니다. 터치 화면 사용자는 한손가락 끌기 동작으로 보기 화면을 움직일 수 있습"
+"니다. 키보드 사용자는 다음 키보드 바로가기 키를 활용할 수도 있습니다."
+
+#. (itstool) path: item/p
+#: C/viewing-images.page:45
+msgid "<keyseq><key>Ctrl</key><key>←</key></keyseq> to pan left."
+msgstr "<keyseq><key>Ctrl</key><key>←</key></keyseq>: 좌측으로 움직이기."
+
+#. (itstool) path: item/p
+#: C/viewing-images.page:48
+msgid "<keyseq><key>Ctrl</key><key>→</key></keyseq> to pan right."
+msgstr "<keyseq><key>Ctrl</key><key>→</key></keyseq>: 우측으로 움직이기."
+
+#. (itstool) path: item/p
+#: C/viewing-images.page:51
+msgid "<keyseq><key>Ctrl</key><key>↑</key></keyseq> to pan up."
+msgstr "<keyseq><key>Ctrl</key><key>↑</key></keyseq>: 위쪽으로 움직이기."
+
+#. (itstool) path: item/p
+#: C/viewing-images.page:54
+msgid "<keyseq><key>Ctrl</key><key>↓</key></keyseq> to pan down."
+msgstr "<keyseq><key>Ctrl</key><key>↓</key></keyseq>: 아래쪽으로 움직이기."
+
+#. (itstool) path: section/title
+#: C/viewing-images.page:59
+msgid "Rotating"
+msgstr "회전"
+
+#. (itstool) path: p/media
+#. This is a reference to an external file such as an image or video. When
+#. the file changes, the md5 hash will change to let you know you need to
+#. update your localized copy. The msgstr is not used at all. Set it to
+#. whatever you like once you have updated your copy of the file.
+#: C/viewing-images.page:60
+msgctxt "_"
+msgid ""
+"external ref='figures/object-rotate-right-symbolic.svg' "
+"md5='0e69268f1a3a3c0c43c9ae3e193fd3d7'"
+msgstr ""
+
+#. (itstool) path: p/media
+#. This is a reference to an external file such as an image or video. When
+#. the file changes, the md5 hash will change to let you know you need to
+#. update your localized copy. The msgstr is not used at all. Set it to
+#. whatever you like once you have updated your copy of the file.
+#: C/viewing-images.page:61
+msgctxt "_"
+msgid ""
+"external ref='figures/object-rotate-left-symbolic.svg' "
+"md5='8abe2a1bc5871a15c2f6534d19a4c7ee'"
+msgstr ""
+
+#. (itstool) path: section/p
+#: C/viewing-images.page:60
+msgid ""
+"Users can use the <gui>Rotate Right</gui> (<media type=\"image\" "
+"src=\"figures/object-rotate-right-symbolic.svg\">object-rotate-right-"
+"symbolic</media>) and <gui>Rotate Left</gui> (<media type=\"image\" "
+"src=\"figures/object-rotate-left-symbolic.svg\">object-rotate-left-symbolic</"
+"media>) buttons under <gui style=\"menuitem\">Rotate</gui> in the main menu "
+"to rotate clockwise and counter-clockwise. They can also use the following "
+"keyboard shortcuts:"
+msgstr ""
+"여러분은 주 메뉴의 <gui style=\"menuitem\">회전</gui> 에서 <gui>우측 회전</"
+"gui>(<media type=\"image\" src=\"figures/object-rotate-right-symbolic."
+"svg\">object-rotate-right-symbolic</media>) 및 <gui>좌측 회전</gui> (<media "
+"type=\"image\" src=\"figures/object-rotate-left-symbolic.svg\">object-rotate-"
+"left-symbolic</media>) 단추로 시계 방향 및 시계 반대 방향으로 회전할 수 있습"
+"니다. 다음 키보드 바로 가기 키를 활용할 수도 있습니다:"
+
+#. (itstool) path: item/p
+#: C/viewing-images.page:66
+msgid "<keyseq><key>Ctrl</key><key>R</key></keyseq> to rotate clockwise."
+msgstr "<keyseq><key>Ctrl</key><key>R</key></keyseq>: 시계 방향 회전."
+
+#. (itstool) path: item/p
+#: C/viewing-images.page:69
+msgid ""
+"<keyseq><key>Ctrl</key><key>Shift</key><key>R</key></keyseq> to rotate "
+"counter-clockwise."
+msgstr ""
+"<keyseq><key>Ctrl</key><key>Shift</key><key>R</key></keyseq>: 시계 반대 방향 "
+"회전."
+
+#. (itstool) path: section/p
+#: C/viewing-images.page:72
+msgid ""
+"Touchpad and touchscreen users can also use a two-finger rotate gesture."
+msgstr ""
+"터치패드와 터치 화면 사용자는 두 손가락 회전 동작을 사용할 수 있습니다."
+
+#. (itstool) path: section/title
+#: C/viewing-images.page:75
+msgid "Fullscreen"
+msgstr "전체 화면"
+
+#. (itstool) path: p/media
+#. This is a reference to an external file such as an image or video. When
+#. the file changes, the md5 hash will change to let you know you need to
+#. update your localized copy. The msgstr is not used at all. Set it to
+#. whatever you like once you have updated your copy of the file.
+#: C/viewing-images.page:77
+msgctxt "_"
+msgid ""
+"external ref='figures/view-fullscreen-symbolic.svg' "
+"md5='8089b2761abd6116e6185e06bc885da1'"
+msgstr ""
+
+#. (itstool) path: p/media
+#. This is a reference to an external file such as an image or video. When
+#. the file changes, the md5 hash will change to let you know you need to
+#. update your localized copy. The msgstr is not used at all. Set it to
+#. whatever you like once you have updated your copy of the file.
+#: C/viewing-images.page:77
+msgctxt "_"
+msgid ""
+"external ref='figures/view-restore-symbolic.svg' "
+"md5='d00df849240f2d92c7fa1429d3ae8254'"
+msgstr ""
+
+#. (itstool) path: section/p
+#: C/viewing-images.page:76
+msgid ""
+"Image Viewer has a simple fullscreen mode. Users can toggle fullscreen mode "
+"by pressing the <gui>Toggle Fullscreen</gui> (<media type=\"image\" "
+"src=\"figures/view-fullscreen-symbolic.svg\">view-fullscreen-symbolic</"
+"media> / <media type=\"image\" src=\"figures/view-restore-symbolic."
+"svg\">view-restore-symbolic</media>) button. Keyboard users can also use "
+"<key>F11</key> to toggle fullscreen mode."
+msgstr ""
+"그림 보기 앱에는 간단한 전체 화면 모드가 있습니다. <gui>전체 화면 전환</"
+"gui>  (<media type=\"image\" src=\"figures/view-fullscreen-symbolic."
+"svg\">view-fullscreen-symbolic</media> / <media type=\"image\" src=\"figures/"
+"view-restore-symbolic.svg\">view-restore-symbolic</media>) 단추를 눌러 전체 "
+"화면 모드로 전환할 수 있습니다. 키보드 사용자는 <key>F11</key> 키로 전체 화"
+"면 모드를 전환할 수 있습니다."
+
+#. (itstool) path: page/title
+#: C/supported-formats.page:12
+msgid "Supported Image Formats"
+msgstr "지원 그림 형식"
+
+#. (itstool) path: page/p
+#: C/supported-formats.page:13
+msgid ""
+"Image Viewer uses <link href=\"https://gitlab.gnome.org/sophie-h/"
+"glycin\">glycin</link> for loading images. You can check <link "
+"href=\"https://gitlab.gnome.org/sophie-h/glycin#supported-image-"
+"formats\">glycin's README</link> for more details about the formats "
+"supported by the default loaders and the features provided by each format."
+msgstr ""
+"그림 보기 앱에서는 그림을 불러올 때 <link href=\"https://gitlab.gnome.org/"
+"sophie-h/glycin\">글라이신</link>을 활용합니다. 기본 불러오기 프로그램에서 지"
+"원하는 지원 형식과 각 형식에서 제공하는 기능을 더 알아보려면 <link "
+"href=\"https://gitlab.gnome.org/sophie-h/glycin#supported-image-formats\">글"
+"라이신 README</link>를 살펴볼 수 있습니다."
+
+#. (itstool) path: page/p
+#: C/supported-formats.page:17
+msgid ""
+"Glycin's loaders are configurable, and new loaders can be created by third-"
+"parties, so the supported formats on your system may vary."
+msgstr ""
+"글라이신 불러오기 프로그램은 원하는 방식으로 동작하도록 설정할 수 있고 제 3"
+"자 공급자가 새 프로그램으로 만들 수 있어, 시스템에서 지원하는 형식은 다를 수 "
+"있습니다."
+
+#. (itstool) path: info/desc
+#: C/opening-images.page:11
+msgid ""
+"Open and browse through pictures via the file chooser, file manager, or drag "
+"and drop."
+msgstr ""
+"파일 열기 대화상자, 파일 관리자에서 그림을 찾아서 열거나 끌어다 놓습니다."
+
+#. (itstool) path: page/title
+#: C/opening-images.page:13
+msgid "Opening Images"
+msgstr "그림 열기"
+
+#. (itstool) path: section/title
+#: C/opening-images.page:15
+msgid "Opening Files"
+msgstr "파일 열기"
+
+#. (itstool) path: section/title
+#: C/opening-images.page:17
+msgid "From The File Chooser"
+msgstr "파일 선택 대화상자에서"
+
+#. (itstool) path: section/p
+#: C/opening-images.page:18
+msgid ""
+"Image Viewer allows users to pick images with the file chooser at any time."
+msgstr "그림 보기에서는 언제든 파일 선택 대화상자에서 그림을 고를 수 있습니다."
+
+#. (itstool) path: item/p
+#: C/opening-images.page:21
+msgid ""
+"Click the <gui>Open Files…</gui> button, the <gui style=\"menuitem\">Open…</"
+"gui> menu item, or press <keyseq><key>Ctrl</key><key>O</key></keyseq>. The "
+"<gui>Open Image</gui> file dialog will appear."
+msgstr ""
+"<gui>파일 열기…</gui>단추, <gui style=\"menuitem\">열기…</gui> 메뉴 항목을 누"
+"르거나 <keyseq><key>Ctrl</key><key>O</key></keyseq> 키를 누릅니다. <gui>그림 "
+"열기</gui> 파일 대화상자가 나타납니다."
+
+#. (itstool) path: item/p
+#: C/opening-images.page:24
+msgid "Select the image you want to open, then click <gui>Open</gui>."
+msgstr "열려는 그림을 선택하고 <gui>열기</gui>를 누릅니다."
+
+#. (itstool) path: section/p
+#: C/opening-images.page:27
+msgid ""
+"Image Viewer will open with the selected image showing, and the other images "
+"in the directory can be reached by browsing."
+msgstr ""
+"그림 보기에서 화면에 나타난대로 선택한 그림을 열고, 디렉터리에 있는 다른 그림"
+"은 탐색 기능으로 접근할 수 있습니다."
+
+#. (itstool) path: section/title
+#: C/opening-images.page:30
+msgid "From The File Manager"
+msgstr "파일 관리자에서"
+
+#. (itstool) path: section/p
+#: C/opening-images.page:31
+msgid "Users can also open images in Loupe directly from their file manager."
+msgstr "사용자는 파일 관리자에서 루페로 바로 그림을 열 수도 있습니다."
+
+#. (itstool) path: item/p
+#: C/opening-images.page:34
+msgid "Open your preferred file manager application."
+msgstr "원하는 파일관리자 프로그램을 엽니다."
+
+#. (itstool) path: item/p
+#: C/opening-images.page:37
+msgid "Navigate to the image you want to view in Loupe."
+msgstr "루페에서 보려는 그림을 탐색합니다"
+
+#. (itstool) path: item/p
+#: C/opening-images.page:40
+msgid ""
+"If Image Viewer is set as your default image viewer, use the file manager's "
+"function for opening files."
+msgstr ""
+"그림 보기를 기본 그림 보기 프로그램으로 설정했다면, 파일 관리자의 파일 열기 "
+"기능을 활용합니다."
+
+#. (itstool) path: item/p
+#: C/opening-images.page:43
+msgid ""
+"If Image Viewer is not your default image viewer, you will need to select "
+"<gui>Open With…</gui> or similar in the file manager, and pick Image Viewer."
+msgstr ""
+"그림 보기를 기본 그림 보기 프로그램으로 설정하지 않았다면, <gui>다른 프로그램"
+"으로 열기…</gui>를 선택하거나 파일 관리자에서 비슷한 항목을 선택하고 그림 보"
+"기 프로그램을 고릅니다."
+
+#. (itstool) path: section/title
+#: C/opening-images.page:48 C/sending-to-other-apps.page:37
+msgid "Drag &amp; Drop"
+msgstr "끌어다 놓기"
+
+#. (itstool) path: section/p
+#: C/opening-images.page:49
+msgid ""
+"Image Viewer also accepts local image files dragged from other applications."
+msgstr "그림 보기는 다른 프로그램에서 끌어온 로컬 그림 파일도 받아들입니다."
+
+#. (itstool) path: item/p
+#: C/opening-images.page:52
+msgid "In the source application, begin dragging the image."
+msgstr "원본 프로그램에서 그림 끌기를 시작합니다."
+
+#. (itstool) path: item/p
+#: C/opening-images.page:55
+msgid ""
+"Drag the image over the Loupe main window. A blue highlighted area should "
+"appear."
+msgstr "그림을 루페 메인 창에 끌어옵니다. 푸른색 강조 영역이 나타나야 합니다."
+
+#. (itstool) path: item/p
+#: C/opening-images.page:58
+msgid "Drop the image while it's still hovered over the main window."
+msgstr "메인 창 위에 두었을 때 끌던 그림을 놓습니다."
+
+#. (itstool) path: section/title
+#: C/opening-images.page:64
+msgid "Browsing"
+msgstr "탐색"
+
+#. (itstool) path: p/media
+#. This is a reference to an external file such as an image or video. When
+#. the file changes, the md5 hash will change to let you know you need to
+#. update your localized copy. The msgstr is not used at all. Set it to
+#. whatever you like once you have updated your copy of the file.
+#: C/opening-images.page:67
+msgctxt "_"
+msgid ""
+"external ref='figures/go-previous-symbolic.svg' "
+"md5='2ed7437ba9a336b6c6cf645b9eb4ed8b'"
+msgstr ""
+
+#. (itstool) path: p/media
+#. This is a reference to an external file such as an image or video. When
+#. the file changes, the md5 hash will change to let you know you need to
+#. update your localized copy. The msgstr is not used at all. Set it to
+#. whatever you like once you have updated your copy of the file.
+#: C/opening-images.page:68
+msgctxt "_"
+msgid ""
+"external ref='figures/go-next-symbolic.svg' "
+"md5='9c98c035765d2edc185ef9b37566e7ce'"
+msgstr ""
+
+#. (itstool) path: section/p
+#: C/opening-images.page:65
+msgid ""
+"When opening an image from the file chooser or file manager, Loupe will load "
+"other files in the parent directory of the image and sort them in "
+"alphabetical order. Users can browse the other images in the directory with "
+"the <gui>Previous Image</gui> (<media type=\"image\" src=\"figures/go-"
+"previous-symbolic.svg\">go-previous-symbolic</media>) and <gui>Next Image</"
+"gui> (<media type=\"image\" src=\"figures/go-next-symbolic.svg\">go-next-"
+"symbolic</media>) buttons. Keyboard users can also use the following "
+"shortcuts:"
+msgstr ""
+"파일 열기 대화상자 또는 파일 관리자에서 그림을 열 때, 루페에서는 그림의 상위 "
+"디렉터리에 있는 다른 파일도 불러오고 철자순으로 정렬합니다. 여러분은 디렉터리"
+"에 있는 다른 이미지를 <gui>이전 그림</gui> (<media type=\"image\" "
+"src=\"figures/go-previous-symbolic.svg\">go-previous-symbolic</media>) 단추"
+"와 <gui>다음 그림</gui> (<media type=\"image\" src=\"figures/go-next-"
+"symbolic.svg\">go-next-symbolic</media>)  단추로 탐색할 수 있습니다. 키보드 "
+"사용자는 다음 키보드 바로 가기 키를 활용할 수 있습니다:"
+
+#. (itstool) path: item/p
+#: C/opening-images.page:72
+msgid "<key>→</key> to go to the next image."
+msgstr "<key>→</key> 키로 다음 그림으로 이동합니다."
+
+#. (itstool) path: item/p
+#: C/opening-images.page:75
+msgid "<key>←</key> to go to the previous image."
+msgstr "<key>←</key> 키로 이전 그림으로 이동합니다."
+
+#. (itstool) path: item/p
+#: C/opening-images.page:78
+msgid "<key>Home</key> to jump to the first image in the directory."
+msgstr "<key>Home</key>: 디렉터리 처음 그림 표시."
+
+#. (itstool) path: item/p
+#: C/opening-images.page:81
+msgid "<key>End</key> to jump to the last image in the directory."
+msgstr "<key>End</key>: 디렉터리 마지막 그림 표시."
+
+#. (itstool) path: info/desc
+#: C/trashing-images.page:11
+msgid "Move unwanted images to the trash directly from Image Viewer."
+msgstr "원하지 않는 그림은 그림보기 프로그램에서 휴지통으로 바로 이동합니다."
+
+#. (itstool) path: page/title
+#: C/trashing-images.page:13
+msgid "Moving Images to Trash"
+msgstr "그림을 휴지통으로 이동"
+
+#. (itstool) path: p/media
+#. This is a reference to an external file such as an image or video. When
+#. the file changes, the md5 hash will change to let you know you need to
+#. update your localized copy. The msgstr is not used at all. Set it to
+#. whatever you like once you have updated your copy of the file.
+#: C/trashing-images.page:15
+msgctxt "_"
+msgid ""
+"external ref='figures/user-trash-symbolic.svg' "
+"md5='975d41b3e24867a2a26194cd871e36cc'"
+msgstr ""
+
+#. (itstool) path: page/p
+#: C/trashing-images.page:14
+msgid ""
+"If a user wants to remove an image, they can press the <gui>Move To Trash</"
+"gui> (<media type=\"image\" src=\"figures/user-trash-symbolic.svg\">user-"
+"trash-symbolic</media>) button. A toast will appear allowing them to restore "
+"the image with the <gui>Undo</gui> button."
+msgstr ""
+"그림을 제거할 때 <gui>휴지통으로 이동</gui> (<media type=\"image\" "
+"src=\"figures/user-trash-symbolic.svg\">user-trash-symbolic</media>) 단추를 "
+"누를 수 있습니다. 토스트 단추에서 <gui>실행 취소</gui> 단추로 그림을 복원할 "
+"수 있음을 나타냅니다."
+
+#. (itstool) path: info/desc
+#: C/sending-to-other-apps.page:11
+msgid ""
+"Learn how to send, copy, and drag images from Image Viewer to other apps."
+msgstr ""
+"그림 보기 프로그램에서 다른 앱으로 그림을 보내고 복사하고 끌어다놓는 방법을 "
+"알아봅니다."
+
+#. (itstool) path: page/title
+#: C/sending-to-other-apps.page:13
+msgid "Sending Images To Other Apps"
+msgstr "다른 프로그램으로 그림 보내기"
+
+#. (itstool) path: section/title
+#: C/sending-to-other-apps.page:15
+msgid "\"Open With…\" Action"
+msgstr "\"다음 프로그램으로 열기…\" 동작"
+
+#. (itstool) path: item/p
+#: C/sending-to-other-apps.page:18
+msgid ""
+"Click the <gui style=\"menuitem\">Open With…</gui> menu item. A dialog with "
+"a list of applications will appear."
+msgstr ""
+"<gui style=\"menuitem\">다음 프로그램으로 열기…</gui>메뉴 항목을 누릅니다. 그"
+"러면 프로그램 목록 대화상자가 나타납니다."
+
+#. (itstool) path: item/p
+#: C/sending-to-other-apps.page:21
+msgid "Select the application you want to open the image with."
+msgstr "그림을 열 프로그램을 선택합니다."
+
+#. (itstool) path: section/title
+#: C/sending-to-other-apps.page:26
+msgid "Copy &amp; Paste"
+msgstr "복사 및 붙여넣기"
+
+#. (itstool) path: p/media
+#. This is a reference to an external file such as an image or video. When
+#. the file changes, the md5 hash will change to let you know you need to
+#. update your localized copy. The msgstr is not used at all. Set it to
+#. whatever you like once you have updated your copy of the file.
+#: C/sending-to-other-apps.page:29
+msgctxt "_"
+msgid ""
+"external ref='figures/edit-copy-symbolic.svg' "
+"md5='e998fb903df32b921d08ef52e0ea6555'"
+msgstr ""
+
+#. (itstool) path: item/p
+#: C/sending-to-other-apps.page:29
+msgid ""
+"Click the <gui>Copy to Clipboard</gui> (<media type=\"image\" src=\"figures/"
+"edit-copy-symbolic.svg\">edit-copy-symbolic</media>) button. A toast "
+"notifying you that the image is in your clipboard will appear."
+msgstr ""
+"<gui>클립보드로 복사</gui> (<media type=\"image\" src=\"figures/edit-copy-"
+"symbolic.svg\">edit-copy-symbolic</media>) 단추를 누릅니다. 토스트 단추에서 "
+"클립보드에 그림이 들어갔음을 알려줍니다."
+
+#. (itstool) path: item/p
+#: C/sending-to-other-apps.page:32
+msgid "Paste your image in your application of choice."
+msgstr "원하는 프로그램으로 그림을 붙여넣습니다."
+
+#. (itstool) path: item/p
+#: C/sending-to-other-apps.page:40
+msgid "Zoom out from the image completely."
+msgstr "그림 축소를 완벽하게 수행합니다."
+
+#. (itstool) path: item/p
+#: C/sending-to-other-apps.page:43
+msgid "Click and hold the selected image."
+msgstr "선택한 그림을 누른 채로 둡니다."
+
+#. (itstool) path: item/p
+#: C/sending-to-other-apps.page:46
+msgid "Drag the image to your application of choice."
+msgstr "그림을 원하는 프로그램으로 끌고갑니다."
+
+#. (itstool) path: info/desc
+#: C/image-properties.page:11
+msgid "View detailed properties of the selected image."
+msgstr "선택한 그림의 상세 속성을 봅니다."
+
+#. (itstool) path: page/title
+#: C/image-properties.page:13
+msgid "Image Properties"
+msgstr "그림 속성"
+
+#. (itstool) path: page/p
+#: C/image-properties.page:14
+msgid ""
+"Image Viewer allows users to view an image's properties. All images will "
+"have the following basic properties:"
+msgstr ""
+"그림 보기에서 그림 속성을 볼 수 있습니다. 모든 그림에는 다음 기본 속성 값이 "
+"있습니다:"
+
+#. (itstool) path: item/p
+#: C/image-properties.page:18
+msgid "Image size"
+msgstr "그림 크기"
+
+#. (itstool) path: item/p
+#: C/image-properties.page:21
+msgid "Image format"
+msgstr "그림 형식"
+
+#. (itstool) path: item/p
+#: C/image-properties.page:24
+msgid "File size"
+msgstr "파일 크기"
+
+#. (itstool) path: item/p
+#: C/image-properties.page:27
+msgid "File creation date"
+msgstr "파일 생성일"
+
+#. (itstool) path: item/p
+#: C/image-properties.page:30
+msgid "File modification date"
+msgstr "파일 수정일"
+
+#. (itstool) path: page/p
+#: C/image-properties.page:33
+msgid ""
+"If the file has <link href=\"https://en.wikipedia.org/wiki/Exif\">Exif</"
+"link> metadata, it will be shown below the basic properties."
+msgstr ""
+"파일에 <link href=\"https://en.wikipedia.org/wiki/Exif\">EXIF</link> 메타데이"
+"터가 있으면, 다음 기본 속성을 보여줍니다."
+
+#. (itstool) path: p/media
+#. This is a reference to an external file such as an image or video. When
+#. the file changes, the md5 hash will change to let you know you need to
+#. update your localized copy. The msgstr is not used at all. Set it to
+#. whatever you like once you have updated your copy of the file.
+#: C/image-properties.page:36
+msgctxt "_"
+msgid ""
+"external ref='figures/help-about-symbolic.svg' "
+"md5='51c74093b3e862d1f839cc377aa86837'"
+msgstr ""
+
+#. (itstool) path: page/p
+#: C/image-properties.page:35
+msgid ""
+"To view the selected image's properties, press the <gui>Image Properties</"
+"gui> (<media type=\"image\" src=\"figures/help-about-symbolic.svg\">help-"
+"about-symbolic</media>) button."
+msgstr ""
+"선택한 그림 속성을 보려면 <gui>그림 속성</gui> (<media type=\"image\" "
+"src=\"figures/help-about-symbolic.svg\">help-about-symbolic</media>) 단추를 "
+"누릅니다"
+
+#. (itstool) path: info/desc
+#: C/index.page:10
+msgid "Browse through your images and inspect their metadata."
+msgstr "그림을 탐색해보고 그림의 메타데이터를 살펴봅니다."
+
+#. (itstool) path: page/title
+#: C/index.page:12
+msgid "<_:media-1/> Image Viewer (Loupe)"
+msgstr "<_:media-1/> 그림 보기 (루페)"
+
+#. (itstool) path: section/title
+#: C/index.page:14
+msgid "Introduction"
+msgstr "개요"
+
+#. (itstool) path: section/p
+#: C/index.page:15
+msgid ""
+"Image Viewer is an image viewer that supports modern image formats. It "
+"provides:"
+msgstr ""
+"그림 보기는 최신 그림 형식을 지원하는 그림 보기 앱입니다. 다음 기능을 제공합"
+"니다: "
+
+#. (itstool) path: item/p
+#: C/index.page:18
+msgid "Fast GPU accelerated image rendering with tiled rendering for SVGs"
+msgstr "SVG 렌더링시 타일 렌더링 기반 고속 GPU 가속 그림 렌더링"
+
+#. (itstool) path: item/p
+#: C/index.page:21
+msgid "Extendable and sandboxed raster image decoding"
+msgstr "확장, 샌드박싱 래스터 그림 디코딩"
+
+#. (itstool) path: item/p
+#: C/index.page:24
+msgid "Extensive support for touchpad and touchscreen gestures"
+msgstr "터치패드 및 터치 화면 동작 확장 지원"
+
+#. (itstool) path: item/p
+#: C/index.page:27
+msgid "Accessible presentation of the most important metadata"
+msgstr "가장 중요한 메타데이터의 접근이 용이한 표시"
+
+#. (itstool) path: section/title
+#: C/index.page:32
+msgid "Getting Started"
+msgstr "시작하기"
+
+#. (itstool) path: section/title
+#: C/index.page:35
+msgid "Additional Features"
+msgstr "추가 기능"
+
+#. (itstool) path: section/title
+#: C/index.page:38
+msgid "Technical Information"
+msgstr "기술 정보"
