@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: loupe main\n"
 "POT-Creation-Date: 2023-09-10 17:47+0000\n"
-"PO-Revision-Date: 2023-09-13 14:00+0900\n"
+"PO-Revision-Date: 2023-09-14 11:26+0900\n"
 "Last-Translator: Seong-ho Cho <shcho@gnome.org>\n"
 "Language-Team: Korean <gnome-kr@googlegroups.com>\n"
 "Language: ko\n"
@@ -48,6 +48,8 @@ msgid ""
 "external ref='figures/zoom-in-symbolic.svg' "
 "md5='7e94a36ae229fe2cfb97481937300ad3'"
 msgstr ""
+"external ref='figures/zoom-in-symbolic.svg' "
+"md5='7e94a36ae229fe2cfb97481937300ad3'"
 
 #. (itstool) path: p/media
 #. This is a reference to an external file such as an image or video. When
@@ -60,6 +62,8 @@ msgid ""
 "external ref='figures/zoom-out-symbolic.svg' "
 "md5='c05c42cb3d95bf3bc7f49ccd8dcca510'"
 msgstr ""
+"external ref='figures/zoom-out-symbolic.svg' "
+"md5='c05c42cb3d95bf3bc7f49ccd8dcca510'"
 
 #. (itstool) path: section/p
 #: C/viewing-images.page:16
@@ -136,7 +140,7 @@ msgid ""
 msgstr ""
 "마우스와 터치패드 사용자는 확대한 그림을 누르고 끌어 위치를 옮기면서 볼 수 있"
 "습니다. 터치 화면 사용자는 한손가락 끌기 동작으로 보기 화면을 움직일 수 있습"
-"니다. 키보드 사용자는 다음 키보드 바로가기 키를 활용할 수도 있습니다."
+"니다. 키보드 사용자는 다음 키보드 바로가기 키를 활용할 수도 있습니다:"
 
 #. (itstool) path: item/p
 #: C/viewing-images.page:45
@@ -174,6 +178,8 @@ msgid ""
 "external ref='figures/object-rotate-right-symbolic.svg' "
 "md5='0e69268f1a3a3c0c43c9ae3e193fd3d7'"
 msgstr ""
+"external ref='figures/object-rotate-right-symbolic.svg' "
+"md5='0e69268f1a3a3c0c43c9ae3e193fd3d7'"
 
 #. (itstool) path: p/media
 #. This is a reference to an external file such as an image or video. When
@@ -186,6 +192,8 @@ msgid ""
 "external ref='figures/object-rotate-left-symbolic.svg' "
 "md5='8abe2a1bc5871a15c2f6534d19a4c7ee'"
 msgstr ""
+"external ref='figures/object-rotate-left-symbolic.svg' "
+"md5='8abe2a1bc5871a15c2f6534d19a4c7ee'"
 
 #. (itstool) path: section/p
 #: C/viewing-images.page:60
@@ -242,6 +250,8 @@ msgid ""
 "external ref='figures/view-fullscreen-symbolic.svg' "
 "md5='8089b2761abd6116e6185e06bc885da1'"
 msgstr ""
+"external ref='figures/view-fullscreen-symbolic.svg' "
+"md5='8089b2761abd6116e6185e06bc885da1'"
 
 #. (itstool) path: p/media
 #. This is a reference to an external file such as an image or video. When
@@ -254,6 +264,8 @@ msgid ""
 "external ref='figures/view-restore-symbolic.svg' "
 "md5='d00df849240f2d92c7fa1429d3ae8254'"
 msgstr ""
+"external ref='figures/view-restore-symbolic.svg' "
+"md5='d00df849240f2d92c7fa1429d3ae8254'"
 
 #. (itstool) path: section/p
 #: C/viewing-images.page:76
@@ -369,12 +381,12 @@ msgstr "사용자는 파일 관리자에서 루페로 바로 그림을 열 수�
 #. (itstool) path: item/p
 #: C/opening-images.page:34
 msgid "Open your preferred file manager application."
-msgstr "원하는 파일관리자 프로그램을 엽니다."
+msgstr "원하는 파일 관리자 프로그램을 엽니다."
 
 #. (itstool) path: item/p
 #: C/opening-images.page:37
 msgid "Navigate to the image you want to view in Loupe."
-msgstr "루페에서 보려는 그림을 탐색합니다"
+msgstr "루페에서 보려는 그림을 탐색합니다."
 
 #. (itstool) path: item/p
 #: C/opening-images.page:40
@@ -439,6 +451,8 @@ msgid ""
 "external ref='figures/go-previous-symbolic.svg' "
 "md5='2ed7437ba9a336b6c6cf645b9eb4ed8b'"
 msgstr ""
+"external ref='figures/go-previous-symbolic.svg' "
+"md5='2ed7437ba9a336b6c6cf645b9eb4ed8b'"
 
 #. (itstool) path: p/media
 #. This is a reference to an external file such as an image or video. When
@@ -451,6 +465,8 @@ msgid ""
 "external ref='figures/go-next-symbolic.svg' "
 "md5='9c98c035765d2edc185ef9b37566e7ce'"
 msgstr ""
+"external ref='figures/go-next-symbolic.svg' "
+"md5='9c98c035765d2edc185ef9b37566e7ce'"
 
 #. (itstool) path: section/p
 #: C/opening-images.page:65
@@ -513,6 +529,8 @@ msgid ""
 "external ref='figures/user-trash-symbolic.svg' "
 "md5='975d41b3e24867a2a26194cd871e36cc'"
 msgstr ""
+"external ref='figures/user-trash-symbolic.svg' "
+"md5='975d41b3e24867a2a26194cd871e36cc'"
 
 #. (itstool) path: page/p
 #: C/trashing-images.page:14
@@ -575,6 +593,8 @@ msgid ""
 "external ref='figures/edit-copy-symbolic.svg' "
 "md5='e998fb903df32b921d08ef52e0ea6555'"
 msgstr ""
+"external ref='figures/edit-copy-symbolic.svg' "
+"md5='e998fb903df32b921d08ef52e0ea6555'"
 
 #. (itstool) path: item/p
 #: C/sending-to-other-apps.page:29
@@ -671,6 +691,8 @@ msgid ""
 "external ref='figures/help-about-symbolic.svg' "
 "md5='51c74093b3e862d1f839cc377aa86837'"
 msgstr ""
+"external ref='figures/help-about-symbolic.svg' "
+"md5='51c74093b3e862d1f839cc377aa86837'"
 
 #. (itstool) path: page/p
 #: C/image-properties.page:35
@@ -681,7 +703,7 @@ msgid ""
 msgstr ""
 "선택한 그림 속성을 보려면 <gui>그림 속성</gui> (<media type=\"image\" "
 "src=\"figures/help-about-symbolic.svg\">help-about-symbolic</media>) 단추를 "
-"누릅니다"
+"누릅니다."
 
 #. (itstool) path: info/desc
 #: C/index.page:10
@@ -705,7 +727,7 @@ msgid ""
 "provides:"
 msgstr ""
 "그림 보기는 최신 그림 형식을 지원하는 그림 보기 앱입니다. 다음 기능을 제공합"
-"니다: "
+"니다:"
 
 #. (itstool) path: item/p
 #: C/index.page:18
