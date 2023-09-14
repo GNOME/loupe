@@ -1,0 +1,609 @@
+# Esperanto translation for loupe.
+# Copyright (C) 2023 loupe's COPYRIGHT HOLDER
+# This file is distributed under the same license as the loupe package.
+# Kristjan SCHMIDT <kristjan.schmidt@googlemail.com>, 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: loupe main\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
+"POT-Creation-Date: 2023-09-14 05:44+0000\n"
+"PO-Revision-Date: 2023-09-14 15:04+0200\n"
+"Last-Translator: Kristjan SCHMIDT <kristjan.schmidt@googlemail.com>\n"
+"Language-Team: Esperanto <gnome-eo-list@gnome.org>\n"
+"Language: eo\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"X-Generator: Gtranslator 42.0\n"
+
+#: data/gtk/image_page.ui:6 data/gtk/window.ui:16
+msgid "_Open With…"
+msgstr "Mal_fermi per…"
+
+#: data/gtk/image_page.ui:14 data/gtk/window.ui:24
+msgid "_Print…"
+msgstr "_Presi…"
+
+#: data/gtk/image_page.ui:18
+msgid "_Copy"
+msgstr "_Kopii"
+
+#: data/gtk/image_page.ui:23 data/gtk/window.ui:29
+msgid "Rotate"
+msgstr "Rotacii"
+
+#: data/gtk/image_page.ui:34 data/gtk/window.ui:40
+msgid "_Set as Background…"
+msgstr "_Agordi kiel fono…"
+
+#: data/gtk/image_page.ui:63
+msgid "Could not Load Image"
+msgstr "Ne eblis ŝargi la bildon"
+
+#: data/gtk/image_page.ui:97 data/gtk/window.ui:134
+msgid "Rotate Left"
+msgstr "Rotacii maldekstren"
+
+#: data/gtk/image_page.ui:107 data/gtk/window.ui:144
+msgid "Rotate Right"
+msgstr "Rotacii dekstren"
+
+#: data/gtk/image_view.ui:30
+msgid "Previous Image"
+msgstr "Antaŭa bildo"
+
+#: data/gtk/image_view.ui:41
+msgid "Next Image"
+msgstr "Sekva bildo"
+
+#: data/gtk/image_view.ui:66
+msgid "Zoom Out"
+msgstr "Malpligrandigi"
+
+#: data/gtk/image_view.ui:77
+msgid "Zoom In"
+msgstr "Pligrandigi"
+
+#: data/gtk/image_view.ui:95
+msgid "Toggle Fullscreen"
+msgstr "Baskuligi tutanekranan reĝimon"
+
+#. Translators: Go back to previous page
+#: data/gtk/print.ui:29
+msgid "Back"
+msgstr "Reen"
+
+#: data/gtk/print.ui:36
+msgid "Print"
+msgstr "Presi"
+
+#: data/gtk/print.ui:54
+msgid "Layout"
+msgstr "Aranĝo"
+
+#: data/gtk/print.ui:57
+msgid "Orientation"
+msgstr "Orientiĝo"
+
+#: data/gtk/print.ui:69
+msgid "Portrait Page Orientation"
+msgstr "Vertikala Paĝo-Orientiĝo"
+
+#: data/gtk/print.ui:77
+msgid "Landscape Page Orientation"
+msgstr "Horizontala paĝo-orientiĝo"
+
+#: data/gtk/print.ui:86
+msgid "Alignment"
+msgstr "Aliĝado"
+
+#: data/gtk/print.ui:104
+msgid "Margins"
+msgstr "Marĝenoj"
+
+#: data/gtk/print.ui:107
+msgid "Margin Units"
+msgstr "Marĝeno-unuoj"
+
+#: data/gtk/print.ui:124
+msgid "Horizontal"
+msgstr "Horizontala"
+
+#: data/gtk/print.ui:129
+msgid "Vertical"
+msgstr "Vertikala"
+
+#: data/gtk/print.ui:136 data/gtk/properties_view.ui:58
+msgid "Image Size"
+msgstr "Bildagrandeco"
+
+#: data/gtk/print.ui:139
+msgid "Image Size Units"
+msgstr "Bildgrandecaj unuoj"
+
+#: data/gtk/print.ui:157
+msgid "Fill Space"
+msgstr "Plenigi spacon"
+
+#: data/gtk/print.ui:162
+msgid "Width"
+msgstr "Larĝo"
+
+#: data/gtk/print.ui:167
+msgid "Height"
+msgstr "Alto"
+
+#: data/gtk/properties_view.ui:29
+msgid "Folder"
+msgstr "Dosierujo"
+
+#: data/gtk/properties_view.ui:41
+msgid "Open Containing Folder"
+msgstr "Malfermi enhavan dosierujon"
+
+#: data/gtk/properties_view.ui:74
+msgid "Image Format"
+msgstr "Bilda formato"
+
+#: data/gtk/properties_view.ui:88
+msgid "File Size"
+msgstr "Dosiergrando"
+
+#: data/gtk/properties_view.ui:106
+msgid "File Created"
+msgstr "Dosiero kreita"
+
+#: data/gtk/properties_view.ui:120
+msgid "File Modified"
+msgstr "Dosiero modifita"
+
+#: data/gtk/properties_view.ui:143
+msgid "Location"
+msgstr "Loko"
+
+#: data/gtk/properties_view.ui:162
+msgid "Open Location"
+msgstr "Malfermi lokon"
+
+#: data/gtk/properties_view.ui:175
+msgid "Originally Created"
+msgstr "Origine kreita"
+
+#: data/gtk/properties_view.ui:196
+msgid "Aperture"
+msgstr "Aperturo"
+
+#: data/gtk/properties_view.ui:217
+msgid "Exposure"
+msgstr "Eksponiĝo"
+
+#: data/gtk/properties_view.ui:238
+msgid "ISO"
+msgstr "ISO"
+
+#: data/gtk/properties_view.ui:259
+msgid "Focal Length"
+msgstr "Fokusa longeco"
+
+#: data/gtk/properties_view.ui:280
+msgid "Maker, Model"
+msgstr "Fabrikanto, Modelo"
+
+#: data/gtk/window.ui:6
+msgid "_New Window"
+msgstr "Nova _fenestro"
+
+#: data/gtk/window.ui:10
+msgid "_Open…"
+msgstr "_Malfermi…"
+
+#: data/gtk/window.ui:46
+msgid "_Help"
+msgstr "_Helpo"
+
+#: data/gtk/window.ui:50
+msgid "_Keyboard Shortcuts"
+msgstr "_Klavkombinoj"
+
+#: data/gtk/window.ui:54
+msgid "_About Image Viewer"
+msgstr "_Pri Bildo-Vidilo"
+
+#. If the file exists, get display name
+#: data/gtk/window.ui:64 data/org.gnome.Loupe.desktop.in.in:3
+#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:28 src/window.rs:883
+#: src/window.rs:889
+msgid "Image Viewer"
+msgstr "Bildo-Vidilo"
+
+#: data/gtk/window.ui:113
+msgid "Copy to Clipboard"
+msgstr "Kopii al tondujo"
+
+#: data/gtk/window.ui:120
+msgid "Move to Trash"
+msgstr "Movi rubujen"
+
+#: data/gtk/window.ui:126
+msgid "Main Menu"
+msgstr "Ĉefa menuo"
+
+#: data/gtk/window.ui:158
+msgid "Image Properties"
+msgstr "Bildatributoj"
+
+#: data/gtk/window.ui:200
+msgid "View Images"
+msgstr "Vidi bildojn"
+
+#: data/gtk/window.ui:201
+msgid "Drag and drop images here"
+msgstr "Tiru kaj faligu bildojn ĉi tien"
+
+#: data/gtk/window.ui:205
+msgid "_Open Files…"
+msgstr "_Malfermi dosierojn…"
+
+#: data/org.gnome.Loupe.desktop.in.in:11
+msgid "Picture;Slideshow;Graphics;Loupe;"
+msgstr "Bildo;Bildprezento;Grafiko;Lupo;"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:7 src/about.rs:31
+msgid "The Loupe Team"
+msgstr "La Loupe-teamo"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:8
+msgid "View images"
+msgstr "Vidi bildojn"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:10
+msgid "Browse through your images and inspect their metadata with:"
+msgstr "Foliumi viajn bildojn kaj inspekti iliajn metadatumojn per:"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:12
+msgid "Fast GPU accelerated image rendering"
+msgstr "Rapida GPU-akcelita bildprezento"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:13
+msgid "Tiled rendering for vector graphics"
+msgstr "Kahela bildigo por vektora grafiko"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:14
+#, fuzzy
+msgid "Extendable and sandboxed image decoding"
+msgstr "Etendebla kaj sablokesto-malkodado de bildoj"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:15
+msgid "Accessible presentation of the most important metadata."
+msgstr "Alirebla prezento de la plej gravaj metadatumoj."
+
+#: data/resources/gtk/help-overlay.ui:11
+msgctxt "shortcut window"
+msgid "General Shortcuts"
+msgstr "Ĝeneralaj klavkombinoj"
+
+#: data/resources/gtk/help-overlay.ui:14
+msgctxt "shortcut window"
+msgid "Show Main Menu"
+msgstr "Montri ĉefan menuon"
+
+#: data/resources/gtk/help-overlay.ui:20
+msgctxt "shortcut window"
+msgid "Copy Image to Clipboard"
+msgstr "Kopii bildon en tondujon"
+
+#: data/resources/gtk/help-overlay.ui:26
+msgctxt "shortcut window"
+msgid "Move Image to Trash"
+msgstr "Movi bildon rubujen"
+
+#: data/resources/gtk/help-overlay.ui:32
+msgctxt "shortcut window"
+msgid "Toggle Image Properties"
+msgstr "Baskuligi bildajn atributojn"
+
+#: data/resources/gtk/help-overlay.ui:38
+msgctxt "shortcut window"
+msgid "Set as Background"
+msgstr "Agordi kiel fono"
+
+#: data/resources/gtk/help-overlay.ui:44
+msgctxt "shortcut window"
+msgid "Toggle Fullscreen"
+msgstr "Baskuligi tutekranreĝimon"
+
+#: data/resources/gtk/help-overlay.ui:50
+msgctxt "shortcut window"
+msgid "Leave Fullscreen"
+msgstr "Forlasi tutekranan reĝimon"
+
+#: data/resources/gtk/help-overlay.ui:56
+msgctxt "shortcut window"
+msgid "New Window"
+msgstr "Nova fenestro"
+
+#: data/resources/gtk/help-overlay.ui:62
+msgctxt "shortcut window"
+msgid "Open Help"
+msgstr "Malfermi helpojn"
+
+#: data/resources/gtk/help-overlay.ui:68
+msgctxt "shortcut window"
+msgid "Show Keyboard Shortcuts"
+msgstr "Montri klavkombinojn"
+
+#: data/resources/gtk/help-overlay.ui:74
+msgctxt "shortcut window"
+msgid "Close Window"
+msgstr "Fermi fenestron"
+
+#: data/resources/gtk/help-overlay.ui:80
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "Elirii"
+
+#: data/resources/gtk/help-overlay.ui:88
+msgctxt "shortcut window"
+msgid "Navigate Images"
+msgstr "Navigi inter bildoj"
+
+#: data/resources/gtk/help-overlay.ui:92 data/resources/gtk/help-overlay.ui:106
+#: data/resources/gtk/help-overlay.ui:218
+#: data/resources/gtk/help-overlay.ui:232
+msgctxt "shortcut window"
+msgid "Next Image"
+msgstr "Sekva bildo"
+
+#: data/resources/gtk/help-overlay.ui:99 data/resources/gtk/help-overlay.ui:113
+#: data/resources/gtk/help-overlay.ui:225
+#: data/resources/gtk/help-overlay.ui:239
+msgctxt "shortcut window"
+msgid "Previous Image"
+msgstr "Antaŭa bildo"
+
+#: data/resources/gtk/help-overlay.ui:119
+msgctxt "shortcut window"
+msgid "First Image"
+msgstr "Unua bildo"
+
+#: data/resources/gtk/help-overlay.ui:125
+msgctxt "shortcut window"
+msgid "Last Image"
+msgstr "Lasta bildo"
+
+#: data/resources/gtk/help-overlay.ui:133
+msgctxt "shortcut window"
+msgid "Rotate Image"
+msgstr "Rotacii bildon"
+
+#: data/resources/gtk/help-overlay.ui:136
+#: data/resources/gtk/help-overlay.ui:257
+msgctxt "shortcut window"
+msgid "Rotate Clockwise"
+msgstr "Rotacii horloĝdirekte"
+
+#: data/resources/gtk/help-overlay.ui:142
+#: data/resources/gtk/help-overlay.ui:263
+msgctxt "shortcut window"
+msgid "Rotate Counterclockwise"
+msgstr "Rotacii kontraŭhorloĝdirekte"
+
+#: data/resources/gtk/help-overlay.ui:150
+msgctxt "shortcut window"
+msgid "Zoom Image"
+msgstr "Pligrandigi bildon"
+
+#: data/resources/gtk/help-overlay.ui:153
+#: data/resources/gtk/help-overlay.ui:245
+msgctxt "shortcut window"
+msgid "Zoom In"
+msgstr "Pligrandigi"
+
+#: data/resources/gtk/help-overlay.ui:159
+#: data/resources/gtk/help-overlay.ui:251
+msgctxt "shortcut window"
+msgid "Zoom Out"
+msgstr "Malpligrandigi"
+
+#: data/resources/gtk/help-overlay.ui:165
+msgctxt "shortcut window"
+msgid "Best Fit"
+msgstr "Optimuma aranĝo"
+
+#: data/resources/gtk/help-overlay.ui:171
+msgctxt "shortcut window"
+msgid "Original Scale"
+msgstr "Origina skalo"
+
+#: data/resources/gtk/help-overlay.ui:177
+msgctxt "shortcut window"
+msgid "200% Scale"
+msgstr "Skalo de 200%"
+
+#: data/resources/gtk/help-overlay.ui:185
+msgctxt "shortcut window"
+msgid "Pan View"
+msgstr "Ŝovi vidon"
+
+#: data/resources/gtk/help-overlay.ui:188
+msgctxt "shortcut window"
+msgid "Pan Left"
+msgstr "Ŝovi maldekstren"
+
+#: data/resources/gtk/help-overlay.ui:194
+msgctxt "shortcut window"
+msgid "Pan Right"
+msgstr "Ŝovi dekstren"
+
+#: data/resources/gtk/help-overlay.ui:200
+msgctxt "shortcut window"
+msgid "Pan Up"
+msgstr "Ŝovi supren"
+
+#: data/resources/gtk/help-overlay.ui:206
+msgctxt "shortcut window"
+msgid "Pan Down"
+msgstr "Ŝovi malsupren"
+
+#: data/resources/gtk/help-overlay.ui:214
+msgctxt "shortcut window"
+msgid "Gestures"
+msgstr "Gestoj"
+
+#. Translators: Replace "translator-credits" with your names, one name per line
+#: src/about.rs:40
+msgid "translator-credits"
+msgstr "Kristjan SCHMIDT"
+
+#: src/about.rs:41
+msgid "Copyright © 2020–2023 Christopher Davis et al."
+msgstr "Kopirajto © 2020–2023 Christopher DAVIS kaj aliaj."
+
+#: src/file_model.rs:126
+msgid "Could not list other files in directory."
+msgstr "Ne eblis listigi aliajn dosierojn en la dosierujo."
+
+#. Translators: short for "north" in GPS coordinate
+#: src/image_metadata/gps.rs:153
+msgid "N"
+msgstr "N"
+
+#. Translators: short for "south" in GPS coordinate
+#: src/image_metadata/gps.rs:156
+msgid "S"
+msgstr "S"
+
+#. Translators: short for "east" in GPS coordinate
+#: src/image_metadata/gps.rs:166
+msgid "E"
+msgstr ""
+
+#. Translators: short for "west" in GPS coordinate
+#: src/image_metadata/gps.rs:169
+msgid "W"
+msgstr ""
+
+#. Translators: Unit for exposure time in seconds
+#: src/image_metadata/mod.rs:164
+msgid "1\\u{2215}{}\\u{202F}s"
+msgstr "1\\u{2215}{}\\u{202F}s"
+
+#. Translators: Unit for focal length in millimeters
+#: src/image_metadata/mod.rs:189
+msgid "{}\\u{202F}mm"
+msgstr "{}\\u{202F}mm"
+
+#. Translators: This is the date and time format we use in metadata output etc.
+#. The format has to follow <https://docs.gtk.org/glib/method.DateTime.format.html>
+#. The default is already translated. Don't change if you are not sure what to use.
+#: src/util/mod.rs:36
+#, c-format
+msgid "%x %X"
+msgstr "%x %X"
+
+#: src/util/mod.rs:179 src/window.rs:597
+msgid "Failed to restore image from trash"
+msgstr "Malsukcesis restaŭri la bildon el la rubujo"
+
+#: src/util/mod.rs:200
+msgid "Failed to open image"
+msgstr "Malsukcesis malfermi la bildon"
+
+#. Translators: This is a toast notification, informing the user that an image has been set as background.
+#: src/widgets/image_view.rs:669
+msgid "Set as background."
+msgstr "Agordi kiel fono."
+
+#: src/widgets/image_view.rs:682
+msgid "Could not set background."
+msgstr "Ne eblis agordi kiel fono."
+
+#: src/widgets/print.rs:108
+msgid "Top"
+msgstr "Supro"
+
+#: src/widgets/print.rs:109
+msgid "Center"
+msgstr "Centro"
+
+#: src/widgets/print.rs:110
+msgid "Bottom"
+msgstr "Malsupro"
+
+#: src/widgets/print.rs:111
+msgid "Left"
+msgstr "Maldekstre"
+
+#: src/widgets/print.rs:112
+msgid "Right"
+msgstr "Dekstre"
+
+#. Translators: Shorthand for centimeter
+#: src/widgets/print.rs:148
+msgid "cm"
+msgstr "cm"
+
+#. Translators: Shorthand for inch
+#: src/widgets/print.rs:150
+msgid "in"
+msgstr "in"
+
+#. Translators: Shorthand for pixel
+#: src/widgets/print.rs:152
+msgid "px"
+msgstr "px"
+
+#. Translators: {} is a placeholder for the filename
+#: src/widgets/print.rs:355
+msgid "Print “{}”"
+msgstr "Presi “{}”"
+
+#: src/window.rs:483
+msgid "Supported image formats"
+msgstr "Subtenataj bildformatoj"
+
+#: src/window.rs:492
+msgid "All files"
+msgstr "Ĉiuj dosieroj"
+
+#: src/window.rs:499
+msgid "Open Image"
+msgstr "Malfermi bildon"
+
+#: src/window.rs:563
+msgid "Image copied to clipboard"
+msgstr "Bildo kopiita tondujen"
+
+#: src/window.rs:584
+msgid "Image moved to trash"
+msgstr "Bildo movita rubujen"
+
+#: src/window.rs:585
+msgid "Undo"
+msgstr "Malfari"
+
+#: src/window.rs:612
+msgid "Failed to move image to trash"
+msgstr "Malsukcesis movi la bildon rubujen"
+
+#: src/window.rs:627
+msgid "Permanently Delete Image?"
+msgstr "Ĉu forigi bildon definitive?"
+
+#: src/window.rs:629
+msgid "The image “{}” can only be deleted permanently."
+msgstr "La bildo “{}” nur povas esti definitive forigita."
+
+#: src/window.rs:637
+msgid "Cancel"
+msgstr "Nuligi"
+
+#: src/window.rs:638
+msgid "Delete"
+msgstr "Forigi"
+
+#: src/window.rs:649
+msgid "Failed to delete image"
+msgstr "Malsukcesis forigi la bildon"
