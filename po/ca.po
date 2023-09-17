@@ -272,7 +272,7 @@ msgstr "Renderització en mosaic per a gràfics vectorials"
 
 #: data/org.gnome.Loupe.metainfo.xml.in.in:14
 msgid "Extendable and sandboxed image decoding"
-msgstr "Descodificació d'imatges ràster extensibles i en un entorn aïllat"
+msgstr "Descodificació d'imatges extensible i en un entorn aïllat"
 
 #: data/org.gnome.Loupe.metainfo.xml.in.in:15
 msgid "Accessible presentation of the most important metadata."
@@ -426,27 +426,27 @@ msgstr "Escala del 200%"
 #: data/resources/gtk/help-overlay.ui:185
 msgctxt "shortcut window"
 msgid "Pan View"
-msgstr "Visualització panoràmica"
+msgstr "Desplaçament dins de la imatge"
 
 #: data/resources/gtk/help-overlay.ui:188
 msgctxt "shortcut window"
 msgid "Pan Left"
-msgstr "Panoràmica esquerra"
+msgstr "Desplaça a l'esquerra"
 
 #: data/resources/gtk/help-overlay.ui:194
 msgctxt "shortcut window"
 msgid "Pan Right"
-msgstr "Panoràmica dreta"
+msgstr "Desplaça a la dreta"
 
 #: data/resources/gtk/help-overlay.ui:200
 msgctxt "shortcut window"
 msgid "Pan Up"
-msgstr "Panoràmica amunt"
+msgstr "Desplaça cap amunt"
 
 #: data/resources/gtk/help-overlay.ui:206
 msgctxt "shortcut window"
 msgid "Pan Down"
-msgstr "Panoràmica cap avall"
+msgstr "Desplaça cap avall"
 
 #: data/resources/gtk/help-overlay.ui:214
 msgctxt "shortcut window"
@@ -457,11 +457,11 @@ msgstr "Gestos"
 #. line
 #: src/about.rs:40
 msgid "translator-credits"
-msgstr "Jordi Mas i Hernàndez, <jmas@softcatala.org>, 2023"
+msgstr "Jordi Mas i Hernàndez <jmas@softcatala.org>, 2023"
 
 #: src/about.rs:41
 msgid "Copyright © 2020–2023 Christopher Davis et al."
-msgstr "Copyright . 2020–2023 Christopher Davis et al."
+msgstr "Copyright © 2020–2023 Christopher Davis i altres"
 
 #: src/file_model.rs:126
 msgid "Could not list other files in directory."
