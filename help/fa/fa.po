@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
-"POT-Creation-Date: 2023-09-01 19:56+0000\n"
-"PO-Revision-Date: 2023-09-02 23:01+0330\n"
+"POT-Creation-Date: 2023-09-02 19:32+0000\n"
+"PO-Revision-Date: 2023-09-24 16:17+0330\n"
 "Last-Translator: Danial Behzadi <dani.behzi@ubuntu.com>\n"
 "Language-Team: Persian <fa@li.org>\n"
 "Language: fa\n"
@@ -123,7 +123,7 @@ msgstr "صفحه‌های لمسی نیز می‌توانند با نیشگون 
 #. (itstool) path: section/title
 #: C/viewing-images.page:39
 msgid "Panning"
-msgstr ""
+msgstr "ورق زدن"
 
 #. (itstool) path: section/p
 #: C/viewing-images.page:40
@@ -133,26 +133,30 @@ msgid ""
 "pan the view. Users with a keyboard can also use the following keyboard "
 "shortcuts:"
 msgstr ""
+"کاربران موشی و صفحه‌لمسی می‌توانند با کیلک و کشیدن تصویر، نما را هنگام بزرگ‌نمایی "
+"ورق بزنند. کاربران صفحه‌های لمسی می‌توانند از حرکت کشیدن تک‌انگشتی برای ورق زدن "
+"نما استفاده کنند. کاربران صفحه‌کلید هم می‌توانند از میان‌برهای صفحه‌کلید زیر "
+"استفاده کنند."
 
 #. (itstool) path: item/p
 #: C/viewing-images.page:45
 msgid "<keyseq><key>Ctrl</key><key>←</key></keyseq> to pan left."
-msgstr ""
+msgstr "<keyseq><key>مهار</key><key>←</key></keyseq> برای ورق زدن به چپ."
 
 #. (itstool) path: item/p
 #: C/viewing-images.page:48
 msgid "<keyseq><key>Ctrl</key><key>→</key></keyseq> to pan right."
-msgstr ""
+msgstr "<keyseq><key>مهار</key><key>→</key></keyseq> برای ورق زدن به راست."
 
 #. (itstool) path: item/p
 #: C/viewing-images.page:51
 msgid "<keyseq><key>Ctrl</key><key>↑</key></keyseq> to pan up."
-msgstr ""
+msgstr "<keyseq><key>مهار</key><key>↑</key></keyseq> برای ورق زدن به بالا."
 
 #. (itstool) path: item/p
 #: C/viewing-images.page:54
 msgid "<keyseq><key>Ctrl</key><key>↓</key></keyseq> to pan down."
-msgstr ""
+msgstr "<keyseq><key>مهار</key><key>↓</key></keyseq> برای ورق زدن به پایین."
 
 #. (itstool) path: section/title
 #: C/viewing-images.page:59
@@ -321,6 +325,7 @@ msgstr "از گزینشگر پرونده"
 msgid ""
 "Image Viewer allows users to pick images with the file chooser at any time."
 msgstr ""
+"نمایشگر تصویر می‌گذارد کاربران تصویرها را در هر زمان با گزینشگر پرونده بردارند."
 
 #. (itstool) path: item/p
 #: C/opening-images.page:21
@@ -329,11 +334,13 @@ msgid ""
 "gui> menu item, or press <keyseq><key>Ctrl</key><key>O</key></keyseq>. The "
 "<gui>Open Image</gui> file dialog will appear."
 msgstr ""
+"دکمهٔ <gui>گشودن پرونده‌ها…</gui>،‌ مورد فهرست <gui style=\"menuitem\">گشودن…</"
+"gui> یا کلیدهای <keyseq><key>مهار</key><key>O</key></keyseq> را بزنید."
 
 #. (itstool) path: item/p
 #: C/opening-images.page:24
 msgid "Select the image you want to open, then click <gui>Open</gui>."
-msgstr ""
+msgstr "تصویری که می‌خواهید بگشایید را گزیده و سپس <gui>گشودن</gui> را بزنید."
 
 #. (itstool) path: section/p
 #: C/opening-images.page:27
@@ -341,6 +348,8 @@ msgid ""
 "Image Viewer will open with the selected image showing, and the other images in "
 "the directory can be reached by browsing."
 msgstr ""
+"نمایشگر تصویر، تصویر گزیده را خواهد گشود و می‌توان با مرور به دیگر تصویرها در "
+"شاخه رسید."
 
 #. (itstool) path: section/title
 #: C/opening-images.page:30
