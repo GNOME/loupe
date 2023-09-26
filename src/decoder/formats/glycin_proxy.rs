@@ -106,7 +106,7 @@ impl Glycin {
                                 texture: frame.texture,
                             };
 
-                            tiles.push_frame(tile, dimensions, delay);
+                            tiles.push_frame(tile, dimensions, frame.delay.unwrap_or(delay));
 
                             if tiles.n_frames() >= FRAME_BUFFER {
                                 break;

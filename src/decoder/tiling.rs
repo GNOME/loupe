@@ -661,7 +661,7 @@ impl FrameBufferExt for ArcSwap<FrameBuffer> {
         if self
             .load()
             .images
-            .get(1)
+            .front()
             .is_some_and(|next_frame| elapsed >= next_frame.delay)
         {
             self.rcu(|tiling_store| {
