@@ -1254,10 +1254,6 @@ impl LpImage {
     }
 
     fn set_zoom_target(&self, zoom_target: f64) {
-        if self.imp().zoom_target.get() == zoom_target {
-            return;
-        }
-
         log::debug!("Setting zoom target {zoom_target}");
 
         self.imp().zoom_target.set(zoom_target);
