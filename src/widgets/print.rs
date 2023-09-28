@@ -53,6 +53,14 @@ enum VAlignment {
     Bottom,
 }
 
+#[derive(Debug, Clone, Copy, Default)]
+enum Status {
+    #[default]
+    Prepare,
+    Print,
+    Abort,
+}
+
 /// Scope guard for non user ui changes
 ///
 /// Creates a context in which other signals know that changes are not user input.
@@ -250,6 +258,8 @@ mod imp {
         pub(super) orientation: RefCell<String>,
 
         pub(super) ui_updates: UiUpdates,
+
+        pub(super) status: Cell<Status>,
     }
 
     #[glib::object_subclass]
@@ -290,6 +300,11 @@ mod imp {
 
             obj.set_transient_for(Some(&obj.parent_window()));
             obj.set_modal(true);
+
+            obj.connect_close_request(|obj| {
+                obj.imp().status.set(Status::Abort);
+                glib::Propagation::Proceed
+            });
 
             self.alignment
                 .connect_selected_notify(glib::clone!(@weak obj => move |_| obj.draw_preview()));
@@ -341,7 +356,7 @@ mod imp {
             });
 
             self.print_operation.connect_draw_page(glib::clone!(@weak obj =>
-                move |operation, _context, _page_nr| {
+                move |operation, context, _page_nr| {
                     let imp = obj.imp();
 
                     let basename = obj
@@ -394,8 +409,6 @@ mod imp {
                         }
                     }
 
-                    imp.print_operation.cancel();
-
                     let orientation = match obj.page_setup().orientation() {
                         gtk::PageOrientation::Portrait => "portrait",
                         gtk::PageOrientation::Landscape => "landscape",
@@ -404,6 +417,23 @@ mod imp {
                     obj.set_orientation(orientation);
 
                     obj.present();
+
+                    loop {
+                        match imp.status.get() {
+                             Status::Prepare  => {
+                                glib::MainContext::default().iteration(true);
+                             }
+                            Status::Print => {
+                                log::debug!("Layout dialog confirmed");
+                                obj.draw_page(context);
+                                break;}
+                            Status::Abort => {
+                                log::debug!("Layout dialog aborted");
+                                imp.print_operation.cancel();
+                                break;
+                            }
+                        }
+                    }
                 }
             ));
         }
@@ -802,8 +832,6 @@ impl LpPrint {
     fn print(&self) {
         self.close();
 
-        let print_operation = gtk::PrintOperation::new();
-
         let print_settings = self.print_operation().print_settings();
 
         if let Some(print_settings) = &print_settings {
@@ -812,27 +840,7 @@ impl LpPrint {
             }
         }
 
-        print_operation.set_print_settings(print_settings.as_ref());
-        print_operation.set_default_page_setup(Some(&self.print_operation().default_page_setup()));
-
-        print_operation.connect_begin_print(move |op, _ctx| {
-            op.set_n_pages(1);
-        });
-
-        print_operation.connect_draw_page(
-            glib::clone!(@weak self as obj => move |_operation, context, _page_nr| {
-            obj.draw_page(context);
-            }),
-        );
-
-        let res = print_operation.run(
-            gtk::PrintOperationAction::Print,
-            Some(&self.parent_window()),
-        );
-
-        if let Err(err) = res {
-            log::warn!("Print error: {err}");
-        }
+        self.imp().status.set(Status::Print);
     }
 
     /// Draw PDF for printing
