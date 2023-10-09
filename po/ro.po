@@ -7,16 +7,18 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2023-07-29 06:52+0000\n"
-"PO-Revision-Date: 2023-07-29 17:18+0300\n"
-"Last-Translator: Florentina Mușat <florentina [dot] musat [dot] 28 [at] gmail [dot] com>\n"
+"POT-Creation-Date: 2023-08-21 16:23+0000\n"
+"PO-Revision-Date: 2023-10-09 18:18+0300\n"
+"Last-Translator: Florentina Mușat <florentina [dot] musat [dot] 28 [at] "
+"gmail [dot] com>\n"
 "Language-Team: Romanian <gnomero-list@lists.sourceforge.net>\n"
 "Language: ro\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < 20)) ? 1 : 2);;\n"
-"X-Generator: Poedit 3.3.2\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
+"20)) ? 1 : 2);;\n"
+"X-Generator: Poedit 3.4\n"
 
 #: data/gtk/image_page.ui:6 data/gtk/window.ui:16
 msgid "_Open With…"
@@ -70,49 +72,70 @@ msgstr "Mărește"
 msgid "Toggle Fullscreen"
 msgstr "Comută ecranul complet"
 
-#: data/gtk/print.ui:4
-msgid "Image Layout"
-msgstr "Aspect imagine"
+#. Translators: Go back to previous page
+#: data/gtk/print.ui:29
+msgid "Back"
+msgstr "Înapoi"
 
-#: data/gtk/print.ui:66
-msgid "Portrait page orientation"
-msgstr "Orientarea paginii portret"
-
-#: data/gtk/print.ui:74
-msgid "Landscape page orientation"
-msgstr "Orientarea paginii peisaj"
-
-#: data/gtk/print.ui:88
-msgid "Center image horizontally"
-msgstr "Centrează imaginea orizontal"
-
-#: data/gtk/print.ui:95
-msgid "Center image vertically"
-msgstr "Centrează imaginea vertical"
-
-#: data/gtk/print.ui:107
-msgid "Image Width"
-msgstr "Lățime imagine"
-
-#: data/gtk/print.ui:119
-msgid "Image Scale"
-msgstr "Scara imaginii"
-
-#: data/gtk/print.ui:131
-msgid "Left Margin"
-msgstr "Margine din stânga"
-
-#: data/gtk/print.ui:143
-msgid "Top Margin"
-msgstr "Margine de sus"
-
-#: data/gtk/print.ui:155
-msgid "Length Unit"
-msgstr "Unitate de distanță"
-
-#: data/gtk/print.ui:175
+#: data/gtk/print.ui:36
 msgid "Print"
 msgstr "Tipărește"
+
+#: data/gtk/print.ui:54
+msgid "Layout"
+msgstr "Aranjament"
+
+#: data/gtk/print.ui:57
+msgid "Orientation"
+msgstr "Orientare"
+
+#: data/gtk/print.ui:69
+msgid "Portrait Page Orientation"
+msgstr "Orientarea paginii portret"
+
+#: data/gtk/print.ui:77
+msgid "Landscape Page Orientation"
+msgstr "Orientarea paginii peisaj"
+
+#: data/gtk/print.ui:86
+msgid "Alignment"
+msgstr "Aliniere"
+
+#: data/gtk/print.ui:104
+msgid "Margins"
+msgstr "Margini"
+
+#: data/gtk/print.ui:107
+msgid "Margin Units"
+msgstr "Unități margină"
+
+#: data/gtk/print.ui:124
+msgid "Horizontal"
+msgstr "Orizontal"
+
+#: data/gtk/print.ui:129
+msgid "Vertical"
+msgstr "Vertical"
+
+#: data/gtk/print.ui:136 data/gtk/properties_view.ui:58
+msgid "Image Size"
+msgstr "Dimensiune imagine"
+
+#: data/gtk/print.ui:139
+msgid "Image Size Units"
+msgstr "Unități dimensiune imagine"
+
+#: data/gtk/print.ui:157
+msgid "Fill Space"
+msgstr "Umple spațiul"
+
+#: data/gtk/print.ui:162
+msgid "Width"
+msgstr "Lățime"
+
+#: data/gtk/print.ui:167
+msgid "Height"
+msgstr "Înălțime"
 
 #: data/gtk/properties_view.ui:29
 msgid "Folder"
@@ -121,10 +144,6 @@ msgstr "Dosar"
 #: data/gtk/properties_view.ui:41
 msgid "Open Containing Folder"
 msgstr "Deschide dosarul conținător"
-
-#: data/gtk/properties_view.ui:58
-msgid "Image Size"
-msgstr "Dimensiune imagine"
 
 #: data/gtk/properties_view.ui:74
 msgid "Image Format"
@@ -196,8 +215,8 @@ msgstr "Despre vizu_alizator imagini"
 
 #. If the file exists, get display name
 #: data/gtk/window.ui:64 data/org.gnome.Loupe.desktop.in.in:3
-#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:28 src/window.rs:878
-#: src/window.rs:884
+#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:28 src/window.rs:879
+#: src/window.rs:885
 msgid "Image Viewer"
 msgstr "Vizualizator imagini"
 
@@ -231,7 +250,8 @@ msgstr "D_eschide fișierele…"
 
 #: data/org.gnome.Loupe.desktop.in.in:11
 msgid "Picture;Slideshow;Graphics;Loupe;"
-msgstr "Picture;Slideshow;Graphics;Loupe;Imagine;Prezentare diapozitive;Grafice;"
+msgstr ""
+"Picture;Slideshow;Graphics;Loupe;Imagine;Prezentare diapozitive;Grafice;"
 
 #: data/org.gnome.Loupe.metainfo.xml.in.in:7 src/about.rs:31
 msgid "The Loupe Team"
@@ -254,8 +274,8 @@ msgid "Tiled rendering for vector graphics"
 msgstr "Randare cu tile pentru grafică vectorială"
 
 #: data/org.gnome.Loupe.metainfo.xml.in.in:14
-msgid "Extendable and sandboxed raster image decoding"
-msgstr "Decodare extensibilă și sandbox a imaginilor raster"
+msgid "Extendable and sandboxed image decoding"
+msgstr "Decodare extensibilă și sandbox a imaginilor"
 
 #: data/org.gnome.Loupe.metainfo.xml.in.in:15
 msgid "Accessible presentation of the most important metadata."
@@ -437,13 +457,14 @@ msgstr "Gesturi"
 #. Translators: Replace "translator-credits" with your names, one name per line
 #: src/about.rs:40
 msgid "translator-credits"
-msgstr "Florentina Mușat <florentina [dot] musat [dot] 28 [at] gmail [dot] com>, 2023"
+msgstr ""
+"Florentina Mușat <florentina [dot] musat [dot] 28 [at] gmail [dot] com>, 2023"
 
 #: src/about.rs:41
 msgid "Copyright © 2020–2023 Christopher Davis et al."
 msgstr "Drepturi de autor © 2020–2023 Christopher Davis și alții."
 
-#: src/file_model.rs:120
+#: src/file_model.rs:126
 msgid "Could not list other files in directory."
 msgstr "Nu s-au putut lista alte fișiere din director."
 
@@ -485,7 +506,7 @@ msgstr "{}\\u{202F}mm"
 msgid "%x %X"
 msgstr "%x %X"
 
-#: src/util/mod.rs:179 src/window.rs:592
+#: src/util/mod.rs:179 src/window.rs:593
 msgid "Failed to restore image from trash"
 msgstr "Nu s-a putut restaura imaginea de la gunoi"
 
@@ -494,13 +515,53 @@ msgid "Failed to open image"
 msgstr "Nu s-a putut deschide imaginea"
 
 #. Translators: This is a toast notification, informing the user that an image has been set as background.
-#: src/widgets/image_view.rs:663
+#: src/widgets/image_view.rs:666
 msgid "Set as background."
 msgstr "Stabilește ca fundal."
 
-#: src/widgets/image_view.rs:676
+#: src/widgets/image_view.rs:679
 msgid "Could not set background."
 msgstr "Nu s-a putut stabili fundalul."
+
+#: src/widgets/print.rs:108
+msgid "Top"
+msgstr "Sus"
+
+#: src/widgets/print.rs:109
+msgid "Center"
+msgstr "Centru"
+
+#: src/widgets/print.rs:110
+msgid "Bottom"
+msgstr "Jos"
+
+#: src/widgets/print.rs:111
+msgid "Left"
+msgstr "Stânga"
+
+#: src/widgets/print.rs:112
+msgid "Right"
+msgstr "Dreapta"
+
+#. Translators: Shorthand for centimeter
+#: src/widgets/print.rs:148
+msgid "cm"
+msgstr "cm"
+
+#. Translators: Shorthand for inch
+#: src/widgets/print.rs:150
+msgid "in"
+msgstr "in"
+
+#. Translators: Shorthand for pixel
+#: src/widgets/print.rs:152
+msgid "px"
+msgstr "px"
+
+#. Translators: {} is a placeholder for the filename
+#: src/widgets/print.rs:355
+msgid "Print “{}”"
+msgstr "Tipărește „{}”"
 
 #: src/window.rs:479
 msgid "Supported image formats"
@@ -514,38 +575,53 @@ msgstr "Toate fișierele"
 msgid "Open Image"
 msgstr "Deschide imaginea"
 
-#: src/window.rs:558
+#: src/window.rs:559
 msgid "Image copied to clipboard"
 msgstr "Imagine copiată la clipboard"
 
-#: src/window.rs:579
+#: src/window.rs:580
 msgid "Image moved to trash"
 msgstr "Imagine mutată la gunoi"
 
-#: src/window.rs:580
+#: src/window.rs:581
 msgid "Undo"
 msgstr "Refă"
 
-#: src/window.rs:607
+#: src/window.rs:608
 msgid "Failed to move image to trash"
 msgstr "Nu s-a putut muta imaginea la gunoi"
 
-#: src/window.rs:622
+#: src/window.rs:623
 msgid "Permanently Delete Image?"
 msgstr "Ștergeți permanent imaginea?"
 
-#: src/window.rs:624
+#: src/window.rs:625
 msgid "The image “{}” can only be deleted permanently."
 msgstr "Imaginea „{}” poate fi ștearsă doar permanent."
 
-#: src/window.rs:632
+#: src/window.rs:633
 msgid "Cancel"
 msgstr "Anulează"
 
-#: src/window.rs:633
+#: src/window.rs:634
 msgid "Delete"
 msgstr "Șterge"
 
-#: src/window.rs:644
+#: src/window.rs:645
 msgid "Failed to delete image"
 msgstr "Nu s-a putut șterge imaginea"
+
+#~ msgid "Center image horizontally"
+#~ msgstr "Centrează imaginea orizontal"
+
+#~ msgid "Center image vertically"
+#~ msgstr "Centrează imaginea vertical"
+
+#~ msgid "Image Scale"
+#~ msgstr "Scara imaginii"
+
+#~ msgid "Left Margin"
+#~ msgstr "Margine din stânga"
+
+#~ msgid "Length Unit"
+#~ msgstr "Unitate de distanță"
