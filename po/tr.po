@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2023-08-22 20:19+0000\n"
-"PO-Revision-Date: 2023-09-28 01:24+0300\n"
+"POT-Creation-Date: 2023-10-01 18:28+0000\n"
+"PO-Revision-Date: 2023-10-14 11:35+0300\n"
 "Last-Translator: Sabri Ünal <libreajans@gmail.com>\n"
 "Language-Team: Turkish <takim@gnome.org.tr>\n"
 "Language: tr\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 3.3.2\n"
+"X-Generator: Poedit 3.4\n"
 
 #: data/gtk/image_page.ui:6 data/gtk/window.ui:16
 msgid "_Open With…"
@@ -44,11 +44,11 @@ msgstr "_Arka Plan Olarak Ayarla…"
 msgid "Could not Load Image"
 msgstr "Resim Yüklenemedi"
 
-#: data/gtk/image_page.ui:97 data/gtk/window.ui:129
+#: data/gtk/image_page.ui:97 data/gtk/window.ui:134
 msgid "Rotate Left"
 msgstr "Sola Döndür"
 
-#: data/gtk/image_page.ui:107 data/gtk/window.ui:139
+#: data/gtk/image_page.ui:107 data/gtk/window.ui:144
 msgid "Rotate Right"
 msgstr "Sağa Döndür"
 
@@ -215,36 +215,36 @@ msgstr "Resim Görüntüleyici _Hakkında"
 
 #. If the file exists, get display name
 #: data/gtk/window.ui:64 data/org.gnome.Loupe.desktop.in.in:3
-#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:28 src/window.rs:879
-#: src/window.rs:885
+#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:28 src/window.rs:883
+#: src/window.rs:889
 msgid "Image Viewer"
 msgstr "Resim Görüntüleyici"
 
-#: data/gtk/window.ui:108
+#: data/gtk/window.ui:113
 msgid "Copy to Clipboard"
 msgstr "Panoya Kopyala"
 
-#: data/gtk/window.ui:115
+#: data/gtk/window.ui:120
 msgid "Move to Trash"
 msgstr "Çöpe Taşı"
 
-#: data/gtk/window.ui:121
+#: data/gtk/window.ui:126
 msgid "Main Menu"
 msgstr "Ana Menü"
 
-#: data/gtk/window.ui:153
+#: data/gtk/window.ui:158
 msgid "Image Properties"
 msgstr "Resim Özellikleri"
 
-#: data/gtk/window.ui:195
+#: data/gtk/window.ui:200
 msgid "View Images"
 msgstr "Resimleri Göster"
 
-#: data/gtk/window.ui:196
+#: data/gtk/window.ui:201
 msgid "Drag and drop images here"
 msgstr "Resimleri sürükleyip buraya bırakın"
 
-#: data/gtk/window.ui:200
+#: data/gtk/window.ui:205
 msgid "_Open Files…"
 msgstr "Dosya _Aç…"
 
@@ -506,7 +506,7 @@ msgstr "{}\\u{202F}mm"
 msgid "%x %X"
 msgstr "%x %X"
 
-#: src/util/mod.rs:179 src/window.rs:593
+#: src/util/mod.rs:179 src/window.rs:597
 msgid "Failed to restore image from trash"
 msgstr "Resim çöpten geri yüklenemedi"
 
@@ -515,11 +515,11 @@ msgid "Failed to open image"
 msgstr "Resim açılamadı"
 
 #. Translators: This is a toast notification, informing the user that an image has been set as background.
-#: src/widgets/image_view.rs:666
+#: src/widgets/image_view.rs:669
 msgid "Set as background."
 msgstr "Arka plan olarak ayarla."
 
-#: src/widgets/image_view.rs:679
+#: src/widgets/image_view.rs:682
 msgid "Could not set background."
 msgstr "Arka plan ayarlanamadı."
 
@@ -563,51 +563,51 @@ msgstr "px"
 msgid "Print “{}”"
 msgstr "“{}” yazdır"
 
-#: src/window.rs:479
+#: src/window.rs:483
 msgid "Supported image formats"
 msgstr "Desteklenen resim biçimleri"
 
-#: src/window.rs:488
+#: src/window.rs:492
 msgid "All files"
 msgstr "Tüm dosyalar"
 
-#: src/window.rs:495
+#: src/window.rs:499
 msgid "Open Image"
 msgstr "Resim Aç"
 
-#: src/window.rs:559
+#: src/window.rs:563
 msgid "Image copied to clipboard"
 msgstr "Resim panoya kopyalandı"
 
-#: src/window.rs:580
+#: src/window.rs:584
 msgid "Image moved to trash"
 msgstr "Resim çöpe taşındı"
 
-#: src/window.rs:581
+#: src/window.rs:585
 msgid "Undo"
 msgstr "Geri Al"
 
-#: src/window.rs:608
+#: src/window.rs:612
 msgid "Failed to move image to trash"
 msgstr "Resim çöpe taşınamadı"
 
-#: src/window.rs:623
+#: src/window.rs:627
 msgid "Permanently Delete Image?"
 msgstr "Resim Kalıcı Olarak Silinsin Mi?"
 
-#: src/window.rs:625
+#: src/window.rs:629
 msgid "The image “{}” can only be deleted permanently."
 msgstr "“{}” resmi yalnızca kalıcı olarak silinebilir."
 
-#: src/window.rs:633
+#: src/window.rs:637
 msgid "Cancel"
-msgstr "İptal Et"
+msgstr "İptal"
 
-#: src/window.rs:634
+#: src/window.rs:638
 msgid "Delete"
 msgstr "Sil"
 
-#: src/window.rs:645
+#: src/window.rs:649
 msgid "Failed to delete image"
 msgstr "Resim silinemedi"
 
