@@ -7,16 +7,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2023-08-16 17:48+0000\n"
-"PO-Revision-Date: 2023-08-20 23:36+0300\n"
-"Last-Translator: Efstathios Iosifidis <iosifidis@opensuse.org>\n"
+"POT-Creation-Date: 2023-08-21 16:23+0000\n"
+"PO-Revision-Date: 2023-10-15 09:30+0300\n"
+"Last-Translator: Efstathios Iosifidis <eiosifidis@gnome.org>\n"
 "Language-Team: Greek <gnome-el-list@gnome.org>\n"
 "Language: el\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 3.4\n"
 
 #: data/gtk/image_page.ui:6 data/gtk/window.ui:16
 msgid "_Open With…"
@@ -125,7 +125,7 @@ msgstr "Μονάδες μεγέθους εικόνας"
 
 #: data/gtk/print.ui:157
 msgid "Fill Space"
-msgstr ""
+msgstr "Αναπλήρωση χώρου"
 
 #: data/gtk/print.ui:162
 msgid "Width"
@@ -189,7 +189,7 @@ msgstr "Εστιακό μήκος"
 
 #: data/gtk/properties_view.ui:280
 msgid "Maker, Model"
-msgstr ""
+msgstr "Κατασκευαστής, Μοντέλο"
 
 #: data/gtk/window.ui:6
 msgid "_New Window"
@@ -271,8 +271,8 @@ msgid "Tiled rendering for vector graphics"
 msgstr "Απόδοση με πλακάκια για διανυσματικά γραφικά"
 
 #: data/org.gnome.Loupe.metainfo.xml.in.in:14
-msgid "Extendable and sandboxed raster image decoding"
-msgstr ""
+msgid "Extendable and sandboxed image decoding"
+msgstr "Επεκτάσιμη και sandboxed αποκωδικοποίηση εικόνας"
 
 #: data/org.gnome.Loupe.metainfo.xml.in.in:15
 msgid "Accessible presentation of the most important metadata."
@@ -424,27 +424,27 @@ msgstr "Κλίμακα 200%"
 #: data/resources/gtk/help-overlay.ui:185
 msgctxt "shortcut window"
 msgid "Pan View"
-msgstr ""
+msgstr "Μετακίνηση Θέασης"
 
 #: data/resources/gtk/help-overlay.ui:188
 msgctxt "shortcut window"
 msgid "Pan Left"
-msgstr ""
+msgstr "Μετακίνηση Αριστερά"
 
 #: data/resources/gtk/help-overlay.ui:194
 msgctxt "shortcut window"
 msgid "Pan Right"
-msgstr ""
+msgstr "Μετακίνηση Δεξιά"
 
 #: data/resources/gtk/help-overlay.ui:200
 msgctxt "shortcut window"
 msgid "Pan Up"
-msgstr ""
+msgstr "Μετακίνηση Πάνω"
 
 #: data/resources/gtk/help-overlay.ui:206
 msgctxt "shortcut window"
 msgid "Pan Down"
-msgstr ""
+msgstr "Μετακίνηση Κάτω"
 
 #: data/resources/gtk/help-overlay.ui:214
 msgctxt "shortcut window"
@@ -467,7 +467,7 @@ msgstr "Πνευματικά Δικαιώματα © 2020–2023 Christopher Dav
 
 #: src/file_model.rs:126
 msgid "Could not list other files in directory."
-msgstr ""
+msgstr "Δεν ήταν δυνατή η λήψη λίστας με τα άλλα αρχεία στον κατάλογο."
 
 #. Translators: short for "north" in GPS coordinate
 #: src/image_metadata/gps.rs:153
