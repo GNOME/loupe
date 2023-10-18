@@ -6,7 +6,7 @@
   <shortdesc xml:lang="en">Image Viewer</shortdesc>
   <description xml:lang="en">Image Viewer</description>
 
-  <homepage rdf:resource="https://apps.gnome.org/app/org.gnome.Loupe" />
+  <homepage rdf:resource="https://apps.gnome.org/Loupe" />
   <download-page rdf:resource="https://gitlab.gnome.org/GNOME/loupe" />
   <bug-database rdf:resource="https://gitlab.gnome.org/GNOME/loupe/-/issues" />
 

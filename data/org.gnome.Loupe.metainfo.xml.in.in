@@ -15,10 +15,11 @@
       <li>Accessible presentation of the most important metadata.</li>
     </ul>
   </description>
-  <url type="homepage">https://apps.gnome.org/app/org.gnome.Loupe/</url>
+  <url type="homepage">https://apps.gnome.org/Loupe/</url>
   <url type="bugtracker">https://gitlab.gnome.org/GNOME/loupe/issues</url>
   <url type="translate">https://l10n.gnome.org/module/loupe/</url>
   <url type="donation">https://www.gnome.org/donate/</url>
+  <url type="vcs-browser">https://gitlab.gnome.org/GNOME/loupe</url>
 
   <screenshots>
     <screenshot type="default">
