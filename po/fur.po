@@ -6,16 +6,16 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
-"Report-Msgid-Bugs-To: https://gitlab.gnome.org/Incubator/loupe/-/issues\n"
-"POT-Creation-Date: 2023-04-28 05:36+0000\n"
-"PO-Revision-Date: 2023-04-28 10:59+0200\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
+"POT-Creation-Date: 2023-08-21 16:23+0000\n"
+"PO-Revision-Date: 2023-11-01 10:59+0100\n"
 "Last-Translator: \n"
 "Language-Team: Friulian <fur@li.org>\n"
 "Language: fur\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.4.1\n"
 
 #: data/gtk/image_page.ui:6 data/gtk/window.ui:16
 msgid "_Open With…"
@@ -37,15 +37,15 @@ msgstr "Volte"
 msgid "_Set as Background…"
 msgstr "Met come _fondâl…"
 
-#: data/gtk/image_page.ui:55
+#: data/gtk/image_page.ui:63
 msgid "Could not Load Image"
 msgstr "Impussibil cjariâ la imagjin"
 
-#: data/gtk/image_page.ui:88 data/gtk/window.ui:101
+#: data/gtk/image_page.ui:97 data/gtk/window.ui:129
 msgid "Rotate Left"
 msgstr "Zire a çampe"
 
-#: data/gtk/image_page.ui:98 data/gtk/window.ui:111
+#: data/gtk/image_page.ui:107 data/gtk/window.ui:139
 msgid "Rotate Right"
 msgstr "Zire a diestre"
 
@@ -69,107 +69,124 @@ msgstr "Ingrandìs"
 msgid "Toggle Fullscreen"
 msgstr "Comute modalitât plen visôr"
 
-#: data/gtk/print.ui:4
-msgid "Image Layout"
-msgstr "Disposizion imagjin"
+#. Translators: Go back to previous page
+#: data/gtk/print.ui:29
+msgid "Back"
+msgstr "Indaûr"
 
-#: data/gtk/print.ui:66
-msgid "Portrait page orientation"
-msgstr "Orientament pagjine verticâl"
-
-#: data/gtk/print.ui:74
-msgid "Landscape page orientation"
-msgstr "Orientament pagjine orizontâl"
-
-#: data/gtk/print.ui:88
-msgid "Center image horizontally"
-msgstr "Centre la imagjin in orizontâl"
-
-#: data/gtk/print.ui:95
-msgid "Center image vertically"
-msgstr "Centre la imagjin in verticâl"
-
-#: data/gtk/print.ui:107
-msgid "Image Width"
-msgstr "Largjece de imagjin"
-
-#: data/gtk/print.ui:119
-msgid "Image Scale"
-msgstr "Scjale de imagjin"
-
-#: data/gtk/print.ui:131
-msgid "Left Margin"
-msgstr "Margjin di çampe"
-
-#: data/gtk/print.ui:143
-msgid "Top Margin"
-msgstr "Margjin superiôr"
-
-#: data/gtk/print.ui:155
-msgid "Length Unit"
-msgstr "Unitât de lungjece"
-
-#: data/gtk/print.ui:175
+#: data/gtk/print.ui:36
 msgid "Print"
 msgstr "Stampe"
+
+#: data/gtk/print.ui:54
+msgid "Layout"
+msgstr "Disposizion"
+
+#: data/gtk/print.ui:57
+msgid "Orientation"
+msgstr "Orientament"
+
+#: data/gtk/print.ui:69
+msgid "Portrait Page Orientation"
+msgstr "Orientament pagjine verticâl"
+
+#: data/gtk/print.ui:77
+msgid "Landscape Page Orientation"
+msgstr "Orientament pagjine orizontâl"
+
+#: data/gtk/print.ui:86
+msgid "Alignment"
+msgstr "Inlineament"
+
+#: data/gtk/print.ui:104
+msgid "Margins"
+msgstr "Margjins"
+
+#: data/gtk/print.ui:107
+msgid "Margin Units"
+msgstr "Unitâts di margjin"
+
+#: data/gtk/print.ui:124
+msgid "Horizontal"
+msgstr "Orizontâl"
+
+#: data/gtk/print.ui:129
+msgid "Vertical"
+msgstr "Verticâl"
+
+#: data/gtk/print.ui:136 data/gtk/properties_view.ui:58
+msgid "Image Size"
+msgstr "Dimension de imagjin"
+
+#: data/gtk/print.ui:139
+msgid "Image Size Units"
+msgstr "Unitâts dimension imagjin"
+
+#: data/gtk/print.ui:157
+msgid "Fill Space"
+msgstr "Jemple spazi"
+
+#: data/gtk/print.ui:162
+msgid "Width"
+msgstr "Largjece"
+
+#: data/gtk/print.ui:167
+msgid "Height"
+msgstr "Altece"
 
 #: data/gtk/properties_view.ui:29
 msgid "Folder"
 msgstr "Cartele"
 
-#: data/gtk/properties_view.ui:42
+#: data/gtk/properties_view.ui:41
 msgid "Open Containing Folder"
 msgstr "Vierç cartele che e conten"
 
-#: data/gtk/properties_view.ui:59
-msgid "Image Size"
-msgstr "Dimension de imagjin"
-
-#: data/gtk/properties_view.ui:75
+#: data/gtk/properties_view.ui:74
 msgid "Image Format"
 msgstr "Formât de imagjin"
 
-#: data/gtk/properties_view.ui:89
+#: data/gtk/properties_view.ui:88
 msgid "File Size"
 msgstr "Dimension dal file"
 
-#: data/gtk/properties_view.ui:107
+#: data/gtk/properties_view.ui:106
 msgid "File Created"
 msgstr "File creât"
 
-#: data/gtk/properties_view.ui:121
+#: data/gtk/properties_view.ui:120
 msgid "File Modified"
 msgstr "File modificât"
 
-#: data/gtk/properties_view.ui:144
+#: data/gtk/properties_view.ui:143
 msgid "Location"
 msgstr "Posizion"
 
-#: data/gtk/properties_view.ui:164
+#: data/gtk/properties_view.ui:162
 msgid "Open Location"
 msgstr "Vierç posizion"
 
-#: data/gtk/properties_view.ui:177
+#: data/gtk/properties_view.ui:175
 msgid "Originally Created"
 msgstr "Creât in origjin"
 
-#: data/gtk/properties_view.ui:198
+#: data/gtk/properties_view.ui:196
 msgid "Aperture"
 msgstr "Viertidure"
 
-#: data/gtk/properties_view.ui:219
+#: data/gtk/properties_view.ui:217
 msgid "Exposure"
 msgstr "Esposizion"
 
-#: data/gtk/properties_view.ui:240
+#: data/gtk/properties_view.ui:238
 msgid "ISO"
 msgstr "ISO"
 
-#: data/gtk/properties_view.ui:261
+#: data/gtk/properties_view.ui:259
 msgid "Focal Length"
 msgstr "Lungjece focâl"
 
-#: data/gtk/properties_view.ui:282
+#: data/gtk/properties_view.ui:280
 msgid "Maker, Model"
 msgstr "Produtôr, model"
 
@@ -182,53 +199,57 @@ msgid "_Open…"
 msgstr "_Vierç…"
 
 #: data/gtk/window.ui:46
+msgid "_Help"
+msgstr "_Jutori"
+
+#: data/gtk/window.ui:50
 msgid "_Keyboard Shortcuts"
 msgstr "Scurtis di _tastiere"
 
-#: data/gtk/window.ui:50
-msgid "_About Loupe"
-msgstr "_Informazions su Loupe"
+#: data/gtk/window.ui:54
+msgid "_About Image Viewer"
+msgstr "_Informazions su Visualizadôr imagjins"
 
 #. If the file exists, get display name
-#: data/gtk/window.ui:59 data/org.gnome.Loupe.desktop.in.in:3
-#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/application.rs:188
-#: src/window.rs:796 src/window.rs:802
-msgid "Loupe"
-msgstr "Loupe"
+#: data/gtk/window.ui:64 data/org.gnome.Loupe.desktop.in.in:3
+#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:28 src/window.rs:879
+#: src/window.rs:885
+msgid "Image Viewer"
+msgstr "Visualizadôr imagjins"
 
-#: data/gtk/window.ui:80
+#: data/gtk/window.ui:108
 msgid "Copy to Clipboard"
 msgstr "Copie intes notis"
 
-#: data/gtk/window.ui:87
+#: data/gtk/window.ui:115
 msgid "Move to Trash"
 msgstr "Sposte te scovacere"
 
-#: data/gtk/window.ui:93
+#: data/gtk/window.ui:121
 msgid "Main Menu"
 msgstr "Menù principâl"
 
-#: data/gtk/window.ui:125
+#: data/gtk/window.ui:153
 msgid "Image Properties"
 msgstr "Propietâts de imagjin"
 
-#: data/gtk/window.ui:145
+#: data/gtk/window.ui:195
 msgid "View Images"
 msgstr "Visualize imagjins"
 
-#: data/gtk/window.ui:146
+#: data/gtk/window.ui:196
 msgid "Drag and drop images here"
 msgstr "Strissine e mole lis imagjins achì"
 
-#: data/gtk/window.ui:150
-msgid "_Open File…"
-msgstr "_Vierç file…"
+#: data/gtk/window.ui:200
+msgid "_Open Files…"
+msgstr "_Vierç files…"
 
 #: data/org.gnome.Loupe.desktop.in.in:11
-msgid "Picture;Slideshow;Graphics;Image Viewer;"
-msgstr "Imagjin;Figure;Presentazion;Grafiche;Visualizadôr imagjin;"
+msgid "Picture;Slideshow;Graphics;Loupe;"
+msgstr "Imagjin;Figure;Presentazion;Grafiche;Loupe;"
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:7 src/application.rs:191
+#: data/org.gnome.Loupe.metainfo.xml.in.in:7 src/about.rs:31
 msgid "The Loupe Team"
 msgstr "Il grup di Loupe"
 
@@ -237,8 +258,24 @@ msgid "View images"
 msgstr "Visualize imagjins"
 
 #: data/org.gnome.Loupe.metainfo.xml.in.in:10
-msgid "Browse through your images and inspect their metadata."
-msgstr "Sgarfe tra lis tôs imagjins e ispezione i lôr metadâts."
+msgid "Browse through your images and inspect their metadata with:"
+msgstr "Sgarfe tra lis tôs imagjins e ispezione i lôr metadâts cun:"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:12
+msgid "Fast GPU accelerated image rendering"
+msgstr "Rapresentazion svelte de imagjin acelerade vie GPU"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:13
+msgid "Tiled rendering for vector graphics"
+msgstr "Rapresentazion a tassêi pe grafiche vetoriâl"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:14
+msgid "Extendable and sandboxed image decoding"
+msgstr "Decodifiche de imagjin isolade e slungjabile"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:15
+msgid "Accessible presentation of the most important metadata."
+msgstr "Presentazion acessibile dai metadâts plui impuartants."
 
 #: data/resources/gtk/help-overlay.ui:11
 msgctxt "shortcut window"
@@ -414,84 +451,45 @@ msgid "Gestures"
 msgstr "Mots"
 
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/application.rs:200
+#: src/about.rs:40
 msgid "translator-credits"
 msgstr "Fabio Tomat <f.t.public@gmail.com>, 2023"
 
-#: src/application.rs:201
+#: src/about.rs:41
 msgid "Copyright © 2020–2023 Christopher Davis et al."
 msgstr "Copyright © 2020–2023 Christopher Davis e altris"
 
-#: src/decoder/formats/heif.rs:55
-msgid "Failed to read image file information"
-msgstr "Nol è stât pussibil lei lis informazions dal file imagjin"
-
-#: src/decoder/formats/heif.rs:60 src/decoder/formats/heif.rs:93
-#: src/decoder/formats/image_rs_other.rs:116
-#: src/decoder/formats/image_rs_other.rs:125
-#: src/decoder/formats/image_rs_other.rs:132
-msgid "Failed to decode image"
-msgstr "Nol è stât pussibil decodificâ la imagjin"
-
-#: src/decoder/formats/mod.rs:72
-msgid "Animated GIF"
-msgstr "GIF animade"
-
-#: src/decoder/formats/mod.rs:73
-msgid "Animated WebP"
-msgstr "WebP animât"
-
-#: src/decoder/formats/mod.rs:74
-msgid "Animated PNG"
-msgstr "PNG animât"
-
-#: src/decoder/mod.rs:189
-msgid "Unknown image format: {}"
-msgstr "Formât imagjin no cognossût: {}"
-
-#: src/decoder/mod.rs:194
-msgid "Unknown image format"
-msgstr "Formât imagjin no cognossût"
-
-#: src/decoder/mod.rs:222
-msgid "Could not open image"
-msgstr "Impussibil vierzi la imagjin"
-
-#: src/decoder/mod.rs:226
-msgid "Could not read image"
-msgstr "Impussibil lei la imagjin"
-
-#: src/file_model.rs:118
+#: src/file_model.rs:126
 msgid "Could not list other files in directory."
 msgstr "Impussibil listâ i altris files te cartele."
 
 #. Translators: short for "north" in GPS coordinate
-#: src/image_metadata/gps.rs:154
+#: src/image_metadata/gps.rs:153
 msgid "N"
 msgstr "N"
 
 #. Translators: short for "south" in GPS coordinate
-#: src/image_metadata/gps.rs:157
+#: src/image_metadata/gps.rs:156
 msgid "S"
 msgstr "S"
 
 #. Translators: short for "east" in GPS coordinate
-#: src/image_metadata/gps.rs:167
+#: src/image_metadata/gps.rs:166
 msgid "E"
 msgstr "E"
 
 #. Translators: short for "west" in GPS coordinate
-#: src/image_metadata/gps.rs:170
+#: src/image_metadata/gps.rs:169
 msgid "W"
 msgstr "O"
 
 #. Translators: Unit for exposure time in seconds
-#: src/image_metadata/mod.rs:144
+#: src/image_metadata/mod.rs:164
 msgid "1\\u{2215}{}\\u{202F}s"
 msgstr "1\\u{2215}{}\\u{202F}s"
 
 #. Translators: Unit for focal length in millimeters
-#: src/image_metadata/mod.rs:169
+#: src/image_metadata/mod.rs:189
 msgid "{}\\u{202F}mm"
 msgstr "{}\\u{202F}mm"
 
@@ -503,67 +501,155 @@ msgstr "{}\\u{202F}mm"
 msgid "%x %X"
 msgstr "%x %X"
 
-#: src/util/mod.rs:171 src/window.rs:522
+#: src/util/mod.rs:179 src/window.rs:593
 msgid "Failed to restore image from trash"
 msgstr "Nol è stât pussibil ripristinâ de scovacere la imagjin"
 
-#: src/util/mod.rs:192
+#: src/util/mod.rs:200
 msgid "Failed to open image"
 msgstr "Nol è stât pussibil vierzi la imagjin"
 
 #. Translators: This is a toast notification, informing the user that an image has been set as background.
-#: src/widgets/image_view.rs:620
+#: src/widgets/image_view.rs:666
 msgid "Set as background."
 msgstr "Metût come fondâl."
 
-#: src/widgets/image_view.rs:631
+#: src/widgets/image_view.rs:679
 msgid "Could not set background."
 msgstr "Impussibil configurâ il fondâl."
 
-#: src/window.rs:426
-msgid "Supported image formats"
-msgstr "Formâts imagjin supuartâts."
+#: src/widgets/print.rs:108
+msgid "Top"
+msgstr "Sore"
 
-#: src/window.rs:432
+#: src/widgets/print.rs:109
+msgid "Center"
+msgstr "Centri"
+
+#: src/widgets/print.rs:110
+msgid "Bottom"
+msgstr "Sot"
+
+#: src/widgets/print.rs:111
+msgid "Left"
+msgstr "Çampe"
+
+#: src/widgets/print.rs:112
+msgid "Right"
+msgstr "Diestre"
+
+#. Translators: Shorthand for centimeter
+#: src/widgets/print.rs:148
+msgid "cm"
+msgstr "cm"
+
+#. Translators: Shorthand for inch
+#: src/widgets/print.rs:150
+msgid "in"
+msgstr "in"
+
+#. Translators: Shorthand for pixel
+#: src/widgets/print.rs:152
+msgid "px"
+msgstr "px"
+
+#. Translators: {} is a placeholder for the filename
+#: src/widgets/print.rs:355
+msgid "Print “{}”"
+msgstr "Stampe “{}”"
+
+#: src/window.rs:479
+msgid "Supported image formats"
+msgstr "Formâts imagjin supuartâts"
+
+#: src/window.rs:488
 msgid "All files"
 msgstr "Ducj i files"
 
-#: src/window.rs:439
+#: src/window.rs:495
 msgid "Open Image"
 msgstr "Vierç imagjin"
 
-#: src/window.rs:494
+#: src/window.rs:559
 msgid "Image copied to clipboard"
 msgstr "Imagjin copiade intes notis"
 
-#: src/window.rs:510
+#: src/window.rs:580
 msgid "Image moved to trash"
 msgstr "Imagjin spostade te scovacere"
 
-#: src/window.rs:511
+#: src/window.rs:581
 msgid "Undo"
 msgstr "Disfe"
 
-#: src/window.rs:537
+#: src/window.rs:608
 msgid "Failed to move image to trash"
 msgstr "Nol è stât pussibil spostâ la imagjin te scovacere"
 
-#: src/window.rs:552
+#: src/window.rs:623
 msgid "Permanently Delete Image?"
 msgstr "Eliminâ par simpri la imagjin?"
 
-#: src/window.rs:554
+#: src/window.rs:625
 msgid "The image “{}” can only be deleted permanently."
 msgstr "Tu puedis dome eliminâ par simpri la imagjin “{}”."
 
-#: src/window.rs:562
+#: src/window.rs:633
 msgid "Cancel"
 msgstr "Anule"
 
-#: src/window.rs:563
+#: src/window.rs:634
 msgid "Delete"
 msgstr "Elimine"
 
-#: src/window.rs:574
+#: src/window.rs:645
 msgid "Failed to delete image"
 msgstr "Nol è stât pussibil eliminâ la imagjin"
+
+#~ msgid "Center image horizontally"
+#~ msgstr "Centre la imagjin in orizontâl"
+
+#~ msgid "Center image vertically"
+#~ msgstr "Centre la imagjin in verticâl"
+
+#~ msgid "Image Scale"
+#~ msgstr "Scjale de imagjin"
+
+#~ msgid "Left Margin"
+#~ msgstr "Margjin di çampe"
+
+#~ msgid "Length Unit"
+#~ msgstr "Unitât de lungjece"
+
+#~ msgid "_About Loupe"
+#~ msgstr "_Informazions su Loupe"
+
+#~ msgid "Loupe"
+#~ msgstr "Loupe"
+
+#~ msgid "Failed to read image file information"
+#~ msgstr "Nol è stât pussibil lei lis informazions dal file imagjin"
+
+#~ msgid "Failed to decode image"
+#~ msgstr "Nol è stât pussibil decodificâ la imagjin"
+
+#~ msgid "Animated GIF"
+#~ msgstr "GIF animade"
+
+#~ msgid "Animated WebP"
+#~ msgstr "WebP animât"
+
+#~ msgid "Animated PNG"
+#~ msgstr "PNG animât"
+
+#~ msgid "Unknown image format: {}"
+#~ msgstr "Formât imagjin no cognossût: {}"
+
+#~ msgid "Unknown image format"
+#~ msgstr "Formât imagjin no cognossût"
+
+#~ msgid "Could not open image"
+#~ msgstr "Impussibil vierzi la imagjin"
+
+#~ msgid "Could not read image"
+#~ msgstr "Impussibil lei la imagjin"
