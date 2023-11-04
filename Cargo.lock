@@ -52,7 +52,6 @@ dependencies = [
  "futures-channel",
  "futures-util",
  "gdk4-wayland",
- "gdk4-x11",
  "gtk4",
  "once_cell",
  "rand",
@@ -756,31 +755,6 @@ version = "0.7.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "d48159be256ae0212d5a2b9884627197d08082c7168b28775b53a0f9885d5624"
 dependencies = [
- "glib-sys",
- "libc",
- "system-deps",
-]
-
-[[package]]
-name = "gdk4-x11"
-version = "0.7.2"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "28c9bbf8ea1ea8469e74c3fdfafc142c9e14810a27f89ddb01b5e9076a60a450"
-dependencies = [
- "gdk4",
- "gdk4-x11-sys",
- "gio",
- "glib",
- "libc",
-]
-
-[[package]]
-name = "gdk4-x11-sys"
-version = "0.7.2"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "a3de1709370758192369f5329aa593847797f1c693c95e8a261e9b2e06a5f125"
-dependencies = [
- "gdk4-sys",
  "glib-sys",
  "libc",
  "system-deps",

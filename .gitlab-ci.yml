@@ -56,7 +56,7 @@ cargo-doc:
 
     - rewrite-flatpak-manifest ${MANIFEST_PATH} ${FLATPAK_MODULE} ${CONFIG_OPTS}
     - flatpak-builder --user --disable-rofiles-fuse --force-clean --keep-build-dirs --stop-at=${FLATPAK_MODULE} flatpak_app ${MANIFEST_PATH}
-    - flatpak build-finish --socket=x11 --share=network flatpak_app
+    - flatpak build-finish --socket=wayland --share=network flatpak_app
     - >
       xvfb-run -a -s "-screen 0 1024x768x24"
       flatpak-builder --user --disable-rofiles-fuse --build-shell=${FLATPAK_MODULE} flatpak_app ${MANIFEST_PATH} <<END
@@ -80,7 +80,7 @@ cargo-clippy:
 
     - rewrite-flatpak-manifest ${MANIFEST_PATH} ${FLATPAK_MODULE} ${CONFIG_OPTS}
     - flatpak-builder --user --disable-rofiles-fuse --force-clean --keep-build-dirs --stop-at=${FLATPAK_MODULE} flatpak_app ${MANIFEST_PATH}
-    - flatpak build-finish --socket=x11 --share=network flatpak_app
+    - flatpak build-finish --socket=wayland --share=network flatpak_app
     - >
       xvfb-run -a -s "-screen 0 1024x768x24"
       flatpak-builder --user --disable-rofiles-fuse --build-shell=${FLATPAK_MODULE} flatpak_app ${MANIFEST_PATH} <<END
@@ -102,7 +102,7 @@ cargo-test:
 
     - rewrite-flatpak-manifest ${MANIFEST_PATH} ${FLATPAK_MODULE} ${CONFIG_OPTS}
     - flatpak-builder --user --disable-rofiles-fuse --force-clean --keep-build-dirs --stop-at=${FLATPAK_MODULE} flatpak_app ${MANIFEST_PATH}
-    - flatpak build-finish --socket=x11 --share=network flatpak_app
+    - flatpak build-finish --socket=wayland --share=network flatpak_app
     - >
       xvfb-run -a -s "-screen 0 1024x768x24"
       flatpak-builder --user --disable-rofiles-fuse --build-shell=${FLATPAK_MODULE} flatpak_app ${MANIFEST_PATH} <<END
