@@ -1,3 +1,13 @@
+45.1
+=======
+
+- Fix sandbox for image decoding not enabled by default
+- Fix printing on different printer than selected
+- Fix print dialog crashes on confirmation
+- Fix print dialog needs second confirmation inside Flatpaks
+- Fix SVGs sometimes not re-rendering for zoom level
+- Fix animated image formats with variable frame length using only one length
+
 45.0
 =======
 
