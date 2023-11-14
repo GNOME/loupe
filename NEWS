@@ -7,6 +7,7 @@
 - Fix print dialog needs second confirmation inside Flatpaks
 - Fix SVGs sometimes not re-rendering for zoom level
 - Fix animated image formats with variable frame length using only one length
+- Fix rotation getting applied twice to HEIF images
 
 45.0
 =======

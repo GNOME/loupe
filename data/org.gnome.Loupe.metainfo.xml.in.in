@@ -72,6 +72,7 @@
           <li>Sandboxed image interpretation is now enabled by default.</li>
           <li>Printing now prints on the selected printer.</li>
           <li>Image formats like GIFs with different frame lengs are now animated correctly.</li>
+          <li>Images of the formats HEIC and AVIF are now rotated correctly.</li>
         </ul>
       </description>
     </release>

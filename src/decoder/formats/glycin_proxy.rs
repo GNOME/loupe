@@ -62,9 +62,9 @@ impl Glycin {
             let image = image_request.request().await?;
 
             if let Some(exif_raw) = image.info().exif.clone().into() {
-                updater.send(DecoderUpdate::Metadata(ImageMetadata::from_exif_bytes(
-                    exif_raw,
-                )));
+                let mut metadata = ImageMetadata::from_exif_bytes(exif_raw);
+                metadata.heif_transform = image.info().transformations_applied;
+                updater.send(DecoderUpdate::Metadata(metadata));
             }
 
             let dimensions = (image.info().width, image.info().height);
