@@ -3,3 +3,4 @@ src/config.rs
 _build/
 .vscode
 target
+.flatpak-builder
