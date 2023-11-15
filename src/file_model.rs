@@ -231,7 +231,7 @@ impl LpFileModel {
     }
 
     pub fn remove(&self, file: &gio::File) -> Option<gio::File> {
-        self.imp().files.borrow_mut().remove(&file.uri())
+        self.imp().files.borrow_mut().shift_remove(&file.uri())
     }
 
     /// Currently sorts by name
@@ -289,14 +289,14 @@ impl LpFileModel {
             }
             gio::FileMonitorEvent::Deleted | gio::FileMonitorEvent::MovedOut | gio::FileMonitorEvent::Unmounted => {
                 let mut files = self.imp().files.borrow_mut();
-                files.remove(&file_a.uri()).is_some()
+                files.shift_remove(&file_a.uri()).is_some()
             }
             gio::FileMonitorEvent::Renamed => {
                 if let Some(file_b) = file_b {
                     let mut changed = false;
                     {
                         let mut files = self.imp().files.borrow_mut();
-                        changed |= files.remove(&file_a.uri()).is_some();
+                        changed |= files.shift_remove(&file_a.uri()).is_some();
                         if Self::is_image_file(file_b) {
                             changed |= files.insert(file_b.uri(), file_b.clone()).is_none();
                             if changed {
