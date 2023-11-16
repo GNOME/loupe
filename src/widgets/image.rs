@@ -810,10 +810,7 @@ impl LpImage {
                 self.request_tiles();
             }
             DecoderUpdate::Redraw => {
-                if !self.is_loaded() {
-                    imp.is_loaded.set(true);
-                    self.notify("is-loaded");
-                }
+                self.set_loaded(true);
 
                 self.queue_draw();
                 imp.frame_buffer.rcu(|tiles| {
@@ -832,7 +829,7 @@ impl LpImage {
                 }
             }
             DecoderUpdate::Error(err) => {
-                self.set_error(err);
+                self.set_error(Some(err));
             }
             DecoderUpdate::Format(format) => {
                 imp.format.replace(Some(format));
@@ -844,10 +841,7 @@ impl LpImage {
                 imp.tick_callback.replace(Some(callback_id));
             }
             DecoderUpdate::UnsupportedFormat => {
-                if !self.is_unsupported() {
-                    imp.is_unsupported.set(true);
-                    self.notify("is-unsupported");
-                }
+                self.set_unsupported(true);
             }
         }
     }
@@ -974,7 +968,7 @@ impl LpImage {
                     let file_replace = self.file().map_or(false, |x| x.equal(&file));
                     self.set_file(&file);
                     if file_replace {
-                        log::debug!("Image got replaced");
+                        log::debug!("Image got replaced {}", file.uri());
                         let obj = self.clone();
                         // TODO: error handling is missing
                         spawn(async move {
@@ -986,6 +980,7 @@ impl LpImage {
             gio::FileMonitorEvent::ChangesDoneHint => {
                 let obj = self.clone();
                 let file = file_a.clone();
+                log::debug!("Image was edited {}", file.uri());
                 // TODO: error handling is missing
                 spawn(async move {
                     obj.load(&file).await;
@@ -994,6 +989,7 @@ impl LpImage {
             gio::FileMonitorEvent::Deleted
             | gio::FileMonitorEvent::MovedOut
             | gio::FileMonitorEvent::Unmounted => {
+                log::debug!("File no longer available: {event:?} {}", file_a.uri());
                 self.imp().is_deleted.set(true);
                 self.notify("is-deleted");
             }
@@ -1714,10 +1710,39 @@ impl LpImage {
         self.imp().error.borrow().clone()
     }
 
-    fn set_error(&self, err: anyhow::Error) {
+    fn set_error(&self, err: Option<anyhow::Error>) {
         log::debug!("Decoding error: {err:?}");
-        self.imp().error.replace(Some(err.to_string()));
+        self.imp()
+            .error
+            .replace(err.as_ref().map(|x| x.to_string()));
         self.notify("error");
+
+        if err.is_some() {
+            self.set_loaded(false);
+        }
+    }
+
+    fn set_unsupported(&self, is_unsupported: bool) {
+        if self.is_unsupported() != is_unsupported {
+            self.imp().is_unsupported.set(true);
+            self.notify("is-unsupported");
+
+            if is_unsupported {
+                self.set_loaded(false);
+            }
+        }
+    }
+
+    fn set_loaded(&self, is_loaded: bool) {
+        if self.is_loaded() != is_loaded {
+            self.imp().is_loaded.set(is_loaded);
+            self.notify("is-loaded");
+
+            if is_loaded {
+                self.set_error(None);
+                self.set_unsupported(false);
+            }
+        }
     }
 
     /// Returns scaling aware rounded application pixel
