@@ -308,8 +308,8 @@ impl LpImageView {
         if let Some(directory) = directory {
             spawn(glib::clone!(@weak self as obj, @strong file => async move {
                 if let Err(err) = obj.model().load_directory(directory.clone()).await {
-                    log::warn!("Failed to load directory: {err}");
-                    obj.activate_action("win.show-toast", Some(&(err.to_string(), adw::ToastPriority::High.into_glib()).to_variant()))
+                    log::warn!("Failed to load directory: {}", err.root_cause());
+                    obj.activate_action("win.show-toast", Some(&(format!("{} {}", err, err.root_cause()), adw::ToastPriority::High.into_glib()).to_variant()))
                         .unwrap();
                     return;
                 }
