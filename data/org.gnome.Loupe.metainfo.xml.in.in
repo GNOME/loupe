@@ -66,6 +66,14 @@
   </categories>
 
   <releases>
+    <release version="45.2" date="2023-11-28">
+      <description>
+        <ul>
+          <li>Images are now kept in the same order after deleting an image.</li>
+          <li>Changed images are now reloaded more reliably.</li>
+        </ul>
+      </description>
+    </release>
     <release version="45.1" date="2023-11-15">
       <description>
         <ul>

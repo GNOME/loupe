@@ -1,3 +1,10 @@
+45.2
+====
+
+- Fix order of images gets confused after deleting image
+- Fix image is not shown when sucessfully reloaded after error
+- Fix keyboard shortcuts shows the swipe gestures the wrong way round
+
 45.1
 =======
 
