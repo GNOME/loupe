@@ -15,7 +15,7 @@ disable-glycin-sandbox = []
 [dependencies]
 anyhow = { version = "1.0.66", features = ["backtrace"] }
 arc-swap = "1.6.0"
-async-channel = "1.8.0"
+async-channel = "2.1.0"
 async-std = "1.12.0"
 env_logger = "0.10.0"
 futures = "0.3.25"
