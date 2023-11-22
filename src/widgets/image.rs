@@ -36,7 +36,6 @@ use crate::decoder::{self, tiling, Decoder, DecoderUpdate};
 use crate::image_metadata::LpImageMetadata;
 use crate::util::Gesture;
 
-use crate::util::spawn;
 use adw::{prelude::*, subclass::prelude::*};
 use arc_swap::ArcSwap;
 use futures::prelude::*;
@@ -297,7 +296,7 @@ mod imp {
             });
 
             adw::StyleManager::default().connect_dark_notify(glib::clone!(@weak obj => move |_| {
-                spawn(async move {
+                glib::spawn_future_local(async move {
                     let color = obj.background_color_guess().await;
                     obj.set_background_color(color);
                     if obj.is_mapped() {
@@ -778,7 +777,7 @@ impl LpImage {
         let (decoder, mut decoder_update) = Decoder::new(file.clone(), tiles.clone()).await;
 
         let weak_obj = self.downgrade();
-        spawn(async move {
+        glib::spawn_future_local(async move {
             while let Some(update) = decoder_update.next().await {
                 if let Some(obj) = weak_obj.upgrade() {
                     obj.update(update);
@@ -819,7 +818,7 @@ impl LpImage {
                     new_tiles
                 });
                 if imp.background_color.borrow().is_none() {
-                    spawn(glib::clone!(@weak self as obj => async move {
+                    glib::spawn_future_local(glib::clone!(@weak self as obj => async move {
                         let color = obj.background_color_guess().await;
                         obj.set_background_color(color);
                         if obj.is_mapped() {
@@ -971,7 +970,7 @@ impl LpImage {
                         log::debug!("Image got replaced {}", file.uri());
                         let obj = self.clone();
                         // TODO: error handling is missing
-                        spawn(async move {
+                        glib::spawn_future_local(async move {
                             obj.load(&file).await;
                         });
                     }
@@ -982,7 +981,7 @@ impl LpImage {
                 let file = file_a.clone();
                 log::debug!("Image was edited {}", file.uri());
                 // TODO: error handling is missing
-                spawn(async move {
+                glib::spawn_future_local(async move {
                     obj.load(&file).await;
                 });
             }

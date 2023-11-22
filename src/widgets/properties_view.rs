@@ -29,8 +29,6 @@ use futures::future::{AbortHandle, Abortable};
 use once_cell::sync::Lazy;
 use std::cell::RefCell;
 
-use crate::util::spawn;
-
 use crate::image_metadata::LpImageMetadata;
 use crate::widgets::image::LpImage;
 
@@ -236,7 +234,7 @@ impl LpPropertiesView {
         imp.info_handle.replace(Some(handle));
 
         // ...then spawn the future.
-        spawn(async {
+        glib::spawn_future_local(async {
             let _ = fut.await;
         });
     }

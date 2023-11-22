@@ -272,12 +272,12 @@ mod imp {
             Self::bind_template(klass);
             Self::Type::bind_template_callbacks(klass);
 
-            klass.install_action_async("print.print", None, |print, _, _| async move {
+            klass.install_action("print.print", None, |print, _, _| {
                 print.print();
             });
 
-            klass.install_action_async("print.back", None, |print, _, _| async move {
-                print.back().await;
+            klass.install_action("print.back", None, |print, _, _| {
+                print.back();
             });
 
             klass.install_property_action("print.orientation", "orientation");
@@ -813,7 +813,7 @@ impl LpPrint {
     }
 
     /// Go back to print dialog from image layout
-    async fn back(&self) {
+    fn back(&self) {
         self.close();
         let print = Self::new(
             self.image(),

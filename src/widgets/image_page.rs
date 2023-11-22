@@ -23,7 +23,6 @@
 use crate::deps::*;
 use crate::widgets::LpImage;
 
-use crate::util::spawn;
 use adw::subclass::prelude::*;
 use glib::clone;
 use gtk::prelude::*;
@@ -161,7 +160,7 @@ impl LpImagePage {
 
         obj.imp().image.set_file(file);
 
-        spawn(clone!(@weak obj, @strong file => async move {
+        glib::spawn_future_local(clone!(@weak obj, @strong file => async move {
             let imp = obj.imp();
             imp.image.load(&file).await;
         }));

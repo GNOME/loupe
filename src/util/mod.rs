@@ -247,10 +247,3 @@ pub fn contrast_ratio(color1: &gdk::RGBA, color2: &gdk::RGBA) -> f32 {
 
     (l1 + 0.05) / (l2 + 0.05)
 }
-
-pub fn spawn<R: 'static, F: std::future::Future<Output = R> + 'static>(
-    f: F,
-) -> glib::JoinHandle<R> {
-    let ctx = glib::MainContext::default();
-    ctx.spawn_local(f)
-}

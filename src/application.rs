@@ -20,11 +20,9 @@
 
 use crate::about;
 use crate::deps::*;
-use crate::util::spawn;
 
 use adw::prelude::*;
 use adw::subclass::prelude::*;
-use glib::clone;
 
 use crate::config;
 use crate::window::LpWindow;
@@ -114,7 +112,7 @@ impl LpApplication {
             gio::ActionEntryBuilder::new("about")
                 .activate(|app: &Self, _, _| {
                     let app = app.clone();
-                    spawn(async move { app.show_about().await });
+                    glib::spawn_future_local(async move { app.show_about().await });
                 })
                 .build(),
             gio::ActionEntryBuilder::new("help")
@@ -199,14 +197,15 @@ impl LpApplication {
     }
 
     pub fn show_help(&self) {
-        spawn(clone!(@weak self as app => async move {
-            let context = app
-                .active_window()
-                .map(|w| gtk::prelude::WidgetExt::display(&w).app_launch_context());
-
-            if let Err(e) = gio::AppInfo::launch_default_for_uri_future("help:loupe", context.as_ref()).await {
+        let context = self
+            .active_window()
+            .map(|w| gtk::prelude::WidgetExt::display(&w).app_launch_context());
+        glib::spawn_future_local(async move {
+            if let Err(e) =
+                gio::AppInfo::launch_default_for_uri_future("help:loupe", context.as_ref()).await
+            {
                 log::error!("Failed to launch help: {}", e.message());
             }
-        }));
+        });
     }
 }

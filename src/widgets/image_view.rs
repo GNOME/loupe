@@ -35,7 +35,6 @@ use crate::util::gettext::*;
 use crate::util::{Direction, Position};
 use crate::widgets::{LpImage, LpImagePage, LpPrint, LpSlidingView};
 
-use crate::util::spawn;
 use adw::prelude::*;
 use adw::subclass::prelude::*;
 use anyhow::Context;
@@ -306,7 +305,7 @@ impl LpImageView {
 
         // List other files in directory
         if let Some(directory) = directory {
-            spawn(glib::clone!(@weak self as obj, @strong file => async move {
+            glib::spawn_future_local(glib::clone!(@weak self as obj => async move {
                 if let Err(err) = obj.model().load_directory(directory.clone()).await {
                     log::warn!("Failed to load directory: {}", err.root_cause());
                     obj.activate_action("win.show-toast", Some(&(format!("{} {}", err, err.root_cause()), adw::ToastPriority::High.into_glib()).to_variant()))

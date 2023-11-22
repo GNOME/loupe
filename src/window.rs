@@ -26,7 +26,6 @@
 use crate::deps::*;
 use crate::util::gettext::*;
 
-use crate::util::spawn;
 use adw::prelude::*;
 use adw::subclass::prelude::*;
 use glib::clone;
@@ -595,10 +594,10 @@ impl LpWindow {
                     .build();
                 toast.connect_button_clicked(glib::clone!(@weak self as win => move |_| {
                     let path = path.clone();
-                    spawn(async move {
+                    glib::spawn_future_local(async move {
                         let result = crate::util::untrash(&path).await;
                         match result {
-                            Ok(()) => win.image_view().set_images_from_files(vec![gio::File::for_path(&path)]),
+                            Ok(()) => win.image_view().set_images_from_files(Vec::from([gio::File::for_path(&path)])),
                             Err(err) => {
                                 log::error!("Failed to untrash {path:?}: {err}");
                                 win.show_toast(

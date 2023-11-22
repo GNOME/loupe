@@ -85,7 +85,7 @@ impl UpdateSender {
         F: std::future::Future<Output = Result<(), glycin::Error>> + Send + 'static,
     {
         let update_sender = self.clone();
-        glib::MainContext::default().spawn(async move {
+        glib::spawn_future(async move {
             let update_sender = update_sender.clone();
 
             let result: Result<(), glycin::Error> = f.await;
