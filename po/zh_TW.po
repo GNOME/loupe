@@ -1,0 +1,610 @@
+# Chinese (Taiwan) translation for loupe.
+# Copyright (C) 2023 loupe's COPYRIGHT HOLDER
+# This file is distributed under the same license as the loupe package.
+# Freddy Cheng <freddy4212@gmail.com>, 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: loupe main\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
+"POT-Creation-Date: 2023-10-01 18:28+0000\n"
+"PO-Revision-Date: 2023-10-21 01:41+0800\n"
+"Last-Translator: Freddy Cheng <freddy4212@gmail.com>\n"
+"Language-Team: Chinese (Taiwan) <chinese-l10n@googlegroups.com>\n"
+"Language: zh_TW\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4\n"
+
+#: data/gtk/image_page.ui:6 data/gtk/window.ui:16
+msgid "_Open With…"
+msgstr "開啟使用(_O)…"
+
+#: data/gtk/image_page.ui:14 data/gtk/window.ui:24
+msgid "_Print…"
+msgstr "列印(_P)…"
+
+#: data/gtk/image_page.ui:18
+msgid "_Copy"
+msgstr "複製(_C)"
+
+#: data/gtk/image_page.ui:23 data/gtk/window.ui:29
+msgid "Rotate"
+msgstr "旋轉"
+
+#: data/gtk/image_page.ui:34 data/gtk/window.ui:40
+msgid "_Set as Background…"
+msgstr "設為背景(_S)…"
+
+#: data/gtk/image_page.ui:63
+msgid "Could not Load Image"
+msgstr "無法載入影像"
+
+#: data/gtk/image_page.ui:97 data/gtk/window.ui:134
+msgid "Rotate Left"
+msgstr "向左旋轉"
+
+#: data/gtk/image_page.ui:107 data/gtk/window.ui:144
+msgid "Rotate Right"
+msgstr "向右旋轉"
+
+#: data/gtk/image_view.ui:30
+msgid "Previous Image"
+msgstr "上一張影像"
+
+#: data/gtk/image_view.ui:41
+msgid "Next Image"
+msgstr "下一張影像"
+
+#: data/gtk/image_view.ui:66
+msgid "Zoom Out"
+msgstr "拉遠"
+
+#: data/gtk/image_view.ui:77
+msgid "Zoom In"
+msgstr "拉近"
+
+#: data/gtk/image_view.ui:95
+msgid "Toggle Fullscreen"
+msgstr "進入/退出全螢幕"
+
+#. Translators: Go back to previous page
+#: data/gtk/print.ui:29
+msgid "Back"
+msgstr "返回"
+
+#: data/gtk/print.ui:36
+msgid "Print"
+msgstr "列印"
+
+#: data/gtk/print.ui:54
+msgid "Layout"
+msgstr "版面配置"
+
+#: data/gtk/print.ui:57
+msgid "Orientation"
+msgstr "方向"
+
+#: data/gtk/print.ui:69
+msgid "Portrait Page Orientation"
+msgstr "直向"
+
+#: data/gtk/print.ui:77
+msgid "Landscape Page Orientation"
+msgstr "橫向"
+
+#: data/gtk/print.ui:86
+msgid "Alignment"
+msgstr "對齊"
+
+#: data/gtk/print.ui:104
+msgid "Margins"
+msgstr "邊界"
+
+#: data/gtk/print.ui:107
+msgid "Margin Units"
+msgstr "邊界單位"
+
+#: data/gtk/print.ui:124
+msgid "Horizontal"
+msgstr "水平"
+
+#: data/gtk/print.ui:129
+msgid "Vertical"
+msgstr "垂直"
+
+#: data/gtk/print.ui:136 data/gtk/properties_view.ui:58
+msgid "Image Size"
+msgstr "影像尺寸"
+
+#: data/gtk/print.ui:139
+msgid "Image Size Units"
+msgstr "影像尺寸單位"
+
+#: data/gtk/print.ui:157
+msgid "Fill Space"
+msgstr "填滿空間"
+
+#: data/gtk/print.ui:162
+msgid "Width"
+msgstr "寬度"
+
+#: data/gtk/print.ui:167
+msgid "Height"
+msgstr "高度"
+
+#: data/gtk/properties_view.ui:29
+msgid "Folder"
+msgstr "資料夾"
+
+#: data/gtk/properties_view.ui:41
+msgid "Open Containing Folder"
+msgstr "開啟所在資料夾"
+
+#: data/gtk/properties_view.ui:74
+msgid "Image Format"
+msgstr "影像格式"
+
+#: data/gtk/properties_view.ui:88
+msgid "File Size"
+msgstr "檔案大小"
+
+#: data/gtk/properties_view.ui:106
+msgid "File Created"
+msgstr "建立時間"
+
+#: data/gtk/properties_view.ui:120
+msgid "File Modified"
+msgstr "修改時間"
+
+#: data/gtk/properties_view.ui:143
+msgid "Location"
+msgstr "位置"
+
+#: data/gtk/properties_view.ui:162
+msgid "Open Location"
+msgstr "開啟位置"
+
+#: data/gtk/properties_view.ui:175
+msgid "Originally Created"
+msgstr "原始建立時間"
+
+#: data/gtk/properties_view.ui:196
+msgid "Aperture"
+msgstr "光圈"
+
+#: data/gtk/properties_view.ui:217
+msgid "Exposure"
+msgstr "快門"
+
+#: data/gtk/properties_view.ui:238
+msgid "ISO"
+msgstr "ISO"
+
+#: data/gtk/properties_view.ui:259
+msgid "Focal Length"
+msgstr "焦距"
+
+#: data/gtk/properties_view.ui:280
+msgid "Maker, Model"
+msgstr "製造商與型號"
+
+#: data/gtk/window.ui:6
+msgid "_New Window"
+msgstr "新視窗(_N)"
+
+#: data/gtk/window.ui:10
+msgid "_Open…"
+msgstr "開啟(_O)…"
+
+#: data/gtk/window.ui:46
+msgid "_Help"
+msgstr "求助(_H)"
+
+#: data/gtk/window.ui:50
+msgid "_Keyboard Shortcuts"
+msgstr "鍵盤快捷鍵(_K)"
+
+#: data/gtk/window.ui:54
+msgid "_About Image Viewer"
+msgstr "關於影像檢視器(_A)"
+
+#. If the file exists, get display name
+#: data/gtk/window.ui:64 data/org.gnome.Loupe.desktop.in.in:3
+#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:28 src/window.rs:883
+#: src/window.rs:889
+msgid "Image Viewer"
+msgstr "影像檢視器"
+
+#: data/gtk/window.ui:113
+msgid "Copy to Clipboard"
+msgstr "複製到剪貼簿"
+
+#: data/gtk/window.ui:120
+msgid "Move to Trash"
+msgstr "丟進垃圾桶"
+
+#: data/gtk/window.ui:126
+msgid "Main Menu"
+msgstr "主選單"
+
+#: data/gtk/window.ui:158
+msgid "Image Properties"
+msgstr "影像屬性"
+
+#: data/gtk/window.ui:200
+msgid "View Images"
+msgstr "檢視各種影像檔案"
+
+#: data/gtk/window.ui:201
+msgid "Drag and drop images here"
+msgstr "將影像檔案拖放至此"
+
+#: data/gtk/window.ui:205
+msgid "_Open Files…"
+msgstr "開啟檔案(_O)…"
+
+#: data/org.gnome.Loupe.desktop.in.in:11
+msgid "Picture;Slideshow;Graphics;Loupe;"
+msgstr ""
+"圖片;照片;影像;檢視器;向量圖;圖形;點陣圖;幻燈片秀;Picture;Photo;Slideshow;"
+"Graphics;Loupe;"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:7 src/about.rs:31
+msgid "The Loupe Team"
+msgstr "《Loupe》開發團隊"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:8
+msgid "View images"
+msgstr "檢視各種影像檔案"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:10
+msgid "Browse through your images and inspect their metadata with:"
+msgstr ""
+"《影像檢視器》是用於瀏覽影像及查看其中介資料的應用程式；本程式具備下述特點："
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:12
+msgid "Fast GPU accelerated image rendering"
+msgstr "使用「GPU 加速」技術縮短影像算繪時間"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:13
+msgid "Tiled rendering for vector graphics"
+msgstr "以高效率「圖塊架構」算繪向量圖形"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:14
+msgid "Extendable and sandboxed image decoding"
+msgstr "採用具「可擴展性」與「沙盒機制」的影像解碼器"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:15
+msgid "Accessible presentation of the most important metadata."
+msgstr "便用於呈現數種重要影像中介資料。"
+
+#: data/resources/gtk/help-overlay.ui:11
+msgctxt "shortcut window"
+msgid "General Shortcuts"
+msgstr "一般快捷鍵"
+
+#: data/resources/gtk/help-overlay.ui:14
+msgctxt "shortcut window"
+msgid "Show Main Menu"
+msgstr "顯示主選單"
+
+#: data/resources/gtk/help-overlay.ui:20
+msgctxt "shortcut window"
+msgid "Copy Image to Clipboard"
+msgstr "將影像複製到剪貼簿"
+
+#: data/resources/gtk/help-overlay.ui:26
+msgctxt "shortcut window"
+msgid "Move Image to Trash"
+msgstr "將影像丟進垃圾桶"
+
+#: data/resources/gtk/help-overlay.ui:32
+msgctxt "shortcut window"
+msgid "Toggle Image Properties"
+msgstr "顯示/隱藏影像屬性"
+
+#: data/resources/gtk/help-overlay.ui:38
+msgctxt "shortcut window"
+msgid "Set as Background"
+msgstr "設為背景"
+
+#: data/resources/gtk/help-overlay.ui:44
+msgctxt "shortcut window"
+msgid "Toggle Fullscreen"
+msgstr "進入全螢幕"
+
+#: data/resources/gtk/help-overlay.ui:50
+msgctxt "shortcut window"
+msgid "Leave Fullscreen"
+msgstr "退出全螢幕"
+
+#: data/resources/gtk/help-overlay.ui:56
+msgctxt "shortcut window"
+msgid "New Window"
+msgstr "新視窗"
+
+#: data/resources/gtk/help-overlay.ui:62
+msgctxt "shortcut window"
+msgid "Open Help"
+msgstr "開啟求助"
+
+#: data/resources/gtk/help-overlay.ui:68
+msgctxt "shortcut window"
+msgid "Show Keyboard Shortcuts"
+msgstr "顯示鍵盤快捷鍵"
+
+#: data/resources/gtk/help-overlay.ui:74
+msgctxt "shortcut window"
+msgid "Close Window"
+msgstr "關閉視窗"
+
+#: data/resources/gtk/help-overlay.ui:80
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "退出"
+
+#: data/resources/gtk/help-overlay.ui:88
+msgctxt "shortcut window"
+msgid "Navigate Images"
+msgstr "導覽影像"
+
+#: data/resources/gtk/help-overlay.ui:92 data/resources/gtk/help-overlay.ui:106
+#: data/resources/gtk/help-overlay.ui:218
+#: data/resources/gtk/help-overlay.ui:232
+msgctxt "shortcut window"
+msgid "Next Image"
+msgstr "下一張影像"
+
+#: data/resources/gtk/help-overlay.ui:99 data/resources/gtk/help-overlay.ui:113
+#: data/resources/gtk/help-overlay.ui:225
+#: data/resources/gtk/help-overlay.ui:239
+msgctxt "shortcut window"
+msgid "Previous Image"
+msgstr "上一張影像"
+
+#: data/resources/gtk/help-overlay.ui:119
+msgctxt "shortcut window"
+msgid "First Image"
+msgstr "第一張影像"
+
+#: data/resources/gtk/help-overlay.ui:125
+msgctxt "shortcut window"
+msgid "Last Image"
+msgstr "最後一張影像"
+
+#: data/resources/gtk/help-overlay.ui:133
+msgctxt "shortcut window"
+msgid "Rotate Image"
+msgstr "旋轉影像"
+
+#: data/resources/gtk/help-overlay.ui:136
+#: data/resources/gtk/help-overlay.ui:257
+msgctxt "shortcut window"
+msgid "Rotate Clockwise"
+msgstr "順時針旋轉"
+
+#: data/resources/gtk/help-overlay.ui:142
+#: data/resources/gtk/help-overlay.ui:263
+msgctxt "shortcut window"
+msgid "Rotate Counterclockwise"
+msgstr "逆時針旋轉"
+
+#: data/resources/gtk/help-overlay.ui:150
+msgctxt "shortcut window"
+msgid "Zoom Image"
+msgstr "調整影像遠近"
+
+#: data/resources/gtk/help-overlay.ui:153
+#: data/resources/gtk/help-overlay.ui:245
+msgctxt "shortcut window"
+msgid "Zoom In"
+msgstr "拉近"
+
+#: data/resources/gtk/help-overlay.ui:159
+#: data/resources/gtk/help-overlay.ui:251
+msgctxt "shortcut window"
+msgid "Zoom Out"
+msgstr "拉遠"
+
+#: data/resources/gtk/help-overlay.ui:165
+msgctxt "shortcut window"
+msgid "Best Fit"
+msgstr "符合視窗大小"
+
+#: data/resources/gtk/help-overlay.ui:171
+msgctxt "shortcut window"
+msgid "Original Scale"
+msgstr "原始大小"
+
+#: data/resources/gtk/help-overlay.ui:177
+msgctxt "shortcut window"
+msgid "200% Scale"
+msgstr "放大 200%"
+
+#: data/resources/gtk/help-overlay.ui:185
+msgctxt "shortcut window"
+msgid "Pan View"
+msgstr "移動檢視"
+
+#: data/resources/gtk/help-overlay.ui:188
+msgctxt "shortcut window"
+msgid "Pan Left"
+msgstr "向左移"
+
+#: data/resources/gtk/help-overlay.ui:194
+msgctxt "shortcut window"
+msgid "Pan Right"
+msgstr "向右移"
+
+#: data/resources/gtk/help-overlay.ui:200
+msgctxt "shortcut window"
+msgid "Pan Up"
+msgstr "向上移"
+
+#: data/resources/gtk/help-overlay.ui:206
+msgctxt "shortcut window"
+msgid "Pan Down"
+msgstr "向下移"
+
+#: data/resources/gtk/help-overlay.ui:214
+msgctxt "shortcut window"
+msgid "Gestures"
+msgstr "手勢"
+
+#. Translators: Replace "translator-credits" with your names, one name per line
+#: src/about.rs:40
+msgid "translator-credits"
+msgstr "Freddy Cheng <freddy4212@gmail.com>, 2023."
+
+#: src/about.rs:41
+msgid "Copyright © 2020–2023 Christopher Davis et al."
+msgstr "Copyright © 2020–2023 Christopher Davis et al."
+
+#: src/file_model.rs:126
+msgid "Could not list other files in directory."
+msgstr "無法列出目錄中的其他檔案。"
+
+#. Translators: short for "north" in GPS coordinate
+#: src/image_metadata/gps.rs:153
+msgid "N"
+msgstr "北緯"
+
+#. Translators: short for "south" in GPS coordinate
+#: src/image_metadata/gps.rs:156
+msgid "S"
+msgstr "南緯"
+
+#. Translators: short for "east" in GPS coordinate
+#: src/image_metadata/gps.rs:166
+msgid "E"
+msgstr "東經"
+
+#. Translators: short for "west" in GPS coordinate
+#: src/image_metadata/gps.rs:169
+msgid "W"
+msgstr "西經"
+
+#. Translators: Unit for exposure time in seconds
+#: src/image_metadata/mod.rs:164
+msgid "1\\u{2215}{}\\u{202F}s"
+msgstr "1\\u{2215}{}\\u{202F}s"
+
+#. Translators: Unit for focal length in millimeters
+#: src/image_metadata/mod.rs:189
+msgid "{}\\u{202F}mm"
+msgstr "{}\\u{202F}mm"
+
+#. Translators: This is the date and time format we use in metadata output etc.
+#. The format has to follow <https://docs.gtk.org/glib/method.DateTime.format.html>
+#. The default is already translated. Don't change if you are not sure what to use.
+#: src/util/mod.rs:36
+#, c-format
+msgid "%x %X"
+msgstr "%x %X"
+
+#: src/util/mod.rs:179 src/window.rs:597
+msgid "Failed to restore image from trash"
+msgstr "無法自垃圾桶中還原影像"
+
+#: src/util/mod.rs:200
+msgid "Failed to open image"
+msgstr "無法開啟影像"
+
+#. Translators: This is a toast notification, informing the user that an image has been set as background.
+#: src/widgets/image_view.rs:669
+msgid "Set as background."
+msgstr "已將影像設為背景。"
+
+#: src/widgets/image_view.rs:682
+msgid "Could not set background."
+msgstr "無法將影像設為背景。"
+
+#: src/widgets/print.rs:108
+msgid "Top"
+msgstr "上"
+
+#: src/widgets/print.rs:109
+msgid "Center"
+msgstr "中央"
+
+#: src/widgets/print.rs:110
+msgid "Bottom"
+msgstr "下"
+
+#: src/widgets/print.rs:111
+msgid "Left"
+msgstr "左"
+
+#: src/widgets/print.rs:112
+msgid "Right"
+msgstr "右"
+
+#. Translators: Shorthand for centimeter
+#: src/widgets/print.rs:148
+msgid "cm"
+msgstr "公分"
+
+#. Translators: Shorthand for inch
+#: src/widgets/print.rs:150
+msgid "in"
+msgstr "英吋"
+
+#. Translators: Shorthand for pixel
+#: src/widgets/print.rs:152
+msgid "px"
+msgstr "畫素"
+
+#. Translators: {} is a placeholder for the filename
+#: src/widgets/print.rs:355
+msgid "Print “{}”"
+msgstr "列印「{}」"
+
+#: src/window.rs:483
+msgid "Supported image formats"
+msgstr "支援的影像格式"
+
+#: src/window.rs:492
+msgid "All files"
+msgstr "所有檔案"
+
+#: src/window.rs:499
+msgid "Open Image"
+msgstr "開啟影像"
+
+#: src/window.rs:563
+msgid "Image copied to clipboard"
+msgstr "已將影像複製到剪貼簿"
+
+#: src/window.rs:584
+msgid "Image moved to trash"
+msgstr "已將影像丟進垃圾桶"
+
+#: src/window.rs:585
+msgid "Undo"
+msgstr "還原"
+
+#: src/window.rs:612
+msgid "Failed to move image to trash"
+msgstr "無法將影像丟進垃圾桶"
+
+#: src/window.rs:627
+msgid "Permanently Delete Image?"
+msgstr "要永久刪除影像嗎？"
+
+#: src/window.rs:629
+msgid "The image “{}” can only be deleted permanently."
+msgstr "「{}」僅能永久刪除。"
+
+#: src/window.rs:637
+msgid "Cancel"
+msgstr "取消"
+
+#: src/window.rs:638
+msgid "Delete"
+msgstr "刪除"
+
+#: src/window.rs:649
+msgid "Failed to delete image"
+msgstr "無法刪除影像"
