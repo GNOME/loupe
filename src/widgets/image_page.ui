@@ -61,7 +61,7 @@
           <object class="AdwStatusPage" id="error_page">
             <property name="icon-name">image-missing-symbolic</property>
             <property name="title" translatable="yes">Could not Load Image</property>
-            <property name="description" bind-source="image" bind-property="error"/>
+            <property name="description" bind-source="image" bind-property="error" />
           </object>
         </child>
         <child>
@@ -97,7 +97,7 @@
                     <property name="tooltip-text" translatable="yes">Rotate Left</property>
                     <property name="action-name">win.rotate_ccw</property>
                     <style>
-                      <class name="flat"/>
+                      <class name="flat" />
                     </style>
                   </object>
                 </child>
@@ -107,7 +107,7 @@
                     <property name="tooltip-text" translatable="yes">Rotate Right</property>
                     <property name="action-name">win.rotate_cw</property>
                     <style>
-                      <class name="flat"/>
+                      <class name="flat" />
                     </style>
                   </object>
                 </child>
@@ -119,4 +119,3 @@
     </property>
   </template>
 </interface>
-

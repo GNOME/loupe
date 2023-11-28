@@ -4,12 +4,12 @@
     <property name="width-request">255</property>
     <binding name="metadata">
       <lookup type="LpImage" name="metadata">
-        <lookup type="LpPropertiesView" name="image"/>
+        <lookup type="LpPropertiesView" name="image" />
       </lookup>
     </binding>
     <binding name="file">
       <lookup type="LpImage" name="file">
-        <lookup type="LpPropertiesView" name="image"/>
+        <lookup type="LpPropertiesView" name="image" />
       </lookup>
     </binding>
     <property name="child">
@@ -40,12 +40,12 @@
                         <property name="icon-name">folder-open-symbolic</property>
                         <property name="tooltip-text" translatable="yes">Open Containing Folder</property>
                         <style>
-                          <class name="flat"/>
+                          <class name="flat" />
                         </style>
                       </object>
                     </child>
                     <style>
-                      <class name="property"/>
+                      <class name="property" />
                     </style>
                   </object>
                 </child>
@@ -61,11 +61,11 @@
                       <closure type="gchararray" function="image_size">
                         <lookup type="LpImage" name="image-size">
                           <lookup name="image">LpPropertiesView</lookup>
-                         </lookup>
+                        </lookup>
                       </closure>
                     </binding>
                     <style>
-                      <class name="property"/>
+                      <class name="property" />
                     </style>
                   </object>
                 </child>
@@ -75,11 +75,11 @@
                     <property name="subtitle-selectable">True</property>
                     <binding name="subtitle">
                       <lookup type="LpImage" name="format-name">
-                        <lookup type="LpPropertiesView" name="image"/>
+                        <lookup type="LpPropertiesView" name="image" />
                       </lookup>
                     </binding>
                     <style>
-                      <class name="property"/>
+                      <class name="property" />
                     </style>
                   </object>
                 </child>
@@ -93,7 +93,7 @@
                       </closure>
                     </binding>
                     <style>
-                      <class name="property"/>
+                      <class name="property" />
                     </style>
                   </object>
                 </child>
@@ -111,7 +111,7 @@
                       </closure>
                     </binding>
                     <style>
-                      <class name="property"/>
+                      <class name="property" />
                     </style>
                   </object>
                 </child>
@@ -123,9 +123,8 @@
                       <closure type="gchararray" function="modified_date">
                         <lookup name="file-info">LpPropertiesView</lookup>
                       </closure>
-                    </binding>"
-                    <style>
-                      <class name="property"/>
+                    </binding>" <style>
+                      <class name="property" />
                     </style>
                   </object>
                 </child>
@@ -161,12 +160,12 @@
                         <property name="icon-name">mark-location-symbolic</property>
                         <property name="tooltip-text" translatable="yes">Open Location</property>
                         <style>
-                          <class name="flat"/>
+                          <class name="flat" />
                         </style>
                       </object>
                     </child>
                     <style>
-                      <class name="property"/>
+                      <class name="property" />
                     </style>
                   </object>
                 </child>
@@ -187,7 +186,7 @@
                       </closure>
                     </binding>
                     <style>
-                      <class name="property"/>
+                      <class name="property" />
                     </style>
                   </object>
                 </child>
@@ -208,7 +207,7 @@
                       </closure>
                     </binding>
                     <style>
-                      <class name="property"/>
+                      <class name="property" />
                     </style>
                   </object>
                 </child>
@@ -229,7 +228,7 @@
                       </closure>
                     </binding>
                     <style>
-                      <class name="property"/>
+                      <class name="property" />
                     </style>
                   </object>
                 </child>
@@ -250,7 +249,7 @@
                       </closure>
                     </binding>
                     <style>
-                      <class name="property"/>
+                      <class name="property" />
                     </style>
                   </object>
                 </child>
@@ -271,7 +270,7 @@
                       </closure>
                     </binding>
                     <style>
-                      <class name="property"/>
+                      <class name="property" />
                     </style>
                   </object>
                 </child>
@@ -292,7 +291,7 @@
                       </closure>
                     </binding>
                     <style>
-                      <class name="property"/>
+                      <class name="property" />
                     </style>
                   </object>
                 </child>

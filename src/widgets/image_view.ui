@@ -9,8 +9,8 @@
         <property name="hexpand">True</property>
         <child>
           <object class="LpSlidingView" id="sliding_view">
-            <signal name="notify::current-page" handler="page_changed_cb" swapped="yes"/>
-            <signal name="target-page-reached" handler="target_page_reached_cb" swapped="yes"/>
+            <signal name="notify::current-page" handler="page_changed_cb" swapped="yes" />
+            <signal name="target-page-reached" handler="target_page_reached_cb" swapped="yes" />
           </object>
         </child>
         <child type="overlay">
@@ -29,8 +29,8 @@
                 <property name="action-name">win.previous</property>
                 <property name="tooltip-text" translatable="yes">Previous Image</property>
                 <style>
-                  <class name="osd"/>
-                  <class name="circular"/>
+                  <class name="osd" />
+                  <class name="circular" />
                 </style>
               </object>
             </child>
@@ -40,8 +40,8 @@
                 <property name="action-name">win.next</property>
                 <property name="tooltip-text" translatable="yes">Next Image</property>
                 <style>
-                  <class name="osd"/>
-                  <class name="circular"/>
+                  <class name="osd" />
+                  <class name="circular" />
                 </style>
               </object>
             </child>
@@ -65,8 +65,8 @@
                 <property name="action-name">win.zoom-out</property>
                 <property name="tooltip-text" translatable="yes">Zoom Out</property>
                 <style>
-                  <class name="osd"/>
-                  <class name="circular"/>
+                  <class name="osd" />
+                  <class name="circular" />
                 </style>
               </object>
             </child>
@@ -76,8 +76,8 @@
                 <property name="action-name">win.zoom-in</property>
                 <property name="tooltip-text" translatable="yes">Zoom In</property>
                 <style>
-                  <class name="osd"/>
-                  <class name="circular"/>
+                  <class name="osd" />
+                  <class name="circular" />
                 </style>
               </object>
             </child>
@@ -94,8 +94,8 @@
                 <property name="action-name">win.toggle-fullscreen</property>
                 <property name="tooltip-text" translatable="yes">Toggle Fullscreen</property>
                 <style>
-                  <class name="osd"/>
-                  <class name="circular"/>
+                  <class name="osd" />
+                  <class name="circular" />
                 </style>
               </object>
             </child>
@@ -107,7 +107,7 @@
       </object>
     </property>
     <style>
-      <class name="image-view"/>
+      <class name="image-view" />
     </style>
   </template>
 </interface>

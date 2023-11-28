@@ -62,7 +62,7 @@
     <property name="width-request">360</property>
     <property name="height-request">360</property>
     <property name="title" translatable="yes">Image Viewer</property>
-    <signal name="notify::fullscreened" handler="on_fullscreened" swapped="yes"/>
+    <signal name="notify::fullscreened" handler="on_fullscreened" swapped="yes" />
     <binding name="title">
       <closure type="gchararray" function="window_title">
         <lookup name="file">
@@ -101,10 +101,10 @@
         </binding>
         <child type="top">
           <object class="AdwHeaderBar" id="headerbar">
-            <property name="show-end-title-buttons" bind-source="LpWindow" bind-property="fullscreened" bind-flags="sync-create|invert-boolean"/>
-            <property name="show-start-title-buttons" bind-source="LpWindow" bind-property="fullscreened" bind-flags="sync-create|invert-boolean"/>
+            <property name="show-end-title-buttons" bind-source="LpWindow" bind-property="fullscreened" bind-flags="sync-create|invert-boolean" />
+            <property name="show-start-title-buttons" bind-source="LpWindow" bind-property="fullscreened" bind-flags="sync-create|invert-boolean" />
             <style>
-              <class name="fullscreen-osd"/>
+              <class name="fullscreen-osd" />
             </style>
             <child type="start">
               <object class="GtkButton">
@@ -134,7 +134,7 @@
                         <property name="tooltip-text" translatable="yes">Rotate Left</property>
                         <property name="action-name">win.rotate_ccw</property>
                         <style>
-                          <class name="flat"/>
+                          <class name="flat" />
                         </style>
                       </object>
                     </child>
@@ -144,7 +144,7 @@
                         <property name="tooltip-text" translatable="yes">Rotate Right</property>
                         <property name="action-name">win.rotate_cw</property>
                         <style>
-                          <class name="flat"/>
+                          <class name="flat" />
                         </style>
                       </object>
                     </child>
@@ -159,7 +159,7 @@
               </object>
             </child>
             <child>
-              <object class="GtkEventControllerMotion" id="headerbar_events"/>
+              <object class="GtkEventControllerMotion" id="headerbar_events" />
             </child>
           </object>
         </child>
@@ -171,7 +171,7 @@
                 <property name="fold-policy">never</property>
                 <property name="swipe-to-open">false</property>
                 <property name="locked">True</property>
-                <property name="reveal-flap" bind-source="properties_button" bind-property="active" bind-flags="bidirectional|sync-create"/>
+                <property name="reveal-flap" bind-source="properties_button" bind-property="active" bind-flags="bidirectional|sync-create" />
                 <property name="content">
                   <object class="LpDragOverlay" id="drag_overlay">
                     <property name="drop_target">drop_target</property>
@@ -179,7 +179,7 @@
                       <object class="AdwBin">
                         <property name="can-target">false</property>
                         <style>
-                          <class name="lp-dragging-area-highlight"/>
+                          <class name="lp-dragging-area-highlight" />
                         </style>
                       </object>
                     </property>
@@ -206,8 +206,8 @@
                                 <property name="use-underline">True</property>
                                 <property name="action-name">win.open</property>
                                 <style>
-                                  <class name="pill"/>
-                                  <class name="suggested-action"/>
+                                  <class name="pill" />
+                                  <class name="suggested-action" />
                                 </style>
                               </object>
                             </child>
@@ -232,7 +232,7 @@
                   </object>
                 </property>
                 <property name="separator">
-                  <object class="GtkSeparator"/>
+                  <object class="GtkSeparator" />
                 </property>
                 <property name="flap">
                   <object class="LpPropertiesView" id="properties_view">

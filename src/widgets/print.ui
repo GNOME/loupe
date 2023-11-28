@@ -106,7 +106,7 @@
                       <object class="GtkDropDown" id="margin_unit">
                         <property name="tooltip-text" translatable="yes">Margin Units</property>
                         <style>
-                          <class name="flat"/>
+                          <class name="flat" />
                         </style>
                         <property name="model">
                           <object class="GtkStringList">
@@ -136,9 +136,8 @@
                     <property name="title" translatable="yes">Image Size</property>
                     <property name="header-suffix">
                       <object class="GtkDropDown" id="size_unit">
-                        <property name="tooltip-text" translatable="yes">Image Size Units</property>"
-                        <style>
-                          <class name="flat"/>
+                        <property name="tooltip-text" translatable="yes">Image Size Units</property>" <style>
+                          <class name="flat" />
                         </style>
                         <property name="model">
                           <object class="GtkStringList">
