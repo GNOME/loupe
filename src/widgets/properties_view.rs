@@ -38,7 +38,7 @@ mod imp {
     use super::*;
 
     #[derive(Debug, Default, CompositeTemplate)]
-    #[template(file = "../../data/gtk/properties_view.ui")]
+    #[template(file = "properties_view.ui")]
     pub struct LpPropertiesView {
         pub(super) file: RefCell<Option<glib::WeakRef<gio::File>>>,
         pub(super) image: RefCell<Option<glib::WeakRef<LpImage>>>,

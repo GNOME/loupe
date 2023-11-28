@@ -58,7 +58,7 @@ mod imp {
     use super::*;
 
     #[derive(Debug, Default, CompositeTemplate)]
-    #[template(file = "../../data/gtk/image_view.ui")]
+    #[template(file = "image_view.ui")]
     pub struct LpImageView {
         /// Direct child of this Adw::Bin
         #[template_child]

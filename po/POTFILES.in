@@ -1,8 +1,3 @@
-data/gtk/image_page.ui
-data/gtk/image_view.ui
-data/gtk/print.ui
-data/gtk/properties_view.ui
-data/gtk/window.ui
 data/org.gnome.Loupe.desktop.in.in
 data/org.gnome.Loupe.metainfo.xml.in.in
 data/resources/gtk/help-overlay.ui
@@ -23,10 +18,15 @@ src/util/mod.rs
 src/widgets/drag_overlay.rs
 src/widgets/image.rs
 src/widgets/image_page.rs
+src/widgets/image_page.ui
 src/widgets/image_view.rs
+src/widgets/image_view.ui
 src/widgets/mod.rs
 src/widgets/print.rs
+src/widgets/print.ui
 src/widgets/print_preview.rs
 src/widgets/properties_view.rs
+src/widgets/properties_view.ui
 src/widgets/sliding_view.rs
 src/window.rs
+src/window.ui

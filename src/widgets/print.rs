@@ -211,7 +211,7 @@ mod imp {
     use super::*;
 
     #[derive(Debug, Default, CompositeTemplate, Properties)]
-    #[template(file = "../../data/gtk/print.ui")]
+    #[template(file = "print.ui")]
     #[properties(wrapper_type = super::LpPrint)]
     pub struct LpPrint {
         #[template_child]

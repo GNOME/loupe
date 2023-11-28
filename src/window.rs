@@ -66,7 +66,7 @@ mod imp {
     // we'd need to have a `new()` function in the
     // `impl ObjectSubclass for $TYPE` section.
     #[derive(Default, Debug, CompositeTemplate)]
-    #[template(file = "../data/gtk/window.ui")]
+    #[template(file = "window.ui")]
     pub struct LpWindow {
         // Template children are used with the
         // TemplateChild<T> wrapper, where T is the

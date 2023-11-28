@@ -33,7 +33,7 @@ mod imp {
     use super::*;
 
     #[derive(Debug, Default, CompositeTemplate)]
-    #[template(file = "../../data/gtk/image_page.ui")]
+    #[template(file = "image_page.ui")]
     pub struct LpImagePage {
         #[template_child]
         pub(super) stack: TemplateChild<gtk::Stack>,
