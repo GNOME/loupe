@@ -8,10 +8,7 @@
       <object class="GtkOverlay" id="bin_child">
         <property name="hexpand">True</property>
         <child>
-          <object class="LpSlidingView" id="sliding_view">
-            <signal name="notify::current-page" handler="page_changed_cb" swapped="yes" />
-            <signal name="target-page-reached" handler="target_page_reached_cb" swapped="yes" />
-          </object>
+          <object class="LpSlidingView" id="sliding_view" />
         </child>
         <child type="overlay">
           <object class="GtkBox" id="controls_box_start">

@@ -132,6 +132,14 @@ mod imp {
             // Manually mange widget layout, see `WidgetImpl` for details
             obj.set_layout_manager(None::<gtk::LayoutManager>);
 
+            self.sliding_view.connect_current_page_notify(
+                glib::clone!(@weak obj => move |_| obj.page_changed()),
+            );
+
+            self.sliding_view.connect_target_page_reached(
+                glib::clone!(@weak obj => move || obj.target_page_reached()),
+            );
+
             let signal_group = glib::SignalGroup::new::<LpImage>();
             obj.connect_notify_local(
                 Some("current-page"),
@@ -574,11 +582,10 @@ impl LpImageView {
         self.imp().drag_source.clone()
     }
 
-    #[template_callback]
-    fn page_changed_cb(&self) {
-        self.notify("current-page");
-        self.notify("is-previous-available");
-        self.notify("is-next-available");
+    fn page_changed(&self) {
+        self.notify_current_page();
+        self.notify_is_next_available();
+        self.notify_is_previous_available();
 
         let Some(new_page) = self.current_page() else {
             log::debug!("Page changed but no current page");
@@ -590,9 +597,8 @@ impl LpImageView {
         }
     }
 
-    #[template_callback]
     /// Called when page change animation completed
-    fn target_page_reached_cb(&self) {
+    fn target_page_reached(&self) {
         let current_page = self.current_page();
 
         if self.imp().preserve_content.get() {

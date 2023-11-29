@@ -65,11 +65,7 @@
     <signal name="notify::fullscreened" handler="on_fullscreened" swapped="yes" />
     <binding name="title">
       <closure type="gchararray" function="window_title">
-        <lookup name="file">
-          <lookup name="image">
-            <lookup name="current-page">image_view</lookup>
-          </lookup>
-        </lookup>
+        <lookup name="current-page">image_view</lookup>
       </closure>
     </binding>
     <child>

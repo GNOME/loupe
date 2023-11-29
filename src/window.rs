@@ -36,7 +36,7 @@ use std::path::{Path, PathBuf};
 
 use crate::config;
 use crate::util::{self, Direction, Position};
-use crate::widgets::{LpDragOverlay, LpImage, LpImageView, LpPropertiesView};
+use crate::widgets::{LpDragOverlay, LpImage, LpImagePage, LpImageView, LpPropertiesView};
 
 /// Show window after X milliseconds even if image dimensions are not known yet
 const SHOW_WINDOW_AFTER: u64 = 2000;
@@ -884,7 +884,9 @@ impl LpWindow {
     // have multiple `match` or `if let` branches, and without needing
     // to unwrap.
     #[template_callback]
-    fn window_title(&self, file: Option<&gio::File>) -> String {
+    fn window_title(&self, current_page: Option<&LpImagePage>) -> String {
+        let file = current_page.and_then(|x| x.image().file());
+
         // ensure that templates are initialized
         if file.is_none() {
             gettext("Image Viewer")
