@@ -27,6 +27,7 @@ use crate::widgets::LpImagePage;
 
 use adw::prelude::*;
 use adw::subclass::prelude::*;
+use glib::Properties;
 use indexmap::IndexMap;
 use once_cell::sync::Lazy;
 
@@ -48,11 +49,13 @@ mod imp {
     use super::*;
     use glib::subclass::Signal;
 
-    #[derive(Default)]
+    #[derive(Default, Properties)]
+    #[properties(wrapper_type = super::LpSlidingView)]
     pub struct LpSlidingView {
         /// Pages that can be slided through
         pub(super) pages: RefCell<Vec<LpImagePage>>,
         /// Page that is currently shown or the animation is animating towards
+        #[property(get)]
         pub(super) current_page: RefCell<Option<LpImagePage>>,
         /// Animatable position, 0.0 first image, 1.0 second image etc
         pub(super) position: Cell<f64>,
@@ -74,23 +77,11 @@ mod imp {
 
     impl ObjectImpl for LpSlidingView {
         fn properties() -> &'static [glib::ParamSpec] {
-            static PROPERTIES: Lazy<Vec<glib::ParamSpec>> = Lazy::new(|| {
-                vec![
-                    glib::ParamSpecObject::builder::<LpImagePage>("current-page")
-                        .read_only()
-                        .build(),
-                ]
-            });
-
-            PROPERTIES.as_ref()
+            Self::derived_properties()
         }
 
-        fn property(&self, _id: usize, pspec: &glib::ParamSpec) -> glib::Value {
-            let obj = self.obj();
-            match pspec.name() {
-                "current-page" => obj.current_page().to_value(),
-                name => unimplemented!("property {name}"),
-            }
+        fn property(&self, id: usize, pspec: &glib::ParamSpec) -> glib::Value {
+            self.derived_property(id, pspec)
         }
 
         fn signals() -> &'static [Signal] {
@@ -478,10 +469,6 @@ impl LpSlidingView {
     fn set_position(&self, position: f64) {
         self.imp().position.set(position);
         self.queue_allocate();
-    }
-
-    pub fn current_page(&self) -> Option<LpImagePage> {
-        self.imp().current_page.borrow().clone()
     }
 
     fn set_current_page(&self, page: Option<&LpImagePage>) {
