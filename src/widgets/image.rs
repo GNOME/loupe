@@ -1,6 +1,7 @@
 // Copyright (c) 2021-2023 Christopher Davis
 // Copyright (c) 2022-2023 Sophie Herold
 // Copyright (c) 2022 Maximiliano Sandoval R
+// Copyright (c) 2023 Julian Hofer
 // Copyright (c) 2023 Lubosz Sarnecki
 //
 // This program is free software: you can redistribute it and/or modify
@@ -36,7 +37,8 @@ use crate::decoder::{self, tiling, Decoder, DecoderUpdate};
 use crate::image_metadata::LpImageMetadata;
 use crate::util::Gesture;
 
-use adw::{prelude::*, subclass::prelude::*};
+use adw::prelude::*;
+use adw::subclass::prelude::*;
 use arc_swap::ArcSwap;
 use futures::prelude::*;
 use once_cell::sync::Lazy;
@@ -49,8 +51,8 @@ use std::sync::Arc;
 /// `#242424`
 static BACKGROUND_COLOR_DEFAULT: Lazy<gdk::RGBA> =
     Lazy::new(|| gdk::RGBA::new(36. / 255., 36. / 255., 36. / 255., 1.));
-/// Background color if the default does not give enough contrast for transparent images
-/// `#e8e7e6`
+/// Background color if the default does not give enough contrast for
+/// transparent images `#e8e7e6`
 static BACKGROUND_COLOR_ALTERNATE: Lazy<gdk::RGBA> =
     Lazy::new(|| gdk::RGBA::new(232. / 255., 231. / 255., 230. / 255., 1.));
 
@@ -61,7 +63,8 @@ static BACKGROUND_COLOR_ALTERNATE_LIGHT_MODE: Lazy<gdk::RGBA> =
 
 /// Consider 3.5:1 contrast and worse to be bad contrast for a pixel
 static BACKGROUND_GUESS_LOW_CONTRAST_RATIO: f32 = 3.5;
-/// Consider transparent images with more than 90% pixels bad contrast as bad contrast
+/// Consider transparent images with more than 90% pixels bad contrast as bad
+/// contrast
 ///
 /// Bad contrast image will use the `BACKGROUND_COLOR_ALTERNATE`.
 static BACKGROUND_GUESS_LOW_CONTRAST_TRHESHOLD: f64 = 0.90;
@@ -145,7 +148,8 @@ mod imp {
         #[property(get, set = Self::set_zoom, explicit_notify)]
         pub(super) zoom: Cell<f64>,
         pub(super) zoom_animation: OnceCell<adw::TimedAnimation>,
-        /// Targeted zoom level, might differ from `zoom` when animation is running
+        /// Targeted zoom level, might differ from `zoom` when animation is
+        /// running
         pub(super) zoom_target: Cell<f64>,
         /// Current animation is transitioning from having horizontal scrollbars
         /// to not having them or vice versa.
@@ -730,10 +734,10 @@ mod imp {
                             let hidpi_scale = self.obj().scale_factor() as f64;
 
                             let monitor_geometry = monitor.geometry();
-                            // TODO: Per documentation those dimensions should not be physical pixels.
-                            // But on Wayland they are physical pixels and on X11 not.
-                            // Taking the version that works on Wayland for now.
-                            // <https://gitlab.gnome.org/GNOME/gtk/-/issues/5391>
+                            // TODO: Per documentation those dimensions should not be physical
+                            // pixels. But on Wayland they are physical
+                            // pixels and on X11 not. Taking the version
+                            // that works on Wayland for now. <https://gitlab.gnome.org/GNOME/gtk/-/issues/5391>
                             let monitor_width = monitor_geometry.width() as f64 - 40.;
                             let monitor_height = monitor_geometry.height() as f64 - 60.;
 
@@ -749,8 +753,8 @@ mod imp {
                                 0.3
                             };
 
-                            // factor for width and height that will achieve the desired area occupation
-                            // derived from:
+                            // factor for width and height that will achieve the desired area
+                            // occupation derived from:
                             // monitor_area * occupy_area_factor ==
                             //   (image_width * size_scale) * (image_height * size_scale)
                             let size_scale =
@@ -1684,9 +1688,11 @@ impl LpImage {
         }
     }
 
-    /// Returns a background color that should give suitable contrast with transparent images
+    /// Returns a background color that should give suitable contrast with
+    /// transparent images
     ///
-    /// For non-transparent images this always returns `BACKGROUND_COLOR_DEFAULT`
+    /// For non-transparent images this always returns
+    /// `BACKGROUND_COLOR_DEFAULT`
     pub async fn background_color_guess(&self) -> Option<gdk::RGBA> {
         // Shortcut for formats that don't support transparency
         if !self

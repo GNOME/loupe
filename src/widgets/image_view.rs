@@ -1,7 +1,8 @@
 // Copyright (c) 2020-2023 Christopher Davis
 // Copyright (c) 2022-2023 Sophie Herold
-// Copyright (c) 2022 Elton A Rodrigues
 // Copyright (c) 2022 Maximiliano Sandoval R
+// Copyright (c) 2023 Julian Hofer
+// Copyright (c) 2023 Starccy
 // Copyright (c) 2023 FineFindus
 // Copyright (c) 2023 Huan Nguyen
 // Copyright (c) 2023 Philipp Kiemle
@@ -39,15 +40,13 @@ use adw::prelude::*;
 use adw::subclass::prelude::*;
 use anyhow::Context;
 use ashpd::desktop::{wallpaper, ResponseError};
-use ashpd::Error;
-use ashpd::WindowIdentifier;
-use glib::clone;
+use ashpd::{Error, WindowIdentifier};
 use glib::translate::IntoGlib;
-use glib::Properties;
+use glib::{clone, Properties};
 use gtk::CompositeTemplate;
 
-use std::cell::{Cell, RefCell};
-use std::{cell::OnceCell, marker::PhantomData};
+use std::cell::{Cell, OnceCell, RefCell};
+use std::marker::PhantomData;
 
 // The number of pages we want to buffer
 // on either side of the current page.
@@ -208,7 +207,8 @@ mod imp {
     }
 
     impl WidgetImpl for LpImageView {
-        /// This manual implementation makes sure left an right overlay both fit into the window
+        /// This manual implementation makes sure left an right overlay both fit
+        /// into the window
         fn measure(&self, orientation: gtk::Orientation, for_size: i32) -> (i32, i32, i32, i32) {
             // Measure child of AdwBin
             let (child_min, child_natural, _, _) = self.bin_child.measure(orientation, for_size);
@@ -670,7 +670,8 @@ impl LpImageView {
                     "win.show-toast",
                     Some(
                         &(
-                            // Translators: This is a toast notification, informing the user that an image has been set as background.
+                            // Translators: This is a toast notification, informing the user that
+                            // an image has been set as background.
                             gettext("Set as background."),
                             adw::ToastPriority::High.into_glib(),
                         )

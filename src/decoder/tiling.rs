@@ -32,8 +32,7 @@ use crate::deps::*;
 use arc_swap::ArcSwap;
 use gtk::prelude::*;
 
-use std::collections::BTreeMap;
-use std::collections::VecDeque;
+use std::collections::{BTreeMap, VecDeque};
 use std::sync::Arc;
 use std::time::Duration;
 
@@ -335,8 +334,8 @@ impl TiledImage {
 
     /// Viewport within zoom coordinates
     ///
-    /// preserve_area: Slightly larger than the viewport, area for which we want tiles
-    /// TODO: This is the most buggy function ever
+    /// preserve_area: Slightly larger than the viewport, area for which we want
+    /// tiles TODO: This is the most buggy function ever
     pub fn cleanup(&mut self, zoom: f64, preserve_area: graphene::Rect) {
         let zoom = zoom_normalize(zoom);
         let mut kept_tiles = Self::default();
@@ -584,7 +583,8 @@ pub trait FrameBufferExt {
     fn push_frame(&self, tile: Tile, dimensions: Coordinates, delay: Duration);
     fn reset(&self);
     fn get_layer_tiling_or_default(&self, zoom: f64, viewport: graphene::Rect) -> Tiling;
-    /// Return true if the next frame should be shown and removes the outdated frame
+    /// Return true if the next frame should be shown and removes the outdated
+    /// frame
     fn frame_timeout(&self, elapsed: Duration) -> bool;
     /// Returns the number of currently buffered frames
     fn n_frames(&self) -> usize;

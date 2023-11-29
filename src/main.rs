@@ -46,7 +46,8 @@ Simplified widget arrangement including the most important widgets.
 */
 
 use gettextrs::*;
-use gtk::gio::{self, prelude::*};
+use gtk::gio::prelude::*;
+use gtk::gio::{self};
 
 mod about;
 mod application;

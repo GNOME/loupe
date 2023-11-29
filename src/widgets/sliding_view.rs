@@ -457,8 +457,8 @@ impl LpSlidingView {
 
     /// Sets position shift to correct page insert or removal
     ///
-    /// Takes the old position of the current page and calculates and sets the shift
-    /// to keep the current page optically at the same position.
+    /// Takes the old position of the current page and calculates and sets the
+    /// shift to keep the current page optically at the same position.
     fn shift_position(&self, old_index: Option<usize>) {
         if let (Some(old_index), Some(new_index)) = (old_index, self.current_index()) {
             let shift = new_index as f64 - old_index as f64;

@@ -1,4 +1,5 @@
 // Copyright (c) 2023 Sophie Herold
+// Copyright (c) 2023 Julian Hofer
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -63,8 +64,8 @@ enum Status {
 
 /// Scope guard for non user ui changes
 ///
-/// Creates a context in which other signals know that changes are not user input.
-/// This avoids things like loops between value change signals.
+/// Creates a context in which other signals know that changes are not user
+/// input. This avoids things like loops between value change signals.
 #[derive(Default, Clone, Debug)]
 struct UiUpdates {
     disabled: Rc<Cell<bool>>,

@@ -2,6 +2,7 @@
 // Copyright (c) 2022-2023 Sophie Herold
 // Copyright (c) 2022 Elton A Rodrigues
 // Copyright (c) 2022 Maximiliano Sandoval R
+// Copyright (c) 2023 Julian Hofer
 // Copyright (c) 2023 FineFindus
 // Copyright (c) 2023 qwel
 // Copyright (c) 2023 Huan Thieu Nguyen
@@ -819,7 +820,8 @@ impl LpWindow {
         })
     }
 
-    /// Queue a fade animation to play after `HIDE_CONTROLS_IDLE_TIMEOUT` of inactivity
+    /// Queue a fade animation to play after `HIDE_CONTROLS_IDLE_TIMEOUT` of
+    /// inactivity
     fn queue_hide_controls(&self) {
         self.dequeue_hide_controls();
 
@@ -895,7 +897,9 @@ impl LpWindow {
                 .image_view
                 .current_file()
                 .and_then(|f| util::get_file_display_name(&f)) // If the file exists, get display name
-                .unwrap_or_else(|| gettext("Image Viewer")) // Return that or the default if there's nothing
+                .unwrap_or_else(|| gettext("Image Viewer")) // Return that or
+                                                            // the default if
+                                                            // there's nothing
         }
     }
 
@@ -912,9 +916,9 @@ impl LpWindow {
     fn on_motion(&self, pointer_position: (f64, f64)) {
         let imp = self.imp();
 
-        // Check if position really changed since swipe gesture sends change event with same position.
-        // Also, don't connect this to "leave" because swipe also sends fake "leave" events when
-        // the widget under the cursor changes.
+        // Check if position really changed since swipe gesture sends change event with
+        // same position. Also, don't connect this to "leave" because swipe also
+        // sends fake "leave" events when the widget under the cursor changes.
         if imp.pointer_position.get() == pointer_position {
             return;
         }
@@ -929,7 +933,8 @@ impl LpWindow {
         }
     }
 
-    /// Only hide controls if cursor not over controls and there is an image shown
+    /// Only hide controls if cursor not over controls and there is an image
+    /// shown
     fn can_hide_controls(&self) -> bool {
         !self
             .image_view()

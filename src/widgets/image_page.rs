@@ -1,5 +1,6 @@
 // Copyright (c) 2022-2023 Sophie Herold
 // Copyright (c) 2022 Christopher Davis
+// Copyright (c) 2023 Julian Hofer
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -24,8 +25,7 @@ use crate::deps::*;
 use crate::widgets::LpImage;
 
 use adw::subclass::prelude::*;
-use glib::clone;
-use glib::Properties;
+use glib::{clone, Properties};
 use gtk::prelude::*;
 use gtk::CompositeTemplate;
 

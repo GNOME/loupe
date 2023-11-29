@@ -36,8 +36,8 @@ mod imp {
 
     #[derive(Debug, Default)]
     pub struct LpFileModel {
-        /// Use and IndexMap such that we can put the elements into an arbitrary order
-        /// while still having fast hash access via file URI.
+        /// Use and IndexMap such that we can put the elements into an arbitrary
+        /// order while still having fast hash access via file URI.
         pub(super) files: RefCell<IndexMap<GString, gio::File>>,
         pub(super) directory: OnceCell<gio::File>,
         /// Track file changes.
@@ -150,7 +150,8 @@ impl LpFileModel {
         let mut new_files = new_files?;
 
         {
-            // Here we use a nested scope so that the mutable borrow only lasts as long as we need it
+            // Here we use a nested scope so that the mutable borrow only lasts as long as
+            // we need it
 
             let mut files = self.imp().files.borrow_mut();
             for (uri, file) in files.iter() {

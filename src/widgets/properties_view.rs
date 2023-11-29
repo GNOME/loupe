@@ -1,5 +1,6 @@
 // Copyright (c) 2022-2023 Sophie Herold
 // Copyright (c) 2022-2023 Christopher Davis
+// Copyright (c) 2023 Julian Hofer
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -297,7 +298,8 @@ impl LpPropertiesView {
     fn folder_name(&self, file: Option<gio::File>) -> String {
         file.and_then(|f| f.parent()) // If the file exists, get the parent
             .and_then(|p| util::get_file_display_name(&p)) // if that exists, the display name
-            .unwrap_or_else(|| FALLBACK.to_owned()) // and if we get nothing, use `FALLBACK`
+            .unwrap_or_else(|| FALLBACK.to_owned()) // and if we get nothing,
+                                                    // use `FALLBACK`
     }
 
     #[template_callback]
