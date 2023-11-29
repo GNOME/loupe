@@ -43,21 +43,22 @@ use ashpd::Error;
 use ashpd::WindowIdentifier;
 use glib::clone;
 use glib::translate::IntoGlib;
+use glib::Properties;
 use gtk::CompositeTemplate;
-use once_cell::sync::Lazy;
 
 use std::cell::{Cell, RefCell};
+use std::{cell::OnceCell, marker::PhantomData};
 
 // The number of pages we want to buffer
 // on either side of the current page.
 const BUFFER: usize = 2;
 
 mod imp {
-    use std::cell::OnceCell;
 
     use super::*;
 
-    #[derive(Debug, Default, CompositeTemplate)]
+    #[derive(Debug, Default, CompositeTemplate, Properties)]
+    #[properties(wrapper_type = super::LpImageView)]
     #[template(file = "image_view.ui")]
     pub struct LpImageView {
         /// Direct child of this Adw::Bin
@@ -83,6 +84,15 @@ mod imp {
         pub(super) preserve_content: Cell<bool>,
 
         pub(super) current_image_signals: OnceCell<glib::SignalGroup>,
+
+        #[property(get = Self::current_page)]
+        _current_page: PhantomData<Option<LpImagePage>>,
+
+        #[property(get = Self::is_previous_available)]
+        _is_previous_available: PhantomData<bool>,
+
+        #[property(get = Self::is_next_available)]
+        _is_next_available: PhantomData<bool>,
     }
 
     #[glib::object_subclass]
@@ -103,31 +113,15 @@ mod imp {
 
     impl ObjectImpl for LpImageView {
         fn properties() -> &'static [glib::ParamSpec] {
-            static PROPERTIES: Lazy<Vec<glib::ParamSpec>> = Lazy::new(|| {
-                vec![
-                    glib::ParamSpecObject::builder::<LpImagePage>("current-page")
-                        .read_only()
-                        .build(),
-                    glib::ParamSpecBoolean::builder("is-previous-available")
-                        .read_only()
-                        .build(),
-                    glib::ParamSpecBoolean::builder("is-next-available")
-                        .read_only()
-                        .build(),
-                ]
-            });
-
-            PROPERTIES.as_ref()
+            Self::derived_properties()
         }
 
-        fn property(&self, _id: usize, psec: &glib::ParamSpec) -> glib::Value {
-            let obj = self.obj();
-            match psec.name() {
-                "current-page" => obj.current_page().to_value(),
-                "is-previous-available" => obj.is_previous_available().to_value(),
-                "is-next-available" => obj.is_next_available().to_value(),
-                _ => unimplemented!(),
-            }
+        fn set_property(&self, id: usize, value: &glib::Value, pspec: &glib::ParamSpec) {
+            self.derived_set_property(id, value, pspec)
+        }
+
+        fn property(&self, id: usize, pspec: &glib::ParamSpec) -> glib::Value {
+            self.derived_property(id, pspec)
         }
 
         fn constructed(&self) {
@@ -236,6 +230,35 @@ mod imp {
     }
 
     impl BinImpl for LpImageView {}
+
+    impl LpImageView {
+        pub fn current_page(&self) -> Option<LpImagePage> {
+            self.sliding_view.current_page()
+        }
+
+        /// Returns `true` if there is an image before the current one
+        pub fn is_previous_available(&self) -> bool {
+            let obj = self.obj();
+
+            if let Some(file) = obj.current_file() {
+                obj.model().index_of(&file) != Some(0)
+            } else {
+                false
+            }
+        }
+
+        /// Returns `true` if there is an image after the current one
+        pub fn is_next_available(&self) -> bool {
+            let obj = self.obj();
+
+            if let Some(file) = obj.current_file() {
+                let model = obj.model();
+                model.index_of(&file) != Some(model.n_files().saturating_sub(1))
+            } else {
+                false
+            }
+        }
+    }
 }
 
 glib::wrapper! {
@@ -533,10 +556,6 @@ impl LpImageView {
             .expect("Signal group should be set up during construction")
     }
 
-    pub fn current_page(&self) -> Option<LpImagePage> {
-        self.imp().sliding_view.current_page()
-    }
-
     pub fn current_uri(&self) -> Option<glib::GString> {
         self.imp()
             .sliding_view
@@ -553,25 +572,6 @@ impl LpImageView {
 
     pub fn drag_source(&self) -> gtk::DragSource {
         self.imp().drag_source.clone()
-    }
-
-    /// Returns `true` if there is an image before the current one
-    pub fn is_previous_available(&self) -> bool {
-        if let Some(file) = self.current_file() {
-            self.model().index_of(&file) != Some(0)
-        } else {
-            false
-        }
-    }
-
-    /// Returns `true` if there is an image after the current one
-    pub fn is_next_available(&self) -> bool {
-        if let Some(file) = self.current_file() {
-            let model = self.model();
-            model.index_of(&file) != Some(model.n_files().saturating_sub(1))
-        } else {
-            false
-        }
     }
 
     #[template_callback]
