@@ -25,14 +25,15 @@ use crate::widgets::LpImage;
 
 use adw::subclass::prelude::*;
 use glib::clone;
+use glib::Properties;
 use gtk::prelude::*;
 use gtk::CompositeTemplate;
-use once_cell::sync::Lazy;
 
 mod imp {
     use super::*;
 
-    #[derive(Debug, Default, CompositeTemplate)]
+    #[derive(Debug, Default, CompositeTemplate, Properties)]
+    #[properties(wrapper_type = super::LpImagePage)]
     #[template(file = "image_page.ui")]
     pub struct LpImagePage {
         #[template_child]
@@ -48,6 +49,7 @@ mod imp {
         #[template_child]
         pub(super) scrolled_window: TemplateChild<gtk::ScrolledWindow>,
         #[template_child]
+        #[property(type = LpImage, get = Self::image)]
         pub(super) image: TemplateChild<LpImage>,
         #[template_child]
         pub(super) popover: TemplateChild<gtk::PopoverMenu>,
@@ -74,21 +76,11 @@ mod imp {
 
     impl ObjectImpl for LpImagePage {
         fn properties() -> &'static [glib::ParamSpec] {
-            static PROPERTIES: Lazy<Vec<glib::ParamSpec>> = Lazy::new(|| {
-                vec![glib::ParamSpecObject::builder::<LpImage>("image")
-                    .read_only()
-                    .build()]
-            });
-
-            PROPERTIES.as_ref()
+            Self::derived_properties()
         }
 
-        fn property(&self, _id: usize, pspec: &glib::ParamSpec) -> glib::Value {
-            let obj = self.obj();
-            match pspec.name() {
-                "image" => obj.image().to_value(),
-                name => unimplemented!("property {name}"),
-            }
+        fn property(&self, id: usize, pspec: &glib::ParamSpec) -> glib::Value {
+            self.derived_property(id, pspec)
         }
 
         fn constructed(&self) {
@@ -143,6 +135,12 @@ mod imp {
 
     impl WidgetImpl for LpImagePage {}
     impl BinImpl for LpImagePage {}
+
+    impl LpImagePage {
+        pub fn image(&self) -> LpImage {
+            self.image.get()
+        }
+    }
 }
 
 glib::wrapper! {
@@ -171,10 +169,6 @@ impl LpImagePage {
 
     pub fn scrolled_window(&self) -> gtk::ScrolledWindow {
         self.imp().scrolled_window.clone()
-    }
-
-    pub fn image(&self) -> LpImage {
-        self.imp().image.get()
     }
 
     pub fn content_provider(&self) -> Option<gdk::ContentProvider> {
