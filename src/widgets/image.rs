@@ -42,6 +42,7 @@ use futures::prelude::*;
 use once_cell::sync::Lazy;
 
 use std::cell::{Cell, OnceCell, RefCell};
+use std::marker::PhantomData;
 use std::sync::Arc;
 
 /// Default background color around images and behind transparent images
@@ -102,34 +103,46 @@ const THUMBNAIL_SIZE: f32 = 128.;
 
 mod imp {
     use super::*;
+    use glib::Properties;
 
-    #[derive(Debug, Default)]
+    #[derive(Debug, Default, Properties)]
+    #[properties(wrapper_type = super::LpImage)]
     pub struct LpImage {
+        #[property(get, set = LpImage::set_file, explicit_notify)]
         pub(super) file: RefCell<Option<gio::File>>,
+        #[property(get)]
         pub(super) is_deleted: Cell<bool>,
+        #[property(get)]
         pub(super) is_unsupported: Cell<bool>,
+        /// Set to true when image is ready for displaying
+        #[property(get)]
+        pub(super) is_loaded: Cell<bool>,
+        /// Set if an error has occurred, shown on error_page
+        #[property(get)]
+        pub(super) error: RefCell<Option<String>>,
+        #[property(name = "format-name", type = Option<String>, get = Self::format_name)]
+        pub(super) format: RefCell<Option<decoder::ImageFormat>>,
+        pub(super) background_color: RefCell<Option<gdk::RGBA>>,
+
         /// Track changes to this image
         pub(super) file_monitor: RefCell<Option<gio::FileMonitor>>,
         pub(super) frame_buffer: Arc<ArcSwap<tiling::FrameBuffer>>,
         pub(super) decoder: RefCell<Option<Arc<Decoder>>>,
-        pub(super) format: RefCell<Option<decoder::ImageFormat>>,
-        pub(super) background_color: RefCell<Option<gdk::RGBA>>,
-
-        /// Set to true when image is ready for displaying
-        pub(super) is_loaded: Cell<bool>,
-        /// Set if an error has occurred, shown on error_page
-        pub(super) error: RefCell<Option<String>>,
 
         /// Rotation final value (can differ from `rotation` during animation)
         pub(super) rotation_target: Cell<f64>,
         /// Rotated presentation of original image in degrees clockwise
+        #[property(get, set = Self::set_rotation, explicit_notify)]
         pub(super) rotation: Cell<f64>,
         // Animates the `rotation` property
         pub(super) rotation_animation: OnceCell<adw::TimedAnimation>,
+
         /// Mirrored presentation of original image
+        #[property(get, set = Self::set_mirrored, explicit_notify)]
         pub(super) mirrored: Cell<bool>,
 
         /// Displayed zoom level
+        #[property(get, set = Self::set_zoom, explicit_notify)]
         pub(super) zoom: Cell<f64>,
         pub(super) zoom_animation: OnceCell<adw::TimedAnimation>,
         /// Targeted zoom level, might differ from `zoom` when animation is running
@@ -141,19 +154,32 @@ mod imp {
         pub(super) zoom_vscrollbar_transition: Cell<bool>,
 
         /// Always fit image into window, causes `zoom` to change automatically
+        #[property(get, set)]
         pub(super) best_fit: Cell<bool>,
         /// Max zoom level is reached, stored to only send signals on change
-        pub(super) max_zoom: Cell<bool>,
+        #[property(get, set)]
+        pub(super) is_max_zoom: Cell<bool>,
 
         /// Horizontal scrolling
-        pub(super) hadjustment: RefCell<Option<gtk::Adjustment>>,
+        #[property(override_interface = gtk::Scrollable, get , set = Self::set_hadjustment)]
+        pub(super) hadjustment: RefCell<gtk::Adjustment>,
         /// Vertical scrolling
-        pub(super) vadjustment: RefCell<Option<gtk::Adjustment>>,
+        #[property(override_interface = gtk::Scrollable, get , set = Self::set_vadjustment)]
+        pub(super) vadjustment: RefCell<gtk::Adjustment>,
+
+        #[property(override_interface = gtk::Scrollable, get = Self::scroll_policy, set = Self::set_ignore_scroll_policy)]
+        pub(super) _hscroll_policy: PhantomData<gtk::ScrollablePolicy>,
+        #[property(override_interface = gtk::Scrollable, get = Self::scroll_policy, set = Self::set_ignore_scroll_policy)]
+        pub(super) _vscroll_policy: PhantomData<gtk::ScrollablePolicy>,
 
         /// Currently EXIF data
+        #[property(name = "metadata", get)]
         pub(super) image_metadata: RefCell<LpImageMetadata>,
         /// Image dimension details for SVGs
         pub(super) dimension_details: RefCell<decoder::ImageDimensionDetails>,
+
+        #[property(get)]
+        _image_size_available: bool,
 
         /// Current pointer position
         pub(super) pointer_position: Cell<Option<(f64, f64)>>,
@@ -188,91 +214,15 @@ mod imp {
 
     impl ObjectImpl for LpImage {
         fn properties() -> &'static [glib::ParamSpec] {
-            static PROPERTIES: Lazy<Vec<glib::ParamSpec>> = Lazy::new(|| {
-                vec![
-                    glib::ParamSpecObject::builder::<gio::File>("file")
-                        .read_only()
-                        .build(),
-                    glib::ParamSpecBoolean::builder("is-deleted")
-                        .read_only()
-                        .build(),
-                    glib::ParamSpecBoolean::builder("is-loaded")
-                        .read_only()
-                        .build(),
-                    glib::ParamSpecBoolean::builder("is-unsupported")
-                        .read_only()
-                        .build(),
-                    glib::ParamSpecString::builder("error").read_only().build(),
-                    glib::ParamSpecObject::builder::<LpImageMetadata>("metadata")
-                        .read_only()
-                        .build(),
-                    glib::ParamSpecString::builder("format-name")
-                        .read_only()
-                        .build(),
-                    glib::ParamSpecDouble::builder("rotation")
-                        .explicit_notify()
-                        .build(),
-                    glib::ParamSpecBoolean::builder("mirrored")
-                        .explicit_notify()
-                        .build(),
-                    glib::ParamSpecDouble::builder("zoom")
-                        .explicit_notify()
-                        .build(),
-                    glib::ParamSpecBoolean::builder("best-fit")
-                        .explicit_notify()
-                        .build(),
-                    glib::ParamSpecBoolean::builder("is-max-zoom")
-                        .read_only()
-                        .build(),
-                    glib::ParamSpecVariant::builder("image-size", glib::VariantTy::TUPLE)
-                        .read_only()
-                        .build(),
-                    glib::ParamSpecOverride::for_interface::<gtk::Scrollable>("hadjustment"),
-                    glib::ParamSpecOverride::for_interface::<gtk::Scrollable>("vadjustment"),
-                    glib::ParamSpecOverride::for_interface::<gtk::Scrollable>("hscroll-policy"),
-                    glib::ParamSpecOverride::for_interface::<gtk::Scrollable>("vscroll-policy"),
-                ]
-            });
-
-            PROPERTIES.as_ref()
+            Self::derived_properties()
         }
 
-        fn property(&self, _id: usize, pspec: &glib::ParamSpec) -> glib::Value {
-            let obj = self.obj();
-            match pspec.name() {
-                "file" => obj.file().to_value(),
-                "is-deleted" => obj.is_deleted().to_value(),
-                "is-loaded" => obj.is_loaded().to_value(),
-                "is-unsupported" => obj.is_unsupported().to_value(),
-                "error" => obj.error().to_value(),
-                "metadata" => obj.metadata().to_value(),
-                "format-name" => obj.format_name().to_value(),
-                "rotation" => obj.rotation().to_value(),
-                "mirrored" => obj.mirrored().to_value(),
-                "zoom" => obj.zoom().to_value(),
-                "best-fit" => obj.is_best_fit().to_value(),
-                "is-max-zoom" => obj.is_max_zoom().to_value(),
-                "image-size" => obj.image_size().to_variant().to_value(),
-                // don't use getter functions here since they can return a fake adjustment
-                "hadjustment" => self.hadjustment.borrow().to_value(),
-                "vadjustment" => self.vadjustment.borrow().to_value(),
-                "hscroll-policy" | "vscroll-policy" => gtk::ScrollablePolicy::Minimum.to_value(),
-                name => unimplemented!("property {}", name),
-            }
+        fn set_property(&self, id: usize, value: &glib::Value, pspec: &glib::ParamSpec) {
+            self.derived_set_property(id, value, pspec)
         }
 
-        fn set_property(&self, _id: usize, value: &glib::Value, pspec: &glib::ParamSpec) {
-            let obj = self.obj();
-            match pspec.name() {
-                "rotation" => obj.set_rotation(value.get().unwrap()),
-                "mirrored" => obj.set_mirrored(value.get().unwrap()),
-                "zoom" => obj.set_zoom(value.get().unwrap()),
-                "best-fit" => obj.set_best_fit(value.get().unwrap()),
-                "hadjustment" => obj.set_hadjustment(value.get().unwrap()),
-                "vadjustment" => obj.set_vadjustment(value.get().unwrap()),
-                "hscroll-policy" | "vscroll-policy" => (),
-                _ => unimplemented!(),
-            }
+        fn property(&self, id: usize, pspec: &glib::ParamSpec) -> glib::Value {
+            self.derived_property(id, pspec)
         }
 
         fn constructed(&self) {
@@ -559,6 +509,102 @@ mod imp {
 
             zoom_gesture.group_with(&rotation_gesture);
         }
+
+        fn set_file(&self, file: &gio::File) {
+            let obj = self.obj();
+
+            if obj.file().map_or(false, |x| file.equal(&x)) {
+                return;
+            }
+
+            self.file.replace(Some(file.clone()));
+
+            let monitor =
+                file.monitor_file(gio::FileMonitorFlags::WATCH_MOVES, gio::Cancellable::NONE);
+            if let Ok(m) = &monitor {
+                m.connect_changed(glib::clone!(@weak obj => move |_, file_a, file_b, event| {
+                    obj.file_changed(event, file_a, file_b);
+                }));
+            }
+
+            self.file_monitor.replace(monitor.ok());
+
+            obj.notify_file();
+        }
+
+        fn set_mirrored(&self, mirrored: bool) {
+            let obj = self.obj();
+
+            if mirrored == obj.mirrored() {
+                return;
+            }
+
+            self.mirrored.set(mirrored);
+            obj.notify_mirrored();
+            obj.queue_draw();
+        }
+
+        /// Set zoom level aiming for cursor position or center if not available
+        ///
+        /// Aiming means that the scrollbars are adjust such that the same point
+        /// of the image remains under the cursor after changing the zoom level.
+        fn set_zoom(&self, zoom: f64) {
+            self.obj()
+                .set_zoom_aiming(zoom, self.pointer_position.get())
+        }
+
+        fn set_hadjustment(&self, hadjustment: Option<gtk::Adjustment>) {
+            let obj = self.obj();
+
+            let adjustment = hadjustment.unwrap_or_default();
+
+            adjustment.connect_value_changed(glib::clone!(@weak obj => move |_| {
+                obj.request_tiles();
+                obj.queue_draw();
+            }));
+
+            self.hadjustment.replace(adjustment);
+            obj.configure_adjustments();
+        }
+
+        fn set_vadjustment(&self, vadjustment: Option<gtk::Adjustment>) {
+            let obj = self.obj();
+
+            let adjustment = vadjustment.unwrap_or_default();
+
+            adjustment.connect_value_changed(glib::clone!(@weak  obj => move |_| {
+                obj.request_tiles();
+                obj.queue_draw();
+            }));
+
+            self.vadjustment.replace(adjustment);
+            obj.configure_adjustments();
+        }
+
+        pub fn set_rotation(&self, rotation: f64) {
+            let obj = self.obj();
+
+            if rotation == obj.rotation() {
+                return;
+            }
+
+            self.rotation.set(rotation);
+            obj.notify_rotation();
+            obj.queue_draw();
+        }
+
+        pub fn set_ignore_scroll_policy(&self, scroll_policy: gtk::ScrollablePolicy) {
+            log::error!("Ignored setting new scroll policy {scroll_policy:?}");
+        }
+
+        pub fn scroll_policy(&self) -> gtk::ScrollablePolicy {
+            gtk::ScrollablePolicy::Minimum
+        }
+
+        /// Image format displayable name
+        pub fn format_name(&self) -> Option<String> {
+            self.format.borrow().as_ref().map(|x| x.to_string())
+        }
     }
 
     impl WidgetImpl for LpImage {
@@ -640,14 +686,13 @@ mod imp {
             );
 
             // Apply the scrolling position to the image
-            if let Some(adj) = self.hadjustment.borrow().as_ref() {
-                let x = -(adj.value() - (adj.upper() - display_width) / 2.);
-                snapshot.translate(&graphene::Point::new(widget.round_f64(x) as f32, 0.));
-            }
-            if let Some(adj) = self.vadjustment.borrow().as_ref() {
-                let y = -(adj.value() - (adj.upper() - display_height) / 2.);
-                snapshot.translate(&graphene::Point::new(0., widget.round_f64(y) as f32));
-            }
+            let hadj: gtk::Adjustment = widget.hadjustment();
+            let x = -(hadj.value() - (hadj.upper() - display_width) / 2.);
+            snapshot.translate(&graphene::Point::new(widget.round_f64(x) as f32, 0.));
+
+            let vadj = widget.vadjustment();
+            let y = -(vadj.value() - (vadj.upper() - display_height) / 2.);
+            snapshot.translate(&graphene::Point::new(0., widget.round_f64(y) as f32));
 
             // Centering in widget when no scrolling (black bars around image)
             let x = widget.round_f64(f64::max((widget_width - display_width) / 2.0, 0.));
@@ -797,14 +842,14 @@ impl LpImage {
             DecoderUpdate::Metadata(metadata) => {
                 log::debug!("Received metadata");
                 imp.image_metadata.replace(LpImageMetadata::from(metadata));
-                self.notify("metadata");
+                self.notify_metadata();
 
                 self.reset_rotation();
             }
             DecoderUpdate::Dimensions(dimension_details) => {
                 log::debug!("Received dimensions: {:?}", self.original_dimensions());
                 self.imp().dimension_details.replace(dimension_details);
-                self.notify("image-size");
+                self.notify_image_size_available();
                 self.configure_best_fit();
                 self.request_tiles();
             }
@@ -832,7 +877,7 @@ impl LpImage {
             }
             DecoderUpdate::Format(format) => {
                 imp.format.replace(Some(format));
-                self.notify("format-name");
+                self.notify_format_name();
             }
             DecoderUpdate::Animated => {
                 let callback_id = self
@@ -869,18 +914,6 @@ impl LpImage {
         }
 
         glib::ControlFlow::Continue
-    }
-
-    pub fn is_loaded(&self) -> bool {
-        self.imp().is_loaded.get()
-    }
-
-    pub fn is_deleted(&self) -> bool {
-        self.imp().is_deleted.get()
-    }
-
-    pub fn is_unsupported(&self) -> bool {
-        self.imp().is_unsupported.get()
     }
 
     /// Zoom level that makes the image fit in widget
@@ -929,29 +962,6 @@ impl LpImage {
         }
     }
 
-    pub fn file(&self) -> Option<gio::File> {
-        self.imp().file.borrow().clone()
-    }
-
-    pub(super) fn set_file(&self, file: &gio::File) {
-        let imp = self.imp();
-
-        imp.file.replace(Some(file.clone()));
-
-        let monitor = file.monitor_file(gio::FileMonitorFlags::WATCH_MOVES, gio::Cancellable::NONE);
-        if let Ok(m) = &monitor {
-            m.connect_changed(
-                glib::clone!(@weak self as obj => move |_, file_a, file_b, event| {
-                    obj.file_changed(event, file_a, file_b);
-                }),
-            );
-        }
-
-        imp.file_monitor.replace(monitor.ok());
-
-        self.notify("file");
-    }
-
     /// File changed on drive
     fn file_changed(
         &self,
@@ -990,7 +1000,7 @@ impl LpImage {
             | gio::FileMonitorEvent::Unmounted => {
                 log::debug!("File no longer available: {event:?} {}", file_a.uri());
                 self.imp().is_deleted.set(true);
-                self.notify("is-deleted");
+                self.notify_is_deleted();
             }
             _ => {}
         }
@@ -1055,34 +1065,6 @@ impl LpImage {
         Some(renderer.render_texture(&node, None))
     }
 
-    fn mirrored(&self) -> bool {
-        self.imp().mirrored.get()
-    }
-
-    fn set_mirrored(&self, mirrored: bool) {
-        if mirrored == self.mirrored() {
-            return;
-        }
-
-        self.imp().mirrored.set(mirrored);
-        self.notify("mirrored");
-        self.queue_draw();
-    }
-
-    pub fn rotation(&self) -> f64 {
-        self.imp().rotation.get()
-    }
-
-    pub fn set_rotation(&self, rotation: f64) {
-        if rotation == self.rotation() {
-            return;
-        }
-
-        self.imp().rotation.set(rotation);
-        self.notify("rotation");
-        self.queue_draw();
-    }
-
     /// Set rotation and mirroring to the state would have after loading
     pub fn reset_rotation(&self) {
         let orientation = self.metadata().orientation();
@@ -1123,41 +1105,6 @@ impl LpImage {
 
     pub fn is_best_fit(&self) -> bool {
         self.imp().best_fit.get()
-    }
-
-    pub fn set_best_fit(&self, best_fit: bool) {
-        if best_fit == self.is_best_fit() {
-            return;
-        }
-
-        self.imp().best_fit.set(best_fit);
-        self.notify("best-fit");
-    }
-
-    /// Current zoom level
-    pub fn zoom(&self) -> f64 {
-        self.imp().zoom.get()
-    }
-
-    /// Set zoom level aiming for cursor position or center if not available
-    ///
-    /// Aiming means that the scrollbars are adjust such that the same point
-    /// of the image remains under the cursor after changing the zoom level.
-    fn set_zoom(&self, zoom: f64) {
-        self.set_zoom_aiming(zoom, self.imp().pointer_position.get())
-    }
-
-    pub fn is_max_zoom(&self) -> bool {
-        self.imp().max_zoom.get()
-    }
-
-    fn set_max_zoom(&self, value: bool) {
-        if self.is_max_zoom() == value {
-            return;
-        }
-
-        self.imp().max_zoom.set(value);
-        self.notify("is-max-zoom");
     }
 
     fn applicable_zoom(&self) -> f64 {
@@ -1244,7 +1191,7 @@ impl LpImage {
                 .set_value(self.vadjustment_corrected_for_zoom(zoom_ratio, y));
         }
 
-        self.notify("zoom");
+        self.notify_zoom();
         self.queue_draw();
     }
 
@@ -1381,9 +1328,9 @@ impl LpImage {
         let max_zoom = self.max_zoom();
         if zoom >= max_zoom {
             zoom = max_zoom;
-            self.set_max_zoom(true);
+            self.set_is_max_zoom(true);
         } else {
-            self.set_max_zoom(false);
+            self.set_is_max_zoom(false);
         }
 
         let extended_best_fit_threshold = if snap_best_fit {
@@ -1516,48 +1463,6 @@ impl LpImage {
         adjustment.set_value(value);
     }
 
-    fn hadjustment(&self) -> gtk::Adjustment {
-        if let Some(adj) = self.imp().hadjustment.borrow().as_ref() {
-            adj.clone()
-        } else {
-            log::trace!("Hadjustment not set yet: Using fake object");
-            gtk::Adjustment::default()
-        }
-    }
-
-    fn set_hadjustment(&self, adjustment: Option<gtk::Adjustment>) {
-        if let Some(adj) = &adjustment {
-            adj.connect_value_changed(glib::clone!(@weak self as obj => move |_| {
-                obj.request_tiles();
-                obj.queue_draw();
-            }));
-        }
-
-        self.imp().hadjustment.replace(adjustment);
-        self.configure_adjustments();
-    }
-
-    fn vadjustment(&self) -> gtk::Adjustment {
-        if let Some(adj) = self.imp().vadjustment.borrow().as_ref() {
-            adj.clone()
-        } else {
-            log::trace!("Vadjustment not set yet: Using fake object");
-            gtk::Adjustment::default()
-        }
-    }
-
-    fn set_vadjustment(&self, adjustment: Option<gtk::Adjustment>) {
-        if let Some(adj) = &adjustment {
-            adj.connect_value_changed(glib::clone!(@weak self as obj => move |_| {
-                obj.request_tiles();
-                obj.queue_draw();
-            }));
-        }
-
-        self.imp().vadjustment.replace(adjustment);
-        self.configure_adjustments();
-    }
-
     /// Configure scrollbars for current situation
     fn configure_adjustments(&self) {
         let hadjustment = self.hadjustment();
@@ -1679,10 +1584,6 @@ impl LpImage {
         ));
     }
 
-    pub fn metadata(&self) -> LpImageMetadata {
-        self.imp().image_metadata.borrow().clone()
-    }
-
     pub fn dimension_details(&self) -> decoder::ImageDimensionDetails {
         self.imp().dimension_details.borrow().clone()
     }
@@ -1699,22 +1600,12 @@ impl LpImage {
         self.imp().format.borrow().clone()
     }
 
-    /// Image format displayable name
-    pub fn format_name(&self) -> Option<String> {
-        self.imp().format.borrow().as_ref().map(|x| x.to_string())
-    }
-
-    /// Returns decoding error if one occured
-    pub fn error(&self) -> Option<String> {
-        self.imp().error.borrow().clone()
-    }
-
     fn set_error(&self, err: Option<anyhow::Error>) {
         log::debug!("Decoding error: {err:?}");
         self.imp()
             .error
             .replace(err.as_ref().map(|x| x.to_string()));
-        self.notify("error");
+        self.notify_error();
 
         if err.is_some() {
             self.set_loaded(false);
@@ -1724,7 +1615,7 @@ impl LpImage {
     fn set_unsupported(&self, is_unsupported: bool) {
         if self.is_unsupported() != is_unsupported {
             self.imp().is_unsupported.set(true);
-            self.notify("is-unsupported");
+            self.notify_is_unsupported();
 
             if is_unsupported {
                 self.set_loaded(false);
@@ -1735,7 +1626,7 @@ impl LpImage {
     fn set_loaded(&self, is_loaded: bool) {
         if self.is_loaded() != is_loaded {
             self.imp().is_loaded.set(is_loaded);
-            self.notify("is-loaded");
+            self.notify_is_loaded();
 
             if is_loaded {
                 self.set_error(None);

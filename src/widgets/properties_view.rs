@@ -301,7 +301,7 @@ impl LpPropertiesView {
     }
 
     #[template_callback]
-    fn image_size(&self, _image_size: Option<glib::Variant>) -> String {
+    fn image_size(&self, _image_size: bool) -> String {
         if let Some(image) = self.image() {
             match image.dimension_details() {
                 ImageDimensionDetails::Svg(string) => string,

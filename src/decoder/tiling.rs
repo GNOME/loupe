@@ -20,7 +20,7 @@
 //!
 //! It is not always feasible or desiareble to store the complete decoded
 //! image in the VRAM. [`TiledImage`] allows to compose the parts of
-//! the image currently viewed, out of smaller [`Tiles`].
+//! the image currently viewed, out of smaller [`Tile`]s.
 //!
 //! This is especially important for SVGs where every the image has to
 //! be re-genearted for each zoom level. It can also be used to allow

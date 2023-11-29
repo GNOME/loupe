@@ -319,7 +319,7 @@ mod imp {
             );
 
             current_image_signals.connect_closure(
-                "notify::image-size",
+                "notify::image-size-available",
                 false,
                 glib::closure_local!(@watch win => move |_: &LpImage, _: &glib::ParamSpec| {
                     win.image_size_ready();

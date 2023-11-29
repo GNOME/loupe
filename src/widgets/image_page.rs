@@ -118,26 +118,23 @@ mod imp {
                     imp.spinner.set_visible(spinner_visible);
                 }));
 
-            obj.image().connect_notify_local(
-                Some("is-loaded"),
-                clone!(@weak obj => move |_,_| {
+            obj.image()
+                .connect_is_loaded_notify(clone!(@weak obj => move |_| {
                     if obj.image().is_loaded() {
                         log::debug!("Showing image");
                         obj.imp()
                             .stack
                             .set_visible_child(&*obj.imp().image_stack_page);
                     }
-                }),
-            );
+                }));
 
-            obj.image().connect_notify_local(
-                Some("error"),
-                clone!(@weak obj => move |_,_| {
+            obj.image()
+                .connect_error_notify(clone!(@weak obj => move |_| {
                     if obj.image().error().is_some() {
                         obj.imp().stack.set_visible_child(&*obj.imp().error_page);
                     }
-                }),
-            );
+                }));
+
             // Do not waste CPU on spinner if it is not visible
             self.spinner.connect_map(|s| s.start());
             self.spinner.connect_unmap(|s| s.stop());
