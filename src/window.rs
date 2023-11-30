@@ -288,7 +288,11 @@ mod imp {
                 glib::clone!(@weak obj => move || if !obj.is_visible() { obj.present() }),
             );
 
-            obj.on_images_available();
+            obj.on_current_page_changed();
+
+            self.image_view.connect_current_page_notify(
+                glib::clone!(@weak obj => move |_| obj.on_current_page_changed()),
+            );
 
             let gesture_click = gtk::GestureClick::new();
             gesture_click
@@ -352,13 +356,6 @@ mod imp {
 
             self.toolbar_view.connect_top_bar_style_notify(
                 glib::clone!(@weak obj => move |_| obj.on_top_bar_style_notify()),
-            );
-
-            self.image_view.connect_notify_local(
-                Some("current-page"),
-                glib::clone!(@weak obj => move |_, _| {
-                    obj.on_images_available();
-                }),
             );
 
             // action win.previous status
@@ -721,13 +718,23 @@ impl LpWindow {
     }
 
     /// Handles change in availability of images
-    fn on_images_available(&self) {
+    fn on_current_page_changed(&self) {
         let imp = self.imp();
 
-        let shows_image = imp.image_view.current_page().is_some();
+        // Window title
+        let title = self
+            .imp()
+            .image_view
+            .current_file()
+            .and_then(|f| util::get_file_display_name(&f))
+            .unwrap_or_else(|| gettext("Image Viewer"));
 
-        imp.properties_button.set_sensitive(shows_image);
-        self.set_actions_enabled(shows_image);
+        self.set_title(Some(&title));
+
+        let has_image = imp.image_view.current_page().is_some();
+
+        imp.properties_button.set_sensitive(has_image);
+        self.set_actions_enabled(has_image);
         self.action_set_enabled(
             "win.trash",
             imp.image_view
@@ -735,7 +742,7 @@ impl LpWindow {
                 .is_some_and(|file| file.path().is_some()),
         );
 
-        if shows_image {
+        if has_image {
             imp.stack.set_visible_child(&*imp.image_view);
             imp.image_view.grab_focus();
             self.queue_hide_controls();
@@ -904,32 +911,6 @@ impl LpWindow {
     fn is_showing_image(&self) -> bool {
         let imp = self.imp();
         imp.stack.visible_child().as_ref() == Some(imp.image_view.upcast_ref())
-    }
-
-    // In the LpWindow UI file we define a `gtk::Expression`s
-    // that is a closure. This closure takes the current `gio::File`
-    // and processes it to return a window title.
-    //
-    // In this function we chain `Option`s with `and_then()` in order
-    // to handle optional results with a fallback, without needing to
-    // have multiple `match` or `if let` branches, and without needing
-    // to unwrap.
-    #[template_callback]
-    fn window_title(&self, current_page: Option<&LpImagePage>) -> String {
-        let file = current_page.and_then(|x| x.image().file());
-
-        // ensure that templates are initialized
-        if file.is_none() {
-            gettext("Image Viewer")
-        } else {
-            self.imp()
-                .image_view
-                .current_file()
-                .and_then(|f| util::get_file_display_name(&f)) // If the file exists, get display name
-                .unwrap_or_else(|| gettext("Image Viewer")) // Return that or
-                                                            // the default if
-                                                            // there's nothing
-        }
     }
 
     fn on_click(&self) {
