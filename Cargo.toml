@@ -11,6 +11,7 @@ codegen-units = 1
 
 [features]
 disable-glycin-sandbox = []
+x11 = ["ashpd/gtk4_x11"]
 
 [dependencies]
 anyhow = { version = "1.0.66", features = ["backtrace"] }
@@ -30,7 +31,7 @@ url = "2.3.1"
 
 [dependencies.ashpd]
 version = "0.7.0"
-features = ["gtk4"]
+features = ["gtk4_wayland"]
 
 [dependencies.gtk]
 package = "gtk4"

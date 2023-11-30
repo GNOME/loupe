@@ -14,6 +14,9 @@ dependency('gweather4', version: '>=4.0.0')
 # Required by glycin crate
 dependency('lcms2', version: '>=2.12.0')
 
+# Optional dependencies
+gtk4_x11 = dependency('gtk4-x11', required: get_option('x11'))
+
 cargo = find_program('cargo', required: true)
 glib_compile_schemas = find_program('glib-compile-schemas', required: true)
 
