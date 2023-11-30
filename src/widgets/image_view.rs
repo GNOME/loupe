@@ -128,7 +128,7 @@ mod imp {
 
             self.parent_constructed();
 
-            // Manually mange widget layout, see `WidgetImpl` for details
+            // Manually manage widget layout, see `WidgetImpl` for details
             obj.set_layout_manager(None::<gtk::LayoutManager>);
 
             self.sliding_view.connect_current_page_notify(

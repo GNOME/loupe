@@ -108,7 +108,7 @@ impl Tile {
             return;
         }
 
-        // TODO: do not clip outer bounderies of the image
+        // TODO: do not clip outer boundaries of the image
         snapshot.push_clip(&area);
         // TODO: do not clip outer boundaries of the image
         if let Some(background_color) = &options.background_color {
@@ -465,7 +465,7 @@ impl Tiling {
 
     /// Returns relevant tiles
     ///
-    /// This gives what tiles are needed for convering the `preload_area`.
+    /// This gives what tiles are needed for covering the `preload_area`.
     /// Decoders use the [`TileInstructions`] to know what they have to render.
     pub fn relevant_tiles(&self, preload_area: &graphene::Rect) -> Vec<TileInstructions> {
         let original_width = self.scaled_dimensions().0 as f32;

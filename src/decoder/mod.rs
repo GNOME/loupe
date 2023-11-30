@@ -67,7 +67,7 @@ pub enum DecoderUpdate {
     Redraw,
     /// Start animation
     Animated,
-    /// And error occured during decoding
+    /// And error occurred during decoding
     Error(anyhow::Error),
 }
 
@@ -80,7 +80,7 @@ impl UpdateSender {
         }
     }
 
-    /// Send occuring errors to renderer
+    /// Send occurring errors to renderer
     pub fn spawn_error_handled<F>(&self, f: F) -> glib::JoinHandle<()>
     where
         F: std::future::Future<Output = Result<(), glycin::Error>> + Send + 'static,

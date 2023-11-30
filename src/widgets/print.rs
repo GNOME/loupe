@@ -93,7 +93,7 @@ impl From<&str> for PageAlignment {
             "left" => (HAlignment::Left, VAlignment::Middle),
             "right" => (HAlignment::Right, VAlignment::Middle),
             pos => {
-                log::error!("Unkown alignment '{pos}'");
+                log::error!("Unknown alignment '{pos}'");
                 (HAlignment::default(), VAlignment::default())
             }
         };
