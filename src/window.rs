@@ -359,9 +359,8 @@ mod imp {
             );
 
             // action win.previous status
-            self.image_view.connect_notify_local(
-                Some("is-previous-available"),
-                glib::clone!(@weak obj => move |_, _| {
+            self.image_view.connect_is_previous_available_notify(
+                glib::clone!(@weak obj => move |_| {
                     obj.action_set_enabled(
                         "win.previous",
                         obj.imp().image_view.is_previous_available(),
@@ -370,15 +369,13 @@ mod imp {
             );
 
             // action win.next status
-            self.image_view.connect_notify_local(
-                Some("is-next-available"),
-                glib::clone!(@weak obj => move |_, _| {
+            self.image_view
+                .connect_is_next_available_notify(glib::clone!(@weak obj => move |_| {
                     obj.action_set_enabled(
                         "win.next",
                         obj.imp().image_view.is_next_available(),
                     );
-                }),
-            );
+                }));
 
             // Make widgets visible when the focus moves
             obj.connect_move_focus(|obj, _| {
