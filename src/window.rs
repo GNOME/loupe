@@ -122,6 +122,21 @@ mod imp {
             Self::bind_template(klass);
             Self::Type::bind_template_callbacks(klass);
 
+            klass.add_binding(
+                gdk::Key::c,
+                gdk::ModifierType::CONTROL_MASK,
+                |window, _| {
+                    if window.has_metadata_selected() {
+                        // Pass on to normal copy handler to copy selected metadata
+                        false
+                    } else {
+                        window.copy_image();
+                        true
+                    }
+                },
+                None,
+            );
+
             // Set up actions
             klass.install_action("win.toggle-fullscreen", None, move |win, _, _| {
                 win.toggle_fullscreen(!win.is_fullscreened());
@@ -225,8 +240,8 @@ mod imp {
                 win.print();
             });
 
-            klass.install_action("win.copy", None, move |win, _, _| {
-                win.copy();
+            klass.install_action("win.copy-image", None, move |win, _, _| {
+                win.copy_image();
             });
 
             klass.install_action_async("win.trash", None, |win, _, _| async move {
@@ -561,7 +576,21 @@ impl LpWindow {
         }
     }
 
-    fn copy(&self) {
+    /// Returns true if some text in metadata is currently selected
+    fn has_metadata_selected(&self) -> bool {
+        if let Some(focus_widget) = self.focus_widget() {
+            if focus_widget.is_ancestor(&*self.imp().properties_view) {
+                if let Ok(label) = focus_widget.downcast::<gtk::Label>() {
+                    return label.selection_bounds().is_some();
+                }
+            }
+        }
+
+        false
+    }
+
+    /// Copy image to clipboard or metadata text if selected
+    fn copy_image(&self) {
         let imp = self.imp();
 
         if let Err(e) = imp.image_view.copy() {
@@ -685,7 +714,7 @@ impl LpWindow {
         self.action_set_enabled("win.print", enabled);
         self.action_set_enabled("win.rotate_cw", enabled);
         self.action_set_enabled("win.rotate_ccw", enabled);
-        self.action_set_enabled("win.copy", enabled);
+        self.action_set_enabled("win.copy-image", enabled);
         self.action_set_enabled("win.zoom-best-fit", enabled);
         self.action_set_enabled("win.zoom-to-exact", enabled);
         self.action_set_enabled("win.toggle-properties", enabled);

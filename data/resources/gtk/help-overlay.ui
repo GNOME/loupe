@@ -17,8 +17,8 @@
             </child>
             <child>
               <object class="GtkShortcutsShortcut">
-                <property name="title" translatable="yes" context="shortcut window">Copy Image to Clipboard</property>
-                <property name="action-name">win.copy</property>
+                <property name="title" translatable="yes" context="shortcut window">Copy Image or Metadata to Clipboard</property>
+                <property name="accelerator">&lt;Ctrl&gt;C</property>
               </object>
             </child>
             <child>
@@ -270,4 +270,3 @@
     </child>
   </object>
 </interface>
-

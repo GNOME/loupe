@@ -105,7 +105,7 @@
             <child type="start">
               <object class="GtkButton">
                 <property name="icon-name">edit-copy-symbolic</property>
-                <property name="action-name">win.copy</property>
+                <property name="action-name">win.copy-image</property>
                 <property name="tooltip-text" translatable="yes">Copy to Clipboard</property>
               </object>
             </child>
