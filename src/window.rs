@@ -702,16 +702,22 @@ impl LpWindow {
     }
 
     pub fn set_actions_enabled(&self, enabled: bool) {
-        self.action_set_enabled("win.open-with", enabled);
-        self.action_set_enabled("win.set-background", enabled);
-        self.action_set_enabled("win.toggle-fullscreen", enabled);
-        self.action_set_enabled("win.print", enabled);
-        self.action_set_enabled("win.rotate_cw", enabled);
-        self.action_set_enabled("win.rotate_ccw", enabled);
-        self.action_set_enabled("win.copy-image", enabled);
-        self.action_set_enabled("win.zoom-best-fit", enabled);
-        self.action_set_enabled("win.zoom-to-exact", enabled);
-        self.action_set_enabled("win.toggle-properties", enabled);
+        const ACTIONS: &[&str] = &[
+            "win.open-with",
+            "win.set-background",
+            "win.toggle-fullscreen",
+            "win.print",
+            "win.rotate_cw",
+            "win.rotate_ccw",
+            "win.copy-image",
+            "win.zoom-best-fit",
+            "win.zoom-to-exact",
+            "win.toggle-properties",
+        ];
+
+        for action in ACTIONS {
+            self.action_set_enabled(action, enabled);
+        }
     }
 
     /// Handles change in availability of images
