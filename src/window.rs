@@ -380,7 +380,7 @@ mod imp {
             // Make widgets visible when the focus moves
             obj.connect_move_focus(|obj, _| {
                 obj.show_controls();
-                obj.queue_hide_controls();
+                obj.schedule_hide_controls();
             });
 
             self.status_page
@@ -742,7 +742,7 @@ impl LpWindow {
         if has_image {
             imp.stack.set_visible_child(&*imp.image_view);
             imp.image_view.grab_focus();
-            self.queue_hide_controls();
+            self.schedule_hide_controls();
         } else {
             imp.stack.set_visible_child(&*imp.status_page);
             imp.status_page.grab_focus();
@@ -853,10 +853,10 @@ impl LpWindow {
         })
     }
 
-    /// Queue a fade animation to play after `HIDE_CONTROLS_IDLE_TIMEOUT` of
+    /// Schedule a fade animation to play after `HIDE_CONTROLS_IDLE_TIMEOUT` of
     /// inactivity
-    fn queue_hide_controls(&self) {
-        self.dequeue_hide_controls();
+    fn schedule_hide_controls(&self) {
+        self.unschedule_hide_controls();
 
         let new_timeout = glib::timeout_add_local_once(
             std::time::Duration::from_millis(HIDE_CONTROLS_IDLE_TIMEOUT),
@@ -869,7 +869,7 @@ impl LpWindow {
         self.imp().hide_controls_timeout.replace(Some(new_timeout));
     }
 
-    fn dequeue_hide_controls(&self) {
+    fn unschedule_hide_controls(&self) {
         if let Some(current_timeout) = self.imp().hide_controls_timeout.take() {
             current_timeout.remove();
         }
@@ -914,9 +914,9 @@ impl LpWindow {
         self.show_controls();
 
         if self.can_hide_controls() {
-            self.queue_hide_controls();
+            self.schedule_hide_controls();
         } else {
-            self.dequeue_hide_controls();
+            self.unschedule_hide_controls();
         }
     }
 
@@ -934,9 +934,9 @@ impl LpWindow {
         self.show_controls();
 
         if self.can_hide_controls() {
-            self.queue_hide_controls();
+            self.schedule_hide_controls();
         } else {
-            self.dequeue_hide_controls();
+            self.unschedule_hide_controls();
         }
     }
 
@@ -961,7 +961,7 @@ impl LpWindow {
             self.set_cursor(None);
             self.show_controls();
         }
-        self.queue_hide_controls();
+        self.schedule_hide_controls();
     }
 
     fn is_headerbar_flat(&self) -> bool {
