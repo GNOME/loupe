@@ -2,16 +2,6 @@
 <interface>
   <template class="LpPropertiesView" parent="AdwBin">
     <property name="width-request">255</property>
-    <binding name="metadata">
-      <lookup type="LpImage" name="metadata">
-        <lookup type="LpPropertiesView" name="image" />
-      </lookup>
-    </binding>
-    <binding name="file">
-      <lookup type="LpImage" name="file">
-        <lookup type="LpPropertiesView" name="image" />
-      </lookup>
-    </binding>
     <property name="child">
       <object class="GtkScrolledWindow">
         <property name="child">
@@ -25,14 +15,9 @@
             <child>
               <object class="AdwPreferencesGroup">
                 <child>
-                  <object class="AdwActionRow">
+                  <object class="AdwActionRow" id="folder">
                     <property name="title" translatable="yes">Folder</property>
                     <property name="activatable-widget">folder_button</property>
-                    <binding name="subtitle">
-                      <closure type="gchararray" function="folder_name">
-                        <lookup name="file">LpPropertiesView</lookup>
-                      </closure>
-                    </binding>
                     <child type="suffix">
                       <object class="GtkButton" id="folder_button">
                         <property name="valign">center</property>
@@ -54,44 +39,27 @@
             <child>
               <object class="AdwPreferencesGroup">
                 <child>
-                  <object class="AdwActionRow">
+                  <object class="AdwActionRow" id="image_size">
                     <property name="title" translatable="yes">Image Size</property>
                     <property name="subtitle-selectable">True</property>
-                    <binding name="subtitle">
-                      <closure type="gchararray" function="image_size">
-                        <lookup type="LpImage" name="image-size-available">
-                          <lookup name="image">LpPropertiesView</lookup>
-                        </lookup>
-                      </closure>
-                    </binding>
                     <style>
                       <class name="property" />
                     </style>
                   </object>
                 </child>
                 <child>
-                  <object class="AdwActionRow">
+                  <object class="AdwActionRow" id="image_format">
                     <property name="title" translatable="yes">Image Format</property>
                     <property name="subtitle-selectable">True</property>
-                    <binding name="subtitle">
-                      <lookup type="LpImage" name="format-name">
-                        <lookup type="LpPropertiesView" name="image" />
-                      </lookup>
-                    </binding>
                     <style>
                       <class name="property" />
                     </style>
                   </object>
                 </child>
                 <child>
-                  <object class="AdwActionRow">
+                  <object class="AdwActionRow" id="file_size">
                     <property name="title" translatable="yes">File Size</property>
                     <property name="subtitle-selectable">True</property>
-                    <binding name="subtitle">
-                      <closure type="gchararray" function="file_size">
-                        <lookup name="file-info">LpPropertiesView</lookup>
-                      </closure>
-                    </binding>
                     <style>
                       <class name="property" />
                     </style>
@@ -102,28 +70,19 @@
             <child>
               <object class="AdwPreferencesGroup">
                 <child>
-                  <object class="AdwActionRow">
+                  <object class="AdwActionRow" id="file_created">
                     <property name="title" translatable="yes">File Created</property>
                     <property name="subtitle-selectable">True</property>
-                    <binding name="subtitle">
-                      <closure type="gchararray" function="created_date">
-                        <lookup name="file-info">LpPropertiesView</lookup>
-                      </closure>
-                    </binding>
                     <style>
                       <class name="property" />
                     </style>
                   </object>
                 </child>
                 <child>
-                  <object class="AdwActionRow">
+                  <object class="AdwActionRow" id="file_modified">
                     <property name="title" translatable="yes">File Modified</property>
                     <property name="subtitle-selectable">True</property>
-                    <binding name="subtitle">
-                      <closure type="gchararray" function="modified_date">
-                        <lookup name="file-info">LpPropertiesView</lookup>
-                      </closure>
-                    </binding>" <style>
+                    <style>
                       <class name="property" />
                     </style>
                   </object>
@@ -131,28 +90,11 @@
               </object>
             </child>
             <child>
-              <object class="AdwPreferencesGroup">
-                <binding name="visible">
-                  <lookup name="has-information">
-                    <lookup name="metadata">LpPropertiesView</lookup>
-                  </lookup>
-                </binding>
+              <object class="AdwPreferencesGroup" id="details">
                 <child>
-                  <object class="AdwActionRow">
+                  <object class="AdwActionRow" id="location">
                     <property name="title" translatable="yes">Location</property>
                     <property name="activatable-widget">location_button</property>
-                    <binding name="subtitle">
-                      <lookup name="location">
-                        <lookup name="metadata">LpPropertiesView</lookup>
-                      </lookup>
-                    </binding>
-                    <binding name="visible">
-                      <closure type="gboolean" function="has_content">
-                        <lookup name="location">
-                          <lookup name="metadata">LpPropertiesView</lookup>
-                        </lookup>
-                      </closure>
-                    </binding>
                     <child type="suffix">
                       <object class="GtkButton" id="location_button">
                         <property name="valign">center</property>
@@ -170,126 +112,54 @@
                   </object>
                 </child>
                 <child>
-                  <object class="AdwActionRow">
+                  <object class="AdwActionRow" id="originally_created">
                     <property name="title" translatable="yes">Originally Created</property>
                     <property name="subtitle-selectable">True</property>
-                    <binding name="subtitle">
-                      <lookup name="originally-created">
-                        <lookup name="metadata">LpPropertiesView</lookup>
-                      </lookup>
-                    </binding>
-                    <binding name="visible">
-                      <closure type="gboolean" function="has_content">
-                        <lookup name="originally-created">
-                          <lookup name="metadata">LpPropertiesView</lookup>
-                        </lookup>
-                      </closure>
-                    </binding>
                     <style>
                       <class name="property" />
                     </style>
                   </object>
                 </child>
                 <child>
-                  <object class="AdwActionRow">
+                  <object class="AdwActionRow" id="aperture">
                     <property name="title" translatable="yes">Aperture</property>
                     <property name="subtitle-selectable">True</property>
-                    <binding name="subtitle">
-                      <lookup name="f-number">
-                        <lookup name="metadata">LpPropertiesView</lookup>
-                      </lookup>
-                    </binding>
-                    <binding name="visible">
-                      <closure type="gboolean" function="has_content">
-                        <lookup name="f-number">
-                          <lookup name="metadata">LpPropertiesView</lookup>
-                        </lookup>
-                      </closure>
-                    </binding>
                     <style>
                       <class name="property" />
                     </style>
                   </object>
                 </child>
                 <child>
-                  <object class="AdwActionRow">
+                  <object class="AdwActionRow" id="exposure">
                     <property name="title" translatable="yes">Exposure</property>
                     <property name="subtitle-selectable">True</property>
-                    <binding name="subtitle">
-                      <lookup name="exposure-time">
-                        <lookup name="metadata">LpPropertiesView</lookup>
-                      </lookup>
-                    </binding>
-                    <binding name="visible">
-                      <closure type="gboolean" function="has_content">
-                        <lookup name="exposure-time">
-                          <lookup name="metadata">LpPropertiesView</lookup>
-                        </lookup>
-                      </closure>
-                    </binding>
                     <style>
                       <class name="property" />
                     </style>
                   </object>
                 </child>
                 <child>
-                  <object class="AdwActionRow">
+                  <object class="AdwActionRow" id="iso">
                     <property name="title" translatable="yes">ISO</property>
                     <property name="subtitle-selectable">True</property>
-                    <binding name="subtitle">
-                      <lookup name="iso">
-                        <lookup name="metadata">LpPropertiesView</lookup>
-                      </lookup>
-                    </binding>
-                    <binding name="visible">
-                      <closure type="gboolean" function="has_content">
-                        <lookup name="iso">
-                          <lookup name="metadata">LpPropertiesView</lookup>
-                        </lookup>
-                      </closure>
-                    </binding>
                     <style>
                       <class name="property" />
                     </style>
                   </object>
                 </child>
                 <child>
-                  <object class="AdwActionRow">
+                  <object class="AdwActionRow" id="focal_length">
                     <property name="title" translatable="yes">Focal Length</property>
                     <property name="subtitle-selectable">True</property>
-                    <binding name="subtitle">
-                      <lookup name="focal-length">
-                        <lookup name="metadata">LpPropertiesView</lookup>
-                      </lookup>
-                    </binding>
-                    <binding name="visible">
-                      <closure type="gboolean" function="has_content">
-                        <lookup name="focal-length">
-                          <lookup name="metadata">LpPropertiesView</lookup>
-                        </lookup>
-                      </closure>
-                    </binding>
                     <style>
                       <class name="property" />
                     </style>
                   </object>
                 </child>
                 <child>
-                  <object class="AdwActionRow">
+                  <object class="AdwActionRow" id="maker_model">
                     <property name="title" translatable="yes">Maker, Model</property>
                     <property name="subtitle-selectable">True</property>
-                    <binding name="subtitle">
-                      <lookup name="maker-model">
-                        <lookup name="metadata">LpPropertiesView</lookup>
-                      </lookup>
-                    </binding>
-                    <binding name="visible">
-                      <closure type="gboolean" function="has_content">
-                        <lookup name="maker-model">
-                          <lookup name="metadata">LpPropertiesView</lookup>
-                        </lookup>
-                      </closure>
-                    </binding>
                     <style>
                       <class name="property" />
                     </style>

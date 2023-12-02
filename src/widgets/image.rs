@@ -177,7 +177,7 @@ mod imp {
         pub(super) _vscroll_policy: PhantomData<gtk::ScrollablePolicy>,
 
         /// Currently EXIF data
-        #[property(name = "metadata", get)]
+        #[property(name = "metadata", type=LpImageMetadata, get)]
         pub(super) image_metadata: RefCell<LpImageMetadata>,
         /// Image dimension details for SVGs
         pub(super) dimension_details: RefCell<decoder::ImageDimensionDetails>,

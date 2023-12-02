@@ -46,6 +46,10 @@ impl LpImageMetadata {
     pub fn gps_location(&self) -> Option<GPSLocation> {
         self.imp().metadata.borrow().gps_location()
     }
+
+    pub fn src(&self) -> std::cell::Ref<super::ImageMetadata> {
+        self.imp().metadata.borrow()
+    }
 }
 
 impl From<ImageMetadata> for LpImageMetadata {
