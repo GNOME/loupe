@@ -23,18 +23,17 @@ pub mod tiling;
 pub use formats::ImageDimensionDetails;
 
 use crate::deps::*;
-use crate::image_metadata::ImageMetadata;
+use crate::metadata::{ImageFormat, Metadata};
 use formats::*;
 use tiling::FrameBufferExt;
 
 use anyhow::Result;
 use arc_swap::ArcSwap;
 use futures::channel::mpsc;
-use gio::prelude::*;
 
 use std::sync::Arc;
 
-pub use formats::{ImageFormat, RSVG_MAX_SIZE};
+pub use formats::RSVG_MAX_SIZE;
 
 #[derive(Clone, Copy, Debug)]
 /// Renderer requests new tiles
@@ -58,7 +57,7 @@ pub enum DecoderUpdate {
     /// Dimensions of image in `TilingSore` available/updated
     Dimensions(ImageDimensionDetails),
     /// Metadata available
-    Metadata(ImageMetadata),
+    Metadata(Metadata),
     /// Image format determined
     Format(ImageFormat),
     /// Image format not supported or unknown
@@ -120,6 +119,7 @@ impl Decoder {
     /// The renderer should listen to updates from the returned receiver.
     pub async fn new(
         file: gio::File,
+        mime_type: Option<String>,
         tiles: Arc<ArcSwap<tiling::FrameBuffer>>,
     ) -> (Self, mpsc::UnboundedReceiver<DecoderUpdate>) {
         let (sender, receiver) = mpsc::unbounded();
@@ -127,7 +127,7 @@ impl Decoder {
         let update_sender = UpdateSender { sender };
         tiles.set_update_sender(update_sender.clone());
 
-        let format_decoder = Self::format_decoder(update_sender.clone(), file, tiles);
+        let format_decoder = Self::format_decoder(update_sender.clone(), file, mime_type, tiles);
         let decoder = Self {
             decoder: format_decoder,
             update_sender,
@@ -139,28 +139,19 @@ impl Decoder {
     fn format_decoder(
         update_sender: UpdateSender,
         file: gio::File,
+        mime_type: Option<String>,
         tiles: Arc<ArcSwap<tiling::FrameBuffer>>,
     ) -> FormatDecoder {
-        if let Ok(file_info) = file.query_info(
-            gio::FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE,
-            gio::FileQueryInfoFlags::NONE,
-            gio::Cancellable::NONE,
-        ) {
-            if let Some(mime_type) = file_info
-                .content_type()
-                .as_ref()
-                .and_then(|x| gio::content_type_get_mime_type(x))
-            {
-                // Known things we want to match here are
-                // - image/svg+xml
-                // - image/svg+xml-compressed
-                if mime_type.split('+').next() == Some("image/svg") {
-                    update_sender.send(DecoderUpdate::Format(ImageFormat::new(
-                        mime_type.into(),
-                        "SVG".into(),
-                    )));
-                    return FormatDecoder::Svg(Svg::new(file, update_sender, tiles));
-                }
+        if let Some(mime_type) = mime_type {
+            // Known things we want to match here are
+            // - image/svg+xml
+            // - image/svg+xml-compressed
+            if mime_type.split('+').next() == Some("image/svg") {
+                update_sender.send(DecoderUpdate::Format(ImageFormat::new(
+                    mime_type,
+                    "SVG".into(),
+                )));
+                return FormatDecoder::Svg(Svg::new(file, update_sender, tiles));
             }
         }
 

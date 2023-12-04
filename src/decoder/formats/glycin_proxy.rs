@@ -19,7 +19,7 @@
 use super::*;
 use crate::decoder::tiling::{self, FrameBufferExt};
 use crate::deps::*;
-use crate::image_metadata::ImageMetadata;
+use crate::metadata::{ImageFormat, Metadata};
 
 use arc_swap::ArcSwap;
 use gtk::prelude::*;
@@ -62,8 +62,9 @@ impl Glycin {
             let image = image_request.request().await?;
 
             if let Some(exif_raw) = image.info().exif.clone().into() {
-                let mut metadata = ImageMetadata::from_exif_bytes(exif_raw);
-                metadata.heif_transform = image.info().transformations_applied;
+                let mut metadata = Metadata::default();
+                metadata.set_exif_bytes(exif_raw);
+                metadata.set_transformations_applied(image.info().transformations_applied);
                 updater.send(DecoderUpdate::Metadata(metadata));
             }
 

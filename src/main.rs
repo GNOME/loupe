@@ -54,7 +54,7 @@ mod application;
 mod config;
 mod decoder;
 mod file_model;
-mod image_metadata;
+mod metadata;
 mod util;
 mod widgets;
 mod window;

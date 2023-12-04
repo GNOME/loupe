@@ -44,6 +44,8 @@ mod imp {
 
         #[template_child]
         folder: TemplateChild<adw::ActionRow>,
+        #[template_child]
+        uri: TemplateChild<adw::ActionRow>,
 
         #[template_child]
         image_size: TemplateChild<adw::ActionRow>,
@@ -52,6 +54,8 @@ mod imp {
         #[template_child]
         file_size: TemplateChild<adw::ActionRow>,
 
+        #[template_child]
+        dates: TemplateChild<adw::PreferencesGroup>,
         #[template_child]
         file_created: TemplateChild<adw::ActionRow>,
         #[template_child]
@@ -108,11 +112,13 @@ mod imp {
 
             image_signals.connect_notify_local(
                 Some("image-size-available"),
-                glib::clone!(@weak obj => move |_,_| obj.imp().update()),
+                glib::clone!(@weak obj => move |_, _| obj.imp().update()),
             );
-            image_signals.connect_notify_local(
-                Some("metadata"),
-                glib::clone!(@weak obj => move |_,_| obj.imp().update()),
+
+            image_signals.connect_local(
+                "metadata-changed",
+                false,
+                glib::clone!(@weak obj => @default-return None, move |_| { obj.imp().update(); None }),
             );
 
             self.update();
@@ -156,28 +162,43 @@ mod imp {
                 return;
             };
 
+            let metadata = image.metadata();
+
             // Folder
-            Self::update_row(&self.folder, self.folder_name());
+            let has_folder = Self::update_row(&self.folder, self.folder_name());
+            // The portal only supports opening folders of files that have a path
             obj.action_set_enabled("properties.open-folder", file.path().is_some());
+            // Only show URI if now folder available
+            let uri = if !has_folder {
+                image.file().map(|x| x.uri())
+            } else {
+                None
+            };
+            Self::update_row(&self.uri, uri);
 
             // Image info
             Self::update_row(&self.image_size, self.image_size());
-            Self::update_row(&self.image_format, image.format().map(|x| x.to_string()));
-            //Self::update_row(&self.file_size, self.image_size());
+            Self::update_row(&self.image_format, metadata.format_name());
+            Self::update_row(&self.file_size, metadata.file_size());
 
-            // Sizes
+            // Dates
+            let has_dates = [
+                Self::update_row(&self.file_created, metadata.file_created()),
+                Self::update_row(&self.file_modified, dbg!(metadata.file_modified())),
+            ]
+            .into_iter()
+            .any(|x| x);
+            self.dates.set_visible(has_dates);
 
-            // Details
-            let metadata = image.metadata();
-            let meta = metadata.src();
+            // Details (EXIF)
             let has_details = [
-                Self::update_row(&self.location, meta.gps_location().map(|x| x.display())),
-                Self::update_row(&self.originally_created, meta.originally_created()),
-                Self::update_row(&self.aperture, meta.f_number()),
-                Self::update_row(&self.exposure, meta.exposure_time()),
-                Self::update_row(&self.iso, meta.iso()),
-                Self::update_row(&self.focal_length, meta.focal_length()),
-                Self::update_row(&self.maker_model, meta.maker_model()),
+                Self::update_row(&self.location, metadata.gps_location().map(|x| x.display())),
+                Self::update_row(&self.originally_created, metadata.originally_created()),
+                Self::update_row(&self.aperture, metadata.f_number()),
+                Self::update_row(&self.exposure, metadata.exposure_time()),
+                Self::update_row(&self.iso, metadata.iso()),
+                Self::update_row(&self.focal_length, metadata.focal_length()),
+                Self::update_row(&self.maker_model, metadata.maker_model()),
             ]
             .iter()
             .any(|x| *x);
@@ -211,7 +232,7 @@ mod imp {
                     _ => {
                         let (width, height) = image.image_size();
                         if width > 0 && height > 0 {
-                            return Some(format!("{width}\u{202F}\u{D7}\u{202F}{height}"));
+                            Some(format!("{width}\u{202F}\u{D7}\u{202F}{height}"))
                         } else {
                             None
                         }
@@ -264,35 +285,4 @@ glib::wrapper! {
     pub struct LpPropertiesView(ObjectSubclass<imp::LpPropertiesView>)
         @extends gtk::Widget, adw::Bin,
         @implements gtk::Buildable, gtk::ConstraintTarget, gtk::Orientable;
-}
-
-impl LpPropertiesView {
-    /*    fn set_file(&self, file: Option<&gio::File>) {
-        let imp = self.imp();
-
-        self.action_set_enabled(
-            "properties.open-folder",
-            file.map_or(false, |x| x.is_native()),
-        );
-
-        if let Some(file) = file {
-            if let Some(current_file) = self.file() {
-                if current_file.equal(file) {
-                    return;
-                }
-            }
-
-            // Cancel the file info future. See `build_file_info()` for details.
-            if let Some(handle) = imp.info_handle.take() {
-                handle.abort();
-            }
-
-            self.build_file_info(file);
-        }
-
-        let weak = file.map(|x| x.downgrade());
-        imp.file.replace(weak);
-        self.notify("file");
-    }
-     */
 }

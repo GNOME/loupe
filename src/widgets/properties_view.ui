@@ -34,6 +34,16 @@
                     </style>
                   </object>
                 </child>
+                <child>
+                  <object class="AdwActionRow" id="uri">
+                    <property name="title" translatable="yes">URI</property>
+                    <property name="subtitle-selectable">True</property>
+                    <property name="subtitle-lines">1</property>
+                    <style>
+                      <class name="property" />
+                    </style>
+                  </object>
+                </child>
               </object>
             </child>
             <child>
@@ -68,7 +78,7 @@
               </object>
             </child>
             <child>
-              <object class="AdwPreferencesGroup">
+              <object class="AdwPreferencesGroup" id="dates">
                 <child>
                   <object class="AdwActionRow" id="file_created">
                     <property name="title" translatable="yes">File Created</property>

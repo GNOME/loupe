@@ -34,17 +34,19 @@ use crate::deps::*;
 
 use crate::decoder::tiling::FrameBufferExt;
 use crate::decoder::{self, tiling, Decoder, DecoderUpdate};
-use crate::image_metadata::LpImageMetadata;
+use crate::metadata::{self, Metadata};
 use crate::util::Gesture;
 
 use adw::prelude::*;
 use adw::subclass::prelude::*;
 use arc_swap::ArcSwap;
 use futures::prelude::*;
+use glib::subclass::Signal;
 use once_cell::sync::Lazy;
 
 use std::cell::{Cell, OnceCell, RefCell};
 use std::marker::PhantomData;
+use std::ops::Deref;
 use std::sync::Arc;
 
 /// Default background color around images and behind transparent images
@@ -123,8 +125,7 @@ mod imp {
         /// Set if an error has occurred, shown on error_page
         #[property(get)]
         pub(super) error: RefCell<Option<String>>,
-        #[property(name = "format-name", type = Option<String>, get = Self::format_name)]
-        pub(super) format: RefCell<Option<decoder::ImageFormat>>,
+        //pub(super) format: RefCell<Option<decoder::ImageFormat>>,
         pub(super) background_color: RefCell<Option<gdk::RGBA>>,
 
         /// Track changes to this image
@@ -177,8 +178,7 @@ mod imp {
         pub(super) _vscroll_policy: PhantomData<gtk::ScrollablePolicy>,
 
         /// Currently EXIF data
-        #[property(name = "metadata", type=LpImageMetadata, get)]
-        pub(super) image_metadata: RefCell<LpImageMetadata>,
+        pub(super) metadata: RefCell<Metadata>,
         /// Image dimension details for SVGs
         pub(super) dimension_details: RefCell<decoder::ImageDimensionDetails>,
 
@@ -227,6 +227,12 @@ mod imp {
 
         fn property(&self, id: usize, pspec: &glib::ParamSpec) -> glib::Value {
             self.derived_property(id, pspec)
+        }
+
+        fn signals() -> &'static [Signal] {
+            static SIGNALS: Lazy<Vec<Signal>> =
+                Lazy::new(|| vec![Signal::builder("metadata-changed").build()]);
+            SIGNALS.as_ref()
         }
 
         fn constructed(&self) {
@@ -604,11 +610,6 @@ mod imp {
         pub fn scroll_policy(&self) -> gtk::ScrollablePolicy {
             gtk::ScrollablePolicy::Minimum
         }
-
-        /// Image format displayable name
-        pub fn format_name(&self) -> Option<String> {
-            self.format.borrow().as_ref().map(|x| x.to_string())
-        }
     }
 
     impl WidgetImpl for LpImage {
@@ -651,18 +652,18 @@ mod imp {
 
         // called when the widget content should be re-rendered
         fn snapshot(&self, snapshot: &gtk::Snapshot) {
-            let widget = self.obj();
-            let widget_width = widget.width() as f64;
-            let widget_height = widget.height() as f64;
-            let display_width = widget.image_displayed_width();
-            let display_height = widget.image_displayed_height();
+            let obj = self.obj();
+            let widget_width = obj.width() as f64;
+            let widget_height = obj.height() as f64;
+            let display_width = obj.image_displayed_width();
+            let display_height = obj.image_displayed_height();
 
             // make sure the scrollbars are correct
-            widget.configure_adjustments();
+            obj.configure_adjustments();
 
-            let applicable_zoom = widget.applicable_zoom();
+            let applicable_zoom = obj.applicable_zoom();
 
-            let scaling_filter = if self.format.borrow().as_ref().map_or(false, |x| x.is_svg()) {
+            let scaling_filter = if obj.metadata().format().map_or(false, |x| x.is_svg()) {
                 // Looks better in SVG animations and avoids rendering issues
                 gsk::ScalingFilter::Linear
             } else if applicable_zoom < 1. {
@@ -675,8 +676,8 @@ mod imp {
 
             let render_options = tiling::RenderOptions {
                 scaling_filter,
-                scale_factor: widget.scale_factor(),
-                background_color: Some(widget.background_color()),
+                scale_factor: obj.scale_factor(),
+                background_color: Some(obj.background_color()),
             };
 
             // Operations on snapshots are coordinate transformations
@@ -685,34 +686,34 @@ mod imp {
 
             // Add background
             snapshot.append_color(
-                &widget.background_color(),
+                &obj.background_color(),
                 &graphene::Rect::new(0., 0., widget_width as f32, widget_height as f32),
             );
 
             // Apply the scrolling position to the image
-            let hadj: gtk::Adjustment = widget.hadjustment();
+            let hadj: gtk::Adjustment = obj.hadjustment();
             let x = -(hadj.value() - (hadj.upper() - display_width) / 2.);
-            snapshot.translate(&graphene::Point::new(widget.round_f64(x) as f32, 0.));
+            snapshot.translate(&graphene::Point::new(obj.round_f64(x) as f32, 0.));
 
-            let vadj = widget.vadjustment();
+            let vadj = obj.vadjustment();
             let y = -(vadj.value() - (vadj.upper() - display_height) / 2.);
-            snapshot.translate(&graphene::Point::new(0., widget.round_f64(y) as f32));
+            snapshot.translate(&graphene::Point::new(0., obj.round_f64(y) as f32));
 
             // Centering in widget when no scrolling (black bars around image)
-            let x = widget.round_f64(f64::max((widget_width - display_width) / 2.0, 0.));
-            let y = widget.round_f64(f64::max((widget_height - display_height) / 2.0, 0.));
+            let x = obj.round_f64(f64::max((widget_width - display_width) / 2.0, 0.));
+            let y = obj.round_f64(f64::max((widget_height - display_height) / 2.0, 0.));
             // Round to pixel values to not have a half pixel offset to physical pixels
             // The offset would leading to a blurry output
             snapshot.translate(&graphene::Point::new(
-                widget.round_f64(x) as f32,
-                widget.round_f64(y) as f32,
+                obj.round_f64(x) as f32,
+                obj.round_f64(y) as f32,
             ));
 
             // Apply rotation and mirroring
-            widget.snapshot_rotate_mirror(
+            obj.snapshot_rotate_mirror(
                 snapshot,
-                widget.rotation() as f32,
-                widget.mirrored(),
+                obj.rotation() as f32,
+                obj.mirrored(),
                 applicable_zoom,
             );
 
@@ -813,9 +814,19 @@ glib::wrapper! {
 
 impl LpImage {
     pub async fn load(&self, file: &gio::File) {
+        let imp = self.imp();
         log::debug!("Loading file {}", file.uri());
 
         self.set_file(file);
+        imp.metadata.replace(Metadata::default());
+        self.emmit_metadata_changed();
+
+        let file_info = metadata::FileInfo::new(file).await;
+        match file_info {
+            Ok(file_info) => imp.metadata.borrow_mut().set_file_info(file_info),
+            Err(err) => log::warn!("Failed to load file information: {err}"),
+        }
+        self.emmit_metadata_changed();
 
         let tiles = &self.imp().frame_buffer;
         // Delete all stored textures for reloads
@@ -823,7 +834,8 @@ impl LpImage {
         // Reset background color for reloads
         self.set_background_color(None);
 
-        let (decoder, mut decoder_update) = Decoder::new(file.clone(), tiles.clone()).await;
+        let (decoder, mut decoder_update) =
+            Decoder::new(file.clone(), self.metadata().mime_type(), tiles.clone()).await;
 
         let weak_obj = self.downgrade();
         glib::spawn_future_local(async move {
@@ -835,7 +847,7 @@ impl LpImage {
             log::debug!("Stopped listening to decoder since sender is gone");
         });
 
-        self.imp().decoder.replace(Some(Arc::new(decoder)));
+        imp.decoder.replace(Some(Arc::new(decoder)));
     }
 
     /// Called when decoder sends update
@@ -845,8 +857,8 @@ impl LpImage {
         match update {
             DecoderUpdate::Metadata(metadata) => {
                 log::debug!("Received metadata");
-                imp.image_metadata.replace(LpImageMetadata::from(metadata));
-                self.notify_metadata();
+                imp.metadata.borrow_mut().merge(metadata);
+                self.emmit_metadata_changed();
 
                 self.reset_rotation();
             }
@@ -880,8 +892,8 @@ impl LpImage {
                 self.set_error(Some(err));
             }
             DecoderUpdate::Format(format) => {
-                imp.format.replace(Some(format));
-                self.notify_format_name();
+                imp.metadata.borrow_mut().set_format(format);
+                self.emmit_metadata_changed();
             }
             DecoderUpdate::Animated => {
                 let callback_id = self
@@ -1117,7 +1129,7 @@ impl LpImage {
 
     /// Maximal zoom allowed for this image
     fn max_zoom(&self) -> f64 {
-        if self.format().map_or(false, |x| x.is_svg()) {
+        if self.metadata().format().map_or(false, |x| x.is_svg()) {
             let (width, height) = self.original_dimensions();
             // Avoid division by 0
             let long_side = f64::max(1., i32::max(width, height) as f64);
@@ -1392,7 +1404,7 @@ impl LpImage {
 
     /// Image size of original image with EXIF rotation applied
     pub fn image_size(&self) -> (i32, i32) {
-        let orientation = self.imp().image_metadata.borrow().orientation();
+        let orientation = self.imp().metadata.borrow().orientation();
         if orientation.rotation.abs() == 90. || orientation.rotation.abs() == 270. {
             let (x, y) = self.original_dimensions();
             (y, x)
@@ -1599,11 +1611,6 @@ impl LpImage {
         Some(gdk::ContentProvider::for_value(&list.to_value()))
     }
 
-    /// Image format
-    pub fn format(&self) -> Option<decoder::ImageFormat> {
-        self.imp().format.borrow().clone()
-    }
-
     fn set_error(&self, err: Option<anyhow::Error>) {
         log::debug!("Decoding error: {err:?}");
         self.imp()
@@ -1696,6 +1703,7 @@ impl LpImage {
     pub async fn background_color_guess(&self) -> Option<gdk::RGBA> {
         // Shortcut for formats that don't support transparency
         if !self
+            .metadata()
             .format()
             .map_or(true, |x| x.is_potentially_transparent())
         {
@@ -1808,5 +1816,20 @@ impl LpImage {
         })
         .await
         .ok()?
+    }
+
+    pub fn metadata(&self) -> impl Deref<Target = Metadata> + '_ {
+        self.imp().metadata.borrow()
+    }
+
+    pub fn connect_changed(&self, f: impl Fn() + 'static) {
+        self.connect_local("metadata-changed", false, move |_| {
+            f();
+            None
+        });
+    }
+
+    fn emmit_metadata_changed(&self) {
+        self.emit_by_name::<()>("metadata-changed", &[]);
     }
 }

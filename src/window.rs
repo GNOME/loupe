@@ -36,7 +36,7 @@ use std::cell::{Cell, OnceCell, RefCell};
 use std::path::{Path, PathBuf};
 
 use crate::config;
-use crate::util::{self, Direction, Position};
+use crate::util::{Direction, Position};
 use crate::widgets::{LpDragOverlay, LpImage, LpImageView, LpPropertiesView};
 
 /// Show window after X milliseconds even if image dimensions are not known yet
@@ -327,39 +327,47 @@ mod imp {
                 obj.on_zoom_status_changed()
             }));
 
-            let win = &*obj;
+            current_image_signals.connect_local(
+                "metadata-changed",
+                true,
+                glib::clone!(@weak obj => @default-return None, move |_| {
+                    obj.update_title();
+                    None
+                }),
+            );
+
             current_image_signals.connect_closure(
                 "notify::best-fit",
                 false,
                 // `closure_local!` is similar to `clone`, but you use `@watch` instead of clone.
                 // `@watch` means that this signal will be disconnected when the watched object
                 // is dropped.
-                glib::closure_local!(@watch win => move |_: &LpImage, _: &glib::ParamSpec| {
-                    win.on_zoom_status_changed();
+                glib::closure_local!(@watch obj => move |_: &LpImage, _: &glib::ParamSpec| {
+                    obj.on_zoom_status_changed();
                 }),
             );
 
             current_image_signals.connect_closure(
                 "notify::is-max-zoom",
                 false,
-                glib::closure_local!(@watch win => move |_: &LpImage, _: &glib::ParamSpec| {
-                    win.on_zoom_status_changed();
+                glib::closure_local!(@watch obj => move |_: &LpImage, _: &glib::ParamSpec| {
+                    obj.on_zoom_status_changed();
                 }),
             );
 
             current_image_signals.connect_closure(
                 "notify::image-size-available",
                 false,
-                glib::closure_local!(@watch win => move |_: &LpImage, _: &glib::ParamSpec| {
-                    win.image_size_ready();
+                glib::closure_local!(@watch obj => move |_: &LpImage, _: &glib::ParamSpec| {
+                    obj.image_size_ready();
                 }),
             );
 
             current_image_signals.connect_closure(
                 "notify::error",
                 false,
-                glib::closure_local!(@watch win => move |_: &LpImage, _: &glib::ParamSpec| {
-                    win.image_error();
+                glib::closure_local!(@watch obj => move |_: &LpImage, _: &glib::ParamSpec| {
+                    obj.image_error();
                 }),
             );
 
@@ -737,14 +745,7 @@ impl LpWindow {
         self.update_headerbar_style();
 
         // Window title
-        let title = self
-            .imp()
-            .image_view
-            .current_file()
-            .and_then(|f| util::get_file_display_name(&f))
-            .unwrap_or_else(|| gettext("Image Viewer"));
-
-        self.set_title(Some(&title));
+        self.update_title();
 
         // Properties view
         let current_image = current_page.as_ref().map(|x| x.image());
@@ -771,6 +772,17 @@ impl LpWindow {
             // Leave fullscreen since status page has no controls to leave it
             self.set_fullscreened(false);
         }
+    }
+
+    pub fn update_title(&self) {
+        let title = self
+            .imp()
+            .image_view
+            .current_image()
+            .and_then(|x| x.metadata().file_name())
+            .unwrap_or_else(|| gettext("Image Viewer"));
+
+        self.set_title(Some(&title));
     }
 
     pub fn image_size_ready(&self) {

@@ -21,25 +21,28 @@
 - <https://github.com/ianare/exif-samples>
 */
 
+mod file;
+mod format;
 mod gps;
-mod obj;
 
+pub use file::FileInfo;
+pub use format::ImageFormat;
 pub use gps::GPSLocation;
-pub use obj::LpImageMetadata;
 
+use crate::util;
 use crate::util::gettext::*;
-use crate::util::{self, ToBufRead};
 
 use crate::deps::*;
-use gio::prelude::*;
 
 #[derive(Default)]
-pub struct ImageMetadata {
-    pub exif: Option<exif::Exif>,
-    pub heif_transform: bool,
+pub struct Metadata {
+    exif: Option<exif::Exif>,
+    file_info: Option<FileInfo>,
+    format: Option<ImageFormat>,
+    transformations_applied: Option<bool>,
 }
 
-impl std::fmt::Debug for ImageMetadata {
+impl std::fmt::Debug for Metadata {
     fn fmt(&self, fmt: &mut std::fmt::Formatter<'_>) -> Result<(), std::fmt::Error> {
         if let Some(exif) = &self.exif {
             let list = exif.fields().map(|f| {
@@ -59,43 +62,65 @@ impl std::fmt::Debug for ImageMetadata {
     }
 }
 
-impl ImageMetadata {
-    pub fn load(file: &gio::File) -> Self {
-        log::debug!("Loading metadata for {}", file.uri());
-        // TODO: make possible to cancel
-        if let Ok(mut bufreader) = file.to_buf_read(&gio::Cancellable::new()) {
-            let exifreader = exif::Reader::new();
-
-            let exif = exifreader.read_from_container(&mut bufreader).ok();
-            return Self {
-                exif,
-                ..Default::default()
-            };
-        }
-
-        Self::default()
-    }
-
-    pub fn from_exif_bytes(bytes: Vec<u8>) -> Self {
+impl Metadata {
+    pub fn set_exif_bytes(&mut self, bytes: Vec<u8>) {
         let reader = exif::Reader::new();
-        match reader.read_raw(bytes) {
-            Ok(exif) => Self {
-                exif: Some(exif),
-                ..Default::default()
-            },
-            Err(err) => {
-                log::warn!("Failed to decoder EXIF bytes: {err}");
-                Self::default()
-            }
+        let exif = reader.read_raw(bytes);
+
+        if let Err(err) = &exif {
+            log::warn!("Failed to decode EXIF bytes: {err}");
+        }
+
+        self.exif = exif.ok();
+    }
+
+    pub fn set_transformations_applied(&mut self, applied: bool) {
+        self.transformations_applied = Some(applied);
+    }
+
+    pub fn set_file_info(&mut self, file_info: FileInfo) {
+        self.file_info = Some(file_info);
+    }
+
+    pub fn set_format(&mut self, format: ImageFormat) {
+        self.format = Some(format);
+    }
+
+    pub fn merge(&mut self, other: Self) {
+        if self.exif.is_none() {
+            self.exif = other.exif;
+        }
+        if self.file_info.is_none() {
+            self.file_info = other.file_info;
+        }
+        if self.transformations_applied.is_none() {
+            self.transformations_applied = other.transformations_applied;
         }
     }
 
-    pub fn has_information(&self) -> bool {
-        self.exif.is_some()
+    pub fn mime_type(&self) -> Option<String> {
+        self.file_info
+            .as_ref()
+            .and_then(|x| x.mime_type.as_ref())
+            .map(|x| x.to_string())
+    }
+
+    pub fn format(&self) -> Option<&ImageFormat> {
+        self.format.as_ref()
+    }
+
+    pub fn format_name(&self) -> Option<String> {
+        self.format()
+            .map(|x| x.to_string())
+            .or_else(|| self.mime_type())
+    }
+
+    pub fn transformations_applied(&self) -> bool {
+        self.transformations_applied.unwrap_or(false)
     }
 
     pub fn orientation(&self) -> Orientation {
-        if self.heif_transform {
+        if self.transformations_applied() {
             // HEIF library already does it's transformations on its own
             Orientation::default()
         } else if let Some(exif) = &self.exif {
@@ -110,6 +135,31 @@ impl ImageMetadata {
         } else {
             Orientation::default()
         }
+    }
+
+    pub fn file_name(&self) -> Option<String> {
+        self.file_info.as_ref().map(|x| x.display_name.to_string())
+    }
+
+    pub fn file_size(&self) -> Option<String> {
+        self.file_info
+            .as_ref()
+            .and_then(|x| x.file_size)
+            .map(|x| glib::format_size(x).to_string())
+    }
+
+    pub fn file_created(&self) -> Option<String> {
+        self.file_info
+            .as_ref()
+            .and_then(|x| x.created.as_ref())
+            .and_then(util::datetime_fmt)
+    }
+
+    pub fn file_modified(&self) -> Option<String> {
+        self.file_info
+            .as_ref()
+            .and_then(|x| x.modified.as_ref())
+            .and_then(util::datetime_fmt)
     }
 
     pub fn originally_created(&self) -> Option<String> {

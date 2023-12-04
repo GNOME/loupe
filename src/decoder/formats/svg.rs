@@ -20,6 +20,7 @@ use super::*;
 use crate::decoder::tiling::{self, FrameBufferExt};
 use crate::decoder::TileRequest;
 use crate::deps::*;
+use crate::metadata::ImageFormat;
 
 use anyhow::Context;
 use arc_swap::ArcSwap;

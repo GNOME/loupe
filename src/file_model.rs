@@ -25,6 +25,7 @@ use crate::util::gettext::*;
 use anyhow::Context;
 use gio::prelude::*;
 use gio::subclass::prelude::*;
+use glib::subclass::Signal;
 use glib::GString;
 use indexmap::IndexMap;
 use once_cell::sync::Lazy;
@@ -32,7 +33,6 @@ use std::cell::{OnceCell, RefCell};
 
 mod imp {
     use super::*;
-    use gtk::glib::subclass::Signal;
 
     #[derive(Debug, Default)]
     pub struct LpFileModel {
