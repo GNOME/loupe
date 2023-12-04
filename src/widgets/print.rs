@@ -271,7 +271,6 @@ mod imp {
 
         fn class_init(klass: &mut Self::Class) {
             Self::bind_template(klass);
-            Self::Type::bind_template_callbacks(klass);
 
             klass.install_action("print.print", None, |print, _, _| {
                 print.print();
@@ -478,7 +477,6 @@ glib::wrapper! {
         @implements gtk::Buildable, gtk::ConstraintTarget;
 }
 
-#[gtk::template_callbacks]
 impl LpPrint {
     pub fn new(
         image: LpImage,
