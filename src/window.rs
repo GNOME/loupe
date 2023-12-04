@@ -290,6 +290,7 @@ mod imp {
             );
 
             obj.on_current_page_changed();
+            obj.on_fullscreen_changed();
 
             self.image_view.connect_current_page_notify(
                 glib::clone!(@weak obj => move |_| obj.on_current_page_changed()),
@@ -1002,6 +1003,10 @@ impl LpWindow {
     }
 
     fn on_fullscreen_changed(&self) {
+        self.imp()
+            .image_view
+            .on_fullscreen_changed(self.is_fullscreened());
+
         self.update_headerbar_style();
 
         if !self.is_fullscreened() {

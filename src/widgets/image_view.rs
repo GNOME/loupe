@@ -73,6 +73,8 @@ mod imp {
         pub(super) controls_box_end: TemplateChild<gtk::Widget>,
         #[template_child]
         pub(super) controls_box_end_events: TemplateChild<gtk::EventControllerMotion>,
+        #[template_child]
+        pub(super) fullscreen_button: TemplateChild<gtk::Button>,
 
         #[template_child]
         pub sliding_view: TemplateChild<LpSlidingView>,
@@ -102,7 +104,6 @@ mod imp {
 
         fn class_init(klass: &mut Self::Class) {
             Self::bind_template(klass);
-            Self::Type::bind_template_callbacks(klass);
         }
 
         fn instance_init(obj: &glib::subclass::InitializingObject<Self>) {
@@ -275,7 +276,6 @@ glib::wrapper! {
         @implements gtk::Buildable, gtk::ConstraintTarget, gtk::Orientable;
 }
 
-#[gtk::template_callbacks]
 impl LpImageView {
     pub fn set_images_from_files(&self, files: Vec<gio::File>) {
         // Add image to recently used file. Does not work in Flatpaks:
@@ -622,13 +622,14 @@ impl LpImageView {
         }
     }
 
-    #[template_callback]
-    fn get_fullscreen_icon(&self, fullscreened: bool) -> &'static str {
-        if fullscreened {
+    pub fn on_fullscreen_changed(&self, is_fullscreened: bool) {
+        let icon = if is_fullscreened {
             "view-restore-symbolic"
         } else {
             "view-fullscreen-symbolic"
-        }
+        };
+
+        self.imp().fullscreen_button.set_icon_name(icon);
     }
 
     pub fn zoom_out(&self) {

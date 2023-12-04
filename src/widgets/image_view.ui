@@ -81,13 +81,6 @@
             <child>
               <object class="GtkButton" id="fullscreen_button">
                 <property name="halign">end</property>
-                <binding name="icon-name">
-                  <closure type="gchararray" function="get_fullscreen_icon">
-                    <lookup type="GtkWindow" name="fullscreened">
-                      <lookup type="GtkWidget" name="root">LpImageView</lookup>
-                    </lookup>
-                  </closure>
-                </binding>
                 <property name="action-name">win.toggle-fullscreen</property>
                 <property name="tooltip-text" translatable="yes">Toggle Fullscreen</property>
                 <style>

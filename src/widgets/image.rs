@@ -829,7 +829,8 @@ impl LpImage {
     async fn set_file_loaded(&self, file: &gio::File) {
         let imp = self.imp();
 
-        // Do not check if same file since it might be set via initialized with `Self::init` before
+        // Do not check if same file since it might be set via initialized with
+        // `Self::init` before
         imp.file.replace(Some(file.clone()));
         self.reload_file_info().await;
         self.setup_file_monitor().await;
@@ -845,7 +846,8 @@ impl LpImage {
         imp.file.replace(Some(file.clone()));
         self.reload_file_info().await;
 
-        // Reload if mime type changed since other decoding path might be responsible now
+        // Reload if mime type changed since other decoding path might be responsible
+        // now
         if self.metadata().mime_type() != prev_mime_type {
             self.load(file).await;
             return;
