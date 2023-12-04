@@ -153,7 +153,7 @@ impl LpImagePage {
     pub fn from_file(file: &gio::File) -> Self {
         let obj = glib::Object::new::<Self>();
 
-        obj.imp().image.set_file(file);
+        obj.imp().image.init(file);
 
         glib::spawn_future_local(clone!(@weak obj, @strong file => async move {
             let imp = obj.imp();

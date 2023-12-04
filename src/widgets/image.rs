@@ -113,7 +113,7 @@ mod imp {
     #[derive(Debug, Default, Properties)]
     #[properties(wrapper_type = super::LpImage)]
     pub struct LpImage {
-        #[property(get, set = LpImage::set_file, explicit_notify)]
+        #[property(get, explicit_notify)]
         pub(super) file: RefCell<Option<gio::File>>,
         #[property(get)]
         pub(super) is_deleted: Cell<bool>,
@@ -520,28 +520,6 @@ mod imp {
             zoom_gesture.group_with(&rotation_gesture);
         }
 
-        fn set_file(&self, file: &gio::File) {
-            let obj = self.obj();
-
-            if obj.file().map_or(false, |x| file.equal(&x)) {
-                return;
-            }
-
-            self.file.replace(Some(file.clone()));
-
-            let monitor =
-                file.monitor_file(gio::FileMonitorFlags::WATCH_MOVES, gio::Cancellable::NONE);
-            if let Ok(m) = &monitor {
-                m.connect_changed(glib::clone!(@weak obj => move |_, file_a, file_b, event| {
-                    obj.file_changed(event, file_a, file_b);
-                }));
-            }
-
-            self.file_monitor.replace(monitor.ok());
-
-            obj.notify_file();
-        }
-
         fn set_mirrored(&self, mirrored: bool) {
             let obj = self.obj();
 
@@ -813,20 +791,17 @@ glib::wrapper! {
 }
 
 impl LpImage {
+    pub fn init(&self, file: &gio::File) {
+        self.imp().file.replace(Some(file.clone()));
+    }
+
     pub async fn load(&self, file: &gio::File) {
         let imp = self.imp();
         log::debug!("Loading file {}", file.uri());
 
-        self.set_file(file);
         imp.metadata.replace(Metadata::default());
         self.emmit_metadata_changed();
-
-        let file_info = metadata::FileInfo::new(file).await;
-        match file_info {
-            Ok(file_info) => imp.metadata.borrow_mut().set_file_info(file_info),
-            Err(err) => log::warn!("Failed to load file information: {err}"),
-        }
-        self.emmit_metadata_changed();
+        self.set_file_loaded(file).await;
 
         let tiles = &self.imp().frame_buffer;
         // Delete all stored textures for reloads
@@ -848,6 +823,68 @@ impl LpImage {
         });
 
         imp.decoder.replace(Some(Arc::new(decoder)));
+    }
+
+    // Set filename when (re)loading image
+    async fn set_file_loaded(&self, file: &gio::File) {
+        let imp = self.imp();
+
+        // Do not check if same file since it might be set via initialized with `Self::init` before
+        imp.file.replace(Some(file.clone()));
+        self.reload_file_info().await;
+        self.setup_file_monitor().await;
+
+        self.notify_file();
+    }
+
+    /// Set filename after filename changed
+    async fn set_file_changed(&self, file: &gio::File) {
+        let imp = self.imp();
+        let prev_mime_type = self.metadata().mime_type();
+
+        imp.file.replace(Some(file.clone()));
+        self.reload_file_info().await;
+
+        // Reload if mime type changed since other decoding path might be responsible now
+        if self.metadata().mime_type() != prev_mime_type {
+            self.load(file).await;
+            return;
+        }
+
+        self.setup_file_monitor().await;
+
+        self.notify_file();
+    }
+
+    async fn reload_file_info(&self) {
+        let imp = self.imp();
+
+        if let Some(file) = self.file() {
+            let file_info = metadata::FileInfo::new(&file).await;
+            match file_info {
+                Ok(file_info) => imp.metadata.borrow_mut().set_file_info(file_info),
+                Err(err) => log::warn!("Failed to load file information: {err}"),
+            }
+            self.emmit_metadata_changed();
+        }
+    }
+
+    async fn setup_file_monitor(&self) {
+        let imp = self.imp();
+
+        if let Some(file) = self.file() {
+            let monitor =
+                file.monitor_file(gio::FileMonitorFlags::WATCH_MOVES, gio::Cancellable::NONE);
+            if let Ok(m) = &monitor {
+                m.connect_changed(
+                    glib::clone!(@weak self as obj => move |_, file_a, file_b, event| {
+                        obj.file_changed(event, file_a, file_b);
+                    }),
+                );
+            }
+
+            imp.file_monitor.replace(monitor.ok());
+        }
     }
 
     /// Called when decoder sends update
@@ -991,13 +1028,16 @@ impl LpImage {
                     log::debug!("Moved to {}", file.uri());
                     // current file got replaced with a new one
                     let file_replace = self.file().map_or(false, |x| x.equal(&file));
-                    self.set_file(&file);
+                    let obj = self.clone();
                     if file_replace {
                         log::debug!("Image got replaced {}", file.uri());
-                        let obj = self.clone();
                         // TODO: error handling is missing
                         glib::spawn_future_local(async move {
                             obj.load(&file).await;
+                        });
+                    } else {
+                        glib::spawn_future_local(async move {
+                            obj.set_file_changed(&file).await;
                         });
                     }
                 }
