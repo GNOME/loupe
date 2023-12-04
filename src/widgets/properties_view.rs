@@ -184,7 +184,7 @@ mod imp {
             // Dates
             let has_dates = [
                 Self::update_row(&self.file_created, metadata.file_created()),
-                Self::update_row(&self.file_modified, dbg!(metadata.file_modified())),
+                Self::update_row(&self.file_modified, metadata.file_modified()),
             ]
             .into_iter()
             .any(|x| x);

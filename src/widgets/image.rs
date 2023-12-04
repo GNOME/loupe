@@ -113,7 +113,6 @@ mod imp {
     #[derive(Debug, Default, Properties)]
     #[properties(wrapper_type = super::LpImage)]
     pub struct LpImage {
-        #[property(get, explicit_notify)]
         pub(super) file: RefCell<Option<gio::File>>,
         #[property(get)]
         pub(super) is_deleted: Cell<bool>,
@@ -834,8 +833,6 @@ impl LpImage {
         imp.file.replace(Some(file.clone()));
         self.reload_file_info().await;
         self.setup_file_monitor().await;
-
-        self.notify_file();
     }
 
     /// Set filename after filename changed
@@ -854,8 +851,6 @@ impl LpImage {
         }
 
         self.setup_file_monitor().await;
-
-        self.notify_file();
     }
 
     async fn reload_file_info(&self) {
@@ -1858,6 +1853,10 @@ impl LpImage {
         })
         .await
         .ok()?
+    }
+
+    pub fn file(&self) -> Option<gio::File> {
+        self.imp().file.borrow().clone()
     }
 
     pub fn metadata(&self) -> impl Deref<Target = Metadata> + '_ {
