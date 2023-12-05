@@ -1426,7 +1426,7 @@ impl LpImage {
             let target_vborder = self.widget_height() - self.image_size().1 as f64 * zoom;
 
             self.imp()
-                .zoom_hscrollbar_transition
+                .zoom_vscrollbar_transition
                 .set(current_vborder.signum() != target_vborder.signum() && current_vborder != 0.);
 
             let animation = self.zoom_animation();
