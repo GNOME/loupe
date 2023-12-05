@@ -72,6 +72,7 @@ impl LpImage {
             self.imp().zoom.set(best_fit_level);
             self.set_zoom_target(best_fit_level);
             self.zoom_animation().pause();
+            self.configure_adjustments();
         }
     }
 

@@ -117,6 +117,7 @@ impl LpImage {
                 self.notify_image_size_available();
                 self.configure_best_fit();
                 self.request_tiles();
+                self.configure_adjustments();
             }
             DecoderUpdate::Redraw => {
                 self.set_loaded(true);

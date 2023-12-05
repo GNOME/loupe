@@ -63,9 +63,6 @@ impl WidgetImpl for imp::LpImage {
         let display_width = obj.image_displayed_width();
         let display_height = obj.image_displayed_height();
 
-        // make sure the scrollbars are correct
-        obj.configure_adjustments();
-
         let applicable_zoom = obj.applicable_zoom();
 
         let scaling_filter = if obj.metadata().format().map_or(false, |x| x.is_svg()) {
