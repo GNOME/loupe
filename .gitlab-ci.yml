@@ -121,7 +121,7 @@ other-checks:
   image: alpine
   script:
     - apk add --no-cache git
-    - git ls-files 'src/*.rs' 'src/*.ui' 'data/*.ui' 'data/*.desktop.in*' '*.metainfo.xml.in*' > po/POTFILES.in
+    - git ls-files 'src/*.rs' 'src/*.ui' 'data/*.ui' 'data/*.desktop.in*' '*.gschema.xml.in' '*.metainfo.xml.in*' > po/POTFILES.in
     - git diff --exit-code
 
 pages:

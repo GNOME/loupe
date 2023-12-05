@@ -1,4 +1,5 @@
 data/org.gnome.Loupe.desktop.in.in
+data/org.gnome.Loupe.gschema.xml.in
 data/org.gnome.Loupe.metainfo.xml.in.in
 data/resources/gtk/help-overlay.ui
 src/about.rs

@@ -15,6 +15,7 @@ dependency('gweather4', version: '>=4.0.0')
 dependency('lcms2', version: '>=2.12.0')
 
 cargo = find_program('cargo', required: true)
+glib_compile_schemas = find_program('glib-compile-schemas', required: true)
 
 iv_prefix = get_option('prefix')
 iv_bindir = iv_prefix / get_option('bindir')
@@ -35,6 +36,7 @@ if get_option('profile') != 'release'
   endif
 endif
 
+base_id = 'org.gnome.Loupe'
 app_id = 'org.gnome.Loupe@0@'.format(profile)
 iv_version = meson.project_version() + version_suffix
 
@@ -66,6 +68,7 @@ endif
 gnome.post_install(
   gtk_update_icon_cache: true,
   update_desktop_database: true,
+  glib_compile_schemas: true,
 )
 
 meson.add_dist_script(

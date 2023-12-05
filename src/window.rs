@@ -35,6 +35,7 @@ use gtk::CompositeTemplate;
 use std::cell::{Cell, OnceCell, RefCell};
 use std::path::{Path, PathBuf};
 
+use crate::application::LpApplication;
 use crate::config;
 use crate::util::{Direction, Position};
 use crate::widgets::{LpDragOverlay, LpImage, LpImageView, LpPropertiesView};
@@ -274,6 +275,10 @@ mod imp {
             self.backward_click_gesture
                 .connect_pressed(clone!(@weak obj => move |_,_,_,_| {
                     obj.image_view().navigate(Direction::Back);
+                }));
+            self.properties_button
+                .connect_toggled(clone!(@weak obj => move |_| {
+                    obj.on_properties_button_toggled();
                 }));
 
             if config::PROFILE == ".Devel" {
@@ -764,14 +769,34 @@ impl LpWindow {
         );
 
         if has_image {
+            let settings = LpApplication::default().settings();
+            imp.properties_button
+                .set_active(settings.boolean("show-properties"));
             imp.stack.set_visible_child(&*imp.image_view);
             imp.image_view.grab_focus();
             self.schedule_hide_controls();
         } else {
+            imp.properties_button.set_active(false);
             imp.stack.set_visible_child(&*imp.status_page);
             imp.status_page.grab_focus();
             // Leave fullscreen since status page has no controls to leave it
             self.set_fullscreened(false);
+        }
+    }
+
+    /// When the image-properties sidebar is displayed or hidden, we should update the
+    /// "show-properties" setting.
+    fn on_properties_button_toggled(&self) {
+        let imp = self.imp();
+        // When no image is shown, we skip this update as the sidebar should always be hidden.
+        // This can happen when deleting a picture.
+        if imp.image_view.current_page().is_none() {
+            return;
+        }
+        let settings = LpApplication::default().settings();
+        let result = settings.set_boolean("show-properties", imp.properties_button.is_active());
+        if let Err(err) = result {
+            log::warn!("Failed to save show-properties state, {}", err);
         }
     }
 

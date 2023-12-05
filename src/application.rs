@@ -33,8 +33,18 @@ mod imp {
 
     // The basic struct that holds our
     // state and widgets
-    #[derive(Default, Debug)]
-    pub struct LpApplication {}
+    #[derive(Debug)]
+    pub struct LpApplication {
+        pub settings: gio::Settings,
+    }
+
+    impl Default for LpApplication {
+        fn default() -> Self {
+            Self {
+                settings: gio::Settings::new(config::APP_ID),
+            }
+        }
+    }
 
     // Sets up the basics for the GObject
     // The `#[glib::object_subclass] macro implements
@@ -208,5 +218,18 @@ impl LpApplication {
                 log::error!("Failed to launch help: {}", e.message());
             }
         });
+    }
+
+    pub fn settings(&self) -> gio::Settings {
+        self.imp().settings.clone()
+    }
+}
+
+impl Default for LpApplication {
+    fn default() -> Self {
+        gio::Application::default()
+            .unwrap()
+            .downcast::<LpApplication>()
+            .unwrap()
     }
 }
