@@ -137,30 +137,24 @@ impl LpImage {
 
         if self.imp().zoom_hscrollbar_transition.get() {
             if zoom_ratio < 1. {
-                self.hadjustment()
-                    .set_value(self.max_hadjustment_value() / 2.);
+                self.set_hadj_value(self.max_hadjustment_value() / 2.);
             } else {
                 // move towards center
-                self.hadjustment()
-                    .set_value(self.hadjustment_corrected_for_zoom(zoom_ratio, center_x));
+                self.set_hadj_value(self.hadjustment_corrected_for_zoom(zoom_ratio, center_x));
             }
         } else {
-            self.hadjustment()
-                .set_value(self.hadjustment_corrected_for_zoom(zoom_ratio, x));
+            self.set_hadj_value(self.hadjustment_corrected_for_zoom(zoom_ratio, x));
         }
 
         if self.imp().zoom_vscrollbar_transition.get() {
             if zoom_ratio < 1. {
-                self.vadjustment()
-                    .set_value(self.max_vadjustment_value() / 2.);
+                self.set_vadj_value(self.max_vadjustment_value() / 2.);
             } else {
                 // move towards center
-                self.vadjustment()
-                    .set_value(self.vadjustment_corrected_for_zoom(zoom_ratio, center_y));
+                self.set_vadj_value(self.vadjustment_corrected_for_zoom(zoom_ratio, center_y));
             }
         } else {
-            self.vadjustment()
-                .set_value(self.vadjustment_corrected_for_zoom(zoom_ratio, y));
+            self.set_vadj_value(self.vadjustment_corrected_for_zoom(zoom_ratio, y));
         }
 
         self.notify_zoom();
@@ -301,7 +295,6 @@ impl LpImage {
     /// in the image at the same place in the widget, the returned value is
     /// the correct value for hadjustment to achieve that.
     pub fn hadjustment_corrected_for_zoom(&self, zoom_delta: f64, x: f64) -> f64 {
-        let adj = self.hadjustment();
         // Width of bars to the left and right of the image
         let border = if self.widget_width() > self.image_displayed_width() {
             (self.widget_width() - self.image_displayed_width()) / 2.
@@ -309,12 +302,11 @@ impl LpImage {
             0.
         };
 
-        f64::max((x + adj.value() - border) / zoom_delta - x, 0.)
+        f64::max((x + self.hadj_value() - border) / zoom_delta - x, 0.)
     }
 
     /// Same but for vertical adjustment
     pub fn vadjustment_corrected_for_zoom(&self, zoom_delta: f64, y: f64) -> f64 {
-        let adj = self.vadjustment();
         // Width of bars to the top and bottom of the image
         let border = if self.widget_height() > self.image_displayed_height() {
             (self.widget_height() - self.image_displayed_height()) / 2.
@@ -322,6 +314,6 @@ impl LpImage {
             0.
         };
 
-        f64::max((y + adj.value() - border) / zoom_delta - y, 0.)
+        f64::max((y + self.vadj_value() - border) / zoom_delta - y, 0.)
     }
 }

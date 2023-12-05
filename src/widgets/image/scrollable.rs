@@ -20,6 +20,9 @@ use super::*;
 impl ScrollableImpl for imp::LpImage {}
 
 impl imp::LpImage {
+    /// Adjustment setter needed for Scrollable implementation
+    ///
+    /// The adjustment get's set by the `GtkScrolledWindow`
     pub fn set_hadjustment(&self, hadjustment: Option<gtk::Adjustment>) {
         let obj = self.obj();
 
@@ -98,6 +101,26 @@ impl LpImage {
             // page_size
             f64::min(widget_height, content_height),
         );
+    }
+
+    pub fn set_hadj_value(&self, value: f64) {
+        let hadjustment = self.hadjustment();
+        let value = value.clamp(0., hadjustment.upper() - hadjustment.page_size());
+        hadjustment.set_value(value);
+    }
+
+    pub fn set_vadj_value(&self, value: f64) {
+        let vadjustment = self.vadjustment();
+        let value = value.clamp(0., vadjustment.upper() - vadjustment.page_size());
+        self.vadjustment().set_value(value);
+    }
+
+    pub fn hadj_value(&self) -> f64 {
+        self.hadjustment().value()
+    }
+
+    pub fn vadj_value(&self) -> f64 {
+        self.vadjustment().value()
     }
 
     pub fn max_hadjustment_value(&self) -> f64 {

@@ -144,11 +144,8 @@ impl imp::LpImage {
 
         drag_gesture.connect_drag_update(glib::clone!(@weak obj => move |_, x1, y1| {
             if let Some((x0, y0)) = obj.imp().last_drag_value.get() {
-                let hadjustment = obj.hadjustment();
-                let vadjustment = obj.vadjustment();
-
-                hadjustment.set_value(hadjustment.value() - x1 + x0);
-                vadjustment.set_value(vadjustment.value() - y1 + y0);
+                obj.set_hadj_value(obj.hadj_value() - x1 + x0);
+                obj.set_vadj_value(obj.vadj_value() - y1 + y0);
             }
 
             obj.imp().last_drag_value.set(Some((x1, y1)));
@@ -213,16 +210,14 @@ impl imp::LpImage {
         }));
 
         zoom_gesture.connect_scale_changed(glib::clone!(@weak obj => move |gesture, scale| {
-            let hadjustment = obj.hadjustment();
-            let vadjustment = obj.vadjustment();
             let zoom = obj.imp().zoom_target.get() * scale;
 
             // Move image with fingers on touchscreens
             if gesture.device().map(|x| x.source()) == Some(gdk::InputSource::Touchscreen) {
                 if let p1 @ Some((x1, y1)) = gesture.bounding_box_center() {
                     if let Some((x0, y0)) = obj.imp().zoom_gesture_center.get() {
-                        hadjustment.set_value(hadjustment.value() + x0 - x1);
-                        vadjustment.set_value(vadjustment.value() + y0 - y1);
+                        obj.set_hadj_value(obj.hadj_value() + x0 - x1);
+                        obj.set_vadj_value(obj.vadj_value()+ y0 - y1);
                     } else {
                         log::warn!("Zoom bounding box center: No previous value");
                     }
