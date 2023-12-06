@@ -34,7 +34,7 @@ impl LpImage {
         let scale = f32::min(1., THUMBNAIL_SIZE / long_side as f32);
         let render_options = tiling::RenderOptions {
             scaling_filter: gsk::ScalingFilter::Trilinear,
-            scale_factor: self.scale_factor(),
+            scaling: self.scaling(),
             background_color: Some(self.background_color()),
         };
 

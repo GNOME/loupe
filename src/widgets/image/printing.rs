@@ -24,7 +24,7 @@ impl LpImage {
         let render_options = tiling::RenderOptions {
             scaling_filter: gsk::ScalingFilter::Trilinear,
             background_color: None,
-            scale_factor: 1,
+            scaling: 1.,
         };
 
         let snapshot = gtk::Snapshot::new();

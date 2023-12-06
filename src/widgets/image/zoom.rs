@@ -43,8 +43,8 @@ impl LpImage {
     pub(super) fn zoom_level_best_fit_for_rotation(&self, rotation: f64) -> f64 {
         let rotated = rotation.to_radians().sin().abs();
         let (image_width, image_height) = (
-            self.original_dimensions().0 as f64 / self.scale_factor() as f64,
-            self.original_dimensions().1 as f64 / self.scale_factor() as f64,
+            self.original_dimensions().0 as f64 / self.scaling(),
+            self.original_dimensions().1 as f64 / self.scaling(),
         );
         let texture_aspect_ratio = image_width / image_height;
         let widget_aspect_ratio = self.width() as f64 / self.height() as f64;
@@ -81,7 +81,7 @@ impl LpImage {
     }
 
     pub(super) fn applicable_zoom(&self) -> f64 {
-        decoder::tiling::zoom_normalize(self.zoom()) / self.scale_factor() as f64
+        decoder::tiling::zoom_normalize(self.zoom()) / self.scaling()
     }
 
     /// Maximal zoom allowed for this image

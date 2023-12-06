@@ -22,9 +22,9 @@ impl WidgetImpl for imp::LpImage {
     fn size_allocate(&self, width: i32, height: i32, _baseline: i32) {
         let obj = self.obj();
 
-        let (scale_changed, scale_change) = if obj.scale_factor() != self.scale_factor.get() {
-            let scale_change = obj.scale_factor() as f64 / self.scale_factor.get() as f64;
-            self.scale_factor.set(obj.scale_factor());
+        let (scale_changed, scale_change) = if obj.scaling() != self.scaling.get() {
+            let scale_change = obj.scaling() / self.scaling.get();
+            self.scaling.set(obj.scaling());
             (true, scale_change)
         } else {
             (false, 1.)
@@ -78,7 +78,7 @@ impl WidgetImpl for imp::LpImage {
 
         let render_options = tiling::RenderOptions {
             scaling_filter,
-            scale_factor: obj.scale_factor(),
+            scaling: obj.scaling(),
             background_color: Some(obj.background_color()),
         };
 
@@ -128,65 +128,54 @@ impl WidgetImpl for imp::LpImage {
     }
 
     fn measure(&self, orientation: gtk::Orientation, _for_size: i32) -> (i32, i32, i32, i32) {
-        let (image_width, image_height) = self.obj().image_size();
+        let obj = self.obj();
+        let (image_width, image_height) = obj.image_size();
 
         if image_width > 0 && image_height > 0 {
-            if let Some(display) = gdk::Display::default() {
-                if let Some(native) = self.obj().native() {
-                    if let Some(monitor) = display.monitor_at_surface(&native.surface()) {
-                        let hidpi_scale = self.obj().scale_factor() as f64;
+            if let Some((monitor_width, monitor_height)) = obj.monitor_size() {
+                let hidpi_scale = self.obj().scaling();
 
-                        let monitor_geometry = monitor.geometry();
-                        // TODO: Per documentation those dimensions should not be physical
-                        // pixels. But on Wayland they are physical
-                        // pixels and on X11 not. Taking the version
-                        // that works on Wayland for now. <https://gitlab.gnome.org/GNOME/gtk/-/issues/5391>
-                        let monitor_width = monitor_geometry.width() as f64 - 40.;
-                        let monitor_height = monitor_geometry.height() as f64 - 60.;
+                // areas
+                let monitor_area = monitor_width * monitor_height;
+                let image_area = image_width as f64 * image_height as f64;
 
-                        // areas
-                        let monitor_area = monitor_width * monitor_height;
-                        let image_area = image_width as f64 * image_height as f64;
+                let occupy_area_factor = if monitor_area < 1024. * 768. {
+                    // for small monitors occupy 80% of the area
+                    0.8
+                } else {
+                    // for large monitors occupy 30% of the area
+                    0.3
+                };
 
-                        let occupy_area_factor = if monitor_area < 1024. * 768. {
-                            // for small monitors occupy 80% of the area
-                            0.8
-                        } else {
-                            // for large monitors occupy 30% of the area
-                            0.3
-                        };
+                // factor for width and height that will achieve the desired area
+                // occupation derived from:
+                // monitor_area * occupy_area_factor ==
+                //   (image_width * size_scale) * (image_height * size_scale)
+                let size_scale = f64::sqrt(monitor_area / image_area * occupy_area_factor);
+                // ensure that we never increase image size
+                let target_scale = f64::min(1.0, size_scale);
+                let mut nat_width = image_width as f64 * target_scale;
+                let mut nat_height = image_height as f64 * target_scale;
 
-                        // factor for width and height that will achieve the desired area
-                        // occupation derived from:
-                        // monitor_area * occupy_area_factor ==
-                        //   (image_width * size_scale) * (image_height * size_scale)
-                        let size_scale = f64::sqrt(monitor_area / image_area * occupy_area_factor);
-                        // ensure that we never increase image size
-                        let target_scale = f64::min(1.0, size_scale);
-                        let mut nat_width = image_width as f64 * target_scale;
-                        let mut nat_height = image_height as f64 * target_scale;
-
-                        // scale down if targeted occupation does not fit in one direction
-                        if nat_width > monitor_width {
-                            nat_width = monitor_width;
-                            nat_height = nat_height * monitor_width / nat_width;
-                        }
-
-                        // same for other direction
-                        if nat_height > monitor_height {
-                            nat_height = monitor_height;
-                            nat_width = nat_width * monitor_height / nat_height;
-                        }
-
-                        let size = match orientation {
-                            gtk::Orientation::Horizontal => (nat_width / hidpi_scale).round(),
-                            gtk::Orientation::Vertical => (nat_height / hidpi_scale).round(),
-                            _ => unreachable!(),
-                        };
-
-                        return (0, size as i32, -1, -1);
-                    }
+                // scale down if targeted occupation does not fit in one direction
+                if nat_width > monitor_width {
+                    nat_width = monitor_width;
+                    nat_height = nat_height * monitor_width / nat_width;
                 }
+
+                // same for other direction
+                if nat_height > monitor_height {
+                    nat_height = monitor_height;
+                    nat_width = nat_width * monitor_height / nat_height;
+                }
+
+                let size = match orientation {
+                    gtk::Orientation::Horizontal => (nat_width / hidpi_scale).round(),
+                    gtk::Orientation::Vertical => (nat_height / hidpi_scale).round(),
+                    _ => unreachable!(),
+                };
+
+                return (0, size as i32, -1, -1);
             }
         }
 
@@ -247,11 +236,11 @@ impl LpImage {
 
     /// Returns the area of the image that is visible in physical pixels
     pub(super) fn viewport(&self) -> graphene::Rect {
-        let scale_factor = self.scale_factor() as f32;
-        let x = self.hadjustment().value() as f32 * scale_factor;
-        let y = self.vadjustment().value() as f32 * scale_factor;
-        let width = self.width() as f32 * scale_factor;
-        let height = self.height() as f32 * scale_factor;
+        let scaling = self.scaling() as f32;
+        let x = self.hadjustment().value() as f32 * scaling;
+        let y = self.vadjustment().value() as f32 * scaling;
+        let width = self.width() as f32 * scaling;
+        let height = self.height() as f32 * scaling;
 
         graphene::Rect::new(x, y, width, height)
     }
@@ -273,7 +262,7 @@ impl LpImage {
             return number;
         }
 
-        let scale = self.scale_factor() as f64;
+        let scale = self.scaling();
         (number * scale).round() / scale
     }
 
@@ -282,7 +271,41 @@ impl LpImage {
             return number;
         }
 
-        let scale = self.scale_factor() as f32;
+        let scale = self.scaling() as f32;
         (number * scale).round() / scale
+    }
+
+    pub fn scaling(&self) -> f64 {
+        self.native()
+            .map(|x| x.surface().scale())
+            .unwrap_or_else(|| self.scale_factor() as f64)
+    }
+
+    /// Monitor size in physical pixels
+    pub fn monitor_size(&self) -> Option<(f64, f64)> {
+        if let Some(display) = gdk::Display::default() {
+            if let Some(native) = self.native() {
+                if let Some(monitor) = display.monitor_at_surface(&native.surface()) {
+                    let hidpi_scale = self.scaling();
+                    let monitor_geometry = monitor.geometry();
+                    let monitor_size = (
+                        monitor_geometry.width() as f64,
+                        monitor_geometry.height() as f64,
+                    );
+
+                    // Assume scale-monitor-framebuffer disabled for  non-fractional scaling
+                    // <https://gitlab.gnome.org/GNOME/gtk/-/issues/5391>
+                    let physical_geometry = if hidpi_scale == self.scale_factor() as f64 {
+                        monitor_size
+                    } else {
+                        (monitor_size.0 * hidpi_scale, monitor_size.1 * hidpi_scale)
+                    };
+
+                    return Some(physical_geometry);
+                }
+            }
+        }
+
+        None
     }
 }

@@ -53,6 +53,7 @@ use adw::subclass::prelude::*;
 use arc_swap::ArcSwap;
 use futures::prelude::*;
 use glib::subclass::Signal;
+use glib::{Properties, SignalGroup};
 use once_cell::sync::Lazy;
 
 use std::cell::{Cell, OnceCell, RefCell};
@@ -119,7 +120,6 @@ const THUMBNAIL_SIZE: f32 = 128.;
 
 mod imp {
     use super::*;
-    use glib::Properties;
 
     #[derive(Debug, Default, Properties)]
     #[properties(wrapper_type = super::LpImage)]
@@ -215,7 +215,8 @@ mod imp {
         pub(super) locked_gestured: Cell<Option<Gesture>>,
 
         pub(super) widget_dimensions: Cell<(i32, i32)>,
-        pub(super) scale_factor: Cell<i32>,
+        pub(super) scaling: Cell<f64>,
+        pub(super) surface_signals: OnceCell<SignalGroup>,
     }
 
     #[glib::object_subclass]
@@ -256,13 +257,29 @@ mod imp {
             self.zoom.set(1.);
             self.zoom_target.set(1.);
             self.best_fit.set(true);
-            self.scale_factor.set(obj.scale_factor());
+            self.scaling.set(obj.scaling());
 
             self.connect_input_handling();
 
-            obj.connect_scale_factor_notify(|obj| {
-                obj.queue_resize();
-            });
+            let surface_signals = self
+                .surface_signals
+                .get_or_init(SignalGroup::new::<gdk::Surface>);
+
+            surface_signals.connect_notify_local(
+                Some("scale"),
+                glib::clone!(@weak obj => move |_, _| {
+                    log::debug!("Scale changed signal");
+                    obj.queue_resize();
+                }),
+            );
+
+            obj.connect_realize(glib::clone!(@weak surface_signals => move |obj| {
+                surface_signals.set_target(obj.native().map(|x| x.surface()).as_ref());
+            }));
+
+            obj.connect_unrealize(glib::clone!(@weak surface_signals => move |_| {
+                surface_signals.set_target(gdk::Surface::NONE);
+            }));
 
             adw::StyleManager::default().connect_dark_notify(glib::clone!(@weak obj => move |_| {
                 glib::spawn_future_local(async move {

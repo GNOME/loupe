@@ -99,7 +99,7 @@ impl Tile {
         options: &RenderOptions,
     ) {
         // Multiply by scale factor to get the image scaled to `zoom` in physical pixels
-        let zoom = output_zoom as f32 * options.scale_factor as f32 / self.zoom();
+        let zoom = output_zoom as f32 * options.scaling as f32 / self.zoom();
         let area = round(&self.area().scale(zoom, zoom));
         let area_with_bleed = round(&self.area_with_bleed().scale(zoom, zoom));
 
@@ -214,7 +214,7 @@ pub struct TileLayer {
 #[derive(Debug, Clone)]
 pub struct RenderOptions {
     pub scaling_filter: gsk::ScalingFilter,
-    pub scale_factor: i32,
+    pub scaling: f64,
     pub background_color: Option<gdk::RGBA>,
 }
 
@@ -231,16 +231,13 @@ impl TiledImage {
         log::trace!("Rendering {} tiles", tiles.len());
 
         // Scale from application pixels back to physical pixels
-        snapshot.scale(
-            1. / options.scale_factor as f32,
-            1. / options.scale_factor as f32,
-        );
+        snapshot.scale(1. / options.scaling as f32, 1. / options.scaling as f32);
         // reverse to put least fitting tiles in the background
         for (_, tile) in tiles.iter().rev() {
             tile.add_to_snapshot(snapshot, zoom, options);
         }
         // reset scale
-        snapshot.scale(options.scale_factor as f32, options.scale_factor as f32);
+        snapshot.scale(options.scaling as f32, options.scaling as f32);
     }
 
     pub fn push(&mut self, tile: Tile) {

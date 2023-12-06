@@ -71,7 +71,7 @@ impl LpImage {
         let render_options = tiling::RenderOptions {
             scaling_filter: gsk::ScalingFilter::Nearest,
             background_color: None,
-            scale_factor: 1,
+            scaling: 1.,
         };
         self.imp()
             .frame_buffer
