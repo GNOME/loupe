@@ -16,18 +16,18 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 
 //! Decode using librsvg
-use super::*;
-use crate::decoder::tiling::{self, FrameBufferExt};
-use crate::decoder::TileRequest;
-use crate::deps::*;
-use crate::metadata::ImageFormat;
+use std::sync::Arc;
 
 use anyhow::Context;
 use arc_swap::ArcSwap;
 use async_channel as mpsc;
 use gtk::prelude::*;
 
-use std::sync::Arc;
+use super::*;
+use crate::decoder::tiling::{self, FrameBufferExt};
+use crate::decoder::TileRequest;
+use crate::deps::*;
+use crate::metadata::ImageFormat;
 
 /// Current librsvg limit on maximum dimensions. See
 /// <https://gitlab.gnome.org/GNOME/librsvg/-/issues/938>

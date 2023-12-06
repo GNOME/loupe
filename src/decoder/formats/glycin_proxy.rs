@@ -16,15 +16,15 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 
 //! Decode using glycin
-use super::*;
-use crate::decoder::tiling::{self, FrameBufferExt};
-use crate::deps::*;
-use crate::metadata::{ImageFormat, Metadata};
+use std::sync::Arc;
 
 use arc_swap::ArcSwap;
 use gtk::prelude::*;
 
-use std::sync::Arc;
+use super::*;
+use crate::decoder::tiling::{self, FrameBufferExt};
+use crate::deps::*;
+use crate::metadata::{ImageFormat, Metadata};
 
 pub const FRAME_BUFFER: usize = 3;
 

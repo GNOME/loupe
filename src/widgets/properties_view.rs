@@ -16,17 +16,16 @@
 //
 // SPDX-License-Identifier: GPL-3.0-or-later
 
-use crate::decoder::ImageDimensionDetails;
-use crate::deps::*;
-use crate::util;
+use std::cell::{OnceCell, RefCell};
 
 use adw::prelude::*;
 use adw::subclass::prelude::*;
 use glib::Properties;
 use gtk::CompositeTemplate;
 
-use std::cell::{OnceCell, RefCell};
-
+use crate::decoder::ImageDimensionDetails;
+use crate::deps::*;
+use crate::util;
 use crate::widgets::image::LpImage;
 
 const FALLBACK: &str = "–";

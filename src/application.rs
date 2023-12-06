@@ -1,6 +1,7 @@
 // Copyright (c) 2020-2023 Christopher Davis
 // Copyright (c) 2022-2023 Sophie Herold
 // Copyright (c) 2022-2023 Sabri Ünal
+// Copyright (c) 2023 Matteo Nardi
 // Copyright (c) 2023 Julian Hofer
 // Copyright (c) 2023 Huan Nguyen
 //
@@ -19,14 +20,12 @@
 //
 // SPDX-License-Identifier: GPL-3.0-or-later
 
-use crate::about;
-use crate::deps::*;
-
 use adw::prelude::*;
 use adw::subclass::prelude::*;
 
-use crate::config;
+use crate::deps::*;
 use crate::window::LpWindow;
+use crate::{about, config};
 
 mod imp {
     use super::*;

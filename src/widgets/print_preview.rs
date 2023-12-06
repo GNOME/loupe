@@ -17,13 +17,13 @@
 
 //! Print preview widget that shows a fake page with the image on it
 
-use crate::deps::*;
-use crate::widgets::LpPrint;
-
 use adw::subclass::prelude::*;
 use glib::Properties;
 use gtk::prelude::*;
 use once_cell::sync::OnceCell;
+
+use crate::deps::*;
+use crate::widgets::LpPrint;
 
 mod imp_page {
     use super::*;

@@ -18,15 +18,15 @@
 
 pub mod gettext;
 
-use crate::deps::*;
-use crate::util::gettext::*;
+use std::fmt::{Debug, Write};
+use std::path::{Path, PathBuf};
 
 use anyhow::{anyhow, bail, Context};
 use gio::prelude::*;
 use once_cell::sync::Lazy;
 
-use std::fmt::{Debug, Write};
-use std::path::{Path, PathBuf};
+use crate::deps::*;
+use crate::util::gettext::*;
 
 /// Returns localized date + time format
 pub fn datetime_fmt(datetime: &glib::DateTime) -> Option<String> {

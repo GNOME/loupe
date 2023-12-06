@@ -26,15 +26,15 @@
 //! be re-genearted for each zoom level. It can also be used to allow
 //! showing large JPEGs etc where the complete decoded image would not
 //! even fit in the VRAM.
-use super::{DecoderUpdate, ImageDimensionDetails, UpdateSender};
-use crate::deps::*;
+use std::collections::{BTreeMap, VecDeque};
+use std::sync::Arc;
+use std::time::Duration;
 
 use arc_swap::ArcSwap;
 use gtk::prelude::*;
 
-use std::collections::{BTreeMap, VecDeque};
-use std::sync::Arc;
-use std::time::Duration;
+use super::{DecoderUpdate, ImageDimensionDetails, UpdateSender};
+use crate::deps::*;
 
 const ZOOM_SIGNIFICANT_DIGITS: i32 = 6;
 pub const MIN_TILE_SIZE: u16 = 500;

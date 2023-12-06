@@ -30,11 +30,8 @@
 //! [`LpSlidingView`]: crate::widgets::LpSlidingView
 //! [`LpFileModel`]: crate::file_model::LpFileModel
 
-use crate::deps::*;
-use crate::file_model::LpFileModel;
-use crate::util::gettext::*;
-use crate::util::{Direction, Position};
-use crate::widgets::{LpImage, LpImagePage, LpPrint, LpSlidingView};
+use std::cell::{Cell, OnceCell, RefCell};
+use std::marker::PhantomData;
 
 use adw::prelude::*;
 use adw::subclass::prelude::*;
@@ -45,8 +42,11 @@ use glib::translate::IntoGlib;
 use glib::{clone, Properties};
 use gtk::CompositeTemplate;
 
-use std::cell::{Cell, OnceCell, RefCell};
-use std::marker::PhantomData;
+use crate::deps::*;
+use crate::file_model::LpFileModel;
+use crate::util::gettext::*;
+use crate::util::{Direction, Position};
+use crate::widgets::{LpImage, LpImagePage, LpPrint, LpSlidingView};
 
 // The number of pages we want to buffer
 // on either side of the current page.

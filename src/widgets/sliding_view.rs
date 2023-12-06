@@ -22,8 +22,7 @@
 //!
 //! This widget it similar to `AdwCarousel`.
 
-use crate::deps::*;
-use crate::widgets::LpImagePage;
+use std::cell::{Cell, OnceCell, RefCell};
 
 use adw::prelude::*;
 use adw::subclass::prelude::*;
@@ -31,7 +30,8 @@ use glib::Properties;
 use indexmap::IndexMap;
 use once_cell::sync::Lazy;
 
-use std::cell::{Cell, OnceCell, RefCell};
+use crate::deps::*;
+use crate::widgets::LpImagePage;
 
 static SCROLL_DAMPING_RATIO: f64 = 1.;
 static SCROLL_MASS: f64 = 0.5;
@@ -46,8 +46,9 @@ static PAGE_SPACING_FIXED: f32 = 25.;
 const PAGE_SPACING_PERCENT: f32 = 0.02;
 
 mod imp {
-    use super::*;
     use glib::subclass::Signal;
+
+    use super::*;
 
     #[derive(Default, Properties)]
     #[properties(wrapper_type = super::LpSlidingView)]

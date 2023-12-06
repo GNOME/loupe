@@ -1,4 +1,4 @@
-// Copyright (c) 2021, 2023 Christopher Davis
+// Copyright (c) 2021 Christopher Davis
 // Copyright (c) 2022-2023 Sophie Herold
 // Copyright (c) 2023 Julian Hofer
 // Copyright (c) 2023 Lubosz Sarnecki
@@ -41,12 +41,10 @@ mod rotation;
 mod scrollable;
 mod zoom;
 
-use crate::deps::*;
-
-use crate::decoder::tiling::FrameBufferExt;
-use crate::decoder::{self, tiling, Decoder, DecoderUpdate};
-use crate::metadata::Metadata;
-use crate::util::Gesture;
+use std::cell::{Cell, OnceCell, RefCell};
+use std::marker::PhantomData;
+use std::ops::Deref;
+use std::sync::Arc;
 
 use adw::prelude::*;
 use adw::subclass::prelude::*;
@@ -56,10 +54,11 @@ use glib::subclass::Signal;
 use glib::{Properties, SignalGroup};
 use once_cell::sync::Lazy;
 
-use std::cell::{Cell, OnceCell, RefCell};
-use std::marker::PhantomData;
-use std::ops::Deref;
-use std::sync::Arc;
+use crate::decoder::tiling::FrameBufferExt;
+use crate::decoder::{self, tiling, Decoder, DecoderUpdate};
+use crate::deps::*;
+use crate::metadata::Metadata;
+use crate::util::Gesture;
 
 /// Default background color around images and behind transparent images
 /// `#242424`

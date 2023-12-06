@@ -18,10 +18,8 @@
 
 //! The print layout widget that also coordinates the print process
 
-use crate::decoder;
-use crate::deps::*;
-use crate::util::gettext::*;
-use crate::widgets::{LpImage, LpPrintPreview};
+use std::cell::{Cell, RefCell};
+use std::rc::Rc;
 
 use adw::prelude::*;
 use adw::subclass::prelude::*;
@@ -29,8 +27,10 @@ use glib::Properties;
 use gtk::CompositeTemplate;
 use once_cell::sync::OnceCell;
 
-use std::cell::{Cell, RefCell};
-use std::rc::Rc;
+use crate::decoder;
+use crate::deps::*;
+use crate::util::gettext::*;
+use crate::widgets::{LpImage, LpPrintPreview};
 
 #[derive(Default, Clone, Copy)]
 struct PageAlignment {

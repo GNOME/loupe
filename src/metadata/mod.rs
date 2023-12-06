@@ -29,10 +29,9 @@ pub use file::FileInfo;
 pub use format::ImageFormat;
 pub use gps::GPSLocation;
 
+use crate::deps::*;
 use crate::util;
 use crate::util::gettext::*;
-
-use crate::deps::*;
 
 #[derive(Default)]
 pub struct Metadata {

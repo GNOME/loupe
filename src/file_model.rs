@@ -18,9 +18,7 @@
 //
 // SPDX-License-Identifier: GPL-3.0-or-later
 
-use crate::deps::*;
-use crate::util;
-use crate::util::gettext::*;
+use std::cell::{OnceCell, RefCell};
 
 use anyhow::Context;
 use gio::prelude::*;
@@ -29,7 +27,10 @@ use glib::subclass::Signal;
 use glib::GString;
 use indexmap::IndexMap;
 use once_cell::sync::Lazy;
-use std::cell::{OnceCell, RefCell};
+
+use crate::deps::*;
+use crate::util;
+use crate::util::gettext::*;
 
 mod imp {
     use super::*;

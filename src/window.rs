@@ -2,6 +2,7 @@
 // Copyright (c) 2022-2023 Sophie Herold
 // Copyright (c) 2022 Elton A Rodrigues
 // Copyright (c) 2022 Maximiliano Sandoval R
+// Copyright (c) 2023 Matteo Nardi
 // Copyright (c) 2023 Julian Hofer
 // Copyright (c) 2023 FineFindus
 // Copyright (c) 2023 qwel
@@ -24,19 +25,18 @@
 //
 // SPDX-License-Identifier: GPL-3.0-or-later
 
-use crate::deps::*;
-use crate::util::gettext::*;
+use std::cell::{Cell, OnceCell, RefCell};
+use std::path::{Path, PathBuf};
 
 use adw::prelude::*;
 use adw::subclass::prelude::*;
 use glib::clone;
 use gtk::CompositeTemplate;
 
-use std::cell::{Cell, OnceCell, RefCell};
-use std::path::{Path, PathBuf};
-
 use crate::application::LpApplication;
 use crate::config;
+use crate::deps::*;
+use crate::util::gettext::*;
 use crate::util::{Direction, Position};
 use crate::widgets::{LpDragOverlay, LpImage, LpImageView, LpPropertiesView};
 
@@ -789,12 +789,12 @@ impl LpWindow {
         imp.properties_button.set_sensitive(has_image);
     }
 
-    /// When the image-properties sidebar is displayed or hidden, we should update the
-    /// "show-properties" setting.
+    /// When the image-properties sidebar is displayed or hidden, we should
+    /// update the "show-properties" setting.
     fn on_properties_button_toggled(&self) {
         let imp = self.imp();
-        // When no image is shown, we skip this update as the sidebar should always be hidden.
-        // This can happen when deleting a picture.
+        // When no image is shown, we skip this update as the sidebar should always be
+        // hidden. This can happen when deleting a picture.
         if imp.image_view.current_page().is_none() {
             return;
         }

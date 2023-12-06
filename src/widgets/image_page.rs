@@ -21,13 +21,13 @@
 //!
 //! This widget also handles showing the context menu.
 
-use crate::deps::*;
-use crate::widgets::LpImage;
-
 use adw::subclass::prelude::*;
 use glib::{clone, Properties};
 use gtk::prelude::*;
 use gtk::CompositeTemplate;
+
+use crate::deps::*;
+use crate::widgets::LpImage;
 
 mod imp {
     use super::*;

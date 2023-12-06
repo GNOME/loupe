@@ -20,14 +20,14 @@
 //!
 //! This implementation is inspired by [Amberol](https://gitlab.gnome.org/World/amberol)
 
-use crate::deps::*;
 use adw::prelude::*;
 
-mod imp {
-    use once_cell::sync::OnceCell;
+use crate::deps::*;
 
+mod imp {
     use adw::subclass::prelude::*;
     use glib::{ParamSpec, Properties, Value};
+    use once_cell::sync::OnceCell;
 
     use super::*;
 

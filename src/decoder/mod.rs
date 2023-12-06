@@ -20,20 +20,17 @@
 pub mod formats;
 pub mod tiling;
 
-pub use formats::ImageDimensionDetails;
-
-use crate::deps::*;
-use crate::metadata::{ImageFormat, Metadata};
-use formats::*;
-use tiling::FrameBufferExt;
+use std::sync::Arc;
 
 use anyhow::Result;
 use arc_swap::ArcSwap;
+use formats::*;
+pub use formats::{ImageDimensionDetails, RSVG_MAX_SIZE};
 use futures::channel::mpsc;
+use tiling::FrameBufferExt;
 
-use std::sync::Arc;
-
-pub use formats::RSVG_MAX_SIZE;
+use crate::deps::*;
+use crate::metadata::{ImageFormat, Metadata};
 
 #[derive(Clone, Copy, Debug)]
 /// Renderer requests new tiles
