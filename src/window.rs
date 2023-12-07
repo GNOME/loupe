@@ -759,7 +759,6 @@ impl LpWindow {
 
         let has_image = current_page.is_some();
 
-        imp.properties_button.set_sensitive(has_image);
         self.set_actions_enabled(has_image);
         self.action_set_enabled(
             "win.trash",
@@ -769,9 +768,13 @@ impl LpWindow {
         );
 
         if has_image {
-            let settings = LpApplication::default().settings();
-            imp.properties_button
-                .set_active(settings.boolean("show-properties"));
+            // Properties buttons was not enabled before. Pickup config state for enabling
+            // it again.
+            if !imp.properties_button.is_sensitive() {
+                let settings = LpApplication::default().settings();
+                imp.properties_button
+                    .set_active(settings.boolean("show-properties"));
+            }
             imp.stack.set_visible_child(&*imp.image_view);
             imp.image_view.grab_focus();
             self.schedule_hide_controls();
@@ -782,6 +785,8 @@ impl LpWindow {
             // Leave fullscreen since status page has no controls to leave it
             self.set_fullscreened(false);
         }
+
+        imp.properties_button.set_sensitive(has_image);
     }
 
     /// When the image-properties sidebar is displayed or hidden, we should update the
