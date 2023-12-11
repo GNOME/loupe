@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2023-08-21 16:23+0000\n"
-"PO-Revision-Date: 2023-08-22 12:28+0300\n"
+"POT-Creation-Date: 2023-12-07 19:51+0000\n"
+"PO-Revision-Date: 2023-12-08 12:23+0300\n"
 "Last-Translator: Artur So <arturios2005@mail.ru>\n"
 "Language-Team: \n"
 "Language: ru_RU\n"
@@ -17,239 +17,21 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
-"X-Generator: Poedit 3.3.2\n"
+"X-Generator: Poedit 3.4.1\n"
 
-#: data/gtk/image_page.ui:6 data/gtk/window.ui:16
-msgid "_Open With…"
-msgstr "Открыть с _помощью…"
-
-#: data/gtk/image_page.ui:14 data/gtk/window.ui:24
-msgid "_Print…"
-msgstr "_Печать…"
-
-#: data/gtk/image_page.ui:18
-msgid "_Copy"
-msgstr "_Копировать"
-
-#: data/gtk/image_page.ui:23 data/gtk/window.ui:29
-msgid "Rotate"
-msgstr "Повернуть"
-
-#: data/gtk/image_page.ui:34 data/gtk/window.ui:40
-msgid "_Set as Background…"
-msgstr "_Установить как фон…"
-
-#: data/gtk/image_page.ui:63
-msgid "Could not Load Image"
-msgstr "Не удалось загрузить изображение"
-
-#: data/gtk/image_page.ui:97 data/gtk/window.ui:129
-msgid "Rotate Left"
-msgstr "Повернуть влево"
-
-#: data/gtk/image_page.ui:107 data/gtk/window.ui:139
-msgid "Rotate Right"
-msgstr "Повернуть вправо"
-
-#: data/gtk/image_view.ui:30
-msgid "Previous Image"
-msgstr "Предыдущее изображение"
-
-#: data/gtk/image_view.ui:41
-msgid "Next Image"
-msgstr "Следующее изображение"
-
-#: data/gtk/image_view.ui:66
-msgid "Zoom Out"
-msgstr "Уменьшить"
-
-#: data/gtk/image_view.ui:77
-msgid "Zoom In"
-msgstr "Увеличить"
-
-#: data/gtk/image_view.ui:95
-msgid "Toggle Fullscreen"
-msgstr "Переключить полноэкранный режим"
-
-#. Translators: Go back to previous page
-#: data/gtk/print.ui:29
-msgid "Back"
-msgstr "Назад"
-
-#: data/gtk/print.ui:36
-msgid "Print"
-msgstr "Печать"
-
-#: data/gtk/print.ui:54
-msgid "Layout"
-msgstr "Макет"
-
-#: data/gtk/print.ui:57
-msgid "Orientation"
-msgstr "Ориентация"
-
-#: data/gtk/print.ui:69
-msgid "Portrait Page Orientation"
-msgstr "Портретная ориентация страницы"
-
-#: data/gtk/print.ui:77
-msgid "Landscape Page Orientation"
-msgstr "Ландшафтная ориентация страницы"
-
-#: data/gtk/print.ui:86
-msgid "Alignment"
-msgstr "Выравнивание"
-
-#: data/gtk/print.ui:104
-msgid "Margins"
-msgstr "Отступы"
-
-#: data/gtk/print.ui:107
-msgid "Margin Units"
-msgstr "Единицы измерения отступа"
-
-#: data/gtk/print.ui:124
-msgid "Horizontal"
-msgstr "Горизонтальный"
-
-#: data/gtk/print.ui:129
-msgid "Vertical"
-msgstr "Вертикальный"
-
-#: data/gtk/print.ui:136 data/gtk/properties_view.ui:58
-msgid "Image Size"
-msgstr "Размер изображения"
-
-#: data/gtk/print.ui:139
-msgid "Image Size Units"
-msgstr "Единицы измерения размера изображения"
-
-#: data/gtk/print.ui:157
-msgid "Fill Space"
-msgstr "Заполнить пространство"
-
-#: data/gtk/print.ui:162
-msgid "Width"
-msgstr "Ширина"
-
-#: data/gtk/print.ui:167
-msgid "Height"
-msgstr "Высота"
-
-#: data/gtk/properties_view.ui:29
-msgid "Folder"
-msgstr "Папка"
-
-#: data/gtk/properties_view.ui:41
-msgid "Open Containing Folder"
-msgstr "Открыть папку, содержащую объект"
-
-#: data/gtk/properties_view.ui:74
-msgid "Image Format"
-msgstr "Формат изображения"
-
-#: data/gtk/properties_view.ui:88
-msgid "File Size"
-msgstr "Размер файла"
-
-#: data/gtk/properties_view.ui:106
-msgid "File Created"
-msgstr "Файл создан"
-
-#: data/gtk/properties_view.ui:120
-msgid "File Modified"
-msgstr "Файл изменен"
-
-#: data/gtk/properties_view.ui:143
-msgid "Location"
-msgstr "Расположение"
-
-#: data/gtk/properties_view.ui:162
-msgid "Open Location"
-msgstr "Открыть расположение"
-
-#: data/gtk/properties_view.ui:175
-msgid "Originally Created"
-msgstr "Первоначально создано"
-
-#: data/gtk/properties_view.ui:196
-msgid "Aperture"
-msgstr "Диафрагма"
-
-#: data/gtk/properties_view.ui:217
-msgid "Exposure"
-msgstr "Экспозиция"
-
-#: data/gtk/properties_view.ui:238
-msgid "ISO"
-msgstr "ISO"
-
-#: data/gtk/properties_view.ui:259
-msgid "Focal Length"
-msgstr "Фокусное расстояние"
-
-#: data/gtk/properties_view.ui:280
-msgid "Maker, Model"
-msgstr "Производитель, модель"
-
-#: data/gtk/window.ui:6
-msgid "_New Window"
-msgstr "_Новое окно"
-
-#: data/gtk/window.ui:10
-msgid "_Open…"
-msgstr "_Открыть…"
-
-#: data/gtk/window.ui:46
-msgid "_Help"
-msgstr "_Справка"
-
-#: data/gtk/window.ui:50
-msgid "_Keyboard Shortcuts"
-msgstr "_Комбинации клавиш"
-
-#: data/gtk/window.ui:54
-msgid "_About Image Viewer"
-msgstr "_О приложении"
-
-#. If the file exists, get display name
-#: data/gtk/window.ui:64 data/org.gnome.Loupe.desktop.in.in:3
-#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:28 src/window.rs:879
-#: src/window.rs:885
+#: data/org.gnome.Loupe.desktop.in.in:3
+#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:28 src/window.rs:814
+#: src/window.ui:64
 msgid "Image Viewer"
 msgstr "Просмотрщик изображений"
-
-#: data/gtk/window.ui:108
-msgid "Copy to Clipboard"
-msgstr "Копировать в буфер обмена"
-
-#: data/gtk/window.ui:115
-msgid "Move to Trash"
-msgstr "Отправить в корзину"
-
-#: data/gtk/window.ui:121
-msgid "Main Menu"
-msgstr "Главное меню"
-
-#: data/gtk/window.ui:153
-msgid "Image Properties"
-msgstr "Свойства изображения"
-
-#: data/gtk/window.ui:195
-msgid "View Images"
-msgstr "Просмотр изображений"
-
-#: data/gtk/window.ui:196
-msgid "Drag and drop images here"
-msgstr "Перетащите изображения сюда"
-
-#: data/gtk/window.ui:200
-msgid "_Open Files…"
-msgstr "_Открыть файлы…"
 
 #: data/org.gnome.Loupe.desktop.in.in:11
 msgid "Picture;Slideshow;Graphics;Loupe;"
 msgstr "Picture;Slideshow;Graphics;Loupe;Изображение;Слайд-шоу;Графика;"
+
+#: data/org.gnome.Loupe.gschema.xml.in:6
+msgid "Show the image properties sidebar"
+msgstr "Показать боковую панель свойств изображения"
 
 #: data/org.gnome.Loupe.metainfo.xml.in.in:7 src/about.rs:31
 msgid "The Loupe Team"
@@ -291,8 +73,8 @@ msgstr "Показать главное меню"
 
 #: data/resources/gtk/help-overlay.ui:20
 msgctxt "shortcut window"
-msgid "Copy Image to Clipboard"
-msgstr "Копировать изображение в буфер обмена"
+msgid "Copy Image or Metadata to Clipboard"
+msgstr "Копировать изображение или метаданные в буфер обмена"
 
 #: data/resources/gtk/help-overlay.ui:26
 msgctxt "shortcut window"
@@ -461,152 +243,379 @@ msgstr "Aleksandr Melman <alexmelman88@gmail.com>, 2023"
 msgid "Copyright © 2020–2023 Christopher Davis et al."
 msgstr "Авторское право © 2020-2023 Christopher Davis и др."
 
-#: src/file_model.rs:126
+#: src/file_model.rs:128
 msgid "Could not list other files in directory."
 msgstr "Не удалось перечислить другие файлы в каталоге."
 
 #. Translators: short for "north" in GPS coordinate
-#: src/image_metadata/gps.rs:153
+#: src/metadata/gps.rs:153
 msgid "N"
 msgstr "С"
 
 #. Translators: short for "south" in GPS coordinate
-#: src/image_metadata/gps.rs:156
+#: src/metadata/gps.rs:156
 msgid "S"
 msgstr "Ю"
 
 #. Translators: short for "east" in GPS coordinate
-#: src/image_metadata/gps.rs:166
+#: src/metadata/gps.rs:166
 msgid "E"
 msgstr "В"
 
 #. Translators: short for "west" in GPS coordinate
-#: src/image_metadata/gps.rs:169
+#: src/metadata/gps.rs:169
 msgid "W"
 msgstr "З"
 
 #. Translators: Unit for exposure time in seconds
-#: src/image_metadata/mod.rs:164
+#: src/metadata/mod.rs:213
 msgid "1\\u{2215}{}\\u{202F}s"
 msgstr "1\\u{2215}{}\\u{202F}s"
 
 #. Translators: Unit for focal length in millimeters
-#: src/image_metadata/mod.rs:189
+#: src/metadata/mod.rs:238
 msgid "{}\\u{202F}mm"
 msgstr "{}\\u{202F}mm"
 
 #. Translators: This is the date and time format we use in metadata output etc.
 #. The format has to follow <https://docs.gtk.org/glib/method.DateTime.format.html>
-#. The default is already translated. Don't change if you are not sure what to use.
-#: src/util/mod.rs:36
+#. The default is already translated. Don't change if you are not sure what to
+#. use.
+#: src/util/mod.rs:37
 #, c-format
 msgid "%x %X"
 msgstr "%x %X"
 
-#: src/util/mod.rs:179 src/window.rs:593
+#: src/util/mod.rs:180 src/window.rs:650
 msgid "Failed to restore image from trash"
 msgstr "Не удалось восстановить изображение из корзины"
 
-#: src/util/mod.rs:200
+#: src/util/mod.rs:201
 msgid "Failed to open image"
 msgstr "Не удалось открыть изображение"
 
-#. Translators: This is a toast notification, informing the user that an image has been set as background.
-#: src/widgets/image_view.rs:666
+#: src/widgets/image_page.ui:6 src/window.ui:16
+msgid "_Open With…"
+msgstr "Открыть с _помощью…"
+
+#: src/widgets/image_page.ui:14 src/window.ui:24
+msgid "_Print…"
+msgstr "_Печать…"
+
+#: src/widgets/image_page.ui:18
+msgid "_Copy"
+msgstr "_Копировать"
+
+#: src/widgets/image_page.ui:23 src/window.ui:29
+msgid "Rotate"
+msgstr "Повернуть"
+
+#: src/widgets/image_page.ui:34 src/window.ui:40
+msgid "_Set as Background…"
+msgstr "_Установить как фон…"
+
+#: src/widgets/image_page.ui:63
+msgid "Could not Load Image"
+msgstr "Не удалось загрузить изображение"
+
+#: src/widgets/image_page.ui:97 src/window.ui:105
+msgid "Rotate Left"
+msgstr "Повернуть влево"
+
+#: src/widgets/image_page.ui:107 src/window.ui:115
+msgid "Rotate Right"
+msgstr "Повернуть вправо"
+
+#. Translators: This is a toast notification, informing the user that
+#. an image has been set as background.
+#: src/widgets/image_view.rs:676
 msgid "Set as background."
 msgstr "Установить как фон."
 
-#: src/widgets/image_view.rs:679
+#: src/widgets/image_view.rs:689
 msgid "Could not set background."
 msgstr "Не удалось установить фон."
 
-#: src/widgets/print.rs:108
+#: src/widgets/image_view.ui:27
+msgid "Previous Image"
+msgstr "Предыдущее изображение"
+
+#: src/widgets/image_view.ui:38
+msgid "Next Image"
+msgstr "Следующее изображение"
+
+#: src/widgets/image_view.ui:63
+msgid "Zoom Out"
+msgstr "Уменьшить"
+
+#: src/widgets/image_view.ui:74
+msgid "Zoom In"
+msgstr "Увеличить"
+
+#: src/widgets/image_view.ui:85
+msgid "Toggle Fullscreen"
+msgstr "Переключить полноэкранный режим"
+
+#: src/widgets/print.rs:117
 msgid "Top"
 msgstr "По верху"
 
-#: src/widgets/print.rs:109
+#: src/widgets/print.rs:118
 msgid "Center"
 msgstr "По центру"
 
-#: src/widgets/print.rs:110
+#: src/widgets/print.rs:119
 msgid "Bottom"
 msgstr "По низу"
 
-#: src/widgets/print.rs:111
+#: src/widgets/print.rs:120
 msgid "Left"
 msgstr "По левому краю"
 
-#: src/widgets/print.rs:112
+#: src/widgets/print.rs:121
 msgid "Right"
 msgstr "По правому краю"
 
 #. Translators: Shorthand for centimeter
-#: src/widgets/print.rs:148
+#: src/widgets/print.rs:157
 msgid "cm"
 msgstr "см"
 
 #. Translators: Shorthand for inch
-#: src/widgets/print.rs:150
+#: src/widgets/print.rs:159
 msgid "in"
 msgstr "дюйм"
 
 #. Translators: Shorthand for pixel
-#: src/widgets/print.rs:152
+#: src/widgets/print.rs:161
 msgid "px"
 msgstr "пикс"
 
 #. Translators: {} is a placeholder for the filename
-#: src/widgets/print.rs:355
+#: src/widgets/print.rs:370
 msgid "Print “{}”"
 msgstr "Печать “{}”"
 
-#: src/window.rs:479
+#. Translators: Go back to previous page
+#: src/widgets/print.ui:29
+msgid "Back"
+msgstr "Назад"
+
+#: src/widgets/print.ui:36
+msgid "Print"
+msgstr "Печать"
+
+#: src/widgets/print.ui:54
+msgid "Layout"
+msgstr "Макет"
+
+#: src/widgets/print.ui:57
+msgid "Orientation"
+msgstr "Ориентация"
+
+#: src/widgets/print.ui:69
+msgid "Portrait Page Orientation"
+msgstr "Портретная ориентация страницы"
+
+#: src/widgets/print.ui:77
+msgid "Landscape Page Orientation"
+msgstr "Ландшафтная ориентация страницы"
+
+#: src/widgets/print.ui:86
+msgid "Alignment"
+msgstr "Выравнивание"
+
+#: src/widgets/print.ui:104
+msgid "Margins"
+msgstr "Отступы"
+
+#: src/widgets/print.ui:107
+msgid "Margin Units"
+msgstr "Единицы измерения отступа"
+
+#: src/widgets/print.ui:124
+msgid "Horizontal"
+msgstr "Горизонтальный"
+
+#: src/widgets/print.ui:129
+msgid "Vertical"
+msgstr "Вертикальный"
+
+#: src/widgets/print.ui:136 src/widgets/properties_view.ui:53
+msgid "Image Size"
+msgstr "Размер изображения"
+
+#: src/widgets/print.ui:139
+msgid "Image Size Units"
+msgstr "Единицы измерения размера изображения"
+
+#: src/widgets/print.ui:156
+msgid "Fill Space"
+msgstr "Заполнить пространство"
+
+#: src/widgets/print.ui:161
+msgid "Width"
+msgstr "Ширина"
+
+#: src/widgets/print.ui:166
+msgid "Height"
+msgstr "Высота"
+
+#: src/widgets/properties_view.ui:19
+msgid "Folder"
+msgstr "Папка"
+
+#: src/widgets/properties_view.ui:26
+msgid "Open Containing Folder"
+msgstr "Открыть папку, содержащую объект"
+
+#: src/widgets/properties_view.ui:39
+msgid "URI"
+msgstr "URI"
+
+#: src/widgets/properties_view.ui:62
+msgid "Image Format"
+msgstr "Формат изображения"
+
+#: src/widgets/properties_view.ui:71
+msgid "File Size"
+msgstr "Размер файла"
+
+#: src/widgets/properties_view.ui:84
+msgid "File Created"
+msgstr "Файл создан"
+
+#: src/widgets/properties_view.ui:93
+msgid "File Modified"
+msgstr "Файл изменен"
+
+#: src/widgets/properties_view.ui:106
+msgid "Location"
+msgstr "Расположение"
+
+#: src/widgets/properties_view.ui:113
+msgid "Open Location"
+msgstr "Открыть расположение"
+
+#: src/widgets/properties_view.ui:126
+msgid "Originally Created"
+msgstr "Первоначально создано"
+
+#: src/widgets/properties_view.ui:135
+msgid "Aperture"
+msgstr "Диафрагма"
+
+#: src/widgets/properties_view.ui:144
+msgid "Exposure"
+msgstr "Экспозиция"
+
+#: src/widgets/properties_view.ui:153
+msgid "ISO"
+msgstr "ISO"
+
+#: src/widgets/properties_view.ui:162
+msgid "Focal Length"
+msgstr "Фокусное расстояние"
+
+#: src/widgets/properties_view.ui:171
+msgid "Maker, Model"
+msgstr "Производитель, модель"
+
+#: src/window.rs:514
 msgid "Supported image formats"
 msgstr "Поддерживаемые форматы изображения"
 
-#: src/window.rs:488
+#: src/window.rs:523
 msgid "All files"
 msgstr "Все файлы"
 
-#: src/window.rs:495
+#: src/window.rs:530
 msgid "Open Image"
 msgstr "Открыть изображение"
 
-#: src/window.rs:559
+#: src/window.rs:616
 msgid "Image copied to clipboard"
 msgstr "Изображение скопировано в буфер обмена"
 
-#: src/window.rs:580
+#: src/window.rs:637
 msgid "Image moved to trash"
 msgstr "Изображение отправлено в корзину"
 
-#: src/window.rs:581
+#: src/window.rs:638
 msgid "Undo"
 msgstr "Отменить"
 
-#: src/window.rs:608
+#: src/window.rs:665
 msgid "Failed to move image to trash"
 msgstr "Не удалось отправить изображение в корзину"
 
-#: src/window.rs:623
+#: src/window.rs:680
 msgid "Permanently Delete Image?"
 msgstr "Удалить изображение безвозвратно?"
 
-#: src/window.rs:625
+#: src/window.rs:682
 msgid "The image “{}” can only be deleted permanently."
 msgstr "Изображение «{}» может быть удалено только безвозвратно."
 
-#: src/window.rs:633
+#: src/window.rs:690
 msgid "Cancel"
 msgstr "Отменить"
 
-#: src/window.rs:634
+#: src/window.rs:691
 msgid "Delete"
 msgstr "Удалить"
 
-#: src/window.rs:645
+#: src/window.rs:702
 msgid "Failed to delete image"
 msgstr "Не удалось удалить изображение"
+
+#: src/window.ui:6
+msgid "_New Window"
+msgstr "_Новое окно"
+
+#: src/window.ui:10
+msgid "_Open…"
+msgstr "_Открыть…"
+
+#: src/window.ui:46
+msgid "_Help"
+msgstr "_Справка"
+
+#: src/window.ui:50
+msgid "_Keyboard Shortcuts"
+msgstr "_Комбинации клавиш"
+
+#: src/window.ui:54
+msgid "_About Image Viewer"
+msgstr "_О приложении"
+
+#: src/window.ui:84
+msgid "Copy to Clipboard"
+msgstr "Копировать в буфер обмена"
+
+#: src/window.ui:91
+msgid "Move to Trash"
+msgstr "Отправить в корзину"
+
+#: src/window.ui:97
+msgid "Main Menu"
+msgstr "Главное меню"
+
+#: src/window.ui:129
+msgid "Image Properties"
+msgstr "Свойства изображения"
+
+#: src/window.ui:171
+msgid "View Images"
+msgstr "Просмотр изображений"
+
+#: src/window.ui:172
+msgid "Drag and drop images here"
+msgstr "Перетащите изображения сюда"
+
+#: src/window.ui:176
+msgid "_Open Files…"
+msgstr "_Открыть файлы…"
 
 #~ msgid "Center image horizontally"
 #~ msgstr "Центрирование изображения по горизонтали"
