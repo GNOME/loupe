@@ -66,10 +66,10 @@
   </categories>
 
   <releases>
-    <release version="45.3" date="2023-12-12">
+    <release version="45.3" date="2023-12-15">
       <description>
         <ul>
-          <li>Zooming into wide images can no longer cause the horizontal scrollbar to suddenly jump into the center position.</li>
+          <li>Zooming into wide images will no longer cause the horizontal scrollbar to suddenly jump into the center position.</li>
         </ul>
       </description>
     </release>
