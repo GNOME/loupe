@@ -70,9 +70,14 @@ static GRESOURCE_BYTES: &[u8] =
     gvdb_macros::include_gresource_from_dir!("/org/gnome/Loupe", "data/resources");
 
 fn main() -> glib::ExitCode {
-    env_logger::Builder::from_default_env()
-        .format_timestamp_millis()
-        .init();
+    let mut log_builder = env_logger::builder();
+    log_builder.format_timestamp_millis();
+
+    if !glib::log_writer_default_would_drop(glib::LogLevel::Debug, Some("loupe")) {
+        log_builder.filter_module("loupe", log::LevelFilter::Debug);
+    }
+
+    log_builder.init();
 
     setlocale(LocaleCategory::LcAll, "");
     bindtextdomain("loupe", config::LOCALEDIR).unwrap();
