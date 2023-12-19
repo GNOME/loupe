@@ -31,7 +31,7 @@ use std::path::{Path, PathBuf};
 use adw::prelude::*;
 use adw::subclass::prelude::*;
 use glib::clone;
-use gtk::CompositeTemplate;
+use gtk::{CompositeTemplate, Widget};
 
 use crate::application::LpApplication;
 use crate::config;
@@ -742,9 +742,11 @@ impl LpWindow {
         }
     }
 
-    /// Handles change in availability of images
+    /// Handles change in image and availability of images
     fn on_current_page_changed(&self) {
         let imp = self.imp();
+        let was_showing_image =
+            imp.stack.visible_child().as_ref() == Some(imp.image_view.upcast_ref::<Widget>());
         let current_page = imp.image_view.current_page();
 
         // HeaderBar style
@@ -768,16 +770,19 @@ impl LpWindow {
         );
 
         if has_image {
-            // Properties buttons was not enabled before. Pickup config state for enabling
-            // it again.
+            // Properties buttons was not sensitive before
             if !imp.properties_button.is_sensitive() {
                 let settings = LpApplication::default().settings();
+                // Pickup config for setting it's state
                 imp.properties_button
                     .set_active(settings.boolean("show-properties"));
             }
-            imp.stack.set_visible_child(&*imp.image_view);
-            imp.image_view.grab_focus();
-            self.schedule_hide_controls();
+            if !was_showing_image {
+                imp.stack.set_visible_child(&*imp.image_view);
+                imp.image_view.grab_focus();
+                self.show_controls();
+                self.schedule_hide_controls();
+            }
         } else {
             imp.properties_button.set_active(false);
             imp.stack.set_visible_child(&*imp.status_page);
