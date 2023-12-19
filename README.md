@@ -21,9 +21,9 @@ Image Viewer uses [glycin](https://gitlab.gnome.org/sophie-h/glycin) for loading
 
 Contributions of all kinds are very welcome. Check the
 
-- [Welcome to GNOME: Loupe](https://teams.pages.gitlab.gnome.org/Websites/welcome.gnome.org/app/Loupe/)
+- [Welcome to GNOME: Loupe](https://welcome.gnome.org/app/Loupe/)
 
-pages for more information. If you are manually building Loupe on your system with Builder, make sure that you also have installed the [nightly version](https://teams.pages.gitlab.gnome.org/Websites/welcome.gnome.org/app/Loupe/#installing-a-nightly-build) for all features to work.
+pages for more information. If you are manually building Loupe on your system with Builder, make sure that you also have installed the [nightly version](https://welcome.gnome.org/app/Loupe/#installing-a-nightly-build) for all features to work. Otherwise, the development version will not have the required Flatpak permissions.
 
 Documentation of Loupe's code is available online:
 
