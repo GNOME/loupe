@@ -41,5 +41,6 @@ src/widgets/print_preview.rs
 src/widgets/properties_view.rs
 src/widgets/properties_view.ui
 src/widgets/sliding_view.rs
+src/widgets/window_title.rs
 src/window.rs
 src/window.ui
