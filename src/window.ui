@@ -61,7 +61,6 @@
     <property name="default-height">498</property>
     <property name="width-request">360</property>
     <property name="height-request">360</property>
-    <property name="title" translatable="yes">Image Viewer</property>
     <child>
       <object class="AdwBreakpoint">
         <condition>max-width: 590sp</condition>
@@ -74,6 +73,11 @@
           <object class="AdwHeaderBar" id="headerbar">
             <property name="show-end-title-buttons" bind-source="LpWindow" bind-property="fullscreened" bind-flags="sync-create|invert-boolean" />
             <property name="show-start-title-buttons" bind-source="LpWindow" bind-property="fullscreened" bind-flags="sync-create|invert-boolean" />
+            <property name="title-widget">
+              <object class="LpWindowTitle" id="title">
+                <property name="title" bind-source="LpWindow" bind-property="title" />
+              </object>
+            </property>
             <style>
               <class name="fullscreen-osd" />
             </style>
