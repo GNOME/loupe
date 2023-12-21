@@ -1,7 +1,16 @@
 46.alpha
 ========
 
+- Fix "Ctrl + C" copies image instead of metadata if text is selected
+- Fix "g_object_weak_unref" warnings
+- Fix changing image resets timeout for hiding controls if still visible
+- Fix long file names can newly opened window larger than required for image
+- Fix opening image in different folder ends fullscreen mode
 - Fix scrollbars disappearing under certain conditions
+- Follow G_MESSAGES_DEBUG variable for logging
+- Pre-select current image's folder in file-chooser dialog
+- Remember image properties visibility state
+- Use GdkSurface:scale instead of scale factor, in theory supporting fractional scaling
 
 45.3
 ====
