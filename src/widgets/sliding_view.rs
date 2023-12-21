@@ -277,6 +277,14 @@ glib::wrapper! {
 }
 
 impl LpSlidingView {
+    /// Returns a struct that allows lazy updates
+    ///
+    /// Lazy updates don't apply their notifications directly but only when the
+    /// editor struct is dropped.
+    pub fn editor(&self) -> SlidingViewEditor {
+        SlidingViewEditor::new(self.clone())
+    }
+
     /// Add page to the end
     pub fn append(&self, page: &LpImagePage) {
         self.insert(page, self.n_pages());
@@ -323,7 +331,7 @@ impl LpSlidingView {
     }
 
     /// Removes the page
-    pub fn remove(&self, page: &LpImagePage) {
+    fn remove(&self, page: &LpImagePage, lazy: bool) {
         let current_index = self.current_index();
 
         if let Some(index) = self.index_of(page) {
@@ -334,8 +342,8 @@ impl LpSlidingView {
 
             self.shift_position(current_index);
 
-            if self.is_empty() {
-                self.clear();
+            if self.is_empty() && !lazy {
+                self.clear(false);
             }
         } else {
             log::error!("Trying to remove non-existent page.");
@@ -351,7 +359,7 @@ impl LpSlidingView {
     }
 
     /// Removes all pages
-    pub fn clear(&self) {
+    fn clear(&self, lazy: bool) {
         self.scroll_animation().pause();
 
         for page in self.imp().pages.borrow().iter() {
@@ -362,7 +370,9 @@ impl LpSlidingView {
         self.set_position(0.);
         self.imp().position_shift.set(0.);
 
-        self.set_current_page(None);
+        if !lazy {
+            self.set_current_page(None);
+        }
     }
 
     /// Gives all pages with hash access via their path
@@ -415,7 +425,7 @@ impl LpSlidingView {
         } else if let Some(prev_page) = self.prev_page() {
             self.scroll_to(&prev_page);
         } else if let Some(current_page) = self.current_page() {
-            self.remove(&current_page);
+            self.remove(&current_page, false);
         }
     }
 
@@ -507,5 +517,43 @@ impl LpSlidingView {
 
             animation
         })
+    }
+}
+
+/// See [`LpSlidingView::editor`](LpSlidingView::editor)
+pub struct SlidingViewEditor {
+    sliding_view: LpSlidingView,
+}
+
+impl SlidingViewEditor {
+    fn new(sliding_view: LpSlidingView) -> Self {
+        Self { sliding_view }
+    }
+
+    /// Removes the page giving notifications later
+    pub fn remove_lazy(&self, page: &LpImagePage) {
+        self.remove(page, true)
+    }
+
+    /// Removes all pages giving notifications later
+    pub fn clear_lazy(&self) {
+        self.clear(true)
+    }
+}
+
+impl std::ops::Deref for SlidingViewEditor {
+    type Target = LpSlidingView;
+
+    fn deref(&self) -> &LpSlidingView {
+        &self.sliding_view
+    }
+}
+
+impl Drop for SlidingViewEditor {
+    fn drop(&mut self) {
+        // Trigger everything that hasn't been done by lazy updates
+        if self.is_empty() {
+            self.clear(false);
+        }
     }
 }

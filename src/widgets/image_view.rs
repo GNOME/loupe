@@ -293,14 +293,14 @@ impl LpImageView {
     }
 
     fn load_files(&self, files: Vec<gio::File>) {
-        let sliding_view = self.sliding_view();
+        let sliding_view = self.sliding_view().editor();
 
         if let Some(first) = files.first().cloned() {
             let model = LpFileModel::from_files(files);
             self.set_model(model);
             let page = self.new_image_page(&first);
 
-            sliding_view.clear();
+            sliding_view.clear_lazy();
             sliding_view.append(&page);
             self.update_sliding_view(&first);
         } else {
@@ -421,7 +421,7 @@ impl LpImageView {
             "Updating sliding_view neighbors for current path {}",
             current_file.uri()
         );
-        let sliding_view = self.sliding_view();
+        let sliding_view = self.sliding_view().editor();
 
         self.imp().preserve_content.set(false);
 
@@ -431,7 +431,7 @@ impl LpImageView {
         // remove old pages
         for (uri, page) in &existing {
             if !target.contains_key(uri) {
-                sliding_view.remove(page);
+                sliding_view.remove_lazy(page);
             }
         }
 
