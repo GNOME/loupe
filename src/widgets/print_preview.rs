@@ -53,7 +53,7 @@ mod imp_page {
         fn snapshot(&self, snapshot: &gtk::Snapshot) {
             snapshot.save();
 
-            let scale = self.print().user_scale() * self.display_scale();
+            let scale = self.print().user_scale_original() * self.display_scale();
             let margin_left = self.print().effective_margin_left() * self.display_scale();
             let margin_top = self.print().effective_margin_top() * self.display_scale();
 

@@ -27,7 +27,7 @@ use glib::Properties;
 use gtk::CompositeTemplate;
 use once_cell::sync::OnceCell;
 
-use crate::decoder;
+use crate::decoder::{self, ImageDimensionDetails};
 use crate::deps::*;
 use crate::util::gettext::*;
 use crate::widgets::{LpImage, LpPrintPreview};
@@ -167,12 +167,12 @@ impl std::fmt::Display for Unit {
 }
 
 impl Unit {
-    fn factor(&self, dpi: f64, total_size: i32) -> f64 {
+    fn factor(&self, dpi: f64, total_size: f64) -> f64 {
         match self {
             Self::Centimeter => 2.54 / dpi,
             Self::Inch => 1. / dpi,
             Self::Pixel => 1.,
-            Self::Percent => 100. / total_size as f64,
+            Self::Percent => 100. / total_size,
         }
     }
 
@@ -392,7 +392,7 @@ mod imp {
                     let size_unit = obj.size_unit();
                     imp.width.set_value(
                         size_unit
-                            .round(obj.image().image_size().0 as f64 * obj.width_unit_factor()),
+                            .round(obj.original_size().0 as f64 * obj.width_unit_factor()),
                     );
 
                     // Default to inch for USA and Liberia
@@ -500,6 +500,19 @@ impl LpPrint {
         obj
     }
 
+    pub fn original_size(&self) -> (f64, f64) {
+        let image = self.image();
+        if let ImageDimensionDetails::Svg(_, Some((w, h))) = image.dimension_details() {
+            let dpi = self.dpi();
+
+            ((w * dpi).round(), (h * dpi).round())
+        } else {
+            let (w, h) = self.image().image_size();
+
+            (w as f64, h as f64)
+        }
+    }
+
     /// Starts print preparation process by showing the print dialog
     pub fn run(&self) -> Result<(), glib::Error> {
         self.print_operation()
@@ -566,10 +579,10 @@ impl LpPrint {
             // Disable 'fill space' when manually changing size
             imp.fill_space.set_active(false);
 
-            let (orig_width, orig_height) = self.image().image_size();
+            let (orig_width, orig_height) = self.original_size();
             let width = self
                 .size_unit()
-                .round(imp.height.value() * orig_width as f64 / orig_height as f64);
+                .round(imp.height.value() * orig_width / orig_height);
             imp.width.set_value(width);
 
             self.draw_preview();
@@ -595,13 +608,20 @@ impl LpPrint {
 
     /// Returns user selected image height in pixels
     pub fn user_height(&self) -> f64 {
-        let (_, orig_height) = self.image().image_size();
+        let (_, orig_height) = self.original_size();
 
-        f64::max(1., orig_height as f64 * self.user_scale())
+        f64::max(1., orig_height * self.user_scale())
     }
 
     /// Returns scaling of the original image based on selected image size
     pub fn user_scale(&self) -> f64 {
+        let (orig_width, _) = self.original_size();
+
+        self.user_width() / orig_width
+    }
+
+    /// Returns scaling of the original image based on selected image size
+    pub fn user_scale_original(&self) -> f64 {
         let (orig_width, _) = self.image().image_size();
 
         self.user_width() / orig_width as f64
@@ -707,17 +727,17 @@ impl LpPrint {
         let width1 = self.paper_width() - 2. * self.user_margin_horizontal();
 
         let height = self.paper_height() - 2. * self.user_margin_vertical();
-        let (orig_width, orig_height) = self.image().image_size();
-        let width2 = height * orig_width as f64 / orig_height as f64;
+        let (orig_width, orig_height) = self.original_size();
+        let width2 = height * orig_width / orig_height;
 
         f64::min(width1, width2)
     }
 
     /// Returns height that makes the image fill the page
     fn fill_space_height(&self) -> f64 {
-        let (orig_width, orig_height) = self.image().image_size();
+        let (orig_width, orig_height) = self.original_size();
 
-        self.fill_space_width() * orig_height as f64 / orig_width as f64
+        self.fill_space_width() * orig_height / orig_width
     }
 
     /// Updates width according to margins if fill space is activated
@@ -746,7 +766,7 @@ impl LpPrint {
         let imp = self.imp();
         let _ui_updates_disabled = self.disable_ui_updates();
 
-        let (orig_width, orig_height) = self.image().image_size();
+        let (orig_width, orig_height) = self.original_size();
 
         let unit = self.size_unit();
         let width_factor = unit.factor(self.dpi(), orig_width);
@@ -775,7 +795,7 @@ impl LpPrint {
         let _ui_updates_disabled = self.disable_ui_updates();
 
         let unit = self.margin_unit();
-        let unit_factor = unit.factor(self.dpi(), 1);
+        let unit_factor = unit.factor(self.dpi(), 1.);
 
         let update_factor = unit_factor / self.margin_unit_factor();
         let margin_horizontal = imp.margin_horizontal.value() * update_factor;
@@ -849,9 +869,9 @@ impl LpPrint {
 
         let cairo_dpi = print_context.dpi_x();
 
-        let (orig_width, orig_height) = image.image_size();
+        let (orig_width, orig_height) = self.original_size();
 
-        let texture_scale = self.user_width() / orig_width as f64;
+        let texture_scale = self.user_width() / orig_width;
         let cairo_scale = cairo_dpi / self.dpi();
 
         let texture = if image.metadata().format().map_or(false, |x| x.is_svg()) {
@@ -859,8 +879,8 @@ impl LpPrint {
             // TODO: This should be async
             decoder::formats::Svg::render_print(
                 &image.file().unwrap(),
-                (orig_width as f64 * texture_scale) as i32,
-                (orig_height as f64 * texture_scale) as i32,
+                (orig_width * texture_scale) as i32,
+                (orig_height * texture_scale) as i32,
             )
             .unwrap()
         } else {

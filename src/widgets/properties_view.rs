@@ -227,7 +227,7 @@ mod imp {
 
             if let Some(image) = obj.image() {
                 match image.dimension_details() {
-                    ImageDimensionDetails::Svg(string) => Some(string),
+                    ImageDimensionDetails::Svg(string, _) => Some(string),
                     _ => {
                         let (width, height) = image.image_size();
                         if width > 0 && height > 0 {
