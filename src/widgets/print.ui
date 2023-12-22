@@ -142,7 +142,8 @@
                     <property name="title" translatable="yes">Image Size</property>
                     <property name="header-suffix">
                       <object class="GtkDropDown" id="size_unit">
-                        <property name="tooltip-text" translatable="yes">Image Size Units</property>" <style>
+                        <property name="tooltip-text" translatable="yes">Image Size Units</property>
+                        <style>
                           <class name="flat" />
                         </style>
                         <property name="model">
