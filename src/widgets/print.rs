@@ -764,6 +764,16 @@ impl LpPrint {
 
     fn on_size_unit_changed(&self) {
         let imp = self.imp();
+
+        // Only show one size input for percentage
+        if matches!(self.size_unit(), Unit::Percent) {
+            imp.width.set_title(&gettext("_Scale"));
+            imp.height.set_visible(false);
+        } else {
+            imp.width.set_title(&gettext("_Width"));
+            imp.height.set_visible(true);
+        }
+
         let _ui_updates_disabled = self.disable_ui_updates();
 
         let (orig_width, orig_height) = self.original_size();
@@ -792,6 +802,7 @@ impl LpPrint {
 
     fn on_margin_unit_changed(&self) {
         let imp = self.imp();
+
         let _ui_updates_disabled = self.disable_ui_updates();
 
         let unit = self.margin_unit();
