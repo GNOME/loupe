@@ -29,6 +29,10 @@ Documentation of Loupe's code is available online:
 
 - [Loupe Code Documentation](https://gnome.pages.gitlab.gnome.org/loupe/doc/loupe/)
 
+### Issue Tracker
+
+Issues labeled as ~"1. Feature" or ~"1. Enhancement" are accepted for implementation. Feature requests that still need a decission are labeld as ~"2. RFC".
+
 ### Code of Conduct
 
 When interacting with the project, the [GNOME Code Of Conduct](https://conduct.gnome.org/) applies.
