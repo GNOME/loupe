@@ -29,7 +29,7 @@ impl LpWindow {
         self.image_view().controls_box_start().set_opacity(opacity);
         self.image_view().controls_box_end().set_opacity(opacity);
 
-        if self.is_headerbar_flat() {
+        if self.is_headerbar_flat() && self.is_fullscreened() {
             self.headerbar().set_opacity(opacity);
         } else {
             self.headerbar().set_opacity(1.);
