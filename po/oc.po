@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2023-12-07 15:40+0000\n"
-"PO-Revision-Date: 2023-12-18 20:01+0100\n"
+"POT-Creation-Date: 2023-12-22 12:01+0000\n"
+"PO-Revision-Date: 2023-12-22 17:35+0100\n"
 "Last-Translator: Quentin PAGÈS\n"
 "Language-Team: Occitan <totenoc@gmail.com>\n"
 "Language: oc\n"
@@ -18,8 +18,7 @@ msgstr ""
 "X-Generator: Poedit 3.4.1\n"
 
 #: data/org.gnome.Loupe.desktop.in.in:3
-#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:28 src/window.rs:814
-#: src/window.ui:64
+#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:28 src/window.rs:822
 msgid "Image Viewer"
 msgstr "Visionador d'imatges"
 
@@ -243,7 +242,7 @@ msgstr "Quentin PAGÈS"
 msgid "Copyright © 2020–2023 Christopher Davis et al."
 msgstr "Copyright © 2020–2023 Christopher Davis e d’autres."
 
-#: src/file_model.rs:127
+#: src/file_model.rs:128
 msgid "Could not list other files in directory."
 msgstr "Impossible de listar los autres fichièrs del repertòri."
 
@@ -268,12 +267,12 @@ msgid "W"
 msgstr "O"
 
 #. Translators: Unit for exposure time in seconds
-#: src/metadata/mod.rs:214
+#: src/metadata/mod.rs:213
 msgid "1\\u{2215}{}\\u{202F}s"
 msgstr "1\\u{2215}{}\\u{202F}s"
 
 #. Translators: Unit for focal length in millimeters
-#: src/metadata/mod.rs:239
+#: src/metadata/mod.rs:238
 msgid "{}\\u{202F}mm"
 msgstr "{}\\u{202F}mm"
 
@@ -286,7 +285,7 @@ msgstr "{}\\u{202F}mm"
 msgid "%x %X"
 msgstr "%x %X"
 
-#: src/util/mod.rs:180 src/window.rs:650
+#: src/util/mod.rs:180 src/window.rs:653
 msgid "Failed to restore image from trash"
 msgstr "Fracàs de la restauracion de l’imatge a partir de l’escobilhièr"
 
@@ -318,11 +317,11 @@ msgstr "Definir coma _rèireplan…"
 msgid "Could not Load Image"
 msgstr "Cargament impossible de l’imatge"
 
-#: src/widgets/image_page.ui:97 src/window.ui:105
+#: src/widgets/image_page.ui:97 src/window.ui:109
 msgid "Rotate Left"
 msgstr "Pivotar cap a esquèrra"
 
-#: src/widgets/image_page.ui:107 src/window.ui:115
+#: src/widgets/image_page.ui:107 src/window.ui:119
 msgid "Rotate Right"
 msgstr "Pivotar cap a drecha"
 
@@ -398,68 +397,68 @@ msgstr "Imprimir « {} »"
 
 #. Translators: Go back to previous page
 #: src/widgets/print.ui:29
-msgid "Back"
-msgstr "Tornar"
+msgid "_Back"
+msgstr "_Tornar"
 
-#: src/widgets/print.ui:36
-msgid "Print"
-msgstr "Imprimir"
+#: src/widgets/print.ui:37
+msgid "_Print"
+msgstr "_Imprimir"
 
-#: src/widgets/print.ui:54
+#: src/widgets/print.ui:56
 msgid "Layout"
 msgstr "Disposicion"
 
-#: src/widgets/print.ui:57
-msgid "Orientation"
-msgstr "Orientacion"
+#: src/widgets/print.ui:59
+msgid "_Orientation"
+msgstr "_Orientacion"
 
-#: src/widgets/print.ui:69
+#: src/widgets/print.ui:72
 msgid "Portrait Page Orientation"
 msgstr "Orientacion de la pagina en retrach"
 
-#: src/widgets/print.ui:77
+#: src/widgets/print.ui:80
 msgid "Landscape Page Orientation"
 msgstr "Orientacion de la pagina en paisatge"
 
-#: src/widgets/print.ui:86
-msgid "Alignment"
-msgstr "Alinhament"
+#: src/widgets/print.ui:89
+msgid "_Alignment"
+msgstr "_Alinhament"
 
-#: src/widgets/print.ui:104
+#: src/widgets/print.ui:108
 msgid "Margins"
 msgstr "Marges"
 
-#: src/widgets/print.ui:107
+#: src/widgets/print.ui:111
 msgid "Margin Units"
 msgstr "Units marge"
 
-#: src/widgets/print.ui:124
-msgid "Horizontal"
-msgstr "Orizontal"
+#: src/widgets/print.ui:128
+msgid "_Horizontal"
+msgstr "_Orizontal"
 
-#: src/widgets/print.ui:129
-msgid "Vertical"
-msgstr "Vertical"
+#: src/widgets/print.ui:134
+msgid "_Vertical"
+msgstr "_Vertical"
 
-#: src/widgets/print.ui:136 src/widgets/properties_view.ui:53
+#: src/widgets/print.ui:142 src/widgets/properties_view.ui:53
 msgid "Image Size"
 msgstr "Talha de l'imatge"
 
-#: src/widgets/print.ui:139
+#: src/widgets/print.ui:145
 msgid "Image Size Units"
 msgstr "Unitat de talha d'imatge"
 
-#: src/widgets/print.ui:156
-msgid "Fill Space"
-msgstr "Emplenament d’espace"
+#: src/widgets/print.ui:163
+msgid "_Fill Space"
+msgstr "_Emplenament d’espaci"
 
-#: src/widgets/print.ui:161
-msgid "Width"
-msgstr "Largor"
+#: src/widgets/print.ui:169
+msgid "_Width"
+msgstr "_Largor"
 
-#: src/widgets/print.ui:166
-msgid "Height"
-msgstr "Nautor"
+#: src/widgets/print.ui:175
+msgid "H_eight"
+msgstr "_Nautor"
 
 #: src/widgets/properties_view.ui:19
 msgid "Folder"
@@ -521,51 +520,51 @@ msgstr "Longor focala"
 msgid "Maker, Model"
 msgstr "Fabricant, modèl"
 
-#: src/window.rs:514
+#: src/window.rs:517
 msgid "Supported image formats"
 msgstr "Format d'imatge suportats"
 
-#: src/window.rs:523
+#: src/window.rs:526
 msgid "All files"
 msgstr "Totes los fichièrs"
 
-#: src/window.rs:530
+#: src/window.rs:533
 msgid "Open Image"
 msgstr "Dobrir un imatge"
 
-#: src/window.rs:616
+#: src/window.rs:619
 msgid "Image copied to clipboard"
 msgstr "Imatge copiat al quichapapièrs"
 
-#: src/window.rs:637
+#: src/window.rs:640
 msgid "Image moved to trash"
 msgstr "Imatge desplaçat a l'escobilhièr"
 
-#: src/window.rs:638
+#: src/window.rs:641
 msgid "Undo"
 msgstr "Desfar"
 
-#: src/window.rs:665
+#: src/window.rs:668
 msgid "Failed to move image to trash"
 msgstr "Impossible de desplaçar l’imatge cap a l'escobilhièr"
 
-#: src/window.rs:680
+#: src/window.rs:683
 msgid "Permanently Delete Image?"
 msgstr "Suprimir l’imatge irreversiblament ?"
 
-#: src/window.rs:682
+#: src/window.rs:685
 msgid "The image “{}” can only be deleted permanently."
 msgstr "L’imatge « {} » se pòt pas suprimir per totjorn."
 
-#: src/window.rs:690
+#: src/window.rs:693
 msgid "Cancel"
 msgstr "Anullada"
 
-#: src/window.rs:691
+#: src/window.rs:694
 msgid "Delete"
 msgstr "Suprimir"
 
-#: src/window.rs:702
+#: src/window.rs:705
 msgid "Failed to delete image"
 msgstr "Impossible de suprimir l’imatge"
 
@@ -589,31 +588,31 @@ msgstr "Aco_rchis de clavièr"
 msgid "_About Image Viewer"
 msgstr "A _prepaus del Visionador d'imatges"
 
-#: src/window.ui:84
+#: src/window.ui:88
 msgid "Copy to Clipboard"
 msgstr "Copiar al quichapapièrs"
 
-#: src/window.ui:91
+#: src/window.ui:95
 msgid "Move to Trash"
 msgstr "Metre dins l'escobilhièr"
 
-#: src/window.ui:97
+#: src/window.ui:101
 msgid "Main Menu"
 msgstr "Menú principal"
 
-#: src/window.ui:129
+#: src/window.ui:133
 msgid "Image Properties"
 msgstr "Proprietats de l'imatge"
 
-#: src/window.ui:171
+#: src/window.ui:175
 msgid "View Images"
 msgstr "Veire los imatges"
 
-#: src/window.ui:172
+#: src/window.ui:176
 msgid "Drag and drop images here"
 msgstr "Lisatz e depausatz los imatges aquí"
 
-#: src/window.ui:176
+#: src/window.ui:180
 msgid "_Open Files…"
 msgstr "_Dobrir de fichièrs…"
 
