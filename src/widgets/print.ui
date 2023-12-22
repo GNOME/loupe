@@ -26,14 +26,16 @@
             </property>
             <child type="start">
               <object class="GtkButton">
-                <property name="label" translatable="yes" comments="Translators: Go back to previous page">Back</property>
+                <property name="label" translatable="yes" comments="Translators: Go back to previous page">_Back</property>
+                <property name="use-underline">true</property>
                 <property name="action-name">print.back</property>
                 <property name="can-shrink">true</property>
               </object>
             </child>
             <child type="end">
               <object class="GtkButton">
-                <property name="label" translatable="yes">Print</property>
+                <property name="label" translatable="yes">_Print</property>
+                <property name="use-underline">true</property>
                 <property name="action-name">print.print</property>
                 <property name="can-shrink">true</property>
                 <style>
@@ -54,7 +56,8 @@
                     <property name="title" translatable="yes">Layout</property>
                     <child>
                       <object class="AdwActionRow">
-                        <property name="title" translatable="yes">Orientation</property>
+                        <property name="title" translatable="yes">_Orientation</property>
+                        <property name="use-underline">true</property>
                         <child>
                           <object class="GtkBox">
                             <property name="valign">center</property>
@@ -83,7 +86,8 @@
                     </child>
                     <child>
                       <object class="AdwComboRow" id="alignment">
-                        <property name="title" translatable="yes">Alignment</property>
+                        <property name="title" translatable="yes">_Alignment</property>
+                        <property name="use-underline">true</property>
                         <property name="model">
                           <object class="GtkStringList">
                             <items>
@@ -121,12 +125,14 @@
                     </property>
                     <child>
                       <object class="AdwSpinRow" id="margin_horizontal">
-                        <property name="title" translatable="yes">Horizontal</property>
+                        <property name="title" translatable="yes">_Horizontal</property>
+                        <property name="use-underline">true</property>
                       </object>
                     </child>
                     <child>
                       <object class="AdwSpinRow" id="margin_vertical">
-                        <property name="title" translatable="yes">Vertical</property>
+                        <property name="title" translatable="yes">_Vertical</property>
+                        <property name="use-underline">true</property>
                       </object>
                     </child>
                   </object>
@@ -153,17 +159,20 @@
                     </property>
                     <child>
                       <object class="AdwSwitchRow" id="fill_space">
-                        <property name="title" translatable="yes">Fill Space</property>
+                        <property name="title" translatable="yes">_Fill Space</property>
+                        <property name="use-underline">true</property>
                       </object>
                     </child>
                     <child>
                       <object class="AdwSpinRow" id="width">
-                        <property name="title" translatable="yes">Width</property>
+                        <property name="title" translatable="yes">_Width</property>
+                        <property name="use-underline">true</property>
                       </object>
                     </child>
                     <child>
                       <object class="AdwSpinRow" id="height">
-                        <property name="title" translatable="yes">Height</property>
+                        <property name="title" translatable="yes">H_eight</property>
+                        <property name="use-underline">true</property>
                       </object>
                     </child>
                   </object>
