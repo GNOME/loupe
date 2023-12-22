@@ -88,6 +88,16 @@ appstream_file = i18n.merge_file(
   install_dir: iv_datadir / 'metainfo'
 )
 
+# Validate Appdata
+appstreamcli = find_program('appstreamcli', required: false)
+if (appstreamcli.found())
+  test('Validate metainfo file',
+    appstreamcli,
+    args: ['validate', '--no-net', appstream_file],
+    workdir: meson.current_build_dir()
+  )
+endif
+
 subdir('icons')
 
 # GSchema
