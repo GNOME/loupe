@@ -28,7 +28,7 @@ pub async fn window() -> adw::AboutWindow {
         .application_name(gettext("Image Viewer"))
         .application_icon(config::APP_ID)
         .version(config::VERSION)
-        .developer_name(gettext("The Loupe Team"))
+        .developer_name(gettext("The GNOME Project"))
         .website("https://gitlab.gnome.org/GNOME/loupe")
         .issue_url("https://gitlab.gnome.org/GNOME/loupe/-/issues/new")
         .developers([

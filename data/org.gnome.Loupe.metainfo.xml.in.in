@@ -5,9 +5,9 @@
   <project_license>GPL-3.0-or-later</project_license>
   <name>Image Viewer</name>
   <!-- developer_name tag deprecated with Appstream 1.0 -->
-  <developer_name>The Loupe Team</developer_name>
+  <developer_name>The GNOME Project</developer_name>
   <developer id="gnome.org">
-    <name>The Loupe Team</name>
+    <name>The GNOME Project</name>
   </developer>
   <summary>View images</summary>
   <description>
