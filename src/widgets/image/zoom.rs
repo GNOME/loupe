@@ -49,16 +49,23 @@ impl LpImage {
         let texture_aspect_ratio = image_width / image_height;
         let widget_aspect_ratio = self.width() as f64 / self.height() as f64;
 
+        let max_zoom_factor = match self.imp().fit_mode.get() {
+            // Do not allow to zoom larger than original size
+            FitMode::BestFit => 1.,
+            // Allow arbitrary zoom
+            FitMode::LargeFit => f64::MAX,
+        };
+
         let default_zoom = if texture_aspect_ratio > widget_aspect_ratio {
-            (self.width() as f64 / image_width).min(1.)
+            (self.width() as f64 / image_width).min(max_zoom_factor)
         } else {
-            (self.height() as f64 / image_height).min(1.)
+            (self.height() as f64 / image_height).min(max_zoom_factor)
         };
 
         let rotated_zoom = if 1. / texture_aspect_ratio > widget_aspect_ratio {
-            (self.width() as f64 / image_height).min(1.)
+            (self.width() as f64 / image_height).min(max_zoom_factor)
         } else {
-            (self.height() as f64 / image_width).min(1.)
+            (self.height() as f64 / image_width).min(max_zoom_factor)
         };
 
         rotated * rotated_zoom + (1. - rotated) * default_zoom
@@ -78,6 +85,11 @@ impl LpImage {
 
     pub fn is_best_fit(&self) -> bool {
         self.imp().best_fit.get()
+    }
+
+    pub fn set_fit_mode(&self, fit_mode: FitMode) {
+        self.imp().fit_mode.replace(fit_mode);
+        self.configure_best_fit();
     }
 
     pub(super) fn applicable_zoom(&self) -> f64 {

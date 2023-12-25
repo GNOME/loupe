@@ -45,6 +45,11 @@ lpprintpreviewpage {
   box-shadow: 0 0 14px 3px #666;
 }
 
+
+lpprintpreviewpage lpimage {
+  outline: 1px dotted rgba(0, 0, 0, 0.3);
+}
+
 dropdown.flat button:not(:hover) {
   background: none;
 }

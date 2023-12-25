@@ -22,10 +22,20 @@ impl LpImage {
     ///
     /// Returns the default color if no one has been guessed yet
     pub fn background_color(&self) -> gdk::RGBA {
-        (*self.imp().background_color.borrow()).unwrap_or_else(Self::default_background_color)
+        let imp = self.imp();
+
+        if let Some(fixed) = *imp.fixed_background_color.borrow() {
+            return fixed;
+        }
+
+        (*imp.background_color.borrow()).unwrap_or_else(Self::default_background_color)
     }
 
-    pub fn set_background_color(&self, color: Option<gdk::RGBA>) {
+    pub fn set_fixed_background_color(&self, color: Option<gdk::RGBA>) {
+        self.imp().fixed_background_color.replace(color);
+    }
+
+    pub(super) fn set_background_color(&self, color: Option<gdk::RGBA>) {
         self.imp().background_color.replace(color);
     }
 
@@ -51,6 +61,12 @@ impl LpImage {
     /// For non-transparent images this always returns
     /// `BACKGROUND_COLOR_DEFAULT`
     pub async fn background_color_guess(&self) -> Option<gdk::RGBA> {
+        let imp = self.imp();
+
+        if imp.fixed_background_color.borrow().is_some() {
+            return None;
+        }
+
         // Shortcut for formats that don't support transparency
         if !self
             .metadata()

@@ -117,6 +117,13 @@ const MAX_ZOOM_LEVEL: f64 = 20.0;
 /// The thumbnail is currently used for drag and drop.
 const THUMBNAIL_SIZE: f32 = 128.;
 
+#[derive(Default, Debug, Clone, Copy)]
+pub enum FitMode {
+    #[default]
+    BestFit,
+    LargeFit,
+}
+
 mod imp {
     use super::*;
 
@@ -134,8 +141,10 @@ mod imp {
         /// Set if an error has occurred, shown on error_page
         #[property(get)]
         pub(super) error: RefCell<Option<String>>,
-        //pub(super) format: RefCell<Option<decoder::ImageFormat>>,
         pub(super) background_color: RefCell<Option<gdk::RGBA>>,
+        pub(super) fixed_background_color: RefCell<Option<gdk::RGBA>>,
+        /// Animations disabled
+        pub(super) still: Cell<bool>,
 
         /// Track changes to this image
         pub(super) file_monitor: RefCell<Option<gio::FileMonitor>>,
@@ -170,6 +179,8 @@ mod imp {
         /// Always fit image into window, causes `zoom` to change automatically
         #[property(get, set)]
         pub(super) best_fit: Cell<bool>,
+        /// Determines what `best-fit` does
+        pub(super) fit_mode: Cell<FitMode>,
         /// Max zoom level is reached, stored to only send signals on change
         #[property(get, set)]
         pub(super) is_max_zoom: Cell<bool>,
@@ -224,6 +235,10 @@ mod imp {
         type ParentType = gtk::Widget;
         type Type = super::LpImage;
         type Interfaces = (gtk::Scrollable,);
+
+        fn class_init(klass: &mut Self::Class) {
+            klass.set_css_name("lpimage")
+        }
     }
 
     impl ObjectImpl for LpImage {
@@ -309,4 +324,17 @@ glib::wrapper! {
     pub struct LpImage(ObjectSubclass<imp::LpImage>)
         @extends gtk::Widget,
         @implements gtk::Scrollable;
+}
+
+impl LpImage {
+    pub fn new() -> Self {
+        glib::Object::new()
+    }
+
+    /// Rerturns new not animated image
+    pub fn new_still() -> Self {
+        let image = Self::new();
+        image.imp().still.replace(true);
+        image
+    }
 }

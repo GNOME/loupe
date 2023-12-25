@@ -479,11 +479,15 @@ glib::wrapper! {
 
 impl LpPrint {
     pub fn new(
-        image: LpImage,
+        image1: LpImage,
         parent_window: gtk::Window,
         print_settings: Option<gtk::PrintSettings>,
         page_setup: Option<gtk::PageSetup>,
     ) -> Self {
+        let image = LpImage::new_still();
+        image.set_fixed_background_color(Some(gdk::RGBA::new(0.94, 0.94, 0.94, 1.)));
+        let image2 = image.clone();
+        glib::spawn_future_local(async move { image2.load(&image1.file().unwrap()).await });
         let print_settings = print_settings.unwrap_or_default();
 
         let obj: Self = glib::Object::builder()

@@ -146,9 +146,14 @@ impl LpImage {
                 self.emmit_metadata_changed();
             }
             DecoderUpdate::Animated => {
-                let callback_id = self
+                if imp.still.get() {
+                    // Just load the first frame
+                    self.imp().frame_buffer.next_frame();
+                } else {
+                    let callback_id = self
                         .add_tick_callback(glib::clone!(@weak self as obj => @default-return glib::ControlFlow::Break, move |_, clock| obj.tick_callback(clock)));
-                imp.tick_callback.replace(Some(callback_id));
+                    imp.tick_callback.replace(Some(callback_id));
+                }
             }
             DecoderUpdate::UnsupportedFormat => {
                 self.set_unsupported(true);

@@ -583,6 +583,7 @@ pub trait FrameBufferExt {
     /// Return true if the next frame should be shown and removes the outdated
     /// frame
     fn frame_timeout(&self, elapsed: Duration) -> bool;
+    fn next_frame(&self);
     /// Returns the number of currently buffered frames
     fn n_frames(&self) -> usize;
     fn set_original_dimensions(&self, size: Coordinates);
@@ -661,15 +662,19 @@ impl FrameBufferExt for ArcSwap<FrameBuffer> {
             .front()
             .is_some_and(|next_frame| elapsed >= next_frame.delay)
         {
-            self.rcu(|tiling_store| {
-                let mut new_store = (**tiling_store).clone();
-                new_store.images.pop_front();
-                Arc::new(new_store)
-            });
+            self.next_frame();
             return true;
         }
 
         false
+    }
+
+    fn next_frame(&self) {
+        self.rcu(|tiling_store| {
+            let mut new_store = (**tiling_store).clone();
+            new_store.images.pop_front();
+            Arc::new(new_store)
+        });
     }
 
     fn n_frames(&self) -> usize {
