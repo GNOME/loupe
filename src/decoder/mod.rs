@@ -26,7 +26,7 @@ use anyhow::Result;
 use arc_swap::ArcSwap;
 use formats::*;
 pub use formats::{ImageDimensionDetails, RSVG_MAX_SIZE};
-use futures::channel::mpsc;
+use futures_channel::mpsc;
 use tiling::FrameBufferExt;
 
 use crate::deps::*;

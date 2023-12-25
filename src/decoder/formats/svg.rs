@@ -195,9 +195,9 @@ impl Svg {
         #[cfg(feature = "disable-glycin-sandbox")]
         image_request.sandbox_mechanism(Some(glycin::SandboxMechanism::NotSandboxed));
 
-        let image = async_std::task::block_on(image_request.request())?;
+        let image = futures_lite::future::block_on(image_request.request())?;
         let frame_request = glycin::FrameRequest::new().scale(width as u32, height as u32);
-        let frame = async_std::task::block_on(image.specific_frame(frame_request))?;
+        let frame = futures_lite::future::block_on(image.specific_frame(frame_request))?;
 
         Ok(frame.texture)
     }

@@ -49,7 +49,7 @@ use std::sync::Arc;
 use adw::prelude::*;
 use adw::subclass::prelude::*;
 use arc_swap::ArcSwap;
-use futures::prelude::*;
+use futures_lite::StreamExt;
 use glib::subclass::Signal;
 use glib::{Properties, SignalGroup};
 use once_cell::sync::Lazy;
