@@ -15,14 +15,16 @@
 //
 // SPDX-License-Identifier: GPL-3.0-or-later
 
+use crate::util::gettext::*;
+
 #[derive(Clone, Debug)]
 pub struct ImageFormat {
     mime_type: glycin::MimeType,
-    name: String,
+    name: Option<String>,
 }
 
 impl ImageFormat {
-    pub fn new(mime_type: glycin::MimeType, name: String) -> Self {
+    pub fn new(mime_type: glycin::MimeType, name: Option<String>) -> Self {
         Self { mime_type, name }
     }
 
@@ -40,6 +42,10 @@ impl ImageFormat {
 
 impl std::fmt::Display for ImageFormat {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> Result<(), std::fmt::Error> {
-        write!(f, "{}", self.name)
+        write!(
+            f,
+            "{}",
+            self.name.clone().unwrap_or_else(|| gettext("Unknown"))
+        )
     }
 }

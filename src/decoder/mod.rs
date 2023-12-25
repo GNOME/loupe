@@ -146,7 +146,7 @@ impl Decoder {
             if mime_type.split('+').next() == Some("image/svg") {
                 update_sender.send(DecoderUpdate::Format(ImageFormat::new(
                     mime_type,
-                    "SVG".into(),
+                    Some("SVG".into()),
                 )));
                 return FormatDecoder::Svg(Svg::new(file, update_sender, tiles));
             }

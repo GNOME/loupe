@@ -1,14 +1,14 @@
 {
-    "id" : "org.gnome.Loupe.Devel",
-    "runtime" : "org.gnome.Platform",
-    "runtime-version" : "master",
-    "sdk" : "org.gnome.Sdk",
-    "sdk-extensions" : [
+    "id": "org.gnome.Loupe.Devel",
+    "runtime": "org.gnome.Platform",
+    "runtime-version": "master",
+    "sdk": "org.gnome.Sdk",
+    "sdk-extensions": [
         "org.freedesktop.Sdk.Extension.rust-stable",
         "org.freedesktop.Sdk.Extension.llvm16"
     ],
-    "command" : "loupe",
-    "finish-args" : [
+    "command": "loupe",
+    "finish-args": [
         "--share=ipc",
         "--socket=fallback-x11",
         "--socket=wayland",
@@ -20,20 +20,20 @@
         "--filesystem=xdg-run/gvfs",
         "--filesystem=xdg-run/gvfsd"
     ],
-    "build-options" : {
-        "append-path" : "/usr/lib/sdk/rust-stable/bin:/usr/lib/sdk/llvm16/bin",
-        "build-args" : [
+    "build-options": {
+        "append-path": "/usr/lib/sdk/rust-stable/bin:/usr/lib/sdk/llvm16/bin",
+        "build-args": [
             "--share=network"
         ],
-        "env" : {
-            "RUSTFLAGS" : "-C force-frame-pointers=yes",
-            "CARGO_TARGET_X86_64_UNKNOWN_LINUX_GNU_LINKER" : "clang",
-            "CARGO_TARGET_AARCH64_UNKNOWN_LINUX_GNU_LINKER" : "clang",
-            "CARGO_TARGET_X86_64_UNKNOWN_LINUX_GNU_RUSTFLAGS" : "-C link-arg=-fuse-ld=/usr/lib/sdk/rust-stable/bin/mold",
-            "CARGO_TARGET_AARCH64_UNKNOWN_LINUX_GNU_RUSTFLAGS" : "-C link-arg=-fuse-ld=/usr/lib/sdk/rust-stable/bin/mold"
+        "env": {
+            "RUSTFLAGS": "-C force-frame-pointers=yes",
+            "CARGO_TARGET_X86_64_UNKNOWN_LINUX_GNU_LINKER": "clang",
+            "CARGO_TARGET_AARCH64_UNKNOWN_LINUX_GNU_LINKER": "clang",
+            "CARGO_TARGET_X86_64_UNKNOWN_LINUX_GNU_RUSTFLAGS": "-C link-arg=-fuse-ld=/usr/lib/sdk/rust-stable/bin/mold",
+            "CARGO_TARGET_AARCH64_UNKNOWN_LINUX_GNU_RUSTFLAGS": "-C link-arg=-fuse-ld=/usr/lib/sdk/rust-stable/bin/mold"
         }
     },
-    "cleanup" : [
+    "cleanup": [
         "/include",
         "/lib/pkgconfig",
         "/man",
@@ -46,18 +46,18 @@
     ],
     "add-extensions": {
         /* Exile HEIC (x265) codec into extension */
-        "org.gnome.Loupe.Devel.HEIC" : {
+        "org.gnome.Loupe.Devel.HEIC": {
             /* Relative to app dir */
-            "directory" : "lib/libheif-heic",
+            "directory": "lib/libheif-heic",
             /* Relative to directory above */
-            "add-ld-path" : "lib",
+            "add-ld-path": "lib",
             /* Remove extension data from main flatpak package */
-            "bundle" : true,
+            "bundle": true,
             /* Remove this extension when Loupe is deinstalled */
-            "autodelete" : true
+            "autodelete": true
         }
     },
-    "modules" : [
+    "modules": [
         {
             "name": "geocode-glib",
             "buildsystem": "meson",
@@ -105,24 +105,24 @@
         },
         {
             /* HEIC (x265) decoder */
-            "name" : "libde265",
-            "buildsystem" : "cmake",
+            "name": "libde265",
+            "buildsystem": "cmake",
             "config-opts": [
                 /* Install into folder for extension */
                 "-DCMAKE_INSTALL_PREFIX=/app/lib/libheif-heic",
                 "-DENABLE_SDL=Off"
             ],
-            "sources" : [
+            "sources": [
                 {
-                    "type" : "git",
-                    "url" : "https://github.com/strukturag/libde265.git",
-                    "tag" : "v1.0.11"
+                    "type": "git",
+                    "url": "https://github.com/strukturag/libde265.git",
+                    "tag": "v1.0.11"
                 }
             ]
         },
         {
-            "name" : "libheif",
-            "buildsystem" : "cmake",
+            "name": "libheif",
+            "buildsystem": "cmake",
             "config-opts": [
                 /* Build HEIC (x265) as plugin */
                 "-DWITH_LIBDE265_PLUGIN=On",
@@ -141,36 +141,36 @@
                 /* No need for examples */
                 "-DWITH_EXAMPLES=Off"
             ],
-            "sources" : [
+            "sources": [
                 {
-                    "type" : "git",
-                    "url" : "https://github.com/strukturag/libheif.git",
-                    "tag" : "v1.16.2"
+                    "type": "git",
+                    "url": "https://github.com/strukturag/libheif.git",
+                    "tag": "v1.17.2"
                 }
             ]
         },
         {
-            "name" : "glycin",
-            "buildsystem" : "meson",
-            "sources" : [
+            "name": "glycin",
+            "buildsystem": "meson",
+            "sources": [
                 {
-                    "type" : "git",
-                    "url" : "https://gitlab.gnome.org/sophie-h/glycin.git",
-                    "commit" : "84885234beca8185ca739bfcca229fb52b339800"
+                    "type": "git",
+                    "url": "https://gitlab.gnome.org/sophie-h/glycin.git",
+                    "commit": "2775373f373056ba79f5c3e0afd256815ad0dc32"
                 }
             ]
         },
         {
-            "name" : "loupe",
-            "buildsystem" : "meson",
+            "name": "loupe",
+            "buildsystem": "meson",
             "config-opts": [
                 "-Dprofile=development",
                 "-Ddisable-glycin-sandbox=true"
             ],
-            "sources" : [
+            "sources": [
                 {
-                    "type" : "git",
-                    "url" : "https://gitlab.gnome.org/GNOME/loupe.git"
+                    "type": "git",
+                    "url": "https://gitlab.gnome.org/GNOME/loupe.git"
                 }
             ]
         }

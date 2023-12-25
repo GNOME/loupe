@@ -123,6 +123,17 @@ dependencies = [
 ]
 
 [[package]]
+name = "async-fs"
+version = "2.1.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "dd1f344136bad34df1f83a47f3fd7f2ab85d75cb8a940af4ccf6d482a84ea01b"
+dependencies = [
+ "async-lock 3.2.0",
+ "blocking",
+ "futures-lite 2.1.0",
+]
+
+[[package]]
 name = "async-global-executor"
 version = "2.4.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -214,6 +225,24 @@ dependencies = [
 ]
 
 [[package]]
+name = "async-process"
+version = "2.0.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "15c1cd5d253ecac3d3cf15e390fd96bd92a13b1d14497d81abf077304794fb04"
+dependencies = [
+ "async-channel 2.1.1",
+ "async-io 2.2.2",
+ "async-lock 3.2.0",
+ "async-signal",
+ "blocking",
+ "cfg-if",
+ "event-listener 4.0.1",
+ "futures-lite 2.1.0",
+ "rustix 0.38.28",
+ "windows-sys 0.52.0",
+]
+
+[[package]]
 name = "async-recursion"
 version = "1.0.5"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -252,7 +281,6 @@ dependencies = [
  "async-global-executor",
  "async-io 1.13.0",
  "async-lock 2.8.0",
- "async-process",
  "crossbeam-utils",
  "futures-channel",
  "futures-core",
@@ -658,28 +686,12 @@ dependencies = [
 ]
 
 [[package]]
-name = "futures"
-version = "0.3.30"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "645c6916888f6cb6350d2550b80fb63e734897a8498abe35cfb732b6487804b0"
-dependencies = [
- "futures-channel",
- "futures-core",
- "futures-executor",
- "futures-io",
- "futures-sink",
- "futures-task",
- "futures-util",
-]
-
-[[package]]
 name = "futures-channel"
 version = "0.3.30"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "eac8f7d7865dcb88bd4373ab671c8cf4508703796caa2b1985a9ca867b3fcb78"
 dependencies = [
  "futures-core",
- "futures-sink",
 ]
 
 [[package]]
@@ -762,7 +774,6 @@ version = "0.3.30"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "3d6401deb83407ab3da39eba7e33987a73c3df0c82b4bb5813ee871c19c41d48"
 dependencies = [
- "futures-channel",
  "futures-core",
  "futures-io",
  "futures-macro",
@@ -1021,13 +1032,16 @@ dependencies = [
 
 [[package]]
 name = "glycin"
-version = "0.1.0"
+version = "1.0.0-alpha"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "ad6c03181c84fdbe028957f3e90747686038b2f0f85ea2a2bf68bef287a6cb8a"
+checksum = "c9b4551bd5e514034e097a219e5d24569d881bd89a2298e00c6dc1372ab4b332"
 dependencies = [
  "anyhow",
- "async-std",
- "futures",
+ "async-fs 2.1.0",
+ "async-global-executor",
+ "async-process 2.0.1",
+ "futures-channel",
+ "futures-util",
  "gdk4",
  "gio",
  "glycin-utils",
@@ -1035,23 +1049,20 @@ dependencies = [
  "lcms2-sys",
  "memfd",
  "memmap2",
- "nix",
+ "nix 0.27.1",
  "rgb",
- "safe-transmute",
  "zbus",
 ]
 
 [[package]]
 name = "glycin-utils"
-version = "0.1.0"
+version = "1.0.0-alpha"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "6ecc581b89258e8cd90d8aa90a2864ce634270d6f9d2b0c28a050b491a66c874"
+checksum = "c141d45a216382d88ebb29620abd688d159200d95428779e3cacd4721a139b8b"
 dependencies = [
  "anyhow",
- "async-std",
  "gettext-rs",
- "memmap2",
- "nix",
+ "rustix 0.37.27",
  "serde",
  "zbus",
 ]
@@ -1348,10 +1359,11 @@ checksum = "e2abad23fbc42b3700f2f279844dc832adb2b2eb069b2df918f455c4e18cc646"
 
 [[package]]
 name = "lcms2"
-version = "5.6.0"
+version = "6.0.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "b9d50a4d00d909da0ec023ab34ea09bf3b3b79b5a36b3e0da3a305112edaf150"
+checksum = "745453cbf12c57cce42c1d1db6075d481ca1956fa9bf661f770018656d55e1bd"
 dependencies = [
+ "bytemuck",
  "foreign-types",
  "lcms2-sys",
 ]
@@ -1513,9 +1525,9 @@ dependencies = [
 
 [[package]]
 name = "memmap2"
-version = "0.7.1"
+version = "0.9.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "f49388d20533534cd19360ad3d6a7dadc885944aa802ba3995040c5ec11288c6"
+checksum = "45fd3a57831bf88bc63f8cebc0cf956116276e97fef3966103e96416209f7c92"
 dependencies = [
  "libc",
 ]
@@ -1563,7 +1575,17 @@ dependencies = [
  "cfg-if",
  "libc",
  "memoffset 0.7.1",
- "pin-utils",
+]
+
+[[package]]
+name = "nix"
+version = "0.27.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "2eb04e9c688eff1c89d72b407f168cf79bb9e867a9d3323ed6c01519eb9cc053"
+dependencies = [
+ "bitflags 2.4.1",
+ "cfg-if",
+ "libc",
 ]
 
 [[package]]
@@ -2575,7 +2597,7 @@ version = "1.0.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "2769203cd13a0c6015d515be729c526d041e9cf2c0cc478d57faee85f40c6dcd"
 dependencies = [
- "nix",
+ "nix 0.26.4",
  "winapi",
 ]
 
@@ -2587,10 +2609,10 @@ checksum = "31de390a2d872e4cd04edd71b425e29853f786dc99317ed72d73d6fcf5ebb948"
 dependencies = [
  "async-broadcast",
  "async-executor",
- "async-fs",
+ "async-fs 1.6.0",
  "async-io 1.13.0",
  "async-lock 2.8.0",
- "async-process",
+ "async-process 1.8.1",
  "async-recursion",
  "async-task",
  "async-trait",
@@ -2603,7 +2625,7 @@ dependencies = [
  "futures-sink",
  "futures-util",
  "hex",
- "nix",
+ "nix 0.26.4",
  "once_cell",
  "ordered-stream",
  "rand",

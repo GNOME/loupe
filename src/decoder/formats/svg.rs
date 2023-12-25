@@ -78,11 +78,8 @@ impl Svg {
 
             let image = image_request.request().await?;
 
-            let dimensions = if let Some(string) = image.info().dimensions_text.as_ref() {
-                ImageDimensionDetails::Svg(
-                    string.to_string(),
-                    image.info().dimensions_inch.clone().into(),
-                )
+            let dimensions = if let Some(string) = image.info().details.dimensions_text.as_ref() {
+                ImageDimensionDetails::Svg(string.to_string(), image.info().details.dimensions_inch)
             } else {
                 ImageDimensionDetails::None
             };

@@ -74,7 +74,7 @@ impl GPSCoord {
     }
 
     fn position_exif(position: &[exif::Rational]) -> Option<(f64, Option<f64>, Option<f64>)> {
-        let (deg, mut min, mut sec) = (position.get(0)?, position.get(1), position.get(2));
+        let (deg, mut min, mut sec) = (position.first()?, position.get(1), position.get(2));
 
         if let (Some(min_), Some(sec_)) = (min, sec) {
             if min_.denom > 1 && sec_.num == 0 {

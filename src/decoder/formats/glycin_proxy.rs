@@ -57,10 +57,10 @@ impl Glycin {
 
             let image = image_request.request().await?;
 
-            if let Some(exif_raw) = image.info().exif.clone().into() {
+            if let Some(exif_raw) = image.info().details.exif.clone() {
                 let mut metadata = Metadata::default();
                 metadata.set_exif_bytes(exif_raw);
-                metadata.set_transformations_applied(image.info().transformations_applied);
+                metadata.set_transformations_applied(image.info().details.transformations_applied);
                 updater.send(DecoderUpdate::Metadata(metadata));
             }
 
