@@ -48,13 +48,11 @@ use std::sync::Arc;
 
 use adw::prelude::*;
 use adw::subclass::prelude::*;
-use arc_swap::ArcSwap;
 use futures_lite::StreamExt;
 use glib::subclass::Signal;
 use glib::{Properties, SignalGroup};
 use once_cell::sync::Lazy;
 
-use crate::decoder::tiling::FrameBufferExt;
 use crate::decoder::{self, tiling, Decoder, DecoderUpdate};
 use crate::deps::*;
 use crate::metadata::Metadata;
@@ -126,6 +124,7 @@ pub enum FitMode {
 
 mod imp {
     use super::*;
+    use crate::decoder::tiling::SharedFrameBuffer;
 
     #[derive(Debug, Default, Properties)]
     #[properties(wrapper_type = super::LpImage)]
@@ -148,7 +147,7 @@ mod imp {
 
         /// Track changes to this image
         pub(super) file_monitor: RefCell<Option<gio::FileMonitor>>,
-        pub(super) frame_buffer: Arc<ArcSwap<tiling::FrameBuffer>>,
+        pub(super) frame_buffer: Arc<SharedFrameBuffer>,
         pub(super) decoder: RefCell<Option<Arc<Decoder>>>,
 
         /// Rotation final value (can differ from `rotation` during animation)

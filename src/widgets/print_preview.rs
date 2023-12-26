@@ -23,10 +23,9 @@ use adw::subclass::prelude::*;
 use glib::Properties;
 use gtk::prelude::*;
 
+use super::image;
 use crate::deps::*;
 use crate::widgets::LpPrint;
-
-use super::image;
 
 mod imp_page {
     use super::*;

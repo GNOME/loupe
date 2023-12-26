@@ -16,13 +16,13 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 
 //! Decode using glycin
+
 use std::sync::Arc;
 
-use arc_swap::ArcSwap;
 use gtk::prelude::*;
 
 use super::*;
-use crate::decoder::tiling::{self, FrameBufferExt};
+use crate::decoder::tiling::{self, SharedFrameBuffer};
 use crate::deps::*;
 use crate::metadata::{ImageFormat, Metadata};
 
@@ -41,11 +41,7 @@ impl Drop for Glycin {
 }
 
 impl Glycin {
-    pub fn new(
-        file: gio::File,
-        updater: UpdateSender,
-        tiles: Arc<ArcSwap<tiling::FrameBuffer>>,
-    ) -> Self {
+    pub fn new(file: gio::File, updater: UpdateSender, tiles: Arc<SharedFrameBuffer>) -> Self {
         let cancellable = gio::Cancellable::new();
         let cancellable_ = cancellable.clone();
 

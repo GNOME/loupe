@@ -16,15 +16,15 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 
 //! Decode using librsvg
+
 use std::sync::Arc;
 
 use anyhow::Context;
-use arc_swap::ArcSwap;
 use async_channel as mpsc;
 use gtk::prelude::*;
 
 use super::*;
-use crate::decoder::tiling::{self, FrameBufferExt};
+use crate::decoder::tiling::SharedFrameBuffer;
 use crate::decoder::TileRequest;
 use crate::deps::*;
 use crate::metadata::ImageFormat;
@@ -61,11 +61,7 @@ impl Drop for Svg {
 }
 
 impl Svg {
-    pub fn new(
-        file: gio::File,
-        updater: UpdateSender,
-        tiles: Arc<ArcSwap<tiling::FrameBuffer>>,
-    ) -> Self {
+    pub fn new(file: gio::File, updater: UpdateSender, tiles: Arc<SharedFrameBuffer>) -> Self {
         let current_request: Arc<std::sync::RwLock<Request>> = Default::default();
         let request_store = current_request.clone();
         let cancellable = gio::Cancellable::new();

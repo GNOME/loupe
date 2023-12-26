@@ -572,78 +572,68 @@ impl RectExt for graphene::Rect {
     }
 }
 
-/// We always store [`FrameBuffer`]s in an [`ArcSwap`].
-/// This trait adds convenience functions for this.
-pub trait FrameBufferExt {
-    fn push(&self, tile: Tile);
-    fn push_tile(&self, tiling: Tiling, position: Coordinates, texture: gdk::Texture);
-    fn push_frame(&self, tile: Tile, dimensions: Coordinates, delay: Duration);
-    fn reset(&self);
-    fn get_layer_tiling_or_default(&self, zoom: f64, viewport: graphene::Rect) -> Tiling;
-    /// Return true if the next frame should be shown and removes the outdated
-    /// frame
-    fn frame_timeout(&self, elapsed: Duration) -> bool;
-    fn next_frame(&self);
-    /// Returns the number of currently buffered frames
-    fn n_frames(&self) -> usize;
-    fn set_original_dimensions(&self, size: Coordinates);
-    fn set_original_dimensions_full(
-        &self,
-        size: Coordinates,
-        dimension_details: ImageDimensionDetails,
-    );
-    fn set_update_sender(&self, sender: UpdateSender);
+#[derive(Debug, Default)]
+pub struct SharedFrameBuffer {
+    buffer: ArcSwap<FrameBuffer>,
 }
 
-impl FrameBufferExt for ArcSwap<FrameBuffer> {
-    fn push(&self, tile: Tile) {
-        self.rcu(|tiling_store| {
+impl std::ops::Deref for SharedFrameBuffer {
+    type Target = ArcSwap<FrameBuffer>;
+
+    fn deref(&self) -> &Self::Target {
+        &self.buffer
+    }
+}
+
+impl SharedFrameBuffer {
+    pub fn push(&self, tile: Tile) {
+        self.buffer.rcu(|tiling_store| {
             let mut new_store = (**tiling_store).clone();
             new_store.current().push(tile.clone());
             Arc::new(new_store)
         });
-        if let Some(updater) = &self.load().update_sender {
+        if let Some(updater) = &self.buffer.load().update_sender {
             updater.send(DecoderUpdate::Redraw);
         }
     }
 
-    fn push_tile(&self, tiling: Tiling, position: Coordinates, texture: gdk::Texture) {
-        self.rcu(|tiling_store| {
+    pub fn push_tile(&self, tiling: Tiling, position: Coordinates, texture: gdk::Texture) {
+        self.buffer.rcu(|tiling_store| {
             let mut new_store = (**tiling_store).clone();
             new_store
                 .current()
                 .push_tile(tiling, position, texture.clone());
             Arc::new(new_store)
         });
-        if let Some(updater) = &self.load().update_sender {
+        if let Some(updater) = &self.buffer.load().update_sender {
             updater.send(DecoderUpdate::Redraw);
         }
     }
 
-    fn push_frame(&self, tile: Tile, dimensions: Coordinates, delay: Duration) {
+    pub fn push_frame(&self, tile: Tile, dimensions: Coordinates, delay: Duration) {
         let mut store = TiledImage::default();
         store.push(tile);
         store.original_dimensions = Some(dimensions);
         store.delay = delay;
 
-        self.rcu(|tiling_store| {
+        self.buffer.rcu(|tiling_store| {
             let mut new_store = (**tiling_store).clone();
             new_store.images.push_back(store.clone());
             Arc::new(new_store)
         });
     }
 
-    fn reset(&self) {
-        self.rcu(|tiling_store| {
+    pub fn reset(&self) {
+        self.buffer.rcu(|tiling_store| {
             let mut new_store = (**tiling_store).clone();
             new_store.reset();
             Arc::new(new_store)
         });
     }
 
-    fn get_layer_tiling_or_default(&self, zoom: f64, viewport: graphene::Rect) -> Tiling {
+    pub fn get_layer_tiling_or_default(&self, zoom: f64, viewport: graphene::Rect) -> Tiling {
         let mut tiling = None;
-        self.rcu(|tiling_store| {
+        self.buffer.rcu(|tiling_store| {
             let mut new_store = (**tiling_store).clone();
             tiling = Some(
                 new_store
@@ -655,8 +645,11 @@ impl FrameBufferExt for ArcSwap<FrameBuffer> {
         tiling.unwrap()
     }
 
-    fn frame_timeout(&self, elapsed: Duration) -> bool {
+    /// Return true if the next frame should be shown and removes the outdated
+    /// frame
+    pub fn frame_timeout(&self, elapsed: Duration) -> bool {
         if self
+            .buffer
             .load()
             .images
             .front()
@@ -669,40 +662,41 @@ impl FrameBufferExt for ArcSwap<FrameBuffer> {
         false
     }
 
-    fn next_frame(&self) {
-        self.rcu(|tiling_store| {
+    pub fn next_frame(&self) {
+        self.buffer.rcu(|tiling_store| {
             let mut new_store = (**tiling_store).clone();
             new_store.images.pop_front();
             Arc::new(new_store)
         });
     }
 
-    fn n_frames(&self) -> usize {
-        self.load().images.len()
+    /// Returns the number of currently buffered frames
+    pub fn n_frames(&self) -> usize {
+        self.buffer.load().images.len()
     }
 
-    fn set_original_dimensions(&self, size: Coordinates) {
+    pub fn set_original_dimensions(&self, size: Coordinates) {
         self.set_original_dimensions_full(size, Default::default());
     }
 
-    fn set_original_dimensions_full(
+    pub fn set_original_dimensions_full(
         &self,
         size: Coordinates,
         dimension_details: ImageDimensionDetails,
     ) {
-        self.rcu(|tiling_store| {
+        self.buffer.rcu(|tiling_store| {
             let mut new_store = (**tiling_store).clone();
             new_store.current().original_dimensions = Some(size);
             Arc::new(new_store)
         });
 
-        if let Some(updater) = &self.load().update_sender {
+        if let Some(updater) = &self.buffer.load().update_sender {
             updater.send(DecoderUpdate::Dimensions(dimension_details));
         }
     }
 
-    fn set_update_sender(&self, sender: UpdateSender) {
-        self.rcu(|tiling_store| {
+    pub fn set_update_sender(&self, sender: UpdateSender) {
+        self.buffer.rcu(|tiling_store| {
             let mut new_store = (**tiling_store).clone();
             new_store.set_update_sender(sender.clone());
             Arc::new(new_store)

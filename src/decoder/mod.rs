@@ -17,18 +17,18 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 
 //! Decodes several image formats
+
 pub mod formats;
 pub mod tiling;
 
 use std::sync::Arc;
 
 use anyhow::Result;
-use arc_swap::ArcSwap;
 use formats::*;
 pub use formats::{ImageDimensionDetails, RSVG_MAX_SIZE};
 use futures_channel::mpsc;
-use tiling::FrameBufferExt;
 
+use self::tiling::SharedFrameBuffer;
 use crate::deps::*;
 use crate::metadata::{ImageFormat, Metadata};
 
@@ -117,7 +117,7 @@ impl Decoder {
     pub async fn new(
         file: gio::File,
         mime_type: Option<String>,
-        tiles: Arc<ArcSwap<tiling::FrameBuffer>>,
+        tiles: Arc<SharedFrameBuffer>,
     ) -> (Self, mpsc::UnboundedReceiver<DecoderUpdate>) {
         let (sender, receiver) = mpsc::unbounded();
 
@@ -137,7 +137,7 @@ impl Decoder {
         update_sender: UpdateSender,
         file: gio::File,
         mime_type: Option<String>,
-        tiles: Arc<ArcSwap<tiling::FrameBuffer>>,
+        tiles: Arc<SharedFrameBuffer>,
     ) -> FormatDecoder {
         if let Some(mime_type) = mime_type {
             // Known things we want to match here are
