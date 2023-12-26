@@ -249,6 +249,8 @@ mod imp {
         #[property(get, set, construct_only)]
         pub(super) image: OnceCell<LpImage>,
         #[property(get, set, construct_only)]
+        pub(super) preview_image: OnceCell<LpImage>,
+        #[property(get, set, construct_only)]
         pub(super) parent_window: OnceCell<gtk::Window>,
         #[property(get, set, construct_only)]
         pub(super) print_settings: OnceCell<gtk::PrintSettings>,
@@ -479,19 +481,25 @@ glib::wrapper! {
 
 impl LpPrint {
     pub fn new(
-        image1: LpImage,
+        image: LpImage,
         parent_window: gtk::Window,
         print_settings: Option<gtk::PrintSettings>,
         page_setup: Option<gtk::PageSetup>,
     ) -> Self {
-        let image = LpImage::new_still();
-        image.set_fixed_background_color(Some(gdk::RGBA::new(0.94, 0.94, 0.94, 1.)));
-        let image2 = image.clone();
-        glib::spawn_future_local(async move { image2.load(&image1.file().unwrap()).await });
+        let preview_image = LpImage::new_still();
+        preview_image.set_fixed_background_color(Some(gdk::RGBA::new(0.94, 0.94, 0.94, 1.)));
+        if let Some(file) = image.file() {
+            let preview_image_ = preview_image.clone();
+            glib::spawn_future_local(async move { preview_image_.load(&file).await });
+        } else {
+            log::error!("Trying to print image without file");
+        }
+
         let print_settings = print_settings.unwrap_or_default();
 
         let obj: Self = glib::Object::builder()
             .property("image", image)
+            .property("preview-image", preview_image)
             .property("print-settings", print_settings)
             .property("parent-window", parent_window)
             .build();

@@ -62,7 +62,7 @@ mod imp_page {
             let width = self.print().user_width() * self.display_scale();
             let height = self.print().user_height() * self.display_scale();
 
-            let image = self.print().image();
+            let image = self.print().preview_image();
 
             image.allocate(
                 width as i32,
@@ -195,7 +195,7 @@ impl Default for LpPrintPreviewPage {
 impl LpPrintPreviewPage {
     fn init(&self) {
         let imp = self.imp();
-        let image = imp.preview().print().image();
+        let image = imp.preview().print().preview_image();
 
         image.set_sensitive(false);
         image.set_parent(self);
