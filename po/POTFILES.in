@@ -19,8 +19,8 @@ src/util/gettext.rs
 src/util/mod.rs
 src/widgets/drag_overlay.rs
 src/widgets/image.rs
+src/widgets/image/background_color.rs
 src/widgets/image/drag.rs
-src/widgets/image/guess_background_color.rs
 src/widgets/image/input_handling.rs
 src/widgets/image/loading.rs
 src/widgets/image/metadata.rs

@@ -29,12 +29,12 @@ impl imp::LpImage {
         let adjustment = hadjustment.unwrap_or_default();
 
         adjustment.connect_value_changed(glib::clone!(@weak obj => move |_| {
-            obj.request_tiles();
+            obj.imp().request_tiles();
             obj.queue_draw();
         }));
 
         self.hadjustment.replace(adjustment);
-        obj.configure_adjustments();
+        self.configure_adjustments();
     }
 
     pub fn set_vadjustment(&self, vadjustment: Option<gtk::Adjustment>) {
@@ -43,12 +43,12 @@ impl imp::LpImage {
         let adjustment = vadjustment.unwrap_or_default();
 
         adjustment.connect_value_changed(glib::clone!(@weak  obj => move |_| {
-            obj.request_tiles();
+            obj.imp().request_tiles();
             obj.queue_draw();
         }));
 
         self.vadjustment.replace(adjustment);
-        obj.configure_adjustments();
+        self.configure_adjustments();
     }
 
     pub fn set_ignore_scroll_policy(&self, scroll_policy: gtk::ScrollablePolicy) {
@@ -58,12 +58,12 @@ impl imp::LpImage {
     pub fn scroll_policy(&self) -> gtk::ScrollablePolicy {
         gtk::ScrollablePolicy::Minimum
     }
-}
 
-impl LpImage {
     /// Configure scrollbars for current situation
     pub(super) fn configure_adjustments(&self) {
-        let hadjustment = self.hadjustment();
+        let obj = self.obj();
+
+        let hadjustment = obj.hadjustment();
         // round to application pixels to avoid tiny rounding errors from zoom
         let content_width = self.round_f64(self.image_displayed_width());
         let widget_width = self.widget_width();
@@ -83,7 +83,7 @@ impl LpImage {
             f64::min(widget_width, content_width),
         );
 
-        let vadjustment = self.vadjustment();
+        let vadjustment = obj.vadjustment();
         // round to application pixels to avoid tiny rounding errors from zoom
         let content_height = self.round_f64(self.image_displayed_height());
         let widget_height = self.widget_height();
@@ -104,23 +104,23 @@ impl LpImage {
     }
 
     pub fn set_hadj_value(&self, value: f64) {
-        let hadjustment = self.hadjustment();
+        let hadjustment = self.obj().hadjustment();
         let value = value.clamp(0., hadjustment.upper() - hadjustment.page_size());
         hadjustment.set_value(value);
     }
 
     pub fn set_vadj_value(&self, value: f64) {
-        let vadjustment = self.vadjustment();
+        let vadjustment = self.obj().vadjustment();
         let value = value.clamp(0., vadjustment.upper() - vadjustment.page_size());
-        self.vadjustment().set_value(value);
+        vadjustment.set_value(value);
     }
 
     pub fn hadj_value(&self) -> f64 {
-        self.hadjustment().value()
+        self.obj().hadjustment().value()
     }
 
     pub fn vadj_value(&self) -> f64 {
-        self.vadjustment().value()
+        self.obj().vadjustment().value()
     }
 
     pub fn max_hadjustment_value(&self) -> f64 {
@@ -130,12 +130,14 @@ impl LpImage {
     pub fn max_vadjustment_value(&self) -> f64 {
         f64::max(self.image_displayed_height() - self.widget_height(), 0.)
     }
+}
 
+impl LpImage {
     pub fn is_hscrollable(&self) -> bool {
-        self.max_hadjustment_value() != 0.
+        self.imp().max_hadjustment_value() != 0.
     }
 
     pub fn is_vscrollable(&self) -> bool {
-        self.max_vadjustment_value() != 0.
+        self.imp().max_vadjustment_value() != 0.
     }
 }

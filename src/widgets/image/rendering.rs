@@ -22,9 +22,9 @@ impl WidgetImpl for imp::LpImage {
     fn size_allocate(&self, width: i32, height: i32, _baseline: i32) {
         let obj = self.obj();
 
-        let (scale_changed, scale_change) = if obj.scaling() != self.scaling.get() {
-            let scale_change = obj.scaling() / self.scaling.get();
-            self.scaling.set(obj.scaling());
+        let (scale_changed, scale_change) = if self.scaling() != self.scaling.get() {
+            let scale_change = self.scaling() / self.scaling.get();
+            self.scaling.set(self.scaling());
             (true, scale_change)
         } else {
             (false, 1.)
@@ -33,37 +33,37 @@ impl WidgetImpl for imp::LpImage {
         if obj.is_best_fit() {
             // ensure there is an actual size change
             if self.widget_dimensions.get() != (width, height) || scale_changed {
-                obj.configure_best_fit();
+                self.configure_best_fit();
             }
         } else if scale_changed {
             // Show same area of the image when scale changes
             let new_zoom = self.zoom_target.get() * scale_change;
 
-            obj.zoom_animation().pause();
+            self.zoom_animation().pause();
             self.zoom.set(new_zoom);
             self.zoom_target.set(new_zoom);
         }
 
         self.widget_dimensions.set((width, height));
-        obj.configure_adjustments();
+        self.configure_adjustments();
 
         // Avoid updates for first size_allocate with zoom not set yet
         if obj.is_loaded() {
             // Get potentially missing tiles for enlarged viewing area
 
-            obj.request_tiles();
+            self.request_tiles();
         }
     }
 
     // called when the widget content should be re-rendered
     fn snapshot(&self, snapshot: &gtk::Snapshot) {
         let obj = self.obj();
-        let widget_width = obj.width() as f64;
-        let widget_height = obj.height() as f64;
-        let display_width = obj.image_displayed_width();
-        let display_height = obj.image_displayed_height();
+        let widget_width = self.widget_width();
+        let widget_height = self.widget_height();
+        let display_width = self.image_displayed_width();
+        let display_height = self.image_displayed_height();
 
-        let applicable_zoom = obj.applicable_zoom();
+        let applicable_zoom = self.applicable_zoom();
 
         let scaling_filter = if obj.metadata().format().map_or(false, |x| x.is_svg()) {
             // Looks better in SVG animations and avoids rendering issues
@@ -78,8 +78,8 @@ impl WidgetImpl for imp::LpImage {
 
         let render_options = tiling::RenderOptions {
             scaling_filter,
-            scaling: obj.scaling(),
-            background_color: Some(obj.background_color()),
+            scaling: self.scaling(),
+            background_color: Some(self.background_color()),
         };
 
         // Operations on snapshots are coordinate transformations
@@ -88,31 +88,31 @@ impl WidgetImpl for imp::LpImage {
 
         // Add background
         snapshot.append_color(
-            &obj.background_color(),
+            &self.background_color(),
             &graphene::Rect::new(0., 0., widget_width as f32, widget_height as f32),
         );
 
         // Apply the scrolling position to the image
         let hadj: gtk::Adjustment = obj.hadjustment();
         let x = -(hadj.value() - (hadj.upper() - display_width) / 2.);
-        snapshot.translate(&graphene::Point::new(obj.round_f64(x) as f32, 0.));
+        snapshot.translate(&graphene::Point::new(self.round_f64(x) as f32, 0.));
 
         let vadj = obj.vadjustment();
         let y = -(vadj.value() - (vadj.upper() - display_height) / 2.);
-        snapshot.translate(&graphene::Point::new(0., obj.round_f64(y) as f32));
+        snapshot.translate(&graphene::Point::new(0., self.round_f64(y) as f32));
 
         // Centering in widget when no scrolling (black bars around image)
-        let x = obj.round_f64(f64::max((widget_width - display_width) / 2.0, 0.));
-        let y = obj.round_f64(f64::max((widget_height - display_height) / 2.0, 0.));
+        let x = self.round_f64(f64::max((widget_width - display_width) / 2.0, 0.));
+        let y = self.round_f64(f64::max((widget_height - display_height) / 2.0, 0.));
         // Round to pixel values to not have a half pixel offset to physical pixels
         // The offset would leading to a blurry output
         snapshot.translate(&graphene::Point::new(
-            obj.round_f64(x) as f32,
-            obj.round_f64(y) as f32,
+            self.round_f64(x) as f32,
+            self.round_f64(y) as f32,
         ));
 
         // Apply rotation and mirroring
-        obj.snapshot_rotate_mirror(
+        self.snapshot_rotate_mirror(
             snapshot,
             obj.rotation() as f32,
             obj.mirrored(),
@@ -132,8 +132,8 @@ impl WidgetImpl for imp::LpImage {
         let (image_width, image_height) = obj.image_size();
 
         if image_width > 0 && image_height > 0 {
-            if let Some((monitor_width, monitor_height)) = obj.monitor_size() {
-                let hidpi_scale = self.obj().scaling();
+            if let Some((monitor_width, monitor_height)) = self.monitor_size() {
+                let hidpi_scale = self.scaling();
 
                 // areas
                 let monitor_area = monitor_width * monitor_height;
@@ -193,7 +193,7 @@ impl WidgetImpl for imp::LpImage {
     }
 }
 
-impl LpImage {
+impl imp::LpImage {
     /// Mirrors and rotates snapshot according to arguments
     ///
     /// After the operation the image is positioned such that it's origin
@@ -236,21 +236,23 @@ impl LpImage {
 
     /// Returns the area of the image that is visible in physical pixels
     pub(super) fn viewport(&self) -> graphene::Rect {
+        let obj = self.obj();
+
         let scaling = self.scaling() as f32;
-        let x = self.hadjustment().value() as f32 * scaling;
-        let y = self.vadjustment().value() as f32 * scaling;
-        let width = self.width() as f32 * scaling;
-        let height = self.height() as f32 * scaling;
+        let x = obj.hadjustment().value() as f32 * scaling;
+        let y = obj.vadjustment().value() as f32 * scaling;
+        let width = self.widget_width() as f32 * scaling;
+        let height = self.widget_height() as f32 * scaling;
 
         graphene::Rect::new(x, y, width, height)
     }
 
-    pub fn widget_height(&self) -> f64 {
-        self.height() as f64
+    pub fn widget_width(&self) -> f64 {
+        self.obj().width() as f64
     }
 
-    pub fn widget_width(&self) -> f64 {
-        self.width() as f64
+    pub fn widget_height(&self) -> f64 {
+        self.obj().height() as f64
     }
 
     /// Returns scaling aware rounded application pixel
@@ -276,10 +278,13 @@ impl LpImage {
     }
 
     pub fn scaling(&self) -> f64 {
-        if self.is_realized() {
-            self.native()
+        let obj = self.obj();
+
+        // TODO: This avoids panics and should be fixed upstream
+        if obj.is_realized() {
+            obj.native()
                 .map(|x| x.surface().scale())
-                .unwrap_or_else(|| self.scale_factor() as f64)
+                .unwrap_or_else(|| obj.scale_factor() as f64)
         } else {
             1.
         }
@@ -287,8 +292,10 @@ impl LpImage {
 
     /// Monitor size in physical pixels
     pub fn monitor_size(&self) -> Option<(f64, f64)> {
+        let obj = self.obj();
+
         if let Some(display) = gdk::Display::default() {
-            if let Some(native) = self.native() {
+            if let Some(native) = obj.native() {
                 if let Some(monitor) = display.monitor_at_surface(&native.surface()) {
                     let hidpi_scale = self.scaling();
                     let monitor_geometry = monitor.geometry();
@@ -299,7 +306,7 @@ impl LpImage {
 
                     // Assume scale-monitor-framebuffer disabled for  non-fractional scaling
                     // <https://gitlab.gnome.org/GNOME/gtk/-/issues/5391>
-                    let physical_geometry = if hidpi_scale == self.scale_factor() as f64 {
+                    let physical_geometry = if hidpi_scale == obj.scale_factor() as f64 {
                         monitor_size
                     } else {
                         (monitor_size.0 * hidpi_scale, monitor_size.1 * hidpi_scale)

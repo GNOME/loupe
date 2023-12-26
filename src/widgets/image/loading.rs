@@ -17,64 +17,28 @@
 
 use super::*;
 
-impl LpImage {
-    pub fn init(&self, file: &gio::File) {
-        self.imp().file.replace(Some(file.clone()));
-    }
-
-    pub async fn load(&self, file: &gio::File) {
-        let imp = self.imp();
-        log::debug!("Loading file {}", file.uri());
-
-        imp.metadata.replace(Metadata::default());
-        self.emmit_metadata_changed();
-        self.set_file_loaded(file).await;
-
-        let tiles = &self.imp().frame_buffer;
-        // Delete all stored textures for reloads
-        tiles.reset();
-        // Reset background color for reloads
-        self.set_background_color(None);
-
-        let (decoder, mut decoder_update) =
-            Decoder::new(file.clone(), self.metadata().mime_type(), tiles.clone()).await;
-
-        let weak_obj = self.downgrade();
-        glib::spawn_future_local(async move {
-            while let Some(update) = decoder_update.next().await {
-                if let Some(obj) = weak_obj.upgrade() {
-                    obj.update(update);
-                }
-            }
-            log::debug!("Stopped listening to decoder since sender is gone");
-        });
-
-        imp.decoder.replace(Some(Arc::new(decoder)));
-    }
-
+impl imp::LpImage {
     // Set filename when (re)loading image
     async fn set_file_loaded(&self, file: &gio::File) {
-        let imp = self.imp();
-
         // Do not check if same file since it might be set via initialized with
         // `Self::init` before
-        imp.file.replace(Some(file.clone()));
+        self.file.replace(Some(file.clone()));
         self.reload_file_info().await;
         self.setup_file_monitor().await;
     }
 
     /// Set filename after filename changed
     async fn set_file_changed(&self, file: &gio::File) {
-        let imp = self.imp();
-        let prev_mime_type = self.metadata().mime_type();
+        let obj = self.obj();
+        let prev_mime_type = obj.metadata().mime_type();
 
-        imp.file.replace(Some(file.clone()));
+        self.file.replace(Some(file.clone()));
         self.reload_file_info().await;
 
         // Reload if mime type changed since other decoding path might be responsible
         // now
-        if self.metadata().mime_type() != prev_mime_type {
-            self.load(file).await;
+        if obj.metadata().mime_type() != prev_mime_type {
+            obj.load(file).await;
             return;
         }
 
@@ -82,39 +46,37 @@ impl LpImage {
     }
 
     async fn setup_file_monitor(&self) {
-        let imp = self.imp();
+        let obj = self.obj();
 
-        if let Some(file) = self.file() {
+        if let Some(file) = obj.file() {
             let monitor =
                 file.monitor_file(gio::FileMonitorFlags::WATCH_MOVES, gio::Cancellable::NONE);
             if let Ok(m) = &monitor {
-                m.connect_changed(
-                    glib::clone!(@weak self as obj => move |_, file_a, file_b, event| {
-                        obj.file_changed(event, file_a, file_b);
-                    }),
-                );
+                m.connect_changed(glib::clone!(@weak obj => move |_, file_a, file_b, event| {
+                    obj.imp().file_changed(event, file_a, file_b);
+                }));
             }
 
-            imp.file_monitor.replace(monitor.ok());
+            self.file_monitor.replace(monitor.ok());
         }
     }
 
     /// Called when decoder sends update
     pub fn update(&self, update: DecoderUpdate) {
-        let imp = self.imp();
+        let obj = self.obj();
 
         match update {
             DecoderUpdate::Metadata(metadata) => {
                 log::debug!("Received metadata");
-                imp.metadata.borrow_mut().merge(metadata);
+                self.metadata.borrow_mut().merge(metadata);
                 self.emmit_metadata_changed();
 
-                self.reset_rotation();
+                obj.reset_rotation();
             }
             DecoderUpdate::Dimensions(dimension_details) => {
                 log::debug!("Received dimensions: {:?}", self.original_dimensions());
-                self.imp().dimension_details.replace(dimension_details);
-                self.notify_image_size_available();
+                self.dimension_details.replace(dimension_details);
+                obj.notify_image_size_available();
                 self.configure_best_fit();
                 self.request_tiles();
                 self.configure_adjustments();
@@ -122,16 +84,18 @@ impl LpImage {
             DecoderUpdate::Redraw => {
                 self.set_loaded(true);
 
-                self.queue_draw();
-                imp.frame_buffer.rcu(|tiles| {
+                obj.queue_draw();
+                self.frame_buffer.rcu(|tiles| {
                     let mut new_tiles = (**tiles).clone();
-                    new_tiles.cleanup(imp.zoom_target.get(), self.preload_area());
+                    new_tiles.cleanup(self.zoom_target.get(), self.preload_area());
                     new_tiles
                 });
-                if imp.background_color.borrow().is_none() {
-                    glib::spawn_future_local(glib::clone!(@weak self as obj => async move {
-                        let color = obj.background_color_guess().await;
-                        obj.set_background_color(color);
+                if self.background_color.borrow().is_none() {
+                    glib::spawn_future_local(glib::clone!(@weak obj => async move {
+                        let imp = obj.imp();
+
+                        let color = imp.background_color_guess().await;
+                        imp.set_background_color(color);
                         if obj.is_mapped() {
                             obj.queue_draw();
                         }
@@ -142,17 +106,17 @@ impl LpImage {
                 self.set_error(Some(err));
             }
             DecoderUpdate::Format(format) => {
-                imp.metadata.borrow_mut().set_format(format);
+                self.metadata.borrow_mut().set_format(format);
                 self.emmit_metadata_changed();
             }
             DecoderUpdate::Animated => {
-                if imp.still.get() {
+                if self.still.get() {
                     // Just load the first frame
-                    self.imp().frame_buffer.next_frame();
+                    self.frame_buffer.next_frame();
                 } else {
-                    let callback_id = self
+                    let callback_id = obj
                         .add_tick_callback(glib::clone!(@weak self as obj => @default-return glib::ControlFlow::Break, move |_, clock| obj.tick_callback(clock)));
-                    imp.tick_callback.replace(Some(callback_id));
+                    self.tick_callback.replace(Some(callback_id));
                 }
             }
             DecoderUpdate::UnsupportedFormat => {
@@ -165,20 +129,22 @@ impl LpImage {
     ///
     /// We handle advancing to the next frame for animated GIFs etc here.
     fn tick_callback(&self, clock: &gdk::FrameClock) -> glib::ControlFlow {
+        let obj = self.obj();
+
         // Do not animate if not visible
-        if !self.is_mapped() {
+        if !obj.is_mapped() {
             return glib::ControlFlow::Continue;
         }
 
-        let elapsed = clock.frame_time() - self.imp().last_animated_frame.get();
+        let elapsed = clock.frame_time() - self.last_animated_frame.get();
         let duration = std::time::Duration::from_micros(elapsed as u64);
 
         // Check if it's time to show the next frame
-        if self.imp().frame_buffer.frame_timeout(duration) {
+        if self.frame_buffer.frame_timeout(duration) {
             // Just draw since frame_timeout updated to new frame
-            self.queue_draw();
-            self.imp().last_animated_frame.set(clock.frame_time());
-            if let Some(decoder) = self.imp().decoder.borrow().as_ref() {
+            obj.queue_draw();
+            self.last_animated_frame.set(clock.frame_time());
+            if let Some(decoder) = self.decoder.borrow().as_ref() {
                 // Decode new frame and load it into buffer
                 decoder.fill_frame_buffer();
             }
@@ -193,7 +159,7 @@ impl LpImage {
     }
 
     pub(super) fn request_tiles(&self) {
-        if let Some(decoder) = self.imp().decoder.borrow().as_ref() {
+        if let Some(decoder) = self.decoder.borrow().as_ref() {
             if self.zoom_animation().state() != adw::AnimationState::Playing {
                 // Force minimum tile size of 1000x1000 since with smaller
                 // tiles the tiled rendering advantage disappears
@@ -203,7 +169,7 @@ impl LpImage {
                 decoder.request(crate::decoder::TileRequest {
                     viewport: self.viewport().inset_r(x_inset, y_inset),
                     area: self.preload_area(),
-                    zoom: self.imp().zoom_target.get(),
+                    zoom: self.zoom_target.get(),
                 });
             }
         }
@@ -220,9 +186,10 @@ impl LpImage {
             gio::FileMonitorEvent::Renamed => {
                 if let Some(file) = file_b.cloned() {
                     log::debug!("Moved to {}", file.uri());
+                    let obj = self.obj().to_owned();
+
                     // current file got replaced with a new one
-                    let file_replace = self.file().map_or(false, |x| x.equal(&file));
-                    let obj = self.clone();
+                    let file_replace = obj.file().map_or(false, |x| x.equal(&file));
                     if file_replace {
                         log::debug!("Image got replaced {}", file.uri());
                         // TODO: error handling is missing
@@ -231,13 +198,13 @@ impl LpImage {
                         });
                     } else {
                         glib::spawn_future_local(async move {
-                            obj.set_file_changed(&file).await;
+                            obj.imp().set_file_changed(&file).await;
                         });
                     }
                 }
             }
             gio::FileMonitorEvent::ChangesDoneHint => {
-                let obj = self.clone();
+                let obj = self.obj().to_owned();
                 let file = file_a.clone();
                 log::debug!("Image was edited {}", file.uri());
                 // TODO: error handling is missing
@@ -249,8 +216,8 @@ impl LpImage {
             | gio::FileMonitorEvent::MovedOut
             | gio::FileMonitorEvent::Unmounted => {
                 log::debug!("File no longer available: {event:?} {}", file_a.uri());
-                self.imp().is_deleted.set(true);
-                self.notify_is_deleted();
+                self.is_deleted.set(true);
+                self.obj().notify_is_deleted();
             }
             _ => {}
         }
@@ -258,10 +225,8 @@ impl LpImage {
 
     fn set_error(&self, err: Option<anyhow::Error>) {
         log::debug!("Decoding error: {err:?}");
-        self.imp()
-            .error
-            .replace(err.as_ref().map(|x| x.to_string()));
-        self.notify_error();
+        self.error.replace(err.as_ref().map(|x| x.to_string()));
+        self.obj().notify_error();
 
         if err.is_some() {
             self.set_loaded(false);
@@ -269,9 +234,10 @@ impl LpImage {
     }
 
     fn set_unsupported(&self, is_unsupported: bool) {
-        if self.is_unsupported() != is_unsupported {
-            self.imp().is_unsupported.set(true);
-            self.notify_is_unsupported();
+        let obj = self.obj();
+        if obj.is_unsupported() != is_unsupported {
+            self.is_unsupported.set(true);
+            obj.notify_is_unsupported();
 
             if is_unsupported {
                 self.set_loaded(false);
@@ -280,14 +246,52 @@ impl LpImage {
     }
 
     fn set_loaded(&self, is_loaded: bool) {
-        if self.is_loaded() != is_loaded {
-            self.imp().is_loaded.set(is_loaded);
-            self.notify_is_loaded();
+        let obj = self.obj();
+
+        if obj.is_loaded() != is_loaded {
+            self.is_loaded.set(is_loaded);
+            obj.notify_is_loaded();
 
             if is_loaded {
                 self.set_error(None);
                 self.set_unsupported(false);
             }
         }
+    }
+}
+
+impl LpImage {
+    pub fn init(&self, file: &gio::File) {
+        self.imp().file.replace(Some(file.clone()));
+    }
+
+    pub async fn load(&self, file: &gio::File) {
+        let imp = self.imp();
+        log::debug!("Loading file {}", file.uri());
+
+        imp.metadata.replace(Metadata::default());
+        self.imp().emmit_metadata_changed();
+        self.imp().set_file_loaded(file).await;
+
+        let tiles = &self.imp().frame_buffer;
+        // Delete all stored textures for reloads
+        tiles.reset();
+        // Reset background color for reloads
+        imp.set_background_color(None);
+
+        let (decoder, mut decoder_update) =
+            Decoder::new(file.clone(), self.metadata().mime_type(), tiles.clone()).await;
+
+        let weak_obj = self.downgrade();
+        glib::spawn_future_local(async move {
+            while let Some(update) = decoder_update.next().await {
+                if let Some(obj) = weak_obj.upgrade() {
+                    obj.imp().update(update);
+                }
+            }
+            log::debug!("Stopped listening to decoder since sender is gone");
+        });
+
+        imp.decoder.replace(Some(Arc::new(decoder)));
     }
 }

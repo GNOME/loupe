@@ -270,7 +270,7 @@ mod imp {
             self.zoom.set(1.);
             self.zoom_target.set(1.);
             self.best_fit.set(true);
-            self.scaling.set(obj.scaling());
+            self.scaling.set(self.scaling());
 
             self.connect_input_handling();
 
@@ -296,8 +296,10 @@ mod imp {
 
             adw::StyleManager::default().connect_dark_notify(glib::clone!(@weak obj => move |_| {
                 glib::spawn_future_local(async move {
-                    let color = obj.background_color_guess().await;
-                    obj.set_background_color(color);
+                    let imp = obj.imp();
+
+                    let color = imp.background_color_guess().await;
+                    imp.set_background_color(color);
                     if obj.is_mapped() {
                         obj.queue_draw();
                     }
@@ -306,14 +308,12 @@ mod imp {
         }
 
         fn dispose(&self) {
-            let obj = self.obj();
-
             log::debug!("Disposing LpImage");
 
             // remove target from zoom animation because it's property of this object
-            obj.rotation_animation()
+            self.rotation_animation()
                 .set_target(&adw::CallbackAnimationTarget::new(|_| {}));
-            obj.zoom_animation()
+            self.zoom_animation()
                 .set_target(&adw::CallbackAnimationTarget::new(|_| {}));
         }
     }

@@ -18,20 +18,9 @@
 use super::*;
 use crate::metadata;
 
-impl LpImage {
-    /// Image size of original image with EXIF rotation applied
-    pub fn image_size(&self) -> (i32, i32) {
-        let orientation = self.imp().metadata.borrow().orientation();
-        if orientation.rotation.abs() == 90. || orientation.rotation.abs() == 270. {
-            let (x, y) = self.original_dimensions();
-            (y, x)
-        } else {
-            self.original_dimensions()
-        }
-    }
-
+impl imp::LpImage {
     pub(super) fn original_dimensions(&self) -> (i32, i32) {
-        if let Some((width, height)) = self.imp().frame_buffer.load().original_dimensions() {
+        if let Some((width, height)) = self.frame_buffer.load().original_dimensions() {
             (width as i32, height as i32)
         } else {
             (0, 0)
@@ -54,7 +43,7 @@ impl LpImage {
     pub fn image_width(&self, zoom: f64) -> f64 {
         let (width, height) = self.original_dimensions();
 
-        let rotated = self.rotation().to_radians().sin().abs();
+        let rotated = self.obj().rotation().to_radians().sin().abs();
 
         ((1. - rotated) * width as f64 + rotated * height as f64) * zoom
     }
@@ -62,11 +51,38 @@ impl LpImage {
     pub fn image_height(&self, zoom: f64) -> f64 {
         let (width, height) = self.original_dimensions();
 
-        let rotated = self.rotation().to_radians().sin().abs();
+        let rotated = self.obj().rotation().to_radians().sin().abs();
 
         ((1. - rotated) * height as f64 + rotated * width as f64) * zoom
     }
 
+    pub fn connect_changed(&self, f: impl Fn() + 'static) {
+        self.obj()
+            .connect_local("metadata-changed", false, move |_| {
+                f();
+                None
+            });
+    }
+
+    pub(super) fn emmit_metadata_changed(&self) {
+        self.obj().emit_by_name::<()>("metadata-changed", &[]);
+    }
+
+    pub(super) async fn reload_file_info(&self) {
+        let obj = self.obj();
+
+        if let Some(file) = obj.file() {
+            let file_info = metadata::FileInfo::new(&file).await;
+            match file_info {
+                Ok(file_info) => self.metadata.borrow_mut().set_file_info(file_info),
+                Err(err) => log::warn!("Failed to load file information: {err}"),
+            }
+            self.emmit_metadata_changed();
+        }
+    }
+}
+
+impl LpImage {
     pub fn dimension_details(&self) -> decoder::ImageDimensionDetails {
         self.imp().dimension_details.borrow().clone()
     }
@@ -79,27 +95,14 @@ impl LpImage {
         self.imp().metadata.borrow()
     }
 
-    pub fn connect_changed(&self, f: impl Fn() + 'static) {
-        self.connect_local("metadata-changed", false, move |_| {
-            f();
-            None
-        });
-    }
-
-    pub(super) fn emmit_metadata_changed(&self) {
-        self.emit_by_name::<()>("metadata-changed", &[]);
-    }
-
-    pub(super) async fn reload_file_info(&self) {
-        let imp = self.imp();
-
-        if let Some(file) = self.file() {
-            let file_info = metadata::FileInfo::new(&file).await;
-            match file_info {
-                Ok(file_info) => imp.metadata.borrow_mut().set_file_info(file_info),
-                Err(err) => log::warn!("Failed to load file information: {err}"),
-            }
-            self.emmit_metadata_changed();
+    /// Image size of original image with EXIF rotation applied
+    pub fn image_size(&self) -> (i32, i32) {
+        let orientation = self.imp().metadata.borrow().orientation();
+        if orientation.rotation.abs() == 90. || orientation.rotation.abs() == 270. {
+            let (x, y) = self.imp().original_dimensions();
+            (y, x)
+        } else {
+            self.imp().original_dimensions()
         }
     }
 }

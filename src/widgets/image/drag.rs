@@ -27,6 +27,8 @@ impl LpImage {
 
     /// Returns a thumbnail of the displated image
     pub fn thumbnail(&self) -> Option<gdk::Paintable> {
+        let imp = self.imp();
+
         let (width, height) = self.image_size();
         let long_side = i32::max(width, height);
         let orientation = self.metadata().orientation();
@@ -34,21 +36,20 @@ impl LpImage {
         let scale = f32::min(1., THUMBNAIL_SIZE / long_side as f32);
         let render_options = tiling::RenderOptions {
             scaling_filter: gsk::ScalingFilter::Trilinear,
-            scaling: self.scaling(),
-            background_color: Some(self.background_color()),
+            scaling: imp.scaling(),
+            background_color: Some(imp.background_color()),
         };
 
         let snapshot = gtk::Snapshot::new();
 
-        self.snapshot_rotate_mirror(
+        imp.snapshot_rotate_mirror(
             &snapshot,
             -orientation.rotation as f32,
             orientation.mirrored,
             scale as f64,
         );
 
-        self.imp()
-            .frame_buffer
+        imp.frame_buffer
             .load()
             .add_to_snapshot(&snapshot, scale as f64, &render_options);
 

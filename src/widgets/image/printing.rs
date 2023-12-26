@@ -29,7 +29,7 @@ impl LpImage {
 
         let snapshot = gtk::Snapshot::new();
 
-        self.snapshot_rotate_mirror(
+        self.imp().snapshot_rotate_mirror(
             &snapshot,
             -orientation.rotation as f32,
             orientation.mirrored,

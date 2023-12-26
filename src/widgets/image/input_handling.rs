@@ -78,7 +78,7 @@ impl imp::LpImage {
                 if animated {
                     obj.zoom_to(zoom);
                 } else {
-                    obj.zoom_to_full(zoom, false, false);
+                    obj.imp().zoom_to_full(zoom, false, false);
                 }
 
             // do not propagate event to scrolled window
@@ -106,7 +106,7 @@ impl imp::LpImage {
                     obj.imp().pointer_position.set(Some((x, y)));
                     if obj.is_best_fit() {
                         // zoom in
-                        obj.zoom_to(ZOOM_FACTOR_DOUBLE_TAP * obj.zoom_level_best_fit());
+                        obj.zoom_to(ZOOM_FACTOR_DOUBLE_TAP * obj.imp().zoom_level_best_fit());
                     } else {
                         // zoom back out
                         obj.zoom_best_fit();
@@ -143,9 +143,10 @@ impl imp::LpImage {
         }));
 
         drag_gesture.connect_drag_update(glib::clone!(@weak obj => move |_, x1, y1| {
+            let imp = obj.imp();
             if let Some((x0, y0)) = obj.imp().last_drag_value.get() {
-                obj.set_hadj_value(obj.hadj_value() - x1 + x0);
-                obj.set_vadj_value(obj.vadj_value() - y1 + y0);
+                imp.set_hadj_value(imp.hadj_value() - x1 + x0);
+                imp.set_vadj_value(imp.vadj_value() - y1 + y0);
             }
 
             obj.imp().last_drag_value.set(Some((x1, y1)));
@@ -210,48 +211,52 @@ impl imp::LpImage {
         }));
 
         zoom_gesture.connect_scale_changed(glib::clone!(@weak obj => move |gesture, scale| {
-            let zoom = obj.imp().zoom_target.get() * scale;
+            let imp = obj.imp();
+
+            let zoom = imp.zoom_target.get() * scale;
 
             // Move image with fingers on touchscreens
             if gesture.device().map(|x| x.source()) == Some(gdk::InputSource::Touchscreen) {
                 if let p1 @ Some((x1, y1)) = gesture.bounding_box_center() {
-                    if let Some((x0, y0)) = obj.imp().zoom_gesture_center.get() {
-                        obj.set_hadj_value(obj.hadj_value() + x0 - x1);
-                        obj.set_vadj_value(obj.vadj_value()+ y0 - y1);
+
+                    if let Some((x0, y0)) = imp.zoom_gesture_center.get() {
+                        imp.set_hadj_value(imp.hadj_value() + x0 - x1);
+                        imp.set_vadj_value(imp.vadj_value()+ y0 - y1);
                     } else {
                         log::warn!("Zoom bounding box center: No previous value");
                     }
 
-                    obj.imp().zoom_gesture_center.set(p1);
+                    imp.zoom_gesture_center.set(p1);
                 }
             }
 
             let zoom_out_threshold = 1. / ZOOM_GESTURE_LOCK_THRESHOLD;
             let zoom_in_threshold = ZOOM_GESTURE_LOCK_THRESHOLD;
 
-            if let Some(Gesture::Rotate(_)) = obj.imp().locked_gestured.get() {
+            if let Some(Gesture::Rotate(_)) = imp.locked_gestured.get() {
                 // Do not zoom when rotate is locked in
                 return;
             } else if !(zoom_out_threshold..zoom_in_threshold).contains(&scale) {
                 // Lock in scale when leaving the scale threshold
-                obj.imp().locked_gestured.set(Some(Gesture::Scale));
+                imp.locked_gestured.set(Some(Gesture::Scale));
             }
 
-            obj.set_zoom_aiming(zoom, obj.imp().zoom_gesture_center.get());
+            imp.set_zoom_aiming(zoom, imp.zoom_gesture_center.get());
         }));
 
         zoom_gesture.connect_end(glib::clone!(@weak obj => move |_, _| {
+            let imp = obj.imp();
             log::debug!("Zoom gesture ended");
 
             let rotation_target = (obj.rotation() / 90.).round() * 90.;
-            if obj.zoom() < obj.zoom_level_best_fit_for_rotation(rotation_target) {
-                obj.zoom_to(obj.zoom_level_best_fit_for_rotation(rotation_target));
+            if obj.zoom() < imp.zoom_level_best_fit_for_rotation(rotation_target) {
+                obj.zoom_to(imp.zoom_level_best_fit_for_rotation(rotation_target));
             } else {
                 // rubberband if over highest zoom level and sets `zoom_target`
                 obj.zoom_to(obj.zoom());
             };
 
-            obj.imp().locked_gestured.set(None);
+            imp.locked_gestured.set(None);
         }));
 
         zoom_gesture.group_with(&rotation_gesture);

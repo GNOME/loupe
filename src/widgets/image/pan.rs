@@ -20,6 +20,8 @@ use super::*;
 impl LpImage {
     /// Stepwise scrolls inside an image when zoomed in
     pub fn pan(&self, direction: &gtk::PanDirection) {
+        let imp = self.imp();
+
         let sign = match direction {
             gtk::PanDirection::Left | gtk::PanDirection::Up => -1.,
             gtk::PanDirection::Right | gtk::PanDirection::Down => 1.,
@@ -31,10 +33,10 @@ impl LpImage {
 
         let (adjustment, max) = match direction {
             gtk::PanDirection::Left | gtk::PanDirection::Right => {
-                (self.hadjustment(), self.max_hadjustment_value())
+                (self.hadjustment(), imp.max_hadjustment_value())
             }
             gtk::PanDirection::Up | gtk::PanDirection::Down => {
-                (self.vadjustment(), self.max_vadjustment_value())
+                (self.vadjustment(), imp.max_vadjustment_value())
             }
             _ => {
                 log::error!("Unknown pan direction {direction:?}");

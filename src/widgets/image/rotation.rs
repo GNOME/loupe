@@ -41,6 +41,17 @@ impl imp::LpImage {
         obj.notify_mirrored();
         obj.queue_draw();
     }
+
+    pub(super) fn rotation_animation(&self) -> &adw::TimedAnimation {
+        let obj = self.obj().to_owned();
+        self.rotation_animation.get_or_init(|| {
+            adw::TimedAnimation::builder()
+                .duration(ROTATION_ANIMATION_DURATION)
+                .widget(&obj)
+                .target(&adw::PropertyAnimationTarget::new(&obj, "rotation"))
+                .build()
+        })
+    }
 }
 
 impl LpImage {
@@ -53,32 +64,24 @@ impl LpImage {
     }
 
     pub fn rotate_by(&self, angle: f64) {
+        let imp = self.imp();
+
         log::debug!("Rotate by {} degrees", angle);
         let target = &self.imp().rotation_target;
         target.set(target.get() + angle);
 
-        let animation = self.rotation_animation();
+        let animation = imp.rotation_animation();
 
         animation.set_value_from(self.rotation());
         animation.set_value_to(target.get());
         animation.play();
 
         if self.is_best_fit() {
-            let animation = self.zoom_animation();
+            let animation = imp.zoom_animation();
 
             animation.set_value_from(self.zoom());
-            animation.set_value_to(self.zoom_level_best_fit_for_rotation(target.get()));
+            animation.set_value_to(imp.zoom_level_best_fit_for_rotation(target.get()));
             animation.play();
         }
-    }
-
-    pub(super) fn rotation_animation(&self) -> &adw::TimedAnimation {
-        self.imp().rotation_animation.get_or_init(|| {
-            adw::TimedAnimation::builder()
-                .duration(ROTATION_ANIMATION_DURATION)
-                .widget(self)
-                .target(&adw::PropertyAnimationTarget::new(self, "rotation"))
-                .build()
-        })
     }
 }
