@@ -29,8 +29,8 @@
 //!
 //! [`decoder`]: crate::decoder
 
+mod background_color;
 mod drag;
-mod guess_background_color;
 mod input_handling;
 mod loading;
 mod metadata;
