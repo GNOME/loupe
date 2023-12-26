@@ -276,9 +276,13 @@ impl LpImage {
     }
 
     pub fn scaling(&self) -> f64 {
-        self.native()
-            .map(|x| x.surface().scale())
-            .unwrap_or_else(|| self.scale_factor() as f64)
+        if self.is_realized() {
+            self.native()
+                .map(|x| x.surface().scale())
+                .unwrap_or_else(|| self.scale_factor() as f64)
+        } else {
+            1.
+        }
     }
 
     /// Monitor size in physical pixels
