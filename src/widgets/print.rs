@@ -722,7 +722,7 @@ impl LpPrint {
 
         let size_unit = self.size_unit();
         let max_width = self.fill_space_width();
-        let max_height = self.paper_height() - 2. * self.user_margin_vertical();
+        let max_height = self.fill_space_height();
 
         imp.width.set_range(
             size_unit.ceil(self.width_unit_factor()),
