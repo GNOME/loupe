@@ -7,18 +7,18 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2023-12-22 12:01+0000\n"
-"PO-Revision-Date: 2023-12-22 17:35+0100\n"
+"POT-Creation-Date: 2023-12-29 19:28+0000\n"
+"PO-Revision-Date: 2023-12-31 15:09+0100\n"
 "Last-Translator: Quentin PAGÈS\n"
 "Language-Team: Occitan <totenoc@gmail.com>\n"
 "Language: oc\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.4.1\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #: data/org.gnome.Loupe.desktop.in.in:3
-#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:28 src/window.rs:822
+#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:28 src/window.rs:823
 msgid "Image Viewer"
 msgstr "Visionador d'imatges"
 
@@ -32,31 +32,32 @@ msgstr ""
 msgid "Show the image properties sidebar"
 msgstr "Afichar la barra laterala de proprietats de l’imatge"
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:7 src/about.rs:31
-msgid "The Loupe Team"
-msgstr "La còla de Lópia"
+#. developer_name tag deprecated with Appstream 1.0
+#: data/org.gnome.Loupe.metainfo.xml.in.in:8 src/about.rs:31
+msgid "The GNOME Project"
+msgstr "Lo projècte GNOME"
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:8
+#: data/org.gnome.Loupe.metainfo.xml.in.in:12
 msgid "View images"
 msgstr "Veire los imatges"
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:10
+#: data/org.gnome.Loupe.metainfo.xml.in.in:14
 msgid "Browse through your images and inspect their metadata with:"
 msgstr "Navegatz demest vòstres imatges e d’examinatz lors metadonadas :"
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:12
+#: data/org.gnome.Loupe.metainfo.xml.in.in:16
 msgid "Fast GPU accelerated image rendering"
-msgstr "Rendut d’imgate accelerat GPU rapid"
+msgstr "Rendut d’imagte accelerat GPU rapid"
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:13
+#: data/org.gnome.Loupe.metainfo.xml.in.in:17
 msgid "Tiled rendering for vector graphics"
 msgstr "Rendut en mosaïc dels grafics vectorials"
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:14
+#: data/org.gnome.Loupe.metainfo.xml.in.in:18
 msgid "Extendable and sandboxed image decoding"
 msgstr "Descodatges d’imatges extensibles e nauc de sabla"
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:15
+#: data/org.gnome.Loupe.metainfo.xml.in.in:19
 msgid "Accessible presentation of the most important metadata."
 msgstr "Presentacion accessibla de la màger part de las metadonadas."
 
@@ -246,6 +247,10 @@ msgstr "Copyright © 2020–2023 Christopher Davis e d’autres."
 msgid "Could not list other files in directory."
 msgstr "Impossible de listar los autres fichièrs del repertòri."
 
+#: src/metadata/format.rs:48
+msgid "Unknown"
+msgstr "Desconegut"
+
 #. Translators: short for "north" in GPS coordinate
 #: src/metadata/gps.rs:153
 msgid "N"
@@ -285,7 +290,7 @@ msgstr "{}\\u{202F}mm"
 msgid "%x %X"
 msgstr "%x %X"
 
-#: src/util/mod.rs:180 src/window.rs:653
+#: src/util/mod.rs:180 src/window.rs:654
 msgid "Failed to restore image from trash"
 msgstr "Fracàs de la restauracion de l’imatge a partir de l’escobilhièr"
 
@@ -391,9 +396,17 @@ msgid "px"
 msgstr "px"
 
 #. Translators: {} is a placeholder for the filename
-#: src/widgets/print.rs:370
+#: src/widgets/print.rs:372
 msgid "Print “{}”"
 msgstr "Imprimir « {} »"
+
+#: src/widgets/print.rs:782
+msgid "_Scale"
+msgstr "_Escala"
+
+#: src/widgets/print.rs:785
+msgid "_Width"
+msgstr "_Largor"
 
 #. Translators: Go back to previous page
 #: src/widgets/print.ui:29
@@ -452,11 +465,7 @@ msgstr "Unitat de talha d'imatge"
 msgid "_Fill Space"
 msgstr "_Emplenament d’espaci"
 
-#: src/widgets/print.ui:169
-msgid "_Width"
-msgstr "_Largor"
-
-#: src/widgets/print.ui:175
+#: src/widgets/print.ui:174
 msgid "H_eight"
 msgstr "_Nautor"
 
@@ -520,51 +529,51 @@ msgstr "Longor focala"
 msgid "Maker, Model"
 msgstr "Fabricant, modèl"
 
-#: src/window.rs:517
+#: src/window.rs:518
 msgid "Supported image formats"
 msgstr "Format d'imatge suportats"
 
-#: src/window.rs:526
+#: src/window.rs:527
 msgid "All files"
 msgstr "Totes los fichièrs"
 
-#: src/window.rs:533
+#: src/window.rs:534
 msgid "Open Image"
 msgstr "Dobrir un imatge"
 
-#: src/window.rs:619
+#: src/window.rs:620
 msgid "Image copied to clipboard"
 msgstr "Imatge copiat al quichapapièrs"
 
-#: src/window.rs:640
+#: src/window.rs:641
 msgid "Image moved to trash"
 msgstr "Imatge desplaçat a l'escobilhièr"
 
-#: src/window.rs:641
+#: src/window.rs:642
 msgid "Undo"
 msgstr "Desfar"
 
-#: src/window.rs:668
+#: src/window.rs:669
 msgid "Failed to move image to trash"
 msgstr "Impossible de desplaçar l’imatge cap a l'escobilhièr"
 
-#: src/window.rs:683
+#: src/window.rs:684
 msgid "Permanently Delete Image?"
 msgstr "Suprimir l’imatge irreversiblament ?"
 
-#: src/window.rs:685
+#: src/window.rs:686
 msgid "The image “{}” can only be deleted permanently."
 msgstr "L’imatge « {} » se pòt pas suprimir per totjorn."
 
-#: src/window.rs:693
+#: src/window.rs:694
 msgid "Cancel"
 msgstr "Anullada"
 
-#: src/window.rs:694
+#: src/window.rs:695
 msgid "Delete"
 msgstr "Suprimir"
 
-#: src/window.rs:705
+#: src/window.rs:706
 msgid "Failed to delete image"
 msgstr "Impossible de suprimir l’imatge"
 
@@ -615,6 +624,9 @@ msgstr "Lisatz e depausatz los imatges aquí"
 #: src/window.ui:180
 msgid "_Open Files…"
 msgstr "_Dobrir de fichièrs…"
+
+#~ msgid "The Loupe Team"
+#~ msgstr "La còla de Lópia"
 
 #~ msgid "Center image horizontally"
 #~ msgstr "Centrar l’imatge a l’orizontala"
