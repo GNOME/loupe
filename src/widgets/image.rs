@@ -198,8 +198,6 @@ mod imp {
 
         /// Currently EXIF data
         pub(super) metadata: RefCell<Metadata>,
-        /// Image dimension details for SVGs
-        pub(super) dimension_details: RefCell<decoder::ImageDimensionDetails>,
 
         #[property(get)]
         _image_size_available: bool,

@@ -1,4 +1,4 @@
-// Copyright (c) 2022-2023 Sophie Herold
+// Copyright (c) 2022-2024 Sophie Herold
 // Copyright (c) 2022 Christopher Davis
 //
 // This program is free software: you can redistribute it and/or modify
@@ -23,9 +23,9 @@ use adw::subclass::prelude::*;
 use glib::Properties;
 use gtk::CompositeTemplate;
 
-use crate::decoder::ImageDimensionDetails;
 use crate::deps::*;
-use crate::util;
+use crate::util::gettext::*;
+use crate::util::{self};
 use crate::widgets::image::LpImage;
 
 const FALLBACK: &str = "–";
@@ -177,7 +177,7 @@ mod imp {
 
             // Image info
             Self::update_row(&self.image_size, self.image_size());
-            Self::update_row(&self.image_format, metadata.format_name());
+            Self::update_row(&self.image_format, self.format_name());
             Self::update_row(&self.file_size, metadata.file_size());
 
             // Dates
@@ -222,12 +222,36 @@ mod imp {
                 .and_then(|p| util::get_file_display_name(&p))
         }
 
+        fn format_name(&self) -> Option<String> {
+            let image = self.image.borrow();
+            let metadata = image.as_ref()?.metadata();
+
+            let mut format = metadata.format_name().unwrap_or(gettext("Unknown"));
+
+            if metadata.alpha_channel().unwrap_or(false) {
+                // Translators: Addition of image being transparent to format name
+                format.push_str(&gettext(", transparent"));
+            }
+
+            if metadata.grayscale().unwrap_or(false) {
+                // Translators: Addition of image being grayscale to format name
+                format.push_str(&gettext(", grayscale"));
+            }
+
+            if let Some(bit_depth) = metadata.bit_depth() {
+                // Translators: Addition of bit size to format name
+                format.push_str(&gettext_f(", {}\u{202F}bit", [bit_depth.to_string()]));
+            }
+
+            Some(format)
+        }
+
         fn image_size(&self) -> Option<String> {
             let obj = self.obj();
 
             if let Some(image) = obj.image() {
-                match image.dimension_details() {
-                    ImageDimensionDetails::Svg(string, _) => Some(string),
+                match image.metadata().dimensions_text() {
+                    Some(string) => Some(string.to_string()),
                     _ => {
                         let (width, height) = image.image_size();
                         if width > 0 && height > 0 {

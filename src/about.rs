@@ -1,5 +1,6 @@
+// Copyright (c) 2023-2024 Sophie Herold
+// Copyright (c) 2023 Automeris naranja
 // Copyright (c) 2023 Christopher Davis
-// Copyright (c) 2023 Sophie Herold
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -38,7 +39,7 @@ pub async fn window() -> adw::AboutWindow {
         .designers(["Allan Day", "Jakub Steiner", "Tobias Bernard"])
         // Translators: Replace "translator-credits" with your names, one name per line
         .translator_credits(gettext("translator-credits"))
-        .copyright(gettext("Copyright © 2020–2023 Christopher Davis et al."))
+        .copyright(gettext("Copyright © 2020–2024 Christopher Davis et al."))
         .license_type(gtk::License::Gpl30)
         .debug_info(debug_info().await)
         .build()

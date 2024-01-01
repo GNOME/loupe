@@ -1,4 +1,4 @@
-// Copyright (c) 2023 Sophie Herold
+// Copyright (c) 2023-2024 Sophie Herold
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -88,7 +88,7 @@ impl imp::LpImage {
     pub(super) fn max_zoom(&self) -> f64 {
         let obj = self.obj();
 
-        if obj.metadata().format().map_or(false, |x| x.is_svg()) {
+        if obj.metadata().is_svg() {
             let (width, height) = self.original_dimensions();
             // Avoid division by 0
             let long_side = f64::max(1., i32::max(width, height) as f64);

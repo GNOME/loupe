@@ -1488,6 +1488,7 @@ dependencies = [
  "gettext-sys",
  "gio",
  "glycin",
+ "glycin-utils",
  "gtk4",
  "gvdb-macros",
  "indexmap",

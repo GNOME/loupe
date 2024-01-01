@@ -1,4 +1,4 @@
-// Copyright (c) 2023 Sophie Herold
+// Copyright (c) 2023-2024 Sophie Herold
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -65,7 +65,7 @@ impl WidgetImpl for imp::LpImage {
 
         let applicable_zoom = self.applicable_zoom();
 
-        let scaling_filter = if obj.metadata().format().map_or(false, |x| x.is_svg()) {
+        let scaling_filter = if obj.metadata().is_svg() {
             // Looks better in SVG animations and avoids rendering issues
             gsk::ScalingFilter::Linear
         } else if applicable_zoom < 1. {

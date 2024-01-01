@@ -1,4 +1,4 @@
-// Copyright (c) 2023 Sophie Herold
+// Copyright (c) 2023-2024 Sophie Herold
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -68,14 +68,13 @@ impl imp::LpImage {
         match update {
             DecoderUpdate::Metadata(metadata) => {
                 log::debug!("Received metadata");
-                self.metadata.borrow_mut().merge(metadata);
+                self.metadata.borrow_mut().merge(*metadata);
                 self.emmit_metadata_changed();
 
                 obj.reset_rotation();
             }
-            DecoderUpdate::Dimensions(dimension_details) => {
+            DecoderUpdate::Dimensions => {
                 log::debug!("Received dimensions: {:?}", self.original_dimensions());
-                self.dimension_details.replace(dimension_details);
                 obj.notify_image_size_available();
                 self.configure_best_fit();
                 self.request_tiles();
@@ -104,10 +103,6 @@ impl imp::LpImage {
             }
             DecoderUpdate::Error(err) => {
                 self.set_error(Some(err));
-            }
-            DecoderUpdate::Format(format) => {
-                self.metadata.borrow_mut().set_format(format);
-                self.emmit_metadata_changed();
             }
             DecoderUpdate::Animated => {
                 if self.still.get() {

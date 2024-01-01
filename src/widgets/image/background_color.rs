@@ -1,4 +1,4 @@
-// Copyright (c) 2023 Sophie Herold
+// Copyright (c) 2023-2024 Sophie Herold
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -62,11 +62,7 @@ impl imp::LpImage {
         }
 
         // Shortcut for formats that don't support transparency
-        if !obj
-            .metadata()
-            .format()
-            .map_or(true, |x| x.is_potentially_transparent())
-        {
+        if !obj.metadata().is_potentially_transparent() {
             log::debug!("This format does not support transparency");
             return Some(Self::default_background_color());
         }

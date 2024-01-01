@@ -1,4 +1,4 @@
-// Copyright (c) 2023 Sophie Herold
+// Copyright (c) 2023-2024 Sophie Herold
 // Copyright (c) 2023 Julian Hofer
 //
 // This program is free software: you can redistribute it and/or modify
@@ -27,7 +27,7 @@ use glib::Properties;
 use gtk::CompositeTemplate;
 use once_cell::sync::OnceCell;
 
-use crate::decoder::{self, ImageDimensionDetails};
+use crate::decoder::{self};
 use crate::deps::*;
 use crate::util::gettext::*;
 use crate::widgets::{LpImage, LpPrintPreview};
@@ -370,7 +370,7 @@ mod imp {
                     imp.title.set_title(&gettext_f(
                         // Translators: {} is a placeholder for the filename
                         "Print “{}”",
-                        &[&basename],
+                        [basename],
                     ));
                     if let Some(printer) = operation.print_settings().and_then(|x| x.printer()) {
                         imp.title.set_subtitle(&printer);
@@ -514,7 +514,8 @@ impl LpPrint {
 
     pub fn original_size(&self) -> (f64, f64) {
         let image = self.image();
-        if let ImageDimensionDetails::Svg(_, Some((w, h))) = image.dimension_details() {
+        let metadata = image.metadata();
+        if let Some((w, h)) = metadata.dimensions_inch() {
             let dpi = self.dpi();
 
             ((w * dpi).round(), (h * dpi).round())
@@ -897,7 +898,7 @@ impl LpPrint {
         let texture_scale = self.user_width() / orig_width;
         let cairo_scale = cairo_dpi / self.dpi();
 
-        let texture = if image.metadata().format().map_or(false, |x| x.is_svg()) {
+        let texture = if image.metadata().is_svg() {
             // Render SVG to exact needed sizes
             // TODO: This should be async
             decoder::formats::Svg::render_print(

@@ -1,4 +1,4 @@
-// Copyright (c) 2023 Sophie Herold
+// Copyright (c) 2023-2024 Sophie Herold
 // Copyright (c) 2023 FineFindus
 //
 // This program is free software: you can redistribute it and/or modify
@@ -33,7 +33,7 @@ use std::time::Duration;
 use arc_swap::ArcSwap;
 use gtk::prelude::*;
 
-use super::{DecoderUpdate, ImageDimensionDetails, UpdateSender};
+use super::{DecoderUpdate, UpdateSender};
 use crate::deps::*;
 
 const ZOOM_SIGNIFICANT_DIGITS: i32 = 6;
@@ -676,14 +676,6 @@ impl SharedFrameBuffer {
     }
 
     pub fn set_original_dimensions(&self, size: Coordinates) {
-        self.set_original_dimensions_full(size, Default::default());
-    }
-
-    pub fn set_original_dimensions_full(
-        &self,
-        size: Coordinates,
-        dimension_details: ImageDimensionDetails,
-    ) {
         self.buffer.rcu(|tiling_store| {
             let mut new_store = (**tiling_store).clone();
             new_store.current().original_dimensions = Some(size);
@@ -691,7 +683,7 @@ impl SharedFrameBuffer {
         });
 
         if let Some(updater) = &self.buffer.load().update_sender {
-            updater.send(DecoderUpdate::Dimensions(dimension_details));
+            updater.send(DecoderUpdate::Dimensions);
         }
     }
 

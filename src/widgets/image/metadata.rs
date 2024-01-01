@@ -83,10 +83,6 @@ impl imp::LpImage {
 }
 
 impl LpImage {
-    pub fn dimension_details(&self) -> decoder::ImageDimensionDetails {
-        self.imp().dimension_details.borrow().clone()
-    }
-
     pub fn file(&self) -> Option<gio::File> {
         self.imp().file.borrow().clone()
     }

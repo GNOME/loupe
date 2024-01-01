@@ -1,4 +1,4 @@
-// Copyright (c) 2023 Sophie Herold
+// Copyright (c) 2023-2024 Sophie Herold
 // Copyright (c) 2023 Julian Hofer
 //
 // This program is free software: you can redistribute it and/or modify
@@ -24,13 +24,13 @@ pub mod tiling;
 use std::sync::Arc;
 
 use anyhow::Result;
+pub use formats::RSVG_MAX_SIZE;
 use formats::*;
-pub use formats::{ImageDimensionDetails, RSVG_MAX_SIZE};
 use futures_channel::mpsc;
 
 use self::tiling::SharedFrameBuffer;
 use crate::deps::*;
-use crate::metadata::{ImageFormat, Metadata};
+use crate::metadata::Metadata;
 
 #[derive(Clone, Copy, Debug)]
 /// Renderer requests new tiles
@@ -52,11 +52,9 @@ pub struct UpdateSender {
 /// Signals for renderer (LpImage)
 pub enum DecoderUpdate {
     /// Dimensions of image in `TilingSore` available/updated
-    Dimensions(ImageDimensionDetails),
+    Dimensions,
     /// Metadata available
-    Metadata(Metadata),
-    /// Image format determined
-    Format(ImageFormat),
+    Metadata(Box<Metadata>),
     /// Image format not supported or unknown
     UnsupportedFormat,
     /// New image data available, redraw
@@ -144,10 +142,6 @@ impl Decoder {
             // - image/svg+xml
             // - image/svg+xml-compressed
             if mime_type.split('+').next() == Some("image/svg") {
-                update_sender.send(DecoderUpdate::Format(ImageFormat::new(
-                    mime_type,
-                    Some("SVG".into()),
-                )));
                 return FormatDecoder::Svg(Svg::new(file, update_sender, tiles));
             }
         }

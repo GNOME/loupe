@@ -22,10 +22,3 @@ pub use glycin_proxy::Glycin;
 pub use svg::{Svg, RSVG_MAX_SIZE};
 
 use super::{DecoderUpdate, UpdateSender};
-
-#[derive(Clone, Debug, Default)]
-pub enum ImageDimensionDetails {
-    Svg(String, Option<(f64, f64)>),
-    #[default]
-    None,
-}

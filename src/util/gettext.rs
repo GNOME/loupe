@@ -1,4 +1,4 @@
-// Copyright (c) 2023 Sophie Herold
+// Copyright (c) 2023-2024 Sophie Herold
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -17,15 +17,15 @@
 
 pub use gettextrs::gettext;
 
-fn freplace(mut s: String, args: &[&str]) -> String {
+fn freplace(mut s: String, args: impl IntoIterator<Item = impl AsRef<str>>) -> String {
     for arg in args {
-        s = s.replacen("{}", arg, 1);
+        s = s.replacen("{}", arg.as_ref(), 1);
     }
 
     s
 }
 
-pub fn gettext_f(format: &str, args: &[&str]) -> String {
+pub fn gettext_f(format: &str, args: impl IntoIterator<Item = impl AsRef<str>>) -> String {
     let s = gettextrs::gettext(format);
     freplace(s, args)
 }

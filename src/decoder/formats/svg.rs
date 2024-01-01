@@ -1,4 +1,4 @@
-// Copyright (c) 2023 Sophie Herold
+// Copyright (c) 2023-2024 Sophie Herold
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -27,7 +27,7 @@ use super::*;
 use crate::decoder::tiling::SharedFrameBuffer;
 use crate::decoder::TileRequest;
 use crate::deps::*;
-use crate::metadata::ImageFormat;
+use crate::metadata::Metadata;
 
 /// Current librsvg limit on maximum dimensions. See
 /// <https://gitlab.gnome.org/GNOME/librsvg/-/issues/938>
@@ -78,21 +78,12 @@ impl Svg {
 
             let image = image_request.request().await?;
 
-            let dimensions = if let Some(string) = image.info().details.dimensions_text.as_ref() {
-                ImageDimensionDetails::Svg(string.to_string(), image.info().details.dimensions_inch)
-            } else {
-                ImageDimensionDetails::None
-            };
+            let mut metadata: Metadata = Metadata::default();
+            metadata.set_image_info(image.info().details.clone());
+            metadata.set_mime_type(image.mime_type());
+            updater.send(DecoderUpdate::Metadata(Box::new(metadata)));
 
-            tiles.set_original_dimensions_full(
-                (image.info().width, image.info().height),
-                dimensions,
-            );
-
-            updater.send(DecoderUpdate::Format(ImageFormat::new(
-                image.mime_type(),
-                image.format_name(),
-            )));
+            tiles.set_original_dimensions((image.info().width, image.info().height));
 
             loop {
                 let tile_request = {

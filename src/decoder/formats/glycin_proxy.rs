@@ -1,4 +1,4 @@
-// Copyright (c) 2023 Sophie Herold
+// Copyright (c) 2023-2024 Sophie Herold
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -24,7 +24,7 @@ use gtk::prelude::*;
 use super::*;
 use crate::decoder::tiling::{self, SharedFrameBuffer};
 use crate::deps::*;
-use crate::metadata::{ImageFormat, Metadata};
+use crate::metadata::Metadata;
 
 pub const FRAME_BUFFER: usize = 3;
 
@@ -57,22 +57,19 @@ impl Glycin {
 
             let image = image_request.request().await?;
 
-            if let Some(exif_raw) = image.info().details.exif.clone() {
-                let mut metadata = Metadata::default();
-                metadata.set_exif_bytes(exif_raw);
-                metadata.set_transformations_applied(image.info().details.transformations_applied);
-                updater.send(DecoderUpdate::Metadata(metadata));
-            }
+            let mut metadata: Metadata = Metadata::default();
+            metadata.set_image_info(image.info().details.clone());
+            metadata.set_mime_type(image.mime_type());
+            updater.send(DecoderUpdate::Metadata(Box::new(metadata)));
 
             let dimensions = (image.info().width, image.info().height);
             tiles.set_original_dimensions(dimensions);
 
-            updater.send(DecoderUpdate::Format(ImageFormat::new(
-                image.mime_type(),
-                image.format_name(),
-            )));
-
             let frame = image.next_frame().await?;
+
+            let mut metadata: Metadata = Metadata::default();
+            metadata.set_frame_info(frame.details);
+            updater.send(DecoderUpdate::Metadata(Box::new(metadata)));
 
             if let Some(delay) = frame.delay {
                 updater.send(DecoderUpdate::Animated);

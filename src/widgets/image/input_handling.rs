@@ -1,4 +1,4 @@
-// Copyright (c) 2023 Sophie Herold
+// Copyright (c) 2023-2024 Sophie Herold
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -45,41 +45,48 @@ impl imp::LpImage {
             gtk::EventControllerScroll::new(gtk::EventControllerScrollFlags::VERTICAL);
 
         scroll_controller.connect_scroll(glib::clone!(@weak obj => @default-return glib::Propagation::Proceed, move |event, _, y| {
-            // use Ctrl key as modifier for vertical scrolling
-            if event.current_event_state().contains(gdk::ModifierType::CONTROL_MASK)
-                || event.current_event_state().contains(gdk::ModifierType::SHIFT_MASK)
-            {
-                // propagate event to scrolled window
-                return glib::Propagation::Proceed;
-            }
+            let state = event.current_event_state();
 
-            // touchpads do zoom via gestures only
-            if event.current_event_device().map(|x| x.source())
-                == Some(gdk::InputSource::Touchpad)
+            if event.current_event_device().map(|x| x.source()) == Some(gdk::InputSource::Touchpad)
             {
-                // propagate event to scrolled window
-                return glib::Propagation::Proceed;
+                // Touchpads do zoom via gestures, expect when Ctrl key is pressed
+                if !state.contains(gdk::ModifierType::CONTROL_MASK) {
+                    // propagate event to scrolled window
+                    return glib::Propagation::Proceed;
+                }
+            } else {
+                // use Ctrl key as modifier for vertical scrolling
+                if state.contains(gdk::ModifierType::CONTROL_MASK)
+                    || state.contains(gdk::ModifierType::SHIFT_MASK)
+                {
+                    // propagate event to scrolled window
+                    return glib::Propagation::Proceed;
+                }
             }
 
             // Use exponential scaling since zoom is always multiplicative with the existing value
             // This is the right thing since `exp(n/2)^2 == exp(n)` (two small steps are the same as one larger step)
             let (zoom_factor, animated) = match event.unit() {
-                gdk::ScrollUnit::Wheel => (f64::exp( - y * f64::ln(ZOOM_FACTOR_SCROLL_WHEEL)), y.abs() >= 1.),
-                gdk::ScrollUnit::Surface => (f64::exp( - y * f64::ln(ZOOM_FACTOR_SCROLL_SURFACE)), false),
+                gdk::ScrollUnit::Wheel => (
+                    f64::exp(-y * f64::ln(ZOOM_FACTOR_SCROLL_WHEEL)),
+                    y.abs() >= 1.,
+                ),
+                gdk::ScrollUnit::Surface => {
+                    (f64::exp(-y * f64::ln(ZOOM_FACTOR_SCROLL_SURFACE)), false)
+                }
                 unknown_unit => {
                     log::warn!("Ignoring unknown scroll unit: {unknown_unit}");
                     (1., false)
                 }
             };
 
-            let zoom =
-                obj.imp().zoom_target.get() * zoom_factor;
+            let zoom = obj.imp().zoom_target.get() * zoom_factor;
 
-                if animated {
-                    obj.zoom_to(zoom);
-                } else {
-                    obj.imp().zoom_to_full(zoom, false, false);
-                }
+            if animated {
+                obj.zoom_to(zoom);
+            } else {
+                obj.imp().zoom_to_full(zoom, false, false);
+            }
 
             // do not propagate event to scrolled window
             glib::Propagation::Stop

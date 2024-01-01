@@ -1,4 +1,4 @@
-// Copyright (c) 2022-2023 Sophie Herold
+// Copyright (c) 2022-2024 Sophie Herold
 // Copyright (c) 2023 FineFindus
 //
 // This program is free software: you can redistribute it and/or modify
@@ -22,11 +22,10 @@
 */
 
 mod file;
-mod format;
 mod gps;
 
 pub use file::FileInfo;
-pub use format::ImageFormat;
+use glycin_utils::{FrameDetails, ImageInfoDetails};
 pub use gps::GPSLocation;
 
 use crate::deps::*;
@@ -35,10 +34,12 @@ use crate::util::gettext::*;
 
 #[derive(Default)]
 pub struct Metadata {
+    mime_type: Option<String>,
     exif: Option<exif::Exif>,
     file_info: Option<FileInfo>,
-    format: Option<ImageFormat>,
-    transformations_applied: Option<bool>,
+    // TODO: Replace with glycin in newer glycin version
+    image_info: Option<glycin_utils::ImageInfoDetails>,
+    frame_info: Option<FrameDetails>,
 }
 
 impl std::fmt::Debug for Metadata {
@@ -62,7 +63,7 @@ impl std::fmt::Debug for Metadata {
 }
 
 impl Metadata {
-    pub fn set_exif_bytes(&mut self, bytes: Vec<u8>) {
+    fn set_exif_bytes(&mut self, bytes: Vec<u8>) {
         let reader = exif::Reader::new();
         let exif = reader.read_raw(bytes);
 
@@ -73,16 +74,23 @@ impl Metadata {
         self.exif = exif.ok();
     }
 
-    pub fn set_transformations_applied(&mut self, applied: bool) {
-        self.transformations_applied = Some(applied);
+    pub fn set_image_info(&mut self, image_info: ImageInfoDetails) {
+        if let Some(exif_raw) = image_info.exif.as_ref() {
+            self.set_exif_bytes(exif_raw.clone());
+        }
+        self.image_info = Some(image_info);
+    }
+
+    pub fn set_frame_info(&mut self, frame_info: FrameDetails) {
+        self.frame_info = Some(frame_info);
     }
 
     pub fn set_file_info(&mut self, file_info: FileInfo) {
         self.file_info = Some(file_info);
     }
 
-    pub fn set_format(&mut self, format: ImageFormat) {
-        self.format = Some(format);
+    pub fn set_mime_type(&mut self, mime_type: String) {
+        self.mime_type = Some(mime_type);
     }
 
     pub fn merge(&mut self, other: Self) {
@@ -92,8 +100,14 @@ impl Metadata {
         if self.file_info.is_none() {
             self.file_info = other.file_info;
         }
-        if self.transformations_applied.is_none() {
-            self.transformations_applied = other.transformations_applied;
+        if self.image_info.is_none() {
+            self.image_info = other.image_info;
+        }
+        if self.mime_type.is_none() {
+            self.mime_type = other.mime_type;
+        }
+        if self.frame_info.is_none() {
+            self.frame_info = other.frame_info;
         }
     }
 
@@ -104,18 +118,42 @@ impl Metadata {
             .map(|x| x.to_string())
     }
 
-    pub fn format(&self) -> Option<&ImageFormat> {
-        self.format.as_ref()
-    }
-
     pub fn format_name(&self) -> Option<String> {
-        self.format()
-            .map(|x| x.to_string())
+        self.image_info
+            .as_ref()
+            .and_then(|x| x.format_name.clone())
             .or_else(|| self.mime_type())
     }
 
+    pub fn alpha_channel(&self) -> Option<bool> {
+        self.frame_info.as_ref().and_then(|x| x.alpha_channel)
+    }
+
+    pub fn grayscale(&self) -> Option<bool> {
+        self.frame_info.as_ref().and_then(|x| x.grayscale)
+    }
+
+    pub fn bit_depth(&self) -> Option<u8> {
+        self.frame_info.as_ref().and_then(|x| x.bit_depth)
+    }
+
+    pub fn is_svg(&self) -> bool {
+        matches!(
+            self.mime_type.as_deref(),
+            Some("image/svg+xml") | Some("image/svg+xml-compressed")
+        )
+    }
+
+    pub fn is_potentially_transparent(&self) -> bool {
+        // TODO: Implement again
+        true
+    }
+
     pub fn transformations_applied(&self) -> bool {
-        self.transformations_applied.unwrap_or(false)
+        self.image_info
+            .as_ref()
+            .map(|x| x.transformations_applied)
+            .unwrap_or(false)
     }
 
     pub fn orientation(&self) -> Orientation {
@@ -134,6 +172,16 @@ impl Metadata {
         } else {
             Orientation::default()
         }
+    }
+
+    pub fn dimensions_inch(&self) -> Option<(f64, f64)> {
+        self.image_info.as_ref().and_then(|x| x.dimensions_inch)
+    }
+
+    pub fn dimensions_text(&self) -> Option<String> {
+        self.image_info
+            .as_ref()
+            .and_then(|x| x.dimensions_text.clone())
     }
 
     pub fn file_name(&self) -> Option<String> {
@@ -210,7 +258,7 @@ impl Metadata {
                 let exposure = format!("{:.0}", 1. / rational.first()?.to_f32());
 
                 // Translators: Unit for exposure time in seconds
-                return Some(gettext_f("1\u{2215}{}\u{202F}s", &[&exposure]));
+                return Some(gettext_f("1\u{2215}{}\u{202F}s", [exposure]));
             }
         }
 
@@ -235,7 +283,7 @@ impl Metadata {
             if let exif::Value::Rational(rational) = &field.value {
                 let length = format!("{:.0}", rational.first()?.to_f32());
                 // Translators: Unit for focal length in millimeters
-                return Some(gettext_f("{}\u{202F}mm", &[&length]));
+                return Some(gettext_f("{}\u{202F}mm", [length]));
             }
         }
 

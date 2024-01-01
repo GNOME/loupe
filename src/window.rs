@@ -1,5 +1,5 @@
 // Copyright (c) 2020-2023 Christopher Davis
-// Copyright (c) 2022-2023 Sophie Herold
+// Copyright (c) 2022-2024 Sophie Herold
 // Copyright (c) 2022 Elton A Rodrigues
 // Copyright (c) 2022 Maximiliano Sandoval R
 // Copyright (c) 2023 Matteo Nardi
@@ -684,7 +684,7 @@ impl LpWindow {
             .heading(gettext("Permanently Delete Image?"))
             .body(gettext_f(
                 "The image “{}” can only be deleted permanently.",
-                &[&PathBuf::from(&path.file_name().unwrap_or_default())
+                [PathBuf::from(&path.file_name().unwrap_or_default())
                     .display()
                     .to_string()],
             ))
