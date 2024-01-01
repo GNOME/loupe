@@ -12,7 +12,6 @@ src/decoder/tiling.rs
 src/file_model.rs
 src/main.rs
 src/metadata/file.rs
-src/metadata/format.rs
 src/metadata/gps.rs
 src/metadata/mod.rs
 src/util/gettext.rs
