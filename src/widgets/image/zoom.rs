@@ -81,7 +81,11 @@ impl imp::LpImage {
     }
 
     pub(super) fn applicable_zoom(&self) -> f64 {
-        decoder::tiling::zoom_normalize(self.obj().zoom()) / self.scaling()
+        self.applicable_zoom_for(self.obj().zoom())
+    }
+
+    pub(super) fn applicable_zoom_for(&self, zoom: f64) -> f64 {
+        decoder::tiling::zoom_normalize(zoom) / self.scaling()
     }
 
     /// Maximal zoom allowed for this image
@@ -97,6 +101,45 @@ impl imp::LpImage {
         } else {
             MAX_ZOOM_LEVEL
         }
+    }
+
+    fn horizontal_bar(&self) -> f64 {
+        f64::max(
+            0.,
+            (self.widget_width() - self.image_displayed_width()) / 2.,
+        )
+    }
+
+    fn vertical_bar(&self) -> f64 {
+        f64::max(
+            0.,
+            (self.widget_height() - self.image_displayed_height()) / 2.,
+        )
+    }
+
+    /// Cursor position in image coordinates
+    fn cursor_position(&self) -> Option<(f64, f64)> {
+        let (cur_x, cur_y) = self.pointer_position.get()?;
+        let zoom = self.applicable_zoom();
+        let x = (cur_x - self.horizontal_bar() + self.hadj_value()) / zoom;
+        let y = (cur_y - self.vertical_bar() + self.vadj_value()) / zoom;
+
+        Some((x, y))
+    }
+
+    // Required adjustment to put specified image coordinate under the cursor
+    fn adj_for_position(&self, (img_x, img_y): (f64, f64), zoom: f64) -> Option<(f64, f64)> {
+        let (cur_x, cur_y) = self.pointer_position.get()?;
+
+        let zoom = self.applicable_zoom_for(zoom);
+
+        // Transform image coordiantes to view coordinates
+        let (img_x, img_y) = (img_x * zoom, img_y * zoom);
+
+        let h_adj = f64::max(0., img_x - cur_x);
+        let v_adj: f64 = f64::max(0., img_y - cur_y);
+
+        Some((h_adj, v_adj))
     }
 
     /// Set zoom level aiming for given position or center if not available
