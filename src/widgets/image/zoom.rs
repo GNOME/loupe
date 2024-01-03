@@ -178,32 +178,25 @@ impl imp::LpImage {
 
         self.configure_adjustments();
 
-        let center_x = self.widget_width() / 2.;
-        let center_y = self.widget_height() / 2.;
-
-        let (x, y) = aiming.unwrap_or((center_x, center_y));
-
-        if self.zoom_hscrollbar_transition.get() {
-            if zoom_ratio < 1. {
-                self.set_hadj_value(self.max_hadjustment_value() / 2.);
-            } else {
-                // move towards center
-                self.set_hadj_value(self.hadjustment_corrected_for_zoom(zoom_ratio, center_x));
-            }
+        let (h_adj, v_adj) = if let Some(adj) = self
+            .zoom_cursor_target
+            .get()
+            .and_then(|pos| self.adj_for_position(pos, zoom))
+        {
+            adj
         } else {
-            self.set_hadj_value(self.hadjustment_corrected_for_zoom(zoom_ratio, x));
-        }
+            let center_x = self.widget_width() / 2.;
+            let center_y = self.widget_height() / 2.;
+            let (x, y) = aiming.unwrap_or((center_x, center_y));
 
-        if self.zoom_vscrollbar_transition.get() {
-            if zoom_ratio < 1. {
-                self.set_vadj_value(self.max_vadjustment_value() / 2.);
-            } else {
-                // move towards center
-                self.set_vadj_value(self.vadjustment_corrected_for_zoom(zoom_ratio, center_y));
-            }
-        } else {
-            self.set_vadj_value(self.vadjustment_corrected_for_zoom(zoom_ratio, y));
-        }
+            (
+                self.hadjustment_corrected_for_zoom(zoom_ratio, x),
+                self.vadjustment_corrected_for_zoom(zoom_ratio, y),
+            )
+        };
+
+        self.set_hadj_value(h_adj);
+        self.set_vadj_value(v_adj);
 
         obj.notify_zoom();
         obj.queue_draw();
@@ -257,20 +250,11 @@ impl imp::LpImage {
         }
 
         if animated {
-            // wild code
-            let current_hborder = self.widget_width() - self.image_displayed_width();
-            let target_hborder = self.widget_width() - obj.image_size().0 as f64 * zoom;
+            let animation: &adw::TimedAnimation = self.zoom_animation();
 
-            self.zoom_hscrollbar_transition
-                .set(current_hborder.signum() != target_hborder.signum() && current_hborder != 0.);
-
-            let current_vborder = self.widget_height() - self.image_displayed_height();
-            let target_vborder = self.widget_height() - obj.image_size().1 as f64 * zoom;
-
-            self.zoom_hscrollbar_transition
-                .set(current_vborder.signum() != target_vborder.signum() && current_vborder != 0.);
-
-            let animation = self.zoom_animation();
+            if self.zoom_cursor_target.get().is_none() {
+                self.zoom_cursor_target.set(self.cursor_position());
+            }
 
             animation.set_value_from(obj.zoom());
             animation.set_value_to(zoom);
@@ -294,8 +278,7 @@ impl imp::LpImage {
 
             animation.connect_done(glib::clone!(@weak obj => move |_| {
                 let imp = obj.imp();
-                imp.zoom_hscrollbar_transition.set(false);
-                imp.zoom_vscrollbar_transition.set(false);
+                imp.zoom_cursor_target.set(None);
                 imp.set_zoom_target(obj.imp().zoom_target.get());
             }));
 

@@ -169,11 +169,7 @@ mod imp {
         /// Targeted zoom level, might differ from `zoom` when animation is
         /// running
         pub(super) zoom_target: Cell<f64>,
-        /// Current animation is transitioning from having horizontal scrollbars
-        /// to not having them or vice versa.
-        pub(super) zoom_hscrollbar_transition: Cell<bool>,
-        /// Same but for vertical
-        pub(super) zoom_vscrollbar_transition: Cell<bool>,
+        pub(super) zoom_cursor_target: Cell<Option<(f64, f64)>>,
 
         /// Always fit image into window, causes `zoom` to change automatically
         #[property(get, set)]
