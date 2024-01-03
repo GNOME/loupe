@@ -117,33 +117,35 @@ impl imp::LpImage {
         )
     }
 
-    /// Cursor position in image coordinates
-    fn cursor_position(&self) -> Option<(f64, f64)> {
-        let (cur_x, cur_y) = self.pointer_position.get()?;
+    /// Convert widget coordinates to image coordinates
+    fn widget_to_img_coord(&self, (cur_x, cur_y): (f64, f64)) -> (f64, f64) {
         let zoom = self.applicable_zoom();
         let x = (cur_x - self.horizontal_bar() + self.hadj_value()) / zoom;
         let y = (cur_y - self.vertical_bar() + self.vadj_value()) / zoom;
 
-        Some((x, y))
+        (x, y)
     }
 
-    // Required adjustment to put specified image coordinate under the cursor
-    fn adj_for_position(&self, (img_x, img_y): (f64, f64), zoom: f64) -> Option<(f64, f64)> {
-        let (cur_x, cur_y) = self.pointer_position.get()?;
-
+    /// Required adjustment to put image coordinate under the cursor at this zoom level
+    fn adj_for_position(
+        &self,
+        (cur_x, cur_y): (f64, f64),
+        (img_x, img_y): (f64, f64),
+        zoom: f64,
+    ) -> (f64, f64) {
         let zoom = self.applicable_zoom_for(zoom);
 
         // Transform image coordiantes to view coordinates
         let (img_x, img_y) = (img_x * zoom, img_y * zoom);
 
         let h_adj = f64::max(0., img_x - cur_x);
-        let v_adj: f64 = f64::max(0., img_y - cur_y);
+        let v_adj = f64::max(0., img_y - cur_y);
 
-        Some((h_adj, v_adj))
+        (h_adj, v_adj)
     }
 
     /// Set zoom level aiming for given position or center if not available
-    pub(super) fn set_zoom_aiming(&self, mut zoom: f64, aiming: Option<(f64, f64)>) {
+    pub(super) fn set_zoom_aiming(&self, mut zoom: f64, cur: Option<(f64, f64)>) {
         let obj = self.obj();
 
         let max_zoom = self.max_zoom();
@@ -172,28 +174,30 @@ impl imp::LpImage {
             return;
         }
 
-        let zoom_ratio = self.zoom.get() / zoom;
+        // Point in image that should stay under the cursor
+        let img_pos = if let Some(img_pos) = self.zoom_cursor_target.get() {
+            // Point is stored for animation
+            img_pos
+        } else if let Some(cur_pos) = cur {
+            // Get image coordinate from the passed cursor position
+            self.widget_to_img_coord(cur_pos)
+        } else {
+            // Use center of image
+            let (width, height) = obj.image_size();
+            (width as f64 / 2., height as f64 / 2.)
+        };
+
+        let cur_pos = if let Some(cur) = cur {
+            cur
+        } else {
+            // Use center of widget since no cursor position available
+            (self.widget_width() / 2., self.widget_height() / 2.)
+        };
+
+        let (h_adj, v_adj) = self.adj_for_position(cur_pos, img_pos, zoom);
 
         self.zoom.set(zoom);
-
         self.configure_adjustments();
-
-        let (h_adj, v_adj) = if let Some(adj) = self
-            .zoom_cursor_target
-            .get()
-            .and_then(|pos| self.adj_for_position(pos, zoom))
-        {
-            adj
-        } else {
-            let center_x = self.widget_width() / 2.;
-            let center_y = self.widget_height() / 2.;
-            let (x, y) = aiming.unwrap_or((center_x, center_y));
-
-            (
-                self.hadjustment_corrected_for_zoom(zoom_ratio, x),
-                self.vadjustment_corrected_for_zoom(zoom_ratio, y),
-            )
-        };
 
         self.set_hadj_value(h_adj);
         self.set_vadj_value(v_adj);
@@ -252,8 +256,14 @@ impl imp::LpImage {
         if animated {
             let animation: &adw::TimedAnimation = self.zoom_animation();
 
+            // Set new point in image that should remain under the cursor while zooming if
+            // there isn't one already
             if self.zoom_cursor_target.get().is_none() {
-                self.zoom_cursor_target.set(self.cursor_position());
+                let img_pos = self
+                    .pointer_position
+                    .get()
+                    .map(|x| self.widget_to_img_coord(x));
+                self.zoom_cursor_target.set(img_pos);
             }
 
             animation.set_value_from(obj.zoom());
@@ -284,34 +294,6 @@ impl imp::LpImage {
 
             animation
         })
-    }
-
-    /// Required scrollbar change to keep aiming
-    ///
-    /// When zooming by a ratio of `zoom_delta` and wanting to keep position `x`
-    /// in the image at the same place in the widget, the returned value is
-    /// the correct value for hadjustment to achieve that.
-    pub fn hadjustment_corrected_for_zoom(&self, zoom_delta: f64, x: f64) -> f64 {
-        // Width of bars to the left and right of the image
-        let border = if self.widget_width() > self.image_displayed_width() {
-            (self.widget_width() - self.image_displayed_width()) / 2.
-        } else {
-            0.
-        };
-
-        f64::max((x + self.hadj_value() - border) / zoom_delta - x, 0.)
-    }
-
-    /// Same but for vertical adjustment
-    pub fn vadjustment_corrected_for_zoom(&self, zoom_delta: f64, y: f64) -> f64 {
-        // Width of bars to the top and bottom of the image
-        let border = if self.widget_height() > self.image_displayed_height() {
-            (self.widget_height() - self.image_displayed_height()) / 2.
-        } else {
-            0.
-        };
-
-        f64::max((y + self.vadj_value() - border) / zoom_delta - y, 0.)
     }
 }
 

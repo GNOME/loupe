@@ -169,6 +169,8 @@ mod imp {
         /// Targeted zoom level, might differ from `zoom` when animation is
         /// running
         pub(super) zoom_target: Cell<f64>,
+        /// Point in image that should stay under the cursor during animation.
+        /// The value is in image coordinates.
         pub(super) zoom_cursor_target: Cell<Option<(f64, f64)>>,
 
         /// Always fit image into window, causes `zoom` to change automatically
