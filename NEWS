@@ -5,12 +5,19 @@
 - Fix "g_object_weak_unref" warnings
 - Fix changing image resets timeout for hiding controls if still visible
 - Fix long file names can newly opened window larger than required for image
+- Fix not always zooming into center when using overlay buttons on touchscreen
 - Fix opening image in different folder ends fullscreen mode
 - Fix scrollbars disappearing under certain conditions
+- Add zooming via touchpad scrolling while Ctrl button is pressed
 - Follow G_MESSAGES_DEBUG variable for logging
+- In print preview, base 100% image scale on physical dimensions of SVGs if specified
+- In print preview, fix wrong upper input limit in height
+- In print preview, scale SVGs correctly
+- More reliably zoom into image position below cursor
 - Pre-select current image's folder in file-chooser dialog
 - Remember image properties visibility state
 - Use GdkSurface:scale instead of scale factor, in theory supporting fractional scaling
+- Use glycin 1.0
 
 45.3
 ====
