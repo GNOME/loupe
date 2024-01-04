@@ -85,7 +85,7 @@ impl imp::LpImage {
             if animated {
                 obj.zoom_to(zoom);
             } else {
-                obj.imp().zoom_to_full(zoom, false, false);
+                obj.imp().zoom_to_full(zoom, false, false, false);
             }
 
             // do not propagate event to scrolled window

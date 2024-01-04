@@ -170,7 +170,7 @@ impl LpApplication {
         );
         self.set_accels_for_action("win.zoom-best-fit", &["0", "KP_0", "<Ctrl>0", "<Ctrl>KP_0"]);
         self.set_accels_for_action(
-            "win.zoom-in",
+            "win.zoom-in-cursor",
             &[
                 "<Ctrl>plus",
                 "plus",
@@ -181,7 +181,7 @@ impl LpApplication {
             ],
         );
         self.set_accels_for_action(
-            "win.zoom-out",
+            "win.zoom-out-cursor",
             &["<Ctrl>minus", "minus", "<Ctrl>KP_Subtract", "KP_Subtract"],
         );
 

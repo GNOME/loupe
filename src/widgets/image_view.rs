@@ -632,18 +632,6 @@ impl LpImageView {
         self.imp().fullscreen_button.set_icon_name(icon);
     }
 
-    pub fn zoom_out(&self) {
-        if let Some(current_page) = self.current_page() {
-            current_page.image().zoom_out();
-        }
-    }
-
-    pub fn zoom_in(&self) {
-        if let Some(current_page) = self.current_page() {
-            current_page.image().zoom_in();
-        }
-    }
-
     pub fn rotate_image(&self, angle: f64) {
         if let Some(current_page) = self.current_page() {
             current_page.image().rotate_by(angle);

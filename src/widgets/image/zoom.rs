@@ -126,7 +126,8 @@ impl imp::LpImage {
         (x, y)
     }
 
-    /// Required adjustment to put image coordinate under the cursor at this zoom level
+    /// Required adjustment to put image coordinate under the cursor at this
+    /// zoom level
     fn adj_for_position(
         &self,
         (cur_x, cur_y): (f64, f64),
@@ -216,8 +217,14 @@ impl imp::LpImage {
         }
     }
 
-    pub(super) fn zoom_to_full(&self, mut zoom: f64, animated: bool, snap_best_fit: bool) {
-        let obj = self.obj();
+    pub(super) fn zoom_to_full(
+        &self,
+        mut zoom: f64,
+        animated: bool,
+        snap_best_fit: bool,
+        force_cursor_center: bool,
+    ) {
+        let obj = self.obj().to_owned();
 
         let max_zoom = self.max_zoom();
         if zoom >= max_zoom {
@@ -254,16 +261,26 @@ impl imp::LpImage {
         }
 
         if animated {
-            let animation: &adw::TimedAnimation = self.zoom_animation();
+            let animation = self.zoom_animation();
 
-            // Set new point in image that should remain under the cursor while zooming if
-            // there isn't one already
-            if self.zoom_cursor_target.get().is_none() {
-                let img_pos = self
-                    .pointer_position
-                    .get()
-                    .map(|x| self.widget_to_img_coord(x));
-                self.zoom_cursor_target.set(img_pos);
+            if force_cursor_center {
+                animation.set_target(&adw::CallbackAnimationTarget::new(
+                    glib::clone!(@weak obj => move |zoom| {
+                        obj.imp().set_zoom_aiming(zoom, None);
+                    }),
+                ));
+            } else {
+                // Set new point in image that should remain under the cursor while zooming if
+                // there isn't one already
+                if self.zoom_cursor_target.get().is_none() {
+                    let img_pos = self
+                        .pointer_position
+                        .get()
+                        .map(|x| self.widget_to_img_coord(x));
+                    self.zoom_cursor_target.set(img_pos);
+                }
+
+                animation.set_target(&adw::PropertyAnimationTarget::new(&obj, "zoom"));
             }
 
             animation.set_value_from(obj.zoom());
@@ -283,7 +300,6 @@ impl imp::LpImage {
             let animation = adw::TimedAnimation::builder()
                 .duration(ZOOM_ANIMATION_DURATION)
                 .widget(&*obj)
-                .target(&adw::PropertyAnimationTarget::new(&*obj, "zoom"))
                 .build();
 
             animation.connect_done(glib::clone!(@weak obj => move |_| {
@@ -300,9 +316,27 @@ impl imp::LpImage {
 impl LpImage {
     /// Zoom in a step with animation
     ///
-    /// Used by buttons
-    pub fn zoom_in(&self) {
+    /// Used by keyboard shortcuts
+    pub fn zoom_in_cursor(&self) {
         let zoom = self.imp().zoom_target.get() * ZOOM_FACTOR_BUTTON;
+
+        self.zoom_to(zoom);
+    }
+
+    /// Zoom in a step with animation
+    ///
+    /// Used by buttons
+    pub fn zoom_in_center(&self) {
+        let zoom = self.imp().zoom_target.get() * ZOOM_FACTOR_BUTTON;
+
+        self.imp().zoom_to_full(zoom, true, true, true);
+    }
+
+    /// Zoom out a step with animation
+    ///
+    /// Used by keyboard shortcuts
+    pub fn zoom_out_cursor(&self) {
+        let zoom = self.imp().zoom_target.get() / ZOOM_FACTOR_BUTTON;
 
         self.zoom_to(zoom);
     }
@@ -310,10 +344,10 @@ impl LpImage {
     /// Zoom out a step with animation
     ///
     /// Used by buttons
-    pub fn zoom_out(&self) {
+    pub fn zoom_out_center(&self) {
         let zoom = self.imp().zoom_target.get() / ZOOM_FACTOR_BUTTON;
 
-        self.zoom_to(zoom);
+        self.imp().zoom_to_full(zoom, true, true, true);
     }
 
     /// Zoom to best fit
@@ -325,14 +359,14 @@ impl LpImage {
 
     /// Zoom to specific level with animation
     pub fn zoom_to(&self, zoom: f64) {
-        self.imp().zoom_to_full(zoom, true, true);
+        self.imp().zoom_to_full(zoom, true, true, false);
     }
 
     /// Zoom to specific level with animation not snapping to best-fit
     ///
     /// Used for zooming to 100% or 200%
     pub fn zoom_to_exact(&self, zoom: f64) {
-        self.imp().zoom_to_full(zoom, true, false);
+        self.imp().zoom_to_full(zoom, true, false, false);
     }
 
     pub fn is_best_fit(&self) -> bool {

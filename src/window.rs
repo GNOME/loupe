@@ -180,12 +180,20 @@ mod imp {
                 win.imp().image_view.jump(Position::Last);
             });
 
-            klass.install_action("win.zoom-out", None, move |win, _, _| {
-                win.zoom_out();
+            klass.install_action("win.zoom-out-cursor", None, move |win, _, _| {
+                win.zoom_out_cursor();
             });
 
-            klass.install_action("win.zoom-in", None, move |win, _, _| {
-                win.zoom_in();
+            klass.install_action("win.zoom-out-center", None, move |win, _, _| {
+                win.zoom_out_center();
+            });
+
+            klass.install_action("win.zoom-in-cursor", None, move |win, _, _| {
+                win.zoom_in_cursor();
+            });
+
+            klass.install_action("win.zoom-in-center", None, move |win, _, _| {
+                win.zoom_in_center();
             });
 
             klass.install_action("win.zoom-to-exact", Some("d"), move |win, _, level| {
@@ -485,12 +493,28 @@ impl LpWindow {
         self.set_fullscreened(fullscreen);
     }
 
-    fn zoom_out(&self) {
-        self.imp().image_view.zoom_out();
+    fn zoom_out_cursor(&self) {
+        if let Some(image) = self.imp().image_view.current_image() {
+            image.zoom_out_cursor();
+        }
     }
 
-    fn zoom_in(&self) {
-        self.imp().image_view.zoom_in();
+    fn zoom_out_center(&self) {
+        if let Some(image) = self.imp().image_view.current_image() {
+            image.zoom_out_center();
+        }
+    }
+
+    fn zoom_in_cursor(&self) {
+        if let Some(image) = self.imp().image_view.current_image() {
+            image.zoom_in_cursor();
+        }
+    }
+
+    fn zoom_in_center(&self) {
+        if let Some(image) = self.imp().image_view.current_image() {
+            image.zoom_in_center();
+        }
     }
 
     fn zoom_to_exact(&self, level: f64) {
@@ -870,8 +894,10 @@ impl LpWindow {
             .map(|image| !image.is_max_zoom())
             .unwrap_or_default();
 
-        self.action_set_enabled("win.zoom-out", can_zoom_out);
-        self.action_set_enabled("win.zoom-in", can_zoom_in);
+        self.action_set_enabled("win.zoom-out-cursor", can_zoom_out);
+        self.action_set_enabled("win.zoom-out-center", can_zoom_out);
+        self.action_set_enabled("win.zoom-in-cursor", can_zoom_in);
+        self.action_set_enabled("win.zoom-in-center", can_zoom_in);
     }
 
     fn on_fullscreen_changed(&self) {
