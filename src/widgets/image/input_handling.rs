@@ -42,11 +42,18 @@ impl imp::LpImage {
 
         // Zoom via scroll wheels etc
         let scroll_controller =
-            gtk::EventControllerScroll::new(gtk::EventControllerScrollFlags::VERTICAL);
+            gtk::EventControllerScroll::new(gtk::EventControllerScrollFlags::BOTH_AXES);
+
+        scroll_controller.connect_scroll_end(glib::clone!(@weak obj => move |event| {
+            // Avoid kinetc scrolling in scrolled window after zooming
+            if event.current_event_state().contains(gdk::ModifierType::CONTROL_MASK) {
+            obj.imp().cancel_deceleration();
+        }
+        }));
 
         scroll_controller.connect_scroll(glib::clone!(@weak obj => @default-return glib::Propagation::Proceed, move |event, _, y| {
+            let imp = obj.imp();
             let state = event.current_event_state();
-
             if event.current_event_device().map(|x| x.source()) == Some(gdk::InputSource::Touchpad)
             {
                 // Touchpads do zoom via gestures, expect when Ctrl key is pressed
@@ -80,12 +87,12 @@ impl imp::LpImage {
                 }
             };
 
-            let zoom = obj.imp().zoom_target.get() * zoom_factor;
+            let zoom = imp.zoom_target.get() * zoom_factor;
 
             if animated {
                 obj.zoom_to(zoom);
             } else {
-                obj.imp().zoom_to_full(zoom, false, false, false);
+                imp.zoom_to_full(zoom, false, false, false);
             }
 
             // do not propagate event to scrolled window
@@ -130,6 +137,8 @@ impl imp::LpImage {
         obj.add_controller(drag_gesture.clone());
 
         drag_gesture.connect_drag_begin(glib::clone!(@weak obj => move |gesture, _, _| {
+            let imp = obj.imp();
+
             // Allow only left and middle button
             if ![1, 2].contains(&gesture.current_button())
                 // Drag gesture for touchscreens is handled by ScrolledWindow
@@ -140,9 +149,9 @@ impl imp::LpImage {
             }
 
             if obj.is_hscrollable() || obj.is_vscrollable() {
-                obj.cancel_deceleration();
+                imp.cancel_deceleration();
                 obj.set_cursor(gdk::Cursor::from_name("grabbing", None).as_ref());
-                obj.imp().last_drag_value.set(Some((0., 0.)));
+                imp.last_drag_value.set(Some((0., 0.)));
             } else {
                 // let drag and drop handle the events when not scrollable
                 gesture.set_state(gtk::EventSequenceState::Denied);
@@ -169,7 +178,7 @@ impl imp::LpImage {
         obj.add_controller(rotation_gesture.clone());
 
         rotation_gesture
-            .connect_begin(glib::clone!(@weak obj => move |_,_|obj.cancel_deceleration()));
+            .connect_begin(glib::clone!(@weak obj => move |_, _| obj.imp().cancel_deceleration()));
 
         rotation_gesture.connect_angle_changed(glib::clone!(@weak obj => move |gesture, _, _| {
             let angle = gesture.angle_delta().to_degrees();
@@ -211,10 +220,9 @@ impl imp::LpImage {
         obj.add_controller(zoom_gesture.clone());
 
         zoom_gesture.connect_begin(glib::clone!(@weak obj => move |gesture, _| {
-            obj.cancel_deceleration();
-            obj.imp()
-                .zoom_gesture_center
-                .set(gesture.bounding_box_center());
+            let imp = obj.imp();
+            imp.cancel_deceleration();
+            imp.zoom_gesture_center.set(gesture.bounding_box_center());
         }));
 
         zoom_gesture.connect_scale_changed(glib::clone!(@weak obj => move |gesture, scale| {
@@ -268,14 +276,13 @@ impl imp::LpImage {
 
         zoom_gesture.group_with(&rotation_gesture);
     }
-}
 
-impl LpImage {
     /// Cancel kinetic scrolling movements, needed for some gestures
     ///
     /// If deceleration is not canceled gestures become buggy.
     fn cancel_deceleration(&self) {
         if let Some(scrolled_window) = self
+            .obj()
             .parent()
             .and_then(|x| x.downcast::<gtk::ScrolledWindow>().ok())
         {
