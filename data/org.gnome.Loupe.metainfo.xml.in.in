@@ -69,6 +69,12 @@
   </categories>
 
   <releases>
+
+    <release version="46.alpha" date="2024-01-08">
+      <description>
+        <p>This release polishes various features of the previous release. The Ctrl+C shortcut can now not only copy the viewed image but can also be used to copy selected metadata. Double tapping on touchscreens now zooms into the tapped position instead of the center. Zoom on touchpad is now also possible by using the Ctrl button and scrolling, supplementing the existing pinch gesture. The new version also brings improved sandboxing and memory limitations for image loaders.</p>
+      </description>
+    </release>
     <release version="45.3" date="2023-12-12">
       <description>
         <ul>
