@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2023-12-07 19:51+0000\n"
-"PO-Revision-Date: 2023-12-08 12:23+0300\n"
+"POT-Creation-Date: 2024-01-04 13:54+0000\n"
+"PO-Revision-Date: 2024-01-08 15:00+0300\n"
 "Last-Translator: Artur So <arturios2005@mail.ru>\n"
 "Language-Team: \n"
 "Language: ru_RU\n"
@@ -17,11 +17,10 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
-"X-Generator: Poedit 3.4.1\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #: data/org.gnome.Loupe.desktop.in.in:3
-#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:28 src/window.rs:814
-#: src/window.ui:64
+#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:29 src/window.rs:847
 msgid "Image Viewer"
 msgstr "Просмотрщик изображений"
 
@@ -33,31 +32,32 @@ msgstr "Picture;Slideshow;Graphics;Loupe;Изображение;Слайд-шо�
 msgid "Show the image properties sidebar"
 msgstr "Показать боковую панель свойств изображения"
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:7 src/about.rs:31
-msgid "The Loupe Team"
-msgstr "The Loupe Team"
+#. developer_name tag deprecated with Appstream 1.0
+#: data/org.gnome.Loupe.metainfo.xml.in.in:8 src/about.rs:32
+msgid "The GNOME Project"
+msgstr "Проект GNOME"
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:8
+#: data/org.gnome.Loupe.metainfo.xml.in.in:12
 msgid "View images"
 msgstr "Просмотр изображений"
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:10
+#: data/org.gnome.Loupe.metainfo.xml.in.in:14
 msgid "Browse through your images and inspect their metadata with:"
 msgstr "Просматривайте свои изображения и проверяйте их метаданные с помощью:"
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:12
+#: data/org.gnome.Loupe.metainfo.xml.in.in:16
 msgid "Fast GPU accelerated image rendering"
 msgstr "Быстрого рендеринга изображений с GPU-ускорением"
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:13
+#: data/org.gnome.Loupe.metainfo.xml.in.in:17
 msgid "Tiled rendering for vector graphics"
 msgstr "Плиточного рендеринга для векторной графики"
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:14
+#: data/org.gnome.Loupe.metainfo.xml.in.in:18
 msgid "Extendable and sandboxed image decoding"
 msgstr "Расширяемого и изолированного декодирования изображений"
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:15
+#: data/org.gnome.Loupe.metainfo.xml.in.in:19
 msgid "Accessible presentation of the most important metadata."
 msgstr "Доступного представления наиболее важных метаданных."
 
@@ -235,13 +235,13 @@ msgid "Gestures"
 msgstr "Жесты"
 
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/about.rs:40
+#: src/about.rs:41
 msgid "translator-credits"
 msgstr "Aleksandr Melman <alexmelman88@gmail.com>, 2023"
 
-#: src/about.rs:41
-msgid "Copyright © 2020–2023 Christopher Davis et al."
-msgstr "Авторское право © 2020-2023 Christopher Davis и др."
+#: src/about.rs:42
+msgid "Copyright © 2020–2024 Christopher Davis et al."
+msgstr "Авторское право © 2020-2024 Christopher Davis и др."
 
 #: src/file_model.rs:128
 msgid "Could not list other files in directory."
@@ -268,14 +268,14 @@ msgid "W"
 msgstr "З"
 
 #. Translators: Unit for exposure time in seconds
-#: src/metadata/mod.rs:213
+#: src/metadata/mod.rs:261
 msgid "1\\u{2215}{}\\u{202F}s"
-msgstr "1\\u{2215}{}\\u{202F}s"
+msgstr "1\\u{2215}{}\\u{202F}с"
 
 #. Translators: Unit for focal length in millimeters
-#: src/metadata/mod.rs:238
+#: src/metadata/mod.rs:286
 msgid "{}\\u{202F}mm"
-msgstr "{}\\u{202F}mm"
+msgstr "{}\\u{202F}мм"
 
 #. Translators: This is the date and time format we use in metadata output etc.
 #. The format has to follow <https://docs.gtk.org/glib/method.DateTime.format.html>
@@ -286,7 +286,7 @@ msgstr "{}\\u{202F}mm"
 msgid "%x %X"
 msgstr "%x %X"
 
-#: src/util/mod.rs:180 src/window.rs:650
+#: src/util/mod.rs:180 src/window.rs:678
 msgid "Failed to restore image from trash"
 msgstr "Не удалось восстановить изображение из корзины"
 
@@ -318,21 +318,21 @@ msgstr "_Установить как фон…"
 msgid "Could not Load Image"
 msgstr "Не удалось загрузить изображение"
 
-#: src/widgets/image_page.ui:97 src/window.ui:105
+#: src/widgets/image_page.ui:97 src/window.ui:109
 msgid "Rotate Left"
 msgstr "Повернуть влево"
 
-#: src/widgets/image_page.ui:107 src/window.ui:115
+#: src/widgets/image_page.ui:107 src/window.ui:119
 msgid "Rotate Right"
 msgstr "Повернуть вправо"
 
 #. Translators: This is a toast notification, informing the user that
 #. an image has been set as background.
-#: src/widgets/image_view.rs:676
+#: src/widgets/image_view.rs:664
 msgid "Set as background."
 msgstr "Установить как фон."
 
-#: src/widgets/image_view.rs:689
+#: src/widgets/image_view.rs:677
 msgid "Could not set background."
 msgstr "Не удалось установить фон."
 
@@ -392,74 +392,97 @@ msgid "px"
 msgstr "пикс"
 
 #. Translators: {} is a placeholder for the filename
-#: src/widgets/print.rs:370
+#: src/widgets/print.rs:372
 msgid "Print “{}”"
 msgstr "Печать “{}”"
 
+#: src/widgets/print.rs:783
+msgid "_Scale"
+msgstr "_Масштаб"
+
+#: src/widgets/print.rs:786
+msgid "_Width"
+msgstr "_Ширина"
+
 #. Translators: Go back to previous page
 #: src/widgets/print.ui:29
-msgid "Back"
-msgstr "Назад"
+msgid "_Back"
+msgstr "_Назад"
 
-#: src/widgets/print.ui:36
-msgid "Print"
-msgstr "Печать"
+#: src/widgets/print.ui:37
+msgid "_Print"
+msgstr "_Печать"
 
-#: src/widgets/print.ui:54
+#: src/widgets/print.ui:56
 msgid "Layout"
 msgstr "Макет"
 
-#: src/widgets/print.ui:57
-msgid "Orientation"
-msgstr "Ориентация"
+#: src/widgets/print.ui:59
+msgid "_Orientation"
+msgstr "_Ориентация"
 
-#: src/widgets/print.ui:69
+#: src/widgets/print.ui:72
 msgid "Portrait Page Orientation"
 msgstr "Портретная ориентация страницы"
 
-#: src/widgets/print.ui:77
+#: src/widgets/print.ui:80
 msgid "Landscape Page Orientation"
 msgstr "Ландшафтная ориентация страницы"
 
-#: src/widgets/print.ui:86
-msgid "Alignment"
-msgstr "Выравнивание"
+#: src/widgets/print.ui:89
+msgid "_Alignment"
+msgstr "_Выравнивание"
 
-#: src/widgets/print.ui:104
+#: src/widgets/print.ui:108
 msgid "Margins"
 msgstr "Отступы"
 
-#: src/widgets/print.ui:107
+#: src/widgets/print.ui:111
 msgid "Margin Units"
 msgstr "Единицы измерения отступа"
 
-#: src/widgets/print.ui:124
-msgid "Horizontal"
-msgstr "Горизонтальный"
+#: src/widgets/print.ui:128
+msgid "_Horizontal"
+msgstr "_Горизонтальный"
 
-#: src/widgets/print.ui:129
-msgid "Vertical"
-msgstr "Вертикальный"
+#: src/widgets/print.ui:134
+msgid "_Vertical"
+msgstr "В_ертикальный"
 
-#: src/widgets/print.ui:136 src/widgets/properties_view.ui:53
+#: src/widgets/print.ui:142 src/widgets/properties_view.ui:53
 msgid "Image Size"
 msgstr "Размер изображения"
 
-#: src/widgets/print.ui:139
+#: src/widgets/print.ui:145
 msgid "Image Size Units"
 msgstr "Единицы измерения размера изображения"
 
-#: src/widgets/print.ui:156
-msgid "Fill Space"
-msgstr "Заполнить пространство"
+#: src/widgets/print.ui:163
+msgid "_Fill Space"
+msgstr "_Заполнить пространство"
 
-#: src/widgets/print.ui:161
-msgid "Width"
-msgstr "Ширина"
+#: src/widgets/print.ui:174
+msgid "H_eight"
+msgstr "Вы_сота"
 
-#: src/widgets/print.ui:166
-msgid "Height"
-msgstr "Высота"
+#: src/widgets/properties_view.rs:229
+msgid "Unknown"
+msgstr "Неизвестно"
+
+#. Translators: Addition of image being transparent to format name
+#: src/widgets/properties_view.rs:233
+msgid ", transparent"
+msgstr ", прозрачное"
+
+#. Translators: Addition of image being grayscale to format name
+#: src/widgets/properties_view.rs:238
+msgid ", grayscale"
+msgstr ", градации серого"
+
+#. Translators: Addition of bit size to format name
+#: src/widgets/properties_view.rs:243
+msgid ", {}\\u{202F}bit"
+msgstr ", {}\\u{202F}бит"
 
 #: src/widgets/properties_view.ui:19
 msgid "Folder"
@@ -521,51 +544,51 @@ msgstr "Фокусное расстояние"
 msgid "Maker, Model"
 msgstr "Производитель, модель"
 
-#: src/window.rs:514
+#: src/window.rs:542
 msgid "Supported image formats"
 msgstr "Поддерживаемые форматы изображения"
 
-#: src/window.rs:523
+#: src/window.rs:551
 msgid "All files"
 msgstr "Все файлы"
 
-#: src/window.rs:530
+#: src/window.rs:558
 msgid "Open Image"
 msgstr "Открыть изображение"
 
-#: src/window.rs:616
+#: src/window.rs:644
 msgid "Image copied to clipboard"
 msgstr "Изображение скопировано в буфер обмена"
 
-#: src/window.rs:637
+#: src/window.rs:665
 msgid "Image moved to trash"
 msgstr "Изображение отправлено в корзину"
 
-#: src/window.rs:638
+#: src/window.rs:666
 msgid "Undo"
 msgstr "Отменить"
 
-#: src/window.rs:665
+#: src/window.rs:693
 msgid "Failed to move image to trash"
 msgstr "Не удалось отправить изображение в корзину"
 
-#: src/window.rs:680
+#: src/window.rs:708
 msgid "Permanently Delete Image?"
 msgstr "Удалить изображение безвозвратно?"
 
-#: src/window.rs:682
+#: src/window.rs:710
 msgid "The image “{}” can only be deleted permanently."
 msgstr "Изображение «{}» может быть удалено только безвозвратно."
 
-#: src/window.rs:690
+#: src/window.rs:718
 msgid "Cancel"
 msgstr "Отменить"
 
-#: src/window.rs:691
+#: src/window.rs:719
 msgid "Delete"
 msgstr "Удалить"
 
-#: src/window.rs:702
+#: src/window.rs:730
 msgid "Failed to delete image"
 msgstr "Не удалось удалить изображение"
 
@@ -589,33 +612,36 @@ msgstr "_Комбинации клавиш"
 msgid "_About Image Viewer"
 msgstr "_О приложении"
 
-#: src/window.ui:84
+#: src/window.ui:88
 msgid "Copy to Clipboard"
 msgstr "Копировать в буфер обмена"
 
-#: src/window.ui:91
+#: src/window.ui:95
 msgid "Move to Trash"
 msgstr "Отправить в корзину"
 
-#: src/window.ui:97
+#: src/window.ui:101
 msgid "Main Menu"
 msgstr "Главное меню"
 
-#: src/window.ui:129
+#: src/window.ui:133
 msgid "Image Properties"
 msgstr "Свойства изображения"
 
-#: src/window.ui:171
+#: src/window.ui:175
 msgid "View Images"
 msgstr "Просмотр изображений"
 
-#: src/window.ui:172
+#: src/window.ui:176
 msgid "Drag and drop images here"
 msgstr "Перетащите изображения сюда"
 
-#: src/window.ui:176
+#: src/window.ui:180
 msgid "_Open Files…"
 msgstr "_Открыть файлы…"
+
+#~ msgid "The Loupe Team"
+#~ msgstr "The Loupe Team"
 
 #~ msgid "Center image horizontally"
 #~ msgstr "Центрирование изображения по горизонтали"
