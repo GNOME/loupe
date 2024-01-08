@@ -1,5 +1,5 @@
 // Copyright (c) 2020-2023 Christopher Davis
-// Copyright (c) 2022-2023 Sophie Herold
+// Copyright (c) 2022-2024 Sophie Herold
 // Copyright (c) 2022 Maximiliano Sandoval R
 // Copyright (c) 2023 Julian Hofer
 // Copyright (c) 2023 Starccy
@@ -412,7 +412,7 @@ impl LpImageView {
 
         log::debug!("Scrolling to page for {}", new_file.uri());
         self.imp().preserve_content.set(true);
-        sliding_view.scroll_to(&page);
+        sliding_view.animate_to(&page);
     }
 
     /// Ensures the sliding view contains the correct images
@@ -457,7 +457,7 @@ impl LpImageView {
             return;
         };
 
-        self.sliding_view().scroll_to(&current_page);
+        self.sliding_view().animate_to(&current_page);
     }
 
     fn sliding_view(&self) -> LpSlidingView {

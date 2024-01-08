@@ -1,4 +1,4 @@
-// Copyright (c) 2023 Sophie Herold
+// Copyright (c) 2023-2024 Sophie Herold
 // Copyright (c) 2023 Alice Mikhaylenko
 // Copyright (c) 2023 Christopher Davis
 // Copyright (c) 2023 Lubosz Sarnecki
@@ -28,22 +28,81 @@ use adw::prelude::*;
 use adw::subclass::prelude::*;
 use glib::Properties;
 use indexmap::IndexMap;
+use log::error;
 use once_cell::sync::Lazy;
 
 use crate::deps::*;
 use crate::widgets::LpImagePage;
 
-static SCROLL_DAMPING_RATIO: f64 = 1.;
-static SCROLL_MASS: f64 = 0.5;
-static SCROLL_STIFFNESS: f64 = 500.;
+const SCROLL_DAMPING_RATIO: f64 = 1.;
+const SCROLL_MASS: f64 = 0.5;
+const SCROLL_STIFFNESS: f64 = 500.;
+
+/// Duration for cards animation
+const STEP_DURATION: u32 = 250;
+/// Offset of card at the beginning in app pixels
+const STEP_PIXEL_SHIFT: f32 = 100.;
+/// Progress point at which the move-out animation starts.
+/// The progress is a value between 0.0 and 1.0
+const STEP_MOVE_OUT_DELAY: f32 = 0.5;
 
 /// Space between images in application pixels
 ///
 /// This is combined with the percent component
-static PAGE_SPACING_FIXED: f32 = 25.;
+const PAGE_SPACING_FIXED: f32 = 25.;
 
 /// Space between images as factor of width
 const PAGE_SPACING_PERCENT: f32 = 0.02;
+
+#[derive(Debug)]
+enum PositionTracking {
+    Position(f64),
+    StackedCards(StackedCards),
+}
+
+impl Default for PositionTracking {
+    fn default() -> Self {
+        PositionTracking::Position(0.)
+    }
+}
+
+impl PositionTracking {
+    fn position(&self) -> f64 {
+        match self {
+            Self::Position(position) => *position,
+            // TODO: This could return something useful
+            Self::StackedCards(_) => 0.,
+        }
+    }
+
+    fn set_position(&mut self, position: f64) {
+        *self = Self::Position(position);
+    }
+
+    fn set_progress(&mut self, progress: f64) {
+        match self {
+            Self::Position(_) => {
+                log::error!("Trying to set StackedCards progress while not in animation state.")
+            }
+            Self::StackedCards(cards) => cards.progress = progress,
+        };
+    }
+}
+
+#[derive(Debug)]
+struct StackedCards {
+    prev_image: LpImagePage,
+    progress: f64,
+}
+
+impl StackedCards {
+    fn new(prev_image: LpImagePage) -> Self {
+        Self {
+            prev_image,
+            progress: 0.,
+        }
+    }
+}
 
 mod imp {
     use glib::subclass::Signal;
@@ -59,11 +118,12 @@ mod imp {
         #[property(get)]
         pub(super) current_page: RefCell<Option<LpImagePage>>,
         /// Animatable position, 0.0 first image, 1.0 second image etc
-        pub(super) position: Cell<f64>,
+        pub(super) position_tracking: RefCell<PositionTracking>,
         /// Move position to not break animations when pages are removed/added
         pub(super) position_shift: Cell<f64>,
         /// The animation used to animate image changes
         pub(super) scroll_animation: OnceCell<adw::SpringAnimation>,
+        pub(super) step_animation: OnceCell<adw::TimedAnimation>,
         /// Implements swiping
         pub(super) swipe_tracker: OnceCell<adw::SwipeTracker>,
     }
@@ -104,9 +164,10 @@ mod imp {
                 .upper_overshoot(true)
                 .build();
 
-            swipe_tracker.connect_begin_swipe(
-                glib::clone!(@weak obj => move |_| obj.scroll_animation().pause()),
-            );
+            swipe_tracker.connect_begin_swipe(glib::clone!(@weak obj => move |_| {
+                obj.scroll_animation().pause();
+                obj.step_animation().pause();
+            }));
 
             swipe_tracker.connect_update_swipe(glib::clone!(@weak obj => move |_, position| {
                 obj.set_position(position);
@@ -114,7 +175,7 @@ mod imp {
 
             swipe_tracker.connect_end_swipe(glib::clone!(@weak obj => move |_, velocity, to| {
                 if let Some(page) = obj.page_at(to) {
-                    obj.scroll_to_velocity(&page, velocity);
+                    obj.scroll_to(&page, velocity);
                 }
             }));
 
@@ -167,30 +228,14 @@ mod imp {
 
     impl WidgetImpl for LpSlidingView {
         fn size_allocate(&self, width: i32, height: i32, _baseline: i32) {
-            let scroll_position = self.position.get() as f32;
-            let position_shift = self.position_shift.get() as f32;
-
             for (page_index, page) in self.pages.borrow().iter().enumerate() {
-                let page_position = page_index as f32;
-
-                // reverse page order for RTL languages
-                let direction_sign = if self.is_rtl() { -1. } else { 1. };
-
-                // This positions the pages within the carousel and shifts them
-                // according to the position that should currently be shown.
-                let x = direction_sign
-                    * (page_position - scroll_position - position_shift)
-                    * (width as f32 + self.page_spacing(width));
-
-                // Only show visible images
-                if page_position == (scroll_position + position_shift).floor()
-                    || page_position == (scroll_position + position_shift).ceil()
-                {
-                    page.set_child_visible(true);
-                    let transform = gsk::Transform::new().translate(&graphene::Point::new(x, 0.));
-                    page.allocate(width, height, 0, Some(transform));
-                } else {
-                    page.set_child_visible(false);
+                match *self.position_tracking.borrow() {
+                    PositionTracking::Position(_) => {
+                        self.size_allocate_position(page_index, page, width, height)
+                    }
+                    PositionTracking::StackedCards(ref stacked_cards) => {
+                        self.size_allocate_stacked_cards(page, stacked_cards, width, height)
+                    }
                 }
 
                 if !page.scrolled_window().is_mapped() {
@@ -259,6 +304,92 @@ mod imp {
     }
 
     impl LpSlidingView {
+        /// Usualy allocate or during scroll animation
+        fn size_allocate_position(
+            &self,
+            page_index: usize,
+            page: &LpImagePage,
+            width: i32,
+            height: i32,
+        ) {
+            let scroll_position = self.obj().position() as f32;
+            let position_shift = self.position_shift.get() as f32;
+            let page_position = page_index as f32;
+
+            // reverse page order for RTL languages
+            let direction_sign = if self.is_rtl() { -1. } else { 1. };
+
+            // This positions the pages within the carousel and shifts them
+            // according to the position that should currently be shown.
+            let x = direction_sign
+                * (page_position - scroll_position - position_shift)
+                * (width as f32 + self.page_spacing(width));
+
+            // Only show visible images
+            if page_position == (scroll_position + position_shift).floor()
+                || page_position == (scroll_position + position_shift).ceil()
+            {
+                page.set_child_visible(true);
+                let transform = gsk::Transform::new().translate(&graphene::Point::new(x, 0.));
+                page.allocate(width, height, 0, Some(transform));
+            } else {
+                page.set_child_visible(false);
+            }
+        }
+
+        /// Allocate during stacked card animation
+        fn size_allocate_stacked_cards(
+            &self,
+            page: &LpImagePage,
+            stacked_cards: &StackedCards,
+            width: i32,
+            height: i32,
+        ) {
+            let obj = self.obj().to_owned();
+            if let Some(new_page) = obj.current_page() {
+                let old_page = &stacked_cards.prev_image;
+
+                let Some(old_index) = obj.index_of(old_page) else {
+                    return;
+                };
+                let Some(new_index) = obj.index_of(&new_page) else {
+                    return;
+                };
+
+                let mut direction_sign = if new_index > old_index { 1. } else { -1. };
+                if self.is_rtl() {
+                    direction_sign *= -1.;
+                }
+
+                let progress = stacked_cards.progress;
+
+                // Only show visible images
+                if page == &new_page {
+                    page.set_child_visible(true);
+
+                    // Ensure that new image is on top
+                    page.unparent();
+                    page.insert_after(&obj, Some(old_page));
+
+                    let x = direction_sign * STEP_PIXEL_SHIFT * (1. - progress as f32);
+                    let transform = gsk::Transform::new().translate(&graphene::Point::new(x, 0.));
+                    page.allocate(width, height, 0, Some(transform));
+                    page.set_opacity(progress);
+                } else if page == old_page {
+                    page.set_child_visible(true);
+                    let x = -direction_sign
+                        * f32::max(
+                            0.,
+                            (progress as f32 - STEP_MOVE_OUT_DELAY) * STEP_PIXEL_SHIFT,
+                        );
+                    let transform = gsk::Transform::new().translate(&graphene::Point::new(x, 0.));
+                    page.allocate(width, height, 0, Some(transform));
+                } else {
+                    page.set_child_visible(false);
+                }
+            }
+        }
+
         fn page_spacing(&self, width: i32) -> f32 {
             width as f32 * PAGE_SPACING_PERCENT + PAGE_SPACING_FIXED
         }
@@ -361,6 +492,7 @@ impl LpSlidingView {
     /// Removes all pages
     fn clear(&self, lazy: bool) {
         self.scroll_animation().pause();
+        self.step_animation().pause();
 
         for page in self.imp().pages.borrow().iter() {
             page.unparent();
@@ -397,11 +529,34 @@ impl LpSlidingView {
     }
 
     /// Move to specified page with animation
-    pub fn scroll_to(&self, page: &LpImagePage) {
-        self.scroll_to_velocity(page, 0.);
+    pub fn animate_to(&self, page: &LpImagePage) {
+        if let Some(index) = self.index_of(page) {
+            if self
+                .current_index()
+                .map_or(false, |x| (x as i64 - index as i64).abs() == 1)
+            {
+                self.step_to(page);
+            } else {
+                self.scroll_to(page, 0.);
+            }
+        } else {
+            log::error!("Page not in LpSlidingView {}", page.file().uri());
+        }
     }
 
-    pub fn scroll_to_velocity(&self, page: &LpImagePage, initial_velocity: f64) {
+    /// Move to image with cards animation
+    fn step_to(&self, page: &LpImagePage) {
+        let animation = self.step_animation();
+        if let Some(prev_image) = self.current_page() {
+            *self.imp().position_tracking.borrow_mut() =
+                PositionTracking::StackedCards(StackedCards::new(prev_image));
+            animation.play();
+        }
+        self.set_current_page(Some(page));
+    }
+
+    /// Move to image with scroll animation
+    fn scroll_to(&self, page: &LpImagePage, initial_velocity: f64) {
         if let Some(index) = self.index_of(page) {
             let animation = self.scroll_animation();
 
@@ -421,9 +576,9 @@ impl LpSlidingView {
     /// the current page if last remaining.
     pub fn scroll_to_neighbor(&self) {
         if let Some(next_page) = self.next_page() {
-            self.scroll_to(&next_page);
+            self.animate_to(&next_page);
         } else if let Some(prev_page) = self.prev_page() {
-            self.scroll_to(&prev_page);
+            self.animate_to(&prev_page);
         } else if let Some(current_page) = self.current_page() {
             self.remove(&current_page, false);
         }
@@ -459,7 +614,7 @@ impl LpSlidingView {
     }
 
     fn position(&self) -> f64 {
-        self.imp().position.get()
+        self.imp().position_tracking.borrow().position()
     }
 
     fn position_shift(&self) -> f64 {
@@ -478,7 +633,10 @@ impl LpSlidingView {
     }
 
     fn set_position(&self, position: f64) {
-        self.imp().position.set(position);
+        self.imp()
+            .position_tracking
+            .borrow_mut()
+            .set_position(position);
         self.queue_allocate();
     }
 
@@ -512,6 +670,39 @@ impl LpSlidingView {
                 .build();
 
             animation.connect_done(glib::clone!(@weak self as obj => move |_| {
+                obj.emit_by_name("target-page-reached", &[])
+            }));
+
+            animation
+        })
+    }
+
+    fn step_animation(&self) -> &adw::TimedAnimation {
+        self.imp().step_animation.get_or_init(|| {
+            let target: adw::CallbackAnimationTarget = adw::CallbackAnimationTarget::new(
+                glib::clone!(@weak self as obj => move |progress| {
+                    obj.imp().position_tracking.borrow_mut().set_progress(progress);
+                    obj.queue_allocate();
+                }),
+            );
+
+            let animation = adw::TimedAnimation::builder()
+                .duration(STEP_DURATION)
+                .value_from(0.)
+                .value_to(1.)
+                .widget(self)
+                .target(&target)
+                .build();
+
+            animation.connect_done(glib::clone!(@weak self as obj => move |_| {
+                if let Some(current_index) = obj.current_index() {
+                    let imp = obj.imp();
+                    imp.position_tracking.borrow_mut().set_progress(1.);
+                    imp.position_tracking.borrow_mut().set_position(current_index as f64 - obj.position_shift());
+                    obj.queue_allocate();
+                } else {
+                    error!("No current page at end of animation");
+                }
                 obj.emit_by_name("target-page-reached", &[])
             }));
 
