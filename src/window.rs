@@ -53,7 +53,6 @@ const HIDE_CONTROLS_IDLE_TIMEOUT: u64 = 3000;
 
 mod imp {
     use super::*;
-    use crate::widgets::LpWindowTitle;
 
     // To use composite templates, you need
     // to use derive macro. Derive macros generate
@@ -79,8 +78,6 @@ mod imp {
         pub(super) toolbar_view: TemplateChild<adw::ToolbarView>,
         #[template_child]
         pub(super) headerbar: TemplateChild<adw::HeaderBar>,
-        #[template_child]
-        pub(super) title: TemplateChild<LpWindowTitle>,
         #[template_child]
         pub(super) headerbar_events: TemplateChild<gtk::EventControllerMotion>,
         #[template_child]

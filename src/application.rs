@@ -29,6 +29,7 @@ use crate::{about, config};
 
 mod imp {
     use super::*;
+    use crate::widgets::LpShyBin;
 
     // The basic struct that holds our
     // state and widgets
@@ -73,6 +74,11 @@ mod imp {
 
     // Overrides GApplication vfuncs
     impl ApplicationImpl for LpApplication {
+        fn startup(&self) {
+            self.parent_startup();
+            LpShyBin::ensure_type();
+        }
+
         fn activate(&self) {
             let application = self.obj();
             let window = LpWindow::new(&*application);

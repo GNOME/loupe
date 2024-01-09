@@ -24,8 +24,8 @@ mod image_view;
 mod print;
 mod print_preview;
 mod properties_view;
+mod shy_bin;
 mod sliding_view;
-mod window_title;
 
 pub use drag_overlay::LpDragOverlay;
 pub use image::LpImage;
@@ -34,5 +34,5 @@ pub use image_view::LpImageView;
 pub use print::LpPrint;
 pub use print_preview::LpPrintPreview;
 pub use properties_view::LpPropertiesView;
+pub use shy_bin::LpShyBin;
 pub use sliding_view::LpSlidingView;
-pub use window_title::LpWindowTitle;

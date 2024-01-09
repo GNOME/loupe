@@ -15,11 +15,12 @@
 //
 // SPDX-License-Identifier: GPL-3.0-or-later
 
-//! A window title
+//! A bin that only has min width as natural width
 //!
-//! This window title does not claim its complete width as natural width. This
-//! avoids the window to grow to a large file name title instead of just
-//! fittingly for the image size.
+//! This bin does not claim its complete width as natural width. The HeaderBar
+//! is wrapped in with this widget. This prevents the window from growing based
+//! on a long file name in the title instead of just fitting to the image
+//! size.
 
 use adw::prelude::*;
 use adw::subclass::prelude::*;
@@ -29,46 +30,29 @@ use crate::deps::*;
 mod imp {
     use super::*;
 
-    #[derive(Debug, Default, glib::Properties)]
-    #[properties(wrapper_type = super::LpWindowTitle)]
-    pub struct LpWindowTitle {
-        #[property(type = String, set = Self::set_title)]
-        _title: (),
-        window_title: adw::WindowTitle,
-    }
+    #[derive(Debug, Default)]
+    pub struct LpShyBin {}
 
     #[glib::object_subclass]
-    impl ObjectSubclass for LpWindowTitle {
-        const NAME: &'static str = "LpWindowTitle";
-        type Type = super::LpWindowTitle;
+    impl ObjectSubclass for LpShyBin {
+        const NAME: &'static str = "LpShyBin";
+        type Type = super::LpShyBin;
         type ParentType = adw::Bin;
     }
 
-    impl ObjectImpl for LpWindowTitle {
+    impl ObjectImpl for LpShyBin {
         fn constructed(&self) {
             self.parent_constructed();
             let obj = self.obj();
 
             obj.set_layout_manager(None::<gtk::LayoutManager>);
-            obj.set_child(Some(&self.window_title));
             obj.set_hexpand(true);
         }
-
-        fn properties() -> &'static [glib::ParamSpec] {
-            Self::derived_properties()
-        }
-
-        fn set_property(&self, id: usize, value: &glib::Value, pspec: &glib::ParamSpec) {
-            self.derived_set_property(id, value, pspec)
-        }
-
-        fn property(&self, id: usize, pspec: &glib::ParamSpec) -> glib::Value {
-            self.derived_property(id, pspec)
-        }
     }
-    impl WidgetImpl for LpWindowTitle {
+
+    impl WidgetImpl for LpShyBin {
         fn measure(&self, orientation: gtk::Orientation, for_size: i32) -> (i32, i32, i32, i32) {
-            let mut measure = self.window_title.measure(orientation, for_size);
+            let mut measure = self.obj().child().unwrap().measure(orientation, for_size);
 
             if orientation == gtk::Orientation::Horizontal {
                 // Set natural size to minimal size
@@ -79,19 +63,17 @@ mod imp {
         }
 
         fn size_allocate(&self, width: i32, height: i32, baseline: i32) {
-            self.window_title.allocate(width, height, baseline, None);
+            self.obj()
+                .child()
+                .unwrap()
+                .allocate(width, height, baseline, None);
         }
     }
-    impl BinImpl for LpWindowTitle {}
 
-    impl LpWindowTitle {
-        fn set_title(&self, title: String) {
-            self.window_title.set_title(&title);
-        }
-    }
+    impl BinImpl for LpShyBin {}
 }
 
 glib::wrapper! {
-    pub struct LpWindowTitle(ObjectSubclass<imp::LpWindowTitle>)
+    pub struct LpShyBin(ObjectSubclass<imp::LpShyBin>)
         @extends gtk::Widget, adw::Bin;
 }

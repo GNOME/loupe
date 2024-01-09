@@ -70,72 +70,71 @@
     <property name="content">
       <object class="AdwToolbarView" id="toolbar_view">
         <child type="top">
-          <object class="AdwHeaderBar" id="headerbar">
-            <property name="show-end-title-buttons" bind-source="LpWindow" bind-property="fullscreened" bind-flags="sync-create|invert-boolean" />
-            <property name="show-start-title-buttons" bind-source="LpWindow" bind-property="fullscreened" bind-flags="sync-create|invert-boolean" />
-            <property name="title-widget">
-              <object class="LpWindowTitle" id="title">
-                <property name="title" bind-source="LpWindow" bind-property="title" />
+          <object class="LpShyBin">
+            <property name="child">
+              <object class="AdwHeaderBar" id="headerbar">
+                <property name="show-end-title-buttons" bind-source="LpWindow" bind-property="fullscreened" bind-flags="sync-create|invert-boolean" />
+                <property name="show-start-title-buttons" bind-source="LpWindow" bind-property="fullscreened" bind-flags="sync-create|invert-boolean" />
+                <style>
+                  <class name="fullscreen-osd" />
+                </style>
+                <child type="start">
+                  <object class="GtkButton">
+                    <property name="icon-name">edit-copy-symbolic</property>
+                    <property name="action-name">win.copy-image</property>
+                    <property name="tooltip-text" translatable="yes">Copy to Clipboard</property>
+                  </object>
+                </child>
+                <child type="start">
+                  <object class="GtkButton">
+                    <property name="icon-name">user-trash-symbolic</property>
+                    <property name="action-name">win.trash</property>
+                    <property name="tooltip-text" translatable="yes">Move to Trash</property>
+                  </object>
+                </child>
+                <child type="end">
+                  <object class="GtkMenuButton" id="primary_menu">
+                    <property name="icon-name">open-menu-symbolic</property>
+                    <property name="tooltip-text" translatable="yes">Main Menu</property>
+                    <property name="primary">True</property>
+                    <property name="popover">
+                      <object class="GtkPopoverMenu">
+                        <property name="menu-model">primary_menu</property>
+                        <child type="rotate-left">
+                          <object class="GtkButton">
+                            <property name="icon-name">object-rotate-left-symbolic</property>
+                            <property name="tooltip-text" translatable="yes">Rotate Left</property>
+                            <property name="action-name">win.rotate_ccw</property>
+                            <style>
+                              <class name="flat" />
+                            </style>
+                          </object>
+                        </child>
+                        <child type="rotate-right">
+                          <object class="GtkButton">
+                            <property name="icon-name">object-rotate-right-symbolic</property>
+                            <property name="tooltip-text" translatable="yes">Rotate Right</property>
+                            <property name="action-name">win.rotate_cw</property>
+                            <style>
+                              <class name="flat" />
+                            </style>
+                          </object>
+                        </child>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+                <child type="end">
+                  <object class="GtkToggleButton" id="properties_button">
+                    <property name="icon-name">info-outline-symbolic</property>
+                    <property name="tooltip-text" translatable="yes">Image Properties</property>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkEventControllerMotion" id="headerbar_events" />
+                </child>
               </object>
             </property>
-            <style>
-              <class name="fullscreen-osd" />
-            </style>
-            <child type="start">
-              <object class="GtkButton">
-                <property name="icon-name">edit-copy-symbolic</property>
-                <property name="action-name">win.copy-image</property>
-                <property name="tooltip-text" translatable="yes">Copy to Clipboard</property>
-              </object>
-            </child>
-            <child type="start">
-              <object class="GtkButton">
-                <property name="icon-name">user-trash-symbolic</property>
-                <property name="action-name">win.trash</property>
-                <property name="tooltip-text" translatable="yes">Move to Trash</property>
-              </object>
-            </child>
-            <child type="end">
-              <object class="GtkMenuButton" id="primary_menu">
-                <property name="icon-name">open-menu-symbolic</property>
-                <property name="tooltip-text" translatable="yes">Main Menu</property>
-                <property name="primary">True</property>
-                <property name="popover">
-                  <object class="GtkPopoverMenu">
-                    <property name="menu-model">primary_menu</property>
-                    <child type="rotate-left">
-                      <object class="GtkButton">
-                        <property name="icon-name">object-rotate-left-symbolic</property>
-                        <property name="tooltip-text" translatable="yes">Rotate Left</property>
-                        <property name="action-name">win.rotate_ccw</property>
-                        <style>
-                          <class name="flat" />
-                        </style>
-                      </object>
-                    </child>
-                    <child type="rotate-right">
-                      <object class="GtkButton">
-                        <property name="icon-name">object-rotate-right-symbolic</property>
-                        <property name="tooltip-text" translatable="yes">Rotate Right</property>
-                        <property name="action-name">win.rotate_cw</property>
-                        <style>
-                          <class name="flat" />
-                        </style>
-                      </object>
-                    </child>
-                  </object>
-                </property>
-              </object>
-            </child>
-            <child type="end">
-              <object class="GtkToggleButton" id="properties_button">
-                <property name="icon-name">info-outline-symbolic</property>
-                <property name="tooltip-text" translatable="yes">Image Properties</property>
-              </object>
-            </child>
-            <child>
-              <object class="GtkEventControllerMotion" id="headerbar_events" />
-            </child>
           </object>
         </child>
         <property name="content">

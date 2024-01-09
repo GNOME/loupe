@@ -26,7 +26,7 @@ impl imp::LpImage {
         }
 
         self.rotation.set(rotation);
-        obj.configure_adjustments();
+        self.configure_adjustments();
         obj.notify_rotation();
         obj.queue_draw();
     }
