@@ -18,6 +18,7 @@
 use tiling::FrameBuffer;
 
 use super::*;
+use crate::util::root::ParentWindow;
 
 impl WidgetImpl for imp::LpImage {
     // called when the widget size might have changed
@@ -163,11 +164,15 @@ impl WidgetImpl for imp::LpImage {
             && let Some((monitor_width, monitor_height)) = self.monitor_size()
         {
             let hidpi_scale = self.scaling();
+            tracing::trace!("HiDPI Scaling: {hidpi_scale}");
+
+            let monitor_width = dbg!(monitor_width) as f64;
+            let monitor_height = dbg!(monitor_height) as f64;
             tracing::trace!("Physical monitor dimensions: {monitor_width} x {monitor_height}");
 
             // areas
             let monitor_area = monitor_width * monitor_height;
-            let logical_monitor_area = monitor_area * hidpi_scale.powi(2);
+            let logical_monitor_area = monitor_area / hidpi_scale.powi(2);
             let image_area = image_width * image_height;
 
             let occupy_area_factor = if logical_monitor_area <= SMALL_SCREEN_AREA {
@@ -199,8 +204,8 @@ impl WidgetImpl for imp::LpImage {
             }
 
             // Same for vertical size
-            // Additionally substract some space for HeaderBar and Shell bar
-            let max_height = monitor_height - (50. + 35. + 20.) * hidpi_scale;
+            // Additionally substract some space for HeaderBar
+            let max_height = monitor_height - (50. + 20.) * hidpi_scale;
             if nat_height > max_height {
                 nat_height = max_height;
                 nat_width = image_width * nat_height / image_height;
@@ -334,23 +339,8 @@ impl imp::LpImage {
     }
 
     /// Monitor size in physical pixels
-    pub fn monitor_size(&self) -> Option<(f64, f64)> {
-        let obj = self.obj();
-
-        if let Some(display) = gdk::Display::default()
-            && let Some(surface) = obj.native().and_then(|x| x.surface())
-            && let Some(monitor) = display.monitor_at_surface(&surface)
-        {
-            let hidpi_scale = self.scaling();
-            let monitor_geometry = monitor.geometry();
-
-            return Some((
-                monitor_geometry.width() as f64 * hidpi_scale,
-                monitor_geometry.height() as f64 * hidpi_scale,
-            ));
-        }
-
-        None
+    pub fn monitor_size(&self) -> Option<(i32, i32)> {
+        self.obj().try_window().and_then(|x| x.shell_bounds())
     }
 }
 

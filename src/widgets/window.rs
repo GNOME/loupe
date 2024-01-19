@@ -74,6 +74,8 @@ mod imp {
         layout_name: RefCell<String>,
         #[property(get, set)]
         not_fullscreened: Cell<bool>,
+
+        pub(super) shell_bounds: Cell<Option<(i32, i32)>>,
     }
 
     #[glib::object_subclass]
@@ -122,8 +124,28 @@ mod imp {
                 ),
             );
 
-            obj.connect_map(|win| {
-                win.resize_default();
+            obj.connect_realize(|obj| {
+                obj.surface()
+                    .unwrap()
+                    .downcast::<gdk::Toplevel>()
+                    .unwrap()
+                    .connect_compute_size(glib::clone!(
+                        #[weak]
+                        obj,
+                        move |_, size| {
+                            let imp = obj.imp();
+                            if imp.shell_bounds.get().is_none() {
+                                tracing::debug!("Setting initial window size");
+                                imp.shell_bounds.set(Some(size.bounds()));
+                                if let Some(image) = obj.image_view().current_image() {
+                                    image.queue_resize();
+                                    let width = obj.measure(gtk::Orientation::Horizontal, -1);
+                                    let height = obj.measure(gtk::Orientation::Vertical, -1);
+                                    size.set_size(width.1 + 50, height.1 + 50);
+                                }
+                            }
+                        }
+                    ));
             });
         }
     }
@@ -181,6 +203,10 @@ impl LpWindow {
 
             self.set_default_size(width, height);
         }
+    }
+
+    pub fn shell_bounds(&self) -> Option<(i32, i32)> {
+        self.imp().shell_bounds.get()
     }
 
     pub fn add_toast(&self, toast: adw::Toast) {
