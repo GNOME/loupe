@@ -129,22 +129,26 @@ impl WidgetImpl for imp::LpImage {
 
     fn measure(&self, orientation: gtk::Orientation, _for_size: i32) -> (i32, i32, i32, i32) {
         let obj = self.obj();
-        let (image_width, image_height) = obj.image_size();
+        let (image_width_i32, image_height_i32) = obj.image_size();
+        let image_width = image_width_i32 as f64;
+        let image_height = image_height_i32 as f64;
 
-        if image_width > 0 && image_height > 0 {
+        if image_width_i32 > 0 && image_height_i32 > 0 {
             if let Some((monitor_width, monitor_height)) = self.monitor_size() {
                 let hidpi_scale = self.scaling();
+                log::trace!("Physical monitor dimensions: {monitor_width} x {monitor_height}");
 
                 // areas
                 let monitor_area = monitor_width * monitor_height;
-                let image_area = image_width as f64 * image_height as f64;
+                let logical_monitor_area = monitor_area * hidpi_scale.powi(2);
+                let image_area = image_width * image_height;
 
-                let occupy_area_factor = if monitor_area < 1024. * 768. {
-                    // for small monitors occupy 80% of the area
-                    0.8
+                let occupy_area_factor = if logical_monitor_area <= SMALL_SCREEN_AREA {
+                    log::trace!("Small monitor detected: Using {SMALL_OCCUPY_SCREEN} screen area");
+                    SMALL_OCCUPY_SCREEN
                 } else {
-                    // for large monitors occupy 30% of the area
-                    0.3
+                    log::trace!("Sufficiently large monitor detected: Using {DEFAULT_OCCUPY_SCREEN} screen area");
+                    DEFAULT_OCCUPY_SCREEN
                 };
 
                 // factor for width and height that will achieve the desired area
@@ -154,19 +158,23 @@ impl WidgetImpl for imp::LpImage {
                 let size_scale = f64::sqrt(monitor_area / image_area * occupy_area_factor);
                 // ensure that we never increase image size
                 let target_scale = f64::min(1.0, size_scale);
-                let mut nat_width = image_width as f64 * target_scale;
-                let mut nat_height = image_height as f64 * target_scale;
+                let mut nat_width = image_width * target_scale;
+                let mut nat_height = image_height * target_scale;
 
-                // scale down if targeted occupation does not fit in one direction
-                if nat_width > monitor_width {
-                    nat_width = monitor_width;
-                    nat_height = nat_height * monitor_width / nat_width;
+                // Scale down if targeted occupation does not fit horizontally
+                // Add some margin to not touch corners
+                let max_width = monitor_width - 20.;
+                if nat_width > max_width {
+                    nat_width = max_width;
+                    nat_height = image_height * nat_width / image_width;
                 }
 
-                // same for other direction
-                if nat_height > monitor_height {
-                    nat_height = monitor_height;
-                    nat_width = nat_width * monitor_height / nat_height;
+                // Same for vertical size
+                // Additionally substract some space for HeaderBar and Shell bar
+                let max_height = monitor_height - (50. + 35. + 20.) * hidpi_scale;
+                if nat_height > max_height {
+                    nat_height = max_height;
+                    nat_width = image_width * nat_height / image_height;
                 }
 
                 let size = match orientation {
@@ -182,8 +190,8 @@ impl WidgetImpl for imp::LpImage {
         // fallback if monitor size or image size is not known:
         // use original image size and hope for the best
         let size = match orientation {
-            gtk::Orientation::Horizontal => image_width,
-            gtk::Orientation::Vertical => image_height,
+            gtk::Orientation::Horizontal => image_width_i32,
+            gtk::Orientation::Vertical => image_height_i32,
             _ => unreachable!(),
         };
 

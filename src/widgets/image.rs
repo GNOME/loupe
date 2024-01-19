@@ -115,6 +115,15 @@ const MAX_ZOOM_LEVEL: f64 = 20.0;
 /// The thumbnail is currently used for drag and drop.
 const THUMBNAIL_SIZE: f32 = 128.;
 
+/// For large enough monitors occupy 30% of the screen area when opening window with image
+const DEFAULT_OCCUPY_SCREEN: f64 = 0.3;
+
+/// Screens with this resolution or smaller are handles as small
+const SMALL_SCREEN_AREA: f64 = 1024. * 768.;
+
+/// For small monitors occupy 80% of the screen area
+const SMALL_OCCUPY_SCREEN: f64 = 0.8;
+
 #[derive(Default, Debug, Clone, Copy)]
 pub enum FitMode {
     #[default]
