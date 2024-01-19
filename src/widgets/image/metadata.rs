@@ -80,6 +80,10 @@ impl imp::LpImage {
             self.emmit_metadata_changed();
         }
     }
+
+    pub(super) fn image_size_available(&self) -> bool {
+        self.obj().image_size() > (0, 0)
+    }
 }
 
 impl LpImage {

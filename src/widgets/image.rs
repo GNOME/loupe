@@ -197,7 +197,7 @@ mod imp {
         /// Currently EXIF data
         pub(super) metadata: RefCell<Metadata>,
 
-        #[property(get)]
+        #[property(get=Self::image_size_available)]
         _image_size_available: bool,
 
         /// Current pointer position

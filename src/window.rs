@@ -314,6 +314,10 @@ mod imp {
                 glib::clone!(@weak obj => move |_| obj.on_fullscreen_changed()),
             );
 
+            obj.connect_map(|win| {
+                win.resize_default();
+            });
+
             self.properties_button.connect_active_notify(
                 glib::clone!(@weak obj => move |_| obj.update_headerbar_style()),
             );
@@ -374,7 +378,7 @@ mod imp {
                 "notify::image-size-available",
                 false,
                 glib::closure_local!(@watch obj => move |_: &LpImage, _: &glib::ParamSpec| {
-                    obj.image_size_ready();
+                    obj.image_size_available();
                 }),
             );
 
@@ -846,7 +850,7 @@ impl LpWindow {
         self.set_title(Some(&title));
     }
 
-    pub fn image_size_ready(&self) {
+    pub fn image_size_available(&self) {
         // if visible for whatever reason, don't do any resize
         if self.is_visible() {
             return;
@@ -858,11 +862,20 @@ impl LpWindow {
             .current_page()
             .map(|page| page.image());
 
-        if image.is_some_and(|img| img.image_size() > (0, 0)) {
+        if image.is_some_and(|img| img.image_size_available()) {
             log::debug!("Showing window because image size is ready");
+            self.present();
+        }
+    }
+
+    pub fn resize_default(&self) {
+        if self
+            .image_view()
+            .current_image()
+            .is_some_and(|img| img.image_size_available())
+        {
             // this let's the window determine the default size from LpImage's natural size
             self.set_default_size(-1, -1);
-            self.present();
         }
     }
 
