@@ -112,6 +112,8 @@ mod imp {
         pub(super) show_controls_animation: OnceCell<adw::TimedAnimation>,
         pub(super) hide_controls_animation: OnceCell<adw::TimedAnimation>,
         pub(super) hide_controls_timeout: RefCell<Option<glib::SourceId>>,
+
+        pub(super) shell_bounds: Cell<Option<(i32, i32)>>,
     }
 
     #[glib::object_subclass]
@@ -314,8 +316,22 @@ mod imp {
                 glib::clone!(@weak obj => move |_| obj.on_fullscreen_changed()),
             );
 
-            obj.connect_map(|win| {
-                win.resize_default();
+            obj.connect_realize(|obj| {
+                obj.surface()
+                    .downcast::<gdk::Toplevel>()
+                    .unwrap()
+                    .connect_compute_size(glib::clone!(@weak obj => move |_, size| {
+                        if obj.imp().shell_bounds.get().is_none() {
+                            log::debug!("Setting initial window size");
+                            obj.imp().shell_bounds.set(Some(size.bounds()));
+                            if let Some(image) = obj.image_view().current_image() {
+                                image.queue_resize();
+                                let width = obj.measure(gtk::Orientation::Horizontal, -1);
+                                let height = obj.measure(gtk::Orientation::Vertical, -1);
+                                size.set_size(width.1 + 122, height.1 + 122);
+                            }
+                        }
+                    }));
             });
 
             self.properties_button.connect_active_notify(
@@ -482,7 +498,7 @@ mod imp {
 glib::wrapper! {
     pub struct LpWindow(ObjectSubclass<imp::LpWindow>)
         @extends gtk::Widget, gtk::Window, gtk::ApplicationWindow, adw::ApplicationWindow,
-        @implements gio::ActionMap, gio::ActionGroup, gtk::Native;
+        @implements gio::ActionMap, gio::ActionGroup, gtk::Native, gtk::Root;
 }
 
 impl LpWindow {
@@ -839,6 +855,10 @@ impl LpWindow {
         }
     }
 
+    pub fn shell_bounds(&self) -> Option<(i32, i32)> {
+        self.imp().shell_bounds.get()
+    }
+
     pub fn update_title(&self) {
         let title = self
             .imp()
@@ -865,17 +885,6 @@ impl LpWindow {
         if image.is_some_and(|img| img.image_size_available()) {
             log::debug!("Showing window because image size is ready");
             self.present();
-        }
-    }
-
-    pub fn resize_default(&self) {
-        if self
-            .image_view()
-            .current_image()
-            .is_some_and(|img| img.image_size_available())
-        {
-            // this let's the window determine the default size from LpImage's natural size
-            self.set_default_size(-1, -1);
         }
     }
 

@@ -136,11 +136,15 @@ impl WidgetImpl for imp::LpImage {
         if image_width_i32 > 0 && image_height_i32 > 0 {
             if let Some((monitor_width, monitor_height)) = self.monitor_size() {
                 let hidpi_scale = self.scaling();
+                log::trace!("HiDPI Scaling: {hidpi_scale}");
+
+                let monitor_width = dbg!(monitor_width) as f64;
+                let monitor_height = dbg!(monitor_height) as f64;
                 log::trace!("Physical monitor dimensions: {monitor_width} x {monitor_height}");
 
                 // areas
                 let monitor_area = monitor_width * monitor_height;
-                let logical_monitor_area = monitor_area * hidpi_scale.powi(2);
+                let logical_monitor_area = monitor_area / hidpi_scale.powi(2);
                 let image_area = image_width * image_height;
 
                 let occupy_area_factor = if logical_monitor_area <= SMALL_SCREEN_AREA {
@@ -170,8 +174,8 @@ impl WidgetImpl for imp::LpImage {
                 }
 
                 // Same for vertical size
-                // Additionally substract some space for HeaderBar and Shell bar
-                let max_height = monitor_height - (50. + 35. + 20.) * hidpi_scale;
+                // Additionally substract some space for HeaderBar
+                let max_height = monitor_height - (50. + 20.) * hidpi_scale;
                 if nat_height > max_height {
                     nat_height = max_height;
                     nat_width = image_width * nat_height / image_height;
@@ -289,7 +293,7 @@ impl imp::LpImage {
         let obj = self.obj();
 
         // TODO: This avoids panics and should be fixed upstream
-        if obj.is_realized() {
+        if self.monitor_size().is_some() {
             obj.native()
                 .map(|x| x.surface().scale())
                 .unwrap_or_else(|| obj.scale_factor() as f64)
@@ -299,32 +303,10 @@ impl imp::LpImage {
     }
 
     /// Monitor size in physical pixels
-    pub fn monitor_size(&self) -> Option<(f64, f64)> {
-        let obj = self.obj();
-
-        if let Some(display) = gdk::Display::default() {
-            if let Some(native) = obj.native() {
-                if let Some(monitor) = display.monitor_at_surface(&native.surface()) {
-                    let hidpi_scale = self.scaling();
-                    let monitor_geometry = monitor.geometry();
-                    let monitor_size = (
-                        monitor_geometry.width() as f64,
-                        monitor_geometry.height() as f64,
-                    );
-
-                    // Assume scale-monitor-framebuffer disabled for  non-fractional scaling
-                    // <https://gitlab.gnome.org/GNOME/gtk/-/issues/5391>
-                    let physical_geometry = if hidpi_scale == obj.scale_factor() as f64 {
-                        monitor_size
-                    } else {
-                        (monitor_size.0 * hidpi_scale, monitor_size.1 * hidpi_scale)
-                    };
-
-                    return Some(physical_geometry);
-                }
-            }
-        }
-
-        None
+    pub fn monitor_size(&self) -> Option<(i32, i32)> {
+        self.obj()
+            .root()
+            .and_downcast::<crate::window::LpWindow>()
+            .and_then(|x| x.shell_bounds())
     }
 }

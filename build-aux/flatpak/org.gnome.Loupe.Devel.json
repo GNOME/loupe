@@ -15,7 +15,7 @@
         "--device=dri",
         "--filesystem=host",
         "--env=RUST_BACKTRACE=1",
-        "--env=RUST_LOG=loupe=debug",
+        "--env=RUST_LOG=loupe=trace",
         "--talk-name=org.gtk.vfs.*",
         "--filesystem=xdg-run/gvfs",
         "--filesystem=xdg-run/gvfsd"
