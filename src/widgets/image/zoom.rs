@@ -208,7 +208,7 @@ impl imp::LpImage {
     }
 
     pub(super) fn set_zoom_target(&self, zoom_target: f64) {
-        log::debug!("Setting zoom target {zoom_target}");
+        log::trace!("Setting zoom target {zoom_target}");
 
         self.zoom_target.set(zoom_target);
 
@@ -250,13 +250,13 @@ impl imp::LpImage {
             obj.set_best_fit(false);
         }
 
-        log::debug!("Zoom to {zoom:.3}");
+        log::trace!("Zoom to {zoom:.3}");
 
         self.set_zoom_target(zoom);
 
         // abort if already at correct zoom level
         if zoom == obj.zoom() {
-            log::debug!("Already at correct zoom level");
+            log::trace!("Already at correct zoom level");
             return;
         }
 
