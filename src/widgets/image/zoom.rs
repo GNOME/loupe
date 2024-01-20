@@ -300,6 +300,8 @@ impl imp::LpImage {
             let animation = adw::TimedAnimation::builder()
                 .duration(ZOOM_ANIMATION_DURATION)
                 .widget(&*obj)
+                // The actual target will be set individually later
+                .target(&adw::CallbackAnimationTarget::new(|_| {}))
                 .build();
 
             animation.connect_done(glib::clone!(@weak obj => move |_| {
