@@ -70,6 +70,10 @@ impl Glycin {
             let mut metadata: Metadata = Metadata::default();
             metadata.set_frame_info(frame.details);
             updater.send(DecoderUpdate::Metadata(Box::new(metadata)));
+            tiles.set_original_dimensions((
+                frame.texture.width() as u32,
+                frame.texture.height() as u32,
+            ));
 
             if let Some(delay) = frame.delay {
                 updater.send(DecoderUpdate::Animated);
