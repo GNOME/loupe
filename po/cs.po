@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2023-11-30 13:10+0000\n"
-"PO-Revision-Date: 2023-11-30 19:32+0100\n"
+"POT-Creation-Date: 2024-01-11 12:14+0000\n"
+"PO-Revision-Date: 2024-01-22 16:24+0100\n"
 "Last-Translator: Daniel Rusek <mail@asciiwolf.com>\n"
 "Language-Team: Czech <gnome-cs-list@gnome.org>\n"
 "Language: cs\n"
@@ -16,12 +16,10 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Poedit 3.4.1\n"
+"X-Generator: Poedit 3.4.2\n"
 
-#. If the file exists, get display name
 #: data/org.gnome.Loupe.desktop.in.in:3
-#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:28 src/window.rs:923
-#: src/window.rs:929 src/window.ui:64
+#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:29 src/window.rs:844
 msgid "Image Viewer"
 msgstr "Prohlížeč obrázků"
 
@@ -29,31 +27,36 @@ msgstr "Prohlížeč obrázků"
 msgid "Picture;Slideshow;Graphics;Loupe;"
 msgstr "Obrázek;Obrázky;Snímek;Snímky;Prezentace;Grafika;Prohlížeč obrázků;"
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:7 src/about.rs:31
-msgid "The Loupe Team"
-msgstr "Tým Loupe"
+#: data/org.gnome.Loupe.gschema.xml.in:6
+msgid "Show the image properties sidebar"
+msgstr "Zobrazit postranní panel vlastností obrázku"
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:8
+#. developer_name tag deprecated with Appstream 1.0
+#: data/org.gnome.Loupe.metainfo.xml.in.in:8 src/about.rs:32
+msgid "The GNOME Project"
+msgstr "Projekt GNOME"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:12
 msgid "View images"
 msgstr "Prohlížejte si obrázky"
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:10
+#: data/org.gnome.Loupe.metainfo.xml.in.in:14
 msgid "Browse through your images and inspect their metadata with:"
 msgstr "Procházejte své obrázky a kontrolujte jejich metadata s pomocí:"
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:12
+#: data/org.gnome.Loupe.metainfo.xml.in.in:16
 msgid "Fast GPU accelerated image rendering"
 msgstr "Rychlého vykreslování obrazu s akcelerací GPU"
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:13
+#: data/org.gnome.Loupe.metainfo.xml.in.in:17
 msgid "Tiled rendering for vector graphics"
 msgstr "Dlaždicového vykreslování pro vektorovou grafiku"
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:14
+#: data/org.gnome.Loupe.metainfo.xml.in.in:18
 msgid "Extendable and sandboxed image decoding"
 msgstr "Rozšiřitelné a izolované dekódování obrázků"
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:15
+#: data/org.gnome.Loupe.metainfo.xml.in.in:19
 msgid "Accessible presentation of the most important metadata."
 msgstr "Přístupné prezentace těch nejdůležitějších metadat."
 
@@ -231,45 +234,45 @@ msgid "Gestures"
 msgstr "Gesta"
 
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/about.rs:40
+#: src/about.rs:41
 msgid "translator-credits"
 msgstr "Vojtěch Perník <translations@pervoj.cz>"
 
-#: src/about.rs:41
-msgid "Copyright © 2020–2023 Christopher Davis et al."
-msgstr "Copyright © 2020–2023 Christopher Davis a spol."
+#: src/about.rs:42
+msgid "Copyright © 2020–2024 Christopher Davis et al."
+msgstr "Copyright © 2020–2024 Christopher Davis a spol."
 
-#: src/file_model.rs:127
+#: src/file_model.rs:128
 msgid "Could not list other files in directory."
 msgstr "Nepodařilo se vypsat další soubory v adresáři."
 
 #. Translators: short for "north" in GPS coordinate
-#: src/image_metadata/gps.rs:153
+#: src/metadata/gps.rs:153
 msgid "N"
 msgstr "S"
 
 #. Translators: short for "south" in GPS coordinate
-#: src/image_metadata/gps.rs:156
+#: src/metadata/gps.rs:156
 msgid "S"
 msgstr "J"
 
 #. Translators: short for "east" in GPS coordinate
-#: src/image_metadata/gps.rs:166
+#: src/metadata/gps.rs:166
 msgid "E"
 msgstr "V"
 
 #. Translators: short for "west" in GPS coordinate
-#: src/image_metadata/gps.rs:169
+#: src/metadata/gps.rs:169
 msgid "W"
 msgstr "Z"
 
 #. Translators: Unit for exposure time in seconds
-#: src/image_metadata/mod.rs:164
+#: src/metadata/mod.rs:261
 msgid "1\\u{2215}{}\\u{202F}s"
 msgstr "1\\u{2215}{}\\u{202F}s"
 
 #. Translators: Unit for focal length in millimeters
-#: src/image_metadata/mod.rs:189
+#: src/metadata/mod.rs:286
 msgid "{}\\u{202F}mm"
 msgstr "{}\\u{202F}mm"
 
@@ -282,7 +285,7 @@ msgstr "{}\\u{202F}mm"
 msgid "%x %X"
 msgstr "%x %X"
 
-#: src/util/mod.rs:180 src/window.rs:634
+#: src/util/mod.rs:180 src/window.rs:675
 msgid "Failed to restore image from trash"
 msgstr "Nepodařilo se obnovit obrázek z koše"
 
@@ -314,21 +317,21 @@ msgstr "_Nastavit jako pozadí…"
 msgid "Could not Load Image"
 msgstr "Nepodařilo se načíst obrázek"
 
-#: src/widgets/image_page.ui:97 src/window.ui:130
+#: src/widgets/image_page.ui:97 src/window.ui:106
 msgid "Rotate Left"
 msgstr "Otočit vlevo"
 
-#: src/widgets/image_page.ui:107 src/window.ui:140
+#: src/widgets/image_page.ui:107 src/window.ui:116
 msgid "Rotate Right"
 msgstr "Otočit vpravo"
 
 #. Translators: This is a toast notification, informing the user that
 #. an image has been set as background.
-#: src/widgets/image_view.rs:675
+#: src/widgets/image_view.rs:664
 msgid "Set as background."
 msgstr "Nastaveno jako pozadí."
 
-#: src/widgets/image_view.rs:688
+#: src/widgets/image_view.rs:677
 msgid "Could not set background."
 msgstr "Nepodařilo se nastavit pozadí."
 
@@ -348,7 +351,7 @@ msgstr "Přiblížit"
 msgid "Zoom In"
 msgstr "Oddálit"
 
-#: src/widgets/image_view.ui:92
+#: src/widgets/image_view.ui:85
 msgid "Toggle Fullscreen"
 msgstr "Přepnout zobrazení na celou obrazovku"
 
@@ -388,176 +391,204 @@ msgid "px"
 msgstr "px"
 
 #. Translators: {} is a placeholder for the filename
-#: src/widgets/print.rs:371
+#: src/widgets/print.rs:372
 msgid "Print “{}”"
 msgstr "Tisk „{}“"
 
+#: src/widgets/print.rs:783
+msgid "_Scale"
+msgstr "Zvětše_ní"
+
+#: src/widgets/print.rs:786
+msgid "_Width"
+msgstr "Šířk_a"
+
 #. Translators: Go back to previous page
 #: src/widgets/print.ui:29
-msgid "Back"
-msgstr "Zpět"
+msgid "_Back"
+msgstr "_Zpět"
 
-#: src/widgets/print.ui:36
-msgid "Print"
-msgstr "Vytisknout"
+#: src/widgets/print.ui:37
+msgid "_Print"
+msgstr "_Tisk"
 
-#: src/widgets/print.ui:54
+#: src/widgets/print.ui:56
 msgid "Layout"
 msgstr "Rozložení"
 
-#: src/widgets/print.ui:57
-msgid "Orientation"
-msgstr "Orientace"
+#: src/widgets/print.ui:59
+msgid "_Orientation"
+msgstr "_Orientace"
 
-#: src/widgets/print.ui:69
+#: src/widgets/print.ui:72
 msgid "Portrait Page Orientation"
 msgstr "Orientace stránky na výšku"
 
-#: src/widgets/print.ui:77
+#: src/widgets/print.ui:80
 msgid "Landscape Page Orientation"
 msgstr "Orientace stránky na šířku"
 
-#: src/widgets/print.ui:86
-msgid "Alignment"
-msgstr "Zarovnání"
+#: src/widgets/print.ui:89
+msgid "_Alignment"
+msgstr "Z_arovnání"
 
-#: src/widgets/print.ui:104
+#: src/widgets/print.ui:108
 msgid "Margins"
 msgstr "Okraje"
 
-#: src/widgets/print.ui:107
+#: src/widgets/print.ui:111
 msgid "Margin Units"
 msgstr "Jednotky okrajů"
 
-#: src/widgets/print.ui:124
-msgid "Horizontal"
-msgstr "Horizontální"
+#: src/widgets/print.ui:128
+msgid "_Horizontal"
+msgstr "_Horizontální"
 
-#: src/widgets/print.ui:129
-msgid "Vertical"
-msgstr "Vertikální"
+#: src/widgets/print.ui:134
+msgid "_Vertical"
+msgstr "_Vertikální"
 
-#: src/widgets/print.ui:136 src/widgets/properties_view.ui:58
+#: src/widgets/print.ui:142 src/widgets/properties_view.ui:53
 msgid "Image Size"
 msgstr "Velikost obrázku"
 
-#: src/widgets/print.ui:139
+#: src/widgets/print.ui:145
 msgid "Image Size Units"
 msgstr "Jednotky velikosti obrázku"
 
-#: src/widgets/print.ui:156
-msgid "Fill Space"
-msgstr "Vyplnit prostor"
+#: src/widgets/print.ui:163
+msgid "_Fill Space"
+msgstr "V_yplnit prostor"
 
-#: src/widgets/print.ui:161
-msgid "Width"
-msgstr "Šířka"
+#: src/widgets/print.ui:174
+msgid "H_eight"
+msgstr "Výš_ka"
 
-#: src/widgets/print.ui:166
-msgid "Height"
-msgstr "Výška"
+#: src/widgets/properties_view.rs:229
+msgid "Unknown"
+msgstr "Neznámý"
 
-#: src/widgets/properties_view.ui:29
+#. Translators: Addition of image being transparent to format name
+#: src/widgets/properties_view.rs:233
+msgid ", transparent"
+msgstr ", průhledný"
+
+#. Translators: Addition of image being grayscale to format name
+#: src/widgets/properties_view.rs:238
+msgid ", grayscale"
+msgstr ", ve stupních šedi"
+
+#. Translators: Addition of bit size to format name
+#: src/widgets/properties_view.rs:243
+#| msgid "{}\\u{202F}mm"
+msgid ", {}\\u{202F}bit"
+msgstr ", {}\\u{202F}bit"
+
+#: src/widgets/properties_view.ui:19
 msgid "Folder"
 msgstr "Složka"
 
-#: src/widgets/properties_view.ui:41
+#: src/widgets/properties_view.ui:26
 msgid "Open Containing Folder"
 msgstr "Otevřít složku umístění"
 
-#: src/widgets/properties_view.ui:74
+#: src/widgets/properties_view.ui:39
+msgid "URI"
+msgstr "Adresa URI"
+
+#: src/widgets/properties_view.ui:62
 msgid "Image Format"
 msgstr "Formát obrázku"
 
-#: src/widgets/properties_view.ui:88
+#: src/widgets/properties_view.ui:71
 msgid "File Size"
 msgstr "Velikost souboru"
 
-#: src/widgets/properties_view.ui:106
+#: src/widgets/properties_view.ui:84
 msgid "File Created"
 msgstr "Soubor vytvořen"
 
-#: src/widgets/properties_view.ui:120
+#: src/widgets/properties_view.ui:93
 msgid "File Modified"
 msgstr "Soubor změněn"
 
-#: src/widgets/properties_view.ui:142
+#: src/widgets/properties_view.ui:106
 msgid "Location"
 msgstr "Lokace"
 
-#: src/widgets/properties_view.ui:161
+#: src/widgets/properties_view.ui:113
 msgid "Open Location"
 msgstr "Otevřít lokaci"
 
-#: src/widgets/properties_view.ui:174
+#: src/widgets/properties_view.ui:126
 msgid "Originally Created"
 msgstr "Původně vytvořeno"
 
-#: src/widgets/properties_view.ui:195
+#: src/widgets/properties_view.ui:135
 msgid "Aperture"
 msgstr "Clona"
 
-#: src/widgets/properties_view.ui:216
+#: src/widgets/properties_view.ui:144
 msgid "Exposure"
 msgstr "Expozice"
 
-#: src/widgets/properties_view.ui:237
+#: src/widgets/properties_view.ui:153
 msgid "ISO"
 msgstr "ISO"
 
-#: src/widgets/properties_view.ui:258
+#: src/widgets/properties_view.ui:162
 msgid "Focal Length"
 msgstr "Ohnisková vzdálenost"
 
-#: src/widgets/properties_view.ui:279
+#: src/widgets/properties_view.ui:171
 msgid "Maker, Model"
 msgstr "Výrobce, model"
 
-#: src/window.rs:498
+#: src/window.rs:539
 msgid "Supported image formats"
 msgstr "Podporované formáty obrázků"
 
-#: src/window.rs:507
+#: src/window.rs:548
 msgid "All files"
 msgstr "Všechny soubory"
 
-#: src/window.rs:514
+#: src/window.rs:555
 msgid "Open Image"
 msgstr "Otevřít obrázek"
 
-#: src/window.rs:600
+#: src/window.rs:641
 msgid "Image copied to clipboard"
 msgstr "Obrázek zkopírován do schránky"
 
-#: src/window.rs:621
+#: src/window.rs:662
 msgid "Image moved to trash"
 msgstr "Obrázek přesunut do koše"
 
-#: src/window.rs:622
+#: src/window.rs:663
 msgid "Undo"
 msgstr "Zpět"
 
-#: src/window.rs:649
+#: src/window.rs:690
 msgid "Failed to move image to trash"
 msgstr "Nepodařilo se přesunout obrázek do koše"
 
-#: src/window.rs:664
+#: src/window.rs:705
 msgid "Permanently Delete Image?"
 msgstr "Smazat obrázek trvale?"
 
-#: src/window.rs:666
+#: src/window.rs:707
 msgid "The image “{}” can only be deleted permanently."
 msgstr "Obrázek „{}“ může být smazán pouze trvale."
 
-#: src/window.rs:674
+#: src/window.rs:715
 msgid "Cancel"
 msgstr "Zrušit"
 
-#: src/window.rs:675
+#: src/window.rs:716
 msgid "Delete"
 msgstr "Smazat"
 
-#: src/window.rs:686
+#: src/window.rs:727
 msgid "Failed to delete image"
 msgstr "Nepodařilo se smazat obrázek"
 
@@ -581,33 +612,36 @@ msgstr "_Klávesové zkratky"
 msgid "_About Image Viewer"
 msgstr "O _aplikaci Prohlížeč obrázků"
 
-#: src/window.ui:109
+#: src/window.ui:85
 msgid "Copy to Clipboard"
 msgstr "Kopírovat do schránky"
 
-#: src/window.ui:116
+#: src/window.ui:92
 msgid "Move to Trash"
 msgstr "Přesunout do koše"
 
-#: src/window.ui:122
+#: src/window.ui:98
 msgid "Main Menu"
 msgstr "Hlavní nabídka"
 
-#: src/window.ui:154
+#: src/window.ui:130
 msgid "Image Properties"
 msgstr "Vlastnosti obrázku"
 
-#: src/window.ui:196
+#: src/window.ui:174
 msgid "View Images"
 msgstr "Prohlížejte si obrázky"
 
-#: src/window.ui:197
+#: src/window.ui:175
 msgid "Drag and drop images here"
 msgstr "Sem přetáhněte a pusťte obrázky"
 
-#: src/window.ui:201
+#: src/window.ui:179
 msgid "_Open Files…"
 msgstr "_Otevřít soubory…"
+
+#~ msgid "The Loupe Team"
+#~ msgstr "Tým Loupe"
 
 #~ msgid "Center image horizontally"
 #~ msgstr "Zarovnat obrázek horizontálně na střed"
