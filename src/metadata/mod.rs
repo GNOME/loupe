@@ -25,7 +25,7 @@ mod file;
 mod gps;
 
 pub use file::FileInfo;
-use glycin_utils::{FrameDetails, ImageInfoDetails};
+use glycin::{FrameDetails, ImageInfoDetails};
 pub use gps::GPSLocation;
 
 use crate::deps::*;
@@ -37,8 +37,7 @@ pub struct Metadata {
     mime_type: Option<String>,
     exif: Option<exif::Exif>,
     file_info: Option<FileInfo>,
-    // TODO: Replace with glycin in newer glycin version
-    image_info: Option<glycin_utils::ImageInfoDetails>,
+    image_info: Option<glycin::ImageInfoDetails>,
     frame_info: Option<FrameDetails>,
 }
 

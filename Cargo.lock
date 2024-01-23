@@ -1032,9 +1032,9 @@ dependencies = [
 
 [[package]]
 name = "glycin"
-version = "1.0.0-alpha.2"
+version = "1.0.0-alpha.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "78dd20ce3bde5b9852e73990838c494b661a7ce48d8083e69638439e1d4cf55f"
+checksum = "b32d07bba79724f3dc4523aa66434369b938296adbad02d71a657e46fd4048ed"
 dependencies = [
  "anyhow",
  "async-fs 2.1.0",
@@ -1047,6 +1047,7 @@ dependencies = [
  "glycin-utils",
  "lcms2",
  "lcms2-sys",
+ "libc",
  "memfd",
  "memmap2",
  "nix 0.27.1",
@@ -1056,9 +1057,9 @@ dependencies = [
 
 [[package]]
 name = "glycin-utils"
-version = "1.0.0-alpha.2"
+version = "1.0.0-alpha.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "040bc5c15bd3e2c05a08f9e474a1f8ad70a42ee736842dfa9727ce0b2e2342a4"
+checksum = "3524a7bced399319dbfab49c3bbe28486243407284bebc0757bcae24f6a509de"
 dependencies = [
  "anyhow",
  "gettext-rs",
@@ -1414,9 +1415,9 @@ dependencies = [
 
 [[package]]
 name = "libc"
-version = "0.2.151"
+version = "0.2.152"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "302d7ab3130588088d277783b1e2d2e10c9e9e4a16dd9050e6ec93fb3e7048f4"
+checksum = "13e3bf6590cbc649f4d1a3eefc9d5d6eb746f5200ffb04e5e142700b8faa56e7"
 
 [[package]]
 name = "libgweather"
@@ -1488,7 +1489,6 @@ dependencies = [
  "gettext-sys",
  "gio",
  "glycin",
- "glycin-utils",
  "gtk4",
  "gvdb-macros",
  "indexmap",
