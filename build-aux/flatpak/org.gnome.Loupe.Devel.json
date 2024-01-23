@@ -150,13 +150,27 @@
             ]
         },
         {
+            "name": "highway",
+            "buildsystem": "cmake",
+            "config-opts": [
+                "-DHWY_ENABLE_TESTS=Off"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/google/highway.git",
+                    "commit": "ba0900a4957b929390ab73827235557959234fea"
+                }
+            ]
+        },
+        {
             "name": "glycin",
             "buildsystem": "meson",
             "sources": [
                 {
                     "type": "git",
                     "url": "https://gitlab.gnome.org/sophie-h/glycin.git",
-                    "commit": "5abe5c2970806885ccf082d8a7d01ed99c563d70"
+                    "commit": "40b1b467ee461f9a21800f733387fc613825647b"
                 }
             ]
         },
