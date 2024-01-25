@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2023-12-07 15:40+0000\n"
-"PO-Revision-Date: 2023-12-18 02:39+0300\n"
+"POT-Creation-Date: 2024-01-08 16:57+0000\n"
+"PO-Revision-Date: 2024-01-09 02:43+0300\n"
 "Last-Translator: Sabri Ünal <libreajans@gmail.com>\n"
 "Language-Team: Turkish <takim@gnome.org.tr>\n"
 "Language: tr\n"
@@ -18,11 +18,10 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 3.4.1\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #: data/org.gnome.Loupe.desktop.in.in:3
-#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:28 src/window.rs:814
-#: src/window.ui:64
+#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:29 src/window.rs:847
 msgid "Image Viewer"
 msgstr "Resim Görüntüleyici"
 
@@ -34,31 +33,32 @@ msgstr "Resim;Fotoğraf;Slayt Gösterisi;Grafikler;Görseller;Loupe;"
 msgid "Show the image properties sidebar"
 msgstr "Resim özellikleri kenar çubuğunu göster"
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:7 src/about.rs:31
-msgid "The Loupe Team"
-msgstr "Loupe Takımı"
+#. developer_name tag deprecated with Appstream 1.0
+#: data/org.gnome.Loupe.metainfo.xml.in.in:8 src/about.rs:32
+msgid "The GNOME Project"
+msgstr "GNOME Projesi"
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:8
+#: data/org.gnome.Loupe.metainfo.xml.in.in:12
 msgid "View images"
 msgstr "Resimleri göster"
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:10
+#: data/org.gnome.Loupe.metainfo.xml.in.in:14
 msgid "Browse through your images and inspect their metadata with:"
 msgstr "Resimlerinize göz atın ve üst verilerini şunlarla inceleyin:"
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:12
+#: data/org.gnome.Loupe.metainfo.xml.in.in:16
 msgid "Fast GPU accelerated image rendering"
 msgstr "Hızlı, GPU hızlandırmalı resim sahneleme"
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:13
+#: data/org.gnome.Loupe.metainfo.xml.in.in:17
 msgid "Tiled rendering for vector graphics"
 msgstr "Vektör grafikler için bölünmüş sahneleme"
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:14
+#: data/org.gnome.Loupe.metainfo.xml.in.in:18
 msgid "Extendable and sandboxed image decoding"
 msgstr "Genişletilebilir ve yalıtılmış resim çözme"
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:15
+#: data/org.gnome.Loupe.metainfo.xml.in.in:19
 msgid "Accessible presentation of the most important metadata."
 msgstr "Çoğu önemli üst verinin erişilebilir gösterimi."
 
@@ -236,17 +236,17 @@ msgid "Gestures"
 msgstr "Hareketler"
 
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/about.rs:40
+#: src/about.rs:41
 msgid "translator-credits"
 msgstr ""
 "Sabri Ünal <libreajans@gmail.com>\n"
 "Emin Tufan Çetin <etcetin@gmail.com>"
 
-#: src/about.rs:41
-msgid "Copyright © 2020–2023 Christopher Davis et al."
-msgstr "Telif Hakkı © 2020–2023 Christopher Davis et al."
+#: src/about.rs:42
+msgid "Copyright © 2020–2024 Christopher Davis et al."
+msgstr "Telif Hakkı © 2020–2024 Christopher Davis ve ark."
 
-#: src/file_model.rs:127
+#: src/file_model.rs:128
 msgid "Could not list other files in directory."
 msgstr "Dizindeki diğer dosyalar listelenemedi."
 
@@ -271,12 +271,12 @@ msgid "W"
 msgstr "B"
 
 #. Translators: Unit for exposure time in seconds
-#: src/metadata/mod.rs:214
+#: src/metadata/mod.rs:261
 msgid "1\\u{2215}{}\\u{202F}s"
 msgstr "1\\u{2215}{}\\u{202F}sn"
 
 #. Translators: Unit for focal length in millimeters
-#: src/metadata/mod.rs:239
+#: src/metadata/mod.rs:286
 msgid "{}\\u{202F}mm"
 msgstr "{}\\u{202F}mm"
 
@@ -289,7 +289,7 @@ msgstr "{}\\u{202F}mm"
 msgid "%x %X"
 msgstr "%x %X"
 
-#: src/util/mod.rs:180 src/window.rs:650
+#: src/util/mod.rs:180 src/window.rs:678
 msgid "Failed to restore image from trash"
 msgstr "Resim çöpten geri yüklenemedi"
 
@@ -321,21 +321,21 @@ msgstr "_Arka Plan Olarak Ayarla…"
 msgid "Could not Load Image"
 msgstr "Resim Yüklenemedi"
 
-#: src/widgets/image_page.ui:97 src/window.ui:105
+#: src/widgets/image_page.ui:97 src/window.ui:109
 msgid "Rotate Left"
 msgstr "Sola Döndür"
 
-#: src/widgets/image_page.ui:107 src/window.ui:115
+#: src/widgets/image_page.ui:107 src/window.ui:119
 msgid "Rotate Right"
 msgstr "Sağa Döndür"
 
 #. Translators: This is a toast notification, informing the user that
 #. an image has been set as background.
-#: src/widgets/image_view.rs:676
+#: src/widgets/image_view.rs:664
 msgid "Set as background."
 msgstr "Arka plan olarak ayarla."
 
-#: src/widgets/image_view.rs:689
+#: src/widgets/image_view.rs:677
 msgid "Could not set background."
 msgstr "Arka plan ayarlanamadı."
 
@@ -395,74 +395,98 @@ msgid "px"
 msgstr "px"
 
 #. Translators: {} is a placeholder for the filename
-#: src/widgets/print.rs:370
+#: src/widgets/print.rs:372
 msgid "Print “{}”"
 msgstr "“{}” yazdır"
 
+#: src/widgets/print.rs:783
+msgid "_Scale"
+msgstr "_Ölçekle"
+
+#: src/widgets/print.rs:786
+msgid "_Width"
+msgstr "_Genişlik"
+
 #. Translators: Go back to previous page
 #: src/widgets/print.ui:29
-msgid "Back"
-msgstr "Geri"
+msgid "_Back"
+msgstr "_Geri"
 
-#: src/widgets/print.ui:36
-msgid "Print"
-msgstr "Yazdır"
+#: src/widgets/print.ui:37
+msgid "_Print"
+msgstr "_Yazdır"
 
-#: src/widgets/print.ui:54
+#: src/widgets/print.ui:56
 msgid "Layout"
 msgstr "Düzen"
 
-#: src/widgets/print.ui:57
-msgid "Orientation"
-msgstr "Yönelim"
+#: src/widgets/print.ui:59
+msgid "_Orientation"
+msgstr "_Yönelim"
 
-#: src/widgets/print.ui:69
+#: src/widgets/print.ui:72
 msgid "Portrait Page Orientation"
 msgstr "Dikey Sayfa Yönelimi"
 
-#: src/widgets/print.ui:77
+#: src/widgets/print.ui:80
 msgid "Landscape Page Orientation"
 msgstr "Yatay Sayfa Yönelimi"
 
-#: src/widgets/print.ui:86
-msgid "Alignment"
-msgstr "Hizalama"
+#: src/widgets/print.ui:89
+msgid "_Alignment"
+msgstr "_Hizalama"
 
-#: src/widgets/print.ui:104
+#: src/widgets/print.ui:108
 msgid "Margins"
 msgstr "Kenar Boşlukları"
 
-#: src/widgets/print.ui:107
+#: src/widgets/print.ui:111
 msgid "Margin Units"
 msgstr "Kenar Boşluğu Birimleri"
 
-#: src/widgets/print.ui:124
-msgid "Horizontal"
-msgstr "Yatay"
+#: src/widgets/print.ui:128
+msgid "_Horizontal"
+msgstr "_Yatay"
 
-#: src/widgets/print.ui:129
-msgid "Vertical"
-msgstr "Dikey"
+#: src/widgets/print.ui:134
+msgid "_Vertical"
+msgstr "_Dikey"
 
-#: src/widgets/print.ui:136 src/widgets/properties_view.ui:53
+#: src/widgets/print.ui:142 src/widgets/properties_view.ui:53
 msgid "Image Size"
 msgstr "Resim Boyutu"
 
-#: src/widgets/print.ui:139
+#: src/widgets/print.ui:145
 msgid "Image Size Units"
 msgstr "Resim Boyutu Birimleri"
 
-#: src/widgets/print.ui:156
-msgid "Fill Space"
-msgstr "Dolgu Boşluğu"
+#: src/widgets/print.ui:163
+msgid "_Fill Space"
+msgstr "_Dolgu Boşluğu"
 
-#: src/widgets/print.ui:161
-msgid "Width"
-msgstr "Genişlik"
+#: src/widgets/print.ui:174
+msgid "H_eight"
+msgstr "_Yükseklik"
 
-#: src/widgets/print.ui:166
-msgid "Height"
-msgstr "Yükseklik"
+#: src/widgets/properties_view.rs:229
+msgid "Unknown"
+msgstr "Bilinmeyen"
+
+#. Translators: Addition of image being transparent to format name
+#: src/widgets/properties_view.rs:233
+msgid ", transparent"
+msgstr ", saydam"
+
+#. Translators: Addition of image being grayscale to format name
+#: src/widgets/properties_view.rs:238
+msgid ", grayscale"
+msgstr ", gri tonlama"
+
+#. Translators: Addition of bit size to format name
+#: src/widgets/properties_view.rs:243
+#| msgid "{}\\u{202F}mm"
+msgid ", {}\\u{202F}bit"
+msgstr ", {}\\u{202F}bit"
 
 #: src/widgets/properties_view.ui:19
 msgid "Folder"
@@ -524,51 +548,51 @@ msgstr "Odak Uzaklığı"
 msgid "Maker, Model"
 msgstr "Üretici, Model"
 
-#: src/window.rs:514
+#: src/window.rs:542
 msgid "Supported image formats"
 msgstr "Desteklenen resim biçimleri"
 
-#: src/window.rs:523
+#: src/window.rs:551
 msgid "All files"
 msgstr "Tüm dosyalar"
 
-#: src/window.rs:530
+#: src/window.rs:558
 msgid "Open Image"
 msgstr "Resim Aç"
 
-#: src/window.rs:616
+#: src/window.rs:644
 msgid "Image copied to clipboard"
 msgstr "Resim panoya kopyalandı"
 
-#: src/window.rs:637
+#: src/window.rs:665
 msgid "Image moved to trash"
 msgstr "Resim çöpe taşındı"
 
-#: src/window.rs:638
+#: src/window.rs:666
 msgid "Undo"
 msgstr "Geri Al"
 
-#: src/window.rs:665
+#: src/window.rs:693
 msgid "Failed to move image to trash"
 msgstr "Resim çöpe taşınamadı"
 
-#: src/window.rs:680
+#: src/window.rs:708
 msgid "Permanently Delete Image?"
 msgstr "Resim Kalıcı Olarak Silinsin Mi?"
 
-#: src/window.rs:682
+#: src/window.rs:710
 msgid "The image “{}” can only be deleted permanently."
 msgstr "“{}” resmi yalnızca kalıcı olarak silinebilir."
 
-#: src/window.rs:690
+#: src/window.rs:718
 msgid "Cancel"
 msgstr "İptal"
 
-#: src/window.rs:691
+#: src/window.rs:719
 msgid "Delete"
 msgstr "Sil"
 
-#: src/window.rs:702
+#: src/window.rs:730
 msgid "Failed to delete image"
 msgstr "Resim silinemedi"
 
@@ -592,33 +616,36 @@ msgstr "_Klavye Kısayolları"
 msgid "_About Image Viewer"
 msgstr "Resim Görüntüleyici _Hakkında"
 
-#: src/window.ui:84
+#: src/window.ui:88
 msgid "Copy to Clipboard"
 msgstr "Panoya Kopyala"
 
-#: src/window.ui:91
+#: src/window.ui:95
 msgid "Move to Trash"
 msgstr "Çöpe Taşı"
 
-#: src/window.ui:97
+#: src/window.ui:101
 msgid "Main Menu"
 msgstr "Ana Menü"
 
-#: src/window.ui:129
+#: src/window.ui:133
 msgid "Image Properties"
 msgstr "Resim Özellikleri"
 
-#: src/window.ui:171
+#: src/window.ui:175
 msgid "View Images"
 msgstr "Resimleri Göster"
 
-#: src/window.ui:172
+#: src/window.ui:176
 msgid "Drag and drop images here"
 msgstr "Resimleri sürükleyip buraya bırakın"
 
-#: src/window.ui:176
+#: src/window.ui:180
 msgid "_Open Files…"
 msgstr "Dosya _Aç…"
+
+#~ msgid "The Loupe Team"
+#~ msgstr "Loupe Takımı"
 
 #~ msgid "Center image horizontally"
 #~ msgstr "Resmi yatay ortala"
