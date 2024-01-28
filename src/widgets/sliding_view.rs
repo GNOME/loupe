@@ -250,7 +250,7 @@ mod imp {
             for (page_index, page) in self.pages.borrow().iter().enumerate() {
                 match *self.position_tracking.borrow() {
                     PositionTracking::Position(_) => {
-                        self.size_allocate_position(page_index, page, width, height)
+                        self.size_allocate_position(page_index, page, width, height);
                     }
                     PositionTracking::StackedCards(_) => {
                         // Hide all and show to relevant widgets later
@@ -379,11 +379,18 @@ mod imp {
                 let progress = stacked_cards.progress;
 
                 //New Page
-                new_page.set_child_visible(true);
 
                 // Ensure that new image is on top
                 new_page.unparent();
                 new_page.insert_after(&obj, Some(prev_page));
+
+                // Don't show spinner or error during animation
+                if new_page.image().is_loaded() {
+                    new_page.set_child_visible(true);
+                } else {
+                    // Set explicity since re-parenting resets the state
+                    new_page.set_child_visible(false);
+                }
 
                 let x = direction_sign * STEP_PIXEL_SHIFT * (1. - progress as f32);
                 let transform = gsk::Transform::new().translate(&graphene::Point::new(x, 0.));
@@ -391,7 +398,10 @@ mod imp {
                 new_page.set_opacity(progress);
 
                 // Prev Page
-                prev_page.set_child_visible(true);
+                if prev_page.image().is_loaded() {
+                    prev_page.set_child_visible(true);
+                }
+
                 let x = -direction_sign
                     * f32::max(
                         0.,
@@ -478,7 +488,11 @@ impl LpSlidingView {
         let current_index = self.current_index();
 
         if let Some(index) = self.index_of(page) {
-            // Don't unparent here since page might still be needed in delete animation.
+            // Only unparent if far enough away to not be involved in delete animation
+            if current_index.map_or(false, |x| x.abs_diff(index) as isize > 1) {
+                page.unparent();
+            }
+
             self.imp().pages.borrow_mut().remove(index);
 
             self.queue_allocate();
