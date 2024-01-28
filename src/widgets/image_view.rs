@@ -81,6 +81,10 @@ mod imp {
 
         pub drag_source: gtk::DragSource,
 
+        /// File where trash operation has been undone
+        #[property(get, set, nullable)]
+        trash_restore: RefCell<Option<gio::File>>,
+
         pub(super) model: RefCell<LpFileModel>,
         pub(super) preserve_content: Cell<bool>,
 
@@ -522,6 +526,16 @@ impl LpImageView {
 
     /// Handle files are added or removed from directory
     fn model_content_changed_cb(&self) {
+        // Animate to image that was restored from trash
+        if let Some(trash_restore) = self.trash_restore() {
+            if self.model().contains(&trash_restore) {
+                self.set_trash_restore(gio::File::NONE);
+                self.update_sliding_view(&trash_restore);
+                self.scroll_sliding_view(&trash_restore);
+                return;
+            }
+        }
+
         let Some(current_file) = self.current_file() else {
             return;
         };

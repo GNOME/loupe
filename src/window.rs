@@ -667,16 +667,15 @@ impl LpWindow {
                 toast.connect_button_clicked(glib::clone!(@weak self as win => move |_| {
                     let path = path.clone();
                     glib::spawn_future_local(async move {
+                        win.image_view()
+                            .set_trash_restore(Some(gio::File::for_path(&path)));
                         let result = crate::util::untrash(&path).await;
-                        match result {
-                            Ok(()) => win.image_view().set_images_from_files(Vec::from([gio::File::for_path(&path)])),
-                            Err(err) => {
-                                log::error!("Failed to untrash {path:?}: {err}");
-                                win.show_toast(
-                                    gettext("Failed to restore image from trash"),
-                                    adw::ToastPriority::High,
-                                );
-                            }
+                        if let Err(err) = result {
+                            log::error!("Failed to untrash {path:?}: {err}");
+                            win.show_toast(
+                                gettext("Failed to restore image from trash"),
+                                adw::ToastPriority::High,
+                            );
                         }
                     });
                 }));
