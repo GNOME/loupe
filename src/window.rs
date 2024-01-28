@@ -544,9 +544,6 @@ impl LpWindow {
         for mime_type in glycin::image_formats().await {
             filter_supported_formats.add_mime_type(&mime_type);
         }
-        // TODO: Update when SVG moves to glycin as well
-        filter_supported_formats.add_mime_type("image/svg+xml");
-        filter_supported_formats.add_mime_type("image/svg+xml-compressed");
 
         let filter_all_files = gtk::FileFilter::new();
         filter_all_files.set_name(Some(&gettext("All files")));
