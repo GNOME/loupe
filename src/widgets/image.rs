@@ -115,7 +115,8 @@ const MAX_ZOOM_LEVEL: f64 = 20.0;
 /// The thumbnail is currently used for drag and drop.
 const THUMBNAIL_SIZE: f32 = 128.;
 
-/// For large enough monitors occupy 40% of the screen area when opening window with image
+/// For large enough monitors occupy 40% of the screen area when opening window
+/// with image
 const DEFAULT_OCCUPY_SCREEN: f64 = 0.4;
 
 /// Screens with this resolution or smaller are handles as small
