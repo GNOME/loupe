@@ -453,7 +453,7 @@ impl LpImageView {
     }
 
     fn scroll_sliding_view(&self, file: &gio::File) {
-        let Some(current_page) = self.sliding_view().pages().remove(&file.uri()) else {
+        let Some(current_page) = self.sliding_view().pages().swap_remove(&file.uri()) else {
             log::error!(
                 "Current path not available in sliding_view for scrolling: {}",
                 file.uri()
@@ -626,7 +626,7 @@ impl LpImageView {
         // Reset zoom and rotation of other pages
         if let Some(new_page) = &current_page {
             let mut other_pages = self.sliding_view().pages();
-            other_pages.remove(&new_page.file().uri());
+            other_pages.swap_remove(&new_page.file().uri());
             for (_, page) in other_pages {
                 let image = page.image();
                 image.reset_rotation();

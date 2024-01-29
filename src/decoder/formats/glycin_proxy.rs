@@ -48,7 +48,7 @@ impl Glycin {
         let (next_frame_send, next_frame_recv) = async_channel::bounded(2);
 
         updater.clone().spawn_error_handled(async move {
-            let mut image_request = glycin::ImageRequest::new(file);
+            let mut image_request = glycin::Loader::new(file);
 
             #[cfg(feature = "disable-glycin-sandbox")]
             image_request.sandbox_mechanism(Some(glycin::SandboxMechanism::NotSandboxed));

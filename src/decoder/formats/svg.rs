@@ -69,7 +69,7 @@ impl Svg {
         let (wakeup, wakeup_resv) = mpsc::unbounded();
 
         updater.clone().spawn_error_handled(async move {
-            let mut image_request = glycin::ImageRequest::new(file);
+            let mut image_request = glycin::Loader::new(file);
 
             #[cfg(feature = "disable-glycin-sandbox")]
             image_request.sandbox_mechanism(Some(glycin::SandboxMechanism::NotSandboxed));
@@ -174,7 +174,7 @@ impl Svg {
 
     pub fn render_print(file: &gio::File, width: i32, height: i32) -> anyhow::Result<gdk::Texture> {
         #[allow(unused_mut)]
-        let mut image_request = glycin::ImageRequest::new(file.clone());
+        let mut image_request = glycin::Loader::new(file.clone());
 
         #[cfg(feature = "disable-glycin-sandbox")]
         image_request.sandbox_mechanism(Some(glycin::SandboxMechanism::NotSandboxed));
