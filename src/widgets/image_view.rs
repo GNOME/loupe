@@ -354,7 +354,7 @@ impl LpImageView {
     }
 
     /// Move forward or backwards
-    pub fn navigate(&self, direction: Direction) {
+    pub fn navigate(&self, direction: Direction, animated: bool) {
         if let Some(current_file) = self.current_file() {
             let new_file = match direction {
                 Direction::Forward => self.model().after(&current_file),
@@ -362,7 +362,7 @@ impl LpImageView {
             };
 
             if let Some(new_file) = new_file {
-                self.scroll_sliding_view(&new_file);
+                self.scroll_sliding_view(&new_file, animated);
             }
         }
     }
@@ -452,7 +452,7 @@ impl LpImageView {
         self.notify("is-next-available");
     }
 
-    fn scroll_sliding_view(&self, file: &gio::File) {
+    fn scroll_sliding_view(&self, file: &gio::File, animated: bool) {
         let Some(current_page) = self.sliding_view().pages().swap_remove(&file.uri()) else {
             log::error!(
                 "Current path not available in sliding_view for scrolling: {}",
@@ -461,7 +461,11 @@ impl LpImageView {
             return;
         };
 
-        self.sliding_view().animate_to(&current_page);
+        if animated {
+            self.sliding_view().animate_to(&current_page);
+        } else {
+            self.sliding_view().instant_to(&current_page);
+        }
     }
 
     fn sliding_view(&self) -> LpSlidingView {
@@ -531,7 +535,7 @@ impl LpImageView {
             if self.model().contains(&trash_restore) {
                 self.set_trash_restore(gio::File::NONE);
                 self.update_sliding_view(&trash_restore);
-                self.scroll_sliding_view(&trash_restore);
+                self.scroll_sliding_view(&trash_restore, true);
                 return;
             }
         }

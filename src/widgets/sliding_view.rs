@@ -554,6 +554,16 @@ impl LpSlidingView {
             .cloned()
     }
 
+    /// Move to specified page without animation
+    pub fn instant_to(&self, page: &LpImagePage) {
+        if let Some(index) = self.index_of(page) {
+            self.set_current_page(Some(page));
+            self.set_position(index as f64 - self.position_shift());
+        } else {
+            log::error!("Page not in LpSlidingView {}", page.file().uri());
+        }
+    }
+
     /// Move to specified page with animation
     pub fn animate_to(&self, page: &LpImagePage) {
         if let Some(index) = self.index_of(page) {

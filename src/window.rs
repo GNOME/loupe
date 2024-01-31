@@ -146,26 +146,42 @@ mod imp {
             });
 
             klass.install_action("win.next", None, move |win, _, _| {
-                win.imp().image_view.navigate(Direction::Forward);
+                win.imp().image_view.navigate(Direction::Forward, true);
             });
 
             klass.install_action("win.previous", None, move |win, _, _| {
-                win.imp().image_view.navigate(Direction::Back);
+                win.imp().image_view.navigate(Direction::Back, true);
             });
 
             klass.install_action("win.image-right", None, move |win, _, _| {
                 if win.direction() == gtk::TextDirection::Rtl {
-                    win.imp().image_view.navigate(Direction::Back);
+                    win.imp().image_view.navigate(Direction::Back, true);
                 } else {
-                    win.imp().image_view.navigate(Direction::Forward);
+                    win.imp().image_view.navigate(Direction::Forward, true);
+                }
+            });
+
+            klass.install_action("win.image-right-instant", None, move |win, _, _| {
+                if win.direction() == gtk::TextDirection::Rtl {
+                    win.imp().image_view.navigate(Direction::Back, false);
+                } else {
+                    win.imp().image_view.navigate(Direction::Forward, false);
                 }
             });
 
             klass.install_action("win.image-left", None, move |win, _, _| {
                 if win.direction() == gtk::TextDirection::Rtl {
-                    win.imp().image_view.navigate(Direction::Forward);
+                    win.imp().image_view.navigate(Direction::Forward, true);
                 } else {
-                    win.imp().image_view.navigate(Direction::Back);
+                    win.imp().image_view.navigate(Direction::Back, true);
+                }
+            });
+
+            klass.install_action("win.image-left-instant", None, move |win, _, _| {
+                if win.direction() == gtk::TextDirection::Rtl {
+                    win.imp().image_view.navigate(Direction::Forward, false);
+                } else {
+                    win.imp().image_view.navigate(Direction::Back, false);
                 }
             });
 
@@ -279,11 +295,11 @@ mod imp {
 
             self.forward_click_gesture
                 .connect_pressed(clone!(@weak obj => move |_,_,_,_| {
-                    obj.image_view().navigate(Direction::Forward);
+                    obj.image_view().navigate(Direction::Forward, true);
                 }));
             self.backward_click_gesture
                 .connect_pressed(clone!(@weak obj => move |_,_,_,_| {
-                    obj.image_view().navigate(Direction::Back);
+                    obj.image_view().navigate(Direction::Back, true);
                 }));
             self.properties_button
                 .connect_toggled(clone!(@weak obj => move |_| {
