@@ -515,6 +515,10 @@ impl LpSlidingView {
         });
     }
 
+    fn emit_target_page_reached(&self) {
+        self.emit_by_name::<()>("target-page-reached", &[]);
+    }
+
     /// Removes all pages
     fn clear(&self, lazy: bool) {
         self.scroll_animation().pause();
@@ -557,8 +561,13 @@ impl LpSlidingView {
     /// Move to specified page without animation
     pub fn instant_to(&self, page: &LpImagePage) {
         if let Some(index) = self.index_of(page) {
-            self.set_current_page(Some(page));
+            self.step_animation().pause();
+            self.scroll_animation().pause();
+
             self.set_position(index as f64 - self.position_shift());
+
+            self.set_current_page(Some(page));
+            self.emit_target_page_reached();
         } else {
             log::error!("Page not in LpSlidingView {}", page.file().uri());
         }
@@ -718,7 +727,7 @@ impl LpSlidingView {
                 .build();
 
             animation.connect_done(glib::clone!(@weak self as obj => move |_| {
-                obj.emit_by_name("target-page-reached", &[])
+                obj.emit_target_page_reached()
             }));
 
             animation
@@ -751,7 +760,7 @@ impl LpSlidingView {
                 } else {
                     error!("No current page at end of animation");
                 }
-                obj.emit_by_name("target-page-reached", &[])
+                obj.emit_target_page_reached();
             }));
 
             animation
