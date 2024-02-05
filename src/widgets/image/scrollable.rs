@@ -63,7 +63,7 @@ impl imp::LpImage {
     pub(super) fn configure_adjustments(&self) {
         let obj = self.obj();
 
-        let hadjustment = obj.hadjustment();
+        let hadjustment = obj.hadj();
         // round to application pixels to avoid tiny rounding errors from zoom
         let content_width = self.round_f64(self.image_displayed_width());
         let widget_width = self.widget_width();
@@ -83,7 +83,7 @@ impl imp::LpImage {
             f64::min(widget_width, content_width),
         );
 
-        let vadjustment = obj.vadjustment();
+        let vadjustment = obj.vadj();
         // round to application pixels to avoid tiny rounding errors from zoom
         let content_height = self.round_f64(self.image_displayed_height());
         let widget_height = self.widget_height();
@@ -104,23 +104,23 @@ impl imp::LpImage {
     }
 
     pub fn set_hadj_value(&self, value: f64) {
-        let hadjustment = self.obj().hadjustment();
+        let hadjustment = self.obj().hadj();
         let value = value.clamp(0., hadjustment.upper() - hadjustment.page_size());
         hadjustment.set_value(value);
     }
 
     pub fn set_vadj_value(&self, value: f64) {
-        let vadjustment = self.obj().vadjustment();
+        let vadjustment = self.obj().vadj();
         let value = value.clamp(0., vadjustment.upper() - vadjustment.page_size());
         vadjustment.set_value(value);
     }
 
     pub fn hadj_value(&self) -> f64 {
-        self.obj().hadjustment().value()
+        self.obj().hadj().value()
     }
 
     pub fn vadj_value(&self) -> f64 {
-        self.obj().vadjustment().value()
+        self.obj().vadj().value()
     }
 
     pub fn max_hadjustment_value(&self) -> f64 {
@@ -141,11 +141,11 @@ impl LpImage {
         self.imp().max_vadjustment_value() != 0.
     }
 
-    pub fn hadjustment(&self) -> gtk::Adjustment {
-        todo!()
+    pub fn hadj(&self) -> gtk::Adjustment {
+        self.imp().hadjustment.borrow().clone()
     }
 
-    pub fn vadjustment(&self) -> gtk::Adjustment {
-        todo!()
+    pub fn vadj(&self) -> gtk::Adjustment {
+        self.imp().vadjustment.borrow().clone()
     }
 }

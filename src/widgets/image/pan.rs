@@ -33,10 +33,10 @@ impl LpImage {
 
         let (adjustment, max) = match direction {
             gtk::PanDirection::Left | gtk::PanDirection::Right => {
-                (self.hadjustment(), imp.max_hadjustment_value())
+                (self.hadj(), imp.max_hadjustment_value())
             }
             gtk::PanDirection::Up | gtk::PanDirection::Down => {
-                (self.vadjustment(), imp.max_vadjustment_value())
+                (self.vadj(), imp.max_vadjustment_value())
             }
             _ => {
                 log::error!("Unknown pan direction {direction:?}");

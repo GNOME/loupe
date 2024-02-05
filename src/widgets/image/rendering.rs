@@ -99,11 +99,11 @@ impl WidgetImpl for imp::LpImage {
         );
 
         // Apply the scrolling position to the image
-        let hadj: gtk::Adjustment = obj.hadjustment();
+        let hadj: gtk::Adjustment = obj.hadj();
         let x = -(hadj.value() - (hadj.upper() - display_width) / 2.);
         snapshot.translate(&graphene::Point::new(self.round_f64(x) as f32, 0.));
 
-        let vadj = obj.vadjustment();
+        let vadj = obj.vadj();
         let y = -(vadj.value() - (vadj.upper() - display_height) / 2.);
         snapshot.translate(&graphene::Point::new(0., self.round_f64(y) as f32));
 
@@ -257,8 +257,8 @@ impl imp::LpImage {
         let obj = self.obj();
 
         let scaling = self.scaling() as f32;
-        let x = obj.hadjustment().value() as f32 * scaling;
-        let y = obj.vadjustment().value() as f32 * scaling;
+        let x = obj.hadj().value() as f32 * scaling;
+        let y = obj.vadj().value() as f32 * scaling;
         let width = self.widget_width() as f32 * scaling;
         let height = self.widget_height() as f32 * scaling;
 
