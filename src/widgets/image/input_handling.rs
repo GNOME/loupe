@@ -82,7 +82,7 @@ impl imp::LpImage {
                     (f64::exp(-y * f64::ln(ZOOM_FACTOR_SCROLL_SURFACE)), false)
                 }
                 unknown_unit => {
-                    log::warn!("Ignoring unknown scroll unit: {unknown_unit}");
+                    log::warn!("Ignoring unknown scroll unit: {unknown_unit:?}");
                     (1., false)
                 }
             };

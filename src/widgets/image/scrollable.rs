@@ -140,4 +140,12 @@ impl LpImage {
     pub fn is_vscrollable(&self) -> bool {
         self.imp().max_vadjustment_value() != 0.
     }
+
+    pub fn hadjustment(&self) -> gtk::Adjustment {
+        todo!()
+    }
+
+    pub fn vadjustment(&self) -> gtk::Adjustment {
+        todo!()
+    }
 }

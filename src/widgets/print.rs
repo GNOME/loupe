@@ -18,14 +18,13 @@
 
 //! The print layout widget that also coordinates the print process
 
-use std::cell::{Cell, RefCell};
+use std::cell::{Cell, OnceCell, RefCell};
 use std::rc::Rc;
 
 use adw::prelude::*;
 use adw::subclass::prelude::*;
 use glib::Properties;
 use gtk::CompositeTemplate;
-use once_cell::sync::OnceCell;
 
 use crate::decoder::{self};
 use crate::deps::*;

@@ -85,10 +85,7 @@ impl imp::LpImage {
 
         let node = snapshot.to_node()?;
 
-        let renderer = obj.root()?.renderer();
-        if !renderer.is_realized() {
-            return None;
-        }
+        let renderer = obj.root()?.renderer()?;
 
         // Render the small version of the image and download to RAM
         let texture = renderer.render_texture(node, None);

@@ -27,7 +27,7 @@ use crate::deps::*;
 mod imp {
     use adw::subclass::prelude::*;
     use glib::{ParamSpec, Properties, Value};
-    use once_cell::sync::OnceCell;
+    use std::cell::OnceCell;
 
     use super::*;
 

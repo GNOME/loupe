@@ -296,7 +296,7 @@ mod imp {
             );
 
             obj.connect_realize(glib::clone!(@weak surface_signals => move |obj| {
-                surface_signals.set_target(obj.native().map(|x| x.surface()).as_ref());
+                surface_signals.set_target(obj.native().and_then(|x| x.surface()).as_ref());
             }));
 
             obj.connect_unrealize(glib::clone!(@weak surface_signals => move |_| {

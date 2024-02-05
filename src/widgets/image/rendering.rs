@@ -299,13 +299,10 @@ impl imp::LpImage {
         let obj = self.obj();
 
         // TODO: This avoids panics and should be fixed upstream
-        if obj.is_realized() {
-            obj.native()
-                .map(|x| x.surface().scale())
-                .unwrap_or_else(|| obj.scale_factor() as f64)
-        } else {
-            1.
-        }
+        obj.native()
+            .and_then(|x| x.surface())
+            .map(|x| x.scale())
+            .unwrap_or_else(|| obj.scale_factor() as f64)
     }
 
     /// Monitor size in physical pixels
@@ -313,8 +310,8 @@ impl imp::LpImage {
         let obj = self.obj();
 
         if let Some(display) = gdk::Display::default() {
-            if let Some(native) = obj.native() {
-                if let Some(monitor) = display.monitor_at_surface(&native.surface()) {
+            if let Some(surface) = obj.native().and_then(|x| x.surface()) {
+                if let Some(monitor) = display.monitor_at_surface(&surface) {
                     let hidpi_scale = self.scaling();
                     let monitor_geometry = monitor.geometry();
                     let monitor_size = (

@@ -42,7 +42,7 @@ impl LpImage {
             .add_to_snapshot(&snapshot, scale, &render_options);
 
         let node = snapshot.to_node()?;
-        let renderer = self.root()?.renderer();
+        let renderer = self.root()?.renderer()?;
 
         Some(renderer.render_texture(&node, None))
     }

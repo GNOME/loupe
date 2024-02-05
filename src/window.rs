@@ -52,6 +52,8 @@ const HIDE_CONTROLS_ANIMATION_DURATION: u32 = 1000;
 const HIDE_CONTROLS_IDLE_TIMEOUT: u64 = 3000;
 
 mod imp {
+    use gio::glib::VariantTy;
+
     use super::*;
 
     // To use composite templates, you need
@@ -125,20 +127,15 @@ mod imp {
             // CompositeTemplate macro to bind all children at once.
             Self::bind_template(klass);
 
-            klass.add_binding(
-                gdk::Key::c,
-                gdk::ModifierType::CONTROL_MASK,
-                |window, _| {
-                    if window.has_metadata_selected() {
-                        // Pass on to normal copy handler to copy selected metadata
-                        false
-                    } else {
-                        window.copy_image();
-                        true
-                    }
-                },
-                None,
-            );
+            klass.add_binding(gdk::Key::c, gdk::ModifierType::CONTROL_MASK, |window| {
+                if window.has_metadata_selected() {
+                    // Pass on to normal copy handler to copy selected metadata
+                    glib::Propagation::Proceed
+                } else {
+                    window.copy_image();
+                    glib::Propagation::Stop
+                }
+            });
 
             // Set up actions
             klass.install_action("win.toggle-fullscreen", None, move |win, _, _| {
@@ -209,9 +206,13 @@ mod imp {
                 win.zoom_in_center();
             });
 
-            klass.install_action("win.zoom-to-exact", Some("d"), move |win, _, level| {
-                win.zoom_to_exact(level.unwrap().get().unwrap());
-            });
+            klass.install_action(
+                "win.zoom-to-exact",
+                Some(&VariantTy::new("d").unwrap()),
+                move |win, _, level| {
+                    win.zoom_to_exact(level.unwrap().get().unwrap());
+                },
+            );
 
             klass.install_action("win.zoom-best-fit", None, move |win, _, _| {
                 win.zoom_best_fit();
@@ -275,11 +276,15 @@ mod imp {
                 win.trash().await;
             });
 
-            klass.install_action("win.show-toast", Some("(si)"), move |win, _, var| {
-                if let Some((ref toast, i)) = var.and_then(|v| v.get::<(String, i32)>()) {
-                    win.show_toast(toast, adw::ToastPriority::__Unknown(i));
-                }
-            });
+            klass.install_action(
+                "win.show-toast",
+                Some(VariantTy::new("(si)").unwrap()),
+                move |win, _, var| {
+                    if let Some((ref toast, i)) = var.and_then(|v| v.get::<(String, i32)>()) {
+                        win.show_toast(toast, adw::ToastPriority::__Unknown(i));
+                    }
+                },
+            );
         }
 
         fn instance_init(obj: &glib::subclass::InitializingObject<Self>) {
