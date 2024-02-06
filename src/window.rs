@@ -208,7 +208,7 @@ mod imp {
 
             klass.install_action(
                 "win.zoom-to-exact",
-                Some(&VariantTy::new("d").unwrap()),
+                Some(VariantTy::DOUBLE),
                 move |win, _, level| {
                     win.zoom_to_exact(level.unwrap().get().unwrap());
                 },
@@ -278,7 +278,7 @@ mod imp {
 
             klass.install_action(
                 "win.show-toast",
-                Some(VariantTy::new("(si)").unwrap()),
+                Some(VariantTy::TUPLE),
                 move |win, _, var| {
                     if let Some((ref toast, i)) = var.and_then(|v| v.get::<(String, i32)>()) {
                         win.show_toast(toast, adw::ToastPriority::__Unknown(i));
