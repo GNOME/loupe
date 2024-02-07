@@ -65,6 +65,12 @@ impl WidgetImpl for imp::LpImage {
 
         let applicable_zoom = self.applicable_zoom();
 
+        let nth_snaphot = self.nth_snapshot.get() + 1;
+        if nth_snaphot < 3 {
+            self.nth_snapshot.set(nth_snaphot);
+            log::trace!("Creating snapshot #{nth_snaphot}");
+        }
+
         let scaling_filter = if obj.metadata().is_svg() {
             // Looks better in SVG animations and avoids rendering issues
             gsk::ScalingFilter::Linear
@@ -125,6 +131,10 @@ impl WidgetImpl for imp::LpImage {
             .add_to_snapshot(snapshot, applicable_zoom, &render_options);
 
         snapshot.restore();
+
+        if nth_snaphot < 3 {
+            log::trace!("Snapshot #{nth_snaphot} created");
+        }
     }
 
     fn measure(&self, orientation: gtk::Orientation, _for_size: i32) -> (i32, i32, i32, i32) {

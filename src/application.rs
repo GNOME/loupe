@@ -75,11 +75,13 @@ mod imp {
     // Overrides GApplication vfuncs
     impl ApplicationImpl for LpApplication {
         fn startup(&self) {
+            log::trace!("Startup");
             self.parent_startup();
             LpShyBin::ensure_type();
         }
 
         fn activate(&self) {
+            log::trace!("Activate");
             let application = self.obj();
             let window = LpWindow::new(&*application);
             window.present();
@@ -87,6 +89,7 @@ mod imp {
 
         // Handles opening files from the command line or other applications
         fn open(&self, files: &[gio::File], _hint: &str) {
+            log::trace!("Open {} file(s)", files.len());
             let application = self.obj();
             let win = LpWindow::new(&*application);
             win.image_view().set_images_from_files(files.to_vec());

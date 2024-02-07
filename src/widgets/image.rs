@@ -232,6 +232,9 @@ mod imp {
         pub(super) widget_dimensions: Cell<(i32, i32)>,
         pub(super) scaling: Cell<f64>,
         pub(super) surface_signals: OnceCell<SignalGroup>,
+
+        /// Number of snapshots created, debug only
+        pub(super) nth_snapshot: Cell<u8>,
     }
 
     #[glib::object_subclass]

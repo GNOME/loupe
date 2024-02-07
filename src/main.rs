@@ -81,13 +81,19 @@ fn main() -> glib::ExitCode {
 
     log_builder.init();
 
+    log::debug!("Logger initialized");
+
     setlocale(LocaleCategory::LcAll, "");
     bindtextdomain("loupe", config::LOCALEDIR).unwrap();
     textdomain("loupe").unwrap();
 
+    log::trace!("gettext initialized");
+
     gio::resources_register(
         &gio::Resource::from_data(&glib::Bytes::from_static(GRESOURCE_BYTES)).unwrap(),
     );
+
+    log::trace!("Gio resources registered");
 
     LpApplication::new().run()
 }

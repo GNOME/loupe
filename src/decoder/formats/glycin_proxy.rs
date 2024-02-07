@@ -48,6 +48,7 @@ impl Glycin {
         let (next_frame_send, next_frame_recv) = async_channel::bounded(2);
 
         updater.clone().spawn_error_handled(async move {
+            log::trace!("Setting up loader");
             let mut image_request = glycin::Loader::new(file);
 
             #[cfg(feature = "disable-glycin-sandbox")]
@@ -56,6 +57,7 @@ impl Glycin {
             image_request.cancellable(cancellable_);
 
             let image = image_request.request().await?;
+            log::trace!("Image info received");
 
             let mut metadata: Metadata = Metadata::default();
             metadata.set_image_info(image.info().details.clone());
