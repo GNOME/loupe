@@ -298,7 +298,6 @@ impl imp::LpImage {
     pub fn scaling(&self) -> f64 {
         let obj = self.obj();
 
-        // TODO: This avoids panics and should be fixed upstream
         obj.native()
             .and_then(|x| x.surface())
             .map(|x| x.scale())
