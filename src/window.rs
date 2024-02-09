@@ -276,6 +276,10 @@ mod imp {
                 win.trash().await;
             });
 
+            klass.install_action_async("win.delete", None, |win, _, _| async move {
+                win.delete().await;
+            });
+
             klass.install_action(
                 "win.show-toast",
                 Some(VariantTy::TUPLE),
@@ -704,7 +708,7 @@ impl LpWindow {
             }
             Err(err) => {
                 if Some(gio::IOErrorEnum::NotSupported) == err.kind::<gio::IOErrorEnum>() {
-                    self.delete(&path).await;
+                    self.delete_future(&path).await;
                 } else {
                     log::error!("Failed to delete file {path:?}: {err}");
                     self.show_toast(
@@ -716,16 +720,27 @@ impl LpWindow {
         }
     }
 
+    /// Delete action called
+    async fn delete(&self) {
+        let image_view = self.image_view();
+        let Some(path) = image_view.current_file().and_then(|x| x.path()) else {
+            log::error!("No file to delete");
+            return;
+        };
+
+        self.delete_future(&path).await;
+    }
+
     /// Permanently delete image
     ///
-    /// Fallback for when trash not available
-    async fn delete(&self, path: &Path) {
+    /// Fallback for when trash not available or explicit call with shortcut
+    async fn delete_future(&self, path: &Path) {
         let dialog = adw::MessageDialog::builder()
             .modal(true)
             .transient_for(self)
             .heading(gettext("Permanently Delete Image?"))
             .body(gettext_f(
-                "The image “{}” can only be deleted permanently.",
+                "After deleting the image “{}” it will be permanently lost.",
                 [PathBuf::from(&path.file_name().unwrap_or_default())
                     .display()
                     .to_string()],

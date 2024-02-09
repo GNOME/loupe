@@ -29,6 +29,12 @@
             </child>
             <child>
               <object class="GtkShortcutsShortcut">
+                <property name="title" translatable="yes" context="shortcut window">Permanently Delete Image</property>
+                <property name="accelerator">&lt;Shift&gt;Delete</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkShortcutsShortcut">
                 <property name="title" translatable="yes" context="shortcut window">Toggle Image Properties</property>
                 <property name="action-name">win.toggle-properties</property>
               </object>
