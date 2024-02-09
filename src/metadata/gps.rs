@@ -47,11 +47,23 @@ impl GPSCoord {
         let deg = self.deg;
 
         if let (Some(min), Some(sec)) = (self.min, self.sec) {
-            format!("{deg}° {min}′ {sec}″ {reference}")
+            format!("{deg}° {min}′ {sec:05.2}″ {reference}")
         } else if let Some(min) = self.min {
-            format!("{deg}° {min}′ {reference}")
+            format!("{deg}° {min:06.3}′ {reference}")
         } else {
-            format!("{deg}° {reference}")
+            format!("{deg:08.5}° {reference}")
+        }
+    }
+
+    fn machine_readable(&self, reference: &str) -> String {
+        let deg = self.deg;
+
+        if let (Some(min), Some(sec)) = (self.min, self.sec) {
+            format!("{reference}{deg}°{min}'{sec:05.2}\"")
+        } else if let Some(min) = self.min {
+            format!("{reference}{deg}°{min:06.3}'")
+        } else {
+            format!("{reference}{deg:08.5}°")
         }
     }
 
@@ -157,6 +169,18 @@ impl GPSLocation {
         };
 
         coord.display(&reference)
+    }
+
+    pub fn machine_readable(&self) -> String {
+        let coord = self.latitude;
+        let reference = if coord.sing { "N" } else { "S" };
+        let lat = coord.machine_readable(reference);
+
+        let coord = self.longitude;
+        let reference = if coord.sing { "E" } else { "W" };
+        let lon = coord.machine_readable(reference);
+
+        format!("{lat} {lon}")
     }
 
     pub fn longitude_display(&self) -> String {

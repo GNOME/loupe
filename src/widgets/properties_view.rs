@@ -20,6 +20,7 @@ use std::cell::{OnceCell, RefCell};
 
 use adw::prelude::*;
 use adw::subclass::prelude::*;
+use glib::translate::IntoGlib;
 use glib::Properties;
 use gtk::CompositeTemplate;
 
@@ -89,6 +90,10 @@ mod imp {
 
             klass.install_action_async("properties.open-folder", None, |obj, _, _| async move {
                 obj.imp().open_directory().await;
+            });
+
+            klass.install_action("properties.copy-location", None, move |obj, _, _| {
+                obj.imp().copy_location();
             });
 
             klass.install_action("properties.open-location", None, move |obj, _, _| {
@@ -278,6 +283,26 @@ mod imp {
             if let Err(e) = launcher.open_containing_folder_future(win.as_ref()).await {
                 log::error!("Could not open parent directory: {e}");
             };
+        }
+
+        /// Copy GPS location
+        fn copy_location(&self) {
+            let obj = self.obj();
+
+            if let Some(location) = obj.image().and_then(|x| x.metadata().gps_location()) {
+                let clipboard = obj.display().clipboard();
+                clipboard.set_text(&location.machine_readable());
+                let _ = obj.activate_action(
+                    "win.show-toast",
+                    Some(
+                        &(
+                            gettext("Image Coordinates Copied"),
+                            adw::ToastPriority::Normal.into_glib(),
+                        )
+                            .to_variant(),
+                    ),
+                );
+            }
         }
 
         /// Open GPS location in apps like Maps via `geo:` URI

@@ -104,9 +104,23 @@
                 <child>
                   <object class="AdwActionRow" id="location">
                     <property name="title" translatable="yes">Location</property>
-                    <property name="activatable-widget">location_button</property>
+                    <property name="subtitle-selectable">True</property>
+                    <style>
+                      <class name="numeric" />
+                    </style>
                     <child type="suffix">
-                      <object class="GtkButton" id="location_button">
+                      <object class="GtkButton">
+                        <property name="valign">center</property>
+                        <property name="action-name">properties.copy-location</property>
+                        <property name="icon-name">edit-copy-symbolic</property>
+                        <property name="tooltip-text" translatable="yes">Copy Coordinates</property>
+                        <style>
+                          <class name="flat" />
+                        </style>
+                      </object>
+                    </child>
+                    <child type="suffix">
+                      <object class="GtkButton">
                         <property name="valign">center</property>
                         <property name="action-name">properties.open-location</property>
                         <property name="icon-name">mark-location-symbolic</property>
