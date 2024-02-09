@@ -145,8 +145,8 @@ impl GPSLocation {
                 self.longitude.to_f64(),
             );
 
-            // do not use city if more than 100 km away
-            if location.distance(&location_exact) < 100. {
+            // do not use city if more than 15 km away
+            if location.distance(&location_exact) < 15. {
                 if let (Some(city), Some(country)) = (location.city_name(), location.country_name())
                 {
                     return format!("{city}, {country}");
