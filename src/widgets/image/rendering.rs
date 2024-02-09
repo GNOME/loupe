@@ -92,6 +92,10 @@ impl WidgetImpl for imp::LpImage {
         // It might help to read the following code from bottom to top
         snapshot.save();
 
+        // Align result with physical/device pixel grid
+        let (x_offset, y_offset) = self.physical_pixel_offset();
+        snapshot.translate(&graphene::Point::new(x_offset, y_offset));
+
         // Add background
         snapshot.append_color(
             &self.background_color(),
@@ -323,5 +327,33 @@ impl imp::LpImage {
         }
 
         None
+    }
+
+    /// Offset from physical pixels for fractional scaling in app pixels
+    pub fn physical_pixel_offset(&self) -> (f32, f32) {
+        let obj = self.obj();
+
+        // Native position
+        let native_position = obj.native().map(|x| x.surface_transform());
+
+        // Widget position in native
+        let widget_position = obj
+            .native()
+            .and_then(|x| obj.compute_point(&x, &graphene::Point::zero()));
+
+        if let (Some(native_position), Some(widget_position)) = (native_position, widget_position) {
+            let scale = dbg!(self.scaling()) as f32;
+
+            let x = ((dbg!(native_position.0) as f32 + widget_position.x()) * scale).fract();
+            let y = ((dbg!(native_position.1) as f32 + widget_position.y()) * scale).fract();
+
+            let x_correction = if x < 0.5 { -x } else { 1. - x };
+            let y_correction = if x < 0.5 { -y } else { 1. - y };
+
+            (x_correction / scale, y_correction / scale)
+        } else {
+            log::error!("Rendering without knowing widget position");
+            (0., 0.)
+        }
     }
 }
