@@ -495,6 +495,14 @@ mod imp {
                     true
                 }),
             );
+
+            // Create an action so that this setting can show up in our hamburger
+            // menu.
+            let group = gio::SimpleActionGroup::new();
+            let settings = LpApplication::default().settings();
+            let action = settings.create_action("animate-transitions");
+            group.add_action(&action);
+            obj.insert_action_group("win", Some(&group));
         }
     }
 

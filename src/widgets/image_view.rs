@@ -42,6 +42,7 @@ use glib::translate::IntoGlib;
 use glib::{clone, Properties};
 use gtk::CompositeTemplate;
 
+use crate::application::LpApplication;
 use crate::deps::*;
 use crate::file_model::LpFileModel;
 use crate::util::gettext::*;
@@ -355,6 +356,9 @@ impl LpImageView {
 
     /// Move forward or backwards
     pub fn navigate(&self, direction: Direction, animated: bool) {
+        let settings = LpApplication::default().settings();
+        let animated = animated && settings.boolean("animate-transitions");
+
         if let Some(current_file) = self.current_file() {
             let new_file = match direction {
                 Direction::Forward => self.model().after(&current_file),

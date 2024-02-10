@@ -5,5 +5,9 @@
       <default>false</default>
       <summary>Show the image properties sidebar</summary>
     </key>
+    <key name="animate-transitions" type="b">
+      <default>true</default>
+      <summary>Animate transitions when navigating with the keyboard or buttons</summary>
+    </key>
   </schema>
 </schemalist>
