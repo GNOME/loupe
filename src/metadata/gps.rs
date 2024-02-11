@@ -1,4 +1,4 @@
-// Copyright (c) 2022-2023 Sophie Herold
+// Copyright (c) 2022-2024 Sophie Herold
 // Copyright (c) 2023 FineFindus
 // Copyright (c) 2023 Lubosz Sarnecki
 //
