@@ -313,20 +313,11 @@ impl imp::LpImage {
                 if let Some(monitor) = display.monitor_at_surface(&surface) {
                     let hidpi_scale = self.scaling();
                     let monitor_geometry = monitor.geometry();
-                    let monitor_size = (
-                        monitor_geometry.width() as f64,
-                        monitor_geometry.height() as f64,
-                    );
 
-                    // Assume scale-monitor-framebuffer disabled for  non-fractional scaling
-                    // <https://gitlab.gnome.org/GNOME/gtk/-/issues/5391>
-                    let physical_geometry = if hidpi_scale == obj.scale_factor() as f64 {
-                        monitor_size
-                    } else {
-                        (monitor_size.0 * hidpi_scale, monitor_size.1 * hidpi_scale)
-                    };
-
-                    return Some(physical_geometry);
+                    return Some((
+                        monitor_geometry.width() as f64 * hidpi_scale,
+                        monitor_geometry.height() as f64 * hidpi_scale,
+                    ));
                 }
             }
         }

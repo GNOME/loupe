@@ -8,7 +8,7 @@ project('loupe', 'rust',
 i18n = import('i18n')
 gnome = import('gnome')
 
-dependency('gtk4', version: '>=4.12.0')
+dependency('gtk4', version: '>=4.13.6')
 dependency('libadwaita-1', version: '>=1.4.0')
 dependency('gweather4', version: '>=4.0.0')
 # Required by glycin crate
