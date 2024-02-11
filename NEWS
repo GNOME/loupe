@@ -1,3 +1,15 @@
+46.beta
+=======
+
+- Fix not reliably returning to restored image when undoing trash operation
+- Added Shift+Delete as shortcut for permanent image deletion
+- Added build option that makes X11 an optional dependency
+- Added button to copy coordinates for location in properties
+- Change to not using animation when changing images via keyboard shortcuts
+- Change to opening image in new window, occupy 40% of the screen instead of 30%
+- Change to using "stacked cards" animation when changing images via buttons
+- Changed to show city if it's less than 15km away instead of 100km before
+
 46.alpha
 ========
 
