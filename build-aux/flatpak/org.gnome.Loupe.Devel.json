@@ -170,7 +170,7 @@
                 {
                     "type": "git",
                     "url": "https://gitlab.gnome.org/sophie-h/glycin.git",
-                    "commit": "be6fffc04f4dd8a80c605fba1095f5d417c36f23"
+                    "commit": "f58ecdadd21e63fa858233226979bd48591a162c"
                 }
             ]
         },
