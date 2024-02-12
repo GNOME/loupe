@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2024-01-01 23:32+0000\n"
-"PO-Revision-Date: 2024-01-18 03:51+0330\n"
+"POT-Creation-Date: 2024-02-11 18:22+0000\n"
+"PO-Revision-Date: 2024-02-13 03:24+0330\n"
 "Last-Translator: Danial Behzadi <dani.behzi@ubuntu.com>\n"
 "Language-Team: Persian <fa@li.org>\n"
 "Language: fa\n"
@@ -18,7 +18,7 @@ msgstr ""
 "X-Generator: Poedit 3.4.2\n"
 
 #: data/org.gnome.Loupe.desktop.in.in:3
-#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:29 src/window.rs:823
+#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:29 src/window.rs:880
 msgid "Image Viewer"
 msgstr "نمایشگر تصویر"
 
@@ -81,153 +81,159 @@ msgstr "جابه‌جایی تصویر به زباله‌دان"
 
 #: data/resources/gtk/help-overlay.ui:32
 msgctxt "shortcut window"
+msgid "Permanently Delete Image"
+msgstr "حذف همیشگی تصویر"
+
+#: data/resources/gtk/help-overlay.ui:38
+msgctxt "shortcut window"
 msgid "Toggle Image Properties"
 msgstr "تغییر وضعیت ویژگی‌های تصویر"
 
-#: data/resources/gtk/help-overlay.ui:38
+#: data/resources/gtk/help-overlay.ui:44
 msgctxt "shortcut window"
 msgid "Set as Background"
 msgstr "تنظیم به عنوان پس زمینه"
 
-#: data/resources/gtk/help-overlay.ui:44
+#: data/resources/gtk/help-overlay.ui:50
 msgctxt "shortcut window"
 msgid "Toggle Fullscreen"
 msgstr "تغییر وضعیت تمام‌صفحه"
 
-#: data/resources/gtk/help-overlay.ui:50
+#: data/resources/gtk/help-overlay.ui:56
 msgctxt "shortcut window"
 msgid "Leave Fullscreen"
 msgstr "خروج از تمام‌صفحه"
 
-#: data/resources/gtk/help-overlay.ui:56
+#: data/resources/gtk/help-overlay.ui:62
 msgctxt "shortcut window"
 msgid "New Window"
 msgstr "پنجرهٔ جدید"
 
-#: data/resources/gtk/help-overlay.ui:62
+#: data/resources/gtk/help-overlay.ui:68
 msgctxt "shortcut window"
 msgid "Open Help"
 msgstr "گشودن راهنما"
 
-#: data/resources/gtk/help-overlay.ui:68
+#: data/resources/gtk/help-overlay.ui:74
 msgctxt "shortcut window"
 msgid "Show Keyboard Shortcuts"
 msgstr "نمایش میان‌برهای صفحه‌کلید"
 
-#: data/resources/gtk/help-overlay.ui:74
+#: data/resources/gtk/help-overlay.ui:80
 msgctxt "shortcut window"
 msgid "Close Window"
 msgstr "بستن پنجره"
 
-#: data/resources/gtk/help-overlay.ui:80
+#: data/resources/gtk/help-overlay.ui:86
 msgctxt "shortcut window"
 msgid "Quit"
 msgstr "خروج"
 
-#: data/resources/gtk/help-overlay.ui:88
+#: data/resources/gtk/help-overlay.ui:94
 msgctxt "shortcut window"
 msgid "Navigate Images"
 msgstr "ناوبری تصویرها"
 
-#: data/resources/gtk/help-overlay.ui:92 data/resources/gtk/help-overlay.ui:106
-#: data/resources/gtk/help-overlay.ui:218
-#: data/resources/gtk/help-overlay.ui:232
+#: data/resources/gtk/help-overlay.ui:98 data/resources/gtk/help-overlay.ui:112
+#: data/resources/gtk/help-overlay.ui:224
+#: data/resources/gtk/help-overlay.ui:238
 msgctxt "shortcut window"
 msgid "Next Image"
 msgstr "تصویر بعدی"
 
-#: data/resources/gtk/help-overlay.ui:99 data/resources/gtk/help-overlay.ui:113
-#: data/resources/gtk/help-overlay.ui:225
-#: data/resources/gtk/help-overlay.ui:239
+#: data/resources/gtk/help-overlay.ui:105
+#: data/resources/gtk/help-overlay.ui:119
+#: data/resources/gtk/help-overlay.ui:231
+#: data/resources/gtk/help-overlay.ui:245
 msgctxt "shortcut window"
 msgid "Previous Image"
 msgstr "تصویر پیشین"
 
-#: data/resources/gtk/help-overlay.ui:119
+#: data/resources/gtk/help-overlay.ui:125
 msgctxt "shortcut window"
 msgid "First Image"
 msgstr "تصویر نخست"
 
-#: data/resources/gtk/help-overlay.ui:125
+#: data/resources/gtk/help-overlay.ui:131
 msgctxt "shortcut window"
 msgid "Last Image"
 msgstr "تصویر آخر"
 
-#: data/resources/gtk/help-overlay.ui:133
+#: data/resources/gtk/help-overlay.ui:139
 msgctxt "shortcut window"
 msgid "Rotate Image"
 msgstr "چرخش تصویر"
 
-#: data/resources/gtk/help-overlay.ui:136
-#: data/resources/gtk/help-overlay.ui:257
+#: data/resources/gtk/help-overlay.ui:142
+#: data/resources/gtk/help-overlay.ui:263
 msgctxt "shortcut window"
 msgid "Rotate Clockwise"
 msgstr "چرخش ساعتگرد"
 
-#: data/resources/gtk/help-overlay.ui:142
-#: data/resources/gtk/help-overlay.ui:263
+#: data/resources/gtk/help-overlay.ui:148
+#: data/resources/gtk/help-overlay.ui:269
 msgctxt "shortcut window"
 msgid "Rotate Counterclockwise"
 msgstr "چرخش پادساعتگرد"
 
-#: data/resources/gtk/help-overlay.ui:150
+#: data/resources/gtk/help-overlay.ui:156
 msgctxt "shortcut window"
 msgid "Zoom Image"
 msgstr "بزرگ‌نمایی تصویر"
 
-#: data/resources/gtk/help-overlay.ui:153
-#: data/resources/gtk/help-overlay.ui:245
+#: data/resources/gtk/help-overlay.ui:159
+#: data/resources/gtk/help-overlay.ui:251
 msgctxt "shortcut window"
 msgid "Zoom In"
 msgstr "بزرگ‌نمایی"
 
-#: data/resources/gtk/help-overlay.ui:159
-#: data/resources/gtk/help-overlay.ui:251
+#: data/resources/gtk/help-overlay.ui:165
+#: data/resources/gtk/help-overlay.ui:257
 msgctxt "shortcut window"
 msgid "Zoom Out"
 msgstr "کوچک‌نمایی"
 
-#: data/resources/gtk/help-overlay.ui:165
+#: data/resources/gtk/help-overlay.ui:171
 msgctxt "shortcut window"
 msgid "Best Fit"
 msgstr "بهترین برازش"
 
-#: data/resources/gtk/help-overlay.ui:171
+#: data/resources/gtk/help-overlay.ui:177
 msgctxt "shortcut window"
 msgid "Original Scale"
 msgstr "مقیاس اصلی"
 
-#: data/resources/gtk/help-overlay.ui:177
+#: data/resources/gtk/help-overlay.ui:183
 msgctxt "shortcut window"
 msgid "200% Scale"
 msgstr "مقیاس ۲۰۰٪"
 
-#: data/resources/gtk/help-overlay.ui:185
+#: data/resources/gtk/help-overlay.ui:191
 msgctxt "shortcut window"
 msgid "Pan View"
 msgstr "فاصلهٔ نما"
 
-#: data/resources/gtk/help-overlay.ui:188
+#: data/resources/gtk/help-overlay.ui:194
 msgctxt "shortcut window"
 msgid "Pan Left"
 msgstr "فاصلهٔ راست"
 
-#: data/resources/gtk/help-overlay.ui:194
+#: data/resources/gtk/help-overlay.ui:200
 msgctxt "shortcut window"
 msgid "Pan Right"
 msgstr "فاصلهٔ چپ"
 
-#: data/resources/gtk/help-overlay.ui:200
+#: data/resources/gtk/help-overlay.ui:206
 msgctxt "shortcut window"
 msgid "Pan Up"
 msgstr "فاصلهٔ بالا"
 
-#: data/resources/gtk/help-overlay.ui:206
+#: data/resources/gtk/help-overlay.ui:212
 msgctxt "shortcut window"
 msgid "Pan Down"
 msgstr "فاصلهٔ پایین"
 
-#: data/resources/gtk/help-overlay.ui:214
+#: data/resources/gtk/help-overlay.ui:220
 msgctxt "shortcut window"
 msgid "Gestures"
 msgstr "حرکت‌ها"
@@ -246,32 +252,32 @@ msgid "Could not list other files in directory."
 msgstr "نمی‌توان دیگر پرونده‌ّا در شاخه را سیاهه کرد."
 
 #. Translators: short for "north" in GPS coordinate
-#: src/metadata/gps.rs:153
+#: src/metadata/gps.rs:165
 msgid "N"
 msgstr "شم"
 
 #. Translators: short for "south" in GPS coordinate
-#: src/metadata/gps.rs:156
+#: src/metadata/gps.rs:168
 msgid "S"
 msgstr "جن"
 
 #. Translators: short for "east" in GPS coordinate
-#: src/metadata/gps.rs:166
+#: src/metadata/gps.rs:190
 msgid "E"
 msgstr "شر"
 
 #. Translators: short for "west" in GPS coordinate
-#: src/metadata/gps.rs:169
+#: src/metadata/gps.rs:193
 msgid "W"
 msgstr "غر"
 
 #. Translators: Unit for exposure time in seconds
-#: src/metadata/mod.rs:261
+#: src/metadata/mod.rs:260
 msgid "1\\u{2215}{}\\u{202F}s"
 msgstr "1\\u{2215}{}\\u{202F}ث"
 
 #. Translators: Unit for focal length in millimeters
-#: src/metadata/mod.rs:286
+#: src/metadata/mod.rs:285
 msgid "{}\\u{202F}mm"
 msgstr "{}\\u{202F}م‌م"
 
@@ -284,7 +290,7 @@ msgstr "{}\\u{202F}م‌م"
 msgid "%x %X"
 msgstr "%x %X"
 
-#: src/util/mod.rs:180 src/window.rs:654
+#: src/util/mod.rs:180 src/window.rs:701
 msgid "Failed to restore image from trash"
 msgstr "شکست در بازگردانی تصویر از زباله‌دان"
 
@@ -316,21 +322,21 @@ msgstr "_تنظیم به عنوان پس زمینه…"
 msgid "Could not Load Image"
 msgstr "نتوانست تصویر را بار کند"
 
-#: src/widgets/image_page.ui:97 src/window.ui:109
+#: src/widgets/image_page.ui:97 src/window.ui:106
 msgid "Rotate Left"
 msgstr "چرخش به چپ"
 
-#: src/widgets/image_page.ui:107 src/window.ui:119
+#: src/widgets/image_page.ui:107 src/window.ui:116
 msgid "Rotate Right"
 msgstr "چرخش به راست"
 
 #. Translators: This is a toast notification, informing the user that
 #. an image has been set as background.
-#: src/widgets/image_view.rs:676
+#: src/widgets/image_view.rs:682
 msgid "Set as background."
 msgstr "تنظیم به عنوان پس زمینه."
 
-#: src/widgets/image_view.rs:689
+#: src/widgets/image_view.rs:695
 msgid "Could not set background."
 msgstr "نتوانست پس‌زمینه را تنظیم کند."
 
@@ -354,51 +360,51 @@ msgstr "بزرگ‌نمایی"
 msgid "Toggle Fullscreen"
 msgstr "تغییر وضعیت تمام‌صفحه"
 
-#: src/widgets/print.rs:117
+#: src/widgets/print.rs:116
 msgid "Top"
 msgstr "بالا"
 
-#: src/widgets/print.rs:118
+#: src/widgets/print.rs:117
 msgid "Center"
 msgstr "مرکز"
 
-#: src/widgets/print.rs:119
+#: src/widgets/print.rs:118
 msgid "Bottom"
 msgstr "پایین"
 
-#: src/widgets/print.rs:120
+#: src/widgets/print.rs:119
 msgid "Left"
 msgstr "چپ"
 
-#: src/widgets/print.rs:121
+#: src/widgets/print.rs:120
 msgid "Right"
 msgstr "راست"
 
 #. Translators: Shorthand for centimeter
-#: src/widgets/print.rs:157
+#: src/widgets/print.rs:156
 msgid "cm"
 msgstr "س‌م"
 
 #. Translators: Shorthand for inch
-#: src/widgets/print.rs:159
+#: src/widgets/print.rs:158
 msgid "in"
 msgstr "اینچ"
 
 #. Translators: Shorthand for pixel
-#: src/widgets/print.rs:161
+#: src/widgets/print.rs:160
 msgid "px"
 msgstr "پیکسل"
 
 #. Translators: {} is a placeholder for the filename
-#: src/widgets/print.rs:372
+#: src/widgets/print.rs:371
 msgid "Print “{}”"
 msgstr "چاپ «{}»"
 
-#: src/widgets/print.rs:783
+#: src/widgets/print.rs:782
 msgid "_Scale"
 msgstr "_مقیاس کردن"
 
-#: src/widgets/print.rs:786
+#: src/widgets/print.rs:785
 msgid "_Width"
 msgstr "_پهنا"
 
@@ -463,24 +469,28 @@ msgstr "_پُر کردن فضا"
 msgid "H_eight"
 msgstr "_درازا"
 
-#: src/widgets/properties_view.rs:229
+#: src/widgets/properties_view.rs:234
 msgid "Unknown"
 msgstr "ناشناخته"
 
 #. Translators: Addition of image being transparent to format name
-#: src/widgets/properties_view.rs:233
+#: src/widgets/properties_view.rs:238
 msgid ", transparent"
 msgstr "، شفّاف"
 
 #. Translators: Addition of image being grayscale to format name
-#: src/widgets/properties_view.rs:238
+#: src/widgets/properties_view.rs:243
 msgid ", grayscale"
 msgstr "، طیف خاکستری"
 
 #. Translators: Addition of bit size to format name
-#: src/widgets/properties_view.rs:243
+#: src/widgets/properties_view.rs:248
 msgid ", {}\\u{202F}bit"
 msgstr "، {}\\u{202F}بیتی"
+
+#: src/widgets/properties_view.rs:299
+msgid "Image Coordinates Copied"
+msgstr "مختصات تصویر رونوشت شد"
 
 #: src/widgets/properties_view.ui:19
 msgid "Folder"
@@ -514,79 +524,83 @@ msgstr "دستکاری پرونده"
 msgid "Location"
 msgstr "مکان"
 
-#: src/widgets/properties_view.ui:113
+#: src/widgets/properties_view.ui:116
+msgid "Copy Coordinates"
+msgstr "رونوشت از مختصات"
+
+#: src/widgets/properties_view.ui:127
 msgid "Open Location"
 msgstr "گشودن مکان"
 
-#: src/widgets/properties_view.ui:126
+#: src/widgets/properties_view.ui:140
 msgid "Originally Created"
 msgstr "ایجاد اصلی"
 
-#: src/widgets/properties_view.ui:135
+#: src/widgets/properties_view.ui:149
 msgid "Aperture"
 msgstr "دیافراگم"
 
-#: src/widgets/properties_view.ui:144
+#: src/widgets/properties_view.ui:158
 msgid "Exposure"
 msgstr "نوردهی"
 
-#: src/widgets/properties_view.ui:153
+#: src/widgets/properties_view.ui:167
 msgid "ISO"
 msgstr "ایزو"
 
-#: src/widgets/properties_view.ui:162
+#: src/widgets/properties_view.ui:176
 msgid "Focal Length"
 msgstr "فاصلهٔ کانونی"
 
-#: src/widgets/properties_view.ui:171
+#: src/widgets/properties_view.ui:185
 msgid "Maker, Model"
 msgstr "سازنده، مدل"
 
-#: src/window.rs:518
+#: src/window.rs:568
 msgid "Supported image formats"
 msgstr "قالب‌های تصویر پشتیبانی‌شده"
 
-#: src/window.rs:527
+#: src/window.rs:574
 msgid "All files"
 msgstr "تمام پرونده‌ها"
 
-#: src/window.rs:534
+#: src/window.rs:581
 msgid "Open Image"
 msgstr "گشودن تصویر"
 
-#: src/window.rs:620
+#: src/window.rs:667
 msgid "Image copied to clipboard"
 msgstr "تصویر در تخته‌گیره رونوشت شد"
 
-#: src/window.rs:641
+#: src/window.rs:688
 msgid "Image moved to trash"
 msgstr "تصویر به زباله‌دان جابه‌جا شد"
 
-#: src/window.rs:642
+#: src/window.rs:689
 msgid "Undo"
 msgstr "برگردان"
 
-#: src/window.rs:669
+#: src/window.rs:715
 msgid "Failed to move image to trash"
 msgstr "شکست در جابه‌جایی تصویر به زباله‌دان"
 
-#: src/window.rs:684
+#: src/window.rs:741
 msgid "Permanently Delete Image?"
 msgstr "حذف همیشگی تصویر؟"
 
-#: src/window.rs:686
-msgid "The image “{}” can only be deleted permanently."
-msgstr "تصویر «{}» تنها می‌تواند برای همیشه حذف شود."
+#: src/window.rs:743
+msgid "After deleting the image “{}” it will be permanently lost."
+msgstr "پس از حذف تصویر «{}» برای همیشه از دست خواهد رفت."
 
-#: src/window.rs:694
+#: src/window.rs:751
 msgid "Cancel"
 msgstr "لغو"
 
-#: src/window.rs:695
+#: src/window.rs:752
 msgid "Delete"
 msgstr "حذف"
 
-#: src/window.rs:706
+#: src/window.rs:763
 msgid "Failed to delete image"
 msgstr "شکست در حذف تصویر"
 
@@ -610,31 +624,31 @@ msgstr "میان‌برهای _صفحه‌کلید"
 msgid "_About Image Viewer"
 msgstr "_دربارهٔ نمایشگر تصویر"
 
-#: src/window.ui:88
+#: src/window.ui:85
 msgid "Copy to Clipboard"
 msgstr "رونوشت در تخته‌گیره"
 
-#: src/window.ui:95
+#: src/window.ui:92
 msgid "Move to Trash"
 msgstr "جابه‌جایی به زباله‌دان"
 
-#: src/window.ui:101
+#: src/window.ui:98
 msgid "Main Menu"
 msgstr "فهرست اصلی"
 
-#: src/window.ui:133
+#: src/window.ui:130
 msgid "Image Properties"
 msgstr "ویژگی‌های تصویر"
 
-#: src/window.ui:175
+#: src/window.ui:174
 msgid "View Images"
 msgstr "دیدن تصویرها"
 
-#: src/window.ui:176
+#: src/window.ui:175
 msgid "Drag and drop images here"
 msgstr "تصویرها را این‌جا کشیده و رها کنید"
 
-#: src/window.ui:180
+#: src/window.ui:179
 msgid "_Open Files…"
 msgstr "_گشودن پرونده‌ها…"
 
