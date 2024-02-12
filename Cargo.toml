@@ -47,7 +47,7 @@ features = ["v2_74"]
 [dependencies.adw]
 package = "libadwaita"
 version = "0.6.0"
-features = ["v1_4"]
+features = ["v1_5"]
 
 [dependencies.gettext-rs]
 version = "0.7.0"

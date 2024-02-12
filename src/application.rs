@@ -207,13 +207,10 @@ impl LpApplication {
     }
 
     pub async fn show_about(&self) {
-        let about = about::window().await;
+        let about = about::dialog().await;
+        let window = self.active_window().unwrap();
 
-        if let Some(window) = self.active_window() {
-            about.set_transient_for(Some(&window));
-        }
-
-        about.present();
+        about.present(&window);
     }
 
     pub fn show_help(&self) {

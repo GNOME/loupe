@@ -21,11 +21,11 @@ use gettextrs::gettext;
 
 use crate::config;
 
-pub async fn window() -> adw::AboutWindow {
+pub async fn dialog() -> adw::AboutDialog {
     // Builders are a pattern that allow you to create
     // an object and set all relevant properties very
     // easily in a way that's idiomatic to Rust.
-    adw::AboutWindow::builder()
+    adw::AboutDialog::builder()
         .application_name(gettext("Image Viewer"))
         .application_icon(config::APP_ID)
         .version(config::VERSION)
