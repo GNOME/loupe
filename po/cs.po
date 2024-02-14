@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2024-02-10 00:12+0000\n"
-"PO-Revision-Date: 2024-02-10 23:02+0100\n"
+"POT-Creation-Date: 2024-02-13 22:38+0000\n"
+"PO-Revision-Date: 2024-02-14 01:12+0100\n"
 "Last-Translator: Daniel Rusek <mail@asciiwolf.com>\n"
 "Language-Team: Czech <gnome-cs-list@gnome.org>\n"
 "Language: cs\n"
@@ -24,8 +24,8 @@ msgid "Image Viewer"
 msgstr "Prohlížeč obrázků"
 
 #: data/org.gnome.Loupe.desktop.in.in:11
-msgid "Picture;Slideshow;Graphics;Loupe;"
-msgstr "Obrázek;Obrázky;Snímek;Snímky;Prezentace;Grafika;Prohlížeč obrázků;"
+msgid "Picture;Graphics;Loupe;"
+msgstr "Obrázek;Obrázky;Snímek;Snímky;Grafika;Prohlížeč obrázků;"
 
 #: data/org.gnome.Loupe.gschema.xml.in:6
 msgid "Show the image properties sidebar"
