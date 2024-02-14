@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2024-02-11 18:22+0000\n"
-"PO-Revision-Date: 2024-02-13 20:49+0200\n"
+"POT-Creation-Date: 2024-02-13 22:38+0000\n"
+"PO-Revision-Date: 2024-02-14 13:03+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -25,14 +25,12 @@ msgid "Image Viewer"
 msgstr "Перегляд зображень"
 
 #: data/org.gnome.Loupe.desktop.in.in:11
-msgid "Picture;Slideshow;Graphics;Loupe;"
+#| msgid "Picture;Slideshow;Graphics;Loupe;"
+msgid "Picture;Graphics;Loupe;"
 msgstr ""
-"Picture;Slideshow;Graphics;Loupe;зображення;картинка;показ;слайдів;графіка;"
-"перегляд;зображення;лупе;"
+"Picture;Graphics;Loupe;зображення;картинка;графіка;перегляд;зображення;лупе;"
 
 #: data/org.gnome.Loupe.gschema.xml.in:6
-#| msgctxt "shortcut window"
-#| msgid "Toggle Image Properties"
 msgid "Show the image properties sidebar"
 msgstr "Показати властивості зображення на бічній панелі"
 
@@ -88,7 +86,6 @@ msgid "Move Image to Trash"
 msgstr "Пересунути зображення до смітника"
 
 #: data/resources/gtk/help-overlay.ui:32
-#| msgid "Permanently Delete Image?"
 msgctxt "shortcut window"
 msgid "Permanently Delete Image"
 msgstr "Остаточно вилучити зображення"
@@ -253,7 +250,6 @@ msgid "translator-credits"
 msgstr "Юрій Чорноіван <yurchor@ukr.net>, 2023"
 
 #: src/about.rs:42
-#| msgid "Copyright © 2020–2023 Christopher Davis et al."
 msgid "Copyright © 2020–2024 Christopher Davis et al."
 msgstr "© Christopher Davis та інші, 2020–2024."
 
@@ -411,24 +407,19 @@ msgid "Print “{}”"
 msgstr "Надрукувати «{}»"
 
 #: src/widgets/print.rs:782
-#| msgctxt "shortcut window"
-#| msgid "200% Scale"
 msgid "_Scale"
 msgstr "_Масштаб"
 
 #: src/widgets/print.rs:785
-#| msgid "Width"
 msgid "_Width"
 msgstr "_Ширина"
 
 #. Translators: Go back to previous page
 #: src/widgets/print.ui:29
-#| msgid "Back"
 msgid "_Back"
 msgstr "_Назад"
 
 #: src/widgets/print.ui:37
-#| msgid "Print"
 msgid "_Print"
 msgstr "_Надрукувати"
 
@@ -437,7 +428,6 @@ msgid "Layout"
 msgstr "Компонування"
 
 #: src/widgets/print.ui:59
-#| msgid "Orientation"
 msgid "_Orientation"
 msgstr "_Орієнтація"
 
@@ -450,7 +440,6 @@ msgid "Landscape Page Orientation"
 msgstr "Альбомна орієнтація сторінки"
 
 #: src/widgets/print.ui:89
-#| msgid "Alignment"
 msgid "_Alignment"
 msgstr "Ви_рівнювання"
 
@@ -463,12 +452,10 @@ msgid "Margin Units"
 msgstr "Одиниці виміру полів"
 
 #: src/widgets/print.ui:128
-#| msgid "Horizontal"
 msgid "_Horizontal"
 msgstr "_Горизонтально"
 
 #: src/widgets/print.ui:134
-#| msgid "Vertical"
 msgid "_Vertical"
 msgstr "_Вертикально"
 
@@ -481,12 +468,10 @@ msgid "Image Size Units"
 msgstr "Одиниці виміру розміру зображення"
 
 #: src/widgets/print.ui:163
-#| msgid "Fill Space"
 msgid "_Fill Space"
 msgstr "З_аповнити місце"
 
 #: src/widgets/print.ui:174
-#| msgid "Height"
 msgid "H_eight"
 msgstr "_Висота"
 
@@ -506,7 +491,6 @@ msgstr ", відтінки сірого"
 
 #. Translators: Addition of bit size to format name
 #: src/widgets/properties_view.rs:248
-#| msgid "{}\\u{202F}mm"
 msgid ", {}\\u{202F}bit"
 msgstr ", {}\\u{202F}біт"
 
@@ -611,7 +595,6 @@ msgid "Permanently Delete Image?"
 msgstr "Остаточно вилучити зображення?"
 
 #: src/window.rs:743
-#| msgid "The image “{}” can only be deleted permanently."
 msgid "After deleting the image “{}” it will be permanently lost."
 msgstr "Після вилучення зображення «{}» його не можна буде відновити."
 
