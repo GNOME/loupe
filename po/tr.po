@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2024-02-11 18:22+0000\n"
-"PO-Revision-Date: 2024-02-12 19:01+0300\n"
+"POT-Creation-Date: 2024-02-13 22:38+0000\n"
+"PO-Revision-Date: 2024-02-14 17:42+0300\n"
 "Last-Translator: Sabri Ünal <libreajans@gmail.com>\n"
 "Language-Team: Turkish <takim@gnome.org.tr>\n"
 "Language: tr\n"
@@ -26,8 +26,8 @@ msgid "Image Viewer"
 msgstr "Resim Görüntüleyici"
 
 #: data/org.gnome.Loupe.desktop.in.in:11
-msgid "Picture;Slideshow;Graphics;Loupe;"
-msgstr "Resim;Fotoğraf;Slayt Gösterisi;Grafikler;Görseller;Loupe;"
+msgid "Picture;Graphics;Loupe;"
+msgstr "Resim;Fotoğraf;Grafikler;Görseller;Loupe;"
 
 #: data/org.gnome.Loupe.gschema.xml.in:6
 msgid "Show the image properties sidebar"
