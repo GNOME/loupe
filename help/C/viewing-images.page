@@ -15,66 +15,28 @@
   <title>Zooming</title>
   <p>Users can zoom in with the <gui>Zoom In</gui> (<media type="image" src="figures/zoom-in-symbolic.svg">zoom-in-symbolic</media>)
   button and zoom out with the <gui>Zoom Out</gui> (<media type="image" src="figures/zoom-out-symbolic.svg">zoom-out-symbolic</media>)
-  button. They can also use the following keyboard shortcuts:</p>
-  <list>
-   <item>
-    <p><keyseq><key>Ctrl</key><key>+</key></keyseq> or <key>+</key> to zoom in.</p>
-   </item>
-   <item>
-    <p><keyseq><key>Ctrl</key><key>-</key></keyseq> or <key>-</key> to zoom out.</p>
-   </item>
-   <item>
-    <p><keyseq><key>Ctrl</key><key>0</key></keyseq> or <key>0</key> to zoom to the best fitting size for the window size.</p>
-   </item>
-   <item>
-    <p><keyseq><key>Ctrl</key><key>1</key></keyseq> or <key>1</key> to zoom to the image's original scale.</p>
-   </item>
-   <item>
-    <p><keyseq><key>Ctrl</key><key>2</key></keyseq> or <key>2</key> to zoom to 200% of the image's original scale.</p>
-   </item>
-  </list>
-  <p>Touchpad and touchscreen users can also zoom with a two-finger pinch gesture.</p>
+  button.</p>
+  <p>Touchpad and touchscreen users can also zoom with a two-finger pinch gesture. On touchpads, it is also possible to zoom via pressing the <key>Ctrl</key> and swiping up/down with two fingers.</p>
  </section>
  <section>
   <title>Panning</title>
   <p>Mouse and touchpad users can pan the view when zoomed in by clicking and dragging the image.
-  Touchscreen users can use a single-finger drag gesture to pan the view. Users with a keyboard
-  can also use the following keyboard shortcuts:</p>
-  <list>
-   <item>
-    <p><keyseq><key>Ctrl</key><key>←</key></keyseq> to pan left.</p>
-   </item>
-   <item>
-    <p><keyseq><key>Ctrl</key><key>→</key></keyseq> to pan right.</p>
-   </item>
-   <item>
-    <p><keyseq><key>Ctrl</key><key>↑</key></keyseq> to pan up.</p>
-   </item>
-   <item>
-    <p><keyseq><key>Ctrl</key><key>↓</key></keyseq> to pan down.</p>
-   </item>
-  </list>
+  Touchscreen users can use a single-finger drag gesture to pan the view.</p>
  </section>
  <section>
   <title>Rotating</title>
   <p>Users can use the <gui>Rotate Right</gui> (<media type="image" src="figures/object-rotate-right-symbolic.svg">object-rotate-right-symbolic</media>)
   and <gui>Rotate Left</gui> (<media type="image" src="figures/object-rotate-left-symbolic.svg">object-rotate-left-symbolic</media>)
   buttons under <gui style="menuitem">Rotate</gui> in the main menu to rotate clockwise and
-  counter-clockwise. They can also use the following keyboard shortcuts:</p>
-  <list>
-   <item>
-    <p><keyseq><key>Ctrl</key><key>R</key></keyseq> to rotate clockwise.</p>
-   </item>
-   <item>
-    <p><keyseq><key>Ctrl</key><key>Shift</key><key>R</key></keyseq> to rotate counter-clockwise.</p>
-   </item>
-  </list>
+  counter-clockwise.</p>
   <p>Touchpad and touchscreen users can also use a two-finger rotate gesture.</p>
  </section>
  <section>
   <title>Fullscreen</title>
   <p>Image Viewer has a simple fullscreen mode. Users can toggle fullscreen mode by pressing the <gui>Toggle Fullscreen</gui>
-  (<media type="image" src="figures/view-fullscreen-symbolic.svg">view-fullscreen-symbolic</media> / <media type="image" src="figures/view-restore-symbolic.svg">view-restore-symbolic</media>) button.
-  Keyboard users can also use <key>F11</key> to toggle fullscreen mode.</p>
+  (<media type="image" src="figures/view-fullscreen-symbolic.svg">view-fullscreen-symbolic</media> / <media type="image" src="figures/view-restore-symbolic.svg">view-restore-symbolic</media>) button.</p>
+  <note style="tip">
+   <p>Keyboard users can also use the corresponding shortcuts presented in Keyboard Shortcuts dialog.</p>
+  </note>
  </section>
 </page>

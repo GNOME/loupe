@@ -65,21 +65,9 @@
   <p>When opening an image from the file chooser or file manager, Loupe will load other files
   in the parent directory of the image and sort them in alphabetical order. Users can
   browse the other images in the directory with the <gui>Previous Image</gui> (<media type="image" src="figures/go-previous-symbolic.svg">go-previous-symbolic</media>)
-  and <gui>Next Image</gui> (<media type="image" src="figures/go-next-symbolic.svg">go-next-symbolic</media>) buttons.
-  Keyboard users can also use the following shortcuts:</p>
-  <list>
-   <item>
-    <p><key>→</key> to go to the next image.</p>
-   </item>
-   <item>
-    <p><key>←</key> to go to the previous image.</p>
-   </item>
-   <item>
-    <p><key>Home</key> to jump to the first image in the directory.</p>
-   </item>
-   <item>
-    <p><key>End</key> to jump to the last image in the directory.</p>
-   </item>
-  </list>
+  and <gui>Next Image</gui> (<media type="image" src="figures/go-next-symbolic.svg">go-next-symbolic</media>) buttons.</p>
+  <note style="tip">
+   <p>Keyboard users can also use the corresponding shortcuts presented in Keyboard Shortcuts dialog.</p>
+  </note>
  </section>
 </page>

@@ -10,7 +10,7 @@ Users can zoom in with the $gui(Zoom In) ($media[type="image" src="figures/zoom-
 button and zoom out with the $gui(Zoom Out) ($media[type="image" src="figures/zoom-out-symbolic.svg"](zoom-out-symbolic))
 button.
 
-Touchpad and touchscreen users can also zoom with $key(Ctrl) and scroll.
+Touchpad and touchscreen users can also zoom with a two-finger pinch gesture. On touchpads, it is also possible to zoom via pressing the $key(Ctrl) and swiping up/down with two fingers.
 
 == Panning
 
