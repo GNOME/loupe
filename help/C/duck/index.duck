@@ -3,15 +3,6 @@
 
 @desc Browse through your images and inspect their metadata.
 
-== Introduction
-
-Image Viewer is an image viewer that supports modern image formats. It provides:
-
-* Fast GPU accelerated image rendering with tiled rendering for SVGs
-* Extendable and sandboxed raster image decoding
-* Extensive support for touchpad and touchscreen gestures
-* Accessible presentation of the most important metadata
-
 == Getting Started
   [#getting-started .2column]
 
