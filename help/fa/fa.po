@@ -1,20 +1,20 @@
 # Persian translation for Loupe.
 # Copyright (C) 2023 Loupe's COPYRIGHT HOLDER
 # This file is distributed under the same license as the Loupe package.
-# Danial Behzadi <dani.behzi@ubuntu.com>, 2023.
+# Danial Behzadi <dani.behzi@ubuntu.com>, 2023-2024.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
-"POT-Creation-Date: 2023-11-30 20:29+0000\n"
-"PO-Revision-Date: 2024-01-06 15:37+0330\n"
+"POT-Creation-Date: 2024-02-18 13:35+0000\n"
+"PO-Revision-Date: 2024-02-18 18:33+0330\n"
 "Last-Translator: Danial Behzadi <dani.behzi@ubuntu.com>\n"
 "Language-Team: Persian <fa@li.org>\n"
 "Language: fa\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.4.2\n"
+"X-Generator: Poedit 3.2.2\n"
 
 #. Put one translator per line, in the form NAME <EMAIL>, YEAR1, YEAR2
 msgctxt "_"
@@ -70,100 +70,42 @@ msgid ""
 "Users can zoom in with the <gui>Zoom In</gui> (<media type=\"image\" "
 "src=\"figures/zoom-in-symbolic.svg\">zoom-in-symbolic</media>) button and zoom "
 "out with the <gui>Zoom Out</gui> (<media type=\"image\" src=\"figures/zoom-out-"
-"symbolic.svg\">zoom-out-symbolic</media>) button. They can also use the "
-"following keyboard shortcuts:"
+"symbolic.svg\">zoom-out-symbolic</media>) button."
 msgstr ""
-"می‌توانید با دکمهٔ <gui>بزرگ‌نمایی</gui> (<media type=\"image\" src=\"figures/zoom-"
-"in-symbolic.svg\">zoom-in-symbolic</media>) بزرگ‌نمایی و با دکمهٔ <gui>کوچک‌نمایی</"
-"gui> (<media type=\"image\" src=\"figures/zoom-out-symbolic.svg\">zoom-out-"
-"symbolic</media>) کوچک‌نمایی کنید. همچنین می‌توان از میان‌برهای صفحه‌کلید زیر نیز "
-"استفاده کرد:"
-
-#. (itstool) path: item/p
-#: C/viewing-images.page:21
-msgid "<keyseq><key>Ctrl</key><key>+</key></keyseq> or <key>+</key> to zoom in."
-msgstr ""
-"<keyseq><key>مهار</key><key>+</key></keyseq> یا <key>+</key> برای بزرگ‌نمایی."
-
-#. (itstool) path: item/p
-#: C/viewing-images.page:24
-msgid "<keyseq><key>Ctrl</key><key>-</key></keyseq> or <key>-</key> to zoom out."
-msgstr ""
-"<keyseq><key>مهار</key><key>-</key></keyseq> یا <key>-</key> برای کوچک‌نمایی."
-
-#. (itstool) path: item/p
-#: C/viewing-images.page:27
-msgid ""
-"<keyseq><key>Ctrl</key><key>0</key></keyseq> or <key>0</key> to zoom to the "
-"best fitting size for the window size."
-msgstr ""
-"<keyseq><key>مهار</key><key>0</key></keyseq> یا <key>0</key> برای بهترین برازش "
-"در پنجره."
-
-#. (itstool) path: item/p
-#: C/viewing-images.page:30
-msgid ""
-"<keyseq><key>Ctrl</key><key>1</key></keyseq> or <key>1</key> to zoom to the "
-"image's original scale."
-msgstr ""
-"<keyseq><key>مهار</key><key>1</key></keyseq> یا <key>1</key> برای بزرگ‌نمایی به "
-"مقیاس اصلی تصویر."
-
-#. (itstool) path: item/p
-#: C/viewing-images.page:33
-msgid ""
-"<keyseq><key>Ctrl</key><key>2</key></keyseq> or <key>2</key> to zoom to 200% of "
-"the image's original scale."
-msgstr ""
-"<keyseq><key>مهار</key><key>2</key></keyseq> یا <key>2</key> برای بزرگ‌نمایی به "
-"دو برابر مقیاس اصلی تصویر."
+"کاربران می‌توانند با دکمهٔ <gui>بزرگ‌نمایی</gui> (<media type=\"image\" "
+"src=\"figures/zoom-in-symbolic.svg\">zoom-in-symbolic</media>) بزرگ‌نمایی و با "
+"دکمهٔ <gui>کوچک‌نمایی</gui> (<media type=\"image\" src=\"figures/zoom-out-"
+"symbolic.svg\">zoom-out-symbolic</media>) کوچک‌نمایی کنند."
 
 #. (itstool) path: section/p
-#: C/viewing-images.page:36
+#: C/viewing-images.page:19
 msgid ""
-"Touchpad and touchscreen users can also zoom with a two-finger pinch gesture."
-msgstr "صفحه‌های لمسی نیز می‌توانند با نیشگون دوانگشتی بزرگ‌نمایی کنند."
+"Touchpad and touchscreen users can also zoom with a two-finger pinch gesture. "
+"On touchpads, it is also possible to zoom via pressing the <key>Ctrl</key> and "
+"swiping up/down with two fingers."
+msgstr ""
+" کاربران صفحه‌کلید و صفحه‌لمسی می‌توانندبا نیشگون دوانگشتی نیز بزرگ‌نمایی کنند. روی "
+"صفحه‌لمسی‌ها بزرگ‌نمایی با فشردن <key>مهار</key> و بالا و پایین کشیدن با دو انگشت "
+"نیز ممکن است."
 
 #. (itstool) path: section/title
-#: C/viewing-images.page:39
+#: C/viewing-images.page:22
 msgid "Panning"
 msgstr "ورق زدن"
 
 #. (itstool) path: section/p
-#: C/viewing-images.page:40
+#: C/viewing-images.page:23
 msgid ""
 "Mouse and touchpad users can pan the view when zoomed in by clicking and "
 "dragging the image. Touchscreen users can use a single-finger drag gesture to "
-"pan the view. Users with a keyboard can also use the following keyboard "
-"shortcuts:"
+"pan the view."
 msgstr ""
 "کاربران موشی و صفحه‌لمسی می‌توانند با کیلک و کشیدن تصویر، نما را هنگام بزرگ‌نمایی "
 "ورق بزنند. کاربران صفحه‌های لمسی می‌توانند از حرکت کشیدن تک‌انگشتی برای ورق زدن "
-"نما استفاده کنند. کاربران صفحه‌کلید هم می‌توانند از میان‌برهای صفحه‌کلید زیر "
-"استفاده کنند:"
-
-#. (itstool) path: item/p
-#: C/viewing-images.page:45
-msgid "<keyseq><key>Ctrl</key><key>←</key></keyseq> to pan left."
-msgstr "<keyseq><key>مهار</key><key>←</key></keyseq> برای ورق زدن به چپ."
-
-#. (itstool) path: item/p
-#: C/viewing-images.page:48
-msgid "<keyseq><key>Ctrl</key><key>→</key></keyseq> to pan right."
-msgstr "<keyseq><key>مهار</key><key>→</key></keyseq> برای ورق زدن به راست."
-
-#. (itstool) path: item/p
-#: C/viewing-images.page:51
-msgid "<keyseq><key>Ctrl</key><key>↑</key></keyseq> to pan up."
-msgstr "<keyseq><key>مهار</key><key>↑</key></keyseq> برای ورق زدن به بالا."
-
-#. (itstool) path: item/p
-#: C/viewing-images.page:54
-msgid "<keyseq><key>Ctrl</key><key>↓</key></keyseq> to pan down."
-msgstr "<keyseq><key>مهار</key><key>↓</key></keyseq> برای ورق زدن به پایین."
+"نما استفاده کنند."
 
 #. (itstool) path: section/title
-#: C/viewing-images.page:59
+#: C/viewing-images.page:27
 msgid "Rotating"
 msgstr "چرخاندن"
 
@@ -172,7 +114,7 @@ msgstr "چرخاندن"
 #. the file changes, the md5 hash will change to let you know you need to
 #. update your localized copy. The msgstr is not used at all. Set it to
 #. whatever you like once you have updated your copy of the file.
-#: C/viewing-images.page:60
+#: C/viewing-images.page:28
 msgctxt "_"
 msgid ""
 "external ref='figures/object-rotate-right-symbolic.svg' "
@@ -186,7 +128,7 @@ msgstr ""
 #. the file changes, the md5 hash will change to let you know you need to
 #. update your localized copy. The msgstr is not used at all. Set it to
 #. whatever you like once you have updated your copy of the file.
-#: C/viewing-images.page:61
+#: C/viewing-images.page:29
 msgctxt "_"
 msgid ""
 "external ref='figures/object-rotate-left-symbolic.svg' "
@@ -196,43 +138,29 @@ msgstr ""
 "md5='8abe2a1bc5871a15c2f6534d19a4c7ee'"
 
 #. (itstool) path: section/p
-#: C/viewing-images.page:60
+#: C/viewing-images.page:28
 msgid ""
 "Users can use the <gui>Rotate Right</gui> (<media type=\"image\" src=\"figures/"
 "object-rotate-right-symbolic.svg\">object-rotate-right-symbolic</media>) and "
 "<gui>Rotate Left</gui> (<media type=\"image\" src=\"figures/object-rotate-left-"
 "symbolic.svg\">object-rotate-left-symbolic</media>) buttons under <gui "
 "style=\"menuitem\">Rotate</gui> in the main menu to rotate clockwise and "
-"counter-clockwise. They can also use the following keyboard shortcuts:"
+"counter-clockwise."
 msgstr ""
 "کاربران می‌توانند از دکمه‌های <gui>چرخش به راست</gui> (<media type=\"image\" "
 "src=\"figures/object-rotate-right-symbolic.svg\">object-rotate-right-symbolic</"
 "media>) و <gui>چرخش به چپ</gui> (<media type=\"image\" src=\"figures/object-"
 "rotate-left-symbolic.svg\">object-rotate-left-symbolic</media>) ذیل <gui "
 "style=\"menuitem\">چرخش</gui> در فهرست اصلی برای چرخش ساعت‌گرد و پادساعت‌گرد "
-"استفاده کنند. همچنین می‌توان از میان‌برهای صفحه‌کلید زیر استفاده کرد:"
-
-#. (itstool) path: item/p
-#: C/viewing-images.page:66
-msgid "<keyseq><key>Ctrl</key><key>R</key></keyseq> to rotate clockwise."
-msgstr "<keyseq><key>مهار</key><key>R</key></keyseq> برای چرخش ساعت‌گرد."
-
-#. (itstool) path: item/p
-#: C/viewing-images.page:69
-msgid ""
-"<keyseq><key>Ctrl</key><key>Shift</key><key>R</key></keyseq> to rotate counter-"
-"clockwise."
-msgstr ""
-"<keyseq><key>مهار</key><key>تبدیل</key><key>R</key></keyseq> برای چرخش "
-"پادساعت‌گرد."
+"استفاده کنند."
 
 #. (itstool) path: section/p
-#: C/viewing-images.page:72
+#: C/viewing-images.page:32
 msgid "Touchpad and touchscreen users can also use a two-finger rotate gesture."
 msgstr "کاربران صفحه‌های لمسی نیز می‌توانند از چرخش دوانگشتی استفاده کنند."
 
 #. (itstool) path: section/title
-#: C/viewing-images.page:75
+#: C/viewing-images.page:35
 msgid "Fullscreen"
 msgstr "تمام‌صفحه"
 
@@ -241,7 +169,7 @@ msgstr "تمام‌صفحه"
 #. the file changes, the md5 hash will change to let you know you need to
 #. update your localized copy. The msgstr is not used at all. Set it to
 #. whatever you like once you have updated your copy of the file.
-#: C/viewing-images.page:77
+#: C/viewing-images.page:37
 msgctxt "_"
 msgid ""
 "external ref='figures/view-fullscreen-symbolic.svg' "
@@ -255,7 +183,7 @@ msgstr ""
 #. the file changes, the md5 hash will change to let you know you need to
 #. update your localized copy. The msgstr is not used at all. Set it to
 #. whatever you like once you have updated your copy of the file.
-#: C/viewing-images.page:77
+#: C/viewing-images.page:37
 msgctxt "_"
 msgid ""
 "external ref='figures/view-restore-symbolic.svg' "
@@ -265,21 +193,28 @@ msgstr ""
 "md5='d00df849240f2d92c7fa1429d3ae8254'"
 
 #. (itstool) path: section/p
-#: C/viewing-images.page:76
+#: C/viewing-images.page:36
 msgid ""
 "Image Viewer has a simple fullscreen mode. Users can toggle fullscreen mode by "
 "pressing the <gui>Toggle Fullscreen</gui> (<media type=\"image\" src=\"figures/"
 "view-fullscreen-symbolic.svg\">view-fullscreen-symbolic</media> / <media "
 "type=\"image\" src=\"figures/view-restore-symbolic.svg\">view-restore-symbolic</"
-"media>) button. Keyboard users can also use <key>F11</key> to toggle fullscreen "
-"mode."
+"media>) button."
 msgstr ""
 "نمایشگر تصویر یک حالت سادهٔ تمام‌صفحه دارد. کاربران می‌توانند با فشردن دکمهٔ "
 "<gui>تغییر حالت تمام‌صفحه</gui> (<media type=\"image\" src=\"figures/view-"
 "fullscreen-symbolic.svg\">view-fullscreen-symbolic</media> / <media "
 "type=\"image\" src=\"figures/view-restore-symbolic.svg\">view-restore-symbolic</"
-"media>) حالت تمام‌صفحه را تغییر دهند. کاربران صفحه‌کلید نیز می‌توانند از <key>F11</"
-"key> برای تغییر حالت تمام‌صفحه استفاده کنند."
+"media>) حالت تمام‌صفحه را تغییر دهند."
+
+#. (itstool) path: note/p
+#: C/viewing-images.page:39 C/opening-images.page:70
+msgid ""
+"Keyboard users can also use the corresponding shortcuts presented in Keyboard "
+"Shortcuts dialog."
+msgstr ""
+"کاربران صفحه‌کلید می‌توانند از میان‌برهای مربوطه که در گفت‌وگوی میان‌برهای صفحه‌کلید "
+"ارائه شده نیز استفاده کنند."
 
 #. (itstool) path: page/title
 #: C/supported-formats.page:12
@@ -475,35 +410,14 @@ msgid ""
 "<gui>Previous Image</gui> (<media type=\"image\" src=\"figures/go-previous-"
 "symbolic.svg\">go-previous-symbolic</media>) and <gui>Next Image</gui> (<media "
 "type=\"image\" src=\"figures/go-next-symbolic.svg\">go-next-symbolic</media>) "
-"buttons. Keyboard users can also use the following shortcuts:"
+"buttons."
 msgstr ""
 "لوپ هنگام گشودن تصویری از گزینشگر یا مدیر پرونده دیگر پروندها در شاخهٔ تصویر را "
 "نیز بار کرده و به ترتیب الفبایی می‌چیندشان. کاربران می‌توانند دیگر تصویرهای شاخه "
 "را با دکمه‌های <gui>تصویر پیشین</gui> (<media type=\"image\" src=\"figures/go-"
 "next-symbolic.svg\">go-previous-symbolic</media> و <gui>تصویر بعدی</gui> "
 "(<media type=\"image\" src=\"figures/go-previous-symbolic.svg\">go-next-"
-"symbolic</media>) مرور کنند.کاربران صفحه‌کلید می‌توانند از میان‌برهای زیر نیز "
-"استفاده کنند:"
-
-#. (itstool) path: item/p
-#: C/opening-images.page:72
-msgid "<key>→</key> to go to the next image."
-msgstr "<key>←</key> برای رفتن به تصویر بعدی."
-
-#. (itstool) path: item/p
-#: C/opening-images.page:75
-msgid "<key>←</key> to go to the previous image."
-msgstr "<key>→</key> برای رفتن به تصویر پیشین."
-
-#. (itstool) path: item/p
-#: C/opening-images.page:78
-msgid "<key>Home</key> to jump to the first image in the directory."
-msgstr "<key>خانه</key> برای رفتن به نخستین تصویر در شاخه."
-
-#. (itstool) path: item/p
-#: C/opening-images.page:81
-msgid "<key>End</key> to jump to the last image in the directory."
-msgstr "<key>پایان</key> برای رفتن به واپسین تصویر در شاخه."
+"symbolic</media>) مرور کنند."
 
 #. (itstool) path: info/desc
 #: C/trashing-images.page:11
@@ -713,46 +627,105 @@ msgstr "<_:media-1/> نمایشگر تصویر (لوپ)"
 
 #. (itstool) path: section/title
 #: C/index.page:14
-msgid "Introduction"
-msgstr "دیباچه"
-
-#. (itstool) path: section/p
-#: C/index.page:15
-msgid ""
-"Image Viewer is an image viewer that supports modern image formats. It provides:"
-msgstr "نمایشگر تصویر نمایشگریست که از قالب‌های نوین تصویری پشتیبانی می‌کند. شامل:"
-
-#. (itstool) path: item/p
-#: C/index.page:18
-msgid "Fast GPU accelerated image rendering with tiled rendering for SVGs"
-msgstr "پرداخت تصویر شتاب‌داده با GPU با پرداخت کاشی‌گون برای SVGها"
-
-#. (itstool) path: item/p
-#: C/index.page:21
-msgid "Extendable and sandboxed raster image decoding"
-msgstr "کدگشایی تصویر شطرنجی قرنطینه شده و گسترش‌پذیر"
-
-#. (itstool) path: item/p
-#: C/index.page:24
-msgid "Extensive support for touchpad and touchscreen gestures"
-msgstr "پشتیبانی وسیع از صفحه‌های لمسی"
-
-#. (itstool) path: item/p
-#: C/index.page:27
-msgid "Accessible presentation of the most important metadata"
-msgstr "ارائه دسترسی‌پذیر بیش‌تر فراداده‌های مهم"
-
-#. (itstool) path: section/title
-#: C/index.page:32
 msgid "Getting Started"
 msgstr "شروع به کار"
 
 #. (itstool) path: section/title
-#: C/index.page:35
+#: C/index.page:17
 msgid "Additional Features"
 msgstr "ویژگی‌های اضافی"
 
 #. (itstool) path: section/title
-#: C/index.page:38
+#: C/index.page:20
 msgid "Technical Information"
 msgstr "اطّلاعات فنی"
+
+#~ msgid ""
+#~ "<keyseq><key>Ctrl</key><key>+</key></keyseq> or <key>+</key> to zoom in."
+#~ msgstr ""
+#~ "<keyseq><key>مهار</key><key>+</key></keyseq> یا <key>+</key> برای بزرگ‌نمایی."
+
+#~ msgid ""
+#~ "<keyseq><key>Ctrl</key><key>-</key></keyseq> or <key>-</key> to zoom out."
+#~ msgstr ""
+#~ "<keyseq><key>مهار</key><key>-</key></keyseq> یا <key>-</key> برای کوچک‌نمایی."
+
+#~ msgid ""
+#~ "<keyseq><key>Ctrl</key><key>0</key></keyseq> or <key>0</key> to zoom to the "
+#~ "best fitting size for the window size."
+#~ msgstr ""
+#~ "<keyseq><key>مهار</key><key>0</key></keyseq> یا <key>0</key> برای بهترین "
+#~ "برازش در پنجره."
+
+#~ msgid ""
+#~ "<keyseq><key>Ctrl</key><key>1</key></keyseq> or <key>1</key> to zoom to the "
+#~ "image's original scale."
+#~ msgstr ""
+#~ "<keyseq><key>مهار</key><key>1</key></keyseq> یا <key>1</key> برای بزرگ‌نمایی "
+#~ "به مقیاس اصلی تصویر."
+
+#~ msgid ""
+#~ "<keyseq><key>Ctrl</key><key>2</key></keyseq> or <key>2</key> to zoom to 200% "
+#~ "of the image's original scale."
+#~ msgstr ""
+#~ "<keyseq><key>مهار</key><key>2</key></keyseq> یا <key>2</key> برای بزرگ‌نمایی "
+#~ "به دو برابر مقیاس اصلی تصویر."
+
+#~ msgid ""
+#~ "Touchpad and touchscreen users can also zoom with a two-finger pinch gesture."
+#~ msgstr "صفحه‌های لمسی نیز می‌توانند با نیشگون دوانگشتی بزرگ‌نمایی کنند."
+
+#~ msgid "<keyseq><key>Ctrl</key><key>←</key></keyseq> to pan left."
+#~ msgstr "<keyseq><key>مهار</key><key>←</key></keyseq> برای ورق زدن به چپ."
+
+#~ msgid "<keyseq><key>Ctrl</key><key>→</key></keyseq> to pan right."
+#~ msgstr "<keyseq><key>مهار</key><key>→</key></keyseq> برای ورق زدن به راست."
+
+#~ msgid "<keyseq><key>Ctrl</key><key>↑</key></keyseq> to pan up."
+#~ msgstr "<keyseq><key>مهار</key><key>↑</key></keyseq> برای ورق زدن به بالا."
+
+#~ msgid "<keyseq><key>Ctrl</key><key>↓</key></keyseq> to pan down."
+#~ msgstr "<keyseq><key>مهار</key><key>↓</key></keyseq> برای ورق زدن به پایین."
+
+#~ msgid "<keyseq><key>Ctrl</key><key>R</key></keyseq> to rotate clockwise."
+#~ msgstr "<keyseq><key>مهار</key><key>R</key></keyseq> برای چرخش ساعت‌گرد."
+
+#~ msgid ""
+#~ "<keyseq><key>Ctrl</key><key>Shift</key><key>R</key></keyseq> to rotate "
+#~ "counter-clockwise."
+#~ msgstr ""
+#~ "<keyseq><key>مهار</key><key>تبدیل</key><key>R</key></keyseq> برای چرخش "
+#~ "پادساعت‌گرد."
+
+#~ msgid "<key>→</key> to go to the next image."
+#~ msgstr "<key>←</key> برای رفتن به تصویر بعدی."
+
+#~ msgid "<key>←</key> to go to the previous image."
+#~ msgstr "<key>→</key> برای رفتن به تصویر پیشین."
+
+#~ msgid "<key>Home</key> to jump to the first image in the directory."
+#~ msgstr "<key>خانه</key> برای رفتن به نخستین تصویر در شاخه."
+
+#~ msgid "<key>End</key> to jump to the last image in the directory."
+#~ msgstr "<key>پایان</key> برای رفتن به واپسین تصویر در شاخه."
+
+#~ msgid "Introduction"
+#~ msgstr "دیباچه"
+
+#~ msgid ""
+#~ "Image Viewer is an image viewer that supports modern image formats. It "
+#~ "provides:"
+#~ msgstr ""
+#~ "نمایشگر تصویر نمایشگریست که از قالب‌های نوین تصویری پشتیبانی می‌کند. شامل:"
+
+#~ msgid "Fast GPU accelerated image rendering with tiled rendering for SVGs"
+#~ msgstr "پرداخت تصویر شتاب‌داده با GPU با پرداخت کاشی‌گون برای SVGها"
+
+#~ msgid "Extendable and sandboxed raster image decoding"
+#~ msgstr "کدگشایی تصویر شطرنجی قرنطینه شده و گسترش‌پذیر"
+
+#~ msgid "Extensive support for touchpad and touchscreen gestures"
+#~ msgstr "پشتیبانی وسیع از صفحه‌های لمسی"
+
+#~ msgid "Accessible presentation of the most important metadata"
+#~ msgstr "ارائه دسترسی‌پذیر بیش‌تر فراداده‌های مهم"
