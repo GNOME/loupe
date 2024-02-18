@@ -69,7 +69,7 @@
   </categories>
 
   <releases>
-    <release version="46.beta" date="2024-02-11">
+    <release version="46.beta.1" date="2024-02-18">
       <description>
         <p>This release polishes various features of the previous release. Changing images via keyboard shortcuts now happens without animation. The Ctrl+C shortcut can now not only copy the viewed image but can also be used to copy selected metadata. Zoom now tries to zoom into the mouse cursor position in more situations. Double tapping on touchscreens now zooms into the tapped position instead of the center. Zoom on touchpad is now also possible by using the Ctrl button and scrolling, supplementing the existing pinch gesture. The new version also brings support for more formats as well as improved sandboxing and memory limitation for image loaders.</p>
       </description>

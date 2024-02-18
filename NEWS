@@ -1,3 +1,11 @@
+46.beta.1
+=========
+
+- Change .desktop file to not include "Slideshow" as keyword
+- Change help by regenerating pages
+- Change help to correctly represent zoom
+- Change to use zbus 4.0
+
 46.beta
 =======
 
