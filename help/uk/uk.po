@@ -2,12 +2,12 @@
 # Copyright (C) 2023 Loupe's COPYRIGHT HOLDER
 # This file is distributed under the same license as the Loupe package.
 #
-# Yuri Chornoivan <yurchor@ukr.net>, 2023.
+# Yuri Chornoivan <yurchor@ukr.net>, 2023, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
-"POT-Creation-Date: 2023-09-01 19:56+0000\n"
-"PO-Revision-Date: 2023-09-03 20:49+0300\n"
+"POT-Creation-Date: 2024-02-18 13:35+0000\n"
+"PO-Revision-Date: 2024-02-18 21:18+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n"
 "%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Lokalize 20.12.0\n"
+"X-Generator: Lokalize 23.04.1\n"
 
 #. Put one translator per line, in the form NAME <EMAIL>, YEAR1, YEAR2
 msgctxt "_"
@@ -70,112 +70,60 @@ msgstr ""
 
 #. (itstool) path: section/p
 #: C/viewing-images.page:16
+#| msgid ""
+#| "Users can zoom in with the <gui>Zoom In</gui> (<media type=\"image\" "
+#| "src=\"figures/zoom-in-symbolic.svg\">zoom-in-symbolic</media>) button and "
+#| "zoom out with the <gui>Zoom Out</gui> (<media type=\"image\" "
+#| "src=\"figures/zoom-out-symbolic.svg\">zoom-out-symbolic</media>) button. "
+#| "They can also use the following keyboard shortcuts:"
 msgid ""
 "Users can zoom in with the <gui>Zoom In</gui> (<media type=\"image\" "
 "src=\"figures/zoom-in-symbolic.svg\">zoom-in-symbolic</media>) button and "
 "zoom out with the <gui>Zoom Out</gui> (<media type=\"image\" src=\"figures/"
-"zoom-out-symbolic.svg\">zoom-out-symbolic</media>) button. They can also use "
-"the following keyboard shortcuts:"
+"zoom-out-symbolic.svg\">zoom-out-symbolic</media>) button."
 msgstr ""
 "Користувачі можуть збільшувати масштаб за допомогою кнопки <gui>Збільшити</"
 "gui> (<media type=\"image\" src=\"figures/zoom-in-symbolic.svg\">zoom-in-"
 "symbolic</media>) і зменшувати масштаб за допомогою кнопки <gui>Зменшити</"
 "gui> (<media type=\"image\" src=\"figures/zoom-out-symbolic.svg\">zoom-out-"
-"symbolic</media>). Також можна скористатися такими клавіатурними "
-"скороченнями:"
-
-#. (itstool) path: item/p
-#: C/viewing-images.page:21
-msgid ""
-"<keyseq><key>Ctrl</key><key>+</key></keyseq> or <key>+</key> to zoom in."
-msgstr ""
-"<keyseq><key>Ctrl</key><key>+</key></keyseq> або <key>+</key> для збільшення."
-
-#. (itstool) path: item/p
-#: C/viewing-images.page:24
-msgid ""
-"<keyseq><key>Ctrl</key><key>-</key></keyseq> or <key>-</key> to zoom out."
-msgstr ""
-"<keyseq><key>Ctrl</key><key>-</key></keyseq> або <key>-</key> для зменшення."
-
-#. (itstool) path: item/p
-#: C/viewing-images.page:27
-msgid ""
-"<keyseq><key>Ctrl</key><key>0</key></keyseq> or <key>0</key> to zoom to the "
-"best fitting size for the window size."
-msgstr ""
-"<keyseq><key>Ctrl</key><key>0</key></keyseq> або <key>0</key> для "
-"масштабування для найкращої відповідності розміру вікна."
-
-#. (itstool) path: item/p
-#: C/viewing-images.page:30
-msgid ""
-"<keyseq><key>Ctrl</key><key>1</key></keyseq> or <key>1</key> to zoom to the "
-"image's original scale."
-msgstr ""
-"<keyseq><key>Ctrl</key><key>1</key></keyseq> або <key>1</key> для "
-"масштабування зображення до початкового його розміру."
-
-#. (itstool) path: item/p
-#: C/viewing-images.page:33
-msgid ""
-"<keyseq><key>Ctrl</key><key>2</key></keyseq> or <key>2</key> to zoom to 200% "
-"of the image's original scale."
-msgstr ""
-"<keyseq><key>Ctrl</key><key>2</key></keyseq> або <key>2</key> для "
-"масштабування зображення до 200% початкового масштабу зображення."
+"symbolic</media>)."
 
 #. (itstool) path: section/p
-#: C/viewing-images.page:36
+#: C/viewing-images.page:19
 msgid ""
-"Touchpad and touchscreen users can also zoom with a two-finger pinch gesture."
+"Touchpad and touchscreen users can also zoom with a two-finger pinch "
+"gesture. On touchpads, it is also possible to zoom via pressing the "
+"<key>Ctrl</key> and swiping up/down with two fingers."
 msgstr ""
 "Користувачі сенсорних панелей і сенсорних екранів можуть також масштабувати "
-"зображення жестом щипання двома пальцями."
+"зображення жестом щипання двома пальцями. На сенсорних панелях можна"
+" змінювати масштаб натисканням клавіші <key>Ctrl</key> з одночасним"
+" проведенням по панелі вгору-вниз двома пальцями."
 
 #. (itstool) path: section/title
-#: C/viewing-images.page:39
+#: C/viewing-images.page:22
 msgid "Panning"
 msgstr "Панорамування"
 
 #. (itstool) path: section/p
-#: C/viewing-images.page:40
+#: C/viewing-images.page:23
+#| msgid ""
+#| "Mouse and touchpad users can pan the view when zoomed in by clicking and "
+#| "dragging the image. Touchscreen users can use a single-finger drag "
+#| "gesture to pan the view. Users with a keyboard can also use the following "
+#| "keyboard shortcuts:"
 msgid ""
 "Mouse and touchpad users can pan the view when zoomed in by clicking and "
 "dragging the image. Touchscreen users can use a single-finger drag gesture "
-"to pan the view. Users with a keyboard can also use the following keyboard "
-"shortcuts:"
+"to pan the view."
 msgstr ""
 "Користувачі миші і сенсорної панелі можуть панорамувати область перегляду "
 "збільшеного зображення клацанням і перетягуванням вказівника. Користувачі "
 "сенсорного екрана можуть скористатися жестом перетягування одним пальцем для "
-"панорамування перегляду. Користувачі клавіатури можуть також скористатися "
-"такими клавіатурними скороченнями:"
-
-#. (itstool) path: item/p
-#: C/viewing-images.page:45
-msgid "<keyseq><key>Ctrl</key><key>←</key></keyseq> to pan left."
-msgstr ""
-"<keyseq><key>Ctrl</key><key>←</key></keyseq> для панорамування ліворуч."
-
-#. (itstool) path: item/p
-#: C/viewing-images.page:48
-msgid "<keyseq><key>Ctrl</key><key>→</key></keyseq> to pan right."
-msgstr ""
-"<keyseq><key>Ctrl</key><key>→</key></keyseq> для панорамування праворуч."
-
-#. (itstool) path: item/p
-#: C/viewing-images.page:51
-msgid "<keyseq><key>Ctrl</key><key>↑</key></keyseq> to pan up."
-msgstr "<keyseq><key>Ctrl</key><key>↑</key></keyseq> для панорамування вгору."
-
-#. (itstool) path: item/p
-#: C/viewing-images.page:54
-msgid "<keyseq><key>Ctrl</key><key>↓</key></keyseq> to pan down."
-msgstr "<keyseq><key>Ctrl</key><key>↓</key></keyseq> для панорамування вниз."
+"панорамування перегляду."
 
 #. (itstool) path: section/title
-#: C/viewing-images.page:59
+#: C/viewing-images.page:27
 msgid "Rotating"
 msgstr "Обертання"
 
@@ -184,7 +132,7 @@ msgstr "Обертання"
 #. the file changes, the md5 hash will change to let you know you need to
 #. update your localized copy. The msgstr is not used at all. Set it to
 #. whatever you like once you have updated your copy of the file.
-#: C/viewing-images.page:60
+#: C/viewing-images.page:28
 msgctxt "_"
 msgid ""
 "external ref='figures/object-rotate-right-symbolic.svg' "
@@ -198,7 +146,7 @@ msgstr ""
 #. the file changes, the md5 hash will change to let you know you need to
 #. update your localized copy. The msgstr is not used at all. Set it to
 #. whatever you like once you have updated your copy of the file.
-#: C/viewing-images.page:61
+#: C/viewing-images.page:29
 msgctxt "_"
 msgid ""
 "external ref='figures/object-rotate-left-symbolic.svg' "
@@ -208,15 +156,22 @@ msgstr ""
 "md5='8abe2a1bc5871a15c2f6534d19a4c7ee'"
 
 #. (itstool) path: section/p
-#: C/viewing-images.page:60
+#: C/viewing-images.page:28
+#| msgid ""
+#| "Users can use the <gui>Rotate Right</gui> (<media type=\"image\" "
+#| "src=\"figures/object-rotate-right-symbolic.svg\">object-rotate-right-"
+#| "symbolic</media>) and <gui>Rotate Left</gui> (<media type=\"image\" "
+#| "src=\"figures/object-rotate-left-symbolic.svg\">object-rotate-left-"
+#| "symbolic</media>) buttons under <gui style=\"menuitem\">Rotate</gui> in "
+#| "the main menu to rotate clockwise and counter-clockwise. They can also "
+#| "use the following keyboard shortcuts:"
 msgid ""
 "Users can use the <gui>Rotate Right</gui> (<media type=\"image\" "
 "src=\"figures/object-rotate-right-symbolic.svg\">object-rotate-right-"
 "symbolic</media>) and <gui>Rotate Left</gui> (<media type=\"image\" "
 "src=\"figures/object-rotate-left-symbolic.svg\">object-rotate-left-symbolic</"
 "media>) buttons under <gui style=\"menuitem\">Rotate</gui> in the main menu "
-"to rotate clockwise and counter-clockwise. They can also use the following "
-"keyboard shortcuts:"
+"to rotate clockwise and counter-clockwise."
 msgstr ""
 "Користувачі можуть скористатися кнопками <gui>Обертати праворуч</gui> "
 "(<media type=\"image\" src=\"figures/object-rotate-right-symbolic."
@@ -224,27 +179,10 @@ msgstr ""
 "(<media type=\"image\" src=\"figures/object-rotate-left-symbolic."
 "svg\">object-rotate-left-symbolic</media>) під пунктом <gui "
 "style=\"menuitem\">Обертати</gui> у головному меню для обертання за "
-"годинниковою стрілкою або проти годинникової стрілки. Вони також можуть "
-"скористатися такими клавіатурними скороченнями:"
-
-#. (itstool) path: item/p
-#: C/viewing-images.page:66
-msgid "<keyseq><key>Ctrl</key><key>R</key></keyseq> to rotate clockwise."
-msgstr ""
-"<keyseq><key>Ctrl</key><key>R</key></keyseq> для обертання за годинниковою "
-"стрілкою."
-
-#. (itstool) path: item/p
-#: C/viewing-images.page:69
-msgid ""
-"<keyseq><key>Ctrl</key><key>Shift</key><key>R</key></keyseq> to rotate "
-"counter-clockwise."
-msgstr ""
-"<keyseq><key>Ctrl</key><key>Shift</key><key>R</key></keyseq> для обертання "
-"проти годинникової стрілки."
+"годинниковою стрілкою або проти годинникової стрілки."
 
 #. (itstool) path: section/p
-#: C/viewing-images.page:72
+#: C/viewing-images.page:32
 msgid ""
 "Touchpad and touchscreen users can also use a two-finger rotate gesture."
 msgstr ""
@@ -252,7 +190,7 @@ msgstr ""
 "жестом обертання двома пальцями."
 
 #. (itstool) path: section/title
-#: C/viewing-images.page:75
+#: C/viewing-images.page:35
 msgid "Fullscreen"
 msgstr "На увесь екран"
 
@@ -261,7 +199,7 @@ msgstr "На увесь екран"
 #. the file changes, the md5 hash will change to let you know you need to
 #. update your localized copy. The msgstr is not used at all. Set it to
 #. whatever you like once you have updated your copy of the file.
-#: C/viewing-images.page:77
+#: C/viewing-images.page:37
 msgctxt "_"
 msgid ""
 "external ref='figures/view-fullscreen-symbolic.svg' "
@@ -275,7 +213,7 @@ msgstr ""
 #. the file changes, the md5 hash will change to let you know you need to
 #. update your localized copy. The msgstr is not used at all. Set it to
 #. whatever you like once you have updated your copy of the file.
-#: C/viewing-images.page:77
+#: C/viewing-images.page:37
 msgctxt "_"
 msgid ""
 "external ref='figures/view-restore-symbolic.svg' "
@@ -285,23 +223,36 @@ msgstr ""
 "md5='d00df849240f2d92c7fa1429d3ae8254'"
 
 #. (itstool) path: section/p
-#: C/viewing-images.page:76
+#: C/viewing-images.page:36
+#| msgid ""
+#| "Image Viewer has a simple fullscreen mode. Users can toggle fullscreen "
+#| "mode by pressing the <gui>Toggle Fullscreen</gui> (<media type=\"image\" "
+#| "src=\"figures/view-fullscreen-symbolic.svg\">view-fullscreen-symbolic</"
+#| "media> / <media type=\"image\" src=\"figures/view-restore-symbolic."
+#| "svg\">view-restore-symbolic</media>) button. Keyboard users can also use "
+#| "<key>F11</key> to toggle fullscreen mode."
 msgid ""
 "Image Viewer has a simple fullscreen mode. Users can toggle fullscreen mode "
 "by pressing the <gui>Toggle Fullscreen</gui> (<media type=\"image\" "
 "src=\"figures/view-fullscreen-symbolic.svg\">view-fullscreen-symbolic</"
 "media> / <media type=\"image\" src=\"figures/view-restore-symbolic."
-"svg\">view-restore-symbolic</media>) button. Keyboard users can also use "
-"<key>F11</key> to toggle fullscreen mode."
+"svg\">view-restore-symbolic</media>) button."
 msgstr ""
 "У «Переглядачі зображень» передбачено простий повноекранний режим. "
 "Користувачі можуть увімкнути або вимкнути повноекранний режим за допомогою "
 "натискання кнопки <gui>Перемкнути повноекранний режим</gui> (<media "
 "type=\"image\" src=\"figures/view-fullscreen-symbolic.svg\">view-fullscreen-"
 "symbolic</media> / <media type=\"image\" src=\"figures/view-restore-symbolic."
-"svg\">view-restore-symbolic</media>). Користувачі з клавіатурою можуть також "
-"скористатися клавішею <key>F11</key> для вмикання і вимикання повноекранного "
-"режиму."
+"svg\">view-restore-symbolic</media>)."
+
+#. (itstool) path: note/p
+#: C/viewing-images.page:39 C/opening-images.page:70
+msgid ""
+"Keyboard users can also use the corresponding shortcuts presented in "
+"Keyboard Shortcuts dialog."
+msgstr ""
+"Користувачі з клавіатурою можуть скористатися відповідними скороченнями, які"
+" наведено у вікні «Клавіатурні скорочення»."
 
 #. (itstool) path: page/title
 #: C/supported-formats.page:12
@@ -504,6 +455,15 @@ msgstr ""
 
 #. (itstool) path: section/p
 #: C/opening-images.page:65
+#| msgid ""
+#| "When opening an image from the file chooser or file manager, Loupe will "
+#| "load other files in the parent directory of the image and sort them in "
+#| "alphabetical order. Users can browse the other images in the directory "
+#| "with the <gui>Previous Image</gui> (<media type=\"image\" src=\"figures/"
+#| "go-previous-symbolic.svg\">go-previous-symbolic</media>) and <gui>Next "
+#| "Image</gui> (<media type=\"image\" src=\"figures/go-next-symbolic."
+#| "svg\">go-next-symbolic</media>) buttons. Keyboard users can also use the "
+#| "following shortcuts:"
 msgid ""
 "When opening an image from the file chooser or file manager, Loupe will load "
 "other files in the parent directory of the image and sort them in "
@@ -511,8 +471,7 @@ msgid ""
 "the <gui>Previous Image</gui> (<media type=\"image\" src=\"figures/go-"
 "previous-symbolic.svg\">go-previous-symbolic</media>) and <gui>Next Image</"
 "gui> (<media type=\"image\" src=\"figures/go-next-symbolic.svg\">go-next-"
-"symbolic</media>) buttons. Keyboard users can also use the following "
-"shortcuts:"
+"symbolic</media>) buttons."
 msgstr ""
 "При відкритті зображення за допомогою засобу вибору файлів або програми для "
 "керування файлами Loupe завантажить інші файли у батьківському каталозі "
@@ -521,28 +480,7 @@ msgstr ""
 "<gui>Попереднє зображення</gui> (<media type=\"image\" src=\"figures/go-"
 "previous-symbolic.svg\">go-previous-symbolic</media>) і <gui>Наступне "
 "зображення</gui> (<media type=\"image\" src=\"figures/go-next-symbolic."
-"svg\">go-next-symbolic</media>). Користувачі з клавіатурою можуть також "
-"скористатися такими клавіатурними скороченнями:"
-
-#. (itstool) path: item/p
-#: C/opening-images.page:72
-msgid "<key>→</key> to go to the next image."
-msgstr "<key>→</key> для переходу до наступного зображення."
-
-#. (itstool) path: item/p
-#: C/opening-images.page:75
-msgid "<key>←</key> to go to the previous image."
-msgstr "<key>←</key> для переходу до попереднього зображення."
-
-#. (itstool) path: item/p
-#: C/opening-images.page:78
-msgid "<key>Home</key> to jump to the first image in the directory."
-msgstr "<key>Home</key> для переходу до першого зображення у каталозі."
-
-#. (itstool) path: item/p
-#: C/opening-images.page:81
-msgid "<key>End</key> to jump to the last image in the directory."
-msgstr "<key>End</key> для переходу до останнього зображення у каталозі."
+"svg\">go-next-symbolic</media>)."
 
 #. (itstool) path: info/desc
 #: C/trashing-images.page:11
@@ -757,54 +695,123 @@ msgstr "<_:media-1/> Переглядач зображень (Loupe)"
 
 #. (itstool) path: section/title
 #: C/index.page:14
-msgid "Introduction"
-msgstr "Вступ"
-
-#. (itstool) path: section/p
-#: C/index.page:15
-#| msgid ""
-#| "Iamge Viewer is an image viewer that supports modern image formats. It "
-#| "provides:"
-msgid ""
-"Image Viewer is an image viewer that supports modern image formats. It "
-"provides:"
-msgstr ""
-"«Переглядач зображень» є програмою для перегляду зображень, у якій "
-"передбачено підтримку сучасних форматів зображень. Можливості програми:"
-
-#. (itstool) path: item/p
-#: C/index.page:18
-msgid "Fast GPU accelerated image rendering with tiled rendering for SVGs"
-msgstr ""
-"Швидка обробка зображень за допомогою графічного процесора із плитковою "
-"обробкою для SVG"
-
-#. (itstool) path: item/p
-#: C/index.page:21
-msgid "Extendable and sandboxed raster image decoding"
-msgstr "Придатне до розширення та ізольоване декодування растрових зображень"
-
-#. (itstool) path: item/p
-#: C/index.page:24
-msgid "Extensive support for touchpad and touchscreen gestures"
-msgstr "Широка підтримка жестів на сенсорних панелях та екранах"
-
-#. (itstool) path: item/p
-#: C/index.page:27
-msgid "Accessible presentation of the most important metadata"
-msgstr "Доступне представлення найважливіших метаданих"
-
-#. (itstool) path: section/title
-#: C/index.page:32
 msgid "Getting Started"
 msgstr "Початкові зауваження"
 
 #. (itstool) path: section/title
-#: C/index.page:35
+#: C/index.page:17
 msgid "Additional Features"
 msgstr "Додаткові можливості"
 
 #. (itstool) path: section/title
-#: C/index.page:38
+#: C/index.page:20
 msgid "Technical Information"
 msgstr "Технічна інформація"
+
+#~ msgid ""
+#~ "<keyseq><key>Ctrl</key><key>+</key></keyseq> or <key>+</key> to zoom in."
+#~ msgstr ""
+#~ "<keyseq><key>Ctrl</key><key>+</key></keyseq> або <key>+</key> для "
+#~ "збільшення."
+
+#~ msgid ""
+#~ "<keyseq><key>Ctrl</key><key>-</key></keyseq> or <key>-</key> to zoom out."
+#~ msgstr ""
+#~ "<keyseq><key>Ctrl</key><key>-</key></keyseq> або <key>-</key> для "
+#~ "зменшення."
+
+#~ msgid ""
+#~ "<keyseq><key>Ctrl</key><key>0</key></keyseq> or <key>0</key> to zoom to "
+#~ "the best fitting size for the window size."
+#~ msgstr ""
+#~ "<keyseq><key>Ctrl</key><key>0</key></keyseq> або <key>0</key> для "
+#~ "масштабування для найкращої відповідності розміру вікна."
+
+#~ msgid ""
+#~ "<keyseq><key>Ctrl</key><key>1</key></keyseq> or <key>1</key> to zoom to "
+#~ "the image's original scale."
+#~ msgstr ""
+#~ "<keyseq><key>Ctrl</key><key>1</key></keyseq> або <key>1</key> для "
+#~ "масштабування зображення до початкового його розміру."
+
+#~ msgid ""
+#~ "<keyseq><key>Ctrl</key><key>2</key></keyseq> or <key>2</key> to zoom to "
+#~ "200% of the image's original scale."
+#~ msgstr ""
+#~ "<keyseq><key>Ctrl</key><key>2</key></keyseq> або <key>2</key> для "
+#~ "масштабування зображення до 200% початкового масштабу зображення."
+
+#~ msgid ""
+#~ "Touchpad and touchscreen users can also zoom with a two-finger pinch "
+#~ "gesture."
+#~ msgstr ""
+#~ "Користувачі сенсорних панелей і сенсорних екранів можуть також "
+#~ "масштабувати зображення жестом щипання двома пальцями."
+
+#~ msgid "<keyseq><key>Ctrl</key><key>←</key></keyseq> to pan left."
+#~ msgstr ""
+#~ "<keyseq><key>Ctrl</key><key>←</key></keyseq> для панорамування ліворуч."
+
+#~ msgid "<keyseq><key>Ctrl</key><key>→</key></keyseq> to pan right."
+#~ msgstr ""
+#~ "<keyseq><key>Ctrl</key><key>→</key></keyseq> для панорамування праворуч."
+
+#~ msgid "<keyseq><key>Ctrl</key><key>↑</key></keyseq> to pan up."
+#~ msgstr ""
+#~ "<keyseq><key>Ctrl</key><key>↑</key></keyseq> для панорамування вгору."
+
+#~ msgid "<keyseq><key>Ctrl</key><key>↓</key></keyseq> to pan down."
+#~ msgstr ""
+#~ "<keyseq><key>Ctrl</key><key>↓</key></keyseq> для панорамування вниз."
+
+#~ msgid "<keyseq><key>Ctrl</key><key>R</key></keyseq> to rotate clockwise."
+#~ msgstr ""
+#~ "<keyseq><key>Ctrl</key><key>R</key></keyseq> для обертання за "
+#~ "годинниковою стрілкою."
+
+#~ msgid ""
+#~ "<keyseq><key>Ctrl</key><key>Shift</key><key>R</key></keyseq> to rotate "
+#~ "counter-clockwise."
+#~ msgstr ""
+#~ "<keyseq><key>Ctrl</key><key>Shift</key><key>R</key></keyseq> для "
+#~ "обертання проти годинникової стрілки."
+
+#~ msgid "<key>→</key> to go to the next image."
+#~ msgstr "<key>→</key> для переходу до наступного зображення."
+
+#~ msgid "<key>←</key> to go to the previous image."
+#~ msgstr "<key>←</key> для переходу до попереднього зображення."
+
+#~ msgid "<key>Home</key> to jump to the first image in the directory."
+#~ msgstr "<key>Home</key> для переходу до першого зображення у каталозі."
+
+#~ msgid "<key>End</key> to jump to the last image in the directory."
+#~ msgstr "<key>End</key> для переходу до останнього зображення у каталозі."
+
+#~ msgid "Introduction"
+#~ msgstr "Вступ"
+
+#~| msgid ""
+#~| "Iamge Viewer is an image viewer that supports modern image formats. It "
+#~| "provides:"
+#~ msgid ""
+#~ "Image Viewer is an image viewer that supports modern image formats. It "
+#~ "provides:"
+#~ msgstr ""
+#~ "«Переглядач зображень» є програмою для перегляду зображень, у якій "
+#~ "передбачено підтримку сучасних форматів зображень. Можливості програми:"
+
+#~ msgid "Fast GPU accelerated image rendering with tiled rendering for SVGs"
+#~ msgstr ""
+#~ "Швидка обробка зображень за допомогою графічного процесора із плитковою "
+#~ "обробкою для SVG"
+
+#~ msgid "Extendable and sandboxed raster image decoding"
+#~ msgstr ""
+#~ "Придатне до розширення та ізольоване декодування растрових зображень"
+
+#~ msgid "Extensive support for touchpad and touchscreen gestures"
+#~ msgstr "Широка підтримка жестів на сенсорних панелях та екранах"
+
+#~ msgid "Accessible presentation of the most important metadata"
+#~ msgstr "Доступне представлення найважливіших метаданих"
