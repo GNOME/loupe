@@ -3,279 +3,62 @@
 # This file is distributed under the same license as the Loupe package.
 # Irénée THIRION <irenee.thirion@e.email>, 2023.
 # locness3 <locness3@e.email>, 2023.
+# Vincent Chatelain <vinchatl_gnome@proton.me>, 2024.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2023-09-22 13:49+0000\n"
-"PO-Revision-Date: 2023-09-22 16:21+0200\n"
-"Last-Translator: Guillaume Bernard <associations@guillaume-bernard.fr>\n"
-"Language-Team: French - France <gnomefr@traduc.org>\n"
+"POT-Creation-Date: 2024-02-13 22:38+0000\n"
+"PO-Revision-Date: 2024-02-20 19:19+0100\n"
+"Last-Translator: Vincent Chatelain <vinchatl_gnome@proton.me>\n"
+"Language-Team: GNOME French Team <gnomefr@traduc.org>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 3.3.2\n"
+"Plural-Forms: nplurals=2; plural=(n > 1)\n"
+"X-Generator: Gtranslator 45.3\n"
 
-#: data/gtk/image_page.ui:6 data/gtk/window.ui:16
-msgid "_Open With…"
-msgstr "_Ouvrir avec…"
-
-#: data/gtk/image_page.ui:14 data/gtk/window.ui:24
-msgid "_Print…"
-msgstr "Im_primer…"
-
-#: data/gtk/image_page.ui:18
-msgid "_Copy"
-msgstr "_Copier"
-
-#: data/gtk/image_page.ui:23 data/gtk/window.ui:29
-msgid "Rotate"
-msgstr "Faire pivoter"
-
-#: data/gtk/image_page.ui:34 data/gtk/window.ui:40
-msgid "_Set as Background…"
-msgstr "_Définir comme arrière-plan…"
-
-#: data/gtk/image_page.ui:63
-msgid "Could not Load Image"
-msgstr "Impossible de charger l’image"
-
-#: data/gtk/image_page.ui:97 data/gtk/window.ui:134
-msgid "Rotate Left"
-msgstr "Faire pivoter vers la gauche"
-
-#: data/gtk/image_page.ui:107 data/gtk/window.ui:144
-msgid "Rotate Right"
-msgstr "Faire pivoter vers la droite"
-
-#: data/gtk/image_view.ui:30
-msgid "Previous Image"
-msgstr "Image précédente"
-
-#: data/gtk/image_view.ui:41
-msgid "Next Image"
-msgstr "Image suivante"
-
-#: data/gtk/image_view.ui:66
-msgid "Zoom Out"
-msgstr "Zoom arrière"
-
-#: data/gtk/image_view.ui:77
-msgid "Zoom In"
-msgstr "Zoom avant"
-
-#: data/gtk/image_view.ui:95
-msgid "Toggle Fullscreen"
-msgstr "Basculer le plein écran"
-
-#. Translators: Go back to previous page
-#: data/gtk/print.ui:29
-msgid "Back"
-msgstr "Retour"
-
-#: data/gtk/print.ui:36
-msgid "Print"
-msgstr "Imprimer"
-
-#: data/gtk/print.ui:54
-msgid "Layout"
-msgstr "Disposition"
-
-#: data/gtk/print.ui:57
-msgid "Orientation"
-msgstr "Orientation"
-
-#: data/gtk/print.ui:69
-msgid "Portrait Page Orientation"
-msgstr "Orientation de page en portrait"
-
-#: data/gtk/print.ui:77
-msgid "Landscape Page Orientation"
-msgstr "Orientation de page en paysage"
-
-#: data/gtk/print.ui:86
-msgid "Alignment"
-msgstr "Alignement"
-
-#: data/gtk/print.ui:104
-msgid "Margins"
-msgstr "Marges"
-
-#: data/gtk/print.ui:107
-msgid "Margin Units"
-msgstr "Unités de marges"
-
-#: data/gtk/print.ui:124
-msgid "Horizontal"
-msgstr "Horizontal"
-
-#: data/gtk/print.ui:129
-msgid "Vertical"
-msgstr "Vertical"
-
-#: data/gtk/print.ui:136 data/gtk/properties_view.ui:58
-msgid "Image Size"
-msgstr "Taille de l’image"
-
-#: data/gtk/print.ui:139
-msgid "Image Size Units"
-msgstr "Unités de taille de l’image"
-
-#: data/gtk/print.ui:157
-msgid "Fill Space"
-msgstr "Remplir l’espace"
-
-#: data/gtk/print.ui:162
-msgid "Width"
-msgstr "Largeur"
-
-#: data/gtk/print.ui:167
-msgid "Height"
-msgstr "Hauteur"
-
-#: data/gtk/properties_view.ui:29
-msgid "Folder"
-msgstr "Dossier"
-
-#: data/gtk/properties_view.ui:41
-msgid "Open Containing Folder"
-msgstr "Ouvrir le dossier parent"
-
-#: data/gtk/properties_view.ui:74
-msgid "Image Format"
-msgstr "Format de l’image"
-
-#: data/gtk/properties_view.ui:88
-msgid "File Size"
-msgstr "Taille du fichier"
-
-#: data/gtk/properties_view.ui:106
-msgid "File Created"
-msgstr "Fichier créé le"
-
-#: data/gtk/properties_view.ui:120
-msgid "File Modified"
-msgstr "Modifié le"
-
-#: data/gtk/properties_view.ui:143
-msgid "Location"
-msgstr "Emplacement"
-
-#: data/gtk/properties_view.ui:162
-msgid "Open Location"
-msgstr "Ouvrir l’emplacement"
-
-#: data/gtk/properties_view.ui:175
-msgid "Originally Created"
-msgstr "Date de création"
-
-#: data/gtk/properties_view.ui:196
-msgid "Aperture"
-msgstr "Ouverture"
-
-#: data/gtk/properties_view.ui:217
-msgid "Exposure"
-msgstr "Exposition"
-
-#: data/gtk/properties_view.ui:238
-msgid "ISO"
-msgstr "ISO"
-
-#: data/gtk/properties_view.ui:259
-msgid "Focal Length"
-msgstr "Distance focale"
-
-#: data/gtk/properties_view.ui:280
-msgid "Maker, Model"
-msgstr "Fabriquant, modèle"
-
-#: data/gtk/window.ui:6
-msgid "_New Window"
-msgstr "_Nouvelle fenêtre"
-
-#: data/gtk/window.ui:10
-msgid "_Open…"
-msgstr "_Ouvrir…"
-
-#: data/gtk/window.ui:46
-msgid "_Help"
-msgstr "Aid_e"
-
-#: data/gtk/window.ui:50
-msgid "_Keyboard Shortcuts"
-msgstr "_Raccourcis clavier"
-
-#: data/gtk/window.ui:54
-msgid "_About Image Viewer"
-msgstr "À _propos de Visionneur d’images"
-
-#. If the file exists, get display name
-#: data/gtk/window.ui:64 data/org.gnome.Loupe.desktop.in.in:3
-#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:28 src/window.rs:883
-#: src/window.rs:889
+#: data/org.gnome.Loupe.desktop.in.in:3
+#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:29 src/window.rs:880
 msgid "Image Viewer"
 msgstr "Visionneur d’images"
 
-#: data/gtk/window.ui:113
-msgid "Copy to Clipboard"
-msgstr "Copier vers le presse-papiers"
-
-#: data/gtk/window.ui:120
-msgid "Move to Trash"
-msgstr "Mettre à la corbeille"
-
-#: data/gtk/window.ui:126
-msgid "Main Menu"
-msgstr "Menu principal"
-
-#: data/gtk/window.ui:158
-msgid "Image Properties"
-msgstr "Propriétés de l’image"
-
-#: data/gtk/window.ui:200
-msgid "View Images"
-msgstr "Visionner des images"
-
-#: data/gtk/window.ui:201
-msgid "Drag and drop images here"
-msgstr "Glisser et déposer des images ici"
-
-#: data/gtk/window.ui:205
-msgid "_Open Files…"
-msgstr "_Ouvrir des fichiers…"
-
 #: data/org.gnome.Loupe.desktop.in.in:11
-msgid "Picture;Slideshow;Graphics;Loupe;"
-msgstr "Image;Diaporama;Graphiques;visualiser;Photos;Loupe;"
+msgid "Picture;Graphics;Loupe;"
+msgstr "Image;Graphiques;Loupe;"
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:7 src/about.rs:31
-msgid "The Loupe Team"
-msgstr "L’équipe de Loupe"
+#: data/org.gnome.Loupe.gschema.xml.in:6
+msgid "Show the image properties sidebar"
+msgstr "Afficher le panneau latéral des propriétés d’image"
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:8
+#. developer_name tag deprecated with Appstream 1.0
+#: data/org.gnome.Loupe.metainfo.xml.in.in:8 src/about.rs:32
+msgid "The GNOME Project"
+msgstr "Le projet GNOME"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:12
 msgid "View images"
 msgstr "Visionner des images"
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:10
+#: data/org.gnome.Loupe.metainfo.xml.in.in:14
 msgid "Browse through your images and inspect their metadata with:"
 msgstr "Parcourir des images et inspecter leurs métadonnées avec :"
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:12
+#: data/org.gnome.Loupe.metainfo.xml.in.in:16
 msgid "Fast GPU accelerated image rendering"
 msgstr "Rendu d’image accéléré par le GPU"
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:13
+#: data/org.gnome.Loupe.metainfo.xml.in.in:17
 msgid "Tiled rendering for vector graphics"
 msgstr "Rendu à base de tuiles pour les graphiques vectoriels"
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:14
+#: data/org.gnome.Loupe.metainfo.xml.in.in:18
 msgid "Extendable and sandboxed image decoding"
 msgstr "Décodage d’image extensible dans un bac à sable"
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:15
+#: data/org.gnome.Loupe.metainfo.xml.in.in:19
 msgid "Accessible presentation of the most important metadata."
 msgstr "Présentation accessible des métadonnées les plus importantes"
 
@@ -291,8 +74,8 @@ msgstr "Afficher le menu principal"
 
 #: data/resources/gtk/help-overlay.ui:20
 msgctxt "shortcut window"
-msgid "Copy Image to Clipboard"
-msgstr "Copier l’image vers le presse-papiers"
+msgid "Copy Image or Metadata to Clipboard"
+msgstr "Copier l’image ou les métadonnées vers le presse-papiers"
 
 #: data/resources/gtk/help-overlay.ui:26
 msgctxt "shortcut window"
@@ -301,315 +84,583 @@ msgstr "Mettre l’image à la corbeille"
 
 #: data/resources/gtk/help-overlay.ui:32
 msgctxt "shortcut window"
+msgid "Permanently Delete Image"
+msgstr "Supprimer définitivement l’image"
+
+#: data/resources/gtk/help-overlay.ui:38
+msgctxt "shortcut window"
 msgid "Toggle Image Properties"
 msgstr "Basculer les propriétés de l’image"
 
-#: data/resources/gtk/help-overlay.ui:38
+#: data/resources/gtk/help-overlay.ui:44
 msgctxt "shortcut window"
 msgid "Set as Background"
 msgstr "Définir comme arrière-plan"
 
-#: data/resources/gtk/help-overlay.ui:44
+#: data/resources/gtk/help-overlay.ui:50
 msgctxt "shortcut window"
 msgid "Toggle Fullscreen"
 msgstr "Basculer le plein écran"
 
-#: data/resources/gtk/help-overlay.ui:50
+#: data/resources/gtk/help-overlay.ui:56
 msgctxt "shortcut window"
 msgid "Leave Fullscreen"
 msgstr "Quitter le mode plein écran"
 
-#: data/resources/gtk/help-overlay.ui:56
+#: data/resources/gtk/help-overlay.ui:62
 msgctxt "shortcut window"
 msgid "New Window"
 msgstr "Nouvelle fenêtre"
 
-#: data/resources/gtk/help-overlay.ui:62
+#: data/resources/gtk/help-overlay.ui:68
 msgctxt "shortcut window"
 msgid "Open Help"
 msgstr "Ouvrir l’aide"
 
-#: data/resources/gtk/help-overlay.ui:68
+#: data/resources/gtk/help-overlay.ui:74
 msgctxt "shortcut window"
 msgid "Show Keyboard Shortcuts"
 msgstr "Afficher les raccourcis clavier"
 
-#: data/resources/gtk/help-overlay.ui:74
+#: data/resources/gtk/help-overlay.ui:80
 msgctxt "shortcut window"
 msgid "Close Window"
 msgstr "Fermer la fenêtre"
 
-#: data/resources/gtk/help-overlay.ui:80
+#: data/resources/gtk/help-overlay.ui:86
 msgctxt "shortcut window"
 msgid "Quit"
 msgstr "Quitter"
 
-#: data/resources/gtk/help-overlay.ui:88
+#: data/resources/gtk/help-overlay.ui:94
 msgctxt "shortcut window"
 msgid "Navigate Images"
 msgstr "Parcourir les images"
 
-#: data/resources/gtk/help-overlay.ui:92 data/resources/gtk/help-overlay.ui:106
-#: data/resources/gtk/help-overlay.ui:218
-#: data/resources/gtk/help-overlay.ui:232
+#: data/resources/gtk/help-overlay.ui:98 data/resources/gtk/help-overlay.ui:112
+#: data/resources/gtk/help-overlay.ui:224
+#: data/resources/gtk/help-overlay.ui:238
 msgctxt "shortcut window"
 msgid "Next Image"
 msgstr "Image suivante"
 
-#: data/resources/gtk/help-overlay.ui:99 data/resources/gtk/help-overlay.ui:113
-#: data/resources/gtk/help-overlay.ui:225
-#: data/resources/gtk/help-overlay.ui:239
+#: data/resources/gtk/help-overlay.ui:105
+#: data/resources/gtk/help-overlay.ui:119
+#: data/resources/gtk/help-overlay.ui:231
+#: data/resources/gtk/help-overlay.ui:245
 msgctxt "shortcut window"
 msgid "Previous Image"
 msgstr "Image précédente"
 
-#: data/resources/gtk/help-overlay.ui:119
+#: data/resources/gtk/help-overlay.ui:125
 msgctxt "shortcut window"
 msgid "First Image"
 msgstr "Première image"
 
-#: data/resources/gtk/help-overlay.ui:125
+#: data/resources/gtk/help-overlay.ui:131
 msgctxt "shortcut window"
 msgid "Last Image"
 msgstr "Dernière image"
 
-#: data/resources/gtk/help-overlay.ui:133
+#: data/resources/gtk/help-overlay.ui:139
 msgctxt "shortcut window"
 msgid "Rotate Image"
 msgstr "Faire pivoter l’image"
 
-#: data/resources/gtk/help-overlay.ui:136
-#: data/resources/gtk/help-overlay.ui:257
+#: data/resources/gtk/help-overlay.ui:142
+#: data/resources/gtk/help-overlay.ui:263
 msgctxt "shortcut window"
 msgid "Rotate Clockwise"
 msgstr "Faire pivoter dans le sens horaire"
 
-#: data/resources/gtk/help-overlay.ui:142
-#: data/resources/gtk/help-overlay.ui:263
+#: data/resources/gtk/help-overlay.ui:148
+#: data/resources/gtk/help-overlay.ui:269
 msgctxt "shortcut window"
 msgid "Rotate Counterclockwise"
 msgstr "Faire pivoter dans le sens antihoraire"
 
-#: data/resources/gtk/help-overlay.ui:150
+#: data/resources/gtk/help-overlay.ui:156
 msgctxt "shortcut window"
 msgid "Zoom Image"
 msgstr "Zoomer dans l’image"
 
-#: data/resources/gtk/help-overlay.ui:153
-#: data/resources/gtk/help-overlay.ui:245
+#: data/resources/gtk/help-overlay.ui:159
+#: data/resources/gtk/help-overlay.ui:251
 msgctxt "shortcut window"
 msgid "Zoom In"
 msgstr "Zoom avant"
 
-#: data/resources/gtk/help-overlay.ui:159
-#: data/resources/gtk/help-overlay.ui:251
+#: data/resources/gtk/help-overlay.ui:165
+#: data/resources/gtk/help-overlay.ui:257
 msgctxt "shortcut window"
 msgid "Zoom Out"
 msgstr "Zoom arrière"
 
-#: data/resources/gtk/help-overlay.ui:165
+#: data/resources/gtk/help-overlay.ui:171
 msgctxt "shortcut window"
 msgid "Best Fit"
 msgstr "Ajuster"
 
-#: data/resources/gtk/help-overlay.ui:171
+#: data/resources/gtk/help-overlay.ui:177
 msgctxt "shortcut window"
 msgid "Original Scale"
 msgstr "Échelle originale"
 
-#: data/resources/gtk/help-overlay.ui:177
+#: data/resources/gtk/help-overlay.ui:183
 msgctxt "shortcut window"
 msgid "200% Scale"
 msgstr "Échelle à 200%"
 
-#: data/resources/gtk/help-overlay.ui:185
+#: data/resources/gtk/help-overlay.ui:191
 msgctxt "shortcut window"
 msgid "Pan View"
 msgstr "Se déplacer dans l’image"
 
-#: data/resources/gtk/help-overlay.ui:188
+#: data/resources/gtk/help-overlay.ui:194
 msgctxt "shortcut window"
 msgid "Pan Left"
 msgstr "Se déplacer à gauche"
 
-#: data/resources/gtk/help-overlay.ui:194
+#: data/resources/gtk/help-overlay.ui:200
 msgctxt "shortcut window"
 msgid "Pan Right"
 msgstr "Se déplacer à droite"
 
-#: data/resources/gtk/help-overlay.ui:200
+#: data/resources/gtk/help-overlay.ui:206
 msgctxt "shortcut window"
 msgid "Pan Up"
 msgstr "Se déplacer vers le haut"
 
-#: data/resources/gtk/help-overlay.ui:206
+#: data/resources/gtk/help-overlay.ui:212
 msgctxt "shortcut window"
 msgid "Pan Down"
 msgstr "Se déplacer vers le bas"
 
-#: data/resources/gtk/help-overlay.ui:214
+#: data/resources/gtk/help-overlay.ui:220
 msgctxt "shortcut window"
 msgid "Gestures"
 msgstr "Gestes"
 
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/about.rs:40
+#: src/about.rs:41
 msgid "translator-credits"
 msgstr ""
 "Irénée Thirion <irenee.thirion@e.email>\n"
 "locness3 <locness3@e.email>\n"
-"Guillaume Bernard <associations@guillaume-bernard.fr>"
+"Guillaume Bernard <associations@guillaume-bernard.fr>\n"
+"Vincent Chatelain <vinchatl_gnome@proton.me>"
 
-#: src/about.rs:41
-msgid "Copyright © 2020–2023 Christopher Davis et al."
-msgstr "Copyright © 2020–2023 Christopher Davis et autres."
+#: src/about.rs:42
+msgid "Copyright © 2020–2024 Christopher Davis et al."
+msgstr "Copyright © 2020–2024 Christopher Davis et autres."
 
-#: src/file_model.rs:126
+#: src/file_model.rs:128
 msgid "Could not list other files in directory."
 msgstr "Impossible de lister les autres fichiers du répertoire."
 
 #. Translators: short for "north" in GPS coordinate
-#: src/image_metadata/gps.rs:153
+#: src/metadata/gps.rs:165
 msgid "N"
 msgstr "N"
 
 #. Translators: short for "south" in GPS coordinate
-#: src/image_metadata/gps.rs:156
+#: src/metadata/gps.rs:168
 msgid "S"
 msgstr "S"
 
 #. Translators: short for "east" in GPS coordinate
-#: src/image_metadata/gps.rs:166
+#: src/metadata/gps.rs:190
 msgid "E"
 msgstr "E"
 
 #. Translators: short for "west" in GPS coordinate
-#: src/image_metadata/gps.rs:169
+#: src/metadata/gps.rs:193
 msgid "W"
 msgstr "O"
 
 #. Translators: Unit for exposure time in seconds
-#: src/image_metadata/mod.rs:164
+#: src/metadata/mod.rs:260
 msgid "1\\u{2215}{}\\u{202F}s"
 msgstr "1\\u{2215}{}\\u{202F}s"
 
 #. Translators: Unit for focal length in millimeters
-#: src/image_metadata/mod.rs:189
+#: src/metadata/mod.rs:285
 msgid "{}\\u{202F}mm"
 msgstr "{}\\u{202F}mm"
 
 #. Translators: This is the date and time format we use in metadata output etc.
 #. The format has to follow <https://docs.gtk.org/glib/method.DateTime.format.html>
-#. The default is already translated. Don't change if you are not sure what to use.
-#: src/util/mod.rs:36
+#. The default is already translated. Don't change if you are not sure what to
+#. use.
+#: src/util/mod.rs:37
 #, c-format
 msgid "%x %X"
 msgstr "%x %X"
 
-#: src/util/mod.rs:179 src/window.rs:597
+#: src/util/mod.rs:180 src/window.rs:701
 msgid "Failed to restore image from trash"
 msgstr "Échec de la restauration de l’image depuis la corbeille"
 
-#: src/util/mod.rs:200
+#: src/util/mod.rs:201
 msgid "Failed to open image"
 msgstr "Échec de l’ouverture de l’image"
 
-#. Translators: This is a toast notification, informing the user that an image has been set as background.
-#: src/widgets/image_view.rs:669
+#: src/widgets/image_page.ui:6 src/window.ui:16
+msgid "_Open With…"
+msgstr "_Ouvrir avec…"
+
+#: src/widgets/image_page.ui:14 src/window.ui:24
+msgid "_Print…"
+msgstr "Im_primer…"
+
+#: src/widgets/image_page.ui:18
+msgid "_Copy"
+msgstr "_Copier"
+
+#: src/widgets/image_page.ui:23 src/window.ui:29
+msgid "Rotate"
+msgstr "Faire pivoter"
+
+#: src/widgets/image_page.ui:34 src/window.ui:40
+msgid "_Set as Background…"
+msgstr "_Définir comme arrière-plan…"
+
+#: src/widgets/image_page.ui:63
+msgid "Could not Load Image"
+msgstr "Impossible de charger l’image"
+
+#: src/widgets/image_page.ui:97 src/window.ui:106
+msgid "Rotate Left"
+msgstr "Faire pivoter vers la gauche"
+
+#: src/widgets/image_page.ui:107 src/window.ui:116
+msgid "Rotate Right"
+msgstr "Faire pivoter vers la droite"
+
+#. Translators: This is a toast notification, informing the user that
+#. an image has been set as background.
+#: src/widgets/image_view.rs:682
 msgid "Set as background."
 msgstr "Définir comme arrière-plan."
 
-#: src/widgets/image_view.rs:682
+#: src/widgets/image_view.rs:695
 msgid "Could not set background."
 msgstr "Impossible de définir comme arrière-plan."
 
-#: src/widgets/print.rs:108
+#: src/widgets/image_view.ui:27
+msgid "Previous Image"
+msgstr "Image précédente"
+
+#: src/widgets/image_view.ui:38
+msgid "Next Image"
+msgstr "Image suivante"
+
+#: src/widgets/image_view.ui:63
+msgid "Zoom Out"
+msgstr "Zoom arrière"
+
+#: src/widgets/image_view.ui:74
+msgid "Zoom In"
+msgstr "Zoom avant"
+
+#: src/widgets/image_view.ui:85
+msgid "Toggle Fullscreen"
+msgstr "Basculer le plein écran"
+
+#: src/widgets/print.rs:116
 msgid "Top"
 msgstr "Haut"
 
-#: src/widgets/print.rs:109
+#: src/widgets/print.rs:117
 msgid "Center"
 msgstr "Milieu"
 
-#: src/widgets/print.rs:110
+#: src/widgets/print.rs:118
 msgid "Bottom"
 msgstr "Bas"
 
-#: src/widgets/print.rs:111
+#: src/widgets/print.rs:119
 msgid "Left"
 msgstr "Gauche"
 
-#: src/widgets/print.rs:112
+#: src/widgets/print.rs:120
 msgid "Right"
 msgstr "Droite"
 
 #. Translators: Shorthand for centimeter
-#: src/widgets/print.rs:148
+#: src/widgets/print.rs:156
 msgid "cm"
 msgstr "cm"
 
 #. Translators: Shorthand for inch
-#: src/widgets/print.rs:150
+#: src/widgets/print.rs:158
 msgid "in"
 msgstr "in"
 
 #. Translators: Shorthand for pixel
-#: src/widgets/print.rs:152
+#: src/widgets/print.rs:160
 msgid "px"
 msgstr "px"
 
 #. Translators: {} is a placeholder for the filename
-#: src/widgets/print.rs:355
+#: src/widgets/print.rs:371
 msgid "Print “{}”"
-msgstr "Im_primer « {} »"
+msgstr "Imprimer « {} »"
 
-#: src/window.rs:483
+#: src/widgets/print.rs:782
+msgid "_Scale"
+msgstr "É_chelle"
+
+#: src/widgets/print.rs:785
+msgid "_Width"
+msgstr "_Largeur"
+
+#. Translators: Go back to previous page
+#: src/widgets/print.ui:29
+msgid "_Back"
+msgstr "_Retour"
+
+#: src/widgets/print.ui:37
+msgid "_Print"
+msgstr "_Imprimer"
+
+#: src/widgets/print.ui:56
+msgid "Layout"
+msgstr "Disposition"
+
+#: src/widgets/print.ui:59
+msgid "_Orientation"
+msgstr "_Orientation"
+
+#: src/widgets/print.ui:72
+msgid "Portrait Page Orientation"
+msgstr "Orientation de page en portrait"
+
+#: src/widgets/print.ui:80
+msgid "Landscape Page Orientation"
+msgstr "Orientation de page en paysage"
+
+#: src/widgets/print.ui:89
+msgid "_Alignment"
+msgstr "_Alignement"
+
+#: src/widgets/print.ui:108
+msgid "Margins"
+msgstr "Marges"
+
+#: src/widgets/print.ui:111
+msgid "Margin Units"
+msgstr "Unités de marges"
+
+#: src/widgets/print.ui:128
+msgid "_Horizontal"
+msgstr "_Horizontal"
+
+#: src/widgets/print.ui:134
+msgid "_Vertical"
+msgstr "_Vertical"
+
+#: src/widgets/print.ui:142 src/widgets/properties_view.ui:53
+msgid "Image Size"
+msgstr "Taille de l’image"
+
+#: src/widgets/print.ui:145
+msgid "Image Size Units"
+msgstr "Unités de taille de l’image"
+
+#: src/widgets/print.ui:163
+msgid "_Fill Space"
+msgstr "Rem_plir l’espace"
+
+#: src/widgets/print.ui:174
+msgid "H_eight"
+msgstr "Hau_teur"
+
+#: src/widgets/properties_view.rs:234
+msgid "Unknown"
+msgstr "Inconnu"
+
+#. Translators: Addition of image being transparent to format name
+#: src/widgets/properties_view.rs:238
+msgid ", transparent"
+msgstr ", transparent"
+
+#. Translators: Addition of image being grayscale to format name
+#: src/widgets/properties_view.rs:243
+msgid ", grayscale"
+msgstr ", nuance de gris"
+
+#. Translators: Addition of bit size to format name
+#: src/widgets/properties_view.rs:248
+msgid ", {}\\u{202F}bit"
+msgstr ", {}\\u{202F}bit"
+
+#: src/widgets/properties_view.rs:299
+msgid "Image Coordinates Copied"
+msgstr "Coordonnées de l’image copiées"
+
+#: src/widgets/properties_view.ui:19
+msgid "Folder"
+msgstr "Dossier"
+
+#: src/widgets/properties_view.ui:26
+msgid "Open Containing Folder"
+msgstr "Ouvrir le dossier parent"
+
+#: src/widgets/properties_view.ui:39
+msgid "URI"
+msgstr "URI"
+
+#: src/widgets/properties_view.ui:62
+msgid "Image Format"
+msgstr "Format de l’image"
+
+#: src/widgets/properties_view.ui:71
+msgid "File Size"
+msgstr "Taille du fichier"
+
+#: src/widgets/properties_view.ui:84
+msgid "File Created"
+msgstr "Créé le"
+
+#: src/widgets/properties_view.ui:93
+msgid "File Modified"
+msgstr "Modifié le"
+
+#: src/widgets/properties_view.ui:106
+msgid "Location"
+msgstr "Emplacement"
+
+#: src/widgets/properties_view.ui:116
+msgid "Copy Coordinates"
+msgstr "Copier les coordonnées"
+
+#: src/widgets/properties_view.ui:127
+msgid "Open Location"
+msgstr "Ouvrir l’emplacement"
+
+#: src/widgets/properties_view.ui:140
+msgid "Originally Created"
+msgstr "Date de création"
+
+#: src/widgets/properties_view.ui:149
+msgid "Aperture"
+msgstr "Ouverture"
+
+#: src/widgets/properties_view.ui:158
+msgid "Exposure"
+msgstr "Exposition"
+
+#: src/widgets/properties_view.ui:167
+msgid "ISO"
+msgstr "ISO"
+
+#: src/widgets/properties_view.ui:176
+msgid "Focal Length"
+msgstr "Distance focale"
+
+#: src/widgets/properties_view.ui:185
+msgid "Maker, Model"
+msgstr "Fabriquant, modèle"
+
+#: src/window.rs:568
 msgid "Supported image formats"
 msgstr "Formats d’images pris en charge"
 
-#: src/window.rs:492
+#: src/window.rs:574
 msgid "All files"
 msgstr "Tous les fichiers"
 
-#: src/window.rs:499
+#: src/window.rs:581
 msgid "Open Image"
 msgstr "Ouvrir l’image"
 
-#: src/window.rs:563
+#: src/window.rs:667
 msgid "Image copied to clipboard"
 msgstr "Image copiée vers le presse-papiers"
 
-#: src/window.rs:584
+#: src/window.rs:688
 msgid "Image moved to trash"
 msgstr "Image mise à la corbeille"
 
-#: src/window.rs:585
+#: src/window.rs:689
 msgid "Undo"
 msgstr "Annuler"
 
-#: src/window.rs:612
+#: src/window.rs:715
 msgid "Failed to move image to trash"
 msgstr "Échec de la mise à la corbeille"
 
-#: src/window.rs:627
+#: src/window.rs:741
 msgid "Permanently Delete Image?"
 msgstr "Supprimer définitivement cette image ?"
 
-#: src/window.rs:629
-msgid "The image “{}” can only be deleted permanently."
-msgstr "L’image « {} » ne peut être supprimée que définitivement."
+#: src/window.rs:743
+msgid "After deleting the image “{}” it will be permanently lost."
+msgstr "La suppression de l’image « {} » provoquera sa perte définitive."
 
-#: src/window.rs:637
+#: src/window.rs:751
 msgid "Cancel"
 msgstr "Annuler"
 
-#: src/window.rs:638
+#: src/window.rs:752
 msgid "Delete"
 msgstr "Supprimer"
 
-#: src/window.rs:649
+#: src/window.rs:763
 msgid "Failed to delete image"
 msgstr "Échec de la suppression de l’image"
+
+#: src/window.ui:6
+msgid "_New Window"
+msgstr "_Nouvelle fenêtre"
+
+#: src/window.ui:10
+msgid "_Open…"
+msgstr "_Ouvrir…"
+
+#: src/window.ui:46
+msgid "_Help"
+msgstr "Aid_e"
+
+#: src/window.ui:50
+msgid "_Keyboard Shortcuts"
+msgstr "_Raccourcis clavier"
+
+#: src/window.ui:54
+msgid "_About Image Viewer"
+msgstr "À _propos de Visionneur d’images"
+
+#: src/window.ui:85
+msgid "Copy to Clipboard"
+msgstr "Copier vers le presse-papiers"
+
+#: src/window.ui:92
+msgid "Move to Trash"
+msgstr "Mettre à la corbeille"
+
+#: src/window.ui:98
+msgid "Main Menu"
+msgstr "Menu principal"
+
+#: src/window.ui:130
+msgid "Image Properties"
+msgstr "Propriétés de l’image"
+
+#: src/window.ui:174
+msgid "View Images"
+msgstr "Visionner des images"
+
+#: src/window.ui:175
+msgid "Drag and drop images here"
+msgstr "Glisser et déposer des images ici"
+
+#: src/window.ui:179
+msgid "_Open Files…"
+msgstr "_Ouvrir des fichiers…"
+
+#~ msgid "The Loupe Team"
+#~ msgstr "L’équipe de Loupe"
 
 #~ msgid "Center image horizontally"
 #~ msgstr "Centrer l’image horizontalement"
