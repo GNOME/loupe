@@ -566,7 +566,7 @@ impl LpWindow {
 
         let filter_supported_formats = gtk::FileFilter::new();
         filter_supported_formats.set_name(Some(&gettext("Supported image formats")));
-        for mime_type in glycin::image_formats().await {
+        for mime_type in glycin::supported_mime_types().await {
             filter_supported_formats.add_mime_type(&mime_type);
         }
 

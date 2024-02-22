@@ -990,11 +990,10 @@ dependencies = [
 
 [[package]]
 name = "glycin"
-version = "1.0.0-beta.1"
+version = "1.0.0-beta.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "79edaeeb158aa9e3ae9323ea4e82795d6aead292f777b7e7c3a6b8410cf41eca"
+checksum = "957cc6aa64f96d55a1b56b77b650ae12ca800ed3f29448b8fd06e475f758e387"
 dependencies = [
- "anyhow",
  "async-fs",
  "async-global-executor",
  "async-lock 3.3.0",
@@ -1010,19 +1009,20 @@ dependencies = [
  "memfd",
  "memmap2",
  "nix",
+ "thiserror",
  "zbus",
 ]
 
 [[package]]
 name = "glycin-utils"
-version = "1.0.0-beta.1"
+version = "1.0.0-beta.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "1c0a26dfad24b01886bb76ad449378341e339b007fa950fa11d243def8523470"
+checksum = "0f5bc84076438db6800083027ab7266c80c1868d915865467157bc2845c236e9"
 dependencies = [
- "anyhow",
- "gettext-rs",
  "libseccomp",
+ "memmap2",
  "serde",
+ "thiserror",
  "zbus",
 ]
 

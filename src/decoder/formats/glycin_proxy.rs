@@ -49,14 +49,14 @@ impl Glycin {
 
         updater.clone().spawn_error_handled(async move {
             log::trace!("Setting up loader");
-            let mut image_request = glycin::Loader::new(file);
+            let mut loader = glycin::Loader::new(file);
 
             #[cfg(feature = "disable-glycin-sandbox")]
-            image_request.sandbox_mechanism(Some(glycin::SandboxMechanism::NotSandboxed));
+            loader.sandbox_mechanism(Some(glycin::SandboxMechanism::NotSandboxed));
 
-            image_request.cancellable(cancellable_);
+            loader.cancellable(cancellable_);
 
-            let image = image_request.request().await?;
+            let image = loader.load().await?;
             log::trace!("Image info received");
 
             let mut metadata: Metadata = Metadata::default();

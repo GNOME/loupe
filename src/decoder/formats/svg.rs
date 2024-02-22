@@ -69,14 +69,14 @@ impl Svg {
         let (wakeup, wakeup_resv) = mpsc::unbounded();
 
         updater.clone().spawn_error_handled(async move {
-            let mut image_request = glycin::Loader::new(file);
+            let mut loader = glycin::Loader::new(file);
 
             #[cfg(feature = "disable-glycin-sandbox")]
-            image_request.sandbox_mechanism(Some(glycin::SandboxMechanism::NotSandboxed));
+            loader.sandbox_mechanism(Some(glycin::SandboxMechanism::NotSandboxed));
 
-            image_request.cancellable(cancellable.clone());
+            loader.cancellable(cancellable.clone());
 
-            let image = image_request.request().await?;
+            let image = loader.load().await?;
 
             let mut metadata: Metadata = Metadata::default();
             metadata.set_image_info(image.info().details.clone());
@@ -174,12 +174,12 @@ impl Svg {
 
     pub fn render_print(file: &gio::File, width: i32, height: i32) -> anyhow::Result<gdk::Texture> {
         #[allow(unused_mut)]
-        let mut image_request = glycin::Loader::new(file.clone());
+        let mut loader = glycin::Loader::new(file.clone());
 
         #[cfg(feature = "disable-glycin-sandbox")]
-        image_request.sandbox_mechanism(Some(glycin::SandboxMechanism::NotSandboxed));
+        loader.sandbox_mechanism(Some(glycin::SandboxMechanism::NotSandboxed));
 
-        let image = futures_lite::future::block_on(image_request.request())?;
+        let image = futures_lite::future::block_on(loader.load())?;
         let frame_request = glycin::FrameRequest::new().scale(width as u32, height as u32);
         let frame = futures_lite::future::block_on(image.specific_frame(frame_request))?;
 

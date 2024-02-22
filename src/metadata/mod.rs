@@ -74,8 +74,8 @@ impl Metadata {
     }
 
     pub fn set_image_info(&mut self, image_info: ImageInfoDetails) {
-        if let Some(exif_raw) = image_info.exif.as_ref() {
-            self.set_exif_bytes(exif_raw.clone());
+        if let Some(exif_raw) = image_info.exif.as_ref().and_then(|x| x.get_full().ok()) {
+            self.set_exif_bytes(exif_raw);
         }
         self.image_info = Some(image_info);
     }
