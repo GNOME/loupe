@@ -1,3 +1,10 @@
+46.beta.2
+=========
+
+- Change metainfo to include GNOME group
+- Change metainfo to use reversed name for the developer id
+- Change to use latest glycin beta for better metadata performance
+
 46.beta.1
 =========
 
