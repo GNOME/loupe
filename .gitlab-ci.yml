@@ -113,7 +113,7 @@ cargo-audit:
   interruptible: true
   image: rust
   script:
-    - cargo install cargo-deny
+    - cargo install cargo-deny --locked
     - cargo deny check
 
 other-checks:
