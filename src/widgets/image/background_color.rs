@@ -63,7 +63,7 @@ impl imp::LpImage {
 
         // Shortcut for formats that don't support transparency
         if !obj.metadata().is_potentially_transparent() {
-            log::debug!("This format does not support transparency");
+            log::trace!("This format does not support transparency");
             return Some(Self::default_background_color());
         }
 
@@ -89,7 +89,7 @@ impl imp::LpImage {
 
         // Render the small version of the image and download to RAM
         let texture = renderer.render_texture(node, None);
-        let mut downloader = gdk::TextureDownloader::new(&texture);
+        let mut downloader: gdk::TextureDownloader = gdk::TextureDownloader::new(&texture);
         downloader.set_format(gdk::MemoryFormat::R8g8b8a8);
         let (bytes, stride) = downloader.download_bytes();
 
@@ -148,7 +148,7 @@ impl imp::LpImage {
             }
 
             if !has_transparency {
-                log::debug!("This image does not have transparency");
+                log::trace!("This image does not have transparency");
                 return Some(default_color);
             }
 
@@ -159,6 +159,9 @@ impl imp::LpImage {
             } else {
                 1.
             };
+
+            log::trace!("Total: {n_pixels}, transparent: {completely_transparent}, bad contrast: {bad_contrast}");
+            log::trace!("Amount bad contrast: {part_bad_contrast}");
 
             if part_bad_contrast > BACKGROUND_GUESS_LOW_CONTRAST_TRHESHOLD {
                 Some(alternate_color)
