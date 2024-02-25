@@ -35,17 +35,17 @@ impl imp::LpImage {
 
     pub fn default_background_color() -> gdk::RGBA {
         if adw::StyleManager::default().is_dark() {
-            *BACKGROUND_COLOR_DEFAULT
+            BACKGROUND_COLOR_DEFAULT
         } else {
-            *BACKGROUND_COLOR_DEFAULT_LIGHT_MODE
+            BACKGROUND_COLOR_DEFAULT_LIGHT_MODE
         }
     }
 
     pub fn alternate_background_color() -> gdk::RGBA {
         if adw::StyleManager::default().is_dark() {
-            *BACKGROUND_COLOR_ALTERNATE
+            BACKGROUND_COLOR_ALTERNATE
         } else {
-            *BACKGROUND_COLOR_ALTERNATE_LIGHT_MODE
+            BACKGROUND_COLOR_ALTERNATE_LIGHT_MODE
         }
     }
 
