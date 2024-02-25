@@ -71,7 +71,7 @@ impl imp::LpImage {
         let max_size = i32::max(width, height);
 
         // Only use max 200px size scaled image for analysis
-        let zoom = f64::min(1., 200. / max_size as f64);
+        let zoom = f64::min(1., 201. / max_size as f64);
 
         let snapshot = gtk::Snapshot::new();
         let render_options = tiling::RenderOptions {
