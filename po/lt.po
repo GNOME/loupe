@@ -7,274 +7,57 @@ msgid ""
 msgstr ""
 "Project-Id-Version: loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2023-09-07 10:32+0000\n"
-"PO-Revision-Date: 2023-09-07 22:45+0300\n"
+"POT-Creation-Date: 2024-02-13 22:38+0000\n"
+"PO-Revision-Date: 2024-02-26 22:45+0200\n"
 "Last-Translator: \n"
 "Language-Team: Lithuanian <gnome-lt@lists.akl.lt>\n"
 "Language: lt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 3.3.2\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"(n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Poedit 3.4.2\n"
 
-#: data/gtk/image_page.ui:6 data/gtk/window.ui:16
-msgid "_Open With…"
-msgstr "_Atverti naudojant…"
-
-#: data/gtk/image_page.ui:14 data/gtk/window.ui:24
-msgid "_Print…"
-msgstr "S_pausdinti…"
-
-#: data/gtk/image_page.ui:18
-msgid "_Copy"
-msgstr "_Kopijuoti"
-
-#: data/gtk/image_page.ui:23 data/gtk/window.ui:29
-msgid "Rotate"
-msgstr "Pasukti"
-
-#: data/gtk/image_page.ui:34 data/gtk/window.ui:40
-msgid "_Set as Background…"
-msgstr "_Nustatyti kaip foną…"
-
-#: data/gtk/image_page.ui:63
-msgid "Could not Load Image"
-msgstr "Nepavyko įkelti paveikslėlio"
-
-#: data/gtk/image_page.ui:97 data/gtk/window.ui:134
-msgid "Rotate Left"
-msgstr "Pasukti į kairę"
-
-#: data/gtk/image_page.ui:107 data/gtk/window.ui:144
-msgid "Rotate Right"
-msgstr "Pasukti į dešinę"
-
-#: data/gtk/image_view.ui:30
-msgid "Previous Image"
-msgstr "Ankstesnis paveikslėlis"
-
-#: data/gtk/image_view.ui:41
-msgid "Next Image"
-msgstr "Kitas paveikslėlis"
-
-#: data/gtk/image_view.ui:66
-msgid "Zoom Out"
-msgstr "Atitolinti"
-
-#: data/gtk/image_view.ui:77
-msgid "Zoom In"
-msgstr "Priartinti"
-
-#: data/gtk/image_view.ui:95
-msgid "Toggle Fullscreen"
-msgstr "Perjungti viso ekrano veikseną"
-
-#. Translators: Go back to previous page
-#: data/gtk/print.ui:29
-msgid "Back"
-msgstr "Grįžti"
-
-#: data/gtk/print.ui:36
-msgid "Print"
-msgstr "Spausdinti"
-
-#: data/gtk/print.ui:54
-msgid "Layout"
-msgstr "Išdėstymas"
-
-#: data/gtk/print.ui:57
-msgid "Orientation"
-msgstr "Orientacija"
-
-#: data/gtk/print.ui:69
-msgid "Portrait Page Orientation"
-msgstr "Stačia puslapio orientacija"
-
-#: data/gtk/print.ui:77
-msgid "Landscape Page Orientation"
-msgstr "Gulsčia puslapio orientacija"
-
-#: data/gtk/print.ui:86
-msgid "Alignment"
-msgstr "Lygiuotė"
-
-#: data/gtk/print.ui:104
-msgid "Margins"
-msgstr "Paraštės"
-
-#: data/gtk/print.ui:107
-msgid "Margin Units"
-msgstr "Paraščių vienetai"
-
-#: data/gtk/print.ui:124
-msgid "Horizontal"
-msgstr "Horizontali"
-
-#: data/gtk/print.ui:129
-msgid "Vertical"
-msgstr "Vertikali"
-
-#: data/gtk/print.ui:136 data/gtk/properties_view.ui:58
-msgid "Image Size"
-msgstr "Paveikslėlio dydis"
-
-#: data/gtk/print.ui:139
-msgid "Image Size Units"
-msgstr "Paveikslėlio dydžio vienetai"
-
-#: data/gtk/print.ui:157
-msgid "Fill Space"
-msgstr "Užpildyti erdvę"
-
-#: data/gtk/print.ui:162
-msgid "Width"
-msgstr "Plotis"
-
-#: data/gtk/print.ui:167
-msgid "Height"
-msgstr "Aukštis"
-
-#: data/gtk/properties_view.ui:29
-msgid "Folder"
-msgstr "Aplankas"
-
-#: data/gtk/properties_view.ui:41
-msgid "Open Containing Folder"
-msgstr "Atverti turintį aplanką"
-
-#: data/gtk/properties_view.ui:74
-msgid "Image Format"
-msgstr "Paveikslėlio formatas"
-
-#: data/gtk/properties_view.ui:88
-msgid "File Size"
-msgstr "Failo dydis"
-
-#: data/gtk/properties_view.ui:106
-msgid "File Created"
-msgstr "Failas sukurtas"
-
-#: data/gtk/properties_view.ui:120
-msgid "File Modified"
-msgstr "Failas pakeistas"
-
-#: data/gtk/properties_view.ui:143
-msgid "Location"
-msgstr "Vieta"
-
-#: data/gtk/properties_view.ui:162
-msgid "Open Location"
-msgstr "Atverti vietą"
-
-#: data/gtk/properties_view.ui:175
-msgid "Originally Created"
-msgstr "Sukurtas"
-
-#: data/gtk/properties_view.ui:196
-msgid "Aperture"
-msgstr "Diafragma"
-
-#: data/gtk/properties_view.ui:217
-msgid "Exposure"
-msgstr "Išlaikymas"
-
-#: data/gtk/properties_view.ui:238
-msgid "ISO"
-msgstr "ISO"
-
-#: data/gtk/properties_view.ui:259
-msgid "Focal Length"
-msgstr "Židinio nuotolis"
-
-#: data/gtk/properties_view.ui:280
-msgid "Maker, Model"
-msgstr "Gamintojas, modelis"
-
-#: data/gtk/window.ui:6
-msgid "_New Window"
-msgstr "_Naujas langas"
-
-#: data/gtk/window.ui:10
-msgid "_Open…"
-msgstr "_Atverti…"
-
-#: data/gtk/window.ui:46
-msgid "_Help"
-msgstr "_Žinynas"
-
-#: data/gtk/window.ui:50
-msgid "_Keyboard Shortcuts"
-msgstr "_Klaviatūros trumpiniai"
-
-#: data/gtk/window.ui:54
-msgid "_About Image Viewer"
-msgstr "_Apie paveikslėlių žiūryklę"
-
-#. If the file exists, get display name
-#: data/gtk/window.ui:64 data/org.gnome.Loupe.desktop.in.in:3
-#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:28 src/window.rs:883
-#: src/window.rs:889
+#: data/org.gnome.Loupe.desktop.in.in:3
+#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:29 src/window.rs:880
 msgid "Image Viewer"
 msgstr "Paveikslėlių žiūryklė"
 
-#: data/gtk/window.ui:113
-msgid "Copy to Clipboard"
-msgstr "Kopijuoti į iškarpinę"
-
-#: data/gtk/window.ui:120
-msgid "Move to Trash"
-msgstr "Perkelti į šiukšlinę"
-
-#: data/gtk/window.ui:126
-msgid "Main Menu"
-msgstr "Pagrindinis meniu"
-
-#: data/gtk/window.ui:158
-msgid "Image Properties"
-msgstr "Paveikslėlio savybės"
-
-#: data/gtk/window.ui:200
-msgid "View Images"
-msgstr "Rodyti paveikslėlius"
-
-#: data/gtk/window.ui:201
-msgid "Drag and drop images here"
-msgstr "Atitempkite paveikslėlius čia"
-
-#: data/gtk/window.ui:205
-msgid "_Open Files…"
-msgstr "_Atverti failus…"
-
 #: data/org.gnome.Loupe.desktop.in.in:11
-msgid "Picture;Slideshow;Graphics;Loupe;"
-msgstr "Paveikslėlis;Skaidrės;Grafika;Loupe;"
+msgid "Picture;Graphics;Loupe;"
+msgstr "Paveikslėlis;Grafika;Loupe;"
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:7 src/about.rs:31
-msgid "The Loupe Team"
-msgstr "Loupe komanda"
+#: data/org.gnome.Loupe.gschema.xml.in:6
+msgid "Show the image properties sidebar"
+msgstr "Rodyti paveikslėlio savybes šoninėje juostoje"
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:8
+#. developer_name tag deprecated with Appstream 1.0
+#: data/org.gnome.Loupe.metainfo.xml.in.in:8 src/about.rs:32
+msgid "The GNOME Project"
+msgstr "GNOME projektas"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:12
 msgid "View images"
 msgstr "Žiūrėti paveikslėlius"
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:10
+#: data/org.gnome.Loupe.metainfo.xml.in.in:14
 msgid "Browse through your images and inspect their metadata with:"
 msgstr "Naršykite savo paveikslėlius ir peržiūrėkite jų metaduomenis su:"
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:12
+#: data/org.gnome.Loupe.metainfo.xml.in.in:16
 msgid "Fast GPU accelerated image rendering"
 msgstr "Greitas GPU spartintas paveikslėlio piešimas"
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:13
+#: data/org.gnome.Loupe.metainfo.xml.in.in:17
 msgid "Tiled rendering for vector graphics"
 msgstr "Plytelinis piešimas vektorinei grafikai"
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:14
+#: data/org.gnome.Loupe.metainfo.xml.in.in:18
 msgid "Extendable and sandboxed image decoding"
 msgstr "Plečiamas ir apribotas paveikslėlio iškodavimas"
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:15
+#: data/org.gnome.Loupe.metainfo.xml.in.in:19
 msgid "Accessible presentation of the most important metadata."
 msgstr "Prieinama pateiktis daugumai svarbių meta duomenų."
 
@@ -290,8 +73,8 @@ msgstr "Rodyti pagrindinį meniu"
 
 #: data/resources/gtk/help-overlay.ui:20
 msgctxt "shortcut window"
-msgid "Copy Image to Clipboard"
-msgstr "Kopijuoti paveikslėlį į iškarpinę"
+msgid "Copy Image or Metadata to Clipboard"
+msgstr "Kopijuoti paveikslėlį arba meta duomenis į iškarpinę"
 
 #: data/resources/gtk/help-overlay.ui:26
 msgctxt "shortcut window"
@@ -300,311 +83,578 @@ msgstr "Perkelti paveikslėlį į šiukšlinę"
 
 #: data/resources/gtk/help-overlay.ui:32
 msgctxt "shortcut window"
+msgid "Permanently Delete Image"
+msgstr "Negrįžtamai ištrinti paveikslėlį"
+
+#: data/resources/gtk/help-overlay.ui:38
+msgctxt "shortcut window"
 msgid "Toggle Image Properties"
 msgstr "Perjungti paveikslėlio savybes"
 
-#: data/resources/gtk/help-overlay.ui:38
+#: data/resources/gtk/help-overlay.ui:44
 msgctxt "shortcut window"
 msgid "Set as Background"
 msgstr "Nustatyti kaip foną"
 
-#: data/resources/gtk/help-overlay.ui:44
+#: data/resources/gtk/help-overlay.ui:50
 msgctxt "shortcut window"
 msgid "Toggle Fullscreen"
 msgstr "Perjungti viso ekrano veikseną"
 
-#: data/resources/gtk/help-overlay.ui:50
+#: data/resources/gtk/help-overlay.ui:56
 msgctxt "shortcut window"
 msgid "Leave Fullscreen"
 msgstr "Palikti viso ekrano veikseną"
 
-#: data/resources/gtk/help-overlay.ui:56
+#: data/resources/gtk/help-overlay.ui:62
 msgctxt "shortcut window"
 msgid "New Window"
 msgstr "Naujas langas"
 
-#: data/resources/gtk/help-overlay.ui:62
+#: data/resources/gtk/help-overlay.ui:68
 msgctxt "shortcut window"
 msgid "Open Help"
 msgstr "Atverti žinyną"
 
-#: data/resources/gtk/help-overlay.ui:68
+#: data/resources/gtk/help-overlay.ui:74
 msgctxt "shortcut window"
 msgid "Show Keyboard Shortcuts"
 msgstr "Rodyti klaviatūros trumpinius"
 
-#: data/resources/gtk/help-overlay.ui:74
+#: data/resources/gtk/help-overlay.ui:80
 msgctxt "shortcut window"
 msgid "Close Window"
 msgstr "Užverti langą"
 
-#: data/resources/gtk/help-overlay.ui:80
+#: data/resources/gtk/help-overlay.ui:86
 msgctxt "shortcut window"
 msgid "Quit"
 msgstr "Išeiti"
 
-#: data/resources/gtk/help-overlay.ui:88
+#: data/resources/gtk/help-overlay.ui:94
 msgctxt "shortcut window"
 msgid "Navigate Images"
 msgstr "Judėti paveikslėliais"
 
-#: data/resources/gtk/help-overlay.ui:92 data/resources/gtk/help-overlay.ui:106
-#: data/resources/gtk/help-overlay.ui:218
-#: data/resources/gtk/help-overlay.ui:232
+#: data/resources/gtk/help-overlay.ui:98 data/resources/gtk/help-overlay.ui:112
+#: data/resources/gtk/help-overlay.ui:224
+#: data/resources/gtk/help-overlay.ui:238
 msgctxt "shortcut window"
 msgid "Next Image"
 msgstr "Kitas paveikslėlis"
 
-#: data/resources/gtk/help-overlay.ui:99 data/resources/gtk/help-overlay.ui:113
-#: data/resources/gtk/help-overlay.ui:225
-#: data/resources/gtk/help-overlay.ui:239
+#: data/resources/gtk/help-overlay.ui:105
+#: data/resources/gtk/help-overlay.ui:119
+#: data/resources/gtk/help-overlay.ui:231
+#: data/resources/gtk/help-overlay.ui:245
 msgctxt "shortcut window"
 msgid "Previous Image"
 msgstr "Ankstesnis paveikslėlis"
 
-#: data/resources/gtk/help-overlay.ui:119
+#: data/resources/gtk/help-overlay.ui:125
 msgctxt "shortcut window"
 msgid "First Image"
 msgstr "Pirmas paveikslėlis"
 
-#: data/resources/gtk/help-overlay.ui:125
+#: data/resources/gtk/help-overlay.ui:131
 msgctxt "shortcut window"
 msgid "Last Image"
 msgstr "Paskutinis paveikslėlis"
 
-#: data/resources/gtk/help-overlay.ui:133
+#: data/resources/gtk/help-overlay.ui:139
 msgctxt "shortcut window"
 msgid "Rotate Image"
 msgstr "Pasukti paveikslėlį"
 
-#: data/resources/gtk/help-overlay.ui:136
-#: data/resources/gtk/help-overlay.ui:257
+#: data/resources/gtk/help-overlay.ui:142
+#: data/resources/gtk/help-overlay.ui:263
 msgctxt "shortcut window"
 msgid "Rotate Clockwise"
 msgstr "Pasukti pagal laikrodžio rodyklę"
 
-#: data/resources/gtk/help-overlay.ui:142
-#: data/resources/gtk/help-overlay.ui:263
+#: data/resources/gtk/help-overlay.ui:148
+#: data/resources/gtk/help-overlay.ui:269
 msgctxt "shortcut window"
 msgid "Rotate Counterclockwise"
 msgstr "Pasukti prieš laikrodžio rodyklę"
 
-#: data/resources/gtk/help-overlay.ui:150
+#: data/resources/gtk/help-overlay.ui:156
 msgctxt "shortcut window"
 msgid "Zoom Image"
 msgstr "Paveikslėlio mastelis"
 
-#: data/resources/gtk/help-overlay.ui:153
-#: data/resources/gtk/help-overlay.ui:245
+#: data/resources/gtk/help-overlay.ui:159
+#: data/resources/gtk/help-overlay.ui:251
 msgctxt "shortcut window"
 msgid "Zoom In"
 msgstr "Priartinti paveikslėlį"
 
-#: data/resources/gtk/help-overlay.ui:159
-#: data/resources/gtk/help-overlay.ui:251
+#: data/resources/gtk/help-overlay.ui:165
+#: data/resources/gtk/help-overlay.ui:257
 msgctxt "shortcut window"
 msgid "Zoom Out"
 msgstr "Atitolinti paveikslėlį"
 
-#: data/resources/gtk/help-overlay.ui:165
+#: data/resources/gtk/help-overlay.ui:171
 msgctxt "shortcut window"
 msgid "Best Fit"
 msgstr "Geriausias"
 
-#: data/resources/gtk/help-overlay.ui:171
+#: data/resources/gtk/help-overlay.ui:177
 msgctxt "shortcut window"
 msgid "Original Scale"
 msgstr "Pradinis dydis"
 
-#: data/resources/gtk/help-overlay.ui:177
+#: data/resources/gtk/help-overlay.ui:183
 msgctxt "shortcut window"
 msgid "200% Scale"
 msgstr "200% mastelis"
 
-#: data/resources/gtk/help-overlay.ui:185
+#: data/resources/gtk/help-overlay.ui:191
 msgctxt "shortcut window"
 msgid "Pan View"
 msgstr "Skydelis rodinys"
 
-#: data/resources/gtk/help-overlay.ui:188
+#: data/resources/gtk/help-overlay.ui:194
 msgctxt "shortcut window"
 msgid "Pan Left"
 msgstr "Skydelis kairėje"
 
-#: data/resources/gtk/help-overlay.ui:194
+#: data/resources/gtk/help-overlay.ui:200
 msgctxt "shortcut window"
 msgid "Pan Right"
 msgstr "Skydelis dešinėje"
 
-#: data/resources/gtk/help-overlay.ui:200
+#: data/resources/gtk/help-overlay.ui:206
 msgctxt "shortcut window"
 msgid "Pan Up"
 msgstr "Skydelis viršuje"
 
-#: data/resources/gtk/help-overlay.ui:206
+#: data/resources/gtk/help-overlay.ui:212
 msgctxt "shortcut window"
 msgid "Pan Down"
 msgstr "Skydelis apačioje"
 
-#: data/resources/gtk/help-overlay.ui:214
+#: data/resources/gtk/help-overlay.ui:220
 msgctxt "shortcut window"
 msgid "Gestures"
 msgstr "Gestai"
 
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/about.rs:40
+#: src/about.rs:41
 msgid "translator-credits"
 msgstr ""
 "Išvertė:\n"
 "Aurimas Černius <aurisc4@gmail.com>"
 
-#: src/about.rs:41
-msgid "Copyright © 2020–2023 Christopher Davis et al."
-msgstr "Autorių teisės saugomos © 2020–2023 Christopher Davis ir kiti."
+#: src/about.rs:42
+msgid "Copyright © 2020–2024 Christopher Davis et al."
+msgstr "Autorių teisės saugomos © 2020–2024 Christopher Davis ir kiti."
 
-#: src/file_model.rs:126
+#: src/file_model.rs:128
 msgid "Could not list other files in directory."
 msgstr "Nepavyko išvardinti kitų aplanko failų."
 
 #. Translators: short for "north" in GPS coordinate
-#: src/image_metadata/gps.rs:153
+#: src/metadata/gps.rs:165
 msgid "N"
 msgstr "Š"
 
 #. Translators: short for "south" in GPS coordinate
-#: src/image_metadata/gps.rs:156
+#: src/metadata/gps.rs:168
 msgid "S"
 msgstr "P"
 
 #. Translators: short for "east" in GPS coordinate
-#: src/image_metadata/gps.rs:166
+#: src/metadata/gps.rs:190
 msgid "E"
 msgstr "R"
 
 #. Translators: short for "west" in GPS coordinate
-#: src/image_metadata/gps.rs:169
+#: src/metadata/gps.rs:193
 msgid "W"
 msgstr "V"
 
 #. Translators: Unit for exposure time in seconds
-#: src/image_metadata/mod.rs:164
+#: src/metadata/mod.rs:260
 msgid "1\\u{2215}{}\\u{202F}s"
 msgstr "1\\u{2215}{}\\u{202F}s"
 
 #. Translators: Unit for focal length in millimeters
-#: src/image_metadata/mod.rs:189
+#: src/metadata/mod.rs:285
 msgid "{}\\u{202F}mm"
 msgstr "{}\\u{202F}mm"
 
 #. Translators: This is the date and time format we use in metadata output etc.
 #. The format has to follow <https://docs.gtk.org/glib/method.DateTime.format.html>
-#. The default is already translated. Don't change if you are not sure what to use.
-#: src/util/mod.rs:36
+#. The default is already translated. Don't change if you are not sure what to
+#. use.
+#: src/util/mod.rs:37
 #, c-format
 msgid "%x %X"
 msgstr "%x %X"
 
-#: src/util/mod.rs:179 src/window.rs:597
+#: src/util/mod.rs:180 src/window.rs:701
 msgid "Failed to restore image from trash"
 msgstr "Nepavyko atkurti paveikslėlio iš šiukšlinės"
 
-#: src/util/mod.rs:200
+#: src/util/mod.rs:201
 msgid "Failed to open image"
 msgstr "Nepavyko atverti paveikslėlio"
 
-#. Translators: This is a toast notification, informing the user that an image has been set as background.
-#: src/widgets/image_view.rs:669
+#: src/widgets/image_page.ui:6 src/window.ui:16
+msgid "_Open With…"
+msgstr "_Atverti naudojant…"
+
+#: src/widgets/image_page.ui:14 src/window.ui:24
+msgid "_Print…"
+msgstr "S_pausdinti…"
+
+#: src/widgets/image_page.ui:18
+msgid "_Copy"
+msgstr "_Kopijuoti"
+
+#: src/widgets/image_page.ui:23 src/window.ui:29
+msgid "Rotate"
+msgstr "Pasukti"
+
+#: src/widgets/image_page.ui:34 src/window.ui:40
+msgid "_Set as Background…"
+msgstr "_Nustatyti kaip foną…"
+
+#: src/widgets/image_page.ui:63
+msgid "Could not Load Image"
+msgstr "Nepavyko įkelti paveikslėlio"
+
+#: src/widgets/image_page.ui:97 src/window.ui:106
+msgid "Rotate Left"
+msgstr "Pasukti į kairę"
+
+#: src/widgets/image_page.ui:107 src/window.ui:116
+msgid "Rotate Right"
+msgstr "Pasukti į dešinę"
+
+#. Translators: This is a toast notification, informing the user that
+#. an image has been set as background.
+#: src/widgets/image_view.rs:682
 msgid "Set as background."
 msgstr "Nustatyti kaip foną."
 
-#: src/widgets/image_view.rs:682
+#: src/widgets/image_view.rs:695
 msgid "Could not set background."
 msgstr "Nepavyko nustatyti fono."
 
-#: src/widgets/print.rs:108
+#: src/widgets/image_view.ui:27
+msgid "Previous Image"
+msgstr "Ankstesnis paveikslėlis"
+
+#: src/widgets/image_view.ui:38
+msgid "Next Image"
+msgstr "Kitas paveikslėlis"
+
+#: src/widgets/image_view.ui:63
+msgid "Zoom Out"
+msgstr "Atitolinti"
+
+#: src/widgets/image_view.ui:74
+msgid "Zoom In"
+msgstr "Priartinti"
+
+#: src/widgets/image_view.ui:85
+msgid "Toggle Fullscreen"
+msgstr "Perjungti viso ekrano veikseną"
+
+#: src/widgets/print.rs:116
 msgid "Top"
 msgstr "Viršus"
 
-#: src/widgets/print.rs:109
+#: src/widgets/print.rs:117
 msgid "Center"
 msgstr "Centras"
 
-#: src/widgets/print.rs:110
+#: src/widgets/print.rs:118
 msgid "Bottom"
 msgstr "Apačia"
 
-#: src/widgets/print.rs:111
+#: src/widgets/print.rs:119
 msgid "Left"
 msgstr "Kairė"
 
-#: src/widgets/print.rs:112
+#: src/widgets/print.rs:120
 msgid "Right"
 msgstr "Dešinė"
 
 #. Translators: Shorthand for centimeter
-#: src/widgets/print.rs:148
+#: src/widgets/print.rs:156
 msgid "cm"
 msgstr "cm"
 
 #. Translators: Shorthand for inch
-#: src/widgets/print.rs:150
+#: src/widgets/print.rs:158
 msgid "in"
 msgstr "col"
 
 #. Translators: Shorthand for pixel
-#: src/widgets/print.rs:152
+#: src/widgets/print.rs:160
 msgid "px"
 msgstr "piks"
 
 #. Translators: {} is a placeholder for the filename
-#: src/widgets/print.rs:355
+#: src/widgets/print.rs:371
 msgid "Print “{}”"
 msgstr "Spausdinti „{}“"
 
-#: src/window.rs:483
+#: src/widgets/print.rs:782
+msgid "_Scale"
+msgstr "_Mastelis"
+
+#: src/widgets/print.rs:785
+msgid "_Width"
+msgstr "_Plotis"
+
+#. Translators: Go back to previous page
+#: src/widgets/print.ui:29
+msgid "_Back"
+msgstr "_Grįžti"
+
+#: src/widgets/print.ui:37
+msgid "_Print"
+msgstr "S_pausdinti"
+
+#: src/widgets/print.ui:56
+msgid "Layout"
+msgstr "Išdėstymas"
+
+#: src/widgets/print.ui:59
+msgid "_Orientation"
+msgstr "_Orientacija"
+
+#: src/widgets/print.ui:72
+msgid "Portrait Page Orientation"
+msgstr "Stačia puslapio orientacija"
+
+#: src/widgets/print.ui:80
+msgid "Landscape Page Orientation"
+msgstr "Gulsčia puslapio orientacija"
+
+#: src/widgets/print.ui:89
+msgid "_Alignment"
+msgstr "_Lygiuotė"
+
+#: src/widgets/print.ui:108
+msgid "Margins"
+msgstr "Paraštės"
+
+#: src/widgets/print.ui:111
+msgid "Margin Units"
+msgstr "Paraščių vienetai"
+
+#: src/widgets/print.ui:128
+msgid "_Horizontal"
+msgstr "_Horizontali"
+
+#: src/widgets/print.ui:134
+msgid "_Vertical"
+msgstr "_Vertikali"
+
+#: src/widgets/print.ui:142 src/widgets/properties_view.ui:53
+msgid "Image Size"
+msgstr "Paveikslėlio dydis"
+
+#: src/widgets/print.ui:145
+msgid "Image Size Units"
+msgstr "Paveikslėlio dydžio vienetai"
+
+#: src/widgets/print.ui:163
+msgid "_Fill Space"
+msgstr "Užpildyti _erdvę"
+
+#: src/widgets/print.ui:174
+msgid "H_eight"
+msgstr "_Aukštis"
+
+#: src/widgets/properties_view.rs:234
+msgid "Unknown"
+msgstr "Nežinoma"
+
+#. Translators: Addition of image being transparent to format name
+#: src/widgets/properties_view.rs:238
+msgid ", transparent"
+msgstr ", permatoma"
+
+#. Translators: Addition of image being grayscale to format name
+#: src/widgets/properties_view.rs:243
+msgid ", grayscale"
+msgstr ", pilkos skalės"
+
+#. Translators: Addition of bit size to format name
+#: src/widgets/properties_view.rs:248
+msgid ", {}\\u{202F}bit"
+msgstr ", {}\\u{202F}bit"
+
+#: src/widgets/properties_view.rs:299
+msgid "Image Coordinates Copied"
+msgstr "Paveikslėlio koordinatės nukopijuotos"
+
+#: src/widgets/properties_view.ui:19
+msgid "Folder"
+msgstr "Aplankas"
+
+#: src/widgets/properties_view.ui:26
+msgid "Open Containing Folder"
+msgstr "Atverti turintį aplanką"
+
+#: src/widgets/properties_view.ui:39
+msgid "URI"
+msgstr "URI"
+
+#: src/widgets/properties_view.ui:62
+msgid "Image Format"
+msgstr "Paveikslėlio formatas"
+
+#: src/widgets/properties_view.ui:71
+msgid "File Size"
+msgstr "Failo dydis"
+
+#: src/widgets/properties_view.ui:84
+msgid "File Created"
+msgstr "Failas sukurtas"
+
+#: src/widgets/properties_view.ui:93
+msgid "File Modified"
+msgstr "Failas pakeistas"
+
+#: src/widgets/properties_view.ui:106
+msgid "Location"
+msgstr "Vieta"
+
+#: src/widgets/properties_view.ui:116
+msgid "Copy Coordinates"
+msgstr "Kopijuoti koordinates"
+
+#: src/widgets/properties_view.ui:127
+msgid "Open Location"
+msgstr "Atverti vietą"
+
+#: src/widgets/properties_view.ui:140
+msgid "Originally Created"
+msgstr "Sukurtas"
+
+#: src/widgets/properties_view.ui:149
+msgid "Aperture"
+msgstr "Diafragma"
+
+#: src/widgets/properties_view.ui:158
+msgid "Exposure"
+msgstr "Išlaikymas"
+
+#: src/widgets/properties_view.ui:167
+msgid "ISO"
+msgstr "ISO"
+
+#: src/widgets/properties_view.ui:176
+msgid "Focal Length"
+msgstr "Židinio nuotolis"
+
+#: src/widgets/properties_view.ui:185
+msgid "Maker, Model"
+msgstr "Gamintojas, modelis"
+
+#: src/window.rs:568
 msgid "Supported image formats"
 msgstr "Palaikomi paveikslėlių formatai"
 
-#: src/window.rs:492
+#: src/window.rs:574
 msgid "All files"
 msgstr "Visi failai"
 
-#: src/window.rs:499
+#: src/window.rs:581
 msgid "Open Image"
 msgstr "Atverti paveikslėlį"
 
-#: src/window.rs:563
+#: src/window.rs:667
 msgid "Image copied to clipboard"
 msgstr "Paveikslėlis nukopijuotas į iškarpinę"
 
-#: src/window.rs:584
+#: src/window.rs:688
 msgid "Image moved to trash"
 msgstr "Paveikslėlis perkeltas į šiukšlinę"
 
-#: src/window.rs:585
+#: src/window.rs:689
 msgid "Undo"
 msgstr "Atšaukti"
 
-#: src/window.rs:612
+#: src/window.rs:715
 msgid "Failed to move image to trash"
 msgstr "Nepavyko perkelti paveikslėlio į šiukšlinę"
 
-#: src/window.rs:627
+#: src/window.rs:741
 msgid "Permanently Delete Image?"
 msgstr "Negrįžtamai ištrinti paveikslėlį?"
 
-#: src/window.rs:629
-msgid "The image “{}” can only be deleted permanently."
-msgstr "Paveikslėlį „{}“ galima ištrinti tik negrįžtamai."
+#: src/window.rs:743
+msgid "After deleting the image “{}” it will be permanently lost."
+msgstr "Ištrynus paveikslėlį „{}“, jis bus negrįžtamai prarastas."
 
-#: src/window.rs:637
+#: src/window.rs:751
 msgid "Cancel"
 msgstr "Atsisakyti"
 
-#: src/window.rs:638
+#: src/window.rs:752
 msgid "Delete"
 msgstr "Ištrinti"
 
-#: src/window.rs:649
+#: src/window.rs:763
 msgid "Failed to delete image"
 msgstr "Nepavyko ištrinti paveikslėlio"
+
+#: src/window.ui:6
+msgid "_New Window"
+msgstr "_Naujas langas"
+
+#: src/window.ui:10
+msgid "_Open…"
+msgstr "_Atverti…"
+
+#: src/window.ui:46
+msgid "_Help"
+msgstr "_Žinynas"
+
+#: src/window.ui:50
+msgid "_Keyboard Shortcuts"
+msgstr "_Klaviatūros trumpiniai"
+
+#: src/window.ui:54
+msgid "_About Image Viewer"
+msgstr "_Apie paveikslėlių žiūryklę"
+
+#: src/window.ui:85
+msgid "Copy to Clipboard"
+msgstr "Kopijuoti į iškarpinę"
+
+#: src/window.ui:92
+msgid "Move to Trash"
+msgstr "Perkelti į šiukšlinę"
+
+#: src/window.ui:98
+msgid "Main Menu"
+msgstr "Pagrindinis meniu"
+
+#: src/window.ui:130
+msgid "Image Properties"
+msgstr "Paveikslėlio savybės"
+
+#: src/window.ui:174
+msgid "View Images"
+msgstr "Rodyti paveikslėlius"
+
+#: src/window.ui:175
+msgid "Drag and drop images here"
+msgstr "Atitempkite paveikslėlius čia"
+
+#: src/window.ui:179
+msgid "_Open Files…"
+msgstr "_Atverti failus…"
+
+#~ msgid "The Loupe Team"
+#~ msgstr "Loupe komanda"
