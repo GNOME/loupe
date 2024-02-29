@@ -220,6 +220,12 @@ impl imp::LpImage {
 
     fn set_error(&self, err: Option<anyhow::Error>) {
         log::debug!("Decoding error: {err:?}");
+
+        // Keeping first error instead of replacing with new error
+        if err.is_some() && self.error.borrow().is_some() {
+            return;
+        }
+
         self.error.replace(err.as_ref().map(|x| x.to_string()));
         self.obj().notify_error();
 

@@ -69,6 +69,7 @@ impl Svg {
         let (wakeup, wakeup_resv) = mpsc::unbounded();
 
         updater.clone().spawn_error_handled(async move {
+            log::trace!("Setting up SVG loader");
             let mut loader = glycin::Loader::new(file);
 
             #[cfg(feature = "disable-glycin-sandbox")]
