@@ -72,6 +72,12 @@ static GRESOURCE_BYTES: &[u8] =
     gvdb_macros::include_gresource_from_dir!("/org/gnome/Loupe", "data/resources");
 
 fn main() -> glib::ExitCode {
+    // Don't use ngl renderer by default due to performance reasons
+    // <https://gitlab.gnome.org/GNOME/gtk/-/issues/6411>
+    if std::env::var("GSK_RENDERER").map_or(true, |x| x.is_empty()) {
+        std::env::set_var("GSK_RENDERER", "gl");
+    }
+
     let mut log_builder = env_logger::builder();
     log_builder.format_timestamp_millis();
 

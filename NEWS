@@ -1,3 +1,8 @@
+46.rc
+=====
+
+- Change to "gl" as GSK default renderer instead of "ngl" due to performance reasons
+
 46.beta.2
 =========
 
