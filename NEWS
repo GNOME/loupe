@@ -1,7 +1,9 @@
 46.rc
 =====
 
+- Fix background color detection ignoring small lines in large images
 - Change to "gl" as GSK default renderer instead of "ngl" due to performance reasons
+- Change to sticking to the first error delivered during image loading
 
 46.beta.2
 =========
