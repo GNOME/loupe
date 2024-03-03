@@ -1,13 +1,13 @@
 # Swedish translation for Loupe.
-# Copyright © 2023 Loupe's COPYRIGHT HOLDER
+# Copyright © 2023-2024 Loupe's COPYRIGHT HOLDER
 # This file is distributed under the same license as the Loupe package.
-# Anders Jonsson <anders.jonsson@norsjovallen.se>, 2023.
+# Anders Jonsson <anders.jonsson@norsjovallen.se>, 2023, 2024.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
-"POT-Creation-Date: 2023-09-01 19:56+0000\n"
-"PO-Revision-Date: 2023-09-03 10:42+0200\n"
+"POT-Creation-Date: 2024-02-18 13:35+0000\n"
+"PO-Revision-Date: 2024-02-18 14:46+0100\n"
 "Last-Translator: Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "Language: sv\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.3.2\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #. Put one translator per line, in the form NAME <EMAIL>, YEAR1, YEAR2
 msgctxt "_"
@@ -71,108 +71,42 @@ msgid ""
 "Users can zoom in with the <gui>Zoom In</gui> (<media type=\"image\" "
 "src=\"figures/zoom-in-symbolic.svg\">zoom-in-symbolic</media>) button and "
 "zoom out with the <gui>Zoom Out</gui> (<media type=\"image\" src=\"figures/"
-"zoom-out-symbolic.svg\">zoom-out-symbolic</media>) button. They can also use "
-"the following keyboard shortcuts:"
+"zoom-out-symbolic.svg\">zoom-out-symbolic</media>) button."
 msgstr ""
 "Användare kan zooma in med knappen <gui>Zooma in</gui> (<media "
 "type=\"image\" src=\"figures/zoom-in-symbolic.svg\">zoom-in-symbolic</"
 "media>) och zooma ut med knappen <gui>Zooma ut</gui> (<media type=\"image\" "
-"src=\"figures/zoom-out-symbolic.svg\">zoom-out-symbolic</media>). De kan "
-"också använda följande tangentbordsgenvägar:"
-
-#. (itstool) path: item/p
-#: C/viewing-images.page:21
-msgid ""
-"<keyseq><key>Ctrl</key><key>+</key></keyseq> or <key>+</key> to zoom in."
-msgstr ""
-"<keyseq><key>Ctrl</key><key>+</key></keyseq> eller <key>+</key> för att "
-"zooma in."
-
-#. (itstool) path: item/p
-#: C/viewing-images.page:24
-msgid ""
-"<keyseq><key>Ctrl</key><key>-</key></keyseq> or <key>-</key> to zoom out."
-msgstr ""
-"<keyseq><key>Ctrl</key><key>-</key></keyseq> eller <key>-</key> för att "
-"zooma ut."
-
-#. (itstool) path: item/p
-#: C/viewing-images.page:27
-msgid ""
-"<keyseq><key>Ctrl</key><key>0</key></keyseq> or <key>0</key> to zoom to the "
-"best fitting size for the window size."
-msgstr ""
-"<keyseq><key>Ctrl</key><key>0</key></keyseq> eller <key>0</key> för att "
-"zooma till storleken som bäst passar till fönsterstorleken."
-
-#. (itstool) path: item/p
-#: C/viewing-images.page:30
-msgid ""
-"<keyseq><key>Ctrl</key><key>1</key></keyseq> or <key>1</key> to zoom to the "
-"image's original scale."
-msgstr ""
-"<keyseq><key>Ctrl</key><key>1</key></keyseq> eller <key>1</key> för att "
-"zooma till bildens ursprungliga skala."
-
-#. (itstool) path: item/p
-#: C/viewing-images.page:33
-msgid ""
-"<keyseq><key>Ctrl</key><key>2</key></keyseq> or <key>2</key> to zoom to 200% "
-"of the image's original scale."
-msgstr ""
-"<keyseq><key>Ctrl</key><key>2</key></keyseq> eller <key>2</key> för att "
-"zooma till 200% av bildens ursprungliga skala."
+"src=\"figures/zoom-out-symbolic.svg\">zoom-out-symbolic</media>)."
 
 #. (itstool) path: section/p
-#: C/viewing-images.page:36
+#: C/viewing-images.page:19
 msgid ""
-"Touchpad and touchscreen users can also zoom with a two-finger pinch gesture."
+"Touchpad and touchscreen users can also zoom with a two-finger pinch "
+"gesture. On touchpads, it is also possible to zoom via pressing the "
+"<key>Ctrl</key> and swiping up/down with two fingers."
 msgstr ""
-"Styrplatte- och pekskärmsanvändare kan också zooma med en nypgest med två "
-"fingrar."
+"Styrplatte- och pekskärmsanvändare kan också zooma genom en nypgest med två "
+"fingrar. På styrplattor är det också möjligt att zooma genom att hålla ned "
+"<key>Ctrl</key> och dra upp/ned med två fingrar."
 
 #. (itstool) path: section/title
-#: C/viewing-images.page:39
+#: C/viewing-images.page:22
 msgid "Panning"
 msgstr "Panorering"
 
 #. (itstool) path: section/p
-#: C/viewing-images.page:40
+#: C/viewing-images.page:23
 msgid ""
 "Mouse and touchpad users can pan the view when zoomed in by clicking and "
 "dragging the image. Touchscreen users can use a single-finger drag gesture "
-"to pan the view. Users with a keyboard can also use the following keyboard "
-"shortcuts:"
+"to pan the view."
 msgstr ""
 "Mus- och styrplatteanvändare kan panorera vyn när den är inzoomad genom att "
 "klicka och dra bilden. Pekskärmsanvändare kan använda en draggest med ett "
-"finger för att panorera vyn. Användare med ett tangentbord kan också använda "
-"följande tangentbordsgenvägar:"
-
-#. (itstool) path: item/p
-#: C/viewing-images.page:45
-msgid "<keyseq><key>Ctrl</key><key>←</key></keyseq> to pan left."
-msgstr ""
-"<keyseq><key>Ctrl</key><key>←</key></keyseq> för att panorera åt vänster."
-
-#. (itstool) path: item/p
-#: C/viewing-images.page:48
-msgid "<keyseq><key>Ctrl</key><key>→</key></keyseq> to pan right."
-msgstr ""
-"<keyseq><key>Ctrl</key><key>→</key></keyseq> för att panorera åt höger."
-
-#. (itstool) path: item/p
-#: C/viewing-images.page:51
-msgid "<keyseq><key>Ctrl</key><key>↑</key></keyseq> to pan up."
-msgstr "<keyseq><key>Ctrl</key><key>↑</key></keyseq> för att panorera uppåt."
-
-#. (itstool) path: item/p
-#: C/viewing-images.page:54
-msgid "<keyseq><key>Ctrl</key><key>↓</key></keyseq> to pan down."
-msgstr "<keyseq><key>Ctrl</key><key>↓</key></keyseq> för att panorera nedåt."
+"finger för att panorera vyn."
 
 #. (itstool) path: section/title
-#: C/viewing-images.page:59
+#: C/viewing-images.page:27
 msgid "Rotating"
 msgstr "Rotation"
 
@@ -181,7 +115,7 @@ msgstr "Rotation"
 #. the file changes, the md5 hash will change to let you know you need to
 #. update your localized copy. The msgstr is not used at all. Set it to
 #. whatever you like once you have updated your copy of the file.
-#: C/viewing-images.page:60
+#: C/viewing-images.page:28
 msgctxt "_"
 msgid ""
 "external ref='figures/object-rotate-right-symbolic.svg' "
@@ -195,7 +129,7 @@ msgstr ""
 #. the file changes, the md5 hash will change to let you know you need to
 #. update your localized copy. The msgstr is not used at all. Set it to
 #. whatever you like once you have updated your copy of the file.
-#: C/viewing-images.page:61
+#: C/viewing-images.page:29
 msgctxt "_"
 msgid ""
 "external ref='figures/object-rotate-left-symbolic.svg' "
@@ -205,40 +139,24 @@ msgstr ""
 "md5='8abe2a1bc5871a15c2f6534d19a4c7ee'"
 
 #. (itstool) path: section/p
-#: C/viewing-images.page:60
+#: C/viewing-images.page:28
 msgid ""
 "Users can use the <gui>Rotate Right</gui> (<media type=\"image\" "
 "src=\"figures/object-rotate-right-symbolic.svg\">object-rotate-right-"
 "symbolic</media>) and <gui>Rotate Left</gui> (<media type=\"image\" "
 "src=\"figures/object-rotate-left-symbolic.svg\">object-rotate-left-symbolic</"
 "media>) buttons under <gui style=\"menuitem\">Rotate</gui> in the main menu "
-"to rotate clockwise and counter-clockwise. They can also use the following "
-"keyboard shortcuts:"
+"to rotate clockwise and counter-clockwise."
 msgstr ""
 "Användare kan använda knapparna <gui>Rotera åt höger</gui> (<media "
 "type=\"image\" src=\"figures/object-rotate-right-symbolic.svg\">object-"
 "rotate-right-symbolic</media>) och <gui>Rotera åt vänster</gui> (<media "
 "type=\"image\" src=\"figures/object-rotate-left-symbolic.svg\">object-rotate-"
 "left-symbolic</media>) under <gui style=\"menuitem\">Rotera</gui> i "
-"huvudmenyn för att rotera medurs och moturs. De kan också använda följande "
-"tangentbordsgenvägar:"
-
-#. (itstool) path: item/p
-#: C/viewing-images.page:66
-msgid "<keyseq><key>Ctrl</key><key>R</key></keyseq> to rotate clockwise."
-msgstr "<keyseq><key>Ctrl</key><key>R</key></keyseq> för att rotera medurs."
-
-#. (itstool) path: item/p
-#: C/viewing-images.page:69
-msgid ""
-"<keyseq><key>Ctrl</key><key>Shift</key><key>R</key></keyseq> to rotate "
-"counter-clockwise."
-msgstr ""
-"<keyseq><key>Ctrl</key><key>Skift</key><key>R</key></keyseq> för att rotera "
-"moturs."
+"huvudmenyn för att rotera medurs och moturs."
 
 #. (itstool) path: section/p
-#: C/viewing-images.page:72
+#: C/viewing-images.page:32
 msgid ""
 "Touchpad and touchscreen users can also use a two-finger rotate gesture."
 msgstr ""
@@ -246,7 +164,7 @@ msgstr ""
 "två fingrar."
 
 #. (itstool) path: section/title
-#: C/viewing-images.page:75
+#: C/viewing-images.page:35
 msgid "Fullscreen"
 msgstr "Helskärm"
 
@@ -255,7 +173,7 @@ msgstr "Helskärm"
 #. the file changes, the md5 hash will change to let you know you need to
 #. update your localized copy. The msgstr is not used at all. Set it to
 #. whatever you like once you have updated your copy of the file.
-#: C/viewing-images.page:77
+#: C/viewing-images.page:37
 msgctxt "_"
 msgid ""
 "external ref='figures/view-fullscreen-symbolic.svg' "
@@ -269,7 +187,7 @@ msgstr ""
 #. the file changes, the md5 hash will change to let you know you need to
 #. update your localized copy. The msgstr is not used at all. Set it to
 #. whatever you like once you have updated your copy of the file.
-#: C/viewing-images.page:77
+#: C/viewing-images.page:37
 msgctxt "_"
 msgid ""
 "external ref='figures/view-restore-symbolic.svg' "
@@ -279,21 +197,28 @@ msgstr ""
 "md5='d00df849240f2d92c7fa1429d3ae8254'"
 
 #. (itstool) path: section/p
-#: C/viewing-images.page:76
+#: C/viewing-images.page:36
 msgid ""
 "Image Viewer has a simple fullscreen mode. Users can toggle fullscreen mode "
 "by pressing the <gui>Toggle Fullscreen</gui> (<media type=\"image\" "
 "src=\"figures/view-fullscreen-symbolic.svg\">view-fullscreen-symbolic</"
 "media> / <media type=\"image\" src=\"figures/view-restore-symbolic."
-"svg\">view-restore-symbolic</media>) button. Keyboard users can also use "
-"<key>F11</key> to toggle fullscreen mode."
+"svg\">view-restore-symbolic</media>) button."
 msgstr ""
 "Bildvisare har ett enkelt helskärmsläge. Användare kan växla helskärmsläge "
 "genom att trycka på knappen <gui>Växla helskärmsläge</gui> (<media "
 "type=\"image\" src=\"figures/view-fullscreen-symbolic.svg\">view-fullscreen-"
 "symbolic</media> / <media type=\"image\" src=\"figures/view-restore-symbolic."
-"svg\">view-restore-symbolic</media>). Tangentbordsanvändare kan också "
-"använda <key>F11</key> för att växla helskärmsläge."
+"svg\">view-restore-symbolic</media>)."
+
+#. (itstool) path: note/p
+#: C/viewing-images.page:39 C/opening-images.page:70
+msgid ""
+"Keyboard users can also use the corresponding shortcuts presented in "
+"Keyboard Shortcuts dialog."
+msgstr ""
+"Tangentbordsanvändare kan också använda motsvarande kortkommandon som "
+"presenteras i dialogrutan Tangentbordsgenvägar."
 
 #. (itstool) path: page/title
 #: C/supported-formats.page:12
@@ -489,8 +414,7 @@ msgid ""
 "the <gui>Previous Image</gui> (<media type=\"image\" src=\"figures/go-"
 "previous-symbolic.svg\">go-previous-symbolic</media>) and <gui>Next Image</"
 "gui> (<media type=\"image\" src=\"figures/go-next-symbolic.svg\">go-next-"
-"symbolic</media>) buttons. Keyboard users can also use the following "
-"shortcuts:"
+"symbolic</media>) buttons."
 msgstr ""
 "Vid öppnande av en bild från filväljaren eller filhanteraren kommer Loupe "
 "läsa in andra filer i bildens katalog och sortera dem alfabetiskt. Användare "
@@ -498,28 +422,7 @@ msgstr ""
 "<gui>Föregående bild</gui> (<media type=\"image\" src=\"figures/go-previous-"
 "symbolic.svg\">go-previous-symbolic</media>) och <gui>Nästa bild</gui> "
 "(<media type=\"image\" src=\"figures/go-next-symbolic.svg\">go-next-"
-"symbolic</media>). Tangentbordsanvändare kan också använda följande "
-"kortkommandon:"
-
-#. (itstool) path: item/p
-#: C/opening-images.page:72
-msgid "<key>→</key> to go to the next image."
-msgstr "<key>→</key> för att gå till nästa bild."
-
-#. (itstool) path: item/p
-#: C/opening-images.page:75
-msgid "<key>←</key> to go to the previous image."
-msgstr "<key>←</key> för att gå till föregående bild."
-
-#. (itstool) path: item/p
-#: C/opening-images.page:78
-msgid "<key>Home</key> to jump to the first image in the directory."
-msgstr "<key>Home</key> för att hoppa till den första bilden i katalogen."
-
-#. (itstool) path: item/p
-#: C/opening-images.page:81
-msgid "<key>End</key> to jump to the last image in the directory."
-msgstr "<key>End</key> för att hoppa till den sista bilden i katalogen."
+"symbolic</media>)."
 
 #. (itstool) path: info/desc
 #: C/trashing-images.page:11
@@ -730,51 +633,117 @@ msgstr "<_:media-1/> Bildvisare (Loupe)"
 
 #. (itstool) path: section/title
 #: C/index.page:14
-msgid "Introduction"
-msgstr "Introduktion"
-
-#. (itstool) path: section/p
-#: C/index.page:15
-msgid ""
-"Image Viewer is an image viewer that supports modern image formats. It "
-"provides:"
-msgstr ""
-"Bildvisare är en bildvisare som stöder moderna bildformat. Den "
-"tillhandahåller:"
-
-#. (itstool) path: item/p
-#: C/index.page:18
-msgid "Fast GPU accelerated image rendering with tiled rendering for SVGs"
-msgstr ""
-"Snabb GPU-accelererad bildrendering med rendering uppdelad i rutor för SVG-"
-"bilder"
-
-#. (itstool) path: item/p
-#: C/index.page:21
-msgid "Extendable and sandboxed raster image decoding"
-msgstr "Utökningsbar rasterbildsavkodning i sandlåda"
-
-#. (itstool) path: item/p
-#: C/index.page:24
-msgid "Extensive support for touchpad and touchscreen gestures"
-msgstr "Brett stöd för styrplatte- och pekskärmsgester"
-
-#. (itstool) path: item/p
-#: C/index.page:27
-msgid "Accessible presentation of the most important metadata"
-msgstr "Åtkomlig presentation av viktigaste metadata"
-
-#. (itstool) path: section/title
-#: C/index.page:32
 msgid "Getting Started"
 msgstr "Komma igång"
 
 #. (itstool) path: section/title
-#: C/index.page:35
+#: C/index.page:17
 msgid "Additional Features"
 msgstr "Ytterligare funktioner"
 
 #. (itstool) path: section/title
-#: C/index.page:38
+#: C/index.page:20
 msgid "Technical Information"
 msgstr "Teknisk information"
+
+#~ msgid ""
+#~ "<keyseq><key>Ctrl</key><key>+</key></keyseq> or <key>+</key> to zoom in."
+#~ msgstr ""
+#~ "<keyseq><key>Ctrl</key><key>+</key></keyseq> eller <key>+</key> för att "
+#~ "zooma in."
+
+#~ msgid ""
+#~ "<keyseq><key>Ctrl</key><key>-</key></keyseq> or <key>-</key> to zoom out."
+#~ msgstr ""
+#~ "<keyseq><key>Ctrl</key><key>-</key></keyseq> eller <key>-</key> för att "
+#~ "zooma ut."
+
+#~ msgid ""
+#~ "<keyseq><key>Ctrl</key><key>0</key></keyseq> or <key>0</key> to zoom to "
+#~ "the best fitting size for the window size."
+#~ msgstr ""
+#~ "<keyseq><key>Ctrl</key><key>0</key></keyseq> eller <key>0</key> för att "
+#~ "zooma till storleken som bäst passar till fönsterstorleken."
+
+#~ msgid ""
+#~ "<keyseq><key>Ctrl</key><key>1</key></keyseq> or <key>1</key> to zoom to "
+#~ "the image's original scale."
+#~ msgstr ""
+#~ "<keyseq><key>Ctrl</key><key>1</key></keyseq> eller <key>1</key> för att "
+#~ "zooma till bildens ursprungliga skala."
+
+#~ msgid ""
+#~ "<keyseq><key>Ctrl</key><key>2</key></keyseq> or <key>2</key> to zoom to "
+#~ "200% of the image's original scale."
+#~ msgstr ""
+#~ "<keyseq><key>Ctrl</key><key>2</key></keyseq> eller <key>2</key> för att "
+#~ "zooma till 200% av bildens ursprungliga skala."
+
+#~ msgid ""
+#~ "Touchpad and touchscreen users can also zoom with a two-finger pinch "
+#~ "gesture."
+#~ msgstr ""
+#~ "Styrplatte- och pekskärmsanvändare kan också zooma med en nypgest med två "
+#~ "fingrar."
+
+#~ msgid "<keyseq><key>Ctrl</key><key>←</key></keyseq> to pan left."
+#~ msgstr ""
+#~ "<keyseq><key>Ctrl</key><key>←</key></keyseq> för att panorera åt vänster."
+
+#~ msgid "<keyseq><key>Ctrl</key><key>→</key></keyseq> to pan right."
+#~ msgstr ""
+#~ "<keyseq><key>Ctrl</key><key>→</key></keyseq> för att panorera åt höger."
+
+#~ msgid "<keyseq><key>Ctrl</key><key>↑</key></keyseq> to pan up."
+#~ msgstr ""
+#~ "<keyseq><key>Ctrl</key><key>↑</key></keyseq> för att panorera uppåt."
+
+#~ msgid "<keyseq><key>Ctrl</key><key>↓</key></keyseq> to pan down."
+#~ msgstr ""
+#~ "<keyseq><key>Ctrl</key><key>↓</key></keyseq> för att panorera nedåt."
+
+#~ msgid "<keyseq><key>Ctrl</key><key>R</key></keyseq> to rotate clockwise."
+#~ msgstr "<keyseq><key>Ctrl</key><key>R</key></keyseq> för att rotera medurs."
+
+#~ msgid ""
+#~ "<keyseq><key>Ctrl</key><key>Shift</key><key>R</key></keyseq> to rotate "
+#~ "counter-clockwise."
+#~ msgstr ""
+#~ "<keyseq><key>Ctrl</key><key>Skift</key><key>R</key></keyseq> för att "
+#~ "rotera moturs."
+
+#~ msgid "<key>→</key> to go to the next image."
+#~ msgstr "<key>→</key> för att gå till nästa bild."
+
+#~ msgid "<key>←</key> to go to the previous image."
+#~ msgstr "<key>←</key> för att gå till föregående bild."
+
+#~ msgid "<key>Home</key> to jump to the first image in the directory."
+#~ msgstr "<key>Home</key> för att hoppa till den första bilden i katalogen."
+
+#~ msgid "<key>End</key> to jump to the last image in the directory."
+#~ msgstr "<key>End</key> för att hoppa till den sista bilden i katalogen."
+
+#~ msgid "Introduction"
+#~ msgstr "Introduktion"
+
+#~ msgid ""
+#~ "Image Viewer is an image viewer that supports modern image formats. It "
+#~ "provides:"
+#~ msgstr ""
+#~ "Bildvisare är en bildvisare som stöder moderna bildformat. Den "
+#~ "tillhandahåller:"
+
+#~ msgid "Fast GPU accelerated image rendering with tiled rendering for SVGs"
+#~ msgstr ""
+#~ "Snabb GPU-accelererad bildrendering med rendering uppdelad i rutor för "
+#~ "SVG-bilder"
+
+#~ msgid "Extendable and sandboxed raster image decoding"
+#~ msgstr "Utökningsbar rasterbildsavkodning i sandlåda"
+
+#~ msgid "Extensive support for touchpad and touchscreen gestures"
+#~ msgstr "Brett stöd för styrplatte- och pekskärmsgester"
+
+#~ msgid "Accessible presentation of the most important metadata"
+#~ msgstr "Åtkomlig presentation av viktigaste metadata"
