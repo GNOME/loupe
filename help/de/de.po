@@ -2,29 +2,29 @@
 # Copyright (C) 2023 loupe's COPYRIGHT HOLDER
 # This file is distributed under the same license as the loupe package.
 # Tim Sabsch <tim@sabsch.com>, 2023.
-# Jürgen Benvenuti <gastornis@posteo.org>, 2023.
+# Jürgen Benvenuti <gastornis@posteo.org>, 2023, 2024.
 # Philipp Kiemle <philipp.kiemle@gmail.com>, 2023.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: loupe main\n"
-"POT-Creation-Date: 2023-09-01 19:56+0000\n"
-"PO-Revision-Date: 2023-09-05 18:36+0200\n"
-"Last-Translator: Tim Sabsch <tim@sabsch.com>\n"
+"POT-Creation-Date: 2024-02-18 13:35+0000\n"
+"PO-Revision-Date: 2024-03-03 13:28+0100\n"
+"Last-Translator: Jürgen Benvenuti <gastornis@posteo.org>\n"
 "Language-Team: German <gnome-de@gnome.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.3.2\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #. Put one translator per line, in the form NAME <EMAIL>, YEAR1, YEAR2
 msgctxt "_"
 msgid "translator-credits"
 msgstr ""
 "Tim Sabsch <tim@sabsch.com>, 2023\n"
-"Jürgen Benvenuti <gastornis@posteo.org>, 2023\n"
+"Jürgen Benvenuti <gastornis@posteo.org>, 2023, 2024\n"
 "Philipp Kiemle <philipp.kiemle@gmail.com>, 2023"
 
 #. (itstool) path: info/desc
@@ -74,113 +74,41 @@ msgid ""
 "Users can zoom in with the <gui>Zoom In</gui> (<media type=\"image\" "
 "src=\"figures/zoom-in-symbolic.svg\">zoom-in-symbolic</media>) button and "
 "zoom out with the <gui>Zoom Out</gui> (<media type=\"image\" src=\"figures/"
-"zoom-out-symbolic.svg\">zoom-out-symbolic</media>) button. They can also use "
-"the following keyboard shortcuts:"
+"zoom-out-symbolic.svg\">zoom-out-symbolic</media>) button."
 msgstr ""
 "Benutzer können mit dem Knopf <gui>Ansicht vergrößern</gui> (<media "
 "type=\"image\" src=\"figures/zoom-in-symbolic.svg\">zoom-in-symbolic</"
 "media>) die Ansicht vergrößern und entsprechend mit dem Knopf <gui>Ansicht "
 "verkleinern</gui> (<media type=\"image\" src=\"figures/zoom-out-symbolic."
-"svg\">zoom-out-symbolic</media>) die Ansicht verkleinern. Sie können auch "
-"die folgenden Tastenkürzel verwenden:"
-
-#. (itstool) path: item/p
-#: C/viewing-images.page:21
-msgid ""
-"<keyseq><key>Ctrl</key><key>+</key></keyseq> or <key>+</key> to zoom in."
-msgstr ""
-"<keyseq><key>Strg</key><key>+</key></keyseq> oder <key>+</key>, um die "
-"Ansicht zu vergrößern."
-
-#. (itstool) path: item/p
-#: C/viewing-images.page:24
-msgid ""
-"<keyseq><key>Ctrl</key><key>-</key></keyseq> or <key>-</key> to zoom out."
-msgstr ""
-"<keyseq><key>Strg</key><key>-</key></keyseq> oder <key>-</key>, um die "
-"Ansicht zu verkleinern."
-
-#. (itstool) path: item/p
-#: C/viewing-images.page:27
-msgid ""
-"<keyseq><key>Ctrl</key><key>0</key></keyseq> or <key>0</key> to zoom to the "
-"best fitting size for the window size."
-msgstr ""
-"<keyseq><key>Strg</key><key>0</key></keyseq> oder <key>0</key>, um die "
-"Vergrößerungsstufe so einzustellen, dass das Bild bestmöglich dem "
-"Programmfenster angepasst wird."
-
-#. (itstool) path: item/p
-#: C/viewing-images.page:30
-msgid ""
-"<keyseq><key>Ctrl</key><key>1</key></keyseq> or <key>1</key> to zoom to the "
-"image's original scale."
-msgstr ""
-"<keyseq><key>Strg</key><key>1</key></keyseq> oder <key>1</key>, um das Bild "
-"in der Originalgröße anzuzeigen."
-
-#. (itstool) path: item/p
-#: C/viewing-images.page:33
-msgid ""
-"<keyseq><key>Ctrl</key><key>2</key></keyseq> or <key>2</key> to zoom to 200% "
-"of the image's original scale."
-msgstr ""
-"<keyseq><key>Strg</key><key>2</key></keyseq> oder <key>2</key>, um das Bild "
-"auf 200% der Originalgröße zu skalieren."
+"svg\">zoom-out-symbolic</media>) die Ansicht verkleinern."
 
 #. (itstool) path: section/p
-#: C/viewing-images.page:36
+#: C/viewing-images.page:19
 msgid ""
-"Touchpad and touchscreen users can also zoom with a two-finger pinch gesture."
+"Touchpad and touchscreen users can also zoom with a two-finger pinch "
+"gesture. On touchpads, it is also possible to zoom via pressing the "
+"<key>Ctrl</key> and swiping up/down with two fingers."
 msgstr ""
-"Benutzer mit einem Tastfeld oder Tastbildschirm können das Bild auch "
-"vergrößern/verkleinern, indem sie zwei Finger spreizen/zusammenziehen."
 
 #. (itstool) path: section/title
-#: C/viewing-images.page:39
+#: C/viewing-images.page:22
 msgid "Panning"
 msgstr "Verschieben"
 
 #. (itstool) path: section/p
-#: C/viewing-images.page:40
+#: C/viewing-images.page:23
 msgid ""
 "Mouse and touchpad users can pan the view when zoomed in by clicking and "
 "dragging the image. Touchscreen users can use a single-finger drag gesture "
-"to pan the view. Users with a keyboard can also use the following keyboard "
-"shortcuts:"
+"to pan the view."
 msgstr ""
 "Benutzer mit einer Maus oder einem Tastfeld können die Ansicht im "
 "vergrößerten Zustand durch Klicken und Ziehen des Bildes verschieben. "
 "Benutzer mit einem Tastbildschirm können die Ansicht verschieben, indem sie "
-"mit einem Finger ziehen. Benutzer mit einer Tastatur können auch die "
-"folgenden Tastenkürzel verwenden:"
-
-#. (itstool) path: item/p
-#: C/viewing-images.page:45
-msgid "<keyseq><key>Ctrl</key><key>←</key></keyseq> to pan left."
-msgstr ""
-"<keyseq><key>Strg</key><key>←</key></keyseq>, um nach links zu schieben."
-
-#. (itstool) path: item/p
-#: C/viewing-images.page:48
-msgid "<keyseq><key>Ctrl</key><key>→</key></keyseq> to pan right."
-msgstr ""
-"<keyseq><key>Strg</key><key>→</key></keyseq>, um nach rechts zu schieben."
-
-#. (itstool) path: item/p
-#: C/viewing-images.page:51
-msgid "<keyseq><key>Ctrl</key><key>↑</key></keyseq> to pan up."
-msgstr ""
-"<keyseq><key>Strg</key><key>↑</key></keyseq>, um nach oben zu schieben."
-
-#. (itstool) path: item/p
-#: C/viewing-images.page:54
-msgid "<keyseq><key>Ctrl</key><key>↓</key></keyseq> to pan down."
-msgstr ""
-"<keyseq><key>Strg</key><key>↓</key></keyseq>, um nach unten zu schieben."
+"mit einem Finger ziehen."
 
 #. (itstool) path: section/title
-#: C/viewing-images.page:59
+#: C/viewing-images.page:27
 msgid "Rotating"
 msgstr "Drehen"
 
@@ -189,7 +117,7 @@ msgstr "Drehen"
 #. the file changes, the md5 hash will change to let you know you need to
 #. update your localized copy. The msgstr is not used at all. Set it to
 #. whatever you like once you have updated your copy of the file.
-#: C/viewing-images.page:60
+#: C/viewing-images.page:28
 msgctxt "_"
 msgid ""
 "external ref='figures/object-rotate-right-symbolic.svg' "
@@ -201,7 +129,7 @@ msgstr "original"
 #. the file changes, the md5 hash will change to let you know you need to
 #. update your localized copy. The msgstr is not used at all. Set it to
 #. whatever you like once you have updated your copy of the file.
-#: C/viewing-images.page:61
+#: C/viewing-images.page:29
 msgctxt "_"
 msgid ""
 "external ref='figures/object-rotate-left-symbolic.svg' "
@@ -209,41 +137,24 @@ msgid ""
 msgstr "original"
 
 #. (itstool) path: section/p
-#: C/viewing-images.page:60
+#: C/viewing-images.page:28
 msgid ""
 "Users can use the <gui>Rotate Right</gui> (<media type=\"image\" "
 "src=\"figures/object-rotate-right-symbolic.svg\">object-rotate-right-"
 "symbolic</media>) and <gui>Rotate Left</gui> (<media type=\"image\" "
 "src=\"figures/object-rotate-left-symbolic.svg\">object-rotate-left-symbolic</"
 "media>) buttons under <gui style=\"menuitem\">Rotate</gui> in the main menu "
-"to rotate clockwise and counter-clockwise. They can also use the following "
-"keyboard shortcuts:"
+"to rotate clockwise and counter-clockwise."
 msgstr ""
 "Benutzer können die Knöpfe <gui>Nach rechts drehen</gui> (<media "
 "type=\"image\" src=\"figures/object-rotate-right-symbolic.svg\">object-"
 "rotate-right-symbolic</media>) und <gui>Nach links drehen</gui> (<media "
 "type=\"image\" src=\"figures/object-rotate-left-symbolic.svg\">object-rotate-"
 "left-symbolic</media>) unter <gui style=\"menuitem\">Drehen</gui> im "
-"Hauptmenü verwenden, um im und gegen den Uhrzeigersinn zu drehen. Sie können "
-"auch die folgenden Tastenkürzel verwenden:"
-
-#. (itstool) path: item/p
-#: C/viewing-images.page:66
-msgid "<keyseq><key>Ctrl</key><key>R</key></keyseq> to rotate clockwise."
-msgstr ""
-"<keyseq><key>Strg</key><key>R</key></keyseq>, um im Uhrzeigersinn zu drehen."
-
-#. (itstool) path: item/p
-#: C/viewing-images.page:69
-msgid ""
-"<keyseq><key>Ctrl</key><key>Shift</key><key>R</key></keyseq> to rotate "
-"counter-clockwise."
-msgstr ""
-"<keyseq><key>Strg</key><key>Umschalt</key><key>R</key></keyseq>, um gegen "
-"den Uhrzeigersinn zu drehen."
+"Hauptmenü verwenden, um im und gegen den Uhrzeigersinn zu drehen."
 
 #. (itstool) path: section/p
-#: C/viewing-images.page:72
+#: C/viewing-images.page:32
 msgid ""
 "Touchpad and touchscreen users can also use a two-finger rotate gesture."
 msgstr ""
@@ -251,7 +162,7 @@ msgstr ""
 "indem sie zwei Finger drehen."
 
 #. (itstool) path: section/title
-#: C/viewing-images.page:75
+#: C/viewing-images.page:35
 msgid "Fullscreen"
 msgstr "Vollbild"
 
@@ -260,7 +171,7 @@ msgstr "Vollbild"
 #. the file changes, the md5 hash will change to let you know you need to
 #. update your localized copy. The msgstr is not used at all. Set it to
 #. whatever you like once you have updated your copy of the file.
-#: C/viewing-images.page:77
+#: C/viewing-images.page:37
 msgctxt "_"
 msgid ""
 "external ref='figures/view-fullscreen-symbolic.svg' "
@@ -272,7 +183,7 @@ msgstr "original"
 #. the file changes, the md5 hash will change to let you know you need to
 #. update your localized copy. The msgstr is not used at all. Set it to
 #. whatever you like once you have updated your copy of the file.
-#: C/viewing-images.page:77
+#: C/viewing-images.page:37
 msgctxt "_"
 msgid ""
 "external ref='figures/view-restore-symbolic.svg' "
@@ -280,22 +191,28 @@ msgid ""
 msgstr "original"
 
 #. (itstool) path: section/p
-#: C/viewing-images.page:76
+#: C/viewing-images.page:36
 msgid ""
 "Image Viewer has a simple fullscreen mode. Users can toggle fullscreen mode "
 "by pressing the <gui>Toggle Fullscreen</gui> (<media type=\"image\" "
 "src=\"figures/view-fullscreen-symbolic.svg\">view-fullscreen-symbolic</"
 "media> / <media type=\"image\" src=\"figures/view-restore-symbolic."
-"svg\">view-restore-symbolic</media>) button. Keyboard users can also use "
-"<key>F11</key> to toggle fullscreen mode."
+"svg\">view-restore-symbolic</media>) button."
 msgstr ""
 "»Bildbetrachter« hat einen einfachen Vollbildmodus. Benutzer können den "
 "Vollbildmodus über den Knopf <gui>Vollbild ein- oder ausschalten</gui> "
 "(<media type=\"image\" src=\"figures/view-fullscreen-symbolic.svg\">view-"
 "fullscreen-symbolic</media> / <media type=\"image\" src=\"figures/view-"
-"restore-symbolic.svg\">view-restore-symbolic</media>) ein- oder ausschalten. "
-"Benutzer mit einer Tastatur können auch <key>F11</key> verwenden, um den "
-"Vollbildmodus ein- oder auszuschalten."
+"restore-symbolic.svg\">view-restore-symbolic</media>) ein- oder ausschalten."
+
+#. (itstool) path: note/p
+#: C/viewing-images.page:39 C/opening-images.page:70
+msgid ""
+"Keyboard users can also use the corresponding shortcuts presented in "
+"Keyboard Shortcuts dialog."
+msgstr ""
+"Benutzer mit einer Tastatur können auch die entsprechenden Tastenkürzel "
+"verwenden, die im Tastenkürzeldialog angezeigt werden."
 
 #. (itstool) path: page/title
 #: C/supported-formats.page:12
@@ -498,8 +415,7 @@ msgid ""
 "the <gui>Previous Image</gui> (<media type=\"image\" src=\"figures/go-"
 "previous-symbolic.svg\">go-previous-symbolic</media>) and <gui>Next Image</"
 "gui> (<media type=\"image\" src=\"figures/go-next-symbolic.svg\">go-next-"
-"symbolic</media>) buttons. Keyboard users can also use the following "
-"shortcuts:"
+"symbolic</media>) buttons."
 msgstr ""
 "Wenn ein Bild aus der Dateiauswahl oder der Dateiverwaltung geöffnet wird, "
 "lädt »Bildbetrachter« andere Dateien im übergeordneten Verzeichnis des "
@@ -507,28 +423,7 @@ msgstr ""
 "den Knöpfen <gui>Vorheriges Bild</gui> (<media type=\"image\" src=\"figures/"
 "go-previous-symbolic.svg\">go-previous-symbolic</media>) und <gui>Nächstes "
 "Bild</gui> (<media type=\"image\" src=\"figures/go-next-symbolic.svg\">go-"
-"next-symbolic</media>) durch die anderen Bilder im Verzeichnis stöbern. "
-"Benutzer mit einer Tastatur können auch die folgenden Tastenkürzel verwenden:"
-
-#. (itstool) path: item/p
-#: C/opening-images.page:72
-msgid "<key>→</key> to go to the next image."
-msgstr "<key>→</key>, um zum nächsten Bild zu gelangen."
-
-#. (itstool) path: item/p
-#: C/opening-images.page:75
-msgid "<key>←</key> to go to the previous image."
-msgstr "<key>←</key>, um zum vorherigen Bild zu gelangen."
-
-#. (itstool) path: item/p
-#: C/opening-images.page:78
-msgid "<key>Home</key> to jump to the first image in the directory."
-msgstr "<key>Pos1</key>, um zum ersten Bild im Verzeichnis zu gelangen."
-
-#. (itstool) path: item/p
-#: C/opening-images.page:81
-msgid "<key>End</key> to jump to the last image in the directory."
-msgstr "<key>Ende</key>, um zum letzten Bild im Verzeichnis zu gelangen."
+"next-symbolic</media>) durch die anderen Bilder im Verzeichnis stöbern."
 
 #. (itstool) path: info/desc
 #: C/trashing-images.page:11
@@ -738,51 +633,120 @@ msgstr "<_:media-1/> Bildbetrachter (Loupe)"
 
 #. (itstool) path: section/title
 #: C/index.page:14
-msgid "Introduction"
-msgstr "Einführung"
-
-#. (itstool) path: section/p
-#: C/index.page:15
-msgid ""
-"Image Viewer is an image viewer that supports modern image formats. It "
-"provides:"
-msgstr ""
-"»Bildbetrachter« ist ein Bildbetrachter, der moderne Bildformate "
-"unterstützt. Er bietet:"
-
-#. (itstool) path: item/p
-#: C/index.page:18
-msgid "Fast GPU accelerated image rendering with tiled rendering for SVGs"
-msgstr ""
-"Schnelle, GPU-beschleunigte Bildsynthese mit gekachelter Bildsynthese für "
-"SVGs"
-
-#. (itstool) path: item/p
-#: C/index.page:21
-msgid "Extendable and sandboxed raster image decoding"
-msgstr "Erweiterbare Raster-Bilddecodierung mit Sandboxing"
-
-#. (itstool) path: item/p
-#: C/index.page:24
-msgid "Extensive support for touchpad and touchscreen gestures"
-msgstr "Umfassende Unterstützung für Tastfeld- und Tastbildschirm-Gesten"
-
-#. (itstool) path: item/p
-#: C/index.page:27
-msgid "Accessible presentation of the most important metadata"
-msgstr "Zugängliche Darstellung der wichtigsten Metadaten"
-
-#. (itstool) path: section/title
-#: C/index.page:32
 msgid "Getting Started"
 msgstr "Erste Schritte"
 
 #. (itstool) path: section/title
-#: C/index.page:35
+#: C/index.page:17
 msgid "Additional Features"
 msgstr "Weitere Funktionen"
 
 #. (itstool) path: section/title
-#: C/index.page:38
+#: C/index.page:20
 msgid "Technical Information"
 msgstr "Technische Informationen"
+
+#~ msgid ""
+#~ "<keyseq><key>Ctrl</key><key>+</key></keyseq> or <key>+</key> to zoom in."
+#~ msgstr ""
+#~ "<keyseq><key>Strg</key><key>+</key></keyseq> oder <key>+</key>, um die "
+#~ "Ansicht zu vergrößern."
+
+#~ msgid ""
+#~ "<keyseq><key>Ctrl</key><key>-</key></keyseq> or <key>-</key> to zoom out."
+#~ msgstr ""
+#~ "<keyseq><key>Strg</key><key>-</key></keyseq> oder <key>-</key>, um die "
+#~ "Ansicht zu verkleinern."
+
+#~ msgid ""
+#~ "<keyseq><key>Ctrl</key><key>0</key></keyseq> or <key>0</key> to zoom to "
+#~ "the best fitting size for the window size."
+#~ msgstr ""
+#~ "<keyseq><key>Strg</key><key>0</key></keyseq> oder <key>0</key>, um die "
+#~ "Vergrößerungsstufe so einzustellen, dass das Bild bestmöglich dem "
+#~ "Programmfenster angepasst wird."
+
+#~ msgid ""
+#~ "<keyseq><key>Ctrl</key><key>1</key></keyseq> or <key>1</key> to zoom to "
+#~ "the image's original scale."
+#~ msgstr ""
+#~ "<keyseq><key>Strg</key><key>1</key></keyseq> oder <key>1</key>, um das "
+#~ "Bild in der Originalgröße anzuzeigen."
+
+#~ msgid ""
+#~ "<keyseq><key>Ctrl</key><key>2</key></keyseq> or <key>2</key> to zoom to "
+#~ "200% of the image's original scale."
+#~ msgstr ""
+#~ "<keyseq><key>Strg</key><key>2</key></keyseq> oder <key>2</key>, um das "
+#~ "Bild auf 200% der Originalgröße zu skalieren."
+
+#~ msgid ""
+#~ "Touchpad and touchscreen users can also zoom with a two-finger pinch "
+#~ "gesture."
+#~ msgstr ""
+#~ "Benutzer mit einem Tastfeld oder Tastbildschirm können das Bild auch "
+#~ "vergrößern/verkleinern, indem sie zwei Finger spreizen/zusammenziehen."
+
+#~ msgid "<keyseq><key>Ctrl</key><key>←</key></keyseq> to pan left."
+#~ msgstr ""
+#~ "<keyseq><key>Strg</key><key>←</key></keyseq>, um nach links zu schieben."
+
+#~ msgid "<keyseq><key>Ctrl</key><key>→</key></keyseq> to pan right."
+#~ msgstr ""
+#~ "<keyseq><key>Strg</key><key>→</key></keyseq>, um nach rechts zu schieben."
+
+#~ msgid "<keyseq><key>Ctrl</key><key>↑</key></keyseq> to pan up."
+#~ msgstr ""
+#~ "<keyseq><key>Strg</key><key>↑</key></keyseq>, um nach oben zu schieben."
+
+#~ msgid "<keyseq><key>Ctrl</key><key>↓</key></keyseq> to pan down."
+#~ msgstr ""
+#~ "<keyseq><key>Strg</key><key>↓</key></keyseq>, um nach unten zu schieben."
+
+#~ msgid "<keyseq><key>Ctrl</key><key>R</key></keyseq> to rotate clockwise."
+#~ msgstr ""
+#~ "<keyseq><key>Strg</key><key>R</key></keyseq>, um im Uhrzeigersinn zu "
+#~ "drehen."
+
+#~ msgid ""
+#~ "<keyseq><key>Ctrl</key><key>Shift</key><key>R</key></keyseq> to rotate "
+#~ "counter-clockwise."
+#~ msgstr ""
+#~ "<keyseq><key>Strg</key><key>Umschalt</key><key>R</key></keyseq>, um gegen "
+#~ "den Uhrzeigersinn zu drehen."
+
+#~ msgid "<key>→</key> to go to the next image."
+#~ msgstr "<key>→</key>, um zum nächsten Bild zu gelangen."
+
+#~ msgid "<key>←</key> to go to the previous image."
+#~ msgstr "<key>←</key>, um zum vorherigen Bild zu gelangen."
+
+#~ msgid "<key>Home</key> to jump to the first image in the directory."
+#~ msgstr "<key>Pos1</key>, um zum ersten Bild im Verzeichnis zu gelangen."
+
+#~ msgid "<key>End</key> to jump to the last image in the directory."
+#~ msgstr "<key>Ende</key>, um zum letzten Bild im Verzeichnis zu gelangen."
+
+#~ msgid "Introduction"
+#~ msgstr "Einführung"
+
+#~ msgid ""
+#~ "Image Viewer is an image viewer that supports modern image formats. It "
+#~ "provides:"
+#~ msgstr ""
+#~ "»Bildbetrachter« ist ein Bildbetrachter, der moderne Bildformate "
+#~ "unterstützt. Er bietet:"
+
+#~ msgid "Fast GPU accelerated image rendering with tiled rendering for SVGs"
+#~ msgstr ""
+#~ "Schnelle, GPU-beschleunigte Bildsynthese mit gekachelter Bildsynthese für "
+#~ "SVGs"
+
+#~ msgid "Extendable and sandboxed raster image decoding"
+#~ msgstr "Erweiterbare Raster-Bilddecodierung mit Sandboxing"
+
+#~ msgid "Extensive support for touchpad and touchscreen gestures"
+#~ msgstr "Umfassende Unterstützung für Tastfeld- und Tastbildschirm-Gesten"
+
+#~ msgid "Accessible presentation of the most important metadata"
+#~ msgstr "Zugängliche Darstellung der wichtigsten Metadaten"
