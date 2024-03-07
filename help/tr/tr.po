@@ -3,28 +3,28 @@
 # This file is distributed under the same license as the Loupe package.
 #
 # Sabri Ünal <libreajans@gmail.com>, 2023.
-# Emin Tufan Çetin <etcetin@gmail.com>, 2023.
+# Emin Tufan Çetin <etcetin@gmail.com>, 2023, 2024.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
-"POT-Creation-Date: 2023-09-01 19:56+0000\n"
-"PO-Revision-Date: 2023-09-04 12:36+0300\n"
-"Last-Translator: Sabri Ünal <libreajans@gmail.com>\n"
+"POT-Creation-Date: 2024-02-18 19:19+0000\n"
+"PO-Revision-Date: 2024-03-07 08:00+0300\n"
+"Last-Translator: Emin Tufan Çetin <etcetin@gmail.com>\n"
 "Language-Team: Turkish <takim@gnome.org.tr>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #. Put one translator per line, in the form NAME <EMAIL>, YEAR1, YEAR2
 msgctxt "_"
 msgid "translator-credits"
 msgstr ""
-"Sabri Ünal <libreajans@gmail.com>, 2023\n"
-"Emin Tufan Çetin <etcetin@gmail.com>, 2023"
+"Sabri Ünal <libreajans@gmail.com>, 2023, 2024\n"
+"Emin Tufan Çetin <etcetin@gmail.com>, 2023, 2024"
 
 #. (itstool) path: info/desc
 #: C/viewing-images.page:11
@@ -76,108 +76,44 @@ msgid ""
 "Users can zoom in with the <gui>Zoom In</gui> (<media type=\"image\" "
 "src=\"figures/zoom-in-symbolic.svg\">zoom-in-symbolic</media>) button and "
 "zoom out with the <gui>Zoom Out</gui> (<media type=\"image\" src=\"figures/"
-"zoom-out-symbolic.svg\">zoom-out-symbolic</media>) button. They can also use "
-"the following keyboard shortcuts:"
+"zoom-out-symbolic.svg\">zoom-out-symbolic</media>) button."
 msgstr ""
 "Kullanıcılar resimleri <gui>Yakınlaştır</gui> (<media type=\"image\" "
 "src=\"figures/zoom-in-symbolic.svg\">zoom-in-symbolic</media>) düğmesi ile "
 "yakınlaştırabilir ve <gui>Uzaklaştır</gui> (<media type=\"image\" "
 "src=\"figures/zoom-out-symbolic.svg\">zoom-out-symbolic</media>) düğmesi ile "
-"uzaklaştırabilirler. Ayrıca aşağıdaki klavye kısayollarını da "
-"kullanabilirler:"
-
-#. (itstool) path: item/p
-#: C/viewing-images.page:21
-msgid ""
-"<keyseq><key>Ctrl</key><key>+</key></keyseq> or <key>+</key> to zoom in."
-msgstr ""
-"<keyseq><key>Ctrl</key><key>+</key></keyseq> ya da <key>+</key> "
-"yakınlaştırmak için."
-
-#. (itstool) path: item/p
-#: C/viewing-images.page:24
-msgid ""
-"<keyseq><key>Ctrl</key><key>-</key></keyseq> or <key>-</key> to zoom out."
-msgstr ""
-"<keyseq><key>Ctrl</key><key>-</key></keyseq> ya da <key>-</key> "
-"uzaklaştırmak için."
-
-#. (itstool) path: item/p
-#: C/viewing-images.page:27
-msgid ""
-"<keyseq><key>Ctrl</key><key>0</key></keyseq> or <key>0</key> to zoom to the "
-"best fitting size for the window size."
-msgstr ""
-"<keyseq><key>Ctrl</key><key>0</key></keyseq> ya da <key>0</key> pencereye en "
-"uygun boyuta yakınlaştırmak için."
-
-#. (itstool) path: item/p
-#: C/viewing-images.page:30
-msgid ""
-"<keyseq><key>Ctrl</key><key>1</key></keyseq> or <key>1</key> to zoom to the "
-"image's original scale."
-msgstr ""
-"<keyseq><key>Ctrl</key><key>1</key></keyseq> ya da <key>1</key> resmin özgün "
-"ölçeğine yakınlaştırmak için."
-
-#. (itstool) path: item/p
-#: C/viewing-images.page:33
-msgid ""
-"<keyseq><key>Ctrl</key><key>2</key></keyseq> or <key>2</key> to zoom to 200% "
-"of the image's original scale."
-msgstr ""
-"<keyseq><key>Ctrl</key><key>2</key></keyseq> ya da <key>2</key> resmin "
-"ölçeğini %200 artırmak için."
+"uzaklaştırabilirler."
 
 #. (itstool) path: section/p
-#: C/viewing-images.page:36
+#: C/viewing-images.page:19
 msgid ""
-"Touchpad and touchscreen users can also zoom with a two-finger pinch gesture."
+"Touchpad and touchscreen users can also zoom with a two-finger pinch "
+"gesture. On touchpads, it is also possible to zoom via pressing the "
+"<key>Ctrl</key> and swiping up/down with two fingers."
 msgstr ""
 "Dokunmatik yüzey ve dokunmatik ekran kullanıcıları da iki parmakla kıstırma "
-"hareketiyle resimleri yakınlaştırabilir."
+"hareketiyle yakınlaştırabilirler. Dokunmatik yüzeylerde <key>Ctrl</key> "
+"tuşuna basarak ve iki parmakla yukarı/aşağı kaydırarak da yakınlaştırılabilir."
 
 #. (itstool) path: section/title
-#: C/viewing-images.page:39
+#: C/viewing-images.page:22
 msgid "Panning"
 msgstr "Kaydırma"
 
 #. (itstool) path: section/p
-#: C/viewing-images.page:40
+#: C/viewing-images.page:23
 msgid ""
 "Mouse and touchpad users can pan the view when zoomed in by clicking and "
 "dragging the image. Touchscreen users can use a single-finger drag gesture "
-"to pan the view. Users with a keyboard can also use the following keyboard "
-"shortcuts:"
+"to pan the view."
 msgstr ""
 "Fare ve dokunmatik yüzey kullanıcıları, resme tıklayıp sürükleyerek "
 "yakınlaştırdıklarında görünümü kaydırabilirler. Dokunmatik ekran "
 "kullanıcıları resmi kaydırmak için tek parmakla sürükleme hareketini "
-"kullanabilir. Klavye kullanıcıları da aşağıdaki klavye kısayollarını "
-"kullanabilir:"
-
-#. (itstool) path: item/p
-#: C/viewing-images.page:45
-msgid "<keyseq><key>Ctrl</key><key>←</key></keyseq> to pan left."
-msgstr "<keyseq><key>Ctrl</key><key>←</key></keyseq> sola kaydırmak için."
-
-#. (itstool) path: item/p
-#: C/viewing-images.page:48
-msgid "<keyseq><key>Ctrl</key><key>→</key></keyseq> to pan right."
-msgstr "<keyseq><key>Ctrl</key><key>→</key></keyseq> sağa kaydırmak için."
-
-#. (itstool) path: item/p
-#: C/viewing-images.page:51
-msgid "<keyseq><key>Ctrl</key><key>↑</key></keyseq> to pan up."
-msgstr "<keyseq><key>Ctrl</key><key>↑</key></keyseq> yukarı kaydırmak için."
-
-#. (itstool) path: item/p
-#: C/viewing-images.page:54
-msgid "<keyseq><key>Ctrl</key><key>↓</key></keyseq> to pan down."
-msgstr "<keyseq><key>Ctrl</key><key>↓</key></keyseq> aşağı kaydırmak için."
+"kullanabilir."
 
 #. (itstool) path: section/title
-#: C/viewing-images.page:59
+#: C/viewing-images.page:27
 msgid "Rotating"
 msgstr "Döndürme"
 
@@ -186,7 +122,7 @@ msgstr "Döndürme"
 #. the file changes, the md5 hash will change to let you know you need to
 #. update your localized copy. The msgstr is not used at all. Set it to
 #. whatever you like once you have updated your copy of the file.
-#: C/viewing-images.page:60
+#: C/viewing-images.page:28
 msgctxt "_"
 msgid ""
 "external ref='figures/object-rotate-right-symbolic.svg' "
@@ -200,7 +136,7 @@ msgstr ""
 #. the file changes, the md5 hash will change to let you know you need to
 #. update your localized copy. The msgstr is not used at all. Set it to
 #. whatever you like once you have updated your copy of the file.
-#: C/viewing-images.page:61
+#: C/viewing-images.page:29
 msgctxt "_"
 msgid ""
 "external ref='figures/object-rotate-left-symbolic.svg' "
@@ -210,42 +146,24 @@ msgstr ""
 "md5='8abe2a1bc5871a15c2f6534d19a4c7ee'"
 
 #. (itstool) path: section/p
-#: C/viewing-images.page:60
+#: C/viewing-images.page:28
 msgid ""
 "Users can use the <gui>Rotate Right</gui> (<media type=\"image\" "
 "src=\"figures/object-rotate-right-symbolic.svg\">object-rotate-right-"
 "symbolic</media>) and <gui>Rotate Left</gui> (<media type=\"image\" "
 "src=\"figures/object-rotate-left-symbolic.svg\">object-rotate-left-symbolic</"
 "media>) buttons under <gui style=\"menuitem\">Rotate</gui> in the main menu "
-"to rotate clockwise and counter-clockwise. They can also use the following "
-"keyboard shortcuts:"
+"to rotate clockwise and counter-clockwise."
 msgstr ""
 "Kullanıcılar resmi saat yönünde ve saat yönünün tersine döndürmek için ana "
 "menüdeki <gui style=\"menuitem\">Döndür</gui> altındaki <gui>Sağa Döndür</"
 "gui> (<media type=\"image\" src=\"figures/object-rotate-right-symbolic."
 "svg\">object-rotate-right-symbolic</media>) ve <gui>Sola Döndür</gui> "
 "(<media type=\"image\" src=\"figures/object-rotate-left-symbolic."
-"svg\">object-rotate-left-symbolic</media>) düğmelerini kullanabilirler. \n"
-"\n"
-"Ayrıca aşağıdaki klavye kısayollarını da kullanabilirler:"
-
-#. (itstool) path: item/p
-#: C/viewing-images.page:66
-msgid "<keyseq><key>Ctrl</key><key>R</key></keyseq> to rotate clockwise."
-msgstr ""
-"<keyseq><key>Ctrl</key><key>R</key></keyseq> saat yönünde döndürmek için."
-
-#. (itstool) path: item/p
-#: C/viewing-images.page:69
-msgid ""
-"<keyseq><key>Ctrl</key><key>Shift</key><key>R</key></keyseq> to rotate "
-"counter-clockwise."
-msgstr ""
-"<keyseq><key>Ctrl</key><key>Shift</key><key>R</key></keyseq> saat yönünün "
-"tersine döndürmek için."
+"svg\">object-rotate-left-symbolic</media>) düğmelerini kullanabilirler."
 
 #. (itstool) path: section/p
-#: C/viewing-images.page:72
+#: C/viewing-images.page:32
 msgid ""
 "Touchpad and touchscreen users can also use a two-finger rotate gesture."
 msgstr ""
@@ -253,7 +171,7 @@ msgstr ""
 "hareketini de kullanabilir."
 
 #. (itstool) path: section/title
-#: C/viewing-images.page:75
+#: C/viewing-images.page:35
 msgid "Fullscreen"
 msgstr "Tam Ekran"
 
@@ -262,7 +180,7 @@ msgstr "Tam Ekran"
 #. the file changes, the md5 hash will change to let you know you need to
 #. update your localized copy. The msgstr is not used at all. Set it to
 #. whatever you like once you have updated your copy of the file.
-#: C/viewing-images.page:77
+#: C/viewing-images.page:37
 msgctxt "_"
 msgid ""
 "external ref='figures/view-fullscreen-symbolic.svg' "
@@ -276,7 +194,7 @@ msgstr ""
 #. the file changes, the md5 hash will change to let you know you need to
 #. update your localized copy. The msgstr is not used at all. Set it to
 #. whatever you like once you have updated your copy of the file.
-#: C/viewing-images.page:77
+#: C/viewing-images.page:37
 msgctxt "_"
 msgid ""
 "external ref='figures/view-restore-symbolic.svg' "
@@ -286,21 +204,28 @@ msgstr ""
 "md5='d00df849240f2d92c7fa1429d3ae8254'"
 
 #. (itstool) path: section/p
-#: C/viewing-images.page:76
+#: C/viewing-images.page:36
 msgid ""
 "Image Viewer has a simple fullscreen mode. Users can toggle fullscreen mode "
 "by pressing the <gui>Toggle Fullscreen</gui> (<media type=\"image\" "
 "src=\"figures/view-fullscreen-symbolic.svg\">view-fullscreen-symbolic</"
 "media> / <media type=\"image\" src=\"figures/view-restore-symbolic."
-"svg\">view-restore-symbolic</media>) button. Keyboard users can also use "
-"<key>F11</key> to toggle fullscreen mode."
+"svg\">view-restore-symbolic</media>) button."
 msgstr ""
 "Resim Görüntüleyici tam ekran kipine sahiptir. Kullanıcılar <gui>Tam Ekranı "
 "Aç/Kapat</gui> (<media type=\"image\" src=\"figures/view-fullscreen-symbolic."
 "svg\">view-fullscreen-symbolic</media> / <media type=\"image\" src=\"figures/"
 "view-restore-symbolic.svg\">view-restore-symbolic</media>) düğmesine basarak "
-"tam ekran kipine geçebilirler. Klavye kullanıcıları da tam ekran kipine "
-"geçmek için <key>F11</key> tuşunu kullanabilirler."
+"tam ekran kipine geçebilirler."
+
+#. (itstool) path: note/p
+#: C/viewing-images.page:39 C/opening-images.page:70
+msgid ""
+"Keyboard users can also use the corresponding shortcuts presented in "
+"Keyboard Shortcuts dialog."
+msgstr ""
+"Klavye kullanıcıları da Klavye Kısayolları iletişim kutusunda sunulan ilgili "
+"kısayolları kullanabilir."
 
 #. (itstool) path: page/title
 #: C/supported-formats.page:12
@@ -505,36 +430,14 @@ msgid ""
 "the <gui>Previous Image</gui> (<media type=\"image\" src=\"figures/go-"
 "previous-symbolic.svg\">go-previous-symbolic</media>) and <gui>Next Image</"
 "gui> (<media type=\"image\" src=\"figures/go-next-symbolic.svg\">go-next-"
-"symbolic</media>) buttons. Keyboard users can also use the following "
-"shortcuts:"
+"symbolic</media>) buttons."
 msgstr ""
 "Dosya seçiciden ya da dosya yöneticisinden resim açıldığında, Loupe resmin "
 "üst dizinindeki diğer dosyaları da yükler ve alfabetik olarak sıralar. "
 "Kullanıcılar <gui>Önceki Resim</gui> (<media type=\"image\" src=\"figures/go-"
 "previous-symbolic.svg\">go-previous-symbolic</media>) ve <gui>Sonraki Resim</"
 "gui> (<media type=\"image\" src=\"figures/go-next-symbolic.svg\">go-next-"
-"symbolic</media>) düğmeleri ile dizindeki diğer resimlere göz atabilirler. "
-"Klavye kullanıcıları aşağıdaki kısayolları da kullanabilir:"
-
-#. (itstool) path: item/p
-#: C/opening-images.page:72
-msgid "<key>→</key> to go to the next image."
-msgstr "<key>→</key> sonraki resme git."
-
-#. (itstool) path: item/p
-#: C/opening-images.page:75
-msgid "<key>←</key> to go to the previous image."
-msgstr "<key>←</key> önceki resme git."
-
-#. (itstool) path: item/p
-#: C/opening-images.page:78
-msgid "<key>Home</key> to jump to the first image in the directory."
-msgstr "<key>Home</key> dizindeki ilk resme git."
-
-#. (itstool) path: item/p
-#: C/opening-images.page:81
-msgid "<key>End</key> to jump to the last image in the directory."
-msgstr "<key>End</key> dizindeki son resme git."
+"symbolic</media>) düğmeleri ile dizindeki diğer resimlere göz atabilirler."
 
 #. (itstool) path: info/desc
 #: C/trashing-images.page:11
@@ -746,49 +649,114 @@ msgstr "<_:media-1/> Resim Gösterici (Loupe)"
 
 #. (itstool) path: section/title
 #: C/index.page:14
-msgid "Introduction"
-msgstr "Giriş"
-
-#. (itstool) path: section/p
-#: C/index.page:15
-msgid ""
-"Image Viewer is an image viewer that supports modern image formats. It "
-"provides:"
-msgstr ""
-"Resim Gösterici, modern resim biçimlerini destekleyen bir resim "
-"görüntüleyicidir. Kimi özellikleri şunlardır:"
-
-#. (itstool) path: item/p
-#: C/index.page:18
-msgid "Fast GPU accelerated image rendering with tiled rendering for SVGs"
-msgstr "SVGʼler için döşenmiş işleme ile hızlı GPU hızlandırmalı resim işleme"
-
-#. (itstool) path: item/p
-#: C/index.page:21
-msgid "Extendable and sandboxed raster image decoding"
-msgstr "Genişletilebilir ve yalıtılmış raster resim çözme"
-
-#. (itstool) path: item/p
-#: C/index.page:24
-msgid "Extensive support for touchpad and touchscreen gestures"
-msgstr "Dokunmatik yüzey ve dokunmatik ekran hareketleri için kapsamlı destek"
-
-#. (itstool) path: item/p
-#: C/index.page:27
-msgid "Accessible presentation of the most important metadata"
-msgstr "En önemli üst verilerin erişilebilir sunumu"
-
-#. (itstool) path: section/title
-#: C/index.page:32
 msgid "Getting Started"
 msgstr "Başlarken"
 
 #. (itstool) path: section/title
-#: C/index.page:35
+#: C/index.page:17
 msgid "Additional Features"
 msgstr "Ek Özellikler"
 
 #. (itstool) path: section/title
-#: C/index.page:38
+#: C/index.page:20
 msgid "Technical Information"
 msgstr "Teknik Bilgiler"
+
+#~ msgid ""
+#~ "<keyseq><key>Ctrl</key><key>+</key></keyseq> or <key>+</key> to zoom in."
+#~ msgstr ""
+#~ "<keyseq><key>Ctrl</key><key>+</key></keyseq> ya da <key>+</key> "
+#~ "yakınlaştırmak için."
+
+#~ msgid ""
+#~ "<keyseq><key>Ctrl</key><key>-</key></keyseq> or <key>-</key> to zoom out."
+#~ msgstr ""
+#~ "<keyseq><key>Ctrl</key><key>-</key></keyseq> ya da <key>-</key> "
+#~ "uzaklaştırmak için."
+
+#~ msgid ""
+#~ "<keyseq><key>Ctrl</key><key>0</key></keyseq> or <key>0</key> to zoom to "
+#~ "the best fitting size for the window size."
+#~ msgstr ""
+#~ "<keyseq><key>Ctrl</key><key>0</key></keyseq> ya da <key>0</key> pencereye "
+#~ "en uygun boyuta yakınlaştırmak için."
+
+#~ msgid ""
+#~ "<keyseq><key>Ctrl</key><key>1</key></keyseq> or <key>1</key> to zoom to "
+#~ "the image's original scale."
+#~ msgstr ""
+#~ "<keyseq><key>Ctrl</key><key>1</key></keyseq> ya da <key>1</key> resmin "
+#~ "özgün ölçeğine yakınlaştırmak için."
+
+#~ msgid ""
+#~ "<keyseq><key>Ctrl</key><key>2</key></keyseq> or <key>2</key> to zoom to "
+#~ "200% of the image's original scale."
+#~ msgstr ""
+#~ "<keyseq><key>Ctrl</key><key>2</key></keyseq> ya da <key>2</key> resmin "
+#~ "ölçeğini %200 artırmak için."
+
+#~ msgid ""
+#~ "Touchpad and touchscreen users can also zoom with a two-finger pinch "
+#~ "gesture."
+#~ msgstr ""
+#~ "Dokunmatik yüzey ve dokunmatik ekran kullanıcıları da iki parmakla "
+#~ "kıstırma hareketiyle resimleri yakınlaştırabilir."
+
+#~ msgid "<keyseq><key>Ctrl</key><key>←</key></keyseq> to pan left."
+#~ msgstr "<keyseq><key>Ctrl</key><key>←</key></keyseq> sola kaydırmak için."
+
+#~ msgid "<keyseq><key>Ctrl</key><key>→</key></keyseq> to pan right."
+#~ msgstr "<keyseq><key>Ctrl</key><key>→</key></keyseq> sağa kaydırmak için."
+
+#~ msgid "<keyseq><key>Ctrl</key><key>↑</key></keyseq> to pan up."
+#~ msgstr "<keyseq><key>Ctrl</key><key>↑</key></keyseq> yukarı kaydırmak için."
+
+#~ msgid "<keyseq><key>Ctrl</key><key>↓</key></keyseq> to pan down."
+#~ msgstr "<keyseq><key>Ctrl</key><key>↓</key></keyseq> aşağı kaydırmak için."
+
+#~ msgid "<keyseq><key>Ctrl</key><key>R</key></keyseq> to rotate clockwise."
+#~ msgstr ""
+#~ "<keyseq><key>Ctrl</key><key>R</key></keyseq> saat yönünde döndürmek için."
+
+#~ msgid ""
+#~ "<keyseq><key>Ctrl</key><key>Shift</key><key>R</key></keyseq> to rotate "
+#~ "counter-clockwise."
+#~ msgstr ""
+#~ "<keyseq><key>Ctrl</key><key>Shift</key><key>R</key></keyseq> saat yönünün "
+#~ "tersine döndürmek için."
+
+#~ msgid "<key>→</key> to go to the next image."
+#~ msgstr "<key>→</key> sonraki resme git."
+
+#~ msgid "<key>←</key> to go to the previous image."
+#~ msgstr "<key>←</key> önceki resme git."
+
+#~ msgid "<key>Home</key> to jump to the first image in the directory."
+#~ msgstr "<key>Home</key> dizindeki ilk resme git."
+
+#~ msgid "<key>End</key> to jump to the last image in the directory."
+#~ msgstr "<key>End</key> dizindeki son resme git."
+
+#~ msgid "Introduction"
+#~ msgstr "Giriş"
+
+#~ msgid ""
+#~ "Image Viewer is an image viewer that supports modern image formats. It "
+#~ "provides:"
+#~ msgstr ""
+#~ "Resim Gösterici, modern resim biçimlerini destekleyen bir resim "
+#~ "görüntüleyicidir. Kimi özellikleri şunlardır:"
+
+#~ msgid "Fast GPU accelerated image rendering with tiled rendering for SVGs"
+#~ msgstr ""
+#~ "SVGʼler için döşenmiş işleme ile hızlı GPU hızlandırmalı resim işleme"
+
+#~ msgid "Extendable and sandboxed raster image decoding"
+#~ msgstr "Genişletilebilir ve yalıtılmış raster resim çözme"
+
+#~ msgid "Extensive support for touchpad and touchscreen gestures"
+#~ msgstr ""
+#~ "Dokunmatik yüzey ve dokunmatik ekran hareketleri için kapsamlı destek"
+
+#~ msgid "Accessible presentation of the most important metadata"
+#~ msgstr "En önemli üst verilerin erişilebilir sunumu"
