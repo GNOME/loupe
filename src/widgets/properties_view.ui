@@ -103,7 +103,7 @@
               <object class="AdwPreferencesGroup" id="details">
                 <child>
                   <object class="AdwActionRow" id="location">
-                    <property name="title" translatable="yes">Location</property>
+                    <property name="title" translatable="yes" comments="Translators: This is a label for GPS coordinates">Location</property>
                     <property name="subtitle-selectable">True</property>
                     <style>
                       <class name="numeric" />
