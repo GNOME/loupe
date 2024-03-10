@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
 "POT-Creation-Date: 2024-03-09 11:38+0000\n"
-"PO-Revision-Date: 2024-03-09 14:05+0200\n"
+"PO-Revision-Date: 2024-03-10 22:03+0200\n"
 "Last-Translator: Rūdolfs Mazurs <rudolfs.mazurs@gmail.com>\n"
 "Language-Team: Latvian <lata-l10n@googlegroups.com>\n"
 "Language: lv\n"
@@ -589,7 +589,7 @@ msgstr "Ražotājs, modelis"
 
 #: src/window.rs:568
 msgid "Supported image formats"
-msgstr "Atbalstāmie attēlu formāti"
+msgstr "Atbalstītie attēlu formāti"
 
 #: src/window.rs:574
 msgid "All files"
@@ -737,4 +737,5 @@ msgstr "_Atvērt datnes..."
 
 #~ msgid "Could not read image"
 #~ msgstr "Neizdevās nolasīt attēlu"
+
 
