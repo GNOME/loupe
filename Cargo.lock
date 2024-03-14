@@ -989,9 +989,9 @@ dependencies = [
 
 [[package]]
 name = "glycin"
-version = "1.0.0-rc"
+version = "1.0.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "32a04a1d9802714d1397a78808f9f2dfb993268f22ea6915e0e12de4c5bec479"
+checksum = "6ebfac2819e7c4538c6567742a88d684ac5020f7e6de3d5e3f8578a72b4fbc5c"
 dependencies = [
  "async-fs",
  "async-global-executor",
@@ -1014,9 +1014,9 @@ dependencies = [
 
 [[package]]
 name = "glycin-utils"
-version = "1.0.0-rc"
+version = "1.0.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "e44e0a4bede2ac83be368b3b6815fd2059772e4ca66305f3273a47e1435bfae2"
+checksum = "135d59b585e3f5df5d5f81b6a2e77b681071c4ef6b06f7828b46b8f5944b6c37"
 dependencies = [
  "libseccomp",
  "memmap2",
