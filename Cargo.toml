@@ -14,7 +14,7 @@ disable-glycin-sandbox = []
 x11 = ["ashpd/gtk4_x11"]
 
 [dependencies]
-glycin = { version = "1.0.0-rc" }
+glycin = { version = "1.0.0" }
 anyhow = { version = "1.0.66", features = ["backtrace"] }
 arc-swap = "1.6.0"
 async-channel = "2.1.0"
