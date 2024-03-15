@@ -1,26 +1,26 @@
 # Korean translation for loupe.
-# Copyright (C) 2023 loupe's COPYRIGHT HOLDER
+# Copyright (C) 2023, 2024 loupe's  Contributors.
 # This file is distributed under the same license as the loupe package.
-# Seong-ho Cho <shcho@gnome.org>, 2023.
+# Seong-ho Cho <shcho@gnome.org>, 2023, 2024.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: loupe main\n"
-"POT-Creation-Date: 2023-09-10 17:47+0000\n"
-"PO-Revision-Date: 2023-09-14 11:26+0900\n"
-"Last-Translator: Seong-ho Cho <shcho@gnome.org>\n"
+"POT-Creation-Date: 2024-03-10 12:55+0000\n"
+"PO-Revision-Date: 2024-03-15 23:53+0900\n"
+"Last-Translator: Seong-ho Cho <darkcircle.0426@gmail.com>\n"
 "Language-Team: Korean <gnome-kr@googlegroups.com>\n"
 "Language: ko\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 3.3.2\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #. Put one translator per line, in the form NAME <EMAIL>, YEAR1, YEAR2
 msgctxt "_"
 msgid "translator-credits"
-msgstr "조성호 <shcho@gnome.org>, 2023"
+msgstr "조성호 <shcho@gnome.org>, 2023, 2024"
 
 #. (itstool) path: info/desc
 #: C/viewing-images.page:11
@@ -71,99 +71,42 @@ msgid ""
 "Users can zoom in with the <gui>Zoom In</gui> (<media type=\"image\" "
 "src=\"figures/zoom-in-symbolic.svg\">zoom-in-symbolic</media>) button and "
 "zoom out with the <gui>Zoom Out</gui> (<media type=\"image\" src=\"figures/"
-"zoom-out-symbolic.svg\">zoom-out-symbolic</media>) button. They can also use "
-"the following keyboard shortcuts:"
+"zoom-out-symbolic.svg\">zoom-out-symbolic</media>) button."
 msgstr ""
 "<gui>확대</gui> (<media type=\"image\" src=\"figures/zoom-in-symbolic."
 "svg\">zoom-in-symbolic</media>) 단추를 눌러 확대하거나 <gui>축소</gui> "
 "(<media type=\"image\" src=\"figures/zoom-out-symbolic.svg\">zoom-out-"
-"symbolic</media>) 단추를 눌러 축소할 수 있습니다. 다음 키보드 바로가기 키를 "
-"활용할 수도 있습니다:"
-
-#. (itstool) path: item/p
-#: C/viewing-images.page:21
-msgid ""
-"<keyseq><key>Ctrl</key><key>+</key></keyseq> or <key>+</key> to zoom in."
-msgstr "<keyseq><key>Ctrl</key><key>+</key></keyseq> or <key>+</key>: 확대."
-
-#. (itstool) path: item/p
-#: C/viewing-images.page:24
-msgid ""
-"<keyseq><key>Ctrl</key><key>-</key></keyseq> or <key>-</key> to zoom out."
-msgstr "<keyseq><key>Ctrl</key><key>-</key></keyseq> or <key>-</key>: 축소."
-
-#. (itstool) path: item/p
-#: C/viewing-images.page:27
-msgid ""
-"<keyseq><key>Ctrl</key><key>0</key></keyseq> or <key>0</key> to zoom to the "
-"best fitting size for the window size."
-msgstr ""
-"<keyseq><key>Ctrl</key><key>0</key></keyseq> or <key>0</key>: 창 크기에 맞게 "
-"확대율 조정."
-
-#. (itstool) path: item/p
-#: C/viewing-images.page:30
-msgid ""
-"<keyseq><key>Ctrl</key><key>1</key></keyseq> or <key>1</key> to zoom to the "
-"image's original scale."
-msgstr ""
-"<keyseq><key>Ctrl</key><key>1</key></keyseq> or <key>1</key>: 그림 원래 크기"
-"로 복귀."
-
-#. (itstool) path: item/p
-#: C/viewing-images.page:33
-msgid ""
-"<keyseq><key>Ctrl</key><key>2</key></keyseq> or <key>2</key> to zoom to 200% "
-"of the image's original scale."
-msgstr ""
-"<keyseq><key>Ctrl</key><key>2</key></keyseq> or <key>2</key>: 2배 확대."
+"symbolic</media>) 단추를 눌러 축소할 수 있습니다."
 
 #. (itstool) path: section/p
-#: C/viewing-images.page:36
+#: C/viewing-images.page:19
 msgid ""
-"Touchpad and touchscreen users can also zoom with a two-finger pinch gesture."
+"Touchpad and touchscreen users can also zoom with a two-finger pinch "
+"gesture. On touchpads, it is also possible to zoom via pressing the "
+"<key>Ctrl</key> and swiping up/down with two fingers."
 msgstr ""
-"터치패드와 터치 화면 사용자는 두 손가락 오므리기 동작으로 확대할 수 있습니다."
+"터치패드 및 터치 화면 사용자는 두 손가락 집게 동작으로도 확대할 수 있습니다. "
+"터치패드에서는 <key>Ctrl</key> 키를 누른 후 두 손가락으로 위 아래로 쓸어 오르"
+"내리면 확대/축소할 수 있습니다."
 
 #. (itstool) path: section/title
-#: C/viewing-images.page:39
+#: C/viewing-images.page:22
 msgid "Panning"
 msgstr "이동"
 
 #. (itstool) path: section/p
-#: C/viewing-images.page:40
+#: C/viewing-images.page:23
 msgid ""
 "Mouse and touchpad users can pan the view when zoomed in by clicking and "
 "dragging the image. Touchscreen users can use a single-finger drag gesture "
-"to pan the view. Users with a keyboard can also use the following keyboard "
-"shortcuts:"
+"to pan the view."
 msgstr ""
 "마우스와 터치패드 사용자는 확대한 그림을 누르고 끌어 위치를 옮기면서 볼 수 있"
 "습니다. 터치 화면 사용자는 한손가락 끌기 동작으로 보기 화면을 움직일 수 있습"
-"니다. 키보드 사용자는 다음 키보드 바로가기 키를 활용할 수도 있습니다:"
-
-#. (itstool) path: item/p
-#: C/viewing-images.page:45
-msgid "<keyseq><key>Ctrl</key><key>←</key></keyseq> to pan left."
-msgstr "<keyseq><key>Ctrl</key><key>←</key></keyseq>: 좌측으로 움직이기."
-
-#. (itstool) path: item/p
-#: C/viewing-images.page:48
-msgid "<keyseq><key>Ctrl</key><key>→</key></keyseq> to pan right."
-msgstr "<keyseq><key>Ctrl</key><key>→</key></keyseq>: 우측으로 움직이기."
-
-#. (itstool) path: item/p
-#: C/viewing-images.page:51
-msgid "<keyseq><key>Ctrl</key><key>↑</key></keyseq> to pan up."
-msgstr "<keyseq><key>Ctrl</key><key>↑</key></keyseq>: 위쪽으로 움직이기."
-
-#. (itstool) path: item/p
-#: C/viewing-images.page:54
-msgid "<keyseq><key>Ctrl</key><key>↓</key></keyseq> to pan down."
-msgstr "<keyseq><key>Ctrl</key><key>↓</key></keyseq>: 아래쪽으로 움직이기."
+"니다."
 
 #. (itstool) path: section/title
-#: C/viewing-images.page:59
+#: C/viewing-images.page:27
 msgid "Rotating"
 msgstr "회전"
 
@@ -172,7 +115,7 @@ msgstr "회전"
 #. the file changes, the md5 hash will change to let you know you need to
 #. update your localized copy. The msgstr is not used at all. Set it to
 #. whatever you like once you have updated your copy of the file.
-#: C/viewing-images.page:60
+#: C/viewing-images.page:28
 msgctxt "_"
 msgid ""
 "external ref='figures/object-rotate-right-symbolic.svg' "
@@ -186,7 +129,7 @@ msgstr ""
 #. the file changes, the md5 hash will change to let you know you need to
 #. update your localized copy. The msgstr is not used at all. Set it to
 #. whatever you like once you have updated your copy of the file.
-#: C/viewing-images.page:61
+#: C/viewing-images.page:29
 msgctxt "_"
 msgid ""
 "external ref='figures/object-rotate-left-symbolic.svg' "
@@ -196,46 +139,31 @@ msgstr ""
 "md5='8abe2a1bc5871a15c2f6534d19a4c7ee'"
 
 #. (itstool) path: section/p
-#: C/viewing-images.page:60
+#: C/viewing-images.page:28
 msgid ""
 "Users can use the <gui>Rotate Right</gui> (<media type=\"image\" "
 "src=\"figures/object-rotate-right-symbolic.svg\">object-rotate-right-"
 "symbolic</media>) and <gui>Rotate Left</gui> (<media type=\"image\" "
 "src=\"figures/object-rotate-left-symbolic.svg\">object-rotate-left-symbolic</"
 "media>) buttons under <gui style=\"menuitem\">Rotate</gui> in the main menu "
-"to rotate clockwise and counter-clockwise. They can also use the following "
-"keyboard shortcuts:"
+"to rotate clockwise and counter-clockwise."
 msgstr ""
 "여러분은 주 메뉴의 <gui style=\"menuitem\">회전</gui> 에서 <gui>우측 회전</"
 "gui>(<media type=\"image\" src=\"figures/object-rotate-right-symbolic."
 "svg\">object-rotate-right-symbolic</media>) 및 <gui>좌측 회전</gui> (<media "
 "type=\"image\" src=\"figures/object-rotate-left-symbolic.svg\">object-rotate-"
 "left-symbolic</media>) 단추로 시계 방향 및 시계 반대 방향으로 회전할 수 있습"
-"니다. 다음 키보드 바로 가기 키를 활용할 수도 있습니다:"
-
-#. (itstool) path: item/p
-#: C/viewing-images.page:66
-msgid "<keyseq><key>Ctrl</key><key>R</key></keyseq> to rotate clockwise."
-msgstr "<keyseq><key>Ctrl</key><key>R</key></keyseq>: 시계 방향 회전."
-
-#. (itstool) path: item/p
-#: C/viewing-images.page:69
-msgid ""
-"<keyseq><key>Ctrl</key><key>Shift</key><key>R</key></keyseq> to rotate "
-"counter-clockwise."
-msgstr ""
-"<keyseq><key>Ctrl</key><key>Shift</key><key>R</key></keyseq>: 시계 반대 방향 "
-"회전."
+"니다."
 
 #. (itstool) path: section/p
-#: C/viewing-images.page:72
+#: C/viewing-images.page:32
 msgid ""
 "Touchpad and touchscreen users can also use a two-finger rotate gesture."
 msgstr ""
 "터치패드와 터치 화면 사용자는 두 손가락 회전 동작을 사용할 수 있습니다."
 
 #. (itstool) path: section/title
-#: C/viewing-images.page:75
+#: C/viewing-images.page:35
 msgid "Fullscreen"
 msgstr "전체 화면"
 
@@ -244,7 +172,7 @@ msgstr "전체 화면"
 #. the file changes, the md5 hash will change to let you know you need to
 #. update your localized copy. The msgstr is not used at all. Set it to
 #. whatever you like once you have updated your copy of the file.
-#: C/viewing-images.page:77
+#: C/viewing-images.page:37
 msgctxt "_"
 msgid ""
 "external ref='figures/view-fullscreen-symbolic.svg' "
@@ -258,7 +186,7 @@ msgstr ""
 #. the file changes, the md5 hash will change to let you know you need to
 #. update your localized copy. The msgstr is not used at all. Set it to
 #. whatever you like once you have updated your copy of the file.
-#: C/viewing-images.page:77
+#: C/viewing-images.page:37
 msgctxt "_"
 msgid ""
 "external ref='figures/view-restore-symbolic.svg' "
@@ -268,21 +196,28 @@ msgstr ""
 "md5='d00df849240f2d92c7fa1429d3ae8254'"
 
 #. (itstool) path: section/p
-#: C/viewing-images.page:76
+#: C/viewing-images.page:36
 msgid ""
 "Image Viewer has a simple fullscreen mode. Users can toggle fullscreen mode "
 "by pressing the <gui>Toggle Fullscreen</gui> (<media type=\"image\" "
 "src=\"figures/view-fullscreen-symbolic.svg\">view-fullscreen-symbolic</"
 "media> / <media type=\"image\" src=\"figures/view-restore-symbolic."
-"svg\">view-restore-symbolic</media>) button. Keyboard users can also use "
-"<key>F11</key> to toggle fullscreen mode."
+"svg\">view-restore-symbolic</media>) button."
 msgstr ""
 "그림 보기 앱에는 간단한 전체 화면 모드가 있습니다. <gui>전체 화면 전환</"
 "gui>  (<media type=\"image\" src=\"figures/view-fullscreen-symbolic."
 "svg\">view-fullscreen-symbolic</media> / <media type=\"image\" src=\"figures/"
 "view-restore-symbolic.svg\">view-restore-symbolic</media>) 단추를 눌러 전체 "
-"화면 모드로 전환할 수 있습니다. 키보드 사용자는 <key>F11</key> 키로 전체 화"
-"면 모드를 전환할 수 있습니다."
+"화면 모드로 전환할 수 있습니다."
+
+#. (itstool) path: note/p
+#: C/viewing-images.page:39 C/opening-images.page:70
+msgid ""
+"Keyboard users can also use the corresponding shortcuts presented in "
+"Keyboard Shortcuts dialog."
+msgstr ""
+"키보드 사용자는 키보드 바로 가기 키 대화상자에서 나타나는 관련 바로 가기 키"
+"를 사용할 수 있습니다."
 
 #. (itstool) path: page/title
 #: C/supported-formats.page:12
@@ -477,36 +412,14 @@ msgid ""
 "the <gui>Previous Image</gui> (<media type=\"image\" src=\"figures/go-"
 "previous-symbolic.svg\">go-previous-symbolic</media>) and <gui>Next Image</"
 "gui> (<media type=\"image\" src=\"figures/go-next-symbolic.svg\">go-next-"
-"symbolic</media>) buttons. Keyboard users can also use the following "
-"shortcuts:"
+"symbolic</media>) buttons."
 msgstr ""
 "파일 열기 대화상자 또는 파일 관리자에서 그림을 열 때, 루페에서는 그림의 상위 "
 "디렉터리에 있는 다른 파일도 불러오고 철자순으로 정렬합니다. 여러분은 디렉터리"
 "에 있는 다른 이미지를 <gui>이전 그림</gui> (<media type=\"image\" "
 "src=\"figures/go-previous-symbolic.svg\">go-previous-symbolic</media>) 단추"
 "와 <gui>다음 그림</gui> (<media type=\"image\" src=\"figures/go-next-"
-"symbolic.svg\">go-next-symbolic</media>)  단추로 탐색할 수 있습니다. 키보드 "
-"사용자는 다음 키보드 바로 가기 키를 활용할 수 있습니다:"
-
-#. (itstool) path: item/p
-#: C/opening-images.page:72
-msgid "<key>→</key> to go to the next image."
-msgstr "<key>→</key> 키로 다음 그림으로 이동합니다."
-
-#. (itstool) path: item/p
-#: C/opening-images.page:75
-msgid "<key>←</key> to go to the previous image."
-msgstr "<key>←</key> 키로 이전 그림으로 이동합니다."
-
-#. (itstool) path: item/p
-#: C/opening-images.page:78
-msgid "<key>Home</key> to jump to the first image in the directory."
-msgstr "<key>Home</key>: 디렉터리 처음 그림 표시."
-
-#. (itstool) path: item/p
-#: C/opening-images.page:81
-msgid "<key>End</key> to jump to the last image in the directory."
-msgstr "<key>End</key>: 디렉터리 마지막 그림 표시."
+"symbolic.svg\">go-next-symbolic</media>) 단추로 탐색할 수 있습니다."
 
 #. (itstool) path: info/desc
 #: C/trashing-images.page:11
@@ -717,49 +630,106 @@ msgstr "<_:media-1/> 그림 보기 (루페)"
 
 #. (itstool) path: section/title
 #: C/index.page:14
-msgid "Introduction"
-msgstr "개요"
-
-#. (itstool) path: section/p
-#: C/index.page:15
-msgid ""
-"Image Viewer is an image viewer that supports modern image formats. It "
-"provides:"
-msgstr ""
-"그림 보기는 최신 그림 형식을 지원하는 그림 보기 앱입니다. 다음 기능을 제공합"
-"니다:"
-
-#. (itstool) path: item/p
-#: C/index.page:18
-msgid "Fast GPU accelerated image rendering with tiled rendering for SVGs"
-msgstr "SVG 렌더링시 타일 렌더링 기반 고속 GPU 가속 그림 렌더링"
-
-#. (itstool) path: item/p
-#: C/index.page:21
-msgid "Extendable and sandboxed raster image decoding"
-msgstr "확장, 샌드박싱 래스터 그림 디코딩"
-
-#. (itstool) path: item/p
-#: C/index.page:24
-msgid "Extensive support for touchpad and touchscreen gestures"
-msgstr "터치패드 및 터치 화면 동작 확장 지원"
-
-#. (itstool) path: item/p
-#: C/index.page:27
-msgid "Accessible presentation of the most important metadata"
-msgstr "가장 중요한 메타데이터의 접근이 용이한 표시"
-
-#. (itstool) path: section/title
-#: C/index.page:32
 msgid "Getting Started"
 msgstr "시작하기"
 
 #. (itstool) path: section/title
-#: C/index.page:35
+#: C/index.page:17
 msgid "Additional Features"
 msgstr "추가 기능"
 
 #. (itstool) path: section/title
-#: C/index.page:38
+#: C/index.page:20
 msgid "Technical Information"
 msgstr "기술 정보"
+
+#~ msgid ""
+#~ "<keyseq><key>Ctrl</key><key>+</key></keyseq> or <key>+</key> to zoom in."
+#~ msgstr "<keyseq><key>Ctrl</key><key>+</key></keyseq> or <key>+</key>: 확대."
+
+#~ msgid ""
+#~ "<keyseq><key>Ctrl</key><key>-</key></keyseq> or <key>-</key> to zoom out."
+#~ msgstr "<keyseq><key>Ctrl</key><key>-</key></keyseq> or <key>-</key>: 축소."
+
+#~ msgid ""
+#~ "<keyseq><key>Ctrl</key><key>0</key></keyseq> or <key>0</key> to zoom to "
+#~ "the best fitting size for the window size."
+#~ msgstr ""
+#~ "<keyseq><key>Ctrl</key><key>0</key></keyseq> or <key>0</key>: 창 크기에 맞"
+#~ "게 확대율 조정."
+
+#~ msgid ""
+#~ "<keyseq><key>Ctrl</key><key>1</key></keyseq> or <key>1</key> to zoom to "
+#~ "the image's original scale."
+#~ msgstr ""
+#~ "<keyseq><key>Ctrl</key><key>1</key></keyseq> or <key>1</key>: 그림 원래 크"
+#~ "기로 복귀."
+
+#~ msgid ""
+#~ "<keyseq><key>Ctrl</key><key>2</key></keyseq> or <key>2</key> to zoom to "
+#~ "200% of the image's original scale."
+#~ msgstr ""
+#~ "<keyseq><key>Ctrl</key><key>2</key></keyseq> or <key>2</key>: 2배 확대."
+
+#~ msgid ""
+#~ "Touchpad and touchscreen users can also zoom with a two-finger pinch "
+#~ "gesture."
+#~ msgstr ""
+#~ "터치패드와 터치 화면 사용자는 두 손가락 오므리기 동작으로 확대할 수 있습니"
+#~ "다."
+
+#~ msgid "<keyseq><key>Ctrl</key><key>←</key></keyseq> to pan left."
+#~ msgstr "<keyseq><key>Ctrl</key><key>←</key></keyseq>: 좌측으로 움직이기."
+
+#~ msgid "<keyseq><key>Ctrl</key><key>→</key></keyseq> to pan right."
+#~ msgstr "<keyseq><key>Ctrl</key><key>→</key></keyseq>: 우측으로 움직이기."
+
+#~ msgid "<keyseq><key>Ctrl</key><key>↑</key></keyseq> to pan up."
+#~ msgstr "<keyseq><key>Ctrl</key><key>↑</key></keyseq>: 위쪽으로 움직이기."
+
+#~ msgid "<keyseq><key>Ctrl</key><key>↓</key></keyseq> to pan down."
+#~ msgstr "<keyseq><key>Ctrl</key><key>↓</key></keyseq>: 아래쪽으로 움직이기."
+
+#~ msgid "<keyseq><key>Ctrl</key><key>R</key></keyseq> to rotate clockwise."
+#~ msgstr "<keyseq><key>Ctrl</key><key>R</key></keyseq>: 시계 방향 회전."
+
+#~ msgid ""
+#~ "<keyseq><key>Ctrl</key><key>Shift</key><key>R</key></keyseq> to rotate "
+#~ "counter-clockwise."
+#~ msgstr ""
+#~ "<keyseq><key>Ctrl</key><key>Shift</key><key>R</key></keyseq>: 시계 반대 방"
+#~ "향 회전."
+
+#~ msgid "<key>→</key> to go to the next image."
+#~ msgstr "<key>→</key> 키로 다음 그림으로 이동합니다."
+
+#~ msgid "<key>←</key> to go to the previous image."
+#~ msgstr "<key>←</key> 키로 이전 그림으로 이동합니다."
+
+#~ msgid "<key>Home</key> to jump to the first image in the directory."
+#~ msgstr "<key>Home</key>: 디렉터리 처음 그림 표시."
+
+#~ msgid "<key>End</key> to jump to the last image in the directory."
+#~ msgstr "<key>End</key>: 디렉터리 마지막 그림 표시."
+
+#~ msgid "Introduction"
+#~ msgstr "개요"
+
+#~ msgid ""
+#~ "Image Viewer is an image viewer that supports modern image formats. It "
+#~ "provides:"
+#~ msgstr ""
+#~ "그림 보기는 최신 그림 형식을 지원하는 그림 보기 앱입니다. 다음 기능을 제공"
+#~ "합니다:"
+
+#~ msgid "Fast GPU accelerated image rendering with tiled rendering for SVGs"
+#~ msgstr "SVG 렌더링시 타일 렌더링 기반 고속 GPU 가속 그림 렌더링"
+
+#~ msgid "Extendable and sandboxed raster image decoding"
+#~ msgstr "확장, 샌드박싱 래스터 그림 디코딩"
+
+#~ msgid "Extensive support for touchpad and touchscreen gestures"
+#~ msgstr "터치패드 및 터치 화면 동작 확장 지원"
+
+#~ msgid "Accessible presentation of the most important metadata"
+#~ msgstr "가장 중요한 메타데이터의 접근이 용이한 표시"
