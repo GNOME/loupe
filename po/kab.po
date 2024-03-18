@@ -1,0 +1,654 @@
+# Kabyle translation for loupe.
+# Copyright (C) 2024 loupe's COPYRIGHT HOLDER
+# This file is distributed under the same license as the loupe package.
+# ZiriSut <rgebbid@gmail.com>, 2024.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: loupe main\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
+"POT-Creation-Date: 2024-03-15 15:08+0000\n"
+"PO-Revision-Date: 2024-03-18 03:33+0100\n"
+"Last-Translator: sa\n"
+"Language-Team: Kabyle <kab@li.org>\n"
+"Language: kab\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4.2\n"
+
+#: data/org.gnome.Loupe.desktop.in.in:3
+#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:29 src/window.rs:880
+msgid "Image Viewer"
+msgstr "Ameẓray n tugniwin"
+
+#: data/org.gnome.Loupe.desktop.in.in:11
+msgid "Picture;Graphics;Loupe;"
+msgstr "Tugna;Ulifen;Loupe;"
+
+#: data/org.gnome.Loupe.gschema.xml.in:6
+msgid "Show the image properties sidebar"
+msgstr "Sken afeggag adisan n waraten n tugna"
+
+#. developer_name tag deprecated with Appstream 1.0
+#: data/org.gnome.Loupe.metainfo.xml.in.in:8 src/about.rs:32
+msgid "The GNOME Project"
+msgstr "Asenfar n GNOME"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:13
+msgid "View images"
+msgstr "Sken tugniwin"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:15
+msgid "Browse through your images and inspect their metadata with:"
+msgstr "Inig deg tugniwin-ik, tsewḍeḍ aɣefisefka-nsent:"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:17
+msgid "Fast GPU accelerated image rendering"
+msgstr "Tiririt n tugna tettuckeḍ s GPU uzrib"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:18
+msgid "Tiled rendering for vector graphics"
+msgstr "Tiririt d tabursa i wudlif amaway"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:19
+msgid "Extendable and sandboxed image decoding"
+msgstr "Asettengel n tugniwin yettuseɣzafen d tigin n ummesten"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:20
+msgid "Accessible presentation of the most important metadata."
+msgstr "Timsikent i unekcum ɣer waɣefisefka yesεan azal."
+
+#: data/resources/gtk/help-overlay.ui:11
+msgctxt "shortcut window"
+msgid "General Shortcuts"
+msgstr "Inegzumen n unasiw imuta"
+
+#: data/resources/gtk/help-overlay.ui:14
+msgctxt "shortcut window"
+msgid "Show Main Menu"
+msgstr "Sken umuɣ agejdan"
+
+#: data/resources/gtk/help-overlay.ui:20
+msgctxt "shortcut window"
+msgid "Copy Image or Metadata to Clipboard"
+msgstr "Nɣel tugna neɣ Metadata ɣer tecfawt"
+
+#: data/resources/gtk/help-overlay.ui:26
+msgctxt "shortcut window"
+msgid "Move Image to Trash"
+msgstr "Senkez tugna ɣer tqecwalt"
+
+#: data/resources/gtk/help-overlay.ui:32
+msgctxt "shortcut window"
+msgid "Permanently Delete Image"
+msgstr "Kkes tugna i lebda"
+
+#: data/resources/gtk/help-overlay.ui:38
+msgctxt "shortcut window"
+msgid "Toggle Image Properties"
+msgstr "Beddel araten n tugna"
+
+#: data/resources/gtk/help-overlay.ui:44
+msgctxt "shortcut window"
+msgid "Set as Background"
+msgstr "Sbadu-t d agilal"
+
+#: data/resources/gtk/help-overlay.ui:50
+msgctxt "shortcut window"
+msgid "Toggle Fullscreen"
+msgstr "Qluqel ɣer ugdil aččuran"
+
+#: data/resources/gtk/help-overlay.ui:56
+msgctxt "shortcut window"
+msgid "Leave Fullscreen"
+msgstr "Ffeɣ seg ugdil aččuran"
+
+#: data/resources/gtk/help-overlay.ui:62
+msgctxt "shortcut window"
+msgid "New Window"
+msgstr "Asfaylu amaynut"
+
+#: data/resources/gtk/help-overlay.ui:68
+msgctxt "shortcut window"
+msgid "Open Help"
+msgstr "Ldi tallalt"
+
+#: data/resources/gtk/help-overlay.ui:74
+msgctxt "shortcut window"
+msgid "Show Keyboard Shortcuts"
+msgstr "Sken-d inegzumen n unasiw"
+
+#: data/resources/gtk/help-overlay.ui:80
+msgctxt "shortcut window"
+msgid "Close Window"
+msgstr "Mdel asfaylu"
+
+#: data/resources/gtk/help-overlay.ui:86
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "Ffeɣ"
+
+#: data/resources/gtk/help-overlay.ui:94
+msgctxt "shortcut window"
+msgid "Navigate Images"
+msgstr "Sineg tugniwin"
+
+#: data/resources/gtk/help-overlay.ui:98 data/resources/gtk/help-overlay.ui:112
+#: data/resources/gtk/help-overlay.ui:224
+#: data/resources/gtk/help-overlay.ui:238
+msgctxt "shortcut window"
+msgid "Next Image"
+msgstr "Tugna tuḍfirt"
+
+#: data/resources/gtk/help-overlay.ui:105
+#: data/resources/gtk/help-overlay.ui:119
+#: data/resources/gtk/help-overlay.ui:231
+#: data/resources/gtk/help-overlay.ui:245
+msgctxt "shortcut window"
+msgid "Previous Image"
+msgstr "Tugna tudfirt"
+
+#: data/resources/gtk/help-overlay.ui:125
+msgctxt "shortcut window"
+msgid "First Image"
+msgstr "Tugna tamezwarut"
+
+#: data/resources/gtk/help-overlay.ui:131
+msgctxt "shortcut window"
+msgid "Last Image"
+msgstr "Tugna taneggarut"
+
+#: data/resources/gtk/help-overlay.ui:139
+msgctxt "shortcut window"
+msgid "Rotate Image"
+msgstr "Zzi tugna"
+
+#: data/resources/gtk/help-overlay.ui:142
+#: data/resources/gtk/help-overlay.ui:263
+msgctxt "shortcut window"
+msgid "Rotate Clockwise"
+msgstr "Zzi deg tnila tisegnatin n temrilt"
+
+#: data/resources/gtk/help-overlay.ui:148
+#: data/resources/gtk/help-overlay.ui:269
+msgctxt "shortcut window"
+msgid "Rotate Counterclockwise"
+msgstr "Zzi mgal tanila tisegnatin n temrilt"
+
+#: data/resources/gtk/help-overlay.ui:156
+msgctxt "shortcut window"
+msgid "Zoom Image"
+msgstr "Semɣer tugna"
+
+#: data/resources/gtk/help-overlay.ui:159
+#: data/resources/gtk/help-overlay.ui:251
+msgctxt "shortcut window"
+msgid "Zoom In"
+msgstr "Semẓi"
+
+#: data/resources/gtk/help-overlay.ui:165
+#: data/resources/gtk/help-overlay.ui:257
+msgctxt "shortcut window"
+msgid "Zoom Out"
+msgstr "Semɣer"
+
+#: data/resources/gtk/help-overlay.ui:171
+msgctxt "shortcut window"
+msgid "Best Fit"
+msgstr "Asemsawi igerrzen"
+
+#: data/resources/gtk/help-overlay.ui:177
+msgctxt "shortcut window"
+msgid "Original Scale"
+msgstr "Tafesna tagejdant"
+
+#: data/resources/gtk/help-overlay.ui:183
+msgctxt "shortcut window"
+msgid "200% Scale"
+msgstr "200% n tfesna"
+
+#: data/resources/gtk/help-overlay.ui:191
+msgctxt "shortcut window"
+msgid "Pan View"
+msgstr "Taskant n ugalis"
+
+#: data/resources/gtk/help-overlay.ui:194
+msgctxt "shortcut window"
+msgid "Pan Left"
+msgstr "Agalis n zelmeḍ"
+
+#: data/resources/gtk/help-overlay.ui:200
+msgctxt "shortcut window"
+msgid "Pan Right"
+msgstr "Agalis n yeffus"
+
+#: data/resources/gtk/help-overlay.ui:206
+msgctxt "shortcut window"
+msgid "Pan Up"
+msgstr "Agalis afellay"
+
+#: data/resources/gtk/help-overlay.ui:212
+msgctxt "shortcut window"
+msgid "Pan Down"
+msgstr "Agalis ddaw"
+
+#: data/resources/gtk/help-overlay.ui:220
+msgctxt "shortcut window"
+msgid "Gestures"
+msgstr "Isilifen"
+
+#. Translators: Replace "translator-credits" with your names, one name per line
+#: src/about.rs:41
+msgid "translator-credits"
+msgstr "amsuqqel-isemdan"
+
+#: src/about.rs:42
+msgid "Copyright © 2020–2024 Christopher Davis et al."
+msgstr "Izerfan © 2020–2024 Christopher Davis et al."
+
+#: src/file_model.rs:128
+msgid "Could not list other files in directory."
+msgstr "Ur yezmir ara ad yebder ifuyla niḍen deg ukaram."
+
+#. Translators: short for "north" in GPS coordinate
+#: src/metadata/gps.rs:165
+msgid "N"
+msgstr "Agafa"
+
+#. Translators: short for "south" in GPS coordinate
+#: src/metadata/gps.rs:168
+msgid "S"
+msgstr "Anẓul"
+
+#. Translators: short for "east" in GPS coordinate
+#: src/metadata/gps.rs:190
+msgid "E"
+msgstr "Asammar"
+
+#. Translators: short for "west" in GPS coordinate
+#: src/metadata/gps.rs:193
+msgid "W"
+msgstr "M"
+
+#. Translators: Unit for exposure time in seconds
+#: src/metadata/mod.rs:260
+msgid "1\\u{2215}{}\\u{202F}s"
+msgstr "1\\u{2215}{}\\u{202F}s"
+
+#. Translators: Unit for focal length in millimeters
+#: src/metadata/mod.rs:285
+msgid "{}\\u{202F}mm"
+msgstr "{}\\u{202F}mm"
+
+#. Translators: This is the date and time format we use in metadata output etc.
+#. The format has to follow <https://docs.gtk.org/glib/method.DateTime.format.html>
+#. The default is already translated. Don't change if you are not sure what to
+#. use.
+#: src/util/mod.rs:37
+#, c-format
+msgid "%x %X"
+msgstr "%x %X"
+
+#: src/util/mod.rs:180 src/window.rs:701
+msgid "Failed to restore image from trash"
+msgstr "Tecceḍ tririt n tugna seg tqecwalt"
+
+#: src/util/mod.rs:201
+msgid "Failed to open image"
+msgstr "Tecceḍ twaledyawt n tugna"
+
+#: src/widgets/image_page.ui:6 src/window.ui:16
+msgid "_Open With…"
+msgstr "_Ldi s…"
+
+#: src/widgets/image_page.ui:14 src/window.ui:24
+msgid "_Print…"
+msgstr "_Siggez…"
+
+#: src/widgets/image_page.ui:18
+msgid "_Copy"
+msgstr "_Nɣel"
+
+#: src/widgets/image_page.ui:23 src/window.ui:29
+msgid "Rotate"
+msgstr "Tuzzya"
+
+#: src/widgets/image_page.ui:34 src/window.ui:40
+msgid "_Set as Background…"
+msgstr "_Sbadu-t d agilal…"
+
+#: src/widgets/image_page.ui:63
+msgid "Could not Load Image"
+msgstr "Yegguma ad d-isali tugna"
+
+#: src/widgets/image_page.ui:97 src/window.ui:106
+msgid "Rotate Left"
+msgstr "Zzi ɣer zelmeḍ"
+
+#: src/widgets/image_page.ui:107 src/window.ui:116
+msgid "Rotate Right"
+msgstr "Zzi ɣer yeffus"
+
+#. Translators: This is a toast notification, informing the user that
+#. an image has been set as background.
+#: src/widgets/image_view.rs:682
+msgid "Set as background."
+msgstr "Sbadu-t d agilal."
+
+#: src/widgets/image_view.rs:695
+msgid "Could not set background."
+msgstr "Yegguma ad isbadu agilal."
+
+#: src/widgets/image_view.ui:27
+msgid "Previous Image"
+msgstr "Tugna tudfirt"
+
+#: src/widgets/image_view.ui:38
+msgid "Next Image"
+msgstr "Tugna tuḍfirt"
+
+#: src/widgets/image_view.ui:63
+msgid "Zoom Out"
+msgstr "Semɣer"
+
+#: src/widgets/image_view.ui:74
+msgid "Zoom In"
+msgstr "Semẓi"
+
+#: src/widgets/image_view.ui:85
+msgid "Toggle Fullscreen"
+msgstr "Qluqel ɣer ugdil aččuran"
+
+#: src/widgets/print.rs:116
+msgid "Top"
+msgstr "Asawen"
+
+#: src/widgets/print.rs:117
+msgid "Center"
+msgstr "Talemmast"
+
+#: src/widgets/print.rs:118
+msgid "Bottom"
+msgstr "Akessar"
+
+#: src/widgets/print.rs:119
+msgid "Left"
+msgstr "Azelmaḍ"
+
+#: src/widgets/print.rs:120
+msgid "Right"
+msgstr "Ayeffus"
+
+#. Translators: Shorthand for centimeter
+#: src/widgets/print.rs:156
+msgid "cm"
+msgstr "cm"
+
+#. Translators: Shorthand for inch
+#: src/widgets/print.rs:158
+msgid "in"
+msgstr "deg"
+
+#. Translators: Shorthand for pixel
+#: src/widgets/print.rs:160
+msgid "px"
+msgstr "px"
+
+#. Translators: {} is a placeholder for the filename
+#: src/widgets/print.rs:371
+msgid "Print “{}”"
+msgstr "Siggez “{}”"
+
+#: src/widgets/print.rs:782
+msgid "_Scale"
+msgstr "_Tafesna"
+
+#: src/widgets/print.rs:785
+msgid "_Width"
+msgstr "_Tehri"
+
+#. Translators: Go back to previous page
+#: src/widgets/print.ui:29
+msgid "_Back"
+msgstr "_Ɣer deffir"
+
+#: src/widgets/print.ui:37
+msgid "_Print"
+msgstr "_Siggez"
+
+#: src/widgets/print.ui:56
+msgid "Layout"
+msgstr "Taneɣruft"
+
+#: src/widgets/print.ui:59
+msgid "_Orientation"
+msgstr "_Tanila"
+
+#: src/widgets/print.ui:72
+msgid "Portrait Page Orientation"
+msgstr "Tanila n yisebtar s teɣzi"
+
+#: src/widgets/print.ui:80
+msgid "Landscape Page Orientation"
+msgstr "Tanila n yisebtar s tehri"
+
+#: src/widgets/print.ui:89
+msgid "_Alignment"
+msgstr "_Areyyec"
+
+#: src/widgets/print.ui:108
+msgid "Margins"
+msgstr "Tamiwin"
+
+#: src/widgets/print.ui:111
+msgid "Margin Units"
+msgstr "Iferdisen n tama"
+
+#: src/widgets/print.ui:128
+msgid "_Horizontal"
+msgstr "_Aglawan"
+
+#: src/widgets/print.ui:134
+msgid "_Vertical"
+msgstr "_Aratak"
+
+#: src/widgets/print.ui:142 src/widgets/properties_view.ui:53
+msgid "Image Size"
+msgstr "Teɣzi n tugna"
+
+#: src/widgets/print.ui:145
+msgid "Image Size Units"
+msgstr "Iferdisen n teɣzi n tama"
+
+#: src/widgets/print.ui:163
+msgid "_Fill Space"
+msgstr "_Ččar tallunt"
+
+#: src/widgets/print.ui:174
+msgid "H_eight"
+msgstr "T_iddi"
+
+#: src/widgets/properties_view.rs:234
+msgid "Unknown"
+msgstr "Arussin"
+
+#. Translators: Addition of image being transparent to format name
+#: src/widgets/properties_view.rs:238
+msgid ", transparent"
+msgstr ", afrawan"
+
+#. Translators: Addition of image being grayscale to format name
+#: src/widgets/properties_view.rs:243
+msgid ", grayscale"
+msgstr ", tifesniwin n udemdam"
+
+#. Translators: Addition of bit size to format name
+#: src/widgets/properties_view.rs:248
+msgid ", {}\\u{202F}bit"
+msgstr ", {}\\u{202F}bit"
+
+#: src/widgets/properties_view.rs:299
+msgid "Image Coordinates Copied"
+msgstr "Imsidag n tugna ttwaneɣlen"
+
+#: src/widgets/properties_view.ui:19
+msgid "Folder"
+msgstr "Akaram"
+
+#: src/widgets/properties_view.ui:26
+msgid "Open Containing Folder"
+msgstr "Ldi akaram anagbar"
+
+#: src/widgets/properties_view.ui:39
+msgid "URI"
+msgstr "URI"
+
+#: src/widgets/properties_view.ui:62
+msgid "Image Format"
+msgstr "Amasal n tugna"
+
+#: src/widgets/properties_view.ui:71
+msgid "File Size"
+msgstr "Teɣzi n ufaylu"
+
+#: src/widgets/properties_view.ui:84
+msgid "File Created"
+msgstr "Afaylu yettwarna"
+
+#: src/widgets/properties_view.ui:93
+msgid "File Modified"
+msgstr "Afaylu yettwabeddel"
+
+#. Translators: This is a label for GPS coordinates
+#: src/widgets/properties_view.ui:106
+msgid "Location"
+msgstr "Adig"
+
+#: src/widgets/properties_view.ui:116
+msgid "Copy Coordinates"
+msgstr "Nɣel imsidag"
+
+#: src/widgets/properties_view.ui:127
+msgid "Open Location"
+msgstr "Ldi adig"
+
+#: src/widgets/properties_view.ui:140
+msgid "Originally Created"
+msgstr "Yettwarna deg tazwara"
+
+#: src/widgets/properties_view.ui:149
+msgid "Aperture"
+msgstr "Alday"
+
+#: src/widgets/properties_view.ui:158
+msgid "Exposure"
+msgstr "Timsikent"
+
+#: src/widgets/properties_view.ui:167
+msgid "ISO"
+msgstr "ISO"
+
+#: src/widgets/properties_view.ui:176
+msgid "Focal Length"
+msgstr "Teɣzi n udikan"
+
+#: src/widgets/properties_view.ui:185
+msgid "Maker, Model"
+msgstr "Amesnulfu, Tamudemt"
+
+#: src/window.rs:568
+msgid "Supported image formats"
+msgstr "Imasalen n tugna yettwasefraken"
+
+#: src/window.rs:574
+msgid "All files"
+msgstr "Akk ifuyla"
+
+#: src/window.rs:581
+msgid "Open Image"
+msgstr "Ldi tugna"
+
+#: src/window.rs:667
+msgid "Image copied to clipboard"
+msgstr "Tugna tettwanɣel ɣer tecfawt"
+
+#: src/window.rs:688
+msgid "Image moved to trash"
+msgstr "Tugna tettwasenkez ɣer tqecwalt"
+
+#: src/window.rs:689
+msgid "Undo"
+msgstr "Semmet"
+
+#: src/window.rs:715
+msgid "Failed to move image to trash"
+msgstr "Yecceḍ usenkez n tugna ɣer tqecwalt"
+
+#: src/window.rs:741
+msgid "Permanently Delete Image?"
+msgstr "Kkes tugna i lebda?"
+
+#: src/window.rs:743
+msgid "After deleting the image “{}” it will be permanently lost."
+msgstr "Seld tukksa n tugna \"{}” ad iruḥ i lebda."
+
+#: src/window.rs:751
+msgid "Cancel"
+msgstr "Sefsex"
+
+#: src/window.rs:752
+msgid "Delete"
+msgstr "Kkes"
+
+#: src/window.rs:763
+msgid "Failed to delete image"
+msgstr "Tecceḍ tukksa n tugna"
+
+#: src/window.ui:6
+msgid "_New Window"
+msgstr "_Asfaylu amaynut"
+
+#: src/window.ui:10
+msgid "_Open…"
+msgstr "_Ldi…"
+
+#: src/window.ui:46
+msgid "_Help"
+msgstr "_Tallalt"
+
+#: src/window.ui:50
+msgid "_Keyboard Shortcuts"
+msgstr "_Inegzumen n unasiw"
+
+#: src/window.ui:54
+msgid "_About Image Viewer"
+msgstr "_Γef umsenqad n tugniwin"
+
+#: src/window.ui:85
+msgid "Copy to Clipboard"
+msgstr "Nɣel ɣer tecfawt"
+
+#: src/window.ui:92
+msgid "Move to Trash"
+msgstr "Ger-it ɣer tqecwalt"
+
+#: src/window.ui:98
+msgid "Main Menu"
+msgstr "Umuɣ agejdan"
+
+#: src/window.ui:130
+msgid "Image Properties"
+msgstr "Iraten n tugniwin"
+
+#: src/window.ui:174
+msgid "View Images"
+msgstr "Sken tugniwin"
+
+#: src/window.ui:175
+msgid "Drag and drop images here"
+msgstr "Zuɣer syen sres tugniwin dagi"
+
+#: src/window.ui:179
+msgid "_Open Files…"
+msgstr "_Ldi ifuyla…"
