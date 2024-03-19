@@ -25,6 +25,7 @@
   <url type="translate">https://l10n.gnome.org/module/loupe/</url>
   <url type="donation">https://www.gnome.org/donate/</url>
   <url type="vcs-browser">https://gitlab.gnome.org/GNOME/loupe</url>
+  <url type="contribute">https://welcome.gnome.org/app/Loupe/</url>
 
   <screenshots>
     <screenshot type="default">
