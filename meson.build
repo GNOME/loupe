@@ -1,5 +1,5 @@
 project('loupe', 'rust',
-          version: '46.0',
+          version: '47.alpha',
     meson_version: '>= 0.59.0',
   default_options: [ 'warning_level=2',
                    ],
