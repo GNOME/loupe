@@ -304,11 +304,11 @@ mod imp {
 
             self.forward_click_gesture
                 .connect_pressed(clone!(@weak obj => move |_,_,_,_| {
-                    obj.image_view().navigate(Direction::Forward, true);
+                    obj.image_view().navigate(Direction::Forward, false);
                 }));
             self.backward_click_gesture
                 .connect_pressed(clone!(@weak obj => move |_,_,_,_| {
-                    obj.image_view().navigate(Direction::Back, true);
+                    obj.image_view().navigate(Direction::Back, false);
                 }));
             self.properties_button
                 .connect_toggled(clone!(@weak obj => move |_| {
