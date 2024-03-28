@@ -117,9 +117,10 @@ impl LpFileModel {
             let enumerator = directory
                 .enumerate_children(
                     &format!(
-                        "{},{},{}",
+                        "{},{},{},{}",
                         gio::FILE_ATTRIBUTE_STANDARD_NAME,
                         gio::FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE,
+                        gio::FILE_ATTRIBUTE_STANDARD_FAST_CONTENT_TYPE,
                         gio::FILE_ATTRIBUTE_STANDARD_IS_HIDDEN,
                     ),
                     gio::FileQueryInfoFlags::NONE,
@@ -129,8 +130,22 @@ impl LpFileModel {
 
             enumerator.for_each(|info| {
                 if let Ok(info) = info {
-                    if let Some(content_type) = info.content_type().map(|t| t.to_string()) {
-                        // Filter out non-images; For now we support "all" image types.
+                    // GVfs smb does not provide a CONTENT_TYPE if the content type is ambiguous.
+                    // This happens for png/apng. Since we only need to know if something is
+                    // probably an image, we can use the FAST_CONTENT_TYPE in these cases.
+                    let content_type =
+                        if info.has_attribute(gio::FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE) {
+                            info.content_type()
+                        } else {
+                            info.attribute_string(gio::FILE_ATTRIBUTE_STANDARD_FAST_CONTENT_TYPE)
+                        };
+
+                    if let Some(content_type) =
+                        content_type.and_then(|x| gio::content_type_get_mime_type(&x))
+                    {
+                        // Filter out non-images types. The final decision if images are
+                        // supported/kept will later be done by glycin when starting to load the
+                        // images. Usually by inspecting the magic bytes.
                         if content_type.starts_with("image/") && !info.is_hidden() {
                             let file = directory.child(info.name());
                             files.insert(file.uri(), file);
