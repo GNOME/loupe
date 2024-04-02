@@ -67,19 +67,19 @@ enum Status {
 /// input. This avoids things like loops between value change signals.
 #[derive(Default, Clone, Debug)]
 struct UiUpdates {
-    disabled: Rc<Cell<bool>>,
+    disabled: Rc<Cell<u32>>,
 }
 
 impl UiUpdates {
     pub fn disable(&self) -> Self {
-        self.disabled.set(true);
+        self.disabled.set(self.disabled.get().saturating_add(1));
         self.clone()
     }
 }
 
 impl Drop for UiUpdates {
     fn drop(&mut self) {
-        self.disabled.set(false);
+        self.disabled.set(self.disabled.get().saturating_sub(1));
     }
 }
 
@@ -307,6 +307,7 @@ mod imp {
                 glib::Propagation::Proceed
             });
 
+            // Page alignment (center, left, ...)
             self.alignment
                 .connect_selected_notify(glib::clone!(@weak obj => move |_| obj.draw_preview()));
 
@@ -341,6 +342,7 @@ mod imp {
             self.height
                 .connect_value_notify(glib::clone!(@weak obj => move |_| obj.on_height_changed()));
 
+            // Set print settings
             self.print_operation
                 .set_print_settings(Some(&obj.print_settings()));
             self.print_operation.set_allow_async(true);
@@ -385,7 +387,7 @@ mod imp {
                     imp.height.adjustment().set_step_increment(1.);
                     imp.height.adjustment().set_page_increment(5.);
 
-                    let _ui_updates_disabled = obj.disable_ui_updates();
+                    let ui_updates_disabled = obj.disable_ui_updates();
                     obj.set_ranges();
                     obj.on_margin_unit_changed();
                     obj.on_size_unit_changed();
@@ -416,6 +418,7 @@ mod imp {
                         _ => "other",
                     };
                     obj.set_orientation(orientation);
+                    drop(ui_updates_disabled);
 
                     obj.present();
 
@@ -468,6 +471,8 @@ mod imp {
             };
             obj.page_setup().set_orientation(orientation);
             obj.set_ranges();
+            // If fill space is enabeld, recalculated to fill space
+            obj.on_fill_space_changed();
             obj.draw_preview();
         }
     }
@@ -535,12 +540,12 @@ impl LpPrint {
             .map(|_| ())
     }
 
-    /// Returns if the current update is caused by user input
+    /// Returns `true` if the current update is caused by user input
     ///
     /// If ui input is changed via code, this is set to `false`
     /// via `disable_ui_updates` before.
     fn ui_updates(&self) -> bool {
-        !self.imp().ui_updates.disabled.get()
+        self.imp().ui_updates.disabled.get() == 0
     }
 
     /// Creates scope guard that allows ui changes via code afterwards
