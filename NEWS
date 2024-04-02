@@ -1,3 +1,10 @@
+46.1
+====
+
+- Fix fill-space option not being applied when changing the orientation in print preview
+- Fix PNGs not being available when browsing images on SMB shares
+- Don't animate switching between images with the mouse fwd/back buttons
+
 46.0
 ====
 

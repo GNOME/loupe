@@ -71,6 +71,11 @@
   </categories>
 
   <releases>
+    <release version="46.1" date="2024-04-03">
+      <description>
+        <p>This releases fixed three bugs. When using the "Fill Space" option in the print preview, the print size will now be updated to fill the page again after choosing a different page orientation. PNGs can now be reliably browsed on SMB shares. Switching between images using the mouse's forward/back buttons will no longer use animations to be consitent with the arrow buttons on the keyboard.</p>
+      </description>
+    </release>
     <release version="46.0" date="2024-03-14">
       <description>
         <p>This release polishes various features of the previous release. Changing images via keyboard shortcuts now happens without animation. The Ctrl+C shortcut can now not only copy the viewed image but can also be used to copy selected metadata. Zoom now tries to zoom into the mouse cursor position in more situations. Double tapping on touchscreens now zooms into the tapped position instead of the center. Zoom on touchpad is now also possible by using the Ctrl button and scrolling, supplementing the existing pinch gesture. The new version also brings support for more formats as well as improved sandboxing and memory limitation for image loaders.</p>
