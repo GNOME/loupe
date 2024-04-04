@@ -1,3 +1,8 @@
+46.2
+====
+
+- Fix fractional scaling beeing blury by setting GDK_DEBUG=gl-no-fractional as default
+
 46.1
 ====
 
