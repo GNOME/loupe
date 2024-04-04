@@ -78,6 +78,12 @@ fn main() -> glib::ExitCode {
         std::env::set_var("GSK_RENDERER", "gl");
     }
 
+    // Don't use gl renderer does not properly support fractional scaling
+    // <https://gitlab.gnome.org/GNOME/loupe/-/issues/346>
+    if std::env::var("GDK_DEBUG").is_err() {
+        std::env::set_var("GDK_DEBUG", "gl-no-fractional");
+    }
+
     let mut log_builder = env_logger::builder();
     log_builder.format_timestamp_millis();
 
