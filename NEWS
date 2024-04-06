@@ -3,6 +3,7 @@
 
 - Fix fractional scaling beeing blury by setting GDK_DEBUG=gl-no-fractional as default
 - Fix exposure times above 0.5 seconds not being displayed correctly in properties
+- Fix page orientation from print preview dialog is not honored for actual print
 
 46.1
 ====

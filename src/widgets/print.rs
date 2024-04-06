@@ -358,8 +358,17 @@ mod imp {
                 op.set_n_pages(1);
             });
 
-            self.print_operation.connect_draw_page(glib::clone!(@weak obj =>
-                move |operation, context, _page_nr| {
+            self.print_operation.connect_request_page_setup(
+                glib::clone!(@weak obj =>move |operation, _context, nr, setup| {
+                    if nr != 0 {
+                        log::error!("Unexpected page number {nr}");
+                        return;
+                    }
+
+                    // Since we already have explicit per page setups here, we have to use this to
+                    // set values. The modules uses the default page setup everywhere.
+                    obj.print_operation().set_default_page_setup(Some(setup));
+
                     let imp = obj.imp();
 
                     let basename = obj
@@ -394,8 +403,7 @@ mod imp {
 
                     let size_unit = obj.size_unit();
                     imp.width.set_value(
-                        size_unit
-                            .round(obj.original_size().0 as f64 * obj.width_unit_factor()),
+                        size_unit.round(obj.original_size().0 as f64 * obj.width_unit_factor()),
                     );
 
                     // Default to inch for USA and Liberia
@@ -424,13 +432,14 @@ mod imp {
 
                     loop {
                         match imp.status.get() {
-                             Status::Prepare  => {
+                            Status::Prepare => {
                                 glib::MainContext::default().iteration(true);
-                             }
+                            }
                             Status::Print => {
                                 log::debug!("Layout dialog confirmed");
-                                obj.draw_page(context);
-                                break;}
+                                // Actual printing will happen in draw-page signal
+                                break;
+                            }
                             Status::Abort => {
                                 log::debug!("Layout dialog aborted");
                                 imp.print_operation.cancel();
@@ -438,8 +447,15 @@ mod imp {
                             }
                         }
                     }
-                }
-            ));
+                }),
+            );
+
+            self.print_operation
+                .connect_draw_page(glib::clone!(@weak obj =>
+                    move |_operation, context, _page_nr| {
+                        obj.draw_page(context);
+                    }
+                ));
         }
 
         fn properties() -> &'static [glib::ParamSpec] {
