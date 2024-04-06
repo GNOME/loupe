@@ -25,9 +25,10 @@ use adw::prelude::*;
 use crate::deps::*;
 
 mod imp {
+    use std::cell::OnceCell;
+
     use adw::subclass::prelude::*;
     use glib::{ParamSpec, Properties, Value};
-    use std::cell::OnceCell;
 
     use super::*;
 

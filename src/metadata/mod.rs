@@ -254,10 +254,21 @@ impl Metadata {
         if let Some(exif) = &self.exif {
             let field = exif.get_field(exif::Tag::ExposureTime, exif::In::PRIMARY)?;
             if let exif::Value::Rational(rational) = &field.value {
-                let exposure = format!("{:.0}", 1. / rational.first()?.to_f32());
+                let speed = rational.first()?.to_f32();
 
-                // Translators: Unit for exposure time in seconds
-                return Some(gettext_f("1\u{2215}{}\u{202F}s", [exposure]));
+                if speed <= 0.5 {
+                    let exposure = format!("{:.0}", 1. / speed);
+                    // Translators: Fractional exposure time (photography) in seconds
+                    return Some(gettext_f("1\u{2215}{}\u{202F}s", [exposure]));
+                } else {
+                    let exposure = if speed < 5. {
+                        format!("{:.1}", speed)
+                    } else {
+                        format!("{:.0}", speed)
+                    };
+                    // Translators: Exposure time (photography) in seconds
+                    return Some(gettext_f("{}\u{202F}s", [exposure]));
+                }
             }
         }
 
