@@ -989,9 +989,9 @@ dependencies = [
 
 [[package]]
 name = "glycin"
-version = "1.0.0"
+version = "1.0.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "6ebfac2819e7c4538c6567742a88d684ac5020f7e6de3d5e3f8578a72b4fbc5c"
+checksum = "83b796882a2e7941b643002a859e43bb9647ea69c3c8853cce3db705e88d336b"
 dependencies = [
  "async-fs",
  "async-global-executor",
