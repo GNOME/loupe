@@ -71,6 +71,11 @@
   </categories>
 
   <releases>
+    <release version="46.2" date="2024-04-09">
+      <description>
+        <p>This releases fixed problems with fractional scaling and the output of long exposure times in the image properties. It also makes the page orientation selection in the print preview dialog functional. It also adresses issues with loading some SVGs containing text when using Loupe outside of Flatpak.</p>
+      </description>
+    </release>
     <release version="46.1" date="2024-04-03">
       <description>
         <p>This releases fixed three bugs. When using the "Fill Space" option in the print preview, the print size will now be updated to fill the page again after choosing a different page orientation. PNGs can now be reliably browsed on SMB shares. Switching between images using the mouse's forward/back buttons will no longer use animations to be consitent with the arrow buttons on the keyboard.</p>
