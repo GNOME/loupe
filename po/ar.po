@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
 "POT-Creation-Date: 2024-04-12 07:32+0000\n"
-"PO-Revision-Date: 2024-04-16 00:40+0300\n"
+"PO-Revision-Date: 2024-04-17 21:03+0300\n"
 "Last-Translator: Khalid Abu Shawarib <khalid.shawarib@gmail.com>\n"
 "Language-Team: Arabic <doc@arabeyes.org>\n"
 "Language: ar\n"
@@ -330,7 +330,7 @@ msgstr "ا_نسخ"
 
 #: src/widgets/image_page.ui:23 src/window.ui:29
 msgid "Rotate"
-msgstr "دوِّر"
+msgstr "تدوير"
 
 #: src/widgets/image_page.ui:34 src/window.ui:40
 msgid "_Set as Background…"
