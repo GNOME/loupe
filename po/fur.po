@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2024-02-10 00:12+0000\n"
-"PO-Revision-Date: 2024-02-11 13:09+0100\n"
+"POT-Creation-Date: 2024-03-19 16:52+0000\n"
+"PO-Revision-Date: 2024-04-18 11:01+0200\n"
 "Last-Translator: \n"
 "Language-Team: Friulian <fur@li.org>\n"
 "Language: fur\n"
@@ -23,8 +23,8 @@ msgid "Image Viewer"
 msgstr "Visualizadôr imagjins"
 
 #: data/org.gnome.Loupe.desktop.in.in:11
-msgid "Picture;Slideshow;Graphics;Loupe;"
-msgstr "Imagjin;Figure;Presentazion;Grafiche;Loupe;"
+msgid "Picture;Graphics;Loupe;"
+msgstr "Imagjin;Figure;Grafiche;Loupe;"
 
 #: data/org.gnome.Loupe.gschema.xml.in:6
 msgid "Show the image properties sidebar"
@@ -35,27 +35,27 @@ msgstr "Mostre la sbare laterâl des proprietâts de imagjin"
 msgid "The GNOME Project"
 msgstr "Il Progjet GNOME"
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:12
+#: data/org.gnome.Loupe.metainfo.xml.in.in:13
 msgid "View images"
 msgstr "Visualize imagjins"
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:14
+#: data/org.gnome.Loupe.metainfo.xml.in.in:15
 msgid "Browse through your images and inspect their metadata with:"
 msgstr "Sgarfe tra lis tôs imagjins e ispezione i lôr metadâts cun:"
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:16
+#: data/org.gnome.Loupe.metainfo.xml.in.in:17
 msgid "Fast GPU accelerated image rendering"
 msgstr "Rapresentazion svelte de imagjin acelerade vie GPU"
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:17
+#: data/org.gnome.Loupe.metainfo.xml.in.in:18
 msgid "Tiled rendering for vector graphics"
 msgstr "Rapresentazion a tassêi pe grafiche vetoriâl"
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:18
+#: data/org.gnome.Loupe.metainfo.xml.in.in:19
 msgid "Extendable and sandboxed image decoding"
 msgstr "Decodifiche de imagjin isolade e slungjabile"
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:19
+#: data/org.gnome.Loupe.metainfo.xml.in.in:20
 msgid "Accessible presentation of the most important metadata."
 msgstr "Presentazion acessibile dai metadâts plui impuartants."
 
@@ -241,7 +241,7 @@ msgstr "Mots"
 #. Translators: Replace "translator-credits" with your names, one name per line
 #: src/about.rs:41
 msgid "translator-credits"
-msgstr "Fabio Tomat <f.t.public@gmail.com>, 2023"
+msgstr "Fabio Tomat <f.t.public@gmail.com>, 2024"
 
 #: src/about.rs:42
 msgid "Copyright © 2020–2024 Christopher Davis et al."
@@ -485,7 +485,6 @@ msgstr ", scjale di grîs"
 
 #. Translators: Addition of bit size to format name
 #: src/widgets/properties_view.rs:248
-#| msgid "{}\\u{202F}mm"
 msgid ", {}\\u{202F}bit"
 msgstr ", {}\\u{202F}bit"
 
@@ -521,6 +520,7 @@ msgstr "File creât"
 msgid "File Modified"
 msgstr "File modificât"
 
+#. Translators: This is a label for GPS coordinates
 #: src/widgets/properties_view.ui:106
 msgid "Location"
 msgstr "Posizion"
