@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2024-03-19 16:52+0000\n"
-"PO-Revision-Date: 2024-04-18 11:01+0200\n"
+"POT-Creation-Date: 2024-04-18 09:02+0000\n"
+"PO-Revision-Date: 2024-04-22 14:30+0200\n"
 "Last-Translator: \n"
 "Language-Team: Friulian <fur@li.org>\n"
 "Language: fur\n"
@@ -18,7 +18,7 @@ msgstr ""
 "X-Generator: Poedit 3.4.2\n"
 
 #: data/org.gnome.Loupe.desktop.in.in:3
-#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:29 src/window.rs:880
+#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:29 src/window.rs:881
 msgid "Image Viewer"
 msgstr "Visualizadôr imagjins"
 
@@ -247,7 +247,7 @@ msgstr "Fabio Tomat <f.t.public@gmail.com>, 2024"
 msgid "Copyright © 2020–2024 Christopher Davis et al."
 msgstr "Copyright © 2020–2024 Christopher Davis e altris"
 
-#: src/file_model.rs:128
+#: src/file_model.rs:129
 msgid "Could not list other files in directory."
 msgstr "Impussibil listâ i altris files te cartele."
 
@@ -271,13 +271,19 @@ msgstr "E"
 msgid "W"
 msgstr "O"
 
-#. Translators: Unit for exposure time in seconds
-#: src/metadata/mod.rs:260
+#. Translators: Fractional exposure time (photography) in seconds
+#: src/metadata/mod.rs:262
 msgid "1\\u{2215}{}\\u{202F}s"
 msgstr "1\\u{2215}{}\\u{202F}s"
 
+#. Translators: Exposure time (photography) in seconds
+#: src/metadata/mod.rs:270
+#| msgid "{}\\u{202F}mm"
+msgid "{}\\u{202F}s"
+msgstr "{}\\u{202F}s"
+
 #. Translators: Unit for focal length in millimeters
-#: src/metadata/mod.rs:285
+#: src/metadata/mod.rs:296
 msgid "{}\\u{202F}mm"
 msgstr "{}\\u{202F}mm"
 
@@ -290,7 +296,7 @@ msgstr "{}\\u{202F}mm"
 msgid "%x %X"
 msgstr "%x %X"
 
-#: src/util/mod.rs:180 src/window.rs:701
+#: src/util/mod.rs:180 src/window.rs:702
 msgid "Failed to restore image from trash"
 msgstr "Nol è stât pussibil ripristinâ de scovacere la imagjin"
 
@@ -396,15 +402,15 @@ msgid "px"
 msgstr "px"
 
 #. Translators: {} is a placeholder for the filename
-#: src/widgets/print.rs:371
+#: src/widgets/print.rs:382
 msgid "Print “{}”"
 msgstr "Stampe “{}”"
 
-#: src/widgets/print.rs:782
+#: src/widgets/print.rs:803
 msgid "_Scale"
 msgstr "_Scjale"
 
-#: src/widgets/print.rs:785
+#: src/widgets/print.rs:806
 msgid "_Width"
 msgstr "_Largjece"
 
@@ -557,51 +563,51 @@ msgstr "Lungjece focâl"
 msgid "Maker, Model"
 msgstr "Produtôr, model"
 
-#: src/window.rs:568
+#: src/window.rs:569
 msgid "Supported image formats"
 msgstr "Formâts imagjin supuartâts"
 
-#: src/window.rs:574
+#: src/window.rs:575
 msgid "All files"
 msgstr "Ducj i files"
 
-#: src/window.rs:581
+#: src/window.rs:582
 msgid "Open Image"
 msgstr "Vierç imagjin"
 
-#: src/window.rs:667
+#: src/window.rs:668
 msgid "Image copied to clipboard"
 msgstr "Imagjin copiade intes notis"
 
-#: src/window.rs:688
+#: src/window.rs:689
 msgid "Image moved to trash"
 msgstr "Imagjin spostade te scovacere"
 
-#: src/window.rs:689
+#: src/window.rs:690
 msgid "Undo"
 msgstr "Disfe"
 
-#: src/window.rs:715
+#: src/window.rs:716
 msgid "Failed to move image to trash"
 msgstr "Nol è stât pussibil spostâ la imagjin te scovacere"
 
-#: src/window.rs:741
+#: src/window.rs:742
 msgid "Permanently Delete Image?"
 msgstr "Eliminâ par simpri la imagjin?"
 
-#: src/window.rs:743
+#: src/window.rs:744
 msgid "After deleting the image “{}” it will be permanently lost."
 msgstr "Dopo de eliminazion la imagjin “{}” e larà pierdude par simpri."
 
-#: src/window.rs:751
+#: src/window.rs:752
 msgid "Cancel"
 msgstr "Anule"
 
-#: src/window.rs:752
+#: src/window.rs:753
 msgid "Delete"
 msgstr "Elimine"
 
-#: src/window.rs:763
+#: src/window.rs:764
 msgid "Failed to delete image"
 msgstr "Nol è stât pussibil eliminâ la imagjin"
 
