@@ -1,0 +1,609 @@
+# Kinyarwanda translation for loupe.
+# Copyright (C) 2023 loupe's COPYRIGHT HOLDER
+# This file is distributed under the same license as the loupe package.
+# vixalien <geoangercola@gmail.com>, 2023.
+# Angelo Verlain SHEMA <hey@vixalien.com>, 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: loupe main\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
+"POT-Creation-Date: 2023-10-14 12:50+0000\n"
+"PO-Revision-Date: 2023-10-15 02:22+0200\n"
+"Last-Translator: Angelo Verlain SHEMA <hey@vixalien.com>\n"
+"Language-Team: Kinyarwanda <>\n"
+"Language: rw\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1)\n"
+"X-Generator: Gtranslator 45.2\n"
+
+#: data/gtk/image_page.ui:6 data/gtk/window.ui:16
+msgid "_Open With…"
+msgstr "_Gufungura na…"
+
+#: data/gtk/image_page.ui:14 data/gtk/window.ui:24
+msgid "_Print…"
+msgstr "Gu_capa…"
+
+#: data/gtk/image_page.ui:18
+msgid "_Copy"
+msgstr ""
+
+#: data/gtk/image_page.ui:23 data/gtk/window.ui:29
+msgid "Rotate"
+msgstr "Gukaraga"
+
+#: data/gtk/image_page.ui:34 data/gtk/window.ui:40
+msgid "_Set as Background…"
+msgstr "Kugira Im_buganyuma"
+
+#: data/gtk/image_page.ui:63
+msgid "Could not Load Image"
+msgstr "Gutararura Ishusho nyibyashobotse"
+
+#: data/gtk/image_page.ui:97 data/gtk/window.ui:134
+msgid "Rotate Left"
+msgstr "Gukaraga Ibumoso"
+
+#: data/gtk/image_page.ui:107 data/gtk/window.ui:144
+msgid "Rotate Right"
+msgstr "Gukaraga Iburyo"
+
+#: data/gtk/image_view.ui:30
+msgid "Previous Image"
+msgstr "Ishusho Iheruka"
+
+#: data/gtk/image_view.ui:41
+msgid "Next Image"
+msgstr "Ishusho Ikurikira"
+
+#: data/gtk/image_view.ui:66
+msgid "Zoom Out"
+msgstr "Guhunga"
+
+#: data/gtk/image_view.ui:77
+msgid "Zoom In"
+msgstr "Kwegera"
+
+#: data/gtk/image_view.ui:95
+msgid "Toggle Fullscreen"
+msgstr "Kuzura ingaragazi"
+
+#. Translators: Go back to previous page
+#: data/gtk/print.ui:29
+msgid "Back"
+msgstr "Gusubira inyuma"
+
+#: data/gtk/print.ui:36
+msgid "Print"
+msgstr "Gucapa"
+
+#: data/gtk/print.ui:54
+msgid "Layout"
+msgstr ""
+
+#: data/gtk/print.ui:57
+msgid "Orientation"
+msgstr "Icyerekezo"
+
+#: data/gtk/print.ui:69
+msgid "Portrait Page Orientation"
+msgstr "Icyerekezo kizamuye"
+
+#: data/gtk/print.ui:77
+msgid "Landscape Page Orientation"
+msgstr "Icyerekezo gitambitse"
+
+#: data/gtk/print.ui:86
+msgid "Alignment"
+msgstr "Imitondekere"
+
+#: data/gtk/print.ui:104
+msgid "Margins"
+msgstr "Marije"
+
+#: data/gtk/print.ui:107
+msgid "Margin Units"
+msgstr "Ikinyabumwe cya marije"
+
+#: data/gtk/print.ui:124
+msgid "Horizontal"
+msgstr "Ubutambike"
+
+#: data/gtk/print.ui:129
+msgid "Vertical"
+msgstr "Ubuhagarike"
+
+#: data/gtk/print.ui:136 data/gtk/properties_view.ui:58
+msgid "Image Size"
+msgstr "Ingano y'ishusho"
+
+#: data/gtk/print.ui:139
+msgid "Image Size Units"
+msgstr "Inkinyabumwe cy'ingano y'ishusho"
+
+#: data/gtk/print.ui:157
+msgid "Fill Space"
+msgstr "Kuzura Hose"
+
+#: data/gtk/print.ui:162
+msgid "Width"
+msgstr "Ubugari"
+
+#: data/gtk/print.ui:167
+msgid "Height"
+msgstr "Uburebure"
+
+#: data/gtk/properties_view.ui:29
+msgid "Folder"
+msgstr "Ububiko"
+
+#: data/gtk/properties_view.ui:41
+msgid "Open Containing Folder"
+msgstr "Gufungura ububiko bwa dosiye"
+
+#: data/gtk/properties_view.ui:74
+msgid "Image Format"
+msgstr "Imiterere y'ishusho"
+
+#: data/gtk/properties_view.ui:88
+msgid "File Size"
+msgstr "Ingano ya Dosiye"
+
+#: data/gtk/properties_view.ui:106
+msgid "File Created"
+msgstr "Igihe Dosiye Yakorewe"
+
+#: data/gtk/properties_view.ui:120
+msgid "File Modified"
+msgstr "Igihe Dosiye Yahinduwe"
+
+#: data/gtk/properties_view.ui:143
+msgid "Location"
+msgstr "Ubuturo"
+
+#: data/gtk/properties_view.ui:162
+msgid "Open Location"
+msgstr "Gufungura ubuturo"
+
+#: data/gtk/properties_view.ui:175
+msgid "Originally Created"
+msgstr "Igihe byakorewe cy'umwimerere"
+
+#: data/gtk/properties_view.ui:196
+msgid "Aperture"
+msgstr "Aperture"
+
+#: data/gtk/properties_view.ui:217
+msgid "Exposure"
+msgstr "Exposure"
+
+#: data/gtk/properties_view.ui:238
+msgid "ISO"
+msgstr "ISO"
+
+#: data/gtk/properties_view.ui:259
+msgid "Focal Length"
+msgstr "Focal length"
+
+#: data/gtk/properties_view.ui:280
+msgid "Maker, Model"
+msgstr "Umukozi, Moderi"
+
+#: data/gtk/window.ui:6
+msgid "_New Window"
+msgstr "Idirishya _Rishya"
+
+#: data/gtk/window.ui:10
+msgid "_Open…"
+msgstr "Gu_fungura"
+
+#: data/gtk/window.ui:46
+msgid "_Help"
+msgstr "_Ubufasha"
+
+#: data/gtk/window.ui:50
+msgid "_Keyboard Shortcuts"
+msgstr "Ihinanzira za _Mwandikisho"
+
+#: data/gtk/window.ui:54
+msgid "_About Image Viewer"
+msgstr "_Ibyerekeye Amashusho"
+
+#. If the file exists, get display name
+#: data/gtk/window.ui:64 data/org.gnome.Loupe.desktop.in.in:3
+#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:28 src/window.rs:883
+#: src/window.rs:889
+msgid "Image Viewer"
+msgstr "Amashusho"
+
+#: data/gtk/window.ui:113
+msgid "Copy to Clipboard"
+msgstr "Gukora kopi mu bubikogateganyo"
+
+#: data/gtk/window.ui:120
+msgid "Move to Trash"
+msgstr "Kujyana mu myanda"
+
+#: data/gtk/window.ui:126
+msgid "Main Menu"
+msgstr "Ibikubiyemo by'ibanze"
+
+#: data/gtk/window.ui:158
+msgid "Image Properties"
+msgstr "Ibyereke Ishusho"
+
+#: data/gtk/window.ui:200
+msgid "View Images"
+msgstr "Kureba Amashusho"
+
+#: data/gtk/window.ui:201
+msgid "Drag and drop images here"
+msgstr "Zana utereke amashusho hano"
+
+#: data/gtk/window.ui:205
+msgid "_Open Files…"
+msgstr "Gu_fungura amadosiye…"
+
+#: data/org.gnome.Loupe.desktop.in.in:11
+msgid "Picture;Slideshow;Graphics;Loupe;"
+msgstr "Amashusho;Amafoto;Loupe;"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:7 src/about.rs:31
+msgid "The Loupe Team"
+msgstr "Itsinda rya Loupe"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:8
+msgid "View images"
+msgstr "Reba amafoto"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:10
+msgid "Browse through your images and inspect their metadata with:"
+msgstr "Zenguruka mu mashusho yawe maze urebe amakuru ayerekeye na:"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:12
+msgid "Fast GPU accelerated image rendering"
+msgstr "Kwerekana amafoto vubavuba hakoreshejwe GPU"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:13
+msgid "Tiled rendering for vector graphics"
+msgstr "Kwerekana ibishushanyo mu dukaro"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:14
+msgid "Extendable and sandboxed image decoding"
+msgstr "Gutarura amashusho mu buryo bwakwaguka kandi bwiherereye"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:15
+msgid "Accessible presentation of the most important metadata."
+msgstr "Kwerekana amakuru yerekeye amashusho y'igenzi."
+
+#: data/resources/gtk/help-overlay.ui:11
+msgctxt "shortcut window"
+msgid "General Shortcuts"
+msgstr "Ihinanzira z'Ingenzi"
+
+#: data/resources/gtk/help-overlay.ui:14
+msgctxt "shortcut window"
+msgid "Show Main Menu"
+msgstr "Kwerekana Ibikubiyemo by'Ibanze"
+
+#: data/resources/gtk/help-overlay.ui:20
+msgctxt "shortcut window"
+msgid "Copy Image to Clipboard"
+msgstr "Gushyira Ishusho mu bubikogateganyo"
+
+#: data/resources/gtk/help-overlay.ui:26
+msgctxt "shortcut window"
+msgid "Move Image to Trash"
+msgstr "Kujyana Ishusho mu Myanda"
+
+#: data/resources/gtk/help-overlay.ui:32
+msgctxt "shortcut window"
+msgid "Toggle Image Properties"
+msgstr "Kwerekana Ibyerekeye Ishusho"
+
+#: data/resources/gtk/help-overlay.ui:38
+msgctxt "shortcut window"
+msgid "Set as Background"
+msgstr "Kugira imbuganyuma"
+
+#: data/resources/gtk/help-overlay.ui:44
+msgctxt "shortcut window"
+msgid "Toggle Fullscreen"
+msgstr "Kuzura ingaragazi"
+
+#: data/resources/gtk/help-overlay.ui:50
+msgctxt "shortcut window"
+msgid "Leave Fullscreen"
+msgstr "Kureka kuzura ingaragazi"
+
+#: data/resources/gtk/help-overlay.ui:56
+msgctxt "shortcut window"
+msgid "New Window"
+msgstr "Idirishya Rishya"
+
+#: data/resources/gtk/help-overlay.ui:62
+msgctxt "shortcut window"
+msgid "Open Help"
+msgstr "Gufungura Ubufasha"
+
+#: data/resources/gtk/help-overlay.ui:68
+msgctxt "shortcut window"
+msgid "Show Keyboard Shortcuts"
+msgstr "Kwerekana Ihinanzira za Mwandikisho"
+
+#: data/resources/gtk/help-overlay.ui:74
+msgctxt "shortcut window"
+msgid "Close Window"
+msgstr "Gufunga Idirishya"
+
+#: data/resources/gtk/help-overlay.ui:80
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "Gusohoka"
+
+#: data/resources/gtk/help-overlay.ui:88
+msgctxt "shortcut window"
+msgid "Navigate Images"
+msgstr "Gutembera mu mashusho"
+
+#: data/resources/gtk/help-overlay.ui:92 data/resources/gtk/help-overlay.ui:106
+#: data/resources/gtk/help-overlay.ui:218
+#: data/resources/gtk/help-overlay.ui:232
+msgctxt "shortcut window"
+msgid "Next Image"
+msgstr "Ishusho Ikurikira"
+
+#: data/resources/gtk/help-overlay.ui:99 data/resources/gtk/help-overlay.ui:113
+#: data/resources/gtk/help-overlay.ui:225
+#: data/resources/gtk/help-overlay.ui:239
+msgctxt "shortcut window"
+msgid "Previous Image"
+msgstr "Ishusho Iheruka"
+
+#: data/resources/gtk/help-overlay.ui:119
+msgctxt "shortcut window"
+msgid "First Image"
+msgstr "Ishusho ya Mbere"
+
+#: data/resources/gtk/help-overlay.ui:125
+msgctxt "shortcut window"
+msgid "Last Image"
+msgstr "Ishusho ya Nyuma"
+
+#: data/resources/gtk/help-overlay.ui:133
+msgctxt "shortcut window"
+msgid "Rotate Image"
+msgstr "Gukaraga Ishusho"
+
+#: data/resources/gtk/help-overlay.ui:136
+#: data/resources/gtk/help-overlay.ui:257
+msgctxt "shortcut window"
+msgid "Rotate Clockwise"
+msgstr "Gukaraga mu cyerekezo cy'isaha"
+
+#: data/resources/gtk/help-overlay.ui:142
+#: data/resources/gtk/help-overlay.ui:263
+msgctxt "shortcut window"
+msgid "Rotate Counterclockwise"
+msgstr "Gukaraga mu cyerekezo kinyuranye n'cy'isaha"
+
+#: data/resources/gtk/help-overlay.ui:150
+msgctxt "shortcut window"
+msgid "Zoom Image"
+msgstr "Kwegera/Guhunga Ishusho"
+
+#: data/resources/gtk/help-overlay.ui:153
+#: data/resources/gtk/help-overlay.ui:245
+msgctxt "shortcut window"
+msgid "Zoom In"
+msgstr "Kwegera"
+
+#: data/resources/gtk/help-overlay.ui:159
+#: data/resources/gtk/help-overlay.ui:251
+msgctxt "shortcut window"
+msgid "Zoom Out"
+msgstr "Guhunga"
+
+#: data/resources/gtk/help-overlay.ui:165
+msgctxt "shortcut window"
+msgid "Best Fit"
+msgstr "Kuzura"
+
+#: data/resources/gtk/help-overlay.ui:171
+msgctxt "shortcut window"
+msgid "Original Scale"
+msgstr "Igipimo cy'umwimwerer"
+
+#: data/resources/gtk/help-overlay.ui:177
+msgctxt "shortcut window"
+msgid "200% Scale"
+msgstr "Ipipimo cya 200%"
+
+#: data/resources/gtk/help-overlay.ui:185
+msgctxt "shortcut window"
+msgid "Pan View"
+msgstr "Kujyana Umwanya"
+
+#: data/resources/gtk/help-overlay.ui:188
+msgctxt "shortcut window"
+msgid "Pan Left"
+msgstr "Kujyana Ibumoso"
+
+#: data/resources/gtk/help-overlay.ui:194
+msgctxt "shortcut window"
+msgid "Pan Right"
+msgstr "Kujyana Iburyo"
+
+#: data/resources/gtk/help-overlay.ui:200
+msgctxt "shortcut window"
+msgid "Pan Up"
+msgstr "Kujyana Hejuru"
+
+#: data/resources/gtk/help-overlay.ui:206
+msgctxt "shortcut window"
+msgid "Pan Down"
+msgstr "Kujyana Hasi"
+
+#: data/resources/gtk/help-overlay.ui:214
+msgctxt "shortcut window"
+msgid "Gestures"
+msgstr "Ibimenyetso"
+
+#. Translators: Replace "translator-credits" with your names, one name per line
+#: src/about.rs:40
+msgid "translator-credits"
+msgstr "Angelo Verlain"
+
+#: src/about.rs:41
+msgid "Copyright © 2020–2023 Christopher Davis et al."
+msgstr "Uburenganzira bw'umuhanzi © 2020–2023 Christopher Davis et al."
+
+#: src/file_model.rs:126
+msgid "Could not list other files in directory."
+msgstr "Kwerekana andi madosiye ari mububiko byanze."
+
+#. Translators: short for "north" in GPS coordinate
+#: src/image_metadata/gps.rs:153
+msgid "N"
+msgstr "G"
+
+#. Translators: short for "south" in GPS coordinate
+#: src/image_metadata/gps.rs:156
+msgid "S"
+msgstr "E"
+
+#. Translators: short for "east" in GPS coordinate
+#: src/image_metadata/gps.rs:166
+msgid "E"
+msgstr "S"
+
+#. Translators: short for "west" in GPS coordinate
+#: src/image_metadata/gps.rs:169
+msgid "W"
+msgstr "R"
+
+#. Translators: Unit for exposure time in seconds
+#: src/image_metadata/mod.rs:164
+msgid "1\\u{2215}{}\\u{202F}s"
+msgstr "1\\u{2215}{}\\u{202F}s"
+
+#. Translators: Unit for focal length in millimeters
+#: src/image_metadata/mod.rs:189
+msgid "{}\\u{202F}mm"
+msgstr "{}\\u{202F}mm"
+
+#. Translators: This is the date and time format we use in metadata output etc.
+#. The format has to follow <https://docs.gtk.org/glib/method.DateTime.format.html>
+#. The default is already translated. Don't change if you are not sure what to use.
+#: src/util/mod.rs:36
+#, c-format
+msgid "%x %X"
+msgstr "%x %X"
+
+#: src/util/mod.rs:179 src/window.rs:597
+msgid "Failed to restore image from trash"
+msgstr "Gukura ishusho mu mwanda byanzwe"
+
+#: src/util/mod.rs:200
+msgid "Failed to open image"
+msgstr "Gufungura ishusho byanze"
+
+#. Translators: This is a toast notification, informing the user that an image has been set as background.
+#: src/widgets/image_view.rs:669
+msgid "Set as background."
+msgstr "Ishusho yagizwe imbuganyuma."
+
+#: src/widgets/image_view.rs:682
+msgid "Could not set background."
+msgstr "Ishusho ntabwo yagizwe imbuganyuma."
+
+#: src/widgets/print.rs:108
+msgid "Top"
+msgstr "Hejuru"
+
+#: src/widgets/print.rs:109
+msgid "Center"
+msgstr "Hagati"
+
+#: src/widgets/print.rs:110
+msgid "Bottom"
+msgstr "Hasi"
+
+#: src/widgets/print.rs:111
+msgid "Left"
+msgstr "Ibumoso"
+
+#: src/widgets/print.rs:112
+msgid "Right"
+msgstr "Iburyo"
+
+#. Translators: Shorthand for centimeter
+#: src/widgets/print.rs:148
+msgid "cm"
+msgstr "sm"
+
+#. Translators: Shorthand for inch
+#: src/widgets/print.rs:150
+msgid "in"
+msgstr "in"
+
+#. Translators: Shorthand for pixel
+#: src/widgets/print.rs:152
+msgid "px"
+msgstr "px"
+
+#. Translators: {} is a placeholder for the filename
+#: src/widgets/print.rs:355
+msgid "Print “{}”"
+msgstr "Gucapa “{}”"
+
+#: src/window.rs:483
+msgid "Supported image formats"
+msgstr "Imiterere y'amashusho azwi"
+
+#: src/window.rs:492
+msgid "All files"
+msgstr "Amadosiye yose"
+
+#: src/window.rs:499
+msgid "Open Image"
+msgstr "Gufungura Ishusho"
+
+#: src/window.rs:563
+msgid "Image copied to clipboard"
+msgstr "Ishusho yashyizwe mububikogateganyo"
+
+#: src/window.rs:584
+msgid "Image moved to trash"
+msgstr "Ishusho yashyizwe mu myanda"
+
+#: src/window.rs:585
+msgid "Undo"
+msgstr "Kugarura"
+
+#: src/window.rs:612
+msgid "Failed to move image to trash"
+msgstr "Gushyira ishusho mu myanda byanze"
+
+#: src/window.rs:627
+msgid "Permanently Delete Image?"
+msgstr "Gusiba ishusho burundu?"
+
+#: src/window.rs:629
+msgid "The image “{}” can only be deleted permanently."
+msgstr "Ishusho “{}” yasibwa gusa mu buryo bwa burundu."
+
+#: src/window.rs:637
+msgid "Cancel"
+msgstr "Kureka"
+
+#: src/window.rs:638
+msgid "Delete"
+msgstr "Gusiba"
+
+#: src/window.rs:649
+msgid "Failed to delete image"
+msgstr "Gusiba ishusho byanze"
