@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2024-02-15 08:07+0000\n"
-"PO-Revision-Date: 2024-02-16 22:58+0200\n"
+"POT-Creation-Date: 2024-05-02 18:23+0000\n"
+"PO-Revision-Date: 2024-05-03 17:57+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew\n"
 "Language: he\n"
@@ -17,10 +17,10 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n==2 ? 1 : n>10 && n%10==0 ? "
 "2 : 3);\n"
-"X-Generator: Poedit 3.4.1\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #: data/org.gnome.Loupe.desktop.in.in:3
-#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:29 src/window.rs:880
+#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:29 src/window.rs:881
 msgid "Image Viewer"
 msgstr "מציג תמונות"
 
@@ -38,27 +38,27 @@ msgstr "הצגת מאפייני תמונה בסרגל הצד"
 msgid "The GNOME Project"
 msgstr "מיזם GNOME"
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:12
+#: data/org.gnome.Loupe.metainfo.xml.in.in:13
 msgid "View images"
 msgstr "מציג תמונות"
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:14
+#: data/org.gnome.Loupe.metainfo.xml.in.in:15
 msgid "Browse through your images and inspect their metadata with:"
 msgstr "דפדוף בתמונות ובנתוני התמונות שלך עם:"
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:16
+#: data/org.gnome.Loupe.metainfo.xml.in.in:17
 msgid "Fast GPU accelerated image rendering"
 msgstr "עיבוד תמונה בהאצת מעבד גרפי מהיר"
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:17
+#: data/org.gnome.Loupe.metainfo.xml.in.in:18
 msgid "Tiled rendering for vector graphics"
 msgstr "עיבוד באריחים של גרפיקה וקטורית"
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:18
+#: data/org.gnome.Loupe.metainfo.xml.in.in:19
 msgid "Extendable and sandboxed image decoding"
 msgstr "פענוח תמונות בסביבה מבודדת שאפשר להרחיב"
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:19
+#: data/org.gnome.Loupe.metainfo.xml.in.in:20
 msgid "Accessible presentation of the most important metadata."
 msgstr "ייצוג נגיש של נתוני העל החשובים ביותר."
 
@@ -253,7 +253,7 @@ msgstr ""
 msgid "Copyright © 2020–2024 Christopher Davis et al."
 msgstr "כל הזכויות שמורות © 2022-2024 Christopher Davis ואחרים."
 
-#: src/file_model.rs:128
+#: src/file_model.rs:129
 msgid "Could not list other files in directory."
 msgstr "לא ניתן להציג קבצים נוספים בתיקייה."
 
@@ -277,13 +277,18 @@ msgstr "מז"
 msgid "W"
 msgstr "מע"
 
-#. Translators: Unit for exposure time in seconds
-#: src/metadata/mod.rs:260
+#. Translators: Fractional exposure time (photography) in seconds
+#: src/metadata/mod.rs:262
 msgid "1\\u{2215}{}\\u{202F}s"
 msgstr "‏‎1\\u{2215}{}\\u{202F} ש"
 
+#. Translators: Exposure time (photography) in seconds
+#: src/metadata/mod.rs:270
+msgid "{}\\u{202F}s"
+msgstr "‎{}\\u{202F} שנ׳"
+
 #. Translators: Unit for focal length in millimeters
-#: src/metadata/mod.rs:285
+#: src/metadata/mod.rs:296
 msgid "{}\\u{202F}mm"
 msgstr "‏‎{}\\u{202F} מ״מ"
 
@@ -296,7 +301,7 @@ msgstr "‏‎{}\\u{202F} מ״מ"
 msgid "%x %X"
 msgstr "%x %X"
 
-#: src/util/mod.rs:180 src/window.rs:701
+#: src/util/mod.rs:180 src/window.rs:702
 msgid "Failed to restore image from trash"
 msgstr "שחזור התמונה מהאשפה נכשלה"
 
@@ -404,16 +409,16 @@ msgid "px"
 msgstr "פיקסלים"
 
 #. Translators: {} is a placeholder for the filename
-#: src/widgets/print.rs:371
+#: src/widgets/print.rs:382
 msgid "Print “{}”"
 msgstr "הדפסת „{}”"
 
 # msgctxt "shortcut window"
-#: src/widgets/print.rs:782
+#: src/widgets/print.rs:803
 msgid "_Scale"
 msgstr "_קנה מידה"
 
-#: src/widgets/print.rs:785
+#: src/widgets/print.rs:806
 msgid "_Width"
 msgstr "_רוחב"
 
@@ -494,7 +499,6 @@ msgstr ", אפור"
 
 #. Translators: Addition of bit size to format name
 #: src/widgets/properties_view.rs:248
-#| msgid "{}\\u{202F}mm"
 msgid ", {}\\u{202F}bit"
 msgstr ", {}\\u{202F} סיביות"
 
@@ -530,6 +534,7 @@ msgstr "תאריך יצירת קובץ"
 msgid "File Modified"
 msgstr "תאריך שינוי קובץ"
 
+#. Translators: This is a label for GPS coordinates
 #: src/widgets/properties_view.ui:106
 msgid "Location"
 msgstr "מיקום"
@@ -566,51 +571,51 @@ msgstr "אורך מוקד"
 msgid "Maker, Model"
 msgstr "מצלמה, דגם"
 
-#: src/window.rs:568
+#: src/window.rs:569
 msgid "Supported image formats"
 msgstr "תבניות תמונה נתמכות"
 
-#: src/window.rs:574
+#: src/window.rs:575
 msgid "All files"
 msgstr "כל הקבצים"
 
-#: src/window.rs:581
+#: src/window.rs:582
 msgid "Open Image"
 msgstr "פתיחת תמונה"
 
-#: src/window.rs:667
+#: src/window.rs:668
 msgid "Image copied to clipboard"
 msgstr "תמונה הועתקה ללוח הגזירים"
 
-#: src/window.rs:688
+#: src/window.rs:689
 msgid "Image moved to trash"
 msgstr "תמונה הוערה לאשפה"
 
-#: src/window.rs:689
+#: src/window.rs:690
 msgid "Undo"
 msgstr "ביטול"
 
-#: src/window.rs:715
+#: src/window.rs:716
 msgid "Failed to move image to trash"
 msgstr "העברת התמונה לאשפה נכשלה"
 
-#: src/window.rs:741
+#: src/window.rs:742
 msgid "Permanently Delete Image?"
 msgstr "למחוק את התמונה לצמיתות?"
 
-#: src/window.rs:743
+#: src/window.rs:744
 msgid "After deleting the image “{}” it will be permanently lost."
 msgstr "לאחר מחיקת התמונה „{}” היא תאבד לצמיתות."
 
-#: src/window.rs:751
+#: src/window.rs:752
 msgid "Cancel"
 msgstr "ביטול"
 
-#: src/window.rs:752
+#: src/window.rs:753
 msgid "Delete"
 msgstr "מחיקה"
 
-#: src/window.rs:763
+#: src/window.rs:764
 msgid "Failed to delete image"
 msgstr "מחיקת התמונה נכשלה"
 
