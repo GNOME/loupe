@@ -7,25 +7,24 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2024-02-13 22:38+0000\n"
-"PO-Revision-Date: 2024-02-14 13:03+0200\n"
+"POT-Creation-Date: 2024-05-02 18:23+0000\n"
+"PO-Revision-Date: 2024-05-05 20:37+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
-"Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
+"Language-Team: Ukrainian\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n"
 "%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Lokalize 23.04.1\n"
+"X-Generator: Lokalize 23.04.3\n"
 
 #: data/org.gnome.Loupe.desktop.in.in:3
-#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:29 src/window.rs:880
+#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:29 src/window.rs:881
 msgid "Image Viewer"
 msgstr "Перегляд зображень"
 
 #: data/org.gnome.Loupe.desktop.in.in:11
-#| msgid "Picture;Slideshow;Graphics;Loupe;"
 msgid "Picture;Graphics;Loupe;"
 msgstr ""
 "Picture;Graphics;Loupe;зображення;картинка;графіка;перегляд;зображення;лупе;"
@@ -39,29 +38,29 @@ msgstr "Показати властивості зображення на біч
 msgid "The GNOME Project"
 msgstr "Проєкт GNOME"
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:12
+#: data/org.gnome.Loupe.metainfo.xml.in.in:13
 msgid "View images"
 msgstr "Перегляд зображень"
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:14
+#: data/org.gnome.Loupe.metainfo.xml.in.in:15
 msgid "Browse through your images and inspect their metadata with:"
 msgstr ""
 "Здійснюйте навігацію вашими зображеннями і переглядайте їхні метадані за "
 "допомогою:"
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:16
+#: data/org.gnome.Loupe.metainfo.xml.in.in:17
 msgid "Fast GPU accelerated image rendering"
 msgstr "Швидкої обробка зображення за допомогою графічного процесора"
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:17
+#: data/org.gnome.Loupe.metainfo.xml.in.in:18
 msgid "Tiled rendering for vector graphics"
 msgstr "Плиткової обробки для векторної графіки"
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:18
+#: data/org.gnome.Loupe.metainfo.xml.in.in:19
 msgid "Extendable and sandboxed image decoding"
 msgstr "Придатного до розширення та ізольоване декодування зображень"
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:19
+#: data/org.gnome.Loupe.metainfo.xml.in.in:20
 msgid "Accessible presentation of the most important metadata."
 msgstr "Доступного представлення найважливіших метаданих"
 
@@ -253,7 +252,7 @@ msgstr "Юрій Чорноіван <yurchor@ukr.net>, 2023"
 msgid "Copyright © 2020–2024 Christopher Davis et al."
 msgstr "© Christopher Davis та інші, 2020–2024."
 
-#: src/file_model.rs:128
+#: src/file_model.rs:129
 msgid "Could not list other files in directory."
 msgstr "Не вдалося отримати список інших файлів у каталозі."
 
@@ -277,13 +276,19 @@ msgstr "С"
 msgid "W"
 msgstr "З"
 
-#. Translators: Unit for exposure time in seconds
-#: src/metadata/mod.rs:260
+#. Translators: Fractional exposure time (photography) in seconds
+#: src/metadata/mod.rs:262
 msgid "1\\u{2215}{}\\u{202F}s"
 msgstr "1\\u{2215}{}\\u{202F}с"
 
+#. Translators: Exposure time (photography) in seconds
+#: src/metadata/mod.rs:270
+#| msgid "{}\\u{202F}mm"
+msgid "{}\\u{202F}s"
+msgstr "{}\\u{202F}с"
+
 #. Translators: Unit for focal length in millimeters
-#: src/metadata/mod.rs:285
+#: src/metadata/mod.rs:296
 msgid "{}\\u{202F}mm"
 msgstr "{}\\u{202F}мм"
 
@@ -296,7 +301,7 @@ msgstr "{}\\u{202F}мм"
 msgid "%x %X"
 msgstr "%x %X"
 
-#: src/util/mod.rs:180 src/window.rs:701
+#: src/util/mod.rs:180 src/window.rs:702
 msgid "Failed to restore image from trash"
 msgstr "Не вдалося відновити зображення зі смітника"
 
@@ -402,15 +407,15 @@ msgid "px"
 msgstr "пк"
 
 #. Translators: {} is a placeholder for the filename
-#: src/widgets/print.rs:371
+#: src/widgets/print.rs:382
 msgid "Print “{}”"
 msgstr "Надрукувати «{}»"
 
-#: src/widgets/print.rs:782
+#: src/widgets/print.rs:803
 msgid "_Scale"
 msgstr "_Масштаб"
 
-#: src/widgets/print.rs:785
+#: src/widgets/print.rs:806
 msgid "_Width"
 msgstr "_Ширина"
 
@@ -526,6 +531,7 @@ msgstr "Файл створено"
 msgid "File Modified"
 msgstr "Файл змінено"
 
+#. Translators: This is a label for GPS coordinates
 #: src/widgets/properties_view.ui:106
 msgid "Location"
 msgstr "Розташування"
@@ -562,51 +568,51 @@ msgstr "Фокусна відстань"
 msgid "Maker, Model"
 msgstr "Виробник, модель"
 
-#: src/window.rs:568
+#: src/window.rs:569
 msgid "Supported image formats"
 msgstr "Підтримувані формати зображень"
 
-#: src/window.rs:574
+#: src/window.rs:575
 msgid "All files"
 msgstr "усі файли"
 
-#: src/window.rs:581
+#: src/window.rs:582
 msgid "Open Image"
 msgstr "Відкрити зображення"
 
-#: src/window.rs:667
+#: src/window.rs:668
 msgid "Image copied to clipboard"
 msgstr "Зображення скопійовано до буфера обміну"
 
-#: src/window.rs:688
+#: src/window.rs:689
 msgid "Image moved to trash"
 msgstr "Зображення пересунуто до смітника"
 
-#: src/window.rs:689
+#: src/window.rs:690
 msgid "Undo"
 msgstr "Скасувати"
 
-#: src/window.rs:715
+#: src/window.rs:716
 msgid "Failed to move image to trash"
 msgstr "Не вдалося пересунути зображення до смітника"
 
-#: src/window.rs:741
+#: src/window.rs:742
 msgid "Permanently Delete Image?"
 msgstr "Остаточно вилучити зображення?"
 
-#: src/window.rs:743
+#: src/window.rs:744
 msgid "After deleting the image “{}” it will be permanently lost."
 msgstr "Після вилучення зображення «{}» його не можна буде відновити."
 
-#: src/window.rs:751
+#: src/window.rs:752
 msgid "Cancel"
 msgstr "Скасувати"
 
-#: src/window.rs:752
+#: src/window.rs:753
 msgid "Delete"
 msgstr "Вилучити"
 
-#: src/window.rs:763
+#: src/window.rs:764
 msgid "Failed to delete image"
 msgstr "Не вдалося вилучити зображення"
 
