@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2024-03-29 03:46+0000\n"
-"PO-Revision-Date: 2024-03-29 15:17+0530\n"
+"POT-Creation-Date: 2024-04-12 07:32+0000\n"
+"PO-Revision-Date: 2024-04-14 19:19+0530\n"
 "Last-Translator: Scrambled777 <weblate.scrambled777@simplelogin.com>\n"
 "Language-Team: Hindi\n"
 "Language: hi\n"
@@ -19,7 +19,7 @@ msgstr ""
 "X-Generator: Gtranslator 46.0\n"
 
 #: data/org.gnome.Loupe.desktop.in.in:3
-#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:29 src/window.rs:880
+#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:29 src/window.rs:881
 msgid "Image Viewer"
 msgstr "Image Viewer"
 
@@ -272,13 +272,18 @@ msgstr "E"
 msgid "W"
 msgstr "W"
 
-#. Translators: Unit for exposure time in seconds
-#: src/metadata/mod.rs:260
+#. Translators: Fractional exposure time (photography) in seconds
+#: src/metadata/mod.rs:262
 msgid "1\\u{2215}{}\\u{202F}s"
 msgstr "1\\u{2215}{}\\u{202F}s"
 
+#. Translators: Exposure time (photography) in seconds
+#: src/metadata/mod.rs:270
+msgid "{}\\u{202F}s"
+msgstr "{}\\u{202F}s"
+
 #. Translators: Unit for focal length in millimeters
-#: src/metadata/mod.rs:285
+#: src/metadata/mod.rs:296
 msgid "{}\\u{202F}mm"
 msgstr "{}\\u{202F}mm"
 
@@ -291,7 +296,7 @@ msgstr "{}\\u{202F}mm"
 msgid "%x %X"
 msgstr "%x %X"
 
-#: src/util/mod.rs:180 src/window.rs:701
+#: src/util/mod.rs:180 src/window.rs:702
 msgid "Failed to restore image from trash"
 msgstr "कूड़ेदान से छवि पुनर्स्थापित करने में विफल"
 
@@ -397,15 +402,15 @@ msgid "px"
 msgstr "px"
 
 #. Translators: {} is a placeholder for the filename
-#: src/widgets/print.rs:371
+#: src/widgets/print.rs:382
 msgid "Print “{}”"
 msgstr "“{}” प्रिंट करें"
 
-#: src/widgets/print.rs:782
+#: src/widgets/print.rs:803
 msgid "_Scale"
 msgstr "पैमाना (_S)"
 
-#: src/widgets/print.rs:785
+#: src/widgets/print.rs:806
 msgid "_Width"
 msgstr "चौड़ाई (_W)"
 
@@ -558,51 +563,51 @@ msgstr "फोकल लंबाई"
 msgid "Maker, Model"
 msgstr "निर्माता, मॉडल"
 
-#: src/window.rs:568
+#: src/window.rs:569
 msgid "Supported image formats"
 msgstr "समर्थित छवि प्रारूप"
 
-#: src/window.rs:574
+#: src/window.rs:575
 msgid "All files"
 msgstr "सभी फाइलें"
 
-#: src/window.rs:581
+#: src/window.rs:582
 msgid "Open Image"
 msgstr "छवि खोलें"
 
-#: src/window.rs:667
+#: src/window.rs:668
 msgid "Image copied to clipboard"
 msgstr "छवि क्लिपबोर्ड पर कॉपी की गई"
 
-#: src/window.rs:688
+#: src/window.rs:689
 msgid "Image moved to trash"
 msgstr "छवि को कूड़ेदान में ले जाया गया"
 
-#: src/window.rs:689
+#: src/window.rs:690
 msgid "Undo"
 msgstr "पूर्ववत"
 
-#: src/window.rs:715
+#: src/window.rs:716
 msgid "Failed to move image to trash"
 msgstr "छवि को कूड़ेदान में ले जाने में विफल"
 
-#: src/window.rs:741
+#: src/window.rs:742
 msgid "Permanently Delete Image?"
 msgstr "छवि को स्थायी रूप से हटाएं?"
 
-#: src/window.rs:743
+#: src/window.rs:744
 msgid "After deleting the image “{}” it will be permanently lost."
 msgstr "छवि \"{}\" को हटाने के बाद यह स्थायी रूप से खो जाएगी।"
 
-#: src/window.rs:751
+#: src/window.rs:752
 msgid "Cancel"
 msgstr "रद्द"
 
-#: src/window.rs:752
+#: src/window.rs:753
 msgid "Delete"
 msgstr "हटाएँ"
 
-#: src/window.rs:763
+#: src/window.rs:764
 msgid "Failed to delete image"
 msgstr "छवि हटाने में विफल"
 
