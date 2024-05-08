@@ -186,25 +186,6 @@ pub async fn untrash(path: &Path) -> anyhow::Result<()> {
     error
 }
 
-pub trait BufReadSeek: std::io::BufRead + std::io::Seek {}
-
-impl BufReadSeek for std::io::BufReader<gio::InputStreamRead<gio::FileInputStream>> {}
-
-pub trait ToBufRead {
-    fn to_buf_read(&self, cancellable: &gio::Cancellable) -> anyhow::Result<Box<dyn BufReadSeek>>;
-}
-
-impl ToBufRead for gio::File {
-    fn to_buf_read(&self, cancellable: &gio::Cancellable) -> anyhow::Result<Box<dyn BufReadSeek>> {
-        let read = self
-            .read(Some(cancellable))
-            .context(gettext("Failed to open image"))?
-            .into_read();
-
-        Ok(Box::new(std::io::BufReader::new(read)))
-    }
-}
-
 #[derive(Debug, Clone, Copy)]
 pub enum Position {
     First,
