@@ -26,7 +26,9 @@ use glib::{clone, Properties};
 use gtk::prelude::*;
 use gtk::CompositeTemplate;
 
+use super::LpErrorDetails;
 use crate::deps::*;
+use crate::util::gettext::*;
 use crate::widgets::LpImage;
 
 mod imp {
@@ -40,8 +42,12 @@ mod imp {
         pub(super) stack: TemplateChild<gtk::Stack>,
         #[template_child]
         pub(super) spinner_page: TemplateChild<gtk::Widget>,
+
         #[template_child]
         pub(super) error_page: TemplateChild<adw::StatusPage>,
+        #[template_child]
+        pub(super) error_more_info: TemplateChild<gtk::Button>,
+
         #[template_child]
         pub(super) image_stack_page: TemplateChild<gtk::Widget>,
         #[template_child]
@@ -122,9 +128,7 @@ mod imp {
 
             obj.image()
                 .connect_error_notify(clone!(@weak obj => move |_| {
-                    if obj.image().error().is_some() {
-                        obj.imp().stack.set_visible_child(&*obj.imp().error_page);
-                    }
+                    glib::spawn_future_local(async move { obj.show_error().await });
                 }));
 
             // Do not waste CPU on spinner if it is not visible
@@ -182,5 +186,51 @@ impl LpImagePage {
 
         imp.popover.set_pointing_to(Some(&rect));
         imp.popover.popup();
+    }
+
+    pub async fn show_error(&self) {
+        let imp = self.imp();
+        let image = self.image();
+
+        if image.is_unsupported() {
+            let message = if glycin::supported_mime_types().await.len() == 0 {
+                // Translators: {} is replace with a version number
+                gettext_f(
+                    "No image loaders available. Mabye the “glycin-loaders” package with compatibility version “{}+” is not installed.",
+                    [ format!("{}+", glycin::COMPAT_VERSION.to_string())])
+            } else {
+                let mime_type = image.metadata().mime_type().unwrap_or_default();
+                let content_type = gio::content_type_from_mime_type(&mime_type).unwrap_or_default();
+                let description = gio::content_type_get_description(&content_type).to_string();
+
+                if glycin::DEFAULT_MIME_TYPES.contains(&mime_type.as_str()) {
+                    // Translators: The first occurance of {} is replace with a description of the
+                    // format and the second with an id (mime-type) of the format.
+                    gettext_f(
+                        "The image format “{} ({})” is known but not installed.",
+                        [&description, &mime_type],
+                    )
+                } else {
+                    // Translators: The first occurance of {} is replace with a description of the
+                    // format and the second with an id (mime-type) of the format.
+                    gettext_f(
+                        "Unknown image format “{} ({}).”",
+                        [&description, &mime_type],
+                    )
+                }
+            };
+
+            imp.error_page.set_description(Some(&message));
+        } else if let Some(err) = image.error() {
+            imp.error_more_info
+                .connect_clicked(glib::clone!(@weak self as obj => move |_| {
+                    LpErrorDetails::new(&obj.root().unwrap(), &err);
+                }));
+
+            imp.error_page.set_description(Some(&gettext(
+                "Either the image file is corrupted or it contains unsupported elements.",
+            )));
+        }
+        imp.stack.set_visible_child(&*imp.error_page);
     }
 }

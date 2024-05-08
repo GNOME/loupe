@@ -18,6 +18,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 
 mod drag_overlay;
+mod error_details;
 mod image;
 mod image_page;
 mod image_view;
@@ -28,6 +29,7 @@ mod shy_bin;
 mod sliding_view;
 
 pub use drag_overlay::LpDragOverlay;
+pub use error_details::LpErrorDetails;
 pub use image::LpImage;
 pub use image_page::LpImagePage;
 pub use image_view::LpImageView;

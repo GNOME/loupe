@@ -990,7 +990,7 @@ dependencies = [
 [[package]]
 name = "glycin"
 version = "1.0.2"
-source = "git+https://gitlab.gnome.org/sophie-h/glycin#f89bb5e087484c8cb1e0a93dc8946e298e933eb5"
+source = "git+https://gitlab.gnome.org/sophie-h/glycin#15db3397385c127f21801bcf7ca7c9503a08571c"
 dependencies = [
  "async-fs",
  "async-global-executor",
@@ -1014,7 +1014,7 @@ dependencies = [
 [[package]]
 name = "glycin-utils"
 version = "1.0.2"
-source = "git+https://gitlab.gnome.org/sophie-h/glycin#f89bb5e087484c8cb1e0a93dc8946e298e933eb5"
+source = "git+https://gitlab.gnome.org/sophie-h/glycin#15db3397385c127f21801bcf7ca7c9503a08571c"
 dependencies = [
  "libc",
  "libseccomp",

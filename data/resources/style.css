@@ -53,3 +53,8 @@ lpprintpreviewpage lpimage {
 dropdown.flat button:not(:hover) {
   background: none;
 }
+
+dialog.error-details textview {
+  background: none;
+  color: inherit;
+}

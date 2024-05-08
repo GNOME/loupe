@@ -61,7 +61,15 @@
           <object class="AdwStatusPage" id="error_page">
             <property name="icon-name">image-missing-symbolic</property>
             <property name="title" translatable="yes">Could not Load Image</property>
-            <property name="description" bind-source="image" bind-property="error" />
+            <child>
+              <object class="GtkButton" id="error_more_info">
+                <property name="label" translatable="true">More Information…</property>
+                <property name="halign">center</property>
+                <style>
+                  <class name="pill" />
+                </style>
+              </object>
+            </child>
           </object>
         </child>
         <child>
