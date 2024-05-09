@@ -52,7 +52,7 @@
       </item>
       <item>
         <attribute name="label" translatable="yes">_About Image Viewer</attribute>
-        <attribute name="action">app.about</attribute>
+        <attribute name="action">win.about</attribute>
       </item>
     </section>
   </menu>
@@ -104,7 +104,7 @@
                           <object class="GtkButton">
                             <property name="icon-name">object-rotate-left-symbolic</property>
                             <property name="tooltip-text" translatable="yes">Rotate Left</property>
-                            <property name="action-name">win.rotate_ccw</property>
+                            <property name="action-name">win.rotate-ccw</property>
                             <style>
                               <class name="flat" />
                             </style>
@@ -114,7 +114,7 @@
                           <object class="GtkButton">
                             <property name="icon-name">object-rotate-right-symbolic</property>
                             <property name="tooltip-text" translatable="yes">Rotate Right</property>
-                            <property name="action-name">win.rotate_cw</property>
+                            <property name="action-name">win.rotate-cw</property>
                             <style>
                               <class name="flat" />
                             </style>

@@ -193,11 +193,11 @@ impl LpImagePage {
         let image = self.image();
 
         if image.is_unsupported() {
-            let message = if glycin::supported_mime_types().await.len() == 0 {
+            let message = if glycin::supported_mime_types().await.is_empty() {
                 // Translators: {} is replace with a version number
                 gettext_f(
                     "No image loaders available. Mabye the “glycin-loaders” package with compatibility version “{}+” is not installed.",
-                    [ format!("{}+", glycin::COMPAT_VERSION.to_string())])
+                    [ format!("{}+", glycin::COMPAT_VERSION)])
             } else {
                 let mime_type = image.metadata().mime_type().unwrap_or_default();
                 let content_type = gio::content_type_from_mime_type(&mime_type).unwrap_or_default();
@@ -221,6 +221,9 @@ impl LpImagePage {
             };
 
             imp.error_page.set_description(Some(&message));
+            imp.error_more_info.set_visible(false);
+
+            imp.stack.set_visible_child(&*imp.error_page);
         } else if let Some(err) = image.error() {
             imp.error_more_info
                 .connect_clicked(glib::clone!(@weak self as obj => move |_| {
@@ -230,7 +233,9 @@ impl LpImagePage {
             imp.error_page.set_description(Some(&gettext(
                 "Either the image file is corrupted or it contains unsupported elements.",
             )));
+
+            imp.error_more_info.set_visible(true);
+            imp.stack.set_visible_child(&*imp.error_page);
         }
-        imp.stack.set_visible_child(&*imp.error_page);
     }
 }

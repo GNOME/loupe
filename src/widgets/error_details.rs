@@ -1,12 +1,8 @@
 use adw::prelude::*;
 use adw::subclass::prelude::*;
-use glib::{clone, Properties};
-use gtk::prelude::*;
 use gtk::CompositeTemplate;
 
 use crate::deps::*;
-use crate::util::gettext::*;
-use crate::widgets::LpImage;
 
 mod imp {
     use super::*;

@@ -34,6 +34,7 @@
                 <property name="vexpand">true</property>
                 <child>
                   <object class="GtkTextView" id="message">
+                    <property name="editable">false</property>
                     <property name="wrap-mode">word-char</property>
                   </object>
                 </child>

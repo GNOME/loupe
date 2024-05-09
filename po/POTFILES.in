@@ -17,6 +17,8 @@ src/metadata/mod.rs
 src/util/gettext.rs
 src/util/mod.rs
 src/widgets/drag_overlay.rs
+src/widgets/error_details.rs
+src/widgets/error_details.ui
 src/widgets/image.rs
 src/widgets/image/background_color.rs
 src/widgets/image/drag.rs
@@ -43,4 +45,5 @@ src/widgets/shy_bin.rs
 src/widgets/sliding_view.rs
 src/window.rs
 src/window.ui
+src/window/actions.rs
 src/window/controls.rs

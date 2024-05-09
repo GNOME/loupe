@@ -28,6 +28,7 @@ libgweather = "4.4.0"
 log = "0.4.17"
 once_cell = "1.16.0"
 url = "2.3.1"
+strum = { version = "0.26.2", features = ["derive"] }
 
 [dependencies.ashpd]
 version = "0.8.0"
@@ -36,7 +37,7 @@ features = ["gtk4_wayland"]
 [dependencies.gtk]
 package = "gtk4"
 version = "0.8.0"
-features = ["v4_12", "xml_validation"]
+features = ["v4_14", "xml_validation"]
 
 [dependencies.gio]
 package = "gio"

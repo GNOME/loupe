@@ -25,11 +25,13 @@
 //
 // SPDX-License-Identifier: GPL-3.0-or-later
 
+mod actions;
 mod controls;
 
 use std::cell::{Cell, OnceCell, RefCell};
 use std::path::{Path, PathBuf};
 
+use actions::*;
 use adw::prelude::*;
 use adw::subclass::prelude::*;
 use glib::clone;
@@ -39,7 +41,7 @@ use crate::application::LpApplication;
 use crate::config;
 use crate::deps::*;
 use crate::util::gettext::*;
-use crate::util::{Direction, Position};
+use crate::util::Direction;
 use crate::widgets::{LpDragOverlay, LpImage, LpImageView, LpPropertiesView};
 
 /// Show window after X milliseconds even if image dimensions are not known yet
@@ -138,148 +140,16 @@ mod imp {
                 }
             });
 
-            // Set up actions
-            klass.install_action("win.toggle-fullscreen", None, move |win, _, _| {
-                win.toggle_fullscreen(!win.is_fullscreened());
-            });
-
-            klass.install_action("win.next", None, move |win, _, _| {
-                win.imp().image_view.navigate(Direction::Forward, true);
-            });
-
-            klass.install_action("win.previous", None, move |win, _, _| {
-                win.imp().image_view.navigate(Direction::Back, true);
-            });
-
-            klass.install_action("win.image-right", None, move |win, _, _| {
-                if win.direction() == gtk::TextDirection::Rtl {
-                    win.imp().image_view.navigate(Direction::Back, true);
-                } else {
-                    win.imp().image_view.navigate(Direction::Forward, true);
-                }
-            });
-
-            klass.install_action("win.image-right-instant", None, move |win, _, _| {
-                if win.direction() == gtk::TextDirection::Rtl {
-                    win.imp().image_view.navigate(Direction::Back, false);
-                } else {
-                    win.imp().image_view.navigate(Direction::Forward, false);
-                }
-            });
-
-            klass.install_action("win.image-left", None, move |win, _, _| {
-                if win.direction() == gtk::TextDirection::Rtl {
-                    win.imp().image_view.navigate(Direction::Forward, true);
-                } else {
-                    win.imp().image_view.navigate(Direction::Back, true);
-                }
-            });
-
-            klass.install_action("win.image-left-instant", None, move |win, _, _| {
-                if win.direction() == gtk::TextDirection::Rtl {
-                    win.imp().image_view.navigate(Direction::Forward, false);
-                } else {
-                    win.imp().image_view.navigate(Direction::Back, false);
-                }
-            });
-
-            klass.install_action("win.first", None, move |win, _, _| {
-                win.imp().image_view.jump(Position::First);
-            });
-
-            klass.install_action("win.last", None, move |win, _, _| {
-                win.imp().image_view.jump(Position::Last);
-            });
-
-            klass.install_action("win.zoom-out-cursor", None, move |win, _, _| {
-                win.zoom_out_cursor();
-            });
-
-            klass.install_action("win.zoom-out-center", None, move |win, _, _| {
-                win.zoom_out_center();
-            });
-
-            klass.install_action("win.zoom-in-cursor", None, move |win, _, _| {
-                win.zoom_in_cursor();
-            });
-
-            klass.install_action("win.zoom-in-center", None, move |win, _, _| {
-                win.zoom_in_center();
-            });
-
-            klass.install_action(
-                "win.zoom-to-exact",
-                Some(VariantTy::DOUBLE),
-                move |win, _, level| {
-                    win.zoom_to_exact(level.unwrap().get().unwrap());
-                },
+            klass.add_binding_action(
+                gdk::Key::question,
+                gdk::ModifierType::CONTROL_MASK,
+                "win.show-help-overlay",
             );
 
-            klass.install_action("win.zoom-best-fit", None, move |win, _, _| {
-                win.zoom_best_fit();
-            });
+            // Set up actions
 
-            klass.install_action("win.pan-up", None, move |win, _, _| {
-                win.pan(&gtk::PanDirection::Up);
-            });
-
-            klass.install_action("win.pan-down", None, move |win, _, _| {
-                win.pan(&gtk::PanDirection::Down);
-            });
-
-            klass.install_action("win.pan-left", None, move |win, _, _| {
-                win.pan(&gtk::PanDirection::Left);
-            });
-
-            klass.install_action("win.pan-right", None, move |win, _, _| {
-                win.pan(&gtk::PanDirection::Right);
-            });
-
-            klass.install_action("win.leave-fullscreen", None, move |win, _, _| {
-                win.toggle_fullscreen(false);
-            });
-
-            klass.install_action("win.toggle-properties", None, move |win, _, _| {
-                win.imp()
-                    .properties_button
-                    .set_active(!win.imp().properties_button.is_active());
-            });
-
-            klass.install_action_async("win.open", None, |win, _, _| async move {
-                win.pick_file().await;
-            });
-
-            klass.install_action_async("win.open-with", None, |win, _, _| async move {
-                win.open_with().await;
-            });
-
-            klass.install_action("win.rotate_cw", None, |win, _, _| {
-                win.rotate_image(90.0);
-            });
-
-            klass.install_action("win.rotate_ccw", None, |win, _, _| {
-                win.rotate_image(-90.0);
-            });
-
-            klass.install_action_async("win.set-background", None, |win, _, _| async move {
-                win.set_background().await;
-            });
-
-            klass.install_action("win.print", None, move |win, _, _| {
-                win.print();
-            });
-
-            klass.install_action("win.copy-image", None, move |win, _, _| {
-                win.copy_image();
-            });
-
-            klass.install_action_async("win.trash", None, |win, _, _| async move {
-                win.trash().await;
-            });
-
-            klass.install_action_async("win.delete", None, |win, _, _| async move {
-                win.delete().await;
-            });
+            ActionPartGlobal::init_actions_and_bindings(klass);
+            Action::init_actions_and_bindings(klass);
 
             klass.install_action(
                 "win.show-toast",
@@ -444,6 +314,10 @@ mod imp {
                 obj.show_controls();
                 obj.schedule_hide_controls();
             });
+
+            // Activate global shortcuts only if no dialog is open
+            obj.connect_visible_dialog_notify(|obj| obj.update_accel_status());
+            obj.connect_is_active_notify(|obj| obj.update_accel_status());
 
             self.status_page
                 .set_icon_name(Some(&format!("{}-symbolic", config::APP_ID)));
@@ -791,8 +665,8 @@ impl LpWindow {
             "win.set-background",
             "win.toggle-fullscreen",
             "win.print",
-            "win.rotate_cw",
-            "win.rotate_ccw",
+            "win.rotate-cw",
+            "win.rotate-ccw",
             "win.copy-image",
             "win.zoom-best-fit",
             "win.zoom-to-exact",
@@ -991,5 +865,28 @@ impl LpWindow {
             adw::ToolbarStyle::RaisedBorder
         };
         imp.toolbar_view.set_top_bar_style(toolbar_style);
+    }
+
+    fn update_accel_status(&self) {
+        let Some(application) = self.application() else {
+            log::error!("No application for window found");
+            return;
+        };
+
+        // Only change status if active window
+        if self.is_active() {
+            if self.visible_dialog().is_some() {
+                // If AdwDialog is visible, remove global accels that are for the main window
+                ActionPartGlobal::remove_accels(&application);
+            } else {
+                // Add accels if viewing main window
+                ActionPartGlobal::add_accels(&application);
+            }
+        }
+    }
+
+    async fn show_about(&self) {
+        let about = crate::about::dialog().await;
+        about.present(self);
     }
 }

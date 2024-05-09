@@ -23,9 +23,9 @@
 use adw::prelude::*;
 use adw::subclass::prelude::*;
 
+use crate::config;
 use crate::deps::*;
 use crate::window::LpWindow;
-use crate::{about, config};
 
 mod imp {
     use super::*;
@@ -128,12 +128,6 @@ impl LpApplication {
         // that implements gio::ActionMap. Here we build the application's actions and
         // add them with add_action_entries().
         let actions = [
-            gio::ActionEntryBuilder::new("about")
-                .activate(|app: &Self, _, _| {
-                    let app = app.clone();
-                    glib::spawn_future_local(async move { app.show_about().await });
-                })
-                .build(),
             gio::ActionEntryBuilder::new("help")
                 .activate(|app: &Self, _, _| app.show_help())
                 .build(),
@@ -152,65 +146,8 @@ impl LpApplication {
 
         self.set_accels_for_action("app.help", &["F1"]);
         self.set_accels_for_action("app.quit", &["<Ctrl>Q"]);
-        self.set_accels_for_action("app.new-window", &["<Ctrl>N"]);
-
-        self.set_accels_for_action("win.open", &["<Ctrl>O"]);
-        self.set_accels_for_action("win.print", &["<Ctrl>P"]);
-        self.set_accels_for_action("win.copy", &["<Ctrl>C"]);
-        self.set_accels_for_action("win.trash", &["Delete", "KP_Delete"]);
-        self.set_accels_for_action("win.delete", &["<Shift>Delete", "<Shift>KP_Delete"]);
-        self.set_accels_for_action("win.show-help-overlay", &["<Ctrl>question"]);
-        self.set_accels_for_action("win.leave-fullscreen", &["Escape"]);
-        self.set_accels_for_action("win.toggle-properties", &["F9", "<Alt>Return"]);
-        self.set_accels_for_action("win.toggle-fullscreen", &["F11"]);
-        self.set_accels_for_action("win.set-background", &["<Ctrl>F8"]);
-
-        self.set_accels_for_action("win.image-left-instant", &["Left", "Page_Down"]);
-        self.set_accels_for_action("win.image-right-instant", &["Right", "Page_Up"]);
-        self.set_accels_for_action("win.first", &["Home"]);
-        self.set_accels_for_action("win.last", &["End"]);
-
-        self.set_accels_for_action(
-            "win.zoom-to-exact(1.0)",
-            &["1", "KP_1", "<Ctrl>1", "<Ctrl>KP_1"],
-        );
-        self.set_accels_for_action(
-            "win.zoom-to-exact(2.0)",
-            &["2", "KP_2", "<Ctrl>2", "<Ctrl>KP_2"],
-        );
-        self.set_accels_for_action("win.zoom-best-fit", &["0", "KP_0", "<Ctrl>0", "<Ctrl>KP_0"]);
-        self.set_accels_for_action(
-            "win.zoom-in-cursor",
-            &[
-                "<Ctrl>plus",
-                "plus",
-                "<Ctrl>equal",
-                "equal",
-                "<Ctrl>KP_Add",
-                "KP_Add",
-            ],
-        );
-        self.set_accels_for_action(
-            "win.zoom-out-cursor",
-            &["<Ctrl>minus", "minus", "<Ctrl>KP_Subtract", "KP_Subtract"],
-        );
-
-        self.set_accels_for_action("win.pan-left", &["<Ctrl>Left"]);
-        self.set_accels_for_action("win.pan-right", &["<Ctrl>Right"]);
-        self.set_accels_for_action("win.pan-up", &["<Ctrl>Up"]);
-        self.set_accels_for_action("win.pan-down", &["<Ctrl>Down"]);
-
-        self.set_accels_for_action("win.rotate_cw", &["<Ctrl>R"]);
-        self.set_accels_for_action("win.rotate_ccw", &["<Ctrl><Shift>R"]);
-
         self.set_accels_for_action("window.close", &["<Ctrl>W"]);
-    }
-
-    pub async fn show_about(&self) {
-        let about = about::dialog().await;
-        let window = self.active_window().unwrap();
-
-        about.present(&window);
+        self.set_accels_for_action("app.new-window", &["<Ctrl>N"]);
     }
 
     pub fn show_help(&self) {
