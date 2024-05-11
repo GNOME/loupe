@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2024-02-13 22:38+0000\n"
-"PO-Revision-Date: 2024-02-14 05:42+0100\n"
+"POT-Creation-Date: 2024-05-10 10:51+0000\n"
+"PO-Revision-Date: 2024-05-11 04:58+0200\n"
 "Last-Translator: Ekaterine Papava <papava.e@gtu.ge>\n"
 "Language-Team: Georgian <ka@li.org>\n"
 "Language: ka\n"
@@ -18,7 +18,7 @@ msgstr ""
 "X-Generator: Poedit 3.3.2\n"
 
 #: data/org.gnome.Loupe.desktop.in.in:3
-#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:29 src/window.rs:880
+#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:29 src/window.rs:881
 msgid "Image Viewer"
 msgstr "სურათების გალერეა"
 
@@ -35,27 +35,27 @@ msgstr "გამოსახულების თვისებების �
 msgid "The GNOME Project"
 msgstr "პროექტი \"GNOME\""
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:12
+#: data/org.gnome.Loupe.metainfo.xml.in.in:13
 msgid "View images"
 msgstr "სურათების დათვალიერება"
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:14
+#: data/org.gnome.Loupe.metainfo.xml.in.in:15
 msgid "Browse through your images and inspect their metadata with:"
 msgstr "დაათვალიერეთ თქვენი სურათები და მათი მეტამონაცემები:"
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:16
+#: data/org.gnome.Loupe.metainfo.xml.in.in:17
 msgid "Fast GPU accelerated image rendering"
 msgstr "GPU-ით აჩქარებული გამოსახულების რენდერი"
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:17
+#: data/org.gnome.Loupe.metainfo.xml.in.in:18
 msgid "Tiled rendering for vector graphics"
 msgstr "ნაწილ-ნაწილ რენდერი ვექტორული გრაფიკისთვის"
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:18
+#: data/org.gnome.Loupe.metainfo.xml.in.in:19
 msgid "Extendable and sandboxed image decoding"
 msgstr "გაფართოებადი და სენდბოქსში ჩაკეტილი გამოსახულების დეკოდერი"
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:19
+#: data/org.gnome.Loupe.metainfo.xml.in.in:20
 msgid "Accessible presentation of the most important metadata."
 msgstr "მნიშვნელოვანი მეტამონაცემების წვდომადი პრეზენტაცია."
 
@@ -247,7 +247,7 @@ msgstr "ვიღაც, ვინც თარგმნა"
 msgid "Copyright © 2020–2024 Christopher Davis et al."
 msgstr "Copyright © 2020–2024 Christopher Davis და სხვ."
 
-#: src/file_model.rs:128
+#: src/file_model.rs:129
 msgid "Could not list other files in directory."
 msgstr "საქაღალდეში სხვა ფაილების სიის გამოტანის შეცდომა."
 
@@ -271,13 +271,19 @@ msgstr "მი"
 msgid "W"
 msgstr "ოთხ"
 
-#. Translators: Unit for exposure time in seconds
-#: src/metadata/mod.rs:260
+#. Translators: Fractional exposure time (photography) in seconds
+#: src/metadata/mod.rs:262
 msgid "1\\u{2215}{}\\u{202F}s"
 msgstr "1\\u{2215}{}\\u{202F}წმ"
 
+#. Translators: Exposure time (photography) in seconds
+#: src/metadata/mod.rs:270
+#| msgid "{}\\u{202F}mm"
+msgid "{}\\u{202F}s"
+msgstr "{}\\u{202F}წმ"
+
 #. Translators: Unit for focal length in millimeters
-#: src/metadata/mod.rs:285
+#: src/metadata/mod.rs:296
 msgid "{}\\u{202F}mm"
 msgstr "{}\\u{202F}მმ"
 
@@ -290,7 +296,7 @@ msgstr "{}\\u{202F}მმ"
 msgid "%x %X"
 msgstr "%x %X"
 
-#: src/util/mod.rs:180 src/window.rs:701
+#: src/util/mod.rs:180 src/window.rs:702
 msgid "Failed to restore image from trash"
 msgstr "გამოსახულების სანაგვე ყუთიდან აღდგენის შეცდომა"
 
@@ -396,15 +402,15 @@ msgid "px"
 msgstr "px"
 
 #. Translators: {} is a placeholder for the filename
-#: src/widgets/print.rs:371
+#: src/widgets/print.rs:382
 msgid "Print “{}”"
 msgstr "“{}”-ის დაბეჭდვა"
 
-#: src/widgets/print.rs:782
+#: src/widgets/print.rs:803
 msgid "_Scale"
 msgstr "გადიდ_ება"
 
-#: src/widgets/print.rs:785
+#: src/widgets/print.rs:806
 msgid "_Width"
 msgstr "_სიგანე"
 
@@ -520,6 +526,7 @@ msgstr "ფაილი შეიქმნა"
 msgid "File Modified"
 msgstr "შეცვლილი ფაილი"
 
+#. Translators: This is a label for GPS coordinates
 #: src/widgets/properties_view.ui:106
 msgid "Location"
 msgstr "დებარეობა"
@@ -556,51 +563,51 @@ msgstr "ფოკალური მანძილი"
 msgid "Maker, Model"
 msgstr "მწარმოებელი, მოდელი"
 
-#: src/window.rs:568
+#: src/window.rs:569
 msgid "Supported image formats"
 msgstr "გამოსახულების მხარდაჭერილი ფორმატები"
 
-#: src/window.rs:574
+#: src/window.rs:575
 msgid "All files"
 msgstr "ყველა ფაილი"
 
-#: src/window.rs:581
+#: src/window.rs:582
 msgid "Open Image"
 msgstr "გამოსახულების გახსნა"
 
-#: src/window.rs:667
+#: src/window.rs:668
 msgid "Image copied to clipboard"
 msgstr "სურათი ბუფერში დაკოპირდა"
 
-#: src/window.rs:688
+#: src/window.rs:689
 msgid "Image moved to trash"
 msgstr "სურათი გადატანილია სანაგვე ყუთში"
 
-#: src/window.rs:689
+#: src/window.rs:690
 msgid "Undo"
 msgstr "დაბრუნება"
 
-#: src/window.rs:715
+#: src/window.rs:716
 msgid "Failed to move image to trash"
 msgstr "ფაილების სანაგვე ყუთში გადატანის შეცდომა"
 
-#: src/window.rs:741
+#: src/window.rs:742
 msgid "Permanently Delete Image?"
 msgstr "წავშალო გამოსახულება სამუდამოდ?"
 
-#: src/window.rs:743
+#: src/window.rs:744
 msgid "After deleting the image “{}” it will be permanently lost."
 msgstr "გამოსახულება \"{}\", მხოლოდ, სამუდამოდ შეგიძლიათ წაშალოთ."
 
-#: src/window.rs:751
+#: src/window.rs:752
 msgid "Cancel"
 msgstr "გუქმება"
 
-#: src/window.rs:752
+#: src/window.rs:753
 msgid "Delete"
 msgstr "წაშლა"
 
-#: src/window.rs:763
+#: src/window.rs:764
 msgid "Failed to delete image"
 msgstr "გამოსახულების წაშლის შეცდომა"
 
