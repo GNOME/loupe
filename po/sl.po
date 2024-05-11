@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2024-05-02 18:23+0000\n"
-"PO-Revision-Date: 2024-05-02 22:41+0200\n"
+"POT-Creation-Date: 2024-05-09 21:54+0000\n"
+"PO-Revision-Date: 2024-05-11 10:37+0200\n"
 "Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
 "Language-Team: Slovenian <gnome-si@googlegroups.com>\n"
 "Language: sl\n"
@@ -23,7 +23,7 @@ msgstr ""
 "X-Poedit-SourceCharset: ISO-8859-1\n"
 
 #: data/org.gnome.Loupe.desktop.in.in:3
-#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:29 src/window.rs:881
+#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:30 src/window.rs:754
 msgid "Image Viewer"
 msgstr "Pregledovalnik slik"
 
@@ -38,7 +38,7 @@ msgid "Show the image properties sidebar"
 msgstr "Pokaži okno lastnosti slike"
 
 #. developer_name tag deprecated with Appstream 1.0
-#: data/org.gnome.Loupe.metainfo.xml.in.in:8 src/about.rs:32
+#: data/org.gnome.Loupe.metainfo.xml.in.in:8 src/about.rs:33
 msgid "The GNOME Project"
 msgstr "Projekt GNOME"
 
@@ -246,13 +246,13 @@ msgid "Gestures"
 msgstr "Poteze"
 
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/about.rs:41
+#: src/about.rs:42
 msgid "translator-credits"
 msgstr ""
 "Martin Srebotnjak\n"
 "Matej Urbančič <mateju@src.gnome.org>"
 
-#: src/about.rs:42
+#: src/about.rs:43
 msgid "Copyright © 2020–2024 Christopher Davis et al."
 msgstr "Avtorske pravice © 2020–2024 Christopher Davis in sodelavci"
 
@@ -304,13 +304,45 @@ msgstr "{}\\u{202F} mm"
 msgid "%x %X"
 msgstr "%x %X"
 
-#: src/util/mod.rs:180 src/window.rs:702
+#: src/util/mod.rs:180 src/window.rs:575
 msgid "Failed to restore image from trash"
 msgstr "Obnovitev slike iz smeti je spodletela"
 
-#: src/util/mod.rs:201
-msgid "Failed to open image"
-msgstr "Odpiranje slike je spodletelo"
+#: src/widgets/error_details.ui:25
+msgid ""
+"The image loader reported the following. Please include this information "
+"when you report an error."
+msgstr ""
+"Nalagalnik slik je poročal o naslednjem. Te podatke vključite, ko prijavite "
+"napako."
+
+#: src/widgets/error_details.ui:53
+msgid "Copy Information"
+msgstr "Kopiraj podatke"
+
+#: src/widgets/error_details.ui:58
+msgid "Report Issue…"
+msgstr "Pošlji poročilo o napaki …"
+
+#: src/widgets/image_page.rs:199
+msgid ""
+"No image loaders available. Mabye the “glycin-loaders” package with "
+"compatibility version “{}+” is not installed."
+msgstr ""
+"Nalagalniki slik niso na voljo. Morda paket »glicin-loaders« z različico "
+"združljivosti »{}+« ni nameščen."
+
+#: src/widgets/image_page.rs:210
+msgid "The image format “{} ({})” is known but not installed."
+msgstr "Vrsta zapisa slike »{} ({})« je znana, vendar ni nameščena."
+
+#: src/widgets/image_page.rs:217
+msgid "Unknown image format “{} ({}).”"
+msgstr "Neznana vrsta zapisa slike »{} ({})«."
+
+#: src/widgets/image_page.rs:234
+msgid "Either the image file is corrupted or it contains unsupported elements."
+msgstr "Slikovna datoteka je poškodovana ali pa vsebuje nepodprte elemente."
 
 #: src/widgets/image_page.ui:6 src/window.ui:16
 msgid "_Open With…"
@@ -336,11 +368,15 @@ msgstr "_Nastavi za ozadje …"
 msgid "Could not Load Image"
 msgstr "Slike ni mogoče naložiti"
 
-#: src/widgets/image_page.ui:97 src/window.ui:106
+#: src/widgets/image_page.ui:66
+msgid "More Information…"
+msgstr "Več informacij ..."
+
+#: src/widgets/image_page.ui:105 src/window.ui:106
 msgid "Rotate Left"
 msgstr "Zavrti v levo"
 
-#: src/widgets/image_page.ui:107 src/window.ui:116
+#: src/widgets/image_page.ui:115 src/window.ui:116
 msgid "Rotate Right"
 msgstr "Zavrti v desno"
 
@@ -571,51 +607,51 @@ msgstr "Goriščna razdalja"
 msgid "Maker, Model"
 msgstr "Izdelovalec, model"
 
-#: src/window.rs:569
+#: src/window.rs:442
 msgid "Supported image formats"
 msgstr "Podprte vrste slik"
 
-#: src/window.rs:575
+#: src/window.rs:448
 msgid "All files"
 msgstr "Vse datoteke"
 
-#: src/window.rs:582
+#: src/window.rs:455
 msgid "Open Image"
 msgstr "Odpri sliko"
 
-#: src/window.rs:668
+#: src/window.rs:541
 msgid "Image copied to clipboard"
 msgstr "Slika, kopirana v odložišče"
 
-#: src/window.rs:689
+#: src/window.rs:562
 msgid "Image moved to trash"
 msgstr "Slika, premaknjena v smeti"
 
-#: src/window.rs:690
+#: src/window.rs:563
 msgid "Undo"
 msgstr "Razveljavi"
 
-#: src/window.rs:716
+#: src/window.rs:589
 msgid "Failed to move image to trash"
 msgstr "Premikanje slike v smeti je spodletelo"
 
-#: src/window.rs:742
+#: src/window.rs:615
 msgid "Permanently Delete Image?"
 msgstr "Ali želite sliko trajno izbrisati?"
 
-#: src/window.rs:744
+#: src/window.rs:617
 msgid "After deleting the image “{}” it will be permanently lost."
 msgstr "Po brisanju slike »{}« ni mogoče več povrniti."
 
-#: src/window.rs:752
+#: src/window.rs:625
 msgid "Cancel"
 msgstr "Prekliči"
 
-#: src/window.rs:753
+#: src/window.rs:626
 msgid "Delete"
 msgstr "Izbriši"
 
-#: src/window.rs:764
+#: src/window.rs:637
 msgid "Failed to delete image"
 msgstr "Brisanje slike je spodletelo"
 
