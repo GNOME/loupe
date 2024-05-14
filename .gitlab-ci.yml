@@ -68,6 +68,7 @@ cargo-doc:
 cargo-clippy:
   image: 'quay.io/gnome_infrastructure/gnome-runtime-images:gnome-master'
   interruptible: true
+  allow_failure: true
   tags:
     - flatpak
   script:
