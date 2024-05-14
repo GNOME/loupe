@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2024-02-13 22:38+0000\n"
-"PO-Revision-Date: 2024-02-14 01:12+0100\n"
+"POT-Creation-Date: 2024-05-12 13:49+0000\n"
+"PO-Revision-Date: 2024-05-14 22:10+0200\n"
 "Last-Translator: Daniel Rusek <mail@asciiwolf.com>\n"
 "Language-Team: Czech <gnome-cs-list@gnome.org>\n"
 "Language: cs\n"
@@ -19,7 +19,7 @@ msgstr ""
 "X-Generator: Poedit 3.4.2\n"
 
 #: data/org.gnome.Loupe.desktop.in.in:3
-#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:29 src/window.rs:880
+#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:29 src/window.rs:881
 msgid "Image Viewer"
 msgstr "Prohlížeč obrázků"
 
@@ -36,27 +36,27 @@ msgstr "Zobrazit postranní panel vlastností obrázku"
 msgid "The GNOME Project"
 msgstr "Projekt GNOME"
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:12
+#: data/org.gnome.Loupe.metainfo.xml.in.in:13
 msgid "View images"
 msgstr "Prohlížejte si obrázky"
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:14
+#: data/org.gnome.Loupe.metainfo.xml.in.in:15
 msgid "Browse through your images and inspect their metadata with:"
 msgstr "Procházejte své obrázky a kontrolujte jejich metadata s pomocí:"
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:16
+#: data/org.gnome.Loupe.metainfo.xml.in.in:17
 msgid "Fast GPU accelerated image rendering"
 msgstr "Rychlého vykreslování obrazu s akcelerací GPU"
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:17
+#: data/org.gnome.Loupe.metainfo.xml.in.in:18
 msgid "Tiled rendering for vector graphics"
 msgstr "Dlaždicového vykreslování pro vektorovou grafiku"
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:18
+#: data/org.gnome.Loupe.metainfo.xml.in.in:19
 msgid "Extendable and sandboxed image decoding"
 msgstr "Rozšiřitelné a izolované dekódování obrázků"
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:19
+#: data/org.gnome.Loupe.metainfo.xml.in.in:20
 msgid "Accessible presentation of the most important metadata."
 msgstr "Přístupné prezentace těch nejdůležitějších metadat."
 
@@ -248,7 +248,7 @@ msgstr "Vojtěch Perník <translations@pervoj.cz>"
 msgid "Copyright © 2020–2024 Christopher Davis et al."
 msgstr "Copyright © 2020–2024 Christopher Davis a spol."
 
-#: src/file_model.rs:128
+#: src/file_model.rs:129
 msgid "Could not list other files in directory."
 msgstr "Nepodařilo se vypsat další soubory v adresáři."
 
@@ -272,13 +272,19 @@ msgstr "V"
 msgid "W"
 msgstr "Z"
 
-#. Translators: Unit for exposure time in seconds
-#: src/metadata/mod.rs:260
+#. Translators: Fractional exposure time (photography) in seconds
+#: src/metadata/mod.rs:262
 msgid "1\\u{2215}{}\\u{202F}s"
 msgstr "1\\u{2215}{}\\u{202F}s"
 
+#. Translators: Exposure time (photography) in seconds
+#: src/metadata/mod.rs:270
+#| msgid "{}\\u{202F}mm"
+msgid "{}\\u{202F}s"
+msgstr "{}\\u{202F}s"
+
 #. Translators: Unit for focal length in millimeters
-#: src/metadata/mod.rs:285
+#: src/metadata/mod.rs:296
 msgid "{}\\u{202F}mm"
 msgstr "{}\\u{202F}mm"
 
@@ -291,7 +297,7 @@ msgstr "{}\\u{202F}mm"
 msgid "%x %X"
 msgstr "%x %X"
 
-#: src/util/mod.rs:180 src/window.rs:701
+#: src/util/mod.rs:180 src/window.rs:702
 msgid "Failed to restore image from trash"
 msgstr "Nepodařilo se obnovit obrázek z koše"
 
@@ -397,15 +403,15 @@ msgid "px"
 msgstr "px"
 
 #. Translators: {} is a placeholder for the filename
-#: src/widgets/print.rs:371
+#: src/widgets/print.rs:382
 msgid "Print “{}”"
 msgstr "Tisk „{}“"
 
-#: src/widgets/print.rs:782
+#: src/widgets/print.rs:803
 msgid "_Scale"
 msgstr "Zvětše_ní"
 
-#: src/widgets/print.rs:785
+#: src/widgets/print.rs:806
 msgid "_Width"
 msgstr "Šířk_a"
 
@@ -521,6 +527,7 @@ msgstr "Soubor vytvořen"
 msgid "File Modified"
 msgstr "Soubor změněn"
 
+#. Translators: This is a label for GPS coordinates
 #: src/widgets/properties_view.ui:106
 msgid "Location"
 msgstr "Lokace"
@@ -557,51 +564,51 @@ msgstr "Ohnisková vzdálenost"
 msgid "Maker, Model"
 msgstr "Výrobce, model"
 
-#: src/window.rs:568
+#: src/window.rs:569
 msgid "Supported image formats"
 msgstr "Podporované formáty obrázků"
 
-#: src/window.rs:574
+#: src/window.rs:575
 msgid "All files"
 msgstr "Všechny soubory"
 
-#: src/window.rs:581
+#: src/window.rs:582
 msgid "Open Image"
 msgstr "Otevřít obrázek"
 
-#: src/window.rs:667
+#: src/window.rs:668
 msgid "Image copied to clipboard"
 msgstr "Obrázek zkopírován do schránky"
 
-#: src/window.rs:688
+#: src/window.rs:689
 msgid "Image moved to trash"
 msgstr "Obrázek přesunut do koše"
 
-#: src/window.rs:689
+#: src/window.rs:690
 msgid "Undo"
 msgstr "Zpět"
 
-#: src/window.rs:715
+#: src/window.rs:716
 msgid "Failed to move image to trash"
 msgstr "Nepodařilo se přesunout obrázek do koše"
 
-#: src/window.rs:741
+#: src/window.rs:742
 msgid "Permanently Delete Image?"
 msgstr "Smazat obrázek trvale?"
 
-#: src/window.rs:743
+#: src/window.rs:744
 msgid "After deleting the image “{}” it will be permanently lost."
 msgstr "Po smazání bude obrázek „{}“ trvale ztracen."
 
-#: src/window.rs:751
+#: src/window.rs:752
 msgid "Cancel"
 msgstr "Zrušit"
 
-#: src/window.rs:752
+#: src/window.rs:753
 msgid "Delete"
 msgstr "Smazat"
 
-#: src/window.rs:763
+#: src/window.rs:764
 msgid "Failed to delete image"
 msgstr "Nepodařilo se smazat obrázek"
 
