@@ -1,0 +1,625 @@
+# Chinese (China) translation for loupe.
+# Copyright (C) 2024 loupe's COPYRIGHT HOLDER
+# This file is distributed under the same license as the loupe package.
+# Victor_Trista <ljlzjzm@hotmail.com>, 2024.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: loupe main\n"
+"POT-Creation-Date: 2024-05-11 03:00+0000\n"
+"PO-Revision-Date: 2024-02-27 14:12+0800\n"
+"Last-Translator: \n"
+"Language-Team: Chinese (China) <i18n-zh@googlegroups.com>\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4.2\n"
+
+#. Put one translator per line, in the form NAME <EMAIL>, YEAR1, YEAR2
+msgctxt "_"
+msgid "translator-credits"
+msgstr "Victor_Trista <ljlzjzm@hotmail.com>, 2024"
+
+#. (itstool) path: info/desc
+#: C/viewing-images.page:11
+msgid "Learn how to view an image at different scales and orientations."
+msgstr "了解如何以不同的比例和方向查看图像。"
+
+#. (itstool) path: page/title
+#: C/viewing-images.page:13
+msgid "Viewing Images"
+msgstr "查看图像"
+
+#. (itstool) path: section/title
+#: C/viewing-images.page:15
+msgid "Zooming"
+msgstr "缩放"
+
+#. (itstool) path: p/media
+#. This is a reference to an external file such as an image or video. When
+#. the file changes, the md5 hash will change to let you know you need to
+#. update your localized copy. The msgstr is not used at all. Set it to
+#. whatever you like once you have updated your copy of the file.
+#: C/viewing-images.page:16
+msgctxt "_"
+msgid ""
+"external ref='figures/zoom-in-symbolic.svg' "
+"md5='7e94a36ae229fe2cfb97481937300ad3'"
+msgstr ""
+"external ref='figures/zoom-in-symbolic.svg' "
+"md5='7e94a36ae229fe2cfb97481937300ad3'"
+
+#. (itstool) path: p/media
+#. This is a reference to an external file such as an image or video. When
+#. the file changes, the md5 hash will change to let you know you need to
+#. update your localized copy. The msgstr is not used at all. Set it to
+#. whatever you like once you have updated your copy of the file.
+#: C/viewing-images.page:17
+msgctxt "_"
+msgid ""
+"external ref='figures/zoom-out-symbolic.svg' "
+"md5='c05c42cb3d95bf3bc7f49ccd8dcca510'"
+msgstr ""
+"external ref='figures/zoom-out-symbolic.svg' "
+"md5='c05c42cb3d95bf3bc7f49ccd8dcca510'"
+
+#. (itstool) path: section/p
+#: C/viewing-images.page:16
+msgid ""
+"Users can zoom in with the <gui>Zoom In</gui> (<media type=\"image\" "
+"src=\"figures/zoom-in-symbolic.svg\">zoom-in-symbolic</media>) button and "
+"zoom out with the <gui>Zoom Out</gui> (<media type=\"image\" src=\"figures/"
+"zoom-out-symbolic.svg\">zoom-out-symbolic</media>) button."
+msgstr ""
+"用户可以通过 <gui>放大</gui>（<media type=\"image\" src=\"figures/zoom-in-"
+"symbolic.svg\">zoom-in-symbolic</media>）按键放大图像，也可以通过 <gui>缩小</"
+"gui>（<media type=\"image\" src=\"figures/zoom-out-symbolic.svg\">zoom-out-"
+"symbolic</media>）按键缩小图像。"
+
+#. (itstool) path: section/p
+#: C/viewing-images.page:19
+msgid ""
+"Touchpad and touchscreen users can also zoom with a two-finger pinch "
+"gesture. On touchpads, it is also possible to zoom via pressing the "
+"<key>Ctrl</key> and swiping up/down with two fingers."
+msgstr ""
+"触摸板和触摸屏用户还可以通过双指捏合手势进行缩放。在触摸板上，也可以通过按 "
+"<key>Ctrl</key> 并用两根手指向上/向下滑动来缩放。"
+
+#. (itstool) path: section/title
+#: C/viewing-images.page:22
+msgid "Panning"
+msgstr "平移"
+
+#. (itstool) path: section/p
+#: C/viewing-images.page:23
+msgid ""
+"Mouse and touchpad users can pan the view when zoomed in by clicking and "
+"dragging the image. Touchscreen users can use a single-finger drag gesture "
+"to pan the view."
+msgstr ""
+"鼠标和触摸板用户可以在放大时通过单击并拖动图像来平移视图。触摸屏用户可以使用"
+"单指拖动手势来平移视图。"
+
+#. (itstool) path: section/title
+#: C/viewing-images.page:27
+msgid "Rotating"
+msgstr "旋转"
+
+#. (itstool) path: p/media
+#. This is a reference to an external file such as an image or video. When
+#. the file changes, the md5 hash will change to let you know you need to
+#. update your localized copy. The msgstr is not used at all. Set it to
+#. whatever you like once you have updated your copy of the file.
+#: C/viewing-images.page:28
+msgctxt "_"
+msgid ""
+"external ref='figures/object-rotate-right-symbolic.svg' "
+"md5='0e69268f1a3a3c0c43c9ae3e193fd3d7'"
+msgstr ""
+"external ref='figures/object-rotate-right-symbolic.svg' "
+"md5='0e69268f1a3a3c0c43c9ae3e193fd3d7'"
+
+#. (itstool) path: p/media
+#. This is a reference to an external file such as an image or video. When
+#. the file changes, the md5 hash will change to let you know you need to
+#. update your localized copy. The msgstr is not used at all. Set it to
+#. whatever you like once you have updated your copy of the file.
+#: C/viewing-images.page:29
+msgctxt "_"
+msgid ""
+"external ref='figures/object-rotate-left-symbolic.svg' "
+"md5='8abe2a1bc5871a15c2f6534d19a4c7ee'"
+msgstr ""
+"external ref='figures/object-rotate-left-symbolic.svg' "
+"md5='8abe2a1bc5871a15c2f6534d19a4c7ee'"
+
+#. (itstool) path: section/p
+#: C/viewing-images.page:28
+msgid ""
+"Users can use the <gui>Rotate Right</gui> (<media type=\"image\" "
+"src=\"figures/object-rotate-right-symbolic.svg\">object-rotate-right-"
+"symbolic</media>) and <gui>Rotate Left</gui> (<media type=\"image\" "
+"src=\"figures/object-rotate-left-symbolic.svg\">object-rotate-left-symbolic</"
+"media>) buttons under <gui style=\"menuitem\">Rotate</gui> in the main menu "
+"to rotate clockwise and counter-clockwise."
+msgstr ""
+"用户可以通过主菜单中 <gui style=\"menuitem\">旋转</gui> 下的 <gui>向右旋转</"
+"gui>（<media type=\"image\" src=\"figures/object-rotate-right-symbolic."
+"svg\">object-rotate-right-symbolic</media>）和 <gui>向左旋转</gui>（<media "
+"type=\"image\" src=\"figures/object-rotate-left-symbolic.svg\">object-rotate-"
+"left-symbolic</media>）按键顺时针和逆时针旋转。"
+
+#. (itstool) path: section/p
+#: C/viewing-images.page:32
+msgid ""
+"Touchpad and touchscreen users can also use a two-finger rotate gesture."
+msgstr "触摸板和触摸屏用户还可以使用两指旋转手势。"
+
+#. (itstool) path: section/title
+#: C/viewing-images.page:35
+msgid "Fullscreen"
+msgstr "全屏"
+
+#. (itstool) path: p/media
+#. This is a reference to an external file such as an image or video. When
+#. the file changes, the md5 hash will change to let you know you need to
+#. update your localized copy. The msgstr is not used at all. Set it to
+#. whatever you like once you have updated your copy of the file.
+#: C/viewing-images.page:37
+msgctxt "_"
+msgid ""
+"external ref='figures/view-fullscreen-symbolic.svg' "
+"md5='8089b2761abd6116e6185e06bc885da1'"
+msgstr ""
+"external ref='figures/view-fullscreen-symbolic.svg' "
+"md5='8089b2761abd6116e6185e06bc885da1'"
+
+#. (itstool) path: p/media
+#. This is a reference to an external file such as an image or video. When
+#. the file changes, the md5 hash will change to let you know you need to
+#. update your localized copy. The msgstr is not used at all. Set it to
+#. whatever you like once you have updated your copy of the file.
+#: C/viewing-images.page:37
+msgctxt "_"
+msgid ""
+"external ref='figures/view-restore-symbolic.svg' "
+"md5='d00df849240f2d92c7fa1429d3ae8254'"
+msgstr ""
+"external ref='figures/view-restore-symbolic.svg' "
+"md5='d00df849240f2d92c7fa1429d3ae8254'"
+
+#. (itstool) path: section/p
+#: C/viewing-images.page:36
+msgid ""
+"Image Viewer has a simple fullscreen mode. Users can toggle fullscreen mode "
+"by pressing the <gui>Toggle Fullscreen</gui> (<media type=\"image\" "
+"src=\"figures/view-fullscreen-symbolic.svg\">view-fullscreen-symbolic</"
+"media> / <media type=\"image\" src=\"figures/view-restore-symbolic."
+"svg\">view-restore-symbolic</media>) button."
+msgstr ""
+"“图像查看器”具有简单的全屏模式。用户可以通过点击 <gui>切换全屏</gui> "
+"（<media type=\"image\" src=\"figures/view-fullscreen-symbolic.svg\">view-"
+"fullscreen-symbolic</media> / <media type=\"image\" src=\"figures/view-"
+"restore-symbolic.svg\">view-restore-symbolic</media>）按键来切换全屏模式。"
+
+#. (itstool) path: note/p
+#: C/viewing-images.page:39 C/opening-images.page:70
+msgid ""
+"Keyboard users can also use the corresponding shortcuts presented in "
+"Keyboard Shortcuts dialog."
+msgstr "键盘用户还可以使用“键盘快捷键”对话框中显示的相应快捷键。"
+
+#. (itstool) path: page/title
+#: C/supported-formats.page:12
+msgid "Supported Image Formats"
+msgstr "支持的图像格式"
+
+#. (itstool) path: page/p
+#: C/supported-formats.page:13
+msgid ""
+"Image Viewer uses <link href=\"https://gitlab.gnome.org/sophie-h/"
+"glycin\">glycin</link> for loading images. You can check <link "
+"href=\"https://gitlab.gnome.org/sophie-h/glycin#supported-image-"
+"formats\">glycin's README</link> for more details about the formats "
+"supported by the default loaders and the features provided by each format."
+msgstr ""
+"“图像查看器”使用 <link href=\"https://gitlab.gnome.org/sophie-h/"
+"glycin\">glycin</link> 加载图像。您可以查看 <link href=\"https://gitlab."
+"gnome.org/sophie-h/glycin#supported-image-formats\">glycin 说明</link> 来了解"
+"有关默认加载器支持的格式以及每种格式所提供功能的更多详细信息。"
+
+#. (itstool) path: page/p
+#: C/supported-formats.page:17
+msgid ""
+"Glycin's loaders are configurable, and new loaders can be created by third-"
+"parties, so the supported formats on your system may vary."
+msgstr ""
+"Glycin 加载器是可配置的，新的加载器可以由第三方创建，因此您的系统上支持的格式"
+"可能会有所不同。"
+
+#. (itstool) path: info/desc
+#: C/opening-images.page:11
+msgid ""
+"Open and browse through pictures via the file chooser, file manager, or drag "
+"and drop."
+msgstr "通过文件选择器、文件管理器或拖放打开并浏览图片。"
+
+#. (itstool) path: page/title
+#: C/opening-images.page:13
+msgid "Opening Images"
+msgstr "打开图像"
+
+#. (itstool) path: section/title
+#: C/opening-images.page:15
+msgid "Opening Files"
+msgstr "打开文件"
+
+#. (itstool) path: section/title
+#: C/opening-images.page:17
+msgid "From The File Chooser"
+msgstr "从文件选择器"
+
+#. (itstool) path: section/p
+#: C/opening-images.page:18
+msgid ""
+"Image Viewer allows users to pick images with the file chooser at any time."
+msgstr "“图像查看器”允许用户随时使用文件选择器选择图像。"
+
+#. (itstool) path: item/p
+#: C/opening-images.page:21
+msgid ""
+"Click the <gui>Open Files…</gui> button, the <gui style=\"menuitem\">Open…</"
+"gui> menu item, or press <keyseq><key>Ctrl</key><key>O</key></keyseq>. The "
+"<gui>Open Image</gui> file dialog will appear."
+msgstr ""
+"点击<gui>打开文件...</gui> 按键、<gui style=\"menuitem\">打开...</gui>菜单"
+"项，或按<keyseq><key>Ctrl</key><key>O</key></keyseq>键。<gui>打开图像</gui>文"
+"件对话框将出现。"
+
+#. (itstool) path: item/p
+#: C/opening-images.page:24
+msgid "Select the image you want to open, then click <gui>Open</gui>."
+msgstr "选择要打开的图像，然后点击<gui>打开</gui>。"
+
+#. (itstool) path: section/p
+#: C/opening-images.page:27
+msgid ""
+"Image Viewer will open with the selected image showing, and the other images "
+"in the directory can be reached by browsing."
+msgstr ""
+"“图像查看器”将打开并显示所选图像，并且可以通过浏览访问目录中的其他图像。"
+
+#. (itstool) path: section/title
+#: C/opening-images.page:30
+msgid "From The File Manager"
+msgstr "从文件管理器"
+
+#. (itstool) path: section/p
+#: C/opening-images.page:31
+msgid "Users can also open images in Loupe directly from their file manager."
+msgstr "您还可以直接通过文件管理器在图像查看器（Loupe）中打开图像。"
+
+#. (itstool) path: item/p
+#: C/opening-images.page:34
+msgid "Open your preferred file manager application."
+msgstr "打开您指定的文件管理器应用程序。"
+
+#. (itstool) path: item/p
+#: C/opening-images.page:37
+msgid "Navigate to the image you want to view in Loupe."
+msgstr "导航到要在“图像查看器（Loupe）”中查看的图像。"
+
+#. (itstool) path: item/p
+#: C/opening-images.page:40
+msgid ""
+"If Image Viewer is set as your default image viewer, use the file manager's "
+"function for opening files."
+msgstr ""
+"如果将“图像查看器”设置为默认的图像查看器，可以使用文件管理器直接打开文件。"
+
+#. (itstool) path: item/p
+#: C/opening-images.page:43
+msgid ""
+"If Image Viewer is not your default image viewer, you will need to select "
+"<gui>Open With…</gui> or similar in the file manager, and pick Image Viewer."
+msgstr ""
+"如果“图像查看器”不是默认的图像查看器，则需要在文件管理器中选择 <gui>打开方"
+"式...</gui> 或类似条目，然后选择“图像查看器”。"
+
+#. (itstool) path: section/title
+#: C/opening-images.page:48 C/sending-to-other-apps.page:37
+msgid "Drag &amp; Drop"
+msgstr "拖放"
+
+#. (itstool) path: section/p
+#: C/opening-images.page:49
+msgid ""
+"Image Viewer also accepts local image files dragged from other applications."
+msgstr "图像查看器还支持从其他应用程序拖放的本地图像文件。"
+
+#. (itstool) path: item/p
+#: C/opening-images.page:52
+msgid "In the source application, begin dragging the image."
+msgstr "在源应用程序中，开始拖动图像。"
+
+#. (itstool) path: item/p
+#: C/opening-images.page:55
+msgid ""
+"Drag the image over the Loupe main window. A blue highlighted area should "
+"appear."
+msgstr ""
+"将图像拖动到“图像查看器（Loupe）”主窗口上。应出现一个突出显示的蓝色区域。"
+
+#. (itstool) path: item/p
+#: C/opening-images.page:58
+msgid "Drop the image while it's still hovered over the main window."
+msgstr "在图像仍悬停在主窗口上时将其放下。"
+
+#. (itstool) path: section/title
+#: C/opening-images.page:64
+msgid "Browsing"
+msgstr "浏览"
+
+#. (itstool) path: p/media
+#. This is a reference to an external file such as an image or video. When
+#. the file changes, the md5 hash will change to let you know you need to
+#. update your localized copy. The msgstr is not used at all. Set it to
+#. whatever you like once you have updated your copy of the file.
+#: C/opening-images.page:67
+msgctxt "_"
+msgid ""
+"external ref='figures/go-previous-symbolic.svg' "
+"md5='2ed7437ba9a336b6c6cf645b9eb4ed8b'"
+msgstr ""
+"external ref='figures/go-previous-symbolic.svg' "
+"md5='2ed7437ba9a336b6c6cf645b9eb4ed8b'"
+
+#. (itstool) path: p/media
+#. This is a reference to an external file such as an image or video. When
+#. the file changes, the md5 hash will change to let you know you need to
+#. update your localized copy. The msgstr is not used at all. Set it to
+#. whatever you like once you have updated your copy of the file.
+#: C/opening-images.page:68
+msgctxt "_"
+msgid ""
+"external ref='figures/go-next-symbolic.svg' "
+"md5='9c98c035765d2edc185ef9b37566e7ce'"
+msgstr ""
+"external ref='figures/go-next-symbolic.svg' "
+"md5='9c98c035765d2edc185ef9b37566e7ce'"
+
+#. (itstool) path: section/p
+#: C/opening-images.page:65
+msgid ""
+"When opening an image from the file chooser or file manager, Loupe will load "
+"other files in the parent directory of the image and sort them in "
+"alphabetical order. Users can browse the other images in the directory with "
+"the <gui>Previous Image</gui> (<media type=\"image\" src=\"figures/go-"
+"previous-symbolic.svg\">go-previous-symbolic</media>) and <gui>Next Image</"
+"gui> (<media type=\"image\" src=\"figures/go-next-symbolic.svg\">go-next-"
+"symbolic</media>) buttons."
+msgstr ""
+"从文件选择器或文件管理器打开图像时，“图像查看器（Loupe）”将加载图像所在目录中"
+"的其他文件，并按字母顺序对它们排序。您可以使用 <gui>上一个图像</gui>（<media "
+"type=\"image\" src=\"figures/go-previous-symbolic.svg\">go-previous-"
+"symbolic</media>）和 <gui>下一个图像</gui>（<media type=\"image\" "
+"src=\"figures/go-next-symbolic.svg\">go-next-symbolic</media>）按键来浏览目录"
+"中的其他图像。"
+
+#. (itstool) path: info/desc
+#: C/trashing-images.page:11
+msgid "Move unwanted images to the trash directly from Image Viewer."
+msgstr "在“图像查看器”中将不需要的图像直接移动到回收站。"
+
+#. (itstool) path: page/title
+#: C/trashing-images.page:13
+msgid "Moving Images to Trash"
+msgstr "将图像移动到回收站"
+
+#. (itstool) path: p/media
+#. This is a reference to an external file such as an image or video. When
+#. the file changes, the md5 hash will change to let you know you need to
+#. update your localized copy. The msgstr is not used at all. Set it to
+#. whatever you like once you have updated your copy of the file.
+#: C/trashing-images.page:15
+msgctxt "_"
+msgid ""
+"external ref='figures/user-trash-symbolic.svg' "
+"md5='975d41b3e24867a2a26194cd871e36cc'"
+msgstr ""
+"external ref='figures/user-trash-symbolic.svg' "
+"md5='975d41b3e24867a2a26194cd871e36cc'"
+
+#. (itstool) path: page/p
+#: C/trashing-images.page:14
+msgid ""
+"If a user wants to remove an image, they can press the <gui>Move To Trash</"
+"gui> (<media type=\"image\" src=\"figures/user-trash-symbolic.svg\">user-"
+"trash-symbolic</media>) button. A toast will appear allowing them to restore "
+"the image with the <gui>Undo</gui> button."
+msgstr ""
+"如果您想要移除图像，可以点击<gui>移至回收站</gui>（<media type=\"image\" "
+"src=\"figures/user-trash-symbolic.svg\">user-trash-symbolic</media>）按键。将"
+"出现一条消息允许您使用 <gui>撤消</gui> 按键恢复图像。"
+
+#. (itstool) path: info/desc
+#: C/sending-to-other-apps.page:11
+msgid ""
+"Learn how to send, copy, and drag images from Image Viewer to other apps."
+msgstr "了解如何将图像从“图像查看器”发送、拷贝或拖动到其他应用。"
+
+#. (itstool) path: page/title
+#: C/sending-to-other-apps.page:13
+msgid "Sending Images To Other Apps"
+msgstr "将图像发送到其他应用"
+
+#. (itstool) path: section/title
+#: C/sending-to-other-apps.page:15
+msgid "\"Open With…\" Action"
+msgstr "\"打开方式…\"动作"
+
+#. (itstool) path: item/p
+#: C/sending-to-other-apps.page:18
+msgid ""
+"Click the <gui style=\"menuitem\">Open With…</gui> menu item. A dialog with "
+"a list of applications will appear."
+msgstr ""
+"点击<gui style=\"menuitem\">打开方式...</gui>菜单项。将出现一个包含应用程序列"
+"表的对话框。"
+
+#. (itstool) path: item/p
+#: C/sending-to-other-apps.page:21
+msgid "Select the application you want to open the image with."
+msgstr "选择要用于打开图像的应用程序。"
+
+#. (itstool) path: section/title
+#: C/sending-to-other-apps.page:26
+msgid "Copy &amp; Paste"
+msgstr "复制和粘贴"
+
+#. (itstool) path: p/media
+#. This is a reference to an external file such as an image or video. When
+#. the file changes, the md5 hash will change to let you know you need to
+#. update your localized copy. The msgstr is not used at all. Set it to
+#. whatever you like once you have updated your copy of the file.
+#: C/sending-to-other-apps.page:29
+msgctxt "_"
+msgid ""
+"external ref='figures/edit-copy-symbolic.svg' "
+"md5='e998fb903df32b921d08ef52e0ea6555'"
+msgstr ""
+"external ref='figures/edit-copy-symbolic.svg' "
+"md5='e998fb903df32b921d08ef52e0ea6555'"
+
+#. (itstool) path: item/p
+#: C/sending-to-other-apps.page:29
+msgid ""
+"Click the <gui>Copy to Clipboard</gui> (<media type=\"image\" src=\"figures/"
+"edit-copy-symbolic.svg\">edit-copy-symbolic</media>) button. A toast "
+"notifying you that the image is in your clipboard will appear."
+msgstr ""
+"点击<gui>复制到剪贴板</gui>（<media type=\"image\" src=\"figures/edit-copy-"
+"symbolic.svg\">edit-copy-symbolic</media>）按键。将出现一条消息，通知您图像位"
+"于剪贴板中。"
+
+#. (itstool) path: item/p
+#: C/sending-to-other-apps.page:32
+msgid "Paste your image in your application of choice."
+msgstr "将图像粘贴到您选择的应用程序中。"
+
+#. (itstool) path: item/p
+#: C/sending-to-other-apps.page:40
+msgid "Zoom out from the image completely."
+msgstr "完全缩小图像。"
+
+#. (itstool) path: item/p
+#: C/sending-to-other-apps.page:43
+msgid "Click and hold the selected image."
+msgstr "点击并按住所选图像。"
+
+#. (itstool) path: item/p
+#: C/sending-to-other-apps.page:46
+msgid "Drag the image to your application of choice."
+msgstr "将图像拖动到您选择的应用程序。"
+
+#. (itstool) path: info/desc
+#: C/image-properties.page:11
+msgid "View detailed properties of the selected image."
+msgstr "查看所选图像的详细属性。"
+
+#. (itstool) path: page/title
+#: C/image-properties.page:13
+msgid "Image Properties"
+msgstr "图像属性"
+
+#. (itstool) path: page/p
+#: C/image-properties.page:14
+msgid ""
+"Image Viewer allows users to view an image's properties. All images will "
+"have the following basic properties:"
+msgstr "“图像查看器”允许用户查看图像的属性。所有图像都具有以下基本属性："
+
+#. (itstool) path: item/p
+#: C/image-properties.page:18
+msgid "Image size"
+msgstr "图片尺寸"
+
+#. (itstool) path: item/p
+#: C/image-properties.page:21
+msgid "Image format"
+msgstr "图像格式"
+
+#. (itstool) path: item/p
+#: C/image-properties.page:24
+msgid "File size"
+msgstr "文件大小"
+
+#. (itstool) path: item/p
+#: C/image-properties.page:27
+msgid "File creation date"
+msgstr "文件创建日期"
+
+#. (itstool) path: item/p
+#: C/image-properties.page:30
+msgid "File modification date"
+msgstr "文件修改日期"
+
+#. (itstool) path: page/p
+#: C/image-properties.page:33
+msgid ""
+"If the file has <link href=\"https://en.wikipedia.org/wiki/Exif\">Exif</"
+"link> metadata, it will be shown below the basic properties."
+msgstr ""
+"如果文件具有 <link href=\"https://en.wikipedia.org/wiki/Exif\">Exif</link> 元"
+"数据，它将显示在基本属性下方。"
+
+#. (itstool) path: p/media
+#. This is a reference to an external file such as an image or video. When
+#. the file changes, the md5 hash will change to let you know you need to
+#. update your localized copy. The msgstr is not used at all. Set it to
+#. whatever you like once you have updated your copy of the file.
+#: C/image-properties.page:36
+msgctxt "_"
+msgid ""
+"external ref='figures/help-about-symbolic.svg' "
+"md5='51c74093b3e862d1f839cc377aa86837'"
+msgstr ""
+"external ref='figures/help-about-symbolic.svg' "
+"md5='51c74093b3e862d1f839cc377aa86837'"
+
+#. (itstool) path: page/p
+#: C/image-properties.page:35
+msgid ""
+"To view the selected image's properties, press the <gui>Image Properties</"
+"gui> (<media type=\"image\" src=\"figures/help-about-symbolic.svg\">help-"
+"about-symbolic</media>) button."
+msgstr ""
+"要查看所选图像的属性，点击<gui>图像属性</gui>（<media type=\"image\" "
+"src=\"figures/help-about-symbolic.svg\">help-about-symbolic</media>）按键。"
+
+#. (itstool) path: info/desc
+#: C/index.page:10
+msgid "Browse through your images and inspect their metadata."
+msgstr "浏览您的图像并检查其元数据。"
+
+#. (itstool) path: page/title
+#: C/index.page:12
+msgid "<_:media-1/> Image Viewer (Loupe)"
+msgstr "<_:media-1/> 图像查看器（Loupe）"
+
+#. (itstool) path: section/title
+#: C/index.page:14
+msgid "Getting Started"
+msgstr "入门"
+
+#. (itstool) path: section/title
+#: C/index.page:17
+msgid "Additional Features"
+msgstr "额外功能"
+
+#. (itstool) path: section/title
+#: C/index.page:20
+msgid "Technical Information"
+msgstr "技术信息"
