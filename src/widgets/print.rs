@@ -53,14 +53,6 @@ enum VAlignment {
     Bottom,
 }
 
-#[derive(Debug, Clone, Copy, Default)]
-enum Status {
-    #[default]
-    Prepare,
-    Print,
-    Abort,
-}
-
 /// Scope guard for non user ui changes
 ///
 /// Creates a context in which other signals know that changes are not user
@@ -251,17 +243,16 @@ mod imp {
         pub(super) preview_image: OnceCell<LpImage>,
         #[property(get, set, construct_only)]
         pub(super) parent_window: OnceCell<gtk::Window>,
+
         #[property(get, set, construct_only)]
-        pub(super) print_settings: OnceCell<gtk::PrintSettings>,
-        #[property(get)]
-        pub(super) print_operation: gtk::PrintOperation,
+        pub(super) print_dialog: OnceCell<gtk::PrintDialog>,
+        #[property(get, set, construct_only)]
+        pub(super) print_setup: OnceCell<gtk::PrintSetup>,
 
         #[property(get, set=Self::set_orientation)]
         pub(super) orientation: RefCell<String>,
 
         pub(super) ui_updates: UiUpdates,
-
-        pub(super) status: Cell<Status>,
     }
 
     #[glib::object_subclass]
@@ -302,11 +293,6 @@ mod imp {
             obj.set_transient_for(Some(&obj.parent_window()));
             obj.set_modal(true);
 
-            obj.connect_close_request(|obj| {
-                obj.imp().status.set(Status::Abort);
-                glib::Propagation::Proceed
-            });
-
             // Page alignment (center, left, ...)
             self.alignment
                 .connect_selected_notify(glib::clone!(@weak obj => move |_| obj.draw_preview()));
@@ -342,120 +328,64 @@ mod imp {
             self.height
                 .connect_value_notify(glib::clone!(@weak obj => move |_| obj.on_height_changed()));
 
-            // Set print settings
-            self.print_operation
-                .set_print_settings(Some(&obj.print_settings()));
-            self.print_operation.set_allow_async(true);
-            self.print_operation.set_n_pages(1);
-            self.print_operation.set_current_page(0);
+            let imp = self;
 
-            if let Some(uri) = obj.image().file().map(|x| x.uri()) {
-                obj.print_settings()
-                    .set(gtk::PRINT_SETTINGS_OUTPUT_URI, Some(&format!("{uri}.pdf")));
+            let basename = obj
+                .file()
+                .basename()
+                .map(|x| x.display().to_string())
+                .unwrap_or_default();
+            imp.title.set_title(&gettext_f(
+                // Translators: {} is a placeholder for the filename
+                "Print “{}”",
+                [basename],
+            ));
+            if let Some(printer) = obj.print_settings().printer() {
+                imp.title.set_subtitle(&printer);
             }
 
-            self.print_operation.connect_begin_print(move |op, _ctx| {
-                op.set_n_pages(1);
-            });
+            imp.margin_horizontal.adjustment().set_step_increment(0.5);
+            imp.margin_horizontal.adjustment().set_page_increment(2.5);
+            imp.margin_vertical.adjustment().set_step_increment(0.5);
+            imp.margin_vertical.adjustment().set_page_increment(2.5);
 
-            self.print_operation.connect_request_page_setup(
-                glib::clone!(@weak obj =>move |operation, _context, nr, setup| {
-                    if nr != 0 {
-                        log::error!("Unexpected page number {nr}");
-                        return;
+            imp.width.adjustment().set_step_increment(1.);
+            imp.width.adjustment().set_page_increment(5.);
+            imp.height.adjustment().set_step_increment(1.);
+            imp.height.adjustment().set_page_increment(5.);
+
+            let ui_updates_disabled = obj.disable_ui_updates();
+            obj.set_ranges();
+            obj.on_margin_unit_changed();
+            obj.on_size_unit_changed();
+
+            let size_unit = obj.size_unit();
+            imp.width
+                .set_value(size_unit.round(obj.original_size().0 * obj.width_unit_factor()));
+
+            // Default to inch for USA and Liberia
+            if let Some(unit_locale) = getlocale(gettextrs::LocaleCategory::LcMeasurement) {
+                if let Some(locale) = unit_locale
+                    .split(|x| *x == b'_')
+                    .nth(1)
+                    .and_then(|x| x.get(0..2))
+                {
+                    if locale == b"US" || locale == b"LR" {
+                        imp.margin_unit.set_selected(Unit::Inch as u32);
+                        imp.size_unit.set_selected(Unit::Inch as u32);
                     }
+                }
+            }
 
-                    // Since we already have explicit per page setups here, we have to use this to
-                    // set values. The modules uses the default page setup everywhere.
-                    obj.print_operation().set_default_page_setup(Some(setup));
+            let orientation = match obj.page_setup().orientation() {
+                gtk::PageOrientation::Portrait => "portrait",
+                gtk::PageOrientation::Landscape => "landscape",
+                _ => "other",
+            };
+            obj.set_orientation(orientation);
+            drop(ui_updates_disabled);
 
-                    let imp = obj.imp();
-
-                    let basename = obj
-                        .image()
-                        .file()
-                        .and_then(|f| f.basename())
-                        .map(|x| x.display().to_string())
-                        .unwrap_or_default();
-                    imp.title.set_title(&gettext_f(
-                        // Translators: {} is a placeholder for the filename
-                        "Print “{}”",
-                        [basename],
-                    ));
-                    if let Some(printer) = operation.print_settings().and_then(|x| x.printer()) {
-                        imp.title.set_subtitle(&printer);
-                    }
-
-                    imp.margin_horizontal.adjustment().set_step_increment(0.5);
-                    imp.margin_horizontal.adjustment().set_page_increment(2.5);
-                    imp.margin_vertical.adjustment().set_step_increment(0.5);
-                    imp.margin_vertical.adjustment().set_page_increment(2.5);
-
-                    imp.width.adjustment().set_step_increment(1.);
-                    imp.width.adjustment().set_page_increment(5.);
-                    imp.height.adjustment().set_step_increment(1.);
-                    imp.height.adjustment().set_page_increment(5.);
-
-                    let ui_updates_disabled = obj.disable_ui_updates();
-                    obj.set_ranges();
-                    obj.on_margin_unit_changed();
-                    obj.on_size_unit_changed();
-
-                    let size_unit = obj.size_unit();
-                    imp.width.set_value(
-                        size_unit.round(obj.original_size().0 as f64 * obj.width_unit_factor()),
-                    );
-
-                    // Default to inch for USA and Liberia
-                    if let Some(unit_locale) = getlocale(gettextrs::LocaleCategory::LcMeasurement) {
-                        if let Some(locale) = unit_locale
-                            .split(|x| *x == b'_')
-                            .nth(1)
-                            .and_then(|x| x.get(0..2))
-                        {
-                            if locale == b"US" || locale == b"LR" {
-                                imp.margin_unit.set_selected(Unit::Inch as u32);
-                                imp.size_unit.set_selected(Unit::Inch as u32);
-                            }
-                        }
-                    }
-
-                    let orientation = match obj.page_setup().orientation() {
-                        gtk::PageOrientation::Portrait => "portrait",
-                        gtk::PageOrientation::Landscape => "landscape",
-                        _ => "other",
-                    };
-                    obj.set_orientation(orientation);
-                    drop(ui_updates_disabled);
-
-                    obj.present();
-
-                    loop {
-                        match imp.status.get() {
-                            Status::Prepare => {
-                                glib::MainContext::default().iteration(true);
-                            }
-                            Status::Print => {
-                                log::debug!("Layout dialog confirmed");
-                                // Actual printing will happen in draw-page signal
-                                break;
-                            }
-                            Status::Abort => {
-                                log::debug!("Layout dialog aborted");
-                                imp.print_operation.cancel();
-                                break;
-                            }
-                        }
-                    }
-                }),
-            );
-
-            self.print_operation
-                .connect_draw_page(glib::clone!(@weak obj =>
-                    move |_operation, context, _page_nr| {
-                        obj.draw_page(context);
-                    }
-                ));
+            obj.present();
         }
 
         fn properties() -> &'static [glib::ParamSpec] {
@@ -500,11 +430,53 @@ glib::wrapper! {
 }
 
 impl LpPrint {
+    pub fn show_print_dialog(
+        image: LpImage,
+        parent: gtk::Window,
+        print_setup: Option<gtk::PrintSetup>,
+    ) {
+        let Some(file) = image.file() else {
+            log::error!("Tried to print LpImage without GFile");
+            return;
+        };
+
+        let print_dialog = gtk::PrintDialog::builder()
+            .accept_label(gettext("Continue…"))
+            .title(gettext("Print Image"))
+            .build();
+
+        let print_settings = if let Some(print_setup) = print_setup {
+            print_dialog.set_page_setup(&print_setup.page_setup().unwrap());
+
+            print_setup.print_settings().unwrap()
+        } else {
+            gtk::PrintSettings::new()
+        };
+
+        print_dialog.set_print_settings(&print_settings);
+
+        let uri = file.uri();
+        print_settings.set(gtk::PRINT_SETTINGS_OUTPUT_URI, Some(&format!("{uri}.pdf")));
+
+        glib::spawn_future_local(async move {
+            let print_setup = match print_dialog.setup_future(Some(&parent)).await {
+                Err(err) => {
+                    // TODO: show error
+                    log::warn!("Failed to print: {err}");
+                    return;
+                }
+                Ok(print_setup) => print_setup.unwrap(),
+            };
+
+            Self::new(image, parent, print_dialog, print_setup);
+        });
+    }
+
     pub fn new(
         image: LpImage,
-        parent_window: gtk::Window,
-        print_settings: Option<gtk::PrintSettings>,
-        page_setup: Option<gtk::PageSetup>,
+        parent: gtk::Window,
+        print_dialog: gtk::PrintDialog,
+        print_setup: gtk::PrintSetup,
     ) -> Self {
         let preview_image = LpImage::new_still();
         preview_image.set_fixed_background_color(Some(gdk::RGBA::new(0.94, 0.94, 0.94, 1.)));
@@ -515,19 +487,13 @@ impl LpPrint {
             log::error!("Trying to print image without file");
         }
 
-        let print_settings = print_settings.unwrap_or_default();
-
         let obj: Self = glib::Object::builder()
             .property("image", image)
             .property("preview-image", preview_image)
-            .property("print-settings", print_settings)
-            .property("parent-window", parent_window)
+            .property("parent-window", parent)
+            .property("print-dialog", print_dialog)
+            .property("print-setup", print_setup)
             .build();
-
-        if let Some(page_setup) = page_setup {
-            obj.print_operation()
-                .set_default_page_setup(Some(&page_setup));
-        }
 
         obj
     }
@@ -546,14 +512,12 @@ impl LpPrint {
         }
     }
 
-    /// Starts print preparation process by showing the print dialog
-    pub fn run(&self) -> Result<(), glib::Error> {
-        self.print_operation()
-            .run(
-                gtk::PrintOperationAction::PrintDialog,
-                self.imp().parent_window.get(),
-            )
-            .map(|_| ())
+    pub fn print_settings(&self) -> gtk::PrintSettings {
+        self.print_setup().print_settings().unwrap()
+    }
+
+    pub fn file(&self) -> gio::File {
+        self.image().file().unwrap()
     }
 
     /// Returns `true` if the current update is caused by user input
@@ -872,66 +836,63 @@ impl LpPrint {
     }
 
     pub fn page_setup(&self) -> gtk::PageSetup {
-        self.print_operation().default_page_setup()
+        self.print_setup().page_setup().unwrap()
     }
 
     /// Go back to print dialog from image layout
     fn back(&self) {
         self.close();
-        let print = Self::new(
-            self.image(),
-            self.parent_window(),
-            self.print_operation().print_settings(),
-            Some(self.print_operation().default_page_setup()),
-        );
-        let res = print.run();
-
-        if let Err(err) = res {
-            log::warn!("Print dialog error: {err}");
-        }
+        Self::show_print_dialog(self.image(), self.parent_window(), Some(self.print_setup()));
     }
 
     /// Initialize actual print operation
     fn print(&self) {
         self.close();
 
-        let print_settings = self.print_operation().print_settings();
+        let obj = self.clone();
 
-        if let Some(print_settings) = &print_settings {
-            if let Some(uri) = self.image().file().map(|x| x.uri()) {
-                print_settings.set(gtk::PRINT_SETTINGS_OUTPUT_URI, Some(&format!("{uri}.pdf")));
+        glib::spawn_future_local(async move {
+            let result = obj
+                .print_dialog()
+                .print_future(Some(&obj.parent_window()), Some(&obj.print_setup()))
+                .await;
+
+            let draw_result = match result {
+                Err(err) => {
+                    log::warn!("Print error: {err}");
+                    return;
+                }
+                Ok(output_stream) => obj.draw_page(output_stream.unwrap()).await,
+            };
+
+            if let Err(err) = draw_result {
+                log::warn!("Print error: {err}");
             }
-        }
-
-        self.imp().status.set(Status::Print);
+        });
     }
 
     /// Draw PDF for printing
-    fn draw_page(&self, print_context: &gtk::PrintContext) {
+    async fn draw_page(&self, output_stream: gio::OutputStream) -> anyhow::Result<()> {
         log::debug!("Drawing image to print");
         let image = self.image();
-
-        let cairo_dpi = print_context.dpi_x();
 
         let (orig_width, orig_height) = self.original_size();
 
         let texture_scale = self.user_width() / orig_width;
-        let cairo_scale = cairo_dpi / self.dpi();
 
         let texture = if image.metadata().is_svg() {
             // Render SVG to exact needed sizes
-            // TODO: This should be async
             decoder::formats::Svg::render_print(
                 &image.file().unwrap(),
                 (orig_width * texture_scale) as i32,
                 (orig_height * texture_scale) as i32,
             )
-            .unwrap()
+            .await?
         } else {
             image.print_data(texture_scale).unwrap()
         };
 
-        let cairo_surface = {
+        let image_surface = {
             let mut downloader = gdk::TextureDownloader::new(&texture);
             downloader.set_format(gdk::MemoryFormat::B8g8r8a8Premultiplied);
 
@@ -951,19 +912,23 @@ impl LpPrint {
             .unwrap()
         };
 
-        let cairo_context = print_context.cairo_context();
-        cairo_context.scale(cairo_scale, cairo_scale);
+        let paper_width = self.page_setup().paper_width(gtk::Unit::Inch) * self.dpi();
+        let paper_height = self.page_setup().paper_height(gtk::Unit::Inch) * self.dpi();
 
-        let margin_left = self.effective_margin_left()
-            - self.page_setup().left_margin(gtk::Unit::Inch) * self.dpi();
-        let margin_top = self.effective_margin_top()
-            - self.page_setup().top_margin(gtk::Unit::Inch) * self.dpi();
+        let cairo_surface =
+            cairo::PdfSurface::for_stream(paper_width, paper_height, output_stream.into_write())?;
 
-        cairo_context
-            .set_source_surface(cairo_surface, margin_left, margin_top)
-            .unwrap();
+        let cairo_context = cairo::Context::new(&cairo_surface)?;
 
-        cairo_context.paint().unwrap();
+        let margin_left = self.effective_margin_left();
+        let margin_top = self.effective_margin_top();
+
+        cairo_context.set_source_surface(image_surface, margin_left, margin_top)?;
+
+        cairo_context.paint()?;
+        cairo_surface.finish_output_stream().map_err(|x| x.error)?;
+
+        Ok(())
     }
 }
 

@@ -29,6 +29,7 @@ log = "0.4.17"
 once_cell = "1.16.0"
 url = "2.3.1"
 strum = { version = "0.26.2", features = ["derive"] }
+cairo-rs = { version = "*", features = ["pdf"] }
 
 [dependencies.ashpd]
 version = "0.8.0"

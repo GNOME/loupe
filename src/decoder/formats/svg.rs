@@ -173,16 +173,20 @@ impl Svg {
         Ok(())
     }
 
-    pub fn render_print(file: &gio::File, width: i32, height: i32) -> anyhow::Result<gdk::Texture> {
+    pub async fn render_print(
+        file: &gio::File,
+        width: i32,
+        height: i32,
+    ) -> anyhow::Result<gdk::Texture> {
         #[allow(unused_mut)]
         let mut loader = glycin::Loader::new(file.clone());
 
         #[cfg(feature = "disable-glycin-sandbox")]
         loader.sandbox_mechanism(Some(glycin::SandboxMechanism::NotSandboxed));
 
-        let image = futures_lite::future::block_on(loader.load())?;
+        let image = loader.load().await?;
         let frame_request = glycin::FrameRequest::new().scale(width as u32, height as u32);
-        let frame = futures_lite::future::block_on(image.specific_frame(frame_request))?;
+        let frame = image.specific_frame(frame_request).await?;
 
         Ok(frame.texture)
     }

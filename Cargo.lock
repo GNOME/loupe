@@ -1390,6 +1390,7 @@ dependencies = [
  "arc-swap",
  "ashpd",
  "async-channel",
+ "cairo-rs",
  "env_logger",
  "futures-channel",
  "futures-lite",
