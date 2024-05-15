@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2024-05-02 18:23+0000\n"
-"PO-Revision-Date: 2024-05-03 17:57+0300\n"
+"POT-Creation-Date: 2024-05-15 13:34+0000\n"
+"PO-Revision-Date: 2024-05-16 00:12+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew\n"
 "Language: he\n"
@@ -20,7 +20,7 @@ msgstr ""
 "X-Generator: Poedit 3.4.2\n"
 
 #: data/org.gnome.Loupe.desktop.in.in:3
-#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:29 src/window.rs:881
+#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:30 src/window.rs:754
 msgid "Image Viewer"
 msgstr "מציג תמונות"
 
@@ -34,7 +34,7 @@ msgid "Show the image properties sidebar"
 msgstr "הצגת מאפייני תמונה בסרגל הצד"
 
 #. developer_name tag deprecated with Appstream 1.0
-#: data/org.gnome.Loupe.metainfo.xml.in.in:8 src/about.rs:32
+#: data/org.gnome.Loupe.metainfo.xml.in.in:8 src/about.rs:33
 msgid "The GNOME Project"
 msgstr "מיזם GNOME"
 
@@ -243,19 +243,34 @@ msgid "Gestures"
 msgstr "מחוות"
 
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/about.rs:41
+#: src/about.rs:42
 msgid "translator-credits"
 msgstr ""
 "יוסף אור בוצ׳קו <yoseforb@gmail.com>\n"
 "מיזם תרגום GNOME לעברית https://l10n.gnome.org/teams/he/"
 
-#: src/about.rs:42
+#: src/about.rs:43
 msgid "Copyright © 2020–2024 Christopher Davis et al."
 msgstr "כל הזכויות שמורות © 2022-2024 Christopher Davis ואחרים."
 
 #: src/file_model.rs:129
 msgid "Could not list other files in directory."
 msgstr "לא ניתן להציג קבצים נוספים בתיקייה."
+
+#. Translators: Fractional exposure time (photography) in seconds
+#: src/metadata.rs:262
+msgid "1\\u{2215}{}\\u{202F}s"
+msgstr "‏‎1\\u{2215}{}\\u{202F} ש"
+
+#. Translators: Exposure time (photography) in seconds
+#: src/metadata.rs:270
+msgid "{}\\u{202F}s"
+msgstr "‎{}\\u{202F} שנ׳"
+
+#. Translators: Unit for focal length in millimeters
+#: src/metadata.rs:296
+msgid "{}\\u{202F}mm"
+msgstr "‏‎{}\\u{202F} מ״מ"
 
 #. Translators: short for "north" in GPS coordinate
 #: src/metadata/gps.rs:165
@@ -277,37 +292,53 @@ msgstr "מז"
 msgid "W"
 msgstr "מע"
 
-#. Translators: Fractional exposure time (photography) in seconds
-#: src/metadata/mod.rs:262
-msgid "1\\u{2215}{}\\u{202F}s"
-msgstr "‏‎1\\u{2215}{}\\u{202F} ש"
-
-#. Translators: Exposure time (photography) in seconds
-#: src/metadata/mod.rs:270
-msgid "{}\\u{202F}s"
-msgstr "‎{}\\u{202F} שנ׳"
-
-#. Translators: Unit for focal length in millimeters
-#: src/metadata/mod.rs:296
-msgid "{}\\u{202F}mm"
-msgstr "‏‎{}\\u{202F} מ״מ"
-
 #. Translators: This is the date and time format we use in metadata output etc.
 #. The format has to follow <https://docs.gtk.org/glib/method.DateTime.format.html>
 #. The default is already translated. Don't change if you are not sure what to
 #. use.
-#: src/util/mod.rs:37
+#: src/util.rs:37
 #, c-format
 msgid "%x %X"
 msgstr "%x %X"
 
-#: src/util/mod.rs:180 src/window.rs:702
+#: src/util.rs:180 src/window.rs:575
 msgid "Failed to restore image from trash"
 msgstr "שחזור התמונה מהאשפה נכשלה"
 
-#: src/util/mod.rs:201
-msgid "Failed to open image"
-msgstr "פתיחת התמונה נכשלה"
+#: src/widgets/error_details.ui:25
+msgid ""
+"The image loader reported the following. Please include this information "
+"when you report an error."
+msgstr ""
+"טוען התמונות דיווח על העניין הבא. נא לצרף את המידע הזה לדיווח על השגיאה."
+
+#: src/widgets/error_details.ui:53
+msgid "Copy Information"
+msgstr "העתקת פרטים"
+
+#: src/widgets/error_details.ui:58
+msgid "Report Issue…"
+msgstr "דיווח על תקלה…"
+
+#: src/widgets/image_page.rs:199
+msgid ""
+"No image loaders available. Mabye the “glycin-loaders” package with "
+"compatibility version “{}+” is not installed."
+msgstr ""
+"אין טועני תמונות זמינים. אולי החבילה „glycin-loaders” עם גרסת התאימות „‎{}+‎” "
+"לא מותקנת."
+
+#: src/widgets/image_page.rs:210
+msgid "The image format “{} ({})” is known but not installed."
+msgstr "סוג התמונה „{} ({})” מוכר אבל לא מותקן."
+
+#: src/widgets/image_page.rs:217
+msgid "Unknown image format “{} ({}).”"
+msgstr "סוג התמונה אינו מוכר: „{} ({})”"
+
+#: src/widgets/image_page.rs:234
+msgid "Either the image file is corrupted or it contains unsupported elements."
+msgstr "או שהתמונה פגומה או שהיא מכילה רכיבים שאינם נתמכים."
 
 #: src/widgets/image_page.ui:6 src/window.ui:16
 msgid "_Open With…"
@@ -333,11 +364,15 @@ msgstr "ה_גדרה כרקע…"
 msgid "Could not Load Image"
 msgstr "לא ניתן לטעון את התמונה"
 
-#: src/widgets/image_page.ui:97 src/window.ui:106
+#: src/widgets/image_page.ui:66
+msgid "More Information…"
+msgstr "פרטים נוספים…"
+
+#: src/widgets/image_page.ui:105 src/window.ui:106
 msgid "Rotate Left"
 msgstr "סיבוב שמאלה"
 
-#: src/widgets/image_page.ui:107 src/window.ui:116
+#: src/widgets/image_page.ui:115 src/window.ui:116
 msgid "Rotate Right"
 msgstr "סיבוב ימינה"
 
@@ -371,54 +406,62 @@ msgstr "התקרבות"
 msgid "Toggle Fullscreen"
 msgstr "שינוי מצב מסך מלא"
 
-#: src/widgets/print.rs:116
+#: src/widgets/print.rs:108
 msgid "Top"
 msgstr "למעלה"
 
-#: src/widgets/print.rs:117
+#: src/widgets/print.rs:109
 msgid "Center"
 msgstr "מרכז"
 
-#: src/widgets/print.rs:118
+#: src/widgets/print.rs:110
 msgid "Bottom"
 msgstr "למטה"
 
 # msgctxt "shortcut window"
-#: src/widgets/print.rs:119
+#: src/widgets/print.rs:111
 msgid "Left"
 msgstr "שמאל"
 
 # msgctxt "shortcut window"
-#: src/widgets/print.rs:120
+#: src/widgets/print.rs:112
 msgid "Right"
 msgstr "ימין"
 
 #. Translators: Shorthand for centimeter
-#: src/widgets/print.rs:156
+#: src/widgets/print.rs:148
 msgid "cm"
 msgstr "ס״מ"
 
 #. Translators: Shorthand for inch
-#: src/widgets/print.rs:158
+#: src/widgets/print.rs:150
 msgid "in"
 msgstr "אינ׳"
 
 #. Translators: Shorthand for pixel
-#: src/widgets/print.rs:160
+#: src/widgets/print.rs:152
 msgid "px"
 msgstr "פיקסלים"
 
 #. Translators: {} is a placeholder for the filename
-#: src/widgets/print.rs:382
+#: src/widgets/print.rs:340
 msgid "Print “{}”"
 msgstr "הדפסת „{}”"
 
+#: src/widgets/print.rs:444
+msgid "Continue…"
+msgstr "המשך…"
+
+#: src/widgets/print.rs:445
+msgid "Print Image"
+msgstr "הדפסת תמונה"
+
 # msgctxt "shortcut window"
-#: src/widgets/print.rs:803
+#: src/widgets/print.rs:767
 msgid "_Scale"
 msgstr "_קנה מידה"
 
-#: src/widgets/print.rs:806
+#: src/widgets/print.rs:770
 msgid "_Width"
 msgstr "_רוחב"
 
@@ -571,51 +614,51 @@ msgstr "אורך מוקד"
 msgid "Maker, Model"
 msgstr "מצלמה, דגם"
 
-#: src/window.rs:569
+#: src/window.rs:442
 msgid "Supported image formats"
 msgstr "תבניות תמונה נתמכות"
 
-#: src/window.rs:575
+#: src/window.rs:448
 msgid "All files"
 msgstr "כל הקבצים"
 
-#: src/window.rs:582
+#: src/window.rs:455
 msgid "Open Image"
 msgstr "פתיחת תמונה"
 
-#: src/window.rs:668
+#: src/window.rs:541
 msgid "Image copied to clipboard"
 msgstr "תמונה הועתקה ללוח הגזירים"
 
-#: src/window.rs:689
+#: src/window.rs:562
 msgid "Image moved to trash"
 msgstr "תמונה הוערה לאשפה"
 
-#: src/window.rs:690
+#: src/window.rs:563
 msgid "Undo"
 msgstr "ביטול"
 
-#: src/window.rs:716
+#: src/window.rs:589
 msgid "Failed to move image to trash"
 msgstr "העברת התמונה לאשפה נכשלה"
 
-#: src/window.rs:742
+#: src/window.rs:615
 msgid "Permanently Delete Image?"
 msgstr "למחוק את התמונה לצמיתות?"
 
-#: src/window.rs:744
+#: src/window.rs:617
 msgid "After deleting the image “{}” it will be permanently lost."
 msgstr "לאחר מחיקת התמונה „{}” היא תאבד לצמיתות."
 
-#: src/window.rs:752
+#: src/window.rs:625
 msgid "Cancel"
 msgstr "ביטול"
 
-#: src/window.rs:753
+#: src/window.rs:626
 msgid "Delete"
 msgstr "מחיקה"
 
-#: src/window.rs:764
+#: src/window.rs:637
 msgid "Failed to delete image"
 msgstr "מחיקת התמונה נכשלה"
 
@@ -669,6 +712,9 @@ msgstr "יש לגרור ולשחרר לכאן תמונות"
 msgid "_Open Files…"
 msgstr "_פתיחת קבצים…"
 
+#~ msgid "Failed to open image"
+#~ msgstr "פתיחת התמונה נכשלה"
+
 #~ msgid "The Loupe Team"
 #~ msgstr "צוות לופ"
 
@@ -710,9 +756,6 @@ msgstr "_פתיחת קבצים…"
 
 #~ msgid "Animated PNG"
 #~ msgstr "תמונה מונפשת PNG"
-
-#~ msgid "Unknown image format: {}"
-#~ msgstr "תצורת התמונה אינה מוכרת: {}"
 
 #~ msgid "Could not open image"
 #~ msgstr "לא ניתן לפתוח את התמונה"
