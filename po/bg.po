@@ -1,0 +1,695 @@
+# Bulgarian translation of loupe po-file.
+# Copyright (C) 2024 loupe's COPYRIGHT HOLDER
+# This file is distributed under the same license as the loupe package.
+# Georgi Dobrev <gdd71@abv.bg>, 2024.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: loupe main\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
+"POT-Creation-Date: 2024-05-12 12:48+0000\n"
+"PO-Revision-Date: 2024-05-15 01:43+0200\n"
+"Last-Translator: Georgi Dobrev <gdd71@abv.bg\n"
+"Language-Team: Bulgarian <dict-notifications@fsa-bg.org>\n"
+"Language: bg\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: data/org.gnome.Loupe.desktop.in.in:3
+#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:30 src/window.rs:754
+msgid "Image Viewer"
+msgstr "Преглед на изображения"
+
+#: data/org.gnome.Loupe.desktop.in.in:11
+msgid "Picture;Graphics;Loupe;"
+msgstr "изображение;картина;графика;picture;graphics;loupe;"
+
+#: data/org.gnome.Loupe.gschema.xml.in:6
+msgid "Show the image properties sidebar"
+msgstr "Показване на свойствата на изображението в страничен панел"
+
+#. developer_name tag deprecated with Appstream 1.0
+#: data/org.gnome.Loupe.metainfo.xml.in.in:8 src/about.rs:33
+msgid "The GNOME Project"
+msgstr "Проектът GNOME"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:13
+msgid "View images"
+msgstr "Преглед на изображения"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:15
+msgid "Browse through your images and inspect their metadata with:"
+msgstr "Прегледайте вашите изображения и проверете техните метаданни с:"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:17
+msgid "Fast GPU accelerated image rendering"
+msgstr "Бърза обработка с помощта на GPU ускоряване"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:18
+msgid "Tiled rendering for vector graphics"
+msgstr "Обработка по плочки за векторни графики"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:19
+msgid "Extendable and sandboxed image decoding"
+msgstr "Разширяемо и изолирано декодиране на изображенията"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:20
+msgid "Accessible presentation of the most important metadata."
+msgstr "Достъпно представяне на най-важните метаданни."
+
+#: data/resources/gtk/help-overlay.ui:11
+msgctxt "shortcut window"
+msgid "General Shortcuts"
+msgstr "Основни клавишни комбинации"
+
+#: data/resources/gtk/help-overlay.ui:14
+msgctxt "shortcut window"
+msgid "Show Main Menu"
+msgstr "Показване на главното меню"
+
+#: data/resources/gtk/help-overlay.ui:20
+msgctxt "shortcut window"
+msgid "Copy Image or Metadata to Clipboard"
+msgstr "Копиране на изображението или метаданните в клипборда"
+
+#: data/resources/gtk/help-overlay.ui:26
+msgctxt "shortcut window"
+msgid "Move Image to Trash"
+msgstr "Преместване на изображението в кошчето"
+
+#: data/resources/gtk/help-overlay.ui:32
+msgctxt "shortcut window"
+msgid "Permanently Delete Image"
+msgstr "Окончателно изтриване на изображението"
+
+#: data/resources/gtk/help-overlay.ui:38
+msgctxt "shortcut window"
+msgid "Toggle Image Properties"
+msgstr "Показване/скриване на панела със свойства на изображението"
+
+#: data/resources/gtk/help-overlay.ui:44
+msgctxt "shortcut window"
+msgid "Set as Background"
+msgstr "Задаване като фон"
+
+#: data/resources/gtk/help-overlay.ui:50
+msgctxt "shortcut window"
+msgid "Toggle Fullscreen"
+msgstr "Превключване на цял екран"
+
+#: data/resources/gtk/help-overlay.ui:56
+msgctxt "shortcut window"
+msgid "Leave Fullscreen"
+msgstr "Излизане от режим на цял екран"
+
+#: data/resources/gtk/help-overlay.ui:62
+msgctxt "shortcut window"
+msgid "New Window"
+msgstr "Нов прозорец"
+
+#: data/resources/gtk/help-overlay.ui:68
+msgctxt "shortcut window"
+msgid "Open Help"
+msgstr "Отваряне на помощта"
+
+#: data/resources/gtk/help-overlay.ui:74
+msgctxt "shortcut window"
+msgid "Show Keyboard Shortcuts"
+msgstr "Показване на клавишни комбинации"
+
+#: data/resources/gtk/help-overlay.ui:80
+msgctxt "shortcut window"
+msgid "Close Window"
+msgstr "Затваряне на прозореца"
+
+#: data/resources/gtk/help-overlay.ui:86
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "Спиране на програмата"
+
+#: data/resources/gtk/help-overlay.ui:94
+msgctxt "shortcut window"
+msgid "Navigate Images"
+msgstr "Навигация"
+
+#: data/resources/gtk/help-overlay.ui:98 data/resources/gtk/help-overlay.ui:112
+#: data/resources/gtk/help-overlay.ui:224
+#: data/resources/gtk/help-overlay.ui:238
+msgctxt "shortcut window"
+msgid "Next Image"
+msgstr "Следващо изображение"
+
+#: data/resources/gtk/help-overlay.ui:105
+#: data/resources/gtk/help-overlay.ui:119
+#: data/resources/gtk/help-overlay.ui:231
+#: data/resources/gtk/help-overlay.ui:245
+msgctxt "shortcut window"
+msgid "Previous Image"
+msgstr "Предишно изображение"
+
+#: data/resources/gtk/help-overlay.ui:125
+msgctxt "shortcut window"
+msgid "First Image"
+msgstr "Първо изображение"
+
+#: data/resources/gtk/help-overlay.ui:131
+msgctxt "shortcut window"
+msgid "Last Image"
+msgstr "Последно изображение"
+
+#: data/resources/gtk/help-overlay.ui:139
+msgctxt "shortcut window"
+msgid "Rotate Image"
+msgstr "Завъртане на изображението"
+
+#: data/resources/gtk/help-overlay.ui:142
+#: data/resources/gtk/help-overlay.ui:263
+msgctxt "shortcut window"
+msgid "Rotate Clockwise"
+msgstr "Завъртане по часовниковата стрелка"
+
+#: data/resources/gtk/help-overlay.ui:148
+#: data/resources/gtk/help-overlay.ui:269
+msgctxt "shortcut window"
+msgid "Rotate Counterclockwise"
+msgstr "Завъртане обратно на часовниковата стрелка"
+
+#: data/resources/gtk/help-overlay.ui:156
+msgctxt "shortcut window"
+msgid "Zoom Image"
+msgstr "Мащаб на изображението"
+
+#: data/resources/gtk/help-overlay.ui:159
+#: data/resources/gtk/help-overlay.ui:251
+msgctxt "shortcut window"
+msgid "Zoom In"
+msgstr "Увеличаване"
+
+#: data/resources/gtk/help-overlay.ui:165
+#: data/resources/gtk/help-overlay.ui:257
+msgctxt "shortcut window"
+msgid "Zoom Out"
+msgstr "Намаляване"
+
+#: data/resources/gtk/help-overlay.ui:171
+msgctxt "shortcut window"
+msgid "Best Fit"
+msgstr "Най-добро запълване"
+
+#: data/resources/gtk/help-overlay.ui:177
+msgctxt "shortcut window"
+msgid "Original Scale"
+msgstr "Оригинален мащаб"
+
+#: data/resources/gtk/help-overlay.ui:183
+msgctxt "shortcut window"
+msgid "200% Scale"
+msgstr "Мащаб 200 %"
+
+#: data/resources/gtk/help-overlay.ui:191
+msgctxt "shortcut window"
+msgid "Pan View"
+msgstr "Панорамиране"
+
+#: data/resources/gtk/help-overlay.ui:194
+msgctxt "shortcut window"
+msgid "Pan Left"
+msgstr "Панорамиране наляво"
+
+#: data/resources/gtk/help-overlay.ui:200
+msgctxt "shortcut window"
+msgid "Pan Right"
+msgstr "Панорамиране надясно"
+
+#: data/resources/gtk/help-overlay.ui:206
+msgctxt "shortcut window"
+msgid "Pan Up"
+msgstr "Панорамиране нагоре"
+
+#: data/resources/gtk/help-overlay.ui:212
+msgctxt "shortcut window"
+msgid "Pan Down"
+msgstr "Панорамиране надолу"
+
+#: data/resources/gtk/help-overlay.ui:220
+msgctxt "shortcut window"
+msgid "Gestures"
+msgstr "Жестове"
+
+#. Translators: Replace "translator-credits" with your names, one name per line
+#: src/about.rs:42
+msgid "translator-credits"
+msgstr "Георги Добрев &lt;<a href='mailto:gdd71@abv.bg'>gdd71@abv.bg</a>&gt;"
+
+#: src/about.rs:43
+msgid "Copyright © 2020–2024 Christopher Davis et al."
+msgstr "Авторски права © Christopher Davis и др., 2020–2024."
+
+#: src/file_model.rs:129
+msgid "Could not list other files in directory."
+msgstr "Неуспешно изброяване на другите файлове в папката."
+
+#. Translators: short for "north" in GPS coordinate
+#: src/metadata/gps.rs:165
+msgid "N"
+msgstr "С"
+
+#. Translators: short for "south" in GPS coordinate
+#: src/metadata/gps.rs:168
+msgid "S"
+msgstr "Ю"
+
+#. Translators: short for "east" in GPS coordinate
+#: src/metadata/gps.rs:190
+msgid "E"
+msgstr "И"
+
+#. Translators: short for "west" in GPS coordinate
+#: src/metadata/gps.rs:193
+msgid "W"
+msgstr "З"
+
+#. Translators: Fractional exposure time (photography) in seconds
+#: src/metadata/mod.rs:262
+msgid "1\\u{2215}{}\\u{202F}s"
+msgstr "1\\u{2215}{}\\u{202F}s"
+
+#. Translators: Exposure time (photography) in seconds
+#: src/metadata/mod.rs:270
+msgid "{}\\u{202F}s"
+msgstr "{}\\u{202F}s"
+
+#. Translators: Unit for focal length in millimeters
+#: src/metadata/mod.rs:296
+msgid "{}\\u{202F}mm"
+msgstr "{}\\u{202F}mm"
+
+#. Translators: This is the date and time format we use in metadata output etc.
+#. The format has to follow <https://docs.gtk.org/glib/method.DateTime.format.html>
+#. The default is already translated. Don't change if you are not sure what to
+#. use.
+#: src/util/mod.rs:37
+#, c-format
+msgid "%x %X"
+msgstr "%x %X"
+
+#: src/util/mod.rs:180 src/window.rs:575
+msgid "Failed to restore image from trash"
+msgstr "Изображението не може да се възстанови от кошчето"
+
+#: src/widgets/error_details.ui:25
+msgid ""
+"The image loader reported the following. Please include this information "
+"when you report an error."
+msgstr ""
+"Програмата за зареждане на изображения изведе следната информация. Молим, "
+"включете я, когато докладвате грешката."
+
+#: src/widgets/error_details.ui:53
+msgid "Copy Information"
+msgstr "Копиране на информацията"
+
+#: src/widgets/error_details.ui:58
+msgid "Report Issue…"
+msgstr "Докладване за проблем…"
+
+#: src/widgets/image_page.rs:199
+msgid ""
+"No image loaders available. Mabye the “glycin-loaders” package with "
+"compatibility version “{}+” is not installed."
+msgstr "Няма налични програми за зареждане на изображения. Може би не е инсталирана версия на „glycin-loaders“ съвместима с „{}+“."
+
+#: src/widgets/image_page.rs:210
+msgid "The image format “{} ({})” is known but not installed."
+msgstr ""
+"Форматът на изображението „{} ({})“ е известен, но поддръжката му не е "
+"инсталирана."
+
+#: src/widgets/image_page.rs:217
+msgid "Unknown image format “{} ({}).”"
+msgstr "Неизвестен формат на изображението „{} ({})“."
+
+#: src/widgets/image_page.rs:234
+msgid "Either the image file is corrupted or it contains unsupported elements."
+msgstr "Файлът с изображение е повреден или съдържа неподдържани елементи."
+
+#: src/widgets/image_page.ui:6 src/window.ui:16
+msgid "_Open With…"
+msgstr "_Отваряне с…"
+
+#: src/widgets/image_page.ui:14 src/window.ui:24
+msgid "_Print…"
+msgstr "_Печат…"
+
+#: src/widgets/image_page.ui:18
+msgid "_Copy"
+msgstr "_Копиране"
+
+#: src/widgets/image_page.ui:23 src/window.ui:29
+msgid "Rotate"
+msgstr "Завъртане"
+
+#: src/widgets/image_page.ui:34 src/window.ui:40
+msgid "_Set as Background…"
+msgstr "_Задаване като фон…"
+
+#: src/widgets/image_page.ui:63
+msgid "Could not Load Image"
+msgstr "Изображението не може да се зареди"
+
+#: src/widgets/image_page.ui:66
+msgid "More Information…"
+msgstr "Повече информация…"
+
+#: src/widgets/image_page.ui:105 src/window.ui:106
+msgid "Rotate Left"
+msgstr "Завъртане наляво"
+
+#: src/widgets/image_page.ui:115 src/window.ui:116
+msgid "Rotate Right"
+msgstr "Завъртане надясно"
+
+#. Translators: This is a toast notification, informing the user that
+#. an image has been set as background.
+#: src/widgets/image_view.rs:682
+msgid "Set as background."
+msgstr "Задаване като фон."
+
+#: src/widgets/image_view.rs:695
+msgid "Could not set background."
+msgstr "Неуспешно задаване като фон."
+
+#: src/widgets/image_view.ui:27
+msgid "Previous Image"
+msgstr "Предишно изображение"
+
+#: src/widgets/image_view.ui:38
+msgid "Next Image"
+msgstr "Следващо изображение"
+
+#: src/widgets/image_view.ui:63
+msgid "Zoom Out"
+msgstr "Намаляване"
+
+#: src/widgets/image_view.ui:74
+msgid "Zoom In"
+msgstr "Увеличаване"
+
+#: src/widgets/image_view.ui:85
+msgid "Toggle Fullscreen"
+msgstr "Режим на цял екран"
+
+#: src/widgets/print.rs:116
+msgid "Top"
+msgstr "Отгоре"
+
+#: src/widgets/print.rs:117
+msgid "Center"
+msgstr "В центъра"
+
+#: src/widgets/print.rs:118
+msgid "Bottom"
+msgstr "Отдолу"
+
+#: src/widgets/print.rs:119
+msgid "Left"
+msgstr "Вляво"
+
+#: src/widgets/print.rs:120
+msgid "Right"
+msgstr "Вдясно"
+
+#. Translators: Shorthand for centimeter
+#: src/widgets/print.rs:156
+msgid "cm"
+msgstr "cm"
+
+#. Translators: Shorthand for inch
+#: src/widgets/print.rs:158
+msgid "in"
+msgstr "in"
+
+#. Translators: Shorthand for pixel
+#: src/widgets/print.rs:160
+msgid "px"
+msgstr "px"
+
+#. Translators: {} is a placeholder for the filename
+#: src/widgets/print.rs:382
+msgid "Print “{}”"
+msgstr "Печат на „{}“"
+
+#: src/widgets/print.rs:803
+msgid "_Scale"
+msgstr "_Мащаб"
+
+#: src/widgets/print.rs:806
+msgid "_Width"
+msgstr "_Широчина"
+
+#. Translators: Go back to previous page
+#: src/widgets/print.ui:29
+msgid "_Back"
+msgstr "_Назад"
+
+#: src/widgets/print.ui:37
+msgid "_Print"
+msgstr "_Печат"
+
+#: src/widgets/print.ui:56
+msgid "Layout"
+msgstr "Оформление"
+
+#: src/widgets/print.ui:59
+msgid "_Orientation"
+msgstr "_Ориентация"
+
+#: src/widgets/print.ui:72
+msgid "Portrait Page Orientation"
+msgstr "Портретна ориентация на страницата"
+
+#: src/widgets/print.ui:80
+msgid "Landscape Page Orientation"
+msgstr "Пейзажна ориентация на страницата"
+
+#: src/widgets/print.ui:89
+msgid "_Alignment"
+msgstr "По_дравняване"
+
+#: src/widgets/print.ui:108
+msgid "Margins"
+msgstr "Бели полета"
+
+#: src/widgets/print.ui:111
+msgid "Margin Units"
+msgstr "Единици за измерване на белите полета"
+
+#: src/widgets/print.ui:128
+msgid "_Horizontal"
+msgstr "_Хоризонтално"
+
+#: src/widgets/print.ui:134
+msgid "_Vertical"
+msgstr "_Вертикално"
+
+#: src/widgets/print.ui:142 src/widgets/properties_view.ui:53
+msgid "Image Size"
+msgstr "Размер на изображението"
+
+#: src/widgets/print.ui:145
+msgid "Image Size Units"
+msgstr "Единици за размер на изображението"
+
+#: src/widgets/print.ui:163
+msgid "_Fill Space"
+msgstr "_Запълване"
+
+#: src/widgets/print.ui:174
+msgid "H_eight"
+msgstr "_Височина"
+
+#: src/widgets/properties_view.rs:234
+msgid "Unknown"
+msgstr "Неизвестно"
+
+#. Translators: Addition of image being transparent to format name
+#: src/widgets/properties_view.rs:238
+msgid ", transparent"
+msgstr ", прозрачно"
+
+#. Translators: Addition of image being grayscale to format name
+#: src/widgets/properties_view.rs:243
+msgid ", grayscale"
+msgstr ", нюанси на сивото"
+
+#. Translators: Addition of bit size to format name
+#: src/widgets/properties_view.rs:248
+msgid ", {}\\u{202F}bit"
+msgstr ", {}\\u{202F}bit"
+
+#: src/widgets/properties_view.rs:299
+msgid "Image Coordinates Copied"
+msgstr "Координатите на изображението са копирани"
+
+#: src/widgets/properties_view.ui:19
+msgid "Folder"
+msgstr "Папка"
+
+#: src/widgets/properties_view.ui:26
+msgid "Open Containing Folder"
+msgstr "Отваряне на съдържащата папка"
+
+#: src/widgets/properties_view.ui:39
+msgid "URI"
+msgstr "Адрес"
+
+#: src/widgets/properties_view.ui:62
+msgid "Image Format"
+msgstr "Формат на изображението"
+
+#: src/widgets/properties_view.ui:71
+msgid "File Size"
+msgstr "Размер на файла"
+
+#: src/widgets/properties_view.ui:84
+msgid "File Created"
+msgstr "Файлът е създаден"
+
+#: src/widgets/properties_view.ui:93
+msgid "File Modified"
+msgstr "Файлът е променен"
+
+#. Translators: This is a label for GPS coordinates
+#: src/widgets/properties_view.ui:106
+msgid "Location"
+msgstr "Местоположение"
+
+#: src/widgets/properties_view.ui:116
+msgid "Copy Coordinates"
+msgstr "Копиране на координатите"
+
+#: src/widgets/properties_view.ui:127
+msgid "Open Location"
+msgstr "Отваряне на местоположение"
+
+#: src/widgets/properties_view.ui:140
+msgid "Originally Created"
+msgstr "Първоначално създаден"
+
+#: src/widgets/properties_view.ui:149
+msgid "Aperture"
+msgstr "Апертура"
+
+#: src/widgets/properties_view.ui:158
+msgid "Exposure"
+msgstr "Експонация"
+
+#: src/widgets/properties_view.ui:167
+msgid "ISO"
+msgstr "ISO"
+
+#: src/widgets/properties_view.ui:176
+msgid "Focal Length"
+msgstr "Фокусно разстояние"
+
+#: src/widgets/properties_view.ui:185
+msgid "Maker, Model"
+msgstr "Производител, модел"
+
+#: src/window.rs:442
+msgid "Supported image formats"
+msgstr "Поддържани формати на изображения"
+
+#: src/window.rs:448
+msgid "All files"
+msgstr "Всички файлове"
+
+#: src/window.rs:455
+msgid "Open Image"
+msgstr "Отваряне на изображението"
+
+#: src/window.rs:541
+msgid "Image copied to clipboard"
+msgstr "Изображението е копирано в буфера за обмен"
+
+#: src/window.rs:562
+msgid "Image moved to trash"
+msgstr "Изображението е преместено в кошчето"
+
+#: src/window.rs:563
+msgid "Undo"
+msgstr "Отмяна"
+
+#: src/window.rs:589
+msgid "Failed to move image to trash"
+msgstr "Неуспешно преместване на изображението в кошчето"
+
+#: src/window.rs:615
+msgid "Permanently Delete Image?"
+msgstr "Да се изтрие ли окончателно изображението?"
+
+#: src/window.rs:617
+msgid "After deleting the image “{}” it will be permanently lost."
+msgstr "След изтриване на изображението „{}“ то ще бъде окончателно загубено."
+
+#: src/window.rs:625
+msgid "Cancel"
+msgstr "Отказ"
+
+#: src/window.rs:626
+msgid "Delete"
+msgstr "Изтриване"
+
+#: src/window.rs:637
+msgid "Failed to delete image"
+msgstr "Неуспешно изтриване на изображението"
+
+#: src/window.ui:6
+msgid "_New Window"
+msgstr "_Нов прозорец"
+
+#: src/window.ui:10
+msgid "_Open…"
+msgstr "_Отваряне…"
+
+#: src/window.ui:46
+msgid "_Help"
+msgstr "Помо_щ"
+
+#: src/window.ui:50
+msgid "_Keyboard Shortcuts"
+msgstr "_Клавишни комбинации"
+
+#: src/window.ui:54
+msgid "_About Image Viewer"
+msgstr "_Относно „Преглед на изображения“"
+
+#: src/window.ui:85
+msgid "Copy to Clipboard"
+msgstr "Копиране в буфер за обмен"
+
+#: src/window.ui:92
+msgid "Move to Trash"
+msgstr "Преместване в кошчето"
+
+#: src/window.ui:98
+msgid "Main Menu"
+msgstr "Главно меню"
+
+#: src/window.ui:130
+msgid "Image Properties"
+msgstr "Свойства на изображението"
+
+#: src/window.ui:174
+msgid "View Images"
+msgstr "Преглед на изображения"
+
+#: src/window.ui:175
+msgid "Drag and drop images here"
+msgstr "Плъзнете и пуснете изображения тук"
+
+#: src/window.ui:179
+msgid "_Open Files…"
+msgstr "_Отваряне на файлове…"
