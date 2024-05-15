@@ -1,17 +1,3 @@
-## 47.alpha (Unreleased)
-
-### Added
-
-- New dialog to show and copy error details
-
-### Changed
-
-- Follow the Rust Style Guide for Cargo.toml and .rs filenames
-- Make error messages translatable and look nicer
-- Move many shortcuts to window level instead of using app accels
-- Replace AdwAboutWindow with AdwAboutDialog !376
-- Use new GtkPrintDialog API #144
-
 46.2
 ====
 
