@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2024-05-12 12:48+0000\n"
-"PO-Revision-Date: 2024-05-15 01:43+0200\n"
+"POT-Creation-Date: 2024-05-15 09:12+0000\n"
+"PO-Revision-Date: 2024-05-15 11:18+0200\n"
 "Last-Translator: Georgi Dobrev <gdd71@abv.bg\n"
 "Language-Team: Bulgarian <dict-notifications@fsa-bg.org>\n"
 "Language: bg\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: data/org.gnome.Loupe.desktop.in.in:3
-#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:30 src/window.rs:754
+#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:29 src/window.rs:881
 msgid "Image Viewer"
 msgstr "Преглед на изображения"
 
@@ -31,7 +31,7 @@ msgid "Show the image properties sidebar"
 msgstr "Показване на свойствата на изображението в страничен панел"
 
 #. developer_name tag deprecated with Appstream 1.0
-#: data/org.gnome.Loupe.metainfo.xml.in.in:8 src/about.rs:33
+#: data/org.gnome.Loupe.metainfo.xml.in.in:8 src/about.rs:32
 msgid "The GNOME Project"
 msgstr "Проектът GNOME"
 
@@ -239,11 +239,11 @@ msgid "Gestures"
 msgstr "Жестове"
 
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/about.rs:42
+#: src/about.rs:41
 msgid "translator-credits"
 msgstr "Георги Добрев &lt;<a href='mailto:gdd71@abv.bg'>gdd71@abv.bg</a>&gt;"
 
-#: src/about.rs:43
+#: src/about.rs:42
 msgid "Copyright © 2020–2024 Christopher Davis et al."
 msgstr "Авторски права © Christopher Davis и др., 2020–2024."
 
@@ -295,45 +295,13 @@ msgstr "{}\\u{202F}mm"
 msgid "%x %X"
 msgstr "%x %X"
 
-#: src/util/mod.rs:180 src/window.rs:575
+#: src/util/mod.rs:180 src/window.rs:702
 msgid "Failed to restore image from trash"
 msgstr "Изображението не може да се възстанови от кошчето"
 
-#: src/widgets/error_details.ui:25
-msgid ""
-"The image loader reported the following. Please include this information "
-"when you report an error."
-msgstr ""
-"Програмата за зареждане на изображения изведе следната информация. Молим, "
-"включете я, когато докладвате грешката."
-
-#: src/widgets/error_details.ui:53
-msgid "Copy Information"
-msgstr "Копиране на информацията"
-
-#: src/widgets/error_details.ui:58
-msgid "Report Issue…"
-msgstr "Докладване за проблем…"
-
-#: src/widgets/image_page.rs:199
-msgid ""
-"No image loaders available. Mabye the “glycin-loaders” package with "
-"compatibility version “{}+” is not installed."
-msgstr "Няма налични програми за зареждане на изображения. Може би не е инсталирана версия на „glycin-loaders“ съвместима с „{}+“."
-
-#: src/widgets/image_page.rs:210
-msgid "The image format “{} ({})” is known but not installed."
-msgstr ""
-"Форматът на изображението „{} ({})“ е известен, но поддръжката му не е "
-"инсталирана."
-
-#: src/widgets/image_page.rs:217
-msgid "Unknown image format “{} ({}).”"
-msgstr "Неизвестен формат на изображението „{} ({})“."
-
-#: src/widgets/image_page.rs:234
-msgid "Either the image file is corrupted or it contains unsupported elements."
-msgstr "Файлът с изображение е повреден или съдържа неподдържани елементи."
+#: src/util/mod.rs:201
+msgid "Failed to open image"
+msgstr "Неуспешно отваряне на изображението"
 
 #: src/widgets/image_page.ui:6 src/window.ui:16
 msgid "_Open With…"
@@ -359,15 +327,11 @@ msgstr "_Задаване като фон…"
 msgid "Could not Load Image"
 msgstr "Изображението не може да се зареди"
 
-#: src/widgets/image_page.ui:66
-msgid "More Information…"
-msgstr "Повече информация…"
-
-#: src/widgets/image_page.ui:105 src/window.ui:106
+#: src/widgets/image_page.ui:97 src/window.ui:106
 msgid "Rotate Left"
 msgstr "Завъртане наляво"
 
-#: src/widgets/image_page.ui:115 src/window.ui:116
+#: src/widgets/image_page.ui:107 src/window.ui:116
 msgid "Rotate Right"
 msgstr "Завъртане надясно"
 
@@ -598,51 +562,51 @@ msgstr "Фокусно разстояние"
 msgid "Maker, Model"
 msgstr "Производител, модел"
 
-#: src/window.rs:442
+#: src/window.rs:569
 msgid "Supported image formats"
 msgstr "Поддържани формати на изображения"
 
-#: src/window.rs:448
+#: src/window.rs:575
 msgid "All files"
 msgstr "Всички файлове"
 
-#: src/window.rs:455
+#: src/window.rs:582
 msgid "Open Image"
 msgstr "Отваряне на изображението"
 
-#: src/window.rs:541
+#: src/window.rs:668
 msgid "Image copied to clipboard"
 msgstr "Изображението е копирано в буфера за обмен"
 
-#: src/window.rs:562
+#: src/window.rs:689
 msgid "Image moved to trash"
 msgstr "Изображението е преместено в кошчето"
 
-#: src/window.rs:563
+#: src/window.rs:690
 msgid "Undo"
 msgstr "Отмяна"
 
-#: src/window.rs:589
+#: src/window.rs:716
 msgid "Failed to move image to trash"
 msgstr "Неуспешно преместване на изображението в кошчето"
 
-#: src/window.rs:615
+#: src/window.rs:742
 msgid "Permanently Delete Image?"
 msgstr "Да се изтрие ли окончателно изображението?"
 
-#: src/window.rs:617
+#: src/window.rs:744
 msgid "After deleting the image “{}” it will be permanently lost."
 msgstr "След изтриване на изображението „{}“ то ще бъде окончателно загубено."
 
-#: src/window.rs:625
+#: src/window.rs:752
 msgid "Cancel"
 msgstr "Отказ"
 
-#: src/window.rs:626
+#: src/window.rs:753
 msgid "Delete"
 msgstr "Изтриване"
 
-#: src/window.rs:637
+#: src/window.rs:764
 msgid "Failed to delete image"
 msgstr "Неуспешно изтриване на изображението"
 
@@ -693,3 +657,38 @@ msgstr "Плъзнете и пуснете изображения тук"
 #: src/window.ui:179
 msgid "_Open Files…"
 msgstr "_Отваряне на файлове…"
+
+#~ msgid ""
+#~ "The image loader reported the following. Please include this information "
+#~ "when you report an error."
+#~ msgstr ""
+#~ "Програмата за зареждане на изображения изведе следната информация. Молим, "
+#~ "включете я, когато докладвате грешката."
+
+#~ msgid "Copy Information"
+#~ msgstr "Копиране на информацията"
+
+#~ msgid "Report Issue…"
+#~ msgstr "Докладване за проблем…"
+
+#~ msgid ""
+#~ "No image loaders available. Mabye the “glycin-loaders” package with "
+#~ "compatibility version “{}+” is not installed."
+#~ msgstr ""
+#~ "Няма налични програми за зареждане на изображения. Може би не е "
+#~ "инсталирана версия на „glycin-loaders“ съвместима с „{}+“."
+
+#~ msgid "The image format “{} ({})” is known but not installed."
+#~ msgstr ""
+#~ "Форматът на изображението „{} ({})“ е известен, но поддръжката му не е "
+#~ "инсталирана."
+
+#~ msgid "Unknown image format “{} ({}).”"
+#~ msgstr "Неизвестен формат на изображението „{} ({})“."
+
+#~ msgid ""
+#~ "Either the image file is corrupted or it contains unsupported elements."
+#~ msgstr "Файлът с изображение е повреден или съдържа неподдържани елементи."
+
+#~ msgid "More Information…"
+#~ msgstr "Повече информация…"
