@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2024-05-09 21:54+0000\n"
-"PO-Revision-Date: 2024-05-11 10:37+0200\n"
+"POT-Creation-Date: 2024-05-16 20:03+0000\n"
+"PO-Revision-Date: 2024-05-17 19:47+0200\n"
 "Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
 "Language-Team: Slovenian <gnome-si@googlegroups.com>\n"
 "Language: sl\n"
@@ -260,6 +260,21 @@ msgstr "Avtorske pravice © 2020–2024 Christopher Davis in sodelavci"
 msgid "Could not list other files in directory."
 msgstr "Drugih datotek v mapi ni mogoče izpisati."
 
+#. Translators: Fractional exposure time (photography) in seconds
+#: src/metadata.rs:262
+msgid "1\\u{2215}{}\\u{202F}s"
+msgstr "1\\u{2215}{}\\u{202F}s"
+
+#. Translators: Exposure time (photography) in seconds
+#: src/metadata.rs:270
+msgid "{}\\u{202F}s"
+msgstr "{}\\u{202F} s"
+
+#. Translators: Unit for focal length in millimeters
+#: src/metadata.rs:296
+msgid "{}\\u{202F}mm"
+msgstr "{}\\u{202F} mm"
+
 #. Translators: short for "north" in GPS coordinate
 #: src/metadata/gps.rs:165
 msgid "N"
@@ -280,31 +295,16 @@ msgstr "V"
 msgid "W"
 msgstr "Z"
 
-#. Translators: Fractional exposure time (photography) in seconds
-#: src/metadata/mod.rs:262
-msgid "1\\u{2215}{}\\u{202F}s"
-msgstr "1\\u{2215}{}\\u{202F}s"
-
-#. Translators: Exposure time (photography) in seconds
-#: src/metadata/mod.rs:270
-msgid "{}\\u{202F}s"
-msgstr "{}\\u{202F} s"
-
-#. Translators: Unit for focal length in millimeters
-#: src/metadata/mod.rs:296
-msgid "{}\\u{202F}mm"
-msgstr "{}\\u{202F} mm"
-
 #. Translators: This is the date and time format we use in metadata output etc.
 #. The format has to follow <https://docs.gtk.org/glib/method.DateTime.format.html>
 #. The default is already translated. Don't change if you are not sure what to
 #. use.
-#: src/util/mod.rs:37
+#: src/util.rs:37
 #, c-format
 msgid "%x %X"
 msgstr "%x %X"
 
-#: src/util/mod.rs:180 src/window.rs:575
+#: src/util.rs:180 src/window.rs:575
 msgid "Failed to restore image from trash"
 msgstr "Obnovitev slike iz smeti je spodletela"
 
@@ -410,51 +410,59 @@ msgstr "Povečaj"
 msgid "Toggle Fullscreen"
 msgstr "Preklopi celozaslonski način"
 
-#: src/widgets/print.rs:116
+#: src/widgets/print.rs:108
 msgid "Top"
 msgstr "Zgoraj"
 
-#: src/widgets/print.rs:117
+#: src/widgets/print.rs:109
 msgid "Center"
 msgstr "Na sredini"
 
-#: src/widgets/print.rs:118
+#: src/widgets/print.rs:110
 msgid "Bottom"
 msgstr "Spodaj"
 
-#: src/widgets/print.rs:119
+#: src/widgets/print.rs:111
 msgid "Left"
 msgstr "Levo"
 
-#: src/widgets/print.rs:120
+#: src/widgets/print.rs:112
 msgid "Right"
 msgstr "Desno"
 
 #. Translators: Shorthand for centimeter
-#: src/widgets/print.rs:156
+#: src/widgets/print.rs:148
 msgid "cm"
 msgstr "cm"
 
 #. Translators: Shorthand for inch
-#: src/widgets/print.rs:158
+#: src/widgets/print.rs:150
 msgid "in"
 msgstr "pal."
 
 #. Translators: Shorthand for pixel
-#: src/widgets/print.rs:160
+#: src/widgets/print.rs:152
 msgid "px"
 msgstr "sl. točk"
 
 #. Translators: {} is a placeholder for the filename
-#: src/widgets/print.rs:382
+#: src/widgets/print.rs:340
 msgid "Print “{}”"
 msgstr "Natisni »{}«"
 
-#: src/widgets/print.rs:803
+#: src/widgets/print.rs:444
+msgid "Continue…"
+msgstr "Nadaljuj …"
+
+#: src/widgets/print.rs:445
+msgid "Print Image"
+msgstr "Natisni sliko"
+
+#: src/widgets/print.rs:767
 msgid "_Scale"
 msgstr "_Merilo"
 
-#: src/widgets/print.rs:806
+#: src/widgets/print.rs:770
 msgid "_Width"
 msgstr "_Širina"
 
