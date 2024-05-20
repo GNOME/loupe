@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2024-02-13 22:38+0000\n"
-"PO-Revision-Date: 2024-02-14 09:11+0300\n"
+"POT-Creation-Date: 2024-05-15 11:21+0000\n"
+"PO-Revision-Date: 2024-05-16 16:23+0300\n"
 "Last-Translator: Artur So <arturios2005@mail.ru>\n"
 "Language-Team: \n"
 "Language: ru_RU\n"
@@ -20,7 +20,7 @@ msgstr ""
 "X-Generator: Poedit 3.4.2\n"
 
 #: data/org.gnome.Loupe.desktop.in.in:3
-#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:29 src/window.rs:880
+#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:30 src/window.rs:754
 msgid "Image Viewer"
 msgstr "Просмотрщик изображений"
 
@@ -33,31 +33,31 @@ msgid "Show the image properties sidebar"
 msgstr "Показать боковую панель свойств изображения"
 
 #. developer_name tag deprecated with Appstream 1.0
-#: data/org.gnome.Loupe.metainfo.xml.in.in:8 src/about.rs:32
+#: data/org.gnome.Loupe.metainfo.xml.in.in:8 src/about.rs:33
 msgid "The GNOME Project"
 msgstr "Проект GNOME"
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:12
+#: data/org.gnome.Loupe.metainfo.xml.in.in:13
 msgid "View images"
 msgstr "Просмотр изображений"
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:14
+#: data/org.gnome.Loupe.metainfo.xml.in.in:15
 msgid "Browse through your images and inspect their metadata with:"
 msgstr "Просматривайте свои изображения и проверяйте их метаданные с помощью:"
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:16
+#: data/org.gnome.Loupe.metainfo.xml.in.in:17
 msgid "Fast GPU accelerated image rendering"
 msgstr "Быстрого рендеринга изображений с GPU-ускорением"
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:17
+#: data/org.gnome.Loupe.metainfo.xml.in.in:18
 msgid "Tiled rendering for vector graphics"
 msgstr "Плиточного рендеринга для векторной графики"
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:18
+#: data/org.gnome.Loupe.metainfo.xml.in.in:19
 msgid "Extendable and sandboxed image decoding"
 msgstr "Расширяемого и изолированного декодирования изображений"
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:19
+#: data/org.gnome.Loupe.metainfo.xml.in.in:20
 msgid "Accessible presentation of the most important metadata."
 msgstr "Доступного представления наиболее важных метаданных."
 
@@ -241,17 +241,32 @@ msgid "Gestures"
 msgstr "Жесты"
 
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/about.rs:41
+#: src/about.rs:42
 msgid "translator-credits"
 msgstr "Aleksandr Melman <alexmelman88@gmail.com>, 2023"
 
-#: src/about.rs:42
+#: src/about.rs:43
 msgid "Copyright © 2020–2024 Christopher Davis et al."
 msgstr "Авторское право © 2020-2024 Christopher Davis и др."
 
-#: src/file_model.rs:128
+#: src/file_model.rs:129
 msgid "Could not list other files in directory."
 msgstr "Не удалось перечислить другие файлы в каталоге."
+
+#. Translators: Fractional exposure time (photography) in seconds
+#: src/metadata.rs:262
+msgid "1\\u{2215}{}\\u{202F}s"
+msgstr "1\\u{2215}{}\\u{202F}с"
+
+#. Translators: Exposure time (photography) in seconds
+#: src/metadata.rs:270
+msgid "{}\\u{202F}s"
+msgstr "{}\\u{202F}с"
+
+#. Translators: Unit for focal length in millimeters
+#: src/metadata.rs:296
+msgid "{}\\u{202F}mm"
+msgstr "{}\\u{202F}мм"
 
 #. Translators: short for "north" in GPS coordinate
 #: src/metadata/gps.rs:165
@@ -273,32 +288,55 @@ msgstr "В"
 msgid "W"
 msgstr "З"
 
-#. Translators: Unit for exposure time in seconds
-#: src/metadata/mod.rs:260
-msgid "1\\u{2215}{}\\u{202F}s"
-msgstr "1\\u{2215}{}\\u{202F}с"
-
-#. Translators: Unit for focal length in millimeters
-#: src/metadata/mod.rs:285
-msgid "{}\\u{202F}mm"
-msgstr "{}\\u{202F}мм"
-
 #. Translators: This is the date and time format we use in metadata output etc.
 #. The format has to follow <https://docs.gtk.org/glib/method.DateTime.format.html>
 #. The default is already translated. Don't change if you are not sure what to
 #. use.
-#: src/util/mod.rs:37
+#: src/util.rs:37
 #, c-format
 msgid "%x %X"
 msgstr "%x %X"
 
-#: src/util/mod.rs:180 src/window.rs:701
+#: src/util.rs:180 src/window.rs:575
 msgid "Failed to restore image from trash"
 msgstr "Не удалось восстановить изображение из корзины"
 
-#: src/util/mod.rs:201
-msgid "Failed to open image"
-msgstr "Не удалось открыть изображение"
+#: src/widgets/error_details.ui:25
+msgid ""
+"The image loader reported the following. Please include this information "
+"when you report an error."
+msgstr ""
+"Загрузчик изображений сообщил следующее. Пожалуйста, указывайте эту "
+"информацию, когда сообщаете об ошибке."
+
+#: src/widgets/error_details.ui:53
+msgid "Copy Information"
+msgstr "Копировать информацию"
+
+#: src/widgets/error_details.ui:58
+msgid "Report Issue…"
+msgstr "Сообщить об ошибке…"
+
+#: src/widgets/image_page.rs:199
+msgid ""
+"No image loaders available. Mabye the “glycin-loaders” package with "
+"compatibility version “{}+” is not installed."
+msgstr ""
+"Загрузчики изображений отсутствуют. Возможно, не установлен пакет “glycin-"
+"loaders” с совместимой версией “{}+”."
+
+#: src/widgets/image_page.rs:210
+msgid "The image format “{} ({})” is known but not installed."
+msgstr "Формат изображения “{} ({})” известен, но не установлен."
+
+#: src/widgets/image_page.rs:217
+msgid "Unknown image format “{} ({}).”"
+msgstr "Неизвестный формат изображения “{} ({}).”"
+
+#: src/widgets/image_page.rs:234
+msgid "Either the image file is corrupted or it contains unsupported elements."
+msgstr ""
+"Либо файл изображения поврежден, либо содержит неподдерживаемые элементы."
 
 #: src/widgets/image_page.ui:6 src/window.ui:16
 msgid "_Open With…"
@@ -324,11 +362,15 @@ msgstr "_Установить как фон…"
 msgid "Could not Load Image"
 msgstr "Не удалось загрузить изображение"
 
-#: src/widgets/image_page.ui:97 src/window.ui:106
+#: src/widgets/image_page.ui:66
+msgid "More Information…"
+msgstr "Больше информации…"
+
+#: src/widgets/image_page.ui:105 src/window.ui:106
 msgid "Rotate Left"
 msgstr "Повернуть влево"
 
-#: src/widgets/image_page.ui:107 src/window.ui:116
+#: src/widgets/image_page.ui:115 src/window.ui:116
 msgid "Rotate Right"
 msgstr "Повернуть вправо"
 
@@ -362,51 +404,59 @@ msgstr "Увеличить"
 msgid "Toggle Fullscreen"
 msgstr "Переключить полноэкранный режим"
 
-#: src/widgets/print.rs:116
+#: src/widgets/print.rs:108
 msgid "Top"
 msgstr "По верху"
 
-#: src/widgets/print.rs:117
+#: src/widgets/print.rs:109
 msgid "Center"
 msgstr "По центру"
 
-#: src/widgets/print.rs:118
+#: src/widgets/print.rs:110
 msgid "Bottom"
 msgstr "По низу"
 
-#: src/widgets/print.rs:119
+#: src/widgets/print.rs:111
 msgid "Left"
 msgstr "По левому краю"
 
-#: src/widgets/print.rs:120
+#: src/widgets/print.rs:112
 msgid "Right"
 msgstr "По правому краю"
 
 #. Translators: Shorthand for centimeter
-#: src/widgets/print.rs:156
+#: src/widgets/print.rs:148
 msgid "cm"
 msgstr "см"
 
 #. Translators: Shorthand for inch
-#: src/widgets/print.rs:158
+#: src/widgets/print.rs:150
 msgid "in"
 msgstr "дюйм"
 
 #. Translators: Shorthand for pixel
-#: src/widgets/print.rs:160
+#: src/widgets/print.rs:152
 msgid "px"
 msgstr "пикс"
 
 #. Translators: {} is a placeholder for the filename
-#: src/widgets/print.rs:371
+#: src/widgets/print.rs:340
 msgid "Print “{}”"
 msgstr "Печать “{}”"
 
-#: src/widgets/print.rs:782
+#: src/widgets/print.rs:444
+msgid "Continue…"
+msgstr "Продолжить…"
+
+#: src/widgets/print.rs:445
+msgid "Print Image"
+msgstr "Печать изображения"
+
+#: src/widgets/print.rs:767
 msgid "_Scale"
 msgstr "_Масштаб"
 
-#: src/widgets/print.rs:785
+#: src/widgets/print.rs:770
 msgid "_Width"
 msgstr "_Ширина"
 
@@ -522,6 +572,7 @@ msgstr "Файл создан"
 msgid "File Modified"
 msgstr "Файл изменен"
 
+#. Translators: This is a label for GPS coordinates
 #: src/widgets/properties_view.ui:106
 msgid "Location"
 msgstr "Местоположение"
@@ -558,51 +609,51 @@ msgstr "Фокусное расстояние"
 msgid "Maker, Model"
 msgstr "Производитель, модель"
 
-#: src/window.rs:568
+#: src/window.rs:442
 msgid "Supported image formats"
 msgstr "Поддерживаемые форматы изображения"
 
-#: src/window.rs:574
+#: src/window.rs:448
 msgid "All files"
 msgstr "Все файлы"
 
-#: src/window.rs:581
+#: src/window.rs:455
 msgid "Open Image"
 msgstr "Открыть изображение"
 
-#: src/window.rs:667
+#: src/window.rs:541
 msgid "Image copied to clipboard"
 msgstr "Изображение скопировано в буфер обмена"
 
-#: src/window.rs:688
+#: src/window.rs:562
 msgid "Image moved to trash"
 msgstr "Изображение отправлено в корзину"
 
-#: src/window.rs:689
+#: src/window.rs:563
 msgid "Undo"
 msgstr "Отменить"
 
-#: src/window.rs:715
+#: src/window.rs:589
 msgid "Failed to move image to trash"
 msgstr "Не удалось отправить изображение в корзину"
 
-#: src/window.rs:741
+#: src/window.rs:615
 msgid "Permanently Delete Image?"
 msgstr "Удалить изображение безвозвратно?"
 
-#: src/window.rs:743
+#: src/window.rs:617
 msgid "After deleting the image “{}” it will be permanently lost."
 msgstr "После удаления изображения \"{}\" оно будет навсегда потеряно."
 
-#: src/window.rs:751
+#: src/window.rs:625
 msgid "Cancel"
 msgstr "Отменить"
 
-#: src/window.rs:752
+#: src/window.rs:626
 msgid "Delete"
 msgstr "Удалить"
 
-#: src/window.rs:763
+#: src/window.rs:637
 msgid "Failed to delete image"
 msgstr "Не удалось удалить изображение"
 
@@ -654,6 +705,9 @@ msgstr "Перетащите изображения сюда"
 msgid "_Open Files…"
 msgstr "_Открыть файлы…"
 
+#~ msgid "Failed to open image"
+#~ msgstr "Не удалось открыть изображение"
+
 #~ msgid "The Loupe Team"
 #~ msgstr "The Loupe Team"
 
@@ -695,9 +749,6 @@ msgstr "_Открыть файлы…"
 
 #~ msgid "Animated PNG"
 #~ msgstr "Анимированный PNG"
-
-#~ msgid "Unknown image format: {}"
-#~ msgstr "Неизвестный формат изображения: {}"
 
 #~ msgid "Could not open image"
 #~ msgstr "Не удалось открыть изображение"
