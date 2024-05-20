@@ -32,7 +32,7 @@ pub async fn dialog() -> adw::AboutDialog {
         .version(config::VERSION)
         .developer_name(gettext("The GNOME Project"))
         .website("https://gitlab.gnome.org/GNOME/loupe")
-        .issue_url("https://gitlab.gnome.org/GNOME/loupe/-/issues/new")
+        .issue_url("https://gitlab.gnome.org/GNOME/loupe/-/issues/")
         .developers([
             "Christopher Davis <christopherdavis@gnome.org>",
             "Sophie Herold <sophieherold@gnome.org>",
