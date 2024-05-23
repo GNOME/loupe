@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2024-05-11 10:03+0000\n"
-"PO-Revision-Date: 2024-05-18 18:50+0200\n"
+"POT-Creation-Date: 2024-05-18 16:51+0000\n"
+"PO-Revision-Date: 2024-05-23 18:53+0200\n"
 "Last-Translator: Quentin PAGÈS\n"
 "Language-Team: Occitan <totenoc@gmail.com>\n"
 "Language: oc\n"
@@ -18,7 +18,7 @@ msgstr ""
 "X-Generator: Poedit 3.4.3\n"
 
 #: data/org.gnome.Loupe.desktop.in.in:3
-#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:29 src/window.rs:881
+#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:30 src/window.rs:754
 msgid "Image Viewer"
 msgstr "Visionador d'imatges"
 
@@ -33,7 +33,7 @@ msgid "Show the image properties sidebar"
 msgstr "Afichar la barra laterala de proprietats de l’imatge"
 
 #. developer_name tag deprecated with Appstream 1.0
-#: data/org.gnome.Loupe.metainfo.xml.in.in:8 src/about.rs:32
+#: data/org.gnome.Loupe.metainfo.xml.in.in:8 src/about.rs:33
 msgid "The GNOME Project"
 msgstr "Lo projècte GNOME"
 
@@ -241,17 +241,32 @@ msgid "Gestures"
 msgstr "Gèstes"
 
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/about.rs:41
+#: src/about.rs:42
 msgid "translator-credits"
 msgstr "Quentin PAGÈS"
 
-#: src/about.rs:42
+#: src/about.rs:43
 msgid "Copyright © 2020–2024 Christopher Davis et al."
 msgstr "Copyright © 2020–2024 Christopher Davis et al."
 
 #: src/file_model.rs:129
 msgid "Could not list other files in directory."
 msgstr "Impossible de listar los autres fichièrs del repertòri."
+
+#. Translators: Fractional exposure time (photography) in seconds
+#: src/metadata.rs:262
+msgid "1\\u{2215}{}\\u{202F}s"
+msgstr "1\\u{2215}{}\\u{202F}s"
+
+#. Translators: Exposure time (photography) in seconds
+#: src/metadata.rs:270
+msgid "{}\\u{202F}s"
+msgstr "{}\\u{202F}s"
+
+#. Translators: Unit for focal length in millimeters
+#: src/metadata.rs:296
+msgid "{}\\u{202F}mm"
+msgstr "{}\\u{202F}mm"
 
 #. Translators: short for "north" in GPS coordinate
 #: src/metadata/gps.rs:165
@@ -273,37 +288,54 @@ msgstr "E"
 msgid "W"
 msgstr "O"
 
-#. Translators: Fractional exposure time (photography) in seconds
-#: src/metadata/mod.rs:262
-msgid "1\\u{2215}{}\\u{202F}s"
-msgstr "1\\u{2215}{}\\u{202F}s"
-
-#. Translators: Exposure time (photography) in seconds
-#: src/metadata/mod.rs:270
-msgid "{}\\u{202F}s"
-msgstr "{}\\u{202F}s"
-
-#. Translators: Unit for focal length in millimeters
-#: src/metadata/mod.rs:296
-msgid "{}\\u{202F}mm"
-msgstr "{}\\u{202F}mm"
-
 #. Translators: This is the date and time format we use in metadata output etc.
 #. The format has to follow <https://docs.gtk.org/glib/method.DateTime.format.html>
 #. The default is already translated. Don't change if you are not sure what to
 #. use.
-#: src/util/mod.rs:37
+#: src/util.rs:37
 #, c-format
 msgid "%x %X"
 msgstr "%x %X"
 
-#: src/util/mod.rs:180 src/window.rs:702
+#: src/util.rs:180 src/window.rs:575
 msgid "Failed to restore image from trash"
 msgstr "Fracàs de la restauracion de l’imatge a partir de l’escobilhièr"
 
-#: src/util/mod.rs:201
-msgid "Failed to open image"
-msgstr "Impossible de dobrir l’imatge"
+#: src/widgets/error_details.ui:25
+msgid ""
+"The image loader reported the following. Please include this information "
+"when you report an error."
+msgstr ""
+"Lo cargador d’imatge a senhal çò seguent. Mercés d’inclure aquesta "
+"informacion quand senhalatz una error."
+
+#: src/widgets/error_details.ui:53
+msgid "Copy Information"
+msgstr "Copiar las informacions"
+
+#: src/widgets/error_details.ui:58
+msgid "Report Issue…"
+msgstr "Senhalar una anomalia…"
+
+#: src/widgets/image_page.rs:199
+msgid ""
+"No image loaders available. Mabye the “glycin-loaders” package with "
+"compatibility version “{}+” is not installed."
+msgstr ""
+"Cap de cargador pas disponible. Benlèu que lo paquet « glycin-loaders » amb "
+"la version de compatibilitat « {}+ » es pas installat."
+
+#: src/widgets/image_page.rs:210
+msgid "The image format “{} ({})” is known but not installed."
+msgstr "Lo format d’imatge « {} ({}) » es conegut mas pas installat."
+
+#: src/widgets/image_page.rs:217
+msgid "Unknown image format “{} ({}).”"
+msgstr "Formats d’imatge desconegut « {} ({}) »"
+
+#: src/widgets/image_page.rs:234
+msgid "Either the image file is corrupted or it contains unsupported elements."
+msgstr "Siá l’imatge es corromput siá content d’elements pas preses en carga."
 
 #: src/widgets/image_page.ui:6 src/window.ui:16
 msgid "_Open With…"
@@ -329,11 +361,15 @@ msgstr "Definir coma _rèireplan…"
 msgid "Could not Load Image"
 msgstr "Cargament impossible de l’imatge"
 
-#: src/widgets/image_page.ui:97 src/window.ui:106
+#: src/widgets/image_page.ui:66
+msgid "More Information…"
+msgstr "Mai d'informacions…"
+
+#: src/widgets/image_page.ui:105 src/window.ui:106
 msgid "Rotate Left"
 msgstr "Pivotar cap a esquèrra"
 
-#: src/widgets/image_page.ui:107 src/window.ui:116
+#: src/widgets/image_page.ui:115 src/window.ui:116
 msgid "Rotate Right"
 msgstr "Pivotar cap a drecha"
 
@@ -367,51 +403,59 @@ msgstr "Agrandir"
 msgid "Toggle Fullscreen"
 msgstr "Alternar lo mòde ecran complèt"
 
-#: src/widgets/print.rs:116
+#: src/widgets/print.rs:108
 msgid "Top"
 msgstr "En naut"
 
-#: src/widgets/print.rs:117
+#: src/widgets/print.rs:109
 msgid "Center"
 msgstr "Centrat"
 
-#: src/widgets/print.rs:118
+#: src/widgets/print.rs:110
 msgid "Bottom"
 msgstr "En bas"
 
-#: src/widgets/print.rs:119
+#: src/widgets/print.rs:111
 msgid "Left"
 msgstr "Esquèrra"
 
-#: src/widgets/print.rs:120
+#: src/widgets/print.rs:112
 msgid "Right"
 msgstr "Drecha"
 
 #. Translators: Shorthand for centimeter
-#: src/widgets/print.rs:156
+#: src/widgets/print.rs:148
 msgid "cm"
 msgstr "cm"
 
 #. Translators: Shorthand for inch
-#: src/widgets/print.rs:158
+#: src/widgets/print.rs:150
 msgid "in"
 msgstr "in"
 
 #. Translators: Shorthand for pixel
-#: src/widgets/print.rs:160
+#: src/widgets/print.rs:152
 msgid "px"
 msgstr "px"
 
 #. Translators: {} is a placeholder for the filename
-#: src/widgets/print.rs:382
+#: src/widgets/print.rs:340
 msgid "Print “{}”"
 msgstr "Imprimir « {} »"
 
-#: src/widgets/print.rs:803
+#: src/widgets/print.rs:444
+msgid "Continue…"
+msgstr "Contunhar…"
+
+#: src/widgets/print.rs:445
+msgid "Print Image"
+msgstr "Imprimir l’imatge"
+
+#: src/widgets/print.rs:767
 msgid "_Scale"
 msgstr "_Escala"
 
-#: src/widgets/print.rs:806
+#: src/widgets/print.rs:770
 msgid "_Width"
 msgstr "_Largor"
 
@@ -564,51 +608,51 @@ msgstr "Longor focala"
 msgid "Maker, Model"
 msgstr "Fabricant, modèl"
 
-#: src/window.rs:569
+#: src/window.rs:442
 msgid "Supported image formats"
 msgstr "Format d'imatge suportats"
 
-#: src/window.rs:575
+#: src/window.rs:448
 msgid "All files"
 msgstr "Totes los fichièrs"
 
-#: src/window.rs:582
+#: src/window.rs:455
 msgid "Open Image"
 msgstr "Dobrir un imatge"
 
-#: src/window.rs:668
+#: src/window.rs:541
 msgid "Image copied to clipboard"
 msgstr "Imatge copiat al quichapapièrs"
 
-#: src/window.rs:689
+#: src/window.rs:562
 msgid "Image moved to trash"
 msgstr "Imatge desplaçat a l'escobilhièr"
 
-#: src/window.rs:690
+#: src/window.rs:563
 msgid "Undo"
 msgstr "Desfar"
 
-#: src/window.rs:716
+#: src/window.rs:589
 msgid "Failed to move image to trash"
 msgstr "Impossible de desplaçar l’imatge cap a l'escobilhièr"
 
-#: src/window.rs:742
+#: src/window.rs:615
 msgid "Permanently Delete Image?"
 msgstr "Suprimir l’imatge irreversiblament ?"
 
-#: src/window.rs:744
+#: src/window.rs:617
 msgid "After deleting the image “{}” it will be permanently lost."
 msgstr "Aprèp supression de l’imatge « {} » serà perdut per totjorn."
 
-#: src/window.rs:752
+#: src/window.rs:625
 msgid "Cancel"
 msgstr "Anullada"
 
-#: src/window.rs:753
+#: src/window.rs:626
 msgid "Delete"
 msgstr "Suprimir"
 
-#: src/window.rs:764
+#: src/window.rs:637
 msgid "Failed to delete image"
 msgstr "Impossible de suprimir l’imatge"
 
@@ -660,6 +704,9 @@ msgstr "Lisatz e depausatz los imatges aquí"
 msgid "_Open Files…"
 msgstr "_Dobrir de fichièrs…"
 
+#~ msgid "Failed to open image"
+#~ msgstr "Impossible de dobrir l’imatge"
+
 #~ msgid "The Loupe Team"
 #~ msgstr "La còla de Lópia"
 
@@ -701,9 +748,6 @@ msgstr "_Dobrir de fichièrs…"
 
 #~ msgid "Animated PNG"
 #~ msgstr "PNG animat"
-
-#~ msgid "Unknown image format: {}"
-#~ msgstr "Formats d’imatges desconegut : {}"
 
 #~ msgid "Could not open image"
 #~ msgstr "Dubertura impossibla de l’imatge"
