@@ -7,38 +7,38 @@ msgid ""
 msgstr ""
 "Project-Id-Version: loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2024-04-12 07:32+0000\n"
-"PO-Revision-Date: 2024-04-14 19:19+0530\n"
+"POT-Creation-Date: 2024-05-09 21:54+0000\n"
+"PO-Revision-Date: 2024-05-10 18:48+0530\n"
 "Last-Translator: Scrambled777 <weblate.scrambled777@simplelogin.com>\n"
-"Language-Team: Hindi\n"
+"Language-Team: Hindi <indlinux-hindi@lists.sourceforge.net>\n"
 "Language: hi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Gtranslator 46.0\n"
+"X-Generator: Gtranslator 46.1\n"
 
 #: data/org.gnome.Loupe.desktop.in.in:3
-#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:29 src/window.rs:881
+#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:30 src/window.rs:754
 msgid "Image Viewer"
 msgstr "Image Viewer"
 
 #: data/org.gnome.Loupe.desktop.in.in:11
 msgid "Picture;Graphics;Loupe;"
-msgstr "Picture;Graphics;Loupe;चित्र;ग्राफिक्स;"
+msgstr "चित्र;चित्रोपमा;Loupe;"
 
 #: data/org.gnome.Loupe.gschema.xml.in:6
 msgid "Show the image properties sidebar"
-msgstr "छवि गुण साइडबार दिखाएँ"
+msgstr "छवि गुण पार्श्वपट्टी दिखाएं"
 
 #. developer_name tag deprecated with Appstream 1.0
-#: data/org.gnome.Loupe.metainfo.xml.in.in:8 src/about.rs:32
+#: data/org.gnome.Loupe.metainfo.xml.in.in:8 src/about.rs:33
 msgid "The GNOME Project"
 msgstr "GNOME परियोजना"
 
 #: data/org.gnome.Loupe.metainfo.xml.in.in:13
 msgid "View images"
-msgstr "छवियाँ देखें"
+msgstr "छवियां देखें"
 
 #: data/org.gnome.Loupe.metainfo.xml.in.in:15
 msgid "Browse through your images and inspect their metadata with:"
@@ -46,11 +46,11 @@ msgstr "अपनी छवियों को ब्राउज़ करे�
 
 #: data/org.gnome.Loupe.metainfo.xml.in.in:17
 msgid "Fast GPU accelerated image rendering"
-msgstr "तेज़ GPU त्वरित छवि प्रतिपादन"
+msgstr "तेज GPU त्वरित छवि प्रतिपादन"
 
 #: data/org.gnome.Loupe.metainfo.xml.in.in:18
 msgid "Tiled rendering for vector graphics"
-msgstr "टाइल्स में वेक्टर ग्राफ़िक्स का प्रतिपादन"
+msgstr "वेक्टर चित्रोपमा के लिए टाइलयुक्त प्रतिपादन"
 
 #: data/org.gnome.Loupe.metainfo.xml.in.in:19
 msgid "Extendable and sandboxed image decoding"
@@ -68,7 +68,7 @@ msgstr "सामान्य शॉर्टकट"
 #: data/resources/gtk/help-overlay.ui:14
 msgctxt "shortcut window"
 msgid "Show Main Menu"
-msgstr "मुख्य मेन्यू दिखाएं"
+msgstr "मुख्य मेनू दिखाएं"
 
 #: data/resources/gtk/help-overlay.ui:20
 msgctxt "shortcut window"
@@ -78,12 +78,12 @@ msgstr "छवि या मेटाडेटा को क्लिपबो�
 #: data/resources/gtk/help-overlay.ui:26
 msgctxt "shortcut window"
 msgid "Move Image to Trash"
-msgstr "छवि को कूड़ेदान में ले जाएं"
+msgstr "छवि को रद्दी में ले जाएं"
 
 #: data/resources/gtk/help-overlay.ui:32
 msgctxt "shortcut window"
 msgid "Permanently Delete Image"
-msgstr "छवि को स्थायी रूप से हटाएँ"
+msgstr "छवि को स्थायी रूप से हटाएं"
 
 #: data/resources/gtk/help-overlay.ui:38
 msgctxt "shortcut window"
@@ -98,12 +98,12 @@ msgstr "पृष्ठभूमि के रूप में निर्ध�
 #: data/resources/gtk/help-overlay.ui:50
 msgctxt "shortcut window"
 msgid "Toggle Fullscreen"
-msgstr "फ़ुलस्क्रीन टॉगल करें"
+msgstr "पूर्णस्क्रीन टॉगल करें"
 
 #: data/resources/gtk/help-overlay.ui:56
 msgctxt "shortcut window"
 msgid "Leave Fullscreen"
-msgstr "फ़ुलस्क्रीन छोड़ें"
+msgstr "पूर्णस्क्रीन छोड़ें"
 
 #: data/resources/gtk/help-overlay.ui:62
 msgctxt "shortcut window"
@@ -133,7 +133,7 @@ msgstr "छोड़ें"
 #: data/resources/gtk/help-overlay.ui:94
 msgctxt "shortcut window"
 msgid "Navigate Images"
-msgstr "छवियाँ नेविगेट करें"
+msgstr "छवियां नेविगेट करें"
 
 #: data/resources/gtk/help-overlay.ui:98 data/resources/gtk/help-overlay.ui:112
 #: data/resources/gtk/help-overlay.ui:224
@@ -163,41 +163,41 @@ msgstr "अंतिम छवि"
 #: data/resources/gtk/help-overlay.ui:139
 msgctxt "shortcut window"
 msgid "Rotate Image"
-msgstr "छवि घुमाएँ"
+msgstr "छवि घुमाएं"
 
 #: data/resources/gtk/help-overlay.ui:142
 #: data/resources/gtk/help-overlay.ui:263
 msgctxt "shortcut window"
 msgid "Rotate Clockwise"
-msgstr "दक्षिणावर्त घुमाएँ"
+msgstr "दक्षिणावर्त घुमाएं"
 
 #: data/resources/gtk/help-overlay.ui:148
 #: data/resources/gtk/help-overlay.ui:269
 msgctxt "shortcut window"
 msgid "Rotate Counterclockwise"
-msgstr "वामावर्त घुमाएँ"
+msgstr "वामावर्त घुमाएं"
 
 #: data/resources/gtk/help-overlay.ui:156
 msgctxt "shortcut window"
 msgid "Zoom Image"
-msgstr "छवि ज़ूम करें"
+msgstr "छवि जूम करें"
 
 #: data/resources/gtk/help-overlay.ui:159
 #: data/resources/gtk/help-overlay.ui:251
 msgctxt "shortcut window"
 msgid "Zoom In"
-msgstr "ज़ूम इन"
+msgstr "जूम इन"
 
 #: data/resources/gtk/help-overlay.ui:165
 #: data/resources/gtk/help-overlay.ui:257
 msgctxt "shortcut window"
 msgid "Zoom Out"
-msgstr "ज़ूम आउट"
+msgstr "जूम आउट"
 
 #: data/resources/gtk/help-overlay.ui:171
 msgctxt "shortcut window"
 msgid "Best Fit"
-msgstr "सर्वोत्तम योग्य"
+msgstr "सर्वोत्तम अनुरूप"
 
 #: data/resources/gtk/help-overlay.ui:177
 msgctxt "shortcut window"
@@ -212,17 +212,17 @@ msgstr "200% पैमाना"
 #: data/resources/gtk/help-overlay.ui:191
 msgctxt "shortcut window"
 msgid "Pan View"
-msgstr "दृश्य पैन करें"
+msgstr "पैन दृश्य"
 
 #: data/resources/gtk/help-overlay.ui:194
 msgctxt "shortcut window"
 msgid "Pan Left"
-msgstr "बाएँ पैन करें"
+msgstr "बाएं पैन करें"
 
 #: data/resources/gtk/help-overlay.ui:200
 msgctxt "shortcut window"
 msgid "Pan Right"
-msgstr "दाएँ पैन करें"
+msgstr "दाएं पैन करें"
 
 #: data/resources/gtk/help-overlay.ui:206
 msgctxt "shortcut window"
@@ -240,17 +240,17 @@ msgid "Gestures"
 msgstr "इशारे"
 
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/about.rs:41
+#: src/about.rs:42
 msgid "translator-credits"
 msgstr "Scrambled777 <weblate.scrambled777@simplelogin.com>"
 
-#: src/about.rs:42
+#: src/about.rs:43
 msgid "Copyright © 2020–2024 Christopher Davis et al."
 msgstr "कॉपीराइट © 2020-2024 क्रिस्टोफर डेविस और अन्य।"
 
 #: src/file_model.rs:129
 msgid "Could not list other files in directory."
-msgstr "निर्देशिका में अन्य फाइलें सूचीबद्ध नहीं की जा सकीं."
+msgstr "निर्देशिका में अन्य फाइलें सूचीबद्ध नहीं की जा सकी।"
 
 #. Translators: short for "north" in GPS coordinate
 #: src/metadata/gps.rs:165
@@ -296,45 +296,81 @@ msgstr "{}\\u{202F}mm"
 msgid "%x %X"
 msgstr "%x %X"
 
-#: src/util/mod.rs:180 src/window.rs:702
+#: src/util/mod.rs:180 src/window.rs:575
 msgid "Failed to restore image from trash"
-msgstr "कूड़ेदान से छवि पुनर्स्थापित करने में विफल"
+msgstr "रद्दी से छवि पुनर्स्थापित करने में विफल"
 
-#: src/util/mod.rs:201
-msgid "Failed to open image"
-msgstr "छवि खोलने में विफल"
+#: src/widgets/error_details.ui:25
+msgid ""
+"The image loader reported the following. Please include this information "
+"when you report an error."
+msgstr ""
+"छवि लोडर ने निम्नलिखित की सूचना दी। जब आप किसी त्रुटि की रिपोर्ट करें तो कृपया यह "
+"जानकारी शामिल करें।"
+
+#: src/widgets/error_details.ui:53
+msgid "Copy Information"
+msgstr "जानकारी कॉपी करें"
+
+#: src/widgets/error_details.ui:58
+msgid "Report Issue…"
+msgstr "मामले की रिपोर्ट करें…"
+
+#: src/widgets/image_page.rs:199
+msgid ""
+"No image loaders available. Mabye the “glycin-loaders” package with "
+"compatibility version “{}+” is not installed."
+msgstr ""
+"कोई छवि लोडर उपलब्ध नहीं है। हो सकता है कि संगतता संस्करण “{}+” वाला “glycin-"
+"loaders” पैकेज स्थापित न हो।"
+
+#: src/widgets/image_page.rs:210
+msgid "The image format “{} ({})” is known but not installed."
+msgstr "छवि प्रारूप “{} ({})” ज्ञात है लेकिन स्थापित नहीं है।"
+
+#: src/widgets/image_page.rs:217
+msgid "Unknown image format “{} ({}).”"
+msgstr "अज्ञात छवि प्रारूप “{} ({})।”"
+
+#: src/widgets/image_page.rs:234
+msgid "Either the image file is corrupted or it contains unsupported elements."
+msgstr "या तो छवि फाइल दूषित है या उसमें असमर्थित तत्व हैं।"
 
 #: src/widgets/image_page.ui:6 src/window.ui:16
 msgid "_Open With…"
-msgstr "इससे खोलें… (_O)"
+msgstr "इससे खोलें (_O)…"
 
 #: src/widgets/image_page.ui:14 src/window.ui:24
 msgid "_Print…"
-msgstr "प्रिंट (_P)"
+msgstr "छापें (_P)…"
 
 #: src/widgets/image_page.ui:18
 msgid "_Copy"
-msgstr "कॉपी (_C)"
+msgstr "कॉपी करें (_C)"
 
 #: src/widgets/image_page.ui:23 src/window.ui:29
 msgid "Rotate"
-msgstr "घुमाएँ"
+msgstr "घुमाएं"
 
 #: src/widgets/image_page.ui:34 src/window.ui:40
 msgid "_Set as Background…"
-msgstr "पृष्ठभूमि के रूप में निर्धारित करें… (_S)"
+msgstr "पृष्ठभूमि के रूप में निर्धारित करें (_S)…"
 
 #: src/widgets/image_page.ui:63
 msgid "Could not Load Image"
 msgstr "छवि लोड नहीं हो सकी"
 
-#: src/widgets/image_page.ui:97 src/window.ui:106
-msgid "Rotate Left"
-msgstr "बाएं घुमाएँ"
+#: src/widgets/image_page.ui:66
+msgid "More Information…"
+msgstr "अधिक जानकारी…"
 
-#: src/widgets/image_page.ui:107 src/window.ui:116
+#: src/widgets/image_page.ui:105 src/window.ui:106
+msgid "Rotate Left"
+msgstr "बाएं घुमाएं"
+
+#: src/widgets/image_page.ui:115 src/window.ui:116
 msgid "Rotate Right"
-msgstr "दाएं घुमाएँ"
+msgstr "दाएं घुमाएं"
 
 #. Translators: This is a toast notification, informing the user that
 #. an image has been set as background.
@@ -344,7 +380,7 @@ msgstr "पृष्ठभूमि के रूप में निर्ध�
 
 #: src/widgets/image_view.rs:695
 msgid "Could not set background."
-msgstr "पृष्ठभूमि निर्धारित नहीं कर सका."
+msgstr "पृष्ठभूमि निर्धारित नहीं कर सके।"
 
 #: src/widgets/image_view.ui:27
 msgid "Previous Image"
@@ -356,15 +392,15 @@ msgstr "अगली छवि"
 
 #: src/widgets/image_view.ui:63
 msgid "Zoom Out"
-msgstr "ज़ूम आउट"
+msgstr "जूम आउट"
 
 #: src/widgets/image_view.ui:74
 msgid "Zoom In"
-msgstr "ज़ूम इन"
+msgstr "जूम इन"
 
 #: src/widgets/image_view.ui:85
 msgid "Toggle Fullscreen"
-msgstr "फ़ुलस्क्रीन टॉगल करें"
+msgstr "पूर्णस्क्रीन टॉगल करें"
 
 #: src/widgets/print.rs:116
 msgid "Top"
@@ -404,7 +440,7 @@ msgstr "px"
 #. Translators: {} is a placeholder for the filename
 #: src/widgets/print.rs:382
 msgid "Print “{}”"
-msgstr "“{}” प्रिंट करें"
+msgstr "“{}” छापें"
 
 #: src/widgets/print.rs:803
 msgid "_Scale"
@@ -421,23 +457,23 @@ msgstr "पीछे (_B)"
 
 #: src/widgets/print.ui:37
 msgid "_Print"
-msgstr "प्रिंट (_P)"
+msgstr "छापें (_P)"
 
 #: src/widgets/print.ui:56
 msgid "Layout"
-msgstr "विन्यास"
+msgstr "अभिन्यास"
 
 #: src/widgets/print.ui:59
 msgid "_Orientation"
-msgstr "अभिविन्यास (_O)"
+msgstr "उन्मुखीकरण (_O)"
 
 #: src/widgets/print.ui:72
 msgid "Portrait Page Orientation"
-msgstr "पोर्ट्रेट पृष्ठ अभिविन्यास"
+msgstr "पोर्ट्रेट पृष्ठ उन्मुखीकरण"
 
 #: src/widgets/print.ui:80
 msgid "Landscape Page Orientation"
-msgstr "लैंडस्केप पृष्ठ अभिविन्यास"
+msgstr "लैंडस्केप पृष्ठ उन्मुखीकरण"
 
 #: src/widgets/print.ui:89
 msgid "_Alignment"
@@ -445,11 +481,11 @@ msgstr "संरेखण (_A)"
 
 #: src/widgets/print.ui:108
 msgid "Margins"
-msgstr "मार्जिन"
+msgstr "हाशिए"
 
 #: src/widgets/print.ui:111
 msgid "Margin Units"
-msgstr "मार्जिन इकाइयाँ"
+msgstr "हाशिया इकाइयां"
 
 #: src/widgets/print.ui:128
 msgid "_Horizontal"
@@ -465,7 +501,7 @@ msgstr "छवि आकार"
 
 #: src/widgets/print.ui:145
 msgid "Image Size Units"
-msgstr "छवि आकार इकाइयाँ"
+msgstr "छवि आकार इकाइयां"
 
 #: src/widgets/print.ui:163
 msgid "_Fill Space"
@@ -563,53 +599,53 @@ msgstr "फोकल लंबाई"
 msgid "Maker, Model"
 msgstr "निर्माता, मॉडल"
 
-#: src/window.rs:569
+#: src/window.rs:442
 msgid "Supported image formats"
 msgstr "समर्थित छवि प्रारूप"
 
-#: src/window.rs:575
+#: src/window.rs:448
 msgid "All files"
 msgstr "सभी फाइलें"
 
-#: src/window.rs:582
+#: src/window.rs:455
 msgid "Open Image"
 msgstr "छवि खोलें"
 
-#: src/window.rs:668
+#: src/window.rs:541
 msgid "Image copied to clipboard"
 msgstr "छवि क्लिपबोर्ड पर कॉपी की गई"
 
-#: src/window.rs:689
+#: src/window.rs:562
 msgid "Image moved to trash"
-msgstr "छवि को कूड़ेदान में ले जाया गया"
+msgstr "छवि को रद्दी में ले जाया गया"
 
-#: src/window.rs:690
+#: src/window.rs:563
 msgid "Undo"
-msgstr "पूर्ववत"
+msgstr "पूर्ववत करें"
 
-#: src/window.rs:716
+#: src/window.rs:589
 msgid "Failed to move image to trash"
-msgstr "छवि को कूड़ेदान में ले जाने में विफल"
+msgstr "छवि को रद्दी में ले जाने में विफल"
 
-#: src/window.rs:742
+#: src/window.rs:615
 msgid "Permanently Delete Image?"
-msgstr "छवि को स्थायी रूप से हटाएं?"
+msgstr "छवि को स्थायी रूप से मिटाएं?"
 
-#: src/window.rs:744
+#: src/window.rs:617
 msgid "After deleting the image “{}” it will be permanently lost."
-msgstr "छवि \"{}\" को हटाने के बाद यह स्थायी रूप से खो जाएगी।"
+msgstr "छवि “{}” को मिटाने के बाद यह स्थायी रूप से खो जाएगी।"
 
-#: src/window.rs:752
+#: src/window.rs:625
 msgid "Cancel"
-msgstr "रद्द"
+msgstr "रद्द करें"
 
-#: src/window.rs:753
+#: src/window.rs:626
 msgid "Delete"
-msgstr "हटाएँ"
+msgstr "मिटाएं"
 
-#: src/window.rs:764
+#: src/window.rs:637
 msgid "Failed to delete image"
-msgstr "छवि हटाने में विफल"
+msgstr "छवि मिटाने में विफल"
 
 #: src/window.ui:6
 msgid "_New Window"
@@ -617,7 +653,7 @@ msgstr "नई विंडो (_N)"
 
 #: src/window.ui:10
 msgid "_Open…"
-msgstr "खोलें… (_O)"
+msgstr "खोलें (_O)…"
 
 #: src/window.ui:46
 msgid "_Help"
@@ -637,11 +673,11 @@ msgstr "क्लिपबोर्ड पर कॉपी करें"
 
 #: src/window.ui:92
 msgid "Move to Trash"
-msgstr "कूड़ेदान में ले जाएँ"
+msgstr "रद्दी में ले जाएं"
 
 #: src/window.ui:98
 msgid "Main Menu"
-msgstr "मुख्य मेन्यू"
+msgstr "मुख्य मेनू"
 
 #: src/window.ui:130
 msgid "Image Properties"
@@ -649,7 +685,7 @@ msgstr "छवि गुण"
 
 #: src/window.ui:174
 msgid "View Images"
-msgstr "छवियाँ देखें"
+msgstr "छवियां देखें"
 
 #: src/window.ui:175
 msgid "Drag and drop images here"
@@ -657,4 +693,4 @@ msgstr "छवियों को यहां खींचें और छो�
 
 #: src/window.ui:179
 msgid "_Open Files…"
-msgstr "फाइल खोलें… (_O)"
+msgstr "फाइल खोलें (_O)…"
