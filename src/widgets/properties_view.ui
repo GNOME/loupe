@@ -18,6 +18,7 @@
                   <object class="AdwActionRow" id="folder">
                     <property name="title" translatable="yes">Folder</property>
                     <property name="activatable-widget">folder_button</property>
+                    <property name="use-markup">False</property>
                     <child type="suffix">
                       <object class="GtkButton" id="folder_button">
                         <property name="valign">center</property>
