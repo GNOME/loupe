@@ -40,6 +40,7 @@
                     <property name="title" translatable="yes">URI</property>
                     <property name="subtitle-selectable">True</property>
                     <property name="subtitle-lines">1</property>
+                    <property name="use-markup">False</property>
                     <style>
                       <class name="property" />
                     </style>
@@ -53,6 +54,7 @@
                   <object class="AdwActionRow" id="image_size">
                     <property name="title" translatable="yes">Image Size</property>
                     <property name="subtitle-selectable">True</property>
+                    <property name="use-markup">False</property>
                     <style>
                       <class name="property" />
                     </style>
@@ -62,6 +64,7 @@
                   <object class="AdwActionRow" id="image_format">
                     <property name="title" translatable="yes">Image Format</property>
                     <property name="subtitle-selectable">True</property>
+                    <property name="use-markup">False</property>
                     <style>
                       <class name="property" />
                     </style>
@@ -71,6 +74,7 @@
                   <object class="AdwActionRow" id="file_size">
                     <property name="title" translatable="yes">File Size</property>
                     <property name="subtitle-selectable">True</property>
+                    <property name="use-markup">False</property>
                     <style>
                       <class name="property" />
                     </style>
@@ -84,6 +88,7 @@
                   <object class="AdwActionRow" id="file_created">
                     <property name="title" translatable="yes">File Created</property>
                     <property name="subtitle-selectable">True</property>
+                    <property name="use-markup">False</property>
                     <style>
                       <class name="property" />
                     </style>
@@ -93,6 +98,7 @@
                   <object class="AdwActionRow" id="file_modified">
                     <property name="title" translatable="yes">File Modified</property>
                     <property name="subtitle-selectable">True</property>
+                    <property name="use-markup">False</property>
                     <style>
                       <class name="property" />
                     </style>
@@ -106,6 +112,7 @@
                   <object class="AdwActionRow" id="location">
                     <property name="title" translatable="yes" comments="Translators: This is a label for GPS coordinates">Location</property>
                     <property name="subtitle-selectable">True</property>
+                    <property name="use-markup">False</property>
                     <style>
                       <class name="numeric" />
                     </style>
@@ -140,6 +147,7 @@
                   <object class="AdwActionRow" id="originally_created">
                     <property name="title" translatable="yes">Originally Created</property>
                     <property name="subtitle-selectable">True</property>
+                    <property name="use-markup">False</property>
                     <style>
                       <class name="property" />
                     </style>
@@ -149,6 +157,7 @@
                   <object class="AdwActionRow" id="aperture">
                     <property name="title" translatable="yes">Aperture</property>
                     <property name="subtitle-selectable">True</property>
+                    <property name="use-markup">False</property>
                     <style>
                       <class name="property" />
                     </style>
@@ -158,6 +167,7 @@
                   <object class="AdwActionRow" id="exposure">
                     <property name="title" translatable="yes">Exposure</property>
                     <property name="subtitle-selectable">True</property>
+                    <property name="use-markup">False</property>
                     <style>
                       <class name="property" />
                     </style>
@@ -167,6 +177,7 @@
                   <object class="AdwActionRow" id="iso">
                     <property name="title" translatable="yes">ISO</property>
                     <property name="subtitle-selectable">True</property>
+                    <property name="use-markup">False</property>
                     <style>
                       <class name="property" />
                     </style>
@@ -176,6 +187,7 @@
                   <object class="AdwActionRow" id="focal_length">
                     <property name="title" translatable="yes">Focal Length</property>
                     <property name="subtitle-selectable">True</property>
+                    <property name="use-markup">False</property>
                     <style>
                       <class name="property" />
                     </style>
@@ -185,6 +197,7 @@
                   <object class="AdwActionRow" id="maker_model">
                     <property name="title" translatable="yes">Maker, Model</property>
                     <property name="subtitle-selectable">True</property>
+                    <property name="use-markup">False</property>
                     <style>
                       <class name="property" />
                     </style>
