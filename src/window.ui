@@ -64,7 +64,13 @@
     <child>
       <object class="AdwBreakpoint">
         <condition>max-width: 590sp</condition>
-        <setter object="properties_flap" property="orientation">vertical</setter>
+        <setter object="multi_layout_view" property="layout-name">sheet</setter>
+      </object>
+    </child>
+    <child>
+      <object class="AdwBreakpoint">
+        <condition>max-width: 590sp and max-height: 550sp</condition>
+        <setter object="multi_layout_view" property="layout-name">short</setter>
       </object>
     </child>
     <property name="content">
@@ -140,13 +146,73 @@
         <property name="content">
           <object class="AdwToastOverlay" id="toast_overlay">
             <property name="child">
-              <object class="AdwFlap" id="properties_flap">
-                <property name="flap-position">end</property>
-                <property name="fold-policy">never</property>
-                <property name="swipe-to-open">false</property>
-                <property name="locked">True</property>
-                <property name="reveal-flap" bind-source="properties_button" bind-property="active" bind-flags="bidirectional|sync-create" />
-                <property name="content">
+              <object class="AdwMultiLayoutView" id="multi_layout_view">
+                <child>
+                  <object class="AdwLayout">
+                    <property name="name">sidebar</property>
+                    <property name="content">
+                      <object class="AdwOverlaySplitView" id="properties_split_view">
+                        <property name="sidebar-position">end</property>
+                        <property name="min-sidebar-width">255</property>
+                        <property name="show-sidebar" bind-source="properties_button" bind-property="active" bind-flags="bidirectional|sync-create" />
+                        <property name="content">
+                          <object class="AdwLayoutSlot">
+                            <property name="id">content</property>
+                          </object>
+                        </property>
+                        <property name="sidebar">
+                          <object class="AdwLayoutSlot">
+                            <property name="id">properties</property>
+                          </object>
+                        </property>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+                <child>
+                  <object class="AdwLayout">
+                    <property name="name">sheet</property>
+                    <property name="content">
+                      <object class="AdwBottomSheet" id="properties_bottom_sheet">
+                        <property name="modal">False</property>
+                        <property name="open" bind-source="properties_button" bind-property="active" bind-flags="bidirectional|sync-create" />
+                        <property name="child">
+                          <object class="AdwLayoutSlot">
+                            <property name="id">content</property>
+                            <property name="margin-bottom" bind-source="properties_bottom_sheet" bind-property="sheet-height"/>
+                          </object>
+                        </property>
+                        <property name="sheet">
+                          <object class="AdwLayoutSlot">
+                            <property name="id">properties</property>
+                          </object>
+                        </property>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+                <child>
+                  <object class="AdwLayout">
+                    <property name="name">short</property>
+                    <property name="content">
+                      <object class="AdwBottomSheet">
+                        <property name="modal">True</property>
+                        <property name="open" bind-source="properties_button" bind-property="active" bind-flags="bidirectional|sync-create" />
+                        <property name="child">
+                          <object class="AdwLayoutSlot">
+                            <property name="id">content</property>
+                          </object>
+                        </property>
+                        <property name="sheet">
+                          <object class="AdwLayoutSlot">
+                            <property name="id">properties</property>
+                          </object>
+                        </property>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+                <child type="content">
                   <object class="LpDragOverlay" id="drag_overlay">
                     <property name="drop_target">drop_target</property>
                     <property name="overlayed">
@@ -160,7 +226,6 @@
                     <property name="child">
                       <object class="GtkStack" id="stack">
                         <property name="visible-child">status_page</property>
-                        <property name="vexpand">True</property>
                         <style>
                           <class name="drop-widget" />
                         </style>
@@ -204,15 +269,10 @@
                       </object>
                     </property>
                   </object>
-                </property>
-                <property name="separator">
-                  <object class="GtkSeparator" />
-                </property>
-                <property name="flap">
-                  <object class="LpPropertiesView" id="properties_view">
-                    <property name="vexpand">true</property>
-                  </object>
-                </property>
+                </child>
+                <child type="properties">
+                  <object class="LpPropertiesView" id="properties_view"/>
+                </child>
               </object>
             </property>
           </object>
