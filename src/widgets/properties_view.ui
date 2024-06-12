@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
   <template class="LpPropertiesView" parent="AdwBin">
-    <property name="width-request">255</property>
     <property name="child">
       <object class="GtkScrolledWindow">
+        <property name="propagate-natural-height">True</property>
+        <property name="max-content-height">316</property>
         <property name="child">
           <object class="GtkBox">
             <property name="orientation">vertical</property>
