@@ -58,3 +58,7 @@ dialog.error-details textview {
   background: none;
   color: inherit;
 }
+
+.mobile-properties {
+  box-shadow: 0 -1px var(--headerbar-darker-shade-color);
+}

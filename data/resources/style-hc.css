@@ -1,3 +1,7 @@
 row.property label.title {
   opacity: 0.9;
 }
+
+.properties-border {
+  color: var(--headerbar-border-color);
+}
