@@ -609,9 +609,7 @@ impl LpWindow {
     ///
     /// Fallback for when trash not available or explicit call with shortcut
     async fn delete_future(&self, path: &Path) {
-        let dialog = adw::MessageDialog::builder()
-            .modal(true)
-            .transient_for(self)
+        let dialog = adw::AlertDialog::builder()
             .heading(gettext("Permanently Delete Image?"))
             .body(gettext_f(
                 "After deleting the image “{}” it will be permanently lost.",
@@ -627,7 +625,7 @@ impl LpWindow {
         ]);
         dialog.set_response_appearance("delete", adw::ResponseAppearance::Destructive);
 
-        if "delete" == dialog.choose_future().await {
+        if "delete" == dialog.choose_future(self).await {
             let file = gio::File::for_path(path);
             let result = file.delete_future(glib::Priority::default()).await;
 
