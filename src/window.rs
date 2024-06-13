@@ -34,7 +34,7 @@ use std::path::{Path, PathBuf};
 use actions::*;
 use adw::prelude::*;
 use adw::subclass::prelude::*;
-use glib::clone;
+use glib::{clone, Properties};
 use gtk::{CompositeTemplate, Widget};
 
 use crate::application::LpApplication;
@@ -42,7 +42,7 @@ use crate::config;
 use crate::deps::*;
 use crate::util::gettext::*;
 use crate::util::Direction;
-use crate::widgets::{LpDragOverlay, LpImage, LpImageView, LpPropertiesView};
+use crate::widgets::{LpDragOverlay, LpFullscreenWidget, LpImage, LpImageView, LpPropertiesView};
 
 /// Show window after X milliseconds even if image dimensions are not known yet
 const SHOW_WINDOW_AFTER: u64 = 2000;
@@ -73,14 +73,15 @@ mod imp {
     // If some member fields did not implement default,
     // we'd need to have a `new()` function in the
     // `impl ObjectSubclass for $TYPE` section.
-    #[derive(Default, Debug, CompositeTemplate)]
+    #[derive(Default, Debug, Properties, CompositeTemplate)]
+    #[properties(wrapper_type = super::LpWindow)]
     #[template(file = "window.ui")]
     pub struct LpWindow {
         // Template children are used with the
         // TemplateChild<T> wrapper, where T is the
         // object type of the template child.
         #[template_child]
-        pub(super) toolbar_view: TemplateChild<adw::ToolbarView>,
+        pub(super) fullscreen_widget: TemplateChild<LpFullscreenWidget>,
         #[template_child]
         pub(super) headerbar: TemplateChild<adw::HeaderBar>,
         #[template_child]
@@ -109,6 +110,11 @@ mod imp {
         pub(super) forward_click_gesture: TemplateChild<gtk::GestureClick>,
         #[template_child]
         pub(super) backward_click_gesture: TemplateChild<gtk::GestureClick>,
+
+        #[property(get, set)]
+        is_empty: Cell<bool>,
+        #[property(get, set)]
+        headerbar_opacity: Cell<f64>,
 
         /// Motion controller for complete window
         pub(super) motion_controller: gtk::EventControllerMotion,
@@ -167,6 +173,7 @@ mod imp {
         }
     }
 
+    #[glib::derived_properties]
     impl ObjectImpl for LpWindow {
         fn constructed(&self) {
             self.parent_constructed();
@@ -232,12 +239,6 @@ mod imp {
             obj.connect_map(|win| {
                 win.resize_default();
             });
-
-            self.properties_button.connect_active_notify(glib::clone!(
-                #[weak]
-                obj,
-                move |_| obj.update_headerbar_style()
-            ));
 
             let gesture_click = gtk::GestureClick::new();
             gesture_click.connect_pressed(glib::clone!(
@@ -339,11 +340,11 @@ mod imp {
                 ),
             );
 
-            self.toolbar_view.connect_top_bar_style_notify(glib::clone!(
-                #[weak]
-                obj,
-                move |_| obj.on_top_bar_style_notify()
-            ));
+            self.image_view
+                .controls_box_start()
+                .bind_property("opacity", &*self.obj(), "headerbar-opacity")
+                .sync_create()
+                .build();
 
             // action win.previous status
             self.image_view
@@ -760,7 +761,7 @@ impl LpWindow {
         let current_page = imp.image_view.current_page();
 
         // HeaderBar style
-        self.update_headerbar_style();
+        self.set_is_empty(current_page.is_none());
 
         // Window title
         self.update_title();
@@ -896,8 +897,6 @@ impl LpWindow {
             .image_view
             .on_fullscreen_changed(self.is_fullscreen());
 
-        self.update_headerbar_style();
-
         if !self.is_fullscreen() {
             self.set_cursor(None);
             self.show_controls();
@@ -906,39 +905,11 @@ impl LpWindow {
     }
 
     fn is_headerbar_flat(&self) -> bool {
-        matches!(
-            self.imp().toolbar_view.top_bar_style(),
-            adw::ToolbarStyle::Flat
-        )
-    }
-
-    fn on_top_bar_style_notify(&self) {
-        if self.is_headerbar_flat() {
-            // Bring headerbar opacity in sync with controls
-            self.headerbar().set_opacity(self.controls_opacity());
-        } else {
-            self.headerbar().set_opacity(1.);
-        }
+        self.imp().fullscreen_widget.is_headerbar_flat()
     }
 
     fn is_content_extended_to_top(&self) -> bool {
-        self.is_fullscreen() && !self.imp().properties_button.is_active()
-    }
-
-    fn update_headerbar_style(&self) {
-        let imp = self.imp();
-
-        let extend = self.is_content_extended_to_top();
-        imp.toolbar_view.set_extend_content_to_top_edge(extend);
-
-        // Flat headerbar for empty state and fullscreen
-        let toolbar_style = if imp.image_view.current_image().is_none() || extend {
-            adw::ToolbarStyle::Flat
-        } else {
-            // Use the border variant of raised to avoid shadows over images
-            adw::ToolbarStyle::RaisedBorder
-        };
-        imp.toolbar_view.set_top_bar_style(toolbar_style);
+        self.imp().fullscreen_widget.is_content_extended_to_top()
     }
 
     fn update_accel_status(&self) {

@@ -22,6 +22,8 @@ src/widgets.rs
 src/widgets/drag_overlay.rs
 src/widgets/error_details.rs
 src/widgets/error_details.ui
+src/widgets/fullscreen_widget.rs
+src/widgets/fullscreen_widget.ui
 src/widgets/image.rs
 src/widgets/image/background_color.rs
 src/widgets/image/drag.rs

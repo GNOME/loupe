@@ -19,6 +19,7 @@
 
 mod drag_overlay;
 mod error_details;
+mod fullscreen_widget;
 mod image;
 mod image_page;
 mod image_view;
@@ -30,6 +31,7 @@ mod sliding_view;
 
 pub use drag_overlay::LpDragOverlay;
 pub use error_details::LpErrorDetails;
+pub use fullscreen_widget::LpFullscreenWidget;
 pub use image::LpImage;
 pub use image_page::LpImagePage;
 pub use image_view::LpImageView;

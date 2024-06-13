@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <template class="LpFullscreenWidget" parent="AdwBin">
+    <binding name="fullscreened">
+      <lookup name="fullscreened" type="GtkWindow">
+        <lookup name="root">LpFullscreenWidget</lookup>
+      </lookup>
+    </binding>
+    <binding name="is-empty">
+      <lookup name="is-empty" type="LpWindow">
+        <lookup name="root">LpFullscreenWidget</lookup>
+      </lookup>
+    </binding>
+    <binding name="headerbar-opacity">
+      <lookup name="headerbar-opacity" type="LpWindow">
+        <lookup name="root">LpFullscreenWidget</lookup>
+      </lookup>
+    </binding>
+    <property name="child">
+      <object class="AdwToolbarView" id="toolbar_view">
+        <child type="top">
+          <object class="LpShyBin" id="header_container">
+            <property name="child" bind-source="LpFullscreenWidget" bind-property="headerbar"/>
+          </object>
+        </child>
+        <property name="content" bind-source="LpFullscreenWidget" bind-property="content"/>
+      </object>
+    </property>
+  </template>
+</interface>
