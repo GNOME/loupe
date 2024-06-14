@@ -88,7 +88,7 @@ impl LpErrorDetails {
                 );
             }));
 
-        obj.present(root);
+        obj.present(Some(root));
         obj
     }
 }

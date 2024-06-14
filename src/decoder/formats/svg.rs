@@ -81,7 +81,7 @@ impl Svg {
 
             let mut metadata: Metadata = Metadata::default();
             metadata.set_image_info(image.info().details.clone());
-            metadata.set_mime_type(image.mime_type());
+            metadata.set_mime_type(image.mime_type().to_string());
             updater.send(DecoderUpdate::Metadata(Box::new(metadata)));
 
             tiles.set_original_dimensions((image.info().width, image.info().height));
@@ -145,7 +145,7 @@ impl Svg {
                                 tile_instructions.area.y() as u32,
                             );
 
-                            tiles.push_tile(tiling, position, frame.texture);
+                            tiles.push_tile(tiling, position, frame.texture());
                         }
                     }
                 }
@@ -188,6 +188,6 @@ impl Svg {
         let frame_request = glycin::FrameRequest::new().scale(width as u32, height as u32);
         let frame = image.specific_frame(frame_request).await?;
 
-        Ok(frame.texture)
+        Ok(frame.texture())
     }
 }

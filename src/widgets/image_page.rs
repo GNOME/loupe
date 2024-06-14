@@ -193,7 +193,7 @@ impl LpImagePage {
         let image = self.image();
 
         if image.is_unsupported() {
-            let message = if glycin::supported_mime_types().await.is_empty() {
+            let message = if glycin::supported_loader_mime_types().await.is_empty() {
                 // Translators: {} is replace with a version number
                 gettext_f(
                     "No image loaders available. Maybe the “glycin-loaders” package with compatibility version “{}+” is not installed.",

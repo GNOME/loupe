@@ -408,7 +408,7 @@ impl Action {
 
                 Action::ToggleFullscreen => {
                     klass.install_action(&action, None, move |win, _, _| {
-                        win.toggle_fullscreen(!win.is_fullscreened());
+                        win.toggle_fullscreen(!win.is_fullscreen());
                     });
                     klass.add_binding_action(gdk::Key::F11, gdk::ModifierType::empty(), &action);
                 }

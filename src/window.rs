@@ -440,8 +440,8 @@ impl LpWindow {
 
         let filter_supported_formats = gtk::FileFilter::new();
         filter_supported_formats.set_name(Some(&gettext("Supported image formats")));
-        for mime_type in glycin::supported_mime_types().await {
-            filter_supported_formats.add_mime_type(&mime_type);
+        for mime_type in glycin::supported_loader_mime_types().await {
+            filter_supported_formats.add_mime_type(mime_type.as_str());
         }
 
         let filter_all_files = gtk::FileFilter::new();
@@ -519,7 +519,7 @@ impl LpWindow {
 
     /// Returns true if some text in metadata is currently selected
     fn has_metadata_selected(&self) -> bool {
-        if let Some(focus_widget) = self.focus_widget() {
+        if let Some(focus_widget) = self.focus() {
             if focus_widget.is_ancestor(&*self.imp().properties_view) {
                 if let Ok(label) = focus_widget.downcast::<gtk::Label>() {
                     return label.selection_bounds().is_some();
@@ -817,11 +817,11 @@ impl LpWindow {
     fn on_fullscreen_changed(&self) {
         self.imp()
             .image_view
-            .on_fullscreen_changed(self.is_fullscreened());
+            .on_fullscreen_changed(self.is_fullscreen());
 
         self.update_headerbar_style();
 
-        if !self.is_fullscreened() {
+        if !self.is_fullscreen() {
             self.set_cursor(None);
             self.show_controls();
         }
@@ -845,7 +845,7 @@ impl LpWindow {
     }
 
     fn is_content_extended_to_top(&self) -> bool {
-        self.is_fullscreened() && !self.imp().properties_button.is_active()
+        self.is_fullscreen() && !self.imp().properties_button.is_active()
     }
 
     fn update_headerbar_style(&self) {
@@ -884,6 +884,6 @@ impl LpWindow {
 
     async fn show_about(&self) {
         let about = crate::about::dialog().await;
-        about.present(self);
+        about.present(Some(self));
     }
 }

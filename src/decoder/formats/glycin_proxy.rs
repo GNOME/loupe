@@ -61,7 +61,7 @@ impl Glycin {
 
             let mut metadata: Metadata = Metadata::default();
             metadata.set_image_info(image.info().details.clone());
-            metadata.set_mime_type(image.mime_type());
+            metadata.set_mime_type(image.mime_type().to_string());
             updater.send(DecoderUpdate::Metadata(Box::new(metadata)));
 
             let dimensions = (image.info().width, image.info().height);
@@ -70,14 +70,11 @@ impl Glycin {
             let frame = image.next_frame().await?;
 
             let mut metadata: Metadata = Metadata::default();
-            metadata.set_frame_info(frame.details);
+            metadata.set_frame_info(frame.details().clone());
             updater.send(DecoderUpdate::Metadata(Box::new(metadata)));
-            tiles.set_original_dimensions((
-                frame.texture.width() as u32,
-                frame.texture.height() as u32,
-            ));
+            tiles.set_original_dimensions((frame.width() as u32, frame.height() as u32));
 
-            if let Some(delay) = frame.delay {
+            if let Some(delay) = frame.delay() {
                 updater.send(DecoderUpdate::Animated);
 
                 let position = (0, 0);
@@ -86,7 +83,7 @@ impl Glycin {
                     position,
                     zoom_level: tiling::zoom_to_level(1.),
                     bleed: 0,
-                    texture: frame.texture,
+                    texture: frame.texture(),
                 };
 
                 tiles.push_frame(tile, dimensions, delay);
@@ -103,10 +100,10 @@ impl Glycin {
                                 position,
                                 zoom_level: tiling::zoom_to_level(1.),
                                 bleed: 0,
-                                texture: frame.texture,
+                                texture: frame.texture(),
                             };
 
-                            tiles.push_frame(tile, dimensions, frame.delay.unwrap_or(delay));
+                            tiles.push_frame(tile, dimensions, frame.delay().unwrap_or(delay));
 
                             if tiles.n_frames() >= FRAME_BUFFER {
                                 break;
@@ -122,7 +119,7 @@ impl Glycin {
                     position: (0, 0),
                     zoom_level: tiling::zoom_to_level(1.),
                     bleed: 0,
-                    texture: frame.texture,
+                    texture: frame.texture(),
                 };
 
                 tiles.push(tile);

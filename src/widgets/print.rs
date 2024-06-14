@@ -446,9 +446,9 @@ impl LpPrint {
             .build();
 
         let print_settings = if let Some(print_setup) = print_setup {
-            print_dialog.set_page_setup(&print_setup.page_setup().unwrap());
+            print_dialog.set_page_setup(&print_setup.page_setup());
 
-            print_setup.print_settings().unwrap()
+            print_setup.print_settings()
         } else {
             gtk::PrintSettings::new()
         };
@@ -465,7 +465,7 @@ impl LpPrint {
                     log::warn!("Failed to print: {err}");
                     return;
                 }
-                Ok(print_setup) => print_setup.unwrap(),
+                Ok(print_setup) => print_setup,
             };
 
             Self::new(image, parent, print_dialog, print_setup);
@@ -513,7 +513,7 @@ impl LpPrint {
     }
 
     pub fn print_settings(&self) -> gtk::PrintSettings {
-        self.print_setup().print_settings().unwrap()
+        self.print_setup().print_settings()
     }
 
     pub fn file(&self) -> gio::File {
@@ -836,7 +836,7 @@ impl LpPrint {
     }
 
     pub fn page_setup(&self) -> gtk::PageSetup {
-        self.print_setup().page_setup().unwrap()
+        self.print_setup().page_setup()
     }
 
     /// Go back to print dialog from image layout
@@ -862,7 +862,7 @@ impl LpPrint {
                     log::warn!("Print error: {err}");
                     return;
                 }
-                Ok(output_stream) => obj.draw_page(output_stream.unwrap()).await,
+                Ok(output_stream) => obj.draw_page(output_stream).await,
             };
 
             if let Err(err) = draw_result {
