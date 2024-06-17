@@ -52,9 +52,13 @@ impl imp::LpImage {
             let monitor =
                 file.monitor_file(gio::FileMonitorFlags::WATCH_MOVES, gio::Cancellable::NONE);
             if let Ok(m) = &monitor {
-                m.connect_changed(glib::clone!(@weak obj => move |_, file_a, file_b, event| {
-                    obj.imp().file_changed(event, file_a, file_b);
-                }));
+                m.connect_changed(glib::clone!(
+                    #[weak]
+                    obj,
+                    move |_, file_a, file_b, event| {
+                        obj.imp().file_changed(event, file_a, file_b);
+                    }
+                ));
             }
 
             self.file_monitor.replace(monitor.ok());
@@ -90,15 +94,19 @@ impl imp::LpImage {
                     new_tiles
                 });
                 if self.background_color.borrow().is_none() {
-                    glib::spawn_future_local(glib::clone!(@weak obj => async move {
-                        let imp = obj.imp();
+                    glib::spawn_future_local(glib::clone!(
+                        #[weak]
+                        obj,
+                        async move {
+                            let imp = obj.imp();
 
-                        let color = imp.background_color_guess().await;
-                        imp.set_background_color(color);
-                        if obj.is_mapped() {
-                            obj.queue_draw();
+                            let color = imp.background_color_guess().await;
+                            imp.set_background_color(color);
+                            if obj.is_mapped() {
+                                obj.queue_draw();
+                            }
                         }
-                    }));
+                    ));
                 }
             }
             DecoderUpdate::Error(err) => {
@@ -109,8 +117,13 @@ impl imp::LpImage {
                     // Just load the first frame
                     self.frame_buffer.next_frame();
                 } else {
-                    let callback_id = obj
-                        .add_tick_callback(glib::clone!(@weak self as obj => @default-return glib::ControlFlow::Break, move |_, clock| obj.tick_callback(clock)));
+                    let callback_id = obj.add_tick_callback(glib::clone!(
+                        #[weak(rename_to = obj)]
+                        self,
+                        #[upgrade_or_else]
+                        || glib::ControlFlow::Break,
+                        move |_, clock| obj.tick_callback(clock)
+                    ));
                     self.tick_callback.replace(Some(callback_id));
                 }
             }

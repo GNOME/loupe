@@ -264,11 +264,13 @@ impl imp::LpImage {
             let animation = self.zoom_animation();
 
             if force_cursor_center {
-                animation.set_target(&adw::CallbackAnimationTarget::new(
-                    glib::clone!(@weak obj => move |zoom| {
+                animation.set_target(&adw::CallbackAnimationTarget::new(glib::clone!(
+                    #[weak]
+                    obj,
+                    move |zoom| {
                         obj.imp().set_zoom_aiming(zoom, None);
-                    }),
-                ));
+                    }
+                )));
             } else {
                 // Set new point in image that should remain under the cursor while zooming if
                 // there isn't one already
@@ -304,11 +306,15 @@ impl imp::LpImage {
                 .target(&adw::CallbackAnimationTarget::new(|_| {}))
                 .build();
 
-            animation.connect_done(glib::clone!(@weak obj => move |_| {
-                let imp = obj.imp();
-                imp.zoom_cursor_target.set(None);
-                imp.set_zoom_target(obj.imp().zoom_target.get());
-            }));
+            animation.connect_done(glib::clone!(
+                #[weak]
+                obj,
+                move |_| {
+                    let imp = obj.imp();
+                    imp.zoom_cursor_target.set(None);
+                    imp.set_zoom_target(obj.imp().zoom_target.get());
+                }
+            ));
 
             animation
         })

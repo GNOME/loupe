@@ -289,31 +289,47 @@ mod imp {
 
             surface_signals.connect_notify_local(
                 Some("scale"),
-                glib::clone!(@weak obj => move |_, _| {
-                    log::debug!("Scale changed signal");
-                    obj.queue_resize();
-                }),
+                glib::clone!(
+                    #[weak]
+                    obj,
+                    move |_, _| {
+                        log::debug!("Scale changed signal");
+                        obj.queue_resize();
+                    }
+                ),
             );
 
-            obj.connect_realize(glib::clone!(@weak surface_signals => move |obj| {
-                surface_signals.set_target(obj.native().and_then(|x| x.surface()).as_ref());
-            }));
+            obj.connect_realize(glib::clone!(
+                #[weak]
+                surface_signals,
+                move |obj| {
+                    surface_signals.set_target(obj.native().and_then(|x| x.surface()).as_ref());
+                }
+            ));
 
-            obj.connect_unrealize(glib::clone!(@weak surface_signals => move |_| {
-                surface_signals.set_target(gdk::Surface::NONE);
-            }));
+            obj.connect_unrealize(glib::clone!(
+                #[weak]
+                surface_signals,
+                move |_| {
+                    surface_signals.set_target(gdk::Surface::NONE);
+                }
+            ));
 
-            adw::StyleManager::default().connect_dark_notify(glib::clone!(@weak obj => move |_| {
-                glib::spawn_future_local(async move {
-                    let imp = obj.imp();
+            adw::StyleManager::default().connect_dark_notify(glib::clone!(
+                #[weak]
+                obj,
+                move |_| {
+                    glib::spawn_future_local(async move {
+                        let imp = obj.imp();
 
-                    let color = imp.background_color_guess().await;
-                    imp.set_background_color(color);
-                    if obj.is_mapped() {
-                        obj.queue_draw();
-                    }
-                });
-            }));
+                        let color = imp.background_color_guess().await;
+                        imp.set_background_color(color);
+                        if obj.is_mapped() {
+                            obj.queue_draw();
+                        }
+                    });
+                }
+            ));
         }
 
         fn dispose(&self) {

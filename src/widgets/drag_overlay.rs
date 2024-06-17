@@ -98,12 +98,14 @@ mod imp {
         }
 
         pub fn set_drop_target(&self, drop_target: gtk::DropTarget) {
-            drop_target.connect_current_drop_notify(
-                glib::clone!(@weak self.revealer as revealer => move |target| {
+            drop_target.connect_current_drop_notify(glib::clone!(
+                #[weak(rename_to = revealer)]
+                self.revealer,
+                move |target| {
                     let reveal = target.current_drop().is_some();
                     revealer.set_reveal_child(reveal);
-                }),
-            );
+                }
+            ));
 
             self.drop_target.set(drop_target).unwrap();
 

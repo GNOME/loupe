@@ -99,11 +99,13 @@ impl LpFileModel {
             directory.monitor_directory(gio::FileMonitorFlags::WATCH_MOVES, gio::Cancellable::NONE);
         match monitor {
             Ok(monitor) => {
-                monitor.connect_changed(
-                    glib::clone!(@weak self as obj => move |_monitor, file_a, file_b, event| {
+                monitor.connect_changed(glib::clone!(
+                    #[weak(rename_to = obj)]
+                    self,
+                    move |_monitor, file_a, file_b, event| {
                         obj.file_monitor_cb(event, file_a, file_b);
-                    }),
-                );
+                    }
+                ));
                 self.imp().monitor.set(monitor).unwrap();
             }
             Err(err) => {

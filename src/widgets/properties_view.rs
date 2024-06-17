@@ -116,13 +116,26 @@ mod imp {
 
             image_signals.connect_notify_local(
                 Some("image-size-available"),
-                glib::clone!(@weak obj => move |_, _| obj.imp().update()),
+                glib::clone!(
+                    #[weak]
+                    obj,
+                    move |_, _| obj.imp().update()
+                ),
             );
 
             image_signals.connect_local(
                 "metadata-changed",
                 false,
-                glib::clone!(@weak obj => @default-return None, move |_| { obj.imp().update(); None }),
+                glib::clone!(
+                    #[weak]
+                    obj,
+                    #[upgrade_or_else]
+                    || None,
+                    move |_| {
+                        obj.imp().update();
+                        None
+                    }
+                ),
             );
 
             self.update();

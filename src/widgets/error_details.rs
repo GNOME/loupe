@@ -70,23 +70,29 @@ impl LpErrorDetails {
         let imp = obj.imp();
         imp.message.buffer().set_text(text);
 
-        imp.copy
-            .connect_clicked(glib::clone!(@weak obj => move |_| {
+        imp.copy.connect_clicked(glib::clone!(
+            #[weak]
+            obj,
+            move |_| {
                 let buffer = obj.imp().message.buffer();
                 let (start, end) = buffer.bounds();
                 obj.display()
                     .clipboard()
                     .set_text(buffer.text(&start, &end, true).as_str())
-            }));
+            }
+        ));
 
-        imp.report
-            .connect_clicked(glib::clone!(@weak obj => move |_| {
+        imp.report.connect_clicked(glib::clone!(
+            #[weak]
+            obj,
+            move |_| {
                 gtk::UriLauncher::new("https://gitlab.gnome.org/sophie-h/glycin/-/issues").launch(
                     obj.root().and_downcast_ref::<gtk::Window>(),
                     gio::Cancellable::NONE,
                     |_| {},
                 );
-            }));
+            }
+        ));
 
         obj.present(Some(root));
         obj

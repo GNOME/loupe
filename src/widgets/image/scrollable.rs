@@ -28,10 +28,14 @@ impl imp::LpImage {
 
         let adjustment = hadjustment.unwrap_or_default();
 
-        adjustment.connect_value_changed(glib::clone!(@weak obj => move |_| {
-            obj.imp().request_tiles();
-            obj.queue_draw();
-        }));
+        adjustment.connect_value_changed(glib::clone!(
+            #[weak]
+            obj,
+            move |_| {
+                obj.imp().request_tiles();
+                obj.queue_draw();
+            }
+        ));
 
         self.hadjustment.replace(adjustment);
         self.configure_adjustments();
@@ -42,10 +46,14 @@ impl imp::LpImage {
 
         let adjustment = vadjustment.unwrap_or_default();
 
-        adjustment.connect_value_changed(glib::clone!(@weak  obj => move |_| {
-            obj.imp().request_tiles();
-            obj.queue_draw();
-        }));
+        adjustment.connect_value_changed(glib::clone!(
+            #[weak]
+            obj,
+            move |_| {
+                obj.imp().request_tiles();
+                obj.queue_draw();
+            }
+        ));
 
         self.vadjustment.replace(adjustment);
         self.configure_adjustments();

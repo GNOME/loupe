@@ -136,45 +136,65 @@ mod imp {
             // Manually manage widget layout, see `WidgetImpl` for details
             obj.set_layout_manager(None::<gtk::LayoutManager>);
 
-            self.sliding_view.connect_current_page_notify(
-                glib::clone!(@weak obj => move |_| obj.page_changed()),
-            );
+            self.sliding_view.connect_current_page_notify(glib::clone!(
+                #[weak]
+                obj,
+                move |_| obj.page_changed()
+            ));
 
-            self.sliding_view.connect_target_page_reached(
-                glib::clone!(@weak obj => move || obj.target_page_reached()),
-            );
+            self.sliding_view.connect_target_page_reached(glib::clone!(
+                #[weak]
+                obj,
+                move || obj.target_page_reached()
+            ));
 
             let signal_group = glib::SignalGroup::new::<LpImage>();
             obj.connect_notify_local(
                 Some("current-page"),
-                clone!(@weak signal_group => move |obj, _| {
-                    signal_group.set_target(obj.current_image().as_ref());
-                }),
+                clone!(
+                    #[weak]
+                    signal_group,
+                    move |obj, _| {
+                        signal_group.set_target(obj.current_image().as_ref());
+                    }
+                ),
             );
 
             let view = &*obj;
             signal_group.connect_closure(
                 "notify::file",
                 true,
-                glib::closure_local!(@watch view => move |_: LpImage, _: glib::ParamSpec| {
-                    view.current_image_path_changed();
-                }),
+                glib::closure_local!(
+                    #[watch]
+                    view,
+                    move |_: LpImage, _: glib::ParamSpec| {
+                        view.current_image_path_changed();
+                    }
+                ),
             );
 
             signal_group.connect_closure(
                 "notify::is-deleted",
                 true,
-                glib::closure_local!(@watch view => move |_: LpImage, _: glib::ParamSpec| {
-                    view.current_image_path_changed();
-                }),
+                glib::closure_local!(
+                    #[watch]
+                    view,
+                    move |_: LpImage, _: glib::ParamSpec| {
+                        view.current_image_path_changed();
+                    }
+                ),
             );
 
             self.current_image_signals.set(signal_group).unwrap();
 
             self.drag_source.set_exclusive(true);
 
-            self.drag_source.connect_prepare(
-                glib::clone!(@weak obj => @default-return None, move |gesture, _, _| {
+            self.drag_source.connect_prepare(glib::clone!(
+                #[weak]
+                obj,
+                #[upgrade_or_else]
+                || None,
+                move |gesture, _, _| {
                     let is_scrollable = obj
                         .current_page()
                         .map(|p| p.image().is_hscrollable() || p.image().is_vscrollable());
@@ -190,22 +210,30 @@ mod imp {
                         gesture.set_state(gtk::EventSequenceState::Claimed);
                         obj.current_page().and_then(|p| p.content_provider())
                     }
-                }),
-            );
+                }
+            ));
 
-            self.drag_source.connect_drag_begin(glib::clone!(@weak obj => move |source, _| {
-                if let Some(paintable) = obj.current_image().and_then(|p| p.thumbnail()) {
-                    // -6 for cursor width, +16 for margin in .drag-icon
-                    source.set_icon(Some(&paintable), paintable.intrinsic_width() / 2 - 6 + 16, -12);
-                    if let Some(drag) = source.drag() {
-                        let drag_icon = gtk::DragIcon::for_drag(&drag);
-                        // Rounds corners, adds outline and shadow
-                        drag_icon.add_css_class("drag-icon");
-                        // Make border-radius clip the image
-                        drag_icon.set_overflow(gtk::Overflow::Hidden);
-                    }
-                };
-            }));
+            self.drag_source.connect_drag_begin(glib::clone!(
+                #[weak]
+                obj,
+                move |source, _| {
+                    if let Some(paintable) = obj.current_image().and_then(|p| p.thumbnail()) {
+                        // -6 for cursor width, +16 for margin in .drag-icon
+                        source.set_icon(
+                            Some(&paintable),
+                            paintable.intrinsic_width() / 2 - 6 + 16,
+                            -12,
+                        );
+                        if let Some(drag) = source.drag() {
+                            let drag_icon = gtk::DragIcon::for_drag(&drag);
+                            // Rounds corners, adds outline and shadow
+                            drag_icon.add_css_class("drag-icon");
+                            // Make border-radius clip the image
+                            drag_icon.set_overflow(gtk::Overflow::Hidden);
+                        }
+                    };
+                }
+            ));
 
             obj.add_controller(self.drag_source.clone());
         }
@@ -340,16 +368,29 @@ impl LpImageView {
 
         // List other files in directory
         if let Some(directory) = directory {
-            glib::spawn_future_local(glib::clone!(@weak self as obj => async move {
-                if let Err(err) = obj.model().load_directory(directory.clone()).await {
-                    log::warn!("Failed to load directory: {}", err.root_cause());
-                    obj.activate_action("win.show-toast", Some(&(format!("{} {}", err, err.root_cause()), adw::ToastPriority::High.into_glib()).to_variant()))
+            glib::spawn_future_local(glib::clone!(
+                #[weak(rename_to = obj)]
+                self,
+                async move {
+                    if let Err(err) = obj.model().load_directory(directory.clone()).await {
+                        log::warn!("Failed to load directory: {}", err.root_cause());
+                        obj.activate_action(
+                            "win.show-toast",
+                            Some(
+                                &(
+                                    format!("{} {}", err, err.root_cause()),
+                                    adw::ToastPriority::High.into_glib(),
+                                )
+                                    .to_variant(),
+                            ),
+                        )
                         .unwrap();
-                    return;
-                }
+                        return;
+                    }
 
-                obj.update_sliding_view(&file);
-            }));
+                    obj.update_sliding_view(&file);
+                }
+            ));
         }
     }
 
@@ -498,33 +539,39 @@ impl LpImageView {
 
         page.image().connect_notify_local(
             Some("is-unsupported"),
-            glib::clone!(@weak self as obj => move |image, _| {
-                if image.is_unsupported() {
-                    if obj.current_image().as_ref() == Some(image) {
-                        log::debug!(
-                            "Image format unsupported but not removing since current image"
-                        );
-                        return;
-                    }
+            glib::clone!(
+                #[weak(rename_to = obj)]
+                self,
+                move |image, _| {
+                    if image.is_unsupported() {
+                        if obj.current_image().as_ref() == Some(image) {
+                            log::debug!(
+                                "Image format unsupported but not removing since current image"
+                            );
+                            return;
+                        }
 
-                    if let Some(file) = image.file() {
-                        log::debug!("Removing image with unsupported format {:?}", file.uri());
-                        obj.model().remove(&file);
-                        if let Some(current_file) = obj.current_file() {
-                            obj.update_sliding_view(&current_file);
+                        if let Some(file) = image.file() {
+                            log::debug!("Removing image with unsupported format {:?}", file.uri());
+                            obj.model().remove(&file);
+                            if let Some(current_file) = obj.current_file() {
+                                obj.update_sliding_view(&current_file);
+                            }
                         }
                     }
                 }
-            }),
+            ),
         );
 
         page
     }
 
     fn set_model(&self, model: LpFileModel) {
-        model.connect_changed(
-            glib::clone!(@weak self as obj => move || obj.model_content_changed_cb()),
-        );
+        model.connect_changed(glib::clone!(
+            #[weak(rename_to = obj)]
+            self,
+            move || obj.model_content_changed_cb()
+        ));
         self.imp().model.replace(model);
     }
 

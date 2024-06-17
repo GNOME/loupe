@@ -50,7 +50,9 @@ impl LpWindow {
     fn show_controls_animation(&self) -> &adw::TimedAnimation {
         self.imp().show_controls_animation.get_or_init(|| {
             let target = adw::CallbackAnimationTarget::new(glib::clone!(
-                @weak self as obj => move |opacity| obj.set_control_opacity(opacity, false)
+                #[weak(rename_to = obj)]
+                self,
+                move |opacity| obj.set_control_opacity(opacity, false)
             ));
 
             adw::TimedAnimation::builder()
@@ -66,7 +68,9 @@ impl LpWindow {
     fn hide_controls_animation(&self) -> &adw::TimedAnimation {
         self.imp().hide_controls_animation.get_or_init(|| {
             let target = adw::CallbackAnimationTarget::new(glib::clone!(
-                @weak self as obj => move |opacity| obj.set_control_opacity(opacity, true)
+                #[weak(rename_to = obj)]
+                self,
+                move |opacity| obj.set_control_opacity(opacity, true)
             ));
 
             adw::TimedAnimation::builder()
@@ -85,10 +89,14 @@ impl LpWindow {
 
         let new_timeout = glib::timeout_add_local_once(
             std::time::Duration::from_millis(HIDE_CONTROLS_IDLE_TIMEOUT),
-            glib::clone!(@weak self as win => move || {
-                win.imp().hide_controls_timeout.take();
-                win.hide_controls();
-            }),
+            glib::clone!(
+                #[weak(rename_to = win)]
+                self,
+                move || {
+                    win.imp().hide_controls_timeout.take();
+                    win.hide_controls();
+                }
+            ),
         );
 
         self.imp().hide_controls_timeout.replace(Some(new_timeout));

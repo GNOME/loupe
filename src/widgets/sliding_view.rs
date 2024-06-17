@@ -159,20 +159,32 @@ mod imp {
                 .upper_overshoot(true)
                 .build();
 
-            swipe_tracker.connect_begin_swipe(glib::clone!(@weak obj => move |_| {
-                obj.scroll_animation().pause();
-                obj.step_animation().pause();
-            }));
-
-            swipe_tracker.connect_update_swipe(glib::clone!(@weak obj => move |_, position| {
-                obj.set_position(position);
-            }));
-
-            swipe_tracker.connect_end_swipe(glib::clone!(@weak obj => move |_, velocity, to| {
-                if let Some(page) = obj.page_at(to) {
-                    obj.scroll_to(&page, velocity);
+            swipe_tracker.connect_begin_swipe(glib::clone!(
+                #[weak]
+                obj,
+                move |_| {
+                    obj.scroll_animation().pause();
+                    obj.step_animation().pause();
                 }
-            }));
+            ));
+
+            swipe_tracker.connect_update_swipe(glib::clone!(
+                #[weak]
+                obj,
+                move |_, position| {
+                    obj.set_position(position);
+                }
+            ));
+
+            swipe_tracker.connect_end_swipe(glib::clone!(
+                #[weak]
+                obj,
+                move |_, velocity, to| {
+                    if let Some(page) = obj.page_at(to) {
+                        obj.scroll_to(&page, velocity);
+                    }
+                }
+            ));
 
             self.swipe_tracker.set(swipe_tracker).unwrap();
 
@@ -180,8 +192,12 @@ mod imp {
             let scroll_controller =
                 gtk::EventControllerScroll::new(gtk::EventControllerScrollFlags::HORIZONTAL);
 
-            scroll_controller.connect_scroll(
-                glib::clone!(@weak obj => @default-return glib::Propagation::Proceed, move |_, x, _| {
+            scroll_controller.connect_scroll(glib::clone!(
+                #[weak]
+                obj,
+                #[upgrade_or_else]
+                || glib::Propagation::Proceed,
+                move |_, x, _| {
                     let direction_sign = if obj.imp().is_rtl() { -1. } else { 1. };
 
                     if x * direction_sign > 0. {
@@ -207,8 +223,8 @@ mod imp {
                             glib::Propagation::Stop
                         }
                     }
-                }),
-            );
+                }
+            ));
 
             obj.add_controller(scroll_controller);
         }
@@ -712,9 +728,11 @@ impl LpSlidingView {
 
     fn scroll_animation(&self) -> &adw::SpringAnimation {
         self.imp().scroll_animation.get_or_init(|| {
-            let target = adw::CallbackAnimationTarget::new(
-                glib::clone!(@weak self as obj => move |position| obj.set_position(position)),
-            );
+            let target = adw::CallbackAnimationTarget::new(glib::clone!(
+                #[weak(rename_to = obj)]
+                self,
+                move |position| obj.set_position(position)
+            ));
 
             let animation = adw::SpringAnimation::builder()
                 .spring_params(&adw::SpringParams::new(
@@ -726,9 +744,11 @@ impl LpSlidingView {
                 .target(&target)
                 .build();
 
-            animation.connect_done(glib::clone!(@weak self as obj => move |_| {
-                obj.emit_target_page_reached()
-            }));
+            animation.connect_done(glib::clone!(
+                #[weak(rename_to = obj)]
+                self,
+                move |_| obj.emit_target_page_reached()
+            ));
 
             animation
         })
@@ -736,12 +756,18 @@ impl LpSlidingView {
 
     fn step_animation(&self) -> &adw::TimedAnimation {
         self.imp().step_animation.get_or_init(|| {
-            let target: adw::CallbackAnimationTarget = adw::CallbackAnimationTarget::new(
-                glib::clone!(@weak self as obj => move |progress| {
-                    obj.imp().position_tracking.borrow_mut().set_progress(progress);
-                    obj.queue_allocate();
-                }),
-            );
+            let target: adw::CallbackAnimationTarget =
+                adw::CallbackAnimationTarget::new(glib::clone!(
+                    #[weak(rename_to = obj)]
+                    self,
+                    move |progress| {
+                        obj.imp()
+                            .position_tracking
+                            .borrow_mut()
+                            .set_progress(progress);
+                        obj.queue_allocate();
+                    }
+                ));
 
             let animation = adw::TimedAnimation::builder()
                 .duration(STEP_DURATION)
@@ -751,17 +777,23 @@ impl LpSlidingView {
                 .target(&target)
                 .build();
 
-            animation.connect_done(glib::clone!(@weak self as obj => move |_| {
-                if let Some(current_index) = obj.current_index() {
-                    let imp = obj.imp();
-                    imp.position_tracking.borrow_mut().set_progress(1.);
-                    imp.position_tracking.borrow_mut().set_position(current_index as f64 - obj.position_shift());
-                    obj.queue_allocate();
-                } else {
-                    error!("No current page at end of animation");
+            animation.connect_done(glib::clone!(
+                #[weak(rename_to = obj)]
+                self,
+                move |_| {
+                    if let Some(current_index) = obj.current_index() {
+                        let imp = obj.imp();
+                        imp.position_tracking.borrow_mut().set_progress(1.);
+                        imp.position_tracking
+                            .borrow_mut()
+                            .set_position(current_index as f64 - obj.position_shift());
+                        obj.queue_allocate();
+                    } else {
+                        error!("No current page at end of animation");
+                    }
+                    obj.emit_target_page_reached();
                 }
-                obj.emit_target_page_reached();
-            }));
+            ));
 
             animation
         })

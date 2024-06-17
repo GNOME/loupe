@@ -172,18 +172,27 @@ mod imp {
 
             let obj = self.obj();
 
-            self.forward_click_gesture
-                .connect_pressed(clone!(@weak obj => move |_,_,_,_| {
+            self.forward_click_gesture.connect_pressed(clone!(
+                #[weak]
+                obj,
+                move |_, _, _, _| {
                     obj.image_view().navigate(Direction::Forward, false);
-                }));
-            self.backward_click_gesture
-                .connect_pressed(clone!(@weak obj => move |_,_,_,_| {
+                }
+            ));
+            self.backward_click_gesture.connect_pressed(clone!(
+                #[weak]
+                obj,
+                move |_, _, _, _| {
                     obj.image_view().navigate(Direction::Back, false);
-                }));
-            self.properties_button
-                .connect_toggled(clone!(@weak obj => move |_| {
+                }
+            ));
+            self.properties_button.connect_toggled(clone!(
+                #[weak]
+                obj,
+                move |_| {
                     obj.on_properties_button_toggled();
-                }));
+                }
+            ));
 
             if config::PROFILE == ".Devel" {
                 obj.add_css_class("devel");
@@ -195,37 +204,58 @@ mod imp {
 
             glib::timeout_add_local_once(
                 std::time::Duration::from_millis(SHOW_WINDOW_AFTER),
-                glib::clone!(@weak obj => move || if !obj.is_visible() { obj.present() }),
+                glib::clone!(
+                    #[weak]
+                    obj,
+                    move || if !obj.is_visible() {
+                        obj.present()
+                    }
+                ),
             );
 
             obj.on_current_page_changed();
             obj.on_fullscreen_changed();
 
-            self.image_view.connect_current_page_notify(
-                glib::clone!(@weak obj => move |_| obj.on_current_page_changed()),
-            );
+            self.image_view.connect_current_page_notify(glib::clone!(
+                #[weak]
+                obj,
+                move |_| obj.on_current_page_changed()
+            ));
 
-            obj.connect_fullscreened_notify(
-                glib::clone!(@weak obj => move |_| obj.on_fullscreen_changed()),
-            );
+            obj.connect_fullscreened_notify(glib::clone!(
+                #[weak]
+                obj,
+                move |_| obj.on_fullscreen_changed()
+            ));
 
             obj.connect_map(|win| {
                 win.resize_default();
             });
 
-            self.properties_button.connect_active_notify(
-                glib::clone!(@weak obj => move |_| obj.update_headerbar_style()),
-            );
+            self.properties_button.connect_active_notify(glib::clone!(
+                #[weak]
+                obj,
+                move |_| obj.update_headerbar_style()
+            ));
 
             let gesture_click = gtk::GestureClick::new();
-            gesture_click
-                .connect_pressed(glib::clone!(@weak obj => move |_, _, _, _| obj.on_click()));
+            gesture_click.connect_pressed(glib::clone!(
+                #[weak]
+                obj,
+                move |_, _, _, _| obj.on_click()
+            ));
             obj.add_controller(gesture_click);
 
-            self.motion_controller
-                .connect_motion(glib::clone!(@weak obj => move |_, x, y| obj.on_motion((x,y))));
-            self.motion_controller
-                .connect_enter(glib::clone!(@weak obj => move |_, x, y| obj.on_motion((x,y))));
+            self.motion_controller.connect_motion(glib::clone!(
+                #[weak]
+                obj,
+                move |_, x, y| obj.on_motion((x, y))
+            ));
+            self.motion_controller.connect_enter(glib::clone!(
+                #[weak]
+                obj,
+                move |_, x, y| obj.on_motion((x, y))
+            ));
             obj.add_controller(self.motion_controller.clone());
 
             let current_image_signals = self.image_view.current_image_signals();
@@ -237,17 +267,25 @@ mod imp {
             // Object alive, pass as @weak. Otherwise, pass
             // as @strong. Most of the time you will want
             // to use @weak.
-            current_image_signals.connect_bind_local(glib::clone!(@weak obj => move |_, _| {
-                obj.on_zoom_status_changed()
-            }));
+            current_image_signals.connect_bind_local(glib::clone!(
+                #[weak]
+                obj,
+                move |_, _| obj.on_zoom_status_changed()
+            ));
 
             current_image_signals.connect_local(
                 "metadata-changed",
                 true,
-                glib::clone!(@weak obj => @default-return None, move |_| {
-                    obj.update_title();
-                    None
-                }),
+                glib::clone!(
+                    #[weak]
+                    obj,
+                    #[upgrade_or_else]
+                    || None,
+                    move |_| {
+                        obj.update_title();
+                        None
+                    }
+                ),
             );
 
             current_image_signals.connect_closure(
@@ -256,57 +294,82 @@ mod imp {
                 // `closure_local!` is similar to `clone`, but you use `@watch` instead of clone.
                 // `@watch` means that this signal will be disconnected when the watched object
                 // is dropped.
-                glib::closure_local!(@watch obj => move |_: &LpImage, _: &glib::ParamSpec| {
-                    obj.on_zoom_status_changed();
-                }),
+                glib::closure_local!(
+                    #[watch]
+                    obj,
+                    move |_: &LpImage, _: &glib::ParamSpec| {
+                        obj.on_zoom_status_changed();
+                    }
+                ),
             );
 
             current_image_signals.connect_closure(
                 "notify::is-max-zoom",
                 false,
-                glib::closure_local!(@watch obj => move |_: &LpImage, _: &glib::ParamSpec| {
-                    obj.on_zoom_status_changed();
-                }),
+                glib::closure_local!(
+                    #[watch]
+                    obj,
+                    move |_: &LpImage, _: &glib::ParamSpec| {
+                        obj.on_zoom_status_changed();
+                    }
+                ),
             );
 
             current_image_signals.connect_closure(
                 "notify::image-size-available",
                 false,
-                glib::closure_local!(@watch obj => move |_: &LpImage, _: &glib::ParamSpec| {
-                    obj.image_size_available();
-                }),
+                glib::closure_local!(
+                    #[watch]
+                    obj,
+                    move |_: &LpImage, _: &glib::ParamSpec| {
+                        obj.image_size_available();
+                    }
+                ),
             );
 
             current_image_signals.connect_closure(
                 "notify::error",
                 false,
-                glib::closure_local!(@watch obj => move |_: &LpImage, _: &glib::ParamSpec| {
-                    obj.image_error();
-                }),
+                glib::closure_local!(
+                    #[watch]
+                    obj,
+                    move |_: &LpImage, _: &glib::ParamSpec| {
+                        obj.image_error();
+                    }
+                ),
             );
 
-            self.toolbar_view.connect_top_bar_style_notify(
-                glib::clone!(@weak obj => move |_| obj.on_top_bar_style_notify()),
-            );
+            self.toolbar_view.connect_top_bar_style_notify(glib::clone!(
+                #[weak]
+                obj,
+                move |_| obj.on_top_bar_style_notify()
+            ));
 
             // action win.previous status
-            self.image_view.connect_is_previous_available_notify(
-                glib::clone!(@weak obj => move |_| {
-                    obj.action_set_enabled(
-                        "win.previous",
-                        obj.imp().image_view.is_previous_available(),
-                    );
-                }),
-            );
+            self.image_view
+                .connect_is_previous_available_notify(glib::clone!(
+                    #[weak]
+                    obj,
+                    move |_| {
+                        obj.action_set_enabled(
+                            "win.previous",
+                            obj.imp().image_view.is_previous_available(),
+                        );
+                    }
+                ));
 
             // action win.next status
             self.image_view
-                .connect_is_next_available_notify(glib::clone!(@weak obj => move |_| {
-                    obj.action_set_enabled(
-                        "win.next",
-                        obj.imp().image_view.is_next_available(),
-                    );
-                }));
+                .connect_is_next_available_notify(glib::clone!(
+                    #[weak]
+                    obj,
+                    move |_| {
+                        obj.action_set_enabled(
+                            "win.next",
+                            obj.imp().image_view.is_next_available(),
+                        );
+                    }
+                ));
 
             // Make widgets visible when the focus moves
             obj.connect_move_focus(|obj, _| {
@@ -323,31 +386,41 @@ mod imp {
 
             self.drop_target.set_types(&[gdk::FileList::static_type()]);
 
-            self.drop_target.connect_accept(
-                clone!(@weak obj => @default-return false, move |_drop_target, drop| {
+            self.drop_target.connect_accept(clone!(
+                #[weak]
+                obj,
+                #[upgrade_or_else]
+                || false,
+                move |_drop_target, drop| {
                     // Only accept drops from external sources or different windows
-                    let different_source = drop.drag().is_none() || drop.drag() != obj.image_view().drag_source().drag();
+                    let different_source = drop.drag().is_none()
+                        || drop.drag() != obj.image_view().drag_source().drag();
                     // We have to do this manually since we are overwriting the default handler
                     let correct_format = drop.formats().contains_type(gdk::FileList::static_type());
 
                     different_source && correct_format
-                }),
-            );
+                }
+            ));
 
             // For callbacks, you will want to reference the GTK docs on
             // the relevant signal to see which parameters you need.
             // In this case, we need only need the GValue,
             // so we name it `value` then use `_` for the other spots.
-            self.drop_target.connect_drop(
-                clone!(@weak obj => @default-return false, move |_, value, _, _| {
-
-                    // Here we use a GValue, which is a dynamic object that can hold different types,
-                    // e.g. strings, numbers, or in this case objects. In order to get the GdkFileList
-                    // from the GValue, we need to use the `get()` method.
+            self.drop_target.connect_drop(clone!(
+                #[weak]
+                obj,
+                #[upgrade_or_else]
+                || false,
+                move |_, value, _, _| {
+                    // Here we use a GValue, which is a dynamic object that can hold different
+                    // types, e.g. strings, numbers, or in this case objects. In
+                    // order to get the GdkFileList from the GValue, we need to
+                    // use the `get()` method.
                     //
-                    // We've added type annotations here, and written it as `let list: gdk::FileList = ...`,
-                    // but you might also see places where type arguments are used.
-                    // This line could have been written as `let list = value.get::<gdk::FileList>().unwrap()`.
+                    // We've added type annotations here, and written it as `let list: gdk::FileList
+                    // = ...`, but you might also see places where type
+                    // arguments are used. This line could have been written as
+                    // `let list = value.get::<gdk::FileList>().unwrap()`.
                     let files = match value.get::<gdk::FileList>() {
                         Ok(list) => list.files(),
                         Err(err) => {
@@ -367,8 +440,8 @@ mod imp {
                     obj.present();
 
                     true
-                }),
-            );
+                }
+            ));
         }
     }
 
@@ -563,21 +636,25 @@ impl LpWindow {
                     .button_label(gettext("Undo"))
                     .priority(adw::ToastPriority::High)
                     .build();
-                toast.connect_button_clicked(glib::clone!(@weak self as win => move |_| {
-                    let path = path.clone();
-                    glib::spawn_future_local(async move {
-                        win.image_view()
-                            .set_trash_restore(Some(gio::File::for_path(&path)));
-                        let result = crate::util::untrash(&path).await;
-                        if let Err(err) = result {
-                            log::error!("Failed to untrash {path:?}: {err}");
-                            win.show_toast(
-                                gettext("Failed to restore image from trash"),
-                                adw::ToastPriority::High,
-                            );
-                        }
-                    });
-                }));
+                toast.connect_button_clicked(glib::clone!(
+                    #[weak(rename_to = win)]
+                    self,
+                    move |_| {
+                        let path = path.clone();
+                        glib::spawn_future_local(async move {
+                            win.image_view()
+                                .set_trash_restore(Some(gio::File::for_path(&path)));
+                            let result = crate::util::untrash(&path).await;
+                            if let Err(err) = result {
+                                log::error!("Failed to untrash {path:?}: {err}");
+                                win.show_toast(
+                                    gettext("Failed to restore image from trash"),
+                                    adw::ToastPriority::High,
+                                );
+                            }
+                        });
+                    }
+                ));
                 self.imp().toast_overlay.add_toast(toast);
             }
             Err(err) => {

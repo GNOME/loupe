@@ -294,8 +294,11 @@ mod imp {
             obj.set_modal(true);
 
             // Page alignment (center, left, ...)
-            self.alignment
-                .connect_selected_notify(glib::clone!(@weak obj => move |_| obj.draw_preview()));
+            self.alignment.connect_selected_notify(glib::clone!(
+                #[weak]
+                obj,
+                move |_| obj.draw_preview()
+            ));
 
             self.alignment
                 .set_expression(Some(gtk::ClosureExpression::new::<glib::GString>(
@@ -306,27 +309,45 @@ mod imp {
                 )));
 
             // Margin signals
-            self.margin_unit.connect_selected_notify(
-                glib::clone!(@weak obj => move |_| obj.on_margin_unit_changed()),
-            );
+            self.margin_unit.connect_selected_notify(glib::clone!(
+                #[weak]
+                obj,
+                move |_| obj.on_margin_unit_changed()
+            ));
             self.margin_unit.set_expression(Some(Unit::expression()));
-            self.margin_horizontal
-                .connect_value_notify(glib::clone!(@weak obj => move |_| obj.on_margin_changed()));
-            self.margin_vertical
-                .connect_value_notify(glib::clone!(@weak obj => move |_| obj.on_margin_changed()));
+            self.margin_horizontal.connect_value_notify(glib::clone!(
+                #[weak]
+                obj,
+                move |_| obj.on_margin_changed()
+            ));
+            self.margin_vertical.connect_value_notify(glib::clone!(
+                #[weak]
+                obj,
+                move |_| obj.on_margin_changed()
+            ));
 
             // Size signals
-            self.size_unit.connect_selected_notify(
-                glib::clone!(@weak obj => move |_| obj.on_size_unit_changed()),
-            );
+            self.size_unit.connect_selected_notify(glib::clone!(
+                #[weak]
+                obj,
+                move |_| obj.on_size_unit_changed()
+            ));
             self.size_unit.set_expression(Some(Unit::expression()));
-            self.fill_space.connect_active_notify(
-                glib::clone!(@weak obj => move |_| obj.on_fill_space_changed()),
-            );
-            self.width
-                .connect_value_notify(glib::clone!(@weak obj => move |_| obj.on_width_changed()));
-            self.height
-                .connect_value_notify(glib::clone!(@weak obj => move |_| obj.on_height_changed()));
+            self.fill_space.connect_active_notify(glib::clone!(
+                #[weak]
+                obj,
+                move |_| obj.on_fill_space_changed()
+            ));
+            self.width.connect_value_notify(glib::clone!(
+                #[weak]
+                obj,
+                move |_| obj.on_width_changed()
+            ));
+            self.height.connect_value_notify(glib::clone!(
+                #[weak]
+                obj,
+                move |_| obj.on_height_changed()
+            ));
 
             let imp = self;
 

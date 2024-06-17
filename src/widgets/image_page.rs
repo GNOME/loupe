@@ -94,42 +94,57 @@ mod imp {
 
             self.parent_constructed();
 
-            self.right_click_gesture
-                .connect_pressed(clone!(@weak obj => move |gesture, _, x, y| {
+            self.right_click_gesture.connect_pressed(clone!(
+                #[weak]
+                obj,
+                move |gesture, _, x, y| {
                     obj.show_popover_at(x, y);
                     gesture.set_state(gtk::EventSequenceState::Claimed);
-                }));
+                }
+            ));
 
-            self.press_gesture
-                .connect_pressed(clone!(@weak obj => move |gesture, x, y| {
+            self.press_gesture.connect_pressed(clone!(
+                #[weak]
+                obj,
+                move |gesture, x, y| {
                     log::debug!("Long press triggered");
                     obj.show_popover_at(x, y);
                     gesture.set_state(gtk::EventSequenceState::Claimed);
-                }));
+                }
+            ));
 
-            self.stack
-                .connect_visible_child_notify(clone!(@weak obj => move |stack| {
+            self.stack.connect_visible_child_notify(clone!(
+                #[weak]
+                obj,
+                move |stack| {
                     let imp = obj.imp();
                     let spinner_visible =
                         stack.visible_child().as_ref() == Some(imp.spinner_page.upcast_ref());
                     // Hide spinner for crossfading into other content since it does not look great
                     imp.spinner.set_visible(spinner_visible);
-                }));
+                }
+            ));
 
-            obj.image()
-                .connect_is_loaded_notify(clone!(@weak obj => move |_| {
+            obj.image().connect_is_loaded_notify(clone!(
+                #[weak]
+                obj,
+                move |_| {
                     if obj.image().is_loaded() {
                         log::debug!("Showing image");
                         obj.imp()
                             .stack
                             .set_visible_child(&*obj.imp().image_stack_page);
                     }
-                }));
+                }
+            ));
 
-            obj.image()
-                .connect_error_notify(clone!(@weak obj => move |_| {
+            obj.image().connect_error_notify(clone!(
+                #[weak]
+                obj,
+                move |_| {
                     glib::spawn_future_local(async move { obj.show_error().await });
-                }));
+                }
+            ));
 
             // Do not waste CPU on spinner if it is not visible
             self.spinner.connect_map(|s| s.start());
@@ -159,10 +174,16 @@ impl LpImagePage {
 
         obj.imp().image.init(file);
 
-        glib::spawn_future_local(clone!(@weak obj, @strong file => async move {
-            let imp = obj.imp();
-            imp.image.load(&file).await;
-        }));
+        glib::spawn_future_local(clone!(
+            #[weak]
+            obj,
+            #[strong]
+            file,
+            async move {
+                let imp = obj.imp();
+                imp.image.load(&file).await;
+            }
+        ));
 
         obj
     }
@@ -225,10 +246,13 @@ impl LpImagePage {
 
             imp.stack.set_visible_child(&*imp.error_page);
         } else if let Some(err) = image.error() {
-            imp.error_more_info
-                .connect_clicked(glib::clone!(@weak self as obj => move |_| {
+            imp.error_more_info.connect_clicked(glib::clone!(
+                #[weak(rename_to = obj)]
+                self,
+                move |_| {
                     LpErrorDetails::new(&obj.root().unwrap(), &err);
-                }));
+                }
+            ));
 
             imp.error_page.set_description(Some(&gettext(
                 "Either the image file is corrupted or it contains unsupported elements.",
