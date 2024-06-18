@@ -9,6 +9,7 @@ src/decoder/formats.rs
 src/decoder/formats/glycin_proxy.rs
 src/decoder/formats/svg.rs
 src/decoder/tiling.rs
+src/editing.rs
 src/file_model.rs
 src/main.rs
 src/metadata.rs

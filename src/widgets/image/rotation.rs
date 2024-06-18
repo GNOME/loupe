@@ -46,11 +46,27 @@ impl imp::LpImage {
     pub(super) fn rotation_animation(&self) -> &adw::TimedAnimation {
         let obj = self.obj().to_owned();
         self.rotation_animation.get_or_init(|| {
-            adw::TimedAnimation::builder()
+            let animation = adw::TimedAnimation::builder()
                 .duration(ROTATION_ANIMATION_DURATION)
                 .widget(&obj)
                 .target(&adw::PropertyAnimationTarget::new(&obj, "rotation"))
-                .build()
+                .build();
+
+            animation.connect_done(glib::clone!(
+                #[weak]
+                obj,
+                move |_| {
+                    let imp = obj.imp();
+                    if let Some(new_file) = imp.queued_reload.replace(None) {
+                        glib::spawn_future_local(async move {
+                            log::debug!("Animation finished: Executing delayed reload");
+                            obj.load(&new_file).await;
+                        });
+                    }
+                }
+            ));
+
+            animation
         })
     }
 }
@@ -58,6 +74,7 @@ impl imp::LpImage {
 impl LpImage {
     /// Set rotation and mirroring to the state would have after loading
     pub fn reset_rotation(&self) {
+        log::debug!("Resetting rotation");
         let orientation = self.metadata().orientation();
         self.imp().rotation_target.set(-orientation.rotation);
         self.set_mirrored(orientation.mirrored);
@@ -83,6 +100,14 @@ impl LpImage {
             animation.set_value_from(self.zoom());
             animation.set_value_to(imp.zoom_level_best_fit_for_rotation(target.get()));
             animation.play();
+        }
+
+        if let Ok(r) = gufo_common::orientation::Rotation::try_from(angle) {
+            log::debug!("Editing image to rotate by {r:?}");
+            let operation = glycin::Operation::Rotate(r);
+            let editing_queue = &self.imp().editing_queue;
+            editing_queue.push(operation);
+            editing_queue.write_to_image(self);
         }
     }
 }

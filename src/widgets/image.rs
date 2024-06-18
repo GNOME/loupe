@@ -135,11 +135,15 @@ pub enum FitMode {
 mod imp {
     use super::*;
     use crate::decoder::tiling::SharedFrameBuffer;
+    use crate::editing;
 
     #[derive(Debug, Default, Properties)]
     #[properties(wrapper_type = super::LpImage)]
     pub struct LpImage {
         pub(super) file: RefCell<Option<gio::File>>,
+        /// Contains a file from which to reload the image after animation has
+        /// finished.
+        pub(super) queued_reload: RefCell<Option<gio::File>>,
         #[property(get)]
         pub(super) is_deleted: Cell<bool>,
         #[property(get)]
@@ -235,6 +239,9 @@ mod imp {
 
         /// Number of snapshots created, debug only
         pub(super) nth_snapshot: Cell<u8>,
+
+        /// Editing queue
+        pub(super) editing_queue: editing::Queue,
     }
 
     #[glib::object_subclass]

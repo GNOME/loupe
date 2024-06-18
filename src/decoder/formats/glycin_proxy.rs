@@ -50,6 +50,7 @@ impl Glycin {
         updater.clone().spawn_error_handled(async move {
             log::trace!("Setting up loader");
             let mut loader = glycin::Loader::new(file);
+            loader.apply_transformations(false);
 
             #[cfg(feature = "disable-glycin-sandbox")]
             loader.sandbox_mechanism(Some(glycin::SandboxMechanism::NotSandboxed));

@@ -283,6 +283,12 @@ impl LpImage {
         let imp = self.imp();
         log::debug!("Loading file {}", file.uri());
 
+        if imp.rotation_animation().state() == adw::AnimationState::Playing {
+            log::debug!("Queueing image reload due to playing rotate animation.");
+            self.imp().queued_reload.replace(Some(file.clone()));
+            return;
+        }
+
         imp.metadata.replace(Metadata::default());
         self.imp().emmit_metadata_changed();
         self.imp().set_file_loaded(file).await;

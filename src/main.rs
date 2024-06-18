@@ -55,6 +55,7 @@ mod about;
 mod application;
 mod config;
 mod decoder;
+mod editing;
 mod file_model;
 mod metadata;
 mod util;
