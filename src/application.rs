@@ -77,6 +77,7 @@ mod imp {
             log::trace!("Startup");
             self.parent_startup();
             LpShyBin::ensure_type();
+            gtk::Window::set_default_icon_name(config::APP_ID);
         }
 
         fn activate(&self) {
