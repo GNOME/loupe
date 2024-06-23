@@ -120,8 +120,8 @@ impl imp::LpImage {
                     let callback_id = obj.add_tick_callback(glib::clone!(
                         #[weak(rename_to = obj)]
                         self,
-                        #[upgrade_or_else]
-                        || glib::ControlFlow::Break,
+                        #[upgrade_or]
+                        glib::ControlFlow::Break,
                         move |_, clock| obj.tick_callback(clock)
                     ));
                     self.tick_callback.replace(Some(callback_id));

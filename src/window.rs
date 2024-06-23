@@ -279,8 +279,7 @@ mod imp {
                 glib::clone!(
                     #[weak]
                     obj,
-                    #[upgrade_or_else]
-                    || None,
+                    #[upgrade_or_default]
                     move |_| {
                         obj.update_title();
                         None
@@ -389,8 +388,8 @@ mod imp {
             self.drop_target.connect_accept(clone!(
                 #[weak]
                 obj,
-                #[upgrade_or_else]
-                || false,
+                #[upgrade_or]
+                false,
                 move |_drop_target, drop| {
                     // Only accept drops from external sources or different windows
                     let different_source = drop.drag().is_none()
@@ -409,8 +408,8 @@ mod imp {
             self.drop_target.connect_drop(clone!(
                 #[weak]
                 obj,
-                #[upgrade_or_else]
-                || false,
+                #[upgrade_or]
+                false,
                 move |_, value, _, _| {
                     // Here we use a GValue, which is a dynamic object that can hold different
                     // types, e.g. strings, numbers, or in this case objects. In

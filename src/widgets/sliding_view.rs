@@ -195,8 +195,8 @@ mod imp {
             scroll_controller.connect_scroll(glib::clone!(
                 #[weak]
                 obj,
-                #[upgrade_or_else]
-                || glib::Propagation::Proceed,
+                #[upgrade_or]
+                glib::Propagation::Proceed,
                 move |_, x, _| {
                     let direction_sign = if obj.imp().is_rtl() { -1. } else { 1. };
 

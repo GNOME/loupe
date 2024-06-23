@@ -73,8 +73,8 @@ impl imp::LpImage {
         scroll_controller.connect_scroll(glib::clone!(
             #[weak]
             obj,
-            #[upgrade_or_else]
-            || glib::Propagation::Proceed,
+            #[upgrade_or]
+            glib::Propagation::Proceed,
             move |event, _, y| {
                 let imp = obj.imp();
                 let state = event.current_event_state();

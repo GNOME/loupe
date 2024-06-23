@@ -190,8 +190,7 @@ mod imp {
             self.drag_source.connect_prepare(glib::clone!(
                 #[weak]
                 obj,
-                #[upgrade_or_else]
-                || None,
+                #[upgrade_or_default]
                 move |gesture, _, _| {
                     let is_scrollable = obj
                         .current_page()

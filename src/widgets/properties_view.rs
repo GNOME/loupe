@@ -129,8 +129,7 @@ mod imp {
                 glib::clone!(
                     #[weak]
                     obj,
-                    #[upgrade_or_else]
-                    || None,
+                    #[upgrade_or_default]
                     move |_| {
                         obj.imp().update();
                         None
