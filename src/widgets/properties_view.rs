@@ -45,6 +45,8 @@ mod imp {
         #[template_child]
         folder: TemplateChild<adw::ActionRow>,
         #[template_child]
+        folder_button: TemplateChild<gtk::Button>,
+        #[template_child]
         uri: TemplateChild<adw::ActionRow>,
 
         #[template_child]
@@ -136,6 +138,11 @@ mod imp {
                     }
                 ),
             );
+
+            self.folder_button
+                .reset_relation(gtk::AccessibleRelation::LabelledBy);
+            self.folder_button
+                .reset_relation(gtk::AccessibleRelation::DescribedBy);
 
             self.update();
         }
