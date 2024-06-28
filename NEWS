@@ -1,12 +1,18 @@
-## 47.alpha (Unreleased)
+## 47.alpha (2024-06-28)
 
 ### Added
 
 - New dialog to show and copy error details
+- Rotating JPEG images with an orientation Exif entry will now change that entry
+
+### Fixed
+
+- Disable markup in property rows
 
 ### Changed
 
 - Follow the Rust Style Guide for Cargo.toml and .rs filenames
+- Image delete confirmation now uses AdwAlertDialog
 - Make error messages translatable and look nicer
 - Move many shortcuts to window level instead of using app accels
 - Replace AdwAboutWindow with AdwAboutDialog !376
