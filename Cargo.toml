@@ -1,8 +1,8 @@
 [package]
 name = "loupe"
-version = "0.1.0"
+version = "47.0.0-alpha"
 edition = "2021"
-rust-version = "1.75"
+rust-version = "1.76"
 license = "GPL-3.0-or-later"
 
 [profile.release]

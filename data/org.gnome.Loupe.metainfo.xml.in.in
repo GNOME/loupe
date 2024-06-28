@@ -71,6 +71,11 @@
   </categories>
 
   <releases>
+    <release version="47.alpha" date="2024-06-28">
+      <description>
+        <p>Beginning with this release, rotating an image will write this change to image files. For now, this feature is only supported for JPEG files. Several user interface elements have been updated to more recent design patterns.</p>
+      </description>
+    </release>
     <release version="46.2" date="2024-04-09">
       <description>
         <p>This releases fixed problems with fractional scaling and the output of long exposure times in the image properties. It also makes the page orientation selection in the print preview dialog functional. It also adresses issues with loading some SVGs containing text when using Loupe outside of Flatpak.</p>
