@@ -3,10 +3,10 @@
 // Copyright (c) 2022 Elton A Rodrigues
 // Copyright (c) 2022 Maximiliano Sandoval R
 // Copyright (c) 2023 Matteo Nardi
-// Copyright (c) 2023 Julian Hofer
 // Copyright (c) 2023 FineFindus
 // Copyright (c) 2023 qwel
 // Copyright (c) 2023 Huan Thieu Nguyen
+// Copyright (c) 2024 DaPigGuy
 // Copyright (c) 2024 James Frost
 //
 // This program is free software: you can redistribute it and/or modify

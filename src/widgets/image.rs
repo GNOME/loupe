@@ -1,6 +1,5 @@
 // Copyright (c) 2021 Christopher Davis
 // Copyright (c) 2022-2024 Sophie Herold
-// Copyright (c) 2023 Julian Hofer
 // Copyright (c) 2023 Lubosz Sarnecki
 // Copyright (c) 2024 Maximiliano Sandoval
 //

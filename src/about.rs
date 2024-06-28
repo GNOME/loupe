@@ -1,6 +1,7 @@
 // Copyright (c) 2023-2024 Sophie Herold
 // Copyright (c) 2023 Automeris naranja
 // Copyright (c) 2023 Christopher Davis
+// Copyright (c) 2024 Andre Klapper
 // Copyright (c) 2024 Dexter Reed
 //
 // This program is free software: you can redistribute it and/or modify
