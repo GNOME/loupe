@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2024-05-15 11:13+0000\n"
-"PO-Revision-Date: 2024-05-19 10:37+0200\n"
+"POT-Creation-Date: 2024-06-12 10:40+0000\n"
+"PO-Revision-Date: 2024-06-28 16:36+0200\n"
 "Last-Translator: Balázs Úr <ur.balazs at fsf dot hu>\n"
 "Language-Team: Hungarian <openscope at fsf dot hu>\n"
 "Language: hu\n"
@@ -20,7 +20,7 @@ msgstr ""
 "X-Generator: Lokalize 23.08.4\n"
 
 #: data/org.gnome.Loupe.desktop.in.in:3
-#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:30 src/window.rs:754
+#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:30 src/window.rs:752
 msgid "Image Viewer"
 msgstr "Képmegjelenítő"
 
@@ -256,6 +256,21 @@ msgstr "Copyright © 2020–2024 Christopher Davis és mások."
 msgid "Could not list other files in directory."
 msgstr "Nem sikerült felsorolni egyéb fájlokat a könyvtárban."
 
+#. Translators: Fractional exposure time (photography) in seconds
+#: src/metadata.rs:262
+msgid "1\\u{2215}{}\\u{202F}s"
+msgstr "1\\u{2215}{}\\u{202F} mp"
+
+#. Translators: Exposure time (photography) in seconds
+#: src/metadata.rs:270
+msgid "{}\\u{202F}s"
+msgstr "{}\\u{202F} mp"
+
+#. Translators: Unit for focal length in millimeters
+#: src/metadata.rs:296
+msgid "{}\\u{202F}mm"
+msgstr "{}\\u{202F} mm"
+
 #. Translators: short for "north" in GPS coordinate
 #: src/metadata/gps.rs:165
 msgid "N"
@@ -276,32 +291,16 @@ msgstr "K"
 msgid "W"
 msgstr "Ny"
 
-#. Translators: Fractional exposure time (photography) in seconds
-#: src/metadata/mod.rs:262
-msgid "1\\u{2215}{}\\u{202F}s"
-msgstr "1\\u{2215}{}\\u{202F} mp"
-
-#. Translators: Exposure time (photography) in seconds
-#: src/metadata/mod.rs:270
-#| msgid "{}\\u{202F}mm"
-msgid "{}\\u{202F}s"
-msgstr "{}\\u{202F} mp"
-
-#. Translators: Unit for focal length in millimeters
-#: src/metadata/mod.rs:296
-msgid "{}\\u{202F}mm"
-msgstr "{}\\u{202F} mm"
-
 #. Translators: This is the date and time format we use in metadata output etc.
 #. The format has to follow <https://docs.gtk.org/glib/method.DateTime.format.html>
 #. The default is already translated. Don't change if you are not sure what to
 #. use.
-#: src/util/mod.rs:37
+#: src/util.rs:37
 #, c-format
 msgid "%x %X"
 msgstr "%x %X"
 
-#: src/util/mod.rs:180 src/window.rs:575
+#: src/util.rs:180 src/window.rs:575
 msgid "Failed to restore image from trash"
 msgstr "Nem sikerült helyreállítani a képet a kukából"
 
@@ -310,8 +309,8 @@ msgid ""
 "The image loader reported the following. Please include this information "
 "when you report an error."
 msgstr ""
-"A képbetöltő a következőket jelentette. Adja hozzá ezt az információt is,"
-" amikor hibát jelent."
+"A képbetöltő a következőket jelentette. Adja hozzá ezt az információt is, "
+"amikor hibát jelent."
 
 #: src/widgets/error_details.ui:53
 msgid "Copy Information"
@@ -322,12 +321,15 @@ msgid "Report Issue…"
 msgstr "Probléma jelentése…"
 
 #: src/widgets/image_page.rs:199
+#| msgid ""
+#| "No image loaders available. Mabye the “glycin-loaders” package with "
+#| "compatibility version “{}+” is not installed."
 msgid ""
-"No image loaders available. Mabye the “glycin-loaders” package with "
+"No image loaders available. Maybe the “glycin-loaders” package with "
 "compatibility version “{}+” is not installed."
 msgstr ""
-"Nem érhetők el képbetöltők. Lehet, hogy a(z) „{}+” kompatibilitási verzióval"
-" rendelkező „glycin-loaders” csomag nincs telepítve."
+"Nem érhetők el képbetöltők. Lehet, hogy a(z) „{}+” kompatibilitási verzióval "
+"rendelkező „glycin-loaders” csomag nincs telepítve."
 
 #: src/widgets/image_page.rs:210
 msgid "The image format “{} ({})” is known but not installed."
@@ -452,8 +454,6 @@ msgid "Continue…"
 msgstr "Folytatás…"
 
 #: src/widgets/print.rs:445
-#| msgctxt "shortcut window"
-#| msgid "First Image"
 msgid "Print Image"
 msgstr "Kép nyomtatása"
 
@@ -510,7 +510,7 @@ msgstr "_Vízszintes"
 msgid "_Vertical"
 msgstr "_Függőleges"
 
-#: src/widgets/print.ui:142 src/widgets/properties_view.ui:53
+#: src/widgets/print.ui:142 src/widgets/properties_view.ui:55
 msgid "Image Size"
 msgstr "Kép mérete"
 
@@ -553,64 +553,64 @@ msgstr "Képkoordináták másolva"
 msgid "Folder"
 msgstr "Mappa"
 
-#: src/widgets/properties_view.ui:26
+#: src/widgets/properties_view.ui:27
 msgid "Open Containing Folder"
 msgstr "Tartalmazó mappa megnyitása"
 
-#: src/widgets/properties_view.ui:39
+#: src/widgets/properties_view.ui:40
 msgid "URI"
 msgstr "URI"
 
-#: src/widgets/properties_view.ui:62
+#: src/widgets/properties_view.ui:65
 msgid "Image Format"
 msgstr "Kép formátuma"
 
-#: src/widgets/properties_view.ui:71
+#: src/widgets/properties_view.ui:75
 msgid "File Size"
 msgstr "Fájl mérete"
 
-#: src/widgets/properties_view.ui:84
+#: src/widgets/properties_view.ui:89
 msgid "File Created"
 msgstr "Fájl létrehozva"
 
-#: src/widgets/properties_view.ui:93
+#: src/widgets/properties_view.ui:99
 msgid "File Modified"
 msgstr "Fájl módosítva"
 
 #. Translators: This is a label for GPS coordinates
-#: src/widgets/properties_view.ui:106
+#: src/widgets/properties_view.ui:113
 msgid "Location"
 msgstr "Hely"
 
-#: src/widgets/properties_view.ui:116
+#: src/widgets/properties_view.ui:124
 msgid "Copy Coordinates"
 msgstr "Koordináták másolása"
 
-#: src/widgets/properties_view.ui:127
+#: src/widgets/properties_view.ui:135
 msgid "Open Location"
 msgstr "Hely megnyitása"
 
-#: src/widgets/properties_view.ui:140
+#: src/widgets/properties_view.ui:148
 msgid "Originally Created"
 msgstr "Eredetileg létrehozva"
 
-#: src/widgets/properties_view.ui:149
+#: src/widgets/properties_view.ui:158
 msgid "Aperture"
 msgstr "Rekesz"
 
-#: src/widgets/properties_view.ui:158
+#: src/widgets/properties_view.ui:168
 msgid "Exposure"
 msgstr "Expozíció"
 
-#: src/widgets/properties_view.ui:167
+#: src/widgets/properties_view.ui:178
 msgid "ISO"
 msgstr "ISO"
 
-#: src/widgets/properties_view.ui:176
+#: src/widgets/properties_view.ui:188
 msgid "Focal Length"
 msgstr "Gyújtótávolság"
 
-#: src/widgets/properties_view.ui:185
+#: src/widgets/properties_view.ui:198
 msgid "Maker, Model"
 msgstr "Gyártó, modell"
 
@@ -642,23 +642,23 @@ msgstr "Visszavonás"
 msgid "Failed to move image to trash"
 msgstr "Nem sikerült áthelyezni a képet a kukába"
 
-#: src/window.rs:615
+#: src/window.rs:613
 msgid "Permanently Delete Image?"
 msgstr "Véglegesen törli a képet?"
 
-#: src/window.rs:617
+#: src/window.rs:615
 msgid "After deleting the image “{}” it will be permanently lost."
 msgstr "A(z) „{}” kép a törlése után véglegesen elvész."
 
-#: src/window.rs:625
+#: src/window.rs:623
 msgid "Cancel"
 msgstr "Mégse"
 
-#: src/window.rs:626
+#: src/window.rs:624
 msgid "Delete"
 msgstr "Törlés"
 
-#: src/window.rs:637
+#: src/window.rs:635
 msgid "Failed to delete image"
 msgstr "Nem sikerült törölni a képet"
 
@@ -709,3 +709,4 @@ msgstr "Fogja meg és húzza ide a képeket"
 #: src/window.ui:179
 msgid "_Open Files…"
 msgstr "Fájlok _megnyitása…"
+
