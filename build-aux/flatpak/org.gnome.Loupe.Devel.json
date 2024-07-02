@@ -5,7 +5,7 @@
     "sdk": "org.gnome.Sdk",
     "sdk-extensions": [
         "org.freedesktop.Sdk.Extension.rust-stable",
-        "org.freedesktop.Sdk.Extension.llvm16"
+        "org.freedesktop.Sdk.Extension.llvm18"
     ],
     "command": "loupe",
     "finish-args": [
@@ -159,7 +159,7 @@
                 {
                     "type": "git",
                     "url": "https://gitlab.gnome.org/sophie-h/glycin.git",
-                    "commit": "82107d35195b4cb7580286f946bab28f52cc6a59"
+                    "commit": "97bbb21e11dd391a37a3b0444140e6618b01190f"
                 }
             ]
         },
