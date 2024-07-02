@@ -1025,7 +1025,7 @@ dependencies = [
 [[package]]
 name = "glycin"
 version = "2.0.0-alpha"
-source = "git+https://gitlab.gnome.org/sophie-h/glycin#97bbb21e11dd391a37a3b0444140e6618b01190f"
+source = "git+https://gitlab.gnome.org/sophie-h/glycin#8dc103d88ed8d4dbce7cd9a09842121f0d101734"
 dependencies = [
  "async-fs",
  "async-io",
@@ -1046,6 +1046,7 @@ dependencies = [
  "memfd",
  "memmap2",
  "nix 0.29.0",
+ "static_assertions",
  "thiserror",
  "yeslogic-fontconfig-sys",
  "zbus",
@@ -1054,7 +1055,7 @@ dependencies = [
 [[package]]
 name = "glycin-utils"
 version = "2.0.0-alpha"
-source = "git+https://gitlab.gnome.org/sophie-h/glycin#97bbb21e11dd391a37a3b0444140e6618b01190f"
+source = "git+https://gitlab.gnome.org/sophie-h/glycin#8dc103d88ed8d4dbce7cd9a09842121f0d101734"
 dependencies = [
  "gufo-common",
  "libc",
