@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2024-05-15 11:21+0000\n"
-"PO-Revision-Date: 2024-05-16 16:23+0300\n"
+"POT-Creation-Date: 2024-06-12 10:40+0000\n"
+"PO-Revision-Date: 2024-06-22 13:28+0300\n"
 "Last-Translator: Artur So <arturios2005@mail.ru>\n"
 "Language-Team: \n"
 "Language: ru_RU\n"
@@ -17,10 +17,10 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
-"X-Generator: Poedit 3.4.2\n"
+"X-Generator: Poedit 3.4.4\n"
 
 #: data/org.gnome.Loupe.desktop.in.in:3
-#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:30 src/window.rs:754
+#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:30 src/window.rs:752
 msgid "Image Viewer"
 msgstr "Просмотрщик изображений"
 
@@ -319,7 +319,7 @@ msgstr "Сообщить об ошибке…"
 
 #: src/widgets/image_page.rs:199
 msgid ""
-"No image loaders available. Mabye the “glycin-loaders” package with "
+"No image loaders available. Maybe the “glycin-loaders” package with "
 "compatibility version “{}+” is not installed."
 msgstr ""
 "Загрузчики изображений отсутствуют. Возможно, не установлен пакет “glycin-"
@@ -505,7 +505,7 @@ msgstr "_Горизонтальный"
 msgid "_Vertical"
 msgstr "В_ертикальный"
 
-#: src/widgets/print.ui:142 src/widgets/properties_view.ui:53
+#: src/widgets/print.ui:142 src/widgets/properties_view.ui:55
 msgid "Image Size"
 msgstr "Размер изображения"
 
@@ -548,64 +548,64 @@ msgstr "Координаты изображения скопированы"
 msgid "Folder"
 msgstr "Папка"
 
-#: src/widgets/properties_view.ui:26
+#: src/widgets/properties_view.ui:27
 msgid "Open Containing Folder"
 msgstr "Открыть папку, содержащую объект"
 
-#: src/widgets/properties_view.ui:39
+#: src/widgets/properties_view.ui:40
 msgid "URI"
 msgstr "URI"
 
-#: src/widgets/properties_view.ui:62
+#: src/widgets/properties_view.ui:65
 msgid "Image Format"
 msgstr "Формат изображения"
 
-#: src/widgets/properties_view.ui:71
+#: src/widgets/properties_view.ui:75
 msgid "File Size"
 msgstr "Размер файла"
 
-#: src/widgets/properties_view.ui:84
+#: src/widgets/properties_view.ui:89
 msgid "File Created"
 msgstr "Файл создан"
 
-#: src/widgets/properties_view.ui:93
+#: src/widgets/properties_view.ui:99
 msgid "File Modified"
 msgstr "Файл изменен"
 
 #. Translators: This is a label for GPS coordinates
-#: src/widgets/properties_view.ui:106
+#: src/widgets/properties_view.ui:113
 msgid "Location"
 msgstr "Местоположение"
 
-#: src/widgets/properties_view.ui:116
+#: src/widgets/properties_view.ui:124
 msgid "Copy Coordinates"
 msgstr "Копировать координаты"
 
-#: src/widgets/properties_view.ui:127
+#: src/widgets/properties_view.ui:135
 msgid "Open Location"
 msgstr "Открыть местоположение"
 
-#: src/widgets/properties_view.ui:140
+#: src/widgets/properties_view.ui:148
 msgid "Originally Created"
 msgstr "Первоначально создано"
 
-#: src/widgets/properties_view.ui:149
+#: src/widgets/properties_view.ui:158
 msgid "Aperture"
 msgstr "Диафрагма"
 
-#: src/widgets/properties_view.ui:158
+#: src/widgets/properties_view.ui:168
 msgid "Exposure"
 msgstr "Экспозиция"
 
-#: src/widgets/properties_view.ui:167
+#: src/widgets/properties_view.ui:178
 msgid "ISO"
 msgstr "ISO"
 
-#: src/widgets/properties_view.ui:176
+#: src/widgets/properties_view.ui:188
 msgid "Focal Length"
 msgstr "Фокусное расстояние"
 
-#: src/widgets/properties_view.ui:185
+#: src/widgets/properties_view.ui:198
 msgid "Maker, Model"
 msgstr "Производитель, модель"
 
@@ -637,23 +637,23 @@ msgstr "Отменить"
 msgid "Failed to move image to trash"
 msgstr "Не удалось отправить изображение в корзину"
 
-#: src/window.rs:615
+#: src/window.rs:613
 msgid "Permanently Delete Image?"
 msgstr "Удалить изображение безвозвратно?"
 
-#: src/window.rs:617
+#: src/window.rs:615
 msgid "After deleting the image “{}” it will be permanently lost."
 msgstr "После удаления изображения \"{}\" оно будет навсегда потеряно."
 
-#: src/window.rs:625
+#: src/window.rs:623
 msgid "Cancel"
 msgstr "Отменить"
 
-#: src/window.rs:626
+#: src/window.rs:624
 msgid "Delete"
 msgstr "Удалить"
 
-#: src/window.rs:637
+#: src/window.rs:635
 msgid "Failed to delete image"
 msgstr "Не удалось удалить изображение"
 
