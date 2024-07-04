@@ -348,7 +348,7 @@ checksum = "1fd0f2584146f6f2ef48085050886acf353beff7305ebd1ae69500e27c67f64b"
 [[package]]
 name = "cairo-rs"
 version = "0.20.0"
-source = "git+https://github.com/gtk-rs/gtk-rs-core.git?branch=master#ffdad007c26dc06b8be47e966be6677a74726987"
+source = "git+https://github.com/gtk-rs/gtk-rs-core.git?branch=master#4101f565d107ffcd70f82a14c37898d605f2d0af"
 dependencies = [
  "bitflags 2.6.0",
  "cairo-sys-rs",
@@ -360,7 +360,7 @@ dependencies = [
 [[package]]
 name = "cairo-sys-rs"
 version = "0.20.0"
-source = "git+https://github.com/gtk-rs/gtk-rs-core.git?branch=master#ffdad007c26dc06b8be47e966be6677a74726987"
+source = "git+https://github.com/gtk-rs/gtk-rs-core.git?branch=master#4101f565d107ffcd70f82a14c37898d605f2d0af"
 dependencies = [
  "glib-sys 0.20.0",
  "libc",
@@ -733,7 +733,7 @@ dependencies = [
 [[package]]
 name = "gdk-pixbuf"
 version = "0.20.0"
-source = "git+https://github.com/gtk-rs/gtk-rs-core.git?branch=master#ffdad007c26dc06b8be47e966be6677a74726987"
+source = "git+https://github.com/gtk-rs/gtk-rs-core.git?branch=master#4101f565d107ffcd70f82a14c37898d605f2d0af"
 dependencies = [
  "gdk-pixbuf-sys",
  "gio 0.20.0",
@@ -744,7 +744,7 @@ dependencies = [
 [[package]]
 name = "gdk-pixbuf-sys"
 version = "0.20.0"
-source = "git+https://github.com/gtk-rs/gtk-rs-core.git?branch=master#ffdad007c26dc06b8be47e966be6677a74726987"
+source = "git+https://github.com/gtk-rs/gtk-rs-core.git?branch=master#4101f565d107ffcd70f82a14c37898d605f2d0af"
 dependencies = [
  "gio-sys 0.20.0",
  "glib-sys 0.20.0",
@@ -896,7 +896,7 @@ dependencies = [
 [[package]]
 name = "gio"
 version = "0.20.0"
-source = "git+https://github.com/gtk-rs/gtk-rs-core.git?branch=master#ffdad007c26dc06b8be47e966be6677a74726987"
+source = "git+https://github.com/gtk-rs/gtk-rs-core.git?branch=master#4101f565d107ffcd70f82a14c37898d605f2d0af"
 dependencies = [
  "futures-channel",
  "futures-core",
@@ -926,7 +926,7 @@ dependencies = [
 [[package]]
 name = "gio-sys"
 version = "0.20.0"
-source = "git+https://github.com/gtk-rs/gtk-rs-core.git?branch=master#ffdad007c26dc06b8be47e966be6677a74726987"
+source = "git+https://github.com/gtk-rs/gtk-rs-core.git?branch=master#4101f565d107ffcd70f82a14c37898d605f2d0af"
 dependencies = [
  "glib-sys 0.20.0",
  "gobject-sys 0.20.0",
@@ -960,7 +960,7 @@ dependencies = [
 [[package]]
 name = "glib"
 version = "0.20.0"
-source = "git+https://github.com/gtk-rs/gtk-rs-core.git?branch=master#ffdad007c26dc06b8be47e966be6677a74726987"
+source = "git+https://github.com/gtk-rs/gtk-rs-core.git?branch=master#4101f565d107ffcd70f82a14c37898d605f2d0af"
 dependencies = [
  "bitflags 2.6.0",
  "futures-channel",
@@ -994,7 +994,7 @@ dependencies = [
 [[package]]
 name = "glib-macros"
 version = "0.20.0"
-source = "git+https://github.com/gtk-rs/gtk-rs-core.git?branch=master#ffdad007c26dc06b8be47e966be6677a74726987"
+source = "git+https://github.com/gtk-rs/gtk-rs-core.git?branch=master#4101f565d107ffcd70f82a14c37898d605f2d0af"
 dependencies = [
  "heck",
  "proc-macro-crate",
@@ -1016,7 +1016,7 @@ dependencies = [
 [[package]]
 name = "glib-sys"
 version = "0.20.0"
-source = "git+https://github.com/gtk-rs/gtk-rs-core.git?branch=master#ffdad007c26dc06b8be47e966be6677a74726987"
+source = "git+https://github.com/gtk-rs/gtk-rs-core.git?branch=master#4101f565d107ffcd70f82a14c37898d605f2d0af"
 dependencies = [
  "libc",
  "system-deps 7.0.1",
@@ -1025,7 +1025,7 @@ dependencies = [
 [[package]]
 name = "glycin"
 version = "2.0.0-alpha"
-source = "git+https://gitlab.gnome.org/sophie-h/glycin#8dc103d88ed8d4dbce7cd9a09842121f0d101734"
+source = "git+https://gitlab.gnome.org/sophie-h/glycin#abc1fa273be729e3d2359e8fd870c895b06fc22a"
 dependencies = [
  "async-fs",
  "async-io",
@@ -1048,6 +1048,7 @@ dependencies = [
  "nix 0.29.0",
  "static_assertions",
  "thiserror",
+ "tracing",
  "yeslogic-fontconfig-sys",
  "zbus",
 ]
@@ -1055,11 +1056,13 @@ dependencies = [
 [[package]]
 name = "glycin-utils"
 version = "2.0.0-alpha"
-source = "git+https://gitlab.gnome.org/sophie-h/glycin#8dc103d88ed8d4dbce7cd9a09842121f0d101734"
+source = "git+https://gitlab.gnome.org/sophie-h/glycin#abc1fa273be729e3d2359e8fd870c895b06fc22a"
 dependencies = [
+ "env_logger",
  "gufo-common",
  "libc",
  "libseccomp",
+ "log",
  "memmap2",
  "nix 0.29.0",
  "paste",
@@ -1083,7 +1086,7 @@ dependencies = [
 [[package]]
 name = "gobject-sys"
 version = "0.20.0"
-source = "git+https://github.com/gtk-rs/gtk-rs-core.git?branch=master#ffdad007c26dc06b8be47e966be6677a74726987"
+source = "git+https://github.com/gtk-rs/gtk-rs-core.git?branch=master#4101f565d107ffcd70f82a14c37898d605f2d0af"
 dependencies = [
  "glib-sys 0.20.0",
  "libc",
@@ -1498,6 +1501,7 @@ dependencies = [
  "log",
  "once_cell",
  "strum",
+ "tracing-subscriber",
  "url",
 ]
 
@@ -1508,6 +1512,15 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "62bb907fe88d54d8d9ce32a3cceab4218ed2f6b7d35617cafe9adf84e43919cb"
 dependencies = [
  "libc",
+]
+
+[[package]]
+name = "matchers"
+version = "0.1.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "8263075bb86c5a1b1427b5ae862e8889656f126e9f77c484496e8b47cf5c5558"
+dependencies = [
+ "regex-automata 0.1.10",
 ]
 
 [[package]]
@@ -1584,6 +1597,16 @@ dependencies = [
 ]
 
 [[package]]
+name = "nu-ansi-term"
+version = "0.46.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "77a8165726e8236064dbb45459242600304b42a5ea24ee2948e18e023bf7ba84"
+dependencies = [
+ "overload",
+ "winapi",
+]
+
+[[package]]
 name = "num-traits"
 version = "0.2.19"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1647,9 +1670,15 @@ dependencies = [
 ]
 
 [[package]]
+name = "overload"
+version = "0.1.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "b15813163c1d831bf4a13c3610c05c0d03b39feb07f7e09fa234dac9b15aaf39"
+
+[[package]]
 name = "pango"
 version = "0.20.0"
-source = "git+https://github.com/gtk-rs/gtk-rs-core.git?branch=master#ffdad007c26dc06b8be47e966be6677a74726987"
+source = "git+https://github.com/gtk-rs/gtk-rs-core.git?branch=master#4101f565d107ffcd70f82a14c37898d605f2d0af"
 dependencies = [
  "gio 0.20.0",
  "glib 0.20.0",
@@ -1660,7 +1689,7 @@ dependencies = [
 [[package]]
 name = "pango-sys"
 version = "0.20.0"
-source = "git+https://github.com/gtk-rs/gtk-rs-core.git?branch=master#ffdad007c26dc06b8be47e966be6677a74726987"
+source = "git+https://github.com/gtk-rs/gtk-rs-core.git?branch=master#4101f565d107ffcd70f82a14c37898d605f2d0af"
 dependencies = [
  "glib-sys 0.20.0",
  "gobject-sys 0.20.0",
@@ -1811,8 +1840,17 @@ checksum = "b91213439dad192326a0d7c6ee3955910425f441d7038e0d6933b0aec5c4517f"
 dependencies = [
  "aho-corasick",
  "memchr",
- "regex-automata",
- "regex-syntax",
+ "regex-automata 0.4.7",
+ "regex-syntax 0.8.4",
+]
+
+[[package]]
+name = "regex-automata"
+version = "0.1.10"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "6c230d73fb8d8c1b9c0b3135c5142a8acee3a0558fb8db5cf1cb65f8d7862132"
+dependencies = [
+ "regex-syntax 0.6.29",
 ]
 
 [[package]]
@@ -1823,8 +1861,14 @@ checksum = "38caf58cc5ef2fed281f89292ef23f6365465ed9a41b7a7754eb4e26496c92df"
 dependencies = [
  "aho-corasick",
  "memchr",
- "regex-syntax",
+ "regex-syntax 0.8.4",
 ]
+
+[[package]]
+name = "regex-syntax"
+version = "0.6.29"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "f162c6dd7b008981e4d40210aca20b4bd0f9b60ca9271061b07f78537722f2e1"
 
 [[package]]
 name = "regex-syntax"
@@ -1978,6 +2022,15 @@ dependencies = [
 ]
 
 [[package]]
+name = "sharded-slab"
+version = "0.1.7"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "f40ca3c46823713e0d4209592e8d6e826aa57e928f09752619fc696c499637f6"
+dependencies = [
+ "lazy_static",
+]
+
+[[package]]
 name = "signal-hook-registry"
 version = "1.4.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -2111,6 +2164,16 @@ dependencies = [
 ]
 
 [[package]]
+name = "thread_local"
+version = "1.1.8"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "8b9ef9bad013ada3808854ceac7b46812a6465ba368859a37e2100283d2d719c"
+dependencies = [
+ "cfg-if",
+ "once_cell",
+]
+
+[[package]]
 name = "tinyvec"
 version = "1.6.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -2199,6 +2262,36 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "c06d3da6113f116aaee68e4d601191614c9053067f9ab7f6edbcb161237daa54"
 dependencies = [
  "once_cell",
+ "valuable",
+]
+
+[[package]]
+name = "tracing-log"
+version = "0.2.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "ee855f1f400bd0e5c02d150ae5de3840039a3f54b025156404e34c23c03f47c3"
+dependencies = [
+ "log",
+ "once_cell",
+ "tracing-core",
+]
+
+[[package]]
+name = "tracing-subscriber"
+version = "0.3.18"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "ad0f048c97dbd9faa9b7df56362b8ebcaa52adb06b498c050d2f4e32f90a7a8b"
+dependencies = [
+ "matchers",
+ "nu-ansi-term",
+ "once_cell",
+ "regex",
+ "sharded-slab",
+ "smallvec",
+ "thread_local",
+ "tracing",
+ "tracing-core",
+ "tracing-log",
 ]
 
 [[package]]
@@ -2256,6 +2349,12 @@ name = "utf8parse"
 version = "0.2.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "06abde3611657adf66d383f00b093d7faecc7fa57071cce2578660c9f1010821"
+
+[[package]]
+name = "valuable"
+version = "0.1.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "830b7e5d4d90034032940e4ace0d9a9a057e7a45cd94e6c007832e39edb82f6d"
 
 [[package]]
 name = "version-compare"

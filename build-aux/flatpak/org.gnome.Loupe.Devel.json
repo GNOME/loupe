@@ -15,7 +15,7 @@
         "--device=dri",
         "--filesystem=host",
         "--env=RUST_BACKTRACE=1",
-        "--env=RUST_LOG=loupe=debug",
+        "--env=RUST_LOG=debug",
         "--talk-name=org.gtk.vfs.*",
         "--filesystem=xdg-run/gvfs",
         "--filesystem=xdg-run/gvfsd"
@@ -159,7 +159,7 @@
                 {
                     "type": "git",
                     "url": "https://gitlab.gnome.org/sophie-h/glycin.git",
-                    "commit": "97bbb21e11dd391a37a3b0444140e6618b01190f"
+                    "commit": "abc1fa273be729e3d2359e8fd870c895b06fc22a"
                 }
             ]
         },

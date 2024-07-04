@@ -68,6 +68,8 @@ mod deps {
 
 use application::LpApplication;
 use deps::*;
+use tracing_subscriber::layer::*;
+use tracing_subscriber::util::*;
 
 static GRESOURCE_BYTES: &[u8] =
     gvdb_macros::include_gresource_from_dir!("/org/gnome/Loupe", "data/resources");
@@ -85,14 +87,22 @@ fn main() -> glib::ExitCode {
         std::env::set_var("GDK_DEBUG", "gl-no-fractional");
     }
 
-    let mut log_builder = env_logger::builder();
-    log_builder.format_timestamp_millis();
+    // Follow G_MESSAGES_DEBUG env variable
+    let default_level =
+        if !glib::log_writer_default_would_drop(glib::LogLevel::Debug, Some("loupe")) {
+            tracing_subscriber::filter::LevelFilter::DEBUG
+        } else {
+            tracing_subscriber::filter::LevelFilter::ERROR
+        };
 
-    if !glib::log_writer_default_would_drop(glib::LogLevel::Debug, Some("loupe")) {
-        log_builder.filter_module("loupe", log::LevelFilter::Debug);
-    }
-
-    log_builder.init();
+    tracing_subscriber::registry()
+        .with(
+            tracing_subscriber::EnvFilter::builder()
+                .with_default_directive(default_level.into())
+                .from_env_lossy(),
+        )
+        .with(tracing_subscriber::fmt::Layer::default().compact())
+        .init();
 
     log::debug!("Logger initialized");
 
