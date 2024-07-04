@@ -1025,7 +1025,7 @@ dependencies = [
 [[package]]
 name = "glycin"
 version = "2.0.0-alpha"
-source = "git+https://gitlab.gnome.org/sophie-h/glycin#abc1fa273be729e3d2359e8fd870c895b06fc22a"
+source = "git+https://gitlab.gnome.org/sophie-h/glycin#69a52521400be63e6f73a357e9f2ff3b23419c99"
 dependencies = [
  "async-fs",
  "async-io",
