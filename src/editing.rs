@@ -58,9 +58,7 @@ impl Queue {
     async fn apply(&self, image: LpImage) -> anyhow::Result<()> {
         let file = image.file().unwrap();
         #[allow(unused_mut)]
-        let mut editor = glycin::Editor::new(file.clone());
-        #[cfg(feature = "disable-glycin-sandbox")]
-        editor.sandbox_mechanism(Some(glycin::SandboxMechanism::NotSandboxed));
+        let editor = glycin::Editor::new(file.clone());
 
         let mut list = Vec::new();
         self.operations.rcu(|current_operations| {

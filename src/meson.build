@@ -31,10 +31,6 @@ if gtk4_x11.found()
   cargo_options += [ '--features', 'x11' ]
 endif
 
-if get_option('disable-glycin-sandbox')
-  cargo_options += [ '--features', 'disable-glycin-sandbox' ]
-endif
-
 cargo_env = { 'CARGO_HOME': build_root / 'cargo-home' }
 
 cargo_build = custom_target(

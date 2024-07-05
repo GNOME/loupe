@@ -15,7 +15,7 @@ flatpak:
   variables:
      # We are running tests manually
     RUN_TESTS: "0"
-    CONFIG_OPTS: "-Dprofile=ci -Ddisable-glycin-sandbox=false"
+    CONFIG_OPTS: "-Dprofile=ci"
 
 flatpak@aarch64:
   extends: ".flatpak@aarch64"
@@ -23,7 +23,7 @@ flatpak@aarch64:
   interruptible: true
   variables:
     RUN_TESTS: "0"
-    CONFIG_OPTS: "-Dprofile=ci -Ddisable-glycin-sandbox=false"
+    CONFIG_OPTS: "-Dprofile=ci"
 
 cargo-fmt:
   image: "rust:slim"

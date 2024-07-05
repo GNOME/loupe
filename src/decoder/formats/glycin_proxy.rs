@@ -52,9 +52,6 @@ impl Glycin {
             let mut loader = glycin::Loader::new(file);
             loader.apply_transformations(false);
 
-            #[cfg(feature = "disable-glycin-sandbox")]
-            loader.sandbox_mechanism(Some(glycin::SandboxMechanism::NotSandboxed));
-
             loader.cancellable(cancellable_);
 
             let image = loader.load().await?;

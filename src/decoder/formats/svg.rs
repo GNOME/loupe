@@ -72,9 +72,6 @@ impl Svg {
             log::trace!("Setting up SVG loader");
             let mut loader = glycin::Loader::new(file);
 
-            #[cfg(feature = "disable-glycin-sandbox")]
-            loader.sandbox_mechanism(Some(glycin::SandboxMechanism::NotSandboxed));
-
             loader.cancellable(cancellable.clone());
 
             let image = loader.load().await?;
@@ -179,10 +176,7 @@ impl Svg {
         height: i32,
     ) -> anyhow::Result<gdk::Texture> {
         #[allow(unused_mut)]
-        let mut loader = glycin::Loader::new(file.clone());
-
-        #[cfg(feature = "disable-glycin-sandbox")]
-        loader.sandbox_mechanism(Some(glycin::SandboxMechanism::NotSandboxed));
+        let loader = glycin::Loader::new(file.clone());
 
         let image = loader.load().await?;
         let frame_request = glycin::FrameRequest::new().scale(width as u32, height as u32);

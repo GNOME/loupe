@@ -159,7 +159,7 @@
                 {
                     "type": "git",
                     "url": "https://gitlab.gnome.org/sophie-h/glycin.git",
-                    "commit": "69a52521400be63e6f73a357e9f2ff3b23419c99"
+                    "commit": "983f60f936d5bfb673702101ee8a0131c63c6a23"
                 }
             ]
         },
@@ -167,8 +167,7 @@
             "name": "loupe",
             "buildsystem": "meson",
             "config-opts": [
-                "-Dprofile=development",
-                "-Ddisable-glycin-sandbox=true"
+                "-Dprofile=development"
             ],
             "sources": [
                 {
