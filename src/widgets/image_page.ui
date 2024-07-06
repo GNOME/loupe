@@ -47,13 +47,7 @@
             <property name="hexpand">true</property>
             <property name="vexpand">true</property>
             <child>
-              <object class="GtkSpinner" id="spinner">
-                <property name="height-request">24</property>
-                <property name="width-request">24</property>
-                <property name="halign">center</property>
-                <property name="valign">center</property>
-                <property name="spinning">True</property>
-              </object>
+              <object class="AdwSpinner" id="spinner"/>
             </child>
           </object>
         </child>

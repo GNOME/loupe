@@ -51,7 +51,7 @@ mod imp {
         #[template_child]
         pub(super) image_stack_page: TemplateChild<gtk::Widget>,
         #[template_child]
-        pub(super) spinner: TemplateChild<gtk::Spinner>,
+        pub(super) spinner: TemplateChild<gtk::Widget>,
         #[template_child]
         pub(super) scrolled_window: TemplateChild<gtk::ScrolledWindow>,
         #[template_child]
@@ -145,10 +145,6 @@ mod imp {
                     glib::spawn_future_local(async move { obj.show_error().await });
                 }
             ));
-
-            // Do not waste CPU on spinner if it is not visible
-            self.spinner.connect_map(|s| s.start());
-            self.spinner.connect_unmap(|s| s.stop());
         }
     }
 
