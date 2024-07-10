@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2024-05-18 16:51+0000\n"
-"PO-Revision-Date: 2024-05-23 18:53+0200\n"
+"POT-Creation-Date: 2024-07-02 21:51+0000\n"
+"PO-Revision-Date: 2024-07-10 20:56+0200\n"
 "Last-Translator: Quentin PAGÈS\n"
 "Language-Team: Occitan <totenoc@gmail.com>\n"
 "Language: oc\n"
@@ -18,7 +18,7 @@ msgstr ""
 "X-Generator: Poedit 3.4.3\n"
 
 #: data/org.gnome.Loupe.desktop.in.in:3
-#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:30 src/window.rs:754
+#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:31 src/window.rs:829
 msgid "Image Viewer"
 msgstr "Visionador d'imatges"
 
@@ -33,7 +33,7 @@ msgid "Show the image properties sidebar"
 msgstr "Afichar la barra laterala de proprietats de l’imatge"
 
 #. developer_name tag deprecated with Appstream 1.0
-#: data/org.gnome.Loupe.metainfo.xml.in.in:8 src/about.rs:33
+#: data/org.gnome.Loupe.metainfo.xml.in.in:8 src/about.rs:34
 msgid "The GNOME Project"
 msgstr "Lo projècte GNOME"
 
@@ -241,15 +241,15 @@ msgid "Gestures"
 msgstr "Gèstes"
 
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/about.rs:42
+#: src/about.rs:43
 msgid "translator-credits"
 msgstr "Quentin PAGÈS"
 
-#: src/about.rs:43
+#: src/about.rs:44
 msgid "Copyright © 2020–2024 Christopher Davis et al."
 msgstr "Copyright © 2020–2024 Christopher Davis et al."
 
-#: src/file_model.rs:129
+#: src/file_model.rs:131
 msgid "Could not list other files in directory."
 msgstr "Impossible de listar los autres fichièrs del repertòri."
 
@@ -297,7 +297,7 @@ msgstr "O"
 msgid "%x %X"
 msgstr "%x %X"
 
-#: src/util.rs:180 src/window.rs:575
+#: src/util.rs:180 src/window.rs:651
 msgid "Failed to restore image from trash"
 msgstr "Fracàs de la restauracion de l’imatge a partir de l’escobilhièr"
 
@@ -317,23 +317,23 @@ msgstr "Copiar las informacions"
 msgid "Report Issue…"
 msgstr "Senhalar una anomalia…"
 
-#: src/widgets/image_page.rs:199
+#: src/widgets/image_page.rs:220
 msgid ""
-"No image loaders available. Mabye the “glycin-loaders” package with "
+"No image loaders available. Maybe the “glycin-loaders” package with "
 "compatibility version “{}+” is not installed."
 msgstr ""
 "Cap de cargador pas disponible. Benlèu que lo paquet « glycin-loaders » amb "
 "la version de compatibilitat « {}+ » es pas installat."
 
-#: src/widgets/image_page.rs:210
+#: src/widgets/image_page.rs:231
 msgid "The image format “{} ({})” is known but not installed."
 msgstr "Lo format d’imatge « {} ({}) » es conegut mas pas installat."
 
-#: src/widgets/image_page.rs:217
+#: src/widgets/image_page.rs:238
 msgid "Unknown image format “{} ({}).”"
 msgstr "Formats d’imatge desconegut « {} ({}) »"
 
-#: src/widgets/image_page.rs:234
+#: src/widgets/image_page.rs:258
 msgid "Either the image file is corrupted or it contains unsupported elements."
 msgstr "Siá l’imatge es corromput siá content d’elements pas preses en carga."
 
@@ -375,11 +375,11 @@ msgstr "Pivotar cap a drecha"
 
 #. Translators: This is a toast notification, informing the user that
 #. an image has been set as background.
-#: src/widgets/image_view.rs:682
+#: src/widgets/image_view.rs:727
 msgid "Set as background."
 msgstr "Definir coma rèireplan."
 
-#: src/widgets/image_view.rs:695
+#: src/widgets/image_view.rs:740
 msgid "Could not set background."
 msgstr "Impossible de definir coma rèireplan."
 
@@ -439,23 +439,23 @@ msgid "px"
 msgstr "px"
 
 #. Translators: {} is a placeholder for the filename
-#: src/widgets/print.rs:340
+#: src/widgets/print.rs:361
 msgid "Print “{}”"
 msgstr "Imprimir « {} »"
 
-#: src/widgets/print.rs:444
+#: src/widgets/print.rs:465
 msgid "Continue…"
 msgstr "Contunhar…"
 
-#: src/widgets/print.rs:445
+#: src/widgets/print.rs:466
 msgid "Print Image"
 msgstr "Imprimir l’imatge"
 
-#: src/widgets/print.rs:767
+#: src/widgets/print.rs:788
 msgid "_Scale"
 msgstr "_Escala"
 
-#: src/widgets/print.rs:770
+#: src/widgets/print.rs:791
 msgid "_Width"
 msgstr "_Largor"
 
@@ -504,7 +504,7 @@ msgstr "_Orizontal"
 msgid "_Vertical"
 msgstr "_Vertical"
 
-#: src/widgets/print.ui:142 src/widgets/properties_view.ui:53
+#: src/widgets/print.ui:142 src/widgets/properties_view.ui:55
 msgid "Image Size"
 msgstr "Talha de l'imatge"
 
@@ -520,26 +520,26 @@ msgstr "_Emplenament d’espaci"
 msgid "H_eight"
 msgstr "_Nautor"
 
-#: src/widgets/properties_view.rs:234
+#: src/widgets/properties_view.rs:247
 msgid "Unknown"
 msgstr "Desconegut"
 
 #. Translators: Addition of image being transparent to format name
-#: src/widgets/properties_view.rs:238
+#: src/widgets/properties_view.rs:251
 msgid ", transparent"
 msgstr ", transparent"
 
 #. Translators: Addition of image being grayscale to format name
-#: src/widgets/properties_view.rs:243
+#: src/widgets/properties_view.rs:256
 msgid ", grayscale"
 msgstr ", nivèl de gris"
 
 #. Translators: Addition of bit size to format name
-#: src/widgets/properties_view.rs:248
+#: src/widgets/properties_view.rs:261
 msgid ", {}\\u{202F}bit"
 msgstr ", {}\\u{202F}bit"
 
-#: src/widgets/properties_view.rs:299
+#: src/widgets/properties_view.rs:312
 msgid "Image Coordinates Copied"
 msgstr "Coordenadas de l’imatge copiadas"
 
@@ -547,112 +547,112 @@ msgstr "Coordenadas de l’imatge copiadas"
 msgid "Folder"
 msgstr "Dorsièr"
 
-#: src/widgets/properties_view.ui:26
+#: src/widgets/properties_view.ui:27
 msgid "Open Containing Folder"
 msgstr "Dobrir lo dossièr contenent"
 
-#: src/widgets/properties_view.ui:39
+#: src/widgets/properties_view.ui:40
 msgid "URI"
 msgstr "URI"
 
-#: src/widgets/properties_view.ui:62
+#: src/widgets/properties_view.ui:65
 msgid "Image Format"
 msgstr "Format d'imatge"
 
-#: src/widgets/properties_view.ui:71
+#: src/widgets/properties_view.ui:75
 msgid "File Size"
 msgstr "Talha de fichièr"
 
-#: src/widgets/properties_view.ui:84
+#: src/widgets/properties_view.ui:89
 msgid "File Created"
 msgstr "Creacion del fichièr"
 
-#: src/widgets/properties_view.ui:93
+#: src/widgets/properties_view.ui:99
 msgid "File Modified"
 msgstr "Modificacion del fichièr"
 
 #. Translators: This is a label for GPS coordinates
-#: src/widgets/properties_view.ui:106
+#: src/widgets/properties_view.ui:113
 msgid "Location"
 msgstr "Emplaçament"
 
-#: src/widgets/properties_view.ui:116
+#: src/widgets/properties_view.ui:124
 msgid "Copy Coordinates"
 msgstr "Copiar las coordenadas"
 
-#: src/widgets/properties_view.ui:127
+#: src/widgets/properties_view.ui:135
 msgid "Open Location"
 msgstr "Dobrir l'emplaçament"
 
-#: src/widgets/properties_view.ui:140
+#: src/widgets/properties_view.ui:148
 msgid "Originally Created"
 msgstr "Creacion iniciala"
 
-#: src/widgets/properties_view.ui:149
+#: src/widgets/properties_view.ui:158
 msgid "Aperture"
 msgstr "Dobertura"
 
-#: src/widgets/properties_view.ui:158
+#: src/widgets/properties_view.ui:168
 msgid "Exposure"
 msgstr "Exposicion"
 
-#: src/widgets/properties_view.ui:167
+#: src/widgets/properties_view.ui:178
 msgid "ISO"
 msgstr "ISO"
 
-#: src/widgets/properties_view.ui:176
+#: src/widgets/properties_view.ui:188
 msgid "Focal Length"
 msgstr "Longor focala"
 
-#: src/widgets/properties_view.ui:185
+#: src/widgets/properties_view.ui:198
 msgid "Maker, Model"
 msgstr "Fabricant, modèl"
 
-#: src/window.rs:442
+#: src/window.rs:515
 msgid "Supported image formats"
 msgstr "Format d'imatge suportats"
 
-#: src/window.rs:448
+#: src/window.rs:521
 msgid "All files"
 msgstr "Totes los fichièrs"
 
-#: src/window.rs:455
+#: src/window.rs:528
 msgid "Open Image"
 msgstr "Dobrir un imatge"
 
-#: src/window.rs:541
+#: src/window.rs:614
 msgid "Image copied to clipboard"
 msgstr "Imatge copiat al quichapapièrs"
 
-#: src/window.rs:562
+#: src/window.rs:635
 msgid "Image moved to trash"
 msgstr "Imatge desplaçat a l'escobilhièr"
 
-#: src/window.rs:563
+#: src/window.rs:636
 msgid "Undo"
 msgstr "Desfar"
 
-#: src/window.rs:589
+#: src/window.rs:666
 msgid "Failed to move image to trash"
 msgstr "Impossible de desplaçar l’imatge cap a l'escobilhièr"
 
-#: src/window.rs:615
+#: src/window.rs:690
 msgid "Permanently Delete Image?"
 msgstr "Suprimir l’imatge irreversiblament ?"
 
-#: src/window.rs:617
+#: src/window.rs:692
 msgid "After deleting the image “{}” it will be permanently lost."
 msgstr "Aprèp supression de l’imatge « {} » serà perdut per totjorn."
 
-#: src/window.rs:625
+#: src/window.rs:700
 msgid "Cancel"
 msgstr "Anullada"
 
-#: src/window.rs:626
+#: src/window.rs:701
 msgid "Delete"
 msgstr "Suprimir"
 
-#: src/window.rs:637
+#: src/window.rs:712
 msgid "Failed to delete image"
 msgstr "Impossible de suprimir l’imatge"
 
