@@ -7,19 +7,19 @@ msgid ""
 msgstr ""
 "Project-Id-Version: loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2024-05-09 21:54+0000\n"
-"PO-Revision-Date: 2024-05-10 18:48+0530\n"
+"POT-Creation-Date: 2024-06-28 14:38+0000\n"
+"PO-Revision-Date: 2024-07-02 23:03+0530\n"
 "Last-Translator: Scrambled777 <weblate.scrambled777@simplelogin.com>\n"
 "Language-Team: Hindi <indlinux-hindi@lists.sourceforge.net>\n"
 "Language: hi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Gtranslator 46.1\n"
 
 #: data/org.gnome.Loupe.desktop.in.in:3
-#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:30 src/window.rs:754
+#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:30 src/window.rs:829
 msgid "Image Viewer"
 msgstr "Image Viewer"
 
@@ -34,7 +34,7 @@ msgstr "छवि गुण पार्श्वपट्टी दिखाए
 #. developer_name tag deprecated with Appstream 1.0
 #: data/org.gnome.Loupe.metainfo.xml.in.in:8 src/about.rs:33
 msgid "The GNOME Project"
-msgstr "GNOME परियोजना"
+msgstr "गनोम परियोजना"
 
 #: data/org.gnome.Loupe.metainfo.xml.in.in:13
 msgid "View images"
@@ -128,7 +128,7 @@ msgstr "विंडो बंद करें"
 #: data/resources/gtk/help-overlay.ui:86
 msgctxt "shortcut window"
 msgid "Quit"
-msgstr "छोड़ें"
+msgstr "बंद करें"
 
 #: data/resources/gtk/help-overlay.ui:94
 msgctxt "shortcut window"
@@ -186,13 +186,13 @@ msgstr "छवि जूम करें"
 #: data/resources/gtk/help-overlay.ui:251
 msgctxt "shortcut window"
 msgid "Zoom In"
-msgstr "जूम इन"
+msgstr "बड़ा करें"
 
 #: data/resources/gtk/help-overlay.ui:165
 #: data/resources/gtk/help-overlay.ui:257
 msgctxt "shortcut window"
 msgid "Zoom Out"
-msgstr "जूम आउट"
+msgstr "छोटा करें"
 
 #: data/resources/gtk/help-overlay.ui:171
 msgctxt "shortcut window"
@@ -248,9 +248,24 @@ msgstr "Scrambled777 <weblate.scrambled777@simplelogin.com>"
 msgid "Copyright © 2020–2024 Christopher Davis et al."
 msgstr "कॉपीराइट © 2020-2024 क्रिस्टोफर डेविस और अन्य।"
 
-#: src/file_model.rs:129
+#: src/file_model.rs:131
 msgid "Could not list other files in directory."
 msgstr "निर्देशिका में अन्य फाइलें सूचीबद्ध नहीं की जा सकी।"
+
+#. Translators: Fractional exposure time (photography) in seconds
+#: src/metadata.rs:262
+msgid "1\\u{2215}{}\\u{202F}s"
+msgstr "1\\u{2215}{}\\u{202F}s"
+
+#. Translators: Exposure time (photography) in seconds
+#: src/metadata.rs:270
+msgid "{}\\u{202F}s"
+msgstr "{}\\u{202F}s"
+
+#. Translators: Unit for focal length in millimeters
+#: src/metadata.rs:296
+msgid "{}\\u{202F}mm"
+msgstr "{}\\u{202F}mm"
 
 #. Translators: short for "north" in GPS coordinate
 #: src/metadata/gps.rs:165
@@ -272,31 +287,16 @@ msgstr "E"
 msgid "W"
 msgstr "W"
 
-#. Translators: Fractional exposure time (photography) in seconds
-#: src/metadata/mod.rs:262
-msgid "1\\u{2215}{}\\u{202F}s"
-msgstr "1\\u{2215}{}\\u{202F}s"
-
-#. Translators: Exposure time (photography) in seconds
-#: src/metadata/mod.rs:270
-msgid "{}\\u{202F}s"
-msgstr "{}\\u{202F}s"
-
-#. Translators: Unit for focal length in millimeters
-#: src/metadata/mod.rs:296
-msgid "{}\\u{202F}mm"
-msgstr "{}\\u{202F}mm"
-
 #. Translators: This is the date and time format we use in metadata output etc.
 #. The format has to follow <https://docs.gtk.org/glib/method.DateTime.format.html>
 #. The default is already translated. Don't change if you are not sure what to
 #. use.
-#: src/util/mod.rs:37
+#: src/util.rs:37
 #, c-format
 msgid "%x %X"
 msgstr "%x %X"
 
-#: src/util/mod.rs:180 src/window.rs:575
+#: src/util.rs:180 src/window.rs:651
 msgid "Failed to restore image from trash"
 msgstr "रद्दी से छवि पुनर्स्थापित करने में विफल"
 
@@ -316,23 +316,23 @@ msgstr "जानकारी कॉपी करें"
 msgid "Report Issue…"
 msgstr "मामले की रिपोर्ट करें…"
 
-#: src/widgets/image_page.rs:199
+#: src/widgets/image_page.rs:220
 msgid ""
-"No image loaders available. Mabye the “glycin-loaders” package with "
+"No image loaders available. Maybe the “glycin-loaders” package with "
 "compatibility version “{}+” is not installed."
 msgstr ""
 "कोई छवि लोडर उपलब्ध नहीं है। हो सकता है कि संगतता संस्करण “{}+” वाला “glycin-"
 "loaders” पैकेज स्थापित न हो।"
 
-#: src/widgets/image_page.rs:210
+#: src/widgets/image_page.rs:231
 msgid "The image format “{} ({})” is known but not installed."
 msgstr "छवि प्रारूप “{} ({})” ज्ञात है लेकिन स्थापित नहीं है।"
 
-#: src/widgets/image_page.rs:217
+#: src/widgets/image_page.rs:238
 msgid "Unknown image format “{} ({}).”"
 msgstr "अज्ञात छवि प्रारूप “{} ({})।”"
 
-#: src/widgets/image_page.rs:234
+#: src/widgets/image_page.rs:258
 msgid "Either the image file is corrupted or it contains unsupported elements."
 msgstr "या तो छवि फाइल दूषित है या उसमें असमर्थित तत्व हैं।"
 
@@ -374,11 +374,11 @@ msgstr "दाएं घुमाएं"
 
 #. Translators: This is a toast notification, informing the user that
 #. an image has been set as background.
-#: src/widgets/image_view.rs:682
+#: src/widgets/image_view.rs:729
 msgid "Set as background."
 msgstr "पृष्ठभूमि के रूप में निर्धारित करें।"
 
-#: src/widgets/image_view.rs:695
+#: src/widgets/image_view.rs:742
 msgid "Could not set background."
 msgstr "पृष्ठभूमि निर्धारित नहीं कर सके।"
 
@@ -392,61 +392,69 @@ msgstr "अगली छवि"
 
 #: src/widgets/image_view.ui:63
 msgid "Zoom Out"
-msgstr "जूम आउट"
+msgstr "छोटा करें"
 
 #: src/widgets/image_view.ui:74
 msgid "Zoom In"
-msgstr "जूम इन"
+msgstr "बड़ा करें"
 
 #: src/widgets/image_view.ui:85
 msgid "Toggle Fullscreen"
 msgstr "पूर्णस्क्रीन टॉगल करें"
 
-#: src/widgets/print.rs:116
+#: src/widgets/print.rs:108
 msgid "Top"
 msgstr "ऊपर"
 
-#: src/widgets/print.rs:117
+#: src/widgets/print.rs:109
 msgid "Center"
 msgstr "मध्य"
 
-#: src/widgets/print.rs:118
+#: src/widgets/print.rs:110
 msgid "Bottom"
 msgstr "नीचे"
 
-#: src/widgets/print.rs:119
+#: src/widgets/print.rs:111
 msgid "Left"
 msgstr "बाएं"
 
-#: src/widgets/print.rs:120
+#: src/widgets/print.rs:112
 msgid "Right"
 msgstr "दाएं"
 
 #. Translators: Shorthand for centimeter
-#: src/widgets/print.rs:156
+#: src/widgets/print.rs:148
 msgid "cm"
 msgstr "cm"
 
 #. Translators: Shorthand for inch
-#: src/widgets/print.rs:158
+#: src/widgets/print.rs:150
 msgid "in"
 msgstr "in"
 
 #. Translators: Shorthand for pixel
-#: src/widgets/print.rs:160
+#: src/widgets/print.rs:152
 msgid "px"
 msgstr "px"
 
 #. Translators: {} is a placeholder for the filename
-#: src/widgets/print.rs:382
+#: src/widgets/print.rs:361
 msgid "Print “{}”"
 msgstr "“{}” छापें"
 
-#: src/widgets/print.rs:803
+#: src/widgets/print.rs:465
+msgid "Continue…"
+msgstr "जारी रखें…"
+
+#: src/widgets/print.rs:466
+msgid "Print Image"
+msgstr "छवि प्रिंट करें"
+
+#: src/widgets/print.rs:788
 msgid "_Scale"
 msgstr "पैमाना (_S)"
 
-#: src/widgets/print.rs:806
+#: src/widgets/print.rs:791
 msgid "_Width"
 msgstr "चौड़ाई (_W)"
 
@@ -465,15 +473,15 @@ msgstr "अभिन्यास"
 
 #: src/widgets/print.ui:59
 msgid "_Orientation"
-msgstr "उन्मुखीकरण (_O)"
+msgstr "अभिविन्यास (_O)"
 
 #: src/widgets/print.ui:72
 msgid "Portrait Page Orientation"
-msgstr "पोर्ट्रेट पृष्ठ उन्मुखीकरण"
+msgstr "पोर्ट्रेट पृष्ठ अभिविन्यास"
 
 #: src/widgets/print.ui:80
 msgid "Landscape Page Orientation"
-msgstr "लैंडस्केप पृष्ठ उन्मुखीकरण"
+msgstr "लैंडस्केप पृष्ठ अभिविन्यास"
 
 #: src/widgets/print.ui:89
 msgid "_Alignment"
@@ -495,7 +503,7 @@ msgstr "क्षैतिज (_H)"
 msgid "_Vertical"
 msgstr "लंबवत (_V)"
 
-#: src/widgets/print.ui:142 src/widgets/properties_view.ui:53
+#: src/widgets/print.ui:142 src/widgets/properties_view.ui:55
 msgid "Image Size"
 msgstr "छवि आकार"
 
@@ -505,32 +513,32 @@ msgstr "छवि आकार इकाइयां"
 
 #: src/widgets/print.ui:163
 msgid "_Fill Space"
-msgstr " जगह भरें (_F)"
+msgstr "जगह भरें (_F)"
 
 #: src/widgets/print.ui:174
 msgid "H_eight"
 msgstr "ऊंचाई (_e)"
 
-#: src/widgets/properties_view.rs:234
+#: src/widgets/properties_view.rs:247
 msgid "Unknown"
 msgstr "अज्ञात"
 
 #. Translators: Addition of image being transparent to format name
-#: src/widgets/properties_view.rs:238
+#: src/widgets/properties_view.rs:251
 msgid ", transparent"
 msgstr ", पारदर्शी"
 
 #. Translators: Addition of image being grayscale to format name
-#: src/widgets/properties_view.rs:243
+#: src/widgets/properties_view.rs:256
 msgid ", grayscale"
 msgstr ", ग्रेस्केल"
 
 #. Translators: Addition of bit size to format name
-#: src/widgets/properties_view.rs:248
+#: src/widgets/properties_view.rs:261
 msgid ", {}\\u{202F}bit"
 msgstr ", {}\\u{202F}bit"
 
-#: src/widgets/properties_view.rs:299
+#: src/widgets/properties_view.rs:312
 msgid "Image Coordinates Copied"
 msgstr "छवि निर्देशांक कॉपी किए गए"
 
@@ -538,112 +546,112 @@ msgstr "छवि निर्देशांक कॉपी किए गए"
 msgid "Folder"
 msgstr "फोल्डर"
 
-#: src/widgets/properties_view.ui:26
+#: src/widgets/properties_view.ui:27
 msgid "Open Containing Folder"
 msgstr "धारक फोल्डर खोलें"
 
-#: src/widgets/properties_view.ui:39
+#: src/widgets/properties_view.ui:40
 msgid "URI"
 msgstr "URI"
 
-#: src/widgets/properties_view.ui:62
+#: src/widgets/properties_view.ui:65
 msgid "Image Format"
 msgstr "छवि प्रारूप"
 
-#: src/widgets/properties_view.ui:71
+#: src/widgets/properties_view.ui:75
 msgid "File Size"
 msgstr "फाइल आकार"
 
-#: src/widgets/properties_view.ui:84
+#: src/widgets/properties_view.ui:89
 msgid "File Created"
 msgstr "फाइल निर्मित"
 
-#: src/widgets/properties_view.ui:93
+#: src/widgets/properties_view.ui:99
 msgid "File Modified"
 msgstr "फाइल संशोधित"
 
 #. Translators: This is a label for GPS coordinates
-#: src/widgets/properties_view.ui:106
+#: src/widgets/properties_view.ui:113
 msgid "Location"
 msgstr "स्थान"
 
-#: src/widgets/properties_view.ui:116
+#: src/widgets/properties_view.ui:124
 msgid "Copy Coordinates"
 msgstr "निर्देशांक कॉपी करें"
 
-#: src/widgets/properties_view.ui:127
+#: src/widgets/properties_view.ui:135
 msgid "Open Location"
 msgstr "स्थान खोलें"
 
-#: src/widgets/properties_view.ui:140
+#: src/widgets/properties_view.ui:148
 msgid "Originally Created"
 msgstr "मूलतः निर्मित"
 
-#: src/widgets/properties_view.ui:149
+#: src/widgets/properties_view.ui:158
 msgid "Aperture"
 msgstr "एपर्चर"
 
-#: src/widgets/properties_view.ui:158
+#: src/widgets/properties_view.ui:168
 msgid "Exposure"
 msgstr "एक्सपोज़र"
 
-#: src/widgets/properties_view.ui:167
+#: src/widgets/properties_view.ui:178
 msgid "ISO"
 msgstr "ISO"
 
-#: src/widgets/properties_view.ui:176
+#: src/widgets/properties_view.ui:188
 msgid "Focal Length"
 msgstr "फोकल लंबाई"
 
-#: src/widgets/properties_view.ui:185
+#: src/widgets/properties_view.ui:198
 msgid "Maker, Model"
 msgstr "निर्माता, मॉडल"
 
-#: src/window.rs:442
+#: src/window.rs:515
 msgid "Supported image formats"
 msgstr "समर्थित छवि प्रारूप"
 
-#: src/window.rs:448
+#: src/window.rs:521
 msgid "All files"
 msgstr "सभी फाइलें"
 
-#: src/window.rs:455
+#: src/window.rs:528
 msgid "Open Image"
 msgstr "छवि खोलें"
 
-#: src/window.rs:541
+#: src/window.rs:614
 msgid "Image copied to clipboard"
 msgstr "छवि क्लिपबोर्ड पर कॉपी की गई"
 
-#: src/window.rs:562
+#: src/window.rs:635
 msgid "Image moved to trash"
 msgstr "छवि को रद्दी में ले जाया गया"
 
-#: src/window.rs:563
+#: src/window.rs:636
 msgid "Undo"
 msgstr "पूर्ववत करें"
 
-#: src/window.rs:589
+#: src/window.rs:666
 msgid "Failed to move image to trash"
 msgstr "छवि को रद्दी में ले जाने में विफल"
 
-#: src/window.rs:615
+#: src/window.rs:690
 msgid "Permanently Delete Image?"
 msgstr "छवि को स्थायी रूप से मिटाएं?"
 
-#: src/window.rs:617
+#: src/window.rs:692
 msgid "After deleting the image “{}” it will be permanently lost."
 msgstr "छवि “{}” को मिटाने के बाद यह स्थायी रूप से खो जाएगी।"
 
-#: src/window.rs:625
+#: src/window.rs:700
 msgid "Cancel"
 msgstr "रद्द करें"
 
-#: src/window.rs:626
+#: src/window.rs:701
 msgid "Delete"
 msgstr "मिटाएं"
 
-#: src/window.rs:637
+#: src/window.rs:712
 msgid "Failed to delete image"
 msgstr "छवि मिटाने में विफल"
 
