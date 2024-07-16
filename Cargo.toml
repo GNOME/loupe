@@ -13,34 +13,26 @@ codegen-units = 1
 x11 = ["ashpd/gtk4_x11"]
 
 [dependencies]
-adw = { package = "libadwaita", version = "0.7.0", features = [
-    "v1_5",
-], git = "https://gitlab.gnome.org/World/Rust/libadwaita-rs.git", branch = "master" }
+adw = { package = "libadwaita", version = "0.7.0", features = ["v1_5"] }
 anyhow = { version = "1.0.66", features = ["backtrace"] }
 arc-swap = "1.6.0"
-ashpd = { version = "0.9.0", features = [
-    "gtk4_wayland",
-], git = "https://github.com/sophie-h/ashpd.git", branch = "wip/sophie-h/gtk-rs-0.20" }
+ashpd = { version = "0.9.1", features = ["gtk4_wayland"] }
 async-channel = "2.1.0"
 async-lock = "3.4.0"
-cairo-rs = { version = "*", features = [
-    "pdf",
-], git = "https://github.com/gtk-rs/gtk-rs-core.git", branch = "master" }
+cairo-rs = { version = "0.20.0", features = ["pdf"] }
 env_logger = "0.11.0"
 futures-channel = "0.3.25"
 futures-lite = "2.1.0"
 gettext-rs = { version = "0.7.0", features = ["gettext-system"] }
 gettext-sys = { version = "0.21.3", features = ["gettext-system"] }
-gio = { version = "0.20.0", features = [
-    "v2_74",
-], git = "https://github.com/gtk-rs/gtk-rs-core.git", branch = "master" }
+gio = { version = "0.20.0", features = ["v2_74"] }
 glycin = { version = "2.0.0-alpha", features = [
     "gdk4",
 ], git = "https://gitlab.gnome.org/sophie-h/glycin" }
 gtk = { package = "gtk4", version = "0.9.0", features = [
     "v4_14",
     "xml_validation",
-], git = "https://github.com/gtk-rs/gtk4-rs.git", branch = "master" }
+] }
 gvdb-macros = "0.1.6"
 indexmap = "2.0.0"
 kamadak-exif = "0.5.5"
