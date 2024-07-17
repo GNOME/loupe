@@ -648,12 +648,13 @@ impl SharedFrameBuffer {
     /// Return true if the next frame should be shown and removes the outdated
     /// frame
     pub fn frame_timeout(&self, elapsed: Duration) -> bool {
-        if self
-            .buffer
-            .load()
-            .images
-            .front()
-            .is_some_and(|next_frame| elapsed >= next_frame.delay)
+        let images = &self.buffer.load().images;
+
+        // Only move to next image if there is one buffered
+        if images.len() > 1
+            && images
+                .front()
+                .is_some_and(|next_frame| elapsed >= next_frame.delay)
         {
             self.next_frame();
             return true;
