@@ -26,7 +26,8 @@ use crate::decoder::tiling::{self, SharedFrameBuffer};
 use crate::deps::*;
 use crate::metadata::Metadata;
 
-pub const FRAME_BUFFER: usize = 3;
+/// Max number of frames kept in buffer for animations
+pub const FRAME_BUFFER: usize = 10;
 
 #[derive(Debug)]
 pub struct Glycin {
