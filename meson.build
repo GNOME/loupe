@@ -1,15 +1,18 @@
-project('loupe', 'rust',
-          version: '47.alpha',
-    meson_version: '>= 0.59.0',
-  default_options: [ 'warning_level=2',
-                   ],
+project(
+  'loupe',
+  'rust',
+  version: '47.alpha',
+  meson_version: '>= 0.59.0',
+  default_options: [
+    'warning_level=2',
+  ],
 )
 
 i18n = import('i18n')
 gnome = import('gnome')
 
 dependency('gtk4', version: '>=4.13.6')
-dependency('libadwaita-1', version: '>=1.5.beta')
+dependency('libadwaita-1', version: '>=1.6.alpha')
 dependency('gweather4', version: '>=4.0.0')
 # Required by glycin crate
 dependency('lcms2', version: '>=2.12.0')
@@ -45,8 +48,8 @@ app_id = 'org.gnome.Loupe@0@'.format(profile)
 iv_version = meson.project_version() + version_suffix
 
 cargo_sources = files(
-  'Cargo.toml',
   'Cargo.lock',
+  'Cargo.toml',
 )
 
 conf = configuration_data()
@@ -65,8 +68,8 @@ subdir('po')
 
 # Pre-commit hook for rust formatting
 if get_option('profile') == 'development'
-    message('Setting up git pre-commit hook..')
-    run_command('cp', '-f', 'hooks/pre-commit.hook', '.git/hooks/pre-commit', check: false)
+  message('Setting up git pre-commit hook..')
+  run_command('cp', '-f', 'hooks/pre-commit.hook', '.git/hooks/pre-commit', check: false)
 endif
 
 gnome.post_install(
@@ -77,6 +80,10 @@ gnome.post_install(
 
 meson.add_dist_script(
   'build-aux/meson/dist-vendor.sh',
-  join_paths(meson.project_build_root(), 'meson-dist', meson.project_name() + '-' + meson.project_version()),
-  meson.project_source_root()
+  join_paths(
+    meson.project_build_root(),
+    'meson-dist',
+    meson.project_name() + '-' + meson.project_version(),
+  ),
+  meson.project_source_root(),
 )

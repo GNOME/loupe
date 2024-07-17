@@ -13,7 +13,7 @@ codegen-units = 1
 x11 = ["ashpd/gtk4_x11"]
 
 [dependencies]
-adw = { package = "libadwaita", version = "0.7.0", features = ["v1_5"] }
+adw = { package = "libadwaita", version = "0.7.0", features = ["v1_6"] }
 anyhow = { version = "1.0.66", features = ["backtrace"] }
 arc-swap = "1.6.0"
 ashpd = { version = "0.9.1", features = ["gtk4_wayland"] }
