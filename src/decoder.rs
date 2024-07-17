@@ -77,13 +77,13 @@ impl UpdateSender {
     /// Send occurring errors to renderer
     pub fn spawn_error_handled<F>(&self, f: F) -> glib::JoinHandle<()>
     where
-        F: std::future::Future<Output = Result<(), glycin::Error>> + Send + 'static,
+        F: std::future::Future<Output = Result<(), glycin::ErrorCtx>> + Send + 'static,
     {
         let update_sender = self.clone();
         glib::spawn_future(async move {
             let update_sender = update_sender.clone();
 
-            let result: Result<(), glycin::Error> = f.await;
+            let result: Result<(), glycin::ErrorCtx> = f.await;
 
             if let Err(err) = result {
                 if err.unsupported_format().is_some() {

@@ -210,7 +210,7 @@ impl LpImagePage {
         let image = self.image();
 
         if image.is_unsupported() {
-            let message = if glycin::supported_loader_mime_types().await.is_empty() {
+            let message = if glycin::Loader::supported_mime_types().await.is_empty() {
                 // Translators: {} is replace with a version number
                 gettext_f(
                     "No image loaders available. Maybe the “glycin-loaders” package with compatibility version “{}+” is not installed.",
@@ -220,7 +220,7 @@ impl LpImagePage {
                 let content_type = gio::content_type_from_mime_type(&mime_type).unwrap_or_default();
                 let description = gio::content_type_get_description(&content_type).to_string();
 
-                if glycin::DEFAULT_MIME_TYPES.contains(&mime_type.as_str()) {
+                if glycin::Loader::DEFAULT_MIME_TYPES.contains(&mime_type.as_str()) {
                     // Translators: The first occurance of {} is replace with a description of the
                     // format and the second with an id (mime-type) of the format.
                     gettext_f(

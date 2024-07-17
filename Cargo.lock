@@ -1024,7 +1024,7 @@ dependencies = [
 [[package]]
 name = "glycin"
 version = "2.0.0-alpha"
-source = "git+https://gitlab.gnome.org/sophie-h/glycin#4b0759839322fad9277c7f823438abe4937e4027"
+source = "git+https://gitlab.gnome.org/sophie-h/glycin#590eb454995a2d7913e9f34053d272ab9d1a0e07"
 dependencies = [
  "async-fs",
  "async-io",
@@ -1055,7 +1055,7 @@ dependencies = [
 [[package]]
 name = "glycin-utils"
 version = "2.0.0-alpha"
-source = "git+https://gitlab.gnome.org/sophie-h/glycin#4b0759839322fad9277c7f823438abe4937e4027"
+source = "git+https://gitlab.gnome.org/sophie-h/glycin#590eb454995a2d7913e9f34053d272ab9d1a0e07"
 dependencies = [
  "env_logger",
  "gufo-common",
