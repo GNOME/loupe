@@ -47,11 +47,6 @@ base_id = 'org.gnome.Loupe'
 app_id = 'org.gnome.Loupe@0@'.format(profile)
 iv_version = meson.project_version() + version_suffix
 
-cargo_sources = files(
-  'Cargo.lock',
-  'Cargo.toml',
-)
-
 conf = configuration_data()
 conf.set('APP_ID', app_id)
 conf.set('PROFILE', profile)
@@ -65,12 +60,6 @@ subdir('data')
 subdir('help')
 subdir('src')
 subdir('po')
-
-# Pre-commit hook for rust formatting
-if get_option('profile') == 'development'
-  message('Setting up git pre-commit hook..')
-  run_command('cp', '-f', 'hooks/pre-commit.hook', '.git/hooks/pre-commit', check: false)
-endif
 
 gnome.post_install(
   gtk_update_icon_cache: true,
