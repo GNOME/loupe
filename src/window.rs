@@ -6,6 +6,7 @@
 // Copyright (c) 2023 FineFindus
 // Copyright (c) 2023 qwel
 // Copyright (c) 2023 Huan Thieu Nguyen
+// Copyright (c) 2024 Fina Wilke
 // Copyright (c) 2024 DaPigGuy
 // Copyright (c) 2024 James Frost
 //

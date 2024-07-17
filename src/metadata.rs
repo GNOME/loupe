@@ -244,7 +244,11 @@ impl Metadata {
             .as_ref()
             .and_then(|exif| exif.get_field(exif::Tag::FNumber, exif::In::PRIMARY))
         {
-            return Some(format!("ƒ\u{2215}{}", field.display_value()));
+            // Translators: Display of the f-number <https://en.wikipedia.org/wiki/F-number>. {} will be replaced with the number
+            return Some(gettext_f(
+                r"\u{192}\u{2215}{}",
+                [field.display_value().to_string()],
+            ));
         }
 
         None
@@ -259,7 +263,7 @@ impl Metadata {
                 if speed <= 0.5 {
                     let exposure = format!("{:.0}", 1. / speed);
                     // Translators: Fractional exposure time (photography) in seconds
-                    return Some(gettext_f("1\u{2215}{}\u{202F}s", [exposure]));
+                    return Some(gettext_f(r"1\u{2215}{}\u{202F}s", [exposure]));
                 } else {
                     let exposure = if speed < 5. {
                         format!("{:.1}", speed)
@@ -267,7 +271,7 @@ impl Metadata {
                         format!("{:.0}", speed)
                     };
                     // Translators: Exposure time (photography) in seconds
-                    return Some(gettext_f("{}\u{202F}s", [exposure]));
+                    return Some(gettext_f(r"{}\u{202F}s", [exposure]));
                 }
             }
         }
@@ -293,7 +297,7 @@ impl Metadata {
             if let exif::Value::Rational(rational) = &field.value {
                 let length = format!("{:.0}", rational.first()?.to_f32());
                 // Translators: Unit for focal length in millimeters
-                return Some(gettext_f("{}\u{202F}mm", [length]));
+                return Some(gettext_f(r"{}\u{202F}mm", [length]));
             }
         }
 

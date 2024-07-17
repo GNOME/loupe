@@ -1,5 +1,7 @@
 // Copyright (c) 2022-2024 Sophie Herold
 // Copyright (c) 2022 Christopher Davis
+// Copyright (c) 2024 Lukáš Tyrychtr
+// Copyright (c) 2024 Fina Wilke
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -264,7 +266,7 @@ mod imp {
 
             if let Some(bit_depth) = metadata.bit_depth() {
                 // Translators: Addition of bit size to format name
-                format.push_str(&gettext_f(", {}\u{202F}bit", [bit_depth.to_string()]));
+                format.push_str(&gettext_f(r", {}\u{202F}bit", [bit_depth.to_string()]));
             }
 
             Some(format)
@@ -279,7 +281,11 @@ mod imp {
                     _ => {
                         let (width, height) = image.image_size();
                         if width > 0 && height > 0 {
-                            Some(format!("{width}\u{202F}\u{D7}\u{202F}{height}"))
+                            // Translators: Image "<width> x <height>"
+                            Some(gettext_f(
+                                r"{}\u{202F}\u{D7}\u{202F}{}",
+                                [width.to_string(), height.to_string()],
+                            ))
                         } else {
                             None
                         }

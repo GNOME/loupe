@@ -26,6 +26,64 @@ fn freplace(mut s: String, args: impl IntoIterator<Item = impl AsRef<str>>) -> S
 }
 
 pub fn gettext_f(format: &str, args: impl IntoIterator<Item = impl AsRef<str>>) -> String {
-    let s = gettextrs::gettext(format);
+    let s = ugettext(format);
     freplace(s, args)
+}
+
+/// Same as `gettext` but evaluates unicode escape sequences
+pub fn ugettext(msgid: &str) -> String {
+    let msg = gettext(msgid);
+    apply_unicode_escapes(&msg).unwrap_or(msg)
+}
+
+enum State {
+    None,
+    UnicodeHex,
+}
+
+/// Replace unicode escape sequences with the actual `char`
+///
+/// ```
+/// assert_eq!(
+///    loupe::util::gettext::apply_unicode_escapes(r"abc \u{03a6} \u{2764} d"),
+///    Some("abc \u{03a6} \u{2764} d".into())
+/// );
+pub fn apply_unicode_escapes(s: impl AsRef<str>) -> Option<String> {
+    let mut state = State::None;
+    let mut new = String::new();
+    let mut hex = String::new();
+    let mut char_iter = s.as_ref().chars();
+    while let Some(c) = char_iter.next() {
+        match state {
+            State::None if c == '\\' => {
+                if let (Some(c1), Some(c2)) = (char_iter.next(), char_iter.next()) {
+                    if c1 == 'u' && c2 == '{' {
+                        state = State::UnicodeHex;
+                    }
+                }
+            }
+            State::None => new.push(c),
+            State::UnicodeHex => {
+                if c == '}' {
+                    new.push(hex_to_char(&hex)?);
+                    hex.clear();
+                    state = State::None;
+                } else {
+                    hex.push(c);
+                }
+            }
+        }
+    }
+
+    Some(new)
+}
+
+/// Convert hex string to char
+///
+/// ```
+/// assert_eq!(loupe::util::gettext::hex_to_char("03a6"), Some('Φ'))
+/// ```
+pub fn hex_to_char(hex: &str) -> Option<char> {
+    let u = u32::from_str_radix(hex, 16).ok()?;
+    char::from_u32(u)
 }

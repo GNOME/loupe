@@ -11,6 +11,7 @@ src/decoder/formats/svg.rs
 src/decoder/tiling.rs
 src/editing.rs
 src/file_model.rs
+src/lib.rs
 src/main.rs
 src/metadata.rs
 src/metadata/file.rs
