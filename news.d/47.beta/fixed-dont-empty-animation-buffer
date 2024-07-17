@@ -1,0 +1,1 @@
+No longer empty the animation buffer if next frame isn't available yet. This removes flickering for larger and high FPS animations on slower systems.
