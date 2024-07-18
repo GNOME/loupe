@@ -74,18 +74,6 @@ static GRESOURCE_BYTES: &[u8] =
     gvdb_macros::include_gresource_from_dir!("/org/gnome/Loupe", "data/resources");
 
 pub fn main() -> glib::ExitCode {
-    // Don't use ngl renderer by default due to performance reasons
-    // <https://gitlab.gnome.org/GNOME/gtk/-/issues/6411>
-    if std::env::var("GSK_RENDERER").map_or(true, |x| x.is_empty()) {
-        std::env::set_var("GSK_RENDERER", "gl");
-    }
-
-    // Don't use gl renderer does not properly support fractional scaling
-    // <https://gitlab.gnome.org/GNOME/loupe/-/issues/346>
-    if std::env::var("GDK_DEBUG").is_err() {
-        std::env::set_var("GDK_DEBUG", "gl-no-fractional");
-    }
-
     // Follow G_MESSAGES_DEBUG env variable
     let default_level =
         if !glib::log_writer_default_would_drop(glib::LogLevel::Debug, Some("loupe")) {
