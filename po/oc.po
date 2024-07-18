@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2024-07-02 21:51+0000\n"
-"PO-Revision-Date: 2024-07-10 20:56+0200\n"
+"POT-Creation-Date: 2024-07-17 17:52+0000\n"
+"PO-Revision-Date: 2024-07-18 21:12+0200\n"
 "Last-Translator: Quentin PAGÈS\n"
 "Language-Team: Occitan <totenoc@gmail.com>\n"
 "Language: oc\n"
@@ -253,18 +253,22 @@ msgstr "Copyright © 2020–2024 Christopher Davis et al."
 msgid "Could not list other files in directory."
 msgstr "Impossible de listar los autres fichièrs del repertòri."
 
+#: src/metadata.rs:249
+msgid "\\u{192}\\u{2215}{}"
+msgstr "\\u{192}\\u{2215}{}"
+
 #. Translators: Fractional exposure time (photography) in seconds
-#: src/metadata.rs:262
+#: src/metadata.rs:266
 msgid "1\\u{2215}{}\\u{202F}s"
 msgstr "1\\u{2215}{}\\u{202F}s"
 
 #. Translators: Exposure time (photography) in seconds
-#: src/metadata.rs:270
+#: src/metadata.rs:274
 msgid "{}\\u{202F}s"
 msgstr "{}\\u{202F}s"
 
 #. Translators: Unit for focal length in millimeters
-#: src/metadata.rs:296
+#: src/metadata.rs:300
 msgid "{}\\u{202F}mm"
 msgstr "{}\\u{202F}mm"
 
@@ -317,7 +321,7 @@ msgstr "Copiar las informacions"
 msgid "Report Issue…"
 msgstr "Senhalar una anomalia…"
 
-#: src/widgets/image_page.rs:220
+#: src/widgets/image_page.rs:216
 msgid ""
 "No image loaders available. Maybe the “glycin-loaders” package with "
 "compatibility version “{}+” is not installed."
@@ -325,15 +329,15 @@ msgstr ""
 "Cap de cargador pas disponible. Benlèu que lo paquet « glycin-loaders » amb "
 "la version de compatibilitat « {}+ » es pas installat."
 
-#: src/widgets/image_page.rs:231
+#: src/widgets/image_page.rs:227
 msgid "The image format “{} ({})” is known but not installed."
 msgstr "Lo format d’imatge « {} ({}) » es conegut mas pas installat."
 
-#: src/widgets/image_page.rs:238
+#: src/widgets/image_page.rs:234
 msgid "Unknown image format “{} ({}).”"
 msgstr "Formats d’imatge desconegut « {} ({}) »"
 
-#: src/widgets/image_page.rs:258
+#: src/widgets/image_page.rs:254
 msgid "Either the image file is corrupted or it contains unsupported elements."
 msgstr "Siá l’imatge es corromput siá content d’elements pas preses en carga."
 
@@ -357,19 +361,19 @@ msgstr "Pivotar"
 msgid "_Set as Background…"
 msgstr "Definir coma _rèireplan…"
 
-#: src/widgets/image_page.ui:63
+#: src/widgets/image_page.ui:57
 msgid "Could not Load Image"
 msgstr "Cargament impossible de l’imatge"
 
-#: src/widgets/image_page.ui:66
+#: src/widgets/image_page.ui:60
 msgid "More Information…"
 msgstr "Mai d'informacions…"
 
-#: src/widgets/image_page.ui:105 src/window.ui:106
+#: src/widgets/image_page.ui:99 src/window.ui:106
 msgid "Rotate Left"
 msgstr "Pivotar cap a esquèrra"
 
-#: src/widgets/image_page.ui:115 src/window.ui:116
+#: src/widgets/image_page.ui:109 src/window.ui:116
 msgid "Rotate Right"
 msgstr "Pivotar cap a drecha"
 
@@ -520,26 +524,30 @@ msgstr "_Emplenament d’espaci"
 msgid "H_eight"
 msgstr "_Nautor"
 
-#: src/widgets/properties_view.rs:247
+#: src/widgets/properties_view.rs:255
 msgid "Unknown"
 msgstr "Desconegut"
 
 #. Translators: Addition of image being transparent to format name
-#: src/widgets/properties_view.rs:251
+#: src/widgets/properties_view.rs:259
 msgid ", transparent"
 msgstr ", transparent"
 
 #. Translators: Addition of image being grayscale to format name
-#: src/widgets/properties_view.rs:256
+#: src/widgets/properties_view.rs:264
 msgid ", grayscale"
 msgstr ", nivèl de gris"
 
 #. Translators: Addition of bit size to format name
-#: src/widgets/properties_view.rs:261
+#: src/widgets/properties_view.rs:269
 msgid ", {}\\u{202F}bit"
 msgstr ", {}\\u{202F}bit"
 
-#: src/widgets/properties_view.rs:312
+#: src/widgets/properties_view.rs:286
+msgid "{}\\u{202F}\\u{D7}\\u{202F}{}"
+msgstr "{}\\u{202F}\\u{D7}\\u{202F}{}"
+
+#: src/widgets/properties_view.rs:324
 msgid "Image Coordinates Copied"
 msgstr "Coordenadas de l’imatge copiadas"
 
