@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2024-06-01 14:01+0000\n"
-"PO-Revision-Date: 2024-06-02 07:38+0200\n"
+"POT-Creation-Date: 2024-07-17 17:52+0000\n"
+"PO-Revision-Date: 2024-07-18 13:15+0200\n"
 "Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
 "Language-Team: Slovenian <gnome-si@googlegroups.com>\n"
 "Language: sl\n"
@@ -23,7 +23,7 @@ msgstr ""
 "X-Poedit-SourceCharset: ISO-8859-1\n"
 
 #: data/org.gnome.Loupe.desktop.in.in:3
-#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:30 src/window.rs:754
+#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:31 src/window.rs:829
 msgid "Image Viewer"
 msgstr "Pregledovalnik slik"
 
@@ -38,7 +38,7 @@ msgid "Show the image properties sidebar"
 msgstr "Pokaži okno lastnosti slike"
 
 #. developer_name tag deprecated with Appstream 1.0
-#: data/org.gnome.Loupe.metainfo.xml.in.in:8 src/about.rs:33
+#: data/org.gnome.Loupe.metainfo.xml.in.in:8 src/about.rs:34
 msgid "The GNOME Project"
 msgstr "Projekt GNOME"
 
@@ -246,32 +246,36 @@ msgid "Gestures"
 msgstr "Poteze"
 
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/about.rs:42
+#: src/about.rs:43
 msgid "translator-credits"
 msgstr ""
 "Martin Srebotnjak\n"
 "Matej Urbančič <mateju@src.gnome.org>"
 
-#: src/about.rs:43
+#: src/about.rs:44
 msgid "Copyright © 2020–2024 Christopher Davis et al."
 msgstr "Avtorske pravice © 2020–2024 Christopher Davis in sodelavci"
 
-#: src/file_model.rs:129
+#: src/file_model.rs:131
 msgid "Could not list other files in directory."
 msgstr "Drugih datotek v mapi ni mogoče izpisati."
 
+#: src/metadata.rs:249
+msgid "\\u{192}\\u{2215}{}"
+msgstr "\\u{192}\\u{2215}{}"
+
 #. Translators: Fractional exposure time (photography) in seconds
-#: src/metadata.rs:262
+#: src/metadata.rs:266
 msgid "1\\u{2215}{}\\u{202F}s"
-msgstr "1\\u{2215}{}\\u{202F}s"
+msgstr "1\\u{2215}{}\\u{202F} s"
 
 #. Translators: Exposure time (photography) in seconds
-#: src/metadata.rs:270
+#: src/metadata.rs:274
 msgid "{}\\u{202F}s"
 msgstr "{}\\u{202F} s"
 
 #. Translators: Unit for focal length in millimeters
-#: src/metadata.rs:296
+#: src/metadata.rs:300
 msgid "{}\\u{202F}mm"
 msgstr "{}\\u{202F} mm"
 
@@ -304,7 +308,7 @@ msgstr "Z"
 msgid "%x %X"
 msgstr "%x %X"
 
-#: src/util.rs:180 src/window.rs:575
+#: src/util.rs:180 src/window.rs:651
 msgid "Failed to restore image from trash"
 msgstr "Obnovitev slike iz smeti je spodletela"
 
@@ -324,7 +328,7 @@ msgstr "Kopiraj podatke"
 msgid "Report Issue…"
 msgstr "Pošlji poročilo o napaki …"
 
-#: src/widgets/image_page.rs:199
+#: src/widgets/image_page.rs:216
 msgid ""
 "No image loaders available. Maybe the “glycin-loaders” package with "
 "compatibility version “{}+” is not installed."
@@ -332,15 +336,15 @@ msgstr ""
 "Nalagalniki slik niso na voljo. Morda paket »glicin-loaders« z različico "
 "združljivosti »{}+« ni nameščen."
 
-#: src/widgets/image_page.rs:210
+#: src/widgets/image_page.rs:227
 msgid "The image format “{} ({})” is known but not installed."
 msgstr "Vrsta zapisa slike »{} ({})« je znana, vendar ni nameščena."
 
-#: src/widgets/image_page.rs:217
+#: src/widgets/image_page.rs:234
 msgid "Unknown image format “{} ({}).”"
 msgstr "Neznana vrsta zapisa slike »{} ({})«."
 
-#: src/widgets/image_page.rs:234
+#: src/widgets/image_page.rs:254
 msgid "Either the image file is corrupted or it contains unsupported elements."
 msgstr "Slikovna datoteka je poškodovana ali pa vsebuje nepodprte elemente."
 
@@ -364,29 +368,29 @@ msgstr "Zavrti"
 msgid "_Set as Background…"
 msgstr "_Nastavi za ozadje …"
 
-#: src/widgets/image_page.ui:63
+#: src/widgets/image_page.ui:57
 msgid "Could not Load Image"
 msgstr "Slike ni mogoče naložiti"
 
-#: src/widgets/image_page.ui:66
+#: src/widgets/image_page.ui:60
 msgid "More Information…"
 msgstr "Več informacij ..."
 
-#: src/widgets/image_page.ui:105 src/window.ui:106
+#: src/widgets/image_page.ui:99 src/window.ui:106
 msgid "Rotate Left"
 msgstr "Zavrti v levo"
 
-#: src/widgets/image_page.ui:115 src/window.ui:116
+#: src/widgets/image_page.ui:109 src/window.ui:116
 msgid "Rotate Right"
 msgstr "Zavrti v desno"
 
 #. Translators: This is a toast notification, informing the user that
 #. an image has been set as background.
-#: src/widgets/image_view.rs:682
+#: src/widgets/image_view.rs:727
 msgid "Set as background."
 msgstr "Nastavi kot sliko ozadja."
 
-#: src/widgets/image_view.rs:695
+#: src/widgets/image_view.rs:740
 msgid "Could not set background."
 msgstr "Ozadja ni bilo mogoče nastaviti."
 
@@ -446,23 +450,23 @@ msgid "px"
 msgstr "sl. točk"
 
 #. Translators: {} is a placeholder for the filename
-#: src/widgets/print.rs:340
+#: src/widgets/print.rs:361
 msgid "Print “{}”"
 msgstr "Natisni »{}«"
 
-#: src/widgets/print.rs:444
+#: src/widgets/print.rs:465
 msgid "Continue…"
 msgstr "Nadaljuj …"
 
-#: src/widgets/print.rs:445
+#: src/widgets/print.rs:466
 msgid "Print Image"
 msgstr "Natisni sliko"
 
-#: src/widgets/print.rs:767
+#: src/widgets/print.rs:788
 msgid "_Scale"
 msgstr "_Merilo"
 
-#: src/widgets/print.rs:770
+#: src/widgets/print.rs:791
 msgid "_Width"
 msgstr "_Širina"
 
@@ -511,7 +515,7 @@ msgstr "_Vodoravno"
 msgid "_Vertical"
 msgstr "_Navpično"
 
-#: src/widgets/print.ui:142 src/widgets/properties_view.ui:53
+#: src/widgets/print.ui:142 src/widgets/properties_view.ui:55
 msgid "Image Size"
 msgstr "Velikost slike"
 
@@ -527,26 +531,31 @@ msgstr "_Zapolni prostor"
 msgid "H_eight"
 msgstr "_Višina"
 
-#: src/widgets/properties_view.rs:234
+#: src/widgets/properties_view.rs:255
 msgid "Unknown"
 msgstr "Neznano"
 
 #. Translators: Addition of image being transparent to format name
-#: src/widgets/properties_view.rs:238
+#: src/widgets/properties_view.rs:259
 msgid ", transparent"
 msgstr ", prosojno"
 
 #. Translators: Addition of image being grayscale to format name
-#: src/widgets/properties_view.rs:243
+#: src/widgets/properties_view.rs:264
 msgid ", grayscale"
 msgstr ", sivinsko"
 
 #. Translators: Addition of bit size to format name
-#: src/widgets/properties_view.rs:248
+#: src/widgets/properties_view.rs:269
 msgid ", {}\\u{202F}bit"
 msgstr ", {}\\u{202F} bit"
 
-#: src/widgets/properties_view.rs:299
+#: src/widgets/properties_view.rs:286
+#| msgid "1\\u{2215}{}\\u{202F}s"
+msgid "{}\\u{202F}\\u{D7}\\u{202F}{}"
+msgstr "{}\\u{202F}\\u{D7}\\u{202F}{}"
+
+#: src/widgets/properties_view.rs:324
 msgid "Image Coordinates Copied"
 msgstr "Koordinate slike so kopirane"
 
@@ -554,112 +563,112 @@ msgstr "Koordinate slike so kopirane"
 msgid "Folder"
 msgstr "Mapa"
 
-#: src/widgets/properties_view.ui:26
+#: src/widgets/properties_view.ui:27
 msgid "Open Containing Folder"
 msgstr "Odpri vsebujočo mapo"
 
-#: src/widgets/properties_view.ui:39
+#: src/widgets/properties_view.ui:40
 msgid "URI"
 msgstr "Naslov URI"
 
-#: src/widgets/properties_view.ui:62
+#: src/widgets/properties_view.ui:65
 msgid "Image Format"
 msgstr "Zapis slike"
 
-#: src/widgets/properties_view.ui:71
+#: src/widgets/properties_view.ui:75
 msgid "File Size"
 msgstr "Velikost datoteke"
 
-#: src/widgets/properties_view.ui:84
+#: src/widgets/properties_view.ui:89
 msgid "File Created"
 msgstr "Datoteka je ustvarjena"
 
-#: src/widgets/properties_view.ui:93
+#: src/widgets/properties_view.ui:99
 msgid "File Modified"
 msgstr "Datoteka je spremenjena"
 
 #. Translators: This is a label for GPS coordinates
-#: src/widgets/properties_view.ui:106
+#: src/widgets/properties_view.ui:113
 msgid "Location"
 msgstr "Mesto"
 
-#: src/widgets/properties_view.ui:116
+#: src/widgets/properties_view.ui:124
 msgid "Copy Coordinates"
 msgstr "Kopiraj koordinate"
 
-#: src/widgets/properties_view.ui:127
+#: src/widgets/properties_view.ui:135
 msgid "Open Location"
 msgstr "Odpri mesto"
 
-#: src/widgets/properties_view.ui:140
+#: src/widgets/properties_view.ui:148
 msgid "Originally Created"
 msgstr "Prvotno ustvarjeno"
 
-#: src/widgets/properties_view.ui:149
+#: src/widgets/properties_view.ui:158
 msgid "Aperture"
 msgstr "Zaslonka"
 
-#: src/widgets/properties_view.ui:158
+#: src/widgets/properties_view.ui:168
 msgid "Exposure"
 msgstr "Osvetlitev"
 
-#: src/widgets/properties_view.ui:167
+#: src/widgets/properties_view.ui:178
 msgid "ISO"
 msgstr "ISO"
 
-#: src/widgets/properties_view.ui:176
+#: src/widgets/properties_view.ui:188
 msgid "Focal Length"
 msgstr "Goriščna razdalja"
 
-#: src/widgets/properties_view.ui:185
+#: src/widgets/properties_view.ui:198
 msgid "Maker, Model"
 msgstr "Izdelovalec, model"
 
-#: src/window.rs:442
+#: src/window.rs:515
 msgid "Supported image formats"
 msgstr "Podprte vrste slik"
 
-#: src/window.rs:448
+#: src/window.rs:521
 msgid "All files"
 msgstr "Vse datoteke"
 
-#: src/window.rs:455
+#: src/window.rs:528
 msgid "Open Image"
 msgstr "Odpri sliko"
 
-#: src/window.rs:541
+#: src/window.rs:614
 msgid "Image copied to clipboard"
 msgstr "Slika, kopirana v odložišče"
 
-#: src/window.rs:562
+#: src/window.rs:635
 msgid "Image moved to trash"
 msgstr "Slika, premaknjena v smeti"
 
-#: src/window.rs:563
+#: src/window.rs:636
 msgid "Undo"
 msgstr "Razveljavi"
 
-#: src/window.rs:589
+#: src/window.rs:666
 msgid "Failed to move image to trash"
 msgstr "Premikanje slike v smeti je spodletelo"
 
-#: src/window.rs:615
+#: src/window.rs:690
 msgid "Permanently Delete Image?"
 msgstr "Ali želite sliko trajno izbrisati?"
 
-#: src/window.rs:617
+#: src/window.rs:692
 msgid "After deleting the image “{}” it will be permanently lost."
 msgstr "Po brisanju slike »{}« ni mogoče več povrniti."
 
-#: src/window.rs:625
+#: src/window.rs:700
 msgid "Cancel"
 msgstr "Prekliči"
 
-#: src/window.rs:626
+#: src/window.rs:701
 msgid "Delete"
 msgstr "Izbriši"
 
-#: src/window.rs:637
+#: src/window.rs:712
 msgid "Failed to delete image"
 msgstr "Brisanje slike je spodletelo"
 
