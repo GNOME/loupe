@@ -64,7 +64,7 @@
     <child>
       <object class="AdwBreakpoint">
         <condition>max-width: 590sp</condition>
-        <setter object="properties_flap" property="orientation">vertical</setter>
+        <setter object="multi_layout_view" property="layout-name">bottom</setter>
       </object>
     </child>
     <property name="content">
@@ -140,13 +140,67 @@
         <property name="content">
           <object class="AdwToastOverlay" id="toast_overlay">
             <property name="child">
-              <object class="AdwFlap" id="properties_flap">
-                <property name="flap-position">end</property>
-                <property name="fold-policy">never</property>
-                <property name="swipe-to-open">false</property>
-                <property name="locked">True</property>
-                <property name="reveal-flap" bind-source="properties_button" bind-property="active" bind-flags="bidirectional|sync-create" />
-                <property name="content">
+              <object class="AdwMultiLayoutView" id="multi_layout_view">
+                <child>
+                  <object class="AdwLayout">
+                    <property name="name">sidebar</property>
+                    <property name="content">
+                      <object class="AdwOverlaySplitView" id="properties_split_view">
+                        <property name="sidebar-position">end</property>
+                        <property name="min-sidebar-width">255</property>
+                        <property name="show-sidebar" bind-source="properties_button" bind-property="active" bind-flags="bidirectional|sync-create" />
+                        <property name="content">
+                          <object class="AdwLayoutSlot">
+                            <property name="id">image</property>
+                          </object>
+                        </property>
+                        <property name="sidebar">
+                          <object class="AdwLayoutSlot">
+                            <property name="id">properties</property>
+                          </object>
+                        </property>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+                <child>
+                  <object class="AdwLayout">
+                    <property name="name">bottom</property>
+                    <property name="content">
+                      <object class="GtkBox">
+                        <property name="orientation">vertical</property>
+                        <property name="homogeneous">true</property>
+                        <style>
+                          <class name="bottom-bar" />
+                        </style>
+                        <child>
+                          <object class="AdwLayoutSlot">
+                            <property name="id">image</property>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="GtkBox">
+                            <property name="orientation">vertical</property>
+                            <child>
+                              <object class="GtkSeparator" />
+                            </child>
+                            <child>
+                              <object class="AdwLayoutSlot">
+                                <property name="id">properties</property>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+                <child type="properties">
+                  <object class="LpPropertiesView" id="properties_view">
+                    <property name="vexpand">true</property>
+                  </object>
+                </child>
+                <child type="image">
                   <object class="LpDragOverlay" id="drag_overlay">
                     <property name="drop_target">drop_target</property>
                     <property name="overlayed">
@@ -204,15 +258,7 @@
                       </object>
                     </property>
                   </object>
-                </property>
-                <property name="separator">
-                  <object class="GtkSeparator" />
-                </property>
-                <property name="flap">
-                  <object class="LpPropertiesView" id="properties_view">
-                    <property name="vexpand">true</property>
-                  </object>
-                </property>
+                </child>
               </object>
             </property>
           </object>
