@@ -27,7 +27,7 @@ Code documentation
 Simplified widget arrangement including the most important widgets.
 
 -   [`LpWindow`]
-    -   [`AdwFlap`]
+    -   [`LpWindowContents`]
         -   [`LpPropertiesView`]
         -   [`LpImageView`]
             -   [`LpSlidingView`]
@@ -36,13 +36,13 @@ Simplified widget arrangement including the most important widgets.
                         -   [`LpImage`]
                 -   …
 
-[`AdwFlap`]: adw::Flap
 [`GtkScrolledWindow`]: gtk::ScrolledWindow
 [`LpImagePage`]: widgets::LpImagePage
 [`LpImageView`]: widgets::LpImageView
 [`LpImage`]: widgets::LpImage
 [`LpPropertiesView`]: widgets::LpPropertiesView
 [`LpSlidingView`]: widgets::LpSlidingView
+[`LpWindowContents`]: widgets::LpWindowContents
 [`LpWindow`]: window::LpWindow
 */
 
