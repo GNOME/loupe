@@ -29,6 +29,7 @@ mod actions;
 mod controls;
 
 use std::cell::{Cell, OnceCell, RefCell};
+use std::marker::PhantomData;
 use std::path::{Path, PathBuf};
 
 use actions::*;
@@ -55,6 +56,7 @@ const HIDE_CONTROLS_ANIMATION_DURATION: u32 = 1000;
 const HIDE_CONTROLS_IDLE_TIMEOUT: u64 = 3000;
 
 mod imp {
+
     use gio::glib::VariantTy;
 
     use super::*;
@@ -111,8 +113,8 @@ mod imp {
         #[template_child]
         pub(super) backward_click_gesture: TemplateChild<gtk::GestureClick>,
 
-        #[property(get)]
-        pub(super) is_showing_image: Cell<bool>,
+        #[property(get = Self::is_showing_image)]
+        pub(super) is_showing_image: PhantomData<bool>,
         #[property(get, set)]
         headerbar_opacity: Cell<f64>,
 
@@ -444,6 +446,16 @@ mod imp {
     impl WindowImpl for LpWindow {}
     impl ApplicationWindowImpl for LpWindow {}
     impl AdwApplicationWindowImpl for LpWindow {}
+
+    impl LpWindow {
+        fn is_showing_image(&self) -> bool {
+            self.image_view.try_get().map_or(false, |image_view| {
+                image_view
+                    .current_page()
+                    .map_or(false, |page| page.image().error().is_none())
+            })
+        }
+    }
 }
 
 glib::wrapper! {
@@ -755,7 +767,6 @@ impl LpWindow {
         let current_page = imp.image_view.current_page();
 
         // HeaderBar style
-        imp.is_showing_image.replace(current_page.is_none());
         self.notify_is_showing_image();
 
         // Window title
@@ -857,6 +868,8 @@ impl LpWindow {
     }
 
     pub fn image_error(&self) {
+        self.notify_is_showing_image();
+
         if self.is_visible() {
             return;
         }
