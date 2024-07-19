@@ -133,14 +133,14 @@
                           <object class="GtkRevealer">
                             <property name="transition-type">slide-up</property>
                             <property name="reveal-child" bind-source="properties_button" bind-property="active" bind-flags="bidirectional|sync-create" />
+                            <style>
+                              <class name="bottom-properties" />
+                            </style>
                             <property name="child">
                               <object class="AdwLayoutSlot">
                                 <property name="id">properties</property>
                               </object>
                             </property>
-                            <style>
-                              <class name="mobile-properties" />
-                            </style>
                           </object>
                         </child>
                       </object>

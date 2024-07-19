@@ -45,7 +45,6 @@ lpprintpreviewpage {
   box-shadow: 0 0 14px 3px #666;
 }
 
-
 lpprintpreviewpage lpimage {
   outline: 1px dotted rgba(0, 0, 0, 0.3);
 }
@@ -59,6 +58,6 @@ dialog.error-details textview {
   color: inherit;
 }
 
-.mobile-properties {
+.bottom-properties {
   box-shadow: 0 -1px var(--headerbar-darker-shade-color);
 }
