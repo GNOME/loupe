@@ -29,7 +29,6 @@ use adw::subclass::prelude::*;
 use glib::Properties;
 use gtk::CompositeTemplate;
 
-use super::*;
 use crate::deps::*;
 
 mod imp {
@@ -41,8 +40,6 @@ mod imp {
     pub struct LpWindowContent {
         #[template_child]
         pub(super) toolbar_view: TemplateChild<adw::ToolbarView>,
-        #[template_child]
-        pub(super) header_container: TemplateChild<LpShyBin>,
 
         #[property(get, set, nullable)]
         headerbar: RefCell<Option<gtk::Widget>>,

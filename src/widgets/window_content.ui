@@ -14,7 +14,7 @@
     <property name="child">
       <object class="AdwToolbarView" id="toolbar_view">
         <child type="top">
-          <object class="LpShyBin" id="header_container">
+          <object class="LpShyBin">
             <property name="child" bind-source="LpWindowContent" bind-property="headerbar" />
           </object>
         </child>

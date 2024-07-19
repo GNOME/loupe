@@ -115,6 +115,7 @@ mod imp {
 
         #[property(get = Self::is_showing_image)]
         pub(super) is_showing_image: PhantomData<bool>,
+        /// Set via binding to HeaderBar
         #[property(get, set)]
         headerbar_opacity: Cell<f64>,
 
