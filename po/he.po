@@ -7,20 +7,20 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2024-07-02 21:51+0000\n"
-"PO-Revision-Date: 2024-07-11 00:21+0300\n"
-"Last-Translator: Yosef Or Boczko <yoseforb@gmail.com>\n"
+"POT-Creation-Date: 2024-07-17 17:52+0000\n"
+"PO-Revision-Date: 2024-07-20 00:05+0300\n"
+"Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew\n"
 "Language: he\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n==2 ? 1 : n>10 && n%10==0 ? "
-"2 : 3)\n"
-"X-Generator: Gtranslator 46.1\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n==2 ? 1 : n>10 && n%10==0 ? 2 : "
+"3);\n"
+"X-Generator: Poedit 3.4.2\n"
 
-#: data/org.gnome.Loupe.desktop.in.in:3
-#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:31 src/window.rs:829
+#: data/org.gnome.Loupe.desktop.in.in:3 data/org.gnome.Loupe.metainfo.xml.in.in:6
+#: src/about.rs:31 src/window.rs:829
 msgid "Image Viewer"
 msgstr "מציג תמונות"
 
@@ -139,16 +139,13 @@ msgid "Navigate Images"
 msgstr "ניווט תמונות"
 
 #: data/resources/gtk/help-overlay.ui:98 data/resources/gtk/help-overlay.ui:112
-#: data/resources/gtk/help-overlay.ui:224
-#: data/resources/gtk/help-overlay.ui:238
+#: data/resources/gtk/help-overlay.ui:224 data/resources/gtk/help-overlay.ui:238
 msgctxt "shortcut window"
 msgid "Next Image"
 msgstr "תמונה הבאה"
 
-#: data/resources/gtk/help-overlay.ui:105
-#: data/resources/gtk/help-overlay.ui:119
-#: data/resources/gtk/help-overlay.ui:231
-#: data/resources/gtk/help-overlay.ui:245
+#: data/resources/gtk/help-overlay.ui:105 data/resources/gtk/help-overlay.ui:119
+#: data/resources/gtk/help-overlay.ui:231 data/resources/gtk/help-overlay.ui:245
 msgctxt "shortcut window"
 msgid "Previous Image"
 msgstr "תמונה הקודמת"
@@ -168,14 +165,12 @@ msgctxt "shortcut window"
 msgid "Rotate Image"
 msgstr "סיבוב תמונה"
 
-#: data/resources/gtk/help-overlay.ui:142
-#: data/resources/gtk/help-overlay.ui:263
+#: data/resources/gtk/help-overlay.ui:142 data/resources/gtk/help-overlay.ui:263
 msgctxt "shortcut window"
 msgid "Rotate Clockwise"
 msgstr "סיבוב עם כיוון השעון"
 
-#: data/resources/gtk/help-overlay.ui:148
-#: data/resources/gtk/help-overlay.ui:269
+#: data/resources/gtk/help-overlay.ui:148 data/resources/gtk/help-overlay.ui:269
 msgctxt "shortcut window"
 msgid "Rotate Counterclockwise"
 msgstr "סיבוב נגד כיוון השעון"
@@ -185,14 +180,12 @@ msgctxt "shortcut window"
 msgid "Zoom Image"
 msgstr "תקריב תמונה"
 
-#: data/resources/gtk/help-overlay.ui:159
-#: data/resources/gtk/help-overlay.ui:251
+#: data/resources/gtk/help-overlay.ui:159 data/resources/gtk/help-overlay.ui:251
 msgctxt "shortcut window"
 msgid "Zoom In"
 msgstr "התקרבות"
 
-#: data/resources/gtk/help-overlay.ui:165
-#: data/resources/gtk/help-overlay.ui:257
+#: data/resources/gtk/help-overlay.ui:165 data/resources/gtk/help-overlay.ui:257
 msgctxt "shortcut window"
 msgid "Zoom Out"
 msgstr "התרחקות"
@@ -257,18 +250,22 @@ msgstr "כל הזכויות שמורות © 2022-2024 Christopher Davis ואחר
 msgid "Could not list other files in directory."
 msgstr "לא ניתן להציג קבצים נוספים בתיקייה."
 
+#: src/metadata.rs:249
+msgid "\\u{192}\\u{2215}{}"
+msgstr "\\u{192}\\u{2215}{}"
+
 #. Translators: Fractional exposure time (photography) in seconds
-#: src/metadata.rs:262
+#: src/metadata.rs:266
 msgid "1\\u{2215}{}\\u{202F}s"
 msgstr "‏‎1\\u{2215}{}\\u{202F} ש"
 
 #. Translators: Exposure time (photography) in seconds
-#: src/metadata.rs:270
+#: src/metadata.rs:274
 msgid "{}\\u{202F}s"
 msgstr "‎{}\\u{202F} שנ׳"
 
 #. Translators: Unit for focal length in millimeters
-#: src/metadata.rs:296
+#: src/metadata.rs:300
 msgid "{}\\u{202F}mm"
 msgstr "‏‎{}\\u{202F} מ״מ"
 
@@ -307,10 +304,9 @@ msgstr "שחזור התמונה מהאשפה נכשלה"
 
 #: src/widgets/error_details.ui:25
 msgid ""
-"The image loader reported the following. Please include this information "
-"when you report an error."
-msgstr ""
-"טוען התמונות דיווח על העניין הבא. נא לצרף את המידע הזה לדיווח על השגיאה."
+"The image loader reported the following. Please include this information when "
+"you report an error."
+msgstr "טוען התמונות דיווח על העניין הבא. נא לצרף את המידע הזה לדיווח על השגיאה."
 
 #: src/widgets/error_details.ui:53
 msgid "Copy Information"
@@ -320,23 +316,23 @@ msgstr "העתקת פרטים"
 msgid "Report Issue…"
 msgstr "דיווח על תקלה…"
 
-#: src/widgets/image_page.rs:220
+#: src/widgets/image_page.rs:216
 msgid ""
 "No image loaders available. Maybe the “glycin-loaders” package with "
 "compatibility version “{}+” is not installed."
 msgstr ""
-"אין טועני תמונות זמינים. אולי החבילה „glycin-loaders” עם גרסת התאימות „‎{}+‎‎” "
-"לא מותקנת."
+"אין טועני תמונות זמינים. אולי החבילה „glycin-loaders” עם גרסת התאימות „‎{}+‎‎” לא "
+"מותקנת."
 
-#: src/widgets/image_page.rs:231
+#: src/widgets/image_page.rs:227
 msgid "The image format “{} ({})” is known but not installed."
 msgstr "סוג התמונה „{} ({})” מוכר אבל לא מותקן."
 
-#: src/widgets/image_page.rs:238
+#: src/widgets/image_page.rs:234
 msgid "Unknown image format “{} ({}).”"
 msgstr "סוג התמונה אינו מוכר: „{} ({})”"
 
-#: src/widgets/image_page.rs:258
+#: src/widgets/image_page.rs:254
 msgid "Either the image file is corrupted or it contains unsupported elements."
 msgstr "או שהתמונה פגומה או שהיא מכילה רכיבים שאינם נתמכים."
 
@@ -360,19 +356,19 @@ msgstr "סיבוב"
 msgid "_Set as Background…"
 msgstr "ה_גדרה כרקע…"
 
-#: src/widgets/image_page.ui:63
+#: src/widgets/image_page.ui:57
 msgid "Could not Load Image"
 msgstr "לא ניתן לטעון את התמונה"
 
-#: src/widgets/image_page.ui:66
+#: src/widgets/image_page.ui:60
 msgid "More Information…"
 msgstr "פרטים נוספים…"
 
-#: src/widgets/image_page.ui:105 src/window.ui:106
+#: src/widgets/image_page.ui:99 src/window.ui:106
 msgid "Rotate Left"
 msgstr "סיבוב שמאלה"
 
-#: src/widgets/image_page.ui:115 src/window.ui:116
+#: src/widgets/image_page.ui:109 src/window.ui:116
 msgid "Rotate Right"
 msgstr "סיבוב ימינה"
 
@@ -526,26 +522,31 @@ msgstr "מרווח _מילוי"
 msgid "H_eight"
 msgstr "גובה_"
 
-#: src/widgets/properties_view.rs:247
+#: src/widgets/properties_view.rs:255
 msgid "Unknown"
 msgstr "לא ידוע"
 
 #. Translators: Addition of image being transparent to format name
-#: src/widgets/properties_view.rs:251
+#: src/widgets/properties_view.rs:259
 msgid ", transparent"
 msgstr ", שקוף"
 
 #. Translators: Addition of image being grayscale to format name
-#: src/widgets/properties_view.rs:256
+#: src/widgets/properties_view.rs:264
 msgid ", grayscale"
 msgstr ", אפור"
 
 #. Translators: Addition of bit size to format name
-#: src/widgets/properties_view.rs:261
+#: src/widgets/properties_view.rs:269
 msgid ", {}\\u{202F}bit"
 msgstr ", {}\\u{202F} סיביות"
 
-#: src/widgets/properties_view.rs:312
+#: src/widgets/properties_view.rs:286
+#| msgid "1\\u{2215}{}\\u{202F}s"
+msgid "{}\\u{202F}\\u{D7}\\u{202F}{}"
+msgstr "{}\\u{202F}\\u{D7}\\u{202F}{}"
+
+#: src/widgets/properties_view.rs:324
 msgid "Image Coordinates Copied"
 msgstr "נקודות הציון של התמונה הועתקו"
 
