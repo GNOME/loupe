@@ -61,3 +61,8 @@ dialog.error-details textview {
 .bottom-properties {
   box-shadow: 0 -1px var(--headerbar-darker-shade-color);
 }
+
+.error-message {
+  padding: 12px;
+  font-size: 0.95em;
+}

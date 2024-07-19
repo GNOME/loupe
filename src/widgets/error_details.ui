@@ -2,8 +2,8 @@
 <interface>
   <template class="LpErrorDetails" parent="AdwDialog">
     <property name="title">Error Details</property>
-    <property name="content-width">400</property>
-    <property name="content-height">450</property>
+    <property name="content-width">550</property>
+    <property name="content-height">600</property>
     <style>
       <class name="error-details" />
     </style>
@@ -13,29 +13,41 @@
           <object class="AdwHeaderBar" />
         </child>
         <property name="content">
-          <object class="GtkBox">
-            <property name="orientation">vertical</property>
-            <property name="spacing">16px</property>
-            <property name="margin-top">12px</property>
-            <property name="margin-start">12px</property>
-            <property name="margin-end">12px</property>
-            <property name="margin-bottom">12px</property>
+          <object class="AdwPreferencesPage">
             <child>
-              <object class="GtkLabel">
-                <property name="label" translatable="true">The image loader reported the following. Please include this information when you report an error.</property>
-                <property name="wrap">true</property>
-                <style>
-                  <class name="dim-label" />
-                </style>
+              <object class="AdwPreferencesGroup">
+                <property name="description" translatable="true">The image loader reported the following when trying to load the image. Please include this information when you report an error. If possible, please also provide the image that causes the issue.</property>
               </object>
             </child>
             <child>
-              <object class="GtkScrolledWindow">
-                <property name="vexpand">true</property>
+              <object class="AdwPreferencesGroup">
+                <property name="title" translatable="true">Error Message</property>
+                <property name="header-suffix">
+                  <object class="GtkButton" id="copy">
+                    <property name="icon-name">edit-copy-symbolic</property>
+                    <property name="tooltip-text" translatable="yes">Copy Error Message</property>
+                    <style>
+                      <class name="flat" />
+                    </style>
+                  </object>
+                </property>
                 <child>
-                  <object class="GtkTextView" id="message">
-                    <property name="editable">false</property>
-                    <property name="wrap-mode">word-char</property>
+                  <object class="GtkScrolledWindow">
+                    <property name="vexpand">true</property>
+                    <property name="overflow">hidden</property>
+                    <style>
+                      <class name="card" />
+                    </style>
+                    <child>
+                      <object class="GtkTextView" id="message">
+                        <property name="editable">false</property>
+                        <property name="wrap-mode">word-char</property>
+                        <style>
+                          <class name="error-message" />
+                          <class name="monospace" />
+                        </style>
+                      </object>
+                    </child>
                   </object>
                 </child>
               </object>
@@ -43,21 +55,14 @@
           </object>
         </property>
         <child type="bottom">
-          <object class="GtkCenterBox">
-            <property name="margin-top">12px</property>
-            <property name="margin-start">12px</property>
-            <property name="margin-end">12px</property>
-            <property name="margin-bottom">12px</property>
-            <property name="start-widget">
-              <object class="GtkButton" id="copy">
-                <property name="label" translatable="yes">Copy Information</property>
-              </object>
-            </property>
-            <property name="end-widget">
-              <object class="GtkButton" id="report">
-                <property name="label" translatable="yes">Report Issue…</property>
-              </object>
-            </property>
+          <object class="GtkButton" id="report">
+            <property name="label" translatable="yes">Report Issue…</property>
+            <property name="halign">center</property>
+            <property name="margin-bottom">24</property>
+            <style>
+              <class name="suggested-action" />
+              <class name="pill" />
+            </style>
           </object>
         </child>
       </object>
