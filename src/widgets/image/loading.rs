@@ -16,6 +16,8 @@
 //
 // SPDX-License-Identifier: GPL-3.0-or-later
 
+use decoder::DecoderError;
+
 use super::*;
 
 impl imp::LpImage {
@@ -110,7 +112,7 @@ impl imp::LpImage {
                     ));
                 }
             }
-            DecoderUpdate::Error(err) => {
+            DecoderUpdate::GenericError(err) => {
                 self.set_error(Some(err));
             }
             DecoderUpdate::Animated => {
@@ -128,8 +130,8 @@ impl imp::LpImage {
                     self.tick_callback.replace(Some(callback_id));
                 }
             }
-            DecoderUpdate::UnsupportedFormat => {
-                self.set_unsupported(true);
+            DecoderUpdate::SpecificError(err) => {
+                self.set_specific_error(err);
             }
         }
     }
@@ -248,13 +250,13 @@ impl imp::LpImage {
         }
     }
 
-    fn set_unsupported(&self, is_unsupported: bool) {
+    fn set_specific_error(&self, error: DecoderError) {
         let obj = self.obj();
-        if obj.is_unsupported() != is_unsupported {
-            self.is_unsupported.set(true);
-            obj.notify_is_unsupported();
+        if obj.specific_error() != error {
+            self.specific_error.set(error);
+            obj.notify_specific_error();
 
-            if is_unsupported {
+            if error.is_err() {
                 self.set_loaded(false);
             }
         }
@@ -269,7 +271,7 @@ impl imp::LpImage {
 
             if is_loaded {
                 self.set_error(None);
-                self.set_unsupported(false);
+                self.set_specific_error(DecoderError::None);
             }
         }
     }

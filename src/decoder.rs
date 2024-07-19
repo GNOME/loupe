@@ -55,14 +55,42 @@ pub enum DecoderUpdate {
     Dimensions,
     /// Metadata available
     Metadata(Box<Metadata>),
-    /// Image format not supported or unknown
-    UnsupportedFormat,
     /// New image data available, redraw
     Redraw,
     /// Start animation
     Animated,
+    SpecificError(DecoderError),
     /// And error occurred during decoding
-    Error(anyhow::Error),
+    GenericError(anyhow::Error),
+}
+
+#[derive(glib::Enum, Debug, Clone, Copy, Default, PartialEq, Eq)]
+#[enum_type(name = "LpDecoderError")]
+//#[enum_dynamic(lazy_registration = true)]
+#[repr(i32)]
+pub enum DecoderError {
+    /// Image format not supported or unknown
+    UnsupportedFormat,
+    /// No glycin-loaders installed
+    NoLoadersConfigured,
+    #[default]
+    None,
+}
+
+impl DecoderError {
+    pub fn is_err(self) -> bool {
+        matches!(self, Self::None)
+    }
+
+    pub fn is_ok(self) -> bool {
+        !matches!(self, Self::None)
+    }
+}
+
+impl glib::value::ToValueOptional for DecoderError {
+    fn to_value_optional(s: Option<&Self>) -> glib::Value {
+        s.unwrap_or(&Self::None).into()
+    }
 }
 
 impl UpdateSender {
@@ -87,9 +115,15 @@ impl UpdateSender {
 
             if let Err(err) = result {
                 if err.unsupported_format().is_some() {
-                    update_sender.send(DecoderUpdate::UnsupportedFormat);
+                    update_sender.send(DecoderUpdate::SpecificError(
+                        DecoderError::UnsupportedFormat,
+                    ));
+                } else if matches!(err.error(), glycin::Error::NoLoadersConfigured(_)) {
+                    update_sender.send(DecoderUpdate::SpecificError(
+                        DecoderError::NoLoadersConfigured,
+                    ));
                 }
-                update_sender.send(DecoderUpdate::Error(err.into()));
+                update_sender.send(DecoderUpdate::GenericError(err.into()));
             }
         })
     }
@@ -153,7 +187,7 @@ impl Decoder {
     pub fn request(&self, tile_request: TileRequest) {
         if let FormatDecoder::Svg(svg) = &self.decoder {
             if let Err(err) = svg.request(tile_request) {
-                self.update_sender.send(DecoderUpdate::Error(err));
+                self.update_sender.send(DecoderUpdate::GenericError(err));
             }
         }
     }

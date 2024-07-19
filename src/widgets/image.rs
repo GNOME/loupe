@@ -132,6 +132,8 @@ pub enum FitMode {
 }
 
 mod imp {
+    use decoder::DecoderError;
+
     use super::*;
     use crate::decoder::tiling::SharedFrameBuffer;
     use crate::editing;
@@ -145,8 +147,8 @@ mod imp {
         pub(super) queued_reload: RefCell<Option<gio::File>>,
         #[property(get)]
         pub(super) is_deleted: Cell<bool>,
-        #[property(get)]
-        pub(super) is_unsupported: Cell<bool>,
+        #[property(get, builder(DecoderError::None))]
+        pub(super) specific_error: Cell<DecoderError>,
         /// Set to true when image is ready for displaying
         #[property(get)]
         pub(super) is_loaded: Cell<bool>,

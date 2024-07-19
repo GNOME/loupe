@@ -41,6 +41,7 @@ use glib::translate::IntoGlib;
 use glib::{clone, Properties};
 use gtk::CompositeTemplate;
 
+use crate::decoder::DecoderError;
 use crate::deps::*;
 use crate::file_model::LpFileModel;
 use crate::util::gettext::*;
@@ -535,31 +536,28 @@ impl LpImageView {
     fn new_image_page(&self, file: &gio::File) -> LpImagePage {
         let page = LpImagePage::from_file(file);
 
-        page.image().connect_notify_local(
-            Some("is-unsupported"),
-            glib::clone!(
-                #[weak(rename_to = obj)]
-                self,
-                move |image, _| {
-                    if image.is_unsupported() {
-                        if obj.current_image().as_ref() == Some(image) {
-                            log::debug!(
-                                "Image format unsupported but not removing since current image"
-                            );
-                            return;
-                        }
+        page.image().connect_specific_error_notify(glib::clone!(
+            #[weak(rename_to = obj)]
+            self,
+            move |image| {
+                if image.specific_error() == DecoderError::UnsupportedFormat {
+                    if obj.current_image().as_ref() == Some(image) {
+                        log::debug!(
+                            "Image format unsupported but not removing since current image"
+                        );
+                        return;
+                    }
 
-                        if let Some(file) = image.file() {
-                            log::debug!("Removing image with unsupported format {:?}", file.uri());
-                            obj.model().remove(&file);
-                            if let Some(current_file) = obj.current_file() {
-                                obj.update_sliding_view(&current_file);
-                            }
+                    if let Some(file) = image.file() {
+                        log::debug!("Removing image with unsupported format {:?}", file.uri());
+                        obj.model().remove(&file);
+                        if let Some(current_file) = obj.current_file() {
+                            obj.update_sliding_view(&current_file);
                         }
                     }
                 }
-            ),
-        );
+            }
+        ));
 
         page
     }
