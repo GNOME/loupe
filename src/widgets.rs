@@ -19,7 +19,6 @@
 
 mod drag_overlay;
 mod error_details;
-mod fullscreen_widget;
 mod image;
 mod image_page;
 mod image_view;
@@ -28,10 +27,10 @@ mod print_preview;
 mod properties_view;
 mod shy_bin;
 mod sliding_view;
+mod window_content;
 
 pub use drag_overlay::LpDragOverlay;
 pub use error_details::LpErrorDetails;
-pub use fullscreen_widget::LpFullscreenWidget;
 pub use image::LpImage;
 pub use image_page::LpImagePage;
 pub use image_view::LpImageView;
@@ -40,3 +39,4 @@ pub use print_preview::LpPrintPreview;
 pub use properties_view::LpPropertiesView;
 pub use shy_bin::LpShyBin;
 pub use sliding_view::LpSlidingView;
+pub use window_content::LpWindowContent;

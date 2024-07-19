@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <template class="LpWindowContent" parent="AdwBin">
+    <binding name="fullscreened">
+      <lookup name="fullscreened" type="GtkWindow">
+        <lookup name="root">LpWindowContent</lookup>
+      </lookup>
+    </binding>
+    <binding name="is-showing-image">
+      <lookup name="is-showing-image" type="LpWindow">
+        <lookup name="root">LpWindowContent</lookup>
+      </lookup>
+    </binding>
+    <property name="child">
+      <object class="AdwToolbarView" id="toolbar_view">
+        <child type="top">
+          <object class="LpShyBin" id="header_container">
+            <property name="child" bind-source="LpWindowContent" bind-property="headerbar" />
+          </object>
+        </child>
+        <property name="content" bind-source="LpWindowContent" bind-property="content" />
+      </object>
+    </property>
+  </template>
+</interface>

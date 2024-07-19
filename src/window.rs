@@ -1,4 +1,4 @@
-// Copyright (c) 2020-2023 Christopher Davis
+// Copyright (c) 2020-2024 Christopher Davis
 // Copyright (c) 2022-2024 Sophie Herold
 // Copyright (c) 2022 Elton A Rodrigues
 // Copyright (c) 2022 Maximiliano Sandoval R
@@ -42,7 +42,7 @@ use crate::config;
 use crate::deps::*;
 use crate::util::gettext::*;
 use crate::util::Direction;
-use crate::widgets::{LpDragOverlay, LpFullscreenWidget, LpImage, LpImageView, LpPropertiesView};
+use crate::widgets::{LpDragOverlay, LpImage, LpImageView, LpPropertiesView, LpWindowContent};
 
 /// Show window after X milliseconds even if image dimensions are not known yet
 const SHOW_WINDOW_AFTER: u64 = 2000;
@@ -81,7 +81,7 @@ mod imp {
         // TemplateChild<T> wrapper, where T is the
         // object type of the template child.
         #[template_child]
-        pub(super) fullscreen_widget: TemplateChild<LpFullscreenWidget>,
+        pub(super) window_content: TemplateChild<LpWindowContent>,
         #[template_child]
         pub(super) headerbar: TemplateChild<adw::HeaderBar>,
         #[template_child]
@@ -111,8 +111,8 @@ mod imp {
         #[template_child]
         pub(super) backward_click_gesture: TemplateChild<gtk::GestureClick>,
 
-        #[property(get, set)]
-        is_empty: Cell<bool>,
+        #[property(get)]
+        pub(super) is_showing_image: Cell<bool>,
         #[property(get, set)]
         headerbar_opacity: Cell<f64>,
 
@@ -339,12 +339,6 @@ mod imp {
                     }
                 ),
             );
-
-            self.image_view
-                .controls_box_start()
-                .bind_property("opacity", &*self.obj(), "headerbar-opacity")
-                .sync_create()
-                .build();
 
             // action win.previous status
             self.image_view
@@ -761,7 +755,8 @@ impl LpWindow {
         let current_page = imp.image_view.current_page();
 
         // HeaderBar style
-        self.set_is_empty(current_page.is_none());
+        imp.is_showing_image.replace(current_page.is_none());
+        self.notify_is_showing_image();
 
         // Window title
         self.update_title();
@@ -905,11 +900,11 @@ impl LpWindow {
     }
 
     fn is_headerbar_flat(&self) -> bool {
-        self.imp().fullscreen_widget.is_headerbar_flat()
+        self.imp().window_content.is_headerbar_flat()
     }
 
     fn is_content_extended_to_top(&self) -> bool {
-        self.imp().fullscreen_widget.is_content_extended_to_top()
+        self.imp().window_content.is_content_extended_to_top()
     }
 
     fn update_accel_status(&self) {

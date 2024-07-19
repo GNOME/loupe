@@ -64,13 +64,13 @@
     <child>
       <object class="AdwBreakpoint">
         <condition>max-width: 590sp</condition>
-        <setter object="multi_layout_view" property="layout-name">sheet</setter>
+        <setter object="multi_layout_view" property="layout-name">bottom-properties</setter>
       </object>
     </child>
     <child>
       <object class="AdwBreakpoint">
         <condition>max-width: 590sp and max-height: 550sp</condition>
-        <setter object="multi_layout_view" property="layout-name">short</setter>
+        <setter object="multi_layout_view" property="layout-name">overlay-properties</setter>
       </object>
     </child>
     <property name="content">
@@ -79,10 +79,10 @@
           <object class="AdwMultiLayoutView" id="multi_layout_view">
             <child>
               <object class="AdwLayout">
-                <property name="name">sidebar</property>
+                <property name="name">sidebar-properies</property>
                 <property name="content">
-                  <object class="LpFullscreenWidget" id="fullscreen_widget">
-                    <property name="extend-content" bind-source="properties_button" bind-property="active" bind-flags="sync-create|invert-boolean"/>
+                  <object class="LpWindowContent" id="window_content">
+                    <property name="show-properties" bind-source="properties_button" bind-property="active" bind-flags="sync-create|invert-boolean" />
                     <property name="headerbar">
                       <object class="AdwLayoutSlot">
                         <property name="id">headerbar</property>
@@ -111,10 +111,10 @@
             </child>
             <child>
               <object class="AdwLayout">
-                <property name="name">sheet</property>
+                <property name="name">bottom-properties</property>
                 <property name="content">
-                  <object class="LpFullscreenWidget">
-                    <property name="extend-content" bind-source="properties_button" bind-property="active" bind-flags="sync-create|invert-boolean"/>
+                  <object class="LpWindowContent">
+                    <property name="show-properties" bind-source="properties_button" bind-property="active" bind-flags="sync-create|invert-boolean" />
                     <property name="headerbar">
                       <object class="AdwLayoutSlot">
                         <property name="id">headerbar</property>
@@ -139,7 +139,7 @@
                               </object>
                             </property>
                             <style>
-                              <class name="mobile-properties"/>
+                              <class name="mobile-properties" />
                             </style>
                           </object>
                         </child>
@@ -151,14 +151,14 @@
             </child>
             <child>
               <object class="AdwLayout">
-                <property name="name">short</property>
+                <property name="name">overlay-properties</property>
                 <property name="content">
                   <object class="AdwBottomSheet">
                     <property name="modal">True</property>
                     <property name="open" bind-source="properties_button" bind-property="active" bind-flags="bidirectional|sync-create" />
                     <property name="content">
-                      <object class="LpFullscreenWidget">
-                        <property name="extend-content" bind-source="properties_button" bind-property="active" bind-flags="sync-create|invert-boolean"/>
+                      <object class="LpWindowContent">
+                        <property name="show-properties" bind-source="properties_button" bind-property="active" bind-flags="sync-create|invert-boolean" />
                         <property name="headerbar">
                           <object class="AdwLayoutSlot">
                             <property name="id">headerbar</property>
@@ -189,6 +189,7 @@
                 </property>
               </object>
             </child>
+            <!-- Layout slots -->
             <child type="headerbar">
               <object class="AdwHeaderBar" id="headerbar">
                 <property name="show-end-title-buttons" bind-source="LpWindow" bind-property="fullscreened" bind-flags="sync-create|invert-boolean" />
@@ -312,7 +313,7 @@
               </object>
             </child>
             <child type="properties">
-              <object class="LpPropertiesView" id="properties_view"/>
+              <object class="LpPropertiesView" id="properties_view" />
             </child>
           </object>
         </property>
