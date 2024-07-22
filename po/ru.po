@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2024-06-12 10:40+0000\n"
-"PO-Revision-Date: 2024-06-22 13:28+0300\n"
+"POT-Creation-Date: 2024-07-19 21:41+0000\n"
+"PO-Revision-Date: 2024-07-21 13:02+0300\n"
 "Last-Translator: Artur So <arturios2005@mail.ru>\n"
 "Language-Team: \n"
 "Language: ru_RU\n"
@@ -20,7 +20,7 @@ msgstr ""
 "X-Generator: Poedit 3.4.4\n"
 
 #: data/org.gnome.Loupe.desktop.in.in:3
-#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:30 src/window.rs:752
+#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:31 src/window.rs:837
 msgid "Image Viewer"
 msgstr "Просмотрщик изображений"
 
@@ -33,7 +33,7 @@ msgid "Show the image properties sidebar"
 msgstr "Показать боковую панель свойств изображения"
 
 #. developer_name tag deprecated with Appstream 1.0
-#: data/org.gnome.Loupe.metainfo.xml.in.in:8 src/about.rs:33
+#: data/org.gnome.Loupe.metainfo.xml.in.in:8 src/about.rs:34
 msgid "The GNOME Project"
 msgstr "Проект GNOME"
 
@@ -241,30 +241,34 @@ msgid "Gestures"
 msgstr "Жесты"
 
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/about.rs:42
+#: src/about.rs:43
 msgid "translator-credits"
 msgstr "Aleksandr Melman <alexmelman88@gmail.com>, 2023"
 
-#: src/about.rs:43
+#: src/about.rs:44
 msgid "Copyright © 2020–2024 Christopher Davis et al."
 msgstr "Авторское право © 2020-2024 Christopher Davis и др."
 
-#: src/file_model.rs:129
+#: src/file_model.rs:131
 msgid "Could not list other files in directory."
 msgstr "Не удалось перечислить другие файлы в каталоге."
 
+#: src/metadata.rs:249
+msgid "\\u{192}\\u{2215}{}"
+msgstr "\\u{192}\\u{2215}{}"
+
 #. Translators: Fractional exposure time (photography) in seconds
-#: src/metadata.rs:262
+#: src/metadata.rs:266
 msgid "1\\u{2215}{}\\u{202F}s"
 msgstr "1\\u{2215}{}\\u{202F}с"
 
 #. Translators: Exposure time (photography) in seconds
-#: src/metadata.rs:270
+#: src/metadata.rs:274
 msgid "{}\\u{202F}s"
 msgstr "{}\\u{202F}с"
 
 #. Translators: Unit for focal length in millimeters
-#: src/metadata.rs:296
+#: src/metadata.rs:300
 msgid "{}\\u{202F}mm"
 msgstr "{}\\u{202F}мм"
 
@@ -297,43 +301,49 @@ msgstr "З"
 msgid "%x %X"
 msgstr "%x %X"
 
-#: src/util.rs:180 src/window.rs:575
+#: src/util.rs:180 src/window.rs:659
 msgid "Failed to restore image from trash"
 msgstr "Не удалось восстановить изображение из корзины"
 
-#: src/widgets/error_details.ui:25
+#: src/widgets/error_details.ui:19
 msgid ""
-"The image loader reported the following. Please include this information "
-"when you report an error."
+"The image loader reported the following when trying to load the image. "
+"Please include this information when you report an error. If possible, "
+"please also provide the image that causes the issue."
 msgstr ""
-"Загрузчик изображений сообщил следующее. Пожалуйста, указывайте эту "
-"информацию, когда сообщаете об ошибке."
+"При попытке загрузить изображение загрузчик изображений сообщил следующее. "
+"Пожалуйста, указывайте эту информацию, когда сообщаете об ошибке. Если "
+"возможно, предоставьте изображение, с которым возникла проблема."
 
-#: src/widgets/error_details.ui:53
-msgid "Copy Information"
-msgstr "Копировать информацию"
+#: src/widgets/error_details.ui:24
+msgid "Error Message"
+msgstr "Сообщение об ошибке"
 
-#: src/widgets/error_details.ui:58
+#: src/widgets/error_details.ui:28
+msgid "Copy Error Message"
+msgstr "Копировать сообщение об ошибке"
+
+#: src/widgets/error_details.ui:59
 msgid "Report Issue…"
 msgstr "Сообщить об ошибке…"
 
-#: src/widgets/image_page.rs:199
+#: src/widgets/image_page.rs:216
 msgid ""
 "No image loaders available. Maybe the “glycin-loaders” package with "
-"compatibility version “{}+” is not installed."
+"compatibility version “{}” is not installed."
 msgstr ""
 "Загрузчики изображений отсутствуют. Возможно, не установлен пакет “glycin-"
-"loaders” с совместимой версией “{}+”."
+"loaders” с совместимой версией “{}”."
 
-#: src/widgets/image_page.rs:210
+#: src/widgets/image_page.rs:231
 msgid "The image format “{} ({})” is known but not installed."
 msgstr "Формат изображения “{} ({})” известен, но не установлен."
 
-#: src/widgets/image_page.rs:217
+#: src/widgets/image_page.rs:238
 msgid "Unknown image format “{} ({}).”"
 msgstr "Неизвестный формат изображения “{} ({}).”"
 
-#: src/widgets/image_page.rs:234
+#: src/widgets/image_page.rs:265
 msgid "Either the image file is corrupted or it contains unsupported elements."
 msgstr ""
 "Либо файл изображения поврежден, либо содержит неподдерживаемые элементы."
@@ -358,29 +368,29 @@ msgstr "Повернуть"
 msgid "_Set as Background…"
 msgstr "_Установить как фон…"
 
-#: src/widgets/image_page.ui:63
+#: src/widgets/image_page.ui:57
 msgid "Could not Load Image"
 msgstr "Не удалось загрузить изображение"
 
-#: src/widgets/image_page.ui:66
+#: src/widgets/image_page.ui:60
 msgid "More Information…"
 msgstr "Больше информации…"
 
-#: src/widgets/image_page.ui:105 src/window.ui:106
+#: src/widgets/image_page.ui:99 src/window.ui:225
 msgid "Rotate Left"
 msgstr "Повернуть влево"
 
-#: src/widgets/image_page.ui:115 src/window.ui:116
+#: src/widgets/image_page.ui:109 src/window.ui:235
 msgid "Rotate Right"
 msgstr "Повернуть вправо"
 
 #. Translators: This is a toast notification, informing the user that
 #. an image has been set as background.
-#: src/widgets/image_view.rs:682
+#: src/widgets/image_view.rs:725
 msgid "Set as background."
 msgstr "Установить как фон."
 
-#: src/widgets/image_view.rs:695
+#: src/widgets/image_view.rs:738
 msgid "Could not set background."
 msgstr "Не удалось установить фон."
 
@@ -440,23 +450,23 @@ msgid "px"
 msgstr "пикс"
 
 #. Translators: {} is a placeholder for the filename
-#: src/widgets/print.rs:340
+#: src/widgets/print.rs:361
 msgid "Print “{}”"
 msgstr "Печать “{}”"
 
-#: src/widgets/print.rs:444
+#: src/widgets/print.rs:465
 msgid "Continue…"
 msgstr "Продолжить…"
 
-#: src/widgets/print.rs:445
+#: src/widgets/print.rs:466
 msgid "Print Image"
 msgstr "Печать изображения"
 
-#: src/widgets/print.rs:767
+#: src/widgets/print.rs:788
 msgid "_Scale"
 msgstr "_Масштаб"
 
-#: src/widgets/print.rs:770
+#: src/widgets/print.rs:791
 msgid "_Width"
 msgstr "_Ширина"
 
@@ -505,7 +515,7 @@ msgstr "_Горизонтальный"
 msgid "_Vertical"
 msgstr "В_ертикальный"
 
-#: src/widgets/print.ui:142 src/widgets/properties_view.ui:55
+#: src/widgets/print.ui:142 src/widgets/properties_view.ui:56
 msgid "Image Size"
 msgstr "Размер изображения"
 
@@ -521,139 +531,143 @@ msgstr "_Заполнить пространство"
 msgid "H_eight"
 msgstr "Вы_сота"
 
-#: src/widgets/properties_view.rs:234
+#: src/widgets/properties_view.rs:255
 msgid "Unknown"
 msgstr "Неизвестно"
 
 #. Translators: Addition of image being transparent to format name
-#: src/widgets/properties_view.rs:238
+#: src/widgets/properties_view.rs:259
 msgid ", transparent"
 msgstr ", прозрачное"
 
 #. Translators: Addition of image being grayscale to format name
-#: src/widgets/properties_view.rs:243
+#: src/widgets/properties_view.rs:264
 msgid ", grayscale"
 msgstr ", градации серого"
 
 #. Translators: Addition of bit size to format name
-#: src/widgets/properties_view.rs:248
+#: src/widgets/properties_view.rs:269
 msgid ", {}\\u{202F}bit"
 msgstr ", {}\\u{202F}бит"
 
-#: src/widgets/properties_view.rs:299
+#: src/widgets/properties_view.rs:286
+msgid "{}\\u{202F}\\u{D7}\\u{202F}{}"
+msgstr "{}\\u{202F}\\u{D7}\\u{202F}{}"
+
+#: src/widgets/properties_view.rs:324
 msgid "Image Coordinates Copied"
 msgstr "Координаты изображения скопированы"
 
-#: src/widgets/properties_view.ui:19
+#: src/widgets/properties_view.ui:20
 msgid "Folder"
 msgstr "Папка"
 
-#: src/widgets/properties_view.ui:27
+#: src/widgets/properties_view.ui:28
 msgid "Open Containing Folder"
 msgstr "Открыть папку, содержащую объект"
 
-#: src/widgets/properties_view.ui:40
+#: src/widgets/properties_view.ui:41
 msgid "URI"
 msgstr "URI"
 
-#: src/widgets/properties_view.ui:65
+#: src/widgets/properties_view.ui:66
 msgid "Image Format"
 msgstr "Формат изображения"
 
-#: src/widgets/properties_view.ui:75
+#: src/widgets/properties_view.ui:76
 msgid "File Size"
 msgstr "Размер файла"
 
-#: src/widgets/properties_view.ui:89
+#: src/widgets/properties_view.ui:90
 msgid "File Created"
 msgstr "Файл создан"
 
-#: src/widgets/properties_view.ui:99
+#: src/widgets/properties_view.ui:100
 msgid "File Modified"
 msgstr "Файл изменен"
 
 #. Translators: This is a label for GPS coordinates
-#: src/widgets/properties_view.ui:113
+#: src/widgets/properties_view.ui:114
 msgid "Location"
 msgstr "Местоположение"
 
-#: src/widgets/properties_view.ui:124
+#: src/widgets/properties_view.ui:125
 msgid "Copy Coordinates"
 msgstr "Копировать координаты"
 
-#: src/widgets/properties_view.ui:135
+#: src/widgets/properties_view.ui:136
 msgid "Open Location"
 msgstr "Открыть местоположение"
 
-#: src/widgets/properties_view.ui:148
+#: src/widgets/properties_view.ui:149
 msgid "Originally Created"
 msgstr "Первоначально создано"
 
-#: src/widgets/properties_view.ui:158
+#: src/widgets/properties_view.ui:159
 msgid "Aperture"
 msgstr "Диафрагма"
 
-#: src/widgets/properties_view.ui:168
+#: src/widgets/properties_view.ui:169
 msgid "Exposure"
 msgstr "Экспозиция"
 
-#: src/widgets/properties_view.ui:178
+#: src/widgets/properties_view.ui:179
 msgid "ISO"
 msgstr "ISO"
 
-#: src/widgets/properties_view.ui:188
+#: src/widgets/properties_view.ui:189
 msgid "Focal Length"
 msgstr "Фокусное расстояние"
 
-#: src/widgets/properties_view.ui:198
+#: src/widgets/properties_view.ui:199
 msgid "Maker, Model"
 msgstr "Производитель, модель"
 
-#: src/window.rs:442
+#: src/window.rs:523
 msgid "Supported image formats"
 msgstr "Поддерживаемые форматы изображения"
 
-#: src/window.rs:448
+#: src/window.rs:529
 msgid "All files"
 msgstr "Все файлы"
 
-#: src/window.rs:455
+#: src/window.rs:536
 msgid "Open Image"
 msgstr "Открыть изображение"
 
-#: src/window.rs:541
+#: src/window.rs:622
 msgid "Image copied to clipboard"
 msgstr "Изображение скопировано в буфер обмена"
 
-#: src/window.rs:562
+#: src/window.rs:643
 msgid "Image moved to trash"
 msgstr "Изображение отправлено в корзину"
 
-#: src/window.rs:563
+#: src/window.rs:644
 msgid "Undo"
 msgstr "Отменить"
 
-#: src/window.rs:589
+#: src/window.rs:674
 msgid "Failed to move image to trash"
 msgstr "Не удалось отправить изображение в корзину"
 
-#: src/window.rs:613
+#: src/window.rs:698
 msgid "Permanently Delete Image?"
 msgstr "Удалить изображение безвозвратно?"
 
-#: src/window.rs:615
+#: src/window.rs:700
 msgid "After deleting the image “{}” it will be permanently lost."
 msgstr "После удаления изображения \"{}\" оно будет навсегда потеряно."
 
-#: src/window.rs:623
+#: src/window.rs:708
 msgid "Cancel"
 msgstr "Отменить"
 
-#: src/window.rs:624
+#: src/window.rs:709
 msgid "Delete"
 msgstr "Удалить"
 
-#: src/window.rs:635
+#: src/window.rs:720
 msgid "Failed to delete image"
 msgstr "Не удалось удалить изображение"
 
@@ -677,33 +691,36 @@ msgstr "_Комбинации клавиш"
 msgid "_About Image Viewer"
 msgstr "_О приложении"
 
-#: src/window.ui:85
+#: src/window.ui:204
 msgid "Copy to Clipboard"
 msgstr "Копировать в буфер обмена"
 
-#: src/window.ui:92
+#: src/window.ui:211
 msgid "Move to Trash"
 msgstr "Отправить в корзину"
 
-#: src/window.ui:98
+#: src/window.ui:217
 msgid "Main Menu"
 msgstr "Главное меню"
 
-#: src/window.ui:130
+#: src/window.ui:249
 msgid "Image Properties"
 msgstr "Свойства изображения"
 
-#: src/window.ui:174
+#: src/window.ui:281
 msgid "View Images"
 msgstr "Просмотр изображений"
 
-#: src/window.ui:175
+#: src/window.ui:282
 msgid "Drag and drop images here"
 msgstr "Перетащите изображения сюда"
 
-#: src/window.ui:179
+#: src/window.ui:286
 msgid "_Open Files…"
 msgstr "_Открыть файлы…"
+
+#~ msgid "Copy Information"
+#~ msgstr "Копировать информацию"
 
 #~ msgid "Failed to open image"
 #~ msgstr "Не удалось открыть изображение"
