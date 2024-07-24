@@ -7,20 +7,20 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2024-07-17 17:52+0000\n"
-"PO-Revision-Date: 2024-07-20 00:05+0300\n"
-"Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
+"POT-Creation-Date: 2024-07-19 21:41+0000\n"
+"PO-Revision-Date: 2024-07-24 19:11+0300\n"
+"Last-Translator: Yosef Or Boczko <yoseforb@gmail.com>\n"
 "Language-Team: Hebrew\n"
 "Language: he\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n==2 ? 1 : n>10 && n%10==0 ? 2 : "
-"3);\n"
-"X-Generator: Poedit 3.4.2\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n==2 ? 1 : n>10 && n%10==0 ? "
+"2 : 3)\n"
+"X-Generator: Gtranslator 46.1\n"
 
-#: data/org.gnome.Loupe.desktop.in.in:3 data/org.gnome.Loupe.metainfo.xml.in.in:6
-#: src/about.rs:31 src/window.rs:829
+#: data/org.gnome.Loupe.desktop.in.in:3
+#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:31 src/window.rs:837
 msgid "Image Viewer"
 msgstr "מציג תמונות"
 
@@ -139,13 +139,16 @@ msgid "Navigate Images"
 msgstr "ניווט תמונות"
 
 #: data/resources/gtk/help-overlay.ui:98 data/resources/gtk/help-overlay.ui:112
-#: data/resources/gtk/help-overlay.ui:224 data/resources/gtk/help-overlay.ui:238
+#: data/resources/gtk/help-overlay.ui:224
+#: data/resources/gtk/help-overlay.ui:238
 msgctxt "shortcut window"
 msgid "Next Image"
 msgstr "תמונה הבאה"
 
-#: data/resources/gtk/help-overlay.ui:105 data/resources/gtk/help-overlay.ui:119
-#: data/resources/gtk/help-overlay.ui:231 data/resources/gtk/help-overlay.ui:245
+#: data/resources/gtk/help-overlay.ui:105
+#: data/resources/gtk/help-overlay.ui:119
+#: data/resources/gtk/help-overlay.ui:231
+#: data/resources/gtk/help-overlay.ui:245
 msgctxt "shortcut window"
 msgid "Previous Image"
 msgstr "תמונה הקודמת"
@@ -165,12 +168,14 @@ msgctxt "shortcut window"
 msgid "Rotate Image"
 msgstr "סיבוב תמונה"
 
-#: data/resources/gtk/help-overlay.ui:142 data/resources/gtk/help-overlay.ui:263
+#: data/resources/gtk/help-overlay.ui:142
+#: data/resources/gtk/help-overlay.ui:263
 msgctxt "shortcut window"
 msgid "Rotate Clockwise"
 msgstr "סיבוב עם כיוון השעון"
 
-#: data/resources/gtk/help-overlay.ui:148 data/resources/gtk/help-overlay.ui:269
+#: data/resources/gtk/help-overlay.ui:148
+#: data/resources/gtk/help-overlay.ui:269
 msgctxt "shortcut window"
 msgid "Rotate Counterclockwise"
 msgstr "סיבוב נגד כיוון השעון"
@@ -180,12 +185,14 @@ msgctxt "shortcut window"
 msgid "Zoom Image"
 msgstr "תקריב תמונה"
 
-#: data/resources/gtk/help-overlay.ui:159 data/resources/gtk/help-overlay.ui:251
+#: data/resources/gtk/help-overlay.ui:159
+#: data/resources/gtk/help-overlay.ui:251
 msgctxt "shortcut window"
 msgid "Zoom In"
 msgstr "התקרבות"
 
-#: data/resources/gtk/help-overlay.ui:165 data/resources/gtk/help-overlay.ui:257
+#: data/resources/gtk/help-overlay.ui:165
+#: data/resources/gtk/help-overlay.ui:257
 msgctxt "shortcut window"
 msgid "Zoom Out"
 msgstr "התרחקות"
@@ -298,41 +305,48 @@ msgstr "מע"
 msgid "%x %X"
 msgstr "%x %X"
 
-#: src/util.rs:180 src/window.rs:651
+#: src/util.rs:180 src/window.rs:659
 msgid "Failed to restore image from trash"
 msgstr "שחזור התמונה מהאשפה נכשלה"
 
-#: src/widgets/error_details.ui:25
+#: src/widgets/error_details.ui:19
 msgid ""
-"The image loader reported the following. Please include this information when "
-"you report an error."
-msgstr "טוען התמונות דיווח על העניין הבא. נא לצרף את המידע הזה לדיווח על השגיאה."
+"The image loader reported the following when trying to load the image. "
+"Please include this information when you report an error. If possible, "
+"please also provide the image that causes the issue."
+msgstr ""
+"טוען התמונות דיווח על הפרטים הבאים בעת הניסיון לטעון את התמונה. נא לצרף את "
+"המידע הזה לדיווח על התקלה. אם אפשר, נא לספק את התמונה שגרמה לבעיה."
 
-#: src/widgets/error_details.ui:53
-msgid "Copy Information"
-msgstr "העתקת פרטים"
+#: src/widgets/error_details.ui:24
+msgid "Error Message"
+msgstr "הודעה שגיאה"
 
-#: src/widgets/error_details.ui:58
+#: src/widgets/error_details.ui:28
+msgid "Copy Error Message"
+msgstr "העתקת הודעת שגיאה"
+
+#: src/widgets/error_details.ui:59
 msgid "Report Issue…"
 msgstr "דיווח על תקלה…"
 
 #: src/widgets/image_page.rs:216
 msgid ""
 "No image loaders available. Maybe the “glycin-loaders” package with "
-"compatibility version “{}+” is not installed."
+"compatibility version “{}” is not installed."
 msgstr ""
-"אין טועני תמונות זמינים. אולי החבילה „glycin-loaders” עם גרסת התאימות „‎{}+‎‎” לא "
-"מותקנת."
+"אין טועני תמונות זמינים. אולי החבילה „glycin-loaders” עם גרסת התאימות „‎{}‎‎” "
+"לא מותקנת."
 
-#: src/widgets/image_page.rs:227
+#: src/widgets/image_page.rs:231
 msgid "The image format “{} ({})” is known but not installed."
 msgstr "סוג התמונה „{} ({})” מוכר אבל לא מותקן."
 
-#: src/widgets/image_page.rs:234
+#: src/widgets/image_page.rs:238
 msgid "Unknown image format “{} ({}).”"
 msgstr "סוג התמונה אינו מוכר: „{} ({})”"
 
-#: src/widgets/image_page.rs:254
+#: src/widgets/image_page.rs:265
 msgid "Either the image file is corrupted or it contains unsupported elements."
 msgstr "או שהתמונה פגומה או שהיא מכילה רכיבים שאינם נתמכים."
 
@@ -364,21 +378,21 @@ msgstr "לא ניתן לטעון את התמונה"
 msgid "More Information…"
 msgstr "פרטים נוספים…"
 
-#: src/widgets/image_page.ui:99 src/window.ui:106
+#: src/widgets/image_page.ui:99 src/window.ui:225
 msgid "Rotate Left"
 msgstr "סיבוב שמאלה"
 
-#: src/widgets/image_page.ui:109 src/window.ui:116
+#: src/widgets/image_page.ui:109 src/window.ui:235
 msgid "Rotate Right"
 msgstr "סיבוב ימינה"
 
 #. Translators: This is a toast notification, informing the user that
 #. an image has been set as background.
-#: src/widgets/image_view.rs:727
+#: src/widgets/image_view.rs:725
 msgid "Set as background."
 msgstr "הגדרת התמונה כרקע."
 
-#: src/widgets/image_view.rs:740
+#: src/widgets/image_view.rs:738
 msgid "Could not set background."
 msgstr "לא ניתן לקבוע כרקע."
 
@@ -506,7 +520,7 @@ msgstr "_אופקי"
 msgid "_Vertical"
 msgstr "_אנכי"
 
-#: src/widgets/print.ui:142 src/widgets/properties_view.ui:55
+#: src/widgets/print.ui:142 src/widgets/properties_view.ui:56
 msgid "Image Size"
 msgstr "גודל תמונה"
 
@@ -542,7 +556,6 @@ msgid ", {}\\u{202F}bit"
 msgstr ", {}\\u{202F} סיביות"
 
 #: src/widgets/properties_view.rs:286
-#| msgid "1\\u{2215}{}\\u{202F}s"
 msgid "{}\\u{202F}\\u{D7}\\u{202F}{}"
 msgstr "{}\\u{202F}\\u{D7}\\u{202F}{}"
 
@@ -550,116 +563,116 @@ msgstr "{}\\u{202F}\\u{D7}\\u{202F}{}"
 msgid "Image Coordinates Copied"
 msgstr "נקודות הציון של התמונה הועתקו"
 
-#: src/widgets/properties_view.ui:19
+#: src/widgets/properties_view.ui:20
 msgid "Folder"
 msgstr "תיקייה"
 
-#: src/widgets/properties_view.ui:27
+#: src/widgets/properties_view.ui:28
 msgid "Open Containing Folder"
 msgstr "פתיחת תיקייה מכילה"
 
-#: src/widgets/properties_view.ui:40
+#: src/widgets/properties_view.ui:41
 msgid "URI"
 msgstr "כתובת ייחודית"
 
-#: src/widgets/properties_view.ui:65
+#: src/widgets/properties_view.ui:66
 msgid "Image Format"
 msgstr "תבנית תמונה"
 
-#: src/widgets/properties_view.ui:75
+#: src/widgets/properties_view.ui:76
 msgid "File Size"
 msgstr "גודל קובץ"
 
-#: src/widgets/properties_view.ui:89
+#: src/widgets/properties_view.ui:90
 msgid "File Created"
 msgstr "תאריך יצירת קובץ"
 
-#: src/widgets/properties_view.ui:99
+#: src/widgets/properties_view.ui:100
 msgid "File Modified"
 msgstr "תאריך שינוי קובץ"
 
 #. Translators: This is a label for GPS coordinates
-#: src/widgets/properties_view.ui:113
+#: src/widgets/properties_view.ui:114
 msgid "Location"
 msgstr "מיקום"
 
-#: src/widgets/properties_view.ui:124
+#: src/widgets/properties_view.ui:125
 msgid "Copy Coordinates"
 msgstr "העתקת נקודות ציון"
 
-#: src/widgets/properties_view.ui:135
+#: src/widgets/properties_view.ui:136
 msgid "Open Location"
 msgstr "פתיחת מיקום"
 
-#: src/widgets/properties_view.ui:148
+#: src/widgets/properties_view.ui:149
 msgid "Originally Created"
 msgstr "תאריך יצירה מקורי"
 
-#: src/widgets/properties_view.ui:158
+#: src/widgets/properties_view.ui:159
 msgid "Aperture"
 msgstr "צמצם"
 
-#: src/widgets/properties_view.ui:168
+#: src/widgets/properties_view.ui:169
 msgid "Exposure"
 msgstr "חשיפה"
 
-#: src/widgets/properties_view.ui:178
+#: src/widgets/properties_view.ui:179
 msgid "ISO"
 msgstr "ISO"
 
-#: src/widgets/properties_view.ui:188
+#: src/widgets/properties_view.ui:189
 msgid "Focal Length"
 msgstr "אורך מוקד"
 
-#: src/widgets/properties_view.ui:198
+#: src/widgets/properties_view.ui:199
 msgid "Maker, Model"
 msgstr "מצלמה, דגם"
 
-#: src/window.rs:515
+#: src/window.rs:523
 msgid "Supported image formats"
 msgstr "תבניות תמונה נתמכות"
 
-#: src/window.rs:521
+#: src/window.rs:529
 msgid "All files"
 msgstr "כל הקבצים"
 
-#: src/window.rs:528
+#: src/window.rs:536
 msgid "Open Image"
 msgstr "פתיחת תמונה"
 
-#: src/window.rs:614
+#: src/window.rs:622
 msgid "Image copied to clipboard"
 msgstr "תמונה הועתקה ללוח הגזירים"
 
-#: src/window.rs:635
+#: src/window.rs:643
 msgid "Image moved to trash"
 msgstr "תמונה הוערה לאשפה"
 
-#: src/window.rs:636
+#: src/window.rs:644
 msgid "Undo"
 msgstr "ביטול"
 
-#: src/window.rs:666
+#: src/window.rs:674
 msgid "Failed to move image to trash"
 msgstr "העברת התמונה לאשפה נכשלה"
 
-#: src/window.rs:690
+#: src/window.rs:698
 msgid "Permanently Delete Image?"
 msgstr "למחוק את התמונה לצמיתות?"
 
-#: src/window.rs:692
+#: src/window.rs:700
 msgid "After deleting the image “{}” it will be permanently lost."
 msgstr "לאחר מחיקת התמונה „{}” היא תאבד לצמיתות."
 
-#: src/window.rs:700
+#: src/window.rs:708
 msgid "Cancel"
 msgstr "ביטול"
 
-#: src/window.rs:701
+#: src/window.rs:709
 msgid "Delete"
 msgstr "מחיקה"
 
-#: src/window.rs:712
+#: src/window.rs:720
 msgid "Failed to delete image"
 msgstr "מחיקת התמונה נכשלה"
 
@@ -684,34 +697,37 @@ msgid "_About Image Viewer"
 msgstr "על מציג ה_תמונות"
 
 # msgctxt "shortcut window"
-#: src/window.ui:85
+#: src/window.ui:204
 msgid "Copy to Clipboard"
 msgstr "העתקה ללוח הגזירים"
 
 # msgctxt "shortcut window"
-#: src/window.ui:92
+#: src/window.ui:211
 msgid "Move to Trash"
 msgstr "העברה לאשפה"
 
-#: src/window.ui:98
+#: src/window.ui:217
 msgid "Main Menu"
 msgstr "תפריט ראשי"
 
-#: src/window.ui:130
+#: src/window.ui:249
 msgid "Image Properties"
 msgstr "מאפייני תמונה"
 
-#: src/window.ui:174
+#: src/window.ui:281
 msgid "View Images"
 msgstr "מציג תמונות"
 
-#: src/window.ui:175
+#: src/window.ui:282
 msgid "Drag and drop images here"
 msgstr "יש לגרור ולשחרר לכאן תמונות"
 
-#: src/window.ui:179
+#: src/window.ui:286
 msgid "_Open Files…"
 msgstr "_פתיחת קבצים…"
+
+#~ msgid "Copy Information"
+#~ msgstr "העתקת פרטים"
 
 #~ msgid "Failed to open image"
 #~ msgstr "פתיחת התמונה נכשלה"
