@@ -261,9 +261,15 @@ impl LpImagePage {
                 }
             ));
 
-            imp.error_page.set_description(Some(&gettext(
-                "Either the image file is corrupted or it contains unsupported elements.",
-            )));
+            if image.specific_error() == DecoderError::OutOfMemory {
+                imp.error_page.set_description(Some(&gettext(
+                    "There is not enough free memory available to load this image.",
+                )));
+            } else {
+                imp.error_page.set_description(Some(&gettext(
+                    "Either the image file is corrupted or it contains unsupported elements.",
+                )));
+            }
 
             imp.error_more_info.set_visible(true);
             imp.stack.set_visible_child(&*imp.error_page);

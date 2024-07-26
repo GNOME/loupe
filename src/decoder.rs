@@ -73,6 +73,8 @@ pub enum DecoderError {
     UnsupportedFormat,
     /// No glycin-loaders installed
     NoLoadersConfigured,
+    /// Memory limit exceeded
+    OutOfMemory,
     #[default]
     None,
 }
@@ -118,6 +120,9 @@ impl UpdateSender {
                     update_sender.send(DecoderUpdate::SpecificError(
                         DecoderError::UnsupportedFormat,
                     ));
+                }
+                if err.is_out_of_memory() {
+                    update_sender.send(DecoderUpdate::SpecificError(DecoderError::OutOfMemory));
                 } else if matches!(err.error(), glycin::Error::NoLoadersConfigured(_)) {
                     update_sender.send(DecoderUpdate::SpecificError(
                         DecoderError::NoLoadersConfigured,
