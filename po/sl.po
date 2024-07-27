@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2024-07-19 21:41+0000\n"
-"PO-Revision-Date: 2024-07-20 12:53+0200\n"
+"POT-Creation-Date: 2024-07-26 21:17+0000\n"
+"PO-Revision-Date: 2024-07-27 11:07+0200\n"
 "Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
 "Language-Team: Slovenian <gnome-si@googlegroups.com>\n"
 "Language: sl\n"
@@ -350,7 +350,11 @@ msgstr "Vrsta zapisa slike »{} ({})« je znana, vendar ni nameščena."
 msgid "Unknown image format “{} ({}).”"
 msgstr "Neznana vrsta zapisa slike »{} ({})«."
 
-#: src/widgets/image_page.rs:265
+#: src/widgets/image_page.rs:266
+msgid "There is not enough free memory available to load this image."
+msgstr "Za nalaganje te slike ni na voljo dovolj prostega pomnilnika."
+
+#: src/widgets/image_page.rs:270
 msgid "Either the image file is corrupted or it contains unsupported elements."
 msgstr "Slikovna datoteka je poškodovana ali pa vsebuje nepodprte elemente."
 
