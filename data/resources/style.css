@@ -31,7 +31,7 @@ outline {
 /* Drag overlay */
 .lp-dragging-area-highlight {
   border-radius: 8px;
-  background-color: alpha(@blue_2, 0.35);
+  background-color: color-mix(in srgb, var(--accent-bg-color) 35%, transparent);
   margin: 24px;
 }
 
