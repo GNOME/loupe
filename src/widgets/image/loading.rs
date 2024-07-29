@@ -112,9 +112,6 @@ impl imp::LpImage {
                     ));
                 }
             }
-            DecoderUpdate::GenericError(err) => {
-                self.set_error(Some(err));
-            }
             DecoderUpdate::Animated => {
                 if self.still.get() {
                     // Just load the first frame
@@ -131,7 +128,18 @@ impl imp::LpImage {
                 }
             }
             DecoderUpdate::SpecificError(err) => {
-                self.set_specific_error(err);
+                if self.obj().is_loaded() {
+                    log::warn!("Error occured while loading additional data: {err:?}");
+                } else {
+                    self.set_specific_error(err);
+                }
+            }
+            DecoderUpdate::GenericError(err) => {
+                if self.obj().is_loaded() {
+                    log::warn!("Error occured while loading additional data: {err:?}");
+                } else {
+                    self.set_error(Some(err));
+                }
             }
         }
     }

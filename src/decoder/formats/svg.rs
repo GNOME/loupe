@@ -71,6 +71,7 @@ impl Svg {
         updater.clone().spawn_error_handled(async move {
             log::trace!("Setting up SVG loader");
             let mut loader = glycin::Loader::new(file);
+            loader.sandbox_selector(glycin::SandboxSelector::FlatpakSpawn);
 
             loader.cancellable(cancellable.clone());
 
@@ -135,14 +136,19 @@ impl Svg {
                                     area.height() as u32,
                                 );
 
-                            let frame = image.specific_frame(frame_request).await?;
+                            match image.specific_frame(frame_request).await {
+                                Ok(frame) => {
+                                    let position = (
+                                        tile_instructions.area.x() as u32,
+                                        tile_instructions.area.y() as u32,
+                                    );
 
-                            let position = (
-                                tile_instructions.area.x() as u32,
-                                tile_instructions.area.y() as u32,
-                            );
-
-                            tiles.push_tile(tiling, position, frame.texture());
+                                    tiles.push_tile(tiling, position, frame.texture());
+                                }
+                                Err(err) => {
+                                    updater.send_error(err);
+                                }
+                            }
                         }
                     }
                 }

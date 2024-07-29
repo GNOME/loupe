@@ -116,21 +116,25 @@ impl UpdateSender {
             let result: Result<(), glycin::ErrorCtx> = f.await;
 
             if let Err(err) = result {
-                if err.unsupported_format().is_some() {
-                    update_sender.send(DecoderUpdate::SpecificError(
-                        DecoderError::UnsupportedFormat,
-                    ));
-                }
-                if err.is_out_of_memory() {
-                    update_sender.send(DecoderUpdate::SpecificError(DecoderError::OutOfMemory));
-                } else if matches!(err.error(), glycin::Error::NoLoadersConfigured(_)) {
-                    update_sender.send(DecoderUpdate::SpecificError(
-                        DecoderError::NoLoadersConfigured,
-                    ));
-                }
-                update_sender.send(DecoderUpdate::GenericError(err.into()));
+                update_sender.send_error(err);
             }
         })
+    }
+
+    pub fn send_error(&self, err: glycin::ErrorCtx) {
+        if err.unsupported_format().is_some() {
+            self.send(DecoderUpdate::SpecificError(
+                DecoderError::UnsupportedFormat,
+            ));
+        }
+        if err.is_out_of_memory() {
+            self.send(DecoderUpdate::SpecificError(DecoderError::OutOfMemory));
+        } else if matches!(err.error(), glycin::Error::NoLoadersConfigured(_)) {
+            self.send(DecoderUpdate::SpecificError(
+                DecoderError::NoLoadersConfigured,
+            ));
+        }
+        self.send(DecoderUpdate::GenericError(err.into()));
     }
 }
 
