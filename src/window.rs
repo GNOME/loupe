@@ -758,6 +758,8 @@ impl LpWindow {
         for action in ACTIONS {
             self.action_set_enabled(action, enabled);
         }
+
+        self.action_set_enabled(Action::Reload.as_ref(), true);
     }
 
     /// Handles change in image and availability of images

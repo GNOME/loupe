@@ -290,6 +290,15 @@ impl LpImage {
         self.imp().file.replace(Some(file.clone()));
     }
 
+    pub async fn reload(&self) {
+        dbg!("reloadking");
+        if let Some(file) = self.file() {
+            self.load(&file).await;
+        } else {
+            log::error!("Trying to reload image without file");
+        }
+    }
+
     pub async fn load(&self, file: &gio::File) {
         let imp = self.imp();
         log::debug!("Loading file {}", file.uri());

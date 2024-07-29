@@ -194,6 +194,8 @@ pub enum Action {
     ToggleProperties,
     #[strum(to_string = "win.about")]
     About,
+    #[strum(to_string = "win.reload")]
+    Reload,
 }
 
 impl Action {
@@ -466,6 +468,17 @@ impl Action {
                     klass.install_action_async(&action, None, |win, _, _| async move {
                         win.show_about().await
                     });
+                }
+
+                Action::Reload => {
+                    klass.install_action_async(&action, None, move |win, _, _| async move {
+                        if let Some(current_page) = win.imp().image_view.current_page() {
+                            current_page.image().reload().await;
+                        } else {
+                            log::error!("No current image to reload");
+                        }
+                    });
+                    klass.add_binding_action(gdk::Key::F5, gdk::ModifierType::empty(), &action);
                 }
             }
         }

@@ -56,13 +56,19 @@
         </property>
         <child type="bottom">
           <object class="GtkButton" id="report">
-            <property name="label" translatable="yes">Report Issue…</property>
             <property name="halign">center</property>
             <property name="margin-bottom">24</property>
             <style>
               <class name="suggested-action" />
               <class name="pill" />
             </style>
+            <child>
+              <object class="AdwButtonContent">
+                <property name="icon-name">external-link-symbolic</property>
+                <property name="label" translatable="yes">Report _Issue</property>
+                <property name="use-underline">true</property>
+              </object>
+            </child>
           </object>
         </child>
       </object>

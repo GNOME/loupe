@@ -47,7 +47,7 @@
             <property name="hexpand">true</property>
             <property name="vexpand">true</property>
             <child>
-              <object class="AdwSpinner" id="spinner"/>
+              <object class="AdwSpinner" id="spinner" />
             </child>
           </object>
         </child>
@@ -56,12 +56,30 @@
             <property name="icon-name">image-missing-symbolic</property>
             <property name="title" translatable="yes">Could not Load Image</property>
             <child>
-              <object class="GtkButton" id="error_more_info">
-                <property name="label" translatable="true">More Information…</property>
+              <object class="GtkBox">
+                <property name="orientation">vertical</property>
+                <property name="spacing">12</property>
                 <property name="halign">center</property>
-                <style>
-                  <class name="pill" />
-                </style>
+                <child>
+                  <object class="GtkButton" id="error_more_info">
+                    <property name="label" translatable="true">More _Information</property>
+                    <property name="use-underline">true</property>
+                    <style>
+                      <class name="suggested-action" />
+                      <class name="pill" />
+                    </style>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkButton">
+                    <property name="label" translatable="true">_Reload</property>
+                    <property name="use-underline">true</property>
+                    <property name="action-name">win.reload</property>
+                    <style>
+                      <class name="pill" />
+                    </style>
+                  </object>
+                </child>
               </object>
             </child>
           </object>
