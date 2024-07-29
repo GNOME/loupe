@@ -47,7 +47,13 @@
             <property name="hexpand">true</property>
             <property name="vexpand">true</property>
             <child>
-              <object class="AdwSpinner" id="spinner" />
+              <object class="GtkRevealer" id="spinner_revealer">
+                <property name="reveal-child">false</property>
+                <property name="transition-type">crossfade</property>
+                <child>
+                  <object class="AdwSpinner" id="spinner" />
+                </child>
+              </object>
             </child>
           </object>
         </child>

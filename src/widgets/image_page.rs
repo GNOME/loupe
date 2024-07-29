@@ -33,6 +33,8 @@ use crate::util::gettext::*;
 use crate::widgets::LpImage;
 
 mod imp {
+    use std::time::Duration;
+
     use super::*;
 
     #[derive(Debug, Default, CompositeTemplate, Properties)]
@@ -43,6 +45,8 @@ mod imp {
         pub(super) stack: TemplateChild<gtk::Stack>,
         #[template_child]
         pub(super) spinner_page: TemplateChild<gtk::Widget>,
+        #[template_child]
+        pub(super) spinner_revealer: TemplateChild<gtk::Revealer>,
 
         #[template_child]
         pub(super) error_page: TemplateChild<adw::StatusPage>,
@@ -146,6 +150,13 @@ mod imp {
                     glib::spawn_future_local(async move { obj.show_error().await });
                 }
             ));
+
+            self.spinner_revealer.connect_map(|revealer| {
+                let revealer = revealer.clone();
+                glib::timeout_add_local_once(Duration::from_millis(200), move || {
+                    revealer.set_reveal_child(true);
+                });
+            });
         }
     }
 
