@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2024-07-26 21:17+0000\n"
-"PO-Revision-Date: 2024-07-27 11:07+0200\n"
+"POT-Creation-Date: 2024-07-29 14:12+0000\n"
+"PO-Revision-Date: 2024-07-30 11:22+0200\n"
 "Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
 "Language-Team: Slovenian <gnome-si@googlegroups.com>\n"
 "Language: sl\n"
@@ -23,7 +23,7 @@ msgstr ""
 "X-Poedit-SourceCharset: ISO-8859-1\n"
 
 #: data/org.gnome.Loupe.desktop.in.in:3
-#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:31 src/window.rs:837
+#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:31 src/window.rs:839
 msgid "Image Viewer"
 msgstr "Pregledovalnik slik"
 
@@ -330,9 +330,9 @@ msgstr "Sporočilo o napaki"
 msgid "Copy Error Message"
 msgstr "Kopiraj sporočilo o napaki"
 
-#: src/widgets/error_details.ui:59
-msgid "Report Issue…"
-msgstr "Pošlji poročilo o napaki …"
+#: src/widgets/error_details.ui:68
+msgid "Report _Issue"
+msgstr "Pošlji poroč_ilo o napaki"
 
 #: src/widgets/image_page.rs:216
 msgid ""
@@ -382,15 +382,19 @@ msgstr "_Nastavi za ozadje …"
 msgid "Could not Load Image"
 msgstr "Slike ni mogoče naložiti"
 
-#: src/widgets/image_page.ui:60
-msgid "More Information…"
-msgstr "Več informacij ..."
+#: src/widgets/image_page.ui:65
+msgid "More _Information"
+msgstr "Več informacij"
 
-#: src/widgets/image_page.ui:99 src/window.ui:225
+#: src/widgets/image_page.ui:75
+msgid "_Reload"
+msgstr "_Ponovno naloži"
+
+#: src/widgets/image_page.ui:117 src/window.ui:225
 msgid "Rotate Left"
 msgstr "Zavrti v levo"
 
-#: src/widgets/image_page.ui:109 src/window.ui:235
+#: src/widgets/image_page.ui:127 src/window.ui:235
 msgid "Rotate Right"
 msgstr "Zavrti v desno"
 
