@@ -397,6 +397,7 @@ impl Action {
                 Action::CopyImage => klass.install_action(&action, None, move |win, _, _| {
                     win.copy_image();
                 }),
+
                 Action::SetBackground => {
                     klass.install_action_async(&action, None, |win, _, _| async move {
                         win.set_background().await;
