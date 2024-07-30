@@ -71,7 +71,7 @@
   </categories>
 
   <releases>
-    <release version="47.alpha" date="2024-06-28">
+    <release version="47.beta" date="2024-08-02">
       <description>
         <p>Beginning with this release, rotating an image will write this change to image files. For now, this feature is only supported for JPEG files. Several user interface elements have been updated to more recent design patterns.</p>
       </description>

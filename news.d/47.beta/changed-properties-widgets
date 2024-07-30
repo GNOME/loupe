@@ -1,0 +1,1 @@
+The properties no longer use the deprecated AdwFlap widget. For very small windows, properties are now shown in an AdwBottomSheet.

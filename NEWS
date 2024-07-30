@@ -1,3 +1,24 @@
+## 47.beta (Unreleased)
+
+### Added
+
+- Add reload button to errors and F5 as reload shortcut
+
+### Fixed
+
+- Don't show error-screen if SVG has been loaded and only the rendering for tiles for other zoom levels fails. Instead, show the already loaded tiles.
+- No longer empty the animation buffer if next frame isn't available yet. This removes flickering for larger and high FPS animations on slower systems.
+
+### Changed
+
+- Changed the drag and drop overlay to use accent colors instead of a fixed color. This also makes it follow the new adjustable accent colors.
+- Don't emmediately show the spinner for loading images. This avoids fresh spinners showing up each time when switching through images very quickly via keyboard.
+- Make strings that contain `\u{<hex>}` translatable
+- No longer overwrite GTKs default renderer with 'gl'. The latest patches in GTK seem to make the Vulkan renderer work fine.
+- The properties no longer use the deprecated AdwFlap widget. For very small windows, properties are now shown in an AdwBottomSheet.
+- Use AdwSpinner when loading images.
+- Use glycin's auto detection of development mode to disable sandbox.
+
 ## 47.alpha (2024-06-28)
 
 ### Added

@@ -1,0 +1,1 @@
+Don't emmediately show the spinner for loading images. This avoids fresh spinners showing up each time when switching through images very quickly via keyboard.
