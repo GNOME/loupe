@@ -780,7 +780,8 @@ impl LpWindow {
         self.action_set_enabled(&Action::ZoomInCursor, can_zoom_in && enabled_shown);
         self.action_set_enabled(&Action::ZoomInCenter, can_zoom_in && enabled_shown);
 
-        // Actions that are available if there is an current image, even if it's not shown
+        // Actions that are available if there is a current image, even if it's not
+        // shown
         const ACTIONS_CURRENT: &[Action] = &[
             Action::OpenWith,
             Action::CopyImage,

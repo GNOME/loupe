@@ -329,27 +329,42 @@ impl imp::LpImage {
         None
     }
 
-    /// Offset from physical pixels for fractional scaling in app pixels
+    /// Offset from physical pixels in app pixels for fractional scaling
     pub fn physical_pixel_offset(&self) -> (f32, f32) {
         let obj = self.obj();
 
-        // Native position
-        let native_position = obj.native().map(|x| x.surface_transform());
+        // Window position inside the surface
+        let native_position = obj.native().map(|native| native.surface_transform());
 
-        // Widget position in native
+        // Widget position inside the window
         let widget_position = obj
             .native()
-            .and_then(|x| obj.compute_point(&x, &graphene::Point::zero()));
+            .and_then(|native| obj.compute_point(&native, &graphene::Point::zero()));
 
         if let (Some(native_position), Some(widget_position)) = (native_position, widget_position) {
-            let scale = dbg!(self.scaling()) as f32;
+            let scale = self.scaling() as f32;
 
-            let x = ((dbg!(native_position.0) as f32 + widget_position.x()) * scale).fract();
-            let y = ((dbg!(native_position.1) as f32 + widget_position.y()) * scale).fract();
+            // Widget position in surface coordinates
+            let widget_total_x = native_position.0 as f32 + widget_position.x();
+            let widget_total_y = native_position.1 as f32 + widget_position.y();
 
-            let x_correction = if x < 0.5 { -x } else { 1. - x };
-            let y_correction = if x < 0.5 { -y } else { 1. - y };
+            // Transform to physical coordinates and take the offset to a whole pixel
+            let offset_x = (widget_total_x * scale).fract();
+            let offset_y = (widget_total_y * scale).fract();
 
+            // Use the direction with minimal movement
+            let x_correction = if offset_x < 0.5 {
+                -offset_x
+            } else {
+                1. - offset_x
+            };
+            let y_correction = if offset_y < 0.5 {
+                -offset_y
+            } else {
+                1. - offset_y
+            };
+
+            // Return in app coordinates
             (x_correction / scale, y_correction / scale)
         } else {
             log::error!("Rendering without knowing widget position");
