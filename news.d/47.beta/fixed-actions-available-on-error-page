@@ -1,0 +1,1 @@
+Fixed that some actions are available on error pages and loading screens while they are not actually useful. This includes actions like zoom, rotate, and print.

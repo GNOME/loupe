@@ -148,17 +148,7 @@ mod imp {
                 move || obj.target_page_reached()
             ));
 
-            let signal_group = glib::SignalGroup::new::<LpImage>();
-            obj.connect_notify_local(
-                Some("current-page"),
-                clone!(
-                    #[weak]
-                    signal_group,
-                    move |obj, _| {
-                        signal_group.set_target(obj.current_image().as_ref());
-                    }
-                ),
-            );
+            let signal_group = obj.current_image_signals();
 
             let view = &*obj;
             signal_group.connect_closure(
@@ -184,8 +174,6 @@ mod imp {
                     }
                 ),
             );
-
-            self.current_image_signals.set(signal_group).unwrap();
 
             self.drag_source.set_exclusive(true);
 
@@ -488,8 +476,8 @@ impl LpImageView {
             }
         }
 
-        self.notify("is-previous-available");
-        self.notify("is-next-available");
+        self.notify_is_previous_available();
+        self.notify_is_next_available();
     }
 
     fn scroll_sliding_view(&self, file: &gio::File, animated: bool) {
@@ -619,10 +607,17 @@ impl LpImageView {
     }
 
     pub fn current_image_signals(&self) -> &glib::SignalGroup {
-        self.imp()
-            .current_image_signals
-            .get()
-            .expect("Signal group should be set up during construction")
+        self.imp().current_image_signals.get_or_init(move || {
+            let signal_group = glib::SignalGroup::new::<LpImage>();
+            self.connect_current_page_notify(clone!(
+                #[weak]
+                signal_group,
+                move |obj| {
+                    signal_group.set_target(obj.current_image().as_ref());
+                }
+            ));
+            signal_group
+        })
     }
 
     pub fn current_uri(&self) -> Option<glib::GString> {

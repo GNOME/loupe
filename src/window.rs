@@ -264,19 +264,6 @@ mod imp {
             obj.add_controller(self.motion_controller.clone());
 
             let current_image_signals = self.image_view.current_image_signals();
-            // clone! is a macro from glib-rs that allows
-            // you to easily handle references in callbacks
-            // without refcycles or leaks.
-            //
-            // When you don't want the callback to keep the
-            // Object alive, pass as @weak. Otherwise, pass
-            // as @strong. Most of the time you will want
-            // to use @weak.
-            current_image_signals.connect_bind_local(glib::clone!(
-                #[weak]
-                obj,
-                move |_, _| obj.on_zoom_status_changed()
-            ));
 
             current_image_signals.connect_local(
                 "metadata-changed",
@@ -302,7 +289,7 @@ mod imp {
                     #[watch]
                     obj,
                     move |_: &LpImage, _: &glib::ParamSpec| {
-                        obj.on_zoom_status_changed();
+                        obj.update_image_actions_status();
                     }
                 ),
             );
@@ -314,7 +301,7 @@ mod imp {
                     #[watch]
                     obj,
                     move |_: &LpImage, _: &glib::ParamSpec| {
-                        obj.on_zoom_status_changed();
+                        obj.update_image_actions_status();
                     }
                 ),
             );
@@ -332,6 +319,18 @@ mod imp {
             );
 
             current_image_signals.connect_closure(
+                "notify::is-loaded",
+                false,
+                glib::closure_local!(
+                    #[watch]
+                    obj,
+                    move |_: &LpImage, _: &glib::ParamSpec| {
+                        obj.update_image_actions_status();
+                    }
+                ),
+            );
+
+            current_image_signals.connect_closure(
                 "notify::error",
                 false,
                 glib::closure_local!(
@@ -339,6 +338,7 @@ mod imp {
                     obj,
                     move |_: &LpImage, _: &glib::ParamSpec| {
                         obj.image_error();
+                        obj.update_image_actions_status();
                     }
                 ),
             );
@@ -350,7 +350,7 @@ mod imp {
                     obj,
                     move |_| {
                         obj.action_set_enabled(
-                            "win.previous",
+                            &Action::Previous,
                             obj.imp().image_view.is_previous_available(),
                         );
                     }
@@ -363,7 +363,7 @@ mod imp {
                     obj,
                     move |_| {
                         obj.action_set_enabled(
-                            "win.next",
+                            &Action::Next,
                             obj.imp().image_view.is_next_available(),
                         );
                     }
@@ -741,25 +741,59 @@ impl LpWindow {
         imp.toast_overlay.add_toast(toast);
     }
 
-    pub fn set_actions_enabled(&self, enabled: bool) {
-        const ACTIONS: &[&str] = &[
-            "win.open-with",
-            "win.set-background",
-            "win.toggle-fullscreen",
-            "win.print",
-            "win.rotate-cw",
-            "win.rotate-ccw",
-            "win.copy-image",
-            "win.zoom-best-fit",
-            "win.zoom-to-exact",
-            "win.toggle-properties",
+    /// Set status for actions that are related to the active image
+    fn update_image_actions_status(&self) {
+        // Actions that are enabled if the image is shown
+        const ACTIONS_SHOWN: &[Action] = &[
+            Action::SetBackground,
+            Action::Print,
+            Action::RotateCw,
+            Action::RotateCcw,
+            Action::ZoomBestFit,
+            Action::ZoomToExact1,
+            Action::ZoomToExact2,
         ];
 
-        for action in ACTIONS {
-            self.action_set_enabled(action, enabled);
+        let enabled_shown = self
+            .imp()
+            .image_view
+            .current_page()
+            .is_some_and(|x| x.image().is_loaded() && x.image().error().is_none());
+
+        for action in ACTIONS_SHOWN {
+            self.action_set_enabled(action, enabled_shown);
         }
 
-        self.action_set_enabled(Action::Reload.as_ref(), true);
+        // Zoom specific actions
+
+        let can_zoom_out = self
+            .image_view()
+            .current_image()
+            .is_some_and(|image| !image.is_best_fit());
+        let can_zoom_in = self
+            .image_view()
+            .current_image()
+            .is_some_and(|image| !image.is_max_zoom());
+
+        self.action_set_enabled(&Action::ZoomOutCursor, can_zoom_out && enabled_shown);
+        self.action_set_enabled(&Action::ZoomOutCenter, can_zoom_out && enabled_shown);
+        self.action_set_enabled(&Action::ZoomInCursor, can_zoom_in && enabled_shown);
+        self.action_set_enabled(&Action::ZoomInCenter, can_zoom_in && enabled_shown);
+
+        // Actions that are available if there is an current image, even if it's not shown
+        const ACTIONS_CURRENT: &[Action] = &[
+            Action::OpenWith,
+            Action::CopyImage,
+            Action::ToggleProperties,
+            Action::Reload,
+            Action::ToggleFullscreen,
+        ];
+
+        let enabled_current = self.imp().image_view.current_page().is_some();
+
+        for action in ACTIONS_CURRENT {
+            self.action_set_enabled(action, enabled_current);
+        }
     }
 
     /// Handles change in image and availability of images
@@ -781,9 +815,9 @@ impl LpWindow {
 
         let has_image = current_page.is_some();
 
-        self.set_actions_enabled(has_image);
+        self.update_image_actions_status();
         self.action_set_enabled(
-            "win.trash",
+            &Action::Trash,
             imp.image_view
                 .current_file()
                 .is_some_and(|file| file.path().is_some()),
@@ -883,24 +917,6 @@ impl LpWindow {
             log::debug!("Showing window because loading image failed");
             self.present();
         }
-    }
-
-    fn on_zoom_status_changed(&self) {
-        let can_zoom_out = self
-            .image_view()
-            .current_image()
-            .map(|image| !image.is_best_fit())
-            .unwrap_or_default();
-        let can_zoom_in = self
-            .image_view()
-            .current_image()
-            .map(|image| !image.is_max_zoom())
-            .unwrap_or_default();
-
-        self.action_set_enabled("win.zoom-out-cursor", can_zoom_out);
-        self.action_set_enabled("win.zoom-out-center", can_zoom_out);
-        self.action_set_enabled("win.zoom-in-cursor", can_zoom_in);
-        self.action_set_enabled("win.zoom-in-center", can_zoom_in);
     }
 
     fn on_fullscreen_changed(&self) {
