@@ -183,9 +183,8 @@ impl imp::LpImage {
             // Get image coordinate from the passed cursor position
             self.widget_to_img_coord(cur_pos)
         } else {
-            // Use center of image
-            let (width, height) = obj.image_size();
-            (width as f64 / 2., height as f64 / 2.)
+            // Use center of viewport
+            self.widget_to_img_coord((self.widget_width() / 2., self.widget_height() / 2.))
         };
 
         let cur_pos = if let Some(cur) = cur {
