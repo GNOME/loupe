@@ -914,8 +914,9 @@ dependencies = [
 
 [[package]]
 name = "glycin"
-version = "2.0.0-alpha"
-source = "git+https://gitlab.gnome.org/sophie-h/glycin#ccac2af9717c43ab2c64771ae66d01b8f17d8472"
+version = "2.0.0-beta"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "8ad0e7b971597fd206fbf0a6fb37608fd7983705ef8adfb8781fcbc155ef8f83"
 dependencies = [
  "async-fs",
  "async-io",
@@ -945,8 +946,9 @@ dependencies = [
 
 [[package]]
 name = "glycin-utils"
-version = "2.0.0-alpha"
-source = "git+https://gitlab.gnome.org/sophie-h/glycin#ccac2af9717c43ab2c64771ae66d01b8f17d8472"
+version = "2.0.0-beta"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "d32e5bd3f73d2df60927b5eca9cdc9aee064dc7df8720c8bfb73f815f6a17d97"
 dependencies = [
  "env_logger",
  "gufo-common",
@@ -1707,9 +1709,9 @@ dependencies = [
 
 [[package]]
 name = "regex"
-version = "1.10.5"
+version = "1.10.6"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "b91213439dad192326a0d7c6ee3955910425f441d7038e0d6933b0aec5c4517f"
+checksum = "4219d74c6b67a3654a9fbebc4b419e22126d13d2f3c4a07ee0cb61ff79a79619"
 dependencies = [
  "aho-corasick",
  "memchr",
@@ -1842,9 +1844,9 @@ dependencies = [
 
 [[package]]
 name = "serde_json"
-version = "1.0.121"
+version = "1.0.122"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "4ab380d7d9f22ef3f21ad3e6c1ebe8e4fc7a2000ccba2e4d71fc96f15b2cb609"
+checksum = "784b6203951c57ff748476b126ccb5e8e2959a5c19e5c617ab1956be3dbc68da"
 dependencies = [
  "itoa",
  "memchr",
