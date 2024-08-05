@@ -780,7 +780,8 @@ impl LpWindow {
         self.action_set_enabled(&Action::ZoomInCursor, can_zoom_in && enabled_shown);
         self.action_set_enabled(&Action::ZoomInCenter, can_zoom_in && enabled_shown);
 
-        // Actions that are available if there is an current image, even if it's not shown
+        // Actions that are available if there is an current image, even if it's not
+        // shown
         const ACTIONS_CURRENT: &[Action] = &[
             Action::OpenWith,
             Action::CopyImage,
@@ -894,13 +895,36 @@ impl LpWindow {
     }
 
     pub fn resize_default(&self) {
+        let imp = self.imp();
+
         if self
             .image_view()
             .current_image()
             .is_some_and(|img| img.image_size_available())
         {
-            // this let's the window determine the default size from LpImage's natural size
-            self.set_default_size(-1, -1);
+            let shows_properties = imp.properties_button.is_active();
+
+            let (_, window_natural_width, _, _) = self.measure(gtk::Orientation::Horizontal, -1);
+            let (_, window_natural_height, _, _) = self.measure(gtk::Orientation::Vertical, -1);
+
+            // These have to be in sync with the "conditions" for the "overlay-properties"
+            // breakpoint
+            let min_width_for_overlay = adw::LengthUnit::Sp.to_px(590., None).ceil() as i32;
+            let min_height_for_overlay = adw::LengthUnit::Sp.to_px(550., None).ceil() as i32;
+
+            let (width, height) = if shows_properties
+                && window_natural_width < min_width_for_overlay
+                && window_natural_height < min_height_for_overlay
+            {
+                // Avoid overlaying bottom sheet being triggered for the image properties by
+                // using a window wide enough to allow for a sidebar
+                (min_width_for_overlay.saturating_add(1), -1)
+            } else {
+                // this lets the window determine the default size from LpImage's natural size
+                (-1, -1)
+            };
+
+            self.set_default_size(width, height);
         }
     }
 

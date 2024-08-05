@@ -25,8 +25,7 @@ mod file;
 mod gps;
 
 pub use file::FileInfo;
-use glycin::{Frame, MemoryFormat};
-use glycin::{FrameDetails, ImageInfoDetails};
+use glycin::{Frame, FrameDetails, ImageInfoDetails, MemoryFormat};
 pub use gps::GPSLocation;
 
 use crate::deps::*;

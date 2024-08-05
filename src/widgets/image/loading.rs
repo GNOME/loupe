@@ -291,7 +291,6 @@ impl LpImage {
     }
 
     pub async fn reload(&self) {
-        dbg!("reloadking");
         if let Some(file) = self.file() {
             self.load(&file).await;
         } else {
