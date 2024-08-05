@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2024-07-26 21:17+0000\n"
-"PO-Revision-Date: 2024-07-27 13:53+0530\n"
+"POT-Creation-Date: 2024-07-31 00:10+0000\n"
+"PO-Revision-Date: 2024-08-03 22:54+0530\n"
 "Last-Translator: Scrambled777 <weblate.scrambled777@simplelogin.com>\n"
 "Language-Team: Hindi <indlinux-hindi@lists.sourceforge.net>\n"
 "Language: hi\n"
@@ -19,7 +19,7 @@ msgstr ""
 "X-Generator: Gtranslator 46.1\n"
 
 #: data/org.gnome.Loupe.desktop.in.in:3
-#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:31 src/window.rs:837
+#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:31 src/window.rs:873
 msgid "Image Viewer"
 msgstr "Image Viewer"
 
@@ -67,174 +67,183 @@ msgstr "सामान्य शॉर्टकट"
 
 #: data/resources/gtk/help-overlay.ui:14
 msgctxt "shortcut window"
-msgid "Show Main Menu"
-msgstr "मुख्य मेनू दिखाएं"
+msgid "Copy Image or Selected Text to Clipboard"
+msgstr "छवि या चयनित पाठ को क्लिपबोर्ड पर कॉपी करें"
 
 #: data/resources/gtk/help-overlay.ui:20
-msgctxt "shortcut window"
-msgid "Copy Image or Metadata to Clipboard"
-msgstr "छवि या मेटाडेटा को क्लिपबोर्ड पर कॉपी करें"
-
-#: data/resources/gtk/help-overlay.ui:26
 msgctxt "shortcut window"
 msgid "Move Image to Trash"
 msgstr "छवि को रद्दी में ले जाएं"
 
-#: data/resources/gtk/help-overlay.ui:32
+#: data/resources/gtk/help-overlay.ui:26
 msgctxt "shortcut window"
 msgid "Permanently Delete Image"
 msgstr "छवि को स्थायी रूप से हटाएं"
 
-#: data/resources/gtk/help-overlay.ui:38
+#: data/resources/gtk/help-overlay.ui:32
 msgctxt "shortcut window"
-msgid "Toggle Image Properties"
-msgstr "छवि गुण टॉगल करें"
+msgid "Open Image with Other App"
+msgstr "अन्य ऐप के साथ छवि खोलें"
 
-#: data/resources/gtk/help-overlay.ui:44
+#: data/resources/gtk/help-overlay.ui:38
 msgctxt "shortcut window"
 msgid "Set as Background"
 msgstr "पृष्ठभूमि के रूप में निर्धारित करें"
 
-#: data/resources/gtk/help-overlay.ui:50
-msgctxt "shortcut window"
-msgid "Toggle Fullscreen"
-msgstr "पूर्णस्क्रीन टॉगल करें"
-
-#: data/resources/gtk/help-overlay.ui:56
-msgctxt "shortcut window"
-msgid "Leave Fullscreen"
-msgstr "पूर्णस्क्रीन छोड़ें"
-
-#: data/resources/gtk/help-overlay.ui:62
+#: data/resources/gtk/help-overlay.ui:44
 msgctxt "shortcut window"
 msgid "New Window"
 msgstr "नई विंडो"
 
-#: data/resources/gtk/help-overlay.ui:68
+#: data/resources/gtk/help-overlay.ui:50
 msgctxt "shortcut window"
 msgid "Open Help"
 msgstr "सहायता खोलें"
 
-#: data/resources/gtk/help-overlay.ui:74
+#: data/resources/gtk/help-overlay.ui:56
 msgctxt "shortcut window"
 msgid "Show Keyboard Shortcuts"
 msgstr "कीबोर्ड शॉर्टकट दिखाएं"
 
-#: data/resources/gtk/help-overlay.ui:80
+#: data/resources/gtk/help-overlay.ui:62
 msgctxt "shortcut window"
 msgid "Close Window"
 msgstr "विंडो बंद करें"
 
-#: data/resources/gtk/help-overlay.ui:86
+#: data/resources/gtk/help-overlay.ui:68
 msgctxt "shortcut window"
 msgid "Quit"
 msgstr "बंद करें"
 
-#: data/resources/gtk/help-overlay.ui:94
+#: data/resources/gtk/help-overlay.ui:76
 msgctxt "shortcut window"
 msgid "Navigate Images"
 msgstr "छवियां नेविगेट करें"
 
-#: data/resources/gtk/help-overlay.ui:98 data/resources/gtk/help-overlay.ui:112
-#: data/resources/gtk/help-overlay.ui:224
-#: data/resources/gtk/help-overlay.ui:238
+#: data/resources/gtk/help-overlay.ui:80 data/resources/gtk/help-overlay.ui:94
+#: data/resources/gtk/help-overlay.ui:235
+#: data/resources/gtk/help-overlay.ui:249
 msgctxt "shortcut window"
 msgid "Next Image"
 msgstr "अगली छवि"
 
-#: data/resources/gtk/help-overlay.ui:105
-#: data/resources/gtk/help-overlay.ui:119
-#: data/resources/gtk/help-overlay.ui:231
-#: data/resources/gtk/help-overlay.ui:245
+#: data/resources/gtk/help-overlay.ui:87 data/resources/gtk/help-overlay.ui:101
+#: data/resources/gtk/help-overlay.ui:242
+#: data/resources/gtk/help-overlay.ui:256
 msgctxt "shortcut window"
 msgid "Previous Image"
 msgstr "पिछली छवि"
 
-#: data/resources/gtk/help-overlay.ui:125
+#: data/resources/gtk/help-overlay.ui:107
 msgctxt "shortcut window"
 msgid "First Image"
 msgstr "पहली छवि"
 
-#: data/resources/gtk/help-overlay.ui:131
+#: data/resources/gtk/help-overlay.ui:113
 msgctxt "shortcut window"
 msgid "Last Image"
 msgstr "अंतिम छवि"
 
-#: data/resources/gtk/help-overlay.ui:139
+#: data/resources/gtk/help-overlay.ui:121
 msgctxt "shortcut window"
 msgid "Rotate Image"
 msgstr "छवि घुमाएं"
 
-#: data/resources/gtk/help-overlay.ui:142
-#: data/resources/gtk/help-overlay.ui:263
+#: data/resources/gtk/help-overlay.ui:124
+#: data/resources/gtk/help-overlay.ui:274
 msgctxt "shortcut window"
 msgid "Rotate Clockwise"
 msgstr "दक्षिणावर्त घुमाएं"
 
-#: data/resources/gtk/help-overlay.ui:148
-#: data/resources/gtk/help-overlay.ui:269
+#: data/resources/gtk/help-overlay.ui:130
+#: data/resources/gtk/help-overlay.ui:280
 msgctxt "shortcut window"
 msgid "Rotate Counterclockwise"
 msgstr "वामावर्त घुमाएं"
 
-#: data/resources/gtk/help-overlay.ui:156
+#: data/resources/gtk/help-overlay.ui:138
 msgctxt "shortcut window"
 msgid "Zoom Image"
 msgstr "छवि जूम करें"
 
-#: data/resources/gtk/help-overlay.ui:159
-#: data/resources/gtk/help-overlay.ui:251
+#: data/resources/gtk/help-overlay.ui:141
+#: data/resources/gtk/help-overlay.ui:262
 msgctxt "shortcut window"
 msgid "Zoom In"
 msgstr "बड़ा करें"
 
-#: data/resources/gtk/help-overlay.ui:165
-#: data/resources/gtk/help-overlay.ui:257
+#: data/resources/gtk/help-overlay.ui:147
+#: data/resources/gtk/help-overlay.ui:268
 msgctxt "shortcut window"
 msgid "Zoom Out"
 msgstr "छोटा करें"
 
-#: data/resources/gtk/help-overlay.ui:171
+#: data/resources/gtk/help-overlay.ui:153
 msgctxt "shortcut window"
 msgid "Best Fit"
 msgstr "सर्वोत्तम अनुरूप"
 
-#: data/resources/gtk/help-overlay.ui:177
+#: data/resources/gtk/help-overlay.ui:159
 msgctxt "shortcut window"
 msgid "Original Scale"
 msgstr "मूल पैमाना"
 
-#: data/resources/gtk/help-overlay.ui:183
+#: data/resources/gtk/help-overlay.ui:165
 msgctxt "shortcut window"
 msgid "200% Scale"
 msgstr "200% पैमाना"
 
-#: data/resources/gtk/help-overlay.ui:191
+#: data/resources/gtk/help-overlay.ui:173
 msgctxt "shortcut window"
 msgid "Pan View"
 msgstr "पैन दृश्य"
 
-#: data/resources/gtk/help-overlay.ui:194
+#: data/resources/gtk/help-overlay.ui:176
 msgctxt "shortcut window"
 msgid "Pan Left"
 msgstr "बाएं पैन करें"
 
-#: data/resources/gtk/help-overlay.ui:200
+#: data/resources/gtk/help-overlay.ui:182
 msgctxt "shortcut window"
 msgid "Pan Right"
 msgstr "दाएं पैन करें"
 
-#: data/resources/gtk/help-overlay.ui:206
+#: data/resources/gtk/help-overlay.ui:188
 msgctxt "shortcut window"
 msgid "Pan Up"
 msgstr "ऊपर पैन करें"
 
-#: data/resources/gtk/help-overlay.ui:212
+#: data/resources/gtk/help-overlay.ui:194
 msgctxt "shortcut window"
 msgid "Pan Down"
 msgstr "नीचे पैन करें"
 
-#: data/resources/gtk/help-overlay.ui:220
+#: data/resources/gtk/help-overlay.ui:202
+msgctxt "shortcut window"
+msgid "View"
+msgstr "दृश्य"
+
+#: data/resources/gtk/help-overlay.ui:205
+msgctxt "shortcut window"
+msgid "Toggle Fullscreen"
+msgstr "पूर्णस्क्रीन टॉगल करें"
+
+#: data/resources/gtk/help-overlay.ui:211
+msgctxt "shortcut window"
+msgid "Leave Fullscreen"
+msgstr "पूर्णस्क्रीन छोड़ें"
+
+#: data/resources/gtk/help-overlay.ui:217
+msgctxt "shortcut window"
+msgid "Toggle Image Properties"
+msgstr "छवि गुण टॉगल करें"
+
+#: data/resources/gtk/help-overlay.ui:223
+msgctxt "shortcut window"
+msgid "Show Main Menu"
+msgstr "मुख्य मेनू दिखाएं"
+
+#: data/resources/gtk/help-overlay.ui:231
 msgctxt "shortcut window"
 msgid "Gestures"
 msgstr "इशारे"
@@ -322,11 +331,11 @@ msgstr "त्रुटि संदेश"
 msgid "Copy Error Message"
 msgstr "त्रुटि संदेश कॉपी करें"
 
-#: src/widgets/error_details.ui:59
-msgid "Report Issue…"
-msgstr "मामले की रिपोर्ट करें…"
+#: src/widgets/error_details.ui:68
+msgid "Report _Issue"
+msgstr "समस्या की रिपोर्ट करें (_I)"
 
-#: src/widgets/image_page.rs:216
+#: src/widgets/image_page.rs:227
 msgid ""
 "No image loaders available. Maybe the “glycin-loaders” package with "
 "compatibility version “{}” is not installed."
@@ -334,19 +343,19 @@ msgstr ""
 "कोई छवि लोडर उपलब्ध नहीं है। हो सकता है कि संगतता संस्करण “{}” वाला “glycin-"
 "loaders” पैकेज स्थापित न हो।"
 
-#: src/widgets/image_page.rs:231
+#: src/widgets/image_page.rs:242
 msgid "The image format “{} ({})” is known but not installed."
 msgstr "छवि प्रारूप “{} ({})” ज्ञात है लेकिन स्थापित नहीं है।"
 
-#: src/widgets/image_page.rs:238
+#: src/widgets/image_page.rs:249
 msgid "Unknown image format “{} ({}).”"
 msgstr "अज्ञात छवि प्रारूप “{} ({})।”"
 
-#: src/widgets/image_page.rs:266
+#: src/widgets/image_page.rs:277
 msgid "There is not enough free memory available to load this image."
 msgstr "इस छवि को लोड करने के लिए पर्याप्त मुक्त मेमोरी उपलब्ध नहीं है।"
 
-#: src/widgets/image_page.rs:270
+#: src/widgets/image_page.rs:281
 msgid "Either the image file is corrupted or it contains unsupported elements."
 msgstr "या तो छवि फाइल दूषित है या उसमें असमर्थित तत्व हैं।"
 
@@ -370,29 +379,33 @@ msgstr "घुमाएं"
 msgid "_Set as Background…"
 msgstr "पृष्ठभूमि के रूप में निर्धारित करें (_S)…"
 
-#: src/widgets/image_page.ui:57
+#: src/widgets/image_page.ui:63
 msgid "Could not Load Image"
 msgstr "छवि लोड नहीं हो सकी"
 
-#: src/widgets/image_page.ui:60
-msgid "More Information…"
-msgstr "अधिक जानकारी…"
+#: src/widgets/image_page.ui:71
+msgid "More _Information"
+msgstr "अधिक जानकारी (_I)"
 
-#: src/widgets/image_page.ui:99 src/window.ui:225
+#: src/widgets/image_page.ui:81
+msgid "_Reload"
+msgstr "पुनः लोड करें (_R)"
+
+#: src/widgets/image_page.ui:123 src/window.ui:225
 msgid "Rotate Left"
 msgstr "बाएं घुमाएं"
 
-#: src/widgets/image_page.ui:109 src/window.ui:235
+#: src/widgets/image_page.ui:133 src/window.ui:235
 msgid "Rotate Right"
 msgstr "दाएं घुमाएं"
 
 #. Translators: This is a toast notification, informing the user that
 #. an image has been set as background.
-#: src/widgets/image_view.rs:725
+#: src/widgets/image_view.rs:720
 msgid "Set as background."
 msgstr "पृष्ठभूमि के रूप में निर्धारित करें।"
 
-#: src/widgets/image_view.rs:738
+#: src/widgets/image_view.rs:733
 msgid "Could not set background."
 msgstr "पृष्ठभूमि निर्धारित नहीं कर सके।"
 
