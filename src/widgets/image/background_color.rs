@@ -58,6 +58,8 @@ impl imp::LpImage {
     pub async fn background_color_guess(&self) -> Option<gdk::RGBA> {
         let obj = self.obj();
 
+        log::debug!("Determining background color");
+
         if self.fixed_background_color.borrow().is_some() {
             return None;
         }

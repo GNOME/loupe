@@ -110,6 +110,9 @@ impl Metadata {
         if self.frame_info.is_none() {
             self.frame_info = other.frame_info;
         }
+        if self.memory_format.is_none() {
+            self.memory_format = other.memory_format;
+        }
     }
 
     pub fn mime_type(&self) -> Option<String> {
