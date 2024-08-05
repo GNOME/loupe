@@ -2,63 +2,65 @@
 # Copyright (C) 2023 Loupe's COPYRIGHT HOLDER
 # This file is distributed under the same license as the Loupe package.
 #
-# Sabri Ünal <libreajans@gmail.com>, 2023.
-# Emin Tufan Çetin <etcetin@gmail.com>, 2023.
+# Sabri Ünal <yakushabb@gmail.com>, 2023-2024.
+# Emin Tufan Çetin <etcetin@gmail.com>, 2023-2024.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2024-02-13 22:38+0000\n"
-"PO-Revision-Date: 2024-02-14 17:42+0300\n"
-"Last-Translator: Sabri Ünal <libreajans@gmail.com>\n"
+"POT-Creation-Date: 2024-08-02 20:20+0000\n"
+"PO-Revision-Date: 2024-08-05 08:00+0300\n"
+"Last-Translator: Emin Tufan Çetin <etcetin@gmail.com>\n"
 "Language-Team: Turkish <takim@gnome.org.tr>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 3.4.2\n"
+"X-Generator: Poedit 3.4.3\n"
 
 #: data/org.gnome.Loupe.desktop.in.in:3
-#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:29 src/window.rs:880
+#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:31 src/window.rs:873
 msgid "Image Viewer"
 msgstr "Resim Görüntüleyici"
 
+# https://gitlab.gnome.org/GNOME/glib/-/issues/443 hatası sebebiyle uygulama adı dahil ingilizce hallerini de koruyalım.
 #: data/org.gnome.Loupe.desktop.in.in:11
 msgid "Picture;Graphics;Loupe;"
-msgstr "Resim;Fotoğraf;Grafikler;Görseller;Loupe;"
+msgstr ""
+"Image Viewer;Picture;Graphics;Loupe;Resim;Fotoğraf;Grafikler;Görseller;"
 
 #: data/org.gnome.Loupe.gschema.xml.in:6
 msgid "Show the image properties sidebar"
 msgstr "Resim özellikleri kenar çubuğunu göster"
 
 #. developer_name tag deprecated with Appstream 1.0
-#: data/org.gnome.Loupe.metainfo.xml.in.in:8 src/about.rs:32
+#: data/org.gnome.Loupe.metainfo.xml.in.in:8 src/about.rs:34
 msgid "The GNOME Project"
 msgstr "GNOME Projesi"
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:12
+#: data/org.gnome.Loupe.metainfo.xml.in.in:13
 msgid "View images"
 msgstr "Resimleri göster"
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:14
+#: data/org.gnome.Loupe.metainfo.xml.in.in:15
 msgid "Browse through your images and inspect their metadata with:"
 msgstr "Resimlerinize göz atın ve üst verilerini şunlarla inceleyin:"
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:16
+#: data/org.gnome.Loupe.metainfo.xml.in.in:17
 msgid "Fast GPU accelerated image rendering"
 msgstr "Hızlı, GPU hızlandırmalı resim sahneleme"
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:17
+#: data/org.gnome.Loupe.metainfo.xml.in.in:18
 msgid "Tiled rendering for vector graphics"
 msgstr "Vektör grafikler için bölünmüş sahneleme"
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:18
+#: data/org.gnome.Loupe.metainfo.xml.in.in:19
 msgid "Extendable and sandboxed image decoding"
 msgstr "Genişletilebilir ve yalıtılmış resim çözme"
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:19
+#: data/org.gnome.Loupe.metainfo.xml.in.in:20
 msgid "Accessible presentation of the most important metadata."
 msgstr "Çoğu önemli üst verinin erişilebilir gösterimi."
 
@@ -69,192 +71,220 @@ msgstr "Genel Kısayollar"
 
 #: data/resources/gtk/help-overlay.ui:14
 msgctxt "shortcut window"
-msgid "Show Main Menu"
-msgstr "Ana Menüyü Göster"
+msgid "Copy Image or Selected Text to Clipboard"
+msgstr "Resmi Ya Da Seçili Metni Panoya Kopyala"
 
 #: data/resources/gtk/help-overlay.ui:20
-msgctxt "shortcut window"
-msgid "Copy Image or Metadata to Clipboard"
-msgstr "Resmi Ya Da Üst Veriyi Panoya Kopyala"
-
-#: data/resources/gtk/help-overlay.ui:26
 msgctxt "shortcut window"
 msgid "Move Image to Trash"
 msgstr "Resmi Çöpe Taşı"
 
-#: data/resources/gtk/help-overlay.ui:32
+#: data/resources/gtk/help-overlay.ui:26
 msgctxt "shortcut window"
 msgid "Permanently Delete Image"
 msgstr "Resmi Kalıcı Olarak Sil"
 
-#: data/resources/gtk/help-overlay.ui:38
+#: data/resources/gtk/help-overlay.ui:32
 msgctxt "shortcut window"
-msgid "Toggle Image Properties"
-msgstr "Resim Özelliklerini Aç/Kapat"
+msgid "Open Image with Other App"
+msgstr "Resmi Başka Uygulamayla Aç"
 
-#: data/resources/gtk/help-overlay.ui:44
+#: data/resources/gtk/help-overlay.ui:38
 msgctxt "shortcut window"
 msgid "Set as Background"
 msgstr "Arka Plan Olarak Ayarla"
 
-#: data/resources/gtk/help-overlay.ui:50
-msgctxt "shortcut window"
-msgid "Toggle Fullscreen"
-msgstr "Tam Ekranı Aç/Kapat"
-
-#: data/resources/gtk/help-overlay.ui:56
-msgctxt "shortcut window"
-msgid "Leave Fullscreen"
-msgstr "Tam Ekrandan Çık"
-
-#: data/resources/gtk/help-overlay.ui:62
+#: data/resources/gtk/help-overlay.ui:44
 msgctxt "shortcut window"
 msgid "New Window"
 msgstr "Yeni Pencere"
 
-#: data/resources/gtk/help-overlay.ui:68
+#: data/resources/gtk/help-overlay.ui:50
 msgctxt "shortcut window"
 msgid "Open Help"
 msgstr "Yardımı Aç"
 
-#: data/resources/gtk/help-overlay.ui:74
+#: data/resources/gtk/help-overlay.ui:56
 msgctxt "shortcut window"
 msgid "Show Keyboard Shortcuts"
 msgstr "Klavye Kısayollarını Göster"
 
-#: data/resources/gtk/help-overlay.ui:80
+#: data/resources/gtk/help-overlay.ui:62
 msgctxt "shortcut window"
 msgid "Close Window"
 msgstr "Pencereyi Kapat"
 
-#: data/resources/gtk/help-overlay.ui:86
+#: data/resources/gtk/help-overlay.ui:68
 msgctxt "shortcut window"
 msgid "Quit"
 msgstr "Çık"
 
-#: data/resources/gtk/help-overlay.ui:94
+#: data/resources/gtk/help-overlay.ui:76
 msgctxt "shortcut window"
 msgid "Navigate Images"
 msgstr "Resimlerde Gezin"
 
-#: data/resources/gtk/help-overlay.ui:98 data/resources/gtk/help-overlay.ui:112
-#: data/resources/gtk/help-overlay.ui:224
-#: data/resources/gtk/help-overlay.ui:238
+#: data/resources/gtk/help-overlay.ui:80 data/resources/gtk/help-overlay.ui:94
+#: data/resources/gtk/help-overlay.ui:235
+#: data/resources/gtk/help-overlay.ui:249
 msgctxt "shortcut window"
 msgid "Next Image"
 msgstr "Sonraki Resim"
 
-#: data/resources/gtk/help-overlay.ui:105
-#: data/resources/gtk/help-overlay.ui:119
-#: data/resources/gtk/help-overlay.ui:231
-#: data/resources/gtk/help-overlay.ui:245
+#: data/resources/gtk/help-overlay.ui:87 data/resources/gtk/help-overlay.ui:101
+#: data/resources/gtk/help-overlay.ui:242
+#: data/resources/gtk/help-overlay.ui:256
 msgctxt "shortcut window"
 msgid "Previous Image"
 msgstr "Önceki Resim"
 
-#: data/resources/gtk/help-overlay.ui:125
+#: data/resources/gtk/help-overlay.ui:107
 msgctxt "shortcut window"
 msgid "First Image"
 msgstr "İlk Resim"
 
-#: data/resources/gtk/help-overlay.ui:131
+#: data/resources/gtk/help-overlay.ui:113
 msgctxt "shortcut window"
 msgid "Last Image"
 msgstr "Son Resim"
 
-#: data/resources/gtk/help-overlay.ui:139
+#: data/resources/gtk/help-overlay.ui:121
 msgctxt "shortcut window"
 msgid "Rotate Image"
 msgstr "Resmi Döndür"
 
-#: data/resources/gtk/help-overlay.ui:142
-#: data/resources/gtk/help-overlay.ui:263
+#: data/resources/gtk/help-overlay.ui:124
+#: data/resources/gtk/help-overlay.ui:274
 msgctxt "shortcut window"
 msgid "Rotate Clockwise"
 msgstr "Saat Yönünde Döndür"
 
-#: data/resources/gtk/help-overlay.ui:148
-#: data/resources/gtk/help-overlay.ui:269
+#: data/resources/gtk/help-overlay.ui:130
+#: data/resources/gtk/help-overlay.ui:280
 msgctxt "shortcut window"
 msgid "Rotate Counterclockwise"
 msgstr "Saat Yönünün Tersine Döndür"
 
-#: data/resources/gtk/help-overlay.ui:156
+#: data/resources/gtk/help-overlay.ui:138
 msgctxt "shortcut window"
 msgid "Zoom Image"
 msgstr "Resim Yakınlaştırma"
 
-#: data/resources/gtk/help-overlay.ui:159
-#: data/resources/gtk/help-overlay.ui:251
+#: data/resources/gtk/help-overlay.ui:141
+#: data/resources/gtk/help-overlay.ui:262
 msgctxt "shortcut window"
 msgid "Zoom In"
 msgstr "Yakınlaştır"
 
-#: data/resources/gtk/help-overlay.ui:165
-#: data/resources/gtk/help-overlay.ui:257
+#: data/resources/gtk/help-overlay.ui:147
+#: data/resources/gtk/help-overlay.ui:268
 msgctxt "shortcut window"
 msgid "Zoom Out"
 msgstr "Uzaklaştır"
 
-#: data/resources/gtk/help-overlay.ui:171
+#: data/resources/gtk/help-overlay.ui:153
 msgctxt "shortcut window"
 msgid "Best Fit"
 msgstr "En Uygun"
 
-#: data/resources/gtk/help-overlay.ui:177
+#: data/resources/gtk/help-overlay.ui:159
 msgctxt "shortcut window"
 msgid "Original Scale"
 msgstr "Özgün Ölçekleme"
 
-#: data/resources/gtk/help-overlay.ui:183
+#: data/resources/gtk/help-overlay.ui:165
 msgctxt "shortcut window"
 msgid "200% Scale"
 msgstr "%200 Ölçekleme"
 
-#: data/resources/gtk/help-overlay.ui:191
+#: data/resources/gtk/help-overlay.ui:173
 msgctxt "shortcut window"
 msgid "Pan View"
 msgstr "Görünüm Kaydırma"
 
-#: data/resources/gtk/help-overlay.ui:194
+#: data/resources/gtk/help-overlay.ui:176
 msgctxt "shortcut window"
 msgid "Pan Left"
 msgstr "Sola Kaydır"
 
-#: data/resources/gtk/help-overlay.ui:200
+#: data/resources/gtk/help-overlay.ui:182
 msgctxt "shortcut window"
 msgid "Pan Right"
 msgstr "Sağa Kaydır"
 
-#: data/resources/gtk/help-overlay.ui:206
+#: data/resources/gtk/help-overlay.ui:188
 msgctxt "shortcut window"
 msgid "Pan Up"
 msgstr "Yukarı Kaydır"
 
-#: data/resources/gtk/help-overlay.ui:212
+#: data/resources/gtk/help-overlay.ui:194
 msgctxt "shortcut window"
 msgid "Pan Down"
 msgstr "Aşağı Kaydır"
 
-#: data/resources/gtk/help-overlay.ui:220
+#: data/resources/gtk/help-overlay.ui:202
+msgctxt "shortcut window"
+msgid "View"
+msgstr "Görünüm"
+
+#: data/resources/gtk/help-overlay.ui:205
+msgctxt "shortcut window"
+msgid "Toggle Fullscreen"
+msgstr "Tam Ekranı Aç/Kapat"
+
+#: data/resources/gtk/help-overlay.ui:211
+msgctxt "shortcut window"
+msgid "Leave Fullscreen"
+msgstr "Tam Ekrandan Çık"
+
+#: data/resources/gtk/help-overlay.ui:217
+msgctxt "shortcut window"
+msgid "Toggle Image Properties"
+msgstr "Resim Özelliklerini Aç/Kapat"
+
+#: data/resources/gtk/help-overlay.ui:223
+msgctxt "shortcut window"
+msgid "Show Main Menu"
+msgstr "Ana Menüyü Göster"
+
+#: data/resources/gtk/help-overlay.ui:231
 msgctxt "shortcut window"
 msgid "Gestures"
 msgstr "Hareketler"
 
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/about.rs:41
+#: src/about.rs:43
 msgid "translator-credits"
 msgstr ""
 "Sabri Ünal <libreajans@gmail.com>\n"
 "Emin Tufan Çetin <etcetin@gmail.com>"
 
-#: src/about.rs:42
+#: src/about.rs:44
 msgid "Copyright © 2020–2024 Christopher Davis et al."
 msgstr "Telif Hakkı © 2020–2024 Christopher Davis ve ark."
 
-#: src/file_model.rs:128
+#: src/file_model.rs:131
 msgid "Could not list other files in directory."
 msgstr "Dizindeki diğer dosyalar listelenemedi."
+
+#: src/metadata.rs:249
+msgid "\\u{192}\\u{2215}{}"
+msgstr "\\u{192}\\u{2215}{}"
+
+#. Translators: Fractional exposure time (photography) in seconds
+#: src/metadata.rs:266
+msgid "1\\u{2215}{}\\u{202F}s"
+msgstr "1\\u{2215}{}\\u{202F}sn"
+
+#. Translators: Exposure time (photography) in seconds
+#: src/metadata.rs:274
+msgid "{}\\u{202F}s"
+msgstr "{}\\u{202F}sn"
+
+#. Translators: Unit for focal length in millimeters
+#: src/metadata.rs:300
+msgid "{}\\u{202F}mm"
+msgstr "{}\\u{202F}mm"
 
 #. Translators: short for "north" in GPS coordinate
 #: src/metadata/gps.rs:165
@@ -276,32 +306,64 @@ msgstr "D"
 msgid "W"
 msgstr "B"
 
-#. Translators: Unit for exposure time in seconds
-#: src/metadata/mod.rs:260
-msgid "1\\u{2215}{}\\u{202F}s"
-msgstr "1\\u{2215}{}\\u{202F}sn"
-
-#. Translators: Unit for focal length in millimeters
-#: src/metadata/mod.rs:285
-msgid "{}\\u{202F}mm"
-msgstr "{}\\u{202F}mm"
-
 #. Translators: This is the date and time format we use in metadata output etc.
 #. The format has to follow <https://docs.gtk.org/glib/method.DateTime.format.html>
 #. The default is already translated. Don't change if you are not sure what to
 #. use.
-#: src/util/mod.rs:37
+#: src/util.rs:37
 #, c-format
 msgid "%x %X"
 msgstr "%x %X"
 
-#: src/util/mod.rs:180 src/window.rs:701
+#: src/util.rs:180 src/window.rs:659
 msgid "Failed to restore image from trash"
 msgstr "Resim çöpten geri yüklenemedi"
 
-#: src/util/mod.rs:201
-msgid "Failed to open image"
-msgstr "Resim açılamadı"
+#: src/widgets/error_details.ui:19
+msgid ""
+"The image loader reported the following when trying to load the image. "
+"Please include this information when you report an error. If possible, "
+"please also provide the image that causes the issue."
+msgstr ""
+"Resim yükleyici, resmi yüklemeyi denerken aşağıdakileri bildirdi. Hata "
+"bildirirken lütfen bu bilgileri de ekleyin. Eğer oluyorsa, soruna neden "
+"olan resmi de gönderin."
+
+#: src/widgets/error_details.ui:24
+msgid "Error Message"
+msgstr "Hata İletisi"
+
+#: src/widgets/error_details.ui:28
+msgid "Copy Error Message"
+msgstr "Hata İletisini Kopyala"
+
+#: src/widgets/error_details.ui:68
+msgid "Report _Issue"
+msgstr "_Hata Bildir"
+
+#: src/widgets/image_page.rs:226
+msgid ""
+"No image loaders available. Maybe the “glycin-loaders” package with "
+"compatibility version “{}” is not installed."
+msgstr ""
+"Kullanılabilir resim yükleyici yok. “{}” sürümüyle uyumlu “glycin-loaders” "
+"paketi kurulu olmayabilir."
+
+#: src/widgets/image_page.rs:241
+msgid "The image format “{} ({})” is known but not installed."
+msgstr "“{} ({})” resim biçimi biliniyor ancak kurulu değil."
+
+#: src/widgets/image_page.rs:248
+msgid "Unknown image format “{} ({}).”"
+msgstr "Bilinmeyen resim biçimi “{} ({}).”"
+
+#: src/widgets/image_page.rs:276
+msgid "There is not enough free memory available to load this image."
+msgstr "Bu resmi yüklemek için yeterli boş bellek yok."
+
+#: src/widgets/image_page.rs:280
+msgid "Either the image file is corrupted or it contains unsupported elements."
+msgstr "Resim dosyası bozuk ya da desteklenmeyen ögeler içeriyor."
 
 #: src/widgets/image_page.ui:6 src/window.ui:16
 msgid "_Open With…"
@@ -327,21 +389,29 @@ msgstr "_Arka Plan Olarak Ayarla…"
 msgid "Could not Load Image"
 msgstr "Resim Yüklenemedi"
 
-#: src/widgets/image_page.ui:97 src/window.ui:106
+#: src/widgets/image_page.ui:71
+msgid "More _Information"
+msgstr "Daha Çok _Bilgi"
+
+#: src/widgets/image_page.ui:81
+msgid "_Reload"
+msgstr "_Yeniden Yükle"
+
+#: src/widgets/image_page.ui:123 src/window.ui:225
 msgid "Rotate Left"
 msgstr "Sola Döndür"
 
-#: src/widgets/image_page.ui:107 src/window.ui:116
+#: src/widgets/image_page.ui:133 src/window.ui:235
 msgid "Rotate Right"
 msgstr "Sağa Döndür"
 
 #. Translators: This is a toast notification, informing the user that
 #. an image has been set as background.
-#: src/widgets/image_view.rs:682
+#: src/widgets/image_view.rs:720
 msgid "Set as background."
 msgstr "Arka plan olarak ayarla."
 
-#: src/widgets/image_view.rs:695
+#: src/widgets/image_view.rs:733
 msgid "Could not set background."
 msgstr "Arka plan ayarlanamadı."
 
@@ -365,51 +435,59 @@ msgstr "Yakınlaştır"
 msgid "Toggle Fullscreen"
 msgstr "Tam Ekranı Aç/Kapat"
 
-#: src/widgets/print.rs:116
+#: src/widgets/print.rs:108
 msgid "Top"
 msgstr "Üst"
 
-#: src/widgets/print.rs:117
+#: src/widgets/print.rs:109
 msgid "Center"
 msgstr "Merkez"
 
-#: src/widgets/print.rs:118
+#: src/widgets/print.rs:110
 msgid "Bottom"
 msgstr "Alt"
 
-#: src/widgets/print.rs:119
+#: src/widgets/print.rs:111
 msgid "Left"
-msgstr "Left"
+msgstr "Sol"
 
-#: src/widgets/print.rs:120
+#: src/widgets/print.rs:112
 msgid "Right"
 msgstr "Sağ"
 
 #. Translators: Shorthand for centimeter
-#: src/widgets/print.rs:156
+#: src/widgets/print.rs:148
 msgid "cm"
 msgstr "cm"
 
 #. Translators: Shorthand for inch
-#: src/widgets/print.rs:158
+#: src/widgets/print.rs:150
 msgid "in"
-msgstr "in"
+msgstr "inç"
 
 #. Translators: Shorthand for pixel
-#: src/widgets/print.rs:160
+#: src/widgets/print.rs:152
 msgid "px"
 msgstr "px"
 
 #. Translators: {} is a placeholder for the filename
-#: src/widgets/print.rs:371
+#: src/widgets/print.rs:361
 msgid "Print “{}”"
 msgstr "“{}” yazdır"
 
-#: src/widgets/print.rs:782
+#: src/widgets/print.rs:465
+msgid "Continue…"
+msgstr "Sürdür…"
+
+#: src/widgets/print.rs:466
+msgid "Print Image"
+msgstr "Resim Yazdır"
+
+#: src/widgets/print.rs:788
 msgid "_Scale"
 msgstr "_Ölçekle"
 
-#: src/widgets/print.rs:785
+#: src/widgets/print.rs:791
 msgid "_Width"
 msgstr "_Genişlik"
 
@@ -458,7 +536,7 @@ msgstr "_Yatay"
 msgid "_Vertical"
 msgstr "_Dikey"
 
-#: src/widgets/print.ui:142 src/widgets/properties_view.ui:53
+#: src/widgets/print.ui:142 src/widgets/properties_view.ui:56
 msgid "Image Size"
 msgstr "Resim Boyutu"
 
@@ -474,138 +552,143 @@ msgstr "_Dolgu Boşluğu"
 msgid "H_eight"
 msgstr "_Yükseklik"
 
-#: src/widgets/properties_view.rs:234
+#: src/widgets/properties_view.rs:255
 msgid "Unknown"
 msgstr "Bilinmeyen"
 
 #. Translators: Addition of image being transparent to format name
-#: src/widgets/properties_view.rs:238
+#: src/widgets/properties_view.rs:259
 msgid ", transparent"
 msgstr ", saydam"
 
 #. Translators: Addition of image being grayscale to format name
-#: src/widgets/properties_view.rs:243
+#: src/widgets/properties_view.rs:264
 msgid ", grayscale"
 msgstr ", gri tonlama"
 
 #. Translators: Addition of bit size to format name
-#: src/widgets/properties_view.rs:248
+#: src/widgets/properties_view.rs:269
 msgid ", {}\\u{202F}bit"
 msgstr ", {}\\u{202F}bit"
 
-#: src/widgets/properties_view.rs:299
+#: src/widgets/properties_view.rs:286
+msgid "{}\\u{202F}\\u{D7}\\u{202F}{}"
+msgstr "{}\\u{202F}\\u{D7}\\u{202F}{}"
+
+#: src/widgets/properties_view.rs:324
 msgid "Image Coordinates Copied"
 msgstr "Resim Koordinatları Kopyalandı"
 
-#: src/widgets/properties_view.ui:19
+#: src/widgets/properties_view.ui:20
 msgid "Folder"
 msgstr "Klasör"
 
-#: src/widgets/properties_view.ui:26
+#: src/widgets/properties_view.ui:28
 msgid "Open Containing Folder"
 msgstr "İçeren Klasörü Aç"
 
-#: src/widgets/properties_view.ui:39
+#: src/widgets/properties_view.ui:41
 msgid "URI"
 msgstr "URI"
 
-#: src/widgets/properties_view.ui:62
+#: src/widgets/properties_view.ui:66
 msgid "Image Format"
 msgstr "Resim Biçimi"
 
-#: src/widgets/properties_view.ui:71
+#: src/widgets/properties_view.ui:76
 msgid "File Size"
 msgstr "Dosya Boyutu"
 
-#: src/widgets/properties_view.ui:84
+#: src/widgets/properties_view.ui:90
 msgid "File Created"
 msgstr "Oluşturulma"
 
-#: src/widgets/properties_view.ui:93
+#: src/widgets/properties_view.ui:100
 msgid "File Modified"
 msgstr "Değiştirilme"
 
-#: src/widgets/properties_view.ui:106
+#. Translators: This is a label for GPS coordinates
+#: src/widgets/properties_view.ui:114
 msgid "Location"
 msgstr "Konum"
 
-#: src/widgets/properties_view.ui:116
+#: src/widgets/properties_view.ui:125
 msgid "Copy Coordinates"
 msgstr "Koordinatları Kopyala"
 
-#: src/widgets/properties_view.ui:127
+#: src/widgets/properties_view.ui:136
 msgid "Open Location"
 msgstr "Konumu Aç"
 
-#: src/widgets/properties_view.ui:140
+#: src/widgets/properties_view.ui:149
 msgid "Originally Created"
 msgstr "Özgün Oluşturulma"
 
-#: src/widgets/properties_view.ui:149
+#: src/widgets/properties_view.ui:159
 msgid "Aperture"
 msgstr "Açıklık"
 
-#: src/widgets/properties_view.ui:158
+#: src/widgets/properties_view.ui:169
 msgid "Exposure"
 msgstr "Pozlama"
 
-#: src/widgets/properties_view.ui:167
+#: src/widgets/properties_view.ui:179
 msgid "ISO"
 msgstr "ISO"
 
-#: src/widgets/properties_view.ui:176
+#: src/widgets/properties_view.ui:189
 msgid "Focal Length"
 msgstr "Odak Uzaklığı"
 
-#: src/widgets/properties_view.ui:185
+#: src/widgets/properties_view.ui:199
 msgid "Maker, Model"
 msgstr "Üretici, Model"
 
-#: src/window.rs:568
+#: src/window.rs:523
 msgid "Supported image formats"
 msgstr "Desteklenen resim biçimleri"
 
-#: src/window.rs:574
+#: src/window.rs:529
 msgid "All files"
 msgstr "Tüm dosyalar"
 
-#: src/window.rs:581
+#: src/window.rs:536
 msgid "Open Image"
 msgstr "Resim Aç"
 
-#: src/window.rs:667
+#: src/window.rs:622
 msgid "Image copied to clipboard"
 msgstr "Resim panoya kopyalandı"
 
-#: src/window.rs:688
+#: src/window.rs:643
 msgid "Image moved to trash"
 msgstr "Resim çöpe taşındı"
 
-#: src/window.rs:689
+#: src/window.rs:644
 msgid "Undo"
 msgstr "Geri Al"
 
-#: src/window.rs:715
+#: src/window.rs:674
 msgid "Failed to move image to trash"
 msgstr "Resim çöpe taşınamadı"
 
-#: src/window.rs:741
+#: src/window.rs:698
 msgid "Permanently Delete Image?"
 msgstr "Resim Kalıcı Olarak Silinsin Mi?"
 
-#: src/window.rs:743
+#: src/window.rs:700
 msgid "After deleting the image “{}” it will be permanently lost."
 msgstr "“{}” resmi silindikten sonra kalıcı olarak yitirilecek."
 
-#: src/window.rs:751
+#: src/window.rs:708
 msgid "Cancel"
 msgstr "İptal"
 
-#: src/window.rs:752
+#: src/window.rs:709
 msgid "Delete"
 msgstr "Sil"
 
-#: src/window.rs:763
+#: src/window.rs:720
 msgid "Failed to delete image"
 msgstr "Resim silinemedi"
 
@@ -629,81 +712,31 @@ msgstr "_Klavye Kısayolları"
 msgid "_About Image Viewer"
 msgstr "Resim Görüntüleyici _Hakkında"
 
-#: src/window.ui:85
+#: src/window.ui:204
 msgid "Copy to Clipboard"
 msgstr "Panoya Kopyala"
 
-#: src/window.ui:92
+#: src/window.ui:211
 msgid "Move to Trash"
 msgstr "Çöpe Taşı"
 
-#: src/window.ui:98
+#: src/window.ui:217
 msgid "Main Menu"
 msgstr "Ana Menü"
 
-#: src/window.ui:130
+#: src/window.ui:249
 msgid "Image Properties"
 msgstr "Resim Özellikleri"
 
-#: src/window.ui:174
+#: src/window.ui:281
 msgid "View Images"
 msgstr "Resimleri Göster"
 
-#: src/window.ui:175
+#: src/window.ui:282
 msgid "Drag and drop images here"
 msgstr "Resimleri sürükleyip buraya bırakın"
 
-#: src/window.ui:179
+#: src/window.ui:286
 msgid "_Open Files…"
 msgstr "Dosya _Aç…"
 
-#~ msgid "The Loupe Team"
-#~ msgstr "Loupe Takımı"
-
-#~ msgid "Center image horizontally"
-#~ msgstr "Resmi yatay ortala"
-
-#~ msgid "Center image vertically"
-#~ msgstr "Resmi dikey ortala"
-
-#~ msgid "Image Scale"
-#~ msgstr "Resim Ölçekle"
-
-#~ msgid "Left Margin"
-#~ msgstr "Sol Kenar Boşluğu"
-
-#~ msgid "Length Unit"
-#~ msgstr "Uzunluk Birimi"
-
-#~ msgid "_About Loupe"
-#~ msgstr "Loupe _Hakkında"
-
-#~ msgid "Loupe"
-#~ msgstr "Loupe"
-
-#~ msgid "Failed to read image file information"
-#~ msgstr "Görüntü dosyası bilgisi okunamadı"
-
-#~ msgid "Failed to decode image"
-#~ msgstr "Görüntü kodu çözülemedi"
-
-#~ msgid "Unknown image format"
-#~ msgstr "Bilinmeyen görüntü biçimi"
-
-#~ msgid "Animated GIF"
-#~ msgstr "Canlandırmalı GIF"
-
-#~ msgid "Animated WebP"
-#~ msgstr "Canlandırmalı WebP"
-
-#~ msgid "Animated PNG"
-#~ msgstr "Canlandırmalı PNG"
-
-#~ msgid "Unknown image format: {}"
-#~ msgstr "Bilinmeyen görüntü biçimi: {}"
-
-#~ msgid "Could not open image"
-#~ msgstr "Görüntü açılamadı"
-
-#~ msgid "Could not read image"
-#~ msgstr "Görüntü okunamadı"
