@@ -69,7 +69,7 @@ impl Glycin {
             let frame = image.next_frame().await?;
 
             let mut metadata: Metadata = Metadata::default();
-            metadata.set_frame_info(frame.details().clone());
+            metadata.set_frame_metadata(&frame);
             updater.send(DecoderUpdate::Metadata(Box::new(metadata)));
             tiles.set_original_dimensions((frame.width() as u32, frame.height() as u32));
 
