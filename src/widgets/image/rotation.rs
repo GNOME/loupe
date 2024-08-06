@@ -103,11 +103,13 @@ impl LpImage {
         }
 
         if let Ok(r) = gufo_common::orientation::Rotation::try_from(angle) {
-            log::debug!("Editing image to rotate by {r:?}");
-            let operation = glycin::Operation::Rotate(r);
-            let editing_queue = &self.imp().editing_queue;
-            editing_queue.push(operation);
-            editing_queue.write_to_image(self);
+            if r != gufo_common::orientation::Rotation::_0 {
+                log::debug!("Editing image to rotate by {r:?}");
+                let operation = glycin::Operation::Rotate(r);
+                let editing_queue = &self.imp().editing_queue;
+                editing_queue.push(operation);
+                editing_queue.write_to_image(self);
+            }
         }
     }
 }
