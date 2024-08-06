@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: loupe gnome-45\n"
-"POT-Creation-Date: 2024-05-27 13:55+0000\n"
-"PO-Revision-Date: 2024-05-24 18:43-0300\n"
+"POT-Creation-Date: 2024-06-11 21:06+0000\n"
+"PO-Revision-Date: 2024-06-25 10:25-0300\n"
 "Last-Translator: Leônidas Araújo <leorusvellt@hotmail.com>\n"
 "Language-Team: Brazilian Portuguese <pt_BR@li.org>\n"
 "Language: pt_BR\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 3.4.2\n"
+"X-Generator: Poedit 3.4.4\n"
 
 #. Put one translator per line, in the form NAME <EMAIL>, YEAR1, YEAR2
 msgctxt "_"
@@ -72,106 +72,43 @@ msgid ""
 "Users can zoom in with the <gui>Zoom In</gui> (<media type=\"image\" "
 "src=\"figures/zoom-in-symbolic.svg\">zoom-in-symbolic</media>) button and "
 "zoom out with the <gui>Zoom Out</gui> (<media type=\"image\" src=\"figures/"
-"zoom-out-symbolic.svg\">zoom-out-symbolic</media>) button. They can also use "
-"the following keyboard shortcuts:"
+"zoom-out-symbolic.svg\">zoom-out-symbolic</media>) button."
 msgstr ""
 "Os usuários podem aumentar o zoom com o botão <gui>Ampliar</gui> (<media "
 "type=\"image\" src=\"figures/zoom-in-symbolic.svg\">zoom-in-symbolic</"
-"media>) diminuir com o botão <gui>Reduzir</gui> (<media type=\"image\" "
-"src=\"figures/zoom-out-symbolic.svg\">zoom-out-symbolic</media>). Também é "
-"possível usar os seguintes atalhos de teclado:"
-
-#. (itstool) path: item/p
-#: C/viewing-images.page:21
-msgid ""
-"<keyseq><key>Ctrl</key><key>+</key></keyseq> or <key>+</key> to zoom in."
-msgstr ""
-"<keyseq><key>Ctrl</key><key>+</key></keyseq> ou <key>+</key> para ampliar."
-
-#. (itstool) path: item/p
-#: C/viewing-images.page:24
-msgid ""
-"<keyseq><key>Ctrl</key><key>-</key></keyseq> or <key>-</key> to zoom out."
-msgstr ""
-"<keyseq><key>Ctrl</key><key>-</key></keyseq> ou <key>-</key> para reduzir."
-
-#. (itstool) path: item/p
-#: C/viewing-images.page:27
-msgid ""
-"<keyseq><key>Ctrl</key><key>0</key></keyseq> or <key>0</key> to zoom to the "
-"best fitting size for the window size."
-msgstr ""
-"<keyseq><key>Ctrl</key><key>0</key></keyseq> ou <key>0</key> para ampliar "
-"até o tamanho mais adequado ao tamanho da janela."
-
-#. (itstool) path: item/p
-#: C/viewing-images.page:30
-msgid ""
-"<keyseq><key>Ctrl</key><key>1</key></keyseq> or <key>1</key> to zoom to the "
-"image's original scale."
-msgstr ""
-"<keyseq><key>Ctrl</key><key>1</key></keyseq> ou <key>1</key> para ampliar a "
-"escala original da imagem."
-
-#. (itstool) path: item/p
-#: C/viewing-images.page:33
-msgid ""
-"<keyseq><key>Ctrl</key><key>2</key></keyseq> or <key>2</key> to zoom to 200% "
-"of the image's original scale."
-msgstr ""
-"<keyseq><key>Ctrl</key><key>2</key></keyseq> ou <key>2</key> para ampliar "
-"até 200% da escala original da imagem."
+"media>) e diminuir com o botão <gui>Reduzir</gui> (<media type=\"image\" "
+"src=\"figures/zoom-out-symbolic.svg\">zoom-out-symbolic</media>)."
 
 #. (itstool) path: section/p
-#: C/viewing-images.page:36
+#: C/viewing-images.page:19
 msgid ""
-"Touchpad and touchscreen users can also zoom with a two-finger pinch gesture."
+"Touchpad and touchscreen users can also zoom with a two-finger pinch "
+"gesture. On touchpads, it is also possible to zoom via pressing the "
+"<key>Ctrl</key> and swiping up/down with two fingers."
 msgstr ""
 "Os usuários do touchpad e da tela sensível ao toque também podem aplicar "
-"zoom com um gesto de pinça com dois dedos."
+"zoom com um gesto de pinça com dois dedos. Nos touchpads, também é possível "
+"aplicar zoom pressionando a tecla <key>Ctrl</key> e deslizando para cima/"
+"para baixo com dois dedos."
 
 #. (itstool) path: section/title
-#: C/viewing-images.page:39
+#: C/viewing-images.page:22
 msgid "Panning"
 msgstr "Deslocando a visualização"
 
 #. (itstool) path: section/p
-#: C/viewing-images.page:40
+#: C/viewing-images.page:23
 msgid ""
 "Mouse and touchpad users can pan the view when zoomed in by clicking and "
 "dragging the image. Touchscreen users can use a single-finger drag gesture "
-"to pan the view. Users with a keyboard can also use the following keyboard "
-"shortcuts:"
+"to pan the view."
 msgstr ""
 "Usuários de mouse e touchpad podem deslocar a visualização quando ampliados "
 "clicando e arrastando a imagem. Os usuários de tela sensível ao toque podem "
-"usar um gesto de arrastar com um único dedo para deslocar a visualização. Os "
-"usuários com teclado também podem usar os seguintes atalhos de teclado:"
-
-#. (itstool) path: item/p
-#: C/viewing-images.page:45
-msgid "<keyseq><key>Ctrl</key><key>←</key></keyseq> to pan left."
-msgstr ""
-"<keyseq><key>Ctrl</key><key>←</key></keyseq> para deslocar para a esquerda."
-
-#. (itstool) path: item/p
-#: C/viewing-images.page:48
-msgid "<keyseq><key>Ctrl</key><key>→</key></keyseq> to pan right."
-msgstr ""
-"<keyseq><key>Ctrl</key><key>→</key></keyseq> para deslocar para a direita."
-
-#. (itstool) path: item/p
-#: C/viewing-images.page:51
-msgid "<keyseq><key>Ctrl</key><key>↑</key></keyseq> to pan up."
-msgstr "<keyseq><key>Ctrl</key><key>↑</key></keyseq> para deslocar para cima."
-
-#. (itstool) path: item/p
-#: C/viewing-images.page:54
-msgid "<keyseq><key>Ctrl</key><key>↓</key></keyseq> to pan down."
-msgstr "<keyseq><key>Ctrl</key><key>↓</key></keyseq> para deslocar para baixo."
+"usar um gesto de arrastar com um único dedo para deslocar a visualização."
 
 #. (itstool) path: section/title
-#: C/viewing-images.page:59
+#: C/viewing-images.page:27
 msgid "Rotating"
 msgstr "Girando"
 
@@ -180,7 +117,7 @@ msgstr "Girando"
 #. the file changes, the md5 hash will change to let you know you need to
 #. update your localized copy. The msgstr is not used at all. Set it to
 #. whatever you like once you have updated your copy of the file.
-#: C/viewing-images.page:60
+#: C/viewing-images.page:28
 msgctxt "_"
 msgid ""
 "external ref='figures/object-rotate-right-symbolic.svg' "
@@ -194,7 +131,7 @@ msgstr ""
 #. the file changes, the md5 hash will change to let you know you need to
 #. update your localized copy. The msgstr is not used at all. Set it to
 #. whatever you like once you have updated your copy of the file.
-#: C/viewing-images.page:61
+#: C/viewing-images.page:29
 msgctxt "_"
 msgid ""
 "external ref='figures/object-rotate-left-symbolic.svg' "
@@ -204,41 +141,24 @@ msgstr ""
 "md5='8abe2a1bc5871a15c2f6534d19a4c7ee'"
 
 #. (itstool) path: section/p
-#: C/viewing-images.page:60
+#: C/viewing-images.page:28
 msgid ""
 "Users can use the <gui>Rotate Right</gui> (<media type=\"image\" "
 "src=\"figures/object-rotate-right-symbolic.svg\">object-rotate-right-"
 "symbolic</media>) and <gui>Rotate Left</gui> (<media type=\"image\" "
 "src=\"figures/object-rotate-left-symbolic.svg\">object-rotate-left-symbolic</"
 "media>) buttons under <gui style=\"menuitem\">Rotate</gui> in the main menu "
-"to rotate clockwise and counter-clockwise. They can also use the following "
-"keyboard shortcuts:"
+"to rotate clockwise and counter-clockwise."
 msgstr ""
-"Os usuários podem usar os botões <gui>Girar à direita</gui> (<media "
+"Os usuários podem usar os botões <gui>Girar para a direita</gui> (<media "
 "type=\"image\" src=\"figures/object-rotate-right-symbolic.svg\">object-"
-"rotate-right-symbolic</media>) e <gui>Girar à esquerda</gui> (<media "
+"rotate-right-symbolic</media>) e <gui>Girar para a esquerda</gui> (<media "
 "type=\"image\" src=\"figures/object-rotate-left-symbolic.svg\">object-rotate-"
 "left-symbolic</media>) em <gui style =\"menuitem\">Girar</gui> no menu "
-"principal para girar no sentido horário e anti-horário. Eles também podem "
-"usar os seguintes atalhos de teclado:"
-
-#. (itstool) path: item/p
-#: C/viewing-images.page:66
-msgid "<keyseq><key>Ctrl</key><key>R</key></keyseq> to rotate clockwise."
-msgstr ""
-"<keyseq><key>Ctrl</key><key>R</key></keyseq> para girar no sentido horário."
-
-#. (itstool) path: item/p
-#: C/viewing-images.page:69
-msgid ""
-"<keyseq><key>Ctrl</key><key>Shift</key><key>R</key></keyseq> to rotate "
-"counter-clockwise."
-msgstr ""
-"<keyseq><key>Ctrl</key><key>Shift</key><key>R</key></keyseq> para girar no "
-"sentido anti-horário."
+"principal para girar no sentido horário e anti-horário."
 
 #. (itstool) path: section/p
-#: C/viewing-images.page:72
+#: C/viewing-images.page:32
 msgid ""
 "Touchpad and touchscreen users can also use a two-finger rotate gesture."
 msgstr ""
@@ -246,7 +166,7 @@ msgstr ""
 "gesto de rotação com dois dedos."
 
 #. (itstool) path: section/title
-#: C/viewing-images.page:75
+#: C/viewing-images.page:35
 msgid "Fullscreen"
 msgstr "Tela cheia"
 
@@ -255,7 +175,7 @@ msgstr "Tela cheia"
 #. the file changes, the md5 hash will change to let you know you need to
 #. update your localized copy. The msgstr is not used at all. Set it to
 #. whatever you like once you have updated your copy of the file.
-#: C/viewing-images.page:77
+#: C/viewing-images.page:37
 msgctxt "_"
 msgid ""
 "external ref='figures/view-fullscreen-symbolic.svg' "
@@ -269,7 +189,7 @@ msgstr ""
 #. the file changes, the md5 hash will change to let you know you need to
 #. update your localized copy. The msgstr is not used at all. Set it to
 #. whatever you like once you have updated your copy of the file.
-#: C/viewing-images.page:77
+#: C/viewing-images.page:37
 msgctxt "_"
 msgid ""
 "external ref='figures/view-restore-symbolic.svg' "
@@ -279,22 +199,28 @@ msgstr ""
 "md5='d00df849240f2d92c7fa1429d3ae8254'"
 
 #. (itstool) path: section/p
-#: C/viewing-images.page:76
+#: C/viewing-images.page:36
 msgid ""
 "Image Viewer has a simple fullscreen mode. Users can toggle fullscreen mode "
 "by pressing the <gui>Toggle Fullscreen</gui> (<media type=\"image\" "
 "src=\"figures/view-fullscreen-symbolic.svg\">view-fullscreen-symbolic</"
 "media> / <media type=\"image\" src=\"figures/view-restore-symbolic."
-"svg\">view-restore-symbolic</media>) button. Keyboard users can also use "
-"<key>F11</key> to toggle fullscreen mode."
+"svg\">view-restore-symbolic</media>) button."
 msgstr ""
 "O Visualizador de Imagens possui um modo simples de tela cheia. Os usuários "
 "podem alternar o modo de tela cheia pressionando <gui>Alternar para o modo "
 "tela cheia</gui> (<media type=\"image\" src=\"figures/view-fullscreen-"
 "symbolic.svg\">view-fullscreen-symbolic</media> / <media type=\"image\" "
-"src=\"figures/view-restore-symbolic.svg\">view-restore-symbolic</media>) "
-"botão. Os usuários de teclado também podem usar <key>F11</key> para alternar "
-"o modo de tela cheia."
+"src=\"figures/view-restore-symbolic.svg\">view-restore-symbolic</media>)."
+
+#. (itstool) path: note/p
+#: C/viewing-images.page:39 C/opening-images.page:70
+msgid ""
+"Keyboard users can also use the corresponding shortcuts presented in "
+"Keyboard Shortcuts dialog."
+msgstr ""
+"Os usuários de teclado também podem usar os atalhos correspondentes "
+"apresentados na caixa de diálogo Atalhos de teclado."
 
 #. (itstool) path: page/title
 #: C/supported-formats.page:12
@@ -502,37 +428,15 @@ msgid ""
 "the <gui>Previous Image</gui> (<media type=\"image\" src=\"figures/go-"
 "previous-symbolic.svg\">go-previous-symbolic</media>) and <gui>Next Image</"
 "gui> (<media type=\"image\" src=\"figures/go-next-symbolic.svg\">go-next-"
-"symbolic</media>) buttons. Keyboard users can also use the following "
-"shortcuts:"
+"symbolic</media>) buttons."
 msgstr ""
 "Ao abrir uma imagem no seletor de arquivos ou gerenciador de arquivos, o "
 "Visualizador de Imagens carregará outros arquivos no diretório pai da imagem "
 "e os classificará em ordem alfabética. Os usuários podem navegar pelas "
 "outras imagens no diretório com os botões <gui>Imagem anterior</gui> (<media "
 "type=\"image\" src=\"figures/go-previous-symbolic.svg\">go-previous-"
-"symbolic</media>) e <gui>Próxima imagem</gui> (<media type=\"image\" "
-"src=\"figures/go-next-symbolic.svg\">go-next-symbolic</media>). Os usuários "
-"de teclado também podem usar os seguintes atalhos:"
-
-#. (itstool) path: item/p
-#: C/opening-images.page:72
-msgid "<key>→</key> to go to the next image."
-msgstr "<key>→</key> para ir para a próxima imagem."
-
-#. (itstool) path: item/p
-#: C/opening-images.page:75
-msgid "<key>←</key> to go to the previous image."
-msgstr "<key>←</key>para ir para a imagem anterior."
-
-#. (itstool) path: item/p
-#: C/opening-images.page:78
-msgid "<key>Home</key> to jump to the first image in the directory."
-msgstr "<key>Home</key> para pular para a primeira imagem no diretório."
-
-#. (itstool) path: item/p
-#: C/opening-images.page:81
-msgid "<key>End</key> to jump to the last image in the directory."
-msgstr "<key>End</key> para pular para a última imagem do diretório."
+"symbolic</media >) e <gui>Próxima imagem</gui> (<media type=\"image\" "
+"src=\"figures/go-next-symbolic.svg\">go-next-symbolic</media>)."
 
 #. (itstool) path: info/desc
 #: C/trashing-images.page:11
@@ -747,51 +651,118 @@ msgstr "<_:media-1/>Visualizador de Imagens (Loupe)"
 
 #. (itstool) path: section/title
 #: C/index.page:14
-msgid "Introduction"
-msgstr "Introdução"
-
-#. (itstool) path: section/p
-#: C/index.page:15
-msgid ""
-"Image Viewer is an image viewer that supports modern image formats. It "
-"provides:"
-msgstr ""
-"O Visualizador de Imagens é um aplicativo que suporta formatos de imagem "
-"modernos. Ele fornece:"
-
-#. (itstool) path: item/p
-#: C/index.page:18
-msgid "Fast GPU accelerated image rendering with tiled rendering for SVGs"
-msgstr ""
-"Renderização rápida de imagens acelerada por GPU com renderização em blocos "
-"para SVGs"
-
-#. (itstool) path: item/p
-#: C/index.page:21
-msgid "Extendable and sandboxed raster image decoding"
-msgstr "Decodificação de imagem raster extensível e em sandbox"
-
-#. (itstool) path: item/p
-#: C/index.page:24
-msgid "Extensive support for touchpad and touchscreen gestures"
-msgstr "Amplo suporte para gestos de touchpad e de tela sensível ao toque"
-
-#. (itstool) path: item/p
-#: C/index.page:27
-msgid "Accessible presentation of the most important metadata"
-msgstr "Apresentação acessível dos metadados mais importantes"
-
-#. (itstool) path: section/title
-#: C/index.page:32
 msgid "Getting Started"
 msgstr "Começando"
 
 #. (itstool) path: section/title
-#: C/index.page:35
+#: C/index.page:17
 msgid "Additional Features"
 msgstr "Recursos adicionais"
 
 #. (itstool) path: section/title
-#: C/index.page:38
+#: C/index.page:20
 msgid "Technical Information"
 msgstr "Informação técnica"
+
+#~ msgid ""
+#~ "<keyseq><key>Ctrl</key><key>+</key></keyseq> or <key>+</key> to zoom in."
+#~ msgstr ""
+#~ "<keyseq><key>Ctrl</key><key>+</key></keyseq> ou <key>+</key> para ampliar."
+
+#~ msgid ""
+#~ "<keyseq><key>Ctrl</key><key>-</key></keyseq> or <key>-</key> to zoom out."
+#~ msgstr ""
+#~ "<keyseq><key>Ctrl</key><key>-</key></keyseq> ou <key>-</key> para reduzir."
+
+#~ msgid ""
+#~ "<keyseq><key>Ctrl</key><key>0</key></keyseq> or <key>0</key> to zoom to "
+#~ "the best fitting size for the window size."
+#~ msgstr ""
+#~ "<keyseq><key>Ctrl</key><key>0</key></keyseq> ou <key>0</key> para ampliar "
+#~ "até o tamanho mais adequado ao tamanho da janela."
+
+#~ msgid ""
+#~ "<keyseq><key>Ctrl</key><key>1</key></keyseq> or <key>1</key> to zoom to "
+#~ "the image's original scale."
+#~ msgstr ""
+#~ "<keyseq><key>Ctrl</key><key>1</key></keyseq> ou <key>1</key> para ampliar "
+#~ "a escala original da imagem."
+
+#~ msgid ""
+#~ "<keyseq><key>Ctrl</key><key>2</key></keyseq> or <key>2</key> to zoom to "
+#~ "200% of the image's original scale."
+#~ msgstr ""
+#~ "<keyseq><key>Ctrl</key><key>2</key></keyseq> ou <key>2</key> para ampliar "
+#~ "até 200% da escala original da imagem."
+
+#~ msgid ""
+#~ "Touchpad and touchscreen users can also zoom with a two-finger pinch "
+#~ "gesture."
+#~ msgstr ""
+#~ "Os usuários do touchpad e da tela sensível ao toque também podem aplicar "
+#~ "zoom com um gesto de pinça com dois dedos."
+
+#~ msgid "<keyseq><key>Ctrl</key><key>←</key></keyseq> to pan left."
+#~ msgstr ""
+#~ "<keyseq><key>Ctrl</key><key>←</key></keyseq> para deslocar para a "
+#~ "esquerda."
+
+#~ msgid "<keyseq><key>Ctrl</key><key>→</key></keyseq> to pan right."
+#~ msgstr ""
+#~ "<keyseq><key>Ctrl</key><key>→</key></keyseq> para deslocar para a direita."
+
+#~ msgid "<keyseq><key>Ctrl</key><key>↑</key></keyseq> to pan up."
+#~ msgstr ""
+#~ "<keyseq><key>Ctrl</key><key>↑</key></keyseq> para deslocar para cima."
+
+#~ msgid "<keyseq><key>Ctrl</key><key>↓</key></keyseq> to pan down."
+#~ msgstr ""
+#~ "<keyseq><key>Ctrl</key><key>↓</key></keyseq> para deslocar para baixo."
+
+#~ msgid "<keyseq><key>Ctrl</key><key>R</key></keyseq> to rotate clockwise."
+#~ msgstr ""
+#~ "<keyseq><key>Ctrl</key><key>R</key></keyseq> para girar no sentido "
+#~ "horário."
+
+#~ msgid ""
+#~ "<keyseq><key>Ctrl</key><key>Shift</key><key>R</key></keyseq> to rotate "
+#~ "counter-clockwise."
+#~ msgstr ""
+#~ "<keyseq><key>Ctrl</key><key>Shift</key><key>R</key></keyseq> para girar "
+#~ "no sentido anti-horário."
+
+#~ msgid "<key>→</key> to go to the next image."
+#~ msgstr "<key>→</key> para ir para a próxima imagem."
+
+#~ msgid "<key>←</key> to go to the previous image."
+#~ msgstr "<key>←</key>para ir para a imagem anterior."
+
+#~ msgid "<key>Home</key> to jump to the first image in the directory."
+#~ msgstr "<key>Home</key> para pular para a primeira imagem no diretório."
+
+#~ msgid "<key>End</key> to jump to the last image in the directory."
+#~ msgstr "<key>End</key> para pular para a última imagem do diretório."
+
+#~ msgid "Introduction"
+#~ msgstr "Introdução"
+
+#~ msgid ""
+#~ "Image Viewer is an image viewer that supports modern image formats. It "
+#~ "provides:"
+#~ msgstr ""
+#~ "O Visualizador de Imagens é um aplicativo que suporta formatos de imagem "
+#~ "modernos. Ele fornece:"
+
+#~ msgid "Fast GPU accelerated image rendering with tiled rendering for SVGs"
+#~ msgstr ""
+#~ "Renderização rápida de imagens acelerada por GPU com renderização em "
+#~ "blocos para SVGs"
+
+#~ msgid "Extendable and sandboxed raster image decoding"
+#~ msgstr "Decodificação de imagem raster extensível e em sandbox"
+
+#~ msgid "Extensive support for touchpad and touchscreen gestures"
+#~ msgstr "Amplo suporte para gestos de touchpad e de tela sensível ao toque"
+
+#~ msgid "Accessible presentation of the most important metadata"
+#~ msgstr "Apresentação acessível dos metadados mais importantes"
