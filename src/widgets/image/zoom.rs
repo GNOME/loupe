@@ -263,25 +263,17 @@ impl imp::LpImage {
             let animation = self.zoom_animation();
 
             if force_cursor_center {
-                animation.set_target(&adw::CallbackAnimationTarget::new(glib::clone!(
-                    #[weak]
-                    obj,
-                    move |zoom| {
-                        obj.imp().set_zoom_aiming(zoom, None);
-                    }
-                )));
+                self.zoom_cursor_target.set(None);
             } else {
                 // Set new point in image that should remain under the cursor while zooming if
                 // there isn't one already
                 if self.zoom_cursor_target.get().is_none() {
-                    let img_pos = self
+                    let img_pos: Option<(f64, f64)> = self
                         .pointer_position
                         .get()
                         .map(|x| self.widget_to_img_coord(x));
                     self.zoom_cursor_target.set(img_pos);
                 }
-
-                animation.set_target(&adw::PropertyAnimationTarget::new(&obj, "zoom"));
             }
 
             animation.set_value_from(obj.zoom());
@@ -296,13 +288,13 @@ impl imp::LpImage {
     /// Animation that makes larger zoom steps (from buttons etc) look smooth
     pub(super) fn zoom_animation(&self) -> &adw::TimedAnimation {
         self.zoom_animation.get_or_init(|| {
-            let obj = self.obj();
+            let obj = self.obj().to_owned();
 
             let animation = adw::TimedAnimation::builder()
                 .duration(ZOOM_ANIMATION_DURATION)
-                .widget(&*obj)
+                .widget(&obj)
                 // The actual target will be set individually later
-                .target(&adw::CallbackAnimationTarget::new(|_| {}))
+                .target(&adw::PropertyAnimationTarget::new(&obj, "zoom"))
                 .build();
 
             animation.connect_done(glib::clone!(
