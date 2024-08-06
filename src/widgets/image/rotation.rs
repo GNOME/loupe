@@ -88,18 +88,18 @@ impl LpImage {
         let target = &self.imp().rotation_target;
         target.set(target.get() + angle);
 
-        let animation = imp.rotation_animation();
+        let rotation_animation = imp.rotation_animation();
 
-        animation.set_value_from(self.rotation());
-        animation.set_value_to(target.get());
-        animation.play();
+        rotation_animation.set_value_from(self.rotation());
+        rotation_animation.set_value_to(target.get());
+        rotation_animation.play();
 
         if self.is_best_fit() {
-            let animation = imp.zoom_animation();
+            let zoom_animation = imp.zoom_animation();
 
-            animation.set_value_from(self.zoom());
-            animation.set_value_to(imp.zoom_level_best_fit_for_rotation(target.get()));
-            animation.play();
+            zoom_animation.set_value_from(dbg!(self.zoom()));
+            zoom_animation.set_value_to(dbg!(imp.zoom_level_best_fit_for_rotation(target.get())));
+            zoom_animation.play();
         }
 
         if let Ok(r) = gufo_common::orientation::Rotation::try_from(angle) {
