@@ -1,0 +1,1 @@
+Properly detect non-transparent images and down download a thumbnail for background detection for them. For some reason, the thumbnail download is using a lot of VRAM.

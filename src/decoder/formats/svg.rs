@@ -84,6 +84,8 @@ impl Svg {
 
             tiles.set_original_dimensions((image.info().width, image.info().height));
 
+            let mut is_first_frame = true;
+
             loop {
                 let tile_request = {
                     let mut request = request_store.write().unwrap();
@@ -138,6 +140,15 @@ impl Svg {
 
                             match image.specific_frame(frame_request).await {
                                 Ok(frame) => {
+                                    if is_first_frame {
+                                        is_first_frame = false;
+
+                                        let mut metadata: Metadata = Metadata::default();
+                                        metadata.set_frame_metadata(&frame);
+
+                                        updater.send(DecoderUpdate::Metadata(Box::new(metadata)));
+                                    }
+
                                     let position = (
                                         tile_instructions.area.x() as u32,
                                         tile_instructions.area.y() as u32,

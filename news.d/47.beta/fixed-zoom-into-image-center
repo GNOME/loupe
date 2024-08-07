@@ -1,0 +1,1 @@
+Zoom into viewport center via buttons. Before, the image center was used, which would cause a jump if the viewport had been changed.

@@ -11,13 +11,7 @@
             <property name="title" translatable="yes" context="shortcut window">General Shortcuts</property>
             <child>
               <object class="GtkShortcutsShortcut">
-                <property name="title" translatable="yes" context="shortcut window">Show Main Menu</property>
-                <property name="accelerator">F10</property>
-              </object>
-            </child>
-            <child>
-              <object class="GtkShortcutsShortcut">
-                <property name="title" translatable="yes" context="shortcut window">Copy Image or Metadata to Clipboard</property>
+                <property name="title" translatable="yes" context="shortcut window">Copy Image or Selected Text to Clipboard</property>
                 <property name="accelerator">&lt;Ctrl&gt;C</property>
               </object>
             </child>
@@ -35,26 +29,14 @@
             </child>
             <child>
               <object class="GtkShortcutsShortcut">
-                <property name="title" translatable="yes" context="shortcut window">Toggle Image Properties</property>
-                <property name="action-name">win.toggle-properties</property>
+                <property name="title" translatable="yes" context="shortcut window">Open Image with Other App</property>
+                <property name="accelerator">&lt;Ctrl&gt;&lt;Shift&gt;O</property>
               </object>
             </child>
             <child>
               <object class="GtkShortcutsShortcut">
                 <property name="title" translatable="yes" context="shortcut window">Set as Background</property>
-                <property name="action-name">win.set-background</property>
-              </object>
-            </child>
-            <child>
-              <object class="GtkShortcutsShortcut">
-                <property name="title" translatable="yes" context="shortcut window">Toggle Fullscreen</property>
-                <property name="action-name">win.toggle-fullscreen</property>
-              </object>
-            </child>
-            <child>
-              <object class="GtkShortcutsShortcut">
-                <property name="title" translatable="yes" context="shortcut window">Leave Fullscreen</property>
-                <property name="action-name">win.leave-fullscreen</property>
+                <property name="accelerator">&lt;Ctrl&gt;F8</property>
               </object>
             </child>
             <child>
@@ -123,13 +105,13 @@
             <child>
               <object class="GtkShortcutsShortcut">
                 <property name="title" translatable="yes" context="shortcut window">First Image</property>
-                <property name="action-name">win.first</property>
+                <property name="accelerator">Home</property>
               </object>
             </child>
             <child>
               <object class="GtkShortcutsShortcut">
                 <property name="title" translatable="yes" context="shortcut window">Last Image</property>
-                <property name="action-name">win.last</property>
+                <property name="accelerator">End</property>
               </object>
             </child>
           </object>
@@ -140,13 +122,13 @@
             <child>
               <object class="GtkShortcutsShortcut">
                 <property name="title" translatable="yes" context="shortcut window">Rotate Clockwise</property>
-                <property name="action-name">win.rotate-cw</property>
+                <property name="accelerator">&lt;Ctrl&gt;R</property>
               </object>
             </child>
             <child>
               <object class="GtkShortcutsShortcut">
                 <property name="title" translatable="yes" context="shortcut window">Rotate Counterclockwise</property>
-                <property name="action-name">win.rotate-ccw</property>
+                <property name="accelerator">&lt;Ctrl&gt;&lt;Shift&gt;R</property>
               </object>
             </child>
           </object>
@@ -211,6 +193,35 @@
               <object class="GtkShortcutsShortcut">
                 <property name="title" translatable="yes" context="shortcut window">Pan Down</property>
                 <property name="action-name">win.pan-down</property>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="GtkShortcutsGroup">
+            <property name="title" translatable="yes" context="shortcut window">View</property>
+            <child>
+              <object class="GtkShortcutsShortcut">
+                <property name="title" translatable="yes" context="shortcut window">Toggle Fullscreen</property>
+                <property name="accelerator">F11</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkShortcutsShortcut">
+                <property name="title" translatable="yes" context="shortcut window">Leave Fullscreen</property>
+                <property name="accelerator">Escape</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkShortcutsShortcut">
+                <property name="title" translatable="yes" context="shortcut window">Toggle Image Properties</property>
+                <property name="accelerator">F9 &lt;Alt&gt;Return</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkShortcutsShortcut">
+                <property name="title" translatable="yes" context="shortcut window">Show Main Menu</property>
+                <property name="accelerator">F10</property>
               </object>
             </child>
           </object>

@@ -25,7 +25,7 @@ mod file;
 mod gps;
 
 pub use file::FileInfo;
-use glycin::{FrameDetails, ImageInfoDetails};
+use glycin::{Frame, FrameDetails, ImageInfoDetails, MemoryFormat};
 pub use gps::GPSLocation;
 
 use crate::deps::*;
@@ -39,6 +39,7 @@ pub struct Metadata {
     file_info: Option<FileInfo>,
     image_info: Option<glycin::ImageInfoDetails>,
     frame_info: Option<FrameDetails>,
+    memory_format: Option<MemoryFormat>,
 }
 
 impl std::fmt::Debug for Metadata {
@@ -80,8 +81,9 @@ impl Metadata {
         self.image_info = Some(image_info);
     }
 
-    pub fn set_frame_info(&mut self, frame_info: FrameDetails) {
-        self.frame_info = Some(frame_info);
+    pub fn set_frame_metadata(&mut self, frame: &Frame) {
+        self.frame_info = Some(frame.details().clone());
+        self.memory_format = Some(frame.memory_format());
     }
 
     pub fn set_file_info(&mut self, file_info: FileInfo) {
@@ -107,6 +109,9 @@ impl Metadata {
         }
         if self.frame_info.is_none() {
             self.frame_info = other.frame_info;
+        }
+        if self.memory_format.is_none() {
+            self.memory_format = other.memory_format;
         }
     }
 
@@ -144,8 +149,7 @@ impl Metadata {
     }
 
     pub fn is_potentially_transparent(&self) -> bool {
-        // TODO: Implement again
-        true
+        self.memory_format.is_some_and(|x| x.has_alpha())
     }
 
     pub fn transformations_applied(&self) -> bool {
