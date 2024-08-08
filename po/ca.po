@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2024-05-28 17:50+0000\n"
-"PO-Revision-Date: 2024-05-31 23:48+0200\n"
+"POT-Creation-Date: 2024-08-06 12:34+0000\n"
+"PO-Revision-Date: 2024-08-08 22:23+0200\n"
 "Last-Translator: Jordi Mas i Hernàndez, <jmas@softcatala.org>\n"
 "Language-Team: Catalan <gnome@llistes.softcatala.org>\n"
 "Language: ca\n"
@@ -18,7 +18,7 @@ msgstr ""
 "X-Generator: Poedit 2.4.2\n"
 
 #: data/org.gnome.Loupe.desktop.in.in:3
-#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:30 src/window.rs:754
+#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:31 src/window.rs:874
 msgid "Image Viewer"
 msgstr "Visualitzador d'imatges"
 
@@ -31,7 +31,7 @@ msgid "Show the image properties sidebar"
 msgstr "Mostra la barra lateral amb les propietats de la imatge"
 
 #. developer_name tag deprecated with Appstream 1.0
-#: data/org.gnome.Loupe.metainfo.xml.in.in:8 src/about.rs:33
+#: data/org.gnome.Loupe.metainfo.xml.in.in:8 src/about.rs:34
 msgid "The GNOME Project"
 msgstr "El projecte GNOME"
 
@@ -68,203 +68,216 @@ msgstr "Dreceres generals"
 
 #: data/resources/gtk/help-overlay.ui:14
 msgctxt "shortcut window"
-msgid "Show Main Menu"
-msgstr "Mostra el menú principal"
+msgid "Copy Image or Selected Text to Clipboard"
+msgstr "Copia la imatge o el text seleccionat al porta-retalls"
 
 #: data/resources/gtk/help-overlay.ui:20
-msgctxt "shortcut window"
-msgid "Copy Image or Metadata to Clipboard"
-msgstr "Copia la imatge o les metadades al porta-retalls"
-
-#: data/resources/gtk/help-overlay.ui:26
 msgctxt "shortcut window"
 msgid "Move Image to Trash"
 msgstr "Mou la imatge a la paperera"
 
-#: data/resources/gtk/help-overlay.ui:32
+#: data/resources/gtk/help-overlay.ui:26
 msgctxt "shortcut window"
 msgid "Permanently Delete Image"
 msgstr "Suprimeix permanentment la imatge"
 
-#: data/resources/gtk/help-overlay.ui:38
+#: data/resources/gtk/help-overlay.ui:32
 msgctxt "shortcut window"
-msgid "Toggle Image Properties"
-msgstr "Commuta les propietats de la imatge"
+msgid "Open Image with Other App"
+msgstr "Obre la imatge amb una altra aplicació"
 
-#: data/resources/gtk/help-overlay.ui:44
+#: data/resources/gtk/help-overlay.ui:38
 msgctxt "shortcut window"
 msgid "Set as Background"
 msgstr "Estableix com a fons"
 
-#: data/resources/gtk/help-overlay.ui:50
-msgctxt "shortcut window"
-msgid "Toggle Fullscreen"
-msgstr "Commuta la pantalla completa"
-
-#: data/resources/gtk/help-overlay.ui:56
-msgctxt "shortcut window"
-msgid "Leave Fullscreen"
-msgstr "Surt de la pantalla completa"
-
-#: data/resources/gtk/help-overlay.ui:62
+#: data/resources/gtk/help-overlay.ui:44
 msgctxt "shortcut window"
 msgid "New Window"
 msgstr "Finestra nova"
 
-#: data/resources/gtk/help-overlay.ui:68
+#: data/resources/gtk/help-overlay.ui:50
 msgctxt "shortcut window"
 msgid "Open Help"
 msgstr "Obre l'ajuda"
 
-#: data/resources/gtk/help-overlay.ui:74
+#: data/resources/gtk/help-overlay.ui:56
 msgctxt "shortcut window"
 msgid "Show Keyboard Shortcuts"
 msgstr "Mostra les dreceres de teclat"
 
-#: data/resources/gtk/help-overlay.ui:80
+#: data/resources/gtk/help-overlay.ui:62
 msgctxt "shortcut window"
 msgid "Close Window"
 msgstr "Tanca la finestra"
 
-#: data/resources/gtk/help-overlay.ui:86
+#: data/resources/gtk/help-overlay.ui:68
 msgctxt "shortcut window"
 msgid "Quit"
 msgstr "Surt"
 
-#: data/resources/gtk/help-overlay.ui:94
+#: data/resources/gtk/help-overlay.ui:76
 msgctxt "shortcut window"
 msgid "Navigate Images"
 msgstr "Navega per les imatges"
 
-#: data/resources/gtk/help-overlay.ui:98 data/resources/gtk/help-overlay.ui:112
-#: data/resources/gtk/help-overlay.ui:224
-#: data/resources/gtk/help-overlay.ui:238
+#: data/resources/gtk/help-overlay.ui:80 data/resources/gtk/help-overlay.ui:94
+#: data/resources/gtk/help-overlay.ui:235
+#: data/resources/gtk/help-overlay.ui:249
 msgctxt "shortcut window"
 msgid "Next Image"
 msgstr "Imatge següent"
 
-#: data/resources/gtk/help-overlay.ui:105
-#: data/resources/gtk/help-overlay.ui:119
-#: data/resources/gtk/help-overlay.ui:231
-#: data/resources/gtk/help-overlay.ui:245
+#: data/resources/gtk/help-overlay.ui:87 data/resources/gtk/help-overlay.ui:101
+#: data/resources/gtk/help-overlay.ui:242
+#: data/resources/gtk/help-overlay.ui:256
 msgctxt "shortcut window"
 msgid "Previous Image"
 msgstr "Imatge anterior"
 
-#: data/resources/gtk/help-overlay.ui:125
+#: data/resources/gtk/help-overlay.ui:107
 msgctxt "shortcut window"
 msgid "First Image"
 msgstr "Primera imatge"
 
-#: data/resources/gtk/help-overlay.ui:131
+#: data/resources/gtk/help-overlay.ui:113
 msgctxt "shortcut window"
 msgid "Last Image"
 msgstr "Última imatge"
 
-#: data/resources/gtk/help-overlay.ui:139
+#: data/resources/gtk/help-overlay.ui:121
 msgctxt "shortcut window"
 msgid "Rotate Image"
 msgstr "Gira la imatge"
 
-#: data/resources/gtk/help-overlay.ui:142
-#: data/resources/gtk/help-overlay.ui:263
+#: data/resources/gtk/help-overlay.ui:124
+#: data/resources/gtk/help-overlay.ui:274
 msgctxt "shortcut window"
 msgid "Rotate Clockwise"
 msgstr "Gira en sentit horari"
 
-#: data/resources/gtk/help-overlay.ui:148
-#: data/resources/gtk/help-overlay.ui:269
+#: data/resources/gtk/help-overlay.ui:130
+#: data/resources/gtk/help-overlay.ui:280
 msgctxt "shortcut window"
 msgid "Rotate Counterclockwise"
 msgstr "Gira en sentit antihorari"
 
-#: data/resources/gtk/help-overlay.ui:156
+#: data/resources/gtk/help-overlay.ui:138
 msgctxt "shortcut window"
 msgid "Zoom Image"
 msgstr "Zoom de la imatge"
 
-#: data/resources/gtk/help-overlay.ui:159
-#: data/resources/gtk/help-overlay.ui:251
+#: data/resources/gtk/help-overlay.ui:141
+#: data/resources/gtk/help-overlay.ui:262
 msgctxt "shortcut window"
 msgid "Zoom In"
 msgstr "Amplia"
 
-#: data/resources/gtk/help-overlay.ui:165
-#: data/resources/gtk/help-overlay.ui:257
+#: data/resources/gtk/help-overlay.ui:147
+#: data/resources/gtk/help-overlay.ui:268
 msgctxt "shortcut window"
 msgid "Zoom Out"
 msgstr "Allunya"
 
-#: data/resources/gtk/help-overlay.ui:171
+#: data/resources/gtk/help-overlay.ui:153
 msgctxt "shortcut window"
 msgid "Best Fit"
 msgstr "Millor ajust"
 
-#: data/resources/gtk/help-overlay.ui:177
+#: data/resources/gtk/help-overlay.ui:159
 msgctxt "shortcut window"
 msgid "Original Scale"
 msgstr "Escala original"
 
-#: data/resources/gtk/help-overlay.ui:183
+#: data/resources/gtk/help-overlay.ui:165
 msgctxt "shortcut window"
 msgid "200% Scale"
 msgstr "Escala del 200%"
 
-#: data/resources/gtk/help-overlay.ui:191
+#: data/resources/gtk/help-overlay.ui:173
 msgctxt "shortcut window"
 msgid "Pan View"
 msgstr "Desplaçament dins de la imatge"
 
-#: data/resources/gtk/help-overlay.ui:194
+#: data/resources/gtk/help-overlay.ui:176
 msgctxt "shortcut window"
 msgid "Pan Left"
 msgstr "Desplaça a l'esquerra"
 
-#: data/resources/gtk/help-overlay.ui:200
+#: data/resources/gtk/help-overlay.ui:182
 msgctxt "shortcut window"
 msgid "Pan Right"
 msgstr "Desplaça a la dreta"
 
-#: data/resources/gtk/help-overlay.ui:206
+#: data/resources/gtk/help-overlay.ui:188
 msgctxt "shortcut window"
 msgid "Pan Up"
 msgstr "Desplaça cap amunt"
 
-#: data/resources/gtk/help-overlay.ui:212
+#: data/resources/gtk/help-overlay.ui:194
 msgctxt "shortcut window"
 msgid "Pan Down"
 msgstr "Desplaça cap avall"
 
-#: data/resources/gtk/help-overlay.ui:220
+#: data/resources/gtk/help-overlay.ui:202
+msgctxt "shortcut window"
+msgid "View"
+msgstr "Vista"
+
+#: data/resources/gtk/help-overlay.ui:205
+msgctxt "shortcut window"
+msgid "Toggle Fullscreen"
+msgstr "Commuta la pantalla completa"
+
+#: data/resources/gtk/help-overlay.ui:211
+msgctxt "shortcut window"
+msgid "Leave Fullscreen"
+msgstr "Surt de la pantalla completa"
+
+#: data/resources/gtk/help-overlay.ui:217
+msgctxt "shortcut window"
+msgid "Toggle Image Properties"
+msgstr "Commuta les propietats de la imatge"
+
+#: data/resources/gtk/help-overlay.ui:223
+msgctxt "shortcut window"
+msgid "Show Main Menu"
+msgstr "Mostra el menú principal"
+
+#: data/resources/gtk/help-overlay.ui:231
 msgctxt "shortcut window"
 msgid "Gestures"
 msgstr "Gestos"
 
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/about.rs:42
+#: src/about.rs:43
 msgid "translator-credits"
 msgstr "Jordi Mas i Hernàndez <jmas@softcatala.org>, 2023"
 
-#: src/about.rs:43
+#: src/about.rs:44
 msgid "Copyright © 2020–2024 Christopher Davis et al."
 msgstr "Copyright © 2020–2024 Christopher Davis i altres"
 
-#: src/file_model.rs:129
+#: src/file_model.rs:131
 msgid "Could not list other files in directory."
 msgstr "No s'han pogut llistar altres fitxers al directori."
 
+#: src/metadata.rs:253
+msgid "\\u{192}\\u{2215}{}"
+msgstr ""
+
 #. Translators: Fractional exposure time (photography) in seconds
-#: src/metadata.rs:262
+#: src/metadata.rs:270
 msgid "1\\u{2215}{}\\u{202F}s"
 msgstr "1\\u{2215}{}\\u{202F}s"
 
 #. Translators: Exposure time (photography) in seconds
-#: src/metadata.rs:270
+#: src/metadata.rs:278
 msgid "{}\\u{202F}s"
 msgstr "{}\\u{202F}s"
 
 #. Translators: Unit for focal length in millimeters
-#: src/metadata.rs:296
+#: src/metadata.rs:304
 msgid "{}\\u{202F}mm"
 msgstr "{}\\u{202F}mm"
 
@@ -297,39 +310,53 @@ msgstr "O"
 msgid "%x %X"
 msgstr "%x %X"
 
-#: src/util.rs:180 src/window.rs:575
+#: src/util.rs:180 src/window.rs:659
 msgid "Failed to restore image from trash"
 msgstr "No s'ha pogut restaurar la imatge de la paperera"
 
-#: src/widgets/error_details.ui:25
+#: src/widgets/error_details.ui:19
 msgid ""
-"The image loader reported the following. Please include this information "
-"when you report an error."
+"The image loader reported the following when trying to load the image. "
+"Please include this information when you report an error. If possible, "
+"please also provide the image that causes the issue."
 msgstr ""
+"El carregador d'imatges ha informat del següent quan s'intenta carregar la "
+"imatge. Incloeu aquesta informació quan informeu de l'error. Si és possible, "
+"proporcioneu també la imatge que causa el problema."
 
-#: src/widgets/error_details.ui:53
-msgid "Copy Information"
-msgstr ""
+#: src/widgets/error_details.ui:24
+msgid "Error Message"
+msgstr "Missatge d'error"
 
-#: src/widgets/error_details.ui:58
-msgid "Report Issue…"
-msgstr "Informa d'un problema…"
+#: src/widgets/error_details.ui:28
+msgid "Copy Error Message"
+msgstr "Copia el missatge d'error"
 
-#: src/widgets/image_page.rs:199
+#: src/widgets/error_details.ui:68
+msgid "Report _Issue"
+msgstr "_Informa d'un problema"
+
+#: src/widgets/image_page.rs:226
 msgid ""
-"No image loaders available. Mabye the “glycin-loaders” package with "
-"compatibility version “{}+” is not installed."
+"No image loaders available. Maybe the “glycin-loaders” package with "
+"compatibility version “{}” is not installed."
 msgstr ""
+"No hi ha carregadors d'imatges disponibles. Potser el paquet «glycin-"
+"loaders» amb la versió de compatibilitat «{}» no està instal·lat."
 
-#: src/widgets/image_page.rs:210
+#: src/widgets/image_page.rs:241
 msgid "The image format “{} ({})” is known but not installed."
 msgstr "El format d'imatge «{} ({})» és conegut, però no es troba instal·lat."
 
-#: src/widgets/image_page.rs:217
+#: src/widgets/image_page.rs:248
 msgid "Unknown image format “{} ({}).”"
 msgstr "Format d'imatge desconegut «{} ({})»."
 
-#: src/widgets/image_page.rs:234
+#: src/widgets/image_page.rs:276
+msgid "There is not enough free memory available to load this image."
+msgstr "No hi ha prou memòria disponible per carregar aquesta imatge."
+
+#: src/widgets/image_page.rs:280
 msgid "Either the image file is corrupted or it contains unsupported elements."
 msgstr ""
 "El fitxer amb la imatge o bé està corromput o bé conté elements no suportats."
@@ -358,25 +385,29 @@ msgstr "_Estableix com a fons…"
 msgid "Could not Load Image"
 msgstr "No s'ha pogut carregar la imatge"
 
-#: src/widgets/image_page.ui:66
-msgid "More Information…"
-msgstr "Més informació…"
+#: src/widgets/image_page.ui:71
+msgid "More _Information"
+msgstr "Més _informació"
 
-#: src/widgets/image_page.ui:105 src/window.ui:106
+#: src/widgets/image_page.ui:81
+msgid "_Reload"
+msgstr "_Recarrega"
+
+#: src/widgets/image_page.ui:123 src/window.ui:225
 msgid "Rotate Left"
 msgstr "Gira a l'esquerra"
 
-#: src/widgets/image_page.ui:115 src/window.ui:116
+#: src/widgets/image_page.ui:133 src/window.ui:235
 msgid "Rotate Right"
 msgstr "Gira cap a la dreta"
 
 #. Translators: This is a toast notification, informing the user that
 #. an image has been set as background.
-#: src/widgets/image_view.rs:682
+#: src/widgets/image_view.rs:720
 msgid "Set as background."
 msgstr "Estableix com a fons."
 
-#: src/widgets/image_view.rs:695
+#: src/widgets/image_view.rs:733
 msgid "Could not set background."
 msgstr "No s'ha pogut establir el fons."
 
@@ -436,23 +467,23 @@ msgid "px"
 msgstr "px"
 
 #. Translators: {} is a placeholder for the filename
-#: src/widgets/print.rs:340
+#: src/widgets/print.rs:361
 msgid "Print “{}”"
 msgstr "_Imprimeix «{}»"
 
-#: src/widgets/print.rs:444
+#: src/widgets/print.rs:465
 msgid "Continue…"
 msgstr "Continua…"
 
-#: src/widgets/print.rs:445
+#: src/widgets/print.rs:466
 msgid "Print Image"
 msgstr "Imprimeix la imatge"
 
-#: src/widgets/print.rs:767
+#: src/widgets/print.rs:788
 msgid "_Scale"
 msgstr "E_scala"
 
-#: src/widgets/print.rs:770
+#: src/widgets/print.rs:791
 msgid "_Width"
 msgstr "_Amplada"
 
@@ -501,7 +532,7 @@ msgstr "_Horitzontal"
 msgid "_Vertical"
 msgstr "_Vertical"
 
-#: src/widgets/print.ui:142 src/widgets/properties_view.ui:53
+#: src/widgets/print.ui:142 src/widgets/properties_view.ui:56
 msgid "Image Size"
 msgstr "Mida de la imatge"
 
@@ -517,139 +548,145 @@ msgstr "_Omple l'espai"
 msgid "H_eight"
 msgstr "_Alçada"
 
-#: src/widgets/properties_view.rs:234
+#: src/widgets/properties_view.rs:255
 msgid "Unknown"
 msgstr "Desconegut"
 
 #. Translators: Addition of image being transparent to format name
-#: src/widgets/properties_view.rs:238
+#: src/widgets/properties_view.rs:259
 msgid ", transparent"
 msgstr ", transparent"
 
 #. Translators: Addition of image being grayscale to format name
-#: src/widgets/properties_view.rs:243
+#: src/widgets/properties_view.rs:264
 msgid ", grayscale"
 msgstr ", escala de grisos"
 
 #. Translators: Addition of bit size to format name
-#: src/widgets/properties_view.rs:248
+#: src/widgets/properties_view.rs:269
 msgid ", {}\\u{202F}bit"
 msgstr ",{}\\u{202F}bit"
 
-#: src/widgets/properties_view.rs:299
+#: src/widgets/properties_view.rs:286
+#, fuzzy
+#| msgid "1\\u{2215}{}\\u{202F}s"
+msgid "{}\\u{202F}\\u{D7}\\u{202F}{}"
+msgstr "1\\u{2215}{}\\u{202F}s"
+
+#: src/widgets/properties_view.rs:324
 msgid "Image Coordinates Copied"
 msgstr "S'han copiat les coordenades de la imatge"
 
-#: src/widgets/properties_view.ui:19
+#: src/widgets/properties_view.ui:20
 msgid "Folder"
 msgstr "Carpeta"
 
-#: src/widgets/properties_view.ui:26
+#: src/widgets/properties_view.ui:28
 msgid "Open Containing Folder"
 msgstr "Obre la carpeta contenidora"
 
-#: src/widgets/properties_view.ui:39
+#: src/widgets/properties_view.ui:41
 msgid "URI"
 msgstr "URI"
 
-#: src/widgets/properties_view.ui:62
+#: src/widgets/properties_view.ui:66
 msgid "Image Format"
 msgstr "Format de la imatge"
 
-#: src/widgets/properties_view.ui:71
+#: src/widgets/properties_view.ui:76
 msgid "File Size"
 msgstr "Mida del fitxer"
 
-#: src/widgets/properties_view.ui:84
+#: src/widgets/properties_view.ui:90
 msgid "File Created"
 msgstr "Fitxer creat"
 
-#: src/widgets/properties_view.ui:93
+#: src/widgets/properties_view.ui:100
 msgid "File Modified"
 msgstr "Fitxer modificat"
 
 #. Translators: This is a label for GPS coordinates
-#: src/widgets/properties_view.ui:106
+#: src/widgets/properties_view.ui:114
 msgid "Location"
 msgstr "Ubicació"
 
-#: src/widgets/properties_view.ui:116
+#: src/widgets/properties_view.ui:125
 msgid "Copy Coordinates"
 msgstr "Copia les coordenades"
 
-#: src/widgets/properties_view.ui:127
+#: src/widgets/properties_view.ui:136
 msgid "Open Location"
 msgstr "Obre la ubicació"
 
-#: src/widgets/properties_view.ui:140
+#: src/widgets/properties_view.ui:149
 msgid "Originally Created"
 msgstr "Creat originalment"
 
-#: src/widgets/properties_view.ui:149
+#: src/widgets/properties_view.ui:159
 msgid "Aperture"
 msgstr "Obertura"
 
-#: src/widgets/properties_view.ui:158
+#: src/widgets/properties_view.ui:169
 msgid "Exposure"
 msgstr "Exposició"
 
-#: src/widgets/properties_view.ui:167
+#: src/widgets/properties_view.ui:179
 msgid "ISO"
 msgstr "ISO"
 
-#: src/widgets/properties_view.ui:176
+#: src/widgets/properties_view.ui:189
 msgid "Focal Length"
 msgstr "Longitud focal"
 
-#: src/widgets/properties_view.ui:185
+#: src/widgets/properties_view.ui:199
 msgid "Maker, Model"
 msgstr "Fabricant, model"
 
-#: src/window.rs:442
+#: src/window.rs:523
 msgid "Supported image formats"
 msgstr "Formats d'imatge admesos"
 
-#: src/window.rs:448
+#: src/window.rs:529
 msgid "All files"
 msgstr "Tots els fitxers"
 
-#: src/window.rs:455
+#: src/window.rs:536
 msgid "Open Image"
 msgstr "Obre una imatge"
 
-#: src/window.rs:541
+#: src/window.rs:622
 msgid "Image copied to clipboard"
 msgstr "Imatge copiada al porta-retalls"
 
-#: src/window.rs:562
+#: src/window.rs:643
 msgid "Image moved to trash"
 msgstr "S'ha mogut la imatge a la paperera"
 
-#: src/window.rs:563
+#: src/window.rs:644
 msgid "Undo"
 msgstr "Desfés"
 
-#: src/window.rs:589
+#: src/window.rs:674
 msgid "Failed to move image to trash"
 msgstr "No s'ha pogut moure la imatge a la paperera"
 
-#: src/window.rs:615
+#: src/window.rs:698
 msgid "Permanently Delete Image?"
 msgstr "Voleu suprimir permanentment la imatge?"
 
-#: src/window.rs:617
+#: src/window.rs:700
 msgid "After deleting the image “{}” it will be permanently lost."
 msgstr "La imatge «{}» es perdrà permanentment un cop sigui suprimida."
 
-#: src/window.rs:625
+#: src/window.rs:708
 msgid "Cancel"
 msgstr "Cancel·la"
 
-#: src/window.rs:626
+#: src/window.rs:709
 msgid "Delete"
 msgstr "Suprimeix"
 
-#: src/window.rs:637
+#: src/window.rs:720
 msgid "Failed to delete image"
 msgstr "No s'ha pogut suprimir la imatge"
 
@@ -673,31 +710,31 @@ msgstr "_Dreceres de teclat"
 msgid "_About Image Viewer"
 msgstr "_Quant al Visualitzador d'imatges"
 
-#: src/window.ui:85
+#: src/window.ui:204
 msgid "Copy to Clipboard"
 msgstr "Copia al porta-retalls"
 
-#: src/window.ui:92
+#: src/window.ui:211
 msgid "Move to Trash"
 msgstr "Mou a la paperera"
 
-#: src/window.ui:98
+#: src/window.ui:217
 msgid "Main Menu"
 msgstr "Menú principal"
 
-#: src/window.ui:130
+#: src/window.ui:249
 msgid "Image Properties"
 msgstr "Propietats de la imatge"
 
-#: src/window.ui:174
+#: src/window.ui:281
 msgid "View Images"
 msgstr "Visualitza les imatges"
 
-#: src/window.ui:175
+#: src/window.ui:282
 msgid "Drag and drop images here"
 msgstr "Arrossegueu i deixeu anar les imatges aquí"
 
-#: src/window.ui:179
+#: src/window.ui:286
 msgid "_Open Files…"
 msgstr "_Obre fitxers…"
 
