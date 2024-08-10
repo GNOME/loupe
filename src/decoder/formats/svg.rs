@@ -71,7 +71,6 @@ impl Svg {
         updater.clone().spawn_error_handled(async move {
             log::trace!("Setting up SVG loader");
             let mut loader = glycin::Loader::new(file);
-            loader.sandbox_selector(glycin::SandboxSelector::FlatpakSpawn);
 
             loader.cancellable(cancellable.clone());
 
