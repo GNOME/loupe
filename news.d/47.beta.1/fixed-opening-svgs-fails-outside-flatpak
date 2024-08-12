@@ -1,0 +1,1 @@
+Don't force Flatpak sandbox SVGs. This fixes SVGs not loading outside of Flatpak.
