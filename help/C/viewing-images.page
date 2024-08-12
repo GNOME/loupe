@@ -16,7 +16,7 @@
   <p>Users can zoom in with the <gui>Zoom In</gui> (<media type="image" src="figures/zoom-in-symbolic.svg">zoom-in-symbolic</media>)
   button and zoom out with the <gui>Zoom Out</gui> (<media type="image" src="figures/zoom-out-symbolic.svg">zoom-out-symbolic</media>)
   button.</p>
-  <p>Touchpad and touchscreen users can also zoom with a two-finger pinch gesture. On touchpads, it is also possible to zoom via pressing the <key>Ctrl</key> and swiping up/down with two fingers.</p>
+  <p>Touchpad and touchscreen users can also zoom with a two-finger pinch gesture. On touchpads, it is also possible to zoom by pressing the <key>Ctrl</key> key while swiping up/down with two fingers on the touchpad.</p>
  </section>
  <section>
   <title>Panning</title>
@@ -36,7 +36,7 @@
   <p>Image Viewer has a simple fullscreen mode. Users can toggle fullscreen mode by pressing the <gui>Toggle Fullscreen</gui>
   (<media type="image" src="figures/view-fullscreen-symbolic.svg">view-fullscreen-symbolic</media> / <media type="image" src="figures/view-restore-symbolic.svg">view-restore-symbolic</media>) button.</p>
   <note style="tip">
-   <p>Keyboard users can also use the corresponding shortcuts presented in Keyboard Shortcuts dialog.</p>
+   <p>Keyboard users can also use the corresponding shortcuts presented in the (Keyboard Shortcuts) dialog.</p>
   </note>
  </section>
 </page>

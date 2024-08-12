@@ -43,4 +43,4 @@ browse the other images in the directory with the $gui(Previous Image) ($media[t
 and $gui(Next Image) ($media[type="image" src="figures/go-next-symbolic.svg"](go-next-symbolic)) buttons.
 
 [note .tip]
-Keyboard users can also use the corresponding shortcuts presented in Keyboard Shortcuts dialog.
+Keyboard users can also use the corresponding shortcuts presented in the $gui(Keyboard Shortcuts) dialog.

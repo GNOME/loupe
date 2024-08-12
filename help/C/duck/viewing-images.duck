@@ -10,7 +10,7 @@ Users can zoom in with the $gui(Zoom In) ($media[type="image" src="figures/zoom-
 button and zoom out with the $gui(Zoom Out) ($media[type="image" src="figures/zoom-out-symbolic.svg"](zoom-out-symbolic))
 button.
 
-Touchpad and touchscreen users can also zoom with a two-finger pinch gesture. On touchpads, it is also possible to zoom via pressing the $key(Ctrl) and swiping up/down with two fingers.
+Touchpad and touchscreen users can also zoom with a two-finger pinch gesture. On touchpads, it is also possible to zoom by pressing the $key(Ctrl) key while swiping up/down with two fingers on the touchpad.
 
 == Panning
 
@@ -32,4 +32,4 @@ Image Viewer has a simple fullscreen mode. Users can toggle fullscreen mode by p
 ($media[type="image" src="figures/view-fullscreen-symbolic.svg"](view-fullscreen-symbolic) / $media[type="image" src="figures/view-restore-symbolic.svg"](view-restore-symbolic)) button.
 
 [note .tip]
-Keyboard users can also use the corresponding shortcuts presented in Keyboard Shortcuts dialog.
+Keyboard users can also use the corresponding shortcuts presented in the $(Keyboard Shortcuts) dialog.

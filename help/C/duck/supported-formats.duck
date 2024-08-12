@@ -7,5 +7,5 @@ loading images. You can check $link[href=https://gitlab.gnome.org/sophie-h/glyci
 for more details about the formats supported by the default loaders and the features
 provided by each format.
 
-Glycin's loaders are configurable, and new loaders can be created by third-parties,
-so the supported formats on your system may vary.
+Glycin's loaders are configurable, and new loaders can be created by third parties. Therefore
+the formats supported on your system may vary.

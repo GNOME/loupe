@@ -14,6 +14,6 @@
  loading images. You can check <link href="https://gitlab.gnome.org/sophie-h/glycin#supported-image-formats">glycin's README</link>
  for more details about the formats supported by the default loaders and the features
  provided by each format.</p>
- <p>Glycin's loaders are configurable, and new loaders can be created by third-parties,
- so the supported formats on your system may vary.</p>
+ <p>Glycin's loaders are configurable, and new loaders can be created by third parties. Therefore
+ the formats supported on your system may vary.</p>
 </page>

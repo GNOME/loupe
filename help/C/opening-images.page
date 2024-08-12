@@ -67,7 +67,7 @@
   browse the other images in the directory with the <gui>Previous Image</gui> (<media type="image" src="figures/go-previous-symbolic.svg">go-previous-symbolic</media>)
   and <gui>Next Image</gui> (<media type="image" src="figures/go-next-symbolic.svg">go-next-symbolic</media>) buttons.</p>
   <note style="tip">
-   <p>Keyboard users can also use the corresponding shortcuts presented in Keyboard Shortcuts dialog.</p>
+   <p>Keyboard users can also use the corresponding shortcuts presented in the <gui>Keyboard Shortcuts</gui> dialog.</p>
   </note>
  </section>
 </page>
