@@ -1,0 +1,157 @@
+
+# cargo-vet config file
+
+[cargo-vet]
+version = "0.9"
+
+[imports.bytecode-alliance]
+url = "https://raw.githubusercontent.com/bytecodealliance/wasmtime/main/supply-chain/audits.toml"
+
+[imports.embark-studios]
+url = "https://raw.githubusercontent.com/EmbarkStudios/rust-ecosystem/main/audits.toml"
+
+[imports.gnome]
+url = "https://gitlab.gnome.org/sophie-h/rust-supply-chain/-/raw/main/gnome-created/supply-chain/audits.toml"
+
+[imports.gnome-trusted]
+url = "https://gitlab.gnome.org/sophie-h/rust-supply-chain/-/raw/main/gnome-trusted/supply-chain/audits.toml"
+
+[imports.google]
+url = "https://raw.githubusercontent.com/google/supply-chain/main/audits.toml"
+
+[imports.isrg]
+url = "https://raw.githubusercontent.com/divviup/libprio-rs/main/supply-chain/audits.toml"
+
+[imports.mozilla]
+url = "https://raw.githubusercontent.com/mozilla/supply-chain/main/audits.toml"
+
+[imports.zcash]
+url = "https://raw.githubusercontent.com/zcash/rust-ecosystem/main/supply-chain/audits.toml"
+
+[[exemptions.arc-swap]]
+version = "1.7.1"
+criteria = "safe-to-deploy"
+
+[[exemptions.dlib]]
+version = "0.5.2"
+criteria = "safe-to-deploy"
+
+[[exemptions.dunce]]
+version = "1.0.4"
+criteria = "safe-to-deploy"
+
+[[exemptions.enumflags2]]
+version = "0.7.10"
+criteria = "safe-to-deploy"
+
+[[exemptions.enumflags2_derive]]
+version = "0.7.10"
+criteria = "safe-to-deploy"
+
+[[exemptions.field-offset]]
+version = "0.3.6"
+criteria = "safe-to-deploy"
+
+[[exemptions.futures-timer]]
+version = "3.0.3"
+criteria = "safe-to-deploy"
+
+[[exemptions.generic-array]]
+version = "0.14.6"
+criteria = "safe-to-deploy"
+
+[[exemptions.getrandom]]
+version = "0.2.2"
+criteria = "safe-to-deploy"
+
+[[exemptions.gettext-rs]]
+version = "0.7.0"
+criteria = "safe-to-deploy"
+
+[[exemptions.gettext-sys]]
+version = "0.21.3"
+criteria = "safe-to-deploy"
+
+[[exemptions.humantime]]
+version = "2.1.0"
+criteria = "safe-to-deploy"
+
+[[exemptions.lcms2]]
+version = "6.1.0"
+criteria = "safe-to-deploy"
+
+[[exemptions.lcms2-sys]]
+version = "4.0.5"
+criteria = "safe-to-deploy"
+
+[[exemptions.libloading]]
+version = "0.8.5"
+criteria = "safe-to-deploy"
+
+[[exemptions.libseccomp]]
+version = "0.3.0"
+criteria = "safe-to-deploy"
+
+[[exemptions.libseccomp-sys]]
+version = "0.2.1"
+criteria = "safe-to-deploy"
+
+[[exemptions.locale_config]]
+version = "0.3.0"
+criteria = "safe-to-deploy"
+
+[[exemptions.memmap2]]
+version = "0.5.4"
+criteria = "safe-to-deploy"
+
+[[exemptions.memoffset]]
+version = "0.9.1"
+criteria = "safe-to-deploy"
+
+[[exemptions.nix]]
+version = "0.29.0"
+criteria = "safe-to-deploy"
+
+[[exemptions.once_cell]]
+version = "1.12.0"
+criteria = "safe-to-deploy"
+
+[[exemptions.ordered-stream]]
+version = "0.2.0"
+criteria = "safe-to-deploy"
+
+[[exemptions.ppv-lite86]]
+version = "0.2.16"
+criteria = "safe-to-deploy"
+
+[[exemptions.proc-macro-crate]]
+version = "3.1.0"
+criteria = "safe-to-deploy"
+
+[[exemptions.quick-xml]]
+version = "0.36.1"
+criteria = "safe-to-deploy"
+
+[[exemptions.rand]]
+version = "0.8.5"
+criteria = "safe-to-deploy"
+
+[[exemptions.rmp]]
+version = "0.8.14"
+criteria = "safe-to-deploy"
+
+[[exemptions.rmp-serde]]
+version = "1.3.0"
+criteria = "safe-to-deploy"
+
+[[exemptions.temp-dir]]
+version = "0.1.13"
+criteria = "safe-to-deploy"
+
+[[exemptions.typenum]]
+version = "1.15.0"
+criteria = "safe-to-deploy"
+
+[[exemptions.yeslogic-fontconfig-sys]]
+version = "6.0.0"
+criteria = "safe-to-deploy"
