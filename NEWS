@@ -1,3 +1,13 @@
+## 47.beta.1 (2024-08-13)
+
+### Fixed
+
+- Don't force Flatpak sandbox SVGs. This fixes SVGs not loading outside of Flatpak.
+- Make the window wider when it would open with a bottom-sheet overlay for properties. That way, the properties can be shown in a sidebar.
+- Properly detect non-transparent images and down download a thumbnail for background detection for them. For some reason, the thumbnail download is using a lot of VRAM.
+- Rotating a freshly opened image would not follow the best-fit scaling.
+- Rotating by 0 degrees went through the complete rotation pipeline including a image reload. Now, 0 deg rotations are ignored.
+
 ## 47.beta (2024-08-02)
 
 ### Added
