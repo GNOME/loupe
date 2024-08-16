@@ -97,8 +97,8 @@ impl LpImage {
         if self.is_best_fit() {
             let zoom_animation = imp.zoom_animation();
 
-            zoom_animation.set_value_from(dbg!(self.zoom()));
-            zoom_animation.set_value_to(dbg!(imp.zoom_level_best_fit_for_rotation(target.get())));
+            zoom_animation.set_value_from(self.zoom());
+            zoom_animation.set_value_to(imp.zoom_level_best_fit_for_rotation(target.get()));
             zoom_animation.play();
         }
 

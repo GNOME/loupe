@@ -126,9 +126,17 @@ impl WidgetImpl for imp::LpImage {
         );
 
         // Add texture(s)
-        self.frame_buffer
-            .load()
-            .add_to_snapshot(snapshot, applicable_zoom, &render_options);
+        let frame_buffer = self.frame_buffer.load();
+
+        // Don't use current frame buffer if it empty during an image reload
+        let use_frame_buffer = if frame_buffer.is_empty() {
+            // Fallback to previous buffer to show previous image until new one is available
+            self.previous_frame_buffer.load()
+        } else {
+            frame_buffer
+        };
+
+        use_frame_buffer.add_to_snapshot(snapshot, applicable_zoom, &render_options);
 
         snapshot.restore();
 

@@ -89,6 +89,7 @@ impl imp::LpImage {
             }
             DecoderUpdate::Redraw => {
                 self.set_loaded(true);
+                self.previous_frame_buffer.reset();
 
                 obj.queue_draw();
                 self.frame_buffer.rcu(|tiles| {
@@ -313,8 +314,13 @@ impl LpImage {
         self.imp().set_file_loaded(file).await;
 
         let tiles = &self.imp().frame_buffer;
+
         // Delete all stored textures for reloads
-        tiles.reset();
+        let previous_frame_buffer = tiles.reset();
+        // Store previos frames to show until new texture is loaded
+        self.imp()
+            .previous_frame_buffer
+            .swap(previous_frame_buffer.load_full());
         // Reset background color for reloads
         imp.set_background_color(None);
 

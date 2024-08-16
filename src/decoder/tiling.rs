@@ -177,18 +177,17 @@ impl FrameBuffer {
         self.current().cleanup(zoom, viewport);
     }
 
-    /// Delete all stored information
-    ///
-    /// Used when reloading image
-    pub fn reset(&mut self) {
-        self.update_sender = None;
-        self.images.clear();
-    }
-
     pub fn contains(&self, zoom: f64, coordinates: Coordinates) -> bool {
         self.images
             .front()
             .map_or(false, |x| x.contains(zoom, coordinates))
+    }
+
+    /// Returns true if there are no textures
+    pub fn is_empty(&self) -> bool {
+        self.images
+            .front()
+            .map_or(false, |x| x.tile_layers.is_empty())
     }
 }
 
@@ -623,12 +622,15 @@ impl SharedFrameBuffer {
         });
     }
 
-    pub fn reset(&self) {
-        self.buffer.rcu(|tiling_store| {
-            let mut new_store = (**tiling_store).clone();
-            new_store.reset();
-            Arc::new(new_store)
-        });
+    /// Reset to default and return old store
+    ///
+    /// Used when reloading images
+    pub fn reset(&self) -> Self {
+        let old_buffer = self.buffer.swap(Default::default());
+
+        Self {
+            buffer: ArcSwap::new(old_buffer),
+        }
     }
 
     pub fn get_layer_tiling_or_default(&self, zoom: f64, viewport: graphene::Rect) -> Tiling {

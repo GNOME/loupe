@@ -163,6 +163,7 @@ mod imp {
         /// Track changes to this image
         pub(super) file_monitor: RefCell<Option<gio::FileMonitor>>,
         pub(super) frame_buffer: Arc<SharedFrameBuffer>,
+        pub(super) previous_frame_buffer: SharedFrameBuffer,
         pub(super) decoder: RefCell<Option<Arc<Decoder>>>,
 
         /// Rotation final value (can differ from `rotation` during animation)

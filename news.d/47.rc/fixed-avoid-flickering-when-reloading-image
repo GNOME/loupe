@@ -1,0 +1,1 @@
+Flickering while images are reloaded. Instead, keep the old textures around until a new texture is available.
