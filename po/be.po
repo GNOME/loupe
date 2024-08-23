@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2024-05-15 11:13+0000\n"
-"PO-Revision-Date: 2024-05-16 23:03+0300\n"
+"POT-Creation-Date: 2024-08-12 09:51+0000\n"
+"PO-Revision-Date: 2024-08-23 20:43+0300\n"
 "Last-Translator: Yuras Shumovich <shumovichy@gmail.com>\n"
 "Language-Team: Belarusian <i18n-bel-gnome@googlegroups.com>\n"
 "Language: be\n"
@@ -17,10 +17,10 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 3.4.2\n"
+"X-Generator: Poedit 3.4.4\n"
 
 #: data/org.gnome.Loupe.desktop.in.in:3
-#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:30 src/window.rs:754
+#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:31 src/window.rs:874
 msgid "Image Viewer"
 msgstr "Праглядальнік выяў"
 
@@ -33,7 +33,7 @@ msgid "Show the image properties sidebar"
 msgstr "Паказаць бакавую панэль з уласцівасцямі выявы"
 
 #. developer_name tag deprecated with Appstream 1.0
-#: data/org.gnome.Loupe.metainfo.xml.in.in:8 src/about.rs:33
+#: data/org.gnome.Loupe.metainfo.xml.in.in:8 src/about.rs:34
 msgid "The GNOME Project"
 msgstr "Праект GNOME"
 
@@ -68,190 +68,218 @@ msgstr "Агульныя спалучэнні клавіш"
 
 #: data/resources/gtk/help-overlay.ui:14
 msgctxt "shortcut window"
-msgid "Show Main Menu"
-msgstr "Паказаць галоўнае меню"
+msgid "Copy Image or Selected Text to Clipboard"
+msgstr "Скапіяваць выяву або вылучаны тэкст у буфер абмену"
 
 #: data/resources/gtk/help-overlay.ui:20
-msgctxt "shortcut window"
-msgid "Copy Image or Metadata to Clipboard"
-msgstr "Скапіяваць выяву або метаданыя ў буфер абмену"
-
-#: data/resources/gtk/help-overlay.ui:26
 msgctxt "shortcut window"
 msgid "Move Image to Trash"
 msgstr "Перамясціць выяву ў сметніцу"
 
-#: data/resources/gtk/help-overlay.ui:32
+#: data/resources/gtk/help-overlay.ui:26
 msgctxt "shortcut window"
 msgid "Permanently Delete Image"
 msgstr "Выдаліць выяву незваротна"
 
-#: data/resources/gtk/help-overlay.ui:38
+#: data/resources/gtk/help-overlay.ui:32
 msgctxt "shortcut window"
-msgid "Toggle Image Properties"
-msgstr "Уласцівасці выявы"
+msgid "Open Image with Other App"
+msgstr "Адкрыць выяву праз іншую праграму"
 
-#: data/resources/gtk/help-overlay.ui:44
+#: data/resources/gtk/help-overlay.ui:38
 msgctxt "shortcut window"
 msgid "Set as Background"
 msgstr "Задаць як фон"
 
-#: data/resources/gtk/help-overlay.ui:50
-msgctxt "shortcut window"
-msgid "Toggle Fullscreen"
-msgstr "Пераключыць поўнаэкранны рэжым"
-
-#: data/resources/gtk/help-overlay.ui:56
-msgctxt "shortcut window"
-msgid "Leave Fullscreen"
-msgstr "Выйсці з поўнаэкраннага рэжыму"
-
-#: data/resources/gtk/help-overlay.ui:62
+#: data/resources/gtk/help-overlay.ui:44
 msgctxt "shortcut window"
 msgid "New Window"
 msgstr "Новае акно"
 
-#: data/resources/gtk/help-overlay.ui:68
+#: data/resources/gtk/help-overlay.ui:50
 msgctxt "shortcut window"
 msgid "Open Help"
 msgstr "Адкрыць даведку"
 
-#: data/resources/gtk/help-overlay.ui:74
+#: data/resources/gtk/help-overlay.ui:56
 msgctxt "shortcut window"
 msgid "Show Keyboard Shortcuts"
 msgstr "Паказаць спалучэнні клавіш"
 
-#: data/resources/gtk/help-overlay.ui:80
+#: data/resources/gtk/help-overlay.ui:62
 msgctxt "shortcut window"
 msgid "Close Window"
 msgstr "Закрыць акно"
 
-#: data/resources/gtk/help-overlay.ui:86
+#: data/resources/gtk/help-overlay.ui:68
 msgctxt "shortcut window"
 msgid "Quit"
 msgstr "Выйсці"
 
-#: data/resources/gtk/help-overlay.ui:94
+#: data/resources/gtk/help-overlay.ui:76
 msgctxt "shortcut window"
 msgid "Navigate Images"
 msgstr "Пераходы да выяў"
 
-#: data/resources/gtk/help-overlay.ui:98 data/resources/gtk/help-overlay.ui:112
-#: data/resources/gtk/help-overlay.ui:224
-#: data/resources/gtk/help-overlay.ui:238
+#: data/resources/gtk/help-overlay.ui:80 data/resources/gtk/help-overlay.ui:94
+#: data/resources/gtk/help-overlay.ui:235
+#: data/resources/gtk/help-overlay.ui:249
 msgctxt "shortcut window"
 msgid "Next Image"
 msgstr "Наступная выява"
 
-#: data/resources/gtk/help-overlay.ui:105
-#: data/resources/gtk/help-overlay.ui:119
-#: data/resources/gtk/help-overlay.ui:231
-#: data/resources/gtk/help-overlay.ui:245
+#: data/resources/gtk/help-overlay.ui:87 data/resources/gtk/help-overlay.ui:101
+#: data/resources/gtk/help-overlay.ui:242
+#: data/resources/gtk/help-overlay.ui:256
 msgctxt "shortcut window"
 msgid "Previous Image"
 msgstr "Папярэдняя выява"
 
-#: data/resources/gtk/help-overlay.ui:125
+#: data/resources/gtk/help-overlay.ui:107
 msgctxt "shortcut window"
 msgid "First Image"
 msgstr "Да першай выявы"
 
-#: data/resources/gtk/help-overlay.ui:131
+#: data/resources/gtk/help-overlay.ui:113
 msgctxt "shortcut window"
 msgid "Last Image"
 msgstr "Да апошняй выявы"
 
-#: data/resources/gtk/help-overlay.ui:139
+#: data/resources/gtk/help-overlay.ui:121
 msgctxt "shortcut window"
 msgid "Rotate Image"
 msgstr "Паварот выявы"
 
-#: data/resources/gtk/help-overlay.ui:142
-#: data/resources/gtk/help-overlay.ui:263
+#: data/resources/gtk/help-overlay.ui:124
+#: data/resources/gtk/help-overlay.ui:274
 msgctxt "shortcut window"
 msgid "Rotate Clockwise"
 msgstr "Павярнуць па ходу гадзіннікавай стрэлкі"
 
-#: data/resources/gtk/help-overlay.ui:148
-#: data/resources/gtk/help-overlay.ui:269
+#: data/resources/gtk/help-overlay.ui:130
+#: data/resources/gtk/help-overlay.ui:280
 msgctxt "shortcut window"
 msgid "Rotate Counterclockwise"
 msgstr "Павярнуць супраць гадзіннікавай стрэлкі"
 
-#: data/resources/gtk/help-overlay.ui:156
+#: data/resources/gtk/help-overlay.ui:138
 msgctxt "shortcut window"
 msgid "Zoom Image"
 msgstr "Маштабаванне"
 
-#: data/resources/gtk/help-overlay.ui:159
-#: data/resources/gtk/help-overlay.ui:251
+#: data/resources/gtk/help-overlay.ui:141
+#: data/resources/gtk/help-overlay.ui:262
 msgctxt "shortcut window"
 msgid "Zoom In"
 msgstr "Павялічыць"
 
-#: data/resources/gtk/help-overlay.ui:165
-#: data/resources/gtk/help-overlay.ui:257
+#: data/resources/gtk/help-overlay.ui:147
+#: data/resources/gtk/help-overlay.ui:268
 msgctxt "shortcut window"
 msgid "Zoom Out"
 msgstr "Паменшыць"
 
-#: data/resources/gtk/help-overlay.ui:171
+#: data/resources/gtk/help-overlay.ui:153
 msgctxt "shortcut window"
 msgid "Best Fit"
 msgstr "Найлепшае запаўненне"
 
-#: data/resources/gtk/help-overlay.ui:177
+#: data/resources/gtk/help-overlay.ui:159
 msgctxt "shortcut window"
 msgid "Original Scale"
 msgstr "Зыходны маштаб"
 
-#: data/resources/gtk/help-overlay.ui:183
+#: data/resources/gtk/help-overlay.ui:165
 msgctxt "shortcut window"
 msgid "200% Scale"
 msgstr "Маштаб 200%"
 
-#: data/resources/gtk/help-overlay.ui:191
+#: data/resources/gtk/help-overlay.ui:173
 msgctxt "shortcut window"
 msgid "Pan View"
 msgstr "Панарамны прагляд"
 
-#: data/resources/gtk/help-overlay.ui:194
+#: data/resources/gtk/help-overlay.ui:176
 msgctxt "shortcut window"
 msgid "Pan Left"
 msgstr "Пераход па панараме ўлева"
 
-#: data/resources/gtk/help-overlay.ui:200
+#: data/resources/gtk/help-overlay.ui:182
 msgctxt "shortcut window"
 msgid "Pan Right"
 msgstr "Пераход па панараме ўправа"
 
-#: data/resources/gtk/help-overlay.ui:206
+#: data/resources/gtk/help-overlay.ui:188
 msgctxt "shortcut window"
 msgid "Pan Up"
 msgstr "Пераход па панараме ўверх"
 
-#: data/resources/gtk/help-overlay.ui:212
+#: data/resources/gtk/help-overlay.ui:194
 msgctxt "shortcut window"
 msgid "Pan Down"
 msgstr "Пераход па панараме ўніз"
 
-#: data/resources/gtk/help-overlay.ui:220
+#: data/resources/gtk/help-overlay.ui:202
+msgctxt "shortcut window"
+msgid "View"
+msgstr "Прагляд"
+
+#: data/resources/gtk/help-overlay.ui:205
+msgctxt "shortcut window"
+msgid "Toggle Fullscreen"
+msgstr "Пераключыць поўнаэкранны рэжым"
+
+#: data/resources/gtk/help-overlay.ui:211
+msgctxt "shortcut window"
+msgid "Leave Fullscreen"
+msgstr "Выйсці з поўнаэкраннага рэжыму"
+
+#: data/resources/gtk/help-overlay.ui:217
+msgctxt "shortcut window"
+msgid "Toggle Image Properties"
+msgstr "Уласцівасці выявы"
+
+#: data/resources/gtk/help-overlay.ui:223
+msgctxt "shortcut window"
+msgid "Show Main Menu"
+msgstr "Паказаць галоўнае меню"
+
+#: data/resources/gtk/help-overlay.ui:231
 msgctxt "shortcut window"
 msgid "Gestures"
 msgstr "Жэсты"
 
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/about.rs:42
+#: src/about.rs:43
 msgid "translator-credits"
 msgstr "Юрась Шумовіч <shumovichy@gmail.com>"
 
-#: src/about.rs:43
+#: src/about.rs:44
 msgid "Copyright © 2020–2024 Christopher Davis et al."
 msgstr "Аўтарскае права © 2020–2024 Christopher Davis і інш."
 
-#: src/file_model.rs:129
+#: src/file_model.rs:131
 msgid "Could not list other files in directory."
 msgstr "Не ўдалося скласці спіс іншых файлаў у каталогу."
+
+#: src/metadata.rs:253
+msgid "\\u{192}\\u{2215}{}"
+msgstr "\\u{192}\\u{2215}{}"
+
+#. Translators: Fractional exposure time (photography) in seconds
+#: src/metadata.rs:270
+msgid "1\\u{2215}{}\\u{202F}s"
+msgstr "1\\u{2215}{}\\u{202F}с"
+
+#. Translators: Exposure time (photography) in seconds
+#: src/metadata.rs:278
+msgid "{}\\u{202F}s"
+msgstr "{}\\u{202F}с"
+
+#. Translators: Unit for focal length in millimeters
+#: src/metadata.rs:304
+msgid "{}\\u{202F}mm"
+msgstr "{}\\u{202F}мм"
 
 #. Translators: short for "north" in GPS coordinate
 #: src/metadata/gps.rs:165
@@ -273,68 +301,62 @@ msgstr "У"
 msgid "W"
 msgstr "З"
 
-#. Translators: Fractional exposure time (photography) in seconds
-#: src/metadata/mod.rs:262
-msgid "1\\u{2215}{}\\u{202F}s"
-msgstr "1\\u{2215}{}\\u{202F}с"
-
-#. Translators: Exposure time (photography) in seconds
-#: src/metadata/mod.rs:270
-#| msgid "{}\\u{202F}mm"
-msgid "{}\\u{202F}s"
-msgstr "{}\\u{202F}с"
-
-#. Translators: Unit for focal length in millimeters
-#: src/metadata/mod.rs:296
-msgid "{}\\u{202F}mm"
-msgstr "{}\\u{202F}мм"
-
 #. Translators: This is the date and time format we use in metadata output etc.
 #. The format has to follow <https://docs.gtk.org/glib/method.DateTime.format.html>
 #. The default is already translated. Don't change if you are not sure what to
 #. use.
-#: src/util/mod.rs:37
+#: src/util.rs:37
 #, c-format
 msgid "%x %X"
 msgstr "%x %X"
 
-#: src/util/mod.rs:180 src/window.rs:575
+#: src/util.rs:180 src/window.rs:659
 msgid "Failed to restore image from trash"
 msgstr "Не ўдалося аднавіць выяву са сметніцы"
 
-#: src/widgets/error_details.ui:25
+#: src/widgets/error_details.ui:19
 msgid ""
-"The image loader reported the following. Please include this information "
-"when you report an error."
+"The image loader reported the following when trying to load the image. "
+"Please include this information when you report an error. If possible, "
+"please also provide the image that causes the issue."
 msgstr ""
-"Сродак загрузкі выяў паведаміў наступную інфармацыю. Уключыце яе ў "
-"справаздачу, калі будзеце паведамляць аб праблеме."
+"Падчас загрузкі выявы сродак загрузкі выяў паведаміў наступную інфармацыю. "
+"Уключыце яе ў справаздачу, калі будзеце паведамляць аб праблеме. Калі "
+"магчыма, дадайце і выяву, якая выклікае праблему."
 
-#: src/widgets/error_details.ui:53
-msgid "Copy Information"
-msgstr "Скапіяваць інфармацыю"
+#: src/widgets/error_details.ui:24
+msgid "Error Message"
+msgstr "Паведамленне пра памылку"
 
-#: src/widgets/error_details.ui:58
-msgid "Report Issue…"
-msgstr "Паведаміць аб праблеме…"
+#: src/widgets/error_details.ui:28
+msgid "Copy Error Message"
+msgstr "Скапіяваць паведамленне пра памылку"
 
-#: src/widgets/image_page.rs:199
+#: src/widgets/error_details.ui:68
+msgid "Report _Issue"
+msgstr "Паведаміць аб _праблеме"
+
+#: src/widgets/image_page.rs:226
 msgid ""
-"No image loaders available. Mabye the “glycin-loaders” package with "
-"compatibility version “{}+” is not installed."
+"No image loaders available. Maybe the “glycin-loaders” package with "
+"compatibility version “{}” is not installed."
 msgstr ""
 "Адсутнічаюць сродкі загрузкі выяў. Магчыма не ўсталяваны пакет «glycin-"
-"loaders» сумяшчальнай версіі «{}+» ."
+"loaders» сумяшчальнай версіі «{}» ."
 
-#: src/widgets/image_page.rs:210
+#: src/widgets/image_page.rs:241
 msgid "The image format “{} ({})” is known but not installed."
 msgstr "Фармат выявы «{} ({})» вядомы, але не ўсталяваны."
 
-#: src/widgets/image_page.rs:217
+#: src/widgets/image_page.rs:248
 msgid "Unknown image format “{} ({}).”"
 msgstr "Невядомы фармат выявы «{} ({}).»"
 
-#: src/widgets/image_page.rs:234
+#: src/widgets/image_page.rs:276
+msgid "There is not enough free memory available to load this image."
+msgstr "Недастаткова свабоднай памяці, каб загрузіць выяву."
+
+#: src/widgets/image_page.rs:280
 msgid "Either the image file is corrupted or it contains unsupported elements."
 msgstr ""
 "Файл выявы пашкоджаны або ўтрымлівае элементы, якія не падтрымліваюцца."
@@ -363,25 +385,29 @@ msgstr "_Задаць як фон…"
 msgid "Could not Load Image"
 msgstr "Не ўдалося загрузіць выяву"
 
-#: src/widgets/image_page.ui:66
-msgid "More Information…"
-msgstr "Больш інфармацыі…"
+#: src/widgets/image_page.ui:71
+msgid "More _Information"
+msgstr "Дадатковыя _звесткі"
 
-#: src/widgets/image_page.ui:105 src/window.ui:106
+#: src/widgets/image_page.ui:81
+msgid "_Reload"
+msgstr "_Перазагрузіць"
+
+#: src/widgets/image_page.ui:123 src/window.ui:225
 msgid "Rotate Left"
 msgstr "Павярнуць улева"
 
-#: src/widgets/image_page.ui:115 src/window.ui:116
+#: src/widgets/image_page.ui:133 src/window.ui:235
 msgid "Rotate Right"
 msgstr "Павярнуць управа"
 
 #. Translators: This is a toast notification, informing the user that
 #. an image has been set as background.
-#: src/widgets/image_view.rs:682
+#: src/widgets/image_view.rs:720
 msgid "Set as background."
 msgstr "Задаць як фон."
 
-#: src/widgets/image_view.rs:695
+#: src/widgets/image_view.rs:733
 msgid "Could not set background."
 msgstr "Не ўдалося задаць фон."
 
@@ -441,23 +467,23 @@ msgid "px"
 msgstr "пікселі"
 
 #. Translators: {} is a placeholder for the filename
-#: src/widgets/print.rs:340
+#: src/widgets/print.rs:361
 msgid "Print “{}”"
 msgstr "Друк «{}»"
 
-#: src/widgets/print.rs:444
+#: src/widgets/print.rs:465
 msgid "Continue…"
 msgstr "Працягнуць…"
 
-#: src/widgets/print.rs:445
+#: src/widgets/print.rs:466
 msgid "Print Image"
 msgstr "Друк выявы"
 
-#: src/widgets/print.rs:767
+#: src/widgets/print.rs:788
 msgid "_Scale"
 msgstr "_Маштаб"
 
-#: src/widgets/print.rs:770
+#: src/widgets/print.rs:791
 msgid "_Width"
 msgstr "_Шырыня"
 
@@ -506,7 +532,7 @@ msgstr "_Гарызантальны"
 msgid "_Vertical"
 msgstr "_Вертыкальны"
 
-#: src/widgets/print.ui:142 src/widgets/properties_view.ui:53
+#: src/widgets/print.ui:142 src/widgets/properties_view.ui:56
 msgid "Image Size"
 msgstr "Памер выявы"
 
@@ -522,140 +548,145 @@ msgstr "Запаўненне _прасторы"
 msgid "H_eight"
 msgstr "В_ышыня"
 
-#: src/widgets/properties_view.rs:234
+#: src/widgets/properties_view.rs:255
 msgid "Unknown"
 msgstr "Невядома"
 
 #. Translators: Addition of image being transparent to format name
-#: src/widgets/properties_view.rs:238
+#: src/widgets/properties_view.rs:259
 msgid ", transparent"
 msgstr ", празрыстасць"
 
 #. Translators: Addition of image being grayscale to format name
-#: src/widgets/properties_view.rs:243
+#: src/widgets/properties_view.rs:264
 msgid ", grayscale"
 msgstr ", градацыі шэрага"
 
 #. Translators: Addition of bit size to format name
-#: src/widgets/properties_view.rs:248
+#: src/widgets/properties_view.rs:269
 msgid ", {}\\u{202F}bit"
 msgstr ", {}\\u{202F}біт"
 
-#: src/widgets/properties_view.rs:299
+#: src/widgets/properties_view.rs:286
+#| msgid "1\\u{2215}{}\\u{202F}s"
+msgid "{}\\u{202F}\\u{D7}\\u{202F}{}"
+msgstr "{}\\u{202F}\\u{D7}\\u{202F}{}"
+
+#: src/widgets/properties_view.rs:324
 msgid "Image Coordinates Copied"
 msgstr "Каардынаты выявы скапіяваны"
 
-#: src/widgets/properties_view.ui:19
+#: src/widgets/properties_view.ui:20
 msgid "Folder"
 msgstr "Папка"
 
-#: src/widgets/properties_view.ui:26
+#: src/widgets/properties_view.ui:28
 msgid "Open Containing Folder"
 msgstr "Адкрыць папку, якая змяшчае файл"
 
-#: src/widgets/properties_view.ui:39
+#: src/widgets/properties_view.ui:41
 msgid "URI"
 msgstr "URI"
 
-#: src/widgets/properties_view.ui:62
+#: src/widgets/properties_view.ui:66
 msgid "Image Format"
 msgstr "Фармат выявы"
 
-#: src/widgets/properties_view.ui:71
+#: src/widgets/properties_view.ui:76
 msgid "File Size"
 msgstr "Памер файла"
 
-#: src/widgets/properties_view.ui:84
+#: src/widgets/properties_view.ui:90
 msgid "File Created"
 msgstr "Файл створаны"
 
-#: src/widgets/properties_view.ui:93
+#: src/widgets/properties_view.ui:100
 msgid "File Modified"
 msgstr "Файл зменены"
 
 # gps каардынаты, дзе зроблена фота
 #. Translators: This is a label for GPS coordinates
-#: src/widgets/properties_view.ui:106
+#: src/widgets/properties_view.ui:114
 msgid "Location"
 msgstr "Месцазнаходжанне"
 
-#: src/widgets/properties_view.ui:116
+#: src/widgets/properties_view.ui:125
 msgid "Copy Coordinates"
 msgstr "Скапіяваць каардынаты"
 
-#: src/widgets/properties_view.ui:127
+#: src/widgets/properties_view.ui:136
 msgid "Open Location"
 msgstr "Адкрыць месцазнаходжанне"
 
-#: src/widgets/properties_view.ui:140
+#: src/widgets/properties_view.ui:149
 msgid "Originally Created"
 msgstr "Першапачаткова створана"
 
-#: src/widgets/properties_view.ui:149
+#: src/widgets/properties_view.ui:159
 msgid "Aperture"
 msgstr "Дыяфрагма"
 
-#: src/widgets/properties_view.ui:158
+#: src/widgets/properties_view.ui:169
 msgid "Exposure"
 msgstr "Экспазіцыя"
 
-#: src/widgets/properties_view.ui:167
+#: src/widgets/properties_view.ui:179
 msgid "ISO"
 msgstr "ISO"
 
-#: src/widgets/properties_view.ui:176
+#: src/widgets/properties_view.ui:189
 msgid "Focal Length"
 msgstr "Фокусная адлегласць"
 
-#: src/widgets/properties_view.ui:185
+#: src/widgets/properties_view.ui:199
 msgid "Maker, Model"
 msgstr "Вытворца, мадэль"
 
-#: src/window.rs:442
+#: src/window.rs:523
 msgid "Supported image formats"
 msgstr "Вядомыя фарматы выяў"
 
-#: src/window.rs:448
+#: src/window.rs:529
 msgid "All files"
 msgstr "Усе файлы"
 
-#: src/window.rs:455
+#: src/window.rs:536
 msgid "Open Image"
 msgstr "Адкрыць выяву"
 
-#: src/window.rs:541
+#: src/window.rs:622
 msgid "Image copied to clipboard"
 msgstr "Выява скапіявана ў буфер абмену"
 
-#: src/window.rs:562
+#: src/window.rs:643
 msgid "Image moved to trash"
 msgstr "Выява перамешчана ў сметніцу"
 
-#: src/window.rs:563
+#: src/window.rs:644
 msgid "Undo"
 msgstr "Адрабіць"
 
-#: src/window.rs:589
+#: src/window.rs:674
 msgid "Failed to move image to trash"
 msgstr "Не ўдалося перамясціць выяву ў сметніцу"
 
-#: src/window.rs:615
+#: src/window.rs:698
 msgid "Permanently Delete Image?"
 msgstr "Выдаліць выяву незваротна?"
 
-#: src/window.rs:617
+#: src/window.rs:700
 msgid "After deleting the image “{}” it will be permanently lost."
 msgstr "Пры выдаленні выявы «{}», яна будзе страчана назаўсёды."
 
-#: src/window.rs:625
+#: src/window.rs:708
 msgid "Cancel"
 msgstr "Скасаваць"
 
-#: src/window.rs:626
+#: src/window.rs:709
 msgid "Delete"
 msgstr "Выдаліць"
 
-#: src/window.rs:637
+#: src/window.rs:720
 msgid "Failed to delete image"
 msgstr "Не ўдалося выдаліць выяву"
 
@@ -679,33 +710,36 @@ msgstr "_Спалучэнні клавіш"
 msgid "_About Image Viewer"
 msgstr "_Аб праграме"
 
-#: src/window.ui:85
+#: src/window.ui:204
 msgid "Copy to Clipboard"
 msgstr "Скапіяваць у буфер абмену"
 
-#: src/window.ui:92
+#: src/window.ui:211
 msgid "Move to Trash"
 msgstr "Перамясціць у сметніцу"
 
-#: src/window.ui:98
+#: src/window.ui:217
 msgid "Main Menu"
 msgstr "Галоўнае меню"
 
-#: src/window.ui:130
+#: src/window.ui:249
 msgid "Image Properties"
 msgstr "Уласцівасці выявы"
 
-#: src/window.ui:174
+#: src/window.ui:281
 msgid "View Images"
 msgstr "Прагляд выяў"
 
-#: src/window.ui:175
+#: src/window.ui:282
 msgid "Drag and drop images here"
 msgstr "Перацягніце выявы сюды"
 
-#: src/window.ui:179
+#: src/window.ui:286
 msgid "_Open Files…"
 msgstr "_Адкрыць файлы…"
+
+#~ msgid "Copy Information"
+#~ msgstr "Скапіяваць інфармацыю"
 
 #~ msgid "Failed to open image"
 #~ msgstr "Не ўдалося адкрыць выяву"
