@@ -6,15 +6,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
-"POT-Creation-Date: 2024-02-18 13:35+0000\n"
-"PO-Revision-Date: 2024-02-18 18:33+0330\n"
+"POT-Creation-Date: 2024-08-12 21:40+0000\n"
+"PO-Revision-Date: 2024-08-26 16:18+0330\n"
 "Last-Translator: Danial Behzadi <dani.behzi@ubuntu.com>\n"
 "Language-Team: Persian <fa@li.org>\n"
 "Language: fa\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.4.4\n"
 
 #. Put one translator per line, in the form NAME <EMAIL>, YEAR1, YEAR2
 msgctxt "_"
@@ -45,10 +45,10 @@ msgstr "بزرگ‌نمایی"
 msgctxt "_"
 msgid ""
 "external ref='figures/zoom-in-symbolic.svg' "
-"md5='7e94a36ae229fe2cfb97481937300ad3'"
+"md5='fed4648112c974f25de99c15ece6272c'"
 msgstr ""
 "external ref='figures/zoom-in-symbolic.svg' "
-"md5='7e94a36ae229fe2cfb97481937300ad3'"
+"md5='fed4648112c974f25de99c15ece6272c'"
 
 #. (itstool) path: p/media
 #. This is a reference to an external file such as an image or video. When
@@ -59,10 +59,10 @@ msgstr ""
 msgctxt "_"
 msgid ""
 "external ref='figures/zoom-out-symbolic.svg' "
-"md5='c05c42cb3d95bf3bc7f49ccd8dcca510'"
+"md5='fe99d9c40c1104988ee4580283168dfb'"
 msgstr ""
 "external ref='figures/zoom-out-symbolic.svg' "
-"md5='c05c42cb3d95bf3bc7f49ccd8dcca510'"
+"md5='fe99d9c40c1104988ee4580283168dfb'"
 
 #. (itstool) path: section/p
 #: C/viewing-images.page:16
@@ -81,10 +81,10 @@ msgstr ""
 #: C/viewing-images.page:19
 msgid ""
 "Touchpad and touchscreen users can also zoom with a two-finger pinch gesture. "
-"On touchpads, it is also possible to zoom via pressing the <key>Ctrl</key> and "
-"swiping up/down with two fingers."
+"On touchpads, it is also possible to zoom by pressing the <key>Ctrl</key> key "
+"while swiping up/down with two fingers on the touchpad."
 msgstr ""
-" کاربران صفحه‌کلید و صفحه‌لمسی می‌توانندبا نیشگون دوانگشتی نیز بزرگ‌نمایی کنند. روی "
+"کاربران صفحه‌کلید و صفحه‌لمسی می‌توانندبا نیشگون دوانگشتی نیز بزرگ‌نمایی کنند. روی "
 "صفحه‌لمسی‌ها بزرگ‌نمایی با فشردن <key>مهار</key> و بالا و پایین کشیدن با دو انگشت "
 "نیز ممکن است."
 
@@ -118,10 +118,10 @@ msgstr "چرخاندن"
 msgctxt "_"
 msgid ""
 "external ref='figures/object-rotate-right-symbolic.svg' "
-"md5='0e69268f1a3a3c0c43c9ae3e193fd3d7'"
+"md5='0284f09f3659bf61e4882ac8a758b38f'"
 msgstr ""
 "external ref='figures/object-rotate-right-symbolic.svg' "
-"md5='0e69268f1a3a3c0c43c9ae3e193fd3d7'"
+"md5='0284f09f3659bf61e4882ac8a758b38f'"
 
 #. (itstool) path: p/media
 #. This is a reference to an external file such as an image or video. When
@@ -132,10 +132,10 @@ msgstr ""
 msgctxt "_"
 msgid ""
 "external ref='figures/object-rotate-left-symbolic.svg' "
-"md5='8abe2a1bc5871a15c2f6534d19a4c7ee'"
+"md5='c2393bbaa3b0f7ea09b43089295a44d4'"
 msgstr ""
 "external ref='figures/object-rotate-left-symbolic.svg' "
-"md5='8abe2a1bc5871a15c2f6534d19a4c7ee'"
+"md5='c2393bbaa3b0f7ea09b43089295a44d4'"
 
 #. (itstool) path: section/p
 #: C/viewing-images.page:28
@@ -173,10 +173,10 @@ msgstr "تمام‌صفحه"
 msgctxt "_"
 msgid ""
 "external ref='figures/view-fullscreen-symbolic.svg' "
-"md5='8089b2761abd6116e6185e06bc885da1'"
+"md5='3ee106ab07051301a9b5982cbe04b597'"
 msgstr ""
 "external ref='figures/view-fullscreen-symbolic.svg' "
-"md5='8089b2761abd6116e6185e06bc885da1'"
+"md5='3ee106ab07051301a9b5982cbe04b597'"
 
 #. (itstool) path: p/media
 #. This is a reference to an external file such as an image or video. When
@@ -187,10 +187,10 @@ msgstr ""
 msgctxt "_"
 msgid ""
 "external ref='figures/view-restore-symbolic.svg' "
-"md5='d00df849240f2d92c7fa1429d3ae8254'"
+"md5='f7470d4b9ed1d317ed201bb4a72882fb'"
 msgstr ""
-"external ref='figures/view-restore-symbolic.svg' "
-"md5='d00df849240f2d92c7fa1429d3ae8254'"
+"external ref='figures/view-fullscreen-symbolic.svg' "
+"md5='3ee106ab07051301a9b5982cbe04b597'"
 
 #. (itstool) path: section/p
 #: C/viewing-images.page:36
@@ -208,13 +208,13 @@ msgstr ""
 "media>) حالت تمام‌صفحه را تغییر دهند."
 
 #. (itstool) path: note/p
-#: C/viewing-images.page:39 C/opening-images.page:70
+#: C/viewing-images.page:39
 msgid ""
-"Keyboard users can also use the corresponding shortcuts presented in Keyboard "
-"Shortcuts dialog."
+"Keyboard users can also use the corresponding shortcuts presented in the "
+"(Keyboard Shortcuts) dialog."
 msgstr ""
-"کاربران صفحه‌کلید می‌توانند از میان‌برهای مربوطه که در گفت‌وگوی میان‌برهای صفحه‌کلید "
-"ارائه شده نیز استفاده کنند."
+"کاربران صفحه‌کلید می‌توانند از میان‌برهای مربوطه که در گفت‌وگوی «میان‌برهای "
+"صفحه‌کلید» ارائه شده نیز استفاده کنند."
 
 #. (itstool) path: page/title
 #: C/supported-formats.page:12
@@ -239,8 +239,8 @@ msgstr ""
 #. (itstool) path: page/p
 #: C/supported-formats.page:17
 msgid ""
-"Glycin's loaders are configurable, and new loaders can be created by third-"
-"parties, so the supported formats on your system may vary."
+"Glycin's loaders are configurable, and new loaders can be created by third "
+"parties. Therefore the formats supported on your system may vary."
 msgstr ""
 "بارکننده‌های glycin قابل پیکربندی بوده و بارکننده‌های جدید از سوی سوم‌شخص‌ها قابل "
 "ایجاد است. بنابراین ممکن است قالب‌های پشتیبانی شده روی سامانه‌تان متفاوت باشد."
@@ -382,10 +382,10 @@ msgstr "مرور"
 msgctxt "_"
 msgid ""
 "external ref='figures/go-previous-symbolic.svg' "
-"md5='2ed7437ba9a336b6c6cf645b9eb4ed8b'"
+"md5='a53305845578db884ecfb7d8d33fcaeb'"
 msgstr ""
-"external ref='figures/go-next-symbolic.svg' "
-"md5='9c98c035765d2edc185ef9b37566e7ce'"
+"external ref='figures/go-previous-symbolic.svg' "
+"md5='a53305845578db884ecfb7d8d33fcaeb'"
 
 #. (itstool) path: p/media
 #. This is a reference to an external file such as an image or video. When
@@ -396,10 +396,10 @@ msgstr ""
 msgctxt "_"
 msgid ""
 "external ref='figures/go-next-symbolic.svg' "
-"md5='9c98c035765d2edc185ef9b37566e7ce'"
+"md5='2f901ac0f711cfb3274b2985d10c4124'"
 msgstr ""
-"external ref='figures/go-previous-symbolic.svg' "
-"md5='2ed7437ba9a336b6c6cf645b9eb4ed8b'"
+"external ref='figures/go-next-symbolic.svg' "
+"md5='2f901ac0f711cfb3274b2985d10c4124'"
 
 #. (itstool) path: section/p
 #: C/opening-images.page:65
@@ -418,6 +418,15 @@ msgstr ""
 "next-symbolic.svg\">go-previous-symbolic</media> و <gui>تصویر بعدی</gui> "
 "(<media type=\"image\" src=\"figures/go-previous-symbolic.svg\">go-next-"
 "symbolic</media>) مرور کنند."
+
+#. (itstool) path: note/p
+#: C/opening-images.page:70
+msgid ""
+"Keyboard users can also use the corresponding shortcuts presented in the "
+"<gui>Keyboard Shortcuts</gui> dialog."
+msgstr ""
+"کاربران صفحه‌کلید می‌توانند از میان‌برهای مربوطه که در گفت‌وگوی <gui>میان‌برهای "
+"صفحه‌کلید</gui> ارائه شده نیز استفاده کنند."
 
 #. (itstool) path: info/desc
 #: C/trashing-images.page:11
@@ -438,10 +447,10 @@ msgstr "انتقال تصویرها به زباله‌دان"
 msgctxt "_"
 msgid ""
 "external ref='figures/user-trash-symbolic.svg' "
-"md5='975d41b3e24867a2a26194cd871e36cc'"
+"md5='3ffa1160de3479541f34c3bfbf3cdb64'"
 msgstr ""
 "external ref='figures/user-trash-symbolic.svg' "
-"md5='975d41b3e24867a2a26194cd871e36cc'"
+"md5='3ffa1160de3479541f34c3bfbf3cdb64'"
 
 #. (itstool) path: page/p
 #: C/trashing-images.page:14
@@ -500,10 +509,10 @@ msgstr "رونوشت و جای‌گذاری"
 msgctxt "_"
 msgid ""
 "external ref='figures/edit-copy-symbolic.svg' "
-"md5='e998fb903df32b921d08ef52e0ea6555'"
+"md5='4774ffd65c32e160f4cefc093abd6b7c'"
 msgstr ""
 "external ref='figures/edit-copy-symbolic.svg' "
-"md5='e998fb903df32b921d08ef52e0ea6555'"
+"md5='4774ffd65c32e160f4cefc093abd6b7c'"
 
 #. (itstool) path: item/p
 #: C/sending-to-other-apps.page:29
@@ -599,10 +608,10 @@ msgstr ""
 msgctxt "_"
 msgid ""
 "external ref='figures/help-about-symbolic.svg' "
-"md5='51c74093b3e862d1f839cc377aa86837'"
+"md5='6b43c8bc211b5f8b57810091728b8925'"
 msgstr ""
 "external ref='figures/help-about-symbolic.svg' "
-"md5='51c74093b3e862d1f839cc377aa86837'"
+"md5='6b43c8bc211b5f8b57810091728b8925'"
 
 #. (itstool) path: page/p
 #: C/image-properties.page:35
