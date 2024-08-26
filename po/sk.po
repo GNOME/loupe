@@ -1,0 +1,660 @@
+# Slovak translation for loupe.
+# Copyright (C) 2024 loupe's COPYRIGHT HOLDER
+# This file is distributed under the same license as the loupe package.
+# Matej Mrenica <matejm98mthw@gmail.com>, 2024.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: loupe main\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
+"POT-Creation-Date: 2024-04-28 23:54+0000\n"
+"PO-Revision-Date: 2024-04-29 21:02+0200\n"
+"Last-Translator: Matej Mrenica <matejm98mthw@gmail.com>\n"
+"Language-Team: Slovak <->\n"
+"Language: sk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 1 : (n>=2 && n<=4) ? 2 : 0\n"
+"X-Generator: Gtranslator 46.1\n"
+
+#: data/org.gnome.Loupe.desktop.in.in:3
+#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:29 src/window.rs:881
+msgid "Image Viewer"
+msgstr "Prehliadač obrázkov"
+
+#: data/org.gnome.Loupe.desktop.in.in:11
+msgid "Picture;Graphics;Loupe;"
+msgstr "Obrázok;Grafika;Loupe;"
+
+#: data/org.gnome.Loupe.gschema.xml.in:6
+msgid "Show the image properties sidebar"
+msgstr "Zobraziť bočný panela s vlastnosťami obrázka"
+
+#. developer_name tag deprecated with Appstream 1.0
+#: data/org.gnome.Loupe.metainfo.xml.in.in:8 src/about.rs:32
+msgid "The GNOME Project"
+msgstr "Projekt GNOME"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:13
+msgid "View images"
+msgstr "Zobraziť obrázky"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:15
+msgid "Browse through your images and inspect their metadata with:"
+msgstr "Prechádzajte svoje obrázky a kontrolujte ich metadáta pomocou:"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:17
+msgid "Fast GPU accelerated image rendering"
+msgstr "Rýchle vykresľovanie obrazu pomocou GPU"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:18
+msgid "Tiled rendering for vector graphics"
+msgstr "Dlaždicové vykresľovanie vektorovej grafiky"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:19
+msgid "Extendable and sandboxed image decoding"
+msgstr "Rozšíriteľné a sandboxované dekódovanie obrázkov"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:20
+msgid "Accessible presentation of the most important metadata."
+msgstr "Prístupná prezentácia najdôležitejších metadát."
+
+#: data/resources/gtk/help-overlay.ui:11
+msgctxt "shortcut window"
+msgid "General Shortcuts"
+msgstr "Všeobecné skratky"
+
+#: data/resources/gtk/help-overlay.ui:14
+msgctxt "shortcut window"
+msgid "Show Main Menu"
+msgstr "Zobraziť hlavnú ponuku"
+
+#: data/resources/gtk/help-overlay.ui:20
+msgctxt "shortcut window"
+msgid "Copy Image or Metadata to Clipboard"
+msgstr "Kopírovanie obrázka alebo metadát do schránky"
+
+#: data/resources/gtk/help-overlay.ui:26
+msgctxt "shortcut window"
+msgid "Move Image to Trash"
+msgstr "Presunúť obrázok do koša"
+
+#: data/resources/gtk/help-overlay.ui:32
+msgctxt "shortcut window"
+msgid "Permanently Delete Image"
+msgstr "Trvalo odstrániť obrázok"
+
+#: data/resources/gtk/help-overlay.ui:38
+msgctxt "shortcut window"
+msgid "Toggle Image Properties"
+msgstr "Prepnúť vlastnosti obrázka"
+
+#: data/resources/gtk/help-overlay.ui:44
+msgctxt "shortcut window"
+msgid "Set as Background"
+msgstr "Nastaviť ako pozadie"
+
+#: data/resources/gtk/help-overlay.ui:50
+msgctxt "shortcut window"
+msgid "Toggle Fullscreen"
+msgstr "Prepnúť režim na celú obrazovku"
+
+#: data/resources/gtk/help-overlay.ui:56
+msgctxt "shortcut window"
+msgid "Leave Fullscreen"
+msgstr "Odísť z režimu na celú obrazovku"
+
+#: data/resources/gtk/help-overlay.ui:62
+msgctxt "shortcut window"
+msgid "New Window"
+msgstr "Nové okno"
+
+#: data/resources/gtk/help-overlay.ui:68
+msgctxt "shortcut window"
+msgid "Open Help"
+msgstr "Otvoriť nápovedu"
+
+#: data/resources/gtk/help-overlay.ui:74
+msgctxt "shortcut window"
+msgid "Show Keyboard Shortcuts"
+msgstr "Zobraziť klávesové skratky"
+
+#: data/resources/gtk/help-overlay.ui:80
+msgctxt "shortcut window"
+msgid "Close Window"
+msgstr "Zatvoriť okno"
+
+#: data/resources/gtk/help-overlay.ui:86
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "Ukončiť"
+
+#: data/resources/gtk/help-overlay.ui:94
+msgctxt "shortcut window"
+msgid "Navigate Images"
+msgstr "Prechádzať obrázky"
+
+#: data/resources/gtk/help-overlay.ui:98 data/resources/gtk/help-overlay.ui:112
+#: data/resources/gtk/help-overlay.ui:224
+#: data/resources/gtk/help-overlay.ui:238
+msgctxt "shortcut window"
+msgid "Next Image"
+msgstr "Ďalší obrázok"
+
+#: data/resources/gtk/help-overlay.ui:105
+#: data/resources/gtk/help-overlay.ui:119
+#: data/resources/gtk/help-overlay.ui:231
+#: data/resources/gtk/help-overlay.ui:245
+msgctxt "shortcut window"
+msgid "Previous Image"
+msgstr "Predchádzajúci obrázok"
+
+#: data/resources/gtk/help-overlay.ui:125
+msgctxt "shortcut window"
+msgid "First Image"
+msgstr "Prvý obrázok"
+
+#: data/resources/gtk/help-overlay.ui:131
+msgctxt "shortcut window"
+msgid "Last Image"
+msgstr "Posledný obrázok"
+
+#: data/resources/gtk/help-overlay.ui:139
+msgctxt "shortcut window"
+msgid "Rotate Image"
+msgstr "Otočiť obrázok"
+
+#: data/resources/gtk/help-overlay.ui:142
+#: data/resources/gtk/help-overlay.ui:263
+msgctxt "shortcut window"
+msgid "Rotate Clockwise"
+msgstr "Otočiť v smere hodinových ručičiek"
+
+#: data/resources/gtk/help-overlay.ui:148
+#: data/resources/gtk/help-overlay.ui:269
+msgctxt "shortcut window"
+msgid "Rotate Counterclockwise"
+msgstr "Otočiť proti smeru hodinových ručičiek"
+
+#: data/resources/gtk/help-overlay.ui:156
+msgctxt "shortcut window"
+msgid "Zoom Image"
+msgstr "Priblížiť obrázok"
+
+#: data/resources/gtk/help-overlay.ui:159
+#: data/resources/gtk/help-overlay.ui:251
+msgctxt "shortcut window"
+msgid "Zoom In"
+msgstr "Priblížiť"
+
+#: data/resources/gtk/help-overlay.ui:165
+#: data/resources/gtk/help-overlay.ui:257
+msgctxt "shortcut window"
+msgid "Zoom Out"
+msgstr "Oddialiť"
+
+#: data/resources/gtk/help-overlay.ui:171
+msgctxt "shortcut window"
+msgid "Best Fit"
+msgstr "Najlepšie prispôsobenie"
+
+#: data/resources/gtk/help-overlay.ui:177
+msgctxt "shortcut window"
+msgid "Original Scale"
+msgstr "Pôvodná mierka"
+
+#: data/resources/gtk/help-overlay.ui:183
+msgctxt "shortcut window"
+msgid "200% Scale"
+msgstr "200% Mierka"
+
+#: data/resources/gtk/help-overlay.ui:191
+msgctxt "shortcut window"
+msgid "Pan View"
+msgstr "Posunúť zobrazenie"
+
+#: data/resources/gtk/help-overlay.ui:194
+msgctxt "shortcut window"
+msgid "Pan Left"
+msgstr "Posun doľava"
+
+#: data/resources/gtk/help-overlay.ui:200
+msgctxt "shortcut window"
+msgid "Pan Right"
+msgstr "Posun doprava"
+
+#: data/resources/gtk/help-overlay.ui:206
+msgctxt "shortcut window"
+msgid "Pan Up"
+msgstr "Posun hore"
+
+#: data/resources/gtk/help-overlay.ui:212
+msgctxt "shortcut window"
+msgid "Pan Down"
+msgstr "Posun dole"
+
+#: data/resources/gtk/help-overlay.ui:220
+msgctxt "shortcut window"
+msgid "Gestures"
+msgstr "Gestá"
+
+#. Translators: Replace "translator-credits" with your names, one name per line
+#: src/about.rs:41
+msgid "translator-credits"
+msgstr ""
+
+#: src/about.rs:42
+msgid "Copyright © 2020–2024 Christopher Davis et al."
+msgstr "Copyright © 2020–2024 Christopher Davis et al."
+
+#: src/file_model.rs:129
+msgid "Could not list other files in directory."
+msgstr "Nepodarilo sa vypísať ďalšie súbory v adresári."
+
+#. Translators: short for "north" in GPS coordinate
+#: src/metadata/gps.rs:165
+msgid "N"
+msgstr "N"
+
+#. Translators: short for "south" in GPS coordinate
+#: src/metadata/gps.rs:168
+msgid "S"
+msgstr "S"
+
+#. Translators: short for "east" in GPS coordinate
+#: src/metadata/gps.rs:190
+msgid "E"
+msgstr "E"
+
+#. Translators: short for "west" in GPS coordinate
+#: src/metadata/gps.rs:193
+msgid "W"
+msgstr "W"
+
+#. Translators: Fractional exposure time (photography) in seconds
+#: src/metadata/mod.rs:262
+msgid "1\\u{2215}{}\\u{202F}s"
+msgstr "1\\u{2215}{}\\u{202F}s"
+
+#. Translators: Exposure time (photography) in seconds
+#: src/metadata/mod.rs:270
+msgid "{}\\u{202F}s"
+msgstr "{}\\u{202F}s"
+
+#. Translators: Unit for focal length in millimeters
+#: src/metadata/mod.rs:296
+msgid "{}\\u{202F}mm"
+msgstr "{}\\u{202F}mm"
+
+#. Translators: This is the date and time format we use in metadata output etc.
+#. The format has to follow <https://docs.gtk.org/glib/method.DateTime.format.html>
+#. The default is already translated. Don't change if you are not sure what to
+#. use.
+#: src/util/mod.rs:37
+#, c-format
+msgid "%x %X"
+msgstr "%x %X"
+
+#: src/util/mod.rs:180 src/window.rs:702
+msgid "Failed to restore image from trash"
+msgstr "Nepodarilo sa obnoviť obrázok z koša"
+
+#: src/util/mod.rs:201
+msgid "Failed to open image"
+msgstr "Nepodarilo sa otvoriť obrázok"
+
+#: src/widgets/image_page.ui:6 src/window.ui:16
+msgid "_Open With…"
+msgstr "Otvoriť s…"
+
+#: src/widgets/image_page.ui:14 src/window.ui:24
+msgid "_Print…"
+msgstr "Tlačiť…"
+
+#: src/widgets/image_page.ui:18
+msgid "_Copy"
+msgstr "Kopírovať"
+
+#: src/widgets/image_page.ui:23 src/window.ui:29
+msgid "Rotate"
+msgstr "Otočiť"
+
+#: src/widgets/image_page.ui:34 src/window.ui:40
+msgid "_Set as Background…"
+msgstr "Nastaviť ako pozadie…"
+
+#: src/widgets/image_page.ui:63
+msgid "Could not Load Image"
+msgstr "Nepodarilo sa načítať obrázok"
+
+#: src/widgets/image_page.ui:97 src/window.ui:106
+msgid "Rotate Left"
+msgstr "Otočiť vľavo"
+
+#: src/widgets/image_page.ui:107 src/window.ui:116
+msgid "Rotate Right"
+msgstr "Otočiť vpravo"
+
+#. Translators: This is a toast notification, informing the user that
+#. an image has been set as background.
+#: src/widgets/image_view.rs:682
+msgid "Set as background."
+msgstr "Nastaviť ako pozadie."
+
+#: src/widgets/image_view.rs:695
+msgid "Could not set background."
+msgstr "Nepodarilo sa nastaviť ako pozadie."
+
+#: src/widgets/image_view.ui:27
+msgid "Previous Image"
+msgstr "Predchádzajúci obrázok"
+
+#: src/widgets/image_view.ui:38
+msgid "Next Image"
+msgstr "Ďalší obrázok"
+
+#: src/widgets/image_view.ui:63
+msgid "Zoom Out"
+msgstr "Oddialiť"
+
+#: src/widgets/image_view.ui:74
+msgid "Zoom In"
+msgstr "Priblížiť"
+
+#: src/widgets/image_view.ui:85
+msgid "Toggle Fullscreen"
+msgstr "Prepnúť režim na celú obrazovku"
+
+#: src/widgets/print.rs:116
+msgid "Top"
+msgstr "Hore"
+
+#: src/widgets/print.rs:117
+msgid "Center"
+msgstr "Stred"
+
+#: src/widgets/print.rs:118
+msgid "Bottom"
+msgstr "Dole"
+
+#: src/widgets/print.rs:119
+msgid "Left"
+msgstr "Vľavo"
+
+#: src/widgets/print.rs:120
+msgid "Right"
+msgstr "Vpravo"
+
+#. Translators: Shorthand for centimeter
+#: src/widgets/print.rs:156
+msgid "cm"
+msgstr "cm"
+
+#. Translators: Shorthand for inch
+#: src/widgets/print.rs:158
+msgid "in"
+msgstr "in"
+
+#. Translators: Shorthand for pixel
+#: src/widgets/print.rs:160
+msgid "px"
+msgstr "px"
+
+#. Translators: {} is a placeholder for the filename
+#: src/widgets/print.rs:382
+msgid "Print “{}”"
+msgstr "Print “{}”"
+
+#: src/widgets/print.rs:803
+msgid "_Scale"
+msgstr "Mierka"
+
+#: src/widgets/print.rs:806
+msgid "_Width"
+msgstr "Šírka"
+
+#. Translators: Go back to previous page
+#: src/widgets/print.ui:29
+msgid "_Back"
+msgstr "Späť"
+
+#: src/widgets/print.ui:37
+msgid "_Print"
+msgstr "Tlačiť"
+
+#: src/widgets/print.ui:56
+msgid "Layout"
+msgstr "Rozloženie"
+
+#: src/widgets/print.ui:59
+msgid "_Orientation"
+msgstr "Orientácia"
+
+#: src/widgets/print.ui:72
+msgid "Portrait Page Orientation"
+msgstr "Orientácia stránky na výšku"
+
+#: src/widgets/print.ui:80
+msgid "Landscape Page Orientation"
+msgstr "Orientácia stránky na šírku"
+
+#: src/widgets/print.ui:89
+msgid "_Alignment"
+msgstr "Zarovnanie"
+
+#: src/widgets/print.ui:108
+msgid "Margins"
+msgstr "Okraje"
+
+#: src/widgets/print.ui:111
+msgid "Margin Units"
+msgstr "Jednotky okraja"
+
+#: src/widgets/print.ui:128
+msgid "_Horizontal"
+msgstr "Horizontálne"
+
+#: src/widgets/print.ui:134
+msgid "_Vertical"
+msgstr "Vertikálne"
+
+#: src/widgets/print.ui:142 src/widgets/properties_view.ui:53
+msgid "Image Size"
+msgstr "Veľkosť obrázka"
+
+#: src/widgets/print.ui:145
+msgid "Image Size Units"
+msgstr "Jednotky veľkosti obrázka"
+
+#: src/widgets/print.ui:163
+msgid "_Fill Space"
+msgstr "Vyplniť"
+
+#: src/widgets/print.ui:174
+msgid "H_eight"
+msgstr "Výška"
+
+#: src/widgets/properties_view.rs:234
+msgid "Unknown"
+msgstr "Neznáme"
+
+#. Translators: Addition of image being transparent to format name
+#: src/widgets/properties_view.rs:238
+msgid ", transparent"
+msgstr ", priehľadné"
+
+#. Translators: Addition of image being grayscale to format name
+#: src/widgets/properties_view.rs:243
+msgid ", grayscale"
+msgstr ", čiernobiele"
+
+#. Translators: Addition of bit size to format name
+#: src/widgets/properties_view.rs:248
+msgid ", {}\\u{202F}bit"
+msgstr ", {}\\u{202F}bit"
+
+#: src/widgets/properties_view.rs:299
+msgid "Image Coordinates Copied"
+msgstr "Skopírované súradnice obrázka"
+
+#: src/widgets/properties_view.ui:19
+msgid "Folder"
+msgstr "Priečinok"
+
+#: src/widgets/properties_view.ui:26
+msgid "Open Containing Folder"
+msgstr "Otvoriť priečinok s obsahom"
+
+#: src/widgets/properties_view.ui:39
+msgid "URI"
+msgstr "URI"
+
+#: src/widgets/properties_view.ui:62
+msgid "Image Format"
+msgstr "Formát obrázka"
+
+#: src/widgets/properties_view.ui:71
+msgid "File Size"
+msgstr "Veľkosť obrázka"
+
+#: src/widgets/properties_view.ui:84
+msgid "File Created"
+msgstr "Súbor vytvorený"
+
+#: src/widgets/properties_view.ui:93
+msgid "File Modified"
+msgstr "Súbor upravený"
+
+#. Translators: This is a label for GPS coordinates
+#: src/widgets/properties_view.ui:106
+msgid "Location"
+msgstr "Umiestnenie"
+
+#: src/widgets/properties_view.ui:116
+msgid "Copy Coordinates"
+msgstr "Skopírovať súradnice"
+
+#: src/widgets/properties_view.ui:127
+msgid "Open Location"
+msgstr "Otvoriť umiestnenie"
+
+#: src/widgets/properties_view.ui:140
+msgid "Originally Created"
+msgstr "Pôvodne vytvorené"
+
+#: src/widgets/properties_view.ui:149
+msgid "Aperture"
+msgstr "Uzávierka"
+
+#: src/widgets/properties_view.ui:158
+msgid "Exposure"
+msgstr "Expozícia"
+
+#: src/widgets/properties_view.ui:167
+msgid "ISO"
+msgstr "ISO"
+
+#: src/widgets/properties_view.ui:176
+msgid "Focal Length"
+msgstr "Ohnisková vzdialenosť"
+
+#: src/widgets/properties_view.ui:185
+msgid "Maker, Model"
+msgstr "Výrobca, Model"
+
+#: src/window.rs:569
+msgid "Supported image formats"
+msgstr "Podporované formáty obrázkov"
+
+#: src/window.rs:575
+msgid "All files"
+msgstr "Všetky súbory"
+
+#: src/window.rs:582
+msgid "Open Image"
+msgstr "Otvoriť obrázok"
+
+#: src/window.rs:668
+msgid "Image copied to clipboard"
+msgstr "Obrázok skopírovaný do schránky"
+
+#: src/window.rs:689
+msgid "Image moved to trash"
+msgstr "Obrázok bol presunutý do koša"
+
+#: src/window.rs:690
+msgid "Undo"
+msgstr "Vrátiť"
+
+#: src/window.rs:716
+msgid "Failed to move image to trash"
+msgstr "Nepodarilo sa presunúť obrázok do koša"
+
+#: src/window.rs:742
+msgid "Permanently Delete Image?"
+msgstr "Trvalo odstrániť obrázok?"
+
+#: src/window.rs:744
+msgid "After deleting the image “{}” it will be permanently lost."
+msgstr "Po odstránení obrázka \"{}\" sa natrvalo stratí."
+
+#: src/window.rs:752
+msgid "Cancel"
+msgstr "Zrušiť"
+
+#: src/window.rs:753
+msgid "Delete"
+msgstr "Vymazať"
+
+#: src/window.rs:764
+msgid "Failed to delete image"
+msgstr "Nepodarilo sa vymazať obrázok"
+
+#: src/window.ui:6
+msgid "_New Window"
+msgstr "Nové okno"
+
+#: src/window.ui:10
+msgid "_Open…"
+msgstr "Otvoriť…"
+
+#: src/window.ui:46
+msgid "_Help"
+msgstr "Pomocník…"
+
+#: src/window.ui:50
+msgid "_Keyboard Shortcuts"
+msgstr "Klávesové skratky"
+
+#: src/window.ui:54
+msgid "_About Image Viewer"
+msgstr "O prehliadači obrázkov"
+
+#: src/window.ui:85
+msgid "Copy to Clipboard"
+msgstr "Kopírovať do schránky"
+
+#: src/window.ui:92
+msgid "Move to Trash"
+msgstr "Presunúť do koša"
+
+#: src/window.ui:98
+msgid "Main Menu"
+msgstr "Hlavná ponuka"
+
+#: src/window.ui:130
+msgid "Image Properties"
+msgstr "Vlastnosti obrázka"
+
+#: src/window.ui:174
+msgid "View Images"
+msgstr "Zobraziť obrázky"
+
+#: src/window.ui:175
+msgid "Drag and drop images here"
+msgstr "Presuňte obrázky sem"
+
+#: src/window.ui:179
+msgid "_Open Files…"
+msgstr "Otvoriť obrázky…"
