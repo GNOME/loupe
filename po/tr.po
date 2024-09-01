@@ -1,5 +1,5 @@
 # Turkish translation for Loupe.
-# Copyright (C) 2023 Loupe's COPYRIGHT HOLDER
+# Copyright (C) 2023-2024 Loupe's COPYRIGHT HOLDER
 # This file is distributed under the same license as the Loupe package.
 #
 # Sabri Ünal <yakushabb@gmail.com>, 2023-2024.
@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2024-08-02 20:20+0000\n"
+"POT-Creation-Date: 2024-08-25 11:14+0000\n"
 "PO-Revision-Date: 2024-08-05 08:00+0300\n"
 "Last-Translator: Emin Tufan Çetin <etcetin@gmail.com>\n"
 "Language-Team: Turkish <takim@gnome.org.tr>\n"
@@ -21,7 +21,7 @@ msgstr ""
 "X-Generator: Poedit 3.4.3\n"
 
 #: data/org.gnome.Loupe.desktop.in.in:3
-#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:31 src/window.rs:873
+#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:31 src/window.rs:874
 msgid "Image Viewer"
 msgstr "Resim Görüntüleyici"
 
@@ -256,7 +256,7 @@ msgstr "Hareketler"
 #: src/about.rs:43
 msgid "translator-credits"
 msgstr ""
-"Sabri Ünal <libreajans@gmail.com>\n"
+"Sabri Ünal <yakushabb@gmail.com>\n"
 "Emin Tufan Çetin <etcetin@gmail.com>"
 
 #: src/about.rs:44
@@ -267,22 +267,22 @@ msgstr "Telif Hakkı © 2020–2024 Christopher Davis ve ark."
 msgid "Could not list other files in directory."
 msgstr "Dizindeki diğer dosyalar listelenemedi."
 
-#: src/metadata.rs:249
+#: src/metadata.rs:253
 msgid "\\u{192}\\u{2215}{}"
 msgstr "\\u{192}\\u{2215}{}"
 
 #. Translators: Fractional exposure time (photography) in seconds
-#: src/metadata.rs:266
+#: src/metadata.rs:270
 msgid "1\\u{2215}{}\\u{202F}s"
 msgstr "1\\u{2215}{}\\u{202F}sn"
 
 #. Translators: Exposure time (photography) in seconds
-#: src/metadata.rs:274
+#: src/metadata.rs:278
 msgid "{}\\u{202F}s"
 msgstr "{}\\u{202F}sn"
 
 #. Translators: Unit for focal length in millimeters
-#: src/metadata.rs:300
+#: src/metadata.rs:304
 msgid "{}\\u{202F}mm"
 msgstr "{}\\u{202F}mm"
 
@@ -326,8 +326,8 @@ msgid ""
 "please also provide the image that causes the issue."
 msgstr ""
 "Resim yükleyici, resmi yüklemeyi denerken aşağıdakileri bildirdi. Hata "
-"bildirirken lütfen bu bilgileri de ekleyin. Eğer oluyorsa, soruna neden "
-"olan resmi de gönderin."
+"bildirirken lütfen bu bilgileri de ekleyin. Eğer oluyorsa, soruna neden olan "
+"resmi de gönderin."
 
 #: src/widgets/error_details.ui:24
 msgid "Error Message"
@@ -739,4 +739,3 @@ msgstr "Resimleri sürükleyip buraya bırakın"
 #: src/window.ui:286
 msgid "_Open Files…"
 msgstr "Dosya _Aç…"
-
