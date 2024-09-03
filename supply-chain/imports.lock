@@ -746,6 +746,13 @@ user-id = 52034
 user-login = "gdesmott"
 user-name = "Guillaume Desmottes"
 
+[[publisher.system-deps]]
+version = "7.0.2"
+when = "2024-08-16"
+user-id = 52034
+user-login = "gdesmott"
+user-name = "Guillaume Desmottes"
+
 [[publisher.target-lexicon]]
 version = "0.12.16"
 when = "2024-07-30"
@@ -1823,14 +1830,6 @@ user-id = 6741 # Alice Ryhl (Darksonn)
 start = "2021-10-13"
 end = "2025-07-25"
 notes = "tokio-rs/ repo"
-
-[[audits.gnome-trusted.wildcard-audits.system-deps]]
-who = "Sophie Herold <sophie@hemio.de>"
-criteria = "safe-to-deploy"
-user-id = 52034 # Guillaume Desmottes (gdesmott)
-start = "2020-06-19"
-end = "2025-07-22"
-notes = "rust-lang/ repo"
 
 [[audits.gnome-trusted.wildcard-audits.tracing]]
 who = "Sophie Herold <sophie@hemio.de>"

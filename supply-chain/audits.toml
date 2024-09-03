@@ -1,6 +1,11 @@
 
 # cargo-vet audits file
 
+[[audits.cfg-expr]]
+who = "Sophie Herold <sophie@hemio.de>"
+criteria = "safe-to-deploy"
+delta = "0.15.8 -> 0.16.0"
+
 [[audits.cfg_aliases]]
 who = "Sophie Herold <sophie@hemio.de>"
 criteria = "safe-to-deploy"
@@ -15,6 +20,16 @@ delta = "0.7.2 -> 0.7.4"
 who = "Sophie Herold <sophie@hemio.de>"
 criteria = "safe-to-deploy"
 delta = "0.2.17 -> 0.2.18"
+
+[[audits.ppv-lite86]]
+who = "Sophie Herold <sophie@hemio.de>"
+criteria = "safe-to-deploy"
+delta = "0.2.18 -> 0.2.20"
+
+[[audits.proc-macro-crate]]
+who = "Sophie Herold <sophie@hemio.de>"
+criteria = "safe-to-deploy"
+delta = "3.1.0 -> 3.2.0"
 
 [[audits.strum]]
 who = "Sophie Herold <sophie@hemio.de>"
@@ -249,6 +264,12 @@ criteria = "safe-to-deploy"
 user-id = 3618 # David Tolnay (dtolnay)
 start = "2019-03-01"
 end = "2025-07-25"
+
+[[trusted.system-deps]]
+criteria = "safe-to-deploy"
+user-id = 52034 # Guillaume Desmottes (gdesmott)
+start = "2020-06-19"
+end = "2025-09-03"
 
 [[trusted.target-lexicon]]
 criteria = "safe-to-deploy"
