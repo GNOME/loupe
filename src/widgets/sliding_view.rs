@@ -356,6 +356,9 @@ mod imp {
             let position_shift = self.position_shift.get() as f32;
             let page_position = page_index as f32;
 
+            // Reset from potential stacked cards animation
+            page.set_opacity(1.);
+
             // reverse page order for RTL languages
             let direction_sign = if self.is_rtl() { -1. } else { 1. };
 
@@ -617,6 +620,8 @@ impl LpSlidingView {
 
                 *self.imp().position_tracking.borrow_mut() =
                     PositionTracking::StackedCards(StackedCards::new(prev_page, backward));
+                // Set current page here as well, to make sure it's set when animation completes for disabled animations
+                self.set_current_page(Some(page));
                 animation.play();
             }
         }
@@ -631,8 +636,8 @@ impl LpSlidingView {
             animation.set_value_from(self.position());
             animation.set_value_to(index as f64 - self.position_shift());
             animation.set_initial_velocity(initial_velocity);
-            animation.play();
             self.set_current_page(Some(page));
+            animation.play();
         } else {
             log::error!("Page not in LpSlidingView {}", page.file().uri());
         }
