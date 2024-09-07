@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2024-05-11 10:03+0000\n"
-"PO-Revision-Date: 2024-05-11 13:53+0200\n"
+"POT-Creation-Date: 2024-08-25 11:13+0000\n"
+"PO-Revision-Date: 2024-09-07 02:46+0200\n"
 "Last-Translator: Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "Language: sv\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.4.2\n"
+"X-Generator: Poedit 3.4.4\n"
 
 #: data/org.gnome.Loupe.desktop.in.in:3
 #: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:29 src/window.rs:881
@@ -281,18 +281,17 @@ msgstr "V"
 #. Translators: Fractional exposure time (photography) in seconds
 #: src/metadata/mod.rs:262
 msgid "1\\u{2215}{}\\u{202F}s"
-msgstr "1\\u{2215}{}\\u{202F} s"
+msgstr "1\\u{2215}{}\\u{202F}s"
 
 #. Translators: Exposure time (photography) in seconds
 #: src/metadata/mod.rs:270
-#| msgid "{}\\u{202F}mm"
 msgid "{}\\u{202F}s"
-msgstr "{}\\u{202F} s"
+msgstr "{}\\u{202F}s"
 
 #. Translators: Unit for focal length in millimeters
 #: src/metadata/mod.rs:296
 msgid "{}\\u{202F}mm"
-msgstr "{}\\u{202F} mm"
+msgstr "{}\\u{202F}mm"
 
 #. Translators: This is the date and time format we use in metadata output etc.
 #. The format has to follow <https://docs.gtk.org/glib/method.DateTime.format.html>
@@ -500,7 +499,7 @@ msgstr ", gråskala"
 #. Translators: Addition of bit size to format name
 #: src/widgets/properties_view.rs:248
 msgid ", {}\\u{202F}bit"
-msgstr ", {}\\u{202F}bit"
+msgstr ", {}\\u{202F}bitar"
 
 #: src/widgets/properties_view.rs:299
 msgid "Image Coordinates Copied"
