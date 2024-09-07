@@ -4,23 +4,23 @@
 #
 # Jürgen Benvenuti <gastornis@posteo.org>, 2023, 2024.
 # Philipp Kiemle <philipp.kiemle@gmail.com>, 2023-2024.
-# Tim Sabsch <tim@sabsch.com>, 2023.
+# Tim Sabsch <tim@sabsch.com>, 2023-2024.
 #
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2024-08-12 09:51+0000\n"
-"PO-Revision-Date: 2024-08-23 21:18+0200\n"
-"Last-Translator: Jürgen Benvenuti <gastornis@posteo.org>\n"
+"POT-Creation-Date: 2024-08-30 16:12+0000\n"
+"PO-Revision-Date: 2024-09-07 07:50+0200\n"
+"Last-Translator: Tim Sabsch <tim@sabsch.com>\n"
 "Language-Team: German <gnome-de@gnome.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.4.4\n"
+"X-Generator: Poedit 3.5\n"
 
 #: data/org.gnome.Loupe.desktop.in.in:3
 #: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:31 src/window.rs:874
@@ -326,6 +326,10 @@ msgid ""
 "Please include this information when you report an error. If possible, "
 "please also provide the image that causes the issue."
 msgstr ""
+"Der Bildlader meldete die nachfolgenden Informationen beim Versuch, das Bild "
+"zu laden. Bitte geben Sie diese Informationen an, wenn Sie einen Fehler "
+"melden. Wenn möglich, geben Sie bitte auch das Bild an, das das Problem "
+"verursacht."
 
 #: src/widgets/error_details.ui:24
 msgid "Error Message"
@@ -344,6 +348,8 @@ msgid ""
 "No image loaders available. Maybe the “glycin-loaders” package with "
 "compatibility version “{}” is not installed."
 msgstr ""
+"Keine Bildlader verfügbar. Möglicherweise ist das Paket »glycin-loaders« mit "
+"der Kompatibilitätsversion »{}« nicht installiert."
 
 #: src/widgets/image_page.rs:241
 msgid "The image format “{} ({})” is known but not installed."
