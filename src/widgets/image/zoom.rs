@@ -212,6 +212,7 @@ impl imp::LpImage {
         log::trace!("Setting zoom target {zoom_target}");
 
         self.zoom_target.set(zoom_target);
+        self.obj().notify_zoom_target();
 
         if self.obj().zoom() == self.zoom_target.get() {
             self.request_tiles();
@@ -365,9 +366,14 @@ impl LpImage {
 
     /// Zoom to specific level with animation not snapping to best-fit
     ///
-    /// Used for zooming to 100% or 200%
+    /// Used for zooming to 100% or 200% etc
     pub fn zoom_to_exact(&self, zoom: f64) {
         self.imp().zoom_to_full(zoom, true, false, false);
+    }
+
+    /// Same as `zoom_to_exact` but zoom to center
+    pub fn zoom_to_exact_center(&self, zoom: f64) {
+        self.imp().zoom_to_full(zoom, true, false, true);
     }
 
     pub fn is_best_fit(&self) -> bool {

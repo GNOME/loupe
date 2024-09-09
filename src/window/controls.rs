@@ -129,7 +129,7 @@ impl LpWindow {
 
     /// Start animation to hide controls
     pub fn hide_controls(&self) {
-        if self.are_controls_visible() {
+        if self.are_controls_visible() && !self.image_view().zoom_menu_button().is_active() {
             self.show_controls_animation().pause();
             self.hide_controls_animation()
                 .set_value_from(self.controls_opacity());

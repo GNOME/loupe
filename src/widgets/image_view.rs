@@ -45,7 +45,7 @@ use crate::decoder::DecoderError;
 use crate::deps::*;
 use crate::file_model::LpFileModel;
 use crate::util::gettext::*;
-use crate::util::{Direction, Position};
+use crate::util::{self, Direction, Position};
 use crate::widgets::{LpImage, LpImagePage, LpPrint, LpSlidingView};
 
 // The number of pages we want to buffer
@@ -63,18 +63,38 @@ mod imp {
         /// Direct child of this Adw::Bin
         #[template_child]
         pub(super) bin_child: TemplateChild<gtk::Widget>,
+
         /// overlayed controls
         #[template_child]
         pub(super) controls_box_start: TemplateChild<gtk::Widget>,
         #[template_child]
+        pub(super) zoom_toggle: TemplateChild<gtk::ToggleButton>,
+        #[template_child]
         pub(super) controls_box_start_events: TemplateChild<gtk::EventControllerMotion>,
+
         /// overlayed controls
         #[template_child]
         pub(super) controls_box_end: TemplateChild<gtk::Widget>,
         #[template_child]
         pub(super) controls_box_end_events: TemplateChild<gtk::EventControllerMotion>,
         #[template_child]
-        pub(super) fullscreen_button: TemplateChild<gtk::Button>,
+        pub(super) zoom_menu_button: TemplateChild<gtk::MenuButton>,
+        #[template_child]
+        pub(super) zoom_to_list: TemplateChild<gtk::ListBox>,
+        #[template_child]
+        pub(super) zoom_to_300: TemplateChild<gtk::ListBoxRow>,
+        #[template_child]
+        pub(super) zoom_to_200: TemplateChild<gtk::ListBoxRow>,
+        #[template_child]
+        pub(super) zoom_to_100: TemplateChild<gtk::ListBoxRow>,
+        #[template_child]
+        pub(super) zoom_to_66: TemplateChild<gtk::ListBoxRow>,
+        #[template_child]
+        pub(super) zoom_to_50: TemplateChild<gtk::ListBoxRow>,
+        #[template_child]
+        pub(super) zoom_value: TemplateChild<gtk::Entry>,
+        #[template_child]
+        pub(super) submit_zoom: TemplateChild<gtk::Button>,
 
         #[template_child]
         pub sliding_view: TemplateChild<LpSlidingView>,
@@ -98,6 +118,9 @@ mod imp {
 
         #[property(get = Self::is_next_available)]
         _is_next_available: PhantomData<bool>,
+
+        #[property(get, set)]
+        zoom_toggle_state: Cell<bool>,
     }
 
     #[glib::object_subclass]
@@ -148,10 +171,10 @@ mod imp {
                 move || obj.target_page_reached()
             ));
 
-            let signal_group = obj.current_image_signals();
+            let current_image_signal_group = obj.current_image_signals();
 
             let view = &*obj;
-            signal_group.connect_closure(
+            current_image_signal_group.connect_closure(
                 "notify::file",
                 true,
                 glib::closure_local!(
@@ -163,7 +186,7 @@ mod imp {
                 ),
             );
 
-            signal_group.connect_closure(
+            current_image_signal_group.connect_closure(
                 "notify::is-deleted",
                 true,
                 glib::closure_local!(
@@ -174,6 +197,97 @@ mod imp {
                     }
                 ),
             );
+
+            current_image_signal_group.connect_closure(
+                "notify::zoom-target",
+                true,
+                glib::closure_local!(
+                    #[watch]
+                    view,
+                    move |img: LpImage, _: glib::ParamSpec| {
+                        let mut percent =
+                            ((img.zoom_target() * 10_000.).round() / 100.).to_string();
+
+                        if let Some(decimal) = util::locale_settings().decimal_point {
+                            percent = percent.replace('.', &decimal);
+                        }
+
+                        view.imp()
+                            .zoom_value
+                            .set_text(&gettext_f("{} %", [percent]));
+                        view.imp().zoom_value.select_region(0, -1);
+                    }
+                ),
+            );
+
+            self.zoom_toggle.connect_clicked(clone!(
+                #[weak]
+                obj,
+                move |button| {
+                    if let Some(page) = obj.current_page() {
+                        if button.is_active() {
+                            page.image().zoom_in_center()
+                        } else {
+                            page.image().zoom_best_fit()
+                        };
+                    }
+                }
+            ));
+
+            self.zoom_to_list.connect_row_activated(clone!(
+                #[weak]
+                obj,
+                move |_, row| {
+                    let imp = obj.imp();
+                    let value = if row == &*imp.zoom_to_300 {
+                        3.
+                    } else if row == &*imp.zoom_to_200 {
+                        2.
+                    } else if row == &*imp.zoom_to_100 {
+                        1.
+                    } else if row == &*imp.zoom_to_66 {
+                        0.66
+                    } else if row == &*imp.zoom_to_50 {
+                        0.5
+                    } else {
+                        log::error!("Activated unknown entry in zoom to popover.");
+                        return;
+                    };
+
+                    if let Some(image) = obj.current_image() {
+                        image.zoom_to_exact_center(value);
+                    }
+
+                    // Close popover after click
+                    imp.zoom_menu_button.set_active(false);
+                }
+            ));
+
+            self.submit_zoom.connect_clicked(clone!(
+                #[weak]
+                obj,
+                move |_| {
+                    if let Some(page) = obj.current_page() {
+                        let mut value = obj.imp().zoom_value.text().to_string();
+                        let locale_settings = util::locale_settings();
+
+                        if let Some(thousands) = locale_settings.thousands_sep {
+                            value = value.replace(&thousands, "");
+                        }
+
+                        if let Some(decimal) = locale_settings.decimal_point {
+                            value = value.replace(&decimal, ".");
+                        }
+
+                        value = value.replace('%', "");
+                        value = value.trim().to_string();
+
+                        if let Ok(value) = value.parse::<f64>() {
+                            page.image().zoom_to_exact(value / 100.);
+                        }
+                    }
+                }
+            ));
 
             self.drag_source.set_exclusive(true);
 
@@ -678,16 +792,6 @@ impl LpImageView {
         }
     }
 
-    pub fn on_fullscreen_changed(&self, is_fullscreened: bool) {
-        let icon = if is_fullscreened {
-            "view-restore-symbolic"
-        } else {
-            "view-fullscreen-symbolic"
-        };
-
-        self.imp().fullscreen_button.set_icon_name(icon);
-    }
-
     pub fn rotate_image(&self, angle: f64) {
         if let Some(current_page) = self.current_page() {
             current_page.image().rotate_by(angle);
@@ -769,5 +873,9 @@ impl LpImageView {
         clipboard.set_content(content_provider.as_ref())?;
 
         Ok(())
+    }
+
+    pub fn zoom_menu_button(&self) -> gtk::MenuButton {
+        self.imp().zoom_menu_button.clone()
     }
 }

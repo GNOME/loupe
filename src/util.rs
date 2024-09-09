@@ -18,6 +18,7 @@
 
 pub mod gettext;
 
+use std::ffi::CStr;
 use std::fmt::{Debug, Write};
 use std::path::{Path, PathBuf};
 
@@ -228,4 +229,35 @@ pub fn contrast_ratio(color1: &gdk::RGBA, color2: &gdk::RGBA) -> f32 {
     let l2 = f32::min(la, lb);
 
     (l1 + 0.05) / (l2 + 0.05)
+}
+
+#[derive(Default)]
+pub struct LocaleSettings {
+    pub decimal_point: Option<String>,
+    pub thousands_sep: Option<String>,
+}
+
+pub fn locale_settings() -> LocaleSettings {
+    unsafe {
+        let lconv = libc::localeconv();
+        let mut locale_settings = LocaleSettings::default();
+
+        if lconv.is_null() {
+            return locale_settings;
+        }
+
+        let lconv = *lconv;
+
+        if !(lconv).decimal_point.is_null() {
+            let s = CStr::from_ptr(lconv.decimal_point);
+            locale_settings.decimal_point = s.to_str().map(|x| x.to_string()).ok();
+        }
+
+        if !lconv.thousands_sep.is_null() {
+            let s = CStr::from_ptr(lconv.thousands_sep);
+            locale_settings.thousands_sep = s.to_str().map(|x| x.to_string()).ok();
+        }
+
+        locale_settings
+    }
 }

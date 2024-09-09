@@ -1,7 +1,13 @@
-/* Overlay controls for next, zoom, fullscreen */
-button.osd.circular {
-  min-width: 42px;
-  min-height: 42px;
+/* Overlay controls for prev/next and zoom */
+.osd-box {
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.65);
+  padding: 6px;
+}
+
+.osd-box menubutton button {
+  padding-left: 0;
+  padding-right: 0;
 }
 
 .fullscreen revealer:not(.raised) .fullscreen-osd {

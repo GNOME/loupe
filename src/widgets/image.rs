@@ -184,6 +184,7 @@ mod imp {
         pub(super) zoom_animation: OnceCell<adw::TimedAnimation>,
         /// Targeted zoom level, might differ from `zoom` when animation is
         /// running
+        #[property(get, set = Self::set_zoom_target)]
         pub(super) zoom_target: Cell<f64>,
         /// Point in image that should stay under the cursor during animation.
         /// The value is in image coordinates.

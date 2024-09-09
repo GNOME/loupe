@@ -79,9 +79,6 @@ mod imp {
     #[properties(wrapper_type = super::LpWindow)]
     #[template(file = "window.ui")]
     pub struct LpWindow {
-        // Template children are used with the
-        // TemplateChild<T> wrapper, where T is the
-        // object type of the template child.
         #[template_child]
         pub(super) window_content: TemplateChild<LpWindowContent>,
         #[template_child]
@@ -92,6 +89,9 @@ mod imp {
         pub(super) properties_button: TemplateChild<gtk::ToggleButton>,
         #[template_child]
         pub(super) primary_menu: TemplateChild<gtk::MenuButton>,
+        #[template_child]
+        pub(super) fullscreen_button: TemplateChild<gtk::Button>,
+
         #[template_child]
         pub(super) toast_overlay: TemplateChild<adw::ToastOverlay>,
         #[template_child]
@@ -375,6 +375,22 @@ mod imp {
                 obj.schedule_hide_controls();
             });
 
+            obj.image_view()
+                .zoom_menu_button()
+                .connect_active_notify(glib::clone!(
+                    #[weak]
+                    obj,
+                    move |button| {
+                        if button.is_active() {
+                            // Show overlay controls when zoom popover in them gets opened
+                            obj.show_controls();
+                        } else {
+                            // Schedule hide overlay controls when zoom popover gets closed
+                            obj.schedule_hide_controls();
+                        }
+                    }
+                ));
+
             // Activate global shortcuts only if no dialog is open
             obj.connect_visible_dialog_notify(|obj| obj.update_accel_status());
             obj.connect_is_active_notify(|obj| obj.update_accel_status());
@@ -499,7 +515,7 @@ impl LpWindow {
     }
 
     fn zoom_to_exact(&self, level: f64) {
-        if let Some(image) = self.imp().image_view.current_image() {
+        if let Some(image) = self.image_view().current_image() {
             image.zoom_to_exact(level);
         }
     }
@@ -750,8 +766,9 @@ impl LpWindow {
             Action::RotateCw,
             Action::RotateCcw,
             Action::ZoomBestFit,
-            Action::ZoomToExact1,
-            Action::ZoomToExact2,
+            Action::ZoomToExact100,
+            Action::ZoomToExact200,
+            Action::ZoomToExact300,
         ];
 
         let enabled_shown = self
@@ -779,6 +796,12 @@ impl LpWindow {
         self.action_set_enabled(&Action::ZoomOutCenter, can_zoom_out && enabled_shown);
         self.action_set_enabled(&Action::ZoomInCursor, can_zoom_in && enabled_shown);
         self.action_set_enabled(&Action::ZoomInCenter, can_zoom_in && enabled_shown);
+
+        self.image_view().set_zoom_toggle_state(
+            self.image_view()
+                .current_image()
+                .is_some_and(|image| !image.is_best_fit()),
+        );
 
         // Actions that are available if there is an current image, even if it's not
         // shown
@@ -944,9 +967,12 @@ impl LpWindow {
     }
 
     fn on_fullscreen_changed(&self) {
-        self.imp()
-            .image_view
-            .on_fullscreen_changed(self.is_fullscreen());
+        let icon = if self.is_fullscreen() {
+            "view-restore-symbolic"
+        } else {
+            "view-fullscreen-symbolic"
+        };
+        self.imp().fullscreen_button.set_icon_name(icon);
 
         if !self.is_fullscreen() {
             self.set_cursor(None);

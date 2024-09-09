@@ -167,10 +167,12 @@ pub enum Action {
     ZoomInCursor,
     #[strum(to_string = "win.zoom-best-fit")]
     ZoomBestFit,
-    #[strum(to_string = "win.zoom-to-exact-1")]
-    ZoomToExact1,
-    #[strum(to_string = "win.zoom-to-exact-2")]
-    ZoomToExact2,
+    #[strum(to_string = "win.zoom-to-exact-100")]
+    ZoomToExact100,
+    #[strum(to_string = "win.zoom-to-exact-200")]
+    ZoomToExact200,
+    #[strum(to_string = "win.zoom-to-exact-300")]
+    ZoomToExact300,
     // Misc
     #[strum(to_string = "win.open")]
     Open,
@@ -332,7 +334,7 @@ impl Action {
                     );
                 }
 
-                Action::ZoomToExact1 => {
+                Action::ZoomToExact100 => {
                     klass.install_action(&action, None, move |win, _, _| {
                         win.zoom_to_exact(1.);
                     });
@@ -350,7 +352,7 @@ impl Action {
                     );
                 }
 
-                Action::ZoomToExact2 => {
+                Action::ZoomToExact200 => {
                     klass.install_action(&action, None, move |win, _, _| {
                         win.zoom_to_exact(2.);
                     });
@@ -363,6 +365,24 @@ impl Action {
                     );
                     klass.add_binding_action(
                         gdk::Key::KP_2,
+                        gdk::ModifierType::CONTROL_MASK,
+                        &action,
+                    );
+                }
+
+                Action::ZoomToExact300 => {
+                    klass.install_action(&action, None, move |win, _, _| {
+                        win.zoom_to_exact(2.);
+                    });
+                    klass.add_binding_action(gdk::Key::_3, gdk::ModifierType::empty(), &action);
+                    klass.add_binding_action(gdk::Key::KP_3, gdk::ModifierType::empty(), &action);
+                    klass.add_binding_action(
+                        gdk::Key::_3,
+                        gdk::ModifierType::CONTROL_MASK,
+                        &action,
+                    );
+                    klass.add_binding_action(
+                        gdk::Key::KP_3,
                         gdk::ModifierType::CONTROL_MASK,
                         &action,
                     );
@@ -427,12 +447,13 @@ impl Action {
                     klass.install_action_async(&action, None, |win, _, _| async move {
                         win.trash().await;
                     });
-                    klass.add_binding_action(gdk::Key::Delete, gdk::ModifierType::empty(), &action);
                     klass.add_binding_action(
                         gdk::Key::KP_Delete,
                         gdk::ModifierType::empty(),
                         &action,
                     );
+                    // The binding added last is shown in menus
+                    klass.add_binding_action(gdk::Key::Delete, gdk::ModifierType::empty(), &action);
                 }
 
                 Action::Delete => {

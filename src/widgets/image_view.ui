@@ -18,7 +18,10 @@
             <property name="margin-end">18</property>
             <property name="margin-top">18</property>
             <property name="margin-bottom">18</property>
-            <property name="spacing">12</property>
+            <property name="spacing">6</property>
+            <style>
+              <class name="osd-box" />
+            </style>
             <child>
               <object class="GtkButton" id="prev_button">
                 <property name="halign">start</property>
@@ -26,8 +29,7 @@
                 <property name="action-name">win.previous</property>
                 <property name="tooltip-text" translatable="yes">Previous Image</property>
                 <style>
-                  <class name="osd" />
-                  <class name="circular" />
+                  <class name="flat" />
                 </style>
               </object>
             </child>
@@ -37,8 +39,7 @@
                 <property name="action-name">win.next</property>
                 <property name="tooltip-text" translatable="yes">Next Image</property>
                 <style>
-                  <class name="osd" />
-                  <class name="circular" />
+                  <class name="flat" />
                 </style>
               </object>
             </child>
@@ -55,38 +56,203 @@
             <property name="margin-end">18</property>
             <property name="margin-top">18</property>
             <property name="margin-bottom">18</property>
-            <property name="spacing">12</property>
+            <style>
+              <class name="osd-box" />
+            </style>
+
             <child>
-              <object class="GtkButton" id="zoom_out">
-                <property name="icon-name">zoom-out-symbolic</property>
-                <property name="action-name">win.zoom-out-center</property>
-                <property name="tooltip-text" translatable="yes">Zoom Out</property>
+              <object class="GtkRevealer">
+                <property name="reveal-child" bind-source="LpImageView" bind-property="zoom-toggle-state" bind-flags="sync-create" />
+                <property name="transition-type">slide-left</property>
+                <child>
+                  <object class="GtkBox">
+                    <property name="spacing">6</property>
+                    <child>
+                      <object class="GtkButton" id="zoom_out">
+                        <property name="icon-name">minus-symbolic</property>
+                        <property name="action-name">win.zoom-out-center</property>
+                        <property name="tooltip-text" translatable="yes">Zoom Out</property>
+                        <style>
+                          <class name="flat" />
+                        </style>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkButton" id="zoom_in">
+                        <property name="margin-end">6</property>
+                        <property name="icon-name">plus-symbolic</property>
+                        <property name="action-name">win.zoom-in-center</property>
+                        <property name="tooltip-text" translatable="yes">Zoom In</property>
+                        <style>
+                          <class name="flat" />
+                        </style>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
+            <child>
+              <object class="GtkToggleButton" id="zoom_toggle">
+                <property name="margin-end">6</property>
+                <property name="icon-name">zoom-toggle-symbolic</property>
+                <property name="active" bind-source="LpImageView" bind-property="zoom-toggle-state" bind-flags="sync-create" />
+                <property name="tooltip-text" translatable="yes">Toggle Zoom</property>
                 <style>
-                  <class name="osd" />
-                  <class name="circular" />
+                  <class name="flat" />
                 </style>
               </object>
             </child>
             <child>
-              <object class="GtkButton" id="zoom_in">
-                <property name="icon-name">zoom-in-symbolic</property>
-                <property name="action-name">win.zoom-in-center</property>
-                <property name="tooltip-text" translatable="yes">Zoom In</property>
+              <object class="GtkMenuButton" id="zoom_menu_button">
+                <property name="tooltip-text" translatable="yes">Zoom to Specific Level</property>
+                <property name="direction">up</property>
+                <property name="icon-name">pan-down-symbolic</property>
                 <style>
-                  <class name="osd" />
-                  <class name="circular" />
+                  <class name="flat" />
                 </style>
-              </object>
-            </child>
-            <child>
-              <object class="GtkButton" id="fullscreen_button">
-                <property name="halign">end</property>
-                <property name="action-name">win.toggle-fullscreen</property>
-                <property name="tooltip-text" translatable="yes">Toggle Fullscreen</property>
-                <style>
-                  <class name="osd" />
-                  <class name="circular" />
-                </style>
+                <property name="popover">
+                  <!--
+                    Use manual implementation instead of GtkPopoverMenu because:
+                    1. We need to specify the shortcuts manually since called from the menu the zoom does not aim for the cursor.
+                    2. Hovering other menu entries would steal the focus from the GtkEntry.
+                  -->
+                  <object class="GtkPopover">
+                    <property name="default-widget">submit_zoom</property>
+                    <style>
+                      <class name="menu" />
+                    </style>
+                    <property name="child">
+                      <object class="GtkBox">
+                        <property name="orientation">vertical</property>
+                        <property name="margin-top">6</property>
+                        <property name="margin-end">6</property>
+                        <property name="margin-bottom">6</property>
+                        <property name="margin-start">6</property>
+                        <property name="spacing">6</property>
+                        <child>
+                          <object class="GtkListBox" id="zoom_to_list">
+                            <child>
+                              <object class="GtkListBoxRow" id="zoom_to_300">
+                                <property name="child">
+                                  <object class="GtkBox">
+                                    <child>
+                                      <object class="GtkLabel">
+                                        <property name="halign">start</property>
+                                        <property name="label">300 %</property>
+                                      </object>
+                                    </child>
+                                    <child>
+                                      <object class="GtkLabel">
+                                        <property name="halign">end</property>
+                                        <property name="hexpand">true</property>
+                                        <property name="label">Ctrl+3</property>
+                                        <style>
+                                          <class name="dim-label" />
+                                        </style>
+                                      </object>
+                                    </child>
+                                  </object>
+                                </property>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkListBoxRow" id="zoom_to_200">
+                                <property name="child">
+                                  <object class="GtkBox">
+                                    <child>
+                                      <object class="GtkLabel">
+                                        <property name="halign">start</property>
+                                        <property name="label">200 %</property>
+                                      </object>
+                                    </child>
+                                    <child>
+                                      <object class="GtkLabel">
+                                        <property name="halign">end</property>
+                                        <property name="hexpand">true</property>
+                                        <property name="label">Ctrl+2</property>
+                                        <style>
+                                          <class name="dim-label" />
+                                        </style>
+                                      </object>
+                                    </child>
+                                  </object>
+                                </property>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkListBoxRow" id="zoom_to_100">
+                                <property name="child">
+                                  <object class="GtkBox">
+                                    <child>
+                                      <object class="GtkLabel">
+                                        <property name="halign">start</property>
+                                        <property name="label">100 %</property>
+                                      </object>
+                                    </child>
+                                    <child>
+                                      <object class="GtkLabel">
+                                        <property name="halign">end</property>
+                                        <property name="hexpand">true</property>
+                                        <property name="label">Ctrl+1</property>
+                                        <style>
+                                          <class name="dim-label" />
+                                        </style>
+                                      </object>
+                                    </child>
+                                  </object>
+                                </property>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkListBoxRow" id="zoom_to_66">
+                                <property name="child">
+                                  <object class="GtkLabel">
+                                    <property name="halign">start</property>
+                                    <property name="label">66 %</property>
+                                  </object>
+                                </property>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkListBoxRow" id="zoom_to_50">
+                                <property name="child">
+                                  <object class="GtkLabel">
+                                    <property name="halign">start</property>
+                                    <property name="label">50 %</property>
+                                  </object>
+                                </property>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="GtkBox">
+                            <property name="spacing">12</property>
+                            <child>
+                              <object class="GtkEntry" id="zoom_value">
+                                <property name="activates-default">True</property>
+                                <property name="input-purpose">number</property>
+                                <property name="max-width-chars">8</property>
+                                <property name="tooltip-text">Custom Zoom Level</property>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkButton" id="submit_zoom">
+                                <property name="icon-name">checkmark-symbolic</property>
+                                <property name="tooltip-text">Zoom to Specified Level</property>
+                                <style>
+                                  <class name="suggested-action" />
+                                  <class name="circular" />
+                                </style>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                      </object>
+                    </property>
+                  </object>
+                </property>
               </object>
             </child>
             <child>
