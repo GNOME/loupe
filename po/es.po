@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2024-07-31 00:10+0000\n"
-"PO-Revision-Date: 2024-09-03 11:10+0200\n"
+"POT-Creation-Date: 2024-09-07 08:23+0000\n"
+"PO-Revision-Date: 2024-09-09 12:20+0200\n"
 "Last-Translator: Daniel Mustieles García <daniel.mustieles@gmail.com>\n"
 "Language-Team: Spanish - Spain <gnome-es-list@gnome.org>\n"
 "Language: es_ES\n"
@@ -21,7 +21,7 @@ msgstr ""
 "X-Generator: Gtranslator 46.1\n"
 
 #: data/org.gnome.Loupe.desktop.in.in:3
-#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:31 src/window.rs:873
+#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:31 src/window.rs:874
 msgid "Image Viewer"
 msgstr "Visor de imágenes"
 
@@ -265,22 +265,22 @@ msgstr "Copyright © 2020–2024 Christopher Davis y otros"
 msgid "Could not list other files in directory."
 msgstr "No se pudieron listar los archivos de la carpeta"
 
-#: src/metadata.rs:249
+#: src/metadata.rs:253
 msgid "\\u{192}\\u{2215}{}"
 msgstr "\\u{192}\\u{2215}{}"
 
 #. Translators: Fractional exposure time (photography) in seconds
-#: src/metadata.rs:266
+#: src/metadata.rs:270
 msgid "1\\u{2215}{}\\u{202F}s"
 msgstr "1\\u{2215}{}\\u{202F}s"
 
 #. Translators: Exposure time (photography) in seconds
-#: src/metadata.rs:274
+#: src/metadata.rs:278
 msgid "{}\\u{202F}s"
 msgstr "{}\\u{202F}s"
 
 #. Translators: Unit for focal length in millimeters
-#: src/metadata.rs:300
+#: src/metadata.rs:304
 msgid "{}\\u{202F}mm"
 msgstr "{}\\u{202F}mm"
 
@@ -323,6 +323,9 @@ msgid ""
 "Please include this information when you report an error. If possible, "
 "please also provide the image that causes the issue."
 msgstr ""
+"El cargador de imágenes informó lo siguiente al intentar cargar la imagen. "
+"Incluya esta información cuando informe un error. Si es posible, proporcione "
+"también la imagen que causa el problema."
 
 #: src/widgets/error_details.ui:24
 msgid "Error Message"
@@ -336,27 +339,29 @@ msgstr "Copiar mensaje de error"
 msgid "Report _Issue"
 msgstr "Infor_mar de un problema"
 
-#: src/widgets/image_page.rs:227
+#: src/widgets/image_page.rs:226
 msgid ""
 "No image loaders available. Maybe the “glycin-loaders” package with "
 "compatibility version “{}” is not installed."
 msgstr ""
+"No hay cargadores de imágenes disponibles. Puede que el paquete «glycin-"
+"loaders» con compatibilidad para la versión «{}» no esté instalado."
 
-#: src/widgets/image_page.rs:242
+#: src/widgets/image_page.rs:241
 msgid "The image format “{} ({})” is known but not installed."
-msgstr ""
+msgstr "El formato de imagen «{} ({})» es conocido pero no está instalado."
 
-#: src/widgets/image_page.rs:249
+#: src/widgets/image_page.rs:248
 msgid "Unknown image format “{} ({}).”"
 msgstr "Formato de imagen desconocido «{} ({}).»"
 
-#: src/widgets/image_page.rs:277
+#: src/widgets/image_page.rs:276
 msgid "There is not enough free memory available to load this image."
-msgstr ""
+msgstr "No hay memoria libre suficiente para cargar esta imagen."
 
-#: src/widgets/image_page.rs:281
+#: src/widgets/image_page.rs:280
 msgid "Either the image file is corrupted or it contains unsupported elements."
-msgstr ""
+msgstr "El archivo de imagen está corrupto o contiene elementos no soportados."
 
 #: src/widgets/image_page.ui:6 src/window.ui:16
 msgid "_Open With…"
