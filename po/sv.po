@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2024-05-02 18:23+0000\n"
-"PO-Revision-Date: 2024-05-02 22:11+0200\n"
+"POT-Creation-Date: 2024-08-05 23:33+0000\n"
+"PO-Revision-Date: 2024-09-06 12:28+0200\n"
 "Last-Translator: Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "Language: sv\n"
@@ -17,10 +17,10 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.4.2\n"
+"X-Generator: Poedit 3.4.4\n"
 
 #: data/org.gnome.Loupe.desktop.in.in:3
-#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:29 src/window.rs:881
+#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:31 src/window.rs:874
 msgid "Image Viewer"
 msgstr "Bildvisare"
 
@@ -33,7 +33,7 @@ msgid "Show the image properties sidebar"
 msgstr "Visa sidopanelen för bildegenskaper"
 
 #. developer_name tag deprecated with Appstream 1.0
-#: data/org.gnome.Loupe.metainfo.xml.in.in:8 src/about.rs:32
+#: data/org.gnome.Loupe.metainfo.xml.in.in:8 src/about.rs:34
 msgid "The GNOME Project"
 msgstr "GNOME-projektet"
 
@@ -68,180 +68,189 @@ msgstr "Allmänna kortkommandon"
 
 #: data/resources/gtk/help-overlay.ui:14
 msgctxt "shortcut window"
-msgid "Show Main Menu"
-msgstr "Visa huvudmeny"
+msgid "Copy Image or Selected Text to Clipboard"
+msgstr "Kopiera bild eller markerad text till urklipp"
 
 #: data/resources/gtk/help-overlay.ui:20
-msgctxt "shortcut window"
-msgid "Copy Image or Metadata to Clipboard"
-msgstr "Kopiera bild eller metadata till urklipp"
-
-#: data/resources/gtk/help-overlay.ui:26
 msgctxt "shortcut window"
 msgid "Move Image to Trash"
 msgstr "Flytta bild till papperskorgen"
 
-#: data/resources/gtk/help-overlay.ui:32
+#: data/resources/gtk/help-overlay.ui:26
 msgctxt "shortcut window"
 msgid "Permanently Delete Image"
 msgstr "Ta bort bild permanent"
 
-#: data/resources/gtk/help-overlay.ui:38
+#: data/resources/gtk/help-overlay.ui:32
 msgctxt "shortcut window"
-msgid "Toggle Image Properties"
-msgstr "Växla bildegenskaper"
+msgid "Open Image with Other App"
+msgstr "Öppna bild med annat program"
 
-#: data/resources/gtk/help-overlay.ui:44
+#: data/resources/gtk/help-overlay.ui:38
 msgctxt "shortcut window"
 msgid "Set as Background"
 msgstr "Ange som bakgrundsbild"
 
-#: data/resources/gtk/help-overlay.ui:50
-msgctxt "shortcut window"
-msgid "Toggle Fullscreen"
-msgstr "Växla helskärmsläge"
-
-#: data/resources/gtk/help-overlay.ui:56
-msgctxt "shortcut window"
-msgid "Leave Fullscreen"
-msgstr "Lämna helskärmsläge"
-
-#: data/resources/gtk/help-overlay.ui:62
+#: data/resources/gtk/help-overlay.ui:44
 msgctxt "shortcut window"
 msgid "New Window"
 msgstr "Nytt fönster"
 
-#: data/resources/gtk/help-overlay.ui:68
+#: data/resources/gtk/help-overlay.ui:50
 msgctxt "shortcut window"
 msgid "Open Help"
 msgstr "Öppna hjälp"
 
-#: data/resources/gtk/help-overlay.ui:74
+#: data/resources/gtk/help-overlay.ui:56
 msgctxt "shortcut window"
 msgid "Show Keyboard Shortcuts"
 msgstr "Visa tangentbordsgenvägar"
 
-#: data/resources/gtk/help-overlay.ui:80
+#: data/resources/gtk/help-overlay.ui:62
 msgctxt "shortcut window"
 msgid "Close Window"
 msgstr "Stäng fönster"
 
-#: data/resources/gtk/help-overlay.ui:86
+#: data/resources/gtk/help-overlay.ui:68
 msgctxt "shortcut window"
 msgid "Quit"
 msgstr "Avsluta"
 
-#: data/resources/gtk/help-overlay.ui:94
+#: data/resources/gtk/help-overlay.ui:76
 msgctxt "shortcut window"
 msgid "Navigate Images"
 msgstr "Navigera mellan bilder"
 
-#: data/resources/gtk/help-overlay.ui:98 data/resources/gtk/help-overlay.ui:112
-#: data/resources/gtk/help-overlay.ui:224
-#: data/resources/gtk/help-overlay.ui:238
+#: data/resources/gtk/help-overlay.ui:80 data/resources/gtk/help-overlay.ui:94
+#: data/resources/gtk/help-overlay.ui:235
+#: data/resources/gtk/help-overlay.ui:249
 msgctxt "shortcut window"
 msgid "Next Image"
 msgstr "Nästa bild"
 
-#: data/resources/gtk/help-overlay.ui:105
-#: data/resources/gtk/help-overlay.ui:119
-#: data/resources/gtk/help-overlay.ui:231
-#: data/resources/gtk/help-overlay.ui:245
+#: data/resources/gtk/help-overlay.ui:87 data/resources/gtk/help-overlay.ui:101
+#: data/resources/gtk/help-overlay.ui:242
+#: data/resources/gtk/help-overlay.ui:256
 msgctxt "shortcut window"
 msgid "Previous Image"
 msgstr "Föregående bild"
 
-#: data/resources/gtk/help-overlay.ui:125
+#: data/resources/gtk/help-overlay.ui:107
 msgctxt "shortcut window"
 msgid "First Image"
 msgstr "Första bilden"
 
-#: data/resources/gtk/help-overlay.ui:131
+#: data/resources/gtk/help-overlay.ui:113
 msgctxt "shortcut window"
 msgid "Last Image"
 msgstr "Sista bilden"
 
-#: data/resources/gtk/help-overlay.ui:139
+#: data/resources/gtk/help-overlay.ui:121
 msgctxt "shortcut window"
 msgid "Rotate Image"
 msgstr "Rotera bild"
 
-#: data/resources/gtk/help-overlay.ui:142
-#: data/resources/gtk/help-overlay.ui:263
+#: data/resources/gtk/help-overlay.ui:124
+#: data/resources/gtk/help-overlay.ui:274
 msgctxt "shortcut window"
 msgid "Rotate Clockwise"
 msgstr "Rotera medurs"
 
-#: data/resources/gtk/help-overlay.ui:148
-#: data/resources/gtk/help-overlay.ui:269
+#: data/resources/gtk/help-overlay.ui:130
+#: data/resources/gtk/help-overlay.ui:280
 msgctxt "shortcut window"
 msgid "Rotate Counterclockwise"
 msgstr "Rotera moturs"
 
-#: data/resources/gtk/help-overlay.ui:156
+#: data/resources/gtk/help-overlay.ui:138
 msgctxt "shortcut window"
 msgid "Zoom Image"
 msgstr "Zooma bild"
 
-#: data/resources/gtk/help-overlay.ui:159
-#: data/resources/gtk/help-overlay.ui:251
+#: data/resources/gtk/help-overlay.ui:141
+#: data/resources/gtk/help-overlay.ui:262
 msgctxt "shortcut window"
 msgid "Zoom In"
 msgstr "Zooma in"
 
-#: data/resources/gtk/help-overlay.ui:165
-#: data/resources/gtk/help-overlay.ui:257
+#: data/resources/gtk/help-overlay.ui:147
+#: data/resources/gtk/help-overlay.ui:268
 msgctxt "shortcut window"
 msgid "Zoom Out"
 msgstr "Zooma ut"
 
-#: data/resources/gtk/help-overlay.ui:171
+#: data/resources/gtk/help-overlay.ui:153
 msgctxt "shortcut window"
 msgid "Best Fit"
 msgstr "Bästa anpassning"
 
-#: data/resources/gtk/help-overlay.ui:177
+#: data/resources/gtk/help-overlay.ui:159
 msgctxt "shortcut window"
 msgid "Original Scale"
 msgstr "Ursprunglig skala"
 
-#: data/resources/gtk/help-overlay.ui:183
+#: data/resources/gtk/help-overlay.ui:165
 msgctxt "shortcut window"
 msgid "200% Scale"
 msgstr "200% skala"
 
-#: data/resources/gtk/help-overlay.ui:191
+#: data/resources/gtk/help-overlay.ui:173
 msgctxt "shortcut window"
 msgid "Pan View"
 msgstr "Panorera vy"
 
-#: data/resources/gtk/help-overlay.ui:194
+#: data/resources/gtk/help-overlay.ui:176
 msgctxt "shortcut window"
 msgid "Pan Left"
 msgstr "Panorera åt vänster"
 
-#: data/resources/gtk/help-overlay.ui:200
+#: data/resources/gtk/help-overlay.ui:182
 msgctxt "shortcut window"
 msgid "Pan Right"
 msgstr "Panorera åt höger"
 
-#: data/resources/gtk/help-overlay.ui:206
+#: data/resources/gtk/help-overlay.ui:188
 msgctxt "shortcut window"
 msgid "Pan Up"
 msgstr "Panorera uppåt"
 
-#: data/resources/gtk/help-overlay.ui:212
+#: data/resources/gtk/help-overlay.ui:194
 msgctxt "shortcut window"
 msgid "Pan Down"
 msgstr "Panorera nedåt"
 
-#: data/resources/gtk/help-overlay.ui:220
+#: data/resources/gtk/help-overlay.ui:202
+msgctxt "shortcut window"
+msgid "View"
+msgstr "Visa"
+
+#: data/resources/gtk/help-overlay.ui:205
+msgctxt "shortcut window"
+msgid "Toggle Fullscreen"
+msgstr "Växla helskärmsläge"
+
+#: data/resources/gtk/help-overlay.ui:211
+msgctxt "shortcut window"
+msgid "Leave Fullscreen"
+msgstr "Lämna helskärmsläge"
+
+#: data/resources/gtk/help-overlay.ui:217
+msgctxt "shortcut window"
+msgid "Toggle Image Properties"
+msgstr "Växla bildegenskaper"
+
+#: data/resources/gtk/help-overlay.ui:223
+msgctxt "shortcut window"
+msgid "Show Main Menu"
+msgstr "Visa huvudmeny"
+
+#: data/resources/gtk/help-overlay.ui:231
 msgctxt "shortcut window"
 msgid "Gestures"
 msgstr "Gester"
 
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/about.rs:41
+#: src/about.rs:43
 msgid "translator-credits"
 msgstr ""
 "Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
@@ -250,13 +259,35 @@ msgstr ""
 "Skicka synpunkter på översättningen till\n"
 "<tp-sv@listor.tp-sv.se>."
 
-#: src/about.rs:42
+#: src/about.rs:44
 msgid "Copyright © 2020–2024 Christopher Davis et al."
 msgstr "Copyright © 2020–2024 Christopher Davis med flera"
 
-#: src/file_model.rs:129
+#: src/file_model.rs:131
 msgid "Could not list other files in directory."
 msgstr "Kunde inte lista andra filer i katalog."
+
+#: src/metadata.rs:253
+msgid "\\u{192}\\u{2215}{}"
+msgstr "\\u{192}\\u{2215}{}"
+
+# U+202F Narrow No-Break Space
+#. Translators: Fractional exposure time (photography) in seconds
+#: src/metadata.rs:270
+msgid "1\\u{2215}{}\\u{202F}s"
+msgstr "1\\u{2215}{}\\u{202F}s"
+
+# U+202F is Narrow No-Break Space
+#. Translators: Exposure time (photography) in seconds
+#: src/metadata.rs:278
+msgid "{}\\u{202F}s"
+msgstr "{}\\u{202F}s"
+
+# U+202F Narrow No-Break Space
+#. Translators: Unit for focal length in millimeters
+#: src/metadata.rs:304
+msgid "{}\\u{202F}mm"
+msgstr "{}\\u{202F}mm"
 
 #. Translators: short for "north" in GPS coordinate
 #: src/metadata/gps.rs:165
@@ -278,38 +309,65 @@ msgstr "Ö"
 msgid "W"
 msgstr "V"
 
-#. Translators: Fractional exposure time (photography) in seconds
-#: src/metadata/mod.rs:262
-msgid "1\\u{2215}{}\\u{202F}s"
-msgstr "1\\u{2215}{}\\u{202F}s"
-
-#. Translators: Exposure time (photography) in seconds
-#: src/metadata/mod.rs:270
-#| msgid "{}\\u{202F}mm"
-msgid "{}\\u{202F}s"
-msgstr "{}\\u{202F}s"
-
-#. Translators: Unit for focal length in millimeters
-#: src/metadata/mod.rs:296
-msgid "{}\\u{202F}mm"
-msgstr "{}\\u{202F}mm"
-
 #. Translators: This is the date and time format we use in metadata output etc.
 #. The format has to follow <https://docs.gtk.org/glib/method.DateTime.format.html>
 #. The default is already translated. Don't change if you are not sure what to
 #. use.
-#: src/util/mod.rs:37
+#: src/util.rs:37
 #, c-format
 msgid "%x %X"
 msgstr "%x %X"
 
-#: src/util/mod.rs:180 src/window.rs:702
+#: src/util.rs:180 src/window.rs:659
 msgid "Failed to restore image from trash"
 msgstr "Misslyckades med att återställa bild från papperskorgen"
 
-#: src/util/mod.rs:201
-msgid "Failed to open image"
-msgstr "Misslyckades med att öppna bild"
+#: src/widgets/error_details.ui:19
+msgid ""
+"The image loader reported the following when trying to load the image. "
+"Please include this information when you report an error. If possible, "
+"please also provide the image that causes the issue."
+msgstr ""
+"Bildinläsaren rapporterade följande vid försök att läsa in bilden. Inkludera "
+"denna information när du rapporterar ett fel. Tillhandahåll också om möjligt "
+"bilden som orsakar problemet."
+
+#: src/widgets/error_details.ui:24
+msgid "Error Message"
+msgstr "Felmeddelande"
+
+#: src/widgets/error_details.ui:28
+msgid "Copy Error Message"
+msgstr "Kopiera felmeddelande"
+
+#: src/widgets/error_details.ui:68
+msgid "Report _Issue"
+msgstr "Rapportera _problem"
+
+#: src/widgets/image_page.rs:226
+msgid ""
+"No image loaders available. Maybe the “glycin-loaders” package with "
+"compatibility version “{}” is not installed."
+msgstr ""
+"Inga bildinläsare tillgängliga. Kanske är paketet ”glycin-loaders” med "
+"kompatibilitetsversion ”{}” inte installerat."
+
+#: src/widgets/image_page.rs:241
+msgid "The image format “{} ({})” is known but not installed."
+msgstr "Bildformatet ”{} ({})” är känt men inte installerat."
+
+#: src/widgets/image_page.rs:248
+msgid "Unknown image format “{} ({}).”"
+msgstr "Okänt bildformat ”{} ({}).”"
+
+#: src/widgets/image_page.rs:276
+msgid "There is not enough free memory available to load this image."
+msgstr "Det finns för lite tillgängligt minne för att läsa in denna bild."
+
+#: src/widgets/image_page.rs:280
+msgid "Either the image file is corrupted or it contains unsupported elements."
+msgstr ""
+"Antingen är bildfilen trasig eller så innehåller den element som inte stöd."
 
 #: src/widgets/image_page.ui:6 src/window.ui:16
 msgid "_Open With…"
@@ -335,21 +393,29 @@ msgstr "_Ange som bakgrund…"
 msgid "Could not Load Image"
 msgstr "Kunde inte läsa in bild"
 
-#: src/widgets/image_page.ui:97 src/window.ui:106
+#: src/widgets/image_page.ui:71
+msgid "More _Information"
+msgstr "Mer _information"
+
+#: src/widgets/image_page.ui:81
+msgid "_Reload"
+msgstr "_Uppdatera"
+
+#: src/widgets/image_page.ui:123 src/window.ui:225
 msgid "Rotate Left"
 msgstr "Rotera åt vänster"
 
-#: src/widgets/image_page.ui:107 src/window.ui:116
+#: src/widgets/image_page.ui:133 src/window.ui:235
 msgid "Rotate Right"
 msgstr "Rotera åt höger"
 
 #. Translators: This is a toast notification, informing the user that
 #. an image has been set as background.
-#: src/widgets/image_view.rs:682
+#: src/widgets/image_view.rs:720
 msgid "Set as background."
 msgstr "Ange som bakgrund."
 
-#: src/widgets/image_view.rs:695
+#: src/widgets/image_view.rs:733
 msgid "Could not set background."
 msgstr "Kunde inte ställa in bakgrund."
 
@@ -373,51 +439,59 @@ msgstr "Zooma in"
 msgid "Toggle Fullscreen"
 msgstr "Växla helskärmsläge"
 
-#: src/widgets/print.rs:116
+#: src/widgets/print.rs:108
 msgid "Top"
 msgstr "Övre"
 
-#: src/widgets/print.rs:117
+#: src/widgets/print.rs:109
 msgid "Center"
 msgstr "Centrum"
 
-#: src/widgets/print.rs:118
+#: src/widgets/print.rs:110
 msgid "Bottom"
 msgstr "Nedre"
 
-#: src/widgets/print.rs:119
+#: src/widgets/print.rs:111
 msgid "Left"
 msgstr "Vänster"
 
-#: src/widgets/print.rs:120
+#: src/widgets/print.rs:112
 msgid "Right"
 msgstr "Höger"
 
 #. Translators: Shorthand for centimeter
-#: src/widgets/print.rs:156
+#: src/widgets/print.rs:148
 msgid "cm"
 msgstr "cm"
 
 #. Translators: Shorthand for inch
-#: src/widgets/print.rs:158
+#: src/widgets/print.rs:150
 msgid "in"
 msgstr "tum"
 
 #. Translators: Shorthand for pixel
-#: src/widgets/print.rs:160
+#: src/widgets/print.rs:152
 msgid "px"
 msgstr "px"
 
 #. Translators: {} is a placeholder for the filename
-#: src/widgets/print.rs:382
+#: src/widgets/print.rs:361
 msgid "Print “{}”"
 msgstr "Skriv ut ”{}”"
 
-#: src/widgets/print.rs:803
+#: src/widgets/print.rs:465
+msgid "Continue…"
+msgstr "Fortsätt…"
+
+#: src/widgets/print.rs:466
+msgid "Print Image"
+msgstr "Skriv ut bild"
+
+#: src/widgets/print.rs:788
 msgid "_Scale"
 msgstr "_Skala"
 
-#: src/widgets/print.rs:806
+#: src/widgets/print.rs:791
 msgid "_Width"
 msgstr "B_redd"
 
@@ -466,7 +540,7 @@ msgstr "_Horisontellt"
 msgid "_Vertical"
 msgstr "_Vertikalt"
 
-#: src/widgets/print.ui:142 src/widgets/properties_view.ui:53
+#: src/widgets/print.ui:142 src/widgets/properties_view.ui:56
 msgid "Image Size"
 msgstr "Bildstorlek"
 
@@ -483,139 +557,144 @@ msgid "H_eight"
 msgstr "Hö_jd"
 
 # Formatnamn
-#: src/widgets/properties_view.rs:234
+#: src/widgets/properties_view.rs:255
 msgid "Unknown"
 msgstr "Okänt"
 
 #. Translators: Addition of image being transparent to format name
-#: src/widgets/properties_view.rs:238
+#: src/widgets/properties_view.rs:259
 msgid ", transparent"
 msgstr ", transparent"
 
 #. Translators: Addition of image being grayscale to format name
-#: src/widgets/properties_view.rs:243
+#: src/widgets/properties_view.rs:264
 msgid ", grayscale"
 msgstr ", gråskala"
 
+# TODO: ev ersätta NBSP med bindestreck
 #. Translators: Addition of bit size to format name
-#: src/widgets/properties_view.rs:248
+#: src/widgets/properties_view.rs:269
 msgid ", {}\\u{202F}bit"
 msgstr ", {}\\u{202F}bit"
 
-#: src/widgets/properties_view.rs:299
+#: src/widgets/properties_view.rs:286
+msgid "{}\\u{202F}\\u{D7}\\u{202F}{}"
+msgstr "{}\\u{202F}\\u{D7}\\u{202F}{}"
+
+#: src/widgets/properties_view.rs:324
 msgid "Image Coordinates Copied"
 msgstr "Bildkoordinater kopierade"
 
-#: src/widgets/properties_view.ui:19
+#: src/widgets/properties_view.ui:20
 msgid "Folder"
 msgstr "Mapp"
 
-#: src/widgets/properties_view.ui:26
+#: src/widgets/properties_view.ui:28
 msgid "Open Containing Folder"
 msgstr "Öppna innehållande mapp"
 
-#: src/widgets/properties_view.ui:39
+#: src/widgets/properties_view.ui:41
 msgid "URI"
 msgstr "URI"
 
-#: src/widgets/properties_view.ui:62
+#: src/widgets/properties_view.ui:66
 msgid "Image Format"
 msgstr "Bildformat"
 
-#: src/widgets/properties_view.ui:71
+#: src/widgets/properties_view.ui:76
 msgid "File Size"
 msgstr "Filstorlek"
 
-#: src/widgets/properties_view.ui:84
+#: src/widgets/properties_view.ui:90
 msgid "File Created"
 msgstr "Filen skapad"
 
-#: src/widgets/properties_view.ui:93
+#: src/widgets/properties_view.ui:100
 msgid "File Modified"
 msgstr "Filen ändrad"
 
 #. Translators: This is a label for GPS coordinates
-#: src/widgets/properties_view.ui:106
+#: src/widgets/properties_view.ui:114
 msgid "Location"
 msgstr "Plats"
 
-#: src/widgets/properties_view.ui:116
+#: src/widgets/properties_view.ui:125
 msgid "Copy Coordinates"
 msgstr "Kopiera koordinater"
 
-#: src/widgets/properties_view.ui:127
+#: src/widgets/properties_view.ui:136
 msgid "Open Location"
 msgstr "Öppna plats"
 
-#: src/widgets/properties_view.ui:140
+#: src/widgets/properties_view.ui:149
 msgid "Originally Created"
 msgstr "Ursprungligen skapad"
 
-#: src/widgets/properties_view.ui:149
+#: src/widgets/properties_view.ui:159
 msgid "Aperture"
 msgstr "Bländare"
 
-#: src/widgets/properties_view.ui:158
+#: src/widgets/properties_view.ui:169
 msgid "Exposure"
 msgstr "Exponering"
 
-#: src/widgets/properties_view.ui:167
+#: src/widgets/properties_view.ui:179
 msgid "ISO"
 msgstr "ISO"
 
-#: src/widgets/properties_view.ui:176
+#: src/widgets/properties_view.ui:189
 msgid "Focal Length"
 msgstr "Brännvidd"
 
-#: src/widgets/properties_view.ui:185
+#: src/widgets/properties_view.ui:199
 msgid "Maker, Model"
 msgstr "Tillverkare, modell"
 
-#: src/window.rs:569
+#: src/window.rs:523
 msgid "Supported image formats"
 msgstr "Bildformat som stöds"
 
-#: src/window.rs:575
+#: src/window.rs:529
 msgid "All files"
 msgstr "Alla filer"
 
-#: src/window.rs:582
+#: src/window.rs:536
 msgid "Open Image"
 msgstr "Öppna bild"
 
-#: src/window.rs:668
+#: src/window.rs:622
 msgid "Image copied to clipboard"
 msgstr "Bild kopierad till urklipp"
 
-#: src/window.rs:689
+#: src/window.rs:643
 msgid "Image moved to trash"
 msgstr "Bild flyttad till papperskorgen"
 
-#: src/window.rs:690
+#: src/window.rs:644
 msgid "Undo"
 msgstr "Ångra"
 
-#: src/window.rs:716
+#: src/window.rs:674
 msgid "Failed to move image to trash"
 msgstr "Misslyckades med att flytta bild till papperskorgen"
 
-#: src/window.rs:742
+#: src/window.rs:698
 msgid "Permanently Delete Image?"
 msgstr "Ta bort bild permanent?"
 
-#: src/window.rs:744
+#: src/window.rs:700
 msgid "After deleting the image “{}” it will be permanently lost."
 msgstr "Efter att bilden ”{}” tagits bort kommer den vara borta för alltid."
 
-#: src/window.rs:752
+#: src/window.rs:708
 msgid "Cancel"
 msgstr "Avbryt"
 
-#: src/window.rs:753
+#: src/window.rs:709
 msgid "Delete"
 msgstr "Ta bort"
 
-#: src/window.rs:764
+#: src/window.rs:720
 msgid "Failed to delete image"
 msgstr "Misslyckades med att ta bort bild"
 
@@ -639,33 +718,39 @@ msgstr "_Tangentbordsgenvägar"
 msgid "_About Image Viewer"
 msgstr "_Om Bildvisare"
 
-#: src/window.ui:85
+#: src/window.ui:204
 msgid "Copy to Clipboard"
 msgstr "Kopiera till urklipp"
 
-#: src/window.ui:92
+#: src/window.ui:211
 msgid "Move to Trash"
 msgstr "Flytta till papperskorgen"
 
-#: src/window.ui:98
+#: src/window.ui:217
 msgid "Main Menu"
 msgstr "Huvudmeny"
 
-#: src/window.ui:130
+#: src/window.ui:249
 msgid "Image Properties"
 msgstr "Bildegenskaper"
 
-#: src/window.ui:174
+#: src/window.ui:281
 msgid "View Images"
 msgstr "Visa bilder"
 
-#: src/window.ui:175
+#: src/window.ui:282
 msgid "Drag and drop images here"
 msgstr "Dra och släpp bilder här"
 
-#: src/window.ui:179
+#: src/window.ui:286
 msgid "_Open Files…"
 msgstr "Ö_ppna filer…"
+
+#~ msgid "Copy Information"
+#~ msgstr "Kopiera information"
+
+#~ msgid "Failed to open image"
+#~ msgstr "Misslyckades med att öppna bild"
 
 #~ msgid "The Loupe Team"
 #~ msgstr "Loupe-gruppen"
@@ -708,9 +793,6 @@ msgstr "Ö_ppna filer…"
 
 #~ msgid "Animated PNG"
 #~ msgstr "Animerad PNG"
-
-#~ msgid "Unknown image format: {}"
-#~ msgstr "Okänt bildformat: {}"
 
 #~ msgid "Could not open image"
 #~ msgstr "Kunde inte öppna bild"
