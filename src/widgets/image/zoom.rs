@@ -179,16 +179,18 @@ impl imp::LpImage {
         let img_pos = if let Some(img_pos) = self.zoom_cursor_target.get() {
             // Point is stored for animation
             img_pos
-        } else if let Some(cur_pos) = cur {
-            // Get image coordinate from the passed cursor position
-            self.widget_to_img_coord(cur_pos)
         } else {
             // Use center of viewport
             self.widget_to_img_coord((self.widget_width() / 2., self.widget_height() / 2.))
         };
 
         let cur_pos = if let Some(cur) = cur {
-            cur
+            if self.zoom_cursor_target.get().is_some() {
+                cur
+            } else {
+                // Use center of widget for cursor since `img_pos` is locked in on center
+                (self.widget_width() / 2., self.widget_height() / 2.)
+            }
         } else {
             // Use center of widget since no cursor position available
             (self.widget_width() / 2., self.widget_height() / 2.)
