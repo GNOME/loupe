@@ -45,18 +45,17 @@
         "*.a"
     ],
     "add-extensions": {
-        /* Exile HEIC (x265) codec into extension */
-        "org.gnome.Loupe.Devel.HEIC": {
-            /* Relative to app dir */
-            "directory": "lib/libheif-heic",
-            /* Relative to directory above */
-            "add-ld-path": "lib",
-            /* Remove extension data from main flatpak package */
-            "bundle": true,
-            /* Remove this extension when Loupe is deinstalled */
-            "autodelete": true
+        "org.freedesktop.Platform.ffmpeg-full": {
+            "version": "24.08",
+            "directory": "lib/ffmpeg",
+            "add-ld-path": ".",
+            "no-autodownload": false,
+            "autodelete": false
         }
     },
+    "cleanup-commands": [
+        "mkdir -p ${FLATPAK_DEST}/lib/ffmpeg"
+    ],
     "modules": [
         {
             "name": "geocode-glib",
@@ -100,52 +99,6 @@
                             "<": "40.0"
                         }
                     }
-                }
-            ]
-        },
-        {
-            /* HEIC (x265) decoder */
-            "name": "libde265",
-            "buildsystem": "cmake",
-            "config-opts": [
-                /* Install into folder for extension */
-                "-DCMAKE_INSTALL_PREFIX=/app/lib/libheif-heic",
-                "-DENABLE_SDL=Off"
-            ],
-            "sources": [
-                {
-                    "type": "git",
-                    "url": "https://github.com/strukturag/libde265.git",
-                    "tag": "v1.0.15"
-                }
-            ]
-        },
-        {
-            "name": "libheif",
-            "buildsystem": "cmake",
-            "config-opts": [
-                /* Build HEIC (x265) as plugin */
-                "-DWITH_LIBDE265_PLUGIN=On",
-                "-DPLUGIN_DIRECTORY=/app/lib/libheif-heic/lib",
-                "-DLIBDE265_INCLUDE_DIR=/app/lib/libheif-heic/include",
-                "-DLIBDE265_PKGCONF_LIBRARY_DIRS=/app/lib/libheif-heic/lib",
-                /* Turn all encoders off */
-                "-DWITH_X265=Off",
-                "-DWITH_SvtEnc=Off",
-                "-DWITH_SvtEnc_PLUGIN=Off",
-                "-DWITH_AOM_ENCODER=Off",
-                /* Turn off plugins for AV1 */
-                "-DWITH_RAV1E_PLUGIN=Off",
-                /* Turn off unused AV1 decoders */
-                "-DWITH_RAV1E=Off",
-                /* No need for examples */
-                "-DWITH_EXAMPLES=Off"
-            ],
-            "sources": [
-                {
-                    "type": "git",
-                    "url": "https://github.com/strukturag/libheif.git",
-                    "tag": "v1.17.6"
                 }
             ]
         },
