@@ -248,11 +248,10 @@ impl Metadata {
             .as_ref()
             .and_then(|exif| exif.get_field(exif::Tag::FNumber, exif::In::PRIMARY))
         {
-            // Translators: Display of the f-number <https://en.wikipedia.org/wiki/F-number>. {} will be replaced with the number
-            return Some(gettext_f(
-                r"\u{192}\u{2215}{}",
-                [field.display_value().to_string()],
-            ));
+            return Some(
+                // Translators: Display of the f-number <https://en.wikipedia.org/wiki/F-number>. {} will be replaced with the number
+                gettext_f(r"\u{192}\u{2215}{}", [field.display_value().to_string()]),
+            );
         }
 
         None

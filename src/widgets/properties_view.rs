@@ -281,11 +281,13 @@ mod imp {
                     _ => {
                         let (width, height) = image.image_size();
                         if width > 0 && height > 0 {
-                            // Translators: Image "<width> x <height>"
-                            Some(gettext_f(
-                                r"{}\u{202F}\u{D7}\u{202F}{}",
-                                [width.to_string(), height.to_string()],
-                            ))
+                            Some(
+                                // Translators: Image "<width> x <height>"
+                                gettext_f(
+                                    r"{}\u{202F}\u{D7}\u{202F}{}",
+                                    [width.to_string(), height.to_string()],
+                                ),
+                            )
                         } else {
                             None
                         }

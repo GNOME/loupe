@@ -620,7 +620,8 @@ impl LpSlidingView {
 
                 *self.imp().position_tracking.borrow_mut() =
                     PositionTracking::StackedCards(StackedCards::new(prev_page, backward));
-                // Set current page here as well, to make sure it's set when animation completes for disabled animations
+                // Set current page here as well, to make sure it's set when animation completes
+                // for disabled animations
                 self.set_current_page(Some(page));
                 animation.play();
             }
