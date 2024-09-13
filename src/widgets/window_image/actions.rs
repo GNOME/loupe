@@ -78,7 +78,9 @@ impl ActionPartGlobal {
         }
     }
 
-    pub fn init_actions_and_bindings(klass: &mut <super::imp::LpWindow as ObjectSubclass>::Class) {
+    pub fn init_actions_and_bindings(
+        klass: &mut <super::imp::LpWindowImage as ObjectSubclass>::Class,
+    ) {
         for action in Self::iter() {
             match action {
                 ActionPartGlobal::ImageLeftInstant => {
@@ -198,10 +200,14 @@ pub enum Action {
     About,
     #[strum(to_string = "win.reload")]
     Reload,
+    #[strum(to_string = "win.edit")]
+    Edit,
 }
 
 impl Action {
-    pub fn init_actions_and_bindings(klass: &mut <super::imp::LpWindow as ObjectSubclass>::Class) {
+    pub fn init_actions_and_bindings(
+        klass: &mut <super::imp::LpWindowImage as ObjectSubclass>::Class,
+    ) {
         for action in Self::iter() {
             match action {
                 // Navigation
@@ -430,15 +436,16 @@ impl Action {
                 }
 
                 Action::ToggleFullscreen => {
-                    klass.install_action(&action, None, move |win, _, _| {
+                    klass.install_action(&action, None, move |obj, _, _| {
+                        let win = obj.window();
                         win.toggle_fullscreen(!win.is_fullscreen());
                     });
                     klass.add_binding_action(gdk::Key::F11, gdk::ModifierType::empty(), &action);
                 }
 
                 Action::LeaveFullscreen => {
-                    klass.install_action(&action, None, move |win, _, _| {
-                        win.toggle_fullscreen(false);
+                    klass.install_action(&action, None, move |obj, _, _| {
+                        obj.window().toggle_fullscreen(false);
                     });
                     klass.add_binding_action(gdk::Key::Escape, gdk::ModifierType::empty(), &action);
                 }
@@ -487,8 +494,8 @@ impl Action {
                 }
 
                 Action::About => {
-                    klass.install_action_async(&action, None, |win, _, _| async move {
-                        win.show_about().await
+                    klass.install_action_async(&action, None, |obj, _, _| async move {
+                        obj.window().show_about().await
                     });
                 }
 
@@ -501,6 +508,13 @@ impl Action {
                         }
                     });
                     klass.add_binding_action(gdk::Key::F5, gdk::ModifierType::empty(), &action);
+                }
+
+                Action::Edit => {
+                    klass.install_action_async(&action, None, move |obj, _, _| async move {
+                        obj.window().show_edit();
+                    });
+                    klass.add_binding_action(gdk::Key::e, gdk::ModifierType::empty(), &action);
                 }
             }
         }
