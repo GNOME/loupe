@@ -91,6 +91,9 @@ class Release:
         return s
 
     def __lt__(self, other):
+         if self.released != other.released:
+            return self.released < other.released
+
          return self.name < other.name
 
 class Changelog:
