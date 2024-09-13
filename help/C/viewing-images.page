@@ -36,7 +36,7 @@
   <p>Image Viewer has a simple fullscreen mode. Users can toggle fullscreen mode by pressing the <gui>Toggle Fullscreen</gui>
   (<media type="image" src="figures/view-fullscreen-symbolic.svg">view-fullscreen-symbolic</media> / <media type="image" src="figures/view-restore-symbolic.svg">view-restore-symbolic</media>) button.</p>
   <note style="tip">
-   <p>Keyboard users can also use the corresponding shortcuts presented in the (Keyboard Shortcuts) dialog.</p>
+   <p>Keyboard users can also use the corresponding shortcuts presented in the <gui>Keyboard Shortcuts</gui> dialog.</p>
   </note>
  </section>
 </page>
