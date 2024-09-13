@@ -32,4 +32,4 @@ Image Viewer has a simple fullscreen mode. Users can toggle fullscreen mode by p
 ($media[type="image" src="figures/view-fullscreen-symbolic.svg"](view-fullscreen-symbolic) / $media[type="image" src="figures/view-restore-symbolic.svg"](view-restore-symbolic)) button.
 
 [note .tip]
-Keyboard users can also use the corresponding shortcuts presented in the $(Keyboard Shortcuts) dialog.
+Keyboard users can also use the corresponding shortcuts presented in the $gui(Keyboard Shortcuts) dialog.
