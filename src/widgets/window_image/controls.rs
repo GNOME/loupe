@@ -20,22 +20,24 @@
 use super::*;
 
 /// Manage visibility of overlay controls
-impl LpWindow {
+impl LpWindowImage {
     /// Set control opacity
     ///
     /// Also changes headerbar transparency if it flat and hides/shows cursor on
     /// fullscreen
     fn set_control_opacity(&self, opacity: f64, hiding: bool) {
+        let window = self.window();
+
         self.image_view().controls_box_start().set_opacity(opacity);
         self.image_view().controls_box_end().set_opacity(opacity);
 
-        if self.is_headerbar_flat() && self.is_fullscreen() {
+        if self.is_headerbar_flat() && window.is_fullscreen() {
             self.headerbar().set_opacity(opacity);
         } else {
             self.headerbar().set_opacity(1.);
         }
 
-        if self.is_fullscreen() && hiding && opacity < 0.9 {
+        if window.is_fullscreen() && hiding && opacity < 0.9 {
             self.set_cursor(gdk::Cursor::from_name("none", None).as_ref());
         } else {
             self.set_cursor(None);
