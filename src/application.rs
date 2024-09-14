@@ -25,7 +25,7 @@ use adw::subclass::prelude::*;
 
 use crate::config;
 use crate::deps::*;
-use crate::window::LpWindow;
+use crate::widgets::LpWindow;
 
 mod imp {
     use super::*;

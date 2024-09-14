@@ -59,7 +59,6 @@ pub mod file_model;
 pub mod metadata;
 pub mod util;
 pub mod widgets;
-pub mod window;
 
 mod deps {
     pub use gtk::{cairo, gdk, gio, glib, graphene, gsk};
