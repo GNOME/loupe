@@ -22,7 +22,7 @@ use gtk::CompositeTemplate;
 
 use crate::config;
 use crate::deps::*;
-use crate::widgets::{LpImageView, LpImageEdit, LpImageWindow};
+use crate::widgets::{LpImageEdit, LpImageView, LpImageWindow};
 
 /// Show window after X milliseconds even if image dimensions are not known yet
 const SHOW_WINDOW_AFTER: u64 = 2000;

@@ -43,8 +43,9 @@ use crate::config;
 use crate::deps::*;
 use crate::util::gettext::*;
 use crate::util::Direction;
-use crate::widgets::{LpDragOverlay, LpImage, LpImageView, LpPropertiesView, LpWindowContent};
-use crate::window::LpWindow;
+use crate::widgets::{
+    LpDragOverlay, LpImage, LpImageView, LpPropertiesView, LpWindow, LpWindowContent,
+};
 
 /// Animation duration for showing overlay buttons in milliseconds
 const SHOW_CONTROLS_ANIMATION_DURATION: u32 = 200;
