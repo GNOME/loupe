@@ -24,12 +24,12 @@
         <property name="child">
           <object class="AdwViewStack" id="stack">
             <child>
-              <object class="LpWindowImage" id="window_image">
+              <object class="LpImageWindow" id="image_window">
                 <property name="window">LpWindow</property>
               </object>
             </child>
             <child>
-              <object class="LpWindowEdit" id="window_edit"></object>
+              <object class="LpImageEdit" id="edit_window"></object>
             </child>
           </object>
         </property>

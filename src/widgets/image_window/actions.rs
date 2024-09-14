@@ -79,7 +79,7 @@ impl ActionPartGlobal {
     }
 
     pub fn init_actions_and_bindings(
-        klass: &mut <super::imp::LpWindowImage as ObjectSubclass>::Class,
+        klass: &mut <super::imp::LpImageWindow as ObjectSubclass>::Class,
     ) {
         for action in Self::iter() {
             match action {
@@ -206,7 +206,7 @@ pub enum Action {
 
 impl Action {
     pub fn init_actions_and_bindings(
-        klass: &mut <super::imp::LpWindowImage as ObjectSubclass>::Class,
+        klass: &mut <super::imp::LpImageWindow as ObjectSubclass>::Class,
     ) {
         for action in Self::iter() {
             match action {
