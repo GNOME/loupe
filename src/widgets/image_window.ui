@@ -56,7 +56,7 @@
       </item>
     </section>
   </menu>
-  <template class="LpWindowImage" parent="AdwBin">
+  <template class="LpImageWindow" parent="AdwBin">
     <property name="child">
       <object class="AdwMultiLayoutView" id="multi_layout_view">
         <child>
