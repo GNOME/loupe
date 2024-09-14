@@ -20,7 +20,7 @@
 use super::*;
 
 /// Manage visibility of overlay controls
-impl LpWindowImage {
+impl LpImageWindow {
     /// Set control opacity
     ///
     /// Also changes headerbar transparency if it flat and hides/shows cursor on

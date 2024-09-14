@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
-  <template class="LpWindowEdit" parent="AdwBin">
+  <template class="LpImageEdit" parent="AdwBin">
     <property name="child">
       <object class="AdwToolbarView" id="toolbar_view">
         <child type="top">
