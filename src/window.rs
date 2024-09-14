@@ -22,7 +22,7 @@ use gtk::CompositeTemplate;
 
 use crate::config;
 use crate::deps::*;
-use crate::widgets::{LpImageView, LpWindowEdit, LpWindowImage};
+use crate::widgets::{LpImageView, LpImageEdit, LpImageWindow};
 
 /// Show window after X milliseconds even if image dimensions are not known yet
 const SHOW_WINDOW_AFTER: u64 = 2000;
@@ -53,9 +53,9 @@ mod imp {
         pub(super) stack: TemplateChild<adw::ViewStack>,
 
         #[template_child]
-        pub(super) window_image: TemplateChild<LpWindowImage>,
+        pub(super) image_window: TemplateChild<LpImageWindow>,
         #[template_child]
-        pub(super) window_edit: TemplateChild<LpWindowEdit>,
+        pub(super) edit_window: TemplateChild<LpImageEdit>,
     }
 
     #[glib::object_subclass]
@@ -145,12 +145,12 @@ impl LpWindow {
         let imp = self.imp();
 
         if imp
-            .window_image
+            .image_window
             .image_view()
             .current_image()
             .is_some_and(|img| img.image_size_available())
         {
-            let shows_properties = imp.window_image.properties_button().is_active();
+            let shows_properties = imp.image_window.properties_button().is_active();
 
             let (_, window_natural_width, _, _) = self.measure(gtk::Orientation::Horizontal, -1);
             let (_, window_natural_height, _, _) = self.measure(gtk::Orientation::Vertical, -1);
@@ -191,10 +191,10 @@ impl LpWindow {
     }
 
     pub fn show_edit(&self) {
-        self.imp().stack.set_visible_child(&*self.imp().window_edit);
+        self.imp().stack.set_visible_child(&*self.imp().edit_window);
     }
 
     pub fn image_view(&self) -> LpImageView {
-        self.imp().window_image.image_view()
+        self.imp().image_window.image_view()
     }
 }

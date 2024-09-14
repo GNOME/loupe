@@ -57,9 +57,9 @@ mod imp {
 
     use super::*;
     #[derive(Debug, Default, gtk::CompositeTemplate, glib::Properties)]
-    #[properties(wrapper_type = super::LpWindowImage)]
-    #[template(file = "window_image.ui")]
-    pub struct LpWindowImage {
+    #[properties(wrapper_type = super::LpImageWindow)]
+    #[template(file = "image_window.ui")]
+    pub struct LpImageWindow {
         #[property(get, construct_only)]
         window: OnceCell<LpWindow>,
 
@@ -114,9 +114,9 @@ mod imp {
     }
 
     #[glib::object_subclass]
-    impl ObjectSubclass for LpWindowImage {
-        const NAME: &'static str = "LpWindowImage";
-        type Type = super::LpWindowImage;
+    impl ObjectSubclass for LpImageWindow {
+        const NAME: &'static str = "LpImageWindow";
+        type Type = super::LpImageWindow;
         type ParentType = adw::Bin;
 
         fn instance_init(obj: &glib::subclass::InitializingObject<Self>) {
@@ -152,7 +152,7 @@ mod imp {
     }
 
     #[glib::derived_properties]
-    impl ObjectImpl for LpWindowImage {
+    impl ObjectImpl for LpImageWindow {
         fn constructed(&self) {
             self.parent_constructed();
 
@@ -419,10 +419,10 @@ mod imp {
         }
     }
 
-    impl WidgetImpl for LpWindowImage {}
-    impl BinImpl for LpWindowImage {}
+    impl WidgetImpl for LpImageWindow {}
+    impl BinImpl for LpImageWindow {}
 
-    impl LpWindowImage {
+    impl LpImageWindow {
         fn is_showing_image(&self) -> bool {
             self.image_view.try_get().map_or(false, |image_view| {
                 image_view
@@ -434,11 +434,11 @@ mod imp {
 }
 
 glib::wrapper! {
-    pub struct LpWindowImage(ObjectSubclass<imp::LpWindowImage>)
+    pub struct LpImageWindow(ObjectSubclass<imp::LpImageWindow>)
     @extends gtk::Widget, adw::Bin;
 }
 
-impl LpWindowImage {
+impl LpImageWindow {
     fn zoom_out_cursor(&self) {
         if let Some(image) = self.imp().image_view.current_image() {
             image.zoom_out_cursor();

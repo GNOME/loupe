@@ -22,17 +22,17 @@ use adw::{glib, gtk};
 mod imp {
     use super::*;
     #[derive(Debug, Default, gtk::CompositeTemplate, glib::Properties)]
-    #[properties(wrapper_type = super::LpWindowEdit)]
-    #[template(file = "window_edit.ui")]
-    pub struct LpWindowEdit {
+    #[properties(wrapper_type = super::LpImageEdit)]
+    #[template(file = "edit_window.ui")]
+    pub struct LpImageEdit {
         #[property(get)]
         example: u64,
     }
 
     #[glib::object_subclass]
-    impl ObjectSubclass for LpWindowEdit {
-        const NAME: &'static str = "LpWindowEdit";
-        type Type = super::LpWindowEdit;
+    impl ObjectSubclass for LpImageEdit {
+        const NAME: &'static str = "LpImageEdit";
+        type Type = super::LpImageEdit;
         type ParentType = adw::Bin;
 
         fn class_init(klass: &mut Self::Class) {
@@ -45,22 +45,22 @@ mod imp {
     }
 
     #[glib::derived_properties]
-    impl ObjectImpl for LpWindowEdit {
+    impl ObjectImpl for LpImageEdit {
         fn constructed(&self) {
             self.parent_constructed();
         }
     }
 
-    impl WidgetImpl for LpWindowEdit {}
-    impl BinImpl for LpWindowEdit {}
+    impl WidgetImpl for LpImageEdit {}
+    impl BinImpl for LpImageEdit {}
 }
 
 glib::wrapper! {
-    pub struct LpWindowEdit(ObjectSubclass<imp::LpWindowEdit>)
+    pub struct LpImageEdit(ObjectSubclass<imp::LpImageEdit>)
     @extends gtk::Widget, adw::Bin;
 }
 
-impl LpWindowEdit {
+impl LpImageEdit {
     pub fn new() -> Self {
         glib::Object::new()
     }
