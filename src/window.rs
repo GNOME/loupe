@@ -17,21 +17,18 @@
 
 use adw::prelude::*;
 use adw::subclass::prelude::*;
+use gio::glib::VariantTy;
 use gtk::CompositeTemplate;
 
 use crate::config;
 use crate::deps::*;
-use crate::widgets::LpImageView;
+use crate::widgets::{LpImageView, LpWindowEdit, LpWindowImage};
 
 /// Show window after X milliseconds even if image dimensions are not known yet
 const SHOW_WINDOW_AFTER: u64 = 2000;
 
 mod imp {
-
-    use gio::glib::VariantTy;
-
     use super::*;
-    use crate::widgets::LpWindowImage;
 
     // To use composite templates, you need
     // to use derive macro. Derive macros generate
@@ -52,9 +49,13 @@ mod imp {
     pub struct LpWindow {
         #[template_child]
         pub(super) toast_overlay: TemplateChild<adw::ToastOverlay>,
+        #[template_child]
+        pub(super) stack: TemplateChild<adw::ViewStack>,
 
         #[template_child]
         pub(super) window_image: TemplateChild<LpWindowImage>,
+        #[template_child]
+        pub(super) window_edit: TemplateChild<LpWindowEdit>,
     }
 
     #[glib::object_subclass]
@@ -190,7 +191,7 @@ impl LpWindow {
     }
 
     pub fn show_edit(&self) {
-        todo!()
+        self.imp().stack.set_visible_child(&*self.imp().window_edit);
     }
 
     pub fn image_view(&self) -> LpImageView {
