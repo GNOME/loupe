@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <template class="LpWindowEdit" parent="AdwBin">
+    <property name="child">
+      <object class="AdwToolbarView" id="toolbar_view">
+        <child type="top">
+          <object class="AdwHeaderBar"></object>
+        </child>
+        <property name="content">
+          <object class="GtkLabel">
+            <property name="label">Edit Image</property>
+          </object>
+        </property>
+      </object>
+    </property>
+  </template>
+</interface>

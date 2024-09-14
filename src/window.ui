@@ -22,8 +22,15 @@
     <property name="content">
       <object class="AdwToastOverlay" id="toast_overlay">
         <property name="child">
-          <object class="LpWindowImage" id="window_image">
-            <property name="window">LpWindow</property>
+          <object class="AdwViewStack" id="stack">
+            <child>
+              <object class="LpWindowImage" id="window_image">
+                <property name="window">LpWindow</property>
+              </object>
+            </child>
+            <child>
+              <object class="LpWindowEdit" id="window_edit"></object>
+            </child>
           </object>
         </property>
       </object>

@@ -28,6 +28,7 @@ mod properties_view;
 mod shy_bin;
 mod sliding_view;
 mod window_content;
+mod window_edit;
 mod window_image;
 
 pub use drag_overlay::LpDragOverlay;
@@ -41,4 +42,5 @@ pub use properties_view::LpPropertiesView;
 pub use shy_bin::LpShyBin;
 pub use sliding_view::LpSlidingView;
 pub use window_content::LpWindowContent;
+pub use window_edit::LpWindowEdit;
 pub use window_image::LpWindowImage;
