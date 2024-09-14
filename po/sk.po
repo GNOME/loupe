@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2024-08-26 21:38+0000\n"
-"PO-Revision-Date: 2024-08-27 21:34+0200\n"
+"POT-Creation-Date: 2024-09-13 14:09+0000\n"
+"PO-Revision-Date: 2024-09-14 16:14+0200\n"
 "Last-Translator: Matej Mrenica <matejm98mthw@gmail.com>\n"
 "Language-Team: Slovak <->\n"
 "Language: sk\n"
@@ -66,11 +66,9 @@ msgid "General Shortcuts"
 msgstr "Všeobecné skratky"
 
 #: data/resources/gtk/help-overlay.ui:14
-#| msgctxt "shortcut window"
-#| msgid "Copy Image or Metadata to Clipboard"
 msgctxt "shortcut window"
 msgid "Copy Image or Selected Text to Clipboard"
-msgstr "Kopírovanie obrázka alebo vybraného textu do schránky"
+msgstr "Kopírovať obrázok alebo vybraný textu do schránky"
 
 #: data/resources/gtk/help-overlay.ui:20
 msgctxt "shortcut window"
@@ -221,8 +219,6 @@ msgid "Pan Down"
 msgstr "Posun dole"
 
 #: data/resources/gtk/help-overlay.ui:202
-#| msgctxt "shortcut window"
-#| msgid "Pan View"
 msgctxt "shortcut window"
 msgid "View"
 msgstr "Pohľad"
@@ -255,7 +251,8 @@ msgstr "Gestá"
 #. Translators: Replace "translator-credits" with your names, one name per line
 #: src/about.rs:43
 msgid "translator-credits"
-msgstr "Matej Mrenica <matejm98mthw@gmail.com>\n"
+msgstr ""
+"Matej Mrenica <matejm98mthw@gmail.com>\n"
 "Jose Riha <jose1711@gmail.com>"
 
 #: src/about.rs:44
@@ -266,22 +263,23 @@ msgstr "Copyright © 2020–2024 Christopher Davis et al."
 msgid "Could not list other files in directory."
 msgstr "Nepodarilo sa vypísať ďalšie súbory v adresári."
 
+#. Translators: Display of the f-number <https://en.wikipedia.org/wiki/F-number>. {} will be replaced with the number
 #: src/metadata.rs:253
 msgid "\\u{192}\\u{2215}{}"
 msgstr "\\u{192}\\u{2215}{}"
 
 #. Translators: Fractional exposure time (photography) in seconds
-#: src/metadata.rs:270
+#: src/metadata.rs:269
 msgid "1\\u{2215}{}\\u{202F}s"
 msgstr "1\\u{2215}{}\\u{202F}s"
 
 #. Translators: Exposure time (photography) in seconds
-#: src/metadata.rs:278
+#: src/metadata.rs:277
 msgid "{}\\u{202F}s"
 msgstr "{}\\u{202F}s"
 
 #. Translators: Unit for focal length in millimeters
-#: src/metadata.rs:304
+#: src/metadata.rs:303
 msgid "{}\\u{202F}mm"
 msgstr "{}\\u{202F}mm"
 
@@ -324,8 +322,8 @@ msgid ""
 "Please include this information when you report an error. If possible, "
 "please also provide the image that causes the issue."
 msgstr ""
-"Pri pokuse o otvorenie obrázka vrátil program, ktorý načítal obrázok, nasledovnú chybu. "
-"Pri hlásení chyby uveďte tieto informácie. Ak je to možné, "
+"Pri pokuse o otvorenie obrázka vrátil program, ktorý načítal obrázok, "
+"nasledovnú chybu. Pri hlásení chyby uveďte tieto informácie. Ak je to možné, "
 "pošlite aj obrázok, ktorý spôsobuje problém."
 
 #: src/widgets/error_details.ui:24
@@ -345,8 +343,8 @@ msgid ""
 "No image loaders available. Maybe the “glycin-loaders” package with "
 "compatibility version “{}” is not installed."
 msgstr ""
-"Nie sú k dispozícii žiadne programy na načítanie obrázkov. Možno bude potrebné "
-"nainštalovať balíček „glycin-loaders“ s kompatibilnou verziou „{}“."
+"Nie sú k dispozícii žiadne programy na načítanie obrázkov. Možno bude "
+"potrebné nainštalovať balíček „glycin-loaders“ s kompatibilnou verziou „{}“."
 
 #: src/widgets/image_page.rs:241
 msgid "The image format “{} ({})” is known but not installed."
@@ -479,8 +477,6 @@ msgid "Continue…"
 msgstr "Pokračovať…"
 
 #: src/widgets/print.rs:466
-#| msgctxt "shortcut window"
-#| msgid "First Image"
 msgid "Print Image"
 msgstr "Vytlačiť obrázok"
 
@@ -572,12 +568,11 @@ msgstr ", čiernobiele"
 msgid ", {}\\u{202F}bit"
 msgstr ", {}\\u{202F}bit"
 
-#: src/widgets/properties_view.rs:286
-#| msgid "1\\u{2215}{}\\u{202F}s"
+#: src/widgets/properties_view.rs:287
 msgid "{}\\u{202F}\\u{D7}\\u{202F}{}"
 msgstr "{}\\u{202F}\\u{D7}\\u{202F}{}"
 
-#: src/widgets/properties_view.rs:324
+#: src/widgets/properties_view.rs:326
 msgid "Image Coordinates Copied"
 msgstr "Skopírované súradnice obrázka"
 
