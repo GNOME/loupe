@@ -1,0 +1,48 @@
+lpcrop {
+  --discarded-background: rgba(50, 50, 50, 0.7);
+  --selection-border-color: rgba(255, 255, 255, 0.7);
+  --handle-border-color: rgba(255, 255, 255, 0.9);
+  --handle-size: 20px;
+  --handle-border-width: 3px;
+  --handle-offset: -4px;
+}
+
+.selection {
+  outline: 1px solid var(--selection-border-color);
+}
+
+.handle {
+  padding: var(--handle-size) var(--handle-size) 0 0;
+}
+
+.handle-top-left {
+  border-top: var(--handle-border-width) var(--handle-border-color) solid;
+  border-left: var(--handle-border-width) var(--handle-border-color) solid;
+  margin-top: var(--handle-offset);
+  margin-left: var(--handle-offset);
+}
+
+.handle-top-right {
+  border-top: var(--handle-border-width) var(--handle-border-color) solid;
+  border-right: var(--handle-border-width) var(--handle-border-color) solid;
+  margin-top: var(--handle-offset);
+  margin-right: var(--handle-offset);
+}
+
+.handle-bottom-left {
+  border-left: var(--handle-border-width) var(--handle-border-color) solid;
+  border-bottom: var(--handle-border-width) var(--handle-border-color) solid;
+  margin-left: var(--handle-offset);
+  margin-bottom: var(--handle-offset);
+}
+
+.handle-bottom-right {
+  border-bottom: var(--handle-border-width) var(--handle-border-color) solid;
+  border-right: var(--handle-border-width) var(--handle-border-color) solid;
+  margin-bottom: var(--handle-offset);
+  margin-right: var(--handle-offset);
+}
+
+.discarded-area {
+  background: var(--discarded-background);
+}
