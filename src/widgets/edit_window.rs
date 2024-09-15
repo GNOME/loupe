@@ -15,24 +15,34 @@
 //
 // SPDX-License-Identifier: GPL-3.0-or-later
 
+use std::cell::OnceCell;
+
 use adw::prelude::*;
 use adw::subclass::prelude::*;
-use adw::{glib, gtk};
 
+use super::edit::LpEditCrop;
+use super::LpImage;
+use crate::deps::*;
 mod imp {
+
     use super::*;
+    use crate::widgets::LpImage;
+
     #[derive(Debug, Default, gtk::CompositeTemplate, glib::Properties)]
-    #[properties(wrapper_type = super::LpImageEdit)]
+    #[properties(wrapper_type = super::LpEditWindow)]
     #[template(file = "edit_window.ui")]
-    pub struct LpImageEdit {
-        #[property(get)]
-        example: u64,
+    pub struct LpEditWindow {
+        #[template_child]
+        toolbar_view: TemplateChild<adw::ToolbarView>,
+
+        #[property(get, construct_only)]
+        original_image: OnceCell<LpImage>,
     }
 
     #[glib::object_subclass]
-    impl ObjectSubclass for LpImageEdit {
-        const NAME: &'static str = "LpImageEdit";
-        type Type = super::LpImageEdit;
+    impl ObjectSubclass for LpEditWindow {
+        const NAME: &'static str = "LpEditWindow";
+        type Type = super::LpEditWindow;
         type ParentType = adw::Bin;
 
         fn class_init(klass: &mut Self::Class) {
@@ -45,23 +55,30 @@ mod imp {
     }
 
     #[glib::derived_properties]
-    impl ObjectImpl for LpImageEdit {
+    impl ObjectImpl for LpEditWindow {
         fn constructed(&self) {
             self.parent_constructed();
+
+            let obj = self.obj();
+
+            self.toolbar_view
+                .set_content(Some(&LpEditCrop::new(obj.original_image())));
         }
     }
 
-    impl WidgetImpl for LpImageEdit {}
-    impl BinImpl for LpImageEdit {}
+    impl WidgetImpl for LpEditWindow {}
+    impl BinImpl for LpEditWindow {}
 }
 
 glib::wrapper! {
-    pub struct LpImageEdit(ObjectSubclass<imp::LpImageEdit>)
+    pub struct LpEditWindow(ObjectSubclass<imp::LpEditWindow>)
     @extends gtk::Widget, adw::Bin;
 }
 
-impl LpImageEdit {
-    pub fn new() -> Self {
-        glib::Object::new()
+impl LpEditWindow {
+    pub fn new(image: LpImage) -> Self {
+        glib::Object::builder()
+            .property("original_image", image)
+            .build()
     }
 }

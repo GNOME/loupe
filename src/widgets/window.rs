@@ -22,7 +22,7 @@ use gtk::CompositeTemplate;
 
 use crate::config;
 use crate::deps::*;
-use crate::widgets::{LpImageEdit, LpImageView, LpImageWindow};
+use crate::widgets::{LpEditWindow, LpImageView, LpImageWindow};
 
 /// Show window after X milliseconds even if image dimensions are not known yet
 const SHOW_WINDOW_AFTER: u64 = 2000;
@@ -55,7 +55,7 @@ mod imp {
         #[template_child]
         pub(super) image_window: TemplateChild<LpImageWindow>,
         #[template_child]
-        pub(super) edit_window: TemplateChild<LpImageEdit>,
+        pub(super) edit_window_child: TemplateChild<adw::Bin>,
     }
 
     #[glib::object_subclass]
@@ -144,8 +144,7 @@ impl LpWindow {
     pub fn resize_default(&self) {
         let imp = self.imp();
 
-        if imp
-            .image_window
+        if self
             .image_view()
             .current_image()
             .is_some_and(|img| img.image_size_available())
@@ -191,7 +190,14 @@ impl LpWindow {
     }
 
     pub fn show_edit(&self) {
-        self.imp().stack.set_visible_child(&*self.imp().edit_window);
+        if let Some(image) = self.image_view().current_image() {
+            let edit_child = &*self.imp().edit_window_child;
+
+            edit_child.set_child(Some(&LpEditWindow::new(image)));
+            self.imp().stack.set_visible_child(edit_child);
+        } else {
+            log::error!("Can't open image editor since no current image exists");
+        }
     }
 
     pub fn image_view(&self) -> LpImageView {
