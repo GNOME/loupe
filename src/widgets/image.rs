@@ -370,4 +370,14 @@ impl LpImage {
         image.imp().still.replace(true);
         image
     }
+
+    pub fn duplicate_from(&self, original: &LpImage) {
+        let original_imp = original.imp();
+
+        let imp = self.imp();
+
+        *imp.file.borrow_mut() = original_imp.file.borrow().clone();
+        imp.frame_buffer
+            .swap(Arc::new((*(original_imp.frame_buffer).load_full()).clone()));
+    }
 }

@@ -29,7 +29,8 @@
               </object>
             </child>
             <child>
-              <object class="LpImageEdit" id="edit_window"></object>
+              <object class="AdwBin" id="edit_window_child">
+              </object>
             </child>
           </object>
         </property>

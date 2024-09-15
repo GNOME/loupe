@@ -29,19 +29,6 @@ impl imp::LpImage {
         }
     }
 
-    /// Image width with current zoom factor and rotation
-    ///
-    /// During rotation it is an interpolated size that does not
-    /// represent the actual size. The size returned might well be
-    /// larger than what can actually be displayed within the widget.
-    pub fn image_displayed_width(&self) -> f64 {
-        self.image_width(self.applicable_zoom())
-    }
-
-    pub fn image_displayed_height(&self) -> f64 {
-        self.image_height(self.applicable_zoom())
-    }
-
     pub fn image_width(&self, zoom: f64) -> f64 {
         let (width, height) = self.original_dimensions();
 
@@ -106,5 +93,20 @@ impl LpImage {
         } else {
             self.imp().original_dimensions()
         }
+    }
+
+    /// Image width with current zoom factor and rotation
+    ///
+    /// During rotation it is an interpolated size that does not
+    /// represent the actual size. The size returned might well be
+    /// larger than what can actually be displayed within the widget.
+    pub fn image_displayed_width(&self) -> f64 {
+        let imp = self.imp();
+        imp.image_width(imp.applicable_zoom())
+    }
+
+    pub fn image_displayed_height(&self) -> f64 {
+        let imp = self.imp();
+        imp.image_height(imp.applicable_zoom())
     }
 }
