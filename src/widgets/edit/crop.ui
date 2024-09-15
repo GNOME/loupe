@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <menu id="aspect_ratio_menu">
+    <section>
+      <item>
+        <attribute name="label" translatable="yes">Free</attribute>
+        <attribute name="action">edit-crop.aspect-ratio</attribute>
+        <attribute name="target">free</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">Original</attribute>
+        <attribute name="action">edit-crop.aspect-ratio</attribute>
+        <attribute name="target">original</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">Square</attribute>
+        <attribute name="action">edit-crop.aspect-ratio</attribute>
+        <attribute name="target">square</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">5:4</attribute>
+        <attribute name="action">edit-crop.aspect-ratio</attribute>
+        <attribute name="target">r5to4</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">4:3</attribute>
+        <attribute name="action">edit-crop.aspect-ratio</attribute>
+        <attribute name="target">r4to3</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">3:2</attribute>
+        <attribute name="action">edit-crop.aspect-ratio</attribute>
+        <attribute name="target">r3to2</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">16:10</attribute>
+        <attribute name="action">edit-crop.aspect-ratio</attribute>
+        <attribute name="target">r16to10</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">16:9</attribute>
+        <attribute name="action">edit-crop.aspect-ratio</attribute>
+        <attribute name="target">r16to9</attribute>
+      </item>
+    </section>
+    <section>
+      <item>
+        <attribute name="custom">orientation</attribute>
+      </item>
+
+    </section>
+  </menu>
+  <template class="LpEditCrop" parent="GtkWidget">
+    <property name="child">
+      <object class="GtkBox">
+        <property name="orientation">vertical</property>
+        <child>
+          <object class="GtkOverlay">
+            <property name="margin-top">12</property>
+            <property name="margin-end">12</property>
+            <property name="margin-bottom">12</property>
+            <property name="margin-start">12</property>
+            <child>
+              <object class="LpImage" id="image">
+              </object>
+            </child>
+            <child type="overlay">
+              <object class="LpEditCropSelection" id="selection">
+                <property name="crop">LpEditCrop</property>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="GtkBox">
+            <property name="orientation">horizontal</property>
+            <property name="homogeneous">true</property>
+            <property name="spacing">6</property>
+            <property name="margin-bottom">16</property>
+            <property name="margin-start">16</property>
+            <property name="margin-end">16</property>
+            <child>
+              <object class="GtkBox">
+                <property name="orientation">horizontal</property>
+                <property name="spacing">6</property>
+                <child>
+                  <object class="GtkMenuButton">
+                    <property name="icon-name">aspect-ratio-symbolic</property>
+                    <property name="tooltip-text" translatable="yes">Aspect Ratio</property>
+                    <property name="halign">start</property>
+                    <property name="direction">up</property>
+                    <style>
+                      <class name="flat" />
+                    </style>
+                    <property name="popover">
+                      <object class="GtkPopoverMenu">
+                        <property name="menu-model">aspect_ratio_menu</property>
+                        <child type="orientation">
+                          <object class="GtkBox">
+                            <property name="homogeneous">true</property>
+                            <property name="spacing">6</property>
+                            <child>
+                              <object class="GtkToggleButton" id="landscape">
+                                <property name="icon-name">page-orientation-landscape-symbolic</property>
+                                <property name="tooltip-text" translatable="yes">Orientation Landscape</property>
+                                <property name="hexpand">true</property>
+                                <property name="action-name">edit-crop.orientation</property>
+                                <property name="action-target">'landscape'</property>
+                                <style>
+                                  <class name="flat" />
+                                </style>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkToggleButton" id="portrait">
+                                <property name="icon-name">page-orientation-portrait-symbolic</property>
+                                <property name="tooltip-text" translatable="yes">Orientation Portrait</property>
+                                <property name="hexpand">true</property>
+                                <property name="action-name">edit-crop.orientation</property>
+                                <property name="action-target">'portrait'</property>
+                                <style>
+                                  <class name="flat" />
+                                </style>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkButton">
+                    <property name="icon-name">edit-mirror-symbolic</property>
+                    <property name="valign">start</property>
+                    <style>
+                      <class name="flat" />
+                    </style>
+                  </object>
+                </child>
+              </object>
+            </child>
+            <child>
+              <object class="GtkBox">
+                <property name="orientation">horizontal</property>
+                <property name="halign">center</property>
+                <property name="spacing">6</property>
+                <child>
+                  <object class="GtkButton">
+                    <property name="icon-name">object-rotate-left-symbolic</property>
+                    <property name="valign">start</property>
+                    <style>
+                      <class name="flat" />
+                    </style>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkButton">
+                    <property name="icon-name">object-rotate-right-symbolic</property>
+                    <property name="valign">start</property>
+                    <style>
+                      <class name="flat" />
+                    </style>
+                  </object>
+                </child>
+              </object>
+            </child>
+            <child>
+              <object class="GtkBox">
+                <property name="orientation">horizontal</property>
+                <property name="halign">end</property>
+                <property name="spacing">6</property>
+                <child>
+                  <object class="GtkButton">
+                    <property name="label">Reset</property>
+                    <property name="valign">start</property>
+                    <style>
+                      <class name="flat" />
+                    </style>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+        </child>
+      </object>
+    </property>
+  </template>
+</interface>

@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0" />
+  <template class="LpEditCropSelection" parent="GtkGrid">
+    <property name="halign">start</property>
+    <property name="valign">start</property>
+    <child>
+      <object class="GtkGestureDrag" id="selection_drag">
+      </object>
+    </child>
+    <child>
+      <object class="AdwBin" id="space_top_left">
+        <layout>
+          <property name="row">0</property>
+          <property name="column">0</property>
+        </layout>
+        <style>
+          <class name="discarded-area" />
+        </style>
+      </object>
+    </child>
+    <child>
+      <object class="AdwBin">
+        <layout>
+          <property name="row">0</property>
+          <property name="column">1</property>
+        </layout>
+        <style>
+          <class name="discarded-area" />
+        </style>
+      </object>
+    </child>
+    <child>
+      <object class="AdwBin">
+        <layout>
+          <property name="row">1</property>
+          <property name="column">0</property>
+        </layout>
+        <style>
+          <class name="discarded-area" />
+        </style>
+      </object>
+    </child>
+    <child>
+      <object class="AdwBin">
+        <layout>
+          <property name="row">1</property>
+          <property name="column">2</property>
+        </layout>
+        <style>
+          <class name="discarded-area" />
+        </style>
+      </object>
+    </child>
+    <child>
+      <object class="AdwBin">
+        <property name="vexpand">true</property>
+        <layout>
+          <property name="row">2</property>
+          <property name="column">0</property>
+        </layout>
+        <style>
+          <class name="discarded-area" />
+        </style>
+      </object>
+    </child>
+    <child>
+      <object class="AdwBin">
+        <layout>
+          <property name="row">2</property>
+          <property name="column">1</property>
+        </layout>
+        <style>
+          <class name="discarded-area" />
+        </style>
+      </object>
+    </child>
+    <child>
+      <object class="AdwBin">
+        <layout>
+          <property name="row">2</property>
+          <property name="column">2</property>
+        </layout>
+        <style>
+          <class name="discarded-area" />
+        </style>
+      </object>
+    </child>
+    <child>
+      <object class="AdwBin">
+        <property name="hexpand">true</property>
+        <layout>
+          <property name="row">0</property>
+          <property name="column">2</property>
+        </layout>
+        <style>
+          <class name="discarded-area" />
+        </style>
+      </object>
+    </child>
+    <child>
+      <object class="GtkGrid" id="selection">
+        <property name="hexpand-set">true</property>
+        <property name="vexpand-set">true</property>
+        <layout>
+          <property name="row">1</property>
+          <property name="column">1</property>
+        </layout>
+        <style>
+          <class name="selection" />
+        </style>
+        <child>
+          <object class="AdwBin" id="handle_top_left">
+            <property name="halign">start</property>
+            <property name="valign">start</property>
+            <layout>
+              <property name="row">0</property>
+              <property name="column">0</property>
+            </layout>
+            <style>
+              <class name="handle" />
+              <class name="handle-top-left" />
+            </style>
+          </object>
+        </child>
+        <child>
+          <object class="AdwBin" id="handle_top_right">
+            <property name="halign">end</property>
+            <property name="hexpand">true</property>
+            <layout>
+              <property name="row">0</property>
+              <property name="column">1</property>
+            </layout>
+            <style>
+              <class name="handle" />
+              <class name="handle-top-right" />
+            </style>
+          </object>
+        </child>
+        <child>
+          <object class="AdwBin" id="handle_bottom_left">
+            <property name="valign">end</property>
+            <property name="vexpand">true</property>
+            <layout>
+              <property name="row">1</property>
+              <property name="column">0</property>
+            </layout>
+            <style>
+              <class name="handle" />
+              <class name="handle-bottom-left" />
+            </style>
+          </object>
+        </child>
+        <child>
+          <object class="AdwBin" id="handle_bottom_right">
+            <property name="halign">end</property>
+            <property name="hexpand">true</property>
+            <property name="valign">end</property>
+            <property name="vexpand">true</property>
+            <layout>
+              <property name="row">1</property>
+              <property name="column">1</property>
+            </layout>
+            <style>
+              <class name="handle" />
+              <class name="handle-bottom-right" />
+            </style>
+          </object>
+        </child>
+      </object>
+    </child>
+  </template>
+</interface>

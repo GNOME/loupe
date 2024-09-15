@@ -17,6 +17,8 @@
 //
 // SPDX-License-Identifier: GPL-3.0-or-later
 
+pub mod edit;
+
 mod drag_overlay;
 mod edit_window;
 mod error_details;
@@ -33,7 +35,7 @@ mod window;
 mod window_content;
 
 pub use drag_overlay::LpDragOverlay;
-pub use edit_window::LpImageEdit;
+pub use edit_window::LpEditWindow;
 pub use error_details::LpErrorDetails;
 pub use image::LpImage;
 pub use image_page::LpImagePage;
