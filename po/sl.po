@@ -2,15 +2,15 @@
 # Copyright (C) 2023 Loupe's COPYRIGHT HOLDER
 # This file is distributed under the same license as the Loupe package.
 #
-# Martin Srebotnjak <miles@filmsi.net>, 2023.
+# Martin Srebotnjak <miles@filmsi.net>, 2023-2024.
 # Matej Urbančič <mateju@src.gnome.org>, 2023–2024.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2024-07-31 00:10+0000\n"
-"PO-Revision-Date: 2024-07-31 17:10+0200\n"
+"POT-Creation-Date: 2024-09-16 15:44+0000\n"
+"PO-Revision-Date: 2024-09-16 17:49+0200\n"
 "Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
 "Language-Team: Slovenian <gnome-si@googlegroups.com>\n"
 "Language: sl\n"
@@ -23,7 +23,7 @@ msgstr ""
 "X-Poedit-SourceCharset: ISO-8859-1\n"
 
 #: data/org.gnome.Loupe.desktop.in.in:3
-#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:31 src/window.rs:873
+#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:31 src/window.rs:897
 msgid "Image Viewer"
 msgstr "Pregledovalnik slik"
 
@@ -269,22 +269,23 @@ msgstr "Avtorske pravice © 2020–2024 Christopher Davis in sodelavci"
 msgid "Could not list other files in directory."
 msgstr "Drugih datotek v mapi ni mogoče izpisati."
 
-#: src/metadata.rs:249
+#. Translators: Display of the f-number <https://en.wikipedia.org/wiki/F-number>. {} will be replaced with the number
+#: src/metadata.rs:253
 msgid "\\u{192}\\u{2215}{}"
 msgstr "\\u{192}\\u{2215}{}"
 
 #. Translators: Fractional exposure time (photography) in seconds
-#: src/metadata.rs:266
+#: src/metadata.rs:269
 msgid "1\\u{2215}{}\\u{202F}s"
 msgstr "1\\u{2215}{}\\u{202F} s"
 
 #. Translators: Exposure time (photography) in seconds
-#: src/metadata.rs:274
+#: src/metadata.rs:277
 msgid "{}\\u{202F}s"
 msgstr "{}\\u{202F} s"
 
 #. Translators: Unit for focal length in millimeters
-#: src/metadata.rs:300
+#: src/metadata.rs:303
 msgid "{}\\u{202F}mm"
 msgstr "{}\\u{202F} mm"
 
@@ -312,12 +313,12 @@ msgstr "Z"
 #. The format has to follow <https://docs.gtk.org/glib/method.DateTime.format.html>
 #. The default is already translated. Don't change if you are not sure what to
 #. use.
-#: src/util.rs:37
+#: src/util.rs:38
 #, c-format
 msgid "%x %X"
 msgstr "%x %X"
 
-#: src/util.rs:180 src/window.rs:659
+#: src/util.rs:181 src/window.rs:675
 msgid "Failed to restore image from trash"
 msgstr "Obnovitev slike iz smeti je spodletela"
 
@@ -343,7 +344,7 @@ msgstr "Kopiraj sporočilo o napaki"
 msgid "Report _Issue"
 msgstr "Pošlji poroč_ilo o napaki"
 
-#: src/widgets/image_page.rs:227
+#: src/widgets/image_page.rs:226
 msgid ""
 "No image loaders available. Maybe the “glycin-loaders” package with "
 "compatibility version “{}” is not installed."
@@ -351,19 +352,19 @@ msgstr ""
 "Nalagalniki slik niso na voljo. Morda paket »glicin-loaders« z različico "
 "združljivosti »{}« ni nameščen."
 
-#: src/widgets/image_page.rs:242
+#: src/widgets/image_page.rs:241
 msgid "The image format “{} ({})” is known but not installed."
 msgstr "Vrsta zapisa slike »{} ({})« je znana, vendar ni nameščena."
 
-#: src/widgets/image_page.rs:249
+#: src/widgets/image_page.rs:248
 msgid "Unknown image format “{} ({}).”"
 msgstr "Neznana vrsta zapisa slike »{} ({})«."
 
-#: src/widgets/image_page.rs:277
+#: src/widgets/image_page.rs:276
 msgid "There is not enough free memory available to load this image."
 msgstr "Za nalaganje te slike ni na voljo dovolj prostega pomnilnika."
 
-#: src/widgets/image_page.rs:281
+#: src/widgets/image_page.rs:280
 msgid "Either the image file is corrupted or it contains unsupported elements."
 msgstr "Slikovna datoteka je poškodovana ali pa vsebuje nepodprte elemente."
 
@@ -371,21 +372,25 @@ msgstr "Slikovna datoteka je poškodovana ali pa vsebuje nepodprte elemente."
 msgid "_Open With…"
 msgstr "_Odpri z …"
 
-#: src/widgets/image_page.ui:14 src/window.ui:24
+#: src/widgets/image_page.ui:10 src/window.ui:20
 msgid "_Print…"
 msgstr "_Natisni …"
 
-#: src/widgets/image_page.ui:18
-msgid "_Copy"
-msgstr "_Kopiraj"
-
-#: src/widgets/image_page.ui:23 src/window.ui:29
+#: src/widgets/image_page.ui:15 src/window.ui:25
 msgid "Rotate"
 msgstr "Zavrti"
 
-#: src/widgets/image_page.ui:34 src/window.ui:40
+#: src/widgets/image_page.ui:26 src/window.ui:36
 msgid "_Set as Background…"
 msgstr "_Nastavi za ozadje …"
+
+#: src/widgets/image_page.ui:30 src/window.ui:40
+msgid "_Delete"
+msgstr "_Izbriši"
+
+#: src/widgets/image_page.ui:34
+msgid "_Copy"
+msgstr "_Kopiraj"
 
 #: src/widgets/image_page.ui:63
 msgid "Could not Load Image"
@@ -399,43 +404,51 @@ msgstr "Več informacij"
 msgid "_Reload"
 msgstr "_Ponovno naloži"
 
-#: src/widgets/image_page.ui:123 src/window.ui:225
+#: src/widgets/image_page.ui:123 src/window.ui:218
 msgid "Rotate Left"
 msgstr "Zavrti v levo"
 
-#: src/widgets/image_page.ui:133 src/window.ui:235
+#: src/widgets/image_page.ui:133 src/window.ui:228
 msgid "Rotate Right"
 msgstr "Zavrti v desno"
 
+#: src/widgets/image_view.rs:217
+msgid "{} %"
+msgstr "{} %"
+
 #. Translators: This is a toast notification, informing the user that
 #. an image has been set as background.
-#: src/widgets/image_view.rs:720
+#: src/widgets/image_view.rs:824
 msgid "Set as background."
 msgstr "Nastavi kot sliko ozadja."
 
-#: src/widgets/image_view.rs:733
+#: src/widgets/image_view.rs:837
 msgid "Could not set background."
 msgstr "Ozadja ni bilo mogoče nastaviti."
 
-#: src/widgets/image_view.ui:27
+#: src/widgets/image_view.ui:30
 msgid "Previous Image"
 msgstr "Predhodnja slika"
 
-#: src/widgets/image_view.ui:38
+#: src/widgets/image_view.ui:40
 msgid "Next Image"
 msgstr "Naslednja slika"
 
-#: src/widgets/image_view.ui:63
+#: src/widgets/image_view.ui:74
 msgid "Zoom Out"
 msgstr "Pomanjšaj"
 
-#: src/widgets/image_view.ui:74
+#: src/widgets/image_view.ui:85
 msgid "Zoom In"
 msgstr "Povečaj"
 
-#: src/widgets/image_view.ui:85
-msgid "Toggle Fullscreen"
-msgstr "Preklopi celozaslonski način"
+#: src/widgets/image_view.ui:100
+msgid "Toggle Zoom"
+msgstr "Preklopi povečavo"
+
+#: src/widgets/image_view.ui:108
+msgid "Zoom to Specific Level"
+msgstr "Povečaj na določeno raven"
 
 #: src/widgets/print.rs:108
 msgid "Top"
@@ -573,11 +586,11 @@ msgstr ", sivinsko"
 msgid ", {}\\u{202F}bit"
 msgstr ", {}\\u{202F} bit"
 
-#: src/widgets/properties_view.rs:286
+#: src/widgets/properties_view.rs:287
 msgid "{}\\u{202F}\\u{D7}\\u{202F}{}"
 msgstr "{}\\u{202F}\\u{D7}\\u{202F}{}"
 
-#: src/widgets/properties_view.rs:324
+#: src/widgets/properties_view.rs:326
 msgid "Image Coordinates Copied"
 msgstr "Koordinate slike so kopirane"
 
@@ -646,51 +659,51 @@ msgstr "Goriščna razdalja"
 msgid "Maker, Model"
 msgstr "Izdelovalec, model"
 
-#: src/window.rs:523
+#: src/window.rs:539
 msgid "Supported image formats"
 msgstr "Podprte vrste slik"
 
-#: src/window.rs:529
+#: src/window.rs:545
 msgid "All files"
 msgstr "Vse datoteke"
 
-#: src/window.rs:536
+#: src/window.rs:552
 msgid "Open Image"
 msgstr "Odpri sliko"
 
-#: src/window.rs:622
+#: src/window.rs:638
 msgid "Image copied to clipboard"
 msgstr "Slika, kopirana v odložišče"
 
-#: src/window.rs:643
+#: src/window.rs:659
 msgid "Image moved to trash"
 msgstr "Slika, premaknjena v smeti"
 
-#: src/window.rs:644
+#: src/window.rs:660
 msgid "Undo"
 msgstr "Razveljavi"
 
-#: src/window.rs:674
+#: src/window.rs:690
 msgid "Failed to move image to trash"
 msgstr "Premikanje slike v smeti je spodletelo"
 
-#: src/window.rs:698
+#: src/window.rs:714
 msgid "Permanently Delete Image?"
 msgstr "Ali želite sliko trajno izbrisati?"
 
-#: src/window.rs:700
+#: src/window.rs:716
 msgid "After deleting the image “{}” it will be permanently lost."
 msgstr "Po brisanju slike »{}« ni mogoče več povrniti."
 
-#: src/window.rs:708
+#: src/window.rs:724
 msgid "Cancel"
 msgstr "Prekliči"
 
-#: src/window.rs:709
+#: src/window.rs:725
 msgid "Delete"
 msgstr "Izbriši"
 
-#: src/window.rs:720
+#: src/window.rs:736
 msgid "Failed to delete image"
 msgstr "Brisanje slike je spodletelo"
 
@@ -715,29 +728,25 @@ msgid "_About Image Viewer"
 msgstr "_O programu"
 
 #: src/window.ui:204
-msgid "Copy to Clipboard"
-msgstr "Kopiraj v odložišče"
+msgid "Toggle Fullscreen"
+msgstr "Preklopi celozaslonski način"
 
-#: src/window.ui:211
-msgid "Move to Trash"
-msgstr "Premakni v smeti"
-
-#: src/window.ui:217
+#: src/window.ui:210
 msgid "Main Menu"
 msgstr "Glavni meni"
 
-#: src/window.ui:249
+#: src/window.ui:242
 msgid "Image Properties"
 msgstr "Lastnosti slike"
 
-#: src/window.ui:281
+#: src/window.ui:274
 msgid "View Images"
 msgstr "Pokaži slike"
 
-#: src/window.ui:282
+#: src/window.ui:275
 msgid "Drag and drop images here"
 msgstr "Povlecite in spustite slike sem"
 
-#: src/window.ui:286
+#: src/window.ui:279
 msgid "_Open Files…"
 msgstr "_Odpri datoteke …"
