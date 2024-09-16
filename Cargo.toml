@@ -26,7 +26,7 @@ futures-lite = "2.1.0"
 gettext-rs = { version = "0.7.0", features = ["gettext-system"] }
 gettext-sys = { version = "0.21.3", features = ["gettext-system"] }
 gio = { version = "0.20.0", features = ["v2_74"] }
-glycin = { version = "2.0.0-beta", features = ["gdk4"] }
+glycin = { version = "2.0.0", features = ["gdk4"] }
 gtk = { package = "gtk4", version = "0.9.0", features = [
     "v4_14",
     "xml_validation",
