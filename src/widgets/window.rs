@@ -189,11 +189,17 @@ impl LpWindow {
         about.present(Some(self));
     }
 
+    pub fn show_image(&self) {
+        self.imp()
+            .stack
+            .set_visible_child(&*self.imp().image_window);
+    }
+
     pub fn show_edit(&self) {
         if let Some(image) = self.image_view().current_image() {
             let edit_child = &*self.imp().edit_window_child;
 
-            edit_child.set_child(Some(&LpEditWindow::new(image)));
+            edit_child.set_child(Some(&LpEditWindow::new(self.clone(), image)));
             self.imp().stack.set_visible_child(edit_child);
         } else {
             log::error!("Can't open image editor since no current image exists");
