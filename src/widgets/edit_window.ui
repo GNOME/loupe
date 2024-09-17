@@ -3,8 +3,18 @@
   <template class="LpEditWindow" parent="AdwBin">
     <property name="child">
       <object class="AdwToolbarView" id="toolbar_view">
+        <property name="top-bar-style">raised</property>
         <child type="top">
-          <object class="AdwHeaderBar"></object>
+          <object class="AdwHeaderBar">
+            <property name="show-title">false</property>
+            <property name="show-start-title-buttons">false</property>
+            <property name="show-start-title-buttons">false</property>
+            <child type="start">
+              <object class="GtkButton" id="cancel">
+                <property name="label" translatable="true">Cancel</property>
+              </object>
+            </child>
+          </object>
         </child>
       </object>
     </property>
