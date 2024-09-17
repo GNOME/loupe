@@ -1,7 +1,11 @@
+:root {
+  --osd-background-color: rgba(240, 240, 240, 0.75);
+}
+
 /* Overlay controls for prev/next and zoom */
 .osd-box {
   border-radius: 12px;
-  background: rgba(0, 0, 0, 0.65);
+  background-color: var(--osd-background-color);
   padding: 6px;
 }
 
@@ -12,7 +16,7 @@
 
 .fullscreen revealer:not(.raised) .fullscreen-osd {
   color: rgba(255, 255, 255, 0.9);
-  background: rgba(0, 0, 0, 0.65);
+  background-color: var(--osd-background-color);
 }
 
 shadow,
