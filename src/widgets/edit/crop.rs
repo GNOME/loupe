@@ -103,7 +103,6 @@ mod imp {
 
             obj.child().set_parent(obj);
 
-            obj.set_layout_manager(None::<gtk::LayoutManager>);
             self.image.duplicate_from(&obj.original_image());
         }
 
@@ -120,12 +119,15 @@ mod imp {
 
             obj.child().allocate(width, height, baseline, None);
 
-            self.selection.set_size(
-                image.image_rendering_x() as i32,
-                image.image_rendering_y() as i32,
-                image.image_rendering_width() as i32,
-                image.image_rendering_height() as i32,
+            let (x, y, width, height) = (
+                image.image_rendering_x(),
+                image.image_rendering_y(),
+                image.image_rendering_width(),
+                image.image_rendering_height(),
             );
+
+            self.selection.ensure_initialized(x, y, width, height);
+            self.selection.set_size(x, y, width, height);
         }
 
         fn measure(&self, orientation: gtk::Orientation, for_size: i32) -> (i32, i32, i32, i32) {
