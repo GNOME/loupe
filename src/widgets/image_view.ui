@@ -239,7 +239,7 @@
                             </child>
                             <child>
                               <object class="GtkButton" id="submit_zoom">
-                                <property name="icon-name">checkmark-symbolic</property>
+                                <property name="icon-name">check-plain-symbolic</property>
                                 <property name="tooltip-text">Zoom to Specified Level</property>
                                 <style>
                                   <class name="suggested-action" />
