@@ -62,6 +62,7 @@
             <property name="margin-start">18</property>
             <child>
               <object class="LpImage" id="image">
+                <property name="sensitive">false</property>
               </object>
             </child>
             <child type="overlay">
