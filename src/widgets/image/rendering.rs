@@ -60,8 +60,8 @@ impl WidgetImpl for imp::LpImage {
         let obj = self.obj();
         let widget_width = self.widget_width();
         let widget_height = self.widget_height();
-        let display_width = obj.image_displayed_width();
-        let display_height = obj.image_displayed_height();
+        let display_width = self.image_displayed_width();
+        let display_height = self.image_displayed_height();
 
         let applicable_zoom = self.applicable_zoom();
 
@@ -338,14 +338,24 @@ impl LpImage {
     pub fn image_rendering_x(&self) -> f64 {
         let imp = self.imp();
         let widget_width = imp.widget_width();
-        let display_width = self.image_displayed_width();
+        let display_width = imp.image_displayed_width();
         imp.round_f64(f64::max((widget_width - display_width) / 2.0, 0.))
     }
 
     pub fn image_rendering_y(&self) -> f64 {
         let imp = self.imp();
         let widget_height = imp.widget_height();
-        let display_height = self.image_displayed_height();
+        let display_height = imp.image_displayed_height();
         imp.round_f64(f64::max((widget_height - display_height) / 2.0, 0.))
+    }
+
+    pub fn image_rendering_width(&self) -> f64 {
+        let imp = self.imp();
+        imp.round_f64(imp.image_displayed_width())
+    }
+
+    pub fn image_rendering_height(&self) -> f64 {
+        let imp = self.imp();
+        imp.round_f64(imp.image_displayed_height())
     }
 }
