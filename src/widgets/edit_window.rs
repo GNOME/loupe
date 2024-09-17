@@ -21,12 +21,11 @@ use adw::prelude::*;
 use adw::subclass::prelude::*;
 
 use super::edit::LpEditCrop;
-use super::LpImage;
+use super::{LpImage, LpWindow};
 use crate::deps::*;
-mod imp {
 
+mod imp {
     use super::*;
-    use crate::widgets::LpImage;
 
     #[derive(Debug, Default, gtk::CompositeTemplate, glib::Properties)]
     #[properties(wrapper_type = super::LpEditWindow)]
@@ -34,7 +33,11 @@ mod imp {
     pub struct LpEditWindow {
         #[template_child]
         toolbar_view: TemplateChild<adw::ToolbarView>,
+        #[template_child]
+        cancel: TemplateChild<gtk::Button>,
 
+        #[property(get, construct_only)]
+        window: OnceCell<LpWindow>,
         #[property(get, construct_only)]
         original_image: OnceCell<LpImage>,
     }
@@ -63,6 +66,14 @@ mod imp {
 
             self.toolbar_view
                 .set_content(Some(&LpEditCrop::new(obj.original_image())));
+
+            self.cancel.connect_clicked(glib::clone!(
+                #[weak]
+                obj,
+                move |_| {
+                    obj.window().show_image();
+                }
+            ));
         }
     }
 
@@ -76,8 +87,9 @@ glib::wrapper! {
 }
 
 impl LpEditWindow {
-    pub fn new(image: LpImage) -> Self {
+    pub fn new(window: LpWindow, image: LpImage) -> Self {
         glib::Object::builder()
+            .property("window", window)
             .property("original_image", image)
             .build()
     }
