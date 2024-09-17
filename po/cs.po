@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2024-08-25 11:14+0000\n"
-"PO-Revision-Date: 2024-08-29 23:14+0200\n"
+"POT-Creation-Date: 2024-09-16 15:44+0000\n"
+"PO-Revision-Date: 2024-09-17 18:58+0200\n"
 "Last-Translator: Daniel Rusek <mail@asciiwolf.com>\n"
 "Language-Team: Czech <gnome-cs-list@gnome.org>\n"
 "Language: cs\n"
@@ -16,10 +16,10 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Poedit 3.4.4\n"
+"X-Generator: Poedit 3.5\n"
 
 #: data/org.gnome.Loupe.desktop.in.in:3
-#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:31 src/window.rs:874
+#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:31 src/window.rs:897
 msgid "Image Viewer"
 msgstr "Prohlížeč obrázků"
 
@@ -263,22 +263,23 @@ msgstr "Copyright © 2020–2024 Christopher Davis a spol."
 msgid "Could not list other files in directory."
 msgstr "Nepodařilo se vypsat další soubory v adresáři."
 
+#. Translators: Display of the f-number <https://en.wikipedia.org/wiki/F-number>. {} will be replaced with the number
 #: src/metadata.rs:253
 msgid "\\u{192}\\u{2215}{}"
 msgstr "\\u{192}\\u{2215}{}"
 
 #. Translators: Fractional exposure time (photography) in seconds
-#: src/metadata.rs:270
+#: src/metadata.rs:269
 msgid "1\\u{2215}{}\\u{202F}s"
 msgstr "1\\u{2215}{}\\u{202F}s"
 
 #. Translators: Exposure time (photography) in seconds
-#: src/metadata.rs:278
+#: src/metadata.rs:277
 msgid "{}\\u{202F}s"
 msgstr "{}\\u{202F}s"
 
 #. Translators: Unit for focal length in millimeters
-#: src/metadata.rs:304
+#: src/metadata.rs:303
 msgid "{}\\u{202F}mm"
 msgstr "{}\\u{202F}mm"
 
@@ -306,12 +307,12 @@ msgstr "Z"
 #. The format has to follow <https://docs.gtk.org/glib/method.DateTime.format.html>
 #. The default is already translated. Don't change if you are not sure what to
 #. use.
-#: src/util.rs:37
+#: src/util.rs:38
 #, c-format
 msgid "%x %X"
 msgstr "%x %X"
 
-#: src/util.rs:180 src/window.rs:659
+#: src/util.rs:181 src/window.rs:675
 msgid "Failed to restore image from trash"
 msgstr "Nepodařilo se obnovit obrázek z koše"
 
@@ -365,21 +366,25 @@ msgstr "Buď je soubor obrázku poškozen, nebo obsahuje nepodporované prvky."
 msgid "_Open With…"
 msgstr "_Otevřít pomocí…"
 
-#: src/widgets/image_page.ui:14 src/window.ui:24
+#: src/widgets/image_page.ui:10 src/window.ui:20
 msgid "_Print…"
 msgstr "_Tisk…"
 
-#: src/widgets/image_page.ui:18
-msgid "_Copy"
-msgstr "_Kopírovat"
-
-#: src/widgets/image_page.ui:23 src/window.ui:29
+#: src/widgets/image_page.ui:15 src/window.ui:25
 msgid "Rotate"
 msgstr "Otočit"
 
-#: src/widgets/image_page.ui:34 src/window.ui:40
+#: src/widgets/image_page.ui:26 src/window.ui:36
 msgid "_Set as Background…"
 msgstr "_Nastavit jako pozadí…"
+
+#: src/widgets/image_page.ui:30 src/window.ui:40
+msgid "_Delete"
+msgstr "S_mazat"
+
+#: src/widgets/image_page.ui:34
+msgid "_Copy"
+msgstr "_Kopírovat"
 
 #: src/widgets/image_page.ui:63
 msgid "Could not Load Image"
@@ -393,43 +398,51 @@ msgstr "Více _informací"
 msgid "_Reload"
 msgstr "_Znovu načíst"
 
-#: src/widgets/image_page.ui:123 src/window.ui:225
+#: src/widgets/image_page.ui:123 src/window.ui:218
 msgid "Rotate Left"
 msgstr "Otočit vlevo"
 
-#: src/widgets/image_page.ui:133 src/window.ui:235
+#: src/widgets/image_page.ui:133 src/window.ui:228
 msgid "Rotate Right"
 msgstr "Otočit vpravo"
 
+#: src/widgets/image_view.rs:217
+msgid "{} %"
+msgstr "{} %"
+
 #. Translators: This is a toast notification, informing the user that
 #. an image has been set as background.
-#: src/widgets/image_view.rs:720
+#: src/widgets/image_view.rs:824
 msgid "Set as background."
 msgstr "Nastaveno jako pozadí."
 
-#: src/widgets/image_view.rs:733
+#: src/widgets/image_view.rs:837
 msgid "Could not set background."
 msgstr "Nepodařilo se nastavit pozadí."
 
-#: src/widgets/image_view.ui:27
+#: src/widgets/image_view.ui:30
 msgid "Previous Image"
 msgstr "Předchozí obrázek"
 
-#: src/widgets/image_view.ui:38
+#: src/widgets/image_view.ui:40
 msgid "Next Image"
 msgstr "Následující obrázek"
 
-#: src/widgets/image_view.ui:63
+#: src/widgets/image_view.ui:74
 msgid "Zoom Out"
 msgstr "Přiblížit"
 
-#: src/widgets/image_view.ui:74
+#: src/widgets/image_view.ui:85
 msgid "Zoom In"
 msgstr "Oddálit"
 
-#: src/widgets/image_view.ui:85
-msgid "Toggle Fullscreen"
-msgstr "Přepnout zobrazení na celou obrazovku"
+#: src/widgets/image_view.ui:100
+msgid "Toggle Zoom"
+msgstr "Přepnout přiblížení"
+
+#: src/widgets/image_view.ui:108
+msgid "Zoom to Specific Level"
+msgstr "Přiblížit na konkrétní úroveň"
 
 #: src/widgets/print.rs:108
 msgid "Top"
@@ -567,12 +580,11 @@ msgstr ", ve stupních šedi"
 msgid ", {}\\u{202F}bit"
 msgstr ", {}\\u{202F}bit"
 
-#: src/widgets/properties_view.rs:286
-#| msgid "1\\u{2215}{}\\u{202F}s"
+#: src/widgets/properties_view.rs:287
 msgid "{}\\u{202F}\\u{D7}\\u{202F}{}"
 msgstr "{}\\u{202F}\\u{D7}\\u{202F}{}"
 
-#: src/widgets/properties_view.rs:324
+#: src/widgets/properties_view.rs:326
 msgid "Image Coordinates Copied"
 msgstr "Souřadnice obrázku zkopírovány"
 
@@ -641,51 +653,51 @@ msgstr "Ohnisková vzdálenost"
 msgid "Maker, Model"
 msgstr "Výrobce, model"
 
-#: src/window.rs:523
+#: src/window.rs:539
 msgid "Supported image formats"
 msgstr "Podporované formáty obrázků"
 
-#: src/window.rs:529
+#: src/window.rs:545
 msgid "All files"
 msgstr "Všechny soubory"
 
-#: src/window.rs:536
+#: src/window.rs:552
 msgid "Open Image"
 msgstr "Otevřít obrázek"
 
-#: src/window.rs:622
+#: src/window.rs:638
 msgid "Image copied to clipboard"
 msgstr "Obrázek zkopírován do schránky"
 
-#: src/window.rs:643
+#: src/window.rs:659
 msgid "Image moved to trash"
 msgstr "Obrázek přesunut do koše"
 
-#: src/window.rs:644
+#: src/window.rs:660
 msgid "Undo"
 msgstr "Zpět"
 
-#: src/window.rs:674
+#: src/window.rs:690
 msgid "Failed to move image to trash"
 msgstr "Nepodařilo se přesunout obrázek do koše"
 
-#: src/window.rs:698
+#: src/window.rs:714
 msgid "Permanently Delete Image?"
 msgstr "Smazat obrázek trvale?"
 
-#: src/window.rs:700
+#: src/window.rs:716
 msgid "After deleting the image “{}” it will be permanently lost."
 msgstr "Po smazání bude obrázek „{}“ trvale ztracen."
 
-#: src/window.rs:708
+#: src/window.rs:724
 msgid "Cancel"
 msgstr "Zrušit"
 
-#: src/window.rs:709
+#: src/window.rs:725
 msgid "Delete"
 msgstr "Smazat"
 
-#: src/window.rs:720
+#: src/window.rs:736
 msgid "Failed to delete image"
 msgstr "Nepodařilo se smazat obrázek"
 
@@ -710,32 +722,34 @@ msgid "_About Image Viewer"
 msgstr "O _aplikaci Prohlížeč obrázků"
 
 #: src/window.ui:204
-msgid "Copy to Clipboard"
-msgstr "Kopírovat do schránky"
+msgid "Toggle Fullscreen"
+msgstr "Přepnout zobrazení na celou obrazovku"
 
-#: src/window.ui:211
-msgid "Move to Trash"
-msgstr "Přesunout do koše"
-
-#: src/window.ui:217
+#: src/window.ui:210
 msgid "Main Menu"
 msgstr "Hlavní nabídka"
 
-#: src/window.ui:249
+#: src/window.ui:242
 msgid "Image Properties"
 msgstr "Vlastnosti obrázku"
 
-#: src/window.ui:281
+#: src/window.ui:274
 msgid "View Images"
 msgstr "Prohlížejte si obrázky"
 
-#: src/window.ui:282
+#: src/window.ui:275
 msgid "Drag and drop images here"
 msgstr "Sem přetáhněte a pusťte obrázky"
 
-#: src/window.ui:286
+#: src/window.ui:279
 msgid "_Open Files…"
 msgstr "_Otevřít soubory…"
+
+#~ msgid "Copy to Clipboard"
+#~ msgstr "Kopírovat do schránky"
+
+#~ msgid "Move to Trash"
+#~ msgstr "Přesunout do koše"
 
 #~ msgid "Failed to open image"
 #~ msgstr "Nepodařilo se otevřít obrázek"
