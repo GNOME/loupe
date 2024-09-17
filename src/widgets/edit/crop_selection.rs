@@ -1,3 +1,20 @@
+// Copyright (c) 2024 Sophie Herold
+//
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//
+// SPDX-License-Identifier: GPL-3.0-or-later
+
 use std::cell::{Cell, OnceCell};
 use std::marker::PhantomData;
 
@@ -156,6 +173,15 @@ mod imp {
         total_width: PhantomData<i32>,
         #[property(get=Self::total_height, set=Self::set_total_height)]
         total_height: PhantomData<i32>,
+
+        #[property(get, set=Self::set_crop_x)]
+        crop_x: Cell<f32>,
+        #[property(get, set=Self::set_crop_y)]
+        crop_y: Cell<f32>,
+        #[property(get, set=Self::set_crop_width)]
+        crop_width: Cell<f32>,
+        #[property(get, set=Self::set_crop_height)]
+        crop_height: Cell<f32>,
     }
 
     #[glib::object_subclass]
@@ -637,50 +663,54 @@ mod imp {
         fn set_crop(&self, rect: graphene::Rect) {
             let rect = rect.round_extents();
 
-            self.set_crop_x(rect.x() as i32);
-            self.set_crop_y(rect.y() as i32);
-            self.set_crop_width(rect.width() as i32);
-            self.set_crop_height(rect.height() as i32);
+            self.set_crop_x(rect.x());
+            self.set_crop_y(rect.y());
+            self.set_crop_width(rect.width());
+            self.set_crop_height(rect.height());
         }
 
         /// Set x coordinate of crop selection rectangle origin
-        pub(super) fn set_crop_x(&self, x: i32) {
-            if x < 0 {
+        pub(super) fn set_crop_x(&self, x: f32) {
+            if x < 0. {
                 eprintln!("Tried to set x coordinate to {x}");
                 return;
             }
 
-            self.space_top_left.set_width_request(x);
+            self.crop_x.set(x);
+            self.space_top_left.set_width_request(x.round() as i32);
         }
 
         /// Set y coordinate of crop selection rectangle origin
-        pub(super) fn set_crop_y(&self, y: i32) {
-            if y < 0 {
+        pub(super) fn set_crop_y(&self, y: f32) {
+            if y < 0. {
                 eprintln!("Tried to set y coordinate to {y}");
                 return;
             }
 
-            self.space_top_left.set_height_request(y);
+            self.crop_y.set(y);
+            self.space_top_left.set_height_request(y.round() as i32);
         }
 
         /// Set width of crop selection rectangle
-        pub(super) fn set_crop_width(&self, width: i32) {
-            if width < 0 {
+        pub(super) fn set_crop_width(&self, width: f32) {
+            if width < 0. {
                 eprintln!("Tried to set width to {width}");
                 return;
             }
 
-            self.selection.set_width_request(width);
+            self.crop_width.set(width);
+            self.selection.set_width_request(width.round() as i32);
         }
 
         /// Set height of crop selection rectangle
-        pub(super) fn set_crop_height(&self, height: i32) {
-            if height < 0 {
+        pub(super) fn set_crop_height(&self, height: f32) {
+            if height < 0. {
                 eprintln!("Tried to set height to {height}");
                 return;
             }
 
-            self.selection.set_height_request(height);
+            self.crop_height.set(height);
+            self.selection.set_height_request(height.round() as i32);
         }
 
         /// Width of area in which the crop selection can exist
@@ -734,13 +764,20 @@ impl LpEditCropSelection {
         self.set_total_width(width);
         self.set_total_height(height);
 
-        imp.set_crop_x(0);
-        imp.set_crop_y(0);
-        imp.set_crop_width(width);
-        imp.set_crop_height(height);
+        imp.set_crop_x(0.);
+        imp.set_crop_y(0.);
+        imp.set_crop_width(width as f32);
+        imp.set_crop_height(height as f32);
     }
 
     pub fn set_size(&self, x: i32, y: i32, width: i32, height: i32) {
+        let ratio = width as f32 / self.total_width() as f32;
+
+        self.set_crop_x(self.crop_x() * ratio);
+        self.set_crop_y(self.crop_y() * ratio);
+        self.set_crop_width(self.crop_width() * ratio);
+        self.set_crop_height(self.crop_height() * ratio);
+
         self.set_margin_start(x);
         self.set_margin_top(y);
         self.set_total_width(width);
