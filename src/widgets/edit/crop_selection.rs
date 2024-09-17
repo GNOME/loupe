@@ -174,6 +174,8 @@ mod imp {
         #[property(get=Self::total_height, set=Self::set_total_height)]
         total_height: PhantomData<i32>,
 
+        pub(super) initialized: Cell<bool>,
+
         #[property(get, set=Self::set_crop_x)]
         crop_x: Cell<f32>,
         #[property(get, set=Self::set_crop_y)]
@@ -756,13 +758,19 @@ impl LpEditCropSelection {
         glib::Object::new()
     }
 
-    pub fn reset(&self, x: i32, y: i32, width: i32, height: i32) {
+    pub fn ensure_initialized(&self, x: f64, y: f64, width: f64, height: f64) {
         let imp = self.imp();
 
-        self.set_margin_start(x);
-        self.set_margin_top(y);
-        self.set_total_width(width);
-        self.set_total_height(height);
+        if imp.initialized.get() {
+            return;
+        }
+
+        imp.initialized.set(true);
+
+        self.set_margin_start(x as i32);
+        self.set_margin_top(y as i32);
+        self.set_total_width(width as i32);
+        self.set_total_height(height as i32);
 
         imp.set_crop_x(0.);
         imp.set_crop_y(0.);
@@ -770,7 +778,7 @@ impl LpEditCropSelection {
         imp.set_crop_height(height as f32);
     }
 
-    pub fn set_size(&self, x: i32, y: i32, width: i32, height: i32) {
+    pub fn set_size(&self, x: f64, y: f64, width: f64, height: f64) {
         let ratio = width as f32 / self.total_width() as f32;
 
         self.set_crop_x(self.crop_x() * ratio);
@@ -778,9 +786,9 @@ impl LpEditCropSelection {
         self.set_crop_width(self.crop_width() * ratio);
         self.set_crop_height(self.crop_height() * ratio);
 
-        self.set_margin_start(x);
-        self.set_margin_top(y);
-        self.set_total_width(width);
-        self.set_total_height(height);
+        self.set_margin_start(x as i32);
+        self.set_margin_top(y as i32);
+        self.set_total_width(width as i32);
+        self.set_total_height(height as i32);
     }
 }
