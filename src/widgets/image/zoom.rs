@@ -104,15 +104,16 @@ impl imp::LpImage {
     }
 
     fn horizontal_bar(&self) -> f64 {
-        let obj = self.obj();
-        f64::max(0., (self.widget_width() - obj.image_displayed_width()) / 2.)
+        f64::max(
+            0.,
+            (self.widget_width() - self.image_displayed_width()) / 2.,
+        )
     }
 
     fn vertical_bar(&self) -> f64 {
-        let obj = self.obj();
         f64::max(
             0.,
-            (self.widget_height() - obj.image_displayed_height()) / 2.,
+            (self.widget_height() - self.image_displayed_height()) / 2.,
         )
     }
 
