@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2024-08-25 11:14+0000\n"
-"PO-Revision-Date: 2024-08-27 14:47+0330\n"
+"POT-Creation-Date: 2024-09-15 02:49+0000\n"
+"PO-Revision-Date: 2024-09-18 16:06+0330\n"
 "Last-Translator: Danial Behzadi <dani.behzi@ubuntu.com>\n"
 "Language-Team: Persian <fa@li.org>\n"
 "Language: fa\n"
@@ -17,8 +17,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 3.4.4\n"
 
-#: data/org.gnome.Loupe.desktop.in.in:3
-#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:31 src/window.rs:874
+#: data/org.gnome.Loupe.desktop.in.in:3 data/org.gnome.Loupe.metainfo.xml.in.in:6
+#: src/about.rs:31 src/window.rs:874
 msgid "Image Viewer"
 msgstr "نمایشگر تصویر"
 
@@ -120,15 +120,13 @@ msgid "Navigate Images"
 msgstr "ناوبری تصویرها"
 
 #: data/resources/gtk/help-overlay.ui:80 data/resources/gtk/help-overlay.ui:94
-#: data/resources/gtk/help-overlay.ui:235
-#: data/resources/gtk/help-overlay.ui:249
+#: data/resources/gtk/help-overlay.ui:235 data/resources/gtk/help-overlay.ui:249
 msgctxt "shortcut window"
 msgid "Next Image"
 msgstr "تصویر بعدی"
 
 #: data/resources/gtk/help-overlay.ui:87 data/resources/gtk/help-overlay.ui:101
-#: data/resources/gtk/help-overlay.ui:242
-#: data/resources/gtk/help-overlay.ui:256
+#: data/resources/gtk/help-overlay.ui:242 data/resources/gtk/help-overlay.ui:256
 msgctxt "shortcut window"
 msgid "Previous Image"
 msgstr "تصویر پیشین"
@@ -148,14 +146,12 @@ msgctxt "shortcut window"
 msgid "Rotate Image"
 msgstr "چرخش تصویر"
 
-#: data/resources/gtk/help-overlay.ui:124
-#: data/resources/gtk/help-overlay.ui:274
+#: data/resources/gtk/help-overlay.ui:124 data/resources/gtk/help-overlay.ui:274
 msgctxt "shortcut window"
 msgid "Rotate Clockwise"
 msgstr "چرخش ساعتگرد"
 
-#: data/resources/gtk/help-overlay.ui:130
-#: data/resources/gtk/help-overlay.ui:280
+#: data/resources/gtk/help-overlay.ui:130 data/resources/gtk/help-overlay.ui:280
 msgctxt "shortcut window"
 msgid "Rotate Counterclockwise"
 msgstr "چرخش پادساعتگرد"
@@ -165,14 +161,12 @@ msgctxt "shortcut window"
 msgid "Zoom Image"
 msgstr "بزرگ‌نمایی تصویر"
 
-#: data/resources/gtk/help-overlay.ui:141
-#: data/resources/gtk/help-overlay.ui:262
+#: data/resources/gtk/help-overlay.ui:141 data/resources/gtk/help-overlay.ui:262
 msgctxt "shortcut window"
 msgid "Zoom In"
 msgstr "بزرگ‌نمایی"
 
-#: data/resources/gtk/help-overlay.ui:147
-#: data/resources/gtk/help-overlay.ui:268
+#: data/resources/gtk/help-overlay.ui:147 data/resources/gtk/help-overlay.ui:268
 msgctxt "shortcut window"
 msgid "Zoom Out"
 msgstr "کوچک‌نمایی"
@@ -260,22 +254,23 @@ msgstr "حف رونوشت © ۲۰۲۰–۲۰۲۴ کریستوفر دیویس و 
 msgid "Could not list other files in directory."
 msgstr "نمی‌توان دیگر پرونده‌ّا در شاخه را سیاهه کرد."
 
+#. Translators: Display of the f-number <https://en.wikipedia.org/wiki/F-number>. {} will be replaced with the number
 #: src/metadata.rs:253
 msgid "\\u{192}\\u{2215}{}"
 msgstr "\\u{192}\\u{2215}{}"
 
 #. Translators: Fractional exposure time (photography) in seconds
-#: src/metadata.rs:270
+#: src/metadata.rs:269
 msgid "1\\u{2215}{}\\u{202F}s"
 msgstr "1\\u{2215}{}\\u{202F}ث"
 
 #. Translators: Exposure time (photography) in seconds
-#: src/metadata.rs:278
+#: src/metadata.rs:277
 msgid "{}\\u{202F}s"
 msgstr "{}\\u{202F}ث"
 
 #. Translators: Unit for focal length in millimeters
-#: src/metadata.rs:304
+#: src/metadata.rs:303
 msgid "{}\\u{202F}mm"
 msgstr "{}\\u{202F}م‌م"
 
@@ -314,9 +309,9 @@ msgstr "شکست در بازگردانی تصویر از زباله‌دان"
 
 #: src/widgets/error_details.ui:19
 msgid ""
-"The image loader reported the following when trying to load the image. "
-"Please include this information when you report an error. If possible, "
-"please also provide the image that causes the issue."
+"The image loader reported the following when trying to load the image. Please "
+"include this information when you report an error. If possible, please also "
+"provide the image that causes the issue."
 msgstr ""
 "بارکنندهٔ تصویر هنگام تلاش برای بار کردن تصویر این گزارش را داد. لطفاً این "
 "اطّلاعات را هنگام گزارش خطا بدهید. در صورت امکان لطفاً تصویری که باعث این مشکل "
@@ -564,11 +559,11 @@ msgstr "، طیف خاکستری"
 msgid ", {}\\u{202F}bit"
 msgstr "، {}\\u{202F}بیتی"
 
-#: src/widgets/properties_view.rs:286
+#: src/widgets/properties_view.rs:287
 msgid "{}\\u{202F}\\u{D7}\\u{202F}{}"
 msgstr "{}\\u{202F}\\u{D7}\\u{202F}{}"
 
-#: src/widgets/properties_view.rs:324
+#: src/widgets/properties_view.rs:326
 msgid "Image Coordinates Copied"
 msgstr "مختصات تصویر رونوشت شد"
 
@@ -727,11 +722,11 @@ msgstr "دیدن تصویرها"
 
 #: src/window.ui:282
 msgid "Drag and drop images here"
-msgstr "تصویرها را این‌جا کشیده و رها کنید"
+msgstr "کشیدن و رها کردن تصویرها در این‌جا"
 
 #: src/window.ui:286
 msgid "_Open Files…"
-msgstr "_گشودن پرونده‌ها…"
+msgstr "_گشودن…"
 
 #~ msgid "Failed to open image"
 #~ msgstr "شکست در گشودن تصویر"
