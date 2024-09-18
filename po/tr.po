@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2024-08-25 11:14+0000\n"
-"PO-Revision-Date: 2024-08-05 08:00+0300\n"
+"POT-Creation-Date: 2024-09-16 15:44+0000\n"
+"PO-Revision-Date: 2024-09-18 08:00+0300\n"
 "Last-Translator: Emin Tufan Çetin <etcetin@gmail.com>\n"
 "Language-Team: Turkish <takim@gnome.org.tr>\n"
 "Language: tr\n"
@@ -21,7 +21,7 @@ msgstr ""
 "X-Generator: Poedit 3.4.3\n"
 
 #: data/org.gnome.Loupe.desktop.in.in:3
-#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:31 src/window.rs:874
+#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:31 src/window.rs:897
 msgid "Image Viewer"
 msgstr "Resim Görüntüleyici"
 
@@ -29,7 +29,7 @@ msgstr "Resim Görüntüleyici"
 #: data/org.gnome.Loupe.desktop.in.in:11
 msgid "Picture;Graphics;Loupe;"
 msgstr ""
-"Image Viewer;Picture;Graphics;Loupe;Resim;Fotoğraf;Grafikler;Görseller;"
+"Image Viewer;Picture;Graphics;Loupe;Resim;Fotoğraf;Grafikler;Görseller;Görüntüleyici;"
 
 #: data/org.gnome.Loupe.gschema.xml.in:6
 msgid "Show the image properties sidebar"
@@ -267,22 +267,23 @@ msgstr "Telif Hakkı © 2020–2024 Christopher Davis ve ark."
 msgid "Could not list other files in directory."
 msgstr "Dizindeki diğer dosyalar listelenemedi."
 
+#. Translators: Display of the f-number <https://en.wikipedia.org/wiki/F-number>. {} will be replaced with the number
 #: src/metadata.rs:253
 msgid "\\u{192}\\u{2215}{}"
 msgstr "\\u{192}\\u{2215}{}"
 
 #. Translators: Fractional exposure time (photography) in seconds
-#: src/metadata.rs:270
+#: src/metadata.rs:269
 msgid "1\\u{2215}{}\\u{202F}s"
 msgstr "1\\u{2215}{}\\u{202F}sn"
 
 #. Translators: Exposure time (photography) in seconds
-#: src/metadata.rs:278
+#: src/metadata.rs:277
 msgid "{}\\u{202F}s"
 msgstr "{}\\u{202F}sn"
 
 #. Translators: Unit for focal length in millimeters
-#: src/metadata.rs:304
+#: src/metadata.rs:303
 msgid "{}\\u{202F}mm"
 msgstr "{}\\u{202F}mm"
 
@@ -310,12 +311,12 @@ msgstr "B"
 #. The format has to follow <https://docs.gtk.org/glib/method.DateTime.format.html>
 #. The default is already translated. Don't change if you are not sure what to
 #. use.
-#: src/util.rs:37
+#: src/util.rs:38
 #, c-format
 msgid "%x %X"
 msgstr "%x %X"
 
-#: src/util.rs:180 src/window.rs:659
+#: src/util.rs:181 src/window.rs:675
 msgid "Failed to restore image from trash"
 msgstr "Resim çöpten geri yüklenemedi"
 
@@ -369,21 +370,25 @@ msgstr "Resim dosyası bozuk ya da desteklenmeyen ögeler içeriyor."
 msgid "_Open With…"
 msgstr "Birlikte _Aç…"
 
-#: src/widgets/image_page.ui:14 src/window.ui:24
+#: src/widgets/image_page.ui:10 src/window.ui:20
 msgid "_Print…"
 msgstr "_Yazdır…"
 
-#: src/widgets/image_page.ui:18
-msgid "_Copy"
-msgstr "K_opyala"
-
-#: src/widgets/image_page.ui:23 src/window.ui:29
+#: src/widgets/image_page.ui:15 src/window.ui:25
 msgid "Rotate"
 msgstr "Döndür"
 
-#: src/widgets/image_page.ui:34 src/window.ui:40
+#: src/widgets/image_page.ui:26 src/window.ui:36
 msgid "_Set as Background…"
 msgstr "_Arka Plan Olarak Ayarla…"
+
+#: src/widgets/image_page.ui:30 src/window.ui:40
+msgid "_Delete"
+msgstr "_Sil"
+
+#: src/widgets/image_page.ui:34
+msgid "_Copy"
+msgstr "K_opyala"
 
 #: src/widgets/image_page.ui:63
 msgid "Could not Load Image"
@@ -397,43 +402,51 @@ msgstr "Daha Çok _Bilgi"
 msgid "_Reload"
 msgstr "_Yeniden Yükle"
 
-#: src/widgets/image_page.ui:123 src/window.ui:225
+#: src/widgets/image_page.ui:123 src/window.ui:218
 msgid "Rotate Left"
 msgstr "Sola Döndür"
 
-#: src/widgets/image_page.ui:133 src/window.ui:235
+#: src/widgets/image_page.ui:133 src/window.ui:228
 msgid "Rotate Right"
 msgstr "Sağa Döndür"
 
+#: src/widgets/image_view.rs:217
+msgid "{} %"
+msgstr "%{}"
+
 #. Translators: This is a toast notification, informing the user that
 #. an image has been set as background.
-#: src/widgets/image_view.rs:720
+#: src/widgets/image_view.rs:824
 msgid "Set as background."
 msgstr "Arka plan olarak ayarla."
 
-#: src/widgets/image_view.rs:733
+#: src/widgets/image_view.rs:837
 msgid "Could not set background."
 msgstr "Arka plan ayarlanamadı."
 
-#: src/widgets/image_view.ui:27
+#: src/widgets/image_view.ui:30
 msgid "Previous Image"
 msgstr "Önceki Resim"
 
-#: src/widgets/image_view.ui:38
+#: src/widgets/image_view.ui:40
 msgid "Next Image"
 msgstr "Sonraki Resim"
 
-#: src/widgets/image_view.ui:63
+#: src/widgets/image_view.ui:74
 msgid "Zoom Out"
 msgstr "Uzaklaştır"
 
-#: src/widgets/image_view.ui:74
+#: src/widgets/image_view.ui:85
 msgid "Zoom In"
 msgstr "Yakınlaştır"
 
-#: src/widgets/image_view.ui:85
-msgid "Toggle Fullscreen"
-msgstr "Tam Ekranı Aç/Kapat"
+#: src/widgets/image_view.ui:100
+msgid "Toggle Zoom"
+msgstr "Yakınlığı Değiştir"
+
+#: src/widgets/image_view.ui:108
+msgid "Zoom to Specific Level"
+msgstr "Belirli Düzeye Yaklaş"
 
 #: src/widgets/print.rs:108
 msgid "Top"
@@ -571,11 +584,11 @@ msgstr ", gri tonlama"
 msgid ", {}\\u{202F}bit"
 msgstr ", {}\\u{202F}bit"
 
-#: src/widgets/properties_view.rs:286
+#: src/widgets/properties_view.rs:287
 msgid "{}\\u{202F}\\u{D7}\\u{202F}{}"
 msgstr "{}\\u{202F}\\u{D7}\\u{202F}{}"
 
-#: src/widgets/properties_view.rs:324
+#: src/widgets/properties_view.rs:326
 msgid "Image Coordinates Copied"
 msgstr "Resim Koordinatları Kopyalandı"
 
@@ -644,51 +657,51 @@ msgstr "Odak Uzaklığı"
 msgid "Maker, Model"
 msgstr "Üretici, Model"
 
-#: src/window.rs:523
+#: src/window.rs:539
 msgid "Supported image formats"
 msgstr "Desteklenen resim biçimleri"
 
-#: src/window.rs:529
+#: src/window.rs:545
 msgid "All files"
 msgstr "Tüm dosyalar"
 
-#: src/window.rs:536
+#: src/window.rs:552
 msgid "Open Image"
 msgstr "Resim Aç"
 
-#: src/window.rs:622
+#: src/window.rs:638
 msgid "Image copied to clipboard"
 msgstr "Resim panoya kopyalandı"
 
-#: src/window.rs:643
+#: src/window.rs:659
 msgid "Image moved to trash"
 msgstr "Resim çöpe taşındı"
 
-#: src/window.rs:644
+#: src/window.rs:660
 msgid "Undo"
 msgstr "Geri Al"
 
-#: src/window.rs:674
+#: src/window.rs:690
 msgid "Failed to move image to trash"
 msgstr "Resim çöpe taşınamadı"
 
-#: src/window.rs:698
+#: src/window.rs:714
 msgid "Permanently Delete Image?"
 msgstr "Resim Kalıcı Olarak Silinsin Mi?"
 
-#: src/window.rs:700
+#: src/window.rs:716
 msgid "After deleting the image “{}” it will be permanently lost."
 msgstr "“{}” resmi silindikten sonra kalıcı olarak yitirilecek."
 
-#: src/window.rs:708
+#: src/window.rs:724
 msgid "Cancel"
 msgstr "İptal"
 
-#: src/window.rs:709
+#: src/window.rs:725
 msgid "Delete"
 msgstr "Sil"
 
-#: src/window.rs:720
+#: src/window.rs:736
 msgid "Failed to delete image"
 msgstr "Resim silinemedi"
 
@@ -713,29 +726,31 @@ msgid "_About Image Viewer"
 msgstr "Resim Görüntüleyici _Hakkında"
 
 #: src/window.ui:204
-msgid "Copy to Clipboard"
-msgstr "Panoya Kopyala"
+msgid "Toggle Fullscreen"
+msgstr "Tam Ekranı Aç/Kapat"
 
-#: src/window.ui:211
-msgid "Move to Trash"
-msgstr "Çöpe Taşı"
-
-#: src/window.ui:217
+#: src/window.ui:210
 msgid "Main Menu"
 msgstr "Ana Menü"
 
-#: src/window.ui:249
+#: src/window.ui:242
 msgid "Image Properties"
 msgstr "Resim Özellikleri"
 
-#: src/window.ui:281
+#: src/window.ui:274
 msgid "View Images"
 msgstr "Resimleri Göster"
 
-#: src/window.ui:282
+#: src/window.ui:275
 msgid "Drag and drop images here"
 msgstr "Resimleri sürükleyip buraya bırakın"
 
-#: src/window.ui:286
+#: src/window.ui:279
 msgid "_Open Files…"
 msgstr "Dosya _Aç…"
+
+#~ msgid "Copy to Clipboard"
+#~ msgstr "Panoya Kopyala"
+
+#~ msgid "Move to Trash"
+#~ msgstr "Çöpe Taşı"
