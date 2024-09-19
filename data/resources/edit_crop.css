@@ -1,7 +1,7 @@
 lpcrop {
   --discarded-background: rgba(50, 50, 50, 0.7);
-  --selection-border-color: rgba(255, 255, 255, 0.7);
-  --handle-border-color: rgba(255, 255, 255, 0.9);
+  --selection-border-color: rgb(240, 240, 240);
+  --handle-border-color: var(--selection-border-color);
   --handle-size: 20px;
   --handle-border-width: 3px;
   --handle-offset: -4px;
