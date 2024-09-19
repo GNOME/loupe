@@ -39,10 +39,18 @@ outline {
 }
 
 /* Drag overlay */
-.lp-dragging-area-highlight {
-  border-radius: 8px;
-  background-color: color-mix(in srgb, var(--accent-bg-color) 35%, transparent);
-  margin: 24px;
+lpdragoverlay .overlay-status {
+  color: var(--accent-color);
+  background-color: color-mix(in srgb, var(--accent-bg-color) 8%, transparent);
+  /* Same color for border as for icon and label */
+  /* Probably due to a GTK bug, this currently does not give the exact same color */
+  border: 2px dashed color-mix(in srgb, currentColor var(--dim-opacity), transparent);
+  border-radius: 2px;
+  margin: 12px;
+}
+
+lpdragoverlay .overlay-status label {
+  opacity: var(--dim-opacity);
 }
 
 lpprintpreview {

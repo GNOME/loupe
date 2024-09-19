@@ -20,29 +20,31 @@
 //!
 //! This implementation is inspired by [Amberol](https://gitlab.gnome.org/World/amberol)
 
+use std::cell::OnceCell;
+use std::marker::PhantomData;
+
 use adw::prelude::*;
+use adw::subclass::prelude::*;
+use glib::Properties;
+use gtk::CompositeTemplate;
 
 use crate::deps::*;
 
 mod imp {
-    use std::cell::OnceCell;
-
-    use adw::subclass::prelude::*;
-    use glib::{ParamSpec, Properties, Value};
 
     use super::*;
 
-    #[derive(Debug, Default, Properties)]
+    #[derive(Debug, Default, CompositeTemplate, Properties)]
     #[properties(wrapper_type = super::LpDragOverlay)]
+    #[template(file = "drag_overlay.ui")]
     pub struct LpDragOverlay {
-        /// Usual content
-        #[property(set = Self::set_child)]
-        pub child: Option<gtk::Widget>,
         /// Widget overplayed when dragging over child
-        #[property(set = Self::set_overlayed)]
-        pub overlayed: Option<gtk::Widget>,
-        pub overlay: gtk::Overlay,
-        pub revealer: gtk::Revealer,
+        #[property(set = Self::set_content)]
+        pub content: PhantomData<Option<gtk::Widget>>,
+        #[template_child]
+        pub overlay: TemplateChild<gtk::Overlay>,
+        #[template_child]
+        pub revealer: TemplateChild<gtk::Revealer>,
         #[property(set = Self::set_drop_target, get, explicit_notify, construct_only)]
         pub drop_target: OnceCell<gtk::DropTarget>,
     }
@@ -54,49 +56,30 @@ mod imp {
         type ParentType = adw::Bin;
 
         fn class_init(klass: &mut Self::Class) {
+            Self::bind_template(klass);
             klass.set_css_name("lpdragoverlay");
+        }
+
+        fn instance_init(obj: &glib::subclass::InitializingObject<Self>) {
+            obj.init_template();
         }
     }
 
+    #[glib::derived_properties]
     impl ObjectImpl for LpDragOverlay {
-        fn properties() -> &'static [ParamSpec] {
-            Self::derived_properties()
-        }
-
-        fn set_property(&self, id: usize, value: &Value, pspec: &ParamSpec) {
-            self.derived_set_property(id, value, pspec)
-        }
-
-        fn property(&self, id: usize, pspec: &ParamSpec) -> Value {
-            self.derived_property(id, pspec)
-        }
-
         fn constructed(&self) {
-            self.overlay.set_parent(&*self.obj());
-            self.overlay.add_overlay(&self.revealer);
+            self.parent_constructed();
 
             self.revealer.set_can_target(false);
             self.revealer
                 .set_transition_type(gtk::RevealerTransitionType::Crossfade);
-            self.revealer.set_reveal_child(false);
-        }
-
-        fn dispose(&self) {
-            self.overlay.unparent();
+            //self.revealer.set_reveal_child(false);
         }
     }
     impl WidgetImpl for LpDragOverlay {}
     impl BinImpl for LpDragOverlay {}
 
     impl LpDragOverlay {
-        pub fn set_child(&self, child: Option<gtk::Widget>) {
-            self.overlay.set_child(child.as_ref());
-        }
-
-        pub fn set_overlayed(&self, overlayed: Option<gtk::Widget>) {
-            self.revealer.set_child(overlayed.as_ref());
-        }
-
         pub fn set_drop_target(&self, drop_target: gtk::DropTarget) {
             drop_target.connect_current_drop_notify(glib::clone!(
                 #[weak(rename_to = revealer)]
@@ -110,6 +93,10 @@ mod imp {
             self.drop_target.set(drop_target).unwrap();
 
             self.obj().notify("drop-target");
+        }
+
+        pub fn set_content(&self, child: Option<gtk::Widget>) {
+            self.overlay.set_child(child.as_ref());
         }
     }
 }

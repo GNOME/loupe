@@ -20,6 +20,7 @@ src/util.rs
 src/util/gettext.rs
 src/widgets.rs
 src/widgets/drag_overlay.rs
+src/widgets/drag_overlay.ui
 src/widgets/error_details.rs
 src/widgets/error_details.ui
 src/widgets/image.rs

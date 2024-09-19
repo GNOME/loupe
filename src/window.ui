@@ -250,15 +250,7 @@
             <child type="content">
               <object class="LpDragOverlay" id="drag_overlay">
                 <property name="drop_target">drop_target</property>
-                <property name="overlayed">
-                  <object class="AdwBin">
-                    <property name="can-target">false</property>
-                    <style>
-                      <class name="lp-dragging-area-highlight" />
-                    </style>
-                  </object>
-                </property>
-                <property name="child">
+                <property name="content">
                   <object class="GtkStack" id="stack">
                     <property name="visible-child">status_page</property>
                     <style>

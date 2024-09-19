@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <template class="LpDragOverlay" parent="AdwBin">
+    <property name="child">
+      <object class="GtkOverlay" id="overlay">
+        <child type="overlay">
+          <object class="GtkRevealer" id="revealer">
+            <property name="child">
+              <object class="AdwBin">
+                <style>
+                  <class name="background" />
+                </style>
+                <property name="child">
+                  <object class="AdwStatusPage">
+                    <property name="title" translatable="yes">Drop Image to View</property>
+                    <property name="icon-name">image-round-symbolic</property>
+                    <style>
+                      <class name="overlay-status" />
+                    </style>
+                  </object>
+                </property>
+              </object>
+            </property>
+          </object>
+        </child>
+      </object>
+    </property>
+  </template>
+</interface>
