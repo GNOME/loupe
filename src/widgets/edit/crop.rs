@@ -128,6 +128,20 @@ mod imp {
 
             self.selection.ensure_initialized(x, y, width, height);
             self.selection.set_size(x, y, width, height);
+
+            dbg!(self.image.widget_to_img_coord((
+                self.image.image_rendering_x() + self.selection.crop_x() as f64,
+                self.image.image_rendering_y() + self.selection.crop_y() as f64
+            )));
+
+            dbg!(self.image.widget_to_img_coord((
+                self.image.image_rendering_x()
+                    + self.selection.crop_x() as f64
+                    + self.selection.crop_width() as f64,
+                self.image.image_rendering_y()
+                    + self.selection.crop_y() as f64
+                    + self.selection.crop_height() as f64
+            )));
         }
 
         fn measure(&self, orientation: gtk::Orientation, for_size: i32) -> (i32, i32, i32, i32) {
