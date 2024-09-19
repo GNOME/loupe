@@ -103,29 +103,6 @@ impl imp::LpImage {
         }
     }
 
-    fn horizontal_bar(&self) -> f64 {
-        f64::max(
-            0.,
-            (self.widget_width() - self.image_displayed_width()) / 2.,
-        )
-    }
-
-    fn vertical_bar(&self) -> f64 {
-        f64::max(
-            0.,
-            (self.widget_height() - self.image_displayed_height()) / 2.,
-        )
-    }
-
-    /// Convert widget coordinates to image coordinates
-    fn widget_to_img_coord(&self, (cur_x, cur_y): (f64, f64)) -> (f64, f64) {
-        let zoom = self.applicable_zoom();
-        let x = (cur_x - self.horizontal_bar() + self.hadj_value()) / zoom;
-        let y = (cur_y - self.vertical_bar() + self.vadj_value()) / zoom;
-
-        (x, y)
-    }
-
     /// Required adjustment to put image coordinate under the cursor at this
     /// zoom level
     fn adj_for_position(
@@ -181,7 +158,7 @@ impl imp::LpImage {
             img_pos
         } else {
             // Use center of viewport
-            self.widget_to_img_coord((self.widget_width() / 2., self.widget_height() / 2.))
+            obj.widget_to_img_coord((self.widget_width() / 2., self.widget_height() / 2.))
         };
 
         let cur_pos = if let Some(cur) = cur {
@@ -274,7 +251,7 @@ impl imp::LpImage {
                     let img_pos: Option<(f64, f64)> = self
                         .pointer_position
                         .get()
-                        .map(|x| self.widget_to_img_coord(x));
+                        .map(|x| obj.widget_to_img_coord(x));
                     self.zoom_cursor_target.set(img_pos);
                 }
             }
