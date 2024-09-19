@@ -108,14 +108,9 @@ impl WidgetImpl for imp::LpImage {
         snapshot.translate(&graphene::Point::new(0., self.round_f64(y) as f32));
 
         // Centering in widget when no scrolling (black bars around image)
-        let x = self.round_f64(f64::max((widget_width - display_width) / 2.0, 0.));
-        let y = self.round_f64(f64::max((widget_height - display_height) / 2.0, 0.));
-        // Round to pixel values to not have a half pixel offset to physical pixels
-        // The offset would leading to a blurry output
-        snapshot.translate(&graphene::Point::new(
-            self.round_f64(x) as f32,
-            self.round_f64(y) as f32,
-        ));
+        let x = obj.image_rendering_x();
+        let y = obj.image_rendering_y();
+        snapshot.translate(&graphene::Point::new(x as f32, y as f32));
 
         // Apply rotation and mirroring
         self.snapshot_rotate_mirror(
@@ -339,6 +334,11 @@ impl LpImage {
         let imp = self.imp();
         let widget_width = imp.widget_width();
         let display_width = imp.image_displayed_width();
+
+        // Centering in widget when no scrolling (black bars around image)
+        //
+        // Round to pixel values to not have a half pixel offset to physical pixels
+        // The offset would leading to a blurry output
         imp.round_f64(f64::max((widget_width - display_width) / 2.0, 0.))
     }
 
@@ -357,5 +357,15 @@ impl LpImage {
     pub fn image_rendering_height(&self) -> f64 {
         let imp = self.imp();
         imp.round_f64(imp.image_displayed_height())
+    }
+
+    /// Convert widget coordinates to image coordinates
+    pub fn widget_to_img_coord(&self, (cur_x, cur_y): (f64, f64)) -> (f64, f64) {
+        let imp = self.imp();
+        let zoom = imp.applicable_zoom();
+        let x = (cur_x - self.image_rendering_x() + imp.hadj_value()) / zoom;
+        let y = (cur_y - self.image_rendering_y() + imp.vadj_value()) / zoom;
+
+        (x, y)
     }
 }
