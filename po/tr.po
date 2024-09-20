@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2024-09-16 15:44+0000\n"
+"POT-Creation-Date: 2024-09-19 20:41+0000\n"
 "PO-Revision-Date: 2024-09-18 08:00+0300\n"
 "Last-Translator: Emin Tufan Çetin <etcetin@gmail.com>\n"
 "Language-Team: Turkish <takim@gnome.org.tr>\n"
@@ -29,7 +29,8 @@ msgstr "Resim Görüntüleyici"
 #: data/org.gnome.Loupe.desktop.in.in:11
 msgid "Picture;Graphics;Loupe;"
 msgstr ""
-"Image Viewer;Picture;Graphics;Loupe;Resim;Fotoğraf;Grafikler;Görseller;Görüntüleyici;"
+"Image Viewer;Picture;Graphics;Loupe;Resim;Fotoğraf;Grafikler;Görseller;"
+"Görüntüleyici;"
 
 #: data/org.gnome.Loupe.gschema.xml.in:6
 msgid "Show the image properties sidebar"
@@ -319,6 +320,10 @@ msgstr "%x %X"
 #: src/util.rs:181 src/window.rs:675
 msgid "Failed to restore image from trash"
 msgstr "Resim çöpten geri yüklenemedi"
+
+#: src/widgets/drag_overlay.ui:15
+msgid "Drop Image to View"
+msgstr "Görüntülenecek Resmi Bırak"
 
 #: src/widgets/error_details.ui:19
 msgid ""
@@ -737,15 +742,15 @@ msgstr "Ana Menü"
 msgid "Image Properties"
 msgstr "Resim Özellikleri"
 
-#: src/window.ui:274
+#: src/window.ui:266
 msgid "View Images"
 msgstr "Resimleri Göster"
 
-#: src/window.ui:275
+#: src/window.ui:267
 msgid "Drag and drop images here"
 msgstr "Resimleri sürükleyip buraya bırakın"
 
-#: src/window.ui:279
+#: src/window.ui:271
 msgid "_Open Files…"
 msgstr "Dosya _Aç…"
 
