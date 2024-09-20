@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2024-09-16 15:44+0000\n"
-"PO-Revision-Date: 2024-09-16 17:49+0200\n"
+"POT-Creation-Date: 2024-09-19 20:41+0000\n"
+"PO-Revision-Date: 2024-09-20 19:21+0200\n"
 "Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
 "Language-Team: Slovenian <gnome-si@googlegroups.com>\n"
 "Language: sl\n"
@@ -321,6 +321,10 @@ msgstr "%x %X"
 #: src/util.rs:181 src/window.rs:675
 msgid "Failed to restore image from trash"
 msgstr "Obnovitev slike iz smeti je spodletela"
+
+#: src/widgets/drag_overlay.ui:15
+msgid "Drop Image to View"
+msgstr "Spustite sliko za ogled"
 
 #: src/widgets/error_details.ui:19
 msgid ""
@@ -739,14 +743,14 @@ msgstr "Glavni meni"
 msgid "Image Properties"
 msgstr "Lastnosti slike"
 
-#: src/window.ui:274
+#: src/window.ui:266
 msgid "View Images"
 msgstr "Pokaži slike"
 
-#: src/window.ui:275
+#: src/window.ui:267
 msgid "Drag and drop images here"
 msgstr "Povlecite in spustite slike sem"
 
-#: src/window.ui:279
+#: src/window.ui:271
 msgid "_Open Files…"
 msgstr "_Odpri datoteke …"
