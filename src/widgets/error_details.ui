@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
   <template class="LpErrorDetails" parent="AdwDialog">
-    <property name="title">Error Details</property>
+    <property name="title" translatable="yes">Error Details</property>
     <property name="content-width">550</property>
     <property name="content-height">600</property>
     <style>
