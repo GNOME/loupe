@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2024-08-12 09:51+0000\n"
-"PO-Revision-Date: 2024-08-24 10:55+0200\n"
+"POT-Creation-Date: 2024-09-19 20:41+0000\n"
+"PO-Revision-Date: 2024-09-21 22:07+0200\n"
 "Last-Translator: Jordi Mas i Hernàndez, <jmas@softcatala.org>\n"
 "Language-Team: Catalan <gnome@llistes.softcatala.org>\n"
 "Language: ca\n"
@@ -18,7 +18,7 @@ msgstr ""
 "X-Generator: Poedit 2.4.2\n"
 
 #: data/org.gnome.Loupe.desktop.in.in:3
-#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:31 src/window.rs:874
+#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:31 src/window.rs:897
 msgid "Image Viewer"
 msgstr "Visualitzador d'imatges"
 
@@ -262,22 +262,23 @@ msgstr "Copyright © 2020–2024 Christopher Davis i altres"
 msgid "Could not list other files in directory."
 msgstr "No s'han pogut llistar altres fitxers al directori."
 
+#. Translators: Display of the f-number <https://en.wikipedia.org/wiki/F-number>. {} will be replaced with the number
 #: src/metadata.rs:253
 msgid "\\u{192}\\u{2215}{}"
 msgstr "\\u{192}\\u{2215}{}"
 
 #. Translators: Fractional exposure time (photography) in seconds
-#: src/metadata.rs:270
+#: src/metadata.rs:269
 msgid "1\\u{2215}{}\\u{202F}s"
 msgstr "1\\u{2215}{}\\u{202F}s"
 
 #. Translators: Exposure time (photography) in seconds
-#: src/metadata.rs:278
+#: src/metadata.rs:277
 msgid "{}\\u{202F}s"
 msgstr "{}\\u{202F}s"
 
 #. Translators: Unit for focal length in millimeters
-#: src/metadata.rs:304
+#: src/metadata.rs:303
 msgid "{}\\u{202F}mm"
 msgstr "{}\\u{202F}mm"
 
@@ -305,14 +306,18 @@ msgstr "O"
 #. The format has to follow <https://docs.gtk.org/glib/method.DateTime.format.html>
 #. The default is already translated. Don't change if you are not sure what to
 #. use.
-#: src/util.rs:37
+#: src/util.rs:38
 #, c-format
 msgid "%x %X"
 msgstr "%x %X"
 
-#: src/util.rs:180 src/window.rs:659
+#: src/util.rs:181 src/window.rs:675
 msgid "Failed to restore image from trash"
 msgstr "No s'ha pogut restaurar la imatge de la paperera"
+
+#: src/widgets/drag_overlay.ui:15
+msgid "Drop Image to View"
+msgstr "Deixeu anar la imatge per visualitzar-la"
 
 #: src/widgets/error_details.ui:19
 msgid ""
@@ -365,21 +370,25 @@ msgstr ""
 msgid "_Open With…"
 msgstr "_Obre amb…"
 
-#: src/widgets/image_page.ui:14 src/window.ui:24
+#: src/widgets/image_page.ui:10 src/window.ui:20
 msgid "_Print…"
 msgstr "_Imprimeix…"
 
-#: src/widgets/image_page.ui:18
-msgid "_Copy"
-msgstr "_Copia"
-
-#: src/widgets/image_page.ui:23 src/window.ui:29
+#: src/widgets/image_page.ui:15 src/window.ui:25
 msgid "Rotate"
 msgstr "Gira"
 
-#: src/widgets/image_page.ui:34 src/window.ui:40
+#: src/widgets/image_page.ui:26 src/window.ui:36
 msgid "_Set as Background…"
 msgstr "_Estableix com a fons…"
+
+#: src/widgets/image_page.ui:30 src/window.ui:40
+msgid "_Delete"
+msgstr "_Suprimeix"
+
+#: src/widgets/image_page.ui:34
+msgid "_Copy"
+msgstr "_Copia"
 
 #: src/widgets/image_page.ui:63
 msgid "Could not Load Image"
@@ -393,43 +402,51 @@ msgstr "Més _informació"
 msgid "_Reload"
 msgstr "_Recarrega"
 
-#: src/widgets/image_page.ui:123 src/window.ui:225
+#: src/widgets/image_page.ui:123 src/window.ui:218
 msgid "Rotate Left"
 msgstr "Gira a l'esquerra"
 
-#: src/widgets/image_page.ui:133 src/window.ui:235
+#: src/widgets/image_page.ui:133 src/window.ui:228
 msgid "Rotate Right"
 msgstr "Gira cap a la dreta"
 
+#: src/widgets/image_view.rs:217
+msgid "{} %"
+msgstr "{} %"
+
 #. Translators: This is a toast notification, informing the user that
 #. an image has been set as background.
-#: src/widgets/image_view.rs:720
+#: src/widgets/image_view.rs:824
 msgid "Set as background."
 msgstr "Estableix com a fons."
 
-#: src/widgets/image_view.rs:733
+#: src/widgets/image_view.rs:837
 msgid "Could not set background."
 msgstr "No s'ha pogut establir el fons."
 
-#: src/widgets/image_view.ui:27
+#: src/widgets/image_view.ui:30
 msgid "Previous Image"
 msgstr "Imatge anterior"
 
-#: src/widgets/image_view.ui:38
+#: src/widgets/image_view.ui:40
 msgid "Next Image"
 msgstr "Imatge següent"
 
-#: src/widgets/image_view.ui:63
+#: src/widgets/image_view.ui:74
 msgid "Zoom Out"
 msgstr "Allunya"
 
-#: src/widgets/image_view.ui:74
+#: src/widgets/image_view.ui:85
 msgid "Zoom In"
 msgstr "Amplia"
 
-#: src/widgets/image_view.ui:85
-msgid "Toggle Fullscreen"
-msgstr "Commuta la pantalla completa"
+#: src/widgets/image_view.ui:100
+msgid "Toggle Zoom"
+msgstr "Commuta el zoom"
+
+#: src/widgets/image_view.ui:108
+msgid "Zoom to Specific Level"
+msgstr "Amplia a un nivell específic"
 
 #: src/widgets/print.rs:108
 msgid "Top"
@@ -567,12 +584,11 @@ msgstr ", escala de grisos"
 msgid ", {}\\u{202F}bit"
 msgstr ",{}\\u{202F}bit"
 
-#: src/widgets/properties_view.rs:286
-#| msgid "1\\u{2215}{}\\u{202F}s"
+#: src/widgets/properties_view.rs:287
 msgid "{}\\u{202F}\\u{D7}\\u{202F}{}"
 msgstr "{}\\u{202F}\\u{D7}\\u{202F}{}"
 
-#: src/widgets/properties_view.rs:324
+#: src/widgets/properties_view.rs:326
 msgid "Image Coordinates Copied"
 msgstr "S'han copiat les coordenades de la imatge"
 
@@ -641,51 +657,51 @@ msgstr "Longitud focal"
 msgid "Maker, Model"
 msgstr "Fabricant, model"
 
-#: src/window.rs:523
+#: src/window.rs:539
 msgid "Supported image formats"
 msgstr "Formats d'imatge admesos"
 
-#: src/window.rs:529
+#: src/window.rs:545
 msgid "All files"
 msgstr "Tots els fitxers"
 
-#: src/window.rs:536
+#: src/window.rs:552
 msgid "Open Image"
 msgstr "Obre una imatge"
 
-#: src/window.rs:622
+#: src/window.rs:638
 msgid "Image copied to clipboard"
 msgstr "Imatge copiada al porta-retalls"
 
-#: src/window.rs:643
+#: src/window.rs:659
 msgid "Image moved to trash"
 msgstr "S'ha mogut la imatge a la paperera"
 
-#: src/window.rs:644
+#: src/window.rs:660
 msgid "Undo"
 msgstr "Desfés"
 
-#: src/window.rs:674
+#: src/window.rs:690
 msgid "Failed to move image to trash"
 msgstr "No s'ha pogut moure la imatge a la paperera"
 
-#: src/window.rs:698
+#: src/window.rs:714
 msgid "Permanently Delete Image?"
 msgstr "Voleu suprimir permanentment la imatge?"
 
-#: src/window.rs:700
+#: src/window.rs:716
 msgid "After deleting the image “{}” it will be permanently lost."
 msgstr "La imatge «{}» es perdrà permanentment un cop sigui suprimida."
 
-#: src/window.rs:708
+#: src/window.rs:724
 msgid "Cancel"
 msgstr "Cancel·la"
 
-#: src/window.rs:709
+#: src/window.rs:725
 msgid "Delete"
 msgstr "Suprimeix"
 
-#: src/window.rs:720
+#: src/window.rs:736
 msgid "Failed to delete image"
 msgstr "No s'ha pogut suprimir la imatge"
 
@@ -710,32 +726,34 @@ msgid "_About Image Viewer"
 msgstr "_Quant al Visualitzador d'imatges"
 
 #: src/window.ui:204
-msgid "Copy to Clipboard"
-msgstr "Copia al porta-retalls"
+msgid "Toggle Fullscreen"
+msgstr "Commuta la pantalla completa"
 
-#: src/window.ui:211
-msgid "Move to Trash"
-msgstr "Mou a la paperera"
-
-#: src/window.ui:217
+#: src/window.ui:210
 msgid "Main Menu"
 msgstr "Menú principal"
 
-#: src/window.ui:249
+#: src/window.ui:242
 msgid "Image Properties"
 msgstr "Propietats de la imatge"
 
-#: src/window.ui:281
+#: src/window.ui:266
 msgid "View Images"
 msgstr "Visualitza les imatges"
 
-#: src/window.ui:282
+#: src/window.ui:267
 msgid "Drag and drop images here"
 msgstr "Arrossegueu i deixeu anar les imatges aquí"
 
-#: src/window.ui:286
+#: src/window.ui:271
 msgid "_Open Files…"
 msgstr "_Obre fitxers…"
+
+#~ msgid "Copy to Clipboard"
+#~ msgstr "Copia al porta-retalls"
+
+#~ msgid "Move to Trash"
+#~ msgstr "Mou a la paperera"
 
 #~ msgid "Failed to open image"
 #~ msgstr "No s'ha pogut obrir la imatge"
