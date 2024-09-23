@@ -1,0 +1,1 @@
+Add `<branding><color>`s instead of just using `GnomeSoftware::key-colors`. That they weren't set was an oversight.

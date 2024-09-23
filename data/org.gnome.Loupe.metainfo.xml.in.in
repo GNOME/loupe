@@ -58,6 +58,11 @@
 
   <translation type="gettext">@BIN_NAME@</translation>
   <content_rating type="oars-1.1" />
+
+  <branding>
+    <color type="primary" scheme_preference="light">#eb77bc</color>
+    <color type="primary" scheme_preference="dark">#944a76</color>
+  </branding>
   <custom>
     <value key="GnomeSoftware::key-colors">[(208, 105, 167)]</value>
     <value key="Purism::form_factor">mobile</value>
