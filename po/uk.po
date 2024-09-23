@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2024-08-12 09:51+0000\n"
-"PO-Revision-Date: 2024-08-23 15:33+0300\n"
+"POT-Creation-Date: 2024-09-23 11:13+0000\n"
+"PO-Revision-Date: 2024-09-23 18:59+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -70,8 +70,6 @@ msgid "General Shortcuts"
 msgstr "Загальні скорочення"
 
 #: data/resources/gtk/help-overlay.ui:14
-#| msgctxt "shortcut window"
-#| msgid "Copy Image or Metadata to Clipboard"
 msgctxt "shortcut window"
 msgid "Copy Image or Selected Text to Clipboard"
 msgstr "Копіювати зображення або позначений текст до буфера"
@@ -225,8 +223,6 @@ msgid "Pan Down"
 msgstr "Панорамування вниз"
 
 #: data/resources/gtk/help-overlay.ui:202
-#| msgctxt "shortcut window"
-#| msgid "Pan View"
 msgctxt "shortcut window"
 msgid "View"
 msgstr "Переглянути"
@@ -269,22 +265,23 @@ msgstr "© Christopher Davis та інші, 2020–2024."
 msgid "Could not list other files in directory."
 msgstr "Не вдалося отримати список інших файлів у каталозі."
 
+#. Translators: Display of the f-number <https://en.wikipedia.org/wiki/F-number>. {} will be replaced with the number
 #: src/metadata.rs:253
 msgid "\\u{192}\\u{2215}{}"
 msgstr "\\u{192}\\u{2215}{}"
 
 #. Translators: Fractional exposure time (photography) in seconds
-#: src/metadata.rs:270
+#: src/metadata.rs:269
 msgid "1\\u{2215}{}\\u{202F}s"
 msgstr "1\\u{2215}{}\\u{202F}с"
 
 #. Translators: Exposure time (photography) in seconds
-#: src/metadata.rs:278
+#: src/metadata.rs:277
 msgid "{}\\u{202F}s"
 msgstr "{}\\u{202F}с"
 
 #. Translators: Unit for focal length in millimeters
-#: src/metadata.rs:304
+#: src/metadata.rs:303
 msgid "{}\\u{202F}mm"
 msgstr "{}\\u{202F}мм"
 
@@ -321,16 +318,20 @@ msgstr "%x %X"
 msgid "Failed to restore image from trash"
 msgstr "Не вдалося відновити зображення зі смітника"
 
+#: src/widgets/error_details.ui:4
+#| msgid "Error Message"
+msgid "Error Details"
+msgstr "Подробиці щодо помилки"
+
 #: src/widgets/error_details.ui:19
 msgid ""
 "The image loader reported the following when trying to load the image. "
 "Please include this information when you report an error. If possible, "
 "please also provide the image that causes the issue."
 msgstr ""
-"Під час спроби завантажити зображення засіб завантаження повідомив наведені"
-" нижче дані. Будь ласка, включіть ці відомості до вашого звіту щодо помилки."
-" Якщо можна, також надайте зображення, завантаження якого призвело до"
-" помилки."
+"Під час спроби завантажити зображення засіб завантаження повідомив наведені "
+"нижче дані. Будь ласка, включіть ці відомості до вашого звіту щодо помилки. "
+"Якщо можна, також надайте зображення, завантаження якого призвело до помилки."
 
 #: src/widgets/error_details.ui:24
 msgid "Error Message"
@@ -349,17 +350,16 @@ msgid ""
 "No image loaders available. Maybe the “glycin-loaders” package with "
 "compatibility version “{}” is not installed."
 msgstr ""
-"Немає засобів завантаження зображень. Можливо, не встановлено пакунок"
-" «glycin-loaders» із сумісною версією «{}»."
+"Немає засобів завантаження зображень. Можливо, не встановлено пакунок "
+"«glycin-loaders» із сумісною версією «{}»."
 
 #: src/widgets/image_page.rs:241
 msgid "The image format “{} ({})” is known but not installed."
 msgstr ""
-"Формат зображень «{} ({})» відомий програмі, але засоби його обробки не"
-" встановлено."
+"Формат зображень «{} ({})» відомий програмі, але засоби його обробки не "
+"встановлено."
 
 #: src/widgets/image_page.rs:248
-#| msgid "Unknown image format: {}"
 msgid "Unknown image format “{} ({}).”"
 msgstr "Невідомий формат зображення «{} ({}).»"
 
@@ -488,8 +488,6 @@ msgid "Continue…"
 msgstr "Продовжити…"
 
 #: src/widgets/print.rs:466
-#| msgctxt "shortcut window"
-#| msgid "First Image"
 msgid "Print Image"
 msgstr "Надрукувати зображення"
 
@@ -581,12 +579,11 @@ msgstr ", відтінки сірого"
 msgid ", {}\\u{202F}bit"
 msgstr ", {}\\u{202F}біт"
 
-#: src/widgets/properties_view.rs:286
-#| msgid "1\\u{2215}{}\\u{202F}s"
+#: src/widgets/properties_view.rs:287
 msgid "{}\\u{202F}\\u{D7}\\u{202F}{}"
 msgstr "{}\\u{202F}\\u{D7}\\u{202F}{}"
 
-#: src/widgets/properties_view.rs:324
+#: src/widgets/properties_view.rs:326
 msgid "Image Coordinates Copied"
 msgstr "Скопійовано координати зображення"
 
