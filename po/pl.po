@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: loupe\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2024-07-31 00:10+0000\n"
-"PO-Revision-Date: 2024-09-08 19:55+0200\n"
+"POT-Creation-Date: 2024-09-23 11:13+0000\n"
+"PO-Revision-Date: 2024-09-23 18:55+0200\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <community-poland@mozilla.org>\n"
 "Language: pl\n"
@@ -20,7 +20,7 @@ msgstr ""
 "|| n%100>=20) ? 1 : 2);\n"
 
 #: data/org.gnome.Loupe.desktop.in.in:3
-#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:31 src/window.rs:873
+#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:31 src/window.rs:874
 msgid "Image Viewer"
 msgstr "Przeglądarka obrazów"
 
@@ -267,22 +267,23 @@ msgstr "Copyright © 2020-2024 Christopher Davis i inni"
 msgid "Could not list other files in directory."
 msgstr "Nie można wyświetlić listy pozostałych plików w katalogu."
 
-#: src/metadata.rs:249
+#. Translators: Display of the f-number <https://en.wikipedia.org/wiki/F-number>. {} will be replaced with the number
+#: src/metadata.rs:253
 msgid "\\u{192}\\u{2215}{}"
 msgstr "\\u{192}\\u{2215}{}"
 
 #. Translators: Fractional exposure time (photography) in seconds
-#: src/metadata.rs:266
+#: src/metadata.rs:269
 msgid "1\\u{2215}{}\\u{202F}s"
 msgstr "1\\u{2215}{}\\u{202F}s"
 
 #. Translators: Exposure time (photography) in seconds
-#: src/metadata.rs:274
+#: src/metadata.rs:277
 msgid "{}\\u{202F}s"
 msgstr "{}\\u{202F}s"
 
 #. Translators: Unit for focal length in millimeters
-#: src/metadata.rs:300
+#: src/metadata.rs:303
 msgid "{}\\u{202F}mm"
 msgstr "{}\\u{202F}mm"
 
@@ -319,6 +320,10 @@ msgstr "%x %X"
 msgid "Failed to restore image from trash"
 msgstr "Przywrócenie obrazu z kosza się nie powiodło"
 
+#: src/widgets/error_details.ui:4
+msgid "Error Details"
+msgstr "Informacje o błędzie"
+
 #: src/widgets/error_details.ui:19
 msgid ""
 "The image loader reported the following when trying to load the image. "
@@ -341,7 +346,7 @@ msgstr "Kopiuje komunikat o błędzie"
 msgid "Report _Issue"
 msgstr "Zgłoś _błąd"
 
-#: src/widgets/image_page.rs:227
+#: src/widgets/image_page.rs:226
 msgid ""
 "No image loaders available. Maybe the “glycin-loaders” package with "
 "compatibility version “{}” is not installed."
@@ -349,19 +354,19 @@ msgstr ""
 "Brak dostępnych mechanizmów wczytywania obrazów. Być może pakiet „glycin-"
 "loaders” o zgodnej wersji „{}” nie jest zainstalowany."
 
-#: src/widgets/image_page.rs:242
+#: src/widgets/image_page.rs:241
 msgid "The image format “{} ({})” is known but not installed."
 msgstr "Format obrazu „{} ({})” jest znany, ale nie jest zainstalowany."
 
-#: src/widgets/image_page.rs:249
+#: src/widgets/image_page.rs:248
 msgid "Unknown image format “{} ({}).”"
 msgstr "Nieznany format obrazu „{} ({})”."
 
-#: src/widgets/image_page.rs:277
+#: src/widgets/image_page.rs:276
 msgid "There is not enough free memory available to load this image."
 msgstr "Za mało dostępnej wolnej pamięci, aby wczytać ten obraz."
 
-#: src/widgets/image_page.rs:281
+#: src/widgets/image_page.rs:280
 msgid "Either the image file is corrupted or it contains unsupported elements."
 msgstr "Plik obrazu jest uszkodzony lub zawiera nieobsługiwane elementy."
 
@@ -571,11 +576,11 @@ msgstr ", skala szarości"
 msgid ", {}\\u{202F}bit"
 msgstr "{}\\u{202F}b"
 
-#: src/widgets/properties_view.rs:286
+#: src/widgets/properties_view.rs:287
 msgid "{}\\u{202F}\\u{D7}\\u{202F}{}"
 msgstr "{}\\u{202F}\\u{D7}\\u{202F}{}"
 
-#: src/widgets/properties_view.rs:324
+#: src/widgets/properties_view.rs:326
 msgid "Image Coordinates Copied"
 msgstr "Skopiowano współrzędne obrazu"
 
