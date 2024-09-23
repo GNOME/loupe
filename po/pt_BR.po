@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2024-08-21 02:35+0000\n"
-"PO-Revision-Date: 2024-08-26 11:21-0300\n"
+"POT-Creation-Date: 2024-09-23 11:13+0000\n"
+"PO-Revision-Date: 2024-09-23 08:40-0300\n"
 "Last-Translator: Juliano de Souza Camargo <julianosc@pm.me>\n"
 "Language-Team: Brazilian Portuguese <https://br.gnome.org/traducao>>\n"
 "Language: pt_BR\n"
@@ -270,22 +270,23 @@ msgstr "Copyright © 2020–2024 Christopher Davis et al."
 msgid "Could not list other files in directory."
 msgstr "Não foi possível listar outros arquivos no diretório."
 
+#. Translators: Display of the f-number <https://en.wikipedia.org/wiki/F-number>. {} will be replaced with the number
 #: src/metadata.rs:253
 msgid "\\u{192}\\u{2215}{}"
 msgstr "\\u{192}\\u{2215}{}"
 
 #. Translators: Fractional exposure time (photography) in seconds
-#: src/metadata.rs:270
+#: src/metadata.rs:269
 msgid "1\\u{2215}{}\\u{202F}s"
 msgstr "1\\u{2215}{}\\u{202F}s"
 
 #. Translators: Exposure time (photography) in seconds
-#: src/metadata.rs:278
+#: src/metadata.rs:277
 msgid "{}\\u{202F}s"
 msgstr "{}\\u{202F}s"
 
 #. Translators: Unit for focal length in millimeters
-#: src/metadata.rs:304
+#: src/metadata.rs:303
 msgid "{}\\u{202F}mm"
 msgstr "{}\\u{202F}mm"
 
@@ -321,6 +322,10 @@ msgstr "%x %X"
 #: src/util.rs:180 src/window.rs:659
 msgid "Failed to restore image from trash"
 msgstr "Falha ao restaurar a imagem da lixeira"
+
+#: src/widgets/error_details.ui:4
+msgid "Error Details"
+msgstr "Detalhes do erro"
 
 #: src/widgets/error_details.ui:19
 msgid ""
@@ -575,11 +580,11 @@ msgstr ", tons de cinza"
 msgid ", {}\\u{202F}bit"
 msgstr ", {}\\u{202F}bit"
 
-#: src/widgets/properties_view.rs:286
+#: src/widgets/properties_view.rs:287
 msgid "{}\\u{202F}\\u{D7}\\u{202F}{}"
 msgstr "{}\\u{202F}\\u{D7}\\u{202F}{}"
 
-#: src/widgets/properties_view.rs:324
+#: src/widgets/properties_view.rs:326
 msgid "Image Coordinates Copied"
 msgstr "Coordenadas de imagem copiadas"
 
