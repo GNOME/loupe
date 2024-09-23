@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2024-08-12 09:51+0000\n"
-"PO-Revision-Date: 2024-08-23 20:43+0300\n"
+"POT-Creation-Date: 2024-09-23 11:13+0000\n"
+"PO-Revision-Date: 2024-09-24 01:17+0300\n"
 "Last-Translator: Yuras Shumovich <shumovichy@gmail.com>\n"
 "Language-Team: Belarusian <i18n-bel-gnome@googlegroups.com>\n"
 "Language: be\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 3.4.4\n"
+"X-Generator: Poedit 3.5\n"
 
 #: data/org.gnome.Loupe.desktop.in.in:3
 #: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:31 src/window.rs:874
@@ -262,22 +262,23 @@ msgstr "Аўтарскае права © 2020–2024 Christopher Davis і інш
 msgid "Could not list other files in directory."
 msgstr "Не ўдалося скласці спіс іншых файлаў у каталогу."
 
+#. Translators: Display of the f-number <https://en.wikipedia.org/wiki/F-number>. {} will be replaced with the number
 #: src/metadata.rs:253
 msgid "\\u{192}\\u{2215}{}"
 msgstr "\\u{192}\\u{2215}{}"
 
 #. Translators: Fractional exposure time (photography) in seconds
-#: src/metadata.rs:270
+#: src/metadata.rs:269
 msgid "1\\u{2215}{}\\u{202F}s"
 msgstr "1\\u{2215}{}\\u{202F}с"
 
 #. Translators: Exposure time (photography) in seconds
-#: src/metadata.rs:278
+#: src/metadata.rs:277
 msgid "{}\\u{202F}s"
 msgstr "{}\\u{202F}с"
 
 #. Translators: Unit for focal length in millimeters
-#: src/metadata.rs:304
+#: src/metadata.rs:303
 msgid "{}\\u{202F}mm"
 msgstr "{}\\u{202F}мм"
 
@@ -313,6 +314,10 @@ msgstr "%x %X"
 #: src/util.rs:180 src/window.rs:659
 msgid "Failed to restore image from trash"
 msgstr "Не ўдалося аднавіць выяву са сметніцы"
+
+#: src/widgets/error_details.ui:4
+msgid "Error Details"
+msgstr "Падрабязнасці памылкі"
 
 #: src/widgets/error_details.ui:19
 msgid ""
@@ -567,12 +572,11 @@ msgstr ", градацыі шэрага"
 msgid ", {}\\u{202F}bit"
 msgstr ", {}\\u{202F}біт"
 
-#: src/widgets/properties_view.rs:286
-#| msgid "1\\u{2215}{}\\u{202F}s"
+#: src/widgets/properties_view.rs:287
 msgid "{}\\u{202F}\\u{D7}\\u{202F}{}"
 msgstr "{}\\u{202F}\\u{D7}\\u{202F}{}"
 
-#: src/widgets/properties_view.rs:324
+#: src/widgets/properties_view.rs:326
 msgid "Image Coordinates Copied"
 msgstr "Каардынаты выявы скапіяваны"
 
