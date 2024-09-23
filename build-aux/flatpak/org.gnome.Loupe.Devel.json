@@ -106,13 +106,14 @@
             "name": "glycin",
             "buildsystem": "meson",
             "config-opts": [
+                "-Dloaders=glycin-image-rs,glycin-heif,glycin-jxl,glycin-svg,glycin-raw",
                 "-Dlibglycin=false"
             ],
             "sources": [
                 {
                     "type": "git",
                     "url": "https://gitlab.gnome.org/sophie-h/glycin.git",
-                    "commit": "ce58882288245c1650a444243e0e90c87e53f835"
+                    "commit": "a887f4246b1dc0a40fd10dbfe96e734b3799d9a3"
                 }
             ]
         },
