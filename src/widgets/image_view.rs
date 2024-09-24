@@ -220,6 +220,33 @@ mod imp {
                 ),
             );
 
+            self.zoom_value.connect_changed(glib::clone!(
+                #[weak]
+                obj,
+                move |_| {
+                    if let Some(image) = obj.current_image() {
+                        let imp = obj.imp();
+
+                        // Only make submit button sensitive if entry value is tifferent from
+                        // current zoom value
+                        let sensitive = if let Some(value) = obj.zoom_value_f64() {
+                            let a = (value * 10_000.).round() / 10_000.;
+                            let b = (image.zoom_target() * 10_000.).round() / 10_000.;
+                            a != b
+                        } else {
+                            false
+                        };
+
+                        imp.submit_zoom.set_sensitive(sensitive);
+                        if sensitive {
+                            imp.submit_zoom.add_css_class("suggested-action");
+                        } else {
+                            imp.submit_zoom.remove_css_class("suggested-action");
+                        }
+                    }
+                }
+            ));
+
             self.zoom_toggle.connect_clicked(clone!(
                 #[weak]
                 obj,
@@ -268,22 +295,8 @@ mod imp {
                 obj,
                 move |_| {
                     if let Some(page) = obj.current_page() {
-                        let mut value = obj.imp().zoom_value.text().to_string();
-                        let locale_settings = util::locale_settings();
-
-                        if let Some(thousands) = locale_settings.thousands_sep {
-                            value = value.replace(&thousands, "");
-                        }
-
-                        if let Some(decimal) = locale_settings.decimal_point {
-                            value = value.replace(&decimal, ".");
-                        }
-
-                        value = value.replace('%', "");
-                        value = value.trim().to_string();
-
-                        if let Ok(value) = value.parse::<f64>() {
-                            page.image().zoom_to_exact(value / 100.);
+                        if let Some(value) = obj.zoom_value_f64() {
+                            page.image().zoom_to_exact(value);
                         }
                     }
                 }
@@ -877,5 +890,23 @@ impl LpImageView {
 
     pub fn zoom_menu_button(&self) -> gtk::MenuButton {
         self.imp().zoom_menu_button.clone()
+    }
+
+    pub fn zoom_value_f64(&self) -> Option<f64> {
+        let mut value = self.imp().zoom_value.text().to_string();
+        let locale_settings = util::locale_settings();
+
+        if let Some(thousands) = locale_settings.thousands_sep {
+            value = value.replace(&thousands, "");
+        }
+
+        if let Some(decimal) = locale_settings.decimal_point {
+            value = value.replace(&decimal, ".");
+        }
+
+        value = value.replace('%', "");
+        value = value.trim().to_string();
+
+        value.parse::<f64>().ok().map(|x| x / 100.)
     }
 }
