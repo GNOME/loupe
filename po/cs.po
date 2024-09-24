@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2024-09-16 15:44+0000\n"
-"PO-Revision-Date: 2024-09-17 18:58+0200\n"
+"POT-Creation-Date: 2024-09-24 08:37+0000\n"
+"PO-Revision-Date: 2024-09-24 16:52+0200\n"
 "Last-Translator: Daniel Rusek <mail@asciiwolf.com>\n"
 "Language-Team: Czech <gnome-cs-list@gnome.org>\n"
 "Language: cs\n"
@@ -25,7 +25,7 @@ msgstr "Prohlížeč obrázků"
 
 #: data/org.gnome.Loupe.desktop.in.in:11
 msgid "Picture;Graphics;Loupe;"
-msgstr "Obrázek;Obrázky;Snímek;Snímky;Grafika;Prohlížeč obrázků;"
+msgstr "Obrázek;Obrázky;Snímek;Snímky;Grafika;Loupe;"
 
 #: data/org.gnome.Loupe.gschema.xml.in:6
 msgid "Show the image properties sidebar"
@@ -315,6 +315,14 @@ msgstr "%x %X"
 #: src/util.rs:181 src/window.rs:675
 msgid "Failed to restore image from trash"
 msgstr "Nepodařilo se obnovit obrázek z koše"
+
+#: src/widgets/drag_overlay.ui:15
+msgid "Drop Image to View"
+msgstr "Přetáhněte obrázek, který chcete zobrazit"
+
+#: src/widgets/error_details.ui:4
+msgid "Error Details"
+msgstr "Podrobnosti o chybě"
 
 #: src/widgets/error_details.ui:19
 msgid ""
@@ -733,15 +741,15 @@ msgstr "Hlavní nabídka"
 msgid "Image Properties"
 msgstr "Vlastnosti obrázku"
 
-#: src/window.ui:274
+#: src/window.ui:266
 msgid "View Images"
 msgstr "Prohlížejte si obrázky"
 
-#: src/window.ui:275
+#: src/window.ui:267
 msgid "Drag and drop images here"
 msgstr "Sem přetáhněte a pusťte obrázky"
 
-#: src/window.ui:279
+#: src/window.ui:271
 msgid "_Open Files…"
 msgstr "_Otevřít soubory…"
 
