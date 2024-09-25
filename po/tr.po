@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2024-09-19 20:41+0000\n"
-"PO-Revision-Date: 2024-09-18 08:00+0300\n"
+"POT-Creation-Date: 2024-09-24 18:26+0000\n"
+"PO-Revision-Date: 2024-09-25 08:00+0300\n"
 "Last-Translator: Emin Tufan Çetin <etcetin@gmail.com>\n"
 "Language-Team: Turkish <takim@gnome.org.tr>\n"
 "Language: tr\n"
@@ -324,6 +324,10 @@ msgstr "Resim çöpten geri yüklenemedi"
 #: src/widgets/drag_overlay.ui:15
 msgid "Drop Image to View"
 msgstr "Görüntülenecek Resmi Bırak"
+
+#: src/widgets/error_details.ui:4
+msgid "Error Details"
+msgstr "Hata Ayrıntıları"
 
 #: src/widgets/error_details.ui:19
 msgid ""
