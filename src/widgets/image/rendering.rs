@@ -65,10 +65,10 @@ impl WidgetImpl for imp::LpImage {
 
         let applicable_zoom = self.applicable_zoom();
 
-        let nth_snaphot = self.nth_snapshot.get() + 1;
-        if nth_snaphot < 3 {
-            self.nth_snapshot.set(nth_snaphot);
-            log::trace!("Creating snapshot #{nth_snaphot}");
+        let nth_snapshot = self.nth_snapshot.get() + 1;
+        if nth_snapshot < 3 {
+            self.nth_snapshot.set(nth_snapshot);
+            log::trace!("Creating snapshot #{nth_snapshot}");
         }
 
         let scaling_filter = if obj.metadata().is_svg() {
@@ -140,8 +140,8 @@ impl WidgetImpl for imp::LpImage {
 
         snapshot.restore();
 
-        if nth_snaphot < 3 {
-            log::trace!("Snapshot #{nth_snaphot} created");
+        if nth_snapshot < 3 {
+            log::trace!("Snapshot #{nth_snapshot} created");
         }
     }
 
