@@ -7,10 +7,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2024-08-06 12:34+0000\n"
-"PO-Revision-Date: 2024-08-09 17:22+0300\n"
+"POT-Creation-Date: 2024-09-23 10:37+0000\n"
+"PO-Revision-Date: 2024-09-26 12:07+0300\n"
 "Last-Translator: Yosef Or Boczko <yoseforb@gmail.com>\n"
-"Language-Team: Hebrew\n"
+"Language-Team: Hebrew <yoseforb@gmail.com>\n"
 "Language: he\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,7 +20,7 @@ msgstr ""
 "X-Generator: Gtranslator 46.1\n"
 
 #: data/org.gnome.Loupe.desktop.in.in:3
-#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:31 src/window.rs:874
+#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:31 src/window.rs:897
 msgid "Image Viewer"
 msgstr "מציג תמונות"
 
@@ -266,22 +266,23 @@ msgstr "כל הזכויות שמורות © 2022-2024 Christopher Davis ואחר
 msgid "Could not list other files in directory."
 msgstr "לא ניתן להציג קבצים נוספים בתיקייה."
 
+#. Translators: Display of the f-number <https://en.wikipedia.org/wiki/F-number>. {} will be replaced with the number
 #: src/metadata.rs:253
 msgid "\\u{192}\\u{2215}{}"
 msgstr "\\u{192}\\u{2215}{}"
 
 #. Translators: Fractional exposure time (photography) in seconds
-#: src/metadata.rs:270
+#: src/metadata.rs:269
 msgid "1\\u{2215}{}\\u{202F}s"
 msgstr "‏‎1\\u{2215}{}\\u{202F} ש"
 
 #. Translators: Exposure time (photography) in seconds
-#: src/metadata.rs:278
+#: src/metadata.rs:277
 msgid "{}\\u{202F}s"
 msgstr "‎{}\\u{202F} שנ׳"
 
 #. Translators: Unit for focal length in millimeters
-#: src/metadata.rs:304
+#: src/metadata.rs:303
 msgid "{}\\u{202F}mm"
 msgstr "‏‎{}\\u{202F} מ״מ"
 
@@ -309,14 +310,22 @@ msgstr "מע"
 #. The format has to follow <https://docs.gtk.org/glib/method.DateTime.format.html>
 #. The default is already translated. Don't change if you are not sure what to
 #. use.
-#: src/util.rs:37
+#: src/util.rs:38
 #, c-format
 msgid "%x %X"
 msgstr "%x %X"
 
-#: src/util.rs:180 src/window.rs:659
+#: src/util.rs:181 src/window.rs:675
 msgid "Failed to restore image from trash"
 msgstr "שחזור התמונה מהאשפה נכשלה"
+
+#: src/widgets/drag_overlay.ui:15
+msgid "Drop Image to View"
+msgstr "שחרור תמנוה להצגה"
+
+#: src/widgets/error_details.ui:4
+msgid "Error Details"
+msgstr "פרטי שגיאה"
 
 #: src/widgets/error_details.ui:19
 msgid ""
@@ -367,21 +376,25 @@ msgstr "או שהתמונה פגומה או שהיא מכילה רכיבים ש�
 msgid "_Open With…"
 msgstr "_פתיחה באמצעות…"
 
-#: src/widgets/image_page.ui:14 src/window.ui:24
+#: src/widgets/image_page.ui:10 src/window.ui:20
 msgid "_Print…"
 msgstr "ה_דפסה…"
 
-#: src/widgets/image_page.ui:18
-msgid "_Copy"
-msgstr "ה_עתקה"
-
-#: src/widgets/image_page.ui:23 src/window.ui:29
+#: src/widgets/image_page.ui:15 src/window.ui:25
 msgid "Rotate"
 msgstr "סיבוב"
 
-#: src/widgets/image_page.ui:34 src/window.ui:40
+#: src/widgets/image_page.ui:26 src/window.ui:36
 msgid "_Set as Background…"
 msgstr "ה_גדרה כרקע…"
+
+#: src/widgets/image_page.ui:30 src/window.ui:40
+msgid "_Delete"
+msgstr "_מחיקה"
+
+#: src/widgets/image_page.ui:34
+msgid "_Copy"
+msgstr "ה_עתקה"
 
 #: src/widgets/image_page.ui:63
 msgid "Could not Load Image"
@@ -395,43 +408,51 @@ msgstr "_פרטים נוספים"
 msgid "_Reload"
 msgstr "_טעינה מחדש"
 
-#: src/widgets/image_page.ui:123 src/window.ui:225
+#: src/widgets/image_page.ui:123 src/window.ui:218
 msgid "Rotate Left"
 msgstr "סיבוב שמאלה"
 
-#: src/widgets/image_page.ui:133 src/window.ui:235
+#: src/widgets/image_page.ui:133 src/window.ui:228
 msgid "Rotate Right"
 msgstr "סיבוב ימינה"
 
+#: src/widgets/image_view.rs:217
+msgid "{} %"
+msgstr "{} %"
+
 #. Translators: This is a toast notification, informing the user that
 #. an image has been set as background.
-#: src/widgets/image_view.rs:720
+#: src/widgets/image_view.rs:824
 msgid "Set as background."
 msgstr "הגדרת התמונה כרקע."
 
-#: src/widgets/image_view.rs:733
+#: src/widgets/image_view.rs:837
 msgid "Could not set background."
 msgstr "לא ניתן לקבוע כרקע."
 
-#: src/widgets/image_view.ui:27
+#: src/widgets/image_view.ui:30
 msgid "Previous Image"
 msgstr "התמונה הקודמת"
 
-#: src/widgets/image_view.ui:38
+#: src/widgets/image_view.ui:40
 msgid "Next Image"
 msgstr "התמונה הבאה"
 
-#: src/widgets/image_view.ui:63
+#: src/widgets/image_view.ui:74
 msgid "Zoom Out"
 msgstr "התרחקות"
 
-#: src/widgets/image_view.ui:74
+#: src/widgets/image_view.ui:85
 msgid "Zoom In"
 msgstr "התקרבות"
 
-#: src/widgets/image_view.ui:85
-msgid "Toggle Fullscreen"
-msgstr "שינוי מצב מסך מלא"
+#: src/widgets/image_view.ui:100
+msgid "Toggle Zoom"
+msgstr "שינוי מצב התקריב"
+
+#: src/widgets/image_view.ui:108
+msgid "Zoom to Specific Level"
+msgstr "התקרבות לרמה מוגדרת"
 
 #: src/widgets/print.rs:108
 msgid "Top"
@@ -572,11 +593,11 @@ msgstr ", אפור"
 msgid ", {}\\u{202F}bit"
 msgstr ", {}\\u{202F} סיביות"
 
-#: src/widgets/properties_view.rs:286
+#: src/widgets/properties_view.rs:287
 msgid "{}\\u{202F}\\u{D7}\\u{202F}{}"
 msgstr "{}\\u{202F}\\u{D7}\\u{202F}{}"
 
-#: src/widgets/properties_view.rs:324
+#: src/widgets/properties_view.rs:326
 msgid "Image Coordinates Copied"
 msgstr "נקודות הציון של התמונה הועתקו"
 
@@ -645,51 +666,51 @@ msgstr "אורך מוקד"
 msgid "Maker, Model"
 msgstr "מצלמה, דגם"
 
-#: src/window.rs:523
+#: src/window.rs:539
 msgid "Supported image formats"
 msgstr "תבניות תמונה נתמכות"
 
-#: src/window.rs:529
+#: src/window.rs:545
 msgid "All files"
 msgstr "כל הקבצים"
 
-#: src/window.rs:536
+#: src/window.rs:552
 msgid "Open Image"
 msgstr "פתיחת תמונה"
 
-#: src/window.rs:622
+#: src/window.rs:638
 msgid "Image copied to clipboard"
 msgstr "תמונה הועתקה ללוח הגזירים"
 
-#: src/window.rs:643
+#: src/window.rs:659
 msgid "Image moved to trash"
 msgstr "תמונה הוערה לאשפה"
 
-#: src/window.rs:644
+#: src/window.rs:660
 msgid "Undo"
 msgstr "ביטול"
 
-#: src/window.rs:674
+#: src/window.rs:690
 msgid "Failed to move image to trash"
 msgstr "העברת התמונה לאשפה נכשלה"
 
-#: src/window.rs:698
+#: src/window.rs:714
 msgid "Permanently Delete Image?"
 msgstr "למחוק את התמונה לצמיתות?"
 
-#: src/window.rs:700
+#: src/window.rs:716
 msgid "After deleting the image “{}” it will be permanently lost."
 msgstr "לאחר מחיקת התמונה „{}” היא תאבד לצמיתות."
 
-#: src/window.rs:708
+#: src/window.rs:724
 msgid "Cancel"
 msgstr "ביטול"
 
-#: src/window.rs:709
+#: src/window.rs:725
 msgid "Delete"
 msgstr "מחיקה"
 
-#: src/window.rs:720
+#: src/window.rs:736
 msgid "Failed to delete image"
 msgstr "מחיקת התמונה נכשלה"
 
@@ -713,35 +734,37 @@ msgstr "_צירופי מקשים"
 msgid "_About Image Viewer"
 msgstr "על מציג ה_תמונות"
 
-# msgctxt "shortcut window"
 #: src/window.ui:204
-msgid "Copy to Clipboard"
-msgstr "העתקה ללוח הגזירים"
+msgid "Toggle Fullscreen"
+msgstr "שינוי מצב מסך מלא"
 
-# msgctxt "shortcut window"
-#: src/window.ui:211
-msgid "Move to Trash"
-msgstr "העברה לאשפה"
-
-#: src/window.ui:217
+#: src/window.ui:210
 msgid "Main Menu"
 msgstr "תפריט ראשי"
 
-#: src/window.ui:249
+#: src/window.ui:242
 msgid "Image Properties"
 msgstr "מאפייני תמונה"
 
-#: src/window.ui:281
+#: src/window.ui:266
 msgid "View Images"
 msgstr "מציג תמונות"
 
-#: src/window.ui:282
+#: src/window.ui:267
 msgid "Drag and drop images here"
 msgstr "יש לגרור ולשחרר לכאן תמונות"
 
-#: src/window.ui:286
+#: src/window.ui:271
 msgid "_Open Files…"
 msgstr "_פתיחת קבצים…"
+
+# msgctxt "shortcut window"
+#~ msgid "Copy to Clipboard"
+#~ msgstr "העתקה ללוח הגזירים"
+
+# msgctxt "shortcut window"
+#~ msgid "Move to Trash"
+#~ msgstr "העברה לאשפה"
 
 #~ msgid "Copy Information"
 #~ msgstr "העתקת פרטים"
