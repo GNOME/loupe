@@ -24,12 +24,6 @@ gtk4_x11 = dependency('gtk4-x11', required: get_option('x11'))
 cargo = find_program('cargo', required: true)
 glib_compile_schemas = find_program('glib-compile-schemas', required: true)
 
-iv_prefix = get_option('prefix')
-iv_bindir = iv_prefix / get_option('bindir')
-iv_localedir = iv_prefix / get_option('localedir')
-iv_datadir = iv_prefix / get_option('datadir')
-iv_pkgdatadir = iv_datadir / meson.project_name()
-
 profile = ''
 version_suffix = ''
 
@@ -43,18 +37,15 @@ if get_option('profile') != 'release'
   endif
 endif
 
+prefix = get_option('prefix')
+
 base_id = 'org.gnome.Loupe'
 app_id = 'org.gnome.Loupe@0@'.format(profile)
-iv_version = meson.project_version() + version_suffix
-
-conf = configuration_data()
-conf.set('APP_ID', app_id)
-conf.set('PROFILE', profile)
-conf.set('VERSION', iv_version)
-conf.set('BIN_NAME', meson.project_name())
-conf.set('bindir', iv_bindir)
-conf.set('localedir', iv_localedir)
-conf.set('pkgdatadir', iv_pkgdatadir)
+version = meson.project_version() + version_suffix
+localedir = prefix / get_option('localedir')
+bindir = prefix / get_option('bindir')
+datadir = prefix / get_option('datadir')
+pkgdatadir = datadir / meson.project_name()
 
 subdir('data')
 subdir('help')

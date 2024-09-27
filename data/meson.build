@@ -46,6 +46,10 @@ mime_types += [
   'image/jxl',
 ]
 
+conf = configuration_data()
+conf.set('APP_ID', app_id)
+conf.set('BIN_NAME', meson.project_name())
+conf.set('BINDIR', bindir)
 conf.set('MIME_TYPES', ';'.join(mime_types) + ';')
 
 desktop_file = i18n.merge_file(
@@ -58,22 +62,20 @@ desktop_file = i18n.merge_file(
   type: 'desktop',
   po_dir: '../po',
   install: true,
-  install_dir: iv_datadir / 'applications'
+  install_dir: datadir / 'applications',
 )
 
 configure_file(
-    input: 'org.gnome.Loupe.service.in',
-    output: '@0@.service'.format(app_id),
-    configuration: conf,
-    install: true,
-    install_dir: iv_datadir / 'dbus-1' / 'services'
+  input: 'org.gnome.Loupe.service.in',
+  output: '@0@.service'.format(app_id),
+  configuration: conf,
+  install: true,
+  install_dir: datadir / 'dbus-1' / 'services',
 )
 
 desktop_utils = find_program('desktop-file-validate', required: false)
 if desktop_utils.found()
-  test('Validate desktop file', desktop_utils,
-    args: [desktop_file]
-  )
+  test('Validate desktop file', desktop_utils, args: [desktop_file])
 endif
 
 appstream_file = i18n.merge_file(
@@ -85,16 +87,17 @@ appstream_file = i18n.merge_file(
   output: '@0@.metainfo.xml'.format(app_id),
   po_dir: '../po',
   install: true,
-  install_dir: iv_datadir / 'metainfo'
+  install_dir: datadir / 'metainfo',
 )
 
 # Validate Appdata
 appstreamcli = find_program('appstreamcli', required: false)
 if (appstreamcli.found())
-  test('Validate metainfo file',
+  test(
+    'Validate metainfo file',
     appstreamcli,
     args: ['validate', '--no-net', appstream_file],
-    workdir: meson.current_build_dir()
+    workdir: meson.current_build_dir(),
   )
 endif
 
@@ -109,17 +112,12 @@ configure_file(
   output: '@0@.gschema.xml'.format(app_id),
   configuration: gschema_conf,
   install: true,
-  install_dir: iv_datadir / 'glib-2.0' / 'schemas'
+  install_dir: datadir / 'glib-2.0' / 'schemas',
 )
 
 # Validate GSchema
 test(
-  'validate-gschema', glib_compile_schemas,
-  args: [
-    '--strict', '--dry-run', meson.current_source_dir()
-  ]
+  'validate-gschema',
+  glib_compile_schemas,
+  args: ['--strict', '--dry-run', meson.current_source_dir()],
 )
-
-# Post install
-
-gnome.post_install()

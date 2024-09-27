@@ -1,15 +1,5 @@
-configure_file(input: 'config.rs.in', output: 'config.rs', configuration: conf)
-
 build_root = meson.project_build_root()
 source_root = meson.project_source_root()
-
-# Copy the config.rs output to the source directory.
-run_command(
-  'cp',
-  build_root / 'src' / 'config.rs',
-  source_root / 'src' / 'config.rs',
-  check: true,
-)
 
 cargo_options = ['--manifest-path', source_root / 'Cargo.toml']
 cargo_options += ['--target-dir', build_root / 'src']
@@ -27,7 +17,13 @@ if gtk4_x11.found()
   cargo_options += ['--features', 'x11']
 endif
 
-cargo_env = {'CARGO_HOME': build_root / 'cargo-home'}
+cargo_env = {
+  'CARGO_HOME': build_root / 'cargo-home',
+  'APP_ID': app_id,
+  'PROFILE': profile,
+  'VERSION': version,
+  'LOCALEDIR': localedir,
+}
 
 cargo_build = custom_target(
   'cargo-build',
