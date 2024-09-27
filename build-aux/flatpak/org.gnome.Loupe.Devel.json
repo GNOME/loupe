@@ -120,7 +120,8 @@
             "name": "loupe",
             "buildsystem": "meson",
             "config-opts": [
-                "-Dprofile=development"
+                "-Dprofile=dev",
+                "-Dapp_id_suffix=.Devel"
             ],
             "sources": [
                 {

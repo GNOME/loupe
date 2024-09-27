@@ -108,7 +108,7 @@ gschema_conf = configuration_data()
 gschema_conf.set('app-id', app_id)
 gschema_conf.set('gettext-package', meson.project_name())
 configure_file(
-  input: '@0@.gschema.xml.in'.format(base_id),
+  input: 'org.gnome.Loupe.gschema.xml.in',
   output: '@0@.gschema.xml'.format(app_id),
   configuration: gschema_conf,
   install: true,

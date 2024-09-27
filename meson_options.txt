@@ -1,13 +1,16 @@
 option(
   'profile',
   type: 'combo',
-  description: 'The build profiles for the application. Use development or ci for the .Devel app ID. ci also produces optimized bundles.',
-  choices: [
-    'release',
-    'development',
-    'ci',
-  ],
+  choices: ['release', 'dev'],
   value: 'release',
+  description: 'Cargo profile value.',
+)
+option(
+  'app_id_suffix',
+  type: 'combo',
+  choices: ['', '.Devel'],
+  value: '',
+  description: 'Value will be appended to the app id.',
 )
 option(
   'x11',

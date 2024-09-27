@@ -3,28 +3,26 @@ source_root = meson.project_source_root()
 
 cargo_options = ['--manifest-path', source_root / 'Cargo.toml']
 cargo_options += ['--target-dir', build_root / 'src']
-
-if get_option('profile') == 'development'
-  rust_target = 'debug'
-  message('Building in debug mode')
-else
-  cargo_options += ['--release']
-  rust_target = 'release'
-  message('Building in release mode')
-endif
+cargo_options += ['--profile', profile]
 
 if gtk4_x11.found()
   cargo_options += ['--features', 'x11']
 endif
 
+if profile == 'dev'
+  rust_target = 'debug'
+elif profile == 'release'
+  rust_target = 'release'
+endif
+
 cargo_env = {
   'CARGO_HOME': build_root / 'cargo-home',
   'APP_ID': app_id,
-  'PROFILE': profile,
   'VERSION': version,
   'LOCALEDIR': localedir,
 }
 
+# Build binary
 cargo_build = custom_target(
   'cargo-build',
   build_by_default: true,
@@ -39,6 +37,7 @@ cargo_build = custom_target(
   ],
 )
 
+# Copy binary
 custom_target(
   'cp-binary',
   depends: cargo_build,
@@ -67,6 +66,7 @@ custom_target(
   ],
 )
 
+# Run tests
 test(
   'cargo-test',
   cargo,

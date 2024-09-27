@@ -24,11 +24,9 @@ gtk4_x11 = dependency('gtk4-x11', required: get_option('x11'))
 cargo = find_program('cargo', required: true)
 glib_compile_schemas = find_program('glib-compile-schemas', required: true)
 
-profile = ''
 version_suffix = ''
 
 if get_option('profile') != 'release'
-  profile = '.Devel'
   vcs_tag = run_command('git', 'rev-parse', '--short', 'HEAD', check: false).stdout().strip()
   if vcs_tag == ''
     version_suffix = '-devel'
@@ -39,8 +37,8 @@ endif
 
 prefix = get_option('prefix')
 
-base_id = 'org.gnome.Loupe'
-app_id = 'org.gnome.Loupe@0@'.format(profile)
+app_id = 'org.gnome.Loupe@0@'.format(get_option('app_id_suffix'))
+profile = get_option('profile')
 version = meson.project_version() + version_suffix
 localedir = prefix / get_option('localedir')
 bindir = prefix / get_option('bindir')

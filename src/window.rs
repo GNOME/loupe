@@ -205,7 +205,7 @@ mod imp {
                 }
             ));
 
-            if config::PROFILE == ".Devel" {
+            if config::APP_ID.ends_with(".Devel") {
                 obj.add_css_class("devel");
             }
 
