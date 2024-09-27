@@ -69,7 +69,7 @@
                     <property name="spacing">6</property>
                     <child>
                       <object class="GtkButton" id="zoom_out">
-                        <property name="icon-name">minus-symbolic</property>
+                        <property name="icon-name">minus-large-symbolic</property>
                         <property name="action-name">win.zoom-out-center</property>
                         <property name="tooltip-text" translatable="yes">Zoom Out</property>
                         <style>
@@ -80,7 +80,7 @@
                     <child>
                       <object class="GtkButton" id="zoom_in">
                         <property name="margin-end">6</property>
-                        <property name="icon-name">plus-symbolic</property>
+                        <property name="icon-name">plus-large-symbolic</property>
                         <property name="action-name">win.zoom-in-center</property>
                         <property name="tooltip-text" translatable="yes">Zoom In</property>
                         <style>
