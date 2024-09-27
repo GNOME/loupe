@@ -2,7 +2,7 @@
 name = "loupe"
 version = "47.0.0"
 edition = "2021"
-rust-version = "1.76"
+rust-version = "1.80"
 license = "GPL-3.0-or-later"
 
 [profile.release]
@@ -38,7 +38,6 @@ kamadak-exif = "0.5.5"
 libc = "0.2.158"
 libgweather = "4.4.0"
 log = "0.4.17"
-once_cell = "1.16.0"
 strum = { version = "0.26.2", features = ["derive"] }
 tracing-subscriber = { version = "0.3.18", features = ["fmt", "env-filter"] }
 url = "2.3.1"

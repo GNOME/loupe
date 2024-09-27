@@ -24,13 +24,13 @@
 //! This widget it similar to `AdwCarousel`.
 
 use std::cell::{Cell, OnceCell, RefCell};
+use std::sync::LazyLock;
 
 use adw::prelude::*;
 use adw::subclass::prelude::*;
 use glib::Properties;
 use indexmap::IndexMap;
 use log::error;
-use once_cell::sync::Lazy;
 
 use crate::deps::*;
 use crate::widgets::LpImagePage;
@@ -142,8 +142,8 @@ mod imp {
         }
 
         fn signals() -> &'static [Signal] {
-            static SIGNALS: Lazy<Vec<Signal>> =
-                Lazy::new(|| vec![Signal::builder("target-page-reached").build()]);
+            static SIGNALS: LazyLock<Vec<Signal>> =
+                LazyLock::new(|| vec![Signal::builder("target-page-reached").build()]);
             SIGNALS.as_ref()
         }
 

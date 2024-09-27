@@ -21,10 +21,10 @@ pub mod gettext;
 use std::ffi::CStr;
 use std::fmt::{Debug, Write};
 use std::path::{Path, PathBuf};
+use std::sync::LazyLock;
 
 use anyhow::{anyhow, bail, Context};
 use gio::prelude::*;
-use once_cell::sync::Lazy;
 
 use crate::deps::*;
 use crate::util::gettext::*;
@@ -98,7 +98,7 @@ pub fn compare_by_name(name_a: &glib::GString, name_b: &glib::GString) -> std::c
     key_a.cmp(&key_b)
 }
 
-static FILE_ATTRIBUTE_TRASH: Lazy<String> = Lazy::new(|| {
+static FILE_ATTRIBUTE_TRASH: LazyLock<String> = LazyLock::new(|| {
     [
         gio::FILE_ATTRIBUTE_STANDARD_NAME.as_str(),
         gio::FILE_ATTRIBUTE_TRASH_ORIG_PATH.as_str(),

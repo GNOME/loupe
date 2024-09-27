@@ -1,5 +1,5 @@
 // Copyright (c) 2022-2024 Sophie Herold
-// Copyright (c) 2022-2023 Christopher Davis
+// Copyright (c) 2022 Christopher Davis
 // Copyright (c) 2023 Julian Hofer
 // Copyright (c) 2023 Gage Berz
 //
@@ -19,6 +19,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 
 use std::cell::{OnceCell, RefCell};
+use std::sync::LazyLock;
 
 use anyhow::Context;
 use gio::prelude::*;
@@ -26,7 +27,6 @@ use gio::subclass::prelude::*;
 use glib::subclass::Signal;
 use glib::GString;
 use indexmap::IndexMap;
-use once_cell::sync::Lazy;
 
 use crate::deps::*;
 use crate::util;
@@ -53,8 +53,8 @@ mod imp {
 
     impl ObjectImpl for LpFileModel {
         fn signals() -> &'static [Signal] {
-            static SIGNALS: Lazy<Vec<Signal>> =
-                Lazy::new(|| vec![Signal::builder("changed").build()]);
+            static SIGNALS: LazyLock<Vec<Signal>> =
+                LazyLock::new(|| vec![Signal::builder("changed").build()]);
             SIGNALS.as_ref()
         }
     }

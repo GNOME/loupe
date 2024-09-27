@@ -44,14 +44,13 @@ mod zoom;
 use std::cell::{Cell, OnceCell, RefCell};
 use std::marker::PhantomData;
 use std::ops::Deref;
-use std::sync::Arc;
+use std::sync::{Arc, LazyLock};
 
 use adw::prelude::*;
 use adw::subclass::prelude::*;
 use futures_lite::StreamExt;
 use glib::subclass::Signal;
 use glib::{Properties, SignalGroup};
-use once_cell::sync::Lazy;
 
 use crate::decoder::{self, tiling, Decoder, DecoderUpdate};
 use crate::deps::*;
@@ -273,8 +272,8 @@ mod imp {
         }
 
         fn signals() -> &'static [Signal] {
-            static SIGNALS: Lazy<Vec<Signal>> =
-                Lazy::new(|| vec![Signal::builder("metadata-changed").build()]);
+            static SIGNALS: LazyLock<Vec<Signal>> =
+                LazyLock::new(|| vec![Signal::builder("metadata-changed").build()]);
             SIGNALS.as_ref()
         }
 
