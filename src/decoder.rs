@@ -24,9 +24,9 @@ pub mod tiling;
 use std::sync::Arc;
 
 use anyhow::Result;
+use async_channel as mpsc;
 pub use formats::RSVG_MAX_SIZE;
 use formats::*;
-use futures_channel::mpsc;
 
 use self::tiling::SharedFrameBuffer;
 use crate::deps::*;
@@ -45,7 +45,7 @@ pub struct TileRequest {
 #[derive(Debug, Clone)]
 /// Signals update to the renderer
 pub struct UpdateSender {
-    sender: mpsc::UnboundedSender<DecoderUpdate>,
+    sender: mpsc::Sender<DecoderUpdate>,
 }
 
 #[derive(Debug)]
@@ -97,10 +97,12 @@ impl glib::value::ToValueOptional for DecoderError {
 
 impl UpdateSender {
     pub fn send(&self, update: DecoderUpdate) {
-        let result = self.sender.unbounded_send(update);
+        let result = self.sender.force_send(update);
 
-        if let Err(err) = result {
-            log::error!("Failed to send update: {err}");
+        match result {
+            Err(err) => log::error!("Failed to send update: {err}"),
+            Ok(Some(msg)) => log::error!("Unexpectedly replaced the message {msg:?}"),
+            _ => {}
         }
     }
 
@@ -159,7 +161,7 @@ impl Decoder {
         file: gio::File,
         mime_type: Option<String>,
         tiles: Arc<SharedFrameBuffer>,
-    ) -> (Self, mpsc::UnboundedReceiver<DecoderUpdate>) {
+    ) -> (Self, mpsc::Receiver<DecoderUpdate>) {
         let (sender, receiver) = mpsc::unbounded();
 
         let update_sender = UpdateSender { sender };

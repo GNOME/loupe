@@ -48,7 +48,6 @@ use std::sync::{Arc, LazyLock};
 
 use adw::prelude::*;
 use adw::subclass::prelude::*;
-use futures_lite::StreamExt;
 use glib::subclass::Signal;
 use glib::{Properties, SignalGroup};
 

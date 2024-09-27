@@ -324,12 +324,12 @@ impl LpImage {
         // Reset background color for reloads
         imp.set_background_color(None);
 
-        let (decoder, mut decoder_update) =
+        let (decoder, decoder_update) =
             Decoder::new(file.clone(), self.metadata().mime_type(), tiles.clone()).await;
 
         let weak_obj = self.downgrade();
         glib::spawn_future_local(async move {
-            while let Some(update) = decoder_update.next().await {
+            while let Ok(update) = decoder_update.recv().await {
                 if let Some(obj) = weak_obj.upgrade() {
                     obj.imp().update(update);
                 }
