@@ -4,6 +4,7 @@ data/org.gnome.Loupe.metainfo.xml.in.in
 data/resources/gtk/help-overlay.ui
 src/about.rs
 src/application.rs
+src/config.rs
 src/decoder.rs
 src/decoder/formats.rs
 src/decoder/formats/glycin_proxy.rs
