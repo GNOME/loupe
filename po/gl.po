@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2024-08-12 09:51+0000\n"
-"PO-Revision-Date: 2024-09-02 09:05+0200\n"
+"POT-Creation-Date: 2024-09-23 11:13+0000\n"
+"PO-Revision-Date: 2024-09-28 23:50+0200\n"
 "Last-Translator: Fran Dieguez <fran.dieguez@gnome.org>\n"
 "Language-Team: Galician <proxecto@trasno.gal>\n"
 "Language: gl\n"
@@ -21,7 +21,7 @@ msgstr ""
 "X-DL-Module: Loupe\n"
 "X-DL-State: None\n"
 "X-DL-Team: gl\n"
-"X-Generator: Poedit 3.5\n"
+"X-Generator: Poedit 3.4.4\n"
 
 #: data/org.gnome.Loupe.desktop.in.in:3
 #: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:31 src/window.rs:874
@@ -132,8 +132,7 @@ msgctxt "shortcut window"
 msgid "Next Image"
 msgstr "Seguinte imaxe"
 
-#: data/resources/gtk/help-overlay.ui:87
-#: data/resources/gtk/help-overlay.ui:101
+#: data/resources/gtk/help-overlay.ui:87 data/resources/gtk/help-overlay.ui:101
 #: data/resources/gtk/help-overlay.ui:242
 #: data/resources/gtk/help-overlay.ui:256
 msgctxt "shortcut window"
@@ -254,8 +253,7 @@ msgctxt "shortcut window"
 msgid "Gestures"
 msgstr "Xestos"
 
-#. Translators: Replace "translator-credits" with your names, one name per
-#. line
+#. Translators: Replace "translator-credits" with your names, one name per line
 #: src/about.rs:43
 msgid "translator-credits"
 msgstr "Fran Diéguez <frandieguez@gnome.org>, 2009-2024"
@@ -268,23 +266,23 @@ msgstr "Copyright © 2020–2024 Christopher Davis e outros."
 msgid "Could not list other files in directory."
 msgstr "Non foi posíbel listar outros ficheiros no cartafol."
 
+#. Translators: Display of the f-number <https://en.wikipedia.org/wiki/F-number>. {} will be replaced with the number
 #: src/metadata.rs:253
 msgid "\\u{192}\\u{2215}{}"
 msgstr "\\u{192}\\u{2215}{}"
 
 #. Translators: Fractional exposure time (photography) in seconds
-#: src/metadata.rs:270
+#: src/metadata.rs:269
 msgid "1\\u{2215}{}\\u{202F}s"
 msgstr "1\\u{2215}{}\\u{202F}s"
 
 #. Translators: Exposure time (photography) in seconds
-#: src/metadata.rs:278
-#| msgid "{}\\u{202F}mm"
+#: src/metadata.rs:277
 msgid "{}\\u{202F}s"
 msgstr "{}\\u{202F}s"
 
 #. Translators: Unit for focal length in millimeters
-#: src/metadata.rs:304
+#: src/metadata.rs:303
 msgid "{}\\u{202F}mm"
 msgstr "{}\\u{202F}mm"
 
@@ -308,10 +306,8 @@ msgstr "E"
 msgid "W"
 msgstr "O"
 
-#. Translators: This is the date and time format we use in metadata output
-#. etc.
-#. The format has to follow
-#. <https://docs.gtk.org/glib/method.DateTime.format.html>
+#. Translators: This is the date and time format we use in metadata output etc.
+#. The format has to follow <https://docs.gtk.org/glib/method.DateTime.format.html>
 #. The default is already translated. Don't change if you are not sure what to
 #. use.
 #: src/util.rs:37
@@ -322,6 +318,10 @@ msgstr "%x %X"
 #: src/util.rs:180 src/window.rs:659
 msgid "Failed to restore image from trash"
 msgstr "Produciuse un fallo ao restaurar a imaxe do lixo"
+
+#: src/widgets/error_details.ui:4
+msgid "Error Details"
+msgstr "Información do erro"
 
 #: src/widgets/error_details.ui:19
 msgid ""
@@ -366,8 +366,7 @@ msgid "There is not enough free memory available to load this image."
 msgstr "Non hai memoria libre dabondo dispoñíbel para cargar esta imaxe."
 
 #: src/widgets/image_page.rs:280
-msgid ""
-"Either the image file is corrupted or it contains unsupported elements."
+msgid "Either the image file is corrupted or it contains unsupported elements."
 msgstr ""
 "Indica se o ficheiro de imaxe está corrompido ou contén elementos non "
 "compatibles."
@@ -578,12 +577,11 @@ msgstr ", escala de grises"
 msgid ", {}\\u{202F}bit"
 msgstr ", {}\\u{202F}bit"
 
-#: src/widgets/properties_view.rs:286
-#| msgid "1\\u{2215}{}\\u{202F}s"
+#: src/widgets/properties_view.rs:287
 msgid "{}\\u{202F}\\u{D7}\\u{202F}{}"
 msgstr "{}\\u{202F}\\u{D7}\\u{202F}{}"
 
-#: src/widgets/properties_view.rs:324
+#: src/widgets/properties_view.rs:326
 msgid "Image Coordinates Copied"
 msgstr "Coordenadas da imaxe copiadas"
 
