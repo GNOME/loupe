@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2024-07-31 00:10+0000\n"
-"PO-Revision-Date: 2024-08-26 21:13+0200\n"
+"POT-Creation-Date: 2024-09-23 11:13+0000\n"
+"PO-Revision-Date: 2024-10-01 09:20+0200\n"
 "Last-Translator: Brage <bragefuglseth@gnome.org>\n"
 "Language-Team: Norwegian Bokmål <nb@li.org>\n"
 "Language: nb\n"
@@ -19,7 +19,7 @@ msgstr ""
 "X-Generator: Poedit 3.4.4\n"
 
 #: data/org.gnome.Loupe.desktop.in.in:3
-#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:31 src/window.rs:873
+#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:31 src/window.rs:874
 msgid "Image Viewer"
 msgstr "Bildevisning"
 
@@ -261,22 +261,23 @@ msgstr "Opphavsrett © 2020–2024 Christopher Davis mfl."
 msgid "Could not list other files in directory."
 msgstr "Opplisting av andre filer mislyktes."
 
-#: src/metadata.rs:249
+#. Translators: Display of the f-number <https://en.wikipedia.org/wiki/F-number>. {} will be replaced with the number
+#: src/metadata.rs:253
 msgid "\\u{192}\\u{2215}{}"
 msgstr "\\u{192}\\u{2215}{}"
 
 #. Translators: Fractional exposure time (photography) in seconds
-#: src/metadata.rs:266
+#: src/metadata.rs:269
 msgid "1\\u{2215}{}\\u{202F}s"
 msgstr "1\\u{2215}{}u{202F}s"
 
 #. Translators: Exposure time (photography) in seconds
-#: src/metadata.rs:274
+#: src/metadata.rs:277
 msgid "{}\\u{202F}s"
 msgstr "{}\\u{202F}s"
 
 #. Translators: Unit for focal length in millimeters
-#: src/metadata.rs:300
+#: src/metadata.rs:303
 msgid "{}\\u{202F}mm"
 msgstr "{}\\u{202F}mm"
 
@@ -313,6 +314,10 @@ msgstr "%x %X"
 msgid "Failed to restore image from trash"
 msgstr "Gjenoppretting av bilde mislyktes"
 
+#: src/widgets/error_details.ui:4
+msgid "Error Details"
+msgstr "Feilinformasjon"
+
 #: src/widgets/error_details.ui:19
 msgid ""
 "The image loader reported the following when trying to load the image. "
@@ -335,7 +340,7 @@ msgstr "Kopier feilmelding"
 msgid "Report _Issue"
 msgstr "_Rapporter problem"
 
-#: src/widgets/image_page.rs:227
+#: src/widgets/image_page.rs:226
 msgid ""
 "No image loaders available. Maybe the “glycin-loaders” package with "
 "compatibility version “{}” is not installed."
@@ -343,19 +348,19 @@ msgstr ""
 "Ingen bildelastere tilgjengelig. Det kan hende at «glycin-loaders»-pakken "
 "med kompatibilitetsversjonen «{}» ikke er installert."
 
-#: src/widgets/image_page.rs:242
+#: src/widgets/image_page.rs:241
 msgid "The image format “{} ({})” is known but not installed."
 msgstr "Bildeformatet «{} ({})» er ikke installert."
 
-#: src/widgets/image_page.rs:249
+#: src/widgets/image_page.rs:248
 msgid "Unknown image format “{} ({}).”"
 msgstr "Bildeformatet «{} ({})» er ukjent."
 
-#: src/widgets/image_page.rs:277
+#: src/widgets/image_page.rs:276
 msgid "There is not enough free memory available to load this image."
 msgstr "Det er ikke nok ledig minne til å laste inn bildet."
 
-#: src/widgets/image_page.rs:281
+#: src/widgets/image_page.rs:280
 msgid "Either the image file is corrupted or it contains unsupported elements."
 msgstr "Bildefilen har korrupt innhold eller ustøttede elementer."
 
@@ -565,11 +570,11 @@ msgstr ", svart-hvitt"
 msgid ", {}\\u{202F}bit"
 msgstr ", {}\\u{202F}bit"
 
-#: src/widgets/properties_view.rs:286
+#: src/widgets/properties_view.rs:287
 msgid "{}\\u{202F}\\u{D7}\\u{202F}{}"
 msgstr "{}\\u{202F}\\u{D7}\\u{202F}{}"
 
-#: src/widgets/properties_view.rs:324
+#: src/widgets/properties_view.rs:326
 msgid "Image Coordinates Copied"
 msgstr "Bildekoordinater kopiert"
 
