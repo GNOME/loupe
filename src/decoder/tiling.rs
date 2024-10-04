@@ -682,6 +682,7 @@ impl SharedFrameBuffer {
         self.buffer.rcu(|tiling_store| {
             let mut new_store = (**tiling_store).clone();
             new_store.current().original_dimensions = Some(size);
+            new_store.original_dimensions();
             Arc::new(new_store)
         });
 
