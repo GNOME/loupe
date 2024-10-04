@@ -53,6 +53,8 @@ pub enum LpOrientation {
 }
 
 mod imp {
+    use glycin::Operation;
+
     use super::*;
     use crate::widgets::LpImage;
     #[derive(Debug, Default, gtk::CompositeTemplate, glib::Properties)]
@@ -63,6 +65,8 @@ mod imp {
         image: TemplateChild<LpImage>,
         #[template_child]
         pub(super) selection: TemplateChild<LpEditCropSelection>,
+        #[template_child]
+        pub apply_crop: TemplateChild<gtk::Button>,
 
         #[property(get, set, builder(LpAspectRatio::default()))]
         aspect_ratio: Cell<LpAspectRatio>,
@@ -87,6 +91,18 @@ mod imp {
 
             klass.install_property_action("edit-crop.aspect-ratio", "aspect_ratio");
             klass.install_property_action("edit-crop.orientation", "orientation");
+            klass.install_action("edit-crop.mirror", None, |obj, _, _| {
+                obj.imp().apply_mirror();
+            });
+            klass.install_action("edit-crop.rotate-cw", None, |obj, _, _| {
+                obj.imp().apply_rotate_cw();
+            });
+            klass.install_action("edit-crop.rotate-ccw", None, |obj, _, _| {
+                obj.imp().apply_rotate_ccw();
+            });
+            klass.install_action("edit-crop.reset", None, |obj, _, _| {
+                obj.imp().apply_reset();
+            });
         }
 
         fn instance_init(obj: &glib::subclass::InitializingObject<Self>) {
@@ -104,6 +120,48 @@ mod imp {
             obj.child().set_parent(obj);
 
             self.image.duplicate_from(&obj.original_image());
+
+            self.apply_crop.connect_clicked(glib::clone!(
+                #[weak]
+                obj,
+                move |_| {
+                    obj.imp().apply_crop();
+                }
+            ));
+
+            // Selection changed notifications
+
+            self.selection.connect_crop_x_notify(glib::clone!(
+                #[weak]
+                obj,
+                move |_| {
+                    obj.imp().selection_changed();
+                }
+            ));
+
+            self.selection.connect_crop_y_notify(glib::clone!(
+                #[weak]
+                obj,
+                move |_| {
+                    obj.imp().selection_changed();
+                }
+            ));
+
+            self.selection.connect_crop_width_notify(glib::clone!(
+                #[weak]
+                obj,
+                move |_| {
+                    obj.imp().selection_changed();
+                }
+            ));
+
+            self.selection.connect_crop_height_notify(glib::clone!(
+                #[weak]
+                obj,
+                move |_| {
+                    obj.imp().selection_changed();
+                }
+            ));
         }
 
         fn dispose(&self) {
@@ -115,7 +173,7 @@ mod imp {
         fn size_allocate(&self, width: i32, height: i32, baseline: i32) {
             let obj = self.obj();
 
-            let image: &TemplateChild<LpImage> = &self.image;
+            let image = &self.image;
 
             obj.child().allocate(width, height, baseline, None);
 
@@ -128,20 +186,6 @@ mod imp {
 
             self.selection.ensure_initialized(x, y, width, height);
             self.selection.set_size(x, y, width, height);
-
-            dbg!(self.image.widget_to_img_coord((
-                self.image.image_rendering_x() + self.selection.crop_x() as f64,
-                self.image.image_rendering_y() + self.selection.crop_y() as f64
-            )));
-
-            dbg!(self.image.widget_to_img_coord((
-                self.image.image_rendering_x()
-                    + self.selection.crop_x() as f64
-                    + self.selection.crop_width() as f64,
-                self.image.image_rendering_y()
-                    + self.selection.crop_y() as f64
-                    + self.selection.crop_height() as f64
-            )));
         }
 
         fn measure(&self, orientation: gtk::Orientation, for_size: i32) -> (i32, i32, i32, i32) {
@@ -149,6 +193,80 @@ mod imp {
         }
     }
     impl BinImpl for LpEditCrop {}
+
+    impl LpEditCrop {
+        fn selection_changed(&self) {
+            let apply_sensitive = self.selection.is_copped();
+            self.apply_crop.set_sensitive(apply_sensitive);
+        }
+
+        fn crop_area_image_coord(&self) -> Option<(u32, u32, u32, u32)> {
+            if !self.selection.is_copped() {
+                return None;
+            }
+
+            let (x1, y1) = self.image.widget_to_img_coord((
+                self.image.image_rendering_x() + self.selection.crop_x() as f64,
+                self.image.image_rendering_y() + self.selection.crop_y() as f64,
+            ));
+            let (x2, y2) = self.image.widget_to_img_coord((
+                self.image.image_rendering_x()
+                    + self.selection.crop_x() as f64
+                    + self.selection.crop_width() as f64,
+                self.image.image_rendering_y()
+                    + self.selection.crop_y() as f64
+                    + self.selection.crop_height() as f64,
+            ));
+
+            Some((
+                x1.round() as u32,
+                y1.round() as u32,
+                (x2 - x1).round() as u32,
+                (y2 - y1).round() as u32,
+            ))
+        }
+
+        fn reset_selection(&self) {
+            let image = &self.image;
+
+            let (x, y, width, height) = (
+                image.image_rendering_x(),
+                image.image_rendering_y(),
+                image.image_rendering_width(),
+                image.image_rendering_height(),
+            );
+            self.selection.reset(x, y, width, height);
+        }
+
+        fn apply_crop(&self) {
+            if let Some(crop) = self.crop_area_image_coord() {
+                self.image.add_operation(Operation::Clip(crop));
+                self.reset_selection();
+            }
+        }
+
+        fn apply_mirror(&self) {
+            self.image.add_operation(Operation::MirrorHorizontally);
+            self.reset_selection();
+        }
+
+        fn apply_rotate_cw(&self) {
+            self.image
+                .add_operation(Operation::Rotate(gufo_common::orientation::Rotation::_90));
+            self.reset_selection();
+        }
+
+        fn apply_rotate_ccw(&self) {
+            self.image
+                .add_operation(Operation::Rotate(gufo_common::orientation::Rotation::_270));
+            self.reset_selection();
+        }
+
+        fn apply_reset(&self) {
+            self.image.set_operations(None);
+            self.reset_selection();
+        }
+    }
 }
 
 glib::wrapper! {
