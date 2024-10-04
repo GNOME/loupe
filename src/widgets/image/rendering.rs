@@ -15,6 +15,8 @@
 //
 // SPDX-License-Identifier: GPL-3.0-or-later
 
+use tiling::FrameBuffer;
+
 use super::*;
 
 impl WidgetImpl for imp::LpImage {
@@ -121,17 +123,21 @@ impl WidgetImpl for imp::LpImage {
         );
 
         // Add texture(s)
-        let frame_buffer = self.frame_buffer.load();
 
         // Don't use current frame buffer if it empty during an image reload
-        let use_frame_buffer = if frame_buffer.is_empty() {
-            // Fallback to previous buffer to show previous image until new one is available
-            self.previous_frame_buffer.load()
-        } else {
-            frame_buffer
-        };
+        let frame_buffer = self.active_frame_buffer();
 
-        use_frame_buffer.add_to_snapshot(snapshot, applicable_zoom, &render_options);
+        if self.operations.borrow().is_some() {
+            let tmp_snapshot = gtk::Snapshot::new();
+            frame_buffer.add_to_snapshot(&tmp_snapshot, applicable_zoom, &render_options);
+            if let Some(node) = tmp_snapshot.to_node() {
+                self.apply_operations(node, snapshot);
+            } else {
+                log::error!("Render node is empty");
+            }
+        } else {
+            frame_buffer.add_to_snapshot(snapshot, applicable_zoom, &render_options);
+        }
 
         snapshot.restore();
 
@@ -230,7 +236,7 @@ impl imp::LpImage {
             return;
         }
 
-        let (original_width, original_height) = self.original_dimensions();
+        let (untransformed_width, untransformed_height) = self.untransformed_dimensions();
         let width = self.image_width(zoom) as f32;
         let height = self.image_height(zoom) as f32;
 
@@ -250,8 +256,8 @@ impl imp::LpImage {
         // Needed for rotating around the center of the image, and
         // mirroring the image does not put it to a completely different position.
         snapshot.translate(&graphene::Point::new(
-            -self.round_f32(original_width as f32 * zoom as f32 / 2.),
-            -self.round_f32(original_height as f32 * zoom as f32 / 2.),
+            -self.round_f32(untransformed_width as f32 * zoom as f32 / 2.),
+            -self.round_f32(untransformed_height as f32 * zoom as f32 / 2.),
         ));
     }
 
@@ -266,6 +272,17 @@ impl imp::LpImage {
         let height = self.widget_height() as f32 * scaling;
 
         graphene::Rect::new(x, y, width, height)
+    }
+
+    pub(super) fn active_frame_buffer(&self) -> Arc<FrameBuffer> {
+        let frame_buffer = self.frame_buffer.load_full();
+
+        if frame_buffer.is_empty() {
+            // Fallback to previous buffer to show previous image until new one is available
+            self.previous_frame_buffer.load_full()
+        } else {
+            frame_buffer
+        }
     }
 
     pub fn widget_width(&self) -> f64 {

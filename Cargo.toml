@@ -24,7 +24,9 @@ chrono = { version = "0.4.38", default-features = false, features = ["std"] }
 gettext-rs = { version = "0.7.0", features = ["gettext-system"] }
 gettext-sys = { version = "0.22.5", features = ["gettext-system"] }
 gio = { version = "0.20.0", features = ["v2_74"] }
-glycin = { version = "2.0.1", features = ["gdk4"] }
+glycin = { version = "2.0.1", features = [
+    "gdk4",
+], git = "https://gitlab.gnome.org/sophie-h/glycin.git", branch = "wip/sophie-h/operations-clip" }
 gtk = { package = "gtk4", version = "0.9.0", features = [
     "v4_14",
     "xml_validation",

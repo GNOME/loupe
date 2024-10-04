@@ -32,6 +32,7 @@
 
 mod background_color;
 mod drag;
+mod editing;
 mod input_handling;
 mod loading;
 mod metadata;
@@ -132,6 +133,7 @@ pub enum FitMode {
 
 mod imp {
     use decoder::DecoderError;
+    use glycin::Operations;
 
     use super::*;
     use crate::decoder::tiling::SharedFrameBuffer;
@@ -164,6 +166,7 @@ mod imp {
         pub(super) frame_buffer: Arc<SharedFrameBuffer>,
         pub(super) previous_frame_buffer: SharedFrameBuffer,
         pub(super) decoder: RefCell<Option<Arc<Decoder>>>,
+        pub(super) overwrite_dimensions: Cell<Option<(u32, u32)>>,
 
         /// Rotation final value (can differ from `rotation` during animation)
         pub(super) rotation_target: Cell<f64>,
@@ -244,6 +247,7 @@ mod imp {
 
         /// Editing queue
         pub(super) editing_queue: editing::Queue,
+        pub(super) operations: RefCell<Option<Operations>>,
     }
 
     #[glib::object_subclass]

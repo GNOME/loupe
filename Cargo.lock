@@ -898,8 +898,7 @@ dependencies = [
 [[package]]
 name = "glycin"
 version = "2.0.1"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "99ceb553ed23c012e4e16ba9212b495eb458ad831eb5f892b6b44406f0966286"
+source = "git+https://gitlab.gnome.org/sophie-h/glycin.git?branch=wip/sophie-h/operations-clip#1b1abd99e408971ec1f2e2ce174004f09304fc4f"
 dependencies = [
  "async-fs",
  "async-io",
@@ -929,9 +928,8 @@ dependencies = [
 
 [[package]]
 name = "glycin-utils"
-version = "2.0.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "7c6132ef2817b05110f3b1f98c53dbddaac74ea8366472354ab486d02442f08f"
+version = "2.0.1"
+source = "git+https://gitlab.gnome.org/sophie-h/glycin.git?branch=wip/sophie-h/operations-clip#1b1abd99e408971ec1f2e2ce174004f09304fc4f"
 dependencies = [
  "env_logger",
  "gufo-common 0.1.3",
