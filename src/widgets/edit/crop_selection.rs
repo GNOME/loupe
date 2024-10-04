@@ -767,6 +767,12 @@ impl LpEditCropSelection {
 
         imp.initialized.set(true);
 
+        self.reset(x, y, width, height);
+    }
+
+    pub fn reset(&self, x: f64, y: f64, width: f64, height: f64) {
+        let imp = self.imp();
+
         self.set_margin_start(x as i32);
         self.set_margin_top(y as i32);
         self.set_total_width(width as i32);
@@ -790,5 +796,13 @@ impl LpEditCropSelection {
         self.set_margin_top(y as i32);
         self.set_total_width(width as i32);
         self.set_total_height(height as i32);
+    }
+
+    pub fn is_copped(&self) -> bool {
+        let untouched = self.crop_x() == 0.
+            && self.crop_y() == 0.
+            && self.crop_width() as i32 == self.total_width()
+            && self.crop_height() as i32 == self.total_height();
+        !untouched
     }
 }

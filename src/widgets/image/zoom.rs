@@ -40,8 +40,8 @@ impl imp::LpImage {
     pub(super) fn zoom_level_best_fit_for_rotation(&self, rotation: f64) -> f64 {
         let rotated = rotation.to_radians().sin().abs();
         let (image_width, image_height) = (
-            self.original_dimensions().0 as f64 / self.scaling(),
-            self.original_dimensions().1 as f64 / self.scaling(),
+            self.untransformed_dimensions().0 as f64 / self.scaling(),
+            self.untransformed_dimensions().1 as f64 / self.scaling(),
         );
         let texture_aspect_ratio = image_width / image_height;
         let widget_aspect_ratio = self.widget_width() / self.widget_height();
@@ -93,7 +93,7 @@ impl imp::LpImage {
         let obj = self.obj();
 
         if obj.metadata().is_svg() {
-            let (width, height) = self.original_dimensions();
+            let (width, height) = self.untransformed_dimensions();
             // Avoid division by 0
             let long_side = f64::max(1., i32::max(width, height) as f64);
             // Limit to maz size supported by rsvg

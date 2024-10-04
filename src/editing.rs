@@ -15,6 +15,8 @@
 //
 // SPDX-License-Identifier: GPL-3.0-or-later
 
+pub mod preview;
+
 use std::sync::Arc;
 
 use arc_swap::ArcSwap;

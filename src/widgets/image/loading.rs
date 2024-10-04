@@ -81,7 +81,7 @@ impl imp::LpImage {
                 obj.reset_rotation();
             }
             DecoderUpdate::Dimensions => {
-                log::debug!("Received dimensions: {:?}", self.original_dimensions());
+                log::debug!("Received dimensions: {:?}", self.untransformed_dimensions());
                 obj.notify_image_size_available();
                 self.configure_best_fit();
                 self.request_tiles();

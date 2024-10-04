@@ -43,7 +43,7 @@ Simplified widget arrangement including the most important widgets.
 [`LpPropertiesView`]: widgets::LpPropertiesView
 [`LpSlidingView`]: widgets::LpSlidingView
 [`LpWindowContents`]: widgets::LpWindowContents
-[`LpWindow`]: window::LpWindow
+[`LpWindow`]: widgets::LpWindow
 */
 
 use gettextrs::*;

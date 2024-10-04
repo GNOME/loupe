@@ -70,7 +70,7 @@ impl imp::LpImage {
             return Some(Self::default_background_color());
         }
 
-        let (width, height) = self.original_dimensions();
+        let (width, height) = self.untransformed_dimensions();
         let max_size = i32::max(width, height);
 
         // Only use max 200px size scaled image for analysis

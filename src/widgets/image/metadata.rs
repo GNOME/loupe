@@ -29,6 +29,14 @@ impl imp::LpImage {
         }
     }
 
+    pub(super) fn untransformed_dimensions(&self) -> (i32, i32) {
+        if let Some((width, height)) = self.overwrite_dimensions.get() {
+            (width as i32, height as i32)
+        } else {
+            self.original_dimensions()
+        }
+    }
+
     /// Image width with current zoom factor and rotation
     ///
     /// During rotation it is an interpolated size that does not
@@ -43,7 +51,7 @@ impl imp::LpImage {
     }
 
     pub fn image_width(&self, zoom: f64) -> f64 {
-        let (width, height) = self.original_dimensions();
+        let (width, height) = self.untransformed_dimensions();
 
         let rotated = self.obj().rotation().to_radians().sin().abs();
 
@@ -51,7 +59,7 @@ impl imp::LpImage {
     }
 
     pub fn image_height(&self, zoom: f64) -> f64 {
-        let (width, height) = self.original_dimensions();
+        let (width, height) = self.untransformed_dimensions();
 
         let rotated = self.obj().rotation().to_radians().sin().abs();
 
@@ -104,7 +112,7 @@ impl LpImage {
             let (x, y) = self.imp().original_dimensions();
             (y, x)
         } else {
-            self.imp().original_dimensions()
+            self.imp().untransformed_dimensions()
         }
     }
 }

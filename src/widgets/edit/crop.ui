@@ -71,11 +71,15 @@
               </object>
             </child>
             <child type="overlay">
-              <object class="GtkButton">
+              <object class="GtkButton" id="apply_crop">
                 <property name="label">Apply</property>
                 <property name="action-name">edit.apply-crop</property>
                 <property name="halign">end</property>
                 <property name="valign">start</property>
+                <style>
+                  <class name="osd" />
+                  <class name="pill" />
+                </style>
               </object>
             </child>
           </object>
@@ -144,6 +148,7 @@
                     <child>
                       <object class="GtkButton">
                         <property name="icon-name">edit-mirror-symbolic</property>
+                        <property name="action-name">edit-crop.mirror</property>
                         <property name="valign">start</property>
                         <style>
                           <class name="flat" />
@@ -160,6 +165,7 @@
                     <child>
                       <object class="GtkButton">
                         <property name="icon-name">object-rotate-left-symbolic</property>
+                        <property name="action-name">edit-crop.rotate-ccw</property>
                         <property name="valign">start</property>
                         <style>
                           <class name="flat" />
@@ -169,6 +175,7 @@
                     <child>
                       <object class="GtkButton">
                         <property name="icon-name">object-rotate-right-symbolic</property>
+                        <property name="action-name">edit-crop.rotate-cw</property>
                         <property name="valign">start</property>
                         <style>
                           <class name="flat" />
@@ -185,6 +192,7 @@
                     <child>
                       <object class="GtkButton">
                         <property name="label">Reset</property>
+                        <property name="action-name">edit-crop.reset</property>
                         <property name="valign">start</property>
                         <style>
                           <class name="flat" />
