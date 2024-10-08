@@ -1,4 +1,4 @@
-// Copyright (c) 2023 Sophie Herold
+// Copyright (c) 2023-2024 Sophie Herold
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -17,12 +17,15 @@
 
 use crate::deps::*;
 
+const ATTRIBUTE_HOST_PATH: &str = "xattr::document-portal.host-path";
+
 pub struct FileInfo {
     pub(super) display_name: glib::GString,
     pub(super) file_size: Option<u64>,
     pub(super) mime_type: Option<glib::GString>,
     pub(super) created: Option<glib::DateTime>,
     pub(super) modified: Option<glib::DateTime>,
+    pub(super) host_path: Option<glib::GString>,
 }
 
 impl FileInfo {
@@ -35,6 +38,7 @@ impl FileInfo {
                 gio::FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE,
                 gio::FILE_ATTRIBUTE_TIME_CREATED,
                 gio::FILE_ATTRIBUTE_TIME_MODIFIED,
+                ATTRIBUTE_HOST_PATH,
             ],
         )
         .await?;
@@ -50,6 +54,7 @@ impl FileInfo {
                 .and_then(|x| gio::content_type_get_mime_type(&x)),
             created: file_info.creation_date_time(),
             modified: file_info.modification_date_time(),
+            host_path: file_info.attribute_as_string(ATTRIBUTE_HOST_PATH),
         })
     }
 }

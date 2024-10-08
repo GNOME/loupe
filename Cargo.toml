@@ -36,5 +36,6 @@ libc = "0.2.158"
 libgweather = "4.4.0"
 log = "0.4.17"
 strum = { version = "0.26.2", features = ["derive"] }
+thiserror = "1.0.64"
 tracing-subscriber = { version = "0.3.18", features = ["fmt", "env-filter"] }
 url = "2.3.1"

@@ -190,7 +190,13 @@ mod imp {
             let metadata = image.metadata();
 
             // Folder
-            let has_folder = Self::update_row(&self.folder, self.folder_name());
+            let parent = metadata
+                .host_path()
+                .or_else(|| file.path())
+                .as_ref()
+                .and_then(|x| x.parent())
+                .and_then(|p| util::get_file_display_name(&gio::File::for_path(p)));
+            let has_folder = Self::update_row(&self.folder, parent);
             // The portal only supports opening folders of files that have a path
             obj.action_set_enabled("properties.open-folder", file.path().is_some());
             // Only show URI if now folder available
@@ -240,12 +246,6 @@ mod imp {
                 row.set_visible(false);
                 false
             }
-        }
-
-        fn folder_name(&self) -> Option<String> {
-            self.file()
-                .and_then(|f| f.parent())
-                .and_then(|p| util::get_file_display_name(&p))
         }
 
         fn format_name(&self) -> Option<String> {

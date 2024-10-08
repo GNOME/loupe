@@ -24,6 +24,9 @@
 mod file;
 mod gps;
 
+use std::path::PathBuf;
+use std::str::FromStr;
+
 pub use file::FileInfo;
 use glycin::{Frame, FrameDetails, ImageInfoDetails, MemoryFormat};
 pub use gps::GPSLocation;
@@ -189,6 +192,14 @@ impl Metadata {
 
     pub fn file_name(&self) -> Option<String> {
         self.file_info.as_ref().map(|x| x.display_name.to_string())
+    }
+
+    /// Original host path inside flatpaks obtained via xattr
+    pub fn host_path(&self) -> Option<PathBuf> {
+        self.file_info
+            .as_ref()
+            .and_then(|x| x.host_path.as_ref())
+            .and_then(|x| PathBuf::from_str(x.as_str()).ok())
     }
 
     pub fn file_size(&self) -> Option<String> {
