@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2024-07-31 00:10+0000\n"
-"PO-Revision-Date: 2024-07-31 20:48+0300\n"
+"POT-Creation-Date: 2024-10-01 07:21+0000\n"
+"PO-Revision-Date: 2024-10-01 15:34+0300\n"
 "Last-Translator: Artur So <arturios2005@mail.ru>\n"
 "Language-Team: \n"
 "Language: ru_RU\n"
@@ -17,10 +17,10 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
-"X-Generator: Poedit 3.4.4\n"
+"X-Generator: Poedit 3.5\n"
 
 #: data/org.gnome.Loupe.desktop.in.in:3
-#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:31 src/window.rs:873
+#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:31 src/window.rs:897
 msgid "Image Viewer"
 msgstr "Просмотрщик изображений"
 
@@ -262,22 +262,23 @@ msgstr "Авторское право © 2020-2024 Christopher Davis и др."
 msgid "Could not list other files in directory."
 msgstr "Не удалось перечислить другие файлы в каталоге."
 
-#: src/metadata.rs:249
+#. Translators: Display of the f-number <https://en.wikipedia.org/wiki/F-number>. {} will be replaced with the number
+#: src/metadata.rs:253
 msgid "\\u{192}\\u{2215}{}"
 msgstr "\\u{192}\\u{2215}{}"
 
 #. Translators: Fractional exposure time (photography) in seconds
-#: src/metadata.rs:266
+#: src/metadata.rs:269
 msgid "1\\u{2215}{}\\u{202F}s"
 msgstr "1\\u{2215}{}\\u{202F}с"
 
 #. Translators: Exposure time (photography) in seconds
-#: src/metadata.rs:274
+#: src/metadata.rs:277
 msgid "{}\\u{202F}s"
 msgstr "{}\\u{202F}с"
 
 #. Translators: Unit for focal length in millimeters
-#: src/metadata.rs:300
+#: src/metadata.rs:303
 msgid "{}\\u{202F}mm"
 msgstr "{}\\u{202F}мм"
 
@@ -305,14 +306,22 @@ msgstr "З"
 #. The format has to follow <https://docs.gtk.org/glib/method.DateTime.format.html>
 #. The default is already translated. Don't change if you are not sure what to
 #. use.
-#: src/util.rs:37
+#: src/util.rs:38
 #, c-format
 msgid "%x %X"
 msgstr "%x %X"
 
-#: src/util.rs:180 src/window.rs:659
+#: src/util.rs:181 src/window.rs:675
 msgid "Failed to restore image from trash"
 msgstr "Не удалось восстановить изображение из корзины"
+
+#: src/widgets/drag_overlay.ui:15
+msgid "Drop Image to View"
+msgstr "Перетащите изображение для просмотра"
+
+#: src/widgets/error_details.ui:4
+msgid "Error Details"
+msgstr "Информация об ошибке"
 
 #: src/widgets/error_details.ui:19
 msgid ""
@@ -336,7 +345,7 @@ msgstr "Копировать сообщение об ошибке"
 msgid "Report _Issue"
 msgstr "Сообщить об о_шибке"
 
-#: src/widgets/image_page.rs:227
+#: src/widgets/image_page.rs:226
 msgid ""
 "No image loaders available. Maybe the “glycin-loaders” package with "
 "compatibility version “{}” is not installed."
@@ -344,19 +353,19 @@ msgstr ""
 "Загрузчики изображений отсутствуют. Возможно, не установлен пакет “glycin-"
 "loaders” с совместимой версией “{}”."
 
-#: src/widgets/image_page.rs:242
+#: src/widgets/image_page.rs:241
 msgid "The image format “{} ({})” is known but not installed."
 msgstr "Формат изображения “{} ({})” известен, но не установлен."
 
-#: src/widgets/image_page.rs:249
+#: src/widgets/image_page.rs:248
 msgid "Unknown image format “{} ({}).”"
 msgstr "Неизвестный формат изображения “{} ({}).”"
 
-#: src/widgets/image_page.rs:277
+#: src/widgets/image_page.rs:276
 msgid "There is not enough free memory available to load this image."
 msgstr "Для загрузки этого изображения недостаточно свободной памяти."
 
-#: src/widgets/image_page.rs:281
+#: src/widgets/image_page.rs:280
 msgid "Either the image file is corrupted or it contains unsupported elements."
 msgstr ""
 "Либо файл изображения поврежден, либо содержит неподдерживаемые элементы."
@@ -365,21 +374,25 @@ msgstr ""
 msgid "_Open With…"
 msgstr "Открыть с _помощью…"
 
-#: src/widgets/image_page.ui:14 src/window.ui:24
+#: src/widgets/image_page.ui:10 src/window.ui:20
 msgid "_Print…"
-msgstr "_Печать…"
+msgstr "П_ечать…"
 
-#: src/widgets/image_page.ui:18
-msgid "_Copy"
-msgstr "_Копировать"
-
-#: src/widgets/image_page.ui:23 src/window.ui:29
+#: src/widgets/image_page.ui:15 src/window.ui:25
 msgid "Rotate"
 msgstr "Повернуть"
 
-#: src/widgets/image_page.ui:34 src/window.ui:40
+#: src/widgets/image_page.ui:26 src/window.ui:36
 msgid "_Set as Background…"
 msgstr "_Установить как фон…"
+
+#: src/widgets/image_page.ui:30 src/window.ui:40
+msgid "_Delete"
+msgstr "У_далить"
+
+#: src/widgets/image_page.ui:34
+msgid "_Copy"
+msgstr "_Копировать"
 
 #: src/widgets/image_page.ui:63
 msgid "Could not Load Image"
@@ -393,43 +406,51 @@ msgstr "Больше _информации"
 msgid "_Reload"
 msgstr "_Перезагрузить"
 
-#: src/widgets/image_page.ui:123 src/window.ui:225
+#: src/widgets/image_page.ui:123 src/window.ui:218
 msgid "Rotate Left"
 msgstr "Повернуть влево"
 
-#: src/widgets/image_page.ui:133 src/window.ui:235
+#: src/widgets/image_page.ui:133 src/window.ui:228
 msgid "Rotate Right"
 msgstr "Повернуть вправо"
 
+#: src/widgets/image_view.rs:217
+msgid "{} %"
+msgstr "{} %"
+
 #. Translators: This is a toast notification, informing the user that
 #. an image has been set as background.
-#: src/widgets/image_view.rs:720
+#: src/widgets/image_view.rs:837
 msgid "Set as background."
 msgstr "Установить как фон."
 
-#: src/widgets/image_view.rs:733
+#: src/widgets/image_view.rs:850
 msgid "Could not set background."
 msgstr "Не удалось установить фон."
 
-#: src/widgets/image_view.ui:27
+#: src/widgets/image_view.ui:30
 msgid "Previous Image"
 msgstr "Предыдущее изображение"
 
-#: src/widgets/image_view.ui:38
+#: src/widgets/image_view.ui:40
 msgid "Next Image"
 msgstr "Следующее изображение"
 
-#: src/widgets/image_view.ui:63
+#: src/widgets/image_view.ui:74
 msgid "Zoom Out"
 msgstr "Уменьшить"
 
-#: src/widgets/image_view.ui:74
+#: src/widgets/image_view.ui:85
 msgid "Zoom In"
 msgstr "Увеличить"
 
-#: src/widgets/image_view.ui:85
-msgid "Toggle Fullscreen"
-msgstr "Переключить полноэкранный режим"
+#: src/widgets/image_view.ui:100
+msgid "Toggle Zoom"
+msgstr "Переключить масштаб"
+
+#: src/widgets/image_view.ui:108
+msgid "Zoom to Specific Level"
+msgstr "Масштабирование до определенного уровня"
 
 #: src/widgets/print.rs:108
 msgid "Top"
@@ -567,11 +588,11 @@ msgstr ", градации серого"
 msgid ", {}\\u{202F}bit"
 msgstr ", {}\\u{202F}бит"
 
-#: src/widgets/properties_view.rs:286
+#: src/widgets/properties_view.rs:287
 msgid "{}\\u{202F}\\u{D7}\\u{202F}{}"
 msgstr "{}\\u{202F}\\u{D7}\\u{202F}{}"
 
-#: src/widgets/properties_view.rs:324
+#: src/widgets/properties_view.rs:326
 msgid "Image Coordinates Copied"
 msgstr "Координаты изображения скопированы"
 
@@ -640,51 +661,51 @@ msgstr "Фокусное расстояние"
 msgid "Maker, Model"
 msgstr "Производитель, модель"
 
-#: src/window.rs:523
+#: src/window.rs:539
 msgid "Supported image formats"
 msgstr "Поддерживаемые форматы изображения"
 
-#: src/window.rs:529
+#: src/window.rs:545
 msgid "All files"
 msgstr "Все файлы"
 
-#: src/window.rs:536
+#: src/window.rs:552
 msgid "Open Image"
 msgstr "Открыть изображение"
 
-#: src/window.rs:622
+#: src/window.rs:638
 msgid "Image copied to clipboard"
 msgstr "Изображение скопировано в буфер обмена"
 
-#: src/window.rs:643
+#: src/window.rs:659
 msgid "Image moved to trash"
 msgstr "Изображение отправлено в корзину"
 
-#: src/window.rs:644
+#: src/window.rs:660
 msgid "Undo"
 msgstr "Отменить"
 
-#: src/window.rs:674
+#: src/window.rs:690
 msgid "Failed to move image to trash"
 msgstr "Не удалось отправить изображение в корзину"
 
-#: src/window.rs:698
+#: src/window.rs:714
 msgid "Permanently Delete Image?"
 msgstr "Удалить изображение безвозвратно?"
 
-#: src/window.rs:700
+#: src/window.rs:716
 msgid "After deleting the image “{}” it will be permanently lost."
 msgstr "После удаления изображения \"{}\" оно будет навсегда потеряно."
 
-#: src/window.rs:708
+#: src/window.rs:724
 msgid "Cancel"
 msgstr "Отменить"
 
-#: src/window.rs:709
+#: src/window.rs:725
 msgid "Delete"
 msgstr "Удалить"
 
-#: src/window.rs:720
+#: src/window.rs:736
 msgid "Failed to delete image"
 msgstr "Не удалось удалить изображение"
 
@@ -709,32 +730,34 @@ msgid "_About Image Viewer"
 msgstr "_О приложении"
 
 #: src/window.ui:204
-msgid "Copy to Clipboard"
-msgstr "Копировать в буфер обмена"
+msgid "Toggle Fullscreen"
+msgstr "Переключить полноэкранный режим"
 
-#: src/window.ui:211
-msgid "Move to Trash"
-msgstr "Отправить в корзину"
-
-#: src/window.ui:217
+#: src/window.ui:210
 msgid "Main Menu"
 msgstr "Главное меню"
 
-#: src/window.ui:249
+#: src/window.ui:242
 msgid "Image Properties"
 msgstr "Свойства изображения"
 
-#: src/window.ui:281
+#: src/window.ui:266
 msgid "View Images"
 msgstr "Просмотр изображений"
 
-#: src/window.ui:282
+#: src/window.ui:267
 msgid "Drag and drop images here"
 msgstr "Перетащите изображения сюда"
 
-#: src/window.ui:286
+#: src/window.ui:271
 msgid "_Open Files…"
 msgstr "_Открыть файлы…"
+
+#~ msgid "Copy to Clipboard"
+#~ msgstr "Копировать в буфер обмена"
+
+#~ msgid "Move to Trash"
+#~ msgstr "Отправить в корзину"
 
 #~ msgid "Copy Information"
 #~ msgstr "Копировать информацию"
