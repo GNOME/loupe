@@ -1321,6 +1321,7 @@ dependencies = [
  "libgweather",
  "log",
  "strum",
+ "thiserror",
  "tracing-subscriber",
  "url",
 ]
