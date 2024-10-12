@@ -2,30 +2,31 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Atirut Wattanamongkol <atirut.wattanamongkol@gmail.com>, 2024.
 #
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: \n"
+"Project-Id-Version: unnamed project\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2024-02-13 22:38+0000\n"
-"PO-Revision-Date: 2024-02-14 17:35+0700\n"
-"Last-Translator: \n"
-"Language-Team: \n"
+"POT-Creation-Date: 2024-09-13 14:04+0000\n"
+"PO-Revision-Date: 2024-10-12 21:16+0700\n"
+"Last-Translator: Atirut Wattanamongkol <atirut.wattanamongkol@gmail.com>\n"
+"Language-Team: Thai <thai-l10n@googlegroups.com>\n"
 "Language: th\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.4.2\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 3.5\n"
 
 #: data/org.gnome.Loupe.desktop.in.in:3
-#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:29 src/window.rs:880
+#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:29 src/window.rs:881
 msgid "Image Viewer"
-msgstr ""
+msgstr "โปรแกรมดูภาพ"
 
 #: data/org.gnome.Loupe.desktop.in.in:11
 msgid "Picture;Graphics;Loupe;"
-msgstr ""
+msgstr "รูปภาพ;กราฟิก;Loupe;"
 
 #: data/org.gnome.Loupe.gschema.xml.in:6
 msgid "Show the image properties sidebar"
@@ -34,56 +35,56 @@ msgstr ""
 #. developer_name tag deprecated with Appstream 1.0
 #: data/org.gnome.Loupe.metainfo.xml.in.in:8 src/about.rs:32
 msgid "The GNOME Project"
-msgstr ""
+msgstr "โครงการ GNOME"
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:12
+#: data/org.gnome.Loupe.metainfo.xml.in.in:13
 msgid "View images"
-msgstr ""
+msgstr "ดูภาพต่างๆ"
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:14
+#: data/org.gnome.Loupe.metainfo.xml.in.in:15
 msgid "Browse through your images and inspect their metadata with:"
 msgstr ""
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:16
+#: data/org.gnome.Loupe.metainfo.xml.in.in:17
 msgid "Fast GPU accelerated image rendering"
 msgstr ""
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:17
+#: data/org.gnome.Loupe.metainfo.xml.in.in:18
 msgid "Tiled rendering for vector graphics"
 msgstr ""
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:18
+#: data/org.gnome.Loupe.metainfo.xml.in.in:19
 msgid "Extendable and sandboxed image decoding"
 msgstr ""
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:19
+#: data/org.gnome.Loupe.metainfo.xml.in.in:20
 msgid "Accessible presentation of the most important metadata."
 msgstr ""
 
 #: data/resources/gtk/help-overlay.ui:11
 msgctxt "shortcut window"
 msgid "General Shortcuts"
-msgstr ""
+msgstr "แป้นลัดทั่วไป"
 
 #: data/resources/gtk/help-overlay.ui:14
 msgctxt "shortcut window"
 msgid "Show Main Menu"
-msgstr ""
+msgstr "แสดงเมนูหลัก"
 
 #: data/resources/gtk/help-overlay.ui:20
 msgctxt "shortcut window"
 msgid "Copy Image or Metadata to Clipboard"
-msgstr ""
+msgstr "คัดลอกภาพหรือข้อมูลเมตาลงคลิปบอร์ด"
 
 #: data/resources/gtk/help-overlay.ui:26
 msgctxt "shortcut window"
 msgid "Move Image to Trash"
-msgstr ""
+msgstr "ย้ายภาพลงถังขยะ"
 
 #: data/resources/gtk/help-overlay.ui:32
 msgctxt "shortcut window"
 msgid "Permanently Delete Image"
-msgstr ""
+msgstr "ลบภาพอย่างถาวร"
 
 #: data/resources/gtk/help-overlay.ui:38
 msgctxt "shortcut window"
@@ -93,7 +94,7 @@ msgstr ""
 #: data/resources/gtk/help-overlay.ui:44
 msgctxt "shortcut window"
 msgid "Set as Background"
-msgstr ""
+msgstr "ตั้งเป็นพื้นหลัง"
 
 #: data/resources/gtk/help-overlay.ui:50
 msgctxt "shortcut window"
@@ -108,39 +109,39 @@ msgstr ""
 #: data/resources/gtk/help-overlay.ui:62
 msgctxt "shortcut window"
 msgid "New Window"
-msgstr ""
+msgstr "หน้าต่างใหม่"
 
 #: data/resources/gtk/help-overlay.ui:68
 msgctxt "shortcut window"
 msgid "Open Help"
-msgstr ""
+msgstr "เปิดวิธีใช้"
 
 #: data/resources/gtk/help-overlay.ui:74
 msgctxt "shortcut window"
 msgid "Show Keyboard Shortcuts"
-msgstr ""
+msgstr "แสดงแป้นลัด"
 
 #: data/resources/gtk/help-overlay.ui:80
 msgctxt "shortcut window"
 msgid "Close Window"
-msgstr ""
+msgstr "ปิดหน้าต่าง"
 
 #: data/resources/gtk/help-overlay.ui:86
 msgctxt "shortcut window"
 msgid "Quit"
-msgstr ""
+msgstr "ออก"
 
 #: data/resources/gtk/help-overlay.ui:94
 msgctxt "shortcut window"
 msgid "Navigate Images"
-msgstr ""
+msgstr "เปลี่ยนภาพ"
 
 #: data/resources/gtk/help-overlay.ui:98 data/resources/gtk/help-overlay.ui:112
 #: data/resources/gtk/help-overlay.ui:224
 #: data/resources/gtk/help-overlay.ui:238
 msgctxt "shortcut window"
 msgid "Next Image"
-msgstr ""
+msgstr "ภาพต่อไป"
 
 #: data/resources/gtk/help-overlay.ui:105
 #: data/resources/gtk/help-overlay.ui:119
@@ -148,66 +149,66 @@ msgstr ""
 #: data/resources/gtk/help-overlay.ui:245
 msgctxt "shortcut window"
 msgid "Previous Image"
-msgstr ""
+msgstr "ภาพที่แล้ว"
 
 #: data/resources/gtk/help-overlay.ui:125
 msgctxt "shortcut window"
 msgid "First Image"
-msgstr ""
+msgstr "ภาพแรก"
 
 #: data/resources/gtk/help-overlay.ui:131
 msgctxt "shortcut window"
 msgid "Last Image"
-msgstr ""
+msgstr "ภาพสุดท้าย"
 
 #: data/resources/gtk/help-overlay.ui:139
 msgctxt "shortcut window"
 msgid "Rotate Image"
-msgstr ""
+msgstr "หมุนภาพ"
 
 #: data/resources/gtk/help-overlay.ui:142
 #: data/resources/gtk/help-overlay.ui:263
 msgctxt "shortcut window"
 msgid "Rotate Clockwise"
-msgstr ""
+msgstr "หมุนตามเข็มนาฬิกา"
 
 #: data/resources/gtk/help-overlay.ui:148
 #: data/resources/gtk/help-overlay.ui:269
 msgctxt "shortcut window"
 msgid "Rotate Counterclockwise"
-msgstr ""
+msgstr "หมุนทวนเข็มนาฬิกา"
 
 #: data/resources/gtk/help-overlay.ui:156
 msgctxt "shortcut window"
 msgid "Zoom Image"
-msgstr ""
+msgstr "ซูมภาพ"
 
 #: data/resources/gtk/help-overlay.ui:159
 #: data/resources/gtk/help-overlay.ui:251
 msgctxt "shortcut window"
 msgid "Zoom In"
-msgstr ""
+msgstr "ซูมเข้า"
 
 #: data/resources/gtk/help-overlay.ui:165
 #: data/resources/gtk/help-overlay.ui:257
 msgctxt "shortcut window"
 msgid "Zoom Out"
-msgstr ""
+msgstr "ซูมออก"
 
 #: data/resources/gtk/help-overlay.ui:171
 msgctxt "shortcut window"
 msgid "Best Fit"
-msgstr ""
+msgstr "ขนาดพอดี"
 
 #: data/resources/gtk/help-overlay.ui:177
 msgctxt "shortcut window"
 msgid "Original Scale"
-msgstr ""
+msgstr "ขนาดต้นฉบับ"
 
 #: data/resources/gtk/help-overlay.ui:183
 msgctxt "shortcut window"
 msgid "200% Scale"
-msgstr ""
+msgstr "ขนาด 200%"
 
 #: data/resources/gtk/help-overlay.ui:191
 msgctxt "shortcut window"
@@ -237,18 +238,18 @@ msgstr ""
 #: data/resources/gtk/help-overlay.ui:220
 msgctxt "shortcut window"
 msgid "Gestures"
-msgstr ""
+msgstr "ท่าทาง"
 
 #. Translators: Replace "translator-credits" with your names, one name per line
 #: src/about.rs:41
 msgid "translator-credits"
-msgstr ""
+msgstr "Atirut Wattanamongkol <atirut.wattanamongkol@gmail.com>"
 
 #: src/about.rs:42
 msgid "Copyright © 2020–2024 Christopher Davis et al."
 msgstr ""
 
-#: src/file_model.rs:128
+#: src/file_model.rs:129
 msgid "Could not list other files in directory."
 msgstr ""
 
@@ -272,13 +273,18 @@ msgstr ""
 msgid "W"
 msgstr ""
 
-#. Translators: Unit for exposure time in seconds
-#: src/metadata/mod.rs:260
+#. Translators: Fractional exposure time (photography) in seconds
+#: src/metadata/mod.rs:262
 msgid "1\\u{2215}{}\\u{202F}s"
 msgstr ""
 
+#. Translators: Exposure time (photography) in seconds
+#: src/metadata/mod.rs:270
+msgid "{}\\u{202F}s"
+msgstr ""
+
 #. Translators: Unit for focal length in millimeters
-#: src/metadata/mod.rs:285
+#: src/metadata/mod.rs:296
 msgid "{}\\u{202F}mm"
 msgstr ""
 
@@ -291,7 +297,7 @@ msgstr ""
 msgid "%x %X"
 msgstr ""
 
-#: src/util/mod.rs:180 src/window.rs:701
+#: src/util/mod.rs:180 src/window.rs:702
 msgid "Failed to restore image from trash"
 msgstr "เรียกคืนภาพจากถังขยะไม่สำเร็จ"
 
@@ -313,7 +319,7 @@ msgstr "_คัดลอก"
 
 #: src/widgets/image_page.ui:23 src/window.ui:29
 msgid "Rotate"
-msgstr "_หมุน"
+msgstr "หมุน"
 
 #: src/widgets/image_page.ui:34 src/window.ui:40
 msgid "_Set as Background…"
@@ -321,7 +327,7 @@ msgstr "_ตั้งเป็นพื้นหลัง…"
 
 #: src/widgets/image_page.ui:63
 msgid "Could not Load Image"
-msgstr "ไม่สามารถโหลดรูปภาพได้"
+msgstr "ไม่สามารถโหลดภาพได้"
 
 #: src/widgets/image_page.ui:97 src/window.ui:106
 msgid "Rotate Left"
@@ -343,11 +349,11 @@ msgstr "ไม่สามารถตั้งพื้นหลังได้
 
 #: src/widgets/image_view.ui:27
 msgid "Previous Image"
-msgstr "รูปที่แล้ว"
+msgstr "ภาพที่แล้ว"
 
 #: src/widgets/image_view.ui:38
 msgid "Next Image"
-msgstr "รูปต่อไป"
+msgstr "ภาพต่อไป"
 
 #: src/widgets/image_view.ui:63
 msgid "Zoom Out"
@@ -384,30 +390,30 @@ msgstr "ขวา"
 #. Translators: Shorthand for centimeter
 #: src/widgets/print.rs:156
 msgid "cm"
-msgstr ""
+msgstr "ซม."
 
 #. Translators: Shorthand for inch
 #: src/widgets/print.rs:158
 msgid "in"
-msgstr ""
+msgstr "นิ้ว"
 
 #. Translators: Shorthand for pixel
 #: src/widgets/print.rs:160
 msgid "px"
-msgstr ""
+msgstr "พิกเซล"
 
 #. Translators: {} is a placeholder for the filename
-#: src/widgets/print.rs:371
+#: src/widgets/print.rs:382
 msgid "Print “{}”"
-msgstr ""
+msgstr "พิมพ์ “{}”"
 
-#: src/widgets/print.rs:782
+#: src/widgets/print.rs:803
 msgid "_Scale"
-msgstr ""
+msgstr "_ขนาด"
 
-#: src/widgets/print.rs:785
+#: src/widgets/print.rs:806
 msgid "_Width"
-msgstr ""
+msgstr "ความ_กว้าง"
 
 #. Translators: Go back to previous page
 #: src/widgets/print.ui:29
@@ -424,15 +430,15 @@ msgstr "เค้าโครง"
 
 #: src/widgets/print.ui:59
 msgid "_Orientation"
-msgstr "แ_นววาง"
+msgstr "การ_วางแนว"
 
 #: src/widgets/print.ui:72
 msgid "Portrait Page Orientation"
-msgstr "การวางแนวตั้ง"
+msgstr "วางหน้าแนวตั้ง"
 
 #: src/widgets/print.ui:80
 msgid "Landscape Page Orientation"
-msgstr "การวางแนวนอน"
+msgstr "วางหน้าแนวนอน"
 
 #: src/widgets/print.ui:89
 msgid "_Alignment"
@@ -444,31 +450,31 @@ msgstr "ขอบ"
 
 #: src/widgets/print.ui:111
 msgid "Margin Units"
-msgstr ""
+msgstr "หน่วยระยะเว้นขอบ"
 
 #: src/widgets/print.ui:128
 msgid "_Horizontal"
-msgstr ""
+msgstr "แนว_นอน"
 
 #: src/widgets/print.ui:134
 msgid "_Vertical"
-msgstr ""
+msgstr "แนว_ตั้ง"
 
 #: src/widgets/print.ui:142 src/widgets/properties_view.ui:53
 msgid "Image Size"
-msgstr ""
+msgstr "ขนาดภาพ"
 
 #: src/widgets/print.ui:145
 msgid "Image Size Units"
-msgstr ""
+msgstr "หน่วยขนาดภาพ"
 
 #: src/widgets/print.ui:163
 msgid "_Fill Space"
-msgstr ""
+msgstr "เ_ต็มพื้นที่ว่าง"
 
 #: src/widgets/print.ui:174
 msgid "H_eight"
-msgstr ""
+msgstr "ความ_สูง"
 
 #: src/widgets/properties_view.rs:234
 msgid "Unknown"
@@ -477,7 +483,7 @@ msgstr ""
 #. Translators: Addition of image being transparent to format name
 #: src/widgets/properties_view.rs:238
 msgid ", transparent"
-msgstr ""
+msgstr ", โปร่งใส"
 
 #. Translators: Addition of image being grayscale to format name
 #: src/widgets/properties_view.rs:243
@@ -495,7 +501,7 @@ msgstr ""
 
 #: src/widgets/properties_view.ui:19
 msgid "Folder"
-msgstr ""
+msgstr "โฟลเดอร์"
 
 #: src/widgets/properties_view.ui:26
 msgid "Open Containing Folder"
@@ -507,23 +513,24 @@ msgstr ""
 
 #: src/widgets/properties_view.ui:62
 msgid "Image Format"
-msgstr ""
+msgstr "ฟอร์แมตภาพ"
 
 #: src/widgets/properties_view.ui:71
 msgid "File Size"
-msgstr ""
+msgstr "ขนาดไฟล์"
 
 #: src/widgets/properties_view.ui:84
 msgid "File Created"
-msgstr ""
+msgstr "สร้างเมื่อ"
 
 #: src/widgets/properties_view.ui:93
 msgid "File Modified"
-msgstr ""
+msgstr "แก้ไขเมื่อ"
 
+#. Translators: This is a label for GPS coordinates
 #: src/widgets/properties_view.ui:106
 msgid "Location"
-msgstr ""
+msgstr "สถานที่"
 
 #: src/widgets/properties_view.ui:116
 msgid "Copy Coordinates"
@@ -557,98 +564,98 @@ msgstr ""
 msgid "Maker, Model"
 msgstr ""
 
-#: src/window.rs:568
+#: src/window.rs:569
 msgid "Supported image formats"
 msgstr ""
 
-#: src/window.rs:574
+#: src/window.rs:575
 msgid "All files"
 msgstr ""
 
-#: src/window.rs:581
+#: src/window.rs:582
 msgid "Open Image"
 msgstr ""
 
-#: src/window.rs:667
+#: src/window.rs:668
 msgid "Image copied to clipboard"
-msgstr ""
-
-#: src/window.rs:688
-msgid "Image moved to trash"
-msgstr ""
+msgstr "คัดลอกภาพลงคลิปบอร์ดแล้ว"
 
 #: src/window.rs:689
+msgid "Image moved to trash"
+msgstr "ย้ายภาพไปลงขยะแล้ว"
+
+#: src/window.rs:690
 msgid "Undo"
-msgstr ""
+msgstr "เลิกทำ"
 
-#: src/window.rs:715
+#: src/window.rs:716
 msgid "Failed to move image to trash"
-msgstr ""
+msgstr "ย้ายภาพลงถังขยะไม่สำเร็จ"
 
-#: src/window.rs:741
+#: src/window.rs:742
 msgid "Permanently Delete Image?"
-msgstr ""
+msgstr "ลบภาพอย่างถาวรหรือไม่?"
 
-#: src/window.rs:743
+#: src/window.rs:744
 msgid "After deleting the image “{}” it will be permanently lost."
-msgstr ""
-
-#: src/window.rs:751
-msgid "Cancel"
-msgstr ""
+msgstr "ภาพ “{}” จะหายไปอย่างถาวรหลังจากการลบ"
 
 #: src/window.rs:752
-msgid "Delete"
-msgstr ""
+msgid "Cancel"
+msgstr "ยกเลิก"
 
-#: src/window.rs:763
+#: src/window.rs:753
+msgid "Delete"
+msgstr "ลบ"
+
+#: src/window.rs:764
 msgid "Failed to delete image"
-msgstr ""
+msgstr "ลบภาพไม่สำเร็จ"
 
 #: src/window.ui:6
 msgid "_New Window"
-msgstr ""
+msgstr "หน้าต่างให_ม่"
 
 #: src/window.ui:10
 msgid "_Open…"
-msgstr ""
+msgstr "เ_ปิด"
 
 #: src/window.ui:46
 msgid "_Help"
-msgstr ""
+msgstr "_วิธีใช้"
 
 #: src/window.ui:50
 msgid "_Keyboard Shortcuts"
-msgstr ""
+msgstr "แ_ป้นลัด"
 
 #: src/window.ui:54
 msgid "_About Image Viewer"
-msgstr ""
+msgstr "เ_กี่ยวกับโปรแกรมดูภาพ"
 
 #: src/window.ui:85
 msgid "Copy to Clipboard"
-msgstr ""
+msgstr "คัดลอกลงคลิปบอร์ด"
 
 #: src/window.ui:92
 msgid "Move to Trash"
-msgstr ""
+msgstr "ย้ายไปถังขยะ"
 
 #: src/window.ui:98
 msgid "Main Menu"
-msgstr ""
+msgstr "เมนูหลัก"
 
 #: src/window.ui:130
 msgid "Image Properties"
-msgstr ""
+msgstr "คุณสมบัติภาพ"
 
 #: src/window.ui:174
 msgid "View Images"
-msgstr ""
+msgstr "ดูภาพต่างๆ"
 
 #: src/window.ui:175
 msgid "Drag and drop images here"
-msgstr ""
+msgstr "ลากและวางภาพลงที่นี่"
 
 #: src/window.ui:179
 msgid "_Open Files…"
-msgstr ""
+msgstr "เ_ปิดไฟล์"
