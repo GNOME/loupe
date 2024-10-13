@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2024-08-12 09:51+0000\n"
-"PO-Revision-Date: 2024-08-24 10:55+0200\n"
+"POT-Creation-Date: 2024-10-12 14:19+0000\n"
+"PO-Revision-Date: 2024-10-12 23:48+0200\n"
 "Last-Translator: Jordi Mas i Hernàndez, <jmas@softcatala.org>\n"
 "Language-Team: Catalan <gnome@llistes.softcatala.org>\n"
 "Language: ca\n"
@@ -262,22 +262,23 @@ msgstr "Copyright © 2020–2024 Christopher Davis i altres"
 msgid "Could not list other files in directory."
 msgstr "No s'han pogut llistar altres fitxers al directori."
 
+#. Translators: Display of the f-number <https://en.wikipedia.org/wiki/F-number>. {} will be replaced with the number
 #: src/metadata.rs:253
 msgid "\\u{192}\\u{2215}{}"
 msgstr "\\u{192}\\u{2215}{}"
 
 #. Translators: Fractional exposure time (photography) in seconds
-#: src/metadata.rs:270
+#: src/metadata.rs:269
 msgid "1\\u{2215}{}\\u{202F}s"
 msgstr "1\\u{2215}{}\\u{202F}s"
 
 #. Translators: Exposure time (photography) in seconds
-#: src/metadata.rs:278
+#: src/metadata.rs:277
 msgid "{}\\u{202F}s"
 msgstr "{}\\u{202F}s"
 
 #. Translators: Unit for focal length in millimeters
-#: src/metadata.rs:304
+#: src/metadata.rs:303
 msgid "{}\\u{202F}mm"
 msgstr "{}\\u{202F}mm"
 
@@ -313,6 +314,10 @@ msgstr "%x %X"
 #: src/util.rs:180 src/window.rs:659
 msgid "Failed to restore image from trash"
 msgstr "No s'ha pogut restaurar la imatge de la paperera"
+
+#: src/widgets/error_details.ui:4
+msgid "Error Details"
+msgstr "Detalls de l'error"
 
 #: src/widgets/error_details.ui:19
 msgid ""
@@ -567,12 +572,11 @@ msgstr ", escala de grisos"
 msgid ", {}\\u{202F}bit"
 msgstr ",{}\\u{202F}bit"
 
-#: src/widgets/properties_view.rs:286
-#| msgid "1\\u{2215}{}\\u{202F}s"
+#: src/widgets/properties_view.rs:287
 msgid "{}\\u{202F}\\u{D7}\\u{202F}{}"
 msgstr "{}\\u{202F}\\u{D7}\\u{202F}{}"
 
-#: src/widgets/properties_view.rs:324
+#: src/widgets/properties_view.rs:326
 msgid "Image Coordinates Copied"
 msgstr "S'han copiat les coordenades de la imatge"
 
