@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2024-07-31 00:10+0000\n"
-"PO-Revision-Date: 2024-09-07 15:22+0700\n"
+"POT-Creation-Date: 2024-10-12 14:19+0000\n"
+"PO-Revision-Date: 2024-10-16 21:29+0700\n"
 "Last-Translator: Andika Triwidada <andika@gmail.com>\n"
 "Language-Team: Indonesian <gnome-l10n-id@googlegroups.com>\n"
 "Language: id\n"
@@ -19,7 +19,7 @@ msgstr ""
 "X-Generator: Poedit 3.5\n"
 
 #: data/org.gnome.Loupe.desktop.in.in:3
-#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:31 src/window.rs:873
+#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:31 src/window.rs:874
 msgid "Image Viewer"
 msgstr "Penampil Gambar"
 
@@ -263,23 +263,23 @@ msgstr "Hak Cipta © 2020–2024 Christopher Davis et al."
 msgid "Could not list other files in directory."
 msgstr "Tidak dapat mencantumkan berkas lain di direktori."
 
-#: src/metadata.rs:249
+#. Translators: Display of the f-number <https://en.wikipedia.org/wiki/F-number>. {} will be replaced with the number
+#: src/metadata.rs:253
 msgid "\\u{192}\\u{2215}{}"
 msgstr "\\u{192}\\u{2215}{}"
 
 #. Translators: Fractional exposure time (photography) in seconds
-#: src/metadata.rs:266
+#: src/metadata.rs:269
 msgid "1\\u{2215}{}\\u{202F}s"
 msgstr "1\\u{2215}{}\\u{202F}s"
 
 #. Translators: Exposure time (photography) in seconds
-#: src/metadata.rs:274
-#| msgid "{}\\u{202F}mm"
+#: src/metadata.rs:277
 msgid "{}\\u{202F}s"
 msgstr "{}\\u{202F}s"
 
 #. Translators: Unit for focal length in millimeters
-#: src/metadata.rs:300
+#: src/metadata.rs:303
 msgid "{}\\u{202F}mm"
 msgstr "{}\\u{202F}mm"
 
@@ -316,6 +316,10 @@ msgstr "%x %X"
 msgid "Failed to restore image from trash"
 msgstr "Gagal memulihkan gambar dari tong sampah"
 
+#: src/widgets/error_details.ui:4
+msgid "Error Details"
+msgstr "Rincian Galat"
+
 #: src/widgets/error_details.ui:19
 msgid ""
 "The image loader reported the following when trying to load the image. "
@@ -338,7 +342,7 @@ msgstr "Salin Pesan Galat"
 msgid "Report _Issue"
 msgstr "Laporkan _Masalah"
 
-#: src/widgets/image_page.rs:227
+#: src/widgets/image_page.rs:226
 msgid ""
 "No image loaders available. Maybe the “glycin-loaders” package with "
 "compatibility version “{}” is not installed."
@@ -346,19 +350,19 @@ msgstr ""
 "Tidak ada pemuat citra yang tersedia. Mungkin paket \"glycin-loaders\" "
 "dengan versi kompatibilitas \"{}\" tidak dipasang."
 
-#: src/widgets/image_page.rs:242
+#: src/widgets/image_page.rs:241
 msgid "The image format “{} ({})” is known but not installed."
 msgstr "Format citra \"{} ({})\" diketahui tetapi tidak dipasang."
 
-#: src/widgets/image_page.rs:249
+#: src/widgets/image_page.rs:248
 msgid "Unknown image format “{} ({}).”"
 msgstr "Format citra tidak dikenal \"{} ({}).\""
 
-#: src/widgets/image_page.rs:277
+#: src/widgets/image_page.rs:276
 msgid "There is not enough free memory available to load this image."
 msgstr "Tidak cukup memori bebas yang tersedia untuk memuat gambar ini."
 
-#: src/widgets/image_page.rs:281
+#: src/widgets/image_page.rs:280
 msgid "Either the image file is corrupted or it contains unsupported elements."
 msgstr "Entah berkas gambar rusak atau berisi elemen yang tidak didukung."
 
@@ -568,12 +572,11 @@ msgstr ", kelabu"
 msgid ", {}\\u{202F}bit"
 msgstr ", {}\\u{202F}bit"
 
-#: src/widgets/properties_view.rs:286
-#| msgid "1\\u{2215}{}\\u{202F}s"
+#: src/widgets/properties_view.rs:287
 msgid "{}\\u{202F}\\u{D7}\\u{202F}{}"
 msgstr "{}\\u{202F}\\u{D7}\\u{202F}{}"
 
-#: src/widgets/properties_view.rs:324
+#: src/widgets/properties_view.rs:326
 msgid "Image Coordinates Copied"
 msgstr "Koordinat Gambar Disalin"
 
