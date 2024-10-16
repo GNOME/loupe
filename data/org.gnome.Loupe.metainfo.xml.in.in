@@ -76,6 +76,11 @@
   </categories>
 
   <releases>
+    <release version="47.1" date="2024-10-16">
+      <description>
+        <p>This release fixes issues withloading .svgz (compressed SVG) files.</p>
+      </description>
+    </release>
     <release version="47.0" date="2024-09-13">
       <description>
         <p>Rotating an image will now write the new orientation to the image files. For now, this feature is only supported for JPEG files. Aditionally, several user interface elements have been updated to more recent design patterns.</p>

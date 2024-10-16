@@ -1,3 +1,14 @@
+## 47.1 (2024-10-16)
+
+### Added
+
+- Add `<branding><color>`s instead of just using `GnomeSoftware::key-colors`. That they weren't set was an oversight.
+
+### Fixed
+
+- Make the string "Error Details" translatable.
+- Require glycin 2.0.1 crate to detect SVGZ files properly.
+
 ## 47.0 (2024-09-13)
 
 ### Fixed
