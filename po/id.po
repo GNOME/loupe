@@ -2,23 +2,24 @@
 # Copyright (C) 2023 Loupe's COPYRIGHT HOLDER
 # This file is distributed under the same license as the Loupe package.
 # Kukuh Syafaat <kukuhsyafaat@gnome.org>, 2023-2024.
+# Andika Triwidada <andika@gmail.com>, 2024.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2024-02-13 22:38+0000\n"
-"PO-Revision-Date: 2024-02-20 20:32+0700\n"
+"POT-Creation-Date: 2024-10-12 14:17+0000\n"
+"PO-Revision-Date: 2024-10-16 21:48+0700\n"
 "Last-Translator: Kukuh Syafaat <kukuhsyafaat@gnome.org>\n"
 "Language-Team: Indonesian <gnome-l10n-id@googlegroups.com>\n"
 "Language: id\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.4.2\n"
+"X-Generator: Poedit 3.5\n"
 
 #: data/org.gnome.Loupe.desktop.in.in:3
-#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:29 src/window.rs:880
+#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:29 src/window.rs:881
 msgid "Image Viewer"
 msgstr "Penampil Gambar"
 
@@ -35,27 +36,27 @@ msgstr "Tampilkan bilah sisi properti gambar"
 msgid "The GNOME Project"
 msgstr "Proyek GNOME"
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:12
+#: data/org.gnome.Loupe.metainfo.xml.in.in:13
 msgid "View images"
 msgstr "Lihat gambar"
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:14
+#: data/org.gnome.Loupe.metainfo.xml.in.in:15
 msgid "Browse through your images and inspect their metadata with:"
 msgstr "Jelajahi gambar Anda dan periksa metadata gambar tersebut:"
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:16
+#: data/org.gnome.Loupe.metainfo.xml.in.in:17
 msgid "Fast GPU accelerated image rendering"
 msgstr "Rendering gambar dengan akselerasi GPU yang cepat"
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:17
+#: data/org.gnome.Loupe.metainfo.xml.in.in:18
 msgid "Tiled rendering for vector graphics"
 msgstr "Rendering ubin untuk grafik vektor"
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:18
+#: data/org.gnome.Loupe.metainfo.xml.in.in:19
 msgid "Extendable and sandboxed image decoding"
 msgstr "Penguraian gambar yang dapat diperluas dan di-sandbox"
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:19
+#: data/org.gnome.Loupe.metainfo.xml.in.in:20
 msgid "Accessible presentation of the most important metadata."
 msgstr "Presentasi yang dapat diakses dari metadata yang paling penting."
 
@@ -241,13 +242,15 @@ msgstr "Gestur"
 #. Translators: Replace "translator-credits" with your names, one name per line
 #: src/about.rs:41
 msgid "translator-credits"
-msgstr "Kukuh Syafaat <kukuhsyafaat@gnome.org>, 2023-2024."
+msgstr ""
+"Kukuh Syafaat <kukuhsyafaat@gnome.org>, 2023-2024.\n"
+"Andika Triwidada <andika@gmail.com>, 2024."
 
 #: src/about.rs:42
 msgid "Copyright © 2020–2024 Christopher Davis et al."
 msgstr "Hak Cipta © 2020–2024 Christopher Davis et al."
 
-#: src/file_model.rs:128
+#: src/file_model.rs:129
 msgid "Could not list other files in directory."
 msgstr "Tidak dapat mencantumkan berkas lain di direktori."
 
@@ -271,13 +274,19 @@ msgstr "T"
 msgid "W"
 msgstr "B"
 
-#. Translators: Unit for exposure time in seconds
-#: src/metadata/mod.rs:260
+#. Translators: Fractional exposure time (photography) in seconds
+#: src/metadata/mod.rs:262
 msgid "1\\u{2215}{}\\u{202F}s"
-msgstr "1\\u{2215}{}\\u{202F}s"
+msgstr "1\\u{2215}{}\\u{202F}d"
+
+#. Translators: Exposure time (photography) in seconds
+#: src/metadata/mod.rs:270
+#| msgid "{}\\u{202F}mm"
+msgid "{}\\u{202F}s"
+msgstr "{}\\u{202F}d"
 
 #. Translators: Unit for focal length in millimeters
-#: src/metadata/mod.rs:285
+#: src/metadata/mod.rs:296
 msgid "{}\\u{202F}mm"
 msgstr "{}\\u{202F}mm"
 
@@ -290,7 +299,7 @@ msgstr "{}\\u{202F}mm"
 msgid "%x %X"
 msgstr "%x %X"
 
-#: src/util/mod.rs:180 src/window.rs:701
+#: src/util/mod.rs:180 src/window.rs:702
 msgid "Failed to restore image from trash"
 msgstr "Gagal memulihkan gambar dari tong sampah"
 
@@ -396,15 +405,15 @@ msgid "px"
 msgstr "px"
 
 #. Translators: {} is a placeholder for the filename
-#: src/widgets/print.rs:371
+#: src/widgets/print.rs:382
 msgid "Print “{}”"
 msgstr "Cetak “{}”"
 
-#: src/widgets/print.rs:782
+#: src/widgets/print.rs:803
 msgid "_Scale"
 msgstr "_Skala"
 
-#: src/widgets/print.rs:785
+#: src/widgets/print.rs:806
 msgid "_Width"
 msgstr "_Lebar"
 
@@ -520,6 +529,7 @@ msgstr "Berkas Dibuat"
 msgid "File Modified"
 msgstr "Berkas Diubah"
 
+#. Translators: This is a label for GPS coordinates
 #: src/widgets/properties_view.ui:106
 msgid "Location"
 msgstr "Lokasi"
@@ -556,51 +566,51 @@ msgstr "Panjang Fokal"
 msgid "Maker, Model"
 msgstr "Pembuat, Model"
 
-#: src/window.rs:568
+#: src/window.rs:569
 msgid "Supported image formats"
 msgstr "Format gambar yang didukung"
 
-#: src/window.rs:574
+#: src/window.rs:575
 msgid "All files"
 msgstr "Semua berkas"
 
-#: src/window.rs:581
+#: src/window.rs:582
 msgid "Open Image"
 msgstr "Buka Gambar"
 
-#: src/window.rs:667
+#: src/window.rs:668
 msgid "Image copied to clipboard"
 msgstr "Gambar disalin ke papan klip"
 
-#: src/window.rs:688
+#: src/window.rs:689
 msgid "Image moved to trash"
 msgstr "Gambar dipindahkan ke tong sampah"
 
-#: src/window.rs:689
+#: src/window.rs:690
 msgid "Undo"
 msgstr "Tak jadi"
 
-#: src/window.rs:715
+#: src/window.rs:716
 msgid "Failed to move image to trash"
 msgstr "Gagal memindahkan gambar ke tong sampah"
 
-#: src/window.rs:741
+#: src/window.rs:742
 msgid "Permanently Delete Image?"
 msgstr "Hapus Gambar Secara Permanen?"
 
-#: src/window.rs:743
+#: src/window.rs:744
 msgid "After deleting the image “{}” it will be permanently lost."
 msgstr "Setelah dihapus, gambar “{}” akan hilang secara permanen."
 
-#: src/window.rs:751
+#: src/window.rs:752
 msgid "Cancel"
 msgstr "Batal"
 
-#: src/window.rs:752
+#: src/window.rs:753
 msgid "Delete"
 msgstr "Hapus"
 
-#: src/window.rs:763
+#: src/window.rs:764
 msgid "Failed to delete image"
 msgstr "Gagal menghapus gambar"
 
