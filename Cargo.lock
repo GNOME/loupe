@@ -271,9 +271,9 @@ dependencies = [
 
 [[package]]
 name = "bytemuck"
-version = "1.19.0"
+version = "1.20.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "8334215b81e418a0a7bdb8ef0849474f40bb10c8b71f1c4ed315cff49f32494d"
+checksum = "8b37c88a63ffd85d15b406896cc343916d7cf57838a847b3a6f2ca5d39a5695a"
 
 [[package]]
 name = "byteorder"
@@ -312,9 +312,9 @@ dependencies = [
 
 [[package]]
 name = "cc"
-version = "1.1.37"
+version = "1.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "40545c26d092346d8a8dab71ee48e7685a7a9cba76e634790c215b41a4a7b4cf"
+checksum = "fd9de9f2205d5ef3fd67e685b0df337994ddd4495e2a28d185500d0e1edfea47"
 dependencies = [
  "jobserver",
  "libc",
@@ -323,9 +323,9 @@ dependencies = [
 
 [[package]]
 name = "cfg-expr"
-version = "0.17.0"
+version = "0.17.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "d0890061c4d3223e7267f3bad2ec40b997d64faac1c2815a4a9d95018e2b9e9c"
+checksum = "c360837f8f19e2e4468275138f1c0dec1647d1e17bb7c0215fe3cd7530e93c25"
 dependencies = [
  "smallvec",
  "target-lexicon",
@@ -533,9 +533,9 @@ dependencies = [
 
 [[package]]
 name = "flate2"
-version = "1.0.34"
+version = "1.0.35"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "a1b589b4dc103969ad3cf85c950899926ec64300a1a46d76c03a6072957036f0"
+checksum = "c936bfdafb507ebbf50b8074c54fa31c5be9a1e7e5f467dd659697041407d07c"
 dependencies = [
  "crc32fast",
  "miniz_oxide",
@@ -695,9 +695,9 @@ dependencies = [
 
 [[package]]
 name = "gdk4"
-version = "0.9.3"
+version = "0.9.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "d3fb4af2d606b0ac4e81f982f0d064bcb71ca73859ce5f30475f7eb2e2be4bc3"
+checksum = "75933c4a86e8a2428814d367e22c733304fdfabc87f415750fd2f55409b6ee48"
 dependencies = [
  "cairo-rs",
  "gdk-pixbuf",
@@ -710,9 +710,9 @@ dependencies = [
 
 [[package]]
 name = "gdk4-sys"
-version = "0.9.3"
+version = "0.9.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "3642625b384ad43c006871462e6c498488b503dbf219542591f4ddf0f5f2032b"
+checksum = "20af0656d543aed3e57ac4120ef76d091c3c42ab1e0507a8febde7cd005640e2"
 dependencies = [
  "cairo-sys-rs",
  "gdk-pixbuf-sys",
@@ -727,9 +727,9 @@ dependencies = [
 
 [[package]]
 name = "gdk4-wayland"
-version = "0.9.3"
+version = "0.9.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "cc4aa2d6ff40d2bb3fba161d5e6f7ad0afc220eae2152864690d3c96b46ab4fa"
+checksum = "006ef9f845c64c886a410de0662e213da98e0328432f6e179b7bac3b04ebeffd"
 dependencies = [
  "gdk4",
  "gdk4-wayland-sys",
@@ -740,9 +740,9 @@ dependencies = [
 
 [[package]]
 name = "gdk4-wayland-sys"
-version = "0.9.3"
+version = "0.9.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "3466b189991a95718458bbe4677373c792ec2ce30d77f6f98ff425727f3766ef"
+checksum = "58ce13040d9bd8126496b8647e130e0149b53999f0c1306ba63a68f73cc259bd"
 dependencies = [
  "glib-sys",
  "libc",
@@ -751,9 +751,9 @@ dependencies = [
 
 [[package]]
 name = "gdk4-x11"
-version = "0.9.3"
+version = "0.9.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "83773addc1bcea0ddd1c4366f0380d83cfae3e99939400f7ff52eb2af7fa700f"
+checksum = "6deaed327de665b03a93c104d339185e715fc9fa161507898e54522689743aa0"
 dependencies = [
  "gdk4",
  "gdk4-x11-sys",
@@ -764,9 +764,9 @@ dependencies = [
 
 [[package]]
 name = "gdk4-x11-sys"
-version = "0.9.3"
+version = "0.9.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "8868c26d9e5e045bb602326244b25e2cad87bdb21fdd4953e934a27c54c29bb3"
+checksum = "49c475d7ef57ed63d464addb1dd2ec23c29e9d1869f519069db1406013d95e62"
 dependencies = [
  "gdk4-sys",
  "glib-sys",
@@ -823,9 +823,9 @@ checksum = "07e28edb80900c19c28f1072f2e8aeca7fa06b23cd4169cefe1af5aa3260783f"
 
 [[package]]
 name = "gio"
-version = "0.20.5"
+version = "0.20.6"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "d8569975884fdfdbed536b682448fbd8c70bafbd69cac2d45eb1a7a372702241"
+checksum = "8826d2a9ad56ce3de1f04bea0bea0daff6f5f1c913cc834996cfea1f9401361c"
 dependencies = [
  "futures-channel",
  "futures-core",
@@ -840,9 +840,9 @@ dependencies = [
 
 [[package]]
 name = "gio-sys"
-version = "0.20.5"
+version = "0.20.6"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "217f464cad5946ae4369c355155e2d16b488c08920601083cb4891e352ae777b"
+checksum = "b965df6f3534c84816b5c1a7d9efcb5671ae790822de5abe8e299797039529bc"
 dependencies = [
  "glib-sys",
  "gobject-sys",
@@ -853,9 +853,9 @@ dependencies = [
 
 [[package]]
 name = "glib"
-version = "0.20.5"
+version = "0.20.6"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "358431b0e0eb15b9d02db52e1f19c805b953c5c168099deb3de88beab761768c"
+checksum = "86bd3e4ee7998ab5a135d900db56930cc19ad16681adf245daff54f618b9d5e1"
 dependencies = [
  "bitflags 2.6.0",
  "futures-channel",
@@ -887,9 +887,9 @@ dependencies = [
 
 [[package]]
 name = "glib-sys"
-version = "0.20.5"
+version = "0.20.6"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "8a5911863ab7ecd4a6f8d5976f12eeba076b23669c49b066d877e742544aa389"
+checksum = "3d0b1827e8621fc42c0dfb228e5d57ff6a71f9699e666ece8113f979ad87c2de"
 dependencies = [
  "libc",
  "system-deps",
@@ -898,7 +898,7 @@ dependencies = [
 [[package]]
 name = "glycin"
 version = "2.0.1"
-source = "git+https://gitlab.gnome.org/sophie-h/glycin.git?branch=wip/sophie-h/operations-clip#1b1abd99e408971ec1f2e2ce174004f09304fc4f"
+source = "git+https://gitlab.gnome.org/sophie-h/glycin.git?branch=wip/sophie-h/crop#fc4f910a1379edd2107f9005f612c5af18485245"
 dependencies = [
  "async-fs",
  "async-io",
@@ -910,8 +910,8 @@ dependencies = [
  "gdk4",
  "gio",
  "glycin-utils",
- "gufo-common 0.1.3",
- "gufo-exif 0.1.3",
+ "gufo-common",
+ "gufo-exif",
  "lcms2",
  "lcms2-sys",
  "libc",
@@ -928,11 +928,11 @@ dependencies = [
 
 [[package]]
 name = "glycin-utils"
-version = "2.0.1"
-source = "git+https://gitlab.gnome.org/sophie-h/glycin.git?branch=wip/sophie-h/operations-clip#1b1abd99e408971ec1f2e2ce174004f09304fc4f"
+version = "3.0.0"
+source = "git+https://gitlab.gnome.org/sophie-h/glycin.git?branch=wip/sophie-h/crop#fc4f910a1379edd2107f9005f612c5af18485245"
 dependencies = [
  "env_logger",
- "gufo-common 0.1.3",
+ "gufo-common",
  "libc",
  "libseccomp",
  "log",
@@ -981,9 +981,9 @@ dependencies = [
 
 [[package]]
 name = "gsk4"
-version = "0.9.3"
+version = "0.9.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "3deb9ae5a7fb759b2405e248d52850d9ef733079b90af2d6b01638f5b9eeafe1"
+checksum = "b36933c1e79df378aa6e606576e680358a9582ed8c16f33e94899636e6fa6df6"
 dependencies = [
  "cairo-rs",
  "gdk4",
@@ -996,9 +996,9 @@ dependencies = [
 
 [[package]]
 name = "gsk4-sys"
-version = "0.9.3"
+version = "0.9.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "2226662e97948f3f241c9a6c432cd95eeca662daf4a327e201458bb540ad9590"
+checksum = "0877a9d485bd9ba5262b0c9bce39e63750e525e3aebeb359d271ca1f0e111f1d"
 dependencies = [
  "cairo-sys-rs",
  "gdk4-sys",
@@ -1012,9 +1012,9 @@ dependencies = [
 
 [[package]]
 name = "gtk4"
-version = "0.9.3"
+version = "0.9.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "d34465497f5a4c182c9c94a582a187db7d6af0863f28e87ccf4379f21f0e2a22"
+checksum = "9376d14d7e33486c54823a42bef296e882b9f25cb4c52b52f4d1d57bbadb5b6d"
 dependencies = [
  "cairo-rs",
  "field-offset",
@@ -1046,9 +1046,9 @@ dependencies = [
 
 [[package]]
 name = "gtk4-sys"
-version = "0.9.3"
+version = "0.9.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "f11c7812e28542edb4d0495a2fde1f4588899e2accfcebaa80115f27dc7358a3"
+checksum = "e653b0a9001ba9be1ffddb9373bfe9a111f688222f5aeee2841481300d91b55a"
 dependencies = [
  "cairo-sys-rs",
  "gdk-pixbuf-sys",
@@ -1066,11 +1066,11 @@ dependencies = [
 [[package]]
 name = "gufo"
 version = "0.2.0"
-source = "git+https://github.com/gufo-rs/gufo.git#ca335180352b161e02f5c8807fcd17bf439721a2"
+source = "git+https://github.com/gufo-rs/gufo.git#5d2c59e505cc96655b977b89c2efc1aa1f6ad69e"
 dependencies = [
  "chrono",
- "gufo-common 0.2.0",
- "gufo-exif 0.2.0",
+ "gufo-common",
+ "gufo-exif",
  "gufo-xmp",
  "static_assertions",
  "thiserror 1.0.69",
@@ -1078,43 +1078,22 @@ dependencies = [
 
 [[package]]
 name = "gufo-common"
-version = "0.1.3"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "269bc5c70016d1e90449d71263a72dd2035a2ecbf9cda6305774fa44844bd662"
+version = "0.2.0"
+source = "git+https://github.com/gufo-rs/gufo.git#5d2c59e505cc96655b977b89c2efc1aa1f6ad69e"
 dependencies = [
- "once_cell",
+ "chrono",
  "paste",
  "serde",
-]
-
-[[package]]
-name = "gufo-common"
-version = "0.2.0"
-source = "git+https://github.com/gufo-rs/gufo.git#ca335180352b161e02f5c8807fcd17bf439721a2"
-dependencies = [
- "chrono",
- "paste",
  "thiserror 1.0.69",
 ]
 
 [[package]]
 name = "gufo-exif"
-version = "0.1.3"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "f4066b9e0375d2b44da9e7f0282c2bd65136fe5e7d033259b2181f499e312e1b"
-dependencies = [
- "gufo-common 0.1.3",
- "thiserror 1.0.69",
- "tracing",
-]
-
-[[package]]
-name = "gufo-exif"
 version = "0.2.0"
-source = "git+https://github.com/gufo-rs/gufo.git#ca335180352b161e02f5c8807fcd17bf439721a2"
+source = "git+https://github.com/gufo-rs/gufo.git#5d2c59e505cc96655b977b89c2efc1aa1f6ad69e"
 dependencies = [
  "chrono",
- "gufo-common 0.2.0",
+ "gufo-common",
  "thiserror 1.0.69",
  "tracing",
 ]
@@ -1122,10 +1101,10 @@ dependencies = [
 [[package]]
 name = "gufo-xmp"
 version = "0.2.0"
-source = "git+https://github.com/gufo-rs/gufo.git#ca335180352b161e02f5c8807fcd17bf439721a2"
+source = "git+https://github.com/gufo-rs/gufo.git#5d2c59e505cc96655b977b89c2efc1aa1f6ad69e"
 dependencies = [
  "chrono",
- "gufo-common 0.2.0",
+ "gufo-common",
  "thiserror 1.0.69",
  "xml-rs",
 ]
@@ -1432,9 +1411,9 @@ dependencies = [
 
 [[package]]
 name = "libc"
-version = "0.2.162"
+version = "0.2.164"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "18d287de67fe55fd7e1581fe933d965a5a9477b38e949cfa9f8574ef01506398"
+checksum = "433bfe06b8c75da9b2e3fbea6e5329ff87748f0b144ef75306e674c3f6f7c13f"
 
 [[package]]
 name = "libgweather"
@@ -1533,7 +1512,7 @@ dependencies = [
  "glycin",
  "gtk4",
  "gufo",
- "gufo-common 0.1.3",
+ "gufo-common",
  "gvdb-macros",
  "indexmap",
  "libadwaita",
@@ -1712,9 +1691,9 @@ checksum = "b15813163c1d831bf4a13c3610c05c0d03b39feb07f7e09fa234dac9b15aaf39"
 
 [[package]]
 name = "pango"
-version = "0.20.4"
+version = "0.20.6"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "aa26aa54b11094d72141a754901cd71d9356432bb8147f9cace8d9c7ba95f356"
+checksum = "71e34e7ca2c52e3933d7e5251409a82b83725fa9d6d48fbdaacec056b3a0554a"
 dependencies = [
  "gio",
  "glib",
@@ -1955,9 +1934,9 @@ dependencies = [
 
 [[package]]
 name = "rustix"
-version = "0.38.40"
+version = "0.38.41"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "99e4ea3e1cdc4b559b8e5650f9c8e5998e3e5c1343b4eaf034565f32318d63c0"
+checksum = "d7f649912bc1495e167a6edee79151c84b1bad49748cb4f1f1167f459f6224f6"
 dependencies = [
  "bitflags 2.6.0",
  "errno",
@@ -2015,9 +1994,9 @@ dependencies = [
 
 [[package]]
 name = "serde_json"
-version = "1.0.132"
+version = "1.0.133"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "d726bfaff4b320266d395898905d0eba0345aae23b54aee3a737e260fd46db03"
+checksum = "c7fceb2473b9166b2294ef05efcb65a3db80803f0b03ef86a5fc88a2b85ee377"
 dependencies = [
  "itoa",
  "memchr",

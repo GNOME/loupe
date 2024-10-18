@@ -247,7 +247,7 @@ mod imp {
 
         /// Editing queue
         pub(super) editing_queue: editing::Queue,
-        pub(super) operations: RefCell<Option<Operations>>,
+        pub(super) operations: RefCell<Option<Arc<Operations>>>,
     }
 
     #[glib::object_subclass]
