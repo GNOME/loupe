@@ -14,6 +14,14 @@
                 <property name="label" translatable="true">Cancel</property>
               </object>
             </child>
+            <child type="end">
+              <object class="GtkButton" id="save">
+                <property name="label" translatable="true">Save</property>
+                <style>
+                  <class name="suggested-action" />
+                </style>
+              </object>
+            </child>
           </object>
         </child>
       </object>
