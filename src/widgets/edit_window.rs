@@ -15,10 +15,12 @@
 //
 // SPDX-License-Identifier: GPL-3.0-or-later
 
-use std::cell::OnceCell;
+use std::cell::{OnceCell, RefCell};
 
 use adw::prelude::*;
 use adw::subclass::prelude::*;
+use glycin::Operations;
+use std::sync::Arc;
 
 use super::edit::LpEditCrop;
 use super::{LpImage, LpWindow};
@@ -35,11 +37,15 @@ mod imp {
         toolbar_view: TemplateChild<adw::ToolbarView>,
         #[template_child]
         cancel: TemplateChild<gtk::Button>,
+        #[template_child]
+        save: TemplateChild<gtk::Button>,
 
         #[property(get, construct_only)]
         window: OnceCell<LpWindow>,
         #[property(get, construct_only)]
         original_image: OnceCell<LpImage>,
+
+        pub(super) operations: RefCell<Option<Arc<Operations>>>,
     }
 
     #[glib::object_subclass]
@@ -65,7 +71,7 @@ mod imp {
             let obj = self.obj();
 
             self.toolbar_view
-                .set_content(Some(&LpEditCrop::new(obj.original_image())));
+                .set_content(Some(&LpEditCrop::new(obj.to_owned())));
 
             self.cancel.connect_clicked(glib::clone!(
                 #[weak]
@@ -74,11 +80,57 @@ mod imp {
                     obj.window().show_image();
                 }
             ));
+
+            self.save.connect_clicked(glib::clone!(
+                #[weak]
+                obj,
+                move |_| {
+                    glib::spawn_future_local(async move { obj.imp().save_image().await });
+                }
+            ));
         }
     }
 
     impl WidgetImpl for LpEditWindow {}
     impl BinImpl for LpEditWindow {}
+
+    impl LpEditWindow {
+        async fn save_image(&self) {
+            dbg!("save");
+            let obj = self.obj();
+
+            if let Some(current_file) = obj.original_image().file() {
+                let file_dialog = gtk::FileDialog::new();
+
+                file_dialog.set_initial_file(obj.original_image().file().as_ref());
+
+                match file_dialog.save_future(Some(&obj.window())).await {
+                    Err(err) => {
+                        log::error!("{}", err);
+                    }
+                    Ok(new_file) => {
+                        dbg!(new_file.path());
+                        let editor = glycin::Editor::new(current_file);
+                        if let Some(operations) = obj.operations() {
+                            let result = editor.apply_complete(&operations).await;
+                            dbg!(&result);
+
+                            dbg!(
+                                new_file
+                                    .replace_contents_future(
+                                        result.unwrap().get().unwrap(),
+                                        None,
+                                        true,
+                                        gio::FileCreateFlags::NONE,
+                                    )
+                                    .await
+                            );
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
 
 glib::wrapper! {
@@ -92,5 +144,30 @@ impl LpEditWindow {
             .property("window", window)
             .property("original_image", image)
             .build()
+    }
+
+    pub fn operations(&self) -> Option<Arc<glycin::Operations>> {
+        self.imp().operations.borrow().clone()
+    }
+
+    pub fn set_operations(&self, operations: Option<Arc<glycin::Operations>>) {
+        let imp = self.imp();
+
+        imp.operations.replace(operations);
+    }
+
+    pub fn add_operation(&self, operation: glycin::Operation) {
+        let imp = self.imp();
+
+        let mut operations = imp
+            .operations
+            .borrow()
+            .as_ref()
+            .map(|x| x.operations().to_vec())
+            .unwrap_or_default();
+
+        operations.push(operation);
+
+        self.set_operations(Some(Arc::new(Operations::new(operations))));
     }
 }

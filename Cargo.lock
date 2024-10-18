@@ -854,7 +854,7 @@ dependencies = [
 [[package]]
 name = "glycin"
 version = "2.0.1"
-source = "git+https://gitlab.gnome.org/sophie-h/glycin.git?branch=wip/sophie-h/operations-clip#1b1abd99e408971ec1f2e2ce174004f09304fc4f"
+source = "git+https://gitlab.gnome.org/sophie-h/glycin.git?branch=wip/sophie-h/crop#fc4f910a1379edd2107f9005f612c5af18485245"
 dependencies = [
  "async-fs",
  "async-io",
@@ -884,8 +884,8 @@ dependencies = [
 
 [[package]]
 name = "glycin-utils"
-version = "2.0.1"
-source = "git+https://gitlab.gnome.org/sophie-h/glycin.git?branch=wip/sophie-h/operations-clip#1b1abd99e408971ec1f2e2ce174004f09304fc4f"
+version = "3.0.0"
+source = "git+https://gitlab.gnome.org/sophie-h/glycin.git?branch=wip/sophie-h/crop#fc4f910a1379edd2107f9005f612c5af18485245"
 dependencies = [
  "env_logger",
  "gufo-common",
@@ -1021,20 +1021,18 @@ dependencies = [
 
 [[package]]
 name = "gufo-common"
-version = "0.1.3"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "269bc5c70016d1e90449d71263a72dd2035a2ecbf9cda6305774fa44844bd662"
+version = "0.2.0"
+source = "git+https://github.com/gufo-rs/gufo#72973ee760f32d5c0dee929228e2874c1177c27e"
 dependencies = [
- "once_cell",
  "paste",
  "serde",
+ "thiserror",
 ]
 
 [[package]]
 name = "gufo-exif"
-version = "0.1.3"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "f4066b9e0375d2b44da9e7f0282c2bd65136fe5e7d033259b2181f499e312e1b"
+version = "0.2.0"
+source = "git+https://github.com/gufo-rs/gufo#72973ee760f32d5c0dee929228e2874c1177c27e"
 dependencies = [
  "gufo-common",
  "thiserror",

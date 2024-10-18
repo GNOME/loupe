@@ -25,12 +25,14 @@ gettext-sys = { version = "0.21.3", features = ["gettext-system"] }
 gio = { version = "0.20.0", features = ["v2_74"] }
 glycin = { version = "2.0.1", features = [
     "gdk4",
-], git = "https://gitlab.gnome.org/sophie-h/glycin.git", branch = "wip/sophie-h/operations-clip" }
+], git = "https://gitlab.gnome.org/sophie-h/glycin.git", branch = "wip/sophie-h/crop" }
 gtk = { package = "gtk4", version = "0.9.0", features = [
     "v4_14",
     "xml_validation",
 ] }
-gufo-common = { version = "0.1.0", features = ["serde"] }
+gufo-common = { version = "0.2.0", features = [
+    "serde",
+], git = "https://github.com/gufo-rs/gufo" }
 gvdb-macros = "0.1.6"
 indexmap = "2.0.0"
 kamadak-exif = "0.5.5"
