@@ -22,7 +22,7 @@ use adw::subclass::prelude::*;
 use adw::{glib, gtk};
 
 use crate::widgets::edit::LpEditCropSelection;
-use crate::widgets::LpImage;
+use crate::widgets::{edit_window, LpEditWindow, LpImage};
 
 #[derive(Debug, Clone, Copy, Default, glib::Enum)]
 #[enum_type(name = "LpAspectRatio")]
@@ -75,6 +75,8 @@ mod imp {
 
         #[property(get, construct_only)]
         original_image: OnceCell<LpImage>,
+        #[property(get, construct_only)]
+        edit_window: OnceCell<LpEditWindow>,
 
         #[property(get, set)]
         child: OnceCell<gtk::Widget>,
@@ -240,30 +242,47 @@ mod imp {
 
         fn apply_crop(&self) {
             if let Some(crop) = self.crop_area_image_coord() {
-                self.image.add_operation(Operation::Clip(crop));
+                let edit_window = self.obj().edit_window();
+
+                edit_window.add_operation(Operation::Clip(crop));
+                self.image.set_operations(edit_window.operations());
+
                 self.reset_selection();
             }
         }
 
         fn apply_mirror(&self) {
-            self.image.add_operation(Operation::MirrorHorizontally);
+            let edit_window = self.obj().edit_window();
+
+            edit_window.add_operation(Operation::MirrorHorizontally);
+            self.image.set_operations(edit_window.operations());
+
             self.reset_selection();
         }
 
         fn apply_rotate_cw(&self) {
-            self.image
-                .add_operation(Operation::Rotate(gufo_common::orientation::Rotation::_90));
+            let edit_window = self.obj().edit_window();
+
+            edit_window.add_operation(Operation::Rotate(gufo_common::orientation::Rotation::_90));
+            self.image.set_operations(edit_window.operations());
+
             self.reset_selection();
         }
 
         fn apply_rotate_ccw(&self) {
-            self.image
-                .add_operation(Operation::Rotate(gufo_common::orientation::Rotation::_270));
+            let edit_window = self.obj().edit_window();
+
+            edit_window.add_operation(Operation::Rotate(gufo_common::orientation::Rotation::_270));
+            self.image.set_operations(edit_window.operations());
+
             self.reset_selection();
         }
 
         fn apply_reset(&self) {
+            let obj = self.obj();
+
             self.image.set_operations(None);
+            obj.edit_window().set_operations(None);
             self.reset_selection();
         }
     }
@@ -275,9 +294,10 @@ glib::wrapper! {
 }
 
 impl LpEditCrop {
-    pub fn new(original_image: LpImage) -> Self {
+    pub fn new(edit_window: LpEditWindow) -> Self {
         glib::Object::builder()
-            .property("original_image", original_image)
+            .property("original_image", edit_window.original_image())
+            .property("edit_window", edit_window)
             .build()
     }
 
