@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2024-09-19 20:41+0000\n"
-"PO-Revision-Date: 2024-09-21 22:07+0200\n"
+"POT-Creation-Date: 2024-10-17 13:13+0000\n"
+"PO-Revision-Date: 2024-10-18 22:08+0200\n"
 "Last-Translator: Jordi Mas i Hernàndez, <jmas@softcatala.org>\n"
 "Language-Team: Catalan <gnome@llistes.softcatala.org>\n"
 "Language: ca\n"
@@ -263,22 +263,22 @@ msgid "Could not list other files in directory."
 msgstr "No s'han pogut llistar altres fitxers al directori."
 
 #. Translators: Display of the f-number <https://en.wikipedia.org/wiki/F-number>. {} will be replaced with the number
-#: src/metadata.rs:253
+#: src/metadata.rs:264
 msgid "\\u{192}\\u{2215}{}"
 msgstr "\\u{192}\\u{2215}{}"
 
 #. Translators: Fractional exposure time (photography) in seconds
-#: src/metadata.rs:269
+#: src/metadata.rs:280
 msgid "1\\u{2215}{}\\u{202F}s"
 msgstr "1\\u{2215}{}\\u{202F}s"
 
 #. Translators: Exposure time (photography) in seconds
-#: src/metadata.rs:277
+#: src/metadata.rs:288
 msgid "{}\\u{202F}s"
 msgstr "{}\\u{202F}s"
 
 #. Translators: Unit for focal length in millimeters
-#: src/metadata.rs:303
+#: src/metadata.rs:314
 msgid "{}\\u{202F}mm"
 msgstr "{}\\u{202F}mm"
 
@@ -318,6 +318,10 @@ msgstr "No s'ha pogut restaurar la imatge de la paperera"
 #: src/widgets/drag_overlay.ui:15
 msgid "Drop Image to View"
 msgstr "Deixeu anar la imatge per visualitzar-la"
+
+#: src/widgets/error_details.ui:4
+msgid "Error Details"
+msgstr "Detalls de l'error"
 
 #: src/widgets/error_details.ui:19
 msgid ""
@@ -416,11 +420,11 @@ msgstr "{} %"
 
 #. Translators: This is a toast notification, informing the user that
 #. an image has been set as background.
-#: src/widgets/image_view.rs:824
+#: src/widgets/image_view.rs:837
 msgid "Set as background."
 msgstr "Estableix com a fons."
 
-#: src/widgets/image_view.rs:837
+#: src/widgets/image_view.rs:850
 msgid "Could not set background."
 msgstr "No s'ha pogut establir el fons."
 
