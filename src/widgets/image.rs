@@ -58,16 +58,16 @@ use crate::util::Gesture;
 
 /// Default background color around images and behind transparent images
 /// `#242424`
-const BACKGROUND_COLOR_DEFAULT: gdk::RGBA = gdk::RGBA::new(36. / 255., 36. / 255., 36. / 255., 1.);
+const BACKGROUND_COLOR_DEFAULT: gdk::RGBA = gdk::RGBA::new(34. / 255., 34. / 255., 38. / 255., 1.);
 /// Background color if the default does not give enough contrast for
 /// transparent images `#e8e7e6`
 const BACKGROUND_COLOR_ALTERNATE: gdk::RGBA =
-    gdk::RGBA::new(232. / 255., 231. / 255., 230. / 255., 1.);
+    gdk::RGBA::new(232. / 255., 232. / 255., 234. / 255., 1.);
 
 const BACKGROUND_COLOR_DEFAULT_LIGHT_MODE: gdk::RGBA =
-    gdk::RGBA::new(250. / 255., 250. / 255., 250. / 255., 1.);
+    gdk::RGBA::new(250. / 255., 250. / 255., 251. / 255., 1.);
 const BACKGROUND_COLOR_ALTERNATE_LIGHT_MODE: gdk::RGBA =
-    gdk::RGBA::new(103. / 255., 101. / 255., 110. / 255., 1.);
+    gdk::RGBA::new(101. / 255., 101. / 255., 105. / 255., 1.);
 
 /// Consider 3.5:1 contrast and worse to be bad contrast for a pixel
 static BACKGROUND_GUESS_LOW_CONTRAST_RATIO: f32 = 3.5;
