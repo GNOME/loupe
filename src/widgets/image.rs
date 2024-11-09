@@ -57,10 +57,10 @@ use crate::metadata::Metadata;
 use crate::util::Gesture;
 
 /// Default background color around images and behind transparent images
-/// `#242424`
+/// `#222226`
 const BACKGROUND_COLOR_DEFAULT: gdk::RGBA = gdk::RGBA::new(34. / 255., 34. / 255., 38. / 255., 1.);
 /// Background color if the default does not give enough contrast for
-/// transparent images `#e8e7e6`
+/// transparent images `#e8e8ea`
 const BACKGROUND_COLOR_ALTERNATE: gdk::RGBA =
     gdk::RGBA::new(232. / 255., 232. / 255., 234. / 255., 1.);
 
