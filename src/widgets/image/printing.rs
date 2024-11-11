@@ -31,8 +31,8 @@ impl LpImage {
 
         self.imp().snapshot_rotate_mirror(
             &snapshot,
-            -orientation.rotation as f32,
-            orientation.mirrored,
+            -(orientation.rotate().degrees() as f32),
+            orientation.mirror(),
             scale,
         );
 

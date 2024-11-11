@@ -1,6 +1,7 @@
 // Copyright (c) 2021 Christopher Davis
 // Copyright (c) 2022-2024 Sophie Herold
 // Copyright (c) 2023 Lubosz Sarnecki
+// Copyright (c) 2024 kramo
 // Copyright (c) 2024 Maximiliano Sandoval
 //
 // This program is free software: you can redistribute it and/or modify

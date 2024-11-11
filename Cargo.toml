@@ -20,6 +20,7 @@ ashpd = { version = "0.10.2", features = ["gtk4_wayland"] }
 async-channel = "2.1.0"
 async-lock = "3.4.0"
 cairo-rs = { version = "0.20.0", features = ["pdf"] }
+chrono = { version = "0.4.38", default-features = false, features = ["std"] }
 gettext-rs = { version = "0.7.0", features = ["gettext-system"] }
 gettext-sys = { version = "0.22.5", features = ["gettext-system"] }
 gio = { version = "0.20.0", features = ["v2_74"] }
@@ -28,10 +29,12 @@ gtk = { package = "gtk4", version = "0.9.0", features = [
     "v4_14",
     "xml_validation",
 ] }
+gufo = { version = "0.2.0", git = "https://github.com/gufo-rs/gufo.git", rev = "95b178197ae0556a9c4f7b6e6efab65376222b5d", features = [
+    "chrono",
+] }
 gufo-common = { version = "0.1.0", features = ["serde"] }
 gvdb-macros = "0.1.6"
 indexmap = "2.0.0"
-kamadak-exif = "0.5.5"
 libc = "0.2.158"
 libgweather = "4.4.0"
 log = "0.4.17"

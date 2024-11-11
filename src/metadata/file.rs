@@ -19,6 +19,7 @@ use crate::deps::*;
 
 const ATTRIBUTE_HOST_PATH: &str = "xattr::document-portal.host-path";
 
+#[derive(Debug)]
 pub struct FileInfo {
     pub(super) display_name: glib::GString,
     pub(super) file_size: Option<u64>,

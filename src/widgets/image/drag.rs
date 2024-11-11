@@ -1,4 +1,4 @@
-// Copyright (c) 2023 Sophie Herold
+// Copyright (c) 2023-2024 Sophie Herold
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -44,8 +44,8 @@ impl LpImage {
 
         imp.snapshot_rotate_mirror(
             &snapshot,
-            -orientation.rotation as f32,
-            orientation.mirrored,
+            -(orientation.rotate().degrees() as f32),
+            orientation.mirror(),
             scale as f64,
         );
 

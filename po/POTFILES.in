@@ -16,7 +16,6 @@ src/lib.rs
 src/main.rs
 src/metadata.rs
 src/metadata/file.rs
-src/metadata/gps.rs
 src/util.rs
 src/util/gettext.rs
 src/widgets.rs

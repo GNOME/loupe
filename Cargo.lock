@@ -344,6 +344,15 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "613afe47fcd5fac7ccf1db93babcb082c5994d996f20b8b159f2ad1658eb5724"
 
 [[package]]
+name = "chrono"
+version = "0.4.38"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "a21f936df1771bf62b77f047b726c4625ff2e8aa607c01ec06e5a05bd8463401"
+dependencies = [
+ "num-traits",
+]
+
+[[package]]
 name = "concurrent-queue"
 version = "2.5.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -902,8 +911,8 @@ dependencies = [
  "gdk4",
  "gio",
  "glycin-utils",
- "gufo-common",
- "gufo-exif",
+ "gufo-common 0.1.3",
+ "gufo-exif 0.1.3",
  "lcms2",
  "lcms2-sys",
  "libc",
@@ -925,7 +934,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "7c6132ef2817b05110f3b1f98c53dbddaac74ea8366472354ab486d02442f08f"
 dependencies = [
  "env_logger",
- "gufo-common",
+ "gufo-common 0.1.3",
  "libc",
  "libseccomp",
  "log",
@@ -1057,6 +1066,19 @@ dependencies = [
 ]
 
 [[package]]
+name = "gufo"
+version = "0.2.0"
+source = "git+https://github.com/gufo-rs/gufo.git?rev=95b178197ae0556a9c4f7b6e6efab65376222b5d#95b178197ae0556a9c4f7b6e6efab65376222b5d"
+dependencies = [
+ "chrono",
+ "gufo-common 0.2.0",
+ "gufo-exif 0.2.0",
+ "gufo-xmp",
+ "static_assertions",
+ "thiserror 1.0.69",
+]
+
+[[package]]
 name = "gufo-common"
 version = "0.1.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1068,14 +1090,46 @@ dependencies = [
 ]
 
 [[package]]
+name = "gufo-common"
+version = "0.2.0"
+source = "git+https://github.com/gufo-rs/gufo.git?rev=95b178197ae0556a9c4f7b6e6efab65376222b5d#95b178197ae0556a9c4f7b6e6efab65376222b5d"
+dependencies = [
+ "chrono",
+ "paste",
+ "thiserror 1.0.69",
+]
+
+[[package]]
 name = "gufo-exif"
 version = "0.1.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "f4066b9e0375d2b44da9e7f0282c2bd65136fe5e7d033259b2181f499e312e1b"
 dependencies = [
- "gufo-common",
+ "gufo-common 0.1.3",
  "thiserror 1.0.69",
  "tracing",
+]
+
+[[package]]
+name = "gufo-exif"
+version = "0.2.0"
+source = "git+https://github.com/gufo-rs/gufo.git?rev=95b178197ae0556a9c4f7b6e6efab65376222b5d#95b178197ae0556a9c4f7b6e6efab65376222b5d"
+dependencies = [
+ "chrono",
+ "gufo-common 0.2.0",
+ "thiserror 1.0.69",
+ "tracing",
+]
+
+[[package]]
+name = "gufo-xmp"
+version = "0.2.0"
+source = "git+https://github.com/gufo-rs/gufo.git?rev=95b178197ae0556a9c4f7b6e6efab65376222b5d#95b178197ae0556a9c4f7b6e6efab65376222b5d"
+dependencies = [
+ "chrono",
+ "gufo-common 0.2.0",
+ "thiserror 1.0.69",
+ "xml-rs",
 ]
 
 [[package]]
@@ -1319,15 +1373,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "kamadak-exif"
-version = "0.5.5"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "ef4fc70d0ab7e5b6bafa30216a6b48705ea964cdfc29c050f2412295eba58077"
-dependencies = [
- "mutate_once",
-]
-
-[[package]]
 name = "lazy_static"
 version = "1.5.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1483,15 +1528,16 @@ dependencies = [
  "async-channel",
  "async-lock",
  "cairo-rs",
+ "chrono",
  "gettext-rs",
  "gettext-sys",
  "gio",
  "glycin",
  "gtk4",
- "gufo-common",
+ "gufo",
+ "gufo-common 0.1.3",
  "gvdb-macros",
  "indexmap",
- "kamadak-exif",
  "libadwaita",
  "libc",
  "libgweather",
@@ -1573,12 +1619,6 @@ dependencies = [
  "wasi",
  "windows-sys 0.52.0",
 ]
-
-[[package]]
-name = "mutate_once"
-version = "0.1.1"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "16cf681a23b4d0a43fc35024c176437f9dcd818db34e0f42ab456a0ee5ad497b"
 
 [[package]]
 name = "nix"
@@ -1957,18 +1997,18 @@ checksum = "61697e0a1c7e512e84a621326239844a24d8207b4669b41bc18b32ea5cbf988b"
 
 [[package]]
 name = "serde"
-version = "1.0.214"
+version = "1.0.215"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "f55c3193aca71c12ad7890f1785d2b73e1b9f63a0bbc353c08ef26fe03fc56b5"
+checksum = "6513c1ad0b11a9376da888e3e0baa0077f1aed55c17f50e7b2397136129fb88f"
 dependencies = [
  "serde_derive",
 ]
 
 [[package]]
 name = "serde_derive"
-version = "1.0.214"
+version = "1.0.215"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "de523f781f095e28fa605cdce0f8307e451cc0fd14e2eb4cd2e98a355b147766"
+checksum = "ad1e866f866923f252f05c889987993144fb74e722403468a4ebd70c3cd756c0"
 dependencies = [
  "proc-macro2",
  "quote",
@@ -2557,6 +2597,12 @@ dependencies = [
  "libc",
  "windows-sys 0.59.0",
 ]
+
+[[package]]
+name = "xml-rs"
+version = "0.8.23"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "af310deaae937e48a26602b730250b4949e125f468f11e6990be3e5304ddd96f"
 
 [[package]]
 name = "yeslogic-fontconfig-sys"

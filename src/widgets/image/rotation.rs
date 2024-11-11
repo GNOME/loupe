@@ -76,9 +76,11 @@ impl LpImage {
     pub fn reset_rotation(&self) {
         log::debug!("Resetting rotation");
         let orientation = self.metadata().orientation();
-        self.imp().rotation_target.set(-orientation.rotation);
-        self.set_mirrored(orientation.mirrored);
-        self.set_rotation(-orientation.rotation);
+        self.imp()
+            .rotation_target
+            .set(-(orientation.rotate().degrees() as f64));
+        self.set_mirrored(orientation.mirror());
+        self.set_rotation(-(orientation.rotate().degrees() as f64));
     }
 
     pub fn rotate_by(&self, angle: f64) {

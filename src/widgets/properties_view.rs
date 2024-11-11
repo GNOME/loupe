@@ -223,7 +223,7 @@ mod imp {
 
             // Details (EXIF)
             let has_details = [
-                Self::update_row(&self.location, metadata.gps_location().map(|x| x.display())),
+                Self::update_row(&self.location, metadata.gps_location_place()),
                 Self::update_row(&self.originally_created, metadata.originally_created()),
                 Self::update_row(&self.aperture, metadata.f_number()),
                 Self::update_row(&self.exposure, metadata.exposure_time()),
@@ -318,7 +318,7 @@ mod imp {
 
             if let Some(location) = obj.image().and_then(|x| x.metadata().gps_location()) {
                 let clipboard = obj.display().clipboard();
-                clipboard.set_text(&location.machine_readable());
+                clipboard.set_text(&location.iso_6709());
                 let _ = obj.activate_action(
                     "win.show-toast",
                     Some(

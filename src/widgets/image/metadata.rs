@@ -15,6 +15,8 @@
 //
 // SPDX-License-Identifier: GPL-3.0-or-later
 
+use gufo::common::orientation::Rotation;
+
 use super::*;
 use crate::metadata;
 
@@ -98,7 +100,7 @@ impl LpImage {
     /// Image size of original image with EXIF rotation applied
     pub fn image_size(&self) -> (i32, i32) {
         let orientation = self.imp().metadata.borrow().orientation();
-        if orientation.rotation.abs() == 90. || orientation.rotation.abs() == 270. {
+        if orientation.rotate() == Rotation::_90 || orientation.rotate() == Rotation::_270 {
             let (x, y) = self.imp().original_dimensions();
             (y, x)
         } else {
