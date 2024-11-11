@@ -16,12 +16,12 @@ x11 = ["ashpd/gtk4_x11"]
 adw = { package = "libadwaita", version = "0.7.0", features = ["v1_6"] }
 anyhow = { version = "1.0.66" }
 arc-swap = "1.6.0"
-ashpd = { version = "0.9.1", features = ["gtk4_wayland"] }
+ashpd = { version = "0.10.2", features = ["gtk4_wayland"] }
 async-channel = "2.1.0"
 async-lock = "3.4.0"
 cairo-rs = { version = "0.20.0", features = ["pdf"] }
 gettext-rs = { version = "0.7.0", features = ["gettext-system"] }
-gettext-sys = { version = "0.21.3", features = ["gettext-system"] }
+gettext-sys = { version = "0.22.5", features = ["gettext-system"] }
 gio = { version = "0.20.0", features = ["v2_74"] }
 glycin = { version = "2.0.1", features = ["gdk4"] }
 gtk = { package = "gtk4", version = "0.9.0", features = [
@@ -36,6 +36,6 @@ libc = "0.2.158"
 libgweather = "4.4.0"
 log = "0.4.17"
 strum = { version = "0.26.2", features = ["derive"] }
-thiserror = "1.0.64"
+thiserror = "2.0.3"
 tracing-subscriber = { version = "0.3.18", features = ["fmt", "env-filter"] }
 url = "2.3.1"
