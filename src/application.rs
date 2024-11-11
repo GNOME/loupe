@@ -56,27 +56,27 @@ mod imp {
         type ParentType = adw::Application;
     }
 
-    // Overrides GObject vfuncs
     impl ObjectImpl for LpApplication {
         fn constructed(&self) {
             let obj = self.obj();
 
             self.parent_constructed();
 
-            // Force dark theme
-            obj.style_manager()
-                .set_color_scheme(adw::ColorScheme::PreferDark);
-
             // Set up the actions
             obj.setup_actions();
         }
     }
 
-    // Overrides GApplication vfuncs
     impl ApplicationImpl for LpApplication {
         fn startup(&self) {
             log::trace!("Startup");
             self.parent_startup();
+
+            // Force dark theme
+            self.obj()
+                .style_manager()
+                .set_color_scheme(adw::ColorScheme::PreferDark);
+
             LpShyBin::ensure_type();
             gtk::Window::set_default_icon_name(config::APP_ID);
         }
