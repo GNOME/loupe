@@ -2,6 +2,7 @@
 // Copyright (c) 2022 Christopher Davis
 // Copyright (c) 2023 Julian Hofer
 // Copyright (c) 2023 Gage Berz
+// Copyright (c) 2024 Not Committed Yet
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -19,6 +20,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 
 use std::cell::{OnceCell, RefCell};
+use std::collections::VecDeque;
 use std::sync::LazyLock;
 
 use anyhow::Context;
@@ -32,6 +34,55 @@ use crate::deps::*;
 use crate::util;
 use crate::util::gettext::*;
 
+#[derive(Debug, Clone)]
+struct Entry {
+    sort: VecDeque<glib::FilenameCollationKey>,
+    file: gio::File,
+}
+
+impl Entry {
+    //async
+    fn new(file: gio::File) -> Self {
+        let mut sort = VecDeque::new();
+        let mut frac_file = file.clone();
+
+        loop {
+            match frac_file
+                .query_info
+                //_future
+                (
+                    gio::FILE_ATTRIBUTE_STANDARD_DISPLAY_NAME,
+                    gio::FileQueryInfoFlags::NONE,
+                    //glib::Priority::LOW,
+                    gio::Cancellable::NONE
+                )
+                //.await
+            {
+                Ok(parent) => {
+                    let key = glib::FilenameCollationKey::from(parent.display_name());
+                    sort.push_front(key);
+                }
+
+                Err(err) => {
+                    log::error!(
+                        "Failed to obtain information for sorting '{}': {err}",
+                        frac_file.uri()
+                    );
+                    break;
+                }
+            }
+
+            if let Some(parent) = frac_file.parent() {
+                frac_file = parent;
+            } else {
+                break;
+            }
+        }
+
+        Self { sort, file }
+    }
+}
+
 mod imp {
     use super::*;
 
@@ -39,7 +90,7 @@ mod imp {
     pub struct LpFileModel {
         /// Use and IndexMap such that we can put the elements into an arbitrary
         /// order while still having fast hash access via file URI.
-        pub(super) files: RefCell<IndexMap<GString, gio::File>>,
+        pub(super) files: RefCell<IndexMap<GString, Entry>>,
         pub(super) directory: OnceCell<gio::File>,
         /// Track file changes.
         pub(super) monitor: OnceCell<gio::FileMonitor>,
@@ -82,7 +133,7 @@ impl LpFileModel {
         {
             let mut vec = model.imp().files.borrow_mut();
             for file in files {
-                vec.insert(file.uri(), file);
+                vec.insert(file.uri(), Entry::new(file));
             }
         }
 
@@ -150,7 +201,7 @@ impl LpFileModel {
                         // images. Usually by inspecting the magic bytes.
                         if content_type.starts_with("image/") && !info.is_hidden() {
                             let file = directory.child(info.name());
-                            files.insert(file.uri(), file);
+                            files.insert(file.uri(), Entry::new(file));
                         }
                     }
                 }
@@ -206,7 +257,7 @@ impl LpFileModel {
             .files
             .borrow()
             .get_index(index.checked_sub(1)?)
-            .map(|x| x.1)
+            .map(|x| &x.1.file)
             .cloned()
     }
 
@@ -217,7 +268,7 @@ impl LpFileModel {
             .files
             .borrow()
             .get_index(index.checked_add(1)?)
-            .map(|x| x.1)
+            .map(|x| &x.1.file)
             .cloned()
     }
 
@@ -236,27 +287,36 @@ impl LpFileModel {
             .iter()
             .skip(index.saturating_sub(n))
             .take(2 * n + 1 - reduce)
-            .map(|(k, v)| (k.clone(), v.clone()))
+            .map(|(k, v)| (k.clone(), v.file.clone()))
             .collect()
     }
 
     /// Return first file
     pub fn first(&self) -> Option<gio::File> {
-        self.imp().files.borrow().first().map(|x| x.1).cloned()
+        self.imp()
+            .files
+            .borrow()
+            .first()
+            .map(|x| &x.1.file)
+            .cloned()
     }
 
     /// Returns last file
     pub fn last(&self) -> Option<gio::File> {
-        self.imp().files.borrow().last().map(|x| x.1).cloned()
+        self.imp().files.borrow().last().map(|x| &x.1.file).cloned()
     }
 
     pub fn remove(&self, file: &gio::File) -> Option<gio::File> {
-        self.imp().files.borrow_mut().shift_remove(&file.uri())
+        self.imp()
+            .files
+            .borrow_mut()
+            .shift_remove(&file.uri())
+            .map(|x| x.file)
     }
 
     /// Currently sorts by name
-    fn sort(files: &mut IndexMap<GString, gio::File>) {
-        files.sort_by(|_, x, _, y| util::compare_by_name(&x.uri(), &y.uri()));
+    fn sort(files: &mut IndexMap<GString, Entry>) {
+        files.sort_by(|_, x, _, y| x.sort.cmp(&y.sort));
     }
 
     /// Determines if a file is added
@@ -301,7 +361,7 @@ impl LpFileModel {
                 if Self::is_image_file(file_a) =>
             {
                 let mut files = self.imp().files.borrow_mut();
-                let changed = files.insert(file_a.uri(),file_a.clone()).is_none();
+                let changed = files.insert(file_a.uri(),Entry::new(file_a.clone())).is_none();
                 if changed {
                     Self::sort(&mut files);
                 }
@@ -318,7 +378,7 @@ impl LpFileModel {
                         let mut files = self.imp().files.borrow_mut();
                         changed |= files.shift_remove(&file_a.uri()).is_some();
                         if Self::is_image_file(file_b) {
-                            changed |= files.insert(file_b.uri(), file_b.clone()).is_none();
+                            changed |= files.insert(file_b.uri(), Entry::new(file_b.clone())).is_none();
                             if changed {
                                 Self::sort(&mut files);
                             }
