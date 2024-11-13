@@ -227,7 +227,7 @@ mod imp {
             let has_details = [
                 Self::update_row(&self.location, metadata.gps_location_place()),
                 Self::update_row(&self.originally_created, metadata.originally_created()),
-                Self::update_row(&self.user_comment, metadata.exif.user_comment()),
+                Self::update_row(&self.user_comment, metadata.user_comment()),
                 Self::update_row(&self.aperture, metadata.f_number()),
                 Self::update_row(&self.exposure, metadata.exposure_time()),
                 Self::update_row(&self.iso, metadata.iso()),

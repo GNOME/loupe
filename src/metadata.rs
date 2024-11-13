@@ -39,7 +39,7 @@ use crate::util::gettext::*;
 #[derive(Default, Debug)]
 pub struct Metadata {
     mime_type: Option<String>,
-    pub exif: gufo::Metadata,
+    metadata: gufo::Metadata,
     file_info: Option<FileInfo>,
     image_info: Option<glycin::ImageInfoDetails>,
     frame_info: Option<FrameDetails>,
@@ -48,7 +48,7 @@ pub struct Metadata {
 
 impl Metadata {
     fn set_exif_bytes(&mut self, bytes: Vec<u8>) {
-        let result = self.exif.add_raw_exif(bytes);
+        let result = self.metadata.add_raw_exif(bytes);
 
         if let Err(err) = &result {
             log::warn!("Failed to decode EXIF bytes: {err}");
@@ -76,8 +76,8 @@ impl Metadata {
     }
 
     pub fn merge(&mut self, other: Self) {
-        if self.exif.is_empty() {
-            self.exif = other.exif;
+        if self.metadata.is_empty() {
+            self.metadata = other.metadata;
         }
         if self.file_info.is_none() {
             self.file_info = other.file_info;
@@ -145,7 +145,7 @@ impl Metadata {
             // HEIF library already does it's transformations on its own
             Orientation::Id
         } else {
-            self.exif.orientation().unwrap_or(Orientation::Id)
+            self.metadata.orientation().unwrap_or(Orientation::Id)
         }
     }
 
@@ -193,7 +193,7 @@ impl Metadata {
     }
 
     pub fn originally_created(&self) -> Option<String> {
-        if let Some(date_time) = &self.exif.date_time_original() {
+        if let Some(date_time) = &self.metadata.date_time_original() {
             let glib_date_time = match date_time {
                 DateTime::Naive(naive) => {
                     glib::DateTime::from_unix_local(naive.and_utc().timestamp()).ok()
@@ -223,8 +223,12 @@ impl Metadata {
         }
     }
 
+    pub fn user_comment(&self) -> Option<String> {
+        self.metadata.user_comment()
+    }
+
     pub fn f_number(&self) -> Option<String> {
-        if let Some(f_number) = self.exif.f_number() {
+        if let Some(f_number) = self.metadata.f_number() {
             return Some(
                 // Translators: Display of the f-number <https://en.wikipedia.org/wiki/F-number>. {} will be replaced with the number
                 gettext_f(r"\u{192}\u{2215}{}", [f_number.to_string()]),
@@ -235,7 +239,7 @@ impl Metadata {
     }
 
     pub fn exposure_time(&self) -> Option<String> {
-        if let Some((num, denom)) = self.exif.exposure_time() {
+        if let Some((num, denom)) = self.metadata.exposure_time() {
             let speed = num as f64 / denom as f64;
             if speed <= 0.5 {
                 let exposure = format!("{:.0}", 1. / speed);
@@ -256,11 +260,11 @@ impl Metadata {
     }
 
     pub fn iso(&self) -> Option<String> {
-        self.exif.iso_speed_rating().map(|iso| iso.to_string())
+        self.metadata.iso_speed_rating().map(|iso| iso.to_string())
     }
 
     pub fn focal_length(&self) -> Option<String> {
-        self.exif
+        self.metadata
             .focal_length()
             .map(|focal_length| gettext_f(r"{}\u{202F}mm", [focal_length.to_string()]))
     }
@@ -284,15 +288,15 @@ impl Metadata {
     }
 
     pub fn model(&self) -> Option<String> {
-        self.exif.model()
+        self.metadata.model()
     }
 
     pub fn maker(&self) -> Option<String> {
-        self.exif.make()
+        self.metadata.make()
     }
 
     pub fn gps_location(&self) -> Option<gufo::common::geography::Location> {
-        self.exif.gps_location()
+        self.metadata.gps_location()
     }
 
     pub fn gps_location_display(&self) -> Option<String> {
