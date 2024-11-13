@@ -439,16 +439,22 @@ impl LpImageView {
     }
 
     fn load_files(&self, files: Vec<gio::File>) {
-        let sliding_view = self.sliding_view().editor();
-
         if let Some(first) = files.first().cloned() {
-            let model = LpFileModel::from_files(files);
-            self.set_model(model);
-            let page = self.new_image_page(&first);
+            glib::spawn_future_local(glib::clone!(
+                #[strong(rename_to=obj)]
+                self,
+                async move {
+                    let sliding_view = obj.sliding_view().editor();
 
-            sliding_view.clear_lazy();
-            sliding_view.append(&page);
-            self.update_sliding_view(&first);
+                    let model = LpFileModel::from_files(files).await;
+                    obj.set_model(model);
+                    let page = obj.new_image_page(&first);
+
+                    sliding_view.clear_lazy();
+                    sliding_view.append(&page);
+                    obj.update_sliding_view(&first);
+                }
+            ));
         } else {
             log::error!("File list was empty");
         }
@@ -474,18 +480,18 @@ impl LpImageView {
             return;
         }
 
-        let model = LpFileModel::from_file(file.clone());
-        self.set_model(model);
-        log::debug!("New model created");
+        glib::spawn_future_local(glib::clone!(
+            #[strong(rename_to = obj)]
+            self,
+            async move {
+                let model = LpFileModel::from_file(file.clone()).await;
+                obj.set_model(model);
+                log::debug!("New model created");
 
-        self.update_sliding_view(&file);
+                obj.update_sliding_view(&file);
 
-        // List other files in directory
-        if let Some(directory) = directory {
-            glib::spawn_future_local(glib::clone!(
-                #[weak(rename_to = obj)]
-                self,
-                async move {
+                // List other files in directory
+                if let Some(directory) = directory {
                     if let Err(err) = obj.model().load_directory(directory.clone()).await {
                         log::warn!("Failed to load directory: {}", err.root_cause());
                         obj.activate_action(
@@ -504,8 +510,8 @@ impl LpImageView {
 
                     obj.update_sliding_view(&file);
                 }
-            ));
-        }
+            }
+        ));
     }
 
     /// Move forward or backwards

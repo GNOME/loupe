@@ -1,8 +1,6 @@
 // Copyright (c) 2022-2024 Sophie Herold
 // Copyright (c) 2022 Christopher Davis
-// Copyright (c) 2023 Julian Hofer
 // Copyright (c) 2023 Gage Berz
-// Copyright (c) 2024 Not Committed Yet
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -36,27 +34,25 @@ use crate::util::gettext::*;
 
 #[derive(Debug, Clone)]
 struct Entry {
+    /// Determines the sort order
     sort: VecDeque<glib::FilenameCollationKey>,
     file: gio::File,
 }
 
 impl Entry {
-    //async
-    fn new(file: gio::File) -> Self {
+    async fn new(file: gio::File) -> Self {
         let mut sort = VecDeque::new();
         let mut frac_file = file.clone();
 
+        // Determine sort order for all path/uri segments one by one
         loop {
             match frac_file
-                .query_info
-                //_future
-                (
+                .query_info_future(
                     gio::FILE_ATTRIBUTE_STANDARD_DISPLAY_NAME,
                     gio::FileQueryInfoFlags::NONE,
-                    //glib::Priority::LOW,
-                    gio::Cancellable::NONE
+                    glib::Priority::LOW,
                 )
-                //.await
+                .await
             {
                 Ok(parent) => {
                     let key = glib::FilenameCollationKey::from(parent.display_name());
@@ -123,19 +119,19 @@ impl Default for LpFileModel {
 
 impl LpFileModel {
     /// Create with a single element
-    pub fn from_file(file: gio::File) -> Self {
-        Self::from_files(vec![file])
+    pub async fn from_file(file: gio::File) -> Self {
+        Self::from_files(vec![file]).await
     }
 
-    pub fn from_files(files: Vec<gio::File>) -> Self {
+    pub async fn from_files(files: Vec<gio::File>) -> Self {
         let model = Self::default();
 
-        {
-            let mut vec = model.imp().files.borrow_mut();
-            for file in files {
-                vec.insert(file.uri(), Entry::new(file));
-            }
+        let mut stored_files: IndexMap<GString, Entry> = IndexMap::new();
+        for file in files {
+            stored_files.insert(file.uri(), Entry::new(file).await);
         }
+
+        *model.imp().files.borrow_mut() = stored_files;
 
         model
     }
@@ -164,25 +160,29 @@ impl LpFileModel {
             }
         }
 
-        let new_files_result = gio::spawn_blocking(move || {
-            let mut files = IndexMap::new();
+        let mut new_files = IndexMap::new();
 
-            let enumerator = directory
-                .enumerate_children(
-                    &format!(
-                        "{},{},{},{}",
-                        gio::FILE_ATTRIBUTE_STANDARD_NAME,
-                        gio::FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE,
-                        gio::FILE_ATTRIBUTE_STANDARD_FAST_CONTENT_TYPE,
-                        gio::FILE_ATTRIBUTE_STANDARD_IS_HIDDEN,
-                    ),
-                    gio::FileQueryInfoFlags::NONE,
-                    gio::Cancellable::NONE,
-                )
-                .context(gettext("Could not list other files in directory."))?;
+        let enumerator = directory
+            .enumerate_children_future(
+                &format!(
+                    "{},{},{},{}",
+                    gio::FILE_ATTRIBUTE_STANDARD_NAME,
+                    gio::FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE,
+                    gio::FILE_ATTRIBUTE_STANDARD_FAST_CONTENT_TYPE,
+                    gio::FILE_ATTRIBUTE_STANDARD_IS_HIDDEN,
+                ),
+                gio::FileQueryInfoFlags::NONE,
+                glib::Priority::LOW,
+            )
+            .await
+            .context(gettext("Could not list other files in directory."))?;
 
-            enumerator.for_each(|info| {
-                if let Ok(info) = info {
+        for info in enumerator {
+            match info {
+                Err(err) => {
+                    log::warn!("Unreadable entry in directory: {err}");
+                }
+                Ok(info) => {
                     // GVfs smb does not provide a CONTENT_TYPE if the content type is ambiguous.
                     // This happens for png/apng. Since we only need to know if something is
                     // probably an image, we can use the FAST_CONTENT_TYPE in these cases.
@@ -201,22 +201,12 @@ impl LpFileModel {
                         // images. Usually by inspecting the magic bytes.
                         if content_type.starts_with("image/") && !info.is_hidden() {
                             let file = directory.child(info.name());
-                            files.insert(file.uri(), Entry::new(file));
+                            new_files.insert(file.uri(), Entry::new(file).await);
                         }
                     }
                 }
-            });
-
-            Ok::<_, anyhow::Error>(files)
-        })
-        .await;
-
-        let Ok(new_files) = new_files_result else {
-            log::debug!("Thread listing directory canceled.");
-            return Ok(());
-        };
-
-        let mut new_files = new_files?;
+            }
+        }
 
         {
             // Here we use a nested scope so that the mutable borrow only lasts as long as
@@ -346,13 +336,32 @@ impl LpFileModel {
         });
     }
 
+    /// Insert a file and signal changes
+    ///
+    /// Setting `changed` to true will always trigger a `notify::changed``
+    /// notification. Otherwise, a change signal is only sent if no file with
+    /// the same URI existed before.
+    pub fn insert(&self, file: gio::File, mut changed: bool) {
+        let obj = self.clone();
+        glib::spawn_future_local(async move {
+            let entry = Entry::new(file.clone()).await;
+            let mut files = obj.imp().files.borrow_mut();
+            changed |= files.insert(file.uri(), entry).is_none();
+            if changed {
+                Self::sort(&mut files);
+                drop(files);
+                obj.emit_by_name::<()>("changed", &[]);
+            }
+        });
+    }
+
     fn file_monitor_cb(
         &self,
         event: gio::FileMonitorEvent,
         file_a: &gio::File,
         file_b: Option<&gio::File>,
     ) {
-        let changed = match event {
+        match event {
             gio::FileMonitorEvent::Created
             | gio::FileMonitorEvent::MovedIn
             // Changing file content could theoretically make it an image
@@ -360,40 +369,25 @@ impl LpFileModel {
             | gio::FileMonitorEvent::ChangesDoneHint
                 if Self::is_image_file(file_a) =>
             {
-                let mut files = self.imp().files.borrow_mut();
-                let changed = files.insert(file_a.uri(),Entry::new(file_a.clone())).is_none();
-                if changed {
-                    Self::sort(&mut files);
-                }
-                changed
+                self.insert(file_a.clone(), false);
             }
             gio::FileMonitorEvent::Deleted | gio::FileMonitorEvent::MovedOut | gio::FileMonitorEvent::Unmounted => {
-                let mut files = self.imp().files.borrow_mut();
-                files.shift_remove(&file_a.uri()).is_some()
+                let removed = self.imp().files.borrow_mut().shift_remove(&file_a.uri()).is_some();
+                if removed {
+                    self.emit_by_name::<()>("changed", &[]);
+                }
             }
             gio::FileMonitorEvent::Renamed => {
                 if let Some(file_b) = file_b {
-                    let mut changed = false;
                     {
-                        let mut files = self.imp().files.borrow_mut();
-                        changed |= files.shift_remove(&file_a.uri()).is_some();
+                        let changed = self.imp().files.borrow_mut().shift_remove(&file_a.uri()).is_some();
                         if Self::is_image_file(file_b) {
-                            changed |= files.insert(file_b.uri(), Entry::new(file_b.clone())).is_none();
-                            if changed {
-                                Self::sort(&mut files);
-                            }
+                            self.insert(file_b.clone(), changed);
                         }
                     }
-                    changed
-                } else {
-                    false
                 }
             }
-            _ => false,
-        };
-
-        if changed {
-            self.emit_by_name::<()>("changed", &[]);
+            _ => {},
         }
     }
 }

@@ -1,0 +1,1 @@
+The sort order is now also following the one found in Files (Nautilus) if the file name contains non-ascii characters.
