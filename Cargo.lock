@@ -1068,7 +1068,7 @@ dependencies = [
 [[package]]
 name = "gufo"
 version = "0.2.0"
-source = "git+https://github.com/gufo-rs/gufo.git?rev=95b178197ae0556a9c4f7b6e6efab65376222b5d#95b178197ae0556a9c4f7b6e6efab65376222b5d"
+source = "git+https://github.com/gufo-rs/gufo.git#ca335180352b161e02f5c8807fcd17bf439721a2"
 dependencies = [
  "chrono",
  "gufo-common 0.2.0",
@@ -1092,7 +1092,7 @@ dependencies = [
 [[package]]
 name = "gufo-common"
 version = "0.2.0"
-source = "git+https://github.com/gufo-rs/gufo.git?rev=95b178197ae0556a9c4f7b6e6efab65376222b5d#95b178197ae0556a9c4f7b6e6efab65376222b5d"
+source = "git+https://github.com/gufo-rs/gufo.git#ca335180352b161e02f5c8807fcd17bf439721a2"
 dependencies = [
  "chrono",
  "paste",
@@ -1113,7 +1113,7 @@ dependencies = [
 [[package]]
 name = "gufo-exif"
 version = "0.2.0"
-source = "git+https://github.com/gufo-rs/gufo.git?rev=95b178197ae0556a9c4f7b6e6efab65376222b5d#95b178197ae0556a9c4f7b6e6efab65376222b5d"
+source = "git+https://github.com/gufo-rs/gufo.git#ca335180352b161e02f5c8807fcd17bf439721a2"
 dependencies = [
  "chrono",
  "gufo-common 0.2.0",
@@ -1124,7 +1124,7 @@ dependencies = [
 [[package]]
 name = "gufo-xmp"
 version = "0.2.0"
-source = "git+https://github.com/gufo-rs/gufo.git?rev=95b178197ae0556a9c4f7b6e6efab65376222b5d#95b178197ae0556a9c4f7b6e6efab65376222b5d"
+source = "git+https://github.com/gufo-rs/gufo.git#ca335180352b161e02f5c8807fcd17bf439721a2"
 dependencies = [
  "chrono",
  "gufo-common 0.2.0",

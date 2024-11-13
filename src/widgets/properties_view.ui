@@ -155,6 +155,16 @@
                   </object>
                 </child>
                 <child>
+                  <object class="AdwActionRow" id="user_comment">
+                    <property name="title" translatable="yes">Comment</property>
+                    <property name="subtitle-selectable">True</property>
+                    <property name="use-markup">False</property>
+                    <style>
+                      <class name="property" />
+                    </style>
+                  </object>
+                </child>
+                <child>
                   <object class="AdwActionRow" id="aperture">
                     <property name="title" translatable="yes">Aperture</property>
                     <property name="subtitle-selectable">True</property>

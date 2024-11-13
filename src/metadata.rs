@@ -39,7 +39,7 @@ use crate::util::gettext::*;
 #[derive(Default, Debug)]
 pub struct Metadata {
     mime_type: Option<String>,
-    exif: gufo::Metadata,
+    pub exif: gufo::Metadata,
     file_info: Option<FileInfo>,
     image_info: Option<glycin::ImageInfoDetails>,
     frame_info: Option<FrameDetails>,

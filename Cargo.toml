@@ -29,7 +29,7 @@ gtk = { package = "gtk4", version = "0.9.0", features = [
     "v4_14",
     "xml_validation",
 ] }
-gufo = { version = "0.2.0", git = "https://github.com/gufo-rs/gufo.git", rev = "95b178197ae0556a9c4f7b6e6efab65376222b5d", features = [
+gufo = { version = "0.2.0", git = "https://github.com/gufo-rs/gufo.git", features = [
     "chrono",
 ] }
 gufo-common = { version = "0.1.0", features = ["serde"] }

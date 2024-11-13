@@ -72,6 +72,8 @@ mod imp {
         #[template_child]
         originally_created: TemplateChild<adw::ActionRow>,
         #[template_child]
+        user_comment: TemplateChild<adw::ActionRow>,
+        #[template_child]
         aperture: TemplateChild<adw::ActionRow>,
         #[template_child]
         exposure: TemplateChild<adw::ActionRow>,
@@ -225,6 +227,7 @@ mod imp {
             let has_details = [
                 Self::update_row(&self.location, metadata.gps_location_place()),
                 Self::update_row(&self.originally_created, metadata.originally_created()),
+                Self::update_row(&self.user_comment, metadata.exif.user_comment()),
                 Self::update_row(&self.aperture, metadata.f_number()),
                 Self::update_row(&self.exposure, metadata.exposure_time()),
                 Self::update_row(&self.iso, metadata.iso()),
