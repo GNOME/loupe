@@ -55,9 +55,20 @@ impl Metadata {
         }
     }
 
+    fn set_xmp_bytes(&mut self, bytes: Vec<u8>) {
+        let result = self.metadata.add_raw_xmp(bytes);
+
+        if let Err(err) = &result {
+            log::warn!("Failed to decode XMP bytes: {err}");
+        }
+    }
+
     pub fn set_image_info(&mut self, image_info: ImageInfoDetails) {
         if let Some(exif_raw) = image_info.exif.as_ref().and_then(|x| x.get_full().ok()) {
             self.set_exif_bytes(exif_raw);
+        }
+        if let Some(exif_xmp) = image_info.xmp.as_ref().and_then(|x| x.get_full().ok()) {
+            self.set_xmp_bytes(exif_xmp);
         }
         self.image_info = Some(image_info);
     }
