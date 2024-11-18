@@ -142,9 +142,14 @@ impl imp::LpImage {
             move |gesture, n_press, x, y| {
                 // only handle double clicks
                 if n_press != 2 {
+                    log::trace!("Gesture {n_press} click");
+                    gesture.set_state(gtk::EventSequenceState::Denied);
                     return;
                 }
 
+                log::trace!("Gesture double click");
+
+                gesture.set_state(gtk::EventSequenceState::Claimed);
                 if gesture.device().map(|x| x.source()) == Some(gdk::InputSource::Touchscreen) {
                     // zoom
                     obj.imp().pointer_position.set(Some((x, y)));
@@ -170,6 +175,7 @@ impl imp::LpImage {
             #[weak]
             obj,
             move |gesture, _, _| {
+                log::trace!("Drag gesture begin");
                 let imp = obj.imp();
 
                 // Allow only left and middle button
@@ -210,6 +216,7 @@ impl imp::LpImage {
             #[weak]
             obj,
             move |_, _, _| {
+                log::trace!("Drag gesture end");
                 obj.set_cursor(None);
                 obj.imp().last_drag_value.set(None);
             }
@@ -222,7 +229,10 @@ impl imp::LpImage {
         rotation_gesture.connect_begin(glib::clone!(
             #[weak]
             obj,
-            move |_, _| obj.imp().cancel_deceleration()
+            move |_, _| {
+                log::trace!("Rotate gesture begin");
+                obj.imp().cancel_deceleration();
+            }
         ));
 
         rotation_gesture.connect_angle_changed(glib::clone!(
@@ -260,7 +270,7 @@ impl imp::LpImage {
             #[weak]
             obj,
             move |_, _| {
-                log::debug!("Rotate gesture ended");
+                log::debug!("Rotate gesture end");
 
                 let angle = (obj.rotation() / 90.).round() * 90. - obj.imp().rotation_target.get();
                 obj.rotate_by(angle);
@@ -276,6 +286,8 @@ impl imp::LpImage {
             #[weak]
             obj,
             move |gesture, _| {
+                log::trace!("Zoom gesture begin");
+
                 let imp = obj.imp();
                 imp.cancel_deceleration();
                 imp.zoom_gesture_center.set(gesture.bounding_box_center());
@@ -324,7 +336,7 @@ impl imp::LpImage {
             obj,
             move |_, _| {
                 let imp = obj.imp();
-                log::debug!("Zoom gesture ended");
+                log::debug!("Zoom gesture end");
 
                 let rotation_target = (obj.rotation() / 90.).round() * 90.;
                 if obj.zoom() < imp.zoom_level_best_fit_for_rotation(rotation_target) {
