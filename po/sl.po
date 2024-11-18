@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2024-09-23 12:32+0000\n"
-"PO-Revision-Date: 2024-09-23 17:33+0200\n"
+"POT-Creation-Date: 2024-11-14 23:22+0000\n"
+"PO-Revision-Date: 2024-11-18 21:13+0100\n"
 "Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
 "Language-Team: Slovenian <gnome-si@googlegroups.com>\n"
 "Language: sl\n"
@@ -30,7 +30,7 @@ msgstr "Pregledovalnik slik"
 #: data/org.gnome.Loupe.desktop.in.in:11
 msgid "Picture;Graphics;Loupe;"
 msgstr ""
-"Picture;Slideshow;Graphics;Slika;diaprojekcija;projekcija;grafika;"
+"Picture;Slideshow;Graphics;slika;diaprojekcija;projekcija;grafika;"
 "pregledovalnik slik;lupa;loupe;"
 
 #: data/org.gnome.Loupe.gschema.xml.in:6
@@ -265,47 +265,46 @@ msgstr ""
 msgid "Copyright © 2020–2024 Christopher Davis et al."
 msgstr "Avtorske pravice © 2020–2024 Christopher Davis in sodelavci"
 
-#: src/file_model.rs:131
+#: src/file_model.rs:178
 msgid "Could not list other files in directory."
 msgstr "Drugih datotek v mapi ni mogoče izpisati."
 
 #. Translators: Display of the f-number <https://en.wikipedia.org/wiki/F-number>. {} will be replaced with the number
-#: src/metadata.rs:253
+#: src/metadata.rs:230
 msgid "\\u{192}\\u{2215}{}"
 msgstr "\\u{192}\\u{2215}{}"
 
 #. Translators: Fractional exposure time (photography) in seconds
-#: src/metadata.rs:269
+#: src/metadata.rs:243
 msgid "1\\u{2215}{}\\u{202F}s"
 msgstr "1\\u{2215}{}\\u{202F} s"
 
 #. Translators: Exposure time (photography) in seconds
-#: src/metadata.rs:277
+#: src/metadata.rs:251
 msgid "{}\\u{202F}s"
 msgstr "{}\\u{202F} s"
 
-#. Translators: Unit for focal length in millimeters
-#: src/metadata.rs:303
+#: src/metadata.rs:265
 msgid "{}\\u{202F}mm"
 msgstr "{}\\u{202F} mm"
 
 #. Translators: short for "north" in GPS coordinate
-#: src/metadata/gps.rs:165
+#: src/metadata.rs:305
 msgid "N"
 msgstr "S"
 
 #. Translators: short for "south" in GPS coordinate
-#: src/metadata/gps.rs:168
+#: src/metadata.rs:309
 msgid "S"
 msgstr "J"
 
 #. Translators: short for "east" in GPS coordinate
-#: src/metadata/gps.rs:190
+#: src/metadata.rs:318
 msgid "E"
 msgstr "V"
 
 #. Translators: short for "west" in GPS coordinate
-#: src/metadata/gps.rs:193
+#: src/metadata.rs:322
 msgid "W"
 msgstr "Z"
 
@@ -426,11 +425,11 @@ msgstr "{} %"
 
 #. Translators: This is a toast notification, informing the user that
 #. an image has been set as background.
-#: src/widgets/image_view.rs:824
+#: src/widgets/image_view.rs:843
 msgid "Set as background."
 msgstr "Nastavi kot sliko ozadja."
 
-#: src/widgets/image_view.rs:837
+#: src/widgets/image_view.rs:856
 msgid "Could not set background."
 msgstr "Ozadja ni bilo mogoče nastaviti."
 
@@ -575,30 +574,30 @@ msgstr "_Zapolni prostor"
 msgid "H_eight"
 msgstr "_Višina"
 
-#: src/widgets/properties_view.rs:255
+#: src/widgets/properties_view.rs:258
 msgid "Unknown"
 msgstr "Neznano"
 
 #. Translators: Addition of image being transparent to format name
-#: src/widgets/properties_view.rs:259
+#: src/widgets/properties_view.rs:262
 msgid ", transparent"
 msgstr ", prosojno"
 
 #. Translators: Addition of image being grayscale to format name
-#: src/widgets/properties_view.rs:264
+#: src/widgets/properties_view.rs:267
 msgid ", grayscale"
 msgstr ", sivinsko"
 
 #. Translators: Addition of bit size to format name
-#: src/widgets/properties_view.rs:269
+#: src/widgets/properties_view.rs:272
 msgid ", {}\\u{202F}bit"
 msgstr ", {}\\u{202F} bit"
 
-#: src/widgets/properties_view.rs:287
+#: src/widgets/properties_view.rs:290
 msgid "{}\\u{202F}\\u{D7}\\u{202F}{}"
 msgstr "{}\\u{202F}\\u{D7}\\u{202F}{}"
 
-#: src/widgets/properties_view.rs:326
+#: src/widgets/properties_view.rs:329
 msgid "Image Coordinates Copied"
 msgstr "Koordinate slike so kopirane"
 
@@ -648,22 +647,26 @@ msgid "Originally Created"
 msgstr "Prvotno ustvarjeno"
 
 #: src/widgets/properties_view.ui:159
+msgid "Comment"
+msgstr "Komentar"
+
+#: src/widgets/properties_view.ui:169
 msgid "Aperture"
 msgstr "Zaslonka"
 
-#: src/widgets/properties_view.ui:169
+#: src/widgets/properties_view.ui:179
 msgid "Exposure"
 msgstr "Osvetlitev"
 
-#: src/widgets/properties_view.ui:179
+#: src/widgets/properties_view.ui:189
 msgid "ISO"
 msgstr "ISO"
 
-#: src/widgets/properties_view.ui:189
+#: src/widgets/properties_view.ui:199
 msgid "Focal Length"
 msgstr "Goriščna razdalja"
 
-#: src/widgets/properties_view.ui:199
+#: src/widgets/properties_view.ui:209
 msgid "Maker, Model"
 msgstr "Izdelovalec, model"
 
