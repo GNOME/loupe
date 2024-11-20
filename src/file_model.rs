@@ -1,6 +1,5 @@
 // Copyright (c) 2022-2024 Sophie Herold
 // Copyright (c) 2022 Christopher Davis
-// Copyright (c) 2023 Gage Berz
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -177,32 +176,40 @@ impl LpFileModel {
             .await
             .context(gettext("Could not list other files in directory."))?;
 
-        for info in enumerator {
+        loop {
+            let info = enumerator.next_files_future(1, glib::Priority::LOW).await;
             match info {
                 Err(err) => {
                     log::warn!("Unreadable entry in directory: {err}");
+                    break;
                 }
                 Ok(info) => {
-                    // GVfs smb does not provide a CONTENT_TYPE if the content type is ambiguous.
-                    // This happens for png/apng. Since we only need to know if something is
-                    // probably an image, we can use the FAST_CONTENT_TYPE in these cases.
-                    let content_type =
-                        if info.has_attribute(gio::FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE) {
+                    if let Some(info) = info.first() {
+                        // GVfs smb does not provide a CONTENT_TYPE if the content type is
+                        // ambiguous. This happens for png/apng. Since we
+                        // only need to know if something is probably an
+                        // image, we can use the FAST_CONTENT_TYPE in these cases.
+                        let content_type = if info
+                            .has_attribute(gio::FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE)
+                        {
                             info.content_type()
                         } else {
                             info.attribute_string(gio::FILE_ATTRIBUTE_STANDARD_FAST_CONTENT_TYPE)
                         };
 
-                    if let Some(content_type) =
-                        content_type.and_then(|x| gio::content_type_get_mime_type(&x))
-                    {
-                        // Filter out non-images types. The final decision if images are
-                        // supported/kept will later be done by glycin when starting to load the
-                        // images. Usually by inspecting the magic bytes.
-                        if content_type.starts_with("image/") && !info.is_hidden() {
-                            let file = directory.child(info.name());
-                            new_files.insert(file.uri(), Entry::new(file).await);
+                        if let Some(content_type) =
+                            content_type.and_then(|x| gio::content_type_get_mime_type(&x))
+                        {
+                            // Filter out non-images types. The final decision if images are
+                            // supported/kept will later be done by glycin when starting to load the
+                            // images. Usually by inspecting the magic bytes.
+                            if content_type.starts_with("image/") && !info.is_hidden() {
+                                let file = directory.child(info.name());
+                                new_files.insert(file.uri(), Entry::new(file).await);
+                            }
                         }
+                    } else {
+                        break;
                     }
                 }
             }
