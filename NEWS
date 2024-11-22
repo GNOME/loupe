@@ -1,3 +1,9 @@
+## 47.2 (2024-11-22)
+
+### Fixed
+
+- Don't call style manager in application constructor since this is too early. Do it in startup instead. Without this fix, GTK 4.17.0 will terminate the app on startup.
+
 ## 47.1 (2024-10-16)
 
 ### Added

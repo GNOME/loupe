@@ -914,9 +914,9 @@ dependencies = [
 
 [[package]]
 name = "glycin"
-version = "2.0.1"
+version = "2.0.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "99ceb553ed23c012e4e16ba9212b495eb458ad831eb5f892b6b44406f0966286"
+checksum = "8c4206f0d933268b06a8809c496d7f7d7b0626bb33aa97a4a209e795913157c6"
 dependencies = [
  "async-fs",
  "async-io",
@@ -946,9 +946,9 @@ dependencies = [
 
 [[package]]
 name = "glycin-utils"
-version = "2.0.0"
+version = "2.0.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "7c6132ef2817b05110f3b1f98c53dbddaac74ea8366472354ab486d02442f08f"
+checksum = "2d4ea3c2b8d5aa43d87d60bb7f944c58aaade41d870e4258e69e204bbcd73a09"
 dependencies = [
  "env_logger",
  "gufo-common",
@@ -1367,7 +1367,7 @@ checksum = "a7a70ba024b9dc04c27ea2f0c0548feb474ec5c54bba33a7f72f873a39d07b24"
 
 [[package]]
 name = "loupe"
-version = "47.1.0"
+version = "47.2.0"
 dependencies = [
  "anyhow",
  "arc-swap",
