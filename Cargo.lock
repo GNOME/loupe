@@ -897,9 +897,8 @@ dependencies = [
 
 [[package]]
 name = "glycin"
-version = "2.0.2"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "8c4206f0d933268b06a8809c496d7f7d7b0626bb33aa97a4a209e795913157c6"
+version = "2.0.1"
+source = "git+https://gitlab.gnome.org/sophie-h/glycin.git?rev=f06d5f0bf0baf2de74f5eca47c9d5280d2a8911c#f06d5f0bf0baf2de74f5eca47c9d5280d2a8911c"
 dependencies = [
  "async-fs",
  "async-io",
@@ -911,8 +910,8 @@ dependencies = [
  "gdk4",
  "gio",
  "glycin-utils",
- "gufo-common 0.1.3",
- "gufo-exif 0.1.3",
+ "gufo-common",
+ "gufo-exif",
  "lcms2",
  "lcms2-sys",
  "libc",
@@ -921,7 +920,7 @@ dependencies = [
  "memmap2",
  "nix",
  "static_assertions",
- "thiserror 1.0.69",
+ "thiserror",
  "tracing",
  "yeslogic-fontconfig-sys",
  "zbus 4.4.0",
@@ -929,12 +928,11 @@ dependencies = [
 
 [[package]]
 name = "glycin-utils"
-version = "2.0.2"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "2d4ea3c2b8d5aa43d87d60bb7f944c58aaade41d870e4258e69e204bbcd73a09"
+version = "3.0.0"
+source = "git+https://gitlab.gnome.org/sophie-h/glycin.git?rev=f06d5f0bf0baf2de74f5eca47c9d5280d2a8911c#f06d5f0bf0baf2de74f5eca47c9d5280d2a8911c"
 dependencies = [
  "env_logger",
- "gufo-common 0.1.3",
+ "gufo-common",
  "libc",
  "libseccomp",
  "log",
@@ -943,7 +941,7 @@ dependencies = [
  "paste",
  "rmp-serde",
  "serde",
- "thiserror 1.0.69",
+ "thiserror",
  "zbus 4.4.0",
 ]
 
@@ -1071,47 +1069,26 @@ version = "0.2.0"
 source = "git+https://github.com/gufo-rs/gufo.git#704168362f788ddf984920261a7171406bc7c1c0"
 dependencies = [
  "chrono",
- "gufo-common 0.2.0",
- "gufo-exif 0.2.0",
+ "gufo-common",
+ "gufo-exif",
  "gufo-jpeg",
  "gufo-png",
  "gufo-tiff",
  "gufo-webp",
  "gufo-xmp",
  "static_assertions",
- "thiserror 2.0.3",
+ "thiserror",
 ]
 
 [[package]]
 name = "gufo-common"
-version = "0.1.3"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "269bc5c70016d1e90449d71263a72dd2035a2ecbf9cda6305774fa44844bd662"
+version = "0.2.0"
+source = "git+https://github.com/gufo-rs/gufo.git#704168362f788ddf984920261a7171406bc7c1c0"
 dependencies = [
- "once_cell",
+ "chrono",
  "paste",
  "serde",
-]
-
-[[package]]
-name = "gufo-common"
-version = "0.2.0"
-source = "git+https://github.com/gufo-rs/gufo.git#704168362f788ddf984920261a7171406bc7c1c0"
-dependencies = [
- "chrono",
- "paste",
- "thiserror 2.0.3",
-]
-
-[[package]]
-name = "gufo-exif"
-version = "0.1.3"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "f4066b9e0375d2b44da9e7f0282c2bd65136fe5e7d033259b2181f499e312e1b"
-dependencies = [
- "gufo-common 0.1.3",
- "thiserror 1.0.69",
- "tracing",
+ "thiserror",
 ]
 
 [[package]]
@@ -1120,8 +1097,8 @@ version = "0.2.0"
 source = "git+https://github.com/gufo-rs/gufo.git#704168362f788ddf984920261a7171406bc7c1c0"
 dependencies = [
  "chrono",
- "gufo-common 0.2.0",
- "thiserror 2.0.3",
+ "gufo-common",
+ "thiserror",
  "tracing",
 ]
 
@@ -1130,9 +1107,9 @@ name = "gufo-jpeg"
 version = "0.2.0"
 source = "git+https://github.com/gufo-rs/gufo.git#704168362f788ddf984920261a7171406bc7c1c0"
 dependencies = [
- "gufo-common 0.2.0",
+ "gufo-common",
  "jpeg-encoder",
- "thiserror 2.0.3",
+ "thiserror",
  "tracing",
 ]
 
@@ -1141,10 +1118,10 @@ name = "gufo-png"
 version = "0.2.0"
 source = "git+https://github.com/gufo-rs/gufo.git#704168362f788ddf984920261a7171406bc7c1c0"
 dependencies = [
- "gufo-common 0.2.0",
+ "gufo-common",
  "hex",
  "miniz_oxide",
- "thiserror 2.0.3",
+ "thiserror",
 ]
 
 [[package]]
@@ -1152,8 +1129,8 @@ name = "gufo-tiff"
 version = "0.2.0"
 source = "git+https://github.com/gufo-rs/gufo.git#704168362f788ddf984920261a7171406bc7c1c0"
 dependencies = [
- "gufo-common 0.2.0",
- "thiserror 2.0.3",
+ "gufo-common",
+ "thiserror",
 ]
 
 [[package]]
@@ -1161,8 +1138,8 @@ name = "gufo-webp"
 version = "0.2.0"
 source = "git+https://github.com/gufo-rs/gufo.git#704168362f788ddf984920261a7171406bc7c1c0"
 dependencies = [
- "gufo-common 0.2.0",
- "thiserror 2.0.3",
+ "gufo-common",
+ "thiserror",
 ]
 
 [[package]]
@@ -1171,8 +1148,8 @@ version = "0.2.0"
 source = "git+https://github.com/gufo-rs/gufo.git#704168362f788ddf984920261a7171406bc7c1c0"
 dependencies = [
  "chrono",
- "gufo-common 0.2.0",
- "thiserror 2.0.3",
+ "gufo-common",
+ "thiserror",
  "xml-rs",
 ]
 
@@ -1585,7 +1562,7 @@ dependencies = [
  "glycin",
  "gtk4",
  "gufo",
- "gufo-common 0.1.3",
+ "gufo-common",
  "gvdb-macros",
  "indexmap",
  "libadwaita",
@@ -1593,7 +1570,7 @@ dependencies = [
  "libgweather",
  "log",
  "strum",
- "thiserror 2.0.3",
+ "thiserror",
  "tracing-subscriber",
  "url",
 ]
@@ -2253,31 +2230,11 @@ dependencies = [
 
 [[package]]
 name = "thiserror"
-version = "1.0.69"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "b6aaf5339b578ea85b50e080feb250a3e8ae8cfcdff9a461c9ec2904bc923f52"
-dependencies = [
- "thiserror-impl 1.0.69",
-]
-
-[[package]]
-name = "thiserror"
 version = "2.0.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "c006c85c7651b3cf2ada4584faa36773bd07bac24acfb39f3c431b36d7e667aa"
 dependencies = [
- "thiserror-impl 2.0.3",
-]
-
-[[package]]
-name = "thiserror-impl"
-version = "1.0.69"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "4fee6c4efc90059e10f81e6d42c60a18f76588c3d74cb83a0b242a2b6c7504c1"
-dependencies = [
- "proc-macro2",
- "quote",
- "syn",
+ "thiserror-impl",
 ]
 
 [[package]]
