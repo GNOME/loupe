@@ -7,17 +7,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2024-09-23 10:37+0000\n"
-"PO-Revision-Date: 2024-09-26 12:07+0300\n"
-"Last-Translator: Yosef Or Boczko <yoseforb@gmail.com>\n"
+"POT-Creation-Date: 2024-11-14 23:22+0000\n"
+"PO-Revision-Date: 2024-11-25 11:22+0200\n"
+"Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <yoseforb@gmail.com>\n"
 "Language: he\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n==2 ? 1 : n>10 && n%10==0 ? "
-"2 : 3)\n"
-"X-Generator: Gtranslator 46.1\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n==2 ? 1 : n>10 && n%10==0 ? 2 : "
+"3);\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #: data/org.gnome.Loupe.desktop.in.in:3
 #: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:31 src/window.rs:897
@@ -124,15 +124,13 @@ msgid "Navigate Images"
 msgstr "ניווט תמונות"
 
 #: data/resources/gtk/help-overlay.ui:80 data/resources/gtk/help-overlay.ui:94
-#: data/resources/gtk/help-overlay.ui:235
-#: data/resources/gtk/help-overlay.ui:249
+#: data/resources/gtk/help-overlay.ui:235 data/resources/gtk/help-overlay.ui:249
 msgctxt "shortcut window"
 msgid "Next Image"
 msgstr "תמונה הבאה"
 
 #: data/resources/gtk/help-overlay.ui:87 data/resources/gtk/help-overlay.ui:101
-#: data/resources/gtk/help-overlay.ui:242
-#: data/resources/gtk/help-overlay.ui:256
+#: data/resources/gtk/help-overlay.ui:242 data/resources/gtk/help-overlay.ui:256
 msgctxt "shortcut window"
 msgid "Previous Image"
 msgstr "תמונה הקודמת"
@@ -152,14 +150,12 @@ msgctxt "shortcut window"
 msgid "Rotate Image"
 msgstr "סיבוב תמונה"
 
-#: data/resources/gtk/help-overlay.ui:124
-#: data/resources/gtk/help-overlay.ui:274
+#: data/resources/gtk/help-overlay.ui:124 data/resources/gtk/help-overlay.ui:274
 msgctxt "shortcut window"
 msgid "Rotate Clockwise"
 msgstr "סיבוב עם כיוון השעון"
 
-#: data/resources/gtk/help-overlay.ui:130
-#: data/resources/gtk/help-overlay.ui:280
+#: data/resources/gtk/help-overlay.ui:130 data/resources/gtk/help-overlay.ui:280
 msgctxt "shortcut window"
 msgid "Rotate Counterclockwise"
 msgstr "סיבוב נגד כיוון השעון"
@@ -169,14 +165,12 @@ msgctxt "shortcut window"
 msgid "Zoom Image"
 msgstr "תקריב תמונה"
 
-#: data/resources/gtk/help-overlay.ui:141
-#: data/resources/gtk/help-overlay.ui:262
+#: data/resources/gtk/help-overlay.ui:141 data/resources/gtk/help-overlay.ui:262
 msgctxt "shortcut window"
 msgid "Zoom In"
 msgstr "התקרבות"
 
-#: data/resources/gtk/help-overlay.ui:147
-#: data/resources/gtk/help-overlay.ui:268
+#: data/resources/gtk/help-overlay.ui:147 data/resources/gtk/help-overlay.ui:268
 msgctxt "shortcut window"
 msgid "Zoom Out"
 msgstr "התרחקות"
@@ -262,47 +256,46 @@ msgstr ""
 msgid "Copyright © 2020–2024 Christopher Davis et al."
 msgstr "כל הזכויות שמורות © 2022-2024 Christopher Davis ואחרים."
 
-#: src/file_model.rs:131
+#: src/file_model.rs:178
 msgid "Could not list other files in directory."
 msgstr "לא ניתן להציג קבצים נוספים בתיקייה."
 
 #. Translators: Display of the f-number <https://en.wikipedia.org/wiki/F-number>. {} will be replaced with the number
-#: src/metadata.rs:253
+#: src/metadata.rs:230
 msgid "\\u{192}\\u{2215}{}"
 msgstr "\\u{192}\\u{2215}{}"
 
 #. Translators: Fractional exposure time (photography) in seconds
-#: src/metadata.rs:269
+#: src/metadata.rs:243
 msgid "1\\u{2215}{}\\u{202F}s"
 msgstr "‏‎1\\u{2215}{}\\u{202F} ש"
 
 #. Translators: Exposure time (photography) in seconds
-#: src/metadata.rs:277
+#: src/metadata.rs:251
 msgid "{}\\u{202F}s"
 msgstr "‎{}\\u{202F} שנ׳"
 
-#. Translators: Unit for focal length in millimeters
-#: src/metadata.rs:303
+#: src/metadata.rs:265
 msgid "{}\\u{202F}mm"
 msgstr "‏‎{}\\u{202F} מ״מ"
 
 #. Translators: short for "north" in GPS coordinate
-#: src/metadata/gps.rs:165
+#: src/metadata.rs:305
 msgid "N"
 msgstr "צ"
 
 #. Translators: short for "south" in GPS coordinate
-#: src/metadata/gps.rs:168
+#: src/metadata.rs:309
 msgid "S"
 msgstr "ד"
 
 #. Translators: short for "east" in GPS coordinate
-#: src/metadata/gps.rs:190
+#: src/metadata.rs:318
 msgid "E"
 msgstr "מז"
 
 #. Translators: short for "west" in GPS coordinate
-#: src/metadata/gps.rs:193
+#: src/metadata.rs:322
 msgid "W"
 msgstr "מע"
 
@@ -329,9 +322,9 @@ msgstr "פרטי שגיאה"
 
 #: src/widgets/error_details.ui:19
 msgid ""
-"The image loader reported the following when trying to load the image. "
-"Please include this information when you report an error. If possible, "
-"please also provide the image that causes the issue."
+"The image loader reported the following when trying to load the image. Please "
+"include this information when you report an error. If possible, please also "
+"provide the image that causes the issue."
 msgstr ""
 "טוען התמונות דיווח על הפרטים הבאים בעת הניסיון לטעון את התמונה. נא לצרף את "
 "המידע הזה לדיווח על התקלה. אם אפשר, נא לספק את התמונה שגרמה לבעיה."
@@ -353,8 +346,8 @@ msgid ""
 "No image loaders available. Maybe the “glycin-loaders” package with "
 "compatibility version “{}” is not installed."
 msgstr ""
-"אין טועני תמונות זמינים. אולי החבילה „glycin-loaders” עם גרסת התאימות „‎{}‎‎” "
-"לא מותקנת."
+"אין טועני תמונות זמינים. אולי החבילה „glycin-loaders” עם גרסת התאימות „‎{}‎‎” לא "
+"מותקנת."
 
 #: src/widgets/image_page.rs:241
 msgid "The image format “{} ({})” is known but not installed."
@@ -422,11 +415,11 @@ msgstr "{} %"
 
 #. Translators: This is a toast notification, informing the user that
 #. an image has been set as background.
-#: src/widgets/image_view.rs:824
+#: src/widgets/image_view.rs:843
 msgid "Set as background."
 msgstr "הגדרת התמונה כרקע."
 
-#: src/widgets/image_view.rs:837
+#: src/widgets/image_view.rs:856
 msgid "Could not set background."
 msgstr "לא ניתן לקבוע כרקע."
 
@@ -574,30 +567,30 @@ msgstr "מרווח _מילוי"
 msgid "H_eight"
 msgstr "גובה_"
 
-#: src/widgets/properties_view.rs:255
+#: src/widgets/properties_view.rs:258
 msgid "Unknown"
 msgstr "לא ידוע"
 
 #. Translators: Addition of image being transparent to format name
-#: src/widgets/properties_view.rs:259
+#: src/widgets/properties_view.rs:262
 msgid ", transparent"
 msgstr ", שקוף"
 
 #. Translators: Addition of image being grayscale to format name
-#: src/widgets/properties_view.rs:264
+#: src/widgets/properties_view.rs:267
 msgid ", grayscale"
 msgstr ", אפור"
 
 #. Translators: Addition of bit size to format name
-#: src/widgets/properties_view.rs:269
+#: src/widgets/properties_view.rs:272
 msgid ", {}\\u{202F}bit"
 msgstr ", {}\\u{202F} סיביות"
 
-#: src/widgets/properties_view.rs:287
+#: src/widgets/properties_view.rs:290
 msgid "{}\\u{202F}\\u{D7}\\u{202F}{}"
 msgstr "{}\\u{202F}\\u{D7}\\u{202F}{}"
 
-#: src/widgets/properties_view.rs:326
+#: src/widgets/properties_view.rs:329
 msgid "Image Coordinates Copied"
 msgstr "נקודות הציון של התמונה הועתקו"
 
@@ -647,22 +640,26 @@ msgid "Originally Created"
 msgstr "תאריך יצירה מקורי"
 
 #: src/widgets/properties_view.ui:159
+msgid "Comment"
+msgstr "הערה"
+
+#: src/widgets/properties_view.ui:169
 msgid "Aperture"
 msgstr "צמצם"
 
-#: src/widgets/properties_view.ui:169
+#: src/widgets/properties_view.ui:179
 msgid "Exposure"
 msgstr "חשיפה"
 
-#: src/widgets/properties_view.ui:179
+#: src/widgets/properties_view.ui:189
 msgid "ISO"
 msgstr "ISO"
 
-#: src/widgets/properties_view.ui:189
+#: src/widgets/properties_view.ui:199
 msgid "Focal Length"
 msgstr "אורך מוקד"
 
-#: src/widgets/properties_view.ui:199
+#: src/widgets/properties_view.ui:209
 msgid "Maker, Model"
 msgstr "מצלמה, דגם"
 
