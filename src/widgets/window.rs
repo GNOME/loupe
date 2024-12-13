@@ -28,6 +28,8 @@ use crate::widgets::{LpEditWindow, LpImageView, LpImageWindow};
 const SHOW_WINDOW_AFTER: u64 = 2000;
 
 mod imp {
+    use std::cell::Cell;
+
     use super::*;
 
     // To use composite templates, you need
@@ -44,8 +46,9 @@ mod imp {
     // If some member fields did not implement default,
     // we'd need to have a `new()` function in the
     // `impl ObjectSubclass for $TYPE` section.
-    #[derive(Default, Debug, CompositeTemplate)]
+    #[derive(Default, Debug, CompositeTemplate, glib::Properties)]
     #[template(file = "window.ui")]
+    #[properties(wrapper_type=super::LpWindow)]
     pub struct LpWindow {
         #[template_child]
         pub(super) toast_overlay: TemplateChild<adw::ToastOverlay>,
@@ -56,6 +59,11 @@ mod imp {
         pub(super) image_window: TemplateChild<LpImageWindow>,
         #[template_child]
         pub(super) edit_window_child: TemplateChild<adw::Bin>,
+
+        #[property(get, set)]
+        narrow_layout: Cell<bool>,
+        #[property(get, set)]
+        wide_layout: Cell<bool>,
     }
 
     #[glib::object_subclass]
@@ -89,6 +97,7 @@ mod imp {
         }
     }
 
+    #[glib::derived_properties]
     impl ObjectImpl for LpWindow {
         fn constructed(&self) {
             self.parent_constructed();
