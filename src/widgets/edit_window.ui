@@ -8,7 +8,7 @@
           <object class="AdwHeaderBar">
             <property name="show-title">false</property>
             <property name="show-start-title-buttons">false</property>
-            <property name="show-start-title-buttons">false</property>
+            <property name="show-end-title-buttons">false</property>
             <child type="start">
               <object class="GtkButton" id="cancel">
                 <property name="label" translatable="true">Cancel</property>
