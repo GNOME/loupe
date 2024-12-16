@@ -43,6 +43,7 @@ use crate::config;
 use crate::deps::*;
 use crate::util::gettext::*;
 use crate::util::Direction;
+use crate::widgets::window::ActionPartGlobal;
 use crate::widgets::{
     LpDragOverlay, LpImage, LpImageView, LpPropertiesView, LpWindow, LpWindowContent,
 };
@@ -146,8 +147,6 @@ mod imp {
             );
 
             // Set up actions
-
-            ActionPartGlobal::init_actions_and_bindings(klass);
             Action::init_actions_and_bindings(klass);
         }
     }
@@ -355,6 +354,8 @@ mod imp {
                 obj,
                 move |_| obj.update_accel_status()
             ));
+            obj.connect_unmap(|win| win.update_accel_status());
+            obj.connect_map(|win| win.update_accel_status());
 
             self.status_page
                 .set_icon_name(Some(&format!("{}-symbolic", config::APP_ID)));
@@ -476,7 +477,7 @@ impl LpImageWindow {
         }
     }
 
-    fn pan(&self, direction: &gtk::PanDirection) {
+    pub fn pan(&self, direction: &gtk::PanDirection) {
         if let Some(image) = self.imp().image_view.current_image() {
             image.pan(direction);
         }
@@ -905,8 +906,9 @@ impl LpImageWindow {
 
         // Only change status if active window
         if self.window().is_active() {
-            if self.window().visible_dialog().is_some() {
+            if self.window().visible_dialog().is_some() || !self.is_mapped() {
                 // If AdwDialog is visible, remove global accels that are for the main window
+                // Same for this not being visible, so potentially editing view is open
                 ActionPartGlobal::remove_accels(&application);
             } else {
                 // Add accels if viewing main window

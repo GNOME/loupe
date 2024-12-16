@@ -15,13 +15,17 @@
 //
 // SPDX-License-Identifier: GPL-3.0-or-later
 
+use std::ops::Deref;
+
 use adw::prelude::*;
 use adw::subclass::prelude::*;
 use gio::glib::VariantTy;
 use gtk::CompositeTemplate;
+use strum::IntoEnumIterator;
 
 use crate::config;
 use crate::deps::*;
+use crate::util::Direction;
 use crate::widgets::{LpEditWindow, LpImageView, LpImageWindow};
 
 /// Show window after X milliseconds even if image dimensions are not known yet
@@ -90,6 +94,8 @@ mod imp {
                     }
                 },
             );
+
+            ActionPartGlobal::init_actions_and_bindings(klass);
         }
 
         fn instance_init(obj: &glib::subclass::InitializingObject<Self>) {
@@ -217,5 +223,120 @@ impl LpWindow {
 
     pub fn image_view(&self) -> LpImageView {
         self.imp().image_window.image_view()
+    }
+
+    pub fn image_window(&self) -> LpImageWindow {
+        self.imp().image_window.clone()
+    }
+}
+
+/// Actions that need some global accels
+///
+/// The app level accels are needed for arrow key bindings. Because the arrow
+/// keys are usually used for widget navigation, it's not possible to overwrite
+/// them on key-binding level.
+///
+/// These have to be registered at window level to be callable from
+/// GtkApplication.
+#[derive(strum::Display, strum::AsRefStr, strum::EnumIter)]
+pub enum ActionPartGlobal {
+    #[strum(to_string = "win.image-left-instant")]
+    ImageLeftInstant,
+    #[strum(to_string = "win.image-right-instant")]
+    ImageRightInstant,
+    // Pan
+    #[strum(to_string = "win.pan-up")]
+    PanUp,
+    #[strum(to_string = "win.pan-right")]
+    PanRight,
+    #[strum(to_string = "win.pan-down")]
+    PanDown,
+    #[strum(to_string = "win.pan-left")]
+    PanLeft,
+}
+
+impl ActionPartGlobal {
+    pub fn add_accels(application: &gtk::Application) {
+        for action in Self::iter() {
+            match action {
+                Self::ImageRightInstant => application.set_accels_for_action(&action, &["Right"]),
+                Self::ImageLeftInstant => application.set_accels_for_action(&action, &["Left"]),
+                Self::PanUp => application.set_accels_for_action(&action, &["<Ctrl>Up"]),
+                Self::PanRight => application.set_accels_for_action(&action, &["<Ctrl>Right"]),
+                Self::PanDown => application.set_accels_for_action(&action, &["<Ctrl>Down"]),
+                Self::PanLeft => application.set_accels_for_action(&action, &["<Ctrl>Left"]),
+            }
+        }
+    }
+
+    pub fn remove_accels(application: &gtk::Application) {
+        for action in Self::iter() {
+            application.set_accels_for_action(&action, &[]);
+        }
+    }
+
+    pub fn init_actions_and_bindings(klass: &mut <imp::LpWindow as ObjectSubclass>::Class) {
+        for action in Self::iter() {
+            match action {
+                ActionPartGlobal::ImageLeftInstant => {
+                    klass.install_action(&action, None, move |win, _, _| {
+                        if win.direction() == gtk::TextDirection::Rtl {
+                            win.image_view().navigate(Direction::Forward, false);
+                        } else {
+                            win.image_view().navigate(Direction::Back, false);
+                        }
+                    });
+                    klass.add_binding_action(
+                        gdk::Key::Page_Down,
+                        gdk::ModifierType::empty(),
+                        &action,
+                    );
+                }
+
+                ActionPartGlobal::ImageRightInstant => {
+                    klass.install_action(&action, None, move |win, _, _| {
+                        if win.direction() == gtk::TextDirection::Rtl {
+                            win.image_view().navigate(Direction::Back, false);
+                        } else {
+                            win.image_view().navigate(Direction::Forward, false);
+                        }
+                    });
+                    klass.add_binding_action(
+                        gdk::Key::Page_Up,
+                        gdk::ModifierType::empty(),
+                        &action,
+                    );
+                }
+
+                // Pan
+                ActionPartGlobal::PanUp => {
+                    klass.install_action(&action, None, move |win, _, _| {
+                        win.image_window().pan(&gtk::PanDirection::Up);
+                    });
+                }
+                ActionPartGlobal::PanRight => {
+                    klass.install_action(&action, None, move |win, _, _| {
+                        win.image_window().pan(&gtk::PanDirection::Right);
+                    });
+                }
+                ActionPartGlobal::PanDown => {
+                    klass.install_action(&action, None, move |win, _, _| {
+                        win.image_window().pan(&gtk::PanDirection::Down);
+                    });
+                }
+                ActionPartGlobal::PanLeft => {
+                    klass.install_action(&action, None, move |win, _, _| {
+                        win.image_window().pan(&gtk::PanDirection::Left);
+                    });
+                }
+            }
+        }
+    }
+}
+
+impl Deref for ActionPartGlobal {
+    type Target = str;
+    fn deref(&self) -> &Self::Target {
+        self.as_ref()
     }
 }
