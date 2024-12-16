@@ -16,11 +16,11 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 
 use std::cell::{OnceCell, RefCell};
+use std::sync::Arc;
 
 use adw::prelude::*;
 use adw::subclass::prelude::*;
 use glycin::Operations;
-use std::sync::Arc;
 
 use super::edit::LpEditCrop;
 use super::{LpImage, LpWindow};

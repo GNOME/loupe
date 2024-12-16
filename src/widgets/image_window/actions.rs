@@ -24,121 +24,6 @@ use strum::IntoEnumIterator;
 use crate::deps::*;
 use crate::util::{Direction, Position};
 
-/// Actions that need some global accels
-///
-/// The app level accels are needed for arrow key bindings. Because the arrow
-/// keys are usually used for widget navigation, it's not possible to overwrite
-/// them on key-binding level.
-#[derive(strum::Display, strum::AsRefStr, strum::EnumIter)]
-pub enum ActionPartGlobal {
-    #[strum(to_string = "win.image-left-instant")]
-    ImageLeftInstant,
-    #[strum(to_string = "win.image-right-instant")]
-    ImageRightInstant,
-    // Pan
-    #[strum(to_string = "win.pan-up")]
-    PanUp,
-    #[strum(to_string = "win.pan-right")]
-    PanRight,
-    #[strum(to_string = "win.pan-down")]
-    PanDown,
-    #[strum(to_string = "win.pan-left")]
-    PanLeft,
-}
-
-impl ActionPartGlobal {
-    pub fn add_accels(application: &gtk::Application) {
-        for action in Self::iter() {
-            match action {
-                ActionPartGlobal::ImageRightInstant => {
-                    application.set_accels_for_action(&action, &["Right"])
-                }
-                ActionPartGlobal::ImageLeftInstant => {
-                    application.set_accels_for_action(&action, &["Left"])
-                }
-                ActionPartGlobal::PanUp => {
-                    application.set_accels_for_action(&action, &["<Ctrl>Up"])
-                }
-                ActionPartGlobal::PanRight => {
-                    application.set_accels_for_action(&action, &["<Ctrl>Right"])
-                }
-                ActionPartGlobal::PanDown => {
-                    application.set_accels_for_action(&action, &["<Ctrl>Down"])
-                }
-                ActionPartGlobal::PanLeft => {
-                    application.set_accels_for_action(&action, &["<Ctrl>Left"])
-                }
-            }
-        }
-    }
-
-    pub fn remove_accels(application: &gtk::Application) {
-        for action in Self::iter() {
-            application.set_accels_for_action(&action, &[]);
-        }
-    }
-
-    pub fn init_actions_and_bindings(
-        klass: &mut <super::imp::LpImageWindow as ObjectSubclass>::Class,
-    ) {
-        for action in Self::iter() {
-            match action {
-                ActionPartGlobal::ImageLeftInstant => {
-                    klass.install_action(&action, None, move |win, _, _| {
-                        if win.direction() == gtk::TextDirection::Rtl {
-                            win.imp().image_view.navigate(Direction::Forward, false);
-                        } else {
-                            win.imp().image_view.navigate(Direction::Back, false);
-                        }
-                    });
-                    klass.add_binding_action(
-                        gdk::Key::Page_Down,
-                        gdk::ModifierType::empty(),
-                        &action,
-                    );
-                }
-
-                ActionPartGlobal::ImageRightInstant => {
-                    klass.install_action(&action, None, move |win, _, _| {
-                        if win.direction() == gtk::TextDirection::Rtl {
-                            win.imp().image_view.navigate(Direction::Back, false);
-                        } else {
-                            win.imp().image_view.navigate(Direction::Forward, false);
-                        }
-                    });
-                    klass.add_binding_action(
-                        gdk::Key::Page_Up,
-                        gdk::ModifierType::empty(),
-                        &action,
-                    );
-                }
-
-                // Pan
-                ActionPartGlobal::PanUp => {
-                    klass.install_action(&action, None, move |win, _, _| {
-                        win.pan(&gtk::PanDirection::Up);
-                    });
-                }
-                ActionPartGlobal::PanRight => {
-                    klass.install_action(&action, None, move |win, _, _| {
-                        win.pan(&gtk::PanDirection::Right);
-                    });
-                }
-                ActionPartGlobal::PanDown => {
-                    klass.install_action(&action, None, move |win, _, _| {
-                        win.pan(&gtk::PanDirection::Down);
-                    });
-                }
-                ActionPartGlobal::PanLeft => {
-                    klass.install_action(&action, None, move |win, _, _| {
-                        win.pan(&gtk::PanDirection::Left);
-                    });
-                }
-            }
-        }
-    }
-}
-
 #[derive(strum::Display, strum::AsRefStr, strum::EnumIter)]
 pub enum Action {
     // Navigation
@@ -518,13 +403,6 @@ impl Action {
                 }
             }
         }
-    }
-}
-
-impl Deref for ActionPartGlobal {
-    type Target = str;
-    fn deref(&self) -> &Self::Target {
-        self.as_ref()
     }
 }
 
