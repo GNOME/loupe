@@ -2,8 +2,8 @@
   [topic]
 @link[guide >index#technical-information]
 
-Image Viewer uses $link[href=https://gitlab.gnome.org/sophie-h/glycin](glycin) for
-loading images. You can check $link[href=https://gitlab.gnome.org/sophie-h/glycin#supported-image-formats](glycin's README)
+Image Viewer uses $link[href=https://gitlab.gnome.org/GNOME/glycin](glycin) for
+loading images. You can check $link[href=https://gitlab.gnome.org/GNOME/glycin#supported-image-formats](glycin's README)
 for more details about the formats supported by the default loaders and the features
 provided by each format.
 

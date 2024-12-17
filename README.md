@@ -15,7 +15,7 @@ GNOME's default image viewer providing
 
 ## Supported Image Formats
 
-Image Viewer uses [glycin](https://gitlab.gnome.org/sophie-h/glycin) for loading images. You can check [glycin's README](https://gitlab.gnome.org/sophie-h/glycin#supported-image-formats) for more details about the formats supported by the default loaders. However, glycin supports adding loaders for additional formats. Therefore, the supported formats on your system may vary and might be changed by installing or removing glycin loaders.
+Image Viewer uses [glycin](https://gitlab.gnome.org/GNOME/glycin) for loading images. You can check [glycin's README](https://gitlab.gnome.org/GNOME/glycin#supported-image-formats) for more details about the formats supported by the default loaders. However, glycin supports adding loaders for additional formats. Therefore, the supported formats on your system may vary and might be changed by installing or removing glycin loaders.
 
 ## Contributing
 

@@ -86,7 +86,7 @@ impl LpErrorDetails {
             #[weak]
             obj,
             move |_| {
-                gtk::UriLauncher::new("https://gitlab.gnome.org/sophie-h/glycin/-/issues").launch(
+                gtk::UriLauncher::new("https://gitlab.gnome.org/GNOME/glycin/-/issues").launch(
                     obj.root().and_downcast_ref::<gtk::Window>(),
                     gio::Cancellable::NONE,
                     |_| {},
