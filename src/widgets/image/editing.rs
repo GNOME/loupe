@@ -15,7 +15,6 @@
 //
 // SPDX-License-Identifier: GPL-3.0-or-later
 
-use glycin::Operations;
 use tiling::RenderOptions;
 
 use super::*;
@@ -63,6 +62,7 @@ impl LpImage {
                 scaling_filter: gsk::ScalingFilter::Nearest,
             },
         );
+
         if let Some(node) = tmp_snapshot.to_node() {
             imp.apply_operations(node, &gtk::Snapshot::new());
         } else {

@@ -255,7 +255,11 @@ impl LpImagePage {
                     #[weak(rename_to = obj)]
                     self,
                     move |_| {
-                        LpErrorDetails::new(&obj.root().unwrap(), &err);
+                        LpErrorDetails::new(
+                            &obj.root().unwrap(),
+                            &err,
+                            super::error_details::ErrorType::Loader,
+                        );
                     }
                 ));
             }
@@ -267,7 +271,11 @@ impl LpImagePage {
                 #[weak(rename_to = obj)]
                 self,
                 move |_| {
-                    LpErrorDetails::new(&obj.root().unwrap(), &err);
+                    LpErrorDetails::new(
+                        &obj.root().unwrap(),
+                        &err,
+                        super::error_details::ErrorType::Loader,
+                    );
                 }
             ));
 

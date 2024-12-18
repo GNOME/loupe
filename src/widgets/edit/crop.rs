@@ -22,7 +22,7 @@ use adw::subclass::prelude::*;
 use adw::{glib, gtk};
 
 use crate::widgets::edit::LpEditCropSelection;
-use crate::widgets::{edit_window, LpEditWindow, LpImage};
+use crate::widgets::LpEditWindow;
 
 #[derive(Debug, Clone, Copy, Default, glib::Enum)]
 #[enum_type(name = "LpAspectRatio")]

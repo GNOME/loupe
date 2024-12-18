@@ -586,7 +586,7 @@ impl LpImageWindow {
             log::error!("Failed to copy to clipboard: {}", e);
         } else {
             self.window().show_toast(
-                gettext("Image copied to clipboard"),
+                &gettext("Image copied to clipboard"),
                 adw::ToastPriority::High,
             );
         }
@@ -623,7 +623,7 @@ impl LpImageWindow {
                             if let Err(err) = result {
                                 log::error!("Failed to untrash {path:?}: {err}");
                                 obj.window().show_toast(
-                                    gettext("Failed to restore image from trash"),
+                                    &gettext("Failed to restore image from trash"),
                                     adw::ToastPriority::High,
                                 );
                             }
@@ -639,7 +639,7 @@ impl LpImageWindow {
                 } else {
                     log::error!("Failed to delete file {path:?}: {err}");
                     self.window().show_toast(
-                        gettext("Failed to move image to trash"),
+                        &gettext("Failed to move image to trash"),
                         adw::ToastPriority::Normal,
                     );
                 }
@@ -685,7 +685,7 @@ impl LpImageWindow {
             if let Err(err) = result {
                 log::error!("Failed to delete file {path:?}: {err}");
                 self.window().show_toast(
-                    gettext("Failed to delete image"),
+                    &gettext("Failed to delete image"),
                     adw::ToastPriority::Normal,
                 );
             }

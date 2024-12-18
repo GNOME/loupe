@@ -25,8 +25,12 @@ use strum::IntoEnumIterator;
 
 use crate::config;
 use crate::deps::*;
+use crate::util::gettext::*;
 use crate::util::Direction;
 use crate::widgets::{LpEditWindow, LpImageView, LpImageWindow};
+
+use super::error_details::ErrorType;
+use super::LpErrorDetails;
 
 /// Show window after X milliseconds even if image dimensions are not known yet
 const SHOW_WINDOW_AFTER: u64 = 2000;
@@ -94,6 +98,8 @@ mod imp {
                     }
                 },
             );
+
+            WindowAction::init_actions_and_bindings(klass);
 
             ActionPartGlobal::init_actions_and_bindings(klass);
         }
@@ -190,13 +196,40 @@ impl LpWindow {
         }
     }
 
-    pub fn show_toast(&self, text: impl AsRef<str>, priority: adw::ToastPriority) {
+    pub fn show_toast(&self, text: &str, priority: adw::ToastPriority) {
         let imp = self.imp();
 
-        let toast = adw::Toast::new(text.as_ref());
+        let toast = adw::Toast::new(text);
         toast.set_priority(priority);
 
         imp.toast_overlay.add_toast(toast);
+    }
+
+    pub fn show_error(&self, stub: &str, details: &str, type_: ErrorType) {
+        let imp = self.imp();
+
+        let action = match type_ {
+            ErrorType::General => WindowAction::ShowError,
+            ErrorType::Loader => WindowAction::ShowLoaderError,
+        };
+
+        let toast = adw::Toast::builder()
+            .title(stub)
+            .priority(adw::ToastPriority::High)
+            .button_label(gettext("Show Details"))
+            .action_name(action.to_string())
+            .action_target(&details.to_variant())
+            .build();
+
+        imp.toast_overlay.add_toast(toast);
+    }
+
+    pub fn show_error_details(&self, details: &str) {
+        LpErrorDetails::new(self, details, ErrorType::General);
+    }
+
+    pub fn show_loader_error_details(&self, details: &str) {
+        LpErrorDetails::new(self, details, ErrorType::Loader);
     }
 
     pub async fn show_about(&self) {
@@ -253,6 +286,13 @@ pub enum ActionPartGlobal {
     PanDown,
     #[strum(to_string = "win.pan-left")]
     PanLeft,
+}
+
+impl Deref for ActionPartGlobal {
+    type Target = str;
+    fn deref(&self) -> &Self::Target {
+        self.as_ref()
+    }
 }
 
 impl ActionPartGlobal {
@@ -334,9 +374,48 @@ impl ActionPartGlobal {
     }
 }
 
-impl Deref for ActionPartGlobal {
+#[derive(strum::Display, strum::AsRefStr, strum::EnumIter)]
+enum WindowAction {
+    #[strum(to_string = "win.show-error")]
+    ShowError,
+    #[strum(to_string = "win.show-loader-error")]
+    ShowLoaderError,
+}
+
+impl Deref for WindowAction {
     type Target = str;
     fn deref(&self) -> &Self::Target {
         self.as_ref()
+    }
+}
+
+impl WindowAction {
+    pub fn init_actions_and_bindings(klass: &mut <imp::LpWindow as ObjectSubclass>::Class) {
+        for action in Self::iter() {
+            match action {
+                Self::ShowError => {
+                    klass.install_action(
+                        &action,
+                        Some(VariantTy::STRING),
+                        move |win, _, variant| {
+                            if let Some(message) = variant.and_then(String::from_variant) {
+                                win.show_error_details(&message);
+                            }
+                        },
+                    );
+                }
+                Self::ShowLoaderError => {
+                    klass.install_action(
+                        &action,
+                        Some(VariantTy::STRING),
+                        move |win, _, variant| {
+                            if let Some(message) = variant.and_then(String::from_variant) {
+                                win.show_loader_error_details(&message);
+                            }
+                        },
+                    );
+                }
+            }
+        }
     }
 }
