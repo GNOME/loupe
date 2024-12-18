@@ -23,14 +23,13 @@ use gio::glib::VariantTy;
 use gtk::CompositeTemplate;
 use strum::IntoEnumIterator;
 
+use super::error_details::ErrorType;
+use super::LpErrorDetails;
 use crate::config;
 use crate::deps::*;
 use crate::util::gettext::*;
 use crate::util::Direction;
 use crate::widgets::{LpEditWindow, LpImageView, LpImageWindow};
-
-use super::error_details::ErrorType;
-use super::LpErrorDetails;
 
 /// Show window after X milliseconds even if image dimensions are not known yet
 const SHOW_WINDOW_AFTER: u64 = 2000;

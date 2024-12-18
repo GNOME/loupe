@@ -20,9 +20,13 @@ use std::cell::{Cell, OnceCell};
 use adw::prelude::*;
 use adw::subclass::prelude::*;
 use adw::{glib, gtk};
+use glycin::Operation;
 
+use crate::editing::preview::EditingError;
+use crate::util::gettext::*;
 use crate::widgets::edit::LpEditCropSelection;
-use crate::widgets::LpEditWindow;
+use crate::widgets::error_details::ErrorType;
+use crate::widgets::{LpEditWindow, LpImage};
 
 #[derive(Debug, Clone, Copy, Default, glib::Enum)]
 #[enum_type(name = "LpAspectRatio")]
@@ -53,10 +57,8 @@ pub enum LpOrientation {
 }
 
 mod imp {
-    use glycin::Operation;
-
     use super::*;
-    use crate::widgets::LpImage;
+
     #[derive(Debug, Default, gtk::CompositeTemplate, glib::Properties)]
     #[properties(wrapper_type = super::LpEditCrop)]
     #[template(file = "crop.ui")]
@@ -94,16 +96,16 @@ mod imp {
             klass.install_property_action("edit-crop.aspect-ratio", "aspect_ratio");
             klass.install_property_action("edit-crop.orientation", "orientation");
             klass.install_action("edit-crop.mirror", None, |obj, _, _| {
-                obj.imp().apply_mirror();
+                obj.handle_error(obj.imp().apply_mirror());
             });
             klass.install_action("edit-crop.rotate-cw", None, |obj, _, _| {
-                obj.imp().apply_rotate_cw();
+                obj.handle_error(obj.imp().apply_rotate_cw());
             });
             klass.install_action("edit-crop.rotate-ccw", None, |obj, _, _| {
-                obj.imp().apply_rotate_ccw();
+                obj.handle_error(obj.imp().apply_rotate_ccw());
             });
             klass.install_action("edit-crop.reset", None, |obj, _, _| {
-                obj.imp().apply_reset();
+                obj.handle_error(obj.imp().apply_reset());
             });
         }
 
@@ -127,7 +129,7 @@ mod imp {
                 #[weak]
                 obj,
                 move |_| {
-                    obj.imp().apply_crop();
+                    obj.handle_error(obj.imp().apply_crop());
                 }
             ));
 
@@ -240,50 +242,60 @@ mod imp {
             self.selection.reset(x, y, width, height);
         }
 
-        fn apply_crop(&self) {
+        fn apply_crop(&self) -> Result<(), EditingError> {
             if let Some(crop) = self.crop_area_image_coord() {
                 let edit_window = self.obj().edit_window();
 
                 edit_window.add_operation(Operation::Clip(crop));
-                self.image.set_operations(edit_window.operations());
+                self.image.set_operations(edit_window.operations())?;
 
                 self.reset_selection();
             }
+
+            Ok(())
         }
 
-        fn apply_mirror(&self) {
+        fn apply_mirror(&self) -> Result<(), EditingError> {
             let edit_window = self.obj().edit_window();
 
             edit_window.add_operation(Operation::MirrorHorizontally);
-            self.image.set_operations(edit_window.operations());
+            self.image.set_operations(edit_window.operations())?;
 
             self.reset_selection();
+
+            Ok(())
         }
 
-        fn apply_rotate_cw(&self) {
+        fn apply_rotate_cw(&self) -> Result<(), EditingError> {
             let edit_window = self.obj().edit_window();
 
             edit_window.add_operation(Operation::Rotate(gufo_common::orientation::Rotation::_90));
-            self.image.set_operations(edit_window.operations());
+            self.image.set_operations(edit_window.operations())?;
 
             self.reset_selection();
+
+            Ok(())
         }
 
-        fn apply_rotate_ccw(&self) {
+        fn apply_rotate_ccw(&self) -> Result<(), EditingError> {
             let edit_window = self.obj().edit_window();
 
             edit_window.add_operation(Operation::Rotate(gufo_common::orientation::Rotation::_270));
-            self.image.set_operations(edit_window.operations());
+            self.image.set_operations(edit_window.operations())?;
 
             self.reset_selection();
+
+            Ok(())
         }
 
-        fn apply_reset(&self) {
+        fn apply_reset(&self) -> Result<(), EditingError> {
             let obj = self.obj();
 
-            self.image.set_operations(None);
+            self.image.set_operations(None)?;
             obj.edit_window().set_operations(None);
             self.reset_selection();
+
+            Ok(())
         }
     }
 }
@@ -303,5 +315,15 @@ impl LpEditCrop {
 
     pub fn selection(&self) -> LpEditCropSelection {
         self.imp().selection.clone()
+    }
+
+    fn handle_error(&self, res: Result<(), EditingError>) {
+        if let Err(err) = res {
+            self.edit_window().window().show_error(
+                &gettext("Failed to Edit Image"),
+                &format!("Failed to edit image: {err}"),
+                ErrorType::General,
+            );
+        }
     }
 }
