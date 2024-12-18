@@ -406,6 +406,7 @@ mod imp {
             obj.set_orientation(orientation);
             drop(ui_updates_disabled);
 
+            log::debug!("Showing print dialog");
             obj.present();
         }
 

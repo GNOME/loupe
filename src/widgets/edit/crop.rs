@@ -23,9 +23,9 @@ use adw::{glib, gtk};
 use glycin::Operation;
 
 use crate::editing::preview::EditingError;
-use crate::util::gettext::*;
+use crate::util::root::ParentWindow;
+use crate::util::{gettext::*, ErrorType};
 use crate::widgets::edit::LpEditCropSelection;
-use crate::widgets::error_details::ErrorType;
 use crate::widgets::{LpEditWindow, LpImage};
 
 #[derive(Debug, Clone, Copy, Default, glib::Enum)]

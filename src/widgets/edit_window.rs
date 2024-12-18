@@ -23,14 +23,14 @@ use adw::subclass::prelude::*;
 use glycin::Operations;
 
 use super::edit::LpEditCrop;
-use super::{LpImage, LpWindow};
+use super::LpImage;
 use crate::deps::*;
 use crate::util::gettext::*;
+use crate::util::root::ParentWindow;
+use crate::util::ErrorType;
 
 mod imp {
-
     use super::*;
-    use crate::widgets::error_details::ErrorType;
 
     #[derive(Debug, Default, gtk::CompositeTemplate, glib::Properties)]
     #[properties(wrapper_type = super::LpEditWindow)]
@@ -43,8 +43,6 @@ mod imp {
         #[template_child]
         save: TemplateChild<gtk::Button>,
 
-        #[property(get, construct_only)]
-        window: OnceCell<LpWindow>,
         #[property(get, construct_only)]
         original_image: OnceCell<LpImage>,
 
@@ -170,9 +168,8 @@ glib::wrapper! {
 }
 
 impl LpEditWindow {
-    pub fn new(window: LpWindow, image: LpImage) -> Self {
+    pub fn new(image: LpImage) -> Self {
         glib::Object::builder()
-            .property("window", window)
             .property("original_image", image)
             .build()
     }

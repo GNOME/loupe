@@ -42,11 +42,10 @@ use crate::application::LpApplication;
 use crate::config;
 use crate::deps::*;
 use crate::util::gettext::*;
+use crate::util::root::ParentWindow;
 use crate::util::Direction;
 use crate::widgets::window::ActionPartGlobal;
-use crate::widgets::{
-    LpDragOverlay, LpImage, LpImageView, LpPropertiesView, LpWindow, LpWindowContent,
-};
+use crate::widgets::{LpDragOverlay, LpImage, LpImageView, LpPropertiesView, LpWindowContent};
 
 /// Animation duration for showing overlay buttons in milliseconds
 const SHOW_CONTROLS_ANIMATION_DURATION: u32 = 200;
@@ -62,9 +61,6 @@ mod imp {
     #[properties(wrapper_type = super::LpImageWindow)]
     #[template(file = "image_window.ui")]
     pub struct LpImageWindow {
-        #[property(get, construct_only)]
-        window: OnceCell<LpWindow>,
-
         #[template_child]
         pub(super) window_content: TemplateChild<LpWindowContent>,
 
@@ -152,9 +148,11 @@ mod imp {
     }
 
     #[glib::derived_properties]
-    impl ObjectImpl for LpImageWindow {
-        fn constructed(&self) {
-            self.parent_constructed();
+    impl ObjectImpl for LpImageWindow {}
+
+    impl WidgetImpl for LpImageWindow {
+        fn root(&self) {
+            self.parent_root();
 
             let obj = self.obj();
 
@@ -413,6 +411,7 @@ mod imp {
                     }
 
                     // Maybe one day this will actually work
+                    log::debug!("Trying to focus window after drag and drop");
                     obj.window().present();
 
                     true
@@ -421,7 +420,6 @@ mod imp {
         }
     }
 
-    impl WidgetImpl for LpImageWindow {}
     impl BinImpl for LpImageWindow {}
 
     impl LpImageWindow {
@@ -567,7 +565,7 @@ impl LpImageWindow {
 
     /// Returns true if some text in metadata is currently selected
     fn has_metadata_selected(&self) -> bool {
-        if let Some(focus_widget) = self.window().focus() {
+        if let Some(focus_widget) = GtkWindowExt::focus(&self.window()) {
             if focus_widget.is_ancestor(&*self.imp().properties_view) {
                 if let Ok(label) = focus_widget.downcast::<gtk::Label>() {
                     return label.selection_bounds().is_some();
@@ -630,8 +628,7 @@ impl LpImageWindow {
                         });
                     }
                 ));
-                todo!();
-                //self.imp().toast_overlay.add_toast(toast);
+                self.window().add_toast(toast);
             }
             Err(err) => {
                 if Some(gio::IOErrorEnum::NotSupported) == err.kind::<gio::IOErrorEnum>() {

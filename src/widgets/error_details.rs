@@ -21,6 +21,7 @@ use gtk::CompositeTemplate;
 
 use crate::deps::*;
 use crate::util::gettext::*;
+use crate::util::ErrorType;
 
 mod imp {
     use super::*;
@@ -108,12 +109,8 @@ impl LpErrorDetails {
             }
         ));
 
+        log::debug!("Showing error details");
         obj.present(Some(root));
         obj
     }
-}
-
-pub enum ErrorType {
-    Loader,
-    General,
 }

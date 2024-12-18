@@ -24,9 +24,7 @@
         <property name="child">
           <object class="AdwViewStack" id="stack">
             <child>
-              <object class="LpImageWindow" id="image_window">
-                <property name="window">LpWindow</property>
-              </object>
+              <object class="LpImageWindow" id="image_window" />
             </child>
             <child>
               <object class="AdwBin" id="edit_window_child">

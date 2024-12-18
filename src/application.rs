@@ -82,7 +82,7 @@ mod imp {
         }
 
         fn activate(&self) {
-            log::trace!("Activate");
+            log::debug!("Showing window via 'activate'");
             let application = self.obj();
             let window = LpWindow::new(&*application);
             window.present();
@@ -138,6 +138,7 @@ impl LpApplication {
             gio::ActionEntryBuilder::new("new-window")
                 .activate(|app: &Self, _, _| {
                     let win = LpWindow::new(app);
+                    log::debug!("Showing new window");
                     win.present();
                 })
                 .build(),
