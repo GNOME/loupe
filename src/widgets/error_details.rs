@@ -20,6 +20,7 @@ use adw::subclass::prelude::*;
 use gtk::CompositeTemplate;
 
 use crate::deps::*;
+use crate::util::gettext::*;
 
 mod imp {
     use super::*;
@@ -33,6 +34,8 @@ mod imp {
         pub(super) copy: TemplateChild<gtk::Button>,
         #[template_child]
         pub(super) report: TemplateChild<gtk::Button>,
+        #[template_child]
+        pub(super) preference_group: TemplateChild<adw::PreferencesGroup>,
     }
 
     #[glib::object_subclass]
@@ -65,10 +68,16 @@ glib::wrapper! {
 }
 
 impl LpErrorDetails {
-    pub fn new(root: &impl IsA<gtk::Widget>, text: &str) -> Self {
+    pub fn new(root: &impl IsA<gtk::Widget>, text: &str, type_: ErrorType) -> Self {
         let obj = glib::Object::new::<Self>();
         let imp = obj.imp();
         imp.message.buffer().set_text(text);
+
+        if matches!(type_, ErrorType::General) {
+            imp.preference_group.set_title(
+               &gettext( "The following error occured. If you think this is an issue with the program, please include this information when you report the error."),
+            );
+        }
 
         imp.copy.connect_clicked(glib::clone!(
             #[weak]
@@ -82,11 +91,16 @@ impl LpErrorDetails {
             }
         ));
 
+        let issue_uri = match type_ {
+            ErrorType::Loader => "https://gitlab.gnome.org/GNOME/glycin/-/issues",
+            ErrorType::General => "https://gitlab.gnome.org/GNOME/loupe/-/issues",
+        };
+
         imp.report.connect_clicked(glib::clone!(
             #[weak]
             obj,
             move |_| {
-                gtk::UriLauncher::new("https://gitlab.gnome.org/GNOME/glycin/-/issues").launch(
+                gtk::UriLauncher::new(issue_uri).launch(
                     obj.root().and_downcast_ref::<gtk::Window>(),
                     gio::Cancellable::NONE,
                     |_| {},
@@ -97,4 +111,9 @@ impl LpErrorDetails {
         obj.present(Some(root));
         obj
     }
+}
+
+pub enum ErrorType {
+    Loader,
+    General,
 }

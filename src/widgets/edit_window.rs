@@ -25,8 +25,12 @@ use glycin::Operations;
 use super::edit::LpEditCrop;
 use super::{LpImage, LpWindow};
 use crate::deps::*;
+use crate::util::gettext::*;
 
 mod imp {
+
+    use crate::widgets::error_details::ErrorType;
+
     use super::*;
 
     #[derive(Debug, Default, gtk::CompositeTemplate, glib::Properties)]
@@ -96,35 +100,63 @@ mod imp {
 
     impl LpEditWindow {
         async fn save_image(&self) {
-            dbg!("save");
             let obj = self.obj();
 
             if let Some(current_file) = obj.original_image().file() {
                 let file_dialog = gtk::FileDialog::new();
 
-                file_dialog.set_initial_file(obj.original_image().file().as_ref());
+                file_dialog.set_initial_file(Some(&current_file));
 
                 match file_dialog.save_future(Some(&obj.window())).await {
                     Err(err) => {
                         log::error!("{}", err);
                     }
                     Ok(new_file) => {
-                        dbg!(new_file.path());
                         let editor = glycin::Editor::new(current_file);
                         if let Some(operations) = obj.operations() {
+                            log::debug!("Computing edited image.");
                             let result = editor.apply_complete(&operations).await;
-                            dbg!(&result);
-
-                            dbg!(
-                                new_file
-                                    .replace_contents_future(
-                                        result.unwrap().get().unwrap(),
-                                        None,
-                                        true,
-                                        gio::FileCreateFlags::NONE,
+                            match result {
+                                Err(err) => {
+                                    log::warn!("Failed to edit image: {err}");
+                                    obj.window().show_error(
+                                        &gettext("Failed to edit image."),
+                                        &format!(
+                                            "Failed to edit image:\n\n{err}\n\n{operations:#?}"
+                                        ),
+                                        ErrorType::General,
                                     )
-                                    .await
-                            );
+                                }
+                                Ok(binary_data) => {
+                                    log::debug!("Saving edited image to '{}'", new_file.uri());
+                                    match binary_data.get() {
+                                        Err(err) => {
+                                            obj.window().show_error(
+                                                &gettext("Failed to Save Image"),
+                                                &format!("Failed to get binary data: {err}"),
+                                                ErrorType::General,
+                                            );
+                                        }
+                                        Ok(data) => {
+                                            if let Err(err) = new_file
+                                                .replace_contents_future(
+                                                    data,
+                                                    None,
+                                                    true,
+                                                    gio::FileCreateFlags::NONE,
+                                                )
+                                                .await
+                                            {
+                                                obj.window().show_error(
+                                                    &gettext("Failed to Save Image"),
+                                                    &format!("Failed to write file:\n\n{err:?}"),
+                                                    ErrorType::General,
+                                                );
+                                            }
+                                        }
+                                    }
+                                }
+                            }
                         }
                     }
                 }

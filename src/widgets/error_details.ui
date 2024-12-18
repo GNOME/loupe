@@ -15,8 +15,8 @@
         <property name="content">
           <object class="AdwPreferencesPage">
             <child>
-              <object class="AdwPreferencesGroup">
-                <property name="description" translatable="true">The image loader reported the following when trying to load the image. Please include this information when you report an error. If possible, please also provide the image that causes the issue.</property>
+              <object class="AdwPreferencesGroup" id="preference_group">
+                <property name="description" translatable="true">The image loader reported the following when trying to load or edit the image. Please include this information when you report an error. If possible, please also provide the image that causes the issue.</property>
               </object>
             </child>
             <child>
