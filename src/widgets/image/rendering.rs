@@ -131,7 +131,9 @@ impl WidgetImpl for imp::LpImage {
             let tmp_snapshot = gtk::Snapshot::new();
             frame_buffer.add_to_snapshot(&tmp_snapshot, applicable_zoom, &render_options);
             if let Some(node) = tmp_snapshot.to_node() {
-                self.apply_operations(node, snapshot);
+                if let Err(err) = self.apply_operations(node, snapshot) {
+                    log::error!("Failed to apply operations to node: {err}");
+                }
             } else {
                 log::error!("Render node is empty");
             }

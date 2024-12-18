@@ -29,9 +29,8 @@ use crate::util::gettext::*;
 
 mod imp {
 
-    use crate::widgets::error_details::ErrorType;
-
     use super::*;
+    use crate::widgets::error_details::ErrorType;
 
     #[derive(Debug, Default, gtk::CompositeTemplate, glib::Properties)]
     #[properties(wrapper_type = super::LpEditWindow)]
