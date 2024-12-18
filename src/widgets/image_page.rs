@@ -29,6 +29,7 @@ use super::LpErrorDetails;
 use crate::decoder::DecoderError;
 use crate::deps::*;
 use crate::util::gettext::*;
+use crate::util::ErrorType;
 use crate::widgets::LpImage;
 
 mod imp {
@@ -255,11 +256,7 @@ impl LpImagePage {
                     #[weak(rename_to = obj)]
                     self,
                     move |_| {
-                        LpErrorDetails::new(
-                            &obj.root().unwrap(),
-                            &err,
-                            super::error_details::ErrorType::Loader,
-                        );
+                        LpErrorDetails::new(&obj.root().unwrap(), &err, ErrorType::Loader);
                     }
                 ));
             }
@@ -271,11 +268,7 @@ impl LpImagePage {
                 #[weak(rename_to = obj)]
                 self,
                 move |_| {
-                    LpErrorDetails::new(
-                        &obj.root().unwrap(),
-                        &err,
-                        super::error_details::ErrorType::Loader,
-                    );
+                    LpErrorDetails::new(&obj.root().unwrap(), &err, ErrorType::Loader);
                 }
             ));
 

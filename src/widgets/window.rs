@@ -23,12 +23,11 @@ use gio::glib::VariantTy;
 use gtk::CompositeTemplate;
 use strum::IntoEnumIterator;
 
-use super::error_details::ErrorType;
 use super::LpErrorDetails;
 use crate::config;
 use crate::deps::*;
 use crate::util::gettext::*;
-use crate::util::Direction;
+use crate::util::{Direction, ErrorType};
 use crate::widgets::{LpEditWindow, LpImageView, LpImageWindow};
 
 /// Show window after X milliseconds even if image dimensions are not known yet
@@ -129,6 +128,7 @@ mod imp {
                     #[weak]
                     obj,
                     move || if !obj.is_visible() {
+                        log::debug!("Showing window after timeout");
                         obj.present()
                     }
                 ),
@@ -149,7 +149,7 @@ mod imp {
 glib::wrapper! {
     pub struct LpWindow(ObjectSubclass<imp::LpWindow>)
         @extends gtk::Widget, gtk::Window, gtk::ApplicationWindow, adw::ApplicationWindow,
-        @implements gio::ActionMap, gio::ActionGroup, gtk::Native;
+        @implements gio::ActionMap, gio::ActionGroup, gtk::Native, gtk::Root;
 }
 
 impl LpWindow {
@@ -195,18 +195,18 @@ impl LpWindow {
         }
     }
 
-    pub fn show_toast(&self, text: &str, priority: adw::ToastPriority) {
-        let imp = self.imp();
+    pub fn add_toast(&self, toast: adw::Toast) {
+        self.imp().toast_overlay.add_toast(toast);
+    }
 
+    pub fn show_toast(&self, text: &str, priority: adw::ToastPriority) {
         let toast = adw::Toast::new(text);
         toast.set_priority(priority);
 
-        imp.toast_overlay.add_toast(toast);
+        self.add_toast(toast);
     }
 
     pub fn show_error(&self, stub: &str, details: &str, type_: ErrorType) {
-        let imp = self.imp();
-
         let action = match type_ {
             ErrorType::General => WindowAction::ShowError,
             ErrorType::Loader => WindowAction::ShowLoaderError,
@@ -220,7 +220,7 @@ impl LpWindow {
             .action_target(&details.to_variant())
             .build();
 
-        imp.toast_overlay.add_toast(toast);
+        self.add_toast(toast);
     }
 
     pub fn show_error_details(&self, details: &str) {
@@ -233,6 +233,7 @@ impl LpWindow {
 
     pub async fn show_about(&self) {
         let about = crate::about::dialog().await;
+        log::debug!("Showing about dialog");
         about.present(Some(self));
     }
 
@@ -246,7 +247,7 @@ impl LpWindow {
         if let Some(image) = self.image_view().current_image() {
             let edit_child = &*self.imp().edit_window_child;
 
-            edit_child.set_child(Some(&LpEditWindow::new(self.clone(), image)));
+            edit_child.set_child(Some(&LpEditWindow::new(image)));
             self.imp().stack.set_visible_child(edit_child);
         } else {
             log::error!("Can't open image editor since no current image exists");

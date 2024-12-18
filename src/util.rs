@@ -17,6 +17,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 
 pub mod gettext;
+pub mod root;
 
 use std::ffi::CStr;
 use std::fmt::{Debug, Write};
@@ -260,4 +261,9 @@ pub fn locale_settings() -> LocaleSettings {
 
         locale_settings
     }
+}
+
+pub enum ErrorType {
+    Loader,
+    General,
 }

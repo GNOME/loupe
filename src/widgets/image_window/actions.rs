@@ -22,6 +22,7 @@ use gtk::prelude::*;
 use strum::IntoEnumIterator;
 
 use crate::deps::*;
+use crate::util::root::ParentWindow;
 use crate::util::{Direction, Position};
 
 #[derive(strum::Display, strum::AsRefStr, strum::EnumIter)]
