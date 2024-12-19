@@ -23,6 +23,7 @@
       <object class="AdwToastOverlay" id="toast_overlay">
         <property name="child">
           <object class="AdwViewStack" id="stack">
+            <property name="enable-transitions">true</property>
             <child>
               <object class="LpImageWindow" id="image_window" />
             </child>
