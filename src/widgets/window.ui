@@ -5,18 +5,23 @@
     <property name="default-height">498</property>
     <property name="width-request">360</property>
     <property name="height-request">294</property>
+    <property name="layout-name">wide</property>
+    <property name="wide-layout" bind-source="LpWindow" bind-property="narrow-layout" bind-flags="sync-create|invert-boolean" />
+    <property name="not-fullscreened" bind-source="LpWindow" bind-property="fullscreened" bind-flags="sync-create|invert-boolean" />
+
     <child>
       <object class="AdwBreakpoint">
         <condition>min-width: 590sp</condition>
+        <setter object="LpWindow" property="layout-name">wide</setter>
         <setter object="LpWindow" property="narrow-layout">false</setter>
-        <setter object="LpWindow" property="wide-layout">true</setter>
+
       </object>
     </child>
     <child>
       <object class="AdwBreakpoint">
         <condition>max-width: 590sp</condition>
+        <setter object="LpWindow" property="layout-name">narrow</setter>
         <setter object="LpWindow" property="narrow-layout">true</setter>
-        <setter object="LpWindow" property="wide-layout">false</setter>
       </object>
     </child>
     <property name="content">
