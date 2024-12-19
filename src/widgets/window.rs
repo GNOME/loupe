@@ -34,7 +34,7 @@ use crate::widgets::{LpEditWindow, LpImageView, LpImageWindow};
 const SHOW_WINDOW_AFTER: u64 = 2000;
 
 mod imp {
-    use std::cell::Cell;
+    use std::cell::{Cell, RefCell};
 
     use super::*;
 
@@ -70,6 +70,10 @@ mod imp {
         narrow_layout: Cell<bool>,
         #[property(get, set)]
         wide_layout: Cell<bool>,
+        #[property(get, set)]
+        layout_name: RefCell<String>,
+        #[property(get, set)]
+        not_fullscreened: Cell<bool>,
     }
 
     #[glib::object_subclass]

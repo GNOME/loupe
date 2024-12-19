@@ -19,6 +19,7 @@ src/metadata.rs
 src/metadata/file.rs
 src/util.rs
 src/util/gettext.rs
+src/util/root.rs
 src/widgets.rs
 src/widgets/drag_overlay.rs
 src/widgets/drag_overlay.ui
@@ -61,5 +62,3 @@ src/widgets/shy_bin.rs
 src/widgets/sliding_view.rs
 src/widgets/window.rs
 src/widgets/window.ui
-src/widgets/window_content.rs
-src/widgets/window_content.ui

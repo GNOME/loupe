@@ -45,7 +45,7 @@ use crate::util::gettext::*;
 use crate::util::root::ParentWindow;
 use crate::util::Direction;
 use crate::widgets::window::ActionPartGlobal;
-use crate::widgets::{LpDragOverlay, LpImage, LpImageView, LpPropertiesView, LpWindowContent};
+use crate::widgets::{LpDragOverlay, LpImage, LpImageView, LpPropertiesView};
 
 /// Animation duration for showing overlay buttons in milliseconds
 const SHOW_CONTROLS_ANIMATION_DURATION: u32 = 200;
@@ -62,9 +62,6 @@ mod imp {
     #[template(file = "image_window.ui")]
     pub struct LpImageWindow {
         #[template_child]
-        pub(super) window_content: TemplateChild<LpWindowContent>,
-
-        #[template_child]
         pub(super) headerbar: TemplateChild<adw::HeaderBar>,
         #[template_child]
         pub(super) headerbar_events: TemplateChild<gtk::EventControllerMotion>,
@@ -76,6 +73,9 @@ mod imp {
         pub(super) properties_button: TemplateChild<gtk::ToggleButton>,
         #[template_child]
         pub(super) primary_menu: TemplateChild<gtk::MenuButton>,
+
+        #[template_child]
+        pub(super) toolbar_view: TemplateChild<adw::ToolbarView>,
 
         #[template_child]
         pub(super) stack: TemplateChild<gtk::Stack>,
@@ -98,9 +98,6 @@ mod imp {
 
         #[property(get = Self::is_showing_image)]
         pub(super) is_showing_image: PhantomData<bool>,
-        /// Set via binding to HeaderBar
-        #[property(get, set)]
-        headerbar_opacity: Cell<f64>,
 
         /// Motion controller for complete window
         pub(super) motion_controller: gtk::EventControllerMotion,
@@ -292,6 +289,18 @@ mod imp {
                     }
                 ),
             );
+
+            obj.connect_is_showing_image_notify(|obj| {
+                obj.update_headerbar_style();
+            });
+
+            self.properties_button.connect_active_notify(glib::clone!(
+                #[weak]
+                obj,
+                move |_| {
+                    obj.update_headerbar_style();
+                }
+            ));
 
             // action win.previous status
             self.image_view
@@ -880,6 +889,8 @@ impl LpImageWindow {
         };
         self.imp().fullscreen_button.set_icon_name(icon);
 
+        self.update_headerbar_style();
+
         if !self.window().is_fullscreen() {
             self.set_cursor(None);
             self.show_controls();
@@ -888,11 +899,14 @@ impl LpImageWindow {
     }
 
     fn is_headerbar_flat(&self) -> bool {
-        self.imp().window_content.is_headerbar_flat()
+        matches!(
+            self.imp().toolbar_view.top_bar_style(),
+            adw::ToolbarStyle::Flat
+        )
     }
 
     fn is_content_extended_to_top(&self) -> bool {
-        self.imp().window_content.is_content_extended_to_top()
+        self.window().is_fullscreen() && !self.imp().properties_button.is_active()
     }
 
     fn update_accel_status(&self) {
@@ -916,5 +930,40 @@ impl LpImageWindow {
 
     pub fn properties_button(&self) -> gtk::ToggleButton {
         self.imp().properties_button.clone()
+    }
+
+    fn update_header_opacity(&self) {
+        let imp = self.imp();
+
+        if self.is_headerbar_flat() && self.is_showing_image() {
+            // Bring headerbar opacity in sync with controls
+            imp.headerbar.set_opacity(self.headerbar_opacity());
+        } else {
+            imp.headerbar.set_opacity(1.);
+        }
+    }
+
+    fn update_headerbar_style(&self) {
+        let imp = self.imp();
+
+        imp.toolbar_view
+            .set_extend_content_to_top_edge(self.is_content_extended_to_top());
+
+        let style = if !self.is_showing_image() || self.is_content_extended_to_top() {
+            // Flat headerbar for empty state and fullscreen without properties enabled
+            adw::ToolbarStyle::Flat
+        } else {
+            // Use the border variant of raised to avoid shadows over images
+            adw::ToolbarStyle::RaisedBorder
+        };
+
+        if style != imp.toolbar_view.top_bar_style() {
+            imp.toolbar_view.set_top_bar_style(style);
+            self.update_header_opacity();
+        }
+    }
+
+    fn headerbar_opacity(&self) -> f64 {
+        self.imp().headerbar.opacity()
     }
 }
