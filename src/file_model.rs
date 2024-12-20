@@ -276,7 +276,7 @@ impl LpFileModel {
             return IndexMap::new();
         };
 
-        let reduce = if index < n { n - index } else { 0 };
+        let reduce = n.saturating_sub(index);
 
         self.imp()
             .files
