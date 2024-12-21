@@ -18,9 +18,11 @@
 use std::ops::Deref;
 
 use adw::subclass::prelude::*;
+use gdk::{Key, ModifierType};
 use gtk::prelude::*;
 use strum::IntoEnumIterator;
 
+use super::LpImageWindow;
 use crate::deps::*;
 use crate::util::root::ParentWindow;
 use crate::util::{Direction, Position};
@@ -91,9 +93,25 @@ pub enum Action {
 }
 
 impl Action {
-    pub fn init_actions_and_bindings(
-        klass: &mut <super::imp::LpImageWindow as ObjectSubclass>::Class,
-    ) {
+    pub fn add_bindings(win: &LpImageWindow) {
+        for action in Self::iter() {
+            for (key, modifiers) in action.keybindings() {
+                let mut modifier = ModifierType::empty();
+                for m in *modifiers {
+                    modifier = modifier.union(*m);
+                }
+
+                let shortcut = gtk::Shortcut::new(
+                    Some(gtk::KeyvalTrigger::new(*key, modifier)),
+                    Some(gtk::NamedAction::new(&action)),
+                );
+
+                win.imp().shortcut_controller.add_shortcut(shortcut);
+            }
+        }
+    }
+
+    pub fn init_actions(klass: &mut <super::imp::LpImageWindow as ObjectSubclass>::Class) {
         for action in Self::iter() {
             match action {
                 // Navigation
@@ -125,14 +143,12 @@ impl Action {
                     klass.install_action(&action, None, move |win, _, _| {
                         win.imp().image_view.jump(Position::First);
                     });
-                    klass.add_binding_action(gdk::Key::Home, gdk::ModifierType::empty(), &action);
                 }
 
                 Action::Last => {
                     klass.install_action(&action, None, move |win, _, _| {
                         win.imp().image_view.jump(Position::Last);
                     });
-                    klass.add_binding_action(gdk::Key::End, gdk::ModifierType::empty(), &action);
                 }
 
                 // Rotation/Zoom
@@ -140,18 +156,12 @@ impl Action {
                     klass.install_action(&action, None, |win, _, _| {
                         win.rotate_image(90.0);
                     });
-                    klass.add_binding_action(gdk::Key::r, gdk::ModifierType::CONTROL_MASK, &action);
                 }
 
                 Action::RotateCcw => {
                     klass.install_action(&action, None, |win, _, _| {
                         win.rotate_image(-90.0);
                     });
-                    klass.add_binding_action(
-                        gdk::Key::r,
-                        gdk::ModifierType::CONTROL_MASK.union(gdk::ModifierType::SHIFT_MASK),
-                        &action,
-                    );
                 }
 
                 Action::ZoomOutCenter => klass.install_action(&action, None, move |win, _, _| {
@@ -166,118 +176,36 @@ impl Action {
                     klass.install_action(&action, None, move |win, _, _| {
                         win.zoom_out_cursor();
                     });
-                    klass.add_binding_action(gdk::Key::minus, gdk::ModifierType::empty(), &action);
-                    klass.add_binding_action(
-                        gdk::Key::minus,
-                        gdk::ModifierType::CONTROL_MASK,
-                        &action,
-                    );
-                    klass.add_binding_action(
-                        gdk::Key::KP_Subtract,
-                        gdk::ModifierType::empty(),
-                        &action,
-                    );
-                    klass.add_binding_action(
-                        gdk::Key::KP_Subtract,
-                        gdk::ModifierType::CONTROL_MASK,
-                        &action,
-                    );
                 }
 
                 Action::ZoomInCursor => {
                     klass.install_action(&action, None, move |win, _, _| {
                         win.zoom_in_cursor();
                     });
-                    klass.add_binding_action(gdk::Key::equal, gdk::ModifierType::empty(), &action);
-                    klass.add_binding_action(
-                        gdk::Key::equal,
-                        gdk::ModifierType::CONTROL_MASK,
-                        &action,
-                    );
-                    klass.add_binding_action(gdk::Key::plus, gdk::ModifierType::empty(), &action);
-                    klass.add_binding_action(
-                        gdk::Key::plus,
-                        gdk::ModifierType::CONTROL_MASK,
-                        &action,
-                    );
-                    klass.add_binding_action(gdk::Key::KP_Add, gdk::ModifierType::empty(), &action);
-                    klass.add_binding_action(
-                        gdk::Key::KP_Add,
-                        gdk::ModifierType::CONTROL_MASK,
-                        &action,
-                    );
                 }
 
                 Action::ZoomBestFit => {
                     klass.install_action(&action, None, move |win, _, _| {
                         win.zoom_best_fit();
                     });
-                    klass.add_binding_action(gdk::Key::_0, gdk::ModifierType::empty(), &action);
-                    klass.add_binding_action(
-                        gdk::Key::_0,
-                        gdk::ModifierType::CONTROL_MASK,
-                        &action,
-                    );
-                    klass.add_binding_action(gdk::Key::KP_0, gdk::ModifierType::empty(), &action);
-                    klass.add_binding_action(
-                        gdk::Key::KP_0,
-                        gdk::ModifierType::CONTROL_MASK,
-                        &action,
-                    );
                 }
 
                 Action::ZoomToExact100 => {
                     klass.install_action(&action, None, move |win, _, _| {
                         win.zoom_to_exact(1.);
                     });
-                    klass.add_binding_action(gdk::Key::_1, gdk::ModifierType::empty(), &action);
-                    klass.add_binding_action(gdk::Key::KP_1, gdk::ModifierType::empty(), &action);
-                    klass.add_binding_action(
-                        gdk::Key::_1,
-                        gdk::ModifierType::CONTROL_MASK,
-                        &action,
-                    );
-                    klass.add_binding_action(
-                        gdk::Key::KP_1,
-                        gdk::ModifierType::CONTROL_MASK,
-                        &action,
-                    );
                 }
 
                 Action::ZoomToExact200 => {
                     klass.install_action(&action, None, move |win, _, _| {
                         win.zoom_to_exact(2.);
                     });
-                    klass.add_binding_action(gdk::Key::_2, gdk::ModifierType::empty(), &action);
-                    klass.add_binding_action(gdk::Key::KP_2, gdk::ModifierType::empty(), &action);
-                    klass.add_binding_action(
-                        gdk::Key::_2,
-                        gdk::ModifierType::CONTROL_MASK,
-                        &action,
-                    );
-                    klass.add_binding_action(
-                        gdk::Key::KP_2,
-                        gdk::ModifierType::CONTROL_MASK,
-                        &action,
-                    );
                 }
 
                 Action::ZoomToExact300 => {
                     klass.install_action(&action, None, move |win, _, _| {
                         win.zoom_to_exact(2.);
                     });
-                    klass.add_binding_action(gdk::Key::_3, gdk::ModifierType::empty(), &action);
-                    klass.add_binding_action(gdk::Key::KP_3, gdk::ModifierType::empty(), &action);
-                    klass.add_binding_action(
-                        gdk::Key::_3,
-                        gdk::ModifierType::CONTROL_MASK,
-                        &action,
-                    );
-                    klass.add_binding_action(
-                        gdk::Key::KP_3,
-                        gdk::ModifierType::CONTROL_MASK,
-                        &action,
-                    );
                 }
 
                 // Misc
@@ -285,25 +213,18 @@ impl Action {
                     klass.install_action_async(&action, None, |win, _, _| async move {
                         win.pick_file().await;
                     });
-                    klass.add_binding_action(gdk::Key::O, gdk::ModifierType::CONTROL_MASK, &action);
                 }
 
                 Action::OpenWith => {
                     klass.install_action_async(&action, None, |win, _, _| async move {
                         win.open_with().await;
                     });
-                    klass.add_binding_action(
-                        gdk::Key::O,
-                        gdk::ModifierType::CONTROL_MASK.union(gdk::ModifierType::SHIFT_MASK),
-                        &action,
-                    );
                 }
 
                 Action::Print => {
                     klass.install_action(&action, None, move |win, _, _| {
                         win.print();
                     });
-                    klass.add_binding_action(gdk::Key::P, gdk::ModifierType::CONTROL_MASK, &action);
                 }
 
                 Action::CopyImage => klass.install_action(&action, None, move |win, _, _| {
@@ -314,11 +235,6 @@ impl Action {
                     klass.install_action_async(&action, None, |win, _, _| async move {
                         win.set_background().await;
                     });
-                    klass.add_binding_action(
-                        gdk::Key::F8,
-                        gdk::ModifierType::CONTROL_MASK,
-                        &action,
-                    );
                 }
 
                 Action::ToggleFullscreen => {
@@ -326,43 +242,24 @@ impl Action {
                         let win = obj.window();
                         win.toggle_fullscreen(!win.is_fullscreen());
                     });
-                    klass.add_binding_action(gdk::Key::F11, gdk::ModifierType::empty(), &action);
                 }
 
                 Action::LeaveFullscreen => {
                     klass.install_action(&action, None, move |obj, _, _| {
                         obj.window().toggle_fullscreen(false);
                     });
-                    klass.add_binding_action(gdk::Key::Escape, gdk::ModifierType::empty(), &action);
                 }
 
                 Action::Trash => {
                     klass.install_action_async(&action, None, |win, _, _| async move {
                         win.trash().await;
                     });
-                    klass.add_binding_action(
-                        gdk::Key::KP_Delete,
-                        gdk::ModifierType::empty(),
-                        &action,
-                    );
-                    // The binding added last is shown in menus
-                    klass.add_binding_action(gdk::Key::Delete, gdk::ModifierType::empty(), &action);
                 }
 
                 Action::Delete => {
                     klass.install_action_async(&action, None, |win, _, _| async move {
                         win.delete().await;
                     });
-                    klass.add_binding_action(
-                        gdk::Key::Delete,
-                        gdk::ModifierType::SHIFT_MASK,
-                        &action,
-                    );
-                    klass.add_binding_action(
-                        gdk::Key::KP_Delete,
-                        gdk::ModifierType::SHIFT_MASK,
-                        &action,
-                    );
                 }
 
                 Action::ToggleProperties => {
@@ -371,12 +268,6 @@ impl Action {
                             .properties_button
                             .set_active(!win.imp().properties_button.is_active());
                     });
-                    klass.add_binding_action(gdk::Key::F9, gdk::ModifierType::empty(), &action);
-                    klass.add_binding_action(
-                        gdk::Key::Return,
-                        gdk::ModifierType::ALT_MASK,
-                        &action,
-                    );
                 }
 
                 Action::About => {
@@ -393,16 +284,92 @@ impl Action {
                             log::error!("No current image to reload");
                         }
                     });
-                    klass.add_binding_action(gdk::Key::F5, gdk::ModifierType::empty(), &action);
                 }
 
                 Action::Edit => {
                     klass.install_action_async(&action, None, move |obj, _, _| async move {
                         obj.window().show_edit();
                     });
-                    klass.add_binding_action(gdk::Key::e, gdk::ModifierType::empty(), &action);
                 }
             }
+        }
+    }
+
+    pub fn keybindings(&self) -> &[(gdk::Key, &[gdk::ModifierType])] {
+        match self {
+            Action::First => &[(Key::Home, &[])],
+
+            Action::Last => &[(Key::End, &[])],
+
+            // Rotation/Zoom
+            Action::RotateCw => &[(Key::r, &[ModifierType::CONTROL_MASK])],
+            Action::RotateCcw => &[(
+                Key::r,
+                &[ModifierType::CONTROL_MASK, ModifierType::SHIFT_MASK],
+            )],
+
+            Action::ZoomOutCursor => &[
+                (Key::minus, &[]),
+                (Key::minus, &[ModifierType::CONTROL_MASK]),
+                (Key::KP_Subtract, &[]),
+                (Key::KP_Subtract, &[ModifierType::CONTROL_MASK]),
+            ],
+            Action::ZoomInCursor => &[
+                (Key::equal, &[]),
+                (Key::equal, &[ModifierType::CONTROL_MASK]),
+                (Key::plus, &[]),
+                (Key::plus, &[ModifierType::CONTROL_MASK]),
+                (Key::KP_Add, &[]),
+                (Key::KP_Add, &[ModifierType::CONTROL_MASK]),
+            ],
+            Action::ZoomBestFit => &[
+                (Key::_0, &[]),
+                (Key::_0, &[ModifierType::CONTROL_MASK]),
+                (Key::KP_0, &[]),
+                (Key::KP_0, &[ModifierType::CONTROL_MASK]),
+            ],
+            Action::ZoomToExact100 => &[
+                (Key::_1, &[]),
+                (Key::_1, &[ModifierType::CONTROL_MASK]),
+                (Key::KP_1, &[]),
+                (Key::KP_1, &[ModifierType::CONTROL_MASK]),
+            ],
+            Action::ZoomToExact200 => &[
+                (Key::_2, &[]),
+                (Key::_2, &[ModifierType::CONTROL_MASK]),
+                (Key::KP_2, &[]),
+                (Key::KP_2, &[ModifierType::CONTROL_MASK]),
+            ],
+            Action::ZoomToExact300 => &[
+                (Key::_3, &[]),
+                (Key::_3, &[ModifierType::CONTROL_MASK]),
+                (Key::KP_3, &[]),
+                (Key::KP_3, &[ModifierType::CONTROL_MASK]),
+            ],
+
+            // Misc
+            Action::Open => &[(Key::o, &[ModifierType::CONTROL_MASK])],
+            Action::OpenWith => &[(
+                Key::o,
+                &[ModifierType::CONTROL_MASK, gdk::ModifierType::SHIFT_MASK],
+            )],
+            Action::Print => &[(Key::p, &[ModifierType::CONTROL_MASK])],
+            Action::SetBackground => &[(Key::F8, &[ModifierType::CONTROL_MASK])],
+            Action::ToggleFullscreen => &[(Key::F11, &[])],
+            Action::LeaveFullscreen => &[(Key::Escape, &[])],
+            Action::Trash => &[
+                (Key::KP_Delete, &[]),
+                // The binding added last is shown in menus
+                (Key::Delete, &[]),
+            ],
+            Action::Delete => &[
+                (Key::Delete, &[ModifierType::SHIFT_MASK]),
+                (Key::KP_Delete, &[ModifierType::SHIFT_MASK]),
+            ],
+            Action::ToggleProperties => &[(Key::F9, &[]), (Key::Return, &[ModifierType::ALT_MASK])],
+            Action::Reload => &[(Key::F5, &[])],
+            Action::Edit => &[(Key::e, &[])],
+            _ => &[],
         }
     }
 }

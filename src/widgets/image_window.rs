@@ -62,6 +62,9 @@ mod imp {
     #[template(file = "image_window.ui")]
     pub struct LpImageWindow {
         #[template_child]
+        pub(super) shortcut_controller: TemplateChild<gtk::ShortcutController>,
+
+        #[template_child]
         pub(super) headerbar: TemplateChild<adw::HeaderBar>,
         #[template_child]
         pub(super) headerbar_events: TemplateChild<gtk::EventControllerMotion>,
@@ -140,7 +143,7 @@ mod imp {
             );
 
             // Set up actions
-            Action::init_actions_and_bindings(klass);
+            Action::init_actions(klass);
         }
     }
 
@@ -152,6 +155,8 @@ mod imp {
             self.parent_root();
 
             let obj = self.obj();
+
+            Action::add_bindings(&obj);
 
             self.forward_click_gesture.connect_pressed(glib::clone!(
                 #[weak]

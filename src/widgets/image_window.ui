@@ -59,6 +59,11 @@
   <template class="LpImageWindow" parent="AdwBin">
     <property name="child">
       <object class="AdwToolbarView" id="toolbar_view">
+        <child>
+          <object class="GtkShortcutController" id="shortcut_controller">
+            <property name="scope">global</property>
+          </object>
+        </child>
         <child type="top">
           <object class="LpShyBin">
             <property name="child">
