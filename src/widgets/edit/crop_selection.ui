@@ -5,8 +5,7 @@
     <property name="halign">start</property>
     <property name="valign">start</property>
     <child>
-      <object class="GtkGestureDrag" id="selection_drag">
-      </object>
+      <object class="GtkGestureDrag" id="selection_move" />
     </child>
     <child>
       <object class="AdwBin" id="space_top_left">

@@ -387,4 +387,15 @@ impl LpImage {
 
         (x, y)
     }
+
+    /// Convert image coordinates to drawn image coordinates
+    pub fn img_to_draw_coord(&self, (cur_x, cur_y): (f64, f64)) -> (f64, f64) {
+        let imp = self.imp();
+        let zoom = imp.applicable_zoom();
+
+        let x = cur_x * zoom;
+        let y = cur_y * zoom;
+
+        (x, y)
+    }
 }
