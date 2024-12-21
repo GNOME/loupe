@@ -46,8 +46,6 @@ pub enum LpAspectRatio {
     R4to3,
     /// 1.5
     R3to2,
-    /// 1.6
-    R16to10,
     /// 1.77
     R16to9,
 }

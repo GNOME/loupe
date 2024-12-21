@@ -33,11 +33,6 @@
         <attribute name="target">r3to2</attribute>
       </item>
       <item>
-        <attribute name="label" translatable="yes">16:10</attribute>
-        <attribute name="action">edit-crop.aspect-ratio</attribute>
-        <attribute name="target">r16to10</attribute>
-      </item>
-      <item>
         <attribute name="label" translatable="yes">16:9</attribute>
         <attribute name="action">edit-crop.aspect-ratio</attribute>
         <attribute name="target">r16to9</attribute>
