@@ -245,13 +245,13 @@
                         <child>
                           <object class="GtkButton">
                             <property name="icon-name">edit-mirror-symbolic</property>
-                            <property name="action-name">edit-crop.mirror</property>
+                            <property name="action-name">edit-crop.mirror-horizontally</property>
                           </object>
                         </child>
                         <child>
                           <object class="GtkButton">
                             <property name="icon-name">edit-mirror-vertically-symbolic</property>
-                            <property name="action-name">edit-crop.mirror</property>
+                            <property name="action-name">edit-crop.mirror-vertically</property>
                           </object>
                         </child>
                       </object>

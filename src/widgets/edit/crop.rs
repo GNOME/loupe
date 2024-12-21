@@ -97,20 +97,23 @@ mod imp {
 
             klass.install_property_action("edit-crop.aspect-ratio", "aspect_ratio");
             klass.install_property_action("edit-crop.orientation", "orientation");
-            klass.install_action("edit-crop.mirror", None, |obj, _, _| {
-                obj.handle_error(obj.imp().apply_mirror());
+            klass.install_action("edit-crop.mirror-horizontally", None, |obj, _, _| {
+                obj.imp().apply_mirror_horizontally();
+            });
+            klass.install_action("edit-crop.mirror-vertically", None, |obj, _, _| {
+                obj.imp().apply_mirror_vertically()
             });
             klass.install_action("edit-crop.rotate-cw", None, |obj, _, _| {
-                obj.handle_error(obj.imp().apply_rotate_cw());
+                obj.imp().apply_rotate_cw()
             });
             klass.install_action("edit-crop.rotate-ccw", None, |obj, _, _| {
-                obj.handle_error(obj.imp().apply_rotate_ccw());
+                obj.imp().apply_rotate_ccw()
             });
             klass.install_action("edit-crop.reset", None, |obj, _, _| {
-                obj.handle_error(obj.imp().apply_reset());
+                obj.handle_error(obj.imp().apply_reset())
             });
             klass.install_action("edit-crop.apply-crop", None, |obj, _, _| {
-                obj.handle_error(obj.imp().apply_crop());
+                obj.imp().apply_crop()
             });
         }
 
@@ -241,38 +244,36 @@ mod imp {
             self.selection.reset(x, y, width, height);
         }
 
-        fn apply_crop(&self) -> Result<(), EditingError> {
+        fn apply_crop(&self) {
             if let Some(crop) = self.crop_area_image_coord() {
-                self.add_operation(Operation::Clip(crop))?;
+                self.add_operation(Operation::Clip(crop));
 
                 self.reset_selection();
             }
-
-            Ok(())
         }
 
-        fn apply_mirror(&self) -> Result<(), EditingError> {
-            self.add_operation(Operation::MirrorHorizontally)?;
+        fn apply_mirror_horizontally(&self) {
+            self.add_operation(Operation::MirrorHorizontally);
 
             self.reset_selection();
-
-            Ok(())
         }
 
-        fn apply_rotate_cw(&self) -> Result<(), EditingError> {
-            self.add_operation(Operation::Rotate(gufo_common::orientation::Rotation::_90))?;
+        fn apply_mirror_vertically(&self) {
+            self.add_operation(Operation::MirrorVertically);
 
             self.reset_selection();
-
-            Ok(())
         }
 
-        fn apply_rotate_ccw(&self) -> Result<(), EditingError> {
-            self.add_operation(Operation::Rotate(gufo_common::orientation::Rotation::_270))?;
+        fn apply_rotate_cw(&self) {
+            self.add_operation(Operation::Rotate(gufo_common::orientation::Rotation::_90));
 
             self.reset_selection();
+        }
 
-            Ok(())
+        fn apply_rotate_ccw(&self) {
+            self.add_operation(Operation::Rotate(gufo_common::orientation::Rotation::_270));
+
+            self.reset_selection();
         }
 
         fn apply_reset(&self) -> Result<(), EditingError> {
@@ -287,16 +288,21 @@ mod imp {
             Ok(())
         }
 
-        fn add_operation(&self, operation: Operation) -> Result<(), EditingError> {
+        fn add_operation(&self, operation: Operation) {
             let obj = self.obj();
 
             let edit_window = obj.edit_window();
+            let previous_operiatons = edit_window.operations();
             edit_window.add_operation(operation);
-            self.image.set_operations(edit_window.operations())?;
+            let res = self.image.set_operations(edit_window.operations());
 
-            obj.action_set_enabled("edit-crop.reset", true);
-
-            Ok(())
+            if res.is_err() {
+                obj.handle_error(res);
+                // Reset to set of hopefully working operations
+                edit_window.set_operations(previous_operiatons);
+            } else {
+                obj.action_set_enabled("edit-crop.reset", true);
+            }
         }
     }
 }

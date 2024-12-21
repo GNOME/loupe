@@ -26,7 +26,7 @@ gettext-sys = { version = "0.22.5", features = ["gettext-system"] }
 gio = { version = "0.20.0", features = ["v2_74"] }
 glycin = { version = "2.0.1", features = [
     "gdk4",
-], git = "https://gitlab.gnome.org/GNOME/glycin.git", rev = "967abc701e9969936ecece4a9408663d0a67b1d5" }
+], git = "https://gitlab.gnome.org/GNOME/glycin.git", rev = "a7922d4435d3d8db392b33f4733ea164bc78c77f" }
 gtk = { package = "gtk4", version = "0.9.5", features = [
     "v4_14",
     "xml_validation",
