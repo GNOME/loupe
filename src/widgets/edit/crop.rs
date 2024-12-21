@@ -84,6 +84,11 @@ mod imp {
 
         #[property(get, set)]
         child: OnceCell<gtk::Widget>,
+
+        /// Last selected crop area
+        crop_area_image_coord: Cell<Option<(u32, u32, u32, u32)>>,
+
+        last_allocation: Cell<(i32, i32, i32)>,
     }
 
     #[glib::object_subclass]
@@ -183,15 +188,23 @@ mod imp {
 
             obj.child().allocate(width, height, baseline, None);
 
-            let (x, y, width, height) = (
-                image.image_rendering_x(),
-                image.image_rendering_y(),
-                image.image_rendering_width(),
-                image.image_rendering_height(),
-            );
+            // Adjust position and size for crop selection after widget resize
+            if self.last_allocation.get() != (width, height, baseline) {
+                self.last_allocation.replace((width, height, baseline));
 
-            self.selection.ensure_initialized(x, y, width, height);
-            self.selection.set_size(x, y, width, height);
+                let (x, y, width, height) = (
+                    image.image_rendering_x(),
+                    image.image_rendering_y(),
+                    image.image_rendering_width(),
+                    image.image_rendering_height(),
+                );
+
+                self.selection.ensure_initialized(x, y, width, height);
+                self.selection.set_image_area(x, y, width, height);
+
+                let (x, y, width, height) = self.crop_area_widget_coord();
+                self.selection.set_crop_size(x, y, width, height);
+            }
         }
 
         fn measure(&self, orientation: gtk::Orientation, for_size: i32) -> (i32, i32, i32, i32) {
@@ -202,12 +215,17 @@ mod imp {
 
     impl LpEditCrop {
         fn selection_changed(&self) {
-            let apply_sensitive = self.selection.is_copped();
+            let crop_area_image_coord = self.crop_area_image_coord();
+            if self.selection.is_in_user_change() {
+                self.crop_area_image_coord.replace(crop_area_image_coord);
+            }
+
+            let apply_sensitive = self.selection.is_cropped();
             self.apply_crop.set_visible(apply_sensitive);
         }
 
         fn crop_area_image_coord(&self) -> Option<(u32, u32, u32, u32)> {
-            if !self.selection.is_copped() {
+            if !self.selection.is_cropped() {
                 return None;
             }
 
@@ -232,6 +250,18 @@ mod imp {
             ))
         }
 
+        fn crop_area_widget_coord(&self) -> (f64, f64, f64, f64) {
+            let size = self.image.image_size();
+            let (x, y, w, h) =
+                self.crop_area_image_coord
+                    .get()
+                    .unwrap_or((0, 0, size.0 as u32, size.1 as u32));
+            let (x, y) = self.image.img_to_draw_coord((x as f64, y as f64));
+            let (w, h) = self.image.img_to_draw_coord((w as f64, h as f64));
+
+            (x.round(), y.round(), w.round(), h.round())
+        }
+
         fn reset_selection(&self) {
             let image = &self.image;
 
@@ -245,7 +275,7 @@ mod imp {
         }
 
         fn apply_crop(&self) {
-            if let Some(crop) = self.crop_area_image_coord() {
+            if let Some(crop) = self.crop_area_image_coord.get() {
                 self.add_operation(Operation::Clip(crop));
 
                 self.reset_selection();

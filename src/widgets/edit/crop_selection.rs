@@ -155,12 +155,12 @@ mod imp {
         handle_bottom_left: TemplateChild<adw::Bin>,
 
         #[template_child]
-        selection_drag: TemplateChild<gtk::GestureDrag>,
+        selection_move: TemplateChild<gtk::GestureDrag>,
 
         /// Set while in drag gesture for changing crop area
-        selection_in_resize: Cell<Option<InResize>>,
+        pub(super) selection_in_resize: Cell<Option<InResize>>,
         /// Set while in drag gesture for moving crop area
-        selection_in_move: Cell<Option<InMove>>,
+        pub(super) selection_in_move: Cell<Option<InMove>>,
 
         // Animates changes between different fixed aspect ratios
         aspect_ratio_animation: OnceCell<adw::TimedAnimation>,
@@ -175,13 +175,13 @@ mod imp {
 
         pub(super) initialized: Cell<bool>,
 
-        #[property(get, set=Self::set_crop_x)]
+        #[property(get, set=Self::set_crop_x, explicit_notify)]
         crop_x: Cell<f32>,
-        #[property(get, set=Self::set_crop_y)]
+        #[property(get, set=Self::set_crop_y, explicit_notify)]
         crop_y: Cell<f32>,
-        #[property(get, set=Self::set_crop_width)]
+        #[property(get, set=Self::set_crop_width, explicit_notify)]
         crop_width: Cell<f32>,
-        #[property(get, set=Self::set_crop_height)]
+        #[property(get, set=Self::set_crop_height, explicit_notify)]
         crop_height: Cell<f32>,
     }
 
@@ -231,7 +231,7 @@ mod imp {
                 .connect_orientation_notify(|x| x.selection().imp().on_aspect_ratio_changed());
 
             // Drag begin
-            self.selection_drag.connect_drag_begin(glib::clone!(
+            self.selection_move.connect_drag_begin(glib::clone!(
                 #[weak]
                 obj,
                 move |gesture, _, _| {
@@ -272,7 +272,7 @@ mod imp {
             ));
 
             // Drag moved
-            self.selection_drag.connect_drag_update(glib::clone!(
+            self.selection_move.connect_drag_update(glib::clone!(
                 #[weak]
                 obj,
                 move |_, x, y| {
@@ -308,7 +308,7 @@ mod imp {
             ));
 
             // Drag finished
-            self.selection_drag.connect_drag_end(glib::clone!(
+            self.selection_move.connect_drag_end(glib::clone!(
                 #[weak]
                 obj,
                 move |_, _, _| {
@@ -673,23 +673,25 @@ mod imp {
         /// Set x coordinate of crop selection rectangle origin
         pub(super) fn set_crop_x(&self, x: f32) {
             if x < 0. {
-                eprintln!("Tried to set x coordinate to {x}");
+                log::error!("Tried to set x coordinate to {x}");
                 return;
             }
 
             self.crop_x.set(x);
             self.space_top_left.set_width_request(x.round() as i32);
+            self.obj().notify_crop_x();
         }
 
         /// Set y coordinate of crop selection rectangle origin
         pub(super) fn set_crop_y(&self, y: f32) {
             if y < 0. {
-                eprintln!("Tried to set y coordinate to {y}");
+                log::error!("Tried to set y coordinate to {y}");
                 return;
             }
 
             self.crop_y.set(y);
             self.space_top_left.set_height_request(y.round() as i32);
+            self.obj().notify_crop_y();
         }
 
         /// Set width of crop selection rectangle
@@ -701,6 +703,7 @@ mod imp {
 
             self.crop_width.set(width);
             self.selection.set_width_request(width.round() as i32);
+            self.obj().notify_crop_width();
         }
 
         /// Set height of crop selection rectangle
@@ -712,6 +715,7 @@ mod imp {
 
             self.crop_height.set(height);
             self.selection.set_height_request(height.round() as i32);
+            self.obj().notify_crop_height();
         }
 
         /// Width of area in which the crop selection can exist
@@ -770,38 +774,34 @@ impl LpEditCropSelection {
     }
 
     pub fn reset(&self, x: f64, y: f64, width: f64, height: f64) {
-        let imp = self.imp();
-
-        self.set_margin_start(x as i32);
-        self.set_margin_top(y as i32);
-        self.set_total_width(width as i32);
-        self.set_total_height(height as i32);
-
-        imp.set_crop_x(0.);
-        imp.set_crop_y(0.);
-        imp.set_crop_width(width as f32);
-        imp.set_crop_height(height as f32);
+        self.set_image_area(x, y, width, height);
+        self.set_crop_size(0., 0., width, height);
     }
 
-    pub fn set_size(&self, x: f64, y: f64, width: f64, height: f64) {
-        let ratio = width as f32 / self.total_width() as f32;
-
-        self.set_crop_x(self.crop_x() * ratio);
-        self.set_crop_y(self.crop_y() * ratio);
-        self.set_crop_width(self.crop_width() * ratio);
-        self.set_crop_height(self.crop_height() * ratio);
-
+    pub fn set_image_area(&self, x: f64, y: f64, width: f64, height: f64) {
         self.set_margin_start(x as i32);
         self.set_margin_top(y as i32);
         self.set_total_width(width as i32);
         self.set_total_height(height as i32);
     }
 
-    pub fn is_copped(&self) -> bool {
+    pub fn set_crop_size(&self, x: f64, y: f64, width: f64, height: f64) {
+        self.set_crop_x(x as f32);
+        self.set_crop_y(y as f32);
+        self.set_crop_width(width as f32);
+        self.set_crop_height(height as f32);
+    }
+
+    pub fn is_cropped(&self) -> bool {
         let untouched = self.crop_x() == 0.
             && self.crop_y() == 0.
             && self.crop_width() as i32 == self.total_width()
             && self.crop_height() as i32 == self.total_height();
         !untouched
+    }
+
+    pub fn is_in_user_change(&self) -> bool {
+        self.imp().selection_in_resize.get().is_some()
+            || self.imp().selection_in_move.get().is_some()
     }
 }
