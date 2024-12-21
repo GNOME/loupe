@@ -58,8 +58,9 @@ impl OperationsSnapshot {
         for operation in operations.operations() {
             let operation_result = match operation {
                 Operation::Clip(rect) => self.clip(*rect),
-                Operation::Rotate(rotation) => self.rotate(*rotation),
                 Operation::MirrorHorizontally => self.mirror_horizontally(),
+                Operation::MirrorVertically => self.mirror_vertically(),
+                Operation::Rotate(rotation) => self.rotate(*rotation),
                 unsupported_operation => {
                     return Err(EditingError::UnsupportedOperation(
                         unsupported_operation.clone(),
@@ -109,6 +110,18 @@ impl OperationsSnapshot {
 
         snapshot.translate(&graphene::Point::new(self.width as f32 * self.scale, 0.));
         snapshot.scale(-1., 1.);
+        snapshot.append_node(self.current_node.clone());
+
+        self.current_node = snapshot.to_node().ok_or(OperationError::EmptyNode)?;
+
+        Ok(())
+    }
+
+    fn mirror_vertically(&mut self) -> Result<(), OperationError> {
+        let snapshot = gtk::Snapshot::new();
+
+        snapshot.translate(&graphene::Point::new(0., self.height as f32 * self.scale));
+        snapshot.scale(1., -1.);
         snapshot.append_node(self.current_node.clone());
 
         self.current_node = snapshot.to_node().ok_or(OperationError::EmptyNode)?;
