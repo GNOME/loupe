@@ -767,6 +767,14 @@ impl LpImageWindow {
         for action in ACTIONS_CURRENT {
             self.action_set_enabled(action, enabled_current);
         }
+
+        // Editing related actions
+        let enable_editing = self
+            .imp()
+            .image_view
+            .current_image()
+            .map_or(false, |x| x.editable());
+        self.action_set_enabled(&Action::Edit, enable_editing);
     }
 
     /// Handles change in image and availability of images
@@ -783,7 +791,7 @@ impl LpImageWindow {
         self.update_title();
 
         // Properties view
-        let current_image = current_page.as_ref().map(|x| x.image());
+        let current_image: Option<LpImage> = current_page.as_ref().map(|x| x.image());
         imp.properties_view.set_image(current_image.as_ref());
 
         let has_image = current_page.is_some();
