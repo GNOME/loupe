@@ -18,9 +18,8 @@
 
 use decoder::DecoderError;
 
-use crate::widgets::LpEditWindow;
-
 use super::*;
+use crate::widgets::LpEditWindow;
 
 impl imp::LpImage {
     // Set filename when (re)loading image
@@ -290,14 +289,14 @@ impl imp::LpImage {
     async fn check_editable(&self) {
         let obj = self.obj();
 
-        if let Some(mime_type) = dbg!(obj.metadata().mime_type()) {
-            if let Ok(supported_formats) = dbg!(glycin::config::Config::cached()
+        if let Some(mime_type) = obj.metadata().mime_type() {
+            if let Ok(supported_formats) = glycin::config::Config::cached()
                 .await
-                .editor(&mime_type.as_str().into()))
+                .editor(&mime_type.as_str().into())
             {
-                if dbg!(LpEditWindow::REQUIRED_OPERATIONS
+                if LpEditWindow::REQUIRED_OPERATIONS
                     .iter()
-                    .all(|x| supported_formats.operations.contains(x)))
+                    .all(|x| supported_formats.operations.contains(x))
                 {
                     self.editable.set(true);
                     obj.notify_editable();
