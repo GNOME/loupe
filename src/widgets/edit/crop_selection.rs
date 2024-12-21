@@ -96,7 +96,6 @@ impl LpAspectRatio {
             Self::R5to4 => Some((5, 4)),
             Self::R4to3 => Some((4, 3)),
             Self::R3to2 => Some((3, 2)),
-            Self::R16to10 => Some((16, 10)),
             Self::R16to9 => Some((16, 9)),
         }
     }
