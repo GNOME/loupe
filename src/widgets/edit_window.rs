@@ -168,6 +168,12 @@ glib::wrapper! {
 }
 
 impl LpEditWindow {
+    pub const REQUIRED_OPERATIONS: &[glycin::OperationId] = &[
+        glycin::OperationId::Clip,
+        glycin::OperationId::MirrorHorizontally,
+        glycin::OperationId::Rotate,
+    ];
+
     pub fn new(image: LpImage) -> Self {
         glib::Object::builder()
             .property("original_image", image)

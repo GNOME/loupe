@@ -160,6 +160,9 @@ mod imp {
         pub(super) fixed_background_color: RefCell<Option<gdk::RGBA>>,
         /// Animations disabled
         pub(super) still: Cell<bool>,
+        /// Editor can be used on image
+        #[property(get)]
+        pub(super) editable: Cell<bool>,
 
         /// Track changes to this image
         pub(super) file_monitor: RefCell<Option<gio::FileMonitor>>,

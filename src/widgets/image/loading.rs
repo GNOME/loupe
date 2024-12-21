@@ -18,6 +18,8 @@
 
 use decoder::DecoderError;
 
+use crate::widgets::LpEditWindow;
+
 use super::*;
 
 impl imp::LpImage {
@@ -284,6 +286,25 @@ impl imp::LpImage {
             }
         }
     }
+
+    async fn check_editable(&self) {
+        let obj = self.obj();
+
+        if let Some(mime_type) = dbg!(obj.metadata().mime_type()) {
+            if let Ok(supported_formats) = dbg!(glycin::config::Config::cached()
+                .await
+                .editor(&mime_type.as_str().into()))
+            {
+                if dbg!(LpEditWindow::REQUIRED_OPERATIONS
+                    .iter()
+                    .all(|x| supported_formats.operations.contains(x)))
+                {
+                    self.editable.set(true);
+                    obj.notify_editable();
+                }
+            }
+        };
+    }
 }
 
 impl LpImage {
@@ -338,5 +359,7 @@ impl LpImage {
         });
 
         imp.decoder.replace(Some(Arc::new(decoder)));
+
+        imp.check_editable().await;
     }
 }
