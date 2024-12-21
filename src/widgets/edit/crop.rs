@@ -15,6 +15,8 @@
 //
 // SPDX-License-Identifier: GPL-3.0-or-later
 
+//! Shows an resizable cropping selection
+
 use std::cell::{Cell, OnceCell};
 
 use adw::prelude::*;
@@ -29,6 +31,7 @@ use crate::util::ErrorType;
 use crate::widgets::edit::LpEditCropSelection;
 use crate::widgets::{LpEditWindow, LpImage};
 
+/// Aspect ratio modes that can be selected
 #[derive(Debug, Clone, Copy, Default, glib::Enum)]
 #[enum_type(name = "LpAspectRatio")]
 pub enum LpAspectRatio {
@@ -108,6 +111,9 @@ mod imp {
             klass.install_action("edit-crop.reset", None, |obj, _, _| {
                 obj.handle_error(obj.imp().apply_reset());
             });
+            klass.install_action("edit-crop.apply-crop", None, |obj, _, _| {
+                obj.handle_error(obj.imp().apply_crop());
+            });
         }
 
         fn instance_init(obj: &glib::subclass::InitializingObject<Self>) {
@@ -126,13 +132,7 @@ mod imp {
 
             self.image.duplicate_from(&obj.original_image());
 
-            self.apply_crop.connect_clicked(glib::clone!(
-                #[weak]
-                obj,
-                move |_| {
-                    obj.handle_error(obj.imp().apply_crop());
-                }
-            ));
+            obj.action_set_enabled("edit-crop.reset", false);
 
             // Selection changed notifications
 
@@ -202,7 +202,7 @@ mod imp {
     impl LpEditCrop {
         fn selection_changed(&self) {
             let apply_sensitive = self.selection.is_copped();
-            self.apply_crop.set_sensitive(apply_sensitive);
+            self.apply_crop.set_visible(apply_sensitive);
         }
 
         fn crop_area_image_coord(&self) -> Option<(u32, u32, u32, u32)> {
@@ -245,10 +245,7 @@ mod imp {
 
         fn apply_crop(&self) -> Result<(), EditingError> {
             if let Some(crop) = self.crop_area_image_coord() {
-                let edit_window = self.obj().edit_window();
-
-                edit_window.add_operation(Operation::Clip(crop));
-                self.image.set_operations(edit_window.operations())?;
+                self.add_operation(Operation::Clip(crop))?;
 
                 self.reset_selection();
             }
@@ -257,10 +254,7 @@ mod imp {
         }
 
         fn apply_mirror(&self) -> Result<(), EditingError> {
-            let edit_window = self.obj().edit_window();
-
-            edit_window.add_operation(Operation::MirrorHorizontally);
-            self.image.set_operations(edit_window.operations())?;
+            self.add_operation(Operation::MirrorHorizontally)?;
 
             self.reset_selection();
 
@@ -268,10 +262,7 @@ mod imp {
         }
 
         fn apply_rotate_cw(&self) -> Result<(), EditingError> {
-            let edit_window = self.obj().edit_window();
-
-            edit_window.add_operation(Operation::Rotate(gufo_common::orientation::Rotation::_90));
-            self.image.set_operations(edit_window.operations())?;
+            self.add_operation(Operation::Rotate(gufo_common::orientation::Rotation::_90))?;
 
             self.reset_selection();
 
@@ -279,10 +270,7 @@ mod imp {
         }
 
         fn apply_rotate_ccw(&self) -> Result<(), EditingError> {
-            let edit_window = self.obj().edit_window();
-
-            edit_window.add_operation(Operation::Rotate(gufo_common::orientation::Rotation::_270));
-            self.image.set_operations(edit_window.operations())?;
+            self.add_operation(Operation::Rotate(gufo_common::orientation::Rotation::_270))?;
 
             self.reset_selection();
 
@@ -295,6 +283,20 @@ mod imp {
             self.image.set_operations(None)?;
             obj.edit_window().set_operations(None);
             self.reset_selection();
+
+            self.obj().action_set_enabled("edit-crop.reset", false);
+
+            Ok(())
+        }
+
+        fn add_operation(&self, operation: Operation) -> Result<(), EditingError> {
+            let obj = self.obj();
+
+            let edit_window = obj.edit_window();
+            edit_window.add_operation(operation);
+            self.image.set_operations(edit_window.operations())?;
+
+            obj.action_set_enabled("edit-crop.reset", true);
 
             Ok(())
         }

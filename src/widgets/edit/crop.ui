@@ -301,7 +301,7 @@
                 <child type="overlay">
                   <object class="GtkButton" id="apply_crop">
                     <property name="label">Apply</property>
-                    <property name="action-name">edit.apply-crop</property>
+                    <property name="action-name">edit-crop.apply-crop</property>
                     <property name="halign">end</property>
                     <property name="valign">start</property>
                     <style>
