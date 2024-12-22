@@ -253,6 +253,7 @@ impl LpWindow {
 
             edit_child.set_child(Some(&LpEditWindow::new(image)));
             self.imp().stack.set_visible_child(edit_child);
+            self.set_fullscreened(false);
         } else {
             log::error!("Can't open image editor since no current image exists");
         }
