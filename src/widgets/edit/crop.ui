@@ -221,12 +221,14 @@
                         <child>
                           <object class="GtkButton">
                             <property name="icon-name">object-rotate-left-symbolic</property>
+                            <property name="tooltip-text" translatable="yes">Rotate Counter Clockwise</property>
                             <property name="action-name">edit-crop.rotate-ccw</property>
                           </object>
                         </child>
                         <child>
                           <object class="GtkButton">
                             <property name="icon-name">object-rotate-right-symbolic</property>
+                            <property name="tooltip-text" translatable="yes">Rotate Clockwise</property>
                             <property name="action-name">edit-crop.rotate-cw</property>
                           </object>
                         </child>
@@ -244,13 +246,15 @@
                         <property name="column-spacing">6</property>
                         <child>
                           <object class="GtkButton">
-                            <property name="icon-name">edit-mirror-symbolic</property>
+                            <property name="icon-name">edit-mirror-horizontally-symbolic</property>
+                            <property name="tooltip-text" translatable="yes">Mirror Horizontally</property>
                             <property name="action-name">edit-crop.mirror-horizontally</property>
                           </object>
                         </child>
                         <child>
                           <object class="GtkButton">
                             <property name="icon-name">edit-mirror-vertically-symbolic</property>
+                            <property name="tooltip-text" translatable="yes">Mirror Vertically</property>
                             <property name="action-name">edit-crop.mirror-vertically</property>
                           </object>
                         </child>
@@ -263,6 +267,7 @@
                     <child>
                       <object class="GtkButton">
                         <property name="label">_Reset</property>
+                        <property name="tooltip-text" translatable="yes">Undo Changes in this View</property>
                         <property name="use-underline">true</property>
                         <property name="action-name">edit-crop.reset</property>
                         <property name="vexpand">true</property>
@@ -375,14 +380,16 @@
                     <child>
                       <object class="GtkButton">
                         <property name="icon-name">object-rotate-left-symbolic</property>
+                        <property name="tooltip-text" translatable="yes">Rotate Counter Clockwise</property>
                         <property name="action-name">edit-crop.rotate-ccw</property>
                         <property name="valign">start</property>
                       </object>
                     </child>
                     <child>
                       <object class="GtkButton">
-                        <property name="icon-name">edit-mirror-symbolic</property>
-                        <property name="action-name">edit-crop.mirror</property>
+                        <property name="icon-name">edit-mirror-horizontally-symbolic</property>
+                        <property name="tooltip-text" translatable="yes">Mirror Horizontally</property>
+                        <property name="action-name">edit-crop.mirror-horizontally</property>
                         <property name="valign">start</property>
                       </object>
                     </child>
@@ -395,7 +402,9 @@
                     <property name="hexpand">true</property>
                     <child>
                       <object class="GtkButton">
-                        <property name="label">Reset</property>
+                        <property name="label">_Reset</property>
+                        <property name="use-underline">true</property>
+                        <property name="tooltip-text" translatable="yes">Undo Changes in this View</property>
                         <property name="action-name">edit-crop.reset</property>
                         <property name="valign">start</property>
                         <style>

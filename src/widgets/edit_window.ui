@@ -11,12 +11,14 @@
             <property name="show-end-title-buttons">false</property>
             <child type="start">
               <object class="GtkButton" id="cancel">
-                <property name="label" translatable="true">Cancel</property>
+                <property name="label" translatable="true">_Cancel</property>
+                <property name="use-underline">true</property>
               </object>
             </child>
             <child type="end">
               <object class="GtkButton" id="save">
-                <property name="label" translatable="true">Save</property>
+                <property name="label" translatable="true">_Save</property>
+                <property name="use-underline">true</property>
                 <style>
                   <class name="suggested-action" />
                 </style>
