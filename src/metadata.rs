@@ -1,4 +1,4 @@
-// Copyright (c) 2022-2024 Sophie Herold
+// Copyright (c) 2022-2025 Sophie Herold
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -15,10 +15,7 @@
 //
 // SPDX-License-Identifier: GPL-3.0-or-later
 
-/*! Resources for working with EXIF Metadata
-
-- <https://github.com/ianare/exif-samples>
-*/
+//! Metadata handling
 
 mod file;
 

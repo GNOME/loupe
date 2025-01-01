@@ -1,4 +1,4 @@
-// Copyright (c) 2024 Sophie Herold
+// Copyright (c) 2024-2025 Sophie Herold
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -27,7 +27,7 @@ Code documentation
 Simplified widget arrangement including the most important widgets.
 
 -   [`LpWindow`]
-    -   [`LpWindowContents`]
+    -   [`LpImageWindow`]
         -   [`LpPropertiesView`]
         -   [`LpImageView`]
             -   [`LpSlidingView`]
@@ -35,14 +35,19 @@ Simplified widget arrangement including the most important widgets.
                     -   [`GtkScrolledWindow`]
                         -   [`LpImage`]
                 -   …
+    -   [`LpEditWindow`]
+        - [`LpEditCrop`]
+
 
 [`GtkScrolledWindow`]: gtk::ScrolledWindow
+[`LpEditCrop`]: widgets::edit::LpEditCrop
+[`LpEditWindow`]: widgets::LpEditWindow
 [`LpImagePage`]: widgets::LpImagePage
 [`LpImageView`]: widgets::LpImageView
+[`LpImageWindow`]: widgets::LpImageWindow
 [`LpImage`]: widgets::LpImage
 [`LpPropertiesView`]: widgets::LpPropertiesView
 [`LpSlidingView`]: widgets::LpSlidingView
-[`LpWindowContents`]: widgets::LpWindowContents
 [`LpWindow`]: widgets::LpWindow
 */
 
