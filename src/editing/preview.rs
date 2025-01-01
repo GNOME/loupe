@@ -1,4 +1,4 @@
-// Copyright (c) 2024 Sophie Herold
+// Copyright (c) 2024-2025 Sophie Herold
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -139,7 +139,7 @@ impl OperationsSnapshot {
         let y_center = self.height as f32 * self.scale / 2.;
 
         snapshot.translate(&graphene::Point::new(y_center, x_center));
-        snapshot.rotate(rotation.degrees() as f32);
+        snapshot.rotate(-(rotation.degrees() as f32));
         snapshot.translate(&graphene::Point::new(-x_center, -y_center));
 
         snapshot.append_node(self.current_node.clone());

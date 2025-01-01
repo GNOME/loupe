@@ -1,4 +1,4 @@
-// Copyright (c) 2024 Sophie Herold
+// Copyright (c) 2024-2025 Sophie Herold
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -295,13 +295,13 @@ mod imp {
         }
 
         fn apply_rotate_cw(&self) {
-            self.add_operation(Operation::Rotate(gufo_common::orientation::Rotation::_90));
+            self.add_operation(Operation::Rotate(gufo_common::orientation::Rotation::_270));
 
             self.reset_selection();
         }
 
         fn apply_rotate_ccw(&self) {
-            self.add_operation(Operation::Rotate(gufo_common::orientation::Rotation::_270));
+            self.add_operation(Operation::Rotate(gufo_common::orientation::Rotation::_90));
 
             self.reset_selection();
         }
