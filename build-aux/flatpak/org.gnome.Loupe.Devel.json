@@ -113,7 +113,7 @@
                 {
                     "type": "git",
                     "url": "https://gitlab.gnome.org/GNOME/glycin.git",
-                    "commit": "a7922d4435d3d8db392b33f4733ea164bc78c77f"
+                    "commit": "b3fcc4f0b4ad11ce1f7d158fc5a3a54c9a7dedde"
                 }
             ]
         },
