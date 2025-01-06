@@ -16,7 +16,10 @@ x11 = ["ashpd/gtk4_x11"]
 adw = { package = "libadwaita", version = "0.7.0", features = ["v1_6"] }
 anyhow = { version = "1.0.66" }
 arc-swap = "1.6.0"
-ashpd = { version = "0.10.2", features = ["gtk4_wayland"] }
+ashpd = { version = "0.10.2", default-features = false, features = [
+    "gtk4_wayland",
+    "async-std",
+] }
 async-channel = "2.1.0"
 async-lock = "3.4.0"
 cairo-rs = { version = "0.20.0", features = ["pdf"] }
@@ -24,20 +27,13 @@ chrono = { version = "0.4.38", default-features = false, features = ["std"] }
 gettext-rs = { version = "0.7.0", features = ["gettext-system"] }
 gettext-sys = { version = "0.22.5", features = ["gettext-system"] }
 gio = { version = "0.20.0", features = ["v2_74"] }
-glycin = { version = "2.0.1", features = [
-    "gdk4",
-], git = "https://gitlab.gnome.org/GNOME/glycin.git", rev = "b3fcc4f0b4ad11ce1f7d158fc5a3a54c9a7dedde" }
+glycin = { version = "2.1.0-alpha.1", features = ["gdk4"] }
 gtk = { package = "gtk4", version = "0.9.5", features = [
     "v4_14",
     "xml_validation",
 ] }
-gufo = { version = "0.2.0", git = "https://github.com/gufo-rs/gufo.git", features = [
-    "chrono",
-    "all-image-formats",
-] }
-gufo-common = { version = "0.2.0", features = [
-    "serde",
-], git = "https://github.com/gufo-rs/gufo.git" }
+gufo = { version = "0.2.0-alpha.1", features = ["chrono", "all-image-formats"] }
+gufo-common = { version = "0.2.0-alpha", features = ["serde"] }
 gvdb-macros = "0.1.6"
 indexmap = "2.0.0"
 libc = "0.2.158"
