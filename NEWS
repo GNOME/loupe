@@ -1,3 +1,26 @@
+## 48.alpha (Unreleased)
+
+### Added
+
+- Display XMP metadata for JPEG images.
+- Initial support for image editing of JPEGs and PNGs with crop, rotate, and flip.
+- Show the correct folder name in the properties view inside flatpaks if the file is only accessible via portal.
+- User comment field in metadata.
+
+### Fixed
+
+- The sort order is now also following the one found in Files (Nautilus) if the file name contains non-ascii characters.
+
+### Changed
+
+- The design of the overlay buttons, especially for zoom controls has been reworked. A new menu supports selecting from pre-defined zoom levels as well as entering a specific zoom level.
+
+## 47.2 (2024-11-22)
+
+### Fixed
+
+- Don't call style manager in application constructor since this is too early. Do it in startup instead. Without this fix, GTK 4.17.0 will terminate the app on startup.
+
 ## 47.1 (2024-10-16)
 
 ### Added

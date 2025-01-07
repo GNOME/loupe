@@ -24,9 +24,9 @@ mime_types += [
   'image/x-portable-graymap',
   'image/x-portable-pixmap',
   'image/x-portable-anymap',
-  # Qoi's MIME type is being worked on.
-  # See: https://github.com/phoboslab/qoi/issues/167
+  # Both mime types exist in the wild
   'image/x-qoi',
+  'image/qoi',
 ]
 
 # SVG
