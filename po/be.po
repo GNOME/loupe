@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2024-10-27 23:33+0000\n"
-"PO-Revision-Date: 2024-11-03 16:20+0300\n"
+"POT-Creation-Date: 2024-11-25 09:24+0000\n"
+"PO-Revision-Date: 2025-01-09 13:20+0300\n"
 "Last-Translator: Yuras Shumovich <shumovichy@gmail.com>\n"
 "Language-Team: Belarusian <i18n-bel-gnome@googlegroups.com>\n"
 "Language: be\n"
@@ -258,47 +258,46 @@ msgstr "Юрась Шумовіч <shumovichy@gmail.com>"
 msgid "Copyright © 2020–2024 Christopher Davis et al."
 msgstr "Аўтарскае права © 2020–2024 Christopher Davis і інш."
 
-#: src/file_model.rs:131
+#: src/file_model.rs:177
 msgid "Could not list other files in directory."
 msgstr "Не ўдалося скласці спіс іншых файлаў у каталогу."
 
 #. Translators: Display of the f-number <https://en.wikipedia.org/wiki/F-number>. {} will be replaced with the number
-#: src/metadata.rs:264
+#: src/metadata.rs:245
 msgid "\\u{192}\\u{2215}{}"
 msgstr "\\u{192}\\u{2215}{}"
 
 #. Translators: Fractional exposure time (photography) in seconds
-#: src/metadata.rs:280
+#: src/metadata.rs:258
 msgid "1\\u{2215}{}\\u{202F}s"
 msgstr "1\\u{2215}{}\\u{202F}с"
 
 #. Translators: Exposure time (photography) in seconds
-#: src/metadata.rs:288
+#: src/metadata.rs:266
 msgid "{}\\u{202F}s"
 msgstr "{}\\u{202F}с"
 
-#. Translators: Unit for focal length in millimeters
-#: src/metadata.rs:314
+#: src/metadata.rs:280
 msgid "{}\\u{202F}mm"
 msgstr "{}\\u{202F}мм"
 
 #. Translators: short for "north" in GPS coordinate
-#: src/metadata/gps.rs:165
+#: src/metadata.rs:320
 msgid "N"
 msgstr "Пн"
 
 #. Translators: short for "south" in GPS coordinate
-#: src/metadata/gps.rs:168
+#: src/metadata.rs:324
 msgid "S"
 msgstr "Пд"
 
 #. Translators: short for "east" in GPS coordinate
-#: src/metadata/gps.rs:190
+#: src/metadata.rs:333
 msgid "E"
 msgstr "У"
 
 #. Translators: short for "west" in GPS coordinate
-#: src/metadata/gps.rs:193
+#: src/metadata.rs:337
 msgid "W"
 msgstr "З"
 
@@ -420,11 +419,11 @@ msgstr "{} %"
 
 #. Translators: This is a toast notification, informing the user that
 #. an image has been set as background.
-#: src/widgets/image_view.rs:837
+#: src/widgets/image_view.rs:843
 msgid "Set as background."
 msgstr "Задаць як фон."
 
-#: src/widgets/image_view.rs:850
+#: src/widgets/image_view.rs:856
 msgid "Could not set background."
 msgstr "Не ўдалося задаць фон."
 
@@ -569,30 +568,30 @@ msgstr "Запаўненне _прасторы"
 msgid "H_eight"
 msgstr "В_ышыня"
 
-#: src/widgets/properties_view.rs:255
+#: src/widgets/properties_view.rs:258
 msgid "Unknown"
 msgstr "Невядома"
 
 #. Translators: Addition of image being transparent to format name
-#: src/widgets/properties_view.rs:259
+#: src/widgets/properties_view.rs:262
 msgid ", transparent"
 msgstr ", празрыстасць"
 
 #. Translators: Addition of image being grayscale to format name
-#: src/widgets/properties_view.rs:264
+#: src/widgets/properties_view.rs:267
 msgid ", grayscale"
 msgstr ", градацыі шэрага"
 
 #. Translators: Addition of bit size to format name
-#: src/widgets/properties_view.rs:269
+#: src/widgets/properties_view.rs:272
 msgid ", {}\\u{202F}bit"
 msgstr ", {}\\u{202F}біт"
 
-#: src/widgets/properties_view.rs:287
+#: src/widgets/properties_view.rs:290
 msgid "{}\\u{202F}\\u{D7}\\u{202F}{}"
 msgstr "{}\\u{202F}\\u{D7}\\u{202F}{}"
 
-#: src/widgets/properties_view.rs:326
+#: src/widgets/properties_view.rs:329
 msgid "Image Coordinates Copied"
 msgstr "Каардынаты выявы скапіяваны"
 
@@ -643,22 +642,26 @@ msgid "Originally Created"
 msgstr "Першапачаткова створана"
 
 #: src/widgets/properties_view.ui:159
+msgid "Comment"
+msgstr "Каментарый"
+
+#: src/widgets/properties_view.ui:169
 msgid "Aperture"
 msgstr "Дыяфрагма"
 
-#: src/widgets/properties_view.ui:169
+#: src/widgets/properties_view.ui:179
 msgid "Exposure"
 msgstr "Экспазіцыя"
 
-#: src/widgets/properties_view.ui:179
+#: src/widgets/properties_view.ui:189
 msgid "ISO"
 msgstr "ISO"
 
-#: src/widgets/properties_view.ui:189
+#: src/widgets/properties_view.ui:199
 msgid "Focal Length"
 msgstr "Фокусная адлегласць"
 
-#: src/widgets/properties_view.ui:199
+#: src/widgets/properties_view.ui:209
 msgid "Maker, Model"
 msgstr "Вытворца, мадэль"
 
