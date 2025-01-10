@@ -78,7 +78,7 @@
   <releases>
     <release version="48.alpha" date="2025-01-07">
       <description>
-        <p>This new release adds image editing support for PNGs and JPEGs. Images can be cropped, rotated, and flipped. New zoom controls allow to set a specific zoom level and feature a more compact style. Support for additional metadata formats like XMP and new image information fields have been added as well.</p>
+        <p>This release adds image editing support for PNGs and JPEGs. Images can be cropped, rotated, and flipped. New zoom controls allow setting a specific zoom level and features a more compact style. Support for additional metadata formats like XMP and new image information fields have been added as well.</p>
       </description>
     </release>
     <release version="47.1" date="2024-10-16">
