@@ -9,16 +9,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2024-09-24 18:26+0000\n"
-"PO-Revision-Date: 2024-09-25 08:00+0300\n"
-"Last-Translator: Emin Tufan Çetin <etcetin@gmail.com>\n"
+"POT-Creation-Date: 2024-11-25 09:24+0000\n"
+"PO-Revision-Date: 2024-12-01 00:16+0300\n"
+"Last-Translator: Sabri Ünal <yakushabb@gmail.com>\n"
 "Language-Team: Turkish <takim@gnome.org.tr>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 3.4.3\n"
+"X-Generator: Poedit 3.5\n"
 
 #: data/org.gnome.Loupe.desktop.in.in:3
 #: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:31 src/window.rs:897
@@ -264,47 +264,46 @@ msgstr ""
 msgid "Copyright © 2020–2024 Christopher Davis et al."
 msgstr "Telif Hakkı © 2020–2024 Christopher Davis ve ark."
 
-#: src/file_model.rs:131
+#: src/file_model.rs:177
 msgid "Could not list other files in directory."
 msgstr "Dizindeki diğer dosyalar listelenemedi."
 
 #. Translators: Display of the f-number <https://en.wikipedia.org/wiki/F-number>. {} will be replaced with the number
-#: src/metadata.rs:253
+#: src/metadata.rs:245
 msgid "\\u{192}\\u{2215}{}"
 msgstr "\\u{192}\\u{2215}{}"
 
 #. Translators: Fractional exposure time (photography) in seconds
-#: src/metadata.rs:269
+#: src/metadata.rs:258
 msgid "1\\u{2215}{}\\u{202F}s"
 msgstr "1\\u{2215}{}\\u{202F}sn"
 
 #. Translators: Exposure time (photography) in seconds
-#: src/metadata.rs:277
+#: src/metadata.rs:266
 msgid "{}\\u{202F}s"
 msgstr "{}\\u{202F}sn"
 
-#. Translators: Unit for focal length in millimeters
-#: src/metadata.rs:303
+#: src/metadata.rs:280
 msgid "{}\\u{202F}mm"
 msgstr "{}\\u{202F}mm"
 
 #. Translators: short for "north" in GPS coordinate
-#: src/metadata/gps.rs:165
+#: src/metadata.rs:320
 msgid "N"
 msgstr "K"
 
 #. Translators: short for "south" in GPS coordinate
-#: src/metadata/gps.rs:168
+#: src/metadata.rs:324
 msgid "S"
 msgstr "G"
 
 #. Translators: short for "east" in GPS coordinate
-#: src/metadata/gps.rs:190
+#: src/metadata.rs:333
 msgid "E"
 msgstr "D"
 
 #. Translators: short for "west" in GPS coordinate
-#: src/metadata/gps.rs:193
+#: src/metadata.rs:337
 msgid "W"
 msgstr "B"
 
@@ -425,11 +424,11 @@ msgstr "%{}"
 
 #. Translators: This is a toast notification, informing the user that
 #. an image has been set as background.
-#: src/widgets/image_view.rs:824
+#: src/widgets/image_view.rs:843
 msgid "Set as background."
 msgstr "Arka plan olarak ayarla."
 
-#: src/widgets/image_view.rs:837
+#: src/widgets/image_view.rs:856
 msgid "Could not set background."
 msgstr "Arka plan ayarlanamadı."
 
@@ -574,30 +573,30 @@ msgstr "_Dolgu Boşluğu"
 msgid "H_eight"
 msgstr "_Yükseklik"
 
-#: src/widgets/properties_view.rs:255
+#: src/widgets/properties_view.rs:258
 msgid "Unknown"
 msgstr "Bilinmeyen"
 
 #. Translators: Addition of image being transparent to format name
-#: src/widgets/properties_view.rs:259
+#: src/widgets/properties_view.rs:262
 msgid ", transparent"
 msgstr ", saydam"
 
 #. Translators: Addition of image being grayscale to format name
-#: src/widgets/properties_view.rs:264
+#: src/widgets/properties_view.rs:267
 msgid ", grayscale"
 msgstr ", gri tonlama"
 
 #. Translators: Addition of bit size to format name
-#: src/widgets/properties_view.rs:269
+#: src/widgets/properties_view.rs:272
 msgid ", {}\\u{202F}bit"
 msgstr ", {}\\u{202F}bit"
 
-#: src/widgets/properties_view.rs:287
+#: src/widgets/properties_view.rs:290
 msgid "{}\\u{202F}\\u{D7}\\u{202F}{}"
 msgstr "{}\\u{202F}\\u{D7}\\u{202F}{}"
 
-#: src/widgets/properties_view.rs:326
+#: src/widgets/properties_view.rs:329
 msgid "Image Coordinates Copied"
 msgstr "Resim Koordinatları Kopyalandı"
 
@@ -647,22 +646,26 @@ msgid "Originally Created"
 msgstr "Özgün Oluşturulma"
 
 #: src/widgets/properties_view.ui:159
+msgid "Comment"
+msgstr "Yorum"
+
+#: src/widgets/properties_view.ui:169
 msgid "Aperture"
 msgstr "Açıklık"
 
-#: src/widgets/properties_view.ui:169
+#: src/widgets/properties_view.ui:179
 msgid "Exposure"
 msgstr "Pozlama"
 
-#: src/widgets/properties_view.ui:179
+#: src/widgets/properties_view.ui:189
 msgid "ISO"
 msgstr "ISO"
 
-#: src/widgets/properties_view.ui:189
+#: src/widgets/properties_view.ui:199
 msgid "Focal Length"
 msgstr "Odak Uzaklığı"
 
-#: src/widgets/properties_view.ui:199
+#: src/widgets/properties_view.ui:209
 msgid "Maker, Model"
 msgstr "Üretici, Model"
 
