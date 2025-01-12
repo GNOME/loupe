@@ -461,6 +461,16 @@ impl LpPrint {
             return;
         };
 
+        let preview_image = LpImage::new_still();
+        preview_image.set_fixed_background_color(Some(gdk::RGBA::new(0.94, 0.94, 0.94, 1.)));
+        glib::spawn_future_local(glib::clone!(
+            #[strong]
+            preview_image,
+            #[strong]
+            file,
+            async move { preview_image.load(&file).await }
+        ));
+
         let print_dialog = gtk::PrintDialog::builder()
             .accept_label(gettext("Continue…"))
             .title(gettext("Print Image"))
@@ -489,25 +499,17 @@ impl LpPrint {
                 Ok(print_setup) => print_setup,
             };
 
-            Self::new(image, parent, print_dialog, print_setup);
+            Self::new(image, preview_image, parent, print_dialog, print_setup);
         });
     }
 
     pub fn new(
         image: LpImage,
+        preview_image: LpImage,
         parent: gtk::Window,
         print_dialog: gtk::PrintDialog,
         print_setup: gtk::PrintSetup,
     ) -> Self {
-        let preview_image = LpImage::new_still();
-        preview_image.set_fixed_background_color(Some(gdk::RGBA::new(0.94, 0.94, 0.94, 1.)));
-        if let Some(file) = image.file() {
-            let preview_image_ = preview_image.clone();
-            glib::spawn_future_local(async move { preview_image_.load(&file).await });
-        } else {
-            log::error!("Trying to print image without file");
-        }
-
         let obj: Self = glib::Object::builder()
             .property("image", image)
             .property("preview-image", preview_image)
