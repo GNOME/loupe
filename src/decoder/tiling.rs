@@ -117,7 +117,7 @@ impl Tile {
         snapshot.append_scaled_texture(&self.texture, options.scaling_filter, &area_with_bleed);
         snapshot.pop();
 
-        if std::env::var_os("LOUPE_TILING_DEBUG").map_or(false, |x| x.len() > 0) {
+        if std::env::var_os("LOUPE_TILING_DEBUG").is_some_and(|x| x.len() > 0) {
             snapshot.append_inset_shadow(
                 &gsk::RoundedRect::from_rect(area, 0.),
                 &gdk::RGBA::new(1., 0., 0., 0.7),
@@ -180,14 +180,14 @@ impl FrameBuffer {
     pub fn contains(&self, zoom: f64, coordinates: Coordinates) -> bool {
         self.images
             .front()
-            .map_or(false, |x| x.contains(zoom, coordinates))
+            .is_some_and(|x| x.contains(zoom, coordinates))
     }
 
     /// Returns true if there are no textures
     pub fn is_empty(&self) -> bool {
         self.images
             .front()
-            .map_or(false, |x| x.tile_layers.is_empty())
+            .is_some_and(|x| x.tile_layers.is_empty())
     }
 }
 

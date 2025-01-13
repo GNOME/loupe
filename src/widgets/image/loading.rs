@@ -210,7 +210,7 @@ impl imp::LpImage {
                     let obj = self.obj().to_owned();
 
                     // current file got replaced with a new one
-                    let file_replace = obj.file().map_or(false, |x| x.equal(&file));
+                    let file_replace = obj.file().is_some_and(|x| x.equal(&file));
                     if file_replace {
                         log::debug!("Image got replaced {}", file.uri());
                         // TODO: error handling is missing

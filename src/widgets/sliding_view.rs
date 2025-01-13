@@ -509,7 +509,7 @@ impl LpSlidingView {
 
         if let Some(index) = self.index_of(page) {
             // Only unparent if far enough away to not be involved in delete animation
-            if current_index.map_or(false, |x| x.abs_diff(index) as isize > 1) {
+            if current_index.is_some_and(|x| x.abs_diff(index) as isize > 1) {
                 page.unparent();
             }
 
@@ -598,7 +598,7 @@ impl LpSlidingView {
         if let Some(index) = self.index_of(page) {
             if self
                 .current_index()
-                .map_or(false, |x| (x as i64 - index as i64).abs() == 1)
+                .is_some_and(|x| (x as i64 - index as i64).abs() == 1)
             {
                 self.step_to(page);
             } else {

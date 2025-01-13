@@ -257,7 +257,7 @@ mod imp {
                             corner,
                             initial_selection: crop_area,
                         }));
-                    } else if hovered_widget.map_or(false, |x| x == *imp.selection) {
+                    } else if hovered_widget.is_some_and(|x| x == *imp.selection) {
                         gesture.set_state(gtk::EventSequenceState::Claimed);
 
                         let crop_area = imp.crop_area();

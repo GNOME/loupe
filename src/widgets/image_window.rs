@@ -438,10 +438,10 @@ mod imp {
 
     impl LpImageWindow {
         fn is_showing_image(&self) -> bool {
-            self.image_view.try_get().map_or(false, |image_view| {
+            self.image_view.try_get().is_some_and(|image_view| {
                 image_view
                     .current_page()
-                    .map_or(false, |page| page.image().error().is_none())
+                    .is_some_and(|page| page.image().error().is_none())
             })
         }
     }
@@ -778,7 +778,7 @@ impl LpImageWindow {
             .imp()
             .image_view
             .current_image()
-            .map_or(false, |x| x.editable());
+            .is_some_and(|x| x.editable());
         self.action_set_enabled(&Action::Edit, enable_editing);
     }
 
