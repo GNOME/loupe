@@ -32,7 +32,7 @@ use crate::widgets::edit::LpEditCropSelection;
 use crate::widgets::{LpEditWindow, LpImage};
 
 /// Aspect ratio modes that can be selected
-#[derive(Debug, Clone, Copy, Default, glib::Enum)]
+#[derive(Debug, Clone, Copy, Default, glib::Enum, glib::Variant)]
 #[enum_type(name = "LpAspectRatio")]
 pub enum LpAspectRatio {
     #[default]
@@ -306,12 +306,20 @@ mod imp {
             self.reset_selection();
         }
 
+        /// Undo all operations that can be done in this window
         fn apply_reset(&self) -> Result<(), EditingError> {
             let obj = self.obj();
 
             self.image.set_operations(None)?;
             obj.edit_window().set_operations(None);
             self.reset_selection();
+            let res = self.obj().activate_action(
+                "edit-crop.aspect-ratio",
+                Some(&LpAspectRatio::default().to_variant()),
+            );
+            if let Err(err) = res {
+                log::error!("Failed to call action edit-crop.aspect-ratio: {err}");
+            }
 
             self.obj().action_set_enabled("edit-crop.reset", false);
 
