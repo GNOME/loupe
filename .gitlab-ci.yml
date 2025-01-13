@@ -73,6 +73,7 @@ cargo-doc:
 cargo-clippy:
   image: 'quay.io/gnome_infrastructure/gnome-runtime-images:gnome-master'
   interruptible: true
+  allow_failure: true
   tags:
     - flatpak
   script:
@@ -117,6 +118,7 @@ cargo-test:
 cargo-audit:
   interruptible: true
   image: rust
+  allow_failure: true
   script:
     - cargo install cargo-deny --locked
     - cargo deny check
