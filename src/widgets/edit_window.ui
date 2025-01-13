@@ -16,9 +16,72 @@
               </object>
             </child>
             <child type="end">
-              <object class="GtkButton" id="save">
-                <property name="label" translatable="true">_Save</property>
+              <object class="GtkMenuButton" id="save">
+                <property name="label" translatable="true">_Done</property>
                 <property name="use-underline">true</property>
+                <property name="popover">
+                  <object class="GtkPopover">
+                    <style>
+                      <class name="menu" />
+                    </style>
+                    <property name="child">
+                      <object class="GtkListBox">
+                        <property name="selection-mode">none</property>
+                        <child>
+                          <object class="GtkListBoxRow">
+                            <property name="action-name">edit.save-copy</property>
+                            <child>
+                              <object class="GtkBox">
+                                <property name="orientation">vertical</property>
+                                <child>
+                                  <object class="GtkLabel">
+                                    <property name="label">Save as Copy…</property>
+                                    <property name="xalign">0</property>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="GtkLabel">
+                                    <property name="label">Keep original and create a new file</property>
+                                    <property name="xalign">0</property>
+                                    <style>
+                                      <class name="dim-label" />
+                                      <class name="caption" />
+                                    </style>
+                                  </object>
+                                </child>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="GtkListBoxRow">
+                            <child>
+                              <object class="GtkBox">
+                                <property name="orientation">vertical</property>
+                                <child>
+                                  <object class="GtkLabel">
+                                    <property name="label">Replace Original…</property>
+                                    <property name="xalign">0</property>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="GtkLabel">
+                                    <property name="label">Original image will be moved to the trash</property>
+                                    <property name="xalign">0</property>
+                                    <style>
+                                      <class name="dim-label" />
+                                      <class name="caption" />
+                                    </style>
+                                  </object>
+                                </child>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                      </object>
+                    </property>
+                  </object>
+                </property>
                 <style>
                   <class name="suggested-action" />
                 </style>

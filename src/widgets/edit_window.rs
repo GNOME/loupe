@@ -40,8 +40,6 @@ mod imp {
         toolbar_view: TemplateChild<adw::ToolbarView>,
         #[template_child]
         cancel: TemplateChild<gtk::Button>,
-        #[template_child]
-        save: TemplateChild<gtk::Button>,
 
         #[property(get, construct_only)]
         original_image: OnceCell<LpImage>,
@@ -57,6 +55,14 @@ mod imp {
 
         fn class_init(klass: &mut Self::Class) {
             Self::bind_template(klass);
+
+            klass.install_action("edit.save-copy", None, |obj, _, _| {
+                glib::spawn_future_local(glib::clone!(
+                    #[weak]
+                    obj,
+                    async move { obj.imp().save_image().await }
+                ));
+            });
         }
 
         fn instance_init(obj: &glib::subclass::InitializingObject<Self>) {
@@ -79,14 +85,6 @@ mod imp {
                 obj,
                 move |_| {
                     obj.window().show_image();
-                }
-            ));
-
-            self.save.connect_clicked(glib::clone!(
-                #[weak]
-                obj,
-                move |_| {
-                    glib::spawn_future_local(async move { obj.imp().save_image().await });
                 }
             ));
         }
