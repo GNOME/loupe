@@ -1,4 +1,4 @@
-// Copyright (c) 2023-2024 Sophie Herold
+// Copyright (c) 2023-2025 Sophie Herold
 // Copyright (c) 2023 Alice Mikhaylenko
 // Copyright (c) 2023 Christopher Davis
 // Copyright (c) 2023 Lubosz Sarnecki
