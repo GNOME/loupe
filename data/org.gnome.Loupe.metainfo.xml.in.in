@@ -76,7 +76,7 @@
   </categories>
 
   <releases>
-    <release version="47.3" date="2025-01-13">
+    <release version="47.4" date="2025-01-13">
       <description>
         <p>An issue with the print preview sometimes not displaying SVGs was fixed.</p>
       </description>
