@@ -76,6 +76,11 @@
   </categories>
 
   <releases>
+    <release version="47.3" date="2025-01-13">
+      <description>
+        <p>An issue with the print preview sometimes not displaying SVGs was fixed.</p>
+      </description>
+    </release>
     <release version="47.2" date="2024-11-22">
       <description>
         <p>Fix an issue with the app not starting under GTK 4.17.</p>
