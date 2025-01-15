@@ -115,4 +115,38 @@ impl LpImage {
             self.imp().untransformed_dimensions()
         }
     }
+
+    pub async fn can_trash(&self) -> bool {
+        let Some(file) = self.file() else {
+            return false;
+        };
+
+        if file.path().is_none() {
+            // The trash portal only supports fds anyway
+            return false;
+        }
+
+        let file_info = file
+            .query_info_future(
+                gio::FILE_ATTRIBUTE_ACCESS_CAN_TRASH,
+                gio::FileQueryInfoFlags::NONE,
+                glib::Priority::DEFAULT,
+            )
+            .await;
+
+        match file_info {
+            Err(err) => {
+                log::error!(
+                    "Failed to obtain CAN_TRASH attribute for '{}': {err}",
+                    file.uri()
+                );
+                // Assume we can't trash if we don't have any infos
+                false
+            }
+            Ok(file_info) => {
+                file_info.has_attribute(gio::FILE_ATTRIBUTE_ACCESS_CAN_TRASH)
+                    && file_info.boolean(gio::FILE_ATTRIBUTE_ACCESS_CAN_TRASH)
+            }
+        }
+    }
 }

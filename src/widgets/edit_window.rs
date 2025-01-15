@@ -40,6 +40,8 @@ mod imp {
         toolbar_view: TemplateChild<adw::ToolbarView>,
         #[template_child]
         cancel: TemplateChild<gtk::Button>,
+        #[template_child]
+        done: TemplateChild<gtk::MenuButton>,
 
         #[property(get, construct_only)]
         original_image: OnceCell<LpImage>,
@@ -60,7 +62,15 @@ mod imp {
                 glib::spawn_future_local(glib::clone!(
                     #[weak]
                     obj,
-                    async move { obj.imp().save_image().await }
+                    async move { obj.imp().save_copy().await }
+                ));
+            });
+
+            klass.install_action("edit.save-overwrite", None, |obj, _, _| {
+                glib::spawn_future_local(glib::clone!(
+                    #[weak]
+                    obj,
+                    async move { obj.imp().save_overwrite().await }
                 ));
             });
         }
@@ -87,6 +97,15 @@ mod imp {
                     obj.window().show_image();
                 }
             ));
+
+            glib::spawn_future_local(glib::clone!(
+                #[weak]
+                obj,
+                async move {
+                    let can_trash = obj.original_image().can_trash().await;
+                    obj.action_set_enabled("edit.save-overwrite", can_trash);
+                }
+            ));
         }
     }
 
@@ -94,8 +113,9 @@ mod imp {
     impl BinImpl for LpEditWindow {}
 
     impl LpEditWindow {
-        async fn save_image(&self) {
+        async fn save_copy(&self) {
             let obj = self.obj();
+            self.done.popdown();
 
             if let Some(current_file) = obj.original_image().file() {
                 let file_dialog = gtk::FileDialog::new();
@@ -107,55 +127,113 @@ mod imp {
                         log::error!("{}", err);
                     }
                     Ok(new_file) => {
-                        let editor = glycin::Editor::new(current_file);
-                        if let Some(operations) = obj.operations() {
-                            log::debug!("Computing edited image.");
-                            let result = editor.apply_complete(&operations).await;
-                            match result {
-                                Err(err) => {
-                                    log::warn!("Failed to edit image: {err}");
-                                    obj.window().show_error(
-                                        &gettext("Failed to edit image."),
+                        self.save(current_file, new_file).await;
+                    }
+                }
+            }
+        }
+
+        async fn save_overwrite(&self) {
+            let obj = self.obj();
+            self.done.popdown();
+
+            if let Some(current_file) = obj.original_image().file() {
+                if let Some(current_path) = current_file.path() {
+                    if let Some(mut file_stem) = current_path.file_stem().map(|x| x.to_os_string())
+                    {
+                        let mut tmp_path = current_path.clone();
+                        file_stem.push(".tmp");
+                        if let Some(ext) = current_path.extension() {
+                            file_stem.push(".");
+                            file_stem.push(ext);
+                        }
+                        tmp_path.set_file_name(file_stem);
+
+                        let new_file = gio::File::for_path(&tmp_path);
+                        let written = self.save(current_file.clone(), new_file.clone()).await;
+
+                        if written {
+                            if let Err(err) =
+                                current_file.trash_future(glib::Priority::DEFAULT).await
+                            {
+                                obj.window().show_error(
+                                    &gettext("Failed to save image."),
+                                    &format!("Failed to move image {current_path:?} to trash and therefore couldn't save image: {err}"),
+                                    ErrorType::General,
+                                );
+                            } else if let Err(err) = new_file
+                                .move_future(
+                                    &current_file,
+                                    gio::FileCopyFlags::NONE,
+                                    glib::Priority::DEFAULT,
+                                )
+                                .0
+                                .await
+                            {
+                                obj.window().show_error(
+                                        &gettext("Failed to save image."),
                                         &format!(
-                                            "Failed to edit image:\n\n{err}\n\n{operations:#?}"
+                                            "Failed to move image image to {current_path:?}: {err} move {:?} to {:?}", new_file.path().unwrap(), current_file.path().unwrap()
                                         ),
                                         ErrorType::General,
+                                    );
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        async fn save(&self, current_file: gio::File, new_file: gio::File) -> bool {
+            let obj = self.obj();
+            let editor = glycin::Editor::new(current_file);
+            if let Some(operations) = obj.operations() {
+                log::debug!("Computing edited image.");
+                let result = editor.apply_complete(&operations).await;
+                match result {
+                    Err(err) => {
+                        log::warn!("Failed to edit image: {err}");
+                        obj.window().show_error(
+                            &gettext("Failed to edit image."),
+                            &format!("Failed to edit image:\n\n{err}\n\n{operations:#?}"),
+                            ErrorType::General,
+                        )
+                    }
+                    Ok(binary_data) => {
+                        log::debug!("Saving edited image to '{}'", new_file.uri());
+                        match binary_data.get() {
+                            Err(err) => {
+                                obj.window().show_error(
+                                    &gettext("Failed to Save Image"),
+                                    &format!("Failed to get binary data: {err}"),
+                                    ErrorType::General,
+                                );
+                            }
+                            Ok(data) => {
+                                if let Err(err) = new_file
+                                    .replace_contents_future(
+                                        data,
+                                        None,
+                                        true,
+                                        gio::FileCreateFlags::NONE,
                                     )
-                                }
-                                Ok(binary_data) => {
-                                    log::debug!("Saving edited image to '{}'", new_file.uri());
-                                    match binary_data.get() {
-                                        Err(err) => {
-                                            obj.window().show_error(
-                                                &gettext("Failed to Save Image"),
-                                                &format!("Failed to get binary data: {err}"),
-                                                ErrorType::General,
-                                            );
-                                        }
-                                        Ok(data) => {
-                                            if let Err(err) = new_file
-                                                .replace_contents_future(
-                                                    data,
-                                                    None,
-                                                    true,
-                                                    gio::FileCreateFlags::NONE,
-                                                )
-                                                .await
-                                            {
-                                                obj.window().show_error(
-                                                    &gettext("Failed to Save Image"),
-                                                    &format!("Failed to write file:\n\n{err:?}"),
-                                                    ErrorType::General,
-                                                );
-                                            }
-                                        }
-                                    }
+                                    .await
+                                {
+                                    obj.window().show_error(
+                                        &gettext("Failed to Save Image"),
+                                        &format!("Failed to write file:\n\n{err:?}"),
+                                        ErrorType::General,
+                                    );
+                                } else {
+                                    return true;
                                 }
                             }
                         }
                     }
                 }
             }
+
+            false
         }
     }
 }

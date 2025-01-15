@@ -16,7 +16,7 @@
               </object>
             </child>
             <child type="end">
-              <object class="GtkMenuButton" id="save">
+              <object class="GtkMenuButton" id="done">
                 <property name="label" translatable="true">_Done</property>
                 <property name="use-underline">true</property>
                 <property name="popover">
@@ -57,12 +57,13 @@
                         </child>
                         <child>
                           <object class="GtkListBoxRow" id="save_overwrite">
+                            <property name="action-name">edit.save-overwrite</property>
                             <child>
                               <object class="GtkBox">
                                 <property name="orientation">vertical</property>
                                 <child>
                                   <object class="GtkLabel">
-                                    <property name="label" translatable="yes">_Replace Original…</property>
+                                    <property name="label" translatable="yes">_Replace Original</property>
                                     <property name="use-underline">true</property>
                                     <property name="xalign">0</property>
                                     <property name="mnemonic-widget">save_overwrite</property>
