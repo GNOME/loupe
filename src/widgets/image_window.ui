@@ -87,13 +87,6 @@
                     <property name="tooltip-text" translatable="yes">Toggle Fullscreen</property>
                   </object>
                 </child>
-                <child type="start">
-                  <object class="GtkButton" id="edit_button">
-                    <property name="action-name">win.edit</property>
-                    <property name="icon-name">document-edit-symbolic</property>
-                    <property name="tooltip-text" translatable="yes">Edit Image</property>
-                  </object>
-                </child>
                 <child type="end">
                   <object class="GtkMenuButton" id="primary_menu">
                     <property name="icon-name">open-menu-symbolic</property>
@@ -130,6 +123,13 @@
                   <object class="GtkToggleButton" id="properties_button">
                     <property name="icon-name">info-outline-symbolic</property>
                     <property name="tooltip-text" translatable="yes">Image Properties</property>
+                  </object>
+                </child>
+                <child type="end">
+                  <object class="GtkButton" id="edit_button">
+                    <property name="action-name">win.edit</property>
+                    <property name="icon-name">crop-symbolic</property>
+                    <property name="tooltip-text" translatable="yes">Edit Image</property>
                   </object>
                 </child>
                 <child>
