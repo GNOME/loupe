@@ -6,7 +6,6 @@
         <property name="top-bar-style">raised</property>
         <child type="top">
           <object class="AdwHeaderBar">
-            <property name="show-title">false</property>
             <property name="show-start-title-buttons">false</property>
             <property name="show-end-title-buttons">false</property>
             <child type="start">
