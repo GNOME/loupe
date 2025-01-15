@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2024-11-14 23:22+0000\n"
-"PO-Revision-Date: 2024-11-18 23:04+0300\n"
+"POT-Creation-Date: 2025-01-13 22:31+0000\n"
+"PO-Revision-Date: 2025-01-15 13:18+0300\n"
 "Last-Translator: Artur So <arturios2005@mail.ru>\n"
 "Language-Team: \n"
 "Language: ru_RU\n"
@@ -20,7 +20,8 @@ msgstr ""
 "X-Generator: Poedit 3.5\n"
 
 #: data/org.gnome.Loupe.desktop.in.in:3
-#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:31 src/window.rs:897
+#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:31
+#: src/widgets/image_window.rs:859
 msgid "Image Viewer"
 msgstr "Просмотрщик изображений"
 
@@ -258,46 +259,46 @@ msgstr "Aleksandr Melman <alexmelman88@gmail.com>, 2023"
 msgid "Copyright © 2020–2024 Christopher Davis et al."
 msgstr "Авторское право © 2020-2024 Christopher Davis и др."
 
-#: src/file_model.rs:178
+#: src/file_model.rs:177
 msgid "Could not list other files in directory."
 msgstr "Не удалось перечислить другие файлы в каталоге."
 
 #. Translators: Display of the f-number <https://en.wikipedia.org/wiki/F-number>. {} will be replaced with the number
-#: src/metadata.rs:230
+#: src/metadata.rs:242
 msgid "\\u{192}\\u{2215}{}"
 msgstr "\\u{192}\\u{2215}{}"
 
 #. Translators: Fractional exposure time (photography) in seconds
-#: src/metadata.rs:243
+#: src/metadata.rs:255
 msgid "1\\u{2215}{}\\u{202F}s"
 msgstr "1\\u{2215}{}\\u{202F}с"
 
 #. Translators: Exposure time (photography) in seconds
-#: src/metadata.rs:251
+#: src/metadata.rs:263
 msgid "{}\\u{202F}s"
 msgstr "{}\\u{202F}с"
 
-#: src/metadata.rs:265
+#: src/metadata.rs:277
 msgid "{}\\u{202F}mm"
 msgstr "{}\\u{202F}мм"
 
 #. Translators: short for "north" in GPS coordinate
-#: src/metadata.rs:305
+#: src/metadata.rs:317
 msgid "N"
 msgstr "С"
 
 #. Translators: short for "south" in GPS coordinate
-#: src/metadata.rs:309
+#: src/metadata.rs:321
 msgid "S"
 msgstr "Ю"
 
 #. Translators: short for "east" in GPS coordinate
-#: src/metadata.rs:318
+#: src/metadata.rs:330
 msgid "E"
 msgstr "В"
 
 #. Translators: short for "west" in GPS coordinate
-#: src/metadata.rs:322
+#: src/metadata.rs:334
 msgid "W"
 msgstr "З"
 
@@ -305,12 +306,12 @@ msgstr "З"
 #. The format has to follow <https://docs.gtk.org/glib/method.DateTime.format.html>
 #. The default is already translated. Don't change if you are not sure what to
 #. use.
-#: src/util.rs:38
+#: src/util.rs:39
 #, c-format
 msgid "%x %X"
 msgstr "%x %X"
 
-#: src/util.rs:181 src/window.rs:675
+#: src/util.rs:182 src/widgets/image_window.rs:638
 msgid "Failed to restore image from trash"
 msgstr "Не удалось восстановить изображение из корзины"
 
@@ -318,19 +319,135 @@ msgstr "Не удалось восстановить изображение из
 msgid "Drop Image to View"
 msgstr "Перетащите изображение для просмотра"
 
+#: src/widgets/edit/crop.rs:368
+msgid "Failed to Edit Image"
+msgstr "Не удалось отредактировать изображение"
+
+#: src/widgets/edit/crop.ui:6
+msgid "Free"
+msgstr "Свободное"
+
+#: src/widgets/edit/crop.ui:11
+msgid "Original"
+msgstr "Исходное"
+
+#: src/widgets/edit/crop.ui:16
+msgid "Square"
+msgstr "Квадрат"
+
+#: src/widgets/edit/crop.ui:21
+msgid "5:4"
+msgstr "5:4"
+
+#: src/widgets/edit/crop.ui:26
+msgid "4:3"
+msgstr "4:3"
+
+#: src/widgets/edit/crop.ui:31
+msgid "3:2"
+msgstr "3:2"
+
+#: src/widgets/edit/crop.ui:36
+msgid "16:9"
+msgstr "16:9"
+
+#: src/widgets/edit/crop.ui:91
+msgid "_Free"
+msgstr "С_вободное"
+
+#: src/widgets/edit/crop.ui:109
+msgid "_Original"
+msgstr "_Исходное"
+
+#: src/widgets/edit/crop.ui:127
+msgid "_Square"
+msgstr "_Квадрат"
+
+#: src/widgets/edit/crop.ui:145
+msgid "_5:4"
+msgstr "_5:4"
+
+#: src/widgets/edit/crop.ui:163
+msgid "_4:3"
+msgstr "_4:3"
+
+#: src/widgets/edit/crop.ui:181
+msgid "_3:2"
+msgstr "_3:2"
+
+#: src/widgets/edit/crop.ui:199
+msgid "_16:9"
+msgstr "_16:9"
+
+#: src/widgets/edit/crop.ui:224 src/widgets/edit/crop.ui:383
+msgid "Rotate Counter Clockwise"
+msgstr "Повернуть против часовой стрелки"
+
+#: src/widgets/edit/crop.ui:231
+msgid "Rotate Clockwise"
+msgstr "Повернуть по часовой стрелке"
+
+#: src/widgets/edit/crop.ui:250 src/widgets/edit/crop.ui:391
+msgid "Mirror Horizontally"
+msgstr "Отразить по горизонтали"
+
+#: src/widgets/edit/crop.ui:257
+msgid "Mirror Vertically"
+msgstr "Отразить по вертикали"
+
+#: src/widgets/edit/crop.ui:270 src/widgets/edit/crop.ui:407
+msgid "Undo Changes in this View"
+msgstr "Отменить изменения в этом виде"
+
+#: src/widgets/edit/crop.ui:340
+msgid "Aspect Ratio"
+msgstr "Соотношение сторон"
+
+#: src/widgets/edit/crop.ui:353
+msgid "Orientation Landscape"
+msgstr "Ландшафтная ориентация"
+
+#: src/widgets/edit/crop.ui:365
+msgid "Orientation Portrait"
+msgstr "Портретная ориентация"
+
+#: src/widgets/edit_window.rs:120
+msgid "Failed to edit image."
+msgstr "Не удалось отредактировать изображение."
+
+#: src/widgets/edit_window.rs:132 src/widgets/edit_window.rs:148
+msgid "Failed to Save Image"
+msgstr "Не удалось сохранить изображение"
+
+#: src/widgets/edit_window.ui:14
+msgid "_Cancel"
+msgstr "_Отменить"
+
+#: src/widgets/edit_window.ui:20
+msgid "_Save"
+msgstr "_Сохранить"
+
+#: src/widgets/error_details.rs:79
+msgid ""
+"The following error occured. If you think this is an issue with the program, "
+"please include this information when you report the error."
+msgstr ""
+"Произошла следующая ошибка. Если вы считаете, что это проблема с "
+"приложением, пожалуйста, укажите эту информацию при сообщении об ошибке."
+
 #: src/widgets/error_details.ui:4
 msgid "Error Details"
 msgstr "Информация об ошибке"
 
 #: src/widgets/error_details.ui:19
 msgid ""
-"The image loader reported the following when trying to load the image. "
-"Please include this information when you report an error. If possible, "
-"please also provide the image that causes the issue."
+"The image loader reported the following when trying to load or edit the "
+"image. Please include this information when you report an error. If "
+"possible, please also provide the image that causes the issue."
 msgstr ""
-"При попытке загрузить изображение загрузчик изображений сообщил следующее. "
-"Пожалуйста, указывайте эту информацию, когда сообщаете об ошибке. Если "
-"возможно, предоставьте изображение, с которым возникла проблема."
+"При попытке загрузить или отредактировать изображение загрузчик изображений "
+"сообщил следующее. Пожалуйста, указывайте эту информацию, когда сообщаете об "
+"ошибке. Если возможно, предоставьте изображение, с которым возникла проблема."
 
 #: src/widgets/error_details.ui:24
 msgid "Error Message"
@@ -344,7 +461,7 @@ msgstr "Копировать сообщение об ошибке"
 msgid "Report _Issue"
 msgstr "Сообщить об о_шибке"
 
-#: src/widgets/image_page.rs:226
+#: src/widgets/image_page.rs:227
 msgid ""
 "No image loaders available. Maybe the “glycin-loaders” package with "
 "compatibility version “{}” is not installed."
@@ -352,40 +469,40 @@ msgstr ""
 "Загрузчики изображений отсутствуют. Возможно, не установлен пакет “glycin-"
 "loaders” с совместимой версией “{}”."
 
-#: src/widgets/image_page.rs:241
+#: src/widgets/image_page.rs:242
 msgid "The image format “{} ({})” is known but not installed."
 msgstr "Формат изображения “{} ({})” известен, но не установлен."
 
-#: src/widgets/image_page.rs:248
+#: src/widgets/image_page.rs:249
 msgid "Unknown image format “{} ({}).”"
 msgstr "Неизвестный формат изображения “{} ({}).”"
 
-#: src/widgets/image_page.rs:276
+#: src/widgets/image_page.rs:277
 msgid "There is not enough free memory available to load this image."
 msgstr "Для загрузки этого изображения недостаточно свободной памяти."
 
-#: src/widgets/image_page.rs:280
+#: src/widgets/image_page.rs:281
 msgid "Either the image file is corrupted or it contains unsupported elements."
 msgstr ""
 "Либо файл изображения поврежден, либо содержит неподдерживаемые элементы."
 
-#: src/widgets/image_page.ui:6 src/window.ui:16
+#: src/widgets/image_page.ui:6 src/widgets/image_window.ui:16
 msgid "_Open With…"
 msgstr "Открыть с _помощью…"
 
-#: src/widgets/image_page.ui:10 src/window.ui:20
+#: src/widgets/image_page.ui:10 src/widgets/image_window.ui:20
 msgid "_Print…"
 msgstr "П_ечать…"
 
-#: src/widgets/image_page.ui:15 src/window.ui:25
+#: src/widgets/image_page.ui:15 src/widgets/image_window.ui:25
 msgid "Rotate"
 msgstr "Повернуть"
 
-#: src/widgets/image_page.ui:26 src/window.ui:36
+#: src/widgets/image_page.ui:26 src/widgets/image_window.ui:36
 msgid "_Set as Background…"
 msgstr "_Установить как фон…"
 
-#: src/widgets/image_page.ui:30 src/window.ui:40
+#: src/widgets/image_page.ui:30 src/widgets/image_window.ui:40
 msgid "_Delete"
 msgstr "У_далить"
 
@@ -405,11 +522,11 @@ msgstr "Больше _информации"
 msgid "_Reload"
 msgstr "_Перезагрузить"
 
-#: src/widgets/image_page.ui:123 src/window.ui:218
+#: src/widgets/image_page.ui:123 src/widgets/image_window.ui:108
 msgid "Rotate Left"
 msgstr "Повернуть влево"
 
-#: src/widgets/image_page.ui:133 src/window.ui:228
+#: src/widgets/image_page.ui:133 src/widgets/image_window.ui:118
 msgid "Rotate Right"
 msgstr "Повернуть вправо"
 
@@ -451,6 +568,102 @@ msgstr "Переключить масштаб"
 msgid "Zoom to Specific Level"
 msgstr "Масштабирование до определенного уровня"
 
+#: src/widgets/image_window.rs:502
+msgid "Supported image formats"
+msgstr "Поддерживаемые форматы изображения"
+
+#: src/widgets/image_window.rs:508
+msgid "All files"
+msgstr "Все файлы"
+
+#: src/widgets/image_window.rs:515
+msgid "Open Image"
+msgstr "Открыть изображение"
+
+#: src/widgets/image_window.rs:601
+msgid "Image copied to clipboard"
+msgstr "Изображение скопировано в буфер обмена"
+
+#: src/widgets/image_window.rs:622
+msgid "Image moved to trash"
+msgstr "Изображение отправлено в корзину"
+
+#: src/widgets/image_window.rs:623
+msgid "Undo"
+msgstr "Отменить"
+
+#: src/widgets/image_window.rs:653
+msgid "Failed to move image to trash"
+msgstr "Не удалось отправить изображение в корзину"
+
+#: src/widgets/image_window.rs:677
+msgid "Permanently Delete Image?"
+msgstr "Удалить изображение безвозвратно?"
+
+#: src/widgets/image_window.rs:679
+msgid "After deleting the image “{}” it will be permanently lost."
+msgstr "После удаления изображения \"{}\" оно будет навсегда потеряно."
+
+#: src/widgets/image_window.rs:687
+msgid "Cancel"
+msgstr "Отменить"
+
+#: src/widgets/image_window.rs:688
+msgid "Delete"
+msgstr "Удалить"
+
+#: src/widgets/image_window.rs:699
+msgid "Failed to delete image"
+msgstr "Не удалось удалить изображение"
+
+#: src/widgets/image_window.ui:6
+msgid "_New Window"
+msgstr "_Новое окно"
+
+#: src/widgets/image_window.ui:10
+msgid "_Open…"
+msgstr "_Открыть…"
+
+#: src/widgets/image_window.ui:46
+msgid "_Help"
+msgstr "_Справка"
+
+#: src/widgets/image_window.ui:50
+msgid "_Keyboard Shortcuts"
+msgstr "_Комбинации клавиш"
+
+#: src/widgets/image_window.ui:54
+msgid "_About Image Viewer"
+msgstr "_О приложении"
+
+#: src/widgets/image_window.ui:87
+msgid "Toggle Fullscreen"
+msgstr "Переключить полноэкранный режим"
+
+#: src/widgets/image_window.ui:94
+msgid "Edit Image"
+msgstr "Редактировать изображение"
+
+#: src/widgets/image_window.ui:100
+msgid "Main Menu"
+msgstr "Главное меню"
+
+#: src/widgets/image_window.ui:132
+msgid "Image Properties"
+msgstr "Свойства изображения"
+
+#: src/widgets/image_window.ui:220
+msgid "View Images"
+msgstr "Просмотр изображений"
+
+#: src/widgets/image_window.ui:221
+msgid "Drag and drop images here"
+msgstr "Перетащите изображения сюда"
+
+#: src/widgets/image_window.ui:225
+msgid "_Open Files…"
+msgstr "_Открыть файлы…"
+
 #: src/widgets/print.rs:108
 msgid "Top"
 msgstr "По верху"
@@ -491,19 +704,19 @@ msgstr "пикс"
 msgid "Print “{}”"
 msgstr "Печать “{}”"
 
-#: src/widgets/print.rs:465
+#: src/widgets/print.rs:476
 msgid "Continue…"
 msgstr "Продолжить…"
 
-#: src/widgets/print.rs:466
+#: src/widgets/print.rs:477
 msgid "Print Image"
 msgstr "Печать изображения"
 
-#: src/widgets/print.rs:788
+#: src/widgets/print.rs:791
 msgid "_Scale"
 msgstr "_Масштаб"
 
-#: src/widgets/print.rs:791
+#: src/widgets/print.rs:794
 msgid "_Width"
 msgstr "_Ширина"
 
@@ -664,97 +877,9 @@ msgstr "Фокусное расстояние"
 msgid "Maker, Model"
 msgstr "Производитель, модель"
 
-#: src/window.rs:539
-msgid "Supported image formats"
-msgstr "Поддерживаемые форматы изображения"
-
-#: src/window.rs:545
-msgid "All files"
-msgstr "Все файлы"
-
-#: src/window.rs:552
-msgid "Open Image"
-msgstr "Открыть изображение"
-
-#: src/window.rs:638
-msgid "Image copied to clipboard"
-msgstr "Изображение скопировано в буфер обмена"
-
-#: src/window.rs:659
-msgid "Image moved to trash"
-msgstr "Изображение отправлено в корзину"
-
-#: src/window.rs:660
-msgid "Undo"
-msgstr "Отменить"
-
-#: src/window.rs:690
-msgid "Failed to move image to trash"
-msgstr "Не удалось отправить изображение в корзину"
-
-#: src/window.rs:714
-msgid "Permanently Delete Image?"
-msgstr "Удалить изображение безвозвратно?"
-
-#: src/window.rs:716
-msgid "After deleting the image “{}” it will be permanently lost."
-msgstr "После удаления изображения \"{}\" оно будет навсегда потеряно."
-
-#: src/window.rs:724
-msgid "Cancel"
-msgstr "Отменить"
-
-#: src/window.rs:725
-msgid "Delete"
-msgstr "Удалить"
-
-#: src/window.rs:736
-msgid "Failed to delete image"
-msgstr "Не удалось удалить изображение"
-
-#: src/window.ui:6
-msgid "_New Window"
-msgstr "_Новое окно"
-
-#: src/window.ui:10
-msgid "_Open…"
-msgstr "_Открыть…"
-
-#: src/window.ui:46
-msgid "_Help"
-msgstr "_Справка"
-
-#: src/window.ui:50
-msgid "_Keyboard Shortcuts"
-msgstr "_Комбинации клавиш"
-
-#: src/window.ui:54
-msgid "_About Image Viewer"
-msgstr "_О приложении"
-
-#: src/window.ui:204
-msgid "Toggle Fullscreen"
-msgstr "Переключить полноэкранный режим"
-
-#: src/window.ui:210
-msgid "Main Menu"
-msgstr "Главное меню"
-
-#: src/window.ui:242
-msgid "Image Properties"
-msgstr "Свойства изображения"
-
-#: src/window.ui:266
-msgid "View Images"
-msgstr "Просмотр изображений"
-
-#: src/window.ui:267
-msgid "Drag and drop images here"
-msgstr "Перетащите изображения сюда"
-
-#: src/window.ui:271
-msgid "_Open Files…"
-msgstr "_Открыть файлы…"
+#: src/widgets/window.rs:222
+msgid "Show Details"
+msgstr "Показать подробности"
 
 #~ msgid "Copy to Clipboard"
 #~ msgstr "Копировать в буфер обмена"
@@ -764,9 +889,6 @@ msgstr "_Открыть файлы…"
 
 #~ msgid "Copy Information"
 #~ msgstr "Копировать информацию"
-
-#~ msgid "Failed to open image"
-#~ msgstr "Не удалось открыть изображение"
 
 #~ msgid "The Loupe Team"
 #~ msgstr "The Loupe Team"
