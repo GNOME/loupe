@@ -19,6 +19,10 @@
               <object class="GtkMenuButton" id="done">
                 <property name="label" translatable="true">_Done</property>
                 <property name="use-underline">true</property>
+                <property name="sensitive">false</property>
+                <style>
+                  <class name="raised" />
+                </style>
                 <property name="popover">
                   <object class="GtkPopover">
                     <style>
@@ -46,7 +50,7 @@
                                     <property name="label" translatable="yes">Keep original and create a new file</property>
                                     <property name="xalign">0</property>
                                     <style>
-                                      <class name="dim-label" />
+                                      <class name="dimmed" />
                                       <class name="caption" />
                                     </style>
                                   </object>
@@ -74,7 +78,7 @@
                                     <property name="label" translatable="yes">Original image will be moved to the trash</property>
                                     <property name="xalign">0</property>
                                     <style>
-                                      <class name="dim-label" />
+                                      <class name="dimmed" />
                                       <class name="caption" />
                                     </style>
                                   </object>
@@ -87,9 +91,6 @@
                     </property>
                   </object>
                 </property>
-                <style>
-                  <class name="suggested-action" />
-                </style>
               </object>
             </child>
           </object>

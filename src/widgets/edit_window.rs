@@ -41,7 +41,7 @@ mod imp {
         #[template_child]
         cancel: TemplateChild<gtk::Button>,
         #[template_child]
-        done: TemplateChild<gtk::MenuButton>,
+        pub(crate) done: TemplateChild<gtk::MenuButton>,
 
         #[property(get, construct_only)]
         original_image: OnceCell<LpImage>,
@@ -262,6 +262,16 @@ impl LpEditWindow {
 
     pub fn set_operations(&self, operations: Option<Arc<glycin::Operations>>) {
         let imp = self.imp();
+
+        let done_sensitive = operations
+            .as_ref()
+            .is_some_and(|x| !x.operations().is_empty());
+        if done_sensitive {
+            imp.done.add_css_class("suggested-action");
+        } else {
+            imp.done.remove_css_class("suggested-action");
+        }
+        imp.done.set_sensitive(done_sensitive);
 
         imp.operations.replace(operations);
     }
