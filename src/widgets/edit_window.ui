@@ -20,7 +20,7 @@
                 <property name="use-underline">true</property>
                 <property name="sensitive">false</property>
                 <style>
-                  <class name="raised" />
+                  <class name="suggested-action" />
                 </style>
                 <property name="popover">
                   <object class="GtkPopover">

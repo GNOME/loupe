@@ -266,11 +266,6 @@ impl LpEditWindow {
         let done_sensitive = operations
             .as_ref()
             .is_some_and(|x| !x.operations().is_empty());
-        if done_sensitive {
-            imp.done.add_css_class("suggested-action");
-        } else {
-            imp.done.remove_css_class("suggested-action");
-        }
         imp.done.set_sensitive(done_sensitive);
 
         imp.operations.replace(operations);

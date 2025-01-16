@@ -86,3 +86,8 @@ dialog.error-details textview {
   padding: 12px;
   font-size: 0.95em;
 }
+
+menubutton.suggested-action button {
+  padding-left: 17px;
+  padding-right: 17px;
+}
