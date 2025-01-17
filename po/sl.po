@@ -2,15 +2,15 @@
 # Copyright (C) 2023 Loupe's COPYRIGHT HOLDER
 # This file is distributed under the same license as the Loupe package.
 #
-# Martin Srebotnjak <miles@filmsi.net>, 2023-2024.
+# Martin Srebotnjak <miles@filmsi.net>, 2023-2025.
 # Matej Urbančič <mateju@src.gnome.org>, 2023–2024.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2025-01-11 11:44+0000\n"
-"PO-Revision-Date: 2025-01-12 16:58+0100\n"
+"POT-Creation-Date: 2025-01-15 21:44+0000\n"
+"PO-Revision-Date: 2025-01-17 11:44+0100\n"
 "Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
 "Language-Team: Slovenian <gnome-si@googlegroups.com>\n"
 "Language: sl\n"
@@ -259,7 +259,7 @@ msgstr "Poteze"
 #: src/about.rs:43
 msgid "translator-credits"
 msgstr ""
-"Martin Srebotnjak\n"
+"Martin Srebotnjak <miles@filmsi.net>\n"
 "Matej Urbančič <mateju@src.gnome.org>"
 
 #: src/about.rs:44
@@ -326,7 +326,7 @@ msgstr "Obnovitev slike iz smeti je spodletela"
 msgid "Drop Image to View"
 msgstr "Spustite sliko za ogled"
 
-#: src/widgets/edit/crop.rs:360
+#: src/widgets/edit/crop.rs:368
 msgid "Failed to Edit Image"
 msgstr "Urejanje slike ni uspelo"
 
@@ -418,21 +418,41 @@ msgstr "Ležeča usmerjenost"
 msgid "Orientation Portrait"
 msgstr "Pokončna usmerjenost"
 
-#: src/widgets/edit_window.rs:120
+#: src/widgets/edit_window.rs:160 src/widgets/edit_window.rs:174
+msgid "Failed to save image."
+msgstr "Ni bilo mogoče shraniti slike."
+
+#: src/widgets/edit_window.rs:197
 msgid "Failed to edit image."
 msgstr "Urejanje slike ni uspelo."
 
-#: src/widgets/edit_window.rs:132 src/widgets/edit_window.rs:148
+#: src/widgets/edit_window.rs:207 src/widgets/edit_window.rs:223
 msgid "Failed to Save Image"
-msgstr "Shranjevanje slike ni uspelo."
+msgstr "Shranjevanje slike ni uspelo"
 
-#: src/widgets/edit_window.ui:14
+#: src/widgets/edit_window.ui:13
 msgid "_Cancel"
 msgstr "Pre_kliči"
 
-#: src/widgets/edit_window.ui:20
-msgid "_Save"
-msgstr "_Shrani"
+#: src/widgets/edit_window.ui:19
+msgid "_Done"
+msgstr "_Končano"
+
+#: src/widgets/edit_window.ui:41
+msgid "_Save as Copy…"
+msgstr "_Shrani kot kopijo ..."
+
+#: src/widgets/edit_window.ui:49
+msgid "Keep original and create a new file"
+msgstr "Ohrani izvirnik in ustvari novo datoteko"
+
+#: src/widgets/edit_window.ui:69
+msgid "_Replace Original"
+msgstr "_Zamenjaj izvirnik"
+
+#: src/widgets/edit_window.ui:77
+msgid "Original image will be moved to the trash"
+msgstr "Izvirna slika bo premaknjena v koš"
 
 #: src/widgets/error_details.rs:79
 msgid ""
@@ -528,11 +548,11 @@ msgstr "Več informacij"
 msgid "_Reload"
 msgstr "_Ponovno naloži"
 
-#: src/widgets/image_page.ui:123 src/widgets/image_window.ui:108
+#: src/widgets/image_page.ui:123 src/widgets/image_window.ui:101
 msgid "Rotate Left"
 msgstr "Zavrti v levo"
 
-#: src/widgets/image_page.ui:133 src/widgets/image_window.ui:118
+#: src/widgets/image_page.ui:133 src/widgets/image_window.ui:111
 msgid "Rotate Right"
 msgstr "Zavrti v desno"
 
@@ -646,17 +666,17 @@ msgstr "_O programu"
 msgid "Toggle Fullscreen"
 msgstr "Preklopi celozaslonski način"
 
-#: src/widgets/image_window.ui:94
-msgid "Edit Image"
-msgstr "Uredi sliko"
-
-#: src/widgets/image_window.ui:100
+#: src/widgets/image_window.ui:93
 msgid "Main Menu"
 msgstr "Glavni meni"
 
-#: src/widgets/image_window.ui:132
+#: src/widgets/image_window.ui:125
 msgid "Image Properties"
 msgstr "Lastnosti slike"
+
+#: src/widgets/image_window.ui:132
+msgid "Edit Image"
+msgstr "Uredi sliko"
 
 #: src/widgets/image_window.ui:220
 msgid "View Images"
@@ -710,19 +730,19 @@ msgstr "sl. točk"
 msgid "Print “{}”"
 msgstr "Natisni »{}«"
 
-#: src/widgets/print.rs:466
+#: src/widgets/print.rs:476
 msgid "Continue…"
 msgstr "Nadaljuj …"
 
-#: src/widgets/print.rs:467
+#: src/widgets/print.rs:477
 msgid "Print Image"
 msgstr "Natisni sliko"
 
-#: src/widgets/print.rs:789
+#: src/widgets/print.rs:791
 msgid "_Scale"
 msgstr "_Merilo"
 
-#: src/widgets/print.rs:792
+#: src/widgets/print.rs:794
 msgid "_Width"
 msgstr "_Širina"
 
