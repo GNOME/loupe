@@ -127,7 +127,9 @@ mod imp {
                         log::error!("{}", err);
                     }
                     Ok(new_file) => {
-                        self.save(current_file, new_file).await;
+                        if self.save(current_file, new_file.clone()).await {
+                            obj.window().show_specific_image(new_file);
+                        }
                     }
                 }
             }
@@ -177,6 +179,8 @@ mod imp {
                                         ),
                                         ErrorType::General,
                                     );
+                            } else {
+                                obj.window().show_specific_image(current_file);
                             }
                         }
                     }
@@ -184,6 +188,10 @@ mod imp {
             }
         }
 
+        #[must_use]
+        /// Saves image with operations applies
+        ///
+        /// Returns `true` if editing and saving was successful
         async fn save(&self, current_file: gio::File, new_file: gio::File) -> bool {
             let obj = self.obj();
             let editor = glycin::Editor::new(current_file);

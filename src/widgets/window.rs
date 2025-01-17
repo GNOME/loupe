@@ -247,6 +247,11 @@ impl LpWindow {
             .set_visible_child(&*self.imp().image_window);
     }
 
+    pub fn show_specific_image(&self, file: gio::File) {
+        self.image_view().set_images_from_files(vec![file]);
+        self.show_image();
+    }
+
     pub fn show_edit(&self) {
         if let Some(image) = self.image_view().current_image() {
             let edit_child = &*self.imp().edit_window_child;
