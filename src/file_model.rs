@@ -1,4 +1,4 @@
-// Copyright (c) 2022-2024 Sophie Herold
+// Copyright (c) 2022-2025 Sophie Herold
 // Copyright (c) 2022 Christopher Davis
 //
 // This program is free software: you can redistribute it and/or modify
@@ -99,8 +99,11 @@ mod imp {
 
     impl ObjectImpl for LpFileModel {
         fn signals() -> &'static [Signal] {
-            static SIGNALS: LazyLock<Vec<Signal>> =
-                LazyLock::new(|| vec![Signal::builder("changed").build()]);
+            static SIGNALS: LazyLock<Vec<Signal>> = LazyLock::new(|| {
+                vec![Signal::builder("changed")
+                    .param_types([glib::Type::VARIANT])
+                    .build()]
+            });
             SIGNALS.as_ref()
         }
     }
@@ -243,7 +246,7 @@ impl LpFileModel {
         self.imp().files.borrow().len()
     }
 
-    pub fn contains(&self, file: &gio::File) -> bool {
+    pub fn contains_file(&self, file: &gio::File) -> bool {
         self.imp().files.borrow().contains_key(&file.uri())
     }
 
@@ -336,30 +339,37 @@ impl LpFileModel {
     }
 
     /// Signal that notifies about added/removed files
-    pub fn connect_changed(&self, f: impl Fn() + 'static) {
-        self.connect_local("changed", false, move |_| {
-            f();
+    pub fn connect_changed(&self, f: impl Fn(&FileEvent) + 'static) {
+        self.connect_local("changed", false, move |args| {
+            if let Some(file_event) = args
+                .get(1)
+                .and_then(|x| x.get().ok())
+                .and_then(|x| FileEvent::from_variant(&x))
+            {
+                f(&file_event);
+            } else {
+                log::error!("Failed to read arguments from 'changed' signal.");
+            }
+
             None
         });
     }
 
-    /// Insert a file and signal changes
-    ///
-    /// Setting `changed` to true will always trigger a `notify::changed``
-    /// notification. Otherwise, a change signal is only sent if no file with
-    /// the same URI existed before.
-    pub fn insert(&self, file: gio::File, mut changed: bool) {
+    pub fn emmit_changed(&self, file_event: &FileEvent) {
+        self.emit_by_name::<()>("changed", &[&file_event.to_variant()]);
+    }
+
+    /// Insert a file
+    async fn insert(&self, file: gio::File) -> bool {
         let obj = self.clone();
-        glib::spawn_future_local(async move {
-            let entry = Entry::new(file.clone()).await;
-            let mut files = obj.imp().files.borrow_mut();
-            changed |= files.insert(file.uri(), entry).is_none();
-            if changed {
-                Self::sort(&mut files);
-                drop(files);
-                obj.emit_by_name::<()>("changed", &[]);
-            }
-        });
+        let entry = Entry::new(file.clone()).await;
+        let mut files = obj.imp().files.borrow_mut();
+        let changed = files.insert(file.uri(), entry).is_none();
+        if changed {
+            Self::sort(&mut files);
+            drop(files);
+        }
+        changed
     }
 
     fn file_monitor_cb(
@@ -368,33 +378,83 @@ impl LpFileModel {
         file_a: &gio::File,
         file_b: Option<&gio::File>,
     ) {
+        let uri_a = file_a.uri();
         match event {
             gio::FileMonitorEvent::Created
             | gio::FileMonitorEvent::MovedIn
-            // Changing file content could theoretically make it an image
-            // by adding a magic byte
             | gio::FileMonitorEvent::ChangesDoneHint
                 if Self::is_image_file(file_a) =>
             {
-                self.insert(file_a.clone(), false);
+                // ^^^^
+                // Changing file content could theoretically make it an image
+                // by adding a magic byte
+
+                log::debug!("File added: {uri_a}");
+
+                glib::spawn_future_local(glib::clone!(
+                    #[strong(rename_to=obj)]
+                    self,
+                    #[strong]
+                    file_a,
+                    async move {
+                        let changed = obj.insert(file_a.clone()).await;
+                        if changed {
+                            obj.emmit_changed(&FileEvent::New(uri_a.to_string()));
+                        }
+                    }
+                ));
             }
-            gio::FileMonitorEvent::Deleted | gio::FileMonitorEvent::MovedOut | gio::FileMonitorEvent::Unmounted => {
-                let removed = self.imp().files.borrow_mut().shift_remove(&file_a.uri()).is_some();
+            gio::FileMonitorEvent::Deleted
+            | gio::FileMonitorEvent::MovedOut
+            | gio::FileMonitorEvent::Unmounted => {
+                log::debug!("File removed: {}", file_a.uri());
+                let removed = self
+                    .imp()
+                    .files
+                    .borrow_mut()
+                    .shift_remove(&file_a.uri())
+                    .is_some();
                 if removed {
-                    self.emit_by_name::<()>("changed", &[]);
+                    self.emmit_changed(&FileEvent::Removed(file_a.uri().to_string()));
                 }
             }
             gio::FileMonitorEvent::Renamed => {
                 if let Some(file_b) = file_b {
                     {
-                        let changed = self.imp().files.borrow_mut().shift_remove(&file_a.uri()).is_some();
+                        let uri_b = file_b.uri();
+                        log::debug!("File moved from '{uri_a}' to '{uri_b}'");
+                        let mut changed =
+                            self.imp().files.borrow_mut().shift_remove(&uri_a).is_some();
+
                         if Self::is_image_file(file_b) {
-                            self.insert(file_b.clone(), changed);
+                            glib::spawn_future_local(glib::clone!(
+                                #[strong(rename_to=obj)]
+                                self,
+                                #[strong]
+                                file_b,
+                                async move {
+                                    changed |= obj.insert(file_b.clone()).await;
+
+                                    if changed {
+                                        obj.emmit_changed(&FileEvent::Moved(
+                                            uri_a.to_string(),
+                                            uri_b.to_string(),
+                                        ));
+                                    }
+                                }
+                            ));
                         }
                     }
                 }
             }
-            _ => {},
+            _ => {}
         }
     }
+}
+
+#[derive(Debug, glib::Variant)]
+pub enum FileEvent {
+    New(String),
+    Removed(String),
+    Moved(String, String),
 }

@@ -1,5 +1,5 @@
 // Copyright (c) 2020-2023 Christopher Davis
-// Copyright (c) 2022-2024 Sophie Herold
+// Copyright (c) 2022-2025 Sophie Herold
 // Copyright (c) 2022 Maximiliano Sandoval R
 // Copyright (c) 2023 FineFindus
 // Copyright (c) 2023 Huan Nguyen
@@ -43,7 +43,7 @@ use gtk::CompositeTemplate;
 
 use crate::decoder::DecoderError;
 use crate::deps::*;
-use crate::file_model::LpFileModel;
+use crate::file_model::{FileEvent, LpFileModel};
 use crate::util::gettext::*;
 use crate::util::{self, Direction, Position};
 use crate::widgets::{LpImage, LpImagePage, LpPrint, LpSlidingView};
@@ -174,29 +174,6 @@ mod imp {
             let current_image_signal_group = obj.current_image_signals();
 
             let view = &*obj;
-            current_image_signal_group.connect_closure(
-                "notify::file",
-                true,
-                glib::closure_local!(
-                    #[watch]
-                    view,
-                    move |_: LpImage, _: glib::ParamSpec| {
-                        view.current_image_path_changed();
-                    }
-                ),
-            );
-
-            current_image_signal_group.connect_closure(
-                "notify::is-deleted",
-                true,
-                glib::closure_local!(
-                    #[watch]
-                    view,
-                    move |_: LpImage, _: glib::ParamSpec| {
-                        view.current_image_path_changed();
-                    }
-                ),
-            );
 
             current_image_signal_group.connect_closure(
                 "notify::zoom-target",
@@ -687,16 +664,16 @@ impl LpImageView {
         model.connect_changed(glib::clone!(
             #[weak(rename_to = obj)]
             self,
-            move || obj.model_content_changed_cb()
+            move |change| obj.model_content_changed_cb(change)
         ));
         self.imp().model.replace(model);
     }
 
     /// Handle files are added or removed from directory
-    fn model_content_changed_cb(&self) {
+    fn model_content_changed_cb(&self, file_event: &FileEvent) {
         // Animate to image that was restored from trash
         if let Some(trash_restore) = self.trash_restore() {
-            if self.model().contains(&trash_restore) {
+            if self.model().contains_file(&trash_restore) {
                 self.set_trash_restore(gio::File::NONE);
                 self.update_sliding_view(&trash_restore);
                 self.scroll_sliding_view(&trash_restore, true);
@@ -708,30 +685,21 @@ impl LpImageView {
             return;
         };
 
-        // LpImage did not get the update yet
-        // Update will be handled by current_image_path_changed
-        if !self.model().contains(&current_file) {
-            return;
-        }
-
-        self.update_sliding_view(&current_file);
-    }
-
-    /// Handle current image being moved or deleted
-    ///
-    /// This is handled separately since we want to delete animations and
-    /// want to still show the same image if renamed.
-    fn current_image_path_changed(&self) {
-        if let Some(image) = self.current_page().map(|x| x.image()) {
-            if image.is_deleted() {
+        match file_event {
+            FileEvent::Removed(removed) if removed == &current_file.uri() => {
                 self.sliding_view().scroll_to_neighbor();
+                return;
             }
+            FileEvent::Moved(src, target) => {
+                if let Some(page) = self.sliding_view().get(&gio::File::for_uri(src)) {
+                    page.image().init(&gio::File::for_uri(target));
+                }
+            }
+            _ => {}
         }
 
-        if let Some(current_file) = self.current_file() {
-            if self.model().contains(&current_file) && !self.imp().preserve_content.get() {
-                self.update_sliding_view(&current_file);
-            }
+        if !self.imp().preserve_content.get() {
+            self.update_sliding_view(&current_file);
         }
     }
 
@@ -757,14 +725,11 @@ impl LpImageView {
         self.imp()
             .sliding_view
             .current_page()
-            .map(|x| x.file().uri())
+            .map(|x: LpImagePage| x.file().uri())
     }
 
     pub fn current_file(&self) -> Option<gio::File> {
-        self.imp()
-            .sliding_view
-            .current_page()
-            .and_then(|x| x.image().file())
+        self.current_uri().map(|x| gio::File::for_uri(&x))
     }
 
     pub fn drag_source(&self) -> gtk::DragSource {
@@ -819,8 +784,8 @@ impl LpImageView {
 
     pub async fn set_background(&self) -> anyhow::Result<()> {
         let uri = self
-            .current_file()
-            .and_then(|f| url::Url::parse(f.uri().as_str()).ok())
+            .current_uri()
+            .and_then(|x| url::Url::parse(x.as_str()).ok())
             .context("Invalid URL for background image")?;
         let native = self.native().context("View should have a GtkNative")?;
         let id = WindowIdentifier::from_native(&native).await;

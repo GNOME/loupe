@@ -203,32 +203,48 @@ impl imp::LpImage {
         file_a: &gio::File,
         file_b: Option<&gio::File>,
     ) {
+        let obj = self.obj().to_owned();
+
         match event {
             gio::FileMonitorEvent::Renamed => {
                 if let Some(file) = file_b.cloned() {
                     log::debug!("Moved to {}", file.uri());
-                    let obj = self.obj().to_owned();
 
                     // current file got replaced with a new one
                     let file_replace = obj.file().is_some_and(|x| x.equal(&file));
                     if file_replace {
                         log::debug!("Image got replaced {}", file.uri());
-                        // TODO: error handling is missing
                         glib::spawn_future_local(async move {
                             obj.load(&file).await;
                         });
                     } else {
                         glib::spawn_future_local(async move {
-                            obj.imp().set_file_changed(&file).await;
+                            if obj.error().is_some() {
+                                // Tmp files might be renamed quickly after creation. In this case
+                                // the original load fails, because the filename is already invalid.
+                                // Therefore reload on name change loading caused an error.
+                                obj.load(&file).await;
+                            } else {
+                                obj.imp().set_file_changed(&file).await;
+                            }
                         });
                     }
                 }
+            }
+            gio::FileMonitorEvent::MovedIn => {
+                log::debug!("Image got replaced by moving into dir {}", file_a.uri());
+                glib::spawn_future_local(glib::clone!(
+                    #[strong]
+                    file_a,
+                    async move {
+                        obj.load(&file_a).await;
+                    }
+                ));
             }
             gio::FileMonitorEvent::ChangesDoneHint => {
                 let obj = self.obj().to_owned();
                 let file = file_a.clone();
                 log::debug!("Image was edited {}", file.uri());
-                // TODO: error handling is missing
                 glib::spawn_future_local(async move {
                     obj.load(&file).await;
                 });
