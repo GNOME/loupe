@@ -736,7 +736,7 @@ mod imp {
             self.obj().set_height_request(width);
         }
 
-        fn aspect_ratio_animation(&self) -> &adw::TimedAnimation {
+        pub(super) fn aspect_ratio_animation(&self) -> &adw::TimedAnimation {
             self.aspect_ratio_animation.get_or_init(|| {
                 adw::TimedAnimation::builder()
                     .duration(200)
@@ -803,5 +803,6 @@ impl LpEditCropSelection {
     pub fn is_in_user_change(&self) -> bool {
         self.imp().selection_in_resize.get().is_some()
             || self.imp().selection_in_move.get().is_some()
+            || self.imp().aspect_ratio_animation().state() == adw::AnimationState::Playing
     }
 }
