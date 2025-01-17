@@ -208,6 +208,31 @@
                         </child>
                       </object>
                     </child>
+                    <child>
+                      <object class="GtkBox">
+                        <property name="homogeneous">true</property>
+                        <property name="spacing">6</property>
+                        <property name="margin-top">12</property>
+                        <child>
+                          <object class="GtkToggleButton">
+                            <property name="icon-name">page-orientation-landscape-symbolic</property>
+                            <property name="tooltip-text" translatable="yes">Orientation Landscape</property>
+                            <property name="hexpand">true</property>
+                            <property name="action-name">edit-crop.orientation</property>
+                            <property name="action-target">'landscape'</property>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="GtkToggleButton">
+                            <property name="icon-name">page-orientation-portrait-symbolic</property>
+                            <property name="tooltip-text" translatable="yes">Orientation Portrait</property>
+                            <property name="hexpand">true</property>
+                            <property name="action-name">edit-crop.orientation</property>
+                            <property name="action-target">'portrait'</property>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
                   </object>
                 </child>
                 <child>
