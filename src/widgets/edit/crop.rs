@@ -219,6 +219,7 @@ mod imp {
         fn selection_changed(&self) {
             let crop_area_image_coord = self.crop_area_image_coord();
             if self.selection.is_in_user_change() {
+                log::trace!("Setting crop are in image coordinates to {crop_area_image_coord:?}");
                 self.crop_area_image_coord.replace(crop_area_image_coord);
             }
 
@@ -285,24 +286,28 @@ mod imp {
         }
 
         fn apply_mirror_horizontally(&self) {
+            self.apply_crop();
             self.add_operation(Operation::MirrorHorizontally);
 
             self.reset_selection();
         }
 
         fn apply_mirror_vertically(&self) {
+            self.apply_crop();
             self.add_operation(Operation::MirrorVertically);
 
             self.reset_selection();
         }
 
         fn apply_rotate_cw(&self) {
+            self.apply_crop();
             self.add_operation(Operation::Rotate(gufo_common::orientation::Rotation::_270));
 
             self.reset_selection();
         }
 
         fn apply_rotate_ccw(&self) {
+            self.apply_crop();
             self.add_operation(Operation::Rotate(gufo_common::orientation::Rotation::_90));
 
             self.reset_selection();

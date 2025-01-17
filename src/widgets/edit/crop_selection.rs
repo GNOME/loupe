@@ -161,6 +161,8 @@ mod imp {
         pub(super) selection_in_resize: Cell<Option<InResize>>,
         /// Set while in drag gesture for moving crop area
         pub(super) selection_in_move: Cell<Option<InMove>>,
+        /// Set while resetting the crop area
+        pub(super) selection_in_reset: Cell<bool>,
 
         // Animates changes between different fixed aspect ratios
         aspect_ratio_animation: OnceCell<adw::TimedAnimation>,
@@ -774,11 +776,16 @@ impl LpEditCropSelection {
     }
 
     pub fn reset(&self, x: f64, y: f64, width: f64, height: f64) {
+        let imp = self.imp();
+
+        imp.selection_in_reset.replace(true);
         self.set_image_area(x, y, width, height);
         self.set_crop_size(0., 0., width, height);
+        imp.selection_in_reset.replace(false);
     }
 
     pub fn set_image_area(&self, x: f64, y: f64, width: f64, height: f64) {
+        log::trace!("Setting image area to ({x}, {y}, {width}, {height})");
         self.set_margin_start(x as i32);
         self.set_margin_top(y as i32);
         self.set_total_width(width as i32);
@@ -786,6 +793,7 @@ impl LpEditCropSelection {
     }
 
     pub fn set_crop_size(&self, x: f64, y: f64, width: f64, height: f64) {
+        log::trace!("Setting crop area to ({x}, {y}, {width}, {height})");
         self.set_crop_x(x as f32);
         self.set_crop_y(y as f32);
         self.set_crop_width(width as f32);
@@ -803,6 +811,7 @@ impl LpEditCropSelection {
     pub fn is_in_user_change(&self) -> bool {
         self.imp().selection_in_resize.get().is_some()
             || self.imp().selection_in_move.get().is_some()
+            || self.imp().selection_in_reset.get()
             || self.imp().aspect_ratio_animation().state() == adw::AnimationState::Playing
     }
 }
