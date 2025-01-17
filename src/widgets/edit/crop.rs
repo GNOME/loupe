@@ -50,7 +50,7 @@ pub enum LpAspectRatio {
     R16to9,
 }
 
-#[derive(Debug, Clone, Copy, Default, glib::Enum)]
+#[derive(Debug, Clone, Copy, Default, glib::Enum, glib::Variant)]
 #[enum_type(name = "LpOrientation")]
 pub enum LpOrientation {
     #[default]
@@ -173,6 +173,8 @@ mod imp {
                     obj.imp().selection_changed();
                 }
             ));
+
+            let _ = self.apply_reset();
         }
 
         fn dispose(&self) {
@@ -313,12 +315,26 @@ mod imp {
             self.image.set_operations(None)?;
             obj.edit_window().set_operations(None);
             self.reset_selection();
+
             let res = self.obj().activate_action(
                 "edit-crop.aspect-ratio",
                 Some(&LpAspectRatio::default().to_variant()),
             );
             if let Err(err) = res {
                 log::error!("Failed to call action edit-crop.aspect-ratio: {err}");
+            }
+
+            let (w, h) = self.image.image_size();
+            let orientation = if h > w {
+                LpOrientation::Portrait
+            } else {
+                LpOrientation::Landscape
+            };
+            let res = self
+                .obj()
+                .activate_action("edit-crop.orientation", Some(&orientation.to_variant()));
+            if let Err(err) = res {
+                log::error!("Failed to call action edit-crop.orientation: {err}");
             }
 
             self.obj().action_set_enabled("edit-crop.reset", false);
