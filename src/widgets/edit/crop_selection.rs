@@ -124,7 +124,7 @@ impl LpAspectRatio {
 }
 
 trait RectExt: Into<graphene::Rect> {
-    fn coordiantes(self) -> (f32, f32, f32, f32) {
+    fn coordinates(self) -> (f32, f32, f32, f32) {
         let rect: graphene::Rect = self.into();
 
         (rect.x(), rect.y(), rect.width(), rect.height())
@@ -376,7 +376,7 @@ mod imp {
         ) -> graphene::Rect {
             let obj = self.obj();
 
-            let (mut x, mut y, width, height) = shift.initial_selection.coordiantes();
+            let (mut x, mut y, width, height) = shift.initial_selection.coordinates();
 
             x += x_shift as f32;
             y += y_shift as f32;
@@ -408,7 +408,7 @@ mod imp {
             let obj = self.obj();
 
             let (mut x, mut y, mut width, mut height) =
-                self.new_crop_area(resize, (x, y)).coordiantes();
+                self.new_crop_area(resize, (x, y)).coordinates();
 
             if width < MIN_SELECTION_SIZE {
                 let x_diff = width - MIN_SELECTION_SIZE;
@@ -458,7 +458,7 @@ mod imp {
         ) -> graphene::Rect {
             let new_area = self.new_crop_area(resize, (x, y));
 
-            let (mut x, mut y, mut width, mut height) = new_area.coordiantes();
+            let (mut x, mut y, mut width, mut height) = new_area.coordinates();
 
             if vertical {
                 width = new_area.height() * aspect_ratio;
@@ -481,7 +481,7 @@ mod imp {
 
             self.rect_limit_minumum_size(&mut rect, aspect_ratio, resize.corner);
 
-            (x, y, width, height) = rect.coordiantes();
+            (x, y, width, height) = rect.coordinates();
             graphene::Rect::new(x, y, width, height)
         }
 
@@ -492,7 +492,7 @@ mod imp {
             aspect_ratio: f32,
             corner: Corner,
         ) {
-            let (mut x, mut y, mut width, mut height) = rect.coordiantes();
+            let (mut x, mut y, mut width, mut height) = rect.coordinates();
 
             if width < MIN_SELECTION_SIZE {
                 let x_diff = width - MIN_SELECTION_SIZE;
@@ -527,7 +527,7 @@ mod imp {
 
         /// Make sure Rect is inside image area by moving it if necessary
         fn rect_make_contained(&self, rect: &mut graphene::Rect) {
-            let (mut x, mut y, width, height) = rect.coordiantes();
+            let (mut x, mut y, width, height) = rect.coordinates();
 
             if x + width > self.total_width() as f32 {
                 x = self.total_width() as f32 - width;
@@ -542,7 +542,7 @@ mod imp {
 
         /// Limit Rect to not leave image area to the left
         fn rect_limit_top(&self, rect: &mut graphene::Rect, aspect_ratio: f32, edge: VEdge) {
-            let (mut x, mut y, mut width, mut height) = rect.coordiantes();
+            let (mut x, mut y, mut width, mut height) = rect.coordinates();
 
             if x < 0. {
                 width += x;
@@ -559,7 +559,7 @@ mod imp {
 
         /// Limit Rect to not leave image area at to the left
         fn rect_limit_left(&self, rect: &mut graphene::Rect, aspect_ratio: f32, edge: HEdge) {
-            let (mut x, mut y, mut width, mut height) = rect.coordiantes();
+            let (mut x, mut y, mut width, mut height) = rect.coordinates();
 
             if y < 0. {
                 height += y;
@@ -578,7 +578,7 @@ mod imp {
         /// Limit Rect to not leave image area at the bottom
         fn rect_limit_bottom(&self, rect: &mut graphene::Rect, aspect_ratio: f32, edge: HEdge) {
             let obj = self.obj();
-            let (mut x, y, mut width, mut height) = rect.coordiantes();
+            let (mut x, y, mut width, mut height) = rect.coordinates();
 
             if y + height > obj.height_request() as f32 {
                 let overshoot = y + height - obj.height_request() as f32;
@@ -597,7 +597,7 @@ mod imp {
 
         fn rect_limit_right(&self, rect: &mut graphene::Rect, aspect_ratio: f32, edge: VEdge) {
             let obj = self.obj();
-            let (x, mut y, mut width, mut height) = rect.coordiantes();
+            let (x, mut y, mut width, mut height) = rect.coordinates();
 
             if x + width > obj.width_request() as f32 {
                 let overshoot = x + width - obj.width_request() as f32;
@@ -623,7 +623,7 @@ mod imp {
 
             // Store current state as reference for animation
             let current_area = self.crop_area();
-            let (_, y, _, height) = current_area.coordiantes();
+            let (_, y, _, height) = current_area.coordinates();
 
             let width = current_area.height() * aspect_ratio;
             let x = f32::max(0., current_area.x() + (current_area.width() - width) / 2.);
