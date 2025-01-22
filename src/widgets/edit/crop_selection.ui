@@ -128,7 +128,7 @@
             <property name="hexpand">true</property>
             <layout>
               <property name="row">0</property>
-              <property name="column">1</property>
+              <property name="column">2</property>
             </layout>
             <style>
               <class name="handle" />
@@ -137,11 +137,29 @@
           </object>
         </child>
         <child>
+          <object class="GtkButton" id="apply_button">
+            <property name="hexpand">true</property>
+            <layout>
+              <property name="row">1</property>
+              <property name="column">2</property>
+            </layout>
+            <property name="action-name">edit-crop.apply-crop</property>
+            <property name="icon-name">apply-crop</property>
+            <property name="halign">end</property>
+            <property name="valign">start</property>
+            <style>
+              <class name="circular" />
+              <class name="osd" />
+              <class name="apply-button" />
+            </style>
+          </object>
+        </child>
+        <child>
           <object class="AdwBin" id="handle_bottom_left">
             <property name="valign">end</property>
             <property name="vexpand">true</property>
             <layout>
-              <property name="row">1</property>
+              <property name="row">2</property>
               <property name="column">0</property>
             </layout>
             <style>
@@ -157,8 +175,8 @@
             <property name="valign">end</property>
             <property name="vexpand">true</property>
             <layout>
-              <property name="row">1</property>
-              <property name="column">1</property>
+              <property name="row">2</property>
+              <property name="column">2</property>
             </layout>
             <style>
               <class name="handle" />

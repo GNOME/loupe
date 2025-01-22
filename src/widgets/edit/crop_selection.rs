@@ -26,7 +26,7 @@ use adw::{glib, gtk};
 
 use super::crop::{LpAspectRatio, LpEditCrop, LpOrientation};
 
-const MIN_SELECTION_SIZE: f32 = 50.;
+const MIN_SELECTION_SIZE: f32 = 80.;
 
 #[derive(Debug, Clone, Copy)]
 struct InResize {
@@ -156,6 +156,9 @@ mod imp {
         handle_bottom_left: TemplateChild<adw::Bin>,
 
         #[template_child]
+        apply_button: TemplateChild<gtk::Button>,
+
+        #[template_child]
         selection_move: TemplateChild<gtk::GestureDrag>,
 
         /// Set while in drag gesture for changing crop area
@@ -226,6 +229,7 @@ mod imp {
             }
 
             self.selection.set_cursor_from_name(Some("move"));
+            self.apply_button.set_cursor_from_name(Some("default"));
 
             obj.crop()
                 .connect_aspect_ratio_notify(|x| x.selection().imp().on_aspect_ratio_changed());
@@ -256,7 +260,7 @@ mod imp {
 
                         let crop_area = imp.crop_area();
 
-                        imp.selection_in_resize.set(Some(InResize {
+                        imp.set_selection_in_resize(Some(InResize {
                             corner,
                             initial_selection: crop_area,
                         }));
@@ -264,7 +268,7 @@ mod imp {
                         gesture.set_state(gtk::EventSequenceState::Claimed);
 
                         let crop_area = imp.crop_area();
-                        imp.selection_in_move.set(Some(InMove {
+                        imp.set_selection_in_move(Some(InMove {
                             initial_selection: crop_area,
                         }));
                     } else {
@@ -315,8 +319,8 @@ mod imp {
                 #[weak]
                 obj,
                 move |_, _, _| {
-                    obj.imp().selection_in_resize.set(None);
-                    obj.imp().selection_in_move.set(None);
+                    obj.imp().set_selection_in_resize(None);
+                    obj.imp().set_selection_in_move(None);
                 }
             ));
         }
@@ -683,6 +687,7 @@ mod imp {
             self.crop_x.set(x);
             self.space_top_left.set_width_request(x.round() as i32);
             self.obj().notify_crop_x();
+            self.update_apply_crop_visibility();
         }
 
         /// Set y coordinate of crop selection rectangle origin
@@ -695,6 +700,7 @@ mod imp {
             self.crop_y.set(y);
             self.space_top_left.set_height_request(y.round() as i32);
             self.obj().notify_crop_y();
+            self.update_apply_crop_visibility();
         }
 
         /// Set width of crop selection rectangle
@@ -707,6 +713,7 @@ mod imp {
             self.crop_width.set(width);
             self.selection.set_width_request(width.round() as i32);
             self.obj().notify_crop_width();
+            self.update_apply_crop_visibility();
         }
 
         /// Set height of crop selection rectangle
@@ -719,6 +726,7 @@ mod imp {
             self.crop_height.set(height);
             self.selection.set_height_request(height.round() as i32);
             self.obj().notify_crop_height();
+            self.update_apply_crop_visibility();
         }
 
         /// Width of area in which the crop selection can exist
@@ -728,6 +736,7 @@ mod imp {
 
         fn set_total_width(&self, width: i32) {
             self.obj().set_width_request(width);
+            self.update_apply_crop_visibility();
         }
 
         /// Height of area in which the crop selection can exist
@@ -737,6 +746,7 @@ mod imp {
 
         fn set_total_height(&self, width: i32) {
             self.obj().set_height_request(width);
+            self.update_apply_crop_visibility();
         }
 
         pub(super) fn aspect_ratio_animation(&self) -> &adw::TimedAnimation {
@@ -750,6 +760,24 @@ mod imp {
                     .target(&adw::CallbackAnimationTarget::new(|_| {}))
                     .build()
             })
+        }
+
+        fn set_selection_in_resize(&self, in_resize: Option<InResize>) {
+            self.selection_in_resize.replace(in_resize);
+            self.update_apply_crop_visibility();
+        }
+
+        fn set_selection_in_move(&self, in_move: Option<InMove>) {
+            self.selection_in_move.replace(in_move);
+            self.update_apply_crop_visibility();
+        }
+
+        fn update_apply_crop_visibility(&self) {
+            self.apply_button.set_visible(
+                self.obj().is_cropped()
+                    && !self.selection_in_resize.get().is_some()
+                    && !self.selection_in_move.get().is_some(),
+            );
         }
     }
 }

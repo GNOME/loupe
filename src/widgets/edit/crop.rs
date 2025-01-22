@@ -71,8 +71,6 @@ mod imp {
         image: TemplateChild<LpImage>,
         #[template_child]
         pub(super) selection: TemplateChild<LpEditCropSelection>,
-        #[template_child]
-        pub apply_crop: TemplateChild<gtk::Button>,
 
         #[property(get, set, builder(LpAspectRatio::default()))]
         aspect_ratio: Cell<LpAspectRatio>,
@@ -228,9 +226,6 @@ mod imp {
                 log::trace!("Setting crop are in image coordinates to {crop_area_image_coord:?}");
                 self.crop_area_image_coord.replace(crop_area_image_coord);
             }
-
-            let apply_sensitive = self.cropped();
-            self.apply_crop.set_visible(apply_sensitive);
 
             self.obj().notify_cropped();
         }
