@@ -42,6 +42,12 @@ mod imp {
         cancel: TemplateChild<gtk::Button>,
         #[template_child]
         pub(crate) done: TemplateChild<gtk::MenuButton>,
+        #[template_child]
+        saving_revealer: TemplateChild<gtk::Revealer>,
+        #[template_child]
+        saving_status: TemplateChild<gtk::Label>,
+        #[template_child]
+        saving_info: TemplateChild<gtk::Revealer>,
 
         #[property(get, construct_only)]
         original_image: OnceCell<LpImage>,
@@ -208,6 +214,7 @@ mod imp {
 
             obj.edit_crop().apply_crop();
 
+            self.set_saving_status(Some(gettext("Editing Image")));
             let editor = glycin::Editor::new(current_file);
             if let Some(operations) = obj.operations() {
                 log::debug!("Computing edited image.");
@@ -232,6 +239,8 @@ mod imp {
                                 );
                             }
                             Ok(data) => {
+                                self.set_saving_status(Some(gettext("Saving Image")));
+
                                 if let Err(err) = new_file
                                     .replace_contents_future(
                                         data,
@@ -255,7 +264,33 @@ mod imp {
                 }
             }
 
+            self.set_saving_status(None);
             false
+        }
+
+        fn set_saving_status(&self, message: Option<String>) {
+            let is_saving = message.is_some();
+            self.saving_status.set_label(&message.unwrap_or_default());
+            self.saving_revealer.set_reveal_child(is_saving);
+            self.done.set_sensitive(!is_saving);
+
+            if is_saving {
+                // Show text and spinner delayed
+                glib::timeout_add_local_once(
+                    std::time::Duration::from_millis(
+                        self.saving_revealer.transition_duration().into(),
+                    ),
+                    glib::clone!(
+                        #[weak(rename_to=imp)]
+                        self,
+                        move || {
+                            imp.saving_info.set_reveal_child(true);
+                        }
+                    ),
+                );
+            } else {
+                self.saving_info.set_reveal_child(false);
+            }
         }
     }
 }

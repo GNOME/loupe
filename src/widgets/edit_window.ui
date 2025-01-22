@@ -4,7 +4,52 @@
     <property name="child">
       <object class="AdwToolbarView" id="toolbar_view">
         <property name="top-bar-style">raised</property>
-        <property name="content" bind-source="LpEditWindow" bind-property="edit_crop" />
+        <property name="content">
+          <object class="GtkOverlay">
+            <property name="child" bind-source="LpEditWindow" bind-property="edit_crop" />
+            <child type="overlay">
+              <object class="GtkRevealer" id="saving_revealer">
+                <property name="transition-type">crossfade</property>
+                <property name="transition-duration">500</property>
+                <property name="can-target" bind-source="saving_revealer" bind-property="reveal-child" bind-flags="sync-create" />
+                <property name="child">
+                  <object class="AdwBin">
+                    <style>
+                      <class name="saving-overlay" />
+                    </style>
+                    <property name="child">
+                      <object class="GtkRevealer" id="saving_info">
+                        <property name="transition-type">crossfade</property>
+                        <property name="transition-duration">500</property>
+                        <property name="child">
+                          <object class="GtkBox">
+                            <property name="orientation">vertical</property>
+                            <property name="valign">center</property>
+                            <property name="spacing">18</property>
+                            <child>
+                              <object class="AdwSpinner">
+                                <property name="width-request">64</property>
+                                <property name="height-request">64</property>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkLabel" id="saving_status">
+                                <property name="label">Preparing to Save Image</property>
+                                <style>
+                                  <class name="title-2" />
+                                </style>
+                              </object>
+                            </child>
+                          </object>
+                        </property>
+                      </object>
+                    </property>
+                  </object>
+                </property>
+              </object>
+            </child>
+          </object>
+        </property>
         <child type="top">
           <object class="AdwHeaderBar">
             <property name="show-start-title-buttons">false</property>
