@@ -248,6 +248,7 @@ impl LpWindow {
     }
 
     pub fn show_specific_image(&self, file: gio::File) {
+        log::debug!("Showting specific image: {}", file.uri());
         self.image_view().set_images_from_files(vec![file]);
         self.show_image();
     }

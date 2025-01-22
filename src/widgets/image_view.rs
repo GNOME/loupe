@@ -529,7 +529,10 @@ impl LpImageView {
         }
 
         let Some(new_index) = self.model().index_of(new_file) else {
-            log::warn!("Could not navigate to file {}", new_file.uri());
+            log::warn!(
+                "Could not navigate to file '{}': Not in model",
+                new_file.uri()
+            );
             return;
         };
 

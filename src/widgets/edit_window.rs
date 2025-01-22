@@ -45,6 +45,8 @@ mod imp {
 
         #[property(get, construct_only)]
         original_image: OnceCell<LpImage>,
+        #[property(get, construct_only)]
+        pub edit_crop: OnceCell<LpEditCrop>,
 
         pub(super) operations: RefCell<Option<Arc<Operations>>>,
     }
@@ -87,9 +89,6 @@ mod imp {
 
             let obj = self.obj();
 
-            self.toolbar_view
-                .set_content(Some(&LpEditCrop::new(obj.to_owned())));
-
             self.cancel.connect_clicked(glib::clone!(
                 #[weak]
                 obj,
@@ -109,7 +108,19 @@ mod imp {
         }
     }
 
-    impl WidgetImpl for LpEditWindow {}
+    impl WidgetImpl for LpEditWindow {
+        fn root(&self) {
+            self.parent_root();
+
+            let obj = self.obj();
+
+            obj.edit_crop().connect_cropped_notify(glib::clone!(
+                #[weak]
+                obj,
+                move |_| obj.imp().done.set_sensitive(obj.is_done_sensitive())
+            ));
+        }
+    }
     impl BinImpl for LpEditWindow {}
 
     impl LpEditWindow {
@@ -194,6 +205,9 @@ mod imp {
         /// Returns `true` if editing and saving was successful
         async fn save(&self, current_file: gio::File, new_file: gio::File) -> bool {
             let obj = self.obj();
+
+            obj.edit_crop().apply_crop();
+
             let editor = glycin::Editor::new(current_file);
             if let Some(operations) = obj.operations() {
                 log::debug!("Computing edited image.");
@@ -260,7 +274,8 @@ impl LpEditWindow {
 
     pub fn new(image: LpImage) -> Self {
         glib::Object::builder()
-            .property("original_image", image)
+            .property("original_image", image.clone())
+            .property("edit_crop", LpEditCrop::new(image))
             .build()
     }
 
@@ -270,13 +285,17 @@ impl LpEditWindow {
 
     pub fn set_operations(&self, operations: Option<Arc<glycin::Operations>>) {
         let imp = self.imp();
-
-        let done_sensitive = operations
-            .as_ref()
-            .is_some_and(|x| !x.operations().is_empty());
-        imp.done.set_sensitive(done_sensitive);
-
         imp.operations.replace(operations);
+        imp.done.set_sensitive(self.is_done_sensitive());
+    }
+
+    pub fn is_done_sensitive(&self) -> bool {
+        self.imp()
+            .operations
+            .borrow()
+            .as_ref()
+            .is_some_and(|x| !x.operations().is_empty())
+            || self.edit_crop().cropped()
     }
 
     pub fn add_operation(&self, operation: glycin::Operation) {

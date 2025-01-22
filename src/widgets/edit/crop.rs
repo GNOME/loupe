@@ -18,6 +18,7 @@
 //! Shows an resizable cropping selection
 
 use std::cell::{Cell, OnceCell};
+use std::marker::PhantomData;
 
 use adw::prelude::*;
 use adw::subclass::prelude::*;
@@ -29,7 +30,7 @@ use crate::util::gettext::*;
 use crate::util::root::ParentWindow;
 use crate::util::ErrorType;
 use crate::widgets::edit::LpEditCropSelection;
-use crate::widgets::{LpEditWindow, LpImage};
+use crate::widgets::LpImage;
 
 /// Aspect ratio modes that can be selected
 #[derive(Debug, Clone, Copy, Default, glib::Enum, glib::Variant)]
@@ -59,6 +60,7 @@ pub enum LpOrientation {
 }
 
 mod imp {
+
     use super::*;
 
     #[derive(Debug, Default, gtk::CompositeTemplate, glib::Properties)]
@@ -79,8 +81,8 @@ mod imp {
 
         #[property(get, construct_only)]
         original_image: OnceCell<LpImage>,
-        #[property(get, construct_only)]
-        edit_window: OnceCell<LpEditWindow>,
+        #[property(get=Self::cropped)]
+        cropped: PhantomData<bool>,
 
         #[property(get, set)]
         child: OnceCell<gtk::Widget>,
@@ -173,8 +175,6 @@ mod imp {
                     obj.imp().selection_changed();
                 }
             ));
-
-            let _ = self.apply_reset();
         }
 
         fn dispose(&self) {
@@ -183,6 +183,12 @@ mod imp {
     }
 
     impl WidgetImpl for LpEditCrop {
+        fn root(&self) {
+            self.parent_root();
+
+            let _ = self.apply_reset();
+        }
+
         fn size_allocate(&self, width: i32, height: i32, baseline: i32) {
             let obj = self.obj();
 
@@ -223,12 +229,14 @@ mod imp {
                 self.crop_area_image_coord.replace(crop_area_image_coord);
             }
 
-            let apply_sensitive = self.selection.is_cropped();
+            let apply_sensitive = self.cropped();
             self.apply_crop.set_visible(apply_sensitive);
+
+            self.obj().notify_cropped();
         }
 
         fn crop_area_image_coord(&self) -> Option<(u32, u32, u32, u32)> {
-            if !self.selection.is_cropped() {
+            if !self.cropped() {
                 return None;
             }
 
@@ -265,6 +273,10 @@ mod imp {
             (x.round(), y.round(), w.round(), h.round())
         }
 
+        fn cropped(&self) -> bool {
+            self.selection.is_cropped()
+        }
+
         fn reset_selection(&self) {
             let image = &self.image;
 
@@ -277,7 +289,7 @@ mod imp {
             self.selection.reset(x, y, width, height);
         }
 
-        fn apply_crop(&self) {
+        pub(super) fn apply_crop(&self) {
             if let Some(crop) = self.crop_area_image_coord.get() {
                 self.add_operation(Operation::Clip(crop));
 
@@ -372,11 +384,12 @@ glib::wrapper! {
 }
 
 impl LpEditCrop {
-    pub fn new(edit_window: LpEditWindow) -> Self {
-        glib::Object::builder()
-            .property("original_image", edit_window.original_image())
-            .property("edit_window", edit_window)
-            .build()
+    pub fn new(original_image: LpImage) -> Self {
+        let obj: Self = glib::Object::builder()
+            .property("original_image", original_image)
+            .build();
+
+        obj
     }
 
     pub fn selection(&self) -> LpEditCropSelection {
@@ -385,11 +398,15 @@ impl LpEditCrop {
 
     fn handle_error(&self, res: Result<(), EditingError>) {
         if let Err(err) = res {
-            self.edit_window().window().show_error(
+            self.window().show_error(
                 &gettext("Failed to Edit Image"),
                 &format!("Failed to edit image: {err}"),
                 ErrorType::General,
             );
         }
+    }
+
+    pub fn apply_crop(&self) {
+        self.imp().apply_crop();
     }
 }

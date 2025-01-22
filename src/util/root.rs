@@ -1,4 +1,4 @@
-// Copyright (c) 2024 Sophie Herold
+// Copyright (c) 2024-2025 Sophie Herold
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -17,7 +17,7 @@
 
 use gtk::prelude::*;
 
-use crate::widgets::LpWindow;
+use crate::widgets::{LpEditWindow, LpWindow};
 
 pub trait ParentWindow: WidgetExt {
     fn window(&self) -> LpWindow {
@@ -28,6 +28,15 @@ pub trait ParentWindow: WidgetExt {
         }
 
         result.unwrap()
+    }
+
+    fn edit_window(&self) -> LpEditWindow {
+        let parent = self.parent().unwrap();
+
+        parent
+            .clone()
+            .downcast()
+            .unwrap_or_else(|_| parent.edit_window())
     }
 }
 
