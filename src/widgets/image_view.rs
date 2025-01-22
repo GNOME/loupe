@@ -121,6 +121,9 @@ mod imp {
 
         #[property(get, set)]
         zoom_toggle_state: Cell<bool>,
+
+        #[property(get, set, nullable)]
+        pub delayed_current_file: RefCell<Option<gio::File>>,
     }
 
     #[glib::object_subclass]
@@ -529,10 +532,11 @@ impl LpImageView {
         }
 
         let Some(new_index) = self.model().index_of(new_file) else {
-            log::warn!(
-                "Could not navigate to file '{}': Not in model",
+            log::debug!(
+                "Could not navigate to file that's not in model '{}': Delaying insertion",
                 new_file.uri()
             );
+            self.set_delayed_current_file(Some(new_file));
             return;
         };
 
@@ -558,6 +562,8 @@ impl LpImageView {
         log::debug!("Scrolling to page for {}", new_file.uri());
         self.imp().preserve_content.set(true);
         sliding_view.animate_to(&page);
+
+        self.set_delayed_current_file(gio::File::NONE);
     }
 
     /// Ensures the sliding view contains the correct images
@@ -607,6 +613,8 @@ impl LpImageView {
         } else {
             self.sliding_view().instant_to(&current_page);
         }
+
+        self.set_delayed_current_file(gio::File::NONE);
     }
 
     fn sliding_view(&self) -> LpSlidingView {
@@ -684,6 +692,8 @@ impl LpImageView {
             }
         }
 
+        dbg!(file_event);
+
         let Some(current_file) = self.current_file() else {
             return;
         };
@@ -694,8 +704,25 @@ impl LpImageView {
                 return;
             }
             FileEvent::Moved(src, target) => {
+                let target_file = gio::File::for_uri(target);
+                // Set new filename for image
                 if let Some(page) = self.sliding_view().get(&gio::File::for_uri(src)) {
-                    page.image().init(&gio::File::for_uri(target));
+                    page.image().init(&target_file);
+                }
+                // File that delayed move is set for is now available
+                if let Some(delayed_current_file) = self.delayed_current_file() {
+                    if target_file.equal(&delayed_current_file) {
+                        self.navigate_to_file(&delayed_current_file);
+                    }
+                }
+            }
+            FileEvent::New(new) => {
+                // File that delayed move is set for is now available
+                if let Some(delayed_current_file) = self.delayed_current_file() {
+                    let new_file = gio::File::for_uri(new);
+                    if new_file.equal(&delayed_current_file) {
+                        self.navigate_to_file(&delayed_current_file);
+                    }
                 }
             }
             _ => {}
