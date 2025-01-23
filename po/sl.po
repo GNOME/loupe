@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2025-01-22 20:02+0000\n"
-"PO-Revision-Date: 2025-01-23 08:49+0100\n"
+"POT-Creation-Date: 2025-01-23 14:31+0000\n"
+"PO-Revision-Date: 2025-01-23 17:09+0100\n"
 "Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
 "Language-Team: Slovenian <gnome-si@googlegroups.com>\n"
 "Language: sl\n"
@@ -326,7 +326,7 @@ msgstr "Obnovitev slike iz smeti je spodletela"
 msgid "Drop Image to View"
 msgstr "Spustite sliko za ogled"
 
-#: src/widgets/edit/crop.rs:402
+#: src/widgets/edit/crop.rs:397
 msgid "Failed to Edit Image"
 msgstr "Urejanje slike ni uspelo"
 
@@ -386,15 +386,15 @@ msgstr "_3:2"
 msgid "_16:9"
 msgstr "_16:9"
 
-#: src/widgets/edit/crop.ui:219 src/widgets/edit/crop.ui:378
+#: src/widgets/edit/crop.ui:219 src/widgets/edit/crop.ui:366
 msgid "Orientation Landscape"
 msgstr "Ležeča usmerjenost"
 
-#: src/widgets/edit/crop.ui:228 src/widgets/edit/crop.ui:390
+#: src/widgets/edit/crop.ui:228 src/widgets/edit/crop.ui:378
 msgid "Orientation Portrait"
 msgstr "Pokončna usmerjenost"
 
-#: src/widgets/edit/crop.ui:249 src/widgets/edit/crop.ui:408
+#: src/widgets/edit/crop.ui:249 src/widgets/edit/crop.ui:396
 msgid "Rotate Counter Clockwise"
 msgstr "Zasukaj nasprotno smeri urnega kazalca"
 
@@ -402,7 +402,7 @@ msgstr "Zasukaj nasprotno smeri urnega kazalca"
 msgid "Rotate Clockwise"
 msgstr "Zasukaj v smeri urinega kazalca"
 
-#: src/widgets/edit/crop.ui:275 src/widgets/edit/crop.ui:416
+#: src/widgets/edit/crop.ui:275 src/widgets/edit/crop.ui:404
 msgid "Mirror Horizontally"
 msgstr "Zrcali vodoravno"
 
@@ -410,13 +410,17 @@ msgstr "Zrcali vodoravno"
 msgid "Mirror Vertically"
 msgstr "Zrcali navpično"
 
-#: src/widgets/edit/crop.ui:295 src/widgets/edit/crop.ui:432
+#: src/widgets/edit/crop.ui:295 src/widgets/edit/crop.ui:420
 msgid "Undo Changes in this View"
 msgstr "Razveljavi spremembe v tem pogledu"
 
-#: src/widgets/edit/crop.ui:365
+#: src/widgets/edit/crop.ui:353
 msgid "Aspect Ratio"
 msgstr "Razmerje stranic"
+
+#: src/widgets/edit/crop_selection.ui:116
+msgid "Crop Selection"
+msgstr "Obreži izbor"
 
 #: src/widgets/edit_window.rs:179 src/widgets/edit_window.rs:193
 msgid "Failed to save image."
