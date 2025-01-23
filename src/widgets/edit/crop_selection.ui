@@ -130,7 +130,6 @@
             </style>
             <child>
               <object class="AdwBin" id="handle_top_left">
-                <property name="halign">start</property>
                 <property name="valign">start</property>
                 <layout>
                   <property name="row">0</property>
@@ -143,12 +142,22 @@
               </object>
             </child>
             <child>
-              <object class="AdwBin" id="handle_top_right">
-                <property name="halign">end</property>
+              <object class="AdwBin" id="handle_top">
                 <property name="hexpand">true</property>
                 <layout>
                   <property name="row">0</property>
                   <property name="column">1</property>
+                </layout>
+                <style>
+                  <class name="handle-top" />
+                </style>
+              </object>
+            </child>
+            <child>
+              <object class="AdwBin" id="handle_top_right">
+                <layout>
+                  <property name="row">0</property>
+                  <property name="column">2</property>
                 </layout>
                 <style>
                   <class name="handle" />
@@ -157,11 +166,33 @@
               </object>
             </child>
             <child>
-              <object class="AdwBin" id="handle_bottom_left">
-                <property name="valign">end</property>
+              <object class="AdwBin" id="handle_left">
                 <property name="vexpand">true</property>
                 <layout>
                   <property name="row">1</property>
+                  <property name="column">0</property>
+                </layout>
+                <style>
+                  <class name="handle-left" />
+                </style>
+              </object>
+            </child>
+            <child>
+              <object class="AdwBin" id="handle_right">
+                <property name="vexpand">true</property>
+                <layout>
+                  <property name="row">1</property>
+                  <property name="column">2</property>
+                </layout>
+                <style>
+                  <class name="handle-right" />
+                </style>
+              </object>
+            </child>
+            <child>
+              <object class="AdwBin" id="handle_bottom_left">
+                <layout>
+                  <property name="row">2</property>
                   <property name="column">0</property>
                 </layout>
                 <style>
@@ -171,14 +202,22 @@
               </object>
             </child>
             <child>
-              <object class="AdwBin" id="handle_bottom_right">
-                <property name="halign">end</property>
+              <object class="AdwBin" id="handle_bottom">
                 <property name="hexpand">true</property>
-                <property name="valign">end</property>
-                <property name="vexpand">true</property>
                 <layout>
-                  <property name="row">1</property>
+                  <property name="row">2</property>
                   <property name="column">1</property>
+                </layout>
+                <style>
+                  <class name="handle-bottom" />
+                </style>
+              </object>
+            </child>
+            <child>
+              <object class="AdwBin" id="handle_bottom_right">
+                <layout>
+                  <property name="row">2</property>
+                  <property name="column">2</property>
                 </layout>
                 <style>
                   <class name="handle" />

@@ -4,7 +4,8 @@ lpcrop {
   --handle-border-color: var(--selection-border-color);
   --handle-size: 20px;
   --handle-border-width: 3px;
-  --handle-offset: -4px;
+  --handle-offset: 4px;
+  --n-handle-offset: calc(-1 * var(--handle-offset));
 }
 
 .selection {
@@ -18,29 +19,41 @@ lpcrop {
 .handle-top-left {
   border-top: var(--handle-border-width) var(--handle-border-color) solid;
   border-left: var(--handle-border-width) var(--handle-border-color) solid;
-  margin-top: var(--handle-offset);
-  margin-left: var(--handle-offset);
+  transform: translate(var(--n-handle-offset), var(--n-handle-offset));
+}
+
+.handle-top {
+  transform: translateY(var(--n-handle-offset));
 }
 
 .handle-top-right {
   border-top: var(--handle-border-width) var(--handle-border-color) solid;
   border-right: var(--handle-border-width) var(--handle-border-color) solid;
-  margin-top: var(--handle-offset);
-  margin-right: var(--handle-offset);
+  transform: translate(var(--handle-offset), var(--n-handle-offset));
 }
 
-.handle-bottom-left {
-  border-left: var(--handle-border-width) var(--handle-border-color) solid;
-  border-bottom: var(--handle-border-width) var(--handle-border-color) solid;
-  margin-left: var(--handle-offset);
-  margin-bottom: var(--handle-offset);
+.handle-right {
+  transform: translateX(var(--handle-offset));
 }
 
 .handle-bottom-right {
   border-bottom: var(--handle-border-width) var(--handle-border-color) solid;
   border-right: var(--handle-border-width) var(--handle-border-color) solid;
-  margin-bottom: var(--handle-offset);
-  margin-right: var(--handle-offset);
+  transform: translate(var(--handle-offset), var(--handle-offset));
+}
+
+.handle-bottom {
+  transform: translateY(var(--handle-offset));
+}
+
+.handle-bottom-left {
+  border-left: var(--handle-border-width) var(--handle-border-color) solid;
+  border-bottom: var(--handle-border-width) var(--handle-border-color) solid;
+  transform: translate(var(--n-handle-offset), var(--handle-offset));
+}
+
+.handle-left {
+  transform: translateX(var(--n-handle-offset));
 }
 
 .discarded-area {

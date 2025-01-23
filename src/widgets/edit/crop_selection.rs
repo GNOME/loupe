@@ -42,9 +42,13 @@ struct InMove {
 #[derive(Debug, Clone, Copy)]
 enum Corner {
     TopLeft,
+    Top,
     TopRight,
-    BottomLeft,
+    Right,
     BottomRight,
+    Bottom,
+    BottomLeft,
+    Left,
 }
 
 #[derive(Debug, Clone, Copy)]
@@ -63,27 +67,39 @@ impl Corner {
     fn cursor_name(&self) -> &str {
         match self {
             Self::TopLeft => "nw-resize",
+            Self::Top => "n-resize",
             Self::TopRight => "ne-resize",
-            Self::BottomLeft => "sw-resize",
+            Self::Right => "e-resize",
             Self::BottomRight => "se-resize",
+            Self::Bottom => "s-resize",
+            Self::BottomLeft => "sw-resize",
+            Self::Left => "w-resize",
         }
     }
 
-    fn h_edge(&self) -> HEdge {
+    fn h_edge(&self) -> Option<HEdge> {
         match self {
-            Self::TopLeft => HEdge::Left,
-            Self::TopRight => HEdge::Right,
-            Self::BottomLeft => HEdge::Left,
-            Self::BottomRight => HEdge::Right,
+            Self::TopLeft => Some(HEdge::Left),
+            Self::Top => None,
+            Self::TopRight => Some(HEdge::Right),
+            Self::Right => Some(HEdge::Right),
+            Self::BottomRight => Some(HEdge::Right),
+            Self::Bottom => None,
+            Self::BottomLeft => Some(HEdge::Left),
+            Self::Left => Some(HEdge::Left),
         }
     }
 
-    fn v_edge(&self) -> VEdge {
+    fn v_edge(&self) -> Option<VEdge> {
         match self {
-            Self::TopLeft => VEdge::Top,
-            Self::TopRight => VEdge::Top,
-            Self::BottomLeft => VEdge::Bottom,
-            Self::BottomRight => VEdge::Bottom,
+            Self::TopLeft => Some(VEdge::Top),
+            Self::Top => Some(VEdge::Top),
+            Self::TopRight => Some(VEdge::Top),
+            Self::Right => None,
+            Self::BottomRight => Some(VEdge::Bottom),
+            Self::Bottom => Some(VEdge::Bottom),
+            Self::BottomLeft => Some(VEdge::Bottom),
+            Self::Left => None,
         }
     }
 }
@@ -149,11 +165,19 @@ mod imp {
         #[template_child]
         handle_top_left: TemplateChild<adw::Bin>,
         #[template_child]
+        handle_top: TemplateChild<adw::Bin>,
+        #[template_child]
         handle_top_right: TemplateChild<adw::Bin>,
+        #[template_child]
+        handle_right: TemplateChild<adw::Bin>,
         #[template_child]
         handle_bottom_right: TemplateChild<adw::Bin>,
         #[template_child]
+        handle_bottom: TemplateChild<adw::Bin>,
+        #[template_child]
         handle_bottom_left: TemplateChild<adw::Bin>,
+        #[template_child]
+        handle_left: TemplateChild<adw::Bin>,
 
         #[template_child]
         apply_button: TemplateChild<gtk::Button>,
@@ -225,9 +249,13 @@ mod imp {
             // List of widgets that are drag handles
             let drag_corners = std::collections::BTreeMap::from([
                 (self.handle_top_left.clone(), Corner::TopLeft),
+                (self.handle_top.clone(), Corner::Top),
                 (self.handle_top_right.clone(), Corner::TopRight),
-                (self.handle_bottom_left.clone(), Corner::BottomLeft),
+                (self.handle_right.clone(), Corner::Right),
                 (self.handle_bottom_right.clone(), Corner::BottomRight),
+                (self.handle_bottom.clone(), Corner::Bottom),
+                (self.handle_bottom_left.clone(), Corner::BottomLeft),
+                (self.handle_left.clone(), Corner::Left),
             ]);
 
             // Set cursor style for each corner
@@ -350,14 +378,17 @@ mod imp {
         fn new_crop_area(&self, resize: &InResize, (x, y): (f64, f64)) -> graphene::Rect {
             let (x_offset, width_offset) = match resize.corner.h_edge() {
                 // Change the crop x position and reduce width accordingly
-                HEdge::Left => (x, -x),
+                Some(HEdge::Left) => (x, -x),
                 // Just change the crop width
-                HEdge::Right => (0., x),
+                Some(HEdge::Right) => (0., x),
+                // Don't change
+                None => (0., 0.),
             };
 
             let (y_offset, height_offset) = match resize.corner.v_edge() {
-                VEdge::Top => (y, -y),
-                VEdge::Bottom => (0., y),
+                Some(VEdge::Top) => (y, -y),
+                Some(VEdge::Bottom) => (0., y),
+                None => (0., 0.),
             };
 
             let mut x = resize.initial_selection.x() + x_offset as f32;
@@ -367,14 +398,14 @@ mod imp {
             let mut height = resize.initial_selection.height() + height_offset as f32;
 
             if width < 0. {
-                if matches!(resize.corner.h_edge(), HEdge::Left) {
+                if matches!(resize.corner.h_edge(), Some(HEdge::Left)) {
                     x += width;
                 }
                 width = 0.;
             }
 
             if height < 0. {
-                if matches!(resize.corner.v_edge(), VEdge::Top) {
+                if matches!(resize.corner.v_edge(), Some(VEdge::Top)) {
                     y += height;
                 }
                 height = 0.;
@@ -428,7 +459,7 @@ mod imp {
                 let x_diff = width - MIN_SELECTION_SIZE;
                 width = MIN_SELECTION_SIZE;
 
-                if matches!(resize.corner.h_edge(), HEdge::Left) {
+                if matches!(resize.corner.h_edge(), Some(HEdge::Left)) {
                     x += x_diff;
                 }
             }
@@ -437,7 +468,7 @@ mod imp {
                 let y_diff = height - MIN_SELECTION_SIZE;
                 height = MIN_SELECTION_SIZE;
 
-                if matches!(resize.corner.v_edge(), VEdge::Top) {
+                if matches!(resize.corner.v_edge(), Some(VEdge::Top)) {
                     y += y_diff;
                 }
             }
@@ -476,12 +507,12 @@ mod imp {
 
             if vertical {
                 width = new_area.height() * aspect_ratio;
-                if matches!(resize.corner.h_edge(), HEdge::Left) {
+                if matches!(resize.corner.h_edge(), Some(HEdge::Left)) {
                     x += new_area.width() - width;
                 }
             } else {
                 height = new_area.width() / aspect_ratio;
-                if matches!(resize.corner.v_edge(), VEdge::Top) {
+                if matches!(resize.corner.v_edge(), Some(VEdge::Top)) {
                     y += new_area.height() - height;
                 }
             }
@@ -514,10 +545,10 @@ mod imp {
                 let y_diff = height - MIN_SELECTION_SIZE / aspect_ratio;
                 height = MIN_SELECTION_SIZE / aspect_ratio;
 
-                if matches!(corner.v_edge(), VEdge::Top) {
+                if matches!(corner.v_edge(), Some(VEdge::Top)) {
                     y += y_diff;
                 }
-                if matches!(corner.h_edge(), HEdge::Left) {
+                if matches!(corner.h_edge(), Some(HEdge::Left)) {
                     x += x_diff;
                 }
             }
@@ -528,10 +559,10 @@ mod imp {
                 let y_diff = height - MIN_SELECTION_SIZE;
                 height = MIN_SELECTION_SIZE;
 
-                if matches!(corner.v_edge(), VEdge::Top) {
+                if matches!(corner.v_edge(), Some(VEdge::Top)) {
                     y += y_diff;
                 }
-                if matches!(corner.h_edge(), HEdge::Left) {
+                if matches!(corner.h_edge(), Some(HEdge::Left)) {
                     x += x_diff;
                 }
             }
@@ -555,7 +586,12 @@ mod imp {
         }
 
         /// Limit Rect to not leave image area to the left
-        fn rect_limit_top(&self, rect: &mut graphene::Rect, aspect_ratio: f32, edge: VEdge) {
+        fn rect_limit_top(
+            &self,
+            rect: &mut graphene::Rect,
+            aspect_ratio: f32,
+            edge: Option<VEdge>,
+        ) {
             let (mut x, mut y, mut width, mut height) = rect.coordinates();
 
             if x < 0. {
@@ -563,7 +599,7 @@ mod imp {
                 x = 0.;
                 let old_height = height;
                 height = width / aspect_ratio;
-                if matches!(edge, VEdge::Top) {
+                if matches!(edge, Some(VEdge::Top)) {
                     y += old_height - height;
                 }
             }
@@ -572,7 +608,12 @@ mod imp {
         }
 
         /// Limit Rect to not leave image area at to the left
-        fn rect_limit_left(&self, rect: &mut graphene::Rect, aspect_ratio: f32, edge: HEdge) {
+        fn rect_limit_left(
+            &self,
+            rect: &mut graphene::Rect,
+            aspect_ratio: f32,
+            edge: Option<HEdge>,
+        ) {
             let (mut x, mut y, mut width, mut height) = rect.coordinates();
 
             if y < 0. {
@@ -581,7 +622,7 @@ mod imp {
                 let old_width = width;
                 width = height * aspect_ratio;
 
-                if matches!(edge, HEdge::Left) {
+                if matches!(edge, Some(HEdge::Left)) {
                     x += old_width - width;
                 }
 
@@ -590,7 +631,12 @@ mod imp {
         }
 
         /// Limit Rect to not leave image area at the bottom
-        fn rect_limit_bottom(&self, rect: &mut graphene::Rect, aspect_ratio: f32, edge: HEdge) {
+        fn rect_limit_bottom(
+            &self,
+            rect: &mut graphene::Rect,
+            aspect_ratio: f32,
+            edge: Option<HEdge>,
+        ) {
             let obj = self.obj();
             let (mut x, y, mut width, mut height) = rect.coordinates();
 
@@ -601,7 +647,7 @@ mod imp {
                 let old_width = width;
                 width = height * aspect_ratio;
 
-                if matches!(edge, HEdge::Left) {
+                if matches!(edge, Some(HEdge::Left)) {
                     x += old_width - width;
                 }
 
@@ -609,7 +655,12 @@ mod imp {
             }
         }
 
-        fn rect_limit_right(&self, rect: &mut graphene::Rect, aspect_ratio: f32, edge: VEdge) {
+        fn rect_limit_right(
+            &self,
+            rect: &mut graphene::Rect,
+            aspect_ratio: f32,
+            edge: Option<VEdge>,
+        ) {
             let obj = self.obj();
             let (x, mut y, mut width, mut height) = rect.coordinates();
 
@@ -620,7 +671,7 @@ mod imp {
                 let old_height = height;
                 height = width / aspect_ratio;
 
-                if matches!(edge, VEdge::Top) {
+                if matches!(edge, Some(VEdge::Top)) {
                     y += old_height - height;
                 }
 
@@ -644,10 +695,10 @@ mod imp {
 
             let mut new_area = graphene::Rect::new(x, y, width, height);
 
-            self.rect_limit_top(&mut new_area, aspect_ratio, VEdge::Bottom);
-            self.rect_limit_left(&mut new_area, aspect_ratio, HEdge::Right);
-            self.rect_limit_bottom(&mut new_area, aspect_ratio, HEdge::Left);
-            self.rect_limit_right(&mut new_area, aspect_ratio, VEdge::Top);
+            self.rect_limit_top(&mut new_area, aspect_ratio, Some(VEdge::Bottom));
+            self.rect_limit_left(&mut new_area, aspect_ratio, Some(HEdge::Right));
+            self.rect_limit_bottom(&mut new_area, aspect_ratio, Some(HEdge::Left));
+            self.rect_limit_right(&mut new_area, aspect_ratio, Some(VEdge::Top));
 
             self.rect_limit_minumum_size(&mut new_area, aspect_ratio, Corner::BottomLeft);
 
