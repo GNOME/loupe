@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: po_gvfs-oc\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2025-01-15 21:44+0000\n"
-"PO-Revision-Date: 2025-01-18 12:32+0100\n"
+"POT-Creation-Date: 2025-01-23 14:31+0000\n"
+"PO-Revision-Date: 2025-01-23 18:04+0100\n"
 "Last-Translator: Quentin PAGÈS\n"
 "Language-Team: Tot En Òc\n"
 "Language: oc\n"
@@ -262,7 +262,7 @@ msgstr "Quentin PAGÈS"
 msgid "Copyright © 2020–2024 Christopher Davis et al."
 msgstr "Copyright © 2020–2024 Christopher Davis et al."
 
-#: src/file_model.rs:177
+#: src/file_model.rs:180
 msgid "Could not list other files in directory."
 msgstr "Impossible de listar los autres fichièrs del repertòri."
 
@@ -322,7 +322,7 @@ msgstr "Fracàs de la restauracion de l’imatge a partir de l’escobilhièr"
 msgid "Drop Image to View"
 msgstr "Depausar un imatge per l’afichar"
 
-#: src/widgets/edit/crop.rs:368
+#: src/widgets/edit/crop.rs:397
 msgid "Failed to Edit Image"
 msgstr "L'obtencion de la lista dels fichièrs a fracassat"
 
@@ -382,71 +382,83 @@ msgstr "_3:2"
 msgid "_16:9"
 msgstr "_16:9"
 
-#: src/widgets/edit/crop.ui:224 src/widgets/edit/crop.ui:383
-msgid "Rotate Counter Clockwise"
-msgstr "Rotacion antiorària"
-
-#: src/widgets/edit/crop.ui:231
-msgid "Rotate Clockwise"
-msgstr "Rotacion orària"
-
-#: src/widgets/edit/crop.ui:250 src/widgets/edit/crop.ui:391
-msgid "Mirror Horizontally"
-msgstr "Miralh orizontal"
-
-#: src/widgets/edit/crop.ui:257
-msgid "Mirror Vertically"
-msgstr "Miralh vertical"
-
-#: src/widgets/edit/crop.ui:270 src/widgets/edit/crop.ui:407
-msgid "Undo Changes in this View"
-msgstr "Anullar las modificacions dins aquesta vista"
-
-#: src/widgets/edit/crop.ui:340
-msgid "Aspect Ratio"
-msgstr "Proporcions"
-
-#: src/widgets/edit/crop.ui:353
+#: src/widgets/edit/crop.ui:219 src/widgets/edit/crop.ui:366
 msgid "Orientation Landscape"
 msgstr "Orientazion paisatge"
 
-#: src/widgets/edit/crop.ui:365
+#: src/widgets/edit/crop.ui:228 src/widgets/edit/crop.ui:378
 msgid "Orientation Portrait"
 msgstr "Orientazion retrach"
 
-#: src/widgets/edit_window.rs:160 src/widgets/edit_window.rs:174
+#: src/widgets/edit/crop.ui:249 src/widgets/edit/crop.ui:396
+msgid "Rotate Counter Clockwise"
+msgstr "Rotacion antiorària"
+
+#: src/widgets/edit/crop.ui:256
+msgid "Rotate Clockwise"
+msgstr "Rotacion orària"
+
+#: src/widgets/edit/crop.ui:275 src/widgets/edit/crop.ui:404
+msgid "Mirror Horizontally"
+msgstr "Miralh orizontal"
+
+#: src/widgets/edit/crop.ui:282
+msgid "Mirror Vertically"
+msgstr "Miralh vertical"
+
+#: src/widgets/edit/crop.ui:295 src/widgets/edit/crop.ui:420
+msgid "Undo Changes in this View"
+msgstr "Anullar las modificacions dins aquesta vista"
+
+#: src/widgets/edit/crop.ui:353
+msgid "Aspect Ratio"
+msgstr "Proporcions"
+
+#: src/widgets/edit/crop_selection.ui:116
+msgid "Crop Selection"
+msgstr "Talhar la seleccion"
+
+#: src/widgets/edit_window.rs:179 src/widgets/edit_window.rs:193
 msgid "Failed to save image."
 msgstr "L'obtencion de la lista dels fichièrs a fracassat."
 
-#: src/widgets/edit_window.rs:197
+#: src/widgets/edit_window.rs:217
+msgid "Editing Image"
+msgstr "Modificacion de l'imatge"
+
+#: src/widgets/edit_window.rs:226
 msgid "Failed to edit image."
 msgstr "L'obtencion de la lista dels fichièrs a fracassat."
 
-#: src/widgets/edit_window.rs:207 src/widgets/edit_window.rs:223
+#: src/widgets/edit_window.rs:236 src/widgets/edit_window.rs:254
 msgid "Failed to Save Image"
 msgstr "L'obtencion de la lista dels fichièrs a fracassat"
 
-#: src/widgets/edit_window.ui:13
+#: src/widgets/edit_window.rs:242
+msgid "Saving Image"
+msgstr "Enregistrament de l’imatge"
+
+#: src/widgets/edit_window.ui:59
 msgid "_Cancel"
 msgstr "_Anullar"
 
-#: src/widgets/edit_window.ui:19
+#: src/widgets/edit_window.ui:65
 msgid "_Done"
 msgstr "_Acabat"
 
-#: src/widgets/edit_window.ui:41
+#: src/widgets/edit_window.ui:87
 msgid "_Save as Copy…"
 msgstr "_Enregistrar una còpia…"
 
-#: src/widgets/edit_window.ui:49
+#: src/widgets/edit_window.ui:95
 msgid "Keep original and create a new file"
 msgstr "Gardar l’original e crear un fichièr nòu"
 
-#: src/widgets/edit_window.ui:69
+#: src/widgets/edit_window.ui:115
 msgid "_Replace Original"
 msgstr "_Remplaçar l’original"
 
-#: src/widgets/edit_window.ui:77
+#: src/widgets/edit_window.ui:123
 msgid "Original image will be moved to the trash"
 msgstr "L’imatge original serà desplaçat a l’escobilhièr"
 
@@ -552,17 +564,17 @@ msgstr "Pivotar cap a esquèrra"
 msgid "Rotate Right"
 msgstr "Pivotar cap a drecha"
 
-#: src/widgets/image_view.rs:217
+#: src/widgets/image_view.rs:197
 msgid "{} %"
 msgstr "{} %"
 
 #. Translators: This is a toast notification, informing the user that
 #. an image has been set as background.
-#: src/widgets/image_view.rs:843
+#: src/widgets/image_view.rs:838
 msgid "Set as background."
 msgstr "Definir coma rèireplan."
 
-#: src/widgets/image_view.rs:856
+#: src/widgets/image_view.rs:851
 msgid "Could not set background."
 msgstr "Impossible de definir coma rèireplan."
 
