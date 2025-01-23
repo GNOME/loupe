@@ -46,8 +46,3 @@ lpcrop {
 .discarded-area {
   background: var(--discarded-background);
 }
-
-.apply-button {
-  margin-right: 12px;
-  margin-top: -6px;
-}

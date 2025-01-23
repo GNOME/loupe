@@ -214,6 +214,13 @@ mod imp {
             let obj = self.obj();
 
             obj.set_direction(gtk::TextDirection::Ltr);
+            self.selection.set_direction(gtk::TextDirection::Ltr);
+            self.handle_bottom_left
+                .set_direction(gtk::TextDirection::Ltr);
+            self.handle_bottom_right
+                .set_direction(gtk::TextDirection::Ltr);
+            self.handle_top_left.set_direction(gtk::TextDirection::Ltr);
+            self.handle_top_right.set_direction(gtk::TextDirection::Ltr);
 
             // List of widgets that are drag handles
             let drag_corners = std::collections::BTreeMap::from([

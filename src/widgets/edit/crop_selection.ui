@@ -98,55 +98,22 @@
       </object>
     </child>
     <child>
-      <object class="GtkGrid" id="selection">
+      <object class="GtkOverlay">
         <property name="hexpand-set">true</property>
         <property name="vexpand-set">true</property>
         <layout>
           <property name="row">1</property>
           <property name="column">1</property>
         </layout>
-        <style>
-          <class name="selection" />
-        </style>
-        <child>
-          <object class="AdwBin" id="handle_top_left">
-            <property name="halign">start</property>
-            <property name="valign">start</property>
-            <layout>
-              <property name="row">0</property>
-              <property name="column">0</property>
-            </layout>
-            <style>
-              <class name="handle" />
-              <class name="handle-top-left" />
-            </style>
-          </object>
-        </child>
-        <child>
-          <object class="AdwBin" id="handle_top_right">
-            <property name="halign">end</property>
-            <property name="hexpand">true</property>
-            <layout>
-              <property name="row">0</property>
-              <property name="column">2</property>
-            </layout>
-            <style>
-              <class name="handle" />
-              <class name="handle-top-right" />
-            </style>
-          </object>
-        </child>
-        <child>
+        <child type="overlay">
           <object class="GtkButton" id="apply_button">
-            <property name="hexpand">true</property>
-            <layout>
-              <property name="row">1</property>
-              <property name="column">2</property>
-            </layout>
+            <property name="halign">end</property>
+            <property name="valign">start</property>
+            <property name="margin-end">12</property>
+            <property name="margin-top">12</property>
             <property name="action-name">edit-crop.apply-crop</property>
             <property name="icon-name">apply-crop</property>
-            <property name="halign">end</property>
-            <property name="valign">start</property>
+            <property name="tooltip-text" translatable="yes">Crop Selection</property>
             <style>
               <class name="circular" />
               <class name="osd" />
@@ -154,36 +121,73 @@
             </style>
           </object>
         </child>
-        <child>
-          <object class="AdwBin" id="handle_bottom_left">
-            <property name="valign">end</property>
-            <property name="vexpand">true</property>
-            <layout>
-              <property name="row">2</property>
-              <property name="column">0</property>
-            </layout>
+        <property name="child">
+          <object class="GtkGrid" id="selection">
+            <property name="hexpand-set">true</property>
+            <property name="vexpand-set">true</property>
             <style>
-              <class name="handle" />
-              <class name="handle-bottom-left" />
+              <class name="selection" />
             </style>
+            <child>
+              <object class="AdwBin" id="handle_top_left">
+                <property name="halign">start</property>
+                <property name="valign">start</property>
+                <layout>
+                  <property name="row">0</property>
+                  <property name="column">0</property>
+                </layout>
+                <style>
+                  <class name="handle" />
+                  <class name="handle-top-left" />
+                </style>
+              </object>
+            </child>
+            <child>
+              <object class="AdwBin" id="handle_top_right">
+                <property name="halign">end</property>
+                <property name="hexpand">true</property>
+                <layout>
+                  <property name="row">0</property>
+                  <property name="column">1</property>
+                </layout>
+                <style>
+                  <class name="handle" />
+                  <class name="handle-top-right" />
+                </style>
+              </object>
+            </child>
+            <child>
+              <object class="AdwBin" id="handle_bottom_left">
+                <property name="valign">end</property>
+                <property name="vexpand">true</property>
+                <layout>
+                  <property name="row">1</property>
+                  <property name="column">0</property>
+                </layout>
+                <style>
+                  <class name="handle" />
+                  <class name="handle-bottom-left" />
+                </style>
+              </object>
+            </child>
+            <child>
+              <object class="AdwBin" id="handle_bottom_right">
+                <property name="halign">end</property>
+                <property name="hexpand">true</property>
+                <property name="valign">end</property>
+                <property name="vexpand">true</property>
+                <layout>
+                  <property name="row">1</property>
+                  <property name="column">1</property>
+                </layout>
+                <style>
+                  <class name="handle" />
+                  <class name="handle-bottom-right" />
+                </style>
+              </object>
+            </child>
           </object>
-        </child>
-        <child>
-          <object class="AdwBin" id="handle_bottom_right">
-            <property name="halign">end</property>
-            <property name="hexpand">true</property>
-            <property name="valign">end</property>
-            <property name="vexpand">true</property>
-            <layout>
-              <property name="row">2</property>
-              <property name="column">2</property>
-            </layout>
-            <style>
-              <class name="handle" />
-              <class name="handle-bottom-right" />
-            </style>
-          </object>
-        </child>
+        </property>
       </object>
     </child>
   </template>
