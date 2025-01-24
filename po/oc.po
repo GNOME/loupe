@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: po_gvfs-oc\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2025-01-23 14:31+0000\n"
-"PO-Revision-Date: 2025-01-23 18:04+0100\n"
+"POT-Creation-Date: 2025-01-24 11:34+0000\n"
+"PO-Revision-Date: 2025-01-24 16:37+0100\n"
 "Last-Translator: Quentin PAGÈS\n"
 "Language-Team: Tot En Òc\n"
 "Language: oc\n"
@@ -443,12 +443,12 @@ msgid "_Cancel"
 msgstr "_Anullar"
 
 #: src/widgets/edit_window.ui:65
-msgid "_Done"
-msgstr "_Acabat"
+msgid "_Save"
+msgstr "_Enregistrar"
 
 #: src/widgets/edit_window.ui:87
-msgid "_Save as Copy…"
-msgstr "_Enregistrar una còpia…"
+msgid "_Save As…"
+msgstr "_Enregistrar jos…"
 
 #: src/widgets/edit_window.ui:95
 msgid "Keep original and create a new file"
@@ -914,6 +914,9 @@ msgstr "Fabricant, modèl"
 #: src/widgets/window.rs:222
 msgid "Show Details"
 msgstr "Afichar los detalhs"
+
+#~ msgid "_Done"
+#~ msgstr "_Acabat"
 
 #~ msgid "Operation not supported, files on different mounts"
 #~ msgstr ""
