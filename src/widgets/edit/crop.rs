@@ -187,16 +187,18 @@ mod imp {
             let _ = self.apply_reset();
         }
 
-        fn size_allocate(&self, width: i32, height: i32, baseline: i32) {
+        fn size_allocate(&self, total_width: i32, total_height: i32, baseline: i32) {
             let obj = self.obj();
 
             let image = &self.image;
 
-            obj.child().allocate(width, height, baseline, None);
+            obj.child()
+                .allocate(total_width, total_height, baseline, None);
 
             // Adjust position and size for crop selection after widget resize
-            if self.last_allocation.get() != (width, height, baseline) {
-                self.last_allocation.replace((width, height, baseline));
+            if self.last_allocation.get() != (total_width, total_height, baseline) {
+                self.last_allocation
+                    .replace((total_width, total_height, baseline));
 
                 let (x, y, width, height) = (
                     image.image_rendering_x(),
@@ -210,6 +212,10 @@ mod imp {
 
                 let (x, y, width, height) = self.crop_area_widget_coord();
                 self.selection.set_crop_size(x, y, width, height);
+
+                // Allocate just the crop overlay again after it knows its dimensions based on
+                // the image's dimensions and position
+                self.selection.allocate(0, 0, -1, None);
             }
         }
 

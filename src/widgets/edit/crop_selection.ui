@@ -1,110 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
   <requires lib="gtk" version="4.0" />
-  <template class="LpEditCropSelection" parent="GtkGrid">
-    <property name="halign">start</property>
-    <property name="valign">start</property>
+  <template class="LpEditCropSelection" parent="GtkWidget">
     <child>
       <object class="GtkGestureDrag" id="selection_move" />
     </child>
     <child>
-      <object class="AdwBin" id="space_top_left">
-        <layout>
-          <property name="row">0</property>
-          <property name="column">0</property>
-        </layout>
+      <object class="AdwBin" id="space_top">
         <style>
           <class name="discarded-area" />
         </style>
       </object>
     </child>
     <child>
-      <object class="AdwBin">
-        <layout>
-          <property name="row">0</property>
-          <property name="column">1</property>
-        </layout>
+      <object class="AdwBin" id="space_right">
         <style>
           <class name="discarded-area" />
         </style>
       </object>
     </child>
     <child>
-      <object class="AdwBin">
-        <layout>
-          <property name="row">1</property>
-          <property name="column">0</property>
-        </layout>
+      <object class="AdwBin" id="space_bottom">
         <style>
           <class name="discarded-area" />
         </style>
       </object>
     </child>
     <child>
-      <object class="AdwBin">
-        <layout>
-          <property name="row">1</property>
-          <property name="column">2</property>
-        </layout>
+      <object class="AdwBin" id="space_left">
         <style>
           <class name="discarded-area" />
         </style>
       </object>
     </child>
     <child>
-      <object class="AdwBin">
-        <property name="vexpand">true</property>
-        <layout>
-          <property name="row">2</property>
-          <property name="column">0</property>
-        </layout>
-        <style>
-          <class name="discarded-area" />
-        </style>
-      </object>
-    </child>
-    <child>
-      <object class="AdwBin">
-        <layout>
-          <property name="row">2</property>
-          <property name="column">1</property>
-        </layout>
-        <style>
-          <class name="discarded-area" />
-        </style>
-      </object>
-    </child>
-    <child>
-      <object class="AdwBin">
-        <layout>
-          <property name="row">2</property>
-          <property name="column">2</property>
-        </layout>
-        <style>
-          <class name="discarded-area" />
-        </style>
-      </object>
-    </child>
-    <child>
-      <object class="AdwBin">
-        <property name="hexpand">true</property>
-        <layout>
-          <property name="row">0</property>
-          <property name="column">2</property>
-        </layout>
-        <style>
-          <class name="discarded-area" />
-        </style>
-      </object>
-    </child>
-    <child>
-      <object class="GtkOverlay">
-        <property name="hexpand-set">true</property>
-        <property name="vexpand-set">true</property>
-        <layout>
-          <property name="row">1</property>
-          <property name="column">1</property>
-        </layout>
+      <object class="GtkOverlay" id="selection_overlay">
         <child type="overlay">
           <object class="GtkButton" id="apply_button">
             <property name="halign">end</property>

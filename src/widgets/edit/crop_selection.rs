@@ -17,7 +17,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 
 use std::cell::{Cell, OnceCell};
-use std::marker::PhantomData;
 
 use adw::gtk::graphene;
 use adw::prelude::*;
@@ -25,6 +24,7 @@ use adw::subclass::prelude::*;
 use adw::{glib, gtk};
 
 use super::crop::{LpAspectRatio, LpEditCrop, LpOrientation};
+use crate::deps::*;
 
 const MIN_SELECTION_SIZE: f32 = 80.;
 
@@ -158,7 +158,13 @@ mod imp {
     #[template(file = "crop_selection.ui")]
     pub struct LpEditCropSelection {
         #[template_child]
-        pub(super) space_top_left: TemplateChild<adw::Bin>,
+        pub(super) space_top: TemplateChild<adw::Bin>,
+        #[template_child]
+        pub(super) space_right: TemplateChild<adw::Bin>,
+        #[template_child]
+        pub(super) space_bottom: TemplateChild<adw::Bin>,
+        #[template_child]
+        pub(super) space_left: TemplateChild<adw::Bin>,
         #[template_child]
         pub(super) selection: TemplateChild<gtk::Grid>,
 
@@ -185,6 +191,9 @@ mod imp {
         #[template_child]
         selection_move: TemplateChild<gtk::GestureDrag>,
 
+        #[template_child]
+        selection_overlay: TemplateChild<gtk::Overlay>,
+
         /// Set while in drag gesture for changing crop area
         pub(super) selection_in_resize: Cell<Option<InResize>>,
         /// Set while in drag gesture for moving crop area
@@ -198,10 +207,14 @@ mod imp {
         #[property(get, construct_only)]
         crop: OnceCell<LpEditCrop>,
 
-        #[property(get=Self::total_width, set=Self::set_total_width)]
-        total_width: PhantomData<i32>,
-        #[property(get=Self::total_height, set=Self::set_total_height)]
-        total_height: PhantomData<i32>,
+        /// Image position offset
+        pub(super) total_x: Cell<i32>,
+        pub(super) total_y: Cell<i32>,
+        /// Image size
+        #[property(get, set=Self::set_total_width)]
+        total_width: Cell<i32>,
+        #[property(get, set=Self::set_total_height)]
+        total_height: Cell<i32>,
 
         pub(super) initialized: Cell<bool>,
 
@@ -219,7 +232,7 @@ mod imp {
     impl ObjectSubclass for LpEditCropSelection {
         const NAME: &'static str = "LpEditCropSelection";
         type Type = super::LpEditCropSelection;
-        type ParentType = gtk::Grid;
+        type ParentType = gtk::Widget;
 
         fn class_init(klass: &mut Self::Class) {
             Self::bind_template(klass);
@@ -361,17 +374,75 @@ mod imp {
         }
     }
 
-    impl WidgetImpl for LpEditCropSelection {}
+    impl WidgetImpl for LpEditCropSelection {
+        fn size_allocate(&self, _width: i32, _height: i32, _baseline: i32) {
+            let obj = self.obj();
+
+            let total_x = self.total_x.get() as f32;
+            let total_y = self.total_y.get() as f32;
+            let total_height = obj.total_height();
+            let total_width = obj.total_width();
+
+            let x = obj.crop_x();
+            let y = obj.crop_y();
+            let width = obj.crop_width();
+            let height = obj.crop_height();
+
+            // Selection area
+            self.selection_overlay.allocate(
+                width as i32,
+                height as i32,
+                -1,
+                Some(
+                    gsk::Transform::new()
+                        .translate(&graphene::Point::new(x + total_x, y + total_y)),
+                ),
+            );
+
+            // Grayed out areas
+            self.space_top.allocate(
+                total_width,
+                y as i32,
+                -1,
+                Some(gsk::Transform::new().translate(&graphene::Point::new(total_x, total_y))),
+            );
+            self.space_right.allocate(
+                total_width - x as i32 - width as i32,
+                height as i32,
+                -1,
+                Some(
+                    gsk::Transform::new()
+                        .translate(&graphene::Point::new(x + width + total_x, y + total_y)),
+                ),
+            );
+            self.space_bottom.allocate(
+                total_width,
+                total_height - y as i32 - height as i32,
+                -1,
+                Some(
+                    gsk::Transform::new()
+                        .translate(&graphene::Point::new(total_x, y + height + total_y)),
+                ),
+            );
+            self.space_left.allocate(
+                x as i32,
+                height as i32,
+                -1,
+                Some(gsk::Transform::new().translate(&graphene::Point::new(total_x, y + total_y))),
+            );
+        }
+    }
     impl GridImpl for LpEditCropSelection {}
 
     impl LpEditCropSelection {
         /// Current crop area
         fn crop_area(&self) -> graphene::Rect {
+            let obj = self.obj();
             graphene::Rect::new(
-                self.space_top_left.width_request() as f32,
-                self.space_top_left.height_request() as f32,
-                self.selection.width_request() as f32,
-                self.selection.height_request() as f32,
+                obj.crop_x(),
+                obj.crop_y(),
+                obj.crop_width(),
+                obj.crop_height(),
             )
         }
 
@@ -434,12 +505,12 @@ mod imp {
                 y = 0.;
             }
 
-            if x + width > obj.width_request() as f32 {
-                x = obj.width_request() as f32 - width;
+            if x + width > obj.total_width() as f32 {
+                x = obj.total_width() as f32 - width;
             }
 
-            if y + height > obj.height_request() as f32 {
-                y = obj.height_request() as f32 - height;
+            if y + height > obj.total_height() as f32 {
+                y = obj.total_height() as f32 - height;
             }
 
             graphene::Rect::new(x, y, width, height)
@@ -483,12 +554,12 @@ mod imp {
                 y = 0.;
             }
 
-            if x + width > obj.width_request() as f32 {
-                width = obj.width_request() as f32 - x;
+            if x + width > obj.total_width() as f32 {
+                width = obj.total_width() as f32 - x;
             }
 
-            if y + height > obj.height_request() as f32 {
-                height = obj.height_request() as f32 - y;
+            if y + height > obj.total_height() as f32 {
+                height = obj.total_height() as f32 - y;
             }
 
             graphene::Rect::new(x, y, width, height)
@@ -572,14 +643,16 @@ mod imp {
 
         /// Make sure Rect is inside image area by moving it if necessary
         fn rect_make_contained(&self, rect: &mut graphene::Rect) {
+            let obj = self.obj();
+
             let (mut x, mut y, width, height) = rect.coordinates();
 
-            if x + width > self.total_width() as f32 {
-                x = self.total_width() as f32 - width;
+            if x + width > obj.total_width() as f32 {
+                x = obj.total_width() as f32 - width;
             }
 
-            if y + height > self.total_height() as f32 {
-                y = self.total_height() as f32 - height;
+            if y + height > obj.total_height() as f32 {
+                y = obj.total_height() as f32 - height;
             }
 
             *rect = graphene::Rect::new(x, y, width, height);
@@ -640,8 +713,8 @@ mod imp {
             let obj = self.obj();
             let (mut x, y, mut width, mut height) = rect.coordinates();
 
-            if y + height > obj.height_request() as f32 {
-                let overshoot = y + height - obj.height_request() as f32;
+            if y + height > obj.total_height() as f32 {
+                let overshoot = y + height - obj.total_height() as f32;
 
                 height -= overshoot;
                 let old_width = width;
@@ -664,8 +737,8 @@ mod imp {
             let obj = self.obj();
             let (x, mut y, mut width, mut height) = rect.coordinates();
 
-            if x + width > obj.width_request() as f32 {
-                let overshoot = x + width - obj.width_request() as f32;
+            if x + width > obj.total_width() as f32 {
+                let overshoot = x + width - obj.total_width() as f32;
 
                 width -= overshoot;
                 let old_height = height;
@@ -742,10 +815,12 @@ mod imp {
                 return;
             }
 
+            let obj = self.obj();
+
             self.crop_x.set(x);
-            self.space_top_left.set_width_request(x.round() as i32);
-            self.obj().notify_crop_x();
+            obj.notify_crop_x();
             self.update_apply_crop_visibility();
+            self.obj().queue_allocate();
         }
 
         /// Set y coordinate of crop selection rectangle origin
@@ -755,10 +830,12 @@ mod imp {
                 return;
             }
 
+            let obj = self.obj();
+
             self.crop_y.set(y);
-            self.space_top_left.set_height_request(y.round() as i32);
-            self.obj().notify_crop_y();
+            obj.notify_crop_y();
             self.update_apply_crop_visibility();
+            self.obj().queue_allocate();
         }
 
         /// Set width of crop selection rectangle
@@ -769,9 +846,9 @@ mod imp {
             }
 
             self.crop_width.set(width);
-            self.selection.set_width_request(width.round() as i32);
             self.obj().notify_crop_width();
             self.update_apply_crop_visibility();
+            self.obj().queue_allocate();
         }
 
         /// Set height of crop selection rectangle
@@ -782,28 +859,18 @@ mod imp {
             }
 
             self.crop_height.set(height);
-            self.selection.set_height_request(height.round() as i32);
             self.obj().notify_crop_height();
             self.update_apply_crop_visibility();
-        }
-
-        /// Width of area in which the crop selection can exist
-        fn total_width(&self) -> i32 {
-            self.obj().width_request()
+            self.obj().queue_allocate();
         }
 
         fn set_total_width(&self, width: i32) {
-            self.obj().set_width_request(width);
+            self.total_width.replace(width);
             self.update_apply_crop_visibility();
         }
 
-        /// Height of area in which the crop selection can exist
-        fn total_height(&self) -> i32 {
-            self.obj().height_request()
-        }
-
         fn set_total_height(&self, width: i32) {
-            self.obj().set_height_request(width);
+            self.total_height.replace(width);
             self.update_apply_crop_visibility();
         }
 
@@ -831,11 +898,20 @@ mod imp {
         }
 
         fn update_apply_crop_visibility(&self) {
-            self.apply_button.set_visible(
-                self.obj().is_cropped()
-                    && self.selection_in_resize.get().is_none()
-                    && self.selection_in_move.get().is_none(),
-            );
+            let visibile = self.obj().is_cropped()
+                && self.selection_in_resize.get().is_none()
+                && self.selection_in_move.get().is_none();
+
+            // Don't use `set_visble` since it queues a resize
+            if visibile {
+                self.apply_button.set_opacity(1.);
+                self.apply_button.set_can_target(true);
+                self.apply_button.set_can_focus(true);
+            } else {
+                self.apply_button.set_opacity(0.);
+                self.apply_button.set_can_target(false);
+                self.apply_button.set_can_focus(false);
+            }
         }
     }
 }
@@ -873,8 +949,8 @@ impl LpEditCropSelection {
 
     pub fn set_image_area(&self, x: f64, y: f64, width: f64, height: f64) {
         log::trace!("Setting image area to ({x}, {y}, {width}, {height})");
-        self.set_margin_start(x as i32);
-        self.set_margin_top(y as i32);
+        self.imp().total_x.replace(x as i32);
+        self.imp().total_y.replace(y as i32);
         self.set_total_width(width as i32);
         self.set_total_height(height as i32);
     }
@@ -888,7 +964,7 @@ impl LpEditCropSelection {
     }
 
     pub fn is_cropped(&self) -> bool {
-        let untouched = self.crop_x() == 0.
+        let untouched: bool = self.crop_x() == 0.
             && self.crop_y() == 0.
             && self.crop_width() as i32 == self.total_width()
             && self.crop_height() as i32 == self.total_height();
