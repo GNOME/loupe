@@ -76,7 +76,7 @@ impl LpErrorDetails {
 
         if matches!(type_, ErrorType::General) {
             imp.preference_group.set_title(
-               &gettext( "The following error occured. If you think this is an issue with the program, please include this information when you report the error."),
+               &gettext( "The following error occurred. If you think this is an issue with the program, please include this information when you report the error."),
             );
         }
 
