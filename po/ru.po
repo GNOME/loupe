@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2025-01-13 22:31+0000\n"
-"PO-Revision-Date: 2025-01-15 13:18+0300\n"
+"POT-Creation-Date: 2025-01-24 11:34+0000\n"
+"PO-Revision-Date: 2025-01-25 22:15+0300\n"
 "Last-Translator: Artur So <arturios2005@mail.ru>\n"
 "Language-Team: \n"
 "Language: ru_RU\n"
@@ -259,7 +259,7 @@ msgstr "Aleksandr Melman <alexmelman88@gmail.com>, 2023"
 msgid "Copyright © 2020–2024 Christopher Davis et al."
 msgstr "Авторское право © 2020-2024 Christopher Davis и др."
 
-#: src/file_model.rs:177
+#: src/file_model.rs:180
 msgid "Could not list other files in directory."
 msgstr "Не удалось перечислить другие файлы в каталоге."
 
@@ -319,7 +319,7 @@ msgstr "Не удалось восстановить изображение из
 msgid "Drop Image to View"
 msgstr "Перетащите изображение для просмотра"
 
-#: src/widgets/edit/crop.rs:368
+#: src/widgets/edit/crop.rs:397
 msgid "Failed to Edit Image"
 msgstr "Не удалось отредактировать изображение"
 
@@ -379,53 +379,85 @@ msgstr "_3:2"
 msgid "_16:9"
 msgstr "_16:9"
 
-#: src/widgets/edit/crop.ui:224 src/widgets/edit/crop.ui:383
-msgid "Rotate Counter Clockwise"
-msgstr "Повернуть против часовой стрелки"
-
-#: src/widgets/edit/crop.ui:231
-msgid "Rotate Clockwise"
-msgstr "Повернуть по часовой стрелке"
-
-#: src/widgets/edit/crop.ui:250 src/widgets/edit/crop.ui:391
-msgid "Mirror Horizontally"
-msgstr "Отразить по горизонтали"
-
-#: src/widgets/edit/crop.ui:257
-msgid "Mirror Vertically"
-msgstr "Отразить по вертикали"
-
-#: src/widgets/edit/crop.ui:270 src/widgets/edit/crop.ui:407
-msgid "Undo Changes in this View"
-msgstr "Отменить изменения в этом виде"
-
-#: src/widgets/edit/crop.ui:340
-msgid "Aspect Ratio"
-msgstr "Соотношение сторон"
-
-#: src/widgets/edit/crop.ui:353
+#: src/widgets/edit/crop.ui:219 src/widgets/edit/crop.ui:366
 msgid "Orientation Landscape"
 msgstr "Ландшафтная ориентация"
 
-#: src/widgets/edit/crop.ui:365
+#: src/widgets/edit/crop.ui:228 src/widgets/edit/crop.ui:378
 msgid "Orientation Portrait"
 msgstr "Портретная ориентация"
 
-#: src/widgets/edit_window.rs:120
+#: src/widgets/edit/crop.ui:249 src/widgets/edit/crop.ui:396
+msgid "Rotate Counter Clockwise"
+msgstr "Повернуть против часовой стрелки"
+
+#: src/widgets/edit/crop.ui:256
+msgid "Rotate Clockwise"
+msgstr "Повернуть по часовой стрелке"
+
+#: src/widgets/edit/crop.ui:275 src/widgets/edit/crop.ui:404
+msgid "Mirror Horizontally"
+msgstr "Отразить по горизонтали"
+
+#: src/widgets/edit/crop.ui:282
+msgid "Mirror Vertically"
+msgstr "Отразить по вертикали"
+
+#: src/widgets/edit/crop.ui:295 src/widgets/edit/crop.ui:420
+msgid "Undo Changes in this View"
+msgstr "Отменить изменения в этом виде"
+
+#: src/widgets/edit/crop.ui:353
+msgid "Aspect Ratio"
+msgstr "Соотношение сторон"
+
+#: src/widgets/edit/crop_selection.ui:116
+msgid "Crop Selection"
+msgstr "Обрезать выделенное"
+
+#: src/widgets/edit_window.rs:179 src/widgets/edit_window.rs:193
+msgid "Failed to save image."
+msgstr "Не удалось сохранить изображение."
+
+#: src/widgets/edit_window.rs:217
+msgid "Editing Image"
+msgstr "Редактирование изображения"
+
+#: src/widgets/edit_window.rs:226
 msgid "Failed to edit image."
 msgstr "Не удалось отредактировать изображение."
 
-#: src/widgets/edit_window.rs:132 src/widgets/edit_window.rs:148
+#: src/widgets/edit_window.rs:236 src/widgets/edit_window.rs:254
 msgid "Failed to Save Image"
 msgstr "Не удалось сохранить изображение"
 
-#: src/widgets/edit_window.ui:14
+#: src/widgets/edit_window.rs:242
+msgid "Saving Image"
+msgstr "Сохранение изображения"
+
+#: src/widgets/edit_window.ui:59
 msgid "_Cancel"
 msgstr "_Отменить"
 
-#: src/widgets/edit_window.ui:20
+#: src/widgets/edit_window.ui:65
 msgid "_Save"
 msgstr "_Сохранить"
+
+#: src/widgets/edit_window.ui:87
+msgid "_Save As…"
+msgstr "_Сохранить как…"
+
+#: src/widgets/edit_window.ui:95
+msgid "Keep original and create a new file"
+msgstr "Сохранить оригинал и создать новый файл"
+
+#: src/widgets/edit_window.ui:115
+msgid "_Replace Original"
+msgstr "_Заменить оригинал"
+
+#: src/widgets/edit_window.ui:123
+msgid "Original image will be moved to the trash"
+msgstr "Оригинальное изображение будет отправлено в корзину"
 
 #: src/widgets/error_details.rs:79
 msgid ""
@@ -522,25 +554,25 @@ msgstr "Больше _информации"
 msgid "_Reload"
 msgstr "_Перезагрузить"
 
-#: src/widgets/image_page.ui:123 src/widgets/image_window.ui:108
+#: src/widgets/image_page.ui:123 src/widgets/image_window.ui:101
 msgid "Rotate Left"
 msgstr "Повернуть влево"
 
-#: src/widgets/image_page.ui:133 src/widgets/image_window.ui:118
+#: src/widgets/image_page.ui:133 src/widgets/image_window.ui:111
 msgid "Rotate Right"
 msgstr "Повернуть вправо"
 
-#: src/widgets/image_view.rs:217
+#: src/widgets/image_view.rs:197
 msgid "{} %"
 msgstr "{} %"
 
 #. Translators: This is a toast notification, informing the user that
 #. an image has been set as background.
-#: src/widgets/image_view.rs:843
+#: src/widgets/image_view.rs:838
 msgid "Set as background."
 msgstr "Установить как фон."
 
-#: src/widgets/image_view.rs:856
+#: src/widgets/image_view.rs:851
 msgid "Could not set background."
 msgstr "Не удалось установить фон."
 
@@ -640,17 +672,17 @@ msgstr "_О приложении"
 msgid "Toggle Fullscreen"
 msgstr "Переключить полноэкранный режим"
 
-#: src/widgets/image_window.ui:94
-msgid "Edit Image"
-msgstr "Редактировать изображение"
-
-#: src/widgets/image_window.ui:100
+#: src/widgets/image_window.ui:93
 msgid "Main Menu"
 msgstr "Главное меню"
 
-#: src/widgets/image_window.ui:132
+#: src/widgets/image_window.ui:125
 msgid "Image Properties"
 msgstr "Свойства изображения"
+
+#: src/widgets/image_window.ui:132
+msgid "Edit Image"
+msgstr "Редактировать изображение"
 
 #: src/widgets/image_window.ui:220
 msgid "View Images"
@@ -880,6 +912,9 @@ msgstr "Производитель, модель"
 #: src/widgets/window.rs:222
 msgid "Show Details"
 msgstr "Показать подробности"
+
+#~ msgid "_Done"
+#~ msgstr "_Готово"
 
 #~ msgid "Copy to Clipboard"
 #~ msgstr "Копировать в буфер обмена"
