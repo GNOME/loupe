@@ -17,7 +17,7 @@
 
 //! Shows an resizable cropping selection
 
-use std::cell::{Cell, OnceCell};
+use std::cell::OnceCell;
 use std::marker::PhantomData;
 
 use adw::prelude::*;
@@ -68,14 +68,9 @@ mod imp {
     #[template(file = "crop.ui")]
     pub struct LpEditCrop {
         #[template_child]
-        image: TemplateChild<LpImage>,
+        pub(super) image: TemplateChild<LpImage>,
         #[template_child]
         pub(super) selection: TemplateChild<LpEditCropSelection>,
-
-        #[property(get, set, builder(LpAspectRatio::default()))]
-        aspect_ratio: Cell<LpAspectRatio>,
-        #[property(get, set, builder(LpOrientation::default()))]
-        orientation: Cell<LpOrientation>,
 
         #[property(get, construct_only)]
         original_image: OnceCell<LpImage>,
@@ -84,24 +79,17 @@ mod imp {
 
         #[property(get, set)]
         child: OnceCell<gtk::Widget>,
-
-        /// Last selected crop area
-        crop_area_image_coord: Cell<Option<(u32, u32, u32, u32)>>,
-
-        last_allocation: Cell<(i32, i32, i32)>,
     }
 
     #[glib::object_subclass]
     impl ObjectSubclass for LpEditCrop {
         const NAME: &'static str = "LpEditCrop";
         type Type = super::LpEditCrop;
-        type ParentType = gtk::Widget;
+        type ParentType = adw::Bin;
 
         fn class_init(klass: &mut Self::Class) {
             Self::bind_template(klass);
 
-            klass.install_property_action("edit-crop.aspect-ratio", "aspect_ratio");
-            klass.install_property_action("edit-crop.orientation", "orientation");
             klass.install_action("edit-crop.mirror-horizontally", None, |obj, _, _| {
                 obj.imp().apply_mirror_horizontally();
             });
@@ -138,41 +126,21 @@ mod imp {
 
             self.image.duplicate_from(&obj.original_image());
 
+            let actions = gio::SimpleActionGroup::new();
+            actions.add_action(&gio::PropertyAction::new(
+                "aspect-ratio",
+                &*self.selection,
+                "aspect_ratio",
+            ));
+            actions.add_action(&gio::PropertyAction::new(
+                "orientation",
+                &*self.selection,
+                "orientation",
+            ));
+
+            obj.insert_action_group("edit-crop", Some(&actions));
+
             obj.action_set_enabled("edit-crop.reset", false);
-
-            // Selection changed notifications
-
-            self.selection.connect_crop_x_notify(glib::clone!(
-                #[weak]
-                obj,
-                move |_| {
-                    obj.imp().selection_changed();
-                }
-            ));
-
-            self.selection.connect_crop_y_notify(glib::clone!(
-                #[weak]
-                obj,
-                move |_| {
-                    obj.imp().selection_changed();
-                }
-            ));
-
-            self.selection.connect_crop_width_notify(glib::clone!(
-                #[weak]
-                obj,
-                move |_| {
-                    obj.imp().selection_changed();
-                }
-            ));
-
-            self.selection.connect_crop_height_notify(glib::clone!(
-                #[weak]
-                obj,
-                move |_| {
-                    obj.imp().selection_changed();
-                }
-            ));
         }
 
         fn dispose(&self) {
@@ -180,118 +148,20 @@ mod imp {
         }
     }
 
-    impl WidgetImpl for LpEditCrop {
-        fn root(&self) {
-            self.parent_root();
-
-            let _ = self.apply_reset();
-        }
-
-        fn size_allocate(&self, total_width: i32, total_height: i32, baseline: i32) {
-            let obj = self.obj();
-
-            let image = &self.image;
-
-            obj.child()
-                .allocate(total_width, total_height, baseline, None);
-
-            // Adjust position and size for crop selection after widget resize
-            if self.last_allocation.get() != (total_width, total_height, baseline) {
-                self.last_allocation
-                    .replace((total_width, total_height, baseline));
-
-                let (x, y, width, height) = (
-                    image.image_rendering_x(),
-                    image.image_rendering_y(),
-                    image.image_rendering_width(),
-                    image.image_rendering_height(),
-                );
-
-                self.selection.ensure_initialized(x, y, width, height);
-                self.selection.set_image_area(x, y, width, height);
-
-                let (x, y, width, height) = self.crop_area_widget_coord();
-                self.selection.set_crop_size(x, y, width, height);
-
-                // Allocate just the crop overlay again after it knows its dimensions based on
-                // the image's dimensions and position
-                self.selection.allocate(0, 0, -1, None);
-            }
-        }
-
-        fn measure(&self, orientation: gtk::Orientation, for_size: i32) -> (i32, i32, i32, i32) {
-            self.obj().child().measure(orientation, for_size)
-        }
-    }
+    impl WidgetImpl for LpEditCrop {}
     impl BinImpl for LpEditCrop {}
 
     impl LpEditCrop {
-        fn selection_changed(&self) {
-            let crop_area_image_coord = self.crop_area_image_coord();
-            if self.selection.is_in_user_change() {
-                log::trace!("Setting crop are in image coordinates to {crop_area_image_coord:?}");
-                self.crop_area_image_coord.replace(crop_area_image_coord);
-            }
-
-            self.obj().notify_cropped();
-        }
-
-        fn crop_area_image_coord(&self) -> Option<(u32, u32, u32, u32)> {
-            if !self.cropped() {
-                return None;
-            }
-
-            let (x1, y1) = self.image.widget_to_img_coord((
-                self.image.image_rendering_x() + self.selection.crop_x() as f64,
-                self.image.image_rendering_y() + self.selection.crop_y() as f64,
-            ));
-            let (x2, y2) = self.image.widget_to_img_coord((
-                self.image.image_rendering_x()
-                    + self.selection.crop_x() as f64
-                    + self.selection.crop_width() as f64,
-                self.image.image_rendering_y()
-                    + self.selection.crop_y() as f64
-                    + self.selection.crop_height() as f64,
-            ));
-
-            Some((
-                x1.round() as u32,
-                y1.round() as u32,
-                (x2 - x1).round() as u32,
-                (y2 - y1).round() as u32,
-            ))
-        }
-
-        fn crop_area_widget_coord(&self) -> (f64, f64, f64, f64) {
-            let size = self.image.image_size();
-            let (x, y, w, h) =
-                self.crop_area_image_coord
-                    .get()
-                    .unwrap_or((0, 0, size.0 as u32, size.1 as u32));
-            let (x, y) = self.image.img_to_draw_coord((x as f64, y as f64));
-            let (w, h) = self.image.img_to_draw_coord((w as f64, h as f64));
-
-            (x.round(), y.round(), w.round(), h.round())
-        }
-
         fn cropped(&self) -> bool {
             self.selection.is_cropped()
         }
 
         fn reset_selection(&self) {
-            let image = &self.image;
-
-            let (x, y, width, height) = (
-                image.image_rendering_x(),
-                image.image_rendering_y(),
-                image.image_rendering_width(),
-                image.image_rendering_height(),
-            );
-            self.selection.reset(x, y, width, height);
+            self.selection.reset();
         }
 
         pub(super) fn apply_crop(&self) {
-            if let Some(crop) = self.crop_area_image_coord.get() {
+            if let Some(crop) = self.selection.crop_area_image_coord() {
                 self.add_operation(Operation::Clip(crop));
 
                 self.reset_selection();
@@ -409,5 +279,9 @@ impl LpEditCrop {
 
     pub fn apply_crop(&self) {
         self.imp().apply_crop();
+    }
+
+    pub fn image(&self) -> LpImage {
+        self.imp().image.clone()
     }
 }

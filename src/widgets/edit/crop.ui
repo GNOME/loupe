@@ -52,7 +52,7 @@
       <widget name="box-end" />
     </widgets>
   </object>
-  <template class="LpEditCrop" parent="GtkWidget">
+  <template class="LpEditCrop" parent="AdwBin">
     <property name="child">
       <object class="AdwToolbarView">
         <property name="bottom-bar-style">raised</property>
@@ -320,7 +320,6 @@
                 </child>
                 <child type="overlay">
                   <object class="LpEditCropSelection" id="selection">
-                    <property name="crop">LpEditCrop</property>
                   </object>
                 </child>
               </object>

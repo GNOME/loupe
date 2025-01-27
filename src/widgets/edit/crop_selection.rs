@@ -25,6 +25,7 @@ use adw::{glib, gtk};
 
 use super::crop::{LpAspectRatio, LpEditCrop, LpOrientation};
 use crate::deps::*;
+use crate::widgets::LpImage;
 
 const MIN_SELECTION_SIZE: f32 = 80.;
 
@@ -117,10 +118,10 @@ impl LpAspectRatio {
         }
     }
 
-    fn num(&self, crop: &LpEditCrop) -> Option<f32> {
+    fn num(&self, crop: &LpEditCropSelection) -> Option<f32> {
         let (x, y) = if matches!(self, Self::Original) {
-            let width = crop.selection().total_width() as u32;
-            let height = crop.selection().total_height() as u32;
+            let (width, height) = crop.image().image_size();
+            let (width, height) = (width as u32, height as u32);
 
             if width > height {
                 (width, height)
@@ -151,6 +152,8 @@ trait RectExt: Into<graphene::Rect> {
 impl RectExt for graphene::Rect {}
 
 mod imp {
+    use crate::widgets::LpImage;
+
     use super::*;
 
     #[derive(Debug, Default, gtk::CompositeTemplate, glib::Properties)]
@@ -204,19 +207,13 @@ mod imp {
         // Animates changes between different fixed aspect ratios
         aspect_ratio_animation: OnceCell<adw::TimedAnimation>,
 
-        #[property(get, construct_only)]
-        crop: OnceCell<LpEditCrop>,
+        #[property(get, set=Self::set_aspect_ratio, builder(LpAspectRatio::default()))]
+        aspect_ratio: Cell<LpAspectRatio>,
+        #[property(get, set=Self::set_orientation, builder(LpOrientation::default()))]
+        orientation: Cell<LpOrientation>,
 
-        /// Image position offset
-        pub(super) total_x: Cell<i32>,
-        pub(super) total_y: Cell<i32>,
-        /// Image size
-        #[property(get, set=Self::set_total_width)]
-        total_width: Cell<i32>,
-        #[property(get, set=Self::set_total_height)]
-        total_height: Cell<i32>,
-
-        pub(super) initialized: Cell<bool>,
+        /// Last selected crop area
+        crop_area_image_coord: Cell<Option<(u32, u32, u32, u32)>>,
 
         #[property(get, set=Self::set_crop_x, explicit_notify)]
         crop_x: Cell<f32>,
@@ -237,6 +234,9 @@ mod imp {
         fn class_init(klass: &mut Self::Class) {
             Self::bind_template(klass);
             klass.set_css_name("lpcrop");
+
+            klass.install_property_action("edit-crop.aspect-ratio", "aspect_ratio");
+            klass.install_property_action("edit-crop.orientation", "orientation");
         }
 
         fn instance_init(obj: &glib::subclass::InitializingObject<Self>) {
@@ -248,7 +248,7 @@ mod imp {
     impl ObjectImpl for LpEditCropSelection {
         fn constructed(&self) {
             self.parent_constructed();
-            let obj = self.obj();
+            let obj = self.obj().to_owned();
 
             obj.set_direction(gtk::TextDirection::Ltr);
             self.selection.set_direction(gtk::TextDirection::Ltr);
@@ -278,12 +278,6 @@ mod imp {
 
             self.selection.set_cursor_from_name(Some("move"));
             self.apply_button.set_cursor_from_name(Some("default"));
-
-            obj.crop()
-                .connect_aspect_ratio_notify(|x| x.selection().imp().on_aspect_ratio_changed());
-
-            obj.crop()
-                .connect_orientation_notify(|x| x.selection().imp().on_aspect_ratio_changed());
 
             // Drag begin
             self.selection_move.connect_drag_begin(glib::clone!(
@@ -372,21 +366,29 @@ mod imp {
                 }
             ));
         }
+
+        fn dispose(&self) {
+            let obj = self.obj();
+
+            while let Some(child) = obj.last_child() {
+                child.unparent();
+            }
+        }
     }
 
     impl WidgetImpl for LpEditCropSelection {
         fn size_allocate(&self, _width: i32, _height: i32, _baseline: i32) {
-            let obj = self.obj();
+            let total_x = self.total_x() as f32;
+            let total_y = self.total_y() as f32;
+            let total_height = self.total_height();
+            let total_width: i32 = self.total_width();
 
-            let total_x = self.total_x.get() as f32;
-            let total_y = self.total_y.get() as f32;
-            let total_height = obj.total_height();
-            let total_width = obj.total_width();
+            let (x, y, width, height) = self.crop_area_widget_coord();
 
-            let x = obj.crop_x();
-            let y = obj.crop_y();
-            let width = obj.crop_width();
-            let height = obj.crop_height();
+            self.crop_x.set(x);
+            self.crop_y.set(y);
+            self.crop_width.set(width);
+            self.crop_height.set(height);
 
             // Selection area
             self.selection_overlay.allocate(
@@ -490,8 +492,6 @@ mod imp {
             shift: &InMove,
             (x_shift, y_shift): (f64, f64),
         ) -> graphene::Rect {
-            let obj = self.obj();
-
             let (mut x, mut y, width, height) = shift.initial_selection.coordinates();
 
             x += x_shift as f32;
@@ -505,12 +505,12 @@ mod imp {
                 y = 0.;
             }
 
-            if x + width > obj.total_width() as f32 {
-                x = obj.total_width() as f32 - width;
+            if x + width > self.total_width() as f32 {
+                x = self.total_width() as f32 - width;
             }
 
-            if y + height > obj.total_height() as f32 {
-                y = obj.total_height() as f32 - height;
+            if y + height > self.total_height() as f32 {
+                y = self.total_height() as f32 - height;
             }
 
             graphene::Rect::new(x, y, width, height)
@@ -521,8 +521,6 @@ mod imp {
             resize: &InResize,
             (x, y): (f64, f64),
         ) -> graphene::Rect {
-            let obj = self.obj();
-
             let (mut x, mut y, mut width, mut height) =
                 self.new_crop_area(resize, (x, y)).coordinates();
 
@@ -554,12 +552,12 @@ mod imp {
                 y = 0.;
             }
 
-            if x + width > obj.total_width() as f32 {
-                width = obj.total_width() as f32 - x;
+            if x + width > self.total_width() as f32 {
+                width = self.total_width() as f32 - x;
             }
 
-            if y + height > obj.total_height() as f32 {
-                height = obj.total_height() as f32 - y;
+            if y + height > self.total_height() as f32 {
+                height = self.total_height() as f32 - y;
             }
 
             graphene::Rect::new(x, y, width, height)
@@ -643,16 +641,14 @@ mod imp {
 
         /// Make sure Rect is inside image area by moving it if necessary
         fn rect_make_contained(&self, rect: &mut graphene::Rect) {
-            let obj = self.obj();
-
             let (mut x, mut y, width, height) = rect.coordinates();
 
-            if x + width > obj.total_width() as f32 {
-                x = obj.total_width() as f32 - width;
+            if x + width > self.total_width() as f32 {
+                x = self.total_width() as f32 - width;
             }
 
-            if y + height > obj.total_height() as f32 {
-                y = obj.total_height() as f32 - height;
+            if y + height > self.total_height() as f32 {
+                y = self.total_height() as f32 - height;
             }
 
             *rect = graphene::Rect::new(x, y, width, height);
@@ -710,11 +706,10 @@ mod imp {
             aspect_ratio: f32,
             edge: Option<HEdge>,
         ) {
-            let obj = self.obj();
             let (mut x, y, mut width, mut height) = rect.coordinates();
 
-            if y + height > obj.total_height() as f32 {
-                let overshoot = y + height - obj.total_height() as f32;
+            if y + height > self.total_height() as f32 {
+                let overshoot = y + height - self.total_height() as f32;
 
                 height -= overshoot;
                 let old_width = width;
@@ -734,11 +729,10 @@ mod imp {
             aspect_ratio: f32,
             edge: Option<VEdge>,
         ) {
-            let obj = self.obj();
             let (x, mut y, mut width, mut height) = rect.coordinates();
 
-            if x + width > obj.total_width() as f32 {
-                let overshoot = x + width - obj.total_width() as f32;
+            if x + width > self.total_width() as f32 {
+                let overshoot = x + width - self.total_width() as f32;
 
                 width -= overshoot;
                 let old_height = height;
@@ -752,7 +746,7 @@ mod imp {
             }
         }
 
-        fn on_aspect_ratio_changed(&self) {
+        pub(super) fn aspect_ratio_changed(&self) {
             let Some(aspect_ratio) = self.aspect_ratio() else {
                 return;
             };
@@ -794,8 +788,7 @@ mod imp {
 
         /// Fixed aspect ratio of selection if set
         fn aspect_ratio(&self) -> Option<f32> {
-            let crop = self.obj().crop();
-            crop.aspect_ratio().num(&crop)
+            self.obj().aspect_ratio().num(&self.obj())
         }
 
         /// Set all coordinates of crop selection
@@ -818,7 +811,10 @@ mod imp {
             let obj = self.obj();
 
             self.crop_x.set(x);
+
             obj.notify_crop_x();
+            self.update_crop_area_image_coord();
+
             self.update_apply_crop_visibility();
             self.obj().queue_allocate();
         }
@@ -833,6 +829,8 @@ mod imp {
             let obj = self.obj();
 
             self.crop_y.set(y);
+            self.update_crop_area_image_coord();
+
             obj.notify_crop_y();
             self.update_apply_crop_visibility();
             self.obj().queue_allocate();
@@ -846,6 +844,8 @@ mod imp {
             }
 
             self.crop_width.set(width);
+            self.update_crop_area_image_coord();
+
             self.obj().notify_crop_width();
             self.update_apply_crop_visibility();
             self.obj().queue_allocate();
@@ -859,19 +859,45 @@ mod imp {
             }
 
             self.crop_height.set(height);
+            self.update_crop_area_image_coord();
+
             self.obj().notify_crop_height();
             self.update_apply_crop_visibility();
             self.obj().queue_allocate();
         }
 
-        fn set_total_width(&self, width: i32) {
-            self.total_width.replace(width);
-            self.update_apply_crop_visibility();
+        fn update_crop_area_image_coord(&self) {
+            let crop_area_image_coord = self.crop_area_image_coord();
+            if self.is_in_user_change() {
+                log::trace!("Setting crop are in image coordinates to {crop_area_image_coord:?}");
+                self.crop_area_image_coord.replace(crop_area_image_coord);
+            }
         }
 
-        fn set_total_height(&self, width: i32) {
-            self.total_height.replace(width);
-            self.update_apply_crop_visibility();
+        fn total_x(&self) -> i32 {
+            self.image().image_rendering_x() as i32
+        }
+
+        fn total_y(&self) -> i32 {
+            self.image().image_rendering_y() as i32
+        }
+
+        pub(super) fn total_width(&self) -> i32 {
+            self.image().image_rendering_width() as i32
+        }
+
+        pub(super) fn total_height(&self) -> i32 {
+            self.image().image_rendering_height() as i32
+        }
+
+        pub(super) fn image(&self) -> LpImage {
+            let crop = self
+                .obj()
+                .ancestor(LpEditCrop::static_type())
+                .unwrap()
+                .downcast::<LpEditCrop>()
+                .unwrap();
+            crop.image()
         }
 
         pub(super) fn aspect_ratio_animation(&self) -> &adw::TimedAnimation {
@@ -913,6 +939,86 @@ mod imp {
                 self.apply_button.set_can_focus(false);
             }
         }
+
+        pub(super) fn crop_area_image_coord(&self) -> Option<(u32, u32, u32, u32)> {
+            let obj = self.obj();
+
+            if !obj.is_cropped() {
+                return None;
+            }
+
+            let image = self.image();
+
+            let (x1, y1) = image.widget_to_img_coord((
+                image.image_rendering_x() + obj.crop_x() as f64,
+                image.image_rendering_y() + obj.crop_y() as f64,
+            ));
+            let (x2, y2) = image.widget_to_img_coord((
+                image.image_rendering_x() + obj.crop_x() as f64 + obj.crop_width() as f64,
+                image.image_rendering_y() + obj.crop_y() as f64 + obj.crop_height() as f64,
+            ));
+
+            Some((
+                x1.round() as u32,
+                y1.round() as u32,
+                (x2 - x1).round() as u32,
+                (y2 - y1).round() as u32,
+            ))
+        }
+
+        fn crop_area_widget_coord(&self) -> (f32, f32, f32, f32) {
+            let image = self.image();
+
+            let size = image.image_size();
+            let (x, y, w, h) =
+                self.crop_area_image_coord
+                    .get()
+                    .unwrap_or((0, 0, size.0 as u32, size.1 as u32));
+            let (x, y) = image.img_to_draw_coord((x as f64, y as f64));
+            let (w, h) = image.img_to_draw_coord((w as f64, h as f64));
+
+            (
+                x.round() as f32,
+                y.round() as f32,
+                w.round() as f32,
+                h.round() as f32,
+            )
+        }
+
+        fn set_aspect_ratio(&self, aspect_ratio: LpAspectRatio) {
+            self.aspect_ratio.replace(aspect_ratio);
+            self.aspect_ratio_changed();
+        }
+
+        fn set_orientation(&self, orientation: LpOrientation) {
+            self.orientation.replace(orientation);
+            self.aspect_ratio_changed();
+        }
+
+        fn is_in_user_change(&self) -> bool {
+            self.selection_in_resize.get().is_some()
+                || self.selection_in_move.get().is_some()
+                || self.selection_in_reset.get()
+                || self.aspect_ratio_animation().state() == adw::AnimationState::Playing
+        }
+
+        pub(super) fn is_cropped(&self) -> bool {
+            let obj = self.obj();
+
+            let untouched: bool = obj.crop_x() == 0.
+                && obj.crop_y() == 0.
+                && obj.crop_width() as i32 == self.total_width()
+                && obj.crop_height() as i32 == self.total_height();
+            !untouched
+        }
+
+        pub(super) fn reset(&self) {
+            let width = self.total_width() as f32;
+            let height = self.total_height() as f32;
+
+            self.set_crop(graphene::Rect::new(0., 0., width, height));
+            self.crop_area_image_coord.set(None);
+        }
     }
 }
 
@@ -926,55 +1032,19 @@ impl LpEditCropSelection {
         glib::Object::new()
     }
 
-    pub fn ensure_initialized(&self, x: f64, y: f64, width: f64, height: f64) {
-        let imp = self.imp();
-
-        if imp.initialized.get() {
-            return;
-        }
-
-        imp.initialized.set(true);
-
-        self.reset(x, y, width, height);
+    pub fn reset(&self) {
+        self.imp().reset();
     }
 
-    pub fn reset(&self, x: f64, y: f64, width: f64, height: f64) {
-        let imp = self.imp();
-
-        imp.selection_in_reset.replace(true);
-        self.set_image_area(x, y, width, height);
-        self.set_crop_size(0., 0., width, height);
-        imp.selection_in_reset.replace(false);
+    pub fn crop_area_image_coord(&self) -> Option<(u32, u32, u32, u32)> {
+        self.imp().crop_area_image_coord()
     }
 
-    pub fn set_image_area(&self, x: f64, y: f64, width: f64, height: f64) {
-        log::trace!("Setting image area to ({x}, {y}, {width}, {height})");
-        self.imp().total_x.replace(x as i32);
-        self.imp().total_y.replace(y as i32);
-        self.set_total_width(width as i32);
-        self.set_total_height(height as i32);
-    }
-
-    pub fn set_crop_size(&self, x: f64, y: f64, width: f64, height: f64) {
-        log::trace!("Setting crop area to ({x}, {y}, {width}, {height})");
-        self.set_crop_x(x as f32);
-        self.set_crop_y(y as f32);
-        self.set_crop_width(width as f32);
-        self.set_crop_height(height as f32);
+    pub fn image(&self) -> LpImage {
+        self.imp().image()
     }
 
     pub fn is_cropped(&self) -> bool {
-        let untouched: bool = self.crop_x() == 0.
-            && self.crop_y() == 0.
-            && self.crop_width() as i32 == self.total_width()
-            && self.crop_height() as i32 == self.total_height();
-        !untouched
-    }
-
-    pub fn is_in_user_change(&self) -> bool {
-        self.imp().selection_in_resize.get().is_some()
-            || self.imp().selection_in_move.get().is_some()
-            || self.imp().selection_in_reset.get()
-            || self.imp().aspect_ratio_animation().state() == adw::AnimationState::Playing
+        self.imp().is_cropped()
     }
 }

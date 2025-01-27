@@ -1,0 +1,1 @@
+Fix allocation warnings by not causing resizes during allocation.
