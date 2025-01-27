@@ -833,8 +833,8 @@ mod imp {
         fn update_apply_crop_visibility(&self) {
             self.apply_button.set_visible(
                 self.obj().is_cropped()
-                    && !self.selection_in_resize.get().is_some()
-                    && !self.selection_in_move.get().is_some(),
+                    && self.selection_in_resize.get().is_none()
+                    && self.selection_in_move.get().is_none(),
             );
         }
     }
