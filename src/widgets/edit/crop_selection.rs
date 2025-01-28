@@ -214,6 +214,9 @@ mod imp {
         /// Last selected crop area
         crop_area_image_coord: Cell<Option<(u32, u32, u32, u32)>>,
 
+        #[property(get)]
+        cropped: Cell<bool>,
+
         #[property(get, set=Self::set_crop_x, explicit_notify)]
         crop_x: Cell<f32>,
         #[property(get, set=Self::set_crop_y, explicit_notify)]
@@ -390,6 +393,11 @@ mod imp {
             self.crop_height.set(height);
 
             self.update_apply_crop_visibility();
+
+            if self.is_cropped() != self.cropped.get() {
+                self.cropped.set(self.is_cropped());
+                self.obj().notify_cropped();
+            }
 
             // Selection area
             self.selection_overlay.allocate(
@@ -925,7 +933,7 @@ mod imp {
         }
 
         fn update_apply_crop_visibility(&self) {
-            let visibile = self.obj().is_cropped()
+            let visibile = self.is_cropped()
                 && self.selection_in_resize.get().is_none()
                 && self.selection_in_move.get().is_none();
 
@@ -944,7 +952,7 @@ mod imp {
         pub(super) fn crop_area_image_coord(&self) -> Option<(u32, u32, u32, u32)> {
             let obj = self.obj();
 
-            if !obj.is_cropped() {
+            if !self.is_cropped() {
                 return None;
             }
 
@@ -1010,6 +1018,7 @@ mod imp {
                 && obj.crop_y() == 0.
                 && obj.crop_width() as i32 == self.total_width()
                 && obj.crop_height() as i32 == self.total_height();
+
             !untouched
         }
 
@@ -1043,9 +1052,5 @@ impl LpEditCropSelection {
 
     pub fn image(&self) -> LpImage {
         self.imp().image()
-    }
-
-    pub fn is_cropped(&self) -> bool {
-        self.imp().is_cropped()
     }
 }

@@ -18,7 +18,6 @@
 //! Shows an resizable cropping selection
 
 use std::cell::OnceCell;
-use std::marker::PhantomData;
 
 use adw::prelude::*;
 use adw::subclass::prelude::*;
@@ -74,8 +73,6 @@ mod imp {
 
         #[property(get, construct_only)]
         original_image: OnceCell<LpImage>,
-        #[property(get=Self::cropped)]
-        cropped: PhantomData<bool>,
 
         #[property(get, set)]
         child: OnceCell<gtk::Widget>,
@@ -141,6 +138,14 @@ mod imp {
             obj.insert_action_group("edit-crop", Some(&actions));
 
             obj.action_set_enabled("edit-crop.reset", false);
+
+            self.selection.connect_cropped_notify(glib::clone!(
+                #[weak]
+                obj,
+                move |_| {
+                    obj.action_set_enabled("edit-crop.reset", obj.imp().is_reset_enabled());
+                }
+            ));
         }
 
         fn dispose(&self) {
@@ -152,10 +157,6 @@ mod imp {
     impl BinImpl for LpEditCrop {}
 
     impl LpEditCrop {
-        fn cropped(&self) -> bool {
-            self.selection.is_cropped()
-        }
-
         fn reset_selection(&self) {
             self.selection.reset();
         }
@@ -245,6 +246,10 @@ mod imp {
             } else {
                 obj.action_set_enabled("edit-crop.reset", true);
             }
+        }
+
+        fn is_reset_enabled(&self) -> bool {
+            self.obj().edit_window().operations().is_some() || self.selection.cropped()
         }
     }
 }

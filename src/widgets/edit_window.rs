@@ -120,11 +120,13 @@ mod imp {
 
             let obj = self.obj();
 
-            obj.edit_crop().connect_cropped_notify(glib::clone!(
-                #[weak]
-                obj,
-                move |_| obj.imp().done.set_sensitive(obj.is_done_sensitive())
-            ));
+            obj.edit_crop()
+                .selection()
+                .connect_cropped_notify(glib::clone!(
+                    #[weak]
+                    obj,
+                    move |_| obj.imp().done.set_sensitive(obj.is_done_sensitive())
+                ));
         }
     }
     impl BinImpl for LpEditWindow {}
@@ -376,7 +378,7 @@ impl LpEditWindow {
             .borrow()
             .as_ref()
             .is_some_and(|x| !x.operations().is_empty())
-            || self.edit_crop().cropped()
+            || self.edit_crop().selection().cropped()
     }
 
     pub fn add_operation(&self, operation: glycin::Operation) {
