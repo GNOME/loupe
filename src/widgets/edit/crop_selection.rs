@@ -389,6 +389,8 @@ mod imp {
             self.crop_width.set(width);
             self.crop_height.set(height);
 
+            self.update_apply_crop_visibility();
+
             // Selection area
             self.selection_overlay.allocate(
                 width as i32,
