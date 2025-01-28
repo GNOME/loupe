@@ -137,7 +137,53 @@ mod imp {
             if let Some(current_file) = obj.original_image().file() {
                 let file_dialog = gtk::FileDialog::new();
 
-                file_dialog.set_initial_file(Some(&current_file));
+                let suggested_file = if let Some(path) = current_file.path() {
+                    if let Some(basename) = path.file_stem() {
+                        let mut suggested_file = None;
+                        for i in 1..20 {
+                            let mut new_path = path.clone();
+                            let mut new_filename = basename.to_os_string();
+
+                            if i == 1 {
+                                // Translators: Filename suffix
+                                new_filename.push(gettext(" (Edited)"));
+                            } else {
+                                // Translators: Filename suffix, {} is replaced by a number
+                                new_filename.push(ngettext(" (Edited)", " (Edited {})", i));
+                            }
+
+                            if let Some(ext) = path.extension() {
+                                new_filename.push(".");
+                                new_filename.push(ext);
+                            }
+
+                            new_path.set_file_name(new_filename);
+
+                            let file = gio::File::for_path(&new_path);
+                            let file_exists = file
+                                .query_info_future(
+                                    gio::FILE_ATTRIBUTE_STANDARD_NAME,
+                                    gio::FileQueryInfoFlags::NONE,
+                                    glib::Priority::DEFAULT,
+                                )
+                                .await
+                                .is_ok();
+
+                            if !file_exists {
+                                suggested_file = Some(file);
+                                break;
+                            }
+                        }
+
+                        suggested_file.unwrap_or_else(|| current_file.clone())
+                    } else {
+                        current_file.clone()
+                    }
+                } else {
+                    current_file.clone()
+                };
+
+                file_dialog.set_initial_file(Some(&suggested_file));
 
                 match file_dialog.save_future(Some(&obj.window())).await {
                     Err(err) => {

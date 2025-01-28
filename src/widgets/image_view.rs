@@ -692,8 +692,6 @@ impl LpImageView {
             }
         }
 
-        dbg!(file_event);
-
         let Some(current_file) = self.current_file() else {
             return;
         };

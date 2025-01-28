@@ -152,9 +152,8 @@ trait RectExt: Into<graphene::Rect> {
 impl RectExt for graphene::Rect {}
 
 mod imp {
-    use crate::widgets::LpImage;
-
     use super::*;
+    use crate::widgets::LpImage;
 
     #[derive(Debug, Default, gtk::CompositeTemplate, glib::Properties)]
     #[properties(wrapper_type = super::LpEditCropSelection)]

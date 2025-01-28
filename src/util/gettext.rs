@@ -15,19 +15,26 @@
 //
 // SPDX-License-Identifier: GPL-3.0-or-later
 
+use std::fmt::Display;
+
 pub use gettextrs::gettext;
 
-fn freplace(mut s: String, args: impl IntoIterator<Item = impl AsRef<str>>) -> String {
+fn freplace(mut s: String, args: impl IntoIterator<Item = impl Display>) -> String {
     for arg in args {
-        s = s.replacen("{}", arg.as_ref(), 1);
+        s = s.replacen("{}", &arg.to_string(), 1);
     }
 
     s
 }
 
-pub fn gettext_f(format: &str, args: impl IntoIterator<Item = impl AsRef<str>>) -> String {
+pub fn gettext_f(format: &str, args: impl IntoIterator<Item = impl Display>) -> String {
     let s = ugettext(format);
     freplace(s, args)
+}
+
+pub fn ngettext(format: &str, format_plural: &str, n: u32) -> String {
+    let s = gettextrs::ngettext(format, format_plural, n);
+    freplace(apply_unicode_escapes(&s).unwrap_or(s), [n])
 }
 
 /// Same as `gettext` but evaluates unicode escape sequences
