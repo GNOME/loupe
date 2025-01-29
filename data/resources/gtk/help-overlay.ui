@@ -283,6 +283,41 @@
             </child>
           </object>
         </child>
+        <child>
+          <object class="GtkShortcutsGroup">
+            <property name="title" translatable="yes" context="shortcut window">Editing</property>
+            <child>
+              <object class="GtkShortcutsShortcut">
+                <property name="title" translatable="yes" context="shortcut window">Rotate Clockwise</property>
+                <property name="accelerator">&lt;Ctrl&gt;R</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkShortcutsShortcut">
+                <property name="title" translatable="yes" context="shortcut window">Rotate Counterclockwise</property>
+                <property name="accelerator">&lt;Ctrl&gt;&lt;Shift&gt;R</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkShortcutsShortcut">
+                <property name="title" translatable="yes" context="shortcut window">Mirror Horizontally</property>
+                <property name="accelerator">H</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkShortcutsShortcut">
+                <property name="title" translatable="yes" context="shortcut window">Mirror Vertically</property>
+                <property name="accelerator">V</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkShortcutsShortcut">
+                <property name="title" translatable="yes" context="shortcut window">Apply Crop</property>
+                <property name="accelerator">&lt;Ctrl&gt;Return</property>
+              </object>
+            </child>
+          </object>
+        </child>
       </object>
     </child>
   </object>

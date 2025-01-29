@@ -60,6 +60,8 @@ pub enum LpOrientation {
 
 mod imp {
 
+    use gtk::gdk;
+
     use super::*;
 
     #[derive(Debug, Default, gtk::CompositeTemplate, glib::Properties)]
@@ -105,6 +107,56 @@ mod imp {
             klass.install_action("edit-crop.apply-crop", None, |obj, _, _| {
                 obj.imp().apply_crop()
             });
+
+            klass.add_shortcut(
+                &gtk::Shortcut::builder()
+                    .action(&gtk::NamedAction::new("edit-crop.mirror-horizontally"))
+                    .trigger(&gtk::KeyvalTrigger::new(
+                        gdk::Key::H,
+                        gdk::ModifierType::NO_MODIFIER_MASK,
+                    ))
+                    .build(),
+            );
+
+            klass.add_shortcut(
+                &gtk::Shortcut::builder()
+                    .action(&gtk::NamedAction::new("edit-crop.mirror-vertically"))
+                    .trigger(&gtk::KeyvalTrigger::new(
+                        gdk::Key::V,
+                        gdk::ModifierType::NO_MODIFIER_MASK,
+                    ))
+                    .build(),
+            );
+
+            klass.add_shortcut(
+                &gtk::Shortcut::builder()
+                    .action(&gtk::NamedAction::new("edit-crop.rotate-cw"))
+                    .trigger(&gtk::KeyvalTrigger::new(
+                        gdk::Key::R,
+                        gdk::ModifierType::CONTROL_MASK,
+                    ))
+                    .build(),
+            );
+
+            klass.add_shortcut(
+                &gtk::Shortcut::builder()
+                    .action(&gtk::NamedAction::new("edit-crop.rotate-ccw"))
+                    .trigger(&gtk::KeyvalTrigger::new(
+                        gdk::Key::R,
+                        gdk::ModifierType::CONTROL_MASK.union(gdk::ModifierType::SHIFT_MASK),
+                    ))
+                    .build(),
+            );
+
+            klass.add_shortcut(
+                &gtk::Shortcut::builder()
+                    .action(&gtk::NamedAction::new("edit-crop.apply-crop"))
+                    .trigger(&gtk::KeyvalTrigger::new(
+                        gdk::Key::Return,
+                        gdk::ModifierType::CONTROL_MASK,
+                    ))
+                    .build(),
+            );
         }
 
         fn instance_init(obj: &glib::subclass::InitializingObject<Self>) {
