@@ -9,17 +9,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2025-01-27 11:29+0000\n"
-"PO-Revision-Date: 2025-01-27 16:09+0100\n"
+"POT-Creation-Date: 2025-01-29 12:19+0000\n"
+"PO-Revision-Date: 2025-01-29 18:08+0100\n"
 "Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
 "Language-Team: Slovenian <gnome-si@googlegroups.com>\n"
 "Language: sl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
-"%100==4 ? 3 : 0);\n"
-"X-Generator: Poedit 2.2.1\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || "
+"n%100==4 ? 3 : 0);\n"
+"X-Generator: Poedit 3.4.2\n"
 "X-Poedit-SourceCharset: ISO-8859-1\n"
 
 #: data/org.gnome.Loupe.desktop.in.in:3
@@ -158,12 +158,14 @@ msgstr "Zavrti sliko"
 
 #: data/resources/gtk/help-overlay.ui:124
 #: data/resources/gtk/help-overlay.ui:274
+#: data/resources/gtk/help-overlay.ui:291
 msgctxt "shortcut window"
 msgid "Rotate Clockwise"
 msgstr "Zavrti sliko v smeri urinega kazalca"
 
 #: data/resources/gtk/help-overlay.ui:130
 #: data/resources/gtk/help-overlay.ui:280
+#: data/resources/gtk/help-overlay.ui:297
 msgctxt "shortcut window"
 msgid "Rotate Counterclockwise"
 msgstr "Zavrti sliko v nasprotni smeri urinega kazalca"
@@ -255,6 +257,26 @@ msgctxt "shortcut window"
 msgid "Gestures"
 msgstr "Poteze"
 
+#: data/resources/gtk/help-overlay.ui:288
+msgctxt "shortcut window"
+msgid "Editing"
+msgstr "Urejanje"
+
+#: data/resources/gtk/help-overlay.ui:303
+msgctxt "shortcut window"
+msgid "Mirror Horizontally"
+msgstr "Zrcali vodoravno"
+
+#: data/resources/gtk/help-overlay.ui:309
+msgctxt "shortcut window"
+msgid "Mirror Vertically"
+msgstr "Zrcali navpično"
+
+#: data/resources/gtk/help-overlay.ui:315
+msgctxt "shortcut window"
+msgid "Apply Crop"
+msgstr "Uveljavi obrezavo"
+
 #. Translators: Replace "translator-credits" with your names, one name per line
 #: src/about.rs:43
 msgid "translator-credits"
@@ -326,7 +348,7 @@ msgstr "Obnovitev slike iz smeti je spodletela"
 msgid "Drop Image to View"
 msgstr "Spustite sliko za ogled"
 
-#: src/widgets/edit/crop.rs:397
+#: src/widgets/edit/crop.rs:330
 msgid "Failed to Edit Image"
 msgstr "Urejanje slike ni uspelo"
 
@@ -386,15 +408,15 @@ msgstr "_3:2"
 msgid "_16:9"
 msgstr "_16:9"
 
-#: src/widgets/edit/crop.ui:219 src/widgets/edit/crop.ui:366
+#: src/widgets/edit/crop.ui:219 src/widgets/edit/crop.ui:365
 msgid "Orientation Landscape"
 msgstr "Ležeča usmerjenost"
 
-#: src/widgets/edit/crop.ui:228 src/widgets/edit/crop.ui:378
+#: src/widgets/edit/crop.ui:228 src/widgets/edit/crop.ui:377
 msgid "Orientation Portrait"
 msgstr "Pokončna usmerjenost"
 
-#: src/widgets/edit/crop.ui:249 src/widgets/edit/crop.ui:396
+#: src/widgets/edit/crop.ui:249 src/widgets/edit/crop.ui:395
 msgid "Rotate Counter Clockwise"
 msgstr "Zasukaj nasprotno smeri urnega kazalca"
 
@@ -402,7 +424,7 @@ msgstr "Zasukaj nasprotno smeri urnega kazalca"
 msgid "Rotate Clockwise"
 msgstr "Zasukaj v smeri urinega kazalca"
 
-#: src/widgets/edit/crop.ui:275 src/widgets/edit/crop.ui:404
+#: src/widgets/edit/crop.ui:275 src/widgets/edit/crop.ui:403
 msgid "Mirror Horizontally"
 msgstr "Zrcali vodoravno"
 
@@ -410,35 +432,45 @@ msgstr "Zrcali vodoravno"
 msgid "Mirror Vertically"
 msgstr "Zrcali navpično"
 
-#: src/widgets/edit/crop.ui:295 src/widgets/edit/crop.ui:420
+#: src/widgets/edit/crop.ui:295 src/widgets/edit/crop.ui:419
 msgid "Undo Changes in this View"
 msgstr "Razveljavi spremembe v tem pogledu"
 
-#: src/widgets/edit/crop.ui:353
+#: src/widgets/edit/crop.ui:352
 msgid "Aspect Ratio"
 msgstr "Razmerje stranic"
 
-#: src/widgets/edit/crop_selection.ui:116
+#: src/widgets/edit/crop_selection.ui:46
 msgid "Crop Selection"
 msgstr "Obreži izbor"
 
-#: src/widgets/edit_window.rs:179 src/widgets/edit_window.rs:193
+#. Translators: Filename suffix
+#. Translators: Filename suffix, {} is replaced by a number
+#: src/widgets/edit_window.rs:151 src/widgets/edit_window.rs:154
+msgid " (Edited)"
+msgid_plural " (Edited {})"
+msgstr[0] " (spremenjena{})"
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+
+#: src/widgets/edit_window.rs:227 src/widgets/edit_window.rs:241
 msgid "Failed to save image."
 msgstr "Ni bilo mogoče shraniti slike."
 
-#: src/widgets/edit_window.rs:217
+#: src/widgets/edit_window.rs:265
 msgid "Editing Image"
 msgstr "Urejanje slike"
 
-#: src/widgets/edit_window.rs:226
+#: src/widgets/edit_window.rs:274
 msgid "Failed to edit image."
 msgstr "Urejanje slike ni uspelo."
 
-#: src/widgets/edit_window.rs:236 src/widgets/edit_window.rs:254
+#: src/widgets/edit_window.rs:284 src/widgets/edit_window.rs:302
 msgid "Failed to Save Image"
 msgstr "Shranjevanje slike ni uspelo"
 
-#: src/widgets/edit_window.rs:242
+#: src/widgets/edit_window.rs:290
 msgid "Saving Image"
 msgstr "Shranjevanje slike"
 
@@ -466,7 +498,7 @@ msgstr "_Zamenjaj izvirnik"
 msgid "Original image will be moved to the trash"
 msgstr "Izvirna slika bo premaknjena v koš"
 
-#: src/widgets/error_details.rs:79
+#: src/widgets/error_details.rs:80
 msgid ""
 "The following error occurred. If you think this is an issue with the "
 "program, please include this information when you report the error."
@@ -574,11 +606,11 @@ msgstr "{} %"
 
 #. Translators: This is a toast notification, informing the user that
 #. an image has been set as background.
-#: src/widgets/image_view.rs:838
+#: src/widgets/image_view.rs:836
 msgid "Set as background."
 msgstr "Nastavi kot sliko ozadja."
 
-#: src/widgets/image_view.rs:851
+#: src/widgets/image_view.rs:849
 msgid "Could not set background."
 msgstr "Ozadja ni bilo mogoče nastaviti."
 
