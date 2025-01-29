@@ -189,6 +189,8 @@ mod imp {
 
         #[template_child]
         apply_button: TemplateChild<gtk::Button>,
+        #[template_child]
+        apply_button_click: TemplateChild<gtk::GestureClick>,
 
         #[template_child]
         selection_move: TemplateChild<gtk::GestureDrag>,
@@ -280,6 +282,21 @@ mod imp {
 
             self.selection.set_cursor_from_name(Some("move"));
             self.apply_button.set_cursor_from_name(Some("default"));
+
+            // Gesture bug workaround
+            self.apply_button_click.connect_begin(move |gesture, _| {
+                gesture.set_state(gtk::EventSequenceState::Claimed);
+            });
+
+            self.apply_button_click.connect_released(glib::clone!(
+                #[weak]
+                obj,
+                move |_, _, x, y| {
+                    if obj.imp().apply_button.contains(x, y) {
+                        let _ = obj.activate_action("edit-crop.apply-crop", None);
+                    }
+                }
+            ));
 
             // Drag begin
             self.selection_move.connect_drag_begin(glib::clone!(

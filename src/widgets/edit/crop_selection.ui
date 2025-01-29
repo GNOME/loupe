@@ -49,6 +49,9 @@
               <class name="osd" />
               <class name="apply-button" />
             </style>
+            <child>
+              <object class="GtkGestureClick" id="apply_button_click" />
+            </child>
           </object>
         </child>
         <property name="child">
