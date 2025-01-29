@@ -1,25 +1,26 @@
 # Italian translation for Loupe.
 # Copyright (C) 2023 Loupe's COPYRIGHT HOLDER
 # This file is distributed under the same license as the Loupe package.
-# Davide Ferracin <davide.ferracin@protonmail.com>, 2024.
+# Davide Ferracin <davide.ferracin@protonmail.com>, 2024-2025
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2024-07-31 00:10+0000\n"
-"PO-Revision-Date: 2024-08-31 13:16+0300\n"
+"POT-Creation-Date: 2025-01-24 11:34+0000\n"
+"PO-Revision-Date: 2025-01-26 21:06+0100\n"
 "Last-Translator: Davide Ferracin <davide.ferracin@protonmail.com>\n"
-"Language: it\n"
 "Language-Team: Italian <gnome-it-list@gnome.org>\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: it\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Generated-By: Babel 2.15.0\n"
 
 #: data/org.gnome.Loupe.desktop.in.in:3
-#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:31 src/window.rs:873
+#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:31
+#: src/widgets/image_window.rs:859
 msgid "Image Viewer"
 msgstr "Visualizzatore immagini"
 
@@ -257,72 +258,228 @@ msgstr "Davide Ferracin <davide.ferracin@protonmail.com>"
 msgid "Copyright © 2020–2024 Christopher Davis et al."
 msgstr "Copyright © 2020–2024 Christopher Davis et al."
 
-#: src/file_model.rs:131
+#: src/file_model.rs:180
 msgid "Could not list other files in directory."
 msgstr "Elenco degli altri file nella directory non riuscito."
 
-#: src/metadata.rs:249
+#. Translators: Display of the f-number <https://en.wikipedia.org/wiki/F-number>. {} will be replaced with the number
+#: src/metadata.rs:242
 msgid "\\u{192}\\u{2215}{}"
 msgstr "\\u{192}\\u{2215}{}"
 
 #. Translators: Fractional exposure time (photography) in seconds
-#: src/metadata.rs:266
+#: src/metadata.rs:255
 msgid "1\\u{2215}{}\\u{202F}s"
 msgstr "1\\u{2215}{}\\u{202F}s"
 
 #. Translators: Exposure time (photography) in seconds
-#: src/metadata.rs:274
+#: src/metadata.rs:263
 msgid "{}\\u{202F}s"
 msgstr "{}\\u{202F}s"
 
-#. Translators: Unit for focal length in millimeters
-#: src/metadata.rs:300
+#: src/metadata.rs:277
 msgid "{}\\u{202F}mm"
 msgstr "{}\\u{202F}mm"
 
 #. Translators: short for "north" in GPS coordinate
-#: src/metadata/gps.rs:165
+#: src/metadata.rs:317
 msgid "N"
 msgstr "N"
 
 #. Translators: short for "south" in GPS coordinate
-#: src/metadata/gps.rs:168
+#: src/metadata.rs:321
 msgid "S"
 msgstr "S"
 
 #. Translators: short for "east" in GPS coordinate
-#: src/metadata/gps.rs:190
+#: src/metadata.rs:330
 msgid "E"
 msgstr "E"
 
 #. Translators: short for "west" in GPS coordinate
-#: src/metadata/gps.rs:193
+#: src/metadata.rs:334
 msgid "W"
 msgstr "O"
 
 #. Translators: This is the date and time format we use in metadata output etc.
-#. The format has to follow
-#. <https://docs.gtk.org/glib/method.DateTime.format.html>
+#. The format has to follow <https://docs.gtk.org/glib/method.DateTime.format.html>
 #. The default is already translated. Don't change if you are not sure what to
 #. use.
-#: src/util.rs:37
-#, c-format, python-format
+#: src/util.rs:39
+#, c-format
 msgid "%x %X"
 msgstr "%x %X"
 
-#: src/util.rs:180 src/window.rs:659
+#: src/util.rs:182 src/widgets/image_window.rs:638
 msgid "Failed to restore image from trash"
 msgstr "Ripristino dell'immagine dal cestino non riuscito"
 
+#: src/widgets/drag_overlay.ui:15
+msgid "Drop Image to View"
+msgstr "Rilasciare l'immagine per mostrarla"
+
+#: src/widgets/edit/crop.rs:397
+msgid "Failed to Edit Image"
+msgstr "Modifica dell'immagine non riuscita"
+
+#: src/widgets/edit/crop.ui:6
+msgid "Free"
+msgstr "Forma libera"
+
+#: src/widgets/edit/crop.ui:11
+msgid "Original"
+msgstr "Originale"
+
+#: src/widgets/edit/crop.ui:16
+msgid "Square"
+msgstr "Quadrato"
+
+#: src/widgets/edit/crop.ui:21
+msgid "5:4"
+msgstr "5:4"
+
+#: src/widgets/edit/crop.ui:26
+msgid "4:3"
+msgstr "4:3"
+
+#: src/widgets/edit/crop.ui:31
+msgid "3:2"
+msgstr "3:2"
+
+#: src/widgets/edit/crop.ui:36
+msgid "16:9"
+msgstr "16:9"
+
+#: src/widgets/edit/crop.ui:91
+msgid "_Free"
+msgstr "_Forma libera"
+
+#: src/widgets/edit/crop.ui:109
+msgid "_Original"
+msgstr "_Originale"
+
+#: src/widgets/edit/crop.ui:127
+msgid "_Square"
+msgstr "_Quadrato"
+
+#: src/widgets/edit/crop.ui:145
+msgid "_5:4"
+msgstr "_5:4"
+
+#: src/widgets/edit/crop.ui:163
+msgid "_4:3"
+msgstr "_4:3"
+
+#: src/widgets/edit/crop.ui:181
+msgid "_3:2"
+msgstr "_3:2"
+
+#: src/widgets/edit/crop.ui:199
+msgid "_16:9"
+msgstr "_16:9"
+
+#: src/widgets/edit/crop.ui:219 src/widgets/edit/crop.ui:366
+msgid "Orientation Landscape"
+msgstr "Orientamento orizzontale"
+
+#: src/widgets/edit/crop.ui:228 src/widgets/edit/crop.ui:378
+msgid "Orientation Portrait"
+msgstr "Orientamento verticale"
+
+#: src/widgets/edit/crop.ui:249 src/widgets/edit/crop.ui:396
+msgid "Rotate Counter Clockwise"
+msgstr "Ruota in senso antiorario"
+
+#: src/widgets/edit/crop.ui:256
+msgid "Rotate Clockwise"
+msgstr "Ruota in senso orario"
+
+#: src/widgets/edit/crop.ui:275 src/widgets/edit/crop.ui:404
+msgid "Mirror Horizontally"
+msgstr "Rifletti orizzontalmente"
+
+#: src/widgets/edit/crop.ui:282
+msgid "Mirror Vertically"
+msgstr "Rifletti verticalmente"
+
+#: src/widgets/edit/crop.ui:295 src/widgets/edit/crop.ui:420
+msgid "Undo Changes in this View"
+msgstr "Annulla modifiche in questa vista"
+
+#: src/widgets/edit/crop.ui:353
+msgid "Aspect Ratio"
+msgstr "Rapporto di forma"
+
+#: src/widgets/edit/crop_selection.ui:116
+msgid "Crop Selection"
+msgstr "Ritaglia selezione"
+
+#: src/widgets/edit_window.rs:179 src/widgets/edit_window.rs:193
+msgid "Failed to save image."
+msgstr "Salvataggio dell'immagine non riuscito."
+
+#: src/widgets/edit_window.rs:217
+msgid "Editing Image"
+msgstr "Modifica immagine"
+
+#: src/widgets/edit_window.rs:226
+msgid "Failed to edit image."
+msgstr "Modifica dell'immagine non riuscita."
+
+#: src/widgets/edit_window.rs:236 src/widgets/edit_window.rs:254
+msgid "Failed to Save Image"
+msgstr "Salvataggio dell'immagine non riuscito"
+
+#: src/widgets/edit_window.rs:242
+msgid "Saving Image"
+msgstr "Salvataggio dell'immagine in corso"
+
+#: src/widgets/edit_window.ui:59
+msgid "_Cancel"
+msgstr "A_nnulla"
+
+#: src/widgets/edit_window.ui:65
+msgid "_Save"
+msgstr "_Salva"
+
+#: src/widgets/edit_window.ui:87
+msgid "_Save As…"
+msgstr "_Salva come…"
+
+#: src/widgets/edit_window.ui:95
+msgid "Keep original and create a new file"
+msgstr "Mantiene l'originale e crea un nuovo file"
+
+#: src/widgets/edit_window.ui:115
+msgid "_Replace Original"
+msgstr "Sos_tituisci originale"
+
+#: src/widgets/edit_window.ui:123
+msgid "Original image will be moved to the trash"
+msgstr "L'immagine originale verrà spostata nel cestino"
+
+#: src/widgets/error_details.rs:79
+msgid ""
+"The following error occured. If you think this is an issue with the program, "
+"please include this information when you report the error."
+msgstr ""
+"Si è verificato il seguente errore. Se si pensa che ci sia un problema con "
+"l'applicazione, includere queste informazioni quando si segnala l'errore."
+
+#: src/widgets/error_details.ui:4
+msgid "Error Details"
+msgstr "Dettagli dell'errore"
+
 #: src/widgets/error_details.ui:19
 msgid ""
-"The image loader reported the following when trying to load the image. "
-"Please include this information when you report an error. If possible, "
-"please also provide the image that causes the issue."
+"The image loader reported the following when trying to load or edit the "
+"image. Please include this information when you report an error. If "
+"possible, please also provide the image that causes the issue."
 msgstr ""
 "Il caricatore dell'immagine ha riportato ciò che segue mentre provava a "
-"caricare l'immagine. Includere queste informazioni quando si segnala "
-"l'errore. Se possibile, fornire anche l'immagine che ha causato l'errore."
+"caricare o modificare l'immagine. Includere queste informazioni quando si "
+"segnala l'errore. Se possibile, fornire anche l'immagine che ha causato "
+"l'errore."
 
 #: src/widgets/error_details.ui:24
 msgid "Error Message"
@@ -359,28 +516,31 @@ msgstr "Non c'è sufficiente memoria libera per caricare quest'immagine."
 #: src/widgets/image_page.rs:281
 msgid "Either the image file is corrupted or it contains unsupported elements."
 msgstr ""
-"Il file dell'immagine è danneggiato oppure contiene elementi non "
-"supportati."
+"Il file dell'immagine è danneggiato oppure contiene elementi non supportati."
 
-#: src/widgets/image_page.ui:6 src/window.ui:16
+#: src/widgets/image_page.ui:6 src/widgets/image_window.ui:16
 msgid "_Open With…"
 msgstr "_Apri con…"
 
-#: src/widgets/image_page.ui:14 src/window.ui:24
+#: src/widgets/image_page.ui:10 src/widgets/image_window.ui:20
 msgid "_Print…"
 msgstr "Stam_pa…"
 
-#: src/widgets/image_page.ui:18
-msgid "_Copy"
-msgstr "_Copia"
-
-#: src/widgets/image_page.ui:23 src/window.ui:29
+#: src/widgets/image_page.ui:15 src/widgets/image_window.ui:25
 msgid "Rotate"
 msgstr "Ruota"
 
-#: src/widgets/image_page.ui:34 src/window.ui:40
+#: src/widgets/image_page.ui:26 src/widgets/image_window.ui:36
 msgid "_Set as Background…"
 msgstr "Imposta come _sfondo…"
+
+#: src/widgets/image_page.ui:30 src/widgets/image_window.ui:40
+msgid "_Delete"
+msgstr "_Elimina"
+
+#: src/widgets/image_page.ui:34
+msgid "_Copy"
+msgstr "_Copia"
 
 #: src/widgets/image_page.ui:63
 msgid "Could not Load Image"
@@ -394,43 +554,147 @@ msgstr "Ulteriori _informazioni"
 msgid "_Reload"
 msgstr "_Ricarica"
 
-#: src/widgets/image_page.ui:123 src/window.ui:225
+#: src/widgets/image_page.ui:123 src/widgets/image_window.ui:101
 msgid "Rotate Left"
 msgstr "Ruota a sinistra"
 
-#: src/widgets/image_page.ui:133 src/window.ui:235
+#: src/widgets/image_page.ui:133 src/widgets/image_window.ui:111
 msgid "Rotate Right"
 msgstr "Ruota a destra"
 
+#: src/widgets/image_view.rs:197
+msgid "{} %"
+msgstr "{}%"
+
 #. Translators: This is a toast notification, informing the user that
 #. an image has been set as background.
-#: src/widgets/image_view.rs:720
+#: src/widgets/image_view.rs:838
 msgid "Set as background."
 msgstr "Impostata come sfondo."
 
-#: src/widgets/image_view.rs:733
+#: src/widgets/image_view.rs:851
 msgid "Could not set background."
 msgstr "Impostazione dello sfondo non riuscita."
 
-#: src/widgets/image_view.ui:27
+#: src/widgets/image_view.ui:30
 msgid "Previous Image"
 msgstr "Immagine precedente"
 
-#: src/widgets/image_view.ui:38
+#: src/widgets/image_view.ui:40
 msgid "Next Image"
 msgstr "Immagine successiva"
 
-#: src/widgets/image_view.ui:63
+#: src/widgets/image_view.ui:74
 msgid "Zoom Out"
 msgstr "Riduci l'ingrandimento"
 
-#: src/widgets/image_view.ui:74
+#: src/widgets/image_view.ui:85
 msgid "Zoom In"
 msgstr "Aumenta l'ingrandimento"
 
-#: src/widgets/image_view.ui:85
+#: src/widgets/image_view.ui:100
+msgid "Toggle Zoom"
+msgstr "Attiva/disattiva l'ingrandimento"
+
+#: src/widgets/image_view.ui:108
+msgid "Zoom to Specific Level"
+msgstr "Ingrandisci ad un livello specifico"
+
+#: src/widgets/image_window.rs:502
+msgid "Supported image formats"
+msgstr "Formati di immagine supportati"
+
+#: src/widgets/image_window.rs:508
+msgid "All files"
+msgstr "Tutti i file"
+
+#: src/widgets/image_window.rs:515
+msgid "Open Image"
+msgstr "Apri immagine"
+
+#: src/widgets/image_window.rs:601
+msgid "Image copied to clipboard"
+msgstr "Immagine copiata negli appunti"
+
+#: src/widgets/image_window.rs:622
+msgid "Image moved to trash"
+msgstr "Immagine spostata nel cestino"
+
+#: src/widgets/image_window.rs:623
+msgid "Undo"
+msgstr "Annulla"
+
+#: src/widgets/image_window.rs:653
+msgid "Failed to move image to trash"
+msgstr "Spostamento nel cestino non riuscito"
+
+#: src/widgets/image_window.rs:677
+msgid "Permanently Delete Image?"
+msgstr "Eliminare definitivamente l'immagine?"
+
+#: src/widgets/image_window.rs:679
+msgid "After deleting the image “{}” it will be permanently lost."
+msgstr "Non sarà possibile recuperare l'immagine «{}» dopo averla eliminata."
+
+#: src/widgets/image_window.rs:687
+msgid "Cancel"
+msgstr "Annulla"
+
+#: src/widgets/image_window.rs:688
+msgid "Delete"
+msgstr "Elimina"
+
+#: src/widgets/image_window.rs:699
+msgid "Failed to delete image"
+msgstr "Eliminazione non riuscita"
+
+#: src/widgets/image_window.ui:6
+msgid "_New Window"
+msgstr "_Nuova finestra"
+
+#: src/widgets/image_window.ui:10
+msgid "_Open…"
+msgstr "_Apri…"
+
+#: src/widgets/image_window.ui:46
+msgid "_Help"
+msgstr "Ai_uto"
+
+#: src/widgets/image_window.ui:50
+msgid "_Keyboard Shortcuts"
+msgstr "_Scorciatoie da tastiera"
+
+#: src/widgets/image_window.ui:54
+msgid "_About Image Viewer"
+msgstr "_Informazioni su Visualizzatore di immagini"
+
+#: src/widgets/image_window.ui:87
 msgid "Toggle Fullscreen"
 msgstr "Attiva/disattiva schermo intero"
+
+#: src/widgets/image_window.ui:93
+msgid "Main Menu"
+msgstr "Menù principale"
+
+#: src/widgets/image_window.ui:125
+msgid "Image Properties"
+msgstr "Proprietà immagine"
+
+#: src/widgets/image_window.ui:132
+msgid "Edit Image"
+msgstr "Modifica immagine"
+
+#: src/widgets/image_window.ui:220
+msgid "View Images"
+msgstr "Visualizza immagini"
+
+#: src/widgets/image_window.ui:221
+msgid "Drag and drop images here"
+msgstr "Trascinare qui le immagini"
+
+#: src/widgets/image_window.ui:225
+msgid "_Open Files…"
+msgstr "_Apri file…"
 
 #: src/widgets/print.rs:108
 msgid "Top"
@@ -472,19 +736,19 @@ msgstr "px"
 msgid "Print “{}”"
 msgstr "Stampa «{}»"
 
-#: src/widgets/print.rs:465
+#: src/widgets/print.rs:476
 msgid "Continue…"
 msgstr "Continua…"
 
-#: src/widgets/print.rs:466
+#: src/widgets/print.rs:477
 msgid "Print Image"
 msgstr "Stampa immagine"
 
-#: src/widgets/print.rs:788
+#: src/widgets/print.rs:791
 msgid "_Scale"
 msgstr "_Scala"
 
-#: src/widgets/print.rs:791
+#: src/widgets/print.rs:794
 msgid "_Width"
 msgstr "_Larghezza"
 
@@ -549,30 +813,30 @@ msgstr "_Riempi lo spazio"
 msgid "H_eight"
 msgstr "_Altezza"
 
-#: src/widgets/properties_view.rs:255
+#: src/widgets/properties_view.rs:258
 msgid "Unknown"
 msgstr "Sconosciuto"
 
 #. Translators: Addition of image being transparent to format name
-#: src/widgets/properties_view.rs:259
+#: src/widgets/properties_view.rs:262
 msgid ", transparent"
 msgstr ", trasparente"
 
 #. Translators: Addition of image being grayscale to format name
-#: src/widgets/properties_view.rs:264
+#: src/widgets/properties_view.rs:267
 msgid ", grayscale"
 msgstr ", in scala di grigi"
 
 #. Translators: Addition of bit size to format name
-#: src/widgets/properties_view.rs:269
+#: src/widgets/properties_view.rs:272
 msgid ", {}\\u{202F}bit"
 msgstr "{}\\u{202F}bit"
 
-#: src/widgets/properties_view.rs:286
+#: src/widgets/properties_view.rs:290
 msgid "{}\\u{202F}\\u{D7}\\u{202F}{}"
 msgstr "{}\\u{202F}\\u{D7}\\u{202F}{}"
 
-#: src/widgets/properties_view.rs:324
+#: src/widgets/properties_view.rs:329
 msgid "Image Coordinates Copied"
 msgstr "Coordinate dell'immagine copiate"
 
@@ -622,123 +886,38 @@ msgid "Originally Created"
 msgstr "Data creazione originale"
 
 #: src/widgets/properties_view.ui:159
+msgid "Comment"
+msgstr "Commento"
+
+#: src/widgets/properties_view.ui:169
 msgid "Aperture"
 msgstr "Apertura"
 
-#: src/widgets/properties_view.ui:169
+#: src/widgets/properties_view.ui:179
 msgid "Exposure"
 msgstr "Esposizione"
 
-#: src/widgets/properties_view.ui:179
+#: src/widgets/properties_view.ui:189
 msgid "ISO"
 msgstr "ISO"
 
-#: src/widgets/properties_view.ui:189
+#: src/widgets/properties_view.ui:199
 msgid "Focal Length"
 msgstr "Lunghezza focale"
 
-#: src/widgets/properties_view.ui:199
+#: src/widgets/properties_view.ui:209
 msgid "Maker, Model"
 msgstr "Produttore, modello"
 
-#: src/window.rs:523
-msgid "Supported image formats"
-msgstr "Formati di immagine supportati"
+#: src/widgets/window.rs:222
+msgid "Show Details"
+msgstr "Mostra dettagli"
 
-#: src/window.rs:529
-msgid "All files"
-msgstr "Tutti i file"
+#~ msgid "Copy to Clipboard"
+#~ msgstr "Copia negli appunti"
 
-#: src/window.rs:536
-msgid "Open Image"
-msgstr "Apri immagine"
-
-#: src/window.rs:622
-msgid "Image copied to clipboard"
-msgstr "Immagine copiata negli appunti"
-
-#: src/window.rs:643
-msgid "Image moved to trash"
-msgstr "Immagine spostata nel cestino"
-
-#: src/window.rs:644
-msgid "Undo"
-msgstr "Annulla"
-
-#: src/window.rs:674
-msgid "Failed to move image to trash"
-msgstr "Spostamento nel cestino non riuscito"
-
-#: src/window.rs:698
-msgid "Permanently Delete Image?"
-msgstr "Eliminare definitivamente l'immagine?"
-
-#: src/window.rs:700
-msgid "After deleting the image “{}” it will be permanently lost."
-msgstr "Non sarà possibile recuperare l'immagine «{}» dopo averla eliminata."
-
-#: src/window.rs:708
-msgid "Cancel"
-msgstr "Annulla"
-
-#: src/window.rs:709
-msgid "Delete"
-msgstr "Elimina"
-
-#: src/window.rs:720
-msgid "Failed to delete image"
-msgstr "Eliminazione non riuscita"
-
-#: src/window.ui:6
-msgid "_New Window"
-msgstr "_Nuova finestra"
-
-#: src/window.ui:10
-msgid "_Open…"
-msgstr "_Apri…"
-
-#: src/window.ui:46
-msgid "_Help"
-msgstr "Ai_uto"
-
-#: src/window.ui:50
-msgid "_Keyboard Shortcuts"
-msgstr "_Scorciatoie da tastiera"
-
-#: src/window.ui:54
-msgid "_About Image Viewer"
-msgstr "_Informazioni su Visualizzatore di immagini"
-
-#: src/window.ui:204
-msgid "Copy to Clipboard"
-msgstr "Copia negli appunti"
-
-#: src/window.ui:211
-msgid "Move to Trash"
-msgstr "Sposta nel cestino"
-
-#: src/window.ui:217
-msgid "Main Menu"
-msgstr "Menù principale"
-
-#: src/window.ui:249
-msgid "Image Properties"
-msgstr "Proprietà immagine"
-
-#: src/window.ui:281
-msgid "View Images"
-msgstr "Visualizza immagini"
-
-#: src/window.ui:282
-msgid "Drag and drop images here"
-msgstr "Trascinare qui le immagini"
-
-#: src/window.ui:286
-msgid "_Open Files…"
-msgstr "_Apri file…"
-
-#~ msgid "Failed to open image"
-#~ msgstr "Apertura dell'immagine non riuscita"
+#~ msgid "Move to Trash"
+#~ msgstr "Sposta nel cestino"
 
 #~ msgid "The Loupe Team"
 #~ msgstr "La squadra di Loupe"
@@ -798,7 +977,8 @@ msgstr "_Apri file…"
 #~ msgstr "Le seguenti funzionalità non sono ancora disponibili"
 
 #~ msgid "Correctly showing SVGs at every zoom-level"
-#~ msgstr "Visualizzazione corretta di file SVG ad ogni livello di ingrandimento"
+#~ msgstr ""
+#~ "Visualizzazione corretta di file SVG ad ogni livello di ingrandimento"
 
 #~ msgid "Interpreting image color profiles"
 #~ msgstr "Interpretazione dei profili di colore delle immagini"
@@ -817,4 +997,3 @@ msgstr "_Apri file…"
 
 #~ msgid "“{}” is not a valid image."
 #~ msgstr "«{}» non è un'immagine valida."
-
