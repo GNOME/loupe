@@ -339,7 +339,9 @@ impl imp::LpImage {
                 log::debug!("Zoom gesture end");
 
                 let rotation_target = (obj.rotation() / 90.).round() * 90.;
-                if obj.zoom() < imp.zoom_level_best_fit_for_rotation(rotation_target) {
+                if obj.zoom() < imp.zoom_level_best_fit_for_rotation(rotation_target)
+                    && obj.fit_mode() != FitMode::ExactVolatile
+                {
                     obj.zoom_to(imp.zoom_level_best_fit_for_rotation(rotation_target));
                 } else {
                     // rubberband if over highest zoom level and sets `zoom_target`

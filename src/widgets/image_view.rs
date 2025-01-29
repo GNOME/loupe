@@ -262,7 +262,7 @@ mod imp {
                     };
 
                     if let Some(image) = obj.current_image() {
-                        image.zoom_to_exact_center(value);
+                        image.zoom_to_center_no_best_fit(value);
                     }
 
                     // Close popover after click
@@ -276,7 +276,7 @@ mod imp {
                 move |_| {
                     if let Some(page) = obj.current_page() {
                         if let Some(value) = obj.zoom_value_f64() {
-                            page.image().zoom_to_exact(value);
+                            page.image().zoom_to_no_best_fit(value);
                         }
                     }
                 }

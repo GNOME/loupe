@@ -124,11 +124,16 @@ const SMALL_SCREEN_AREA: f64 = 1280. * 1024.;
 /// For small monitors occupy 80% of the screen area
 const SMALL_OCCUPY_SCREEN: f64 = 0.8;
 
-#[derive(Default, Debug, Clone, Copy)]
+#[derive(Default, Debug, Clone, Copy, glib::Variant, glib::Enum, PartialEq, Eq)]
+#[enum_type(name = "LpFitMode")]
 pub enum FitMode {
     #[default]
     BestFit,
     LargeFit,
+    /// Allow zoom to be set smaller than best fit. Allow arbitrary zoom
+    /// operations until zoom is larger than best-fit, which resets to `BestFit`
+    /// mode.`
+    ExactVolatile,
 }
 
 mod imp {
@@ -199,6 +204,7 @@ mod imp {
         #[property(get, set)]
         pub(super) best_fit: Cell<bool>,
         /// Determines what `best-fit` does
+        #[property(get, set=Self::set_fit_mode, builder(FitMode::default()))]
         pub(super) fit_mode: Cell<FitMode>,
         /// Max zoom level is reached, stored to only send signals on change
         #[property(get, set)]

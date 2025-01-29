@@ -50,7 +50,7 @@ impl imp::LpImage {
             // Do not allow to zoom larger than original size
             FitMode::BestFit => 1.,
             // Allow arbitrary zoom
-            FitMode::LargeFit => f64::MAX,
+            FitMode::LargeFit | FitMode::ExactVolatile => f64::MAX,
         };
 
         let default_zoom = if texture_aspect_ratio > widget_aspect_ratio {
@@ -138,7 +138,7 @@ impl imp::LpImage {
             );
         }
 
-        if zoom < self.zoom_level_best_fit() {
+        if zoom < self.zoom_level_best_fit() && obj.fit_mode() == FitMode::BestFit {
             let minimum = self.zoom_level_best_fit();
             let max_deviation = minimum / ZOOM_FACTOR_MAX_RUBBERBAND;
             let deviation = zoom / minimum;
@@ -222,7 +222,14 @@ impl imp::LpImage {
             self.zoom_level_best_fit()
         };
 
-        if zoom <= extended_best_fit_threshold {
+        // Reset fit mode if entering in the usual zoom levels again
+        if obj.fit_mode() == FitMode::ExactVolatile
+            && zoom >= f64::min(1.0, self.zoom_level_best_fit())
+        {
+            obj.set_fit_mode(FitMode::BestFit)
+        }
+
+        if zoom <= extended_best_fit_threshold && obj.fit_mode() != FitMode::ExactVolatile {
             zoom = self.zoom_level_best_fit();
             obj.set_best_fit(true);
         } else {
@@ -290,6 +297,13 @@ impl imp::LpImage {
             animation
         })
     }
+
+    pub fn set_fit_mode(&self, fit_mode: FitMode) {
+        self.fit_mode.replace(fit_mode);
+        if fit_mode != FitMode::ExactVolatile {
+            self.configure_best_fit();
+        }
+    }
 }
 
 impl LpImage {
@@ -348,19 +362,19 @@ impl LpImage {
         self.imp().zoom_to_full(zoom, true, false, false);
     }
 
-    /// Same as `zoom_to_exact` but zoom to center
-    pub fn zoom_to_exact_center(&self, zoom: f64) {
+    pub fn zoom_to_no_best_fit(&self, zoom: f64) {
+        self.set_fit_mode(FitMode::ExactVolatile);
+        self.set_best_fit(false);
+        self.imp().zoom_to_full(zoom, true, false, false);
+    }
+
+    pub fn zoom_to_center_no_best_fit(&self, zoom: f64) {
+        self.set_fit_mode(FitMode::ExactVolatile);
+        self.set_best_fit(false);
         self.imp().zoom_to_full(zoom, true, false, true);
     }
 
     pub fn is_best_fit(&self) -> bool {
         self.imp().best_fit.get()
-    }
-
-    pub fn set_fit_mode(&self, fit_mode: FitMode) {
-        let imp = self.imp();
-
-        imp.fit_mode.replace(fit_mode);
-        imp.configure_best_fit();
     }
 }
