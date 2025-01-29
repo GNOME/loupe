@@ -194,8 +194,6 @@ mod imp {
 
         #[template_child]
         selection_move: TemplateChild<gtk::GestureDrag>,
-        #[template_child]
-        shortcuts: TemplateChild<gtk::ShortcutController>,
 
         #[template_child]
         selection_overlay: TemplateChild<gtk::Overlay>,

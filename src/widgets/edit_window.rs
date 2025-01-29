@@ -55,6 +55,7 @@ mod imp {
         pub edit_crop: OnceCell<LpEditCrop>,
 
         pub(super) operations: RefCell<Option<Arc<Operations>>>,
+        save_cancellable: RefCell<Option<gio::Cancellable>>,
     }
 
     #[glib::object_subclass]
@@ -99,6 +100,9 @@ mod imp {
                 #[weak]
                 obj,
                 move |_| {
+                    if let Some(cancellable) = obj.imp().save_cancellable.replace(None) {
+                        cancellable.cancel();
+                    }
                     obj.window().show_image();
                 }
             ));
@@ -137,6 +141,13 @@ mod imp {
             self.done.popdown();
 
             if let Some(current_file) = obj.original_image().file() {
+                let cancellable = gio::Cancellable::new();
+                if let Some(old_cancellable) =
+                    self.save_cancellable.replace(Some(cancellable.clone()))
+                {
+                    old_cancellable.cancel();
+                }
+
                 let file_dialog = gtk::FileDialog::new();
 
                 let suggested_file = if let Some(path) = current_file.path() {
@@ -162,14 +173,16 @@ mod imp {
                             new_path.set_file_name(new_filename);
 
                             let file = gio::File::for_path(&new_path);
-                            let file_exists = file
-                                .query_info_future(
+                            let file_exists = gio::CancellableFuture::new(
+                                file.query_info_future(
                                     gio::FILE_ATTRIBUTE_STANDARD_NAME,
                                     gio::FileQueryInfoFlags::NONE,
                                     glib::Priority::DEFAULT,
-                                )
-                                .await
-                                .is_ok();
+                                ),
+                                cancellable.clone(),
+                            )
+                            .await
+                            .is_ok();
 
                             if !file_exists {
                                 suggested_file = Some(file);
@@ -192,7 +205,10 @@ mod imp {
                         log::error!("{}", err);
                     }
                     Ok(new_file) => {
-                        if self.save(current_file, new_file.clone()).await {
+                        if self
+                            .save(current_file, new_file.clone(), cancellable.clone())
+                            .await
+                        {
                             obj.window().show_specific_image(new_file);
                         }
                     }
@@ -217,25 +233,41 @@ mod imp {
                         tmp_path.set_file_name(file_stem);
 
                         let new_file = gio::File::for_path(&tmp_path);
-                        let written = self.save(current_file.clone(), new_file.clone()).await;
+
+                        let cancellable = gio::Cancellable::new();
+                        if let Some(old_cancellable) =
+                            self.save_cancellable.replace(Some(cancellable.clone()))
+                        {
+                            old_cancellable.cancel();
+                        }
+
+                        let written = self
+                            .save(current_file.clone(), new_file.clone(), cancellable.clone())
+                            .await;
 
                         if written {
-                            if let Err(err) =
-                                current_file.trash_future(glib::Priority::DEFAULT).await
+                            if let Err(err) = gio::CancellableFuture::new(
+                                current_file.trash_future(glib::Priority::DEFAULT),
+                                cancellable.clone(),
+                            )
+                            .await
                             {
                                 obj.window().show_error(
                                     &gettext("Failed to save image."),
                                     &format!("Failed to move image {current_path:?} to trash and therefore couldn't save image: {err}"),
                                     ErrorType::General,
                                 );
-                            } else if let Err(err) = new_file
-                                .move_future(
-                                    &current_file,
-                                    gio::FileCopyFlags::NONE,
-                                    glib::Priority::DEFAULT,
-                                )
-                                .0
-                                .await
+                            } else if let Err(err) = gio::CancellableFuture::new(
+                                new_file
+                                    .move_future(
+                                        &current_file,
+                                        gio::FileCopyFlags::NONE,
+                                        glib::Priority::DEFAULT,
+                                    )
+                                    .0,
+                                cancellable.clone(),
+                            )
+                            .await
                             {
                                 obj.window().show_error(
                                         &gettext("Failed to save image."),
@@ -257,13 +289,20 @@ mod imp {
         /// Saves image with operations applies
         ///
         /// Returns `true` if editing and saving was successful
-        async fn save(&self, current_file: gio::File, new_file: gio::File) -> bool {
+        async fn save(
+            &self,
+            current_file: gio::File,
+            new_file: gio::File,
+            cancellable: gio::Cancellable,
+        ) -> bool {
             let obj = self.obj();
 
             obj.edit_crop().apply_crop();
 
             self.set_saving_status(Some(gettext("Editing Image")));
-            let editor = glycin::Editor::new(current_file);
+            let mut editor = glycin::Editor::new(current_file);
+            editor.cancellable(cancellable.clone());
+
             if let Some(operations) = obj.operations() {
                 log::debug!("Computing edited image.");
                 let result = editor.apply_complete(&operations).await;

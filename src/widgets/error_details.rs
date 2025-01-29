@@ -1,4 +1,4 @@
-// Copyright (c) 2024 Sophie Herold
+// Copyright (c) 2024-2025 Sophie Herold
 // Copyright (c) 2025 Rafael Fontenelle
 //
 // This program is free software: you can redistribute it and/or modify
