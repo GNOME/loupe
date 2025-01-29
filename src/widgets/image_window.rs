@@ -757,6 +757,12 @@ impl LpImageWindow {
                 .is_some_and(|image| !image.is_best_fit()),
         );
 
+        self.image_view().zoom_toggle().set_sensitive(enabled_shown);
+
+        self.image_view()
+            .zoom_menu_button()
+            .set_sensitive(enabled_shown);
+
         // Actions that are available if there is an current image, even if it's not
         // shown
         const ACTIONS_CURRENT: &[Action] = &[
@@ -774,11 +780,12 @@ impl LpImageWindow {
         }
 
         // Editing related actions
-        let enable_editing = self
-            .imp()
-            .image_view
-            .current_image()
-            .is_some_and(|x| x.editable());
+        let enable_editing = enabled_shown
+            && self
+                .imp()
+                .image_view
+                .current_image()
+                .is_some_and(|x| x.editable());
         self.action_set_enabled(&Action::Edit, enable_editing);
     }
 

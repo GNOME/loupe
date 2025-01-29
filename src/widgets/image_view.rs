@@ -891,6 +891,10 @@ impl LpImageView {
         self.imp().zoom_menu_button.clone()
     }
 
+    pub fn zoom_toggle(&self) -> gtk::ToggleButton {
+        self.imp().zoom_toggle.clone()
+    }
+
     pub fn zoom_value_f64(&self) -> Option<f64> {
         let mut value = self.imp().zoom_value.text().to_string();
         let locale_settings = util::locale_settings();
