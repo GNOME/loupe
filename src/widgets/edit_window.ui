@@ -67,10 +67,9 @@
               </object>
             </child>
             <child type="end">
-              <object class="GtkMenuButton" id="done">
+              <object class="GtkMenuButton" id="save">
                 <property name="label" translatable="true">_Save</property>
                 <property name="use-underline">true</property>
-                <property name="sensitive">false</property>
                 <style>
                   <class name="suggested-action" />
                 </style>

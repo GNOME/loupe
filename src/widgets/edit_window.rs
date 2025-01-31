@@ -41,7 +41,7 @@ mod imp {
         #[template_child]
         cancel: TemplateChild<gtk::Button>,
         #[template_child]
-        pub(crate) done: TemplateChild<gtk::MenuButton>,
+        pub(crate) save: TemplateChild<gtk::MenuButton>,
         #[template_child]
         saving_revealer: TemplateChild<gtk::Revealer>,
         #[template_child]
@@ -148,8 +148,10 @@ mod imp {
                 .connect_cropped_notify(glib::clone!(
                     #[weak]
                     obj,
-                    move |_| obj.imp().done.set_sensitive(obj.is_done_sensitive())
+                    move |_| obj.imp().update_save_state(false)
                 ));
+
+            self.update_save_state(false);
         }
     }
     impl BinImpl for LpEditWindow {}
@@ -166,7 +168,7 @@ mod imp {
 
         async fn save_copy(&self) {
             let obj = self.obj();
-            self.done.popdown();
+            self.save.popdown();
 
             if let Some(current_file) = obj.original_image().file() {
                 let cancellable = gio::Cancellable::new();
@@ -246,7 +248,7 @@ mod imp {
 
         async fn save_overwrite(&self) {
             let obj = self.obj();
-            self.done.popdown();
+            self.save.popdown();
 
             if let Some(current_file) = obj.original_image().file() {
                 if let Some(current_path) = current_file.path() {
@@ -387,7 +389,7 @@ mod imp {
             let is_saving = message.is_some();
             self.saving_status.set_label(&message.unwrap_or_default());
             self.saving_revealer.set_reveal_child(is_saving);
-            self.done.set_sensitive(!is_saving);
+            self.update_save_state(is_saving);
 
             if is_saving {
                 // Show text and spinner delayed
@@ -406,6 +408,25 @@ mod imp {
             } else {
                 self.saving_info.set_reveal_child(false);
             }
+        }
+
+        fn is_save_sensitive(&self) -> bool {
+            let obj = self.obj();
+
+            self.operations
+                .borrow()
+                .as_ref()
+                .is_some_and(|x| !x.operations().is_empty())
+                || obj.edit_crop().selection().cropped()
+        }
+
+        pub fn update_save_state(&self, force_disabled: bool) {
+            let obj = self.obj();
+            let enabled = self.is_save_sensitive() && !force_disabled;
+
+            self.save.set_sensitive(enabled);
+            obj.action_set_enabled("edit.save-overwrite", enabled);
+            obj.action_set_enabled("edit.save-copy", enabled);
         }
     }
 }
@@ -436,16 +457,7 @@ impl LpEditWindow {
     pub fn set_operations(&self, operations: Option<Arc<glycin::Operations>>) {
         let imp = self.imp();
         imp.operations.replace(operations);
-        imp.done.set_sensitive(self.is_done_sensitive());
-    }
-
-    pub fn is_done_sensitive(&self) -> bool {
-        self.imp()
-            .operations
-            .borrow()
-            .as_ref()
-            .is_some_and(|x| !x.operations().is_empty())
-            || self.edit_crop().selection().cropped()
+        imp.update_save_state(false);
     }
 
     pub fn add_operation(&self, operation: glycin::Operation) {
