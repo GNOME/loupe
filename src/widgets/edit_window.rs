@@ -48,6 +48,8 @@ mod imp {
         saving_status: TemplateChild<gtk::Label>,
         #[template_child]
         saving_info: TemplateChild<gtk::Revealer>,
+        #[template_child]
+        shortcut_controller: TemplateChild<gtk::ShortcutController>,
 
         #[property(get, construct_only)]
         original_image: OnceCell<LpImage>,
@@ -82,6 +84,10 @@ mod imp {
                     async move { obj.imp().save_overwrite().await }
                 ));
             });
+
+            klass.install_action("edit.cancel", None, move |obj, _, _| {
+                obj.imp().cancel();
+            });
         }
 
         fn instance_init(obj: &glib::subclass::InitializingObject<Self>) {
@@ -96,17 +102,6 @@ mod imp {
 
             let obj = self.obj();
 
-            self.cancel.connect_clicked(glib::clone!(
-                #[weak]
-                obj,
-                move |_| {
-                    if let Some(cancellable) = obj.imp().save_cancellable.replace(None) {
-                        cancellable.cancel();
-                    }
-                    obj.window().show_image();
-                }
-            ));
-
             glib::spawn_future_local(glib::clone!(
                 #[weak]
                 obj,
@@ -114,6 +109,30 @@ mod imp {
                     let can_trash = obj.original_image().can_trash().await;
                     obj.action_set_enabled("edit.save-overwrite", can_trash);
                 }
+            ));
+
+            self.shortcut_controller.add_shortcut(gtk::Shortcut::new(
+                Some(gtk::KeyvalTrigger::new(
+                    gdk::Key::S,
+                    gdk::ModifierType::CONTROL_MASK,
+                )),
+                Some(gtk::NamedAction::new("edit.save-overwrite")),
+            ));
+
+            self.shortcut_controller.add_shortcut(gtk::Shortcut::new(
+                Some(gtk::KeyvalTrigger::new(
+                    gdk::Key::S,
+                    gdk::ModifierType::CONTROL_MASK.union(gdk::ModifierType::SHIFT_MASK),
+                )),
+                Some(gtk::NamedAction::new("edit.save-copy")),
+            ));
+
+            self.shortcut_controller.add_shortcut(gtk::Shortcut::new(
+                Some(gtk::KeyvalTrigger::new(
+                    gdk::Key::Escape,
+                    gdk::ModifierType::NO_MODIFIER_MASK,
+                )),
+                Some(gtk::NamedAction::new("edit.cancel")),
             ));
         }
     }
@@ -136,6 +155,15 @@ mod imp {
     impl BinImpl for LpEditWindow {}
 
     impl LpEditWindow {
+        fn cancel(&self) {
+            let obj = self.obj();
+
+            if let Some(cancellable) = obj.imp().save_cancellable.replace(None) {
+                cancellable.cancel();
+            }
+            obj.window().show_image();
+        }
+
         async fn save_copy(&self) {
             let obj = self.obj();
             self.done.popdown();

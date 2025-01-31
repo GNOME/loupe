@@ -288,6 +288,30 @@
             <property name="title" translatable="yes" context="shortcut window">Editing</property>
             <child>
               <object class="GtkShortcutsShortcut">
+                <property name="title" translatable="yes" context="shortcut window">Open Editing View</property>
+                <property name="accelerator">E</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkShortcutsShortcut">
+                <property name="title" translatable="yes" context="shortcut window">Replace Original</property>
+                <property name="accelerator">&lt;Ctrl&gt;S</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkShortcutsShortcut">
+                <property name="title" translatable="yes" context="shortcut window">Save As</property>
+                <property name="accelerator">&lt;Ctrl&gt;&lt;Shift&gt;S</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkShortcutsShortcut">
+                <property name="title" translatable="yes" context="shortcut window">Cancel</property>
+                <property name="accelerator">Escape</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkShortcutsShortcut">
                 <property name="title" translatable="yes" context="shortcut window">Rotate Clockwise</property>
                 <property name="accelerator">&lt;Ctrl&gt;R</property>
               </object>
