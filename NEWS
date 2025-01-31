@@ -1,3 +1,40 @@
+## 48.beta (2025-01-31)
+
+### Added
+
+- edit/crop: Add back the selection of the aspect ratio for aspect ratios.
+- edit/crop: Added keyboard shortcuts for some editing operations.
+- edit/crop: Allow dragging selection from the edges, not only the corners.
+- edit/crop: Apply crop selections on operations like rotate/flip or save.
+- edit: Add menu with option to "Save As" or overwrite original.
+- edit: Allow to cancel saving operation via the "Cancel" button.
+- edit: Give visual feedback while saving image via spinner overlay.
+- edit: Show saved image after saving.
+- edit: `Ctrl+S` and `Ctrl+Shift+S` shortcuts save images and `Esc` to exit the editing view.
+
+### Fixed
+
+- Disable all zoom buttons and editing button if image fails to load.
+- Fix allocation warnings by not causing resizes during allocation.
+- edit/crop: Set aspect ratio to "Free" on reset.
+- edit/crop: Work around GTK gesture bug that blocks the drag gesture after clicking the apply button until one additional click has been done.
+- edit: Disable save actions when saving or no changes have been done.
+
+### Changed
+
+- edit/crop: Enable the "Reset" button when the crop selection change, even if not applied.
+- edit/crop: Move crop apply button into crop selection as small checkmark.
+- edit/crop: Refactor a lot of the inner working to make code simpler and more robust.
+- edit: Add an "(Edited)" suffix to the suggested filename when using "Save As"
+- edit: Various design and detail tweaks.
+- zoom: Allow zoom levels smaller than best fit via the zoom menu.
+
+## 47.4 (2025-01-13)
+
+### Fixed
+
+- Sometimes SVGs are not shown in the print preview.
+
 ## 48.alpha (2025-01-07)
 
 ### Added
