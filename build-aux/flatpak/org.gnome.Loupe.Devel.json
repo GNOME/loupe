@@ -90,8 +90,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://download.gnome.org/sources/libgweather/4.4/libgweather-4.4.2.tar.xz",
-                    "sha256": "a6e427b4770ada48945f3aa906af710fc833cff0d42df91f1828302740d794ec",
+                    "url": "https://download.gnome.org/sources/libgweather/4.4/libgweather-4.4.4.tar.xz",
+                    "sha256": "7017677753cdf7d1fdc355e4bfcdb1eba8369793a8df24d241427a939cbf4283",
                     "x-checker-data": {
                         "type": "gnome",
                         "name": "libgweather",
@@ -111,9 +111,9 @@
             ],
             "sources": [
                 {
-                    "type": "git",
-                    "url": "https://gitlab.gnome.org/GNOME/glycin.git",
-                    "commit": "ea2726e761c5bdb0e3fef4810a9d0b015cf91a8d"
+                    "type": "archive",
+                    "url": "https://download.gnome.org/sources/glycin/1.2/glycin-1.2.beta.1.tar.xz",
+                    "sha256": "f6952ed2854641bf521b430c088c953edf53d39fcfb9e0a30eb6872c7482ec26"
                 }
             ]
         },
