@@ -203,16 +203,14 @@ mod imp {
                             new_path.set_file_name(new_filename);
 
                             let file = gio::File::for_path(&new_path);
-                            let file_exists = gio::CancellableFuture::new(
-                                file.query_info_future(
+                            let file_exists = file
+                                .query_info_future(
                                     gio::FILE_ATTRIBUTE_STANDARD_NAME,
                                     gio::FileQueryInfoFlags::NONE,
                                     glib::Priority::DEFAULT,
-                                ),
-                                cancellable.clone(),
-                            )
-                            .await
-                            .is_ok();
+                                )
+                                .await
+                                .is_ok();
 
                             if !file_exists {
                                 suggested_file = Some(file);
