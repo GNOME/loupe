@@ -9,22 +9,22 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2025-01-29 12:19+0000\n"
-"PO-Revision-Date: 2025-01-29 18:08+0100\n"
+"POT-Creation-Date: 2025-01-31 13:29+0000\n"
+"PO-Revision-Date: 2025-02-01 09:53+0100\n"
 "Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
 "Language-Team: Slovenian <gnome-si@googlegroups.com>\n"
 "Language: sl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || "
-"n%100==4 ? 3 : 0);\n"
-"X-Generator: Poedit 3.4.2\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
+"%100==4 ? 3 : 0);\n"
+"X-Generator: Poedit 2.2.1\n"
 "X-Poedit-SourceCharset: ISO-8859-1\n"
 
 #: data/org.gnome.Loupe.desktop.in.in:3
 #: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:31
-#: src/widgets/image_window.rs:859
+#: src/widgets/image_window.rs:866
 msgid "Image Viewer"
 msgstr "Pregledovalnik slik"
 
@@ -158,14 +158,14 @@ msgstr "Zavrti sliko"
 
 #: data/resources/gtk/help-overlay.ui:124
 #: data/resources/gtk/help-overlay.ui:274
-#: data/resources/gtk/help-overlay.ui:291
+#: data/resources/gtk/help-overlay.ui:315
 msgctxt "shortcut window"
 msgid "Rotate Clockwise"
 msgstr "Zavrti sliko v smeri urinega kazalca"
 
 #: data/resources/gtk/help-overlay.ui:130
 #: data/resources/gtk/help-overlay.ui:280
-#: data/resources/gtk/help-overlay.ui:297
+#: data/resources/gtk/help-overlay.ui:321
 msgctxt "shortcut window"
 msgid "Rotate Counterclockwise"
 msgstr "Zavrti sliko v nasprotni smeri urinega kazalca"
@@ -262,17 +262,37 @@ msgctxt "shortcut window"
 msgid "Editing"
 msgstr "Urejanje"
 
+#: data/resources/gtk/help-overlay.ui:291
+msgctxt "shortcut window"
+msgid "Open Editing View"
+msgstr "Odpire pogled za urejanje"
+
+#: data/resources/gtk/help-overlay.ui:297
+msgctxt "shortcut window"
+msgid "Replace Original"
+msgstr "Zamenjaj izvirnik"
+
 #: data/resources/gtk/help-overlay.ui:303
+msgctxt "shortcut window"
+msgid "Save As"
+msgstr "Shrani kot"
+
+#: data/resources/gtk/help-overlay.ui:309
+msgctxt "shortcut window"
+msgid "Cancel"
+msgstr "Prekliči"
+
+#: data/resources/gtk/help-overlay.ui:327
 msgctxt "shortcut window"
 msgid "Mirror Horizontally"
 msgstr "Zrcali vodoravno"
 
-#: data/resources/gtk/help-overlay.ui:309
+#: data/resources/gtk/help-overlay.ui:333
 msgctxt "shortcut window"
 msgid "Mirror Vertically"
 msgstr "Zrcali navpično"
 
-#: data/resources/gtk/help-overlay.ui:315
+#: data/resources/gtk/help-overlay.ui:339
 msgctxt "shortcut window"
 msgid "Apply Crop"
 msgstr "Uveljavi obrezavo"
@@ -446,55 +466,55 @@ msgstr "Obreži izbor"
 
 #. Translators: Filename suffix
 #. Translators: Filename suffix, {} is replaced by a number
-#: src/widgets/edit_window.rs:151 src/widgets/edit_window.rs:154
+#: src/widgets/edit_window.rs:192 src/widgets/edit_window.rs:195
 msgid " (Edited)"
 msgid_plural " (Edited {})"
-msgstr[0] " (spremenjena{})"
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] " (spremenjeno, {})"
+msgstr[1] " (spremenjeno, {})"
+msgstr[2] " (spremenjeno, {})"
+msgstr[3] " (spremenjeno, {})"
 
-#: src/widgets/edit_window.rs:227 src/widgets/edit_window.rs:241
+#: src/widgets/edit_window.rs:286 src/widgets/edit_window.rs:303
 msgid "Failed to save image."
 msgstr "Ni bilo mogoče shraniti slike."
 
-#: src/widgets/edit_window.rs:265
+#: src/widgets/edit_window.rs:332
 msgid "Editing Image"
 msgstr "Urejanje slike"
 
-#: src/widgets/edit_window.rs:274
+#: src/widgets/edit_window.rs:343
 msgid "Failed to edit image."
 msgstr "Urejanje slike ni uspelo."
 
-#: src/widgets/edit_window.rs:284 src/widgets/edit_window.rs:302
+#: src/widgets/edit_window.rs:353 src/widgets/edit_window.rs:371
 msgid "Failed to Save Image"
 msgstr "Shranjevanje slike ni uspelo"
 
-#: src/widgets/edit_window.rs:290
+#: src/widgets/edit_window.rs:359
 msgid "Saving Image"
 msgstr "Shranjevanje slike"
 
-#: src/widgets/edit_window.ui:59
+#: src/widgets/edit_window.ui:64
 msgid "_Cancel"
 msgstr "Pre_kliči"
 
-#: src/widgets/edit_window.ui:65
+#: src/widgets/edit_window.ui:71
 msgid "_Save"
 msgstr "_Shrani"
 
-#: src/widgets/edit_window.ui:87
+#: src/widgets/edit_window.ui:92
 msgid "_Save As…"
 msgstr "Shrani _kot …"
 
-#: src/widgets/edit_window.ui:95
+#: src/widgets/edit_window.ui:100
 msgid "Keep original and create a new file"
 msgstr "Ohrani izvirnik in ustvari novo datoteko"
 
-#: src/widgets/edit_window.ui:115
+#: src/widgets/edit_window.ui:120
 msgid "_Replace Original"
 msgstr "_Zamenjaj izvirnik"
 
-#: src/widgets/edit_window.ui:123
+#: src/widgets/edit_window.ui:128
 msgid "Original image will be moved to the trash"
 msgstr "Izvirna slika bo premaknjena v koš"
 
