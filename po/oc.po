@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: po_gvfs-oc\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2025-01-24 11:34+0000\n"
-"PO-Revision-Date: 2025-01-24 16:37+0100\n"
+"POT-Creation-Date: 2025-01-31 13:29+0000\n"
+"PO-Revision-Date: 2025-02-01 11:04+0100\n"
 "Last-Translator: Quentin PAGÈS\n"
 "Language-Team: Tot En Òc\n"
 "Language: oc\n"
@@ -24,7 +24,7 @@ msgstr ""
 
 #: data/org.gnome.Loupe.desktop.in.in:3
 #: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:31
-#: src/widgets/image_window.rs:859
+#: src/widgets/image_window.rs:866
 msgid "Image Viewer"
 msgstr "Visionador d'imatges"
 
@@ -156,12 +156,14 @@ msgstr "Virar l’imatge"
 
 #: data/resources/gtk/help-overlay.ui:124
 #: data/resources/gtk/help-overlay.ui:274
+#: data/resources/gtk/help-overlay.ui:315
 msgctxt "shortcut window"
 msgid "Rotate Clockwise"
 msgstr "Virar al sens orari"
 
 #: data/resources/gtk/help-overlay.ui:130
 #: data/resources/gtk/help-overlay.ui:280
+#: data/resources/gtk/help-overlay.ui:321
 msgctxt "shortcut window"
 msgid "Rotate Counterclockwise"
 msgstr "Virar al sens antiorari"
@@ -253,6 +255,46 @@ msgctxt "shortcut window"
 msgid "Gestures"
 msgstr "Gèstes"
 
+#: data/resources/gtk/help-overlay.ui:288
+msgctxt "shortcut window"
+msgid "Editing"
+msgstr "Modificacion"
+
+#: data/resources/gtk/help-overlay.ui:291
+msgctxt "shortcut window"
+msgid "Open Editing View"
+msgstr "Dobrir la vista modificacion"
+
+#: data/resources/gtk/help-overlay.ui:297
+msgctxt "shortcut window"
+msgid "Replace Original"
+msgstr "Remplaçar l’original"
+
+#: data/resources/gtk/help-overlay.ui:303
+msgctxt "shortcut window"
+msgid "Save As"
+msgstr "Enregistrar jos"
+
+#: data/resources/gtk/help-overlay.ui:309
+msgctxt "shortcut window"
+msgid "Cancel"
+msgstr "Anullar"
+
+#: data/resources/gtk/help-overlay.ui:327
+msgctxt "shortcut window"
+msgid "Mirror Horizontally"
+msgstr "Miralh orizontal"
+
+#: data/resources/gtk/help-overlay.ui:333
+msgctxt "shortcut window"
+msgid "Mirror Vertically"
+msgstr "Miralh vertical"
+
+#: data/resources/gtk/help-overlay.ui:339
+msgctxt "shortcut window"
+msgid "Apply Crop"
+msgstr "Aplicar copadura"
+
 #. Translators: Replace "translator-credits" with your names, one name per line
 #: src/about.rs:43
 msgid "translator-credits"
@@ -322,7 +364,7 @@ msgstr "Fracàs de la restauracion de l’imatge a partir de l’escobilhièr"
 msgid "Drop Image to View"
 msgstr "Depausar un imatge per l’afichar"
 
-#: src/widgets/edit/crop.rs:397
+#: src/widgets/edit/crop.rs:330
 msgid "Failed to Edit Image"
 msgstr "L'obtencion de la lista dels fichièrs a fracassat"
 
@@ -382,15 +424,15 @@ msgstr "_3:2"
 msgid "_16:9"
 msgstr "_16:9"
 
-#: src/widgets/edit/crop.ui:219 src/widgets/edit/crop.ui:366
+#: src/widgets/edit/crop.ui:219 src/widgets/edit/crop.ui:365
 msgid "Orientation Landscape"
 msgstr "Orientazion paisatge"
 
-#: src/widgets/edit/crop.ui:228 src/widgets/edit/crop.ui:378
+#: src/widgets/edit/crop.ui:228 src/widgets/edit/crop.ui:377
 msgid "Orientation Portrait"
 msgstr "Orientazion retrach"
 
-#: src/widgets/edit/crop.ui:249 src/widgets/edit/crop.ui:396
+#: src/widgets/edit/crop.ui:249 src/widgets/edit/crop.ui:395
 msgid "Rotate Counter Clockwise"
 msgstr "Rotacion antiorària"
 
@@ -398,7 +440,7 @@ msgstr "Rotacion antiorària"
 msgid "Rotate Clockwise"
 msgstr "Rotacion orària"
 
-#: src/widgets/edit/crop.ui:275 src/widgets/edit/crop.ui:404
+#: src/widgets/edit/crop.ui:275 src/widgets/edit/crop.ui:403
 msgid "Mirror Horizontally"
 msgstr "Miralh orizontal"
 
@@ -406,66 +448,74 @@ msgstr "Miralh orizontal"
 msgid "Mirror Vertically"
 msgstr "Miralh vertical"
 
-#: src/widgets/edit/crop.ui:295 src/widgets/edit/crop.ui:420
+#: src/widgets/edit/crop.ui:295 src/widgets/edit/crop.ui:419
 msgid "Undo Changes in this View"
 msgstr "Anullar las modificacions dins aquesta vista"
 
-#: src/widgets/edit/crop.ui:353
+#: src/widgets/edit/crop.ui:352
 msgid "Aspect Ratio"
 msgstr "Proporcions"
 
-#: src/widgets/edit/crop_selection.ui:116
+#: src/widgets/edit/crop_selection.ui:46
 msgid "Crop Selection"
 msgstr "Talhar la seleccion"
 
-#: src/widgets/edit_window.rs:179 src/widgets/edit_window.rs:193
+#. Translators: Filename suffix
+#. Translators: Filename suffix, {} is replaced by a number
+#: src/widgets/edit_window.rs:192 src/widgets/edit_window.rs:195
+msgid " (Edited)"
+msgid_plural " (Edited {})"
+msgstr[0] " (Modificat)"
+msgstr[1] " (Modificats)"
+
+#: src/widgets/edit_window.rs:286 src/widgets/edit_window.rs:303
 msgid "Failed to save image."
 msgstr "L'obtencion de la lista dels fichièrs a fracassat."
 
-#: src/widgets/edit_window.rs:217
+#: src/widgets/edit_window.rs:332
 msgid "Editing Image"
 msgstr "Modificacion de l'imatge"
 
-#: src/widgets/edit_window.rs:226
+#: src/widgets/edit_window.rs:343
 msgid "Failed to edit image."
 msgstr "L'obtencion de la lista dels fichièrs a fracassat."
 
-#: src/widgets/edit_window.rs:236 src/widgets/edit_window.rs:254
+#: src/widgets/edit_window.rs:353 src/widgets/edit_window.rs:371
 msgid "Failed to Save Image"
 msgstr "L'obtencion de la lista dels fichièrs a fracassat"
 
-#: src/widgets/edit_window.rs:242
+#: src/widgets/edit_window.rs:359
 msgid "Saving Image"
 msgstr "Enregistrament de l’imatge"
 
-#: src/widgets/edit_window.ui:59
+#: src/widgets/edit_window.ui:64
 msgid "_Cancel"
 msgstr "_Anullar"
 
-#: src/widgets/edit_window.ui:65
+#: src/widgets/edit_window.ui:71
 msgid "_Save"
 msgstr "_Enregistrar"
 
-#: src/widgets/edit_window.ui:87
+#: src/widgets/edit_window.ui:92
 msgid "_Save As…"
 msgstr "_Enregistrar jos…"
 
-#: src/widgets/edit_window.ui:95
+#: src/widgets/edit_window.ui:100
 msgid "Keep original and create a new file"
 msgstr "Gardar l’original e crear un fichièr nòu"
 
-#: src/widgets/edit_window.ui:115
+#: src/widgets/edit_window.ui:120
 msgid "_Replace Original"
 msgstr "_Remplaçar l’original"
 
-#: src/widgets/edit_window.ui:123
+#: src/widgets/edit_window.ui:128
 msgid "Original image will be moved to the trash"
 msgstr "L’imatge original serà desplaçat a l’escobilhièr"
 
-#: src/widgets/error_details.rs:79
+#: src/widgets/error_details.rs:80
 msgid ""
-"The following error occured. If you think this is an issue with the program, "
-"please include this information when you report the error."
+"The following error occurred. If you think this is an issue with the "
+"program, please include this information when you report the error."
 msgstr ""
 "Las errors seguentas se son produchas. Se pensatz qu’es un problèma del "
 "programa, mercés d’inclure aquestas informacions quand senhalatz l’error."
@@ -570,11 +620,11 @@ msgstr "{} %"
 
 #. Translators: This is a toast notification, informing the user that
 #. an image has been set as background.
-#: src/widgets/image_view.rs:838
+#: src/widgets/image_view.rs:836
 msgid "Set as background."
 msgstr "Definir coma rèireplan."
 
-#: src/widgets/image_view.rs:851
+#: src/widgets/image_view.rs:849
 msgid "Could not set background."
 msgstr "Impossible de definir coma rèireplan."
 
