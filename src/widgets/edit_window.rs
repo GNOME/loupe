@@ -351,6 +351,9 @@ mod imp {
                 log::debug!("Computing edited image.");
                 let result = editor.apply_complete(&operations).await;
                 match result {
+                    Err(err) if matches!(err.error(), glycin::Error::Canceled(_)) => {
+                        log::debug!("Computing edited image canceled");
+                    }
                     Err(err) => {
                         log::warn!("Failed to edit image: {err}");
                         obj.window().show_error(
