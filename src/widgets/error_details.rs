@@ -76,8 +76,8 @@ impl LpErrorDetails {
         imp.message.buffer().set_text(text);
 
         if matches!(type_, ErrorType::General) {
-            imp.preference_group.set_title(
-               &gettext( "The following error occurred. If you think this is an issue with the program, please include this information when you report the error."),
+            imp.preference_group.set_description(
+                Some(&gettext( "The following error occurred. If you think this is an issue with the program, please include this information when you report the error.")),
             );
         }
 

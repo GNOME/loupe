@@ -356,7 +356,7 @@ mod imp {
                         obj.window().show_error(
                             &gettext("Failed to edit image."),
                             &format!("Failed to edit image:\n\n{err}\n\n{operations:#?}"),
-                            ErrorType::General,
+                            ErrorType::Loader,
                         )
                     }
                     Ok(binary_data) => {
