@@ -248,8 +248,8 @@ mod imp {
             let obj = self.obj();
             self.save.popdown();
 
-            if let Some(current_file) = obj.original_image().file() {
-                if let Some(current_path) = current_file.path() {
+            if let Some(original_file) = obj.original_image().file() {
+                if let Some(current_path) = original_file.path() {
                     if let Some(mut file_stem) = current_path.file_stem().map(|x| x.to_os_string())
                     {
                         let mut tmp_path = current_path.clone();
@@ -260,7 +260,7 @@ mod imp {
                         }
                         tmp_path.set_file_name(file_stem);
 
-                        let new_file = gio::File::for_path(&tmp_path);
+                        let tmp_file = gio::File::for_path(&tmp_path);
 
                         let cancellable = gio::Cancellable::new();
                         if let Some(old_cancellable) =
@@ -270,43 +270,59 @@ mod imp {
                         }
 
                         let written = self
-                            .save(current_file.clone(), new_file.clone(), cancellable.clone())
+                            .save(original_file.clone(), tmp_file.clone(), cancellable.clone())
                             .await;
 
                         if written {
-                            if let Err(err) = gio::CancellableFuture::new(
-                                current_file.trash_future(glib::Priority::DEFAULT),
+                            log::debug!("Moving image to trash '{}'", original_file.uri());
+                            let trash_result = gio::CancellableFuture::new(
+                                original_file.trash_future(glib::Priority::DEFAULT),
                                 cancellable.clone(),
                             )
-                            .await
-                            {
+                            .await;
+
+                            if trash_result.is_err() {
+                                // Canceled
+                                log::debug!("Trashing image canceled");
+                                return;
+                            } else if let Ok(Err(err)) = trash_result {
                                 obj.window().show_error(
                                     &gettext("Failed to save image."),
                                     &format!("Failed to move image {current_path:?} to trash and therefore couldn't save image: {err}"),
                                     ErrorType::General,
                                 );
-                            } else if let Err(err) = gio::CancellableFuture::new(
-                                new_file
+                                return;
+                            }
+
+                            log::debug!("Moving '{}' to '{}'", tmp_file.uri(), original_file.uri());
+                            let move_result = gio::CancellableFuture::new(
+                                tmp_file
                                     .move_future(
-                                        &current_file,
+                                        &original_file,
                                         gio::FileCopyFlags::NONE,
                                         glib::Priority::DEFAULT,
                                     )
                                     .0,
                                 cancellable.clone(),
                             )
-                            .await
-                            {
+                            .await;
+
+                            if move_result.is_err() {
+                                // Canceled
+                                log::debug!("Moving image canceled");
+                                return;
+                            } else if let Ok(Err(err)) = move_result {
                                 obj.window().show_error(
                                         &gettext("Failed to save image."),
                                         &format!(
-                                            "Failed to move image image to {current_path:?}: {err} move {:?} to {:?}", new_file.path().unwrap(), current_file.path().unwrap()
+                                            "Failed to move image image to {current_path:?}: {err} move {:?} to {:?}", tmp_file.path().unwrap(), original_file.path().unwrap()
                                         ),
                                         ErrorType::General,
                                     );
-                            } else {
-                                obj.window().show_specific_image(current_file);
+                                return;
                             }
+
+                            obj.window().show_specific_image(original_file);
                         }
                     }
                 }
@@ -356,21 +372,27 @@ mod imp {
                             Ok(data) => {
                                 self.set_saving_status(Some(gettext("Saving Image")));
 
-                                if let Err(err) = new_file
-                                    .replace_contents_future(
+                                let save_result = gio::CancellableFuture::new(
+                                    new_file.replace_contents_future(
                                         data,
                                         None,
                                         true,
                                         gio::FileCreateFlags::NONE,
-                                    )
-                                    .await
-                                {
+                                    ),
+                                    cancellable,
+                                )
+                                .await;
+
+                                if save_result.is_err() {
+                                    log::debug!("Saving image canceled");
+                                } else if let Ok(Err(err)) = save_result {
                                     obj.window().show_error(
                                         &gettext("Failed to Save Image"),
                                         &format!("Failed to write file:\n\n{err:?}"),
                                         ErrorType::General,
                                     );
                                 } else {
+                                    log::debug!("Image saved");
                                     return true;
                                 }
                             }

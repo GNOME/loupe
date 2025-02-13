@@ -1,0 +1,1 @@
+editing: Don't show error if saving is aborted. Instead handle actual errors correctly.
