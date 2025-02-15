@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2025-01-24 11:34+0000\n"
-"PO-Revision-Date: 2025-01-26 20:53-0300\n"
+"POT-Creation-Date: 2025-02-13 22:07+0000\n"
+"PO-Revision-Date: 2025-02-14 22:59-0300\n"
 "Last-Translator: Rafael Fontenelle <rafaelff@gnome.org>\n"
 "Language-Team: Brazilian Portuguese <https://br.gnome.org/traducao>\n"
 "Language: pt_BR\n"
@@ -23,7 +23,7 @@ msgstr ""
 
 #: data/org.gnome.Loupe.desktop.in.in:3
 #: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:31
-#: src/widgets/image_window.rs:859
+#: src/widgets/image_window.rs:866
 msgid "Image Viewer"
 msgstr "Visualizador de imagens"
 
@@ -155,12 +155,14 @@ msgstr "Gira a imagem"
 
 #: data/resources/gtk/help-overlay.ui:124
 #: data/resources/gtk/help-overlay.ui:274
+#: data/resources/gtk/help-overlay.ui:315
 msgctxt "shortcut window"
 msgid "Rotate Clockwise"
 msgstr "Gira no sentido horário"
 
 #: data/resources/gtk/help-overlay.ui:130
 #: data/resources/gtk/help-overlay.ui:280
+#: data/resources/gtk/help-overlay.ui:321
 msgctxt "shortcut window"
 msgid "Rotate Counterclockwise"
 msgstr "Gira no sentido anti-horário"
@@ -252,6 +254,46 @@ msgctxt "shortcut window"
 msgid "Gestures"
 msgstr "Gestos"
 
+#: data/resources/gtk/help-overlay.ui:288
+msgctxt "shortcut window"
+msgid "Editing"
+msgstr "Edição"
+
+#: data/resources/gtk/help-overlay.ui:291
+msgctxt "shortcut window"
+msgid "Open Editing View"
+msgstr "Abre a visão de edição"
+
+#: data/resources/gtk/help-overlay.ui:297
+msgctxt "shortcut window"
+msgid "Replace Original"
+msgstr "Substitui o original"
+
+#: data/resources/gtk/help-overlay.ui:303
+msgctxt "shortcut window"
+msgid "Save As"
+msgstr "Salva como"
+
+#: data/resources/gtk/help-overlay.ui:309
+msgctxt "shortcut window"
+msgid "Cancel"
+msgstr "Cancela"
+
+#: data/resources/gtk/help-overlay.ui:327
+msgctxt "shortcut window"
+msgid "Mirror Horizontally"
+msgstr "Espelha horizontalmente"
+
+#: data/resources/gtk/help-overlay.ui:333
+msgctxt "shortcut window"
+msgid "Mirror Vertically"
+msgstr "Espelha verticalmente"
+
+#: data/resources/gtk/help-overlay.ui:339
+msgctxt "shortcut window"
+msgid "Apply Crop"
+msgstr "Aplica corte"
+
 #. Translators: Replace "translator-credits" with your names, one name per line
 #: src/about.rs:43
 msgid "translator-credits"
@@ -327,7 +369,7 @@ msgstr "Falha ao restaurar a imagem da lixeira"
 msgid "Drop Image to View"
 msgstr "Solte uma imagem para vê-la"
 
-#: src/widgets/edit/crop.rs:397
+#: src/widgets/edit/crop.rs:330
 msgid "Failed to Edit Image"
 msgstr "Falha ao editar a imagem"
 
@@ -387,15 +429,15 @@ msgstr "_3:2"
 msgid "_16:9"
 msgstr "_16:9"
 
-#: src/widgets/edit/crop.ui:219 src/widgets/edit/crop.ui:366
+#: src/widgets/edit/crop.ui:219 src/widgets/edit/crop.ui:365
 msgid "Orientation Landscape"
 msgstr "Orientação paisagem"
 
-#: src/widgets/edit/crop.ui:228 src/widgets/edit/crop.ui:378
+#: src/widgets/edit/crop.ui:228 src/widgets/edit/crop.ui:377
 msgid "Orientation Portrait"
 msgstr "Orientação retrato"
 
-#: src/widgets/edit/crop.ui:249 src/widgets/edit/crop.ui:396
+#: src/widgets/edit/crop.ui:249 src/widgets/edit/crop.ui:395
 msgid "Rotate Counter Clockwise"
 msgstr "Gira no sentido anti-horário"
 
@@ -403,7 +445,7 @@ msgstr "Gira no sentido anti-horário"
 msgid "Rotate Clockwise"
 msgstr "Gira no sentido horário"
 
-#: src/widgets/edit/crop.ui:275 src/widgets/edit/crop.ui:404
+#: src/widgets/edit/crop.ui:275 src/widgets/edit/crop.ui:403
 msgid "Mirror Horizontally"
 msgstr "Espelha horizontalmente"
 
@@ -411,66 +453,74 @@ msgstr "Espelha horizontalmente"
 msgid "Mirror Vertically"
 msgstr "Espelha verticalmente"
 
-#: src/widgets/edit/crop.ui:295 src/widgets/edit/crop.ui:420
+#: src/widgets/edit/crop.ui:295 src/widgets/edit/crop.ui:419
 msgid "Undo Changes in this View"
 msgstr "Desfaz alterações nesta visão"
 
-#: src/widgets/edit/crop.ui:353
+#: src/widgets/edit/crop.ui:352
 msgid "Aspect Ratio"
 msgstr "Proporção"
 
-#: src/widgets/edit/crop_selection.ui:116
+#: src/widgets/edit/crop_selection.ui:46
 msgid "Crop Selection"
 msgstr "Corta a seleção"
 
-#: src/widgets/edit_window.rs:179 src/widgets/edit_window.rs:193
+#. Translators: Filename suffix
+#. Translators: Filename suffix, {} is replaced by a number
+#: src/widgets/edit_window.rs:192 src/widgets/edit_window.rs:195
+msgid " (Edited)"
+msgid_plural " (Edited {})"
+msgstr[0] "(Editado)"
+msgstr[1] "(Editados {})"
+
+#: src/widgets/edit_window.rs:290 src/widgets/edit_window.rs:316
 msgid "Failed to save image."
 msgstr "Falha ao salvar a imagem."
 
-#: src/widgets/edit_window.rs:217
+#: src/widgets/edit_window.rs:346
 msgid "Editing Image"
 msgstr "Editando imagem"
 
-#: src/widgets/edit_window.rs:226
+#: src/widgets/edit_window.rs:360
 msgid "Failed to edit image."
 msgstr "Falha ao editar a imagem."
 
-#: src/widgets/edit_window.rs:236 src/widgets/edit_window.rs:254
+#: src/widgets/edit_window.rs:370 src/widgets/edit_window.rs:393
 msgid "Failed to Save Image"
 msgstr "Falha ao salvar a imagem"
 
-#: src/widgets/edit_window.rs:242
+#: src/widgets/edit_window.rs:376
 msgid "Saving Image"
 msgstr "Salvando imagem"
 
-#: src/widgets/edit_window.ui:59
+#: src/widgets/edit_window.ui:64
 msgid "_Cancel"
 msgstr "_Cancelar"
 
-#: src/widgets/edit_window.ui:65
+#: src/widgets/edit_window.ui:71
 msgid "_Save"
 msgstr "_Salvar"
 
-#: src/widgets/edit_window.ui:87
+#: src/widgets/edit_window.ui:92
 msgid "_Save As…"
 msgstr "_Salvar como…"
 
-#: src/widgets/edit_window.ui:95
+#: src/widgets/edit_window.ui:100
 msgid "Keep original and create a new file"
 msgstr "Manter o original e criar um novo arquivo"
 
-#: src/widgets/edit_window.ui:115
+#: src/widgets/edit_window.ui:120
 msgid "_Replace Original"
 msgstr "_Substituir original"
 
-#: src/widgets/edit_window.ui:123
+#: src/widgets/edit_window.ui:128
 msgid "Original image will be moved to the trash"
 msgstr "A imagem original será movida para a lixeira"
 
 #: src/widgets/error_details.rs:79
 msgid ""
-"The following error occured. If you think this is an issue with the program, "
-"please include this information when you report the error."
+"The following error occurred. If you think this is an issue with the "
+"program, please include this information when you report the error."
 msgstr ""
 "Ocorreu o seguinte erro. Se você acha que isso é um problema com o programa, "
 "inclua esta informação quando relatar o erro."
@@ -576,11 +626,11 @@ msgstr "{} %"
 
 #. Translators: This is a toast notification, informing the user that
 #. an image has been set as background.
-#: src/widgets/image_view.rs:838
+#: src/widgets/image_view.rs:836
 msgid "Set as background."
 msgstr "Definida como plano de fundo."
 
-#: src/widgets/image_view.rs:851
+#: src/widgets/image_view.rs:849
 msgid "Could not set background."
 msgstr "Não foi possível definir o plano de fundo."
 
