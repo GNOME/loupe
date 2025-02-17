@@ -6,9 +6,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
-"POT-Creation-Date: 2024-08-12 21:40+0000\n"
-"PO-Revision-Date: 2024-08-25 20:33+1000\n"
-"Last-Translator: Ser82-png <asvmail.as@gmail.com>\n"
+"POT-Creation-Date: 2025-02-04 13:04+0000\n"
+"PO-Revision-Date: 2025-02-07 15:28+0300\n"
+"Last-Translator: Artur So <arturios2005@mail.ru>\n"
 "Language-Team: Russian <ru@li.org>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 3.5\n"
 
 #. Put one translator per line, in the form NAME <EMAIL>, YEAR1, YEAR2
 msgctxt "_"
@@ -24,229 +24,82 @@ msgid "translator-credits"
 msgstr "Ser82-png <asvmail.as@gmail.com>, 2023-2024"
 
 #. (itstool) path: info/desc
-#: C/viewing-images.page:11
-msgid "Learn how to view an image at different scales and orientations."
-msgstr ""
-"Узнайте, как просматривать изображение в разных масштабах и ориентациях."
+#: C/image-properties.page:11
+msgid "View detailed properties of the selected image."
+msgstr "Просматривайте подробные свойства выбранного изображения."
 
 #. (itstool) path: page/title
-#: C/viewing-images.page:13
-msgid "Viewing Images"
-msgstr "Просмотр изображений"
+#: C/image-properties.page:13
+msgid "Image Properties"
+msgstr "Свойства изображения"
 
-#. (itstool) path: section/title
-#: C/viewing-images.page:15
-msgid "Zooming"
-msgstr "Масштабирование"
+#. (itstool) path: page/p
+#: C/image-properties.page:14
+msgid ""
+"Image Viewer allows users to view an image's properties. All images will "
+"have the following basic properties:"
+msgstr ""
+"Просмотрщик изображений позволяет пользователям просматривать свойства "
+"изображения. Все изображения будут иметь следующие основные свойства:"
+
+#. (itstool) path: item/p
+#: C/image-properties.page:18
+msgid "Image size"
+msgstr "Размер изображения"
+
+#. (itstool) path: item/p
+#: C/image-properties.page:21
+msgid "Image format"
+msgstr "Формат изображения"
+
+#. (itstool) path: item/p
+#: C/image-properties.page:24
+msgid "File size"
+msgstr "Размер файла"
+
+#. (itstool) path: item/p
+#: C/image-properties.page:27
+msgid "File creation date"
+msgstr "Дата создания файла"
+
+#. (itstool) path: item/p
+#: C/image-properties.page:30
+msgid "File modification date"
+msgstr "Дата модификации файла"
+
+#. (itstool) path: page/p
+#: C/image-properties.page:33
+msgid ""
+"If the file has <link href=\"https://en.wikipedia.org/wiki/Exif\">Exif</"
+"link> metadata, it will be shown below the basic properties."
+msgstr ""
+"Если ваш файл содержит метаданные <link href=\"https://en.wikipedia.org/wiki/"
+"Exif\">Exif</link>, то они будут показаны ниже основных свойств."
 
 #. (itstool) path: p/media
 #. This is a reference to an external file such as an image or video. When
 #. the file changes, the md5 hash will change to let you know you need to
 #. update your localized copy. The msgstr is not used at all. Set it to
 #. whatever you like once you have updated your copy of the file.
-#: C/viewing-images.page:16
-#| msgctxt "_"
-#| msgid ""
-#| "external ref='figures/zoom-in-symbolic.svg' "
-#| "md5='7e94a36ae229fe2cfb97481937300ad3'"
+#: C/image-properties.page:36
 msgctxt "_"
 msgid ""
-"external ref='figures/zoom-in-symbolic.svg' "
-"md5='fed4648112c974f25de99c15ece6272c'"
+"external ref='figures/help-about-symbolic.svg' "
+"md5='6b43c8bc211b5f8b57810091728b8925'"
 msgstr ""
-"external ref='figures/zoom-in-symbolic.svg' "
-"md5='fed4648112c974f25de99c15ece6272c'"
+"external ref='figures/help-about-symbolic.svg' "
+"md5='6b43c8bc211b5f8b57810091728b8925'"
 
-#. (itstool) path: p/media
-#. This is a reference to an external file such as an image or video. When
-#. the file changes, the md5 hash will change to let you know you need to
-#. update your localized copy. The msgstr is not used at all. Set it to
-#. whatever you like once you have updated your copy of the file.
-#: C/viewing-images.page:17
-#| msgctxt "_"
-#| msgid ""
-#| "external ref='figures/zoom-out-symbolic.svg' "
-#| "md5='c05c42cb3d95bf3bc7f49ccd8dcca510'"
-msgctxt "_"
+#. (itstool) path: page/p
+#: C/image-properties.page:35
 msgid ""
-"external ref='figures/zoom-out-symbolic.svg' "
-"md5='fe99d9c40c1104988ee4580283168dfb'"
+"To view the selected image's properties, press the <gui>Image Properties</"
+"gui> (<media type=\"image\" src=\"figures/help-about-symbolic.svg\">help-"
+"about-symbolic</media>) button."
 msgstr ""
-"external ref='figures/zoom-out-symbolic.svg' "
-"md5='fe99d9c40c1104988ee4580283168dfb'"
-
-#. (itstool) path: section/p
-#: C/viewing-images.page:16
-msgid ""
-"Users can zoom in with the <gui>Zoom In</gui> (<media type=\"image\" "
-"src=\"figures/zoom-in-symbolic.svg\">zoom-in-symbolic</media>) button and "
-"zoom out with the <gui>Zoom Out</gui> (<media type=\"image\" src=\"figures/"
-"zoom-out-symbolic.svg\">zoom-out-symbolic</media>) button."
-msgstr ""
-"Пользователи могут изменять масштаб с помощью кнопок <gui>Увеличить</gui> "
-"(<media type=\"image\" src=\"figures/zoom-in-symbolic.svg\">zoom-in-"
-"symbolic</media>) и <gui>Уменьшить</gui> (<media type=\"image\" "
-"src=\"figures/zoom-out-symbolic.svg\">zoom-out-symbolic</media>)."
-
-#. (itstool) path: section/p
-#: C/viewing-images.page:19
-msgid ""
-"Touchpad and touchscreen users can also zoom with a two-finger pinch "
-"gesture. On touchpads, it is also possible to zoom by pressing the "
-"<key>Ctrl</key> key while swiping up/down with two fingers on the touchpad."
-msgstr ""
-"Пользователи сенсорных панелей и сенсорных экранов также могут изменять "
-"масштаб с помощью жеста «щипок» двумя пальцами. На сенсорных планшетах также "
-"можно изменять масштаб удерживая нажатой клавишу <key>Ctrl</key> и проводя "
-"двумя пальцами вверх/вниз по экрану."
-
-#. (itstool) path: section/title
-#: C/viewing-images.page:22
-msgid "Panning"
-msgstr "Панорамирование"
-
-#. (itstool) path: section/p
-#: C/viewing-images.page:23
-msgid ""
-"Mouse and touchpad users can pan the view when zoomed in by clicking and "
-"dragging the image. Touchscreen users can use a single-finger drag gesture "
-"to pan the view."
-msgstr ""
-"При увеличенном масштабе пользователи могут с помощью мыши и сенсорной "
-"панели смещать изображение захватывая и перетаскивая его. Пользователи с "
-"сенсорным экраном могут для этого использовать жест «перетаскивание одним "
-"пальцем»."
-
-#. (itstool) path: section/title
-#: C/viewing-images.page:27
-msgid "Rotating"
-msgstr "Повороты"
-
-#. (itstool) path: p/media
-#. This is a reference to an external file such as an image or video. When
-#. the file changes, the md5 hash will change to let you know you need to
-#. update your localized copy. The msgstr is not used at all. Set it to
-#. whatever you like once you have updated your copy of the file.
-#: C/viewing-images.page:28
-#| msgctxt "_"
-#| msgid ""
-#| "external ref='figures/object-rotate-right-symbolic.svg' "
-#| "md5='0e69268f1a3a3c0c43c9ae3e193fd3d7'"
-msgctxt "_"
-msgid ""
-"external ref='figures/object-rotate-right-symbolic.svg' "
-"md5='0284f09f3659bf61e4882ac8a758b38f'"
-msgstr ""
-"external ref='figures/object-rotate-right-symbolic.svg' "
-"md5='0284f09f3659bf61e4882ac8a758b38f'"
-
-#. (itstool) path: p/media
-#. This is a reference to an external file such as an image or video. When
-#. the file changes, the md5 hash will change to let you know you need to
-#. update your localized copy. The msgstr is not used at all. Set it to
-#. whatever you like once you have updated your copy of the file.
-#: C/viewing-images.page:29
-#| msgctxt "_"
-#| msgid ""
-#| "external ref='figures/object-rotate-left-symbolic.svg' "
-#| "md5='8abe2a1bc5871a15c2f6534d19a4c7ee'"
-msgctxt "_"
-msgid ""
-"external ref='figures/object-rotate-left-symbolic.svg' "
-"md5='c2393bbaa3b0f7ea09b43089295a44d4'"
-msgstr ""
-"external ref='figures/object-rotate-left-symbolic.svg' "
-"md5='c2393bbaa3b0f7ea09b43089295a44d4'"
-
-#. (itstool) path: section/p
-#: C/viewing-images.page:28
-msgid ""
-"Users can use the <gui>Rotate Right</gui> (<media type=\"image\" "
-"src=\"figures/object-rotate-right-symbolic.svg\">object-rotate-right-"
-"symbolic</media>) and <gui>Rotate Left</gui> (<media type=\"image\" "
-"src=\"figures/object-rotate-left-symbolic.svg\">object-rotate-left-symbolic</"
-"media>) buttons under <gui style=\"menuitem\">Rotate</gui> in the main menu "
-"to rotate clockwise and counter-clockwise."
-msgstr ""
-"Для поворота изображения по часовой или против часовой стрелки пользователи "
-"могут использовать кнопки <gui>Повернуть вправо</gui> (<media type=\"image\" "
-"src=\"figures/object-rotate-right-symbolic.svg\">object-rotate-right-"
-"symbolic</media>) и <gui>Повернуть влево</gui> (<media type=\"image\" "
-"src=\"figures/object-rotate-left-symbolic.svg\">object-rotate-left-symbolic</"
-"media>) в разделе <gui style=\"menuitem\">Повернуть</gui> главного меню."
-
-#. (itstool) path: section/p
-#: C/viewing-images.page:32
-msgid ""
-"Touchpad and touchscreen users can also use a two-finger rotate gesture."
-msgstr ""
-"Пользователи сенсорной панели и сенсорного экрана могут использовать жест "
-"«поворот двумя пальцами»."
-
-#. (itstool) path: section/title
-#: C/viewing-images.page:35
-msgid "Fullscreen"
-msgstr "Полноэкранный режим"
-
-#. (itstool) path: p/media
-#. This is a reference to an external file such as an image or video. When
-#. the file changes, the md5 hash will change to let you know you need to
-#. update your localized copy. The msgstr is not used at all. Set it to
-#. whatever you like once you have updated your copy of the file.
-#: C/viewing-images.page:37
-#| msgctxt "_"
-#| msgid ""
-#| "external ref='figures/view-fullscreen-symbolic.svg' "
-#| "md5='8089b2761abd6116e6185e06bc885da1'"
-msgctxt "_"
-msgid ""
-"external ref='figures/view-fullscreen-symbolic.svg' "
-"md5='3ee106ab07051301a9b5982cbe04b597'"
-msgstr ""
-"external ref='figures/view-fullscreen-symbolic.svg' "
-"md5='3ee106ab07051301a9b5982cbe04b597'"
-
-#. (itstool) path: p/media
-#. This is a reference to an external file such as an image or video. When
-#. the file changes, the md5 hash will change to let you know you need to
-#. update your localized copy. The msgstr is not used at all. Set it to
-#. whatever you like once you have updated your copy of the file.
-#: C/viewing-images.page:37
-#| msgctxt "_"
-#| msgid ""
-#| "external ref='figures/view-restore-symbolic.svg' "
-#| "md5='d00df849240f2d92c7fa1429d3ae8254'"
-msgctxt "_"
-msgid ""
-"external ref='figures/view-restore-symbolic.svg' "
-"md5='f7470d4b9ed1d317ed201bb4a72882fb'"
-msgstr ""
-"external ref='figures/view-restore-symbolic.svg' "
-"md5='f7470d4b9ed1d317ed201bb4a72882fb'"
-
-#. (itstool) path: section/p
-#: C/viewing-images.page:36
-msgid ""
-"Image Viewer has a simple fullscreen mode. Users can toggle fullscreen mode "
-"by pressing the <gui>Toggle Fullscreen</gui> (<media type=\"image\" "
-"src=\"figures/view-fullscreen-symbolic.svg\">view-fullscreen-symbolic</"
-"media> / <media type=\"image\" src=\"figures/view-restore-symbolic."
-"svg\">view-restore-symbolic</media>) button."
-msgstr ""
-"Просмотрщик изображений поддерживает простой полноэкранный режим. Перейти в "
-"него можно используя кнопку <gui>Переключить полноэкранный режим</gui> "
-"(<media type=\"image\" src=\"figures/view-fullscreen-symbolic.svg\">view-"
-"fullscreen-symbolic</media> / <media type=\"image\" src=\"figures/view-"
-"restore-symbolic.svg\">view-restore-symbolic</media>)."
-
-#. (itstool) path: note/p
-#: C/viewing-images.page:39
-msgid ""
-"Keyboard users can also use the corresponding shortcuts presented in the "
-"(Keyboard Shortcuts) dialog."
-msgstr ""
-"Пользователи клавиатуры также могут использовать соответствующие комбинации "
-"клавиш, представленные в диалоговом окне (Комбинации клавиш)."
+"Чтобы посмотреть свойства выбранного изображения, нажмите кнопку "
+"<gui>Свойства изображения</gui> (<media type=\"image\" src=\"figures/help-"
+"about-symbolic.svg\">help-about-symbolic</media>)."
 
 #. (itstool) path: page/title
 #: C/supported-formats.page:12
@@ -256,18 +109,18 @@ msgstr "Поддерживаемые форматы изображения"
 #. (itstool) path: page/p
 #: C/supported-formats.page:13
 msgid ""
-"Image Viewer uses <link href=\"https://gitlab.gnome.org/sophie-h/"
+"Image Viewer uses <link href=\"https://gitlab.gnome.org/GNOME/"
 "glycin\">glycin</link> for loading images. You can check <link "
-"href=\"https://gitlab.gnome.org/sophie-h/glycin#supported-image-"
+"href=\"https://gitlab.gnome.org/GNOME/glycin#supported-image-"
 "formats\">glycin's README</link> for more details about the formats "
 "supported by the default loaders and the features provided by each format."
 msgstr ""
 "Для загрузки изображений просмотрщик изображений использует <link "
-"href=\"https://gitlab.gnome.org/sophie-h/glycin\">glycin</link>. Получить "
+"href=\"https://gitlab.gnome.org/GNOME/glycin\">glycin</link>. Получить "
 "дополнительные сведения о форматах, поддерживаемых загрузчиками по "
 "умолчанию, и функциях, предоставляемых каждым форматом вы можете в <link "
-"href=\"https://gitlab.gnome.org/sophie-h/glycin#supported-image-"
-"formats\">glycin's README</link>."
+"href=\"https://gitlab.gnome.org/GNOME/glycin#supported-image-"
+"formats\">README</link>."
 
 #. (itstool) path: page/p
 #: C/supported-formats.page:17
@@ -275,9 +128,48 @@ msgid ""
 "Glycin's loaders are configurable, and new loaders can be created by third "
 "parties. Therefore the formats supported on your system may vary."
 msgstr ""
-"Загрузчики Glycine могут настраиваться, также могут быть созданы новые "
+"Загрузчики Glycin могут настраиваться, также могут быть созданы новые "
 "загрузчики сторонними разработчиками. Поэтому поддерживаемые форматы в вашей "
 "системе могут отличаться."
+
+#. (itstool) path: info/desc
+#: C/trashing-images.page:11
+msgid "Move unwanted images to the trash directly from Image Viewer."
+msgstr ""
+"Перемещайте ненужные изображений в корзину прямо из просмотрщика изображений."
+
+#. (itstool) path: page/title
+#: C/trashing-images.page:13
+msgid "Moving Images to Trash"
+msgstr "Перемещение изображений в корзину"
+
+#. (itstool) path: p/media
+#. This is a reference to an external file such as an image or video. When
+#. the file changes, the md5 hash will change to let you know you need to
+#. update your localized copy. The msgstr is not used at all. Set it to
+#. whatever you like once you have updated your copy of the file.
+#: C/trashing-images.page:15
+msgctxt "_"
+msgid ""
+"external ref='figures/user-trash-symbolic.svg' "
+"md5='3ffa1160de3479541f34c3bfbf3cdb64'"
+msgstr ""
+"external ref='figures/user-trash-symbolic.svg' "
+"md5='3ffa1160de3479541f34c3bfbf3cdb64'"
+
+#. (itstool) path: page/p
+#: C/trashing-images.page:14
+msgid ""
+"If a user wants to remove an image, they can press the <gui>Move To Trash</"
+"gui> (<media type=\"image\" src=\"figures/user-trash-symbolic.svg\">user-"
+"trash-symbolic</media>) button. A toast will appear allowing them to restore "
+"the image with the <gui>Undo</gui> button."
+msgstr ""
+"Если пользователь хочет удалить изображение, то он может нажать кнопку "
+"<gui>Отправить в корзину</gui> (<media type=\"image\" src=\"figures/user-"
+"trash-symbolic.svg\">user-trash-symbolic</media>). После этого появится "
+"всплывающее окно, позволяющее восстановить изображение с помощью кнопки "
+"<gui>Отменить</gui>."
 
 #. (itstool) path: info/desc
 #: C/opening-images.page:11
@@ -424,10 +316,6 @@ msgstr "Навигация"
 #. update your localized copy. The msgstr is not used at all. Set it to
 #. whatever you like once you have updated your copy of the file.
 #: C/opening-images.page:67
-#| msgctxt "_"
-#| msgid ""
-#| "external ref='figures/go-previous-symbolic.svg' "
-#| "md5='2ed7437ba9a336b6c6cf645b9eb4ed8b'"
 msgctxt "_"
 msgid ""
 "external ref='figures/go-previous-symbolic.svg' "
@@ -442,10 +330,6 @@ msgstr ""
 #. update your localized copy. The msgstr is not used at all. Set it to
 #. whatever you like once you have updated your copy of the file.
 #: C/opening-images.page:68
-#| msgctxt "_"
-#| msgid ""
-#| "external ref='figures/go-next-symbolic.svg' "
-#| "md5='9c98c035765d2edc185ef9b37566e7ce'"
 msgctxt "_"
 msgid ""
 "external ref='figures/go-next-symbolic.svg' "
@@ -475,7 +359,7 @@ msgstr ""
 "svg\">go-next-symbolic</media>)."
 
 #. (itstool) path: note/p
-#: C/opening-images.page:70
+#: C/opening-images.page:70 C/viewing-images.page:39
 msgid ""
 "Keyboard users can also use the corresponding shortcuts presented in the "
 "<gui>Keyboard Shortcuts</gui> dialog."
@@ -484,47 +368,29 @@ msgstr ""
 "клавиш, представленные в диалоговом окне <gui>Комбинации клавиш</gui>."
 
 #. (itstool) path: info/desc
-#: C/trashing-images.page:11
-msgid "Move unwanted images to the trash directly from Image Viewer."
-msgstr ""
-"Перемещайте ненужные изображений в корзину прямо из просмотрщика изображений."
+#: C/index.page:10
+msgid "Browse through your images and inspect their metadata."
+msgstr "Просмотр изображений и их метаданных."
 
 #. (itstool) path: page/title
-#: C/trashing-images.page:13
-msgid "Moving Images to Trash"
-msgstr "Перемещение изображений в корзину"
+#: C/index.page:12
+msgid "<_:media-1/> Image Viewer (Loupe)"
+msgstr "<_:media-1/> Просмотрщик изображений (Loupe)"
 
-#. (itstool) path: p/media
-#. This is a reference to an external file such as an image or video. When
-#. the file changes, the md5 hash will change to let you know you need to
-#. update your localized copy. The msgstr is not used at all. Set it to
-#. whatever you like once you have updated your copy of the file.
-#: C/trashing-images.page:15
-#| msgctxt "_"
-#| msgid ""
-#| "external ref='figures/user-trash-symbolic.svg' "
-#| "md5='975d41b3e24867a2a26194cd871e36cc'"
-msgctxt "_"
-msgid ""
-"external ref='figures/user-trash-symbolic.svg' "
-"md5='3ffa1160de3479541f34c3bfbf3cdb64'"
-msgstr ""
-"external ref='figures/user-trash-symbolic.svg' "
-"md5='3ffa1160de3479541f34c3bfbf3cdb64'"
+#. (itstool) path: section/title
+#: C/index.page:14
+msgid "Getting Started"
+msgstr "Начало работы"
 
-#. (itstool) path: page/p
-#: C/trashing-images.page:14
-msgid ""
-"If a user wants to remove an image, they can press the <gui>Move To Trash</"
-"gui> (<media type=\"image\" src=\"figures/user-trash-symbolic.svg\">user-"
-"trash-symbolic</media>) button. A toast will appear allowing them to restore "
-"the image with the <gui>Undo</gui> button."
-msgstr ""
-"Если пользователь хочет удалить изображение, то он может нажать кнопку "
-"<gui>Отправить в корзину</gui> (<media type=\"image\" src=\"figures/user-"
-"trash-symbolic.svg\">user-trash-symbolic</media>). После этого появится "
-"всплывающее окно, позволяющее восстановить изображение с помощью кнопки "
-"<gui>Отменить</gui>."
+#. (itstool) path: section/title
+#: C/index.page:17
+msgid "Additional Features"
+msgstr "Дополнительные функции"
+
+#. (itstool) path: section/title
+#: C/index.page:20
+msgid "Technical Information"
+msgstr "Техническая информация"
 
 #. (itstool) path: info/desc
 #: C/sending-to-other-apps.page:11
@@ -569,10 +435,6 @@ msgstr "Копировать и вставить"
 #. update your localized copy. The msgstr is not used at all. Set it to
 #. whatever you like once you have updated your copy of the file.
 #: C/sending-to-other-apps.page:29
-#| msgctxt "_"
-#| msgid ""
-#| "external ref='figures/edit-copy-symbolic.svg' "
-#| "md5='e998fb903df32b921d08ef52e0ea6555'"
 msgctxt "_"
 msgid ""
 "external ref='figures/edit-copy-symbolic.svg' "
@@ -614,111 +476,203 @@ msgid "Drag the image to your application of choice."
 msgstr "Перетащите и сбросьте изображение в выбранное вами приложение."
 
 #. (itstool) path: info/desc
-#: C/image-properties.page:11
-msgid "View detailed properties of the selected image."
-msgstr "Просматривайте подробные свойства выбранного изображения."
+#: C/viewing-images.page:11
+msgid "Learn how to view an image at different scales and orientations."
+msgstr ""
+"Узнайте, как просматривать изображение в разных масштабах и ориентациях."
 
 #. (itstool) path: page/title
-#: C/image-properties.page:13
-msgid "Image Properties"
-msgstr "Свойства изображения"
+#: C/viewing-images.page:13
+msgid "Viewing Images"
+msgstr "Просмотр изображений"
 
-#. (itstool) path: page/p
-#: C/image-properties.page:14
-msgid ""
-"Image Viewer allows users to view an image's properties. All images will "
-"have the following basic properties:"
-msgstr ""
-"Просмотрщик изображений позволяет пользователям просматривать свойства "
-"изображения. Все изображения будут иметь следующие основные свойства:"
-
-#. (itstool) path: item/p
-#: C/image-properties.page:18
-msgid "Image size"
-msgstr "Размер изображения"
-
-#. (itstool) path: item/p
-#: C/image-properties.page:21
-msgid "Image format"
-msgstr "Формат изображения"
-
-#. (itstool) path: item/p
-#: C/image-properties.page:24
-msgid "File size"
-msgstr "Размер файла"
-
-#. (itstool) path: item/p
-#: C/image-properties.page:27
-msgid "File creation date"
-msgstr "Дата создания файла"
-
-#. (itstool) path: item/p
-#: C/image-properties.page:30
-msgid "File modification date"
-msgstr "Дата модификации файла"
-
-#. (itstool) path: page/p
-#: C/image-properties.page:33
-msgid ""
-"If the file has <link href=\"https://en.wikipedia.org/wiki/Exif\">Exif</"
-"link> metadata, it will be shown below the basic properties."
-msgstr ""
-"Если ваш файл содержит метаданные <link href=\"https://en.wikipedia.org/wiki/"
-"Exif\">Exif</link>, то они будут показаны ниже основных свойств."
+#. (itstool) path: section/title
+#: C/viewing-images.page:15
+msgid "Zooming"
+msgstr "Масштабирование"
 
 #. (itstool) path: p/media
 #. This is a reference to an external file such as an image or video. When
 #. the file changes, the md5 hash will change to let you know you need to
 #. update your localized copy. The msgstr is not used at all. Set it to
 #. whatever you like once you have updated your copy of the file.
-#: C/image-properties.page:36
-#| msgctxt "_"
-#| msgid ""
-#| "external ref='figures/help-about-symbolic.svg' "
-#| "md5='51c74093b3e862d1f839cc377aa86837'"
+#: C/viewing-images.page:16
 msgctxt "_"
 msgid ""
-"external ref='figures/help-about-symbolic.svg' "
-"md5='6b43c8bc211b5f8b57810091728b8925'"
+"external ref='figures/zoom-in-symbolic.svg' "
+"md5='fed4648112c974f25de99c15ece6272c'"
 msgstr ""
-"external ref='figures/help-about-symbolic.svg' "
-"md5='6b43c8bc211b5f8b57810091728b8925'"
+"external ref='figures/zoom-in-symbolic.svg' "
+"md5='fed4648112c974f25de99c15ece6272c'"
 
-#. (itstool) path: page/p
-#: C/image-properties.page:35
+#. (itstool) path: p/media
+#. This is a reference to an external file such as an image or video. When
+#. the file changes, the md5 hash will change to let you know you need to
+#. update your localized copy. The msgstr is not used at all. Set it to
+#. whatever you like once you have updated your copy of the file.
+#: C/viewing-images.page:17
+msgctxt "_"
 msgid ""
-"To view the selected image's properties, press the <gui>Image Properties</"
-"gui> (<media type=\"image\" src=\"figures/help-about-symbolic.svg\">help-"
-"about-symbolic</media>) button."
+"external ref='figures/zoom-out-symbolic.svg' "
+"md5='fe99d9c40c1104988ee4580283168dfb'"
 msgstr ""
-"Чтобы посмотреть свойства выбранного изображения, нажмите кнопку "
-"<gui>Свойства изображения</gui> (<media type=\"image\" src=\"figures/help-"
-"about-symbolic.svg\">help-about-symbolic</media>)."
+"external ref='figures/zoom-out-symbolic.svg' "
+"md5='fe99d9c40c1104988ee4580283168dfb'"
 
-#. (itstool) path: info/desc
-#: C/index.page:10
-msgid "Browse through your images and inspect their metadata."
-msgstr "Просмотр изображений и их метаданных."
+#. (itstool) path: section/p
+#: C/viewing-images.page:16
+msgid ""
+"Users can zoom in with the <gui>Zoom In</gui> (<media type=\"image\" "
+"src=\"figures/zoom-in-symbolic.svg\">zoom-in-symbolic</media>) button and "
+"zoom out with the <gui>Zoom Out</gui> (<media type=\"image\" src=\"figures/"
+"zoom-out-symbolic.svg\">zoom-out-symbolic</media>) button."
+msgstr ""
+"Пользователи могут изменять масштаб с помощью кнопок <gui>Увеличить</gui> "
+"(<media type=\"image\" src=\"figures/zoom-in-symbolic.svg\">zoom-in-"
+"symbolic</media>) и <gui>Уменьшить</gui> (<media type=\"image\" "
+"src=\"figures/zoom-out-symbolic.svg\">zoom-out-symbolic</media>)."
 
-#. (itstool) path: page/title
-#: C/index.page:12
-msgid "<_:media-1/> Image Viewer (Loupe)"
-msgstr "<_:media-1/> Просмотрщик изображений (Loupe)"
+#. (itstool) path: section/p
+#: C/viewing-images.page:19
+msgid ""
+"Touchpad and touchscreen users can also zoom with a two-finger pinch "
+"gesture. On touchpads, it is also possible to zoom by pressing the "
+"<key>Ctrl</key> key while swiping up/down with two fingers on the touchpad."
+msgstr ""
+"Пользователи сенсорных панелей и сенсорных экранов также могут изменять "
+"масштаб с помощью жеста «щипок» двумя пальцами. На сенсорных планшетах также "
+"можно изменять масштаб удерживая нажатой клавишу <key>Ctrl</key> и проводя "
+"двумя пальцами вверх/вниз по экрану."
 
 #. (itstool) path: section/title
-#: C/index.page:14
-msgid "Getting Started"
-msgstr "Начало работы"
+#: C/viewing-images.page:22
+msgid "Panning"
+msgstr "Панорамирование"
+
+#. (itstool) path: section/p
+#: C/viewing-images.page:23
+msgid ""
+"Mouse and touchpad users can pan the view when zoomed in by clicking and "
+"dragging the image. Touchscreen users can use a single-finger drag gesture "
+"to pan the view."
+msgstr ""
+"При увеличенном масштабе пользователи могут с помощью мыши и сенсорной "
+"панели смещать изображение захватывая и перетаскивая его. Пользователи с "
+"сенсорным экраном могут для этого использовать жест «перетаскивание одним "
+"пальцем»."
 
 #. (itstool) path: section/title
-#: C/index.page:17
-msgid "Additional Features"
-msgstr "Дополнительные функции"
+#: C/viewing-images.page:27
+msgid "Rotating"
+msgstr "Повороты"
+
+#. (itstool) path: p/media
+#. This is a reference to an external file such as an image or video. When
+#. the file changes, the md5 hash will change to let you know you need to
+#. update your localized copy. The msgstr is not used at all. Set it to
+#. whatever you like once you have updated your copy of the file.
+#: C/viewing-images.page:28
+msgctxt "_"
+msgid ""
+"external ref='figures/object-rotate-right-symbolic.svg' "
+"md5='0284f09f3659bf61e4882ac8a758b38f'"
+msgstr ""
+"external ref='figures/object-rotate-right-symbolic.svg' "
+"md5='0284f09f3659bf61e4882ac8a758b38f'"
+
+#. (itstool) path: p/media
+#. This is a reference to an external file such as an image or video. When
+#. the file changes, the md5 hash will change to let you know you need to
+#. update your localized copy. The msgstr is not used at all. Set it to
+#. whatever you like once you have updated your copy of the file.
+#: C/viewing-images.page:29
+msgctxt "_"
+msgid ""
+"external ref='figures/object-rotate-left-symbolic.svg' "
+"md5='c2393bbaa3b0f7ea09b43089295a44d4'"
+msgstr ""
+"external ref='figures/object-rotate-left-symbolic.svg' "
+"md5='c2393bbaa3b0f7ea09b43089295a44d4'"
+
+#. (itstool) path: section/p
+#: C/viewing-images.page:28
+msgid ""
+"Users can use the <gui>Rotate Right</gui> (<media type=\"image\" "
+"src=\"figures/object-rotate-right-symbolic.svg\">object-rotate-right-"
+"symbolic</media>) and <gui>Rotate Left</gui> (<media type=\"image\" "
+"src=\"figures/object-rotate-left-symbolic.svg\">object-rotate-left-symbolic</"
+"media>) buttons under <gui style=\"menuitem\">Rotate</gui> in the main menu "
+"to rotate clockwise and counter-clockwise."
+msgstr ""
+"Для поворота изображения по часовой или против часовой стрелки пользователи "
+"могут использовать кнопки <gui>Повернуть вправо</gui> (<media type=\"image\" "
+"src=\"figures/object-rotate-right-symbolic.svg\">object-rotate-right-"
+"symbolic</media>) и <gui>Повернуть влево</gui> (<media type=\"image\" "
+"src=\"figures/object-rotate-left-symbolic.svg\">object-rotate-left-symbolic</"
+"media>) в разделе <gui style=\"menuitem\">Повернуть</gui> главного меню."
+
+#. (itstool) path: section/p
+#: C/viewing-images.page:32
+msgid ""
+"Touchpad and touchscreen users can also use a two-finger rotate gesture."
+msgstr ""
+"Пользователи сенсорной панели и сенсорного экрана могут использовать жест "
+"«поворот двумя пальцами»."
 
 #. (itstool) path: section/title
-#: C/index.page:20
-msgid "Technical Information"
-msgstr "Техническая информация"
+#: C/viewing-images.page:35
+msgid "Fullscreen"
+msgstr "Полноэкранный режим"
+
+#. (itstool) path: p/media
+#. This is a reference to an external file such as an image or video. When
+#. the file changes, the md5 hash will change to let you know you need to
+#. update your localized copy. The msgstr is not used at all. Set it to
+#. whatever you like once you have updated your copy of the file.
+#: C/viewing-images.page:37
+msgctxt "_"
+msgid ""
+"external ref='figures/view-fullscreen-symbolic.svg' "
+"md5='3ee106ab07051301a9b5982cbe04b597'"
+msgstr ""
+"external ref='figures/view-fullscreen-symbolic.svg' "
+"md5='3ee106ab07051301a9b5982cbe04b597'"
+
+#. (itstool) path: p/media
+#. This is a reference to an external file such as an image or video. When
+#. the file changes, the md5 hash will change to let you know you need to
+#. update your localized copy. The msgstr is not used at all. Set it to
+#. whatever you like once you have updated your copy of the file.
+#: C/viewing-images.page:37
+msgctxt "_"
+msgid ""
+"external ref='figures/view-restore-symbolic.svg' "
+"md5='f7470d4b9ed1d317ed201bb4a72882fb'"
+msgstr ""
+"external ref='figures/view-restore-symbolic.svg' "
+"md5='f7470d4b9ed1d317ed201bb4a72882fb'"
+
+#. (itstool) path: section/p
+#: C/viewing-images.page:36
+msgid ""
+"Image Viewer has a simple fullscreen mode. Users can toggle fullscreen mode "
+"by pressing the <gui>Toggle Fullscreen</gui> (<media type=\"image\" "
+"src=\"figures/view-fullscreen-symbolic.svg\">view-fullscreen-symbolic</"
+"media> / <media type=\"image\" src=\"figures/view-restore-symbolic."
+"svg\">view-restore-symbolic</media>) button."
+msgstr ""
+"Просмотрщик изображений поддерживает простой полноэкранный режим. Перейти в "
+"него можно используя кнопку <gui>Переключить полноэкранный режим</gui> "
+"(<media type=\"image\" src=\"figures/view-fullscreen-symbolic.svg\">view-"
+"fullscreen-symbolic</media> / <media type=\"image\" src=\"figures/view-"
+"restore-symbolic.svg\">view-restore-symbolic</media>)."
+
+#~ msgid ""
+#~ "Keyboard users can also use the corresponding shortcuts presented in the "
+#~ "(Keyboard Shortcuts) dialog."
+#~ msgstr ""
+#~ "Пользователи клавиатуры также могут использовать соответствующие "
+#~ "комбинации клавиш, представленные в диалоговом окне (Комбинации клавиш)."
 
 #~ msgid ""
 #~ "<keyseq><key>Ctrl</key><key>+</key></keyseq> or <key>+</key> to zoom in."
