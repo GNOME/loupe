@@ -30,7 +30,7 @@ gio = { version = "0.20.0", features = ["v2_74"] }
 glycin = { version = "2.1.0-beta", features = [
     "gdk4",
 ], git = "https://gitlab.gnome.org/GNOME/glycin.git", rev = "08d7799d6c29c544bfe6914d4e7921bbbeb5f3ff" }
-gtk = { package = "gtk4", version = "0.9.5", features = [
+gtk = { package = "gtk4", version = "0.9.6", features = [
     "v4_14",
     "xml_validation",
 ] }
