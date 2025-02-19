@@ -1,0 +1,1 @@
+Decide if an image has a format that supports editing based on the reliable mime-type. That way a wrong file extension will not impact the detection of the format being editable.

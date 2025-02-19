@@ -34,14 +34,14 @@ impl imp::LpImage {
     /// Set filename after filename changed
     async fn set_file_changed(&self, file: &gio::File) {
         let obj = self.obj();
-        let prev_mime_type = obj.metadata().mime_type();
+        let prev_mime_type = obj.metadata().unreliable_mime_type();
 
         self.file.replace(Some(file.clone()));
         self.reload_file_info().await;
 
         // Reload if mime type changed since other decoding path might be responsible
         // now
-        if obj.metadata().mime_type() != prev_mime_type {
+        if obj.metadata().unreliable_mime_type() != prev_mime_type {
             obj.load(file).await;
             return;
         }
@@ -80,6 +80,11 @@ impl imp::LpImage {
                 self.emmit_metadata_changed();
 
                 obj.reset_rotation();
+                glib::spawn_future_local(glib::clone!(
+                    #[weak(rename_to=obj)]
+                    self,
+                    async move { obj.check_editable().await },
+                ));
             }
             DecoderUpdate::Dimensions => {
                 log::debug!("Received dimensions: {:?}", self.untransformed_dimensions());
@@ -360,8 +365,12 @@ impl LpImage {
         // Reset background color for reloads
         imp.set_background_color(None);
 
-        let (decoder, decoder_update) =
-            Decoder::new(file.clone(), self.metadata().mime_type(), tiles.clone()).await;
+        let (decoder, decoder_update) = Decoder::new(
+            file.clone(),
+            self.metadata().unreliable_mime_type(),
+            tiles.clone(),
+        )
+        .await;
 
         let weak_obj = self.downgrade();
         glib::spawn_future_local(async move {
@@ -374,7 +383,5 @@ impl LpImage {
         });
 
         imp.decoder.replace(Some(Arc::new(decoder)));
-
-        imp.check_editable().await;
     }
 }
