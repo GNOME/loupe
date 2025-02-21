@@ -1,4 +1,4 @@
-// Copyright (c) 2024 Sophie Herold
+// Copyright (c) 2024-2025 Sophie Herold
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -72,7 +72,7 @@ impl Queue {
         let edit_instruction = editor.apply_sparse(operations).await?;
 
         if edit_instruction.apply_to(file).await? == EditOutcome::Unchanged {
-            log::error!("Writing new files is not supported yet");
+            log::warn!("Writing new files is not supported yet");
         }
 
         Ok(())

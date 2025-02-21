@@ -1,4 +1,4 @@
-// Copyright (c) 2023-2024 Sophie Herold
+// Copyright (c) 2023-2025 Sophie Herold
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -249,7 +249,7 @@ impl imp::LpImage {
         ));
 
         // Apply the transformations from properties
-        snapshot.rotate(rotation);
+        snapshot.rotate(-rotation);
         if mirrored {
             snapshot.scale(-1., 1.);
         }

@@ -1,4 +1,4 @@
-// Copyright (c) 2024 Sophie Herold
+// Copyright (c) 2024-2025 Sophie Herold
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -154,13 +154,13 @@ impl Action {
                 // Rotation/Zoom
                 Action::RotateCw => {
                     klass.install_action(&action, None, |win, _, _| {
-                        win.rotate_image(90.0);
+                        win.rotate_image(-90.0);
                     });
                 }
 
                 Action::RotateCcw => {
                     klass.install_action(&action, None, |win, _, _| {
-                        win.rotate_image(-90.0);
+                        win.rotate_image(90.0);
                     });
                 }
 

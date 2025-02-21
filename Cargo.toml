@@ -29,13 +29,13 @@ gettext-sys = { version = "0.22.5", features = ["gettext-system"] }
 gio = { version = "0.20.0", features = ["v2_74"] }
 glycin = { version = "2.1.0-beta", features = [
     "gdk4",
-], git = "https://gitlab.gnome.org/GNOME/glycin.git", rev = "08d7799d6c29c544bfe6914d4e7921bbbeb5f3ff" }
-gtk = { package = "gtk4", version = "0.9.6", features = [
+], git = "https://gitlab.gnome.org/GNOME/glycin.git", rev = "1fa8de634adb5d5e5fcac3aee58290b4374b09da" }
+gtk = { package = "gtk4", version = "0.9.5", features = [
     "v4_14",
     "xml_validation",
 ] }
 gufo = { version = "0.2.0-alpha.1", features = ["chrono", "all-image-formats"] }
-gufo-common = { version = "0.2.0-alpha", features = ["serde"] }
+gufo-common = { version = "0.2.0-alpha.2", features = ["serde"] }
 gvdb-macros = "0.1.6"
 indexmap = "2.0.0"
 libc = "0.2.158"

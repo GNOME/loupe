@@ -239,7 +239,7 @@ impl imp::LpImage {
             #[weak]
             obj,
             move |gesture, _, _| {
-                let angle = gesture.angle_delta().to_degrees();
+                let angle = -gesture.angle_delta().to_degrees();
 
                 // Only reset rotation if scale gesture is locked in
                 if let Some(Gesture::Scale) = obj.imp().locked_gestured.get() {

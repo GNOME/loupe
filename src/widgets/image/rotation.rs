@@ -1,4 +1,4 @@
-// Copyright (c) 2023-2024 Sophie Herold
+// Copyright (c) 2023-2025 Sophie Herold
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -78,9 +78,9 @@ impl LpImage {
         let orientation = self.metadata().orientation();
         self.imp()
             .rotation_target
-            .set(-(orientation.rotate().degrees() as f64));
+            .set(orientation.rotate().degrees() as f64);
         self.set_mirrored(orientation.mirror());
-        self.set_rotation(-(orientation.rotate().degrees() as f64));
+        self.set_rotation(orientation.rotate().degrees() as f64);
     }
 
     pub fn rotate_by(&self, angle: f64) {

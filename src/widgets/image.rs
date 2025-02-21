@@ -176,9 +176,9 @@ mod imp {
         pub(super) decoder: RefCell<Option<Arc<Decoder>>>,
         pub(super) overwrite_dimensions: Cell<Option<(u32, u32)>>,
 
-        /// Rotation final value (can differ from `rotation` during animation)
+        /// Rotation CCW final value (can differ from `rotation` during animation)
         pub(super) rotation_target: Cell<f64>,
-        /// Rotated presentation of original image in degrees clockwise
+        /// Rotated CCW presentation of original image in degrees clockwise
         #[property(get, set = Self::set_rotation, explicit_notify)]
         pub(super) rotation: Cell<f64>,
         // Animates the `rotation` property
