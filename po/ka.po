@@ -1,24 +1,26 @@
 # Georgian translation for Loupe.
 # Copyright (C) 2023 Loupe's COPYRIGHT HOLDER
 # This file is distributed under the same license as the Loupe package.
-# Ekaterine Papava <papava.e@gtu.ge>, 2023-2024.
+# Ekaterine Papava <papava.e@gtu.ge>, 2023-2025.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2024-08-12 09:51+0000\n"
-"PO-Revision-Date: 2024-08-23 07:33+0200\n"
+"POT-Creation-Date: 2025-02-19 12:15+0000\n"
+"PO-Revision-Date: 2025-02-23 08:34+0100\n"
 "Last-Translator: Ekaterine Papava <papava.e@gtu.ge>\n"
 "Language-Team: Georgian <ka@li.org>\n"
 "Language: ka\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.3.2\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.5\n"
 
 #: data/org.gnome.Loupe.desktop.in.in:3
-#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:31 src/window.rs:874
+#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:31
+#: src/widgets/image_window.rs:866
 msgid "Image Viewer"
 msgstr "სურათების გალერეა"
 
@@ -150,12 +152,14 @@ msgstr "გამოსახულების შემობრუნებ�
 
 #: data/resources/gtk/help-overlay.ui:124
 #: data/resources/gtk/help-overlay.ui:274
+#: data/resources/gtk/help-overlay.ui:315
 msgctxt "shortcut window"
 msgid "Rotate Clockwise"
 msgstr "საათის ისრის მიმართულებით შებრუნება"
 
 #: data/resources/gtk/help-overlay.ui:130
 #: data/resources/gtk/help-overlay.ui:280
+#: data/resources/gtk/help-overlay.ui:321
 msgctxt "shortcut window"
 msgid "Rotate Counterclockwise"
 msgstr "საათის ისრის საწინააღმდეგო მიმართულებით შებრუნება"
@@ -247,6 +251,46 @@ msgctxt "shortcut window"
 msgid "Gestures"
 msgstr "ჟესტები"
 
+#: data/resources/gtk/help-overlay.ui:288
+msgctxt "shortcut window"
+msgid "Editing"
+msgstr "ჩასწორება"
+
+#: data/resources/gtk/help-overlay.ui:291
+msgctxt "shortcut window"
+msgid "Open Editing View"
+msgstr "ჩასწორების ხედის გახსნა"
+
+#: data/resources/gtk/help-overlay.ui:297
+msgctxt "shortcut window"
+msgid "Replace Original"
+msgstr "ორიგინალის ჩანაცვლება"
+
+#: data/resources/gtk/help-overlay.ui:303
+msgctxt "shortcut window"
+msgid "Save As"
+msgstr "შენახვა, როგორც"
+
+#: data/resources/gtk/help-overlay.ui:309
+msgctxt "shortcut window"
+msgid "Cancel"
+msgstr "გაუქმება"
+
+#: data/resources/gtk/help-overlay.ui:327
+msgctxt "shortcut window"
+msgid "Mirror Horizontally"
+msgstr "ჰორიზონტალური ანარეკლი"
+
+#: data/resources/gtk/help-overlay.ui:333
+msgctxt "shortcut window"
+msgid "Mirror Vertically"
+msgstr "ვერტიკალურ ანარეკლი"
+
+#: data/resources/gtk/help-overlay.ui:339
+msgctxt "shortcut window"
+msgid "Apply Crop"
+msgstr "კადრირების გამოყენება"
+
 #. Translators: Replace "translator-credits" with your names, one name per line
 #: src/about.rs:43
 msgid "translator-credits"
@@ -256,46 +300,46 @@ msgstr "ვიღაც, ვინც თარგმნა"
 msgid "Copyright © 2020–2024 Christopher Davis et al."
 msgstr "Copyright © 2020–2024 Christopher Davis და სხვ."
 
-#: src/file_model.rs:131
+#: src/file_model.rs:180
 msgid "Could not list other files in directory."
 msgstr "საქაღალდეში სხვა ფაილების სიის გამოტანის შეცდომა."
 
+#. Translators: Display of the f-number <https://en.wikipedia.org/wiki/F-number>. {} will be replaced with the number
 #: src/metadata.rs:253
 msgid "\\u{192}\\u{2215}{}"
 msgstr "\\u{192}\\u{2215}{}"
 
 #. Translators: Fractional exposure time (photography) in seconds
-#: src/metadata.rs:270
+#: src/metadata.rs:266
 msgid "1\\u{2215}{}\\u{202F}s"
 msgstr "1\\u{2215}{}\\u{202F}წმ"
 
 #. Translators: Exposure time (photography) in seconds
-#: src/metadata.rs:278
+#: src/metadata.rs:274
 msgid "{}\\u{202F}s"
 msgstr "{}\\u{202F}წმ"
 
-#. Translators: Unit for focal length in millimeters
-#: src/metadata.rs:304
+#: src/metadata.rs:288
 msgid "{}\\u{202F}mm"
 msgstr "{}\\u{202F}მმ"
 
 #. Translators: short for "north" in GPS coordinate
-#: src/metadata/gps.rs:165
+#: src/metadata.rs:328
 msgid "N"
 msgstr "ჩრდ"
 
 #. Translators: short for "south" in GPS coordinate
-#: src/metadata/gps.rs:168
+#: src/metadata.rs:332
 msgid "S"
 msgstr "სამხ"
 
 #. Translators: short for "east" in GPS coordinate
-#: src/metadata/gps.rs:190
+#: src/metadata.rs:341
 msgid "E"
 msgstr "მი"
 
 #. Translators: short for "west" in GPS coordinate
-#: src/metadata/gps.rs:193
+#: src/metadata.rs:345
 msgid "W"
 msgstr "ოთხ"
 
@@ -303,25 +347,188 @@ msgstr "ოთხ"
 #. The format has to follow <https://docs.gtk.org/glib/method.DateTime.format.html>
 #. The default is already translated. Don't change if you are not sure what to
 #. use.
-#: src/util.rs:37
+#: src/util.rs:39
 #, c-format
 msgid "%x %X"
 msgstr "%x %X"
 
-#: src/util.rs:180 src/window.rs:659
+#: src/util.rs:182 src/widgets/image_window.rs:638
 msgid "Failed to restore image from trash"
 msgstr "გამოსახულების სანაგვე ყუთიდან აღდგენის შეცდომა"
 
+#: src/widgets/drag_overlay.ui:15
+msgid "Drop Image to View"
+msgstr "დააგდეთ გამოსახულება სანახავად"
+
+#: src/widgets/edit/crop.rs:330
+msgid "Failed to Edit Image"
+msgstr "გამოსახულების ჩასწორების შეცდომა"
+
+#: src/widgets/edit/crop.ui:6
+msgid "Free"
+msgstr "თავისუფალი"
+
+#: src/widgets/edit/crop.ui:11
+msgid "Original"
+msgstr "ორიგინალი"
+
+#: src/widgets/edit/crop.ui:16
+msgid "Square"
+msgstr "კვადრატი"
+
+#: src/widgets/edit/crop.ui:21
+msgid "5:4"
+msgstr "5:4"
+
+#: src/widgets/edit/crop.ui:26
+msgid "4:3"
+msgstr "4:3"
+
+#: src/widgets/edit/crop.ui:31
+msgid "3:2"
+msgstr "3:2"
+
+#: src/widgets/edit/crop.ui:36
+msgid "16:9"
+msgstr "16:9"
+
+#: src/widgets/edit/crop.ui:91
+msgid "_Free"
+msgstr "_თავისუფალი"
+
+#: src/widgets/edit/crop.ui:109
+msgid "_Original"
+msgstr "_ორიგინალი"
+
+#: src/widgets/edit/crop.ui:127
+msgid "_Square"
+msgstr "_კვადრატი"
+
+#: src/widgets/edit/crop.ui:145
+msgid "_5:4"
+msgstr "_5:4"
+
+#: src/widgets/edit/crop.ui:163
+msgid "_4:3"
+msgstr "_4:3"
+
+#: src/widgets/edit/crop.ui:181
+msgid "_3:2"
+msgstr "_3:2"
+
+#: src/widgets/edit/crop.ui:199
+msgid "_16:9"
+msgstr "_16:9"
+
+#: src/widgets/edit/crop.ui:219 src/widgets/edit/crop.ui:365
+msgid "Orientation Landscape"
+msgstr "ორიენტაცია ლანდშაფტი"
+
+#: src/widgets/edit/crop.ui:228 src/widgets/edit/crop.ui:377
+msgid "Orientation Portrait"
+msgstr "ორიენტაცია პორტრეტი"
+
+#: src/widgets/edit/crop.ui:249 src/widgets/edit/crop.ui:395
+msgid "Rotate Counter Clockwise"
+msgstr "საათის ისრის საწინააღმდეგო მიმართულებით შებრუნება"
+
+#: src/widgets/edit/crop.ui:256
+msgid "Rotate Clockwise"
+msgstr "საათის ისრის მიმართულებით შებრუნება"
+
+#: src/widgets/edit/crop.ui:275 src/widgets/edit/crop.ui:403
+msgid "Mirror Horizontally"
+msgstr "ჰორიზონტალური ანარეკლი"
+
+#: src/widgets/edit/crop.ui:282
+msgid "Mirror Vertically"
+msgstr "ვერტიკალურ ანარეკლი"
+
+#: src/widgets/edit/crop.ui:295 src/widgets/edit/crop.ui:419
+msgid "Undo Changes in this View"
+msgstr "ხედის ცვლილებების გაუქმება"
+
+#: src/widgets/edit/crop.ui:352
+msgid "Aspect Ratio"
+msgstr "თანაფარდობა"
+
+#: src/widgets/edit/crop_selection.ui:46
+msgid "Crop Selection"
+msgstr "მონიშნულის ამოჭრა"
+
+#. Translators: Filename suffix
+#. Translators: Filename suffix, {} is replaced by a number
+#: src/widgets/edit_window.rs:192 src/widgets/edit_window.rs:195
+msgid " (Edited)"
+msgid_plural " (Edited {})"
+msgstr[0] " (ჩასწორებულია)"
+msgstr[1] " ({} ჩასწორებულია)"
+
+#: src/widgets/edit_window.rs:290 src/widgets/edit_window.rs:316
+msgid "Failed to save image."
+msgstr "გამოსახულების შენახვის შეცდომა."
+
+#: src/widgets/edit_window.rs:346
+msgid "Editing Image"
+msgstr "გამოსახულების ჩასწორება"
+
+#: src/widgets/edit_window.rs:360
+msgid "Failed to edit image."
+msgstr "გამოსახულების ჩასწორების შეცდომა."
+
+#: src/widgets/edit_window.rs:370 src/widgets/edit_window.rs:393
+msgid "Failed to Save Image"
+msgstr "გამოსახულების შენახვის შეცდომა"
+
+#: src/widgets/edit_window.rs:376
+msgid "Saving Image"
+msgstr "გამოსახულების შენახვა"
+
+#: src/widgets/edit_window.ui:64
+msgid "_Cancel"
+msgstr "გაუ_ქმება"
+
+#: src/widgets/edit_window.ui:71
+msgid "_Save"
+msgstr "_შენახვა"
+
+#: src/widgets/edit_window.ui:92
+msgid "_Save As…"
+msgstr "_შენახვა, როგორც…"
+
+#: src/widgets/edit_window.ui:100
+msgid "Keep original and create a new file"
+msgstr "ორიგინალის შენარჩუნება და ახალი ფაილის შექმნა"
+
+#: src/widgets/edit_window.ui:120
+msgid "_Replace Original"
+msgstr "ო_რიგინალის ჩანაცვლება"
+
+#: src/widgets/edit_window.ui:128
+msgid "Original image will be moved to the trash"
+msgstr "ორიგინალი გამოსახულება ნაგვის ყუთში იქნება გადატანილი"
+
+#: src/widgets/error_details.rs:79
+msgid ""
+"The following error occurred. If you think this is an issue with the "
+"program, please include this information when you report the error."
+msgstr ""
+"მოხდა შემდეგი შეცდომა. თუ ფიქრობთ, რომ ეს პრობლემა პროგრამისაა, ჩასვით ეს "
+"ინფორმაცია, როცა შეცდომის შესახებ ანგარიშს მოგვწერთ."
+
+#: src/widgets/error_details.ui:4
+msgid "Error Details"
+msgstr "შეცდომის დეტალები"
+
 #: src/widgets/error_details.ui:19
 msgid ""
-"The image loader reported the following when trying to load the image. "
-"Please include this information when you report an error. If possible, "
-"please also provide the image that causes the issue."
+"The image loader reported the following when trying to load or edit the "
+"image. Please include this information when you report an error. If "
+"possible, please also provide the image that causes the issue."
 msgstr ""
 "გამოსახულების ჩამტვირთავმა შემდეგი ინფორმაცია მოგვაწოდა გამოსახულების "
 "ჩატვირთვის მცდელობისას. გთხოვთ, ჩასვით ეს ინფორმაცია, როცა შეცდომის შესახებ "
-"მოგვწერთ. თუ შესაძლებელია, ასევე მოგვაწოდეთ გამოსახულება, რომელმაც ეს "
-"შეცდომა გამოიწვია."
+"მოგვწერთ."
 
 #: src/widgets/error_details.ui:24
 msgid "Error Message"
@@ -335,7 +542,7 @@ msgstr "შეცდომის შეტყობინების კოპ�
 msgid "Report _Issue"
 msgstr "_პრობლემის შეტყობინება"
 
-#: src/widgets/image_page.rs:226
+#: src/widgets/image_page.rs:227
 msgid ""
 "No image loaders available. Maybe the “glycin-loaders” package with "
 "compatibility version “{}” is not installed."
@@ -343,42 +550,46 @@ msgstr ""
 "გამოსახულების ჩამტვირთავები ხელმისაწვდომი არაა. შეიძლება, პაკეტი \"glycin-"
 "loaders\" თავსებადობის ვერსიით \"{}\" დაყენებული არაა."
 
-#: src/widgets/image_page.rs:241
+#: src/widgets/image_page.rs:242
 msgid "The image format “{} ({})” is known but not installed."
 msgstr "ფაილის ფორმატი \"{} ({})\" ცნობილია, მაგრამ დაყენებული არაა."
 
-#: src/widgets/image_page.rs:248
+#: src/widgets/image_page.rs:249
 msgid "Unknown image format “{} ({}).”"
 msgstr "გამოსახულების უცნობი ფორმატი “{} ({}).”"
 
-#: src/widgets/image_page.rs:276
+#: src/widgets/image_page.rs:277
 msgid "There is not enough free memory available to load this image."
 msgstr "არასაკმარისი მეხსიერება ამ გამოსახულების ჩასატვირთად."
 
-#: src/widgets/image_page.rs:280
+#: src/widgets/image_page.rs:281
 msgid "Either the image file is corrupted or it contains unsupported elements."
 msgstr ""
 "ან გამოსახულების ფაილი დაზიანებულია, ან ის მხარდაუჭერელ ელემენტებს შეიცავს."
 
-#: src/widgets/image_page.ui:6 src/window.ui:16
+#: src/widgets/image_page.ui:6 src/widgets/image_window.ui:16
 msgid "_Open With…"
 msgstr "_გამხსნელი პროგრამა…"
 
-#: src/widgets/image_page.ui:14 src/window.ui:24
+#: src/widgets/image_page.ui:10 src/widgets/image_window.ui:20
 msgid "_Print…"
 msgstr "_ბეჭდვა…"
 
-#: src/widgets/image_page.ui:18
-msgid "_Copy"
-msgstr "_კოპირება"
-
-#: src/widgets/image_page.ui:23 src/window.ui:29
+#: src/widgets/image_page.ui:15 src/widgets/image_window.ui:25
 msgid "Rotate"
 msgstr "დატრიალება"
 
-#: src/widgets/image_page.ui:34 src/window.ui:40
+#: src/widgets/image_page.ui:26 src/widgets/image_window.ui:36
 msgid "_Set as Background…"
 msgstr "ფონად დაყენე_ბა…"
+
+#: src/widgets/image_page.ui:30 src/widgets/image_window.ui:40
+msgid "_Delete"
+msgstr "_წაშლა"
+
+#: src/widgets/image_page.ui:34
+msgid "_Copy"
+msgstr "_კოპირება"
 
 #: src/widgets/image_page.ui:63
 msgid "Could not Load Image"
@@ -392,43 +603,147 @@ msgstr "მეტი _ინფორმაცია"
 msgid "_Reload"
 msgstr "თავიდან ჩატვი_რთვა"
 
-#: src/widgets/image_page.ui:123 src/window.ui:225
+#: src/widgets/image_page.ui:123 src/widgets/image_window.ui:101
 msgid "Rotate Left"
 msgstr "მარცხნივ შებრუნება"
 
-#: src/widgets/image_page.ui:133 src/window.ui:235
+#: src/widgets/image_page.ui:133 src/widgets/image_window.ui:111
 msgid "Rotate Right"
 msgstr "მარჯვნივ შებრუნება"
 
+#: src/widgets/image_view.rs:197
+msgid "{} %"
+msgstr "{} %"
+
 #. Translators: This is a toast notification, informing the user that
 #. an image has been set as background.
-#: src/widgets/image_view.rs:720
+#: src/widgets/image_view.rs:836
 msgid "Set as background."
 msgstr "ფონად დაყენება."
 
-#: src/widgets/image_view.rs:733
+#: src/widgets/image_view.rs:849
 msgid "Could not set background."
 msgstr "ფონად დაყენების შეცდომა."
 
-#: src/widgets/image_view.ui:27
+#: src/widgets/image_view.ui:30
 msgid "Previous Image"
 msgstr "წინა გამოსახულება"
 
-#: src/widgets/image_view.ui:38
+#: src/widgets/image_view.ui:40
 msgid "Next Image"
 msgstr "შემდეგი გამოსახულება"
 
-#: src/widgets/image_view.ui:63
+#: src/widgets/image_view.ui:74
 msgid "Zoom Out"
 msgstr "დაპატარავება"
 
-#: src/widgets/image_view.ui:74
+#: src/widgets/image_view.ui:85
 msgid "Zoom In"
 msgstr "გადიდება"
 
-#: src/widgets/image_view.ui:85
+#: src/widgets/image_view.ui:100
+msgid "Toggle Zoom"
+msgstr "გადიდების გადართვა"
+
+#: src/widgets/image_view.ui:108
+msgid "Zoom to Specific Level"
+msgstr "გადიდება მითითებულ დონემდე"
+
+#: src/widgets/image_window.rs:502
+msgid "Supported image formats"
+msgstr "გამოსახულების მხარდაჭერილი ფორმატები"
+
+#: src/widgets/image_window.rs:508
+msgid "All files"
+msgstr "ყველა ფაილი"
+
+#: src/widgets/image_window.rs:515
+msgid "Open Image"
+msgstr "გამოსახულების გახსნა"
+
+#: src/widgets/image_window.rs:601
+msgid "Image copied to clipboard"
+msgstr "სურათი ბუფერში დაკოპირდა"
+
+#: src/widgets/image_window.rs:622
+msgid "Image moved to trash"
+msgstr "სურათი გადატანილია სანაგვე ყუთში"
+
+#: src/widgets/image_window.rs:623
+msgid "Undo"
+msgstr "დაბრუნება"
+
+#: src/widgets/image_window.rs:653
+msgid "Failed to move image to trash"
+msgstr "ფაილების სანაგვე ყუთში გადატანის შეცდომა"
+
+#: src/widgets/image_window.rs:677
+msgid "Permanently Delete Image?"
+msgstr "წავშალო გამოსახულება სამუდამოდ?"
+
+#: src/widgets/image_window.rs:679
+msgid "After deleting the image “{}” it will be permanently lost."
+msgstr "გამოსახულება \"{}\", მხოლოდ, სამუდამოდ შეგიძლიათ წაშალოთ."
+
+#: src/widgets/image_window.rs:687
+msgid "Cancel"
+msgstr "გუქმება"
+
+#: src/widgets/image_window.rs:688
+msgid "Delete"
+msgstr "წაშლა"
+
+#: src/widgets/image_window.rs:699
+msgid "Failed to delete image"
+msgstr "გამოსახულების წაშლის შეცდომა"
+
+#: src/widgets/image_window.ui:6
+msgid "_New Window"
+msgstr "_ახალი ფანჯარა"
+
+#: src/widgets/image_window.ui:10
+msgid "_Open…"
+msgstr "გახსნა…"
+
+#: src/widgets/image_window.ui:46
+msgid "_Help"
+msgstr "_დახმარება"
+
+#: src/widgets/image_window.ui:50
+msgid "_Keyboard Shortcuts"
+msgstr "_კლავიატურის მალსახმობები"
+
+#: src/widgets/image_window.ui:54
+msgid "_About Image Viewer"
+msgstr "სურათების დამთვალიერებლის შესახებ"
+
+#: src/widgets/image_window.ui:87
 msgid "Toggle Fullscreen"
 msgstr "მთელ ეკრანზე გატანის ჩართ/გამორთ"
+
+#: src/widgets/image_window.ui:93
+msgid "Main Menu"
+msgstr "მთავარი მენიუ"
+
+#: src/widgets/image_window.ui:125
+msgid "Image Properties"
+msgstr "გამოსახულების თვისებები"
+
+#: src/widgets/image_window.ui:132
+msgid "Edit Image"
+msgstr "გამოსახულების ჩასწორება"
+
+#: src/widgets/image_window.ui:220
+msgid "View Images"
+msgstr "სურათების დათვალიერება"
+
+#: src/widgets/image_window.ui:221
+msgid "Drag and drop images here"
+msgstr "გადმოათრიეთ და დაყარეთ სურათები აქ"
+
+#: src/widgets/image_window.ui:225
+msgid "_Open Files…"
+msgstr "_ფაილების გახსნა…"
 
 #: src/widgets/print.rs:108
 msgid "Top"
@@ -470,19 +785,19 @@ msgstr "px"
 msgid "Print “{}”"
 msgstr "“{}”-ის დაბეჭდვა"
 
-#: src/widgets/print.rs:465
+#: src/widgets/print.rs:476
 msgid "Continue…"
 msgstr "გაგრძელება…"
 
-#: src/widgets/print.rs:466
+#: src/widgets/print.rs:477
 msgid "Print Image"
 msgstr "გამოსახულების დაბეჭდვა"
 
-#: src/widgets/print.rs:788
+#: src/widgets/print.rs:791
 msgid "_Scale"
 msgstr "გადიდ_ება"
 
-#: src/widgets/print.rs:791
+#: src/widgets/print.rs:794
 msgid "_Width"
 msgstr "_სიგანე"
 
@@ -547,31 +862,30 @@ msgstr "_სივრცის შევსება"
 msgid "H_eight"
 msgstr "სიმაღლ_ე"
 
-#: src/widgets/properties_view.rs:255
+#: src/widgets/properties_view.rs:258
 msgid "Unknown"
 msgstr "უცნობი"
 
 #. Translators: Addition of image being transparent to format name
-#: src/widgets/properties_view.rs:259
+#: src/widgets/properties_view.rs:262
 msgid ", transparent"
 msgstr ", გამჭვირვალე"
 
 #. Translators: Addition of image being grayscale to format name
-#: src/widgets/properties_view.rs:264
+#: src/widgets/properties_view.rs:267
 msgid ", grayscale"
 msgstr ", ნაცრისფერი"
 
 #. Translators: Addition of bit size to format name
-#: src/widgets/properties_view.rs:269
+#: src/widgets/properties_view.rs:272
 msgid ", {}\\u{202F}bit"
 msgstr ", {}\\u{202F}ბიტი"
 
-#: src/widgets/properties_view.rs:286
-#| msgid "1\\u{2215}{}\\u{202F}s"
+#: src/widgets/properties_view.rs:290
 msgid "{}\\u{202F}\\u{D7}\\u{202F}{}"
 msgstr "{}\\u{202F}\\u{D7}\\u{202F}{}"
 
-#: src/widgets/properties_view.rs:324
+#: src/widgets/properties_view.rs:329
 msgid "Image Coordinates Copied"
 msgstr "გამოსახულების კოორდინატები დაკოპირებულია"
 
@@ -621,123 +935,38 @@ msgid "Originally Created"
 msgstr "თავიდან შეიქმნა"
 
 #: src/widgets/properties_view.ui:159
+msgid "Comment"
+msgstr "კომენტარი"
+
+#: src/widgets/properties_view.ui:169
 msgid "Aperture"
 msgstr "დიაფრაგმის მნიშვნელობა"
 
-#: src/widgets/properties_view.ui:169
+#: src/widgets/properties_view.ui:179
 msgid "Exposure"
 msgstr "ექსპოზიცია"
 
-#: src/widgets/properties_view.ui:179
+#: src/widgets/properties_view.ui:189
 msgid "ISO"
 msgstr "ISO"
 
-#: src/widgets/properties_view.ui:189
+#: src/widgets/properties_view.ui:199
 msgid "Focal Length"
 msgstr "ფოკალური მანძილი"
 
-#: src/widgets/properties_view.ui:199
+#: src/widgets/properties_view.ui:209
 msgid "Maker, Model"
 msgstr "მწარმოებელი, მოდელი"
 
-#: src/window.rs:523
-msgid "Supported image formats"
-msgstr "გამოსახულების მხარდაჭერილი ფორმატები"
+#: src/widgets/window.rs:222
+msgid "Show Details"
+msgstr "დეტალების ჩვენება"
 
-#: src/window.rs:529
-msgid "All files"
-msgstr "ყველა ფაილი"
+#~ msgid "Copy to Clipboard"
+#~ msgstr "ბუფერში კოპირება"
 
-#: src/window.rs:536
-msgid "Open Image"
-msgstr "გამოსახულების გახსნა"
-
-#: src/window.rs:622
-msgid "Image copied to clipboard"
-msgstr "სურათი ბუფერში დაკოპირდა"
-
-#: src/window.rs:643
-msgid "Image moved to trash"
-msgstr "სურათი გადატანილია სანაგვე ყუთში"
-
-#: src/window.rs:644
-msgid "Undo"
-msgstr "დაბრუნება"
-
-#: src/window.rs:674
-msgid "Failed to move image to trash"
-msgstr "ფაილების სანაგვე ყუთში გადატანის შეცდომა"
-
-#: src/window.rs:698
-msgid "Permanently Delete Image?"
-msgstr "წავშალო გამოსახულება სამუდამოდ?"
-
-#: src/window.rs:700
-msgid "After deleting the image “{}” it will be permanently lost."
-msgstr "გამოსახულება \"{}\", მხოლოდ, სამუდამოდ შეგიძლიათ წაშალოთ."
-
-#: src/window.rs:708
-msgid "Cancel"
-msgstr "გუქმება"
-
-#: src/window.rs:709
-msgid "Delete"
-msgstr "წაშლა"
-
-#: src/window.rs:720
-msgid "Failed to delete image"
-msgstr "გამოსახულების წაშლის შეცდომა"
-
-#: src/window.ui:6
-msgid "_New Window"
-msgstr "_ახალი ფანჯარა"
-
-#: src/window.ui:10
-msgid "_Open…"
-msgstr "გახსნა…"
-
-#: src/window.ui:46
-msgid "_Help"
-msgstr "_დახმარება"
-
-#: src/window.ui:50
-msgid "_Keyboard Shortcuts"
-msgstr "_კლავიატურის მალსახმობები"
-
-#: src/window.ui:54
-msgid "_About Image Viewer"
-msgstr "სურათების დამთვალიერებლის შესახებ"
-
-#: src/window.ui:204
-msgid "Copy to Clipboard"
-msgstr "ბუფერში კოპირება"
-
-#: src/window.ui:211
-msgid "Move to Trash"
-msgstr "სანაგვე ყუთში გადატანა"
-
-#: src/window.ui:217
-msgid "Main Menu"
-msgstr "მთავარი მენიუ"
-
-#: src/window.ui:249
-msgid "Image Properties"
-msgstr "გამოსახულების თვისებები"
-
-#: src/window.ui:281
-msgid "View Images"
-msgstr "სურათების დათვალიერება"
-
-#: src/window.ui:282
-msgid "Drag and drop images here"
-msgstr "გადმოათრიეთ და დაყარეთ სურათები აქ"
-
-#: src/window.ui:286
-msgid "_Open Files…"
-msgstr "_ფაილების გახსნა…"
-
-#~ msgid "Failed to open image"
-#~ msgstr "გამოსახულების გახსნის შეცდომა"
+#~ msgid "Move to Trash"
+#~ msgstr "სანაგვე ყუთში გადატანა"
 
 #~ msgid "The Loupe Team"
 #~ msgstr "Loupe-ის გუნდი"
@@ -795,9 +1024,6 @@ msgstr "_ფაილების გახსნა…"
 
 #~ msgid "Applying image color profiles"
 #~ msgstr "გამოსახულების ფერის პროფილების გადატარება"
-
-#~ msgid "Printing"
-#~ msgstr "დაბეჭდვა"
 
 #~ msgid "Christopher Davis"
 #~ msgstr "Christopher Davis"
