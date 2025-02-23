@@ -1,22 +1,24 @@
 # Basque translation for Loupe.
 # Copyright (C) 2023 Loupe's COPYRIGHT HOLDER
 # This file is distributed under the same license as the Loupe package.
-# Asier Sarasua Garmendia <asiersarasua@ni.eus>, 2023, 2024.
+# Asier Sarasua Garmendia <asiersarasua@ni.eus>, 2023, 2024, 2025.
 #
 msgid ""
 msgstr "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2024-07-31 00:10+0000\n"
-"PO-Revision-Date: 2024-08-25 18:54+0000\n"
+"POT-Creation-Date: 2025-02-19 12:15+0000\n"
+"PO-Revision-Date: 2025-02-23 18:54+0000\n"
 "Last-Translator: Asier Sarasua Garmendia <asiersarasua@ni.eus>\n"
 "Language-Team: Basque <librezale@librezale.eus>\n"
 "Language: eu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: data/org.gnome.Loupe.desktop.in.in:3
-#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:31 src/window.rs:873
+#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:31
+#: src/widgets/image_window.rs:866
 msgid "Image Viewer"
 msgstr "Irudi-ikustailea"
 
@@ -148,12 +150,14 @@ msgstr "Biratu irudia"
 
 #: data/resources/gtk/help-overlay.ui:124
 #: data/resources/gtk/help-overlay.ui:274
+#: data/resources/gtk/help-overlay.ui:315
 msgctxt "shortcut window"
 msgid "Rotate Clockwise"
 msgstr "Biratu erlojuaren noranzkoan"
 
 #: data/resources/gtk/help-overlay.ui:130
 #: data/resources/gtk/help-overlay.ui:280
+#: data/resources/gtk/help-overlay.ui:321
 msgctxt "shortcut window"
 msgid "Rotate Counterclockwise"
 msgstr "Biratu erlojuaren noranzkoaren aurka"
@@ -245,6 +249,46 @@ msgctxt "shortcut window"
 msgid "Gestures"
 msgstr "Keinuak"
 
+#: data/resources/gtk/help-overlay.ui:288
+msgctxt "shortcut window"
+msgid "Editing"
+msgstr "Edizioa"
+
+#: data/resources/gtk/help-overlay.ui:291
+msgctxt "shortcut window"
+msgid "Open Editing View"
+msgstr "Ireki edizio-ikuspegia"
+
+#: data/resources/gtk/help-overlay.ui:297
+msgctxt "shortcut window"
+msgid "Replace Original"
+msgstr "Ordeztu jatorrizkoa"
+
+#: data/resources/gtk/help-overlay.ui:303
+msgctxt "shortcut window"
+msgid "Save As"
+msgstr "Gorde honela"
+
+#: data/resources/gtk/help-overlay.ui:309
+msgctxt "shortcut window"
+msgid "Cancel"
+msgstr "Utzi"
+
+#: data/resources/gtk/help-overlay.ui:327
+msgctxt "shortcut window"
+msgid "Mirror Horizontally"
+msgstr "Ispilatu horizontalean"
+
+#: data/resources/gtk/help-overlay.ui:333
+msgctxt "shortcut window"
+msgid "Mirror Vertically"
+msgstr "Ispilatu bertikalean"
+
+#: data/resources/gtk/help-overlay.ui:339
+msgctxt "shortcut window"
+msgid "Apply Crop"
+msgstr "Aplikatu mozketa"
+
 #. Translators: Replace "translator-credits" with your names, one name per line
 #: src/about.rs:43
 msgid "translator-credits"
@@ -254,11 +298,12 @@ msgstr "translator-credits"
 msgid "Copyright © 2020–2024 Christopher Davis et al."
 msgstr "Copyright © 2020–2024 Christopher Davis et al."
 
-#: src/file_model.rs:131
+#: src/file_model.rs:180
 msgid "Could not list other files in directory."
 msgstr "Ezin dira direktorioko beste fitxategiak zerrendatu."
 
-#: src/metadata.rs:249
+#. Translators: Display of the f-number <https://en.wikipedia.org/wiki/F-number>. {} will be replaced with the number
+#: src/metadata.rs:253
 msgid "\\u{192}\\u{2215}{}"
 msgstr "\\u{192}\\u{2215}{}"
 
@@ -272,28 +317,27 @@ msgstr "1\\u{2215}{}\\u{202F}s"
 msgid "{}\\u{202F}s"
 msgstr "{}\\u{202F}s"
 
-#. Translators: Unit for focal length in millimeters
-#: src/metadata.rs:300
+#: src/metadata.rs:288
 msgid "{}\\u{202F}mm"
 msgstr "{}\\u{202F}mm"
 
 #. Translators: short for "north" in GPS coordinate
-#: src/metadata/gps.rs:165
+#: src/metadata.rs:328
 msgid "N"
 msgstr "I"
 
 #. Translators: short for "south" in GPS coordinate
-#: src/metadata/gps.rs:168
+#: src/metadata.rs:332
 msgid "S"
 msgstr "I"
 
 #. Translators: short for "east" in GPS coordinate
-#: src/metadata/gps.rs:190
+#: src/metadata.rs:341
 msgid "E"
 msgstr "E"
 
 #. Translators: short for "west" in GPS coordinate
-#: src/metadata/gps.rs:193
+#: src/metadata.rs:345
 msgid "W"
 msgstr "A"
 
@@ -301,21 +345,183 @@ msgstr "A"
 #. The format has to follow <https://docs.gtk.org/glib/method.DateTime.format.html>
 #. The default is already translated. Don't change if you are not sure what to
 #. use.
-#: src/util.rs:37
+#: src/util.rs:39
 #, c-format
 msgid "%x %X"
 msgstr "%x %X"
 
-#: src/util.rs:180 src/window.rs:659
+#: src/util.rs:182 src/widgets/image_window.rs:638
 msgid "Failed to restore image from trash"
 msgstr "Ezin izan da irudia zakarrontzitik leheneratu"
 
+#: src/widgets/drag_overlay.ui:15
+msgid "Drop Image to View"
+msgstr "Jaregin irudia ikusteko"
+
+#: src/widgets/edit/crop.rs:330
+msgid "Failed to Edit Image"
+msgstr "Huts egin du irudia editatzeak"
+
+#: src/widgets/edit/crop.ui:6
+msgid "Free"
+msgstr "Librea"
+
+#: src/widgets/edit/crop.ui:11
+msgid "Original"
+msgstr "Jatorrizkoa"
+
+#: src/widgets/edit/crop.ui:16
+msgid "Square"
+msgstr "Karratua"
+
+#: src/widgets/edit/crop.ui:21
+msgid "5:4"
+msgstr "5:4"
+
+#: src/widgets/edit/crop.ui:26
+msgid "4:3"
+msgstr "4:3"
+
+#: src/widgets/edit/crop.ui:31
+msgid "3:2"
+msgstr "3:2"
+
+#: src/widgets/edit/crop.ui:36
+msgid "16:9"
+msgstr "16:9"
+
+#: src/widgets/edit/crop.ui:91
+msgid "_Free"
+msgstr "_Librea"
+
+#: src/widgets/edit/crop.ui:109
+msgid "_Original"
+msgstr "_Jatorrizkoa"
+
+#: src/widgets/edit/crop.ui:127
+msgid "_Square"
+msgstr "_Karratua"
+
+#: src/widgets/edit/crop.ui:145
+msgid "_5:4"
+msgstr "_5:4"
+
+#: src/widgets/edit/crop.ui:163
+msgid "_4:3"
+msgstr "_4:3"
+
+#: src/widgets/edit/crop.ui:181
+msgid "_3:2"
+msgstr "_3:2"
+
+#: src/widgets/edit/crop.ui:199
+msgid "_16:9"
+msgstr "_16:9"
+
+#: src/widgets/edit/crop.ui:219 src/widgets/edit/crop.ui:365
+msgid "Orientation Landscape"
+msgstr "Orientazio horizontala"
+
+#: src/widgets/edit/crop.ui:228 src/widgets/edit/crop.ui:377
+msgid "Orientation Portrait"
+msgstr "Orientazio bertikala"
+
+#: src/widgets/edit/crop.ui:249 src/widgets/edit/crop.ui:395
+msgid "Rotate Counter Clockwise"
+msgstr "Biratu erlojuaren norantzaren aurka"
+
+#: src/widgets/edit/crop.ui:256
+msgid "Rotate Clockwise"
+msgstr "Biratu erlojuaren noranzkoan"
+
+#: src/widgets/edit/crop.ui:275 src/widgets/edit/crop.ui:403
+msgid "Mirror Horizontally"
+msgstr "Ispilatu horizontalean"
+
+#: src/widgets/edit/crop.ui:282
+msgid "Mirror Vertically"
+msgstr "Ispilatu bertikalean"
+
+#: src/widgets/edit/crop.ui:295 src/widgets/edit/crop.ui:419
+msgid "Undo Changes in this View"
+msgstr "Desegin ikuspegi honetako aldaketak"
+
+#: src/widgets/edit/crop.ui:352
+msgid "Aspect Ratio"
+msgstr "Aspektu-erlazioa"
+
+#: src/widgets/edit/crop_selection.ui:46
+msgid "Crop Selection"
+msgstr "Moztu hautapena"
+
+#. Translators: Filename suffix
+#. Translators: Filename suffix, {} is replaced by a number
+#: src/widgets/edit_window.rs:192 src/widgets/edit_window.rs:195
+msgid " (Edited)"
+msgid_plural " (Edited {})"
+msgstr[0] " (Editatua)"
+msgstr[1] " (Editatua {})"
+
+#: src/widgets/edit_window.rs:290 src/widgets/edit_window.rs:316
+msgid "Failed to save image."
+msgstr "Huts egin du irudia gordetzeak."
+
+#: src/widgets/edit_window.rs:346
+msgid "Editing Image"
+msgstr "Irudia editatzen"
+
+#: src/widgets/edit_window.rs:360
+msgid "Failed to edit image."
+msgstr "Huts egin du irudia editatzeak."
+
+#: src/widgets/edit_window.rs:370 src/widgets/edit_window.rs:393
+msgid "Failed to Save Image"
+msgstr "Huts egin du irudia gordetzeak"
+
+#: src/widgets/edit_window.rs:376
+msgid "Saving Image"
+msgstr "Irudia gordetzen"
+
+#: src/widgets/edit_window.ui:64
+msgid "_Cancel"
+msgstr "_Utzi"
+
+#: src/widgets/edit_window.ui:71
+msgid "_Save"
+msgstr "_Gorde"
+
+#: src/widgets/edit_window.ui:92
+msgid "_Save As…"
+msgstr "Gorde _honela…"
+
+#: src/widgets/edit_window.ui:100
+msgid "Keep original and create a new file"
+msgstr "Mantendu jatorrizkoa eta sortu fitxategi berria"
+
+#: src/widgets/edit_window.ui:120
+msgid "_Replace Original"
+msgstr "_Ordeztu jatorrizkoa"
+
+#: src/widgets/edit_window.ui:128
+msgid "Original image will be moved to the trash"
+msgstr "Jatorrizko irudia zakarrontzira botako da"
+
+#: src/widgets/error_details.rs:79
+msgid ""
+"The following error occurred. If you think this is an issue with the "
+"program, please include this information when you report the error."
+msgstr "Errore bat gertatu da. Programak duen akats bat dela uste baduzu, sartu informazio hau errorea jakinarazten duzunean."
+
+#: src/widgets/error_details.ui:4
+msgid "Error Details"
+msgstr "Errorearen xehetasunak"
+
 #: src/widgets/error_details.ui:19
 msgid ""
-"The image loader reported the following when trying to load the image. "
-"Please include this information when you report an error. If possible, "
-"please also provide the image that causes the issue."
-msgstr "Irudi-kargatzaileak hurrengo mezua eman du irudia kargatzean. Sartu informazio hori errore baten berri ematen duzunean. Posible bada, bidali arazoa sortu duen irudia ere."
+"The image loader reported the following when trying to load or edit the "
+"image. Please include this information when you report an error. If "
+"possible, please also provide the image that causes the issue."
+msgstr "Irudi-kargatzaileak hurrengo mezua eman du irudia kargatzean. Sartu informazio hori errorea jakinarazten duzunean. Posible bada, bidali arazoa sortu duen irudia ere."
 
 #: src/widgets/error_details.ui:24
 msgid "Error Message"
@@ -351,25 +557,29 @@ msgstr "EEz dago nahikoa memoriarik irudia kargatzeko."
 msgid "Either the image file is corrupted or it contains unsupported elements."
 msgstr "Irudi-fitxategia hondatuta dago edo onartzen ez diren elementuak ditu."
 
-#: src/widgets/image_page.ui:6 src/window.ui:16
+#: src/widgets/image_page.ui:6 src/widgets/image_window.ui:16
 msgid "_Open With…"
 msgstr "Ireki _honekin…"
 
-#: src/widgets/image_page.ui:14 src/window.ui:24
+#: src/widgets/image_page.ui:10 src/widgets/image_window.ui:20
 msgid "_Print…"
 msgstr "_Inprimatu…"
 
-#: src/widgets/image_page.ui:18
-msgid "_Copy"
-msgstr "_Kopiatu"
-
-#: src/widgets/image_page.ui:23 src/window.ui:29
+#: src/widgets/image_page.ui:15 src/widgets/image_window.ui:25
 msgid "Rotate"
 msgstr "Biratu"
 
-#: src/widgets/image_page.ui:34 src/window.ui:40
+#: src/widgets/image_page.ui:26 src/widgets/image_window.ui:36
 msgid "_Set as Background…"
 msgstr "Ezarri _atzeko plano gisa…"
+
+#: src/widgets/image_page.ui:30 src/widgets/image_window.ui:40
+msgid "_Delete"
+msgstr "Ez_abatu"
+
+#: src/widgets/image_page.ui:34
+msgid "_Copy"
+msgstr "_Kopiatu"
 
 #: src/widgets/image_page.ui:63
 msgid "Could not Load Image"
@@ -383,43 +593,147 @@ msgstr "Informazio _gehiago"
 msgid "_Reload"
 msgstr "Bir_kargatu"
 
-#: src/widgets/image_page.ui:123 src/window.ui:225
+#: src/widgets/image_page.ui:123 src/widgets/image_window.ui:101
 msgid "Rotate Left"
 msgstr "Biratu ezkerrera"
 
-#: src/widgets/image_page.ui:133 src/window.ui:235
+#: src/widgets/image_page.ui:133 src/widgets/image_window.ui:111
 msgid "Rotate Right"
 msgstr "Biratu eskuinera"
 
+#: src/widgets/image_view.rs:197
+msgid "{} %"
+msgstr "{} %"
+
 #. Translators: This is a toast notification, informing the user that
 #. an image has been set as background.
-#: src/widgets/image_view.rs:720
+#: src/widgets/image_view.rs:836
 msgid "Set as background."
 msgstr "Ezarri atzeko plano gisa"
 
-#: src/widgets/image_view.rs:733
+#: src/widgets/image_view.rs:849
 msgid "Could not set background."
 msgstr "Ezin da atzeko planoa ezarri."
 
-#: src/widgets/image_view.ui:27
+#: src/widgets/image_view.ui:30
 msgid "Previous Image"
 msgstr "Aurreko irudia"
 
-#: src/widgets/image_view.ui:38
+#: src/widgets/image_view.ui:40
 msgid "Next Image"
 msgstr "Hurrengo irudia"
 
-#: src/widgets/image_view.ui:63
+#: src/widgets/image_view.ui:74
 msgid "Zoom Out"
 msgstr "Txikiagotu"
 
-#: src/widgets/image_view.ui:74
+#: src/widgets/image_view.ui:85
 msgid "Zoom In"
 msgstr "Handiagotu"
 
-#: src/widgets/image_view.ui:85
+#: src/widgets/image_view.ui:100
+msgid "Toggle Zoom"
+msgstr "Txandakatu zooma"
+
+#: src/widgets/image_view.ui:108
+msgid "Zoom to Specific Level"
+msgstr "Zoom maila jakin batean"
+
+#: src/widgets/image_window.rs:502
+msgid "Supported image formats"
+msgstr "Onartutako irudi-formatuak"
+
+#: src/widgets/image_window.rs:508
+msgid "All files"
+msgstr "Fitxategi denak"
+
+#: src/widgets/image_window.rs:515
+msgid "Open Image"
+msgstr "Ireki irudia"
+
+#: src/widgets/image_window.rs:601
+msgid "Image copied to clipboard"
+msgstr "Irudia arbelean kopiatu da"
+
+#: src/widgets/image_window.rs:622
+msgid "Image moved to trash"
+msgstr "Irudia zakarrontzira eraman da"
+
+#: src/widgets/image_window.rs:623
+msgid "Undo"
+msgstr "Desegin"
+
+#: src/widgets/image_window.rs:653
+msgid "Failed to move image to trash"
+msgstr "Huts egin du irudia zakarrontzira botatzeak"
+
+#: src/widgets/image_window.rs:677
+msgid "Permanently Delete Image?"
+msgstr "Irudia betiko ezabatu?"
+
+#: src/widgets/image_window.rs:679
+msgid "After deleting the image “{}” it will be permanently lost."
+msgstr "“{}” irudia ezabatzean, betiko galduko da."
+
+#: src/widgets/image_window.rs:687
+msgid "Cancel"
+msgstr "Utzi"
+
+#: src/widgets/image_window.rs:688
+msgid "Delete"
+msgstr "Ezabatu"
+
+#: src/widgets/image_window.rs:699
+msgid "Failed to delete image"
+msgstr "Huts egin du irudia ezabatzeak"
+
+#: src/widgets/image_window.ui:6
+msgid "_New Window"
+msgstr "_Leiho berria"
+
+#: src/widgets/image_window.ui:10
+msgid "_Open…"
+msgstr "_Ireki..."
+
+#: src/widgets/image_window.ui:46
+msgid "_Help"
+msgstr "_Laguntza"
+
+#: src/widgets/image_window.ui:50
+msgid "_Keyboard Shortcuts"
+msgstr "Las_ter-teklak"
+
+#: src/widgets/image_window.ui:54
+msgid "_About Image Viewer"
+msgstr "Irudi-ikustaileari _buruz"
+
+#: src/widgets/image_window.ui:87
 msgid "Toggle Fullscreen"
 msgstr "Txandakatu pantaila osoa"
+
+#: src/widgets/image_window.ui:93
+msgid "Main Menu"
+msgstr "Menu nagusia"
+
+#: src/widgets/image_window.ui:125
+msgid "Image Properties"
+msgstr "Irudiaren propietateak"
+
+#: src/widgets/image_window.ui:132
+msgid "Edit Image"
+msgstr "Editatu irudia"
+
+#: src/widgets/image_window.ui:220
+msgid "View Images"
+msgstr "Ikusi irudiak"
+
+#: src/widgets/image_window.ui:221
+msgid "Drag and drop images here"
+msgstr "Arrastatu eta jaregin irudiak hemen"
+
+#: src/widgets/image_window.ui:225
+msgid "_Open Files…"
+msgstr "Ireki _fitxategiak…"
 
 #: src/widgets/print.rs:108
 msgid "Top"
@@ -461,19 +775,19 @@ msgstr "px"
 msgid "Print “{}”"
 msgstr "Inprimatu “{}”"
 
-#: src/widgets/print.rs:465
+#: src/widgets/print.rs:476
 msgid "Continue…"
 msgstr "Jarraitu…"
 
-#: src/widgets/print.rs:466
+#: src/widgets/print.rs:477
 msgid "Print Image"
 msgstr "Inprimatu irudia"
 
-#: src/widgets/print.rs:788
+#: src/widgets/print.rs:791
 msgid "_Scale"
 msgstr "_Eskala"
 
-#: src/widgets/print.rs:791
+#: src/widgets/print.rs:794
 msgid "_Width"
 msgstr "_Zabalera"
 
@@ -538,30 +852,30 @@ msgstr "Bete e_spazioa"
 msgid "H_eight"
 msgstr "_Altuera"
 
-#: src/widgets/properties_view.rs:255
+#: src/widgets/properties_view.rs:258
 msgid "Unknown"
 msgstr "Ezezaguna"
 
 #. Translators: Addition of image being transparent to format name
-#: src/widgets/properties_view.rs:259
+#: src/widgets/properties_view.rs:262
 msgid ", transparent"
 msgstr ", gardena"
 
 #. Translators: Addition of image being grayscale to format name
-#: src/widgets/properties_view.rs:264
+#: src/widgets/properties_view.rs:267
 msgid ", grayscale"
 msgstr ", gris-eskala"
 
 #. Translators: Addition of bit size to format name
-#: src/widgets/properties_view.rs:269
+#: src/widgets/properties_view.rs:272
 msgid ", {}\\u{202F}bit"
 msgstr ", {}\\u{202F}bit"
 
-#: src/widgets/properties_view.rs:286
+#: src/widgets/properties_view.rs:290
 msgid "{}\\u{202F}\\u{D7}\\u{202F}{}"
 msgstr "{}\\u{202F}\\u{D7}\\u{202F}{}"
 
-#: src/widgets/properties_view.rs:324
+#: src/widgets/properties_view.rs:329
 msgid "Image Coordinates Copied"
 msgstr "Irudi-koordenatuak kopiatu dira"
 
@@ -611,123 +925,38 @@ msgid "Originally Created"
 msgstr "Jatorrizko sorrera"
 
 #: src/widgets/properties_view.ui:159
+msgid "Comment"
+msgstr "Iruzkina"
+
+#: src/widgets/properties_view.ui:169
 msgid "Aperture"
 msgstr "Irekiera"
 
-#: src/widgets/properties_view.ui:169
+#: src/widgets/properties_view.ui:179
 msgid "Exposure"
 msgstr "Esposizioa"
 
-#: src/widgets/properties_view.ui:179
+#: src/widgets/properties_view.ui:189
 msgid "ISO"
 msgstr "ISOa"
 
-#: src/widgets/properties_view.ui:189
+#: src/widgets/properties_view.ui:199
 msgid "Focal Length"
 msgstr "Fokuaren luzera"
 
-#: src/widgets/properties_view.ui:199
+#: src/widgets/properties_view.ui:209
 msgid "Maker, Model"
 msgstr "Fabrikatzailea, eredua"
 
-#: src/window.rs:523
-msgid "Supported image formats"
-msgstr "Onartutako irudi-formatuak"
+#: src/widgets/window.rs:222
+msgid "Show Details"
+msgstr "Erakutsi xehetasunak"
 
-#: src/window.rs:529
-msgid "All files"
-msgstr "Fitxategi denak"
+#~ msgid "Copy to Clipboard"
+#~ msgstr "Kopiatu arbelean"
 
-#: src/window.rs:536
-msgid "Open Image"
-msgstr "Ireki irudia"
-
-#: src/window.rs:622
-msgid "Image copied to clipboard"
-msgstr "Irudia arbelean kopiatu da"
-
-#: src/window.rs:643
-msgid "Image moved to trash"
-msgstr "Irudia zakarrontzira eraman da"
-
-#: src/window.rs:644
-msgid "Undo"
-msgstr "Desegin"
-
-#: src/window.rs:674
-msgid "Failed to move image to trash"
-msgstr "Huts egin du irudia zakarrontzira botatzeak"
-
-#: src/window.rs:698
-msgid "Permanently Delete Image?"
-msgstr "Irudia betiko ezabatu?"
-
-#: src/window.rs:700
-msgid "After deleting the image “{}” it will be permanently lost."
-msgstr "“{}” irudia ezabatzean, betiko galduko da."
-
-#: src/window.rs:708
-msgid "Cancel"
-msgstr "Utzi"
-
-#: src/window.rs:709
-msgid "Delete"
-msgstr "Ezabatu"
-
-#: src/window.rs:720
-msgid "Failed to delete image"
-msgstr "Huts egin du irudia ezabatzeak"
-
-#: src/window.ui:6
-msgid "_New Window"
-msgstr "_Leiho berria"
-
-#: src/window.ui:10
-msgid "_Open…"
-msgstr "_Ireki..."
-
-#: src/window.ui:46
-msgid "_Help"
-msgstr "_Laguntza"
-
-#: src/window.ui:50
-msgid "_Keyboard Shortcuts"
-msgstr "Las_ter-teklak"
-
-#: src/window.ui:54
-msgid "_About Image Viewer"
-msgstr "Irudi-ikustaileari _buruz"
-
-#: src/window.ui:204
-msgid "Copy to Clipboard"
-msgstr "Kopiatu arbelean"
-
-#: src/window.ui:211
-msgid "Move to Trash"
-msgstr "Bota zakarrontzira"
-
-#: src/window.ui:217
-msgid "Main Menu"
-msgstr "Menu nagusia"
-
-#: src/window.ui:249
-msgid "Image Properties"
-msgstr "Irudiaren propietateak"
-
-#: src/window.ui:281
-msgid "View Images"
-msgstr "Ikusi irudiak"
-
-#: src/window.ui:282
-msgid "Drag and drop images here"
-msgstr "Arrastatu eta jaregin irudiak hemen"
-
-#: src/window.ui:286
-msgid "_Open Files…"
-msgstr "Ireki _fitxategiak…"
-
-#~ msgid "Failed to open image"
-#~ msgstr "Huts egin du irudia irekitzeak"
+#~ msgid "Move to Trash"
+#~ msgstr "Bota zakarrontzira"
 
 #~ msgid "The Loupe Team"
 #~ msgstr "Loupe taldea"
@@ -785,9 +1014,6 @@ msgstr "Ireki _fitxategiak…"
 
 #~ msgid "Applying image color profiles"
 #~ msgstr "Irudien kolore-profilak aplikatzea"
-
-#~ msgid "Printing"
-#~ msgstr "Inprimatzea"
 
 #~ msgid "Christopher Davis"
 #~ msgstr "Christopher Davis"
