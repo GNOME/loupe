@@ -2,24 +2,26 @@
 # Copyright (C) 2023 Loupe's COPYRIGHT HOLDER
 # This file is distributed under the same license as the Loupe package.
 # Kukuh Syafaat <kukuhsyafaat@gnome.org>, 2023-2024.
-# Andika Triwidada <andika@gmail.com>, 2024.
+# Andika Triwidada <andika@gmail.com>, 2024, 2025.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2024-07-31 00:10+0000\n"
-"PO-Revision-Date: 2024-09-07 15:22+0700\n"
+"POT-Creation-Date: 2025-02-19 12:15+0000\n"
+"PO-Revision-Date: 2025-02-24 14:00+0700\n"
 "Last-Translator: Andika Triwidada <andika@gmail.com>\n"
 "Language-Team: Indonesian <gnome-l10n-id@googlegroups.com>\n"
 "Language: id\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Poedit 3.5\n"
 
 #: data/org.gnome.Loupe.desktop.in.in:3
-#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:31 src/window.rs:873
+#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:31
+#: src/widgets/image_window.rs:866
 msgid "Image Viewer"
 msgstr "Penampil Gambar"
 
@@ -151,12 +153,14 @@ msgstr "Putar Gambar"
 
 #: data/resources/gtk/help-overlay.ui:124
 #: data/resources/gtk/help-overlay.ui:274
+#: data/resources/gtk/help-overlay.ui:315
 msgctxt "shortcut window"
 msgid "Rotate Clockwise"
 msgstr "Putar Searah Jarum Jam"
 
 #: data/resources/gtk/help-overlay.ui:130
 #: data/resources/gtk/help-overlay.ui:280
+#: data/resources/gtk/help-overlay.ui:321
 msgctxt "shortcut window"
 msgid "Rotate Counterclockwise"
 msgstr "Putar Berlawanan Arah Jarum Jam"
@@ -248,22 +252,63 @@ msgctxt "shortcut window"
 msgid "Gestures"
 msgstr "Gestur"
 
+#: data/resources/gtk/help-overlay.ui:288
+msgctxt "shortcut window"
+msgid "Editing"
+msgstr "Penyuntingan"
+
+#: data/resources/gtk/help-overlay.ui:291
+msgctxt "shortcut window"
+msgid "Open Editing View"
+msgstr "Buka Tampilan Penyuntingan"
+
+#: data/resources/gtk/help-overlay.ui:297
+msgctxt "shortcut window"
+msgid "Replace Original"
+msgstr "Gantikan Yang Asli"
+
+#: data/resources/gtk/help-overlay.ui:303
+msgctxt "shortcut window"
+msgid "Save As"
+msgstr "Simpan Sebagai"
+
+#: data/resources/gtk/help-overlay.ui:309
+msgctxt "shortcut window"
+msgid "Cancel"
+msgstr "Batal"
+
+#: data/resources/gtk/help-overlay.ui:327
+msgctxt "shortcut window"
+msgid "Mirror Horizontally"
+msgstr "Cerminkan Horizontal"
+
+#: data/resources/gtk/help-overlay.ui:333
+msgctxt "shortcut window"
+msgid "Mirror Vertically"
+msgstr "Cerminkan Vertikal"
+
+#: data/resources/gtk/help-overlay.ui:339
+msgctxt "shortcut window"
+msgid "Apply Crop"
+msgstr "Terapkan Pangkas"
+
 #. Translators: Replace "translator-credits" with your names, one name per line
 #: src/about.rs:43
 msgid "translator-credits"
 msgstr ""
 "Kukuh Syafaat <kukuhsyafaat@gnome.org>, 2023-2024.\n"
-"Andika Triwidada <andika@gmail.com>, 2024."
+"Andika Triwidada <andika@gmail.com>, 2024, 2025."
 
 #: src/about.rs:44
 msgid "Copyright © 2020–2024 Christopher Davis et al."
 msgstr "Hak Cipta © 2020–2024 Christopher Davis et al."
 
-#: src/file_model.rs:131
+#: src/file_model.rs:180
 msgid "Could not list other files in directory."
 msgstr "Tidak dapat mencantumkan berkas lain di direktori."
 
-#: src/metadata.rs:249
+#. Translators: Display of the f-number <https://en.wikipedia.org/wiki/F-number>. {} will be replaced with the number
+#: src/metadata.rs:253
 msgid "\\u{192}\\u{2215}{}"
 msgstr "\\u{192}\\u{2215}{}"
 
@@ -274,32 +319,30 @@ msgstr "1\\u{2215}{}\\u{202F}s"
 
 #. Translators: Exposure time (photography) in seconds
 #: src/metadata.rs:274
-#| msgid "{}\\u{202F}mm"
 msgid "{}\\u{202F}s"
 msgstr "{}\\u{202F}s"
 
-#. Translators: Unit for focal length in millimeters
-#: src/metadata.rs:300
+#: src/metadata.rs:288
 msgid "{}\\u{202F}mm"
 msgstr "{}\\u{202F}mm"
 
 #. Translators: short for "north" in GPS coordinate
-#: src/metadata/gps.rs:165
+#: src/metadata.rs:328
 msgid "N"
 msgstr "U"
 
 #. Translators: short for "south" in GPS coordinate
-#: src/metadata/gps.rs:168
+#: src/metadata.rs:332
 msgid "S"
 msgstr "S"
 
 #. Translators: short for "east" in GPS coordinate
-#: src/metadata/gps.rs:190
+#: src/metadata.rs:341
 msgid "E"
 msgstr "T"
 
 #. Translators: short for "west" in GPS coordinate
-#: src/metadata/gps.rs:193
+#: src/metadata.rs:345
 msgid "W"
 msgstr "B"
 
@@ -307,24 +350,187 @@ msgstr "B"
 #. The format has to follow <https://docs.gtk.org/glib/method.DateTime.format.html>
 #. The default is already translated. Don't change if you are not sure what to
 #. use.
-#: src/util.rs:37
+#: src/util.rs:39
 #, c-format
 msgid "%x %X"
 msgstr "%x %X"
 
-#: src/util.rs:180 src/window.rs:659
+#: src/util.rs:182 src/widgets/image_window.rs:638
 msgid "Failed to restore image from trash"
 msgstr "Gagal memulihkan gambar dari tong sampah"
 
+#: src/widgets/drag_overlay.ui:15
+msgid "Drop Image to View"
+msgstr "Jatuhkan Gambar untuk Melihat"
+
+#: src/widgets/edit/crop.rs:330
+msgid "Failed to Edit Image"
+msgstr "Gagal Menyunting Gambar"
+
+#: src/widgets/edit/crop.ui:6
+msgid "Free"
+msgstr "Bebas"
+
+#: src/widgets/edit/crop.ui:11
+msgid "Original"
+msgstr "Asli"
+
+#: src/widgets/edit/crop.ui:16
+msgid "Square"
+msgstr "Kotak"
+
+#: src/widgets/edit/crop.ui:21
+msgid "5:4"
+msgstr "5:4"
+
+#: src/widgets/edit/crop.ui:26
+msgid "4:3"
+msgstr "4:3"
+
+#: src/widgets/edit/crop.ui:31
+msgid "3:2"
+msgstr "3:2"
+
+#: src/widgets/edit/crop.ui:36
+msgid "16:9"
+msgstr "16:9"
+
+#: src/widgets/edit/crop.ui:91
+msgid "_Free"
+msgstr "_Bebas"
+
+#: src/widgets/edit/crop.ui:109
+msgid "_Original"
+msgstr "_Asli"
+
+#: src/widgets/edit/crop.ui:127
+msgid "_Square"
+msgstr "_Kotak"
+
+#: src/widgets/edit/crop.ui:145
+msgid "_5:4"
+msgstr "_5:4"
+
+#: src/widgets/edit/crop.ui:163
+msgid "_4:3"
+msgstr "_4:3"
+
+#: src/widgets/edit/crop.ui:181
+msgid "_3:2"
+msgstr "_3:2"
+
+#: src/widgets/edit/crop.ui:199
+msgid "_16:9"
+msgstr "_16:9"
+
+#: src/widgets/edit/crop.ui:219 src/widgets/edit/crop.ui:365
+msgid "Orientation Landscape"
+msgstr "Orientasi Lanskap"
+
+#: src/widgets/edit/crop.ui:228 src/widgets/edit/crop.ui:377
+msgid "Orientation Portrait"
+msgstr "Orientasi Potret"
+
+#: src/widgets/edit/crop.ui:249 src/widgets/edit/crop.ui:395
+msgid "Rotate Counter Clockwise"
+msgstr "Putar Berlawanan Arah Jarum Jam"
+
+#: src/widgets/edit/crop.ui:256
+msgid "Rotate Clockwise"
+msgstr "Putar Searah Jarum Jam"
+
+#: src/widgets/edit/crop.ui:275 src/widgets/edit/crop.ui:403
+msgid "Mirror Horizontally"
+msgstr "Cerminkan Horizontal"
+
+#: src/widgets/edit/crop.ui:282
+msgid "Mirror Vertically"
+msgstr "Cerminkan Vertikal"
+
+#: src/widgets/edit/crop.ui:295 src/widgets/edit/crop.ui:419
+msgid "Undo Changes in this View"
+msgstr "Membatalkan Perubahan dalam Tampilan ini"
+
+#: src/widgets/edit/crop.ui:352
+msgid "Aspect Ratio"
+msgstr "Rasio Aspek"
+
+#: src/widgets/edit/crop_selection.ui:46
+msgid "Crop Selection"
+msgstr "Pemilihan Pangkas"
+
+#. Translators: Filename suffix
+#. Translators: Filename suffix, {} is replaced by a number
+#: src/widgets/edit_window.rs:192 src/widgets/edit_window.rs:195
+msgid " (Edited)"
+msgid_plural " (Edited {})"
+msgstr[0] " (Disunting {})"
+
+#: src/widgets/edit_window.rs:290 src/widgets/edit_window.rs:316
+msgid "Failed to save image."
+msgstr "Gagal menyimpan gambar."
+
+#: src/widgets/edit_window.rs:346
+msgid "Editing Image"
+msgstr "Menyunting Gambar"
+
+#: src/widgets/edit_window.rs:360
+msgid "Failed to edit image."
+msgstr "Gagal menyunting gambar."
+
+#: src/widgets/edit_window.rs:370 src/widgets/edit_window.rs:393
+msgid "Failed to Save Image"
+msgstr "Gagal Menyimpan Gambar"
+
+#: src/widgets/edit_window.rs:376
+msgid "Saving Image"
+msgstr "Menyimpan Gambar"
+
+#: src/widgets/edit_window.ui:64
+msgid "_Cancel"
+msgstr "_Batal"
+
+#: src/widgets/edit_window.ui:71
+msgid "_Save"
+msgstr "_Simpan"
+
+#: src/widgets/edit_window.ui:92
+msgid "_Save As…"
+msgstr "_Simpan Sebagai…"
+
+#: src/widgets/edit_window.ui:100
+msgid "Keep original and create a new file"
+msgstr "Simpan berkas asli dan buat berkas baru"
+
+#: src/widgets/edit_window.ui:120
+msgid "_Replace Original"
+msgstr "_Gantikan Yang Asli"
+
+#: src/widgets/edit_window.ui:128
+msgid "Original image will be moved to the trash"
+msgstr "Gambar asli akan dipindahkan ke tong sampah"
+
+#: src/widgets/error_details.rs:79
+msgid ""
+"The following error occurred. If you think this is an issue with the "
+"program, please include this information when you report the error."
+msgstr ""
+"Terjadi kesalahan berikut. Jika Anda merasa ini adalah masalah pada program, "
+"mohon sertakan informasi ini saat Anda melaporkan kesalahan."
+
+#: src/widgets/error_details.ui:4
+msgid "Error Details"
+msgstr "Rincian Galat"
+
 #: src/widgets/error_details.ui:19
 msgid ""
-"The image loader reported the following when trying to load the image. "
-"Please include this information when you report an error. If possible, "
-"please also provide the image that causes the issue."
+"The image loader reported the following when trying to load or edit the "
+"image. Please include this information when you report an error. If "
+"possible, please also provide the image that causes the issue."
 msgstr ""
-"Pemuat citra melaporkan hal berikut saat mencoba memuat gambar. Harap "
-"sertakan informasi ini saat Anda melaporkan kesalahan. Jika memungkinkan, "
-"harap berikan juga gambar yang menyebabkan masalah."
+"Pemuat citra melaporkan hal berikut saat mencoba memuat atau menyunting "
+"gambar. Harap sertakan informasi ini saat Anda melaporkan kesalahan. Jika "
+"memungkinkan, harap berikan juga gambar yang menyebabkan masalah."
 
 #: src/widgets/error_details.ui:24
 msgid "Error Message"
@@ -362,25 +568,29 @@ msgstr "Tidak cukup memori bebas yang tersedia untuk memuat gambar ini."
 msgid "Either the image file is corrupted or it contains unsupported elements."
 msgstr "Entah berkas gambar rusak atau berisi elemen yang tidak didukung."
 
-#: src/widgets/image_page.ui:6 src/window.ui:16
+#: src/widgets/image_page.ui:6 src/widgets/image_window.ui:16
 msgid "_Open With…"
 msgstr "_Buka Dengan…"
 
-#: src/widgets/image_page.ui:14 src/window.ui:24
+#: src/widgets/image_page.ui:10 src/widgets/image_window.ui:20
 msgid "_Print…"
 msgstr "_Cetak…"
 
-#: src/widgets/image_page.ui:18
-msgid "_Copy"
-msgstr "_Salin"
-
-#: src/widgets/image_page.ui:23 src/window.ui:29
+#: src/widgets/image_page.ui:15 src/widgets/image_window.ui:25
 msgid "Rotate"
 msgstr "Putar"
 
-#: src/widgets/image_page.ui:34 src/window.ui:40
+#: src/widgets/image_page.ui:26 src/widgets/image_window.ui:36
 msgid "_Set as Background…"
 msgstr "Atur jadi Latar _Belakang…"
+
+#: src/widgets/image_page.ui:30 src/widgets/image_window.ui:40
+msgid "_Delete"
+msgstr "_Hapus"
+
+#: src/widgets/image_page.ui:34
+msgid "_Copy"
+msgstr "_Salin"
 
 #: src/widgets/image_page.ui:63
 msgid "Could not Load Image"
@@ -394,43 +604,147 @@ msgstr "_Informasi Lebih Lanjut"
 msgid "_Reload"
 msgstr "_Muat Ulang"
 
-#: src/widgets/image_page.ui:123 src/window.ui:225
+#: src/widgets/image_page.ui:123 src/widgets/image_window.ui:101
 msgid "Rotate Left"
 msgstr "Putar Kiri"
 
-#: src/widgets/image_page.ui:133 src/window.ui:235
+#: src/widgets/image_page.ui:133 src/widgets/image_window.ui:111
 msgid "Rotate Right"
 msgstr "Putar Kanan"
 
+#: src/widgets/image_view.rs:197
+msgid "{} %"
+msgstr "{} %"
+
 #. Translators: This is a toast notification, informing the user that
 #. an image has been set as background.
-#: src/widgets/image_view.rs:720
+#: src/widgets/image_view.rs:836
 msgid "Set as background."
 msgstr "Atur jadi latar belakang."
 
-#: src/widgets/image_view.rs:733
+#: src/widgets/image_view.rs:849
 msgid "Could not set background."
 msgstr "Tidak dapat dijadikan sebagai latar belakang."
 
-#: src/widgets/image_view.ui:27
+#: src/widgets/image_view.ui:30
 msgid "Previous Image"
 msgstr "Gambar Sebelumnya"
 
-#: src/widgets/image_view.ui:38
+#: src/widgets/image_view.ui:40
 msgid "Next Image"
 msgstr "Gambar Selanjutnya"
 
-#: src/widgets/image_view.ui:63
+#: src/widgets/image_view.ui:74
 msgid "Zoom Out"
 msgstr "Zum Keluar"
 
-#: src/widgets/image_view.ui:74
+#: src/widgets/image_view.ui:85
 msgid "Zoom In"
 msgstr "Zum Masuk"
 
-#: src/widgets/image_view.ui:85
+#: src/widgets/image_view.ui:100
+msgid "Toggle Zoom"
+msgstr "Jungkitkan Zum"
+
+#: src/widgets/image_view.ui:108
+msgid "Zoom to Specific Level"
+msgstr "Zum ke Tingkat Tertentu"
+
+#: src/widgets/image_window.rs:502
+msgid "Supported image formats"
+msgstr "Format gambar yang didukung"
+
+#: src/widgets/image_window.rs:508
+msgid "All files"
+msgstr "Semua berkas"
+
+#: src/widgets/image_window.rs:515
+msgid "Open Image"
+msgstr "Buka Gambar"
+
+#: src/widgets/image_window.rs:601
+msgid "Image copied to clipboard"
+msgstr "Gambar disalin ke papan klip"
+
+#: src/widgets/image_window.rs:622
+msgid "Image moved to trash"
+msgstr "Gambar dipindahkan ke tong sampah"
+
+#: src/widgets/image_window.rs:623
+msgid "Undo"
+msgstr "Tak jadi"
+
+#: src/widgets/image_window.rs:653
+msgid "Failed to move image to trash"
+msgstr "Gagal memindahkan gambar ke tong sampah"
+
+#: src/widgets/image_window.rs:677
+msgid "Permanently Delete Image?"
+msgstr "Hapus Gambar Secara Permanen?"
+
+#: src/widgets/image_window.rs:679
+msgid "After deleting the image “{}” it will be permanently lost."
+msgstr "Setelah dihapus, gambar “{}” akan hilang secara permanen."
+
+#: src/widgets/image_window.rs:687
+msgid "Cancel"
+msgstr "Batal"
+
+#: src/widgets/image_window.rs:688
+msgid "Delete"
+msgstr "Hapus"
+
+#: src/widgets/image_window.rs:699
+msgid "Failed to delete image"
+msgstr "Gagal menghapus gambar"
+
+#: src/widgets/image_window.ui:6
+msgid "_New Window"
+msgstr "Je_ndela Baru"
+
+#: src/widgets/image_window.ui:10
+msgid "_Open…"
+msgstr "_Buka…"
+
+#: src/widgets/image_window.ui:46
+msgid "_Help"
+msgstr "_Bantuan"
+
+#: src/widgets/image_window.ui:50
+msgid "_Keyboard Shortcuts"
+msgstr "Pintasan Papan _Ketik"
+
+#: src/widgets/image_window.ui:54
+msgid "_About Image Viewer"
+msgstr "Tent_ang Penampil Gambar"
+
+#: src/widgets/image_window.ui:87
 msgid "Toggle Fullscreen"
 msgstr "Jungkitkan Layar Penuh"
+
+#: src/widgets/image_window.ui:93
+msgid "Main Menu"
+msgstr "Menu Utama"
+
+#: src/widgets/image_window.ui:125
+msgid "Image Properties"
+msgstr "Properti Gambar"
+
+#: src/widgets/image_window.ui:132
+msgid "Edit Image"
+msgstr "Sunting Gambar"
+
+#: src/widgets/image_window.ui:220
+msgid "View Images"
+msgstr "Lihat Gambar"
+
+#: src/widgets/image_window.ui:221
+msgid "Drag and drop images here"
+msgstr "Seret dan lepas gambar di sini"
+
+#: src/widgets/image_window.ui:225
+msgid "_Open Files…"
+msgstr "B_uka Berkas…"
 
 #: src/widgets/print.rs:108
 msgid "Top"
@@ -472,19 +786,19 @@ msgstr "px"
 msgid "Print “{}”"
 msgstr "Cetak “{}”"
 
-#: src/widgets/print.rs:465
+#: src/widgets/print.rs:476
 msgid "Continue…"
 msgstr "Lanjutkan…"
 
-#: src/widgets/print.rs:466
+#: src/widgets/print.rs:477
 msgid "Print Image"
 msgstr "Cetak Gambar"
 
-#: src/widgets/print.rs:788
+#: src/widgets/print.rs:791
 msgid "_Scale"
 msgstr "_Skala"
 
-#: src/widgets/print.rs:791
+#: src/widgets/print.rs:794
 msgid "_Width"
 msgstr "_Lebar"
 
@@ -549,31 +863,30 @@ msgstr "Isi _Ruang"
 msgid "H_eight"
 msgstr "_Tinggi"
 
-#: src/widgets/properties_view.rs:255
+#: src/widgets/properties_view.rs:258
 msgid "Unknown"
 msgstr "Tak diketahui"
 
 #. Translators: Addition of image being transparent to format name
-#: src/widgets/properties_view.rs:259
+#: src/widgets/properties_view.rs:262
 msgid ", transparent"
 msgstr ", transparan"
 
 #. Translators: Addition of image being grayscale to format name
-#: src/widgets/properties_view.rs:264
+#: src/widgets/properties_view.rs:267
 msgid ", grayscale"
 msgstr ", kelabu"
 
 #. Translators: Addition of bit size to format name
-#: src/widgets/properties_view.rs:269
+#: src/widgets/properties_view.rs:272
 msgid ", {}\\u{202F}bit"
 msgstr ", {}\\u{202F}bit"
 
-#: src/widgets/properties_view.rs:286
-#| msgid "1\\u{2215}{}\\u{202F}s"
+#: src/widgets/properties_view.rs:290
 msgid "{}\\u{202F}\\u{D7}\\u{202F}{}"
 msgstr "{}\\u{202F}\\u{D7}\\u{202F}{}"
 
-#: src/widgets/properties_view.rs:324
+#: src/widgets/properties_view.rs:329
 msgid "Image Coordinates Copied"
 msgstr "Koordinat Gambar Disalin"
 
@@ -623,117 +936,29 @@ msgid "Originally Created"
 msgstr "Awalnya Dibuat"
 
 #: src/widgets/properties_view.ui:159
+msgid "Comment"
+msgstr "Komentar"
+
+#: src/widgets/properties_view.ui:169
 msgid "Aperture"
 msgstr "Bukaan"
 
-#: src/widgets/properties_view.ui:169
+#: src/widgets/properties_view.ui:179
 msgid "Exposure"
 msgstr "Eksposur"
 
-#: src/widgets/properties_view.ui:179
+#: src/widgets/properties_view.ui:189
 msgid "ISO"
 msgstr "ISO"
 
-#: src/widgets/properties_view.ui:189
+#: src/widgets/properties_view.ui:199
 msgid "Focal Length"
 msgstr "Panjang Fokal"
 
-#: src/widgets/properties_view.ui:199
+#: src/widgets/properties_view.ui:209
 msgid "Maker, Model"
 msgstr "Pembuat, Model"
 
-#: src/window.rs:523
-msgid "Supported image formats"
-msgstr "Format gambar yang didukung"
-
-#: src/window.rs:529
-msgid "All files"
-msgstr "Semua berkas"
-
-#: src/window.rs:536
-msgid "Open Image"
-msgstr "Buka Gambar"
-
-#: src/window.rs:622
-msgid "Image copied to clipboard"
-msgstr "Gambar disalin ke papan klip"
-
-#: src/window.rs:643
-msgid "Image moved to trash"
-msgstr "Gambar dipindahkan ke tong sampah"
-
-#: src/window.rs:644
-msgid "Undo"
-msgstr "Tak jadi"
-
-#: src/window.rs:674
-msgid "Failed to move image to trash"
-msgstr "Gagal memindahkan gambar ke tong sampah"
-
-#: src/window.rs:698
-msgid "Permanently Delete Image?"
-msgstr "Hapus Gambar Secara Permanen?"
-
-#: src/window.rs:700
-msgid "After deleting the image “{}” it will be permanently lost."
-msgstr "Setelah dihapus, gambar “{}” akan hilang secara permanen."
-
-#: src/window.rs:708
-msgid "Cancel"
-msgstr "Batal"
-
-#: src/window.rs:709
-msgid "Delete"
-msgstr "Hapus"
-
-#: src/window.rs:720
-msgid "Failed to delete image"
-msgstr "Gagal menghapus gambar"
-
-#: src/window.ui:6
-msgid "_New Window"
-msgstr "Je_ndela Baru"
-
-#: src/window.ui:10
-msgid "_Open…"
-msgstr "_Buka…"
-
-#: src/window.ui:46
-msgid "_Help"
-msgstr "_Bantuan"
-
-#: src/window.ui:50
-msgid "_Keyboard Shortcuts"
-msgstr "Pintasan Papan _Ketik"
-
-#: src/window.ui:54
-msgid "_About Image Viewer"
-msgstr "Tent_ang Penampil Gambar"
-
-#: src/window.ui:204
-msgid "Copy to Clipboard"
-msgstr "Salin ke Papan Klip"
-
-#: src/window.ui:211
-msgid "Move to Trash"
-msgstr "Pindah ke Tong Sampah"
-
-#: src/window.ui:217
-msgid "Main Menu"
-msgstr "Menu Utama"
-
-#: src/window.ui:249
-msgid "Image Properties"
-msgstr "Properti Gambar"
-
-#: src/window.ui:281
-msgid "View Images"
-msgstr "Lihat Gambar"
-
-#: src/window.ui:282
-msgid "Drag and drop images here"
-msgstr "Seret dan lepas gambar di sini"
-
-#: src/window.ui:286
-msgid "_Open Files…"
-msgstr "B_uka Berkas…"
+#: src/widgets/window.rs:222
+msgid "Show Details"
+msgstr "Tampilkan Rincian"
