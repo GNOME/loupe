@@ -2,13 +2,13 @@
 # Copyright (C) 2023 Loupe's COPYRIGHT HOLDER
 # This file is distributed under the same license as the Loupe package.
 #
-# Yuri Chornoivan <yurchor@ukr.net>, 2023, 2024.
+# Yuri Chornoivan <yurchor@ukr.net>, 2023, 2024, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2024-09-23 11:13+0000\n"
-"PO-Revision-Date: 2024-09-23 18:59+0300\n"
+"POT-Creation-Date: 2025-02-19 12:15+0000\n"
+"PO-Revision-Date: 2025-02-24 17:30+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -20,7 +20,8 @@ msgstr ""
 "X-Generator: Lokalize 23.04.3\n"
 
 #: data/org.gnome.Loupe.desktop.in.in:3
-#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:31 src/window.rs:874
+#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:31
+#: src/widgets/image_window.rs:866
 msgid "Image Viewer"
 msgstr "Перегляд зображень"
 
@@ -155,12 +156,14 @@ msgstr "Обернути зображення"
 
 #: data/resources/gtk/help-overlay.ui:124
 #: data/resources/gtk/help-overlay.ui:274
+#: data/resources/gtk/help-overlay.ui:315
 msgctxt "shortcut window"
 msgid "Rotate Clockwise"
 msgstr "Обернути за годинниковою стрілкою"
 
 #: data/resources/gtk/help-overlay.ui:130
 #: data/resources/gtk/help-overlay.ui:280
+#: data/resources/gtk/help-overlay.ui:321
 msgctxt "shortcut window"
 msgid "Rotate Counterclockwise"
 msgstr "Обернути проти годинникової стрілки"
@@ -252,6 +255,50 @@ msgctxt "shortcut window"
 msgid "Gestures"
 msgstr "Жести"
 
+#: data/resources/gtk/help-overlay.ui:288
+#| msgid "Printing"
+msgctxt "shortcut window"
+msgid "Editing"
+msgstr "Редагування"
+
+#: data/resources/gtk/help-overlay.ui:291
+msgctxt "shortcut window"
+msgid "Open Editing View"
+msgstr "Відкрити панель редагування"
+
+#: data/resources/gtk/help-overlay.ui:297
+msgctxt "shortcut window"
+msgid "Replace Original"
+msgstr "Замінити початковий"
+
+#: data/resources/gtk/help-overlay.ui:303
+msgctxt "shortcut window"
+msgid "Save As"
+msgstr "Зберегти із новою назвою"
+
+#: data/resources/gtk/help-overlay.ui:309
+#| msgid "Cancel"
+msgctxt "shortcut window"
+msgid "Cancel"
+msgstr "Скасувати"
+
+#: data/resources/gtk/help-overlay.ui:327
+#| msgid "_Horizontal"
+msgctxt "shortcut window"
+msgid "Mirror Horizontally"
+msgstr "Віддзеркалити горизонтально"
+
+#: data/resources/gtk/help-overlay.ui:333
+#| msgid "_Vertical"
+msgctxt "shortcut window"
+msgid "Mirror Vertically"
+msgstr "Віддзеркалити вертикально"
+
+#: data/resources/gtk/help-overlay.ui:339
+msgctxt "shortcut window"
+msgid "Apply Crop"
+msgstr "Застосувати обрізання"
+
 #. Translators: Replace "translator-credits" with your names, one name per line
 #: src/about.rs:43
 msgid "translator-credits"
@@ -261,7 +308,7 @@ msgstr "Юрій Чорноіван <yurchor@ukr.net>, 2023"
 msgid "Copyright © 2020–2024 Christopher Davis et al."
 msgstr "© Christopher Davis та інші, 2020–2024."
 
-#: src/file_model.rs:131
+#: src/file_model.rs:180
 msgid "Could not list other files in directory."
 msgstr "Не вдалося отримати список інших файлів у каталозі."
 
@@ -271,37 +318,36 @@ msgid "\\u{192}\\u{2215}{}"
 msgstr "\\u{192}\\u{2215}{}"
 
 #. Translators: Fractional exposure time (photography) in seconds
-#: src/metadata.rs:269
+#: src/metadata.rs:266
 msgid "1\\u{2215}{}\\u{202F}s"
 msgstr "1\\u{2215}{}\\u{202F}с"
 
 #. Translators: Exposure time (photography) in seconds
-#: src/metadata.rs:277
+#: src/metadata.rs:274
 msgid "{}\\u{202F}s"
 msgstr "{}\\u{202F}с"
 
-#. Translators: Unit for focal length in millimeters
-#: src/metadata.rs:303
+#: src/metadata.rs:288
 msgid "{}\\u{202F}mm"
 msgstr "{}\\u{202F}мм"
 
 #. Translators: short for "north" in GPS coordinate
-#: src/metadata/gps.rs:165
+#: src/metadata.rs:328
 msgid "N"
 msgstr "Пн"
 
 #. Translators: short for "south" in GPS coordinate
-#: src/metadata/gps.rs:168
+#: src/metadata.rs:332
 msgid "S"
 msgstr "Пд"
 
 #. Translators: short for "east" in GPS coordinate
-#: src/metadata/gps.rs:190
+#: src/metadata.rs:341
 msgid "E"
 msgstr "С"
 
 #. Translators: short for "west" in GPS coordinate
-#: src/metadata/gps.rs:193
+#: src/metadata.rs:345
 msgid "W"
 msgstr "З"
 
@@ -309,27 +355,215 @@ msgstr "З"
 #. The format has to follow <https://docs.gtk.org/glib/method.DateTime.format.html>
 #. The default is already translated. Don't change if you are not sure what to
 #. use.
-#: src/util.rs:37
+#: src/util.rs:39
 #, c-format
 msgid "%x %X"
 msgstr "%x %X"
 
-#: src/util.rs:180 src/window.rs:659
+#: src/util.rs:182 src/widgets/image_window.rs:638
 msgid "Failed to restore image from trash"
 msgstr "Не вдалося відновити зображення зі смітника"
 
+#: src/widgets/drag_overlay.ui:15
+#| msgid "Image Viewer"
+msgid "Drop Image to View"
+msgstr "Скиньте зображення для перегляду"
+
+#: src/widgets/edit/crop.rs:330
+#| msgid "Failed to delete image"
+msgid "Failed to Edit Image"
+msgstr "Не вдалося внести зміни до зображення"
+
+#: src/widgets/edit/crop.ui:6
+msgid "Free"
+msgstr "Довільне"
+
+#: src/widgets/edit/crop.ui:11
+#| msgctxt "shortcut window"
+#| msgid "Original Scale"
+msgid "Original"
+msgstr "Оригінал"
+
+#: src/widgets/edit/crop.ui:16
+msgid "Square"
+msgstr "Квадрат"
+
+#: src/widgets/edit/crop.ui:21
+msgid "5:4"
+msgstr "5:4"
+
+#: src/widgets/edit/crop.ui:26
+msgid "4:3"
+msgstr "4:3"
+
+#: src/widgets/edit/crop.ui:31
+msgid "3:2"
+msgstr "3:2"
+
+#: src/widgets/edit/crop.ui:36
+msgid "16:9"
+msgstr "16:9"
+
+#: src/widgets/edit/crop.ui:91
+msgid "_Free"
+msgstr "Дов_ільний"
+
+#: src/widgets/edit/crop.ui:109
+#| msgctxt "shortcut window"
+#| msgid "Original Scale"
+msgid "_Original"
+msgstr "По_чатковий"
+
+#: src/widgets/edit/crop.ui:127
+msgid "_Square"
+msgstr "_Квадратні"
+
+#: src/widgets/edit/crop.ui:145
+msgid "_5:4"
+msgstr "_5:4"
+
+#: src/widgets/edit/crop.ui:163
+msgid "_4:3"
+msgstr "_4:3"
+
+#: src/widgets/edit/crop.ui:181
+msgid "_3:2"
+msgstr "_3:2"
+
+#: src/widgets/edit/crop.ui:199
+msgid "_16:9"
+msgstr "_16:9"
+
+#: src/widgets/edit/crop.ui:219 src/widgets/edit/crop.ui:365
+#| msgid "_Orientation"
+msgid "Orientation Landscape"
+msgstr "Альбомна орієнтація"
+
+#: src/widgets/edit/crop.ui:228 src/widgets/edit/crop.ui:377
+#| msgid "_Orientation"
+msgid "Orientation Portrait"
+msgstr "Книжкова орієнтація"
+
+#: src/widgets/edit/crop.ui:249 src/widgets/edit/crop.ui:395
+#| msgctxt "shortcut window"
+#| msgid "Rotate Counterclockwise"
+msgid "Rotate Counter Clockwise"
+msgstr "Обернути проти годинникової стрілки"
+
+#: src/widgets/edit/crop.ui:256
+#| msgctxt "shortcut window"
+#| msgid "Rotate Clockwise"
+msgid "Rotate Clockwise"
+msgstr "Обернути за годинниковою стрілкою"
+
+#: src/widgets/edit/crop.ui:275 src/widgets/edit/crop.ui:403
+#| msgid "_Horizontal"
+msgid "Mirror Horizontally"
+msgstr "Віддзеркалити горизонтально"
+
+#: src/widgets/edit/crop.ui:282
+#| msgid "_Vertical"
+msgid "Mirror Vertically"
+msgstr "Віддзеркалити вертикально"
+
+#: src/widgets/edit/crop.ui:295 src/widgets/edit/crop.ui:419
+msgid "Undo Changes in this View"
+msgstr "Скасувати зміни на цій панелі перегляду"
+
+#: src/widgets/edit/crop.ui:352
+msgid "Aspect Ratio"
+msgstr "Співвідношення сторін"
+
+#: src/widgets/edit/crop_selection.ui:46
+msgid "Crop Selection"
+msgstr "Обрізати за позначеним"
+
+#. Translators: Filename suffix
+#. Translators: Filename suffix, {} is replaced by a number
+#: src/widgets/edit_window.rs:192 src/widgets/edit_window.rs:195
+msgid " (Edited)"
+msgid_plural " (Edited {})"
+msgstr[0] " (редаговано {})"
+msgstr[1] " (редаговано {})"
+msgstr[2] " (редаговано {})"
+msgstr[3] " (редаговано {})"
+
+#: src/widgets/edit_window.rs:290 src/widgets/edit_window.rs:316
+#| msgid "Failed to open image"
+msgid "Failed to save image."
+msgstr "Спроба збереження зображення була невдалою."
+
+#: src/widgets/edit_window.rs:346
+#| msgid "Print Image"
+msgid "Editing Image"
+msgstr "Редагування зображення"
+
+#: src/widgets/edit_window.rs:360
+#| msgid "Failed to delete image"
+msgid "Failed to edit image."
+msgstr "Не вдалося внести зміни до зображення."
+
+#: src/widgets/edit_window.rs:370 src/widgets/edit_window.rs:393
+#| msgid "Failed to open image"
+msgid "Failed to Save Image"
+msgstr "Спроба збереження зображення була невдалою"
+
+#: src/widgets/edit_window.rs:376
+#| msgctxt "shortcut window"
+#| msgid "Navigate Images"
+msgid "Saving Image"
+msgstr "Збереження зображення"
+
+#: src/widgets/edit_window.ui:64
+#| msgid "Cancel"
+msgid "_Cancel"
+msgstr "_Скасувати"
+
+#: src/widgets/edit_window.ui:71
+msgid "_Save"
+msgstr "З_берегти"
+
+#: src/widgets/edit_window.ui:92
+msgid "_Save As…"
+msgstr "Зберегти _як…"
+
+#: src/widgets/edit_window.ui:100
+msgid "Keep original and create a new file"
+msgstr "Зберегти оригінал і створити файл"
+
+#: src/widgets/edit_window.ui:120
+msgid "_Replace Original"
+msgstr "З_амінити оригінал"
+
+#: src/widgets/edit_window.ui:128
+#| msgid "Image moved to trash"
+msgid "Original image will be moved to the trash"
+msgstr "Початкове зображення буде пересунуто до смітника"
+
+#: src/widgets/error_details.rs:79
+msgid ""
+"The following error occurred. If you think this is an issue with the "
+"program, please include this information when you report the error."
+msgstr ""
+"Сталася вказана нижче помилка. Якщо ви вважаєте, що цю проблему пов'язано із"
+" програмою, будь ласка, повідомте ці дані при створенні звіту щодо помилки."
+
 #: src/widgets/error_details.ui:4
-#| msgid "Error Message"
 msgid "Error Details"
 msgstr "Подробиці щодо помилки"
 
 #: src/widgets/error_details.ui:19
+#| msgid ""
+#| "The image loader reported the following when trying to load the image. "
+#| "Please include this information when you report an error. If possible, "
+#| "please also provide the image that causes the issue."
 msgid ""
-"The image loader reported the following when trying to load the image. "
-"Please include this information when you report an error. If possible, "
-"please also provide the image that causes the issue."
+"The image loader reported the following when trying to load or edit the "
+"image. Please include this information when you report an error. If "
+"possible, please also provide the image that causes the issue."
 msgstr ""
-"Під час спроби завантажити зображення засіб завантаження повідомив наведені "
+"Під час спроби завантажити або редагувати зображення засіб завантаження"
+" повідомив наведені "
 "нижче дані. Будь ласка, включіть ці відомості до вашого звіту щодо помилки. "
 "Якщо можна, також надайте зображення, завантаження якого призвело до помилки."
 
@@ -345,7 +579,7 @@ msgstr "Копіювати повідомлення про помилку"
 msgid "Report _Issue"
 msgstr "Повідомити про _проблему"
 
-#: src/widgets/image_page.rs:226
+#: src/widgets/image_page.rs:227
 msgid ""
 "No image loaders available. Maybe the “glycin-loaders” package with "
 "compatibility version “{}” is not installed."
@@ -353,45 +587,50 @@ msgstr ""
 "Немає засобів завантаження зображень. Можливо, не встановлено пакунок "
 "«glycin-loaders» із сумісною версією «{}»."
 
-#: src/widgets/image_page.rs:241
+#: src/widgets/image_page.rs:242
 msgid "The image format “{} ({})” is known but not installed."
 msgstr ""
 "Формат зображень «{} ({})» відомий програмі, але засоби його обробки не "
 "встановлено."
 
-#: src/widgets/image_page.rs:248
+#: src/widgets/image_page.rs:249
 msgid "Unknown image format “{} ({}).”"
 msgstr "Невідомий формат зображення «{} ({}).»"
 
-#: src/widgets/image_page.rs:276
+#: src/widgets/image_page.rs:277
 msgid "There is not enough free memory available to load this image."
 msgstr "Недостатньо вільної пам'яті для завантаження цього зображення."
 
-#: src/widgets/image_page.rs:280
+#: src/widgets/image_page.rs:281
 msgid ""
 "Either the image file is corrupted or it contains unsupported elements."
 msgstr ""
 "Файл зображення або пошкоджено або у ньому містяться непідтримувані елементи."
 
-#: src/widgets/image_page.ui:6 src/window.ui:16
+#: src/widgets/image_page.ui:6 src/widgets/image_window.ui:16
 msgid "_Open With…"
 msgstr "Відкрити _через…"
 
-#: src/widgets/image_page.ui:14 src/window.ui:24
+#: src/widgets/image_page.ui:10 src/widgets/image_window.ui:20
 msgid "_Print…"
 msgstr "Над_рукувати…"
 
-#: src/widgets/image_page.ui:18
-msgid "_Copy"
-msgstr "_Копіювати"
-
-#: src/widgets/image_page.ui:23 src/window.ui:29
+#: src/widgets/image_page.ui:15 src/widgets/image_window.ui:25
 msgid "Rotate"
 msgstr "Обертати"
 
-#: src/widgets/image_page.ui:34 src/window.ui:40
+#: src/widgets/image_page.ui:26 src/widgets/image_window.ui:36
 msgid "_Set as Background…"
 msgstr "З_робити фоновим зображенням…"
+
+#: src/widgets/image_page.ui:30 src/widgets/image_window.ui:40
+#| msgid "Delete"
+msgid "_Delete"
+msgstr "В_илучити"
+
+#: src/widgets/image_page.ui:34
+msgid "_Copy"
+msgstr "_Копіювати"
 
 #: src/widgets/image_page.ui:63
 msgid "Could not Load Image"
@@ -405,43 +644,148 @@ msgstr "Д_окладніше"
 msgid "_Reload"
 msgstr "Перезаванта_жити"
 
-#: src/widgets/image_page.ui:123 src/window.ui:225
+#: src/widgets/image_page.ui:123 src/widgets/image_window.ui:101
 msgid "Rotate Left"
 msgstr "Обернути ліворуч"
 
-#: src/widgets/image_page.ui:133 src/window.ui:235
+#: src/widgets/image_page.ui:133 src/widgets/image_window.ui:111
 msgid "Rotate Right"
 msgstr "Обернути праворуч"
 
+#: src/widgets/image_view.rs:197
+msgid "{} %"
+msgstr "{} %"
+
 #. Translators: This is a toast notification, informing the user that
 #. an image has been set as background.
-#: src/widgets/image_view.rs:720
+#: src/widgets/image_view.rs:836
 msgid "Set as background."
 msgstr "Встановити як фонове зображення."
 
-#: src/widgets/image_view.rs:733
+#: src/widgets/image_view.rs:849
 msgid "Could not set background."
 msgstr "Не вдалося встановити фонове зображення."
 
-#: src/widgets/image_view.ui:27
+#: src/widgets/image_view.ui:30
 msgid "Previous Image"
 msgstr "Попереднє зображення"
 
-#: src/widgets/image_view.ui:38
+#: src/widgets/image_view.ui:40
 msgid "Next Image"
 msgstr "Наступне зображення"
 
-#: src/widgets/image_view.ui:63
+#: src/widgets/image_view.ui:74
 msgid "Zoom Out"
 msgstr "Зменшити"
 
-#: src/widgets/image_view.ui:74
+#: src/widgets/image_view.ui:85
 msgid "Zoom In"
 msgstr "Збільшити"
 
-#: src/widgets/image_view.ui:85
+#: src/widgets/image_view.ui:100
+msgid "Toggle Zoom"
+msgstr "Перемкнути масштаб"
+
+#: src/widgets/image_view.ui:108
+msgid "Zoom to Specific Level"
+msgstr "Масштабувати до вказаного рівня"
+
+#: src/widgets/image_window.rs:502
+msgid "Supported image formats"
+msgstr "Підтримувані формати зображень"
+
+#: src/widgets/image_window.rs:508
+msgid "All files"
+msgstr "усі файли"
+
+#: src/widgets/image_window.rs:515
+msgid "Open Image"
+msgstr "Відкрити зображення"
+
+#: src/widgets/image_window.rs:601
+msgid "Image copied to clipboard"
+msgstr "Зображення скопійовано до буфера обміну"
+
+#: src/widgets/image_window.rs:622
+msgid "Image moved to trash"
+msgstr "Зображення пересунуто до смітника"
+
+#: src/widgets/image_window.rs:623
+msgid "Undo"
+msgstr "Скасувати"
+
+#: src/widgets/image_window.rs:653
+msgid "Failed to move image to trash"
+msgstr "Не вдалося пересунути зображення до смітника"
+
+#: src/widgets/image_window.rs:677
+msgid "Permanently Delete Image?"
+msgstr "Остаточно вилучити зображення?"
+
+#: src/widgets/image_window.rs:679
+msgid "After deleting the image “{}” it will be permanently lost."
+msgstr "Після вилучення зображення «{}» його не можна буде відновити."
+
+#: src/widgets/image_window.rs:687
+msgid "Cancel"
+msgstr "Скасувати"
+
+#: src/widgets/image_window.rs:688
+msgid "Delete"
+msgstr "Вилучити"
+
+#: src/widgets/image_window.rs:699
+msgid "Failed to delete image"
+msgstr "Не вдалося вилучити зображення"
+
+#: src/widgets/image_window.ui:6
+msgid "_New Window"
+msgstr "_Створити вікно"
+
+#: src/widgets/image_window.ui:10
+msgid "_Open…"
+msgstr "_Відкрити…"
+
+#: src/widgets/image_window.ui:46
+msgid "_Help"
+msgstr "_Довідка"
+
+#: src/widgets/image_window.ui:50
+msgid "_Keyboard Shortcuts"
+msgstr "_Клавіатурні скорочення"
+
+#: src/widgets/image_window.ui:54
+msgid "_About Image Viewer"
+msgstr "_Про «Перегляд зображень»"
+
+#: src/widgets/image_window.ui:87
 msgid "Toggle Fullscreen"
 msgstr "Увімкнути/вимкнути повноекранний режим"
+
+#: src/widgets/image_window.ui:93
+msgid "Main Menu"
+msgstr "Головне меню"
+
+#: src/widgets/image_window.ui:125
+msgid "Image Properties"
+msgstr "Властивості зображення"
+
+#: src/widgets/image_window.ui:132
+#| msgid "Print Image"
+msgid "Edit Image"
+msgstr "Редагувати зображення"
+
+#: src/widgets/image_window.ui:220
+msgid "View Images"
+msgstr "Перегляд зображень"
+
+#: src/widgets/image_window.ui:221
+msgid "Drag and drop images here"
+msgstr "Перетягніть і скиньте зображення тут"
+
+#: src/widgets/image_window.ui:225
+msgid "_Open Files…"
+msgstr "_Відкрити файли…"
 
 #: src/widgets/print.rs:108
 msgid "Top"
@@ -483,19 +827,19 @@ msgstr "пк"
 msgid "Print “{}”"
 msgstr "Надрукувати «{}»"
 
-#: src/widgets/print.rs:465
+#: src/widgets/print.rs:476
 msgid "Continue…"
 msgstr "Продовжити…"
 
-#: src/widgets/print.rs:466
+#: src/widgets/print.rs:477
 msgid "Print Image"
 msgstr "Надрукувати зображення"
 
-#: src/widgets/print.rs:788
+#: src/widgets/print.rs:791
 msgid "_Scale"
 msgstr "_Масштаб"
 
-#: src/widgets/print.rs:791
+#: src/widgets/print.rs:794
 msgid "_Width"
 msgstr "_Ширина"
 
@@ -560,30 +904,30 @@ msgstr "З_аповнити місце"
 msgid "H_eight"
 msgstr "_Висота"
 
-#: src/widgets/properties_view.rs:255
+#: src/widgets/properties_view.rs:258
 msgid "Unknown"
 msgstr "Не відомо"
 
 #. Translators: Addition of image being transparent to format name
-#: src/widgets/properties_view.rs:259
+#: src/widgets/properties_view.rs:262
 msgid ", transparent"
 msgstr ", прозорий"
 
 #. Translators: Addition of image being grayscale to format name
-#: src/widgets/properties_view.rs:264
+#: src/widgets/properties_view.rs:267
 msgid ", grayscale"
 msgstr ", відтінки сірого"
 
 #. Translators: Addition of bit size to format name
-#: src/widgets/properties_view.rs:269
+#: src/widgets/properties_view.rs:272
 msgid ", {}\\u{202F}bit"
 msgstr ", {}\\u{202F}біт"
 
-#: src/widgets/properties_view.rs:287
+#: src/widgets/properties_view.rs:290
 msgid "{}\\u{202F}\\u{D7}\\u{202F}{}"
 msgstr "{}\\u{202F}\\u{D7}\\u{202F}{}"
 
-#: src/widgets/properties_view.rs:326
+#: src/widgets/properties_view.rs:329
 msgid "Image Coordinates Copied"
 msgstr "Скопійовано координати зображення"
 
@@ -633,123 +977,39 @@ msgid "Originally Created"
 msgstr "Вперше створено"
 
 #: src/widgets/properties_view.ui:159
+msgid "Comment"
+msgstr "Коментар"
+
+#: src/widgets/properties_view.ui:169
 msgid "Aperture"
 msgstr "Діафрагма"
 
-#: src/widgets/properties_view.ui:169
+#: src/widgets/properties_view.ui:179
 msgid "Exposure"
 msgstr "Витримка"
 
-#: src/widgets/properties_view.ui:179
+#: src/widgets/properties_view.ui:189
 msgid "ISO"
 msgstr "ISO"
 
-#: src/widgets/properties_view.ui:189
+#: src/widgets/properties_view.ui:199
 msgid "Focal Length"
 msgstr "Фокусна відстань"
 
-#: src/widgets/properties_view.ui:199
+#: src/widgets/properties_view.ui:209
 msgid "Maker, Model"
 msgstr "Виробник, модель"
 
-#: src/window.rs:523
-msgid "Supported image formats"
-msgstr "Підтримувані формати зображень"
+#: src/widgets/window.rs:222
+#| msgid "Error Details"
+msgid "Show Details"
+msgstr "Показати подробиці"
 
-#: src/window.rs:529
-msgid "All files"
-msgstr "усі файли"
+#~ msgid "Copy to Clipboard"
+#~ msgstr "Скопіювати до буфера"
 
-#: src/window.rs:536
-msgid "Open Image"
-msgstr "Відкрити зображення"
-
-#: src/window.rs:622
-msgid "Image copied to clipboard"
-msgstr "Зображення скопійовано до буфера обміну"
-
-#: src/window.rs:643
-msgid "Image moved to trash"
-msgstr "Зображення пересунуто до смітника"
-
-#: src/window.rs:644
-msgid "Undo"
-msgstr "Скасувати"
-
-#: src/window.rs:674
-msgid "Failed to move image to trash"
-msgstr "Не вдалося пересунути зображення до смітника"
-
-#: src/window.rs:698
-msgid "Permanently Delete Image?"
-msgstr "Остаточно вилучити зображення?"
-
-#: src/window.rs:700
-msgid "After deleting the image “{}” it will be permanently lost."
-msgstr "Після вилучення зображення «{}» його не можна буде відновити."
-
-#: src/window.rs:708
-msgid "Cancel"
-msgstr "Скасувати"
-
-#: src/window.rs:709
-msgid "Delete"
-msgstr "Вилучити"
-
-#: src/window.rs:720
-msgid "Failed to delete image"
-msgstr "Не вдалося вилучити зображення"
-
-#: src/window.ui:6
-msgid "_New Window"
-msgstr "_Створити вікно"
-
-#: src/window.ui:10
-msgid "_Open…"
-msgstr "_Відкрити…"
-
-#: src/window.ui:46
-msgid "_Help"
-msgstr "_Довідка"
-
-#: src/window.ui:50
-msgid "_Keyboard Shortcuts"
-msgstr "_Клавіатурні скорочення"
-
-#: src/window.ui:54
-msgid "_About Image Viewer"
-msgstr "_Про «Перегляд зображень»"
-
-#: src/window.ui:204
-msgid "Copy to Clipboard"
-msgstr "Скопіювати до буфера"
-
-#: src/window.ui:211
-msgid "Move to Trash"
-msgstr "Пересунути до смітника"
-
-#: src/window.ui:217
-msgid "Main Menu"
-msgstr "Головне меню"
-
-#: src/window.ui:249
-msgid "Image Properties"
-msgstr "Властивості зображення"
-
-#: src/window.ui:281
-msgid "View Images"
-msgstr "Перегляд зображень"
-
-#: src/window.ui:282
-msgid "Drag and drop images here"
-msgstr "Перетягніть і скиньте зображення тут"
-
-#: src/window.ui:286
-msgid "_Open Files…"
-msgstr "_Відкрити файли…"
-
-#~ msgid "Failed to open image"
-#~ msgstr "Не вдалося відкрити зображення"
+#~ msgid "Move to Trash"
+#~ msgstr "Пересунути до смітника"
 
 #~ msgid "The Loupe Team"
 #~ msgstr "Команда «Лупе»"
@@ -807,9 +1067,6 @@ msgstr "_Відкрити файли…"
 
 #~ msgid "Applying image color profiles"
 #~ msgstr "Застосовуємо профілі кольорів зображення"
-
-#~ msgid "Printing"
-#~ msgstr "Друк"
 
 #~ msgid "Christopher Davis"
 #~ msgstr "Christopher Davis"
