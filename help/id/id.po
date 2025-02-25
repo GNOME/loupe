@@ -1,0 +1,637 @@
+# Indonesian translation for loupe.
+# Copyright (C) 2025 loupe's COPYRIGHT HOLDER
+# This file is distributed under the same license as the loupe package.
+# Andika Triwidada <atriwidada@gnome.org>,  2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: loupe main\n"
+"POT-Creation-Date: 2025-02-24 15:31+0000\n"
+"PO-Revision-Date: 2025-02-25 13:14+0700\n"
+"Last-Translator: Andika Triwidada <andika@gmail.com>\n"
+"Language-Team: Indonesian <Indonesian>\n"
+"Language: id\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.5\n"
+
+#. Put one translator per line, in the form NAME <EMAIL>, YEAR1, YEAR2
+msgctxt "_"
+msgid "translator-credits"
+msgstr "Andika Triwidada <andika@gmail.com>, 2025."
+
+#. (itstool) path: info/desc
+#: C/image-properties.page:11
+msgid "View detailed properties of the selected image."
+msgstr "Melihat detail properti gambar yang dipilih."
+
+#. (itstool) path: page/title
+#: C/image-properties.page:13
+msgid "Image Properties"
+msgstr "Properti Gambar"
+
+#. (itstool) path: page/p
+#: C/image-properties.page:14
+msgid ""
+"Image Viewer allows users to view an image's properties. All images will "
+"have the following basic properties:"
+msgstr ""
+"Penampil Citra memungkinkan pengguna untuk melihat properti gambar. Semua "
+"gambar akan memiliki properti dasar berikut ini:"
+
+#. (itstool) path: item/p
+#: C/image-properties.page:18
+msgid "Image size"
+msgstr "Ukuran gambar"
+
+#. (itstool) path: item/p
+#: C/image-properties.page:21
+msgid "Image format"
+msgstr "Format gambar"
+
+#. (itstool) path: item/p
+#: C/image-properties.page:24
+msgid "File size"
+msgstr "Ukuran berkas"
+
+#. (itstool) path: item/p
+#: C/image-properties.page:27
+msgid "File creation date"
+msgstr "Tanggal pembuatan gambar"
+
+#. (itstool) path: item/p
+#: C/image-properties.page:30
+msgid "File modification date"
+msgstr "Tanggal perubahan berkas"
+
+#. (itstool) path: page/p
+#: C/image-properties.page:33
+msgid ""
+"If the file has <link href=\"https://en.wikipedia.org/wiki/Exif\">Exif</"
+"link> metadata, it will be shown below the basic properties."
+msgstr ""
+"Jika berkas memiliki metadata <link href=\"https://en.wikipedia.org/wiki/"
+"Exif\">Exif</link>, itu akan ditampilkan di bawah properti dasar."
+
+#. (itstool) path: p/media
+#. This is a reference to an external file such as an image or video. When
+#. the file changes, the md5 hash will change to let you know you need to
+#. update your localized copy. The msgstr is not used at all. Set it to
+#. whatever you like once you have updated your copy of the file.
+#: C/image-properties.page:36
+msgctxt "_"
+msgid ""
+"external ref='figures/help-about-symbolic.svg' "
+"md5='6b43c8bc211b5f8b57810091728b8925'"
+msgstr "."
+
+#. (itstool) path: page/p
+#: C/image-properties.page:35
+msgid ""
+"To view the selected image's properties, press the <gui>Image Properties</"
+"gui> (<media type=\"image\" src=\"figures/help-about-symbolic.svg\">help-"
+"about-symbolic</media>) button."
+msgstr ""
+"Untuk melihat properti gambar yang dipilih, tekan tombol <gui>Properti "
+"Gambar</gui> (<media type=\"image\" src=\"figures/help-about-symbolic."
+"svg\">bantuan-tentang-simbol</media>)."
+
+#. (itstool) path: page/title
+#: C/supported-formats.page:12
+msgid "Supported Image Formats"
+msgstr "Format Citra yang Didukung"
+
+#. (itstool) path: page/p
+#: C/supported-formats.page:13
+msgid ""
+"Image Viewer uses <link href=\"https://gitlab.gnome.org/GNOME/"
+"glycin\">glycin</link> for loading images. You can check <link "
+"href=\"https://gitlab.gnome.org/GNOME/glycin#supported-image-"
+"formats\">glycin's README</link> for more details about the formats "
+"supported by the default loaders and the features provided by each format."
+msgstr ""
+"Penampil Citra menggunakan <link href=\"https://gitlab.gnome.org/GNOME/"
+"glycin\">glycin</link> untuk memuat gambar. Anda dapat memeriksa <link "
+"href=\"https://gitlab.gnome.org/GNOME/glycin#supported-image-"
+"formats\">README glycin</link> untuk rincian lebih lanjut tentang format "
+"yang didukung oleh pemuat baku dan fitur yang disediakan oleh setiap format."
+
+#. (itstool) path: page/p
+#: C/supported-formats.page:17
+msgid ""
+"Glycin's loaders are configurable, and new loaders can be created by third "
+"parties. Therefore the formats supported on your system may vary."
+msgstr ""
+"Pemuat Glycin dapat dikonfigurasi, dan pemuat baru dapat dibuat oleh pihak "
+"ketiga. Oleh karena itu, format yang didukung pada sistem Anda mungkin "
+"berbeda-beda."
+
+#. (itstool) path: info/desc
+#: C/trashing-images.page:11
+msgid "Move unwanted images to the trash directly from Image Viewer."
+msgstr ""
+"Pindahkan gambar yang tidak diinginkan ke tong sampah langsung dari Penampil "
+"Citra."
+
+#. (itstool) path: page/title
+#: C/trashing-images.page:13
+msgid "Moving Images to Trash"
+msgstr "Memindahkan Gambar ke Tong Sampah"
+
+#. (itstool) path: p/media
+#. This is a reference to an external file such as an image or video. When
+#. the file changes, the md5 hash will change to let you know you need to
+#. update your localized copy. The msgstr is not used at all. Set it to
+#. whatever you like once you have updated your copy of the file.
+#: C/trashing-images.page:15
+msgctxt "_"
+msgid ""
+"external ref='figures/user-trash-symbolic.svg' "
+"md5='3ffa1160de3479541f34c3bfbf3cdb64'"
+msgstr "."
+
+#. (itstool) path: page/p
+#: C/trashing-images.page:14
+msgid ""
+"If a user wants to remove an image, they can press the <gui>Move To Trash</"
+"gui> (<media type=\"image\" src=\"figures/user-trash-symbolic.svg\">user-"
+"trash-symbolic</media>) button. A toast will appear allowing them to restore "
+"the image with the <gui>Undo</gui> button."
+msgstr ""
+"Jika pengguna ingin menghapus gambar, mereka dapat menekan tombol "
+"<gui>Pindahkan Ke Tong Sampah</gui> (<media type=\"image\" src=\"figures/"
+"user-trash-symbolic.svg\">simbol-pengguna-tong-sampah</media>). Sebuah roti "
+"panggang akan muncul, dan mereka dapat memulihkan gambar dengan tombol "
+"<gui>Urungkan</gui>."
+
+#. (itstool) path: info/desc
+#: C/opening-images.page:11
+msgid ""
+"Open and browse through pictures via the file chooser, file manager, or drag "
+"and drop."
+msgstr ""
+"Buka dan telusuri gambar melalui pemilih berkas, pengelola berkas, atau "
+"seret dan jatuhkan."
+
+#. (itstool) path: page/title
+#: C/opening-images.page:13
+msgid "Opening Images"
+msgstr "Membuka Gambar"
+
+#. (itstool) path: section/title
+#: C/opening-images.page:15
+msgid "Opening Files"
+msgstr "Membuka Berkas"
+
+#. (itstool) path: section/title
+#: C/opening-images.page:17
+msgid "From The File Chooser"
+msgstr "Dari Pemilih Berkas"
+
+#. (itstool) path: section/p
+#: C/opening-images.page:18
+msgid ""
+"Image Viewer allows users to pick images with the file chooser at any time."
+msgstr ""
+"Penampil Citra memungkinkan pengguna memilih gambar dengan pemilih berkas "
+"kapan saja."
+
+#. (itstool) path: item/p
+#: C/opening-images.page:21
+msgid ""
+"Click the <gui>Open Files…</gui> button, the <gui style=\"menuitem\">Open…</"
+"gui> menu item, or press <keyseq><key>Ctrl</key><key>O</key></keyseq>. The "
+"<gui>Open Image</gui> file dialog will appear."
+msgstr ""
+"Klik tombol <gui>Buka Berkas…</gui>, butir menu <gui style=\"menuitem\">Buka…"
+"</gui>, atau tekan <keyseq><key>Ctrl</key><key>O</key></keyseq>. Dialog "
+"berkas <gui>Buka Gambar</gui> akan muncul."
+
+#. (itstool) path: item/p
+#: C/opening-images.page:24
+msgid "Select the image you want to open, then click <gui>Open</gui>."
+msgstr "Pilih gambar yang ingin Anda buka, kemudian klik <gui>Buka</gui>."
+
+#. (itstool) path: section/p
+#: C/opening-images.page:27
+msgid ""
+"Image Viewer will open with the selected image showing, and the other images "
+"in the directory can be reached by browsing."
+msgstr ""
+"Penampil Citra akan terbuka dengan menampilkan gambar yang dipilih, dan "
+"gambar lainnya dalam direktori dapat dijangkau dengan menelusuri."
+
+#. (itstool) path: section/title
+#: C/opening-images.page:30
+msgid "From The File Manager"
+msgstr "Dari Manajer Berkas"
+
+#. (itstool) path: section/p
+#: C/opening-images.page:31
+msgid "Users can also open images in Loupe directly from their file manager."
+msgstr ""
+"Pengguna juga dapat membuka gambar di Loupe secara langsung dari pengelola "
+"berkas mereka."
+
+#. (itstool) path: item/p
+#: C/opening-images.page:34
+msgid "Open your preferred file manager application."
+msgstr "Buka aplikasi pengelola berkas pilihan Anda."
+
+#. (itstool) path: item/p
+#: C/opening-images.page:37
+msgid "Navigate to the image you want to view in Loupe."
+msgstr "Navigasikan ke gambar yang ingin Anda lihat di Loupe."
+
+#. (itstool) path: item/p
+#: C/opening-images.page:40
+msgid ""
+"If Image Viewer is set as your default image viewer, use the file manager's "
+"function for opening files."
+msgstr ""
+"Jika Penampil Citra ditetapkan sebagai penampil gambar baku, gunakan fungsi "
+"manajer berkas untuk membuka berkas."
+
+#. (itstool) path: item/p
+#: C/opening-images.page:43
+msgid ""
+"If Image Viewer is not your default image viewer, you will need to select "
+"<gui>Open With…</gui> or similar in the file manager, and pick Image Viewer."
+msgstr ""
+"Jika Penampil Citra bukan penampil gambar baku Anda, Anda perlu memilih "
+"<gui>Buka Dengan…</gui> atau yang serupa pada manajer berkas, dan memilih "
+"Penampil Citra."
+
+#. (itstool) path: section/title
+#: C/opening-images.page:48 C/sending-to-other-apps.page:37
+msgid "Drag &amp; Drop"
+msgstr "Seret &amp; Jatuhkan"
+
+#. (itstool) path: section/p
+#: C/opening-images.page:49
+msgid ""
+"Image Viewer also accepts local image files dragged from other applications."
+msgstr ""
+"Penampil Citra juga menerima berkas gambar lokal yang diseret dari aplikasi "
+"lain."
+
+#. (itstool) path: item/p
+#: C/opening-images.page:52
+msgid "In the source application, begin dragging the image."
+msgstr "Dalam aplikasi sumber, mulailah menyeret gambar."
+
+#. (itstool) path: item/p
+#: C/opening-images.page:55
+msgid ""
+"Drag the image over the Loupe main window. A blue highlighted area should "
+"appear."
+msgstr ""
+"Seret gambar di atas jendela utama Loupe. Area yang disorot biru akan muncul."
+
+#. (itstool) path: item/p
+#: C/opening-images.page:58
+msgid "Drop the image while it's still hovered over the main window."
+msgstr "Jatuhkan gambar selagi gambar masih berada di atas jendela utama."
+
+#. (itstool) path: section/title
+#: C/opening-images.page:64
+msgid "Browsing"
+msgstr "Meramban"
+
+#. (itstool) path: p/media
+#. This is a reference to an external file such as an image or video. When
+#. the file changes, the md5 hash will change to let you know you need to
+#. update your localized copy. The msgstr is not used at all. Set it to
+#. whatever you like once you have updated your copy of the file.
+#: C/opening-images.page:67
+msgctxt "_"
+msgid ""
+"external ref='figures/go-previous-symbolic.svg' "
+"md5='a53305845578db884ecfb7d8d33fcaeb'"
+msgstr "."
+
+#. (itstool) path: p/media
+#. This is a reference to an external file such as an image or video. When
+#. the file changes, the md5 hash will change to let you know you need to
+#. update your localized copy. The msgstr is not used at all. Set it to
+#. whatever you like once you have updated your copy of the file.
+#: C/opening-images.page:68
+msgctxt "_"
+msgid ""
+"external ref='figures/go-next-symbolic.svg' "
+"md5='2f901ac0f711cfb3274b2985d10c4124'"
+msgstr "."
+
+#. (itstool) path: section/p
+#: C/opening-images.page:65
+msgid ""
+"When opening an image from the file chooser or file manager, Loupe will load "
+"other files in the parent directory of the image and sort them in "
+"alphabetical order. Users can browse the other images in the directory with "
+"the <gui>Previous Image</gui> (<media type=\"image\" src=\"figures/go-"
+"previous-symbolic.svg\">go-previous-symbolic</media>) and <gui>Next Image</"
+"gui> (<media type=\"image\" src=\"figures/go-next-symbolic.svg\">go-next-"
+"symbolic</media>) buttons."
+msgstr ""
+"Ketika membuka gambar dari pemilih berkas atau pengelola berkas, Loupe akan "
+"memuat berkas lain dalam direktori induk gambar dan mengurutkannya dalam "
+"urutan abjad. Pengguna dapat menelusuri gambar lain dalam direktori dengan "
+"tombol <gui>Gambar Sebelumnya</gui> (<media type=\"image\" src=\"figures/go-"
+"previous-symbolic.svg\">buka-simbol-sebelumnya</media>) dan <gui>Gambar "
+"Berikutnya</gui> (<media type=\"image\" src=\"figures/go-next-symbolic."
+"svg\">buka-simbol-selanjutnya</media>)."
+
+#. (itstool) path: note/p
+#: C/opening-images.page:70 C/viewing-images.page:39
+msgid ""
+"Keyboard users can also use the corresponding shortcuts presented in the "
+"<gui>Keyboard Shortcuts</gui> dialog."
+msgstr ""
+"Pengguna papan tik juga dapat menggunakan pintasan yang sesuai yang "
+"disajikan dalam dialog <gui>Pintasan Papan Tik</gui>."
+
+#. (itstool) path: info/desc
+#: C/index.page:10
+msgid "Browse through your images and inspect their metadata."
+msgstr "Jelajahi gambar Anda dan periksa metadata-nya."
+
+#. (itstool) path: page/title
+#: C/index.page:12
+msgid "<_:media-1/> Image Viewer (Loupe)"
+msgstr "<_:media-1/> Penampil Citra (Loupe)"
+
+#. (itstool) path: section/title
+#: C/index.page:14
+msgid "Getting Started"
+msgstr "Mulai Memakai"
+
+#. (itstool) path: section/title
+#: C/index.page:17
+msgid "Additional Features"
+msgstr "Fitur Tambahan"
+
+#. (itstool) path: section/title
+#: C/index.page:20
+msgid "Technical Information"
+msgstr "Informasi Teknis"
+
+#. (itstool) path: info/desc
+#: C/sending-to-other-apps.page:11
+msgid ""
+"Learn how to send, copy, and drag images from Image Viewer to other apps."
+msgstr ""
+"Pelajari cara mengirim, menyalin, dan menyeret gambar dari Penampil Citra ke "
+"aplikasi lain."
+
+#. (itstool) path: page/title
+#: C/sending-to-other-apps.page:13
+msgid "Sending Images To Other Apps"
+msgstr "Mengirim Gambar ke Aplikasi Lain"
+
+#. (itstool) path: section/title
+#: C/sending-to-other-apps.page:15
+msgid "\"Open With…\" Action"
+msgstr "Aksi \"Buka dengan…\""
+
+#. (itstool) path: item/p
+#: C/sending-to-other-apps.page:18
+msgid ""
+"Click the <gui style=\"menuitem\">Open With…</gui> menu item. A dialog with "
+"a list of applications will appear."
+msgstr ""
+"Klik butir menu <gui style=\"menuitem\">Buka Dengan…</gui>. Dialog dengan "
+"daftar aplikasi akan muncul."
+
+#. (itstool) path: item/p
+#: C/sending-to-other-apps.page:21
+msgid "Select the application you want to open the image with."
+msgstr "Pilih aplikasi yang ingin Anda gunakan untuk membuka gambar."
+
+#. (itstool) path: section/title
+#: C/sending-to-other-apps.page:26
+msgid "Copy &amp; Paste"
+msgstr "Salin &amp; Tempel"
+
+#. (itstool) path: p/media
+#. This is a reference to an external file such as an image or video. When
+#. the file changes, the md5 hash will change to let you know you need to
+#. update your localized copy. The msgstr is not used at all. Set it to
+#. whatever you like once you have updated your copy of the file.
+#: C/sending-to-other-apps.page:29
+msgctxt "_"
+msgid ""
+"external ref='figures/edit-copy-symbolic.svg' "
+"md5='4774ffd65c32e160f4cefc093abd6b7c'"
+msgstr "."
+
+#. (itstool) path: item/p
+#: C/sending-to-other-apps.page:29
+msgid ""
+"Click the <gui>Copy to Clipboard</gui> (<media type=\"image\" src=\"figures/"
+"edit-copy-symbolic.svg\">edit-copy-symbolic</media>) button. A toast "
+"notifying you that the image is in your clipboard will appear."
+msgstr ""
+"Klik tombol <gui>Salin ke Papan Klip</gui> (<media type=\"image\" "
+"src=\"figures/edit-copy-symbolic.svg\">edit-salin-simbol</media>). Sebuah "
+"roti panggang yang memberitahukan Anda bahwa gambar tersebut ada di papan "
+"klip Anda akan muncul."
+
+#. (itstool) path: item/p
+#: C/sending-to-other-apps.page:32
+msgid "Paste your image in your application of choice."
+msgstr "Rekatkan gambar Anda dalam aplikasi pilihan Anda."
+
+#. (itstool) path: item/p
+#: C/sending-to-other-apps.page:40
+msgid "Zoom out from the image completely."
+msgstr "Memperkecil gambar sepenuhnya."
+
+#. (itstool) path: item/p
+#: C/sending-to-other-apps.page:43
+msgid "Click and hold the selected image."
+msgstr "Klik dan tahan gambar yang dipilih."
+
+#. (itstool) path: item/p
+#: C/sending-to-other-apps.page:46
+msgid "Drag the image to your application of choice."
+msgstr "Seret gambar ke aplikasi pilihan Anda."
+
+#. (itstool) path: info/desc
+#: C/viewing-images.page:11
+msgid "Learn how to view an image at different scales and orientations."
+msgstr "Pelajari cara melihat gambar pada skala dan orientasi yang berbeda."
+
+#. (itstool) path: page/title
+#: C/viewing-images.page:13
+msgid "Viewing Images"
+msgstr "Melihat Gambar"
+
+#. (itstool) path: section/title
+#: C/viewing-images.page:15
+msgid "Zooming"
+msgstr "Menzum"
+
+#. (itstool) path: p/media
+#. This is a reference to an external file such as an image or video. When
+#. the file changes, the md5 hash will change to let you know you need to
+#. update your localized copy. The msgstr is not used at all. Set it to
+#. whatever you like once you have updated your copy of the file.
+#: C/viewing-images.page:16
+msgctxt "_"
+msgid ""
+"external ref='figures/zoom-in-symbolic.svg' "
+"md5='fed4648112c974f25de99c15ece6272c'"
+msgstr "."
+
+#. (itstool) path: p/media
+#. This is a reference to an external file such as an image or video. When
+#. the file changes, the md5 hash will change to let you know you need to
+#. update your localized copy. The msgstr is not used at all. Set it to
+#. whatever you like once you have updated your copy of the file.
+#: C/viewing-images.page:17
+msgctxt "_"
+msgid ""
+"external ref='figures/zoom-out-symbolic.svg' "
+"md5='fe99d9c40c1104988ee4580283168dfb'"
+msgstr "."
+
+#. (itstool) path: section/p
+#: C/viewing-images.page:16
+msgid ""
+"Users can zoom in with the <gui>Zoom In</gui> (<media type=\"image\" "
+"src=\"figures/zoom-in-symbolic.svg\">zoom-in-symbolic</media>) button and "
+"zoom out with the <gui>Zoom Out</gui> (<media type=\"image\" src=\"figures/"
+"zoom-out-symbolic.svg\">zoom-out-symbolic</media>) button."
+msgstr ""
+"Pengguna dapat memperbesar dengan tombol <gui>Perbesar</gui> (<media "
+"type=\"image\" src=\"figures/zoom-in-symbolic.svg\">zoom-in-simbolik</"
+"media>) dan memperkecil dengan tombol <gui>Perkecil</gui> (<media "
+"type=\"image\" src=\"figures/zoom-out-symbolic.svg\">zoom-out-simbolik</"
+"media>)."
+
+#. (itstool) path: section/p
+#: C/viewing-images.page:19
+msgid ""
+"Touchpad and touchscreen users can also zoom with a two-finger pinch "
+"gesture. On touchpads, it is also possible to zoom by pressing the "
+"<key>Ctrl</key> key while swiping up/down with two fingers on the touchpad."
+msgstr ""
+"Pengguna touchpad dan layar sentuh juga dapat melakukan zum dengan gerakan "
+"mencubit dua jari. Pada touchpad, Anda juga dapat melakukan zum dengan "
+"menekan tombol <key>Ctrl</key> sambil mengusap ke atas/bawah dengan dua jari "
+"pada touchpad."
+
+#. (itstool) path: section/title
+#: C/viewing-images.page:22
+msgid "Panning"
+msgstr "Panning"
+
+#. (itstool) path: section/p
+#: C/viewing-images.page:23
+msgid ""
+"Mouse and touchpad users can pan the view when zoomed in by clicking and "
+"dragging the image. Touchscreen users can use a single-finger drag gesture "
+"to pan the view."
+msgstr ""
+"Pengguna tetikus dan touchpad dapat menggeser tampilan ketika diperbesar "
+"dengan mengklik dan menyeret gambar. Pengguna layar sentuh dapat menggunakan "
+"gerakan seret satu jari untuk menggeser tampilan."
+
+#. (itstool) path: section/title
+#: C/viewing-images.page:27
+msgid "Rotating"
+msgstr "Memutar"
+
+#. (itstool) path: p/media
+#. This is a reference to an external file such as an image or video. When
+#. the file changes, the md5 hash will change to let you know you need to
+#. update your localized copy. The msgstr is not used at all. Set it to
+#. whatever you like once you have updated your copy of the file.
+#: C/viewing-images.page:28
+msgctxt "_"
+msgid ""
+"external ref='figures/object-rotate-right-symbolic.svg' "
+"md5='0284f09f3659bf61e4882ac8a758b38f'"
+msgstr "."
+
+#. (itstool) path: p/media
+#. This is a reference to an external file such as an image or video. When
+#. the file changes, the md5 hash will change to let you know you need to
+#. update your localized copy. The msgstr is not used at all. Set it to
+#. whatever you like once you have updated your copy of the file.
+#: C/viewing-images.page:29
+msgctxt "_"
+msgid ""
+"external ref='figures/object-rotate-left-symbolic.svg' "
+"md5='c2393bbaa3b0f7ea09b43089295a44d4'"
+msgstr "."
+
+#. (itstool) path: section/p
+#: C/viewing-images.page:28
+msgid ""
+"Users can use the <gui>Rotate Right</gui> (<media type=\"image\" "
+"src=\"figures/object-rotate-right-symbolic.svg\">object-rotate-right-"
+"symbolic</media>) and <gui>Rotate Left</gui> (<media type=\"image\" "
+"src=\"figures/object-rotate-left-symbolic.svg\">object-rotate-left-symbolic</"
+"media>) buttons under <gui style=\"menuitem\">Rotate</gui> in the main menu "
+"to rotate clockwise and counter-clockwise."
+msgstr ""
+"Pengguna dapat menggunakan tombol <gui>Putar Kanan</gui> (<media "
+"type=\"image\" src=\"figures/object-rotate-right-symbolic.svg\">objek-putar-"
+"kanan-simbolik</media>) dan <gui>Putar Kiri</gui> (<media type=\"image\" "
+"src=\"figures/object-rotate-left-symbolic.svg\">objek-putar-kiri-simbolik</"
+"media>) di bawah <gui style=\"menuitem\">Putar</gui> di menu utama untuk "
+"memutar searah jarum jam dan berlawanan arah jarum jam."
+
+#. (itstool) path: section/p
+#: C/viewing-images.page:32
+msgid ""
+"Touchpad and touchscreen users can also use a two-finger rotate gesture."
+msgstr ""
+"Pengguna touchpad dan layar sentuh juga dapat menggunakan gerakan memutar "
+"dua jari."
+
+#. (itstool) path: section/title
+#: C/viewing-images.page:35
+msgid "Fullscreen"
+msgstr "Layar Penuh"
+
+#. (itstool) path: p/media
+#. This is a reference to an external file such as an image or video. When
+#. the file changes, the md5 hash will change to let you know you need to
+#. update your localized copy. The msgstr is not used at all. Set it to
+#. whatever you like once you have updated your copy of the file.
+#: C/viewing-images.page:37
+msgctxt "_"
+msgid ""
+"external ref='figures/view-fullscreen-symbolic.svg' "
+"md5='3ee106ab07051301a9b5982cbe04b597'"
+msgstr "."
+
+#. (itstool) path: p/media
+#. This is a reference to an external file such as an image or video. When
+#. the file changes, the md5 hash will change to let you know you need to
+#. update your localized copy. The msgstr is not used at all. Set it to
+#. whatever you like once you have updated your copy of the file.
+#: C/viewing-images.page:37
+msgctxt "_"
+msgid ""
+"external ref='figures/view-restore-symbolic.svg' "
+"md5='f7470d4b9ed1d317ed201bb4a72882fb'"
+msgstr "."
+
+#. (itstool) path: section/p
+#: C/viewing-images.page:36
+msgid ""
+"Image Viewer has a simple fullscreen mode. Users can toggle fullscreen mode "
+"by pressing the <gui>Toggle Fullscreen</gui> (<media type=\"image\" "
+"src=\"figures/view-fullscreen-symbolic.svg\">view-fullscreen-symbolic</"
+"media> / <media type=\"image\" src=\"figures/view-restore-symbolic."
+"svg\">view-restore-symbolic</media>) button."
+msgstr ""
+"Penampil Citra memiliki mode layar penuh yang sederhana. Pengguna dapat "
+"beralih ke mode layar penuh dengan menekan tombol <gui>Jungkitkan Layar "
+"Penuh</gui> (<media type=\"image\" src=\"figures/view-fullscreen-symbolic."
+"svg\">lihat-layar-penuh-simbolik</media> / <media type=\"image\" "
+"src=\"figures/view-restore-symbolic.svg\">lihat-pulihkan-simbolik</media>)."
