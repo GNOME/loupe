@@ -24,6 +24,7 @@ use adw::subclass::prelude::*;
 use adw::{glib, gtk};
 use glycin::Operation;
 
+use crate::deps::*;
 use crate::editing::preview::EditingError;
 use crate::util::gettext::*;
 use crate::util::root::ParentWindow;
@@ -59,9 +60,6 @@ pub enum LpOrientation {
 }
 
 mod imp {
-
-    use gtk::gdk;
-
     use super::*;
 
     #[derive(Debug, Default, gtk::CompositeTemplate, glib::Properties)]
@@ -72,6 +70,8 @@ mod imp {
         pub(super) image: TemplateChild<LpImage>,
         #[template_child]
         pub(super) selection: TemplateChild<LpEditCropSelection>,
+        #[template_child]
+        aspect_ratio_buttons: TemplateChild<gtk::Widget>,
 
         #[property(get, construct_only)]
         original_image: OnceCell<LpImage>,
@@ -198,6 +198,16 @@ mod imp {
                     obj.action_set_enabled("edit-crop.reset", obj.imp().is_reset_enabled());
                 }
             ));
+
+            self.selection.connect_orientation_notify(glib::clone!(
+                #[weak]
+                obj,
+                move |_| {
+                    obj.imp().asepect_ratio_orientation_changed();
+                }
+            ));
+
+            self.asepect_ratio_orientation_changed();
         }
 
         fn dispose(&self) {
@@ -302,6 +312,19 @@ mod imp {
 
         fn is_reset_enabled(&self) -> bool {
             self.obj().edit_window().operations().is_some() || self.selection.cropped()
+        }
+
+        fn asepect_ratio_orientation_changed(&self) {
+            match self.selection.orientation() {
+                LpOrientation::Landscape => {
+                    self.aspect_ratio_buttons
+                        .remove_css_class("button-icons-portrait");
+                }
+                LpOrientation::Portrait => {
+                    self.aspect_ratio_buttons
+                        .add_css_class("button-icons-portrait");
+                }
+            }
         }
     }
 }

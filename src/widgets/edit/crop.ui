@@ -76,7 +76,7 @@
                   <object class="AdwPreferencesGroup">
                     <property name="title">Aspect Ratio</property>
                     <child>
-                      <object class="GtkGrid">
+                      <object class="GtkGrid" id="aspect_ratio_buttons">
                         <property name="column-homogeneous">true</property>
                         <property name="row-spacing">6</property>
                         <property name="column-spacing">6</property>
@@ -144,6 +144,9 @@
                                 <property name="icon-name">aspect-ratio-5to4-symbolic</property>
                                 <property name="label" translatable="yes">_5:4</property>
                                 <property name="use-underline">true</property>
+                                <style>
+                                  <class name="has-orientation" />
+                                </style>
                               </object>
                             </child>
                             <layout>
@@ -162,6 +165,9 @@
                                 <property name="icon-name">aspect-ratio-4to3-symbolic</property>
                                 <property name="label" translatable="yes">_4:3</property>
                                 <property name="use-underline">true</property>
+                                <style>
+                                  <class name="has-orientation" />
+                                </style>
                               </object>
                             </child>
                             <layout>
@@ -180,6 +186,9 @@
                                 <property name="icon-name">aspect-ratio-3to2-symbolic</property>
                                 <property name="label" translatable="yes">_3:2</property>
                                 <property name="use-underline">true</property>
+                                <style>
+                                  <class name="has-orientation" />
+                                </style>
                               </object>
                             </child>
                             <layout>
@@ -198,6 +207,9 @@
                                 <property name="icon-name">aspect-ratio-16to9-symbolic</property>
                                 <property name="label" translatable="yes">_16:9</property>
                                 <property name="use-underline">true</property>
+                                <style>
+                                  <class name="has-orientation" />
+                                </style>
                               </object>
                             </child>
                             <layout>

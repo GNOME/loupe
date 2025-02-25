@@ -1,3 +1,12 @@
+/* Icon orientation for GtkToggleButtons for aspect ratios */
+.has-orientation image {
+  transition: transform 300ms;
+}
+
+.button-icons-portrait .has-orientation image {
+  transform: rotate(90deg);
+}
+
 lpcrop {
   --discarded-background: rgba(50, 50, 50, 0.7);
   --selection-border-color: rgb(240, 240, 240);
