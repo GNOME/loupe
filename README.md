@@ -7,6 +7,7 @@ GNOME's default image viewer providing
 - Fast GPU-accelerated image rendering with tiled rendering for SVGs
 - Extendable and sandboxed image decoding
 - Support for more than 15 image formats by default
+- Editing with crop, rotate, and flip for PNG and JPEG
 - Extensive support for touchpad and touchscreen gestures
 - Accessible presentation of the most important metadata
 - Sleek but powerful interface developed in conjunction with GNOME Human Interface Guidelines
