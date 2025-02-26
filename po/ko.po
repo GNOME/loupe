@@ -1,25 +1,26 @@
 # Korean translation for Loupe.
 # Copyright (C) 2023 Loupe's COPYRIGHT HOLDER
 # This file is distributed under the same license as the Loupe package.
-# Seong-ho Cho <shcho@gnome.org>, 2023-2024.
+# Seong-ho Cho <shcho@gnome.org>, 2023-2025.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2024-07-31 00:10+0000\n"
-"PO-Revision-Date: 2024-08-25 01:47+0900\n"
-"Last-Translator: Seong-ho Cho <darkcircle.0426@gmail.com>\n"
+"POT-Creation-Date: 2025-02-19 12:15+0000\n"
+"PO-Revision-Date: 2025-02-25 23:47+0900\n"
+"Last-Translator: Seong-ho Cho <shcho@gnome.org>\n"
 "Language-Team: Korean <gnome-kr@googlegroups.com>\n"
 "Language: ko\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 3.4.4\n"
+"X-Generator: Poedit 3.5\n"
 
 #: data/org.gnome.Loupe.desktop.in.in:3
-#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:31 src/window.rs:873
+#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:31
+#: src/widgets/image_window.rs:866
 msgid "Image Viewer"
 msgstr "그림 보기"
 
@@ -151,12 +152,14 @@ msgstr "그림 회전"
 
 #: data/resources/gtk/help-overlay.ui:124
 #: data/resources/gtk/help-overlay.ui:274
+#: data/resources/gtk/help-overlay.ui:315
 msgctxt "shortcut window"
 msgid "Rotate Clockwise"
 msgstr "시계 방향 회전"
 
 #: data/resources/gtk/help-overlay.ui:130
 #: data/resources/gtk/help-overlay.ui:280
+#: data/resources/gtk/help-overlay.ui:321
 msgctxt "shortcut window"
 msgid "Rotate Counterclockwise"
 msgstr "시계 반대 방향 회전"
@@ -248,6 +251,46 @@ msgctxt "shortcut window"
 msgid "Gestures"
 msgstr "제스쳐"
 
+#: data/resources/gtk/help-overlay.ui:288
+msgctxt "shortcut window"
+msgid "Editing"
+msgstr "편집"
+
+#: data/resources/gtk/help-overlay.ui:291
+msgctxt "shortcut window"
+msgid "Open Editing View"
+msgstr "편집 보기창 열기"
+
+#: data/resources/gtk/help-overlay.ui:297
+msgctxt "shortcut window"
+msgid "Replace Original"
+msgstr "원본 대체"
+
+#: data/resources/gtk/help-overlay.ui:303
+msgctxt "shortcut window"
+msgid "Save As"
+msgstr "다른 이름으로 저장"
+
+#: data/resources/gtk/help-overlay.ui:309
+msgctxt "shortcut window"
+msgid "Cancel"
+msgstr "취소"
+
+#: data/resources/gtk/help-overlay.ui:327
+msgctxt "shortcut window"
+msgid "Mirror Horizontally"
+msgstr "가로 반전"
+
+#: data/resources/gtk/help-overlay.ui:333
+msgctxt "shortcut window"
+msgid "Mirror Vertically"
+msgstr "세로 반전"
+
+#: data/resources/gtk/help-overlay.ui:339
+msgctxt "shortcut window"
+msgid "Apply Crop"
+msgstr "잘라내기 적용"
+
 #. Translators: Replace "translator-credits" with your names, one name per line
 #: src/about.rs:43
 msgid "translator-credits"
@@ -257,11 +300,12 @@ msgstr "조성호 <shcho@gnome.org>"
 msgid "Copyright © 2020–2024 Christopher Davis et al."
 msgstr "Copyright © 2020–2024 Christopher Davis et al."
 
-#: src/file_model.rs:131
+#: src/file_model.rs:180
 msgid "Could not list other files in directory."
 msgstr "디렉터리의 다른 파일을 나열할 수 없습니다."
 
-#: src/metadata.rs:249
+#. Translators: Display of the f-number <https://en.wikipedia.org/wiki/F-number>. {} will be replaced with the number
+#: src/metadata.rs:253
 msgid "\\u{192}\\u{2215}{}"
 msgstr "\\u{192}\\u{2215}{}"
 
@@ -272,32 +316,30 @@ msgstr "1\\u{2215}{}\\u{202F}s"
 
 #. Translators: Exposure time (photography) in seconds
 #: src/metadata.rs:274
-#| msgid "{}\\u{202F}mm"
 msgid "{}\\u{202F}s"
 msgstr "{}\\u{202F}s"
 
-#. Translators: Unit for focal length in millimeters
-#: src/metadata.rs:300
+#: src/metadata.rs:288
 msgid "{}\\u{202F}mm"
 msgstr "{}\\u{202F}mm"
 
 #. Translators: short for "north" in GPS coordinate
-#: src/metadata/gps.rs:165
+#: src/metadata.rs:328
 msgid "N"
 msgstr "북"
 
 #. Translators: short for "south" in GPS coordinate
-#: src/metadata/gps.rs:168
+#: src/metadata.rs:332
 msgid "S"
 msgstr "남"
 
 #. Translators: short for "east" in GPS coordinate
-#: src/metadata/gps.rs:190
+#: src/metadata.rs:341
 msgid "E"
 msgstr "동"
 
 #. Translators: short for "west" in GPS coordinate
-#: src/metadata/gps.rs:193
+#: src/metadata.rs:345
 msgid "W"
 msgstr "서"
 
@@ -305,24 +347,187 @@ msgstr "서"
 #. The format has to follow <https://docs.gtk.org/glib/method.DateTime.format.html>
 #. The default is already translated. Don't change if you are not sure what to
 #. use.
-#: src/util.rs:37
+#: src/util.rs:39
 #, c-format
 msgid "%x %X"
 msgstr "%x %X"
 
-#: src/util.rs:180 src/window.rs:659
+#: src/util.rs:182 src/widgets/image_window.rs:638
 msgid "Failed to restore image from trash"
 msgstr "휴지통에서의 그림 복원에 실패했습니다"
 
+#: src/widgets/drag_overlay.ui:15
+msgid "Drop Image to View"
+msgstr "살펴볼 그림을 끌어 놓으십시오"
+
+#: src/widgets/edit/crop.rs:330
+msgid "Failed to Edit Image"
+msgstr "그림 편집에 실패했습니다"
+
+#: src/widgets/edit/crop.ui:6
+msgid "Free"
+msgstr "자유"
+
+#: src/widgets/edit/crop.ui:11
+msgid "Original"
+msgstr "원본"
+
+#: src/widgets/edit/crop.ui:16
+msgid "Square"
+msgstr "정방"
+
+#: src/widgets/edit/crop.ui:21
+msgid "5:4"
+msgstr "5:4"
+
+#: src/widgets/edit/crop.ui:26
+msgid "4:3"
+msgstr "4:3"
+
+#: src/widgets/edit/crop.ui:31
+msgid "3:2"
+msgstr "3:2"
+
+#: src/widgets/edit/crop.ui:36
+msgid "16:9"
+msgstr "16:9"
+
+#: src/widgets/edit/crop.ui:91
+msgid "_Free"
+msgstr "자유(_F)"
+
+#: src/widgets/edit/crop.ui:109
+msgid "_Original"
+msgstr "원본(_O)"
+
+#: src/widgets/edit/crop.ui:127
+msgid "_Square"
+msgstr "정방(_S)"
+
+#: src/widgets/edit/crop.ui:145
+msgid "_5:4"
+msgstr "_5:4"
+
+#: src/widgets/edit/crop.ui:163
+msgid "_4:3"
+msgstr "_4:3"
+
+#: src/widgets/edit/crop.ui:181
+msgid "_3:2"
+msgstr "_3:2"
+
+#: src/widgets/edit/crop.ui:199
+msgid "_16:9"
+msgstr "_16:9"
+
+#: src/widgets/edit/crop.ui:219 src/widgets/edit/crop.ui:365
+msgid "Orientation Landscape"
+msgstr "가로 방향"
+
+#: src/widgets/edit/crop.ui:228 src/widgets/edit/crop.ui:377
+msgid "Orientation Portrait"
+msgstr "세로 방향"
+
+#: src/widgets/edit/crop.ui:249 src/widgets/edit/crop.ui:395
+msgid "Rotate Counter Clockwise"
+msgstr "시계 반대방향 회전"
+
+#: src/widgets/edit/crop.ui:256
+msgid "Rotate Clockwise"
+msgstr "시계 방향 회전"
+
+#: src/widgets/edit/crop.ui:275 src/widgets/edit/crop.ui:403
+msgid "Mirror Horizontally"
+msgstr "가로 반전"
+
+#: src/widgets/edit/crop.ui:282
+msgid "Mirror Vertically"
+msgstr "세로 반전"
+
+#: src/widgets/edit/crop.ui:295 src/widgets/edit/crop.ui:419
+msgid "Undo Changes in this View"
+msgstr "이 보기 "
+
+#: src/widgets/edit/crop.ui:352
+msgid "Aspect Ratio"
+msgstr "종횡비"
+
+#: src/widgets/edit/crop_selection.ui:46
+msgid "Crop Selection"
+msgstr "선택 영역 잘라내기"
+
+#. Translators: Filename suffix
+#. Translators: Filename suffix, {} is replaced by a number
+#: src/widgets/edit_window.rs:192 src/widgets/edit_window.rs:195
+msgid " (Edited)"
+msgid_plural " (Edited {})"
+msgstr[0] " ({}건 편집함)"
+
+#: src/widgets/edit_window.rs:290 src/widgets/edit_window.rs:316
+msgid "Failed to save image."
+msgstr "그림 저장에 실패했습니다."
+
+#: src/widgets/edit_window.rs:346
+msgid "Editing Image"
+msgstr "그림 편집"
+
+#: src/widgets/edit_window.rs:360
+msgid "Failed to edit image."
+msgstr "그림 편집에 실패했습니다."
+
+#: src/widgets/edit_window.rs:370 src/widgets/edit_window.rs:393
+msgid "Failed to Save Image"
+msgstr "그림 저장에 실패했습니다"
+
+#: src/widgets/edit_window.rs:376
+msgid "Saving Image"
+msgstr "그림 저장중"
+
+#: src/widgets/edit_window.ui:64
+msgid "_Cancel"
+msgstr "취소(_C)"
+
+#: src/widgets/edit_window.ui:71
+msgid "_Save"
+msgstr "저장(_S)"
+
+#: src/widgets/edit_window.ui:92
+msgid "_Save As…"
+msgstr "다른 이름으로 저장(_S)…"
+
+#: src/widgets/edit_window.ui:100
+msgid "Keep original and create a new file"
+msgstr "원본을 유지하고 새 파일 만들기"
+
+#: src/widgets/edit_window.ui:120
+msgid "_Replace Original"
+msgstr "원본 대체(_R)"
+
+#: src/widgets/edit_window.ui:128
+msgid "Original image will be moved to the trash"
+msgstr "원본 그림을 휴지통으로 옮겼습니다"
+
+#: src/widgets/error_details.rs:79
+msgid ""
+"The following error occurred. If you think this is an issue with the "
+"program, please include this information when you report the error."
+msgstr ""
+"다음 오류가 발생했습니다. 프로그램의 문제라고 생각한다면, 오류 보고시 이 정보"
+"를 넣어주십시오."
+
+#: src/widgets/error_details.ui:4
+msgid "Error Details"
+msgstr "오류 세부 내용"
+
 #: src/widgets/error_details.ui:19
 msgid ""
-"The image loader reported the following when trying to load the image. "
-"Please include this information when you report an error. If possible, "
-"please also provide the image that causes the issue."
+"The image loader reported the following when trying to load or edit the "
+"image. Please include this information when you report an error. If "
+"possible, please also provide the image that causes the issue."
 msgstr ""
-"그림 불러오기에서 그림을 불러오는 동안 다음 내용을 보고했습니다. 오류를 보고"
-"할 떄 이 정보를 넣어주십시오. 가능하다면 문제를 유발하는 그림도 제공해주십시"
-"오."
+"그림 불러오기에서 그림을 불러오기 또는 편집을 시도하는 동안 다음 내용을 보고"
+"했습니다. 오류 보고시 이 정보를 넣어주십시오. 가능하다면 문제를 유발하는 그림"
+"도 제공해주십시오."
 
 #: src/widgets/error_details.ui:24
 msgid "Error Message"
@@ -361,25 +566,29 @@ msgstr "이 그림을 불러오는데 충분한 여분의 메모리가 없습니
 msgid "Either the image file is corrupted or it contains unsupported elements."
 msgstr "그림 파일이 깨졌거나 지원하지 않는 요소가 들어있습니다."
 
-#: src/widgets/image_page.ui:6 src/window.ui:16
+#: src/widgets/image_page.ui:6 src/widgets/image_window.ui:16
 msgid "_Open With…"
 msgstr "다음으로 열기(_O)…"
 
-#: src/widgets/image_page.ui:14 src/window.ui:24
+#: src/widgets/image_page.ui:10 src/widgets/image_window.ui:20
 msgid "_Print…"
 msgstr "인쇄(_P)…"
 
-#: src/widgets/image_page.ui:18
-msgid "_Copy"
-msgstr "복사(_C)"
-
-#: src/widgets/image_page.ui:23 src/window.ui:29
+#: src/widgets/image_page.ui:15 src/widgets/image_window.ui:25
 msgid "Rotate"
 msgstr "회전"
 
-#: src/widgets/image_page.ui:34 src/window.ui:40
+#: src/widgets/image_page.ui:26 src/widgets/image_window.ui:36
 msgid "_Set as Background…"
 msgstr "백그라운드로 설정(_S)…"
+
+#: src/widgets/image_page.ui:30 src/widgets/image_window.ui:40
+msgid "_Delete"
+msgstr "삭제(_D)"
+
+#: src/widgets/image_page.ui:34
+msgid "_Copy"
+msgstr "복사(_C)"
 
 #: src/widgets/image_page.ui:63
 msgid "Could not Load Image"
@@ -393,43 +602,147 @@ msgstr "더 자세한 정보(_I)"
 msgid "_Reload"
 msgstr "다시 불러오기(_R)"
 
-#: src/widgets/image_page.ui:123 src/window.ui:225
+#: src/widgets/image_page.ui:123 src/widgets/image_window.ui:101
 msgid "Rotate Left"
 msgstr "좌측으로 회전"
 
-#: src/widgets/image_page.ui:133 src/window.ui:235
+#: src/widgets/image_page.ui:133 src/widgets/image_window.ui:111
 msgid "Rotate Right"
 msgstr "우측으로 회전"
 
+#: src/widgets/image_view.rs:197
+msgid "{} %"
+msgstr "{} %"
+
 #. Translators: This is a toast notification, informing the user that
 #. an image has been set as background.
-#: src/widgets/image_view.rs:720
+#: src/widgets/image_view.rs:836
 msgid "Set as background."
 msgstr "배경으로 설정합니다."
 
-#: src/widgets/image_view.rs:733
+#: src/widgets/image_view.rs:849
 msgid "Could not set background."
 msgstr "배경으로 설정할 수 없습니다."
 
-#: src/widgets/image_view.ui:27
+#: src/widgets/image_view.ui:30
 msgid "Previous Image"
 msgstr "이전 그림"
 
-#: src/widgets/image_view.ui:38
+#: src/widgets/image_view.ui:40
 msgid "Next Image"
 msgstr "다음 그림"
 
-#: src/widgets/image_view.ui:63
+#: src/widgets/image_view.ui:74
 msgid "Zoom Out"
 msgstr "축소"
 
-#: src/widgets/image_view.ui:74
+#: src/widgets/image_view.ui:85
 msgid "Zoom In"
 msgstr "확대"
 
-#: src/widgets/image_view.ui:85
+#: src/widgets/image_view.ui:100
+msgid "Toggle Zoom"
+msgstr "확대 전환"
+
+#: src/widgets/image_view.ui:108
+msgid "Zoom to Specific Level"
+msgstr "지정 수준으로 확대"
+
+#: src/widgets/image_window.rs:502
+msgid "Supported image formats"
+msgstr "지원 그림 형식"
+
+#: src/widgets/image_window.rs:508
+msgid "All files"
+msgstr "모든 파일"
+
+#: src/widgets/image_window.rs:515
+msgid "Open Image"
+msgstr "그림 열기"
+
+#: src/widgets/image_window.rs:601
+msgid "Image copied to clipboard"
+msgstr "그림을 클립보드에 복사했습니다"
+
+#: src/widgets/image_window.rs:622
+msgid "Image moved to trash"
+msgstr "그림을 휴지통으로 이동했습니다"
+
+#: src/widgets/image_window.rs:623
+msgid "Undo"
+msgstr "실행 취소"
+
+#: src/widgets/image_window.rs:653
+msgid "Failed to move image to trash"
+msgstr "휴지통으로의 그림 이동에 실패했습니다"
+
+#: src/widgets/image_window.rs:677
+msgid "Permanently Delete Image?"
+msgstr "그림을 완전히 삭제하시겠습니까?"
+
+#: src/widgets/image_window.rs:679
+msgid "After deleting the image “{}” it will be permanently lost."
+msgstr "“{}” 그림을 삭제하면 완전히 사라집니다."
+
+#: src/widgets/image_window.rs:687
+msgid "Cancel"
+msgstr "취소"
+
+#: src/widgets/image_window.rs:688
+msgid "Delete"
+msgstr "삭제"
+
+#: src/widgets/image_window.rs:699
+msgid "Failed to delete image"
+msgstr "그림 삭제에 실패했습니다"
+
+#: src/widgets/image_window.ui:6
+msgid "_New Window"
+msgstr "새 창(_N)"
+
+#: src/widgets/image_window.ui:10
+msgid "_Open…"
+msgstr "열기(_O)…"
+
+#: src/widgets/image_window.ui:46
+msgid "_Help"
+msgstr "도움말(_H)"
+
+#: src/widgets/image_window.ui:50
+msgid "_Keyboard Shortcuts"
+msgstr "키보드 바로 가기(_K)"
+
+#: src/widgets/image_window.ui:54
+msgid "_About Image Viewer"
+msgstr "그림 보기 정보(_A)"
+
+#: src/widgets/image_window.ui:87
 msgid "Toggle Fullscreen"
 msgstr "전체 화면 전환"
+
+#: src/widgets/image_window.ui:93
+msgid "Main Menu"
+msgstr "주 메뉴"
+
+#: src/widgets/image_window.ui:125
+msgid "Image Properties"
+msgstr "그림 속성"
+
+#: src/widgets/image_window.ui:132
+msgid "Edit Image"
+msgstr "그림 편집"
+
+#: src/widgets/image_window.ui:220
+msgid "View Images"
+msgstr "그림 보기"
+
+#: src/widgets/image_window.ui:221
+msgid "Drag and drop images here"
+msgstr "여기에 그림을 끌어다 놓으세요"
+
+#: src/widgets/image_window.ui:225
+msgid "_Open Files…"
+msgstr "파일 열기(_O)…"
 
 #: src/widgets/print.rs:108
 msgid "Top"
@@ -471,19 +784,19 @@ msgstr "px"
 msgid "Print “{}”"
 msgstr "“{}” 인쇄"
 
-#: src/widgets/print.rs:465
+#: src/widgets/print.rs:476
 msgid "Continue…"
 msgstr "계속…"
 
-#: src/widgets/print.rs:466
+#: src/widgets/print.rs:477
 msgid "Print Image"
 msgstr "그림 인쇄"
 
-#: src/widgets/print.rs:788
+#: src/widgets/print.rs:791
 msgid "_Scale"
 msgstr "비율(_S)"
 
-#: src/widgets/print.rs:791
+#: src/widgets/print.rs:794
 msgid "_Width"
 msgstr "너비(_W)"
 
@@ -548,31 +861,30 @@ msgstr "공간 채우기(_F)"
 msgid "H_eight"
 msgstr "높이(_E)"
 
-#: src/widgets/properties_view.rs:255
+#: src/widgets/properties_view.rs:258
 msgid "Unknown"
 msgstr "알 수 없음"
 
 #. Translators: Addition of image being transparent to format name
-#: src/widgets/properties_view.rs:259
+#: src/widgets/properties_view.rs:262
 msgid ", transparent"
 msgstr ", 투명"
 
 #. Translators: Addition of image being grayscale to format name
-#: src/widgets/properties_view.rs:264
+#: src/widgets/properties_view.rs:267
 msgid ", grayscale"
 msgstr ", 흑백"
 
 #. Translators: Addition of bit size to format name
-#: src/widgets/properties_view.rs:269
+#: src/widgets/properties_view.rs:272
 msgid ", {}\\u{202F}bit"
 msgstr ", {}\\u{202F}bit"
 
-#: src/widgets/properties_view.rs:286
-#| msgid "1\\u{2215}{}\\u{202F}s"
+#: src/widgets/properties_view.rs:290
 msgid "{}\\u{202F}\\u{D7}\\u{202F}{}"
 msgstr "{}\\u{202F}\\u{D7}\\u{202F}{}"
 
-#: src/widgets/properties_view.rs:324
+#: src/widgets/properties_view.rs:329
 msgid "Image Coordinates Copied"
 msgstr "이미지 좌표를 복사했습니다"
 
@@ -622,123 +934,38 @@ msgid "Originally Created"
 msgstr "원본 생성"
 
 #: src/widgets/properties_view.ui:159
+msgid "Comment"
+msgstr "설명"
+
+#: src/widgets/properties_view.ui:169
 msgid "Aperture"
 msgstr "조리개"
 
-#: src/widgets/properties_view.ui:169
+#: src/widgets/properties_view.ui:179
 msgid "Exposure"
 msgstr "노출"
 
-#: src/widgets/properties_view.ui:179
+#: src/widgets/properties_view.ui:189
 msgid "ISO"
 msgstr "ISO"
 
-#: src/widgets/properties_view.ui:189
+#: src/widgets/properties_view.ui:199
 msgid "Focal Length"
 msgstr "초점 거리"
 
-#: src/widgets/properties_view.ui:199
+#: src/widgets/properties_view.ui:209
 msgid "Maker, Model"
 msgstr "제조사, 모델"
 
-#: src/window.rs:523
-msgid "Supported image formats"
-msgstr "지원 그림 형식"
+#: src/widgets/window.rs:222
+msgid "Show Details"
+msgstr "세부 내용 표시"
 
-#: src/window.rs:529
-msgid "All files"
-msgstr "모든 파일"
+#~ msgid "Copy to Clipboard"
+#~ msgstr "클립보드로 복사"
 
-#: src/window.rs:536
-msgid "Open Image"
-msgstr "그림 열기"
-
-#: src/window.rs:622
-msgid "Image copied to clipboard"
-msgstr "그림을 클립보드에 복사했습니다"
-
-#: src/window.rs:643
-msgid "Image moved to trash"
-msgstr "그림을 휴지통으로 이동했습니다"
-
-#: src/window.rs:644
-msgid "Undo"
-msgstr "실행 취소"
-
-#: src/window.rs:674
-msgid "Failed to move image to trash"
-msgstr "휴지통으로의 그림 이동에 실패했습니다"
-
-#: src/window.rs:698
-msgid "Permanently Delete Image?"
-msgstr "그림을 완전히 삭제하시겠습니까?"
-
-#: src/window.rs:700
-msgid "After deleting the image “{}” it will be permanently lost."
-msgstr "“{}” 그림을 삭제하면 완전히 사라집니다."
-
-#: src/window.rs:708
-msgid "Cancel"
-msgstr "취소"
-
-#: src/window.rs:709
-msgid "Delete"
-msgstr "삭제"
-
-#: src/window.rs:720
-msgid "Failed to delete image"
-msgstr "그림 삭제에 실패했습니다"
-
-#: src/window.ui:6
-msgid "_New Window"
-msgstr "새 창(_N)"
-
-#: src/window.ui:10
-msgid "_Open…"
-msgstr "열기(_O)…"
-
-#: src/window.ui:46
-msgid "_Help"
-msgstr "도움말(_H)"
-
-#: src/window.ui:50
-msgid "_Keyboard Shortcuts"
-msgstr "키보드 바로 가기(_K)"
-
-#: src/window.ui:54
-msgid "_About Image Viewer"
-msgstr "그림 보기 정보(_A)"
-
-#: src/window.ui:204
-msgid "Copy to Clipboard"
-msgstr "클립보드로 복사"
-
-#: src/window.ui:211
-msgid "Move to Trash"
-msgstr "휴지통으로 이동"
-
-#: src/window.ui:217
-msgid "Main Menu"
-msgstr "주 메뉴"
-
-#: src/window.ui:249
-msgid "Image Properties"
-msgstr "그림 속성"
-
-#: src/window.ui:281
-msgid "View Images"
-msgstr "그림 보기"
-
-#: src/window.ui:282
-msgid "Drag and drop images here"
-msgstr "여기에 그림을 끌어다 놓으세요"
-
-#: src/window.ui:286
-msgid "_Open Files…"
-msgstr "파일 열기(_O)…"
-
-#~ msgid "Failed to open image"
-#~ msgstr "그림 열기 실패"
+#~ msgid "Move to Trash"
+#~ msgstr "휴지통으로 이동"
 
 #~ msgid "The Loupe Team"
 #~ msgstr "루페 팀"
