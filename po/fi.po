@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2024-09-23 11:13+0000\n"
-"PO-Revision-Date: 2024-09-24 11:36+0300\n"
+"POT-Creation-Date: 2025-02-19 12:15+0000\n"
+"PO-Revision-Date: 2025-02-26 19:53+0200\n"
 "Last-Translator: Jiri Grönroos <jiri.gronroos+l10n@iki.fi>\n"
 "Language-Team: Finnish <lokalisointi-lista@googlegroups.com>\n"
 "Language: fi\n"
@@ -19,7 +19,8 @@ msgstr ""
 "X-Generator: Poedit 3.4.4\n"
 
 #: data/org.gnome.Loupe.desktop.in.in:3
-#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:31 src/window.rs:874
+#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:31
+#: src/widgets/image_window.rs:866
 msgid "Image Viewer"
 msgstr "Kuvakatselin"
 
@@ -151,12 +152,14 @@ msgstr "Kierrä kuvaa"
 
 #: data/resources/gtk/help-overlay.ui:124
 #: data/resources/gtk/help-overlay.ui:274
+#: data/resources/gtk/help-overlay.ui:315
 msgctxt "shortcut window"
 msgid "Rotate Clockwise"
 msgstr "Kierrä myötäpäivään"
 
 #: data/resources/gtk/help-overlay.ui:130
 #: data/resources/gtk/help-overlay.ui:280
+#: data/resources/gtk/help-overlay.ui:321
 msgctxt "shortcut window"
 msgid "Rotate Counterclockwise"
 msgstr "Kierrä vastapäivään"
@@ -248,6 +251,46 @@ msgctxt "shortcut window"
 msgid "Gestures"
 msgstr "Eleet"
 
+#: data/resources/gtk/help-overlay.ui:288
+msgctxt "shortcut window"
+msgid "Editing"
+msgstr "Muokkaaminen"
+
+#: data/resources/gtk/help-overlay.ui:291
+msgctxt "shortcut window"
+msgid "Open Editing View"
+msgstr "Avaa muokkausnäkymä"
+
+#: data/resources/gtk/help-overlay.ui:297
+msgctxt "shortcut window"
+msgid "Replace Original"
+msgstr "Korvaa alkuperäinen"
+
+#: data/resources/gtk/help-overlay.ui:303
+msgctxt "shortcut window"
+msgid "Save As"
+msgstr "Tallenna nimellä"
+
+#: data/resources/gtk/help-overlay.ui:309
+msgctxt "shortcut window"
+msgid "Cancel"
+msgstr "Peru"
+
+#: data/resources/gtk/help-overlay.ui:327
+msgctxt "shortcut window"
+msgid "Mirror Horizontally"
+msgstr "Peilaa vaakasuunnassa"
+
+#: data/resources/gtk/help-overlay.ui:333
+msgctxt "shortcut window"
+msgid "Mirror Vertically"
+msgstr "Peilaa pystysuunnassa"
+
+#: data/resources/gtk/help-overlay.ui:339
+msgctxt "shortcut window"
+msgid "Apply Crop"
+msgstr "Toteuta rajaus"
+
 #. Translators: Replace "translator-credits" with your names, one name per line
 #: src/about.rs:43
 msgid "translator-credits"
@@ -257,7 +300,7 @@ msgstr "Jiri Grönroos"
 msgid "Copyright © 2020–2024 Christopher Davis et al."
 msgstr "Tekijänoikeus © 2020–2024 Christopher Davis ja muut"
 
-#: src/file_model.rs:131
+#: src/file_model.rs:180
 msgid "Could not list other files in directory."
 msgstr "Muita kansion tiedostoja ei voitu listata."
 
@@ -267,37 +310,36 @@ msgid "\\u{192}\\u{2215}{}"
 msgstr "\\u{192}\\u{2215}{}"
 
 #. Translators: Fractional exposure time (photography) in seconds
-#: src/metadata.rs:269
+#: src/metadata.rs:266
 msgid "1\\u{2215}{}\\u{202F}s"
 msgstr "1\\u{2215}{}\\u{202F} s"
 
 #. Translators: Exposure time (photography) in seconds
-#: src/metadata.rs:277
+#: src/metadata.rs:274
 msgid "{}\\u{202F}s"
 msgstr "{}\\u{202F} s"
 
-#. Translators: Unit for focal length in millimeters
-#: src/metadata.rs:303
+#: src/metadata.rs:288
 msgid "{}\\u{202F}mm"
 msgstr "{}\\u{202F} mm"
 
 #. Translators: short for "north" in GPS coordinate
-#: src/metadata/gps.rs:165
+#: src/metadata.rs:328
 msgid "N"
 msgstr "N"
 
 #. Translators: short for "south" in GPS coordinate
-#: src/metadata/gps.rs:168
+#: src/metadata.rs:332
 msgid "S"
 msgstr "S"
 
 #. Translators: short for "east" in GPS coordinate
-#: src/metadata/gps.rs:190
+#: src/metadata.rs:341
 msgid "E"
 msgstr "E"
 
 #. Translators: short for "west" in GPS coordinate
-#: src/metadata/gps.rs:193
+#: src/metadata.rs:345
 msgid "W"
 msgstr "W"
 
@@ -305,14 +347,174 @@ msgstr "W"
 #. The format has to follow <https://docs.gtk.org/glib/method.DateTime.format.html>
 #. The default is already translated. Don't change if you are not sure what to
 #. use.
-#: src/util.rs:37
+#: src/util.rs:39
 #, c-format
 msgid "%x %X"
 msgstr "%x %X"
 
-#: src/util.rs:180 src/window.rs:659
+#: src/util.rs:182 src/widgets/image_window.rs:638
 msgid "Failed to restore image from trash"
 msgstr "Kuvan palauttaminen roskakorista epäonnistui"
+
+#: src/widgets/drag_overlay.ui:15
+msgid "Drop Image to View"
+msgstr "Pudota kuva katsellaksesi sitä"
+
+#: src/widgets/edit/crop.rs:330
+msgid "Failed to Edit Image"
+msgstr "Kuvan muokkaaminen epäonnistui"
+
+#: src/widgets/edit/crop.ui:6
+msgid "Free"
+msgstr "Vapaa"
+
+#: src/widgets/edit/crop.ui:11
+msgid "Original"
+msgstr "Alkuperäinen"
+
+#: src/widgets/edit/crop.ui:16
+msgid "Square"
+msgstr "Neliö"
+
+#: src/widgets/edit/crop.ui:21
+msgid "5:4"
+msgstr "5:4"
+
+#: src/widgets/edit/crop.ui:26
+msgid "4:3"
+msgstr "4:3"
+
+#: src/widgets/edit/crop.ui:31
+msgid "3:2"
+msgstr "3:2"
+
+#: src/widgets/edit/crop.ui:36
+msgid "16:9"
+msgstr "16:9"
+
+#: src/widgets/edit/crop.ui:91
+msgid "_Free"
+msgstr "_Vapaa"
+
+#: src/widgets/edit/crop.ui:109
+msgid "_Original"
+msgstr "_Alkuperäinen"
+
+#: src/widgets/edit/crop.ui:127
+msgid "_Square"
+msgstr "_Neliö"
+
+#: src/widgets/edit/crop.ui:145
+msgid "_5:4"
+msgstr "_5:4"
+
+#: src/widgets/edit/crop.ui:163
+msgid "_4:3"
+msgstr "_4:3"
+
+#: src/widgets/edit/crop.ui:181
+msgid "_3:2"
+msgstr "_3:2"
+
+#: src/widgets/edit/crop.ui:199
+msgid "_16:9"
+msgstr "_16:9"
+
+#: src/widgets/edit/crop.ui:219 src/widgets/edit/crop.ui:365
+msgid "Orientation Landscape"
+msgstr "Vaakasuunta"
+
+#: src/widgets/edit/crop.ui:228 src/widgets/edit/crop.ui:377
+msgid "Orientation Portrait"
+msgstr "Pystysuunta"
+
+#: src/widgets/edit/crop.ui:249 src/widgets/edit/crop.ui:395
+msgid "Rotate Counter Clockwise"
+msgstr "Kierrä vastapäivään"
+
+#: src/widgets/edit/crop.ui:256
+msgid "Rotate Clockwise"
+msgstr "Kierrä myötäpäivään"
+
+#: src/widgets/edit/crop.ui:275 src/widgets/edit/crop.ui:403
+msgid "Mirror Horizontally"
+msgstr "Peilaa vaakasuunnassa"
+
+#: src/widgets/edit/crop.ui:282
+msgid "Mirror Vertically"
+msgstr "Peilaa pystysuunnassa"
+
+#: src/widgets/edit/crop.ui:295 src/widgets/edit/crop.ui:419
+msgid "Undo Changes in this View"
+msgstr "Kumoa muutokset tässä näkymässä"
+
+#: src/widgets/edit/crop.ui:352
+msgid "Aspect Ratio"
+msgstr "Kuvasuhde"
+
+#: src/widgets/edit/crop_selection.ui:46
+msgid "Crop Selection"
+msgstr "Rajaa valinta"
+
+#. Translators: Filename suffix
+#. Translators: Filename suffix, {} is replaced by a number
+#: src/widgets/edit_window.rs:192 src/widgets/edit_window.rs:195
+msgid " (Edited)"
+msgid_plural " (Edited {})"
+msgstr[0] " (Muokattu)"
+msgstr[1] " (Muokattu {})"
+
+#: src/widgets/edit_window.rs:290 src/widgets/edit_window.rs:316
+msgid "Failed to save image."
+msgstr "Kuvan tallentaminen epäonnistui."
+
+#: src/widgets/edit_window.rs:346
+msgid "Editing Image"
+msgstr "Muokataan kuvaa"
+
+#: src/widgets/edit_window.rs:360
+msgid "Failed to edit image."
+msgstr "Kuvan muokkaaminen epäonnistui."
+
+#: src/widgets/edit_window.rs:370 src/widgets/edit_window.rs:393
+msgid "Failed to Save Image"
+msgstr "Kuvan tallentaminen epäonnistui"
+
+#: src/widgets/edit_window.rs:376
+msgid "Saving Image"
+msgstr "Tallennetaan kuva"
+
+#: src/widgets/edit_window.ui:64
+msgid "_Cancel"
+msgstr "_Peru"
+
+#: src/widgets/edit_window.ui:71
+msgid "_Save"
+msgstr "_Tallenna"
+
+#: src/widgets/edit_window.ui:92
+msgid "_Save As…"
+msgstr "_Tallenna nimellä…"
+
+#: src/widgets/edit_window.ui:100
+msgid "Keep original and create a new file"
+msgstr "Säilytä alkuperäinen ja luo uusi tiedosto"
+
+#: src/widgets/edit_window.ui:120
+msgid "_Replace Original"
+msgstr "_Korvaa alkuperäinen"
+
+#: src/widgets/edit_window.ui:128
+msgid "Original image will be moved to the trash"
+msgstr "Alkuperäinen kuva siirretään roskakoriin"
+
+#: src/widgets/error_details.rs:79
+msgid ""
+"The following error occurred. If you think this is an issue with the "
+"program, please include this information when you report the error."
+msgstr ""
+"Tapahtui seuraava virhe. Jos luulet tämän olevan ongelma sovelluksessa, "
+"sisällytä nämä tiedot kun ilmoitat ongelmasta."
 
 #: src/widgets/error_details.ui:4
 msgid "Error Details"
@@ -320,13 +522,13 @@ msgstr "Virheen tiedot"
 
 #: src/widgets/error_details.ui:19
 msgid ""
-"The image loader reported the following when trying to load the image. "
-"Please include this information when you report an error. If possible, "
-"please also provide the image that causes the issue."
+"The image loader reported the following when trying to load or edit the "
+"image. Please include this information when you report an error. If "
+"possible, please also provide the image that causes the issue."
 msgstr ""
-"Kuvalatain ilmoitti seuraavasti, kun kuvaa yritettiin ladata. Sisällytä nämä "
-"tiedot, kun teet virheilmoitusta. Jos mahdollista, liitä ongelman "
-"aiheuttanut kuva virheilmoitukseen."
+"Kuvalatain ilmoitti seuraavasti, kun kuvaa yritettiin ladata tai muokata. "
+"Sisällytä nämä tiedot, kun ilmoitat ongelmasta. Jos mahdollista, liitä "
+"ongelman aiheuttanut kuva virheilmoitukseen."
 
 #: src/widgets/error_details.ui:24
 msgid "Error Message"
@@ -340,7 +542,7 @@ msgstr "Kopioi virheviesti"
 msgid "Report _Issue"
 msgstr "_Ilmoita ongelmasta"
 
-#: src/widgets/image_page.rs:226
+#: src/widgets/image_page.rs:227
 msgid ""
 "No image loaders available. Maybe the “glycin-loaders” package with "
 "compatibility version “{}” is not installed."
@@ -348,41 +550,45 @@ msgstr ""
 "Kuvalataimia ei ole käytettävissä. Kenties “glycin-loaders”-paketti "
 "yhteensopivuusversiolla “{}” ei ole asennettu."
 
-#: src/widgets/image_page.rs:241
+#: src/widgets/image_page.rs:242
 msgid "The image format “{} ({})” is known but not installed."
 msgstr "Kuvamuoto “{} ({})” on tunnettu, mutta ei asennettu."
 
-#: src/widgets/image_page.rs:248
+#: src/widgets/image_page.rs:249
 msgid "Unknown image format “{} ({}).”"
 msgstr "Tuntematon kuvamuoto “{} ({}).”"
 
-#: src/widgets/image_page.rs:276
+#: src/widgets/image_page.rs:277
 msgid "There is not enough free memory available to load this image."
 msgstr "Vapaata muistia ei ole riittävästi tämän kuvan lataamiseksi."
 
-#: src/widgets/image_page.rs:280
+#: src/widgets/image_page.rs:281
 msgid "Either the image file is corrupted or it contains unsupported elements."
 msgstr "Joko kuva on rikkoutunut tai se sisältää elementtejä, joita ei tueta."
 
-#: src/widgets/image_page.ui:6 src/window.ui:16
+#: src/widgets/image_page.ui:6 src/widgets/image_window.ui:16
 msgid "_Open With…"
 msgstr "_Avaa sovelluksella…"
 
-#: src/widgets/image_page.ui:14 src/window.ui:24
+#: src/widgets/image_page.ui:10 src/widgets/image_window.ui:20
 msgid "_Print…"
 msgstr "_Tulosta…"
 
-#: src/widgets/image_page.ui:18
-msgid "_Copy"
-msgstr "_Kopioi"
-
-#: src/widgets/image_page.ui:23 src/window.ui:29
+#: src/widgets/image_page.ui:15 src/widgets/image_window.ui:25
 msgid "Rotate"
 msgstr "Kierrä"
 
-#: src/widgets/image_page.ui:34 src/window.ui:40
+#: src/widgets/image_page.ui:26 src/widgets/image_window.ui:36
 msgid "_Set as Background…"
 msgstr "_Aseta taustakuvaksi…"
+
+#: src/widgets/image_page.ui:30 src/widgets/image_window.ui:40
+msgid "_Delete"
+msgstr "_Poista"
+
+#: src/widgets/image_page.ui:34
+msgid "_Copy"
+msgstr "_Kopioi"
 
 #: src/widgets/image_page.ui:63
 msgid "Could not Load Image"
@@ -396,43 +602,147 @@ msgstr "_Lisätietoja"
 msgid "_Reload"
 msgstr "_Lataa uudelleen"
 
-#: src/widgets/image_page.ui:123 src/window.ui:225
+#: src/widgets/image_page.ui:123 src/widgets/image_window.ui:101
 msgid "Rotate Left"
 msgstr "Kierrä vasemmalle"
 
-#: src/widgets/image_page.ui:133 src/window.ui:235
+#: src/widgets/image_page.ui:133 src/widgets/image_window.ui:111
 msgid "Rotate Right"
 msgstr "Kierrä oikealle"
 
+#: src/widgets/image_view.rs:197
+msgid "{} %"
+msgstr "{} %"
+
 #. Translators: This is a toast notification, informing the user that
 #. an image has been set as background.
-#: src/widgets/image_view.rs:720
+#: src/widgets/image_view.rs:836
 msgid "Set as background."
 msgstr "Aseta taustakuvaksi."
 
-#: src/widgets/image_view.rs:733
+#: src/widgets/image_view.rs:849
 msgid "Could not set background."
 msgstr "Taustakuvaa ei voitu asettaa."
 
-#: src/widgets/image_view.ui:27
+#: src/widgets/image_view.ui:30
 msgid "Previous Image"
 msgstr "Edellinen kuva"
 
-#: src/widgets/image_view.ui:38
+#: src/widgets/image_view.ui:40
 msgid "Next Image"
 msgstr "Seuraava kuva"
 
-#: src/widgets/image_view.ui:63
+#: src/widgets/image_view.ui:74
 msgid "Zoom Out"
 msgstr "Loitonna"
 
-#: src/widgets/image_view.ui:74
+#: src/widgets/image_view.ui:85
 msgid "Zoom In"
 msgstr "Lähennä"
 
-#: src/widgets/image_view.ui:85
+#: src/widgets/image_view.ui:100
+msgid "Toggle Zoom"
+msgstr "Suurennus päällä/pois"
+
+#: src/widgets/image_view.ui:108
+msgid "Zoom to Specific Level"
+msgstr "Suurenna tiettyyn tasoon"
+
+#: src/widgets/image_window.rs:502
+msgid "Supported image formats"
+msgstr "Tuetut kuvamuodot"
+
+#: src/widgets/image_window.rs:508
+msgid "All files"
+msgstr "Kaikki tiedostot"
+
+#: src/widgets/image_window.rs:515
+msgid "Open Image"
+msgstr "Avaa kuva"
+
+#: src/widgets/image_window.rs:601
+msgid "Image copied to clipboard"
+msgstr "Kuva kopioitu leikepöydälle"
+
+#: src/widgets/image_window.rs:622
+msgid "Image moved to trash"
+msgstr "Kuva siirretty roskakoriin"
+
+#: src/widgets/image_window.rs:623
+msgid "Undo"
+msgstr "Kumoa"
+
+#: src/widgets/image_window.rs:653
+msgid "Failed to move image to trash"
+msgstr "Kuvan siirtäminen roskakoriin epäonnistui"
+
+#: src/widgets/image_window.rs:677
+msgid "Permanently Delete Image?"
+msgstr "Poistetaanko kuva pysyvästi?"
+
+#: src/widgets/image_window.rs:679
+msgid "After deleting the image “{}” it will be permanently lost."
+msgstr "Kuvan “{}” poistamisen jälkeen se on pysyvästi poissa."
+
+#: src/widgets/image_window.rs:687
+msgid "Cancel"
+msgstr "Peru"
+
+#: src/widgets/image_window.rs:688
+msgid "Delete"
+msgstr "Poista"
+
+#: src/widgets/image_window.rs:699
+msgid "Failed to delete image"
+msgstr "Kuvan poistaminen epäonnistui"
+
+#: src/widgets/image_window.ui:6
+msgid "_New Window"
+msgstr "_Uusi ikkuna"
+
+#: src/widgets/image_window.ui:10
+msgid "_Open…"
+msgstr "_Avaa…"
+
+#: src/widgets/image_window.ui:46
+msgid "_Help"
+msgstr "O_hje"
+
+#: src/widgets/image_window.ui:50
+msgid "_Keyboard Shortcuts"
+msgstr "_Pikanäppäimet"
+
+#: src/widgets/image_window.ui:54
+msgid "_About Image Viewer"
+msgstr "_Tietoja - Kuvakatselin"
+
+#: src/widgets/image_window.ui:87
 msgid "Toggle Fullscreen"
 msgstr "Koko näyttö päälle/pois"
+
+#: src/widgets/image_window.ui:93
+msgid "Main Menu"
+msgstr "Päävalikko"
+
+#: src/widgets/image_window.ui:125
+msgid "Image Properties"
+msgstr "Kuvan ominaisuudet"
+
+#: src/widgets/image_window.ui:132
+msgid "Edit Image"
+msgstr "Muokkaa kuvaa"
+
+#: src/widgets/image_window.ui:220
+msgid "View Images"
+msgstr "Katso kuvia"
+
+#: src/widgets/image_window.ui:221
+msgid "Drag and drop images here"
+msgstr "Vedä ja pudota kuvat tähän"
+
+#: src/widgets/image_window.ui:225
+msgid "_Open Files…"
+msgstr "_Avaa tiedostoja…"
 
 #: src/widgets/print.rs:108
 msgid "Top"
@@ -474,19 +784,19 @@ msgstr "px"
 msgid "Print “{}”"
 msgstr "Tulosta “{}”"
 
-#: src/widgets/print.rs:465
+#: src/widgets/print.rs:476
 msgid "Continue…"
 msgstr "Jatka…"
 
-#: src/widgets/print.rs:466
+#: src/widgets/print.rs:477
 msgid "Print Image"
 msgstr "Tulosta kuva"
 
-#: src/widgets/print.rs:788
+#: src/widgets/print.rs:791
 msgid "_Scale"
 msgstr "_Skaalaa"
 
-#: src/widgets/print.rs:791
+#: src/widgets/print.rs:794
 msgid "_Width"
 msgstr "_Leveys"
 
@@ -551,30 +861,30 @@ msgstr "T_äytä tila"
 msgid "H_eight"
 msgstr "_Korkeus"
 
-#: src/widgets/properties_view.rs:255
+#: src/widgets/properties_view.rs:258
 msgid "Unknown"
 msgstr "Tuntematon"
 
 #. Translators: Addition of image being transparent to format name
-#: src/widgets/properties_view.rs:259
+#: src/widgets/properties_view.rs:262
 msgid ", transparent"
 msgstr ", läpinäkyvä"
 
 #. Translators: Addition of image being grayscale to format name
-#: src/widgets/properties_view.rs:264
+#: src/widgets/properties_view.rs:267
 msgid ", grayscale"
 msgstr ", harmaasävy"
 
 #. Translators: Addition of bit size to format name
-#: src/widgets/properties_view.rs:269
+#: src/widgets/properties_view.rs:272
 msgid ", {}\\u{202F}bit"
 msgstr ", {}\\u{202F} bit"
 
-#: src/widgets/properties_view.rs:287
+#: src/widgets/properties_view.rs:290
 msgid "{}\\u{202F}\\u{D7}\\u{202F}{}"
 msgstr "{}\\u{202F}\\u{D7}\\u{202F}{}"
 
-#: src/widgets/properties_view.rs:326
+#: src/widgets/properties_view.rs:329
 msgid "Image Coordinates Copied"
 msgstr "Kuvan koordinaatit kopioitu"
 
@@ -624,123 +934,38 @@ msgid "Originally Created"
 msgstr "Luotu alunperin"
 
 #: src/widgets/properties_view.ui:159
+msgid "Comment"
+msgstr "Kommentti"
+
+#: src/widgets/properties_view.ui:169
 msgid "Aperture"
 msgstr "Aukon koko"
 
-#: src/widgets/properties_view.ui:169
+#: src/widgets/properties_view.ui:179
 msgid "Exposure"
 msgstr "Valotusaika"
 
-#: src/widgets/properties_view.ui:179
+#: src/widgets/properties_view.ui:189
 msgid "ISO"
 msgstr "ISO"
 
-#: src/widgets/properties_view.ui:189
+#: src/widgets/properties_view.ui:199
 msgid "Focal Length"
 msgstr "Polttoväli"
 
-#: src/widgets/properties_view.ui:199
+#: src/widgets/properties_view.ui:209
 msgid "Maker, Model"
 msgstr "Merkki, malli"
 
-#: src/window.rs:523
-msgid "Supported image formats"
-msgstr "Tuetut kuvamuodot"
+#: src/widgets/window.rs:222
+msgid "Show Details"
+msgstr "Näytä tiedot"
 
-#: src/window.rs:529
-msgid "All files"
-msgstr "Kaikki tiedostot"
+#~ msgid "Copy to Clipboard"
+#~ msgstr "Kopioi leikepöydälle"
 
-#: src/window.rs:536
-msgid "Open Image"
-msgstr "Avaa kuva"
-
-#: src/window.rs:622
-msgid "Image copied to clipboard"
-msgstr "Kuva kopioitu leikepöydälle"
-
-#: src/window.rs:643
-msgid "Image moved to trash"
-msgstr "Kuva siirretty roskakoriin"
-
-#: src/window.rs:644
-msgid "Undo"
-msgstr "Kumoa"
-
-#: src/window.rs:674
-msgid "Failed to move image to trash"
-msgstr "Kuvan siirtäminen roskakoriin epäonnistui"
-
-#: src/window.rs:698
-msgid "Permanently Delete Image?"
-msgstr "Poistetaanko kuva pysyvästi?"
-
-#: src/window.rs:700
-msgid "After deleting the image “{}” it will be permanently lost."
-msgstr "Kuvan “{}” poistamisen jälkeen se on pysyvästi poissa."
-
-#: src/window.rs:708
-msgid "Cancel"
-msgstr "Peru"
-
-#: src/window.rs:709
-msgid "Delete"
-msgstr "Poista"
-
-#: src/window.rs:720
-msgid "Failed to delete image"
-msgstr "Kuvan poistaminen epäonnistui"
-
-#: src/window.ui:6
-msgid "_New Window"
-msgstr "_Uusi ikkuna"
-
-#: src/window.ui:10
-msgid "_Open…"
-msgstr "_Avaa…"
-
-#: src/window.ui:46
-msgid "_Help"
-msgstr "O_hje"
-
-#: src/window.ui:50
-msgid "_Keyboard Shortcuts"
-msgstr "_Pikanäppäimet"
-
-#: src/window.ui:54
-msgid "_About Image Viewer"
-msgstr "_Tietoja - Kuvakatselin"
-
-#: src/window.ui:204
-msgid "Copy to Clipboard"
-msgstr "Kopioi leikepöydälle"
-
-#: src/window.ui:211
-msgid "Move to Trash"
-msgstr "Siirrä roskakoriin"
-
-#: src/window.ui:217
-msgid "Main Menu"
-msgstr "Päävalikko"
-
-#: src/window.ui:249
-msgid "Image Properties"
-msgstr "Kuvan ominaisuudet"
-
-#: src/window.ui:281
-msgid "View Images"
-msgstr "Katso kuvia"
-
-#: src/window.ui:282
-msgid "Drag and drop images here"
-msgstr "Vedä ja pudota kuvat tähän"
-
-#: src/window.ui:286
-msgid "_Open Files…"
-msgstr "_Avaa tiedostoja…"
-
-#~ msgid "Failed to open image"
-#~ msgstr "Kuvan avaaminen epäonnistui"
+#~ msgid "Move to Trash"
+#~ msgstr "Siirrä roskakoriin"
 
 #~ msgid "The Loupe Team"
 #~ msgstr "Loupe-tiimi"
