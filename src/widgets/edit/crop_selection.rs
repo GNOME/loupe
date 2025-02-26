@@ -358,15 +358,31 @@ mod imp {
                         let coord = (x, y);
 
                         let new_area = if let Some(aspect_ratio) = imp.aspect_ratio() {
-                            let u =
-                                imp.new_crop_area_aspect_ratio(&resize, true, coord, aspect_ratio);
-                            let v =
-                                imp.new_crop_area_aspect_ratio(&resize, false, coord, aspect_ratio);
-
-                            if u.area() > v.area() {
-                                u
+                            // Width for height an vice versa is only needed if corner is dragged
+                            // and both dimensions change
+                            if resize.handle.h_edge().is_none() {
+                                imp.new_crop_area_aspect_ratio(&resize, true, coord, aspect_ratio)
+                            } else if resize.handle.v_edge().is_none() {
+                                imp.new_crop_area_aspect_ratio(&resize, false, coord, aspect_ratio)
                             } else {
-                                v
+                                let u = imp.new_crop_area_aspect_ratio(
+                                    &resize,
+                                    true,
+                                    coord,
+                                    aspect_ratio,
+                                );
+                                let v = imp.new_crop_area_aspect_ratio(
+                                    &resize,
+                                    false,
+                                    coord,
+                                    aspect_ratio,
+                                );
+
+                                if u.area() > v.area() {
+                                    u
+                                } else {
+                                    v
+                                }
                             }
                         } else {
                             imp.new_crop_area_aspect_free(&resize, coord)
