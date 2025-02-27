@@ -820,7 +820,7 @@ dependencies = [
 [[package]]
 name = "glycin"
 version = "2.1.0-beta"
-source = "git+https://gitlab.gnome.org/GNOME/glycin.git?rev=f566f81dca9b7bf0494f7a9e127310ba18aa677b#f566f81dca9b7bf0494f7a9e127310ba18aa677b"
+source = "git+https://gitlab.gnome.org/GNOME/glycin.git?rev=44f6b1095a61640765b8a7b75e55f7fec4a7c641#44f6b1095a61640765b8a7b75e55f7fec4a7c641"
 dependencies = [
  "async-fs",
  "async-io",
@@ -851,7 +851,7 @@ dependencies = [
 [[package]]
 name = "glycin-utils"
 version = "3.0.0-beta"
-source = "git+https://gitlab.gnome.org/GNOME/glycin.git?rev=f566f81dca9b7bf0494f7a9e127310ba18aa677b#f566f81dca9b7bf0494f7a9e127310ba18aa677b"
+source = "git+https://gitlab.gnome.org/GNOME/glycin.git?rev=44f6b1095a61640765b8a7b75e55f7fec4a7c641#44f6b1095a61640765b8a7b75e55f7fec4a7c641"
 dependencies = [
  "env_logger",
  "gufo-common",
