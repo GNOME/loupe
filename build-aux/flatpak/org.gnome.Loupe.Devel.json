@@ -111,9 +111,9 @@
             ],
             "sources": [
                 {
-                    "type": "git",
-                    "url": "https://gitlab.gnome.org/GNOME/glycin.git",
-                    "commit": "44f6b1095a61640765b8a7b75e55f7fec4a7c641"
+                    "type": "archive",
+                    "url": "https://download.gnome.org/sources/glycin/1.2/glycin-1.2.rc.tar.xz",
+                    "sha256": "9fd92a40474c209cd403be4604bd5c4f8da36a1ea65e7b86d03dca3f1edbc611"
                 }
             ]
         },
