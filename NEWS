@@ -1,3 +1,18 @@
+## 48.rc (2025-02-28)
+
+### Fixed
+
+- Decide if an image has a format that supports editing based on the reliable mime-type. That way a wrong file extension will not impact the detection of the format being editable.
+- Set description instead of title for general errors, showing the complete and correct message.
+- Switch to consitently storing rotation with CCW convention.
+- editing/crop: Allow do decrease size of crop selection from edges when fixed aspect ratio is used.
+- editing: Don't show error if saving is aborted. Instead handle actual errors correctly.
+
+### Changed
+
+- editing/crop: Change icons for aspect ratio buttons for portrait orientation.
+- editing/crop: Disambiguate and tweak icons for crop selection aspect ratio buttons.
+
 ## 48.beta (2025-01-31)
 
 ### Added
