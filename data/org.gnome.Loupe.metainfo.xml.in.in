@@ -29,16 +29,13 @@
 
   <screenshots>
     <screenshot type="default">
-      <image>https://static.gnome.org/appdata/gnome-45/loupe/loupe-main.png</image>
+      <image>https://static.gnome.org/appdata/gnome-48/loupe/loupe-main.png</image>
     </screenshot>
     <screenshot>
-      <image>https://static.gnome.org/appdata/gnome-45/loupe/loupe-properties.png</image>
+      <image>https://static.gnome.org/appdata/gnome-48/loupe/loupe-crop.png</image>
     </screenshot>
     <screenshot>
-      <image>https://static.gnome.org/appdata/gnome-45/loupe/loupe-print.png</image>
-    </screenshot>
-    <screenshot>
-      <image>https://static.gnome.org/appdata/gnome-45/loupe/loupe-svg.png</image>
+      <image>https://static.gnome.org/appdata/gnome-48/loupe/loupe-properties.png</image>
     </screenshot>
   </screenshots>
 
@@ -76,14 +73,14 @@
   </categories>
 
   <releases>
-    <release version="48.beta" date="2025-01-31">
+    <release version="48.rc" date="2025-02-28">
       <description>
         <p>This release adds image editing support for PNGs and JPEGs. Images can be cropped, rotated, and flipped. New zoom controls allow setting a specific zoom level and features a more compact style. Support for additional metadata formats like XMP and new image information fields have been added as well.</p>
       </description>
     </release>
     <release version="47.1" date="2024-10-16">
       <description>
-        <p>This release fixes issues withloading .svgz (compressed SVG) files.</p>
+        <p>This release fixes issues with loading .svgz (compressed SVG) files.</p>
       </description>
     </release>
     <release version="47.0" date="2024-09-13">

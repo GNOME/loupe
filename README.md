@@ -12,7 +12,7 @@ GNOME's default image viewer providing
 - Accessible presentation of the most important metadata
 - Sleek but powerful interface developed in conjunction with GNOME Human Interface Guidelines
 
-![Image Viewer Screenshot](https://static.gnome.org/appdata/gnome-45/loupe/loupe-main.png)
+![Image Viewer Screenshot](https://static.gnome.org/appdata/gnome-48/loupe/loupe-main.png)
 
 ## Supported Image Formats
 
