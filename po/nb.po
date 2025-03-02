@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2024-09-23 11:13+0000\n"
-"PO-Revision-Date: 2024-10-01 09:20+0200\n"
+"POT-Creation-Date: 2025-02-27 13:05+0000\n"
+"PO-Revision-Date: 2025-03-02 17:16+0100\n"
 "Last-Translator: Brage <bragefuglseth@gnome.org>\n"
 "Language-Team: Norwegian Bokmål <nb@li.org>\n"
 "Language: nb\n"
@@ -19,7 +19,8 @@ msgstr ""
 "X-Generator: Poedit 3.4.4\n"
 
 #: data/org.gnome.Loupe.desktop.in.in:3
-#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:31 src/window.rs:874
+#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:31
+#: src/widgets/image_window.rs:866
 msgid "Image Viewer"
 msgstr "Bildevisning"
 
@@ -151,12 +152,14 @@ msgstr "Rotering"
 
 #: data/resources/gtk/help-overlay.ui:124
 #: data/resources/gtk/help-overlay.ui:274
+#: data/resources/gtk/help-overlay.ui:315
 msgctxt "shortcut window"
 msgid "Rotate Clockwise"
 msgstr "Roter med klokken"
 
 #: data/resources/gtk/help-overlay.ui:130
 #: data/resources/gtk/help-overlay.ui:280
+#: data/resources/gtk/help-overlay.ui:321
 msgctxt "shortcut window"
 msgid "Rotate Counterclockwise"
 msgstr "Roter mot klokken"
@@ -248,6 +251,46 @@ msgctxt "shortcut window"
 msgid "Gestures"
 msgstr "Bevegelser"
 
+#: data/resources/gtk/help-overlay.ui:288
+msgctxt "shortcut window"
+msgid "Editing"
+msgstr "Redigering"
+
+#: data/resources/gtk/help-overlay.ui:291
+msgctxt "shortcut window"
+msgid "Open Editing View"
+msgstr "Rediger bilde"
+
+#: data/resources/gtk/help-overlay.ui:297
+msgctxt "shortcut window"
+msgid "Replace Original"
+msgstr "Bytt ut opprinnelig"
+
+#: data/resources/gtk/help-overlay.ui:303
+msgctxt "shortcut window"
+msgid "Save As"
+msgstr "Lagre som"
+
+#: data/resources/gtk/help-overlay.ui:309
+msgctxt "shortcut window"
+msgid "Cancel"
+msgstr "Avbryt"
+
+#: data/resources/gtk/help-overlay.ui:327
+msgctxt "shortcut window"
+msgid "Mirror Horizontally"
+msgstr "Speil vannrett"
+
+#: data/resources/gtk/help-overlay.ui:333
+msgctxt "shortcut window"
+msgid "Mirror Vertically"
+msgstr "Speil loddrett"
+
+#: data/resources/gtk/help-overlay.ui:339
+msgctxt "shortcut window"
+msgid "Apply Crop"
+msgstr "Bruk beskjæring"
+
 #. Translators: Replace "translator-credits" with your names, one name per line
 #: src/about.rs:43
 msgid "translator-credits"
@@ -257,7 +300,7 @@ msgstr "Brage Fuglseth https://bragefuglseth.dev"
 msgid "Copyright © 2020–2024 Christopher Davis et al."
 msgstr "Opphavsrett © 2020–2024 Christopher Davis mfl."
 
-#: src/file_model.rs:131
+#: src/file_model.rs:180
 msgid "Could not list other files in directory."
 msgstr "Opplisting av andre filer mislyktes."
 
@@ -267,37 +310,36 @@ msgid "\\u{192}\\u{2215}{}"
 msgstr "\\u{192}\\u{2215}{}"
 
 #. Translators: Fractional exposure time (photography) in seconds
-#: src/metadata.rs:269
+#: src/metadata.rs:266
 msgid "1\\u{2215}{}\\u{202F}s"
-msgstr "1\\u{2215}{}u{202F}s"
+msgstr "1\\u{2215}{}u{202F} s"
 
 #. Translators: Exposure time (photography) in seconds
-#: src/metadata.rs:277
+#: src/metadata.rs:274
 msgid "{}\\u{202F}s"
-msgstr "{}\\u{202F}s"
+msgstr "{}\\u{202F} s"
 
-#. Translators: Unit for focal length in millimeters
-#: src/metadata.rs:303
+#: src/metadata.rs:288
 msgid "{}\\u{202F}mm"
-msgstr "{}\\u{202F}mm"
+msgstr "{}\\u{202F} mm"
 
 #. Translators: short for "north" in GPS coordinate
-#: src/metadata/gps.rs:165
+#: src/metadata.rs:328
 msgid "N"
 msgstr "N"
 
 #. Translators: short for "south" in GPS coordinate
-#: src/metadata/gps.rs:168
+#: src/metadata.rs:332
 msgid "S"
 msgstr "S"
 
 #. Translators: short for "east" in GPS coordinate
-#: src/metadata/gps.rs:190
+#: src/metadata.rs:341
 msgid "E"
 msgstr "Ø"
 
 #. Translators: short for "west" in GPS coordinate
-#: src/metadata/gps.rs:193
+#: src/metadata.rs:345
 msgid "W"
 msgstr "V"
 
@@ -305,14 +347,174 @@ msgstr "V"
 #. The format has to follow <https://docs.gtk.org/glib/method.DateTime.format.html>
 #. The default is already translated. Don't change if you are not sure what to
 #. use.
-#: src/util.rs:37
+#: src/util.rs:39
 #, c-format
 msgid "%x %X"
 msgstr "%x %X"
 
-#: src/util.rs:180 src/window.rs:659
+#: src/util.rs:182 src/widgets/image_window.rs:638
 msgid "Failed to restore image from trash"
 msgstr "Gjenoppretting av bilde mislyktes"
+
+#: src/widgets/drag_overlay.ui:15
+msgid "Drop Image to View"
+msgstr "Slipp bildet for å vise det"
+
+#: src/widgets/edit/crop.rs:353
+msgid "Failed to Edit Image"
+msgstr "Redigering av bilde mislyktes"
+
+#: src/widgets/edit/crop.ui:6
+msgid "Free"
+msgstr "Fri"
+
+#: src/widgets/edit/crop.ui:11
+msgid "Original"
+msgstr "Opprinnelig"
+
+#: src/widgets/edit/crop.ui:16
+msgid "Square"
+msgstr "Kvadrat"
+
+#: src/widgets/edit/crop.ui:21
+msgid "5:4"
+msgstr "5∶4"
+
+#: src/widgets/edit/crop.ui:26
+msgid "4:3"
+msgstr "4∶3"
+
+#: src/widgets/edit/crop.ui:31
+msgid "3:2"
+msgstr "3∶2"
+
+#: src/widgets/edit/crop.ui:36
+msgid "16:9"
+msgstr "16∶9"
+
+#: src/widgets/edit/crop.ui:91
+msgid "_Free"
+msgstr "_Fri"
+
+#: src/widgets/edit/crop.ui:109
+msgid "_Original"
+msgstr "_Opprinnelig"
+
+#: src/widgets/edit/crop.ui:127
+msgid "_Square"
+msgstr "_Kvadrat"
+
+#: src/widgets/edit/crop.ui:145
+msgid "_5:4"
+msgstr "_5∶4"
+
+#: src/widgets/edit/crop.ui:166
+msgid "_4:3"
+msgstr "_4∶3"
+
+#: src/widgets/edit/crop.ui:187
+msgid "_3:2"
+msgstr "_3∶2"
+
+#: src/widgets/edit/crop.ui:208
+msgid "_16:9"
+msgstr "_16∶9"
+
+#: src/widgets/edit/crop.ui:231 src/widgets/edit/crop.ui:377
+msgid "Orientation Landscape"
+msgstr "Liggende retning"
+
+#: src/widgets/edit/crop.ui:240 src/widgets/edit/crop.ui:389
+msgid "Orientation Portrait"
+msgstr "Stående retning"
+
+#: src/widgets/edit/crop.ui:261 src/widgets/edit/crop.ui:407
+msgid "Rotate Counter Clockwise"
+msgstr "Roter mot venstre"
+
+#: src/widgets/edit/crop.ui:268
+msgid "Rotate Clockwise"
+msgstr "Roter mot høyre"
+
+#: src/widgets/edit/crop.ui:287 src/widgets/edit/crop.ui:415
+msgid "Mirror Horizontally"
+msgstr "Speil vannrett"
+
+#: src/widgets/edit/crop.ui:294
+msgid "Mirror Vertically"
+msgstr "Speil loddrett"
+
+#: src/widgets/edit/crop.ui:307 src/widgets/edit/crop.ui:431
+msgid "Undo Changes in this View"
+msgstr "Angre endringer"
+
+#: src/widgets/edit/crop.ui:364
+msgid "Aspect Ratio"
+msgstr "Sideforhold"
+
+#: src/widgets/edit/crop_selection.ui:46
+msgid "Crop Selection"
+msgstr "Beskjær"
+
+#. Translators: Filename suffix
+#. Translators: Filename suffix, {} is replaced by a number
+#: src/widgets/edit_window.rs:192 src/widgets/edit_window.rs:195
+msgid " (Edited)"
+msgid_plural " (Edited {})"
+msgstr[0] " (redigert)"
+msgstr[1] " (redigert {})"
+
+#: src/widgets/edit_window.rs:290 src/widgets/edit_window.rs:316
+msgid "Failed to save image."
+msgstr "Lagring av bilde mislyktes."
+
+#: src/widgets/edit_window.rs:346
+msgid "Editing Image"
+msgstr "Redigerer bilde"
+
+#: src/widgets/edit_window.rs:360
+msgid "Failed to edit image."
+msgstr "Redigering av bilde mislyktes."
+
+#: src/widgets/edit_window.rs:370 src/widgets/edit_window.rs:393
+msgid "Failed to Save Image"
+msgstr "Lagring av bildet mislyktes"
+
+#: src/widgets/edit_window.rs:376
+msgid "Saving Image"
+msgstr "Lagrer bilde"
+
+#: src/widgets/edit_window.ui:64
+msgid "_Cancel"
+msgstr "_Avbryt"
+
+#: src/widgets/edit_window.ui:71
+msgid "_Save"
+msgstr "_Lagre"
+
+#: src/widgets/edit_window.ui:92
+msgid "_Save As…"
+msgstr "_Lagre som…"
+
+#: src/widgets/edit_window.ui:100
+msgid "Keep original and create a new file"
+msgstr "Behold den opprinnelige filen og opprett en ny"
+
+#: src/widgets/edit_window.ui:120
+msgid "_Replace Original"
+msgstr "_Erstatt opprinnelig"
+
+#: src/widgets/edit_window.ui:128
+msgid "Original image will be moved to the trash"
+msgstr "Den opprinnelige filen vil flyttes til papirkurven"
+
+#: src/widgets/error_details.rs:79
+msgid ""
+"The following error occurred. If you think this is an issue with the "
+"program, please include this information when you report the error."
+msgstr ""
+"Noe gikk galt. Hvis du tror dette er en feil med appen, legg inn den "
+"følgende informasjonen når du melder om feilen."
 
 #: src/widgets/error_details.ui:4
 msgid "Error Details"
@@ -320,13 +522,13 @@ msgstr "Feilinformasjon"
 
 #: src/widgets/error_details.ui:19
 msgid ""
-"The image loader reported the following when trying to load the image. "
-"Please include this information when you report an error. If possible, "
-"please also provide the image that causes the issue."
+"The image loader reported the following when trying to load or edit the "
+"image. Please include this information when you report an error. If "
+"possible, please also provide the image that causes the issue."
 msgstr ""
-"Bildevisning støtte på det følgende problemet under innlastingen av bildet. "
-"Inkluder denne informasjonen hvis du rapporterer om feilen. Legg også ved "
-"bildet som forårsaker problemet."
+"Bildevisning støtte på det følgende problemet under innlasting eller "
+"redigering av bildet. Inkluder denne informasjonen hvis du rapporterer om "
+"feilen. Legg også ved bildet som forårsaker problemet hvis det er mulig."
 
 #: src/widgets/error_details.ui:24
 msgid "Error Message"
@@ -340,7 +542,7 @@ msgstr "Kopier feilmelding"
 msgid "Report _Issue"
 msgstr "_Rapporter problem"
 
-#: src/widgets/image_page.rs:226
+#: src/widgets/image_page.rs:227
 msgid ""
 "No image loaders available. Maybe the “glycin-loaders” package with "
 "compatibility version “{}” is not installed."
@@ -348,41 +550,45 @@ msgstr ""
 "Ingen bildelastere tilgjengelig. Det kan hende at «glycin-loaders»-pakken "
 "med kompatibilitetsversjonen «{}» ikke er installert."
 
-#: src/widgets/image_page.rs:241
+#: src/widgets/image_page.rs:242
 msgid "The image format “{} ({})” is known but not installed."
 msgstr "Bildeformatet «{} ({})» er ikke installert."
 
-#: src/widgets/image_page.rs:248
+#: src/widgets/image_page.rs:249
 msgid "Unknown image format “{} ({}).”"
 msgstr "Bildeformatet «{} ({})» er ukjent."
 
-#: src/widgets/image_page.rs:276
+#: src/widgets/image_page.rs:277
 msgid "There is not enough free memory available to load this image."
 msgstr "Det er ikke nok ledig minne til å laste inn bildet."
 
-#: src/widgets/image_page.rs:280
+#: src/widgets/image_page.rs:281
 msgid "Either the image file is corrupted or it contains unsupported elements."
 msgstr "Bildefilen har korrupt innhold eller ustøttede elementer."
 
-#: src/widgets/image_page.ui:6 src/window.ui:16
+#: src/widgets/image_page.ui:6 src/widgets/image_window.ui:16
 msgid "_Open With…"
 msgstr "_Åpne med…"
 
-#: src/widgets/image_page.ui:14 src/window.ui:24
+#: src/widgets/image_page.ui:10 src/widgets/image_window.ui:20
 msgid "_Print…"
 msgstr "_Skriv ut…"
 
-#: src/widgets/image_page.ui:18
-msgid "_Copy"
-msgstr "_Kopier"
-
-#: src/widgets/image_page.ui:23 src/window.ui:29
+#: src/widgets/image_page.ui:15 src/widgets/image_window.ui:25
 msgid "Rotate"
 msgstr "Roter"
 
-#: src/widgets/image_page.ui:34 src/window.ui:40
+#: src/widgets/image_page.ui:26 src/widgets/image_window.ui:36
 msgid "_Set as Background…"
 msgstr "_Bruk som bakgrunn…"
+
+#: src/widgets/image_page.ui:30 src/widgets/image_window.ui:40
+msgid "_Delete"
+msgstr "_Slett"
+
+#: src/widgets/image_page.ui:34
+msgid "_Copy"
+msgstr "_Kopier"
 
 #: src/widgets/image_page.ui:63
 msgid "Could not Load Image"
@@ -396,43 +602,147 @@ msgstr "Mer _informasjon"
 msgid "_Reload"
 msgstr "_Last inn på nytt"
 
-#: src/widgets/image_page.ui:123 src/window.ui:225
+#: src/widgets/image_page.ui:123 src/widgets/image_window.ui:101
 msgid "Rotate Left"
 msgstr "Roter mot venstre"
 
-#: src/widgets/image_page.ui:133 src/window.ui:235
+#: src/widgets/image_page.ui:133 src/widgets/image_window.ui:111
 msgid "Rotate Right"
 msgstr "Roter mot høyre"
 
+#: src/widgets/image_view.rs:197
+msgid "{} %"
+msgstr "{} %"
+
 #. Translators: This is a toast notification, informing the user that
 #. an image has been set as background.
-#: src/widgets/image_view.rs:720
+#: src/widgets/image_view.rs:836
 msgid "Set as background."
 msgstr "Bruk som bakgrunn."
 
-#: src/widgets/image_view.rs:733
+#: src/widgets/image_view.rs:849
 msgid "Could not set background."
 msgstr "Endring av bakgrunn mislyktes."
 
-#: src/widgets/image_view.ui:27
+#: src/widgets/image_view.ui:30
 msgid "Previous Image"
 msgstr "Forrige bilde"
 
-#: src/widgets/image_view.ui:38
+#: src/widgets/image_view.ui:40
 msgid "Next Image"
 msgstr "Neste bilde"
 
-#: src/widgets/image_view.ui:63
+#: src/widgets/image_view.ui:74
 msgid "Zoom Out"
 msgstr "Forminsk"
 
-#: src/widgets/image_view.ui:74
+#: src/widgets/image_view.ui:85
 msgid "Zoom In"
 msgstr "Forstørr"
 
-#: src/widgets/image_view.ui:85
+#: src/widgets/image_view.ui:100
+msgid "Toggle Zoom"
+msgstr "Skalering"
+
+#: src/widgets/image_view.ui:108
+msgid "Zoom to Specific Level"
+msgstr "Skaler til bestemt størrelse"
+
+#: src/widgets/image_window.rs:502
+msgid "Supported image formats"
+msgstr "Støttede bildeformater"
+
+#: src/widgets/image_window.rs:508
+msgid "All files"
+msgstr "Alle filer"
+
+#: src/widgets/image_window.rs:515
+msgid "Open Image"
+msgstr "Åpne bilde"
+
+#: src/widgets/image_window.rs:601
+msgid "Image copied to clipboard"
+msgstr "Bilde kopiert til utklippstavle"
+
+#: src/widgets/image_window.rs:622
+msgid "Image moved to trash"
+msgstr "Bilde flyttet til papirkurven"
+
+#: src/widgets/image_window.rs:623
+msgid "Undo"
+msgstr "Angre"
+
+#: src/widgets/image_window.rs:653
+msgid "Failed to move image to trash"
+msgstr "Kunne ikke flytte bilde til papirkurven"
+
+#: src/widgets/image_window.rs:677
+msgid "Permanently Delete Image?"
+msgstr "Slette bilde permanent?"
+
+#: src/widgets/image_window.rs:679
+msgid "After deleting the image “{}” it will be permanently lost."
+msgstr "«{}» vil forsvinne for alltid."
+
+#: src/widgets/image_window.rs:687
+msgid "Cancel"
+msgstr "Avbryt"
+
+#: src/widgets/image_window.rs:688
+msgid "Delete"
+msgstr "Slett"
+
+#: src/widgets/image_window.rs:699
+msgid "Failed to delete image"
+msgstr "Sletting av bilde mislyktes"
+
+#: src/widgets/image_window.ui:6
+msgid "_New Window"
+msgstr "_Nytt vindu"
+
+#: src/widgets/image_window.ui:10
+msgid "_Open…"
+msgstr "_Åpne…"
+
+#: src/widgets/image_window.ui:46
+msgid "_Help"
+msgstr "_Hjelp"
+
+#: src/widgets/image_window.ui:50
+msgid "_Keyboard Shortcuts"
+msgstr "_Tastatursnarveier"
+
+#: src/widgets/image_window.ui:54
+msgid "_About Image Viewer"
+msgstr "_Om Bildevisning"
+
+#: src/widgets/image_window.ui:87
 msgid "Toggle Fullscreen"
 msgstr "Fullskjerm"
+
+#: src/widgets/image_window.ui:93
+msgid "Main Menu"
+msgstr "Hovedmeny"
+
+#: src/widgets/image_window.ui:125
+msgid "Image Properties"
+msgstr "Bildeegenskaper"
+
+#: src/widgets/image_window.ui:132
+msgid "Edit Image"
+msgstr "Rediger bilde"
+
+#: src/widgets/image_window.ui:220
+msgid "View Images"
+msgstr "Se på bilder"
+
+#: src/widgets/image_window.ui:221
+msgid "Drag and drop images here"
+msgstr "Dra og slipp bilder her"
+
+#: src/widgets/image_window.ui:225
+msgid "_Open Files…"
+msgstr "_Åpne filer…"
 
 #: src/widgets/print.rs:108
 msgid "Top"
@@ -474,19 +784,19 @@ msgstr "px"
 msgid "Print “{}”"
 msgstr "Skriv ut «{}»"
 
-#: src/widgets/print.rs:465
+#: src/widgets/print.rs:476
 msgid "Continue…"
 msgstr "Fortsett…"
 
-#: src/widgets/print.rs:466
+#: src/widgets/print.rs:477
 msgid "Print Image"
 msgstr "Skriv ut bilde"
 
-#: src/widgets/print.rs:788
+#: src/widgets/print.rs:791
 msgid "_Scale"
 msgstr "_Skalering"
 
-#: src/widgets/print.rs:791
+#: src/widgets/print.rs:794
 msgid "_Width"
 msgstr "_Bredde"
 
@@ -551,30 +861,30 @@ msgstr "_Dekk område"
 msgid "H_eight"
 msgstr "_Høyde"
 
-#: src/widgets/properties_view.rs:255
+#: src/widgets/properties_view.rs:258
 msgid "Unknown"
 msgstr "Ukjent"
 
 #. Translators: Addition of image being transparent to format name
-#: src/widgets/properties_view.rs:259
+#: src/widgets/properties_view.rs:262
 msgid ", transparent"
 msgstr ", gjennomsiktig"
 
 #. Translators: Addition of image being grayscale to format name
-#: src/widgets/properties_view.rs:264
+#: src/widgets/properties_view.rs:267
 msgid ", grayscale"
 msgstr ", svart-hvitt"
 
 #. Translators: Addition of bit size to format name
-#: src/widgets/properties_view.rs:269
+#: src/widgets/properties_view.rs:272
 msgid ", {}\\u{202F}bit"
 msgstr ", {}\\u{202F}bit"
 
-#: src/widgets/properties_view.rs:287
+#: src/widgets/properties_view.rs:290
 msgid "{}\\u{202F}\\u{D7}\\u{202F}{}"
 msgstr "{}\\u{202F}\\u{D7}\\u{202F}{}"
 
-#: src/widgets/properties_view.rs:326
+#: src/widgets/properties_view.rs:329
 msgid "Image Coordinates Copied"
 msgstr "Bildekoordinater kopiert"
 
@@ -624,123 +934,38 @@ msgid "Originally Created"
 msgstr "Opprinnelig opprettet"
 
 #: src/widgets/properties_view.ui:159
+msgid "Comment"
+msgstr "Kommentar"
+
+#: src/widgets/properties_view.ui:169
 msgid "Aperture"
 msgstr "Blenderverdi"
 
-#: src/widgets/properties_view.ui:169
+#: src/widgets/properties_view.ui:179
 msgid "Exposure"
 msgstr "Lukkerhastighet"
 
-#: src/widgets/properties_view.ui:179
+#: src/widgets/properties_view.ui:189
 msgid "ISO"
 msgstr "ISO"
 
-#: src/widgets/properties_view.ui:189
+#: src/widgets/properties_view.ui:199
 msgid "Focal Length"
 msgstr "Brennvidde"
 
-#: src/widgets/properties_view.ui:199
+#: src/widgets/properties_view.ui:209
 msgid "Maker, Model"
 msgstr "Produsent og modell"
 
-#: src/window.rs:523
-msgid "Supported image formats"
-msgstr "Støttede bildeformater"
+#: src/widgets/window.rs:222
+msgid "Show Details"
+msgstr "Vis informasjon"
 
-#: src/window.rs:529
-msgid "All files"
-msgstr "Alle filer"
+#~ msgid "Copy to Clipboard"
+#~ msgstr "Kopier til utklippstavlen"
 
-#: src/window.rs:536
-msgid "Open Image"
-msgstr "Åpne bilde"
-
-#: src/window.rs:622
-msgid "Image copied to clipboard"
-msgstr "Bilde kopiert til utklippstavle"
-
-#: src/window.rs:643
-msgid "Image moved to trash"
-msgstr "Bilde flyttet til papirkurven"
-
-#: src/window.rs:644
-msgid "Undo"
-msgstr "Angre"
-
-#: src/window.rs:674
-msgid "Failed to move image to trash"
-msgstr "Kunne ikke flytte bilde til papirkurven"
-
-#: src/window.rs:698
-msgid "Permanently Delete Image?"
-msgstr "Slette bilde permanent?"
-
-#: src/window.rs:700
-msgid "After deleting the image “{}” it will be permanently lost."
-msgstr "«{}» vil forsvinne for alltid."
-
-#: src/window.rs:708
-msgid "Cancel"
-msgstr "Avbryt"
-
-#: src/window.rs:709
-msgid "Delete"
-msgstr "Slett"
-
-#: src/window.rs:720
-msgid "Failed to delete image"
-msgstr "Sletting av bilde mislyktes"
-
-#: src/window.ui:6
-msgid "_New Window"
-msgstr "_Nytt vindu"
-
-#: src/window.ui:10
-msgid "_Open…"
-msgstr "_Åpne…"
-
-#: src/window.ui:46
-msgid "_Help"
-msgstr "_Hjelp"
-
-#: src/window.ui:50
-msgid "_Keyboard Shortcuts"
-msgstr "_Tastatursnarveier"
-
-#: src/window.ui:54
-msgid "_About Image Viewer"
-msgstr "_Om Bildevisning"
-
-#: src/window.ui:204
-msgid "Copy to Clipboard"
-msgstr "Kopier til utklippstavlen"
-
-#: src/window.ui:211
-msgid "Move to Trash"
-msgstr "Flytt til papirkurven"
-
-#: src/window.ui:217
-msgid "Main Menu"
-msgstr "Hovedmeny"
-
-#: src/window.ui:249
-msgid "Image Properties"
-msgstr "Bildeegenskaper"
-
-#: src/window.ui:281
-msgid "View Images"
-msgstr "Se på bilder"
-
-#: src/window.ui:282
-msgid "Drag and drop images here"
-msgstr "Dra og slipp bilder her"
-
-#: src/window.ui:286
-msgid "_Open Files…"
-msgstr "_Åpne filer…"
-
-#~ msgid "Failed to open image"
-#~ msgstr "Åpning av bilde mislyktes"
+#~ msgid "Move to Trash"
+#~ msgstr "Flytt til papirkurven"
 
 #~ msgid "The Loupe Team"
 #~ msgstr "Loupe-gruppen"
