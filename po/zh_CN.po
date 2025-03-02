@@ -2,14 +2,14 @@
 # Copyright (C) 2023 Loupe's COPYRIGHT HOLDER
 # This file is distributed under the same license as the Loupe package.
 # Nanling <neithern@outlook.com>, 2023.
-# lumingzh <lumingzh@qq.com>, 2023-2024.
+# lumingzh <lumingzh@qq.com>, 2023-2025.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2024-08-12 09:51+0000\n"
-"PO-Revision-Date: 2024-08-23 15:31+0800\n"
+"POT-Creation-Date: 2025-02-27 13:05+0000\n"
+"PO-Revision-Date: 2025-03-02 13:06+0800\n"
 "Last-Translator: lumingzh <lumingzh@qq.com>\n"
 "Language-Team: Chinese (China) <i18n-zh@googlegroups.com>\n"
 "Language: zh_CN\n"
@@ -17,10 +17,11 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Gtranslator 46.1\n"
+"X-Generator: Gtranslator 47.1\n"
 
 #: data/org.gnome.Loupe.desktop.in.in:3
-#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:31 src/window.rs:874
+#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:31
+#: src/widgets/image_window.rs:866
 msgid "Image Viewer"
 msgstr "图像查看器"
 
@@ -152,12 +153,14 @@ msgstr "旋转图像"
 
 #: data/resources/gtk/help-overlay.ui:124
 #: data/resources/gtk/help-overlay.ui:274
+#: data/resources/gtk/help-overlay.ui:315
 msgctxt "shortcut window"
 msgid "Rotate Clockwise"
 msgstr "顺时针旋转"
 
 #: data/resources/gtk/help-overlay.ui:130
 #: data/resources/gtk/help-overlay.ui:280
+#: data/resources/gtk/help-overlay.ui:321
 msgctxt "shortcut window"
 msgid "Rotate Counterclockwise"
 msgstr "逆时针旋转"
@@ -249,58 +252,98 @@ msgctxt "shortcut window"
 msgid "Gestures"
 msgstr "手势"
 
+#: data/resources/gtk/help-overlay.ui:288
+msgctxt "shortcut window"
+msgid "Editing"
+msgstr "编辑"
+
+#: data/resources/gtk/help-overlay.ui:291
+msgctxt "shortcut window"
+msgid "Open Editing View"
+msgstr "打开编辑视图"
+
+#: data/resources/gtk/help-overlay.ui:297
+msgctxt "shortcut window"
+msgid "Replace Original"
+msgstr "替换原图"
+
+#: data/resources/gtk/help-overlay.ui:303
+msgctxt "shortcut window"
+msgid "Save As"
+msgstr "另存为"
+
+#: data/resources/gtk/help-overlay.ui:309
+msgctxt "shortcut window"
+msgid "Cancel"
+msgstr "取消"
+
+#: data/resources/gtk/help-overlay.ui:327
+msgctxt "shortcut window"
+msgid "Mirror Horizontally"
+msgstr "水平镜像"
+
+#: data/resources/gtk/help-overlay.ui:333
+msgctxt "shortcut window"
+msgid "Mirror Vertically"
+msgstr "竖直镜像"
+
+#: data/resources/gtk/help-overlay.ui:339
+msgctxt "shortcut window"
+msgid "Apply Crop"
+msgstr "应用剪裁"
+
 #. Translators: Replace "translator-credits" with your names, one name per line
 #: src/about.rs:43
 msgid "translator-credits"
 msgstr ""
 "Nanling <neithern@outlook.com>, 2023\n"
-"lumingzh <lumingzh@qq.com>, 2023-2024\n"
+"lumingzh <lumingzh@qq.com>, 2023-2025\n"
 "Eni <enigma@petalmail.com>, 2023"
 
 #: src/about.rs:44
 msgid "Copyright © 2020–2024 Christopher Davis et al."
 msgstr "版权所有 © 2020-2024 Christopher Davis 等人。"
 
-#: src/file_model.rs:131
+#: src/file_model.rs:180
 msgid "Could not list other files in directory."
 msgstr "无法列出目录中的其他文件。"
 
+#. Translators: Display of the f-number <https://en.wikipedia.org/wiki/F-number>. {} will be replaced with the number
 #: src/metadata.rs:253
 msgid "\\u{192}\\u{2215}{}"
 msgstr "\\u{192}\\u{2215}{}"
 
 #. Translators: Fractional exposure time (photography) in seconds
-#: src/metadata.rs:270
+#: src/metadata.rs:266
 msgid "1\\u{2215}{}\\u{202F}s"
 msgstr "1\\u{2215}{}\\u{202F} 秒"
 
 #. Translators: Exposure time (photography) in seconds
-#: src/metadata.rs:278
+#: src/metadata.rs:274
 msgid "{}\\u{202F}s"
 msgstr "{}\\u{202F} 秒"
 
-#. Translators: Unit for focal length in millimeters
-#: src/metadata.rs:304
+#: src/metadata.rs:288
 msgid "{}\\u{202F}mm"
 msgstr "{}\\u{202F} 毫米"
 
 #. Translators: short for "north" in GPS coordinate
-#: src/metadata/gps.rs:165
+#: src/metadata.rs:328
 msgid "N"
 msgstr "北"
 
 #. Translators: short for "south" in GPS coordinate
-#: src/metadata/gps.rs:168
+#: src/metadata.rs:332
 msgid "S"
 msgstr "南"
 
 #. Translators: short for "east" in GPS coordinate
-#: src/metadata/gps.rs:190
+#: src/metadata.rs:341
 msgid "E"
 msgstr "东"
 
 #. Translators: short for "west" in GPS coordinate
-#: src/metadata/gps.rs:193
+#: src/metadata.rs:345
 msgid "W"
 msgstr "西"
 
@@ -308,23 +351,184 @@ msgstr "西"
 #. The format has to follow <https://docs.gtk.org/glib/method.DateTime.format.html>
 #. The default is already translated. Don't change if you are not sure what to
 #. use.
-#: src/util.rs:37
+#: src/util.rs:39
 #, c-format
 msgid "%x %X"
 msgstr "%x %X"
 
-#: src/util.rs:180 src/window.rs:659
+#: src/util.rs:182 src/widgets/image_window.rs:638
 msgid "Failed to restore image from trash"
 msgstr "从回收站中恢复图像失败"
 
+#: src/widgets/drag_overlay.ui:15
+msgid "Drop Image to View"
+msgstr "拖放图像以查看"
+
+#: src/widgets/edit/crop.rs:353
+msgid "Failed to Edit Image"
+msgstr "编辑图像失败"
+
+#: src/widgets/edit/crop.ui:6
+msgid "Free"
+msgstr "自由"
+
+#: src/widgets/edit/crop.ui:11
+msgid "Original"
+msgstr "原始"
+
+#: src/widgets/edit/crop.ui:16
+msgid "Square"
+msgstr "方形"
+
+#: src/widgets/edit/crop.ui:21
+msgid "5:4"
+msgstr "5:4"
+
+#: src/widgets/edit/crop.ui:26
+msgid "4:3"
+msgstr "4:3"
+
+#: src/widgets/edit/crop.ui:31
+msgid "3:2"
+msgstr "3:2"
+
+#: src/widgets/edit/crop.ui:36
+msgid "16:9"
+msgstr "16:9"
+
+#: src/widgets/edit/crop.ui:91
+msgid "_Free"
+msgstr "自由(_F)"
+
+#: src/widgets/edit/crop.ui:109
+msgid "_Original"
+msgstr "原始(_O)"
+
+#: src/widgets/edit/crop.ui:127
+msgid "_Square"
+msgstr "方形(_S)"
+
+#: src/widgets/edit/crop.ui:145
+msgid "_5:4"
+msgstr "_5:4"
+
+#: src/widgets/edit/crop.ui:166
+msgid "_4:3"
+msgstr "_4:3"
+
+#: src/widgets/edit/crop.ui:187
+msgid "_3:2"
+msgstr "_3:2"
+
+#: src/widgets/edit/crop.ui:208
+msgid "_16:9"
+msgstr "_16:9"
+
+#: src/widgets/edit/crop.ui:231 src/widgets/edit/crop.ui:377
+msgid "Orientation Landscape"
+msgstr "横向"
+
+#: src/widgets/edit/crop.ui:240 src/widgets/edit/crop.ui:389
+msgid "Orientation Portrait"
+msgstr "竖向"
+
+#: src/widgets/edit/crop.ui:261 src/widgets/edit/crop.ui:407
+msgid "Rotate Counter Clockwise"
+msgstr "逆时针旋转"
+
+#: src/widgets/edit/crop.ui:268
+msgid "Rotate Clockwise"
+msgstr "顺时针旋转"
+
+#: src/widgets/edit/crop.ui:287 src/widgets/edit/crop.ui:415
+msgid "Mirror Horizontally"
+msgstr "水平镜像"
+
+#: src/widgets/edit/crop.ui:294
+msgid "Mirror Vertically"
+msgstr "竖直镜像"
+
+#: src/widgets/edit/crop.ui:307 src/widgets/edit/crop.ui:431
+msgid "Undo Changes in this View"
+msgstr "撤消此视图中的更改"
+
+#: src/widgets/edit/crop.ui:364
+msgid "Aspect Ratio"
+msgstr "宽高比"
+
+#: src/widgets/edit/crop_selection.ui:46
+msgid "Crop Selection"
+msgstr "剪裁选区"
+
+#. Translators: Filename suffix
+#. Translators: Filename suffix, {} is replaced by a number
+#: src/widgets/edit_window.rs:192 src/widgets/edit_window.rs:195
+msgid " (Edited)"
+msgid_plural " (Edited {})"
+msgstr[0] "（已编辑 {}）"
+
+#: src/widgets/edit_window.rs:290 src/widgets/edit_window.rs:316
+msgid "Failed to save image."
+msgstr "保存图像失败。"
+
+#: src/widgets/edit_window.rs:346
+msgid "Editing Image"
+msgstr "编辑图像"
+
+#: src/widgets/edit_window.rs:360
+msgid "Failed to edit image."
+msgstr "编辑图像失败。"
+
+#: src/widgets/edit_window.rs:370 src/widgets/edit_window.rs:393
+msgid "Failed to Save Image"
+msgstr "保存图像失败"
+
+#: src/widgets/edit_window.rs:376
+msgid "Saving Image"
+msgstr "保存图像"
+
+#: src/widgets/edit_window.ui:64
+msgid "_Cancel"
+msgstr "取消(_C)"
+
+#: src/widgets/edit_window.ui:71
+msgid "_Save"
+msgstr "保存(_S)"
+
+#: src/widgets/edit_window.ui:92
+msgid "_Save As…"
+msgstr "另存为(_S)…"
+
+#: src/widgets/edit_window.ui:100
+msgid "Keep original and create a new file"
+msgstr "保留原图并创建新文件"
+
+#: src/widgets/edit_window.ui:120
+msgid "_Replace Original"
+msgstr "替换原图(_R)"
+
+#: src/widgets/edit_window.ui:128
+msgid "Original image will be moved to the trash"
+msgstr "原始图像将移至回收站"
+
+#: src/widgets/error_details.rs:79
+msgid ""
+"The following error occurred. If you think this is an issue with the "
+"program, please include this information when you report the error."
+msgstr "发生了以下错误。如果您认为这是程序的问题，请在报告错误时包含此信息。"
+
+#: src/widgets/error_details.ui:4
+msgid "Error Details"
+msgstr "错误详情"
+
 #: src/widgets/error_details.ui:19
 msgid ""
-"The image loader reported the following when trying to load the image. "
-"Please include this information when you report an error. If possible, "
-"please also provide the image that causes the issue."
+"The image loader reported the following when trying to load or edit the "
+"image. Please include this information when you report an error. If "
+"possible, please also provide the image that causes the issue."
 msgstr ""
-"尝试加载该图像时图像加载器报告了以下内容。在您报告错误时请包含这些信息。如果"
-"可能，请同时提供引起该问题的图像。"
+"尝试加载或编辑该图像时图像加载器报告了以下内容。在您报告错误时请包含这些信"
+"息。如果可能，请同时提供引起该问题的图像。"
 
 #: src/widgets/error_details.ui:24
 msgid "Error Message"
@@ -338,47 +542,51 @@ msgstr "复制错误信息"
 msgid "Report _Issue"
 msgstr "报告问题(_I)"
 
-#: src/widgets/image_page.rs:226
+#: src/widgets/image_page.rs:227
 msgid ""
 "No image loaders available. Maybe the “glycin-loaders” package with "
 "compatibility version “{}” is not installed."
 msgstr "无可用的图像加载器。可能兼容性版本“{}”的“glycin-loaders”没有安装。"
 
-#: src/widgets/image_page.rs:241
+#: src/widgets/image_page.rs:242
 msgid "The image format “{} ({})” is known but not installed."
 msgstr "图像格式“{}（{}）”已知但未安装。"
 
-#: src/widgets/image_page.rs:248
+#: src/widgets/image_page.rs:249
 msgid "Unknown image format “{} ({}).”"
 msgstr "未知图像格式“{}（{}）”。"
 
-#: src/widgets/image_page.rs:276
+#: src/widgets/image_page.rs:277
 msgid "There is not enough free memory available to load this image."
 msgstr "没有足够的空闲内存可用来加载该图像。"
 
-#: src/widgets/image_page.rs:280
+#: src/widgets/image_page.rs:281
 msgid "Either the image file is corrupted or it contains unsupported elements."
 msgstr "该图像文件已损坏或包含不支持的元素。"
 
-#: src/widgets/image_page.ui:6 src/window.ui:16
+#: src/widgets/image_page.ui:6 src/widgets/image_window.ui:16
 msgid "_Open With…"
 msgstr "打开方式(_O)…"
 
-#: src/widgets/image_page.ui:14 src/window.ui:24
+#: src/widgets/image_page.ui:10 src/widgets/image_window.ui:20
 msgid "_Print…"
 msgstr "打印(_P)…"
 
-#: src/widgets/image_page.ui:18
-msgid "_Copy"
-msgstr "复制(_C)"
-
-#: src/widgets/image_page.ui:23 src/window.ui:29
+#: src/widgets/image_page.ui:15 src/widgets/image_window.ui:25
 msgid "Rotate"
 msgstr "旋转"
 
-#: src/widgets/image_page.ui:34 src/window.ui:40
+#: src/widgets/image_page.ui:26 src/widgets/image_window.ui:36
 msgid "_Set as Background…"
 msgstr "设为背景(_S)…"
+
+#: src/widgets/image_page.ui:30 src/widgets/image_window.ui:40
+msgid "_Delete"
+msgstr "删除(_D)"
+
+#: src/widgets/image_page.ui:34
+msgid "_Copy"
+msgstr "复制(_C)"
 
 #: src/widgets/image_page.ui:63
 msgid "Could not Load Image"
@@ -392,43 +600,147 @@ msgstr "更多信息(_I)"
 msgid "_Reload"
 msgstr "重新加载(_R)"
 
-#: src/widgets/image_page.ui:123 src/window.ui:225
+#: src/widgets/image_page.ui:123 src/widgets/image_window.ui:101
 msgid "Rotate Left"
 msgstr "向左旋转"
 
-#: src/widgets/image_page.ui:133 src/window.ui:235
+#: src/widgets/image_page.ui:133 src/widgets/image_window.ui:111
 msgid "Rotate Right"
 msgstr "向右旋转"
 
+#: src/widgets/image_view.rs:197
+msgid "{} %"
+msgstr "{} %"
+
 #. Translators: This is a toast notification, informing the user that
 #. an image has been set as background.
-#: src/widgets/image_view.rs:720
+#: src/widgets/image_view.rs:836
 msgid "Set as background."
 msgstr "已设为背景。"
 
-#: src/widgets/image_view.rs:733
+#: src/widgets/image_view.rs:849
 msgid "Could not set background."
 msgstr "无法设为背景。"
 
-#: src/widgets/image_view.ui:27
+#: src/widgets/image_view.ui:30
 msgid "Previous Image"
 msgstr "上一个图像"
 
-#: src/widgets/image_view.ui:38
+#: src/widgets/image_view.ui:40
 msgid "Next Image"
 msgstr "下一个图像"
 
-#: src/widgets/image_view.ui:63
+#: src/widgets/image_view.ui:74
 msgid "Zoom Out"
 msgstr "缩小"
 
-#: src/widgets/image_view.ui:74
+#: src/widgets/image_view.ui:85
 msgid "Zoom In"
 msgstr "放大"
 
-#: src/widgets/image_view.ui:85
+#: src/widgets/image_view.ui:100
+msgid "Toggle Zoom"
+msgstr "开关缩放"
+
+#: src/widgets/image_view.ui:108
+msgid "Zoom to Specific Level"
+msgstr "缩放至指定级别"
+
+#: src/widgets/image_window.rs:502
+msgid "Supported image formats"
+msgstr "支持的图像格式"
+
+#: src/widgets/image_window.rs:508
+msgid "All files"
+msgstr "所有文件"
+
+#: src/widgets/image_window.rs:515
+msgid "Open Image"
+msgstr "打开图像"
+
+#: src/widgets/image_window.rs:601
+msgid "Image copied to clipboard"
+msgstr "图像已复制到剪贴板上"
+
+#: src/widgets/image_window.rs:622
+msgid "Image moved to trash"
+msgstr "图片已移至回收站"
+
+#: src/widgets/image_window.rs:623
+msgid "Undo"
+msgstr "撤销"
+
+#: src/widgets/image_window.rs:653
+msgid "Failed to move image to trash"
+msgstr "将图像移至回收站失败"
+
+#: src/widgets/image_window.rs:677
+msgid "Permanently Delete Image?"
+msgstr "永久删除图像？"
+
+#: src/widgets/image_window.rs:679
+msgid "After deleting the image “{}” it will be permanently lost."
+msgstr "删除图像“{}”后它将永久丢失。"
+
+#: src/widgets/image_window.rs:687
+msgid "Cancel"
+msgstr "取消"
+
+#: src/widgets/image_window.rs:688
+msgid "Delete"
+msgstr "删除"
+
+#: src/widgets/image_window.rs:699
+msgid "Failed to delete image"
+msgstr "删除图像失败"
+
+#: src/widgets/image_window.ui:6
+msgid "_New Window"
+msgstr "新建窗口(_N)"
+
+#: src/widgets/image_window.ui:10
+msgid "_Open…"
+msgstr "打开(_P)…"
+
+#: src/widgets/image_window.ui:46
+msgid "_Help"
+msgstr "帮助(_H)"
+
+#: src/widgets/image_window.ui:50
+msgid "_Keyboard Shortcuts"
+msgstr "快捷键(_K)"
+
+#: src/widgets/image_window.ui:54
+msgid "_About Image Viewer"
+msgstr "关于图像查看器(_A)"
+
+#: src/widgets/image_window.ui:87
 msgid "Toggle Fullscreen"
 msgstr "切换全屏"
+
+#: src/widgets/image_window.ui:93
+msgid "Main Menu"
+msgstr "主菜单"
+
+#: src/widgets/image_window.ui:125
+msgid "Image Properties"
+msgstr "图像属性"
+
+#: src/widgets/image_window.ui:132
+msgid "Edit Image"
+msgstr "编辑图像"
+
+#: src/widgets/image_window.ui:220
+msgid "View Images"
+msgstr "查看图像"
+
+#: src/widgets/image_window.ui:221
+msgid "Drag and drop images here"
+msgstr "拖放图片到这里"
+
+#: src/widgets/image_window.ui:225
+msgid "_Open Files…"
+msgstr "打开文件(_O)…"
 
 #: src/widgets/print.rs:108
 msgid "Top"
@@ -470,19 +782,19 @@ msgstr "px"
 msgid "Print “{}”"
 msgstr "打印“{}”"
 
-#: src/widgets/print.rs:465
+#: src/widgets/print.rs:476
 msgid "Continue…"
 msgstr "继续…"
 
-#: src/widgets/print.rs:466
+#: src/widgets/print.rs:477
 msgid "Print Image"
 msgstr "打印图像"
 
-#: src/widgets/print.rs:788
+#: src/widgets/print.rs:791
 msgid "_Scale"
 msgstr "缩放(_S)"
 
-#: src/widgets/print.rs:791
+#: src/widgets/print.rs:794
 msgid "_Width"
 msgstr "宽度(_W)"
 
@@ -547,30 +859,30 @@ msgstr "填充空间(_F)"
 msgid "H_eight"
 msgstr "高度(_E)"
 
-#: src/widgets/properties_view.rs:255
+#: src/widgets/properties_view.rs:258
 msgid "Unknown"
 msgstr "未知"
 
 #. Translators: Addition of image being transparent to format name
-#: src/widgets/properties_view.rs:259
+#: src/widgets/properties_view.rs:262
 msgid ", transparent"
 msgstr "，透明"
 
 #. Translators: Addition of image being grayscale to format name
-#: src/widgets/properties_view.rs:264
+#: src/widgets/properties_view.rs:267
 msgid ", grayscale"
 msgstr "，灰度"
 
 #. Translators: Addition of bit size to format name
-#: src/widgets/properties_view.rs:269
+#: src/widgets/properties_view.rs:272
 msgid ", {}\\u{202F}bit"
 msgstr "，{}\\u{202F}bit"
 
-#: src/widgets/properties_view.rs:286
+#: src/widgets/properties_view.rs:290
 msgid "{}\\u{202F}\\u{D7}\\u{202F}{}"
 msgstr "{}\\u{202F}\\u{D7}\\u{202F}{}"
 
-#: src/widgets/properties_view.rs:324
+#: src/widgets/properties_view.rs:329
 msgid "Image Coordinates Copied"
 msgstr "图像坐标已复制"
 
@@ -620,123 +932,38 @@ msgid "Originally Created"
 msgstr "原始创建"
 
 #: src/widgets/properties_view.ui:159
+msgid "Comment"
+msgstr "备注"
+
+#: src/widgets/properties_view.ui:169
 msgid "Aperture"
 msgstr "光圈"
 
-#: src/widgets/properties_view.ui:169
+#: src/widgets/properties_view.ui:179
 msgid "Exposure"
 msgstr "曝光"
 
-#: src/widgets/properties_view.ui:179
+#: src/widgets/properties_view.ui:189
 msgid "ISO"
 msgstr "ISO"
 
-#: src/widgets/properties_view.ui:189
+#: src/widgets/properties_view.ui:199
 msgid "Focal Length"
 msgstr "焦距"
 
-#: src/widgets/properties_view.ui:199
+#: src/widgets/properties_view.ui:209
 msgid "Maker, Model"
-msgstr "制造商，型号"
+msgstr "制造商、型号"
 
-#: src/window.rs:523
-msgid "Supported image formats"
-msgstr "支持的图像格式"
+#: src/widgets/window.rs:222
+msgid "Show Details"
+msgstr "显示详情"
 
-#: src/window.rs:529
-msgid "All files"
-msgstr "所有文件"
+#~ msgid "Copy to Clipboard"
+#~ msgstr "复制到剪贴板"
 
-#: src/window.rs:536
-msgid "Open Image"
-msgstr "打开图像"
-
-#: src/window.rs:622
-msgid "Image copied to clipboard"
-msgstr "图像已复制到剪贴板上"
-
-#: src/window.rs:643
-msgid "Image moved to trash"
-msgstr "图片已移至回收站"
-
-#: src/window.rs:644
-msgid "Undo"
-msgstr "撤销"
-
-#: src/window.rs:674
-msgid "Failed to move image to trash"
-msgstr "将图像移至回收站失败"
-
-#: src/window.rs:698
-msgid "Permanently Delete Image?"
-msgstr "永久删除图像？"
-
-#: src/window.rs:700
-msgid "After deleting the image “{}” it will be permanently lost."
-msgstr "删除图像“{}”后它将永久丢失。"
-
-#: src/window.rs:708
-msgid "Cancel"
-msgstr "取消"
-
-#: src/window.rs:709
-msgid "Delete"
-msgstr "删除"
-
-#: src/window.rs:720
-msgid "Failed to delete image"
-msgstr "删除图像失败"
-
-#: src/window.ui:6
-msgid "_New Window"
-msgstr "新建窗口(_N)"
-
-#: src/window.ui:10
-msgid "_Open…"
-msgstr "打开(_P)…"
-
-#: src/window.ui:46
-msgid "_Help"
-msgstr "帮助(_H)"
-
-#: src/window.ui:50
-msgid "_Keyboard Shortcuts"
-msgstr "快捷键(_K)"
-
-#: src/window.ui:54
-msgid "_About Image Viewer"
-msgstr "关于图像查看器(_A)"
-
-#: src/window.ui:204
-msgid "Copy to Clipboard"
-msgstr "复制到剪贴板"
-
-#: src/window.ui:211
-msgid "Move to Trash"
-msgstr "移至回收站"
-
-#: src/window.ui:217
-msgid "Main Menu"
-msgstr "主菜单"
-
-#: src/window.ui:249
-msgid "Image Properties"
-msgstr "图像属性"
-
-#: src/window.ui:281
-msgid "View Images"
-msgstr "查看图像"
-
-#: src/window.ui:282
-msgid "Drag and drop images here"
-msgstr "拖放图片到这里"
-
-#: src/window.ui:286
-msgid "_Open Files…"
-msgstr "打开文件(_O)…"
-
-#~ msgid "Failed to open image"
-#~ msgstr "打开图像失败"
+#~ msgid "Move to Trash"
+#~ msgstr "移至回收站"
 
 #~ msgid "The Loupe Team"
 #~ msgstr "Loupe 团队"
@@ -794,9 +1021,6 @@ msgstr "打开文件(_O)…"
 
 #~ msgid "Applying image color profiles"
 #~ msgstr "应用图像颜色配置文件"
-
-#~ msgid "Printing"
-#~ msgstr "打印"
 
 #~ msgid "Christopher Davis"
 #~ msgstr "Christopher Davis"
