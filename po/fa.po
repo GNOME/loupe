@@ -1,24 +1,25 @@
 # Persian translation for Loupe.
 # Copyright (C) 2023 Loupe's COPYRIGHT HOLDER
 # This file is distributed under the same license as the Loupe package.
-# Danial Behzadi <dani.behzi@ubuntu.com>, 2023-2024.
+# Danial Behzadi <dani.behzi@ubuntu.com>, 2023-2025.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2024-10-27 23:33+0000\n"
-"PO-Revision-Date: 2024-11-04 12:43+0330\n"
+"POT-Creation-Date: 2025-02-27 13:05+0000\n"
+"PO-Revision-Date: 2025-03-03 21:28+0330\n"
 "Last-Translator: Danial Behzadi <dani.behzi@ubuntu.com>\n"
 "Language-Team: Persian <fa@li.org>\n"
 "Language: fa\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.4.4\n"
+"Plural-Forms: nplurals=2; plural=(n==0 || n==1);\n"
+"X-Generator: Poedit 3.5\n"
 
 #: data/org.gnome.Loupe.desktop.in.in:3 data/org.gnome.Loupe.metainfo.xml.in.in:6
-#: src/about.rs:31 src/window.rs:897
+#: src/about.rs:31 src/widgets/image_window.rs:866
 msgid "Image Viewer"
 msgstr "نمایشگر تصویر"
 
@@ -147,11 +148,13 @@ msgid "Rotate Image"
 msgstr "چرخش تصویر"
 
 #: data/resources/gtk/help-overlay.ui:124 data/resources/gtk/help-overlay.ui:274
+#: data/resources/gtk/help-overlay.ui:315
 msgctxt "shortcut window"
 msgid "Rotate Clockwise"
 msgstr "چرخش ساعتگرد"
 
 #: data/resources/gtk/help-overlay.ui:130 data/resources/gtk/help-overlay.ui:280
+#: data/resources/gtk/help-overlay.ui:321
 msgctxt "shortcut window"
 msgid "Rotate Counterclockwise"
 msgstr "چرخش پادساعتگرد"
@@ -241,6 +244,46 @@ msgctxt "shortcut window"
 msgid "Gestures"
 msgstr "حرکت‌ها"
 
+#: data/resources/gtk/help-overlay.ui:288
+msgctxt "shortcut window"
+msgid "Editing"
+msgstr "ویراستن"
+
+#: data/resources/gtk/help-overlay.ui:291
+msgctxt "shortcut window"
+msgid "Open Editing View"
+msgstr "گشودن نمای ویرایش"
+
+#: data/resources/gtk/help-overlay.ui:297
+msgctxt "shortcut window"
+msgid "Replace Original"
+msgstr "جایگزینی اصلی"
+
+#: data/resources/gtk/help-overlay.ui:303
+msgctxt "shortcut window"
+msgid "Save As"
+msgstr "ذخیره به شکل"
+
+#: data/resources/gtk/help-overlay.ui:309
+msgctxt "shortcut window"
+msgid "Cancel"
+msgstr "لغو"
+
+#: data/resources/gtk/help-overlay.ui:327
+msgctxt "shortcut window"
+msgid "Mirror Horizontally"
+msgstr "آینهٔ افقی"
+
+#: data/resources/gtk/help-overlay.ui:333
+msgctxt "shortcut window"
+msgid "Mirror Vertically"
+msgstr "آینهٔ عمودی"
+
+#: data/resources/gtk/help-overlay.ui:339
+msgctxt "shortcut window"
+msgid "Apply Crop"
+msgstr "اعمال برش"
+
 #. Translators: Replace "translator-credits" with your names, one name per line
 #: src/about.rs:43
 msgid "translator-credits"
@@ -250,47 +293,46 @@ msgstr "دانیال بهزادی <dani.behzi@gmail.com>"
 msgid "Copyright © 2020–2024 Christopher Davis et al."
 msgstr "حف رونوشت © ۲۰۲۰–۲۰۲۴ کریستوفر دیویس و همکاران."
 
-#: src/file_model.rs:131
+#: src/file_model.rs:180
 msgid "Could not list other files in directory."
 msgstr "نمی‌توان دیگر پرونده‌ّا در شاخه را سیاهه کرد."
 
 #. Translators: Display of the f-number <https://en.wikipedia.org/wiki/F-number>. {} will be replaced with the number
-#: src/metadata.rs:264
+#: src/metadata.rs:253
 msgid "\\u{192}\\u{2215}{}"
 msgstr "\\u{192}\\u{2215}{}"
 
 #. Translators: Fractional exposure time (photography) in seconds
-#: src/metadata.rs:280
+#: src/metadata.rs:266
 msgid "1\\u{2215}{}\\u{202F}s"
 msgstr "1\\u{2215}{}\\u{202F}ث"
 
 #. Translators: Exposure time (photography) in seconds
-#: src/metadata.rs:288
+#: src/metadata.rs:274
 msgid "{}\\u{202F}s"
 msgstr "{}\\u{202F}ث"
 
-#. Translators: Unit for focal length in millimeters
-#: src/metadata.rs:314
+#: src/metadata.rs:288
 msgid "{}\\u{202F}mm"
 msgstr "{}\\u{202F}م‌م"
 
 #. Translators: short for "north" in GPS coordinate
-#: src/metadata/gps.rs:165
+#: src/metadata.rs:328
 msgid "N"
 msgstr "شم"
 
 #. Translators: short for "south" in GPS coordinate
-#: src/metadata/gps.rs:168
+#: src/metadata.rs:332
 msgid "S"
 msgstr "جن"
 
 #. Translators: short for "east" in GPS coordinate
-#: src/metadata/gps.rs:190
+#: src/metadata.rs:341
 msgid "E"
 msgstr "شر"
 
 #. Translators: short for "west" in GPS coordinate
-#: src/metadata/gps.rs:193
+#: src/metadata.rs:345
 msgid "W"
 msgstr "غر"
 
@@ -298,12 +340,12 @@ msgstr "غر"
 #. The format has to follow <https://docs.gtk.org/glib/method.DateTime.format.html>
 #. The default is already translated. Don't change if you are not sure what to
 #. use.
-#: src/util.rs:38
+#: src/util.rs:39
 #, c-format
 msgid "%x %X"
 msgstr "%x %X"
 
-#: src/util.rs:181 src/window.rs:675
+#: src/util.rs:182 src/widgets/image_window.rs:638
 msgid "Failed to restore image from trash"
 msgstr "شکست در بازگردانی تصویر از زباله‌دان"
 
@@ -311,19 +353,175 @@ msgstr "شکست در بازگردانی تصویر از زباله‌دان"
 msgid "Drop Image to View"
 msgstr "انداختن تصویر برای نمایش"
 
+#: src/widgets/edit/crop.rs:353
+msgid "Failed to Edit Image"
+msgstr "شکست در ویرایش تصویر"
+
+#: src/widgets/edit/crop.ui:6
+msgid "Free"
+msgstr "آزاد"
+
+#: src/widgets/edit/crop.ui:11
+msgid "Original"
+msgstr "اصلی"
+
+#: src/widgets/edit/crop.ui:16
+msgid "Square"
+msgstr "مربّع"
+
+#: src/widgets/edit/crop.ui:21
+msgid "5:4"
+msgstr "۵:۴"
+
+#: src/widgets/edit/crop.ui:26
+msgid "4:3"
+msgstr "۴:۳"
+
+#: src/widgets/edit/crop.ui:31
+msgid "3:2"
+msgstr "۳:۲"
+
+#: src/widgets/edit/crop.ui:36
+msgid "16:9"
+msgstr "۱۶:۹"
+
+#: src/widgets/edit/crop.ui:91
+msgid "_Free"
+msgstr "_آزاد"
+
+#: src/widgets/edit/crop.ui:109
+msgid "_Original"
+msgstr "_اصلی"
+
+#: src/widgets/edit/crop.ui:127
+msgid "_Square"
+msgstr "_مربّع"
+
+#: src/widgets/edit/crop.ui:145
+msgid "_5:4"
+msgstr "_۵:۴"
+
+#: src/widgets/edit/crop.ui:166
+msgid "_4:3"
+msgstr "_۴:۳"
+
+#: src/widgets/edit/crop.ui:187
+msgid "_3:2"
+msgstr "_۳:۲"
+
+#: src/widgets/edit/crop.ui:208
+msgid "_16:9"
+msgstr "_۱۶:۹"
+
+#: src/widgets/edit/crop.ui:231 src/widgets/edit/crop.ui:377
+msgid "Orientation Landscape"
+msgstr "جهت افقی"
+
+#: src/widgets/edit/crop.ui:240 src/widgets/edit/crop.ui:389
+msgid "Orientation Portrait"
+msgstr "جهت عمودی"
+
+#: src/widgets/edit/crop.ui:261 src/widgets/edit/crop.ui:407
+msgid "Rotate Counter Clockwise"
+msgstr "چرخش پادساعتگرد"
+
+#: src/widgets/edit/crop.ui:268
+msgid "Rotate Clockwise"
+msgstr "چرخش ساعتگرد"
+
+#: src/widgets/edit/crop.ui:287 src/widgets/edit/crop.ui:415
+msgid "Mirror Horizontally"
+msgstr "آینهٔ افقی"
+
+#: src/widgets/edit/crop.ui:294
+msgid "Mirror Vertically"
+msgstr "آینهٔ عمودی"
+
+#: src/widgets/edit/crop.ui:307 src/widgets/edit/crop.ui:431
+msgid "Undo Changes in this View"
+msgstr "بازگردانی تغییرات در این نما"
+
+#: src/widgets/edit/crop.ui:364
+msgid "Aspect Ratio"
+msgstr "نسبت ابعاد"
+
+#: src/widgets/edit/crop_selection.ui:46
+msgid "Crop Selection"
+msgstr "برش گزینش"
+
+#. Translators: Filename suffix
+#. Translators: Filename suffix, {} is replaced by a number
+#: src/widgets/edit_window.rs:192 src/widgets/edit_window.rs:195
+msgid " (Edited)"
+msgid_plural " (Edited {})"
+msgstr[0] " (ویراسته)"
+msgstr[1] " ({} ویراسته)"
+
+#: src/widgets/edit_window.rs:290 src/widgets/edit_window.rs:316
+msgid "Failed to save image."
+msgstr "شکست در ذخیرهٔ تصویر."
+
+#: src/widgets/edit_window.rs:346
+msgid "Editing Image"
+msgstr "ویراستن تصویر"
+
+#: src/widgets/edit_window.rs:360
+msgid "Failed to edit image."
+msgstr "شکست در ویرایش تصویر."
+
+#: src/widgets/edit_window.rs:370 src/widgets/edit_window.rs:393
+msgid "Failed to Save Image"
+msgstr "شکست در ذخیرهٔ تصویر"
+
+#: src/widgets/edit_window.rs:376
+msgid "Saving Image"
+msgstr "ذخیره کردن تصویر"
+
+#: src/widgets/edit_window.ui:64
+msgid "_Cancel"
+msgstr "_لغو"
+
+#: src/widgets/edit_window.ui:71
+msgid "_Save"
+msgstr "_ذخیره"
+
+#: src/widgets/edit_window.ui:92
+msgid "_Save As…"
+msgstr "_ذخیره به شکل…"
+
+#: src/widgets/edit_window.ui:100
+msgid "Keep original and create a new file"
+msgstr "نگه داشتن اصلی و ایجاد پرونده‌ای جدید"
+
+#: src/widgets/edit_window.ui:120
+msgid "_Replace Original"
+msgstr "_جایگزینی اصلی"
+
+#: src/widgets/edit_window.ui:128
+msgid "Original image will be moved to the trash"
+msgstr "تصویر اصلی به زباله‌دان خواهد افتاد"
+
+#: src/widgets/error_details.rs:79
+msgid ""
+"The following error occurred. If you think this is an issue with the program, "
+"please include this information when you report the error."
+msgstr ""
+"خطای زیر رخ داد. اگر می‌پندازید مشکلی در برنامه است، لطفاً هنگام گزارش خطا این "
+"اطّلاعات را بدهید."
+
 #: src/widgets/error_details.ui:4
 msgid "Error Details"
 msgstr "جزییات خطا"
 
 #: src/widgets/error_details.ui:19
 msgid ""
-"The image loader reported the following when trying to load the image. Please "
-"include this information when you report an error. If possible, please also "
-"provide the image that causes the issue."
+"The image loader reported the following when trying to load or edit the image. "
+"Please include this information when you report an error. If possible, please "
+"also provide the image that causes the issue."
 msgstr ""
-"بارکنندهٔ تصویر هنگام تلاش برای بار کردن تصویر این گزارش را داد. لطفاً این "
-"اطّلاعات را هنگام گزارش خطا بدهید. در صورت امکان لطفاً تصویری که باعث این مشکل "
-"شده را نیز فراهم کنید."
+"بارکنندهٔ تصویر هنگام تلاش برای بار کردن یا ویراستن تصویر این گزارش را داد. "
+"لطفاً این اطّلاعات را هنگام گزارش خطا بدهید. در صورت امکان لطفاً تصویری که باعث "
+"این مشکل شده را نیز فراهم کنید."
 
 #: src/widgets/error_details.ui:24
 msgid "Error Message"
@@ -337,7 +535,7 @@ msgstr "رونوشت از پیام خطا"
 msgid "Report _Issue"
 msgstr "گزارش _مشکل"
 
-#: src/widgets/image_page.rs:226
+#: src/widgets/image_page.rs:227
 msgid ""
 "No image loaders available. Maybe the “glycin-loaders” package with "
 "compatibility version “{}” is not installed."
@@ -345,39 +543,39 @@ msgstr ""
 "هیچ بار کنندهٔ تصویری موجود نیست. شاید بستهٔ glycin-loaders با نگارش سازگاری "
 "«{}» نصب شده."
 
-#: src/widgets/image_page.rs:241
+#: src/widgets/image_page.rs:242
 msgid "The image format “{} ({})” is known but not installed."
 msgstr "قالب تصویر «{} ({})» شناخته شده، ولی نصب نشده است."
 
-#: src/widgets/image_page.rs:248
+#: src/widgets/image_page.rs:249
 msgid "Unknown image format “{} ({}).”"
 msgstr "قالب تصویر ناشناختهٔ «{} ({}).»"
 
-#: src/widgets/image_page.rs:276
+#: src/widgets/image_page.rs:277
 msgid "There is not enough free memory available to load this image."
 msgstr "حافظهٔ آزاد کافی برای بار کردن این عکس وجود ندارد."
 
-#: src/widgets/image_page.rs:280
+#: src/widgets/image_page.rs:281
 msgid "Either the image file is corrupted or it contains unsupported elements."
 msgstr "پروندهٔ تصویر خراب شده یا عناصر پشتیبانی نشده‌ای دارد."
 
-#: src/widgets/image_page.ui:6 src/window.ui:16
+#: src/widgets/image_page.ui:6 src/widgets/image_window.ui:16
 msgid "_Open With…"
 msgstr "گشودن _با…"
 
-#: src/widgets/image_page.ui:10 src/window.ui:20
+#: src/widgets/image_page.ui:10 src/widgets/image_window.ui:20
 msgid "_Print…"
 msgstr "_چاپ…"
 
-#: src/widgets/image_page.ui:15 src/window.ui:25
+#: src/widgets/image_page.ui:15 src/widgets/image_window.ui:25
 msgid "Rotate"
 msgstr "چرخش"
 
-#: src/widgets/image_page.ui:26 src/window.ui:36
+#: src/widgets/image_page.ui:26 src/widgets/image_window.ui:36
 msgid "_Set as Background…"
 msgstr "_تنظیم به عنوان پس زمینه…"
 
-#: src/widgets/image_page.ui:30 src/window.ui:40
+#: src/widgets/image_page.ui:30 src/widgets/image_window.ui:40
 msgid "_Delete"
 msgstr "_حذف"
 
@@ -397,25 +595,25 @@ msgstr "_اطّلاعات بیش‌تر"
 msgid "_Reload"
 msgstr "_بازخوانی"
 
-#: src/widgets/image_page.ui:123 src/window.ui:218
+#: src/widgets/image_page.ui:123 src/widgets/image_window.ui:101
 msgid "Rotate Left"
 msgstr "چرخش به چپ"
 
-#: src/widgets/image_page.ui:133 src/window.ui:228
+#: src/widgets/image_page.ui:133 src/widgets/image_window.ui:111
 msgid "Rotate Right"
 msgstr "چرخش به راست"
 
-#: src/widgets/image_view.rs:217
+#: src/widgets/image_view.rs:197
 msgid "{} %"
 msgstr "{} %"
 
 #. Translators: This is a toast notification, informing the user that
 #. an image has been set as background.
-#: src/widgets/image_view.rs:837
+#: src/widgets/image_view.rs:836
 msgid "Set as background."
 msgstr "تنظیم به عنوان پس زمینه."
 
-#: src/widgets/image_view.rs:850
+#: src/widgets/image_view.rs:849
 msgid "Could not set background."
 msgstr "نتوانست پس‌زمینه را تنظیم کند."
 
@@ -442,6 +640,102 @@ msgstr "تغییر حالت بزرگنمایی"
 #: src/widgets/image_view.ui:108
 msgid "Zoom to Specific Level"
 msgstr "بزرگنمایی به سطح مشخّص"
+
+#: src/widgets/image_window.rs:502
+msgid "Supported image formats"
+msgstr "قالب‌های تصویر پشتیبانی‌شده"
+
+#: src/widgets/image_window.rs:508
+msgid "All files"
+msgstr "تمام پرونده‌ها"
+
+#: src/widgets/image_window.rs:515
+msgid "Open Image"
+msgstr "گشودن تصویر"
+
+#: src/widgets/image_window.rs:601
+msgid "Image copied to clipboard"
+msgstr "تصویر در تخته‌گیره رونوشت شد"
+
+#: src/widgets/image_window.rs:622
+msgid "Image moved to trash"
+msgstr "تصویر به زباله‌دان جابه‌جا شد"
+
+#: src/widgets/image_window.rs:623
+msgid "Undo"
+msgstr "برگردان"
+
+#: src/widgets/image_window.rs:653
+msgid "Failed to move image to trash"
+msgstr "شکست در جابه‌جایی تصویر به زباله‌دان"
+
+#: src/widgets/image_window.rs:677
+msgid "Permanently Delete Image?"
+msgstr "حذف همیشگی تصویر؟"
+
+#: src/widgets/image_window.rs:679
+msgid "After deleting the image “{}” it will be permanently lost."
+msgstr "پس از حذف تصویر «{}» برای همیشه از دست خواهد رفت."
+
+#: src/widgets/image_window.rs:687
+msgid "Cancel"
+msgstr "لغو"
+
+#: src/widgets/image_window.rs:688
+msgid "Delete"
+msgstr "حذف"
+
+#: src/widgets/image_window.rs:699
+msgid "Failed to delete image"
+msgstr "شکست در حذف تصویر"
+
+#: src/widgets/image_window.ui:6
+msgid "_New Window"
+msgstr "_پنجرهٔ جدید"
+
+#: src/widgets/image_window.ui:10
+msgid "_Open…"
+msgstr "_گشودن…"
+
+#: src/widgets/image_window.ui:46
+msgid "_Help"
+msgstr "_راهنما"
+
+#: src/widgets/image_window.ui:50
+msgid "_Keyboard Shortcuts"
+msgstr "میان‌برهای _صفحه‌کلید"
+
+#: src/widgets/image_window.ui:54
+msgid "_About Image Viewer"
+msgstr "_دربارهٔ نمایشگر تصویر"
+
+#: src/widgets/image_window.ui:87
+msgid "Toggle Fullscreen"
+msgstr "تغییر وضعیت تمام‌صفحه"
+
+#: src/widgets/image_window.ui:93
+msgid "Main Menu"
+msgstr "فهرست اصلی"
+
+#: src/widgets/image_window.ui:125
+msgid "Image Properties"
+msgstr "ویژگی‌های تصویر"
+
+#: src/widgets/image_window.ui:132
+msgid "Edit Image"
+msgstr "ویرایش تصویر"
+
+#: src/widgets/image_window.ui:220
+msgid "View Images"
+msgstr "دیدن تصویرها"
+
+#: src/widgets/image_window.ui:221
+msgid "Drag and drop images here"
+msgstr "کشیدن و رها کردن تصویرها در این‌جا"
+
+#: src/widgets/image_window.ui:225
+msgid "_Open Files…"
+msgstr "_گشودن…"
 
 #: src/widgets/print.rs:108
 msgid "Top"
@@ -483,19 +777,19 @@ msgstr "تد"
 msgid "Print “{}”"
 msgstr "چاپ «{}»"
 
-#: src/widgets/print.rs:465
+#: src/widgets/print.rs:476
 msgid "Continue…"
 msgstr "ادامه…"
 
-#: src/widgets/print.rs:466
+#: src/widgets/print.rs:477
 msgid "Print Image"
 msgstr "چاپ تصویر"
 
-#: src/widgets/print.rs:788
+#: src/widgets/print.rs:791
 msgid "_Scale"
 msgstr "_مقیاس کردن"
 
-#: src/widgets/print.rs:791
+#: src/widgets/print.rs:794
 msgid "_Width"
 msgstr "_پهنا"
 
@@ -560,30 +854,30 @@ msgstr "_پُر کردن فضا"
 msgid "H_eight"
 msgstr "_درازا"
 
-#: src/widgets/properties_view.rs:255
+#: src/widgets/properties_view.rs:258
 msgid "Unknown"
 msgstr "ناشناخته"
 
 #. Translators: Addition of image being transparent to format name
-#: src/widgets/properties_view.rs:259
+#: src/widgets/properties_view.rs:262
 msgid ", transparent"
 msgstr "، شفّاف"
 
 #. Translators: Addition of image being grayscale to format name
-#: src/widgets/properties_view.rs:264
+#: src/widgets/properties_view.rs:267
 msgid ", grayscale"
 msgstr "، طیف خاکستری"
 
 #. Translators: Addition of bit size to format name
-#: src/widgets/properties_view.rs:269
+#: src/widgets/properties_view.rs:272
 msgid ", {}\\u{202F}bit"
 msgstr "، {}\\u{202F}بیتی"
 
-#: src/widgets/properties_view.rs:287
+#: src/widgets/properties_view.rs:290
 msgid "{}\\u{202F}\\u{D7}\\u{202F}{}"
 msgstr "{}\\u{202F}\\u{D7}\\u{202F}{}"
 
-#: src/widgets/properties_view.rs:326
+#: src/widgets/properties_view.rs:329
 msgid "Image Coordinates Copied"
 msgstr "مختصات تصویر رونوشت شد"
 
@@ -633,125 +927,38 @@ msgid "Originally Created"
 msgstr "ایجاد اصلی"
 
 #: src/widgets/properties_view.ui:159
+msgid "Comment"
+msgstr "نظر"
+
+#: src/widgets/properties_view.ui:169
 msgid "Aperture"
 msgstr "دیافراگم"
 
-#: src/widgets/properties_view.ui:169
+#: src/widgets/properties_view.ui:179
 msgid "Exposure"
 msgstr "نوردهی"
 
-#: src/widgets/properties_view.ui:179
+#: src/widgets/properties_view.ui:189
 msgid "ISO"
 msgstr "ایزو"
 
-#: src/widgets/properties_view.ui:189
+#: src/widgets/properties_view.ui:199
 msgid "Focal Length"
 msgstr "فاصلهٔ کانونی"
 
-#: src/widgets/properties_view.ui:199
+#: src/widgets/properties_view.ui:209
 msgid "Maker, Model"
 msgstr "سازنده، مدل"
 
-#: src/window.rs:539
-msgid "Supported image formats"
-msgstr "قالب‌های تصویر پشتیبانی‌شده"
-
-#: src/window.rs:545
-msgid "All files"
-msgstr "تمام پرونده‌ها"
-
-#: src/window.rs:552
-msgid "Open Image"
-msgstr "گشودن تصویر"
-
-#: src/window.rs:638
-msgid "Image copied to clipboard"
-msgstr "تصویر در تخته‌گیره رونوشت شد"
-
-#: src/window.rs:659
-msgid "Image moved to trash"
-msgstr "تصویر به زباله‌دان جابه‌جا شد"
-
-#: src/window.rs:660
-msgid "Undo"
-msgstr "برگردان"
-
-#: src/window.rs:690
-msgid "Failed to move image to trash"
-msgstr "شکست در جابه‌جایی تصویر به زباله‌دان"
-
-#: src/window.rs:714
-msgid "Permanently Delete Image?"
-msgstr "حذف همیشگی تصویر؟"
-
-#: src/window.rs:716
-msgid "After deleting the image “{}” it will be permanently lost."
-msgstr "پس از حذف تصویر «{}» برای همیشه از دست خواهد رفت."
-
-#: src/window.rs:724
-msgid "Cancel"
-msgstr "لغو"
-
-#: src/window.rs:725
-msgid "Delete"
-msgstr "حذف"
-
-#: src/window.rs:736
-msgid "Failed to delete image"
-msgstr "شکست در حذف تصویر"
-
-#: src/window.ui:6
-msgid "_New Window"
-msgstr "_پنجرهٔ جدید"
-
-#: src/window.ui:10
-msgid "_Open…"
-msgstr "_گشودن…"
-
-#: src/window.ui:46
-msgid "_Help"
-msgstr "_راهنما"
-
-#: src/window.ui:50
-msgid "_Keyboard Shortcuts"
-msgstr "میان‌برهای _صفحه‌کلید"
-
-#: src/window.ui:54
-msgid "_About Image Viewer"
-msgstr "_دربارهٔ نمایشگر تصویر"
-
-#: src/window.ui:204
-msgid "Toggle Fullscreen"
-msgstr "تغییر وضعیت تمام‌صفحه"
-
-#: src/window.ui:210
-msgid "Main Menu"
-msgstr "فهرست اصلی"
-
-#: src/window.ui:242
-msgid "Image Properties"
-msgstr "ویژگی‌های تصویر"
-
-#: src/window.ui:266
-msgid "View Images"
-msgstr "دیدن تصویرها"
-
-#: src/window.ui:267
-msgid "Drag and drop images here"
-msgstr "کشیدن و رها کردن تصویرها در این‌جا"
-
-#: src/window.ui:271
-msgid "_Open Files…"
-msgstr "_گشودن…"
+#: src/widgets/window.rs:222
+msgid "Show Details"
+msgstr "نمایش جزییات"
 
 #~ msgid "Copy to Clipboard"
 #~ msgstr "رونوشت در تخته‌گیره"
 
 #~ msgid "Move to Trash"
 #~ msgstr "جابه‌جایی به زباله‌دان"
-
-#~ msgid "Failed to open image"
-#~ msgstr "شکست در گشودن تصویر"
 
 #~ msgid "The Loupe Team"
 #~ msgstr "گروه لوپ"
@@ -809,9 +1016,6 @@ msgstr "_گشودن…"
 
 #~ msgid "Applying image color profiles"
 #~ msgstr "اعمال کردن نمایه‌های رنگی تصویر"
-
-#~ msgid "Printing"
-#~ msgstr "چاپ کردن"
 
 #~ msgid "Christopher Davis"
 #~ msgstr "کریستوفر دیویس"
