@@ -234,13 +234,13 @@
                                 <property name="activates-default">True</property>
                                 <property name="input-purpose">number</property>
                                 <property name="max-width-chars">8</property>
-                                <property name="tooltip-text">Custom Zoom Level</property>
+                                <property name="tooltip-text" translatable="yes">Custom Zoom Level</property>
                               </object>
                             </child>
                             <child>
                               <object class="GtkButton" id="submit_zoom">
                                 <property name="icon-name">check-plain-symbolic</property>
-                                <property name="tooltip-text">Zoom to Specified Level</property>
+                                <property name="tooltip-text" translatable="yes">Zoom to Specified Level</property>
                                 <style>
                                   <class name="suggested-action" />
                                   <class name="circular" />
