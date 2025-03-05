@@ -1,26 +1,481 @@
 # Hungarian translation for Loupe.
-# Copyright (C) 2024 Free Software Foundation, Inc.
+# Copyright (C) 2024, 2025 Free Software Foundation, Inc.
 # This file is distributed under the same license as the loupe package.
 #
-# Balázs Úr <ur.balazs at fsf dot hu>, 2024.
+# Balázs Úr <ur.balazs at fsf dot hu>, 2024, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: loupe main\n"
-"POT-Creation-Date: 2024-09-13 11:46+0000\n"
-"PO-Revision-Date: 2024-09-13 15:33+0200\n"
+"POT-Creation-Date: 2025-02-26 14:06+0000\n"
+"PO-Revision-Date: 2025-03-05 21:38+0100\n"
 "Last-Translator: Balázs Úr <ur.balazs at fsf dot hu>\n"
 "Language-Team: Hungarian <openscope at fsf dot hu>\n"
+"Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: hu\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 23.08.4\n"
+"X-Generator: Lokalize 23.08.5\n"
 
 #. Put one translator per line, in the form NAME <EMAIL>, YEAR1, YEAR2
 msgctxt "_"
 msgid "translator-credits"
 msgstr "Úr Balázs <ur dot balazs at fsf dot hu>, 2024."
+
+#. (itstool) path: info/desc
+#: C/image-properties.page:11
+msgid "View detailed properties of the selected image."
+msgstr "A kiválasztott kép részletes tulajdonságainak megtekintése."
+
+#. (itstool) path: page/title
+#: C/image-properties.page:13
+msgid "Image Properties"
+msgstr "Kép tulajdonságai"
+
+#. (itstool) path: page/p
+#: C/image-properties.page:14
+msgid ""
+"Image Viewer allows users to view an image's properties. All images will "
+"have the following basic properties:"
+msgstr ""
+"A Képmegjelenítő lehetővé teszi a felhasználók számára egy kép "
+"tulajdonságainak megtekintését. Az összes kép rendelkezik a következő "
+"alapvető tulajdonságokkal:"
+
+#. (itstool) path: item/p
+#: C/image-properties.page:18
+msgid "Image size"
+msgstr "Képméret"
+
+#. (itstool) path: item/p
+#: C/image-properties.page:21
+msgid "Image format"
+msgstr "Képformátum"
+
+#. (itstool) path: item/p
+#: C/image-properties.page:24
+msgid "File size"
+msgstr "Fájlméret"
+
+#. (itstool) path: item/p
+#: C/image-properties.page:27
+msgid "File creation date"
+msgstr "Fájl létrehozási dátuma"
+
+#. (itstool) path: item/p
+#: C/image-properties.page:30
+msgid "File modification date"
+msgstr "Fájl módosítási dátuma"
+
+#. (itstool) path: page/p
+#: C/image-properties.page:33
+msgid ""
+"If the file has <link href=\"https://en.wikipedia.org/wiki/Exif\">Exif</"
+"link> metadata, it will be shown below the basic properties."
+msgstr ""
+"Ha a fájl rendelkezik <link href=\"https://hu.wikipedia.org/wiki/"
+"Exif\">Exif</link> metaadatokkal, akkor az alapvető tulajdonságok alatt lesz "
+"látható."
+
+#. (itstool) path: p/media
+#. This is a reference to an external file such as an image or video. When
+#. the file changes, the md5 hash will change to let you know you need to
+#. update your localized copy. The msgstr is not used at all. Set it to
+#. whatever you like once you have updated your copy of the file.
+#: C/image-properties.page:36
+msgctxt "_"
+msgid ""
+"external ref='figures/help-about-symbolic.svg' "
+"md5='6b43c8bc211b5f8b57810091728b8925'"
+msgstr ""
+"external ref='figures/help-about-symbolic.svg' "
+"md5='6b43c8bc211b5f8b57810091728b8925'"
+
+#. (itstool) path: page/p
+#: C/image-properties.page:35
+msgid ""
+"To view the selected image's properties, press the <gui>Image Properties</"
+"gui> (<media type=\"image\" src=\"figures/help-about-symbolic.svg\">help-"
+"about-symbolic</media>) button."
+msgstr ""
+"A kiválasztott kép tulajdonságainak megtekintéséhez nyomja meg a <gui>Kép "
+"tulajdonságai</gui> (<media type=\"image\" src=\"figures/help-about-symbolic."
+"svg\">help-about-symbolic</media>) gombot."
+
+#. (itstool) path: page/title
+#: C/supported-formats.page:12
+msgid "Supported Image Formats"
+msgstr "Támogatott képformátumok"
+
+#. (itstool) path: page/p
+#: C/supported-formats.page:13
+#| msgid ""
+#| "Image Viewer uses <link href=\"https://gitlab.gnome.org/sophie-h/"
+#| "glycin\">glycin</link> for loading images. You can check <link "
+#| "href=\"https://gitlab.gnome.org/sophie-h/glycin#supported-image-"
+#| "formats\">glycin's README</link> for more details about the formats "
+#| "supported by the default loaders and the features provided by each format."
+msgid ""
+"Image Viewer uses <link href=\"https://gitlab.gnome.org/GNOME/"
+"glycin\">glycin</link> for loading images. You can check <link "
+"href=\"https://gitlab.gnome.org/GNOME/glycin#supported-image-"
+"formats\">glycin's README</link> for more details about the formats "
+"supported by the default loaders and the features provided by each format."
+msgstr ""
+"A Képmegjelenítő a <link href=\"https://gitlab.gnome.org/GNOME/glycin\""
+">glycin</link> programot használja a képek betöltéséhez. Az alapértelmezett"
+" betöltők által támogatott formátumokról és az egyes formátumok által"
+" biztosított funkciókról további részleteket olvashat a <link"
+" href=\"https://gitlab.gnome.org/GNOME/glycin#supported-image-formats\""
+">glycin README</link> fájljában."
+
+#. (itstool) path: page/p
+#: C/supported-formats.page:17
+msgid ""
+"Glycin's loaders are configurable, and new loaders can be created by third "
+"parties. Therefore the formats supported on your system may vary."
+msgstr ""
+"A Glycin betöltői beállíthatók, és harmadik felek új betöltőket hozhatnak "
+"létre. Ezért az Ön rendszere által támogatott formátumok változhatnak."
+
+#. (itstool) path: info/desc
+#: C/trashing-images.page:11
+msgid "Move unwanted images to the trash directly from Image Viewer."
+msgstr "Nem kívánt képek áthelyezése a kukába közvetlenül a Képmegjelenítőből."
+
+#. (itstool) path: page/title
+#: C/trashing-images.page:13
+msgid "Moving Images to Trash"
+msgstr "Képek áthelyezése a kukába"
+
+#. (itstool) path: p/media
+#. This is a reference to an external file such as an image or video. When
+#. the file changes, the md5 hash will change to let you know you need to
+#. update your localized copy. The msgstr is not used at all. Set it to
+#. whatever you like once you have updated your copy of the file.
+#: C/trashing-images.page:15
+msgctxt "_"
+msgid ""
+"external ref='figures/user-trash-symbolic.svg' "
+"md5='3ffa1160de3479541f34c3bfbf3cdb64'"
+msgstr ""
+"external ref='figures/user-trash-symbolic.svg' "
+"md5='3ffa1160de3479541f34c3bfbf3cdb64'"
+
+#. (itstool) path: page/p
+#: C/trashing-images.page:14
+msgid ""
+"If a user wants to remove an image, they can press the <gui>Move To Trash</"
+"gui> (<media type=\"image\" src=\"figures/user-trash-symbolic.svg\">user-"
+"trash-symbolic</media>) button. A toast will appear allowing them to restore "
+"the image with the <gui>Undo</gui> button."
+msgstr ""
+"Ha a felhasználó el szeretne távolítani egy képet, akkor megnyomhatja az "
+"<gui>Áthelyezés a kukába</gui> (<media type=\"image\" src=\"figures/user-"
+"trash-symbolic.svg\">user-trash-symbolic</media>) gombot. Megjelenik egy "
+"felugró üzenet, amely lehetővé teszi a kép helyreállítását a "
+"<gui>Visszavonás</gui> gombbal."
+
+#. (itstool) path: info/desc
+#: C/opening-images.page:11
+msgid ""
+"Open and browse through pictures via the file chooser, file manager, or drag "
+"and drop."
+msgstr ""
+"Képek megnyitása és böngészése a fájlválasztó, a fájlkezelő segítségével, "
+"vagy fogd és vidd módon."
+
+#. (itstool) path: page/title
+#: C/opening-images.page:13
+msgid "Opening Images"
+msgstr "Képek megnyitása"
+
+#. (itstool) path: section/title
+#: C/opening-images.page:15
+msgid "Opening Files"
+msgstr "Fájlok megnyitása"
+
+#. (itstool) path: section/title
+#: C/opening-images.page:17
+msgid "From The File Chooser"
+msgstr "A fájlválasztóból"
+
+#. (itstool) path: section/p
+#: C/opening-images.page:18
+msgid ""
+"Image Viewer allows users to pick images with the file chooser at any time."
+msgstr ""
+"A Képmegjelenítő lehetővé teszi a felhasználók számára, hogy bármikor "
+"kiválasszanak képeket a fájlválasztóval."
+
+#. (itstool) path: item/p
+#: C/opening-images.page:21
+msgid ""
+"Click the <gui>Open Files…</gui> button, the <gui style=\"menuitem\">Open…</"
+"gui> menu item, or press <keyseq><key>Ctrl</key><key>O</key></keyseq>. The "
+"<gui>Open Image</gui> file dialog will appear."
+msgstr ""
+"Kattintson a <gui>Fájlok megnyitása…</gui> gombra, a <gui "
+"style=\"menuitem\">Megnyitás…</gui> menüpontra, vagy nyomja meg a "
+"<keyseq><key>Ctrl</key><key>O</key></keyseq> billentyűkombinációt. A "
+"<gui>Kép megnyitása</gui> fájl párbeszédablak jelenik meg."
+
+#. (itstool) path: item/p
+#: C/opening-images.page:24
+msgid "Select the image you want to open, then click <gui>Open</gui>."
+msgstr ""
+"Válassza ki a megnyitni kívánt képet, és kattintson a <gui>Megnyitás</gui> "
+"gombra."
+
+#. (itstool) path: section/p
+#: C/opening-images.page:27
+msgid ""
+"Image Viewer will open with the selected image showing, and the other images "
+"in the directory can be reached by browsing."
+msgstr ""
+"A Képmegjelenítő megnyílik a kiválasztott képet megjelenítve, és a "
+"könyvtárban lévő többi képet is elérheti böngészéssel."
+
+#. (itstool) path: section/title
+#: C/opening-images.page:30
+msgid "From The File Manager"
+msgstr "A fájlkezelőből"
+
+#. (itstool) path: section/p
+#: C/opening-images.page:31
+msgid "Users can also open images in Loupe directly from their file manager."
+msgstr ""
+"A felhasználók közvetlenül a fájlkezelőjükből is megnyithatnak képeket a "
+"Loupe-ban."
+
+#. (itstool) path: item/p
+#: C/opening-images.page:34
+msgid "Open your preferred file manager application."
+msgstr "Nyissa meg az előnyben részesített fájlkezelő alkalmazást."
+
+#. (itstool) path: item/p
+#: C/opening-images.page:37
+msgid "Navigate to the image you want to view in Loupe."
+msgstr "Navigáljon ahhoz a képhez, amelyet meg szeretne tekinteni a Loupe-ban."
+
+#. (itstool) path: item/p
+#: C/opening-images.page:40
+msgid ""
+"If Image Viewer is set as your default image viewer, use the file manager's "
+"function for opening files."
+msgstr ""
+"Ha a Képmegjelenítő van beállítva alapértelmezett képmegjelenítőként, akkor "
+"használja a fájlkezelő funkcióját a fájlok megnyitásához."
+
+#. (itstool) path: item/p
+#: C/opening-images.page:43
+msgid ""
+"If Image Viewer is not your default image viewer, you will need to select "
+"<gui>Open With…</gui> or similar in the file manager, and pick Image Viewer."
+msgstr ""
+"Ha a Képmegjelenítő nem az alapértelmezett képmegjelenítő, akkor a "
+"fájlkezelőben a <gui>Megnyitás ezzel…</gui> vagy hasonló menüpontot kell "
+"választania, majd ki kell választania a Képmegjelenítőt."
+
+#. (itstool) path: section/title
+#: C/opening-images.page:48 C/sending-to-other-apps.page:37
+msgid "Drag &amp; Drop"
+msgstr "Fogd és vidd"
+
+#. (itstool) path: section/p
+#: C/opening-images.page:49
+msgid ""
+"Image Viewer also accepts local image files dragged from other applications."
+msgstr ""
+"A Képmegjelenítő más alkalmazásokból áthúzott helyi képfájlokat is elfogad."
+
+#. (itstool) path: item/p
+#: C/opening-images.page:52
+msgid "In the source application, begin dragging the image."
+msgstr "A forrásalkalmazásban kezdje el húzni a képet."
+
+#. (itstool) path: item/p
+#: C/opening-images.page:55
+msgid ""
+"Drag the image over the Loupe main window. A blue highlighted area should "
+"appear."
+msgstr ""
+"Húzza a képet a Loupe főablakára. Egy kék színnel kiemelt területnek kell "
+"megjelennie."
+
+#. (itstool) path: item/p
+#: C/opening-images.page:58
+msgid "Drop the image while it's still hovered over the main window."
+msgstr "Engedje el a képet, miközben az még mindig a főablak fölött van."
+
+#. (itstool) path: section/title
+#: C/opening-images.page:64
+msgid "Browsing"
+msgstr "Böngészés"
+
+#. (itstool) path: p/media
+#. This is a reference to an external file such as an image or video. When
+#. the file changes, the md5 hash will change to let you know you need to
+#. update your localized copy. The msgstr is not used at all. Set it to
+#. whatever you like once you have updated your copy of the file.
+#: C/opening-images.page:67
+msgctxt "_"
+msgid ""
+"external ref='figures/go-previous-symbolic.svg' "
+"md5='a53305845578db884ecfb7d8d33fcaeb'"
+msgstr ""
+"external ref='figures/go-previous-symbolic.svg' "
+"md5='a53305845578db884ecfb7d8d33fcaeb'"
+
+#. (itstool) path: p/media
+#. This is a reference to an external file such as an image or video. When
+#. the file changes, the md5 hash will change to let you know you need to
+#. update your localized copy. The msgstr is not used at all. Set it to
+#. whatever you like once you have updated your copy of the file.
+#: C/opening-images.page:68
+msgctxt "_"
+msgid ""
+"external ref='figures/go-next-symbolic.svg' "
+"md5='2f901ac0f711cfb3274b2985d10c4124'"
+msgstr ""
+"external ref='figures/go-next-symbolic.svg' "
+"md5='2f901ac0f711cfb3274b2985d10c4124'"
+
+#. (itstool) path: section/p
+#: C/opening-images.page:65
+msgid ""
+"When opening an image from the file chooser or file manager, Loupe will load "
+"other files in the parent directory of the image and sort them in "
+"alphabetical order. Users can browse the other images in the directory with "
+"the <gui>Previous Image</gui> (<media type=\"image\" src=\"figures/go-"
+"previous-symbolic.svg\">go-previous-symbolic</media>) and <gui>Next Image</"
+"gui> (<media type=\"image\" src=\"figures/go-next-symbolic.svg\">go-next-"
+"symbolic</media>) buttons."
+msgstr ""
+"Ha megnyit egy képet a fájlválasztóból vagy a fájlkezelőből, a Loupe betölti "
+"a kép szülőkönyvtárában lévő egyéb fájlokat is, és betűrendbe rendezi "
+"azokat. A felhasználók az <gui>Előző kép</gui> (<media type=\"image\" "
+"src=\"figures/go-previous-symbolic.svg\">go-previous-symbolic</media>) és a "
+"<gui>Következő kép</gui> (<media type=\"image\" src=\"figures/go-next-"
+"symbolic.svg\">go-next-symbolic</media>) gombbal böngészhetnek a könyvtárban "
+"lévő többi kép között."
+
+#. (itstool) path: note/p
+#: C/opening-images.page:70 C/viewing-images.page:39
+msgid ""
+"Keyboard users can also use the corresponding shortcuts presented in the "
+"<gui>Keyboard Shortcuts</gui> dialog."
+msgstr ""
+"A billentyűzetet használó felhasználók használhatják a <gui>Gyorsbillentyűk</"
+"gui> párbeszédablakban lévő megfelelő gyorsbillentyűket is."
+
+#. (itstool) path: info/desc
+#: C/index.page:10
+msgid "Browse through your images and inspect their metadata."
+msgstr "Böngésszen a képek között, és vizsgálja meg a metaadataikat."
+
+#. (itstool) path: page/title
+#: C/index.page:12
+msgid "<_:media-1/> Image Viewer (Loupe)"
+msgstr "<_:media-1/> Képmegjelenítő (Loupe)"
+
+#. (itstool) path: section/title
+#: C/index.page:14
+msgid "Getting Started"
+msgstr "Kezdeti lépések"
+
+#. (itstool) path: section/title
+#: C/index.page:17
+msgid "Additional Features"
+msgstr "További funkciók"
+
+#. (itstool) path: section/title
+#: C/index.page:20
+msgid "Technical Information"
+msgstr "Műszaki információk"
+
+#. (itstool) path: info/desc
+#: C/sending-to-other-apps.page:11
+msgid ""
+"Learn how to send, copy, and drag images from Image Viewer to other apps."
+msgstr ""
+"Tanulja meg, hogyan küldhet, másolhat és húzhat képeket a Képmegjelenítőből "
+"más alkalmazásokba."
+
+#. (itstool) path: page/title
+#: C/sending-to-other-apps.page:13
+msgid "Sending Images To Other Apps"
+msgstr "Képek küldése más alkalmazásoknak"
+
+#. (itstool) path: section/title
+#: C/sending-to-other-apps.page:15
+msgid "\"Open With…\" Action"
+msgstr "A „Megnyitás ezzel…” művelet"
+
+#. (itstool) path: item/p
+#: C/sending-to-other-apps.page:18
+msgid ""
+"Click the <gui style=\"menuitem\">Open With…</gui> menu item. A dialog with "
+"a list of applications will appear."
+msgstr ""
+"Kattintson a <gui style=\"menuitem\">Megnyitás ezzel…</gui> menüpontra. "
+"Megjelenik egy párbeszédablak az alkalmazások listájával."
+
+#. (itstool) path: item/p
+#: C/sending-to-other-apps.page:21
+msgid "Select the application you want to open the image with."
+msgstr "Válassza ki azt az alkalmazást, amellyel meg szeretné nyitni a képet."
+
+#. (itstool) path: section/title
+#: C/sending-to-other-apps.page:26
+msgid "Copy &amp; Paste"
+msgstr "Másolás és beillesztés"
+
+#. (itstool) path: p/media
+#. This is a reference to an external file such as an image or video. When
+#. the file changes, the md5 hash will change to let you know you need to
+#. update your localized copy. The msgstr is not used at all. Set it to
+#. whatever you like once you have updated your copy of the file.
+#: C/sending-to-other-apps.page:29
+msgctxt "_"
+msgid ""
+"external ref='figures/edit-copy-symbolic.svg' "
+"md5='4774ffd65c32e160f4cefc093abd6b7c'"
+msgstr ""
+"external ref='figures/edit-copy-symbolic.svg' "
+"md5='4774ffd65c32e160f4cefc093abd6b7c'"
+
+#. (itstool) path: item/p
+#: C/sending-to-other-apps.page:29
+msgid ""
+"Click the <gui>Copy to Clipboard</gui> (<media type=\"image\" src=\"figures/"
+"edit-copy-symbolic.svg\">edit-copy-symbolic</media>) button. A toast "
+"notifying you that the image is in your clipboard will appear."
+msgstr ""
+"Kattintson a <gui>Másolás a vágólapra</gui> (<media type=\"image\" "
+"src=\"figures/edit-copy-symbolic.svg\">edit-copy-symbolic</media>) gombra. "
+"Egy felugró üzenet jelenik meg, amely értesíti Önt, hogy a kép a vágólapon "
+"van."
+
+#. (itstool) path: item/p
+#: C/sending-to-other-apps.page:32
+msgid "Paste your image in your application of choice."
+msgstr "Illessze be a képet a kívánt alkalmazásba."
+
+#. (itstool) path: item/p
+#: C/sending-to-other-apps.page:40
+msgid "Zoom out from the image completely."
+msgstr "Kicsinyítse le teljesen a képet."
+
+#. (itstool) path: item/p
+#: C/sending-to-other-apps.page:43
+msgid "Click and hold the selected image."
+msgstr "Kattintson és tartsa lenyomva a kiválasztott képet."
+
+#. (itstool) path: item/p
+#: C/sending-to-other-apps.page:46
+msgid "Drag the image to your application of choice."
+msgstr "Húzza a képet a kívánt alkalmazásba."
 
 #. (itstool) path: info/desc
 #: C/viewing-images.page:11
@@ -215,461 +670,3 @@ msgstr ""
 "symbolic</media> / <media type=\"image\" src=\"figures/view-restore-symbolic."
 "svg\">view-restore-symbolic</media>) gombbal kapcsolhatják be és ki a teljes "
 "képernyős módot."
-
-#. (itstool) path: note/p
-#: C/viewing-images.page:39
-msgid ""
-"Keyboard users can also use the corresponding shortcuts presented in the "
-"(Keyboard Shortcuts) dialog."
-msgstr ""
-"A billentyűzetet használó felhasználók használhatják a (Gyorsbillentyűk) "
-"párbeszédablakban lévő megfelelő gyorsbillentyűket is."
-
-#. (itstool) path: page/title
-#: C/supported-formats.page:12
-msgid "Supported Image Formats"
-msgstr "Támogatott képformátumok"
-
-#. (itstool) path: page/p
-#: C/supported-formats.page:13
-msgid ""
-"Image Viewer uses <link href=\"https://gitlab.gnome.org/sophie-h/"
-"glycin\">glycin</link> for loading images. You can check <link "
-"href=\"https://gitlab.gnome.org/sophie-h/glycin#supported-image-"
-"formats\">glycin's README</link> for more details about the formats "
-"supported by the default loaders and the features provided by each format."
-msgstr ""
-"A Képmegjelenítő a <link href=\"https://gitlab.gnome.org/sophie-h/"
-"glycin\">glycin</link> programot használja a képek betöltéséhez. Az "
-"alapértelmezett betöltők által támogatott formátumokról és az egyes "
-"formátumok által biztosított funkciókról további részleteket olvashat a "
-"<link href=\"https://gitlab.gnome.org/sophie-h/glycin#supported-image-"
-"formats\">glycin README</link> fájljában."
-
-#. (itstool) path: page/p
-#: C/supported-formats.page:17
-msgid ""
-"Glycin's loaders are configurable, and new loaders can be created by third "
-"parties. Therefore the formats supported on your system may vary."
-msgstr ""
-"A Glycin betöltői beállíthatók, és harmadik felek új betöltőket hozhatnak "
-"létre. Ezért az Ön rendszere által támogatott formátumok változhatnak."
-
-#. (itstool) path: info/desc
-#: C/opening-images.page:11
-msgid ""
-"Open and browse through pictures via the file chooser, file manager, or drag "
-"and drop."
-msgstr ""
-"Képek megnyitása és böngészése a fájlválasztó, a fájlkezelő segítségével, "
-"vagy fogd és vidd módon."
-
-#. (itstool) path: page/title
-#: C/opening-images.page:13
-msgid "Opening Images"
-msgstr "Képek megnyitása"
-
-#. (itstool) path: section/title
-#: C/opening-images.page:15
-msgid "Opening Files"
-msgstr "Fájlok megnyitása"
-
-#. (itstool) path: section/title
-#: C/opening-images.page:17
-msgid "From The File Chooser"
-msgstr "A fájlválasztóból"
-
-#. (itstool) path: section/p
-#: C/opening-images.page:18
-msgid ""
-"Image Viewer allows users to pick images with the file chooser at any time."
-msgstr ""
-"A Képmegjelenítő lehetővé teszi a felhasználók számára, hogy bármikor "
-"kiválasszanak képeket a fájlválasztóval."
-
-#. (itstool) path: item/p
-#: C/opening-images.page:21
-msgid ""
-"Click the <gui>Open Files…</gui> button, the <gui style=\"menuitem\">Open…</"
-"gui> menu item, or press <keyseq><key>Ctrl</key><key>O</key></keyseq>. The "
-"<gui>Open Image</gui> file dialog will appear."
-msgstr ""
-"Kattintson a <gui>Fájlok megnyitása…</gui> gombra, a <gui "
-"style=\"menuitem\">Megnyitás…</gui> menüpontra, vagy nyomja meg a "
-"<keyseq><key>Ctrl</key><key>O</key></keyseq> billentyűkombinációt. A "
-"<gui>Kép megnyitása</gui> fájl párbeszédablak jelenik meg."
-
-#. (itstool) path: item/p
-#: C/opening-images.page:24
-msgid "Select the image you want to open, then click <gui>Open</gui>."
-msgstr ""
-"Válassza ki a megnyitni kívánt képet, és kattintson a <gui>Megnyitás</gui> "
-"gombra."
-
-#. (itstool) path: section/p
-#: C/opening-images.page:27
-msgid ""
-"Image Viewer will open with the selected image showing, and the other images "
-"in the directory can be reached by browsing."
-msgstr ""
-"A Képmegjelenítő megnyílik a kiválasztott képet megjelenítve, és a "
-"könyvtárban lévő többi képet is elérheti böngészéssel."
-
-#. (itstool) path: section/title
-#: C/opening-images.page:30
-msgid "From The File Manager"
-msgstr "A fájlkezelőből"
-
-#. (itstool) path: section/p
-#: C/opening-images.page:31
-msgid "Users can also open images in Loupe directly from their file manager."
-msgstr ""
-"A felhasználók közvetlenül a fájlkezelőjükből is megnyithatnak képeket a "
-"Loupe-ban."
-
-#. (itstool) path: item/p
-#: C/opening-images.page:34
-msgid "Open your preferred file manager application."
-msgstr "Nyissa meg az előnyben részesített fájlkezelő alkalmazást."
-
-#. (itstool) path: item/p
-#: C/opening-images.page:37
-msgid "Navigate to the image you want to view in Loupe."
-msgstr "Navigáljon ahhoz a képhez, amelyet meg szeretne tekinteni a Loupe-ban."
-
-#. (itstool) path: item/p
-#: C/opening-images.page:40
-msgid ""
-"If Image Viewer is set as your default image viewer, use the file manager's "
-"function for opening files."
-msgstr ""
-"Ha a Képmegjelenítő van beállítva alapértelmezett képmegjelenítőként, akkor "
-"használja a fájlkezelő funkcióját a fájlok megnyitásához."
-
-#. (itstool) path: item/p
-#: C/opening-images.page:43
-msgid ""
-"If Image Viewer is not your default image viewer, you will need to select "
-"<gui>Open With…</gui> or similar in the file manager, and pick Image Viewer."
-msgstr ""
-"Ha a Képmegjelenítő nem az alapértelmezett képmegjelenítő, akkor a "
-"fájlkezelőben a <gui>Megnyitás ezzel…</gui> vagy hasonló menüpontot kell "
-"választania, majd ki kell választania a Képmegjelenítőt."
-
-#. (itstool) path: section/title
-#: C/opening-images.page:48 C/sending-to-other-apps.page:37
-msgid "Drag &amp; Drop"
-msgstr "Fogd és vidd"
-
-#. (itstool) path: section/p
-#: C/opening-images.page:49
-msgid ""
-"Image Viewer also accepts local image files dragged from other applications."
-msgstr ""
-"A Képmegjelenítő más alkalmazásokból áthúzott helyi képfájlokat is elfogad."
-
-#. (itstool) path: item/p
-#: C/opening-images.page:52
-msgid "In the source application, begin dragging the image."
-msgstr "A forrásalkalmazásban kezdje el húzni a képet."
-
-#. (itstool) path: item/p
-#: C/opening-images.page:55
-msgid ""
-"Drag the image over the Loupe main window. A blue highlighted area should "
-"appear."
-msgstr ""
-"Húzza a képet a Loupe főablakára. Egy kék színnel kiemelt területnek kell "
-"megjelennie."
-
-#. (itstool) path: item/p
-#: C/opening-images.page:58
-msgid "Drop the image while it's still hovered over the main window."
-msgstr "Engedje el a képet, miközben az még mindig a főablak fölött van."
-
-#. (itstool) path: section/title
-#: C/opening-images.page:64
-msgid "Browsing"
-msgstr "Böngészés"
-
-#. (itstool) path: p/media
-#. This is a reference to an external file such as an image or video. When
-#. the file changes, the md5 hash will change to let you know you need to
-#. update your localized copy. The msgstr is not used at all. Set it to
-#. whatever you like once you have updated your copy of the file.
-#: C/opening-images.page:67
-msgctxt "_"
-msgid ""
-"external ref='figures/go-previous-symbolic.svg' "
-"md5='a53305845578db884ecfb7d8d33fcaeb'"
-msgstr ""
-"external ref='figures/go-previous-symbolic.svg' "
-"md5='a53305845578db884ecfb7d8d33fcaeb'"
-
-#. (itstool) path: p/media
-#. This is a reference to an external file such as an image or video. When
-#. the file changes, the md5 hash will change to let you know you need to
-#. update your localized copy. The msgstr is not used at all. Set it to
-#. whatever you like once you have updated your copy of the file.
-#: C/opening-images.page:68
-msgctxt "_"
-msgid ""
-"external ref='figures/go-next-symbolic.svg' "
-"md5='2f901ac0f711cfb3274b2985d10c4124'"
-msgstr ""
-"external ref='figures/go-next-symbolic.svg' "
-"md5='2f901ac0f711cfb3274b2985d10c4124'"
-
-#. (itstool) path: section/p
-#: C/opening-images.page:65
-msgid ""
-"When opening an image from the file chooser or file manager, Loupe will load "
-"other files in the parent directory of the image and sort them in "
-"alphabetical order. Users can browse the other images in the directory with "
-"the <gui>Previous Image</gui> (<media type=\"image\" src=\"figures/go-"
-"previous-symbolic.svg\">go-previous-symbolic</media>) and <gui>Next Image</"
-"gui> (<media type=\"image\" src=\"figures/go-next-symbolic.svg\">go-next-"
-"symbolic</media>) buttons."
-msgstr ""
-"Ha megnyit egy képet a fájlválasztóból vagy a fájlkezelőből, a Loupe betölti "
-"a kép szülőkönyvtárában lévő egyéb fájlokat is, és betűrendbe rendezi "
-"azokat. A felhasználók az <gui>Előző kép</gui> (<media type=\"image\" "
-"src=\"figures/go-previous-symbolic.svg\">go-previous-symbolic</media>) és a "
-"<gui>Következő kép</gui> (<media type=\"image\" src=\"figures/go-next-"
-"symbolic.svg\">go-next-symbolic</media>) gombbal böngészhetnek a könyvtárban "
-"lévő többi kép között."
-
-#. (itstool) path: note/p
-#: C/opening-images.page:70
-msgid ""
-"Keyboard users can also use the corresponding shortcuts presented in the "
-"<gui>Keyboard Shortcuts</gui> dialog."
-msgstr ""
-"A billentyűzetet használó felhasználók használhatják a <gui>Gyorsbillentyűk</"
-"gui> párbeszédablakban lévő megfelelő gyorsbillentyűket is."
-
-#. (itstool) path: info/desc
-#: C/trashing-images.page:11
-msgid "Move unwanted images to the trash directly from Image Viewer."
-msgstr "Nem kívánt képek áthelyezése a kukába közvetlenül a Képmegjelenítőből."
-
-#. (itstool) path: page/title
-#: C/trashing-images.page:13
-msgid "Moving Images to Trash"
-msgstr "Képek áthelyezése a kukába"
-
-#. (itstool) path: p/media
-#. This is a reference to an external file such as an image or video. When
-#. the file changes, the md5 hash will change to let you know you need to
-#. update your localized copy. The msgstr is not used at all. Set it to
-#. whatever you like once you have updated your copy of the file.
-#: C/trashing-images.page:15
-msgctxt "_"
-msgid ""
-"external ref='figures/user-trash-symbolic.svg' "
-"md5='3ffa1160de3479541f34c3bfbf3cdb64'"
-msgstr ""
-"external ref='figures/user-trash-symbolic.svg' "
-"md5='3ffa1160de3479541f34c3bfbf3cdb64'"
-
-#. (itstool) path: page/p
-#: C/trashing-images.page:14
-msgid ""
-"If a user wants to remove an image, they can press the <gui>Move To Trash</"
-"gui> (<media type=\"image\" src=\"figures/user-trash-symbolic.svg\">user-"
-"trash-symbolic</media>) button. A toast will appear allowing them to restore "
-"the image with the <gui>Undo</gui> button."
-msgstr ""
-"Ha a felhasználó el szeretne távolítani egy képet, akkor megnyomhatja az "
-"<gui>Áthelyezés a kukába</gui> (<media type=\"image\" src=\"figures/user-"
-"trash-symbolic.svg\">user-trash-symbolic</media>) gombot. Megjelenik egy "
-"felugró üzenet, amely lehetővé teszi a kép helyreállítását a "
-"<gui>Visszavonás</gui> gombbal."
-
-#. (itstool) path: info/desc
-#: C/sending-to-other-apps.page:11
-msgid ""
-"Learn how to send, copy, and drag images from Image Viewer to other apps."
-msgstr ""
-"Tanulja meg, hogyan küldhet, másolhat és húzhat képeket a Képmegjelenítőből "
-"más alkalmazásokba."
-
-#. (itstool) path: page/title
-#: C/sending-to-other-apps.page:13
-msgid "Sending Images To Other Apps"
-msgstr "Képek küldése más alkalmazásoknak"
-
-#. (itstool) path: section/title
-#: C/sending-to-other-apps.page:15
-msgid "\"Open With…\" Action"
-msgstr "A „Megnyitás ezzel…” művelet"
-
-#. (itstool) path: item/p
-#: C/sending-to-other-apps.page:18
-msgid ""
-"Click the <gui style=\"menuitem\">Open With…</gui> menu item. A dialog with "
-"a list of applications will appear."
-msgstr ""
-"Kattintson a <gui style=\"menuitem\">Megnyitás ezzel…</gui> menüpontra. "
-"Megjelenik egy párbeszédablak az alkalmazások listájával."
-
-#. (itstool) path: item/p
-#: C/sending-to-other-apps.page:21
-msgid "Select the application you want to open the image with."
-msgstr "Válassza ki azt az alkalmazást, amellyel meg szeretné nyitni a képet."
-
-#. (itstool) path: section/title
-#: C/sending-to-other-apps.page:26
-msgid "Copy &amp; Paste"
-msgstr "Másolás és beillesztés"
-
-#. (itstool) path: p/media
-#. This is a reference to an external file such as an image or video. When
-#. the file changes, the md5 hash will change to let you know you need to
-#. update your localized copy. The msgstr is not used at all. Set it to
-#. whatever you like once you have updated your copy of the file.
-#: C/sending-to-other-apps.page:29
-msgctxt "_"
-msgid ""
-"external ref='figures/edit-copy-symbolic.svg' "
-"md5='4774ffd65c32e160f4cefc093abd6b7c'"
-msgstr ""
-"external ref='figures/edit-copy-symbolic.svg' "
-"md5='4774ffd65c32e160f4cefc093abd6b7c'"
-
-#. (itstool) path: item/p
-#: C/sending-to-other-apps.page:29
-msgid ""
-"Click the <gui>Copy to Clipboard</gui> (<media type=\"image\" src=\"figures/"
-"edit-copy-symbolic.svg\">edit-copy-symbolic</media>) button. A toast "
-"notifying you that the image is in your clipboard will appear."
-msgstr ""
-"Kattintson a <gui>Másolás a vágólapra</gui> (<media type=\"image\" "
-"src=\"figures/edit-copy-symbolic.svg\">edit-copy-symbolic</media>) gombra. "
-"Egy felugró üzenet jelenik meg, amely értesíti Önt, hogy a kép a vágólapon "
-"van."
-
-#. (itstool) path: item/p
-#: C/sending-to-other-apps.page:32
-msgid "Paste your image in your application of choice."
-msgstr "Illessze be a képet a kívánt alkalmazásba."
-
-#. (itstool) path: item/p
-#: C/sending-to-other-apps.page:40
-msgid "Zoom out from the image completely."
-msgstr "Kicsinyítse le teljesen a képet."
-
-#. (itstool) path: item/p
-#: C/sending-to-other-apps.page:43
-msgid "Click and hold the selected image."
-msgstr "Kattintson és tartsa lenyomva a kiválasztott képet."
-
-#. (itstool) path: item/p
-#: C/sending-to-other-apps.page:46
-msgid "Drag the image to your application of choice."
-msgstr "Húzza a képet a kívánt alkalmazásba."
-
-#. (itstool) path: info/desc
-#: C/image-properties.page:11
-msgid "View detailed properties of the selected image."
-msgstr "A kiválasztott kép részletes tulajdonságainak megtekintése."
-
-#. (itstool) path: page/title
-#: C/image-properties.page:13
-msgid "Image Properties"
-msgstr "Kép tulajdonságai"
-
-#. (itstool) path: page/p
-#: C/image-properties.page:14
-msgid ""
-"Image Viewer allows users to view an image's properties. All images will "
-"have the following basic properties:"
-msgstr ""
-"A Képmegjelenítő lehetővé teszi a felhasználók számára egy kép "
-"tulajdonságainak megtekintését. Az összes kép rendelkezik a következő "
-"alapvető tulajdonságokkal:"
-
-#. (itstool) path: item/p
-#: C/image-properties.page:18
-msgid "Image size"
-msgstr "Képméret"
-
-#. (itstool) path: item/p
-#: C/image-properties.page:21
-msgid "Image format"
-msgstr "Képformátum"
-
-#. (itstool) path: item/p
-#: C/image-properties.page:24
-msgid "File size"
-msgstr "Fájlméret"
-
-#. (itstool) path: item/p
-#: C/image-properties.page:27
-msgid "File creation date"
-msgstr "Fájl létrehozási dátuma"
-
-#. (itstool) path: item/p
-#: C/image-properties.page:30
-msgid "File modification date"
-msgstr "Fájl módosítási dátuma"
-
-#. (itstool) path: page/p
-#: C/image-properties.page:33
-msgid ""
-"If the file has <link href=\"https://en.wikipedia.org/wiki/Exif\">Exif</"
-"link> metadata, it will be shown below the basic properties."
-msgstr ""
-"Ha a fájl rendelkezik <link href=\"https://hu.wikipedia.org/wiki/"
-"Exif\">Exif</link> metaadatokkal, akkor az alapvető tulajdonságok alatt lesz "
-"látható."
-
-#. (itstool) path: p/media
-#. This is a reference to an external file such as an image or video. When
-#. the file changes, the md5 hash will change to let you know you need to
-#. update your localized copy. The msgstr is not used at all. Set it to
-#. whatever you like once you have updated your copy of the file.
-#: C/image-properties.page:36
-msgctxt "_"
-msgid ""
-"external ref='figures/help-about-symbolic.svg' "
-"md5='6b43c8bc211b5f8b57810091728b8925'"
-msgstr ""
-"external ref='figures/help-about-symbolic.svg' "
-"md5='6b43c8bc211b5f8b57810091728b8925'"
-
-#. (itstool) path: page/p
-#: C/image-properties.page:35
-msgid ""
-"To view the selected image's properties, press the <gui>Image Properties</"
-"gui> (<media type=\"image\" src=\"figures/help-about-symbolic.svg\">help-"
-"about-symbolic</media>) button."
-msgstr ""
-"A kiválasztott kép tulajdonságainak megtekintéséhez nyomja meg a <gui>Kép "
-"tulajdonságai</gui> (<media type=\"image\" src=\"figures/help-about-symbolic."
-"svg\">help-about-symbolic</media>) gombot."
-
-#. (itstool) path: info/desc
-#: C/index.page:10
-msgid "Browse through your images and inspect their metadata."
-msgstr "Böngésszen a képek között, és vizsgálja meg a metaadataikat."
-
-#. (itstool) path: page/title
-#: C/index.page:12
-msgid "<_:media-1/> Image Viewer (Loupe)"
-msgstr "<_:media-1/> Képmegjelenítő (Loupe)"
-
-#. (itstool) path: section/title
-#: C/index.page:14
-msgid "Getting Started"
-msgstr "Kezdeti lépések"
-
-#. (itstool) path: section/title
-#: C/index.page:17
-msgid "Additional Features"
-msgstr "További funkciók"
-
-#. (itstool) path: section/title
-#: C/index.page:20
-msgid "Technical Information"
-msgstr "Műszaki információk"
