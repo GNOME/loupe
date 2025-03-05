@@ -74,7 +74,7 @@
               <object class="AdwPreferencesPage">
                 <child>
                   <object class="AdwPreferencesGroup">
-                    <property name="title">Aspect Ratio</property>
+                    <property name="title" translatable="yes">Aspect Ratio</property>
                     <child>
                       <object class="GtkGrid" id="aspect_ratio_buttons">
                         <property name="column-homogeneous">true</property>
@@ -249,7 +249,7 @@
                 </child>
                 <child>
                   <object class="AdwPreferencesGroup">
-                    <property name="title">Rotate</property>
+                    <property name="title" translatable="yes">Rotate</property>
                     <child>
                       <object class="GtkGrid">
                         <property name="column-homogeneous">true</property>
@@ -275,7 +275,7 @@
                 </child>
                 <child>
                   <object class="AdwPreferencesGroup">
-                    <property name="title">Flip</property>
+                    <property name="title" translatable="yes">Flip</property>
                     <child>
                       <object class="GtkGrid">
                         <property name="column-homogeneous">true</property>
@@ -303,7 +303,7 @@
                   <object class="AdwPreferencesGroup">
                     <child>
                       <object class="GtkButton">
-                        <property name="label">_Reset</property>
+                        <property name="label" translatable="yes">_Reset</property>
                         <property name="tooltip-text" translatable="yes">Undo Changes in this View</property>
                         <property name="use-underline">true</property>
                         <property name="action-name">edit-crop.reset</property>
@@ -426,7 +426,7 @@
                     <property name="hexpand">true</property>
                     <child>
                       <object class="GtkButton">
-                        <property name="label">_Reset</property>
+                        <property name="label" translatable="yes">_Reset</property>
                         <property name="use-underline">true</property>
                         <property name="tooltip-text" translatable="yes">Undo Changes in this View</property>
                         <property name="action-name">edit-crop.reset</property>
