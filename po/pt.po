@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2025-02-27 13:05+0000\n"
-"PO-Revision-Date: 2025-02-27 23:18+0000\n"
+"POT-Creation-Date: 2025-03-05 19:09+0000\n"
+"PO-Revision-Date: 2025-03-05 20:54+0000\n"
 "Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>\n"
 "Language-Team: Portuguese <pt@li.org>\n"
 "Language: pt\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.5\n"
+"X-Generator: Poedit 3.0.1\n"
 
 #: data/org.gnome.Loupe.desktop.in.in:3
 #: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:31
@@ -395,6 +395,10 @@ msgstr "3:2"
 msgid "16:9"
 msgstr "16:9"
 
+#: src/widgets/edit/crop.ui:77 src/widgets/edit/crop.ui:364
+msgid "Aspect Ratio"
+msgstr "Rácio Visual"
+
 #: src/widgets/edit/crop.ui:91
 msgid "_Free"
 msgstr "Livre"
@@ -431,6 +435,11 @@ msgstr "Orientação Paisagem"
 msgid "Orientation Portrait"
 msgstr "Orientação Retrato"
 
+#: src/widgets/edit/crop.ui:252 src/widgets/image_page.ui:15
+#: src/widgets/image_window.ui:25
+msgid "Rotate"
+msgstr "Rodar"
+
 #: src/widgets/edit/crop.ui:261 src/widgets/edit/crop.ui:407
 msgid "Rotate Counter Clockwise"
 msgstr "Rodar no sentido contrário aos ponteiros do relógio"
@@ -438,6 +447,10 @@ msgstr "Rodar no sentido contrário aos ponteiros do relógio"
 #: src/widgets/edit/crop.ui:268
 msgid "Rotate Clockwise"
 msgstr "Rodar no sentido dos ponteiros do relógio"
+
+#: src/widgets/edit/crop.ui:278
+msgid "Flip"
+msgstr "Virar"
 
 #: src/widgets/edit/crop.ui:287 src/widgets/edit/crop.ui:415
 msgid "Mirror Horizontally"
@@ -447,13 +460,13 @@ msgstr "Espelhar na Horizontal"
 msgid "Mirror Vertically"
 msgstr "Espelhar verticalmente"
 
+#: src/widgets/edit/crop.ui:306 src/widgets/edit/crop.ui:429
+msgid "_Reset"
+msgstr "_Repor"
+
 #: src/widgets/edit/crop.ui:307 src/widgets/edit/crop.ui:431
 msgid "Undo Changes in this View"
 msgstr "Anular alterações nesta vista"
-
-#: src/widgets/edit/crop.ui:364
-msgid "Aspect Ratio"
-msgstr "Rácio Visual"
 
 #: src/widgets/edit/crop_selection.ui:46
 msgid "Crop Selection"
@@ -578,10 +591,6 @@ msgstr "Abrir c_om…"
 msgid "_Print…"
 msgstr "_Imprimir…"
 
-#: src/widgets/image_page.ui:15 src/widgets/image_window.ui:25
-msgid "Rotate"
-msgstr "Rodar"
-
 #: src/widgets/image_page.ui:26 src/widgets/image_window.ui:36
 msgid "_Set as Background…"
 msgstr "_Definir como fundo do ambiente de trabalho…"
@@ -651,6 +660,14 @@ msgstr "Ligar a Ampliação"
 #: src/widgets/image_view.ui:108
 msgid "Zoom to Specific Level"
 msgstr "Ampliar para um nível específico"
+
+#: src/widgets/image_view.ui:237
+msgid "Custom Zoom Level"
+msgstr "Nível de ampliação personalizada"
+
+#: src/widgets/image_view.ui:243
+msgid "Zoom to Specified Level"
+msgstr "Ampliar para o nível especificado"
 
 #: src/widgets/image_window.rs:502
 msgid "Supported image formats"
