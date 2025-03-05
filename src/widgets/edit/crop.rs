@@ -206,8 +206,6 @@ mod imp {
                     obj.imp().asepect_ratio_orientation_changed();
                 }
             ));
-
-            self.asepect_ratio_orientation_changed();
         }
 
         fn dispose(&self) {
@@ -215,7 +213,15 @@ mod imp {
         }
     }
 
-    impl WidgetImpl for LpEditCrop {}
+    impl WidgetImpl for LpEditCrop {
+        fn root(&self) {
+            self.parent_root();
+            let obj = self.obj();
+
+            // Select correct orientation based on aspect ratio
+            obj.handle_error(self.apply_reset());
+        }
+    }
     impl BinImpl for LpEditCrop {}
 
     impl LpEditCrop {
@@ -281,6 +287,7 @@ mod imp {
             } else {
                 LpOrientation::Landscape
             };
+            dbg!("setting to", orientation);
             let res = self
                 .obj()
                 .activate_action("edit-crop.orientation", Some(&orientation.to_variant()));
