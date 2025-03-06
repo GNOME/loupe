@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2025-02-19 12:15+0000\n"
-"PO-Revision-Date: 2025-02-24 17:30+0200\n"
+"POT-Creation-Date: 2025-03-05 23:37+0000\n"
+"PO-Revision-Date: 2025-03-06 09:36+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -256,7 +256,6 @@ msgid "Gestures"
 msgstr "Жести"
 
 #: data/resources/gtk/help-overlay.ui:288
-#| msgid "Printing"
 msgctxt "shortcut window"
 msgid "Editing"
 msgstr "Редагування"
@@ -277,19 +276,16 @@ msgid "Save As"
 msgstr "Зберегти із новою назвою"
 
 #: data/resources/gtk/help-overlay.ui:309
-#| msgid "Cancel"
 msgctxt "shortcut window"
 msgid "Cancel"
 msgstr "Скасувати"
 
 #: data/resources/gtk/help-overlay.ui:327
-#| msgid "_Horizontal"
 msgctxt "shortcut window"
 msgid "Mirror Horizontally"
 msgstr "Віддзеркалити горизонтально"
 
 #: data/resources/gtk/help-overlay.ui:333
-#| msgid "_Vertical"
 msgctxt "shortcut window"
 msgid "Mirror Vertically"
 msgstr "Віддзеркалити вертикально"
@@ -365,12 +361,10 @@ msgid "Failed to restore image from trash"
 msgstr "Не вдалося відновити зображення зі смітника"
 
 #: src/widgets/drag_overlay.ui:15
-#| msgid "Image Viewer"
 msgid "Drop Image to View"
 msgstr "Скиньте зображення для перегляду"
 
-#: src/widgets/edit/crop.rs:330
-#| msgid "Failed to delete image"
+#: src/widgets/edit/crop.rs:360
 msgid "Failed to Edit Image"
 msgstr "Не вдалося внести зміни до зображення"
 
@@ -379,8 +373,6 @@ msgid "Free"
 msgstr "Довільне"
 
 #: src/widgets/edit/crop.ui:11
-#| msgctxt "shortcut window"
-#| msgid "Original Scale"
 msgid "Original"
 msgstr "Оригінал"
 
@@ -404,13 +396,15 @@ msgstr "3:2"
 msgid "16:9"
 msgstr "16:9"
 
+#: src/widgets/edit/crop.ui:77 src/widgets/edit/crop.ui:364
+msgid "Aspect Ratio"
+msgstr "Співвідношення сторін"
+
 #: src/widgets/edit/crop.ui:91
 msgid "_Free"
 msgstr "Дов_ільний"
 
 #: src/widgets/edit/crop.ui:109
-#| msgctxt "shortcut window"
-#| msgid "Original Scale"
 msgid "_Original"
 msgstr "По_чатковий"
 
@@ -422,57 +416,58 @@ msgstr "_Квадратні"
 msgid "_5:4"
 msgstr "_5:4"
 
-#: src/widgets/edit/crop.ui:163
+#: src/widgets/edit/crop.ui:166
 msgid "_4:3"
 msgstr "_4:3"
 
-#: src/widgets/edit/crop.ui:181
+#: src/widgets/edit/crop.ui:187
 msgid "_3:2"
 msgstr "_3:2"
 
-#: src/widgets/edit/crop.ui:199
+#: src/widgets/edit/crop.ui:208
 msgid "_16:9"
 msgstr "_16:9"
 
-#: src/widgets/edit/crop.ui:219 src/widgets/edit/crop.ui:365
-#| msgid "_Orientation"
+#: src/widgets/edit/crop.ui:231 src/widgets/edit/crop.ui:377
 msgid "Orientation Landscape"
 msgstr "Альбомна орієнтація"
 
-#: src/widgets/edit/crop.ui:228 src/widgets/edit/crop.ui:377
-#| msgid "_Orientation"
+#: src/widgets/edit/crop.ui:240 src/widgets/edit/crop.ui:389
 msgid "Orientation Portrait"
 msgstr "Книжкова орієнтація"
 
-#: src/widgets/edit/crop.ui:249 src/widgets/edit/crop.ui:395
-#| msgctxt "shortcut window"
-#| msgid "Rotate Counterclockwise"
+#: src/widgets/edit/crop.ui:252 src/widgets/image_page.ui:15
+#: src/widgets/image_window.ui:25
+msgid "Rotate"
+msgstr "Обертати"
+
+#: src/widgets/edit/crop.ui:261 src/widgets/edit/crop.ui:407
 msgid "Rotate Counter Clockwise"
 msgstr "Обернути проти годинникової стрілки"
 
-#: src/widgets/edit/crop.ui:256
-#| msgctxt "shortcut window"
-#| msgid "Rotate Clockwise"
+#: src/widgets/edit/crop.ui:268
 msgid "Rotate Clockwise"
 msgstr "Обернути за годинниковою стрілкою"
 
-#: src/widgets/edit/crop.ui:275 src/widgets/edit/crop.ui:403
-#| msgid "_Horizontal"
+#: src/widgets/edit/crop.ui:278
+msgid "Flip"
+msgstr "Віддзеркалити"
+
+#: src/widgets/edit/crop.ui:287 src/widgets/edit/crop.ui:415
 msgid "Mirror Horizontally"
 msgstr "Віддзеркалити горизонтально"
 
-#: src/widgets/edit/crop.ui:282
-#| msgid "_Vertical"
+#: src/widgets/edit/crop.ui:294
 msgid "Mirror Vertically"
 msgstr "Віддзеркалити вертикально"
 
-#: src/widgets/edit/crop.ui:295 src/widgets/edit/crop.ui:419
+#: src/widgets/edit/crop.ui:306 src/widgets/edit/crop.ui:429
+msgid "_Reset"
+msgstr "С_кинути"
+
+#: src/widgets/edit/crop.ui:307 src/widgets/edit/crop.ui:431
 msgid "Undo Changes in this View"
 msgstr "Скасувати зміни на цій панелі перегляду"
-
-#: src/widgets/edit/crop.ui:352
-msgid "Aspect Ratio"
-msgstr "Співвідношення сторін"
 
 #: src/widgets/edit/crop_selection.ui:46
 msgid "Crop Selection"
@@ -489,33 +484,26 @@ msgstr[2] " (редаговано {})"
 msgstr[3] " (редаговано {})"
 
 #: src/widgets/edit_window.rs:290 src/widgets/edit_window.rs:316
-#| msgid "Failed to open image"
 msgid "Failed to save image."
 msgstr "Спроба збереження зображення була невдалою."
 
 #: src/widgets/edit_window.rs:346
-#| msgid "Print Image"
 msgid "Editing Image"
 msgstr "Редагування зображення"
 
 #: src/widgets/edit_window.rs:360
-#| msgid "Failed to delete image"
 msgid "Failed to edit image."
 msgstr "Не вдалося внести зміни до зображення."
 
 #: src/widgets/edit_window.rs:370 src/widgets/edit_window.rs:393
-#| msgid "Failed to open image"
 msgid "Failed to Save Image"
 msgstr "Спроба збереження зображення була невдалою"
 
 #: src/widgets/edit_window.rs:376
-#| msgctxt "shortcut window"
-#| msgid "Navigate Images"
 msgid "Saving Image"
 msgstr "Збереження зображення"
 
 #: src/widgets/edit_window.ui:64
-#| msgid "Cancel"
 msgid "_Cancel"
 msgstr "_Скасувати"
 
@@ -536,7 +524,6 @@ msgid "_Replace Original"
 msgstr "З_амінити оригінал"
 
 #: src/widgets/edit_window.ui:128
-#| msgid "Image moved to trash"
 msgid "Original image will be moved to the trash"
 msgstr "Початкове зображення буде пересунуто до смітника"
 
@@ -545,27 +532,23 @@ msgid ""
 "The following error occurred. If you think this is an issue with the "
 "program, please include this information when you report the error."
 msgstr ""
-"Сталася вказана нижче помилка. Якщо ви вважаєте, що цю проблему пов'язано із"
-" програмою, будь ласка, повідомте ці дані при створенні звіту щодо помилки."
+"Сталася вказана нижче помилка. Якщо ви вважаєте, що цю проблему пов'язано із "
+"програмою, будь ласка, повідомте ці дані при створенні звіту щодо помилки."
 
 #: src/widgets/error_details.ui:4
 msgid "Error Details"
 msgstr "Подробиці щодо помилки"
 
 #: src/widgets/error_details.ui:19
-#| msgid ""
-#| "The image loader reported the following when trying to load the image. "
-#| "Please include this information when you report an error. If possible, "
-#| "please also provide the image that causes the issue."
 msgid ""
 "The image loader reported the following when trying to load or edit the "
 "image. Please include this information when you report an error. If "
 "possible, please also provide the image that causes the issue."
 msgstr ""
-"Під час спроби завантажити або редагувати зображення засіб завантаження"
-" повідомив наведені "
-"нижче дані. Будь ласка, включіть ці відомості до вашого звіту щодо помилки. "
-"Якщо можна, також надайте зображення, завантаження якого призвело до помилки."
+"Під час спроби завантажити або редагувати зображення засіб завантаження "
+"повідомив наведені нижче дані. Будь ласка, включіть ці відомості до вашого "
+"звіту щодо помилки. Якщо можна, також надайте зображення, завантаження якого "
+"призвело до помилки."
 
 #: src/widgets/error_details.ui:24
 msgid "Error Message"
@@ -615,16 +598,11 @@ msgstr "Відкрити _через…"
 msgid "_Print…"
 msgstr "Над_рукувати…"
 
-#: src/widgets/image_page.ui:15 src/widgets/image_window.ui:25
-msgid "Rotate"
-msgstr "Обертати"
-
 #: src/widgets/image_page.ui:26 src/widgets/image_window.ui:36
 msgid "_Set as Background…"
 msgstr "З_робити фоновим зображенням…"
 
 #: src/widgets/image_page.ui:30 src/widgets/image_window.ui:40
-#| msgid "Delete"
 msgid "_Delete"
 msgstr "В_илучити"
 
@@ -688,6 +666,15 @@ msgstr "Перемкнути масштаб"
 
 #: src/widgets/image_view.ui:108
 msgid "Zoom to Specific Level"
+msgstr "Масштабувати до вказаного рівня"
+
+#: src/widgets/image_view.ui:237
+msgid "Custom Zoom Level"
+msgstr "Нетиповий масштаб"
+
+#: src/widgets/image_view.ui:243
+#| msgid "Zoom to Specific Level"
+msgid "Zoom to Specified Level"
 msgstr "Масштабувати до вказаного рівня"
 
 #: src/widgets/image_window.rs:502
@@ -771,7 +758,6 @@ msgid "Image Properties"
 msgstr "Властивості зображення"
 
 #: src/widgets/image_window.ui:132
-#| msgid "Print Image"
 msgid "Edit Image"
 msgstr "Редагувати зображення"
 
@@ -1001,7 +987,6 @@ msgid "Maker, Model"
 msgstr "Виробник, модель"
 
 #: src/widgets/window.rs:222
-#| msgid "Error Details"
 msgid "Show Details"
 msgstr "Показати подробиці"
 
