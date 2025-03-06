@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2025-02-19 12:15+0000\n"
-"PO-Revision-Date: 2025-02-23 08:34+0100\n"
+"POT-Creation-Date: 2025-03-05 23:37+0000\n"
+"PO-Revision-Date: 2025-03-06 01:18+0100\n"
 "Last-Translator: Ekaterine Papava <papava.e@gtu.ge>\n"
 "Language-Team: Georgian <ka@li.org>\n"
 "Language: ka\n"
@@ -360,7 +360,7 @@ msgstr "გამოსახულების სანაგვე ყუთ�
 msgid "Drop Image to View"
 msgstr "დააგდეთ გამოსახულება სანახავად"
 
-#: src/widgets/edit/crop.rs:330
+#: src/widgets/edit/crop.rs:360
 msgid "Failed to Edit Image"
 msgstr "გამოსახულების ჩასწორების შეცდომა"
 
@@ -392,6 +392,10 @@ msgstr "3:2"
 msgid "16:9"
 msgstr "16:9"
 
+#: src/widgets/edit/crop.ui:77 src/widgets/edit/crop.ui:364
+msgid "Aspect Ratio"
+msgstr "თანაფარდობა"
+
 #: src/widgets/edit/crop.ui:91
 msgid "_Free"
 msgstr "_თავისუფალი"
@@ -408,49 +412,58 @@ msgstr "_კვადრატი"
 msgid "_5:4"
 msgstr "_5:4"
 
-#: src/widgets/edit/crop.ui:163
+#: src/widgets/edit/crop.ui:166
 msgid "_4:3"
 msgstr "_4:3"
 
-#: src/widgets/edit/crop.ui:181
+#: src/widgets/edit/crop.ui:187
 msgid "_3:2"
 msgstr "_3:2"
 
-#: src/widgets/edit/crop.ui:199
+#: src/widgets/edit/crop.ui:208
 msgid "_16:9"
 msgstr "_16:9"
 
-#: src/widgets/edit/crop.ui:219 src/widgets/edit/crop.ui:365
+#: src/widgets/edit/crop.ui:231 src/widgets/edit/crop.ui:377
 msgid "Orientation Landscape"
 msgstr "ორიენტაცია ლანდშაფტი"
 
-#: src/widgets/edit/crop.ui:228 src/widgets/edit/crop.ui:377
+#: src/widgets/edit/crop.ui:240 src/widgets/edit/crop.ui:389
 msgid "Orientation Portrait"
 msgstr "ორიენტაცია პორტრეტი"
 
-#: src/widgets/edit/crop.ui:249 src/widgets/edit/crop.ui:395
+#: src/widgets/edit/crop.ui:252 src/widgets/image_page.ui:15
+#: src/widgets/image_window.ui:25
+msgid "Rotate"
+msgstr "დატრიალება"
+
+#: src/widgets/edit/crop.ui:261 src/widgets/edit/crop.ui:407
 msgid "Rotate Counter Clockwise"
 msgstr "საათის ისრის საწინააღმდეგო მიმართულებით შებრუნება"
 
-#: src/widgets/edit/crop.ui:256
+#: src/widgets/edit/crop.ui:268
 msgid "Rotate Clockwise"
 msgstr "საათის ისრის მიმართულებით შებრუნება"
 
-#: src/widgets/edit/crop.ui:275 src/widgets/edit/crop.ui:403
+#: src/widgets/edit/crop.ui:278
+msgid "Flip"
+msgstr "გადაბრუნება"
+
+#: src/widgets/edit/crop.ui:287 src/widgets/edit/crop.ui:415
 msgid "Mirror Horizontally"
 msgstr "ჰორიზონტალური ანარეკლი"
 
-#: src/widgets/edit/crop.ui:282
+#: src/widgets/edit/crop.ui:294
 msgid "Mirror Vertically"
 msgstr "ვერტიკალურ ანარეკლი"
 
-#: src/widgets/edit/crop.ui:295 src/widgets/edit/crop.ui:419
+#: src/widgets/edit/crop.ui:306 src/widgets/edit/crop.ui:429
+msgid "_Reset"
+msgstr "ჩამოყ_რა"
+
+#: src/widgets/edit/crop.ui:307 src/widgets/edit/crop.ui:431
 msgid "Undo Changes in this View"
 msgstr "ხედის ცვლილებების გაუქმება"
-
-#: src/widgets/edit/crop.ui:352
-msgid "Aspect Ratio"
-msgstr "თანაფარდობა"
 
 #: src/widgets/edit/crop_selection.ui:46
 msgid "Crop Selection"
@@ -575,10 +588,6 @@ msgstr "_გამხსნელი პროგრამა…"
 msgid "_Print…"
 msgstr "_ბეჭდვა…"
 
-#: src/widgets/image_page.ui:15 src/widgets/image_window.ui:25
-msgid "Rotate"
-msgstr "დატრიალება"
-
 #: src/widgets/image_page.ui:26 src/widgets/image_window.ui:36
 msgid "_Set as Background…"
 msgstr "ფონად დაყენე_ბა…"
@@ -647,6 +656,14 @@ msgstr "გადიდების გადართვა"
 
 #: src/widgets/image_view.ui:108
 msgid "Zoom to Specific Level"
+msgstr "გადიდება მითითებულ დონემდე"
+
+#: src/widgets/image_view.ui:237
+msgid "Custom Zoom Level"
+msgstr "მორგებული გადიდების დონე"
+
+#: src/widgets/image_view.ui:243
+msgid "Zoom to Specified Level"
 msgstr "გადიდება მითითებულ დონემდე"
 
 #: src/widgets/image_window.rs:502
