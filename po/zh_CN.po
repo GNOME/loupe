@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2025-02-27 13:05+0000\n"
-"PO-Revision-Date: 2025-03-02 13:06+0800\n"
+"POT-Creation-Date: 2025-03-05 23:37+0000\n"
+"PO-Revision-Date: 2025-03-06 18:10+0800\n"
 "Last-Translator: lumingzh <lumingzh@qq.com>\n"
 "Language-Team: Chinese (China) <i18n-zh@googlegroups.com>\n"
 "Language: zh_CN\n"
@@ -364,7 +364,7 @@ msgstr "从回收站中恢复图像失败"
 msgid "Drop Image to View"
 msgstr "拖放图像以查看"
 
-#: src/widgets/edit/crop.rs:353
+#: src/widgets/edit/crop.rs:360
 msgid "Failed to Edit Image"
 msgstr "编辑图像失败"
 
@@ -395,6 +395,10 @@ msgstr "3:2"
 #: src/widgets/edit/crop.ui:36
 msgid "16:9"
 msgstr "16:9"
+
+#: src/widgets/edit/crop.ui:77 src/widgets/edit/crop.ui:364
+msgid "Aspect Ratio"
+msgstr "宽高比"
 
 #: src/widgets/edit/crop.ui:91
 msgid "_Free"
@@ -432,6 +436,11 @@ msgstr "横向"
 msgid "Orientation Portrait"
 msgstr "竖向"
 
+#: src/widgets/edit/crop.ui:252 src/widgets/image_page.ui:15
+#: src/widgets/image_window.ui:25
+msgid "Rotate"
+msgstr "旋转"
+
 #: src/widgets/edit/crop.ui:261 src/widgets/edit/crop.ui:407
 msgid "Rotate Counter Clockwise"
 msgstr "逆时针旋转"
@@ -439,6 +448,10 @@ msgstr "逆时针旋转"
 #: src/widgets/edit/crop.ui:268
 msgid "Rotate Clockwise"
 msgstr "顺时针旋转"
+
+#: src/widgets/edit/crop.ui:278
+msgid "Flip"
+msgstr "翻转"
 
 #: src/widgets/edit/crop.ui:287 src/widgets/edit/crop.ui:415
 msgid "Mirror Horizontally"
@@ -448,13 +461,13 @@ msgstr "水平镜像"
 msgid "Mirror Vertically"
 msgstr "竖直镜像"
 
+#: src/widgets/edit/crop.ui:306 src/widgets/edit/crop.ui:429
+msgid "_Reset"
+msgstr "重置(_R)"
+
 #: src/widgets/edit/crop.ui:307 src/widgets/edit/crop.ui:431
 msgid "Undo Changes in this View"
 msgstr "撤消此视图中的更改"
-
-#: src/widgets/edit/crop.ui:364
-msgid "Aspect Ratio"
-msgstr "宽高比"
 
 #: src/widgets/edit/crop_selection.ui:46
 msgid "Crop Selection"
@@ -572,10 +585,6 @@ msgstr "打开方式(_O)…"
 msgid "_Print…"
 msgstr "打印(_P)…"
 
-#: src/widgets/image_page.ui:15 src/widgets/image_window.ui:25
-msgid "Rotate"
-msgstr "旋转"
-
 #: src/widgets/image_page.ui:26 src/widgets/image_window.ui:36
 msgid "_Set as Background…"
 msgstr "设为背景(_S)…"
@@ -644,6 +653,14 @@ msgstr "开关缩放"
 
 #: src/widgets/image_view.ui:108
 msgid "Zoom to Specific Level"
+msgstr "缩放至指定级别"
+
+#: src/widgets/image_view.ui:237
+msgid "Custom Zoom Level"
+msgstr "自定义缩放级别"
+
+#: src/widgets/image_view.ui:243
+msgid "Zoom to Specified Level"
 msgstr "缩放至指定级别"
 
 #: src/widgets/image_window.rs:502
