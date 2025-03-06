@@ -8,18 +8,19 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Gnome Nepali Translation Project\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2024-05-25 09:31+0000\n"
-"PO-Revision-Date: 2024-05-29 19:44+0545\n"
+"POT-Creation-Date: 2025-02-19 12:15+0000\n"
+"PO-Revision-Date: 2025-03-06 12:11+0545\n"
 "Last-Translator: Pawan Chitrakar <chautari@gmail.com>\n"
 "Language-Team: Nep;ali Language Translation Team <chautari@gmail.com>\n"
 "Language: ne\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.4.2\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.5\n"
 
-#: data/org.gnome.Loupe.desktop.in.in:3
-#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:29 src/window.rs:881
+#: data/org.gnome.Loupe.desktop.in.in:3 data/org.gnome.Loupe.metainfo.xml.in.in:6
+#: src/about.rs:31 src/widgets/image_window.rs:866
 msgid "Image Viewer"
 msgstr "छवि प्रदर्शक"
 
@@ -32,7 +33,7 @@ msgid "Show the image properties sidebar"
 msgstr "छवि गुण किनारापट्टी देखाउनुहोस्"
 
 #. developer_name tag deprecated with Appstream 1.0
-#: data/org.gnome.Loupe.metainfo.xml.in.in:8 src/about.rs:32
+#: data/org.gnome.Loupe.metainfo.xml.in.in:8 src/about.rs:34
 msgid "The GNOME Project"
 msgstr "जिनोम परियोजना"
 
@@ -66,351 +67,739 @@ msgid "General Shortcuts"
 msgstr "सामान्य सर्टकटहरू"
 
 #: data/resources/gtk/help-overlay.ui:14
+#| msgctxt "shortcut window"
+#| msgid "Copy Image or Metadata to Clipboard"
 msgctxt "shortcut window"
-msgid "Show Main Menu"
-msgstr "मुख्य मेनु देखाउनुहोस्"
+msgid "Copy Image or Selected Text to Clipboard"
+msgstr ""
 
 #: data/resources/gtk/help-overlay.ui:20
-msgctxt "shortcut window"
-msgid "Copy Image or Metadata to Clipboard"
-msgstr "क्लिपबोर्डमा छवि वा मेटाडेटा प्रतिलिपि गर्नुहोस्"
-
-#: data/resources/gtk/help-overlay.ui:26
 msgctxt "shortcut window"
 msgid "Move Image to Trash"
 msgstr "छविलाई रद्दीटोकरीमा सार्नुहोस्"
 
-#: data/resources/gtk/help-overlay.ui:32
+#: data/resources/gtk/help-overlay.ui:26
 msgctxt "shortcut window"
 msgid "Permanently Delete Image"
 msgstr "छवि स्थायी रूपमा मेट्नुहोस्"
 
-#: data/resources/gtk/help-overlay.ui:38
+#: data/resources/gtk/help-overlay.ui:32
 msgctxt "shortcut window"
-msgid "Toggle Image Properties"
-msgstr "छवि गुणहरू टगल गर्नुहोस्"
+msgid "Open Image with Other App"
+msgstr ""
 
-#: data/resources/gtk/help-overlay.ui:44
+#: data/resources/gtk/help-overlay.ui:38
 msgctxt "shortcut window"
 msgid "Set as Background"
 msgstr "पृष्ठभूमि सेट गर्नुहोस्"
 
-#: data/resources/gtk/help-overlay.ui:50
-msgctxt "shortcut window"
-msgid "Toggle Fullscreen"
-msgstr "पूरा पर्दा टगल गर्नुहोस्"
-
-#: data/resources/gtk/help-overlay.ui:56
-msgctxt "shortcut window"
-msgid "Leave Fullscreen"
-msgstr "पूरा पर्दा छोड्नुहोस्"
-
-#: data/resources/gtk/help-overlay.ui:62
+#: data/resources/gtk/help-overlay.ui:44
 msgctxt "shortcut window"
 msgid "New Window"
 msgstr "नयाँ सञ्झ्याल"
 
-#: data/resources/gtk/help-overlay.ui:68
+#: data/resources/gtk/help-overlay.ui:50
 msgctxt "shortcut window"
 msgid "Open Help"
 msgstr "मद्दत खोल्नुहोस्"
 
-#: data/resources/gtk/help-overlay.ui:74
+#: data/resources/gtk/help-overlay.ui:56
 msgctxt "shortcut window"
 msgid "Show Keyboard Shortcuts"
 msgstr "कुञ्जीपाटी सर्टकट देखाउनुहोस्"
 
-#: data/resources/gtk/help-overlay.ui:80
+#: data/resources/gtk/help-overlay.ui:62
 msgctxt "shortcut window"
 msgid "Close Window"
 msgstr "सञ्झ्याल बन्द गर्नुहोस्"
 
-#: data/resources/gtk/help-overlay.ui:86
+#: data/resources/gtk/help-overlay.ui:68
 msgctxt "shortcut window"
 msgid "Quit"
 msgstr "अन्त्य गर्नुहोस्"
 
-#: data/resources/gtk/help-overlay.ui:94
+#: data/resources/gtk/help-overlay.ui:76
 msgctxt "shortcut window"
 msgid "Navigate Images"
 msgstr "छविहरू नेभिगेट गर्नुहोस्"
 
-#: data/resources/gtk/help-overlay.ui:98 data/resources/gtk/help-overlay.ui:112
-#: data/resources/gtk/help-overlay.ui:224
-#: data/resources/gtk/help-overlay.ui:238
+#: data/resources/gtk/help-overlay.ui:80 data/resources/gtk/help-overlay.ui:94
+#: data/resources/gtk/help-overlay.ui:235 data/resources/gtk/help-overlay.ui:249
 msgctxt "shortcut window"
 msgid "Next Image"
 msgstr "अर्को छवि"
 
-#: data/resources/gtk/help-overlay.ui:105
-#: data/resources/gtk/help-overlay.ui:119
-#: data/resources/gtk/help-overlay.ui:231
-#: data/resources/gtk/help-overlay.ui:245
+#: data/resources/gtk/help-overlay.ui:87 data/resources/gtk/help-overlay.ui:101
+#: data/resources/gtk/help-overlay.ui:242 data/resources/gtk/help-overlay.ui:256
 msgctxt "shortcut window"
 msgid "Previous Image"
 msgstr "अघिल्लो छवि"
 
-#: data/resources/gtk/help-overlay.ui:125
+#: data/resources/gtk/help-overlay.ui:107
 msgctxt "shortcut window"
 msgid "First Image"
 msgstr "पहिलो छवि"
 
-#: data/resources/gtk/help-overlay.ui:131
+#: data/resources/gtk/help-overlay.ui:113
 msgctxt "shortcut window"
 msgid "Last Image"
 msgstr "अन्तिम छवि"
 
-#: data/resources/gtk/help-overlay.ui:139
+#: data/resources/gtk/help-overlay.ui:121
 msgctxt "shortcut window"
 msgid "Rotate Image"
 msgstr "छविलाई घुमाउनुहोस्"
 
-#: data/resources/gtk/help-overlay.ui:142
-#: data/resources/gtk/help-overlay.ui:263
+#: data/resources/gtk/help-overlay.ui:124 data/resources/gtk/help-overlay.ui:274
+#: data/resources/gtk/help-overlay.ui:315
 msgctxt "shortcut window"
 msgid "Rotate Clockwise"
 msgstr "घडीसरह घुमाउनुहोस्"
 
-#: data/resources/gtk/help-overlay.ui:148
-#: data/resources/gtk/help-overlay.ui:269
+#: data/resources/gtk/help-overlay.ui:130 data/resources/gtk/help-overlay.ui:280
+#: data/resources/gtk/help-overlay.ui:321
 msgctxt "shortcut window"
 msgid "Rotate Counterclockwise"
 msgstr "घडी विपरित घुमाउनुहोस्"
 
-#: data/resources/gtk/help-overlay.ui:156
+#: data/resources/gtk/help-overlay.ui:138
 msgctxt "shortcut window"
 msgid "Zoom Image"
 msgstr "छवि जुम गर्नुहोस्"
 
-#: data/resources/gtk/help-overlay.ui:159
-#: data/resources/gtk/help-overlay.ui:251
+#: data/resources/gtk/help-overlay.ui:141 data/resources/gtk/help-overlay.ui:262
 msgctxt "shortcut window"
 msgid "Zoom In"
 msgstr "जुम बढाउनुहोस्"
 
-#: data/resources/gtk/help-overlay.ui:165
-#: data/resources/gtk/help-overlay.ui:257
+#: data/resources/gtk/help-overlay.ui:147 data/resources/gtk/help-overlay.ui:268
 msgctxt "shortcut window"
 msgid "Zoom Out"
 msgstr "जूम घटाउनुहोस्"
 
-#: data/resources/gtk/help-overlay.ui:171
+#: data/resources/gtk/help-overlay.ui:153
 msgctxt "shortcut window"
 msgid "Best Fit"
 msgstr "सबैभन्दा मिल्दो"
 
-#: data/resources/gtk/help-overlay.ui:177
+#: data/resources/gtk/help-overlay.ui:159
 msgctxt "shortcut window"
 msgid "Original Scale"
 msgstr "मोलिक मापन"
 
-#: data/resources/gtk/help-overlay.ui:183
+#: data/resources/gtk/help-overlay.ui:165
 msgctxt "shortcut window"
 msgid "200% Scale"
 msgstr "२००% मापन"
 
-#: data/resources/gtk/help-overlay.ui:191
+#: data/resources/gtk/help-overlay.ui:173
 msgctxt "shortcut window"
 msgid "Pan View"
 msgstr "प्यान दृश्य"
 
-#: data/resources/gtk/help-overlay.ui:194
+#: data/resources/gtk/help-overlay.ui:176
 msgctxt "shortcut window"
 msgid "Pan Left"
 msgstr "प्यान बायाँ"
 
-#: data/resources/gtk/help-overlay.ui:200
+#: data/resources/gtk/help-overlay.ui:182
 msgctxt "shortcut window"
 msgid "Pan Right"
 msgstr "प्यान दायाँ"
 
-#: data/resources/gtk/help-overlay.ui:206
+#: data/resources/gtk/help-overlay.ui:188
 msgctxt "shortcut window"
 msgid "Pan Up"
 msgstr "प्यान माथि"
 
-#: data/resources/gtk/help-overlay.ui:212
+#: data/resources/gtk/help-overlay.ui:194
 msgctxt "shortcut window"
 msgid "Pan Down"
 msgstr "प्यान तल"
 
-#: data/resources/gtk/help-overlay.ui:220
+#: data/resources/gtk/help-overlay.ui:202
+msgctxt "shortcut window"
+msgid "View"
+msgstr "दृश्य"
+
+#: data/resources/gtk/help-overlay.ui:205
+msgctxt "shortcut window"
+msgid "Toggle Fullscreen"
+msgstr "पूरा पर्दा टगल गर्नुहोस्"
+
+#: data/resources/gtk/help-overlay.ui:211
+msgctxt "shortcut window"
+msgid "Leave Fullscreen"
+msgstr "पूरा पर्दा छोड्नुहोस्"
+
+#: data/resources/gtk/help-overlay.ui:217
+msgctxt "shortcut window"
+msgid "Toggle Image Properties"
+msgstr "छवि गुणहरू टगल गर्नुहोस्"
+
+#: data/resources/gtk/help-overlay.ui:223
+msgctxt "shortcut window"
+msgid "Show Main Menu"
+msgstr "मुख्य मेनु देखाउनुहोस्"
+
+#: data/resources/gtk/help-overlay.ui:231
 msgctxt "shortcut window"
 msgid "Gestures"
 msgstr "इशाराहरू"
 
+#: data/resources/gtk/help-overlay.ui:288
+msgctxt "shortcut window"
+msgid "Editing"
+msgstr "सम्पादन गर्ने"
+
+#: data/resources/gtk/help-overlay.ui:291
+msgctxt "shortcut window"
+msgid "Open Editing View"
+msgstr ""
+
+#: data/resources/gtk/help-overlay.ui:297
+msgctxt "shortcut window"
+msgid "Replace Original"
+msgstr ""
+
+#: data/resources/gtk/help-overlay.ui:303
+msgctxt "shortcut window"
+msgid "Save As"
+msgstr "यसमा बचत गर्नुहोस्"
+
+#: data/resources/gtk/help-overlay.ui:309
+msgctxt "shortcut window"
+msgid "Cancel"
+msgstr "_रद्द"
+
+#: data/resources/gtk/help-overlay.ui:327
+#| msgid "_Horizontal"
+msgctxt "shortcut window"
+msgid "Mirror Horizontally"
+msgstr ""
+
+#: data/resources/gtk/help-overlay.ui:333
+#| msgid "_Vertical"
+msgctxt "shortcut window"
+msgid "Mirror Vertically"
+msgstr ""
+
+#: data/resources/gtk/help-overlay.ui:339
+msgctxt "shortcut window"
+msgid "Apply Crop"
+msgstr ""
+
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/about.rs:41
+#: src/about.rs:43
 msgid "translator-credits"
 msgstr "pawan Chitrakar <chautari@gmail.com>"
 
-#: src/about.rs:42
+#: src/about.rs:44
 msgid "Copyright © 2020–2024 Christopher Davis et al."
 msgstr "प्रतिलिपि अधिकार © २०२०–२०२४ क्रिस्टोफर डेभिस एट अल."
 
-#: src/file_model.rs:129
+#: src/file_model.rs:180
 msgid "Could not list other files in directory."
 msgstr "डाइरेक्टरीमा अन्य फाइलहरू सूचीबद्ध गर्न सकेन ।"
 
-#. Translators: short for "north" in GPS coordinate
-#: src/metadata/gps.rs:165
-msgid "N"
-msgstr "N"
-
-#. Translators: short for "south" in GPS coordinate
-#: src/metadata/gps.rs:168
-msgid "S"
-msgstr "S"
-
-#. Translators: short for "east" in GPS coordinate
-#: src/metadata/gps.rs:190
-msgid "E"
-msgstr "E"
-
-#. Translators: short for "west" in GPS coordinate
-#: src/metadata/gps.rs:193
-msgid "W"
-msgstr "W"
+#. Translators: Display of the f-number <https://en.wikipedia.org/wiki/F-number>. {} will be replaced with the number
+#: src/metadata.rs:253
+msgid "\\u{192}\\u{2215}{}"
+msgstr ""
 
 #. Translators: Fractional exposure time (photography) in seconds
-#: src/metadata/mod.rs:262
+#: src/metadata.rs:266
 msgid "1\\u{2215}{}\\u{202F}s"
 msgstr "1\\u{2215}{}\\u{202F}s"
 
 #. Translators: Exposure time (photography) in seconds
-#: src/metadata/mod.rs:270
+#: src/metadata.rs:274
 msgid "{}\\u{202F}s"
 msgstr "{}\\u{202F}s"
 
-#. Translators: Unit for focal length in millimeters
-#: src/metadata/mod.rs:296
+#: src/metadata.rs:288
 msgid "{}\\u{202F}mm"
 msgstr "{}\\u{202F}mm"
+
+#. Translators: short for "north" in GPS coordinate
+#: src/metadata.rs:328
+msgid "N"
+msgstr "N"
+
+#. Translators: short for "south" in GPS coordinate
+#: src/metadata.rs:332
+msgid "S"
+msgstr "S"
+
+#. Translators: short for "east" in GPS coordinate
+#: src/metadata.rs:341
+msgid "E"
+msgstr "E"
+
+#. Translators: short for "west" in GPS coordinate
+#: src/metadata.rs:345
+msgid "W"
+msgstr "W"
 
 #. Translators: This is the date and time format we use in metadata output etc.
 #. The format has to follow <https://docs.gtk.org/glib/method.DateTime.format.html>
 #. The default is already translated. Don't change if you are not sure what to
 #. use.
-#: src/util/mod.rs:37
+#: src/util.rs:39
 #, c-format
 msgid "%x %X"
 msgstr "%x %X"
 
-#: src/util/mod.rs:180 src/window.rs:702
+#: src/util.rs:182 src/widgets/image_window.rs:638
 msgid "Failed to restore image from trash"
 msgstr "रद्दीटोकरीबाट छवि पुनर्स्थापना गर्न असफल भयो"
 
-#: src/util/mod.rs:201
-msgid "Failed to open image"
-msgstr "छवि खोल्न असफल भयो"
+#: src/widgets/drag_overlay.ui:15
+#| msgid "Image Viewer"
+msgid "Drop Image to View"
+msgstr ""
 
-#: src/widgets/image_page.ui:6 src/window.ui:16
+#: src/widgets/edit/crop.rs:330
+#| msgid "Failed to delete image"
+msgid "Failed to Edit Image"
+msgstr ""
+
+#: src/widgets/edit/crop.ui:6
+msgid "Free"
+msgstr "नि:शुल्क"
+
+#: src/widgets/edit/crop.ui:11
+msgid "Original"
+msgstr "मुल"
+
+#: src/widgets/edit/crop.ui:16
+msgid "Square"
+msgstr "चतुर्भुज"
+
+#: src/widgets/edit/crop.ui:21
+msgid "5:4"
+msgstr ""
+
+#: src/widgets/edit/crop.ui:26
+msgid "4:3"
+msgstr "4:3"
+
+#: src/widgets/edit/crop.ui:31
+msgid "3:2"
+msgstr "3:2"
+
+#: src/widgets/edit/crop.ui:36
+msgid "16:9"
+msgstr "16:9"
+
+#: src/widgets/edit/crop.ui:91
+msgid "_Free"
+msgstr "नि:शुल्क"
+
+#: src/widgets/edit/crop.ui:109
+msgid "_Original"
+msgstr "मुल"
+
+#: src/widgets/edit/crop.ui:127
+msgid "_Square"
+msgstr "चतुर्भुज"
+
+#: src/widgets/edit/crop.ui:145
+msgid "_5:4"
+msgstr ""
+
+#: src/widgets/edit/crop.ui:163
+msgid "_4:3"
+msgstr "_4:3"
+
+#: src/widgets/edit/crop.ui:181
+msgid "_3:2"
+msgstr "_3:2"
+
+#: src/widgets/edit/crop.ui:199
+msgid "_16:9"
+msgstr "_16:9"
+
+#: src/widgets/edit/crop.ui:219 src/widgets/edit/crop.ui:365
+#| msgid "_Orientation"
+msgid "Orientation Landscape"
+msgstr ""
+
+#: src/widgets/edit/crop.ui:228 src/widgets/edit/crop.ui:377
+#| msgid "_Orientation"
+msgid "Orientation Portrait"
+msgstr ""
+
+#: src/widgets/edit/crop.ui:249 src/widgets/edit/crop.ui:395
+#| msgctxt "shortcut window"
+#| msgid "Rotate Counterclockwise"
+msgid "Rotate Counter Clockwise"
+msgstr ""
+
+#: src/widgets/edit/crop.ui:256
+msgid "Rotate Clockwise"
+msgstr "घडीसरह घुमाउनुहोस्"
+
+#: src/widgets/edit/crop.ui:275 src/widgets/edit/crop.ui:403
+#| msgid "_Horizontal"
+msgid "Mirror Horizontally"
+msgstr ""
+
+#: src/widgets/edit/crop.ui:282
+#| msgid "_Vertical"
+msgid "Mirror Vertically"
+msgstr ""
+
+#: src/widgets/edit/crop.ui:295 src/widgets/edit/crop.ui:419
+msgid "Undo Changes in this View"
+msgstr ""
+
+#: src/widgets/edit/crop.ui:352
+msgid "Aspect Ratio"
+msgstr "आकार अनुपात"
+
+#: src/widgets/edit/crop_selection.ui:46
+msgid "Crop Selection"
+msgstr ""
+
+#. Translators: Filename suffix
+#. Translators: Filename suffix, {} is replaced by a number
+#: src/widgets/edit_window.rs:192 src/widgets/edit_window.rs:195
+msgid " (Edited)"
+msgid_plural " (Edited {})"
+msgstr[0] "(सम्पादक)"
+msgstr[1] "(सम्पादक{})"
+
+#: src/widgets/edit_window.rs:290 src/widgets/edit_window.rs:316
+msgid "Failed to save image."
+msgstr "छवि बचत गर्न असफल भयो"
+
+#: src/widgets/edit_window.rs:346
+#| msgctxt "shortcut window"
+#| msgid "First Image"
+msgid "Editing Image"
+msgstr ""
+
+#: src/widgets/edit_window.rs:360
+#| msgid "Failed to delete image"
+msgid "Failed to edit image."
+msgstr ""
+
+#: src/widgets/edit_window.rs:370 src/widgets/edit_window.rs:393
+msgid "Failed to Save Image"
+msgstr "छवि बचत गर्न असफल भयो"
+
+#: src/widgets/edit_window.rs:376
+msgid "Saving Image"
+msgstr "छवि बचत गर्दै"
+
+#: src/widgets/edit_window.ui:64
+msgid "_Cancel"
+msgstr "_रद्द गर्नुहोस्"
+
+#: src/widgets/edit_window.ui:71
+msgid "_Save"
+msgstr "सङ्ग्रह गर्नुहोस्"
+
+#: src/widgets/edit_window.ui:92
+msgid "_Save As…"
+msgstr "यस रूपमा बचत गर्नुहोस्…"
+
+#: src/widgets/edit_window.ui:100
+msgid "Keep original and create a new file"
+msgstr ""
+
+#: src/widgets/edit_window.ui:120
+msgid "_Replace Original"
+msgstr ""
+
+#: src/widgets/edit_window.ui:128
+#| msgid "Image moved to trash"
+msgid "Original image will be moved to the trash"
+msgstr ""
+
+#: src/widgets/error_details.rs:79
+msgid ""
+"The following error occurred. If you think this is an issue with the program, "
+"please include this information when you report the error."
+msgstr ""
+
+#: src/widgets/error_details.ui:4
+msgid "Error Details"
+msgstr " त्रुटि विवरण"
+
+#: src/widgets/error_details.ui:19
+msgid ""
+"The image loader reported the following when trying to load or edit the image. "
+"Please include this information when you report an error. If possible, please also "
+"provide the image that causes the issue."
+msgstr ""
+
+#: src/widgets/error_details.ui:24
+msgid "Error Message"
+msgstr "त्रुटि सन्देश"
+
+#: src/widgets/error_details.ui:28
+msgid "Copy Error Message"
+msgstr ""
+
+#: src/widgets/error_details.ui:68
+msgid "Report _Issue"
+msgstr ""
+
+#: src/widgets/image_page.rs:227
+msgid ""
+"No image loaders available. Maybe the “glycin-loaders” package with compatibility "
+"version “{}” is not installed."
+msgstr ""
+
+#: src/widgets/image_page.rs:242
+msgid "The image format “{} ({})” is known but not installed."
+msgstr ""
+
+#: src/widgets/image_page.rs:249
+msgid "Unknown image format “{} ({}).”"
+msgstr "अज्ञात छवि ढाँचा“{} ({}).”"
+
+#: src/widgets/image_page.rs:277
+msgid "There is not enough free memory available to load this image."
+msgstr ""
+
+#: src/widgets/image_page.rs:281
+msgid "Either the image file is corrupted or it contains unsupported elements."
+msgstr "या त छवि फाइल दूषित छ वा यसले असमर्थित तत्वहरू समावेश गर्दछ ।."
+
+#: src/widgets/image_page.ui:6 src/widgets/image_window.ui:16
 msgid "_Open With…"
 msgstr "यससँग खोल्नुहोस्…"
 
-#: src/widgets/image_page.ui:14 src/window.ui:24
+#: src/widgets/image_page.ui:10 src/widgets/image_window.ui:20
 msgid "_Print…"
 msgstr "मुद्रण…"
 
-#: src/widgets/image_page.ui:18
-msgid "_Copy"
-msgstr "प्रतिलिपि बनाउनुहोस्"
-
-#: src/widgets/image_page.ui:23 src/window.ui:29
+#: src/widgets/image_page.ui:15 src/widgets/image_window.ui:25
 msgid "Rotate"
 msgstr "घुमाउनुहोस्"
 
-#: src/widgets/image_page.ui:34 src/window.ui:40
+#: src/widgets/image_page.ui:26 src/widgets/image_window.ui:36
 msgid "_Set as Background…"
 msgstr "पृष्ठभूमिको रूपमा सेट गर्नुहोस्"
+
+#: src/widgets/image_page.ui:30 src/widgets/image_window.ui:40
+msgid "_Delete"
+msgstr "मेटाउ"
+
+#: src/widgets/image_page.ui:34
+msgid "_Copy"
+msgstr "प्रतिलिपि बनाउनुहोस्"
 
 #: src/widgets/image_page.ui:63
 msgid "Could not Load Image"
 msgstr "छवि लोड गर्न सकेन"
 
-#: src/widgets/image_page.ui:97 src/window.ui:106
+#: src/widgets/image_page.ui:71
+msgid "More _Information"
+msgstr "थप जानकारी"
+
+#: src/widgets/image_page.ui:81
+msgid "_Reload"
+msgstr "पुन:लोड गर्नुहोस्"
+
+#: src/widgets/image_page.ui:123 src/widgets/image_window.ui:101
 msgid "Rotate Left"
 msgstr "बायाँ घुमाउनुहोस्"
 
-#: src/widgets/image_page.ui:107 src/window.ui:116
+#: src/widgets/image_page.ui:133 src/widgets/image_window.ui:111
 msgid "Rotate Right"
 msgstr "दायाँ घुमाउनुहोस्"
 
+#: src/widgets/image_view.rs:197
+msgid "{} %"
+msgstr "{} %"
+
 #. Translators: This is a toast notification, informing the user that
 #. an image has been set as background.
-#: src/widgets/image_view.rs:682
+#: src/widgets/image_view.rs:836
 msgid "Set as background."
 msgstr "पृष्ठभूमिको रूपमा सेट गर्नुहोस्"
 
-#: src/widgets/image_view.rs:695
+#: src/widgets/image_view.rs:849
 msgid "Could not set background."
 msgstr "पृष्ठभूमि सेट गर्न सकेन ।"
 
-#: src/widgets/image_view.ui:27
+#: src/widgets/image_view.ui:30
 msgid "Previous Image"
 msgstr "अघिल्लो छवि"
 
-#: src/widgets/image_view.ui:38
+#: src/widgets/image_view.ui:40
 msgid "Next Image"
 msgstr "अर्को छवि"
 
-#: src/widgets/image_view.ui:63
+#: src/widgets/image_view.ui:74
 msgid "Zoom Out"
 msgstr "जूम घटाउनुहोस्"
 
-#: src/widgets/image_view.ui:74
+#: src/widgets/image_view.ui:85
 msgid "Zoom In"
 msgstr "जुम बढाउनुहोस्"
 
-#: src/widgets/image_view.ui:85
+#: src/widgets/image_view.ui:100
+msgid "Toggle Zoom"
+msgstr "जुम टगल गर्नुहोस्"
+
+#: src/widgets/image_view.ui:108
+msgid "Zoom to Specific Level"
+msgstr "निर्दिष्ट स्तरमा जुम गर्नुहोस्"
+
+#: src/widgets/image_window.rs:502
+msgid "Supported image formats"
+msgstr "समर्थित छवि ढाँचा"
+
+#: src/widgets/image_window.rs:508
+msgid "All files"
+msgstr "सबै फाइलहरू"
+
+#: src/widgets/image_window.rs:515
+msgid "Open Image"
+msgstr "छवि खोल्नुहोस्"
+
+#: src/widgets/image_window.rs:601
+msgid "Image copied to clipboard"
+msgstr "क्लिपबोर्डमा छवि प्रतिलिपि गरियो"
+
+#: src/widgets/image_window.rs:622
+msgid "Image moved to trash"
+msgstr "छवि रद्दीटोकरीमा सारियो"
+
+#: src/widgets/image_window.rs:623
+msgid "Undo"
+msgstr "पुर्वस्थितिमा फर्काउनुहोस्"
+
+#: src/widgets/image_window.rs:653
+msgid "Failed to move image to trash"
+msgstr "छविलाई रद्दीटोकरीमा सार्न असफल भयो"
+
+#: src/widgets/image_window.rs:677
+msgid "Permanently Delete Image?"
+msgstr "छवि स्थायी रूपमा मेट्नुहुन्छ?"
+
+#: src/widgets/image_window.rs:679
+msgid "After deleting the image “{}” it will be permanently lost."
+msgstr "छवि \"{}\" मेटिसकेपछि यो स्थायी रूपमा हराउनेछ."
+
+#: src/widgets/image_window.rs:687
+msgid "Cancel"
+msgstr "रद्द गर्ने"
+
+#: src/widgets/image_window.rs:688
+msgid "Delete"
+msgstr "मेट्नुहोस्"
+
+#: src/widgets/image_window.rs:699
+msgid "Failed to delete image"
+msgstr "छवि मेट्न असफल भयो"
+
+#: src/widgets/image_window.ui:6
+msgid "_New Window"
+msgstr "नयाँ सञ्झ्याल"
+
+#: src/widgets/image_window.ui:10
+msgid "_Open…"
+msgstr "खोल्नुहोस्…"
+
+#: src/widgets/image_window.ui:46
+msgid "_Help"
+msgstr "सहयोग"
+
+#: src/widgets/image_window.ui:50
+msgid "_Keyboard Shortcuts"
+msgstr "कुञ्जीपाटी सटकर्ट"
+
+#: src/widgets/image_window.ui:54
+msgid "_About Image Viewer"
+msgstr "छवि प्रदर्शक बारेमा"
+
+#: src/widgets/image_window.ui:87
 msgid "Toggle Fullscreen"
 msgstr "पूरा पर्दा टगल गर्नुहोस्"
 
-#: src/widgets/print.rs:116
+#: src/widgets/image_window.ui:93
+msgid "Main Menu"
+msgstr "मुख्य मेनु"
+
+#: src/widgets/image_window.ui:125
+msgid "Image Properties"
+msgstr "छवि गुण"
+
+#: src/widgets/image_window.ui:132
+msgid "Edit Image"
+msgstr "छवि सम्पादन गर्नुहोस्"
+
+#: src/widgets/image_window.ui:220
+msgid "View Images"
+msgstr "छवि हेर्नुहोस्"
+
+#: src/widgets/image_window.ui:221
+msgid "Drag and drop images here"
+msgstr "यहाँ छविहरू तान्नुहोस् र छोड्नुहोस्"
+
+#: src/widgets/image_window.ui:225
+msgid "_Open Files…"
+msgstr "फाइल खोल्नुहोस्…"
+
+#: src/widgets/print.rs:108
 msgid "Top"
 msgstr "माथि"
 
-#: src/widgets/print.rs:117
+#: src/widgets/print.rs:109
 msgid "Center"
 msgstr "केन्द्र"
 
-#: src/widgets/print.rs:118
+#: src/widgets/print.rs:110
 msgid "Bottom"
 msgstr "तल"
 
-#: src/widgets/print.rs:119
+#: src/widgets/print.rs:111
 msgid "Left"
 msgstr "बायाँ"
 
-#: src/widgets/print.rs:120
+#: src/widgets/print.rs:112
 msgid "Right"
 msgstr "दायाँ"
 
 #. Translators: Shorthand for centimeter
-#: src/widgets/print.rs:156
+#: src/widgets/print.rs:148
 msgid "cm"
 msgstr "सेन्टिमिटर"
 
 #. Translators: Shorthand for inch
-#: src/widgets/print.rs:158
+#: src/widgets/print.rs:150
 msgid "in"
 msgstr "in"
 
 #. Translators: Shorthand for pixel
-#: src/widgets/print.rs:160
+#: src/widgets/print.rs:152
 msgid "px"
 msgstr "px"
 
 #. Translators: {} is a placeholder for the filename
-#: src/widgets/print.rs:382
+#: src/widgets/print.rs:361
 msgid "Print “{}”"
 msgstr "मुद्रण गर्नुहोस् “{}”"
 
-#: src/widgets/print.rs:803
+#: src/widgets/print.rs:476
+msgid "Continue…"
+msgstr "जारी राख्नुहोस्…"
+
+#: src/widgets/print.rs:477
+msgid "Print Image"
+msgstr "छवि मुद्रण गर्नुहोस्"
+
+#: src/widgets/print.rs:791
 msgid "_Scale"
 msgstr "मापन"
 
-#: src/widgets/print.rs:806
+#: src/widgets/print.rs:794
 msgid "_Width"
 msgstr "चौडाइ"
 
@@ -459,7 +848,7 @@ msgstr "तेर्सो"
 msgid "_Vertical"
 msgstr "ठाडो"
 
-#: src/widgets/print.ui:142 src/widgets/properties_view.ui:53
+#: src/widgets/print.ui:142 src/widgets/properties_view.ui:56
 msgid "Image Size"
 msgstr "छवि साइज"
 
@@ -475,186 +864,109 @@ msgstr "खाली स्थान भर्नुहोस्"
 msgid "H_eight"
 msgstr "उचाइ"
 
-#: src/widgets/properties_view.rs:234
+#: src/widgets/properties_view.rs:258
 msgid "Unknown"
 msgstr "अज्ञात"
 
 #. Translators: Addition of image being transparent to format name
-#: src/widgets/properties_view.rs:238
+#: src/widgets/properties_view.rs:262
 msgid ", transparent"
 msgstr "पारदर्शक"
 
 #. Translators: Addition of image being grayscale to format name
-#: src/widgets/properties_view.rs:243
+#: src/widgets/properties_view.rs:267
 msgid ", grayscale"
 msgstr "ग्रेस्केल"
 
 #. Translators: Addition of bit size to format name
-#: src/widgets/properties_view.rs:248
+#: src/widgets/properties_view.rs:272
 msgid ", {}\\u{202F}bit"
 msgstr ", {}\\u{202F}bit"
 
-#: src/widgets/properties_view.rs:299
+#: src/widgets/properties_view.rs:290
+#| msgid "1\\u{2215}{}\\u{202F}s"
+msgid "{}\\u{202F}\\u{D7}\\u{202F}{}"
+msgstr "{}\\u{202F}\\u{D7}\\u{202F}{}"
+
+#: src/widgets/properties_view.rs:329
 msgid "Image Coordinates Copied"
 msgstr "छवि निर्देशांक प्रतिलिपि गरियो"
 
-#: src/widgets/properties_view.ui:19
+#: src/widgets/properties_view.ui:20
 msgid "Folder"
 msgstr "फोल्डर"
 
-#: src/widgets/properties_view.ui:26
+#: src/widgets/properties_view.ui:28
 msgid "Open Containing Folder"
 msgstr "समावेश फोल्डर खोल्नुहोस्"
 
-#: src/widgets/properties_view.ui:39
+#: src/widgets/properties_view.ui:41
 msgid "URI"
 msgstr "URI"
 
-#: src/widgets/properties_view.ui:62
+#: src/widgets/properties_view.ui:66
 msgid "Image Format"
 msgstr "छवि ढाँचा"
 
-#: src/widgets/properties_view.ui:71
+#: src/widgets/properties_view.ui:76
 msgid "File Size"
 msgstr "फाइल साइज"
 
-#: src/widgets/properties_view.ui:84
+#: src/widgets/properties_view.ui:90
 msgid "File Created"
 msgstr "फाइल  सिर्जना गरियो"
 
-#: src/widgets/properties_view.ui:93
+#: src/widgets/properties_view.ui:100
 msgid "File Modified"
 msgstr "फाइल परिमार्जन गरियो"
 
 #. Translators: This is a label for GPS coordinates
-#: src/widgets/properties_view.ui:106
+#: src/widgets/properties_view.ui:114
 msgid "Location"
 msgstr "स्थान"
 
-#: src/widgets/properties_view.ui:116
+#: src/widgets/properties_view.ui:125
 msgid "Copy Coordinates"
 msgstr "निर्देशांक प्रतिलिपि बनाउनुहोस्"
 
-#: src/widgets/properties_view.ui:127
+#: src/widgets/properties_view.ui:136
 msgid "Open Location"
 msgstr "स्थान खोल्नुहोस्"
 
-#: src/widgets/properties_view.ui:140
+#: src/widgets/properties_view.ui:149
 msgid "Originally Created"
 msgstr "मूलतः सिर्जना गरियो"
 
-#: src/widgets/properties_view.ui:149
+#: src/widgets/properties_view.ui:159
+msgid "Comment"
+msgstr "टिप्पणी"
+
+#: src/widgets/properties_view.ui:169
 msgid "Aperture"
 msgstr "छिद्र मान"
 
-#: src/widgets/properties_view.ui:158
+#: src/widgets/properties_view.ui:179
 msgid "Exposure"
 msgstr "प्रदर्शन समय"
 
-#: src/widgets/properties_view.ui:167
+#: src/widgets/properties_view.ui:189
 msgid "ISO"
 msgstr "ISO"
 
-#: src/widgets/properties_view.ui:176
+#: src/widgets/properties_view.ui:199
 msgid "Focal Length"
 msgstr "केन्द्रित लम्बाइ"
 
-#: src/widgets/properties_view.ui:185
+#: src/widgets/properties_view.ui:209
 msgid "Maker, Model"
 msgstr "निर्माता, मोडेल"
 
-#: src/window.rs:569
-msgid "Supported image formats"
-msgstr "समर्थित छवि ढाँचा"
+#: src/widgets/window.rs:222
+msgid "Show Details"
+msgstr "अरू धेरै विवरण देखाउनुहोस्"
 
-#: src/window.rs:575
-msgid "All files"
-msgstr "सबै फाइलहरू"
+#~ msgid "Copy to Clipboard"
+#~ msgstr "क्लिपबोर्डमा प्रतिलिपि बनाउनुहोस्"
 
-#: src/window.rs:582
-msgid "Open Image"
-msgstr "छवि खोल्नुहोस्"
-
-#: src/window.rs:668
-msgid "Image copied to clipboard"
-msgstr "क्लिपबोर्डमा छवि प्रतिलिपि गरियो"
-
-#: src/window.rs:689
-msgid "Image moved to trash"
-msgstr "छवि रद्दीटोकरीमा सारियो"
-
-#: src/window.rs:690
-msgid "Undo"
-msgstr "पुर्वस्थितिमा फर्काउनुहोस्"
-
-#: src/window.rs:716
-msgid "Failed to move image to trash"
-msgstr "छविलाई रद्दीटोकरीमा सार्न असफल भयो"
-
-#: src/window.rs:742
-msgid "Permanently Delete Image?"
-msgstr "छवि स्थायी रूपमा मेट्नुहुन्छ?"
-
-#: src/window.rs:744
-msgid "After deleting the image “{}” it will be permanently lost."
-msgstr "छवि \"{}\" मेटिसकेपछि यो स्थायी रूपमा हराउनेछ."
-
-#: src/window.rs:752
-msgid "Cancel"
-msgstr "रद्द गर्ने"
-
-#: src/window.rs:753
-msgid "Delete"
-msgstr "मेट्नुहोस्"
-
-#: src/window.rs:764
-msgid "Failed to delete image"
-msgstr "छवि मेट्न असफल भयो"
-
-#: src/window.ui:6
-msgid "_New Window"
-msgstr "नयाँ सञ्झ्याल"
-
-#: src/window.ui:10
-msgid "_Open…"
-msgstr "खोल्नुहोस्…"
-
-#: src/window.ui:46
-msgid "_Help"
-msgstr "सहयोग"
-
-#: src/window.ui:50
-msgid "_Keyboard Shortcuts"
-msgstr "कुञ्जीपाटी सटकर्ट"
-
-#: src/window.ui:54
-msgid "_About Image Viewer"
-msgstr "छवि प्रदर्शक बारेमा"
-
-#: src/window.ui:85
-msgid "Copy to Clipboard"
-msgstr "क्लिपबोर्डमा प्रतिलिपि बनाउनुहोस्"
-
-#: src/window.ui:92
-msgid "Move to Trash"
-msgstr "रद्दीटोकरीमा सार्नुहोस्"
-
-#: src/window.ui:98
-msgid "Main Menu"
-msgstr "मुख्य मेनु"
-
-#: src/window.ui:130
-msgid "Image Properties"
-msgstr "छवि गुण"
-
-#: src/window.ui:174
-msgid "View Images"
-msgstr "छवि हेर्नुहोस्"
-
-#: src/window.ui:175
-msgid "Drag and drop images here"
-msgstr "यहाँ छविहरू तान्नुहोस् र छोड्नुहोस्"
-
-#: src/window.ui:179
-msgid "_Open Files…"
-msgstr "फाइल खोल्नुहोस्…"
+#~ msgid "Move to Trash"
+#~ msgstr "रद्दीटोकरीमा सार्नुहोस्"
