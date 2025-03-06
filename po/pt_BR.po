@@ -5,20 +5,21 @@
 # Leônidas Araújo <leorusvellt@hotmail.com>, 2023-2024.
 # Juliano de Souza Camargo <julianosc@pm.me>, 2024.
 # Rafael Fontenelle <rafaelff@gnome.org>, 2023-2025.
+# Álvaro Burns, 2025.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2025-02-13 22:07+0000\n"
-"PO-Revision-Date: 2025-02-14 22:59-0300\n"
-"Last-Translator: Rafael Fontenelle <rafaelff@gnome.org>\n"
+"POT-Creation-Date: 2025-03-05 23:37+0000\n"
+"PO-Revision-Date: 2025-03-05 20:55-0300\n"
+"Last-Translator: Álvaro Burns\n"
 "Language-Team: Brazilian Portuguese <https://br.gnome.org/traducao>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n > 1)\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: Gtranslator 47.1\n"
 
 #: data/org.gnome.Loupe.desktop.in.in:3
@@ -314,41 +315,41 @@ msgid "Could not list other files in directory."
 msgstr "Não foi possível listar outros arquivos no diretório."
 
 #. Translators: Display of the f-number <https://en.wikipedia.org/wiki/F-number>. {} will be replaced with the number
-#: src/metadata.rs:242
+#: src/metadata.rs:253
 msgid "\\u{192}\\u{2215}{}"
 msgstr "\\u{192}\\u{2215}{}"
 
 #. Translators: Fractional exposure time (photography) in seconds
-#: src/metadata.rs:255
+#: src/metadata.rs:266
 msgid "1\\u{2215}{}\\u{202F}s"
 msgstr "1\\u{2215}{}\\u{202F}s"
 
 #. Translators: Exposure time (photography) in seconds
-#: src/metadata.rs:263
+#: src/metadata.rs:274
 msgid "{}\\u{202F}s"
 msgstr "{}\\u{202F}s"
 
-#: src/metadata.rs:277
+#: src/metadata.rs:288
 msgid "{}\\u{202F}mm"
 msgstr "{}\\u{202F}mm"
 
 #. Translators: short for "north" in GPS coordinate
-#: src/metadata.rs:317
+#: src/metadata.rs:328
 msgid "N"
 msgstr "N"
 
 #. Translators: short for "south" in GPS coordinate
-#: src/metadata.rs:321
+#: src/metadata.rs:332
 msgid "S"
 msgstr "S"
 
 #. Translators: short for "east" in GPS coordinate
-#: src/metadata.rs:330
+#: src/metadata.rs:341
 msgid "E"
 msgstr "L"
 
 #. Translators: short for "west" in GPS coordinate
-#: src/metadata.rs:334
+#: src/metadata.rs:345
 msgid "W"
 msgstr "O"
 
@@ -369,7 +370,7 @@ msgstr "Falha ao restaurar a imagem da lixeira"
 msgid "Drop Image to View"
 msgstr "Solte uma imagem para vê-la"
 
-#: src/widgets/edit/crop.rs:330
+#: src/widgets/edit/crop.rs:360
 msgid "Failed to Edit Image"
 msgstr "Falha ao editar a imagem"
 
@@ -401,6 +402,10 @@ msgstr "3:2"
 msgid "16:9"
 msgstr "16:9"
 
+#: src/widgets/edit/crop.ui:77 src/widgets/edit/crop.ui:364
+msgid "Aspect Ratio"
+msgstr "Proporção"
+
 #: src/widgets/edit/crop.ui:91
 msgid "_Free"
 msgstr "_Livre"
@@ -417,49 +422,58 @@ msgstr "_Quadrado"
 msgid "_5:4"
 msgstr "_5:4"
 
-#: src/widgets/edit/crop.ui:163
+#: src/widgets/edit/crop.ui:166
 msgid "_4:3"
 msgstr "_4:3"
 
-#: src/widgets/edit/crop.ui:181
+#: src/widgets/edit/crop.ui:187
 msgid "_3:2"
 msgstr "_3:2"
 
-#: src/widgets/edit/crop.ui:199
+#: src/widgets/edit/crop.ui:208
 msgid "_16:9"
 msgstr "_16:9"
 
-#: src/widgets/edit/crop.ui:219 src/widgets/edit/crop.ui:365
+#: src/widgets/edit/crop.ui:231 src/widgets/edit/crop.ui:377
 msgid "Orientation Landscape"
 msgstr "Orientação paisagem"
 
-#: src/widgets/edit/crop.ui:228 src/widgets/edit/crop.ui:377
+#: src/widgets/edit/crop.ui:240 src/widgets/edit/crop.ui:389
 msgid "Orientation Portrait"
 msgstr "Orientação retrato"
 
-#: src/widgets/edit/crop.ui:249 src/widgets/edit/crop.ui:395
+#: src/widgets/edit/crop.ui:252 src/widgets/image_page.ui:15
+#: src/widgets/image_window.ui:25
+msgid "Rotate"
+msgstr "Girar"
+
+#: src/widgets/edit/crop.ui:261 src/widgets/edit/crop.ui:407
 msgid "Rotate Counter Clockwise"
 msgstr "Gira no sentido anti-horário"
 
-#: src/widgets/edit/crop.ui:256
+#: src/widgets/edit/crop.ui:268
 msgid "Rotate Clockwise"
 msgstr "Gira no sentido horário"
 
-#: src/widgets/edit/crop.ui:275 src/widgets/edit/crop.ui:403
+#: src/widgets/edit/crop.ui:278
+msgid "Flip"
+msgstr "Vira"
+
+#: src/widgets/edit/crop.ui:287 src/widgets/edit/crop.ui:415
 msgid "Mirror Horizontally"
 msgstr "Espelha horizontalmente"
 
-#: src/widgets/edit/crop.ui:282
+#: src/widgets/edit/crop.ui:294
 msgid "Mirror Vertically"
 msgstr "Espelha verticalmente"
 
-#: src/widgets/edit/crop.ui:295 src/widgets/edit/crop.ui:419
+#: src/widgets/edit/crop.ui:306 src/widgets/edit/crop.ui:429
+msgid "_Reset"
+msgstr "_Redefinir"
+
+#: src/widgets/edit/crop.ui:307 src/widgets/edit/crop.ui:431
 msgid "Undo Changes in this View"
 msgstr "Desfaz alterações nesta visão"
-
-#: src/widgets/edit/crop.ui:352
-msgid "Aspect Ratio"
-msgstr "Proporção"
 
 #: src/widgets/edit/crop_selection.ui:46
 msgid "Crop Selection"
@@ -536,8 +550,8 @@ msgid ""
 "possible, please also provide the image that causes the issue."
 msgstr ""
 "O carregador de imagens relatou o seguinte ao tentar carregar ou editar a "
-"imagem. Por favor, inclua esta informação ao relatar um erro. Se "
-"possível,por favor, forneça também a imagem que causa o problema."
+"imagem. Por favor, inclua esta informação ao relatar um erro. Se possível,"
+"por favor, forneça também a imagem que causa o problema."
 
 #: src/widgets/error_details.ui:24
 msgid "Error Message"
@@ -583,10 +597,6 @@ msgstr "_Abrir com…"
 #: src/widgets/image_page.ui:10 src/widgets/image_window.ui:20
 msgid "_Print…"
 msgstr "_Imprimir…"
-
-#: src/widgets/image_page.ui:15 src/widgets/image_window.ui:25
-msgid "Rotate"
-msgstr "Girar"
 
 #: src/widgets/image_page.ui:26 src/widgets/image_window.ui:36
 msgid "_Set as Background…"
@@ -656,7 +666,15 @@ msgstr "Alterna a ampliação"
 
 #: src/widgets/image_view.ui:108
 msgid "Zoom to Specific Level"
-msgstr "Amplia para um nível específico"
+msgstr "Amplia para nível específico"
+
+#: src/widgets/image_view.ui:237
+msgid "Custom Zoom Level"
+msgstr "Nível de ampliação customizado"
+
+#: src/widgets/image_view.ui:243
+msgid "Zoom to Specified Level"
+msgstr "Amplia para nível específico"
 
 #: src/widgets/image_window.rs:502
 msgid "Supported image formats"
