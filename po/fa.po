@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2025-02-27 13:05+0000\n"
-"PO-Revision-Date: 2025-03-03 21:28+0330\n"
+"POT-Creation-Date: 2025-03-05 23:37+0000\n"
+"PO-Revision-Date: 2025-03-08 02:07+0330\n"
 "Last-Translator: Danial Behzadi <dani.behzi@ubuntu.com>\n"
 "Language-Team: Persian <fa@li.org>\n"
 "Language: fa\n"
@@ -353,7 +353,7 @@ msgstr "شکست در بازگردانی تصویر از زباله‌دان"
 msgid "Drop Image to View"
 msgstr "انداختن تصویر برای نمایش"
 
-#: src/widgets/edit/crop.rs:353
+#: src/widgets/edit/crop.rs:360
 msgid "Failed to Edit Image"
 msgstr "شکست در ویرایش تصویر"
 
@@ -384,6 +384,10 @@ msgstr "۳:۲"
 #: src/widgets/edit/crop.ui:36
 msgid "16:9"
 msgstr "۱۶:۹"
+
+#: src/widgets/edit/crop.ui:77 src/widgets/edit/crop.ui:364
+msgid "Aspect Ratio"
+msgstr "نسبت ابعاد"
 
 #: src/widgets/edit/crop.ui:91
 msgid "_Free"
@@ -421,6 +425,11 @@ msgstr "جهت افقی"
 msgid "Orientation Portrait"
 msgstr "جهت عمودی"
 
+#: src/widgets/edit/crop.ui:252 src/widgets/image_page.ui:15
+#: src/widgets/image_window.ui:25
+msgid "Rotate"
+msgstr "چرخش"
+
 #: src/widgets/edit/crop.ui:261 src/widgets/edit/crop.ui:407
 msgid "Rotate Counter Clockwise"
 msgstr "چرخش پادساعتگرد"
@@ -428,6 +437,10 @@ msgstr "چرخش پادساعتگرد"
 #: src/widgets/edit/crop.ui:268
 msgid "Rotate Clockwise"
 msgstr "چرخش ساعتگرد"
+
+#: src/widgets/edit/crop.ui:278
+msgid "Flip"
+msgstr "وارون"
 
 #: src/widgets/edit/crop.ui:287 src/widgets/edit/crop.ui:415
 msgid "Mirror Horizontally"
@@ -437,13 +450,13 @@ msgstr "آینهٔ افقی"
 msgid "Mirror Vertically"
 msgstr "آینهٔ عمودی"
 
+#: src/widgets/edit/crop.ui:306 src/widgets/edit/crop.ui:429
+msgid "_Reset"
+msgstr "_بازنشانی"
+
 #: src/widgets/edit/crop.ui:307 src/widgets/edit/crop.ui:431
 msgid "Undo Changes in this View"
 msgstr "بازگردانی تغییرات در این نما"
-
-#: src/widgets/edit/crop.ui:364
-msgid "Aspect Ratio"
-msgstr "نسبت ابعاد"
 
 #: src/widgets/edit/crop_selection.ui:46
 msgid "Crop Selection"
@@ -519,9 +532,9 @@ msgid ""
 "Please include this information when you report an error. If possible, please "
 "also provide the image that causes the issue."
 msgstr ""
-"بارکنندهٔ تصویر هنگام تلاش برای بار کردن یا ویراستن تصویر این گزارش را داد. "
-"لطفاً این اطّلاعات را هنگام گزارش خطا بدهید. در صورت امکان لطفاً تصویری که باعث "
-"این مشکل شده را نیز فراهم کنید."
+"بارکنندهٔ تصویر هنگام تلاش برای بار کردن یا ویراستن تصویر این گزارش را داد. لطفاً "
+"این اطّلاعات را هنگام گزارش خطا بدهید. در صورت امکان لطفاً تصویری که باعث این "
+"مشکل شده را نیز فراهم کنید."
 
 #: src/widgets/error_details.ui:24
 msgid "Error Message"
@@ -540,8 +553,8 @@ msgid ""
 "No image loaders available. Maybe the “glycin-loaders” package with "
 "compatibility version “{}” is not installed."
 msgstr ""
-"هیچ بار کنندهٔ تصویری موجود نیست. شاید بستهٔ glycin-loaders با نگارش سازگاری "
-"«{}» نصب شده."
+"هیچ بار کنندهٔ تصویری موجود نیست. شاید بستهٔ glycin-loaders با نگارش سازگاری «{}» "
+"نصب شده."
 
 #: src/widgets/image_page.rs:242
 msgid "The image format “{} ({})” is known but not installed."
@@ -566,10 +579,6 @@ msgstr "گشودن _با…"
 #: src/widgets/image_page.ui:10 src/widgets/image_window.ui:20
 msgid "_Print…"
 msgstr "_چاپ…"
-
-#: src/widgets/image_page.ui:15 src/widgets/image_window.ui:25
-msgid "Rotate"
-msgstr "چرخش"
 
 #: src/widgets/image_page.ui:26 src/widgets/image_window.ui:36
 msgid "_Set as Background…"
@@ -639,6 +648,14 @@ msgstr "تغییر حالت بزرگنمایی"
 
 #: src/widgets/image_view.ui:108
 msgid "Zoom to Specific Level"
+msgstr "بزرگنمایی به سطح مشخّص"
+
+#: src/widgets/image_view.ui:237
+msgid "Custom Zoom Level"
+msgstr "سطح‌های بزرگنمایی سفارشی"
+
+#: src/widgets/image_view.ui:243
+msgid "Zoom to Specified Level"
 msgstr "بزرگنمایی به سطح مشخّص"
 
 #: src/widgets/image_window.rs:502
