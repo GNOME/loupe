@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: po_gvfs-oc\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2025-01-31 13:29+0000\n"
-"PO-Revision-Date: 2025-02-01 11:04+0100\n"
+"POT-Creation-Date: 2025-03-05 23:37+0000\n"
+"PO-Revision-Date: 2025-03-07 11:43+1100\n"
 "Last-Translator: Quentin PAGÈS\n"
 "Language-Team: Tot En Òc\n"
 "Language: oc\n"
@@ -309,41 +309,41 @@ msgid "Could not list other files in directory."
 msgstr "Impossible de listar los autres fichièrs del repertòri."
 
 #. Translators: Display of the f-number <https://en.wikipedia.org/wiki/F-number>. {} will be replaced with the number
-#: src/metadata.rs:242
+#: src/metadata.rs:253
 msgid "\\u{192}\\u{2215}{}"
 msgstr "\\u{192}\\u{2215}{}"
 
 #. Translators: Fractional exposure time (photography) in seconds
-#: src/metadata.rs:255
+#: src/metadata.rs:266
 msgid "1\\u{2215}{}\\u{202F}s"
 msgstr "1\\u{2215}{}\\u{202F}s"
 
 #. Translators: Exposure time (photography) in seconds
-#: src/metadata.rs:263
+#: src/metadata.rs:274
 msgid "{}\\u{202F}s"
 msgstr "{}\\u{202F}s"
 
-#: src/metadata.rs:277
+#: src/metadata.rs:288
 msgid "{}\\u{202F}mm"
 msgstr "{}\\u{202F}mm"
 
 #. Translators: short for "north" in GPS coordinate
-#: src/metadata.rs:317
+#: src/metadata.rs:328
 msgid "N"
 msgstr "N"
 
 #. Translators: short for "south" in GPS coordinate
-#: src/metadata.rs:321
+#: src/metadata.rs:332
 msgid "S"
 msgstr "S"
 
 #. Translators: short for "east" in GPS coordinate
-#: src/metadata.rs:330
+#: src/metadata.rs:341
 msgid "E"
 msgstr "È"
 
 #. Translators: short for "west" in GPS coordinate
-#: src/metadata.rs:334
+#: src/metadata.rs:345
 msgid "W"
 msgstr "O"
 
@@ -364,7 +364,7 @@ msgstr "Fracàs de la restauracion de l’imatge a partir de l’escobilhièr"
 msgid "Drop Image to View"
 msgstr "Depausar un imatge per l’afichar"
 
-#: src/widgets/edit/crop.rs:330
+#: src/widgets/edit/crop.rs:360
 msgid "Failed to Edit Image"
 msgstr "L'obtencion de la lista dels fichièrs a fracassat"
 
@@ -396,6 +396,10 @@ msgstr "3:2"
 msgid "16:9"
 msgstr "16:9"
 
+#: src/widgets/edit/crop.ui:77 src/widgets/edit/crop.ui:364
+msgid "Aspect Ratio"
+msgstr "Proporcions"
+
 #: src/widgets/edit/crop.ui:91
 msgid "_Free"
 msgstr "_Liure"
@@ -412,49 +416,58 @@ msgstr "_Carrat"
 msgid "_5:4"
 msgstr "_5:4"
 
-#: src/widgets/edit/crop.ui:163
+#: src/widgets/edit/crop.ui:166
 msgid "_4:3"
 msgstr "_4:3"
 
-#: src/widgets/edit/crop.ui:181
+#: src/widgets/edit/crop.ui:187
 msgid "_3:2"
 msgstr "_3:2"
 
-#: src/widgets/edit/crop.ui:199
+#: src/widgets/edit/crop.ui:208
 msgid "_16:9"
 msgstr "_16:9"
 
-#: src/widgets/edit/crop.ui:219 src/widgets/edit/crop.ui:365
+#: src/widgets/edit/crop.ui:231 src/widgets/edit/crop.ui:377
 msgid "Orientation Landscape"
 msgstr "Orientazion paisatge"
 
-#: src/widgets/edit/crop.ui:228 src/widgets/edit/crop.ui:377
+#: src/widgets/edit/crop.ui:240 src/widgets/edit/crop.ui:389
 msgid "Orientation Portrait"
 msgstr "Orientazion retrach"
 
-#: src/widgets/edit/crop.ui:249 src/widgets/edit/crop.ui:395
+#: src/widgets/edit/crop.ui:252 src/widgets/image_page.ui:15
+#: src/widgets/image_window.ui:25
+msgid "Rotate"
+msgstr "Pivotar"
+
+#: src/widgets/edit/crop.ui:261 src/widgets/edit/crop.ui:407
 msgid "Rotate Counter Clockwise"
 msgstr "Rotacion antiorària"
 
-#: src/widgets/edit/crop.ui:256
+#: src/widgets/edit/crop.ui:268
 msgid "Rotate Clockwise"
 msgstr "Rotacion orària"
 
-#: src/widgets/edit/crop.ui:275 src/widgets/edit/crop.ui:403
+#: src/widgets/edit/crop.ui:278
+msgid "Flip"
+msgstr "Revirar"
+
+#: src/widgets/edit/crop.ui:287 src/widgets/edit/crop.ui:415
 msgid "Mirror Horizontally"
 msgstr "Miralh orizontal"
 
-#: src/widgets/edit/crop.ui:282
+#: src/widgets/edit/crop.ui:294
 msgid "Mirror Vertically"
 msgstr "Miralh vertical"
 
-#: src/widgets/edit/crop.ui:295 src/widgets/edit/crop.ui:419
+#: src/widgets/edit/crop.ui:306 src/widgets/edit/crop.ui:429
+msgid "_Reset"
+msgstr "_Reïnicializar"
+
+#: src/widgets/edit/crop.ui:307 src/widgets/edit/crop.ui:431
 msgid "Undo Changes in this View"
 msgstr "Anullar las modificacions dins aquesta vista"
-
-#: src/widgets/edit/crop.ui:352
-msgid "Aspect Ratio"
-msgstr "Proporcions"
 
 #: src/widgets/edit/crop_selection.ui:46
 msgid "Crop Selection"
@@ -468,23 +481,23 @@ msgid_plural " (Edited {})"
 msgstr[0] " (Modificat)"
 msgstr[1] " (Modificats)"
 
-#: src/widgets/edit_window.rs:286 src/widgets/edit_window.rs:303
+#: src/widgets/edit_window.rs:290 src/widgets/edit_window.rs:316
 msgid "Failed to save image."
 msgstr "L'obtencion de la lista dels fichièrs a fracassat."
 
-#: src/widgets/edit_window.rs:332
+#: src/widgets/edit_window.rs:346
 msgid "Editing Image"
 msgstr "Modificacion de l'imatge"
 
-#: src/widgets/edit_window.rs:343
+#: src/widgets/edit_window.rs:360
 msgid "Failed to edit image."
 msgstr "L'obtencion de la lista dels fichièrs a fracassat."
 
-#: src/widgets/edit_window.rs:353 src/widgets/edit_window.rs:371
+#: src/widgets/edit_window.rs:370 src/widgets/edit_window.rs:393
 msgid "Failed to Save Image"
 msgstr "L'obtencion de la lista dels fichièrs a fracassat"
 
-#: src/widgets/edit_window.rs:359
+#: src/widgets/edit_window.rs:376
 msgid "Saving Image"
 msgstr "Enregistrament de l’imatge"
 
@@ -512,7 +525,7 @@ msgstr "_Remplaçar l’original"
 msgid "Original image will be moved to the trash"
 msgstr "L’imatge original serà desplaçat a l’escobilhièr"
 
-#: src/widgets/error_details.rs:80
+#: src/widgets/error_details.rs:79
 msgid ""
 "The following error occurred. If you think this is an issue with the "
 "program, please include this information when you report the error."
@@ -577,10 +590,6 @@ msgstr "_Dobrir amb…"
 #: src/widgets/image_page.ui:10 src/widgets/image_window.ui:20
 msgid "_Print…"
 msgstr "_Imprimir…"
-
-#: src/widgets/image_page.ui:15 src/widgets/image_window.ui:25
-msgid "Rotate"
-msgstr "Pivotar"
 
 #: src/widgets/image_page.ui:26 src/widgets/image_window.ui:36
 msgid "_Set as Background…"
@@ -651,6 +660,14 @@ msgstr "Alternar l’agrandiment"
 #: src/widgets/image_view.ui:108
 msgid "Zoom to Specific Level"
 msgstr "Agrandir a un nivèl especific"
+
+#: src/widgets/image_view.ui:237
+msgid "Custom Zoom Level"
+msgstr "Nivèl d’agrandiment personalizat"
+
+#: src/widgets/image_view.ui:243
+msgid "Zoom to Specified Level"
+msgstr "Agrandir a un nivèl especificat"
 
 #: src/widgets/image_window.rs:502
 msgid "Supported image formats"
