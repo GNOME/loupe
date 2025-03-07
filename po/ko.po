@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2025-02-19 12:15+0000\n"
-"PO-Revision-Date: 2025-02-25 23:47+0900\n"
+"POT-Creation-Date: 2025-03-05 23:37+0000\n"
+"PO-Revision-Date: 2025-03-07 13:56+0900\n"
 "Last-Translator: Seong-ho Cho <shcho@gnome.org>\n"
 "Language-Team: Korean <gnome-kr@googlegroups.com>\n"
 "Language: ko\n"
@@ -360,7 +360,7 @@ msgstr "휴지통에서의 그림 복원에 실패했습니다"
 msgid "Drop Image to View"
 msgstr "살펴볼 그림을 끌어 놓으십시오"
 
-#: src/widgets/edit/crop.rs:330
+#: src/widgets/edit/crop.rs:360
 msgid "Failed to Edit Image"
 msgstr "그림 편집에 실패했습니다"
 
@@ -392,6 +392,10 @@ msgstr "3:2"
 msgid "16:9"
 msgstr "16:9"
 
+#: src/widgets/edit/crop.ui:77 src/widgets/edit/crop.ui:364
+msgid "Aspect Ratio"
+msgstr "종횡비"
+
 #: src/widgets/edit/crop.ui:91
 msgid "_Free"
 msgstr "자유(_F)"
@@ -408,49 +412,58 @@ msgstr "정방(_S)"
 msgid "_5:4"
 msgstr "_5:4"
 
-#: src/widgets/edit/crop.ui:163
+#: src/widgets/edit/crop.ui:166
 msgid "_4:3"
 msgstr "_4:3"
 
-#: src/widgets/edit/crop.ui:181
+#: src/widgets/edit/crop.ui:187
 msgid "_3:2"
 msgstr "_3:2"
 
-#: src/widgets/edit/crop.ui:199
+#: src/widgets/edit/crop.ui:208
 msgid "_16:9"
 msgstr "_16:9"
 
-#: src/widgets/edit/crop.ui:219 src/widgets/edit/crop.ui:365
+#: src/widgets/edit/crop.ui:231 src/widgets/edit/crop.ui:377
 msgid "Orientation Landscape"
 msgstr "가로 방향"
 
-#: src/widgets/edit/crop.ui:228 src/widgets/edit/crop.ui:377
+#: src/widgets/edit/crop.ui:240 src/widgets/edit/crop.ui:389
 msgid "Orientation Portrait"
 msgstr "세로 방향"
 
-#: src/widgets/edit/crop.ui:249 src/widgets/edit/crop.ui:395
+#: src/widgets/edit/crop.ui:252 src/widgets/image_page.ui:15
+#: src/widgets/image_window.ui:25
+msgid "Rotate"
+msgstr "회전"
+
+#: src/widgets/edit/crop.ui:261 src/widgets/edit/crop.ui:407
 msgid "Rotate Counter Clockwise"
 msgstr "시계 반대방향 회전"
 
-#: src/widgets/edit/crop.ui:256
+#: src/widgets/edit/crop.ui:268
 msgid "Rotate Clockwise"
 msgstr "시계 방향 회전"
 
-#: src/widgets/edit/crop.ui:275 src/widgets/edit/crop.ui:403
+#: src/widgets/edit/crop.ui:278
+msgid "Flip"
+msgstr "뒤집기"
+
+#: src/widgets/edit/crop.ui:287 src/widgets/edit/crop.ui:415
 msgid "Mirror Horizontally"
 msgstr "가로 반전"
 
-#: src/widgets/edit/crop.ui:282
+#: src/widgets/edit/crop.ui:294
 msgid "Mirror Vertically"
 msgstr "세로 반전"
 
-#: src/widgets/edit/crop.ui:295 src/widgets/edit/crop.ui:419
-msgid "Undo Changes in this View"
-msgstr "이 보기 "
+#: src/widgets/edit/crop.ui:306 src/widgets/edit/crop.ui:429
+msgid "_Reset"
+msgstr "초기화(_R)"
 
-#: src/widgets/edit/crop.ui:352
-msgid "Aspect Ratio"
-msgstr "종횡비"
+#: src/widgets/edit/crop.ui:307 src/widgets/edit/crop.ui:431
+msgid "Undo Changes in this View"
+msgstr "이 보기의 바꿈 동작 실행 취소"
 
 #: src/widgets/edit/crop_selection.ui:46
 msgid "Crop Selection"
@@ -539,7 +552,7 @@ msgstr "오류 메시지 복사"
 
 #: src/widgets/error_details.ui:68
 msgid "Report _Issue"
-msgstr "문제 보고"
+msgstr "문제 보고(_I)"
 
 #: src/widgets/image_page.rs:227
 msgid ""
@@ -574,10 +587,6 @@ msgstr "다음으로 열기(_O)…"
 msgid "_Print…"
 msgstr "인쇄(_P)…"
 
-#: src/widgets/image_page.ui:15 src/widgets/image_window.ui:25
-msgid "Rotate"
-msgstr "회전"
-
 #: src/widgets/image_page.ui:26 src/widgets/image_window.ui:36
 msgid "_Set as Background…"
 msgstr "백그라운드로 설정(_S)…"
@@ -600,7 +609,7 @@ msgstr "더 자세한 정보(_I)"
 
 #: src/widgets/image_page.ui:81
 msgid "_Reload"
-msgstr "다시 불러오기(_R)"
+msgstr "다시 읽기(_R)"
 
 #: src/widgets/image_page.ui:123 src/widgets/image_window.ui:101
 msgid "Rotate Left"
@@ -646,6 +655,14 @@ msgstr "확대 전환"
 
 #: src/widgets/image_view.ui:108
 msgid "Zoom to Specific Level"
+msgstr "지정 수준으로 확대"
+
+#: src/widgets/image_view.ui:237
+msgid "Custom Zoom Level"
+msgstr "확대 수준 개별 설정"
+
+#: src/widgets/image_view.ui:243
+msgid "Zoom to Specified Level"
 msgstr "지정 수준으로 확대"
 
 #: src/widgets/image_window.rs:502
