@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2025-02-27 13:05+0000\n"
-"PO-Revision-Date: 2025-02-28 00:01+0100\n"
+"POT-Creation-Date: 2025-03-05 23:37+0000\n"
+"PO-Revision-Date: 2025-03-08 17:34+0100\n"
 "Last-Translator: Fran Dieguez <fran.dieguez@gnome.org>\n"
 "Language-Team: Galician <proxecto@trasno.gal>\n"
 "Language: gl\n"
@@ -133,8 +133,7 @@ msgctxt "shortcut window"
 msgid "Next Image"
 msgstr "Seguinte imaxe"
 
-#: data/resources/gtk/help-overlay.ui:87
-#: data/resources/gtk/help-overlay.ui:101
+#: data/resources/gtk/help-overlay.ui:87 data/resources/gtk/help-overlay.ui:101
 #: data/resources/gtk/help-overlay.ui:242
 #: data/resources/gtk/help-overlay.ui:256
 msgctxt "shortcut window"
@@ -297,8 +296,7 @@ msgctxt "shortcut window"
 msgid "Apply Crop"
 msgstr "Aplicar o recorte"
 
-#. Translators: Replace "translator-credits" with your names, one name per
-#. line
+#. Translators: Replace "translator-credits" with your names, one name per line
 #: src/about.rs:43
 msgid "translator-credits"
 msgstr "Fran Diéguez <frandieguez@gnome.org>, 2009-2025"
@@ -311,9 +309,7 @@ msgstr "Copyright © 2020–2024 Christopher Davis e outros."
 msgid "Could not list other files in directory."
 msgstr "Non foi posíbel listar outros ficheiros no cartafol."
 
-#. Translators: Display of the f-number
-#. <https://en.wikipedia.org/wiki/F-number>. {} will be replaced with the
-#. number
+#. Translators: Display of the f-number <https://en.wikipedia.org/wiki/F-number>. {} will be replaced with the number
 #: src/metadata.rs:253
 msgid "\\u{192}\\u{2215}{}"
 msgstr "\\u{192}\\u{2215}{}"
@@ -352,10 +348,8 @@ msgstr "E"
 msgid "W"
 msgstr "O"
 
-#. Translators: This is the date and time format we use in metadata output
-#. etc.
-#. The format has to follow
-#. <https://docs.gtk.org/glib/method.DateTime.format.html>
+#. Translators: This is the date and time format we use in metadata output etc.
+#. The format has to follow <https://docs.gtk.org/glib/method.DateTime.format.html>
 #. The default is already translated. Don't change if you are not sure what to
 #. use.
 #: src/util.rs:39
@@ -371,7 +365,7 @@ msgstr "Produciuse un fallo ao restaurar a imaxe do lixo"
 msgid "Drop Image to View"
 msgstr "Soltar imaxe na vista"
 
-#: src/widgets/edit/crop.rs:353
+#: src/widgets/edit/crop.rs:360
 msgid "Failed to Edit Image"
 msgstr "Produciuse un fallo ao editar a imaxe"
 
@@ -403,13 +397,15 @@ msgstr "3:2"
 msgid "16:9"
 msgstr "16:9"
 
+#: src/widgets/edit/crop.ui:77 src/widgets/edit/crop.ui:364
+msgid "Aspect Ratio"
+msgstr "Taxa de aspecto"
+
 #: src/widgets/edit/crop.ui:91
 msgid "_Free"
 msgstr "_Libre"
 
 #: src/widgets/edit/crop.ui:109
-#| msgctxt "shortcut window"
-#| msgid "Original Scale"
 msgid "_Original"
 msgstr "_Orixinal"
 
@@ -434,13 +430,17 @@ msgid "_16:9"
 msgstr "_16:9"
 
 #: src/widgets/edit/crop.ui:231 src/widgets/edit/crop.ui:377
-#| msgid "_Orientation"
 msgid "Orientation Landscape"
 msgstr "Orientación horizontal"
 
 #: src/widgets/edit/crop.ui:240 src/widgets/edit/crop.ui:389
 msgid "Orientation Portrait"
 msgstr "Orientación retrato"
+
+#: src/widgets/edit/crop.ui:252 src/widgets/image_page.ui:15
+#: src/widgets/image_window.ui:25
+msgid "Rotate"
+msgstr "Rotar"
 
 #: src/widgets/edit/crop.ui:261 src/widgets/edit/crop.ui:407
 msgid "Rotate Counter Clockwise"
@@ -450,6 +450,10 @@ msgstr "Rotar no sentido antihorario"
 msgid "Rotate Clockwise"
 msgstr "Rotar no sentido horario"
 
+#: src/widgets/edit/crop.ui:278
+msgid "Flip"
+msgstr "Voltear"
+
 #: src/widgets/edit/crop.ui:287 src/widgets/edit/crop.ui:415
 msgid "Mirror Horizontally"
 msgstr "Espello horizontal"
@@ -458,13 +462,13 @@ msgstr "Espello horizontal"
 msgid "Mirror Vertically"
 msgstr "Espello vertical"
 
+#: src/widgets/edit/crop.ui:306 src/widgets/edit/crop.ui:429
+msgid "_Reset"
+msgstr "_Restabelecer"
+
 #: src/widgets/edit/crop.ui:307 src/widgets/edit/crop.ui:431
 msgid "Undo Changes in this View"
 msgstr "Desfacer os cambios nesta vista"
-
-#: src/widgets/edit/crop.ui:364
-msgid "Aspect Ratio"
-msgstr "Taxa de aspecto"
 
 #: src/widgets/edit/crop_selection.ui:46
 msgid "Crop Selection"
@@ -577,8 +581,7 @@ msgid "There is not enough free memory available to load this image."
 msgstr "Non hai memoria libre dabondo dispoñíbel para cargar esta imaxe."
 
 #: src/widgets/image_page.rs:281
-msgid ""
-"Either the image file is corrupted or it contains unsupported elements."
+msgid "Either the image file is corrupted or it contains unsupported elements."
 msgstr ""
 "Indica se o ficheiro de imaxe está corrompido ou contén elementos non "
 "compatibles."
@@ -590,10 +593,6 @@ msgstr "A_brir con…"
 #: src/widgets/image_page.ui:10 src/widgets/image_window.ui:20
 msgid "_Print…"
 msgstr "Im_primir…"
-
-#: src/widgets/image_page.ui:15 src/widgets/image_window.ui:25
-msgid "Rotate"
-msgstr "Rotar"
 
 #: src/widgets/image_page.ui:26 src/widgets/image_window.ui:36
 msgid "_Set as Background…"
@@ -664,6 +663,14 @@ msgstr "Trocar a ampliación"
 #: src/widgets/image_view.ui:108
 msgid "Zoom to Specific Level"
 msgstr "Zoom a nivel específico"
+
+#: src/widgets/image_view.ui:237
+msgid "Custom Zoom Level"
+msgstr "Nivel de ampliación personalizado"
+
+#: src/widgets/image_view.ui:243
+msgid "Zoom to Specified Level"
+msgstr "Ampliar a un nivel específico"
 
 #: src/widgets/image_window.rs:502
 msgid "Supported image formats"
