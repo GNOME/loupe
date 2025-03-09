@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2025-02-27 13:05+0000\n"
-"PO-Revision-Date: 2025-03-03 12:39+0100\n"
+"POT-Creation-Date: 2025-03-05 22:50+0000\n"
+"PO-Revision-Date: 2025-03-09 11:37+0100\n"
 "Last-Translator: Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "Language: sv\n"
@@ -369,7 +369,7 @@ msgstr "Misslyckades med att återställa bild från papperskorgen"
 msgid "Drop Image to View"
 msgstr "Släpp bild för att visa"
 
-#: src/widgets/edit/crop.rs:353
+#: src/widgets/edit/crop.rs:360
 msgid "Failed to Edit Image"
 msgstr "Misslyckades med att redigera bild"
 
@@ -400,6 +400,10 @@ msgstr "3:2"
 #: src/widgets/edit/crop.ui:36
 msgid "16:9"
 msgstr "16:9"
+
+#: src/widgets/edit/crop.ui:77 src/widgets/edit/crop.ui:364
+msgid "Aspect Ratio"
+msgstr "Bildförhållande"
 
 #: src/widgets/edit/crop.ui:91
 msgid "_Free"
@@ -437,6 +441,11 @@ msgstr "Liggande orientering"
 msgid "Orientation Portrait"
 msgstr "Stående orientering"
 
+#: src/widgets/edit/crop.ui:252 src/widgets/image_page.ui:15
+#: src/widgets/image_window.ui:25
+msgid "Rotate"
+msgstr "Rotera"
+
 #: src/widgets/edit/crop.ui:261 src/widgets/edit/crop.ui:407
 msgid "Rotate Counter Clockwise"
 msgstr "Rotera moturs"
@@ -444,6 +453,10 @@ msgstr "Rotera moturs"
 #: src/widgets/edit/crop.ui:268
 msgid "Rotate Clockwise"
 msgstr "Rotera medurs"
+
+#: src/widgets/edit/crop.ui:278
+msgid "Flip"
+msgstr "Vänd"
 
 #: src/widgets/edit/crop.ui:287 src/widgets/edit/crop.ui:415
 msgid "Mirror Horizontally"
@@ -453,13 +466,13 @@ msgstr "Spegla horisontellt"
 msgid "Mirror Vertically"
 msgstr "Spegla vertikalt"
 
+#: src/widgets/edit/crop.ui:306 src/widgets/edit/crop.ui:429
+msgid "_Reset"
+msgstr "Åte_rställ"
+
 #: src/widgets/edit/crop.ui:307 src/widgets/edit/crop.ui:431
 msgid "Undo Changes in this View"
 msgstr "Ångra ändringar i denna vy"
-
-#: src/widgets/edit/crop.ui:364
-msgid "Aspect Ratio"
-msgstr "Bildförhållande"
 
 #: src/widgets/edit/crop_selection.ui:46
 msgid "Crop Selection"
@@ -584,10 +597,6 @@ msgstr "Ö_ppna med…"
 msgid "_Print…"
 msgstr "_Skriv ut…"
 
-#: src/widgets/image_page.ui:15 src/widgets/image_window.ui:25
-msgid "Rotate"
-msgstr "Rotera"
-
 #: src/widgets/image_page.ui:26 src/widgets/image_window.ui:36
 msgid "_Set as Background…"
 msgstr "_Ange som bakgrund…"
@@ -657,6 +666,14 @@ msgstr "Växla zoomnivå"
 #: src/widgets/image_view.ui:108
 msgid "Zoom to Specific Level"
 msgstr "Zooma till specifik nivå"
+
+#: src/widgets/image_view.ui:237
+msgid "Custom Zoom Level"
+msgstr "Anpassad zoomnivå"
+
+#: src/widgets/image_view.ui:243
+msgid "Zoom to Specified Level"
+msgstr "Zooma till angiven nivå"
 
 #: src/widgets/image_window.rs:502
 msgid "Supported image formats"
