@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2025-02-19 12:15+0000\n"
-"PO-Revision-Date: 2025-02-24 17:20+0200\n"
+"POT-Creation-Date: 2025-03-05 23:37+0000\n"
+"PO-Revision-Date: 2025-03-10 21:38+0200\n"
 "Last-Translator: Yosef Or Boczko <yoseforb@gmail.com>\n"
 "Language-Team: Hebrew <yoseforb@gmail.com>\n"
 "Language: he\n"
@@ -365,7 +365,7 @@ msgstr "שחזור התמונה מהאשפה נכשלה"
 msgid "Drop Image to View"
 msgstr "שחרור תמנוה להצגה"
 
-#: src/widgets/edit/crop.rs:330
+#: src/widgets/edit/crop.rs:360
 msgid "Failed to Edit Image"
 msgstr "עריכת התמונה נכשלה"
 
@@ -397,6 +397,10 @@ msgstr "3:2"
 msgid "16:9"
 msgstr "16:9"
 
+#: src/widgets/edit/crop.ui:77 src/widgets/edit/crop.ui:364
+msgid "Aspect Ratio"
+msgstr "יחס ממדים"
+
 #: src/widgets/edit/crop.ui:91
 msgid "_Free"
 msgstr "_חופשי"
@@ -413,49 +417,58 @@ msgstr "_ריבוע"
 msgid "_5:4"
 msgstr "_5:4"
 
-#: src/widgets/edit/crop.ui:163
+#: src/widgets/edit/crop.ui:166
 msgid "_4:3"
 msgstr "_4:3"
 
-#: src/widgets/edit/crop.ui:181
+#: src/widgets/edit/crop.ui:187
 msgid "_3:2"
 msgstr "_3:2"
 
-#: src/widgets/edit/crop.ui:199
+#: src/widgets/edit/crop.ui:208
 msgid "_16:9"
 msgstr "_16:9"
 
-#: src/widgets/edit/crop.ui:219 src/widgets/edit/crop.ui:365
+#: src/widgets/edit/crop.ui:231 src/widgets/edit/crop.ui:377
 msgid "Orientation Landscape"
 msgstr "כיוון לרוחב"
 
-#: src/widgets/edit/crop.ui:228 src/widgets/edit/crop.ui:377
+#: src/widgets/edit/crop.ui:240 src/widgets/edit/crop.ui:389
 msgid "Orientation Portrait"
 msgstr "כיוון לאורך"
 
-#: src/widgets/edit/crop.ui:249 src/widgets/edit/crop.ui:395
+#: src/widgets/edit/crop.ui:252 src/widgets/image_page.ui:15
+#: src/widgets/image_window.ui:25
+msgid "Rotate"
+msgstr "סיבוב"
+
+#: src/widgets/edit/crop.ui:261 src/widgets/edit/crop.ui:407
 msgid "Rotate Counter Clockwise"
 msgstr "סיבוב נגד כיוון השעון"
 
-#: src/widgets/edit/crop.ui:256
+#: src/widgets/edit/crop.ui:268
 msgid "Rotate Clockwise"
 msgstr "סיבוב עם כיוון השעון"
 
-#: src/widgets/edit/crop.ui:275 src/widgets/edit/crop.ui:403
+#: src/widgets/edit/crop.ui:278
+msgid "Flip"
+msgstr "היפוך"
+
+#: src/widgets/edit/crop.ui:287 src/widgets/edit/crop.ui:415
 msgid "Mirror Horizontally"
 msgstr "היפוך אופקי"
 
-#: src/widgets/edit/crop.ui:282
+#: src/widgets/edit/crop.ui:294
 msgid "Mirror Vertically"
 msgstr "היפוך אנכי"
 
-#: src/widgets/edit/crop.ui:295 src/widgets/edit/crop.ui:419
+#: src/widgets/edit/crop.ui:306 src/widgets/edit/crop.ui:429
+msgid "_Reset"
+msgstr "_איפוס"
+
+#: src/widgets/edit/crop.ui:307 src/widgets/edit/crop.ui:431
 msgid "Undo Changes in this View"
 msgstr "ביטול שינויים בתצוגה זו"
-
-#: src/widgets/edit/crop.ui:352
-msgid "Aspect Ratio"
-msgstr "יחס ממדים"
 
 #: src/widgets/edit/crop_selection.ui:46
 msgid "Crop Selection"
@@ -580,10 +593,6 @@ msgstr "_פתיחה באמצעות…"
 msgid "_Print…"
 msgstr "ה_דפסה…"
 
-#: src/widgets/image_page.ui:15 src/widgets/image_window.ui:25
-msgid "Rotate"
-msgstr "סיבוב"
-
 #: src/widgets/image_page.ui:26 src/widgets/image_window.ui:36
 msgid "_Set as Background…"
 msgstr "ה_גדרה כרקע…"
@@ -652,6 +661,14 @@ msgstr "שינוי מצב התקריב"
 
 #: src/widgets/image_view.ui:108
 msgid "Zoom to Specific Level"
+msgstr "התקרבות לרמה מוגדרת"
+
+#: src/widgets/image_view.ui:237
+msgid "Custom Zoom Level"
+msgstr "רמת תקריב מותאמת"
+
+#: src/widgets/image_view.ui:243
+msgid "Zoom to Specified Level"
 msgstr "התקרבות לרמה מוגדרת"
 
 #: src/widgets/image_window.rs:502
