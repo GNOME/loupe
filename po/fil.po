@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2025-03-06 11:24+0000\n"
-"PO-Revision-Date: 2025-03-07 15:58+0800\n"
+"POT-Creation-Date: 2025-03-07 08:02+0000\n"
+"PO-Revision-Date: 2025-03-10 17:25+0800\n"
 "Last-Translator: \n"
 "Language-Team: Filipino <fil@li.org>\n"
 "Language: fil\n"
@@ -438,15 +438,15 @@ msgstr "Oryentasyon Patayo"
 #: src/widgets/edit/crop.ui:252 src/widgets/image_page.ui:15
 #: src/widgets/image_window.ui:25
 msgid "Rotate"
-msgstr "Iikot"
+msgstr "Ikutin"
 
 #: src/widgets/edit/crop.ui:261 src/widgets/edit/crop.ui:407
 msgid "Rotate Counter Clockwise"
-msgstr "Iikot Pa-Counter Clockwise"
+msgstr "Ikutin Pa-Counter Clockwise"
 
 #: src/widgets/edit/crop.ui:268
 msgid "Rotate Clockwise"
-msgstr "Iikot Pa-Clockwise"
+msgstr "Ikutin Pa-Clockwise"
 
 #: src/widgets/edit/crop.ui:278
 msgid "Flip"
@@ -616,11 +616,11 @@ msgstr "I-_reload"
 
 #: src/widgets/image_page.ui:123 src/widgets/image_window.ui:101
 msgid "Rotate Left"
-msgstr "Iikot Pakaliwa"
+msgstr "Ikutin Pakaliwa"
 
 #: src/widgets/image_page.ui:133 src/widgets/image_window.ui:111
 msgid "Rotate Right"
-msgstr "Iikot Pakanan"
+msgstr "Ikutin Pakanan"
 
 #: src/widgets/image_view.rs:197
 msgid "{} %"
@@ -762,7 +762,7 @@ msgstr "I-drag at -drop ang mga larawan dito"
 
 #: src/widgets/image_window.ui:225
 msgid "_Open Files…"
-msgstr "_Buksan ang mga File…"
+msgstr "Mag_bukas ng File…"
 
 #: src/widgets/print.rs:108
 msgid "Top"
@@ -847,7 +847,7 @@ msgstr "Pahigang Oryentasyon ng Pahina"
 
 #: src/widgets/print.ui:89
 msgid "_Alignment"
-msgstr "_Pagpapantay"
+msgstr "Pagpa_pantay"
 
 #: src/widgets/print.ui:108
 msgid "Margins"
