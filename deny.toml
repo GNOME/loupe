@@ -2,7 +2,8 @@
 version = 2
 yanked = "deny"
 ignore = [
-    #"RUSTSEC-0000-0000",
+    # Crate `paste` is no longer maintained
+    "RUSTSEC-2024-0436",
 ]
 
 [licenses]
