@@ -1,3 +1,9 @@
+## 48.0 (2025-03-14)
+
+### Fixed
+
+- edit/crop: Pre-select the portrait orientation for images that are taller than wide.
+
 ## 48.rc (2025-02-28)
 
 ### Fixed
