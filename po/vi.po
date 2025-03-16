@@ -1,283 +1,66 @@
 # Vietnamese translation for Loupe.
 # Copyright (C) 2023 Loupe's COPYRIGHT HOLDER
 # This file is distributed under the same license as the Loupe package.
-# Ngọc Quân Trần <vnwildman@gmail.com>, 2023.
 # Trần Ngọc Quân <vnwildman@gmail.com>, 2023.
+# Cas Pascal <casboi86@gmail.com>, 2025.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2023-11-01 10:00+0000\n"
-"PO-Revision-Date: 2023-11-11 14:32+0700\n"
-"Last-Translator: Trần Ngọc Quân <vnwildman@gmail.com>\n"
-"Language-Team: Vietnamese <Vietnamese <gnome-vi-list@gnome.org>>\n"
+"POT-Creation-Date: 2025-03-05 22:50+0000\n"
+"PO-Revision-Date: 2025-03-16 14:39+0700\n"
+"Last-Translator: Cas Pascal <casboi86@gmail.com>\n"
+"Language-Team: Vietnamese <gnome-vi-list@gnome.org>\n"
 "Language: vi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Gtranslator 42.0\n"
 
-#: data/gtk/image_page.ui:6 data/gtk/window.ui:16
-msgid "_Open With…"
-msgstr "_Mở bằng…"
-
-#: data/gtk/image_page.ui:14 data/gtk/window.ui:24
-msgid "_Print…"
-msgstr "_In…"
-
-#: data/gtk/image_page.ui:18
-msgid "_Copy"
-msgstr "_Sao chép"
-
-#: data/gtk/image_page.ui:23 data/gtk/window.ui:29
-msgid "Rotate"
-msgstr "Xoay"
-
-#: data/gtk/image_page.ui:34 data/gtk/window.ui:40
-msgid "_Set as Background…"
-msgstr "Đặt _làm hình nền…"
-
-#: data/gtk/image_page.ui:63
-msgid "Could not Load Image"
-msgstr "Không thể tải hình ảnh"
-
-#: data/gtk/image_page.ui:97 data/gtk/window.ui:134
-msgid "Rotate Left"
-msgstr "Xoay trái"
-
-#: data/gtk/image_page.ui:107 data/gtk/window.ui:144
-msgid "Rotate Right"
-msgstr "Xoay phải"
-
-#: data/gtk/image_view.ui:30
-msgid "Previous Image"
-msgstr "Ảnh trước"
-
-#: data/gtk/image_view.ui:41
-msgid "Next Image"
-msgstr "Ảnh tiếp theo"
-
-#: data/gtk/image_view.ui:66
-msgid "Zoom Out"
-msgstr "Thu nhỏ"
-
-#: data/gtk/image_view.ui:77
-msgid "Zoom In"
-msgstr "Phóng to"
-
-#: data/gtk/image_view.ui:95
-msgid "Toggle Fullscreen"
-msgstr "Bật/tắt chế độ toàn màn hình"
-
-#. Translators: Go back to previous page
-#: data/gtk/print.ui:29
-msgid "Back"
-msgstr "Quay lại"
-
-#: data/gtk/print.ui:36
-msgid "Print"
-msgstr "In"
-
-#: data/gtk/print.ui:54
-msgid "Layout"
-msgstr "Bố cục"
-
-#: data/gtk/print.ui:57
-msgid "Orientation"
-msgstr "Hướng"
-
-#: data/gtk/print.ui:69
-msgid "Portrait Page Orientation"
-msgstr "Định hướng trang dọc"
-
-#: data/gtk/print.ui:77
-msgid "Landscape Page Orientation"
-msgstr "Định hướng trang ngang"
-
-#: data/gtk/print.ui:86
-msgid "Alignment"
-msgstr "Canh hàng"
-
-#: data/gtk/print.ui:104
-msgid "Margins"
-msgstr "Lề"
-
-#: data/gtk/print.ui:107
-msgid "Margin Units"
-msgstr "Đơn vị lề"
-
-#: data/gtk/print.ui:124
-msgid "Horizontal"
-msgstr "Ngang"
-
-#: data/gtk/print.ui:129
-msgid "Vertical"
-msgstr "Dọc"
-
-#: data/gtk/print.ui:136 data/gtk/properties_view.ui:58
-msgid "Image Size"
-msgstr "Cỡ ảnh"
-
-#: data/gtk/print.ui:139
-msgid "Image Size Units"
-msgstr "Đơn vị cỡ ảnh"
-
-#: data/gtk/print.ui:157
-msgid "Fill Space"
-msgstr "Điền đầy chỗ"
-
-#: data/gtk/print.ui:162
-msgid "Width"
-msgstr "Chiều rộng"
-
-#: data/gtk/print.ui:167
-msgid "Height"
-msgstr "Chiều cao"
-
-#: data/gtk/properties_view.ui:29
-msgid "Folder"
-msgstr "Thư mục"
-
-#: data/gtk/properties_view.ui:41
-msgid "Open Containing Folder"
-msgstr "Mở thư mục chứa"
-
-#: data/gtk/properties_view.ui:74
-msgid "Image Format"
-msgstr "Định dạng Ảnh"
-
-#: data/gtk/properties_view.ui:88
-msgid "File Size"
-msgstr "Kích cỡ tập tin"
-
-#: data/gtk/properties_view.ui:106
-msgid "File Created"
-msgstr "Ngày tạo tệp"
-
-#: data/gtk/properties_view.ui:120
-msgid "File Modified"
-msgstr "Ngày sửa tệp"
-
-#: data/gtk/properties_view.ui:143
-msgid "Location"
-msgstr "Vị trí"
-
-#: data/gtk/properties_view.ui:162
-msgid "Open Location"
-msgstr "Mở vị trí"
-
-#: data/gtk/properties_view.ui:175
-msgid "Originally Created"
-msgstr "Ngày tạo đầu tiên"
-
-#: data/gtk/properties_view.ui:196
-msgid "Aperture"
-msgstr "Khẩu độ"
-
-#: data/gtk/properties_view.ui:217
-msgid "Exposure"
-msgstr "Phơi sáng"
-
-#: data/gtk/properties_view.ui:238
-msgid "ISO"
-msgstr "ISO"
-
-#: data/gtk/properties_view.ui:259
-msgid "Focal Length"
-msgstr "Tiêu cự"
-
-#: data/gtk/properties_view.ui:280
-msgid "Maker, Model"
-msgstr "Nhà sx, Mẫu"
-
-#: data/gtk/window.ui:6
-msgid "_New Window"
-msgstr "_Cửa sổ mới"
-
-#: data/gtk/window.ui:10
-msgid "_Open…"
-msgstr "_Mở…"
-
-#: data/gtk/window.ui:46
-msgid "_Help"
-msgstr "T_rợ giúp"
-
-#: data/gtk/window.ui:50
-msgid "_Keyboard Shortcuts"
-msgstr "_Phím tắt bàn phím"
-
-#: data/gtk/window.ui:54
-msgid "_About Image Viewer"
-msgstr "_Giới thiệu bộ xem ảnh"
-
-#. If the file exists, get display name
-#: data/gtk/window.ui:64 data/org.gnome.Loupe.desktop.in.in:3
-#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:28 src/window.rs:883
-#: src/window.rs:889
+#: data/org.gnome.Loupe.desktop.in.in:3
+#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:31
+#: src/widgets/image_window.rs:866
 msgid "Image Viewer"
 msgstr "Bộ xem ảnh"
 
-#: data/gtk/window.ui:113
-msgid "Copy to Clipboard"
-msgstr "Chép vào clipboard"
-
-#: data/gtk/window.ui:120
-msgid "Move to Trash"
-msgstr "Chuyển vào thùng rác"
-
-#: data/gtk/window.ui:126
-msgid "Main Menu"
-msgstr "Trình đơn chính"
-
-#: data/gtk/window.ui:158
-msgid "Image Properties"
-msgstr "Thuộc tính ảnh"
-
-#: data/gtk/window.ui:200
-msgid "View Images"
-msgstr "Xem ảnh"
-
-#: data/gtk/window.ui:201
-msgid "Drag and drop images here"
-msgstr "Kéo và thả ảnh vào đây"
-
-#: data/gtk/window.ui:205
-msgid "_Open Files…"
-msgstr "Mở _tập tin…"
-
 #: data/org.gnome.Loupe.desktop.in.in:11
-msgid "Picture;Slideshow;Graphics;Loupe;"
+msgid "Picture;Graphics;Loupe;"
 msgstr ""
 "Picture;Slideshow;Graphics;Loupe;Hình ảnh;Hinh anh;Trình chiếu;Trinh chieu;"
 "Đồ họa;Do hoa;Kính lúp;Kinh lup;"
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:7 src/about.rs:31
-msgid "The Loupe Team"
-msgstr "Nhóm Loupe"
+#: data/org.gnome.Loupe.gschema.xml.in:6
+msgid "Show the image properties sidebar"
+msgstr "Hiện thanh bên thuộc tính ảnh"
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:8
+#. developer_name tag deprecated with Appstream 1.0
+#: data/org.gnome.Loupe.metainfo.xml.in.in:8 src/about.rs:34
+msgid "The GNOME Project"
+msgstr "Dự án GNOME"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:13
 msgid "View images"
 msgstr "Xem ảnh"
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:10
+#: data/org.gnome.Loupe.metainfo.xml.in.in:15
 msgid "Browse through your images and inspect their metadata with:"
 msgstr "Duyệt xem ảnh của bạn và xem siêu dữ liệu của chúng với:"
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:12
+#: data/org.gnome.Loupe.metainfo.xml.in.in:17
 msgid "Fast GPU accelerated image rendering"
 msgstr "Dùng GPU để tăng tốc vẽ ảnh"
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:13
+#: data/org.gnome.Loupe.metainfo.xml.in.in:18
 msgid "Tiled rendering for vector graphics"
 msgstr "Vẽ dạng lát gạch cho đồ họa véc-tơ"
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:14
+#: data/org.gnome.Loupe.metainfo.xml.in.in:19
 msgid "Extendable and sandboxed image decoding"
 msgstr "Giải mã hình ảnh mở rộng được và chạy trong hộp cát được"
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:15
+#: data/org.gnome.Loupe.metainfo.xml.in.in:20
 msgid "Accessible presentation of the most important metadata."
 msgstr "Tiếp cận được phần trình chiếu của siêu dữ liệu quan trọng nhất."
 
@@ -288,23 +71,23 @@ msgstr "Phím tắt chung"
 
 #: data/resources/gtk/help-overlay.ui:14
 msgctxt "shortcut window"
-msgid "Show Main Menu"
-msgstr "Hiện trình đơn chính"
+msgid "Copy Image or Selected Text to Clipboard"
+msgstr "Sao chép Hình ảnh hoặc Văn bản vào Bảng tạm"
 
 #: data/resources/gtk/help-overlay.ui:20
-msgctxt "shortcut window"
-msgid "Copy Image to Clipboard"
-msgstr "Sao chép hình vào Clipboard"
-
-#: data/resources/gtk/help-overlay.ui:26
 msgctxt "shortcut window"
 msgid "Move Image to Trash"
 msgstr "Chuyển ảnh vào thùng rác"
 
+#: data/resources/gtk/help-overlay.ui:26
+msgctxt "shortcut window"
+msgid "Permanently Delete Image"
+msgstr "Xóa Hình ảnh Vĩnh viễn"
+
 #: data/resources/gtk/help-overlay.ui:32
 msgctxt "shortcut window"
-msgid "Toggle Image Properties"
-msgstr "Bật/Tắt thuộc tính ảnh"
+msgid "Open Image with Other App"
+msgstr "Mở Hình ảnh bằng Ứng dụng khác"
 
 #: data/resources/gtk/help-overlay.ui:38
 msgctxt "shortcut window"
@@ -313,302 +96,898 @@ msgstr "Đặt làm ảnh nền"
 
 #: data/resources/gtk/help-overlay.ui:44
 msgctxt "shortcut window"
-msgid "Toggle Fullscreen"
-msgstr "Bật/tắt chế độ toàn màn hình"
-
-#: data/resources/gtk/help-overlay.ui:50
-msgctxt "shortcut window"
-msgid "Leave Fullscreen"
-msgstr "Ngừng toàn màn hình"
-
-#: data/resources/gtk/help-overlay.ui:56
-msgctxt "shortcut window"
 msgid "New Window"
 msgstr "Cửa sổ mới"
 
-#: data/resources/gtk/help-overlay.ui:62
+#: data/resources/gtk/help-overlay.ui:50
 msgctxt "shortcut window"
 msgid "Open Help"
 msgstr "Mở trợ giúp"
 
-#: data/resources/gtk/help-overlay.ui:68
+#: data/resources/gtk/help-overlay.ui:56
 msgctxt "shortcut window"
 msgid "Show Keyboard Shortcuts"
 msgstr "Hiển thị các phím tắt"
 
-#: data/resources/gtk/help-overlay.ui:74
+#: data/resources/gtk/help-overlay.ui:62
 msgctxt "shortcut window"
 msgid "Close Window"
 msgstr "Đóng cửa sổ"
 
-#: data/resources/gtk/help-overlay.ui:80
+#: data/resources/gtk/help-overlay.ui:68
 msgctxt "shortcut window"
 msgid "Quit"
 msgstr "Thoát"
 
-#: data/resources/gtk/help-overlay.ui:88
+#: data/resources/gtk/help-overlay.ui:76
 msgctxt "shortcut window"
 msgid "Navigate Images"
 msgstr "Điều hướng ảnh"
 
-#: data/resources/gtk/help-overlay.ui:92 data/resources/gtk/help-overlay.ui:106
-#: data/resources/gtk/help-overlay.ui:218
-#: data/resources/gtk/help-overlay.ui:232
+#: data/resources/gtk/help-overlay.ui:80 data/resources/gtk/help-overlay.ui:94
+#: data/resources/gtk/help-overlay.ui:235
+#: data/resources/gtk/help-overlay.ui:249
 msgctxt "shortcut window"
 msgid "Next Image"
 msgstr "Ảnh tiếp theo"
 
-#: data/resources/gtk/help-overlay.ui:99 data/resources/gtk/help-overlay.ui:113
-#: data/resources/gtk/help-overlay.ui:225
-#: data/resources/gtk/help-overlay.ui:239
+#: data/resources/gtk/help-overlay.ui:87 data/resources/gtk/help-overlay.ui:101
+#: data/resources/gtk/help-overlay.ui:242
+#: data/resources/gtk/help-overlay.ui:256
 msgctxt "shortcut window"
 msgid "Previous Image"
 msgstr "Ảnh trước"
 
-#: data/resources/gtk/help-overlay.ui:119
+#: data/resources/gtk/help-overlay.ui:107
 msgctxt "shortcut window"
 msgid "First Image"
 msgstr "Ảnh đầu"
 
-#: data/resources/gtk/help-overlay.ui:125
+#: data/resources/gtk/help-overlay.ui:113
 msgctxt "shortcut window"
 msgid "Last Image"
 msgstr "Ảnh cuối"
 
-#: data/resources/gtk/help-overlay.ui:133
+#: data/resources/gtk/help-overlay.ui:121
 msgctxt "shortcut window"
 msgid "Rotate Image"
 msgstr "Xoay ảnh"
 
-#: data/resources/gtk/help-overlay.ui:136
-#: data/resources/gtk/help-overlay.ui:257
+#: data/resources/gtk/help-overlay.ui:124
+#: data/resources/gtk/help-overlay.ui:274
+#: data/resources/gtk/help-overlay.ui:315
 msgctxt "shortcut window"
 msgid "Rotate Clockwise"
 msgstr "Xoay xuôi chiều kim đồng hồ"
 
-#: data/resources/gtk/help-overlay.ui:142
-#: data/resources/gtk/help-overlay.ui:263
+#: data/resources/gtk/help-overlay.ui:130
+#: data/resources/gtk/help-overlay.ui:280
+#: data/resources/gtk/help-overlay.ui:321
 msgctxt "shortcut window"
 msgid "Rotate Counterclockwise"
 msgstr "Xoay ngược chiều kim đồng hồ"
 
-#: data/resources/gtk/help-overlay.ui:150
+#: data/resources/gtk/help-overlay.ui:138
 msgctxt "shortcut window"
 msgid "Zoom Image"
 msgstr "Thu phóng ảnh"
 
-#: data/resources/gtk/help-overlay.ui:153
-#: data/resources/gtk/help-overlay.ui:245
+#: data/resources/gtk/help-overlay.ui:141
+#: data/resources/gtk/help-overlay.ui:262
 msgctxt "shortcut window"
 msgid "Zoom In"
 msgstr "Phóng to"
 
-#: data/resources/gtk/help-overlay.ui:159
-#: data/resources/gtk/help-overlay.ui:251
+#: data/resources/gtk/help-overlay.ui:147
+#: data/resources/gtk/help-overlay.ui:268
 msgctxt "shortcut window"
 msgid "Zoom Out"
 msgstr "Thu nhỏ"
 
-#: data/resources/gtk/help-overlay.ui:165
+#: data/resources/gtk/help-overlay.ui:153
 msgctxt "shortcut window"
 msgid "Best Fit"
 msgstr "Vừa khít"
 
-#: data/resources/gtk/help-overlay.ui:171
+#: data/resources/gtk/help-overlay.ui:159
 msgctxt "shortcut window"
 msgid "Original Scale"
 msgstr "Kích cỡ ban đầu"
 
-#: data/resources/gtk/help-overlay.ui:177
+#: data/resources/gtk/help-overlay.ui:165
 msgctxt "shortcut window"
 msgid "200% Scale"
 msgstr "Phóng 200%"
 
-#: data/resources/gtk/help-overlay.ui:185
+#: data/resources/gtk/help-overlay.ui:173
 msgctxt "shortcut window"
 msgid "Pan View"
 msgstr "Dời Màn"
 
-#: data/resources/gtk/help-overlay.ui:188
+#: data/resources/gtk/help-overlay.ui:176
 msgctxt "shortcut window"
 msgid "Pan Left"
 msgstr "Dời Trái"
 
-#: data/resources/gtk/help-overlay.ui:194
+#: data/resources/gtk/help-overlay.ui:182
 msgctxt "shortcut window"
 msgid "Pan Right"
 msgstr "Dời Phải"
 
-#: data/resources/gtk/help-overlay.ui:200
+#: data/resources/gtk/help-overlay.ui:188
 msgctxt "shortcut window"
 msgid "Pan Up"
 msgstr "Dời Trên"
 
-#: data/resources/gtk/help-overlay.ui:206
+#: data/resources/gtk/help-overlay.ui:194
 msgctxt "shortcut window"
 msgid "Pan Down"
 msgstr "Dời Xuống"
 
-#: data/resources/gtk/help-overlay.ui:214
+#: data/resources/gtk/help-overlay.ui:202
+msgctxt "shortcut window"
+msgid "View"
+msgstr "Xem"
+
+#: data/resources/gtk/help-overlay.ui:205
+msgctxt "shortcut window"
+msgid "Toggle Fullscreen"
+msgstr "Bật/tắt chế độ toàn màn hình"
+
+#: data/resources/gtk/help-overlay.ui:211
+msgctxt "shortcut window"
+msgid "Leave Fullscreen"
+msgstr "Ngừng toàn màn hình"
+
+#: data/resources/gtk/help-overlay.ui:217
+msgctxt "shortcut window"
+msgid "Toggle Image Properties"
+msgstr "Bật/Tắt thuộc tính ảnh"
+
+#: data/resources/gtk/help-overlay.ui:223
+msgctxt "shortcut window"
+msgid "Show Main Menu"
+msgstr "Hiện trình đơn chính"
+
+#: data/resources/gtk/help-overlay.ui:231
 msgctxt "shortcut window"
 msgid "Gestures"
 msgstr "Động tác"
 
+#: data/resources/gtk/help-overlay.ui:288
+msgctxt "shortcut window"
+msgid "Editing"
+msgstr "Chỉnh sửa"
+
+#: data/resources/gtk/help-overlay.ui:291
+msgctxt "shortcut window"
+msgid "Open Editing View"
+msgstr "Mở Chỉnh sửa"
+
+#: data/resources/gtk/help-overlay.ui:297
+msgctxt "shortcut window"
+msgid "Replace Original"
+msgstr "Thay thế Ảnh gốc"
+
+#: data/resources/gtk/help-overlay.ui:303
+msgctxt "shortcut window"
+msgid "Save As"
+msgstr "Lưu như"
+
+#: data/resources/gtk/help-overlay.ui:309
+msgctxt "shortcut window"
+msgid "Cancel"
+msgstr "Thôi"
+
+#: data/resources/gtk/help-overlay.ui:327
+msgctxt "shortcut window"
+msgid "Mirror Horizontally"
+msgstr "Lật Ngang"
+
+#: data/resources/gtk/help-overlay.ui:333
+msgctxt "shortcut window"
+msgid "Mirror Vertically"
+msgstr "Lật Dọc"
+
+#: data/resources/gtk/help-overlay.ui:339
+msgctxt "shortcut window"
+msgid "Apply Crop"
+msgstr "Hoàn tất Cắt xén"
+
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/about.rs:40
+#: src/about.rs:43
 msgid "translator-credits"
 msgstr "Nhóm Việt hóa GNOME <gnome-vi-list@gnome.org>"
 
-#: src/about.rs:41
-msgid "Copyright © 2020–2023 Christopher Davis et al."
-msgstr "Bản quyền © 2020–2023 Christopher Davis và cộng sự."
+#: src/about.rs:44
+msgid "Copyright © 2020–2024 Christopher Davis et al."
+msgstr "Bản quyền © 2020–2024 Christopher Davis và cộng sự."
 
-#: src/file_model.rs:126
+#: src/file_model.rs:180
 msgid "Could not list other files in directory."
 msgstr "Không thể liệt kê các tập tin trong thư mục."
 
+#. Translators: Display of the f-number <https://en.wikipedia.org/wiki/F-number>. {} will be replaced with the number
+#: src/metadata.rs:253
+msgid "\\u{192}\\u{2215}{}"
+msgstr "\\u{192}\\u{2215}{}"
+
+#. Translators: Fractional exposure time (photography) in seconds
+#: src/metadata.rs:266
+msgid "1\\u{2215}{}\\u{202F}s"
+msgstr "1\\u{2215}{}\\u{202F}s"
+
+#. Translators: Exposure time (photography) in seconds
+#: src/metadata.rs:274
+msgid "{}\\u{202F}s"
+msgstr "{}\\u{202F}s"
+
+#: src/metadata.rs:288
+msgid "{}\\u{202F}mm"
+msgstr "{}\\u{202F}mm"
+
 #. Translators: short for "north" in GPS coordinate
-#: src/image_metadata/gps.rs:153
+#: src/metadata.rs:328
 msgid "N"
 msgstr "B"
 
 #. Translators: short for "south" in GPS coordinate
-#: src/image_metadata/gps.rs:156
+#: src/metadata.rs:332
 msgid "S"
 msgstr "N"
 
 #. Translators: short for "east" in GPS coordinate
-#: src/image_metadata/gps.rs:166
+#: src/metadata.rs:341
 msgid "E"
 msgstr "Đ"
 
 #. Translators: short for "west" in GPS coordinate
-#: src/image_metadata/gps.rs:169
+#: src/metadata.rs:345
 msgid "W"
 msgstr "T"
 
-#. Translators: Unit for exposure time in seconds
-#: src/image_metadata/mod.rs:164
-msgid "1\\u{2215}{}\\u{202F}s"
-msgstr "1\\u{2215}{}\\u{202F}s"
-
-#. Translators: Unit for focal length in millimeters
-#: src/image_metadata/mod.rs:189
-msgid "{}\\u{202F}mm"
-msgstr "{}\\u{202F}mm"
-
 #. Translators: This is the date and time format we use in metadata output etc.
 #. The format has to follow <https://docs.gtk.org/glib/method.DateTime.format.html>
-#. The default is already translated. Don't change if you are not sure what to use.
-#: src/util/mod.rs:36
+#. The default is already translated. Don't change if you are not sure what to
+#. use.
+#: src/util.rs:39
 #, c-format
 msgid "%x %X"
 msgstr "%x %X"
 
-#: src/util/mod.rs:179 src/window.rs:597
+#: src/util.rs:182 src/widgets/image_window.rs:638
 msgid "Failed to restore image from trash"
 msgstr "Gặp lỗi khi lấy lại ảnh từ Thùng rác"
 
-#: src/util/mod.rs:200
-msgid "Failed to open image"
-msgstr "Gặp lỗi khi mở ảnh"
+#: src/widgets/drag_overlay.ui:15
+msgid "Drop Image to View"
+msgstr "Thả Ảnh vào Đây để Xem"
 
-#. Translators: This is a toast notification, informing the user that an image has been set as background.
-#: src/widgets/image_view.rs:669
+#: src/widgets/edit/crop.rs:360
+msgid "Failed to Edit Image"
+msgstr "Gặp lỗi khi chỉnh sửa ảnh"
+
+#: src/widgets/edit/crop.ui:6
+msgid "Free"
+msgstr "Tự do"
+
+#: src/widgets/edit/crop.ui:11
+msgid "Original"
+msgstr "Gốc"
+
+#: src/widgets/edit/crop.ui:16
+msgid "Square"
+msgstr "Vuông"
+
+#: src/widgets/edit/crop.ui:21
+msgid "5:4"
+msgstr "5:4"
+
+#: src/widgets/edit/crop.ui:26
+msgid "4:3"
+msgstr "4:3"
+
+#: src/widgets/edit/crop.ui:31
+msgid "3:2"
+msgstr "3:2"
+
+#: src/widgets/edit/crop.ui:36
+msgid "16:9"
+msgstr "16:9"
+
+#: src/widgets/edit/crop.ui:77 src/widgets/edit/crop.ui:364
+msgid "Aspect Ratio"
+msgstr "Tỷ lệ hình dáng"
+
+#: src/widgets/edit/crop.ui:91
+msgid "_Free"
+msgstr "Tự do"
+
+#: src/widgets/edit/crop.ui:109
+msgid "_Original"
+msgstr "Gốc"
+
+#: src/widgets/edit/crop.ui:127
+msgid "_Square"
+msgstr "Vuông"
+
+#: src/widgets/edit/crop.ui:145
+msgid "_5:4"
+msgstr "_5:4"
+
+#: src/widgets/edit/crop.ui:166
+msgid "_4:3"
+msgstr "_5:4"
+
+#: src/widgets/edit/crop.ui:187
+msgid "_3:2"
+msgstr "_3:2"
+
+#: src/widgets/edit/crop.ui:208
+msgid "_16:9"
+msgstr "_16:9"
+
+#: src/widgets/edit/crop.ui:231 src/widgets/edit/crop.ui:377
+msgid "Orientation Landscape"
+msgstr "Hướng Ngang_"
+
+#: src/widgets/edit/crop.ui:240 src/widgets/edit/crop.ui:389
+msgid "Orientation Portrait"
+msgstr "Hướng Dọc"
+
+#: src/widgets/edit/crop.ui:252 src/widgets/image_page.ui:15
+#: src/widgets/image_window.ui:25
+msgid "Rotate"
+msgstr "Xoay"
+
+#: src/widgets/edit/crop.ui:261 src/widgets/edit/crop.ui:407
+msgid "Rotate Counter Clockwise"
+msgstr "Xoay Ngược Chiều Kim Đồng hồ"
+
+#: src/widgets/edit/crop.ui:268
+msgid "Rotate Clockwise"
+msgstr "Xoay Theo Chiều Kim Đồng hồ"
+
+#: src/widgets/edit/crop.ui:278
+msgid "Flip"
+msgstr "Lật"
+
+#: src/widgets/edit/crop.ui:287 src/widgets/edit/crop.ui:415
+msgid "Mirror Horizontally"
+msgstr "Lật Ngang"
+
+#: src/widgets/edit/crop.ui:294
+msgid "Mirror Vertically"
+msgstr "Lật Dọc"
+
+#: src/widgets/edit/crop.ui:306 src/widgets/edit/crop.ui:429
+msgid "_Reset"
+msgstr "Đặ_t lại"
+
+#: src/widgets/edit/crop.ui:307 src/widgets/edit/crop.ui:431
+msgid "Undo Changes in this View"
+msgstr "Hoàn tác các thay đổi trong bản xem này "
+
+#: src/widgets/edit/crop_selection.ui:46
+msgid "Crop Selection"
+msgstr "Chọn Cắt xén"
+
+#. Translators: Filename suffix
+#. Translators: Filename suffix, {} is replaced by a number
+#: src/widgets/edit_window.rs:192 src/widgets/edit_window.rs:195
+msgid " (Edited)"
+msgid_plural " (Edited {})"
+msgstr[0] "(Đã chỉnh sửa {})"
+
+#: src/widgets/edit_window.rs:290 src/widgets/edit_window.rs:316
+msgid "Failed to save image."
+msgstr "Gặp lỗi khi lưu ảnh."
+
+#: src/widgets/edit_window.rs:346
+msgid "Editing Image"
+msgstr "Đang Chỉnh sửa Ảnh"
+
+#: src/widgets/edit_window.rs:360
+msgid "Failed to edit image."
+msgstr "Gặp lỗi khi chỉnh sửa ảnh."
+
+#: src/widgets/edit_window.rs:370 src/widgets/edit_window.rs:393
+msgid "Failed to Save Image"
+msgstr "Gặp lỗi khi lưu ảnh"
+
+#: src/widgets/edit_window.rs:376
+msgid "Saving Image"
+msgstr "Đang lưu ảnh"
+
+#: src/widgets/edit_window.ui:64
+msgid "_Cancel"
+msgstr "Thôi"
+
+#: src/widgets/edit_window.ui:71
+msgid "_Save"
+msgstr "Lưu"
+
+#: src/widgets/edit_window.ui:92
+msgid "_Save As…"
+msgstr "Lưu như…"
+
+#: src/widgets/edit_window.ui:100
+msgid "Keep original and create a new file"
+msgstr "Giữ ảnh gốc và tạo tập tin mới"
+
+#: src/widgets/edit_window.ui:120
+msgid "_Replace Original"
+msgstr "Thay thế Ảnh gốc"
+
+#: src/widgets/edit_window.ui:128
+msgid "Original image will be moved to the trash"
+msgstr "Ảnh gốc sẽ chuyển vào thùng rác"
+
+#: src/widgets/error_details.rs:79
+msgid ""
+"The following error occurred. If you think this is an issue with the "
+"program, please include this information when you report the error."
+msgstr ""
+"Đã xảy ra lỗi như sau. Nếu bạn cho rằng đây là lỗi của chương trình, hãy "
+"cung cấp thông tin này khi bạn báo cáo lỗi."
+
+#: src/widgets/error_details.ui:4
+msgid "Error Details"
+msgstr "Chi tiết Lỗi"
+
+#: src/widgets/error_details.ui:19
+msgid ""
+"The image loader reported the following when trying to load or edit the "
+"image. Please include this information when you report an error. If "
+"possible, please also provide the image that causes the issue."
+msgstr ""
+"Bộ xem ảnh đã gặp lỗi như sau khi đang mở hoặc chỉnh sửa ảnh. Hãy cung cấp "
+"thông tin này khi bạn báo cáo lỗi. Nếu có thể, hãy cung cấp thêm hình ảnh "
+"gây lỗi."
+
+#: src/widgets/error_details.ui:24
+msgid "Error Message"
+msgstr "Tin nhắn Lỗi"
+
+#: src/widgets/error_details.ui:28
+msgid "Copy Error Message"
+msgstr "Sao chép Tin nhắn Lỗi"
+
+#: src/widgets/error_details.ui:68
+msgid "Report _Issue"
+msgstr "Báo cáo Lỗi"
+
+#: src/widgets/image_page.rs:227
+msgid ""
+"No image loaders available. Maybe the “glycin-loaders” package with "
+"compatibility version “{}” is not installed."
+msgstr ""
+"Không có sẵn trình tải ảnh. Có thể gói phần mềm “glycin-loaders” phiên bản "
+"“{}” chưa được cài đặt."
+
+#: src/widgets/image_page.rs:242
+msgid "The image format “{} ({})” is known but not installed."
+msgstr "Nhận ra định dạng ảnh “{} ({})” nhưng chưa cài đặt."
+
+#: src/widgets/image_page.rs:249
+msgid "Unknown image format “{} ({}).”"
+msgstr "Chưa biết định dạng ảnh “{} ({})”."
+
+#: src/widgets/image_page.rs:277
+msgid "There is not enough free memory available to load this image."
+msgstr "Không đủ dung lượng bộ nhớ để tải hình ảnh này."
+
+#: src/widgets/image_page.rs:281
+msgid "Either the image file is corrupted or it contains unsupported elements."
+msgstr "Ảnh có thể đã bị hỏng hoặc đang chứa thành phần không được hỗ trợ."
+
+#: src/widgets/image_page.ui:6 src/widgets/image_window.ui:16
+msgid "_Open With…"
+msgstr "_Mở bằng…"
+
+#: src/widgets/image_page.ui:10 src/widgets/image_window.ui:20
+msgid "_Print…"
+msgstr "_In…"
+
+#: src/widgets/image_page.ui:26 src/widgets/image_window.ui:36
+msgid "_Set as Background…"
+msgstr "Đặt _làm hình nền…"
+
+#: src/widgets/image_page.ui:30 src/widgets/image_window.ui:40
+msgid "_Delete"
+msgstr "_Xóa"
+
+#: src/widgets/image_page.ui:34
+msgid "_Copy"
+msgstr "_Sao chép"
+
+#: src/widgets/image_page.ui:63
+msgid "Could not Load Image"
+msgstr "Không thể tải hình ảnh"
+
+#: src/widgets/image_page.ui:71
+msgid "More _Information"
+msgstr "Thông tin Thêm"
+
+#: src/widgets/image_page.ui:81
+msgid "_Reload"
+msgstr "Tải loại"
+
+#: src/widgets/image_page.ui:123 src/widgets/image_window.ui:101
+msgid "Rotate Left"
+msgstr "Xoay trái"
+
+#: src/widgets/image_page.ui:133 src/widgets/image_window.ui:111
+msgid "Rotate Right"
+msgstr "Xoay phải"
+
+#: src/widgets/image_view.rs:197
+msgid "{} %"
+msgstr "“{} ({})”"
+
+#. Translators: This is a toast notification, informing the user that
+#. an image has been set as background.
+#: src/widgets/image_view.rs:836
 msgid "Set as background."
 msgstr "Đặt làm ảnh nền."
 
-#: src/widgets/image_view.rs:682
+#: src/widgets/image_view.rs:849
 msgid "Could not set background."
 msgstr "Không thể đặt làm ảnh nền."
 
-#: src/widgets/print.rs:116
+#: src/widgets/image_view.ui:30
+msgid "Previous Image"
+msgstr "Ảnh trước"
+
+#: src/widgets/image_view.ui:40
+msgid "Next Image"
+msgstr "Ảnh tiếp theo"
+
+#: src/widgets/image_view.ui:74
+msgid "Zoom Out"
+msgstr "Thu nhỏ"
+
+#: src/widgets/image_view.ui:85
+msgid "Zoom In"
+msgstr "Phóng to"
+
+#: src/widgets/image_view.ui:100
+msgid "Toggle Zoom"
+msgstr "Bật/tắt Phóng"
+
+#: src/widgets/image_view.ui:108
+msgid "Zoom to Specific Level"
+msgstr "Phóng đến mức độ nhất định"
+
+#: src/widgets/image_view.ui:237
+msgid "Custom Zoom Level"
+msgstr "Mức phóng tự chọn"
+
+#: src/widgets/image_view.ui:243
+msgid "Zoom to Specified Level"
+msgstr "Phóng đến mức độ chỉ định"
+
+#: src/widgets/image_window.rs:502
+msgid "Supported image formats"
+msgstr "Các định dạng ảnh được hỗ trợ"
+
+#: src/widgets/image_window.rs:508
+msgid "All files"
+msgstr "Mọi tập tin"
+
+#: src/widgets/image_window.rs:515
+msgid "Open Image"
+msgstr "Mở ảnh"
+
+#: src/widgets/image_window.rs:601
+msgid "Image copied to clipboard"
+msgstr "Đã chép ảnh vào clipboard"
+
+#: src/widgets/image_window.rs:622
+msgid "Image moved to trash"
+msgstr "Đã chuyển ảnh vào thùng rác"
+
+#: src/widgets/image_window.rs:623
+msgid "Undo"
+msgstr "Hủy bước"
+
+#: src/widgets/image_window.rs:653
+msgid "Failed to move image to trash"
+msgstr "Gặp lỗi khi chuyển ảnh vào thùng rác"
+
+#: src/widgets/image_window.rs:677
+msgid "Permanently Delete Image?"
+msgstr "Xóa hình ảnh vĩnh viễn?"
+
+#: src/widgets/image_window.rs:679
+msgid "After deleting the image “{}” it will be permanently lost."
+msgstr "Ảnh “{}” sẽ bị mất vĩnh viễn sau khi xoá."
+
+#: src/widgets/image_window.rs:687
+msgid "Cancel"
+msgstr "Thôi"
+
+#: src/widgets/image_window.rs:688
+msgid "Delete"
+msgstr "Xóa"
+
+#: src/widgets/image_window.rs:699
+msgid "Failed to delete image"
+msgstr "Gặp lỗi khi xóa ảnh"
+
+#: src/widgets/image_window.ui:6
+msgid "_New Window"
+msgstr "_Cửa sổ mới"
+
+#: src/widgets/image_window.ui:10
+msgid "_Open…"
+msgstr "_Mở…"
+
+#: src/widgets/image_window.ui:46
+msgid "_Help"
+msgstr "T_rợ giúp"
+
+#: src/widgets/image_window.ui:50
+msgid "_Keyboard Shortcuts"
+msgstr "_Phím tắt bàn phím"
+
+#: src/widgets/image_window.ui:54
+msgid "_About Image Viewer"
+msgstr "_Giới thiệu bộ xem ảnh"
+
+#: src/widgets/image_window.ui:87
+msgid "Toggle Fullscreen"
+msgstr "Bật/tắt chế độ toàn màn hình"
+
+#: src/widgets/image_window.ui:93
+msgid "Main Menu"
+msgstr "Trình đơn chính"
+
+#: src/widgets/image_window.ui:125
+msgid "Image Properties"
+msgstr "Thuộc tính ảnh"
+
+#: src/widgets/image_window.ui:132
+msgid "Edit Image"
+msgstr "Ảnh đầu"
+
+#: src/widgets/image_window.ui:220
+msgid "View Images"
+msgstr "Xem ảnh"
+
+#: src/widgets/image_window.ui:221
+msgid "Drag and drop images here"
+msgstr "Kéo và thả ảnh vào đây"
+
+#: src/widgets/image_window.ui:225
+msgid "_Open Files…"
+msgstr "Mở _tập tin…"
+
+#: src/widgets/print.rs:108
 msgid "Top"
 msgstr "Đỉnh"
 
-#: src/widgets/print.rs:117
+#: src/widgets/print.rs:109
 msgid "Center"
 msgstr "Giữa"
 
-#: src/widgets/print.rs:118
+#: src/widgets/print.rs:110
 msgid "Bottom"
 msgstr "Đáy"
 
-#: src/widgets/print.rs:119
+#: src/widgets/print.rs:111
 msgid "Left"
 msgstr "Trái"
 
-#: src/widgets/print.rs:120
+#: src/widgets/print.rs:112
 msgid "Right"
 msgstr "Phải"
 
 #. Translators: Shorthand for centimeter
-#: src/widgets/print.rs:156
+#: src/widgets/print.rs:148
 msgid "cm"
 msgstr "cm"
 
 #. Translators: Shorthand for inch
-#: src/widgets/print.rs:158
+#: src/widgets/print.rs:150
 msgid "in"
 msgstr "in"
 
 #. Translators: Shorthand for pixel
-#: src/widgets/print.rs:160
+#: src/widgets/print.rs:152
 msgid "px"
 msgstr "px"
 
 #. Translators: {} is a placeholder for the filename
-#: src/widgets/print.rs:370
+#: src/widgets/print.rs:361
 msgid "Print “{}”"
 msgstr "In “{}”"
 
-#: src/window.rs:483
-msgid "Supported image formats"
-msgstr "Các định dạng ảnh được hỗ trợ"
+#: src/widgets/print.rs:476
+msgid "Continue…"
+msgstr "Tiếp tục…"
 
-#: src/window.rs:492
-msgid "All files"
-msgstr "Mọi tập tin"
+#: src/widgets/print.rs:477
+msgid "Print Image"
+msgstr "In Hình ảnh"
 
-#: src/window.rs:499
-msgid "Open Image"
-msgstr "Mở ảnh"
+#: src/widgets/print.rs:791
+msgid "_Scale"
+msgstr "Phóng"
 
-#: src/window.rs:563
-msgid "Image copied to clipboard"
-msgstr "Đã chép ảnh vào clipboard"
+#: src/widgets/print.rs:794
+msgid "_Width"
+msgstr "Chiều Ngang "
 
-#: src/window.rs:584
-msgid "Image moved to trash"
-msgstr "Đã chuyển ảnh vào thùng rác"
+#. Translators: Go back to previous page
+#: src/widgets/print.ui:29
+msgid "_Back"
+msgstr "Quay lại"
 
-#: src/window.rs:585
-msgid "Undo"
-msgstr "Hủy bước"
+#: src/widgets/print.ui:37
+msgid "_Print"
+msgstr "In"
 
-#: src/window.rs:612
-msgid "Failed to move image to trash"
-msgstr "Gặp lỗi khi chuyển ảnh vào thùng rác"
+#: src/widgets/print.ui:56
+msgid "Layout"
+msgstr "Bố cục"
 
-#: src/window.rs:627
-msgid "Permanently Delete Image?"
-msgstr "Xóa hình ảnh vĩnh viễn?"
+#: src/widgets/print.ui:59
+msgid "_Orientation"
+msgstr "Hướng"
 
-#: src/window.rs:629
-msgid "The image “{}” can only be deleted permanently."
-msgstr "Ảnh “{}” chỉ có thể bị xóa vĩnh viễn."
+#: src/widgets/print.ui:72
+msgid "Portrait Page Orientation"
+msgstr "Định hướng trang dọc"
 
-#: src/window.rs:637
-msgid "Cancel"
-msgstr "Thôi"
+#: src/widgets/print.ui:80
+msgid "Landscape Page Orientation"
+msgstr "Định hướng trang ngang"
 
-#: src/window.rs:638
-msgid "Delete"
-msgstr "Xóa"
+#: src/widgets/print.ui:89
+msgid "_Alignment"
+msgstr "Canh hàng"
 
-#: src/window.rs:649
-msgid "Failed to delete image"
-msgstr "Gặp lỗi khi xóa ảnh"
+#: src/widgets/print.ui:108
+msgid "Margins"
+msgstr "Lề"
+
+#: src/widgets/print.ui:111
+msgid "Margin Units"
+msgstr "Đơn vị lề"
+
+#: src/widgets/print.ui:128
+msgid "_Horizontal"
+msgstr "Ngang"
+
+#: src/widgets/print.ui:134
+msgid "_Vertical"
+msgstr "Dọc"
+
+#: src/widgets/print.ui:142 src/widgets/properties_view.ui:56
+msgid "Image Size"
+msgstr "Cỡ ảnh"
+
+#: src/widgets/print.ui:145
+msgid "Image Size Units"
+msgstr "Đơn vị cỡ ảnh"
+
+#: src/widgets/print.ui:163
+msgid "_Fill Space"
+msgstr "Điền đầy chỗ"
+
+#: src/widgets/print.ui:174
+msgid "H_eight"
+msgstr "Chiều dọc"
+
+#: src/widgets/properties_view.rs:258
+msgid "Unknown"
+msgstr "Chưa biết"
+
+#. Translators: Addition of image being transparent to format name
+#: src/widgets/properties_view.rs:262
+msgid ", transparent"
+msgstr ", trong suốt"
+
+#. Translators: Addition of image being grayscale to format name
+#: src/widgets/properties_view.rs:267
+msgid ", grayscale"
+msgstr ", trắng đen"
+
+#. Translators: Addition of bit size to format name
+#: src/widgets/properties_view.rs:272
+msgid ", {}\\u{202F}bit"
+msgstr ", {}\\u{202F}bit"
+
+#: src/widgets/properties_view.rs:290
+msgid "{}\\u{202F}\\u{D7}\\u{202F}{}"
+msgstr "{}\\u{202F}\\u{D7}\\u{202F}{}"
+
+#: src/widgets/properties_view.rs:329
+msgid "Image Coordinates Copied"
+msgstr "Đã Sao chép Toạ độ Ảnh"
+
+#: src/widgets/properties_view.ui:20
+msgid "Folder"
+msgstr "Thư mục"
+
+#: src/widgets/properties_view.ui:28
+msgid "Open Containing Folder"
+msgstr "Mở thư mục chứa"
+
+#: src/widgets/properties_view.ui:41
+msgid "URI"
+msgstr "URI"
+
+#: src/widgets/properties_view.ui:66
+msgid "Image Format"
+msgstr "Định dạng Ảnh"
+
+#: src/widgets/properties_view.ui:76
+msgid "File Size"
+msgstr "Kích cỡ tập tin"
+
+#: src/widgets/properties_view.ui:90
+msgid "File Created"
+msgstr "Ngày tạo tệp"
+
+#: src/widgets/properties_view.ui:100
+msgid "File Modified"
+msgstr "Ngày sửa tệp"
+
+#. Translators: This is a label for GPS coordinates
+#: src/widgets/properties_view.ui:114
+msgid "Location"
+msgstr "Vị trí"
+
+#: src/widgets/properties_view.ui:125
+msgid "Copy Coordinates"
+msgstr "Sao chép Toạ độ"
+
+#: src/widgets/properties_view.ui:136
+msgid "Open Location"
+msgstr "Mở vị trí"
+
+#: src/widgets/properties_view.ui:149
+msgid "Originally Created"
+msgstr "Ngày tạo đầu tiên"
+
+#: src/widgets/properties_view.ui:159
+msgid "Comment"
+msgstr "Bình luận"
+
+#: src/widgets/properties_view.ui:169
+msgid "Aperture"
+msgstr "Khẩu độ"
+
+#: src/widgets/properties_view.ui:179
+msgid "Exposure"
+msgstr "Phơi sáng"
+
+#: src/widgets/properties_view.ui:189
+msgid "ISO"
+msgstr "ISO"
+
+#: src/widgets/properties_view.ui:199
+msgid "Focal Length"
+msgstr "Tiêu cự"
+
+#: src/widgets/properties_view.ui:209
+msgid "Maker, Model"
+msgstr "Nhà sản xuất, Mẫu"
+
+#: src/widgets/window.rs:222
+msgid "Show Details"
+msgstr "Hiện Chi tiết"
+
+#~ msgid "Copy to Clipboard"
+#~ msgstr "Chép vào clipboard"
+
+#~ msgid "Move to Trash"
+#~ msgstr "Chuyển vào thùng rác"
+
+#~ msgid "The Loupe Team"
+#~ msgstr "Nhóm Loupe"
 
 #~ msgid "Center image horizontally"
 #~ msgstr "Trung tâm hình ảnh theo chiều ngang"
