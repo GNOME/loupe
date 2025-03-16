@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Gnome Nepali Translation Project\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2025-02-19 12:15+0000\n"
-"PO-Revision-Date: 2025-03-06 12:11+0545\n"
+"POT-Creation-Date: 2025-03-11 00:39+0000\n"
+"PO-Revision-Date: 2025-03-16 15:12+0545\n"
 "Last-Translator: Pawan Chitrakar <chautari@gmail.com>\n"
 "Language-Team: Nep;ali Language Translation Team <chautari@gmail.com>\n"
 "Language: ne\n"
@@ -67,11 +67,9 @@ msgid "General Shortcuts"
 msgstr "सामान्य सर्टकटहरू"
 
 #: data/resources/gtk/help-overlay.ui:14
-#| msgctxt "shortcut window"
-#| msgid "Copy Image or Metadata to Clipboard"
 msgctxt "shortcut window"
 msgid "Copy Image or Selected Text to Clipboard"
-msgstr ""
+msgstr "क्लिपबोर्डमा छवि वा चयन गरिएको पाठ प्रतिलिपि बनाउनुहोस्"
 
 #: data/resources/gtk/help-overlay.ui:20
 msgctxt "shortcut window"
@@ -86,7 +84,7 @@ msgstr "छवि स्थायी रूपमा मेट्नुहोस
 #: data/resources/gtk/help-overlay.ui:32
 msgctxt "shortcut window"
 msgid "Open Image with Other App"
-msgstr ""
+msgstr "अन्य अनुप्रयोगसँग छवि खोल्नुहोस्"
 
 #: data/resources/gtk/help-overlay.ui:38
 msgctxt "shortcut window"
@@ -255,12 +253,12 @@ msgstr "सम्पादन गर्ने"
 #: data/resources/gtk/help-overlay.ui:291
 msgctxt "shortcut window"
 msgid "Open Editing View"
-msgstr ""
+msgstr "सम्पादन दृश्य खोल्नुहोस्"
 
 #: data/resources/gtk/help-overlay.ui:297
 msgctxt "shortcut window"
 msgid "Replace Original"
-msgstr ""
+msgstr "मौलिक प्रतिस्थापन गर्नुहोस्"
 
 #: data/resources/gtk/help-overlay.ui:303
 msgctxt "shortcut window"
@@ -273,21 +271,19 @@ msgid "Cancel"
 msgstr "_रद्द"
 
 #: data/resources/gtk/help-overlay.ui:327
-#| msgid "_Horizontal"
 msgctxt "shortcut window"
 msgid "Mirror Horizontally"
-msgstr ""
+msgstr "तेर्सो रूपमा दर्पण गर्नुहोस्"
 
 #: data/resources/gtk/help-overlay.ui:333
-#| msgid "_Vertical"
 msgctxt "shortcut window"
 msgid "Mirror Vertically"
-msgstr ""
+msgstr "ठाडो रूपमा दर्पण गर्नुहोस्"
 
 #: data/resources/gtk/help-overlay.ui:339
 msgctxt "shortcut window"
 msgid "Apply Crop"
-msgstr ""
+msgstr "कटाई लागू गर्नुहोस्"
 
 #. Translators: Replace "translator-credits" with your names, one name per line
 #: src/about.rs:43
@@ -300,12 +296,12 @@ msgstr "प्रतिलिपि अधिकार © २०२०–२०�
 
 #: src/file_model.rs:180
 msgid "Could not list other files in directory."
-msgstr "डाइरेक्टरीमा अन्य फाइलहरू सूचीबद्ध गर्न सकेन ।"
+msgstr "डाइरेक्टरीमा अन्य फाइलहरू सूचीबद्ध गर्न सकेन ।."
 
 #. Translators: Display of the f-number <https://en.wikipedia.org/wiki/F-number>. {} will be replaced with the number
 #: src/metadata.rs:253
 msgid "\\u{192}\\u{2215}{}"
-msgstr ""
+msgstr "\\u{192}\\u{2215}{}"
 
 #. Translators: Fractional exposure time (photography) in seconds
 #: src/metadata.rs:266
@@ -355,14 +351,12 @@ msgid "Failed to restore image from trash"
 msgstr "रद्दीटोकरीबाट छवि पुनर्स्थापना गर्न असफल भयो"
 
 #: src/widgets/drag_overlay.ui:15
-#| msgid "Image Viewer"
 msgid "Drop Image to View"
-msgstr ""
+msgstr "दृश्यमा छवि ड्रप गर्नुहोस्"
 
-#: src/widgets/edit/crop.rs:330
-#| msgid "Failed to delete image"
+#: src/widgets/edit/crop.rs:360
 msgid "Failed to Edit Image"
-msgstr ""
+msgstr "छवि सम्पादन गर्न असफल भयो"
 
 #: src/widgets/edit/crop.ui:6
 msgid "Free"
@@ -378,19 +372,23 @@ msgstr "चतुर्भुज"
 
 #: src/widgets/edit/crop.ui:21
 msgid "5:4"
-msgstr ""
+msgstr "५:४"
 
 #: src/widgets/edit/crop.ui:26
 msgid "4:3"
-msgstr "4:3"
+msgstr "४:३"
 
 #: src/widgets/edit/crop.ui:31
 msgid "3:2"
-msgstr "3:2"
+msgstr "३:२"
 
 #: src/widgets/edit/crop.ui:36
 msgid "16:9"
-msgstr "16:9"
+msgstr "१६:९"
+
+#: src/widgets/edit/crop.ui:77 src/widgets/edit/crop.ui:364
+msgid "Aspect Ratio"
+msgstr "आकार अनुपात"
 
 #: src/widgets/edit/crop.ui:91
 msgid "_Free"
@@ -406,84 +404,84 @@ msgstr "चतुर्भुज"
 
 #: src/widgets/edit/crop.ui:145
 msgid "_5:4"
-msgstr ""
+msgstr "५:४"
 
-#: src/widgets/edit/crop.ui:163
+#: src/widgets/edit/crop.ui:166
 msgid "_4:3"
-msgstr "_4:3"
+msgstr "४:३"
 
-#: src/widgets/edit/crop.ui:181
+#: src/widgets/edit/crop.ui:187
 msgid "_3:2"
-msgstr "_3:2"
+msgstr "३:२"
 
-#: src/widgets/edit/crop.ui:199
+#: src/widgets/edit/crop.ui:208
 msgid "_16:9"
-msgstr "_16:9"
+msgstr "१६:९"
 
-#: src/widgets/edit/crop.ui:219 src/widgets/edit/crop.ui:365
-#| msgid "_Orientation"
+#: src/widgets/edit/crop.ui:231 src/widgets/edit/crop.ui:377
 msgid "Orientation Landscape"
-msgstr ""
+msgstr "अभिमुखीकरण परिदृश्य"
 
-#: src/widgets/edit/crop.ui:228 src/widgets/edit/crop.ui:377
-#| msgid "_Orientation"
+#: src/widgets/edit/crop.ui:240 src/widgets/edit/crop.ui:389
 msgid "Orientation Portrait"
-msgstr ""
+msgstr "अभिमुखीकरण पोर्ट्रेट"
 
-#: src/widgets/edit/crop.ui:249 src/widgets/edit/crop.ui:395
-#| msgctxt "shortcut window"
-#| msgid "Rotate Counterclockwise"
+#: src/widgets/edit/crop.ui:252 src/widgets/image_page.ui:15
+#: src/widgets/image_window.ui:25
+msgid "Rotate"
+msgstr "घुमाउनुहोस्"
+
+#: src/widgets/edit/crop.ui:261 src/widgets/edit/crop.ui:407
 msgid "Rotate Counter Clockwise"
-msgstr ""
+msgstr "घडीको विपरीत दिशामा घुमाउनुहोस्"
 
-#: src/widgets/edit/crop.ui:256
+#: src/widgets/edit/crop.ui:268
 msgid "Rotate Clockwise"
 msgstr "घडीसरह घुमाउनुहोस्"
 
-#: src/widgets/edit/crop.ui:275 src/widgets/edit/crop.ui:403
-#| msgid "_Horizontal"
+#: src/widgets/edit/crop.ui:278
+msgid "Flip"
+msgstr "फ्लिप गर्नुहोस्"
+
+#: src/widgets/edit/crop.ui:287 src/widgets/edit/crop.ui:415
 msgid "Mirror Horizontally"
-msgstr ""
+msgstr "तेर्सो रूपमा दर्पण गर्नुहोस्"
 
-#: src/widgets/edit/crop.ui:282
-#| msgid "_Vertical"
+#: src/widgets/edit/crop.ui:294
 msgid "Mirror Vertically"
-msgstr ""
+msgstr "ठाडो रूपमा दर्पण गर्नुहोस्"
 
-#: src/widgets/edit/crop.ui:295 src/widgets/edit/crop.ui:419
+#: src/widgets/edit/crop.ui:306 src/widgets/edit/crop.ui:429
+msgid "_Reset"
+msgstr "रिसेट गर्नुहोस्"
+
+#: src/widgets/edit/crop.ui:307 src/widgets/edit/crop.ui:431
 msgid "Undo Changes in this View"
-msgstr ""
-
-#: src/widgets/edit/crop.ui:352
-msgid "Aspect Ratio"
-msgstr "आकार अनुपात"
+msgstr "यो दृश्यमा परिवर्तनहरू पूर्ववत् गर्नुहोस्"
 
 #: src/widgets/edit/crop_selection.ui:46
 msgid "Crop Selection"
-msgstr ""
+msgstr "चयन गरिएको कटाइ गर्नुहोस्"
 
 #. Translators: Filename suffix
 #. Translators: Filename suffix, {} is replaced by a number
 #: src/widgets/edit_window.rs:192 src/widgets/edit_window.rs:195
 msgid " (Edited)"
 msgid_plural " (Edited {})"
-msgstr[0] "(सम्पादक)"
-msgstr[1] "(सम्पादक{})"
+msgstr[0] " (सम्पादक)"
+msgstr[1] " (सम्पादक{})"
 
 #: src/widgets/edit_window.rs:290 src/widgets/edit_window.rs:316
 msgid "Failed to save image."
-msgstr "छवि बचत गर्न असफल भयो"
+msgstr "छवि बचत गर्न असफल भयो."
 
 #: src/widgets/edit_window.rs:346
-#| msgctxt "shortcut window"
-#| msgid "First Image"
 msgid "Editing Image"
-msgstr ""
+msgstr "छवि सम्पादन गर्दै"
 
 #: src/widgets/edit_window.rs:360
-#| msgid "Failed to delete image"
 msgid "Failed to edit image."
-msgstr ""
+msgstr "छवि सम्पादन गर्न असफल भयो ।."
 
 #: src/widgets/edit_window.rs:370 src/widgets/edit_window.rs:393
 msgid "Failed to Save Image"
@@ -507,26 +505,27 @@ msgstr "यस रूपमा बचत गर्नुहोस्…"
 
 #: src/widgets/edit_window.ui:100
 msgid "Keep original and create a new file"
-msgstr ""
+msgstr "मौलिक राख्नुहोस् र नयाँ फाइल सिर्जना गर्नुहोस्"
 
 #: src/widgets/edit_window.ui:120
 msgid "_Replace Original"
-msgstr ""
+msgstr "मौलिक प्रतिस्थापन गर्नुहोस्"
 
 #: src/widgets/edit_window.ui:128
-#| msgid "Image moved to trash"
 msgid "Original image will be moved to the trash"
-msgstr ""
+msgstr "मौलिक छवि रद्दीटोकरीमा सारिनेछ"
 
 #: src/widgets/error_details.rs:79
 msgid ""
 "The following error occurred. If you think this is an issue with the program, "
 "please include this information when you report the error."
 msgstr ""
+"निम्न त्रुटि उत्पन्न भयो । यदि तपाईंलाई लाग्छ कि यो कार्यक्रमसँग समस्या हो भने, कृपया त्रुटि "
+"रिपोर्ट गर्दा यो जानकारी समावेश गर्नुहोस्।."
 
 #: src/widgets/error_details.ui:4
 msgid "Error Details"
-msgstr " त्रुटि विवरण"
+msgstr "त्रुटि विवरण"
 
 #: src/widgets/error_details.ui:19
 msgid ""
@@ -534,6 +533,9 @@ msgid ""
 "Please include this information when you report an error. If possible, please also "
 "provide the image that causes the issue."
 msgstr ""
+"छवि लोड गर्न वा सम्पादन गर्न प्रयास गर्दा छवि लोडरले निम्न रिपोर्ट गर्दछ । कृपया यो जानकारी "
+"समावेश गर्नुहोस् जब तपाईँले त्रुटिको रिपोर्ट गर्नुहुन्छ । यदि सम्भव छ भने, कृपया समस्याको कारण छवि "
+"पनि प्रदान गर्नुहोस्।."
 
 #: src/widgets/error_details.ui:24
 msgid "Error Message"
@@ -541,21 +543,23 @@ msgstr "त्रुटि सन्देश"
 
 #: src/widgets/error_details.ui:28
 msgid "Copy Error Message"
-msgstr ""
+msgstr "त्रुटि सन्देश प्रतिलिपि बनाउनुहोस्"
 
 #: src/widgets/error_details.ui:68
 msgid "Report _Issue"
-msgstr ""
+msgstr "समस्या प्रतिवेदन गर्नुहोस्"
 
 #: src/widgets/image_page.rs:227
 msgid ""
 "No image loaders available. Maybe the “glycin-loaders” package with compatibility "
 "version “{}” is not installed."
 msgstr ""
+"छवि लोडर उपलब्ध छैन । हुन सक्छ अनुकूलता संस्करण \"{}\" सँग “glycin-loaders” प्याकेज स्थापना "
+"गरिएको छैन।."
 
 #: src/widgets/image_page.rs:242
 msgid "The image format “{} ({})” is known but not installed."
-msgstr ""
+msgstr "छवि ढाँचा \"{} ({})\" ज्ञात छ तर स्थापना गरिएको छैन ।."
 
 #: src/widgets/image_page.rs:249
 msgid "Unknown image format “{} ({}).”"
@@ -563,7 +567,7 @@ msgstr "अज्ञात छवि ढाँचा“{} ({}).”"
 
 #: src/widgets/image_page.rs:277
 msgid "There is not enough free memory available to load this image."
-msgstr ""
+msgstr "यो छवि लोड गर्न पर्याप्त खाली स्मृति उपलब्ध छैन ।."
 
 #: src/widgets/image_page.rs:281
 msgid "Either the image file is corrupted or it contains unsupported elements."
@@ -577,13 +581,9 @@ msgstr "यससँग खोल्नुहोस्…"
 msgid "_Print…"
 msgstr "मुद्रण…"
 
-#: src/widgets/image_page.ui:15 src/widgets/image_window.ui:25
-msgid "Rotate"
-msgstr "घुमाउनुहोस्"
-
 #: src/widgets/image_page.ui:26 src/widgets/image_window.ui:36
 msgid "_Set as Background…"
-msgstr "पृष्ठभूमिको रूपमा सेट गर्नुहोस्"
+msgstr "पृष्ठभूमिको रूपमा सेट गर्नुहोस्…"
 
 #: src/widgets/image_page.ui:30 src/widgets/image_window.ui:40
 msgid "_Delete"
@@ -621,11 +621,11 @@ msgstr "{} %"
 #. an image has been set as background.
 #: src/widgets/image_view.rs:836
 msgid "Set as background."
-msgstr "पृष्ठभूमिको रूपमा सेट गर्नुहोस्"
+msgstr "पृष्ठभूमिको रूपमा सेट गर्नुहोस्."
 
 #: src/widgets/image_view.rs:849
 msgid "Could not set background."
-msgstr "पृष्ठभूमि सेट गर्न सकेन ।"
+msgstr "पृष्ठभूमि सेट गर्न सकेन ।."
 
 #: src/widgets/image_view.ui:30
 msgid "Previous Image"
@@ -650,6 +650,14 @@ msgstr "जुम टगल गर्नुहोस्"
 #: src/widgets/image_view.ui:108
 msgid "Zoom to Specific Level"
 msgstr "निर्दिष्ट स्तरमा जुम गर्नुहोस्"
+
+#: src/widgets/image_view.ui:237
+msgid "Custom Zoom Level"
+msgstr "अनुकूल जुम स्तर"
+
+#: src/widgets/image_view.ui:243
+msgid "Zoom to Specified Level"
+msgstr "निर्दिष्ट गरिएको स्तरमा जुम गर्नुहोस्"
 
 #: src/widgets/image_window.rs:502
 msgid "Supported image formats"
@@ -884,7 +892,6 @@ msgid ", {}\\u{202F}bit"
 msgstr ", {}\\u{202F}bit"
 
 #: src/widgets/properties_view.rs:290
-#| msgid "1\\u{2215}{}\\u{202F}s"
 msgid "{}\\u{202F}\\u{D7}\\u{202F}{}"
 msgstr "{}\\u{202F}\\u{D7}\\u{202F}{}"
 
