@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2025-02-27 13:05+0000\n"
-"PO-Revision-Date: 2025-03-03 15:51+0100\n"
+"POT-Creation-Date: 2025-03-11 00:39+0000\n"
+"PO-Revision-Date: 2025-03-17 11:48+0100\n"
 "Last-Translator: Daniel Mustieles García <daniel.mustieles@gmail.com>\n"
 "Language-Team: Spanish - Spain <gnome-es-list@gnome.org>\n"
 "Language: es_ES\n"
@@ -261,7 +261,7 @@ msgstr "Editando"
 #: data/resources/gtk/help-overlay.ui:291
 msgctxt "shortcut window"
 msgid "Open Editing View"
-msgstr ""
+msgstr "Abrir vista de edicion"
 
 #: data/resources/gtk/help-overlay.ui:297
 msgctxt "shortcut window"
@@ -364,7 +364,7 @@ msgstr "Falló al restaurar la imagen de la papelera"
 msgid "Drop Image to View"
 msgstr "Soltar imagen en la vista"
 
-#: src/widgets/edit/crop.rs:353
+#: src/widgets/edit/crop.rs:360
 msgid "Failed to Edit Image"
 msgstr "Falló al editar la imagen"
 
@@ -395,6 +395,10 @@ msgstr "3:2"
 #: src/widgets/edit/crop.ui:36
 msgid "16:9"
 msgstr "16:9"
+
+#: src/widgets/edit/crop.ui:77 src/widgets/edit/crop.ui:364
+msgid "Aspect Ratio"
+msgstr "Proporción de aspecto"
 
 #: src/widgets/edit/crop.ui:91
 msgid "_Free"
@@ -432,6 +436,11 @@ msgstr "Apaisado"
 msgid "Orientation Portrait"
 msgstr "Vertical"
 
+#: src/widgets/edit/crop.ui:252 src/widgets/image_page.ui:15
+#: src/widgets/image_window.ui:25
+msgid "Rotate"
+msgstr "Rotar"
+
 #: src/widgets/edit/crop.ui:261 src/widgets/edit/crop.ui:407
 msgid "Rotate Counter Clockwise"
 msgstr "Rota en sentido anti-horario"
@@ -439,6 +448,10 @@ msgstr "Rota en sentido anti-horario"
 #: src/widgets/edit/crop.ui:268
 msgid "Rotate Clockwise"
 msgstr "Rotar en el sentido de las agujas del reloj"
+
+#: src/widgets/edit/crop.ui:278
+msgid "Flip"
+msgstr "Voltear"
 
 #: src/widgets/edit/crop.ui:287 src/widgets/edit/crop.ui:415
 msgid "Mirror Horizontally"
@@ -448,13 +461,13 @@ msgstr "Espejar horizontalmente"
 msgid "Mirror Vertically"
 msgstr "Espejar verticalmente"
 
+#: src/widgets/edit/crop.ui:306 src/widgets/edit/crop.ui:429
+msgid "_Reset"
+msgstr "_Restablecer"
+
 #: src/widgets/edit/crop.ui:307 src/widgets/edit/crop.ui:431
 msgid "Undo Changes in this View"
 msgstr "Deshacer los cambios en esta vista"
-
-#: src/widgets/edit/crop.ui:364
-msgid "Aspect Ratio"
-msgstr "Proporción de aspecto"
 
 #: src/widgets/edit/crop_selection.ui:46
 msgid "Crop Selection"
@@ -465,8 +478,8 @@ msgstr "Recortar la selección"
 #: src/widgets/edit_window.rs:192 src/widgets/edit_window.rs:195
 msgid " (Edited)"
 msgid_plural " (Edited {})"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] " (Editado)"
+msgstr[1] " (Editado {})"
 
 #: src/widgets/edit_window.rs:290 src/widgets/edit_window.rs:316
 msgid "Failed to save image."
@@ -502,42 +515,37 @@ msgstr "Guardar _como…"
 
 #: src/widgets/edit_window.ui:100
 msgid "Keep original and create a new file"
-msgstr ""
+msgstr "Mantener el original y crear un archivo nuevo"
 
 #: src/widgets/edit_window.ui:120
 msgid "_Replace Original"
 msgstr "_Reemplazar original"
 
 #: src/widgets/edit_window.ui:128
-#, fuzzy
-#| msgid "Image moved to trash"
 msgid "Original image will be moved to the trash"
-msgstr "Imagen movida a la papelera"
+msgstr "La imagen original se moverá a la papelera"
 
 #: src/widgets/error_details.rs:79
 msgid ""
 "The following error occurred. If you think this is an issue with the "
 "program, please include this information when you report the error."
 msgstr ""
+"Se produjo el siguiente error. Si cree que se trata de un problema del "
+"programa, incluya esta información al informar el error."
 
 #: src/widgets/error_details.ui:4
 msgid "Error Details"
 msgstr "Detalles de error"
 
 #: src/widgets/error_details.ui:19
-#, fuzzy
-#| msgid ""
-#| "The image loader reported the following when trying to load the image. "
-#| "Please include this information when you report an error. If possible, "
-#| "please also provide the image that causes the issue."
 msgid ""
 "The image loader reported the following when trying to load or edit the "
 "image. Please include this information when you report an error. If "
 "possible, please also provide the image that causes the issue."
 msgstr ""
-"El cargador de imágenes informó lo siguiente al intentar cargar la imagen. "
-"Incluya esta información cuando informe un error. Si es posible, proporcione "
-"también la imagen que causa el problema."
+"El cargador de imágenes informó lo siguiente al intentar editar o cargar la "
+"imagen. Incluya esta información cuando informe un error. Si es posible, "
+"proporcione también la imagen que causa el problema."
 
 #: src/widgets/error_details.ui:24
 msgid "Error Message"
@@ -582,10 +590,6 @@ msgstr "_Abrir con…"
 #: src/widgets/image_page.ui:10 src/widgets/image_window.ui:20
 msgid "_Print…"
 msgstr "_Imprimir…"
-
-#: src/widgets/image_page.ui:15 src/widgets/image_window.ui:25
-msgid "Rotate"
-msgstr "Rotar"
 
 #: src/widgets/image_page.ui:26 src/widgets/image_window.ui:36
 msgid "_Set as Background…"
@@ -651,10 +655,18 @@ msgstr "Reducir"
 
 #: src/widgets/image_view.ui:100
 msgid "Toggle Zoom"
-msgstr ""
+msgstr "Conmutar la ampliación"
 
 #: src/widgets/image_view.ui:108
 msgid "Zoom to Specific Level"
+msgstr "Ampliar al nivel específico"
+
+#: src/widgets/image_view.ui:237
+msgid "Custom Zoom Level"
+msgstr "Nivel de ampliación personalizado"
+
+#: src/widgets/image_view.ui:243
+msgid "Zoom to Specified Level"
 msgstr "Ampliar al nivel específico"
 
 #: src/widgets/image_window.rs:502
