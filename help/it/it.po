@@ -1,0 +1,649 @@
+# Italian translation for loupe.
+# Copyright (C) 2024 loupe's COPYRIGHT HOLDER
+# This file is distributed under the same license as the loupe package.
+# Davide Ferracin <davide.ferracin@protonmail.com>, 2024-2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: loupe main\n"
+"POT-Creation-Date: 2025-01-11 08:38+0000\n"
+"PO-Revision-Date: 2025-03-22 11:50+0100\n"
+"Last-Translator: Davide Ferracin <davide.ferracin@protonmail.com>\n"
+"Language-Team: Italian <Italian>\n"
+"Language: it\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. Put one translator per line, in the form NAME <EMAIL>, YEAR1, YEAR2
+msgctxt "_"
+msgid "translator-credits"
+msgstr "Davide Ferracin <davide.ferracin@protonmail.com>, 2025"
+
+#. (itstool) path: info/desc
+#: C/image-properties.page:11
+msgid "View detailed properties of the selected image."
+msgstr "Consultare proprietà dettagliate dell'immagine selezionata."
+
+#. (itstool) path: page/title
+#: C/image-properties.page:13
+msgid "Image Properties"
+msgstr "Proprietà dell'immagine"
+
+#. (itstool) path: page/p
+#: C/image-properties.page:14
+msgid ""
+"Image Viewer allows users to view an image's properties. All images will "
+"have the following basic properties:"
+msgstr ""
+"Visualizzatore immagini permette agli utenti di consultare le proprietà di "
+"un'immagine. Tutte le immagini avranno le seguenti proprietà di base:"
+
+#. (itstool) path: item/p
+#: C/image-properties.page:18
+msgid "Image size"
+msgstr "Dimensioni dell'immagine"
+
+#. (itstool) path: item/p
+#: C/image-properties.page:21
+msgid "Image format"
+msgstr "Formato dell'immagine"
+
+#. (itstool) path: item/p
+#: C/image-properties.page:24
+msgid "File size"
+msgstr "Dimensione del file"
+
+#. (itstool) path: item/p
+#: C/image-properties.page:27
+msgid "File creation date"
+msgstr "Data di creazione del file"
+
+#. (itstool) path: item/p
+#: C/image-properties.page:30
+msgid "File modification date"
+msgstr "Data di modifica del file"
+
+#. (itstool) path: page/p
+#: C/image-properties.page:33
+msgid ""
+"If the file has <link href=\"https://en.wikipedia.org/wiki/Exif\">Exif</"
+"link> metadata, it will be shown below the basic properties."
+msgstr ""
+"Se il file ha dei metadati <link href=\"https://en.wikipedia.org/wiki/"
+"Exif\">Exif</link>, verranno mostrati sotto alle proprietà di base."
+
+#. (itstool) path: p/media
+#. This is a reference to an external file such as an image or video. When
+#. the file changes, the md5 hash will change to let you know you need to
+#. update your localized copy. The msgstr is not used at all. Set it to
+#. whatever you like once you have updated your copy of the file.
+#: C/image-properties.page:36
+msgctxt "_"
+msgid ""
+"external ref='figures/help-about-symbolic.svg' "
+"md5='6b43c8bc211b5f8b57810091728b8925'"
+msgstr "L'immagine è un simbolo, non è necessario tradurla."
+
+#. (itstool) path: page/p
+#: C/image-properties.page:35
+msgid ""
+"To view the selected image's properties, press the <gui>Image Properties</"
+"gui> (<media type=\"image\" src=\"figures/help-about-symbolic.svg\">help-"
+"about-symbolic</media>) button."
+msgstr ""
+"Per visualizzare le proprietà dell'immagine selezionata, premere il pulsante "
+"<gui>Proprietà immagine</gui> (<media type=\"image\" src=\"figures/help-"
+"about-symbolic.svg\">help-about-symbolic</media>)."
+
+#. (itstool) path: page/title
+#: C/supported-formats.page:12
+msgid "Supported Image Formats"
+msgstr "Formati di immagine supportati"
+
+#. (itstool) path: page/p
+#: C/supported-formats.page:13
+msgid ""
+"Image Viewer uses <link href=\"https://gitlab.gnome.org/GNOME/"
+"glycin\">glycin</link> for loading images. You can check <link "
+"href=\"https://gitlab.gnome.org/GNOME/glycin#supported-image-"
+"formats\">glycin's README</link> for more details about the formats "
+"supported by the default loaders and the features provided by each format."
+msgstr ""
+"Visualizzatore immagini usa <link href=\"https://gitlab.gnome.org/GNOME/"
+"glycin\">glycin</link> per caricare le immagini. Consultare il <link "
+"href=\"https://gitlab.gnome.org/GNOME/glycin#supported-image-"
+"formats\">file README di glycin</link> per ulteriori dettagli sui formati "
+"supportati dai caricatori predefiniti e sulle funzionalità fornite da "
+"ciascun formato."
+
+#. (itstool) path: page/p
+#: C/supported-formats.page:17
+msgid ""
+"Glycin's loaders are configurable, and new loaders can be created by third "
+"parties. Therefore the formats supported on your system may vary."
+msgstr ""
+"I caricatori di glycin sono configurabili, e nuovi caricatori possono essere "
+"creati da terzi. I formati supportati sul proprio sistema possono quindi "
+"variare."
+
+#. (itstool) path: info/desc
+#: C/trashing-images.page:11
+msgid "Move unwanted images to the trash directly from Image Viewer."
+msgstr ""
+"Spostare nel cestino le immagini direttamente da Visualizzatore immagini."
+
+#. (itstool) path: page/title
+#: C/trashing-images.page:13
+msgid "Moving Images to Trash"
+msgstr "Spostare le immagini nel cestino"
+
+#. (itstool) path: p/media
+#. This is a reference to an external file such as an image or video. When
+#. the file changes, the md5 hash will change to let you know you need to
+#. update your localized copy. The msgstr is not used at all. Set it to
+#. whatever you like once you have updated your copy of the file.
+#: C/trashing-images.page:15
+msgctxt "_"
+msgid ""
+"external ref='figures/user-trash-symbolic.svg' "
+"md5='3ffa1160de3479541f34c3bfbf3cdb64'"
+msgstr "L'immagine è un simbolo, non è necessario tradurla."
+
+#. (itstool) path: page/p
+#: C/trashing-images.page:14
+msgid ""
+"If a user wants to remove an image, they can press the <gui>Move To Trash</"
+"gui> (<media type=\"image\" src=\"figures/user-trash-symbolic.svg\">user-"
+"trash-symbolic</media>) button. A toast will appear allowing them to restore "
+"the image with the <gui>Undo</gui> button."
+msgstr ""
+"Se si vuole rimuovere un'immagine, si può premere il pulsante <gui>Sposta "
+"nel cestino</gui> (<media type=\"image\" src=\"figures/user-trash-symbolic."
+"svg\">user-trash-symbolic</media>). Apparirà un messaggio che permette di "
+"ripristinare l'immagine tramite il pulsante <gui>Annulla</gui>."
+
+#. (itstool) path: info/desc
+#: C/opening-images.page:11
+msgid ""
+"Open and browse through pictures via the file chooser, file manager, or drag "
+"and drop."
+msgstr ""
+"Aprire e consultare immagini con il selettore di file, il gestore di file, o "
+"trascinando e rilasciando."
+
+#. (itstool) path: page/title
+#: C/opening-images.page:13
+msgid "Opening Images"
+msgstr "Aprire le immagini"
+
+#. (itstool) path: section/title
+#: C/opening-images.page:15
+msgid "Opening Files"
+msgstr "Aprire i file"
+
+#. (itstool) path: section/title
+#: C/opening-images.page:17
+msgid "From The File Chooser"
+msgstr "Dal selettore di file"
+
+#. (itstool) path: section/p
+#: C/opening-images.page:18
+msgid ""
+"Image Viewer allows users to pick images with the file chooser at any time."
+msgstr ""
+"Visualizzatore immagini permette agli utenti di scegliere immagini tramite "
+"il selettore di file in qualsiasi momento."
+
+#. (itstool) path: item/p
+#: C/opening-images.page:21
+msgid ""
+"Click the <gui>Open Files…</gui> button, the <gui style=\"menuitem\">Open…</"
+"gui> menu item, or press <keyseq><key>Ctrl</key><key>O</key></keyseq>. The "
+"<gui>Open Image</gui> file dialog will appear."
+msgstr ""
+"Fare clic sul pulsante <gui>Apri file…</gui>, la voce <gui "
+"style=\"menuitem\">Apri…</gui> nel menù, o premere <keyseq><key>Ctrl</"
+"key><key>O</key></keyseq>. Comparirà la finestra di dialogo <gui>Apri "
+"immagine</gui>."
+
+#. (itstool) path: item/p
+#: C/opening-images.page:24
+msgid "Select the image you want to open, then click <gui>Open</gui>."
+msgstr "Selezionare l'immagine da aprire, e fare clic su <gui>Apri</gui>."
+
+# [DF] L'idea qui è che una volta aperta un'immagine in una cartella si può
+# passare alle altre immagini nella stessa scorrendo o con i tasti freccia.
+#. (itstool) path: section/p
+#: C/opening-images.page:27
+msgid ""
+"Image Viewer will open with the selected image showing, and the other images "
+"in the directory can be reached by browsing."
+msgstr ""
+"Visualizzatore immagini si aprirà mostrando l'immagine scelta, e da lì sarà "
+"possibile navigare alle altre immagini nella directory."
+
+#. (itstool) path: section/title
+#: C/opening-images.page:30
+msgid "From The File Manager"
+msgstr "Dal gestore di file"
+
+#. (itstool) path: section/p
+#: C/opening-images.page:31
+msgid "Users can also open images in Loupe directly from their file manager."
+msgstr ""
+"Gli utenti possono anche aprire immagini direttamente in Loupe dal proprio "
+"gestore di file."
+
+#. (itstool) path: item/p
+#: C/opening-images.page:34
+msgid "Open your preferred file manager application."
+msgstr "Aprire la propria applicazione di gestione file preferita."
+
+#. (itstool) path: item/p
+#: C/opening-images.page:37
+msgid "Navigate to the image you want to view in Loupe."
+msgstr "Navigare all'immagine che si desidera visualizzare in Loupe."
+
+#. (itstool) path: item/p
+#: C/opening-images.page:40
+msgid ""
+"If Image Viewer is set as your default image viewer, use the file manager's "
+"function for opening files."
+msgstr ""
+"Se Visualizzatore immagini è impostato come applicazione predefinita per "
+"visualizzare le immagini, usare la funzione di apertura file del gestore di "
+"file."
+
+#. (itstool) path: item/p
+#: C/opening-images.page:43
+msgid ""
+"If Image Viewer is not your default image viewer, you will need to select "
+"<gui>Open With…</gui> or similar in the file manager, and pick Image Viewer."
+msgstr ""
+"Se Visualizzatore immagini non è la propria applicazione predefinita per "
+"visualizzare le immagini, è necessario selezionare <gui>Apri con…</gui> o "
+"una simile voce nel gestore di file, e scegliere Visualizzatore immagini."
+
+#. (itstool) path: section/title
+#: C/opening-images.page:48 C/sending-to-other-apps.page:37
+msgid "Drag &amp; Drop"
+msgstr "Trascinare e rilasciare"
+
+#. (itstool) path: section/p
+#: C/opening-images.page:49
+msgid ""
+"Image Viewer also accepts local image files dragged from other applications."
+msgstr ""
+"Visualizzatore immagini può anche aprire file locali di immagini trascinate "
+"da altre applicazioni."
+
+#. (itstool) path: item/p
+#: C/opening-images.page:52
+msgid "In the source application, begin dragging the image."
+msgstr "Iniziare a trascinare l'immagine dall'applicazione di provenienza."
+
+#. (itstool) path: item/p
+#: C/opening-images.page:55
+msgid ""
+"Drag the image over the Loupe main window. A blue highlighted area should "
+"appear."
+msgstr ""
+"Trascinare l'immagine fin sopra alla finestra principale di Loupe. Dovrebbe "
+"apparire un'area evidenziata in blu."
+
+#. (itstool) path: item/p
+#: C/opening-images.page:58
+msgid "Drop the image while it's still hovered over the main window."
+msgstr ""
+"Rilasciare l'immagine fintanto che si trova sopra la finestra principale."
+
+#. (itstool) path: section/title
+#: C/opening-images.page:64
+msgid "Browsing"
+msgstr "Navigazione"
+
+#. (itstool) path: p/media
+#. This is a reference to an external file such as an image or video. When
+#. the file changes, the md5 hash will change to let you know you need to
+#. update your localized copy. The msgstr is not used at all. Set it to
+#. whatever you like once you have updated your copy of the file.
+#: C/opening-images.page:67
+msgctxt "_"
+msgid ""
+"external ref='figures/go-previous-symbolic.svg' "
+"md5='a53305845578db884ecfb7d8d33fcaeb'"
+msgstr "L'immagine è un simbolo, non è necessario tradurla."
+
+#. (itstool) path: p/media
+#. This is a reference to an external file such as an image or video. When
+#. the file changes, the md5 hash will change to let you know you need to
+#. update your localized copy. The msgstr is not used at all. Set it to
+#. whatever you like once you have updated your copy of the file.
+#: C/opening-images.page:68
+msgctxt "_"
+msgid ""
+"external ref='figures/go-next-symbolic.svg' "
+"md5='2f901ac0f711cfb3274b2985d10c4124'"
+msgstr "L'immagine è un simbolo, non è necessario tradurla."
+
+#. (itstool) path: section/p
+#: C/opening-images.page:65
+msgid ""
+"When opening an image from the file chooser or file manager, Loupe will load "
+"other files in the parent directory of the image and sort them in "
+"alphabetical order. Users can browse the other images in the directory with "
+"the <gui>Previous Image</gui> (<media type=\"image\" src=\"figures/go-"
+"previous-symbolic.svg\">go-previous-symbolic</media>) and <gui>Next Image</"
+"gui> (<media type=\"image\" src=\"figures/go-next-symbolic.svg\">go-next-"
+"symbolic</media>) buttons."
+msgstr ""
+"All'apertura di un'immagine dal selettore di file o dal gestore di file, "
+"Loupe carica anche gli altri file nella directory dove si trova l'immagine e "
+"li ordina alfabeticamente. Gli utenti possono passare alle altre immagini "
+"nella directory con i pulsanti <gui>Immagine precedente</gui> (<media "
+"type=\"image\" src=\"figures/go-previous-symbolic.svg\">go-previous-"
+"symbolic</media>) e <gui>Immagine successiva</gui> (<media type=\"image\" "
+"src=\"figures/go-next-symbolic.svg\">go-next-symbolic</media>)."
+
+#. (itstool) path: note/p
+#: C/opening-images.page:70 C/viewing-images.page:39
+msgid ""
+"Keyboard users can also use the corresponding shortcuts presented in the "
+"<gui>Keyboard Shortcuts</gui> dialog."
+msgstr ""
+"Gli utenti con tastiera possono anche usare le relative scorciatoie mostrate "
+"nella finestra <gui>Scorciatoie da tastiera</gui>."
+
+#. (itstool) path: info/desc
+#: C/index.page:10
+msgid "Browse through your images and inspect their metadata."
+msgstr "Consultare le proprie immagini e ispezionare i loro metadati."
+
+#. (itstool) path: page/title
+#: C/index.page:12
+msgid "<_:media-1/> Image Viewer (Loupe)"
+msgstr "<_:media-1/> Visualizzatore immagini (Loupe)"
+
+#. (itstool) path: section/title
+#: C/index.page:14
+msgid "Getting Started"
+msgstr "Per iniziare"
+
+#. (itstool) path: section/title
+#: C/index.page:17
+msgid "Additional Features"
+msgstr "Funzionalità aggiuntive"
+
+#. (itstool) path: section/title
+#: C/index.page:20
+msgid "Technical Information"
+msgstr "Informazioni tecniche"
+
+#. (itstool) path: info/desc
+#: C/sending-to-other-apps.page:11
+msgid ""
+"Learn how to send, copy, and drag images from Image Viewer to other apps."
+msgstr ""
+"Come inviare, copiare e trascinare immagini da Visualizzatore immagini ad "
+"altre applicazioni."
+
+#. (itstool) path: page/title
+#: C/sending-to-other-apps.page:13
+msgid "Sending Images To Other Apps"
+msgstr "Inviare immagini ad altre applicazioni"
+
+#. (itstool) path: section/title
+#: C/sending-to-other-apps.page:15
+msgid "\"Open With…\" Action"
+msgstr "L'azione «Apri con…»"
+
+#. (itstool) path: item/p
+#: C/sending-to-other-apps.page:18
+msgid ""
+"Click the <gui style=\"menuitem\">Open With…</gui> menu item. A dialog with "
+"a list of applications will appear."
+msgstr ""
+"Fare clic sulla voce <gui style=\"menuitem\">Apri con…</gui> del menù. Si "
+"aprirà una finestra con una lista di applicazioni."
+
+#. (itstool) path: item/p
+#: C/sending-to-other-apps.page:21
+msgid "Select the application you want to open the image with."
+msgstr "Scegliere l'applicazione con la quale si vuole aprire l'immagine."
+
+#. (itstool) path: section/title
+#: C/sending-to-other-apps.page:26
+msgid "Copy &amp; Paste"
+msgstr "Copiare e incollare"
+
+#. (itstool) path: p/media
+#. This is a reference to an external file such as an image or video. When
+#. the file changes, the md5 hash will change to let you know you need to
+#. update your localized copy. The msgstr is not used at all. Set it to
+#. whatever you like once you have updated your copy of the file.
+#: C/sending-to-other-apps.page:29
+msgctxt "_"
+msgid ""
+"external ref='figures/edit-copy-symbolic.svg' "
+"md5='4774ffd65c32e160f4cefc093abd6b7c'"
+msgstr "L'immagine è un simbolo, non è necessario tradurla."
+
+#. (itstool) path: item/p
+#: C/sending-to-other-apps.page:29
+msgid ""
+"Click the <gui>Copy to Clipboard</gui> (<media type=\"image\" src=\"figures/"
+"edit-copy-symbolic.svg\">edit-copy-symbolic</media>) button. A toast "
+"notifying you that the image is in your clipboard will appear."
+msgstr ""
+"Fare clic sul pulsante <gui>Copia negli appunti</gui> (<media type=\"image\" "
+"src=\"figures/edit-copy-symbolic.svg\">edit-copy-symbolic</media>). Apparirà "
+"un messaggio che avvisa che l'immagine è stata copiata negli appunti."
+
+#. (itstool) path: item/p
+#: C/sending-to-other-apps.page:32
+msgid "Paste your image in your application of choice."
+msgstr "Incollare l'immagine nell'applicazione desiderata."
+
+#. (itstool) path: item/p
+#: C/sending-to-other-apps.page:40
+msgid "Zoom out from the image completely."
+msgstr "Azzerare il livello d'ingrandimento dell'immagine."
+
+#. (itstool) path: item/p
+#: C/sending-to-other-apps.page:43
+msgid "Click and hold the selected image."
+msgstr "Fare clic e tenere premuto sull'immagine."
+
+#. (itstool) path: item/p
+#: C/sending-to-other-apps.page:46
+msgid "Drag the image to your application of choice."
+msgstr "Trascinare l'immagine sull'applicazione desiderata."
+
+#. (itstool) path: info/desc
+#: C/viewing-images.page:11
+msgid "Learn how to view an image at different scales and orientations."
+msgstr "Come visualizzare un'immagine con diverse scale e orientazioni."
+
+#. (itstool) path: page/title
+#: C/viewing-images.page:13
+msgid "Viewing Images"
+msgstr "Visualizzare le immagini"
+
+#. (itstool) path: section/title
+#: C/viewing-images.page:15
+msgid "Zooming"
+msgstr "Ingrandimento"
+
+#. (itstool) path: p/media
+#. This is a reference to an external file such as an image or video. When
+#. the file changes, the md5 hash will change to let you know you need to
+#. update your localized copy. The msgstr is not used at all. Set it to
+#. whatever you like once you have updated your copy of the file.
+#: C/viewing-images.page:16
+msgctxt "_"
+msgid ""
+"external ref='figures/zoom-in-symbolic.svg' "
+"md5='fed4648112c974f25de99c15ece6272c'"
+msgstr "L'immagine è un simbolo, non è necessario tradurla."
+
+#. (itstool) path: p/media
+#. This is a reference to an external file such as an image or video. When
+#. the file changes, the md5 hash will change to let you know you need to
+#. update your localized copy. The msgstr is not used at all. Set it to
+#. whatever you like once you have updated your copy of the file.
+#: C/viewing-images.page:17
+msgctxt "_"
+msgid ""
+"external ref='figures/zoom-out-symbolic.svg' "
+"md5='fe99d9c40c1104988ee4580283168dfb'"
+msgstr "L'immagine è un simbolo, non è necessario tradurla."
+
+#. (itstool) path: section/p
+#: C/viewing-images.page:16
+msgid ""
+"Users can zoom in with the <gui>Zoom In</gui> (<media type=\"image\" "
+"src=\"figures/zoom-in-symbolic.svg\">zoom-in-symbolic</media>) button and "
+"zoom out with the <gui>Zoom Out</gui> (<media type=\"image\" src=\"figures/"
+"zoom-out-symbolic.svg\">zoom-out-symbolic</media>) button."
+msgstr ""
+"È possibile aumentare l'ingrandimento con il pulsante <gui>Aumenta "
+"l'ingrandimento</gui> (<media type=\"image\" src=\"figures/zoom-in-symbolic."
+"svg\">zoom-in-symbolic</media>) e ridurlo con il pulsante <gui>Riduci "
+"l'ingrandimento</gui> (<media type=\"image\" src=\"figures/zoom-out-symbolic."
+"svg\">zoom-out-symbolic</media>)."
+
+#. (itstool) path: section/p
+#: C/viewing-images.page:19
+msgid ""
+"Touchpad and touchscreen users can also zoom with a two-finger pinch "
+"gesture. On touchpads, it is also possible to zoom by pressing the "
+"<key>Ctrl</key> key while swiping up/down with two fingers on the touchpad."
+msgstr ""
+"Gli utenti con touchpad o schermo tattile possono anche modificare "
+"l'ingrandimento pizzicando con due dita. Con i touchpad si può anche premere "
+"il tasto <key>Ctrl</key> mentre si scorre su e giù con due dita."
+
+#. (itstool) path: section/title
+#: C/viewing-images.page:22
+msgid "Panning"
+msgstr "Trascinamento"
+
+#. (itstool) path: section/p
+#: C/viewing-images.page:23
+msgid ""
+"Mouse and touchpad users can pan the view when zoomed in by clicking and "
+"dragging the image. Touchscreen users can use a single-finger drag gesture "
+"to pan the view."
+msgstr ""
+"Gli utenti con mouse o touchpad possono trascinare la vista quando "
+"l'immagine è ingrandita facendo clic e trascinandola. Gli utenti con uno "
+"schermo tattile possono scorrere il dito sullo schermo per trascinare la "
+"vista."
+
+#. (itstool) path: section/title
+#: C/viewing-images.page:27
+msgid "Rotating"
+msgstr "Rotazione"
+
+#. (itstool) path: p/media
+#. This is a reference to an external file such as an image or video. When
+#. the file changes, the md5 hash will change to let you know you need to
+#. update your localized copy. The msgstr is not used at all. Set it to
+#. whatever you like once you have updated your copy of the file.
+#: C/viewing-images.page:28
+msgctxt "_"
+msgid ""
+"external ref='figures/object-rotate-right-symbolic.svg' "
+"md5='0284f09f3659bf61e4882ac8a758b38f'"
+msgstr "L'immagine è un simbolo, non è necessario tradurla."
+
+#. (itstool) path: p/media
+#. This is a reference to an external file such as an image or video. When
+#. the file changes, the md5 hash will change to let you know you need to
+#. update your localized copy. The msgstr is not used at all. Set it to
+#. whatever you like once you have updated your copy of the file.
+#: C/viewing-images.page:29
+msgctxt "_"
+msgid ""
+"external ref='figures/object-rotate-left-symbolic.svg' "
+"md5='c2393bbaa3b0f7ea09b43089295a44d4'"
+msgstr "L'immagine è un simbolo, non è necessario tradurla."
+
+#. (itstool) path: section/p
+#: C/viewing-images.page:28
+msgid ""
+"Users can use the <gui>Rotate Right</gui> (<media type=\"image\" "
+"src=\"figures/object-rotate-right-symbolic.svg\">object-rotate-right-"
+"symbolic</media>) and <gui>Rotate Left</gui> (<media type=\"image\" "
+"src=\"figures/object-rotate-left-symbolic.svg\">object-rotate-left-symbolic</"
+"media>) buttons under <gui style=\"menuitem\">Rotate</gui> in the main menu "
+"to rotate clockwise and counter-clockwise."
+msgstr ""
+"Gli utenti possono usare i pulsanti <gui>Ruota a destra</gui> (<media "
+"type=\"image\" src=\"figures/object-rotate-right-symbolic.svg\">object-"
+"rotate-right-symbolic</media>) e <gui>Ruota a sinistra</gui> (<media "
+"type=\"image\" src=\"figures/object-rotate-left-symbolic.svg\">object-rotate-"
+"left-symbolic</media>) alla voce <gui style=\"menuitem\">Ruota</gui> nel "
+"menù principale."
+
+#. (itstool) path: section/p
+#: C/viewing-images.page:32
+msgid ""
+"Touchpad and touchscreen users can also use a two-finger rotate gesture."
+msgstr ""
+"Gli utenti con touchpad o schermo tattile possono anche usare un gesto con "
+"due dita per ruotare."
+
+#. (itstool) path: section/title
+#: C/viewing-images.page:35
+msgid "Fullscreen"
+msgstr "Schermo intero"
+
+#. (itstool) path: p/media
+#. This is a reference to an external file such as an image or video. When
+#. the file changes, the md5 hash will change to let you know you need to
+#. update your localized copy. The msgstr is not used at all. Set it to
+#. whatever you like once you have updated your copy of the file.
+#: C/viewing-images.page:37
+msgctxt "_"
+msgid ""
+"external ref='figures/view-fullscreen-symbolic.svg' "
+"md5='3ee106ab07051301a9b5982cbe04b597'"
+msgstr "L'immagine è un simbolo, non è necessario tradurla."
+
+#. (itstool) path: p/media
+#. This is a reference to an external file such as an image or video. When
+#. the file changes, the md5 hash will change to let you know you need to
+#. update your localized copy. The msgstr is not used at all. Set it to
+#. whatever you like once you have updated your copy of the file.
+#: C/viewing-images.page:37
+msgctxt "_"
+msgid ""
+"external ref='figures/view-restore-symbolic.svg' "
+"md5='f7470d4b9ed1d317ed201bb4a72882fb'"
+msgstr "L'immagine è un simbolo, non è necessario tradurla."
+
+#. (itstool) path: section/p
+#: C/viewing-images.page:36
+msgid ""
+"Image Viewer has a simple fullscreen mode. Users can toggle fullscreen mode "
+"by pressing the <gui>Toggle Fullscreen</gui> (<media type=\"image\" "
+"src=\"figures/view-fullscreen-symbolic.svg\">view-fullscreen-symbolic</"
+"media> / <media type=\"image\" src=\"figures/view-restore-symbolic."
+"svg\">view-restore-symbolic</media>) button."
+msgstr ""
+"Visualizzatore di immagini ha una modalità a schermo intero semplice. Gli "
+"utenti possono attivarla e disattivarla premendo il pulsante <gui>Attiva/"
+"disattiva schermo intero</gui> (<media type=\"image\" src=\"figures/view-"
+"fullscreen-symbolic.svg\">view-fullscreen-symbolic</media> / <media "
+"type=\"image\" src=\"figures/view-restore-symbolic.svg\">view-restore-"
+"symbolic</media>)."
+
+#~ msgid ""
+#~ "Keyboard users can also use the corresponding shortcuts presented in the "
+#~ "(Keyboard Shortcuts) dialog."
+#~ msgstr ""
+#~ "Gli utenti muniti di tastiera possono anche usare le scorciatoie di tasti "
+#~ "corrispondenti mostrate nella finestra (Scorciatoie da tastiera)."
