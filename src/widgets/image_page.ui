@@ -68,7 +68,7 @@
                 <property name="halign">center</property>
                 <child>
                   <object class="GtkButton" id="error_more_info">
-                    <property name="label" translatable="true">More _Information</property>
+                    <property name="label" translatable="yes">More _Information</property>
                     <property name="use-underline">true</property>
                     <style>
                       <class name="suggested-action" />
@@ -78,7 +78,7 @@
                 </child>
                 <child>
                   <object class="GtkButton">
-                    <property name="label" translatable="true">_Reload</property>
+                    <property name="label" translatable="yes">_Reload</property>
                     <property name="use-underline">true</property>
                     <property name="action-name">win.reload</property>
                     <style>
