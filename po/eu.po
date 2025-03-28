@@ -292,7 +292,7 @@ msgstr "Aplikatu mozketa"
 #. Translators: Replace "translator-credits" with your names, one name per line
 #: src/about.rs:43
 msgid "translator-credits"
-msgstr "Asier Sarasua Garmendia <asiersarasua@ni.eus>"
+msgstr "translator-credits"
 
 #: src/about.rs:44
 msgid "Copyright © 2020–2024 Christopher Davis et al."
@@ -324,7 +324,7 @@ msgstr "{}\\u{202F}mm"
 #. Translators: short for "north" in GPS coordinate
 #: src/metadata.rs:328
 msgid "N"
-msgstr "E"
+msgstr "I"
 
 #. Translators: short for "south" in GPS coordinate
 #: src/metadata.rs:332
@@ -646,11 +646,11 @@ msgstr "Txandakatu zooma"
 
 #: src/widgets/image_view.ui:108
 msgid "Zoom to Specific Level"
-msgstr "Zooma maila jakin batean"
+msgstr "Zoom maila jakin batean"
 
 #: src/widgets/image_view.ui:237
 msgid "Custom Zoom Level"
-msgstr "Zommaren maila pertsonalizatua"
+msgstr "Zoomaren maila pertsonalizatua"
 
 #: src/widgets/image_view.ui:243
 msgid "Zoom to Specified Level"
@@ -726,7 +726,7 @@ msgstr "Irudi-ikustaileari _buruz"
 
 #: src/widgets/image_window.ui:87
 msgid "Toggle Fullscreen"
-msgstr "Ikusi pantaila osoan"
+msgstr "Txandakatu pantaila osoa"
 
 #: src/widgets/image_window.ui:93
 msgid "Main Menu"
@@ -780,7 +780,7 @@ msgstr "cm"
 #. Translators: Shorthand for inch
 #: src/widgets/print.rs:150
 msgid "in"
-msgstr "hemen"
+msgstr "hazbete"
 
 #. Translators: Shorthand for pixel
 #: src/widgets/print.rs:152
@@ -815,7 +815,7 @@ msgstr "At_zera"
 
 #: src/widgets/print.ui:37
 msgid "_Print"
-msgstr "I_nprimatu"
+msgstr "_Inprimatu"
 
 #: src/widgets/print.ui:56
 msgid "Layout"
