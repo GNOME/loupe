@@ -1,244 +1,92 @@
 # Basque translation for loupe.
 # Copyright (C) 2023 loupe's COPYRIGHT HOLDER
 # This file is distributed under the same license as the loupe package.
-# Asier Sarasua Garmendia <asiersarasua@ni.eus>, 2023.
+# Asier Saratsua Garmendia <asiersarasua@ni.eus>, 2023, 2025.
 #
 msgid ""
 msgstr "Project-Id-Version: loupe main\n"
-"POT-Creation-Date: 2023-10-31 01:46+0000\n"
-"PO-Revision-Date: 2023-10-31 01:46+0000\n"
-"Last-Translator: Asier Sarasua Garmendia <asiersarasua@ni.eus>\n"
+"POT-Creation-Date: 2025-01-11 11:45+0000\n"
+"PO-Revision-Date: 2025-03-29 01:46+0000\n"
+"Last-Translator: Asier Saratsua Garmendia <asiersarasua@ni.eus>\n"
 "Language-Team: Basque <librezale@librezale.eus>\n"
+"Language: eu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: eu\n"
 
 #. Put one translator per line, in the form NAME <EMAIL>, YEAR1, YEAR2
 msgctxt "_"
 msgid "translator-credits"
-msgstr "Asier Sarasua Garmendia <asiersarasua@ni.eus>, 2023"
+msgstr "Asier Saratsua Garmendia <asiersarasua@ni.eus>, 2023, 2025"
 
 #. (itstool) path: info/desc
-#: C/viewing-images.page:11
-msgid "Learn how to view an image at different scales and orientations."
-msgstr "Ezagutu nola ikusi dezakezun irudi bat eskala eta orientazio desberdinetan."
+#: C/image-properties.page:11
+msgid "View detailed properties of the selected image."
+msgstr "Ikusi hautatutako irudiaren propietate xeheak."
 
 #. (itstool) path: page/title
-#: C/viewing-images.page:13
-msgid "Viewing Images"
-msgstr "Irudiak ikustea"
+#: C/image-properties.page:13
+msgid "Image Properties"
+msgstr "Irudi-propietateak"
 
-#. (itstool) path: section/title
-#: C/viewing-images.page:15
-msgid "Zooming"
-msgstr "Zoom egitea"
+#. (itstool) path: page/p
+#: C/image-properties.page:14
+msgid ""
+"Image Viewer allows users to view an image's properties. All images will "
+"have the following basic properties:"
+msgstr "Irudi-ikustailearen bidez, erabiltzaileak irudiaren propietateak ikusi ditzake. Irudi guztiek izango dituzte honako oinarrizko propietateak:"
+
+#. (itstool) path: item/p
+#: C/image-properties.page:18
+msgid "Image size"
+msgstr "Irudi-tamaina"
+
+#. (itstool) path: item/p
+#: C/image-properties.page:21
+msgid "Image format"
+msgstr "Irudi-formatua"
+
+#. (itstool) path: item/p
+#: C/image-properties.page:24
+msgid "File size"
+msgstr "Fitxategi-tamaina"
+
+#. (itstool) path: item/p
+#: C/image-properties.page:27
+msgid "File creation date"
+msgstr "Fitxategiaren sorrera-data"
+
+#. (itstool) path: item/p
+#: C/image-properties.page:30
+msgid "File modification date"
+msgstr "Fitxategiaren aldaketa-data"
+
+#. (itstool) path: page/p
+#: C/image-properties.page:33
+msgid ""
+"If the file has <link href=\"https://en.wikipedia.org/wiki/Exif\">Exif</"
+"link> metadata, it will be shown below the basic properties."
+msgstr "Irudiak <link href=\"https://eu.wikipedia.org/wiki/Exif\">Exif</link> metadatuak baditu, oinarrizko propietateen azpian erakutsiko dira."
 
 #. (itstool) path: p/media
 #. This is a reference to an external file such as an image or video. When
 #. the file changes, the md5 hash will change to let you know you need to
 #. update your localized copy. The msgstr is not used at all. Set it to
 #. whatever you like once you have updated your copy of the file.
-#: C/viewing-images.page:16
+#: C/image-properties.page:36
 msgctxt "_"
 msgid ""
-"external ref='figures/zoom-in-symbolic.svg' "
-"md5='7e94a36ae229fe2cfb97481937300ad3'"
-msgstr "external ref='figures/zoom-in-symbolic.svg' md5='7e94a36ae229fe2cfb97481937300ad3'"
+"external ref='figures/help-about-symbolic.svg' "
+"md5='6b43c8bc211b5f8b57810091728b8925'"
+msgstr "external ref='figures/help-about-symbolic.svg' md5='6b43c8bc211b5f8b57810091728b8925'"
 
-#. (itstool) path: p/media
-#. This is a reference to an external file such as an image or video. When
-#. the file changes, the md5 hash will change to let you know you need to
-#. update your localized copy. The msgstr is not used at all. Set it to
-#. whatever you like once you have updated your copy of the file.
-#: C/viewing-images.page:17
-msgctxt "_"
+#. (itstool) path: page/p
+#: C/image-properties.page:35
 msgid ""
-"external ref='figures/zoom-out-symbolic.svg' "
-"md5='c05c42cb3d95bf3bc7f49ccd8dcca510'"
-msgstr "external ref='figures/zoom-out-symbolic.svg' md5='c05c42cb3d95bf3bc7f49ccd8dcca510'"
-
-#. (itstool) path: section/p
-#: C/viewing-images.page:16
-msgid ""
-"Users can zoom in with the <gui>Zoom In</gui> (<media type=\"image\" "
-"src=\"figures/zoom-in-symbolic.svg\">zoom-in-symbolic</media>) button and "
-"zoom out with the <gui>Zoom Out</gui> (<media type=\"image\" src=\"figures/"
-"zoom-out-symbolic.svg\">zoom-out-symbolic</media>) button. They can also use "
-"the following keyboard shortcuts:"
-msgstr "Erabiltzaileek <gui>Handiagotu</gui> (<media type=\"image\" src=\"figures/zoom-in-symbolic.svg\">zoom-in-symbolic</media>) botoia erabili dezakete handiagotzeko eta <gui>Txikiagotu</gui> (<media type=\"image\" src=\"figures/zoom-out-symbolic.svg\">zoom-out-symbolic</media>) botoia txikiagotzeko. Lasterbideak ere erabili daitezke:"
-
-#. (itstool) path: item/p
-#: C/viewing-images.page:21
-msgid ""
-"<keyseq><key>Ctrl</key><key>+</key></keyseq> or <key>+</key> to zoom in."
-msgstr "<keyseq><key>Ctrl</key><key>+</key></keyseq> or <key>+</key> handiagotzeko."
-
-#. (itstool) path: item/p
-#: C/viewing-images.page:24
-msgid ""
-"<keyseq><key>Ctrl</key><key>-</key></keyseq> or <key>-</key> to zoom out."
-msgstr "<keyseq><key>Ctrl</key><key>-</key></keyseq> or <key>-</key> txikiagotzeko."
-
-#. (itstool) path: item/p
-#: C/viewing-images.page:27
-msgid ""
-"<keyseq><key>Ctrl</key><key>0</key></keyseq> or <key>0</key> to zoom to the "
-"best fitting size for the window size."
-msgstr "<keyseq><key>Ctrl</key><key>0</key></keyseq> edo <key>0</key> leiho-tamainaren araberako zoomik onena egiteko."
-
-#. (itstool) path: item/p
-#: C/viewing-images.page:30
-msgid ""
-"<keyseq><key>Ctrl</key><key>1</key></keyseq> or <key>1</key> to zoom to the "
-"image's original scale."
-msgstr "<keyseq><key>Ctrl</key><key>1</key></keyseq> edo <key>1</key> irudiaren jatorrizko eskalara zoom egiteko."
-
-#. (itstool) path: item/p
-#: C/viewing-images.page:33
-msgid ""
-"<keyseq><key>Ctrl</key><key>2</key></keyseq> or <key>2</key> to zoom to 200% "
-"of the image's original scale."
-msgstr "<keyseq><key>Ctrl</key><key>2</key></keyseq> edo <key>2</key> irudiaren jatorrizko eskalaren % 200ra zoom egiteko."
-
-#. (itstool) path: section/p
-#: C/viewing-images.page:36
-msgid ""
-"Touchpad and touchscreen users can also zoom with a two-finger pinch gesture."
-msgstr "Ukipen-paneletik eta ukipen-pantailatik ere egin daiteke zoom, bi hatzen bidez atximurkatuta."
-
-#. (itstool) path: section/title
-#: C/viewing-images.page:39
-msgid "Panning"
-msgstr "Desplazatzea"
-
-#. (itstool) path: section/p
-#: C/viewing-images.page:40
-msgid ""
-"Mouse and touchpad users can pan the view when zoomed in by clicking and "
-"dragging the image. Touchscreen users can use a single-finger drag gesture "
-"to pan the view. Users with a keyboard can also use the following keyboard "
-"shortcuts:"
-msgstr "Sagua eta ukipen-panela erabiltzen dutenek ikuspegia desplazatu dezakete irudia handiagotzean, irudian klik eginez eta arrastatuz. Ukipen-pantailen erabiltzaileek hatz bakarrerko arrastatze-keinua erabili dezakete ikuspegia desplazatzeko. Teklatua dutenek honako lasterbideak erabili ditzakete:"
-
-#. (itstool) path: item/p
-#: C/viewing-images.page:45
-msgid "<keyseq><key>Ctrl</key><key>←</key></keyseq> to pan left."
-msgstr "<keyseq><key>Ctrl</key><key>←</key></keyseq> ezkerrera desplazatzeko."
-
-#. (itstool) path: item/p
-#: C/viewing-images.page:48
-msgid "<keyseq><key>Ctrl</key><key>→</key></keyseq> to pan right."
-msgstr "<keyseq><key>Ctrl</key><key>→</key></keyseq> eskuinera desplazatzeko."
-
-#. (itstool) path: item/p
-#: C/viewing-images.page:51
-msgid "<keyseq><key>Ctrl</key><key>↑</key></keyseq> to pan up."
-msgstr "<keyseq><key>Ctrl</key><key>↑</key></keyseq> gora desplazatzeko."
-
-#. (itstool) path: item/p
-#: C/viewing-images.page:54
-msgid "<keyseq><key>Ctrl</key><key>↓</key></keyseq> to pan down."
-msgstr "<keyseq><key>Ctrl</key><key>↓</key></keyseq> behera desplazatzeko."
-
-#. (itstool) path: section/title
-#: C/viewing-images.page:59
-msgid "Rotating"
-msgstr "Biratzea"
-
-#. (itstool) path: p/media
-#. This is a reference to an external file such as an image or video. When
-#. the file changes, the md5 hash will change to let you know you need to
-#. update your localized copy. The msgstr is not used at all. Set it to
-#. whatever you like once you have updated your copy of the file.
-#: C/viewing-images.page:60
-msgctxt "_"
-msgid ""
-"external ref='figures/object-rotate-right-symbolic.svg' "
-"md5='0e69268f1a3a3c0c43c9ae3e193fd3d7'"
-msgstr "external ref='figures/object-rotate-right-symbolic.svg' md5='0e69268f1a3a3c0c43c9ae3e193fd3d7'"
-
-#. (itstool) path: p/media
-#. This is a reference to an external file such as an image or video. When
-#. the file changes, the md5 hash will change to let you know you need to
-#. update your localized copy. The msgstr is not used at all. Set it to
-#. whatever you like once you have updated your copy of the file.
-#: C/viewing-images.page:61
-msgctxt "_"
-msgid ""
-"external ref='figures/object-rotate-left-symbolic.svg' "
-"md5='8abe2a1bc5871a15c2f6534d19a4c7ee'"
-msgstr "external ref='figures/object-rotate-left-symbolic.svg' md5='8abe2a1bc5871a15c2f6534d19a4c7ee'"
-
-#. (itstool) path: section/p
-#: C/viewing-images.page:60
-msgid ""
-"Users can use the <gui>Rotate Right</gui> (<media type=\"image\" "
-"src=\"figures/object-rotate-right-symbolic.svg\">object-rotate-right-"
-"symbolic</media>) and <gui>Rotate Left</gui> (<media type=\"image\" "
-"src=\"figures/object-rotate-left-symbolic.svg\">object-rotate-left-symbolic</"
-"media>) buttons under <gui style=\"menuitem\">Rotate</gui> in the main menu "
-"to rotate clockwise and counter-clockwise. They can also use the following "
-"keyboard shortcuts:"
-msgstr ""
-
-#. (itstool) path: item/p
-#: C/viewing-images.page:66
-msgid "<keyseq><key>Ctrl</key><key>R</key></keyseq> to rotate clockwise."
-msgstr "<keyseq><key>Ctrl</key><key>R</key></keyseq> erlojuaren noranzkoan biratzeko."
-
-#. (itstool) path: item/p
-#: C/viewing-images.page:69
-msgid ""
-"<keyseq><key>Ctrl</key><key>Shift</key><key>R</key></keyseq> to rotate "
-"counter-clockwise."
-msgstr "<keyseq><key>Ctrl</key><key>Shift</key><key>R</key></keyseq> erlojuaren noranzkoaren aurka biratzeko."
-
-#. (itstool) path: section/p
-#: C/viewing-images.page:72
-msgid ""
-"Touchpad and touchscreen users can also use a two-finger rotate gesture."
-msgstr "Ukipen-paneletik eta ukipen-pantailatik ere biratu daiteke, bi hatzen bidez atximurkatuta."
-
-#. (itstool) path: section/title
-#: C/viewing-images.page:75
-msgid "Fullscreen"
-msgstr "Pantaila osoa"
-
-#. (itstool) path: p/media
-#. This is a reference to an external file such as an image or video. When
-#. the file changes, the md5 hash will change to let you know you need to
-#. update your localized copy. The msgstr is not used at all. Set it to
-#. whatever you like once you have updated your copy of the file.
-#: C/viewing-images.page:77
-msgctxt "_"
-msgid ""
-"external ref='figures/view-fullscreen-symbolic.svg' "
-"md5='8089b2761abd6116e6185e06bc885da1'"
-msgstr "external ref='figures/view-fullscreen-symbolic.svg' md5='8089b2761abd6116e6185e06bc885da1'"
-
-#. (itstool) path: p/media
-#. This is a reference to an external file such as an image or video. When
-#. the file changes, the md5 hash will change to let you know you need to
-#. update your localized copy. The msgstr is not used at all. Set it to
-#. whatever you like once you have updated your copy of the file.
-#: C/viewing-images.page:77
-msgctxt "_"
-msgid ""
-"external ref='figures/view-restore-symbolic.svg' "
-"md5='d00df849240f2d92c7fa1429d3ae8254'"
-msgstr "external ref='figures/view-restore-symbolic.svg' md5='d00df849240f2d92c7fa1429d3ae8254'"
-
-#. (itstool) path: section/p
-#: C/viewing-images.page:76
-msgid ""
-"Image Viewer has a simple fullscreen mode. Users can toggle fullscreen mode "
-"by pressing the <gui>Toggle Fullscreen</gui> (<media type=\"image\" "
-"src=\"figures/view-fullscreen-symbolic.svg\">view-fullscreen-symbolic</"
-"media> / <media type=\"image\" src=\"figures/view-restore-symbolic."
-"svg\">view-restore-symbolic</media>) button. Keyboard users can also use "
-"<key>F11</key> to toggle fullscreen mode."
-msgstr "Irudi-ikustaileak pantaila osoko modu sinple bat du. Erabiltzaileek pantaila osoko modua aktibatzeko, <gui>Txandakatu pantaila osoa</gui> (<media type=\"image\" src=\"figures/view-fullscreen-symbolic.svg\">view-fullscreen-symbolic</media> / <media type=\"image\" src=\"figures/view-restore-symbolic.svg\">view-restore-symbolic</media>) botoia erabili behar dute. Teklatua erabiltzen dutenek <key>F11</key> sakatu dezakete pantaila osoa aktibatzeko/desaktibatzeko."
+"To view the selected image's properties, press the <gui>Image Properties</"
+"gui> (<media type=\"image\" src=\"figures/help-about-symbolic.svg\">help-"
+"about-symbolic</media>) button."
+msgstr "Hautatutako irudiaren propietateak ikusteko, sakatu <gui>Irudi-propietateak</gui> (<media type=\"image\" src=\"figures/help-about-symbolic.svg\">help-about-symbolic</media>) botoia."
 
 #. (itstool) path: page/title
 #: C/supported-formats.page:12
@@ -248,19 +96,50 @@ msgstr "Onartutako irudi-formatuak"
 #. (itstool) path: page/p
 #: C/supported-formats.page:13
 msgid ""
-"Image Viewer uses <link href=\"https://gitlab.gnome.org/sophie-h/"
+"Image Viewer uses <link href=\"https://gitlab.gnome.org/GNOME/"
 "glycin\">glycin</link> for loading images. You can check <link "
-"href=\"https://gitlab.gnome.org/sophie-h/glycin#supported-image-"
+"href=\"https://gitlab.gnome.org/GNOME/glycin#supported-image-"
 "formats\">glycin's README</link> for more details about the formats "
 "supported by the default loaders and the features provided by each format."
-msgstr "Irudi-ikustaileak <link href=\"https://gitlab.gnome.org/sophie-h/glycin\">glycin</link> erabiltzen du irudiak kargatzeko. <link href=\"https://gitlab.gnome.org/sophie-h/glycin#supported-image-formats\">Glycin aplikazioaren IRAKURRI</link> fitxategia begiratu daiteke onartutako formatuei buruzko xehetasun gehiago jasotzeko, eta formatu bakoitzarentzat dauden eginbideak ezagutzeko."
+msgstr "Irudi-ikustaileak <link href=\"https://gitlab.gnome.org/GNOME/glycin\">glycin</link> erabiltzen du irudiak kargatzeko. Begiratu <link href=\"https://gitlab.gnome.org/GNOME/glycin#supported-image-formats\">Glycin aplikazioaren IRAKURRI</link> fitxategia onartutako formatuei buruzko xehetasun gehiago jasotzeko, eta formatu bakoitzarentzat dauden eginbideak ezagutzeko."
 
 #. (itstool) path: page/p
 #: C/supported-formats.page:17
 msgid ""
-"Glycin's loaders are configurable, and new loaders can be created by third-"
-"parties, so the supported formats on your system may vary."
+"Glycin's loaders are configurable, and new loaders can be created by third "
+"parties. Therefore the formats supported on your system may vary."
 msgstr "Glycin aplikazioaren kargatzaileak konfiguratu egin daitezke eta hirugarrenek berriak sortu ditzakete; beraz, sistema bakoitzean onartzen diren formatuak desberdinak izan daitezke."
+
+#. (itstool) path: info/desc
+#: C/trashing-images.page:11
+msgid "Move unwanted images to the trash directly from Image Viewer."
+msgstr "Nahi ez diren irudiak eraman zuzenean zakarrontzira irudi-ikustailetik."
+
+#. (itstool) path: page/title
+#: C/trashing-images.page:13
+msgid "Moving Images to Trash"
+msgstr "Irudiak zakarrontzira eramatea"
+
+#. (itstool) path: p/media
+#. This is a reference to an external file such as an image or video. When
+#. the file changes, the md5 hash will change to let you know you need to
+#. update your localized copy. The msgstr is not used at all. Set it to
+#. whatever you like once you have updated your copy of the file.
+#: C/trashing-images.page:15
+msgctxt "_"
+msgid ""
+"external ref='figures/user-trash-symbolic.svg' "
+"md5='3ffa1160de3479541f34c3bfbf3cdb64'"
+msgstr "external ref='figures/user-trash-symbolic.svg' md5='3ffa1160de3479541f34c3bfbf3cdb64'"
+
+#. (itstool) path: page/p
+#: C/trashing-images.page:14
+msgid ""
+"If a user wants to remove an image, they can press the <gui>Move To Trash</"
+"gui> (<media type=\"image\" src=\"figures/user-trash-symbolic.svg\">user-"
+"trash-symbolic</media>) button. A toast will appear allowing them to restore "
+"the image with the <gui>Undo</gui> button."
+msgstr "Erabiltzaileak irudia kendu nahi badu, <gui>Eraman zakarrontzira</gui> (<media type=\"image\" src=\"figures/user-trash-symbolic.svg\">user-trash-symbolic</media>) botoia sakatu dezake. Jakinarazpen bat agertuko da <gui>Desegin</gui> botoiarekin irudia leheneratzeko, nahi izanez gero"
 
 #. (itstool) path: info/desc
 #: C/opening-images.page:11
@@ -386,8 +265,8 @@ msgstr "Arakatzea"
 msgctxt "_"
 msgid ""
 "external ref='figures/go-previous-symbolic.svg' "
-"md5='2ed7437ba9a336b6c6cf645b9eb4ed8b'"
-msgstr "external ref='figures/go-previous-symbolic.svg' md5='2ed7437ba9a336b6c6cf645b9eb4ed8b'"
+"md5='a53305845578db884ecfb7d8d33fcaeb'"
+msgstr "external ref='figures/go-previous-symbolic.svg' md5='a53305845578db884ecfb7d8d33fcaeb'"
 
 #. (itstool) path: p/media
 #. This is a reference to an external file such as an image or video. When
@@ -398,8 +277,8 @@ msgstr "external ref='figures/go-previous-symbolic.svg' md5='2ed7437ba9a336b6c6c
 msgctxt "_"
 msgid ""
 "external ref='figures/go-next-symbolic.svg' "
-"md5='9c98c035765d2edc185ef9b37566e7ce'"
-msgstr "external ref='figures/go-next-symbolic.svg' md5='9c98c035765d2edc185ef9b37566e7ce'"
+"md5='2f901ac0f711cfb3274b2985d10c4124'"
+msgstr "external ref='figures/go-next-symbolic.svg' md5='2f901ac0f711cfb3274b2985d10c4124'"
 
 #. (itstool) path: section/p
 #: C/opening-images.page:65
@@ -410,60 +289,40 @@ msgid ""
 "the <gui>Previous Image</gui> (<media type=\"image\" src=\"figures/go-"
 "previous-symbolic.svg\">go-previous-symbolic</media>) and <gui>Next Image</"
 "gui> (<media type=\"image\" src=\"figures/go-next-symbolic.svg\">go-next-"
-"symbolic</media>) buttons. Keyboard users can also use the following "
-"shortcuts:"
-msgstr ""
+"symbolic</media>) buttons."
+msgstr "Irudi bat fitxategi-aukeratzailetik edo fitxategi-kudeatzailetik irekitzean, Loupek irudi horren direktorioko beste fitxategiak ere kargatuko ditu eta ordena alfabetikoan ordenatuko ditu. Erabiltzaileek direktorioko beste irudiak arakatu ditzakete  <gui>Aurreko irudia</gui> (<media type=\"image\" src=\"figures/go-previous-symbolic.svg\">go-previous-symbolic</media>) eta <gui>Hurrengo irudia</gui> (<media type=\"image\" src=\"figures/go-next-symbolic.svg\">go-next-symbolic</media>) botoiak erabiliz."
 
-#. (itstool) path: item/p
-#: C/opening-images.page:72
-msgid "<key>→</key> to go to the next image."
-msgstr "<key>→</key> hurrengo irudira joateko."
-
-#. (itstool) path: item/p
-#: C/opening-images.page:75
-msgid "<key>←</key> to go to the previous image."
-msgstr "<key>←</key> aurreko irudira joateko."
-
-#. (itstool) path: item/p
-#: C/opening-images.page:78
-msgid "<key>Home</key> to jump to the first image in the directory."
-msgstr "<key>Home</key> direktorioko lehen irudira joateko."
-
-#. (itstool) path: item/p
-#: C/opening-images.page:81
-msgid "<key>End</key> to jump to the last image in the directory."
-msgstr "<key>End</key> direktorioko azken irudira joateko."
+#. (itstool) path: note/p
+#: C/opening-images.page:70 C/viewing-images.page:39
+msgid ""
+"Keyboard users can also use the corresponding shortcuts presented in the "
+"<gui>Keyboard Shortcuts</gui> dialog."
+msgstr "Teklatua erabiltzen dutenek <gui>Laster-teklak</gui> elkarrizketa-koadroan agertzen diren lasterbideak ere erabili ditzakete."
 
 #. (itstool) path: info/desc
-#: C/trashing-images.page:11
-msgid "Move unwanted images to the trash directly from Image Viewer."
-msgstr "Nahi ez diren irudiak eraman zuzenean zakarrontzira irudi-ikustailetik."
+#: C/index.page:10
+msgid "Browse through your images and inspect their metadata."
+msgstr "Arakatu irudiak eta begiratu haien metadatuak."
 
 #. (itstool) path: page/title
-#: C/trashing-images.page:13
-msgid "Moving Images to Trash"
-msgstr "Irudiak zakarrontzira eramatea"
+#: C/index.page:12
+msgid "<_:media-1/> Image Viewer (Loupe)"
+msgstr "<_:media-1/> Irudi-ikustailea (Loupe)"
 
-#. (itstool) path: p/media
-#. This is a reference to an external file such as an image or video. When
-#. the file changes, the md5 hash will change to let you know you need to
-#. update your localized copy. The msgstr is not used at all. Set it to
-#. whatever you like once you have updated your copy of the file.
-#: C/trashing-images.page:15
-msgctxt "_"
-msgid ""
-"external ref='figures/user-trash-symbolic.svg' "
-"md5='975d41b3e24867a2a26194cd871e36cc'"
-msgstr "external ref='figures/user-trash-symbolic.svg' md5='975d41b3e24867a2a26194cd871e36cc'"
+#. (itstool) path: section/title
+#: C/index.page:14
+msgid "Getting Started"
+msgstr "Hasi"
 
-#. (itstool) path: page/p
-#: C/trashing-images.page:14
-msgid ""
-"If a user wants to remove an image, they can press the <gui>Move To Trash</"
-"gui> (<media type=\"image\" src=\"figures/user-trash-symbolic.svg\">user-"
-"trash-symbolic</media>) button. A toast will appear allowing them to restore "
-"the image with the <gui>Undo</gui> button."
-msgstr ""
+#. (itstool) path: section/title
+#: C/index.page:17
+msgid "Additional Features"
+msgstr "Eginbide gehigarriak"
+
+#. (itstool) path: section/title
+#: C/index.page:20
+msgid "Technical Information"
+msgstr "Informazio teknikoa"
 
 #. (itstool) path: info/desc
 #: C/sending-to-other-apps.page:11
@@ -507,8 +366,8 @@ msgstr "Kopiatzea eta itsastea"
 msgctxt "_"
 msgid ""
 "external ref='figures/edit-copy-symbolic.svg' "
-"md5='e998fb903df32b921d08ef52e0ea6555'"
-msgstr "external ref='figures/edit-copy-symbolic.svg' md5='e998fb903df32b921d08ef52e0ea6555'"
+"md5='4774ffd65c32e160f4cefc093abd6b7c'"
+msgstr "external ref='figures/edit-copy-symbolic.svg' md5='4774ffd65c32e160f4cefc093abd6b7c'"
 
 #. (itstool) path: item/p
 #: C/sending-to-other-apps.page:29
@@ -539,127 +398,256 @@ msgid "Drag the image to your application of choice."
 msgstr "Arrastatu irudia nahi duzun aplikaziora."
 
 #. (itstool) path: info/desc
-#: C/image-properties.page:11
-msgid "View detailed properties of the selected image."
-msgstr "Ikusi hautatutako irudiaren propietate xeheak."
+#: C/viewing-images.page:11
+msgid "Learn how to view an image at different scales and orientations."
+msgstr "Ezagutu nola ikusi dezakezun irudi bat eskala eta orientazio desberdinetan."
 
 #. (itstool) path: page/title
-#: C/image-properties.page:13
-msgid "Image Properties"
-msgstr "Irudi-propietateak"
+#: C/viewing-images.page:13
+msgid "Viewing Images"
+msgstr "Irudiak ikustea"
 
-#. (itstool) path: page/p
-#: C/image-properties.page:14
-msgid ""
-"Image Viewer allows users to view an image's properties. All images will "
-"have the following basic properties:"
-msgstr "Irudi-ikustailearen bidez, erabiltzaileak irudiaren propietateak ikusi ditzake. Irudi guztiek izango dituzte honako oinarrizko propietateak:"
-
-#. (itstool) path: item/p
-#: C/image-properties.page:18
-msgid "Image size"
-msgstr "Irudi-tamaina"
-
-#. (itstool) path: item/p
-#: C/image-properties.page:21
-msgid "Image format"
-msgstr "Irudi-formatua"
-
-#. (itstool) path: item/p
-#: C/image-properties.page:24
-msgid "File size"
-msgstr "Fitxategi-tamaina"
-
-#. (itstool) path: item/p
-#: C/image-properties.page:27
-msgid "File creation date"
-msgstr "Fitxategiaren sorrera-data"
-
-#. (itstool) path: item/p
-#: C/image-properties.page:30
-msgid "File modification date"
-msgstr "Fitxategiaren aldaketa-data"
-
-#. (itstool) path: page/p
-#: C/image-properties.page:33
-msgid ""
-"If the file has <link href=\"https://en.wikipedia.org/wiki/Exif\">Exif</"
-"link> metadata, it will be shown below the basic properties."
-msgstr "Irudiak <link href=\"https://eu.wikipedia.org/wiki/Exif\">Exif</link> metadatuak baditu, oinarrizko propietateen azpian erakutsiko dira."
+#. (itstool) path: section/title
+#: C/viewing-images.page:15
+msgid "Zooming"
+msgstr "Zoom egitea"
 
 #. (itstool) path: p/media
 #. This is a reference to an external file such as an image or video. When
 #. the file changes, the md5 hash will change to let you know you need to
 #. update your localized copy. The msgstr is not used at all. Set it to
 #. whatever you like once you have updated your copy of the file.
-#: C/image-properties.page:36
+#: C/viewing-images.page:16
 msgctxt "_"
 msgid ""
-"external ref='figures/help-about-symbolic.svg' "
-"md5='51c74093b3e862d1f839cc377aa86837'"
-msgstr "external ref='figures/help-about-symbolic.svg' md5='51c74093b3e862d1f839cc377aa86837'"
+"external ref='figures/zoom-in-symbolic.svg' "
+"md5='fed4648112c974f25de99c15ece6272c'"
+msgstr "external ref='figures/zoom-in-symbolic.svg' md5='fed4648112c974f25de99c15ece6272c'"
 
-#. (itstool) path: page/p
-#: C/image-properties.page:35
+#. (itstool) path: p/media
+#. This is a reference to an external file such as an image or video. When
+#. the file changes, the md5 hash will change to let you know you need to
+#. update your localized copy. The msgstr is not used at all. Set it to
+#. whatever you like once you have updated your copy of the file.
+#: C/viewing-images.page:17
+msgctxt "_"
 msgid ""
-"To view the selected image's properties, press the <gui>Image Properties</"
-"gui> (<media type=\"image\" src=\"figures/help-about-symbolic.svg\">help-"
-"about-symbolic</media>) button."
-msgstr "Hautatutako irudiaren propietateak ikusteko, sakatu <gui>Irudi-propietateak</gui> (<media type=\"image\" src=\"figures/help-about-symbolic.svg\">help-about-symbolic</media>) botoia."
-
-#. (itstool) path: info/desc
-#: C/index.page:10
-msgid "Browse through your images and inspect their metadata."
-msgstr "Arakatu irudiak eta begiratu haien metadatuak."
-
-#. (itstool) path: page/title
-#: C/index.page:12
-msgid "<_:media-1/> Image Viewer (Loupe)"
-msgstr "<_:media-1/> Irudi-ikustailea (Loupe)"
-
-#. (itstool) path: section/title
-#: C/index.page:14
-msgid "Introduction"
-msgstr "Sarrera"
+"external ref='figures/zoom-out-symbolic.svg' "
+"md5='fe99d9c40c1104988ee4580283168dfb'"
+msgstr "external ref='figures/zoom-out-symbolic.svg' md5='fe99d9c40c1104988ee4580283168dfb'"
 
 #. (itstool) path: section/p
-#: C/index.page:15
+#: C/viewing-images.page:16
 msgid ""
-"Image Viewer is an image viewer that supports modern image formats. It "
-"provides:"
-msgstr "Irudi-ikustaileak irudi-formatu modernoak onartzen ditu. Honakoak ditu:"
+"Users can zoom in with the <gui>Zoom In</gui> (<media type=\"image\" "
+"src=\"figures/zoom-in-symbolic.svg\">zoom-in-symbolic</media>) button and "
+"zoom out with the <gui>Zoom Out</gui> (<media type=\"image\" src=\"figures/"
+"zoom-out-symbolic.svg\">zoom-out-symbolic</media>) button."
+msgstr "Erabiltzaileek <gui>Handiagotu</gui> (<media type=\"image\" src=\"figures/zoom-in-symbolic.svg\">zoom-in-symbolic</media>) botoia erabili dezakete handiagotzeko eta <gui>Txikiagotu</gui> (<media type=\"image\" src=\"figures/zoom-out-symbolic.svg\") botoia txikiagotzeko."
 
-#. (itstool) path: item/p
-#: C/index.page:18
-msgid "Fast GPU accelerated image rendering with tiled rendering for SVGs"
-msgstr "PUG bidez azeleratutako irudi-erendatzea, eta SVGen kasuan lauzen bidezko errendatzea"
-
-#. (itstool) path: item/p
-#: C/index.page:21
-msgid "Extendable and sandboxed raster image decoding"
-msgstr "Raster irudien deskodetze hedagarri eta isolatua"
-
-#. (itstool) path: item/p
-#: C/index.page:24
-msgid "Extensive support for touchpad and touchscreen gestures"
-msgstr "Ukipen-panelen eta ukipen-pantailen keinuen euskarri zabala"
-
-#. (itstool) path: item/p
-#: C/index.page:27
-msgid "Accessible presentation of the most important metadata"
-msgstr "Metadatu garrantzitsuenen aurkezpen irisgarria"
+#. (itstool) path: section/p
+#: C/viewing-images.page:19
+msgid ""
+"Touchpad and touchscreen users can also zoom with a two-finger pinch "
+"gesture. On touchpads, it is also possible to zoom by pressing the "
+"<key>Ctrl</key> key while swiping up/down with two fingers on the touchpad."
+msgstr "Ukipen-panela eta ukipen-pantaila erabiltzen dutenek bi hatzen bidezko atximurra erabili dezakete. Ukipen-paneletan, posible da, baita ere, <key>Ctrl</key> tekla sakatuz eta bi hatzak gora eta behera eramanez zoom egitea."
 
 #. (itstool) path: section/title
-#: C/index.page:32
-msgid "Getting Started"
-msgstr "Hasi"
+#: C/viewing-images.page:22
+msgid "Panning"
+msgstr "Desplazatzea"
+
+#. (itstool) path: section/p
+#: C/viewing-images.page:23
+msgid ""
+"Mouse and touchpad users can pan the view when zoomed in by clicking and "
+"dragging the image. Touchscreen users can use a single-finger drag gesture "
+"to pan the view."
+msgstr "Sagua eta ukipen-panela erabiltzen dutenek ikuspegia desplazatu dezakete irudia handiagotzean, irudian klik eginez eta arrastatuz. Ukipen-pantailen erabiltzaileek hatz bakarrerko arrastatze-keinua erabili dezakete ikuspegia desplazatzeko."
 
 #. (itstool) path: section/title
-#: C/index.page:35
-msgid "Additional Features"
-msgstr "Eginbide gehigarriak"
+#: C/viewing-images.page:27
+msgid "Rotating"
+msgstr "Biratzea"
+
+#. (itstool) path: p/media
+#. This is a reference to an external file such as an image or video. When
+#. the file changes, the md5 hash will change to let you know you need to
+#. update your localized copy. The msgstr is not used at all. Set it to
+#. whatever you like once you have updated your copy of the file.
+#: C/viewing-images.page:28
+msgctxt "_"
+msgid ""
+"external ref='figures/object-rotate-right-symbolic.svg' "
+"md5='0284f09f3659bf61e4882ac8a758b38f'"
+msgstr "external ref='figures/object-rotate-right-symbolic.svg' md5='0284f09f3659bf61e4882ac8a758b38f'"
+
+#. (itstool) path: p/media
+#. This is a reference to an external file such as an image or video. When
+#. the file changes, the md5 hash will change to let you know you need to
+#. update your localized copy. The msgstr is not used at all. Set it to
+#. whatever you like once you have updated your copy of the file.
+#: C/viewing-images.page:29
+msgctxt "_"
+msgid ""
+"external ref='figures/object-rotate-left-symbolic.svg' "
+"md5='c2393bbaa3b0f7ea09b43089295a44d4'"
+msgstr "external ref='figures/object-rotate-left-symbolic.svg' md5='c2393bbaa3b0f7ea09b43089295a44d4'"
+
+#. (itstool) path: section/p
+#: C/viewing-images.page:28
+msgid ""
+"Users can use the <gui>Rotate Right</gui> (<media type=\"image\" "
+"src=\"figures/object-rotate-right-symbolic.svg\">object-rotate-right-"
+"symbolic</media>) and <gui>Rotate Left</gui> (<media type=\"image\" "
+"src=\"figures/object-rotate-left-symbolic.svg\">object-rotate-left-symbolic</"
+"media>) buttons under <gui style=\"menuitem\">Rotate</gui> in the main menu "
+"to rotate clockwise and counter-clockwise."
+msgstr "Erabiltzaileek menu nagusiko <gui style=\"menuitem\">Biratu</gui> aukeraren alboan dauden <gui>Biratu eskuinera</gui> (<media type=\"image\" src=\"figures/object-rotate-right-symbolic.svg\">object-rotate-right-symbolic</media>) eta <gui>Biratu ezkerrera</gui> (<media type=\"image\" src=\"figures/object-rotate-left-symbolic.svg\">object-rotate-left-symbolic</media>) botoiak erabili ditzakete irudia eskuinera edo ezkerrera biratzeko."
+
+#. (itstool) path: section/p
+#: C/viewing-images.page:32
+msgid ""
+"Touchpad and touchscreen users can also use a two-finger rotate gesture."
+msgstr "Ukipen-paneletik eta ukipen-pantailatik ere biratu daiteke, bi hatzen bidez atximurkatuta."
 
 #. (itstool) path: section/title
-#: C/index.page:38
-msgid "Technical Information"
-msgstr "Informazio teknikoa"
+#: C/viewing-images.page:35
+msgid "Fullscreen"
+msgstr "Pantaila osoa"
+
+#. (itstool) path: p/media
+#. This is a reference to an external file such as an image or video. When
+#. the file changes, the md5 hash will change to let you know you need to
+#. update your localized copy. The msgstr is not used at all. Set it to
+#. whatever you like once you have updated your copy of the file.
+#: C/viewing-images.page:37
+msgctxt "_"
+msgid ""
+"external ref='figures/view-fullscreen-symbolic.svg' "
+"md5='3ee106ab07051301a9b5982cbe04b597'"
+msgstr "external ref='figures/view-fullscreen-symbolic.svg' md5='3ee106ab07051301a9b5982cbe04b597'"
+
+#. (itstool) path: p/media
+#. This is a reference to an external file such as an image or video. When
+#. the file changes, the md5 hash will change to let you know you need to
+#. update your localized copy. The msgstr is not used at all. Set it to
+#. whatever you like once you have updated your copy of the file.
+#: C/viewing-images.page:37
+msgctxt "_"
+msgid ""
+"external ref='figures/view-restore-symbolic.svg' "
+"md5='f7470d4b9ed1d317ed201bb4a72882fb'"
+msgstr "external ref='figures/view-restore-symbolic.svg' md5='f7470d4b9ed1d317ed201bb4a72882fb'"
+
+#. (itstool) path: section/p
+#: C/viewing-images.page:36
+msgid ""
+"Image Viewer has a simple fullscreen mode. Users can toggle fullscreen mode "
+"by pressing the <gui>Toggle Fullscreen</gui> (<media type=\"image\" "
+"src=\"figures/view-fullscreen-symbolic.svg\">view-fullscreen-symbolic</"
+"media> / <media type=\"image\" src=\"figures/view-restore-symbolic."
+"svg\">view-restore-symbolic</media>) button."
+msgstr "Irudi-ikustaileak pantaila osoko modu sinple bat du. Erabiltzaileek pantaila osoko modua aktibatzeko, <gui>Txandakatu pantaila osoa</gui> (<media type=\"image\" src=\"figures/view-fullscreen-symbolic.svg\">view-fullscreen-symbolic</media> / <media type=\"image\" src=\"figures/view-restore-symbolic.svg\">view-restore-symbolic</media>) botoia erabili behar dute."
+
+#~ msgid ""
+#~ "<keyseq><key>Ctrl</key><key>+</key></keyseq> or <key>+</key> to zoom in."
+#~ msgstr ""
+#~ "<keyseq><key>Ctrl</key><key>+</key></keyseq> or <key>+</key> "
+#~ "handiagotzeko."
+
+#~ msgid ""
+#~ "<keyseq><key>Ctrl</key><key>-</key></keyseq> or <key>-</key> to zoom out."
+#~ msgstr ""
+#~ "<keyseq><key>Ctrl</key><key>-</key></keyseq> or <key>-</key> "
+#~ "txikiagotzeko."
+
+#~ msgid ""
+#~ "<keyseq><key>Ctrl</key><key>0</key></keyseq> or <key>0</key> to zoom to "
+#~ "the best fitting size for the window size."
+#~ msgstr ""
+#~ "<keyseq><key>Ctrl</key><key>0</key></keyseq> edo <key>0</key> leiho-"
+#~ "tamainaren araberako zoomik onena egiteko."
+
+#~ msgid ""
+#~ "<keyseq><key>Ctrl</key><key>1</key></keyseq> or <key>1</key> to zoom to "
+#~ "the image's original scale."
+#~ msgstr ""
+#~ "<keyseq><key>Ctrl</key><key>1</key></keyseq> edo <key>1</key> irudiaren "
+#~ "jatorrizko eskalara zoom egiteko."
+
+#~ msgid ""
+#~ "<keyseq><key>Ctrl</key><key>2</key></keyseq> or <key>2</key> to zoom to "
+#~ "200% of the image's original scale."
+#~ msgstr ""
+#~ "<keyseq><key>Ctrl</key><key>2</key></keyseq> edo <key>2</key> irudiaren "
+#~ "jatorrizko eskalaren % 200ra zoom egiteko."
+
+#~ msgid ""
+#~ "Touchpad and touchscreen users can also zoom with a two-finger pinch "
+#~ "gesture."
+#~ msgstr ""
+#~ "Ukipen-paneletik eta ukipen-pantailatik ere egin daiteke zoom, bi hatzen "
+#~ "bidez atximurkatuta."
+
+#~ msgid "<keyseq><key>Ctrl</key><key>←</key></keyseq> to pan left."
+#~ msgstr ""
+#~ "<keyseq><key>Ctrl</key><key>←</key></keyseq> ezkerrera desplazatzeko."
+
+#~ msgid "<keyseq><key>Ctrl</key><key>→</key></keyseq> to pan right."
+#~ msgstr ""
+#~ "<keyseq><key>Ctrl</key><key>→</key></keyseq> eskuinera desplazatzeko."
+
+#~ msgid "<keyseq><key>Ctrl</key><key>↑</key></keyseq> to pan up."
+#~ msgstr "<keyseq><key>Ctrl</key><key>↑</key></keyseq> gora desplazatzeko."
+
+#~ msgid "<keyseq><key>Ctrl</key><key>↓</key></keyseq> to pan down."
+#~ msgstr "<keyseq><key>Ctrl</key><key>↓</key></keyseq> behera desplazatzeko."
+
+#~ msgid "<keyseq><key>Ctrl</key><key>R</key></keyseq> to rotate clockwise."
+#~ msgstr ""
+#~ "<keyseq><key>Ctrl</key><key>R</key></keyseq> erlojuaren noranzkoan "
+#~ "biratzeko."
+
+#~ msgid ""
+#~ "<keyseq><key>Ctrl</key><key>Shift</key><key>R</key></keyseq> to rotate "
+#~ "counter-clockwise."
+#~ msgstr ""
+#~ "<keyseq><key>Ctrl</key><key>Shift</key><key>R</key></keyseq> erlojuaren "
+#~ "noranzkoaren aurka biratzeko."
+
+#~ msgid "<key>→</key> to go to the next image."
+#~ msgstr "<key>→</key> hurrengo irudira joateko."
+
+#~ msgid "<key>←</key> to go to the previous image."
+#~ msgstr "<key>←</key> aurreko irudira joateko."
+
+#~ msgid "<key>Home</key> to jump to the first image in the directory."
+#~ msgstr "<key>Home</key> direktorioko lehen irudira joateko."
+
+#~ msgid "<key>End</key> to jump to the last image in the directory."
+#~ msgstr "<key>End</key> direktorioko azken irudira joateko."
+
+#~ msgid "Introduction"
+#~ msgstr "Sarrera"
+
+#~ msgid ""
+#~ "Image Viewer is an image viewer that supports modern image formats. It "
+#~ "provides:"
+#~ msgstr ""
+#~ "Irudi-ikustaileak irudi-formatu modernoak onartzen ditu. Honakoak ditu:"
+
+#~ msgid "Fast GPU accelerated image rendering with tiled rendering for SVGs"
+#~ msgstr ""
+#~ "PUG bidez azeleratutako irudi-erendatzea, eta SVGen kasuan lauzen bidezko "
+#~ "errendatzea"
+
+#~ msgid "Extendable and sandboxed raster image decoding"
+#~ msgstr "Raster irudien deskodetze hedagarri eta isolatua"
+
+#~ msgid "Extensive support for touchpad and touchscreen gestures"
+#~ msgstr "Ukipen-panelen eta ukipen-pantailen keinuen euskarri zabala"
+
+#~ msgid "Accessible presentation of the most important metadata"
+#~ msgstr "Metadatu garrantzitsuenen aurkezpen irisgarria"
