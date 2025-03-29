@@ -52,6 +52,7 @@ use adw::prelude::*;
 use adw::subclass::prelude::*;
 use glib::subclass::Signal;
 use glib::{Properties, SignalGroup};
+use gufo_common::orientation::Orientation;
 
 use crate::decoder::{self, tiling, Decoder, DecoderUpdate};
 use crate::deps::*;
@@ -225,6 +226,7 @@ mod imp {
 
         /// Currently EXIF data
         pub(super) metadata: RefCell<Metadata>,
+        pub(super) original_orientation: Cell<Option<Orientation>>,
 
         #[property(get=Self::image_size_available)]
         _image_size_available: bool,
@@ -393,5 +395,8 @@ impl LpImage {
         *imp.file.borrow_mut() = original_imp.file.borrow().clone();
         imp.frame_buffer
             .swap(Arc::new((*(original_imp.frame_buffer).load_full()).clone()));
+
+        imp.original_orientation
+            .set(Some(original_imp.metadata.borrow().orientation()));
     }
 }

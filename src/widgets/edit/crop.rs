@@ -18,11 +18,12 @@
 //! Shows an resizable cropping selection
 
 use std::cell::OnceCell;
+use std::sync::Arc;
 
 use adw::prelude::*;
 use adw::subclass::prelude::*;
 use adw::{glib, gtk};
-use glycin::Operation;
+use glycin::{Operation, Operations};
 
 use crate::deps::*;
 use crate::editing::preview::EditingError;
@@ -269,7 +270,9 @@ mod imp {
         fn apply_reset(&self) -> Result<(), EditingError> {
             let obj = self.obj();
 
-            self.image.set_operations(None)?;
+            self.image
+                .set_operations(Some(Arc::new(Operations::new(Vec::new()))))?;
+
             obj.edit_window().set_operations(None);
             self.reset_selection();
 

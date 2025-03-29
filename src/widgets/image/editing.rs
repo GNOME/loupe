@@ -1,4 +1,4 @@
-// Copyright (c) 2024 Sophie Herold
+// Copyright (c) 2024-2025 Sophie Herold
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -15,6 +15,7 @@
 //
 // SPDX-License-Identifier: GPL-3.0-or-later
 
+use glycin::Operations;
 use tiling::RenderOptions;
 
 use super::*;
@@ -26,19 +27,25 @@ impl imp::LpImage {
         node: gsk::RenderNode,
         snapshot: &gtk::Snapshot,
     ) -> Result<(), crate::editing::preview::EditingError> {
-        if let Some(operations) = self.operations.borrow().as_ref() {
-            let (width, height) = self.original_dimensions();
-            let new_dimensions = crate::editing::preview::apply_operations(
-                node,
-                width as u32,
-                height as u32,
-                operations,
-                snapshot,
-                self.applicable_zoom(),
-            )?;
+        let (width, height) = self.original_dimensions();
 
-            self.overwrite_dimensions.set(Some(new_dimensions));
-        }
+        let initial_operations = if let Some(orientation) = self.original_orientation.get() {
+            Operations::new_orientation(orientation)
+        } else {
+            Operations::new(Vec::new())
+        };
+
+        let new_dimensions = crate::editing::preview::apply_operations(
+            node,
+            width as u32,
+            height as u32,
+            self.operations.borrow().as_ref().map(|x| x.as_ref()),
+            snapshot,
+            self.applicable_zoom(),
+            &initial_operations,
+        )?;
+
+        self.overwrite_dimensions.set(Some(new_dimensions));
 
         Ok(())
     }
