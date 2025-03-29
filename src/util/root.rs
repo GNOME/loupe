@@ -24,10 +24,26 @@ pub trait ParentWindow: WidgetExt {
         let result = self.root().and_downcast();
 
         if result.is_none() {
-            log::error!("Couldn't find LpWindow for {self:?}");
+            log::error!(
+                "Couldn't find LpWindow for {self:?}. mapped={}",
+                self.is_mapped()
+            );
         }
 
         result.unwrap()
+    }
+
+    fn try_window(&self) -> Option<LpWindow> {
+        let result = self.root().and_downcast();
+
+        if result.is_none() {
+            log::debug!(
+                "Couldn't find LpWindow for {self:?}. mapped={}",
+                self.is_mapped()
+            );
+        }
+
+        result
     }
 
     fn edit_window(&self) -> LpEditWindow {

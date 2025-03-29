@@ -1,4 +1,4 @@
-// Copyright (c) 2023-2024 Sophie Herold
+// Copyright (c) 2023-2025 Sophie Herold
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -26,21 +26,21 @@ impl LpImageWindow {
     /// Also changes headerbar transparency if it flat and hides/shows cursor on
     /// fullscreen
     fn set_control_opacity(&self, opacity: f64, hiding: bool) {
-        let window = self.window();
+        if let Some(window) = self.try_window() {
+            self.image_view().controls_box_start().set_opacity(opacity);
+            self.image_view().controls_box_end().set_opacity(opacity);
 
-        self.image_view().controls_box_start().set_opacity(opacity);
-        self.image_view().controls_box_end().set_opacity(opacity);
+            if self.is_headerbar_flat() && window.is_fullscreen() {
+                self.headerbar().set_opacity(opacity);
+            } else {
+                self.headerbar().set_opacity(1.);
+            }
 
-        if self.is_headerbar_flat() && window.is_fullscreen() {
-            self.headerbar().set_opacity(opacity);
-        } else {
-            self.headerbar().set_opacity(1.);
-        }
-
-        if window.is_fullscreen() && hiding && opacity < 0.9 {
-            self.set_cursor(gdk::Cursor::from_name("none", None).as_ref());
-        } else {
-            self.set_cursor(None);
+            if window.is_fullscreen() && hiding && opacity < 0.9 {
+                self.set_cursor(gdk::Cursor::from_name("none", None).as_ref());
+            } else {
+                self.set_cursor(None);
+            }
         }
     }
 
