@@ -25,12 +25,20 @@ pub fn apply_operations(
     node: gsk::RenderNode,
     width: u32,
     height: u32,
-    operations: &Operations,
+    operations: Option<&Operations>,
     snapshot: &gtk::Snapshot,
     scale: f64,
+    initial_operations: &Operations,
 ) -> Result<(u32, u32), EditingError> {
-    let os = OperationsSnapshot::new(node, width, height, scale as f32);
-    os.apply(operations, snapshot)
+    let mut os = OperationsSnapshot::new(node, width, height, scale as f32);
+
+    os.apply(initial_operations)?;
+
+    if let Some(operations) = operations {
+        os.apply_and_commit(operations, snapshot)
+    } else {
+        os.apply_and_commit(&Operations::new(Vec::new()), snapshot)
+    }
 }
 
 struct OperationsSnapshot {
@@ -50,11 +58,19 @@ impl OperationsSnapshot {
         }
     }
 
-    fn apply(
+    fn apply_and_commit(
         mut self,
         operations: &Operations,
         snapshot: &gtk::Snapshot,
     ) -> Result<(u32, u32), EditingError> {
+        self.apply(operations)?;
+
+        snapshot.append_node(self.current_node);
+
+        Ok((self.width, self.height))
+    }
+
+    fn apply(&mut self, operations: &Operations) -> Result<(), EditingError> {
         for operation in operations.operations() {
             let operation_result = match operation {
                 Operation::Clip(rect) => self.clip(*rect),
@@ -77,9 +93,7 @@ impl OperationsSnapshot {
             }
         }
 
-        snapshot.append_node(self.current_node);
-
-        Ok((self.width, self.height))
+        Ok(())
     }
 
     fn clip(&mut self, (x, y, width, height): (u32, u32, u32, u32)) -> Result<(), OperationError> {
@@ -138,7 +152,11 @@ impl OperationsSnapshot {
         let x_center = self.width as f32 * self.scale / 2.;
         let y_center = self.height as f32 * self.scale / 2.;
 
-        snapshot.translate(&graphene::Point::new(y_center, x_center));
+        if rotation == Rotation::_90 || rotation == Rotation::_270 {
+            snapshot.translate(&graphene::Point::new(y_center, x_center));
+        } else {
+            snapshot.translate(&graphene::Point::new(x_center, y_center));
+        }
         snapshot.rotate(-(rotation.degrees() as f32));
         snapshot.translate(&graphene::Point::new(-x_center, -y_center));
 

@@ -114,14 +114,6 @@ impl WidgetImpl for imp::LpImage {
         let y = obj.image_rendering_y();
         snapshot.translate(&graphene::Point::new(x as f32, y as f32));
 
-        // Apply rotation and mirroring
-        self.snapshot_rotate_mirror(
-            snapshot,
-            obj.rotation() as f32,
-            obj.mirrored(),
-            applicable_zoom,
-        );
-
         // Add texture(s)
 
         // Don't use current frame buffer if it empty during an image reload
@@ -138,6 +130,14 @@ impl WidgetImpl for imp::LpImage {
                 log::error!("Render node is empty");
             }
         } else {
+            // Apply rotation and mirroring
+            self.snapshot_rotate_mirror(
+                snapshot,
+                obj.rotation() as f32,
+                obj.mirrored(),
+                applicable_zoom,
+            );
+
             frame_buffer.add_to_snapshot(snapshot, applicable_zoom, &render_options);
         }
 

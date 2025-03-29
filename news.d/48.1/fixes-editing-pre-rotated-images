@@ -1,0 +1,1 @@
+Editing does not work correctly if PNGs or JPEGs are already rotated via an Exif orientation entry before editing.
