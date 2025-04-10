@@ -1,4 +1,4 @@
-// Copyright (c) 2023-2024 Sophie Herold
+// Copyright (c) 2023-2025 Sophie Herold
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -42,8 +42,16 @@ impl LpImage {
             .add_to_snapshot(&snapshot, scale, &render_options);
 
         let node = snapshot.to_node()?;
-        let renderer = self.root()?.renderer()?;
 
-        Some(renderer.render_texture(&node, None))
+        let renderer = gsk::CairoRenderer::new();
+        renderer
+            .realize_for_display(&gdk::Display::default()?)
+            .ok()?;
+
+        let texture = renderer.render_texture(&node, None);
+
+        renderer.unrealize();
+
+        Some(texture)
     }
 }

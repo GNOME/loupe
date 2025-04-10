@@ -1,0 +1,1 @@
+Printed pages don't contain anything or garbled output. This is a temporary workaround for <https://gitlab.gnome.org/GNOME/gtk/-/issues/7464>, using the cairo renderer for the rotation and scaling of the image in the print preparation.
