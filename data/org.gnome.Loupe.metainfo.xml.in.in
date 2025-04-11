@@ -74,6 +74,11 @@
   </categories>
 
   <releases>
+    <release version="48.1" date="2025-04-11">
+      <description>
+        <p>This release fixes issues with editing images that are already rotated via metadata, printing sometimes resulting in empty pages or garbled output, and rare crashes when closing a window.</p>
+      </description>
+    </release>
     <release version="48.0" date="2025-03-14">
       <description>
         <p>This release adds image editing support for PNGs and JPEGs. Images can be cropped, rotated, and flipped. New zoom controls allow setting a specific zoom level and features a more compact style. Support for additional metadata formats like XMP and new image information fields have been added as well.</p>
