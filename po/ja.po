@@ -3,15 +3,17 @@
 # This file is distributed under the same license as the Loupe package.
 # Yuki Okushi <yokushi@gnome.org>, 2023.
 # 小山田 純 <oyamadajun@outlook.jp>, 2023-2024.
+# Kusano Takayuki <https://bsky.app/profile/tkusano.jp>, 2025.
+# Seiji Iizuka <seiji@iizuka.dev>, 2025.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2024-04-02 23:41+0000\n"
+"POT-Creation-Date: 2025-04-27 04:39+0000\n"
 "PO-Revision-Date: 2024-04-04 16:47+0900\n"
-"Last-Translator: 小山田 純 <oyamadajun@outlook.jp>\n"
-"Language-Team: Japanese <gnome-translation@gnome.gr.jp>\n"
+"Last-Translator: Seiji Iizuka <seiji@iizuka.dev>, 2025.\n"
+"Language-Team: Japanese <https://l10n.gnome.org/teams/ja/>\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -19,20 +21,23 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: data/org.gnome.Loupe.desktop.in.in:3
-#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:29 src/window.rs:881
+#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:31
+#: src/widgets/image_window.rs:866
 msgid "Image Viewer"
 msgstr "画像ビューアー"
 
 #: data/org.gnome.Loupe.desktop.in.in:11
 msgid "Picture;Graphics;Loupe;"
-msgstr "Picture;Graphics;Loupe;ピクチャー;写真;グラフィック;画像ビュアー;画像ビュワー;画像ビューワー;ルーペ;image;イメージ;"
+msgstr ""
+"Picture;Graphics;Loupe;ピクチャー;写真;グラフィック;画像ビュアー;画像ビュ"
+"ワー;画像ビューワー;ルーペ;image;イメージ;"
 
 #: data/org.gnome.Loupe.gschema.xml.in:6
 msgid "Show the image properties sidebar"
 msgstr "画像のプロバティーの表示/非表示"
 
 #. developer_name tag deprecated with Appstream 1.0
-#: data/org.gnome.Loupe.metainfo.xml.in.in:8 src/about.rs:32
+#: data/org.gnome.Loupe.metainfo.xml.in.in:8 src/about.rs:34
 msgid "The GNOME Project"
 msgstr "The GNOME Project"
 
@@ -67,347 +72,754 @@ msgstr "全般"
 
 #: data/resources/gtk/help-overlay.ui:14
 msgctxt "shortcut window"
-msgid "Show Main Menu"
-msgstr "メインメニューを表示する"
-
-#: data/resources/gtk/help-overlay.ui:20
-msgctxt "shortcut window"
-msgid "Copy Image or Metadata to Clipboard"
+msgid "Copy Image or Selected Text to Clipboard"
 msgstr "画像やメタデータをクリップボードにコピー"
 
-#: data/resources/gtk/help-overlay.ui:26
+#: data/resources/gtk/help-overlay.ui:20
 msgctxt "shortcut window"
 msgid "Move Image to Trash"
 msgstr "画像をゴミ箱へ移動"
 
-#: data/resources/gtk/help-overlay.ui:32
+#: data/resources/gtk/help-overlay.ui:26
 msgctxt "shortcut window"
 msgid "Permanently Delete Image"
 msgstr "画像を完全に削除"
 
-#: data/resources/gtk/help-overlay.ui:38
+#: data/resources/gtk/help-overlay.ui:32
 msgctxt "shortcut window"
-msgid "Toggle Image Properties"
-msgstr "画像のプロバティーの表示/非表示"
+msgid "Open Image with Other App"
+msgstr "他のアプリで画像を開く"
 
-#: data/resources/gtk/help-overlay.ui:44
+#: data/resources/gtk/help-overlay.ui:38
 msgctxt "shortcut window"
 msgid "Set as Background"
 msgstr "背景として設定"
 
-#: data/resources/gtk/help-overlay.ui:50
-msgctxt "shortcut window"
-msgid "Toggle Fullscreen"
-msgstr "全画面表示の切り替え"
-
-#: data/resources/gtk/help-overlay.ui:56
-msgctxt "shortcut window"
-msgid "Leave Fullscreen"
-msgstr "全画面表示の終了"
-
-#: data/resources/gtk/help-overlay.ui:62
+#: data/resources/gtk/help-overlay.ui:44
 msgctxt "shortcut window"
 msgid "New Window"
 msgstr "新しいウィンドウ"
 
-#: data/resources/gtk/help-overlay.ui:68
+#: data/resources/gtk/help-overlay.ui:50
 msgctxt "shortcut window"
 msgid "Open Help"
 msgstr "ヘルプを開く"
 
-#: data/resources/gtk/help-overlay.ui:74
+#: data/resources/gtk/help-overlay.ui:56
 msgctxt "shortcut window"
 msgid "Show Keyboard Shortcuts"
 msgstr "キーボードショートカットを表示"
 
-#: data/resources/gtk/help-overlay.ui:80
+#: data/resources/gtk/help-overlay.ui:62
 msgctxt "shortcut window"
 msgid "Close Window"
 msgstr "ウィンドウを閉じる"
 
-#: data/resources/gtk/help-overlay.ui:86
+#: data/resources/gtk/help-overlay.ui:68
 msgctxt "shortcut window"
 msgid "Quit"
 msgstr "終了"
 
-#: data/resources/gtk/help-overlay.ui:94
+#: data/resources/gtk/help-overlay.ui:76
 msgctxt "shortcut window"
 msgid "Navigate Images"
 msgstr "画像の切り替え"
 
-#: data/resources/gtk/help-overlay.ui:98 data/resources/gtk/help-overlay.ui:112
-#: data/resources/gtk/help-overlay.ui:224
-#: data/resources/gtk/help-overlay.ui:238
+#: data/resources/gtk/help-overlay.ui:80 data/resources/gtk/help-overlay.ui:94
+#: data/resources/gtk/help-overlay.ui:235
+#: data/resources/gtk/help-overlay.ui:249
 msgctxt "shortcut window"
 msgid "Next Image"
 msgstr "次の画像"
 
-#: data/resources/gtk/help-overlay.ui:105
-#: data/resources/gtk/help-overlay.ui:119
-#: data/resources/gtk/help-overlay.ui:231
-#: data/resources/gtk/help-overlay.ui:245
+#: data/resources/gtk/help-overlay.ui:87 data/resources/gtk/help-overlay.ui:101
+#: data/resources/gtk/help-overlay.ui:242
+#: data/resources/gtk/help-overlay.ui:256
 msgctxt "shortcut window"
 msgid "Previous Image"
 msgstr "前の画像"
 
-#: data/resources/gtk/help-overlay.ui:125
+#: data/resources/gtk/help-overlay.ui:107
 msgctxt "shortcut window"
 msgid "First Image"
 msgstr "最初の画像"
 
-#: data/resources/gtk/help-overlay.ui:131
+#: data/resources/gtk/help-overlay.ui:113
 msgctxt "shortcut window"
 msgid "Last Image"
 msgstr "最後の画像"
 
-#: data/resources/gtk/help-overlay.ui:139
+#: data/resources/gtk/help-overlay.ui:121
 msgctxt "shortcut window"
 msgid "Rotate Image"
 msgstr "画像の回転"
 
-#: data/resources/gtk/help-overlay.ui:142
-#: data/resources/gtk/help-overlay.ui:263
+#: data/resources/gtk/help-overlay.ui:124
+#: data/resources/gtk/help-overlay.ui:274
+#: data/resources/gtk/help-overlay.ui:315
 msgctxt "shortcut window"
 msgid "Rotate Clockwise"
 msgstr "時計回りに回転"
 
-#: data/resources/gtk/help-overlay.ui:148
-#: data/resources/gtk/help-overlay.ui:269
+#: data/resources/gtk/help-overlay.ui:130
+#: data/resources/gtk/help-overlay.ui:280
+#: data/resources/gtk/help-overlay.ui:321
 msgctxt "shortcut window"
 msgid "Rotate Counterclockwise"
 msgstr "半時計回りに回転"
 
-#: data/resources/gtk/help-overlay.ui:156
+#: data/resources/gtk/help-overlay.ui:138
 msgctxt "shortcut window"
 msgid "Zoom Image"
 msgstr "画像の拡大縮小"
 
-#: data/resources/gtk/help-overlay.ui:159
-#: data/resources/gtk/help-overlay.ui:251
+#: data/resources/gtk/help-overlay.ui:141
+#: data/resources/gtk/help-overlay.ui:262
 msgctxt "shortcut window"
 msgid "Zoom In"
 msgstr "拡大"
 
-#: data/resources/gtk/help-overlay.ui:165
-#: data/resources/gtk/help-overlay.ui:257
+#: data/resources/gtk/help-overlay.ui:147
+#: data/resources/gtk/help-overlay.ui:268
 msgctxt "shortcut window"
 msgid "Zoom Out"
 msgstr "縮小"
 
-#: data/resources/gtk/help-overlay.ui:171
+#: data/resources/gtk/help-overlay.ui:153
 msgctxt "shortcut window"
 msgid "Best Fit"
 msgstr "ウィンドウサイズに合わせる"
 
-#: data/resources/gtk/help-overlay.ui:177
+#: data/resources/gtk/help-overlay.ui:159
 msgctxt "shortcut window"
 msgid "Original Scale"
 msgstr "100% 表示"
 
-#: data/resources/gtk/help-overlay.ui:183
+#: data/resources/gtk/help-overlay.ui:165
 msgctxt "shortcut window"
 msgid "200% Scale"
 msgstr "200% 表示"
 
-#: data/resources/gtk/help-overlay.ui:191
+#: data/resources/gtk/help-overlay.ui:173
 msgctxt "shortcut window"
 msgid "Pan View"
 msgstr "表示範囲の変更"
 
-#: data/resources/gtk/help-overlay.ui:194
+#: data/resources/gtk/help-overlay.ui:176
 msgctxt "shortcut window"
 msgid "Pan Left"
 msgstr "左にスクロール"
 
-#: data/resources/gtk/help-overlay.ui:200
+#: data/resources/gtk/help-overlay.ui:182
 msgctxt "shortcut window"
 msgid "Pan Right"
 msgstr "右にスクロール"
 
-#: data/resources/gtk/help-overlay.ui:206
+#: data/resources/gtk/help-overlay.ui:188
 msgctxt "shortcut window"
 msgid "Pan Up"
 msgstr "上にスクロール"
 
-#: data/resources/gtk/help-overlay.ui:212
+#: data/resources/gtk/help-overlay.ui:194
 msgctxt "shortcut window"
 msgid "Pan Down"
 msgstr "下にスクロール"
 
-#: data/resources/gtk/help-overlay.ui:220
+#: data/resources/gtk/help-overlay.ui:202
+msgctxt "shortcut window"
+msgid "View"
+msgstr "表示"
+
+#: data/resources/gtk/help-overlay.ui:205
+msgctxt "shortcut window"
+msgid "Toggle Fullscreen"
+msgstr "全画面表示の切り替え"
+
+#: data/resources/gtk/help-overlay.ui:211
+msgctxt "shortcut window"
+msgid "Leave Fullscreen"
+msgstr "全画面表示の終了"
+
+#: data/resources/gtk/help-overlay.ui:217
+msgctxt "shortcut window"
+msgid "Toggle Image Properties"
+msgstr "画像のプロバティーの表示/非表示"
+
+#: data/resources/gtk/help-overlay.ui:223
+msgctxt "shortcut window"
+msgid "Show Main Menu"
+msgstr "メインメニューを表示する"
+
+#: data/resources/gtk/help-overlay.ui:231
 msgctxt "shortcut window"
 msgid "Gestures"
 msgstr "ジェスチャー"
 
+#: data/resources/gtk/help-overlay.ui:288
+msgctxt "shortcut window"
+msgid "Editing"
+msgstr "編集中"
+
+#: data/resources/gtk/help-overlay.ui:291
+msgctxt "shortcut window"
+msgid "Open Editing View"
+msgstr "編集画面を開く"
+
+#: data/resources/gtk/help-overlay.ui:297
+msgctxt "shortcut window"
+msgid "Replace Original"
+msgstr "元の画像を置換"
+
+#: data/resources/gtk/help-overlay.ui:303
+msgctxt "shortcut window"
+msgid "Save As"
+msgstr "名前を付けて保存"
+
+#: data/resources/gtk/help-overlay.ui:309
+msgctxt "shortcut window"
+msgid "Cancel"
+msgstr "キャンセル"
+
+#: data/resources/gtk/help-overlay.ui:327
+msgctxt "shortcut window"
+msgid "Mirror Horizontally"
+msgstr "水平に反転"
+
+#: data/resources/gtk/help-overlay.ui:333
+msgctxt "shortcut window"
+msgid "Mirror Vertically"
+msgstr "上下に反転"
+
+#: data/resources/gtk/help-overlay.ui:339
+msgctxt "shortcut window"
+msgid "Apply Crop"
+msgstr "切り抜きを適用"
+
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/about.rs:41
+#: src/about.rs:44
 msgid "translator-credits"
 msgstr ""
 "Yuki Okushi <yokushi@gnome.org>\n"
-"小山田 純 <oyamadajun@outlook.jp>"
+"小山田 純 <oyamadajun@outlook.jp>\n"
+"Kusano Takayuki <https://bsky.app/profile/tkusano.jp>"
 
-#: src/about.rs:42
+#: src/about.rs:45
 msgid "Copyright © 2020–2024 Christopher Davis et al."
 msgstr "Copyright © 2020–2024 Christopher Davis et al."
 
-#: src/file_model.rs:129
+#: src/file_model.rs:180
 msgid "Could not list other files in directory."
 msgstr "ディレクトリ内の他ファイルを一覧表示できませんでした。"
 
+#. Translators: Display of the f-number <https://en.wikipedia.org/wiki/F-number>. {} will be replaced with the number
+#: src/metadata.rs:253
+msgid "\\u{192}\\u{2215}{}"
+msgstr "\\u{192}\\u{2215}{}"
+
+#. Translators: Fractional exposure time (photography) in seconds
+#: src/metadata.rs:266
+msgid "1\\u{2215}{}\\u{202F}s"
+msgstr "1\\u{2215}{}\\u{202F}秒"
+
+#. Translators: Exposure time (photography) in seconds
+#: src/metadata.rs:274
+msgid "{}\\u{202F}s"
+msgstr "{}\\u{202F}秒"
+
+#: src/metadata.rs:288
+msgid "{}\\u{202F}mm"
+msgstr "{}\\u{202F}mm"
+
 #. Translators: short for "north" in GPS coordinate
-#: src/metadata/gps.rs:165
+#: src/metadata.rs:328
 msgid "N"
 msgstr "N"
 
 #. Translators: short for "south" in GPS coordinate
-#: src/metadata/gps.rs:168
+#: src/metadata.rs:332
 msgid "S"
 msgstr "S"
 
 #. Translators: short for "east" in GPS coordinate
-#: src/metadata/gps.rs:190
+#: src/metadata.rs:341
 msgid "E"
 msgstr "E"
 
 #. Translators: short for "west" in GPS coordinate
-#: src/metadata/gps.rs:193
+#: src/metadata.rs:345
 msgid "W"
 msgstr "W"
-
-#. Translators: Unit for exposure time in seconds
-#: src/metadata/mod.rs:260
-msgid "1\\u{2215}{}\\u{202F}s"
-msgstr "1\\u{2215}{}\\u{202F}s"
-
-#. Translators: Unit for focal length in millimeters
-#: src/metadata/mod.rs:285
-msgid "{}\\u{202F}mm"
-msgstr "{}\\u{202F}mm"
 
 #. Translators: This is the date and time format we use in metadata output etc.
 #. The format has to follow <https://docs.gtk.org/glib/method.DateTime.format.html>
 #. The default is already translated. Don't change if you are not sure what to
 #. use.
-#: src/util/mod.rs:37
+#: src/util.rs:39
 #, c-format
 msgid "%x %X"
 msgstr "%x %X"
 
-#: src/util/mod.rs:180 src/window.rs:702
+#: src/util.rs:182 src/widgets/image_window.rs:638
 msgid "Failed to restore image from trash"
 msgstr "画像をゴミ箱から復元できませんでした"
 
-#: src/util/mod.rs:201
-msgid "Failed to open image"
-msgstr "画像を開けませんでした"
+#: src/widgets/drag_overlay.ui:15
+msgid "Drop Image to View"
+msgstr "表示するには画像をドロップ"
 
-#: src/widgets/image_page.ui:6 src/window.ui:16
-msgid "_Open With…"
-msgstr "他のアプリで開く(_O)…"
+#: src/widgets/edit/crop.rs:363
+msgid "Failed to Edit Image"
+msgstr "画像の編集に失敗しました"
 
-#: src/widgets/image_page.ui:14 src/window.ui:24
-msgid "_Print…"
-msgstr "印刷(_P)…"
+#: src/widgets/edit/crop.ui:6
+msgid "Free"
+msgstr "自由"
 
-#: src/widgets/image_page.ui:18
-msgid "_Copy"
-msgstr "コピー(_C)"
+#: src/widgets/edit/crop.ui:11
+msgid "Original"
+msgstr "元のサイズ"
 
-#: src/widgets/image_page.ui:23 src/window.ui:29
+#: src/widgets/edit/crop.ui:16
+msgid "Square"
+msgstr "正方形"
+
+#: src/widgets/edit/crop.ui:21
+msgid "5:4"
+msgstr "5:4"
+
+#: src/widgets/edit/crop.ui:26
+msgid "4:3"
+msgstr "4:3"
+
+#: src/widgets/edit/crop.ui:31
+msgid "3:2"
+msgstr "3:2"
+
+#: src/widgets/edit/crop.ui:36
+msgid "16:9"
+msgstr "16:9"
+
+#: src/widgets/edit/crop.ui:77 src/widgets/edit/crop.ui:364
+msgid "Aspect Ratio"
+msgstr "アスペクト比"
+
+#: src/widgets/edit/crop.ui:91
+msgid "_Free"
+msgstr "自由(_F)"
+
+#: src/widgets/edit/crop.ui:109
+msgid "_Original"
+msgstr "元のサイズ(_O)"
+
+#: src/widgets/edit/crop.ui:127
+msgid "_Square"
+msgstr "正方形(_S)"
+
+#: src/widgets/edit/crop.ui:145
+msgid "_5:4"
+msgstr "5:4(_5)"
+
+#: src/widgets/edit/crop.ui:166
+msgid "_4:3"
+msgstr "4:3(_4)"
+
+#: src/widgets/edit/crop.ui:187
+msgid "_3:2"
+msgstr "3:2(_3)"
+
+#: src/widgets/edit/crop.ui:208
+msgid "_16:9"
+msgstr "16:9(_1)"
+
+#: src/widgets/edit/crop.ui:231 src/widgets/edit/crop.ui:377
+msgid "Orientation Landscape"
+msgstr "横向き"
+
+#: src/widgets/edit/crop.ui:240 src/widgets/edit/crop.ui:389
+msgid "Orientation Portrait"
+msgstr "縦向き"
+
+#: src/widgets/edit/crop.ui:252 src/widgets/image_page.ui:15
+#: src/widgets/image_window.ui:25
 msgid "Rotate"
 msgstr "回転"
 
-#: src/widgets/image_page.ui:34 src/window.ui:40
+#: src/widgets/edit/crop.ui:261 src/widgets/edit/crop.ui:407
+msgid "Rotate Counter Clockwise"
+msgstr "反時計回りに回転"
+
+#: src/widgets/edit/crop.ui:268
+msgid "Rotate Clockwise"
+msgstr "時計回りに回転"
+
+#: src/widgets/edit/crop.ui:278
+msgid "Flip"
+msgstr "反転"
+
+#: src/widgets/edit/crop.ui:287 src/widgets/edit/crop.ui:415
+msgid "Mirror Horizontally"
+msgstr "横方向に反転"
+
+#: src/widgets/edit/crop.ui:294
+msgid "Mirror Vertically"
+msgstr "縦方向に反転"
+
+#: src/widgets/edit/crop.ui:306 src/widgets/edit/crop.ui:429
+msgid "_Reset"
+msgstr "リセット(_R)"
+
+#: src/widgets/edit/crop.ui:307 src/widgets/edit/crop.ui:431
+msgid "Undo Changes in this View"
+msgstr "この編集画面の変更を元に戻す"
+
+#: src/widgets/edit/crop_selection.ui:46
+msgid "Crop Selection"
+msgstr "切り抜き領域選択"
+
+#. Translators: Filename suffix
+#. Translators: Filename suffix, {} is replaced by a number
+#: src/widgets/edit_window.rs:192 src/widgets/edit_window.rs:195
+msgid " (Edited)"
+msgid_plural " (Edited {})"
+msgstr[0] "（{}回編集済）"
+
+#: src/widgets/edit_window.rs:290 src/widgets/edit_window.rs:316
+msgid "Failed to save image."
+msgstr "画像を保存できませんでした。"
+
+#: src/widgets/edit_window.rs:346
+msgid "Editing Image"
+msgstr "画像を編集中"
+
+#: src/widgets/edit_window.rs:360
+msgid "Failed to edit image."
+msgstr "画像の編集に失敗しました。"
+
+#: src/widgets/edit_window.rs:370 src/widgets/edit_window.rs:393
+msgid "Failed to Save Image"
+msgstr "画像を保存できませんでした"
+
+#: src/widgets/edit_window.rs:376
+msgid "Saving Image"
+msgstr "画像を保存中"
+
+#: src/widgets/edit_window.ui:64
+msgid "_Cancel"
+msgstr "キャンセル(_C)"
+
+#: src/widgets/edit_window.ui:71
+msgid "_Save"
+msgstr "保存(_S)"
+
+#: src/widgets/edit_window.ui:92
+msgid "_Save As…"
+msgstr "名前を付けて保存(_S)…"
+
+#: src/widgets/edit_window.ui:100
+msgid "Keep original and create a new file"
+msgstr "元の画像はそのままで新しいファイルを作成"
+
+#: src/widgets/edit_window.ui:120
+msgid "_Replace Original"
+msgstr "元の画像と置換(_R)"
+
+#: src/widgets/edit_window.ui:128
+msgid "Original image will be moved to the trash"
+msgstr "元の画像はゴミ箱へ移動します"
+
+#: src/widgets/error_details.rs:79
+msgid ""
+"The following error occurred. If you think this is an issue with the "
+"program, please include this information when you report the error."
+msgstr ""
+"以下のエラーが発生しました。このプログラムの問題と思うのであれば、エラーを報"
+"告する時にこの情報を含めるようにしてください。"
+
+#: src/widgets/error_details.ui:4
+msgid "Error Details"
+msgstr "エラーの詳細"
+
+#: src/widgets/error_details.ui:19
+msgid ""
+"The image loader reported the following when trying to load or edit the "
+"image. Please include this information when you report an error. If "
+"possible, please also provide the image that causes the issue."
+msgstr ""
+"画像ローダーが画像を読み込もうとした、あるいは編集しようとしたときに以下の内"
+"容を報告しました。エラーを報告するときには、この情報を含めるようにしてくださ"
+"い。可能であれば、問題を引き起こした画像を提供してください。"
+
+#: src/widgets/error_details.ui:24
+msgid "Error Message"
+msgstr "エラーメッセージ"
+
+#: src/widgets/error_details.ui:28
+msgid "Copy Error Message"
+msgstr "エラーメッセージをコピー"
+
+#: src/widgets/error_details.ui:68
+msgid "Report _Issue"
+msgstr "問題を報告(_I)"
+
+#: src/widgets/image_page.rs:227
+msgid ""
+"No image loaders available. Maybe the “glycin-loaders” package with "
+"compatibility version “{}” is not installed."
+msgstr ""
+"画像ローダーを利用できません。おそらく “glycin-loaders” の互換バージョン "
+"“{}” がインストールされていません。"
+
+#: src/widgets/image_page.rs:242
+msgid "The image format “{} ({})” is known but not installed."
+msgstr "この画像形式 “{} ({})” を認識していますがインストールされていません。"
+
+#: src/widgets/image_page.rs:249
+msgid "Unknown image format “{} ({}).”"
+msgstr "不明な画像形式 “{} ({}).”"
+
+#: src/widgets/image_page.rs:277
+msgid "There is not enough free memory available to load this image."
+msgstr "この画像を読み込むのに十分なメモリーの空きがありません。"
+
+#: src/widgets/image_page.rs:281
+msgid "Either the image file is corrupted or it contains unsupported elements."
+msgstr "画像ファイルが壊れているか、未対応の要素を含んでいます。"
+
+#: src/widgets/image_page.ui:6 src/widgets/image_window.ui:16
+msgid "_Open With…"
+msgstr "他のアプリで開く(_O)…"
+
+#: src/widgets/image_page.ui:10 src/widgets/image_window.ui:20
+msgid "_Print…"
+msgstr "印刷(_P)…"
+
+#: src/widgets/image_page.ui:26 src/widgets/image_window.ui:36
 msgid "_Set as Background…"
 msgstr "背景として設定(_S)…"
+
+#: src/widgets/image_page.ui:30 src/widgets/image_window.ui:40
+msgid "_Delete"
+msgstr "削除(_D)"
+
+#: src/widgets/image_page.ui:34
+msgid "_Copy"
+msgstr "コピー(_C)"
 
 #: src/widgets/image_page.ui:63
 msgid "Could not Load Image"
 msgstr "画像を読み込めませんでした"
 
-#: src/widgets/image_page.ui:97 src/window.ui:106
+#: src/widgets/image_page.ui:71
+msgid "More _Information"
+msgstr "情報をさらに表示(_I)"
+
+#: src/widgets/image_page.ui:81
+msgid "_Reload"
+msgstr "再読み込み(_R)"
+
+#: src/widgets/image_page.ui:123 src/widgets/image_window.ui:101
 msgid "Rotate Left"
 msgstr "左に回転"
 
-#: src/widgets/image_page.ui:107 src/window.ui:116
+#: src/widgets/image_page.ui:133 src/widgets/image_window.ui:111
 msgid "Rotate Right"
 msgstr "右に回転"
 
+#: src/widgets/image_view.rs:197
+msgid "{} %"
+msgstr "{} %"
+
 #. Translators: This is a toast notification, informing the user that
 #. an image has been set as background.
-#: src/widgets/image_view.rs:682
+#: src/widgets/image_view.rs:836
 msgid "Set as background."
 msgstr "背景に設定しました。"
 
-#: src/widgets/image_view.rs:695
+#: src/widgets/image_view.rs:849
 msgid "Could not set background."
 msgstr "背景に設定できませんでした。"
 
-#: src/widgets/image_view.ui:27
+#: src/widgets/image_view.ui:30
 msgid "Previous Image"
 msgstr "前の画像"
 
-#: src/widgets/image_view.ui:38
+#: src/widgets/image_view.ui:40
 msgid "Next Image"
 msgstr "次の画像"
 
-#: src/widgets/image_view.ui:63
+#: src/widgets/image_view.ui:74
 msgid "Zoom Out"
 msgstr "縮小"
 
-#: src/widgets/image_view.ui:74
+#: src/widgets/image_view.ui:85
 msgid "Zoom In"
 msgstr "拡大"
 
-#: src/widgets/image_view.ui:85
+#: src/widgets/image_view.ui:100
+msgid "Toggle Zoom"
+msgstr "ズーム切り替え"
+
+#: src/widgets/image_view.ui:108
+msgid "Zoom to Specific Level"
+msgstr "指定したレベルへズーム"
+
+#: src/widgets/image_view.ui:237
+msgid "Custom Zoom Level"
+msgstr "カスタム・ズームレベル"
+
+#: src/widgets/image_view.ui:243
+msgid "Zoom to Specified Level"
+msgstr "指定されたレベルへズーム"
+
+#: src/widgets/image_window.rs:502
+msgid "Supported image formats"
+msgstr "サポートされている画像形式"
+
+#: src/widgets/image_window.rs:508
+msgid "All files"
+msgstr "すべてのファイル"
+
+#: src/widgets/image_window.rs:515
+msgid "Open Image"
+msgstr "画像を開く"
+
+#: src/widgets/image_window.rs:601
+msgid "Image copied to clipboard"
+msgstr "画像をクリップボードにコピーしました"
+
+#: src/widgets/image_window.rs:622
+msgid "Image moved to trash"
+msgstr "画像をゴミ箱へ移動しました"
+
+#: src/widgets/image_window.rs:623
+msgid "Undo"
+msgstr "元に戻す"
+
+#: src/widgets/image_window.rs:653
+msgid "Failed to move image to trash"
+msgstr "画像をゴミ箱へ移動できませんでした"
+
+#: src/widgets/image_window.rs:677
+msgid "Permanently Delete Image?"
+msgstr "画像を完全に削除しますか?"
+
+#: src/widgets/image_window.rs:679
+msgid "After deleting the image “{}” it will be permanently lost."
+msgstr "画像 “{}” を削除すると、画像は永久に無くなります。"
+
+#: src/widgets/image_window.rs:687
+msgid "Cancel"
+msgstr "キャンセル"
+
+#: src/widgets/image_window.rs:688
+msgid "Delete"
+msgstr "削除"
+
+#: src/widgets/image_window.rs:699
+msgid "Failed to delete image"
+msgstr "画像の削除に失敗しました"
+
+#: src/widgets/image_window.ui:6
+msgid "_New Window"
+msgstr "新しいウィンドウ(_N)"
+
+#: src/widgets/image_window.ui:10
+msgid "_Open…"
+msgstr "開く(_O)…"
+
+#: src/widgets/image_window.ui:46
+msgid "_Help"
+msgstr "ヘルプ(_H)"
+
+#: src/widgets/image_window.ui:50
+msgid "_Keyboard Shortcuts"
+msgstr "キーボードショートカット(_K)"
+
+#: src/widgets/image_window.ui:54
+msgid "_About Image Viewer"
+msgstr "画像ビューアーについて(_A)"
+
+#: src/widgets/image_window.ui:87
 msgid "Toggle Fullscreen"
 msgstr "全画面表示の切り替え"
 
-#: src/widgets/print.rs:116
+#: src/widgets/image_window.ui:93
+msgid "Main Menu"
+msgstr "メインメニュー"
+
+#: src/widgets/image_window.ui:125
+msgid "Image Properties"
+msgstr "画像のプロパティー"
+
+#: src/widgets/image_window.ui:132
+msgid "Edit Image"
+msgstr "画像を編集"
+
+#: src/widgets/image_window.ui:220
+msgid "View Images"
+msgstr "画像を見る"
+
+#: src/widgets/image_window.ui:221
+msgid "Drag and drop images here"
+msgstr "ここにドラッグ&amp;ドロップ"
+
+#: src/widgets/image_window.ui:225
+msgid "_Open Files…"
+msgstr "ファイルを開く(_O)…"
+
+#: src/widgets/print.rs:108
 msgid "Top"
 msgstr "上"
 
-#: src/widgets/print.rs:117
+#: src/widgets/print.rs:109
 msgid "Center"
 msgstr "中央"
 
-#: src/widgets/print.rs:118
+#: src/widgets/print.rs:110
 msgid "Bottom"
 msgstr "下"
 
-#: src/widgets/print.rs:119
+#: src/widgets/print.rs:111
 msgid "Left"
 msgstr "左"
 
-#: src/widgets/print.rs:120
+#: src/widgets/print.rs:112
 msgid "Right"
 msgstr "右"
 
 #. Translators: Shorthand for centimeter
-#: src/widgets/print.rs:156
+#: src/widgets/print.rs:148
 msgid "cm"
 msgstr "cm"
 
 #. Translators: Shorthand for inch
-#: src/widgets/print.rs:158
+#: src/widgets/print.rs:150
 msgid "in"
 msgstr "in"
 
 #. Translators: Shorthand for pixel
-#: src/widgets/print.rs:160
+#: src/widgets/print.rs:152
 msgid "px"
 msgstr "px"
 
 #. Translators: {} is a placeholder for the filename
-#: src/widgets/print.rs:373
+#: src/widgets/print.rs:361
 msgid "Print “{}”"
 msgstr "“{}” を印刷"
 
-#: src/widgets/print.rs:787
+#: src/widgets/print.rs:476
+msgid "Continue…"
+msgstr "続ける…"
+
+#: src/widgets/print.rs:477
+msgid "Print Image"
+msgstr "画像を印刷"
+
+#: src/widgets/print.rs:791
 msgid "_Scale"
 msgstr "大きさ(_S)"
 
-#: src/widgets/print.rs:790
+#: src/widgets/print.rs:794
 msgid "_Width"
 msgstr "幅(_W)"
 
@@ -456,7 +868,7 @@ msgstr "横方向(_H)"
 msgid "_Vertical"
 msgstr "縦方向(_V)"
 
-#: src/widgets/print.ui:142 src/widgets/properties_view.ui:53
+#: src/widgets/print.ui:142 src/widgets/properties_view.ui:56
 msgid "Image Size"
 msgstr "画像のサイズ"
 
@@ -472,189 +884,111 @@ msgstr "余白を埋める(_F)"
 msgid "H_eight"
 msgstr "高さ(_E)"
 
-#: src/widgets/properties_view.rs:234
+#: src/widgets/properties_view.rs:258
 msgid "Unknown"
 msgstr "不明"
 
 #. Translators: Addition of image being transparent to format name
-#: src/widgets/properties_view.rs:238
+#: src/widgets/properties_view.rs:262
 msgid ", transparent"
 msgstr ", 透過"
 
 #. Translators: Addition of image being grayscale to format name
-#: src/widgets/properties_view.rs:243
+#: src/widgets/properties_view.rs:267
 msgid ", grayscale"
 msgstr ", グレースケール"
 
 #. Translators: Addition of bit size to format name
-#: src/widgets/properties_view.rs:248
+#: src/widgets/properties_view.rs:272
 msgid ", {}\\u{202F}bit"
 msgstr ", {}\\u{202F}bit"
 
-#: src/widgets/properties_view.rs:299
+#: src/widgets/properties_view.rs:290
+msgid "{}\\u{202F}\\u{D7}\\u{202F}{}"
+msgstr "{}\\u{202F}\\u{D7}\\u{202F}{}"
+
+#: src/widgets/properties_view.rs:329
 msgid "Image Coordinates Copied"
 msgstr "画像の位置情報の座標をコピーしました"
 
-#: src/widgets/properties_view.ui:19
+#: src/widgets/properties_view.ui:20
 msgid "Folder"
 msgstr "フォルダー"
 
-#: src/widgets/properties_view.ui:26
+#: src/widgets/properties_view.ui:28
 msgid "Open Containing Folder"
 msgstr "フォルダーを開く"
 
-#: src/widgets/properties_view.ui:39
+#: src/widgets/properties_view.ui:41
 msgid "URI"
 msgstr "URI"
 
-#: src/widgets/properties_view.ui:62
+#: src/widgets/properties_view.ui:66
 msgid "Image Format"
 msgstr "画像の形式"
 
-#: src/widgets/properties_view.ui:71
+#: src/widgets/properties_view.ui:76
 msgid "File Size"
 msgstr "ファイルのサイズ"
 
-#: src/widgets/properties_view.ui:84
+#: src/widgets/properties_view.ui:90
 msgid "File Created"
 msgstr "ファイルの作成日時"
 
-#: src/widgets/properties_view.ui:93
+#: src/widgets/properties_view.ui:100
 msgid "File Modified"
 msgstr "ファイルの更新日時"
 
 #. Translators: This is a label for GPS coordinates
-#: src/widgets/properties_view.ui:106
+#: src/widgets/properties_view.ui:114
 msgid "Location"
 msgstr "位置情報"
 
-#: src/widgets/properties_view.ui:116
+#: src/widgets/properties_view.ui:125
 msgid "Copy Coordinates"
 msgstr "座標をコピー"
 
-#: src/widgets/properties_view.ui:127
+#: src/widgets/properties_view.ui:136
 msgid "Open Location"
 msgstr "この場所を開く"
 
-#: src/widgets/properties_view.ui:140
+#: src/widgets/properties_view.ui:149
 msgid "Originally Created"
 msgstr "制作日"
 
-#: src/widgets/properties_view.ui:149
+#: src/widgets/properties_view.ui:159
+msgid "Comment"
+msgstr "コメント"
+
+#: src/widgets/properties_view.ui:169
 msgid "Aperture"
 msgstr "絞り"
 
-#: src/widgets/properties_view.ui:158
+#: src/widgets/properties_view.ui:179
 msgid "Exposure"
 msgstr "露出時間"
 
-#: src/widgets/properties_view.ui:167
+#: src/widgets/properties_view.ui:189
 msgid "ISO"
 msgstr "ISO"
 
-#: src/widgets/properties_view.ui:176
+#: src/widgets/properties_view.ui:199
 msgid "Focal Length"
 msgstr "焦点距離"
 
-#: src/widgets/properties_view.ui:185
+#: src/widgets/properties_view.ui:209
 msgid "Maker, Model"
 msgstr "メーカー、モデル名"
 
-#: src/window.rs:569
-msgid "Supported image formats"
-msgstr "サポートされている画像形式"
+#: src/widgets/window.rs:222
+msgid "Show Details"
+msgstr "詳細を表示"
 
-#: src/window.rs:575
-msgid "All files"
-msgstr "すべてのファイル"
+#~ msgid "Copy to Clipboard"
+#~ msgstr "クリップボードにコピー"
 
-#: src/window.rs:582
-msgid "Open Image"
-msgstr "画像を開く"
-
-#: src/window.rs:668
-msgid "Image copied to clipboard"
-msgstr "画像をクリップボードにコピーしました"
-
-#: src/window.rs:689
-msgid "Image moved to trash"
-msgstr "画像をゴミ箱へ移動しました"
-
-#: src/window.rs:690
-msgid "Undo"
-msgstr "元に戻す"
-
-#: src/window.rs:716
-msgid "Failed to move image to trash"
-msgstr "画像をゴミ箱へ移動できませんでした"
-
-#: src/window.rs:742
-msgid "Permanently Delete Image?"
-msgstr "画像を完全に削除しますか?"
-
-#: src/window.rs:744
-msgid "After deleting the image “{}” it will be permanently lost."
-msgstr "画像 “{}” を削除すると、画像は永久に無くなります。"
-
-#: src/window.rs:752
-msgid "Cancel"
-msgstr "キャンセル"
-
-#: src/window.rs:753
-msgid "Delete"
-msgstr "削除"
-
-#: src/window.rs:764
-msgid "Failed to delete image"
-msgstr "画像の削除に失敗しました"
-
-#: src/window.ui:6
-msgid "_New Window"
-msgstr "新しいウィンドウ(_N)"
-
-#: src/window.ui:10
-msgid "_Open…"
-msgstr "開く(_O)…"
-
-#: src/window.ui:46
-msgid "_Help"
-msgstr "ヘルプ(_H)"
-
-#: src/window.ui:50
-msgid "_Keyboard Shortcuts"
-msgstr "キーボードショートカット(_K)"
-
-#: src/window.ui:54
-msgid "_About Image Viewer"
-msgstr "画像ビューアーについて(_A)"
-
-#: src/window.ui:85
-msgid "Copy to Clipboard"
-msgstr "クリップボードにコピー"
-
-#: src/window.ui:92
-msgid "Move to Trash"
-msgstr "ゴミ箱に移動"
-
-#: src/window.ui:98
-msgid "Main Menu"
-msgstr "メインメニュー"
-
-#: src/window.ui:130
-msgid "Image Properties"
-msgstr "画像のプロパティー"
-
-#: src/window.ui:174
-msgid "View Images"
-msgstr "画像を見る"
-
-#: src/window.ui:175
-msgid "Drag and drop images here"
-msgstr "ここにドラッグ&ドロップ"
-
-#: src/window.ui:179
-msgid "_Open Files…"
-msgstr "ファイルを開く(_O)…"
+#~ msgid "Move to Trash"
+#~ msgstr "ゴミ箱に移動"
 
 #~ msgid "The Loupe Team"
 #~ msgstr "The Loupe Team"
@@ -682,9 +1016,6 @@ msgstr "ファイルを開く(_O)…"
 
 #~ msgid "Animated PNG"
 #~ msgstr "アニメーション PNG"
-
-#~ msgid "Unknown image format: {}"
-#~ msgstr "不明な画像形式: {}"
 
 #~ msgid "Could not open image"
 #~ msgstr "画像を開けませんでした"
