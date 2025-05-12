@@ -10,3 +10,4 @@ Categories=GNOME;GTK;Graphics;2DGraphics;RasterGraphics;Viewer;
 MimeType=@MIME_TYPES@
 Keywords=Picture;Graphics;Loupe;
 StartupNotify=true
+X-Purism-FormFactor=Workstation;Mobile;
