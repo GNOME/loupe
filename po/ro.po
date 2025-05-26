@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2025-05-10 20:52+0000\n"
-"PO-Revision-Date: 2025-05-23 17:26+0200\n"
+"POT-Creation-Date: 2025-05-23 15:48+0000\n"
+"PO-Revision-Date: 2025-05-26 09:20+0200\n"
 "Last-Translator: Antonio Marin <gnmer.6qxyg@slmail.me>\n"
 "Language-Team: Romanian <gnomero-list@lists.sourceforge.net>\n"
 "Language: ro\n"
@@ -24,7 +24,7 @@ msgstr ""
 #: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:31
 #: src/widgets/image_window.rs:866
 msgid "Image Viewer"
-msgstr "Vizualizator imagini"
+msgstr "Imagini"
 
 #: data/org.gnome.Loupe.desktop.in.in:4
 #: data/org.gnome.Loupe.metainfo.xml.in.in:13
@@ -33,7 +33,7 @@ msgstr "Vizualizează imaginile"
 
 #: data/org.gnome.Loupe.desktop.in.in:12
 msgid "Picture;Graphics;Loupe;"
-msgstr "Picture;Graphics;Loupe;Imagine;Grafice;Lupă;"
+msgstr "Picture;Graphics;Loupe;Imagine;Grafice;Imagini;"
 
 #: data/org.gnome.Loupe.gschema.xml.in:6
 msgid "Show the image properties sidebar"
@@ -232,7 +232,7 @@ msgstr "Vedere"
 #: data/resources/gtk/help-overlay.ui:205
 msgctxt "shortcut window"
 msgid "Toggle Fullscreen"
-msgstr "Comutator Pe tot ecranul"
+msgstr "Pe tot ecranul Activat/Dezactivat"
 
 #: data/resources/gtk/help-overlay.ui:211
 msgctxt "shortcut window"
@@ -739,11 +739,11 @@ msgstr "Scurtă_turi"
 
 #: src/widgets/image_window.ui:54
 msgid "_About Image Viewer"
-msgstr "_Despre Vizualizator imagini"
+msgstr "_Despre Imagini"
 
 #: src/widgets/image_window.ui:87
 msgid "Toggle Fullscreen"
-msgstr "Comutator Pe tot ecranul"
+msgstr "Pe tot ecranul Activat/Dezactivat"
 
 #: src/widgets/image_window.ui:93
 msgid "Main Menu"
