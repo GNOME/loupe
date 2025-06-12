@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2025-05-26 07:26+0000\n"
-"PO-Revision-Date: 2025-06-11 10:31-0400\n"
+"POT-Creation-Date: 2025-06-11 14:47+0000\n"
+"PO-Revision-Date: 2025-06-12 14:42-0400\n"
 "Last-Translator: Emilio Sepúlveda <emism.translations@gmail.com>\n"
 "Language-Team: Interlingua <softinterlingua@gmail.com>\n"
 "Language: ia\n"
@@ -21,8 +21,8 @@ msgstr ""
 "X-DL-Module: loupe\n"
 "X-DL-Branch: main\n"
 "X-DL-Domain: po\n"
-"X-DL-State: Translating\n"
-"X-Generator: Gtranslator 47.1\n"
+"X-DL-State: None\n"
+"X-Generator: Gtranslator 48.0\n"
 
 #: data/org.gnome.Loupe.desktop.in.in:3
 #: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:31
@@ -133,24 +133,24 @@ msgstr ""
 #: data/resources/gtk/help-overlay.ui:249
 msgctxt "shortcut window"
 msgid "Next Image"
-msgstr ""
+msgstr "Imagine sequente"
 
 #: data/resources/gtk/help-overlay.ui:87 data/resources/gtk/help-overlay.ui:101
 #: data/resources/gtk/help-overlay.ui:242
 #: data/resources/gtk/help-overlay.ui:256
 msgctxt "shortcut window"
 msgid "Previous Image"
-msgstr ""
+msgstr "Imagine precedente"
 
 #: data/resources/gtk/help-overlay.ui:107
 msgctxt "shortcut window"
 msgid "First Image"
-msgstr ""
+msgstr "Prime imagine"
 
 #: data/resources/gtk/help-overlay.ui:113
 msgctxt "shortcut window"
 msgid "Last Image"
-msgstr ""
+msgstr "Ultime imagine"
 
 #: data/resources/gtk/help-overlay.ui:121
 msgctxt "shortcut window"
@@ -180,13 +180,13 @@ msgstr ""
 #: data/resources/gtk/help-overlay.ui:262
 msgctxt "shortcut window"
 msgid "Zoom In"
-msgstr ""
+msgstr "Aggrandir"
 
 #: data/resources/gtk/help-overlay.ui:147
 #: data/resources/gtk/help-overlay.ui:268
 msgctxt "shortcut window"
 msgid "Zoom Out"
-msgstr ""
+msgstr "Diminuer"
 
 #: data/resources/gtk/help-overlay.ui:153
 msgctxt "shortcut window"
@@ -231,7 +231,7 @@ msgstr ""
 #: data/resources/gtk/help-overlay.ui:202
 msgctxt "shortcut window"
 msgid "View"
-msgstr ""
+msgstr "Vider"
 
 #: data/resources/gtk/help-overlay.ui:205
 msgctxt "shortcut window"
@@ -271,7 +271,7 @@ msgstr ""
 #: data/resources/gtk/help-overlay.ui:297
 msgctxt "shortcut window"
 msgid "Replace Original"
-msgstr ""
+msgstr "Reimplaciar original"
 
 #: data/resources/gtk/help-overlay.ui:303
 msgctxt "shortcut window"
@@ -536,7 +536,7 @@ msgstr ""
 
 #: src/widgets/error_details.ui:4
 msgid "Error Details"
-msgstr ""
+msgstr "Detalios de error"
 
 #: src/widgets/error_details.ui:19
 msgid ""
@@ -547,15 +547,15 @@ msgstr ""
 
 #: src/widgets/error_details.ui:24
 msgid "Error Message"
-msgstr ""
+msgstr "Message de error"
 
 #: src/widgets/error_details.ui:28
 msgid "Copy Error Message"
-msgstr ""
+msgstr "Copiar message de error"
 
 #: src/widgets/error_details.ui:68
 msgid "Report _Issue"
-msgstr ""
+msgstr "Signalar _incidente"
 
 #: src/widgets/image_page.rs:227
 msgid ""
@@ -585,7 +585,7 @@ msgstr ""
 
 #: src/widgets/image_page.ui:10 src/widgets/image_window.ui:20
 msgid "_Print…"
-msgstr ""
+msgstr "Im_primer…"
 
 #: src/widgets/image_page.ui:26 src/widgets/image_window.ui:36
 msgid "_Set as Background…"
@@ -593,11 +593,11 @@ msgstr ""
 
 #: src/widgets/image_page.ui:30 src/widgets/image_window.ui:40
 msgid "_Delete"
-msgstr ""
+msgstr "_Deler"
 
 #: src/widgets/image_page.ui:34
 msgid "_Copy"
-msgstr ""
+msgstr "_Copiar"
 
 #: src/widgets/image_page.ui:63
 msgid "Could not Load Image"
@@ -605,11 +605,11 @@ msgstr ""
 
 #: src/widgets/image_page.ui:71
 msgid "More _Information"
-msgstr ""
+msgstr "Plus _information"
 
 #: src/widgets/image_page.ui:81
 msgid "_Reload"
-msgstr ""
+msgstr "Actualisa_r"
 
 #: src/widgets/image_page.ui:123 src/widgets/image_window.ui:101
 msgid "Rotate Left"
@@ -635,19 +635,19 @@ msgstr ""
 
 #: src/widgets/image_view.ui:30
 msgid "Previous Image"
-msgstr ""
+msgstr "Imagine precedente"
 
 #: src/widgets/image_view.ui:40
 msgid "Next Image"
-msgstr ""
+msgstr "Imagine sequente"
 
 #: src/widgets/image_view.ui:74
 msgid "Zoom Out"
-msgstr ""
+msgstr "Aggrandir"
 
 #: src/widgets/image_view.ui:85
 msgid "Zoom In"
-msgstr ""
+msgstr "Diminuer"
 
 #: src/widgets/image_view.ui:100
 msgid "Toggle Zoom"
@@ -667,15 +667,15 @@ msgstr ""
 
 #: src/widgets/image_window.rs:502
 msgid "Supported image formats"
-msgstr ""
+msgstr "Formatos de imagine supportate"
 
 #: src/widgets/image_window.rs:508
 msgid "All files"
-msgstr ""
+msgstr "Tote le files"
 
 #: src/widgets/image_window.rs:515
 msgid "Open Image"
-msgstr ""
+msgstr "Aperir imagine"
 
 #: src/widgets/image_window.rs:601
 msgid "Image copied to clipboard"
@@ -687,7 +687,7 @@ msgstr ""
 
 #: src/widgets/image_window.rs:623
 msgid "Undo"
-msgstr ""
+msgstr "Disfacer"
 
 #: src/widgets/image_window.rs:653
 msgid "Failed to move image to trash"
@@ -703,63 +703,63 @@ msgstr ""
 
 #: src/widgets/image_window.rs:687
 msgid "Cancel"
-msgstr ""
+msgstr "Cancellar"
 
 #: src/widgets/image_window.rs:688
 msgid "Delete"
-msgstr ""
+msgstr "Deler"
 
 #: src/widgets/image_window.rs:699
 msgid "Failed to delete image"
-msgstr ""
+msgstr "Falleva le deletion del imagine"
 
 #: src/widgets/image_window.ui:6
 msgid "_New Window"
-msgstr ""
+msgstr "_Nove fenestra"
 
 #: src/widgets/image_window.ui:10
 msgid "_Open…"
-msgstr ""
+msgstr "A_perir…"
 
 #: src/widgets/image_window.ui:46
 msgid "_Help"
-msgstr ""
+msgstr "_Adjuta"
 
 #: src/widgets/image_window.ui:50
 msgid "_Keyboard Shortcuts"
-msgstr ""
+msgstr "Vias breve de _claviero"
 
 #: src/widgets/image_window.ui:54
 msgid "_About Image Viewer"
-msgstr ""
+msgstr "_A proposito de Visualisator de imagines"
 
 #: src/widgets/image_window.ui:87
 msgid "Toggle Fullscreen"
-msgstr ""
+msgstr "Commutar schermo plen"
 
 #: src/widgets/image_window.ui:93
 msgid "Main Menu"
-msgstr ""
+msgstr "Menu principal"
 
 #: src/widgets/image_window.ui:125
 msgid "Image Properties"
-msgstr ""
+msgstr "Proprietates de imagine"
 
 #: src/widgets/image_window.ui:132
 msgid "Edit Image"
-msgstr ""
+msgstr "Modificar imagine"
 
 #: src/widgets/image_window.ui:220
 msgid "View Images"
-msgstr ""
+msgstr "Vider imagines"
 
 #: src/widgets/image_window.ui:221
 msgid "Drag and drop images here"
-msgstr ""
+msgstr "Trahe e depone imagines hic"
 
 #: src/widgets/image_window.ui:225
 msgid "_Open Files…"
-msgstr ""
+msgstr "_Aperir files…"
 
 #: src/widgets/print.rs:108
 msgid "Top"
@@ -807,7 +807,7 @@ msgstr ""
 
 #: src/widgets/print.rs:477
 msgid "Print Image"
-msgstr ""
+msgstr "Imprimer imagine"
 
 #: src/widgets/print.rs:791
 msgid "_Scale"
@@ -820,15 +820,15 @@ msgstr ""
 #. Translators: Go back to previous page
 #: src/widgets/print.ui:29
 msgid "_Back"
-msgstr ""
+msgstr "_Retro"
 
 #: src/widgets/print.ui:37
 msgid "_Print"
-msgstr ""
+msgstr "Im_primer"
 
 #: src/widgets/print.ui:56
 msgid "Layout"
-msgstr ""
+msgstr "Disposition"
 
 #: src/widgets/print.ui:59
 msgid "_Orientation"
@@ -864,7 +864,7 @@ msgstr ""
 
 #: src/widgets/print.ui:142 src/widgets/properties_view.ui:56
 msgid "Image Size"
-msgstr ""
+msgstr "Dimension de imagine"
 
 #: src/widgets/print.ui:145
 msgid "Image Size Units"
@@ -907,7 +907,7 @@ msgstr ""
 
 #: src/widgets/properties_view.ui:20
 msgid "Folder"
-msgstr ""
+msgstr "Dossier"
 
 #: src/widgets/properties_view.ui:28
 msgid "Open Containing Folder"
@@ -919,11 +919,11 @@ msgstr ""
 
 #: src/widgets/properties_view.ui:66
 msgid "Image Format"
-msgstr ""
+msgstr "Formato de imagine"
 
 #: src/widgets/properties_view.ui:76
 msgid "File Size"
-msgstr ""
+msgstr "Dimension de imagine"
 
 #: src/widgets/properties_view.ui:90
 msgid "File Created"
@@ -976,4 +976,4 @@ msgstr ""
 
 #: src/widgets/window.rs:222
 msgid "Show Details"
-msgstr ""
+msgstr "Monstrar detalios"
