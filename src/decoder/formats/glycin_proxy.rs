@@ -1,4 +1,4 @@
-// Copyright (c) 2023-2024 Sophie Herold
+// Copyright (c) 2023-2025 Sophie Herold
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -59,7 +59,7 @@ impl Glycin {
             log::trace!("Image info received");
 
             let mut metadata: Metadata = Metadata::default();
-            metadata.set_image_info(image.info().details.clone());
+            metadata.set_image_info(image.info().clone());
             metadata.set_mime_type(image.mime_type().to_string());
             updater.send(DecoderUpdate::Metadata(Box::new(metadata)));
 

@@ -103,21 +103,6 @@
             ]
         },
         {
-            "name": "glycin",
-            "buildsystem": "meson",
-            "config-opts": [
-                "-Dloaders=glycin-image-rs,glycin-heif,glycin-jxl,glycin-svg,glycin-raw",
-                "-Dlibglycin=false"
-            ],
-            "sources": [
-                {
-                    "type": "archive",
-                    "url": "https://download.gnome.org/sources/glycin/1.2/glycin-1.2.1.tar.xz",
-                    "sha256": "ccc578e9a3e83d0dc1535737d1fda09baa95c7167f5e5ecb15f786654094eed5"
-                }
-            ]
-        },
-        {
             "name": "loupe",
             "buildsystem": "meson",
             "config-opts": [

@@ -25,7 +25,7 @@ use std::str::FromStr;
 use chrono::prelude::*;
 pub use file::FileInfo;
 use glib::TimeZone;
-use glycin::{Frame, FrameDetails, ImageInfoDetails, MemoryFormat};
+use glycin::{Frame, FrameDetails, ImageInfo, MemoryFormat};
 use gufo::common::datetime::DateTime;
 use gufo::common::orientation::Orientation;
 
@@ -38,7 +38,7 @@ pub struct Metadata {
     mime_type: Option<String>,
     metadata: gufo::Metadata,
     file_info: Option<FileInfo>,
-    image_info: Option<glycin::ImageInfoDetails>,
+    image_info: Option<glycin::ImageInfo>,
     frame_info: Option<FrameDetails>,
     memory_format: Option<MemoryFormat>,
 }
@@ -60,7 +60,7 @@ impl Metadata {
         }
     }
 
-    pub fn set_image_info(&mut self, image_info: ImageInfoDetails) {
+    pub fn set_image_info(&mut self, image_info: ImageInfo) {
         if let Some(exif_raw) = image_info.exif.as_ref().and_then(|x| x.get_full().ok()) {
             self.set_exif_bytes(exif_raw);
         }

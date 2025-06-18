@@ -3,6 +3,7 @@
 // Copyright (c) 2023 Christopher Davis
 // Copyright (c) 2024 Andre Klapper
 // Copyright (c) 2024 Dexter Reed
+// Copyright (c) 2025 sid
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
