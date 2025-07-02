@@ -74,6 +74,11 @@
   </categories>
 
   <releases>
+    <release version="49.alpha" date="2025-07-02">
+      <description>
+        <p>Update to better image loaders.</p>
+      </description>
+    </release>
     <release version="48.1" date="2025-04-11">
       <description>
         <p>This release fixes issues with editing images that are already rotated via metadata, printing sometimes resulting in empty pages or garbled output, and rare crashes when closing a window.</p>

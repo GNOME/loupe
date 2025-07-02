@@ -1,3 +1,17 @@
+## 49.alpha (2025-07-02)
+
+### Changed
+
+- Use glycin loaders with API 2+
+
+## 48.1 (2025-04-11)
+
+### Fixed
+
+- Crash when closing the window, probably in the exact moment when the animnation for hiding controls starts.
+- Editing does not work correctly if PNGs or JPEGs are already rotated via an Exif orientation entry before editing.
+- Printed pages don't contain anything or garbled output. This is a temporary workaround for <https://gitlab.gnome.org/GNOME/gtk/-/issues/7464>, using the cairo renderer for the rotation and scaling of the image in the print preparation.
+
 ## 48.0 (2025-03-14)
 
 ### Fixed
