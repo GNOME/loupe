@@ -860,9 +860,9 @@ dependencies = [
 
 [[package]]
 name = "glycin"
-version = "3.0.0-alpha.5"
+version = "3.0.0-alpha.7"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "8016964f551c43438a8f0dba2bcfe52b8691e19149708492a83a830b605f05b8"
+checksum = "96c2cf69d077fa279fc3a2e6941fd05fc2f3f161910b495bc55e8f2068a50c0b"
 dependencies = [
  "async-fs",
  "async-io",
@@ -874,6 +874,7 @@ dependencies = [
  "gdk4",
  "gio",
  "glib",
+ "glycin-common",
  "glycin-utils",
  "gufo-common",
  "gufo-exif",
@@ -892,16 +893,36 @@ dependencies = [
 ]
 
 [[package]]
-name = "glycin-utils"
-version = "4.0.0-alpha.4"
+name = "glycin-common"
+version = "1.0.0-alpha.7"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "301cc1196f9ef49a11e98eb11fe6d587beae746f1f06ed99569ca34b50e49e66"
+checksum = "72f726fe14063e230fd79a77a602469d1a7c721c6fe1037bb69786df08b79cdc"
+dependencies = [
+ "bitflags 2.9.1",
+ "gufo-common",
+ "half",
+ "memmap2",
+ "nix",
+ "paste",
+ "rmp-serde",
+ "serde",
+ "thiserror",
+ "zerocopy",
+ "zvariant",
+]
+
+[[package]]
+name = "glycin-utils"
+version = "4.0.0-alpha.7"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "5c87e6f0bedff21f6592368212277d232908f9d9fbf330a5f6558e6907a5b33c"
 dependencies = [
  "async-lock",
  "bitflags 2.9.1",
  "blocking",
  "env_logger",
  "futures-util",
+ "glycin-common",
  "gufo-common",
  "half",
  "libc",
@@ -911,7 +932,6 @@ dependencies = [
  "nix",
  "paste",
  "rayon",
- "rmp-serde",
  "serde",
  "thiserror",
  "zbus",

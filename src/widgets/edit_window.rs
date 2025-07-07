@@ -349,7 +349,10 @@ mod imp {
 
             if let Some(operations) = obj.operations() {
                 log::debug!("Computing edited image.");
-                let result = editor.apply_complete(dbg!(&operations)).await;
+                let result = match editor.edit().await {
+                    Ok(editable_image) => editable_image.apply_complete(&operations).await,
+                    Err(err) => Err(err),
+                };
                 match result {
                     Err(err) if matches!(err.error(), glycin::Error::Canceled(_)) => {
                         log::debug!("Computing edited image canceled");
@@ -362,9 +365,9 @@ mod imp {
                             ErrorType::Loader,
                         )
                     }
-                    Ok(binary_data) => {
+                    Ok(edit) => {
                         log::debug!("Saving edited image to '{}'", new_file.uri());
-                        match binary_data.get() {
+                        match edit.data().get() {
                             Err(err) => {
                                 obj.window().show_error(
                                     &gettext("Failed to Save Image"),

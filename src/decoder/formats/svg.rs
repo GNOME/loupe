@@ -77,11 +77,11 @@ impl Svg {
             let image = loader.load().await?;
 
             let mut metadata: Metadata = Metadata::default();
-            metadata.set_image_info(image.info().clone());
+            metadata.set_image_info(image.details().clone());
             metadata.set_mime_type(image.mime_type().to_string());
             updater.send(DecoderUpdate::Metadata(Box::new(metadata)));
 
-            tiles.set_original_dimensions((image.info().width, image.info().height));
+            tiles.set_original_dimensions((image.details().width(), image.details().height()));
 
             let mut is_first_frame = true;
 

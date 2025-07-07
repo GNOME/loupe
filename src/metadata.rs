@@ -25,7 +25,7 @@ use std::str::FromStr;
 use chrono::prelude::*;
 pub use file::FileInfo;
 use glib::TimeZone;
-use glycin::{Frame, FrameDetails, ImageInfo, MemoryFormat};
+use glycin::{Frame, FrameDetails, ImageDetails, MemoryFormat};
 use gufo::common::datetime::DateTime;
 use gufo::common::orientation::Orientation;
 
@@ -38,7 +38,7 @@ pub struct Metadata {
     mime_type: Option<String>,
     metadata: gufo::Metadata,
     file_info: Option<FileInfo>,
-    image_info: Option<glycin::ImageInfo>,
+    image_info: Option<glycin::ImageDetails>,
     frame_info: Option<FrameDetails>,
     memory_format: Option<MemoryFormat>,
 }
@@ -60,11 +60,19 @@ impl Metadata {
         }
     }
 
-    pub fn set_image_info(&mut self, image_info: ImageInfo) {
-        if let Some(exif_raw) = image_info.exif.as_ref().and_then(|x| x.get_full().ok()) {
+    pub fn set_image_info(&mut self, image_info: ImageDetails) {
+        if let Some(exif_raw) = image_info
+            .metadata_exif()
+            .as_ref()
+            .and_then(|x| x.get_full().ok())
+        {
             self.set_exif_bytes(exif_raw);
         }
-        if let Some(exif_xmp) = image_info.xmp.as_ref().and_then(|x| x.get_full().ok()) {
+        if let Some(exif_xmp) = image_info
+            .metadata_xmp()
+            .as_ref()
+            .and_then(|x| x.get_full().ok())
+        {
             self.set_xmp_bytes(exif_xmp);
         }
         self.image_info = Some(image_info);
@@ -125,20 +133,22 @@ impl Metadata {
     pub fn format_name(&self) -> Option<String> {
         self.image_info
             .as_ref()
-            .and_then(|x| x.format_name.clone())
+            .and_then(|x| x.info_format_name().map(|x| x.to_string()))
             .or_else(|| self.unreliable_mime_type())
     }
 
     pub fn alpha_channel(&self) -> Option<bool> {
-        self.frame_info.as_ref().and_then(|x| x.alpha_channel)
+        self.frame_info
+            .as_ref()
+            .and_then(|x| x.info_alpha_channel())
     }
 
     pub fn grayscale(&self) -> Option<bool> {
-        self.frame_info.as_ref().and_then(|x| x.grayscale)
+        self.frame_info.as_ref().and_then(|x| x.info_grayscale())
     }
 
     pub fn bit_depth(&self) -> Option<u8> {
-        self.frame_info.as_ref().and_then(|x| x.bit_depth)
+        self.frame_info.as_ref().and_then(|x| x.info_bit_depth())
     }
 
     pub fn is_svg(&self) -> bool {
@@ -155,7 +165,7 @@ impl Metadata {
     pub fn transformations_applied(&self) -> bool {
         self.image_info
             .as_ref()
-            .map(|x| x.transformations_applied)
+            .map(|x| x.transformation_ignore_exif())
             .unwrap_or(false)
     }
 
@@ -169,13 +179,13 @@ impl Metadata {
     }
 
     pub fn dimensions_inch(&self) -> Option<(f64, f64)> {
-        self.image_info.as_ref().and_then(|x| x.dimensions_inch)
+        self.image_info.as_ref().and_then(|x| x.dimensions_inch())
     }
 
     pub fn dimensions_text(&self) -> Option<String> {
         self.image_info
             .as_ref()
-            .and_then(|x| x.dimensions_text.clone())
+            .and_then(|x| x.info_dimensions_text().map(|x| x.to_string()))
     }
 
     pub fn file_name(&self) -> Option<String> {

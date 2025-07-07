@@ -60,7 +60,7 @@ impl Queue {
     async fn apply(&self, image: LpImage) -> anyhow::Result<()> {
         let file = image.file().unwrap();
         #[allow(unused_mut)]
-        let editor = glycin::Editor::new(file.clone());
+        let editor = glycin::Editor::new(file.clone()).edit().await?;
 
         let mut list = Vec::new();
         self.operations.rcu(|current_operations| {
@@ -69,7 +69,7 @@ impl Queue {
         });
 
         let operations = Operations::new(list);
-        let edit_instruction = editor.apply_sparse(operations).await?;
+        let edit_instruction = editor.apply_sparse(&operations).await?;
 
         if edit_instruction.apply_to(file).await? == EditOutcome::Unchanged {
             log::warn!("Writing new files is not supported yet");

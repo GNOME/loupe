@@ -1,4 +1,4 @@
-// Copyright (c) 2023-2024 Sophie Herold
+// Copyright (c) 2023-2025 Sophie Herold
 // Copyright (c) 2023 Automeris naranja
 // Copyright (c) 2023 Christopher Davis
 // Copyright (c) 2024 Andre Klapper

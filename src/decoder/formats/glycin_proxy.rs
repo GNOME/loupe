@@ -59,11 +59,11 @@ impl Glycin {
             log::trace!("Image info received");
 
             let mut metadata: Metadata = Metadata::default();
-            metadata.set_image_info(image.info().clone());
+            metadata.set_image_info(image.details().clone());
             metadata.set_mime_type(image.mime_type().to_string());
             updater.send(DecoderUpdate::Metadata(Box::new(metadata)));
 
-            let dimensions = (image.info().width, image.info().height);
+            let dimensions = (image.details().width(), image.details().height());
             tiles.set_original_dimensions(dimensions);
 
             let frame = image.next_frame().await?;
