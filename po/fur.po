@@ -7,22 +7,29 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2024-04-18 09:02+0000\n"
-"PO-Revision-Date: 2024-04-22 14:30+0200\n"
+"POT-Creation-Date: 2025-07-07 20:28+0000\n"
+"PO-Revision-Date: 2025-07-10 15:24+0200\n"
 "Last-Translator: \n"
 "Language-Team: Friulian <fur@li.org>\n"
 "Language: fur\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.4.2\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.6\n"
 
 #: data/org.gnome.Loupe.desktop.in.in:3
-#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:29 src/window.rs:881
+#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:32
+#: src/widgets/image_window.rs:866
 msgid "Image Viewer"
 msgstr "Visualizadôr imagjins"
 
-#: data/org.gnome.Loupe.desktop.in.in:11
+#: data/org.gnome.Loupe.desktop.in.in:4
+#: data/org.gnome.Loupe.metainfo.xml.in.in:13
+msgid "View images"
+msgstr "Visualize imagjins"
+
+#: data/org.gnome.Loupe.desktop.in.in:12
 msgid "Picture;Graphics;Loupe;"
 msgstr "Imagjin;Figure;Grafiche;Loupe;"
 
@@ -31,13 +38,9 @@ msgid "Show the image properties sidebar"
 msgstr "Mostre la sbare laterâl des proprietâts de imagjin"
 
 #. developer_name tag deprecated with Appstream 1.0
-#: data/org.gnome.Loupe.metainfo.xml.in.in:8 src/about.rs:32
+#: data/org.gnome.Loupe.metainfo.xml.in.in:8 src/about.rs:35
 msgid "The GNOME Project"
 msgstr "Il Progjet GNOME"
-
-#: data/org.gnome.Loupe.metainfo.xml.in.in:13
-msgid "View images"
-msgstr "Visualize imagjins"
 
 #: data/org.gnome.Loupe.metainfo.xml.in.in:15
 msgid "Browse through your images and inspect their metadata with:"
@@ -66,351 +69,753 @@ msgstr "Scurtis gjenerichis"
 
 #: data/resources/gtk/help-overlay.ui:14
 msgctxt "shortcut window"
-msgid "Show Main Menu"
-msgstr "Mostre il menù principâl"
+msgid "Copy Image or Selected Text to Clipboard"
+msgstr "Copie intes notis la imagjin o il test selezionât"
 
 #: data/resources/gtk/help-overlay.ui:20
-msgctxt "shortcut window"
-msgid "Copy Image or Metadata to Clipboard"
-msgstr "Copie la imagjin o i metadâts tes notis"
-
-#: data/resources/gtk/help-overlay.ui:26
 msgctxt "shortcut window"
 msgid "Move Image to Trash"
 msgstr "Sposte la imagjin te scovacere"
 
-#: data/resources/gtk/help-overlay.ui:32
+#: data/resources/gtk/help-overlay.ui:26
 msgctxt "shortcut window"
 msgid "Permanently Delete Image"
 msgstr "Elimine par simpri la imagjin"
 
-#: data/resources/gtk/help-overlay.ui:38
+#: data/resources/gtk/help-overlay.ui:32
 msgctxt "shortcut window"
-msgid "Toggle Image Properties"
-msgstr "Comute proprietâts de imagjin"
+msgid "Open Image with Other App"
+msgstr "Vierç imagjin cun altre aplicazion"
 
-#: data/resources/gtk/help-overlay.ui:44
+#: data/resources/gtk/help-overlay.ui:38
 msgctxt "shortcut window"
 msgid "Set as Background"
 msgstr "Met come fonts"
 
-#: data/resources/gtk/help-overlay.ui:50
-msgctxt "shortcut window"
-msgid "Toggle Fullscreen"
-msgstr "Comute la modalitât plen visôr"
-
-#: data/resources/gtk/help-overlay.ui:56
-msgctxt "shortcut window"
-msgid "Leave Fullscreen"
-msgstr "Jes dal plen visôr"
-
-#: data/resources/gtk/help-overlay.ui:62
+#: data/resources/gtk/help-overlay.ui:44
 msgctxt "shortcut window"
 msgid "New Window"
 msgstr "Gnûf barcon"
 
-#: data/resources/gtk/help-overlay.ui:68
+#: data/resources/gtk/help-overlay.ui:50
 msgctxt "shortcut window"
 msgid "Open Help"
 msgstr "Vierç il jutori"
 
-#: data/resources/gtk/help-overlay.ui:74
+#: data/resources/gtk/help-overlay.ui:56
 msgctxt "shortcut window"
 msgid "Show Keyboard Shortcuts"
 msgstr "Mostre lis scurtis di tastiere"
 
-#: data/resources/gtk/help-overlay.ui:80
+#: data/resources/gtk/help-overlay.ui:62
 msgctxt "shortcut window"
 msgid "Close Window"
 msgstr "Siere il barcon"
 
-#: data/resources/gtk/help-overlay.ui:86
+#: data/resources/gtk/help-overlay.ui:68
 msgctxt "shortcut window"
 msgid "Quit"
 msgstr "Jes"
 
-#: data/resources/gtk/help-overlay.ui:94
+#: data/resources/gtk/help-overlay.ui:76
 msgctxt "shortcut window"
 msgid "Navigate Images"
 msgstr "Navighe tra lis imagjins"
 
-#: data/resources/gtk/help-overlay.ui:98 data/resources/gtk/help-overlay.ui:112
-#: data/resources/gtk/help-overlay.ui:224
-#: data/resources/gtk/help-overlay.ui:238
+#: data/resources/gtk/help-overlay.ui:80 data/resources/gtk/help-overlay.ui:94
+#: data/resources/gtk/help-overlay.ui:235
+#: data/resources/gtk/help-overlay.ui:249
 msgctxt "shortcut window"
 msgid "Next Image"
 msgstr "Imagjin sucessive"
 
-#: data/resources/gtk/help-overlay.ui:105
-#: data/resources/gtk/help-overlay.ui:119
-#: data/resources/gtk/help-overlay.ui:231
-#: data/resources/gtk/help-overlay.ui:245
+#: data/resources/gtk/help-overlay.ui:87 data/resources/gtk/help-overlay.ui:101
+#: data/resources/gtk/help-overlay.ui:242
+#: data/resources/gtk/help-overlay.ui:256
 msgctxt "shortcut window"
 msgid "Previous Image"
 msgstr "Imagjin precedente"
 
-#: data/resources/gtk/help-overlay.ui:125
+#: data/resources/gtk/help-overlay.ui:107
 msgctxt "shortcut window"
 msgid "First Image"
 msgstr "Prime imagjin"
 
-#: data/resources/gtk/help-overlay.ui:131
+#: data/resources/gtk/help-overlay.ui:113
 msgctxt "shortcut window"
 msgid "Last Image"
 msgstr "Ultime imagjin"
 
-#: data/resources/gtk/help-overlay.ui:139
+#: data/resources/gtk/help-overlay.ui:121
 msgctxt "shortcut window"
 msgid "Rotate Image"
 msgstr "Volte la imagjin"
 
-#: data/resources/gtk/help-overlay.ui:142
-#: data/resources/gtk/help-overlay.ui:263
+#: data/resources/gtk/help-overlay.ui:124
+#: data/resources/gtk/help-overlay.ui:274
+#: data/resources/gtk/help-overlay.ui:315
 msgctxt "shortcut window"
 msgid "Rotate Clockwise"
 msgstr "Volte in sens orari"
 
-#: data/resources/gtk/help-overlay.ui:148
-#: data/resources/gtk/help-overlay.ui:269
+#: data/resources/gtk/help-overlay.ui:130
+#: data/resources/gtk/help-overlay.ui:280
+#: data/resources/gtk/help-overlay.ui:321
 msgctxt "shortcut window"
 msgid "Rotate Counterclockwise"
 msgstr "Volte in sens antiorari"
 
-#: data/resources/gtk/help-overlay.ui:156
+#: data/resources/gtk/help-overlay.ui:138
 msgctxt "shortcut window"
 msgid "Zoom Image"
 msgstr "Ingrandìs la imagjin"
 
-#: data/resources/gtk/help-overlay.ui:159
-#: data/resources/gtk/help-overlay.ui:251
+#: data/resources/gtk/help-overlay.ui:141
+#: data/resources/gtk/help-overlay.ui:262
 msgctxt "shortcut window"
 msgid "Zoom In"
 msgstr "Ingrandìs"
 
-#: data/resources/gtk/help-overlay.ui:165
-#: data/resources/gtk/help-overlay.ui:257
+#: data/resources/gtk/help-overlay.ui:147
+#: data/resources/gtk/help-overlay.ui:268
 msgctxt "shortcut window"
 msgid "Zoom Out"
 msgstr "Impiçulìs"
 
-#: data/resources/gtk/help-overlay.ui:171
+#: data/resources/gtk/help-overlay.ui:153
 msgctxt "shortcut window"
 msgid "Best Fit"
 msgstr "Adate"
 
-#: data/resources/gtk/help-overlay.ui:177
+#: data/resources/gtk/help-overlay.ui:159
 msgctxt "shortcut window"
 msgid "Original Scale"
 msgstr "Scjale origjinâl"
 
-#: data/resources/gtk/help-overlay.ui:183
+#: data/resources/gtk/help-overlay.ui:165
 msgctxt "shortcut window"
 msgid "200% Scale"
 msgstr "Scjale al 200%"
 
-#: data/resources/gtk/help-overlay.ui:191
+#: data/resources/gtk/help-overlay.ui:173
 msgctxt "shortcut window"
 msgid "Pan View"
 msgstr "Viodude panoramiche"
 
-#: data/resources/gtk/help-overlay.ui:194
+#: data/resources/gtk/help-overlay.ui:176
 msgctxt "shortcut window"
 msgid "Pan Left"
 msgstr "Slargje a çampe"
 
-#: data/resources/gtk/help-overlay.ui:200
+#: data/resources/gtk/help-overlay.ui:182
 msgctxt "shortcut window"
 msgid "Pan Right"
 msgstr "Slargje a diestre"
 
-#: data/resources/gtk/help-overlay.ui:206
+#: data/resources/gtk/help-overlay.ui:188
 msgctxt "shortcut window"
 msgid "Pan Up"
 msgstr "Slargje in sù"
 
-#: data/resources/gtk/help-overlay.ui:212
+#: data/resources/gtk/help-overlay.ui:194
 msgctxt "shortcut window"
 msgid "Pan Down"
 msgstr "Slargje in jù"
 
-#: data/resources/gtk/help-overlay.ui:220
+#: data/resources/gtk/help-overlay.ui:202
+msgctxt "shortcut window"
+msgid "View"
+msgstr "Viodude"
+
+#: data/resources/gtk/help-overlay.ui:205
+msgctxt "shortcut window"
+msgid "Toggle Fullscreen"
+msgstr "Comute la modalitât plen visôr"
+
+#: data/resources/gtk/help-overlay.ui:211
+msgctxt "shortcut window"
+msgid "Leave Fullscreen"
+msgstr "Jes dal plen visôr"
+
+#: data/resources/gtk/help-overlay.ui:217
+msgctxt "shortcut window"
+msgid "Toggle Image Properties"
+msgstr "Comute proprietâts de imagjin"
+
+#: data/resources/gtk/help-overlay.ui:223
+msgctxt "shortcut window"
+msgid "Show Main Menu"
+msgstr "Mostre il menù principâl"
+
+#: data/resources/gtk/help-overlay.ui:231
 msgctxt "shortcut window"
 msgid "Gestures"
 msgstr "Mots"
 
-#. Translators: Replace "translator-credits" with your names, one name per line
-#: src/about.rs:41
-msgid "translator-credits"
-msgstr "Fabio Tomat <f.t.public@gmail.com>, 2024"
+#: data/resources/gtk/help-overlay.ui:288
+msgctxt "shortcut window"
+msgid "Editing"
+msgstr "Modifiche"
 
-#: src/about.rs:42
+#: data/resources/gtk/help-overlay.ui:291
+msgctxt "shortcut window"
+msgid "Open Editing View"
+msgstr "Vierç viodude di modifiche"
+
+#: data/resources/gtk/help-overlay.ui:297
+msgctxt "shortcut window"
+msgid "Replace Original"
+msgstr "Sostituìs origjinâl"
+
+#: data/resources/gtk/help-overlay.ui:303
+msgctxt "shortcut window"
+msgid "Save As"
+msgstr "Salve come"
+
+#: data/resources/gtk/help-overlay.ui:309
+msgctxt "shortcut window"
+msgid "Cancel"
+msgstr "Anule"
+
+#: data/resources/gtk/help-overlay.ui:327
+msgctxt "shortcut window"
+msgid "Mirror Horizontally"
+msgstr "Spielâ in orizontâl"
+
+#: data/resources/gtk/help-overlay.ui:333
+msgctxt "shortcut window"
+msgid "Mirror Vertically"
+msgstr "Spielâ in verticâl"
+
+#: data/resources/gtk/help-overlay.ui:339
+msgctxt "shortcut window"
+msgid "Apply Crop"
+msgstr "Apliche ritai"
+
+#. Translators: Replace "translator-credits" with your names, one name per line
+#: src/about.rs:45
+msgid "translator-credits"
+msgstr "Fabio Tomat <f.t.public@gmail.com>, 2025"
+
+#: src/about.rs:46
 msgid "Copyright © 2020–2024 Christopher Davis et al."
 msgstr "Copyright © 2020–2024 Christopher Davis e altris"
 
-#: src/file_model.rs:129
+#: src/file_model.rs:180
 msgid "Could not list other files in directory."
 msgstr "Impussibil listâ i altris files te cartele."
 
-#. Translators: short for "north" in GPS coordinate
-#: src/metadata/gps.rs:165
-msgid "N"
-msgstr "N"
-
-#. Translators: short for "south" in GPS coordinate
-#: src/metadata/gps.rs:168
-msgid "S"
-msgstr "S"
-
-#. Translators: short for "east" in GPS coordinate
-#: src/metadata/gps.rs:190
-msgid "E"
-msgstr "E"
-
-#. Translators: short for "west" in GPS coordinate
-#: src/metadata/gps.rs:193
-msgid "W"
-msgstr "O"
+#. Translators: Display of the f-number <https://en.wikipedia.org/wiki/F-number>. {} will be replaced with the number
+#: src/metadata.rs:263
+msgid "\\u{192}\\u{2215}{}"
+msgstr "\\u{192}\\u{2215}{}"
 
 #. Translators: Fractional exposure time (photography) in seconds
-#: src/metadata/mod.rs:262
+#: src/metadata.rs:276
 msgid "1\\u{2215}{}\\u{202F}s"
 msgstr "1\\u{2215}{}\\u{202F}s"
 
 #. Translators: Exposure time (photography) in seconds
-#: src/metadata/mod.rs:270
-#| msgid "{}\\u{202F}mm"
+#: src/metadata.rs:284
 msgid "{}\\u{202F}s"
 msgstr "{}\\u{202F}s"
 
-#. Translators: Unit for focal length in millimeters
-#: src/metadata/mod.rs:296
+#: src/metadata.rs:298
 msgid "{}\\u{202F}mm"
 msgstr "{}\\u{202F}mm"
+
+#. Translators: short for "north" in GPS coordinate
+#: src/metadata.rs:338
+msgid "N"
+msgstr "N"
+
+#. Translators: short for "south" in GPS coordinate
+#: src/metadata.rs:342
+msgid "S"
+msgstr "S"
+
+#. Translators: short for "east" in GPS coordinate
+#: src/metadata.rs:351
+msgid "E"
+msgstr "E"
+
+#. Translators: short for "west" in GPS coordinate
+#: src/metadata.rs:355
+msgid "W"
+msgstr "O"
 
 #. Translators: This is the date and time format we use in metadata output etc.
 #. The format has to follow <https://docs.gtk.org/glib/method.DateTime.format.html>
 #. The default is already translated. Don't change if you are not sure what to
 #. use.
-#: src/util/mod.rs:37
+#: src/util.rs:39
 #, c-format
 msgid "%x %X"
 msgstr "%x %X"
 
-#: src/util/mod.rs:180 src/window.rs:702
+#: src/util.rs:182 src/widgets/image_window.rs:638
 msgid "Failed to restore image from trash"
 msgstr "Nol è stât pussibil ripristinâ de scovacere la imagjin"
 
-#: src/util/mod.rs:201
-msgid "Failed to open image"
-msgstr "Nol è stât pussibil vierzi la imagjin"
+#: src/widgets/drag_overlay.ui:15
+msgid "Drop Image to View"
+msgstr "Mole la imagjin par viodile"
 
-#: src/widgets/image_page.ui:6 src/window.ui:16
-msgid "_Open With…"
-msgstr "_Vierç cun…"
+#: src/widgets/edit/crop.rs:363
+msgid "Failed to Edit Image"
+msgstr "Impussibil modifica la imagjin"
 
-#: src/widgets/image_page.ui:14 src/window.ui:24
-msgid "_Print…"
-msgstr "Stam_pe…"
+#: src/widgets/edit/crop.ui:6
+msgid "Free"
+msgstr "Forme libare"
 
-#: src/widgets/image_page.ui:18
-msgid "_Copy"
-msgstr "_Copie"
+#: src/widgets/edit/crop.ui:11
+msgid "Original"
+msgstr "Origjinâl"
 
-#: src/widgets/image_page.ui:23 src/window.ui:29
+#: src/widgets/edit/crop.ui:16
+msgid "Square"
+msgstr "Cuadrât"
+
+#: src/widgets/edit/crop.ui:21
+msgid "5:4"
+msgstr "5:4"
+
+#: src/widgets/edit/crop.ui:26
+msgid "4:3"
+msgstr "4:3"
+
+#: src/widgets/edit/crop.ui:31
+msgid "3:2"
+msgstr "3:2"
+
+#: src/widgets/edit/crop.ui:36
+msgid "16:9"
+msgstr "16:9"
+
+#: src/widgets/edit/crop.ui:77 src/widgets/edit/crop.ui:364
+msgid "Aspect Ratio"
+msgstr "Proporzions"
+
+#: src/widgets/edit/crop.ui:91
+msgid "_Free"
+msgstr "_Forme libare"
+
+#: src/widgets/edit/crop.ui:109
+msgid "_Original"
+msgstr "_Origjinâl"
+
+#: src/widgets/edit/crop.ui:127
+msgid "_Square"
+msgstr "_Cuadrât"
+
+#: src/widgets/edit/crop.ui:145
+msgid "_5:4"
+msgstr "_5:4"
+
+#: src/widgets/edit/crop.ui:166
+msgid "_4:3"
+msgstr "_4:3"
+
+#: src/widgets/edit/crop.ui:187
+msgid "_3:2"
+msgstr "_3:2"
+
+#: src/widgets/edit/crop.ui:208
+msgid "_16:9"
+msgstr "_16:9"
+
+#: src/widgets/edit/crop.ui:231 src/widgets/edit/crop.ui:377
+msgid "Orientation Landscape"
+msgstr "Orientament orizontâl"
+
+#: src/widgets/edit/crop.ui:240 src/widgets/edit/crop.ui:389
+msgid "Orientation Portrait"
+msgstr "Orientament verticâl"
+
+#: src/widgets/edit/crop.ui:252 src/widgets/image_page.ui:15
+#: src/widgets/image_window.ui:25
 msgid "Rotate"
 msgstr "Volte"
 
-#: src/widgets/image_page.ui:34 src/window.ui:40
+#: src/widgets/edit/crop.ui:261 src/widgets/edit/crop.ui:407
+msgid "Rotate Counter Clockwise"
+msgstr "Volte in sens antiorari"
+
+#: src/widgets/edit/crop.ui:268
+msgid "Rotate Clockwise"
+msgstr "Volte in sens orari"
+
+#: src/widgets/edit/crop.ui:278
+msgid "Flip"
+msgstr "Ribalte"
+
+#: src/widgets/edit/crop.ui:287 src/widgets/edit/crop.ui:415
+msgid "Mirror Horizontally"
+msgstr "Spiele in orizontâl"
+
+#: src/widgets/edit/crop.ui:294
+msgid "Mirror Vertically"
+msgstr "Spiele in verticâl"
+
+#: src/widgets/edit/crop.ui:306 src/widgets/edit/crop.ui:429
+msgid "_Reset"
+msgstr "_Ristabilìs"
+
+#: src/widgets/edit/crop.ui:307 src/widgets/edit/crop.ui:431
+msgid "Undo Changes in this View"
+msgstr "Disfe modifichis in cheste viodude"
+
+#: src/widgets/edit/crop_selection.ui:46
+msgid "Crop Selection"
+msgstr "Ritaie selezion"
+
+#. Translators: Filename suffix
+#. Translators: Filename suffix, {} is replaced by a number
+#: src/widgets/edit_window.rs:192 src/widgets/edit_window.rs:195
+msgid " (Edited)"
+msgid_plural " (Edited {})"
+msgstr[0] " (Modificât)"
+msgstr[1] " (Modificâts {})"
+
+#: src/widgets/edit_window.rs:290 src/widgets/edit_window.rs:316
+msgid "Failed to save image."
+msgstr "Nol è stât pussibil salvâ la imagjin."
+
+#: src/widgets/edit_window.rs:346
+msgid "Editing Image"
+msgstr "Modifiche imagjin"
+
+#: src/widgets/edit_window.rs:363
+msgid "Failed to edit image."
+msgstr "Nol è stât pussibil modificâ la imagjin."
+
+#: src/widgets/edit_window.rs:373 src/widgets/edit_window.rs:396
+msgid "Failed to Save Image"
+msgstr "Impussibil salvâ la imagjin"
+
+#: src/widgets/edit_window.rs:379
+msgid "Saving Image"
+msgstr "Salvament imagjin"
+
+#: src/widgets/edit_window.ui:64
+msgid "_Cancel"
+msgstr "_Anule"
+
+#: src/widgets/edit_window.ui:71
+msgid "_Save"
+msgstr "_Salve"
+
+#: src/widgets/edit_window.ui:92
+msgid "_Save As…"
+msgstr "_Salve come…"
+
+#: src/widgets/edit_window.ui:100
+msgid "Keep original and create a new file"
+msgstr "Manten l'origjinâl e cree un gnûf file"
+
+#: src/widgets/edit_window.ui:120
+msgid "_Replace Original"
+msgstr "_Sostituìs origjinâl"
+
+#: src/widgets/edit_window.ui:128
+msgid "Original image will be moved to the trash"
+msgstr "La imagjin origjinâl e vignarà spostade te scovacere"
+
+#: src/widgets/error_details.rs:79
+msgid ""
+"The following error occurred. If you think this is an issue with the "
+"program, please include this information when you report the error."
+msgstr ""
+"Al è capitât chest erôr. Se tu pensis che chest al sedi un probleme dal "
+"program, inclût cheste informazion cuant che tu segnalis l'erôr."
+
+#: src/widgets/error_details.ui:4
+msgid "Error Details"
+msgstr "Detais dal erôr"
+
+#: src/widgets/error_details.ui:19
+msgid ""
+"The image loader reported the following when trying to load or edit the "
+"image. Please include this information when you report an error. If "
+"possible, please also provide the image that causes the issue."
+msgstr ""
+"Il cjariadôr di imagjins al à segnalât chest cuant che si cirive di cjariâ o "
+"modificâ la imagjin. Inclût cheste informazion cuant che tu segnalis un "
+"erôr. Se pussibil, furnìs ancje la imagjin che e à causât il probleme."
+
+#: src/widgets/error_details.ui:24
+msgid "Error Message"
+msgstr "Messaç dal erôr"
+
+#: src/widgets/error_details.ui:28
+msgid "Copy Error Message"
+msgstr "Copie messaç di erôr"
+
+#: src/widgets/error_details.ui:68
+msgid "Report _Issue"
+msgstr "Segnale _probleme"
+
+#: src/widgets/image_page.rs:227
+msgid ""
+"No image loaders available. Maybe the “glycin-loaders” package with "
+"compatibility version “{}” is not installed."
+msgstr ""
+"Nissun cjariadôr di imagjins disponibil. Forsit il pachet “glycin-loaders” "
+"cu ka version di compatibilitât “{}” nol è instalât."
+
+#: src/widgets/image_page.rs:242
+msgid "The image format “{} ({})” is known but not installed."
+msgstr "Il formât di imagjin “{} ({})” al è cognossût ma nol è instalât."
+
+#: src/widgets/image_page.rs:249
+msgid "Unknown image format “{} ({}).”"
+msgstr "Formât imagjin “{} ({})” no cognossût."
+
+#: src/widgets/image_page.rs:277
+msgid "There is not enough free memory available to load this image."
+msgstr "No 'nd è avonde memorie libare disponibile par cjariâ cheste imagjin."
+
+#: src/widgets/image_page.rs:281
+msgid "Either the image file is corrupted or it contains unsupported elements."
+msgstr ""
+"O il file de imagjin al è ruvinât o al conten elements che no son supuartâts."
+
+#: src/widgets/image_page.ui:6 src/widgets/image_window.ui:16
+msgid "_Open With…"
+msgstr "_Vierç cun…"
+
+#: src/widgets/image_page.ui:10 src/widgets/image_window.ui:20
+msgid "_Print…"
+msgstr "Stam_pe…"
+
+#: src/widgets/image_page.ui:26 src/widgets/image_window.ui:36
 msgid "_Set as Background…"
 msgstr "Met come _fondâl…"
+
+#: src/widgets/image_page.ui:30 src/widgets/image_window.ui:40
+msgid "_Delete"
+msgstr "_Elimine"
+
+#: src/widgets/image_page.ui:34
+msgid "_Copy"
+msgstr "_Copie"
 
 #: src/widgets/image_page.ui:63
 msgid "Could not Load Image"
 msgstr "Impussibil cjariâ la imagjin"
 
-#: src/widgets/image_page.ui:97 src/window.ui:106
+#: src/widgets/image_page.ui:71
+msgid "More _Information"
+msgstr "Plui _informazions"
+
+#: src/widgets/image_page.ui:81
+msgid "_Reload"
+msgstr "_Torne cjame"
+
+#: src/widgets/image_page.ui:123 src/widgets/image_window.ui:101
 msgid "Rotate Left"
 msgstr "Zire a çampe"
 
-#: src/widgets/image_page.ui:107 src/window.ui:116
+#: src/widgets/image_page.ui:133 src/widgets/image_window.ui:111
 msgid "Rotate Right"
 msgstr "Zire a diestre"
 
+#: src/widgets/image_view.rs:197
+msgid "{} %"
+msgstr "{} %"
+
 #. Translators: This is a toast notification, informing the user that
 #. an image has been set as background.
-#: src/widgets/image_view.rs:682
+#: src/widgets/image_view.rs:836
 msgid "Set as background."
 msgstr "Metût come fondâl."
 
-#: src/widgets/image_view.rs:695
+#: src/widgets/image_view.rs:849
 msgid "Could not set background."
 msgstr "Impussibil configurâ il fondâl."
 
-#: src/widgets/image_view.ui:27
+#: src/widgets/image_view.ui:30
 msgid "Previous Image"
 msgstr "Imagjin precedente"
 
-#: src/widgets/image_view.ui:38
+#: src/widgets/image_view.ui:40
 msgid "Next Image"
 msgstr "Imagjin sucessive"
 
-#: src/widgets/image_view.ui:63
+#: src/widgets/image_view.ui:74
 msgid "Zoom Out"
 msgstr "Impiçulìs"
 
-#: src/widgets/image_view.ui:74
+#: src/widgets/image_view.ui:85
 msgid "Zoom In"
 msgstr "Ingrandìs"
 
-#: src/widgets/image_view.ui:85
+#: src/widgets/image_view.ui:100
+msgid "Toggle Zoom"
+msgstr "Comute ingrandiment"
+
+#: src/widgets/image_view.ui:108
+msgid "Zoom to Specific Level"
+msgstr "Ingrandìs a un specific nivel"
+
+#: src/widgets/image_view.ui:237
+msgid "Custom Zoom Level"
+msgstr "Nivel di ingrandiment personalizât"
+
+#: src/widgets/image_view.ui:243
+msgid "Zoom to Specified Level"
+msgstr "Ingrandìs a un nivel specificât"
+
+#: src/widgets/image_window.rs:502
+msgid "Supported image formats"
+msgstr "Formâts imagjin supuartâts"
+
+#: src/widgets/image_window.rs:508
+msgid "All files"
+msgstr "Ducj i files"
+
+#: src/widgets/image_window.rs:515
+msgid "Open Image"
+msgstr "Vierç imagjin"
+
+#: src/widgets/image_window.rs:601
+msgid "Image copied to clipboard"
+msgstr "Imagjin copiade intes notis"
+
+#: src/widgets/image_window.rs:622
+msgid "Image moved to trash"
+msgstr "Imagjin spostade te scovacere"
+
+#: src/widgets/image_window.rs:623
+msgid "Undo"
+msgstr "Disfe"
+
+#: src/widgets/image_window.rs:653
+msgid "Failed to move image to trash"
+msgstr "Nol è stât pussibil spostâ la imagjin te scovacere"
+
+#: src/widgets/image_window.rs:677
+msgid "Permanently Delete Image?"
+msgstr "Eliminâ par simpri la imagjin?"
+
+#: src/widgets/image_window.rs:679
+msgid "After deleting the image “{}” it will be permanently lost."
+msgstr "Dopo de eliminazion la imagjin “{}” e larà pierdude par simpri."
+
+#: src/widgets/image_window.rs:687
+msgid "Cancel"
+msgstr "Anule"
+
+#: src/widgets/image_window.rs:688
+msgid "Delete"
+msgstr "Elimine"
+
+#: src/widgets/image_window.rs:699
+msgid "Failed to delete image"
+msgstr "Nol è stât pussibil eliminâ la imagjin"
+
+#: src/widgets/image_window.ui:6
+msgid "_New Window"
+msgstr "_Gnûf Barcon"
+
+#: src/widgets/image_window.ui:10
+msgid "_Open…"
+msgstr "_Vierç…"
+
+#: src/widgets/image_window.ui:46
+msgid "_Help"
+msgstr "_Jutori"
+
+#: src/widgets/image_window.ui:50
+msgid "_Keyboard Shortcuts"
+msgstr "Scurtis di _tastiere"
+
+#: src/widgets/image_window.ui:54
+msgid "_About Image Viewer"
+msgstr "_Informazions su Visualizadôr imagjins"
+
+#: src/widgets/image_window.ui:87
 msgid "Toggle Fullscreen"
 msgstr "Comute modalitât plen visôr"
 
-#: src/widgets/print.rs:116
+#: src/widgets/image_window.ui:93
+msgid "Main Menu"
+msgstr "Menù principâl"
+
+#: src/widgets/image_window.ui:125
+msgid "Image Properties"
+msgstr "Propietâts de imagjin"
+
+#: src/widgets/image_window.ui:132
+msgid "Edit Image"
+msgstr "Modifiche imagjin"
+
+#: src/widgets/image_window.ui:220
+msgid "View Images"
+msgstr "Visualize imagjins"
+
+#: src/widgets/image_window.ui:221
+msgid "Drag and drop images here"
+msgstr "Strissine e mole lis imagjins achì"
+
+#: src/widgets/image_window.ui:225
+msgid "_Open Files…"
+msgstr "_Vierç files…"
+
+#: src/widgets/print.rs:108
 msgid "Top"
 msgstr "Sore"
 
-#: src/widgets/print.rs:117
+#: src/widgets/print.rs:109
 msgid "Center"
 msgstr "Centri"
 
-#: src/widgets/print.rs:118
+#: src/widgets/print.rs:110
 msgid "Bottom"
 msgstr "Sot"
 
-#: src/widgets/print.rs:119
+#: src/widgets/print.rs:111
 msgid "Left"
 msgstr "Çampe"
 
-#: src/widgets/print.rs:120
+#: src/widgets/print.rs:112
 msgid "Right"
 msgstr "Diestre"
 
 #. Translators: Shorthand for centimeter
-#: src/widgets/print.rs:156
+#: src/widgets/print.rs:148
 msgid "cm"
 msgstr "cm"
 
 #. Translators: Shorthand for inch
-#: src/widgets/print.rs:158
+#: src/widgets/print.rs:150
 msgid "in"
 msgstr "in"
 
 #. Translators: Shorthand for pixel
-#: src/widgets/print.rs:160
+#: src/widgets/print.rs:152
 msgid "px"
 msgstr "px"
 
 #. Translators: {} is a placeholder for the filename
-#: src/widgets/print.rs:382
+#: src/widgets/print.rs:361
 msgid "Print “{}”"
 msgstr "Stampe “{}”"
 
-#: src/widgets/print.rs:803
+#: src/widgets/print.rs:476
+msgid "Continue…"
+msgstr "Continue…"
+
+#: src/widgets/print.rs:477
+msgid "Print Image"
+msgstr "Stampe imagjin"
+
+#: src/widgets/print.rs:791
 msgid "_Scale"
 msgstr "_Scjale"
 
-#: src/widgets/print.rs:806
+#: src/widgets/print.rs:794
 msgid "_Width"
 msgstr "_Largjece"
 
@@ -459,7 +864,7 @@ msgstr "_Orizontâl"
 msgid "_Vertical"
 msgstr "_Verticâl"
 
-#: src/widgets/print.ui:142 src/widgets/properties_view.ui:53
+#: src/widgets/print.ui:142 src/widgets/properties_view.ui:56
 msgid "Image Size"
 msgstr "Dimension de imagjin"
 
@@ -475,189 +880,112 @@ msgstr "_Jemple spazi"
 msgid "H_eight"
 msgstr "A_ltece"
 
-#: src/widgets/properties_view.rs:234
+#: src/widgets/properties_view.rs:258
 msgid "Unknown"
 msgstr "No cognossût"
 
 #. Translators: Addition of image being transparent to format name
-#: src/widgets/properties_view.rs:238
+#: src/widgets/properties_view.rs:262
 msgid ", transparent"
 msgstr ", trasparent"
 
 #. Translators: Addition of image being grayscale to format name
-#: src/widgets/properties_view.rs:243
+#: src/widgets/properties_view.rs:267
 msgid ", grayscale"
 msgstr ", scjale di grîs"
 
 #. Translators: Addition of bit size to format name
-#: src/widgets/properties_view.rs:248
+#: src/widgets/properties_view.rs:272
 msgid ", {}\\u{202F}bit"
 msgstr ", {}\\u{202F}bit"
 
-#: src/widgets/properties_view.rs:299
+#: src/widgets/properties_view.rs:290
+#| msgid "1\\u{2215}{}\\u{202F}s"
+msgid "{}\\u{202F}\\u{D7}\\u{202F}{}"
+msgstr "{}\\u{202F}\\u{D7}\\u{202F}{}"
+
+#: src/widgets/properties_view.rs:329
 msgid "Image Coordinates Copied"
 msgstr "Coordenadis de imagjin copiadis"
 
-#: src/widgets/properties_view.ui:19
+#: src/widgets/properties_view.ui:20
 msgid "Folder"
 msgstr "Cartele"
 
-#: src/widgets/properties_view.ui:26
+#: src/widgets/properties_view.ui:28
 msgid "Open Containing Folder"
 msgstr "Vierç cartele che e conten"
 
-#: src/widgets/properties_view.ui:39
+#: src/widgets/properties_view.ui:41
 msgid "URI"
 msgstr "URI"
 
-#: src/widgets/properties_view.ui:62
+#: src/widgets/properties_view.ui:66
 msgid "Image Format"
 msgstr "Formât de imagjin"
 
-#: src/widgets/properties_view.ui:71
+#: src/widgets/properties_view.ui:76
 msgid "File Size"
 msgstr "Dimension dal file"
 
-#: src/widgets/properties_view.ui:84
+#: src/widgets/properties_view.ui:90
 msgid "File Created"
 msgstr "File creât"
 
-#: src/widgets/properties_view.ui:93
+#: src/widgets/properties_view.ui:100
 msgid "File Modified"
 msgstr "File modificât"
 
 #. Translators: This is a label for GPS coordinates
-#: src/widgets/properties_view.ui:106
+#: src/widgets/properties_view.ui:114
 msgid "Location"
 msgstr "Posizion"
 
-#: src/widgets/properties_view.ui:116
+#: src/widgets/properties_view.ui:125
 msgid "Copy Coordinates"
 msgstr "Copie coordenadis"
 
-#: src/widgets/properties_view.ui:127
+#: src/widgets/properties_view.ui:136
 msgid "Open Location"
 msgstr "Vierç posizion"
 
-#: src/widgets/properties_view.ui:140
+#: src/widgets/properties_view.ui:149
 msgid "Originally Created"
 msgstr "Creât in origjin"
 
-#: src/widgets/properties_view.ui:149
+#: src/widgets/properties_view.ui:159
+msgid "Comment"
+msgstr "Coment"
+
+#: src/widgets/properties_view.ui:169
 msgid "Aperture"
 msgstr "Viertidure"
 
-#: src/widgets/properties_view.ui:158
+#: src/widgets/properties_view.ui:179
 msgid "Exposure"
 msgstr "Esposizion"
 
-#: src/widgets/properties_view.ui:167
+#: src/widgets/properties_view.ui:189
 msgid "ISO"
 msgstr "ISO"
 
-#: src/widgets/properties_view.ui:176
+#: src/widgets/properties_view.ui:199
 msgid "Focal Length"
 msgstr "Lungjece focâl"
 
-#: src/widgets/properties_view.ui:185
+#: src/widgets/properties_view.ui:209
 msgid "Maker, Model"
 msgstr "Produtôr, model"
 
-#: src/window.rs:569
-msgid "Supported image formats"
-msgstr "Formâts imagjin supuartâts"
+#: src/widgets/window.rs:222
+msgid "Show Details"
+msgstr "Mostre detais"
 
-#: src/window.rs:575
-msgid "All files"
-msgstr "Ducj i files"
+#~ msgid "Copy to Clipboard"
+#~ msgstr "Copie intes notis"
 
-#: src/window.rs:582
-msgid "Open Image"
-msgstr "Vierç imagjin"
-
-#: src/window.rs:668
-msgid "Image copied to clipboard"
-msgstr "Imagjin copiade intes notis"
-
-#: src/window.rs:689
-msgid "Image moved to trash"
-msgstr "Imagjin spostade te scovacere"
-
-#: src/window.rs:690
-msgid "Undo"
-msgstr "Disfe"
-
-#: src/window.rs:716
-msgid "Failed to move image to trash"
-msgstr "Nol è stât pussibil spostâ la imagjin te scovacere"
-
-#: src/window.rs:742
-msgid "Permanently Delete Image?"
-msgstr "Eliminâ par simpri la imagjin?"
-
-#: src/window.rs:744
-msgid "After deleting the image “{}” it will be permanently lost."
-msgstr "Dopo de eliminazion la imagjin “{}” e larà pierdude par simpri."
-
-#: src/window.rs:752
-msgid "Cancel"
-msgstr "Anule"
-
-#: src/window.rs:753
-msgid "Delete"
-msgstr "Elimine"
-
-#: src/window.rs:764
-msgid "Failed to delete image"
-msgstr "Nol è stât pussibil eliminâ la imagjin"
-
-#: src/window.ui:6
-msgid "_New Window"
-msgstr "_Gnûf Barcon"
-
-#: src/window.ui:10
-msgid "_Open…"
-msgstr "_Vierç…"
-
-#: src/window.ui:46
-msgid "_Help"
-msgstr "_Jutori"
-
-#: src/window.ui:50
-msgid "_Keyboard Shortcuts"
-msgstr "Scurtis di _tastiere"
-
-#: src/window.ui:54
-msgid "_About Image Viewer"
-msgstr "_Informazions su Visualizadôr imagjins"
-
-#: src/window.ui:85
-msgid "Copy to Clipboard"
-msgstr "Copie intes notis"
-
-#: src/window.ui:92
-msgid "Move to Trash"
-msgstr "Sposte te scovacere"
-
-#: src/window.ui:98
-msgid "Main Menu"
-msgstr "Menù principâl"
-
-#: src/window.ui:130
-msgid "Image Properties"
-msgstr "Propietâts de imagjin"
-
-#: src/window.ui:174
-msgid "View Images"
-msgstr "Visualize imagjins"
-
-#: src/window.ui:175
-msgid "Drag and drop images here"
-msgstr "Strissine e mole lis imagjins achì"
-
-#: src/window.ui:179
-msgid "_Open Files…"
-msgstr "_Vierç files…"
+#~ msgid "Move to Trash"
+#~ msgstr "Sposte te scovacere"
 
 #~ msgid "The Loupe Team"
 #~ msgstr "Il grup di Loupe"
@@ -697,9 +1025,6 @@ msgstr "_Vierç files…"
 
 #~ msgid "Animated PNG"
 #~ msgstr "PNG animât"
-
-#~ msgid "Unknown image format: {}"
-#~ msgstr "Formât imagjin no cognossût: {}"
 
 #~ msgid "Unknown image format"
 #~ msgstr "Formât imagjin no cognossût"
