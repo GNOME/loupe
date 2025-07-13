@@ -3,32 +3,37 @@
 # This file is distributed under the same license as the Loupe package.
 # MarcosPatrick <marcosgnr2002@yahoo.com.br>, 2023.
 # Leônidas Araújo <leorusvellt@hotmail.com>, 2023-2024.
-# Juliano de Souza Camargo <julianosc@pm.me>, 2024.
 # Rafael Fontenelle <rafaelff@gnome.org>, 2023-2025.
 # Álvaro Burns, 2025.
+# Juliano de Souza Camargo <julianosc@pm.me>, 2024-2025.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2025-03-05 23:37+0000\n"
-"PO-Revision-Date: 2025-03-05 20:55-0300\n"
-"Last-Translator: Álvaro Burns\n"
+"POT-Creation-Date: 2025-07-07 20:28+0000\n"
+"PO-Revision-Date: 2025-07-13 09:46-0300\n"
+"Last-Translator: Juliano de Souza Camargo <julianosc@pm.me>\n"
 "Language-Team: Brazilian Portuguese <https://br.gnome.org/traducao>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Gtranslator 47.1\n"
+"X-Generator: Gtranslator 48.0\n"
 
 #: data/org.gnome.Loupe.desktop.in.in:3
-#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:31
+#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:32
 #: src/widgets/image_window.rs:866
 msgid "Image Viewer"
 msgstr "Visualizador de imagens"
 
-#: data/org.gnome.Loupe.desktop.in.in:11
+#: data/org.gnome.Loupe.desktop.in.in:4
+#: data/org.gnome.Loupe.metainfo.xml.in.in:13
+msgid "View images"
+msgstr "Veja imagens"
+
+#: data/org.gnome.Loupe.desktop.in.in:12
 msgid "Picture;Graphics;Loupe;"
 msgstr "Imagem;Foto;Imagens;Fotos;Gráfico;Loupe;"
 
@@ -37,13 +42,9 @@ msgid "Show the image properties sidebar"
 msgstr "Mostrar a barra lateral de propriedades da imagem"
 
 #. developer_name tag deprecated with Appstream 1.0
-#: data/org.gnome.Loupe.metainfo.xml.in.in:8 src/about.rs:34
+#: data/org.gnome.Loupe.metainfo.xml.in.in:8 src/about.rs:35
 msgid "The GNOME Project"
 msgstr "O Projeto GNOME"
-
-#: data/org.gnome.Loupe.metainfo.xml.in.in:13
-msgid "View images"
-msgstr "Ver imagens"
 
 #: data/org.gnome.Loupe.metainfo.xml.in.in:15
 msgid "Browse through your images and inspect their metadata with:"
@@ -296,7 +297,7 @@ msgid "Apply Crop"
 msgstr "Aplica corte"
 
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/about.rs:43
+#: src/about.rs:45
 msgid "translator-credits"
 msgstr ""
 "Marcos Patrick <marcosgnr2002@yahoo.com.br>\n"
@@ -306,7 +307,7 @@ msgstr ""
 "Juliano de Souza Camargo <julianosc@pm.me>\n"
 "Jhonata Fernandes <fjhonata14@gmail.com>"
 
-#: src/about.rs:44
+#: src/about.rs:46
 msgid "Copyright © 2020–2024 Christopher Davis et al."
 msgstr "Copyright © 2020–2024 Christopher Davis et al."
 
@@ -315,41 +316,41 @@ msgid "Could not list other files in directory."
 msgstr "Não foi possível listar outros arquivos no diretório."
 
 #. Translators: Display of the f-number <https://en.wikipedia.org/wiki/F-number>. {} will be replaced with the number
-#: src/metadata.rs:253
+#: src/metadata.rs:263
 msgid "\\u{192}\\u{2215}{}"
 msgstr "\\u{192}\\u{2215}{}"
 
 #. Translators: Fractional exposure time (photography) in seconds
-#: src/metadata.rs:266
+#: src/metadata.rs:276
 msgid "1\\u{2215}{}\\u{202F}s"
 msgstr "1\\u{2215}{}\\u{202F}s"
 
 #. Translators: Exposure time (photography) in seconds
-#: src/metadata.rs:274
+#: src/metadata.rs:284
 msgid "{}\\u{202F}s"
 msgstr "{}\\u{202F}s"
 
-#: src/metadata.rs:288
+#: src/metadata.rs:298
 msgid "{}\\u{202F}mm"
 msgstr "{}\\u{202F}mm"
 
 #. Translators: short for "north" in GPS coordinate
-#: src/metadata.rs:328
+#: src/metadata.rs:338
 msgid "N"
 msgstr "N"
 
 #. Translators: short for "south" in GPS coordinate
-#: src/metadata.rs:332
+#: src/metadata.rs:342
 msgid "S"
 msgstr "S"
 
 #. Translators: short for "east" in GPS coordinate
-#: src/metadata.rs:341
+#: src/metadata.rs:351
 msgid "E"
 msgstr "L"
 
 #. Translators: short for "west" in GPS coordinate
-#: src/metadata.rs:345
+#: src/metadata.rs:355
 msgid "W"
 msgstr "O"
 
@@ -370,7 +371,7 @@ msgstr "Falha ao restaurar a imagem da lixeira"
 msgid "Drop Image to View"
 msgstr "Solte uma imagem para vê-la"
 
-#: src/widgets/edit/crop.rs:360
+#: src/widgets/edit/crop.rs:363
 msgid "Failed to Edit Image"
 msgstr "Falha ao editar a imagem"
 
@@ -495,15 +496,15 @@ msgstr "Falha ao salvar a imagem."
 msgid "Editing Image"
 msgstr "Editando imagem"
 
-#: src/widgets/edit_window.rs:360
+#: src/widgets/edit_window.rs:363
 msgid "Failed to edit image."
 msgstr "Falha ao editar a imagem."
 
-#: src/widgets/edit_window.rs:370 src/widgets/edit_window.rs:393
+#: src/widgets/edit_window.rs:373 src/widgets/edit_window.rs:396
 msgid "Failed to Save Image"
 msgstr "Falha ao salvar a imagem"
 
-#: src/widgets/edit_window.rs:376
+#: src/widgets/edit_window.rs:379
 msgid "Saving Image"
 msgstr "Salvando imagem"
 
