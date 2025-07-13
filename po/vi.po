@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2025-03-05 22:50+0000\n"
-"PO-Revision-Date: 2025-03-16 14:39+0700\n"
+"POT-Creation-Date: 2025-06-18 18:43+0000\n"
+"PO-Revision-Date: 2025-06-29 22:56+0700\n"
 "Last-Translator: Cas Pascal <casboi86@gmail.com>\n"
 "Language-Team: Vietnamese <gnome-vi-list@gnome.org>\n"
 "Language: vi\n"
@@ -17,32 +17,38 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Gtranslator 42.0\n"
+"X-Generator: Gtranslator 48.0\n"
+"X-DL-Lang: vi\n"
+"X-DL-Module: loupe\n"
+"X-DL-Branch: main\n"
+"X-DL-Domain: po\n"
+"X-DL-State: None\n"
 
 #: data/org.gnome.Loupe.desktop.in.in:3
-#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:31
+#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:32
 #: src/widgets/image_window.rs:866
 msgid "Image Viewer"
 msgstr "Bộ xem ảnh"
 
-#: data/org.gnome.Loupe.desktop.in.in:11
+#: data/org.gnome.Loupe.desktop.in.in:4
+#: data/org.gnome.Loupe.metainfo.xml.in.in:13
+msgid "View images"
+msgstr "Xem ảnh"
+
+#: data/org.gnome.Loupe.desktop.in.in:12
 msgid "Picture;Graphics;Loupe;"
 msgstr ""
-"Picture;Slideshow;Graphics;Loupe;Hình ảnh;Hinh anh;Trình chiếu;Trinh chieu;"
-"Đồ họa;Do hoa;Kính lúp;Kinh lup;"
+"Picture;Slideshow;Graphics;Loupe;Hình ảnh;Hinh anh;Trình chiếu;Trinh "
+"chieu;Đồ họa;Do hoa;Kính lúp;Kinh lup;"
 
 #: data/org.gnome.Loupe.gschema.xml.in:6
 msgid "Show the image properties sidebar"
 msgstr "Hiện thanh bên thuộc tính ảnh"
 
 #. developer_name tag deprecated with Appstream 1.0
-#: data/org.gnome.Loupe.metainfo.xml.in.in:8 src/about.rs:34
+#: data/org.gnome.Loupe.metainfo.xml.in.in:8 src/about.rs:35
 msgid "The GNOME Project"
 msgstr "Dự án GNOME"
-
-#: data/org.gnome.Loupe.metainfo.xml.in.in:13
-msgid "View images"
-msgstr "Xem ảnh"
 
 #: data/org.gnome.Loupe.metainfo.xml.in.in:15
 msgid "Browse through your images and inspect their metadata with:"
@@ -295,11 +301,11 @@ msgid "Apply Crop"
 msgstr "Hoàn tất Cắt xén"
 
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/about.rs:43
+#: src/about.rs:45
 msgid "translator-credits"
 msgstr "Nhóm Việt hóa GNOME <gnome-vi-list@gnome.org>"
 
-#: src/about.rs:44
+#: src/about.rs:46
 msgid "Copyright © 2020–2024 Christopher Davis et al."
 msgstr "Bản quyền © 2020–2024 Christopher Davis và cộng sự."
 
@@ -363,7 +369,7 @@ msgstr "Gặp lỗi khi lấy lại ảnh từ Thùng rác"
 msgid "Drop Image to View"
 msgstr "Thả Ảnh vào Đây để Xem"
 
-#: src/widgets/edit/crop.rs:360
+#: src/widgets/edit/crop.rs:363
 msgid "Failed to Edit Image"
 msgstr "Gặp lỗi khi chỉnh sửa ảnh"
 
@@ -749,7 +755,7 @@ msgstr "Thuộc tính ảnh"
 
 #: src/widgets/image_window.ui:132
 msgid "Edit Image"
-msgstr "Ảnh đầu"
+msgstr "Chỉnh sửa Ảnh"
 
 #: src/widgets/image_window.ui:220
 msgid "View Images"
