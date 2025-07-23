@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2025-01-24 11:34+0000\n"
-"PO-Revision-Date: 2025-01-26 21:06+0100\n"
+"POT-Creation-Date: 2025-07-07 20:28+0000\n"
+"PO-Revision-Date: 2025-07-17 15:34+0200\n"
 "Last-Translator: Davide Ferracin <davide.ferracin@protonmail.com>\n"
 "Language-Team: Italian <gnome-it-list@gnome.org>\n"
 "Language: it\n"
@@ -19,12 +19,17 @@ msgstr ""
 "Generated-By: Babel 2.15.0\n"
 
 #: data/org.gnome.Loupe.desktop.in.in:3
-#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:31
-#: src/widgets/image_window.rs:859
+#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:32
+#: src/widgets/image_window.rs:866
 msgid "Image Viewer"
 msgstr "Visualizzatore immagini"
 
-#: data/org.gnome.Loupe.desktop.in.in:11
+#: data/org.gnome.Loupe.desktop.in.in:4
+#: data/org.gnome.Loupe.metainfo.xml.in.in:13
+msgid "View images"
+msgstr "Visualizza immagini"
+
+#: data/org.gnome.Loupe.desktop.in.in:12
 msgid "Picture;Graphics;Loupe;"
 msgstr "Immagine;Fotografia;Grafica;Immagini;Loupe;"
 
@@ -33,13 +38,9 @@ msgid "Show the image properties sidebar"
 msgstr "Mostra il pannello laterale con le proprietà dell'immagine"
 
 #. developer_name tag deprecated with Appstream 1.0
-#: data/org.gnome.Loupe.metainfo.xml.in.in:8 src/about.rs:34
+#: data/org.gnome.Loupe.metainfo.xml.in.in:8 src/about.rs:35
 msgid "The GNOME Project"
 msgstr "Il progetto GNOME"
-
-#: data/org.gnome.Loupe.metainfo.xml.in.in:13
-msgid "View images"
-msgstr "Visualizza immagini"
 
 #: data/org.gnome.Loupe.metainfo.xml.in.in:15
 msgid "Browse through your images and inspect their metadata with:"
@@ -152,12 +153,14 @@ msgstr "Ruota immagine"
 
 #: data/resources/gtk/help-overlay.ui:124
 #: data/resources/gtk/help-overlay.ui:274
+#: data/resources/gtk/help-overlay.ui:315
 msgctxt "shortcut window"
 msgid "Rotate Clockwise"
 msgstr "Ruota in senso orario"
 
 #: data/resources/gtk/help-overlay.ui:130
 #: data/resources/gtk/help-overlay.ui:280
+#: data/resources/gtk/help-overlay.ui:321
 msgctxt "shortcut window"
 msgid "Rotate Counterclockwise"
 msgstr "Ruota in senso antiorario"
@@ -249,12 +252,52 @@ msgctxt "shortcut window"
 msgid "Gestures"
 msgstr "Gesti"
 
+#: data/resources/gtk/help-overlay.ui:288
+msgctxt "shortcut window"
+msgid "Editing"
+msgstr "Modifica"
+
+#: data/resources/gtk/help-overlay.ui:291
+msgctxt "shortcut window"
+msgid "Open Editing View"
+msgstr "Apre la vista Modifica"
+
+#: data/resources/gtk/help-overlay.ui:297
+msgctxt "shortcut window"
+msgid "Replace Original"
+msgstr "Sostituisce l'originale"
+
+#: data/resources/gtk/help-overlay.ui:303
+msgctxt "shortcut window"
+msgid "Save As"
+msgstr "Salva come"
+
+#: data/resources/gtk/help-overlay.ui:309
+msgctxt "shortcut window"
+msgid "Cancel"
+msgstr "Annulla"
+
+#: data/resources/gtk/help-overlay.ui:327
+msgctxt "shortcut window"
+msgid "Mirror Horizontally"
+msgstr "Rifletti orizzontalmente"
+
+#: data/resources/gtk/help-overlay.ui:333
+msgctxt "shortcut window"
+msgid "Mirror Vertically"
+msgstr "Rifletti verticalmente"
+
+#: data/resources/gtk/help-overlay.ui:339
+msgctxt "shortcut window"
+msgid "Apply Crop"
+msgstr "Applica ritaglio"
+
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/about.rs:43
+#: src/about.rs:45
 msgid "translator-credits"
 msgstr "Davide Ferracin <davide.ferracin@protonmail.com>"
 
-#: src/about.rs:44
+#: src/about.rs:46
 msgid "Copyright © 2020–2024 Christopher Davis et al."
 msgstr "Copyright © 2020–2024 Christopher Davis et al."
 
@@ -263,41 +306,41 @@ msgid "Could not list other files in directory."
 msgstr "Elenco degli altri file nella directory non riuscito."
 
 #. Translators: Display of the f-number <https://en.wikipedia.org/wiki/F-number>. {} will be replaced with the number
-#: src/metadata.rs:242
+#: src/metadata.rs:263
 msgid "\\u{192}\\u{2215}{}"
 msgstr "\\u{192}\\u{2215}{}"
 
 #. Translators: Fractional exposure time (photography) in seconds
-#: src/metadata.rs:255
+#: src/metadata.rs:276
 msgid "1\\u{2215}{}\\u{202F}s"
 msgstr "1\\u{2215}{}\\u{202F}s"
 
 #. Translators: Exposure time (photography) in seconds
-#: src/metadata.rs:263
+#: src/metadata.rs:284
 msgid "{}\\u{202F}s"
 msgstr "{}\\u{202F}s"
 
-#: src/metadata.rs:277
+#: src/metadata.rs:298
 msgid "{}\\u{202F}mm"
 msgstr "{}\\u{202F}mm"
 
 #. Translators: short for "north" in GPS coordinate
-#: src/metadata.rs:317
+#: src/metadata.rs:338
 msgid "N"
 msgstr "N"
 
 #. Translators: short for "south" in GPS coordinate
-#: src/metadata.rs:321
+#: src/metadata.rs:342
 msgid "S"
 msgstr "S"
 
 #. Translators: short for "east" in GPS coordinate
-#: src/metadata.rs:330
+#: src/metadata.rs:351
 msgid "E"
 msgstr "E"
 
 #. Translators: short for "west" in GPS coordinate
-#: src/metadata.rs:334
+#: src/metadata.rs:355
 msgid "W"
 msgstr "O"
 
@@ -318,7 +361,7 @@ msgstr "Ripristino dell'immagine dal cestino non riuscito"
 msgid "Drop Image to View"
 msgstr "Rilasciare l'immagine per mostrarla"
 
-#: src/widgets/edit/crop.rs:397
+#: src/widgets/edit/crop.rs:363
 msgid "Failed to Edit Image"
 msgstr "Modifica dell'immagine non riuscita"
 
@@ -350,6 +393,10 @@ msgstr "3:2"
 msgid "16:9"
 msgstr "16:9"
 
+#: src/widgets/edit/crop.ui:77 src/widgets/edit/crop.ui:364
+msgid "Aspect Ratio"
+msgstr "Rapporto di forma"
+
 #: src/widgets/edit/crop.ui:91
 msgid "_Free"
 msgstr "_Forma libera"
@@ -366,102 +413,119 @@ msgstr "_Quadrato"
 msgid "_5:4"
 msgstr "_5:4"
 
-#: src/widgets/edit/crop.ui:163
+#: src/widgets/edit/crop.ui:166
 msgid "_4:3"
 msgstr "_4:3"
 
-#: src/widgets/edit/crop.ui:181
+#: src/widgets/edit/crop.ui:187
 msgid "_3:2"
 msgstr "_3:2"
 
-#: src/widgets/edit/crop.ui:199
+#: src/widgets/edit/crop.ui:208
 msgid "_16:9"
 msgstr "_16:9"
 
-#: src/widgets/edit/crop.ui:219 src/widgets/edit/crop.ui:366
+#: src/widgets/edit/crop.ui:231 src/widgets/edit/crop.ui:377
 msgid "Orientation Landscape"
 msgstr "Orientamento orizzontale"
 
-#: src/widgets/edit/crop.ui:228 src/widgets/edit/crop.ui:378
+#: src/widgets/edit/crop.ui:240 src/widgets/edit/crop.ui:389
 msgid "Orientation Portrait"
 msgstr "Orientamento verticale"
 
-#: src/widgets/edit/crop.ui:249 src/widgets/edit/crop.ui:396
+#: src/widgets/edit/crop.ui:252 src/widgets/image_page.ui:15
+#: src/widgets/image_window.ui:25
+msgid "Rotate"
+msgstr "Rotazione"
+
+#: src/widgets/edit/crop.ui:261 src/widgets/edit/crop.ui:407
 msgid "Rotate Counter Clockwise"
 msgstr "Ruota in senso antiorario"
 
-#: src/widgets/edit/crop.ui:256
+#: src/widgets/edit/crop.ui:268
 msgid "Rotate Clockwise"
 msgstr "Ruota in senso orario"
 
-#: src/widgets/edit/crop.ui:275 src/widgets/edit/crop.ui:404
+#: src/widgets/edit/crop.ui:278
+msgid "Flip"
+msgstr "Riflessione"
+
+#: src/widgets/edit/crop.ui:287 src/widgets/edit/crop.ui:415
 msgid "Mirror Horizontally"
 msgstr "Rifletti orizzontalmente"
 
-#: src/widgets/edit/crop.ui:282
+#: src/widgets/edit/crop.ui:294
 msgid "Mirror Vertically"
 msgstr "Rifletti verticalmente"
 
-#: src/widgets/edit/crop.ui:295 src/widgets/edit/crop.ui:420
+#: src/widgets/edit/crop.ui:306 src/widgets/edit/crop.ui:429
+msgid "_Reset"
+msgstr "_Reimposta"
+
+#: src/widgets/edit/crop.ui:307 src/widgets/edit/crop.ui:431
 msgid "Undo Changes in this View"
 msgstr "Annulla modifiche in questa vista"
 
-#: src/widgets/edit/crop.ui:353
-msgid "Aspect Ratio"
-msgstr "Rapporto di forma"
-
-#: src/widgets/edit/crop_selection.ui:116
+#: src/widgets/edit/crop_selection.ui:46
 msgid "Crop Selection"
 msgstr "Ritaglia selezione"
 
-#: src/widgets/edit_window.rs:179 src/widgets/edit_window.rs:193
+#. Translators: Filename suffix
+#. Translators: Filename suffix, {} is replaced by a number
+#: src/widgets/edit_window.rs:192 src/widgets/edit_window.rs:195
+msgid " (Edited)"
+msgid_plural " (Edited {})"
+msgstr[0] " (modificato)"
+msgstr[1] " ({} modificati)"
+
+#: src/widgets/edit_window.rs:290 src/widgets/edit_window.rs:316
 msgid "Failed to save image."
 msgstr "Salvataggio dell'immagine non riuscito."
 
-#: src/widgets/edit_window.rs:217
+#: src/widgets/edit_window.rs:346
 msgid "Editing Image"
 msgstr "Modifica immagine"
 
-#: src/widgets/edit_window.rs:226
+#: src/widgets/edit_window.rs:363
 msgid "Failed to edit image."
 msgstr "Modifica dell'immagine non riuscita."
 
-#: src/widgets/edit_window.rs:236 src/widgets/edit_window.rs:254
+#: src/widgets/edit_window.rs:373 src/widgets/edit_window.rs:396
 msgid "Failed to Save Image"
 msgstr "Salvataggio dell'immagine non riuscito"
 
-#: src/widgets/edit_window.rs:242
+#: src/widgets/edit_window.rs:379
 msgid "Saving Image"
 msgstr "Salvataggio dell'immagine in corso"
 
-#: src/widgets/edit_window.ui:59
+#: src/widgets/edit_window.ui:64
 msgid "_Cancel"
 msgstr "A_nnulla"
 
-#: src/widgets/edit_window.ui:65
+#: src/widgets/edit_window.ui:71
 msgid "_Save"
 msgstr "_Salva"
 
-#: src/widgets/edit_window.ui:87
+#: src/widgets/edit_window.ui:92
 msgid "_Save As…"
 msgstr "_Salva come…"
 
-#: src/widgets/edit_window.ui:95
+#: src/widgets/edit_window.ui:100
 msgid "Keep original and create a new file"
 msgstr "Mantiene l'originale e crea un nuovo file"
 
-#: src/widgets/edit_window.ui:115
+#: src/widgets/edit_window.ui:120
 msgid "_Replace Original"
 msgstr "Sos_tituisci originale"
 
-#: src/widgets/edit_window.ui:123
+#: src/widgets/edit_window.ui:128
 msgid "Original image will be moved to the trash"
 msgstr "L'immagine originale verrà spostata nel cestino"
 
 #: src/widgets/error_details.rs:79
 msgid ""
-"The following error occured. If you think this is an issue with the program, "
-"please include this information when you report the error."
+"The following error occurred. If you think this is an issue with the "
+"program, please include this information when you report the error."
 msgstr ""
 "Si è verificato il seguente errore. Se si pensa che ci sia un problema con "
 "l'applicazione, includere queste informazioni quando si segnala l'errore."
@@ -526,10 +590,6 @@ msgstr "_Apri con…"
 msgid "_Print…"
 msgstr "Stam_pa…"
 
-#: src/widgets/image_page.ui:15 src/widgets/image_window.ui:25
-msgid "Rotate"
-msgstr "Ruota"
-
 #: src/widgets/image_page.ui:26 src/widgets/image_window.ui:36
 msgid "_Set as Background…"
 msgstr "Imposta come _sfondo…"
@@ -568,11 +628,11 @@ msgstr "{}%"
 
 #. Translators: This is a toast notification, informing the user that
 #. an image has been set as background.
-#: src/widgets/image_view.rs:838
+#: src/widgets/image_view.rs:836
 msgid "Set as background."
 msgstr "Impostata come sfondo."
 
-#: src/widgets/image_view.rs:851
+#: src/widgets/image_view.rs:849
 msgid "Could not set background."
 msgstr "Impostazione dello sfondo non riuscita."
 
@@ -599,6 +659,14 @@ msgstr "Attiva/disattiva l'ingrandimento"
 #: src/widgets/image_view.ui:108
 msgid "Zoom to Specific Level"
 msgstr "Ingrandisci ad un livello specifico"
+
+#: src/widgets/image_view.ui:237
+msgid "Custom Zoom Level"
+msgstr "Livello d'ingrandimento personalizzato"
+
+#: src/widgets/image_view.ui:243
+msgid "Zoom to Specified Level"
+msgstr "Ingrandisce al livello specificato"
 
 #: src/widgets/image_window.rs:502
 msgid "Supported image formats"
