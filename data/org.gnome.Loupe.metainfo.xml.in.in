@@ -74,7 +74,7 @@
   </categories>
 
   <releases>
-    <release version="49.alpha" date="2025-07-02">
+    <release version="49.beta" date="2025-08-01">
       <description>
         <p>Update to better image loaders.</p>
       </description>

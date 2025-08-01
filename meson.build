@@ -1,7 +1,7 @@
 project(
   'loupe',
   'rust',
-  version: '49.alpha',
+  version: '49.beta',
   meson_version: '>= 0.59.0',
   default_options: [
     'warning_level=2',
