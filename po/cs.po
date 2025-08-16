@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2025-03-05 19:09+0000\n"
-"PO-Revision-Date: 2025-03-05 21:32+0100\n"
+"POT-Creation-Date: 2025-08-15 11:13+0000\n"
+"PO-Revision-Date: 2025-08-16 12:10+0200\n"
 "Last-Translator: Daniel Rusek <mail@asciiwolf.com>\n"
 "Language-Team: Czech <gnome-cs-list@gnome.org>\n"
 "Language: cs\n"
@@ -16,13 +16,18 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Poedit 3.5\n"
+"X-Generator: Poedit 3.6\n"
 
-#: data/org.gnome.Loupe.desktop.in.in:3
-#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:31
+#: data/org.gnome.Loupe.desktop.in.in:2
+#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:32
 #: src/widgets/image_window.rs:866
 msgid "Image Viewer"
 msgstr "Prohlížeč obrázků"
+
+#: data/org.gnome.Loupe.desktop.in.in:3
+#: data/org.gnome.Loupe.metainfo.xml.in.in:13
+msgid "View images"
+msgstr "Prohlížejte si obrázky"
 
 #: data/org.gnome.Loupe.desktop.in.in:11
 msgid "Picture;Graphics;Loupe;"
@@ -33,13 +38,9 @@ msgid "Show the image properties sidebar"
 msgstr "Zobrazit postranní panel vlastností obrázku"
 
 #. developer_name tag deprecated with Appstream 1.0
-#: data/org.gnome.Loupe.metainfo.xml.in.in:8 src/about.rs:34
+#: data/org.gnome.Loupe.metainfo.xml.in.in:8 src/about.rs:35
 msgid "The GNOME Project"
 msgstr "Projekt GNOME"
-
-#: data/org.gnome.Loupe.metainfo.xml.in.in:13
-msgid "View images"
-msgstr "Prohlížejte si obrázky"
 
 #: data/org.gnome.Loupe.metainfo.xml.in.in:15
 msgid "Browse through your images and inspect their metadata with:"
@@ -224,7 +225,7 @@ msgstr "Posunout dolů"
 #: data/resources/gtk/help-overlay.ui:202
 msgctxt "shortcut window"
 msgid "View"
-msgstr "Zobrazit"
+msgstr "Zobrazení"
 
 #: data/resources/gtk/help-overlay.ui:205
 msgctxt "shortcut window"
@@ -292,13 +293,13 @@ msgid "Apply Crop"
 msgstr "Použít oříznutí"
 
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/about.rs:43
+#: src/about.rs:45
 msgid "translator-credits"
 msgstr ""
 "Vojtěch Perník <translations@pervoj.cz>\n"
 "Daniel Rusek <mail@asciiwolf.com>"
 
-#: src/about.rs:44
+#: src/about.rs:46
 msgid "Copyright © 2020–2024 Christopher Davis et al."
 msgstr "Copyright © 2020–2024 Christopher Davis a spol."
 
@@ -307,41 +308,41 @@ msgid "Could not list other files in directory."
 msgstr "Nepodařilo se vypsat další soubory v adresáři."
 
 #. Translators: Display of the f-number <https://en.wikipedia.org/wiki/F-number>. {} will be replaced with the number
-#: src/metadata.rs:253
+#: src/metadata.rs:263
 msgid "\\u{192}\\u{2215}{}"
 msgstr "\\u{192}\\u{2215}{}"
 
 #. Translators: Fractional exposure time (photography) in seconds
-#: src/metadata.rs:266
+#: src/metadata.rs:276
 msgid "1\\u{2215}{}\\u{202F}s"
 msgstr "1\\u{2215}{}\\u{202F}s"
 
 #. Translators: Exposure time (photography) in seconds
-#: src/metadata.rs:274
+#: src/metadata.rs:284
 msgid "{}\\u{202F}s"
 msgstr "{}\\u{202F}s"
 
-#: src/metadata.rs:288
+#: src/metadata.rs:298
 msgid "{}\\u{202F}mm"
 msgstr "{}\\u{202F}mm"
 
 #. Translators: short for "north" in GPS coordinate
-#: src/metadata.rs:328
+#: src/metadata.rs:338
 msgid "N"
 msgstr "S"
 
 #. Translators: short for "south" in GPS coordinate
-#: src/metadata.rs:332
+#: src/metadata.rs:342
 msgid "S"
 msgstr "J"
 
 #. Translators: short for "east" in GPS coordinate
-#: src/metadata.rs:341
+#: src/metadata.rs:351
 msgid "E"
 msgstr "V"
 
 #. Translators: short for "west" in GPS coordinate
-#: src/metadata.rs:345
+#: src/metadata.rs:355
 msgid "W"
 msgstr "Z"
 
@@ -362,7 +363,7 @@ msgstr "Nepodařilo se obnovit obrázek z koše"
 msgid "Drop Image to View"
 msgstr "Přetáhněte obrázek, který chcete zobrazit"
 
-#: src/widgets/edit/crop.rs:353
+#: src/widgets/edit/crop.rs:363
 msgid "Failed to Edit Image"
 msgstr "Nepodařilo se upravit obrázek."
 
@@ -488,15 +489,15 @@ msgstr "Nepodařilo se uložit obrázek."
 msgid "Editing Image"
 msgstr "Úprava obrázku"
 
-#: src/widgets/edit_window.rs:360
+#: src/widgets/edit_window.rs:363
 msgid "Failed to edit image."
 msgstr "Nepodařilo se upravit obrázek."
 
-#: src/widgets/edit_window.rs:370 src/widgets/edit_window.rs:393
+#: src/widgets/edit_window.rs:373 src/widgets/edit_window.rs:396
 msgid "Failed to Save Image"
 msgstr "Nepodařilo se uložit obrázek"
 
-#: src/widgets/edit_window.rs:376
+#: src/widgets/edit_window.rs:379
 msgid "Saving Image"
 msgstr "Ukládání obrázku"
 
