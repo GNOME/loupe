@@ -2,65 +2,67 @@
 # Copyright (C) 2023 Loupe's COPYRIGHT HOLDER
 # This file is distributed under the same license as the Loupe package.
 # Florentina Musat <florentina.musat.28@gmail.com>, 2023.
+# Antonio Marin <gnmer.6qxyg@slmail.me>, 2025.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2024-05-11 10:03+0000\n"
-"PO-Revision-Date: 2024-08-04 13:37+0300\n"
-"Last-Translator: Florentina Mușat <florentina [dot] musat [dot] 28 [at] "
-"gmail [dot] com>\n"
+"POT-Creation-Date: 2025-08-16 10:15+0000\n"
+"PO-Revision-Date: 2025-05-26 09:20+0200\n"
+"Last-Translator: Antonio Marin <gnmer.6qxyg@slmail.me>\n"
 "Language-Team: Romanian <gnomero-list@lists.sourceforge.net>\n"
 "Language: ro\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
-"20)) ? 1 : 2);;\n"
-"X-Generator: Poedit 3.4.4\n"
+"20)) ? 1 : 2);\n"
+"X-Generator: Gtranslator 48.0\n"
+
+#: data/org.gnome.Loupe.desktop.in.in:2
+#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:32
+#: src/widgets/image_window.rs:866
+msgid "Image Viewer"
+msgstr "Imagini"
 
 #: data/org.gnome.Loupe.desktop.in.in:3
-#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:29 src/window.rs:881
-msgid "Image Viewer"
-msgstr "Vizualizator imagini"
-
-#: data/org.gnome.Loupe.desktop.in.in:11
-msgid "Picture;Graphics;Loupe;"
-msgstr "Picture;Graphics;Loupe;Imagine;Grafice;Lupă;"
-
-#: data/org.gnome.Loupe.gschema.xml.in:6
-msgid "Show the image properties sidebar"
-msgstr "Arată bara laterală a proprietăților imaginii"
-
-#. developer_name tag deprecated with Appstream 1.0
-#: data/org.gnome.Loupe.metainfo.xml.in.in:8 src/about.rs:32
-msgid "The GNOME Project"
-msgstr "Proiectul GNOME"
-
 #: data/org.gnome.Loupe.metainfo.xml.in.in:13
 msgid "View images"
 msgstr "Vizualizează imaginile"
 
+#: data/org.gnome.Loupe.desktop.in.in:11
+msgid "Picture;Graphics;Loupe;"
+msgstr "Picture;Graphics;Loupe;Imagine;Grafice;Imagini;"
+
+#: data/org.gnome.Loupe.gschema.xml.in:6
+msgid "Show the image properties sidebar"
+msgstr "Arată panoul lateral cu proprietățile imaginii"
+
+#. developer_name tag deprecated with Appstream 1.0
+#: data/org.gnome.Loupe.metainfo.xml.in.in:8 src/about.rs:35
+msgid "The GNOME Project"
+msgstr "Proiectul GNOME"
+
 #: data/org.gnome.Loupe.metainfo.xml.in.in:15
 msgid "Browse through your images and inspect their metadata with:"
-msgstr "Navigați prin imagini și inspectați datele meta cu:"
+msgstr "Răsfoiește imaginile și examinează metadatele lor cu:"
 
 #: data/org.gnome.Loupe.metainfo.xml.in.in:17
 msgid "Fast GPU accelerated image rendering"
-msgstr "Randare rapidă a imaginii GPU accelerată"
+msgstr "Afișare rapidă a imaginii, accelerată prin intermediul GPU"
 
 #: data/org.gnome.Loupe.metainfo.xml.in.in:18
 msgid "Tiled rendering for vector graphics"
-msgstr "Randare cu tile pentru grafică vectorială"
+msgstr "Afișare în bucăți pentru grafica vrctorială"
 
 #: data/org.gnome.Loupe.metainfo.xml.in.in:19
 msgid "Extendable and sandboxed image decoding"
-msgstr "Decodare extensibilă și sandbox a imaginilor"
+msgstr "Decodare extensibilă și izolată a imaginilor"
 
 #: data/org.gnome.Loupe.metainfo.xml.in.in:20
 msgid "Accessible presentation of the most important metadata."
-msgstr "Prezentare accesibilă a celor mai importante date meta."
+msgstr "Prezentare accesibilă a celor mai importante metadate."
 
 #: data/resources/gtk/help-overlay.ui:11
 msgctxt "shortcut window"
@@ -69,352 +71,757 @@ msgstr "Scurtături generale"
 
 #: data/resources/gtk/help-overlay.ui:14
 msgctxt "shortcut window"
-msgid "Show Main Menu"
-msgstr "Arată meniul principal"
+msgid "Copy Image or Selected Text to Clipboard"
+msgstr "Copiază imaginea sau textul selecționat"
 
 #: data/resources/gtk/help-overlay.ui:20
 msgctxt "shortcut window"
-msgid "Copy Image or Metadata to Clipboard"
-msgstr "Copiază imaginea sau datele meta la clipboard"
+msgid "Move Image to Trash"
+msgstr "Mută imaginea în gunoi"
 
 #: data/resources/gtk/help-overlay.ui:26
 msgctxt "shortcut window"
-msgid "Move Image to Trash"
-msgstr "Mută imaginea la gunoi"
+msgid "Permanently Delete Image"
+msgstr "Șterge definitiv imaginea"
 
 #: data/resources/gtk/help-overlay.ui:32
 msgctxt "shortcut window"
-msgid "Permanently Delete Image"
-msgstr "Ștergeți permanent imaginea"
+msgid "Open Image with Other App"
+msgstr "Deschide imaginea cu altă aplicație"
 
 #: data/resources/gtk/help-overlay.ui:38
-msgctxt "shortcut window"
-msgid "Toggle Image Properties"
-msgstr "Comută proprietățile imaginii"
-
-#: data/resources/gtk/help-overlay.ui:44
 msgctxt "shortcut window"
 msgid "Set as Background"
 msgstr "Stabilește ca fundal"
 
-#: data/resources/gtk/help-overlay.ui:50
-msgctxt "shortcut window"
-msgid "Toggle Fullscreen"
-msgstr "Comută ecranul complet"
-
-#: data/resources/gtk/help-overlay.ui:56
-msgctxt "shortcut window"
-msgid "Leave Fullscreen"
-msgstr "Părăsește ecranul complet"
-
-#: data/resources/gtk/help-overlay.ui:62
+#: data/resources/gtk/help-overlay.ui:44
 msgctxt "shortcut window"
 msgid "New Window"
 msgstr "Fereastră nouă"
 
-#: data/resources/gtk/help-overlay.ui:68
+#: data/resources/gtk/help-overlay.ui:50
 msgctxt "shortcut window"
 msgid "Open Help"
 msgstr "Deschide ajutorul"
 
-#: data/resources/gtk/help-overlay.ui:74
+#: data/resources/gtk/help-overlay.ui:56
 msgctxt "shortcut window"
 msgid "Show Keyboard Shortcuts"
-msgstr "Arată scurtăturile de tastatură"
+msgstr "Arată scurtăturile"
 
-#: data/resources/gtk/help-overlay.ui:80
+#: data/resources/gtk/help-overlay.ui:62
 msgctxt "shortcut window"
 msgid "Close Window"
 msgstr "Închide fereastra"
 
-#: data/resources/gtk/help-overlay.ui:86
+#: data/resources/gtk/help-overlay.ui:68
 msgctxt "shortcut window"
 msgid "Quit"
-msgstr "Ieșire"
+msgstr "Închide"
 
-#: data/resources/gtk/help-overlay.ui:94
+#: data/resources/gtk/help-overlay.ui:76
 msgctxt "shortcut window"
 msgid "Navigate Images"
-msgstr "Navighează imaginile"
+msgstr "Răsfoiește imaginile"
 
-#: data/resources/gtk/help-overlay.ui:98 data/resources/gtk/help-overlay.ui:112
-#: data/resources/gtk/help-overlay.ui:224
-#: data/resources/gtk/help-overlay.ui:238
+#: data/resources/gtk/help-overlay.ui:80 data/resources/gtk/help-overlay.ui:94
+#: data/resources/gtk/help-overlay.ui:235
+#: data/resources/gtk/help-overlay.ui:249
 msgctxt "shortcut window"
 msgid "Next Image"
 msgstr "Imaginea următoare"
 
-#: data/resources/gtk/help-overlay.ui:105
-#: data/resources/gtk/help-overlay.ui:119
-#: data/resources/gtk/help-overlay.ui:231
-#: data/resources/gtk/help-overlay.ui:245
+#: data/resources/gtk/help-overlay.ui:87 data/resources/gtk/help-overlay.ui:101
+#: data/resources/gtk/help-overlay.ui:242
+#: data/resources/gtk/help-overlay.ui:256
 msgctxt "shortcut window"
 msgid "Previous Image"
-msgstr "Imaginea anterioară"
+msgstr "Imaginea precedentă"
 
-#: data/resources/gtk/help-overlay.ui:125
+#: data/resources/gtk/help-overlay.ui:107
 msgctxt "shortcut window"
 msgid "First Image"
 msgstr "Prima imagine"
 
-#: data/resources/gtk/help-overlay.ui:131
+#: data/resources/gtk/help-overlay.ui:113
 msgctxt "shortcut window"
 msgid "Last Image"
 msgstr "Ultima imagine"
 
-#: data/resources/gtk/help-overlay.ui:139
+#: data/resources/gtk/help-overlay.ui:121
 msgctxt "shortcut window"
 msgid "Rotate Image"
 msgstr "Rotește imaginea"
 
-#: data/resources/gtk/help-overlay.ui:142
-#: data/resources/gtk/help-overlay.ui:263
+#: data/resources/gtk/help-overlay.ui:124
+#: data/resources/gtk/help-overlay.ui:274
+#: data/resources/gtk/help-overlay.ui:315
 msgctxt "shortcut window"
 msgid "Rotate Clockwise"
-msgstr "Rotește în sens orar"
+msgstr "Rotește la dreapta"
 
-#: data/resources/gtk/help-overlay.ui:148
-#: data/resources/gtk/help-overlay.ui:269
+#: data/resources/gtk/help-overlay.ui:130
+#: data/resources/gtk/help-overlay.ui:280
+#: data/resources/gtk/help-overlay.ui:321
 msgctxt "shortcut window"
 msgid "Rotate Counterclockwise"
-msgstr "Rotește în sens anti-orar"
+msgstr "Rotește la stânga"
 
-#: data/resources/gtk/help-overlay.ui:156
+#: data/resources/gtk/help-overlay.ui:138
 msgctxt "shortcut window"
 msgid "Zoom Image"
-msgstr "Focalizează imaginea"
+msgstr "Mărire/Micșorare"
 
-#: data/resources/gtk/help-overlay.ui:159
-#: data/resources/gtk/help-overlay.ui:251
+#: data/resources/gtk/help-overlay.ui:141
+#: data/resources/gtk/help-overlay.ui:262
 msgctxt "shortcut window"
 msgid "Zoom In"
 msgstr "Mărește"
 
-#: data/resources/gtk/help-overlay.ui:165
-#: data/resources/gtk/help-overlay.ui:257
+#: data/resources/gtk/help-overlay.ui:147
+#: data/resources/gtk/help-overlay.ui:268
 msgctxt "shortcut window"
 msgid "Zoom Out"
 msgstr "Micșorează"
 
-#: data/resources/gtk/help-overlay.ui:171
+#: data/resources/gtk/help-overlay.ui:153
 msgctxt "shortcut window"
 msgid "Best Fit"
 msgstr "Cea mai bună potrivire"
 
-#: data/resources/gtk/help-overlay.ui:177
+#: data/resources/gtk/help-overlay.ui:159
 msgctxt "shortcut window"
 msgid "Original Scale"
 msgstr "Scara originală"
 
-#: data/resources/gtk/help-overlay.ui:183
+#: data/resources/gtk/help-overlay.ui:165
 msgctxt "shortcut window"
 msgid "200% Scale"
 msgstr "Scara 200%"
 
-#: data/resources/gtk/help-overlay.ui:191
+#: data/resources/gtk/help-overlay.ui:173
 msgctxt "shortcut window"
 msgid "Pan View"
-msgstr "Vedere panoramică"
+msgstr "Mișcă vederea"
+
+#: data/resources/gtk/help-overlay.ui:176
+msgctxt "shortcut window"
+msgid "Pan Left"
+msgstr "Mișcă la stânga"
+
+#: data/resources/gtk/help-overlay.ui:182
+msgctxt "shortcut window"
+msgid "Pan Right"
+msgstr "Mișcă la dreapta"
+
+#: data/resources/gtk/help-overlay.ui:188
+msgctxt "shortcut window"
+msgid "Pan Up"
+msgstr "Mișcă în sus"
 
 #: data/resources/gtk/help-overlay.ui:194
 msgctxt "shortcut window"
-msgid "Pan Left"
-msgstr "Panoramică la stânga"
-
-#: data/resources/gtk/help-overlay.ui:200
-msgctxt "shortcut window"
-msgid "Pan Right"
-msgstr "Panoramică la dreapta"
-
-#: data/resources/gtk/help-overlay.ui:206
-msgctxt "shortcut window"
-msgid "Pan Up"
-msgstr "Panoramică în sus"
-
-#: data/resources/gtk/help-overlay.ui:212
-msgctxt "shortcut window"
 msgid "Pan Down"
-msgstr "Panoramică în jos"
+msgstr "Mișcă în jos"
 
-#: data/resources/gtk/help-overlay.ui:220
+#: data/resources/gtk/help-overlay.ui:202
+msgctxt "shortcut window"
+msgid "View"
+msgstr "Vedere"
+
+#: data/resources/gtk/help-overlay.ui:205
+msgctxt "shortcut window"
+msgid "Toggle Fullscreen"
+msgstr "Pe tot ecranul Activat/Dezactivat"
+
+#: data/resources/gtk/help-overlay.ui:211
+msgctxt "shortcut window"
+msgid "Leave Fullscreen"
+msgstr "Dezactivează Pe tot ecranul"
+
+#: data/resources/gtk/help-overlay.ui:217
+msgctxt "shortcut window"
+msgid "Toggle Image Properties"
+msgstr "Arată/Ascunde proprietățile imaginii"
+
+#: data/resources/gtk/help-overlay.ui:223
+msgctxt "shortcut window"
+msgid "Show Main Menu"
+msgstr "Arată opțiunile"
+
+#: data/resources/gtk/help-overlay.ui:231
 msgctxt "shortcut window"
 msgid "Gestures"
 msgstr "Gesturi"
 
+#: data/resources/gtk/help-overlay.ui:288
+msgctxt "shortcut window"
+msgid "Editing"
+msgstr "Modificare"
+
+#: data/resources/gtk/help-overlay.ui:291
+msgctxt "shortcut window"
+msgid "Open Editing View"
+msgstr "Deschide modul Modificare"
+
+#: data/resources/gtk/help-overlay.ui:297
+msgctxt "shortcut window"
+msgid "Replace Original"
+msgstr "Înlocuiește originalul"
+
+#: data/resources/gtk/help-overlay.ui:303
+msgctxt "shortcut window"
+msgid "Save As"
+msgstr "Salvează ca"
+
+#: data/resources/gtk/help-overlay.ui:309
+msgctxt "shortcut window"
+msgid "Cancel"
+msgstr "Anulează"
+
+#: data/resources/gtk/help-overlay.ui:327
+msgctxt "shortcut window"
+msgid "Mirror Horizontally"
+msgstr "Reflectă orizontal"
+
+#: data/resources/gtk/help-overlay.ui:333
+msgctxt "shortcut window"
+msgid "Mirror Vertically"
+msgstr "Reflectă vertical"
+
+#: data/resources/gtk/help-overlay.ui:339
+msgctxt "shortcut window"
+msgid "Apply Crop"
+msgstr "Aplică tăierea"
+
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/about.rs:41
+#: src/about.rs:45
 msgid "translator-credits"
 msgstr ""
 "Florentina Mușat <florentina [dot] musat [dot] 28 [at] gmail [dot] com>, "
-"2023-2024"
+"2023-2024\n"
+"Antonio Marin <gnmer.6qxyg@slmail.me>, 2025"
 
-#: src/about.rs:42
+#: src/about.rs:46
 msgid "Copyright © 2020–2024 Christopher Davis et al."
 msgstr "Drepturi de autor © 2020–2024 Christopher Davis și alții."
 
-#: src/file_model.rs:129
+#: src/file_model.rs:180
 msgid "Could not list other files in directory."
-msgstr "Nu s-au putut lista alte fișiere din director."
+msgstr "Nu s-a putut afișa lista fișierelor din dosar."
 
-#. Translators: short for "north" in GPS coordinate
-#: src/metadata/gps.rs:165
-msgid "N"
-msgstr "N"
-
-#. Translators: short for "south" in GPS coordinate
-#: src/metadata/gps.rs:168
-msgid "S"
-msgstr "S"
-
-#. Translators: short for "east" in GPS coordinate
-#: src/metadata/gps.rs:190
-msgid "E"
-msgstr "E"
-
-#. Translators: short for "west" in GPS coordinate
-#: src/metadata/gps.rs:193
-msgid "W"
-msgstr "V"
+#. Translators: Display of the f-number <https://en.wikipedia.org/wiki/F-number>. {} will be replaced with the number
+#: src/metadata.rs:263
+msgid "\\u{192}\\u{2215}{}"
+msgstr "\\u{192}\\u{2215}{}"
 
 #. Translators: Fractional exposure time (photography) in seconds
-#: src/metadata/mod.rs:262
+#: src/metadata.rs:276
 msgid "1\\u{2215}{}\\u{202F}s"
 msgstr "1\\u{2215}{}\\u{202F}s"
 
 #. Translators: Exposure time (photography) in seconds
-#: src/metadata/mod.rs:270
+#: src/metadata.rs:284
 msgid "{}\\u{202F}s"
 msgstr "{}\\u{202F}s"
 
-#. Translators: Unit for focal length in millimeters
-#: src/metadata/mod.rs:296
+#: src/metadata.rs:298
 msgid "{}\\u{202F}mm"
 msgstr "{}\\u{202F}mm"
+
+#. Translators: short for "north" in GPS coordinate
+#: src/metadata.rs:338
+msgid "N"
+msgstr "N"
+
+#. Translators: short for "south" in GPS coordinate
+#: src/metadata.rs:342
+msgid "S"
+msgstr "S"
+
+#. Translators: short for "east" in GPS coordinate
+#: src/metadata.rs:351
+msgid "E"
+msgstr "E"
+
+#. Translators: short for "west" in GPS coordinate
+#: src/metadata.rs:355
+msgid "W"
+msgstr "V"
 
 #. Translators: This is the date and time format we use in metadata output etc.
 #. The format has to follow <https://docs.gtk.org/glib/method.DateTime.format.html>
 #. The default is already translated. Don't change if you are not sure what to
 #. use.
-#: src/util/mod.rs:37
+#: src/util.rs:39
 #, c-format
 msgid "%x %X"
 msgstr "%x %X"
 
-#: src/util/mod.rs:180 src/window.rs:702
+#: src/util.rs:182 src/widgets/image_window.rs:638
 msgid "Failed to restore image from trash"
-msgstr "Nu s-a putut restaura imaginea de la gunoi"
+msgstr "Nu s-a putut recupera imaginea din gunoi"
 
-#: src/util/mod.rs:201
-msgid "Failed to open image"
-msgstr "Nu s-a putut deschide imaginea"
+#: src/widgets/drag_overlay.ui:15
+msgid "Drop Image to View"
+msgstr "Așează imaginea pentru a o vedea"
 
-#: src/widgets/image_page.ui:6 src/window.ui:16
-msgid "_Open With…"
-msgstr "D_eschide cu…"
+#: src/widgets/edit/crop.rs:363
+msgid "Failed to Edit Image"
+msgstr "Nu s-a putut modifica imaginea"
 
-#: src/widgets/image_page.ui:14 src/window.ui:24
-msgid "_Print…"
-msgstr "Ti_părește…"
+#: src/widgets/edit/crop.ui:6
+msgid "Free"
+msgstr "Formă liberă"
 
-#: src/widgets/image_page.ui:18
-msgid "_Copy"
-msgstr "_Copiază"
+#: src/widgets/edit/crop.ui:11
+msgid "Original"
+msgstr "Original"
 
-#: src/widgets/image_page.ui:23 src/window.ui:29
+#: src/widgets/edit/crop.ui:16
+msgid "Square"
+msgstr "Pătrat"
+
+#: src/widgets/edit/crop.ui:21
+msgid "5:4"
+msgstr "5:4"
+
+#: src/widgets/edit/crop.ui:26
+msgid "4:3"
+msgstr "4:3"
+
+#: src/widgets/edit/crop.ui:31
+msgid "3:2"
+msgstr "3:2"
+
+#: src/widgets/edit/crop.ui:36
+msgid "16:9"
+msgstr "16:9"
+
+#: src/widgets/edit/crop.ui:77 src/widgets/edit/crop.ui:364
+msgid "Aspect Ratio"
+msgstr "Proporție"
+
+#: src/widgets/edit/crop.ui:91
+msgid "_Free"
+msgstr "_Formă liberă"
+
+#: src/widgets/edit/crop.ui:109
+msgid "_Original"
+msgstr "_Original"
+
+#: src/widgets/edit/crop.ui:127
+msgid "_Square"
+msgstr "_Pătrat"
+
+#: src/widgets/edit/crop.ui:145
+msgid "_5:4"
+msgstr "_5:4"
+
+#: src/widgets/edit/crop.ui:166
+msgid "_4:3"
+msgstr "_4:3"
+
+#: src/widgets/edit/crop.ui:187
+msgid "_3:2"
+msgstr "_3:2"
+
+#: src/widgets/edit/crop.ui:208
+msgid "_16:9"
+msgstr "_16:9"
+
+#: src/widgets/edit/crop.ui:231 src/widgets/edit/crop.ui:377
+msgid "Orientation Landscape"
+msgstr "Orientare orizontală"
+
+#: src/widgets/edit/crop.ui:240 src/widgets/edit/crop.ui:389
+msgid "Orientation Portrait"
+msgstr "Orientare verticală"
+
+#: src/widgets/edit/crop.ui:252 src/widgets/image_page.ui:15
+#: src/widgets/image_window.ui:25
 msgid "Rotate"
 msgstr "Rotește"
 
-#: src/widgets/image_page.ui:34 src/window.ui:40
+#: src/widgets/edit/crop.ui:261 src/widgets/edit/crop.ui:407
+msgid "Rotate Counter Clockwise"
+msgstr "Rotește la stânga"
+
+#: src/widgets/edit/crop.ui:268
+msgid "Rotate Clockwise"
+msgstr "Rotește la dreapta"
+
+#: src/widgets/edit/crop.ui:278
+msgid "Flip"
+msgstr "Inversează"
+
+#: src/widgets/edit/crop.ui:287 src/widgets/edit/crop.ui:415
+msgid "Mirror Horizontally"
+msgstr "Reflectă orizontal"
+
+#: src/widgets/edit/crop.ui:294
+msgid "Mirror Vertically"
+msgstr "Reflectă vertical"
+
+#: src/widgets/edit/crop.ui:306 src/widgets/edit/crop.ui:429
+msgid "_Reset"
+msgstr "_Restabilește"
+
+#: src/widgets/edit/crop.ui:307 src/widgets/edit/crop.ui:431
+msgid "Undo Changes in this View"
+msgstr "Anulează modificările din această fereastră"
+
+#: src/widgets/edit/crop_selection.ui:46
+msgid "Crop Selection"
+msgstr "Taie selecția"
+
+#. Translators: Filename suffix
+#. Translators: Filename suffix, {} is replaced by a number
+#: src/widgets/edit_window.rs:192 src/widgets/edit_window.rs:195
+msgid " (Edited)"
+msgid_plural " (Edited {})"
+msgstr[0] " (modificată)"
+msgstr[1] " ({} modificate)"
+msgstr[2] " ({} modificate)"
+
+#: src/widgets/edit_window.rs:290 src/widgets/edit_window.rs:316
+msgid "Failed to save image."
+msgstr "Nu s-a putut salva imaginea."
+
+#: src/widgets/edit_window.rs:346
+msgid "Editing Image"
+msgstr "Modificare imagine"
+
+#: src/widgets/edit_window.rs:363
+msgid "Failed to edit image."
+msgstr "Nu s-a putut modifica imaginea."
+
+#: src/widgets/edit_window.rs:373 src/widgets/edit_window.rs:396
+msgid "Failed to Save Image"
+msgstr "Nu s-a putut salva imaginea"
+
+#: src/widgets/edit_window.rs:379
+msgid "Saving Image"
+msgstr "Salvare imagini"
+
+#: src/widgets/edit_window.ui:64
+msgid "_Cancel"
+msgstr "_Anulează"
+
+#: src/widgets/edit_window.ui:71
+msgid "_Save"
+msgstr "_Salvează"
+
+#: src/widgets/edit_window.ui:92
+msgid "_Save As…"
+msgstr "_Salvează ca…"
+
+#: src/widgets/edit_window.ui:100
+msgid "Keep original and create a new file"
+msgstr "Păstrează originalul și creează un fișier nou"
+
+#: src/widgets/edit_window.ui:120
+msgid "_Replace Original"
+msgstr "Înlocuiește o_riginalul"
+
+#: src/widgets/edit_window.ui:128
+msgid "Original image will be moved to the trash"
+msgstr "Imaginea originală va fi mutată în gunoi"
+
+#: src/widgets/error_details.rs:79
+msgid ""
+"The following error occurred. If you think this is an issue with the "
+"program, please include this information when you report the error."
+msgstr ""
+"A apărut următoarea eroare. Dacă se consideră că aceasta este o problemă a "
+"programului, se va include această informație la raportarea erorii."
+
+#: src/widgets/error_details.ui:4
+msgid "Error Details"
+msgstr "Detaliile erorii"
+
+#: src/widgets/error_details.ui:19
+msgid ""
+"The image loader reported the following when trying to load or edit the "
+"image. Please include this information when you report an error. If "
+"possible, please also provide the image that causes the issue."
+msgstr ""
+"Încărcătorul de imagini a raportat următoarele la încercarea de a încărca "
+"sau modifica imaginea. Se va include această informație la raportarea "
+"erorii. Dacă este posibil, se va furniza și imaginea care cauzează problema."
+
+#: src/widgets/error_details.ui:24
+msgid "Error Message"
+msgstr "Mesajul erorii"
+
+#: src/widgets/error_details.ui:28
+msgid "Copy Error Message"
+msgstr "Copiază mesajul erorii"
+
+#: src/widgets/error_details.ui:68
+msgid "Report _Issue"
+msgstr "Raportează _problema"
+
+#: src/widgets/image_page.rs:227
+msgid ""
+"No image loaders available. Maybe the “glycin-loaders” package with "
+"compatibility version “{}” is not installed."
+msgstr ""
+"Nu este disponibil niciun încărcător de imagini. Poate că nu este instalată "
+"versiunea compatibilă „{}” a pachetului „glycin-loaders”."
+
+#: src/widgets/image_page.rs:242
+msgid "The image format “{} ({})” is known but not installed."
+msgstr "Formatul de imagine „{} ({})” este cunoscut, dar nu e instalat."
+
+#: src/widgets/image_page.rs:249
+msgid "Unknown image format “{} ({}).”"
+msgstr "Format necunoscut de imagine „{} ({})”."
+
+#: src/widgets/image_page.rs:277
+msgid "There is not enough free memory available to load this image."
+msgstr "Nu există suficientă memorie liberă pentru a încărca această imagine."
+
+#: src/widgets/image_page.rs:281
+msgid "Either the image file is corrupted or it contains unsupported elements."
+msgstr ""
+"Fie fișierul de imagine este deteriorat, fie conține elemente neacceptate."
+
+#: src/widgets/image_page.ui:6 src/widgets/image_window.ui:16
+msgid "_Open With…"
+msgstr "D_eschide cu…"
+
+#: src/widgets/image_page.ui:10 src/widgets/image_window.ui:20
+msgid "_Print…"
+msgstr "Ti_părește…"
+
+#: src/widgets/image_page.ui:26 src/widgets/image_window.ui:36
 msgid "_Set as Background…"
 msgstr "_Stabilește ca fundal…"
+
+#: src/widgets/image_page.ui:30 src/widgets/image_window.ui:40
+msgid "_Delete"
+msgstr "Ș_terge"
+
+#: src/widgets/image_page.ui:34
+msgid "_Copy"
+msgstr "_Copiază"
 
 #: src/widgets/image_page.ui:63
 msgid "Could not Load Image"
 msgstr "Nu s-a putut încărca imaginea"
 
-#: src/widgets/image_page.ui:97 src/window.ui:106
+#: src/widgets/image_page.ui:71
+msgid "More _Information"
+msgstr "Alte _informații"
+
+#: src/widgets/image_page.ui:81
+msgid "_Reload"
+msgstr "_Reîncarcă"
+
+#: src/widgets/image_page.ui:123 src/widgets/image_window.ui:101
 msgid "Rotate Left"
 msgstr "Rotește la stânga"
 
-#: src/widgets/image_page.ui:107 src/window.ui:116
+#: src/widgets/image_page.ui:133 src/widgets/image_window.ui:111
 msgid "Rotate Right"
 msgstr "Rotește la dreapta"
 
+#: src/widgets/image_view.rs:197
+msgid "{} %"
+msgstr "{} %"
+
 #. Translators: This is a toast notification, informing the user that
 #. an image has been set as background.
-#: src/widgets/image_view.rs:682
+#: src/widgets/image_view.rs:836
 msgid "Set as background."
 msgstr "Stabilește ca fundal."
 
-#: src/widgets/image_view.rs:695
+#: src/widgets/image_view.rs:849
 msgid "Could not set background."
 msgstr "Nu s-a putut stabili fundalul."
 
-#: src/widgets/image_view.ui:27
+#: src/widgets/image_view.ui:30
 msgid "Previous Image"
 msgstr "Imaginea precedentă"
 
-#: src/widgets/image_view.ui:38
+#: src/widgets/image_view.ui:40
 msgid "Next Image"
 msgstr "Imaginea următoare"
 
-#: src/widgets/image_view.ui:63
+#: src/widgets/image_view.ui:74
 msgid "Zoom Out"
 msgstr "Micșorează"
 
-#: src/widgets/image_view.ui:74
+#: src/widgets/image_view.ui:85
 msgid "Zoom In"
 msgstr "Mărește"
 
-#: src/widgets/image_view.ui:85
-msgid "Toggle Fullscreen"
-msgstr "Comută ecranul complet"
+#: src/widgets/image_view.ui:100
+msgid "Toggle Zoom"
+msgstr "Mărește/Micșorează"
 
-#: src/widgets/print.rs:116
+#: src/widgets/image_view.ui:108
+msgid "Zoom to Specific Level"
+msgstr "Mărește la un nivel specific"
+
+#: src/widgets/image_view.ui:237
+msgid "Custom Zoom Level"
+msgstr "Nivel personalizat de mărire"
+
+#: src/widgets/image_view.ui:243
+msgid "Zoom to Specified Level"
+msgstr "Mărește la un nivel specific"
+
+#: src/widgets/image_window.rs:502
+msgid "Supported image formats"
+msgstr "Formate de imagine acceptate"
+
+#: src/widgets/image_window.rs:508
+msgid "All files"
+msgstr "Toate fișierele"
+
+#: src/widgets/image_window.rs:515
+msgid "Open Image"
+msgstr "Deschide imaginea"
+
+#: src/widgets/image_window.rs:601
+msgid "Image copied to clipboard"
+msgstr "Imagine copiată"
+
+#: src/widgets/image_window.rs:622
+msgid "Image moved to trash"
+msgstr "Imagine mutată în gunoi"
+
+#: src/widgets/image_window.rs:623
+msgid "Undo"
+msgstr "Refă"
+
+#: src/widgets/image_window.rs:653
+msgid "Failed to move image to trash"
+msgstr "Nu s-a putut muta imaginea în gunoi"
+
+#: src/widgets/image_window.rs:677
+msgid "Permanently Delete Image?"
+msgstr "Să fie ștearsă definitiv imaginea?"
+
+#: src/widgets/image_window.rs:679
+msgid "After deleting the image “{}” it will be permanently lost."
+msgstr "După ștergerea imaginii „{}” ea va fi pierdută definitiv."
+
+#: src/widgets/image_window.rs:687
+msgid "Cancel"
+msgstr "Anulează"
+
+#: src/widgets/image_window.rs:688
+msgid "Delete"
+msgstr "Șterge"
+
+#: src/widgets/image_window.rs:699
+msgid "Failed to delete image"
+msgstr "Nu s-a putut șterge imaginea"
+
+#: src/widgets/image_window.ui:6
+msgid "_New Window"
+msgstr "_Fereastră nouă"
+
+#: src/widgets/image_window.ui:10
+msgid "_Open…"
+msgstr "D_eschide…"
+
+#: src/widgets/image_window.ui:46
+msgid "_Help"
+msgstr "_Ajutor"
+
+#: src/widgets/image_window.ui:50
+msgid "_Keyboard Shortcuts"
+msgstr "Scurtă_turi"
+
+#: src/widgets/image_window.ui:54
+msgid "_About Image Viewer"
+msgstr "_Despre Imagini"
+
+#: src/widgets/image_window.ui:87
+msgid "Toggle Fullscreen"
+msgstr "Pe tot ecranul Activat/Dezactivat"
+
+#: src/widgets/image_window.ui:93
+msgid "Main Menu"
+msgstr "Opțiuni"
+
+#: src/widgets/image_window.ui:125
+msgid "Image Properties"
+msgstr "Proprietăți imagine"
+
+#: src/widgets/image_window.ui:132
+msgid "Edit Image"
+msgstr "Modifică imaginea"
+
+#: src/widgets/image_window.ui:220
+msgid "View Images"
+msgstr "Arată imaginile"
+
+#: src/widgets/image_window.ui:221
+msgid "Drag and drop images here"
+msgstr "Trage și așează imagini aici"
+
+#: src/widgets/image_window.ui:225
+msgid "_Open Files…"
+msgstr "D_eschide fișiere…"
+
+#: src/widgets/print.rs:108
 msgid "Top"
 msgstr "Sus"
 
-#: src/widgets/print.rs:117
+#: src/widgets/print.rs:109
 msgid "Center"
 msgstr "Centru"
 
-#: src/widgets/print.rs:118
+#: src/widgets/print.rs:110
 msgid "Bottom"
 msgstr "Jos"
 
-#: src/widgets/print.rs:119
+#: src/widgets/print.rs:111
 msgid "Left"
 msgstr "Stânga"
 
-#: src/widgets/print.rs:120
+#: src/widgets/print.rs:112
 msgid "Right"
 msgstr "Dreapta"
 
 #. Translators: Shorthand for centimeter
-#: src/widgets/print.rs:156
+#: src/widgets/print.rs:148
 msgid "cm"
 msgstr "cm"
 
 #. Translators: Shorthand for inch
-#: src/widgets/print.rs:158
+#: src/widgets/print.rs:150
 msgid "in"
 msgstr "in"
 
 #. Translators: Shorthand for pixel
-#: src/widgets/print.rs:160
+#: src/widgets/print.rs:152
 msgid "px"
 msgstr "px"
 
 #. Translators: {} is a placeholder for the filename
-#: src/widgets/print.rs:382
+#: src/widgets/print.rs:361
 msgid "Print “{}”"
 msgstr "Tipărește „{}”"
 
-#: src/widgets/print.rs:803
-msgid "_Scale"
-msgstr "_Scală"
+#: src/widgets/print.rs:476
+msgid "Continue…"
+msgstr "Continuă…"
 
-#: src/widgets/print.rs:806
+#: src/widgets/print.rs:477
+msgid "Print Image"
+msgstr "Tipărește imaginea"
+
+#: src/widgets/print.rs:791
+msgid "_Scale"
+msgstr "_Scara"
+
+#: src/widgets/print.rs:794
 msgid "_Width"
 msgstr "_Lățime"
 
@@ -437,11 +844,11 @@ msgstr "_Orientare"
 
 #: src/widgets/print.ui:72
 msgid "Portrait Page Orientation"
-msgstr "Orientarea paginii portret"
+msgstr "Orientare verticală a paginii"
 
 #: src/widgets/print.ui:80
 msgid "Landscape Page Orientation"
-msgstr "Orientarea paginii peisaj"
+msgstr "Orientarea orizontală a paginii"
 
 #: src/widgets/print.ui:89
 msgid "_Alignment"
@@ -453,23 +860,23 @@ msgstr "Margini"
 
 #: src/widgets/print.ui:111
 msgid "Margin Units"
-msgstr "Unități margină"
+msgstr "Unitățile marginilor"
 
 #: src/widgets/print.ui:128
 msgid "_Horizontal"
-msgstr "O_rizontal"
+msgstr "O_rizontală"
 
 #: src/widgets/print.ui:134
 msgid "_Vertical"
-msgstr "_Vertical"
+msgstr "_Verticală"
 
-#: src/widgets/print.ui:142 src/widgets/properties_view.ui:53
+#: src/widgets/print.ui:142 src/widgets/properties_view.ui:56
 msgid "Image Size"
-msgstr "Dimensiune imagine"
+msgstr "Mărimea imaginii"
 
 #: src/widgets/print.ui:145
 msgid "Image Size Units"
-msgstr "Unități dimensiune imagine"
+msgstr "Unitățile mărimii imaginii"
 
 #: src/widgets/print.ui:163
 msgid "_Fill Space"
@@ -479,204 +886,102 @@ msgstr "_Umple spațiul"
 msgid "H_eight"
 msgstr "Înălțim_e"
 
-#: src/widgets/properties_view.rs:234
+#: src/widgets/properties_view.rs:258
 msgid "Unknown"
 msgstr "Necunoscut"
 
 #. Translators: Addition of image being transparent to format name
-#: src/widgets/properties_view.rs:238
+#: src/widgets/properties_view.rs:262
 msgid ", transparent"
 msgstr ", transparent"
 
 #. Translators: Addition of image being grayscale to format name
-#: src/widgets/properties_view.rs:243
+#: src/widgets/properties_view.rs:267
 msgid ", grayscale"
-msgstr ", scală de gri"
+msgstr ", scară de gri"
 
 #. Translators: Addition of bit size to format name
-#: src/widgets/properties_view.rs:248
+#: src/widgets/properties_view.rs:272
 msgid ", {}\\u{202F}bit"
 msgstr ", {}\\u{202F}bit"
 
-#: src/widgets/properties_view.rs:299
+#: src/widgets/properties_view.rs:290
+msgid "{}\\u{202F}\\u{D7}\\u{202F}{}"
+msgstr "{}\\u{202F}\\u{D7}\\u{202F}{}"
+
+#: src/widgets/properties_view.rs:329
 msgid "Image Coordinates Copied"
 msgstr "Coordonatele imaginii copiate"
 
-#: src/widgets/properties_view.ui:19
+#: src/widgets/properties_view.ui:20
 msgid "Folder"
 msgstr "Dosar"
 
-#: src/widgets/properties_view.ui:26
+#: src/widgets/properties_view.ui:28
 msgid "Open Containing Folder"
-msgstr "Deschide dosarul conținător"
+msgstr "Deschide dosarul"
 
-#: src/widgets/properties_view.ui:39
+#: src/widgets/properties_view.ui:41
 msgid "URI"
 msgstr "URI"
 
-#: src/widgets/properties_view.ui:62
+#: src/widgets/properties_view.ui:66
 msgid "Image Format"
 msgstr "Format imagine"
 
-#: src/widgets/properties_view.ui:71
+#: src/widgets/properties_view.ui:76
 msgid "File Size"
-msgstr "Dimensiune fișier"
+msgstr "Mărime fișier"
 
-#: src/widgets/properties_view.ui:84
+#: src/widgets/properties_view.ui:90
 msgid "File Created"
 msgstr "Fișier creat"
 
-#: src/widgets/properties_view.ui:93
+#: src/widgets/properties_view.ui:100
 msgid "File Modified"
 msgstr "Fișier modificat"
 
 #. Translators: This is a label for GPS coordinates
-#: src/widgets/properties_view.ui:106
+#: src/widgets/properties_view.ui:114
 msgid "Location"
-msgstr "Locație"
+msgstr "Locul"
 
-#: src/widgets/properties_view.ui:116
+#: src/widgets/properties_view.ui:125
 msgid "Copy Coordinates"
 msgstr "Copiază coordonatele"
 
-#: src/widgets/properties_view.ui:127
+#: src/widgets/properties_view.ui:136
 msgid "Open Location"
-msgstr "Deschide locația"
-
-#: src/widgets/properties_view.ui:140
-msgid "Originally Created"
-msgstr "Original creat"
+msgstr "Deschide locul"
 
 #: src/widgets/properties_view.ui:149
+msgid "Originally Created"
+msgstr "Data creării"
+
+#: src/widgets/properties_view.ui:159
+msgid "Comment"
+msgstr "Comentariu"
+
+#: src/widgets/properties_view.ui:169
 msgid "Aperture"
 msgstr "Apertură"
 
-#: src/widgets/properties_view.ui:158
+#: src/widgets/properties_view.ui:179
 msgid "Exposure"
 msgstr "Expunere"
 
-#: src/widgets/properties_view.ui:167
+#: src/widgets/properties_view.ui:189
 msgid "ISO"
 msgstr "ISO"
 
-#: src/widgets/properties_view.ui:176
+#: src/widgets/properties_view.ui:199
 msgid "Focal Length"
 msgstr "Distanță focală"
 
-#: src/widgets/properties_view.ui:185
+#: src/widgets/properties_view.ui:209
 msgid "Maker, Model"
 msgstr "Fabricant, model"
 
-#: src/window.rs:569
-msgid "Supported image formats"
-msgstr "Formate de imagine suportate"
-
-#: src/window.rs:575
-msgid "All files"
-msgstr "Toate fișierele"
-
-#: src/window.rs:582
-msgid "Open Image"
-msgstr "Deschide imaginea"
-
-#: src/window.rs:668
-msgid "Image copied to clipboard"
-msgstr "Imagine copiată la clipboard"
-
-#: src/window.rs:689
-msgid "Image moved to trash"
-msgstr "Imagine mutată la gunoi"
-
-#: src/window.rs:690
-msgid "Undo"
-msgstr "Refă"
-
-#: src/window.rs:716
-msgid "Failed to move image to trash"
-msgstr "Nu s-a putut muta imaginea la gunoi"
-
-#: src/window.rs:742
-msgid "Permanently Delete Image?"
-msgstr "Ștergeți permanent imaginea?"
-
-#: src/window.rs:744
-msgid "After deleting the image “{}” it will be permanently lost."
-msgstr "După ștergerea imaginii „{}” va fi permanent pierdut."
-
-#: src/window.rs:752
-msgid "Cancel"
-msgstr "Anulează"
-
-#: src/window.rs:753
-msgid "Delete"
-msgstr "Șterge"
-
-#: src/window.rs:764
-msgid "Failed to delete image"
-msgstr "Nu s-a putut șterge imaginea"
-
-#: src/window.ui:6
-msgid "_New Window"
-msgstr "_Fereastră nouă"
-
-#: src/window.ui:10
-msgid "_Open…"
-msgstr "D_eschide…"
-
-#: src/window.ui:46
-msgid "_Help"
-msgstr "_Ajutor"
-
-#: src/window.ui:50
-msgid "_Keyboard Shortcuts"
-msgstr "Scurtături de _tastatură"
-
-#: src/window.ui:54
-msgid "_About Image Viewer"
-msgstr "Despre vizu_alizator imagini"
-
-#: src/window.ui:85
-msgid "Copy to Clipboard"
-msgstr "Copiază la clipboard"
-
-#: src/window.ui:92
-msgid "Move to Trash"
-msgstr "Mută la gunoi"
-
-#: src/window.ui:98
-msgid "Main Menu"
-msgstr "Meniu principal"
-
-#: src/window.ui:130
-msgid "Image Properties"
-msgstr "Proprietăți imagine"
-
-#: src/window.ui:174
-msgid "View Images"
-msgstr "Vizualizează imaginile"
-
-#: src/window.ui:175
-msgid "Drag and drop images here"
-msgstr "Trage și plasează imagini aici"
-
-#: src/window.ui:179
-msgid "_Open Files…"
-msgstr "D_eschide fișierele…"
-
-#~ msgid "The Loupe Team"
-#~ msgstr "Echipa Loupe"
-
-#~ msgid "Center image horizontally"
-#~ msgstr "Centrează imaginea orizontal"
-
-#~ msgid "Center image vertically"
-#~ msgstr "Centrează imaginea vertical"
-
-#~ msgid "Image Scale"
-#~ msgstr "Scara imaginii"
-
-#~ msgid "Left Margin"
-#~ msgstr "Margine din stânga"
-
-#~ msgid "Length Unit"
-#~ msgstr "Unitate de distanță"
+#: src/widgets/window.rs:222
+msgid "Show Details"
+msgstr "Arată detalii"
