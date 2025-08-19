@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2025-03-05 23:37+0000\n"
-"PO-Revision-Date: 2025-03-08 02:07+0330\n"
+"POT-Creation-Date: 2025-08-16 10:15+0000\n"
+"PO-Revision-Date: 2025-08-19 23:54+0330\n"
 "Last-Translator: Danial Behzadi <dani.behzi@ubuntu.com>\n"
 "Language-Team: Persian <fa@li.org>\n"
 "Language: fa\n"
@@ -16,12 +16,16 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n==0 || n==1);\n"
-"X-Generator: Poedit 3.5\n"
+"X-Generator: Poedit 3.6\n"
 
-#: data/org.gnome.Loupe.desktop.in.in:3 data/org.gnome.Loupe.metainfo.xml.in.in:6
-#: src/about.rs:31 src/widgets/image_window.rs:866
+#: data/org.gnome.Loupe.desktop.in.in:2 data/org.gnome.Loupe.metainfo.xml.in.in:6
+#: src/about.rs:32 src/widgets/image_window.rs:866
 msgid "Image Viewer"
 msgstr "نمایشگر تصویر"
+
+#: data/org.gnome.Loupe.desktop.in.in:3 data/org.gnome.Loupe.metainfo.xml.in.in:13
+msgid "View images"
+msgstr "دیدن تصویرها"
 
 #: data/org.gnome.Loupe.desktop.in.in:11
 msgid "Picture;Graphics;Loupe;"
@@ -32,13 +36,9 @@ msgid "Show the image properties sidebar"
 msgstr "نمایش نوار کناری ویژگی‌های تصویر"
 
 #. developer_name tag deprecated with Appstream 1.0
-#: data/org.gnome.Loupe.metainfo.xml.in.in:8 src/about.rs:34
+#: data/org.gnome.Loupe.metainfo.xml.in.in:8 src/about.rs:35
 msgid "The GNOME Project"
 msgstr "پروژهٔ گنوم"
-
-#: data/org.gnome.Loupe.metainfo.xml.in.in:13
-msgid "View images"
-msgstr "دیدن تصویرها"
 
 #: data/org.gnome.Loupe.metainfo.xml.in.in:15
 msgid "Browse through your images and inspect their metadata with:"
@@ -285,54 +285,54 @@ msgid "Apply Crop"
 msgstr "اعمال برش"
 
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/about.rs:43
+#: src/about.rs:45
 msgid "translator-credits"
 msgstr "دانیال بهزادی <dani.behzi@gmail.com>"
 
-#: src/about.rs:44
+#: src/about.rs:46
 msgid "Copyright © 2020–2024 Christopher Davis et al."
-msgstr "حف رونوشت © ۲۰۲۰–۲۰۲۴ کریستوفر دیویس و همکاران."
+msgstr "حق رونوشت © ۲۰۲۰–۲۰۲۴ کریستوفر دیویس و همکاران."
 
 #: src/file_model.rs:180
 msgid "Could not list other files in directory."
-msgstr "نمی‌توان دیگر پرونده‌ّا در شاخه را سیاهه کرد."
+msgstr "نمی‌توان دیگر پرونده‌ها در شاخه را سیاهه کرد."
 
 #. Translators: Display of the f-number <https://en.wikipedia.org/wiki/F-number>. {} will be replaced with the number
-#: src/metadata.rs:253
+#: src/metadata.rs:263
 msgid "\\u{192}\\u{2215}{}"
 msgstr "\\u{192}\\u{2215}{}"
 
 #. Translators: Fractional exposure time (photography) in seconds
-#: src/metadata.rs:266
+#: src/metadata.rs:276
 msgid "1\\u{2215}{}\\u{202F}s"
 msgstr "1\\u{2215}{}\\u{202F}ث"
 
 #. Translators: Exposure time (photography) in seconds
-#: src/metadata.rs:274
+#: src/metadata.rs:284
 msgid "{}\\u{202F}s"
 msgstr "{}\\u{202F}ث"
 
-#: src/metadata.rs:288
+#: src/metadata.rs:298
 msgid "{}\\u{202F}mm"
 msgstr "{}\\u{202F}م‌م"
 
 #. Translators: short for "north" in GPS coordinate
-#: src/metadata.rs:328
+#: src/metadata.rs:338
 msgid "N"
 msgstr "شم"
 
 #. Translators: short for "south" in GPS coordinate
-#: src/metadata.rs:332
+#: src/metadata.rs:342
 msgid "S"
 msgstr "جن"
 
 #. Translators: short for "east" in GPS coordinate
-#: src/metadata.rs:341
+#: src/metadata.rs:351
 msgid "E"
 msgstr "شر"
 
 #. Translators: short for "west" in GPS coordinate
-#: src/metadata.rs:345
+#: src/metadata.rs:355
 msgid "W"
 msgstr "غر"
 
@@ -353,7 +353,7 @@ msgstr "شکست در بازگردانی تصویر از زباله‌دان"
 msgid "Drop Image to View"
 msgstr "انداختن تصویر برای نمایش"
 
-#: src/widgets/edit/crop.rs:360
+#: src/widgets/edit/crop.rs:363
 msgid "Failed to Edit Image"
 msgstr "شکست در ویرایش تصویر"
 
@@ -478,15 +478,15 @@ msgstr "شکست در ذخیرهٔ تصویر."
 msgid "Editing Image"
 msgstr "ویراستن تصویر"
 
-#: src/widgets/edit_window.rs:360
+#: src/widgets/edit_window.rs:363
 msgid "Failed to edit image."
 msgstr "شکست در ویرایش تصویر."
 
-#: src/widgets/edit_window.rs:370 src/widgets/edit_window.rs:393
+#: src/widgets/edit_window.rs:373 src/widgets/edit_window.rs:396
 msgid "Failed to Save Image"
 msgstr "شکست در ذخیرهٔ تصویر"
 
-#: src/widgets/edit_window.rs:376
+#: src/widgets/edit_window.rs:379
 msgid "Saving Image"
 msgstr "ذخیره کردن تصویر"
 
