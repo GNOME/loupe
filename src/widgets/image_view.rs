@@ -399,7 +399,7 @@ mod imp {
 glib::wrapper! {
     pub struct LpImageView(ObjectSubclass<imp::LpImageView>)
         @extends gtk::Widget, adw::Bin,
-        @implements gtk::Buildable, gtk::ConstraintTarget, gtk::Orientable;
+        @implements gtk::Buildable, gtk::ConstraintTarget, gtk::Orientable, gtk::Accessible;
 }
 
 impl LpImageView {

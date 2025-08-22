@@ -183,7 +183,8 @@ mod imp {
 }
 glib::wrapper! {
     pub struct LpPrintPreviewPage(ObjectSubclass<imp_page::LpPrintPreviewPage>)
-        @extends gtk::Widget;
+        @extends gtk::Widget,
+        @implements gtk::Accessible, gtk::Buildable, gtk::ConstraintTarget;
 }
 
 impl Default for LpPrintPreviewPage {
@@ -205,5 +206,6 @@ impl LpPrintPreviewPage {
 
 glib::wrapper! {
     pub struct LpPrintPreview(ObjectSubclass<imp::LpPrintPreview>)
-        @extends gtk::Widget;
+        @extends gtk::Widget,
+        @implements gtk::Accessible, gtk::Buildable, gtk::ConstraintTarget;
 }

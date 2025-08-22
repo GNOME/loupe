@@ -65,7 +65,8 @@ mod imp {
 
 glib::wrapper! {
     pub struct LpErrorDetails(ObjectSubclass<imp::LpErrorDetails>)
-        @extends adw::Dialog, gtk::Widget;
+        @extends adw::Dialog, gtk::Widget,
+        @implements gtk::Buildable, gtk::Accessible, gtk::ConstraintTarget;
 }
 
 impl LpErrorDetails {

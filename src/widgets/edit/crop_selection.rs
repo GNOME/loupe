@@ -1071,7 +1071,8 @@ mod imp {
 
 glib::wrapper! {
     pub struct LpEditCropSelection(ObjectSubclass<imp::LpEditCropSelection>)
-        @extends gtk::Widget;
+        @extends gtk::Widget, gtk::Grid,
+        @implements gtk::Buildable, gtk::Accessible, gtk::ConstraintTarget, gtk::Orientable;
 }
 
 impl LpEditCropSelection {

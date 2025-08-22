@@ -372,7 +372,7 @@ mod imp {
 glib::wrapper! {
     pub struct LpImage(ObjectSubclass<imp::LpImage>)
         @extends gtk::Widget,
-        @implements gtk::Scrollable;
+        @implements gtk::Scrollable, gtk::Buildable, gtk::Accessible, gtk::ConstraintTarget;
 }
 
 impl LpImage {

@@ -173,7 +173,7 @@ mod imp {
 glib::wrapper! {
     pub struct LpImagePage(ObjectSubclass<imp::LpImagePage>)
         @extends gtk::Widget, adw::Bin,
-        @implements gtk::Buildable, gtk::ConstraintTarget, gtk::Orientable;
+        @implements gtk::Buildable, gtk::ConstraintTarget, gtk::Orientable, gtk::Accessible;
 }
 
 impl LpImagePage {

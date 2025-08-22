@@ -103,5 +103,6 @@ mod imp {
 
 glib::wrapper! {
     pub struct LpDragOverlay(ObjectSubclass<imp::LpDragOverlay>)
-        @extends gtk::Widget, adw::Bin;
+        @extends gtk::Widget, adw::Bin,
+        @implements gtk::Buildable, gtk::Accessible, gtk::ConstraintTarget;
 }

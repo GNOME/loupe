@@ -341,7 +341,8 @@ mod imp {
 
 glib::wrapper! {
     pub struct LpEditCrop(ObjectSubclass<imp::LpEditCrop>)
-    @extends gtk::Widget, adw::Bin;
+    @extends gtk::Widget, adw::Bin,
+    @implements gtk::Buildable, gtk::Accessible, gtk::ConstraintTarget;
 }
 
 impl LpEditCrop {

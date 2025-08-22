@@ -459,7 +459,8 @@ mod imp {
 
 glib::wrapper! {
     pub struct LpEditWindow(ObjectSubclass<imp::LpEditWindow>)
-    @extends gtk::Widget, adw::Bin;
+    @extends gtk::Widget, adw::Bin,
+    @implements gtk::Buildable, gtk::Accessible, gtk::ConstraintTarget;
 }
 
 impl LpEditWindow {

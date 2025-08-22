@@ -446,7 +446,7 @@ mod imp {
 glib::wrapper! {
     pub struct LpSlidingView(ObjectSubclass<imp::LpSlidingView>)
         @extends gtk::Widget,
-        @implements gtk::Buildable, adw::Swipeable;
+        @implements gtk::Buildable, adw::Swipeable, gtk::Accessible, gtk::ConstraintTarget;
 }
 
 impl LpSlidingView {

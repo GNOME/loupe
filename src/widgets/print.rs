@@ -448,7 +448,7 @@ mod imp {
 glib::wrapper! {
     pub struct LpPrint(ObjectSubclass<imp::LpPrint>)
         @extends gtk::Widget, gtk::Window, adw::Window,
-        @implements gtk::Buildable, gtk::ConstraintTarget;
+        @implements gtk::Buildable, gtk::ConstraintTarget, gtk::Accessible, gtk::Native, gtk::Root, gtk::ShortcutManager;
 }
 
 impl LpPrint {
