@@ -16,7 +16,7 @@ x11 = ["ashpd/gtk4_x11"]
 adw = { package = "libadwaita", version = "0.8.0", features = ["v1_6"] }
 anyhow = { version = "1.0.66" }
 arc-swap = "1.6.0"
-ashpd = { version = "0.11.0", git = "https://github.com/bilelmoussaoui/ashpd.git", default-features = false, features = [
+ashpd = { version = "0.12.0", default-features = false, features = [
     "gtk4_wayland",
     "async-std",
 ] }
