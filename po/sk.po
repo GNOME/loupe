@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
 "POT-Creation-Date: 2025-08-21 16:34+0000\n"
-"PO-Revision-Date: 2025-08-26 07:21+0200\n"
+"PO-Revision-Date: 2025-08-26 07:32+0200\n"
 "Last-Translator: Dušan Kazik <prescott66@gmail.com>\n"
 "Language-Team: Slovak <->\n"
 "Language: sk\n"
@@ -26,7 +26,7 @@ msgstr "Prehliadač obrázkov"
 
 #: data/org.gnome.Loupe.desktop.in.in:10
 msgid "Picture;Graphics;Loupe;"
-msgstr "Obrázok;Grafika;Loupe;"
+msgstr "obrázok;grafika;Loupe;"
 
 #: data/org.gnome.Loupe.gschema.xml.in:6
 msgid "Show the image properties sidebar"
@@ -155,31 +155,31 @@ msgstr "Otočiť obrázok"
 #: data/resources/gtk/help-overlay.ui:315
 msgctxt "shortcut window"
 msgid "Rotate Clockwise"
-msgstr "Otočiť v smere hodinových ručičiek"
+msgstr "Otočenie doprava"
 
 #: data/resources/gtk/help-overlay.ui:130
 #: data/resources/gtk/help-overlay.ui:280
 #: data/resources/gtk/help-overlay.ui:321
 msgctxt "shortcut window"
 msgid "Rotate Counterclockwise"
-msgstr "Otočiť proti smeru hodinových ručičiek"
+msgstr "Otočenie doľava"
 
 #: data/resources/gtk/help-overlay.ui:138
 msgctxt "shortcut window"
 msgid "Zoom Image"
-msgstr "Priblížiť obrázok"
+msgstr "Priblíženie obrázka"
 
 #: data/resources/gtk/help-overlay.ui:141
 #: data/resources/gtk/help-overlay.ui:262
 msgctxt "shortcut window"
 msgid "Zoom In"
-msgstr "Priblížiť"
+msgstr "Zväčšenie"
 
 #: data/resources/gtk/help-overlay.ui:147
 #: data/resources/gtk/help-overlay.ui:268
 msgctxt "shortcut window"
 msgid "Zoom Out"
-msgstr "Oddialiť"
+msgstr "Zmenšenie"
 
 #: data/resources/gtk/help-overlay.ui:153
 msgctxt "shortcut window"
@@ -194,12 +194,12 @@ msgstr "Pôvodná mierka"
 #: data/resources/gtk/help-overlay.ui:165
 msgctxt "shortcut window"
 msgid "200% Scale"
-msgstr "200% Mierka"
+msgstr "200% mierka"
 
 #: data/resources/gtk/help-overlay.ui:173
 msgctxt "shortcut window"
 msgid "Pan View"
-msgstr "Posunúť zobrazenie"
+msgstr "Posunutie zobrazenia"
 
 #: data/resources/gtk/help-overlay.ui:176
 msgctxt "shortcut window"
@@ -224,27 +224,27 @@ msgstr "Posun dole"
 #: data/resources/gtk/help-overlay.ui:202
 msgctxt "shortcut window"
 msgid "View"
-msgstr "Pohľad"
+msgstr "Zobrazenie"
 
 #: data/resources/gtk/help-overlay.ui:205
 msgctxt "shortcut window"
 msgid "Toggle Fullscreen"
-msgstr "Prepnúť režim na celú obrazovku"
+msgstr "Prepnutie režimu na celú obrazovku"
 
 #: data/resources/gtk/help-overlay.ui:211
 msgctxt "shortcut window"
 msgid "Leave Fullscreen"
-msgstr "Odísť z režimu na celú obrazovku"
+msgstr "Opustenie režimu na celú obrazovku"
 
 #: data/resources/gtk/help-overlay.ui:217
 msgctxt "shortcut window"
 msgid "Toggle Image Properties"
-msgstr "Prepnúť vlastnosti obrázka"
+msgstr "Prepnutie vlastností obrázka"
 
 #: data/resources/gtk/help-overlay.ui:223
 msgctxt "shortcut window"
 msgid "Show Main Menu"
-msgstr "Zobraziť hlavnú ponuku"
+msgstr "Zobrazenie hlavnej ponuky"
 
 #: data/resources/gtk/help-overlay.ui:231
 msgctxt "shortcut window"
@@ -254,43 +254,37 @@ msgstr "Gestá"
 #: data/resources/gtk/help-overlay.ui:288
 msgctxt "shortcut window"
 msgid "Editing"
-msgstr ""
+msgstr "Upravovanie"
 
 #: data/resources/gtk/help-overlay.ui:291
 msgctxt "shortcut window"
 msgid "Open Editing View"
-msgstr ""
+msgstr "Otvorenie zobrazenia úprav"
 
 #: data/resources/gtk/help-overlay.ui:297
 msgctxt "shortcut window"
 msgid "Replace Original"
-msgstr ""
+msgstr "Nahradenie pôvodného obrázku"
 
 #: data/resources/gtk/help-overlay.ui:303
 msgctxt "shortcut window"
 msgid "Save As"
-msgstr ""
+msgstr "Uloženie ako"
 
 #: data/resources/gtk/help-overlay.ui:309
-#, fuzzy
-#| msgid "Cancel"
 msgctxt "shortcut window"
 msgid "Cancel"
-msgstr "Zrušiť"
+msgstr "Zrušenie"
 
 #: data/resources/gtk/help-overlay.ui:327
-#, fuzzy
-#| msgid "_Horizontal"
 msgctxt "shortcut window"
 msgid "Mirror Horizontally"
-msgstr "Horizontálne"
+msgstr "Vodorovné zrkadlenie"
 
 #: data/resources/gtk/help-overlay.ui:333
-#, fuzzy
-#| msgid "_Vertical"
 msgctxt "shortcut window"
 msgid "Mirror Vertically"
-msgstr "Vertikálne"
+msgstr "Zvislé zrkadlenie"
 
 #: data/resources/gtk/help-overlay.ui:339
 msgctxt "shortcut window"
@@ -302,15 +296,16 @@ msgstr "Aplikovanie orezania"
 msgid "translator-credits"
 msgstr ""
 "Matej Mrenica <matejm98mthw@gmail.com>\n"
-"Jose Riha <jose1711@gmail.com>"
+"Jose Riha <jose1711@gmail.com>\n"
+"Dušan Kazik <prescott66@gmail.com>"
 
 #: src/about.rs:45
 msgid "Copyright © 2020–2024 Christopher Davis et al."
-msgstr "Copyright © 2020–2024 Christopher Davis et al."
+msgstr "Autorské práva © 2020–2024 Christopher Davis a iní"
 
 #: src/file_model.rs:180
 msgid "Could not list other files in directory."
-msgstr "Nepodarilo sa vypísať ďalšie súbory v adresári."
+msgstr "Nepodarilo sa vypísať ostatné súbory v adresári."
 
 #. Translators: Display of the f-number <https://en.wikipedia.org/wiki/F-number>. {} will be replaced with the number
 #: src/metadata.rs:253
@@ -334,22 +329,22 @@ msgstr "{}\\u{202F}mm"
 #. Translators: short for "north" in GPS coordinate
 #: src/metadata.rs:328
 msgid "N"
-msgstr "N"
+msgstr "S"
 
 #. Translators: short for "south" in GPS coordinate
 #: src/metadata.rs:332
 msgid "S"
-msgstr "S"
+msgstr "J"
 
 #. Translators: short for "east" in GPS coordinate
 #: src/metadata.rs:341
 msgid "E"
-msgstr "E"
+msgstr "V"
 
 #. Translators: short for "west" in GPS coordinate
 #: src/metadata.rs:345
 msgid "W"
-msgstr "W"
+msgstr "Z"
 
 #. Translators: This is the date and time format we use in metadata output etc.
 #. The format has to follow <https://docs.gtk.org/glib/method.DateTime.format.html>
@@ -365,31 +360,24 @@ msgid "Failed to restore image from trash"
 msgstr "Nepodarilo sa obnoviť obrázok z koša"
 
 #: src/widgets/drag_overlay.ui:15
-#, fuzzy
-#| msgid "Image Viewer"
 msgid "Drop Image to View"
-msgstr "Prehliadač obrázkov"
+msgstr "Obrázok zobrazíte jeho pustením sem"
 
 #: src/widgets/edit/crop.rs:363
-#, fuzzy
-#| msgid "Failed to delete image"
 msgid "Failed to Edit Image"
-msgstr "Nepodarilo sa vymazať obrázok"
+msgstr "Zlyhala úprava obrázku"
 
 #: src/widgets/edit/crop.ui:6
 msgid "Free"
-msgstr ""
+msgstr "Voľný"
 
 #: src/widgets/edit/crop.ui:11
-#, fuzzy
-#| msgctxt "shortcut window"
-#| msgid "Original Scale"
 msgid "Original"
-msgstr "Pôvodná mierka"
+msgstr "Pôvodný"
 
 #: src/widgets/edit/crop.ui:16
 msgid "Square"
-msgstr ""
+msgstr "Štvorec"
 
 #: src/widgets/edit/crop.ui:21
 msgid "5:4"
@@ -409,22 +397,19 @@ msgstr "16:9"
 
 #: src/widgets/edit/crop.ui:77 src/widgets/edit/crop.ui:364
 msgid "Aspect Ratio"
-msgstr ""
+msgstr "Pomer strán"
 
 #: src/widgets/edit/crop.ui:91
 msgid "_Free"
-msgstr ""
+msgstr "_Voľný"
 
 #: src/widgets/edit/crop.ui:109
-#, fuzzy
-#| msgctxt "shortcut window"
-#| msgid "Original Scale"
 msgid "_Original"
-msgstr "Pôvodná mierka"
+msgstr "_Pôvodný"
 
 #: src/widgets/edit/crop.ui:127
 msgid "_Square"
-msgstr ""
+msgstr "Š_tvorec"
 
 #: src/widgets/edit/crop.ui:145
 msgid "_5:4"
@@ -442,167 +427,140 @@ msgstr "_3:2"
 msgid "_16:9"
 msgstr "_16:9"
 
+# tooltip
 #: src/widgets/edit/crop.ui:231 src/widgets/edit/crop.ui:377
-#, fuzzy
-#| msgid "_Orientation"
 msgid "Orientation Landscape"
-msgstr "Orientácia"
+msgstr "Orientácia na šírku"
 
 #: src/widgets/edit/crop.ui:240 src/widgets/edit/crop.ui:389
-#, fuzzy
-#| msgid "_Orientation"
 msgid "Orientation Portrait"
-msgstr "Orientácia"
+msgstr "Orientácia na výšku"
 
 #: src/widgets/edit/crop.ui:252 src/widgets/image_page.ui:15
 #: src/widgets/image_window.ui:25
 msgid "Rotate"
 msgstr "Otočiť"
 
+# tooltip
 #: src/widgets/edit/crop.ui:261 src/widgets/edit/crop.ui:407
-#, fuzzy
-#| msgctxt "shortcut window"
-#| msgid "Rotate Counterclockwise"
 msgid "Rotate Counter Clockwise"
-msgstr "Otočiť proti smeru hodinových ručičiek"
+msgstr "Otočí doľava"
 
+# tooltip
 #: src/widgets/edit/crop.ui:268
-#, fuzzy
-#| msgctxt "shortcut window"
-#| msgid "Rotate Clockwise"
 msgid "Rotate Clockwise"
-msgstr "Otočiť v smere hodinových ručičiek"
+msgstr "Otočí doprava"
 
 #: src/widgets/edit/crop.ui:278
 msgid "Flip"
-msgstr ""
+msgstr "Preklopenie"
 
+# tooltip
 #: src/widgets/edit/crop.ui:287 src/widgets/edit/crop.ui:415
-#, fuzzy
-#| msgid "_Horizontal"
 msgid "Mirror Horizontally"
-msgstr "Horizontálne"
+msgstr "Zrkadlí vodorovne"
 
+# tooltip
 #: src/widgets/edit/crop.ui:294
-#, fuzzy
-#| msgid "_Vertical"
 msgid "Mirror Vertically"
-msgstr "Vertikálne"
+msgstr "Zrkadlí zvislo"
 
 #: src/widgets/edit/crop.ui:306 src/widgets/edit/crop.ui:429
 msgid "_Reset"
-msgstr ""
+msgstr "O_bnoviť"
 
+# tooltip
 #: src/widgets/edit/crop.ui:307 src/widgets/edit/crop.ui:431
 msgid "Undo Changes in this View"
-msgstr ""
+msgstr "Vráti späť zmeny v tomto zobrazení"
 
+# tooltip
 #: src/widgets/edit/crop_selection.ui:46
 msgid "Crop Selection"
-msgstr ""
+msgstr "Oreže výber"
 
 #. Translators: Filename suffix
 #. Translators: Filename suffix, {} is replaced by a number
 #: src/widgets/edit_window.rs:192 src/widgets/edit_window.rs:195
 msgid " (Edited)"
 msgid_plural " (Edited {})"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] " ({} upravených)"
+msgstr[1] " (Upravený)"
+msgstr[2] " ({} upravené)"
 
 #: src/widgets/edit_window.rs:290 src/widgets/edit_window.rs:316
-#, fuzzy
-#| msgid "Failed to open image"
 msgid "Failed to save image."
-msgstr "Nepodarilo sa otvoriť obrázok"
+msgstr "Zlyhalo uloženie obrázku."
 
 #: src/widgets/edit_window.rs:346
-#, fuzzy
-#| msgid "Print Image"
 msgid "Editing Image"
-msgstr "Vytlačiť obrázok"
+msgstr "Úprava obrázku"
 
 #: src/widgets/edit_window.rs:360
-#, fuzzy
-#| msgid "Failed to delete image"
 msgid "Failed to edit image."
-msgstr "Nepodarilo sa vymazať obrázok"
+msgstr "Zlyhala úprava obrázku."
 
 #: src/widgets/edit_window.rs:370 src/widgets/edit_window.rs:393
-#, fuzzy
-#| msgid "Failed to open image"
 msgid "Failed to Save Image"
-msgstr "Nepodarilo sa otvoriť obrázok"
+msgstr "Zlyhalo uloženie obrázku"
 
 #: src/widgets/edit_window.rs:376
-#, fuzzy
-#| msgctxt "shortcut window"
-#| msgid "Navigate Images"
 msgid "Saving Image"
-msgstr "Prechádzať obrázky"
+msgstr "Ukladanie obrázku"
 
 #: src/widgets/edit_window.ui:64
-#, fuzzy
-#| msgid "Cancel"
 msgid "_Cancel"
-msgstr "Zrušiť"
+msgstr "_Zrušiť"
 
 #: src/widgets/edit_window.ui:71
 msgid "_Save"
-msgstr ""
+msgstr "_Uložiť"
 
 #: src/widgets/edit_window.ui:92
 msgid "_Save As…"
-msgstr ""
+msgstr "_Uložiť ako…"
 
 #: src/widgets/edit_window.ui:100
 msgid "Keep original and create a new file"
-msgstr ""
+msgstr "Zachovať pôvodný obrázok a vytvoriť nový súbor"
 
 #: src/widgets/edit_window.ui:120
 msgid "_Replace Original"
-msgstr ""
+msgstr "Nah_radiť pôvodný obrázok"
 
 #: src/widgets/edit_window.ui:128
-#, fuzzy
-#| msgid "Image moved to trash"
 msgid "Original image will be moved to the trash"
-msgstr "Obrázok bol presunutý do koša"
+msgstr "Pôvodný obrázok bude presunutý do koša"
 
 #: src/widgets/error_details.rs:79
 msgid ""
 "The following error occurred. If you think this is an issue with the "
 "program, please include this information when you report the error."
 msgstr ""
+"Vyskytla sa nasledovná chyba. Ak si myslíte, že je to chyba v programe, "
+"prosím, zahrňte túto informáciu do hlásenia o chybe."
 
 #: src/widgets/error_details.ui:4
-#, fuzzy
-#| msgid "Error Message"
 msgid "Error Details"
-msgstr "Chybová správa"
+msgstr "Podrobnosti o chybe"
 
 #: src/widgets/error_details.ui:19
-#, fuzzy
-#| msgid ""
-#| "The image loader reported the following when trying to load the image. "
-#| "Please include this information when you report an error. If possible, "
-#| "please also provide the image that causes the issue."
 msgid ""
 "The image loader reported the following when trying to load or edit the "
 "image. Please include this information when you report an error. If "
 "possible, please also provide the image that causes the issue."
 msgstr ""
-"Pri pokuse o otvorenie obrázka vrátil program, ktorý načítal obrázok, "
-"nasledovnú chybu. Pri hlásení chyby uveďte tieto informácie. Ak je to možné, "
-"pošlite aj obrázok, ktorý spôsobuje problém."
+"Nástroj na načítanie obrázku pri pokuse o načítanie alebo úpravu obrázku "
+"nahlásil nasledovné. Prosím, zahrňte túto informáciu do hlásenia o chybe. Ak "
+"je to možné, prosím, tiež poskytnite obrázok, ktorý túto chybu spôsobil."
 
 #: src/widgets/error_details.ui:24
 msgid "Error Message"
-msgstr "Chybová správa"
+msgstr "Chybová hláška"
 
 #: src/widgets/error_details.ui:28
 msgid "Copy Error Message"
-msgstr "Kopírovať chybovú správu"
+msgstr "Kopírovať chybovú hlášku"
 
 #: src/widgets/error_details.ui:68
 msgid "Report _Issue"
@@ -645,10 +603,8 @@ msgid "_Set as Background…"
 msgstr "Nastaviť ako pozadie…"
 
 #: src/widgets/image_page.ui:30 src/widgets/image_window.ui:40
-#, fuzzy
-#| msgid "Delete"
 msgid "_Delete"
-msgstr "Vymazať"
+msgstr "O_dstrániť"
 
 #: src/widgets/image_page.ui:34
 msgid "_Copy"
@@ -664,7 +620,7 @@ msgstr "_Viac informácií"
 
 #: src/widgets/image_page.ui:81
 msgid "_Reload"
-msgstr "_Obnoviť"
+msgstr "_Znovu načítať"
 
 #: src/widgets/image_page.ui:123 src/widgets/image_window.ui:101
 msgid "Rotate Left"
@@ -676,7 +632,7 @@ msgstr "Otočiť vpravo"
 
 #: src/widgets/image_view.rs:197
 msgid "{} %"
-msgstr ""
+msgstr "{} %"
 
 #. Translators: This is a toast notification, informing the user that
 #. an image has been set as background.
@@ -694,31 +650,35 @@ msgstr "Predchádzajúci obrázok"
 
 #: src/widgets/image_view.ui:40
 msgid "Next Image"
-msgstr "Ďalší obrázok"
+msgstr "Nasledujúci obrázok"
 
+# tooltip
 #: src/widgets/image_view.ui:74
 msgid "Zoom Out"
-msgstr "Oddialiť"
+msgstr "Zmenší"
 
+# tooltip
 #: src/widgets/image_view.ui:85
 msgid "Zoom In"
-msgstr "Priblížiť"
+msgstr "Zväčší"
 
+# tooltip
 #: src/widgets/image_view.ui:100
 msgid "Toggle Zoom"
-msgstr ""
+msgstr "Prepne priblíženie"
 
 #: src/widgets/image_view.ui:108
 msgid "Zoom to Specific Level"
-msgstr ""
+msgstr "Priblíženie na určitú úroveň"
 
 #: src/widgets/image_view.ui:237
 msgid "Custom Zoom Level"
-msgstr ""
+msgstr "Vlastná úroveň priblíženia"
 
+# tooltip
 #: src/widgets/image_view.ui:243
 msgid "Zoom to Specified Level"
-msgstr ""
+msgstr "Priblíži na určitú úroveň priblíženia"
 
 #: src/widgets/image_window.rs:502
 msgid "Supported image formats"
@@ -728,13 +688,14 @@ msgstr "Podporované formáty obrázkov"
 msgid "All files"
 msgstr "Všetky súbory"
 
+# dialog title
 #: src/widgets/image_window.rs:515
 msgid "Open Image"
-msgstr "Otvoriť obrázok"
+msgstr "Otvorenie obrázka"
 
 #: src/widgets/image_window.rs:601
 msgid "Image copied to clipboard"
-msgstr "Obrázok skopírovaný do schránky"
+msgstr "Obrázok bol skopírovaný do schránky"
 
 #: src/widgets/image_window.rs:622
 msgid "Image moved to trash"
@@ -742,7 +703,7 @@ msgstr "Obrázok bol presunutý do koša"
 
 #: src/widgets/image_window.rs:623
 msgid "Undo"
-msgstr "Vrátiť"
+msgstr "Vrátiť späť"
 
 #: src/widgets/image_window.rs:653
 msgid "Failed to move image to trash"
@@ -750,7 +711,7 @@ msgstr "Nepodarilo sa presunúť obrázok do koša"
 
 #: src/widgets/image_window.rs:677
 msgid "Permanently Delete Image?"
-msgstr "Trvalo odstrániť obrázok?"
+msgstr "Natrvalo odstrániť obrázok?"
 
 #: src/widgets/image_window.rs:679
 msgid "After deleting the image “{}” it will be permanently lost."
@@ -762,11 +723,11 @@ msgstr "Zrušiť"
 
 #: src/widgets/image_window.rs:688
 msgid "Delete"
-msgstr "Vymazať"
+msgstr "Odstrániť"
 
 #: src/widgets/image_window.rs:699
 msgid "Failed to delete image"
-msgstr "Nepodarilo sa vymazať obrázok"
+msgstr "Zlyhalo odstránenie obrázka"
 
 #: src/widgets/image_window.ui:6
 msgid "_New Window"
@@ -786,11 +747,12 @@ msgstr "Klávesové skratky"
 
 #: src/widgets/image_window.ui:54
 msgid "_About Image Viewer"
-msgstr "O prehliadači obrázkov"
+msgstr "_O prehliadači obrázkov"
 
+# tooltip
 #: src/widgets/image_window.ui:87
 msgid "Toggle Fullscreen"
-msgstr "Prepnúť režim na celú obrazovku"
+msgstr "Prepne režim na celú obrazovku"
 
 #: src/widgets/image_window.ui:93
 msgid "Main Menu"
@@ -800,19 +762,18 @@ msgstr "Hlavná ponuka"
 msgid "Image Properties"
 msgstr "Vlastnosti obrázka"
 
+# tooltip
 #: src/widgets/image_window.ui:132
-#, fuzzy
-#| msgid "Print Image"
 msgid "Edit Image"
-msgstr "Vytlačiť obrázok"
+msgstr "Upraví obrázok"
 
 #: src/widgets/image_window.ui:220
 msgid "View Images"
-msgstr "Zobraziť obrázky"
+msgstr "Zobrazenie obrázkov"
 
 #: src/widgets/image_window.ui:221
 msgid "Drag and drop images here"
-msgstr "Presuňte obrázky sem"
+msgstr "Pretiahnite a pustite obrázky sem"
 
 #: src/widgets/image_window.ui:225
 msgid "_Open Files…"
@@ -862,26 +823,27 @@ msgstr "Print “{}”"
 msgid "Continue…"
 msgstr "Pokračovať…"
 
+# dialog title
 #: src/widgets/print.rs:477
 msgid "Print Image"
-msgstr "Vytlačiť obrázok"
+msgstr "Tlač obrázka"
 
 #: src/widgets/print.rs:791
 msgid "_Scale"
-msgstr "Mierka"
+msgstr "_Mierka"
 
 #: src/widgets/print.rs:794
 msgid "_Width"
-msgstr "Šírka"
+msgstr "Ší_rka"
 
 #. Translators: Go back to previous page
 #: src/widgets/print.ui:29
 msgid "_Back"
-msgstr "Späť"
+msgstr "_Späť"
 
 #: src/widgets/print.ui:37
 msgid "_Print"
-msgstr "Tlačiť"
+msgstr "_Tlačiť"
 
 #: src/widgets/print.ui:56
 msgid "Layout"
@@ -889,7 +851,7 @@ msgstr "Rozloženie"
 
 #: src/widgets/print.ui:59
 msgid "_Orientation"
-msgstr "Orientácia"
+msgstr "_Orientácia"
 
 #: src/widgets/print.ui:72
 msgid "Portrait Page Orientation"
@@ -901,7 +863,7 @@ msgstr "Orientácia stránky na šírku"
 
 #: src/widgets/print.ui:89
 msgid "_Alignment"
-msgstr "Zarovnanie"
+msgstr "_Zarovnanie"
 
 #: src/widgets/print.ui:108
 msgid "Margins"
@@ -913,11 +875,11 @@ msgstr "Jednotky okraja"
 
 #: src/widgets/print.ui:128
 msgid "_Horizontal"
-msgstr "Horizontálne"
+msgstr "Vo_dorovne"
 
 #: src/widgets/print.ui:134
 msgid "_Vertical"
-msgstr "Vertikálne"
+msgstr "Zv_islo"
 
 #: src/widgets/print.ui:142 src/widgets/properties_view.ui:56
 msgid "Image Size"
@@ -929,11 +891,11 @@ msgstr "Jednotky veľkosti obrázka"
 
 #: src/widgets/print.ui:163
 msgid "_Fill Space"
-msgstr "Vyplniť"
+msgstr "Vyp_lniť plochu"
 
 #: src/widgets/print.ui:174
 msgid "H_eight"
-msgstr "Výška"
+msgstr "Výš_ka"
 
 #: src/widgets/properties_view.rs:258
 msgid "Unknown"
@@ -942,17 +904,17 @@ msgstr "Neznáme"
 #. Translators: Addition of image being transparent to format name
 #: src/widgets/properties_view.rs:262
 msgid ", transparent"
-msgstr ", priehľadné"
+msgstr ", priehľadný"
 
 #. Translators: Addition of image being grayscale to format name
 #: src/widgets/properties_view.rs:267
 msgid ", grayscale"
-msgstr ", čiernobiele"
+msgstr ", v odtieňoch sivej"
 
 #. Translators: Addition of bit size to format name
 #: src/widgets/properties_view.rs:272
 msgid ", {}\\u{202F}bit"
-msgstr ", {}\\u{202F}bit"
+msgstr ", {}\\u{202F}bitov"
 
 #: src/widgets/properties_view.rs:290
 msgid "{}\\u{202F}\\u{D7}\\u{202F}{}"
@@ -960,15 +922,16 @@ msgstr "{}\\u{202F}\\u{D7}\\u{202F}{}"
 
 #: src/widgets/properties_view.rs:329
 msgid "Image Coordinates Copied"
-msgstr "Skopírované súradnice obrázka"
+msgstr "Súradnice obrázka boli skopírované"
 
 #: src/widgets/properties_view.ui:20
 msgid "Folder"
 msgstr "Priečinok"
 
+# tooltip
 #: src/widgets/properties_view.ui:28
 msgid "Open Containing Folder"
-msgstr "Otvoriť priečinok s obsahom"
+msgstr "Otvorí priečinok s obsahom"
 
 #: src/widgets/properties_view.ui:41
 msgid "URI"
@@ -995,21 +958,23 @@ msgstr "Súbor upravený"
 msgid "Location"
 msgstr "Umiestnenie"
 
+# tooltip
 #: src/widgets/properties_view.ui:125
 msgid "Copy Coordinates"
-msgstr "Skopírovať súradnice"
+msgstr "Skopíruje súradnice"
 
+# tooltip
 #: src/widgets/properties_view.ui:136
 msgid "Open Location"
-msgstr "Otvoriť umiestnenie"
+msgstr "Otvorí umiestnenie"
 
 #: src/widgets/properties_view.ui:149
 msgid "Originally Created"
-msgstr "Pôvodne vytvorené"
+msgstr "Pôvodne vytvorený"
 
 #: src/widgets/properties_view.ui:159
 msgid "Comment"
-msgstr ""
+msgstr "Komentár"
 
 #: src/widgets/properties_view.ui:169
 msgid "Aperture"
@@ -1029,11 +994,12 @@ msgstr "Ohnisková vzdialenosť"
 
 #: src/widgets/properties_view.ui:209
 msgid "Maker, Model"
-msgstr "Výrobca, Model"
+msgstr "Výrobca, model"
 
+# btn label
 #: src/widgets/window.rs:222
 msgid "Show Details"
-msgstr ""
+msgstr "Zobraziť podrobnosti"
 
 #~ msgid "Copy to Clipboard"
 #~ msgstr "Kopírovať do schránky"
