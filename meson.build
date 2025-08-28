@@ -1,7 +1,7 @@
 project(
   'loupe',
   'rust',
-  version: '49.beta',
+  version: '49.rc',
   meson_version: '>= 0.59.0',
   default_options: [
     'warning_level=2',
@@ -12,7 +12,7 @@ i18n = import('i18n')
 gnome = import('gnome')
 
 dependency('gtk4', version: '>=4.16.0')
-dependency('libadwaita-1', version: '>=1.7.beta')
+dependency('libadwaita-1', version: '>=1.7.0')
 dependency('gweather4', version: '>=4.0.0')
 # Required by glycin crate
 dependency('lcms2', version: '>=2.12.0')
