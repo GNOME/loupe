@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=Image Viewer
-Comment=View images
+Comment=View and edit images
 Exec=@BIN_NAME@ %U
 Icon=@APP_ID@
 DBusActivatable=true
