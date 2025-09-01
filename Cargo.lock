@@ -1076,9 +1076,9 @@ dependencies = [
 
 [[package]]
 name = "gufo-common"
-version = "1.0.0"
+version = "1.0.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "c51075301871a558c79a76f238cac4ef0673ff1802656a174262e4c6106a8fbc"
+checksum = "98bebe9ba4be92d3932246ecfbe261106e3013266604f8cbf0ca9ee9df7edf99"
 dependencies = [
  "chrono",
  "paste",
