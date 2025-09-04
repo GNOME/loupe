@@ -27,7 +27,7 @@ chrono = { version = "0.4.38", default-features = false, features = ["std"] }
 gettext-rs = { version = "0.7.0", features = ["gettext-system"] }
 gettext-sys = { version = "0.22.5", features = ["gettext-system"] }
 gio = { version = "0.21.0", features = ["v2_74"] }
-glycin = { version = "3.0.0-rc", features = ["gdk4"] }
+glycin = { version = "3.0.0-rc.1", features = ["gdk4", "unstable-config"] }
 gtk = { package = "gtk4", version = "0.10.0", features = [
     "v4_14",
     "xml_validation",
