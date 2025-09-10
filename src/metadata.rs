@@ -210,9 +210,15 @@ impl Metadata {
     pub fn originally_created(&self) -> Option<String> {
         if let Some(date_time) = &self.metadata.date_time_original() {
             let glib_date_time = match date_time {
-                DateTime::Naive(naive) => {
-                    glib::DateTime::from_unix_local(naive.and_utc().timestamp()).ok()
-                }
+                DateTime::Naive(naive) => glib::DateTime::from_local(
+                    naive.year(),
+                    naive.month() as i32,
+                    naive.day() as i32,
+                    naive.hour() as i32,
+                    naive.minute() as i32,
+                    naive.second() as f64,
+                )
+                .ok(),
                 DateTime::FixedOffset(fixed) => {
                     let naive = fixed.naive_utc();
                     glib::DateTime::new(
