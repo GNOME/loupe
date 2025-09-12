@@ -1,3 +1,9 @@
+## 49.0 (2025-09-12)
+
+### Fixed
+
+- `F9 <Alt>Return` accel not being parsed correctly
+
 ## 49.rc (2025-08-28)
 
 ## 49.beta (2025-08-01)

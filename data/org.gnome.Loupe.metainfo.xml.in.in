@@ -74,9 +74,9 @@
   </categories>
 
   <releases>
-    <release version="49.rc" date="2025-08-28">
+    <release version="49.0" date="2025-09-12">
       <description>
-        <p>Update to better image loaders.</p>
+        <p>Improved support for more rare and damaged variations of image formats like JPEG, PNG, and TIFF. Improved performance for loading JPEG XL images.</p>
       </description>
     </release>
     <release version="48.1" date="2025-04-11">
