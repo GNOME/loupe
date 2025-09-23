@@ -204,7 +204,7 @@ impl Action {
 
                 Action::ZoomToExact300 => {
                     klass.install_action(&action, None, move |win, _, _| {
-                        win.zoom_to_exact(2.);
+                        win.zoom_to_exact(3.);
                     });
                 }
 
