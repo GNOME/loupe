@@ -253,6 +253,8 @@ mod imp {
         pub(super) orientation: RefCell<String>,
 
         pub(super) ui_updates: UiUpdates,
+
+        pub(super) previous_width: Cell<Option<f64>>,
     }
 
     #[glib::object_subclass]
@@ -583,11 +585,16 @@ impl LpPrint {
         self.print_settings().resolution() as f64
     }
 
+    fn indirect_disable_fill_space(&self) {
+        self.imp().previous_width.set(None);
+        self.imp().fill_space.set_active(false);
+    }
+
     pub fn on_width_changed(&self) {
         if self.ui_updates() {
             let _ui_updates_disabled = self.disable_ui_updates();
             // Disable 'fill space' when manually changing size
-            self.imp().fill_space.set_active(false);
+            self.indirect_disable_fill_space();
             self.update_height();
             self.draw_preview();
         }
@@ -598,7 +605,7 @@ impl LpPrint {
             let imp = self.imp();
             let _ui_updates_disabled = self.disable_ui_updates();
             // Disable 'fill space' when manually changing size
-            imp.fill_space.set_active(false);
+            self.indirect_disable_fill_space();
 
             let (orig_width, orig_height) = self.original_size();
             let width = self
@@ -851,9 +858,16 @@ impl LpPrint {
     }
 
     fn on_fill_space_changed(&self) {
+        let imp = self.imp();
         if self.fill_space() {
+            imp.previous_width.set(Some(imp.width.value()));
             let _ui_updates_disabled = self.disable_ui_updates();
             self.update_width();
+            self.update_height();
+            self.draw_preview();
+        } else if let Some(width) = imp.previous_width.get() {
+            let _ui_updates_disabled = self.disable_ui_updates();
+            imp.width.set_value(width);
             self.update_height();
             self.draw_preview();
         }
