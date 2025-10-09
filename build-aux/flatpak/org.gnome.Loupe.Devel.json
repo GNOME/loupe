@@ -5,7 +5,7 @@
     "sdk": "org.gnome.Sdk",
     "sdk-extensions": [
         "org.freedesktop.Sdk.Extension.rust-stable",
-        "org.freedesktop.Sdk.Extension.llvm20"
+        "org.freedesktop.Sdk.Extension.llvm21"
     ],
     "command": "loupe",
     "finish-args": [
@@ -21,7 +21,7 @@
         "--filesystem=xdg-run/gvfsd"
     ],
     "build-options": {
-        "append-path": "/usr/lib/sdk/rust-stable/bin:/usr/lib/sdk/llvm20/bin",
+        "append-path": "/usr/lib/sdk/rust-stable/bin:/usr/lib/sdk/llvm21/bin",
         "build-args": [
             "--share=network"
         ],
@@ -33,29 +33,6 @@
             "CARGO_TARGET_AARCH64_UNKNOWN_LINUX_GNU_RUSTFLAGS": "-C link-arg=-fuse-ld=/usr/lib/sdk/rust-stable/bin/mold"
         }
     },
-    "cleanup": [
-        "/include",
-        "/lib/pkgconfig",
-        "/man",
-        "/share/doc",
-        "/share/gtk-doc",
-        "/share/man",
-        "/share/pkgconfig",
-        "*.la",
-        "*.a"
-    ],
-    "add-extensions": {
-        "org.freedesktop.Platform.ffmpeg-full": {
-            "version": "24.08",
-            "directory": "lib/ffmpeg",
-            "add-ld-path": ".",
-            "no-autodownload": false,
-            "autodelete": false
-        }
-    },
-    "cleanup-commands": [
-        "mkdir -p ${FLATPAK_DEST}/lib/ffmpeg"
-    ],
     "modules": [
         {
             "name": "geocode-glib",
@@ -106,7 +83,7 @@
             "name": "glycin-loaders",
             "buildsystem": "meson",
             "config-opts": [
-                "-Dloaders=glycin-image-rs,glycin-heif,glycin-jxl,glycin-svg,glycin-raw,glycin-jpeg2000",
+                "-Dloaders=glycin-raw,glycin-jpeg2000",
                 "-Dlibglycin=false",
                 "-Dlibglycin-gtk4=false",
                 "-Dglycin-thumbnailer=false"
@@ -115,7 +92,7 @@
                 {
                     "type": "git",
                     "url": "https://gitlab.gnome.org/GNOME/glycin.git",
-                    "commit": "520af6d328590fd1bec3558a84e25040a10406d1"
+                    "commit": "cb99d012bb708c50224b70a95cfbc372ab0961bb"
                 }
             ]
         },
