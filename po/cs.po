@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2025-03-05 19:09+0000\n"
-"PO-Revision-Date: 2025-03-05 21:32+0100\n"
+"POT-Creation-Date: 2025-09-10 21:40+0000\n"
+"PO-Revision-Date: 2025-10-09 13:40+0200\n"
 "Last-Translator: Daniel Rusek <mail@asciiwolf.com>\n"
 "Language-Team: Czech <gnome-cs-list@gnome.org>\n"
 "Language: cs\n"
@@ -16,15 +16,15 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Poedit 3.5\n"
+"X-Generator: Poedit 3.7\n"
 
-#: data/org.gnome.Loupe.desktop.in.in:3
+#: data/org.gnome.Loupe.desktop.in.in:2
 #: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:31
 #: src/widgets/image_window.rs:866
 msgid "Image Viewer"
 msgstr "Prohlížeč obrázků"
 
-#: data/org.gnome.Loupe.desktop.in.in:11
+#: data/org.gnome.Loupe.desktop.in.in:10
 msgid "Picture;Graphics;Loupe;"
 msgstr "Obrázek;Obrázky;Snímek;Snímky;Grafika;Loupe;"
 
@@ -292,13 +292,13 @@ msgid "Apply Crop"
 msgstr "Použít oříznutí"
 
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/about.rs:43
+#: src/about.rs:44
 msgid "translator-credits"
 msgstr ""
 "Vojtěch Perník <translations@pervoj.cz>\n"
 "Daniel Rusek <mail@asciiwolf.com>"
 
-#: src/about.rs:44
+#: src/about.rs:45
 msgid "Copyright © 2020–2024 Christopher Davis et al."
 msgstr "Copyright © 2020–2024 Christopher Davis a spol."
 
@@ -362,7 +362,7 @@ msgstr "Nepodařilo se obnovit obrázek z koše"
 msgid "Drop Image to View"
 msgstr "Přetáhněte obrázek, který chcete zobrazit"
 
-#: src/widgets/edit/crop.rs:353
+#: src/widgets/edit/crop.rs:363
 msgid "Failed to Edit Image"
 msgstr "Nepodařilo se upravit obrázek."
 
@@ -646,11 +646,11 @@ msgstr "Následující obrázek"
 
 #: src/widgets/image_view.ui:74
 msgid "Zoom Out"
-msgstr "Přiblížit"
+msgstr "Oddálit"
 
 #: src/widgets/image_view.ui:85
 msgid "Zoom In"
-msgstr "Oddálit"
+msgstr "Přiblížit"
 
 #: src/widgets/image_view.ui:100
 msgid "Toggle Zoom"
