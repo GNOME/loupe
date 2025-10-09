@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2025-08-15 11:13+0000\n"
-"PO-Revision-Date: 2025-08-16 12:10+0200\n"
+"POT-Creation-Date: 2025-10-08 20:21+0000\n"
+"PO-Revision-Date: 2025-10-09 13:46+0200\n"
 "Last-Translator: Daniel Rusek <mail@asciiwolf.com>\n"
 "Language-Team: Czech <gnome-cs-list@gnome.org>\n"
 "Language: cs\n"
@@ -16,11 +16,11 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Poedit 3.6\n"
+"X-Generator: Poedit 3.7\n"
 
 #: data/org.gnome.Loupe.desktop.in.in:2
 #: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:32
-#: src/widgets/image_window.rs:866
+#: src/widgets/image_window.rs:867
 msgid "Image Viewer"
 msgstr "Prohlížeč obrázků"
 
@@ -355,7 +355,7 @@ msgstr "Z"
 msgid "%x %X"
 msgstr "%x %X"
 
-#: src/util.rs:182 src/widgets/image_window.rs:638
+#: src/util.rs:182 src/widgets/image_window.rs:639
 msgid "Failed to restore image from trash"
 msgstr "Nepodařilo se obnovit obrázek z koše"
 
@@ -363,7 +363,7 @@ msgstr "Nepodařilo se obnovit obrázek z koše"
 msgid "Drop Image to View"
 msgstr "Přetáhněte obrázek, který chcete zobrazit"
 
-#: src/widgets/edit/crop.rs:363
+#: src/widgets/edit/crop.rs:364
 msgid "Failed to Edit Image"
 msgstr "Nepodařilo se upravit obrázek."
 
@@ -525,7 +525,7 @@ msgstr "Nah_radit původní"
 msgid "Original image will be moved to the trash"
 msgstr "Původní obrázek bude přesunut do koše"
 
-#: src/widgets/error_details.rs:79
+#: src/widgets/error_details.rs:80
 msgid ""
 "The following error occurred. If you think this is an issue with the "
 "program, please include this information when you report the error."
@@ -647,11 +647,11 @@ msgstr "Následující obrázek"
 
 #: src/widgets/image_view.ui:74
 msgid "Zoom Out"
-msgstr "Přiblížit"
+msgstr "Oddálit"
 
 #: src/widgets/image_view.ui:85
 msgid "Zoom In"
-msgstr "Oddálit"
+msgstr "Přiblížit"
 
 #: src/widgets/image_view.ui:100
 msgid "Toggle Zoom"
@@ -669,51 +669,51 @@ msgstr "Vlastní úroveň přiblížení"
 msgid "Zoom to Specified Level"
 msgstr "Přiblížit na zadanou úroveň"
 
-#: src/widgets/image_window.rs:502
+#: src/widgets/image_window.rs:503
 msgid "Supported image formats"
 msgstr "Podporované formáty obrázků"
 
-#: src/widgets/image_window.rs:508
+#: src/widgets/image_window.rs:509
 msgid "All files"
 msgstr "Všechny soubory"
 
-#: src/widgets/image_window.rs:515
+#: src/widgets/image_window.rs:516
 msgid "Open Image"
 msgstr "Otevřít obrázek"
 
-#: src/widgets/image_window.rs:601
+#: src/widgets/image_window.rs:602
 msgid "Image copied to clipboard"
 msgstr "Obrázek zkopírován do schránky"
 
-#: src/widgets/image_window.rs:622
+#: src/widgets/image_window.rs:623
 msgid "Image moved to trash"
 msgstr "Obrázek přesunut do koše"
 
-#: src/widgets/image_window.rs:623
+#: src/widgets/image_window.rs:624
 msgid "Undo"
 msgstr "Zpět"
 
-#: src/widgets/image_window.rs:653
+#: src/widgets/image_window.rs:654
 msgid "Failed to move image to trash"
 msgstr "Nepodařilo se přesunout obrázek do koše"
 
-#: src/widgets/image_window.rs:677
+#: src/widgets/image_window.rs:678
 msgid "Permanently Delete Image?"
 msgstr "Smazat obrázek trvale?"
 
-#: src/widgets/image_window.rs:679
+#: src/widgets/image_window.rs:680
 msgid "After deleting the image “{}” it will be permanently lost."
 msgstr "Po smazání bude obrázek „{}“ trvale ztracen."
 
-#: src/widgets/image_window.rs:687
+#: src/widgets/image_window.rs:688
 msgid "Cancel"
 msgstr "Zrušit"
 
-#: src/widgets/image_window.rs:688
+#: src/widgets/image_window.rs:689
 msgid "Delete"
 msgstr "Smazat"
 
-#: src/widgets/image_window.rs:699
+#: src/widgets/image_window.rs:700
 msgid "Failed to delete image"
 msgstr "Nepodařilo se smazat obrázek"
 
