@@ -15,7 +15,7 @@
 //
 // SPDX-License-Identifier: GPL-3.0-or-later
 
-use std::cell::{OnceCell, RefCell};
+use std::cell::{Cell, OnceCell, RefCell};
 use std::sync::Arc;
 
 use adw::prelude::*;
@@ -55,6 +55,9 @@ mod imp {
         original_image: OnceCell<LpImage>,
         #[property(get, construct_only)]
         pub edit_crop: OnceCell<LpEditCrop>,
+
+        /// Whether the original file can be trashed
+        pub(super) can_trash: Cell<bool>,
 
         pub(super) operations: RefCell<Option<Arc<Operations>>>,
         save_cancellable: RefCell<Option<gio::Cancellable>>,
@@ -107,6 +110,7 @@ mod imp {
                 obj,
                 async move {
                     let can_trash = obj.original_image().can_trash().await;
+                    obj.imp().can_trash.replace(can_trash);
                     obj.action_set_enabled("edit.save-overwrite", can_trash);
                 }
             ));
@@ -451,7 +455,7 @@ mod imp {
             let enabled = self.is_save_sensitive() && !force_disabled;
 
             self.save.set_sensitive(enabled);
-            obj.action_set_enabled("edit.save-overwrite", enabled);
+            obj.action_set_enabled("edit.save-overwrite", enabled & self.can_trash.get());
             obj.action_set_enabled("edit.save-copy", enabled);
         }
     }
