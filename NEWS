@@ -1,3 +1,10 @@
+## 49.1 (2025-10-21)
+
+### Fixed
+
+- The keyboard shortcut for 300 % (Ctrl + 3, 3) now zooms to 300% instead of 200 %.
+- editing: Don't enable option to trash and replace if moving to trash is not supported.
+
 ## 49.0 (2025-09-12)
 
 ### Fixed
