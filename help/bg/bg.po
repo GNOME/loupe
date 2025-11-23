@@ -6,16 +6,16 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: loupe gnome-46\n"
-"POT-Creation-Date: 2025-11-22 11:07+0000\n"
-"PO-Revision-Date: 2024-08-24 19:38+0200\n"
+"POT-Creation-Date: 2025-11-22 11:08+0000\n"
+"PO-Revision-Date: 2025-11-23 11:10+0100\n"
 "Last-Translator: twlvnn kraftwerk <kraft_werk@tutanota.com>\n"
 "Language-Team: Bulgarian <dict-notifications@fsa-bg.org>\n"
 "Language: bg\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"X-Generator: Gtranslator 46.1\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.8\n"
 
 #. Put one translator per line, in the form NAME <EMAIL>, YEAR1, YEAR2
 msgctxt "_"
@@ -84,10 +84,10 @@ msgstr ""
 msgctxt "_"
 msgid ""
 "external ref='figures/help-about-symbolic.svg' "
-"md5='51c74093b3e862d1f839cc377aa86837'"
+"md5='6b43c8bc211b5f8b57810091728b8925'"
 msgstr ""
 "external ref='figures/help-about-symbolic.svg' "
-"md5='51c74093b3e862d1f839cc377aa86837'"
+"md5='6b43c8bc211b5f8b57810091728b8925'"
 
 #. (itstool) path: page/p
 #: C/image-properties.page:35
@@ -108,24 +108,24 @@ msgstr "Поддържани формати на изображения"
 #. (itstool) path: page/p
 #: C/supported-formats.page:13
 msgid ""
-"Image Viewer uses <link href=\"https://gitlab.gnome.org/sophie-h/"
+"Image Viewer uses <link href=\"https://gitlab.gnome.org/GNOME/"
 "glycin\">glycin</link> for loading images. You can check <link "
-"href=\"https://gitlab.gnome.org/sophie-h/glycin#supported-image-"
+"href=\"https://gitlab.gnome.org/GNOME/glycin#supported-image-"
 "formats\">glycin's README</link> for more details about the formats "
 "supported by the default loaders and the features provided by each format."
 msgstr ""
 "„Преглед на изображения“ използва <link href=\"https://gitlab.gnome.org/"
-"sophie-h/glycin\">glycin</link> за зареждане на изображения. Може да "
-"проверите <link href=\"https://gitlab.gnome.org/sophie-h/glycin#supported-"
-"image-formats\">glycin README файла</link> за повече подробности относно "
+"GNOME/glycin\">glycin</link> за зареждане на изображения. Може да проверите "
+"<link href=\"https://gitlab.gnome.org/GNOME/glycin#supported-image-"
+"formats\">glycin README файла</link> за повече подробности относно "
 "форматите, поддържани от стандартните програми за зареждане, и функциите, "
 "предоставяни от всеки формат."
 
 #. (itstool) path: page/p
 #: C/supported-formats.page:17
 msgid ""
-"Glycin's loaders are configurable, and new loaders can be created by third-"
-"parties, so the supported formats on your system may vary."
+"Glycin's loaders are configurable, and new loaders can be created by third "
+"parties. Therefore the formats supported on your system may vary."
 msgstr ""
 "Програмите за зареждане на Glycin могат да се настройват, а трети лица могат "
 "да създават нови програми за зареждане, така че поддържаните формати във "
@@ -152,10 +152,10 @@ msgstr "Преместване на изображения в кошчето"
 msgctxt "_"
 msgid ""
 "external ref='figures/user-trash-symbolic.svg' "
-"md5='975d41b3e24867a2a26194cd871e36cc'"
+"md5='3ffa1160de3479541f34c3bfbf3cdb64'"
 msgstr ""
 "external ref='figures/user-trash-symbolic.svg' "
-"md5='975d41b3e24867a2a26194cd871e36cc'"
+"md5='3ffa1160de3479541f34c3bfbf3cdb64'"
 
 #. (itstool) path: page/p
 #: C/trashing-images.page:14
@@ -323,10 +323,10 @@ msgstr "Разглеждане"
 msgctxt "_"
 msgid ""
 "external ref='figures/go-previous-symbolic.svg' "
-"md5='2ed7437ba9a336b6c6cf645b9eb4ed8b'"
+"md5='a53305845578db884ecfb7d8d33fcaeb'"
 msgstr ""
 "external ref='figures/go-previous-symbolic.svg' "
-"md5='2ed7437ba9a336b6c6cf645b9eb4ed8b'"
+"md5='a53305845578db884ecfb7d8d33fcaeb'"
 
 #. (itstool) path: p/media
 #. This is a reference to an external file such as an image or video. When
@@ -337,10 +337,10 @@ msgstr ""
 msgctxt "_"
 msgid ""
 "external ref='figures/go-next-symbolic.svg' "
-"md5='9c98c035765d2edc185ef9b37566e7ce'"
+"md5='2f901ac0f711cfb3274b2985d10c4124'"
 msgstr ""
 "external ref='figures/go-next-symbolic.svg' "
-"md5='9c98c035765d2edc185ef9b37566e7ce'"
+"md5='2f901ac0f711cfb3274b2985d10c4124'"
 
 #. (itstool) path: section/p
 #: C/opening-images.page:65
@@ -365,11 +365,12 @@ msgstr ""
 #. (itstool) path: note/p
 #: C/opening-images.page:70 C/viewing-images.page:39
 msgid ""
-"Keyboard users can also use the corresponding shortcuts presented in "
-"Keyboard Shortcuts dialog."
+"Keyboard users can also use the corresponding shortcuts presented in the "
+"<gui>Keyboard Shortcuts</gui> dialog."
 msgstr ""
 "Потребителите с клавиатура могат също така да използват съответните клавишни "
-"комбинации, представени в диалоговия прозорец за клавишни комбинации."
+"комбинации, представени в <gui>диалоговия прозорец за клавишни комбинации</"
+"gui>."
 
 #. (itstool) path: info/desc
 #: C/index.page:10
@@ -442,10 +443,10 @@ msgstr "Копиране и поставяне"
 msgctxt "_"
 msgid ""
 "external ref='figures/edit-copy-symbolic.svg' "
-"md5='e998fb903df32b921d08ef52e0ea6555'"
+"md5='4774ffd65c32e160f4cefc093abd6b7c'"
 msgstr ""
 "external ref='figures/edit-copy-symbolic.svg' "
-"md5='e998fb903df32b921d08ef52e0ea6555'"
+"md5='4774ffd65c32e160f4cefc093abd6b7c'"
 
 #. (itstool) path: item/p
 #: C/sending-to-other-apps.page:29
@@ -503,10 +504,10 @@ msgstr "Мащабиране"
 msgctxt "_"
 msgid ""
 "external ref='figures/zoom-in-symbolic.svg' "
-"md5='7e94a36ae229fe2cfb97481937300ad3'"
+"md5='fed4648112c974f25de99c15ece6272c'"
 msgstr ""
 "external ref='figures/zoom-in-symbolic.svg' "
-"md5='7e94a36ae229fe2cfb97481937300ad3'"
+"md5='fed4648112c974f25de99c15ece6272c'"
 
 #. (itstool) path: p/media
 #. This is a reference to an external file such as an image or video. When
@@ -517,10 +518,10 @@ msgstr ""
 msgctxt "_"
 msgid ""
 "external ref='figures/zoom-out-symbolic.svg' "
-"md5='c05c42cb3d95bf3bc7f49ccd8dcca510'"
+"md5='fe99d9c40c1104988ee4580283168dfb'"
 msgstr ""
 "external ref='figures/zoom-out-symbolic.svg' "
-"md5='c05c42cb3d95bf3bc7f49ccd8dcca510'"
+"md5='fe99d9c40c1104988ee4580283168dfb'"
 
 #. (itstool) path: section/p
 #: C/viewing-images.page:16
@@ -540,13 +541,13 @@ msgstr ""
 #: C/viewing-images.page:19
 msgid ""
 "Touchpad and touchscreen users can also zoom with a two-finger pinch "
-"gesture. On touchpads, it is also possible to zoom via pressing the "
-"<key>Ctrl</key> and swiping up/down with two fingers."
+"gesture. On touchpads, it is also possible to zoom by pressing the "
+"<key>Ctrl</key> key while swiping up/down with two fingers on the touchpad."
 msgstr ""
 "Потребителите със сензорен панел и сензорен екран могат да увеличават мащаба "
 "с жест на защипване с два пръста. При сензорните панели увеличението е "
-"възможно и чрез натискане на <клавиша>Ctrl</клавиша> и приплъзване нагоре/"
-"надолу с два пръста."
+"възможно и чрез натискане на <key>Ctrl</key> и приплъзване нагоре/надолу с "
+"два пръста."
 
 #. (itstool) path: section/title
 #: C/viewing-images.page:22
@@ -579,10 +580,10 @@ msgstr "Завъртане"
 msgctxt "_"
 msgid ""
 "external ref='figures/object-rotate-right-symbolic.svg' "
-"md5='0e69268f1a3a3c0c43c9ae3e193fd3d7'"
+"md5='0284f09f3659bf61e4882ac8a758b38f'"
 msgstr ""
 "external ref='figures/object-rotate-right-symbolic.svg' "
-"md5='0e69268f1a3a3c0c43c9ae3e193fd3d7'"
+"md5='0284f09f3659bf61e4882ac8a758b38f'"
 
 #. (itstool) path: p/media
 #. This is a reference to an external file such as an image or video. When
@@ -593,10 +594,10 @@ msgstr ""
 msgctxt "_"
 msgid ""
 "external ref='figures/object-rotate-left-symbolic.svg' "
-"md5='8abe2a1bc5871a15c2f6534d19a4c7ee'"
+"md5='c2393bbaa3b0f7ea09b43089295a44d4'"
 msgstr ""
 "external ref='figures/object-rotate-left-symbolic.svg' "
-"md5='8abe2a1bc5871a15c2f6534d19a4c7ee'"
+"md5='c2393bbaa3b0f7ea09b43089295a44d4'"
 
 #. (itstool) path: section/p
 #: C/viewing-images.page:28
@@ -638,10 +639,10 @@ msgstr "Цял екран"
 msgctxt "_"
 msgid ""
 "external ref='figures/view-fullscreen-symbolic.svg' "
-"md5='8089b2761abd6116e6185e06bc885da1'"
+"md5='3ee106ab07051301a9b5982cbe04b597'"
 msgstr ""
 "external ref='figures/view-fullscreen-symbolic.svg' "
-"md5='8089b2761abd6116e6185e06bc885da1'"
+"md5='3ee106ab07051301a9b5982cbe04b597'"
 
 #. (itstool) path: p/media
 #. This is a reference to an external file such as an image or video. When
@@ -652,10 +653,10 @@ msgstr ""
 msgctxt "_"
 msgid ""
 "external ref='figures/view-restore-symbolic.svg' "
-"md5='d00df849240f2d92c7fa1429d3ae8254'"
+"md5='f7470d4b9ed1d317ed201bb4a72882fb'"
 msgstr ""
 "external ref='figures/view-restore-symbolic.svg' "
-"md5='d00df849240f2d92c7fa1429d3ae8254'"
+"md5='f7470d4b9ed1d317ed201bb4a72882fb'"
 
 #. (itstool) path: section/p
 #: C/viewing-images.page:36
