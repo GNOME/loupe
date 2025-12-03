@@ -124,7 +124,11 @@ impl UpdateSender {
     }
 
     pub fn send_error(&self, err: glycin::ErrorCtx) {
-        if err.unsupported_format().is_some() {
+        if let Some(mime_type) = err.unsupported_format() {
+            let mut metadata = Metadata::default();
+            metadata.set_mime_type(mime_type);
+
+            self.send(DecoderUpdate::Metadata(Box::new(metadata)));
             self.send(DecoderUpdate::SpecificError(
                 DecoderError::UnsupportedFormat,
             ));
@@ -150,6 +154,7 @@ pub struct Decoder {
 enum FormatDecoder {
     Glycin(Glycin),
     Svg(Svg),
+    Failed,
 }
 
 impl Decoder {
@@ -159,7 +164,6 @@ impl Decoder {
     /// The renderer should listen to updates from the returned receiver.
     pub async fn new(
         file: gio::File,
-        mime_type: Option<String>,
         tiles: Arc<SharedFrameBuffer>,
     ) -> (Self, mpsc::Receiver<DecoderUpdate>) {
         let (sender, receiver) = mpsc::unbounded();
@@ -167,7 +171,26 @@ impl Decoder {
         let update_sender = UpdateSender { sender };
         tiles.set_update_sender(update_sender.clone());
 
-        let format_decoder = Self::format_decoder(update_sender.clone(), file, mime_type, tiles);
+        log::trace!("Setting up loader");
+        let mut loader = glycin::Loader::new(file);
+        loader.apply_transformations(false);
+
+        let image = match loader.load().await {
+            Ok(image) => image,
+            Err(err) => {
+                update_sender.send_error(err);
+                return (
+                    Self {
+                        decoder: FormatDecoder::Failed,
+                        update_sender,
+                    },
+                    receiver,
+                );
+            }
+        };
+
+        let format_decoder = Self::format_decoder(update_sender.clone(), image, tiles);
+
         let decoder = Self {
             decoder: format_decoder,
             update_sender,
@@ -178,20 +201,19 @@ impl Decoder {
 
     fn format_decoder(
         update_sender: UpdateSender,
-        file: gio::File,
-        mime_type: Option<String>,
+        image: glycin::Image,
         tiles: Arc<SharedFrameBuffer>,
     ) -> FormatDecoder {
-        if let Some(mime_type) = mime_type {
-            // Known things we want to match here are
-            // - image/svg+xml
-            // - image/svg+xml-compressed
-            if mime_type.split('+').next() == Some("image/svg") {
-                return FormatDecoder::Svg(Svg::new(file, update_sender, tiles));
-            }
-        }
+        let mime_type = image.mime_type().to_string();
 
-        FormatDecoder::Glycin(Glycin::new(file, update_sender, tiles))
+        // Known things we want to match here are
+        // - image/svg+xml
+        // - image/svg+xml-compressed
+        if mime_type.split('+').next() == Some("image/svg") {
+            return FormatDecoder::Svg(Svg::new(image, update_sender, tiles));
+        } else {
+            FormatDecoder::Glycin(Glycin::new(image, update_sender, tiles))
+        }
     }
 
     /// Request missing tiles

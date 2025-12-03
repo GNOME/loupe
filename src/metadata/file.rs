@@ -23,7 +23,6 @@ const ATTRIBUTE_HOST_PATH: &str = "xattr::document-portal.host-path";
 pub struct FileInfo {
     pub(super) display_name: glib::GString,
     pub(super) file_size: Option<u64>,
-    pub(super) mime_type: Option<glib::GString>,
     pub(super) created: Option<glib::DateTime>,
     pub(super) modified: Option<glib::DateTime>,
     pub(super) host_path: Option<glib::GString>,
@@ -50,9 +49,6 @@ impl FileInfo {
         Ok(Self {
             display_name: file_info.display_name(),
             file_size,
-            mime_type: file_info
-                .content_type()
-                .and_then(|x| gio::content_type_get_mime_type(&x)),
             created: file_info.creation_date_time(),
             modified: file_info.modification_date_time(),
             host_path: file_info.attribute_as_string(ATTRIBUTE_HOST_PATH),

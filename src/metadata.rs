@@ -116,25 +116,11 @@ impl Metadata {
         self.mime_type.clone()
     }
 
-    /// Unreliable mime type
-    ///
-    /// Before the image is successfully loaded, this mime type might be wrong
-    /// since it is not yet based on the more complex mime type detection used
-    /// by glyin.
-    pub fn unreliable_mime_type(&self) -> Option<String> {
-        self.mime_type().or_else(|| {
-            self.file_info
-                .as_ref()
-                .and_then(|x| x.mime_type.as_ref())
-                .map(|x| x.to_string())
-        })
-    }
-
     pub fn format_name(&self) -> Option<String> {
         self.image_info
             .as_ref()
             .and_then(|x| x.info_format_name().map(|x| x.to_string()))
-            .or_else(|| self.unreliable_mime_type())
+            .or_else(|| self.mime_type())
     }
 
     pub fn alpha_channel(&self) -> Option<bool> {

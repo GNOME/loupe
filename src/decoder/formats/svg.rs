@@ -61,21 +61,14 @@ impl Drop for Svg {
 }
 
 impl Svg {
-    pub fn new(file: gio::File, updater: UpdateSender, tiles: Arc<SharedFrameBuffer>) -> Self {
+    pub fn new(image: glycin::Image, updater: UpdateSender, tiles: Arc<SharedFrameBuffer>) -> Self {
         let current_request: Arc<std::sync::RwLock<Request>> = Default::default();
         let request_store = current_request.clone();
-        let cancellable = gio::Cancellable::new();
+        let cancellable = image.cancellable();
         let cancellable_ = cancellable.clone();
         let (wakeup, wakeup_resv) = mpsc::unbounded();
 
         updater.clone().spawn_error_handled(async move {
-            log::trace!("Setting up SVG loader");
-            let mut loader = glycin::Loader::new(file);
-
-            loader.cancellable(cancellable.clone());
-
-            let image = loader.load().await?;
-
             let mut metadata: Metadata = Metadata::default();
             metadata.set_image_info(image.details().clone());
             metadata.set_mime_type(image.mime_type().to_string());

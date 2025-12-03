@@ -42,22 +42,12 @@ impl Drop for Glycin {
 }
 
 impl Glycin {
-    pub fn new(file: gio::File, updater: UpdateSender, tiles: Arc<SharedFrameBuffer>) -> Self {
-        let cancellable = gio::Cancellable::new();
-        let cancellable_ = cancellable.clone();
+    pub fn new(image: glycin::Image, updater: UpdateSender, tiles: Arc<SharedFrameBuffer>) -> Self {
+        let cancellable = image.cancellable();
 
         let (next_frame_send, next_frame_recv) = async_channel::bounded(2);
 
         updater.clone().spawn_error_handled(async move {
-            log::trace!("Setting up loader");
-            let mut loader = glycin::Loader::new(file);
-            loader.apply_transformations(false);
-
-            loader.cancellable(cancellable_);
-
-            let image = loader.load().await?;
-            log::trace!("Image info received");
-
             let mut metadata: Metadata = Metadata::default();
             metadata.set_image_info(image.details().clone());
             metadata.set_mime_type(image.mime_type().to_string());

@@ -231,7 +231,7 @@ impl LpImagePage {
             imp.stack.set_visible_child(&*imp.error_page);
             imp.error_more_info.set_visible(false);
         } else if image.specific_error() == DecoderError::UnsupportedFormat {
-            let mime_type = image.metadata().unreliable_mime_type().unwrap_or_default();
+            let mime_type = image.metadata().mime_type().unwrap_or_default();
             let content_type = gio::content_type_from_mime_type(&mime_type).unwrap_or_default();
             let description = gio::content_type_get_description(&content_type).to_string();
 

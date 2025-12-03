@@ -32,17 +32,22 @@ impl imp::LpImage {
     }
 
     /// Set filename after filename changed
-    async fn set_file_changed(&self, file: &gio::File) {
+    async fn set_file_changed(&self, old_file: &gio::File, new_file: &gio::File) {
         let obj = self.obj();
-        let prev_mime_type = obj.metadata().unreliable_mime_type();
+        let old_filename_ext = old_file
+            .basename()
+            .map(|x| x.extension().map(|x| x.to_owned()));
+        let new_filename_ext = new_file
+            .basename()
+            .map(|x| x.extension().map(|x| x.to_owned()));
 
-        self.file.replace(Some(file.clone()));
+        self.file.replace(Some(new_file.clone()));
         self.reload_file_info().await;
 
-        // Reload if mime type changed since other decoding path might be responsible
+        // Reload if file extension changed since other decoding path might be responsible
         // now
-        if obj.metadata().unreliable_mime_type() != prev_mime_type {
-            obj.load(file).await;
+        if old_filename_ext != new_filename_ext {
+            obj.load(new_file).await;
             return;
         }
 
@@ -223,6 +228,7 @@ impl imp::LpImage {
                             obj.load(&file).await;
                         });
                     } else {
+                        let old_file = file_a.clone();
                         glib::spawn_future_local(async move {
                             if obj.error().is_some() {
                                 // Tmp files might be renamed quickly after creation. In this case
@@ -230,7 +236,7 @@ impl imp::LpImage {
                                 // Therefore reload on name change loading caused an error.
                                 obj.load(&file).await;
                             } else {
-                                obj.imp().set_file_changed(&file).await;
+                                obj.imp().set_file_changed(&old_file, &file).await;
                             }
                         });
                     }
@@ -365,12 +371,7 @@ impl LpImage {
         // Reset background color for reloads
         imp.set_background_color(None);
 
-        let (decoder, decoder_update) = Decoder::new(
-            file.clone(),
-            self.metadata().unreliable_mime_type(),
-            tiles.clone(),
-        )
-        .await;
+        let (decoder, decoder_update) = Decoder::new(file.clone(), tiles.clone()).await;
 
         let weak_obj = self.downgrade();
         glib::spawn_future_local(async move {
