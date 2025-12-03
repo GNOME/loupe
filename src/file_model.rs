@@ -203,10 +203,17 @@ impl LpFileModel {
                         if let Some(content_type) =
                             content_type.and_then(|x| gio::content_type_get_mime_type(&x))
                         {
+                            let hidden =
+                                if info.has_attribute(gio::FILE_ATTRIBUTE_STANDARD_IS_HIDDEN) {
+                                    info.is_hidden()
+                                } else {
+                                    false
+                                };
+
                             // Filter out non-images types. The final decision if images are
                             // supported/kept will later be done by glycin when starting to load the
                             // images. Usually by inspecting the magic bytes.
-                            if content_type.starts_with("image/") && !info.is_hidden() {
+                            if content_type.starts_with("image/") && !hidden {
                                 let file = directory.child(info.name());
                                 new_files.insert(file.uri(), Entry::new(file).await);
                             }
