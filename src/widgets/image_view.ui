@@ -14,10 +14,6 @@
           <object class="GtkBox" id="controls_box_start">
             <property name="valign">end</property>
             <property name="halign">start</property>
-            <property name="margin-start">18</property>
-            <property name="margin-end">18</property>
-            <property name="margin-top">18</property>
-            <property name="margin-bottom">18</property>
             <property name="spacing">6</property>
             <style>
               <class name="osd-box" />
@@ -52,10 +48,6 @@
           <object class="GtkBox" id="controls_box_end">
             <property name="valign">end</property>
             <property name="halign">end</property>
-            <property name="margin-start">18</property>
-            <property name="margin-end">18</property>
-            <property name="margin-top">18</property>
-            <property name="margin-bottom">18</property>
             <style>
               <class name="osd-box" />
             </style>

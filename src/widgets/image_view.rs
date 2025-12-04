@@ -329,6 +329,15 @@ mod imp {
                 }
             ));
 
+            // Adjust overlays margins to always visible scrollbars
+            obj.update_scrollbar_styles();
+            obj.settings()
+                .connect_gtk_overlay_scrolling_notify(glib::clone!(
+                    #[weak]
+                    obj,
+                    move |_| obj.update_scrollbar_styles()
+                ));
+
             obj.add_controller(self.drag_source.clone());
         }
     }
@@ -911,5 +920,13 @@ impl LpImageView {
         value = value.trim().to_string();
 
         value.parse::<f64>().ok().map(|x| x / 100.)
+    }
+
+    fn update_scrollbar_styles(&self) {
+        if self.settings().is_gtk_overlay_scrolling() {
+            self.remove_css_class("always-show-scrollbars");
+        } else {
+            self.add_css_class("always-show-scrollbars");
+        }
     }
 }

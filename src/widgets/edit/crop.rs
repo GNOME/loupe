@@ -290,7 +290,6 @@ mod imp {
             } else {
                 LpOrientation::Landscape
             };
-            dbg!("setting to", orientation);
             let res = self
                 .obj()
                 .activate_action("edit-crop.orientation", Some(&orientation.to_variant()));

@@ -20,6 +20,8 @@
 //!
 //! This widget also handles showing the context menu.
 
+use std::time::Duration;
+
 use adw::subclass::prelude::*;
 use glib::{Properties, clone};
 use gtk::CompositeTemplate;
@@ -33,8 +35,6 @@ use crate::util::gettext::*;
 use crate::widgets::LpImage;
 
 mod imp {
-    use std::time::Duration;
-
     use super::*;
 
     #[derive(Debug, Default, CompositeTemplate, Properties)]
@@ -85,15 +85,8 @@ mod imp {
         }
     }
 
+    #[glib::derived_properties]
     impl ObjectImpl for LpImagePage {
-        fn properties() -> &'static [glib::ParamSpec] {
-            Self::derived_properties()
-        }
-
-        fn property(&self, id: usize, pspec: &glib::ParamSpec) -> glib::Value {
-            self.derived_property(id, pspec)
-        }
-
         fn constructed(&self) {
             let obj = self.obj();
 

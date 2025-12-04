@@ -10,6 +10,19 @@
   border-radius: 12px;
   background-color: var(--osd-background-color);
   padding: 6px;
+  margin: 18px;
+}
+
+.always-show-scrollbars .osd-box {
+  margin-bottom: 42px;
+}
+
+.always-show-scrollbars .osd-box:dir(ltr) {
+  margin-right: 42px;
+}
+
+.always-show-scrollbars .osd-box:dir(rtl) {
+  margin-left: 42px;
 }
 
 .osd-box menubutton button {
