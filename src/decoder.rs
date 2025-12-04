@@ -210,7 +210,7 @@ impl Decoder {
         // - image/svg+xml
         // - image/svg+xml-compressed
         if mime_type.split('+').next() == Some("image/svg") {
-            return FormatDecoder::Svg(Svg::new(image, update_sender, tiles));
+            FormatDecoder::Svg(Svg::new(image, update_sender, tiles))
         } else {
             FormatDecoder::Glycin(Glycin::new(image, update_sender, tiles))
         }
