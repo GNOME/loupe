@@ -43,7 +43,7 @@ cargo-fmt:
     - cargo fmt --all -- --check
 
 cargo-doc:
-  image: 'quay.io/gnome_infrastructure/gnome-runtime-images:gnome-master'
+  image: 'quay.io/gnome_infrastructure/gnome-runtime-images:gnome-49'
   interruptible: true
   tags:
     - flatpak
@@ -71,7 +71,7 @@ cargo-doc:
     - chmod -R a=rwx doc
 
 cargo-clippy:
-  image: 'quay.io/gnome_infrastructure/gnome-runtime-images:gnome-master'
+  image: 'quay.io/gnome_infrastructure/gnome-runtime-images:gnome-49'
   interruptible: true
   allow_failure: true
   tags:
@@ -94,7 +94,7 @@ cargo-clippy:
       END
 
 cargo-test:
-  image: 'quay.io/gnome_infrastructure/gnome-runtime-images:gnome-master'
+  image: 'quay.io/gnome_infrastructure/gnome-runtime-images:gnome-49'
   interruptible: true
   tags:
     - flatpak
