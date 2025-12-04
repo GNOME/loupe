@@ -41,9 +41,9 @@ use gtk::Widget;
 use crate::application::LpApplication;
 use crate::config;
 use crate::deps::*;
+use crate::util::Direction;
 use crate::util::gettext::*;
 use crate::util::root::ParentWindow;
-use crate::util::Direction;
 use crate::widgets::window::ActionPartGlobal;
 use crate::widgets::{LpDragOverlay, LpImage, LpImageView, LpPropertiesView};
 
@@ -690,7 +690,7 @@ impl LpImageWindow {
         ]);
         dialog.set_response_appearance("delete", adw::ResponseAppearance::Destructive);
 
-        if "delete" == dialog.choose_future(self).await {
+        if "delete" == dialog.choose_future(Some(self)).await {
             let file = gio::File::for_path(path);
             let result = file.delete_future(glib::Priority::default()).await;
 
