@@ -17,8 +17,9 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 
 use std::cell::{OnceCell, RefCell};
-use std::collections::VecDeque;
+use std::collections::{HashMap, VecDeque};
 use std::sync::LazyLock;
+use std::time::Instant;
 
 use anyhow::Context;
 use gio::prelude::*;
@@ -39,36 +40,59 @@ struct Entry {
 }
 
 impl Entry {
-    async fn new(file: gio::File) -> Self {
+    async fn new(
+        file: gio::File,
+        info: Option<gio::FileInfo>,
+        collation_key_cache: &mut HashMap<glib::GString, glib::FilenameCollationKey>,
+    ) -> Self {
         let mut sort = VecDeque::new();
         let mut frac_file = file.clone();
 
+        // Use already available info for the filename as performance optimization
+        let mut available_file_info = info.map(Ok);
+
         // Determine sort order for all path/uri segments one by one
         loop {
-            match frac_file
-                .query_info_future(
-                    gio::FILE_ATTRIBUTE_STANDARD_DISPLAY_NAME,
-                    gio::FileQueryInfoFlags::NONE,
-                    glib::Priority::LOW,
-                )
-                .await
-            {
-                Ok(parent) => {
-                    let key = glib::FilenameCollationKey::from(parent.display_name());
-                    sort.push_front(key);
-                }
+            let uri = frac_file.uri();
 
-                Err(err) => {
-                    log::error!(
-                        "Failed to obtain information for sorting '{}': {err}",
-                        frac_file.uri()
-                    );
-                    break;
+            let key = if let Some(cached_key) = collation_key_cache.get(&uri) {
+                cached_key.clone()
+            } else {
+                let file_info = if let Some(file_info) = available_file_info {
+                    file_info
+                } else {
+                    frac_file
+                        .query_info_future(
+                            gio::FILE_ATTRIBUTE_STANDARD_DISPLAY_NAME,
+                            gio::FileQueryInfoFlags::NONE,
+                            glib::Priority::LOW,
+                        )
+                        .await
+                };
+
+                match file_info {
+                    Ok(parent) => {
+                        let key = glib::FilenameCollationKey::from(parent.display_name());
+                        // Using this cache since each file info query can take noticable time (1 ms
+                        // on local SMB). Only cache keys resulting from queries in this function
+                        // since these will be path segments that can be (and are likely to) be
+                        // repeated.
+                        collation_key_cache.insert(uri, key.clone());
+                        key
+                    }
+
+                    Err(err) => {
+                        log::error!("Failed to obtain information for sorting '{}': {err}", uri);
+                        break;
+                    }
                 }
-            }
+            };
+
+            sort.push_front(key);
 
             if let Some(parent) = frac_file.parent() {
                 frac_file = parent;
+                available_file_info = None;
             } else {
                 break;
             }
@@ -127,10 +151,14 @@ impl LpFileModel {
 
     pub async fn from_files(files: Vec<gio::File>) -> Self {
         let model = Self::default();
+        let mut collation_key_cache = Default::default();
 
         let mut stored_files: IndexMap<GString, Entry> = IndexMap::new();
         for file in files {
-            stored_files.insert(file.uri(), Entry::new(file).await);
+            stored_files.insert(
+                file.uri(),
+                Entry::new(file, None, &mut collation_key_cache).await,
+            );
         }
 
         *model.imp().files.borrow_mut() = stored_files;
@@ -142,6 +170,7 @@ impl LpFileModel {
     ///
     /// This can be used if there are already files present
     pub async fn load_directory(&self, directory: gio::File) -> anyhow::Result<()> {
+        let instant = Instant::now();
         self.imp().directory.set(directory.clone()).unwrap();
 
         let monitor =
@@ -169,15 +198,17 @@ impl LpFileModel {
                 &format!(
                     "{},{},{},{}",
                     gio::FILE_ATTRIBUTE_STANDARD_NAME,
-                    gio::FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE,
                     gio::FILE_ATTRIBUTE_STANDARD_FAST_CONTENT_TYPE,
                     gio::FILE_ATTRIBUTE_STANDARD_IS_HIDDEN,
+                    gio::FILE_ATTRIBUTE_STANDARD_DISPLAY_NAME,
                 ),
                 gio::FileQueryInfoFlags::NONE,
                 glib::Priority::LOW,
             )
             .await
             .context(gettext("Could not list other files in directory."))?;
+
+        let mut collation_key_cache = Default::default();
 
         loop {
             let info = enumerator.next_files_future(1, glib::Priority::LOW).await;
@@ -186,19 +217,14 @@ impl LpFileModel {
                     log::warn!("Unreadable entry in directory: {err}");
                     break;
                 }
-                Ok(info) => {
-                    if let Some(info) = info.first() {
+                Ok(mut info) => {
+                    if let Some(info) = info.pop() {
                         // GVfs smb does not provide a CONTENT_TYPE if the content type is
                         // ambiguous. This happens for png/apng. Since we
                         // only need to know if something is probably an
                         // image, we can use the FAST_CONTENT_TYPE in these cases.
-                        let content_type = if info
-                            .has_attribute(gio::FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE)
-                        {
-                            info.content_type()
-                        } else {
-                            info.attribute_string(gio::FILE_ATTRIBUTE_STANDARD_FAST_CONTENT_TYPE)
-                        };
+                        let content_type =
+                            info.attribute_string(gio::FILE_ATTRIBUTE_STANDARD_FAST_CONTENT_TYPE);
 
                         if let Some(content_type) =
                             content_type.and_then(|x| gio::content_type_get_mime_type(&x))
@@ -208,7 +234,9 @@ impl LpFileModel {
                             // images. Usually by inspecting the magic bytes.
                             if content_type.starts_with("image/") && !info.is_hidden() {
                                 let file = directory.child(info.name());
-                                new_files.insert(file.uri(), Entry::new(file).await);
+                                let entry =
+                                    Entry::new(file, Some(info), &mut collation_key_cache).await;
+                                new_files.insert(entry.file.uri(), entry);
                             }
                         }
                     } else {
@@ -230,6 +258,12 @@ impl LpFileModel {
             // Then sort by name.
             Self::sort(&mut files);
         }
+
+        log::debug!(
+            "Completed loading list of files of '{}' after {:#?}",
+            directory.uri(),
+            instant.elapsed(),
+        );
 
         Ok(())
     }
@@ -362,7 +396,7 @@ impl LpFileModel {
     /// Insert a file
     async fn insert(&self, file: gio::File) -> bool {
         let obj = self.clone();
-        let entry = Entry::new(file.clone()).await;
+        let entry = Entry::new(file.clone(), None, &mut Default::default()).await;
         let mut files = obj.imp().files.borrow_mut();
         let changed = files.insert(file.uri(), entry).is_none();
         if changed {
