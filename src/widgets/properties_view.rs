@@ -22,8 +22,8 @@ use std::cell::{OnceCell, RefCell};
 
 use adw::prelude::*;
 use adw::subclass::prelude::*;
-use glib::translate::IntoGlib;
 use glib::Properties;
+use glib::translate::IntoGlib;
 use gtk::CompositeTemplate;
 
 use crate::deps::*;

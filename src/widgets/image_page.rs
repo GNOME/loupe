@@ -21,15 +21,15 @@
 //! This widget also handles showing the context menu.
 
 use adw::subclass::prelude::*;
-use glib::{clone, Properties};
-use gtk::prelude::*;
+use glib::{Properties, clone};
 use gtk::CompositeTemplate;
+use gtk::prelude::*;
 
 use super::LpErrorDetails;
 use crate::decoder::DecoderError;
 use crate::deps::*;
-use crate::util::gettext::*;
 use crate::util::ErrorType;
+use crate::util::gettext::*;
 use crate::widgets::LpImage;
 
 mod imp {
@@ -225,7 +225,8 @@ impl LpImagePage {
             // Translators: {} is replaced with a version number
             let message = gettext_f(
                 "No image loaders available. Maybe the “glycin-loaders” package with compatibility version “{}” is not installed.",
-                [ format!("{}+", glycin::COMPAT_VERSION)]);
+                [format!("{}+", glycin::COMPAT_VERSION)],
+            );
 
             imp.error_page.set_description(Some(&message));
             imp.stack.set_visible_child(&*imp.error_page);

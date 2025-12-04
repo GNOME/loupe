@@ -19,6 +19,6 @@ mod glycin_proxy;
 mod svg;
 
 pub use glycin_proxy::Glycin;
-pub use svg::{Svg, RSVG_MAX_SIZE};
+pub use svg::{RSVG_MAX_SIZE, Svg};
 
 use super::{DecoderUpdate, UpdateSender};

@@ -377,11 +377,7 @@ mod imp {
                                     aspect_ratio,
                                 );
 
-                                if u.area() > v.area() {
-                                    u
-                                } else {
-                                    v
-                                }
+                                if u.area() > v.area() { u } else { v }
                             }
                         } else {
                             imp.new_crop_area_aspect_free(&resize, coord)

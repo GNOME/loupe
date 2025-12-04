@@ -87,7 +87,7 @@ impl OperationsSnapshot {
             if let Err(err) = operation_result {
                 match err {
                     OperationError::EmptyNode => {
-                        return Err(EditingError::EmptyNode(operation.clone()))
+                        return Err(EditingError::EmptyNode(operation.clone()));
                     }
                 }
             }

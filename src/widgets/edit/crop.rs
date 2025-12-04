@@ -27,11 +27,11 @@ use glycin::{Operation, Operations};
 
 use crate::deps::*;
 use crate::editing::preview::EditingError;
+use crate::util::ErrorType;
 use crate::util::gettext::*;
 use crate::util::root::ParentWindow;
-use crate::util::ErrorType;
-use crate::widgets::edit::LpEditCropSelection;
 use crate::widgets::LpImage;
+use crate::widgets::edit::LpEditCropSelection;
 
 /// Aspect ratio modes that can be selected
 #[derive(Debug, Clone, Copy, Default, glib::Enum, glib::Variant)]

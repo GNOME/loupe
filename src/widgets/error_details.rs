@@ -20,8 +20,8 @@ use adw::subclass::prelude::*;
 use gtk::CompositeTemplate;
 
 use crate::deps::*;
-use crate::util::gettext::*;
 use crate::util::ErrorType;
+use crate::util::gettext::*;
 
 mod imp {
     use super::*;

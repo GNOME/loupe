@@ -24,8 +24,8 @@ use std::time::Instant;
 use anyhow::Context;
 use gio::prelude::*;
 use gio::subclass::prelude::*;
-use glib::subclass::Signal;
 use glib::GString;
+use glib::subclass::Signal;
 use indexmap::IndexMap;
 
 use crate::deps::*;
@@ -124,9 +124,11 @@ mod imp {
     impl ObjectImpl for LpFileModel {
         fn signals() -> &'static [Signal] {
             static SIGNALS: LazyLock<Vec<Signal>> = LazyLock::new(|| {
-                vec![Signal::builder("changed")
-                    .param_types([glib::Type::VARIANT])
-                    .build()]
+                vec![
+                    Signal::builder("changed")
+                        .param_types([glib::Type::VARIANT])
+                        .build(),
+                ]
             });
             SIGNALS.as_ref()
         }

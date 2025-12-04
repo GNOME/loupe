@@ -35,10 +35,10 @@ use std::marker::PhantomData;
 use adw::prelude::*;
 use adw::subclass::prelude::*;
 use anyhow::Context;
-use ashpd::desktop::{wallpaper, ResponseError};
+use ashpd::desktop::{ResponseError, wallpaper};
 use ashpd::{Error, WindowIdentifier};
 use glib::translate::IntoGlib;
-use glib::{clone, Properties};
+use glib::{Properties, clone};
 use gtk::CompositeTemplate;
 
 use crate::decoder::DecoderError;

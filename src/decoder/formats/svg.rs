@@ -24,8 +24,8 @@ use async_channel as mpsc;
 use gtk::prelude::*;
 
 use super::*;
-use crate::decoder::tiling::SharedFrameBuffer;
 use crate::decoder::TileRequest;
+use crate::decoder::tiling::SharedFrameBuffer;
 use crate::deps::*;
 use crate::metadata::Metadata;
 

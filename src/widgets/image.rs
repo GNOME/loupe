@@ -54,7 +54,7 @@ use glib::subclass::Signal;
 use glib::{Properties, SignalGroup};
 use gufo_common::orientation::Orientation;
 
-use crate::decoder::{self, tiling, Decoder, DecoderUpdate};
+use crate::decoder::{self, Decoder, DecoderUpdate, tiling};
 use crate::deps::*;
 use crate::metadata::Metadata;
 use crate::util::Gesture;

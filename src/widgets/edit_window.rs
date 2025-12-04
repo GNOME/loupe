@@ -22,12 +22,12 @@ use adw::prelude::*;
 use adw::subclass::prelude::*;
 use glycin::Operations;
 
-use super::edit::LpEditCrop;
 use super::LpImage;
+use super::edit::LpEditCrop;
 use crate::deps::*;
+use crate::util::ErrorType;
 use crate::util::gettext::*;
 use crate::util::root::ParentWindow;
-use crate::util::ErrorType;
 
 mod imp {
     use super::*;

@@ -168,7 +168,9 @@ impl WidgetImpl for imp::LpImage {
                     log::trace!("Small monitor detected: Using {SMALL_OCCUPY_SCREEN} screen area");
                     SMALL_OCCUPY_SCREEN
                 } else {
-                    log::trace!("Sufficiently large monitor detected: Using {DEFAULT_OCCUPY_SCREEN} screen area");
+                    log::trace!(
+                        "Sufficiently large monitor detected: Using {DEFAULT_OCCUPY_SCREEN} screen area"
+                    );
                     DEFAULT_OCCUPY_SCREEN
                 };
 

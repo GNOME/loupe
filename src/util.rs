@@ -24,7 +24,7 @@ use std::fmt::{Debug, Write};
 use std::path::{Path, PathBuf};
 use std::sync::LazyLock;
 
-use anyhow::{anyhow, bail, Context};
+use anyhow::{Context, anyhow, bail};
 use gio::prelude::*;
 
 use crate::deps::*;
