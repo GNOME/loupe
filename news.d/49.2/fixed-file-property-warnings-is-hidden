@@ -1,0 +1,1 @@
+Check if the is-hidden property is available before reading it.
