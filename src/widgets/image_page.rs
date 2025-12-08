@@ -58,16 +58,10 @@ mod imp {
         #[template_child]
         pub(super) spinner: TemplateChild<gtk::Widget>,
         #[template_child]
-        pub(super) scrolled_window: TemplateChild<gtk::ScrolledWindow>,
-        #[template_child]
         #[property(type = LpImage, get = Self::image)]
         pub(super) image: TemplateChild<LpImage>,
         #[template_child]
         pub(super) popover: TemplateChild<gtk::PopoverMenu>,
-        #[template_child]
-        pub(super) right_click_gesture: TemplateChild<gtk::GestureClick>,
-        #[template_child]
-        pub(super) press_gesture: TemplateChild<gtk::GestureLongPress>,
     }
 
     #[glib::object_subclass]
@@ -91,25 +85,6 @@ mod imp {
             let obj = self.obj();
 
             self.parent_constructed();
-
-            self.right_click_gesture.connect_pressed(clone!(
-                #[weak]
-                obj,
-                move |gesture, _, x, y| {
-                    obj.show_popover_at(x, y);
-                    gesture.set_state(gtk::EventSequenceState::Claimed);
-                }
-            ));
-
-            self.press_gesture.connect_pressed(clone!(
-                #[weak]
-                obj,
-                move |gesture, x, y| {
-                    log::debug!("Long press triggered");
-                    obj.show_popover_at(x, y);
-                    gesture.set_state(gtk::EventSequenceState::Claimed);
-                }
-            ));
 
             self.stack.connect_visible_child_notify(clone!(
                 #[weak]
@@ -191,10 +166,6 @@ impl LpImagePage {
 
     pub fn file(&self) -> gio::File {
         self.image().file().unwrap()
-    }
-
-    pub fn scrolled_window(&self) -> gtk::ScrolledWindow {
-        self.imp().scrolled_window.clone()
     }
 
     pub fn content_provider(&self) -> Option<gdk::ContentProvider> {

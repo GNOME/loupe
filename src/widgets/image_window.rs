@@ -41,10 +41,8 @@ use gtk::Widget;
 use crate::application::LpApplication;
 use crate::config;
 use crate::deps::*;
-use crate::util::Direction;
 use crate::util::gettext::*;
 use crate::util::root::ParentWindow;
-use crate::widgets::window::ActionPartGlobal;
 use crate::widgets::{LpDragOverlay, LpImage, LpImageView, LpPropertiesView};
 
 /// Animation duration for showing overlay buttons in milliseconds
@@ -62,12 +60,7 @@ mod imp {
     #[template(file = "image_window.ui")]
     pub struct LpImageWindow {
         #[template_child]
-        pub(super) shortcut_controller: TemplateChild<gtk::ShortcutController>,
-
-        #[template_child]
         pub(super) headerbar: TemplateChild<adw::HeaderBar>,
-        #[template_child]
-        pub(super) headerbar_events: TemplateChild<gtk::EventControllerMotion>,
 
         #[template_child]
         pub(super) fullscreen_button: TemplateChild<gtk::Button>,
@@ -94,18 +87,10 @@ mod imp {
         #[template_child]
         pub(super) drop_target: TemplateChild<gtk::DropTarget>,
 
-        #[template_child]
-        pub(super) forward_click_gesture: TemplateChild<gtk::GestureClick>,
-        #[template_child]
-        pub(super) backward_click_gesture: TemplateChild<gtk::GestureClick>,
-        #[template_child]
-        pub(super) general_click_gesture: TemplateChild<gtk::GestureClick>,
-
         #[property(get = Self::is_showing_image)]
         pub(super) is_showing_image: PhantomData<bool>,
 
         /// Motion controller for complete window
-        pub(super) motion_controller: gtk::EventControllerMotion,
         pub(super) pointer_position: Cell<(f64, f64)>,
 
         pub(super) show_controls_animation: OnceCell<adw::TimedAnimation>,
@@ -158,40 +143,6 @@ mod imp {
 
             let obj = self.obj();
 
-            Action::add_bindings(&obj);
-
-            self.forward_click_gesture.connect_pressed(glib::clone!(
-                #[weak]
-                obj,
-                move |gesture, _, _, _| {
-                    log::trace!("Mouse forward button clicked");
-                    gesture.set_state(gtk::EventSequenceState::Claimed);
-                    obj.image_view().navigate(Direction::Forward, false);
-                }
-            ));
-            self.backward_click_gesture.connect_pressed(glib::clone!(
-                #[weak]
-                obj,
-                move |gesture, _, _, _| {
-                    log::trace!("Mouse back button clicked");
-                    gesture.set_state(gtk::EventSequenceState::Claimed);
-                    obj.image_view().navigate(Direction::Back, false);
-                }
-            ));
-
-            self.general_click_gesture.connect_pressed(glib::clone!(
-                #[weak]
-                obj,
-                move |_, n_press, _, _| {
-                    // TODO: We can't claim the gesture here, right? Otherwise we suppress the
-                    // double-click
-                    if n_press == 1 {
-                        log::trace!("General 1 click event");
-                        obj.on_click();
-                    }
-                }
-            ));
-
             self.properties_button.connect_toggled(glib::clone!(
                 #[weak]
                 obj,
@@ -214,18 +165,6 @@ mod imp {
                 obj,
                 move |_| obj.on_fullscreen_changed()
             ));
-
-            self.motion_controller.connect_motion(glib::clone!(
-                #[weak]
-                obj,
-                move |_, x, y| obj.on_motion((x, y))
-            ));
-            self.motion_controller.connect_enter(glib::clone!(
-                #[weak]
-                obj,
-                move |_, x, y| obj.on_motion((x, y))
-            ));
-            obj.add_controller(self.motion_controller.clone());
 
             let current_image_signals = self.image_view.current_image_signals();
 
@@ -345,12 +284,6 @@ mod imp {
                     }
                 ));
 
-            // Make widgets visible when the focus moves
-            obj.connect_move_focus(|obj, _| {
-                obj.show_controls();
-                obj.schedule_hide_controls();
-            });
-
             obj.image_view()
                 .zoom_menu_button()
                 .connect_active_notify(glib::clone!(
@@ -367,82 +300,13 @@ mod imp {
                     }
                 ));
 
-            // Activate global shortcuts only if no dialog is open
-            obj.window().connect_visible_dialog_notify(glib::clone!(
-                #[weak]
-                obj,
-                move |_| obj.update_accel_status()
-            ));
-            obj.window().connect_is_active_notify(glib::clone!(
-                #[weak]
-                obj,
-                move |_| obj.update_accel_status()
-            ));
-            obj.connect_unmap(|win| win.update_accel_status());
-            obj.connect_map(|win| win.update_accel_status());
-
             self.status_page
                 .set_icon_name(Some(&format!("{}-symbolic", config::APP_ID)));
-
-            self.drop_target.set_types(&[gdk::FileList::static_type()]);
-
-            self.drop_target.connect_accept(glib::clone!(
-                #[weak]
-                obj,
-                #[upgrade_or]
-                false,
-                move |_drop_target, drop| {
-                    // Only accept drops from external sources or different windows
-                    let different_source = drop.drag().is_none()
-                        || drop.drag() != obj.image_view().drag_source().drag();
-                    // We have to do this manually since we are overwriting the default handler
-                    let correct_format = drop.formats().contains_type(gdk::FileList::static_type());
-
-                    different_source && correct_format
-                }
-            ));
 
             // For callbacks, you will want to reference the GTK docs on
             // the relevant signal to see which parameters you need.
             // In this case, we need only need the GValue,
             // so we name it `value` then use `_` for the other spots.
-            self.drop_target.connect_drop(glib::clone!(
-                #[weak]
-                obj,
-                #[upgrade_or]
-                false,
-                move |_, value, _, _| {
-                    // Here we use a GValue, which is a dynamic object that can hold different
-                    // types, e.g. strings, numbers, or in this case objects. In
-                    // order to get the GdkFileList from the GValue, we need to
-                    // use the `get()` method.
-                    //
-                    // We've added type annotations here, and written it as `let list: gdk::FileList
-                    // = ...`, but you might also see places where type
-                    // arguments are used. This line could have been written as
-                    // `let list = value.get::<gdk::FileList>().unwrap()`.
-                    let files = match value.get::<gdk::FileList>() {
-                        Ok(list) => list.files(),
-                        Err(err) => {
-                            log::error!("Issue with drop value: {err}");
-                            return false;
-                        }
-                    };
-
-                    if !files.is_empty() {
-                        obj.image_view().set_images_from_files(files);
-                    } else {
-                        log::error!("Dropped FileList was empty");
-                        return false;
-                    }
-
-                    // Maybe one day this will actually work
-                    log::debug!("Trying to focus window after drag and drop");
-                    obj.window().present();
-
-                    true
-                }
-            ));
         }
     }
 
@@ -940,25 +804,6 @@ impl LpImageWindow {
 
     fn is_content_extended_to_top(&self) -> bool {
         self.window().is_fullscreen() && !self.imp().properties_button.is_active()
-    }
-
-    fn update_accel_status(&self) {
-        let Some(application) = self.window().application() else {
-            log::error!("No application for window found");
-            return;
-        };
-
-        // Only change status if active window
-        if self.window().is_active() {
-            if self.window().visible_dialog().is_some() || !self.is_mapped() {
-                // If AdwDialog is visible, remove global accels that are for the main window
-                // Same for this not being visible, so potentially editing view is open
-                ActionPartGlobal::remove_accels(&application);
-            } else {
-                // Add accels if viewing main window
-                ActionPartGlobal::add_accels(&application);
-            }
-        }
     }
 
     pub fn properties_button(&self) -> gtk::ToggleButton {

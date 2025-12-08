@@ -87,15 +87,6 @@ const ROTATION_ANIMATION_DURATION: u32 = 200;
 
 /// Relative to current zoom level
 const ZOOM_FACTOR_BUTTON: f64 = 1.5;
-/// Zoom 30% per scroll wheel detent
-const ZOOM_FACTOR_SCROLL_WHEEL: f64 = 1.3;
-/// Zoom 0.5% per pixel
-///
-/// This is for scrolling devices that might not exist
-const ZOOM_FACTOR_SCROLL_SURFACE: f64 = 1.005;
-
-/// Relative to best-fit level
-const ZOOM_FACTOR_DOUBLE_TAP: f64 = 2.5;
 
 /// Relative to best-fit and `MAX_ZOOM_LEVEL`
 const ZOOM_FACTOR_MAX_RUBBERBAND: f64 = 2.;
@@ -104,8 +95,6 @@ const RUBBERBANDING_EXPONENT: f64 = 0.3;
 
 /// When this scale factor is reached, rotate is deactivated
 const ZOOM_GESTURE_LOCK_THRESHOLD: f64 = 1.2;
-/// When this rotate angle is reached, zoom is deactivated
-const ROTATE_GESTURE_LOCK_THRESHOLD: f64 = 15.;
 
 /// Max zoom level 2000%
 const MAX_ZOOM_LEVEL: f64 = 20.0;
@@ -239,8 +228,6 @@ mod imp {
         /// Required for calculating delta when moving window on touchscreen.
         /// On touchpad this is only the initial value used as the zoom target.
         pub(super) zoom_gesture_center: Cell<Option<(f64, f64)>>,
-        /// Required for calculating delta while moving window around
-        pub(super) last_drag_value: Cell<Option<(f64, f64)>>,
 
         /// Ticks callback for animated image formats
         pub(super) tick_callback: RefCell<Option<gtk::TickCallbackId>>,

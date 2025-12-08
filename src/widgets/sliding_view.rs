@@ -188,46 +188,6 @@ mod imp {
             ));
 
             self.swipe_tracker.set(swipe_tracker).unwrap();
-
-            // Avoid propagating scroll events to AdwFlap if at beginning or end
-            let scroll_controller =
-                gtk::EventControllerScroll::new(gtk::EventControllerScrollFlags::HORIZONTAL);
-
-            scroll_controller.connect_scroll(glib::clone!(
-                #[weak]
-                obj,
-                #[upgrade_or]
-                glib::Propagation::Proceed,
-                move |_, x, _| {
-                    let direction_sign = if obj.imp().is_rtl() { -1. } else { 1. };
-
-                    if x * direction_sign > 0. {
-                        // check end
-                        if let Some(max) = obj.imp().snap_points().last() {
-                            if obj.position() >= *max {
-                                glib::Propagation::Stop
-                            } else {
-                                glib::Propagation::Proceed
-                            }
-                        } else {
-                            glib::Propagation::Stop
-                        }
-                    } else {
-                        //check beginning
-                        if let Some(min) = obj.imp().snap_points().first() {
-                            if obj.position() <= *min {
-                                glib::Propagation::Stop
-                            } else {
-                                glib::Propagation::Proceed
-                            }
-                        } else {
-                            glib::Propagation::Stop
-                        }
-                    }
-                }
-            ));
-
-            obj.add_controller(scroll_controller);
         }
 
         fn dispose(&self) {
@@ -273,11 +233,6 @@ mod imp {
                         // Hide all and show to relevant widgets later
                         page.set_child_visible(false);
                     }
-                }
-
-                if !page.scrolled_window().is_mapped() {
-                    // SVG needs to know a widget size before rendering something in LpImage
-                    page.scrolled_window().allocate(width, height, 0, None);
                 }
             }
 

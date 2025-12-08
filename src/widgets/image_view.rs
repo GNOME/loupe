@@ -69,14 +69,10 @@ mod imp {
         pub(super) controls_box_start: TemplateChild<gtk::Widget>,
         #[template_child]
         pub(super) zoom_toggle: TemplateChild<gtk::ToggleButton>,
-        #[template_child]
-        pub(super) controls_box_start_events: TemplateChild<gtk::EventControllerMotion>,
 
         /// overlayed controls
         #[template_child]
         pub(super) controls_box_end: TemplateChild<gtk::Widget>,
-        #[template_child]
-        pub(super) controls_box_end_events: TemplateChild<gtk::EventControllerMotion>,
         #[template_child]
         pub(super) zoom_menu_button: TemplateChild<gtk::MenuButton>,
         #[template_child]
@@ -634,16 +630,8 @@ impl LpImageView {
         self.imp().controls_box_start.clone()
     }
 
-    pub fn controls_box_start_events(&self) -> gtk::EventControllerMotion {
-        self.imp().controls_box_start_events.clone()
-    }
-
     pub fn controls_box_end(&self) -> gtk::Widget {
         self.imp().controls_box_end.clone()
-    }
-
-    pub fn controls_box_end_events(&self) -> gtk::EventControllerMotion {
-        self.imp().controls_box_end_events.clone()
     }
 
     fn model(&self) -> LpFileModel {

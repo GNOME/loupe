@@ -3,9 +3,6 @@
   <requires lib="gtk" version="4.0" />
   <template class="LpEditCropSelection" parent="GtkWidget">
     <child>
-      <object class="GtkGestureDrag" id="selection_move" />
-    </child>
-    <child>
       <object class="AdwBin" id="space_top">
         <style>
           <class name="discarded-area" />
@@ -49,9 +46,6 @@
               <class name="osd" />
               <class name="apply-button" />
             </style>
-            <child>
-              <object class="GtkGestureClick" id="apply_button_click" />
-            </child>
           </object>
         </child>
         <property name="child">

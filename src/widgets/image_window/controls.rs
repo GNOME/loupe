@@ -174,27 +174,6 @@ impl LpImageWindow {
     /// Only hide controls if cursor not over controls and there is an image
     /// shown
     fn can_hide_controls(&self) -> bool {
-        let imp = self.imp();
-
-        let controls_hovered = self
-            .image_view()
-            .controls_box_start_events()
-            .contains_pointer()
-            || self
-                .image_view()
-                .controls_box_end_events()
-                .contains_pointer();
-
-        let headerbar_hideable = self.is_content_extended_to_top();
-        let headerbar_hovered = imp.headerbar_events.contains_pointer();
-
-        let main_menu_open = imp.primary_menu.is_active();
-
-        // Buttom controls are not hovered
-        !controls_hovered
-        // Either headerbar must not be hidden with other controls or not be hovered
-        && (!headerbar_hideable || !headerbar_hovered)
-        // Main menu is not open
-        && !main_menu_open
+        false
     }
 }

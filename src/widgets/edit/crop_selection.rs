@@ -29,15 +29,10 @@ use crate::widgets::LpImage;
 const MIN_SELECTION_SIZE: f32 = 80.;
 
 #[derive(Debug, Clone, Copy)]
-struct InResize {
-    handle: RectHandle,
-    initial_selection: graphene::Rect,
-}
+struct InResize {}
 
 #[derive(Debug, Clone, Copy)]
-struct InMove {
-    initial_selection: graphene::Rect,
-}
+struct InMove {}
 
 /// Corners and edges of a rectangle
 #[derive(Debug, Clone, Copy)]
@@ -190,11 +185,6 @@ mod imp {
 
         #[template_child]
         apply_button: TemplateChild<gtk::Button>,
-        #[template_child]
-        apply_button_click: TemplateChild<gtk::GestureClick>,
-
-        #[template_child]
-        selection_move: TemplateChild<gtk::GestureDrag>,
 
         #[template_child]
         selection_overlay: TemplateChild<gtk::Overlay>,
@@ -283,120 +273,6 @@ mod imp {
 
             self.selection.set_cursor_from_name(Some("move"));
             self.apply_button.set_cursor_from_name(Some("default"));
-
-            // Gesture bug workaround
-            self.apply_button_click.connect_begin(move |gesture, _| {
-                gesture.set_state(gtk::EventSequenceState::Claimed);
-            });
-
-            self.apply_button_click.connect_released(glib::clone!(
-                #[weak]
-                obj,
-                move |_, _, x, y| {
-                    if obj.imp().apply_button.contains(x, y) {
-                        let _ = obj.activate_action("edit-crop.apply-crop", None);
-                    }
-                }
-            ));
-
-            // Drag begin
-            self.selection_move.connect_drag_begin(glib::clone!(
-                #[weak]
-                obj,
-                move |gesture, _, _| {
-                    let imp = obj.imp();
-
-                    imp.aspect_ratio_animation().pause();
-
-                    let hovered_widget = gesture
-                        .start_point()
-                        .and_then(|(x, y)| obj.pick(x, y, gtk::PickFlags::DEFAULT));
-
-                    // Lookup if the start-point of the gesture is above a drag handle widget and
-                    // what corner/edge it is
-                    if let Some(handle) = hovered_widget
-                        .as_ref()
-                        .and_then(|x| drag_handles.get(x).copied())
-                    {
-                        gesture.set_state(gtk::EventSequenceState::Claimed);
-
-                        let crop_area = imp.crop_area();
-
-                        imp.set_selection_in_resize(Some(InResize {
-                            handle,
-                            initial_selection: crop_area,
-                        }));
-                    } else if hovered_widget.is_some_and(|x| x == *imp.selection) {
-                        gesture.set_state(gtk::EventSequenceState::Claimed);
-
-                        let crop_area = imp.crop_area();
-                        imp.set_selection_in_move(Some(InMove {
-                            initial_selection: crop_area,
-                        }));
-                    } else {
-                        gesture.set_state(gtk::EventSequenceState::Denied);
-                        return;
-                    }
-                }
-            ));
-
-            // Drag moved
-            self.selection_move.connect_drag_update(glib::clone!(
-                #[weak]
-                obj,
-                move |_, x, y| {
-                    let imp = obj.imp();
-
-                    imp.aspect_ratio_animation().pause();
-
-                    if let Some(in_move) = imp.selection_in_move.get() {
-                        let moved_area = imp.moved_crop_area(&in_move, (x, y));
-
-                        imp.set_crop(moved_area);
-                    } else if let Some(resize) = imp.selection_in_resize.get() {
-                        let coord = (x, y);
-
-                        let new_area = if let Some(aspect_ratio) = imp.aspect_ratio() {
-                            // Width for height an vice versa is only needed if corner is dragged
-                            // and both dimensions change
-                            if resize.handle.h_edge().is_none() {
-                                imp.new_crop_area_aspect_ratio(&resize, true, coord, aspect_ratio)
-                            } else if resize.handle.v_edge().is_none() {
-                                imp.new_crop_area_aspect_ratio(&resize, false, coord, aspect_ratio)
-                            } else {
-                                let u = imp.new_crop_area_aspect_ratio(
-                                    &resize,
-                                    true,
-                                    coord,
-                                    aspect_ratio,
-                                );
-                                let v = imp.new_crop_area_aspect_ratio(
-                                    &resize,
-                                    false,
-                                    coord,
-                                    aspect_ratio,
-                                );
-
-                                if u.area() > v.area() { u } else { v }
-                            }
-                        } else {
-                            imp.new_crop_area_aspect_free(&resize, coord)
-                        };
-
-                        imp.set_crop(new_area);
-                    }
-                }
-            ));
-
-            // Drag finished
-            self.selection_move.connect_drag_end(glib::clone!(
-                #[weak]
-                obj,
-                move |_, _, _| {
-                    obj.imp().set_selection_in_resize(None);
-                    obj.imp().set_selection_in_move(None);
-                }
-            ));
         }
 
         fn dispose(&self) {
@@ -485,160 +361,6 @@ mod imp {
                 obj.crop_width(),
                 obj.crop_height(),
             )
-        }
-
-        /// Naive new crop area for moving `InResize`
-        fn new_crop_area(&self, resize: &InResize, (x, y): (f64, f64)) -> graphene::Rect {
-            let (x_offset, width_offset) = match resize.handle.h_edge() {
-                // Change the crop x position and reduce width accordingly
-                Some(HEdge::Left) => (x, -x),
-                // Just change the crop width
-                Some(HEdge::Right) => (0., x),
-                // Don't change
-                None => (0., 0.),
-            };
-
-            let (y_offset, height_offset) = match resize.handle.v_edge() {
-                Some(VEdge::Top) => (y, -y),
-                Some(VEdge::Bottom) => (0., y),
-                None => (0., 0.),
-            };
-
-            let mut x = resize.initial_selection.x() + x_offset as f32;
-            let mut y = resize.initial_selection.y() + y_offset as f32;
-
-            let mut width = resize.initial_selection.width() + width_offset as f32;
-            let mut height = resize.initial_selection.height() + height_offset as f32;
-
-            if width < 0. {
-                if matches!(resize.handle.h_edge(), Some(HEdge::Left)) {
-                    x += width;
-                }
-                width = 0.;
-            }
-
-            if height < 0. {
-                if matches!(resize.handle.v_edge(), Some(VEdge::Top)) {
-                    y += height;
-                }
-                height = 0.;
-            }
-
-            graphene::Rect::new(x, y, width, height)
-        }
-
-        fn moved_crop_area(
-            &self,
-            shift: &InMove,
-            (x_shift, y_shift): (f64, f64),
-        ) -> graphene::Rect {
-            let (mut x, mut y, width, height) = shift.initial_selection.into_tuple();
-
-            x += x_shift as f32;
-            y += y_shift as f32;
-
-            if x < 0. {
-                x = 0.;
-            }
-
-            if y < 0. {
-                y = 0.;
-            }
-
-            if x + width > self.total_width() as f32 {
-                x = self.total_width() as f32 - width;
-            }
-
-            if y + height > self.total_height() as f32 {
-                y = self.total_height() as f32 - height;
-            }
-
-            graphene::Rect::new(x, y, width, height)
-        }
-
-        fn new_crop_area_aspect_free(
-            &self,
-            resize: &InResize,
-            (x, y): (f64, f64),
-        ) -> graphene::Rect {
-            let (mut x, mut y, mut width, mut height) =
-                self.new_crop_area(resize, (x, y)).into_tuple();
-
-            if width < MIN_SELECTION_SIZE {
-                let x_diff = width - MIN_SELECTION_SIZE;
-                width = MIN_SELECTION_SIZE;
-
-                if matches!(resize.handle.h_edge(), Some(HEdge::Left)) {
-                    x += x_diff;
-                }
-            }
-
-            if height < MIN_SELECTION_SIZE {
-                let y_diff = height - MIN_SELECTION_SIZE;
-                height = MIN_SELECTION_SIZE;
-
-                if matches!(resize.handle.v_edge(), Some(VEdge::Top)) {
-                    y += y_diff;
-                }
-            }
-
-            if x < 0. {
-                width += x;
-                x = 0.;
-            }
-
-            if y < 0. {
-                height += y;
-                y = 0.;
-            }
-
-            if x + width > self.total_width() as f32 {
-                width = self.total_width() as f32 - x;
-            }
-
-            if y + height > self.total_height() as f32 {
-                height = self.total_height() as f32 - y;
-            }
-
-            graphene::Rect::new(x, y, width, height)
-        }
-
-        fn new_crop_area_aspect_ratio(
-            &self,
-            resize: &InResize,
-            vertical: bool,
-            (x, y): (f64, f64),
-            aspect_ratio: f32,
-        ) -> graphene::Rect {
-            let new_area = self.new_crop_area(resize, (x, y));
-
-            let (mut x, mut y, mut width, mut height) = new_area.into_tuple();
-
-            if vertical {
-                // Height for width mode
-                width = new_area.height() * aspect_ratio;
-                if matches!(resize.handle.h_edge(), Some(HEdge::Left)) {
-                    x += new_area.width() - width;
-                }
-            } else {
-                // Width for height mode
-                height = new_area.width() / aspect_ratio;
-                if matches!(resize.handle.v_edge(), Some(VEdge::Top)) {
-                    y += new_area.height() - height;
-                }
-            }
-
-            let mut rect = graphene::Rect::new(x, y, width, height);
-
-            self.rect_limit_top(&mut rect, aspect_ratio, resize.handle.v_edge());
-            self.rect_limit_left(&mut rect, aspect_ratio, resize.handle.h_edge());
-            self.rect_limit_bottom(&mut rect, aspect_ratio, resize.handle.h_edge());
-            self.rect_limit_right(&mut rect, aspect_ratio, resize.handle.v_edge());
-
-            self.rect_limit_minumum_size(&mut rect, aspect_ratio, resize.handle);
-
-            (x, y, width, height) = rect.into_tuple();
-            graphene::Rect::new(x, y, width, height)
         }
 
         /// Ensure selection is not smaller than minimum size
@@ -953,16 +675,6 @@ mod imp {
                     .target(&adw::CallbackAnimationTarget::new(|_| {}))
                     .build()
             })
-        }
-
-        fn set_selection_in_resize(&self, in_resize: Option<InResize>) {
-            self.selection_in_resize.replace(in_resize);
-            self.update_apply_crop_visibility();
-        }
-
-        fn set_selection_in_move(&self, in_move: Option<InMove>) {
-            self.selection_in_move.replace(in_move);
-            self.update_apply_crop_visibility();
         }
 
         fn update_apply_crop_visibility(&self) {

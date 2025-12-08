@@ -307,25 +307,6 @@ impl Deref for ActionPartGlobal {
 }
 
 impl ActionPartGlobal {
-    pub fn add_accels(application: &gtk::Application) {
-        for action in Self::iter() {
-            match action {
-                Self::ImageRightInstant => application.set_accels_for_action(&action, &["Right"]),
-                Self::ImageLeftInstant => application.set_accels_for_action(&action, &["Left"]),
-                Self::PanUp => application.set_accels_for_action(&action, &["<Ctrl>Up"]),
-                Self::PanRight => application.set_accels_for_action(&action, &["<Ctrl>Right"]),
-                Self::PanDown => application.set_accels_for_action(&action, &["<Ctrl>Down"]),
-                Self::PanLeft => application.set_accels_for_action(&action, &["<Ctrl>Left"]),
-            }
-        }
-    }
-
-    pub fn remove_accels(application: &gtk::Application) {
-        for action in Self::iter() {
-            application.set_accels_for_action(&action, &[]);
-        }
-    }
-
     pub fn init_actions_and_bindings(klass: &mut <imp::LpWindow as ObjectSubclass>::Class) {
         for action in Self::iter() {
             match action {

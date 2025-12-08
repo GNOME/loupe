@@ -93,24 +93,7 @@
         <child>
           <object class="GtkBox" id="image_stack_page">
             <child>
-              <object class="GtkScrolledWindow" id="scrolled_window">
-                <property name="propagate-natural-height">True</property>
-                <property name="propagate-natural-width">True</property>
-                <property name="child">
-                  <object class="LpImage" id="image">
-                    <child>
-                      <object class="GtkGestureClick" id="right_click_gesture">
-                        <property name="button">3</property>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkGestureLongPress" id="press_gesture">
-                        <property name="touch-only">True</property>
-                      </object>
-                    </child>
-                  </object>
-                </property>
-              </object>
+              <object class="LpImage" id="image" />
             </child>
             <child>
               <object class="GtkPopoverMenu" id="popover">

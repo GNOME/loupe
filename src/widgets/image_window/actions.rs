@@ -18,12 +18,9 @@
 use std::ops::Deref;
 
 use adw::subclass::prelude::*;
-use gdk::{Key, ModifierType};
 use gtk::prelude::*;
 use strum::IntoEnumIterator;
 
-use super::LpImageWindow;
-use crate::deps::*;
 use crate::util::root::ParentWindow;
 use crate::util::{Direction, Position};
 
@@ -93,24 +90,6 @@ pub enum Action {
 }
 
 impl Action {
-    pub fn add_bindings(win: &LpImageWindow) {
-        for action in Self::iter() {
-            for (key, modifiers) in action.keybindings() {
-                let mut modifier = ModifierType::empty();
-                for m in *modifiers {
-                    modifier = modifier.union(*m);
-                }
-
-                let shortcut = gtk::Shortcut::new(
-                    Some(gtk::KeyvalTrigger::new(*key, modifier)),
-                    Some(gtk::NamedAction::new(&action)),
-                );
-
-                win.imp().shortcut_controller.add_shortcut(shortcut);
-            }
-        }
-    }
-
     pub fn init_actions(klass: &mut <super::imp::LpImageWindow as ObjectSubclass>::Class) {
         for action in Self::iter() {
             match action {
@@ -292,84 +271,6 @@ impl Action {
                     });
                 }
             }
-        }
-    }
-
-    pub fn keybindings(&self) -> &[(gdk::Key, &[gdk::ModifierType])] {
-        match self {
-            Action::First => &[(Key::Home, &[])],
-
-            Action::Last => &[(Key::End, &[])],
-
-            // Rotation/Zoom
-            Action::RotateCw => &[(Key::r, &[ModifierType::CONTROL_MASK])],
-            Action::RotateCcw => &[(
-                Key::r,
-                &[ModifierType::CONTROL_MASK, ModifierType::SHIFT_MASK],
-            )],
-
-            Action::ZoomOutCursor => &[
-                (Key::minus, &[]),
-                (Key::minus, &[ModifierType::CONTROL_MASK]),
-                (Key::KP_Subtract, &[]),
-                (Key::KP_Subtract, &[ModifierType::CONTROL_MASK]),
-            ],
-            Action::ZoomInCursor => &[
-                (Key::equal, &[]),
-                (Key::equal, &[ModifierType::CONTROL_MASK]),
-                (Key::plus, &[]),
-                (Key::plus, &[ModifierType::CONTROL_MASK]),
-                (Key::KP_Add, &[]),
-                (Key::KP_Add, &[ModifierType::CONTROL_MASK]),
-            ],
-            Action::ZoomBestFit => &[
-                (Key::_0, &[]),
-                (Key::_0, &[ModifierType::CONTROL_MASK]),
-                (Key::KP_0, &[]),
-                (Key::KP_0, &[ModifierType::CONTROL_MASK]),
-            ],
-            Action::ZoomToExact100 => &[
-                (Key::_1, &[]),
-                (Key::_1, &[ModifierType::CONTROL_MASK]),
-                (Key::KP_1, &[]),
-                (Key::KP_1, &[ModifierType::CONTROL_MASK]),
-            ],
-            Action::ZoomToExact200 => &[
-                (Key::_2, &[]),
-                (Key::_2, &[ModifierType::CONTROL_MASK]),
-                (Key::KP_2, &[]),
-                (Key::KP_2, &[ModifierType::CONTROL_MASK]),
-            ],
-            Action::ZoomToExact300 => &[
-                (Key::_3, &[]),
-                (Key::_3, &[ModifierType::CONTROL_MASK]),
-                (Key::KP_3, &[]),
-                (Key::KP_3, &[ModifierType::CONTROL_MASK]),
-            ],
-
-            // Misc
-            Action::Open => &[(Key::o, &[ModifierType::CONTROL_MASK])],
-            Action::OpenWith => &[(
-                Key::o,
-                &[ModifierType::CONTROL_MASK, gdk::ModifierType::SHIFT_MASK],
-            )],
-            Action::Print => &[(Key::p, &[ModifierType::CONTROL_MASK])],
-            Action::SetBackground => &[(Key::F8, &[ModifierType::CONTROL_MASK])],
-            Action::ToggleFullscreen => &[(Key::F11, &[])],
-            Action::LeaveFullscreen => &[(Key::Escape, &[])],
-            Action::Trash => &[
-                (Key::KP_Delete, &[]),
-                // The binding added last is shown in menus
-                (Key::Delete, &[]),
-            ],
-            Action::Delete => &[
-                (Key::Delete, &[ModifierType::SHIFT_MASK]),
-                (Key::KP_Delete, &[ModifierType::SHIFT_MASK]),
-            ],
-            Action::ToggleProperties => &[(Key::F9, &[]), (Key::Return, &[ModifierType::ALT_MASK])],
-            Action::Reload => &[(Key::F5, &[])],
-            Action::Edit => &[(Key::e, &[])],
-            _ => &[],
         }
     }
 }
