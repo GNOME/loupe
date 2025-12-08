@@ -5,6 +5,12 @@
   --osd-background-color: rgba(240, 240, 240, 0.75);
 }
 
+@media (prefers-color-scheme: dark) {
+  :root {
+    --osd-background-color: rgba(0, 0, 0, 0.65);
+  }
+}
+
 /* Overlay controls for prev/next and zoom */
 .osd-box {
   border-radius: 12px;
@@ -94,6 +100,12 @@ dialog.error-details textview {
 
 .bottom-properties {
   box-shadow: 0 -1px var(--headerbar-darker-shade-color);
+}
+
+@media (prefers-contrast: more) {
+  .bottom-properties {
+    box-shadow: 0 -1px var(--border-color);
+  }
 }
 
 .error-message {
