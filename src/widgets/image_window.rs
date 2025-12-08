@@ -98,6 +98,8 @@ mod imp {
         pub(super) forward_click_gesture: TemplateChild<gtk::GestureClick>,
         #[template_child]
         pub(super) backward_click_gesture: TemplateChild<gtk::GestureClick>,
+        #[template_child]
+        pub(super) general_click_gesture: TemplateChild<gtk::GestureClick>,
 
         #[property(get = Self::is_showing_image)]
         pub(super) is_showing_image: PhantomData<bool>,
@@ -161,17 +163,35 @@ mod imp {
             self.forward_click_gesture.connect_pressed(glib::clone!(
                 #[weak]
                 obj,
-                move |_, _, _, _| {
+                move |gesture, _, _, _| {
+                    log::trace!("Mouse forward button clicked");
+                    gesture.set_state(gtk::EventSequenceState::Claimed);
                     obj.image_view().navigate(Direction::Forward, false);
                 }
             ));
             self.backward_click_gesture.connect_pressed(glib::clone!(
                 #[weak]
                 obj,
-                move |_, _, _, _| {
+                move |gesture, _, _, _| {
+                    log::trace!("Mouse back button clicked");
+                    gesture.set_state(gtk::EventSequenceState::Claimed);
                     obj.image_view().navigate(Direction::Back, false);
                 }
             ));
+
+            self.general_click_gesture.connect_pressed(glib::clone!(
+                #[weak]
+                obj,
+                move |_, n_press, _, _| {
+                    // TODO: We can't claim the gesture here, right? Otherwise we suppress the
+                    // double-click
+                    if n_press == 1 {
+                        log::trace!("General 1 click event");
+                        obj.on_click();
+                    }
+                }
+            ));
+
             self.properties_button.connect_toggled(glib::clone!(
                 #[weak]
                 obj,
@@ -194,14 +214,6 @@ mod imp {
                 obj,
                 move |_| obj.on_fullscreen_changed()
             ));
-
-            let gesture_click = gtk::GestureClick::new();
-            gesture_click.connect_pressed(glib::clone!(
-                #[weak]
-                obj,
-                move |_, _, _, _| obj.on_click()
-            ));
-            obj.add_controller(gesture_click);
 
             self.motion_controller.connect_motion(glib::clone!(
                 #[weak]

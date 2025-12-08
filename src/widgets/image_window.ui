@@ -245,6 +245,10 @@
                             <property name="button">8</property>
                           </object>
                         </child>
+                        <child>
+                          <object class="GtkGestureClick" id="general_click_gesture">
+                          </object>
+                        </child>
                       </object>
                     </child>
                   </object>
