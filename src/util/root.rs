@@ -20,13 +20,15 @@ use gtk::prelude::*;
 use crate::widgets::{LpEditWindow, LpWindow};
 
 pub trait ParentWindow: WidgetExt {
+    #[track_caller]
     fn window(&self) -> LpWindow {
         let result = self.root().and_downcast();
 
         if result.is_none() {
             log::error!(
-                "Couldn't find LpWindow for {self:?}. mapped={}",
-                self.is_mapped()
+                "Couldn't find LpWindow for {self:?}. mapped={}. caller={}",
+                self.is_mapped(),
+                std::panic::Location::caller(),
             );
         }
 
