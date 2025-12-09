@@ -37,7 +37,6 @@ use adw::subclass::prelude::*;
 use anyhow::Context;
 use ashpd::desktop::{ResponseError, wallpaper};
 use ashpd::{Error, WindowIdentifier};
-use glib::translate::IntoGlib;
 use glib::{Properties, clone};
 use gtk::CompositeTemplate;
 
@@ -45,6 +44,7 @@ use crate::decoder::DecoderError;
 use crate::deps::*;
 use crate::file_model::{FileEvent, LpFileModel};
 use crate::util::gettext::*;
+use crate::util::root::ParentWindow;
 use crate::util::{self, Direction, Position};
 use crate::widgets::{LpImage, LpImagePage, LpPrint, LpSlidingView};
 
@@ -483,17 +483,10 @@ impl LpImageView {
                 if let Some(directory) = directory {
                     if let Err(err) = obj.model().load_directory(directory.clone()).await {
                         log::warn!("Failed to load directory: {}", err.root_cause());
-                        obj.activate_action(
-                            "win.show-toast",
-                            Some(
-                                &(
-                                    format!("{} {}", err, err.root_cause()),
-                                    adw::ToastPriority::High.into_glib(),
-                                )
-                                    .to_variant(),
-                            ),
-                        )
-                        .unwrap();
+                        obj.window_show_toast(
+                            &format!("{} {}", err, err.root_cause()),
+                            adw::ToastPriority::High,
+                        );
                         return;
                     }
 
@@ -835,33 +828,18 @@ impl LpImageView {
             .await
             .and_then(|req| req.response())
         {
-            Ok(_) => self
-                .activate_action(
-                    "win.show-toast",
-                    Some(
-                        &(
-                            // Translators: This is a toast notification, informing the user that
-                            // an image has been set as background.
-                            gettext("Set as background."),
-                            adw::ToastPriority::High.into_glib(),
-                        )
-                            .to_variant(),
-                    ),
-                )
-                .unwrap(),
+            Ok(_) => self.window_show_toast(
+                // Translators: This is a toast notification, informing the user that
+                // an image has been set as background.
+                &gettext("Set as background."),
+                adw::ToastPriority::High,
+            ),
             Err(err) => {
                 if !matches!(err, Error::Response(ResponseError::Cancelled)) {
-                    self.activate_action(
-                        "win.show-toast",
-                        Some(
-                            &(
-                                gettext("Could not set background."),
-                                adw::ToastPriority::High.into_glib(),
-                            )
-                                .to_variant(),
-                        ),
-                    )
-                    .unwrap();
+                    self.window_show_toast(
+                        &gettext("Could not set background."),
+                        adw::ToastPriority::High,
+                    );
                 }
             }
         };

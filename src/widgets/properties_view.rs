@@ -23,11 +23,11 @@ use std::cell::{OnceCell, RefCell};
 use adw::prelude::*;
 use adw::subclass::prelude::*;
 use glib::Properties;
-use glib::translate::IntoGlib;
 use gtk::CompositeTemplate;
 
 use crate::deps::*;
 use crate::util::gettext::*;
+use crate::util::root::ParentWindow;
 use crate::util::{self};
 use crate::widgets::image::LpImage;
 
@@ -322,15 +322,9 @@ mod imp {
             if let Some(location) = obj.image().and_then(|x| x.metadata().gps_location()) {
                 let clipboard = obj.display().clipboard();
                 clipboard.set_text(&location.iso_6709());
-                let _ = obj.activate_action(
-                    "win.show-toast",
-                    Some(
-                        &(
-                            gettext("Image Coordinates Copied"),
-                            adw::ToastPriority::Normal.into_glib(),
-                        )
-                            .to_variant(),
-                    ),
+                obj.window_show_toast(
+                    &gettext("Image Coordinates Copied"),
+                    adw::ToastPriority::Normal,
                 );
             }
         }

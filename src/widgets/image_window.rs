@@ -610,7 +610,7 @@ impl LpImageWindow {
         if let Err(e) = imp.image_view.copy() {
             log::error!("Failed to copy to clipboard: {}", e);
         } else {
-            self.window().show_toast(
+            self.window_show_toast(
                 &gettext("Image copied to clipboard"),
                 adw::ToastPriority::High,
             );
@@ -647,7 +647,7 @@ impl LpImageWindow {
                             let result = crate::util::untrash(&path).await;
                             if let Err(err) = result {
                                 log::error!("Failed to untrash {path:?}: {err}");
-                                obj.window().show_toast(
+                                obj.window_show_toast(
                                     &gettext("Failed to restore image from trash"),
                                     adw::ToastPriority::High,
                                 );
@@ -655,14 +655,14 @@ impl LpImageWindow {
                         });
                     }
                 ));
-                self.window().add_toast(toast);
+                self.window_add_toast(toast);
             }
             Err(err) => {
                 if Some(gio::IOErrorEnum::NotSupported) == err.kind::<gio::IOErrorEnum>() {
                     self.delete_future(&path).await;
                 } else {
                     log::error!("Failed to delete file {path:?}: {err}");
-                    self.window().show_toast(
+                    self.window_show_toast(
                         &gettext("Failed to move image to trash"),
                         adw::ToastPriority::Normal,
                     );
@@ -708,7 +708,7 @@ impl LpImageWindow {
 
             if let Err(err) = result {
                 log::error!("Failed to delete file {path:?}: {err}");
-                self.window().show_toast(
+                self.window_show_toast(
                     &gettext("Failed to delete image"),
                     adw::ToastPriority::Normal,
                 );

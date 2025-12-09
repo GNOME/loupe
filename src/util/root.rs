@@ -39,13 +39,26 @@ pub trait ParentWindow: WidgetExt {
         let result = self.root().and_downcast();
 
         if result.is_none() {
-            log::debug!(
-                "Couldn't find LpWindow for {self:?}. mapped={}",
-                self.is_mapped()
+            log::error!(
+                "Couldn't find LpWindow for {self:?}. mapped={}. caller={}",
+                self.is_mapped(),
+                std::panic::Location::caller(),
             );
         }
 
         result
+    }
+
+    fn window_show_toast(&self, text: &str, priority: adw::ToastPriority) {
+        if let Some(window) = self.try_window() {
+            window.show_toast(text, priority);
+        }
+    }
+
+    fn window_add_toast(&self, toast: adw::Toast) {
+        if let Some(window) = self.try_window() {
+            window.add_toast(toast);
+        }
     }
 
     fn edit_window(&self) -> LpEditWindow {
