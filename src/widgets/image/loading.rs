@@ -44,8 +44,8 @@ impl imp::LpImage {
         self.file.replace(Some(new_file.clone()));
         self.reload_file_info().await;
 
-        // Reload if file extension changed since other decoding path might be responsible
-        // now
+        // Reload if file extension changed since other decoding path might be
+        // responsible now
         if old_filename_ext != new_filename_ext {
             obj.load(new_file).await;
             return;

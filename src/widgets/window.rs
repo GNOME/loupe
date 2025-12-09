@@ -91,16 +91,6 @@ mod imp {
                 "win.show-help-overlay",
             );
 
-            klass.install_action(
-                "win.show-toast",
-                Some(VariantTy::TUPLE),
-                move |win, _, var| {
-                    if let Some((ref toast, i)) = var.and_then(|v| v.get::<(String, i32)>()) {
-                        win.show_toast(toast, adw::ToastPriority::__Unknown(i));
-                    }
-                },
-            );
-
             WindowAction::init_actions_and_bindings(klass);
 
             ActionPartGlobal::init_actions_and_bindings(klass);
