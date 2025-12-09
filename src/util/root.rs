@@ -35,6 +35,7 @@ pub trait ParentWindow: WidgetExt {
         result.unwrap()
     }
 
+    #[track_caller]
     fn try_window(&self) -> Option<LpWindow> {
         let result = self.root().and_downcast();
 
@@ -49,16 +50,23 @@ pub trait ParentWindow: WidgetExt {
         result
     }
 
+    #[track_caller]
     fn window_show_toast(&self, text: &str, priority: adw::ToastPriority) {
         if let Some(window) = self.try_window() {
             window.show_toast(text, priority);
         }
     }
 
+    #[track_caller]
     fn window_add_toast(&self, toast: adw::Toast) {
         if let Some(window) = self.try_window() {
             window.add_toast(toast);
         }
+    }
+
+    #[track_caller]
+    fn window_inspect(&self, f: impl FnOnce(&LpWindow)) {
+        self.try_window().inspect(f);
     }
 
     fn edit_window(&self) -> LpEditWindow {
