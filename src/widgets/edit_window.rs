@@ -163,7 +163,7 @@ mod imp {
             if let Some(cancellable) = obj.imp().save_cancellable.replace(None) {
                 cancellable.cancel();
             }
-            obj.window().show_image();
+            obj.window_inspect(|w| w.show_image());
         }
 
         async fn save_copy(&self) {
@@ -228,7 +228,7 @@ mod imp {
 
                 file_dialog.set_initial_file(Some(&suggested_file));
 
-                match file_dialog.save_future(Some(&obj.window())).await {
+                match file_dialog.save_future(obj.try_window().as_ref()).await {
                     Err(err) => {
                         log::error!("{}", err);
                     }
@@ -237,7 +237,7 @@ mod imp {
                             .save(current_file, new_file.clone(), cancellable.clone())
                             .await
                         {
-                            obj.window().show_specific_image(new_file);
+                            obj.window_inspect(|w| w.show_specific_image(new_file));
                         }
                     }
                 }
@@ -286,7 +286,7 @@ mod imp {
                                 log::debug!("Trashing image canceled");
                                 return;
                             } else if let Ok(Err(err)) = trash_result {
-                                obj.window().show_error(
+                                obj.window_show_error(
                                     &gettext("Failed to save image."),
                                     &format!("Failed to move image {current_path:?} to trash and therefore couldn't save image: {err}"),
                                     ErrorType::General,
@@ -312,7 +312,7 @@ mod imp {
                                 log::debug!("Moving image canceled");
                                 return;
                             } else if let Ok(Err(err)) = move_result {
-                                obj.window().show_error(
+                                obj.window_show_error(
                                         &gettext("Failed to save image."),
                                         &format!(
                                             "Failed to move image image to {current_path:?}: {err} move {:?} to {:?}", tmp_file.path().unwrap(), original_file.path().unwrap()
@@ -322,7 +322,7 @@ mod imp {
                                 return;
                             }
 
-                            obj.window().show_specific_image(original_file);
+                            obj.window_inspect(|w| w.show_specific_image(original_file));
                         }
                     }
                 }
@@ -356,7 +356,7 @@ mod imp {
                     }
                     Err(err) => {
                         log::warn!("Failed to edit image: {err}");
-                        obj.window().show_error(
+                        obj.window_show_error(
                             &gettext("Failed to edit image."),
                             &format!("Failed to edit image:\n\n{err}\n\n{operations:#?}"),
                             ErrorType::Loader,
@@ -366,7 +366,7 @@ mod imp {
                         log::debug!("Saving edited image to '{}'", new_file.uri());
                         match binary_data.get() {
                             Err(err) => {
-                                obj.window().show_error(
+                                obj.window_show_error(
                                     &gettext("Failed to Save Image"),
                                     &format!("Failed to get binary data: {err}"),
                                     ErrorType::General,
@@ -389,7 +389,7 @@ mod imp {
                                 if save_result.is_err() {
                                     log::debug!("Saving image canceled");
                                 } else if let Ok(Err(err)) = save_result {
-                                    obj.window().show_error(
+                                    obj.window_show_error(
                                         &gettext("Failed to Save Image"),
                                         &format!("Failed to write file:\n\n{err:?}"),
                                         ErrorType::General,
