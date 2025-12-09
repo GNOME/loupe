@@ -1,0 +1,1 @@
+Fix panics, probably occuring when using an action like 'copy', and then closing the window. The crash causes all other windows to close. #553
