@@ -239,14 +239,13 @@ impl Action {
 
                 Action::ToggleFullscreen => {
                     klass.install_action(&action, None, move |obj, _, _| {
-                        let win = obj.window();
-                        win.toggle_fullscreen(!win.is_fullscreen());
+                        obj.window_inspect(|w| w.toggle_fullscreen(!w.is_fullscreen()));
                     });
                 }
 
                 Action::LeaveFullscreen => {
                     klass.install_action(&action, None, move |obj, _, _| {
-                        obj.window().toggle_fullscreen(false);
+                        obj.window_inspect(|w| w.toggle_fullscreen(false));
                     });
                 }
 
@@ -272,7 +271,9 @@ impl Action {
 
                 Action::About => {
                     klass.install_action_async(&action, None, |obj, _, _| async move {
-                        obj.window().show_about().await
+                        if let Some(window) = obj.try_window() {
+                            window.show_about().await
+                        }
                     });
                 }
 
@@ -288,7 +289,7 @@ impl Action {
 
                 Action::Edit => {
                     klass.install_action_async(&action, None, move |obj, _, _| async move {
-                        obj.window().show_edit();
+                        obj.window_inspect(|w| w.show_edit());
                     });
                 }
             }

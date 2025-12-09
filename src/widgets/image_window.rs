@@ -426,7 +426,7 @@ mod imp {
 
                     // Maybe one day this will actually work
                     log::debug!("Trying to focus window after drag and drop");
-                    obj.window().present();
+                    obj.window_inspect(|w| w.present());
 
                     true
                 }
@@ -526,7 +526,10 @@ impl LpImageWindow {
                 .as_ref(),
         );
 
-        if let Ok(selected) = chooser.open_multiple_future(Some(&self.window())).await {
+        if let Ok(selected) = chooser
+            .open_multiple_future(self.try_window().as_ref())
+            .await
+        {
             let images: Vec<_> = selected
                 .into_iter()
                 .filter_map(|files| {
@@ -547,7 +550,7 @@ impl LpImageWindow {
         if let Some(ref file) = imp.image_view.current_file() {
             let launcher = gtk::FileLauncher::new(Some(file));
             launcher.set_always_ask(true);
-            if let Err(e) = launcher.launch_future(Some(&self.window())).await {
+            if let Err(e) = launcher.launch_future(self.try_window().as_ref()).await {
                 if !e.matches(gtk::DialogError::Dismissed) {
                     log::error!("Could not open image in external program: {}", e);
                 }
@@ -579,7 +582,11 @@ impl LpImageWindow {
 
     /// Returns true if some text in metadata is currently selected
     fn has_metadata_selected(&self) -> bool {
-        if let Some(focus_widget) = GtkWindowExt::focus(&self.window()) {
+        let Some(window) = self.try_window() else {
+            return false;
+        };
+
+        if let Some(focus_widget) = GtkWindowExt::focus(&window) {
             if focus_widget.is_ancestor(&*self.imp().properties_view) {
                 if let Ok(label) = focus_widget.downcast::<gtk::Label>() {
                     return label.selection_bounds().is_some();
@@ -835,7 +842,7 @@ impl LpImageWindow {
             imp.stack.set_visible_child(&*imp.status_page);
             imp.status_page.grab_focus();
             // Leave fullscreen since status page has no controls to leave it
-            self.window().set_fullscreened(false);
+            self.window_inspect(|w| w.set_fullscreened(false));
         }
 
         imp.properties_button.set_sensitive(has_image);
@@ -865,7 +872,7 @@ impl LpImageWindow {
             .and_then(|x| x.metadata().file_name())
             .unwrap_or_else(|| gettext("Image Viewer"));
 
-        self.window().set_title(Some(&title));
+        self.window_inspect(|x| x.set_title(Some(&title)));
     }
 
     pub fn image_size_available(&self) {
@@ -897,12 +904,14 @@ impl LpImageWindow {
 
         if current_page.is_some_and(|page| page.image().error().is_some()) {
             log::debug!("Showing window because loading image failed");
-            self.window().present();
+            self.window_inspect(|w| w.present());
         }
     }
 
     fn on_fullscreen_changed(&self) {
-        let icon = if self.window().is_fullscreen() {
+        let is_fullscreen = self.try_window().map_or(false, |w| w.is_fullscreen());
+
+        let icon = if is_fullscreen {
             "view-restore-symbolic"
         } else {
             "view-fullscreen-symbolic"
@@ -911,7 +920,7 @@ impl LpImageWindow {
 
         self.update_headerbar_style();
 
-        if !self.window().is_fullscreen() {
+        if !is_fullscreen {
             self.set_cursor(None);
             self.show_controls();
         }
@@ -926,18 +935,23 @@ impl LpImageWindow {
     }
 
     fn is_content_extended_to_top(&self) -> bool {
-        self.window().is_fullscreen() && !self.imp().properties_button.is_active()
+        self.try_window().map_or(false, |w| w.is_fullscreen())
+            && !self.imp().properties_button.is_active()
     }
 
     fn update_accel_status(&self) {
-        let Some(application) = self.window().application() else {
+        let Some(window) = self.try_window() else {
+            return;
+        };
+
+        let Some(application) = window.application() else {
             log::error!("No application for window found");
             return;
         };
 
         // Only change status if active window
-        if self.window().is_active() {
-            if self.window().visible_dialog().is_some() || !self.is_mapped() {
+        if window.is_active() {
+            if window.visible_dialog().is_some() || !self.is_mapped() {
                 // If AdwDialog is visible, remove global accels that are for the main window
                 // Same for this not being visible, so potentially editing view is open
                 ActionPartGlobal::remove_accels(&application);
