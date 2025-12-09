@@ -52,21 +52,22 @@ pub trait ParentWindow: WidgetExt {
 
     #[track_caller]
     fn window_show_toast(&self, text: &str, priority: adw::ToastPriority) {
-        if let Some(window) = self.try_window() {
-            window.show_toast(text, priority);
-        }
+        self.window_inspect(|w| w.show_toast(text, priority));
     }
 
     #[track_caller]
     fn window_add_toast(&self, toast: adw::Toast) {
-        if let Some(window) = self.try_window() {
-            window.add_toast(toast);
-        }
+        self.window_inspect(|w| w.add_toast(toast));
     }
 
     #[track_caller]
     fn window_inspect(&self, f: impl FnOnce(&LpWindow)) {
         self.try_window().inspect(f);
+    }
+
+    #[track_caller]
+    fn window_show_error(&self, stub: &str, details: &str, error_type: super::ErrorType) {
+        self.window_inspect(|w| w.show_error(stub, details, error_type));
     }
 
     fn edit_window(&self) -> LpEditWindow {

@@ -360,7 +360,7 @@ impl LpEditCrop {
 
     fn handle_error(&self, res: Result<(), EditingError>) {
         if let Err(err) = res {
-            self.window().show_error(
+            self.window_show_error(
                 &gettext("Failed to Edit Image"),
                 &format!("Failed to edit image: {err}"),
                 ErrorType::General,
