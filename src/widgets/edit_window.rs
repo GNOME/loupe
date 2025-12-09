@@ -349,7 +349,7 @@ mod imp {
 
             if let Some(operations) = obj.operations() {
                 log::debug!("Computing edited image.");
-                let result = editor.apply_complete(dbg!(&operations)).await;
+                let result = editor.apply_complete(&operations).await;
                 match result {
                     Err(err) if matches!(err.error(), glycin::Error::Canceled(_)) => {
                         log::debug!("Computing edited image canceled");
