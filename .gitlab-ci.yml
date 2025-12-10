@@ -7,9 +7,6 @@ include:
       tarball-artifact-path: "${TARBALL_ARTIFACT_PATH}"
 
 variables:
-  FLATPAK_MODULE: 'gnome-font-viewer'
-
-variables:
   BUNDLE: "org.gnome.Loupe.Devel.flatpak"
   MANIFEST_PATH: "build-aux/flatpak/org.gnome.Loupe.Devel.json"
   FLATPAK_MODULE: "loupe"
@@ -18,6 +15,7 @@ variables:
   TARBALL_ARTIFACT_PATH: ".flatpak-builder/build/${FLATPAK_MODULE}/_flatpak_build/meson-dist/${CI_PROJECT_NAME}-${CI_COMMIT_TAG}.tar.xz"
 
 flatpak:
+  image: "quay.io/gnome_infrastructure/gnome-runtime-images:gnome-48"
   extends: ".flatpak@x86_64"
   interruptible: true
   variables:
@@ -26,6 +24,7 @@ flatpak:
     CONFIG_OPTS: "-Dprofile=release -Dapp_id_suffix=.Devel"
 
 flatpak@aarch64:
+  image: "quay.io/gnome_infrastructure/gnome-runtime-images:gnome-48"
   extends: ".flatpak@aarch64"
   allow_failure: true
   interruptible: true
