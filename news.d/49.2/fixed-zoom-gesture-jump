@@ -1,0 +1,1 @@
+Don't jump to best-fit zoom level during pinch zoom gesture when scroolbars get displayed. This has only been an issue with the disability option "always show scrollbars."

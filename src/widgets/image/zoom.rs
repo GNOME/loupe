@@ -70,12 +70,19 @@ impl imp::LpImage {
 
     /// Sets respective output values if best-fit is active
     pub(super) fn configure_best_fit(&self) {
+        log::trace!("Configure best fit");
         // calculate new zoom value for best fit
         if self.obj().is_best_fit() {
-            let best_fit_level = self.zoom_level_best_fit();
-            self.zoom.set(best_fit_level);
-            self.set_zoom_target(best_fit_level);
-            self.zoom_animation().pause();
+            // LpImage can get measured during pinch zoom gesture, when scrollbars appear
+            // that are not overlayed (accessibility option.) This causes the best-fit to
+            // change. Don't change the zoom level in this case since we are in the gesture
+            // that will change the zoom level anyway.
+            if self.locked_gestured.get().is_none() {
+                let best_fit_level = self.zoom_level_best_fit();
+                self.zoom.set(best_fit_level);
+                self.set_zoom_target(best_fit_level);
+                self.zoom_animation().pause();
+            }
             self.configure_adjustments();
         }
     }
