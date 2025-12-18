@@ -43,5 +43,11 @@ libgweather = "4.4.0"
 strum = { version = "0.27.1", features = ["derive"] }
 thiserror = "2.0.3"
 tracing = "0.1.44"
-tracing-subscriber = { version = "0.3.18", features = ["fmt", "env-filter"] }
+tracing-subscriber = { version = "0.3.18", default-features = false, features = [
+    "ansi",
+    "env-filter",
+    "fmt",
+    "smallvec",
+    "std",
+] }
 url = "2.3.1"
