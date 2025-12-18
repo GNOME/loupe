@@ -922,7 +922,7 @@ impl LpImageWindow {
     }
 
     fn on_fullscreen_changed(&self) {
-        let is_fullscreen = self.try_window().map_or(false, |w| w.is_fullscreen());
+        let is_fullscreen = self.try_window().is_some_and(|w| w.is_fullscreen());
 
         let icon = if is_fullscreen {
             "view-restore-symbolic"
@@ -948,7 +948,7 @@ impl LpImageWindow {
     }
 
     fn is_content_extended_to_top(&self) -> bool {
-        self.try_window().map_or(false, |w| w.is_fullscreen())
+        self.try_window().is_some_and(|w| w.is_fullscreen())
             && !self.imp().properties_button.is_active()
     }
 
