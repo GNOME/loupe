@@ -1,5 +1,6 @@
 // Copyright (c) 2023-2025 Sophie Herold
 // Copyright (c) 2023 Julian Hofer
+// Copyright (c) 2025 Mukul Joshi
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
