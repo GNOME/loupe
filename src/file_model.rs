@@ -82,7 +82,10 @@ impl Entry {
                     }
 
                     Err(err) => {
-                        log::error!("Failed to obtain information for sorting '{}': {err}", uri);
+                        tracing::error!(
+                            "Failed to obtain information for sorting '{}': {err}",
+                            uri
+                        );
                         break;
                     }
                 }
@@ -189,7 +192,7 @@ impl LpFileModel {
                 self.imp().monitor.set(monitor).unwrap();
             }
             Err(err) => {
-                log::info!("Cannot monitor directory: {err}");
+                tracing::info!("Cannot monitor directory: {err}");
             }
         }
 
@@ -216,7 +219,7 @@ impl LpFileModel {
             let info = enumerator.next_files_future(1, glib::Priority::LOW).await;
             match info {
                 Err(err) => {
-                    log::warn!("Unreadable entry in directory: {err}");
+                    tracing::warn!("Unreadable entry in directory: {err}");
                     break;
                 }
                 Ok(mut info) => {
@@ -268,7 +271,7 @@ impl LpFileModel {
             Self::sort(&mut files);
         }
 
-        log::debug!(
+        tracing::debug!(
             "Completed loading list of files of '{}' after {:#?}",
             directory.uri(),
             instant.elapsed(),
@@ -318,7 +321,7 @@ impl LpFileModel {
     /// Returns `n` elements before and after given file
     pub fn files_around(&self, file: &gio::File, n: usize) -> IndexMap<GString, gio::File> {
         let Some(index) = self.index_of(file) else {
-            log::error!("URI not in model: {}", file.uri());
+            tracing::error!("URI not in model: {}", file.uri());
             return IndexMap::new();
         };
 
@@ -374,7 +377,7 @@ impl LpFileModel {
         let Ok(info) =
             util::query_attributes(file, vec![gio::FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE])
         else {
-            log::warn!("Could not query file info: {}", file.uri());
+            tracing::warn!("Could not query file info: {}", file.uri());
             return false;
         };
 
@@ -391,7 +394,7 @@ impl LpFileModel {
             {
                 f(&file_event);
             } else {
-                log::error!("Failed to read arguments from 'changed' signal.");
+                tracing::error!("Failed to read arguments from 'changed' signal.");
             }
 
             None
@@ -432,7 +435,7 @@ impl LpFileModel {
                 // Changing file content could theoretically make it an image
                 // by adding a magic byte
 
-                log::debug!("File added: {uri_a}");
+                tracing::debug!("File added: {uri_a}");
 
                 glib::spawn_future_local(glib::clone!(
                     #[strong(rename_to=obj)]
@@ -450,7 +453,7 @@ impl LpFileModel {
             gio::FileMonitorEvent::Deleted
             | gio::FileMonitorEvent::MovedOut
             | gio::FileMonitorEvent::Unmounted => {
-                log::debug!("File removed: {}", file_a.uri());
+                tracing::debug!("File removed: {}", file_a.uri());
                 let removed = self
                     .imp()
                     .files
@@ -465,7 +468,7 @@ impl LpFileModel {
                 if let Some(file_b) = file_b {
                     {
                         let uri_b = file_b.uri();
-                        log::debug!("File moved from '{uri_a}' to '{uri_b}'");
+                        tracing::debug!("File moved from '{uri_a}' to '{uri_b}'");
                         let mut changed =
                             self.imp().files.borrow_mut().shift_remove(&uri_a).is_some();
 

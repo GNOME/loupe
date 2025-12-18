@@ -281,7 +281,7 @@ mod imp {
                 Some(&LpAspectRatio::default().to_variant()),
             );
             if let Err(err) = res {
-                log::error!("Failed to call action edit-crop.aspect-ratio: {err}");
+                tracing::error!("Failed to call action edit-crop.aspect-ratio: {err}");
             }
 
             let (w, h) = self.image.image_size();
@@ -294,7 +294,7 @@ mod imp {
                 .obj()
                 .activate_action("edit-crop.orientation", Some(&orientation.to_variant()));
             if let Err(err) = res {
-                log::error!("Failed to call action edit-crop.orientation: {err}");
+                tracing::error!("Failed to call action edit-crop.orientation: {err}");
             }
 
             self.obj().action_set_enabled("edit-crop.reset", false);

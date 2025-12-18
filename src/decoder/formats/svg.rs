@@ -87,7 +87,7 @@ impl Svg {
                 };
 
                 if cancellable.is_cancelled() {
-                    log::debug!("Terminating SVG decoder thread");
+                    tracing::debug!("Terminating SVG decoder thread");
                     break;
                 }
 

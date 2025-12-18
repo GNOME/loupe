@@ -69,7 +69,7 @@ mod imp {
 
     impl ApplicationImpl for LpApplication {
         fn startup(&self) {
-            log::trace!("Startup");
+            tracing::trace!("Startup");
             self.parent_startup();
 
             // Force dark theme
@@ -82,7 +82,7 @@ mod imp {
         }
 
         fn activate(&self) {
-            log::debug!("Showing window via 'activate'");
+            tracing::debug!("Showing window via 'activate'");
             let application = self.obj();
             let window = LpWindow::new(&*application);
             window.present();
@@ -90,7 +90,7 @@ mod imp {
 
         // Handles opening files from the command line or other applications
         fn open(&self, files: &[gio::File], _hint: &str) {
-            log::trace!("Open {} file(s)", files.len());
+            tracing::trace!("Open {} file(s)", files.len());
             let application = self.obj();
             let win = LpWindow::new(&*application);
             win.image_view().set_images_from_files(files.to_vec());
@@ -138,7 +138,7 @@ impl LpApplication {
             gio::ActionEntryBuilder::new("new-window")
                 .activate(|app: &Self, _, _| {
                     let win = LpWindow::new(app);
-                    log::debug!("Showing new window");
+                    tracing::debug!("Showing new window");
                     win.present();
                 })
                 .build(),
@@ -160,7 +160,7 @@ impl LpApplication {
             if let Err(e) =
                 gio::AppInfo::launch_default_for_uri_future("help:loupe", context.as_ref()).await
             {
-                log::error!("Failed to launch help: {}", e.message());
+                tracing::error!("Failed to launch help: {}", e.message());
             }
         });
     }

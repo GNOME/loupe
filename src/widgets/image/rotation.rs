@@ -59,7 +59,7 @@ impl imp::LpImage {
                     let imp = obj.imp();
                     if let Some(new_file) = imp.queued_reload.replace(None) {
                         glib::spawn_future_local(async move {
-                            log::debug!("Animation finished: Executing delayed reload");
+                            tracing::debug!("Animation finished: Executing delayed reload");
                             obj.load(&new_file).await;
                         });
                     }
@@ -74,7 +74,7 @@ impl imp::LpImage {
 impl LpImage {
     /// Set rotation and mirroring to the state would have after loading
     pub fn reset_rotation(&self) {
-        log::debug!("Resetting rotation");
+        tracing::debug!("Resetting rotation");
         let orientation = self.metadata().orientation();
         self.imp()
             .rotation_target
@@ -86,7 +86,7 @@ impl LpImage {
     pub fn rotate_by(&self, angle: f64) {
         let imp = self.imp();
 
-        log::debug!("Rotate by {} degrees", angle);
+        tracing::debug!("Rotate by {} degrees", angle);
         let target = &self.imp().rotation_target;
         target.set(target.get() + angle);
 
@@ -106,7 +106,7 @@ impl LpImage {
 
         if let Ok(r) = gufo_common::orientation::Rotation::try_from(angle) {
             if r != gufo_common::orientation::Rotation::_0 {
-                log::debug!("Editing image to rotate by {r:?}");
+                tracing::debug!("Editing image to rotate by {r:?}");
                 let operation = glycin::Operation::Rotate(r);
                 let editing_queue = &self.imp().editing_queue;
                 editing_queue.push(operation);

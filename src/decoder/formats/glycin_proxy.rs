@@ -20,6 +20,7 @@
 use std::sync::Arc;
 
 use gtk::prelude::*;
+use tracing::Instrument;
 
 use super::*;
 use crate::decoder::tiling::{self, SharedFrameBuffer};
@@ -47,75 +48,85 @@ impl Glycin {
 
         let (next_frame_send, next_frame_recv) = async_channel::bounded(2);
 
-        updater.clone().spawn_error_handled(async move {
-            let mut metadata: Metadata = Metadata::default();
-            metadata.set_image_info(image.details().clone());
-            metadata.set_mime_type(image.mime_type().to_string());
-            updater.send(DecoderUpdate::Metadata(Box::new(metadata)));
+        let span = tracing::debug_span!(
+            "proxy",
+            image = image
+                .file()
+                .and_then(|x| x.basename())
+                .map(|x| x.display().to_string())
+        );
+        updater.clone().spawn_error_handled(
+            async move {
+                let mut metadata: Metadata = Metadata::default();
+                metadata.set_image_info(image.details().clone());
+                metadata.set_mime_type(image.mime_type().to_string());
+                updater.send(DecoderUpdate::Metadata(Box::new(metadata)));
 
-            let dimensions = (image.details().width(), image.details().height());
-            tiles.set_original_dimensions(dimensions);
+                let dimensions = (image.details().width(), image.details().height());
+                tiles.set_original_dimensions(dimensions);
 
-            let frame = image.next_frame().await?;
+                let frame = image.next_frame().await?;
 
-            let mut metadata: Metadata = Metadata::default();
-            metadata.set_frame_metadata(&frame);
-            updater.send(DecoderUpdate::Metadata(Box::new(metadata)));
-            tiles.set_original_dimensions((frame.width() as u32, frame.height() as u32));
+                let mut metadata: Metadata = Metadata::default();
+                metadata.set_frame_metadata(&frame);
+                updater.send(DecoderUpdate::Metadata(Box::new(metadata)));
+                tiles.set_original_dimensions((frame.width() as u32, frame.height() as u32));
 
-            if let Some(delay) = frame.delay() {
-                updater.send(DecoderUpdate::Animated);
+                if let Some(delay) = frame.delay() {
+                    updater.send(DecoderUpdate::Animated);
 
-                let position = (0, 0);
+                    let position = (0, 0);
 
-                let tile = tiling::Tile {
-                    position,
-                    zoom_level: tiling::zoom_to_level(1.),
-                    bleed: 0,
-                    texture: frame.texture(),
-                };
+                    let tile = tiling::Tile {
+                        position,
+                        zoom_level: tiling::zoom_to_level(1.),
+                        bleed: 0,
+                        texture: frame.texture(),
+                    };
 
-                tiles.push_frame(tile, dimensions, delay);
-                updater.send(DecoderUpdate::Redraw);
+                    tiles.push_frame(tile, dimensions, delay);
+                    updater.send(DecoderUpdate::Redraw);
 
-                loop {
-                    if next_frame_recv.recv().await.is_ok() {
-                        loop {
-                            let frame = image.next_frame().await?;
+                    loop {
+                        if next_frame_recv.recv().await.is_ok() {
+                            loop {
+                                let frame = image.next_frame().await?;
 
-                            let position = (0, 0);
+                                let position = (0, 0);
 
-                            let tile = tiling::Tile {
-                                position,
-                                zoom_level: tiling::zoom_to_level(1.),
-                                bleed: 0,
-                                texture: frame.texture(),
-                            };
+                                let tile = tiling::Tile {
+                                    position,
+                                    zoom_level: tiling::zoom_to_level(1.),
+                                    bleed: 0,
+                                    texture: frame.texture(),
+                                };
 
-                            tiles.push_frame(tile, dimensions, frame.delay().unwrap_or(delay));
+                                tiles.push_frame(tile, dimensions, frame.delay().unwrap_or(delay));
 
-                            if tiles.n_frames() >= FRAME_BUFFER {
-                                break;
+                                if tiles.n_frames() >= FRAME_BUFFER {
+                                    break;
+                                }
                             }
+                        } else {
+                            tracing::debug!("Animation handler gone");
+                            return Ok(());
                         }
-                    } else {
-                        log::debug!("Animation handler gone");
-                        return Ok(());
                     }
+                } else {
+                    let tile = tiling::Tile {
+                        position: (0, 0),
+                        zoom_level: tiling::zoom_to_level(1.),
+                        bleed: 0,
+                        texture: frame.texture(),
+                    };
+
+                    tiles.push(tile);
                 }
-            } else {
-                let tile = tiling::Tile {
-                    position: (0, 0),
-                    zoom_level: tiling::zoom_to_level(1.),
-                    bleed: 0,
-                    texture: frame.texture(),
-                };
 
-                tiles.push(tile);
+                Ok(())
             }
-
-            Ok(())
-        });
+            .instrument(span),
+        );
 
         Self {
             cancellable,

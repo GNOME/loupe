@@ -109,7 +109,7 @@ impl imp::LpImage {
                         (f64::exp(-y * f64::ln(ZOOM_FACTOR_SCROLL_SURFACE)), false)
                     }
                     unknown_unit => {
-                        log::warn!("Ignoring unknown scroll unit: {unknown_unit:?}");
+                        tracing::warn!("Ignoring unknown scroll unit: {unknown_unit:?}");
                         (1., false)
                     }
                 };
@@ -142,12 +142,12 @@ impl imp::LpImage {
             move |gesture, n_press, x, y| {
                 // only handle double clicks
                 if n_press != 2 {
-                    log::trace!("Gesture {n_press} click");
+                    tracing::trace!("Gesture {n_press} click");
                     gesture.set_state(gtk::EventSequenceState::Denied);
                     return;
                 }
 
-                log::trace!("Gesture double click");
+                tracing::trace!("Gesture double click");
 
                 gesture.set_state(gtk::EventSequenceState::Claimed);
                 if gesture.device().map(|x| x.source()) == Some(gdk::InputSource::Touchscreen) {
@@ -175,7 +175,7 @@ impl imp::LpImage {
             #[weak]
             obj,
             move |gesture, _, _| {
-                log::trace!("Drag gesture begin");
+                tracing::trace!("Drag gesture begin");
                 let imp = obj.imp();
 
                 // Allow only left and middle button
@@ -216,7 +216,7 @@ impl imp::LpImage {
             #[weak]
             obj,
             move |_, _, _| {
-                log::trace!("Drag gesture end");
+                tracing::trace!("Drag gesture end");
                 obj.set_cursor(None);
                 obj.imp().last_drag_value.set(None);
             }
@@ -230,7 +230,7 @@ impl imp::LpImage {
             #[weak]
             obj,
             move |_, _| {
-                log::trace!("Rotate gesture begin");
+                tracing::trace!("Rotate gesture begin");
                 obj.imp().cancel_deceleration();
             }
         ));
@@ -270,7 +270,7 @@ impl imp::LpImage {
             #[weak]
             obj,
             move |_, _| {
-                log::debug!("Rotate gesture end");
+                tracing::debug!("Rotate gesture end");
 
                 let angle = (obj.rotation() / 90.).round() * 90. - obj.imp().rotation_target.get();
                 obj.rotate_by(angle);
@@ -286,7 +286,7 @@ impl imp::LpImage {
             #[weak]
             obj,
             move |gesture, _| {
-                log::trace!("Zoom gesture begin");
+                tracing::trace!("Zoom gesture begin");
 
                 let imp = obj.imp();
                 imp.cancel_deceleration();
@@ -309,7 +309,7 @@ impl imp::LpImage {
                             imp.set_hadj_value(imp.hadj_value() + x0 - x1);
                             imp.set_vadj_value(imp.vadj_value() + y0 - y1);
                         } else {
-                            log::warn!("Zoom bounding box center: No previous value");
+                            tracing::warn!("Zoom bounding box center: No previous value");
                         }
 
                         imp.zoom_gesture_center.set(p1);
@@ -336,7 +336,7 @@ impl imp::LpImage {
             obj,
             move |_, _| {
                 let imp = obj.imp();
-                log::debug!("Zoom gesture end");
+                tracing::debug!("Zoom gesture end");
 
                 let rotation_target = (obj.rotation() / 90.).round() * 90.;
                 if obj.zoom() < imp.zoom_level_best_fit_for_rotation(rotation_target)
@@ -367,7 +367,7 @@ impl imp::LpImage {
             scrolled_window.set_kinetic_scrolling(false);
             scrolled_window.set_kinetic_scrolling(true);
         } else {
-            log::error!("Could not find GtkScrolledWindow parent to cancel deceleration");
+            tracing::error!("Could not find GtkScrolledWindow parent to cancel deceleration");
         }
     }
 }

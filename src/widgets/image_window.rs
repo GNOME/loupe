@@ -164,7 +164,7 @@ mod imp {
                 #[weak]
                 obj,
                 move |gesture, _, _, _| {
-                    log::trace!("Mouse forward button clicked");
+                    tracing::trace!("Mouse forward button clicked");
                     gesture.set_state(gtk::EventSequenceState::Claimed);
                     obj.image_view().navigate(Direction::Forward, false);
                 }
@@ -173,7 +173,7 @@ mod imp {
                 #[weak]
                 obj,
                 move |gesture, _, _, _| {
-                    log::trace!("Mouse back button clicked");
+                    tracing::trace!("Mouse back button clicked");
                     gesture.set_state(gtk::EventSequenceState::Claimed);
                     obj.image_view().navigate(Direction::Back, false);
                 }
@@ -186,7 +186,7 @@ mod imp {
                     // TODO: We can't claim the gesture here, right? Otherwise we suppress the
                     // double-click
                     if n_press == 1 {
-                        log::trace!("General 1 click event");
+                        tracing::trace!("General 1 click event");
                         obj.on_click();
                     }
                 }
@@ -424,7 +424,7 @@ mod imp {
                     let files = match value.get::<gdk::FileList>() {
                         Ok(list) => list.files(),
                         Err(err) => {
-                            log::error!("Issue with drop value: {err}");
+                            tracing::error!("Issue with drop value: {err}");
                             return false;
                         }
                     };
@@ -432,12 +432,12 @@ mod imp {
                     if !files.is_empty() {
                         obj.image_view().set_images_from_files(files);
                     } else {
-                        log::error!("Dropped FileList was empty");
+                        tracing::error!("Dropped FileList was empty");
                         return false;
                     }
 
                     // Maybe one day this will actually work
-                    log::debug!("Trying to focus window after drag and drop");
+                    tracing::debug!("Trying to focus window after drag and drop");
                     obj.window_inspect(|w| w.present());
 
                     true
@@ -553,7 +553,7 @@ impl LpImageWindow {
                 .collect();
             self.image_view().set_images_from_files(images);
         } else {
-            log::debug!("File dialog canceled or file not readable");
+            tracing::debug!("File dialog canceled or file not readable");
         }
     }
 
@@ -565,11 +565,11 @@ impl LpImageWindow {
             launcher.set_always_ask(true);
             if let Err(e) = launcher.launch_future(self.try_window().as_ref()).await {
                 if !e.matches(gtk::DialogError::Dismissed) {
-                    log::error!("Could not open image in external program: {}", e);
+                    tracing::error!("Could not open image in external program: {}", e);
                 }
             }
         } else {
-            log::error!("Could not load a path for the current image.")
+            tracing::error!("Could not load a path for the current image.")
         }
     }
 
@@ -581,7 +581,7 @@ impl LpImageWindow {
         let imp = self.imp();
 
         if let Err(e) = imp.image_view.set_background().await {
-            log::error!("Failed to set background: {}", e);
+            tracing::error!("Failed to set background: {}", e);
         }
     }
 
@@ -589,7 +589,7 @@ impl LpImageWindow {
         let imp = self.imp();
 
         if let Err(e) = imp.image_view.print() {
-            log::error!("Failed to print file: {}", e);
+            tracing::error!("Failed to print file: {}", e);
         }
     }
 
@@ -615,7 +615,7 @@ impl LpImageWindow {
         let imp = self.imp();
 
         if let Err(e) = imp.image_view.copy() {
-            log::error!("Failed to copy to clipboard: {}", e);
+            tracing::error!("Failed to copy to clipboard: {}", e);
         } else {
             self.window_show_toast(
                 &gettext("Image copied to clipboard"),
@@ -630,7 +630,7 @@ impl LpImageWindow {
             image_view.current_file(),
             image_view.current_file().and_then(|x| x.path()),
         ) else {
-            log::error!("No file to trash");
+            tracing::error!("No file to trash");
             return;
         };
 
@@ -653,7 +653,7 @@ impl LpImageWindow {
                                 .set_trash_restore(Some(gio::File::for_path(&path)));
                             let result = crate::util::untrash(&path).await;
                             if let Err(err) = result {
-                                log::error!("Failed to untrash {path:?}: {err}");
+                                tracing::error!("Failed to untrash {path:?}: {err}");
                                 obj.window_show_toast(
                                     &gettext("Failed to restore image from trash"),
                                     adw::ToastPriority::High,
@@ -668,7 +668,7 @@ impl LpImageWindow {
                 if Some(gio::IOErrorEnum::NotSupported) == err.kind::<gio::IOErrorEnum>() {
                     self.delete_future(&path).await;
                 } else {
-                    log::error!("Failed to delete file {path:?}: {err}");
+                    tracing::error!("Failed to delete file {path:?}: {err}");
                     self.window_show_toast(
                         &gettext("Failed to move image to trash"),
                         adw::ToastPriority::Normal,
@@ -682,7 +682,7 @@ impl LpImageWindow {
     async fn delete(&self) {
         let image_view = self.image_view();
         let Some(path) = image_view.current_file().and_then(|x| x.path()) else {
-            log::error!("No file to delete");
+            tracing::error!("No file to delete");
             return;
         };
 
@@ -714,7 +714,7 @@ impl LpImageWindow {
             let result = file.delete_future(glib::Priority::default()).await;
 
             if let Err(err) = result {
-                log::error!("Failed to delete file {path:?}: {err}");
+                tracing::error!("Failed to delete file {path:?}: {err}");
                 self.window_show_toast(
                     &gettext("Failed to delete image"),
                     adw::ToastPriority::Normal,
@@ -873,7 +873,7 @@ impl LpImageWindow {
         let settings = LpApplication::default().settings();
         let result = settings.set_boolean("show-properties", imp.properties_button.is_active());
         if let Err(err) = result {
-            log::warn!("Failed to save show-properties state, {}", err);
+            tracing::warn!("Failed to save show-properties state, {}", err);
         }
     }
 
@@ -901,7 +901,7 @@ impl LpImageWindow {
             .map(|page| page.image());
 
         if image.is_some_and(|img| img.image_size_available()) {
-            log::debug!("Showing window because image size is ready");
+            tracing::debug!("Showing window because image size is ready");
             self.window().present();
         }
     }
@@ -916,7 +916,7 @@ impl LpImageWindow {
         let current_page = self.imp().image_view.current_page();
 
         if current_page.is_some_and(|page| page.image().error().is_some()) {
-            log::debug!("Showing window because loading image failed");
+            tracing::debug!("Showing window because loading image failed");
             self.window_inspect(|w| w.present());
         }
     }
@@ -958,7 +958,7 @@ impl LpImageWindow {
         };
 
         let Some(application) = window.application() else {
-            log::error!("No application for window found");
+            tracing::error!("No application for window found");
             return;
         };
 

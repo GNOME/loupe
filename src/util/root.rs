@@ -25,7 +25,7 @@ pub trait ParentWindow: WidgetExt {
         let result = self.root().and_downcast();
 
         if result.is_none() {
-            log::error!(
+            tracing::error!(
                 "Couldn't find LpWindow for {self:?}. mapped={}. caller={}",
                 self.is_mapped(),
                 std::panic::Location::caller(),
@@ -40,7 +40,7 @@ pub trait ParentWindow: WidgetExt {
         let result = self.root().and_downcast();
 
         if result.is_none() {
-            log::error!(
+            tracing::error!(
                 "Couldn't find LpWindow for {self:?}. mapped={}. caller={}",
                 self.is_mapped(),
                 std::panic::Location::caller(),

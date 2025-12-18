@@ -282,7 +282,7 @@ impl Action {
                         if let Some(current_page) = win.imp().image_view.current_page() {
                             current_page.image().reload().await;
                         } else {
-                            log::error!("No current image to reload");
+                            tracing::error!("No current image to reload");
                         }
                     });
                 }

@@ -122,7 +122,7 @@ mod imp {
                     #[weak]
                     obj,
                     move || if !obj.is_visible() {
-                        log::debug!("Showing window after timeout");
+                        tracing::debug!("Showing window after timeout");
                         obj.present()
                     }
                 ),
@@ -227,7 +227,7 @@ impl LpWindow {
 
     pub async fn show_about(&self) {
         let about = crate::about::dialog().await;
-        log::debug!("Showing about dialog");
+        tracing::debug!("Showing about dialog");
         about.present(Some(self));
     }
 
@@ -238,7 +238,7 @@ impl LpWindow {
     }
 
     pub fn show_specific_image(&self, file: gio::File) {
-        log::debug!("Showing specific image: {}", file.uri());
+        tracing::debug!("Showing specific image: {}", file.uri());
         self.image_view().set_images_from_files(vec![file]);
         self.show_image();
     }
@@ -251,7 +251,7 @@ impl LpWindow {
             self.imp().stack.set_visible_child(edit_child);
             self.set_fullscreened(false);
         } else {
-            log::error!("Can't open image editor since no current image exists");
+            tracing::error!("Can't open image editor since no current image exists");
         }
     }
 

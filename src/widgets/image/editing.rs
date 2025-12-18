@@ -76,7 +76,7 @@ impl LpImage {
         if let Some(node) = tmp_snapshot.to_node() {
             imp.apply_operations(node, &gtk::Snapshot::new())?;
         } else {
-            log::error!("Render node is empty");
+            tracing::error!("Render node is empty");
         }
 
         imp.configure_best_fit();

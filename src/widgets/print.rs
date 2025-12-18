@@ -84,7 +84,7 @@ impl From<&str> for PageAlignment {
             "left" => (HAlignment::Left, VAlignment::Middle),
             "right" => (HAlignment::Right, VAlignment::Middle),
             pos => {
-                log::error!("Unknown alignment '{pos}'");
+                tracing::error!("Unknown alignment '{pos}'");
                 (HAlignment::default(), VAlignment::default())
             }
         };
@@ -134,7 +134,7 @@ impl<T: AsRef<str>> From<T> for Unit {
             "px" => Self::Pixel,
             "%" => Self::Percent,
             unit => {
-                log::error!("Unknown unit '{unit}'");
+                tracing::error!("Unknown unit '{unit}'");
                 Self::default()
             }
         }
@@ -408,7 +408,7 @@ mod imp {
             obj.set_orientation(orientation);
             drop(ui_updates_disabled);
 
-            log::debug!("Showing print dialog");
+            tracing::debug!("Showing print dialog");
             obj.present();
         }
 
@@ -460,7 +460,7 @@ impl LpPrint {
         print_setup: Option<gtk::PrintSetup>,
     ) {
         let Some(file) = image.file() else {
-            log::error!("Tried to print LpImage without GFile");
+            tracing::error!("Tried to print LpImage without GFile");
             return;
         };
 
@@ -496,7 +496,7 @@ impl LpPrint {
             let print_setup = match print_dialog.setup_future(Some(&parent)).await {
                 Err(err) => {
                     // TODO: show error
-                    log::warn!("Failed to print: {err}");
+                    tracing::warn!("Failed to print: {err}");
                     return;
                 }
                 Ok(print_setup) => print_setup,
@@ -897,21 +897,21 @@ impl LpPrint {
 
             let draw_result = match result {
                 Err(err) => {
-                    log::warn!("Print error: {err}");
+                    tracing::warn!("Print error: {err}");
                     return;
                 }
                 Ok(output_stream) => obj.draw_page(output_stream).await,
             };
 
             if let Err(err) = draw_result {
-                log::warn!("Print error: {err}");
+                tracing::warn!("Print error: {err}");
             }
         });
     }
 
     /// Draw PDF for printing
     async fn draw_page(&self, output_stream: gio::OutputStream) -> anyhow::Result<()> {
-        log::debug!("Drawing image to print");
+        tracing::debug!("Drawing image to print");
         let image = self.image();
 
         let (orig_width, orig_height) = self.original_size();

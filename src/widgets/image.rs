@@ -318,7 +318,7 @@ mod imp {
                     #[weak]
                     obj,
                     move |_, _| {
-                        log::debug!("Scale changed signal");
+                        tracing::debug!("Scale changed signal");
                         obj.queue_resize();
                     }
                 ),
@@ -358,7 +358,7 @@ mod imp {
         }
 
         fn dispose(&self) {
-            log::debug!("Disposing LpImage");
+            tracing::debug!("Disposing LpImage");
 
             // remove target from zoom animation because it's property of this object
             self.rotation_animation()

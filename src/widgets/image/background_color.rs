@@ -58,7 +58,7 @@ impl imp::LpImage {
     pub async fn background_color_guess(&self) -> Option<gdk::RGBA> {
         let obj = self.obj();
 
-        log::debug!("Determining background color");
+        tracing::debug!("Determining background color");
 
         if self.fixed_background_color.borrow().is_some() {
             return None;
@@ -66,7 +66,7 @@ impl imp::LpImage {
 
         // Shortcut for formats that don't support transparency
         if !obj.metadata().is_potentially_transparent() {
-            log::trace!("This format does not support transparency");
+            tracing::trace!("This format does not support transparency");
             return Some(Self::default_background_color());
         }
 
@@ -151,7 +151,7 @@ impl imp::LpImage {
             }
 
             if !has_transparency {
-                log::trace!("This image does not have transparency");
+                tracing::trace!("This image does not have transparency");
                 return Some(default_color);
             }
 
@@ -163,8 +163,8 @@ impl imp::LpImage {
                 1.
             };
 
-            log::trace!("Total: {n_pixels}, transparent: {completely_transparent}, bad contrast: {bad_contrast}");
-            log::trace!("Amount bad contrast: {part_bad_contrast}");
+            tracing::trace!("Total: {n_pixels}, transparent: {completely_transparent}, bad contrast: {bad_contrast}");
+            tracing::trace!("Amount bad contrast: {part_bad_contrast}");
 
             if part_bad_contrast > BACKGROUND_GUESS_LOW_CONTRAST_TRHESHOLD {
                 Some(alternate_color)

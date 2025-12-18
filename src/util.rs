@@ -46,7 +46,7 @@ pub fn datetime_fmt(datetime: &glib::DateTime) -> Option<String> {
         .format(&datetime_format);
 
     if let Err(err) = &fmt {
-        log::error!("Could not format DateTime with '{datetime_format}': {err}");
+        tracing::error!("Could not format DateTime with '{datetime_format}': {err}");
     }
 
     fmt.ok().map(|x| x.to_string())

@@ -60,7 +60,7 @@ impl imp::LpImage {
     }
 
     pub fn set_ignore_scroll_policy(&self, scroll_policy: gtk::ScrollablePolicy) {
-        log::error!("Ignored setting new scroll policy {scroll_policy:?}");
+        tracing::error!("Ignored setting new scroll policy {scroll_policy:?}");
     }
 
     pub fn scroll_policy(&self) -> gtk::ScrollablePolicy {

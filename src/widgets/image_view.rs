@@ -257,7 +257,7 @@ mod imp {
                     } else if row == &*imp.zoom_to_50 {
                         0.5
                     } else {
-                        log::error!("Activated unknown entry in zoom to popover.");
+                        tracing::error!("Activated unknown entry in zoom to popover.");
                         return;
                     };
 
@@ -445,7 +445,7 @@ impl LpImageView {
                 }
             ));
         } else {
-            log::error!("File list was empty");
+            tracing::error!("File list was empty");
         }
     }
 
@@ -464,7 +464,7 @@ impl LpImageView {
         };
 
         if is_same_directory {
-            log::debug!("Re-using old model and navigating to the current file");
+            tracing::debug!("Re-using old model and navigating to the current file");
             self.navigate_to_file(&file);
             return;
         }
@@ -475,14 +475,14 @@ impl LpImageView {
             async move {
                 let model = LpFileModel::from_file(file.clone()).await;
                 obj.set_model(model);
-                log::debug!("New model created");
+                tracing::debug!("New model created");
 
                 obj.update_sliding_view(&file);
 
                 // List other files in directory
                 if let Some(directory) = directory {
                     if let Err(err) = obj.model().load_directory(directory.clone()).await {
-                        log::warn!("Failed to load directory: {}", err.root_cause());
+                        tracing::warn!("Failed to load directory: {}", err.root_cause());
                         obj.window_show_toast(
                             &format!("{} {}", err, err.root_cause()),
                             adw::ToastPriority::High,
@@ -534,7 +534,7 @@ impl LpImageView {
         }
 
         let Some(new_index) = self.model().index_of(new_file) else {
-            log::debug!(
+            tracing::debug!(
                 "Could not navigate to file that's not in model '{}': Delaying insertion",
                 new_file.uri()
             );
@@ -561,7 +561,7 @@ impl LpImageView {
             page
         };
 
-        log::debug!("Scrolling to page for {}", new_file.uri());
+        tracing::debug!("Scrolling to page for {}", new_file.uri());
         self.imp().preserve_content.set(true);
         sliding_view.animate_to(&page);
 
@@ -570,7 +570,7 @@ impl LpImageView {
 
     /// Ensures the sliding view contains the correct images
     fn update_sliding_view(&self, current_file: &gio::File) {
-        log::debug!(
+        tracing::debug!(
             "Updating sliding_view neighbors for current path {}",
             current_file.uri()
         );
@@ -603,7 +603,7 @@ impl LpImageView {
 
     fn scroll_sliding_view(&self, file: &gio::File, animated: bool) {
         let Some(current_page) = self.sliding_view().pages().swap_remove(&file.uri()) else {
-            log::error!(
+            tracing::error!(
                 "Current path not available in sliding_view for scrolling: {}",
                 file.uri()
             );
@@ -653,14 +653,14 @@ impl LpImageView {
             move |image| {
                 if image.specific_error() == DecoderError::UnsupportedFormat {
                     if obj.current_image().as_ref() == Some(image) {
-                        log::debug!(
+                        tracing::debug!(
                             "Image format unsupported but not removing since current image"
                         );
                         return;
                     }
 
                     if let Some(file) = image.file() {
-                        log::debug!("Removing image with unsupported format {:?}", file.uri());
+                        tracing::debug!("Removing image with unsupported format {:?}", file.uri());
                         obj.model().remove(&file);
                         if let Some(current_file) = obj.current_file() {
                             obj.update_sliding_view(&current_file);
@@ -772,7 +772,7 @@ impl LpImageView {
         self.notify_is_previous_available();
 
         let Some(new_page) = self.current_page() else {
-            log::debug!("Page changed but no current page");
+            tracing::debug!("Page changed but no current page");
             return;
         };
 
@@ -789,7 +789,7 @@ impl LpImageView {
             if let Some(new_page) = &current_page {
                 self.update_sliding_view(&new_page.file());
             } else {
-                log::error!("No LpImagePage");
+                tracing::error!("No LpImagePage");
             }
         }
 

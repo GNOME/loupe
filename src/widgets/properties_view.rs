@@ -311,7 +311,7 @@ mod imp {
             let launcher = gtk::FileLauncher::new(self.file().as_ref());
             let win = obj.native().and_downcast::<gtk::Window>();
             if let Err(e) = launcher.open_containing_folder_future(win.as_ref()).await {
-                log::error!("Could not open parent directory: {e}");
+                tracing::error!("Could not open parent directory: {e}");
             };
         }
 
@@ -344,7 +344,7 @@ mod imp {
                     gio::Cancellable::NONE,
                     |result| {
                         if let Err(err) = result {
-                            log::error!("Failed to show geo URI: {err}")
+                            tracing::error!("Failed to show geo URI: {err}")
                         }
                     },
                 );

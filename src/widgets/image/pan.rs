@@ -26,7 +26,7 @@ impl LpImage {
             gtk::PanDirection::Left | gtk::PanDirection::Up => -1.,
             gtk::PanDirection::Right | gtk::PanDirection::Down => 1.,
             _ => {
-                log::error!("Unknown pan direction {direction:?}");
+                tracing::error!("Unknown pan direction {direction:?}");
                 return;
             }
         };
@@ -39,7 +39,7 @@ impl LpImage {
                 (self.vadj(), imp.max_vadjustment_value())
             }
             _ => {
-                log::error!("Unknown pan direction {direction:?}");
+                tracing::error!("Unknown pan direction {direction:?}");
                 return;
             }
         };

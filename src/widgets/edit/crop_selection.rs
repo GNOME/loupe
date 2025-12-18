@@ -846,7 +846,7 @@ mod imp {
         /// Set x coordinate of crop selection rectangle origin
         pub(super) fn set_crop_x(&self, x: f32) {
             if x < 0. {
-                log::error!("Tried to set x coordinate to {x}");
+                tracing::error!("Tried to set x coordinate to {x}");
                 return;
             }
 
@@ -864,7 +864,7 @@ mod imp {
         /// Set y coordinate of crop selection rectangle origin
         pub(super) fn set_crop_y(&self, y: f32) {
             if y < 0. {
-                log::error!("Tried to set y coordinate to {y}");
+                tracing::error!("Tried to set y coordinate to {y}");
                 return;
             }
 
@@ -911,7 +911,9 @@ mod imp {
         fn update_crop_area_image_coord(&self) {
             let crop_area_image_coord = self.crop_area_image_coord();
             if self.is_in_user_change() {
-                log::trace!("Setting crop are in image coordinates to {crop_area_image_coord:?}");
+                tracing::trace!(
+                    "Setting crop are in image coordinates to {crop_area_image_coord:?}"
+                );
                 self.crop_area_image_coord.replace(crop_area_image_coord);
             }
         }

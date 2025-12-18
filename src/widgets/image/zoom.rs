@@ -70,7 +70,7 @@ impl imp::LpImage {
 
     /// Sets respective output values if best-fit is active
     pub(super) fn configure_best_fit(&self) {
-        log::trace!("Configure best fit");
+        tracing::trace!("Configure best fit");
         // calculate new zoom value for best fit
         if self.obj().is_best_fit() {
             // LpImage can get measured during pinch zoom gesture, when scrollbars appear
@@ -193,7 +193,7 @@ impl imp::LpImage {
     }
 
     pub(super) fn set_zoom_target(&self, zoom_target: f64) {
-        log::trace!("Setting zoom target {zoom_target}");
+        tracing::trace!("Setting zoom target {zoom_target}");
 
         self.zoom_target.set(zoom_target);
         self.obj().notify_zoom_target();
@@ -243,13 +243,13 @@ impl imp::LpImage {
             obj.set_best_fit(false);
         }
 
-        log::trace!("Zoom to {zoom:.3}");
+        tracing::trace!("Zoom to {zoom:.3}");
 
         self.set_zoom_target(zoom);
 
         // abort if already at correct zoom level
         if zoom == obj.zoom() {
-            log::trace!("Already at correct zoom level");
+            tracing::trace!("Already at correct zoom level");
             return;
         }
 

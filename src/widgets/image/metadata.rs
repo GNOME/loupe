@@ -85,7 +85,7 @@ impl imp::LpImage {
             let file_info = metadata::FileInfo::new(&file).await;
             match file_info {
                 Ok(file_info) => self.metadata.borrow_mut().set_file_info(file_info),
-                Err(err) => log::warn!("Failed to load file information: {err}"),
+                Err(err) => tracing::warn!("Failed to load file information: {err}"),
             }
             self.emmit_metadata_changed();
         }
@@ -99,6 +99,12 @@ impl imp::LpImage {
 impl LpImage {
     pub fn file(&self) -> Option<gio::File> {
         self.imp().file.borrow().clone()
+    }
+
+    pub fn basename(&self) -> Option<String> {
+        self.file()
+            .and_then(|x| x.basename())
+            .map(|x| x.display().to_string())
     }
 
     pub fn metadata(&self) -> impl Deref<Target = Metadata> + '_ {
@@ -136,7 +142,7 @@ impl LpImage {
 
         match file_info {
             Err(err) => {
-                log::error!(
+                tracing::error!(
                     "Failed to obtain CAN_TRASH attribute for '{}': {err}",
                     file.uri()
                 );

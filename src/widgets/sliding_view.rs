@@ -30,7 +30,7 @@ use adw::prelude::*;
 use adw::subclass::prelude::*;
 use glib::Properties;
 use indexmap::IndexMap;
-use log::error;
+use tracing::error;
 
 use crate::deps::*;
 use crate::widgets::LpImagePage;
@@ -76,7 +76,7 @@ impl PositionTracking {
     fn set_progress(&mut self, progress: f64) {
         match self {
             Self::Position(_) => {
-                log::error!("Trying to set StackedCards progress while not in animation state.")
+                tracing::error!("Trying to set StackedCards progress while not in animation state.")
             }
             Self::StackedCards(cards) => cards.progress = progress,
         };
@@ -471,7 +471,7 @@ impl LpSlidingView {
     /// Add page to the specified position
     pub fn insert(&self, page: &LpImagePage, pos: usize) {
         if pos > self.n_pages() {
-            log::error!("Invalid insert position {pos} for {}", page.file().uri());
+            tracing::error!("Invalid insert position {pos} for {}", page.file().uri());
             return;
         }
 
@@ -499,7 +499,7 @@ impl LpSlidingView {
             }
             self.shift_position(current_index);
         } else {
-            log::error!("Page to move not found: {}", page.file().uri());
+            tracing::error!("Page to move not found: {}", page.file().uri());
         }
     }
 
@@ -523,7 +523,7 @@ impl LpSlidingView {
                 self.clear(false);
             }
         } else {
-            log::error!("Trying to remove non-existent page.");
+            tracing::error!("Trying to remove non-existent page.");
         }
     }
 
@@ -589,7 +589,7 @@ impl LpSlidingView {
             self.set_current_page(Some(page));
             self.emit_target_page_reached();
         } else {
-            log::error!("Page not in LpSlidingView {}", page.file().uri());
+            tracing::error!("Page not in LpSlidingView {}", page.file().uri());
         }
     }
 
@@ -605,7 +605,7 @@ impl LpSlidingView {
                 self.scroll_to(page, 0.);
             }
         } else {
-            log::error!("Page not in LpSlidingView {}", page.file().uri());
+            tracing::error!("Page not in LpSlidingView {}", page.file().uri());
         }
     }
 
@@ -640,7 +640,7 @@ impl LpSlidingView {
             self.set_current_page(Some(page));
             animation.play();
         } else {
-            log::error!("Page not in LpSlidingView {}", page.file().uri());
+            tracing::error!("Page not in LpSlidingView {}", page.file().uri());
         }
     }
 
@@ -691,7 +691,7 @@ impl LpSlidingView {
         match &*self.imp().position_tracking.borrow() {
             PositionTracking::Position(position) => *position,
             PositionTracking::StackedCards(_) => {
-                log::error!("Using SlidindView position while in StackedCards animation");
+                tracing::error!("Using SlidindView position while in StackedCards animation");
                 0.
             }
         }

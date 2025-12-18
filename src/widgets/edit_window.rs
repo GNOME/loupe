@@ -234,7 +234,7 @@ mod imp {
 
                 match file_dialog.save_future(obj.try_window().as_ref()).await {
                     Err(err) => {
-                        log::error!("{}", err);
+                        tracing::error!("{}", err);
                     }
                     Ok(new_file) => {
                         if self
@@ -278,7 +278,7 @@ mod imp {
                             .await;
 
                         if written {
-                            log::debug!("Moving image to trash '{}'", original_file.uri());
+                            tracing::debug!("Moving image to trash '{}'", original_file.uri());
                             let trash_result = gio::CancellableFuture::new(
                                 original_file.trash_future(glib::Priority::DEFAULT),
                                 cancellable.clone(),
@@ -287,7 +287,7 @@ mod imp {
 
                             if trash_result.is_err() {
                                 // Canceled
-                                log::debug!("Trashing image canceled");
+                                tracing::debug!("Trashing image canceled");
                                 return;
                             } else if let Ok(Err(err)) = trash_result {
                                 obj.window_show_error(
@@ -298,7 +298,11 @@ mod imp {
                                 return;
                             }
 
-                            log::debug!("Moving '{}' to '{}'", tmp_file.uri(), original_file.uri());
+                            tracing::debug!(
+                                "Moving '{}' to '{}'",
+                                tmp_file.uri(),
+                                original_file.uri()
+                            );
                             let move_result = gio::CancellableFuture::new(
                                 tmp_file
                                     .move_future(
@@ -313,7 +317,7 @@ mod imp {
 
                             if move_result.is_err() {
                                 // Canceled
-                                log::debug!("Moving image canceled");
+                                tracing::debug!("Moving image canceled");
                                 return;
                             } else if let Ok(Err(err)) = move_result {
                                 obj.window_show_error(
@@ -352,17 +356,17 @@ mod imp {
             editor.cancellable(cancellable.clone());
 
             if let Some(operations) = obj.operations() {
-                log::debug!("Computing edited image.");
+                tracing::debug!("Computing edited image.");
                 let result = match editor.edit().await {
                     Ok(editable_image) => editable_image.apply_complete(&operations).await,
                     Err(err) => Err(err),
                 };
                 match result {
                     Err(err) if matches!(err.error(), glycin::Error::Canceled(_)) => {
-                        log::debug!("Computing edited image canceled");
+                        tracing::debug!("Computing edited image canceled");
                     }
                     Err(err) => {
-                        log::warn!("Failed to edit image: {err}");
+                        tracing::warn!("Failed to edit image: {err}");
                         obj.window_show_error(
                             &gettext("Failed to edit image."),
                             &format!("Failed to edit image:\n\n{err}\n\n{operations:#?}"),
@@ -370,7 +374,7 @@ mod imp {
                         )
                     }
                     Ok(edit) => {
-                        log::debug!("Saving edited image to '{}'", new_file.uri());
+                        tracing::debug!("Saving edited image to '{}'", new_file.uri());
                         match edit.data().get() {
                             Err(err) => {
                                 obj.window_show_error(
@@ -394,7 +398,7 @@ mod imp {
                                 .await;
 
                                 if save_result.is_err() {
-                                    log::debug!("Saving image canceled");
+                                    tracing::debug!("Saving image canceled");
                                 } else if let Ok(Err(err)) = save_result {
                                     obj.window_show_error(
                                         &gettext("Failed to Save Image"),
@@ -402,7 +406,7 @@ mod imp {
                                         ErrorType::General,
                                     );
                                 } else {
-                                    log::debug!("Image saved");
+                                    tracing::debug!("Image saved");
                                     return true;
                                 }
                             }

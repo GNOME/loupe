@@ -104,7 +104,7 @@ impl Tile {
         let area_with_bleed = round(&self.area_with_bleed().scale(zoom, zoom));
 
         if area_with_bleed.width() < 1. || area_with_bleed.height() < 1. {
-            log::warn!("Trying to draw image with dimensions smaller than 1");
+            tracing::warn!("Trying to draw image with dimensions smaller than 1");
             return;
         }
 
@@ -169,7 +169,7 @@ impl FrameBuffer {
         if let Some(tiling) = self.images.front() {
             tiling.add_to_snapshot(snapshot, zoom, options);
         } else {
-            log::error!("Trying to snapshot empty tiling queue");
+            tracing::error!("Trying to snapshot empty tiling queue");
         }
     }
 
@@ -227,7 +227,7 @@ impl TiledImage {
             .flat_map(|(_, tiles)| tiles)
             .collect();
 
-        log::trace!("Rendering {} tiles", tiles.len());
+        tracing::trace!("Rendering {} tiles", tiles.len());
 
         // Scale from application pixels back to physical pixels
         snapshot.scale(1. / options.scaling as f32, 1. / options.scaling as f32);
@@ -396,11 +396,13 @@ impl TiledImage {
 
                 missing_tiles = next_missing_tiles;
             } else {
-                log::error!("Images should never have multiple 'Simple' layers: {tile_layer:?}");
+                tracing::error!(
+                    "Images should never have multiple 'Simple' layers: {tile_layer:?}"
+                );
             }
         }
 
-        log::trace!(
+        tracing::trace!(
             "Cleanup kept {} tiles",
             kept_tiles
                 .tile_layers

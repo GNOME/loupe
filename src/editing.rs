@@ -51,7 +51,7 @@ impl Queue {
         glib::spawn_future_local(async move {
             let lock: async_lock::MutexGuard<()> = queue.lock.lock().await;
             if let Err(err) = queue.apply(image).await {
-                log::error!("Err: {err}");
+                tracing::error!("Err: {err}");
             }
             drop(lock);
         });
@@ -72,7 +72,7 @@ impl Queue {
         let edit_instruction = editor.apply_sparse(&operations).await?;
 
         if edit_instruction.apply_to(file).await? == EditOutcome::Unchanged {
-            log::warn!("Writing new files is not supported yet");
+            tracing::warn!("Writing new files is not supported yet");
         }
 
         Ok(())

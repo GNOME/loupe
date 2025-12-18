@@ -48,7 +48,7 @@ impl Metadata {
         let result = self.metadata.add_raw_exif(bytes);
 
         if let Err(err) = &result {
-            log::warn!("Failed to decode EXIF bytes: {err}");
+            tracing::warn!("Failed to decode EXIF bytes: {err}");
         }
     }
 
@@ -56,7 +56,7 @@ impl Metadata {
         let result = self.metadata.add_raw_xmp(bytes);
 
         if let Err(err) = &result {
-            log::warn!("Failed to decode XMP bytes: {err}");
+            tracing::warn!("Failed to decode XMP bytes: {err}");
         }
     }
 

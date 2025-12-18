@@ -78,9 +78,12 @@ impl imp::LpImage {
     pub fn update(&self, update: DecoderUpdate) {
         let obj = self.obj();
 
+        let span = tracing::debug_span!("update", image = obj.basename());
+        let _guard = span.enter();
+
         match update {
             DecoderUpdate::Metadata(metadata) => {
-                log::debug!("Received metadata");
+                tracing::debug!("Received metadata");
                 self.metadata.borrow_mut().merge(*metadata);
                 self.emmit_metadata_changed();
 
@@ -92,7 +95,7 @@ impl imp::LpImage {
                 ));
             }
             DecoderUpdate::Dimensions => {
-                log::debug!("Received dimensions: {:?}", self.untransformed_dimensions());
+                tracing::debug!("Received dimensions: {:?}", self.untransformed_dimensions());
                 obj.notify_image_size_available();
                 self.configure_best_fit();
                 self.request_tiles();
@@ -141,14 +144,14 @@ impl imp::LpImage {
             }
             DecoderUpdate::SpecificError(err) => {
                 if self.obj().is_loaded() {
-                    log::warn!("Error occured while loading additional data: {err:?}");
+                    tracing::warn!("Error occured while loading additional data: {err:?}");
                 } else {
                     self.set_specific_error(err);
                 }
             }
             DecoderUpdate::GenericError(err) => {
                 if self.obj().is_loaded() {
-                    log::warn!("Error occured while loading additional data: {err:?}");
+                    tracing::warn!("Error occured while loading additional data: {err:?}");
                 } else {
                     self.set_error(Some(err));
                 }
@@ -218,12 +221,12 @@ impl imp::LpImage {
         match event {
             gio::FileMonitorEvent::Renamed => {
                 if let Some(file) = file_b.cloned() {
-                    log::debug!("Moved to {}", file.uri());
+                    tracing::debug!("Moved to {}", file.uri());
 
                     // current file got replaced with a new one
                     let file_replace = obj.file().is_some_and(|x| x.equal(&file));
                     if file_replace {
-                        log::debug!("Image got replaced {}", file.uri());
+                        tracing::debug!("Image got replaced {}", file.uri());
                         glib::spawn_future_local(async move {
                             obj.load(&file).await;
                         });
@@ -243,7 +246,7 @@ impl imp::LpImage {
                 }
             }
             gio::FileMonitorEvent::MovedIn => {
-                log::debug!("Image got replaced by moving into dir {}", file_a.uri());
+                tracing::debug!("Image got replaced by moving into dir {}", file_a.uri());
                 glib::spawn_future_local(glib::clone!(
                     #[strong]
                     file_a,
@@ -255,7 +258,7 @@ impl imp::LpImage {
             gio::FileMonitorEvent::ChangesDoneHint => {
                 let obj = self.obj().to_owned();
                 let file = file_a.clone();
-                log::debug!("Image was edited {}", file.uri());
+                tracing::debug!("Image was edited {}", file.uri());
                 glib::spawn_future_local(async move {
                     obj.load(&file).await;
                 });
@@ -263,7 +266,7 @@ impl imp::LpImage {
             gio::FileMonitorEvent::Deleted
             | gio::FileMonitorEvent::MovedOut
             | gio::FileMonitorEvent::Unmounted => {
-                log::debug!("File no longer available: {event:?} {}", file_a.uri());
+                tracing::debug!("File no longer available: {event:?} {}", file_a.uri());
                 self.is_deleted.set(true);
                 self.obj().notify_is_deleted();
             }
@@ -272,7 +275,7 @@ impl imp::LpImage {
     }
 
     fn set_error(&self, err: Option<anyhow::Error>) {
-        log::debug!("Decoding error: {err:?}");
+        tracing::debug!("Decoding error: {err:?}");
 
         // Keeping first error instead of replacing with new error
         if err.is_some() && self.error.borrow().is_some() {
@@ -342,16 +345,16 @@ impl LpImage {
         if let Some(file) = self.file() {
             self.load(&file).await;
         } else {
-            log::error!("Trying to reload image without file");
+            tracing::error!("Trying to reload image without file");
         }
     }
 
     pub async fn load(&self, file: &gio::File) {
         let imp = self.imp();
-        log::debug!("Loading file {}", file.uri());
+        tracing::debug!("Loading file {}", file.uri());
 
         if imp.rotation_animation().state() == adw::AnimationState::Playing {
-            log::debug!("Queueing image reload due to playing rotate animation.");
+            tracing::debug!("Queueing image reload due to playing rotate animation.");
             self.imp().queued_reload.replace(Some(file.clone()));
             return;
         }
@@ -380,7 +383,7 @@ impl LpImage {
                     obj.imp().update(update);
                 }
             }
-            log::debug!("Stopped listening to decoder since sender is gone");
+            tracing::debug!("Stopped listening to decoder since sender is gone");
         });
 
         imp.decoder.replace(Some(Arc::new(decoder)));

@@ -95,19 +95,19 @@ pub fn main() -> glib::ExitCode {
         .with(tracing_subscriber::fmt::Layer::default().compact())
         .init();
 
-    log::debug!("Logger initialized");
+    tracing::debug!("Logger initialized");
 
     setlocale(LocaleCategory::LcAll, "");
     bindtextdomain("loupe", config::LOCALEDIR).unwrap();
     textdomain("loupe").unwrap();
 
-    log::trace!("gettext initialized");
+    tracing::trace!("gettext initialized");
 
     gio::resources_register(
         &gio::Resource::from_data(&glib::Bytes::from_static(GRESOURCE_BYTES)).unwrap(),
     );
 
-    log::trace!("Gio resources registered");
+    tracing::trace!("Gio resources registered");
 
     LpApplication::new().run()
 }

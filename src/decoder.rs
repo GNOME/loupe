@@ -100,8 +100,8 @@ impl UpdateSender {
         let result = self.sender.force_send(update);
 
         match result {
-            Err(err) => log::error!("Failed to send update: {err}"),
-            Ok(Some(msg)) => log::error!("Unexpectedly replaced the message {msg:?}"),
+            Err(err) => tracing::error!("Failed to send update: {err}"),
+            Ok(Some(msg)) => tracing::error!("Unexpectedly replaced the message {msg:?}"),
             _ => {}
         }
     }
@@ -171,7 +171,7 @@ impl Decoder {
         let update_sender = UpdateSender { sender };
         tiles.set_update_sender(update_sender.clone());
 
-        log::trace!("Setting up loader");
+        tracing::trace!("Setting up loader");
         let mut loader = glycin::Loader::new(file);
         loader.apply_transformations(false);
 
@@ -229,7 +229,7 @@ impl Decoder {
         if let FormatDecoder::Glycin(decoder) = &self.decoder {
             decoder.fill_frame_buffer();
         } else {
-            log::error!("Trying to fill frame buffer for decoder without animation support");
+            tracing::error!("Trying to fill frame buffer for decoder without animation support");
         }
     }
 }

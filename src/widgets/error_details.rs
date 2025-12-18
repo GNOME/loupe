@@ -110,7 +110,7 @@ impl LpErrorDetails {
             }
         ));
 
-        log::debug!("Showing error details");
+        tracing::debug!("Showing error details");
         obj.present(Some(root));
         obj
     }

@@ -70,7 +70,7 @@ impl WidgetImpl for imp::LpImage {
         let nth_snapshot = self.nth_snapshot.get() + 1;
         if nth_snapshot < 3 {
             self.nth_snapshot.set(nth_snapshot);
-            log::trace!("Creating snapshot #{nth_snapshot}");
+            tracing::trace!("Creating snapshot #{nth_snapshot}");
         }
 
         let scaling_filter = if obj.metadata().is_svg() {
@@ -124,10 +124,10 @@ impl WidgetImpl for imp::LpImage {
             frame_buffer.add_to_snapshot(&tmp_snapshot, applicable_zoom, &render_options);
             if let Some(node) = tmp_snapshot.to_node() {
                 if let Err(err) = self.apply_operations(node, snapshot) {
-                    log::error!("Failed to apply operations to node: {err}");
+                    tracing::error!("Failed to apply operations to node: {err}");
                 }
             } else {
-                log::error!("Render node is empty");
+                tracing::error!("Render node is empty");
             }
         } else {
             // Apply rotation and mirroring
@@ -144,12 +144,16 @@ impl WidgetImpl for imp::LpImage {
         snapshot.restore();
 
         if nth_snapshot < 3 {
-            log::trace!("Snapshot #{nth_snapshot} created");
+            tracing::trace!("Snapshot #{nth_snapshot} created");
         }
     }
 
     fn measure(&self, orientation: gtk::Orientation, _for_size: i32) -> (i32, i32, i32, i32) {
         let obj = self.obj();
+
+        let span = tracing::debug_span!("measure", image = obj.basename());
+        let _guard = span.enter();
+
         let (image_width_i32, image_height_i32) = obj.image_size();
         let image_width = image_width_i32 as f64;
         let image_height = image_height_i32 as f64;
@@ -157,7 +161,7 @@ impl WidgetImpl for imp::LpImage {
         if image_width_i32 > 0 && image_height_i32 > 0 {
             if let Some((monitor_width, monitor_height)) = self.monitor_size() {
                 let hidpi_scale = self.scaling();
-                log::trace!("Physical monitor dimensions: {monitor_width} x {monitor_height}");
+                tracing::trace!("Physical monitor dimensions: {monitor_width} x {monitor_height}");
 
                 // areas
                 let monitor_area = monitor_width * monitor_height;
@@ -165,10 +169,12 @@ impl WidgetImpl for imp::LpImage {
                 let image_area = image_width * image_height;
 
                 let occupy_area_factor = if logical_monitor_area <= SMALL_SCREEN_AREA {
-                    log::trace!("Small monitor detected: Using {SMALL_OCCUPY_SCREEN} screen area");
+                    tracing::trace!(
+                        "Small monitor detected: Using {SMALL_OCCUPY_SCREEN} screen area"
+                    );
                     SMALL_OCCUPY_SCREEN
                 } else {
-                    log::trace!(
+                    tracing::trace!(
                         "Sufficiently large monitor detected: Using {DEFAULT_OCCUPY_SCREEN} screen area"
                     );
                     DEFAULT_OCCUPY_SCREEN
@@ -218,7 +224,7 @@ impl WidgetImpl for imp::LpImage {
             _ => unreachable!(),
         };
 
-        log::warn!("Not enough information available to calculate fitting window size");
+        tracing::warn!("Not enough information available to calculate fitting window size");
 
         (0, size, -1, -1)
     }

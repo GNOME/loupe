@@ -105,7 +105,7 @@ mod imp {
                 #[weak]
                 obj,
                 move |gesture, x, y| {
-                    log::debug!("Long press triggered");
+                    tracing::debug!("Long press triggered");
                     obj.show_popover_at(x, y);
                     gesture.set_state(gtk::EventSequenceState::Claimed);
                 }
@@ -128,7 +128,7 @@ mod imp {
                 obj,
                 move |_| {
                     if obj.image().is_loaded() {
-                        log::debug!("Showing image");
+                        tracing::debug!("Showing image");
                         obj.imp()
                             .stack
                             .set_visible_child(&*obj.imp().image_stack_page);
