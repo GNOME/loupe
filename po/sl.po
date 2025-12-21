@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2025-03-05 19:09+0000\n"
-"PO-Revision-Date: 2025-03-05 22:24+0100\n"
+"POT-Creation-Date: 2025-12-19 20:01+0000\n"
+"PO-Revision-Date: 2025-12-21 09:03+0100\n"
 "Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
 "Language-Team: Slovenian <gnome-si@googlegroups.com>\n"
 "Language: sl\n"
@@ -22,30 +22,29 @@ msgstr ""
 "X-Generator: Poedit 2.2.1\n"
 "X-Poedit-SourceCharset: ISO-8859-1\n"
 
-#: data/org.gnome.Loupe.desktop.in.in:3
-#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:31
-#: src/widgets/image_window.rs:866
+#: data/org.gnome.Loupe.desktop.in.in:2 data/org.gnome.Loupe.metainfo.xml.in.in:6
+#: src/about.rs:32 src/widgets/image_window.rs:885
 msgid "Image Viewer"
 msgstr "Pregledovalnik slik"
+
+#: data/org.gnome.Loupe.desktop.in.in:3 data/org.gnome.Loupe.metainfo.xml.in.in:13
+msgid "View and edit images"
+msgstr "Ogledujte si in urejajte slike"
 
 #: data/org.gnome.Loupe.desktop.in.in:11
 msgid "Picture;Graphics;Loupe;"
 msgstr ""
-"Picture;Slideshow;Graphics;slika;diaprojekcija;projekcija;grafika;"
-"pregledovalnik slik;lupa;loupe;"
+"Picture;Slideshow;Graphics;slika;diaprojekcija;projekcija;grafika;pregledovalnik "
+"slik;lupa;loupe;"
 
 #: data/org.gnome.Loupe.gschema.xml.in:6
 msgid "Show the image properties sidebar"
 msgstr "Pokaži okno lastnosti slike"
 
 #. developer_name tag deprecated with Appstream 1.0
-#: data/org.gnome.Loupe.metainfo.xml.in.in:8 src/about.rs:34
+#: data/org.gnome.Loupe.metainfo.xml.in.in:8 src/about.rs:35
 msgid "The GNOME Project"
 msgstr "Projekt GNOME"
-
-#: data/org.gnome.Loupe.metainfo.xml.in.in:13
-msgid "View images"
-msgstr "Pregledovalnik slik"
 
 #: data/org.gnome.Loupe.metainfo.xml.in.in:15
 msgid "Browse through your images and inspect their metadata with:"
@@ -128,15 +127,13 @@ msgid "Navigate Images"
 msgstr "Krmarjenje po slikah"
 
 #: data/resources/gtk/help-overlay.ui:80 data/resources/gtk/help-overlay.ui:94
-#: data/resources/gtk/help-overlay.ui:235
-#: data/resources/gtk/help-overlay.ui:249
+#: data/resources/gtk/help-overlay.ui:235 data/resources/gtk/help-overlay.ui:249
 msgctxt "shortcut window"
 msgid "Next Image"
 msgstr "Pokaže naslednjo sliko"
 
 #: data/resources/gtk/help-overlay.ui:87 data/resources/gtk/help-overlay.ui:101
-#: data/resources/gtk/help-overlay.ui:242
-#: data/resources/gtk/help-overlay.ui:256
+#: data/resources/gtk/help-overlay.ui:242 data/resources/gtk/help-overlay.ui:256
 msgctxt "shortcut window"
 msgid "Previous Image"
 msgstr "Pokaže predhodno sliko"
@@ -156,15 +153,13 @@ msgctxt "shortcut window"
 msgid "Rotate Image"
 msgstr "Zavrti sliko"
 
-#: data/resources/gtk/help-overlay.ui:124
-#: data/resources/gtk/help-overlay.ui:274
+#: data/resources/gtk/help-overlay.ui:124 data/resources/gtk/help-overlay.ui:274
 #: data/resources/gtk/help-overlay.ui:315
 msgctxt "shortcut window"
 msgid "Rotate Clockwise"
 msgstr "Zavrti sliko v smeri urinega kazalca"
 
-#: data/resources/gtk/help-overlay.ui:130
-#: data/resources/gtk/help-overlay.ui:280
+#: data/resources/gtk/help-overlay.ui:130 data/resources/gtk/help-overlay.ui:280
 #: data/resources/gtk/help-overlay.ui:321
 msgctxt "shortcut window"
 msgid "Rotate Counterclockwise"
@@ -175,14 +170,12 @@ msgctxt "shortcut window"
 msgid "Zoom Image"
 msgstr "Približevanje slike"
 
-#: data/resources/gtk/help-overlay.ui:141
-#: data/resources/gtk/help-overlay.ui:262
+#: data/resources/gtk/help-overlay.ui:141 data/resources/gtk/help-overlay.ui:262
 msgctxt "shortcut window"
 msgid "Zoom In"
 msgstr "Približa pogled"
 
-#: data/resources/gtk/help-overlay.ui:147
-#: data/resources/gtk/help-overlay.ui:268
+#: data/resources/gtk/help-overlay.ui:147 data/resources/gtk/help-overlay.ui:268
 msgctxt "shortcut window"
 msgid "Zoom Out"
 msgstr "Oddalji pogled"
@@ -298,56 +291,56 @@ msgid "Apply Crop"
 msgstr "Uveljavi obrezavo"
 
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/about.rs:43
+#: src/about.rs:45
 msgid "translator-credits"
 msgstr ""
 "Martin Srebotnjak <miles@filmsi.net>\n"
 "Matej Urbančič <mateju@src.gnome.org>"
 
-#: src/about.rs:44
+#: src/about.rs:46
 msgid "Copyright © 2020–2024 Christopher Davis et al."
 msgstr "Avtorske pravice © 2020–2024 Christopher Davis in sodelavci"
 
-#: src/file_model.rs:180
+#: src/file_model.rs:214
 msgid "Could not list other files in directory."
 msgstr "Drugih datotek v mapi ni mogoče izpisati."
 
 #. Translators: Display of the f-number <https://en.wikipedia.org/wiki/F-number>. {} will be replaced with the number
-#: src/metadata.rs:253
+#: src/metadata.rs:256
 msgid "\\u{192}\\u{2215}{}"
 msgstr "\\u{192}\\u{2215}{}"
 
 #. Translators: Fractional exposure time (photography) in seconds
-#: src/metadata.rs:266
+#: src/metadata.rs:269
 msgid "1\\u{2215}{}\\u{202F}s"
 msgstr "1\\u{2215}{}\\u{202F} s"
 
 #. Translators: Exposure time (photography) in seconds
-#: src/metadata.rs:274
+#: src/metadata.rs:277
 msgid "{}\\u{202F}s"
 msgstr "{}\\u{202F} s"
 
-#: src/metadata.rs:288
+#: src/metadata.rs:291
 msgid "{}\\u{202F}mm"
 msgstr "{}\\u{202F} mm"
 
 #. Translators: short for "north" in GPS coordinate
-#: src/metadata.rs:328
+#: src/metadata.rs:331
 msgid "N"
 msgstr "S"
 
 #. Translators: short for "south" in GPS coordinate
-#: src/metadata.rs:332
+#: src/metadata.rs:335
 msgid "S"
 msgstr "J"
 
 #. Translators: short for "east" in GPS coordinate
-#: src/metadata.rs:341
+#: src/metadata.rs:344
 msgid "E"
 msgstr "V"
 
 #. Translators: short for "west" in GPS coordinate
-#: src/metadata.rs:345
+#: src/metadata.rs:348
 msgid "W"
 msgstr "Z"
 
@@ -360,7 +353,7 @@ msgstr "Z"
 msgid "%x %X"
 msgstr "%x %X"
 
-#: src/util.rs:182 src/widgets/image_window.rs:638
+#: src/util.rs:182 src/widgets/image_window.rs:657
 msgid "Failed to restore image from trash"
 msgstr "Obnovitev slike iz smeti je spodletela"
 
@@ -368,7 +361,7 @@ msgstr "Obnovitev slike iz smeti je spodletela"
 msgid "Drop Image to View"
 msgstr "Spustite sliko za ogled"
 
-#: src/widgets/edit/crop.rs:353
+#: src/widgets/edit/crop.rs:363
 msgid "Failed to Edit Image"
 msgstr "Urejanje slike ni uspelo"
 
@@ -479,7 +472,7 @@ msgstr "Obreži izbor"
 
 #. Translators: Filename suffix
 #. Translators: Filename suffix, {} is replaced by a number
-#: src/widgets/edit_window.rs:192 src/widgets/edit_window.rs:195
+#: src/widgets/edit_window.rs:196 src/widgets/edit_window.rs:199
 msgid " (Edited)"
 msgid_plural " (Edited {})"
 msgstr[0] " (spremenjeno, {})"
@@ -487,23 +480,23 @@ msgstr[1] " (spremenjeno, {})"
 msgstr[2] " (spremenjeno, {})"
 msgstr[3] " (spremenjeno, {})"
 
-#: src/widgets/edit_window.rs:290 src/widgets/edit_window.rs:316
+#: src/widgets/edit_window.rs:294 src/widgets/edit_window.rs:324
 msgid "Failed to save image."
 msgstr "Ni bilo mogoče shraniti slike."
 
-#: src/widgets/edit_window.rs:346
+#: src/widgets/edit_window.rs:354
 msgid "Editing Image"
 msgstr "Urejanje slike"
 
-#: src/widgets/edit_window.rs:360
+#: src/widgets/edit_window.rs:371
 msgid "Failed to edit image."
 msgstr "Urejanje slike ni uspelo."
 
-#: src/widgets/edit_window.rs:370 src/widgets/edit_window.rs:393
+#: src/widgets/edit_window.rs:381 src/widgets/edit_window.rs:404
 msgid "Failed to Save Image"
 msgstr "Shranjevanje slike ni uspelo"
 
-#: src/widgets/edit_window.rs:376
+#: src/widgets/edit_window.rs:387
 msgid "Saving Image"
 msgstr "Shranjevanje slike"
 
@@ -531,13 +524,13 @@ msgstr "_Zamenjaj izvirnik"
 msgid "Original image will be moved to the trash"
 msgstr "Izvirna slika bo premaknjena v koš"
 
-#: src/widgets/error_details.rs:79
+#: src/widgets/error_details.rs:80
 msgid ""
-"The following error occurred. If you think this is an issue with the "
-"program, please include this information when you report the error."
+"The following error occurred. If you think this is an issue with the program, "
+"please include this information when you report the error."
 msgstr ""
-"Prišlo je do naslednje napake. Če menite, da je to težava s programom, "
-"vključite te podatke, ko prijavite napako."
+"Prišlo je do naslednje napake. Če menite, da je to težava s programom, vključite "
+"te podatke, ko prijavite napako."
 
 #: src/widgets/error_details.ui:4
 msgid "Error Details"
@@ -545,13 +538,13 @@ msgstr "Podrobnosti o napaki"
 
 #: src/widgets/error_details.ui:19
 msgid ""
-"The image loader reported the following when trying to load or edit the "
-"image. Please include this information when you report an error. If "
-"possible, please also provide the image that causes the issue."
+"The image loader reported the following when trying to load or edit the image. "
+"Please include this information when you report an error. If possible, please "
+"also provide the image that causes the issue."
 msgstr ""
-"Nalagalnik slik je pri poskusu nalaganja slike sporočil naslednje. Te "
-"podatke vključite, ko prijavite napako. Če je mogoče, priložite tudi sliko, "
-"ki povzroča težavo."
+"Nalagalnik slik je pri poskusu nalaganja slike sporočil naslednje. Te podatke "
+"vključite, ko prijavite napako. Če je mogoče, priložite tudi sliko, ki povzroča "
+"težavo."
 
 #: src/widgets/error_details.ui:24
 msgid "Error Message"
@@ -565,7 +558,7 @@ msgstr "Kopiraj sporočilo o napaki"
 msgid "Report _Issue"
 msgstr "Pošlji poroč_ilo o napaki"
 
-#: src/widgets/image_page.rs:227
+#: src/widgets/image_page.rs:220
 msgid ""
 "No image loaders available. Maybe the “glycin-loaders” package with "
 "compatibility version “{}” is not installed."
@@ -573,19 +566,19 @@ msgstr ""
 "Nalagalniki slik niso na voljo. Morda paket »glicin-loaders« z različico "
 "združljivosti »{}« ni nameščen."
 
-#: src/widgets/image_page.rs:242
+#: src/widgets/image_page.rs:236
 msgid "The image format “{} ({})” is known but not installed."
 msgstr "Vrsta zapisa slike »{} ({})« je znana, vendar ni nameščena."
 
-#: src/widgets/image_page.rs:249
+#: src/widgets/image_page.rs:243
 msgid "Unknown image format “{} ({}).”"
 msgstr "Neznana vrsta zapisa slike »{} ({})«."
 
-#: src/widgets/image_page.rs:277
+#: src/widgets/image_page.rs:271
 msgid "There is not enough free memory available to load this image."
 msgstr "Za nalaganje te slike ni na voljo dovolj prostega pomnilnika."
 
-#: src/widgets/image_page.rs:281
+#: src/widgets/image_page.rs:275
 msgid "Either the image file is corrupted or it contains unsupported elements."
 msgstr "Slikovna datoteka je poškodovana ali pa vsebuje nepodprte elemente."
 
@@ -629,97 +622,97 @@ msgstr "Zavrti v levo"
 msgid "Rotate Right"
 msgstr "Zavrti v desno"
 
-#: src/widgets/image_view.rs:197
+#: src/widgets/image_view.rs:196
 msgid "{} %"
 msgstr "{} %"
 
 #. Translators: This is a toast notification, informing the user that
 #. an image has been set as background.
-#: src/widgets/image_view.rs:836
+#: src/widgets/image_view.rs:833
 msgid "Set as background."
 msgstr "Nastavi kot sliko ozadja."
 
-#: src/widgets/image_view.rs:849
+#: src/widgets/image_view.rs:839
 msgid "Could not set background."
 msgstr "Ozadja ni bilo mogoče nastaviti."
 
-#: src/widgets/image_view.ui:30
+#: src/widgets/image_view.ui:26
 msgid "Previous Image"
 msgstr "Predhodnja slika"
 
-#: src/widgets/image_view.ui:40
+#: src/widgets/image_view.ui:36
 msgid "Next Image"
 msgstr "Naslednja slika"
 
-#: src/widgets/image_view.ui:74
+#: src/widgets/image_view.ui:66
 msgid "Zoom Out"
 msgstr "Pomanjšaj"
 
-#: src/widgets/image_view.ui:85
+#: src/widgets/image_view.ui:77
 msgid "Zoom In"
 msgstr "Povečaj"
 
-#: src/widgets/image_view.ui:100
+#: src/widgets/image_view.ui:92
 msgid "Toggle Zoom"
 msgstr "Preklopi povečavo"
 
-#: src/widgets/image_view.ui:108
+#: src/widgets/image_view.ui:100
 msgid "Zoom to Specific Level"
 msgstr "Povečaj na določeno raven"
 
-#: src/widgets/image_view.ui:237
+#: src/widgets/image_view.ui:229
 msgid "Custom Zoom Level"
 msgstr "Raven povečave po meri"
 
-#: src/widgets/image_view.ui:243
+#: src/widgets/image_view.ui:235
 msgid "Zoom to Specified Level"
 msgstr "Povečava na določeno raven"
 
-#: src/widgets/image_window.rs:502
+#: src/widgets/image_window.rs:514
 msgid "Supported image formats"
 msgstr "Podprte vrste slik"
 
-#: src/widgets/image_window.rs:508
+#: src/widgets/image_window.rs:520
 msgid "All files"
 msgstr "Vse datoteke"
 
-#: src/widgets/image_window.rs:515
+#: src/widgets/image_window.rs:527
 msgid "Open Image"
 msgstr "Odpri sliko"
 
-#: src/widgets/image_window.rs:601
+#: src/widgets/image_window.rs:620
 msgid "Image copied to clipboard"
 msgstr "Slika, kopirana v odložišče"
 
-#: src/widgets/image_window.rs:622
+#: src/widgets/image_window.rs:641
 msgid "Image moved to trash"
 msgstr "Slika, premaknjena v smeti"
 
-#: src/widgets/image_window.rs:623
+#: src/widgets/image_window.rs:642
 msgid "Undo"
 msgstr "Razveljavi"
 
-#: src/widgets/image_window.rs:653
+#: src/widgets/image_window.rs:672
 msgid "Failed to move image to trash"
 msgstr "Premikanje slike v smeti je spodletelo"
 
-#: src/widgets/image_window.rs:677
+#: src/widgets/image_window.rs:696
 msgid "Permanently Delete Image?"
 msgstr "Ali želite sliko trajno izbrisati?"
 
-#: src/widgets/image_window.rs:679
+#: src/widgets/image_window.rs:698
 msgid "After deleting the image “{}” it will be permanently lost."
 msgstr "Po brisanju slike »{}« ni mogoče več povrniti."
 
-#: src/widgets/image_window.rs:687
+#: src/widgets/image_window.rs:706
 msgid "Cancel"
 msgstr "Prekliči"
 
-#: src/widgets/image_window.rs:688
+#: src/widgets/image_window.rs:707
 msgid "Delete"
 msgstr "Izbriši"
 
-#: src/widgets/image_window.rs:699
+#: src/widgets/image_window.rs:718
 msgid "Failed to delete image"
 msgstr "Brisanje slike je spodletelo"
 
@@ -760,8 +753,8 @@ msgid "Edit Image"
 msgstr "Uredi sliko"
 
 #: src/widgets/image_window.ui:220
-msgid "View Images"
-msgstr "Pokaži slike"
+msgid "View and Edit Images"
+msgstr "Ogledujte si in urejajte slike"
 
 #: src/widgets/image_window.ui:221
 msgid "Drag and drop images here"
@@ -771,59 +764,59 @@ msgstr "Povlecite in spustite slike sem"
 msgid "_Open Files…"
 msgstr "_Odpri datoteke …"
 
-#: src/widgets/print.rs:108
+#: src/widgets/print.rs:109
 msgid "Top"
 msgstr "Zgoraj"
 
-#: src/widgets/print.rs:109
+#: src/widgets/print.rs:110
 msgid "Center"
 msgstr "Na sredini"
 
-#: src/widgets/print.rs:110
+#: src/widgets/print.rs:111
 msgid "Bottom"
 msgstr "Spodaj"
 
-#: src/widgets/print.rs:111
+#: src/widgets/print.rs:112
 msgid "Left"
 msgstr "Levo"
 
-#: src/widgets/print.rs:112
+#: src/widgets/print.rs:113
 msgid "Right"
 msgstr "Desno"
 
 #. Translators: Shorthand for centimeter
-#: src/widgets/print.rs:148
+#: src/widgets/print.rs:149
 msgid "cm"
 msgstr "cm"
 
 #. Translators: Shorthand for inch
-#: src/widgets/print.rs:150
+#: src/widgets/print.rs:151
 msgid "in"
 msgstr "pal."
 
 #. Translators: Shorthand for pixel
-#: src/widgets/print.rs:152
+#: src/widgets/print.rs:153
 msgid "px"
 msgstr "sl. točk"
 
 #. Translators: {} is a placeholder for the filename
-#: src/widgets/print.rs:361
+#: src/widgets/print.rs:364
 msgid "Print “{}”"
 msgstr "Natisni »{}«"
 
-#: src/widgets/print.rs:476
+#: src/widgets/print.rs:479
 msgid "Continue…"
 msgstr "Nadaljuj …"
 
-#: src/widgets/print.rs:477
+#: src/widgets/print.rs:480
 msgid "Print Image"
 msgstr "Natisni sliko"
 
-#: src/widgets/print.rs:791
+#: src/widgets/print.rs:799
 msgid "_Scale"
 msgstr "_Merilo"
 
-#: src/widgets/print.rs:794
+#: src/widgets/print.rs:802
 msgid "_Width"
 msgstr "_Širina"
 
@@ -911,7 +904,7 @@ msgstr ", {}\\u{202F} bit"
 msgid "{}\\u{202F}\\u{D7}\\u{202F}{}"
 msgstr "{}\\u{202F}\\u{D7}\\u{202F}{}"
 
-#: src/widgets/properties_view.rs:329
+#: src/widgets/properties_view.rs:326
 msgid "Image Coordinates Copied"
 msgstr "Koordinate slike so kopirane"
 
@@ -984,6 +977,6 @@ msgstr "Goriščna razdalja"
 msgid "Maker, Model"
 msgstr "Izdelovalec, model"
 
-#: src/widgets/window.rs:222
+#: src/widgets/window.rs:212
 msgid "Show Details"
 msgstr "Pokaži podrobnosti"
