@@ -646,11 +646,11 @@ impl LpImageView {
     fn new_image_page(&self, file: &gio::File) -> LpImagePage {
         let page = LpImagePage::from_file(file);
 
-        page.image().connect_specific_error_notify(glib::clone!(
+        page.image().connect_is_error_notify(glib::clone!(
             #[weak(rename_to = obj)]
             self,
             move |image| {
-                if image.specific_error() == DecoderError::UnsupportedFormat {
+                if matches!(image.specific_error(), DecoderError::UnsupportedFormat) {
                     if obj.current_image().as_ref() == Some(image) {
                         tracing::debug!(
                             "Image format unsupported but not removing since current image"

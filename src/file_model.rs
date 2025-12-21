@@ -82,10 +82,7 @@ impl Entry {
                     }
 
                     Err(err) => {
-                        tracing::error!(
-                            "Failed to obtain information for sorting '{}': {err}",
-                            uri
-                        );
+                        tracing::error!("Failed to obtain information for sorting '{uri}': {err}",);
                         break;
                     }
                 }

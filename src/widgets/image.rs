@@ -154,14 +154,13 @@ mod imp {
         pub(super) queued_reload: RefCell<Option<gio::File>>,
         #[property(get)]
         pub(super) is_deleted: Cell<bool>,
-        #[property(get, builder(DecoderError::None))]
-        pub(super) specific_error: Cell<DecoderError>,
+        /// Set if an error has occurred, shown on error_page
+        pub(super) specific_error: RefCell<DecoderError>,
+        #[property(get=Self::is_error)]
+        pub(super) is_error: Cell<bool>,
         /// Set to true when image is ready for displaying
         #[property(get)]
         pub(super) is_loaded: Cell<bool>,
-        /// Set if an error has occurred, shown on error_page
-        #[property(get)]
-        pub(super) error: RefCell<Option<String>>,
         pub(super) background_color: RefCell<Option<gdk::RGBA>>,
         pub(super) fixed_background_color: RefCell<Option<gdk::RGBA>>,
         /// Animations disabled

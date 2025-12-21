@@ -452,7 +452,7 @@ mod imp {
             self.image_view.try_get().is_some_and(|image_view| {
                 image_view
                     .current_page()
-                    .is_some_and(|page| page.image().error().is_none())
+                    .is_some_and(|page| !page.image().is_error())
             })
         }
     }
@@ -748,7 +748,7 @@ impl LpImageWindow {
             .imp()
             .image_view
             .current_page()
-            .is_some_and(|x| x.image().is_loaded() && x.image().error().is_none());
+            .is_some_and(|x| x.image().is_loaded() && !x.image().is_error());
 
         for action in ACTIONS_SHOWN {
             self.action_set_enabled(action, enabled_shown);
@@ -914,7 +914,7 @@ impl LpImageWindow {
 
         let current_page = self.imp().image_view.current_page();
 
-        if current_page.is_some_and(|page| page.image().error().is_some()) {
+        if current_page.is_some_and(|page| page.image().is_error()) {
             tracing::debug!("Showing window because loading image failed");
             self.window_inspect(|w| w.present());
         }

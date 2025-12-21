@@ -142,18 +142,11 @@ impl imp::LpImage {
                     self.tick_callback.replace(Some(callback_id));
                 }
             }
-            DecoderUpdate::SpecificError(err) => {
-                if self.obj().is_loaded() {
+            DecoderUpdate::Error(err) => {
+                if obj.is_loaded() {
                     tracing::warn!("Error occured while loading additional data: {err:?}");
                 } else {
-                    self.set_specific_error(err);
-                }
-            }
-            DecoderUpdate::GenericError(err) => {
-                if self.obj().is_loaded() {
-                    tracing::warn!("Error occured while loading additional data: {err:?}");
-                } else {
-                    self.set_error(Some(err));
+                    obj.set_specific_error(err);
                 }
             }
         }
@@ -233,7 +226,7 @@ impl imp::LpImage {
                     } else {
                         let old_file = file_a.clone();
                         glib::spawn_future_local(async move {
-                            if obj.error().is_some() {
+                            if obj.is_error() {
                                 // Tmp files might be renamed quickly after creation. In this case
                                 // the original load fails, because the filename is already invalid.
                                 // Therefore reload on name change loading caused an error.
@@ -274,32 +267,8 @@ impl imp::LpImage {
         }
     }
 
-    fn set_error(&self, err: Option<anyhow::Error>) {
-        tracing::debug!("Decoding error: {err:?}");
-
-        // Keeping first error instead of replacing with new error
-        if err.is_some() && self.error.borrow().is_some() {
-            return;
-        }
-
-        self.error.replace(err.as_ref().map(|x| x.to_string()));
-        self.obj().notify_error();
-
-        if err.is_some() {
-            self.set_loaded(false);
-        }
-    }
-
-    fn set_specific_error(&self, error: DecoderError) {
-        let obj = self.obj();
-        if obj.specific_error() != error {
-            self.specific_error.set(error);
-            obj.notify_specific_error();
-
-            if error.is_err() {
-                self.set_loaded(false);
-            }
-        }
+    pub(super) fn is_error(&self) -> bool {
+        self.specific_error.borrow().is_err()
     }
 
     fn set_loaded(&self, is_loaded: bool) {
@@ -310,8 +279,7 @@ impl imp::LpImage {
             obj.notify_is_loaded();
 
             if is_loaded {
-                self.set_error(None);
-                self.set_specific_error(DecoderError::None);
+                obj.set_specific_error(DecoderError::None);
             }
         }
     }
@@ -387,5 +355,28 @@ impl LpImage {
         });
 
         imp.decoder.replace(Some(Arc::new(decoder)));
+    }
+
+    pub fn specific_error(&self) -> DecoderError {
+        self.imp().specific_error.borrow().clone()
+    }
+
+    pub fn set_specific_error(&self, error: DecoderError) {
+        let imp = self.imp();
+
+        // Keeping first error instead of replacing with new error
+        if error.is_err() && self.is_error() {
+            return;
+        }
+
+        if self.specific_error() != error {
+            let is_err = error.is_err();
+            imp.specific_error.replace(error);
+            self.notify_is_error();
+
+            if is_err {
+                imp.set_loaded(false);
+            }
+        }
     }
 }

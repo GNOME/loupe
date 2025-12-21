@@ -59,15 +59,10 @@ pub enum DecoderUpdate {
     Redraw,
     /// Start animation
     Animated,
-    SpecificError(DecoderError),
-    /// And error occurred during decoding
-    GenericError(anyhow::Error),
+    Error(DecoderError),
 }
 
-#[derive(glib::Enum, Debug, Clone, Copy, Default, PartialEq, Eq)]
-#[enum_type(name = "LpDecoderError")]
-//#[enum_dynamic(lazy_registration = true)]
-#[repr(i32)]
+#[derive(Debug, Clone, Default, PartialEq, Eq)]
 pub enum DecoderError {
     /// Image format not supported or unknown
     UnsupportedFormat,
@@ -75,23 +70,20 @@ pub enum DecoderError {
     NoLoadersConfigured,
     /// Memory limit exceeded
     OutOfMemory,
+
+    Generic(String),
+    //ImageSource(String),
     #[default]
     None,
 }
 
 impl DecoderError {
-    pub fn is_err(self) -> bool {
+    pub fn is_err(&self) -> bool {
         matches!(self, Self::None)
     }
 
-    pub fn is_ok(self) -> bool {
+    pub fn is_ok(&self) -> bool {
         !matches!(self, Self::None)
-    }
-}
-
-impl glib::value::ToValueOptional for DecoderError {
-    fn to_value_optional(s: Option<&Self>) -> glib::Value {
-        s.unwrap_or(&Self::None).into()
     }
 }
 
@@ -124,23 +116,20 @@ impl UpdateSender {
     }
 
     pub fn send_error(&self, err: glycin::ErrorCtx) {
+        dbg!(&err);
         if let Some(mime_type) = err.unsupported_format() {
             let mut metadata = Metadata::default();
             metadata.set_mime_type(mime_type);
 
             self.send(DecoderUpdate::Metadata(Box::new(metadata)));
-            self.send(DecoderUpdate::SpecificError(
-                DecoderError::UnsupportedFormat,
-            ));
+            self.send(DecoderUpdate::Error(DecoderError::UnsupportedFormat));
         }
         if err.is_out_of_memory() {
-            self.send(DecoderUpdate::SpecificError(DecoderError::OutOfMemory));
+            self.send(DecoderUpdate::Error(DecoderError::OutOfMemory));
         } else if matches!(err.error(), glycin::Error::NoLoadersConfigured(_)) {
-            self.send(DecoderUpdate::SpecificError(
-                DecoderError::NoLoadersConfigured,
-            ));
+            self.send(DecoderUpdate::Error(DecoderError::NoLoadersConfigured));
         }
-        self.send(DecoderUpdate::GenericError(err.into()));
+        self.send(DecoderUpdate::Error(DecoderError::Generic(err.to_string())));
     }
 }
 
@@ -220,7 +209,8 @@ impl Decoder {
     pub fn request(&self, tile_request: TileRequest) {
         if let FormatDecoder::Svg(svg) = &self.decoder {
             if let Err(err) = svg.request(tile_request) {
-                self.update_sender.send(DecoderUpdate::GenericError(err));
+                self.update_sender
+                    .send(DecoderUpdate::Error(DecoderError::Generic(err.to_string())));
             }
         }
     }
