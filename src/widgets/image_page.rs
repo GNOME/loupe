@@ -214,72 +214,79 @@ impl LpImagePage {
         let imp = self.imp();
         let image = self.image();
 
-        match image.specific_error() {
-            DecoderError::NoLoadersConfigured => {
-                // Translators: {} is replaced with a version number
-                let message = gettext_f(
-                    "No image loaders available. Maybe the “glycin-loaders” package with compatibility version “{}” is not installed.",
-                    [format!("{}+", glycin::COMPAT_VERSION)],
-                );
+        if let Some(error) = image.specific_error() {
+            let details;
+            let description;
 
-                imp.error_page.set_description(Some(&message));
-                imp.stack.set_visible_child(&*imp.error_page);
-                imp.error_more_info.set_visible(false);
-            }
-            DecoderError::UnsupportedFormat => {
-                let mime_type = image.metadata().mime_type().unwrap_or_default();
-                let content_type = gio::content_type_from_mime_type(&mime_type).unwrap_or_default();
-                let description = gio::content_type_get_description(&content_type).to_string();
+            match error {
+                DecoderError::NoLoadersConfigured(err) => {
+                    // Translators: {} is replaced with a version number
+                    description = gettext_f(
+                        "No image loaders available. Maybe the “glycin-loaders” package with compatibility version “{}” is not installed.",
+                        [format!("{}+", glycin::COMPAT_VERSION)],
+                    );
 
-                let message = if glycin::Loader::DEFAULT_MIME_TYPES.contains(&mime_type.as_str()) {
-                    // Translators: The first occurance of {} is replace with a description of the
-                    // format and the second with an id (mime-type) of the format.
-                    gettext_f(
-                        "The image format “{} ({})” is known but not installed.",
-                        [&description, &mime_type],
-                    )
-                } else {
-                    // Translators: The first occurance of {} is replace with a description of the
-                    // format and the second with an id (mime-type) of the format.
-                    gettext_f(
-                        "Unknown image format “{} ({}).”",
-                        [&description, &mime_type],
-                    )
-                };
-
-                imp.error_more_info.connect_clicked(glib::clone!(
-                    #[weak(rename_to = obj)]
-                    self,
-                    move |_| {
-                        LpErrorDetails::new(&obj.root().unwrap(), &err, ErrorType::Loader);
-                    }
-                ));
-
-                imp.error_page.set_description(Some(&message));
-                imp.stack.set_visible_child(&*imp.error_page);
-            }
-            DecoderError::Generic(err) => {
-                imp.error_more_info.connect_clicked(glib::clone!(
-                    #[weak(rename_to = obj)]
-                    self,
-                    move |_| {
-                        LpErrorDetails::new(&obj.root().unwrap(), &err, ErrorType::Loader);
-                    }
-                ));
-
-                if matches!(image.specific_error(), DecoderError::OutOfMemory) {
-                    imp.error_page.set_description(Some(&gettext(
-                        "There is not enough free memory available to load this image.",
-                    )));
-                } else {
-                    imp.error_page.set_description(Some(&gettext(
-                        "Either the image file is corrupted or it contains unsupported elements.",
-                    )));
+                    details = err.to_string();
                 }
+                DecoderError::UnsupportedFormat(mime_type, err) => {
+                    let content_type =
+                        gio::content_type_from_mime_type(&mime_type).unwrap_or_default();
+                    let mime_type_description =
+                        gio::content_type_get_description(&content_type).to_string();
 
-                imp.error_more_info.set_visible(true);
-                imp.stack.set_visible_child(&*imp.error_page);
+                    description =
+                        if glycin::Loader::DEFAULT_MIME_TYPES.contains(&mime_type.as_str()) {
+                            // Translators: The first occurance of {} is replace with a description
+                            // of the format and the second with an id
+                            // (mime-type) of the format.
+                            gettext_f(
+                                "The image format “{} ({})” is known but not installed.",
+                                [&mime_type_description, &mime_type],
+                            )
+                        } else {
+                            // Translators: The first occurance of {} is replace with a description
+                            // of the format and the second with an id
+                            // (mime-type) of the format.
+                            gettext_f(
+                                "Unknown image format “{} ({}).”",
+                                [&mime_type_description, &mime_type],
+                            )
+                        };
+
+                    details = err.to_string();
+                }
+                DecoderError::OutOfMemory(err) => {
+                    description =
+                        gettext("There is not enough free memory available to load this image.");
+                    details = err.to_string();
+                }
+                DecoderError::ImageSource(glib_err, err) => {
+                    // Translators: The first occurance of {} is replace with a
+                    // translated, more detailled error message.
+                    description =
+                        gettext_f("Failed to load image file: {}", [&glib_err.to_string()]);
+                    details = err.to_string();
+                }
+                DecoderError::Generic(err) => {
+                    description = gettext(
+                        "Either the image file is corrupted or it contains unsupported elements.",
+                    );
+                    details = err.to_string();
+                }
             }
+
+            imp.error_more_info.connect_clicked(glib::clone!(
+                #[weak(rename_to = obj)]
+                self,
+                move |_| {
+                    LpErrorDetails::new(&obj.root().unwrap(), &details, ErrorType::Loader);
+                }
+            ));
+
+            imp.error_page.set_description(Some(&description));
+
+            imp.error_more_info.set_visible(true);
+            imp.stack.set_visible_child(&*imp.error_page);
         }
     }
 }

@@ -268,7 +268,7 @@ impl imp::LpImage {
     }
 
     pub(super) fn is_error(&self) -> bool {
-        self.specific_error.borrow().is_err()
+        self.specific_error.borrow().is_some()
     }
 
     fn set_loaded(&self, is_loaded: bool) {
@@ -279,7 +279,7 @@ impl imp::LpImage {
             obj.notify_is_loaded();
 
             if is_loaded {
-                obj.set_specific_error(DecoderError::None);
+                obj.set_specific_error(None);
             }
         }
     }
@@ -357,26 +357,24 @@ impl LpImage {
         imp.decoder.replace(Some(Arc::new(decoder)));
     }
 
-    pub fn specific_error(&self) -> DecoderError {
+    pub fn specific_error(&self) -> Option<DecoderError> {
         self.imp().specific_error.borrow().clone()
     }
 
-    pub fn set_specific_error(&self, error: DecoderError) {
+    pub fn set_specific_error(&self, error: Option<DecoderError>) {
         let imp = self.imp();
 
-        // Keeping first error instead of replacing with new error
-        if error.is_err() && self.is_error() {
+        // Keeping first error instead of replacing with new error or return
+        if error.is_some() == self.is_error() {
             return;
         }
 
-        if self.specific_error() != error {
-            let is_err = error.is_err();
-            imp.specific_error.replace(error);
-            self.notify_is_error();
+        let is_err = error.is_some();
+        imp.specific_error.replace(error);
+        self.notify_is_error();
 
-            if is_err {
-                imp.set_loaded(false);
-            }
+        if is_err {
+            imp.set_loaded(false);
         }
     }
 }

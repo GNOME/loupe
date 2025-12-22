@@ -1,0 +1,1 @@
+Add a specific error message when loading the image file fails. Usually when the file does not exists or there are no rights to access the file.

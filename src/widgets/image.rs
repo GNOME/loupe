@@ -54,6 +54,7 @@ use glib::subclass::Signal;
 use glib::{Properties, SignalGroup};
 use gufo_common::orientation::Orientation;
 
+use crate::decoder::tiling::SharedFrameBuffer;
 use crate::decoder::{self, Decoder, DecoderUpdate, tiling};
 use crate::deps::*;
 use crate::metadata::Metadata;
@@ -137,13 +138,11 @@ pub enum FitMode {
     ExactVolatile,
 }
 
-mod imp {
-    use decoder::DecoderError;
-    use glycin::Operations;
+use decoder::DecoderError;
+use glycin::Operations;
 
+mod imp {
     use super::*;
-    use crate::decoder::tiling::SharedFrameBuffer;
-    use crate::editing;
 
     #[derive(Debug, Default, Properties)]
     #[properties(wrapper_type = super::LpImage)]
@@ -155,9 +154,9 @@ mod imp {
         #[property(get)]
         pub(super) is_deleted: Cell<bool>,
         /// Set if an error has occurred, shown on error_page
-        pub(super) specific_error: RefCell<DecoderError>,
+        pub(super) specific_error: RefCell<Option<DecoderError>>,
         #[property(get=Self::is_error)]
-        pub(super) is_error: Cell<bool>,
+        pub(super) is_error: PhantomData<bool>,
         /// Set to true when image is ready for displaying
         #[property(get)]
         pub(super) is_loaded: Cell<bool>,
@@ -257,7 +256,7 @@ mod imp {
         pub(super) nth_snapshot: Cell<u8>,
 
         /// Editing queue
-        pub(super) editing_queue: editing::Queue,
+        pub(super) editing_queue: crate::editing::Queue,
         pub(super) operations: RefCell<Option<Arc<Operations>>>,
     }
 

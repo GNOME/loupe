@@ -59,32 +59,21 @@ pub enum DecoderUpdate {
     Redraw,
     /// Start animation
     Animated,
-    Error(DecoderError),
+    Error(Option<DecoderError>),
 }
 
-#[derive(Debug, Clone, Default, PartialEq, Eq)]
+#[derive(Debug, Clone)]
 pub enum DecoderError {
     /// Image format not supported or unknown
-    UnsupportedFormat,
+    UnsupportedFormat(String, glycin::ErrorCtx),
     /// No glycin-loaders installed
-    NoLoadersConfigured,
+    NoLoadersConfigured(glycin::ErrorCtx),
     /// Memory limit exceeded
-    OutOfMemory,
+    OutOfMemory(glycin::ErrorCtx),
+    /// Failed to load image
+    ImageSource(glib::Error, glycin::ErrorCtx),
 
-    Generic(String),
-    //ImageSource(String),
-    #[default]
-    None,
-}
-
-impl DecoderError {
-    pub fn is_err(&self) -> bool {
-        matches!(self, Self::None)
-    }
-
-    pub fn is_ok(&self) -> bool {
-        !matches!(self, Self::None)
-    }
+    Generic(glycin::ErrorCtx),
 }
 
 impl UpdateSender {
@@ -116,27 +105,34 @@ impl UpdateSender {
     }
 
     pub fn send_error(&self, err: glycin::ErrorCtx) {
-        dbg!(&err);
         if let Some(mime_type) = err.unsupported_format() {
             let mut metadata = Metadata::default();
-            metadata.set_mime_type(mime_type);
+            metadata.set_mime_type(mime_type.clone());
 
             self.send(DecoderUpdate::Metadata(Box::new(metadata)));
-            self.send(DecoderUpdate::Error(DecoderError::UnsupportedFormat));
-        }
-        if err.is_out_of_memory() {
-            self.send(DecoderUpdate::Error(DecoderError::OutOfMemory));
+            self.send(DecoderUpdate::Error(Some(DecoderError::UnsupportedFormat(
+                mime_type, err,
+            ))));
+        } else if err.is_out_of_memory() {
+            self.send(DecoderUpdate::Error(Some(DecoderError::OutOfMemory(err))));
         } else if matches!(err.error(), glycin::Error::NoLoadersConfigured(_)) {
-            self.send(DecoderUpdate::Error(DecoderError::NoLoadersConfigured));
+            self.send(DecoderUpdate::Error(Some(
+                DecoderError::NoLoadersConfigured(err),
+            )));
+        } else if let glycin::Error::ImageSource(glib_err) = err.error() {
+            self.send(DecoderUpdate::Error(Some(DecoderError::ImageSource(
+                glib_err.clone(),
+                err,
+            ))));
+        } else {
+            self.send(DecoderUpdate::Error(Some(DecoderError::Generic(err))));
         }
-        self.send(DecoderUpdate::Error(DecoderError::Generic(err.to_string())));
     }
 }
 
 #[derive(Debug)]
 pub struct Decoder {
     decoder: FormatDecoder,
-    update_sender: UpdateSender,
 }
 
 #[derive(Debug)]
@@ -171,7 +167,6 @@ impl Decoder {
                 return (
                     Self {
                         decoder: FormatDecoder::Failed,
-                        update_sender,
                     },
                     receiver,
                 );
@@ -182,7 +177,6 @@ impl Decoder {
 
         let decoder = Self {
             decoder: format_decoder,
-            update_sender,
         };
 
         (decoder, receiver)
@@ -209,8 +203,7 @@ impl Decoder {
     pub fn request(&self, tile_request: TileRequest) {
         if let FormatDecoder::Svg(svg) = &self.decoder {
             if let Err(err) = svg.request(tile_request) {
-                self.update_sender
-                    .send(DecoderUpdate::Error(DecoderError::Generic(err.to_string())));
+                tracing::error!("Failed to request new SVG tiles: {err}");
             }
         }
     }

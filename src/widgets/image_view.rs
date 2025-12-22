@@ -650,7 +650,10 @@ impl LpImageView {
             #[weak(rename_to = obj)]
             self,
             move |image| {
-                if matches!(image.specific_error(), DecoderError::UnsupportedFormat) {
+                if matches!(
+                    image.specific_error(),
+                    Some(DecoderError::UnsupportedFormat(_, _))
+                ) {
                     if obj.current_image().as_ref() == Some(image) {
                         tracing::debug!(
                             "Image format unsupported but not removing since current image"
