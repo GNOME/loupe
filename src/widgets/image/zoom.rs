@@ -212,8 +212,11 @@ impl imp::LpImage {
     ) {
         let obj = self.obj().to_owned();
 
+        tracing::trace!(zoom, animated, snap_best_fit, force_cursor_center, fit_mode=?obj.fit_mode(), "Zoom instruction");
+
         let max_zoom = self.max_zoom();
         if zoom >= max_zoom {
+            tracing::trace!(zoom, max_zoom, "Zoom reached maximum zoom level");
             zoom = max_zoom;
             obj.set_is_max_zoom(true);
         } else {
@@ -237,9 +240,15 @@ impl imp::LpImage {
         }
 
         if zoom <= extended_best_fit_threshold && obj.fit_mode() != FitMode::ExactVolatile {
+            tracing::trace!(
+                zoom,
+                extended_best_fit_threshold,
+                "Zoom too small for best fit, locking to best-fit"
+            );
             zoom = self.zoom_level_best_fit();
             obj.set_best_fit(true);
         } else {
+            tracing::trace!(zoom, extended_best_fit_threshold, "Not locking to best-fit");
             obj.set_best_fit(false);
         }
 
