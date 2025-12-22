@@ -1,0 +1,1 @@
+Zooming in would not work via the zoom menu, if the resulting zoom state would still fit the image inside the window.
