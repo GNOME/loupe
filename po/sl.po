@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2025-12-19 20:01+0000\n"
-"PO-Revision-Date: 2025-12-21 09:03+0100\n"
+"POT-Creation-Date: 2025-12-22 13:26+0000\n"
+"PO-Revision-Date: 2025-12-22 14:31+0100\n"
 "Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
 "Language-Team: Slovenian <gnome-si@googlegroups.com>\n"
 "Language: sl\n"
@@ -301,7 +301,7 @@ msgstr ""
 msgid "Copyright © 2020–2024 Christopher Davis et al."
 msgstr "Avtorske pravice © 2020–2024 Christopher Davis in sodelavci"
 
-#: src/file_model.rs:214
+#: src/file_model.rs:211
 msgid "Could not list other files in directory."
 msgstr "Drugih datotek v mapi ni mogoče izpisati."
 
@@ -558,7 +558,7 @@ msgstr "Kopiraj sporočilo o napaki"
 msgid "Report _Issue"
 msgstr "Pošlji poroč_ilo o napaki"
 
-#: src/widgets/image_page.rs:220
+#: src/widgets/image_page.rs:225
 msgid ""
 "No image loaders available. Maybe the “glycin-loaders” package with "
 "compatibility version “{}” is not installed."
@@ -566,19 +566,23 @@ msgstr ""
 "Nalagalniki slik niso na voljo. Morda paket »glicin-loaders« z različico "
 "združljivosti »{}« ni nameščen."
 
-#: src/widgets/image_page.rs:236
+#: src/widgets/image_page.rs:243
 msgid "The image format “{} ({})” is known but not installed."
 msgstr "Vrsta zapisa slike »{} ({})« je znana, vendar ni nameščena."
 
-#: src/widgets/image_page.rs:243
+#: src/widgets/image_page.rs:251
 msgid "Unknown image format “{} ({}).”"
 msgstr "Neznana vrsta zapisa slike »{} ({})«."
 
-#: src/widgets/image_page.rs:271
+#: src/widgets/image_page.rs:260
 msgid "There is not enough free memory available to load this image."
 msgstr "Za nalaganje te slike ni na voljo dovolj prostega pomnilnika."
 
-#: src/widgets/image_page.rs:275
+#: src/widgets/image_page.rs:267
+msgid "Failed to load image file: {}"
+msgstr "Ni možno naložiti datoteke slike: {}"
+
+#: src/widgets/image_page.rs:272
 msgid "Either the image file is corrupted or it contains unsupported elements."
 msgstr "Slikovna datoteka je poškodovana ali pa vsebuje nepodprte elemente."
 
@@ -628,11 +632,11 @@ msgstr "{} %"
 
 #. Translators: This is a toast notification, informing the user that
 #. an image has been set as background.
-#: src/widgets/image_view.rs:833
+#: src/widgets/image_view.rs:836
 msgid "Set as background."
 msgstr "Nastavi kot sliko ozadja."
 
-#: src/widgets/image_view.rs:839
+#: src/widgets/image_view.rs:842
 msgid "Could not set background."
 msgstr "Ozadja ni bilo mogoče nastaviti."
 
