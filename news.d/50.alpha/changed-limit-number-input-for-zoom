@@ -1,0 +1,1 @@
+Only allow 4 integer digits and 2 decimal digits. That's what's actually respected by the input at max.

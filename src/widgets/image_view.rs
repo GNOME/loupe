@@ -199,6 +199,36 @@ mod imp {
                 ),
             );
 
+            self.zoom_value
+                .delegate()
+                .unwrap()
+                .connect_insert_text(move |entry, ins, pos| {
+                    let mut text = entry.text().to_string();
+                    text.insert_str(*pos as usize, ins);
+                    text = text.replace('%', "");
+                    text = text.trim().to_string();
+
+                    let local_settings = util::locale_settings();
+
+                    if let Some(thousands_sep) = local_settings.thousands_sep {
+                        text = text.replace(&thousands_sep, "");
+                    }
+
+                    if let Some(decimal_point) = local_settings.decimal_point {
+                        if let Some((integer_part, decimal_part)) = text.split_once(&decimal_point)
+                        {
+                            if integer_part.len() > 4 || decimal_part.len() > 2 {
+                                entry.stop_signal_emission_by_name("insert-text");
+                            }
+                        } else {
+                            // Complete text is integer part
+                            if text.len() > 4 {
+                                entry.stop_signal_emission_by_name("insert-text");
+                            }
+                        }
+                    }
+                });
+
             self.zoom_value.connect_changed(glib::clone!(
                 #[weak]
                 obj,
