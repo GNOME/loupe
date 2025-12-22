@@ -48,9 +48,9 @@ impl imp::LpImage {
 
         let max_zoom_factor = match self.fit_mode.get() {
             // Do not allow to zoom larger than original size
-            FitMode::BestFit => 1.,
+            FitMode::BestFit | FitMode::ExactVolatile => 1.,
             // Allow arbitrary zoom
-            FitMode::LargeFit | FitMode::ExactVolatile => f64::MAX,
+            FitMode::LargeFit => f64::MAX,
         };
 
         let default_zoom = if texture_aspect_ratio > widget_aspect_ratio {
