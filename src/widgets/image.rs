@@ -130,6 +130,9 @@ const SMALL_OCCUPY_SCREEN: f64 = 0.8;
 /// this value, unless the image itself is smaller than this.
 const SMALLEST_RENDERED_PIXEL_SIZE: f64 = 16.0;
 
+/// Smallest zoom level reachable via entries in the zoom menu
+const LOWEST_MENU_ZOOM_LEVEL: f64 = 0.5;
+
 #[derive(Default, Debug, Clone, Copy, glib::Variant, glib::Enum, PartialEq, Eq)]
 #[enum_type(name = "LpFitMode")]
 pub enum FitMode {

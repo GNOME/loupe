@@ -99,20 +99,25 @@ impl imp::LpImage {
     pub(super) fn min_zoom(&self) -> f64 {
         let (width, height) = self.untransformed_dimensions();
 
-        // If the image is smaller than the smallest rendered pixel size,
-        // block zooming out entirely
-        if (width as f64) < SMALLEST_RENDERED_PIXEL_SIZE
+        let zoom_level = if (width as f64) < SMALLEST_RENDERED_PIXEL_SIZE
             || (height as f64) < SMALLEST_RENDERED_PIXEL_SIZE
         {
+            // If the image is smaller than the smallest rendered pixel size,
+            // block zooming out entirely
             1.0
-        }
-        // Prevent the rendered size from going below SMALLEST_RENDERED_PIXEL_SIZE
-        // Original size * zoom factor = rendered size
-        // <=> Zoom factor = rendered size / original size
-        else if width < height {
+        } else if width < height {
+            // Prevent the rendered size from going below SMALLEST_RENDERED_PIXEL_SIZE
             SMALLEST_RENDERED_PIXEL_SIZE / (width as f64)
         } else {
             SMALLEST_RENDERED_PIXEL_SIZE / (height as f64)
+        };
+
+        if matches!(self.obj().fit_mode(), FitMode::ExactVolatile) {
+            // Allow zoom menu to allways function. We are allowing this since disabling the
+            // zoom menu entries would probably be more complicated.
+            f64::min(zoom_level, LOWEST_MENU_ZOOM_LEVEL)
+        } else {
+            zoom_level
         }
     }
 
