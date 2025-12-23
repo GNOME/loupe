@@ -881,7 +881,7 @@ dependencies = [
 [[package]]
 name = "glycin"
 version = "3.0.7"
-source = "git+https://gitlab.gnome.org/GNOME/glycin#f34faa00c480b7809ceb8503ec85282446206277"
+source = "git+https://gitlab.gnome.org/GNOME/glycin#21c4185ba08c13c8ad3c96d9bddb6173537c96fb"
 dependencies = [
  "async-fs",
  "async-global-executor",
@@ -917,7 +917,7 @@ dependencies = [
 [[package]]
 name = "glycin-common"
 version = "1.0.3"
-source = "git+https://gitlab.gnome.org/GNOME/glycin#f34faa00c480b7809ceb8503ec85282446206277"
+source = "git+https://gitlab.gnome.org/GNOME/glycin#21c4185ba08c13c8ad3c96d9bddb6173537c96fb"
 dependencies = [
  "bitflags",
  "gufo-common",
@@ -935,7 +935,7 @@ dependencies = [
 [[package]]
 name = "glycin-utils"
 version = "4.0.4"
-source = "git+https://gitlab.gnome.org/GNOME/glycin#f34faa00c480b7809ceb8503ec85282446206277"
+source = "git+https://gitlab.gnome.org/GNOME/glycin#21c4185ba08c13c8ad3c96d9bddb6173537c96fb"
 dependencies = [
  "async-lock",
  "bitflags",
