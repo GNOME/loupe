@@ -126,6 +126,10 @@ const SMALL_SCREEN_AREA: f64 = 1280. * 1024.;
 /// For small monitors occupy 80% of the screen area
 const SMALL_OCCUPY_SCREEN: f64 = 0.8;
 
+/// The smallest edge of the image should not be rendered at a pixel size below
+/// this value, unless the image itself is smaller than this.
+const SMALLEST_RENDERED_PIXEL_SIZE: f64 = 16.0;
+
 #[derive(Default, Debug, Clone, Copy, glib::Variant, glib::Enum, PartialEq, Eq)]
 #[enum_type(name = "LpFitMode")]
 pub enum FitMode {
@@ -206,7 +210,10 @@ mod imp {
         /// Determines what `best-fit` does
         #[property(get, set=Self::set_fit_mode, builder(FitMode::default()))]
         pub(super) fit_mode: Cell<FitMode>,
-        /// Max zoom level is reached, stored to only send signals on change
+        /// Min zoom level is reached, stored to only send signals on change
+        #[property(get, set)]
+        pub(super) is_min_zoom: Cell<bool>,
+        /// Analogous to is_min_zoom
         #[property(get, set)]
         pub(super) is_max_zoom: Cell<bool>,
 

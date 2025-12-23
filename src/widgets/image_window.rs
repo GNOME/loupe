@@ -258,6 +258,18 @@ mod imp {
             );
 
             current_image_signals.connect_closure(
+                "notify::is-min-zoom",
+                false,
+                glib::closure_local!(
+                    #[watch]
+                    obj,
+                    move |_: &LpImage, _: &glib::ParamSpec| {
+                        obj.update_image_actions_status();
+                    }
+                ),
+            );
+
+            current_image_signals.connect_closure(
                 "notify::is-max-zoom",
                 false,
                 glib::closure_local!(
@@ -759,7 +771,7 @@ impl LpImageWindow {
         let can_zoom_out = self
             .image_view()
             .current_image()
-            .is_some_and(|image| !image.is_best_fit());
+            .is_some_and(|image| !image.is_best_fit() && !image.is_min_zoom());
         let can_zoom_in = self
             .image_view()
             .current_image()

@@ -95,6 +95,27 @@ impl imp::LpImage {
         decoder::tiling::zoom_normalize(zoom) / self.scaling()
     }
 
+    /// Minimal zoom allowed for this image
+    pub(super) fn min_zoom(&self) -> f64 {
+        let (width, height) = self.untransformed_dimensions();
+
+        // If the image is smaller than the smallest rendered pixel size,
+        // block zooming out entirely
+        if (width as f64) < SMALLEST_RENDERED_PIXEL_SIZE
+            || (height as f64) < SMALLEST_RENDERED_PIXEL_SIZE
+        {
+            1.0
+        }
+        // Prevent the rendered size from going below SMALLEST_RENDERED_PIXEL_SIZE
+        // Original size * zoom factor = rendered size
+        // <=> Zoom factor = rendered size / original size
+        else if width < height {
+            SMALLEST_RENDERED_PIXEL_SIZE / (width as f64)
+        } else {
+            SMALLEST_RENDERED_PIXEL_SIZE / (height as f64)
+        }
+    }
+
     /// Maximal zoom allowed for this image
     pub(super) fn max_zoom(&self) -> f64 {
         let obj = self.obj();
@@ -213,6 +234,15 @@ impl imp::LpImage {
         let obj = self.obj().to_owned();
 
         tracing::trace!(zoom, animated, snap_best_fit, force_cursor_center, fit_mode=?obj.fit_mode(), "Zoom instruction");
+
+        let min_zoom = self.min_zoom();
+        if zoom <= min_zoom {
+            tracing::trace!(zoom, min_zoom, "Zoom reached minimum zoom level");
+            zoom = min_zoom;
+            obj.set_is_min_zoom(true);
+        } else {
+            obj.set_is_min_zoom(false);
+        }
 
         let max_zoom = self.max_zoom();
         if zoom >= max_zoom {
