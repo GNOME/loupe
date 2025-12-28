@@ -1,7 +1,7 @@
 data/org.gnome.Loupe.desktop.in.in
 data/org.gnome.Loupe.gschema.xml.in
 data/org.gnome.Loupe.metainfo.xml.in.in
-data/resources/gtk/help-overlay.ui
+data/resources/shortcuts-dialog.ui
 src/about.rs
 src/application.rs
 src/config.rs

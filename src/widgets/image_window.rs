@@ -141,7 +141,7 @@ mod imp {
             klass.add_binding_action(
                 gdk::Key::question,
                 gdk::ModifierType::CONTROL_MASK,
-                "win.show-help-overlay",
+                "app.shortcuts",
             );
 
             // Set up actions

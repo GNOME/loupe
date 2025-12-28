@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <object class="AdwShortcutsDialog" id="shortcuts_dialog">
+    <child>
+      <object class="AdwShortcutsSection">
+        <property name="title" translatable="yes" context="shortcut window">General Shortcuts</property>
+        <child>
+          <object class="AdwShortcutsItem">
+            <property name="title" translatable="yes" context="shortcut window">Copy Image or Selected Text to Clipboard</property>
+            <property name="accelerator">&lt;Ctrl&gt;C</property>
+          </object>
+        </child>
+        <child>
+          <object class="AdwShortcutsItem">
+            <property name="title" translatable="yes" context="shortcut window">Move Image to Trash</property>
+            <property name="accelerator">Delete</property>
+          </object>
+        </child>
+        <child>
+          <object class="AdwShortcutsItem">
+            <property name="title" translatable="yes" context="shortcut window">Permanently Delete Image</property>
+            <property name="accelerator">&lt;Shift&gt;Delete</property>
+          </object>
+        </child>
+        <child>
+          <object class="AdwShortcutsItem">
+            <property name="title" translatable="yes" context="shortcut window">Open Image with Other App</property>
+            <property name="accelerator">&lt;Ctrl&gt;&lt;Shift&gt;O</property>
+          </object>
+        </child>
+        <child>
+          <object class="AdwShortcutsItem">
+            <property name="title" translatable="yes" context="shortcut window">Set as Background</property>
+            <property name="accelerator">&lt;Ctrl&gt;F8</property>
+          </object>
+        </child>
+        <child>
+          <object class="AdwShortcutsItem">
+            <property name="title" translatable="yes" context="shortcut window">New Window</property>
+            <property name="action-name">app.new-window</property>
+          </object>
+        </child>
+        <child>
+          <object class="AdwShortcutsItem">
+            <property name="title" translatable="yes" context="shortcut window">Open Help</property>
+            <property name="action-name">app.help</property>
+          </object>
+        </child>
+        <child>
+          <object class="AdwShortcutsItem">
+            <property name="title" translatable="yes" context="shortcut window">Show Keyboard Shortcuts</property>
+            <property name="action-name">app.shortcuts</property>
+          </object>
+        </child>
+        <child>
+          <object class="AdwShortcutsItem">
+            <property name="title" translatable="yes" context="shortcut window">Close Window</property>
+            <property name="action-name">window.close</property>
+          </object>
+        </child>
+        <child>
+          <object class="AdwShortcutsItem">
+            <property name="title" translatable="yes" context="shortcut window">Quit</property>
+            <property name="action-name">app.quit</property>
+          </object>
+        </child>
+      </object>
+    </child>
+    <child>
+      <object class="AdwShortcutsSection">
+        <property name="title" translatable="yes" context="shortcut window">Navigate Images</property>
+        <child>
+          <object class="AdwShortcutsItem">
+            <property name="direction">GTK_TEXT_DIR_LTR</property>
+            <property name="title" translatable="yes" context="shortcut window">Next Image</property>
+            <property name="accelerator">Right</property>
+          </object>
+        </child>
+        <child>
+          <object class="AdwShortcutsItem">
+            <property name="direction">GTK_TEXT_DIR_LTR</property>
+            <property name="title" translatable="yes" context="shortcut window">Previous Image</property>
+            <property name="accelerator">Left</property>
+          </object>
+        </child>
+        <child>
+          <object class="AdwShortcutsItem">
+            <property name="direction">GTK_TEXT_DIR_RTL</property>
+            <property name="title" translatable="yes" context="shortcut window">Next Image</property>
+            <property name="accelerator">Left</property>
+          </object>
+        </child>
+        <child>
+          <object class="AdwShortcutsItem">
+            <property name="direction">GTK_TEXT_DIR_RTL</property>
+            <property name="title" translatable="yes" context="shortcut window">Previous Image</property>
+            <property name="accelerator">Right</property>
+          </object>
+        </child>
+        <child>
+          <object class="AdwShortcutsItem">
+            <property name="title" translatable="yes" context="shortcut window">First Image</property>
+            <property name="accelerator">Home</property>
+          </object>
+        </child>
+        <child>
+          <object class="AdwShortcutsItem">
+            <property name="title" translatable="yes" context="shortcut window">Last Image</property>
+            <property name="accelerator">End</property>
+          </object>
+        </child>
+      </object>
+    </child>
+    <child>
+      <object class="AdwShortcutsSection">
+        <property name="title" translatable="yes" context="shortcut window">Rotate Image</property>
+        <child>
+          <object class="AdwShortcutsItem">
+            <property name="title" translatable="yes" context="shortcut window">Rotate Clockwise</property>
+            <property name="accelerator">&lt;Ctrl&gt;R</property>
+          </object>
+        </child>
+        <child>
+          <object class="AdwShortcutsItem">
+            <property name="title" translatable="yes" context="shortcut window">Rotate Counterclockwise</property>
+            <property name="accelerator">&lt;Ctrl&gt;&lt;Shift&gt;R</property>
+          </object>
+        </child>
+      </object>
+    </child>
+    <child>
+      <object class="AdwShortcutsSection">
+        <property name="title" translatable="yes" context="shortcut window">Zoom Image</property>
+        <child>
+          <object class="AdwShortcutsItem">
+            <property name="title" translatable="yes" context="shortcut window">Zoom In</property>
+            <property name="accelerator">&lt;Ctrl&gt;plus plus</property>
+          </object>
+        </child>
+        <child>
+          <object class="AdwShortcutsItem">
+            <property name="title" translatable="yes" context="shortcut window">Zoom Out</property>
+            <property name="accelerator">&lt;Ctrl&gt;minus minus</property>
+          </object>
+        </child>
+        <child>
+          <object class="AdwShortcutsItem">
+            <property name="title" translatable="yes" context="shortcut window">Best Fit</property>
+            <property name="accelerator">&lt;Ctrl&gt;0 0</property>
+          </object>
+        </child>
+        <child>
+          <object class="AdwShortcutsItem">
+            <property name="title" translatable="yes" context="shortcut window">Original Scale</property>
+            <property name="accelerator">&lt;Ctrl&gt;1 1</property>
+          </object>
+        </child>
+        <child>
+          <object class="AdwShortcutsItem">
+            <property name="title" translatable="yes" context="shortcut window">200% Scale</property>
+            <property name="accelerator">&lt;Ctrl&gt;2 2</property>
+          </object>
+        </child>
+      </object>
+    </child>
+    <child>
+      <object class="AdwShortcutsSection">
+        <property name="title" translatable="yes" context="shortcut window">Pan View</property>
+        <child>
+          <object class="AdwShortcutsItem">
+            <property name="title" translatable="yes" context="shortcut window">Pan Left</property>
+            <property name="accelerator">&lt;Ctrl&gt;Left</property>
+          </object>
+        </child>
+        <child>
+          <object class="AdwShortcutsItem">
+            <property name="title" translatable="yes" context="shortcut window">Pan Right</property>
+            <property name="accelerator">&lt;Ctrl&gt;Right</property>
+          </object>
+        </child>
+        <child>
+          <object class="AdwShortcutsItem">
+            <property name="title" translatable="yes" context="shortcut window">Pan Up</property>
+            <property name="accelerator">&lt;Ctrl&gt;Up</property>
+          </object>
+        </child>
+        <child>
+          <object class="AdwShortcutsItem">
+            <property name="title" translatable="yes" context="shortcut window">Pan Down</property>
+            <property name="accelerator">&lt;Ctrl&gt;Down</property>
+          </object>
+        </child>
+      </object>
+    </child>
+    <child>
+      <object class="AdwShortcutsSection">
+        <property name="title" translatable="yes" context="shortcut window">View</property>
+        <child>
+          <object class="AdwShortcutsItem">
+            <property name="title" translatable="yes" context="shortcut window">Toggle Fullscreen</property>
+            <property name="accelerator">F11</property>
+          </object>
+        </child>
+        <child>
+          <object class="AdwShortcutsItem">
+            <property name="title" translatable="yes" context="shortcut window">Leave Fullscreen</property>
+            <property name="accelerator">Escape</property>
+          </object>
+        </child>
+        <child>
+          <object class="AdwShortcutsItem">
+            <property name="title" translatable="yes" context="shortcut window">Toggle Image Properties</property>
+            <property name="accelerator">&lt;Alt&gt;Return F9</property>
+          </object>
+        </child>
+        <child>
+          <object class="AdwShortcutsItem">
+            <property name="title" translatable="yes" context="shortcut window">Show Main Menu</property>
+            <property name="accelerator">F10</property>
+          </object>
+        </child>
+      </object>
+    </child>
+    <child>
+      <object class="AdwShortcutsSection">
+        <property name="title" translatable="yes" context="shortcut window">Editing</property>
+        <child>
+          <object class="AdwShortcutsItem">
+            <property name="title" translatable="yes" context="shortcut window">Open Editing View</property>
+            <property name="accelerator">E</property>
+          </object>
+        </child>
+        <child>
+          <object class="AdwShortcutsItem">
+            <property name="title" translatable="yes" context="shortcut window">Replace Original</property>
+            <property name="accelerator">&lt;Ctrl&gt;S</property>
+          </object>
+        </child>
+        <child>
+          <object class="AdwShortcutsItem">
+            <property name="title" translatable="yes" context="shortcut window">Save As</property>
+            <property name="accelerator">&lt;Ctrl&gt;&lt;Shift&gt;S</property>
+          </object>
+        </child>
+        <child>
+          <object class="AdwShortcutsItem">
+            <property name="title" translatable="yes" context="shortcut window">Cancel</property>
+            <property name="accelerator">Escape</property>
+          </object>
+        </child>
+        <child>
+          <object class="AdwShortcutsItem">
+            <property name="title" translatable="yes" context="shortcut window">Rotate Clockwise</property>
+            <property name="accelerator">&lt;Ctrl&gt;R</property>
+          </object>
+        </child>
+        <child>
+          <object class="AdwShortcutsItem">
+            <property name="title" translatable="yes" context="shortcut window">Rotate Counterclockwise</property>
+            <property name="accelerator">&lt;Ctrl&gt;&lt;Shift&gt;R</property>
+          </object>
+        </child>
+        <child>
+          <object class="AdwShortcutsItem">
+            <property name="title" translatable="yes" context="shortcut window">Mirror Horizontally</property>
+            <property name="accelerator">H</property>
+          </object>
+        </child>
+        <child>
+          <object class="AdwShortcutsItem">
+            <property name="title" translatable="yes" context="shortcut window">Mirror Vertically</property>
+            <property name="accelerator">V</property>
+          </object>
+        </child>
+        <child>
+          <object class="AdwShortcutsItem">
+            <property name="title" translatable="yes" context="shortcut window">Apply Crop</property>
+            <property name="accelerator">&lt;Ctrl&gt;Return</property>
+          </object>
+        </child>
+      </object>
+    </child>
+  </object>
+</interface>

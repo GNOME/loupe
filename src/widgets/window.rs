@@ -88,7 +88,7 @@ mod imp {
             klass.add_binding_action(
                 gdk::Key::question,
                 gdk::ModifierType::CONTROL_MASK,
-                "win.show-help-overlay",
+                "app.shortcts",
             );
 
             WindowAction::init_actions_and_bindings(klass);
