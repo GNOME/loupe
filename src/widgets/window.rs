@@ -268,6 +268,13 @@ impl LpWindow {
         }
     }
 
+    pub fn edit_window(&self) -> Option<LpEditWindow> {
+        self.imp()
+            .edit_window_child
+            .child()
+            .and_then(|w| w.downcast::<LpEditWindow>().ok())
+    }
+
     pub fn image_view(&self) -> LpImageView {
         self.imp().image_window.image_view()
     }

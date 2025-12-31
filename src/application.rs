@@ -20,6 +20,7 @@
 //
 // SPDX-License-Identifier: GPL-3.0-or-later
 
+use crate::util::gettext::*;
 use adw::prelude::*;
 use adw::subclass::prelude::*;
 
@@ -133,7 +134,55 @@ impl LpApplication {
                 .activate(|app: &Self, _, _| app.show_help())
                 .build(),
             gio::ActionEntryBuilder::new("quit")
-                .activate(|app: &Self, _, _| app.quit())
+                .activate(|app: &Self, _, _| {
+                    if let Some(win) = app.active_window() {
+                        if let Some(lp_window) = win.downcast_ref::<LpWindow>() {
+                            if let Some(edit_window) = lp_window.edit_window() {
+                                if edit_window.has_unsaved_changes() {
+                                    let dialog = adw::AlertDialog::new(
+                                        Some(&gettext("Unsaved Changes")),
+                                        Some(&gettext(
+                                            "Changes which are not lost will be permanently lost",
+                                        )),
+                                    );
+
+                                    dialog.add_response("cancel", &gettext("Cancel"));
+                                    dialog.add_response("discard", &gettext("Discard"));
+                                    dialog.add_response("save", &gettext("Save"));
+
+                                    let app_clone = app.clone();
+                                    let win_clone = win.clone();
+                                    let edit_window_clone = edit_window.clone();
+                                    let dialog_clone = dialog.clone();
+
+                                    dialog.set_response_appearance(
+                                        "discard",
+                                        adw::ResponseAppearance::Destructive,
+                                    );
+
+                                    glib::MainContext::default().spawn_local(async move {
+                                        let res = dialog_clone.choose_future(&win_clone).await;
+                                        println!("User response: {}", res);
+                                        match res.as_str() {
+                                            "cancel" => {}
+                                            "discard" => {
+                                                app_clone.quit();
+                                            }
+                                            "save" => {
+                                                edit_window_clone.save_as();
+                                            }
+                                            _ => {}
+                                        }
+                                    });
+
+                                    dialog.present(Some(&win));
+                                    return;
+                                }
+                            }
+                        }
+                        app.quit();
+                    }
+                })
                 .build(),
             gio::ActionEntryBuilder::new("new-window")
                 .activate(|app: &Self, _, _| {

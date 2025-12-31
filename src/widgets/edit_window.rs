@@ -244,7 +244,7 @@ mod imp {
             }
         }
 
-        async fn save_overwrite(&self) {
+        pub(super) async fn save_overwrite(&self) {
             let obj = self.obj();
             self.save.popdown();
 
@@ -434,7 +434,7 @@ mod imp {
             }
         }
 
-        fn is_save_sensitive(&self) -> bool {
+        pub(super) fn is_save_sensitive(&self) -> bool {
             let obj = self.obj();
 
             self.operations
@@ -483,6 +483,20 @@ impl LpEditWindow {
         let imp = self.imp();
         imp.operations.replace(operations);
         imp.update_save_state(false);
+    }
+
+    pub fn has_unsaved_changes(&self) -> bool {
+        self.imp().is_save_sensitive()
+    }
+
+    pub fn save_as(&self) {
+        glib::spawn_future_local(glib::clone!(
+            #[weak(rename_to=win)]
+            self,
+            async move {
+                win.imp().save_overwrite().await;
+            }
+        ));
     }
 
     pub fn add_operation(&self, operation: glycin::Operation) {
