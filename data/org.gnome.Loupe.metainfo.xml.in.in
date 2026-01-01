@@ -74,6 +74,19 @@
   </categories>
 
   <releases>
+    <release version="49.2" date="2026-01-01">
+      <description>
+        <p>This release fixes multiple issue.</p>
+        <ul>
+          <li>Considerably increased speed for listing other images in folders, especially for remote locations. This allows for switiching to other images to become available much quicker.</li>
+          <li>Fix panics, probably occuring when using an action like 'copy', and then closing the window. The crash causes all other windows to close. </li>
+          <li>Fix the creation date for images that don't provide a timezone. It was displayed as if the recorded date and time was in UTC.</li>
+          <li>Fix zooming in not working via the zoom menu if the resulting zoom state would still fit the image inside the window.</li>
+          <li>Check if the is-hidden property is available before reading it. This avoids warnings being printed when browsing images on remote locations.</li>
+          <li>Fix the missing beginning of user comments in the metadata.</li>
+        </ul>
+      </description>
+    </release>
     <release version="49.1" date="2025-10-21">
       <description>
         <p>The 300% keyboard shortcut now actually zooms to 300%. The "Replace Original" save option for image editing is now deactivated if the original file can't be moved to the trash.</p>
