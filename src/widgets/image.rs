@@ -3,6 +3,7 @@
 // Copyright (c) 2023 Lubosz Sarnecki
 // Copyright (c) 2024 kramo
 // Copyright (c) 2024 Maximiliano Sandoval
+// Copyright (c) 2025 pieterd
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
