@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2025-03-05 23:37+0000\n"
-"PO-Revision-Date: 2025-03-08 02:07+0330\n"
+"POT-Creation-Date: 2026-01-01 20:58+0000\n"
+"PO-Revision-Date: 2026-01-02 12:00+0330\n"
 "Last-Translator: Danial Behzadi <dani.behzi@ubuntu.com>\n"
 "Language-Team: Persian <fa@li.org>\n"
 "Language: fa\n"
@@ -16,14 +16,14 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n==0 || n==1);\n"
-"X-Generator: Poedit 3.5\n"
+"X-Generator: Poedit 3.8\n"
 
-#: data/org.gnome.Loupe.desktop.in.in:3 data/org.gnome.Loupe.metainfo.xml.in.in:6
-#: src/about.rs:31 src/widgets/image_window.rs:866
+#: data/org.gnome.Loupe.desktop.in.in:2 data/org.gnome.Loupe.metainfo.xml.in.in:6
+#: src/about.rs:31 src/widgets/image_window.rs:873
 msgid "Image Viewer"
 msgstr "نمایشگر تصویر"
 
-#: data/org.gnome.Loupe.desktop.in.in:11
+#: data/org.gnome.Loupe.desktop.in.in:10
 msgid "Picture;Graphics;Loupe;"
 msgstr "Picture;Graphics;Loupe;نگاره;نگاشتار;لوپ;عکس;تصویر;"
 
@@ -285,67 +285,67 @@ msgid "Apply Crop"
 msgstr "اعمال برش"
 
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/about.rs:43
+#: src/about.rs:44
 msgid "translator-credits"
 msgstr "دانیال بهزادی <dani.behzi@gmail.com>"
 
-#: src/about.rs:44
+#: src/about.rs:45
 msgid "Copyright © 2020–2024 Christopher Davis et al."
 msgstr "حف رونوشت © ۲۰۲۰–۲۰۲۴ کریستوفر دیویس و همکاران."
 
-#: src/file_model.rs:180
+#: src/file_model.rs:209
 msgid "Could not list other files in directory."
 msgstr "نمی‌توان دیگر پرونده‌ّا در شاخه را سیاهه کرد."
 
 #. Translators: Display of the f-number <https://en.wikipedia.org/wiki/F-number>. {} will be replaced with the number
-#: src/metadata.rs:253
+#: src/metadata.rs:259
 msgid "\\u{192}\\u{2215}{}"
 msgstr "\\u{192}\\u{2215}{}"
 
 #. Translators: Fractional exposure time (photography) in seconds
-#: src/metadata.rs:266
+#: src/metadata.rs:272
 msgid "1\\u{2215}{}\\u{202F}s"
 msgstr "1\\u{2215}{}\\u{202F}ث"
 
 #. Translators: Exposure time (photography) in seconds
-#: src/metadata.rs:274
+#: src/metadata.rs:280
 msgid "{}\\u{202F}s"
 msgstr "{}\\u{202F}ث"
 
-#: src/metadata.rs:288
+#: src/metadata.rs:294
 msgid "{}\\u{202F}mm"
 msgstr "{}\\u{202F}م‌م"
 
 #. Translators: short for "north" in GPS coordinate
-#: src/metadata.rs:328
+#: src/metadata.rs:334
 msgid "N"
 msgstr "شم"
 
 #. Translators: short for "south" in GPS coordinate
-#: src/metadata.rs:332
+#: src/metadata.rs:338
 msgid "S"
 msgstr "جن"
 
 #. Translators: short for "east" in GPS coordinate
-#: src/metadata.rs:341
+#: src/metadata.rs:347
 msgid "E"
 msgstr "شر"
 
 #. Translators: short for "west" in GPS coordinate
-#: src/metadata.rs:345
+#: src/metadata.rs:351
 msgid "W"
 msgstr "غر"
 
+#. / Returns localized date + time format
 #. Translators: This is the date and time format we use in metadata output etc.
 #. The format has to follow <https://docs.gtk.org/glib/method.DateTime.format.html>
 #. The default is already translated. Don't change if you are not sure what to
 #. use.
 #: src/util.rs:39
-#, c-format
 msgid "%x %X"
 msgstr "%x %X"
 
-#: src/util.rs:182 src/widgets/image_window.rs:638
+#: src/util.rs:182
 msgid "Failed to restore image from trash"
 msgstr "شکست در بازگردانی تصویر از زباله‌دان"
 
@@ -353,7 +353,7 @@ msgstr "شکست در بازگردانی تصویر از زباله‌دان"
 msgid "Drop Image to View"
 msgstr "انداختن تصویر برای نمایش"
 
-#: src/widgets/edit/crop.rs:360
+#: src/widgets/edit/crop.rs:362
 msgid "Failed to Edit Image"
 msgstr "شکست در ویرایش تصویر"
 
@@ -612,17 +612,13 @@ msgstr "چرخش به چپ"
 msgid "Rotate Right"
 msgstr "چرخش به راست"
 
-#: src/widgets/image_view.rs:197
-msgid "{} %"
-msgstr "{} %"
-
 #. Translators: This is a toast notification, informing the user that
 #. an image has been set as background.
-#: src/widgets/image_view.rs:836
+#: src/widgets/image_view.rs:825
 msgid "Set as background."
 msgstr "تنظیم به عنوان پس زمینه."
 
-#: src/widgets/image_view.rs:849
+#: src/widgets/image_view.rs:831
 msgid "Could not set background."
 msgstr "نتوانست پس‌زمینه را تنظیم کند."
 
@@ -670,39 +666,39 @@ msgstr "تمام پرونده‌ها"
 msgid "Open Image"
 msgstr "گشودن تصویر"
 
-#: src/widgets/image_window.rs:601
+#: src/widgets/image_window.rs:608
 msgid "Image copied to clipboard"
 msgstr "تصویر در تخته‌گیره رونوشت شد"
 
-#: src/widgets/image_window.rs:622
+#: src/widgets/image_window.rs:629
 msgid "Image moved to trash"
 msgstr "تصویر به زباله‌دان جابه‌جا شد"
 
-#: src/widgets/image_window.rs:623
+#: src/widgets/image_window.rs:630
 msgid "Undo"
 msgstr "برگردان"
 
-#: src/widgets/image_window.rs:653
+#: src/widgets/image_window.rs:660
 msgid "Failed to move image to trash"
 msgstr "شکست در جابه‌جایی تصویر به زباله‌دان"
 
-#: src/widgets/image_window.rs:677
+#: src/widgets/image_window.rs:684
 msgid "Permanently Delete Image?"
 msgstr "حذف همیشگی تصویر؟"
 
-#: src/widgets/image_window.rs:679
+#: src/widgets/image_window.rs:686
 msgid "After deleting the image “{}” it will be permanently lost."
 msgstr "پس از حذف تصویر «{}» برای همیشه از دست خواهد رفت."
 
-#: src/widgets/image_window.rs:687
+#: src/widgets/image_window.rs:694
 msgid "Cancel"
 msgstr "لغو"
 
-#: src/widgets/image_window.rs:688
+#: src/widgets/image_window.rs:695
 msgid "Delete"
 msgstr "حذف"
 
-#: src/widgets/image_window.rs:699
+#: src/widgets/image_window.rs:706
 msgid "Failed to delete image"
 msgstr "شکست در حذف تصویر"
 
@@ -894,7 +890,7 @@ msgstr "، {}\\u{202F}بیتی"
 msgid "{}\\u{202F}\\u{D7}\\u{202F}{}"
 msgstr "{}\\u{202F}\\u{D7}\\u{202F}{}"
 
-#: src/widgets/properties_view.rs:329
+#: src/widgets/properties_view.rs:326
 msgid "Image Coordinates Copied"
 msgstr "مختصات تصویر رونوشت شد"
 
@@ -967,9 +963,12 @@ msgstr "فاصلهٔ کانونی"
 msgid "Maker, Model"
 msgstr "سازنده، مدل"
 
-#: src/widgets/window.rs:222
+#: src/widgets/window.rs:212
 msgid "Show Details"
 msgstr "نمایش جزییات"
+
+#~ msgid "{} %"
+#~ msgstr "{} %"
 
 #~ msgid "Copy to Clipboard"
 #~ msgstr "رونوشت در تخته‌گیره"
