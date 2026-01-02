@@ -880,8 +880,9 @@ dependencies = [
 
 [[package]]
 name = "glycin"
-version = "3.0.7"
-source = "git+https://gitlab.gnome.org/GNOME/glycin#21c4185ba08c13c8ad3c96d9bddb6173537c96fb"
+version = "3.1.0-alpha"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "bbb0cd42213f65c833ae9e080c0fb1c92ab07eafe7e36a36dd23aaef667643a6"
 dependencies = [
  "async-fs",
  "async-global-executor",
@@ -917,7 +918,8 @@ dependencies = [
 [[package]]
 name = "glycin-common"
 version = "1.0.3"
-source = "git+https://gitlab.gnome.org/GNOME/glycin#21c4185ba08c13c8ad3c96d9bddb6173537c96fb"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "6e9b31c7fa5ccb9d91317c956e767daef59be9fee3ae9df30468470368678482"
 dependencies = [
  "bitflags",
  "gufo-common",
@@ -935,7 +937,8 @@ dependencies = [
 [[package]]
 name = "glycin-utils"
 version = "4.0.4"
-source = "git+https://gitlab.gnome.org/GNOME/glycin#21c4185ba08c13c8ad3c96d9bddb6173537c96fb"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "7dfec0cd29d5ecfb1dd723868e22e2c49441020f35d5f14307018ff0a1679e2f"
 dependencies = [
  "async-lock",
  "bitflags",
@@ -1562,7 +1565,7 @@ checksum = "5e5032e24019045c762d3c0f28f5b6b8bbf38563a65908389bf7978758920897"
 
 [[package]]
 name = "loupe"
-version = "49.1.0"
+version = "50.0.0-alpha"
 dependencies = [
  "anyhow",
  "arc-swap",

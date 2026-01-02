@@ -74,6 +74,11 @@
   </categories>
 
   <releases>
+    <release version="50.alpha" date="2026-01-01">
+      <description>
+        <p>Prerelease.</p>
+      </description>
+    </release>
     <release version="49.1" date="2025-10-21">
       <description>
         <p>The 300% keyboard shortcut now actually zooms to 300%. The "Replace Original" save option for image editing is now deactivated if the original file can't be moved to the trash.</p>

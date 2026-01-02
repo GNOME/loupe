@@ -1,3 +1,35 @@
+## 50.alpha (2026-01-02)
+
+### Added
+
+- Add a specific error message when loading the image file fails. Usually when the file does not exists or there are no rights to access the file.
+
+### Fixed
+
+- Fixed image navigation overlay controls conflicting with always visible scrollbars.
+- Showing wrong mime type in error message if the file ending for an image is wrong.
+
+### Changed
+
+- Don't allow endless zoom out
+- Only allow 4 integer digits and 2 decimal digits. That's what's actually respected by the input at max.
+
+## 49.2 (2026-01-01)
+
+### Fixed
+
+- Check if the is-hidden property is available before reading it.
+- Considerably increased speed for listing other images in folders, especially for remote locations. This allows for switiching to other images to become available much quicker.
+- Don't jump to best-fit zoom level during pinch zoom gesture when scroolbars get displayed. This has only been an issue with the disability option "always show scrollbars."
+- Fix panics, probably occuring when using an action like 'copy', and then closing the window. The crash causes all other windows to close. #553
+- Force gufo-exif version 0.3.1 to fix the missing beginning of user comments.
+- The creation date for images that don't provide a timezone was displayed as if the recorded date and time was in UTC.
+- Zooming in would not work via the zoom menu, if the resulting zoom state would still fit the image inside the window.
+
+### Changed
+
+- Track the location in source code of errors trying to get the root window.
+
 ## 49.1 (2025-10-21)
 
 ### Fixed
