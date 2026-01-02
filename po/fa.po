@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2025-08-16 10:15+0000\n"
-"PO-Revision-Date: 2025-08-19 23:54+0330\n"
+"POT-Creation-Date: 2026-01-01 21:17+0000\n"
+"PO-Revision-Date: 2026-01-02 11:56+0330\n"
 "Last-Translator: Danial Behzadi <dani.behzi@ubuntu.com>\n"
 "Language-Team: Persian <fa@li.org>\n"
 "Language: fa\n"
@@ -16,10 +16,10 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n==0 || n==1);\n"
-"X-Generator: Poedit 3.6\n"
+"X-Generator: Poedit 3.8\n"
 
 #: data/org.gnome.Loupe.desktop.in.in:2 data/org.gnome.Loupe.metainfo.xml.in.in:6
-#: src/about.rs:32 src/widgets/image_window.rs:866
+#: src/about.rs:32 src/widgets/image_window.rs:874
 msgid "Image Viewer"
 msgstr "نمایشگر تصویر"
 
@@ -293,59 +293,59 @@ msgstr "دانیال بهزادی <dani.behzi@gmail.com>"
 msgid "Copyright © 2020–2024 Christopher Davis et al."
 msgstr "حق رونوشت © ۲۰۲۰–۲۰۲۴ کریستوفر دیویس و همکاران."
 
-#: src/file_model.rs:180
+#: src/file_model.rs:209
 msgid "Could not list other files in directory."
 msgstr "نمی‌توان دیگر پرونده‌ها در شاخه را سیاهه کرد."
 
 #. Translators: Display of the f-number <https://en.wikipedia.org/wiki/F-number>. {} will be replaced with the number
-#: src/metadata.rs:263
+#: src/metadata.rs:255
 msgid "\\u{192}\\u{2215}{}"
 msgstr "\\u{192}\\u{2215}{}"
 
 #. Translators: Fractional exposure time (photography) in seconds
-#: src/metadata.rs:276
+#: src/metadata.rs:268
 msgid "1\\u{2215}{}\\u{202F}s"
 msgstr "1\\u{2215}{}\\u{202F}ث"
 
 #. Translators: Exposure time (photography) in seconds
-#: src/metadata.rs:284
+#: src/metadata.rs:276
 msgid "{}\\u{202F}s"
 msgstr "{}\\u{202F}ث"
 
-#: src/metadata.rs:298
+#: src/metadata.rs:290
 msgid "{}\\u{202F}mm"
 msgstr "{}\\u{202F}م‌م"
 
 #. Translators: short for "north" in GPS coordinate
-#: src/metadata.rs:338
+#: src/metadata.rs:330
 msgid "N"
 msgstr "شم"
 
 #. Translators: short for "south" in GPS coordinate
-#: src/metadata.rs:342
+#: src/metadata.rs:334
 msgid "S"
 msgstr "جن"
 
 #. Translators: short for "east" in GPS coordinate
-#: src/metadata.rs:351
+#: src/metadata.rs:343
 msgid "E"
 msgstr "شر"
 
 #. Translators: short for "west" in GPS coordinate
-#: src/metadata.rs:355
+#: src/metadata.rs:347
 msgid "W"
 msgstr "غر"
 
+#. / Returns localized date + time format
 #. Translators: This is the date and time format we use in metadata output etc.
 #. The format has to follow <https://docs.gtk.org/glib/method.DateTime.format.html>
 #. The default is already translated. Don't change if you are not sure what to
 #. use.
 #: src/util.rs:39
-#, c-format
 msgid "%x %X"
 msgstr "%x %X"
 
-#: src/util.rs:182 src/widgets/image_window.rs:638
+#: src/util.rs:182
 msgid "Failed to restore image from trash"
 msgstr "شکست در بازگردانی تصویر از زباله‌دان"
 
@@ -353,7 +353,7 @@ msgstr "شکست در بازگردانی تصویر از زباله‌دان"
 msgid "Drop Image to View"
 msgstr "انداختن تصویر برای نمایش"
 
-#: src/widgets/edit/crop.rs:363
+#: src/widgets/edit/crop.rs:364
 msgid "Failed to Edit Image"
 msgstr "شکست در ویرایش تصویر"
 
@@ -464,29 +464,29 @@ msgstr "برش گزینش"
 
 #. Translators: Filename suffix
 #. Translators: Filename suffix, {} is replaced by a number
-#: src/widgets/edit_window.rs:192 src/widgets/edit_window.rs:195
+#: src/widgets/edit_window.rs:196 src/widgets/edit_window.rs:199
 msgid " (Edited)"
 msgid_plural " (Edited {})"
 msgstr[0] " (ویراسته)"
 msgstr[1] " ({} ویراسته)"
 
-#: src/widgets/edit_window.rs:290 src/widgets/edit_window.rs:316
+#: src/widgets/edit_window.rs:294 src/widgets/edit_window.rs:320
 msgid "Failed to save image."
 msgstr "شکست در ذخیرهٔ تصویر."
 
-#: src/widgets/edit_window.rs:346
+#: src/widgets/edit_window.rs:350
 msgid "Editing Image"
 msgstr "ویراستن تصویر"
 
-#: src/widgets/edit_window.rs:363
+#: src/widgets/edit_window.rs:367
 msgid "Failed to edit image."
 msgstr "شکست در ویرایش تصویر."
 
-#: src/widgets/edit_window.rs:373 src/widgets/edit_window.rs:396
+#: src/widgets/edit_window.rs:377 src/widgets/edit_window.rs:400
 msgid "Failed to Save Image"
 msgstr "شکست در ذخیرهٔ تصویر"
 
-#: src/widgets/edit_window.rs:379
+#: src/widgets/edit_window.rs:383
 msgid "Saving Image"
 msgstr "ذخیره کردن تصویر"
 
@@ -514,7 +514,7 @@ msgstr "_جایگزینی اصلی"
 msgid "Original image will be moved to the trash"
 msgstr "تصویر اصلی به زباله‌دان خواهد افتاد"
 
-#: src/widgets/error_details.rs:79
+#: src/widgets/error_details.rs:80
 msgid ""
 "The following error occurred. If you think this is an issue with the program, "
 "please include this information when you report the error."
@@ -612,17 +612,13 @@ msgstr "چرخش به چپ"
 msgid "Rotate Right"
 msgstr "چرخش به راست"
 
-#: src/widgets/image_view.rs:197
-msgid "{} %"
-msgstr "{} %"
-
 #. Translators: This is a toast notification, informing the user that
 #. an image has been set as background.
-#: src/widgets/image_view.rs:836
+#: src/widgets/image_view.rs:825
 msgid "Set as background."
 msgstr "تنظیم به عنوان پس زمینه."
 
-#: src/widgets/image_view.rs:849
+#: src/widgets/image_view.rs:831
 msgid "Could not set background."
 msgstr "نتوانست پس‌زمینه را تنظیم کند."
 
@@ -658,51 +654,51 @@ msgstr "سطح‌های بزرگنمایی سفارشی"
 msgid "Zoom to Specified Level"
 msgstr "بزرگنمایی به سطح مشخّص"
 
-#: src/widgets/image_window.rs:502
+#: src/widgets/image_window.rs:503
 msgid "Supported image formats"
 msgstr "قالب‌های تصویر پشتیبانی‌شده"
 
-#: src/widgets/image_window.rs:508
+#: src/widgets/image_window.rs:509
 msgid "All files"
 msgstr "تمام پرونده‌ها"
 
-#: src/widgets/image_window.rs:515
+#: src/widgets/image_window.rs:516
 msgid "Open Image"
 msgstr "گشودن تصویر"
 
-#: src/widgets/image_window.rs:601
+#: src/widgets/image_window.rs:609
 msgid "Image copied to clipboard"
 msgstr "تصویر در تخته‌گیره رونوشت شد"
 
-#: src/widgets/image_window.rs:622
+#: src/widgets/image_window.rs:630
 msgid "Image moved to trash"
 msgstr "تصویر به زباله‌دان جابه‌جا شد"
 
-#: src/widgets/image_window.rs:623
+#: src/widgets/image_window.rs:631
 msgid "Undo"
 msgstr "برگردان"
 
-#: src/widgets/image_window.rs:653
+#: src/widgets/image_window.rs:661
 msgid "Failed to move image to trash"
 msgstr "شکست در جابه‌جایی تصویر به زباله‌دان"
 
-#: src/widgets/image_window.rs:677
+#: src/widgets/image_window.rs:685
 msgid "Permanently Delete Image?"
 msgstr "حذف همیشگی تصویر؟"
 
-#: src/widgets/image_window.rs:679
+#: src/widgets/image_window.rs:687
 msgid "After deleting the image “{}” it will be permanently lost."
 msgstr "پس از حذف تصویر «{}» برای همیشه از دست خواهد رفت."
 
-#: src/widgets/image_window.rs:687
+#: src/widgets/image_window.rs:695
 msgid "Cancel"
 msgstr "لغو"
 
-#: src/widgets/image_window.rs:688
+#: src/widgets/image_window.rs:696
 msgid "Delete"
 msgstr "حذف"
 
-#: src/widgets/image_window.rs:699
+#: src/widgets/image_window.rs:707
 msgid "Failed to delete image"
 msgstr "شکست در حذف تصویر"
 
@@ -894,7 +890,7 @@ msgstr "، {}\\u{202F}بیتی"
 msgid "{}\\u{202F}\\u{D7}\\u{202F}{}"
 msgstr "{}\\u{202F}\\u{D7}\\u{202F}{}"
 
-#: src/widgets/properties_view.rs:329
+#: src/widgets/properties_view.rs:326
 msgid "Image Coordinates Copied"
 msgstr "مختصات تصویر رونوشت شد"
 
@@ -967,9 +963,12 @@ msgstr "فاصلهٔ کانونی"
 msgid "Maker, Model"
 msgstr "سازنده، مدل"
 
-#: src/widgets/window.rs:222
+#: src/widgets/window.rs:212
 msgid "Show Details"
 msgstr "نمایش جزییات"
+
+#~ msgid "{} %"
+#~ msgstr "{} %"
 
 #~ msgid "Copy to Clipboard"
 #~ msgstr "رونوشت در تخته‌گیره"
