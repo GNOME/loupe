@@ -2,14 +2,14 @@
 # Copyright (C) 2023 Loupe's COPYRIGHT HOLDER
 # This file is distributed under the same license as the Loupe package.
 # Florentina Musat <florentina.musat.28@gmail.com>, 2023.
-# Antonio Marin <gnmer.6qxyg@slmail.me>, 2025.
+# Antonio Marin <gnmer.6qxyg@slmail.me>, 2025-2026.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2025-05-23 15:48+0000\n"
-"PO-Revision-Date: 2025-05-26 09:20+0200\n"
+"POT-Creation-Date: 2026-01-02 16:04+0000\n"
+"PO-Revision-Date: 2026-01-03 18:49+0100\n"
 "Last-Translator: Antonio Marin <gnmer.6qxyg@slmail.me>\n"
 "Language-Team: Romanian <gnomero-list@lists.sourceforge.net>\n"
 "Language: ro\n"
@@ -20,27 +20,27 @@ msgstr ""
 "20)) ? 1 : 2);\n"
 "X-Generator: Gtranslator 48.0\n"
 
-#: data/org.gnome.Loupe.desktop.in.in:3
-#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:31
-#: src/widgets/image_window.rs:866
+#: data/org.gnome.Loupe.desktop.in.in:2
+#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:32
+#: src/widgets/image_window.rs:898
 msgid "Image Viewer"
 msgstr "Imagini"
 
-#: data/org.gnome.Loupe.desktop.in.in:4
+#: data/org.gnome.Loupe.desktop.in.in:3
 #: data/org.gnome.Loupe.metainfo.xml.in.in:13
-msgid "View images"
-msgstr "Vizualizează imaginile"
+msgid "View and edit images"
+msgstr "Vizualizează și modifică imagini"
 
-#: data/org.gnome.Loupe.desktop.in.in:12
+#: data/org.gnome.Loupe.desktop.in.in:11
 msgid "Picture;Graphics;Loupe;"
-msgstr "Picture;Graphics;Loupe;Imagine;Grafice;Imagini;"
+msgstr "Picture;Graphics;Loupe;Imagine;Grafice;Imagini;Poze;Fotografii;"
 
 #: data/org.gnome.Loupe.gschema.xml.in:6
 msgid "Show the image properties sidebar"
 msgstr "Arată panoul lateral cu proprietățile imaginii"
 
 #. developer_name tag deprecated with Appstream 1.0
-#: data/org.gnome.Loupe.metainfo.xml.in.in:8 src/about.rs:34
+#: data/org.gnome.Loupe.metainfo.xml.in.in:8 src/about.rs:35
 msgid "The GNOME Project"
 msgstr "Proiectul GNOME"
 
@@ -295,70 +295,70 @@ msgid "Apply Crop"
 msgstr "Aplică tăierea"
 
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/about.rs:44
+#: src/about.rs:45
 msgid "translator-credits"
 msgstr ""
 "Florentina Mușat <florentina [dot] musat [dot] 28 [at] gmail [dot] com>, "
 "2023-2024\n"
 "Antonio Marin <gnmer.6qxyg@slmail.me>, 2025"
 
-#: src/about.rs:45
+#: src/about.rs:46
 msgid "Copyright © 2020–2024 Christopher Davis et al."
 msgstr "Drepturi de autor © 2020–2024 Christopher Davis și alții."
 
-#: src/file_model.rs:180
+#: src/file_model.rs:211
 msgid "Could not list other files in directory."
 msgstr "Nu s-a putut afișa lista fișierelor din dosar."
 
 #. Translators: Display of the f-number <https://en.wikipedia.org/wiki/F-number>. {} will be replaced with the number
-#: src/metadata.rs:253
+#: src/metadata.rs:256
 msgid "\\u{192}\\u{2215}{}"
 msgstr "\\u{192}\\u{2215}{}"
 
 #. Translators: Fractional exposure time (photography) in seconds
-#: src/metadata.rs:266
+#: src/metadata.rs:269
 msgid "1\\u{2215}{}\\u{202F}s"
 msgstr "1\\u{2215}{}\\u{202F}s"
 
 #. Translators: Exposure time (photography) in seconds
-#: src/metadata.rs:274
+#: src/metadata.rs:277
 msgid "{}\\u{202F}s"
 msgstr "{}\\u{202F}s"
 
-#: src/metadata.rs:288
+#: src/metadata.rs:291
 msgid "{}\\u{202F}mm"
 msgstr "{}\\u{202F}mm"
 
 #. Translators: short for "north" in GPS coordinate
-#: src/metadata.rs:328
+#: src/metadata.rs:331
 msgid "N"
 msgstr "N"
 
 #. Translators: short for "south" in GPS coordinate
-#: src/metadata.rs:332
+#: src/metadata.rs:335
 msgid "S"
 msgstr "S"
 
 #. Translators: short for "east" in GPS coordinate
-#: src/metadata.rs:341
+#: src/metadata.rs:344
 msgid "E"
 msgstr "E"
 
 #. Translators: short for "west" in GPS coordinate
-#: src/metadata.rs:345
+#: src/metadata.rs:348
 msgid "W"
 msgstr "V"
 
+#. / Returns localized date + time format
 #. Translators: This is the date and time format we use in metadata output etc.
 #. The format has to follow <https://docs.gtk.org/glib/method.DateTime.format.html>
 #. The default is already translated. Don't change if you are not sure what to
 #. use.
 #: src/util.rs:39
-#, c-format
 msgid "%x %X"
 msgstr "%x %X"
 
-#: src/util.rs:182 src/widgets/image_window.rs:638
+#: src/util.rs:182
 msgid "Failed to restore image from trash"
 msgstr "Nu s-a putut recupera imaginea din gunoi"
 
@@ -477,30 +477,30 @@ msgstr "Taie selecția"
 
 #. Translators: Filename suffix
 #. Translators: Filename suffix, {} is replaced by a number
-#: src/widgets/edit_window.rs:192 src/widgets/edit_window.rs:195
+#: src/widgets/edit_window.rs:196 src/widgets/edit_window.rs:199
 msgid " (Edited)"
 msgid_plural " (Edited {})"
 msgstr[0] " (modificată)"
 msgstr[1] " ({} modificate)"
 msgstr[2] " ({} modificate)"
 
-#: src/widgets/edit_window.rs:290 src/widgets/edit_window.rs:316
+#: src/widgets/edit_window.rs:294 src/widgets/edit_window.rs:324
 msgid "Failed to save image."
 msgstr "Nu s-a putut salva imaginea."
 
-#: src/widgets/edit_window.rs:346
+#: src/widgets/edit_window.rs:354
 msgid "Editing Image"
 msgstr "Modificare imagine"
 
-#: src/widgets/edit_window.rs:360
+#: src/widgets/edit_window.rs:371
 msgid "Failed to edit image."
 msgstr "Nu s-a putut modifica imaginea."
 
-#: src/widgets/edit_window.rs:370 src/widgets/edit_window.rs:393
+#: src/widgets/edit_window.rs:381 src/widgets/edit_window.rs:404
 msgid "Failed to Save Image"
 msgstr "Nu s-a putut salva imaginea"
 
-#: src/widgets/edit_window.rs:376
+#: src/widgets/edit_window.rs:387
 msgid "Saving Image"
 msgstr "Salvare imagini"
 
@@ -528,7 +528,7 @@ msgstr "Înlocuiește o_riginalul"
 msgid "Original image will be moved to the trash"
 msgstr "Imaginea originală va fi mutată în gunoi"
 
-#: src/widgets/error_details.rs:79
+#: src/widgets/error_details.rs:80
 msgid ""
 "The following error occurred. If you think this is an issue with the "
 "program, please include this information when you report the error."
@@ -562,7 +562,7 @@ msgstr "Copiază mesajul erorii"
 msgid "Report _Issue"
 msgstr "Raportează _problema"
 
-#: src/widgets/image_page.rs:227
+#: src/widgets/image_page.rs:225
 msgid ""
 "No image loaders available. Maybe the “glycin-loaders” package with "
 "compatibility version “{}” is not installed."
@@ -570,19 +570,23 @@ msgstr ""
 "Nu este disponibil niciun încărcător de imagini. Poate că nu este instalată "
 "versiunea compatibilă „{}” a pachetului „glycin-loaders”."
 
-#: src/widgets/image_page.rs:242
+#: src/widgets/image_page.rs:243
 msgid "The image format “{} ({})” is known but not installed."
 msgstr "Formatul de imagine „{} ({})” este cunoscut, dar nu e instalat."
 
-#: src/widgets/image_page.rs:249
+#: src/widgets/image_page.rs:251
 msgid "Unknown image format “{} ({}).”"
 msgstr "Format necunoscut de imagine „{} ({})”."
 
-#: src/widgets/image_page.rs:277
+#: src/widgets/image_page.rs:260
 msgid "There is not enough free memory available to load this image."
 msgstr "Nu există suficientă memorie liberă pentru a încărca această imagine."
 
-#: src/widgets/image_page.rs:281
+#: src/widgets/image_page.rs:267
+msgid "Failed to load image file: {}"
+msgstr "Nu s-a putut încărca fișierul: {}"
+
+#: src/widgets/image_page.rs:272
 msgid "Either the image file is corrupted or it contains unsupported elements."
 msgstr ""
 "Fie fișierul de imagine este deteriorat, fie conține elemente neacceptate."
@@ -627,97 +631,93 @@ msgstr "Rotește la stânga"
 msgid "Rotate Right"
 msgstr "Rotește la dreapta"
 
-#: src/widgets/image_view.rs:197
-msgid "{} %"
-msgstr "{} %"
-
 #. Translators: This is a toast notification, informing the user that
 #. an image has been set as background.
-#: src/widgets/image_view.rs:836
+#: src/widgets/image_view.rs:866
 msgid "Set as background."
 msgstr "Stabilește ca fundal."
 
-#: src/widgets/image_view.rs:849
+#: src/widgets/image_view.rs:872
 msgid "Could not set background."
 msgstr "Nu s-a putut stabili fundalul."
 
-#: src/widgets/image_view.ui:30
+#: src/widgets/image_view.ui:26
 msgid "Previous Image"
 msgstr "Imaginea precedentă"
 
-#: src/widgets/image_view.ui:40
+#: src/widgets/image_view.ui:36
 msgid "Next Image"
 msgstr "Imaginea următoare"
 
-#: src/widgets/image_view.ui:74
+#: src/widgets/image_view.ui:66
 msgid "Zoom Out"
 msgstr "Micșorează"
 
-#: src/widgets/image_view.ui:85
+#: src/widgets/image_view.ui:77
 msgid "Zoom In"
 msgstr "Mărește"
 
-#: src/widgets/image_view.ui:100
+#: src/widgets/image_view.ui:92
 msgid "Toggle Zoom"
 msgstr "Mărește/Micșorează"
 
-#: src/widgets/image_view.ui:108
+#: src/widgets/image_view.ui:100
 msgid "Zoom to Specific Level"
 msgstr "Mărește la un nivel specific"
 
-#: src/widgets/image_view.ui:237
+#: src/widgets/image_view.ui:229
 msgid "Custom Zoom Level"
 msgstr "Nivel personalizat de mărire"
 
-#: src/widgets/image_view.ui:243
+#: src/widgets/image_view.ui:235
 msgid "Zoom to Specified Level"
 msgstr "Mărește la un nivel specific"
 
-#: src/widgets/image_window.rs:502
+#: src/widgets/image_window.rs:527
 msgid "Supported image formats"
 msgstr "Formate de imagine acceptate"
 
-#: src/widgets/image_window.rs:508
+#: src/widgets/image_window.rs:533
 msgid "All files"
 msgstr "Toate fișierele"
 
-#: src/widgets/image_window.rs:515
+#: src/widgets/image_window.rs:540
 msgid "Open Image"
 msgstr "Deschide imaginea"
 
-#: src/widgets/image_window.rs:601
+#: src/widgets/image_window.rs:633
 msgid "Image copied to clipboard"
 msgstr "Imagine copiată"
 
-#: src/widgets/image_window.rs:622
+#: src/widgets/image_window.rs:654
 msgid "Image moved to trash"
 msgstr "Imagine mutată în gunoi"
 
-#: src/widgets/image_window.rs:623
+#: src/widgets/image_window.rs:655
 msgid "Undo"
 msgstr "Refă"
 
-#: src/widgets/image_window.rs:653
+#: src/widgets/image_window.rs:685
 msgid "Failed to move image to trash"
 msgstr "Nu s-a putut muta imaginea în gunoi"
 
-#: src/widgets/image_window.rs:677
+#: src/widgets/image_window.rs:709
 msgid "Permanently Delete Image?"
 msgstr "Să fie ștearsă definitiv imaginea?"
 
-#: src/widgets/image_window.rs:679
+#: src/widgets/image_window.rs:711
 msgid "After deleting the image “{}” it will be permanently lost."
 msgstr "După ștergerea imaginii „{}” ea va fi pierdută definitiv."
 
-#: src/widgets/image_window.rs:687
+#: src/widgets/image_window.rs:719
 msgid "Cancel"
 msgstr "Anulează"
 
-#: src/widgets/image_window.rs:688
+#: src/widgets/image_window.rs:720
 msgid "Delete"
 msgstr "Șterge"
 
-#: src/widgets/image_window.rs:699
+#: src/widgets/image_window.rs:731
 msgid "Failed to delete image"
 msgstr "Nu s-a putut șterge imaginea"
 
@@ -758,8 +758,8 @@ msgid "Edit Image"
 msgstr "Modifică imaginea"
 
 #: src/widgets/image_window.ui:220
-msgid "View Images"
-msgstr "Arată imaginile"
+msgid "View and Edit Images"
+msgstr "Arată și modifică imagini"
 
 #: src/widgets/image_window.ui:221
 msgid "Drag and drop images here"
@@ -769,59 +769,59 @@ msgstr "Trage și așează imagini aici"
 msgid "_Open Files…"
 msgstr "D_eschide fișiere…"
 
-#: src/widgets/print.rs:108
+#: src/widgets/print.rs:109
 msgid "Top"
 msgstr "Sus"
 
-#: src/widgets/print.rs:109
+#: src/widgets/print.rs:110
 msgid "Center"
 msgstr "Centru"
 
-#: src/widgets/print.rs:110
+#: src/widgets/print.rs:111
 msgid "Bottom"
 msgstr "Jos"
 
-#: src/widgets/print.rs:111
+#: src/widgets/print.rs:112
 msgid "Left"
 msgstr "Stânga"
 
-#: src/widgets/print.rs:112
+#: src/widgets/print.rs:113
 msgid "Right"
 msgstr "Dreapta"
 
 #. Translators: Shorthand for centimeter
-#: src/widgets/print.rs:148
+#: src/widgets/print.rs:149
 msgid "cm"
 msgstr "cm"
 
 #. Translators: Shorthand for inch
-#: src/widgets/print.rs:150
+#: src/widgets/print.rs:151
 msgid "in"
 msgstr "in"
 
 #. Translators: Shorthand for pixel
-#: src/widgets/print.rs:152
+#: src/widgets/print.rs:153
 msgid "px"
 msgstr "px"
 
 #. Translators: {} is a placeholder for the filename
-#: src/widgets/print.rs:361
+#: src/widgets/print.rs:364
 msgid "Print “{}”"
 msgstr "Tipărește „{}”"
 
-#: src/widgets/print.rs:476
+#: src/widgets/print.rs:479
 msgid "Continue…"
 msgstr "Continuă…"
 
-#: src/widgets/print.rs:477
+#: src/widgets/print.rs:480
 msgid "Print Image"
 msgstr "Tipărește imaginea"
 
-#: src/widgets/print.rs:791
+#: src/widgets/print.rs:799
 msgid "_Scale"
 msgstr "_Scara"
 
-#: src/widgets/print.rs:794
+#: src/widgets/print.rs:802
 msgid "_Width"
 msgstr "_Lățime"
 
@@ -909,7 +909,7 @@ msgstr ", {}\\u{202F}bit"
 msgid "{}\\u{202F}\\u{D7}\\u{202F}{}"
 msgstr "{}\\u{202F}\\u{D7}\\u{202F}{}"
 
-#: src/widgets/properties_view.rs:329
+#: src/widgets/properties_view.rs:326
 msgid "Image Coordinates Copied"
 msgstr "Coordonatele imaginii copiate"
 
@@ -982,6 +982,6 @@ msgstr "Distanță focală"
 msgid "Maker, Model"
 msgstr "Fabricant, model"
 
-#: src/widgets/window.rs:222
+#: src/widgets/window.rs:212
 msgid "Show Details"
 msgstr "Arată detalii"
