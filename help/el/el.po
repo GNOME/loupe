@@ -1,0 +1,647 @@
+# Greek translation for loupe.
+# Copyright (C) 2026 loupe's COPYRIGHT HOLDER
+# This file is distributed under the same license as the loupe package.
+# Efstathios Iosifidis <eiosifidis@gnome.org>,  2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: loupe gnome-49\n"
+"POT-Creation-Date: 2026-01-02 21:56+0000\n"
+"PO-Revision-Date: 2026-01-02 21:56+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Greek <Greek>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: el\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. Put one translator per line, in the form NAME <EMAIL>, YEAR1, YEAR2
+msgctxt "_"
+msgid "translator-credits"
+msgstr ""
+"Ελληνική μεταφραστική ομάδα GNOME\n"
+" Ευστάθιος Ιωσηφίδης <iosifidis@opensuse.org>\n"
+"\n"
+"Για περισσότερες πληροφορίες, επισκεφθείτε τη σελίδα\n"
+"https://gr.gnome.org/"
+
+#. (itstool) path: info/desc
+#: C/image-properties.page:11
+msgid "View detailed properties of the selected image."
+msgstr "Δείτε λεπτομερείς ιδιότητες της επιλεγμένης εικόνας."
+
+#. (itstool) path: page/title
+#: C/image-properties.page:13
+msgid "Image Properties"
+msgstr "Ιδιότητες Εικόνας"
+
+#. (itstool) path: page/p
+#: C/image-properties.page:14
+msgid ""
+"Image Viewer allows users to view an image's properties. All images will "
+"have the following basic properties:"
+msgstr ""
+"Η Εφαρμογή Προβολής Εικόνων επιτρέπει στους χρήστες να βλέπουν τις ιδιότητες μιας εικόνας. Όλες οι εικόνες θα "
+"έχουν τις ακόλουθες βασικές ιδιότητες:"
+
+#. (itstool) path: item/p
+#: C/image-properties.page:18
+msgid "Image size"
+msgstr "Μέγεθος εικόνας"
+
+#. (itstool) path: item/p
+#: C/image-properties.page:21
+msgid "Image format"
+msgstr "Μορφή εικόνας"
+
+#. (itstool) path: item/p
+#: C/image-properties.page:24
+msgid "File size"
+msgstr "Μέγεθος αρχείου"
+
+#. (itstool) path: item/p
+#: C/image-properties.page:27
+msgid "File creation date"
+msgstr "Ημερομηνία δημιουργίας αρχείου"
+
+#. (itstool) path: item/p
+#: C/image-properties.page:30
+msgid "File modification date"
+msgstr "Ημερομηνία τροποποίησης αρχείου"
+
+#. (itstool) path: page/p
+#: C/image-properties.page:33
+msgid ""
+"If the file has <link href=\"https://en.wikipedia.org/wiki/Exif\">Exif</"
+"link> metadata, it will be shown below the basic properties."
+msgstr ""
+"Εάν το αρχείο έχει <link href=\"https://en.wikipedia.org/wiki/Exif\">Exif</"
+"link> μεταδεδομένα, θα εμφανιστούν κάτω από τις βασικές ιδιότητες."
+
+#. (itstool) path: p/media
+#. This is a reference to an external file such as an image or video. When
+#. the file changes, the md5 hash will change to let you know you need to
+#. update your localized copy. The msgstr is not used at all. Set it to
+#. whatever you like once you have updated your copy of the file.
+#: C/image-properties.page:36
+msgctxt "_"
+msgid ""
+"external ref='figures/help-about-symbolic.svg' "
+"md5='6b43c8bc211b5f8b57810091728b8925'"
+msgstr ""
+
+#. (itstool) path: page/p
+#: C/image-properties.page:35
+msgid ""
+"To view the selected image's properties, press the <gui>Image Properties</"
+"gui> (<media type=\"image\" src=\"figures/help-about-symbolic.svg\">help-"
+"about-symbolic</media>) button."
+msgstr ""
+"Για να δείτε τις ιδιότητες της επιλεγμένης εικόνας, πατήστε το κουμπί <gui>Ιδιότητες Εικόνας</"
+"gui> (<media type=\"image\" src=\"figures/help-about-symbolic.svg\">help-"
+"about-symbolic</media>)."
+
+#. (itstool) path: page/title
+#: C/supported-formats.page:12
+msgid "Supported Image Formats"
+msgstr "Υποστηριζόμενες Μορφές Εικόνας"
+
+#. (itstool) path: page/p
+#: C/supported-formats.page:13
+msgid ""
+"Image Viewer uses <link href=\"https://gitlab.gnome.org/GNOME/"
+"glycin\">glycin</link> for loading images. You can check <link "
+"href=\"https://gitlab.gnome.org/GNOME/glycin#supported-image-"
+"formats\">glycin's README</link> for more details about the formats "
+"supported by the default loaders and the features provided by each format."
+msgstr ""
+"Η Εφαρμογή Προβολής Εικόνων χρησιμοποιεί το <link href=\"https://gitlab.gnome.org/GNOME/"
+"glycin\">glycin</link> για τη φόρτωση εικόνων. Μπορείτε να ελέγξετε το <link "
+"href=\"https://gitlab.gnome.org/GNOME/glycin#supported-image-"
+"formats\">README του glycin</link> για περισσότερες λεπτομέρειες σχετικά με τις μορφές "
+"που υποστηρίζονται από τους προεπιλεγμένους φορτωτές και τα χαρακτηριστικά που παρέχονται από κάθε μορφή."
+
+#. (itstool) path: page/p
+#: C/supported-formats.page:17
+msgid ""
+"Glycin's loaders are configurable, and new loaders can be created by third "
+"parties. Therefore the formats supported on your system may vary."
+msgstr ""
+"Οι φορτωτές του Glycin είναι παραμετροποιήσιμοι και μπορούν να δημιουργηθούν νέοι φορτωτές από τρίτους. "
+"Επομένως, οι μορφές που υποστηρίζονται στο σύστημά σας ενδέχεται να διαφέρουν."
+
+#. (itstool) path: info/desc
+#: C/trashing-images.page:11
+msgid "Move unwanted images to the trash directly from Image Viewer."
+msgstr "Μετακινήστε ανεπιθύμητες εικόνες στον κάδο απορριμμάτων απευθείας από την Εφαρμογή Προβολής Εικόνων."
+
+#. (itstool) path: page/title
+#: C/trashing-images.page:13
+msgid "Moving Images to Trash"
+msgstr "Μετακίνηση Εικόνων στον Κάδο Απορριμμάτων"
+
+#. (itstool) path: p/media
+#. This is a reference to an external file such as an image or video. When
+#. the file changes, the md5 hash will change to let you know you need to
+#. update your localized copy. The msgstr is not used at all. Set it to
+#. whatever you like once you have updated your copy of the file.
+#: C/trashing-images.page:15
+msgctxt "_"
+msgid ""
+"external ref='figures/user-trash-symbolic.svg' "
+"md5='3ffa1160de3479541f34c3bfbf3cdb64'"
+msgstr ""
+
+#. (itstool) path: page/p
+#: C/trashing-images.page:14
+msgid ""
+"If a user wants to remove an image, they can press the <gui>Move To Trash</"
+"gui> (<media type=\"image\" src=\"figures/user-trash-symbolic.svg\">user-"
+"trash-symbolic</media>) button. A toast will appear allowing them to restore "
+"the image with the <gui>Undo</gui> button."
+msgstr ""
+"Εάν ένας χρήστης θέλει να αφαιρέσει μια εικόνα, μπορεί να πατήσει το κουμπί <gui>Μετακίνηση στον Κάδο Απορριμμάτων</"
+"gui> (<media type=\"image\" src=\"figures/user-trash-symbolic.svg\">user-"
+"trash-symbolic</media>). Θα εμφανιστεί μια ειδοποίηση που θα του επιτρέπει να επαναφέρει "
+"την εικόνα με το κουμπί <gui>Αναίρεση</gui>."
+
+#. (itstool) path: info/desc
+#: C/opening-images.page:11
+msgid ""
+"Open and browse through pictures via the file chooser, file manager, or drag "
+"and drop."
+msgstr ""
+"Ανοίξτε και περιηγηθείτε σε εικόνες μέσω του επιλογέα αρχείων, του διαχειριστή αρχείων ή με μεταφορά "
+"και απόθεση."
+
+#. (itstool) path: page/title
+#: C/opening-images.page:13
+msgid "Opening Images"
+msgstr "Άνοιγμα Εικόνων"
+
+#. (itstool) path: section/title
+#: C/opening-images.page:15
+msgid "Opening Files"
+msgstr "Άνοιγμα Αρχείων"
+
+#. (itstool) path: section/title
+#: C/opening-images.page:17
+msgid "From The File Chooser"
+msgstr "Από τον Επιλογέα Αρχείων"
+
+#. (itstool) path: section/p
+#: C/opening-images.page:18
+msgid ""
+"Image Viewer allows users to pick images with the file chooser at any time."
+msgstr ""
+"Η Εφαρμογή Προβολής Εικόνων επιτρέπει στους χρήστες να επιλέγουν εικόνες με τον επιλογέα αρχείων ανά πάσα στιγμή."
+
+#. (itstool) path: item/p
+#: C/opening-images.page:21
+msgid ""
+"Click the <gui>Open Files…</gui> button, the <gui style=\"menuitem\">Open…</"
+"gui> menu item, or press <keyseq><key>Ctrl</key><key>O</key></keyseq>. The "
+"<gui>Open Image</gui> file dialog will appear."
+msgstr ""
+"Κάντε κλικ στο κουμπί <gui>Άνοιγμα Αρχείων…</gui>, στο στοιχείο μενού <gui style=\"menuitem\">Άνοιγμα…</"
+"gui>, ή πατήστε <keyseq><key>Ctrl</key><key>O</key></keyseq>. Θα εμφανιστεί ο "
+"διάλογος αρχείου <gui>Άνοιγμα Εικόνας</gui>."
+
+#. (itstool) path: item/p
+#: C/opening-images.page:24
+msgid "Select the image you want to open, then click <gui>Open</gui>."
+msgstr "Επιλέξτε την εικόνα που θέλετε να ανοίξετε και μετά κάντε κλικ στο <gui>Άνοιγμα</gui>."
+
+#. (itstool) path: section/p
+#: C/opening-images.page:27
+msgid ""
+"Image Viewer will open with the selected image showing, and the other images "
+"in the directory can be reached by browsing."
+msgstr ""
+"Η Εφαρμογή Προβολής Εικόνων θα ανοίξει εμφανίζοντας την επιλεγμένη εικόνα, και οι άλλες εικόνες "
+"στον κατάλογο θα είναι προσβάσιμες μέσω περιήγησης."
+
+#. (itstool) path: section/title
+#: C/opening-images.page:30
+msgid "From The File Manager"
+msgstr "Από τον Διαχειριστή Αρχείων"
+
+#. (itstool) path: section/p
+#: C/opening-images.page:31
+msgid "Users can also open images in Loupe directly from their file manager."
+msgstr "Οι χρήστες μπορούν επίσης να ανοίξουν εικόνες στο Loupe απευθείας από τον διαχειριστή αρχείων τους."
+
+#. (itstool) path: item/p
+#: C/opening-images.page:34
+msgid "Open your preferred file manager application."
+msgstr "Ανοίξτε την εφαρμογή διαχειριστή αρχείων που προτιμάτε."
+
+#. (itstool) path: item/p
+#: C/opening-images.page:37
+msgid "Navigate to the image you want to view in Loupe."
+msgstr "Πλοηγηθείτε στην εικόνα που θέλετε να δείτε στο Loupe."
+
+#. (itstool) path: item/p
+#: C/opening-images.page:40
+msgid ""
+"If Image Viewer is set as your default image viewer, use the file manager's "
+"function for opening files."
+msgstr ""
+"Εάν η Εφαρμογή Προβολής Εικόνων έχει οριστεί ως η προεπιλεγμένη εφαρμογή προβολής εικόνων, χρησιμοποιήστε τη λειτουργία "
+"του διαχειριστή αρχείων για άνοιγμα αρχείων."
+
+#. (itstool) path: item/p
+#: C/opening-images.page:43
+msgid ""
+"If Image Viewer is not your default image viewer, you will need to select "
+"<gui>Open With…</gui> or similar in the file manager, and pick Image Viewer."
+msgstr ""
+"Εάν η Εφαρμογή Προβολής Εικόνων δεν είναι η προεπιλεγμένη εφαρμογή προβολής εικόνων, θα πρέπει να επιλέξετε "
+"<gui>Άνοιγμα Με…</gui> ή παρόμοιο στον διαχειριστή αρχείων και να επιλέξετε Εφαρμογή Προβολής Εικόνων."
+
+#. (itstool) path: section/title
+#: C/opening-images.page:48 C/sending-to-other-apps.page:37
+msgid "Drag &amp; Drop"
+msgstr "Μεταφορά &amp; Απόθεση"
+
+#. (itstool) path: section/p
+#: C/opening-images.page:49
+msgid ""
+"Image Viewer also accepts local image files dragged from other applications."
+msgstr ""
+"Η Εφαρμογή Προβολής Εικόνων δέχεται επίσης τοπικά αρχεία εικόνας που μεταφέρονται από άλλες εφαρμογές."
+
+#. (itstool) path: item/p
+#: C/opening-images.page:52
+msgid "In the source application, begin dragging the image."
+msgstr "Στην εφαρμογή προέλευσης, ξεκινήστε να σέρνετε την εικόνα."
+
+#. (itstool) path: item/p
+#: C/opening-images.page:55
+msgid ""
+"Drag the image over the Loupe main window. A blue highlighted area should "
+"appear."
+msgstr ""
+"Σύρετε την εικόνα πάνω από το κύριο παράθυρο του Loupe. Θα πρέπει να εμφανιστεί μια "
+"μπλε επισημασμένη περιοχή."
+
+#. (itstool) path: item/p
+#: C/opening-images.page:58
+msgid "Drop the image while it's still hovered over the main window."
+msgstr "Αφήστε την εικόνα ενώ αιωρείται ακόμα πάνω από το κύριο παράθυρο."
+
+#. (itstool) path: section/title
+#: C/opening-images.page:64
+msgid "Browsing"
+msgstr "Περιήγηση"
+
+#. (itstool) path: p/media
+#. This is a reference to an external file such as an image or video. When
+#. the file changes, the md5 hash will change to let you know you need to
+#. update your localized copy. The msgstr is not used at all. Set it to
+#. whatever you like once you have updated your copy of the file.
+#: C/opening-images.page:67
+msgctxt "_"
+msgid ""
+"external ref='figures/go-previous-symbolic.svg' "
+"md5='a53305845578db884ecfb7d8d33fcaeb'"
+msgstr ""
+"external ref='figures/go-previous-symbolic.svg' "
+"md5='a53305845578db884ecfb7d8d33fcaeb'"
+
+#. (itstool) path: p/media
+#. This is a reference to an external file such as an image or video. When
+#. the file changes, the md5 hash will change to let you know you need to
+#. update your localized copy. The msgstr is not used at all. Set it to
+#. whatever you like once you have updated your copy of the file.
+#: C/opening-images.page:68
+msgctxt "_"
+msgid ""
+"external ref='figures/go-next-symbolic.svg' "
+"md5='2f901ac0f711cfb3274b2985d10c4124'"
+msgstr ""
+"external ref='figures/go-next-symbolic.svg' "
+"md5='2f901ac0f711cfb3274b2985d10c4124'"
+
+#. (itstool) path: section/p
+#: C/opening-images.page:65
+msgid ""
+"When opening an image from the file chooser or file manager, Loupe will load "
+"other files in the parent directory of the image and sort them in "
+"alphabetical order. Users can browse the other images in the directory with "
+"the <gui>Previous Image</gui> (<media type=\"image\" src=\"figures/go-"
+"previous-symbolic.svg\">go-previous-symbolic</media>) and <gui>Next Image</"
+"gui> (<media type=\"image\" src=\"figures/go-next-symbolic.svg\">go-next-"
+"symbolic</media>) buttons."
+msgstr ""
+"Όταν ανοίγετε μια εικόνα από τον επιλογέα αρχείων ή τον διαχειριστή αρχείων, το Loupe θα φορτώσει "
+"άλλα αρχεία στον γονικό κατάλογο της εικόνας και θα τα ταξινομήσει με "
+"αλφαβητική σειρά. Οι χρήστες μπορούν να περιηγηθούν στις άλλες εικόνες στον κατάλογο με "
+"τα κουμπιά <gui>Προηγούμενη Εικόνα</gui> (<media type=\"image\" src=\"figures/go-"
+"previous-symbolic.svg\">go-previous-symbolic</media>) και <gui>Επόμενη Εικόνα</"
+"gui> (<media type=\"image\" src=\"figures/go-next-symbolic.svg\">go-next-"
+"symbolic</media>)."
+
+#. (itstool) path: note/p
+#: C/opening-images.page:70 C/viewing-images.page:39
+msgid ""
+"Keyboard users can also use the corresponding shortcuts presented in the "
+"<gui>Keyboard Shortcuts</gui> dialog."
+msgstr ""
+"Οι χρήστες πληκτρολογίου μπορούν επίσης να χρησιμοποιήσουν τις αντίστοιχες συντομεύσεις που παρουσιάζονται στον "
+"διάλογο <gui>Συντομεύσεις Πληκτρολογίου</gui>."
+
+#. (itstool) path: info/desc
+#: C/index.page:10
+msgid "Browse through your images and inspect their metadata."
+msgstr "Περιηγηθείτε στις εικόνες σας και επιθεωρήστε τα μεταδεδομένα τους."
+
+#. (itstool) path: page/title
+#: C/index.page:12
+msgid "<_:media-1/> Image Viewer (Loupe)"
+msgstr "<_:media-1/> Εφαρμογή Προβολής Εικόνων (Loupe)"
+
+#. (itstool) path: section/title
+#: C/index.page:14
+msgid "Getting Started"
+msgstr "Ξεκινώντας"
+
+#. (itstool) path: section/title
+#: C/index.page:17
+msgid "Additional Features"
+msgstr "Πρόσθετα Χαρακτηριστικά"
+
+#. (itstool) path: section/title
+#: C/index.page:20
+msgid "Technical Information"
+msgstr "Τεχνικές Πληροφορίες"
+
+#. (itstool) path: info/desc
+#: C/sending-to-other-apps.page:11
+msgid ""
+"Learn how to send, copy, and drag images from Image Viewer to other apps."
+msgstr ""
+"Μάθετε πώς να στέλνετε, να αντιγράφετε και να σύρετε εικόνες από την Εφαρμογή Προβολής Εικόνων σε άλλες εφαρμογές."
+
+#. (itstool) path: page/title
+#: C/sending-to-other-apps.page:13
+msgid "Sending Images To Other Apps"
+msgstr "Αποστολή Εικόνων σε Άλλες Εφαρμογές"
+
+#. (itstool) path: section/title
+#: C/sending-to-other-apps.page:15
+msgid "\"Open With…\" Action"
+msgstr "Ενέργεια \"Άνοιγμα Με…\""
+
+#. (itstool) path: item/p
+#: C/sending-to-other-apps.page:18
+msgid ""
+"Click the <gui style=\"menuitem\">Open With…</gui> menu item. A dialog with "
+"a list of applications will appear."
+msgstr ""
+"Κάντε κλικ στο στοιχείο μενού <gui style=\"menuitem\">Άνοιγμα Με…</gui>. Ένας διάλογος με "
+"μια λίστα εφαρμογών θα εμφανιστεί."
+
+#. (itstool) path: item/p
+#: C/sending-to-other-apps.page:21
+msgid "Select the application you want to open the image with."
+msgstr "Επιλέξτε την εφαρμογή με την οποία θέλετε να ανοίξετε την εικόνα."
+
+#. (itstool) path: section/title
+#: C/sending-to-other-apps.page:26
+msgid "Copy &amp; Paste"
+msgstr "Αντιγραφή &amp; Επικόλληση"
+
+#. (itstool) path: p/media
+#. This is a reference to an external file such as an image or video. When
+#. the file changes, the md5 hash will change to let you know you need to
+#. update your localized copy. The msgstr is not used at all. Set it to
+#. whatever you like once you have updated your copy of the file.
+#: C/sending-to-other-apps.page:29
+msgctxt "_"
+msgid ""
+"external ref='figures/edit-copy-symbolic.svg' "
+"md5='4774ffd65c32e160f4cefc093abd6b7c'"
+msgstr ""
+"external ref='figures/edit-copy-symbolic.svg' "
+"md5='4774ffd65c32e160f4cefc093abd6b7c'"
+
+#. (itstool) path: item/p
+#: C/sending-to-other-apps.page:29
+msgid ""
+"Click the <gui>Copy to Clipboard</gui> (<media type=\"image\" src=\"figures/"
+"edit-copy-symbolic.svg\">edit-copy-symbolic</media>) button. A toast "
+"notifying you that the image is in your clipboard will appear."
+msgstr ""
+"Κάντε κλικ στο κουμπί <gui>Αντιγραφή στο Πρόχειρο</gui> (<media type=\"image\" src=\"figures/"
+"edit-copy-symbolic.svg\">edit-copy-symbolic</media>). Μια ειδοποίηση "
+"που θα σας ενημερώνει ότι η εικόνα βρίσκεται στο πρόχειρό σας θα εμφανιστεί."
+
+#. (itstool) path: item/p
+#: C/sending-to-other-apps.page:32
+msgid "Paste your image in your application of choice."
+msgstr "Επικολλήστε την εικόνα σας στην εφαρμογή της επιλογής σας."
+
+#. (itstool) path: item/p
+#: C/sending-to-other-apps.page:40
+msgid "Zoom out from the image completely."
+msgstr "Σμικρύνετε εντελώς την εικόνα."
+
+#. (itstool) path: item/p
+#: C/sending-to-other-apps.page:43
+msgid "Click and hold the selected image."
+msgstr "Κάντε κλικ και κρατήστε πατημένη την επιλεγμένη εικόνα."
+
+#. (itstool) path: item/p
+#: C/sending-to-other-apps.page:46
+msgid "Drag the image to your application of choice."
+msgstr "Σύρετε την εικόνα στην εφαρμογή της επιλογής σας."
+
+#. (itstool) path: info/desc
+#: C/viewing-images.page:11
+msgid "Learn how to view an image at different scales and orientations."
+msgstr "Μάθετε πώς να βλέπετε μια εικόνα σε διαφορετικές κλίμακες και προσανατολισμούς."
+
+#. (itstool) path: page/title
+#: C/viewing-images.page:13
+msgid "Viewing Images"
+msgstr "Προβολή Εικόνων"
+
+#. (itstool) path: section/title
+#: C/viewing-images.page:15
+msgid "Zooming"
+msgstr "Εστίαση"
+
+#. (itstool) path: p/media
+#. This is a reference to an external file such as an image or video. When
+#. the file changes, the md5 hash will change to let you know you need to
+#. update your localized copy. The msgstr is not used at all. Set it to
+#. whatever you like once you have updated your copy of the file.
+#: C/viewing-images.page:16
+msgctxt "_"
+msgid ""
+"external ref='figures/zoom-in-symbolic.svg' "
+"md5='fed4648112c974f25de99c15ece6272c'"
+msgstr ""
+"external ref='figures/zoom-in-symbolic.svg' "
+"md5='fed4648112c974f25de99c15ece6272c'"
+
+#. (itstool) path: p/media
+#. This is a reference to an external file such as an image or video. When
+#. the file changes, the md5 hash will change to let you know you need to
+#. update your localized copy. The msgstr is not used at all. Set it to
+#. whatever you like once you have updated your copy of the file.
+#: C/viewing-images.page:17
+msgctxt "_"
+msgid ""
+"external ref='figures/zoom-out-symbolic.svg' "
+"md5='fe99d9c40c1104988ee4580283168dfb'"
+msgstr ""
+"external ref='figures/zoom-out-symbolic.svg' "
+"md5='fe99d9c40c1104988ee4580283168dfb'"
+
+#. (itstool) path: section/p
+#: C/viewing-images.page:16
+msgid ""
+"Users can zoom in with the <gui>Zoom In</gui> (<media type=\"image\" "
+"src=\"figures/zoom-in-symbolic.svg\">zoom-in-symbolic</media>) button and "
+"zoom out with the <gui>Zoom Out</gui> (<media type=\"image\" src=\"figures/"
+"zoom-out-symbolic.svg\">zoom-out-symbolic</media>) button."
+msgstr ""
+"Οι χρήστες μπορούν να κάνουν μεγέθυνση με το κουμπί <gui>Μεγέθυνση</gui> (<media type=\"image\" "
+"src=\"figures/zoom-in-symbolic.svg\">zoom-in-symbolic</media>) και "
+"σμίκρυνση με το κουμπί <gui>Σμίκρυνση</gui> (<media type=\"image\" src=\"figures/"
+"zoom-out-symbolic.svg\">zoom-out-symbolic</media>)."
+
+#. (itstool) path: section/p
+#: C/viewing-images.page:19
+msgid ""
+"Touchpad and touchscreen users can also zoom with a two-finger pinch "
+"gesture. On touchpads, it is also possible to zoom by pressing the "
+"<key>Ctrl</key> key while swiping up/down with two fingers on the touchpad."
+msgstr ""
+"Οι χρήστες Touchpad και οθόνης αφής μπορούν επίσης να κάνουν μεγέθυνση/σμίκρυνση με μια χειρονομία τσιμπήματος δύο δακτύλων. "
+"Σε touchpads, είναι επίσης δυνατή η εστίαση πατώντας το πλήκτρο "
+"<key>Ctrl</key> ενώ σύρετε προς τα πάνω/κάτω με δύο δάχτυλα στο touchpad."
+
+#. (itstool) path: section/title
+#: C/viewing-images.page:22
+msgid "Panning"
+msgstr "Μετακίνηση"
+
+#. (itstool) path: section/p
+#: C/viewing-images.page:23
+msgid ""
+"Mouse and touchpad users can pan the view when zoomed in by clicking and "
+"dragging the image. Touchscreen users can use a single-finger drag gesture "
+"to pan the view."
+msgstr ""
+"Οι χρήστες ποντικιού και touchpad μπορούν να μετακινήσουν την προβολή όταν είναι μεγεθυμένη κάνοντας κλικ και "
+"σέρνοντας την εικόνα. Οι χρήστες οθόνης αφής μπορούν να χρησιμοποιήσουν μια χειρονομία σέρνοντας με ένα δάχτυλο "
+"για να μετακινήσουν την προβολή."
+
+#. (itstool) path: section/title
+#: C/viewing-images.page:27
+msgid "Rotating"
+msgstr "Περιστροφή"
+
+#. (itstool) path: p/media
+#. This is a reference to an external file such as an image or video. When
+#. the file changes, the md5 hash will change to let you know you need to
+#. update your localized copy. The msgstr is not used at all. Set it to
+#. whatever you like once you have updated your copy of the file.
+#: C/viewing-images.page:28
+msgctxt "_"
+msgid ""
+"external ref='figures/object-rotate-right-symbolic.svg' "
+"md5='0284f09f3659bf61e4882ac8a758b38f'"
+msgstr ""
+"external ref='figures/object-rotate-right-symbolic.svg' "
+"md5='0284f09f3659bf61e4882ac8a758b38f'"
+
+#. (itstool) path: p/media
+#. This is a reference to an external file such as an image or video. When
+#. the file changes, the md5 hash will change to let you know you need to
+#. update your localized copy. The msgstr is not used at all. Set it to
+#. whatever you like once you have updated your copy of the file.
+#: C/viewing-images.page:29
+msgctxt "_"
+msgid ""
+"external ref='figures/object-rotate-left-symbolic.svg' "
+"md5='c2393bbaa3b0f7ea09b43089295a44d4'"
+msgstr ""
+"external ref='figures/object-rotate-left-symbolic.svg' "
+"md5='c2393bbaa3b0f7ea09b43089295a44d4'"
+
+#. (itstool) path: section/p
+#: C/viewing-images.page:28
+msgid ""
+"Users can use the <gui>Rotate Right</gui> (<media type=\"image\" "
+"src=\"figures/object-rotate-right-symbolic.svg\">object-rotate-right-"
+"symbolic</media>) and <gui>Rotate Left</gui> (<media type=\"image\" "
+"src=\"figures/object-rotate-left-symbolic.svg\">object-rotate-left-symbolic</"
+"media>) buttons under <gui style=\"menuitem\">Rotate</gui> in the main menu "
+"to rotate clockwise and counter-clockwise."
+msgstr ""
+"Οι χρήστες μπορούν να χρησιμοποιήσουν τα κουμπιά <gui>Περιστροφή Δεξιά</gui> (<media type=\"image\" "
+"src=\"figures/object-rotate-right-symbolic.svg\">object-rotate-right-"
+"symbolic</media>) και <gui>Περιστροφή Αριστερά</gui> (<media type=\"image\" "
+"src=\"figures/object-rotate-left-symbolic.svg\">object-rotate-left-symbolic</"
+"media>) κάτω από την επιλογή <gui style=\"menuitem\">Περιστροφή</gui> στο κύριο μενού "
+"για να περιστρέψουν δεξιόστροφα και αριστερόστροφα."
+
+#. (itstool) path: section/p
+#: C/viewing-images.page:32
+msgid ""
+"Touchpad and touchscreen users can also use a two-finger rotate gesture."
+msgstr ""
+"Οι χρήστες Touchpad και οθόνης αφής μπορούν επίσης να χρησιμοποιήσουν μια χειρονομία περιστροφής με δύο δάχτυλα."
+
+#. (itstool) path: section/title
+#: C/viewing-images.page:35
+msgid "Fullscreen"
+msgstr "Πλήρης Οθόνη"
+
+#. (itstool) path: p/media
+#. This is a reference to an external file such as an image or video. When
+#. the file changes, the md5 hash will change to let you know you need to
+#. update your localized copy. The msgstr is not used at all. Set it to
+#. whatever you like once you have updated your copy of the file.
+#: C/viewing-images.page:37
+msgctxt "_"
+msgid ""
+"external ref='figures/view-fullscreen-symbolic.svg' "
+"md5='3ee106ab07051301a9b5982cbe04b597'"
+msgstr ""
+"external ref='figures/view-fullscreen-symbolic.svg' "
+"md5='3ee106ab07051301a9b5982cbe04b597'"
+
+#. (itstool) path: p/media
+#. This is a reference to an external file such as an image or video. When
+#. the file changes, the md5 hash will change to let you know you need to
+#. update your localized copy. The msgstr is not used at all. Set it to
+#. whatever you like once you have updated your copy of the file.
+#: C/viewing-images.page:37
+msgctxt "_"
+msgid ""
+"external ref='figures/view-restore-symbolic.svg' "
+"md5='f7470d4b9ed1d317ed201bb4a72882fb'"
+msgstr ""
+"external ref='figures/view-restore-symbolic.svg' "
+"md5='f7470d4b9ed1d317ed201bb4a72882fb'"
+
+#. (itstool) path: section/p
+#: C/viewing-images.page:36
+msgid ""
+"Image Viewer has a simple fullscreen mode. Users can toggle fullscreen mode "
+"by pressing the <gui>Toggle Fullscreen</gui> (<media type=\"image\" "
+"src=\"figures/view-fullscreen-symbolic.svg\">view-fullscreen-symbolic</"
+"media> / <media type=\"image\" src=\"figures/view-restore-"
+"symbolic.svg\">view-restore-symbolic</media>) button."
+msgstr ""
+"Η Εφαρμογή Προβολής Εικόνων έχει μια απλή λειτουργία πλήρους οθόνης. Οι χρήστες μπορούν να κάνουν εναλλαγή σε λειτουργία πλήρους οθόνης "
+"πατώντας το κουμπί <gui>Εναλλαγή Πλήρους Οθόνης</gui> (<media type=\"image\" "
+"src=\"figures/view-fullscreen-symbolic.svg\">view-fullscreen-symbolic</"
+"media> / <media type=\"image\" src=\"figures/view-restore-"
+"symbolic.svg\">view-restore-symbolic</media>)."
