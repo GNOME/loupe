@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2025-03-05 19:09+0000\n"
-"PO-Revision-Date: 2025-03-05 23:38+0300\n"
+"POT-Creation-Date: 2026-01-01 20:58+0000\n"
+"PO-Revision-Date: 2026-01-05 15:13+0300\n"
 "Last-Translator: Artur So <arturios2005@mail.ru>\n"
 "Language-Team: \n"
 "Language: ru_RU\n"
@@ -17,15 +17,15 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
-"X-Generator: Poedit 3.5\n"
+"X-Generator: Poedit 3.8\n"
 
-#: data/org.gnome.Loupe.desktop.in.in:3
+#: data/org.gnome.Loupe.desktop.in.in:2
 #: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:31
-#: src/widgets/image_window.rs:866
+#: src/widgets/image_window.rs:873
 msgid "Image Viewer"
 msgstr "Просмотрщик изображений"
 
-#: data/org.gnome.Loupe.desktop.in.in:11
+#: data/org.gnome.Loupe.desktop.in.in:10
 msgid "Picture;Graphics;Loupe;"
 msgstr "Picture;Graphics;Loupe;Изображение;Графика;"
 
@@ -293,67 +293,67 @@ msgid "Apply Crop"
 msgstr "Применить обрезку"
 
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/about.rs:43
+#: src/about.rs:44
 msgid "translator-credits"
 msgstr "Aleksandr Melman <alexmelman88@gmail.com>, 2023"
 
-#: src/about.rs:44
+#: src/about.rs:45
 msgid "Copyright © 2020–2024 Christopher Davis et al."
 msgstr "Авторское право © 2020-2024 Christopher Davis и др."
 
-#: src/file_model.rs:180
+#: src/file_model.rs:209
 msgid "Could not list other files in directory."
 msgstr "Не удалось перечислить другие файлы в каталоге."
 
 #. Translators: Display of the f-number <https://en.wikipedia.org/wiki/F-number>. {} will be replaced with the number
-#: src/metadata.rs:253
+#: src/metadata.rs:259
 msgid "\\u{192}\\u{2215}{}"
 msgstr "\\u{192}\\u{2215}{}"
 
 #. Translators: Fractional exposure time (photography) in seconds
-#: src/metadata.rs:266
+#: src/metadata.rs:272
 msgid "1\\u{2215}{}\\u{202F}s"
 msgstr "1\\u{2215}{}\\u{202F}с"
 
 #. Translators: Exposure time (photography) in seconds
-#: src/metadata.rs:274
+#: src/metadata.rs:280
 msgid "{}\\u{202F}s"
 msgstr "{}\\u{202F}с"
 
-#: src/metadata.rs:288
+#: src/metadata.rs:294
 msgid "{}\\u{202F}mm"
 msgstr "{}\\u{202F}мм"
 
 #. Translators: short for "north" in GPS coordinate
-#: src/metadata.rs:328
+#: src/metadata.rs:334
 msgid "N"
 msgstr "С"
 
 #. Translators: short for "south" in GPS coordinate
-#: src/metadata.rs:332
+#: src/metadata.rs:338
 msgid "S"
 msgstr "Ю"
 
 #. Translators: short for "east" in GPS coordinate
-#: src/metadata.rs:341
+#: src/metadata.rs:347
 msgid "E"
 msgstr "В"
 
 #. Translators: short for "west" in GPS coordinate
-#: src/metadata.rs:345
+#: src/metadata.rs:351
 msgid "W"
 msgstr "З"
 
+#. / Returns localized date + time format
 #. Translators: This is the date and time format we use in metadata output etc.
 #. The format has to follow <https://docs.gtk.org/glib/method.DateTime.format.html>
 #. The default is already translated. Don't change if you are not sure what to
 #. use.
 #: src/util.rs:39
-#, c-format
 msgid "%x %X"
 msgstr "%x %X"
 
-#: src/util.rs:182 src/widgets/image_window.rs:638
+#: src/util.rs:182
 msgid "Failed to restore image from trash"
 msgstr "Не удалось восстановить изображение из корзины"
 
@@ -361,7 +361,7 @@ msgstr "Не удалось восстановить изображение из
 msgid "Drop Image to View"
 msgstr "Перетащите изображение для просмотра"
 
-#: src/widgets/edit/crop.rs:353
+#: src/widgets/edit/crop.rs:362
 msgid "Failed to Edit Image"
 msgstr "Не удалось отредактировать изображение"
 
@@ -473,9 +473,10 @@ msgstr "Обрезать выделенное"
 #. Translators: Filename suffix
 #. Translators: Filename suffix, {} is replaced by a number
 #: src/widgets/edit_window.rs:192 src/widgets/edit_window.rs:195
+#, rust-format
 msgid " (Edited)"
 msgid_plural " (Edited {})"
-msgstr[0] " (Изменен)"
+msgstr[0] " (Изменен {})"
 msgstr[1] " (Изменено {})"
 msgstr[2] " (Изменено {})"
 
@@ -558,6 +559,7 @@ msgid "Report _Issue"
 msgstr "Сообщить об о_шибке"
 
 #: src/widgets/image_page.rs:227
+#, rust-format
 msgid ""
 "No image loaders available. Maybe the “glycin-loaders” package with "
 "compatibility version “{}” is not installed."
@@ -566,10 +568,12 @@ msgstr ""
 "loaders” с совместимой версией “{}”."
 
 #: src/widgets/image_page.rs:242
+#, rust-format
 msgid "The image format “{} ({})” is known but not installed."
 msgstr "Формат изображения “{} ({})” известен, но не установлен."
 
 #: src/widgets/image_page.rs:249
+#, rust-format
 msgid "Unknown image format “{} ({}).”"
 msgstr "Неизвестный формат изображения “{} ({}).”"
 
@@ -622,17 +626,13 @@ msgstr "Повернуть влево"
 msgid "Rotate Right"
 msgstr "Повернуть вправо"
 
-#: src/widgets/image_view.rs:197
-msgid "{} %"
-msgstr "{} %"
-
 #. Translators: This is a toast notification, informing the user that
 #. an image has been set as background.
-#: src/widgets/image_view.rs:836
+#: src/widgets/image_view.rs:825
 msgid "Set as background."
 msgstr "Установить как фон."
 
-#: src/widgets/image_view.rs:849
+#: src/widgets/image_view.rs:831
 msgid "Could not set background."
 msgstr "Не удалось установить фон."
 
@@ -680,39 +680,40 @@ msgstr "Все файлы"
 msgid "Open Image"
 msgstr "Открыть изображение"
 
-#: src/widgets/image_window.rs:601
+#: src/widgets/image_window.rs:608
 msgid "Image copied to clipboard"
 msgstr "Изображение скопировано в буфер обмена"
 
-#: src/widgets/image_window.rs:622
+#: src/widgets/image_window.rs:629
 msgid "Image moved to trash"
 msgstr "Изображение отправлено в корзину"
 
-#: src/widgets/image_window.rs:623
+#: src/widgets/image_window.rs:630
 msgid "Undo"
 msgstr "Отменить"
 
-#: src/widgets/image_window.rs:653
+#: src/widgets/image_window.rs:660
 msgid "Failed to move image to trash"
 msgstr "Не удалось отправить изображение в корзину"
 
-#: src/widgets/image_window.rs:677
+#: src/widgets/image_window.rs:684
 msgid "Permanently Delete Image?"
 msgstr "Удалить изображение безвозвратно?"
 
-#: src/widgets/image_window.rs:679
+#: src/widgets/image_window.rs:686
+#, rust-format
 msgid "After deleting the image “{}” it will be permanently lost."
 msgstr "После удаления изображения \"{}\" оно будет навсегда потеряно."
 
-#: src/widgets/image_window.rs:687
+#: src/widgets/image_window.rs:694
 msgid "Cancel"
 msgstr "Отменить"
 
-#: src/widgets/image_window.rs:688
+#: src/widgets/image_window.rs:695
 msgid "Delete"
 msgstr "Удалить"
 
-#: src/widgets/image_window.rs:699
+#: src/widgets/image_window.rs:706
 msgid "Failed to delete image"
 msgstr "Не удалось удалить изображение"
 
@@ -801,6 +802,7 @@ msgstr "пикс"
 
 #. Translators: {} is a placeholder for the filename
 #: src/widgets/print.rs:361
+#, rust-format
 msgid "Print “{}”"
 msgstr "Печать “{}”"
 
@@ -904,7 +906,7 @@ msgstr ", {}\\u{202F}бит"
 msgid "{}\\u{202F}\\u{D7}\\u{202F}{}"
 msgstr "{}\\u{202F}\\u{D7}\\u{202F}{}"
 
-#: src/widgets/properties_view.rs:329
+#: src/widgets/properties_view.rs:326
 msgid "Image Coordinates Copied"
 msgstr "Координаты изображения скопированы"
 
@@ -977,9 +979,12 @@ msgstr "Фокусное расстояние"
 msgid "Maker, Model"
 msgstr "Производитель, модель"
 
-#: src/widgets/window.rs:222
+#: src/widgets/window.rs:212
 msgid "Show Details"
 msgstr "Показать подробности"
+
+#~ msgid "{} %"
+#~ msgstr "{} %"
 
 #~ msgid "_Done"
 #~ msgstr "_Готово"
