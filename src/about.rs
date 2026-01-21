@@ -4,6 +4,7 @@
 // Copyright (c) 2024 Andre Klapper
 // Copyright (c) 2024 Dexter Reed
 // Copyright (c) 2025 sid
+// Copyright (c) 2026 Not Committed Yet
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -49,16 +50,16 @@ pub async fn dialog() -> adw::AboutDialog {
         .build()
 }
 
-async fn etc() -> std::path::PathBuf {
-    if ashpd::is_sandboxed().await {
+fn etc() -> std::path::PathBuf {
+    if ashpd::is_sandboxed() {
         std::path::PathBuf::from("/run/host/etc")
     } else {
         std::path::PathBuf::from("/etc")
     }
 }
 
-async fn os_release() -> String {
-    let os_release = etc().await.join("os-release");
+fn os_release() -> String {
+    let os_release = etc().join("os-release");
     std::fs::read_to_string(os_release).unwrap_or_default()
 }
 
@@ -68,10 +69,10 @@ async fn debug_info() -> String {
         format!("- App ID: {}", config::APP_ID),
         format!(
             "- Sandboxed: {} {}",
-            ashpd::is_sandboxed().await,
+            ashpd::is_sandboxed(),
             std::env::var("container").unwrap_or_default()
         ),
-        format!("\n##### OS Information\n```\n{}\n```", os_release().await),
+        format!("\n##### OS Information\n```\n{}\n```", os_release()),
     ]
     .join("\n")
 }
