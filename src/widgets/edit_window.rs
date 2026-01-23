@@ -191,13 +191,8 @@ mod imp {
                             let mut new_path = path.clone();
                             let mut new_filename = basename.to_os_string();
 
-                            if i == 1 {
-                                // Translators: Filename suffix
-                                new_filename.push(gettext(" (Edited)"));
-                            } else {
-                                // Translators: Filename suffix, {} is replaced by a number
-                                new_filename.push(ngettext(" (Edited)", " (Edited {})", i));
-                            }
+                            // Translators: Filename suffix, {} is replaced by a number
+                            new_filename.push(ngettext(" (Edited)", " (Edited {})", i));
 
                             if let Some(ext) = path.extension() {
                                 new_filename.push(".");
