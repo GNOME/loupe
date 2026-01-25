@@ -5,26 +5,33 @@
 # 小山田 純 <oyamadajun@outlook.jp>, 2023-2024.
 # Kusano Takayuki <https://bsky.app/profile/tkusano.jp>, 2025.
 # Seiji Iizuka <seiji@iizuka.dev>, 2025.
+# Makoto Sakaguchi <ycco34vx@gmail.com>, 2025.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2025-04-27 04:39+0000\n"
-"PO-Revision-Date: 2024-04-04 16:47+0900\n"
-"Last-Translator: Seiji Iizuka <seiji@iizuka.dev>, 2025.\n"
+"POT-Creation-Date: 2025-12-23 22:09+0000\n"
+"PO-Revision-Date: 2025-12-29 05:03+0900\n"
+"Last-Translator: Makoto Sakaguchi <ycco34vx@gmail.com>\n"
 "Language-Team: Japanese <https://l10n.gnome.org/teams/ja/>\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 3.8\n"
 
-#: data/org.gnome.Loupe.desktop.in.in:3
-#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:31
-#: src/widgets/image_window.rs:866
+#: data/org.gnome.Loupe.desktop.in.in:2
+#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:32
+#: src/widgets/image_window.rs:897
 msgid "Image Viewer"
 msgstr "画像ビューアー"
+
+#: data/org.gnome.Loupe.desktop.in.in:3
+#: data/org.gnome.Loupe.metainfo.xml.in.in:13
+msgid "View and edit images"
+msgstr "画像の閲覧と編集"
 
 #: data/org.gnome.Loupe.desktop.in.in:11
 msgid "Picture;Graphics;Loupe;"
@@ -37,17 +44,13 @@ msgid "Show the image properties sidebar"
 msgstr "画像のプロバティーの表示/非表示"
 
 #. developer_name tag deprecated with Appstream 1.0
-#: data/org.gnome.Loupe.metainfo.xml.in.in:8 src/about.rs:34
+#: data/org.gnome.Loupe.metainfo.xml.in.in:8 src/about.rs:35
 msgid "The GNOME Project"
 msgstr "The GNOME Project"
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:13
-msgid "View images"
-msgstr "画像を表示"
-
 #: data/org.gnome.Loupe.metainfo.xml.in.in:15
 msgid "Browse through your images and inspect their metadata with:"
-msgstr "画像の表示と、そのメタデータを確認できます。"
+msgstr "画像の表示と、そのメタデータを確認できます:"
 
 #: data/org.gnome.Loupe.metainfo.xml.in.in:17
 msgid "Fast GPU accelerated image rendering"
@@ -296,76 +299,77 @@ msgid "Apply Crop"
 msgstr "切り抜きを適用"
 
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/about.rs:44
+#: src/about.rs:45
 msgid "translator-credits"
 msgstr ""
 "Yuki Okushi <yokushi@gnome.org>\n"
 "小山田 純 <oyamadajun@outlook.jp>\n"
-"Kusano Takayuki <https://bsky.app/profile/tkusano.jp>"
+"Kusano Takayuki <https://bsky.app/profile/tkusano.jp>\n"
+"Makoto Sakaguchi <ycco34vx@gmail.com>"
 
-#: src/about.rs:45
+#: src/about.rs:46
 msgid "Copyright © 2020–2024 Christopher Davis et al."
 msgstr "Copyright © 2020–2024 Christopher Davis et al."
 
-#: src/file_model.rs:180
+#: src/file_model.rs:211
 msgid "Could not list other files in directory."
 msgstr "ディレクトリ内の他ファイルを一覧表示できませんでした。"
 
 #. Translators: Display of the f-number <https://en.wikipedia.org/wiki/F-number>. {} will be replaced with the number
-#: src/metadata.rs:253
+#: src/metadata.rs:256
 msgid "\\u{192}\\u{2215}{}"
 msgstr "\\u{192}\\u{2215}{}"
 
 #. Translators: Fractional exposure time (photography) in seconds
-#: src/metadata.rs:266
+#: src/metadata.rs:269
 msgid "1\\u{2215}{}\\u{202F}s"
 msgstr "1\\u{2215}{}\\u{202F}秒"
 
 #. Translators: Exposure time (photography) in seconds
-#: src/metadata.rs:274
+#: src/metadata.rs:277
 msgid "{}\\u{202F}s"
 msgstr "{}\\u{202F}秒"
 
-#: src/metadata.rs:288
+#: src/metadata.rs:291
 msgid "{}\\u{202F}mm"
 msgstr "{}\\u{202F}mm"
 
 #. Translators: short for "north" in GPS coordinate
-#: src/metadata.rs:328
+#: src/metadata.rs:331
 msgid "N"
 msgstr "N"
 
 #. Translators: short for "south" in GPS coordinate
-#: src/metadata.rs:332
+#: src/metadata.rs:335
 msgid "S"
 msgstr "S"
 
 #. Translators: short for "east" in GPS coordinate
-#: src/metadata.rs:341
+#: src/metadata.rs:344
 msgid "E"
 msgstr "E"
 
 #. Translators: short for "west" in GPS coordinate
-#: src/metadata.rs:345
+#: src/metadata.rs:348
 msgid "W"
 msgstr "W"
 
+#. / Returns localized date + time format
 #. Translators: This is the date and time format we use in metadata output etc.
 #. The format has to follow <https://docs.gtk.org/glib/method.DateTime.format.html>
 #. The default is already translated. Don't change if you are not sure what to
 #. use.
 #: src/util.rs:39
-#, c-format
 msgid "%x %X"
 msgstr "%x %X"
 
-#: src/util.rs:182 src/widgets/image_window.rs:638
+#: src/util.rs:182
 msgid "Failed to restore image from trash"
 msgstr "画像をゴミ箱から復元できませんでした"
 
 #: src/widgets/drag_overlay.ui:15
 msgid "Drop Image to View"
-msgstr "表示するには画像をドロップ"
+msgstr "画像をドロップして表示"
 
 #: src/widgets/edit/crop.rs:363
 msgid "Failed to Edit Image"
@@ -458,11 +462,11 @@ msgstr "反転"
 
 #: src/widgets/edit/crop.ui:287 src/widgets/edit/crop.ui:415
 msgid "Mirror Horizontally"
-msgstr "横方向に反転"
+msgstr "左右反転"
 
 #: src/widgets/edit/crop.ui:294
 msgid "Mirror Vertically"
-msgstr "縦方向に反転"
+msgstr "上下反転"
 
 #: src/widgets/edit/crop.ui:306 src/widgets/edit/crop.ui:429
 msgid "_Reset"
@@ -478,28 +482,29 @@ msgstr "切り抜き領域選択"
 
 #. Translators: Filename suffix
 #. Translators: Filename suffix, {} is replaced by a number
-#: src/widgets/edit_window.rs:192 src/widgets/edit_window.rs:195
+#: src/widgets/edit_window.rs:196 src/widgets/edit_window.rs:199
+#, rust-format
 msgid " (Edited)"
 msgid_plural " (Edited {})"
 msgstr[0] "（{}回編集済）"
 
-#: src/widgets/edit_window.rs:290 src/widgets/edit_window.rs:316
+#: src/widgets/edit_window.rs:294 src/widgets/edit_window.rs:324
 msgid "Failed to save image."
 msgstr "画像を保存できませんでした。"
 
-#: src/widgets/edit_window.rs:346
+#: src/widgets/edit_window.rs:354
 msgid "Editing Image"
 msgstr "画像を編集中"
 
-#: src/widgets/edit_window.rs:360
+#: src/widgets/edit_window.rs:371
 msgid "Failed to edit image."
 msgstr "画像の編集に失敗しました。"
 
-#: src/widgets/edit_window.rs:370 src/widgets/edit_window.rs:393
+#: src/widgets/edit_window.rs:381 src/widgets/edit_window.rs:404
 msgid "Failed to Save Image"
 msgstr "画像を保存できませんでした"
 
-#: src/widgets/edit_window.rs:376
+#: src/widgets/edit_window.rs:387
 msgid "Saving Image"
 msgstr "画像を保存中"
 
@@ -527,7 +532,7 @@ msgstr "元の画像と置換(_R)"
 msgid "Original image will be moved to the trash"
 msgstr "元の画像はゴミ箱へ移動します"
 
-#: src/widgets/error_details.rs:79
+#: src/widgets/error_details.rs:80
 msgid ""
 "The following error occurred. If you think this is an issue with the "
 "program, please include this information when you report the error."
@@ -561,7 +566,8 @@ msgstr "エラーメッセージをコピー"
 msgid "Report _Issue"
 msgstr "問題を報告(_I)"
 
-#: src/widgets/image_page.rs:227
+#: src/widgets/image_page.rs:225
+#, rust-format
 msgid ""
 "No image loaders available. Maybe the “glycin-loaders” package with "
 "compatibility version “{}” is not installed."
@@ -569,19 +575,26 @@ msgstr ""
 "画像ローダーを利用できません。おそらく “glycin-loaders” の互換バージョン "
 "“{}” がインストールされていません。"
 
-#: src/widgets/image_page.rs:242
+#: src/widgets/image_page.rs:243
+#, rust-format
 msgid "The image format “{} ({})” is known but not installed."
 msgstr "この画像形式 “{} ({})” を認識していますがインストールされていません。"
 
-#: src/widgets/image_page.rs:249
+#: src/widgets/image_page.rs:251
+#, rust-format
 msgid "Unknown image format “{} ({}).”"
 msgstr "不明な画像形式 “{} ({}).”"
 
-#: src/widgets/image_page.rs:277
+#: src/widgets/image_page.rs:260
 msgid "There is not enough free memory available to load this image."
 msgstr "この画像を読み込むのに十分なメモリーの空きがありません。"
 
-#: src/widgets/image_page.rs:281
+#: src/widgets/image_page.rs:267
+#, rust-format
+msgid "Failed to load image file: {}"
+msgstr "画像ファイルの読み込みに失敗しました: {}"
+
+#: src/widgets/image_page.rs:272
 msgid "Either the image file is corrupted or it contains unsupported elements."
 msgstr "画像ファイルが壊れているか、未対応の要素を含んでいます。"
 
@@ -625,97 +638,94 @@ msgstr "左に回転"
 msgid "Rotate Right"
 msgstr "右に回転"
 
-#: src/widgets/image_view.rs:197
-msgid "{} %"
-msgstr "{} %"
-
 #. Translators: This is a toast notification, informing the user that
 #. an image has been set as background.
-#: src/widgets/image_view.rs:836
+#: src/widgets/image_view.rs:866
 msgid "Set as background."
 msgstr "背景に設定しました。"
 
-#: src/widgets/image_view.rs:849
+#: src/widgets/image_view.rs:872
 msgid "Could not set background."
 msgstr "背景に設定できませんでした。"
 
-#: src/widgets/image_view.ui:30
+#: src/widgets/image_view.ui:26
 msgid "Previous Image"
 msgstr "前の画像"
 
-#: src/widgets/image_view.ui:40
+#: src/widgets/image_view.ui:36
 msgid "Next Image"
 msgstr "次の画像"
 
-#: src/widgets/image_view.ui:74
+#: src/widgets/image_view.ui:66
 msgid "Zoom Out"
 msgstr "縮小"
 
-#: src/widgets/image_view.ui:85
+#: src/widgets/image_view.ui:77
 msgid "Zoom In"
 msgstr "拡大"
 
-#: src/widgets/image_view.ui:100
+#: src/widgets/image_view.ui:92
 msgid "Toggle Zoom"
 msgstr "ズーム切り替え"
 
-#: src/widgets/image_view.ui:108
+#: src/widgets/image_view.ui:100
 msgid "Zoom to Specific Level"
 msgstr "指定したレベルへズーム"
 
-#: src/widgets/image_view.ui:237
+#: src/widgets/image_view.ui:229
 msgid "Custom Zoom Level"
 msgstr "カスタム・ズームレベル"
 
-#: src/widgets/image_view.ui:243
+#: src/widgets/image_view.ui:235
 msgid "Zoom to Specified Level"
 msgstr "指定されたレベルへズーム"
 
-#: src/widgets/image_window.rs:502
+#: src/widgets/image_window.rs:526
 msgid "Supported image formats"
 msgstr "サポートされている画像形式"
 
-#: src/widgets/image_window.rs:508
+#: src/widgets/image_window.rs:532
 msgid "All files"
 msgstr "すべてのファイル"
 
-#: src/widgets/image_window.rs:515
+#: src/widgets/image_window.rs:539
 msgid "Open Image"
 msgstr "画像を開く"
 
-#: src/widgets/image_window.rs:601
+#: src/widgets/image_window.rs:632
 msgid "Image copied to clipboard"
 msgstr "画像をクリップボードにコピーしました"
 
-#: src/widgets/image_window.rs:622
+#: src/widgets/image_window.rs:653
 msgid "Image moved to trash"
 msgstr "画像をゴミ箱へ移動しました"
 
-#: src/widgets/image_window.rs:623
+#: src/widgets/image_window.rs:654
 msgid "Undo"
 msgstr "元に戻す"
 
-#: src/widgets/image_window.rs:653
+#: src/widgets/image_window.rs:684
 msgid "Failed to move image to trash"
 msgstr "画像をゴミ箱へ移動できませんでした"
 
-#: src/widgets/image_window.rs:677
+#: src/widgets/image_window.rs:708
 msgid "Permanently Delete Image?"
 msgstr "画像を完全に削除しますか?"
 
-#: src/widgets/image_window.rs:679
+#: src/widgets/image_window.rs:710
+#, rust-format
 msgid "After deleting the image “{}” it will be permanently lost."
 msgstr "画像 “{}” を削除すると、画像は永久に無くなります。"
 
-#: src/widgets/image_window.rs:687
+#: src/widgets/image_window.rs:718
 msgid "Cancel"
 msgstr "キャンセル"
 
-#: src/widgets/image_window.rs:688
+#: src/widgets/image_window.rs:719
 msgid "Delete"
 msgstr "削除"
 
-#: src/widgets/image_window.rs:699
+#: src/widgets/image_window.rs:730
 msgid "Failed to delete image"
 msgstr "画像の削除に失敗しました"
 
@@ -756,8 +766,8 @@ msgid "Edit Image"
 msgstr "画像を編集"
 
 #: src/widgets/image_window.ui:220
-msgid "View Images"
-msgstr "画像を見る"
+msgid "View and Edit Images"
+msgstr "画像の閲覧と編集"
 
 #: src/widgets/image_window.ui:221
 msgid "Drag and drop images here"
@@ -767,59 +777,60 @@ msgstr "ここにドラッグ&amp;ドロップ"
 msgid "_Open Files…"
 msgstr "ファイルを開く(_O)…"
 
-#: src/widgets/print.rs:108
+#: src/widgets/print.rs:109
 msgid "Top"
 msgstr "上"
 
-#: src/widgets/print.rs:109
+#: src/widgets/print.rs:110
 msgid "Center"
 msgstr "中央"
 
-#: src/widgets/print.rs:110
+#: src/widgets/print.rs:111
 msgid "Bottom"
 msgstr "下"
 
-#: src/widgets/print.rs:111
+#: src/widgets/print.rs:112
 msgid "Left"
 msgstr "左"
 
-#: src/widgets/print.rs:112
+#: src/widgets/print.rs:113
 msgid "Right"
 msgstr "右"
 
 #. Translators: Shorthand for centimeter
-#: src/widgets/print.rs:148
+#: src/widgets/print.rs:149
 msgid "cm"
 msgstr "cm"
 
 #. Translators: Shorthand for inch
-#: src/widgets/print.rs:150
+#: src/widgets/print.rs:151
 msgid "in"
 msgstr "in"
 
 #. Translators: Shorthand for pixel
-#: src/widgets/print.rs:152
+#: src/widgets/print.rs:153
 msgid "px"
 msgstr "px"
 
 #. Translators: {} is a placeholder for the filename
-#: src/widgets/print.rs:361
+#: src/widgets/print.rs:364
+#, rust-format
 msgid "Print “{}”"
 msgstr "“{}” を印刷"
 
-#: src/widgets/print.rs:476
+#: src/widgets/print.rs:479
 msgid "Continue…"
 msgstr "続ける…"
 
-#: src/widgets/print.rs:477
+#: src/widgets/print.rs:480
 msgid "Print Image"
 msgstr "画像を印刷"
 
-#: src/widgets/print.rs:791
+#: src/widgets/print.rs:799
 msgid "_Scale"
 msgstr "大きさ(_S)"
 
-#: src/widgets/print.rs:794
+#: src/widgets/print.rs:802
 msgid "_Width"
 msgstr "幅(_W)"
 
@@ -907,7 +918,7 @@ msgstr ", {}\\u{202F}bit"
 msgid "{}\\u{202F}\\u{D7}\\u{202F}{}"
 msgstr "{}\\u{202F}\\u{D7}\\u{202F}{}"
 
-#: src/widgets/properties_view.rs:329
+#: src/widgets/properties_view.rs:326
 msgid "Image Coordinates Copied"
 msgstr "画像の位置情報の座標をコピーしました"
 
@@ -980,9 +991,12 @@ msgstr "焦点距離"
 msgid "Maker, Model"
 msgstr "メーカー、モデル名"
 
-#: src/widgets/window.rs:222
+#: src/widgets/window.rs:212
 msgid "Show Details"
 msgstr "詳細を表示"
+
+#~ msgid "{} %"
+#~ msgstr "{} %"
 
 #~ msgid "Copy to Clipboard"
 #~ msgstr "クリップボードにコピー"
@@ -998,9 +1012,6 @@ msgstr "詳細を表示"
 
 #~ msgid "Loupe"
 #~ msgstr "Loupe"
-
-#~ msgid "Failed to read image file information"
-#~ msgstr "画像ファイルの情報取得に失敗しました"
 
 #~ msgid "Failed to decode image"
 #~ msgstr "画像のデコードに失敗しました"
