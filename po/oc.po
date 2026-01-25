@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: po_gvfs-oc\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2026-01-01 21:17+0000\n"
-"PO-Revision-Date: 2026-01-02 22:54+0100\n"
+"POT-Creation-Date: 2026-01-21 21:23+0000\n"
+"PO-Revision-Date: 2026-01-25 18:31+0100\n"
 "Last-Translator: Quentin PAGÈS\n"
 "Language-Team: Tot En Òc\n"
 "Language: oc\n"
@@ -24,14 +24,14 @@ msgstr ""
 
 #: data/org.gnome.Loupe.desktop.in.in:2
 #: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:32
-#: src/widgets/image_window.rs:874
+#: src/widgets/image_window.rs:898
 msgid "Image Viewer"
 msgstr "Visionador d'imatges"
 
 #: data/org.gnome.Loupe.desktop.in.in:3
 #: data/org.gnome.Loupe.metainfo.xml.in.in:13
-msgid "View images"
-msgstr "Afichar los imatges"
+msgid "View and edit images"
+msgstr "Afichar modificar d’imatges"
 
 #: data/org.gnome.Loupe.desktop.in.in:11
 msgid "Picture;Graphics;Loupe;"
@@ -305,46 +305,46 @@ msgstr "Quentin PAGÈS"
 msgid "Copyright © 2020–2024 Christopher Davis et al."
 msgstr "Copyright © 2020–2024 Christopher Davis et al."
 
-#: src/file_model.rs:209
+#: src/file_model.rs:211
 msgid "Could not list other files in directory."
 msgstr "Impossible de listar los autres fichièrs del repertòri."
 
 #. Translators: Display of the f-number <https://en.wikipedia.org/wiki/F-number>. {} will be replaced with the number
-#: src/metadata.rs:255
+#: src/metadata.rs:256
 msgid "\\u{192}\\u{2215}{}"
 msgstr "\\u{192}\\u{2215}{}"
 
 #. Translators: Fractional exposure time (photography) in seconds
-#: src/metadata.rs:268
+#: src/metadata.rs:269
 msgid "1\\u{2215}{}\\u{202F}s"
 msgstr "1\\u{2215}{}\\u{202F}s"
 
 #. Translators: Exposure time (photography) in seconds
-#: src/metadata.rs:276
+#: src/metadata.rs:277
 msgid "{}\\u{202F}s"
 msgstr "{}\\u{202F}s"
 
-#: src/metadata.rs:290
+#: src/metadata.rs:291
 msgid "{}\\u{202F}mm"
 msgstr "{}\\u{202F}mm"
 
 #. Translators: short for "north" in GPS coordinate
-#: src/metadata.rs:330
+#: src/metadata.rs:331
 msgid "N"
 msgstr "N"
 
 #. Translators: short for "south" in GPS coordinate
-#: src/metadata.rs:334
+#: src/metadata.rs:335
 msgid "S"
 msgstr "S"
 
 #. Translators: short for "east" in GPS coordinate
-#: src/metadata.rs:343
+#: src/metadata.rs:344
 msgid "E"
 msgstr "È"
 
 #. Translators: short for "west" in GPS coordinate
-#: src/metadata.rs:347
+#: src/metadata.rs:348
 msgid "W"
 msgstr "O"
 
@@ -365,7 +365,7 @@ msgstr "Fracàs de la restauracion de l’imatge a partir de l’escobilhièr"
 msgid "Drop Image to View"
 msgstr "Depausar un imatge per l’afichar"
 
-#: src/widgets/edit/crop.rs:364
+#: src/widgets/edit/crop.rs:363
 msgid "Failed to Edit Image"
 msgstr "L'obtencion de la lista dels fichièrs a fracassat"
 
@@ -483,23 +483,23 @@ msgid_plural " (Edited {})"
 msgstr[0] " (Modificat)"
 msgstr[1] " ({} modificats)"
 
-#: src/widgets/edit_window.rs:294 src/widgets/edit_window.rs:320
+#: src/widgets/edit_window.rs:294 src/widgets/edit_window.rs:324
 msgid "Failed to save image."
 msgstr "L'obtencion de la lista dels fichièrs a fracassat."
 
-#: src/widgets/edit_window.rs:350
+#: src/widgets/edit_window.rs:354
 msgid "Editing Image"
 msgstr "Modificacion de l'imatge"
 
-#: src/widgets/edit_window.rs:367
+#: src/widgets/edit_window.rs:371
 msgid "Failed to edit image."
 msgstr "L'obtencion de la lista dels fichièrs a fracassat."
 
-#: src/widgets/edit_window.rs:377 src/widgets/edit_window.rs:400
+#: src/widgets/edit_window.rs:381 src/widgets/edit_window.rs:404
 msgid "Failed to Save Image"
 msgstr "L'obtencion de la lista dels fichièrs a fracassat"
 
-#: src/widgets/edit_window.rs:383
+#: src/widgets/edit_window.rs:387
 msgid "Saving Image"
 msgstr "Enregistrament de l’imatge"
 
@@ -561,7 +561,7 @@ msgstr "Copiar lo messatge d’error"
 msgid "Report _Issue"
 msgstr "Senhalar una _anomalia"
 
-#: src/widgets/image_page.rs:227
+#: src/widgets/image_page.rs:225
 #, rust-format
 msgid ""
 "No image loaders available. Maybe the “glycin-loaders” package with "
@@ -570,21 +570,26 @@ msgstr ""
 "Cap de cargador d’imatge pas disponible. Benlèu que lo paquet « glycin-"
 "loaders » amb la version de compatibilitat « {} » es pas installat."
 
-#: src/widgets/image_page.rs:242
+#: src/widgets/image_page.rs:243
 #, rust-format
 msgid "The image format “{} ({})” is known but not installed."
 msgstr "Lo format d’imatge « {} ({}) » es conegut mas pas installat."
 
-#: src/widgets/image_page.rs:249
+#: src/widgets/image_page.rs:251
 #, rust-format
 msgid "Unknown image format “{} ({}).”"
 msgstr "Formats d’imatge desconegut « {} ({}) »"
 
-#: src/widgets/image_page.rs:277
+#: src/widgets/image_page.rs:260
 msgid "There is not enough free memory available to load this image."
 msgstr "I a pas pro de memòria liura disponibla per cargar aqueste imatge."
 
-#: src/widgets/image_page.rs:281
+#: src/widgets/image_page.rs:267
+#, rust-format
+msgid "Failed to load image file: {}"
+msgstr "Fracàs del cargament del fichièr imatge : {}"
+
+#: src/widgets/image_page.rs:272
 msgid "Either the image file is corrupted or it contains unsupported elements."
 msgstr "Siá l’imatge es corromput siá content d’elements pas preses en carga."
 
@@ -630,92 +635,92 @@ msgstr "Pivotar cap a drecha"
 
 #. Translators: This is a toast notification, informing the user that
 #. an image has been set as background.
-#: src/widgets/image_view.rs:825
+#: src/widgets/image_view.rs:866
 msgid "Set as background."
 msgstr "Definir coma rèireplan."
 
-#: src/widgets/image_view.rs:831
+#: src/widgets/image_view.rs:872
 msgid "Could not set background."
 msgstr "Impossible de definir coma rèireplan."
 
-#: src/widgets/image_view.ui:30
+#: src/widgets/image_view.ui:26
 msgid "Previous Image"
 msgstr "Imatge precedent"
 
-#: src/widgets/image_view.ui:40
+#: src/widgets/image_view.ui:36
 msgid "Next Image"
 msgstr "Imatge seguent"
 
-#: src/widgets/image_view.ui:74
+#: src/widgets/image_view.ui:66
 msgid "Zoom Out"
 msgstr "Zoom arrièr"
 
-#: src/widgets/image_view.ui:85
+#: src/widgets/image_view.ui:77
 msgid "Zoom In"
 msgstr "Zoom avant"
 
-#: src/widgets/image_view.ui:100
+#: src/widgets/image_view.ui:92
 msgid "Toggle Zoom"
 msgstr "Alternar l’agrandiment"
 
-#: src/widgets/image_view.ui:108
+#: src/widgets/image_view.ui:100
 msgid "Zoom to Specific Level"
 msgstr "Agrandir a un nivèl especific"
 
-#: src/widgets/image_view.ui:237
+#: src/widgets/image_view.ui:229
 msgid "Custom Zoom Level"
 msgstr "Nivèl d’agrandiment personalizat"
 
-#: src/widgets/image_view.ui:243
+#: src/widgets/image_view.ui:235
 msgid "Zoom to Specified Level"
 msgstr "Agrandir a un nivèl especificat"
 
-#: src/widgets/image_window.rs:503
+#: src/widgets/image_window.rs:527
 msgid "Supported image formats"
 msgstr "Format d'imatge suportats"
 
-#: src/widgets/image_window.rs:509
+#: src/widgets/image_window.rs:533
 msgid "All files"
 msgstr "Totes los fichièrs"
 
-#: src/widgets/image_window.rs:516
+#: src/widgets/image_window.rs:540
 msgid "Open Image"
 msgstr "Dobrir un imatge"
 
-#: src/widgets/image_window.rs:609
+#: src/widgets/image_window.rs:633
 msgid "Image copied to clipboard"
 msgstr "Imatge copiat al quichapapièrs"
 
-#: src/widgets/image_window.rs:630
+#: src/widgets/image_window.rs:654
 msgid "Image moved to trash"
 msgstr "Imatge desplaçat a l'escobilhièr"
 
-#: src/widgets/image_window.rs:631
+#: src/widgets/image_window.rs:655
 msgid "Undo"
 msgstr "Desfar"
 
-#: src/widgets/image_window.rs:661
+#: src/widgets/image_window.rs:685
 msgid "Failed to move image to trash"
 msgstr "Impossible de desplaçar l’imatge cap a l'escobilhièr"
 
-#: src/widgets/image_window.rs:685
+#: src/widgets/image_window.rs:709
 msgid "Permanently Delete Image?"
 msgstr "Suprimir l’imatge irreversiblament ?"
 
-#: src/widgets/image_window.rs:687
+#: src/widgets/image_window.rs:711
 #, rust-format
 msgid "After deleting the image “{}” it will be permanently lost."
 msgstr "Après la supression l’imatge « {} » serà perdut per totjorn."
 
-#: src/widgets/image_window.rs:695
+#: src/widgets/image_window.rs:719
 msgid "Cancel"
 msgstr "Anullar"
 
-#: src/widgets/image_window.rs:696
+#: src/widgets/image_window.rs:720
 msgid "Delete"
 msgstr "Suprimir"
 
-#: src/widgets/image_window.rs:707
+#: src/widgets/image_window.rs:731
 msgid "Failed to delete image"
 msgstr "Impossible de suprimir l’imatge"
 
@@ -756,8 +761,8 @@ msgid "Edit Image"
 msgstr "Modificar l'imatge"
 
 #: src/widgets/image_window.ui:220
-msgid "View Images"
-msgstr "Afichar los imatges"
+msgid "View and Edit Images"
+msgstr "Afichar modificar d’imatges"
 
 #: src/widgets/image_window.ui:221
 msgid "Drag and drop images here"
@@ -767,60 +772,60 @@ msgstr "Lissar e depausar los imatges aicí"
 msgid "_Open Files…"
 msgstr "_Dobrir los fichièrs…"
 
-#: src/widgets/print.rs:108
+#: src/widgets/print.rs:109
 msgid "Top"
 msgstr "Amont"
 
-#: src/widgets/print.rs:109
+#: src/widgets/print.rs:110
 msgid "Center"
 msgstr "Centre"
 
-#: src/widgets/print.rs:110
+#: src/widgets/print.rs:111
 msgid "Bottom"
 msgstr "Val"
 
-#: src/widgets/print.rs:111
+#: src/widgets/print.rs:112
 msgid "Left"
 msgstr "Esquèrra"
 
-#: src/widgets/print.rs:112
+#: src/widgets/print.rs:113
 msgid "Right"
 msgstr "Drecha"
 
 #. Translators: Shorthand for centimeter
-#: src/widgets/print.rs:148
+#: src/widgets/print.rs:149
 msgid "cm"
 msgstr "cm"
 
 #. Translators: Shorthand for inch
-#: src/widgets/print.rs:150
+#: src/widgets/print.rs:151
 msgid "in"
 msgstr "in"
 
 #. Translators: Shorthand for pixel
-#: src/widgets/print.rs:152
+#: src/widgets/print.rs:153
 msgid "px"
 msgstr "px"
 
 #. Translators: {} is a placeholder for the filename
-#: src/widgets/print.rs:361
+#: src/widgets/print.rs:364
 #, rust-format
 msgid "Print “{}”"
 msgstr "Imprimir « {} »"
 
-#: src/widgets/print.rs:476
+#: src/widgets/print.rs:479
 msgid "Continue…"
 msgstr "Contunhar…"
 
-#: src/widgets/print.rs:477
+#: src/widgets/print.rs:480
 msgid "Print Image"
 msgstr "Imprimir l’imatge"
 
-#: src/widgets/print.rs:791
+#: src/widgets/print.rs:799
 msgid "_Scale"
 msgstr "_Escala"
 
-#: src/widgets/print.rs:794
+#: src/widgets/print.rs:802
 msgid "_Width"
 msgstr "_Largor"
 
