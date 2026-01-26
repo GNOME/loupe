@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2025-09-10 21:40+0000\n"
-"PO-Revision-Date: 2025-10-24 11:13-0400\n"
+"POT-Creation-Date: 2026-01-21 21:23+0000\n"
+"PO-Revision-Date: 2026-01-26 09:59-0500\n"
 "Last-Translator: Abduqadir Abliz <sahranbay@gmail.com>\n"
 "Language-Team: \n"
 "Language: ug\n"
@@ -18,13 +18,16 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 3.8\n"
 
-#: data/org.gnome.Loupe.desktop.in.in:2 data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:32 src/widgets/image_window.rs:867
+#: data/org.gnome.Loupe.desktop.in.in:2
+#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:32
+#: src/widgets/image_window.rs:898
 msgid "Image Viewer"
 msgstr "سۈرەت كۆرگۈ"
 
-#: data/org.gnome.Loupe.desktop.in.in:3 data/org.gnome.Loupe.metainfo.xml.in.in:13
-msgid "View images"
-msgstr "سۈرەت كۆرسەت"
+#: data/org.gnome.Loupe.desktop.in.in:3
+#: data/org.gnome.Loupe.metainfo.xml.in.in:13
+msgid "View and edit images"
+msgstr "سۈرەتنى كۆرسىتىپ ۋە تەھرىرلەيدۇ"
 
 #: data/org.gnome.Loupe.desktop.in.in:11
 msgid "Picture;Graphics;Loupe;"
@@ -41,7 +44,8 @@ msgstr "GNOME قۇرۇلۇشى"
 
 #: data/org.gnome.Loupe.metainfo.xml.in.in:15
 msgid "Browse through your images and inspect their metadata with:"
-msgstr "سۈرەتلىرىڭىزگە كۆز يۈگۈرتۈپ، ئۇلارنىڭ تەپسىلىي سانلىق مەلۇماتىنى تەكشۈرىدۇ:"
+msgstr ""
+"سۈرەتلىرىڭىزگە كۆز يۈگۈرتۈپ، ئۇلارنىڭ تەپسىلىي سانلىق مەلۇماتىنى تەكشۈرىدۇ:"
 
 #: data/org.gnome.Loupe.metainfo.xml.in.in:17
 msgid "Fast GPU accelerated image rendering"
@@ -119,12 +123,16 @@ msgctxt "shortcut window"
 msgid "Navigate Images"
 msgstr "سۈرەتكە يول باشلايدۇ"
 
-#: data/resources/gtk/help-overlay.ui:80 data/resources/gtk/help-overlay.ui:94 data/resources/gtk/help-overlay.ui:235 data/resources/gtk/help-overlay.ui:249
+#: data/resources/gtk/help-overlay.ui:80 data/resources/gtk/help-overlay.ui:94
+#: data/resources/gtk/help-overlay.ui:235
+#: data/resources/gtk/help-overlay.ui:249
 msgctxt "shortcut window"
 msgid "Next Image"
 msgstr "كېيىنكى سۈرەت"
 
-#: data/resources/gtk/help-overlay.ui:87 data/resources/gtk/help-overlay.ui:101 data/resources/gtk/help-overlay.ui:242 data/resources/gtk/help-overlay.ui:256
+#: data/resources/gtk/help-overlay.ui:87 data/resources/gtk/help-overlay.ui:101
+#: data/resources/gtk/help-overlay.ui:242
+#: data/resources/gtk/help-overlay.ui:256
 msgctxt "shortcut window"
 msgid "Previous Image"
 msgstr "ئالدىنقى سۈرەت"
@@ -144,12 +152,16 @@ msgctxt "shortcut window"
 msgid "Rotate Image"
 msgstr "سۈرەت ئايلاندۇرىدۇ"
 
-#: data/resources/gtk/help-overlay.ui:124 data/resources/gtk/help-overlay.ui:274 data/resources/gtk/help-overlay.ui:315
+#: data/resources/gtk/help-overlay.ui:124
+#: data/resources/gtk/help-overlay.ui:274
+#: data/resources/gtk/help-overlay.ui:315
 msgctxt "shortcut window"
 msgid "Rotate Clockwise"
 msgstr "سائەت يۆنىلىشىدە ئايلاندۇر"
 
-#: data/resources/gtk/help-overlay.ui:130 data/resources/gtk/help-overlay.ui:280 data/resources/gtk/help-overlay.ui:321
+#: data/resources/gtk/help-overlay.ui:130
+#: data/resources/gtk/help-overlay.ui:280
+#: data/resources/gtk/help-overlay.ui:321
 msgctxt "shortcut window"
 msgid "Rotate Counterclockwise"
 msgstr "سائەتكە قارشى يۆنىلىشتە ئايلاندۇر"
@@ -159,12 +171,14 @@ msgctxt "shortcut window"
 msgid "Zoom Image"
 msgstr "سۈرەت چوڭلۇقى"
 
-#: data/resources/gtk/help-overlay.ui:141 data/resources/gtk/help-overlay.ui:262
+#: data/resources/gtk/help-overlay.ui:141
+#: data/resources/gtk/help-overlay.ui:262
 msgctxt "shortcut window"
 msgid "Zoom In"
 msgstr "يېقىنلات"
 
-#: data/resources/gtk/help-overlay.ui:147 data/resources/gtk/help-overlay.ui:268
+#: data/resources/gtk/help-overlay.ui:147
+#: data/resources/gtk/help-overlay.ui:268
 msgctxt "shortcut window"
 msgid "Zoom Out"
 msgstr "يىراقلات"
@@ -291,59 +305,59 @@ msgstr ""
 msgid "Copyright © 2020–2024 Christopher Davis et al."
 msgstr "نەشر ھوقۇقى © 2020–2024 Christopher Davis قاتارلىقلارغا تەۋە."
 
-#: src/file_model.rs:180
+#: src/file_model.rs:211
 msgid "Could not list other files in directory."
 msgstr "مۇندەرىجىدىكى باشقا ھۆججەتنى تىزىپ كۆرسىتەلمەيدۇ."
 
 #. Translators: Display of the f-number <https://en.wikipedia.org/wiki/F-number>. {} will be replaced with the number
-#: src/metadata.rs:263
+#: src/metadata.rs:256
 msgid "\\u{192}\\u{2215}{}"
 msgstr "\\u{192}\\u{2215}{}"
 
 #. Translators: Fractional exposure time (photography) in seconds
-#: src/metadata.rs:276
+#: src/metadata.rs:269
 msgid "1\\u{2215}{}\\u{202F}s"
 msgstr "1\\u{2215}{}\\u{202F}s"
 
 #. Translators: Exposure time (photography) in seconds
-#: src/metadata.rs:284
+#: src/metadata.rs:277
 msgid "{}\\u{202F}s"
 msgstr "{}\\u{202F}s"
 
-#: src/metadata.rs:298
+#: src/metadata.rs:291
 msgid "{}\\u{202F}mm"
 msgstr "{}\\u{202F}mm"
 
 #. Translators: short for "north" in GPS coordinate
-#: src/metadata.rs:338
+#: src/metadata.rs:331
 msgid "N"
 msgstr "شى"
 
 #. Translators: short for "south" in GPS coordinate
-#: src/metadata.rs:342
+#: src/metadata.rs:335
 msgid "S"
 msgstr "جە"
 
 #. Translators: short for "east" in GPS coordinate
-#: src/metadata.rs:351
+#: src/metadata.rs:344
 msgid "E"
 msgstr "شە"
 
 #. Translators: short for "west" in GPS coordinate
-#: src/metadata.rs:355
+#: src/metadata.rs:348
 msgid "W"
 msgstr "غە"
 
+#. / Returns localized date + time format
 #. Translators: This is the date and time format we use in metadata output etc.
 #. The format has to follow <https://docs.gtk.org/glib/method.DateTime.format.html>
 #. The default is already translated. Don't change if you are not sure what to
 #. use.
 #: src/util.rs:39
-#, c-format
 msgid "%x %X"
 msgstr "%x %X"
 
-#: src/util.rs:182 src/widgets/image_window.rs:639
+#: src/util.rs:182
 msgid "Failed to restore image from trash"
 msgstr "ئەخلەتخانىدىن سۈرەتنى ئەسلىگە كەلتۈرەلمىدى"
 
@@ -351,7 +365,7 @@ msgstr "ئەخلەتخانىدىن سۈرەتنى ئەسلىگە كەلتۈرە�
 msgid "Drop Image to View"
 msgstr "كۆرۈشتە سۈرەت سۆرەپ تاشلىنىدۇ"
 
-#: src/widgets/edit/crop.rs:364
+#: src/widgets/edit/crop.rs:363
 msgid "Failed to Edit Image"
 msgstr "سۈرەتنى تەھرىرلىيەلمىدى"
 
@@ -423,7 +437,8 @@ msgstr "توغرىسىغا"
 msgid "Orientation Portrait"
 msgstr "بويىغا"
 
-#: src/widgets/edit/crop.ui:252 src/widgets/image_page.ui:15 src/widgets/image_window.ui:25
+#: src/widgets/edit/crop.ui:252 src/widgets/image_page.ui:15
+#: src/widgets/image_window.ui:25
 msgid "Rotate"
 msgstr "ئايلاندۇر"
 
@@ -461,29 +476,30 @@ msgstr "تاللىغاننى قايچىلا"
 
 #. Translators: Filename suffix
 #. Translators: Filename suffix, {} is replaced by a number
-#: src/widgets/edit_window.rs:192 src/widgets/edit_window.rs:195
+#: src/widgets/edit_window.rs:196 src/widgets/edit_window.rs:199
+#, rust-format
 msgid " (Edited)"
 msgid_plural " (Edited {})"
 msgstr[0] " ({} تەھرىرلەندى)"
 msgstr[1] " ({} تەھرىرلەندى)"
 
-#: src/widgets/edit_window.rs:290 src/widgets/edit_window.rs:316
+#: src/widgets/edit_window.rs:294 src/widgets/edit_window.rs:324
 msgid "Failed to save image."
 msgstr "سۈرەتنى ساقلىيالمىدى."
 
-#: src/widgets/edit_window.rs:346
+#: src/widgets/edit_window.rs:354
 msgid "Editing Image"
 msgstr "سۈرەت تەھرىرلەۋاتىدۇ"
 
-#: src/widgets/edit_window.rs:363
+#: src/widgets/edit_window.rs:371
 msgid "Failed to edit image."
 msgstr "سۈرەتنى تەھرىرلىيەلمىدى."
 
-#: src/widgets/edit_window.rs:373 src/widgets/edit_window.rs:396
+#: src/widgets/edit_window.rs:381 src/widgets/edit_window.rs:404
 msgid "Failed to Save Image"
 msgstr "سۈرەتنى ساقلىيالمىدى"
 
-#: src/widgets/edit_window.rs:379
+#: src/widgets/edit_window.rs:387
 msgid "Saving Image"
 msgstr "سۈرەتنى ساقلاۋاتىدۇ"
 
@@ -512,8 +528,12 @@ msgid "Original image will be moved to the trash"
 msgstr "ئەسلى سۈرەتنى ئەخلەتخانىغا يۆتكىۋېتىدۇ"
 
 #: src/widgets/error_details.rs:80
-msgid "The following error occurred. If you think this is an issue with the program, please include this information when you report the error."
-msgstr "تۆۋەندىكى خاتالىق كۆرۈلدى. ئەگەر بۇنى پىروگراممىنىڭ مەسىلىسى دەپ قارىسىڭىز، خاتالىقنى مەلۇم قىلغاندا بۇ ئۇچۇرنى قوشۇپ ئەۋەتىڭ."
+msgid ""
+"The following error occurred. If you think this is an issue with the "
+"program, please include this information when you report the error."
+msgstr ""
+"تۆۋەندىكى خاتالىق كۆرۈلدى. ئەگەر بۇنى پىروگراممىنىڭ مەسىلىسى دەپ قارىسىڭىز، "
+"خاتالىقنى مەلۇم قىلغاندا بۇ ئۇچۇرنى قوشۇپ ئەۋەتىڭ."
 
 #: src/widgets/error_details.ui:4
 msgid "Error Details"
@@ -521,8 +541,13 @@ msgstr "خاتالىق تەپسىلاتى"
 
 #: src/widgets/error_details.ui:19
 msgid ""
-"The image loader reported the following when trying to load or edit the image. Please include this information when you report an error. If possible, please also provide the image that causes the issue."
-msgstr "سۈرەتنى يۈكلەپ تەھرىرلەشنى سىناۋاتقاندا سۈرەت يۈكلىگۈچ تۆۋەندىكى مەزمۇننى مەلۇم قىلدى. خاتالىقنى مەلۇم قىلغاندا بۇ ئۇچۇرلارنى قوشۇڭ. ئەگەر مۇمكىن بولسا، مەسىلە يۈز بەرگەن ۋاقىتتىكى سۈرەتنى تەمىنلەڭ."
+"The image loader reported the following when trying to load or edit the "
+"image. Please include this information when you report an error. If "
+"possible, please also provide the image that causes the issue."
+msgstr ""
+"سۈرەتنى يۈكلەپ تەھرىرلەشنى سىناۋاتقاندا سۈرەت يۈكلىگۈچ تۆۋەندىكى مەزمۇننى "
+"مەلۇم قىلدى. خاتالىقنى مەلۇم قىلغاندا بۇ ئۇچۇرلارنى قوشۇڭ. ئەگەر مۇمكىن "
+"بولسا، مەسىلە يۈز بەرگەن ۋاقىتتىكى سۈرەتنى تەمىنلەڭ."
 
 #: src/widgets/error_details.ui:24
 msgid "Error Message"
@@ -536,23 +561,35 @@ msgstr "خاتالىق ئۇچۇرىنى كۆچۈر"
 msgid "Report _Issue"
 msgstr "مەسىلە دوكلاتى(_I)"
 
-#: src/widgets/image_page.rs:227
-msgid "No image loaders available. Maybe the “glycin-loaders” package with compatibility version “{}” is not installed."
-msgstr "ھېچقانداق سۈرەت يۈكلىگۈچ يوق. بەلكىم ماسلىشىشچان نەشرى «{}» نىڭ  «glycin-loaders» بوغچىسى ئورنىتىلمىغان بولۇشى مۇمكىن."
+#: src/widgets/image_page.rs:225
+#, rust-format
+msgid ""
+"No image loaders available. Maybe the “glycin-loaders” package with "
+"compatibility version “{}” is not installed."
+msgstr ""
+"ھېچقانداق سۈرەت يۈكلىگۈچ يوق. بەلكىم ماسلىشىشچان نەشرى «{}» نىڭ  «glycin-"
+"loaders» بوغچىسى ئورنىتىلمىغان بولۇشى مۇمكىن."
 
-#: src/widgets/image_page.rs:242
+#: src/widgets/image_page.rs:243
+#, rust-format
 msgid "The image format “{} ({})” is known but not installed."
 msgstr "سۈرەت پىچىمى «{} ({})» مەلۇم قىلىنغان ئەمما ئورنىتىلمىغان."
 
-#: src/widgets/image_page.rs:249
+#: src/widgets/image_page.rs:251
+#, rust-format
 msgid "Unknown image format “{} ({}).”"
 msgstr "يوچۇن سۈرەت پىچىمى «{} ({}).»"
 
-#: src/widgets/image_page.rs:277
+#: src/widgets/image_page.rs:260
 msgid "There is not enough free memory available to load this image."
 msgstr "بۇ سۈرەتنى يۈكلەشكە يېتەرلىك بوش ئەسلەك يوق."
 
-#: src/widgets/image_page.rs:281
+#: src/widgets/image_page.rs:267
+#, rust-format
+msgid "Failed to load image file: {}"
+msgstr "سۈرەت ھۆججەتنى يۈكلىيەلمىدى: {}"
+
+#: src/widgets/image_page.rs:272
 msgid "Either the image file is corrupted or it contains unsupported elements."
 msgstr "سۈرەت ھۆججەت بۇزۇلغان ياكى ئۇنىڭدا قوللىمايدىغان ئېلېمېنت بار."
 
@@ -596,97 +633,94 @@ msgstr "سولغا ئايلاندۇر"
 msgid "Rotate Right"
 msgstr "ئوڭغا ئايلاندۇر"
 
-#: src/widgets/image_view.rs:197
-msgid "{} %"
-msgstr "{} %"
-
 #. Translators: This is a toast notification, informing the user that
 #. an image has been set as background.
-#: src/widgets/image_view.rs:836
+#: src/widgets/image_view.rs:866
 msgid "Set as background."
 msgstr "تەگلىككە تەڭشەيدۇ."
 
-#: src/widgets/image_view.rs:849
+#: src/widgets/image_view.rs:872
 msgid "Could not set background."
 msgstr "تەگلىككە تەڭشىيەلمىدى."
 
-#: src/widgets/image_view.ui:30
+#: src/widgets/image_view.ui:26
 msgid "Previous Image"
 msgstr "ئالدىنقى سۈرەت"
 
-#: src/widgets/image_view.ui:40
+#: src/widgets/image_view.ui:36
 msgid "Next Image"
 msgstr "كېيىنكى سۈرەت"
 
-#: src/widgets/image_view.ui:74
+#: src/widgets/image_view.ui:66
 msgid "Zoom Out"
 msgstr "يىراقلات"
 
-#: src/widgets/image_view.ui:85
+#: src/widgets/image_view.ui:77
 msgid "Zoom In"
 msgstr "يېقىنلات"
 
-#: src/widgets/image_view.ui:100
+#: src/widgets/image_view.ui:92
 msgid "Toggle Zoom"
 msgstr "نىسبىتىنى ئالماشتۇر"
 
-#: src/widgets/image_view.ui:108
+#: src/widgets/image_view.ui:100
 msgid "Zoom to Specific Level"
 msgstr "بەلگىلەنگەن دەرىجە نىسبىتى"
 
-#: src/widgets/image_view.ui:237
+#: src/widgets/image_view.ui:229
 msgid "Custom Zoom Level"
 msgstr "ئىختىيارى نىسبەت دەرىجىسى"
 
-#: src/widgets/image_view.ui:243
+#: src/widgets/image_view.ui:235
 msgid "Zoom to Specified Level"
 msgstr "بەلگىلەنگەن دەرىجە نىسبىتىگە"
 
-#: src/widgets/image_window.rs:503
+#: src/widgets/image_window.rs:527
 msgid "Supported image formats"
 msgstr "قوللايدىغان سۈرەت پىچىمى"
 
-#: src/widgets/image_window.rs:509
+#: src/widgets/image_window.rs:533
 msgid "All files"
 msgstr "ھەممە ھۆججەت"
 
-#: src/widgets/image_window.rs:516
+#: src/widgets/image_window.rs:540
 msgid "Open Image"
 msgstr "سۈرەت ئاچ"
 
-#: src/widgets/image_window.rs:602
+#: src/widgets/image_window.rs:633
 msgid "Image copied to clipboard"
 msgstr "سۈرەت چاپلاش تاختىسىغا كۆچۈرۈلدى"
 
-#: src/widgets/image_window.rs:623
+#: src/widgets/image_window.rs:654
 msgid "Image moved to trash"
 msgstr "سۈرەت ئەخلەتخانىغا يۆتكەلدى"
 
-#: src/widgets/image_window.rs:624
+#: src/widgets/image_window.rs:655
 msgid "Undo"
 msgstr "يېنىۋال"
 
-#: src/widgets/image_window.rs:654
+#: src/widgets/image_window.rs:685
 msgid "Failed to move image to trash"
 msgstr "سۈرەتنى ئەخلەتخانىغا يۆتكىيەلمىدى"
 
-#: src/widgets/image_window.rs:678
+#: src/widgets/image_window.rs:709
 msgid "Permanently Delete Image?"
 msgstr "سۈرەتنى مەڭگۈلۈك ئۆچۈرەمدۇ؟"
 
-#: src/widgets/image_window.rs:680
+#: src/widgets/image_window.rs:711
+#, rust-format
 msgid "After deleting the image “{}” it will be permanently lost."
 msgstr "سۈرەت «{}» ئۆچۈرۈلگەندىن كېيىن مەڭگۈلۈك يوقىلىدۇ."
 
-#: src/widgets/image_window.rs:688
+#: src/widgets/image_window.rs:719
 msgid "Cancel"
 msgstr "ۋاز كەچ"
 
-#: src/widgets/image_window.rs:689
+#: src/widgets/image_window.rs:720
 msgid "Delete"
 msgstr "ئۆچۈر"
 
-#: src/widgets/image_window.rs:700
+#: src/widgets/image_window.rs:731
 msgid "Failed to delete image"
 msgstr "سۈرەتنى ئۆچۈرەلمىدى"
 
@@ -727,8 +761,8 @@ msgid "Edit Image"
 msgstr "سۈرەت تەھرىرلەش"
 
 #: src/widgets/image_window.ui:220
-msgid "View Images"
-msgstr "سۈرەت كۆرسەت"
+msgid "View and Edit Images"
+msgstr "سۈرەتنى كۆرسىتىپ ۋە تەھرىرلەيدۇ"
 
 #: src/widgets/image_window.ui:221
 msgid "Drag and drop images here"
@@ -738,59 +772,60 @@ msgstr "سۈرەت بۇ جايغا سۆرەپ تاشلىنىدۇ"
 msgid "_Open Files…"
 msgstr "ھۆججەت ئاچ(_O)…"
 
-#: src/widgets/print.rs:108
+#: src/widgets/print.rs:109
 msgid "Top"
 msgstr "ئۈستى"
 
-#: src/widgets/print.rs:109
+#: src/widgets/print.rs:110
 msgid "Center"
 msgstr "مەركەز"
 
-#: src/widgets/print.rs:110
+#: src/widgets/print.rs:111
 msgid "Bottom"
 msgstr "ئاستى"
 
-#: src/widgets/print.rs:111
+#: src/widgets/print.rs:112
 msgid "Left"
 msgstr "سول"
 
-#: src/widgets/print.rs:112
+#: src/widgets/print.rs:113
 msgid "Right"
 msgstr "ئوڭ"
 
 #. Translators: Shorthand for centimeter
-#: src/widgets/print.rs:148
+#: src/widgets/print.rs:149
 msgid "cm"
 msgstr "cm"
 
 #. Translators: Shorthand for inch
-#: src/widgets/print.rs:150
+#: src/widgets/print.rs:151
 msgid "in"
 msgstr "in"
 
 #. Translators: Shorthand for pixel
-#: src/widgets/print.rs:152
+#: src/widgets/print.rs:153
 msgid "px"
 msgstr "px"
 
 #. Translators: {} is a placeholder for the filename
-#: src/widgets/print.rs:361
+#: src/widgets/print.rs:364
+#, rust-format
 msgid "Print “{}”"
 msgstr "«{}» نى باس"
 
-#: src/widgets/print.rs:476
+#: src/widgets/print.rs:479
 msgid "Continue…"
 msgstr "داۋاملاشتۇر…"
 
-#: src/widgets/print.rs:477
+#: src/widgets/print.rs:480
 msgid "Print Image"
 msgstr "سۈرەت باس"
 
-#: src/widgets/print.rs:791
+#: src/widgets/print.rs:799
 msgid "_Scale"
 msgstr "كۆرسىتىش نىسبىتى(_S)"
 
-#: src/widgets/print.rs:794
+#: src/widgets/print.rs:802
 msgid "_Width"
 msgstr "كەڭلىك(_W)"
 
@@ -878,7 +913,7 @@ msgstr ", {}\\u{202F}bit"
 msgid "{}\\u{202F}\\u{D7}\\u{202F}{}"
 msgstr "{}\\u{202F}\\u{D7}\\u{202F}{}"
 
-#: src/widgets/properties_view.rs:329
+#: src/widgets/properties_view.rs:326
 msgid "Image Coordinates Copied"
 msgstr "سۈرەتنىڭ كوردىناتى كۆچۈرۈلدى"
 
@@ -951,6 +986,9 @@ msgstr "فوكۇس ئارىلىقى"
 msgid "Maker, Model"
 msgstr "ياسىغۇچى، تىپى"
 
-#: src/widgets/window.rs:222
+#: src/widgets/window.rs:212
 msgid "Show Details"
 msgstr "تەپسىلاتىنى كۆرسەت"
+
+#~ msgid "{} %"
+#~ msgstr "{} %"
