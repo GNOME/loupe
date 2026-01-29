@@ -85,12 +85,6 @@ mod imp {
         fn class_init(klass: &mut Self::Class) {
             Self::bind_template(klass);
 
-            klass.add_binding_action(
-                gdk::Key::question,
-                gdk::ModifierType::CONTROL_MASK,
-                "app.shortcts",
-            );
-
             WindowAction::init_actions_and_bindings(klass);
 
             ActionPartGlobal::init_actions_and_bindings(klass);
