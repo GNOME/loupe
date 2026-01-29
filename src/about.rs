@@ -1,10 +1,9 @@
-// Copyright (c) 2023-2025 Sophie Herold
+// Copyright (c) 2023-2026 Sophie Herold
 // Copyright (c) 2023 Automeris naranja
 // Copyright (c) 2023 Christopher Davis
 // Copyright (c) 2024 Andre Klapper
 // Copyright (c) 2024 Dexter Reed
 // Copyright (c) 2025 sid
-// Copyright (c) 2026 Not Committed Yet
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
