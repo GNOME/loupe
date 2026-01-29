@@ -115,7 +115,7 @@ cargo-test:
         cargo test
       END
 
-cargo-audit:
+cargo-deny-check:
   interruptible: true
   image: rust
   allow_failure: true
