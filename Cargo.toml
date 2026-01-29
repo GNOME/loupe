@@ -1,6 +1,6 @@
 [package]
 name = "loupe"
-version = "50.0.0-alpha"
+version = "50.0.0-beta"
 edition = "2024"
 rust-version = "1.92"
 license = "GPL-3.0-or-later"
