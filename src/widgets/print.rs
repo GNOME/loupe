@@ -388,17 +388,15 @@ mod imp {
                 .set_value(size_unit.round(obj.original_size().0 * obj.width_unit_factor()));
 
             // Default to inch for USA and Liberia
-            if let Some(unit_locale) = getlocale(gettextrs::LocaleCategory::LcMeasurement) {
-                if let Some(locale) = unit_locale
+            if let Some(unit_locale) = getlocale(gettextrs::LocaleCategory::LcMeasurement)
+                && let Some(locale) = unit_locale
                     .split(|x| *x == b'_')
                     .nth(1)
                     .and_then(|x| x.get(0..2))
-                {
-                    if locale == b"US" || locale == b"LR" {
-                        imp.margin_unit.set_selected(Unit::Inch as u32);
-                        imp.size_unit.set_selected(Unit::Inch as u32);
-                    }
-                }
+                && (locale == b"US" || locale == b"LR")
+            {
+                imp.margin_unit.set_selected(Unit::Inch as u32);
+                imp.size_unit.set_selected(Unit::Inch as u32);
             }
 
             let orientation = match obj.page_setup().orientation() {

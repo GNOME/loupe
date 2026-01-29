@@ -303,10 +303,10 @@ mod imp {
                 #[weak]
                 obj,
                 move |_| {
-                    if let Some(page) = obj.current_page() {
-                        if let Some(value) = obj.zoom_value_f64() {
-                            page.image().zoom_to_no_best_fit(value);
-                        }
+                    if let Some(page) = obj.current_page()
+                        && let Some(value) = obj.zoom_value_f64()
+                    {
+                        page.image().zoom_to_no_best_fit(value);
                     }
                 }
             ));
@@ -717,13 +717,13 @@ impl LpImageView {
     /// Handle files are added or removed from directory
     fn model_content_changed_cb(&self, file_event: &FileEvent) {
         // Animate to image that was restored from trash
-        if let Some(trash_restore) = self.trash_restore() {
-            if self.model().contains_file(&trash_restore) {
-                self.set_trash_restore(gio::File::NONE);
-                self.update_sliding_view(&trash_restore);
-                self.scroll_sliding_view(&trash_restore, true);
-                return;
-            }
+        if let Some(trash_restore) = self.trash_restore()
+            && self.model().contains_file(&trash_restore)
+        {
+            self.set_trash_restore(gio::File::NONE);
+            self.update_sliding_view(&trash_restore);
+            self.scroll_sliding_view(&trash_restore, true);
+            return;
         }
 
         let Some(current_file) = self.current_file() else {
@@ -742,10 +742,10 @@ impl LpImageView {
                     page.image().init(&target_file);
                 }
                 // File that delayed move is set for is now available
-                if let Some(delayed_current_file) = self.delayed_current_file() {
-                    if target_file.equal(&delayed_current_file) {
-                        self.navigate_to_file(&delayed_current_file);
-                    }
+                if let Some(delayed_current_file) = self.delayed_current_file()
+                    && target_file.equal(&delayed_current_file)
+                {
+                    self.navigate_to_file(&delayed_current_file);
                 }
             }
             FileEvent::New(new) => {

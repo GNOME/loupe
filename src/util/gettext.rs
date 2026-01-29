@@ -63,10 +63,11 @@ pub fn apply_unicode_escapes(s: impl AsRef<str>) -> Option<String> {
     while let Some(c) = char_iter.next() {
         match state {
             State::None if c == '\\' => {
-                if let (Some(c1), Some(c2)) = (char_iter.next(), char_iter.next()) {
-                    if c1 == 'u' && c2 == '{' {
-                        state = State::UnicodeHex;
-                    }
+                if let (Some(c1), Some(c2)) = (char_iter.next(), char_iter.next())
+                    && c1 == 'u'
+                    && c2 == '{'
+                {
+                    state = State::UnicodeHex;
                 }
             }
             State::None => new.push(c),

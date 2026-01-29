@@ -186,19 +186,19 @@ impl imp::LpImage {
     }
 
     pub(super) fn request_tiles(&self) {
-        if let Some(decoder) = self.decoder.borrow().as_ref() {
-            if self.zoom_animation().state() != adw::AnimationState::Playing {
-                // Force minimum tile size of 1000x1000 since with smaller
-                // tiles the tiled rendering advantage disappears
-                let x_inset = f32::min(-3., (self.viewport().width() - 1000.) / 2.);
-                let y_inset = f32::min(-3., (self.viewport().height() - 1000.) / 2.);
+        if let Some(decoder) = self.decoder.borrow().as_ref()
+            && self.zoom_animation().state() != adw::AnimationState::Playing
+        {
+            // Force minimum tile size of 1000x1000 since with smaller
+            // tiles the tiled rendering advantage disappears
+            let x_inset = f32::min(-3., (self.viewport().width() - 1000.) / 2.);
+            let y_inset = f32::min(-3., (self.viewport().height() - 1000.) / 2.);
 
-                decoder.request(crate::decoder::TileRequest {
-                    viewport: self.viewport().inset_r(x_inset, y_inset),
-                    area: self.preload_area(),
-                    zoom: self.zoom_target.get(),
-                });
-            }
+            decoder.request(crate::decoder::TileRequest {
+                viewport: self.viewport().inset_r(x_inset, y_inset),
+                area: self.preload_area(),
+                zoom: self.zoom_target.get(),
+            });
         }
     }
 
@@ -287,19 +287,16 @@ impl imp::LpImage {
     async fn check_editable(&self) {
         let obj = self.obj();
 
-        if let Some(mime_type) = obj.metadata().mime_type() {
-            if let Ok(supported_formats) = glycin::config::Config::cached()
+        if let Some(mime_type) = obj.metadata().mime_type()
+            && let Ok(supported_formats) = glycin::config::Config::cached()
                 .await
                 .editor(&mime_type.as_str().into())
-            {
-                if LpEditWindow::REQUIRED_OPERATIONS
-                    .iter()
-                    .all(|x| supported_formats.operations.contains(x))
-                {
-                    self.editable.set(true);
-                    obj.notify_editable();
-                }
-            }
+            && LpEditWindow::REQUIRED_OPERATIONS
+                .iter()
+                .all(|x| supported_formats.operations.contains(x))
+        {
+            self.editable.set(true);
+            obj.notify_editable();
         };
     }
 }

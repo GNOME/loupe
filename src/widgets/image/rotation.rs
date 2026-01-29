@@ -104,14 +104,14 @@ impl LpImage {
             zoom_animation.play();
         }
 
-        if let Ok(r) = gufo_common::orientation::Rotation::try_from(angle) {
-            if r != gufo_common::orientation::Rotation::_0 {
-                tracing::debug!("Editing image to rotate by {r:?}");
-                let operation = glycin::Operation::Rotate(r);
-                let editing_queue = &self.imp().editing_queue;
-                editing_queue.push(operation);
-                editing_queue.write_to_image(self);
-            }
+        if let Ok(r) = gufo_common::orientation::Rotation::try_from(angle)
+            && r != gufo_common::orientation::Rotation::_0
+        {
+            tracing::debug!("Editing image to rotate by {r:?}");
+            let operation = glycin::Operation::Rotate(r);
+            let editing_queue = &self.imp().editing_queue;
+            editing_queue.push(operation);
+            editing_queue.write_to_image(self);
         }
     }
 }

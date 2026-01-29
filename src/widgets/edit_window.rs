@@ -252,87 +252,81 @@ mod imp {
             let obj = self.obj();
             self.save.popdown();
 
-            if let Some(original_file) = obj.original_image().file() {
-                if let Some(current_path) = original_file.path() {
-                    if let Some(mut file_stem) = current_path.file_stem().map(|x| x.to_os_string())
-                    {
-                        let mut tmp_path = current_path.clone();
-                        file_stem.push(".tmp");
-                        if let Some(ext) = current_path.extension() {
-                            file_stem.push(".");
-                            file_stem.push(ext);
-                        }
-                        tmp_path.set_file_name(file_stem);
+            if let Some(original_file) = obj.original_image().file()
+                && let Some(current_path) = original_file.path()
+                && let Some(mut file_stem) = current_path.file_stem().map(|x| x.to_os_string())
+            {
+                let mut tmp_path = current_path.clone();
+                file_stem.push(".tmp");
+                if let Some(ext) = current_path.extension() {
+                    file_stem.push(".");
+                    file_stem.push(ext);
+                }
+                tmp_path.set_file_name(file_stem);
 
-                        let tmp_file = gio::File::for_path(&tmp_path);
+                let tmp_file = gio::File::for_path(&tmp_path);
 
-                        let cancellable = gio::Cancellable::new();
-                        if let Some(old_cancellable) =
-                            self.save_cancellable.replace(Some(cancellable.clone()))
-                        {
-                            old_cancellable.cancel();
-                        }
+                let cancellable = gio::Cancellable::new();
+                if let Some(old_cancellable) =
+                    self.save_cancellable.replace(Some(cancellable.clone()))
+                {
+                    old_cancellable.cancel();
+                }
 
-                        let written = self
-                            .save(original_file.clone(), tmp_file.clone(), cancellable.clone())
-                            .await;
+                let written = self
+                    .save(original_file.clone(), tmp_file.clone(), cancellable.clone())
+                    .await;
 
-                        if written {
-                            tracing::debug!("Moving image to trash '{}'", original_file.uri());
-                            let trash_result = gio::CancellableFuture::new(
-                                original_file.trash_future(glib::Priority::DEFAULT),
-                                cancellable.clone(),
-                            )
-                            .await;
+                if written {
+                    tracing::debug!("Moving image to trash '{}'", original_file.uri());
+                    let trash_result = gio::CancellableFuture::new(
+                        original_file.trash_future(glib::Priority::DEFAULT),
+                        cancellable.clone(),
+                    )
+                    .await;
 
-                            if trash_result.is_err() {
-                                // Canceled
-                                tracing::debug!("Trashing image canceled");
-                                return;
-                            } else if let Ok(Err(err)) = trash_result {
-                                obj.window_show_error(
+                    if trash_result.is_err() {
+                        // Canceled
+                        tracing::debug!("Trashing image canceled");
+                        return;
+                    } else if let Ok(Err(err)) = trash_result {
+                        obj.window_show_error(
                                     &gettext("Failed to save image."),
                                     &format!("Failed to move image {current_path:?} to trash and therefore couldn't save image: {err}"),
                                     ErrorType::General,
                                 );
-                                return;
-                            }
+                        return;
+                    }
 
-                            tracing::debug!(
-                                "Moving '{}' to '{}'",
-                                tmp_file.uri(),
-                                original_file.uri()
-                            );
-                            let move_result = gio::CancellableFuture::new(
-                                tmp_file
-                                    .move_future(
-                                        &original_file,
-                                        gio::FileCopyFlags::NONE,
-                                        glib::Priority::DEFAULT,
-                                    )
-                                    .0,
-                                cancellable.clone(),
+                    tracing::debug!("Moving '{}' to '{}'", tmp_file.uri(), original_file.uri());
+                    let move_result = gio::CancellableFuture::new(
+                        tmp_file
+                            .move_future(
+                                &original_file,
+                                gio::FileCopyFlags::NONE,
+                                glib::Priority::DEFAULT,
                             )
-                            .await;
+                            .0,
+                        cancellable.clone(),
+                    )
+                    .await;
 
-                            if move_result.is_err() {
-                                // Canceled
-                                tracing::debug!("Moving image canceled");
-                                return;
-                            } else if let Ok(Err(err)) = move_result {
-                                obj.window_show_error(
+                    if move_result.is_err() {
+                        // Canceled
+                        tracing::debug!("Moving image canceled");
+                        return;
+                    } else if let Ok(Err(err)) = move_result {
+                        obj.window_show_error(
                                         &gettext("Failed to save image."),
                                         &format!(
                                             "Failed to move image image to {current_path:?}: {err} move {:?} to {:?}", tmp_file.path().unwrap(), original_file.path().unwrap()
                                         ),
                                         ErrorType::General,
                                     );
-                                return;
-                            }
-
-                            obj.window_inspect(|w| w.show_specific_image(original_file));
-                        }
+                        return;
                     }
+
+                    obj.window_inspect(|w| w.show_specific_image(original_file));
                 }
             }
         }

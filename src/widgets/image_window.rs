@@ -575,10 +575,10 @@ impl LpImageWindow {
         if let Some(ref file) = imp.image_view.current_file() {
             let launcher = gtk::FileLauncher::new(Some(file));
             launcher.set_always_ask(true);
-            if let Err(e) = launcher.launch_future(self.try_window().as_ref()).await {
-                if !e.matches(gtk::DialogError::Dismissed) {
-                    tracing::error!("Could not open image in external program: {}", e);
-                }
+            if let Err(e) = launcher.launch_future(self.try_window().as_ref()).await
+                && !e.matches(gtk::DialogError::Dismissed)
+            {
+                tracing::error!("Could not open image in external program: {}", e);
             }
         } else {
             tracing::error!("Could not load a path for the current image.")
@@ -611,12 +611,11 @@ impl LpImageWindow {
             return false;
         };
 
-        if let Some(focus_widget) = GtkWindowExt::focus(&window) {
-            if focus_widget.is_ancestor(&*self.imp().properties_view) {
-                if let Ok(label) = focus_widget.downcast::<gtk::Label>() {
-                    return label.selection_bounds().is_some();
-                }
-            }
+        if let Some(focus_widget) = GtkWindowExt::focus(&window)
+            && focus_widget.is_ancestor(&*self.imp().properties_view)
+            && let Ok(label) = focus_widget.downcast::<gtk::Label>()
+        {
+            return label.selection_bounds().is_some();
         }
 
         false

@@ -158,62 +158,61 @@ impl WidgetImpl for imp::LpImage {
         let image_width = image_width_i32 as f64;
         let image_height = image_height_i32 as f64;
 
-        if image_width_i32 > 0 && image_height_i32 > 0 {
-            if let Some((monitor_width, monitor_height)) = self.monitor_size() {
-                let hidpi_scale = self.scaling();
-                tracing::trace!("Physical monitor dimensions: {monitor_width} x {monitor_height}");
+        if image_width_i32 > 0
+            && image_height_i32 > 0
+            && let Some((monitor_width, monitor_height)) = self.monitor_size()
+        {
+            let hidpi_scale = self.scaling();
+            tracing::trace!("Physical monitor dimensions: {monitor_width} x {monitor_height}");
 
-                // areas
-                let monitor_area = monitor_width * monitor_height;
-                let logical_monitor_area = monitor_area * hidpi_scale.powi(2);
-                let image_area = image_width * image_height;
+            // areas
+            let monitor_area = monitor_width * monitor_height;
+            let logical_monitor_area = monitor_area * hidpi_scale.powi(2);
+            let image_area = image_width * image_height;
 
-                let occupy_area_factor = if logical_monitor_area <= SMALL_SCREEN_AREA {
-                    tracing::trace!(
-                        "Small monitor detected: Using {SMALL_OCCUPY_SCREEN} screen area"
-                    );
-                    SMALL_OCCUPY_SCREEN
-                } else {
-                    tracing::trace!(
-                        "Sufficiently large monitor detected: Using {DEFAULT_OCCUPY_SCREEN} screen area"
-                    );
-                    DEFAULT_OCCUPY_SCREEN
-                };
+            let occupy_area_factor = if logical_monitor_area <= SMALL_SCREEN_AREA {
+                tracing::trace!("Small monitor detected: Using {SMALL_OCCUPY_SCREEN} screen area");
+                SMALL_OCCUPY_SCREEN
+            } else {
+                tracing::trace!(
+                    "Sufficiently large monitor detected: Using {DEFAULT_OCCUPY_SCREEN} screen area"
+                );
+                DEFAULT_OCCUPY_SCREEN
+            };
 
-                // factor for width and height that will achieve the desired area
-                // occupation derived from:
-                // monitor_area * occupy_area_factor ==
-                //   (image_width * size_scale) * (image_height * size_scale)
-                let size_scale = f64::sqrt(monitor_area / image_area * occupy_area_factor);
-                // ensure that we never increase image size
-                let target_scale = f64::min(1.0, size_scale);
-                let mut nat_width = image_width * target_scale;
-                let mut nat_height = image_height * target_scale;
+            // factor for width and height that will achieve the desired area
+            // occupation derived from:
+            // monitor_area * occupy_area_factor ==
+            //   (image_width * size_scale) * (image_height * size_scale)
+            let size_scale = f64::sqrt(monitor_area / image_area * occupy_area_factor);
+            // ensure that we never increase image size
+            let target_scale = f64::min(1.0, size_scale);
+            let mut nat_width = image_width * target_scale;
+            let mut nat_height = image_height * target_scale;
 
-                // Scale down if targeted occupation does not fit horizontally
-                // Add some margin to not touch corners
-                let max_width = monitor_width - 20.;
-                if nat_width > max_width {
-                    nat_width = max_width;
-                    nat_height = image_height * nat_width / image_width;
-                }
-
-                // Same for vertical size
-                // Additionally substract some space for HeaderBar and Shell bar
-                let max_height = monitor_height - (50. + 35. + 20.) * hidpi_scale;
-                if nat_height > max_height {
-                    nat_height = max_height;
-                    nat_width = image_width * nat_height / image_height;
-                }
-
-                let size = match orientation {
-                    gtk::Orientation::Horizontal => (nat_width / hidpi_scale).round(),
-                    gtk::Orientation::Vertical => (nat_height / hidpi_scale).round(),
-                    _ => unreachable!(),
-                };
-
-                return (0, size as i32, -1, -1);
+            // Scale down if targeted occupation does not fit horizontally
+            // Add some margin to not touch corners
+            let max_width = monitor_width - 20.;
+            if nat_width > max_width {
+                nat_width = max_width;
+                nat_height = image_height * nat_width / image_width;
             }
+
+            // Same for vertical size
+            // Additionally substract some space for HeaderBar and Shell bar
+            let max_height = monitor_height - (50. + 35. + 20.) * hidpi_scale;
+            if nat_height > max_height {
+                nat_height = max_height;
+                nat_width = image_width * nat_height / image_height;
+            }
+
+            let size = match orientation {
+                gtk::Orientation::Horizontal => (nat_width / hidpi_scale).round(),
+                gtk::Orientation::Vertical => (nat_height / hidpi_scale).round(),
+                _ => unreachable!(),
+            };
+
+            return (0, size as i32, -1, -1);
         }
 
         // fallback if monitor size or image size is not known:
@@ -338,18 +337,17 @@ impl imp::LpImage {
     pub fn monitor_size(&self) -> Option<(f64, f64)> {
         let obj = self.obj();
 
-        if let Some(display) = gdk::Display::default() {
-            if let Some(surface) = obj.native().and_then(|x| x.surface()) {
-                if let Some(monitor) = display.monitor_at_surface(&surface) {
-                    let hidpi_scale = self.scaling();
-                    let monitor_geometry = monitor.geometry();
+        if let Some(display) = gdk::Display::default()
+            && let Some(surface) = obj.native().and_then(|x| x.surface())
+            && let Some(monitor) = display.monitor_at_surface(&surface)
+        {
+            let hidpi_scale = self.scaling();
+            let monitor_geometry = monitor.geometry();
 
-                    return Some((
-                        monitor_geometry.width() as f64 * hidpi_scale,
-                        monitor_geometry.height() as f64 * hidpi_scale,
-                    ));
-                }
-            }
+            return Some((
+                monitor_geometry.width() as f64 * hidpi_scale,
+                monitor_geometry.height() as f64 * hidpi_scale,
+            ));
         }
 
         None

@@ -369,12 +369,11 @@ impl Metadata {
                 let location_exact = libgweather::Location::new_detached("", None, lat, lon);
 
                 // do not use city if more than 15 km away
-                if nearest_city.distance(&location_exact) < 15. {
-                    if let (Some(city), Some(country)) =
+                if nearest_city.distance(&location_exact) < 15.
+                    && let (Some(city), Some(country)) =
                         (nearest_city.city_name(), nearest_city.country_name())
-                    {
-                        return Some(format!("{city}, {country}"));
-                    }
+                {
+                    return Some(format!("{city}, {country}"));
                 }
             }
 

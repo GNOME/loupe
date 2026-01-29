@@ -303,17 +303,17 @@ impl imp::LpImage {
                 let zoom = imp.zoom_target.get() * scale;
 
                 // Move image with fingers on touchscreens
-                if gesture.device().map(|x| x.source()) == Some(gdk::InputSource::Touchscreen) {
-                    if let p1 @ Some((x1, y1)) = gesture.bounding_box_center() {
-                        if let Some((x0, y0)) = imp.zoom_gesture_center.get() {
-                            imp.set_hadj_value(imp.hadj_value() + x0 - x1);
-                            imp.set_vadj_value(imp.vadj_value() + y0 - y1);
-                        } else {
-                            tracing::warn!("Zoom bounding box center: No previous value");
-                        }
-
-                        imp.zoom_gesture_center.set(p1);
+                if gesture.device().map(|x| x.source()) == Some(gdk::InputSource::Touchscreen)
+                    && let p1 @ Some((x1, y1)) = gesture.bounding_box_center()
+                {
+                    if let Some((x0, y0)) = imp.zoom_gesture_center.get() {
+                        imp.set_hadj_value(imp.hadj_value() + x0 - x1);
+                        imp.set_vadj_value(imp.vadj_value() + y0 - y1);
+                    } else {
+                        tracing::warn!("Zoom bounding box center: No previous value");
                     }
+
+                    imp.zoom_gesture_center.set(p1);
                 }
 
                 let zoom_out_threshold = 1. / ZOOM_GESTURE_LOCK_THRESHOLD;

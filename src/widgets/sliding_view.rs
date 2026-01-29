@@ -246,20 +246,19 @@ mod imp {
             if matches!(
                 *self.position_tracking.borrow(),
                 PositionTracking::Position(_)
-            ) {
-                if let Some(mut child) = obj.first_child() {
-                    let mut children = vec![child.clone()];
-                    while let Some(new_child) = child.next_sibling() {
-                        child = new_child;
-                        children.push(child.clone());
-                    }
+            ) && let Some(mut child) = obj.first_child()
+            {
+                let mut children = vec![child.clone()];
+                while let Some(new_child) = child.next_sibling() {
+                    child = new_child;
+                    children.push(child.clone());
+                }
 
-                    for child in children {
-                        if let Ok(page) = child.downcast::<LpImagePage>() {
-                            if obj.index_of(&page).is_none() {
-                                page.unparent();
-                            }
-                        }
+                for child in children {
+                    if let Ok(page) = child.downcast::<LpImagePage>()
+                        && obj.index_of(&page).is_none()
+                    {
+                        page.unparent();
                     }
                 }
             }
@@ -612,19 +611,18 @@ impl LpSlidingView {
     /// Move to image with cards animation
     fn step_to(&self, page: &LpImagePage) {
         let animation = self.step_animation();
-        if let Some(prev_page) = self.current_page() {
-            if let (Some(prev_index), Some(new_index)) =
+        if let Some(prev_page) = self.current_page()
+            && let (Some(prev_index), Some(new_index)) =
                 (self.index_of(&prev_page), self.index_of(page))
-            {
-                let backward = new_index < prev_index;
+        {
+            let backward = new_index < prev_index;
 
-                *self.imp().position_tracking.borrow_mut() =
-                    PositionTracking::StackedCards(StackedCards::new(prev_page, backward));
-                // Set current page here as well, to make sure it's set when animation completes
-                // for disabled animations
-                self.set_current_page(Some(page));
-                animation.play();
-            }
+            *self.imp().position_tracking.borrow_mut() =
+                PositionTracking::StackedCards(StackedCards::new(prev_page, backward));
+            // Set current page here as well, to make sure it's set when animation completes
+            // for disabled animations
+            self.set_current_page(Some(page));
+            animation.play();
         }
         self.set_current_page(Some(page));
     }

@@ -201,10 +201,10 @@ impl Decoder {
 
     /// Request missing tiles
     pub fn request(&self, tile_request: TileRequest) {
-        if let FormatDecoder::Svg(svg) = &self.decoder {
-            if let Err(err) = svg.request(tile_request) {
-                tracing::error!("Failed to request new SVG tiles: {err}");
-            }
+        if let FormatDecoder::Svg(svg) = &self.decoder
+            && let Err(err) = svg.request(tile_request)
+        {
+            tracing::error!("Failed to request new SVG tiles: {err}");
         }
     }
 
