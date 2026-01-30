@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2026-01-29 23:14+0000\n"
-"PO-Revision-Date: 2026-01-30 07:03+0500\n"
+"POT-Creation-Date: 2026-01-30 12:47+0000\n"
+"PO-Revision-Date: 2026-01-30 19:26+0500\n"
 "Last-Translator: Baurzhan Muftakhidinov <baurthefirst@gmail.com>\n"
 "Language-Team: Kazakh <kk_KZ@googlegroups.com>\n"
 "Language: kk\n"
@@ -43,25 +43,12 @@ msgid "The GNOME Project"
 msgstr "GNOME жобасы"
 
 #: data/org.gnome.Loupe.metainfo.xml.in.in:15
-msgid "Browse through your images and inspect their metadata with:"
+msgid ""
+"Explore images, view their metadata, and make quick edits by cropping, "
+"rotating, or flipping them."
 msgstr ""
-"Суреттеріңізді қарап шығу және олардың метадеректерін келесімен тексеру:"
-
-#: data/org.gnome.Loupe.metainfo.xml.in.in:17
-msgid "Fast GPU accelerated image rendering"
-msgstr "GPU арқылы үдетілген суреттерді жылдам қарау"
-
-#: data/org.gnome.Loupe.metainfo.xml.in.in:18
-msgid "Tiled rendering for vector graphics"
-msgstr "Векторлық графика үшін плиткалы рендеринг"
-
-#: data/org.gnome.Loupe.metainfo.xml.in.in:19
-msgid "Extendable and sandboxed image decoding"
-msgstr "Кеңейтілетін және суретті құмсалғышта декодтау"
-
-#: data/org.gnome.Loupe.metainfo.xml.in.in:20
-msgid "Accessible presentation of the most important metadata."
-msgstr "Ең маңызды метадеректердің қолжетімді көрсетілімі."
+"Суреттерді зерттеу, олардың метадеректерін қарау және қию, бұру немесе "
+"айналдыру арқылы жылдам өңдеулер жасау."
 
 #: data/resources/shortcuts-dialog.ui:6
 msgctxt "shortcut window"
@@ -974,6 +961,22 @@ msgstr "Өндіруші, модель"
 #: src/widgets/window.rs:206
 msgid "Show Details"
 msgstr "Мәліметтерді көрсету"
+
+#~ msgid "Browse through your images and inspect their metadata with:"
+#~ msgstr ""
+#~ "Суреттеріңізді қарап шығу және олардың метадеректерін келесімен тексеру:"
+
+#~ msgid "Fast GPU accelerated image rendering"
+#~ msgstr "GPU арқылы үдетілген суреттерді жылдам қарау"
+
+#~ msgid "Tiled rendering for vector graphics"
+#~ msgstr "Векторлық графика үшін плиткалы рендеринг"
+
+#~ msgid "Extendable and sandboxed image decoding"
+#~ msgstr "Кеңейтілетін және суретті құмсалғышта декодтау"
+
+#~ msgid "Accessible presentation of the most important metadata."
+#~ msgstr "Ең маңызды метадеректердің қолжетімді көрсетілімі."
 
 #~ msgctxt "shortcut window"
 #~ msgid "Gestures"
