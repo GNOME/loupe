@@ -83,7 +83,7 @@
             "name": "glycin-loaders",
             "buildsystem": "meson",
             "config-opts": [
-                "-Dloaders=glycin-raw,glycin-jpeg2000",
+                "-Dloaders=glycin-raw",
                 "-Dlibglycin=false",
                 "-Dlibglycin-gtk4=false",
                 "-Dglycin-thumbnailer=false"
@@ -92,7 +92,7 @@
                 {
                     "type": "git",
                     "url": "https://gitlab.gnome.org/GNOME/glycin.git",
-                    "commit": "cb99d012bb708c50224b70a95cfbc372ab0961bb"
+                    "commit": "e9efe37f2238b582984615e36c901ef6de440d31"
                 }
             ]
         },
