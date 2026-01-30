@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2026-01-01 21:17+0000\n"
-"PO-Revision-Date: 2026-01-08 23:59+0500\n"
+"POT-Creation-Date: 2026-01-29 23:14+0000\n"
+"PO-Revision-Date: 2026-01-30 07:03+0500\n"
 "Last-Translator: Baurzhan Muftakhidinov <baurthefirst@gmail.com>\n"
 "Language-Team: Kazakh <kk_KZ@googlegroups.com>\n"
 "Language: kk\n"
@@ -20,14 +20,14 @@ msgstr ""
 
 #: data/org.gnome.Loupe.desktop.in.in:2
 #: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:32
-#: src/widgets/image_window.rs:874
+#: src/widgets/image_window.rs:897
 msgid "Image Viewer"
 msgstr "Суреттер көрсетушісі"
 
 #: data/org.gnome.Loupe.desktop.in.in:3
 #: data/org.gnome.Loupe.metainfo.xml.in.in:13
-msgid "View images"
-msgstr "Суреттерді қарау"
+msgid "View and edit images"
+msgstr "Суреттерді қарау және түзету"
 
 #: data/org.gnome.Loupe.desktop.in.in:11
 msgid "Picture;Graphics;Loupe;"
@@ -63,239 +63,224 @@ msgstr "Кеңейтілетін және суретті құмсалғышта 
 msgid "Accessible presentation of the most important metadata."
 msgstr "Ең маңызды метадеректердің қолжетімді көрсетілімі."
 
-#: data/resources/gtk/help-overlay.ui:11
+#: data/resources/shortcuts-dialog.ui:6
 msgctxt "shortcut window"
 msgid "General Shortcuts"
 msgstr "Жалпы жарлықтар"
 
-#: data/resources/gtk/help-overlay.ui:14
+#: data/resources/shortcuts-dialog.ui:9
 msgctxt "shortcut window"
 msgid "Copy Image or Selected Text to Clipboard"
 msgstr "Суретті немесе таңдалған мәтінді алмасу буферіне көшіру"
 
-#: data/resources/gtk/help-overlay.ui:20
+#: data/resources/shortcuts-dialog.ui:15
 msgctxt "shortcut window"
 msgid "Move Image to Trash"
 msgstr "Суретті қоқыс шелегіне тастау"
 
-#: data/resources/gtk/help-overlay.ui:26
+#: data/resources/shortcuts-dialog.ui:21
 msgctxt "shortcut window"
 msgid "Permanently Delete Image"
 msgstr "Суретті толығымен өшіру"
 
-#: data/resources/gtk/help-overlay.ui:32
+#: data/resources/shortcuts-dialog.ui:27
 msgctxt "shortcut window"
 msgid "Open Image with Other App"
 msgstr "Суретті басқа қолданбамен ашу"
 
-#: data/resources/gtk/help-overlay.ui:38
+#: data/resources/shortcuts-dialog.ui:33
 msgctxt "shortcut window"
 msgid "Set as Background"
 msgstr "Фон ретінде орнату."
 
-#: data/resources/gtk/help-overlay.ui:44
+#: data/resources/shortcuts-dialog.ui:39
 msgctxt "shortcut window"
 msgid "New Window"
 msgstr "Жаңа терезе"
 
-#: data/resources/gtk/help-overlay.ui:50
+#: data/resources/shortcuts-dialog.ui:45
 msgctxt "shortcut window"
 msgid "Open Help"
 msgstr "Көмекті ашу"
 
-#: data/resources/gtk/help-overlay.ui:56
+#: data/resources/shortcuts-dialog.ui:51
 msgctxt "shortcut window"
 msgid "Show Keyboard Shortcuts"
 msgstr "Пернетақта жарлықтарын көрсету"
 
-#: data/resources/gtk/help-overlay.ui:62
+#: data/resources/shortcuts-dialog.ui:57
 msgctxt "shortcut window"
 msgid "Close Window"
 msgstr "Терезені жабу"
 
-#: data/resources/gtk/help-overlay.ui:68
+#: data/resources/shortcuts-dialog.ui:63
 msgctxt "shortcut window"
 msgid "Quit"
 msgstr "Шығу"
 
-#: data/resources/gtk/help-overlay.ui:76
+#: data/resources/shortcuts-dialog.ui:71
 msgctxt "shortcut window"
 msgid "Navigate Images"
 msgstr "Суреттерді шолу"
 
-#: data/resources/gtk/help-overlay.ui:80 data/resources/gtk/help-overlay.ui:94
-#: data/resources/gtk/help-overlay.ui:235
-#: data/resources/gtk/help-overlay.ui:249
+#: data/resources/shortcuts-dialog.ui:75 data/resources/shortcuts-dialog.ui:89
 msgctxt "shortcut window"
 msgid "Next Image"
 msgstr "Келесі сурет"
 
-#: data/resources/gtk/help-overlay.ui:87
-#: data/resources/gtk/help-overlay.ui:101
-#: data/resources/gtk/help-overlay.ui:242
-#: data/resources/gtk/help-overlay.ui:256
+#: data/resources/shortcuts-dialog.ui:82 data/resources/shortcuts-dialog.ui:96
 msgctxt "shortcut window"
 msgid "Previous Image"
 msgstr "Алдыңғы сурет"
 
-#: data/resources/gtk/help-overlay.ui:107
+#: data/resources/shortcuts-dialog.ui:102
 msgctxt "shortcut window"
 msgid "First Image"
 msgstr "Бірінші сурет"
 
-#: data/resources/gtk/help-overlay.ui:113
+#: data/resources/shortcuts-dialog.ui:108
 msgctxt "shortcut window"
 msgid "Last Image"
 msgstr "Соңғы сурет"
 
-#: data/resources/gtk/help-overlay.ui:121
+#: data/resources/shortcuts-dialog.ui:116
 msgctxt "shortcut window"
 msgid "Rotate Image"
 msgstr "Суретті бұру"
 
-#: data/resources/gtk/help-overlay.ui:124
-#: data/resources/gtk/help-overlay.ui:274
-#: data/resources/gtk/help-overlay.ui:315
+#: data/resources/shortcuts-dialog.ui:119
+#: data/resources/shortcuts-dialog.ui:253
 msgctxt "shortcut window"
 msgid "Rotate Clockwise"
 msgstr "Сағат тілі бойымен бұру"
 
-#: data/resources/gtk/help-overlay.ui:130
-#: data/resources/gtk/help-overlay.ui:280
-#: data/resources/gtk/help-overlay.ui:321
+#: data/resources/shortcuts-dialog.ui:125
+#: data/resources/shortcuts-dialog.ui:259
 msgctxt "shortcut window"
 msgid "Rotate Counterclockwise"
 msgstr "Сағат тілі бойына қарсы бұру"
 
-#: data/resources/gtk/help-overlay.ui:138
+#: data/resources/shortcuts-dialog.ui:133
 msgctxt "shortcut window"
 msgid "Zoom Image"
 msgstr "Суретті масштабтау"
 
-#: data/resources/gtk/help-overlay.ui:141
-#: data/resources/gtk/help-overlay.ui:262
+#: data/resources/shortcuts-dialog.ui:136
 msgctxt "shortcut window"
 msgid "Zoom In"
 msgstr "Үлкейту"
 
-#: data/resources/gtk/help-overlay.ui:147
-#: data/resources/gtk/help-overlay.ui:268
+#: data/resources/shortcuts-dialog.ui:142
 msgctxt "shortcut window"
 msgid "Zoom Out"
 msgstr "Кішірейту"
 
-#: data/resources/gtk/help-overlay.ui:153
+#: data/resources/shortcuts-dialog.ui:148
 msgctxt "shortcut window"
 msgid "Best Fit"
 msgstr "Жақсырақ сыю"
 
-#: data/resources/gtk/help-overlay.ui:159
+#: data/resources/shortcuts-dialog.ui:154
 msgctxt "shortcut window"
 msgid "Original Scale"
 msgstr "Бастапқы масштаб"
 
-#: data/resources/gtk/help-overlay.ui:165
+#: data/resources/shortcuts-dialog.ui:160
 msgctxt "shortcut window"
 msgid "200% Scale"
 msgstr "200% масштаб"
 
-#: data/resources/gtk/help-overlay.ui:173
+#: data/resources/shortcuts-dialog.ui:168
 msgctxt "shortcut window"
 msgid "Pan View"
 msgstr "Көріністі панорамдау"
 
-#: data/resources/gtk/help-overlay.ui:176
+#: data/resources/shortcuts-dialog.ui:171
 msgctxt "shortcut window"
 msgid "Pan Left"
 msgstr "Солға панорамдау"
 
-#: data/resources/gtk/help-overlay.ui:182
+#: data/resources/shortcuts-dialog.ui:177
 msgctxt "shortcut window"
 msgid "Pan Right"
 msgstr "Оңға панорамдау"
 
-#: data/resources/gtk/help-overlay.ui:188
+#: data/resources/shortcuts-dialog.ui:183
 msgctxt "shortcut window"
 msgid "Pan Up"
 msgstr "Жоғары панорамдау"
 
-#: data/resources/gtk/help-overlay.ui:194
+#: data/resources/shortcuts-dialog.ui:189
 msgctxt "shortcut window"
 msgid "Pan Down"
 msgstr "Төмен панорамдау"
 
-#: data/resources/gtk/help-overlay.ui:202
+#: data/resources/shortcuts-dialog.ui:197
 msgctxt "shortcut window"
 msgid "View"
 msgstr "Көру"
 
-#: data/resources/gtk/help-overlay.ui:205
+#: data/resources/shortcuts-dialog.ui:200
 msgctxt "shortcut window"
 msgid "Toggle Fullscreen"
 msgstr "Толық экранға/одан шығу"
 
-#: data/resources/gtk/help-overlay.ui:211
+#: data/resources/shortcuts-dialog.ui:206
 msgctxt "shortcut window"
 msgid "Leave Fullscreen"
 msgstr "Толық экраннан шығу"
 
-#: data/resources/gtk/help-overlay.ui:217
+#: data/resources/shortcuts-dialog.ui:212
 msgctxt "shortcut window"
 msgid "Toggle Image Properties"
 msgstr "Сурет қасиеттерін көрсету/жасыру"
 
-#: data/resources/gtk/help-overlay.ui:223
+#: data/resources/shortcuts-dialog.ui:218
 msgctxt "shortcut window"
 msgid "Show Main Menu"
 msgstr "Басты мәзірді көрсету"
 
-#: data/resources/gtk/help-overlay.ui:231
-msgctxt "shortcut window"
-msgid "Gestures"
-msgstr "Ымдар"
-
-#: data/resources/gtk/help-overlay.ui:288
+#: data/resources/shortcuts-dialog.ui:226
 msgctxt "shortcut window"
 msgid "Editing"
 msgstr "Түзету"
 
-#: data/resources/gtk/help-overlay.ui:291
+#: data/resources/shortcuts-dialog.ui:229
 msgctxt "shortcut window"
 msgid "Open Editing View"
 msgstr "Түзету көрінісін ашу"
 
-#: data/resources/gtk/help-overlay.ui:297
+#: data/resources/shortcuts-dialog.ui:235
 msgctxt "shortcut window"
 msgid "Replace Original"
 msgstr "Түпнұсқаны алмастыру"
 
-#: data/resources/gtk/help-overlay.ui:303
+#: data/resources/shortcuts-dialog.ui:241
 msgctxt "shortcut window"
 msgid "Save As"
 msgstr "Қалай сақтау"
 
-#: data/resources/gtk/help-overlay.ui:309
+#: data/resources/shortcuts-dialog.ui:247
 msgctxt "shortcut window"
 msgid "Cancel"
 msgstr "Бас тарту"
 
-#: data/resources/gtk/help-overlay.ui:327
+#: data/resources/shortcuts-dialog.ui:265
 msgctxt "shortcut window"
 msgid "Mirror Horizontally"
 msgstr "Горизонталды айналау"
 
-#: data/resources/gtk/help-overlay.ui:333
+#: data/resources/shortcuts-dialog.ui:271
 msgctxt "shortcut window"
 msgid "Mirror Vertically"
 msgstr "Вертикалды айналау"
 
-#: data/resources/gtk/help-overlay.ui:339
+#: data/resources/shortcuts-dialog.ui:277
 msgctxt "shortcut window"
 msgid "Apply Crop"
 msgstr "Қиюды іске асыру"
 
-#. Translators: Replace "translator-credits" with your names, one name per
-#. line
+#. Translators: Replace "translator-credits" with your names, one name per line
 #: src/about.rs:45
 msgid "translator-credits"
 msgstr "Baurzhan Muftakhidinov <baurthefirst@gmail.com>"
@@ -304,57 +289,52 @@ msgstr "Baurzhan Muftakhidinov <baurthefirst@gmail.com>"
 msgid "Copyright © 2020–2024 Christopher Davis et al."
 msgstr "Copyright © 2020–2024 Christopher Davis et al."
 
-#: src/file_model.rs:209
+#: src/file_model.rs:211
 msgid "Could not list other files in directory."
 msgstr "Бумадағы басқа файлдарды тізімдеу мүмкін болмады."
 
-#. Translators: Display of the f-number
-#. <https://en.wikipedia.org/wiki/F-number>. {} will be replaced with the
-#. number
-#: src/metadata.rs:255
+#. Translators: Display of the f-number <https://en.wikipedia.org/wiki/F-number>. {} will be replaced with the number
+#: src/metadata.rs:256
 msgid "\\u{192}\\u{2215}{}"
 msgstr "\\u{192}\\u{2215}{}"
 
 #. Translators: Fractional exposure time (photography) in seconds
-#: src/metadata.rs:268
+#: src/metadata.rs:269
 msgid "1\\u{2215}{}\\u{202F}s"
 msgstr "1\\u{2215}{}\\u{202F}с"
 
 #. Translators: Exposure time (photography) in seconds
-#: src/metadata.rs:276
-#| msgid "{}\\u{202F}mm"
+#: src/metadata.rs:277
 msgid "{}\\u{202F}s"
 msgstr "{}\\u{202F}с"
 
-#: src/metadata.rs:290
+#: src/metadata.rs:291
 msgid "{}\\u{202F}mm"
 msgstr "{}\\u{202F}мм"
 
 #. Translators: short for "north" in GPS coordinate
-#: src/metadata.rs:330
+#: src/metadata.rs:331
 msgid "N"
 msgstr "С"
 
 #. Translators: short for "south" in GPS coordinate
-#: src/metadata.rs:334
+#: src/metadata.rs:335
 msgid "S"
 msgstr "О"
 
 #. Translators: short for "east" in GPS coordinate
-#: src/metadata.rs:343
+#: src/metadata.rs:344
 msgid "E"
 msgstr "Ш"
 
 #. Translators: short for "west" in GPS coordinate
-#: src/metadata.rs:347
+#: src/metadata.rs:348
 msgid "W"
 msgstr "Б"
 
 #. / Returns localized date + time format
-#. Translators: This is the date and time format we use in metadata output
-#. etc.
-#. The format has to follow
-#. <https://docs.gtk.org/glib/method.DateTime.format.html>
+#. Translators: This is the date and time format we use in metadata output etc.
+#. The format has to follow <https://docs.gtk.org/glib/method.DateTime.format.html>
 #. The default is already translated. Don't change if you are not sure what to
 #. use.
 #: src/util.rs:39
@@ -369,7 +349,7 @@ msgstr "Суретті қоқыс шелегінен қайтару сәтсіз
 msgid "Drop Image to View"
 msgstr "Көру үшін суретті тастаңыз"
 
-#: src/widgets/edit/crop.rs:364
+#: src/widgets/edit/crop.rs:363
 msgid "Failed to Edit Image"
 msgstr "Суретті түзету сәтсіз аяқталды"
 
@@ -478,32 +458,31 @@ msgstr "Осы көріністегі өзгерістерді болдырма�
 msgid "Crop Selection"
 msgstr "Таңдалғанды қиып алу"
 
-#. Translators: Filename suffix
 #. Translators: Filename suffix, {} is replaced by a number
-#: src/widgets/edit_window.rs:196 src/widgets/edit_window.rs:199
+#: src/widgets/edit_window.rs:195
 #, rust-format
 msgid " (Edited)"
 msgid_plural " (Edited {})"
 msgstr[0] " (Түзетілген)"
 msgstr[1] " (Түзетілген {})"
 
-#: src/widgets/edit_window.rs:294 src/widgets/edit_window.rs:320
+#: src/widgets/edit_window.rs:289 src/widgets/edit_window.rs:315
 msgid "Failed to save image."
 msgstr "Суретті сақтау сәтсіз аяқталды."
 
-#: src/widgets/edit_window.rs:350
+#: src/widgets/edit_window.rs:343
 msgid "Editing Image"
 msgstr "Суретті түзету"
 
-#: src/widgets/edit_window.rs:367
+#: src/widgets/edit_window.rs:360
 msgid "Failed to edit image."
 msgstr "Суретті түзету сәтсіз аяқталды."
 
-#: src/widgets/edit_window.rs:377 src/widgets/edit_window.rs:400
+#: src/widgets/edit_window.rs:370 src/widgets/edit_window.rs:393
 msgid "Failed to Save Image"
 msgstr "Суретті сақтау сәтсіз аяқталды"
 
-#: src/widgets/edit_window.rs:383
+#: src/widgets/edit_window.rs:376
 msgid "Saving Image"
 msgstr "Суретті сақтау"
 
@@ -536,8 +515,8 @@ msgid ""
 "The following error occurred. If you think this is an issue with the "
 "program, please include this information when you report the error."
 msgstr ""
-"Келесі қате орын алды. Егер бұл бағдарлама қатесі деп ойласаңыз, қате "
-"туралы хабарлаған кезде осы ақпаратты қоса жіберіңіз."
+"Келесі қате орын алды. Егер бұл бағдарлама қатесі деп ойласаңыз, қате туралы "
+"хабарлаған кезде осы ақпаратты қоса жіберіңіз."
 
 #: src/widgets/error_details.ui:4
 msgid "Error Details"
@@ -565,7 +544,7 @@ msgstr "Қате хабарламасын көшіру"
 msgid "Report _Issue"
 msgstr "_Мәселе туралы хабарлау"
 
-#: src/widgets/image_page.rs:227
+#: src/widgets/image_page.rs:225
 #, rust-format
 msgid ""
 "No image loaders available. Maybe the “glycin-loaders” package with "
@@ -574,23 +553,27 @@ msgstr ""
 "Қолжетімді сурет жүктеушілері жоқ. Мүмкін, үйлесімділік нұсқасы \"{}\" "
 "болатын “glycin-loaders” пакеті орнатылмаған болар."
 
-#: src/widgets/image_page.rs:242
+#: src/widgets/image_page.rs:243
 #, rust-format
 msgid "The image format “{} ({})” is known but not installed."
 msgstr "“{} ({})” сурет пішімі белгілі, бірақ орнатылмаған."
 
-#: src/widgets/image_page.rs:249
+#: src/widgets/image_page.rs:251
 #, rust-format
 msgid "Unknown image format “{} ({}).”"
 msgstr "Белгісіз сурет пішімі “{} ({}).”"
 
-#: src/widgets/image_page.rs:277
+#: src/widgets/image_page.rs:260
 msgid "There is not enough free memory available to load this image."
 msgstr "Бұл суретті жүктеу үшін бос жады жеткіліксіз."
 
-#: src/widgets/image_page.rs:281
-msgid ""
-"Either the image file is corrupted or it contains unsupported elements."
+#: src/widgets/image_page.rs:267
+#, rust-format
+msgid "Failed to load image file: {}"
+msgstr "Сурет файлын жүктеу сәтсіз аяқталды: {}"
+
+#: src/widgets/image_page.rs:272
+msgid "Either the image file is corrupted or it contains unsupported elements."
 msgstr ""
 "Сурет файлы зақымдалған болуы мүмкін, немесе оның ішінде қолдау "
 "көрсетілмейтін элементтер бар."
@@ -637,92 +620,92 @@ msgstr "Оңға бұру"
 
 #. Translators: This is a toast notification, informing the user that
 #. an image has been set as background.
-#: src/widgets/image_view.rs:825
+#: src/widgets/image_view.rs:866
 msgid "Set as background."
 msgstr "Фон ретінде орнату."
 
-#: src/widgets/image_view.rs:831
+#: src/widgets/image_view.rs:872
 msgid "Could not set background."
 msgstr "Фонды орнату мүмкін болмады."
 
-#: src/widgets/image_view.ui:30
+#: src/widgets/image_view.ui:26
 msgid "Previous Image"
 msgstr "Алдыңғы сурет"
 
-#: src/widgets/image_view.ui:40
+#: src/widgets/image_view.ui:36
 msgid "Next Image"
 msgstr "Келесі сурет"
 
-#: src/widgets/image_view.ui:74
+#: src/widgets/image_view.ui:66
 msgid "Zoom Out"
 msgstr "Кішірейту"
 
-#: src/widgets/image_view.ui:85
+#: src/widgets/image_view.ui:77
 msgid "Zoom In"
 msgstr "Үлкейту"
 
-#: src/widgets/image_view.ui:100
+#: src/widgets/image_view.ui:92
 msgid "Toggle Zoom"
 msgstr "Масштабты ауыстыру"
 
-#: src/widgets/image_view.ui:108
+#: src/widgets/image_view.ui:100
 msgid "Zoom to Specific Level"
 msgstr "Нақты деңгейге масштабтау"
 
-#: src/widgets/image_view.ui:237
+#: src/widgets/image_view.ui:229
 msgid "Custom Zoom Level"
 msgstr "Таңдаулы масштаб деңгейі"
 
-#: src/widgets/image_view.ui:243
+#: src/widgets/image_view.ui:235
 msgid "Zoom to Specified Level"
 msgstr "Көрсетілген деңгейге масштабтау"
 
-#: src/widgets/image_window.rs:503
+#: src/widgets/image_window.rs:527
 msgid "Supported image formats"
 msgstr "Қолдауы бар барлық сурет пішімдері"
 
-#: src/widgets/image_window.rs:509
+#: src/widgets/image_window.rs:533
 msgid "All files"
 msgstr "Барлық файлдар"
 
-#: src/widgets/image_window.rs:516
+#: src/widgets/image_window.rs:540
 msgid "Open Image"
 msgstr "Суретті ашу"
 
-#: src/widgets/image_window.rs:609
+#: src/widgets/image_window.rs:632
 msgid "Image copied to clipboard"
 msgstr "Сурет алмасу буферіне көшірілді"
 
-#: src/widgets/image_window.rs:630
+#: src/widgets/image_window.rs:653
 msgid "Image moved to trash"
 msgstr "Сурет қоқыс шелегіне тасталды"
 
-#: src/widgets/image_window.rs:631
+#: src/widgets/image_window.rs:654
 msgid "Undo"
 msgstr "Болдырмау"
 
-#: src/widgets/image_window.rs:661
+#: src/widgets/image_window.rs:684
 msgid "Failed to move image to trash"
 msgstr "Суретті қоқыс шелегіне тастау сәтсіз аяқталды"
 
-#: src/widgets/image_window.rs:685
+#: src/widgets/image_window.rs:708
 msgid "Permanently Delete Image?"
 msgstr "Суретті толығымен өшіру керек пе?"
 
-#: src/widgets/image_window.rs:687
+#: src/widgets/image_window.rs:710
 #, rust-format
 msgid "After deleting the image “{}” it will be permanently lost."
 msgstr "\"{}\" суреті өшірілгеннен кейін толығымен жоғалатын болады."
 
-#: src/widgets/image_window.rs:695
+#: src/widgets/image_window.rs:718
 msgid "Cancel"
 msgstr "Бас тарту"
 
-#: src/widgets/image_window.rs:696
+#: src/widgets/image_window.rs:719
 msgid "Delete"
 msgstr "Өшіру"
 
-#: src/widgets/image_window.rs:707
+#: src/widgets/image_window.rs:730
 msgid "Failed to delete image"
 msgstr "Суретті өшіру сәтсіз аяқталды"
 
@@ -763,8 +746,8 @@ msgid "Edit Image"
 msgstr "Суретті түзету"
 
 #: src/widgets/image_window.ui:220
-msgid "View Images"
-msgstr "Суреттерді қарау"
+msgid "View and Edit Images"
+msgstr "Суреттерді қарау және түзету"
 
 #: src/widgets/image_window.ui:221
 msgid "Drag and drop images here"
@@ -774,60 +757,60 @@ msgstr "Суреттерді тартып әкеліп, осында таста�
 msgid "_Open Files…"
 msgstr "Файлдарды а_шу…"
 
-#: src/widgets/print.rs:108
+#: src/widgets/print.rs:109
 msgid "Top"
 msgstr "Жоғары"
 
-#: src/widgets/print.rs:109
+#: src/widgets/print.rs:110
 msgid "Center"
 msgstr "Ортасында"
 
-#: src/widgets/print.rs:110
+#: src/widgets/print.rs:111
 msgid "Bottom"
 msgstr "Төмен"
 
-#: src/widgets/print.rs:111
+#: src/widgets/print.rs:112
 msgid "Left"
 msgstr "Сол жақ"
 
-#: src/widgets/print.rs:112
+#: src/widgets/print.rs:113
 msgid "Right"
 msgstr "Оң жақ"
 
 #. Translators: Shorthand for centimeter
-#: src/widgets/print.rs:148
+#: src/widgets/print.rs:149
 msgid "cm"
 msgstr "см"
 
 #. Translators: Shorthand for inch
-#: src/widgets/print.rs:150
+#: src/widgets/print.rs:151
 msgid "in"
 msgstr "дюйм"
 
 #. Translators: Shorthand for pixel
-#: src/widgets/print.rs:152
+#: src/widgets/print.rs:153
 msgid "px"
 msgstr "пикс"
 
 #. Translators: {} is a placeholder for the filename
-#: src/widgets/print.rs:361
+#: src/widgets/print.rs:364
 #, rust-format
 msgid "Print “{}”"
 msgstr "\"{}\" баспаға шығару"
 
-#: src/widgets/print.rs:476
+#: src/widgets/print.rs:477
 msgid "Continue…"
 msgstr "Жалғастыру…"
 
-#: src/widgets/print.rs:477
+#: src/widgets/print.rs:478
 msgid "Print Image"
 msgstr "Суретті басып шығару"
 
-#: src/widgets/print.rs:791
+#: src/widgets/print.rs:797
 msgid "_Scale"
 msgstr "Ма_сштаб"
 
-#: src/widgets/print.rs:794
+#: src/widgets/print.rs:800
 msgid "_Width"
 msgstr "_Ені"
 
@@ -912,7 +895,6 @@ msgid ", {}\\u{202F}bit"
 msgstr ", {}\\u{202F}бит"
 
 #: src/widgets/properties_view.rs:290
-#| msgid "1\\u{2215}{}\\u{202F}s"
 msgid "{}\\u{202F}\\u{D7}\\u{202F}{}"
 msgstr "{}\\u{202F}\\u{D7}\\u{202F}{}"
 
@@ -989,9 +971,13 @@ msgstr "Фокустық қашықтығы"
 msgid "Maker, Model"
 msgstr "Өндіруші, модель"
 
-#: src/widgets/window.rs:212
+#: src/widgets/window.rs:206
 msgid "Show Details"
 msgstr "Мәліметтерді көрсету"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Gestures"
+#~ msgstr "Ымдар"
 
 #~ msgid "Copy to Clipboard"
 #~ msgstr "Алмасу буферіне көшіру"
