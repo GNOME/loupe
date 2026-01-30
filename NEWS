@@ -1,3 +1,10 @@
+## 50.beta (2026-01-30)
+
+### Changed
+
+- Support XPM and JPEG 2000 mime-types, offering Image Editor as app when opening these image formats
+- Use AdwShortcutsDialog
+
 ## 50.alpha (2026-01-02)
 
 ### Added
