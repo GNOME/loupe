@@ -2,10 +2,13 @@
 
 <a href='https://flathub.org/apps/org.gnome.Loupe'><img width='240' alt='Download on Flathub' src='https://flathub.org/api/badge?svg&locale=en'/></a>
 
-GNOME's default image viewer providing
+Loupe is GNOME's default Image Viewer.
+
+
+## Technical Details
 
 - Fast GPU-accelerated image rendering with tiled rendering for SVGs
-- Extendable and sandboxed image decoding
+- Extendable and sandboxed image decoding via [glycin](https://gnome.pages.gitlab.gnome.org/glycin/)
 - Support for more than 15 image formats by default
 - Editing with crop, rotate, and flip for PNG and JPEG
 - Extensive support for touchpad and touchscreen gestures
