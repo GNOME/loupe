@@ -2,31 +2,36 @@ mime_types = []
 
 # image-rs
 mime_types += [
+  'image/apng',
+  'image/bmp',
+  'image/gif',
+  'image/jp2',
   'image/jpeg',
   'image/png',
-  'image/gif',
-  'image/webp',
+  'image/qoi',
   'image/tiff',
-  # TGA
-  'image/x-tga',
-  # DDS
-  'image/vnd-ms.dds',
-  'image/x-dds',
-  'image/bmp',
   # .ico
   'image/vnd.microsoft.icon',
-  # HDR
-  'image/vnd.radiance',
+  'image/webp',
+  # DDS
+  'image/x-dds',
   # OpenEXR
   'image/x-exr',
   # PNM
+  'image/x-portable-anymap',
   'image/x-portable-bitmap',
   'image/x-portable-graymap',
   'image/x-portable-pixmap',
-  'image/x-portable-anymap',
   # Both mime types exist in the wild
   'image/x-qoi',
-  'image/qoi',
+  # TGA
+  'image/x-tga',
+  # .cur
+  'image/x-win-bitmap',
+  # XBM
+  'image/x-xbitmap',
+  # XPM
+  'image/x-xpixmap'
 ]
 
 # SVG
