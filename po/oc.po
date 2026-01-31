@@ -1,3115 +1,1011 @@
-# translation of po_gvfs-oc.po to Occitan (lengadocian)
-# Occitan (post 1500) translation for gvfs
-# Copyright (c) 2008 Rosetta Contributors and Canonical Ltd 2008
-# This file is distributed under the same license as the gvfs package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2008.
-# Yannig Marchegay (Kokoyaya) <yannig@marchegay.org>, 2008.
+# Occitan translation of mutter.
+# Copyright (C) 2002-2015 Free Software Foundation, Inc.
+# This file is distributed under the same license as the metacity package.
+# Yannig Marchegay (Kokoyaya) <yannig@marchegay.org>, 2006-2008
 # Cédric Valmary (totenoc.eu) <cvalmary@yahoo.fr>, 2016.
 msgid ""
 msgstr ""
-"Project-Id-Version: po_gvfs-oc\n"
-"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2026-01-30 22:01+0000\n"
-"PO-Revision-Date: 2026-01-31 14:23+0100\n"
+"Project-Id-Version: mutter master\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/mutter/issues/\n"
+"POT-Creation-Date: 2026-01-31 09:20+0000\n"
+"PO-Revision-Date: 2026-01-31 14:29+0100\n"
 "Last-Translator: Quentin PAGÈS\n"
 "Language-Team: Tot En Òc\n"
 "Language: oc\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: Poedit 3.8\n"
-"X-Launchpad-Export-Date: 2015-05-20 16:56+0000\n"
 "X-Project-Style: gnome\n"
 
-#: data/org.gnome.Loupe.desktop.in.in:2
-#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:32
-#: src/widgets/image_window.rs:897
-msgid "Image Viewer"
-msgstr "Visionador d'imatges"
+#: data/50-mutter-navigation.xml:6
+msgid "Navigation"
+msgstr "Navigacion"
 
-#: data/org.gnome.Loupe.desktop.in.in:3
-#: data/org.gnome.Loupe.metainfo.xml.in.in:13
-msgid "View and edit images"
-msgstr "Afichar modificar d’imatges"
+#: data/50-mutter-navigation.xml:9
+msgid "Move window to workspace 1"
+msgstr "Desplaçar la fenèstra cap a l'espaci de trabalh 1"
 
-#: data/org.gnome.Loupe.desktop.in.in:11
-msgid "Picture;Graphics;Loupe;"
-msgstr "Imatge;grafisme;Loupe;"
+#: data/50-mutter-navigation.xml:12
+msgid "Move window to workspace 2"
+msgstr "Desplaçar la fenèstra cap a l'espaci de trabalh 2"
 
-#: data/org.gnome.Loupe.gschema.xml.in:6
-msgid "Show the image properties sidebar"
-msgstr "Afichar la barra laterala de las proprietats de l’imatge"
+#: data/50-mutter-navigation.xml:15
+msgid "Move window to workspace 3"
+msgstr "Desplaçar la fenèstra cap a l'espaci de trabalh 3"
 
-#. developer_name tag deprecated with Appstream 1.0
-#: data/org.gnome.Loupe.metainfo.xml.in.in:8 src/about.rs:35
-msgid "The GNOME Project"
-msgstr "Lo projècte GNOME"
+#: data/50-mutter-navigation.xml:18
+msgid "Move window to workspace 4"
+msgstr "Desplaçar la fenèstra cap a l'espaci de trabalh 4"
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:15
-msgid ""
-"Explore images, view their metadata, and make quick edits by cropping, "
-"rotating, or flipping them."
-msgstr ""
-"Descobrir d’imatges, veire lor metadonadas, e realizar de modificacions "
-"rapidas coma retalhar, pivotar o virar."
+#: data/50-mutter-navigation.xml:21
+msgid "Move window to last workspace"
+msgstr "Desplaçar la fenèstra cap al darrièr espaci de trabalh"
 
-#: data/resources/shortcuts-dialog.ui:6
-msgctxt "shortcut window"
-msgid "General Shortcuts"
-msgstr "Acorchis de clavièr generals"
+#: data/50-mutter-navigation.xml:24
+msgid "Move window one workspace to the left"
+msgstr "Desplaçar la fenèstra d'un espaci de trabalh cap a esquèrra"
 
-#: data/resources/shortcuts-dialog.ui:9
-msgctxt "shortcut window"
-msgid "Copy Image or Selected Text to Clipboard"
-msgstr "Copiar l’imatge o lo tèxte seleccionat al quichapapièrs"
+#: data/50-mutter-navigation.xml:27
+msgid "Move window one workspace to the right"
+msgstr "Desplaçar la fenèstra d'un espaci de trabalh cap a dreita"
 
-#: data/resources/shortcuts-dialog.ui:15
-msgctxt "shortcut window"
-msgid "Move Image to Trash"
-msgstr "Desplaçar l'imatge dins l’escobilhièr"
+#: data/50-mutter-navigation.xml:31
+msgid "Move window one workspace up"
+msgstr "Desplaçar la fenèstra d'un espaci de trabalh cap amont"
 
-#: data/resources/shortcuts-dialog.ui:21
-msgctxt "shortcut window"
-msgid "Permanently Delete Image"
-msgstr "Suprimir irreversiblament l’imatge"
+#: data/50-mutter-navigation.xml:35
+msgid "Move window one workspace down"
+msgstr "Desplaçar la fenèstra d'un espaci de trabalh cap aval"
 
-#: data/resources/shortcuts-dialog.ui:27
-msgctxt "shortcut window"
-msgid "Open Image with Other App"
-msgstr "Dorbir l’imatge amb una autra aplicacion"
+#: data/50-mutter-navigation.xml:38
+msgid "Move window one monitor to the left"
+msgstr "Desplaçar la fenèstra d'un ecran cap a esquèrra"
 
-#: data/resources/shortcuts-dialog.ui:33
-msgctxt "shortcut window"
-msgid "Set as Background"
-msgstr "Definir coma rèireplan"
+#: data/50-mutter-navigation.xml:41
+msgid "Move window one monitor to the right"
+msgstr "Desplaçar la fenèstra d'un ecran cap a dreita"
 
-#: data/resources/shortcuts-dialog.ui:39
-msgctxt "shortcut window"
-msgid "New Window"
-msgstr "Fenèstra novèla"
+#: data/50-mutter-navigation.xml:44
+msgid "Move window one monitor up"
+msgstr "Desplaçar la fenèstra d'un ecran cap amont"
 
-#: data/resources/shortcuts-dialog.ui:45
-msgctxt "shortcut window"
-msgid "Open Help"
-msgstr "Dobrir l’ajuda"
+#: data/50-mutter-navigation.xml:47
+msgid "Move window one monitor down"
+msgstr "Desplaçar la fenèstra d'un ecran cap aval"
 
-#: data/resources/shortcuts-dialog.ui:51
-msgctxt "shortcut window"
-msgid "Show Keyboard Shortcuts"
-msgstr "Mostrar los acorchis clavièr"
+#: data/50-mutter-navigation.xml:51
+msgid "Switch applications"
+msgstr "Cambiar d'aplicacion"
 
-#: data/resources/shortcuts-dialog.ui:57
-msgctxt "shortcut window"
-msgid "Close Window"
+#: data/50-mutter-navigation.xml:56
+msgid "Switch to previous application"
+msgstr "Passar a l'aplicacion precedenta"
+
+#: data/50-mutter-navigation.xml:60
+msgid "Switch windows"
+msgstr "Cambiar de fenèstra"
+
+#: data/50-mutter-navigation.xml:65
+msgid "Switch to previous window"
+msgstr "Passar a la fenèstra precedenta"
+
+#: data/50-mutter-navigation.xml:69
+msgid "Switch windows of an application"
+msgstr "Cambiar de fenèstra d'una aplicacion"
+
+#: data/50-mutter-navigation.xml:74
+msgid "Switch to previous window of an application"
+msgstr "Passar a la fenèstra precedenta d'una aplicacion"
+
+#: data/50-mutter-navigation.xml:78
+msgid "Switch system controls"
+msgstr "Cambiar los contraròtles sistèma"
+
+#: data/50-mutter-navigation.xml:83
+msgid "Switch to previous system control"
+msgstr "Passar al contraròtle sistèma precedent"
+
+#: data/50-mutter-navigation.xml:87
+msgid "Switch windows directly"
+msgstr "Cambiar de fenèstra dirèctament"
+
+#: data/50-mutter-navigation.xml:92
+msgid "Switch directly to previous window"
+msgstr "Passar dirèctament a la fenèstra precedenta"
+
+#: data/50-mutter-navigation.xml:96
+msgid "Switch windows of an app directly"
+msgstr "Cambiar de fenèstra d'una aplicacion dirèctament"
+
+#: data/50-mutter-navigation.xml:101
+msgid "Switch directly to previous window of an app"
+msgstr "Passar dirèctament a la fenèstra precedenta d'una aplicacion"
+
+#: data/50-mutter-navigation.xml:105
+msgid "Switch system controls directly"
+msgstr "Cambiar los contraròtles sistèma dirèctament"
+
+#: data/50-mutter-navigation.xml:110
+msgid "Switch directly to previous system control"
+msgstr "Passar dirèctament al contraròtle sistèma precedent"
+
+#: data/50-mutter-navigation.xml:113
+msgid "Hide all normal windows"
+msgstr "Amagar totas las fenèstras normalas"
+
+#: data/50-mutter-navigation.xml:116
+msgid "Switch to workspace 1"
+msgstr "Passar a l'espaci de trabalh 1"
+
+#: data/50-mutter-navigation.xml:119
+msgid "Switch to workspace 2"
+msgstr "Passar a l'espaci de trabalh 2"
+
+#: data/50-mutter-navigation.xml:122
+msgid "Switch to workspace 3"
+msgstr "Passar a l'espaci de trabalh 3"
+
+#: data/50-mutter-navigation.xml:125
+msgid "Switch to workspace 4"
+msgstr "Passar a l'espaci de trabalh 4"
+
+#: data/50-mutter-navigation.xml:128
+msgid "Switch to last workspace"
+msgstr "Passar al darrièr espaci de trabalh"
+
+#: data/50-mutter-navigation.xml:131
+msgid "Switch to workspace on the left"
+msgstr "Passar a l'espaci de trabalh d'esquèrra"
+
+#: data/50-mutter-navigation.xml:134
+msgid "Switch to workspace on the right"
+msgstr "Passar a l'espaci de trabalh de drecha"
+
+#: data/50-mutter-navigation.xml:138
+msgid "Switch to workspace above"
+msgstr "Passar a l'espaci de trabalh del dessús"
+
+#: data/50-mutter-navigation.xml:142
+msgid "Switch to workspace below"
+msgstr "Passar a l'espaci de trabalh del dejós"
+
+#: data/50-mutter-system.xml:6 data/50-mutter-wayland.xml:6
+msgid "System"
+msgstr "Sistèma"
+
+#: data/50-mutter-system.xml:8
+msgid "Show the run command prompt"
+msgstr "Afichar la fenèstra per aviar una comanda"
+
+#: data/50-mutter-wayland.xml:8
+msgid "Restore the keyboard shortcuts"
+msgstr "Restaurar los acorchis de clavièr"
+
+#: data/50-mutter-windows.xml:6
+msgid "Windows"
+msgstr "Fenèstras"
+
+#: data/50-mutter-windows.xml:8
+msgid "Activate the window menu"
+msgstr "Activar lo menú fenèstra"
+
+#: data/50-mutter-windows.xml:10
+msgid "Toggle fullscreen mode"
+msgstr "Bascular lo mòde ecran complet"
+
+#: data/50-mutter-windows.xml:12
+msgid "Toggle maximization state"
+msgstr "Bascular l'estat d'agrandiment"
+
+#: data/50-mutter-windows.xml:14
+msgid "Maximize window"
+msgstr "Maximizar la fenèstra"
+
+#: data/50-mutter-windows.xml:16
+msgid "Restore window"
+msgstr "Restablir la fenèstra"
+
+#: data/50-mutter-windows.xml:18
+msgid "Close window"
 msgstr "Tampar la fenèstra"
 
-#: data/resources/shortcuts-dialog.ui:63
-msgctxt "shortcut window"
-msgid "Quit"
-msgstr "Quitar"
-
-#: data/resources/shortcuts-dialog.ui:71
-msgctxt "shortcut window"
-msgid "Navigate Images"
-msgstr "Percórrer los imatges"
-
-#: data/resources/shortcuts-dialog.ui:75 data/resources/shortcuts-dialog.ui:89
-msgctxt "shortcut window"
-msgid "Next Image"
-msgstr "Imatge seguent"
-
-#: data/resources/shortcuts-dialog.ui:82 data/resources/shortcuts-dialog.ui:96
-msgctxt "shortcut window"
-msgid "Previous Image"
-msgstr "Imatge precedent"
-
-#: data/resources/shortcuts-dialog.ui:102
-msgctxt "shortcut window"
-msgid "First Image"
-msgstr "Primièr imatge"
-
-#: data/resources/shortcuts-dialog.ui:108
-msgctxt "shortcut window"
-msgid "Last Image"
-msgstr "Darrièr imatge"
-
-#: data/resources/shortcuts-dialog.ui:116
-msgctxt "shortcut window"
-msgid "Rotate Image"
-msgstr "Virar l’imatge"
-
-#: data/resources/shortcuts-dialog.ui:119
-#: data/resources/shortcuts-dialog.ui:253
-msgctxt "shortcut window"
-msgid "Rotate Clockwise"
-msgstr "Virar al sens orari"
-
-#: data/resources/shortcuts-dialog.ui:125
-#: data/resources/shortcuts-dialog.ui:259
-msgctxt "shortcut window"
-msgid "Rotate Counterclockwise"
-msgstr "Virar al sens antiorari"
-
-#: data/resources/shortcuts-dialog.ui:133
-msgctxt "shortcut window"
-msgid "Zoom Image"
-msgstr "Agrandir l’imatge"
-
-#: data/resources/shortcuts-dialog.ui:136
-msgctxt "shortcut window"
-msgid "Zoom In"
-msgstr "Zoom avant"
-
-#: data/resources/shortcuts-dialog.ui:142
-msgctxt "shortcut window"
-msgid "Zoom Out"
-msgstr "Zoom arrièr"
-
-#: data/resources/shortcuts-dialog.ui:148
-msgctxt "shortcut window"
-msgid "Best Fit"
-msgstr "Talha ideala"
-
-#: data/resources/shortcuts-dialog.ui:154
-msgctxt "shortcut window"
-msgid "Original Scale"
-msgstr "Escala d’origina"
-
-#: data/resources/shortcuts-dialog.ui:160
-msgctxt "shortcut window"
-msgid "200% Scale"
-msgstr "Escala 200%"
-
-#: data/resources/shortcuts-dialog.ui:168
-msgctxt "shortcut window"
-msgid "Pan View"
-msgstr "Vista panoramica"
-
-#: data/resources/shortcuts-dialog.ui:171
-msgctxt "shortcut window"
-msgid "Pan Left"
-msgstr "Desplaçar a esquèrra"
-
-#: data/resources/shortcuts-dialog.ui:177
-msgctxt "shortcut window"
-msgid "Pan Right"
-msgstr "Desplaçar a drecha"
-
-#: data/resources/shortcuts-dialog.ui:183
-msgctxt "shortcut window"
-msgid "Pan Up"
-msgstr "Desplaçar ennaut"
-
-#: data/resources/shortcuts-dialog.ui:189
-msgctxt "shortcut window"
-msgid "Pan Down"
-msgstr "Desplaçar enbàs"
-
-#: data/resources/shortcuts-dialog.ui:197
-msgctxt "shortcut window"
-msgid "View"
-msgstr "Vista"
-
-#: data/resources/shortcuts-dialog.ui:200
-msgctxt "shortcut window"
-msgid "Toggle Fullscreen"
-msgstr "Bascular en mòde ecran complèt"
-
-#: data/resources/shortcuts-dialog.ui:206
-msgctxt "shortcut window"
-msgid "Leave Fullscreen"
-msgstr "Quitar lo mòde ecran complèt"
-
-#: data/resources/shortcuts-dialog.ui:212
-msgctxt "shortcut window"
-msgid "Toggle Image Properties"
-msgstr "Alternar las proprietats de l’imatge"
-
-#: data/resources/shortcuts-dialog.ui:218
-msgctxt "shortcut window"
-msgid "Show Main Menu"
-msgstr "Afichar lo menú principal"
-
-#: data/resources/shortcuts-dialog.ui:226
-msgctxt "shortcut window"
-msgid "Editing"
-msgstr "Modificacion"
-
-#: data/resources/shortcuts-dialog.ui:229
-msgctxt "shortcut window"
-msgid "Open Editing View"
-msgstr "Dobrir la vista modificacion"
-
-#: data/resources/shortcuts-dialog.ui:235
-msgctxt "shortcut window"
-msgid "Replace Original"
-msgstr "Remplaçar l’original"
-
-#: data/resources/shortcuts-dialog.ui:241
-msgctxt "shortcut window"
-msgid "Save As"
-msgstr "Enregistrar jos"
-
-#: data/resources/shortcuts-dialog.ui:247
-msgctxt "shortcut window"
-msgid "Cancel"
-msgstr "Anullar"
-
-#: data/resources/shortcuts-dialog.ui:265
-msgctxt "shortcut window"
-msgid "Mirror Horizontally"
-msgstr "Miralh orizontal"
-
-#: data/resources/shortcuts-dialog.ui:271
-msgctxt "shortcut window"
-msgid "Mirror Vertically"
-msgstr "Miralh vertical"
-
-#: data/resources/shortcuts-dialog.ui:277
-msgctxt "shortcut window"
-msgid "Apply Crop"
-msgstr "Aplicar copadura"
-
-#. Translators: Replace "translator-credits" with your names, one name per line
-#: src/about.rs:45
-msgid "translator-credits"
-msgstr "Quentin PAGÈS"
-
-#: src/about.rs:46
-msgid "Copyright © 2020–2024 Christopher Davis et al."
-msgstr "Copyright © 2020–2024 Christopher Davis et al."
-
-#: src/file_model.rs:211
-msgid "Could not list other files in directory."
-msgstr "Impossible de listar los autres fichièrs del repertòri."
-
-#. Translators: Display of the f-number <https://en.wikipedia.org/wiki/F-number>. {} will be replaced with the number
-#: src/metadata.rs:256
-msgid "\\u{192}\\u{2215}{}"
-msgstr "\\u{192}\\u{2215}{}"
-
-#. Translators: Fractional exposure time (photography) in seconds
-#: src/metadata.rs:269
-msgid "1\\u{2215}{}\\u{202F}s"
-msgstr "1\\u{2215}{}\\u{202F}s"
-
-#. Translators: Exposure time (photography) in seconds
-#: src/metadata.rs:277
-msgid "{}\\u{202F}s"
-msgstr "{}\\u{202F}s"
-
-#: src/metadata.rs:291
-msgid "{}\\u{202F}mm"
-msgstr "{}\\u{202F}mm"
-
-#. Translators: short for "north" in GPS coordinate
-#: src/metadata.rs:331
-msgid "N"
-msgstr "N"
-
-#. Translators: short for "south" in GPS coordinate
-#: src/metadata.rs:335
-msgid "S"
-msgstr "S"
-
-#. Translators: short for "east" in GPS coordinate
-#: src/metadata.rs:344
-msgid "E"
-msgstr "È"
-
-#. Translators: short for "west" in GPS coordinate
-#: src/metadata.rs:348
-msgid "W"
-msgstr "O"
-
-#. / Returns localized date + time format
-#. Translators: This is the date and time format we use in metadata output etc.
-#. The format has to follow <https://docs.gtk.org/glib/method.DateTime.format.html>
-#. The default is already translated. Don't change if you are not sure what to
-#. use.
-#: src/util.rs:39
-msgid "%x %X"
-msgstr "%x %X"
-
-#: src/util.rs:182
-msgid "Failed to restore image from trash"
-msgstr "Fracàs de la restauracion de l’imatge a partir de l’escobilhièr"
-
-#: src/widgets/drag_overlay.ui:15
-msgid "Drop Image to View"
-msgstr "Depausar un imatge per l’afichar"
-
-#: src/widgets/edit/crop.rs:363
-msgid "Failed to Edit Image"
-msgstr "L'obtencion de la lista dels fichièrs a fracassat"
-
-#: src/widgets/edit/crop.ui:6
-msgid "Free"
-msgstr "Liure"
-
-#: src/widgets/edit/crop.ui:11
-msgid "Original"
-msgstr "Original"
-
-#: src/widgets/edit/crop.ui:16
-msgid "Square"
-msgstr "Carrat"
-
-#: src/widgets/edit/crop.ui:21
-msgid "5:4"
-msgstr "5:4"
-
-#: src/widgets/edit/crop.ui:26
-msgid "4:3"
-msgstr "4:3"
-
-#: src/widgets/edit/crop.ui:31
-msgid "3:2"
-msgstr "3:2"
-
-#: src/widgets/edit/crop.ui:36
-msgid "16:9"
-msgstr "16:9"
-
-#: src/widgets/edit/crop.ui:77 src/widgets/edit/crop.ui:364
-msgid "Aspect Ratio"
-msgstr "Proporcions"
-
-#: src/widgets/edit/crop.ui:91
-msgid "_Free"
-msgstr "_Liure"
-
-#: src/widgets/edit/crop.ui:109
-msgid "_Original"
-msgstr "_Original"
-
-#: src/widgets/edit/crop.ui:127
-msgid "_Square"
-msgstr "_Carrat"
-
-#: src/widgets/edit/crop.ui:145
-msgid "_5:4"
-msgstr "_5:4"
-
-#: src/widgets/edit/crop.ui:166
-msgid "_4:3"
-msgstr "_4:3"
-
-#: src/widgets/edit/crop.ui:187
-msgid "_3:2"
-msgstr "_3:2"
-
-#: src/widgets/edit/crop.ui:208
-msgid "_16:9"
-msgstr "_16:9"
-
-#: src/widgets/edit/crop.ui:231 src/widgets/edit/crop.ui:377
-msgid "Orientation Landscape"
-msgstr "Orientazion paisatge"
-
-#: src/widgets/edit/crop.ui:240 src/widgets/edit/crop.ui:389
-msgid "Orientation Portrait"
-msgstr "Orientazion retrach"
-
-#: src/widgets/edit/crop.ui:252 src/widgets/image_page.ui:15
-#: src/widgets/image_window.ui:25
-msgid "Rotate"
-msgstr "Pivotar"
-
-#: src/widgets/edit/crop.ui:261 src/widgets/edit/crop.ui:407
-msgid "Rotate Counter Clockwise"
-msgstr "Rotacion antiorària"
-
-#: src/widgets/edit/crop.ui:268
-msgid "Rotate Clockwise"
-msgstr "Rotacion orària"
-
-#: src/widgets/edit/crop.ui:278
-msgid "Flip"
-msgstr "Revirar"
-
-#: src/widgets/edit/crop.ui:287 src/widgets/edit/crop.ui:415
-msgid "Mirror Horizontally"
-msgstr "Miralh orizontal"
-
-#: src/widgets/edit/crop.ui:294
-msgid "Mirror Vertically"
-msgstr "Miralh vertical"
-
-#: src/widgets/edit/crop.ui:306 src/widgets/edit/crop.ui:429
-msgid "_Reset"
-msgstr "_Reïnicializar"
-
-#: src/widgets/edit/crop.ui:307 src/widgets/edit/crop.ui:431
-msgid "Undo Changes in this View"
-msgstr "Anullar las modificacions dins aquesta vista"
-
-#: src/widgets/edit/crop_selection.ui:46
-msgid "Crop Selection"
-msgstr "Talhar la seleccion"
-
-#. Translators: Filename suffix, {} is replaced by a number
-#: src/widgets/edit_window.rs:195
-#, rust-format
-msgid " (Edited)"
-msgid_plural " (Edited {})"
-msgstr[0] " (Modificat)"
-msgstr[1] " ({} modificats)"
-
-#: src/widgets/edit_window.rs:289 src/widgets/edit_window.rs:315
-msgid "Failed to save image."
-msgstr "L'obtencion de la lista dels fichièrs a fracassat."
-
-#: src/widgets/edit_window.rs:343
-msgid "Editing Image"
-msgstr "Modificacion de l'imatge"
-
-#: src/widgets/edit_window.rs:360
-msgid "Failed to edit image."
-msgstr "L'obtencion de la lista dels fichièrs a fracassat."
-
-#: src/widgets/edit_window.rs:370 src/widgets/edit_window.rs:393
-msgid "Failed to Save Image"
-msgstr "L'obtencion de la lista dels fichièrs a fracassat"
-
-#: src/widgets/edit_window.rs:376
-msgid "Saving Image"
-msgstr "Enregistrament de l’imatge"
-
-#: src/widgets/edit_window.ui:64
-msgid "_Cancel"
-msgstr "_Anullar"
-
-#: src/widgets/edit_window.ui:71
-msgid "_Save"
-msgstr "_Enregistrar"
-
-#: src/widgets/edit_window.ui:92
-msgid "_Save As…"
-msgstr "_Enregistrar jos…"
-
-#: src/widgets/edit_window.ui:100
-msgid "Keep original and create a new file"
-msgstr "Gardar l’original e crear un fichièr nòu"
-
-#: src/widgets/edit_window.ui:120
-msgid "_Replace Original"
-msgstr "_Remplaçar l’original"
-
-#: src/widgets/edit_window.ui:128
-msgid "Original image will be moved to the trash"
-msgstr "L’imatge original serà desplaçat a l’escobilhièr"
-
-#: src/widgets/error_details.rs:80
-msgid ""
-"The following error occurred. If you think this is an issue with the "
-"program, please include this information when you report the error."
+#: data/50-mutter-windows.xml:20
+msgid "Hide window"
+msgstr "Amagar la fenèstra"
+
+#: data/50-mutter-windows.xml:22
+msgid "Move window"
+msgstr "Desplaçar la fenèstra"
+
+#: data/50-mutter-windows.xml:24
+msgid "Resize window"
+msgstr "Redimensionar la fenèstra"
+
+#: data/50-mutter-windows.xml:27
+msgid "Toggle window on all workspaces or one"
+msgstr "Plaçar la fenèstra sus totes los espacis de trabalh, o sus un sol"
+
+#: data/50-mutter-windows.xml:29
+msgid "Raise window if covered, otherwise lower it"
+msgstr "Metre la fenèstra al primièr plan se es amagada, siquenon al rèireplan"
+
+#: data/50-mutter-windows.xml:31
+msgid "Raise window above other windows"
+msgstr "Metre la fenèstra al primièr plan"
+
+#: data/50-mutter-windows.xml:33
+msgid "Lower window below other windows"
+msgstr "Metre la fenèstra jos las autras fenèstras"
+
+#: data/50-mutter-windows.xml:35
+msgid "Maximize window vertically"
+msgstr "Maximizar la fenèstra verticalament"
+
+#: data/50-mutter-windows.xml:37
+msgid "Maximize window horizontally"
+msgstr "Maximizar la fenèstra orizontalament"
+
+#: data/50-mutter-windows.xml:41 data/org.gnome.mutter.gschema.xml.in:180
+msgid "View split on left"
+msgstr "Vista devesida a esquèrra"
+
+#: data/50-mutter-windows.xml:45 data/org.gnome.mutter.gschema.xml.in:185
+msgid "View split on right"
+msgstr "Vista devesida a dreita"
+
+#: data/org.gnome.mutter.gschema.xml.in:15
+msgid "Modifier to use for extended window management operations"
 msgstr ""
-"Las errors seguentas se son produchas. Se pensatz qu’es un problèma del "
-"programa, mercés d’inclure aquestas informacions quand senhalatz l’error."
+"Tòca d'utilizar per las operacions espandidas de gestion de las fenèstras"
 
-#: src/widgets/error_details.ui:4
-msgid "Error Details"
-msgstr "Detalhs de l’error"
-
-#: src/widgets/error_details.ui:19
+#: data/org.gnome.mutter.gschema.xml.in:16
 msgid ""
-"The image loader reported the following when trying to load or edit the "
-"image. Please include this information when you report an error. If "
-"possible, please also provide the image that causes the issue."
+"This key will initiate the “overlay”, which is a combination window overview "
+"and application launching system. The default is intended to be the “Windows "
+"key” on PC hardware. It’s expected that this binding either the default or "
+"set to the empty string."
 msgstr ""
-"Lo cargador d'imatges a raportat çò que seguís quand a ensajat de cargar o "
-"editar l'imatge. Mercé d'inclure aquestas informacions quand senhalatz una "
-"error. Se possible, mercé de fornir tanben l'imatge que causa lo problèma."
+"Aquesta tòca inicia l'« overlay », una combinason d'apercebut de las "
+"fenèstras e d'un sistèma d'aviada d'aplicacions. La tòca per defaut sul "
+"material PC es la tòca Windows. En principi, aqueste acorchi es configurat "
+"sul reglatge per defaut o sus la cadena voida."
 
-#: src/widgets/error_details.ui:24
-msgid "Error Message"
-msgstr "Messatge d'error"
+#: data/org.gnome.mutter.gschema.xml.in:28
+msgid "Attach modal dialogs"
+msgstr "Estacar las bóstias de dialòg modal"
 
-#: src/widgets/error_details.ui:28
-msgid "Copy Error Message"
-msgstr "Copiar lo messatge d’error"
-
-#: src/widgets/error_details.ui:68
-msgid "Report _Issue"
-msgstr "Senhalar una _anomalia"
-
-#: src/widgets/image_page.rs:225
-#, rust-format
+#: data/org.gnome.mutter.gschema.xml.in:29
 msgid ""
-"No image loaders available. Maybe the “glycin-loaders” package with "
-"compatibility version “{}” is not installed."
+"When true, instead of having independent titlebars, modal dialogs appear "
+"attached to the titlebar of the parent window and are moved together with "
+"the parent window."
 msgstr ""
-"Cap de cargador d’imatge pas disponible. Benlèu que lo paquet « glycin-"
-"loaders » amb la version de compatibilitat « {} » es pas installat."
+"Se verai, al luòc d'aver de barras de títol independantas, las bóstias de "
+"dialòg apareisson estacadas a la barra de títol de la fenèstra parenta e son "
+"desplaçadas ensembles amb ela."
 
-#: src/widgets/image_page.rs:243
-#, rust-format
-msgid "The image format “{} ({})” is known but not installed."
-msgstr "Lo format d’imatge « {} ({}) » es conegut mas pas installat."
+#: data/org.gnome.mutter.gschema.xml.in:38
+msgid "Enable edge tiling when dropping windows on screen edges"
+msgstr "Activar l'empilatge de las fenèstras depausadas suls bòrds de l'ecran"
 
-#: src/widgets/image_page.rs:251
-#, rust-format
-msgid "Unknown image format “{} ({}).”"
-msgstr "Formats d’imatge desconegut « {} ({}) »"
+#: data/org.gnome.mutter.gschema.xml.in:39
+msgid ""
+"If enabled, dropping windows on vertical screen edges maximizes them "
+"vertically and resizes them horizontally to cover half of the available "
+"area. Dropping windows on the top screen edge maximizes them completely."
+msgstr ""
+"Se activat, lo depaus de las fenèstras suls bòrds verticals de l'ecran las "
+"maximiza verticalament e las redimensiona orizontalament per recobrir la "
+"mitat de la zòna disponibla. Lo depaus de las fenèstras sul bòrd superior de "
+"l'ecran las maximiza completament."
 
-#: src/widgets/image_page.rs:260
-msgid "There is not enough free memory available to load this image."
-msgstr "I a pas pro de memòria liura disponibla per cargar aqueste imatge."
+#: data/org.gnome.mutter.gschema.xml.in:48
+msgid "Workspaces are managed dynamically"
+msgstr "Les espacis de trabalh son gerits d'un biais dinamic"
 
-#: src/widgets/image_page.rs:267
-#, rust-format
-msgid "Failed to load image file: {}"
-msgstr "Fracàs del cargament del fichièr imatge : {}"
+#: data/org.gnome.mutter.gschema.xml.in:49
+msgid ""
+"Determines whether workspaces are managed dynamically or whether there’s a "
+"static number of workspaces (determined by the num-workspaces key in "
+"org.gnome.desktop.wm.preferences)."
+msgstr ""
+"Determina se los espacis de trabalh son gerits d'un biais dinamica o se lo "
+"nombre d'espacis de trabalh es fixe (determinat per la clau num-workspaces "
+"dins org.gnome.desktop.wm.preferences)."
 
-#: src/widgets/image_page.rs:272
-msgid "Either the image file is corrupted or it contains unsupported elements."
-msgstr "Siá l’imatge es corromput siá content d’elements pas preses en carga."
+#: data/org.gnome.mutter.gschema.xml.in:58
+msgid "Workspaces only on primary"
+msgstr "Espacis de trabalh solament sus l'ecran principal"
 
-#: src/widgets/image_page.ui:6 src/widgets/image_window.ui:16
-msgid "_Open With…"
-msgstr "_Dobrir amb…"
+#: data/org.gnome.mutter.gschema.xml.in:59
+msgid ""
+"Determines whether workspace switching should happen for windows on all "
+"monitors or only for windows on the primary monitor."
+msgstr ""
+"Determina se lo cambiament d'espaci de trabalh se deu produire per las "
+"fenèstras de totes los ecrans o solament per las fenèstras de l'ecran "
+"principal."
 
-#: src/widgets/image_page.ui:10 src/widgets/image_window.ui:20
-msgid "_Print…"
-msgstr "_Imprimir…"
+#: data/org.gnome.mutter.gschema.xml.in:67
+msgid "Delay focus changes until the pointer stops moving"
+msgstr "Espèra l'arrèst del puntador abans lo cambiament de focus"
 
-#: src/widgets/image_page.ui:26 src/widgets/image_window.ui:36
-msgid "_Set as Background…"
-msgstr "Definir coma _rèireplan…"
+#: data/org.gnome.mutter.gschema.xml.in:68
+msgid ""
+"If set to true, and the focus mode is either “sloppy” or “mouse” then the "
+"focus will not be changed immediately when entering a window, but only after "
+"the pointer stops moving."
+msgstr ""
+"Se definit a true e que lo mòde de focus es siá « sloppy » o « mirga », "
+"alara lo focus serà pas cambiat immediatament en passant sus una fenèstra, "
+"mas solament aprèp que lo puntador s'arrèste."
 
-#: src/widgets/image_page.ui:30 src/widgets/image_window.ui:40
-msgid "_Delete"
-msgstr "_Suprimir"
+#: data/org.gnome.mutter.gschema.xml.in:78
+msgid "Draggable border width"
+msgstr "Largor de bordadura ajustabla"
 
-#: src/widgets/image_page.ui:34
-msgid "_Copy"
-msgstr "_Copiar"
+#: data/org.gnome.mutter.gschema.xml.in:79
+msgid ""
+"The amount of total draggable borders. If the theme’s visible borders are "
+"not enough, invisible borders will be added to meet this value."
+msgstr ""
+"La talha totala de las bordaduras que se pòt desplaçar. Se las bordaduras "
+"visiblas del tèma son pas sufisentas, de bordaduras invisiblas son apondudas "
+"per arribar a aquesta valor."
 
-#: src/widgets/image_page.ui:63
-msgid "Could not Load Image"
-msgstr "Cargament impossible de l’imatge"
+#: data/org.gnome.mutter.gschema.xml.in:88
+msgid "Auto maximize nearly monitor sized windows"
+msgstr ""
+"Maximizar automaticament las fenèstras que la talha n'es pròcha de la de "
+"l'ecran"
 
-#: src/widgets/image_page.ui:71
-msgid "More _Information"
-msgstr "Mai d'_informacions"
+#: data/org.gnome.mutter.gschema.xml.in:89
+msgid ""
+"If enabled, new windows that are initially the size of the monitor "
+"automatically get maximized."
+msgstr ""
+"Se activat, las novèlas fenèstras qu'an gaireben la talha de l'ecran a la "
+"dobertura seràn maximizadas automaticament."
 
-#: src/widgets/image_page.ui:81
-msgid "_Reload"
-msgstr "_Recargar"
+#: data/org.gnome.mutter.gschema.xml.in:97
+msgid "Place new windows in the center"
+msgstr "Plaçar las novèlas fenèstras al centre"
 
-#: src/widgets/image_page.ui:123 src/widgets/image_window.ui:101
-msgid "Rotate Left"
-msgstr "Pivotar cap a esquèrra"
+#: data/org.gnome.mutter.gschema.xml.in:98
+msgid ""
+"When true, the new windows will always be put in the center of the active "
+"screen of the monitor."
+msgstr ""
+"Se true (verai), las novèlas fenèstras seràn totjorn plaçadas al centre de "
+"l'ecran actiu del monitor."
 
-#: src/widgets/image_page.ui:133 src/widgets/image_window.ui:111
-msgid "Rotate Right"
-msgstr "Pivotar cap a drecha"
+#: data/org.gnome.mutter.gschema.xml.in:107
+msgid "Enable experimental features"
+msgstr "Activar las foncionalistats experimentalas"
 
-#. Translators: This is a toast notification, informing the user that
-#. an image has been set as background.
-#: src/widgets/image_view.rs:866
-msgid "Set as background."
-msgstr "Definir coma rèireplan."
+#: data/org.gnome.mutter.gschema.xml.in:108
+msgid ""
+"To enable experimental features, add the feature keyword to the list. "
+"Whether the feature requires restarting the compositor depends on the given "
+"feature. Any experimental feature is not required to still be available, or "
+"configurable. Don’t expect adding anything in this setting to be future "
+"proof. Currently possible keywords: • “scale-monitor-framebuffer” — makes "
+"mutter default to layout logical monitors in a logical pixel coordinate "
+"space, while scaling monitor framebuffers instead of window content, to "
+"manage HiDPI monitors. Does not require a restart. • “kms-modifiers” — makes "
+"mutter always allocate scanout buffers with explicit modifiers, if supported "
+"by the driver. Requires a restart. • “autoclose-xwayland” — automatically "
+"terminates Xwayland if all relevant X11 clients are gone. Requires a "
+"restart. • “xwayland-native-scaling” — lets Xwayland clients use their "
+"native scaling support. If scaling is not supported by client, the client "
+"will be unscaled. Setting only takes effect when “scale-monitor-framebuffer” "
+"is enabled as well."
+msgstr ""
+"Per activar las foncionalitats experimentalas, apondètz lo mot clau de la "
+"foncionalitat a la lista. La necessitat de tornar amodar lo compositor "
+"depend de la foncionalitat concernida. Cap de foncionalitat experimentala es "
+"pas garantida de demorar disponibla o configurabla. Vos esperetz pas que "
+"l'apondon de qué que siá dins aqueste paramètre siá permanent. Mots claus "
+"possibles actualament : • « scale-monitor-framebuffer » — fa que mutter "
+"utilize per defaut una disposicion dels monitors logica dins un espaci de "
+"coordenadas en pixèls logics, tot en metent a l'escala los tampons "
+"d'afichatge del monitor puslèu que lo contengut de las fenèstras, per gerir "
+"los monitors HiDPI. Requerís pas de tornar amodar. • « kms-modifiers » — fa "
+"que mutter alògue totjorn de tampons de sortida vidèo amb de modificators "
+"explicits, se lo pilòt o supòrta. Requerís de tornar amodar. • « autoclose-"
+"xwayland » — arrèsta automaticament Xwayland se totes los clients X11 "
+"pertinents son partits. Requerís de tornar amodar. • « xwayland-native-"
+"scaling » — daissa los clients Xwayland utilizar lor supòrt natiu de mesa a "
+"l'escala. Se la mesa a l'escala es pas suportada pel client, lo client serà "
+"pas mes a l'escala. Aqueste paramètre pren efièch solament quand « scale-"
+"monitor-framebuffer » es tanben activat."
 
-#: src/widgets/image_view.rs:872
-msgid "Could not set background."
-msgstr "Impossible de definir coma rèireplan."
+#: data/org.gnome.mutter.gschema.xml.in:144
+msgid "Modifier to use to locate the pointer"
+msgstr "Tòca modificadora d’utilizar per localizar lo puntador"
 
-#: src/widgets/image_view.ui:26
-msgid "Previous Image"
-msgstr "Imatge precedent"
+#: data/org.gnome.mutter.gschema.xml.in:145
+msgid "This key will initiate the “locate pointer” action."
+msgstr "Aquesta tòca iniciarà l’accion « localizar lo puntador »."
 
-#: src/widgets/image_view.ui:36
-msgid "Next Image"
-msgstr "Imatge seguent"
+#: data/org.gnome.mutter.gschema.xml.in:152
+msgid "Timeout for check-alive ping"
+msgstr "Relambi pel ping de verificacion d’activitat"
 
-#: src/widgets/image_view.ui:66
-msgid "Zoom Out"
-msgstr "Zoom arrièr"
+#: data/org.gnome.mutter.gschema.xml.in:153
+msgid ""
+"Number of milliseconds a client has to respond to a ping request in order to "
+"not be detected as frozen. Using 0 will disable the alive check completely."
+msgstr ""
+"Nombre de millisegondas qu’a un client per respondre a una requèsta ping per "
+"èsser pas detectat coma blocat. L’utilizacion de 0 desactivarà complètament "
+"la verificacion."
 
-#: src/widgets/image_view.ui:77
-msgid "Zoom In"
-msgstr "Zoom avant"
+#. TRANSLATORS: Luminance is different from brightness.
+#. See https://en.wikipedia.org/wiki/Luminance
+#: data/org.gnome.mutter.gschema.xml.in:164
+msgid "Per output luminance settings"
+msgstr "Per paramètre de luminositat en sortida"
 
-#: src/widgets/image_view.ui:92
-msgid "Toggle Zoom"
-msgstr "Alternar l’agrandiment"
+#: data/org.gnome.mutter.gschema.xml.in:165
+msgid ""
+"Per output and color mode luminance setting. Each entry consists of a tuple "
+"with connector, vendor, product, serial, and a color mode, as well as an "
+"associated floating point value representing the output luminance in percent "
+"(%). The default when not specified is 100%."
+msgstr ""
+"Per sortida e paramètre de luminositat de mòde de color. Cada entrada "
+"consistís en un tuple amb connector, fabricant, produch, numèro de seria, e "
+"un mòde de color, tanben coma una valor de nombre decimal associada que "
+"representa la luminositat de sortida en percentatge (%). La valor per defaut "
+"quand es pas especificada es 100%."
 
-#: src/widgets/image_view.ui:100
-msgid "Zoom to Specific Level"
-msgstr "Agrandir a un nivèl especific"
+#: data/org.gnome.mutter.gschema.xml.in:190
+msgid "Switch monitor configurations"
+msgstr "Bascular la configuracion del monitor"
 
-#: src/widgets/image_view.ui:229
-msgid "Custom Zoom Level"
-msgstr "Nivèl d’agrandiment personalizat"
+#: data/org.gnome.mutter.gschema.xml.in:195
+msgid "Rotates the built-in monitor configuration"
+msgstr "Vira la configuracion d’usina del monitor"
 
-#: src/widgets/image_view.ui:235
-msgid "Zoom to Specified Level"
-msgstr "Agrandir a un nivèl especificat"
+#: data/org.gnome.mutter.gschema.xml.in:200
+msgid "Cancel any active input capture session"
+msgstr "Anullar tot session de capture d’entrada activa"
 
-#: src/widgets/image_window.rs:527
-msgid "Supported image formats"
-msgstr "Format d'imatge suportats"
+#: data/org.gnome.mutter.wayland.gschema.xml.in:12
+msgid "Switch to VT 1"
+msgstr "Passar a l'emulator de terminal 1"
 
-#: src/widgets/image_window.rs:533
-msgid "All files"
-msgstr "Totes los fichièrs"
+#: data/org.gnome.mutter.wayland.gschema.xml.in:16
+msgid "Switch to VT 2"
+msgstr "Passar a l'emulator de terminal 2"
 
-#: src/widgets/image_window.rs:540
-msgid "Open Image"
-msgstr "Dobrir un imatge"
+#: data/org.gnome.mutter.wayland.gschema.xml.in:20
+msgid "Switch to VT 3"
+msgstr "Passar a l'emulator de terminal 3"
 
-#: src/widgets/image_window.rs:632
-msgid "Image copied to clipboard"
-msgstr "Imatge copiat al quichapapièrs"
+#: data/org.gnome.mutter.wayland.gschema.xml.in:24
+msgid "Switch to VT 4"
+msgstr "Passar a l'emulator de terminal 4"
 
-#: src/widgets/image_window.rs:653
-msgid "Image moved to trash"
-msgstr "Imatge desplaçat a l'escobilhièr"
+#: data/org.gnome.mutter.wayland.gschema.xml.in:28
+msgid "Switch to VT 5"
+msgstr "Passar a l'emulator de terminal 5"
 
-#: src/widgets/image_window.rs:654
-msgid "Undo"
-msgstr "Desfar"
+#: data/org.gnome.mutter.wayland.gschema.xml.in:32
+msgid "Switch to VT 6"
+msgstr "Passar a l'emulator de terminal 6"
 
-#: src/widgets/image_window.rs:684
-msgid "Failed to move image to trash"
-msgstr "Impossible de desplaçar l’imatge cap a l'escobilhièr"
+#: data/org.gnome.mutter.wayland.gschema.xml.in:36
+msgid "Switch to VT 7"
+msgstr "Passar a l'emulator de terminal 7"
 
-#: src/widgets/image_window.rs:708
-msgid "Permanently Delete Image?"
-msgstr "Suprimir l’imatge irreversiblament ?"
+#: data/org.gnome.mutter.wayland.gschema.xml.in:40
+msgid "Switch to VT 8"
+msgstr "Passar a l'emulator de terminal 8"
 
-#: src/widgets/image_window.rs:710
-#, rust-format
-msgid "After deleting the image “{}” it will be permanently lost."
-msgstr "Après la supression l’imatge « {} » serà perdut per totjorn."
+#: data/org.gnome.mutter.wayland.gschema.xml.in:44
+msgid "Switch to VT 9"
+msgstr "Passar a l'emulator de terminal 9"
 
-#: src/widgets/image_window.rs:718
-msgid "Cancel"
-msgstr "Anullar"
+#: data/org.gnome.mutter.wayland.gschema.xml.in:48
+msgid "Switch to VT 10"
+msgstr "Passar a l'emulator de terminal 10"
 
-#: src/widgets/image_window.rs:719
+#: data/org.gnome.mutter.wayland.gschema.xml.in:52
+msgid "Switch to VT 11"
+msgstr "Passar a l'emulator de terminal 11"
+
+#: data/org.gnome.mutter.wayland.gschema.xml.in:56
+msgid "Switch to VT 12"
+msgstr "Passar a l'emulator de terminal 12"
+
+#: data/org.gnome.mutter.wayland.gschema.xml.in:60
+msgid "Re-enable shortcuts"
+msgstr "Tornar activar los acorchis"
+
+#: data/org.gnome.mutter.wayland.gschema.xml.in:70
+msgid "Allow X11 grabs to lock keyboard focus with Xwayland"
+msgstr "Permetre a las capturas X11 de verrolhar lo focus amb Xwayland"
+
+#: data/org.gnome.mutter.wayland.gschema.xml.in:71
+msgid ""
+"Allow all keyboard events to be routed to X11 “override redirect” windows "
+"with a grab when running in Xwayland. This option is to support X11 clients "
+"which map an “override redirect” window (which do not receive keyboard "
+"focus) and issue a keyboard grab to force all keyboard events to that "
+"window. This option is seldom used and has no effect on regular X11 windows "
+"which can receive keyboard focus under normal circumstances. For a X11 grab "
+"to be taken into account under Wayland, the client must also either send a "
+"specific X11 ClientMessage to the root window or be among the applications "
+"allowed in key “xwayland-grab-access-rules”."
+msgstr ""
+"Permetre a totes los eveniments clavièr d'èsser partits cap a las fenèstras "
+"X11 « override redirect » amb captura pendent lo foncionament amb Xwayland. "
+"Aquela opcion permet de prene en carga los clients X11 que gerisson una "
+"fenèstra « override redirect » (que recep pas de focus clavièr) e produson "
+"una captura clavièr per forçar totes los eveniments clavièr cap a aquela "
+"fenèstra. Aquela opcion es rarament utilizada e a pas cap de efièch sus las "
+"fenèstras X11 normalas que pòdon recebre lo focus del clavièr dins de "
+"circonstàncias normalas. Per que una captura X11 d'acòrdi presa en compte "
+"jos Wayland, lo client deure tanben d'acòrdi enviar un ClientMessage X11 "
+"especific a la fenèstra racina, d'acòrdi figurar demest la lista de las "
+"aplicacions autorizadas dins la clau «xwayland-grab-access-rules»."
+
+#: data/org.gnome.mutter.wayland.gschema.xml.in:90
+msgid "Xwayland applications allowed to issue keyboard grabs"
+msgstr "Aplicacions Xwayland autorizadas a emetre de capturas de clavièr"
+
+#: data/org.gnome.mutter.wayland.gschema.xml.in:91
+msgid ""
+"List the resource names or resource class of X11 windows either allowed or "
+"not allowed to issue X11 keyboard grabs under Xwayland. The resource name or "
+"resource class of a given X11 window can be obtained using the command "
+"“xprop WM_CLASS”. Wildcards “*” and jokers “?” in the values are supported. "
+"Values starting with “!” are denied, which has precedence over the list of "
+"values allowed, to revoke applications from the default system list. The "
+"default system list includes the following applications: "
+"“@XWAYLAND_GRAB_DEFAULT_ACCESS_RULES@” Users can break an existing grab by "
+"using the specific keyboard shortcut defined by the keybinding key “restore-"
+"shortcuts”."
+msgstr ""
+"Lista de noms de ressorsas o de classas de ressorsas de fenèstras X11 "
+"autorizadas o non a emetre de capturas clavièr jos Xwayland. Lo nom o la "
+"classa de ressorsa d'una fenèstra X11 donada pòt èsser obtenguda amb l'ajuda "
+"de la comanda « xprop WM_CLASS ». Los caractèrs joquèr « * » e « ? » son "
+"acceptadas dins las valors. Las valors començant per « ! » son blocadas, en "
+"prioritat respècte a la lista de las aplicacions autorizadas, per revocar "
+"las aplicacions de la lista sistèma per deca. Aquesta conten las aplicacions "
+"venentas : « @XWAYLAND_GRAB_DEFAULT_ACCESS_RULES@ ». Los utilizaires pòdon "
+"copar una captura existenta en utilizant l'acorchi clavièr especific definit "
+"per la combinason de tòcas « restore-shortcuts »."
+
+#: data/org.gnome.mutter.wayland.gschema.xml.in:116
+msgid "Disable selected X extensions in Xwayland"
+msgstr "Desactivar las extensions X seleccionadas dins Xwayland"
+
+#: data/org.gnome.mutter.wayland.gschema.xml.in:117
+msgid ""
+"This option disables the selected X extensions in Xwayland if Xwayland was "
+"built with support for those X extensions. This option has no effect if "
+"Xwayland was built without support for the selected extensions. Xwayland "
+"needs to be restarted for this setting to take effect."
+msgstr ""
+"Aquesta opcion desactiva las extensions X seleccionadas dins Xwayland se "
+"foguèt construch amb la presa en carga de las extensions X. Aquesta opcion a "
+"pas cap d’efièch s’aquelas extensions foguèron pas inclusas dins la "
+"construccion de Xwayland. Xwayland deu èsser reaviat per prendre en compte "
+"aqueste paramètre."
+
+#: data/org.gnome.mutter.wayland.gschema.xml.in:130
+msgid "Allow X11 clients with a different endianness to connect to Xwayland"
+msgstr ""
+"Autorizar los clients X11 amb una endianness diferenta a se connectar a "
+"Xwayland"
+
+#: data/org.gnome.mutter.wayland.gschema.xml.in:131
+msgid ""
+"Allow connections from clients with an endianness different to that of "
+"Xwayland. The X server byte-swapping code is a huge attack surface, much of "
+"that code in Xwayland is prone to security issues. The use-case of byte-"
+"swapped clients is very niche, and disabled by default in Xwayland. Enable "
+"this option to instruct Xwayland to accept connections from X11 clients with "
+"a different endianness. This option has no effect if Xwayland does not "
+"support the command line option +byteswappedclients/-byteswappedclients to "
+"control that setting. Xwayland needs to be restarted for this setting to "
+"take effect."
+msgstr ""
+"Autorizar las connexions de clients dont la valor d’endianness es diferenta "
+"de la de Xwayland. Lo còdi d'escambi d'octets del servidor X es una enòrma "
+"susfàcia d'ataca, e una partida granda d'aquel còdi dins Xwayland es "
+"subjècta a de problèmas de securitat. Lo cas d'utilizacion dels clients amb "
+"escambi d'octets es plan limitat e desactivat per defaut dins Xwayland. "
+"Activatz aquela opcion per demandar a Xwayland d'acceptar las connexions de "
+"clients X11 amb una endianness diferenta. Aquela opcion a pas cap d'efièch "
+"se Xwayland pren pas ne carga l'opcion de linha de comanda "
+"+byteswappedclients o -byteswappedclients per controlar aquel paramètre. "
+"Xwayland deu èsser tornat desmarrar per que aquel paramètre prenga efièch."
+
+#: mdk/mdk-launcher-adder.c:451 mdk/mdk-launcher-adder.ui:22
+msgid "Application"
+msgstr "Aplicacion"
+
+#: mdk/mdk-launcher-adder.c:456 mdk/mdk-launcher-adder.ui:23
+msgid "Executable"
+msgstr "Executable"
+
+#: mdk/mdk-launcher-adder.ui:3
+msgid "Add Launcher"
+msgstr "Apondre un aviador"
+
+#: mdk/mdk-launcher-adder.ui:15
+msgid "Launcher"
+msgstr "Aviador"
+
+#: mdk/mdk-launcher-adder.ui:18
+msgid "Type"
+msgstr "Tipe"
+
+#: mdk/mdk-launcher-adder.ui:38 mdk/mdk-launchers-editor.ui:22
+msgid "Add"
+msgstr "Apondre"
+
+#: mdk/mdk-launcher-entry.c:198
+msgid "Run"
+msgstr "Executar"
+
+#: mdk/mdk-launcher-entry.ui:12
 msgid "Delete"
 msgstr "Suprimir"
 
-#: src/widgets/image_window.rs:730
-msgid "Failed to delete image"
-msgstr "Impossible de suprimir l’imatge"
+#: mdk/mdk-launcher-entry.ui:20
+msgid "Action"
+msgstr "Accion"
 
-#: src/widgets/image_window.ui:6
-msgid "_New Window"
-msgstr "Fenèstra _novèla"
+#: mdk/mdk-launchers-editor.ui:3
+msgid "Edit Launchers"
+msgstr "Modificar los aviadors"
 
-#: src/widgets/image_window.ui:10
-msgid "_Open…"
-msgstr "_Dobrir…"
+#: mdk/mdk-launchers-editor.ui:16
+msgid "Launchers"
+msgstr "Aviadors"
 
-#: src/widgets/image_window.ui:46
-msgid "_Help"
-msgstr "_Ajuda"
+#: mdk/mdk-main-window.ui:7
+msgid "_Input"
+msgstr "_Entrada"
 
-#: src/widgets/image_window.ui:50
-msgid "_Keyboard Shortcuts"
-msgstr "_Acorchis clavièr"
+#: mdk/mdk-main-window.ui:9
+msgid "_Emulate touch"
+msgstr "_Simular tòca"
 
-#: src/widgets/image_window.ui:54
-msgid "_About Image Viewer"
-msgstr "_A prepaus del Visionador d'imatges"
+#: mdk/mdk-main-window.ui:13
+msgid "_Inhibit system shortcuts"
+msgstr "_Inibir los acorchis de clavièr sistèma"
 
-#: src/widgets/image_window.ui:87
-msgid "Toggle Fullscreen"
-msgstr "Bascular en mòde ecran complèt"
+#: mdk/mdk-main-window.ui:17
+msgid "Use host _keymap"
+msgstr "Utilizar la disposicion de clavièr de l’òste"
 
-#: src/widgets/image_window.ui:93
+#: mdk/mdk-main-window.ui:24
+msgid "_Monitors"
+msgstr "_Ecrans"
+
+#: mdk/mdk-main-window.ui:26
+msgid "_Resizable"
+msgstr "_Redimensionable"
+
+#: mdk/mdk-main-window.ui:33
+msgid "_Launchers"
+msgstr "_Aviadors"
+
+#: mdk/mdk-main-window.ui:37
+msgid "_Edit launchers"
+msgstr "_Modificar los aviadors"
+
+#: mdk/mdk-main-window.ui:44
+msgid "_About Mutter Development Kit"
+msgstr "_A prepaus del kit de desvolopament Mutter"
+
+#: mdk/mdk-main-window.ui:50 mdk/mdk-main.c:56
+msgid "Mutter Development Kit"
+msgstr "Kit de desvolopament Mutter"
+
+#: mdk/mdk-main-window.ui:60
 msgid "Main Menu"
 msgstr "Menú principal"
 
-#: src/widgets/image_window.ui:125
-msgid "Image Properties"
-msgstr "Proprietats de l'imatge"
+#: mdk/mdk-main.c:49
+msgid "The Mutter Team"
+msgstr "L’equipa de Mutter"
 
-#: src/widgets/image_window.ui:132
-msgid "Edit Image"
-msgstr "Modificar l'imatge"
+#: mdk/mdk-main.c:62
+msgid "Mutter software development kit"
+msgstr "Kit de desvolopament logicial Mutter"
 
-#: src/widgets/image_window.ui:220
-msgid "View and Edit Images"
-msgstr "Afichar modificar d’imatges"
+#: mdk/mdk-main.c:65
+msgid "About Mutter Development Kit"
+msgstr "A prepaus del kit de desvolopament Mutter"
 
-#: src/widgets/image_window.ui:221
-msgid "Drag and drop images here"
-msgstr "Lissar e depausar los imatges aicí"
+#: mdk/mdk-monitor.c:792
+msgid "Failed to create monitor"
+msgstr "Impossible de crear lo monitor"
 
-#: src/widgets/image_window.ui:225
-msgid "_Open Files…"
-msgstr "_Dobrir los fichièrs…"
+#: src/backends/meta-monitor.c:274
+msgid "Built-in display"
+msgstr "Afichatge integrat"
 
-#: src/widgets/print.rs:109
-msgid "Top"
-msgstr "Amont"
-
-#: src/widgets/print.rs:110
-msgid "Center"
-msgstr "Centre"
-
-#: src/widgets/print.rs:111
-msgid "Bottom"
-msgstr "Val"
-
-#: src/widgets/print.rs:112
-msgid "Left"
-msgstr "Esquèrra"
-
-#: src/widgets/print.rs:113
-msgid "Right"
-msgstr "Drecha"
-
-#. Translators: Shorthand for centimeter
-#: src/widgets/print.rs:149
-msgid "cm"
-msgstr "cm"
-
-#. Translators: Shorthand for inch
-#: src/widgets/print.rs:151
-msgid "in"
-msgstr "in"
-
-#. Translators: Shorthand for pixel
-#: src/widgets/print.rs:153
-msgid "px"
-msgstr "px"
-
-#. Translators: {} is a placeholder for the filename
-#: src/widgets/print.rs:364
-#, rust-format
-msgid "Print “{}”"
-msgstr "Imprimir « {} »"
-
-#: src/widgets/print.rs:477
-msgid "Continue…"
-msgstr "Contunhar…"
-
-#: src/widgets/print.rs:478
-msgid "Print Image"
-msgstr "Imprimir l’imatge"
-
-#: src/widgets/print.rs:797
-msgid "_Scale"
-msgstr "_Escala"
-
-#: src/widgets/print.rs:800
-msgid "_Width"
-msgstr "_Largor"
-
-#. Translators: Go back to previous page
-#: src/widgets/print.ui:29
-msgid "_Back"
-msgstr "_Precedent"
-
-#: src/widgets/print.ui:37
-msgid "_Print"
-msgstr "_Imprimir"
-
-#: src/widgets/print.ui:56
-msgid "Layout"
-msgstr "Disposicion"
-
-#: src/widgets/print.ui:59
-msgid "_Orientation"
-msgstr "_Orientacion"
-
-#: src/widgets/print.ui:72
-msgid "Portrait Page Orientation"
-msgstr "Orientacion de la pagina en retrach"
-
-#: src/widgets/print.ui:80
-msgid "Landscape Page Orientation"
-msgstr "Orientacion de la pagina en paisatge"
-
-#: src/widgets/print.ui:89
-msgid "_Alignment"
-msgstr "_Alinhament"
-
-#: src/widgets/print.ui:108
-msgid "Margins"
-msgstr "Marges"
-
-#: src/widgets/print.ui:111
-msgid "Margin Units"
-msgstr "Units marge"
-
-#: src/widgets/print.ui:128
-msgid "_Horizontal"
-msgstr "_Orizontal"
-
-#: src/widgets/print.ui:134
-msgid "_Vertical"
-msgstr "_Vertical"
-
-#: src/widgets/print.ui:142 src/widgets/properties_view.ui:56
-msgid "Image Size"
-msgstr "Talha de l'imatge"
-
-#: src/widgets/print.ui:145
-msgid "Image Size Units"
-msgstr "Unitat de talha d'imatge"
-
-#: src/widgets/print.ui:163
-msgid "_Fill Space"
-msgstr "_Emplenament d’espaci"
-
-#: src/widgets/print.ui:174
-msgid "H_eight"
-msgstr "_Nautor"
-
-#: src/widgets/properties_view.rs:258
+#: src/backends/meta-monitor.c:301
 msgid "Unknown"
 msgstr "Desconegut"
 
-#. Translators: Addition of image being transparent to format name
-#: src/widgets/properties_view.rs:262
-msgid ", transparent"
-msgstr ", transparent"
+#: src/backends/meta-monitor.c:303
+msgid "Unknown Display"
+msgstr "Afichatge desconegut"
 
-#. Translators: Addition of image being grayscale to format name
-#: src/widgets/properties_view.rs:267
-msgid ", grayscale"
-msgstr ", nivèl de gris"
+#: src/backends/meta-monitor.c:311
+#, c-format
+msgctxt ""
+"This is a monitor vendor name, followed by a size in inches, like 'Dell 15\"'"
+msgid "%s %s"
+msgstr "%s %s"
 
-#. Translators: Addition of bit size to format name
-#: src/widgets/properties_view.rs:272
-msgid ", {}\\u{202F}bit"
-msgstr ", {}\\u{202F}bit"
+#: src/backends/meta-monitor.c:319
+#, c-format
+msgctxt ""
+"This is a monitor vendor name followed by product/model name where size in "
+"inches could not be calculated, e.g. Dell U2414H"
+msgid "%s %s"
+msgstr "%s %s"
 
-#: src/widgets/properties_view.rs:290
-msgid "{}\\u{202F}\\u{D7}\\u{202F}{}"
-msgstr "{}\\u{202F}\\u{D7}\\u{202F}{}"
+#: src/core/bell.c:237
+msgid "Bell event"
+msgstr "Eveniment sonòr"
 
-#: src/widgets/properties_view.rs:326
-msgid "Image Coordinates Copied"
-msgstr "Coordenadas de l’imatge copiadas"
+#: src/core/display.c:608
+msgid "Privacy Screen Enabled"
+msgstr "Ecran de confidencialitat activat"
 
-#: src/widgets/properties_view.ui:20
-msgid "Folder"
-msgstr "Dossièr"
+#: src/core/display.c:609
+msgid "Privacy Screen Disabled"
+msgstr "Ecran de confidencialitat desactivat"
 
-#: src/widgets/properties_view.ui:28
-msgid "Open Containing Folder"
-msgstr "Dobrir lo dossièr contenent"
+#: src/core/meta-context-main.c:355
+msgid "Run as a wayland compositor"
+msgstr "Aviar coma un compositor wayland"
 
-#: src/widgets/properties_view.ui:41
-msgid "URI"
-msgstr "URI"
+#: src/core/meta-context-main.c:362
+msgid "Run wayland compositor without starting Xwayland"
+msgstr "Executar lo compositor wayland sens aviar Xwayland"
 
-#: src/widgets/properties_view.ui:66
-msgid "Image Format"
-msgstr "Format d'imatge"
+#: src/core/meta-context-main.c:369
+msgid "Specify Wayland display name to use"
+msgstr "Indicar lo nom d'afichar per Wayland"
 
-#: src/widgets/properties_view.ui:76
-msgid "File Size"
-msgstr "Talha de fichièr"
+#: src/core/meta-context-main.c:376
+msgid "Run as a full display server, rather than nested"
+msgstr "Aviar coma un servidor d'afichatge complet, puslèu qu'imbricat"
 
-#: src/widgets/properties_view.ui:90
-msgid "File Created"
-msgstr "Creacion del fichièr"
+#: src/core/meta-context-main.c:381
+msgid "Run as a headless display server"
+msgstr "Aviar coma un servidor sens afichatge"
 
-#: src/widgets/properties_view.ui:100
-msgid "File Modified"
-msgstr "Modificacion del fichièr"
+#: src/core/meta-context-main.c:386
+msgid "Add persistent virtual monitor (WxH or WxH@R)"
+msgstr "Apondre un monitor virtual persistant (WxH o WxH@R)"
 
-#. Translators: This is a label for GPS coordinates
-#: src/widgets/properties_view.ui:114
-msgid "Location"
-msgstr "Emplaçament"
+#: src/core/meta-context-main.c:393
+msgid "Run development kit"
+msgstr "Lançar lo kit de desvolopament"
 
-#: src/widgets/properties_view.ui:125
-msgid "Copy Coordinates"
-msgstr "Copiar las coordenadas"
+#: src/core/meta-context-main.c:404
+msgid "Profile performance using trace instrumentation"
+msgstr "Perfilar las performanças en utilizant las instruccions de traçatge"
 
-#: src/widgets/properties_view.ui:136
-msgid "Open Location"
-msgstr "Dobrir l'emplaçament"
+#: src/core/meta-context-main.c:410
+msgid "Enable debug control D-Bus interface"
+msgstr "Activar lo contraròtle de desbugatge de l’interfàcia D-Bus"
 
-#: src/widgets/properties_view.ui:149
-msgid "Originally Created"
-msgstr "Creacion iniciala"
+#. TRANSLATORS: This string refers to a button that switches between
+#. * different modes in that button group.
+#.
+#: src/core/meta-pad-action-mapper.c:617
+#, c-format
+msgid "Mode Switch (Group %d)"
+msgstr "Cambiament de mòde (grop %d)"
 
-#: src/widgets/properties_view.ui:159
-msgid "Comment"
-msgstr "Comentari"
+#. TRANSLATORS: This string refers to a button that switches between
+#. * different modes.
+#.
+#: src/core/meta-pad-action-mapper.c:624
+#, c-format
+msgid "Mode Switch"
+msgstr "Cambiar de mòde"
 
-#: src/widgets/properties_view.ui:169
-msgid "Aperture"
-msgstr "Dobertura"
+#. TRANSLATORS: This string refers to an action, cycles drawing tablets'
+#. * mapping through the available outputs.
+#.
+#: src/core/meta-pad-action-mapper.c:647
+msgid "Switch monitor"
+msgstr "Cambiar de monitor"
 
-#: src/widgets/properties_view.ui:179
-msgid "Exposure"
-msgstr "Exposicion"
+#: src/core/meta-pad-action-mapper.c:649
+msgid "Show on-screen help"
+msgstr "Afichar l’ajuda a l’ecran"
 
-#: src/widgets/properties_view.ui:189
-msgid "ISO"
-msgstr "ISO"
+#. Translators: this string will appear in Sysprof
+#: src/core/meta-profiler.c:109 src/core/meta-profiler.c:299
+msgid "Compositor"
+msgstr "Compositor"
 
-#: src/widgets/properties_view.ui:199
-msgid "Focal Length"
-msgstr "Longor focala"
+#: src/core/mutter.c:75
+msgid "Print version"
+msgstr "Imprimir la version"
 
-#: src/widgets/properties_view.ui:209
-msgid "Maker, Model"
-msgstr "Fabricant, modèl"
+#: src/core/mutter.c:81
+msgid "Mutter plugin to use"
+msgstr "Empeuton de Mutter d'utilizar"
 
-#: src/widgets/window.rs:206
-msgid "Show Details"
-msgstr "Afichar los detalhs"
+#: src/core/prefs.c:1874
+#, c-format
+msgid "Workspace %d"
+msgstr "Espaci de trabalh %d"
 
-#~ msgid "Browse through your images and inspect their metadata with:"
-#~ msgstr "Navegatz demest vòstres imatges e d’examinatz lors metadonadas :"
+#: src/core/util.c:149
+msgid "Mutter was compiled without support for verbose mode"
+msgstr "Mutter es estat compilat sens la presa en carga del mòde verbós"
 
-#~ msgid "Fast GPU accelerated image rendering"
-#~ msgstr "Rendut d’imatge accelerat GPU rapid"
+#: src/core/workspace.c:508
+msgid "Workspace switched"
+msgstr "Espaci de trabalh cambiat"
 
-#~ msgid "Tiled rendering for vector graphics"
-#~ msgstr "Rendut en mosaïc dels grafics vectorials"
+#: src/wayland/meta-wayland-tablet-pad.c:558
+#, c-format
+msgid "Mode Switch: Mode %d"
+msgstr "Cambiament de mòde : mòde %d"
 
-#~ msgid "Extendable and sandboxed image decoding"
-#~ msgstr "Descodatge d’imatge extensible e isolat"
+#: src/x11/meta-x11-display.c:776
+#, c-format
+msgid "Display “%s” already has a window manager"
+msgstr "L'ecran « %s » a ja un gestionari de fenèstras"
 
-#~ msgid "Accessible presentation of the most important metadata."
-#~ msgstr "Presentacion accessibla de la màger part de las metadonadas."
+#: src/x11/meta-x11-display.c:1139
+#, c-format
+msgid "Failed to open X Window System display “%s”"
+msgstr "Impossible de dobrir l'afichatge « %s » del sistèma X Window"
 
-#~ msgctxt "shortcut window"
-#~ msgid "Gestures"
-#~ msgstr "Gèstes"
+#: src/x11/meta-x11-display.c:1320
+#, c-format
+msgid "Screen %d on display “%s” is invalid"
+msgstr "L'ecran %d sus l'afichatge « %s » es pas valid"
 
-#~ msgid "{} %"
-#~ msgstr "{} %"
+#. This probably means that a non-WM compositor like xcompmgr is running;
+#. * we have no way to get it to exit
+#: src/x11/meta-x11-display.c:2509
+#, c-format
+msgid ""
+"Another compositing manager is already running on screen %i on display “%s”."
+msgstr ""
+"Un autre gestionari de composicion es ja aviat sus l'ecran %i de l'afichatge "
+"« %s »."
 
-#~ msgid "_Done"
-#~ msgstr "_Acabat"
+#: src/x11/meta-x11-selection-input-stream.c:475
+#, c-format
+msgid "Format %s not supported"
+msgstr "Lo format %s es pas pres en carga"
 
-#~ msgid "Operation not supported, files on different mounts"
-#~ msgstr ""
-#~ "L'operacion es pas presa en carga, los fichièrs son sus de punts de "
-#~ "montatge diferents"
+#: src/x11/window-props.c:562
+#, c-format
+msgid "%s (on %s)"
+msgstr "%s (sus %s)"
 
-#, fuzzy
-#~| msgid "Couldn't get stream file descriptor"
-#~ msgid "Couldn’t get stream file descriptor"
-#~ msgstr "Impossible d'obténer lo descriptor de fichièr del flux"
+#~ msgid "Replace the running window manager"
+#~ msgstr "Remplaçar lo gestionari de fenèstras en cors de foncionament"
 
-#~ msgid "Didn’t get stream file descriptor"
-#~ msgstr "Lo descriptor de fichièr de flux es pas estat obtengut"
+#~ msgid "X Display to use"
+#~ msgstr "Afichatge X d'utilizar"
 
-#~ msgid "Invalid return value from %s"
-#~ msgstr "Valor de retorn de « %s » invalida"
+#~ msgid "Make X calls synchronous"
+#~ msgstr "Rendre sincròns los apèls a X"
 
-#~ msgid "Could not find enclosing mount"
-#~ msgstr "Impossible de trobar lo punt de montatge òste"
+#~ msgid "Run as a nested compositor"
+#~ msgstr "Executar coma un compositor imbricat"
 
-#~ msgid "Invalid filename %s"
-#~ msgstr "Nom de fichièr invalid : %s"
+#~ msgid "Run with X11 backend"
+#~ msgstr "Lançar amb lo motor X11"
 
-#~ msgid "Error setting file metadata: %s"
-#~ msgstr ""
-#~ "Error al moment de la definicion de las metadonadas del fichièr : %s"
-
-#~ msgid "can’t open metadata tree"
-#~ msgstr "impossible de dobrir l'arborescéncia de las metadonadas"
-
-#~ msgid "can’t get metadata proxy"
-#~ msgstr "impossible de d'obténer las metasdonadas del proxy"
-
-#~ msgid "values must be string or list of strings"
-#~ msgstr ""
-#~ "las valors devon èsser una cadena de caractèrs o una lista de cadenas de "
-#~ "caractèrs"
-
-#~ msgid "Error in stream protocol: %s"
-#~ msgstr "Error del protocòl de flux : %s"
-
-#~ msgid "End of stream"
-#~ msgstr "Fin de flux"
-
-#~ msgid "Operation was cancelled"
-#~ msgstr "L'operacion es estada anullada"
-
-#~ msgid "Seek not supported on stream"
-#~ msgstr "L'operacion « seek » es pas presa en carga per un flux"
-
-#~ msgid "Truncate not supported on stream"
-#~ msgstr "La troncatura es pas presa en carga sul flux"
-
-#~ msgid "Error while getting mount info: %s"
-#~ msgstr ""
-#~ "Error al moment de l'obtencion d'informacions sul punt de montatge : %s"
-
-#~ msgid "Permission denied"
-#~ msgstr "Autorizacion refusada"
-
-#~ msgid "Invalid file info format"
-#~ msgstr "Format d'informacions de fichièr invalid"
-
-#~ msgid "Error initializing Avahi: %s"
-#~ msgstr "Error al moment de l'inicializacion d'Avahi : %s"
-
-#, fuzzy
-#~| msgid "Error resolving \"%s\" service \"%s\" on domain \"%s\""
-#~ msgid "Error resolving “%s” service “%s” on domain “%s”"
-#~ msgstr "Error de resolucion del servici %s « %s » dins lo domeni « %s »"
-
-#, fuzzy
-#~| msgid ""
-#~| "Error resolving \"%s\" service \"%s\" on domain \"%s\". One or more TXT "
-#~| "records are missing. Keys required: \"%s\"."
+#, c-format
 #~ msgid ""
-#~ "Error resolving “%s” service “%s” on domain “%s”. One or more TXT records "
-#~ "are missing. Keys required: “%s”."
+#~ "Display “%s” already has a window manager; try using the --replace option "
+#~ "to replace the current window manager."
 #~ msgstr ""
-#~ "Error de resolucion del servici %s « %s » dins lo domeni « %s ». Un o "
-#~ "mauntun enregistrament TXT mancan. Claus obligatòrias : « %s »."
+#~ "L'afichatge « %s » a ja un gestionari de fenèstras ; ensajatz d'utilizar "
+#~ "l'opcion --replace per remplaçar lo gestionari de fenèstras actual."
 
-#~ msgid "Timed out resolving “%s” service “%s” on domain “%s”"
-#~ msgstr ""
-#~ "Expiracion de relambi al moment de la resolucion del servici %s « %s » "
-#~ "dins lo domeni « %s »"
+#~ msgid "Disable connection to session manager"
+#~ msgstr "Desactivar la connexion al gestionari de sessions"
 
-#~ msgid "Error initializing Avahi resolver"
-#~ msgstr "Error pendent l'inicializacion del resolvador Avahi"
+#~ msgid "Specify session management ID"
+#~ msgstr "Indicar l'ID de gestion de sessions"
 
-#~ msgid "Malformed DNS-SD encoded_triple “%s”"
-#~ msgstr "« %s » DNS-SD encoded_triple mal format"
+#~ msgid "Initialize session from savefile"
+#~ msgstr "Inicializar la session dempuèi lo fichièr de salvament"
 
-#, fuzzy
-#~| msgid "Can't handle version %d of GVfsIcon encoding"
-#~ msgid "Can’t handle version %d of GVfsIcon encoding"
-#~ msgstr "Impossible de gerir la version %d de l'encodatge GVfsIcon"
+#~ msgid "Move to workspace above"
+#~ msgstr "Desplaçar cap a l'espaci de trabalh de dessús"
 
-#~ msgid "Malformed input data for GVfsIcon"
-#~ msgstr "Donadas d'entrada invalidas per GVfsIcon"
+#~ msgid "Move to workspace below"
+#~ msgstr "Desplaçar cap a l'espaci de trabalh de dejós"
 
-#~ msgid "%s File System Service"
-#~ msgstr "Servici de sistèma de fichièrs %s"
+#~ msgid "Failed to initialize GDK"
+#~ msgstr "Impossible d'inicializar GDK"
 
-#~ msgid "Usage: %s --spawner dbus-id object_path"
-#~ msgstr "Utilizacion : %s --spawner dbus-id camin_objècte"
+#~ msgid "Mutter"
+#~ msgstr "Mutter"
 
-#~ msgid "Usage: %s key=value key=value …"
-#~ msgstr "Utilizacion : %s clau=valor clau=valor…"
-
-#~ msgid "No mount type specified"
-#~ msgstr "Cap de tipe de montatge pas indicat"
-
-#~ msgid "mountpoint for %s already running"
-#~ msgstr "un punt de montatge per %s es ja en cors d'utilizacion"
-
-#~ msgid "error starting mount daemon"
-#~ msgstr "error al moment de l'aviada del demòni de montatge"
-
-#~ msgid "The connection is not opened"
-#~ msgstr "La connexion es pas dobèrta"
-
-#~ msgid "The connection is closed"
-#~ msgstr "La connexion es tampada"
-
-#~ msgid "Got EOS"
-#~ msgstr "EOS (fin de flux) obtengut"
-
-#~ msgid "Host closed connection"
-#~ msgstr "L'òste a tampat la connexion"
-
-#~ msgid "Connection unexpectedly went down"
-#~ msgstr "La connexion es estada interrompuda d'un biais imprevist"
-
-#~ msgid "Got unexpected end of stream"
-#~ msgstr "Fin de flux inesperat"
-
-#~ msgid "The server doesn’t support passwords longer than %d character."
-#~ msgid_plural ""
-#~ "The server doesn’t support passwords longer than %d characters."
-#~ msgstr[0] "Lo servidor accèpta pas los senhals mai longs que %d caractèr."
-#~ msgstr[1] "Lo servidor accèpta pas los senhals mai longs que %d caractèrs."
-
-#~ msgid "An invalid username was provided."
-#~ msgstr "Un nom d'utilizaire incorrècte es estat provesit."
-
-#~ msgid "Unable to login to the server “%s” with the given password."
-#~ msgstr ""
-#~ "Impossible de se connectar al servidor « %s » amb lo senhal provesit."
+#~ msgid "No tab popup"
+#~ msgstr "Pas cap d'aparicion en seguida d'una quichada sus la tòca tab"
 
 #~ msgid ""
-#~ "Unable to connect to the server “%s”. A communication problem occurred."
+#~ "Determines whether the use of popup and highlight frame should be "
+#~ "disabled for window cycling."
 #~ msgstr ""
-#~ "Impossible de se connectar al servidor « %s ». Un problèma de "
-#~ "comunicacion s'es produit."
+#~ "Determina se l'utilizacion de fenèstras sorgissentas e de mesa en valor "
+#~ "deu èsser desactivada per la consultacion de las fenèstras."
 
-#~ msgid "Unable to connect to the server “%s” with the given password."
+#~ msgid "Select window from tab popup"
 #~ msgstr ""
-#~ "Impossible de se connectar al servidor « %s » amb lo senhal provesit."
+#~ "Seleccionar la fenèstra dins la vista qu'apareis en seguida d'una "
+#~ "quichada sus la tòca tab"
 
-#~ msgid "The server “%s” doesn’t support anonymous access."
-#~ msgstr "Lo servidor « %s » accèpta pas los accèsses anonims."
+#~ msgid "Cancel tab popup"
+#~ msgstr ""
+#~ "Tampar la vista qu'apareis en seguida d'una quichada sus la tòca tab"
+
+#~ msgid "“%s” is not responding."
+#~ msgstr "« %s » respond pas."
+
+#~ msgid "Application is not responding."
+#~ msgstr "L'aplicacion respond pas."
 
 #~ msgid ""
-#~ "Unable to connect to the server “%s”. No suitable authentication "
-#~ "mechanism was found."
+#~ "You may choose to wait a short while for it to continue or force the "
+#~ "application to quit entirely."
 #~ msgstr ""
-#~ "Impossible de se connectar al servidor « %s ». Cap de mecanisme "
-#~ "d'autentificacion apropriat pas trobat."
+#~ "Podètz pacientar un moment per contunhar o forçar l'aplicacion a quitar "
+#~ "definitivament."
+
+#~ msgid "_Force Quit"
+#~ msgstr "_Forçar a quitar"
+
+#~ msgid "_Wait"
+#~ msgstr "_Esperar"
 
 #~ msgid ""
-#~ "Unable to connect to the server “%s”. The server doesn’t support AFP "
-#~ "version 3.0 or later."
+#~ "These windows do not support “save current setup” and will have to be "
+#~ "restarted manually next time you log in."
 #~ msgstr ""
-#~ "Impossible de se connectar al servidor « %s ». Lo servidor pren pas en "
-#~ "carga las versions 3.0 e mai recentas d'AFP."
+#~ "Aquestas fenèstras prenon pas en carga « l'enregistrament de la "
+#~ "configuracion actuala » e deuràn èsser reaviadas manualament a la "
+#~ "connexion que ven."
 
-#~ msgid "Permission denied."
-#~ msgstr "Permission refusada."
+#~ msgid "Show the activities overview"
+#~ msgstr "Afichar l'apercebut de las activitats"
 
-#~ msgid "The command is not supported by the server."
-#~ msgstr "La comanda es pas presa en carga pel servidor."
-
-#~ msgid "Your password has expired."
-#~ msgstr "Vòstre senhal a expirat."
-
-#~ msgid "Your password needs to be changed."
-#~ msgstr "Vòstre senhal deu èsser cambiat."
-
-#~ msgid "The password prompt was cancelled."
-#~ msgstr "La demanda de picada del senhal es estada anullada."
-
-#~ msgid "Unable to disconnect from the server."
-#~ msgstr "Impossible de se desconnectar del servidor."
-
-#~ msgid "Unable to connect to the server. A communication problem occurred."
-#~ msgstr ""
-#~ "Impossible de se connectar al servidor. Un problèma de comunicacion s'es "
-#~ "produit."
-
-#~ msgid "Identification not found."
-#~ msgstr "L'identificacion es pas estada trobada."
-
-#~ msgid "Got error “%s” from server"
-#~ msgstr "Còdi d'error « %s » recebut del servidor"
-
-#~ msgid "Got unknown error code %d from server"
-#~ msgstr "Còdi d'error desconegut %d recebut del servidor"
-
-#~ msgid "Volume doesn’t exist"
-#~ msgstr "Lo volum existís pas"
-
-#~ msgid "Couldn’t load %s on %s"
-#~ msgstr "Impossible de cargar %s sus %s"
-
-#~ msgid "File doesn’t exist"
-#~ msgstr "Lo fichièr existís pas"
-
-#~ msgid "File is directory"
-#~ msgstr "Lo fichièr es un repertòri"
-
-#~ msgid "Too many files open"
-#~ msgstr "Tròp de fichièrs dobèrts"
-
-#~ msgid "Target file is open"
-#~ msgstr "Lo fichièr cibla es dobèrt"
-
-#~ msgid "Directory not empty"
-#~ msgstr "Lo repertòri es pas void"
-
-#~ msgid "Target object is marked as not deletable (DeleteInhibit)"
-#~ msgstr "L'objècte cibla es marcat coma pas suprimible (DeleteInhibit)"
-
-#~ msgid "Target object doesn’t exist"
-#~ msgstr "L'objècte cibla existís pas"
-
-#~ msgid "Volume is read-only"
-#~ msgstr "Lo volum es en lectura sola"
-
-#~ msgid "Not enough space on volume"
-#~ msgstr "Pas pro de plaça sul volum"
-
-#~ msgid "Target file already exists"
-#~ msgstr "Lo fichièr cibla existís ja"
-
-#~ msgid "Ancestor directory doesn’t exist"
-#~ msgstr "Lo repertòri parent existís pas"
-
-#~ msgid "Volume is flat and doesn’t support directories"
-#~ msgstr "Lo volum es plat e accèpta pas los repertòris"
-
-#~ msgid "Target directory already exists"
-#~ msgstr "Lo repertòri cibla existís ja"
-
-#~ msgid "Can’t rename volume"
-#~ msgstr "Impossible de tornar nomenar lo volum"
-
-#~ msgid "Object with that name already exists"
-#~ msgstr "Un objècte amb aqueste nom existís ja"
-
-#~ msgid "Target object is marked as not renameable (RenameInhibit)"
-#~ msgstr "L'objècte cibla es marcat coma pas renomenable (RenameInhibit)"
-
-#, fuzzy
-#~| msgid "Can't move directory into one of its descendants"
-#~ msgid "Can’t move directory into one of its descendants"
-#~ msgstr "Impossible de desplaçar un repertòri dins un de sos descendents"
-
-#, fuzzy
-#~| msgid "Can't move sharepoint into a shared directory"
-#~ msgid "Can’t move sharepoint into a shared directory"
-#~ msgstr ""
-#~ "Impossible de desplaçar un punt de partiment dins un repertòri partejat"
-
-#, fuzzy
-#~| msgid "Can't move a shared directory into the Trash"
-#~ msgid "Can’t move a shared directory into the Trash"
-#~ msgstr "Impossible de desplaçar un repertòri partejat dins l'escobilhièr"
-
-#~ msgid "Object being moved is marked as not renameable (RenameInhibit)"
-#~ msgstr ""
-#~ "L'objet en cors de desplaçament es marcat coma pas renomenable "
-#~ "(RenameInhibit)"
-
-#~ msgid "Object being moved doesn’t exist"
-#~ msgstr "L'objècte en cors de desplaçament existís pas"
-
-#~ msgid "Server doesn’t support the FPCopyFile operation"
-#~ msgstr "Lo servidor pren pas en carga l'operacion FPCopyFile"
-
-#~ msgid "Unable to open source file for reading"
-#~ msgstr "Impossible de dobrir lo fichièr font en mòde lectura"
-
-#, fuzzy
-#~| msgid "Source file and/or destination directory doesn't exist"
-#~ msgid "Source file and/or destination directory doesn’t exist"
-#~ msgstr "Lo fichièr font e/o lo repertòri de destinacion existís pas"
-
-#~ msgid "Source file is a directory"
-#~ msgstr "Lo fichièr font es un repertòri"
-
-#~ msgid "Range lock conflict exists"
-#~ msgstr "I a de conflictes de verrolhatge d'intervals"
-
-#~ msgid "Directory doesn’t exist"
-#~ msgstr "Lo repertòri existís pas"
-
-#~ msgid "Target object is not a directory"
-#~ msgstr "L'objècte cibla es pas un repertòri"
-
-#~ msgid "File is not open for write access"
-#~ msgstr "Lo fichièr es pas dobèrt per un accès en escritura"
-
-#~ msgid "File is locked by another user"
-#~ msgstr "Lo fichièr es verrolhat per un autre utilizaire"
-
-#~ msgid "File is not open for read access"
-#~ msgstr "Lo fichièr es pas dobèrt per un accès en lectura"
-
-#~ msgid "Operation not supported"
-#~ msgstr "Operacion pas presa en carga"
-
-#~ msgid "Invalid mount spec"
-#~ msgstr "Especificacion de montatge invalida"
-
-#~ msgid "Internal Apple File Control error"
-#~ msgstr "Error intèrna Apple File Control"
-
-#~ msgid "The device did not respond"
-#~ msgstr "Lo periferic a pas respondut"
-
-#~ msgid "The connection was interrupted"
-#~ msgstr "La connexion es estada interrompuda"
-
-#~ msgid "Invalid Apple File Control data received"
-#~ msgstr "De donadas Apple File Control invalidas son estadas recebudas"
-
-#~ msgid "Unhandled Apple File Control error (%d)"
-#~ msgstr "Error Apple File Control pas gerida (%d)"
-
-#~ msgid "Listing applications installed on device failed"
-#~ msgstr "Fracàs d'enumeracion de las aplicacions installadas sul periferic"
-
-#~ msgid "Accessing application icons on device failed"
-#~ msgstr "Fracàs d'accès a las icònas d'aplicacions sul periferic"
-
-#~ msgid "Lockdown Error: Invalid Argument"
-#~ msgstr "Error de verrolhatge : paramètre invalid"
-
-#~ msgid "The device is password protected"
-#~ msgstr "Lo periferic es protegit per senhal"
-
-#~ msgid "Unable to connect"
-#~ msgstr "Impossible de se connectar"
-
-#~ msgid "User refused to trust this computer"
-#~ msgstr "L’utilizaire a refusat de se fisar d’aqueste ordenador"
-
-#~ msgid "The user has not trusted this computer"
-#~ msgstr "L’utilizaire se fisa pas d’aqueste ordenador"
-
-#~ msgid "Unhandled Lockdown error (%d)"
-#~ msgstr "Error de verrolhatge pas gerida (%d)"
-
-#~ msgid "libimobiledevice Error: Invalid Argument"
-#~ msgstr "error libimobiledevice : paramètre invalid"
+#~ msgid "Toggle shaded state"
+#~ msgstr "Bascular l'estat de replec"
 
 #~ msgid ""
-#~ "libimobiledevice Error: No device found. Make sure usbmuxd is set up "
-#~ "correctly."
+#~ "mutter %s\n"
+#~ "Copyright (C) 2001-%d Havoc Pennington, Red Hat, Inc., and others\n"
+#~ "This is free software; see the source for copying conditions.\n"
+#~ "There is NO warranty; not even for MERCHANTABILITY or FITNESS FOR A "
+#~ "PARTICULAR PURPOSE.\n"
 #~ msgstr ""
-#~ "error libimobiledevice : cap de periferic pas trobat. Asseguratz-vos que "
-#~ "usbmuxd es configurat corrèctament."
-
-#~ msgid "Unhandled libimobiledevice error (%d)"
-#~ msgstr "Error libimobiledevice pas gerida (%d)"
-
-#~ msgid "Try again"
-#~ msgstr "Tornar ensajar"
-
-#~ msgid "Invalid AFC location: must be in the form of afc://uuid:port-number"
-#~ msgstr ""
-#~ "Emplaçament AFC invalid : deu èsser jos la forma afc://uuid:numèro-pòrt"
-
-#~ msgid "Apple Mobile Device"
-#~ msgstr "Periferic Apple mobile"
-
-#~ msgid "Apple Mobile Device, Jailbroken"
-#~ msgstr "Periferic Apple mobile, debridat"
-
-#~ msgid "Documents on Apple Mobile Device"
-#~ msgstr "Documents sus un periferic Apple mobile"
-
-#~ msgid "%s (jailbreak)"
-#~ msgstr "%s (debridat)"
-
-#~ msgid "Documents on %s"
-#~ msgstr "Documents sus %s"
-
-#, fuzzy
-#~| msgid ""
-#~| "The device “%s” is locked. Enter the passcode on the device and click "
-#~| "“Try again”."
-#~ msgid ""
-#~ "Device Locked\n"
-#~ "The device “%s” is locked.\n"
-#~ "\n"
-#~ "Enter the passcode on the device and click “Try again”."
-#~ msgstr ""
-#~ "Lo periferic « %s » es verrolhat. Picatz lo senhal sul periferic, puèi "
-#~ "clicatz sus « Ensajar tornamai »."
-
-#, fuzzy
-#~| msgid ""
-#~| "The device “%s” is locked. Enter the passcode on the device and click "
-#~| "“Try again”."
-#~ msgid ""
-#~ "Untrusted Device\n"
-#~ "The device “%s” is not trusted yet.\n"
-#~ "\n"
-#~ "Select “Trust” on the device and click “Try again”."
-#~ msgstr ""
-#~ "Lo periferic « %s » es verrolhat. Picatz lo senhal sul periferic, puèi "
-#~ "clicatz sus « Ensajar tornamai »."
-
-#~ msgid "Can’t open directory"
-#~ msgstr "Impossible de dobrir lo repertòri"
-
-#~ msgid "Backups not supported"
-#~ msgstr "Los salvamments son pas preses en carga pel moment"
-
-#~ msgid "Unsupported seek type"
-#~ msgstr "Tipe « seek » pas pres en carga"
-
-#~ msgid "Not a mountable file"
-#~ msgstr "Es pas un fichièr que pòt èsser montat"
-
-#~ msgid "%s on %s"
-#~ msgstr "%s sus %s"
-
-#~ msgid "%s"
-#~ msgstr "%s"
-
-#~ msgid "No hostname specified"
-#~ msgstr "Nom d'òste pas especificat"
-
-#~ msgid "Apple Filing Protocol Service"
-#~ msgstr "Servici de protocòl de partiment de fichièrs d'Apple"
-
-#, fuzzy
-#~| msgid "Can't copy directory over directory"
-#~ msgid "Can’t copy directory over directory"
-#~ msgstr "Impossible d'espotir un repertòri amb un autre repertòri"
-
-#, fuzzy
-#~| msgid "Can't recursively copy directory"
-#~ msgid "Can’t recursively copy directory"
-#~ msgstr "Impossible de copiar recursivament un repertòri"
-
-#, fuzzy
-#~| msgid "Can't move directory over directory"
-#~ msgid "Can’t move directory over directory"
-#~ msgstr "Impossible de desplaçar un repertòri sus un repertòri de meteis nom"
-
-#~ msgid "Unable to create temporary file (%s)"
-#~ msgstr "Impossible de crear lo fichièr temporari (%s)"
-
-#~ msgid "The file was externally modified"
-#~ msgstr "Lo fichièr es estat modificat d'un biais extèrne"
-
-#~ msgid "Invalid attribute type (uint32 expected)"
-#~ msgstr "Tipe d'atribut invalid (uint32 esperat)"
-
-#~ msgid "%s for %s on %s"
-#~ msgstr "%1$s sus %3$s en tant que %2$s"
-
-#~ msgid "No volume specified"
-#~ msgstr "Cap de volum pas indicat"
-
-#~ msgid "/ in %s"
-#~ msgstr "/ sus %s"
-
-#~ msgid "The file is not a directory"
-#~ msgstr "Lo fichièr es pas un repertòri"
-
-#~ msgid "Burn"
-#~ msgstr "Gravar"
-
-#~ msgid "Unable to create temporary directory"
-#~ msgstr "Impossible de crear un repertòri temporari"
-
-#~ msgid "No such file or directory"
-#~ msgstr "Aqueste fichièr o aqueste repertòri existís pas"
-
-#~ msgid "Can’t copy file over directory"
-#~ msgstr "Impossible de copiar un fichièr par dessús un repertòri"
-
-#~ msgid "CD/DVD Creator"
-#~ msgstr "Creator de CD/DVD"
-
-#~ msgid "Target file exists"
-#~ msgstr "Lo fichièr cibla existís"
-
-#~ msgid "File system is busy"
-#~ msgstr "Lo sistèma de fichièrs es ocupat"
-
-#~ msgid "Unmount Anyway"
-#~ msgstr "Desmontar çaquelà"
-
-#~ msgid ""
-#~ "Volume is busy\n"
-#~ "One or more applications are keeping the volume busy."
-#~ msgstr ""
-#~ "Lo volum es ocupat\n"
-#~ "Una o mantuna aplicacion utilizan actualament lo volum."
-
-#~ msgid "Cannot create gudev client"
-#~ msgstr "Impossible de crear un client gudev"
-
-#~ msgid "No drive specified"
-#~ msgstr "Cap de lector pas indicat"
-
-#~ msgid "Cannot find drive %s"
-#~ msgstr "Impossible de trobar lo lector %s"
-
-#~ msgid "Drive %s does not contain audio files"
-#~ msgstr "Lo lector %s conten pas cap de fichièrs àudio"
-
-#~ msgid "cdda mount on %s"
-#~ msgstr "punt de montatge cdda sus %s"
-
-#~ msgid "Audio Disc"
-#~ msgstr "Disc àudio"
-
-#~ msgid "File system is busy: %d open file"
-#~ msgid_plural "File system is busy: %d open files"
-#~ msgstr[0] "Lo sistèma de fichièrs es ocupat : %d fichièr dobèrt"
-#~ msgstr[1] "Lo sistèma de fichièrs es ocupat : %d fichièrs dobèrts"
-
-#~ msgid "No such file %s on drive %s"
-#~ msgstr "Cap de fichièr nomenat %s sul lector %s"
-
-#~ msgid "Error from “paranoia” on drive %s"
-#~ msgstr "Error que proven de « paranoia » sul lector %s"
-
-#~ msgid "Error seeking in stream on drive %s"
-#~ msgstr "Error de desplaçament dins lo flux sul lector %s"
-
-#~ msgid "No such file"
-#~ msgstr "Pas cap de fichièr d'aqueste nom"
-
-#~ msgid "The file does not exist or isn’t an audio track"
-#~ msgstr "Lo fichièr existís pas o es pas una pista àudio"
-
-#~ msgid "Audio CD File System Service"
-#~ msgstr "Servici de sistèma de fichièrs CD àudio"
-
-#~ msgid "Computer"
-#~ msgstr "Ordenador"
-
-#~ msgid "Can’t open mountable file"
-#~ msgstr "Impossible de dobrir lo fichièr « montable »"
-
-#~ msgid "Internal error: %s"
-#~ msgstr "Error intèrna : %s"
-
-#~ msgid "Can’t mount file"
-#~ msgstr "Impossible de montar lo fichièr"
-
-#~ msgid "No medium in the drive"
-#~ msgstr "Pas cap de mèdia dins lo lector"
-
-#~ msgid "Can’t unmount file"
-#~ msgstr "Impossible de desmontar lo fichièr"
-
-#~ msgid "Can’t eject file"
-#~ msgstr "Impossible d'ejectar lo fichièr"
-
-#~ msgid "Can’t start drive"
-#~ msgstr "Impossible d'aviar lo lector"
-
-#~ msgid "Can’t stop drive"
-#~ msgstr "Impossible d'arrestar lo lector"
-
-#, fuzzy
-#~| msgid "Can't poll file"
-#~ msgid "Can’t poll file"
-#~ msgstr "Impossible d'interrogar lo fichièr"
-
-#~ msgid "%s on %s%s"
-#~ msgstr "%s sus %s%s"
-
-#~ msgid "HTTP Error: %s"
-#~ msgstr "Error HTTP : %s"
-
-#~ msgid "Empty response"
-#~ msgstr "Responsa voida"
-
-#~ msgid "Unexpected reply from server"
-#~ msgstr "Responsa inesperada del servidor"
-
-#~ msgid "Response invalid"
-#~ msgstr "Responsa invalida"
-
-#~ msgid "WebDAV share"
-#~ msgstr "Partiment WebDAV"
-
-#~ msgid ""
-#~ "Authentication Required\n"
-#~ "Enter proxy password:"
-#~ msgstr ""
-#~ "Autentificacion requerida\n"
-#~ "Picatz lo senhal del servidor mandatari :"
-
-#~ msgid "Not a WebDAV enabled share"
-#~ msgstr "Aqueste partiment pren pas en carga WebDAV"
-
-#~ msgid "Could not create request"
-#~ msgstr "Impossible de crear la requèsta"
-
-#~ msgid "Backup file creation failed"
-#~ msgstr "La creacion del fichièr de salvament a fracassat"
-
-#~ msgid "Can’t move over directory"
-#~ msgstr "Impossible d'espotir lo repertòri"
-
-#~ msgid "Local Network"
-#~ msgstr "Ret locala"
-
-#~ msgid "Can’t monitor file or directory."
-#~ msgstr "Impossible de susvelhar lo fichièr o repertòri."
-
-#~ msgid "Dns-SD"
-#~ msgstr "Dns-SD"
-
-#~ msgid "Network"
-#~ msgstr "Ret"
-
-#~ msgid "Password dialog cancelled"
-#~ msgstr "La demanda de picada del senhal es estada anullada"
-
-#~ msgid "Insufficient permissions"
-#~ msgstr "Autorizacions insufisentas"
-
-#~ msgid "Invalid attribute type (uint64 expected)"
-#~ msgstr "Tipe d'atribut invalid (uint64 esperat)"
-
-#~ msgid "Can’t move file over directory"
-#~ msgstr "Impossible de desplaçar un fichièr per dessús un repertòri"
-
-#~ msgid "Error moving file/folder"
-#~ msgstr "Error al moment del desplaçament del fichièr/dossièr"
-
-#~ msgid "Shared with me"
-#~ msgstr "Partejat amb ieu"
-
-#~ msgid "Shared drives"
-#~ msgstr "Lectors partejats"
-
-#~ msgid "Error getting data from file"
-#~ msgstr "Error al moment de l'obtencion de las donadas del fichièr"
-
-#~ msgid "Target file is not a regular file"
-#~ msgstr "Lo fichièr cibla es pas un fichièr estandard"
-
-#~ msgid "Invalid reply received"
-#~ msgstr "Responsa invalida recebuda"
-
-#~ msgid "File is not a regular file"
-#~ msgstr "Es pas un fichièr estandard"
-
-#~ msgid "Target file is a directory"
-#~ msgstr "Lo fichièr font es un repertòri"
-
-#~ msgid "Error writing file"
-#~ msgstr "Error al moment de l'escritura del fichièr"
-
-#~ msgid "%s: %d: Directory or file exists"
-#~ msgstr "%s : %d : lo repertòri o lo fichièr existís"
-
-#~ msgid "%s: %d: No such file or directory"
-#~ msgstr "%s : %d : lo repertòri o lo fichièr existís pas"
-
-#~ msgid "%s: %d: Invalid filename"
-#~ msgstr "%s : %d : nom de fichièr invalid"
-
-#~ msgid "%s: %d: Not Supported"
-#~ msgstr "%s : %d : pas pres en carga"
-
-#~ msgid "Digital Camera (%s)"
-#~ msgstr "Aparelh de fòto (%s)"
-
-#, fuzzy
-#~| msgid "Couldn't find matching udev device."
-#~ msgid "Couldn’t find matching udev device."
-#~ msgstr "Impossible de trobar un periferic udev correspondent."
-
-#~ msgid "Cannot create gphoto2 context"
-#~ msgstr "Impossible de crear un contèxte gphoto2"
-
-#~ msgid "Error creating camera"
-#~ msgstr "Error al moment de la creacion de l'aparelh de fòto"
-
-#~ msgid "Error loading device information"
-#~ msgstr "Error al moment del cargament de las informacions del periferic"
-
-#~ msgid "Error looking up device information"
-#~ msgstr "Error al moment de la recèrca d'informacions del periferic"
-
-#~ msgid "Error getting device information"
-#~ msgstr "Error al moment de l'obtencion de las informacions del periferic"
-
-#~ msgid "Error setting up camera communications port"
-#~ msgstr ""
-#~ "Error al moment del parametratge del pòrt de comunicacion de l'aparelh de "
-#~ "fòto"
-
-#~ msgid "Error initializing camera"
-#~ msgstr "Error al moment de l'inicializacion de l'aparelh de fòto"
-
-#~ msgid "gphoto2 mount on %s"
-#~ msgstr "montatge de gphoto2 sus %s"
-
-#~ msgid "No camera specified"
-#~ msgstr "Cap d'aparelh de fòto pas indicat"
-
-#~ msgid "Error creating file object"
-#~ msgstr "Error de creacion de l'objècte fichièr"
-
-#~ msgid "Malformed icon identifier “%s”"
-#~ msgstr "Identificador d'icòna « %s » mal format"
-
-#~ msgid "Error seeking in stream on camera %s"
-#~ msgstr "Error de desplaçament dins lo flux sus l'aparelh de fòto %s"
-
-#~ msgid "Not a directory"
-#~ msgstr "Es pas un repertòri"
-
-#~ msgid "Failed to get folder list"
-#~ msgstr "L'obtencion de la lista dels dorsièrs a fracassat"
-
-#~ msgid "Error creating directory"
-#~ msgstr "Error al moment de la creacion del repertòri"
-
-#~ msgid "Name already exists"
-#~ msgstr "Lo nom existís ja"
-
-#~ msgid "New name too long"
-#~ msgstr "Nom novèl tròp long"
-
-#~ msgid "Error renaming directory"
-#~ msgstr "Error al moment del cambiament de nom del repertòri"
-
-#~ msgid "Error renaming file"
-#~ msgstr "Error al moment del cambiament de nom del fichièr"
-
-#~ msgid "Directory “%s” is not empty"
-#~ msgstr "Repertòri « %s » pas void"
-
-#~ msgid "Error deleting directory"
-#~ msgstr "Error al moment de la supression del repertòri"
-
-#~ msgid "Error deleting file"
-#~ msgstr "Error al moment de la supression del fichièr"
-
-#~ msgid "Can’t write to directory"
-#~ msgstr "Impossible d'escriure dins lo repertòri"
-
-#~ msgid "Cannot allocate new file to append to"
-#~ msgstr "Impossible d'atribuir un novèl fichièr de modificar"
-
-#~ msgid "Cannot read file to append to"
-#~ msgstr "Impossible de legir lo fichièr de modificar"
-
-#~ msgid "Cannot get data of file to append to"
-#~ msgstr "Impossible d'obténer las donadas del fichièr de modificar"
-
-#~ msgid "Not supported (not same directory)"
-#~ msgstr "Pas pres en carga (es pas lo meteis repertòri)"
-
-#~ msgid ""
-#~ "Not supported (the source is a directory, the destination is a directory "
-#~ "too)"
-#~ msgstr "Pas pres en carga (la font es un repertòri, la destinacion tanben)"
-
-#~ msgid ""
-#~ "Not supported (the source is a directory, but the destination is an "
-#~ "existing file)"
-#~ msgstr ""
-#~ "Pas pres en carga (la font es un repertòri, mas la destinacion es un "
-#~ "fichièr existent)"
-
-#~ msgid ""
-#~ "Not supported (the source is a file, but the destination is a directory)"
-#~ msgstr ""
-#~ "Pas pres en carga (la font es un fichièr, mas la destinacion es un "
-#~ "repertòri)"
-
-#~ msgid "HTTP Client Error: %s"
-#~ msgstr "Error del client HTTP : %s"
-
-#~ msgid "Directory notification not supported"
-#~ msgstr "Las notificacions de repertòris son pas presas en carga"
-
-#~ msgid "Storage (%X)"
-#~ msgstr "Emmagazinatge (%X)"
-
-#~ msgid "Unknown error."
-#~ msgstr "Error desconeguda."
-
-#~ msgid "libmtp error: %s"
-#~ msgstr "error libmtp : %s"
-
-#~ msgid "No device specified"
-#~ msgstr "Cap de periferic pas indicat"
-
-#~ msgid "No MTP devices found"
-#~ msgstr "Cap de periferic MTP pas trobat"
-
-#~ msgid "Unable to connect to MTP device"
-#~ msgstr "Impossible de se connectar al periferic MTP"
-
-#~ msgid "Unable to allocate memory while detecting MTP devices"
-#~ msgstr ""
-#~ "Impossible d'atribuire de memòria al moment de la deteccion de periferics "
-#~ "MTP"
-
-#~ msgid "Generic libmtp error"
-#~ msgstr "Error libmtp generica"
-
-#~ msgid "Unable to open MTP device “%03u,%03u”"
-#~ msgstr "Impossible de dobrir lo periferic MTP « %03u,%03u »"
-
-#~ msgid "Device not found"
-#~ msgstr "Periferic pas trobat"
-
-#~ msgid "File not found"
-#~ msgstr "Impossible de trobar lo fichièr"
-
-#~ msgid "Target is a directory"
-#~ msgstr "La cibla es pas un repertòri"
-
-#~ msgid "Can’t merge directories"
-#~ msgstr "Impossible de fusionar los repertòris"
-
-#~ msgid "Cannot make directory in this location"
-#~ msgstr "Impossible de crear un repertòri a aqueste emplaçament"
-
-#~ msgid "Not a regular file"
-#~ msgstr "Es pas un fichièr estandard"
-
-#~ msgid "Cannot write to this location"
-#~ msgstr "Impossible d'escriure a aqueste emplaçament"
-
-#~ msgid "No thumbnail for entity “%s”"
-#~ msgstr "Pas de vinheta per l'entitat « %s »"
-
-#~ msgid "File Sharing"
-#~ msgstr "Partiment de fichièrs"
-
-#~ msgid "Remote Login"
-#~ msgstr "Connexion distanta"
-
-#~ msgid "Windows Network"
-#~ msgstr "Ret Windows"
-
-#~ msgid "WSDD Network"
-#~ msgstr "Ret WSDD"
-
-#~ msgid "Network Location Monitor"
-#~ msgstr "Vista generala de la ret"
-
-#~ msgid "Mount point does not exist"
-#~ msgstr "Lo punt de montatge existís pas"
-
-#~ msgid "Unable to create temporary file"
-#~ msgstr "Impossible de crear un fichièr temporari"
-
-#~ msgid "Invalid attribute type"
-#~ msgstr "Tipe d'atribut invalid"
-
-#~ msgid "My Files"
-#~ msgstr "Mos fichièrs"
-
-#~ msgid "The recent folder may not be deleted"
-#~ msgstr "Lo dorsièr dels elements recents pòt pas èsser suprimit"
-
-#~ msgid "Recent"
-#~ msgstr "Consultats recentament"
-
-#~ msgid "Connection failed"
-#~ msgstr "La connexion a fracassat"
-
-#~ msgid "Hostname not known"
-#~ msgstr "Nom d'òste desconegut"
-
-#~ msgid "No route to host"
-#~ msgstr "Pas de rota cap a l'òste"
-
-#~ msgid "Connection refused by server"
-#~ msgstr "Connexion refusada pel servidor"
-
-#~ msgid "Host key verification failed"
-#~ msgstr "La verificacion de la clau de l'òste a fracassat"
-
-#~ msgid "Too many authentication failures"
-#~ msgstr "Tròp de fracasses d'autentificacion"
-
-#~ msgid "Unable to spawn SSH program"
-#~ msgstr "Impossible d'aviar lo programa SSH"
-
-#~ msgid "Unable to spawn SSH program: %s"
-#~ msgstr "Impossible d'aviar lo programa SSH : %s"
-
-#~ msgid "Timed out when logging in"
-#~ msgstr "Expiracion del relambi al moment de la connexion"
-
-#~ msgid "Log In Anyway"
-#~ msgstr "S'autentificar quitament"
-
-#~ msgid "Cancel Login"
-#~ msgstr "Anullar l'autentificacion"
-
-#~ msgid "Login dialog cancelled"
-#~ msgstr "La bóstia de dialòg de connexion es estada anullada"
-
-#, fuzzy
-#~| msgid "Can't send host identity confirmation"
-#~ msgid "Can’t send host identity confirmation"
-#~ msgstr "Impossible de mandar la confirmacion de l'identitat de l'òste"
-
-#~ msgid ""
-#~ "Authentication Required\n"
-#~ "Enter passphrase for secure key for “%s” on “%s”:"
-#~ msgstr ""
-#~ "Autentificacion requerida\n"
-#~ "Picatz la frasa secreta de la clau SSH de « %s » per l'accès a %s :"
-
-#~ msgid ""
-#~ "Authentication Required\n"
-#~ "Enter passphrase for secure key for “%s”:"
-#~ msgstr ""
-#~ "Autentificacion requerida\n"
-#~ "Picatz la frasa secreta de la clau SSH de « %s » :"
-
-#~ msgid "Can’t send password"
-#~ msgstr "Impossible de mandar lo senhal"
-
-#~ msgid "Enter verification code for %s on %s"
-#~ msgstr "Picatz lo còdi de verificacion per %s sus %s"
-
-#~ msgid "Enter verification code for %s"
-#~ msgstr "Picatz lo còdi de verificacion per %s"
-
-#, fuzzy
-#~| msgid ""
-#~| "Can't verify the identity of “%s”.\n"
-#~| "This happens when you log in to a computer the first time.\n"
-#~| "\n"
-#~| "The identity sent by the remote computer is “%s”. If you want to be "
-#~| "absolutely sure it is safe to continue, contact the system administrator."
-#~ msgid ""
-#~ "Identity Verification Failed\n"
-#~ "Verifying the identity of “%s” failed, this happens when you log in to a "
-#~ "computer the first time.\n"
-#~ "\n"
-#~ "The identity sent by the remote computer is “%s”. If you want to be "
-#~ "absolutely sure it is safe to continue, contact the system administrator."
-#~ msgstr ""
-#~ "Impossible de verificar l'identitat de « %s ».\n"
-#~ "Aquò se produtz quand vos connectatz a un ordenador pel primièr còp.\n"
-#~ "\n"
-#~ "L'identitat enviada per l'ordenador distant es « %s ». Se volètz èsser "
-#~ "absoludament certan qu'es segur de contunhar, contactatz vòstre "
-#~ "administrator del sistèma."
-
-#, fuzzy
-#~| msgid ""
-#~| "Can't verify the identity of “%s”.\n"
-#~| "This happens when you log in to a computer the first time.\n"
-#~| "\n"
-#~| "The identity sent by the remote computer is “%s”. If you want to be "
-#~| "absolutely sure it is safe to continue, contact the system administrator."
-#~ msgid ""
-#~ "Identity Verification Failed\n"
-#~ "The host key for “%s” differs from the key for the IP address “%s”\n"
-#~ "If you want to be absolutely sure it is safe to continue, contact the "
-#~ "system administrator."
-#~ msgstr ""
-#~ "Impossible de verificar l'identitat de « %s ».\n"
-#~ "Aquò se produtz quand vos connectatz a un ordenador pel primièr còp.\n"
-#~ "\n"
-#~ "L'identitat enviada per l'ordenador distant es « %s ». Se volètz èsser "
-#~ "absoludament certan qu'es segur de contunhar, contactatz vòstre "
-#~ "administrator del sistèma."
-
-#~ msgid "Internal error: Unknown Error"
-#~ msgstr "Error intèrna : Error desconeguda"
-
-#~ msgid "Protocol error"
-#~ msgstr "Error de protocòl"
-
-#~ msgid "Unable to find supported SSH command"
-#~ msgstr "Impossible de trobar una comanda SSH presa en carga"
-
-#~ msgid "Unknown reason"
-#~ msgstr "Rason desconeguda"
-
-#~ msgid " (invalid encoding)"
-#~ msgstr " (encodatge invalid)"
-
-#~ msgid "/ on %s"
-#~ msgstr "/ sus %s"
-
-#~ msgid "Failure"
-#~ msgstr "Fracàs"
-
-#~ msgid "Error creating backup file: %s"
-#~ msgstr "Error de creacion del fichièr de salvament : %s"
-
-#~ msgid "Internal Error (%s)"
-#~ msgstr "Error intèrna (%s)"
-
-#~ msgid "Windows shares on %s"
-#~ msgstr "Partiments Windows sus %s"
-
-#~ msgid "Windows Network File System Service"
-#~ msgstr "Servici de sistèma de fichièrs ret Windows"
-
-#~ msgid "Failed to mount Windows share: %s"
-#~ msgstr "Impossible de montar lo partiment Windows : %s"
-
-#~ msgid "Backup file creation failed: %s"
-#~ msgstr "La creacion del fichièr de salvament a fracassat : %s"
-
-#~ msgid "Can’t rename file, filename already exists"
-#~ msgstr "Impossible de renomenar lo fichièr, lo nom de fichièr existís ja"
-
-#~ msgid "Error deleting file: %s"
-#~ msgstr "Error al moment de la supression del fichièr : %s"
-
-#~ msgid "Error moving file: %s"
-#~ msgstr "Error al moment del desplaçament del fichièr : %s"
-
-#~ msgid "Error removing target file: %s"
-#~ msgstr "Error al moment de la supression del fichièr cibla : %s"
-
-#, fuzzy
-#~| msgid "Can't recursively move directory"
-#~ msgid "Can’t recursively move directory"
-#~ msgstr "Impossible de desplaçar un repertòri d'un biais recursiu"
-
-#~ msgid "Windows Shares File System Service"
-#~ msgstr "Servici de sistèma de fichièrs de partiment Windows"
-
-#~ msgid "The trash folder may not be deleted"
-#~ msgstr "Lo dorsièr de l'escobilhièr pòt pas èsser suprimit"
-
-#~ msgid "Items in the trash may not be modified"
-#~ msgstr "Los elements dins l'escobilhièr pòdon pas èsser modificats"
-
-#~ msgid "Trash"
-#~ msgstr "Escobilhièr"
-
-#~ msgid "File is not a directory"
-#~ msgstr "Lo fichièr es pas un repertòri"
-
-#, fuzzy
-#~| msgid "Windows Network"
-#~ msgid "WS-Discovery Network"
-#~ msgstr "Ret Windows"
-
-#~ msgid "Channel blocked"
-#~ msgstr "Canal blocat"
-
-#~ msgid "The signing certificate authority is not known."
-#~ msgstr "L'autoritat de signatura de certificat es desconeguda."
-
-#~ msgid "The certificate does not match the identity of the site."
-#~ msgstr "Lo certificat correspond pas a l'identitat del site."
-
-#~ msgid "The certificate’s activation time is in the future."
-#~ msgstr "La data d'activacion del certificat es dins lo futur."
-
-#~ msgid "The certificate has expired."
-#~ msgstr "Lo certificat a expirat."
-
-#~ msgid "The certificate has been revoked."
-#~ msgstr "Lo certificat es estat revocat."
-
-#~ msgid "The certificate’s algorithm is considered insecure."
-#~ msgstr "L'algoritme del certificat es pas considerat coma segur."
-
-#~ msgid "Yes"
-#~ msgstr "Òc"
-
-#~ msgid "Unexpected end of stream"
-#~ msgstr "Fin de flux inesperat"
-
-#~ msgid "Invalid reply"
-#~ msgstr "Responsa invalida"
-
-#~ msgid ""
-#~ "Failed to create active FTP connection. Maybe your router does not "
-#~ "support this?"
-#~ msgstr ""
-#~ "Impossible de crear una connexion FTP activa. Benlèu que vòstre rotador "
-#~ "pren pas en carga aquesta accion ?"
-
-#~ msgid "Failed to create active FTP connection."
-#~ msgstr "Fracàs de la creacion d'una connexion FTP activa."
-
-#~ msgid "Filename contains invalid characters."
-#~ msgstr "Lo nom de fichièr conten de caractèrs invalids."
-
-#~ msgid "The FTP server is busy. Try again later"
-#~ msgstr "Lo servidor FTP es ocupat. Ensajatz tornamai pus tard"
-
-#~ msgid "Accounts are unsupported"
-#~ msgstr "Los comptes son pas preses en carga"
-
-#~ msgid "Cannot open data connection. Maybe your firewall prevents this?"
-#~ msgstr ""
-#~ "Impossible de dobrir una connexion de donadas. Benlèu que vòstre parafuòc "
-#~ "empacha aquesta accion ?"
-
-#~ msgid "Data connection closed"
-#~ msgstr "Connexion de donadas tampada"
-
-#~ msgid "Operation failed"
-#~ msgstr "L'operacion a fracassat"
-
-#~ msgid "No space left on server"
-#~ msgstr "Pas mai d'espaci disponible sul servidor"
-
-#~ msgid "Unsupported network protocol"
-#~ msgstr "Protocòl ret pas pres en carga"
-
-#~ msgid "Page type unknown"
-#~ msgstr "Tipe de pagina desconegut"
-
-#~ msgid "Invalid filename"
-#~ msgstr "Nom de fichièr invalid"
-
-#~ msgid "Error seeking in stream"
-#~ msgstr "Error de desplaçament dins lo flux"
-
-#~ msgid "Filesystem is read-only"
-#~ msgstr "Lo sistèma de fichièrs es en lectura sola"
-
-#~ msgid "Symlinks not supported by backend"
-#~ msgstr "Los ligams simbolics son pas preses en carga pel motor"
-
-#~ msgid "Invalid dbus message"
-#~ msgstr "Messatge dbus invalid"
-
-#~ msgid "%s has been unmounted\n"
-#~ msgstr "%s es estat desmontat\n"
-
-#~ msgid ""
-#~ "Unmounting %s\n"
-#~ "Please wait"
-#~ msgstr ""
-#~ "Desmontatge de %s\n"
-#~ "Pacientatz"
-
-#~ msgid "Replace old daemon."
-#~ msgstr "Remplaça l'ancian demòni."
-
-#~ msgid "Don’t start fuse."
-#~ msgstr "Aviar pas « fuse »."
-
-#~ msgid "Enable debug output."
-#~ msgstr "Activar la sortida de desbugatge."
-
-#~ msgid "Show program version."
-#~ msgstr "Afichar la version del programa."
-
-#~ msgid "GVFS Daemon"
-#~ msgstr "Demòni GVFS"
-
-#~ msgid "Main daemon for GVFS"
-#~ msgstr "Demòni principal per GVFS"
-
-#~ msgid "%s: %s"
-#~ msgstr "%s : %s"
-
-#~ msgid "Try “%s --help” for more information."
-#~ msgstr "Ensajatz « %s --help » per obténer mai d'entresenhas."
-
-#~ msgid "Automount failed: %s"
-#~ msgstr "Lo montatge automatic a fracassat : %s"
-
-#~ msgid "The specified location is not mounted"
-#~ msgstr "L'emplaçament indicat es pas montat"
-
-#~ msgid "The specified location is not supported"
-#~ msgstr "L'emplaçament indicat es pas pres en carga"
-
-#~ msgid "Location is already mounted"
-#~ msgstr "L'emplaçament es ja montat"
-
-#~ msgid "Location is not mountable"
-#~ msgstr "L'emplaçament es pas « montable »"
-
-#~ msgid "Perform file operations"
-#~ msgstr "Realizar las operacions suls fichièrs"
-
-#~ msgid "Can’t find metadata file %s"
-#~ msgstr "Impossible de trobar lo fichièr de metadonadas %s"
-
-#~ msgid "Unable to set metadata key"
-#~ msgstr "Impossible de modificar la clau de metadonadas"
-
-#~ msgid "Unable to unset metadata key"
-#~ msgstr "Impossible de levar la clau de metadonadas"
-
-#~ msgid "Unable to remove metadata keys"
-#~ msgstr "Impossible de levar las claus de metadonadas"
-
-#~ msgid "GVFS Metadata Daemon"
-#~ msgstr "Demòni de metadonadas GVFS"
-
-#~ msgid "Metadata daemon for GVFS"
-#~ msgstr "Demòni de metadonadas per GVFS"
-
-#~ msgid "Failed to get org.gnome.OnlineAccounts.Files for %s"
-#~ msgstr "Impossible d'obténer org.gnome.OnlineAccounts.Files per %s"
-
-#~ msgid "Invalid credentials for %s"
-#~ msgstr "Informacions d'autentificacion pas validas per %s"
-
-#~ msgid "Unsupported authentication method for %s"
-#~ msgstr "Metòde d'autentificacion pas pres en carga per %s"
-
-#~ msgid "The given mount was not found"
-#~ msgstr "L'emplaçament indicat es pas montat"
-
-#~ msgid "An operation is already pending"
-#~ msgstr "Una operacion ja en espèra"
-
-#, fuzzy
-#~| msgid "error starting mount daemon"
-#~ msgid "No outstanding mount operation"
-#~ msgstr "error al moment de l'aviada del demòni de montatge"
-
-#~ msgid "The given volume was not found"
-#~ msgstr "Lo volum donat es pas estat trobat"
-
-#~ msgid "The given drive was not found"
-#~ msgstr "Periferic indicat pas trobat"
-
-#~ msgid "Unnamed Drive (%s)"
-#~ msgstr "Disc sens nom (%s)"
-
-#~ msgid "Unnamed Drive"
-#~ msgstr "Lector sens nom"
-
-#~ msgid "Failed to eject medium; one or more volumes on the medium are busy."
-#~ msgstr ""
-#~ "L'ejeccion del mèdia a fracassat ; un o mantun volum es en cors "
-#~ "d'utilizacion sul mèdia."
-
-#~ msgid "One or more programs are preventing the unmount operation."
-#~ msgstr "Un o mantun programa empachan l'operacion de desmontatge."
-
-#~ msgid "Eject Anyway"
-#~ msgstr "Ejectar malgrat tot"
-
-#~ msgid "Operation not supported by backend"
-#~ msgstr "Operacion pas presa en carga pel motor"
-
-#~ msgid "Timed out running command-line “%s”"
-#~ msgstr "Relambi depassat per executar la comanda « %s »"
-
-#~ msgid ""
-#~ "Writing data to %s\n"
-#~ "Device should not be unplugged."
-#~ msgstr ""
-#~ "Escritura de donadas sus %s\n"
-#~ "Desbrancar pas abans que l'operacion siá acabada."
-
-#~ msgid "%s Possibly Encrypted"
-#~ msgstr "%s probablament chifrat"
-
-#~ msgid "%s Encrypted"
-#~ msgstr "%s chifrat"
-
-#~ msgid "%s Volume"
-#~ msgstr "Volum %s"
-
-#~ msgid "Volume"
-#~ msgstr "Volum"
-
-#~ msgid "Error storing passphrase in keyring (%s)"
-#~ msgstr ""
-#~ "Error al moment de l'emmagazinatge de la frasa secreta dins lo trossèl de "
-#~ "claus (%s)"
-
-#~ msgid "Error deleting invalid passphrase from keyring (%s)"
-#~ msgstr ""
-#~ "Error al moment de la supression de la frasa secreta invalida del trossèl "
-#~ "de claus (%s)"
-
-#~ msgid "The unlocked device does not have a recognizable file system on it"
-#~ msgstr ""
-#~ "Lo periferic desverrolhat possedís pas cap de sistèma de fichièrs valid"
-
-#~ msgid "Encryption passphrase for %s"
-#~ msgstr "Frasa secreta de chiframent per %s"
-
-#~ msgid "A passphrase is required to access the volume"
-#~ msgstr "Una frasa secreta es requesida per accedir al volum"
-
-#~ msgid ""
-#~ "Authentication Required\n"
-#~ "A passphrase is needed to access encrypted data on “%s”."
-#~ msgstr ""
-#~ "Picatz una frasa secreta per desverrolhar lo volum\n"
-#~ "La frasa secreta es necessària per accedir a las donadas chifradas sus %s."
-
-#~ msgid "%s (%s)"
-#~ msgstr "%s (%s)"
-
-#~ msgid "GVfs UDisks2 Volume Monitor"
-#~ msgstr "Monitor de volum GVfs UDisks2"
-
-#~ msgid "Enter your password for the server “%s”."
-#~ msgstr "Picatz vòstre senhal pel servidor « %s »."
-
-#~ msgid "Enter your name and password for the server “%s”."
-#~ msgstr "Picatz vòstre nom e vòstre senhal pel servidor « %s »."
-
-#~ msgid "Backups are not yet supported."
-#~ msgstr "Los salvamments son pas preses en carga pel moment."
-
-#~ msgid "Operation unsupported"
-#~ msgstr "Operacion pas presa en carga"
-
-#~ msgid "backups not supported"
-#~ msgstr "los salvamments son pas preses en carga"
-
-#~ msgid "No such file or directory in target path"
-#~ msgstr "Cap de fichièr o de repertòri d'aqueste nom dins lo camin cibla"
-
-#~ msgid "Not supported"
-#~ msgstr "Pas pres en carga"
-
-#~ msgid "Cannot connect to the system bus"
-#~ msgstr "Impossible de se connectar al bus del sistèma"
-
-#~ msgid "Cannot create libhal context"
-#~ msgstr "Impossible de crear un contèxte libhal"
-
-#~ msgid "Cannot initialize libhal"
-#~ msgstr "Impossible d'inicializar libhal"
-
-#~ msgid "Enter password for %s"
-#~ msgstr "Picatz lo senhal per %s"
-
-#~ msgid "%s Camera"
-#~ msgstr "Aparelh fòto %s"
-
-#~ msgid "%s Audio Player"
-#~ msgstr "Lector àudio %s"
-
-#~ msgid "Camera"
-#~ msgstr "Aparelh de fòto"
-
-#~ msgid "Audio Player"
-#~ msgstr "Lector àudio"
-
-#~ msgid "Unexpected host URI format."
-#~ msgstr "Format d'URI òste inesperat."
-
-#~ msgid "Malformed host URI."
-#~ msgstr "URI òsta malformada."
-
-#~ msgid "backups not supported yet"
-#~ msgstr "los salvaments son pas preses en carga pel moment"
-
-#~ msgid "Password required for %s"
-#~ msgstr "Un senhal deu èsser picat per accedir a %s"
-
-#~ msgid "Password required for share %s on %s"
-#~ msgstr "Un senhal deu èsser picat per accedir al partiment %s sus %s"
-
-#~ msgid "GVfs GDU Volume Monitor"
-#~ msgstr "Monitor de volum GVfs GDU"
-
-#~ msgid "Floppy Drive"
-#~ msgstr "Lector de disquetas"
-
-#~ msgid ""
-#~ "Start drive in degraded mode?\n"
-#~ "Starting a drive in degraded mode means that the drive is no longer "
-#~ "tolerant to failures. Data on the drive may be irrevocably lost if a "
-#~ "component fails."
-#~ msgstr ""
-#~ "Aviar lo disc en mòde degradat ?\n"
-#~ "Aviar un disc en mòde degradat significa que lo disc es pas mai tolerant "
-#~ "a las panas. Las donadas del disc pòdon èsser irrevocablament perdudas se "
-#~ "un component tomba en pana."
-
-#~ msgid "Start Anyway"
-#~ msgstr "Aviar quitament"
-
-#~ msgid "Cannot get LUKS cleartext slave"
-#~ msgstr "Impossible d'obténer l'esclau en tèxte clar LUKS"
-
-#~ msgid "Cannot get LUKS cleartext slave from path `%s'"
-#~ msgstr "Impossible d'obténer l'esclau en tèxte clar dempuèi lo camin « %s »"
-
-#~ msgid "Floppy Disk"
-#~ msgstr "Lector de disquetas"
-
-#~ msgid ""
-#~ "Enter a password to unlock the volume\n"
-#~ "The device \"%s\" contains encrypted data on partition %d."
-#~ msgstr ""
-#~ "Picatz un senhal per desverrolhar lo volum\n"
-#~ "Lo periferic « %s » conten de donadas chifradas sus la particion %d."
-
-#~ msgid ""
-#~ "Enter a password to unlock the volume\n"
-#~ "The device \"%s\" contains encrypted data."
-#~ msgstr ""
-#~ "Picatz un senhal per desverrolhar lo volum\n"
-#~ "Lo periferic « %s » conten de donadas chifradas."
-
-#~ msgid ""
-#~ "Enter a password to unlock the volume\n"
-#~ "The device %s contains encrypted data."
-#~ msgstr ""
-#~ "Picatz un senhal per desverrolhar lo volum\n"
-#~ "Lo periferic « %s » conten de donadas chifradas."
-
-#~ msgid "CD-ROM Disc"
-#~ msgstr "Disc CD-ROM"
-
-#~ msgid "Blank CD-ROM Disc"
-#~ msgstr "Disc CD-ROM verge"
-
-#~ msgid "CD-R Disc"
-#~ msgstr "Disc CD-R"
-
-#~ msgid "Blank CD-R Disc"
-#~ msgstr "Disc CD-R verge"
-
-#~ msgid "CD-RW Disc"
-#~ msgstr "Disc CD-RW"
-
-#~ msgid "Blank CD-RW Disc"
-#~ msgstr "Disc CD-RW verge"
-
-#~ msgid "DVD-ROM Disc"
-#~ msgstr "Disc DVD-ROM"
-
-#~ msgid "Blank DVD-ROM Disc"
-#~ msgstr "Disc DVD-ROM verge"
-
-#~ msgid "DVD-RAM Disc"
-#~ msgstr "Disc DVD-RAM"
-
-#~ msgid "Blank DVD-RAM Disc"
-#~ msgstr "Disc DVD-RAM verge"
-
-#~ msgid "DVD-RW Disc"
-#~ msgstr "Disc DVD-RW"
-
-#~ msgid "Blank DVD-RW Disc"
-#~ msgstr "Disc DVD-RW verge"
-
-#~ msgid "DVD+R Disc"
-#~ msgstr "Disc DVD+R"
-
-#~ msgid "Blank DVD+R Disc"
-#~ msgstr "Disc DVD+R verge"
-
-#~ msgid "DVD+RW Disc"
-#~ msgstr "Disc DVD+RW"
-
-#~ msgid "Blank DVD+RW Disc"
-#~ msgstr "Disc DVD+RW verge"
-
-#~ msgid "DVD+R DL Disc"
-#~ msgstr "Disc DVD+R DL"
-
-#~ msgid "Blank DVD+R DL Disc"
-#~ msgstr "Disc DVD+R DL verge"
-
-#~ msgid "Blu-Ray Disc"
-#~ msgstr "Disc Blu-Ray"
-
-#~ msgid "Blank Blu-Ray Disc"
-#~ msgstr "Disc Blu-Ray verge"
-
-#~ msgid "Blu-Ray R Disc"
-#~ msgstr "Disc Blu-Ray R"
-
-#~ msgid "Blank Blu-Ray R Disc"
-#~ msgstr "Disc Blu-Ray R verge"
-
-#~ msgid "Blu-Ray RW Disc"
-#~ msgstr "Disc Blu-Ray RW"
-
-#~ msgid "Blank Blu-Ray RW Disc"
-#~ msgstr "Disc Blu-Ray RW verge"
-
-#~ msgid "HD DVD Disc"
-#~ msgstr "Disc HD DVD"
-
-#~ msgid "Blank HD DVD Disc"
-#~ msgstr "Disc HD DVD verge"
-
-#~ msgid "HD DVD-R Disc"
-#~ msgstr "Disc HD DVD-R"
-
-#~ msgid "Blank HD DVD-R Disc"
-#~ msgstr "Disc HD DVD-R verge"
-
-#~ msgid "HD DVD-RW Disc"
-#~ msgstr "Disc HD DVD-RW"
-
-#~ msgid "Blank HD DVD-RW Disc"
-#~ msgstr "Disc HD DVD-RW verge"
-
-#~ msgid "MO Disc"
-#~ msgstr "Disc MO"
-
-#~ msgid "Blank MO Disc"
-#~ msgstr "Disc MO verge"
-
-#~ msgid "Disc"
-#~ msgstr "Disc"
-
-#~ msgid "Blank Disc"
-#~ msgstr "Disc verge"
-
-#~ msgid "CD-ROM"
-#~ msgstr "CD-ROM"
-
-#~ msgid "CD-R"
-#~ msgstr "CD-R"
-
-#~ msgid "CD-RW"
-#~ msgstr "CD-RW"
-
-#~ msgid "DVD-ROM"
-#~ msgstr "DVD-ROM"
-
-#~ msgid "DVD+R"
-#~ msgstr "DVD+R"
-
-#~ msgid "DVD+RW"
-#~ msgstr "DVD+RW"
-
-#~ msgid "DVD-R"
-#~ msgstr "DVD-R"
-
-#~ msgid "DVD-RW"
-#~ msgstr "DVD-RW"
-
-#~ msgid "DVD-RAM"
-#~ msgstr "DVD-RAM"
-
-#~ msgid "DVD±R"
-#~ msgstr "DVD±R"
-
-#~ msgid "DVD±RW"
-#~ msgstr "DVD±RW"
-
-#~ msgid "HDDVD"
-#~ msgstr "HDDVD"
-
-#~ msgid "HDDVD-r"
-#~ msgstr "HDDVD-r"
-
-#~ msgid "HDDVD-RW"
-#~ msgstr "HDDVD-RW"
-
-#~ msgid "Blu-ray"
-#~ msgstr "Blu-ray"
-
-#~ msgid "Blu-ray-R"
-#~ msgstr "Blu-ray-R"
-
-#~ msgid "Blu-ray-RE"
-#~ msgstr "Blu-ray-RE"
-
-#~ msgid "%s/%s Drive"
-#~ msgstr "Lector %s/%s"
-
-#~ msgid "%s Drive"
-#~ msgstr "Lector %s"
-
-#~ msgid "Software RAID Drive"
-#~ msgstr "Disc RAID logicial"
-
-#~ msgid "USB Drive"
-#~ msgstr "Lector USB"
-
-#~ msgid "ATA Drive"
-#~ msgstr "Disc ATA"
-
-#~ msgid "SCSI Drive"
-#~ msgstr "Disc SCSI"
-
-#~ msgid "FireWire Drive"
-#~ msgstr "Disc FireWire"
-
-#~ msgid "Tape Drive"
-#~ msgstr "Lector de bendas"
-
-#~ msgid "CompactFlash Drive"
-#~ msgstr "Lector Compact Flash"
-
-#~ msgid "MemoryStick Drive"
-#~ msgstr "Lector Memory Stick"
-
-#~ msgid "SD/MMC Drive"
-#~ msgstr "Lector SD/MMC"
-
-#~ msgid "Zip Drive"
-#~ msgstr "Lector Zip"
-
-#~ msgid "Jaz Drive"
-#~ msgstr "Lector Jaz"
-
-#~ msgid "Thumb Drive"
-#~ msgstr "Clau USB"
-
-#~ msgid "Mass Storage Drive"
-#~ msgstr "Lector d'estocatge de massa"
-
-#~ msgid "Failed to eject media; one or more volumes on the media are busy."
-#~ msgstr ""
-#~ "L'ejeccion del mèdia a fracassat ; un o mantun volum son en cors "
-#~ "d'utilizacion sul mèdia."
-
-#~ msgid "%.1f kB"
-#~ msgstr "%.1f Ko"
-
-#~ msgid "%.1f MB"
-#~ msgstr "%.1f Mo"
-
-#~ msgid "%.1f GB"
-#~ msgstr "%.1f Go"
-
-#~ msgid "Mixed Audio/Data Disc"
-#~ msgstr "Disc mixte àudio/donadas"
-
-#~ msgid "%s Medium"
-#~ msgstr "Mèdia %s"
-
-#~ msgid "%s Encrypted Data"
-#~ msgstr "Donadas chifradas %s"
-
-#~ msgid "%s Media"
-#~ msgstr "Mèdia %s"
-
-#~ msgid "You can now unplug %s\n"
-#~ msgstr "Ara podètz desbrancar %s\n"
-
-#~ msgid "Show program version"
-#~ msgstr "Afichar la version del programa."
-
-#~ msgid "%s: %s: error opening file: %s\n"
-#~ msgstr "%s : %s : error de dobertura del fichièr : %s\n"
-
-#~ msgid "%s: %s, error writing to stdout"
-#~ msgstr "%s : %s, error d'escritura sus stdout"
-
-#~ msgid "%s: %s: error reading: %s\n"
-#~ msgstr "%s : %s : error de lectura : %s\n"
-
-#~ msgid "%s: %s: error closing: %s\n"
-#~ msgstr "%s : %s : error de tampadura : %s\n"
-
-#~ msgid "FILE"
-#~ msgstr "FICHIÈR"
-
-#~ msgid "Concatenate files and print to the standard output."
-#~ msgstr "Concatèna los fichièrs e aficha cap a la sortida estandarda."
-
-#~ msgid ""
-#~ "gvfs-cat works just like the traditional cat utility, but using gvfs\n"
-#~ "locations instead of local files: for example you can use something\n"
-#~ "like smb://server/resource/file.txt as location."
-#~ msgstr ""
-#~ "gvfs-cat fonciona d'un biais identic a lo de l'utilitari tradicional "
-#~ "« cat », exceptada l'utilizacion d'emplaçaments gvfs al luòc de fichièrs "
-#~ "locals. Per exemple, es possible d'indicar quicòm coma smb://servidor/"
-#~ "ressorsa/fichièr.txt coma emplaçament."
-
-#~ msgid ""
-#~ "Note: just pipe through cat if you need its formatting options\n"
-#~ "like -n, -T or other."
-#~ msgstr ""
-#~ "Nòta : sufís de redirigir sus « cat » s'avètz besonh de sas\n"
-#~ "opcions de formatatge talas coma -n, -T o d'autras."
-
-#~ msgid "Error parsing commandline options: %s\n"
-#~ msgstr ""
-#~ "Error al moment de l'analisi de las opcions de la linha de comanda : %s\n"
-
-#~ msgid "%s: missing locations"
-#~ msgstr "%s : emplaçaments mancants"
-
-#~ msgid "No target directory"
-#~ msgstr "Pas cap de repertòri cibla"
-
-#~ msgid "Show progress"
-#~ msgstr "Afichar la progression"
-
-#~ msgid "Prompt before overwrite"
-#~ msgstr "Demandar abans d'espotir"
-
-#~ msgid "Preserve all attributes"
-#~ msgstr "Conservar totes los atributs"
-
-#~ msgid "Backup existing destination files"
-#~ msgstr "Salvar los fichièrs de destinacion existents"
-
-#~ msgid "Never follow symbolic links"
-#~ msgstr "Seguir pas jamai los ligams simbolics"
-
-#~ msgid "SOURCE"
-#~ msgstr "FONT"
-
-#~ msgid "DEST"
-#~ msgstr "DEST"
-
-#~ msgid "Copy one or more files from SOURCE to DEST."
-#~ msgstr "Còpia un o mai d'un fichièr de FONT cap a DESTINACION."
-
-#~ msgid "Missing operand\n"
-#~ msgstr "Operanda mancanta\n"
-
-#~ msgid "Too many arguments\n"
-#~ msgstr "Tròp d'arguments\n"
-
-#~ msgid "Target %s is not a directory\n"
-#~ msgstr "La cibla %s es pas un repertòri\n"
-
-#~ msgid "Error copying file %s: %s\n"
-#~ msgstr "Error al moment de la còpia del fichièr %s : %s\n"
-
-#~ msgid "List writable attributes"
-#~ msgstr "Afichar los atributs en escritura"
-
-#~ msgid "Get file system info"
-#~ msgstr "Obténer d'informacions del sistèma de fichièrs"
-
-#~ msgid "The attributes to get"
-#~ msgstr "Los atributs d'obténer"
-
-#~ msgid "ATTRIBUTES"
-#~ msgstr "ATRIBUTS"
-
-#~ msgid "Don't follow symbolic links"
-#~ msgstr "Seguir pas los ligams simbolics"
-
-#~ msgid "invalid type"
-#~ msgstr "tipe invalid"
-
-#~ msgid "regular"
-#~ msgstr "normal"
-
-#~ msgid "directory"
-#~ msgstr "repertòri"
-
-#~ msgid "symlink"
-#~ msgstr "ligam simbolic"
-
-#~ msgid "special"
-#~ msgstr "especial"
-
-#~ msgid "shortcut"
-#~ msgstr "acorchi"
-
-#~ msgid "mountable"
-#~ msgstr "« montable »"
-
-#~ msgid "attributes:\n"
-#~ msgstr "atributs :\n"
-
-#~ msgid "display name: %s\n"
-#~ msgstr "nom afichat : %s\n"
-
-#~ msgid "edit name: %s\n"
-#~ msgstr "nom d'edicion : %s\n"
-
-#~ msgid "name: %s\n"
-#~ msgstr "nom : %s\n"
-
-#~ msgid "type: %s\n"
-#~ msgstr "tipe : %s\n"
-
-#~ msgid "size: "
-#~ msgstr "talha : "
-
-#~ msgid "hidden\n"
-#~ msgstr "amagat\n"
-
-#~ msgid "uri: %s\n"
-#~ msgstr "URI : %s\n"
-
-#~ msgid "Copy with file"
-#~ msgstr "Copiar amb lo fichièr"
-
-#~ msgid "Keep with file when moved"
-#~ msgstr "Conservar amb lo fichièr en cas de desplaçament"
-
-#~ msgid "Error getting writable attributes: %s\n"
-#~ msgstr ""
-#~ "Error al moment de la recuperacion dels atributs en escritura : %s\n"
-
-#~ msgid "Settable attributes:\n"
-#~ msgstr "Atributs parametrables :\n"
-
-#~ msgid "Writable attribute namespaces:\n"
-#~ msgstr "Espacis de nom dels atributs en escritura :\n"
-
-#~ msgid "LOCATION"
-#~ msgstr "EMPLAÇAMENT"
-
-#~ msgid "Show information about locations."
-#~ msgstr "Afichar d'informacions suls emplaçaments."
-
-#~ msgid "Show hidden files"
-#~ msgstr "Afichar los fichièrs amagats"
-
-#~ msgid "Use a long listing format"
-#~ msgstr "Utilizar un format d'afichatge long"
-
-#~ msgid "PREFIX"
-#~ msgstr "PREFIX"
-
-#~ msgid "Print full URIs"
-#~ msgstr "Afichar completament las URI"
-
-#~ msgid "Error: %s\n"
-#~ msgstr "Error : %s\n"
-
-#~ msgid "List the contents of the locations."
-#~ msgstr "Afichar la lista dels contenguts dels emplaçaments."
-
-#~ msgid ""
-#~ "gvfs-ls is similar to the traditional ls utility, but using gvfs\n"
-#~ "locations instead of local files: for example you can use something\n"
-#~ "like smb://server/resource/file.txt as location. File attributes can\n"
-#~ "be specified with their gvfs name, e.g. standard::icon."
-#~ msgstr ""
-#~ "gvfs-ls fonciona d'un biais identic a lo de l'utilitari tradicional\n"
-#~ "« ls », exceptada l'utilizacion d'emplaçaments gvfs al luòc de fichièrs\n"
-#~ "locals. Per exemple, es possible d'indicar quicòm coma\n"
-#~ "smb://servidor/ressorsa/fichièr.txt coma emplaçament. Los atributs de\n"
-#~ "fichièrs pòdon èsser indicats per lor nom gvfs, per ex. standard::icon."
-
-#~ msgid "Query handler for mime-type"
-#~ msgstr "Demanda lo gestionari que correspond al tipe mime"
-
-#~ msgid "Set handler for mime-type"
-#~ msgstr "Definís lo gestionari del tipe mime"
-
-#~ msgid "MIMETYPE"
-#~ msgstr "TIPE_MIME"
-
-#~ msgid "HANDLER"
-#~ msgstr "GESTIONARI"
-
-#~ msgid "Get or set the handler for a mime-type."
-#~ msgstr "Obten o definís lo gestionari d'un tipe mime."
-
-#~ msgid "Specify either --query or --set"
-#~ msgstr "Indicatz siá --query, siá --set"
-
-#~ msgid "Must specify a single mime-type.\n"
-#~ msgstr "Cal precisar un sol tipe mime.\n"
-
-#~ msgid "Must specify the mime-type followed by the default handler.\n"
-#~ msgstr "Cal precisar lo tipe mime seguit del gestionari per defaut.\n"
-
-#~ msgid "No default applications for '%s'\n"
-#~ msgstr "Pas cap d'aplicacion per defaut per « %s »\n"
-
-#~ msgid "Default application for '%s': %s\n"
-#~ msgstr "Aplicacion per defaut per « %s » : %s\n"
-
-#~ msgid "Registered applications:\n"
-#~ msgstr "Aplicacions enregistradas :\n"
-
-#~ msgid "No registered applications\n"
-#~ msgstr "Cap d'aplicacion pas enregistrada\n"
-
-#~ msgid "Recommended applications:\n"
-#~ msgstr "Aplicacions recomandadas :\n"
-
-#~ msgid "No recommended applications\n"
-#~ msgstr "Cap d'aplicacion pas recomandada\n"
-
-#~ msgid "Failed to load info for handler '%s'\n"
-#~ msgstr "Fracàs al moment del cargament de las infos pel gestionari « %s »\n"
-
-#~ msgid "Failed to set '%s' as the default handler for '%s': %s\n"
-#~ msgstr ""
-#~ "Fracàs al moment de la seleccion de « %s » coma gestionari per defaut per "
-#~ "« %s » : %s\n"
-
-#~ msgid "Create parent directories"
-#~ msgstr "Crear de repertòris parents"
-
-#~ msgid "Error creating directory: %s\n"
-#~ msgstr "Error al moment de la creacion del repertòri : %s\n"
-
-#~ msgid "Don't send single MOVED events"
-#~ msgstr "Mandar pas d'eveniments MOVED isolats."
-
-#~ msgid "Monitor directories for changes."
-#~ msgstr "Susvelhar de modificacions de repertòris."
-
-#~ msgid "Monitor files for changes."
-#~ msgstr "Susvelhar de modificacions de fichièrs."
-
-#~ msgid "Mount as mountable"
-#~ msgstr "Montar en tant que « montable »"
-
-#~ msgid "Mount volume with device file"
-#~ msgstr "Montar un volum amb lo fichièr periferic"
-
-#~ msgid "DEVICE"
-#~ msgstr "PERIFERIC"
-
-#~ msgid "Unmount"
-#~ msgstr "Desmontar"
-
-#~ msgid "Eject"
-#~ msgstr "Ejectar"
-
-#~ msgid "Unmount all mounts with the given scheme"
-#~ msgstr "Desmontar totes los punts de montatge del protocòl indicat"
-
-#~ msgid "SCHEME"
-#~ msgstr "PROTOCÒL"
-
-#~ msgid "List"
-#~ msgstr "Lista"
-
-#~ msgid "Monitor events"
-#~ msgstr "Susvelhar d'eveniments"
-
-#~ msgid "Error mounting location: %s\n"
-#~ msgstr "Error al moment del montatge de l'emplaçament : %s\n"
-
-#~ msgid "Error unmounting mount: %s\n"
-#~ msgstr "Error al moment del desmontatge de l'emplaçament : %s\n"
-
-#~ msgid "Error finding enclosing mount: %s\n"
-#~ msgstr "Error al moment de la recèrca del punt de montatge òste : %s\n"
-
-#~ msgid "Error ejecting mount: %s\n"
-#~ msgstr "Error al moment de l'ejeccion del punt de montatge : %s\n"
-
-#~ msgid "Error mounting %s: %s\n"
-#~ msgstr "Error al moment del montatge %s : %s\n"
-
-#~ msgid "Mounted %s at %s\n"
-#~ msgstr "%s montat sus %s\n"
-
-#~ msgid "No volume for device file %s\n"
-#~ msgstr "Pas de volum pel fichièr de periferic %s\n"
-
-#~ msgid "Mount the locations."
-#~ msgstr "Montar los emplaçaments."
-
-#~ msgid "Move one or more files from SOURCE to DEST."
-#~ msgstr "Desplaçar un o mantun fichièr de FONT cap a DESTINACION."
-
-#~ msgid "Error moving file %s: %s\n"
-#~ msgstr "Error al moment del desplaçament del fichièr %s : %s\n"
-
-#~ msgid ""
-#~ "Open files with the default application that\n"
-#~ "is registered to handle files of this type."
-#~ msgstr ""
-#~ "Dobrís cada fichièr amb l'aplicacion enregistrada per\n"
-#~ "gerir per defaut lo tipe del fichièr."
-
-#~ msgid "%s: %s: error opening location: %s\n"
-#~ msgstr "%s : %s : error de dobertura d'un emplaçament : %s\n"
-
-#~ msgid "NEW-NAME"
-#~ msgstr "NOM-NOVÈL"
-
-#~ msgid "Rename a file."
-#~ msgstr "Renomenar un fichièr."
-
-#~ msgid "Rename successful. New uri: %s\n"
-#~ msgstr "Renomenat amb succès. URI novèl : %s\n"
-
-#~ msgid "Ignore nonexistent files, never prompt"
-#~ msgstr "Ignorar los fichièrs qu'existisson pas, demandar pas jamai"
-
-#~ msgid "Delete the given files."
-#~ msgstr "Suprimir los fichièrs indicats."
-
-#~ msgid "Only create if not existing"
-#~ msgstr "Crear pas que s'existís pas"
-
-#~ msgid "Append to end of file"
-#~ msgstr "Apondre a la fin del fichièr"
-
-#~ msgid "When creating, restrict access to the current user"
-#~ msgstr "Al cors de la creacion, restrénher l'accès a l'utilizaire actual"
-
-#~ msgid "Print new etag at end"
-#~ msgstr "Afichar lo novèl « etag » a la fin"
-
-#~ msgid "The etag of the file being overwritten"
-#~ msgstr "Lo « etag » del fichièr qu'es espotit"
-
-#~ msgid "ETAG"
-#~ msgstr "ETAG"
-
-#~ msgid "Error opening file: %s\n"
-#~ msgstr "Error al moment de la dobertura del fichièr : %s\n"
-
-#~ msgid "Error reading stdin"
-#~ msgstr "Error al moment de la lectura de l'entrada estandarda (stdin)"
-
-#~ msgid "Error closing: %s\n"
-#~ msgstr "Error al moment de la tampadura : %s\n"
-
-#~ msgid "Etag not available\n"
-#~ msgstr "« etag » pas disponible\n"
-
-#~ msgid "Read from standard input and save to DEST."
-#~ msgstr "Legir dempuèi l'entrada estandarda e enregistrar cap a DESTINACION."
-
-#~ msgid "Type of the attribute"
-#~ msgstr "Lo tipe de l'atribut"
-
-#~ msgid "TYPE"
-#~ msgstr "TIPE"
-
-#~ msgid "ATTRIBUTE"
-#~ msgstr "ATRIBUT"
-
-#~ msgid "VALUE"
-#~ msgstr "VALOR"
-
-#~ msgid "Set a file attribute of LOCATION."
-#~ msgstr "Definir un atribut del fichièr a EMPLAÇAMENT."
-
-#~ msgid "Location not specified\n"
-#~ msgstr "Emplaçament pas indicat\n"
-
-#~ msgid "Attribute not specified\n"
-#~ msgstr "Atribut pas especificat\n"
-
-#~ msgid "Value not specified\n"
-#~ msgstr "Valor pas precisada\n"
-
-#~ msgid "Invalid attribute type %s\n"
-#~ msgstr "Tipe d'atribut %s invalid\n"
-
-#~ msgid "Error setting attribute: %s\n"
-#~ msgstr "Error al moment del parametratge de l'atribut : %s\n"
-
-#~ msgid "Empty the trash"
-#~ msgstr "Voidar l'escobilhièr"
-
-#~ msgid "Move files or directories to the trash."
-#~ msgstr "Desplaçar de fichièrs o de repertòris dins l'escobilhièr."
-
-#~ msgid "Error trashing file: %s\n"
-#~ msgstr "Error al moment de la supression del fichièr : %s\n"
-
-#~ msgid "Follow symbolic links, mounts and shortcuts"
-#~ msgstr "Seguir los ligams simbolics, punts de montatge o acorchis"
-
-#~ msgid "List contents of directories in a tree-like format."
-#~ msgstr "Afichar lo contengut dels repertòris dins un format arborescent."
-
-#~ msgid "File does not exist"
-#~ msgstr "Lo fichièr existís pas."
-
-#~ msgid "The directory is not empty"
-#~ msgstr "Lo repertòri es pas void"
-
-#~ msgid "Invalid seek type"
-#~ msgstr "Tipe de posicionament invalid"
-
-#~ msgid "The file is not a mountable"
-#~ msgstr "Lo fichièr es pas « montable »"
-
-#~ msgid "USB support missing. Please contact your software vendor"
-#~ msgstr ""
-#~ "La presa en carga de l'USB es absenta. Contactatz vòstre provesidor de "
-#~ "logicial"
-
-#~ msgid "Connection to the device lost"
-#~ msgstr "Connexion al periferic perduda"
-
-#~ msgid "Device requires a software update"
-#~ msgstr "Lo periferic requerís la mesa a jorn d'un logicial"
-
-#~ msgid "SSH program unexpectedly exited"
-#~ msgstr "Lo programa SSH s'es acabat d'un biais inesperat"
-
-#~ msgid "%s: %s:error closing: %s\n"
-#~ msgstr "%s : %s : error de tampadura : %s\n"
-
-#~ msgid "progress"
-#~ msgstr "progression"
-
-#~ msgid "overwrite %s?"
-#~ msgstr "espotir %s ?"
-
-#~ msgid "Error creating Avahi resolver: %s"
-#~ msgstr "Error al moment de la creacion del resolvidor d'Avahi : %s"
-
-#~ msgid "Unnamed Device"
-#~ msgstr "Periferic sens nom"
+#~ "mutter %s\n"
+#~ "Copyright © 2001-%d Havoc Pennington, Red Hat, Inc., e autres.\n"
+#~ "Aquò es un logicial liure ; consultatz lo còdi font per las\n"
+#~ "condicions de còpia.\n"
+#~ "I a PAS CAP DE garantida ; quitament pas de VALOR MERCANDA o\n"
+#~ "d'ADEQÜACION A UN USATGE PARTICULAR.\n"
