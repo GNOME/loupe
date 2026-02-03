@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2026-01-21 21:23+0000\n"
-"PO-Revision-Date: 2026-01-27 17:37+0100\n"
+"POT-Creation-Date: 2026-01-30 22:01+0000\n"
+"PO-Revision-Date: 2026-02-01 22:26+0100\n"
 "Last-Translator: Jordi Mas i Hernàndez, <jmas@softcatala.org>\n"
 "Language-Team: Catalan <gnome@llistes.softcatala.org>\n"
 "Language: ca\n"
@@ -20,7 +20,7 @@ msgstr ""
 
 #: data/org.gnome.Loupe.desktop.in.in:2
 #: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:32
-#: src/widgets/image_window.rs:898
+#: src/widgets/image_window.rs:897
 msgid "Image Viewer"
 msgstr "Visualitzador d'imatges"
 
@@ -43,253 +43,226 @@ msgid "The GNOME Project"
 msgstr "El projecte GNOME"
 
 #: data/org.gnome.Loupe.metainfo.xml.in.in:15
-msgid "Browse through your images and inspect their metadata with:"
+msgid ""
+"Explore images, view their metadata, and make quick edits by cropping, "
+"rotating, or flipping them."
 msgstr ""
-"Navegueu a través de les vostres imatges i inspeccioneu les seves metadades "
-"amb:"
+"Exploreu les imatges, visualitzeu les seves metadades i realitzeu edicions "
+"ràpides escapçant-les, rotant-les o girant-les."
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:17
-msgid "Fast GPU accelerated image rendering"
-msgstr "Renderització ràpida d'imatges accelerades de la GPU"
-
-#: data/org.gnome.Loupe.metainfo.xml.in.in:18
-msgid "Tiled rendering for vector graphics"
-msgstr "Renderització en mosaic per a gràfics vectorials"
-
-#: data/org.gnome.Loupe.metainfo.xml.in.in:19
-msgid "Extendable and sandboxed image decoding"
-msgstr "Descodificació d'imatges extensible i en un entorn aïllat"
-
-#: data/org.gnome.Loupe.metainfo.xml.in.in:20
-msgid "Accessible presentation of the most important metadata."
-msgstr "Presentació accessible de les metadades més importants."
-
-#: data/resources/gtk/help-overlay.ui:11
+#: data/resources/shortcuts-dialog.ui:6
 msgctxt "shortcut window"
 msgid "General Shortcuts"
 msgstr "Dreceres generals"
 
-#: data/resources/gtk/help-overlay.ui:14
+#: data/resources/shortcuts-dialog.ui:9
 msgctxt "shortcut window"
 msgid "Copy Image or Selected Text to Clipboard"
 msgstr "Copia la imatge o el text seleccionat al porta-retalls"
 
-#: data/resources/gtk/help-overlay.ui:20
+#: data/resources/shortcuts-dialog.ui:15
 msgctxt "shortcut window"
 msgid "Move Image to Trash"
 msgstr "Mou la imatge a la paperera"
 
-#: data/resources/gtk/help-overlay.ui:26
+#: data/resources/shortcuts-dialog.ui:21
 msgctxt "shortcut window"
 msgid "Permanently Delete Image"
 msgstr "Suprimeix permanentment la imatge"
 
-#: data/resources/gtk/help-overlay.ui:32
+#: data/resources/shortcuts-dialog.ui:27
 msgctxt "shortcut window"
 msgid "Open Image with Other App"
 msgstr "Obre la imatge amb una altra aplicació"
 
-#: data/resources/gtk/help-overlay.ui:38
+#: data/resources/shortcuts-dialog.ui:33
 msgctxt "shortcut window"
 msgid "Set as Background"
 msgstr "Estableix com a fons"
 
-#: data/resources/gtk/help-overlay.ui:44
+#: data/resources/shortcuts-dialog.ui:39
 msgctxt "shortcut window"
 msgid "New Window"
 msgstr "Finestra nova"
 
-#: data/resources/gtk/help-overlay.ui:50
+#: data/resources/shortcuts-dialog.ui:45
 msgctxt "shortcut window"
 msgid "Open Help"
 msgstr "Obre l'ajuda"
 
-#: data/resources/gtk/help-overlay.ui:56
+#: data/resources/shortcuts-dialog.ui:51
 msgctxt "shortcut window"
 msgid "Show Keyboard Shortcuts"
 msgstr "Mostra les dreceres de teclat"
 
-#: data/resources/gtk/help-overlay.ui:62
+#: data/resources/shortcuts-dialog.ui:57
 msgctxt "shortcut window"
 msgid "Close Window"
 msgstr "Tanca la finestra"
 
-#: data/resources/gtk/help-overlay.ui:68
+#: data/resources/shortcuts-dialog.ui:63
 msgctxt "shortcut window"
 msgid "Quit"
 msgstr "Surt"
 
-#: data/resources/gtk/help-overlay.ui:76
+#: data/resources/shortcuts-dialog.ui:71
 msgctxt "shortcut window"
 msgid "Navigate Images"
 msgstr "Navega per les imatges"
 
-#: data/resources/gtk/help-overlay.ui:80 data/resources/gtk/help-overlay.ui:94
-#: data/resources/gtk/help-overlay.ui:235
-#: data/resources/gtk/help-overlay.ui:249
+#: data/resources/shortcuts-dialog.ui:75 data/resources/shortcuts-dialog.ui:89
 msgctxt "shortcut window"
 msgid "Next Image"
 msgstr "Imatge següent"
 
-#: data/resources/gtk/help-overlay.ui:87 data/resources/gtk/help-overlay.ui:101
-#: data/resources/gtk/help-overlay.ui:242
-#: data/resources/gtk/help-overlay.ui:256
+#: data/resources/shortcuts-dialog.ui:82 data/resources/shortcuts-dialog.ui:96
 msgctxt "shortcut window"
 msgid "Previous Image"
 msgstr "Imatge anterior"
 
-#: data/resources/gtk/help-overlay.ui:107
+#: data/resources/shortcuts-dialog.ui:102
 msgctxt "shortcut window"
 msgid "First Image"
 msgstr "Primera imatge"
 
-#: data/resources/gtk/help-overlay.ui:113
+#: data/resources/shortcuts-dialog.ui:108
 msgctxt "shortcut window"
 msgid "Last Image"
 msgstr "Última imatge"
 
-#: data/resources/gtk/help-overlay.ui:121
+#: data/resources/shortcuts-dialog.ui:116
 msgctxt "shortcut window"
 msgid "Rotate Image"
 msgstr "Gira la imatge"
 
-#: data/resources/gtk/help-overlay.ui:124
-#: data/resources/gtk/help-overlay.ui:274
-#: data/resources/gtk/help-overlay.ui:315
+#: data/resources/shortcuts-dialog.ui:119
+#: data/resources/shortcuts-dialog.ui:253
 msgctxt "shortcut window"
 msgid "Rotate Clockwise"
 msgstr "Gira en sentit horari"
 
-#: data/resources/gtk/help-overlay.ui:130
-#: data/resources/gtk/help-overlay.ui:280
-#: data/resources/gtk/help-overlay.ui:321
+#: data/resources/shortcuts-dialog.ui:125
+#: data/resources/shortcuts-dialog.ui:259
 msgctxt "shortcut window"
 msgid "Rotate Counterclockwise"
 msgstr "Gira en sentit antihorari"
 
-#: data/resources/gtk/help-overlay.ui:138
+#: data/resources/shortcuts-dialog.ui:133
 msgctxt "shortcut window"
 msgid "Zoom Image"
 msgstr "Zoom de la imatge"
 
-#: data/resources/gtk/help-overlay.ui:141
-#: data/resources/gtk/help-overlay.ui:262
+#: data/resources/shortcuts-dialog.ui:136
 msgctxt "shortcut window"
 msgid "Zoom In"
 msgstr "Amplia"
 
-#: data/resources/gtk/help-overlay.ui:147
-#: data/resources/gtk/help-overlay.ui:268
+#: data/resources/shortcuts-dialog.ui:142
 msgctxt "shortcut window"
 msgid "Zoom Out"
 msgstr "Allunya"
 
-#: data/resources/gtk/help-overlay.ui:153
+#: data/resources/shortcuts-dialog.ui:148
 msgctxt "shortcut window"
 msgid "Best Fit"
 msgstr "Millor ajust"
 
-#: data/resources/gtk/help-overlay.ui:159
+#: data/resources/shortcuts-dialog.ui:154
 msgctxt "shortcut window"
 msgid "Original Scale"
 msgstr "Escala original"
 
-#: data/resources/gtk/help-overlay.ui:165
+#: data/resources/shortcuts-dialog.ui:160
 msgctxt "shortcut window"
 msgid "200% Scale"
 msgstr "Escala del 200%"
 
-#: data/resources/gtk/help-overlay.ui:173
+#: data/resources/shortcuts-dialog.ui:168
 msgctxt "shortcut window"
 msgid "Pan View"
 msgstr "Desplaçament dins de la imatge"
 
-#: data/resources/gtk/help-overlay.ui:176
+#: data/resources/shortcuts-dialog.ui:171
 msgctxt "shortcut window"
 msgid "Pan Left"
 msgstr "Desplaça a l'esquerra"
 
-#: data/resources/gtk/help-overlay.ui:182
+#: data/resources/shortcuts-dialog.ui:177
 msgctxt "shortcut window"
 msgid "Pan Right"
 msgstr "Desplaça a la dreta"
 
-#: data/resources/gtk/help-overlay.ui:188
+#: data/resources/shortcuts-dialog.ui:183
 msgctxt "shortcut window"
 msgid "Pan Up"
 msgstr "Desplaça cap amunt"
 
-#: data/resources/gtk/help-overlay.ui:194
+#: data/resources/shortcuts-dialog.ui:189
 msgctxt "shortcut window"
 msgid "Pan Down"
 msgstr "Desplaça cap avall"
 
-#: data/resources/gtk/help-overlay.ui:202
+#: data/resources/shortcuts-dialog.ui:197
 msgctxt "shortcut window"
 msgid "View"
 msgstr "Vista"
 
-#: data/resources/gtk/help-overlay.ui:205
+#: data/resources/shortcuts-dialog.ui:200
 msgctxt "shortcut window"
 msgid "Toggle Fullscreen"
 msgstr "Commuta la pantalla completa"
 
-#: data/resources/gtk/help-overlay.ui:211
+#: data/resources/shortcuts-dialog.ui:206
 msgctxt "shortcut window"
 msgid "Leave Fullscreen"
 msgstr "Surt de la pantalla completa"
 
-#: data/resources/gtk/help-overlay.ui:217
+#: data/resources/shortcuts-dialog.ui:212
 msgctxt "shortcut window"
 msgid "Toggle Image Properties"
 msgstr "Commuta les propietats de la imatge"
 
-#: data/resources/gtk/help-overlay.ui:223
+#: data/resources/shortcuts-dialog.ui:218
 msgctxt "shortcut window"
 msgid "Show Main Menu"
 msgstr "Mostra el menú principal"
 
-#: data/resources/gtk/help-overlay.ui:231
-msgctxt "shortcut window"
-msgid "Gestures"
-msgstr "Gestos"
-
-#: data/resources/gtk/help-overlay.ui:288
+#: data/resources/shortcuts-dialog.ui:226
 msgctxt "shortcut window"
 msgid "Editing"
 msgstr "Edició"
 
-#: data/resources/gtk/help-overlay.ui:291
+#: data/resources/shortcuts-dialog.ui:229
 msgctxt "shortcut window"
 msgid "Open Editing View"
 msgstr "Obre la vista d'edició"
 
-#: data/resources/gtk/help-overlay.ui:297
+#: data/resources/shortcuts-dialog.ui:235
 msgctxt "shortcut window"
 msgid "Replace Original"
 msgstr "Reemplaça l'original"
 
-#: data/resources/gtk/help-overlay.ui:303
+#: data/resources/shortcuts-dialog.ui:241
 msgctxt "shortcut window"
 msgid "Save As"
 msgstr "Anomena i desa"
 
-#: data/resources/gtk/help-overlay.ui:309
+#: data/resources/shortcuts-dialog.ui:247
 msgctxt "shortcut window"
 msgid "Cancel"
 msgstr "Cancel·la"
 
-#: data/resources/gtk/help-overlay.ui:327
+#: data/resources/shortcuts-dialog.ui:265
 msgctxt "shortcut window"
 msgid "Mirror Horizontally"
 msgstr "_Volteja horitzontalment"
 
-#: data/resources/gtk/help-overlay.ui:333
+#: data/resources/shortcuts-dialog.ui:271
 msgctxt "shortcut window"
 msgid "Mirror Vertically"
 msgstr "_Volteja verticalment"
 
-#: data/resources/gtk/help-overlay.ui:339
+#: data/resources/shortcuts-dialog.ui:277
 msgctxt "shortcut window"
 msgid "Apply Crop"
 msgstr "Aplica l'escapçat"
@@ -474,31 +447,30 @@ msgstr "Desfés els canvis en aquesta vista"
 msgid "Crop Selection"
 msgstr "Retalla la selecció"
 
-#. Translators: Filename suffix
 #. Translators: Filename suffix, {} is replaced by a number
-#: src/widgets/edit_window.rs:196 src/widgets/edit_window.rs:199
+#: src/widgets/edit_window.rs:195
 msgid " (Edited)"
 msgid_plural " (Edited {})"
 msgstr[0] " (editat)"
 msgstr[1] " (editats {})"
 
-#: src/widgets/edit_window.rs:294 src/widgets/edit_window.rs:324
+#: src/widgets/edit_window.rs:289 src/widgets/edit_window.rs:315
 msgid "Failed to save image."
 msgstr "No s'ha pogut desar la imatge."
 
-#: src/widgets/edit_window.rs:354
+#: src/widgets/edit_window.rs:343
 msgid "Editing Image"
 msgstr "S'està editant la imatge"
 
-#: src/widgets/edit_window.rs:371
+#: src/widgets/edit_window.rs:360
 msgid "Failed to edit image."
 msgstr "No s'ha pogut editar la imatge."
 
-#: src/widgets/edit_window.rs:381 src/widgets/edit_window.rs:404
+#: src/widgets/edit_window.rs:370 src/widgets/edit_window.rs:393
 msgid "Failed to Save Image"
 msgstr "No s'ha pogut desar la imatge"
 
-#: src/widgets/edit_window.rs:387
+#: src/widgets/edit_window.rs:376
 msgid "Saving Image"
 msgstr "S'està desant la imatge"
 
@@ -683,39 +655,39 @@ msgstr "Tots els fitxers"
 msgid "Open Image"
 msgstr "Obre una imatge"
 
-#: src/widgets/image_window.rs:633
+#: src/widgets/image_window.rs:632
 msgid "Image copied to clipboard"
 msgstr "Imatge copiada al porta-retalls"
 
-#: src/widgets/image_window.rs:654
+#: src/widgets/image_window.rs:653
 msgid "Image moved to trash"
 msgstr "S'ha mogut la imatge a la paperera"
 
-#: src/widgets/image_window.rs:655
+#: src/widgets/image_window.rs:654
 msgid "Undo"
 msgstr "Desfés"
 
-#: src/widgets/image_window.rs:685
+#: src/widgets/image_window.rs:684
 msgid "Failed to move image to trash"
 msgstr "No s'ha pogut moure la imatge a la paperera"
 
-#: src/widgets/image_window.rs:709
+#: src/widgets/image_window.rs:708
 msgid "Permanently Delete Image?"
 msgstr "Voleu suprimir permanentment la imatge?"
 
-#: src/widgets/image_window.rs:711
+#: src/widgets/image_window.rs:710
 msgid "After deleting the image “{}” it will be permanently lost."
 msgstr "La imatge «{}» es perdrà permanentment un cop sigui suprimida."
 
-#: src/widgets/image_window.rs:719
+#: src/widgets/image_window.rs:718
 msgid "Cancel"
 msgstr "Cancel·la"
 
-#: src/widgets/image_window.rs:720
+#: src/widgets/image_window.rs:719
 msgid "Delete"
 msgstr "Suprimeix"
 
-#: src/widgets/image_window.rs:731
+#: src/widgets/image_window.rs:730
 msgid "Failed to delete image"
 msgstr "No s'ha pogut suprimir la imatge"
 
@@ -807,19 +779,19 @@ msgstr "px"
 msgid "Print “{}”"
 msgstr "_Imprimeix «{}»"
 
-#: src/widgets/print.rs:479
+#: src/widgets/print.rs:477
 msgid "Continue…"
 msgstr "Continua…"
 
-#: src/widgets/print.rs:480
+#: src/widgets/print.rs:478
 msgid "Print Image"
 msgstr "Imprimeix la imatge"
 
-#: src/widgets/print.rs:799
+#: src/widgets/print.rs:797
 msgid "_Scale"
 msgstr "E_scala"
 
-#: src/widgets/print.rs:802
+#: src/widgets/print.rs:800
 msgid "_Width"
 msgstr "_Amplada"
 
@@ -980,9 +952,30 @@ msgstr "Longitud focal"
 msgid "Maker, Model"
 msgstr "Fabricant, model"
 
-#: src/widgets/window.rs:212
+#: src/widgets/window.rs:206
 msgid "Show Details"
 msgstr "Mostra els detalls"
+
+#~ msgid "Browse through your images and inspect their metadata with:"
+#~ msgstr ""
+#~ "Navegueu a través de les vostres imatges i inspeccioneu les seves "
+#~ "metadades amb:"
+
+#~ msgid "Fast GPU accelerated image rendering"
+#~ msgstr "Renderització ràpida d'imatges accelerades de la GPU"
+
+#~ msgid "Tiled rendering for vector graphics"
+#~ msgstr "Renderització en mosaic per a gràfics vectorials"
+
+#~ msgid "Extendable and sandboxed image decoding"
+#~ msgstr "Descodificació d'imatges extensible i en un entorn aïllat"
+
+#~ msgid "Accessible presentation of the most important metadata."
+#~ msgstr "Presentació accessible de les metadades més importants."
+
+#~ msgctxt "shortcut window"
+#~ msgid "Gestures"
+#~ msgstr "Gestos"
 
 #~ msgid "{} %"
 #~ msgstr "{} %"
