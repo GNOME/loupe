@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2026-01-21 21:23+0000\n"
-"PO-Revision-Date: 2026-01-26 03:37+0200\n"
+"POT-Creation-Date: 2026-01-30 22:01+0000\n"
+"PO-Revision-Date: 2026-02-03 06:00+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -21,13 +21,12 @@ msgstr ""
 
 #: data/org.gnome.Loupe.desktop.in.in:2
 #: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:32
-#: src/widgets/image_window.rs:898
+#: src/widgets/image_window.rs:897
 msgid "Image Viewer"
 msgstr "Перегляд зображень"
 
 #: data/org.gnome.Loupe.desktop.in.in:3
 #: data/org.gnome.Loupe.metainfo.xml.in.in:13
-#| msgid "View images"
 msgid "View and edit images"
 msgstr "Перегляд і редагування зображень"
 
@@ -46,253 +45,226 @@ msgid "The GNOME Project"
 msgstr "Проєкт GNOME"
 
 #: data/org.gnome.Loupe.metainfo.xml.in.in:15
-msgid "Browse through your images and inspect their metadata with:"
+msgid ""
+"Explore images, view their metadata, and make quick edits by cropping, "
+"rotating, or flipping them."
 msgstr ""
-"Здійснюйте навігацію вашими зображеннями і переглядайте їхні метадані за "
-"допомогою:"
+"Подорожуйте збіркою фотографій, переглядайте метадані зображень і вносьте"
+" потрібні зміни до зображень — обрізання, обертання або віддзеркалення."
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:17
-msgid "Fast GPU accelerated image rendering"
-msgstr "Швидкої обробка зображення за допомогою графічного процесора"
-
-#: data/org.gnome.Loupe.metainfo.xml.in.in:18
-msgid "Tiled rendering for vector graphics"
-msgstr "Плиткової обробки для векторної графіки"
-
-#: data/org.gnome.Loupe.metainfo.xml.in.in:19
-msgid "Extendable and sandboxed image decoding"
-msgstr "Придатного до розширення та ізольоване декодування зображень"
-
-#: data/org.gnome.Loupe.metainfo.xml.in.in:20
-msgid "Accessible presentation of the most important metadata."
-msgstr "Доступного представлення найважливіших метаданих"
-
-#: data/resources/gtk/help-overlay.ui:11
+#: data/resources/shortcuts-dialog.ui:6
 msgctxt "shortcut window"
 msgid "General Shortcuts"
 msgstr "Загальні скорочення"
 
-#: data/resources/gtk/help-overlay.ui:14
+#: data/resources/shortcuts-dialog.ui:9
 msgctxt "shortcut window"
 msgid "Copy Image or Selected Text to Clipboard"
 msgstr "Копіювати зображення або позначений текст до буфера"
 
-#: data/resources/gtk/help-overlay.ui:20
+#: data/resources/shortcuts-dialog.ui:15
 msgctxt "shortcut window"
 msgid "Move Image to Trash"
 msgstr "Пересунути зображення до смітника"
 
-#: data/resources/gtk/help-overlay.ui:26
+#: data/resources/shortcuts-dialog.ui:21
 msgctxt "shortcut window"
 msgid "Permanently Delete Image"
 msgstr "Остаточно вилучити зображення"
 
-#: data/resources/gtk/help-overlay.ui:32
+#: data/resources/shortcuts-dialog.ui:27
 msgctxt "shortcut window"
 msgid "Open Image with Other App"
 msgstr "Відкрити зображення у іншій програмі"
 
-#: data/resources/gtk/help-overlay.ui:38
+#: data/resources/shortcuts-dialog.ui:33
 msgctxt "shortcut window"
 msgid "Set as Background"
 msgstr "Встановити як тло"
 
-#: data/resources/gtk/help-overlay.ui:44
+#: data/resources/shortcuts-dialog.ui:39
 msgctxt "shortcut window"
 msgid "New Window"
 msgstr "Відкрити нове вікно"
 
-#: data/resources/gtk/help-overlay.ui:50
+#: data/resources/shortcuts-dialog.ui:45
 msgctxt "shortcut window"
 msgid "Open Help"
 msgstr "Відкрити довідку"
 
-#: data/resources/gtk/help-overlay.ui:56
+#: data/resources/shortcuts-dialog.ui:51
 msgctxt "shortcut window"
 msgid "Show Keyboard Shortcuts"
 msgstr "Показати клавіатурні скорочення"
 
-#: data/resources/gtk/help-overlay.ui:62
+#: data/resources/shortcuts-dialog.ui:57
 msgctxt "shortcut window"
 msgid "Close Window"
 msgstr "Закрити вікно"
 
-#: data/resources/gtk/help-overlay.ui:68
+#: data/resources/shortcuts-dialog.ui:63
 msgctxt "shortcut window"
 msgid "Quit"
 msgstr "Вийти з програми"
 
-#: data/resources/gtk/help-overlay.ui:76
+#: data/resources/shortcuts-dialog.ui:71
 msgctxt "shortcut window"
 msgid "Navigate Images"
 msgstr "Навігація зображеннями"
 
-#: data/resources/gtk/help-overlay.ui:80 data/resources/gtk/help-overlay.ui:94
-#: data/resources/gtk/help-overlay.ui:235
-#: data/resources/gtk/help-overlay.ui:249
+#: data/resources/shortcuts-dialog.ui:75 data/resources/shortcuts-dialog.ui:89
 msgctxt "shortcut window"
 msgid "Next Image"
 msgstr "Наступне зображення"
 
-#: data/resources/gtk/help-overlay.ui:87 data/resources/gtk/help-overlay.ui:101
-#: data/resources/gtk/help-overlay.ui:242
-#: data/resources/gtk/help-overlay.ui:256
+#: data/resources/shortcuts-dialog.ui:82 data/resources/shortcuts-dialog.ui:96
 msgctxt "shortcut window"
 msgid "Previous Image"
 msgstr "Попереднє зображення"
 
-#: data/resources/gtk/help-overlay.ui:107
+#: data/resources/shortcuts-dialog.ui:102
 msgctxt "shortcut window"
 msgid "First Image"
 msgstr "Перше зображення"
 
-#: data/resources/gtk/help-overlay.ui:113
+#: data/resources/shortcuts-dialog.ui:108
 msgctxt "shortcut window"
 msgid "Last Image"
 msgstr "Останнє зображення"
 
-#: data/resources/gtk/help-overlay.ui:121
+#: data/resources/shortcuts-dialog.ui:116
 msgctxt "shortcut window"
 msgid "Rotate Image"
 msgstr "Обернути зображення"
 
-#: data/resources/gtk/help-overlay.ui:124
-#: data/resources/gtk/help-overlay.ui:274
-#: data/resources/gtk/help-overlay.ui:315
+#: data/resources/shortcuts-dialog.ui:119
+#: data/resources/shortcuts-dialog.ui:253
 msgctxt "shortcut window"
 msgid "Rotate Clockwise"
 msgstr "Обернути за годинниковою стрілкою"
 
-#: data/resources/gtk/help-overlay.ui:130
-#: data/resources/gtk/help-overlay.ui:280
-#: data/resources/gtk/help-overlay.ui:321
+#: data/resources/shortcuts-dialog.ui:125
+#: data/resources/shortcuts-dialog.ui:259
 msgctxt "shortcut window"
 msgid "Rotate Counterclockwise"
 msgstr "Обернути проти годинникової стрілки"
 
-#: data/resources/gtk/help-overlay.ui:138
+#: data/resources/shortcuts-dialog.ui:133
 msgctxt "shortcut window"
 msgid "Zoom Image"
 msgstr "Масштабувати зображення"
 
-#: data/resources/gtk/help-overlay.ui:141
-#: data/resources/gtk/help-overlay.ui:262
+#: data/resources/shortcuts-dialog.ui:136
 msgctxt "shortcut window"
 msgid "Zoom In"
 msgstr "Збільшити"
 
-#: data/resources/gtk/help-overlay.ui:147
-#: data/resources/gtk/help-overlay.ui:268
+#: data/resources/shortcuts-dialog.ui:142
 msgctxt "shortcut window"
 msgid "Zoom Out"
 msgstr "Зменшити"
 
-#: data/resources/gtk/help-overlay.ui:153
+#: data/resources/shortcuts-dialog.ui:148
 msgctxt "shortcut window"
 msgid "Best Fit"
 msgstr "Найкраще заповнення"
 
-#: data/resources/gtk/help-overlay.ui:159
+#: data/resources/shortcuts-dialog.ui:154
 msgctxt "shortcut window"
 msgid "Original Scale"
 msgstr "Початковий масштаб"
 
-#: data/resources/gtk/help-overlay.ui:165
+#: data/resources/shortcuts-dialog.ui:160
 msgctxt "shortcut window"
 msgid "200% Scale"
 msgstr "Масштаб 200%"
 
-#: data/resources/gtk/help-overlay.ui:173
+#: data/resources/shortcuts-dialog.ui:168
 msgctxt "shortcut window"
 msgid "Pan View"
 msgstr "Панорамування зображення"
 
-#: data/resources/gtk/help-overlay.ui:176
+#: data/resources/shortcuts-dialog.ui:171
 msgctxt "shortcut window"
 msgid "Pan Left"
 msgstr "Панорамування ліворуч"
 
-#: data/resources/gtk/help-overlay.ui:182
+#: data/resources/shortcuts-dialog.ui:177
 msgctxt "shortcut window"
 msgid "Pan Right"
 msgstr "Панорамування праворуч"
 
-#: data/resources/gtk/help-overlay.ui:188
+#: data/resources/shortcuts-dialog.ui:183
 msgctxt "shortcut window"
 msgid "Pan Up"
 msgstr "Панорамування вгору"
 
-#: data/resources/gtk/help-overlay.ui:194
+#: data/resources/shortcuts-dialog.ui:189
 msgctxt "shortcut window"
 msgid "Pan Down"
 msgstr "Панорамування вниз"
 
-#: data/resources/gtk/help-overlay.ui:202
+#: data/resources/shortcuts-dialog.ui:197
 msgctxt "shortcut window"
 msgid "View"
 msgstr "Переглянути"
 
-#: data/resources/gtk/help-overlay.ui:205
+#: data/resources/shortcuts-dialog.ui:200
 msgctxt "shortcut window"
 msgid "Toggle Fullscreen"
 msgstr "Перемикач повноекранного режиму"
 
-#: data/resources/gtk/help-overlay.ui:211
+#: data/resources/shortcuts-dialog.ui:206
 msgctxt "shortcut window"
 msgid "Leave Fullscreen"
 msgstr "Вийти з повноекранного режиму"
 
-#: data/resources/gtk/help-overlay.ui:217
+#: data/resources/shortcuts-dialog.ui:212
 msgctxt "shortcut window"
 msgid "Toggle Image Properties"
 msgstr "Увімкнути або вимкнути показ панелі властивостей зображень"
 
-#: data/resources/gtk/help-overlay.ui:223
+#: data/resources/shortcuts-dialog.ui:218
 msgctxt "shortcut window"
 msgid "Show Main Menu"
 msgstr "Показати головне меню"
 
-#: data/resources/gtk/help-overlay.ui:231
-msgctxt "shortcut window"
-msgid "Gestures"
-msgstr "Жести"
-
-#: data/resources/gtk/help-overlay.ui:288
+#: data/resources/shortcuts-dialog.ui:226
 msgctxt "shortcut window"
 msgid "Editing"
 msgstr "Редагування"
 
-#: data/resources/gtk/help-overlay.ui:291
+#: data/resources/shortcuts-dialog.ui:229
 msgctxt "shortcut window"
 msgid "Open Editing View"
 msgstr "Відкрити панель редагування"
 
-#: data/resources/gtk/help-overlay.ui:297
+#: data/resources/shortcuts-dialog.ui:235
 msgctxt "shortcut window"
 msgid "Replace Original"
 msgstr "Замінити початковий"
 
-#: data/resources/gtk/help-overlay.ui:303
+#: data/resources/shortcuts-dialog.ui:241
 msgctxt "shortcut window"
 msgid "Save As"
 msgstr "Зберегти із новою назвою"
 
-#: data/resources/gtk/help-overlay.ui:309
+#: data/resources/shortcuts-dialog.ui:247
 msgctxt "shortcut window"
 msgid "Cancel"
 msgstr "Скасувати"
 
-#: data/resources/gtk/help-overlay.ui:327
+#: data/resources/shortcuts-dialog.ui:265
 msgctxt "shortcut window"
 msgid "Mirror Horizontally"
 msgstr "Віддзеркалити горизонтально"
 
-#: data/resources/gtk/help-overlay.ui:333
+#: data/resources/shortcuts-dialog.ui:271
 msgctxt "shortcut window"
 msgid "Mirror Vertically"
 msgstr "Віддзеркалити вертикально"
 
-#: data/resources/gtk/help-overlay.ui:339
+#: data/resources/shortcuts-dialog.ui:277
 msgctxt "shortcut window"
 msgid "Apply Crop"
 msgstr "Застосувати обрізання"
@@ -475,9 +447,8 @@ msgstr "Скасувати зміни на цій панелі перегляд�
 msgid "Crop Selection"
 msgstr "Обрізати за позначеним"
 
-#. Translators: Filename suffix
 #. Translators: Filename suffix, {} is replaced by a number
-#: src/widgets/edit_window.rs:196 src/widgets/edit_window.rs:199
+#: src/widgets/edit_window.rs:195
 #, rust-format
 msgid " (Edited)"
 msgid_plural " (Edited {})"
@@ -486,23 +457,23 @@ msgstr[1] " (редаговано {})"
 msgstr[2] " (редаговано {})"
 msgstr[3] " (редаговано {})"
 
-#: src/widgets/edit_window.rs:294 src/widgets/edit_window.rs:324
+#: src/widgets/edit_window.rs:289 src/widgets/edit_window.rs:315
 msgid "Failed to save image."
 msgstr "Спроба збереження зображення була невдалою."
 
-#: src/widgets/edit_window.rs:354
+#: src/widgets/edit_window.rs:343
 msgid "Editing Image"
 msgstr "Редагування зображення"
 
-#: src/widgets/edit_window.rs:371
+#: src/widgets/edit_window.rs:360
 msgid "Failed to edit image."
 msgstr "Не вдалося внести зміни до зображення."
 
-#: src/widgets/edit_window.rs:381 src/widgets/edit_window.rs:404
+#: src/widgets/edit_window.rs:370 src/widgets/edit_window.rs:393
 msgid "Failed to Save Image"
 msgstr "Спроба збереження зображення була невдалою"
 
-#: src/widgets/edit_window.rs:387
+#: src/widgets/edit_window.rs:376
 msgid "Saving Image"
 msgstr "Збереження зображення"
 
@@ -592,7 +563,6 @@ msgstr "Недостатньо вільної пам'яті для завант�
 
 #: src/widgets/image_page.rs:267
 #, rust-format
-#| msgid "Failed to read image file information"
 msgid "Failed to load image file: {}"
 msgstr "Не вдалось прочитати відомості щодо файла зображення: {}"
 
@@ -696,40 +666,40 @@ msgstr "усі файли"
 msgid "Open Image"
 msgstr "Відкрити зображення"
 
-#: src/widgets/image_window.rs:633
+#: src/widgets/image_window.rs:632
 msgid "Image copied to clipboard"
 msgstr "Зображення скопійовано до буфера обміну"
 
-#: src/widgets/image_window.rs:654
+#: src/widgets/image_window.rs:653
 msgid "Image moved to trash"
 msgstr "Зображення пересунуто до смітника"
 
-#: src/widgets/image_window.rs:655
+#: src/widgets/image_window.rs:654
 msgid "Undo"
 msgstr "Скасувати"
 
-#: src/widgets/image_window.rs:685
+#: src/widgets/image_window.rs:684
 msgid "Failed to move image to trash"
 msgstr "Не вдалося пересунути зображення до смітника"
 
-#: src/widgets/image_window.rs:709
+#: src/widgets/image_window.rs:708
 msgid "Permanently Delete Image?"
 msgstr "Остаточно вилучити зображення?"
 
-#: src/widgets/image_window.rs:711
+#: src/widgets/image_window.rs:710
 #, rust-format
 msgid "After deleting the image “{}” it will be permanently lost."
 msgstr "Після вилучення зображення «{}» його не можна буде відновити."
 
-#: src/widgets/image_window.rs:719
+#: src/widgets/image_window.rs:718
 msgid "Cancel"
 msgstr "Скасувати"
 
-#: src/widgets/image_window.rs:720
+#: src/widgets/image_window.rs:719
 msgid "Delete"
 msgstr "Вилучити"
 
-#: src/widgets/image_window.rs:731
+#: src/widgets/image_window.rs:730
 msgid "Failed to delete image"
 msgstr "Не вдалося вилучити зображення"
 
@@ -770,7 +740,6 @@ msgid "Edit Image"
 msgstr "Редагувати зображення"
 
 #: src/widgets/image_window.ui:220
-#| msgid "View Images"
 msgid "View and Edit Images"
 msgstr "Перегляд і редагування зображень"
 
@@ -823,19 +792,19 @@ msgstr "пк"
 msgid "Print “{}”"
 msgstr "Надрукувати «{}»"
 
-#: src/widgets/print.rs:479
+#: src/widgets/print.rs:477
 msgid "Continue…"
 msgstr "Продовжити…"
 
-#: src/widgets/print.rs:480
+#: src/widgets/print.rs:478
 msgid "Print Image"
 msgstr "Надрукувати зображення"
 
-#: src/widgets/print.rs:799
+#: src/widgets/print.rs:797
 msgid "_Scale"
 msgstr "_Масштаб"
 
-#: src/widgets/print.rs:802
+#: src/widgets/print.rs:800
 msgid "_Width"
 msgstr "_Ширина"
 
@@ -996,9 +965,30 @@ msgstr "Фокусна відстань"
 msgid "Maker, Model"
 msgstr "Виробник, модель"
 
-#: src/widgets/window.rs:212
+#: src/widgets/window.rs:206
 msgid "Show Details"
 msgstr "Показати подробиці"
+
+#~ msgid "Browse through your images and inspect their metadata with:"
+#~ msgstr ""
+#~ "Здійснюйте навігацію вашими зображеннями і переглядайте їхні метадані за "
+#~ "допомогою:"
+
+#~ msgid "Fast GPU accelerated image rendering"
+#~ msgstr "Швидкої обробка зображення за допомогою графічного процесора"
+
+#~ msgid "Tiled rendering for vector graphics"
+#~ msgstr "Плиткової обробки для векторної графіки"
+
+#~ msgid "Extendable and sandboxed image decoding"
+#~ msgstr "Придатного до розширення та ізольоване декодування зображень"
+
+#~ msgid "Accessible presentation of the most important metadata."
+#~ msgstr "Доступного представлення найважливіших метаданих"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Gestures"
+#~ msgstr "Жести"
 
 #~ msgid "{} %"
 #~ msgstr "{} %"
