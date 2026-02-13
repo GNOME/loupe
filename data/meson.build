@@ -10,6 +10,7 @@ mime_types += [
   'image/png',
   'image/qoi',
   'image/tiff',
+  'image/x-jp2-codestream',
   # .ico
   'image/vnd.microsoft.icon',
   'image/webp',
