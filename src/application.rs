@@ -169,7 +169,8 @@ impl LpApplication {
                                                 app_clone.quit();
                                             }
                                             "save" => {
-                                                edit_window_clone.save_as();
+                                                edit_window_clone
+                                                    .save_as_and_quit(app_clone.clone());
                                             }
                                             _ => {}
                                         }

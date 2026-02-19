@@ -25,6 +25,7 @@ use glycin::Operations;
 
 use super::LpImage;
 use super::edit::LpEditCrop;
+use crate::LpApplication;
 use crate::deps::*;
 use crate::util::ErrorType;
 use crate::util::gettext::*;
@@ -489,12 +490,15 @@ impl LpEditWindow {
         self.imp().is_save_sensitive()
     }
 
-    pub fn save_as(&self) {
+    pub fn save_as_and_quit(&self, app: LpApplication) {
         glib::spawn_future_local(glib::clone!(
             #[weak(rename_to=win)]
             self,
+            #[strong]
+            app,
             async move {
                 win.imp().save_overwrite().await;
+                app.quit()
             }
         ));
     }

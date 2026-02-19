@@ -168,6 +168,13 @@ impl LpWindow {
         self.set_fullscreened(fullscreen);
     }
 
+    pub fn edit_window(&self) -> Option<LpEditWindow> {
+        self.imp()
+            .edit_window_child
+            .child()
+            .and_then(|w| w.downcast::<LpEditWindow>().ok())
+    }
+
     pub fn resize_default(&self) {
         let imp = self.imp();
 
@@ -266,13 +273,6 @@ impl LpWindow {
         } else {
             tracing::error!("Can't open image editor since no current image exists");
         }
-    }
-
-    pub fn edit_window(&self) -> Option<LpEditWindow> {
-        self.imp()
-            .edit_window_child
-            .child()
-            .and_then(|w| w.downcast::<LpEditWindow>().ok())
     }
 
     pub fn image_view(&self) -> LpImageView {
