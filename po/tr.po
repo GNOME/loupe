@@ -2,16 +2,16 @@
 # Copyright (C) 2023-2025 Loupe's COPYRIGHT HOLDER
 # This file is distributed under the same license as the Loupe package.
 #
-# Sabri Ünal <yakushabb@gmail.com>, 2023-2025.
-# Emin Tufan Çetin <etcetin@gmail.com>, 2023-2025.
+# Sabri Ünal <yakushabb@gmail.com>, 2023-2026.
+# Emin Tufan Çetin <etcetin@gmail.com>, 2023-2026.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2025-12-23 22:09+0000\n"
-"PO-Revision-Date: 2025-12-29 02:40+0300\n"
-"Last-Translator: Sabri Ünal <yakushabb@gmail.com>\n"
+"POT-Creation-Date: 2026-01-30 22:01+0000\n"
+"PO-Revision-Date: 2026-02-26 08:00+0300\n"
+"Last-Translator: etcetin@gmail@gmail.com>\n"
 "Language-Team: Turkish <takim@gnome.org.tr>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
@@ -48,251 +48,226 @@ msgid "The GNOME Project"
 msgstr "GNOME Projesi"
 
 #: data/org.gnome.Loupe.metainfo.xml.in.in:15
-msgid "Browse through your images and inspect their metadata with:"
-msgstr "Resimlerinize göz atın ve üst verilerini şunlarla inceleyin:"
+msgid ""
+"Explore images, view their metadata, and make quick edits by cropping, "
+"rotating, or flipping them."
+msgstr ""
+"Resimlere göz at, üst verilerini görüntüle; kırpma, döndürme ya da "
+"çevirme gibi hızlı düzenlemeler yap."
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:17
-msgid "Fast GPU accelerated image rendering"
-msgstr "Hızlı, GPU hızlandırmalı resim sahneleme"
-
-#: data/org.gnome.Loupe.metainfo.xml.in.in:18
-msgid "Tiled rendering for vector graphics"
-msgstr "Vektör grafikler için bölünmüş sahneleme"
-
-#: data/org.gnome.Loupe.metainfo.xml.in.in:19
-msgid "Extendable and sandboxed image decoding"
-msgstr "Genişletilebilir ve yalıtılmış resim çözme"
-
-#: data/org.gnome.Loupe.metainfo.xml.in.in:20
-msgid "Accessible presentation of the most important metadata."
-msgstr "Çoğu önemli üst verinin erişilebilir gösterimi."
-
-#: data/resources/gtk/help-overlay.ui:11
+#: data/resources/shortcuts-dialog.ui:6
 msgctxt "shortcut window"
 msgid "General Shortcuts"
 msgstr "Genel Kısayollar"
 
-#: data/resources/gtk/help-overlay.ui:14
+#: data/resources/shortcuts-dialog.ui:9
 msgctxt "shortcut window"
 msgid "Copy Image or Selected Text to Clipboard"
 msgstr "Resmi Ya Da Seçili Metni Panoya Kopyala"
 
-#: data/resources/gtk/help-overlay.ui:20
+#: data/resources/shortcuts-dialog.ui:15
 msgctxt "shortcut window"
 msgid "Move Image to Trash"
 msgstr "Resmi Çöpe Taşı"
 
-#: data/resources/gtk/help-overlay.ui:26
+#: data/resources/shortcuts-dialog.ui:21
 msgctxt "shortcut window"
 msgid "Permanently Delete Image"
 msgstr "Resmi Kalıcı Olarak Sil"
 
-#: data/resources/gtk/help-overlay.ui:32
+#: data/resources/shortcuts-dialog.ui:27
 msgctxt "shortcut window"
 msgid "Open Image with Other App"
 msgstr "Resmi Başka Uygulamayla Aç"
 
-#: data/resources/gtk/help-overlay.ui:38
+#: data/resources/shortcuts-dialog.ui:33
 msgctxt "shortcut window"
 msgid "Set as Background"
 msgstr "Arka Plan Olarak Ayarla"
 
-#: data/resources/gtk/help-overlay.ui:44
+#: data/resources/shortcuts-dialog.ui:39
 msgctxt "shortcut window"
 msgid "New Window"
 msgstr "Yeni Pencere"
 
-#: data/resources/gtk/help-overlay.ui:50
+#: data/resources/shortcuts-dialog.ui:45
 msgctxt "shortcut window"
 msgid "Open Help"
 msgstr "Yardımı Aç"
 
-#: data/resources/gtk/help-overlay.ui:56
+#: data/resources/shortcuts-dialog.ui:51
 msgctxt "shortcut window"
 msgid "Show Keyboard Shortcuts"
 msgstr "Klavye Kısayollarını Göster"
 
-#: data/resources/gtk/help-overlay.ui:62
+#: data/resources/shortcuts-dialog.ui:57
 msgctxt "shortcut window"
 msgid "Close Window"
 msgstr "Pencereyi Kapat"
 
-#: data/resources/gtk/help-overlay.ui:68
+#: data/resources/shortcuts-dialog.ui:63
 msgctxt "shortcut window"
 msgid "Quit"
 msgstr "Çık"
 
-#: data/resources/gtk/help-overlay.ui:76
+#: data/resources/shortcuts-dialog.ui:71
 msgctxt "shortcut window"
 msgid "Navigate Images"
 msgstr "Resimlerde Gezin"
 
-#: data/resources/gtk/help-overlay.ui:80 data/resources/gtk/help-overlay.ui:94
-#: data/resources/gtk/help-overlay.ui:235
-#: data/resources/gtk/help-overlay.ui:249
+#: data/resources/shortcuts-dialog.ui:75 data/resources/shortcuts-dialog.ui:89
 msgctxt "shortcut window"
 msgid "Next Image"
 msgstr "Sonraki Resim"
 
-#: data/resources/gtk/help-overlay.ui:87 data/resources/gtk/help-overlay.ui:101
-#: data/resources/gtk/help-overlay.ui:242
-#: data/resources/gtk/help-overlay.ui:256
+#: data/resources/shortcuts-dialog.ui:82 data/resources/shortcuts-dialog.ui:96
 msgctxt "shortcut window"
 msgid "Previous Image"
 msgstr "Önceki Resim"
 
-#: data/resources/gtk/help-overlay.ui:107
+#: data/resources/shortcuts-dialog.ui:102
 msgctxt "shortcut window"
 msgid "First Image"
 msgstr "İlk Resim"
 
-#: data/resources/gtk/help-overlay.ui:113
+#: data/resources/shortcuts-dialog.ui:108
 msgctxt "shortcut window"
 msgid "Last Image"
 msgstr "Son Resim"
 
-#: data/resources/gtk/help-overlay.ui:121
+#: data/resources/shortcuts-dialog.ui:116
 msgctxt "shortcut window"
 msgid "Rotate Image"
 msgstr "Resmi Döndür"
 
-#: data/resources/gtk/help-overlay.ui:124
-#: data/resources/gtk/help-overlay.ui:274
-#: data/resources/gtk/help-overlay.ui:315
+#: data/resources/shortcuts-dialog.ui:119
+#: data/resources/shortcuts-dialog.ui:253
 msgctxt "shortcut window"
 msgid "Rotate Clockwise"
 msgstr "Saat Yönünde Döndür"
 
-#: data/resources/gtk/help-overlay.ui:130
-#: data/resources/gtk/help-overlay.ui:280
-#: data/resources/gtk/help-overlay.ui:321
+#: data/resources/shortcuts-dialog.ui:125
+#: data/resources/shortcuts-dialog.ui:259
 msgctxt "shortcut window"
 msgid "Rotate Counterclockwise"
 msgstr "Saat Yönünün Tersine Döndür"
 
-#: data/resources/gtk/help-overlay.ui:138
+#: data/resources/shortcuts-dialog.ui:133
 msgctxt "shortcut window"
 msgid "Zoom Image"
 msgstr "Resim Yakınlaştırma"
 
-#: data/resources/gtk/help-overlay.ui:141
-#: data/resources/gtk/help-overlay.ui:262
+#: data/resources/shortcuts-dialog.ui:136
 msgctxt "shortcut window"
 msgid "Zoom In"
 msgstr "Yakınlaştır"
 
-#: data/resources/gtk/help-overlay.ui:147
-#: data/resources/gtk/help-overlay.ui:268
+#: data/resources/shortcuts-dialog.ui:142
 msgctxt "shortcut window"
 msgid "Zoom Out"
 msgstr "Uzaklaştır"
 
-#: data/resources/gtk/help-overlay.ui:153
+#: data/resources/shortcuts-dialog.ui:148
 msgctxt "shortcut window"
 msgid "Best Fit"
 msgstr "En Uygun"
 
-#: data/resources/gtk/help-overlay.ui:159
+#: data/resources/shortcuts-dialog.ui:154
 msgctxt "shortcut window"
 msgid "Original Scale"
 msgstr "Özgün Ölçekleme"
 
-#: data/resources/gtk/help-overlay.ui:165
+#: data/resources/shortcuts-dialog.ui:160
 msgctxt "shortcut window"
 msgid "200% Scale"
 msgstr "%200 Ölçekleme"
 
-#: data/resources/gtk/help-overlay.ui:173
+#: data/resources/shortcuts-dialog.ui:168
 msgctxt "shortcut window"
 msgid "Pan View"
 msgstr "Görünüm Kaydırma"
 
-#: data/resources/gtk/help-overlay.ui:176
+#: data/resources/shortcuts-dialog.ui:171
 msgctxt "shortcut window"
 msgid "Pan Left"
 msgstr "Sola Kaydır"
 
-#: data/resources/gtk/help-overlay.ui:182
+#: data/resources/shortcuts-dialog.ui:177
 msgctxt "shortcut window"
 msgid "Pan Right"
 msgstr "Sağa Kaydır"
 
-#: data/resources/gtk/help-overlay.ui:188
+#: data/resources/shortcuts-dialog.ui:183
 msgctxt "shortcut window"
 msgid "Pan Up"
 msgstr "Yukarı Kaydır"
 
-#: data/resources/gtk/help-overlay.ui:194
+#: data/resources/shortcuts-dialog.ui:189
 msgctxt "shortcut window"
 msgid "Pan Down"
 msgstr "Aşağı Kaydır"
 
-#: data/resources/gtk/help-overlay.ui:202
+#: data/resources/shortcuts-dialog.ui:197
 msgctxt "shortcut window"
 msgid "View"
 msgstr "Görünüm"
 
-#: data/resources/gtk/help-overlay.ui:205
+#: data/resources/shortcuts-dialog.ui:200
 msgctxt "shortcut window"
 msgid "Toggle Fullscreen"
 msgstr "Tam Ekranı Aç/Kapat"
 
-#: data/resources/gtk/help-overlay.ui:211
+#: data/resources/shortcuts-dialog.ui:206
 msgctxt "shortcut window"
 msgid "Leave Fullscreen"
 msgstr "Tam Ekrandan Çık"
 
-#: data/resources/gtk/help-overlay.ui:217
+#: data/resources/shortcuts-dialog.ui:212
 msgctxt "shortcut window"
 msgid "Toggle Image Properties"
 msgstr "Resim Özelliklerini Aç/Kapat"
 
-#: data/resources/gtk/help-overlay.ui:223
+#: data/resources/shortcuts-dialog.ui:218
 msgctxt "shortcut window"
 msgid "Show Main Menu"
 msgstr "Ana Menüyü Göster"
 
-#: data/resources/gtk/help-overlay.ui:231
-msgctxt "shortcut window"
-msgid "Gestures"
-msgstr "Hareketler"
-
-#: data/resources/gtk/help-overlay.ui:288
+#: data/resources/shortcuts-dialog.ui:226
 msgctxt "shortcut window"
 msgid "Editing"
 msgstr "Düzenleme"
 
-#: data/resources/gtk/help-overlay.ui:291
+#: data/resources/shortcuts-dialog.ui:229
 msgctxt "shortcut window"
 msgid "Open Editing View"
 msgstr "Düzenleme Görünümünü Aç"
 
-#: data/resources/gtk/help-overlay.ui:297
+#: data/resources/shortcuts-dialog.ui:235
 msgctxt "shortcut window"
 msgid "Replace Original"
 msgstr "Özgünü Değiştir"
 
-#: data/resources/gtk/help-overlay.ui:303
+#: data/resources/shortcuts-dialog.ui:241
 msgctxt "shortcut window"
 msgid "Save As"
 msgstr "Farklı Kaydet"
 
-#: data/resources/gtk/help-overlay.ui:309
+#: data/resources/shortcuts-dialog.ui:247
 msgctxt "shortcut window"
 msgid "Cancel"
 msgstr "İptal"
 
-#: data/resources/gtk/help-overlay.ui:327
+#: data/resources/shortcuts-dialog.ui:265
 msgctxt "shortcut window"
 msgid "Mirror Horizontally"
 msgstr "Yatay Aynala"
 
-#: data/resources/gtk/help-overlay.ui:333
+#: data/resources/shortcuts-dialog.ui:271
 msgctxt "shortcut window"
 msgid "Mirror Vertically"
 msgstr "Dikey Aynala"
 
-#: data/resources/gtk/help-overlay.ui:339
+#: data/resources/shortcuts-dialog.ui:277
 msgctxt "shortcut window"
 msgid "Apply Crop"
 msgstr "Kırpmayı Uygula"
@@ -477,31 +452,30 @@ msgstr "Bu Görünümdeki Değişiklikleri Geri Al"
 msgid "Crop Selection"
 msgstr "Seçimi Kırp"
 
-#. Translators: Filename suffix
 #. Translators: Filename suffix, {} is replaced by a number
-#: src/widgets/edit_window.rs:196 src/widgets/edit_window.rs:199
+#: src/widgets/edit_window.rs:195
 #, rust-format
 msgid " (Edited)"
 msgid_plural " (Edited {})"
 msgstr[0] " (Düzenlendi {})"
 
-#: src/widgets/edit_window.rs:294 src/widgets/edit_window.rs:324
+#: src/widgets/edit_window.rs:289 src/widgets/edit_window.rs:315
 msgid "Failed to save image."
 msgstr "Resim kaydedilemedi."
 
-#: src/widgets/edit_window.rs:354
+#: src/widgets/edit_window.rs:343
 msgid "Editing Image"
 msgstr "Resim Düzenleniyor"
 
-#: src/widgets/edit_window.rs:371
+#: src/widgets/edit_window.rs:360
 msgid "Failed to edit image."
 msgstr "Resim düzenlenemedi."
 
-#: src/widgets/edit_window.rs:381 src/widgets/edit_window.rs:404
+#: src/widgets/edit_window.rs:370 src/widgets/edit_window.rs:393
 msgid "Failed to Save Image"
 msgstr "Resim Kaydedilemedi"
 
-#: src/widgets/edit_window.rs:387
+#: src/widgets/edit_window.rs:376
 msgid "Saving Image"
 msgstr "Resim Kaydediliyor"
 
@@ -677,15 +651,15 @@ msgstr "Özel Yakınlaştırma Düzeyi"
 msgid "Zoom to Specified Level"
 msgstr "Belirli Düzeye Yaklaş"
 
-#: src/widgets/image_window.rs:526
+#: src/widgets/image_window.rs:527
 msgid "Supported image formats"
 msgstr "Desteklenen resim biçimleri"
 
-#: src/widgets/image_window.rs:532
+#: src/widgets/image_window.rs:533
 msgid "All files"
 msgstr "Tüm dosyalar"
 
-#: src/widgets/image_window.rs:539
+#: src/widgets/image_window.rs:540
 msgid "Open Image"
 msgstr "Resim Aç"
 
@@ -815,19 +789,19 @@ msgstr "px"
 msgid "Print “{}”"
 msgstr "“{}” yazdır"
 
-#: src/widgets/print.rs:479
+#: src/widgets/print.rs:477
 msgid "Continue…"
 msgstr "Sürdür…"
 
-#: src/widgets/print.rs:480
+#: src/widgets/print.rs:478
 msgid "Print Image"
 msgstr "Resim Yazdır"
 
-#: src/widgets/print.rs:799
+#: src/widgets/print.rs:797
 msgid "_Scale"
 msgstr "_Ölçekle"
 
-#: src/widgets/print.rs:802
+#: src/widgets/print.rs:800
 msgid "_Width"
 msgstr "_Genişlik"
 
@@ -988,9 +962,28 @@ msgstr "Odak Uzaklığı"
 msgid "Maker, Model"
 msgstr "Üretici, Model"
 
-#: src/widgets/window.rs:212
+#: src/widgets/window.rs:206
 msgid "Show Details"
 msgstr "Ayrıntıları Göster"
+
+#~ msgid "Browse through your images and inspect their metadata with:"
+#~ msgstr "Resimlerinize göz atın ve üst verilerini şunlarla inceleyin:"
+
+#~ msgid "Fast GPU accelerated image rendering"
+#~ msgstr "Hızlı, GPU hızlandırmalı resim sahneleme"
+
+#~ msgid "Tiled rendering for vector graphics"
+#~ msgstr "Vektör grafikler için bölünmüş sahneleme"
+
+#~ msgid "Extendable and sandboxed image decoding"
+#~ msgstr "Genişletilebilir ve yalıtılmış resim çözme"
+
+#~ msgid "Accessible presentation of the most important metadata."
+#~ msgstr "Çoğu önemli üst verinin erişilebilir gösterimi."
+
+#~ msgctxt "shortcut window"
+#~ msgid "Gestures"
+#~ msgstr "Hareketler"
 
 #~ msgid "{} %"
 #~ msgstr "%{}"
