@@ -1,4 +1,4 @@
-// Copyright (c) 2023-2025 Sophie Herold
+// Copyright (c) 2023-2026 Sophie Herold
 // Copyright (c) 2023 Julian Hofer
 // Copyright (c) 2025 Mukul Joshi
 //

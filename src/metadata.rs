@@ -1,4 +1,4 @@
-// Copyright (c) 2022-2025 Sophie Herold
+// Copyright (c) 2022-2026 Sophie Herold
 // Copyright (c) 2025 Alexandros Kosiaris
 //
 // This program is free software: you can redistribute it and/or modify

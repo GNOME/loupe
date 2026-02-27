@@ -8,6 +8,7 @@
 // Copyright (c) 2024 Fina Wilke
 // Copyright (c) 2024 DaPigGuy
 // Copyright (c) 2024 James Frost
+// Copyright (c) 2025 Abhinandan Thakur
 // Copyright (c) 2025 pieterd
 //
 // This program is free software: you can redistribute it and/or modify

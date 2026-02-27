@@ -1,5 +1,5 @@
 // Copyright (c) 2020-2023 Christopher Davis
-// Copyright (c) 2022-2025 Sophie Herold
+// Copyright (c) 2022-2026 Sophie Herold
 // Copyright (c) 2022 Maximiliano Sandoval R
 // Copyright (c) 2023 FineFindus
 // Copyright (c) 2023 Huan Nguyen
