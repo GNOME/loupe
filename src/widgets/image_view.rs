@@ -847,7 +847,7 @@ impl LpImageView {
     pub async fn set_background(&self) -> anyhow::Result<()> {
         let uri = self
             .current_uri()
-            .and_then(|x| url::Url::parse(x.as_str()).ok())
+            .and_then(|x| ashpd::Uri::parse(x.as_str()).ok())
             .context("Invalid URL for background image")?;
         let native = self.native().context("View should have a GtkNative")?;
         let id = WindowIdentifier::from_native(&native).await;
