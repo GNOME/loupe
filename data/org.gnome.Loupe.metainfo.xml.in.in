@@ -68,7 +68,7 @@
   </categories>
 
   <releases>
-    <release version="50.beta" date="2026-01-30">
+    <release version="50.rc" date="2026-02-27">
       <description>
         <p>Support the JPEG 2000, XBM, and XPM image formats.</p>
       </description>
