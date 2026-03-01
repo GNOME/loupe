@@ -1,15 +1,15 @@
 # Hungarian translation for Loupe.
-# Copyright (C) 2023, 2024 Free Software Foundation, Inc.
+# Copyright (C) 2023, 2024, 2026 Free Software Foundation, Inc.
 # This file is distributed under the same license as the Loupe package.
 #
 # Balázs Meskó <mesko.balazs at fsf dot hu>, 2023, 2024.
-# Balázs Úr <ur.balazs at fsf dot hu>, 2023, 2024.
+# Balázs Úr <ur.balazs at fsf dot hu>, 2023, 2024, 2026.
 msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2024-05-11 10:03+0000\n"
-"PO-Revision-Date: 2024-05-19 10:30+0200\n"
+"POT-Creation-Date: 2024-04-09 20:53+0000\n"
+"PO-Revision-Date: 2026-03-01 14:36+0100\n"
 "Last-Translator: Balázs Úr <ur.balazs at fsf dot hu>\n"
 "Language-Team: Hungarian <openscope at fsf dot hu>\n"
 "Language: hu\n"
@@ -17,14 +17,14 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 23.08.4\n"
+"X-Generator: Lokalize 25.08.1\n"
 
-#: data/org.gnome.Loupe.desktop.in.in:3
+#: data/org.gnome.Loupe.desktop.in.in:2
 #: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:29 src/window.rs:881
 msgid "Image Viewer"
 msgstr "Képmegjelenítő"
 
-#: data/org.gnome.Loupe.desktop.in.in:11
+#: data/org.gnome.Loupe.desktop.in.in:10
 msgid "Picture;Graphics;Loupe;"
 msgstr "Fénykép;Kép;Grafika;Loupe;"
 
@@ -278,30 +278,32 @@ msgstr "Ny"
 
 #. Translators: Fractional exposure time (photography) in seconds
 #: src/metadata/mod.rs:262
-msgid "1\\u{2215}{}\\u{202F}s"
-msgstr "1\\u{2215}{}\\u{202F} mp"
+#, rust-format
+msgid "1∕{} s"
+msgstr "1∕{} mp"
 
 #. Translators: Exposure time (photography) in seconds
 #: src/metadata/mod.rs:270
-#| msgid "{}\\u{202F}mm"
-msgid "{}\\u{202F}s"
-msgstr "{}\\u{202F} mp"
+#, rust-format
+msgid "{} s"
+msgstr "{} mp"
 
 #. Translators: Unit for focal length in millimeters
 #: src/metadata/mod.rs:296
-msgid "{}\\u{202F}mm"
-msgstr "{}\\u{202F} mm"
+#, rust-format
+msgid "{} mm"
+msgstr "{} mm"
 
+#. / Returns localized date + time format
 #. Translators: This is the date and time format we use in metadata output etc.
 #. The format has to follow <https://docs.gtk.org/glib/method.DateTime.format.html>
 #. The default is already translated. Don't change if you are not sure what to
 #. use.
 #: src/util/mod.rs:37
-#, c-format
 msgid "%x %X"
 msgstr "%x %X"
 
-#: src/util/mod.rs:180 src/window.rs:702
+#: src/util/mod.rs:180
 msgid "Failed to restore image from trash"
 msgstr "Nem sikerült helyreállítani a képet a kukából"
 
@@ -406,11 +408,6 @@ msgstr "in"
 msgid "px"
 msgstr "képpont"
 
-#. Translators: {} is a placeholder for the filename
-#: src/widgets/print.rs:382
-msgid "Print “{}”"
-msgstr "„{}” nyomtatása"
-
 #: src/widgets/print.rs:803
 msgid "_Scale"
 msgstr "_Méretezés"
@@ -496,8 +493,9 @@ msgstr ", szürkeárnyalatos"
 
 #. Translators: Addition of bit size to format name
 #: src/widgets/properties_view.rs:248
-msgid ", {}\\u{202F}bit"
-msgstr ", {}\\u{202F} bites"
+#, rust-format
+msgid ", {} bit"
+msgstr ", {} bites"
 
 #: src/widgets/properties_view.rs:299
 msgid "Image Coordinates Copied"
@@ -601,6 +599,7 @@ msgid "Permanently Delete Image?"
 msgstr "Véglegesen törli a képet?"
 
 #: src/window.rs:744
+#, rust-format
 msgid "After deleting the image “{}” it will be permanently lost."
 msgstr "A(z) „{}” kép a törlése után véglegesen elvész."
 
