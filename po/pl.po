@@ -3,362 +3,340 @@
 # This file is distributed under the same license as the loupe package.
 # Piotr Drąg <piotrdrag@gmail.com>, 2023-2025.
 # Aviary.pl <community-poland@mozilla.org>, 2023-2025.
+# Daniel <wbcwknvstb@proton.me>, 2026.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: loupe\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2025-03-05 23:37+0000\n"
-"PO-Revision-Date: 2025-03-06 12:23+0100\n"
-"Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
-"Language-Team: Polish <community-poland@mozilla.org>\n"
+"POT-Creation-Date: 2026-02-27 20:03+0000\n"
+"PO-Revision-Date: 2026-03-07 06:39+0100\n"
+"Last-Translator: Daniel <wbcwknvstb@proton.me>, 2026.\n"
+"Language-Team: Polish\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
+"X-Generator: Gtranslator 49.0\n"
 
-#: data/org.gnome.Loupe.desktop.in.in:3
-#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:31
-#: src/widgets/image_window.rs:866
+#: data/org.gnome.Loupe.desktop.in.in:2
+#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:32
+#: src/widgets/image_window.rs:898
 msgid "Image Viewer"
 msgstr "Przeglądarka obrazów"
+
+#: data/org.gnome.Loupe.desktop.in.in:3
+#: data/org.gnome.Loupe.metainfo.xml.in.in:13
+msgid "View and edit images"
+msgstr "Przeglądanie i edytowanie obrazów"
 
 #: data/org.gnome.Loupe.desktop.in.in:11
 msgid "Picture;Graphics;Loupe;"
 msgstr ""
-"Obraz;Obrazy;Obrazek;Obrazki;Grafika;Grafiki;Przeglądarka obrazów;Zdjęcie;"
-"Zdjęcia;Fotografia;Fotografie;Loupe;"
+"Obraz;Obrazy;Obrazek;Obrazki;Grafika;Grafiki;Przeglądarka "
+"obrazów;Zdjęcie;Zdjęcia;Fotografia;Fotografie;Loupe;"
 
 #: data/org.gnome.Loupe.gschema.xml.in:6
 msgid "Show the image properties sidebar"
 msgstr "Wyświetlanie panelu bocznego właściwości obrazu"
 
 #. developer_name tag deprecated with Appstream 1.0
-#: data/org.gnome.Loupe.metainfo.xml.in.in:8 src/about.rs:34
+#: data/org.gnome.Loupe.metainfo.xml.in.in:8 src/about.rs:35
 msgid "The GNOME Project"
 msgstr "Projekt GNOME"
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:13
-msgid "View images"
-msgstr "Przeglądanie obrazów"
-
 #: data/org.gnome.Loupe.metainfo.xml.in.in:15
-msgid "Browse through your images and inspect their metadata with:"
-msgstr "Przeglądanie obrazów i ich metadanych z:"
-
-#: data/org.gnome.Loupe.metainfo.xml.in.in:17
-msgid "Fast GPU accelerated image rendering"
+msgid ""
+"Explore images, view their metadata, and make quick edits by cropping, "
+"rotating, or flipping them."
 msgstr ""
-"Szybkim wyświetlaniem obrazów przyspieszonym za pomocą karty graficznej,"
+"Przeglądaj obrazy, przeglądaj ich metadane i rób szybkie modyfikacje poprzez "
+"przycinanie, obracanie lub odwracanie."
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:18
-msgid "Tiled rendering for vector graphics"
-msgstr "Wyświetlaniem kafelkowym w przypadku grafik wektorowych,"
-
-#: data/org.gnome.Loupe.metainfo.xml.in.in:19
-msgid "Extendable and sandboxed image decoding"
-msgstr "Rozszerzalnym i zabezpieczonym dekodowaniem obrazów,"
-
-#: data/org.gnome.Loupe.metainfo.xml.in.in:20
-msgid "Accessible presentation of the most important metadata."
-msgstr "Przedstawieniem najważniejszych metadanych z ułatwionym dostępem."
-
-#: data/resources/gtk/help-overlay.ui:11
+#: data/resources/shortcuts-dialog.ui:6
 msgctxt "shortcut window"
 msgid "General Shortcuts"
 msgstr "Ogólne skróty"
 
-#: data/resources/gtk/help-overlay.ui:14
+#: data/resources/shortcuts-dialog.ui:9
 msgctxt "shortcut window"
 msgid "Copy Image or Selected Text to Clipboard"
 msgstr "Skopiowanie obrazu lub zaznaczonego tekstu do schowka"
 
-#: data/resources/gtk/help-overlay.ui:20
+#: data/resources/shortcuts-dialog.ui:15
 msgctxt "shortcut window"
 msgid "Move Image to Trash"
 msgstr "Przeniesienie obrazu do kosza"
 
-#: data/resources/gtk/help-overlay.ui:26
+#: data/resources/shortcuts-dialog.ui:21
 msgctxt "shortcut window"
 msgid "Permanently Delete Image"
 msgstr "Trwałe usunięcie obrazu"
 
-#: data/resources/gtk/help-overlay.ui:32
+#: data/resources/shortcuts-dialog.ui:27
 msgctxt "shortcut window"
 msgid "Open Image with Other App"
 msgstr "Otwarcie obrazu za pomocą innego programu"
 
-#: data/resources/gtk/help-overlay.ui:38
+#: data/resources/shortcuts-dialog.ui:33
 msgctxt "shortcut window"
 msgid "Set as Background"
 msgstr "Ustawienie jako tło"
 
-#: data/resources/gtk/help-overlay.ui:44
+#: data/resources/shortcuts-dialog.ui:39
 msgctxt "shortcut window"
 msgid "New Window"
 msgstr "Nowe okno"
 
-#: data/resources/gtk/help-overlay.ui:50
+#: data/resources/shortcuts-dialog.ui:45
 msgctxt "shortcut window"
 msgid "Open Help"
 msgstr "Otwarcie pomocy"
 
-#: data/resources/gtk/help-overlay.ui:56
+#: data/resources/shortcuts-dialog.ui:51
 msgctxt "shortcut window"
 msgid "Show Keyboard Shortcuts"
 msgstr "Wyświetlenie skrótów klawiszowych"
 
-#: data/resources/gtk/help-overlay.ui:62
+#: data/resources/shortcuts-dialog.ui:57
 msgctxt "shortcut window"
 msgid "Close Window"
 msgstr "Zamknięcie okna"
 
-#: data/resources/gtk/help-overlay.ui:68
+#: data/resources/shortcuts-dialog.ui:63
 msgctxt "shortcut window"
 msgid "Quit"
 msgstr "Zakończenie działania"
 
-#: data/resources/gtk/help-overlay.ui:76
+#: data/resources/shortcuts-dialog.ui:71
 msgctxt "shortcut window"
 msgid "Navigate Images"
 msgstr "Przechodzenie między obrazami"
 
-#: data/resources/gtk/help-overlay.ui:80 data/resources/gtk/help-overlay.ui:94
-#: data/resources/gtk/help-overlay.ui:235
-#: data/resources/gtk/help-overlay.ui:249
+#: data/resources/shortcuts-dialog.ui:75 data/resources/shortcuts-dialog.ui:89
 msgctxt "shortcut window"
 msgid "Next Image"
 msgstr "Następny obraz"
 
-#: data/resources/gtk/help-overlay.ui:87 data/resources/gtk/help-overlay.ui:101
-#: data/resources/gtk/help-overlay.ui:242
-#: data/resources/gtk/help-overlay.ui:256
+#: data/resources/shortcuts-dialog.ui:82 data/resources/shortcuts-dialog.ui:96
 msgctxt "shortcut window"
 msgid "Previous Image"
 msgstr "Poprzedni obraz"
 
-#: data/resources/gtk/help-overlay.ui:107
+#: data/resources/shortcuts-dialog.ui:102
 msgctxt "shortcut window"
 msgid "First Image"
 msgstr "Pierwszy obraz"
 
-#: data/resources/gtk/help-overlay.ui:113
+#: data/resources/shortcuts-dialog.ui:108
 msgctxt "shortcut window"
 msgid "Last Image"
 msgstr "Ostatni obraz"
 
-#: data/resources/gtk/help-overlay.ui:121
+#: data/resources/shortcuts-dialog.ui:116
 msgctxt "shortcut window"
 msgid "Rotate Image"
 msgstr "Obracanie obrazów"
 
-#: data/resources/gtk/help-overlay.ui:124
-#: data/resources/gtk/help-overlay.ui:274
-#: data/resources/gtk/help-overlay.ui:315
+#: data/resources/shortcuts-dialog.ui:119
+#: data/resources/shortcuts-dialog.ui:253
 msgctxt "shortcut window"
 msgid "Rotate Clockwise"
 msgstr "Obrócenie w prawo"
 
-#: data/resources/gtk/help-overlay.ui:130
-#: data/resources/gtk/help-overlay.ui:280
-#: data/resources/gtk/help-overlay.ui:321
+#: data/resources/shortcuts-dialog.ui:125
+#: data/resources/shortcuts-dialog.ui:259
 msgctxt "shortcut window"
 msgid "Rotate Counterclockwise"
 msgstr "Obrócenie w lewo"
 
-#: data/resources/gtk/help-overlay.ui:138
+#: data/resources/shortcuts-dialog.ui:133
 msgctxt "shortcut window"
 msgid "Zoom Image"
 msgstr "Powiększanie obrazów"
 
-#: data/resources/gtk/help-overlay.ui:141
-#: data/resources/gtk/help-overlay.ui:262
+#: data/resources/shortcuts-dialog.ui:136
 msgctxt "shortcut window"
 msgid "Zoom In"
 msgstr "Powiększenie"
 
-#: data/resources/gtk/help-overlay.ui:147
-#: data/resources/gtk/help-overlay.ui:268
+#: data/resources/shortcuts-dialog.ui:142
 msgctxt "shortcut window"
 msgid "Zoom Out"
 msgstr "Pomniejszenie"
 
-#: data/resources/gtk/help-overlay.ui:153
+#: data/resources/shortcuts-dialog.ui:148
 msgctxt "shortcut window"
 msgid "Best Fit"
 msgstr "Dopasowanie"
 
-#: data/resources/gtk/help-overlay.ui:159
+#: data/resources/shortcuts-dialog.ui:154
 msgctxt "shortcut window"
 msgid "Original Scale"
 msgstr "Rozmiar oryginalny"
 
-#: data/resources/gtk/help-overlay.ui:165
+#: data/resources/shortcuts-dialog.ui:160
 msgctxt "shortcut window"
 msgid "200% Scale"
 msgstr "Powiększenie o 200%"
 
-#: data/resources/gtk/help-overlay.ui:173
+#: data/resources/shortcuts-dialog.ui:168
 msgctxt "shortcut window"
 msgid "Pan View"
 msgstr "Przesuwanie widoku"
 
-#: data/resources/gtk/help-overlay.ui:176
+#: data/resources/shortcuts-dialog.ui:171
 msgctxt "shortcut window"
 msgid "Pan Left"
 msgstr "Przesunięcie w lewo"
 
-#: data/resources/gtk/help-overlay.ui:182
+#: data/resources/shortcuts-dialog.ui:177
 msgctxt "shortcut window"
 msgid "Pan Right"
 msgstr "Przesunięcie w prawo"
 
-#: data/resources/gtk/help-overlay.ui:188
+#: data/resources/shortcuts-dialog.ui:183
 msgctxt "shortcut window"
 msgid "Pan Up"
 msgstr "Przesunięcie w górę"
 
-#: data/resources/gtk/help-overlay.ui:194
+#: data/resources/shortcuts-dialog.ui:189
 msgctxt "shortcut window"
 msgid "Pan Down"
 msgstr "Przesunięcie w dół"
 
-#: data/resources/gtk/help-overlay.ui:202
+#: data/resources/shortcuts-dialog.ui:197
 msgctxt "shortcut window"
 msgid "View"
 msgstr "Widok"
 
-#: data/resources/gtk/help-overlay.ui:205
+#: data/resources/shortcuts-dialog.ui:200
 msgctxt "shortcut window"
 msgid "Toggle Fullscreen"
 msgstr "Przełączenie pełnego ekranu"
 
-#: data/resources/gtk/help-overlay.ui:211
+#: data/resources/shortcuts-dialog.ui:206
 msgctxt "shortcut window"
 msgid "Leave Fullscreen"
 msgstr "Opuszczenie pełnego ekranu"
 
-#: data/resources/gtk/help-overlay.ui:217
+#: data/resources/shortcuts-dialog.ui:212
 msgctxt "shortcut window"
 msgid "Toggle Image Properties"
 msgstr "Przełączenie właściwości obrazu"
 
-#: data/resources/gtk/help-overlay.ui:223
+#: data/resources/shortcuts-dialog.ui:218
 msgctxt "shortcut window"
 msgid "Show Main Menu"
 msgstr "Wyświetlenie menu głównego"
 
-#: data/resources/gtk/help-overlay.ui:231
-msgctxt "shortcut window"
-msgid "Gestures"
-msgstr "Gesty"
-
-#: data/resources/gtk/help-overlay.ui:288
+#: data/resources/shortcuts-dialog.ui:226
 msgctxt "shortcut window"
 msgid "Editing"
 msgstr "Modyfikowanie"
 
-#: data/resources/gtk/help-overlay.ui:291
+#: data/resources/shortcuts-dialog.ui:229
 msgctxt "shortcut window"
 msgid "Open Editing View"
 msgstr "Otwarcie widoku modyfikowania"
 
-#: data/resources/gtk/help-overlay.ui:297
+#: data/resources/shortcuts-dialog.ui:235
 msgctxt "shortcut window"
 msgid "Replace Original"
 msgstr "Zastąpienie oryginału"
 
-#: data/resources/gtk/help-overlay.ui:303
+#: data/resources/shortcuts-dialog.ui:241
 msgctxt "shortcut window"
 msgid "Save As"
 msgstr "Zapisanie jako"
 
-#: data/resources/gtk/help-overlay.ui:309
+#: data/resources/shortcuts-dialog.ui:247
 msgctxt "shortcut window"
 msgid "Cancel"
 msgstr "Anulowanie"
 
-#: data/resources/gtk/help-overlay.ui:327
+#: data/resources/shortcuts-dialog.ui:265
 msgctxt "shortcut window"
 msgid "Mirror Horizontally"
 msgstr "Odwrócenie poziomo"
 
-#: data/resources/gtk/help-overlay.ui:333
+#: data/resources/shortcuts-dialog.ui:271
 msgctxt "shortcut window"
 msgid "Mirror Vertically"
 msgstr "Odwrócenie pionowo"
 
-#: data/resources/gtk/help-overlay.ui:339
+#: data/resources/shortcuts-dialog.ui:277
 msgctxt "shortcut window"
 msgid "Apply Crop"
 msgstr "Zastosowanie kadrowania"
 
 #. Translators: Replace "translator-credits" with your names, one name per line
-#: src/about.rs:43
+#: src/about.rs:45
 msgid "translator-credits"
 msgstr ""
 "Piotr Drąg <piotrdrag@gmail.com>, 2023-2025\n"
-"Aviary.pl <community-poland@mozilla.org>, 2023-2025"
+"Aviary.pl <community-poland@mozilla.org>, 2023-2025\n"
+"Daniel <wbcwknvstb@proton.me>, 2026"
 
-#: src/about.rs:44
+#: src/about.rs:46
 msgid "Copyright © 2020–2024 Christopher Davis et al."
 msgstr "Copyright © 2020-2024 Christopher Davis i inni"
 
-#: src/file_model.rs:180
+#: src/file_model.rs:211
 msgid "Could not list other files in directory."
 msgstr "Nie można wyświetlić listy pozostałych plików w katalogu."
 
 #. Translators: Display of the f-number <https://en.wikipedia.org/wiki/F-number>. {} will be replaced with the number
-#: src/metadata.rs:253
+#: src/metadata.rs:256
 msgid "\\u{192}\\u{2215}{}"
 msgstr "\\u{192}\\u{2215}{}"
 
 #. Translators: Fractional exposure time (photography) in seconds
-#: src/metadata.rs:266
+#: src/metadata.rs:269
 msgid "1\\u{2215}{}\\u{202F}s"
 msgstr "1\\u{2215}{}\\u{202F}s"
 
 #. Translators: Exposure time (photography) in seconds
-#: src/metadata.rs:274
+#: src/metadata.rs:277
 msgid "{}\\u{202F}s"
 msgstr "{}\\u{202F}s"
 
-#: src/metadata.rs:288
+#: src/metadata.rs:291
 msgid "{}\\u{202F}mm"
 msgstr "{}\\u{202F}mm"
 
 #. Translators: short for "north" in GPS coordinate
-#: src/metadata.rs:328
+#: src/metadata.rs:331
 msgid "N"
 msgstr "N"
 
 #. Translators: short for "south" in GPS coordinate
-#: src/metadata.rs:332
+#: src/metadata.rs:335
 msgid "S"
 msgstr "S"
 
 #. Translators: short for "east" in GPS coordinate
-#: src/metadata.rs:341
+#: src/metadata.rs:344
 msgid "E"
 msgstr "E"
 
 #. Translators: short for "west" in GPS coordinate
-#: src/metadata.rs:345
+#: src/metadata.rs:348
 msgid "W"
 msgstr "W"
 
+#. / Returns localized date + time format
 #. Translators: This is the date and time format we use in metadata output etc.
 #. The format has to follow <https://docs.gtk.org/glib/method.DateTime.format.html>
 #. The default is already translated. Don't change if you are not sure what to
 #. use.
 #: src/util.rs:39
-#, c-format
 msgid "%x %X"
 msgstr "%x %X"
 
-#: src/util.rs:182 src/widgets/image_window.rs:638
+#: src/util.rs:182
 msgid "Failed to restore image from trash"
 msgstr "Przywrócenie obrazu z kosza się nie powiodło"
 
@@ -366,7 +344,7 @@ msgstr "Przywrócenie obrazu z kosza się nie powiodło"
 msgid "Drop Image to View"
 msgstr "Przeciągnięcie obrazu go wyświetli"
 
-#: src/widgets/edit/crop.rs:360
+#: src/widgets/edit/crop.rs:363
 msgid "Failed to Edit Image"
 msgstr "Modyfikacja obrazu się nie powiodła"
 
@@ -475,9 +453,9 @@ msgstr "Cofa zmiany w tym widoku"
 msgid "Crop Selection"
 msgstr "Wybór kadrowania"
 
-#. Translators: Filename suffix
 #. Translators: Filename suffix, {} is replaced by a number
-#: src/widgets/edit_window.rs:192 src/widgets/edit_window.rs:195
+#: src/widgets/edit_window.rs:196
+#, rust-format
 msgid " (Edited)"
 msgid_plural " (Edited {})"
 msgstr[0] " (zmodyfikowane)"
@@ -488,19 +466,19 @@ msgstr[2] " (zmodyfikowane {}. razy)"
 msgid "Failed to save image."
 msgstr "Zapisanie obrazu się nie powiodło."
 
-#: src/widgets/edit_window.rs:346
+#: src/widgets/edit_window.rs:344
 msgid "Editing Image"
 msgstr "Modyfikowanie obrazu"
 
-#: src/widgets/edit_window.rs:360
+#: src/widgets/edit_window.rs:361
 msgid "Failed to edit image."
 msgstr "Zmodyfikowanie obrazu się nie powiodło."
 
-#: src/widgets/edit_window.rs:370 src/widgets/edit_window.rs:393
+#: src/widgets/edit_window.rs:371 src/widgets/edit_window.rs:394
 msgid "Failed to Save Image"
 msgstr "Zapisanie obrazu się nie powiodło"
 
-#: src/widgets/edit_window.rs:376
+#: src/widgets/edit_window.rs:377
 msgid "Saving Image"
 msgstr "Zapisywanie obrazu"
 
@@ -528,7 +506,7 @@ msgstr "Zastąp _oryginał"
 msgid "Original image will be moved to the trash"
 msgstr "Oryginalny obraz zostanie przeniesiony do kosza"
 
-#: src/widgets/error_details.rs:79
+#: src/widgets/error_details.rs:80
 msgid ""
 "The following error occurred. If you think this is an issue with the "
 "program, please include this information when you report the error."
@@ -562,7 +540,8 @@ msgstr "Kopiuje komunikat o błędzie"
 msgid "Report _Issue"
 msgstr "Zgłoś _błąd"
 
-#: src/widgets/image_page.rs:227
+#: src/widgets/image_page.rs:225
+#, rust-format
 msgid ""
 "No image loaders available. Maybe the “glycin-loaders” package with "
 "compatibility version “{}” is not installed."
@@ -570,19 +549,26 @@ msgstr ""
 "Brak dostępnych mechanizmów wczytywania obrazów. Być może pakiet „glycin-"
 "loaders” o zgodnej wersji „{}” nie jest zainstalowany."
 
-#: src/widgets/image_page.rs:242
+#: src/widgets/image_page.rs:243
+#, rust-format
 msgid "The image format “{} ({})” is known but not installed."
 msgstr "Format obrazu „{} ({})” jest znany, ale nie jest zainstalowany."
 
-#: src/widgets/image_page.rs:249
+#: src/widgets/image_page.rs:251
+#, rust-format
 msgid "Unknown image format “{} ({}).”"
 msgstr "Nieznany format obrazu „{} ({})”."
 
-#: src/widgets/image_page.rs:277
+#: src/widgets/image_page.rs:260
 msgid "There is not enough free memory available to load this image."
 msgstr "Za mało dostępnej wolnej pamięci, aby wczytać ten obraz."
 
-#: src/widgets/image_page.rs:281
+#: src/widgets/image_page.rs:267
+#, rust-format
+msgid "Failed to load image file: {}"
+msgstr "Załadowanie obrazu się nie powiodło: {}"
+
+#: src/widgets/image_page.rs:272
 msgid "Either the image file is corrupted or it contains unsupported elements."
 msgstr "Plik obrazu jest uszkodzony lub zawiera nieobsługiwane elementy."
 
@@ -626,97 +612,94 @@ msgstr "Obraca w lewo"
 msgid "Rotate Right"
 msgstr "Obraca w prawo"
 
-#: src/widgets/image_view.rs:197
-msgid "{} %"
-msgstr "{}%"
-
 #. Translators: This is a toast notification, informing the user that
 #. an image has been set as background.
-#: src/widgets/image_view.rs:836
+#: src/widgets/image_view.rs:866
 msgid "Set as background."
 msgstr "Ustawiono jako tło."
 
-#: src/widgets/image_view.rs:849
+#: src/widgets/image_view.rs:872
 msgid "Could not set background."
 msgstr "Nie można ustawić tła."
 
-#: src/widgets/image_view.ui:30
+#: src/widgets/image_view.ui:26
 msgid "Previous Image"
 msgstr "Poprzedni obraz"
 
-#: src/widgets/image_view.ui:40
+#: src/widgets/image_view.ui:36
 msgid "Next Image"
 msgstr "Następny obraz"
 
-#: src/widgets/image_view.ui:74
+#: src/widgets/image_view.ui:66
 msgid "Zoom Out"
 msgstr "Pomniejsza"
 
-#: src/widgets/image_view.ui:85
+#: src/widgets/image_view.ui:77
 msgid "Zoom In"
 msgstr "Powiększa"
 
-#: src/widgets/image_view.ui:100
+#: src/widgets/image_view.ui:92
 msgid "Toggle Zoom"
 msgstr "Przełącza powiększenie"
 
-#: src/widgets/image_view.ui:108
+#: src/widgets/image_view.ui:100
 msgid "Zoom to Specific Level"
 msgstr "Powiększa do podanego poziomu"
 
-#: src/widgets/image_view.ui:237
+#: src/widgets/image_view.ui:229
 msgid "Custom Zoom Level"
 msgstr "Niestandardowy poziom powiększenia"
 
-#: src/widgets/image_view.ui:243
+#: src/widgets/image_view.ui:235
 msgid "Zoom to Specified Level"
 msgstr "Powiększa do podanego poziomu"
 
-#: src/widgets/image_window.rs:502
+#: src/widgets/image_window.rs:528
 msgid "Supported image formats"
 msgstr "Obsługiwane formaty obrazów"
 
-#: src/widgets/image_window.rs:508
+#: src/widgets/image_window.rs:534
 msgid "All files"
 msgstr "Wszystkie pliki"
 
-#: src/widgets/image_window.rs:515
+#: src/widgets/image_window.rs:541
 msgid "Open Image"
 msgstr "Otwarcie obrazu"
 
-#: src/widgets/image_window.rs:601
+#: src/widgets/image_window.rs:633
 msgid "Image copied to clipboard"
 msgstr "Skopiowano obraz do schowka"
 
-#: src/widgets/image_window.rs:622
+#: src/widgets/image_window.rs:654
 msgid "Image moved to trash"
 msgstr "Przeniesiono obraz do kosza"
 
-#: src/widgets/image_window.rs:623
+#: src/widgets/image_window.rs:655
 msgid "Undo"
 msgstr "Cofnij"
 
-#: src/widgets/image_window.rs:653
+#: src/widgets/image_window.rs:685
 msgid "Failed to move image to trash"
 msgstr "Przeniesienie obrazu do kosza się nie powiodło"
 
-#: src/widgets/image_window.rs:677
+#: src/widgets/image_window.rs:709
 msgid "Permanently Delete Image?"
 msgstr "Trwale usunąć obraz?"
 
-#: src/widgets/image_window.rs:679
+#: src/widgets/image_window.rs:711
+#, rust-format
 msgid "After deleting the image “{}” it will be permanently lost."
 msgstr "Po usunięciu obrazu „{}” zostanie on bezpowrotnie utracony."
 
-#: src/widgets/image_window.rs:687
+#: src/widgets/image_window.rs:719
 msgid "Cancel"
 msgstr "Anuluj"
 
-#: src/widgets/image_window.rs:688
+#: src/widgets/image_window.rs:720
 msgid "Delete"
 msgstr "Usuń"
 
-#: src/widgets/image_window.rs:699
+#: src/widgets/image_window.rs:731
 msgid "Failed to delete image"
 msgstr "Usunięcie obrazu się nie powiodło"
 
@@ -757,8 +740,8 @@ msgid "Edit Image"
 msgstr "Modyfikuje obraz"
 
 #: src/widgets/image_window.ui:220
-msgid "View Images"
-msgstr "Wyświetlanie obrazów"
+msgid "View and Edit Images"
+msgstr "Wyświetlanie i edytowanie obrazów"
 
 #: src/widgets/image_window.ui:221
 msgid "Drag and drop images here"
@@ -768,59 +751,60 @@ msgstr "Tutaj można przeciągać obrazy"
 msgid "_Open Files…"
 msgstr "_Otwórz pliki…"
 
-#: src/widgets/print.rs:108
+#: src/widgets/print.rs:109
 msgid "Top"
 msgstr "Na górze"
 
-#: src/widgets/print.rs:109
+#: src/widgets/print.rs:110
 msgid "Center"
 msgstr "Na środku"
 
-#: src/widgets/print.rs:110
+#: src/widgets/print.rs:111
 msgid "Bottom"
 msgstr "Na dole"
 
-#: src/widgets/print.rs:111
+#: src/widgets/print.rs:112
 msgid "Left"
 msgstr "Po lewej"
 
-#: src/widgets/print.rs:112
+#: src/widgets/print.rs:113
 msgid "Right"
 msgstr "Po prawej"
 
 #. Translators: Shorthand for centimeter
-#: src/widgets/print.rs:148
+#: src/widgets/print.rs:149
 msgid "cm"
 msgstr "cm"
 
 #. Translators: Shorthand for inch
-#: src/widgets/print.rs:150
+#: src/widgets/print.rs:151
 msgid "in"
 msgstr "in"
 
 #. Translators: Shorthand for pixel
-#: src/widgets/print.rs:152
+#: src/widgets/print.rs:153
 msgid "px"
 msgstr "px"
 
 #. Translators: {} is a placeholder for the filename
-#: src/widgets/print.rs:361
+#: src/widgets/print.rs:364
+#, rust-format
 msgid "Print “{}”"
 msgstr "Wydrukowanie „{}”"
 
-#: src/widgets/print.rs:476
+#: src/widgets/print.rs:477
 msgid "Continue…"
 msgstr "Kontynuuj…"
 
-#: src/widgets/print.rs:477
+#: src/widgets/print.rs:478
 msgid "Print Image"
 msgstr "Wydrukowanie obrazu"
 
-#: src/widgets/print.rs:791
+#: src/widgets/print.rs:797
 msgid "_Scale"
 msgstr "_Powiększenie"
 
-#: src/widgets/print.rs:794
+#: src/widgets/print.rs:800
 msgid "_Width"
 msgstr "_Szerokość"
 
@@ -908,7 +892,7 @@ msgstr "{}\\u{202F}b"
 msgid "{}\\u{202F}\\u{D7}\\u{202F}{}"
 msgstr "{}\\u{202F}\\u{D7}\\u{202F}{}"
 
-#: src/widgets/properties_view.rs:329
+#: src/widgets/properties_view.rs:326
 msgid "Image Coordinates Copied"
 msgstr "Skopiowano współrzędne obrazu"
 
@@ -981,6 +965,29 @@ msgstr "Długość ogniskowej"
 msgid "Maker, Model"
 msgstr "Producent, model"
 
-#: src/widgets/window.rs:222
+#: src/widgets/window.rs:206
 msgid "Show Details"
 msgstr "Wyświetl informacje"
+
+#~ msgid "Browse through your images and inspect their metadata with:"
+#~ msgstr "Przeglądanie obrazów i ich metadanych z:"
+
+#~ msgid "Fast GPU accelerated image rendering"
+#~ msgstr ""
+#~ "Szybkim wyświetlaniem obrazów przyspieszonym za pomocą karty graficznej,"
+
+#~ msgid "Tiled rendering for vector graphics"
+#~ msgstr "Wyświetlaniem kafelkowym w przypadku grafik wektorowych,"
+
+#~ msgid "Extendable and sandboxed image decoding"
+#~ msgstr "Rozszerzalnym i zabezpieczonym dekodowaniem obrazów,"
+
+#~ msgid "Accessible presentation of the most important metadata."
+#~ msgstr "Przedstawieniem najważniejszych metadanych z ułatwionym dostępem."
+
+#~ msgctxt "shortcut window"
+#~ msgid "Gestures"
+#~ msgstr "Gesty"
+
+#~ msgid "{} %"
+#~ msgstr "{}%"
