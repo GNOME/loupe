@@ -68,9 +68,9 @@
   </categories>
 
   <releases>
-    <release version="50.rc" date="2026-02-27">
+    <release version="50.0" date="2026-03-13">
       <description>
-        <p>Support the JPEG 2000, XBM, and XPM image formats.</p>
+        <p>Added support for the JPEG 2000, XBM, and XPM image formats. The app now also provides better error messages if an image file can't be read.</p>
       </description>
     </release>
     <release version="49.1" date="2025-10-21">

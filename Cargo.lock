@@ -34,9 +34,9 @@ dependencies = [
 
 [[package]]
 name = "ashpd"
-version = "0.13.2"
+version = "0.13.5"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "0848bedd08067dca1c02c31cbb371a94ad4f2f8a61a82f2c43d96ec36a395244"
+checksum = "0b09507a218cf6eb4ab0659883e54880cea3984e3dbaa4989b6cda3f8f8a97a5"
 dependencies = [
  "enumflags2",
  "futures-channel",
@@ -786,9 +786,9 @@ dependencies = [
 
 [[package]]
 name = "gio"
-version = "0.22.1"
+version = "0.22.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "bb018ae3f3967134a833fac8a2568c3e698f4b95c658865360772d73803cc5de"
+checksum = "816b6743c46b217aa8fba679095ac6f2162fd53259dc8f186fcdbff9c555db03"
 dependencies = [
  "futures-channel",
  "futures-core",
@@ -859,9 +859,9 @@ dependencies = [
 
 [[package]]
 name = "glycin"
-version = "3.1.0-rc"
+version = "3.1.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "4cc3e8da4a6f6b3b4608c583575ca394d53823ff625ade1f74735a32c43e305a"
+checksum = "923674c1f2b1a28f69ebdc0f572672e63874e17ce0e60c96b8bfaff47a8ef4e9"
 dependencies = [
  "async-fs",
  "async-global-executor",
@@ -896,9 +896,9 @@ dependencies = [
 
 [[package]]
 name = "glycin-common"
-version = "1.0.4-rc"
+version = "1.0.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "33112e981e223f51c48bf4b50415f27f401084bcdb3381048eb2693f4157a12f"
+checksum = "db28cec888051ccbf68f9f352d57ba2a292179863524a0769e54dbb72d152a03"
 dependencies = [
  "bitflags",
  "gufo-common",
@@ -915,9 +915,9 @@ dependencies = [
 
 [[package]]
 name = "glycin-utils"
-version = "4.1.0-rc"
+version = "4.1.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "9f5ee82ae148565401bbcb337f6f7c61f6faa5fff79c772d842ede61a0460cb6"
+checksum = "b49cd2451bced7416341a5e89d74f547e92b85b67e8f66c8723a7505930a50ab"
 dependencies = [
  "async-lock",
  "bitflags",
@@ -1188,9 +1188,9 @@ dependencies = [
 
 [[package]]
 name = "gweather-sys"
-version = "4.8.0-alpha.0"
+version = "4.8.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "636e135bd85cbe5e9e5b0b0a8e8f103e377e68d2056589b61e13bf1230b0d32a"
+checksum = "5bd48d8a64d00703dc2a77efb2284c07192a1345d0162e0bc15488b55d577f0e"
 dependencies = [
  "gio-sys",
  "glib-sys",
@@ -1379,15 +1379,15 @@ dependencies = [
 
 [[package]]
 name = "libc"
-version = "0.2.182"
+version = "0.2.183"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "6800badb6cb2082ffd7b6a67e6125bb39f18782f793520caee8cb8846be06112"
+checksum = "b5b646652bf6661599e1da8901b3b9522896f01e736bad5f723fe7a3a27f899d"
 
 [[package]]
 name = "libgweather"
-version = "4.8.0-alpha.0"
+version = "4.8.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "67f833cd31eaec72f6c8a6ba226a0ff9297a0b265aae77ebf63d362bed2411f3"
+checksum = "18dd39da07edc7e068f1b02da95d5813030343cfd94ae1f132d25695ba8e6c9f"
 dependencies = [
  "gio",
  "glib",
@@ -1459,7 +1459,7 @@ checksum = "5e5032e24019045c762d3c0f28f5b6b8bbf38563a65908389bf7978758920897"
 
 [[package]]
 name = "loupe"
-version = "50.0.0-rc"
+version = "50.0.0"
 dependencies = [
  "anyhow",
  "arc-swap",
@@ -2179,9 +2179,9 @@ dependencies = [
 
 [[package]]
 name = "tracing-subscriber"
-version = "0.3.22"
+version = "0.3.23"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "2f30143827ddab0d256fd843b7a66d164e9f271cfa0dde49142c5ca0ca291f1e"
+checksum = "cb7f578e5945fb242538965c2d0b04418d38ec25c79d160cd279bf0731c8d319"
 dependencies = [
  "matchers",
  "nu-ansi-term",
