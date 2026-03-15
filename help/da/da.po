@@ -1,0 +1,639 @@
+# Danish translation for loupe.
+# Copyright (C) 2026 loupe's COPYRIGHT HOLDER
+# This file is distributed under the same license as the loupe package.
+# Alan Mortensen <alanmortensen.am@gmail.com>,  2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: loupe main\n"
+"POT-Creation-Date: 2026-03-09 12:50+0000\n"
+"PO-Revision-Date: 2026-03-15 10:11+0100\n"
+"Last-Translator: Alan Mortensen <alanmortensen.am@gmail.com>\n"
+"Language-Team: Danish <Danish>\n"
+"Language: da\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.4.2\n"
+
+#. Put one translator per line, in the form NAME <EMAIL>, YEAR1, YEAR2
+msgctxt "_"
+msgid "translator-credits"
+msgstr ""
+"Alan Mortensen\n"
+"\n"
+"Dansk-gruppen\n"
+"Websted http://dansk-gruppen.dk\n"
+"E-mail <dansk@dansk-gruppen.dk>"
+
+#. (itstool) path: info/desc
+#: C/image-properties.page:11
+msgid "View detailed properties of the selected image."
+msgstr "Vis detaljerede egenskaber for det valgte billede."
+
+#. (itstool) path: page/title
+#: C/image-properties.page:13
+msgid "Image Properties"
+msgstr "Billedegenskaber"
+
+#. (itstool) path: page/p
+#: C/image-properties.page:14
+msgid ""
+"Image Viewer allows users to view an image's properties. All images will "
+"have the following basic properties:"
+msgstr ""
+"Billedfremviser giver brugerne mulighed for at se et billedes egenskaber. "
+"Alle billeder har følgende grundlæggende egenskaber:"
+
+#. (itstool) path: item/p
+#: C/image-properties.page:18
+msgid "Image size"
+msgstr "Billedstørrelse"
+
+#. (itstool) path: item/p
+#: C/image-properties.page:21
+msgid "Image format"
+msgstr "Billedformat"
+
+#. (itstool) path: item/p
+#: C/image-properties.page:24
+msgid "File size"
+msgstr "Filstørrelse"
+
+#. (itstool) path: item/p
+#: C/image-properties.page:27
+msgid "File creation date"
+msgstr "Filens oprettelsesdato"
+
+#. (itstool) path: item/p
+#: C/image-properties.page:30
+msgid "File modification date"
+msgstr "Dato for filændring"
+
+#. (itstool) path: page/p
+#: C/image-properties.page:33
+msgid ""
+"If the file has <link href=\"https://en.wikipedia.org/wiki/Exif\">Exif</"
+"link> metadata, it will be shown below the basic properties."
+msgstr ""
+"Indeholder filen <link href=\"https://en.wikipedia.org/wiki/Exif\">Exif</"
+"link>-metadata, vil de blive vist under de grundlæggende egenskaber."
+
+#. (itstool) path: p/media
+#. This is a reference to an external file such as an image or video. When
+#. the file changes, the md5 hash will change to let you know you need to
+#. update your localized copy. The msgstr is not used at all. Set it to
+#. whatever you like once you have updated your copy of the file.
+#: C/image-properties.page:36
+msgctxt "_"
+msgid ""
+"external ref='figures/help-about-symbolic.svg' "
+"md5='6b43c8bc211b5f8b57810091728b8925'"
+msgstr "[strengen bruges ikke]"
+
+#. (itstool) path: page/p
+#: C/image-properties.page:35
+msgid ""
+"To view the selected image's properties, press the <gui>Image Properties</"
+"gui> (<media type=\"image\" src=\"figures/help-about-symbolic.svg\">help-"
+"about-symbolic</media>) button."
+msgstr ""
+"For at se det valgte billedes egenskaber skal du trykke på knappen "
+"<gui>Billedegenskaber</gui> (<media type=\"image\" src=\"figures/help-about-"
+"symbolic.svg\">help-about-symbolic</media>)."
+
+#. (itstool) path: info/desc
+#: C/index.page:10
+msgid "Browse through your images and inspect their metadata."
+msgstr "Gennemse dine billeder og inspicér deres metadata."
+
+#. (itstool) path: page/title
+#: C/index.page:12
+msgid "<_:media-1/> Image Viewer (Loupe)"
+msgstr "<_:media-1/> Billedfremviser (Loupe)"
+
+#. (itstool) path: section/title
+#: C/index.page:14
+msgid "Getting Started"
+msgstr "Kom godt i gang"
+
+#. (itstool) path: section/title
+#: C/index.page:17
+msgid "Additional Features"
+msgstr "Yderligere funktioner"
+
+#. (itstool) path: section/title
+#: C/index.page:20
+msgid "Technical Information"
+msgstr "Tekniske oplysninger"
+
+#. (itstool) path: info/desc
+#: C/opening-images.page:11
+msgid ""
+"Open and browse through pictures via the file chooser, file manager, or drag "
+"and drop."
+msgstr ""
+"Åbn og gennemse billeder via filvælgeren, filhåndteringen eller ved at "
+"trække og slippe."
+
+#. (itstool) path: page/title
+#: C/opening-images.page:13
+msgid "Opening Images"
+msgstr "Åbning af billeder"
+
+#. (itstool) path: section/title
+#: C/opening-images.page:15
+msgid "Opening Files"
+msgstr "Åbning af filer"
+
+#. (itstool) path: section/title
+#: C/opening-images.page:17
+msgid "From The File Chooser"
+msgstr "Fra filvælgeren"
+
+#. (itstool) path: section/p
+#: C/opening-images.page:18
+msgid ""
+"Image Viewer allows users to pick images with the file chooser at any time."
+msgstr ""
+"Billedfremviser giver brugerne mulighed for at vælge billeder med "
+"filvælgeren når som helst."
+
+#. (itstool) path: item/p
+#: C/opening-images.page:21
+msgid ""
+"Click the <gui>Open Files…</gui> button, the <gui style=\"menuitem\">Open…</"
+"gui> menu item, or press <keyseq><key>Ctrl</key><key>O</key></keyseq>. The "
+"<gui>Open Image</gui> file dialog will appear."
+msgstr ""
+"Klik på knappen <gui>Åbn filer …</gui>, menupunktet <gui "
+"style=\"menuitem\">Åbn …</gui>, eller tryk på <keyseq><key>Ctrl</key><key>O</"
+"key></keyseq>. Fildialogen <gui>Åbn billede</gui> vises."
+
+#. (itstool) path: item/p
+#: C/opening-images.page:24
+msgid "Select the image you want to open, then click <gui>Open</gui>."
+msgstr "Vælg det billede, du vil åbne, og klik <gui>Åbn</gui>."
+
+#. (itstool) path: section/p
+#: C/opening-images.page:27
+msgid ""
+"Image Viewer will open with the selected image showing, and the other images "
+"in the directory can be reached by browsing."
+msgstr ""
+"Billedfremviser åbnes med det valgte billede vist, og de øvrige billeder i "
+"mappen kan tilgås ved at bladre igennem dem."
+
+#. (itstool) path: section/title
+#: C/opening-images.page:30
+msgid "From The File Manager"
+msgstr "Fra filhåndteringen"
+
+#. (itstool) path: section/p
+#: C/opening-images.page:31
+msgid "Users can also open images in Loupe directly from their file manager."
+msgstr "Brugere kan også åbne filer direkte i Loupe fra filhåndteringen."
+
+#. (itstool) path: item/p
+#: C/opening-images.page:34
+msgid "Open your preferred file manager application."
+msgstr "Åbn dit foretrukne filhåndteringsprogram."
+
+#. (itstool) path: item/p
+#: C/opening-images.page:37
+msgid "Navigate to the image you want to view in Loupe."
+msgstr "Find frem til det billede, du vil se i Loupe."
+
+#. (itstool) path: item/p
+#: C/opening-images.page:40
+msgid ""
+"If Image Viewer is set as your default image viewer, use the file manager's "
+"function for opening files."
+msgstr ""
+"Hvis Billedfremviser er indstillet som dit standardprogram til åbning af "
+"billeder, kan du bruge filhåndteringens funktion til åbning af filer."
+
+#. (itstool) path: item/p
+#: C/opening-images.page:43
+msgid ""
+"If Image Viewer is not your default image viewer, you will need to select "
+"<gui>Open With…</gui> or similar in the file manager, and pick Image Viewer."
+msgstr ""
+"Hvis Billedfremviser ikke er dit standardprogram til åbning af billeder, "
+"skal du vælge <gui>Åbn med …</gui> eller lignende i filhåndteringen og vælge "
+"Billedfremviser."
+
+#. (itstool) path: section/title
+#: C/opening-images.page:48 C/sending-to-other-apps.page:37
+msgid "Drag &amp; Drop"
+msgstr "Træk-og-slip"
+
+#. (itstool) path: section/p
+#: C/opening-images.page:49
+msgid ""
+"Image Viewer also accepts local image files dragged from other applications."
+msgstr ""
+"Billedfremviser tillader også, at lokale billedfiler kan trækkes fra andre "
+"programmer."
+
+#. (itstool) path: item/p
+#: C/opening-images.page:52
+msgid "In the source application, begin dragging the image."
+msgstr "Begynd med at trække billedet fra kildeprogrammet."
+
+#. (itstool) path: item/p
+#: C/opening-images.page:55
+msgid ""
+"Drag the image over the Loupe main window. A blue highlighted area should "
+"appear."
+msgstr ""
+"Træk billedet over Loupe-hovedvinduet. Der skulle nu vises et blåt fremhævet "
+"område."
+
+#. (itstool) path: item/p
+#: C/opening-images.page:58
+msgid "Drop the image while it's still hovered over the main window."
+msgstr "Slip billedet, mens det er over hovedvinduet."
+
+#. (itstool) path: section/title
+#: C/opening-images.page:64
+msgid "Browsing"
+msgstr "Gennemsyn"
+
+#. (itstool) path: p/media
+#. This is a reference to an external file such as an image or video. When
+#. the file changes, the md5 hash will change to let you know you need to
+#. update your localized copy. The msgstr is not used at all. Set it to
+#. whatever you like once you have updated your copy of the file.
+#: C/opening-images.page:67
+msgctxt "_"
+msgid ""
+"external ref='figures/go-previous-symbolic.svg' "
+"md5='a53305845578db884ecfb7d8d33fcaeb'"
+msgstr "[strengen bruges ikke]"
+
+#. (itstool) path: p/media
+#. This is a reference to an external file such as an image or video. When
+#. the file changes, the md5 hash will change to let you know you need to
+#. update your localized copy. The msgstr is not used at all. Set it to
+#. whatever you like once you have updated your copy of the file.
+#: C/opening-images.page:68
+msgctxt "_"
+msgid ""
+"external ref='figures/go-next-symbolic.svg' "
+"md5='2f901ac0f711cfb3274b2985d10c4124'"
+msgstr "[strengen bruges ikke]"
+
+#. (itstool) path: section/p
+#: C/opening-images.page:65
+msgid ""
+"When opening an image from the file chooser or file manager, Loupe will load "
+"other files in the parent directory of the image and sort them in "
+"alphabetical order. Users can browse the other images in the directory with "
+"the <gui>Previous Image</gui> (<media type=\"image\" src=\"figures/go-"
+"previous-symbolic.svg\">go-previous-symbolic</media>) and <gui>Next Image</"
+"gui> (<media type=\"image\" src=\"figures/go-next-symbolic.svg\">go-next-"
+"symbolic</media>) buttons."
+msgstr ""
+"Når du åbner et billede fra filvælgeren eller filhåndteringen, indlæser "
+"Loupe andre filer i billedets overordnede mappe og sorterer dem i alfabetisk "
+"rækkefølge. Brugere kan gennemse de andre billeder i mappen med <gui>Forrige "
+"billede</gui> (<media type=\"image\" src=\"figures/go-previous-symbolic."
+"svg\">go-previous-symbolic</media>) og <gui>Næste billede</gui> (<media "
+"type=\"image\" src=\"figures/go-next-symbolic.svg\">go-next-symbolic</"
+"media>)."
+
+#. (itstool) path: note/p
+#: C/opening-images.page:70 C/viewing-images.page:39
+msgid ""
+"Keyboard users can also use the corresponding shortcuts presented in the "
+"<gui>Keyboard Shortcuts</gui> dialog."
+msgstr ""
+"De tilsvarende genveje vist i dialogen <gui>Tastaturgenveje</gui> kan også "
+"anvendes."
+
+#. (itstool) path: info/desc
+#: C/sending-to-other-apps.page:11
+msgid ""
+"Learn how to send, copy, and drag images from Image Viewer to other apps."
+msgstr ""
+"Sådan sendes, kopieres og trækkes billeder fra Billedfremviser til andre "
+"programmer."
+
+#. (itstool) path: page/title
+#: C/sending-to-other-apps.page:13
+msgid "Sending Images To Other Apps"
+msgstr "Send billeder til andre programmer"
+
+#. (itstool) path: section/title
+#: C/sending-to-other-apps.page:15
+msgid "\"Open With…\" Action"
+msgstr "Handlingen “Åbn med …”"
+
+#. (itstool) path: item/p
+#: C/sending-to-other-apps.page:18
+msgid ""
+"Click the <gui style=\"menuitem\">Open With…</gui> menu item. A dialog with "
+"a list of applications will appear."
+msgstr ""
+"Klik på menuelementet <gui style=\"menuitem\">Åbn med …</gui>. En dialog med "
+"en liste over programmer åbnes."
+
+#. (itstool) path: item/p
+#: C/sending-to-other-apps.page:21
+msgid "Select the application you want to open the image with."
+msgstr "Vælg det program, du vil åbne billedet med."
+
+#. (itstool) path: section/title
+#: C/sending-to-other-apps.page:26
+msgid "Copy &amp; Paste"
+msgstr "Kopiér og indsæt"
+
+#. (itstool) path: p/media
+#. This is a reference to an external file such as an image or video. When
+#. the file changes, the md5 hash will change to let you know you need to
+#. update your localized copy. The msgstr is not used at all. Set it to
+#. whatever you like once you have updated your copy of the file.
+#: C/sending-to-other-apps.page:29
+msgctxt "_"
+msgid ""
+"external ref='figures/edit-copy-symbolic.svg' "
+"md5='4774ffd65c32e160f4cefc093abd6b7c'"
+msgstr "[strengen bruges ikke]"
+
+#. (itstool) path: item/p
+#: C/sending-to-other-apps.page:29
+msgid ""
+"Click the <gui>Copy to Clipboard</gui> (<media type=\"image\" src=\"figures/"
+"edit-copy-symbolic.svg\">edit-copy-symbolic</media>) button. A toast "
+"notifying you that the image is in your clipboard will appear."
+msgstr ""
+"Klik på knappen <gui>Kopiér til udklipsholder</gui> (<media type=\"image\" "
+"src=\"figures/edit-copy-symbolic.svg\">edit-copy-symbolic</media>). Der "
+"vises en meddelelse om, at billedet er i din udklipsholder."
+
+#. (itstool) path: item/p
+#: C/sending-to-other-apps.page:32
+msgid "Paste your image in your application of choice."
+msgstr "Indsæt billedet i det ønskede program."
+
+#. (itstool) path: item/p
+#: C/sending-to-other-apps.page:40
+msgid "Zoom out from the image completely."
+msgstr "Zoom billedet helt ud."
+
+#. (itstool) path: item/p
+#: C/sending-to-other-apps.page:43
+msgid "Click and hold the selected image."
+msgstr "Klik og hold nede på det valgte billede."
+
+#. (itstool) path: item/p
+#: C/sending-to-other-apps.page:46
+msgid "Drag the image to your application of choice."
+msgstr "Træk billedet til det ønskede program."
+
+#. (itstool) path: page/title
+#: C/supported-formats.page:12
+msgid "Supported Image Formats"
+msgstr "Understøttede billedformater"
+
+#. (itstool) path: page/p
+#: C/supported-formats.page:13
+msgid ""
+"Image Viewer uses <link href=\"https://gitlab.gnome.org/GNOME/"
+"glycin\">glycin</link> for loading images. You can check <link "
+"href=\"https://gitlab.gnome.org/GNOME/glycin#supported-image-"
+"formats\">glycin's README</link> for more details about the formats "
+"supported by the default loaders and the features provided by each format."
+msgstr ""
+"Billedfremviser bruger <link href=\"https://gitlab.gnome.org/GNOME/"
+"glycin\">glycin</link> til indlæsning af billeder. Du kan se <link "
+"href=\"https://gitlab.gnome.org/GNOME/glycin#supported-image-"
+"formats\">glycins LÆSMIG</link> for flere detaljer om de formater, der "
+"understøttes af standardindlæserne, og de funktioner der tilbydes af hvert "
+"format."
+
+#. (itstool) path: page/p
+#: C/supported-formats.page:17
+msgid ""
+"Glycin's loaders are configurable, and new loaders can be created by third "
+"parties. Therefore the formats supported on your system may vary."
+msgstr ""
+"Glycins indlæsere kan konfigureres, og nye indlæsere kan oprettes af "
+"tredjeparter. Derfor kan de formater, der understøttes på dit system, "
+"variere."
+
+#. (itstool) path: info/desc
+#: C/trashing-images.page:11
+msgid "Move unwanted images to the trash directly from Image Viewer."
+msgstr "Flyt uønskede billeder til papirkurven i Billedfremviser."
+
+#. (itstool) path: page/title
+#: C/trashing-images.page:13
+msgid "Moving Images to Trash"
+msgstr "Flyt billeder til papirkurven"
+
+#. (itstool) path: p/media
+#. This is a reference to an external file such as an image or video. When
+#. the file changes, the md5 hash will change to let you know you need to
+#. update your localized copy. The msgstr is not used at all. Set it to
+#. whatever you like once you have updated your copy of the file.
+#: C/trashing-images.page:15
+msgctxt "_"
+msgid ""
+"external ref='figures/user-trash-symbolic.svg' "
+"md5='3ffa1160de3479541f34c3bfbf3cdb64'"
+msgstr "[strengen bruges ikke]"
+
+#. (itstool) path: page/p
+#: C/trashing-images.page:14
+msgid ""
+"If a user wants to remove an image, they can press the <gui>Move To Trash</"
+"gui> (<media type=\"image\" src=\"figures/user-trash-symbolic.svg\">user-"
+"trash-symbolic</media>) button. A toast will appear allowing them to restore "
+"the image with the <gui>Undo</gui> button."
+msgstr ""
+"Hvis en bruger ønsker at fjerne et billede, kan vedkommende trykke på "
+"knappen <gui>Flyt til papirkurv</gui> (<media type=\"image\" src=\"figures/"
+"user-trash-symbolic.svg\">user-trash-symbolic</media>). Der vises en "
+"meddelelse, der giver mulighed for at gendanne billedet med knappen "
+"<gui>Fortryd</gui>."
+
+#. (itstool) path: info/desc
+#: C/viewing-images.page:11
+msgid "Learn how to view an image at different scales and orientations."
+msgstr "Vis et billede med forskellig skalering og retning."
+
+#. (itstool) path: page/title
+#: C/viewing-images.page:13
+msgid "Viewing Images"
+msgstr "Visning af billeder"
+
+#. (itstool) path: section/title
+#: C/viewing-images.page:15
+msgid "Zooming"
+msgstr "Zoom"
+
+#. (itstool) path: p/media
+#. This is a reference to an external file such as an image or video. When
+#. the file changes, the md5 hash will change to let you know you need to
+#. update your localized copy. The msgstr is not used at all. Set it to
+#. whatever you like once you have updated your copy of the file.
+#: C/viewing-images.page:16
+msgctxt "_"
+msgid ""
+"external ref='figures/zoom-in-symbolic.svg' "
+"md5='fed4648112c974f25de99c15ece6272c'"
+msgstr "[strengen bruges ikke]"
+
+#. (itstool) path: p/media
+#. This is a reference to an external file such as an image or video. When
+#. the file changes, the md5 hash will change to let you know you need to
+#. update your localized copy. The msgstr is not used at all. Set it to
+#. whatever you like once you have updated your copy of the file.
+#: C/viewing-images.page:17
+msgctxt "_"
+msgid ""
+"external ref='figures/zoom-out-symbolic.svg' "
+"md5='fe99d9c40c1104988ee4580283168dfb'"
+msgstr "[strengen bruges ikke]"
+
+#. (itstool) path: section/p
+#: C/viewing-images.page:16
+msgid ""
+"Users can zoom in with the <gui>Zoom In</gui> (<media type=\"image\" "
+"src=\"figures/zoom-in-symbolic.svg\">zoom-in-symbolic</media>) button and "
+"zoom out with the <gui>Zoom Out</gui> (<media type=\"image\" src=\"figures/"
+"zoom-out-symbolic.svg\">zoom-out-symbolic</media>) button."
+msgstr ""
+"Brugere kan zoome ind med knappen <gui>Zoom ind</gui> (<media type=\"image\" "
+"src=\"figures/zoom-in-symbolic.svg\">zoom-in-symbolic</media>) og zoome ud "
+"med knappen <gui>Zoom ud</gui> (<media type=\"image\" src=\"figures/zoom-out-"
+"symbolic.svg\">zoom-out-symbolic</media>)."
+
+#. (itstool) path: section/p
+#: C/viewing-images.page:19
+msgid ""
+"Touchpad and touchscreen users can also zoom with a two-finger pinch "
+"gesture. On touchpads, it is also possible to zoom by pressing the "
+"<key>Ctrl</key> key while swiping up/down with two fingers on the touchpad."
+msgstr ""
+"Brugere af pegeplader og touchskærme kan også zoome ved at udføre en "
+"knibebevægelse med to fingre. På pegeplader er det også muligt at zoome ved "
+"at trykke på <key>Ctrl</key>-tasten, mens man stryger op/ned med to fingre "
+"på pegepladen."
+
+#. (itstool) path: section/title
+#: C/viewing-images.page:22
+msgid "Panning"
+msgstr "Panorering"
+
+#. (itstool) path: section/p
+#: C/viewing-images.page:23
+msgid ""
+"Mouse and touchpad users can pan the view when zoomed in by clicking and "
+"dragging the image. Touchscreen users can use a single-finger drag gesture "
+"to pan the view."
+msgstr ""
+"Brugere af mus og pegeplader kan panorere visningen, når der er zoomet ind, "
+"ved at klikke og trække billedet. Brugere af touchskærme kan udføre en "
+"trækbevægelse med en finger til at panorere visningen."
+
+#. (itstool) path: section/title
+#: C/viewing-images.page:27
+msgid "Rotating"
+msgstr "Rotation"
+
+#. (itstool) path: p/media
+#. This is a reference to an external file such as an image or video. When
+#. the file changes, the md5 hash will change to let you know you need to
+#. update your localized copy. The msgstr is not used at all. Set it to
+#. whatever you like once you have updated your copy of the file.
+#: C/viewing-images.page:28
+msgctxt "_"
+msgid ""
+"external ref='figures/object-rotate-right-symbolic.svg' "
+"md5='0284f09f3659bf61e4882ac8a758b38f'"
+msgstr "[strengen bruges ikke]"
+
+#. (itstool) path: p/media
+#. This is a reference to an external file such as an image or video. When
+#. the file changes, the md5 hash will change to let you know you need to
+#. update your localized copy. The msgstr is not used at all. Set it to
+#. whatever you like once you have updated your copy of the file.
+#: C/viewing-images.page:29
+msgctxt "_"
+msgid ""
+"external ref='figures/object-rotate-left-symbolic.svg' "
+"md5='c2393bbaa3b0f7ea09b43089295a44d4'"
+msgstr "[strengen bruges ikke]"
+
+#. (itstool) path: section/p
+#: C/viewing-images.page:28
+msgid ""
+"Users can use the <gui>Rotate Right</gui> (<media type=\"image\" "
+"src=\"figures/object-rotate-right-symbolic.svg\">object-rotate-right-"
+"symbolic</media>) and <gui>Rotate Left</gui> (<media type=\"image\" "
+"src=\"figures/object-rotate-left-symbolic.svg\">object-rotate-left-symbolic</"
+"media>) buttons under <gui style=\"menuitem\">Rotate</gui> in the main menu "
+"to rotate clockwise and counter-clockwise."
+msgstr ""
+"Brugere kan bruge knapperne <gui>Rotér højre om</gui> (<media type=\"image\" "
+"src=\"figures/object-rotate-right-symbolic.svg\">object-rotate-right-"
+"symbolic</media>) og <gui>Rotér venstre om</gui> (<media type=\"image\" "
+"src=\"figures/object-rotate-left-symbolic.svg\">object-rotate-left-symbolic</"
+"media>) under <gui style=\"menuitem\">Rotér</gui> i hovedmenuen til at "
+"rotere med og mod uret."
+
+#. (itstool) path: section/p
+#: C/viewing-images.page:32
+msgid ""
+"Touchpad and touchscreen users can also use a two-finger rotate gesture."
+msgstr ""
+"Brugere af pegeplader og touchskærme kan også udføre en rotationsbevægelse "
+"med to fingre."
+
+#. (itstool) path: section/title
+#: C/viewing-images.page:35
+msgid "Fullscreen"
+msgstr "Fuldskærm"
+
+#. (itstool) path: p/media
+#. This is a reference to an external file such as an image or video. When
+#. the file changes, the md5 hash will change to let you know you need to
+#. update your localized copy. The msgstr is not used at all. Set it to
+#. whatever you like once you have updated your copy of the file.
+#: C/viewing-images.page:37
+msgctxt "_"
+msgid ""
+"external ref='figures/view-fullscreen-symbolic.svg' "
+"md5='3ee106ab07051301a9b5982cbe04b597'"
+msgstr "[strengen bruges ikke]"
+
+#. (itstool) path: p/media
+#. This is a reference to an external file such as an image or video. When
+#. the file changes, the md5 hash will change to let you know you need to
+#. update your localized copy. The msgstr is not used at all. Set it to
+#. whatever you like once you have updated your copy of the file.
+#: C/viewing-images.page:37
+msgctxt "_"
+msgid ""
+"external ref='figures/view-restore-symbolic.svg' "
+"md5='f7470d4b9ed1d317ed201bb4a72882fb'"
+msgstr "[strengen bruges ikke]"
+
+#. (itstool) path: section/p
+#: C/viewing-images.page:36
+msgid ""
+"Image Viewer has a simple fullscreen mode. Users can toggle fullscreen mode "
+"by pressing the <gui>Toggle Fullscreen</gui> (<media type=\"image\" "
+"src=\"figures/view-fullscreen-symbolic.svg\">view-fullscreen-symbolic</"
+"media> / <media type=\"image\" src=\"figures/view-restore-symbolic."
+"svg\">view-restore-symbolic</media>) button."
+msgstr ""
+"Billedfremviser har en enkel fuldskærmstilstand. Brugere kan skifte til "
+"fuldskærmstilstand ved at trykke på knappen <gui>Slå fuldskærm til/fra</gui> "
+"(<media type=\"image\" src=\"figures/view-fullscreen-symbolic.svg\">view-"
+"fullscreen-symbolic</media> / <media type=\"image\" src=\"figures/view-"
+"restore-symbolic.svg\">view-restore-symbolic</media>)."
