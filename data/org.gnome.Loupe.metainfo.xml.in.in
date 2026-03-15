@@ -25,12 +25,15 @@
   <screenshots>
     <screenshot type="default">
       <image>https://static.gnome.org/appdata/gnome-48/loupe/loupe-main.png</image>
+      <caption>Main Window</caption>
     </screenshot>
     <screenshot>
       <image>https://static.gnome.org/appdata/gnome-48/loupe/loupe-crop.png</image>
+      <caption>Crop Tool</caption>
     </screenshot>
     <screenshot>
       <image>https://static.gnome.org/appdata/gnome-48/loupe/loupe-properties.png</image>
+      <caption>Image Properties Panel</caption>
     </screenshot>
   </screenshots>
 
