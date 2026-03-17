@@ -1,35 +1,33 @@
 # Serbian translation for loupe.
 # Copyright (C) 2023 loupe's COPYRIGHT HOLDER
 # This file is distributed under the same license as the loupe package.
-# Марко Костић <marko.m.kostic@gmail.com>, 2023.
+# Марко Костић <marko.m.kostic@gmail.com>, 2023-2026.
 # Милош Поповић <gpopac@gmail.com>, 2025.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2025-11-06 13:04+0000\n"
-"PO-Revision-Date: 2025-11-07 00:40+0100\n"
-"Last-Translator: Милош Поповић <gpopac@gmail.com>\n"
+"POT-Creation-Date: 2026-03-13 14:05+0000\n"
+"PO-Revision-Date: 2026-03-17 14:57+0100\n"
+"Last-Translator: Марко М. Костић <marko.m.kostic@gmail.com>\n"
 "Language-Team: Serbian <Serbian <gnome-sr@googlegroups.com>>\n"
 "Language: sr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=n==1? 3 : n%10==1 && n%100!=11 ? 0 : "
-"n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2\n"
-"X-Generator: Gtranslator 48.0\n"
+"Plural-Forms: nplurals=4; plural=n==1? 3 : n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || "
+"n%100>=20) ? 1 : 2;\n"
+"X-Generator: Poedit 3.9\n"
 
-#: data/org.gnome.Loupe.desktop.in.in:2
-#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:32
-#: src/widgets/image_window.rs:867
+#: data/org.gnome.Loupe.desktop.in.in:2 data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:32
+#: src/widgets/image_window.rs:898
 msgid "Image Viewer"
 msgstr "Прегледач слика"
 
-#: data/org.gnome.Loupe.desktop.in.in:3
-#: data/org.gnome.Loupe.metainfo.xml.in.in:13
-msgid "View images"
-msgstr "Прегледај слике"
+#: data/org.gnome.Loupe.desktop.in.in:3 data/org.gnome.Loupe.metainfo.xml.in.in:13
+msgid "View and edit images"
+msgstr "Прегледајте и уређујте слике"
 
 #: data/org.gnome.Loupe.desktop.in.in:11
 msgid "Picture;Graphics;Loupe;"
@@ -45,251 +43,220 @@ msgid "The GNOME Project"
 msgstr "Пројекат Гном"
 
 #: data/org.gnome.Loupe.metainfo.xml.in.in:15
-msgid "Browse through your images and inspect their metadata with:"
-msgstr "Прегледајте ваше слике и погледајте метаподатке са:"
+msgid "Explore images, view their metadata, and make quick edits by cropping, rotating, or flipping them."
+msgstr "Истражујте слике, прегледајте њихове метаподатке и правите брзе измене опсецањем, окретањем или извртањем."
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:17
-msgid "Fast GPU accelerated image rendering"
-msgstr "Брзо исцртавање слика преко графичке"
-
-#: data/org.gnome.Loupe.metainfo.xml.in.in:18
-msgid "Tiled rendering for vector graphics"
-msgstr "Уплочано исцртавање за векторске графике"
-
-#: data/org.gnome.Loupe.metainfo.xml.in.in:19
-msgid "Extendable and sandboxed image decoding"
-msgstr "Проширљиво и безбедно декодирање слика „у песку“"
-
-#: data/org.gnome.Loupe.metainfo.xml.in.in:20
-msgid "Accessible presentation of the most important metadata."
-msgstr "Приступљив приказ најважнијих метаподатака."
-
-#: data/resources/gtk/help-overlay.ui:11
+#: data/resources/shortcuts-dialog.ui:6
 msgctxt "shortcut window"
 msgid "General Shortcuts"
 msgstr "Опште пречице"
 
-#: data/resources/gtk/help-overlay.ui:14
+#: data/resources/shortcuts-dialog.ui:9
 msgctxt "shortcut window"
 msgid "Copy Image or Selected Text to Clipboard"
 msgstr "Копирај слику или изабрани текст у оставу"
 
-#: data/resources/gtk/help-overlay.ui:20
+#: data/resources/shortcuts-dialog.ui:15
 msgctxt "shortcut window"
 msgid "Move Image to Trash"
 msgstr "Премести слику у смеће"
 
-#: data/resources/gtk/help-overlay.ui:26
+#: data/resources/shortcuts-dialog.ui:21
 msgctxt "shortcut window"
 msgid "Permanently Delete Image"
 msgstr "Трајно обриши слику"
 
-#: data/resources/gtk/help-overlay.ui:32
+#: data/resources/shortcuts-dialog.ui:27
 msgctxt "shortcut window"
 msgid "Open Image with Other App"
 msgstr "Отвори слику у другом програму"
 
-#: data/resources/gtk/help-overlay.ui:38
+#: data/resources/shortcuts-dialog.ui:33
 msgctxt "shortcut window"
 msgid "Set as Background"
 msgstr "Постави за позадину"
 
-#: data/resources/gtk/help-overlay.ui:44
+#: data/resources/shortcuts-dialog.ui:39
 msgctxt "shortcut window"
 msgid "New Window"
 msgstr "Нови прозор"
 
-#: data/resources/gtk/help-overlay.ui:50
+#: data/resources/shortcuts-dialog.ui:45
 msgctxt "shortcut window"
 msgid "Open Help"
-msgstr "Отвара помоћ"
+msgstr "Отвори помоћ"
 
-#: data/resources/gtk/help-overlay.ui:56
+#: data/resources/shortcuts-dialog.ui:51
 msgctxt "shortcut window"
 msgid "Show Keyboard Shortcuts"
-msgstr "Приказ пречица на тастатури"
+msgstr "Прикажи пречице тастатуре"
 
-#: data/resources/gtk/help-overlay.ui:62
+#: data/resources/shortcuts-dialog.ui:57
 msgctxt "shortcut window"
 msgid "Close Window"
-msgstr "Затвора прозор"
+msgstr "Затварање прозора"
 
-#: data/resources/gtk/help-overlay.ui:68
+#: data/resources/shortcuts-dialog.ui:63
 msgctxt "shortcut window"
 msgid "Quit"
-msgstr "Излаз"
+msgstr "Изађи"
 
-#: data/resources/gtk/help-overlay.ui:76
+#: data/resources/shortcuts-dialog.ui:71
 msgctxt "shortcut window"
 msgid "Navigate Images"
 msgstr "Навигација слика"
 
-#: data/resources/gtk/help-overlay.ui:80 data/resources/gtk/help-overlay.ui:94
-#: data/resources/gtk/help-overlay.ui:235
-#: data/resources/gtk/help-overlay.ui:249
+#: data/resources/shortcuts-dialog.ui:75 data/resources/shortcuts-dialog.ui:89
 msgctxt "shortcut window"
 msgid "Next Image"
-msgstr "Наредна слика"
+msgstr "Следећа слика"
 
-#: data/resources/gtk/help-overlay.ui:87 data/resources/gtk/help-overlay.ui:101
-#: data/resources/gtk/help-overlay.ui:242
-#: data/resources/gtk/help-overlay.ui:256
+#: data/resources/shortcuts-dialog.ui:82 data/resources/shortcuts-dialog.ui:96
 msgctxt "shortcut window"
 msgid "Previous Image"
 msgstr "Претходна слика"
 
-#: data/resources/gtk/help-overlay.ui:107
+#: data/resources/shortcuts-dialog.ui:102
 msgctxt "shortcut window"
 msgid "First Image"
 msgstr "Прва слика"
 
-#: data/resources/gtk/help-overlay.ui:113
+#: data/resources/shortcuts-dialog.ui:108
 msgctxt "shortcut window"
 msgid "Last Image"
 msgstr "Последња слика"
 
-#: data/resources/gtk/help-overlay.ui:121
+#: data/resources/shortcuts-dialog.ui:116
 msgctxt "shortcut window"
 msgid "Rotate Image"
 msgstr "Заокретање слике"
 
-#: data/resources/gtk/help-overlay.ui:124
-#: data/resources/gtk/help-overlay.ui:274
-#: data/resources/gtk/help-overlay.ui:315
+#: data/resources/shortcuts-dialog.ui:119 data/resources/shortcuts-dialog.ui:253
 msgctxt "shortcut window"
 msgid "Rotate Clockwise"
 msgstr "Окретање на десно"
 
-#: data/resources/gtk/help-overlay.ui:130
-#: data/resources/gtk/help-overlay.ui:280
-#: data/resources/gtk/help-overlay.ui:321
+#: data/resources/shortcuts-dialog.ui:125 data/resources/shortcuts-dialog.ui:259
 msgctxt "shortcut window"
 msgid "Rotate Counterclockwise"
 msgstr "Окретање на лево"
 
-#: data/resources/gtk/help-overlay.ui:138
+#: data/resources/shortcuts-dialog.ui:133
 msgctxt "shortcut window"
 msgid "Zoom Image"
 msgstr "Увеличај слику"
 
-#: data/resources/gtk/help-overlay.ui:141
-#: data/resources/gtk/help-overlay.ui:262
+#: data/resources/shortcuts-dialog.ui:136
 msgctxt "shortcut window"
 msgid "Zoom In"
 msgstr "Увећај приказ"
 
-#: data/resources/gtk/help-overlay.ui:147
-#: data/resources/gtk/help-overlay.ui:268
+#: data/resources/shortcuts-dialog.ui:142
 msgctxt "shortcut window"
 msgid "Zoom Out"
 msgstr "Умањи приказ"
 
-#: data/resources/gtk/help-overlay.ui:153
+#: data/resources/shortcuts-dialog.ui:148
 msgctxt "shortcut window"
 msgid "Best Fit"
 msgstr "Најбоље уклапање"
 
-#: data/resources/gtk/help-overlay.ui:159
+#: data/resources/shortcuts-dialog.ui:154
 msgctxt "shortcut window"
 msgid "Original Scale"
 msgstr "Изворна размера"
 
-#: data/resources/gtk/help-overlay.ui:165
+#: data/resources/shortcuts-dialog.ui:160
 msgctxt "shortcut window"
 msgid "200% Scale"
 msgstr "200% размера"
 
-#: data/resources/gtk/help-overlay.ui:173
+#: data/resources/shortcuts-dialog.ui:168
 msgctxt "shortcut window"
 msgid "Pan View"
 msgstr "Панирај поглед"
 
-#: data/resources/gtk/help-overlay.ui:176
+#: data/resources/shortcuts-dialog.ui:171
 msgctxt "shortcut window"
 msgid "Pan Left"
 msgstr "Панирај на лево"
 
-#: data/resources/gtk/help-overlay.ui:182
+#: data/resources/shortcuts-dialog.ui:177
 msgctxt "shortcut window"
 msgid "Pan Right"
 msgstr "Панирај на десно"
 
-#: data/resources/gtk/help-overlay.ui:188
+#: data/resources/shortcuts-dialog.ui:183
 msgctxt "shortcut window"
 msgid "Pan Up"
 msgstr "Панирај нагоре"
 
-#: data/resources/gtk/help-overlay.ui:194
+#: data/resources/shortcuts-dialog.ui:189
 msgctxt "shortcut window"
 msgid "Pan Down"
 msgstr "Панирај надоле"
 
-#: data/resources/gtk/help-overlay.ui:202
+#: data/resources/shortcuts-dialog.ui:197
 msgctxt "shortcut window"
 msgid "View"
-msgstr "Прегледање"
+msgstr "Преглед"
 
-#: data/resources/gtk/help-overlay.ui:205
+#: data/resources/shortcuts-dialog.ui:200
 msgctxt "shortcut window"
 msgid "Toggle Fullscreen"
-msgstr "Преко целог екрана"
+msgstr "Окини цео екран"
 
-#: data/resources/gtk/help-overlay.ui:211
+#: data/resources/shortcuts-dialog.ui:206
 msgctxt "shortcut window"
 msgid "Leave Fullscreen"
-msgstr "Напусти приказ преко целог екрана"
+msgstr "Напусти цео екран"
 
-#: data/resources/gtk/help-overlay.ui:217
+#: data/resources/shortcuts-dialog.ui:212
 msgctxt "shortcut window"
 msgid "Toggle Image Properties"
-msgstr "Промени стање приказа својства слике"
+msgstr "Окини својства слике"
 
-#: data/resources/gtk/help-overlay.ui:223
+#: data/resources/shortcuts-dialog.ui:218
 msgctxt "shortcut window"
 msgid "Show Main Menu"
 msgstr "Прикажи главни мени"
 
-#: data/resources/gtk/help-overlay.ui:231
-msgctxt "shortcut window"
-msgid "Gestures"
-msgstr "Покрети"
-
-#: data/resources/gtk/help-overlay.ui:288
+#: data/resources/shortcuts-dialog.ui:226
 msgctxt "shortcut window"
 msgid "Editing"
 msgstr "Уређивање"
 
-#: data/resources/gtk/help-overlay.ui:291
+#: data/resources/shortcuts-dialog.ui:229
 msgctxt "shortcut window"
 msgid "Open Editing View"
-msgstr "Отвара преглед за уређивање"
+msgstr "Отвори преглед за уређивање"
 
-#: data/resources/gtk/help-overlay.ui:297
+#: data/resources/shortcuts-dialog.ui:235
 msgctxt "shortcut window"
 msgid "Replace Original"
 msgstr "Замени оригинал"
 
-#: data/resources/gtk/help-overlay.ui:303
+#: data/resources/shortcuts-dialog.ui:241
 msgctxt "shortcut window"
 msgid "Save As"
 msgstr "Сачувај као"
 
-#: data/resources/gtk/help-overlay.ui:309
+#: data/resources/shortcuts-dialog.ui:247
 msgctxt "shortcut window"
 msgid "Cancel"
 msgstr "Откажи"
 
-#: data/resources/gtk/help-overlay.ui:327
+#: data/resources/shortcuts-dialog.ui:265
 msgctxt "shortcut window"
 msgid "Mirror Horizontally"
 msgstr "Изврни водоравно"
 
-#: data/resources/gtk/help-overlay.ui:333
+#: data/resources/shortcuts-dialog.ui:271
 msgctxt "shortcut window"
 msgid "Mirror Vertically"
 msgstr "Изврни усправно"
 
-#: data/resources/gtk/help-overlay.ui:339
+#: data/resources/shortcuts-dialog.ui:277
 msgctxt "shortcut window"
 msgid "Apply Crop"
 msgstr "Примени исецање"
@@ -299,67 +266,65 @@ msgstr "Примени исецање"
 msgid "translator-credits"
 msgstr ""
 "Марко М. Костић <marko.m.kostic@gmail.com>\n"
-"\n"
-"https://гном.срб — превод Гнома на српски језик"
+"https://гном.срб — превод Гнома на српски језик."
 
 #: src/about.rs:46
 msgid "Copyright © 2020–2024 Christopher Davis et al."
-msgstr ""
-"Право на копирање © 2020–2024 Кристофер Дејвис (Christopher Davis) и други."
+msgstr "Ауторско право © 2020–2024 Кристофер Дејвис (Christopher Davis) и сарадници"
 
-#: src/file_model.rs:180
+#: src/file_model.rs:211
 msgid "Could not list other files in directory."
-msgstr "Не могу излистати друге датотеке у директоријуму."
+msgstr "Не могу да излистим остале датотеке у директоријуму."
 
 #. Translators: Display of the f-number <https://en.wikipedia.org/wiki/F-number>. {} will be replaced with the number
-#: src/metadata.rs:263
+#: src/metadata.rs:256
 msgid "\\u{192}\\u{2215}{}"
 msgstr "\\u{192}\\u{2215}{}"
 
 #. Translators: Fractional exposure time (photography) in seconds
-#: src/metadata.rs:276
+#: src/metadata.rs:269
 msgid "1\\u{2215}{}\\u{202F}s"
 msgstr "1\\u{2215}{}\\u{202F}с"
 
 #. Translators: Exposure time (photography) in seconds
-#: src/metadata.rs:284
+#: src/metadata.rs:277
 msgid "{}\\u{202F}s"
 msgstr "{}\\u{202F}с"
 
-#: src/metadata.rs:298
+#: src/metadata.rs:291
 msgid "{}\\u{202F}mm"
 msgstr "{}\\u{202F}мм"
 
 #. Translators: short for "north" in GPS coordinate
-#: src/metadata.rs:338
+#: src/metadata.rs:331
 msgid "N"
 msgstr "С"
 
 #. Translators: short for "south" in GPS coordinate
-#: src/metadata.rs:342
+#: src/metadata.rs:335
 msgid "S"
 msgstr "Ј"
 
 #. Translators: short for "east" in GPS coordinate
-#: src/metadata.rs:351
+#: src/metadata.rs:344
 msgid "E"
 msgstr "И"
 
 #. Translators: short for "west" in GPS coordinate
-#: src/metadata.rs:355
+#: src/metadata.rs:348
 msgid "W"
 msgstr "З"
 
+#. / Returns localized date + time format
 #. Translators: This is the date and time format we use in metadata output etc.
 #. The format has to follow <https://docs.gtk.org/glib/method.DateTime.format.html>
 #. The default is already translated. Don't change if you are not sure what to
 #. use.
 #: src/util.rs:39
-#, c-format
 msgid "%x %X"
 msgstr "%x %X"
 
-#: src/util.rs:182 src/widgets/image_window.rs:639
+#: src/util.rs:182
 msgid "Failed to restore image from trash"
 msgstr "Нисам успео да вратим слику из смећа"
 
@@ -367,7 +332,7 @@ msgstr "Нисам успео да вратим слику из смећа"
 msgid "Drop Image to View"
 msgstr "Превуците слику да је прегледате"
 
-#: src/widgets/edit/crop.rs:364
+#: src/widgets/edit/crop.rs:363
 msgid "Failed to Edit Image"
 msgstr "Не могу да уредим слику"
 
@@ -377,11 +342,11 @@ msgstr "Слободно"
 
 #: src/widgets/edit/crop.ui:11
 msgid "Original"
-msgstr "Изворна размера"
+msgstr "Изворна"
 
 #: src/widgets/edit/crop.ui:16
 msgid "Square"
-msgstr "Квадратно"
+msgstr "Квадрат"
 
 #: src/widgets/edit/crop.ui:21
 msgid "5:4"
@@ -439,8 +404,7 @@ msgstr "Положена слика"
 msgid "Orientation Portrait"
 msgstr "Усправна слика"
 
-#: src/widgets/edit/crop.ui:252 src/widgets/image_page.ui:15
-#: src/widgets/image_window.ui:25
+#: src/widgets/edit/crop.ui:252 src/widgets/image_page.ui:15 src/widgets/image_window.ui:25
 msgid "Rotate"
 msgstr "Окрени"
 
@@ -466,7 +430,7 @@ msgstr "Изврни усправно"
 
 #: src/widgets/edit/crop.ui:306 src/widgets/edit/crop.ui:429
 msgid "_Reset"
-msgstr "_Поново постави"
+msgstr "В_рати"
 
 #: src/widgets/edit/crop.ui:307 src/widgets/edit/crop.ui:431
 msgid "Undo Changes in this View"
@@ -476,9 +440,9 @@ msgstr "Поништи промене у овом прегледу"
 msgid "Crop Selection"
 msgstr "Исеци изабрано"
 
-#. Translators: Filename suffix
 #. Translators: Filename suffix, {} is replaced by a number
-#: src/widgets/edit_window.rs:196 src/widgets/edit_window.rs:199
+#: src/widgets/edit_window.rs:196
+#, rust-format
 msgid " (Edited)"
 msgid_plural " (Edited {})"
 msgstr[0] " ({} уређена)"
@@ -486,23 +450,23 @@ msgstr[1] " ({} уређене)"
 msgstr[2] " ({} уређених)"
 msgstr[3] " (уређена)"
 
-#: src/widgets/edit_window.rs:294 src/widgets/edit_window.rs:320
+#: src/widgets/edit_window.rs:290 src/widgets/edit_window.rs:316
 msgid "Failed to save image."
 msgstr "Не могу да сачувам слику."
 
-#: src/widgets/edit_window.rs:350
+#: src/widgets/edit_window.rs:344
 msgid "Editing Image"
 msgstr "Уређивање слике"
 
-#: src/widgets/edit_window.rs:367
+#: src/widgets/edit_window.rs:361
 msgid "Failed to edit image."
 msgstr "Не могу да уредим слику."
 
-#: src/widgets/edit_window.rs:377 src/widgets/edit_window.rs:400
+#: src/widgets/edit_window.rs:371 src/widgets/edit_window.rs:394
 msgid "Failed to Save Image"
 msgstr "Не могу да сачувам слику"
 
-#: src/widgets/edit_window.rs:383
+#: src/widgets/edit_window.rs:377
 msgid "Saving Image"
 msgstr "Чувам слику"
 
@@ -516,7 +480,7 @@ msgstr "_Сачувај"
 
 #: src/widgets/edit_window.ui:92
 msgid "_Save As…"
-msgstr "Сачувај _као"
+msgstr "Сачувај _као…"
 
 #: src/widgets/edit_window.ui:100
 msgid "Keep original and create a new file"
@@ -532,11 +496,10 @@ msgstr "Оригинална слика ће бити премештена у с
 
 #: src/widgets/error_details.rs:80
 msgid ""
-"The following error occurred. If you think this is an issue with the "
-"program, please include this information when you report the error."
+"The following error occurred. If you think this is an issue with the program, please include this information "
+"when you report the error."
 msgstr ""
-"Дошло је до грешке. Уколико мислите да је проблем у програму, укључите ове "
-"податке када шаљете извештај о грешци."
+"Дошло је до грешке. Уколико мислите да је проблем у програму, укључите ове податке када шаљете извештај о грешци."
 
 #: src/widgets/error_details.ui:4
 msgid "Error Details"
@@ -544,47 +507,52 @@ msgstr "Појединости грешке"
 
 #: src/widgets/error_details.ui:19
 msgid ""
-"The image loader reported the following when trying to load or edit the "
-"image. Please include this information when you report an error. If "
-"possible, please also provide the image that causes the issue."
+"The image loader reported the following when trying to load or edit the image. Please include this information "
+"when you report an error. If possible, please also provide the image that causes the issue."
 msgstr ""
-"Учитавач слика је јавио следеће приликом учитавања или уређивања слике. "
-"Приложите ове податке приликом пријаве грешке. Ако је могуће, закачите и "
-"слику која је довела до грешке."
+"Учитавач слика је јавио следеће приликом учитавања или уређивања слике. Приложите ове податке приликом пријаве "
+"грешке. Ако је могуће, закачите и слику која је довела до грешке."
 
 #: src/widgets/error_details.ui:24
 msgid "Error Message"
-msgstr "Порука грешке"
+msgstr "Порука о грешци"
 
 #: src/widgets/error_details.ui:28
 msgid "Copy Error Message"
-msgstr "Копирај поруку грешке"
+msgstr "Копирај поруку о грешци"
 
 #: src/widgets/error_details.ui:68
 msgid "Report _Issue"
 msgstr "Пр_ијави проблем"
 
-#: src/widgets/image_page.rs:227
+#: src/widgets/image_page.rs:225
+#, rust-format
 msgid ""
-"No image loaders available. Maybe the “glycin-loaders” package with "
-"compatibility version “{}” is not installed."
+"No image loaders available. Maybe the “glycin-loaders” package with compatibility version “{}” is not installed."
 msgstr ""
-"Ниједан учитавач слика није доступан. Можда пакет „glycin-loaders“ са "
-"издањем компатибилности „{}“ није инсталиран."
+"Ниједан учитавач слика није доступан. Можда пакет „glycin-loaders“ са издањем компатибилности „{}“ није "
+"инсталиран."
 
-#: src/widgets/image_page.rs:242
+#: src/widgets/image_page.rs:243
+#, rust-format
 msgid "The image format “{} ({})” is known but not installed."
 msgstr "Формат слика „{} ({})“ је познат али није инсталиран."
 
-#: src/widgets/image_page.rs:249
+#: src/widgets/image_page.rs:251
+#, rust-format
 msgid "Unknown image format “{} ({}).”"
 msgstr "Непознат формат слике „{} ({}).“"
 
-#: src/widgets/image_page.rs:277
+#: src/widgets/image_page.rs:260
 msgid "There is not enough free memory available to load this image."
 msgstr "Недовољно слободне меморије за учитавање ове слике."
 
-#: src/widgets/image_page.rs:281
+#: src/widgets/image_page.rs:267
+#, rust-format
+msgid "Failed to load image file: {}"
+msgstr "Неуспело учитавање датотеке слике: {}"
+
+#: src/widgets/image_page.rs:272
 msgid "Either the image file is corrupted or it contains unsupported elements."
 msgstr "Датотека слике је покварена или садржи неподржане елементе."
 
@@ -594,7 +562,7 @@ msgstr "_Отвори са…"
 
 #: src/widgets/image_page.ui:10 src/widgets/image_window.ui:20
 msgid "_Print…"
-msgstr "Одштам_пај…"
+msgstr "Штам_пај…"
 
 #: src/widgets/image_page.ui:26 src/widgets/image_window.ui:36
 msgid "_Set as Background…"
@@ -622,105 +590,102 @@ msgstr "_Освежи"
 
 #: src/widgets/image_page.ui:123 src/widgets/image_window.ui:101
 msgid "Rotate Left"
-msgstr "Заокрени на лево"
+msgstr "Окрени на лево"
 
 #: src/widgets/image_page.ui:133 src/widgets/image_window.ui:111
 msgid "Rotate Right"
-msgstr "Заокрени на десно"
-
-#: src/widgets/image_view.rs:197
-msgid "{} %"
-msgstr "{} %"
+msgstr "Окрени на десно"
 
 #. Translators: This is a toast notification, informing the user that
 #. an image has been set as background.
-#: src/widgets/image_view.rs:836
+#: src/widgets/image_view.rs:866
 msgid "Set as background."
-msgstr "Постави као позадину."
+msgstr "Постављено за позадину."
 
-#: src/widgets/image_view.rs:849
+#: src/widgets/image_view.rs:872
 msgid "Could not set background."
 msgstr "Не могу поставити позадину."
 
-#: src/widgets/image_view.ui:30
+#: src/widgets/image_view.ui:26
 msgid "Previous Image"
 msgstr "Претходна слика"
 
-#: src/widgets/image_view.ui:40
+#: src/widgets/image_view.ui:36
 msgid "Next Image"
-msgstr "Наредна слика"
+msgstr "Следећа слика"
 
-#: src/widgets/image_view.ui:74
+#: src/widgets/image_view.ui:66
 msgid "Zoom Out"
 msgstr "Умањи приказ"
 
-#: src/widgets/image_view.ui:85
+#: src/widgets/image_view.ui:77
 msgid "Zoom In"
 msgstr "Увећај приказ"
 
-#: src/widgets/image_view.ui:100
+#: src/widgets/image_view.ui:92
 msgid "Toggle Zoom"
 msgstr "Омогућавање увећања"
 
-#: src/widgets/image_view.ui:108
+#: src/widgets/image_view.ui:100
 msgid "Zoom to Specific Level"
 msgstr "Увећај на одређени ниво"
 
-#: src/widgets/image_view.ui:237
+#: src/widgets/image_view.ui:229
 msgid "Custom Zoom Level"
 msgstr "Произвољни ниво увећања"
 
-#: src/widgets/image_view.ui:243
+#: src/widgets/image_view.ui:235
 msgid "Zoom to Specified Level"
 msgstr "Увећај на задати ниво"
 
-#: src/widgets/image_window.rs:503
+#: src/widgets/image_window.rs:528
 msgid "Supported image formats"
 msgstr "Подржане врсте слика"
 
-#: src/widgets/image_window.rs:509
+#: src/widgets/image_window.rs:534
 msgid "All files"
 msgstr "Све датотеке"
 
-#: src/widgets/image_window.rs:516
+#: src/widgets/image_window.rs:541
 msgid "Open Image"
 msgstr "Отвори слику"
 
-#: src/widgets/image_window.rs:602
+#: src/widgets/image_window.rs:633
 msgid "Image copied to clipboard"
-msgstr "Слика копирана у оставу"
+msgstr "Слика је умножена у оставу"
 
-#: src/widgets/image_window.rs:623
+#: src/widgets/image_window.rs:654
 msgid "Image moved to trash"
 msgstr "Слика премештена у смеће"
 
-#: src/widgets/image_window.rs:624
+#: src/widgets/image_window.rs:655
 msgid "Undo"
 msgstr "Опозови"
 
-#: src/widgets/image_window.rs:654
+#: src/widgets/image_window.rs:685
 msgid "Failed to move image to trash"
-msgstr "Неуспех при премештању слике у смеће"
+msgstr "Премештање слике у смеће није успело"
 
-#: src/widgets/image_window.rs:678
+#: src/widgets/image_window.rs:709
 msgid "Permanently Delete Image?"
 msgstr "Трајно обрисати слику?"
 
-#: src/widgets/image_window.rs:680
+#: src/widgets/image_window.rs:711
+#, rust-format
 msgid "After deleting the image “{}” it will be permanently lost."
 msgstr "Након брисања слике „{}“ иста ће бити трајно изгубљена."
 
-#: src/widgets/image_window.rs:688
+#: src/widgets/image_window.rs:719
 msgid "Cancel"
 msgstr "Откажи"
 
-#: src/widgets/image_window.rs:689
+#: src/widgets/image_window.rs:720
 msgid "Delete"
 msgstr "Обриши"
 
-#: src/widgets/image_window.rs:700
+#: src/widgets/image_window.rs:731
 msgid "Failed to delete image"
-msgstr "Неуспешно брисање слике"
+msgstr "Брисање слике није успело"
 
 #: src/widgets/image_window.ui:6
 msgid "_New Window"
@@ -736,7 +701,7 @@ msgstr "По_моћ"
 
 #: src/widgets/image_window.ui:50
 msgid "_Keyboard Shortcuts"
-msgstr "Пречице _тастатуре"
+msgstr "Пречице на _тастатури"
 
 #: src/widgets/image_window.ui:54
 msgid "_About Image Viewer"
@@ -744,7 +709,7 @@ msgstr "_О прегледачу слика"
 
 #: src/widgets/image_window.ui:87
 msgid "Toggle Fullscreen"
-msgstr "Преко целог екрана"
+msgstr "Окини режим преко целог екрана"
 
 #: src/widgets/image_window.ui:93
 msgid "Main Menu"
@@ -756,73 +721,74 @@ msgstr "Својства слике"
 
 #: src/widgets/image_window.ui:132
 msgid "Edit Image"
-msgstr "Уреди сллику"
+msgstr "Уреди слику"
 
 #: src/widgets/image_window.ui:220
-msgid "View Images"
-msgstr "Прегледај слике"
+msgid "View and Edit Images"
+msgstr "Прегледајте и уређујте слике"
 
 #: src/widgets/image_window.ui:221
 msgid "Drag and drop images here"
-msgstr "Превуци и спусти слике овде"
+msgstr "Превуците и спустите слике овде"
 
 #: src/widgets/image_window.ui:225
 msgid "_Open Files…"
 msgstr "_Отвори датотеке…"
 
-#: src/widgets/print.rs:108
+#: src/widgets/print.rs:109
 msgid "Top"
 msgstr "Врх"
 
-#: src/widgets/print.rs:109
+#: src/widgets/print.rs:110
 msgid "Center"
 msgstr "Средина"
 
-#: src/widgets/print.rs:110
+#: src/widgets/print.rs:111
 msgid "Bottom"
 msgstr "Дно"
 
-#: src/widgets/print.rs:111
+#: src/widgets/print.rs:112
 msgid "Left"
 msgstr "Лево"
 
-#: src/widgets/print.rs:112
+#: src/widgets/print.rs:113
 msgid "Right"
 msgstr "Деснo"
 
 #. Translators: Shorthand for centimeter
-#: src/widgets/print.rs:148
+#: src/widgets/print.rs:149
 msgid "cm"
 msgstr "цм"
 
 #. Translators: Shorthand for inch
-#: src/widgets/print.rs:150
+#: src/widgets/print.rs:151
 msgid "in"
 msgstr "инч"
 
 #. Translators: Shorthand for pixel
-#: src/widgets/print.rs:152
+#: src/widgets/print.rs:153
 msgid "px"
 msgstr "пиксел"
 
 #. Translators: {} is a placeholder for the filename
-#: src/widgets/print.rs:361
+#: src/widgets/print.rs:364
+#, rust-format
 msgid "Print “{}”"
-msgstr "Испиши „{}“"
+msgstr "Одштампај „{}“"
 
-#: src/widgets/print.rs:476
+#: src/widgets/print.rs:477
 msgid "Continue…"
 msgstr "Настави…"
 
-#: src/widgets/print.rs:477
+#: src/widgets/print.rs:478
 msgid "Print Image"
 msgstr "Штампај слику"
 
-#: src/widgets/print.rs:791
+#: src/widgets/print.rs:797
 msgid "_Scale"
 msgstr "_Размера"
 
-#: src/widgets/print.rs:794
+#: src/widgets/print.rs:800
 msgid "_Width"
 msgstr "_Ширина"
 
@@ -865,11 +831,11 @@ msgstr "Јединица ивица"
 
 #: src/widgets/print.ui:128
 msgid "_Horizontal"
-msgstr "_Водоравно"
+msgstr "_Хоризонтално"
 
 #: src/widgets/print.ui:134
 msgid "_Vertical"
-msgstr "_Усправно"
+msgstr "_Вертикално"
 
 #: src/widgets/print.ui:142 src/widgets/properties_view.ui:56
 msgid "Image Size"
@@ -910,7 +876,7 @@ msgstr ", {}\\u{202F}бита"
 msgid "{}\\u{202F}\\u{D7}\\u{202F}{}"
 msgstr "{}\\u{202F}\\u{D7}\\u{202F}{}"
 
-#: src/widgets/properties_view.rs:329
+#: src/widgets/properties_view.rs:326
 msgid "Image Coordinates Copied"
 msgstr "Координате слике копиране"
 
@@ -920,11 +886,11 @@ msgstr "Фасцикла"
 
 #: src/widgets/properties_view.ui:28
 msgid "Open Containing Folder"
-msgstr "Отвори припадајућу фасциклу"
+msgstr "Отвори садржајну фасциклу"
 
 #: src/widgets/properties_view.ui:41
 msgid "URI"
-msgstr "Путања"
+msgstr "Адреса"
 
 #: src/widgets/properties_view.ui:66
 msgid "Image Format"
@@ -983,15 +949,6 @@ msgstr "Жижна даљина"
 msgid "Maker, Model"
 msgstr "Произвођач и модел"
 
-#: src/widgets/window.rs:222
+#: src/widgets/window.rs:206
 msgid "Show Details"
-msgstr "Прикажи више података"
-
-#~ msgid "Copy to Clipboard"
-#~ msgstr "Копирај у оставу"
-
-#~ msgid "Move to Trash"
-#~ msgstr "Премести у смеће"
-
-#~ msgid "The Loupe Team"
-#~ msgstr "Тим Лупе"
+msgstr "Прикажи појединости"
