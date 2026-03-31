@@ -1,0 +1,968 @@
+# Cornish translation for loupe.
+# Copyright (C) 2026 loupe's COPYRIGHT HOLDER
+# This file is distributed under the same license as the loupe package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Flynn Peck <cirilla@tuta.io>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: loupe main\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
+"POT-Creation-Date: 2026-03-13 14:05+0000\n"
+"PO-Revision-Date: 2026-03-31 12:09+0100\n"
+"Last-Translator: Flynn Peck <cirilla@tuta.io>\n"
+"Language-Team: kw\n"
+"Language: kw\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-DL-VCS-Web: https://gitlab.gnome.org/GNOME/loupe\n"
+"X-DL-Lang: kw\n"
+"X-DL-Module: loupe\n"
+"X-DL-Branch: main\n"
+"X-DL-Domain: po\n"
+"X-DL-State: Translating\n"
+"X-Generator: Gtranslator 50.0\n"
+
+#: data/org.gnome.Loupe.desktop.in.in:2
+#: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:32
+#: src/widgets/image_window.rs:898
+msgid "Image Viewer"
+msgstr "Gwelell Skeusen"
+
+#: data/org.gnome.Loupe.desktop.in.in:3
+#: data/org.gnome.Loupe.metainfo.xml.in.in:13
+msgid "View and edit images"
+msgstr "Gweles ha golegi skeusennow"
+
+#: data/org.gnome.Loupe.desktop.in.in:11
+msgid "Picture;Graphics;Loupe;"
+msgstr "Skeusen;Grafek;Loupe;"
+
+#: data/org.gnome.Loupe.gschema.xml.in:6
+msgid "Show the image properties sidebar"
+msgstr "Diskwedhes an bordh lestri teythiennow skeusen"
+
+#. developer_name tag deprecated with Appstream 1.0
+#: data/org.gnome.Loupe.metainfo.xml.in.in:8 src/about.rs:35
+msgid "The GNOME Project"
+msgstr "An Ragdres GNOME"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:15
+msgid ""
+"Explore images, view their metadata, and make quick edits by cropping, "
+"rotating, or flipping them."
+msgstr ""
+"Trovya skeusennow, gweles aga metadata, ha golegi yn uskis gans ow tibenna, "
+"ow rosella, po ow flyppya y's."
+
+#: data/resources/shortcuts-dialog.ui:6
+msgctxt "shortcut window"
+msgid "General Shortcuts"
+msgstr "Kesunyansow Ollgemmyn"
+
+#: data/resources/shortcuts-dialog.ui:9
+msgctxt "shortcut window"
+msgid "Copy Image or Selected Text to Clipboard"
+msgstr "Kopia Skeusen po Tekst Dewisys dhe Astel Glypp"
+
+#: data/resources/shortcuts-dialog.ui:15
+msgctxt "shortcut window"
+msgid "Move Image to Trash"
+msgstr "Gwaya Skeusen dhe Atalgist"
+
+#: data/resources/shortcuts-dialog.ui:21
+msgctxt "shortcut window"
+msgid "Permanently Delete Image"
+msgstr "Dilea Skeusen yn Andileadow"
+
+#: data/resources/shortcuts-dialog.ui:27
+msgctxt "shortcut window"
+msgid "Open Image with Other App"
+msgstr "Ygeri Skeusen gans App Aral"
+
+#: data/resources/shortcuts-dialog.ui:33
+msgctxt "shortcut window"
+msgid "Set as Background"
+msgstr "Settya avel Kilva"
+
+#: data/resources/shortcuts-dialog.ui:39
+msgctxt "shortcut window"
+msgid "New Window"
+msgstr "Fenester Nowydh"
+
+#: data/resources/shortcuts-dialog.ui:45
+msgctxt "shortcut window"
+msgid "Open Help"
+msgstr "Ygeri Gweres"
+
+#: data/resources/shortcuts-dialog.ui:51
+msgctxt "shortcut window"
+msgid "Show Keyboard Shortcuts"
+msgstr "Diskwedhes Kesunyansow Bysowek"
+
+#: data/resources/shortcuts-dialog.ui:57
+msgctxt "shortcut window"
+msgid "Close Window"
+msgstr "Degea Fenester"
+
+#: data/resources/shortcuts-dialog.ui:63
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "Kywtya"
+
+#: data/resources/shortcuts-dialog.ui:71
+msgctxt "shortcut window"
+msgid "Navigate Images"
+msgstr "Viajya tredh Skeusennow"
+
+#: data/resources/shortcuts-dialog.ui:75 data/resources/shortcuts-dialog.ui:89
+msgctxt "shortcut window"
+msgid "Next Image"
+msgstr "Skeusen Nessa"
+
+#: data/resources/shortcuts-dialog.ui:82 data/resources/shortcuts-dialog.ui:96
+msgctxt "shortcut window"
+msgid "Previous Image"
+msgstr "Skeusen Kyns"
+
+#: data/resources/shortcuts-dialog.ui:102
+msgctxt "shortcut window"
+msgid "First Image"
+msgstr "Skeusen Kynsa"
+
+#: data/resources/shortcuts-dialog.ui:108
+msgctxt "shortcut window"
+msgid "Last Image"
+msgstr "Skeusen Diwettha"
+
+#: data/resources/shortcuts-dialog.ui:116
+msgctxt "shortcut window"
+msgid "Rotate Image"
+msgstr "Rosella Skeusen"
+
+#: data/resources/shortcuts-dialog.ui:119
+#: data/resources/shortcuts-dialog.ui:253
+msgctxt "shortcut window"
+msgid "Rotate Clockwise"
+msgstr "Rosella Naswedhek"
+
+#: data/resources/shortcuts-dialog.ui:125
+#: data/resources/shortcuts-dialog.ui:259
+msgctxt "shortcut window"
+msgid "Rotate Counterclockwise"
+msgstr "Rosella Gorthnaswedhek"
+
+#: data/resources/shortcuts-dialog.ui:133
+msgctxt "shortcut window"
+msgid "Zoom Image"
+msgstr "Braster Skeusen"
+
+#: data/resources/shortcuts-dialog.ui:136
+msgctxt "shortcut window"
+msgid "Zoom In"
+msgstr "Moghhe"
+
+#: data/resources/shortcuts-dialog.ui:142
+msgctxt "shortcut window"
+msgid "Zoom Out"
+msgstr "Lehe"
+
+#: data/resources/shortcuts-dialog.ui:148
+msgctxt "shortcut window"
+msgid "Best Fit"
+msgstr "Desedhans Gwella"
+
+#: data/resources/shortcuts-dialog.ui:154
+msgctxt "shortcut window"
+msgid "Original Scale"
+msgstr "Braster Gwreydhek"
+
+#: data/resources/shortcuts-dialog.ui:160
+msgctxt "shortcut window"
+msgid "200% Scale"
+msgstr "Braster 200%"
+
+#: data/resources/shortcuts-dialog.ui:168
+msgctxt "shortcut window"
+msgid "Pan View"
+msgstr "Gwaya Gwel"
+
+#: data/resources/shortcuts-dialog.ui:171
+msgctxt "shortcut window"
+msgid "Pan Left"
+msgstr "Gwaya A-gledh"
+
+#: data/resources/shortcuts-dialog.ui:177
+msgctxt "shortcut window"
+msgid "Pan Right"
+msgstr "Gwaya A-dhyghow"
+
+#: data/resources/shortcuts-dialog.ui:183
+msgctxt "shortcut window"
+msgid "Pan Up"
+msgstr "Gwaya War-vann"
+
+#: data/resources/shortcuts-dialog.ui:189
+msgctxt "shortcut window"
+msgid "Pan Down"
+msgstr "Gwaya War-woles"
+
+#: data/resources/shortcuts-dialog.ui:197
+msgctxt "shortcut window"
+msgid "View"
+msgstr "Gwel"
+
+#: data/resources/shortcuts-dialog.ui:200
+msgctxt "shortcut window"
+msgid "Toggle Fullscreen"
+msgstr "Dewis Leunskrin"
+
+#: data/resources/shortcuts-dialog.ui:206
+msgctxt "shortcut window"
+msgid "Leave Fullscreen"
+msgstr "Diberth Leunskrin"
+
+#: data/resources/shortcuts-dialog.ui:212
+msgctxt "shortcut window"
+msgid "Toggle Image Properties"
+msgstr "Dewis Teythiennow Skeusen"
+
+#: data/resources/shortcuts-dialog.ui:218
+msgctxt "shortcut window"
+msgid "Show Main Menu"
+msgstr "Diskwedhes Rol Chif"
+
+#: data/resources/shortcuts-dialog.ui:226
+msgctxt "shortcut window"
+msgid "Editing"
+msgstr "Golegi"
+
+#: data/resources/shortcuts-dialog.ui:229
+msgctxt "shortcut window"
+msgid "Open Editing View"
+msgstr "Ygeri Gwel Golegi"
+
+#: data/resources/shortcuts-dialog.ui:235
+msgctxt "shortcut window"
+msgid "Replace Original"
+msgstr "Aslea Mammfurv"
+
+#: data/resources/shortcuts-dialog.ui:241
+msgctxt "shortcut window"
+msgid "Save As"
+msgstr "Sawya Avel"
+
+#: data/resources/shortcuts-dialog.ui:247
+msgctxt "shortcut window"
+msgid "Cancel"
+msgstr "Hedhi"
+
+#: data/resources/shortcuts-dialog.ui:265
+msgctxt "shortcut window"
+msgid "Mirror Horizontally"
+msgstr "Dastewynnya yn Hworwelyek"
+
+#: data/resources/shortcuts-dialog.ui:271
+msgctxt "shortcut window"
+msgid "Mirror Vertically"
+msgstr "Dastewynnya yn Plommwedhek"
+
+#: data/resources/shortcuts-dialog.ui:277
+msgctxt "shortcut window"
+msgid "Apply Crop"
+msgstr "Gweytha Dibennans"
+
+#. Translators: Replace "translator-credits" with your names, one name per line
+#: src/about.rs:45
+msgid "translator-credits"
+msgstr "Flynn"
+
+#: src/about.rs:46
+msgid "Copyright © 2020–2024 Christopher Davis et al."
+msgstr "Gwirbryntyans © 2020–2024 Christopher Davis et al."
+
+#: src/file_model.rs:211
+msgid "Could not list other files in directory."
+msgstr "Ny yllir rolya restrennow aral yn restrenva."
+
+#. Translators: Display of the f-number <https://en.wikipedia.org/wiki/F-number>. {} will be replaced with the number
+#: src/metadata.rs:256
+msgid "\\u{192}\\u{2215}{}"
+msgstr "\\u{192}\\u{2215}{}"
+
+#. Translators: Fractional exposure time (photography) in seconds
+#: src/metadata.rs:269
+msgid "1\\u{2215}{}\\u{202F}s"
+msgstr "1\\u{2215}{}\\u{202F}e"
+
+#. Translators: Exposure time (photography) in seconds
+#: src/metadata.rs:277
+msgid "{}\\u{202F}s"
+msgstr "{}\\u{202F}e"
+
+#: src/metadata.rs:291
+msgid "{}\\u{202F}mm"
+msgstr "{}\\u{202F}mm"
+
+#. Translators: short for "north" in GPS coordinate
+#: src/metadata.rs:331
+msgid "N"
+msgstr "N"
+
+#. Translators: short for "south" in GPS coordinate
+#: src/metadata.rs:335
+msgid "S"
+msgstr "S"
+
+#. Translators: short for "east" in GPS coordinate
+#: src/metadata.rs:344
+msgid "E"
+msgstr "E"
+
+#. Translators: short for "west" in GPS coordinate
+#: src/metadata.rs:348
+msgid "W"
+msgstr "W"
+
+#. / Returns localized date + time format
+#. Translators: This is the date and time format we use in metadata output etc.
+#. The format has to follow <https://docs.gtk.org/glib/method.DateTime.format.html>
+#. The default is already translated. Don't change if you are not sure what to
+#. use.
+#: src/util.rs:39
+msgid "%x %X"
+msgstr "%x %X"
+
+#: src/util.rs:182
+msgid "Failed to restore image from trash"
+msgstr "Ny yllir daskor skeusen dhyworth atalgist"
+
+#: src/widgets/drag_overlay.ui:15
+msgid "Drop Image to View"
+msgstr "Droppya Skeusen rag Gweles"
+
+#: src/widgets/edit/crop.rs:363
+msgid "Failed to Edit Image"
+msgstr "Ny Yllir Golegi Skeusen"
+
+#: src/widgets/edit/crop.ui:6
+msgid "Free"
+msgstr "Rydh"
+
+#: src/widgets/edit/crop.ui:11
+msgid "Original"
+msgstr "Mammfurv"
+
+#: src/widgets/edit/crop.ui:16
+msgid "Square"
+msgstr "Pedrek"
+
+#: src/widgets/edit/crop.ui:21
+msgid "5:4"
+msgstr "5:4"
+
+#: src/widgets/edit/crop.ui:26
+msgid "4:3"
+msgstr "4:3"
+
+#: src/widgets/edit/crop.ui:31
+msgid "3:2"
+msgstr "3:2"
+
+#: src/widgets/edit/crop.ui:36
+msgid "16:9"
+msgstr "16:9"
+
+#: src/widgets/edit/crop.ui:77 src/widgets/edit/crop.ui:364
+msgid "Aspect Ratio"
+msgstr "Komparriv Braster"
+
+#: src/widgets/edit/crop.ui:91
+msgid "_Free"
+msgstr "_Rydh"
+
+#: src/widgets/edit/crop.ui:109
+msgid "_Original"
+msgstr "_Mammfurv"
+
+#: src/widgets/edit/crop.ui:127
+msgid "_Square"
+msgstr "_Pedrek"
+
+#: src/widgets/edit/crop.ui:145
+msgid "_5:4"
+msgstr "_5:4"
+
+#: src/widgets/edit/crop.ui:166
+msgid "_4:3"
+msgstr "_4:3"
+
+#: src/widgets/edit/crop.ui:187
+msgid "_3:2"
+msgstr "_3:2"
+
+#: src/widgets/edit/crop.ui:208
+msgid "_16:9"
+msgstr "_16:9"
+
+#: src/widgets/edit/crop.ui:231 src/widgets/edit/crop.ui:377
+msgid "Orientation Landscape"
+msgstr "Tuedhder Gorwelyek"
+
+#: src/widgets/edit/crop.ui:240 src/widgets/edit/crop.ui:389
+msgid "Orientation Portrait"
+msgstr "Tuedhder Plommwedhek"
+
+#: src/widgets/edit/crop.ui:252 src/widgets/image_page.ui:15
+#: src/widgets/image_window.ui:25
+msgid "Rotate"
+msgstr "Rosella"
+
+#: src/widgets/edit/crop.ui:261 src/widgets/edit/crop.ui:407
+msgid "Rotate Counter Clockwise"
+msgstr "Rosella Gorthnaswedhek"
+
+#: src/widgets/edit/crop.ui:268
+msgid "Rotate Clockwise"
+msgstr "Rosella Naswedhek"
+
+#: src/widgets/edit/crop.ui:278
+msgid "Flip"
+msgstr "Flyppya"
+
+#: src/widgets/edit/crop.ui:287 src/widgets/edit/crop.ui:415
+msgid "Mirror Horizontally"
+msgstr "Dastewynnya yn Hworwelyek"
+
+#: src/widgets/edit/crop.ui:294
+msgid "Mirror Vertically"
+msgstr "Dastewynnya yn Plommwedhek"
+
+#: src/widgets/edit/crop.ui:306 src/widgets/edit/crop.ui:429
+msgid "_Reset"
+msgstr "_Dasgorra"
+
+#: src/widgets/edit/crop.ui:307 src/widgets/edit/crop.ui:431
+msgid "Undo Changes in this View"
+msgstr "Digelmi Chanjyow y'n Gwel ma"
+
+#: src/widgets/edit/crop_selection.ui:46
+msgid "Crop Selection"
+msgstr "Dibenna Dewis"
+
+#. Translators: Filename suffix, {} is replaced by a number
+#: src/widgets/edit_window.rs:196
+#, rust-format
+msgid " (Edited)"
+msgid_plural " (Edited {})"
+msgstr[0] " (Golegys)"
+msgstr[1] " (Golegys {})"
+
+#: src/widgets/edit_window.rs:290 src/widgets/edit_window.rs:316
+msgid "Failed to save image."
+msgstr "Ny yllir sawya skeusen."
+
+#: src/widgets/edit_window.rs:344
+msgid "Editing Image"
+msgstr "Ow Golegi Skeusen"
+
+#: src/widgets/edit_window.rs:361
+msgid "Failed to edit image."
+msgstr "Ny yllir golegi skeusen."
+
+#: src/widgets/edit_window.rs:371 src/widgets/edit_window.rs:394
+msgid "Failed to Save Image"
+msgstr "Ny Yllir Sawya Skeusen"
+
+#: src/widgets/edit_window.rs:377
+msgid "Saving Image"
+msgstr "Ow Sawya Skeusen"
+
+#: src/widgets/edit_window.ui:64
+msgid "_Cancel"
+msgstr "_Hedhi"
+
+#: src/widgets/edit_window.ui:71
+msgid "_Save"
+msgstr "_Sawya"
+
+#: src/widgets/edit_window.ui:92
+msgid "_Save As…"
+msgstr "_Sawya Avel…"
+
+#: src/widgets/edit_window.ui:100
+msgid "Keep original and create a new file"
+msgstr "Gwitha mammfurv ha gul restren nowydh"
+
+#: src/widgets/edit_window.ui:120
+msgid "_Replace Original"
+msgstr "_Aslea Mammfurv"
+
+#: src/widgets/edit_window.ui:128
+msgid "Original image will be moved to the trash"
+msgstr "Skeusen gwreydhek a wra bos gwayas dhe'n atalgist"
+
+#: src/widgets/error_details.rs:80
+msgid ""
+"The following error occurred. If you think this is an issue with the "
+"program, please include this information when you report the error."
+msgstr ""
+"Yma an error a sew. Mar krysowgh kudyn gans an towlen yw hemma, synsi an "
+"kedhlow ma mar pleg pan ow terivas an error."
+
+#: src/widgets/error_details.ui:4
+msgid "Error Details"
+msgstr "Manylyon Error"
+
+#: src/widgets/error_details.ui:19
+msgid ""
+"The image loader reported the following when trying to load or edit the "
+"image. Please include this information when you report an error. If "
+"possible, please also provide the image that causes the issue."
+msgstr ""
+"An kargell skeusen a dherivas an pyth a sew pan owth assaya karga po golegi "
+"an skeusen. Synsi an kedhlow ma mar pleg pan ow terivas error. Mars yw "
+"possybyl, provia an skeusen ynwedh mar pleg."
+
+#: src/widgets/error_details.ui:24
+msgid "Error Message"
+msgstr "Messach Error"
+
+#: src/widgets/error_details.ui:28
+msgid "Copy Error Message"
+msgstr "Kopia Messach Error"
+
+#: src/widgets/error_details.ui:68
+msgid "Report _Issue"
+msgstr "Derivas _Kudyn"
+
+#: src/widgets/image_page.rs:225
+#, rust-format
+msgid ""
+"No image loaders available. Maybe the “glycin-loaders” package with "
+"compatibility version “{}” is not installed."
+msgstr ""
+"Nyns eus kargellow skeusen kavadow. Martesen an fardel “glycin-loaders” gans "
+"versyon kesplegadewder “{}” nyns yw leys."
+
+#: src/widgets/image_page.rs:243
+#, rust-format
+msgid "The image format “{} ({})” is known but not installed."
+msgstr "An furvas skeusen “{} ({})” yw koth mes an leys."
+
+#: src/widgets/image_page.rs:251
+#, rust-format
+msgid "Unknown image format “{} ({}).”"
+msgstr "Furvas skeusen ankoth “{} ({}).”"
+
+#: src/widgets/image_page.rs:260
+msgid "There is not enough free memory available to load this image."
+msgstr "Nyns eus kov kavadow lowr rag karga an skeusen ma."
+
+#: src/widgets/image_page.rs:267
+#, rust-format
+msgid "Failed to load image file: {}"
+msgstr "Ny yllir karga restren skeusen: {}"
+
+#: src/widgets/image_page.rs:272
+msgid "Either the image file is corrupted or it contains unsupported elements."
+msgstr "Po an skeusen yw legrys po synsi darnow anskoodhys."
+
+#: src/widgets/image_page.ui:6 src/widgets/image_window.ui:16
+msgid "_Open With…"
+msgstr "_Ygeri Gans…"
+
+#: src/widgets/image_page.ui:10 src/widgets/image_window.ui:20
+msgid "_Print…"
+msgstr "_Pryntya…"
+
+#: src/widgets/image_page.ui:26 src/widgets/image_window.ui:36
+msgid "_Set as Background…"
+msgstr "_Settya avel Kilva…"
+
+#: src/widgets/image_page.ui:30 src/widgets/image_window.ui:40
+msgid "_Delete"
+msgstr "_Dilea"
+
+#: src/widgets/image_page.ui:34
+msgid "_Copy"
+msgstr "_Kopia"
+
+#: src/widgets/image_page.ui:63
+msgid "Could not Load Image"
+msgstr "Ny Yllir Karga Skeusen"
+
+#: src/widgets/image_page.ui:71
+msgid "More _Information"
+msgstr "_Kedhlow Moy"
+
+#: src/widgets/image_page.ui:81
+msgid "_Reload"
+msgstr "_Daskarga"
+
+#: src/widgets/image_page.ui:123 src/widgets/image_window.ui:101
+msgid "Rotate Left"
+msgstr "Rosella A-gledh"
+
+#: src/widgets/image_page.ui:133 src/widgets/image_window.ui:111
+msgid "Rotate Right"
+msgstr "Rosella A-dhyghow"
+
+#. Translators: This is a toast notification, informing the user that
+#. an image has been set as background.
+#: src/widgets/image_view.rs:866
+msgid "Set as background."
+msgstr "Settya avel kilva."
+
+#: src/widgets/image_view.rs:872
+msgid "Could not set background."
+msgstr "Ny yllir settya kilva."
+
+#: src/widgets/image_view.ui:26
+msgid "Previous Image"
+msgstr "Skeusen Kyns"
+
+#: src/widgets/image_view.ui:36
+msgid "Next Image"
+msgstr "Skeusen Nessa"
+
+#: src/widgets/image_view.ui:66
+msgid "Zoom Out"
+msgstr "Lehe"
+
+#: src/widgets/image_view.ui:77
+msgid "Zoom In"
+msgstr "Moghhe"
+
+#: src/widgets/image_view.ui:92
+msgid "Toggle Zoom"
+msgstr "Dewis Moghhe/Lehe"
+
+#: src/widgets/image_view.ui:100
+msgid "Zoom to Specific Level"
+msgstr "Moghhe/Lehe dhe Nivel Komparek"
+
+#: src/widgets/image_view.ui:229
+msgid "Custom Zoom Level"
+msgstr "Nivel A-vusur"
+
+#: src/widgets/image_view.ui:235
+msgid "Zoom to Specified Level"
+msgstr "Moghhe/Lehe dhe Nivel Ragnotys"
+
+#: src/widgets/image_window.rs:528
+msgid "Supported image formats"
+msgstr "Furvasow skeusen skoodhys"
+
+#: src/widgets/image_window.rs:534
+msgid "All files"
+msgstr "Oll restrennow"
+
+#: src/widgets/image_window.rs:541
+msgid "Open Image"
+msgstr "Ygeri Skeusen"
+
+#: src/widgets/image_window.rs:633
+msgid "Image copied to clipboard"
+msgstr "Skeusen kopys war astel glypp"
+
+#: src/widgets/image_window.rs:654
+msgid "Image moved to trash"
+msgstr "Skeusen gwayas dhe atalgist"
+
+#: src/widgets/image_window.rs:655
+msgid "Undo"
+msgstr "Digelmi"
+
+#: src/widgets/image_window.rs:685
+msgid "Failed to move image to trash"
+msgstr "Ny yllir gwaya skeusen dhe atalgist"
+
+#: src/widgets/image_window.rs:709
+msgid "Permanently Delete Image?"
+msgstr "Dilea Skeusen yn Andileadow?"
+
+#: src/widgets/image_window.rs:711
+#, rust-format
+msgid "After deleting the image “{}” it will be permanently lost."
+msgstr "Wosa ow tilea an skeusen “{}” kellys yw andileadow yw."
+
+#: src/widgets/image_window.rs:719
+msgid "Cancel"
+msgstr "Hedhi"
+
+#: src/widgets/image_window.rs:720
+msgid "Delete"
+msgstr "Dilea"
+
+#: src/widgets/image_window.rs:731
+msgid "Failed to delete image"
+msgstr "Ny yllir dilea skeusen"
+
+#: src/widgets/image_window.ui:6
+msgid "_New Window"
+msgstr "Fenester _Nowydh"
+
+#: src/widgets/image_window.ui:10
+msgid "_Open…"
+msgstr "_Ygeri…"
+
+#: src/widgets/image_window.ui:46
+msgid "_Help"
+msgstr "_Gweres"
+
+#: src/widgets/image_window.ui:50
+msgid "_Keyboard Shortcuts"
+msgstr "_Kesunyansow Bysowek"
+
+#: src/widgets/image_window.ui:54
+msgid "_About Image Viewer"
+msgstr "_A-dro dhe Welell Skeusen"
+
+#: src/widgets/image_window.ui:87
+msgid "Toggle Fullscreen"
+msgstr "Dewis Leunskrin"
+
+#: src/widgets/image_window.ui:93
+msgid "Main Menu"
+msgstr "Rol Chif"
+
+#: src/widgets/image_window.ui:125
+msgid "Image Properties"
+msgstr "Teythiennow Skeusen"
+
+#: src/widgets/image_window.ui:132
+msgid "Edit Image"
+msgstr "Golegi Skeusen"
+
+#: src/widgets/image_window.ui:220
+msgid "View and Edit Images"
+msgstr "Gweles ha Golegi Skeusennow"
+
+#: src/widgets/image_window.ui:221
+msgid "Drag and drop images here"
+msgstr "Drayla ha droppya skeusennow omma"
+
+#: src/widgets/image_window.ui:225
+msgid "_Open Files…"
+msgstr "_Ygeri Restrennow…"
+
+#: src/widgets/print.rs:109
+msgid "Top"
+msgstr "A-wartha"
+
+#: src/widgets/print.rs:110
+msgid "Center"
+msgstr "Kres"
+
+#: src/widgets/print.rs:111
+msgid "Bottom"
+msgstr "A-woles"
+
+#: src/widgets/print.rs:112
+msgid "Left"
+msgstr "A-gledh"
+
+#: src/widgets/print.rs:113
+msgid "Right"
+msgstr "A-dhyghow"
+
+#. Translators: Shorthand for centimeter
+#: src/widgets/print.rs:149
+msgid "cm"
+msgstr "cm"
+
+#. Translators: Shorthand for inch
+#: src/widgets/print.rs:151
+msgid "in"
+msgstr "mv"
+
+#. Translators: Shorthand for pixel
+#: src/widgets/print.rs:153
+msgid "px"
+msgstr "pks"
+
+#. Translators: {} is a placeholder for the filename
+#: src/widgets/print.rs:364
+#, rust-format
+msgid "Print “{}”"
+msgstr "Pryntya “{}”"
+
+#: src/widgets/print.rs:477
+msgid "Continue…"
+msgstr "Pesya…"
+
+#: src/widgets/print.rs:478
+msgid "Print Image"
+msgstr "Pryntya Skeusen"
+
+#: src/widgets/print.rs:797
+msgid "_Scale"
+msgstr "_Braster"
+
+#: src/widgets/print.rs:800
+msgid "_Width"
+msgstr "_Lester"
+
+#. Translators: Go back to previous page
+#: src/widgets/print.ui:29
+msgid "_Back"
+msgstr "_Dehweles"
+
+#: src/widgets/print.ui:37
+msgid "_Print"
+msgstr "_Pryntya"
+
+#: src/widgets/print.ui:56
+msgid "Layout"
+msgstr "Aray"
+
+#: src/widgets/print.ui:59
+msgid "_Orientation"
+msgstr "_Tuedhder"
+
+#: src/widgets/print.ui:72
+msgid "Portrait Page Orientation"
+msgstr "Tuedhder Folden Plommwedhek"
+
+#: src/widgets/print.ui:80
+msgid "Landscape Page Orientation"
+msgstr "Tuedhder Folden Gorwelyek"
+
+#: src/widgets/print.ui:89
+msgid "_Alignment"
+msgstr "_Alinyans"
+
+#: src/widgets/print.ui:108
+msgid "Margins"
+msgstr "Emlow"
+
+#: src/widgets/print.ui:111
+msgid "Margin Units"
+msgstr "Unsys Amal"
+
+#: src/widgets/print.ui:128
+msgid "_Horizontal"
+msgstr "_Gorwelyek"
+
+#: src/widgets/print.ui:134
+msgid "_Vertical"
+msgstr "_Plommwedhek"
+
+#: src/widgets/print.ui:142 src/widgets/properties_view.ui:56
+msgid "Image Size"
+msgstr "Braster Skeusen"
+
+#: src/widgets/print.ui:145
+msgid "Image Size Units"
+msgstr "Unsys Braster Skeusen"
+
+#: src/widgets/print.ui:163
+msgid "_Fill Space"
+msgstr "_Kollenwel Spas"
+
+#: src/widgets/print.ui:174
+msgid "H_eight"
+msgstr "_Ughelder"
+
+#: src/widgets/properties_view.rs:258
+msgid "Unknown"
+msgstr "Ankoth"
+
+#. Translators: Addition of image being transparent to format name
+#: src/widgets/properties_view.rs:262
+msgid ", transparent"
+msgstr ", treusweladow"
+
+#. Translators: Addition of image being grayscale to format name
+#: src/widgets/properties_view.rs:267
+msgid ", grayscale"
+msgstr ", gwynn ha du"
+
+#. Translators: Addition of bit size to format name
+#: src/widgets/properties_view.rs:272
+msgid ", {}\\u{202F}bit"
+msgstr ", {}\\u{202F}bytt"
+
+#: src/widgets/properties_view.rs:290
+msgid "{}\\u{202F}\\u{D7}\\u{202F}{}"
+msgstr "{}\\u{202F}\\u{D7}\\u{202F}{}"
+
+#: src/widgets/properties_view.rs:326
+msgid "Image Coordinates Copied"
+msgstr "Kesordenogyon Skeusen Kopys"
+
+#: src/widgets/properties_view.ui:20
+msgid "Folder"
+msgstr "Restrenva"
+
+#: src/widgets/properties_view.ui:28
+msgid "Open Containing Folder"
+msgstr "Ygeri Restrenva Kar"
+
+#: src/widgets/properties_view.ui:41
+msgid "URI"
+msgstr "URI"
+
+#: src/widgets/properties_view.ui:66
+msgid "Image Format"
+msgstr "Furvas Skeusen"
+
+#: src/widgets/properties_view.ui:76
+msgid "File Size"
+msgstr "Braster Restren"
+
+#: src/widgets/properties_view.ui:90
+msgid "File Created"
+msgstr "Restren Gwrys"
+
+#: src/widgets/properties_view.ui:100
+msgid "File Modified"
+msgstr "Restren Chanjys"
+
+#. Translators: This is a label for GPS coordinates
+#: src/widgets/properties_view.ui:114
+msgid "Location"
+msgstr "Tyller"
+
+#: src/widgets/properties_view.ui:125
+msgid "Copy Coordinates"
+msgstr "Kopia Kesordenogyon"
+
+#: src/widgets/properties_view.ui:136
+msgid "Open Location"
+msgstr "Ygeri Tyller"
+
+#: src/widgets/properties_view.ui:149
+msgid "Originally Created"
+msgstr "Gwrys y'n Dalleth"
+
+#: src/widgets/properties_view.ui:159
+msgid "Comment"
+msgstr "Kampol"
+
+#: src/widgets/properties_view.ui:169
+msgid "Aperture"
+msgstr "Porth"
+
+#: src/widgets/properties_view.ui:179
+msgid "Exposure"
+msgstr "Diskudhans"
+
+#: src/widgets/properties_view.ui:189
+msgid "ISO"
+msgstr "ISO"
+
+#: src/widgets/properties_view.ui:199
+msgid "Focal Length"
+msgstr "Hirder Fog"
+
+#: src/widgets/properties_view.ui:209
+msgid "Maker, Model"
+msgstr "Gwrier, Eghen"
+
+#: src/widgets/window.rs:206
+msgid "Show Details"
+msgstr "Diskwedhes Manylyon"
