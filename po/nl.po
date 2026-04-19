@@ -2,15 +2,16 @@
 # Copyright (C) 2023 Loupe's COPYRIGHT HOLDER
 # This file is distributed under the same license as the Loupe package.
 # Philip Goto <philip.goto@gmail.com>, 2023.
-# Nathan Follens <nfollens@gnome.org>, 2023-2025.
+# Nathan Follens <nfollens@gnome.org>, 2023-2026.
 # Dick Groskamp <dikgro@yahoo.co.uk>, 2025.
+# Kynan De Keyser <keyskynan@gmail.com>, 2026.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2025-08-01 19:20+0000\n"
-"PO-Revision-Date: 2025-08-21 18:31+0200\n"
+"POT-Creation-Date: 2026-03-13 14:05+0000\n"
+"PO-Revision-Date: 2026-04-19 11:25+0200\n"
 "Last-Translator: Nathan Follens <nfollens@gnome.org>\n"
 "Language-Team: GNOME-NL https://matrix.to/#/#nl:gnome.org\n"
 "Language: nl\n"
@@ -18,16 +19,22 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.6\n"
+"X-Generator: Poedit 3.8\n"
+"X-DL-VCS-Web: https://gitlab.gnome.org/GNOME/loupe\n"
+"X-DL-Lang: nl\n"
+"X-DL-Module: loupe\n"
+"X-DL-Branch: main\n"
+"X-DL-Domain: po\n"
+"X-DL-State: Translating\n"
 
 #: data/org.gnome.Loupe.desktop.in.in:2 data/org.gnome.Loupe.metainfo.xml.in.in:6
-#: src/about.rs:32 src/widgets/image_window.rs:866
+#: src/about.rs:32 src/widgets/image_window.rs:898
 msgid "Image Viewer"
 msgstr "Afbeeldingsweergave"
 
 #: data/org.gnome.Loupe.desktop.in.in:3 data/org.gnome.Loupe.metainfo.xml.in.in:13
-msgid "View images"
-msgstr "Bekijk afbeeldingen"
+msgid "View and edit images"
+msgstr "Bekijk en bewerk afbeeldingen"
 
 #: data/org.gnome.Loupe.desktop.in.in:11
 msgid "Picture;Graphics;Loupe;"
@@ -43,246 +50,224 @@ msgid "The GNOME Project"
 msgstr "Het GNOME-project"
 
 #: data/org.gnome.Loupe.metainfo.xml.in.in:15
-msgid "Browse through your images and inspect their metadata with:"
-msgstr "Blader door uw afbeeldingen en bekijk hun metagegevens met:"
+msgid ""
+"Explore images, view their metadata, and make quick edits by cropping, rotating, "
+"or flipping them."
+msgstr ""
+"Blader door afbeeldingen, bekijk hun metadata en maak snelle bewerkingen door ze "
+"bij te snijden, te draaien of te spiegelen."
 
-#: data/org.gnome.Loupe.metainfo.xml.in.in:17
-msgid "Fast GPU accelerated image rendering"
-msgstr "Snelle GPU-versnelde afbeeldingsrendering"
-
-#: data/org.gnome.Loupe.metainfo.xml.in.in:18
-msgid "Tiled rendering for vector graphics"
-msgstr "Getegeld renderen voor vectorafbeeldingen"
-
-#: data/org.gnome.Loupe.metainfo.xml.in.in:19
-msgid "Extendable and sandboxed image decoding"
-msgstr "Uitbreidbare decodering van afbeeldingen in een zandbak"
-
-#: data/org.gnome.Loupe.metainfo.xml.in.in:20
-msgid "Accessible presentation of the most important metadata."
-msgstr "Toegankelijke weergave van de belangrijkste metadata."
-
-#: data/resources/gtk/help-overlay.ui:11
+#: data/resources/shortcuts-dialog.ui:6
 msgctxt "shortcut window"
 msgid "General Shortcuts"
 msgstr "Algemene sneltoetsen"
 
-#: data/resources/gtk/help-overlay.ui:14
+#: data/resources/shortcuts-dialog.ui:9
 msgctxt "shortcut window"
 msgid "Copy Image or Selected Text to Clipboard"
 msgstr "Afbeelding of geselecteerde tekst kopiëren naar klembord"
 
-#: data/resources/gtk/help-overlay.ui:20
+#: data/resources/shortcuts-dialog.ui:15
 msgctxt "shortcut window"
 msgid "Move Image to Trash"
 msgstr "Afbeelding verplaatsen naar prullenbak"
 
-#: data/resources/gtk/help-overlay.ui:26
+#: data/resources/shortcuts-dialog.ui:21
 msgctxt "shortcut window"
 msgid "Permanently Delete Image"
 msgstr "Afbeelding voorgoed verwijderen"
 
-#: data/resources/gtk/help-overlay.ui:32
+#: data/resources/shortcuts-dialog.ui:27
 msgctxt "shortcut window"
 msgid "Open Image with Other App"
 msgstr "Afbeelding openen met andere toepassing"
 
-#: data/resources/gtk/help-overlay.ui:38
+#: data/resources/shortcuts-dialog.ui:33
 msgctxt "shortcut window"
 msgid "Set as Background"
 msgstr "Instellen als achtergrond"
 
-#: data/resources/gtk/help-overlay.ui:44
+#: data/resources/shortcuts-dialog.ui:39
 msgctxt "shortcut window"
 msgid "New Window"
 msgstr "Nieuw venster"
 
-#: data/resources/gtk/help-overlay.ui:50
+#: data/resources/shortcuts-dialog.ui:45
 msgctxt "shortcut window"
 msgid "Open Help"
 msgstr "Hulp openen"
 
-#: data/resources/gtk/help-overlay.ui:56
+#: data/resources/shortcuts-dialog.ui:51
 msgctxt "shortcut window"
 msgid "Show Keyboard Shortcuts"
 msgstr "Sneltoetsen tonen"
 
-#: data/resources/gtk/help-overlay.ui:62
+#: data/resources/shortcuts-dialog.ui:57
 msgctxt "shortcut window"
 msgid "Close Window"
 msgstr "Venster sluiten"
 
-#: data/resources/gtk/help-overlay.ui:68
+#: data/resources/shortcuts-dialog.ui:63
 msgctxt "shortcut window"
 msgid "Quit"
 msgstr "Afsluiten"
 
-#: data/resources/gtk/help-overlay.ui:76
+#: data/resources/shortcuts-dialog.ui:71
 msgctxt "shortcut window"
 msgid "Navigate Images"
 msgstr "Navigeren tussen afbeeldingen"
 
-#: data/resources/gtk/help-overlay.ui:80 data/resources/gtk/help-overlay.ui:94
-#: data/resources/gtk/help-overlay.ui:235 data/resources/gtk/help-overlay.ui:249
+#: data/resources/shortcuts-dialog.ui:75 data/resources/shortcuts-dialog.ui:89
 msgctxt "shortcut window"
 msgid "Next Image"
 msgstr "Volgende afbeelding"
 
-#: data/resources/gtk/help-overlay.ui:87 data/resources/gtk/help-overlay.ui:101
-#: data/resources/gtk/help-overlay.ui:242 data/resources/gtk/help-overlay.ui:256
+#: data/resources/shortcuts-dialog.ui:82 data/resources/shortcuts-dialog.ui:96
 msgctxt "shortcut window"
 msgid "Previous Image"
 msgstr "Vorige afbeelding"
 
-#: data/resources/gtk/help-overlay.ui:107
+#: data/resources/shortcuts-dialog.ui:102
 msgctxt "shortcut window"
 msgid "First Image"
 msgstr "Eerste afbeelding"
 
-#: data/resources/gtk/help-overlay.ui:113
+#: data/resources/shortcuts-dialog.ui:108
 msgctxt "shortcut window"
 msgid "Last Image"
 msgstr "Laatste afbeelding"
 
-#: data/resources/gtk/help-overlay.ui:121
+#: data/resources/shortcuts-dialog.ui:116
 msgctxt "shortcut window"
 msgid "Rotate Image"
 msgstr "Afbeelding draaien"
 
-#: data/resources/gtk/help-overlay.ui:124 data/resources/gtk/help-overlay.ui:274
-#: data/resources/gtk/help-overlay.ui:315
+#: data/resources/shortcuts-dialog.ui:119 data/resources/shortcuts-dialog.ui:253
 msgctxt "shortcut window"
 msgid "Rotate Clockwise"
 msgstr "Rechtsom draaien"
 
-#: data/resources/gtk/help-overlay.ui:130 data/resources/gtk/help-overlay.ui:280
-#: data/resources/gtk/help-overlay.ui:321
+#: data/resources/shortcuts-dialog.ui:125 data/resources/shortcuts-dialog.ui:259
 msgctxt "shortcut window"
 msgid "Rotate Counterclockwise"
 msgstr "Linksom draaien"
 
-#: data/resources/gtk/help-overlay.ui:138
+#: data/resources/shortcuts-dialog.ui:133
 msgctxt "shortcut window"
 msgid "Zoom Image"
 msgstr "Afbeelding zoomen"
 
-#: data/resources/gtk/help-overlay.ui:141 data/resources/gtk/help-overlay.ui:262
+#: data/resources/shortcuts-dialog.ui:136
 msgctxt "shortcut window"
 msgid "Zoom In"
 msgstr "Inzoomen"
 
-#: data/resources/gtk/help-overlay.ui:147 data/resources/gtk/help-overlay.ui:268
+#: data/resources/shortcuts-dialog.ui:142
 msgctxt "shortcut window"
 msgid "Zoom Out"
 msgstr "Uitzoomen"
 
-#: data/resources/gtk/help-overlay.ui:153
+#: data/resources/shortcuts-dialog.ui:148
 msgctxt "shortcut window"
 msgid "Best Fit"
 msgstr "Passend"
 
-#: data/resources/gtk/help-overlay.ui:159
+#: data/resources/shortcuts-dialog.ui:154
 msgctxt "shortcut window"
 msgid "Original Scale"
 msgstr "Originele grootte"
 
-#: data/resources/gtk/help-overlay.ui:165
+#: data/resources/shortcuts-dialog.ui:160
 msgctxt "shortcut window"
 msgid "200% Scale"
 msgstr "Dubbele grootte"
 
-#: data/resources/gtk/help-overlay.ui:173
+#: data/resources/shortcuts-dialog.ui:168
 msgctxt "shortcut window"
 msgid "Pan View"
 msgstr "Weergave verschuiven"
 
-#: data/resources/gtk/help-overlay.ui:176
+#: data/resources/shortcuts-dialog.ui:171
 msgctxt "shortcut window"
 msgid "Pan Left"
 msgstr "Naar links schuiven"
 
-#: data/resources/gtk/help-overlay.ui:182
+#: data/resources/shortcuts-dialog.ui:177
 msgctxt "shortcut window"
 msgid "Pan Right"
 msgstr "Naar rechts schuiven"
 
-#: data/resources/gtk/help-overlay.ui:188
+#: data/resources/shortcuts-dialog.ui:183
 msgctxt "shortcut window"
 msgid "Pan Up"
 msgstr "Naar boven schuiven"
 
-#: data/resources/gtk/help-overlay.ui:194
+#: data/resources/shortcuts-dialog.ui:189
 msgctxt "shortcut window"
 msgid "Pan Down"
 msgstr "Naar onder schuiven"
 
-#: data/resources/gtk/help-overlay.ui:202
+#: data/resources/shortcuts-dialog.ui:197
 msgctxt "shortcut window"
 msgid "View"
 msgstr "Beeld"
 
-#: data/resources/gtk/help-overlay.ui:205
+#: data/resources/shortcuts-dialog.ui:200
 msgctxt "shortcut window"
 msgid "Toggle Fullscreen"
 msgstr "Volledig scherm omschakelen"
 
-#: data/resources/gtk/help-overlay.ui:211
+#: data/resources/shortcuts-dialog.ui:206
 msgctxt "shortcut window"
 msgid "Leave Fullscreen"
 msgstr "Volledig scherm verlaten"
 
-#: data/resources/gtk/help-overlay.ui:217
+#: data/resources/shortcuts-dialog.ui:212
 msgctxt "shortcut window"
 msgid "Toggle Image Properties"
 msgstr "Afbeeldingseigenschappen omschakelen"
 
-#: data/resources/gtk/help-overlay.ui:223
+#: data/resources/shortcuts-dialog.ui:218
 msgctxt "shortcut window"
 msgid "Show Main Menu"
 msgstr "Hoofdmenu weergeven"
 
-# Als in muisgebaren - Nathan
-#: data/resources/gtk/help-overlay.ui:231
-msgctxt "shortcut window"
-msgid "Gestures"
-msgstr "Gebaren"
-
-#: data/resources/gtk/help-overlay.ui:288
+#: data/resources/shortcuts-dialog.ui:226
 msgctxt "shortcut window"
 msgid "Editing"
 msgstr "Bewerken"
 
-#: data/resources/gtk/help-overlay.ui:291
+#: data/resources/shortcuts-dialog.ui:229
 msgctxt "shortcut window"
 msgid "Open Editing View"
 msgstr "Bewerkingsweergave openen"
 
-#: data/resources/gtk/help-overlay.ui:297
+#: data/resources/shortcuts-dialog.ui:235
 msgctxt "shortcut window"
 msgid "Replace Original"
 msgstr "Origineel vervangen"
 
-#: data/resources/gtk/help-overlay.ui:303
+#: data/resources/shortcuts-dialog.ui:241
 msgctxt "shortcut window"
 msgid "Save As"
 msgstr "Opslaan als"
 
-#: data/resources/gtk/help-overlay.ui:309
+#: data/resources/shortcuts-dialog.ui:247
 msgctxt "shortcut window"
 msgid "Cancel"
 msgstr "Annuleren"
 
-#: data/resources/gtk/help-overlay.ui:327
+#: data/resources/shortcuts-dialog.ui:265
 msgctxt "shortcut window"
 msgid "Mirror Horizontally"
 msgstr "Horizontaal spiegelen"
 
-#: data/resources/gtk/help-overlay.ui:333
+#: data/resources/shortcuts-dialog.ui:271
 msgctxt "shortcut window"
 msgid "Mirror Vertically"
 msgstr "Verticaal spiegelen"
 
-#: data/resources/gtk/help-overlay.ui:339
+#: data/resources/shortcuts-dialog.ui:277
 msgctxt "shortcut window"
 msgid "Apply Crop"
 msgstr "Bijsnijden toepassen"
@@ -294,65 +279,66 @@ msgstr ""
 "Philip Goto https://philipgoto.nl/\n"
 "Nathan Follens <nfollens@gnome.org>\n"
 "Dick Groskamp <dikgro@yahoo.co.uk>\n"
+"Kynan De Keyser <keyskynan@gmail.com>\n"
 "Meer info over GNOME-NL https://nl.gnome.org\""
 
 #: src/about.rs:46
 msgid "Copyright © 2020–2024 Christopher Davis et al."
 msgstr "Copyright © 2020–2024 Christopher Davis et al."
 
-#: src/file_model.rs:180
+#: src/file_model.rs:211
 msgid "Could not list other files in directory."
 msgstr "Kon andere bestanden in map niet oplijsten."
 
 #. Translators: Display of the f-number <https://en.wikipedia.org/wiki/F-number>. {} will be replaced with the number
-#: src/metadata.rs:263
+#: src/metadata.rs:256
 msgid "\\u{192}\\u{2215}{}"
 msgstr "\\u{192}\\u{2215}{}"
 
 #. Translators: Fractional exposure time (photography) in seconds
-#: src/metadata.rs:276
+#: src/metadata.rs:269
 msgid "1\\u{2215}{}\\u{202F}s"
 msgstr "1\\u{2215}{}\\u{202F}s"
 
 #. Translators: Exposure time (photography) in seconds
-#: src/metadata.rs:284
+#: src/metadata.rs:277
 msgid "{}\\u{202F}s"
 msgstr "{}\\u{202F}s"
 
-#: src/metadata.rs:298
+#: src/metadata.rs:291
 msgid "{}\\u{202F}mm"
 msgstr "{}\\u{202F}mm"
 
 #. Translators: short for "north" in GPS coordinate
-#: src/metadata.rs:338
+#: src/metadata.rs:331
 msgid "N"
 msgstr "N"
 
 #. Translators: short for "south" in GPS coordinate
-#: src/metadata.rs:342
+#: src/metadata.rs:335
 msgid "S"
 msgstr "Z"
 
 #. Translators: short for "east" in GPS coordinate
-#: src/metadata.rs:351
+#: src/metadata.rs:344
 msgid "E"
 msgstr "O"
 
 #. Translators: short for "west" in GPS coordinate
-#: src/metadata.rs:355
+#: src/metadata.rs:348
 msgid "W"
 msgstr "W"
 
+#. / Returns localized date + time format
 #. Translators: This is the date and time format we use in metadata output etc.
 #. The format has to follow <https://docs.gtk.org/glib/method.DateTime.format.html>
 #. The default is already translated. Don't change if you are not sure what to
 #. use.
 #: src/util.rs:39
-#, c-format
 msgid "%x %X"
 msgstr "%x %X"
 
-#: src/util.rs:182 src/widgets/image_window.rs:638
+#: src/util.rs:182
 msgid "Failed to restore image from trash"
 msgstr "Kon afbeelding niet terughalen uit prullenbak"
 
@@ -469,9 +455,9 @@ msgstr "Wijzigingen in deze weergave ongedaan maken"
 msgid "Crop Selection"
 msgstr "Selectie bijsnijden"
 
-#. Translators: Filename suffix
 #. Translators: Filename suffix, {} is replaced by a number
-#: src/widgets/edit_window.rs:192 src/widgets/edit_window.rs:195
+#: src/widgets/edit_window.rs:196
+#, rust-format
 msgid " (Edited)"
 msgid_plural " (Edited {})"
 msgstr[0] " (bewerkt)"
@@ -481,19 +467,19 @@ msgstr[1] " (bewerkt {})"
 msgid "Failed to save image."
 msgstr "Opslaan van afbeelding mislukt."
 
-#: src/widgets/edit_window.rs:346
+#: src/widgets/edit_window.rs:344
 msgid "Editing Image"
 msgstr "Afbeelding bewerken"
 
-#: src/widgets/edit_window.rs:363
+#: src/widgets/edit_window.rs:361
 msgid "Failed to edit image."
 msgstr "Kon afbeelding niet bewerken."
 
-#: src/widgets/edit_window.rs:373 src/widgets/edit_window.rs:396
+#: src/widgets/edit_window.rs:371 src/widgets/edit_window.rs:394
 msgid "Failed to Save Image"
 msgstr "Kon afbeelding niet opslaan"
 
-#: src/widgets/edit_window.rs:379
+#: src/widgets/edit_window.rs:377
 msgid "Saving Image"
 msgstr "Afbeelding wordt opgeslagen"
 
@@ -521,7 +507,7 @@ msgstr "Origineel ve_rvangen"
 msgid "Original image will be moved to the trash"
 msgstr "Originele afbeelding zal naar de prullenbak worden verplaatst"
 
-#: src/widgets/error_details.rs:79
+#: src/widgets/error_details.rs:80
 msgid ""
 "The following error occurred. If you think this is an issue with the program, "
 "please include this information when you report the error."
@@ -555,7 +541,8 @@ msgstr "Foutmelding kopiëren"
 msgid "Report _Issue"
 msgstr "P_robleem melden"
 
-#: src/widgets/image_page.rs:227
+#: src/widgets/image_page.rs:225
+#, rust-format
 msgid ""
 "No image loaders available. Maybe the “glycin-loaders” package with compatibility "
 "version “{}” is not installed."
@@ -563,19 +550,26 @@ msgstr ""
 "Geen afbeeldingsladers beschikbaar. Misschien is het pakket ‘glycin-loaders’ met "
 "compatibiliteitsversie ‘{}’ niet geïnstalleerd."
 
-#: src/widgets/image_page.rs:242
+#: src/widgets/image_page.rs:243
+#, rust-format
 msgid "The image format “{} ({})” is known but not installed."
 msgstr "De afbeeldingsindeling ‘{} ({})’ is bekend, maar niet geïnstalleerd."
 
-#: src/widgets/image_page.rs:249
+#: src/widgets/image_page.rs:251
+#, rust-format
 msgid "Unknown image format “{} ({}).”"
 msgstr "Onbekende afbeeldingsindeling ‘{} ({}).’"
 
-#: src/widgets/image_page.rs:277
+#: src/widgets/image_page.rs:260
 msgid "There is not enough free memory available to load this image."
 msgstr "Er is onvoldoende vrij geheugen beschikbaar om deze afbeelding te laden."
 
-#: src/widgets/image_page.rs:281
+#: src/widgets/image_page.rs:267
+#, rust-format
+msgid "Failed to load image file: {}"
+msgstr "Kon afbeeldingsbestand niet laden: {}"
+
+#: src/widgets/image_page.rs:272
 msgid "Either the image file is corrupted or it contains unsupported elements."
 msgstr ""
 "Misschien is het afbeeldingsbestand beschadigd, of bevat het bepaalde niet-"
@@ -621,97 +615,94 @@ msgstr "Linksom draaien"
 msgid "Rotate Right"
 msgstr "Rechtsom draaien"
 
-#: src/widgets/image_view.rs:197
-msgid "{} %"
-msgstr "{} %"
-
 #. Translators: This is a toast notification, informing the user that
 #. an image has been set as background.
-#: src/widgets/image_view.rs:836
+#: src/widgets/image_view.rs:866
 msgid "Set as background."
 msgstr "Ingesteld als achtergrond."
 
-#: src/widgets/image_view.rs:849
+#: src/widgets/image_view.rs:872
 msgid "Could not set background."
 msgstr "Kon achtergrond niet instellen."
 
-#: src/widgets/image_view.ui:30
+#: src/widgets/image_view.ui:26
 msgid "Previous Image"
 msgstr "Vorige afbeelding"
 
-#: src/widgets/image_view.ui:40
+#: src/widgets/image_view.ui:36
 msgid "Next Image"
 msgstr "Volgende afbeelding"
 
-#: src/widgets/image_view.ui:74
+#: src/widgets/image_view.ui:66
 msgid "Zoom Out"
 msgstr "Uitzoomen"
 
-#: src/widgets/image_view.ui:85
+#: src/widgets/image_view.ui:77
 msgid "Zoom In"
 msgstr "Inzoomen"
 
-#: src/widgets/image_view.ui:100
+#: src/widgets/image_view.ui:92
 msgid "Toggle Zoom"
 msgstr "Zoomen schakelen"
 
-#: src/widgets/image_view.ui:108
+#: src/widgets/image_view.ui:100
 msgid "Zoom to Specific Level"
 msgstr "Zoom naar specifiek niveau"
 
-#: src/widgets/image_view.ui:237
+#: src/widgets/image_view.ui:229
 msgid "Custom Zoom Level"
 msgstr "Aangepast zoomniveau"
 
-#: src/widgets/image_view.ui:243
+#: src/widgets/image_view.ui:235
 msgid "Zoom to Specified Level"
 msgstr "Zoom naar het gespecificeerde niveau"
 
-#: src/widgets/image_window.rs:502
+#: src/widgets/image_window.rs:528
 msgid "Supported image formats"
 msgstr "Ondersteunde afbeeldingsindelingen"
 
-#: src/widgets/image_window.rs:508
+#: src/widgets/image_window.rs:534
 msgid "All files"
 msgstr "Alle bestanden"
 
-#: src/widgets/image_window.rs:515
+#: src/widgets/image_window.rs:541
 msgid "Open Image"
 msgstr "Afbeelding openen"
 
-#: src/widgets/image_window.rs:601
+#: src/widgets/image_window.rs:633
 msgid "Image copied to clipboard"
 msgstr "Afbeelding gekopieerd naar klembord"
 
-#: src/widgets/image_window.rs:622
+#: src/widgets/image_window.rs:654
 msgid "Image moved to trash"
 msgstr "Afbeelding verplaatst naar prullenbak"
 
-#: src/widgets/image_window.rs:623
+#: src/widgets/image_window.rs:655
 msgid "Undo"
 msgstr "Ongedaan maken"
 
-#: src/widgets/image_window.rs:653
+#: src/widgets/image_window.rs:685
 msgid "Failed to move image to trash"
 msgstr "Kon afbeelding niet verplaatsen naar prullenbak"
 
-#: src/widgets/image_window.rs:677
+#: src/widgets/image_window.rs:709
 msgid "Permanently Delete Image?"
 msgstr "Afbeelding voorgoed verwijderen?"
 
-#: src/widgets/image_window.rs:679
+#: src/widgets/image_window.rs:711
+#, rust-format
 msgid "After deleting the image “{}” it will be permanently lost."
 msgstr "Wanneer u de afbeelding ‘{}’ verwijdert, zal deze voorgoed verloren gaan."
 
-#: src/widgets/image_window.rs:687
+#: src/widgets/image_window.rs:719
 msgid "Cancel"
 msgstr "Annuleren"
 
-#: src/widgets/image_window.rs:688
+#: src/widgets/image_window.rs:720
 msgid "Delete"
 msgstr "Verwijderen"
 
-#: src/widgets/image_window.rs:699
+#: src/widgets/image_window.rs:731
 msgid "Failed to delete image"
 msgstr "Kon afbeelding niet verwijderen"
 
@@ -752,8 +743,8 @@ msgid "Edit Image"
 msgstr "Afbeelding bewerken"
 
 #: src/widgets/image_window.ui:220
-msgid "View Images"
-msgstr "Afbeeldingen bekijken"
+msgid "View and Edit Images"
+msgstr "Bekijk en bewerk afbeeldingen"
 
 #: src/widgets/image_window.ui:221
 msgid "Drag and drop images here"
@@ -763,59 +754,60 @@ msgstr "Sleep afbeeldingen hierheen"
 msgid "_Open Files…"
 msgstr "Bestanden _openen…"
 
-#: src/widgets/print.rs:108
+#: src/widgets/print.rs:109
 msgid "Top"
 msgstr "Bovenzijde"
 
-#: src/widgets/print.rs:109
+#: src/widgets/print.rs:110
 msgid "Center"
 msgstr "Midden"
 
-#: src/widgets/print.rs:110
+#: src/widgets/print.rs:111
 msgid "Bottom"
 msgstr "Onderzijde"
 
-#: src/widgets/print.rs:111
+#: src/widgets/print.rs:112
 msgid "Left"
 msgstr "Links"
 
-#: src/widgets/print.rs:112
+#: src/widgets/print.rs:113
 msgid "Right"
 msgstr "Rechts"
 
 #. Translators: Shorthand for centimeter
-#: src/widgets/print.rs:148
+#: src/widgets/print.rs:149
 msgid "cm"
 msgstr "cm"
 
 #. Translators: Shorthand for inch
-#: src/widgets/print.rs:150
+#: src/widgets/print.rs:151
 msgid "in"
 msgstr "in"
 
 #. Translators: Shorthand for pixel
-#: src/widgets/print.rs:152
+#: src/widgets/print.rs:153
 msgid "px"
 msgstr "px"
 
 #. Translators: {} is a placeholder for the filename
-#: src/widgets/print.rs:361
+#: src/widgets/print.rs:364
+#, rust-format
 msgid "Print “{}”"
 msgstr "‘{}’ afdrukken"
 
-#: src/widgets/print.rs:476
+#: src/widgets/print.rs:477
 msgid "Continue…"
 msgstr "Doorgaan…"
 
-#: src/widgets/print.rs:477
+#: src/widgets/print.rs:478
 msgid "Print Image"
 msgstr "Afbeelding afdrukken"
 
-#: src/widgets/print.rs:791
+#: src/widgets/print.rs:797
 msgid "_Scale"
 msgstr "_Schalen"
 
-#: src/widgets/print.rs:794
+#: src/widgets/print.rs:800
 msgid "_Width"
 msgstr "_Breedte"
 
@@ -903,7 +895,7 @@ msgstr ", {}\\u{202F}bits"
 msgid "{}\\u{202F}\\u{D7}\\u{202F}{}"
 msgstr "{}\\u{202F}\\u{D7}\\u{202F}{}"
 
-#: src/widgets/properties_view.rs:329
+#: src/widgets/properties_view.rs:326
 msgid "Image Coordinates Copied"
 msgstr "Afbeeldingscoördinaten gekopieerd"
 
@@ -976,9 +968,32 @@ msgstr "Brandpuntsafstand"
 msgid "Maker, Model"
 msgstr "Ontwikkelaar, Model"
 
-#: src/widgets/window.rs:222
+#: src/widgets/window.rs:206
 msgid "Show Details"
 msgstr "Details weergeven"
+
+#~ msgid "Browse through your images and inspect their metadata with:"
+#~ msgstr "Blader door uw afbeeldingen en bekijk hun metagegevens met:"
+
+#~ msgid "Fast GPU accelerated image rendering"
+#~ msgstr "Snelle GPU-versnelde afbeeldingsrendering"
+
+#~ msgid "Tiled rendering for vector graphics"
+#~ msgstr "Getegeld renderen voor vectorafbeeldingen"
+
+#~ msgid "Extendable and sandboxed image decoding"
+#~ msgstr "Uitbreidbare decodering van afbeeldingen in een zandbak"
+
+#~ msgid "Accessible presentation of the most important metadata."
+#~ msgstr "Toegankelijke weergave van de belangrijkste metadata."
+
+# Als in muisgebaren - Nathan
+#~ msgctxt "shortcut window"
+#~ msgid "Gestures"
+#~ msgstr "Gebaren"
+
+#~ msgid "{} %"
+#~ msgstr "{} %"
 
 #~ msgid "Copy to Clipboard"
 #~ msgstr "Kopiëren naar klembord"
@@ -1009,9 +1024,6 @@ msgstr "Details weergeven"
 
 #~ msgid "Loupe"
 #~ msgstr "Loupe"
-
-#~ msgid "Failed to read image file information"
-#~ msgstr "Kon bestandsinformatie van afbeelding niet lezen"
 
 #~ msgid "Failed to decode image"
 #~ msgstr "Kon afbeelding niet decoderen"
