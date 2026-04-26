@@ -88,6 +88,25 @@ mod imp {
             WindowAction::init_actions_and_bindings(klass);
 
             ActionPartGlobal::init_actions_and_bindings(klass);
+
+            // Don't use an action since we want to control propagation
+            klass.add_binding(gdk::Key::c, gdk::ModifierType::CONTROL_MASK, |window| {
+                let image_window = window.image_window();
+                if image_window.has_metadata_selected() {
+                    // Pass on to normal copy handler to copy selected metadata
+                    glib::Propagation::Proceed
+                } else {
+                    image_window.copy_image();
+                    glib::Propagation::Stop
+                }
+            });
+
+            // Only add shortcut since action is created by libadwaita
+            klass.add_binding_action(
+                gdk::Key::question,
+                gdk::ModifierType::CONTROL_MASK,
+                "app.shortcuts",
+            );
         }
 
         fn instance_init(obj: &glib::subclass::InitializingObject<Self>) {
