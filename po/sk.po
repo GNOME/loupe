@@ -26,7 +26,6 @@ msgstr "Prehliadač obrázkov"
 
 #: data/org.gnome.Loupe.desktop.in.in:3
 #: data/org.gnome.Loupe.metainfo.xml.in.in:13
-#| msgid "View images"
 msgid "View and edit images"
 msgstr "Prezerajte a upravujte obrázky"
 
@@ -48,8 +47,8 @@ msgid ""
 "Explore images, view their metadata, and make quick edits by cropping, "
 "rotating, or flipping them."
 msgstr ""
-"Preskúmajte obrázky, prezerajte ich metadáta a vykonajte rýchle úpravy "
-"ich orezaním, otočením alebo preklopením."
+"Preskúmajte obrázky, prezerajte ich metadáta a vykonajte rýchle úpravy ich "
+"orezaním, otočením alebo preklopením."
 
 #: data/resources/shortcuts-dialog.ui:6
 msgctxt "shortcut window"
@@ -568,7 +567,6 @@ msgstr "Na načítanie tohto obrázka nie je dostatok voľnej pamäte."
 
 #: src/widgets/image_page.rs:267
 #, rust-format
-#| msgid "Failed to save image."
 msgid "Failed to load image file: {}"
 msgstr "Zlyhalo načítanie súboru s obrázkom: {}"
 
@@ -698,7 +696,7 @@ msgstr "Natrvalo odstrániť obrázok?"
 #: src/widgets/image_window.rs:711
 #, rust-format
 msgid "After deleting the image “{}” it will be permanently lost."
-msgstr "Po odstránení obrázka \"{}\" sa natrvalo stratí."
+msgstr "Po odstránení obrázka „{}“ sa natrvalo stratí."
 
 #: src/widgets/image_window.rs:719
 msgid "Cancel"
@@ -751,7 +749,6 @@ msgid "Edit Image"
 msgstr "Upraví obrázok"
 
 #: src/widgets/image_window.ui:220
-#| msgid "View Images"
 msgid "View and Edit Images"
 msgstr "Prezerajte a upravujte obrázky"
 
