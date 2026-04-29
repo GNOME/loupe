@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2026-03-13 14:05+0000\n"
-"PO-Revision-Date: 2026-04-10 22:42+0200\n"
+"POT-Creation-Date: 2026-04-27 11:32+0000\n"
+"PO-Revision-Date: 2026-04-29 18:59+0200\n"
 "Last-Translator: Dušan Kazik <prescott66@gmail.com>\n"
 "Language-Team: Slovak <->\n"
 "Language: sk\n"
@@ -20,7 +20,7 @@ msgstr ""
 
 #: data/org.gnome.Loupe.desktop.in.in:2
 #: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:32
-#: src/widgets/image_window.rs:898
+#: src/widgets/image_window.rs:880
 msgid "Image Viewer"
 msgstr "Prehliadač obrázkov"
 
@@ -660,53 +660,53 @@ msgstr "Vlastná úroveň priblíženia"
 msgid "Zoom to Specified Level"
 msgstr "Priblíži na určitú úroveň priblíženia"
 
-#: src/widgets/image_window.rs:528
+#: src/widgets/image_window.rs:510
 msgid "Supported image formats"
 msgstr "Podporované formáty obrázkov"
 
-#: src/widgets/image_window.rs:534
+#: src/widgets/image_window.rs:516
 msgid "All files"
 msgstr "Všetky súbory"
 
 # dialog title
-#: src/widgets/image_window.rs:541
+#: src/widgets/image_window.rs:523
 msgid "Open Image"
 msgstr "Otvorenie obrázka"
 
-#: src/widgets/image_window.rs:633
+#: src/widgets/image_window.rs:615
 msgid "Image copied to clipboard"
 msgstr "Obrázok bol skopírovaný do schránky"
 
-#: src/widgets/image_window.rs:654
+#: src/widgets/image_window.rs:636
 msgid "Image moved to trash"
 msgstr "Obrázok bol presunutý do koša"
 
-#: src/widgets/image_window.rs:655
+#: src/widgets/image_window.rs:637
 msgid "Undo"
 msgstr "Vrátiť späť"
 
-#: src/widgets/image_window.rs:685
+#: src/widgets/image_window.rs:667
 msgid "Failed to move image to trash"
 msgstr "Nepodarilo sa presunúť obrázok do koša"
 
-#: src/widgets/image_window.rs:709
+#: src/widgets/image_window.rs:691
 msgid "Permanently Delete Image?"
 msgstr "Natrvalo odstrániť obrázok?"
 
-#: src/widgets/image_window.rs:711
+#: src/widgets/image_window.rs:693
 #, rust-format
 msgid "After deleting the image “{}” it will be permanently lost."
 msgstr "Po odstránení obrázka „{}“ sa natrvalo stratí."
 
-#: src/widgets/image_window.rs:719
+#: src/widgets/image_window.rs:701
 msgid "Cancel"
 msgstr "Zrušiť"
 
-#: src/widgets/image_window.rs:720
+#: src/widgets/image_window.rs:702
 msgid "Delete"
 msgstr "Odstrániť"
 
-#: src/widgets/image_window.rs:731
+#: src/widgets/image_window.rs:713
 msgid "Failed to delete image"
 msgstr "Zlyhalo odstránenie obrázka"
 
@@ -799,7 +799,7 @@ msgstr "px"
 #: src/widgets/print.rs:364
 #, rust-format
 msgid "Print “{}”"
-msgstr "Print “{}”"
+msgstr "Print „{}“"
 
 #: src/widgets/print.rs:477
 msgid "Continue…"
@@ -979,7 +979,7 @@ msgid "Maker, Model"
 msgstr "Výrobca, model"
 
 # btn label
-#: src/widgets/window.rs:206
+#: src/widgets/window.rs:225
 msgid "Show Details"
 msgstr "Zobraziť podrobnosti"
 
