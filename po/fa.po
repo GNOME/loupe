@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2026-01-30 22:01+0000\n"
-"PO-Revision-Date: 2026-02-04 16:45+0330\n"
+"POT-Creation-Date: 2026-04-27 11:32+0000\n"
+"PO-Revision-Date: 2026-05-01 14:33+0330\n"
 "Last-Translator: Danial Behzadi <dani.behzi@ubuntu.com>\n"
 "Language-Team: Persian <fa@li.org>\n"
 "Language: fa\n"
@@ -16,10 +16,10 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n==0 || n==1);\n"
-"X-Generator: Poedit 3.8\n"
+"X-Generator: Poedit 3.9\n"
 
 #: data/org.gnome.Loupe.desktop.in.in:2 data/org.gnome.Loupe.metainfo.xml.in.in:6
-#: src/about.rs:32 src/widgets/image_window.rs:897
+#: src/about.rs:32 src/widgets/image_window.rs:880
 msgid "Image Viewer"
 msgstr "نمایشگر تصویر"
 
@@ -440,29 +440,29 @@ msgid "Crop Selection"
 msgstr "برش گزینش"
 
 #. Translators: Filename suffix, {} is replaced by a number
-#: src/widgets/edit_window.rs:195
+#: src/widgets/edit_window.rs:196
 msgid " (Edited)"
 msgid_plural " (Edited {})"
 msgstr[0] " (ویراسته)"
 msgstr[1] " ({} ویراسته)"
 
-#: src/widgets/edit_window.rs:289 src/widgets/edit_window.rs:315
+#: src/widgets/edit_window.rs:290 src/widgets/edit_window.rs:316
 msgid "Failed to save image."
 msgstr "شکست در ذخیرهٔ تصویر."
 
-#: src/widgets/edit_window.rs:343
+#: src/widgets/edit_window.rs:344
 msgid "Editing Image"
 msgstr "ویراستن تصویر"
 
-#: src/widgets/edit_window.rs:360
+#: src/widgets/edit_window.rs:361
 msgid "Failed to edit image."
 msgstr "شکست در ویرایش تصویر."
 
-#: src/widgets/edit_window.rs:370 src/widgets/edit_window.rs:393
+#: src/widgets/edit_window.rs:371 src/widgets/edit_window.rs:394
 msgid "Failed to Save Image"
 msgstr "شکست در ذخیرهٔ تصویر"
 
-#: src/widgets/edit_window.rs:376
+#: src/widgets/edit_window.rs:377
 msgid "Saving Image"
 msgstr "ذخیره کردن تصویر"
 
@@ -634,51 +634,51 @@ msgstr "سطح‌های بزرگنمایی سفارشی"
 msgid "Zoom to Specified Level"
 msgstr "بزرگنمایی به سطح مشخّص"
 
-#: src/widgets/image_window.rs:527
+#: src/widgets/image_window.rs:510
 msgid "Supported image formats"
 msgstr "قالب‌های تصویر پشتیبانی‌شده"
 
-#: src/widgets/image_window.rs:533
+#: src/widgets/image_window.rs:516
 msgid "All files"
 msgstr "تمام پرونده‌ها"
 
-#: src/widgets/image_window.rs:540
+#: src/widgets/image_window.rs:523
 msgid "Open Image"
 msgstr "گشودن تصویر"
 
-#: src/widgets/image_window.rs:632
+#: src/widgets/image_window.rs:615
 msgid "Image copied to clipboard"
 msgstr "تصویر در تخته‌گیره رونوشت شد"
 
-#: src/widgets/image_window.rs:653
+#: src/widgets/image_window.rs:636
 msgid "Image moved to trash"
 msgstr "تصویر به زباله‌دان جابه‌جا شد"
 
-#: src/widgets/image_window.rs:654
+#: src/widgets/image_window.rs:637
 msgid "Undo"
 msgstr "برگردان"
 
-#: src/widgets/image_window.rs:684
+#: src/widgets/image_window.rs:667
 msgid "Failed to move image to trash"
 msgstr "شکست در جابه‌جایی تصویر به زباله‌دان"
 
-#: src/widgets/image_window.rs:708
+#: src/widgets/image_window.rs:691
 msgid "Permanently Delete Image?"
 msgstr "حذف همیشگی تصویر؟"
 
-#: src/widgets/image_window.rs:710
+#: src/widgets/image_window.rs:693
 msgid "After deleting the image “{}” it will be permanently lost."
 msgstr "پس از حذف تصویر «{}» برای همیشه از دست خواهد رفت."
 
-#: src/widgets/image_window.rs:718
+#: src/widgets/image_window.rs:701
 msgid "Cancel"
 msgstr "لغو"
 
-#: src/widgets/image_window.rs:719
+#: src/widgets/image_window.rs:702
 msgid "Delete"
 msgstr "حذف"
 
-#: src/widgets/image_window.rs:730
+#: src/widgets/image_window.rs:713
 msgid "Failed to delete image"
 msgstr "شکست در حذف تصویر"
 
@@ -943,7 +943,7 @@ msgstr "فاصلهٔ کانونی"
 msgid "Maker, Model"
 msgstr "سازنده، مدل"
 
-#: src/widgets/window.rs:206
+#: src/widgets/window.rs:225
 msgid "Show Details"
 msgstr "نمایش جزییات"
 
