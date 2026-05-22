@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2026-03-13 14:05+0000\n"
-"PO-Revision-Date: 2026-03-31 12:09+0100\n"
+"POT-Creation-Date: 2026-04-27 11:32+0000\n"
+"PO-Revision-Date: 2026-05-22 22:10+0100\n"
 "Last-Translator: Flynn Peck <cirilla@tuta.io>\n"
 "Language-Team: kw\n"
 "Language: kw\n"
@@ -27,7 +27,7 @@ msgstr ""
 
 #: data/org.gnome.Loupe.desktop.in.in:2
 #: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:32
-#: src/widgets/image_window.rs:898
+#: src/widgets/image_window.rs:880
 msgid "Image Viewer"
 msgstr "Gwelell Skeusen"
 
@@ -54,8 +54,8 @@ msgid ""
 "Explore images, view their metadata, and make quick edits by cropping, "
 "rotating, or flipping them."
 msgstr ""
-"Trovya skeusennow, gweles aga metadata, ha golegi yn uskis gans ow tibenna, "
-"ow rosella, po ow flyppya y's."
+"Trovya skeusennow, gweles aga metadata, ha golegi snell gans ow tibenna, ow "
+"rosella, po ow flyppya dhedha."
 
 #: data/resources/shortcuts-dialog.ui:6
 msgctxt "shortcut window"
@@ -100,7 +100,7 @@ msgstr "Ygeri Gweres"
 #: data/resources/shortcuts-dialog.ui:51
 msgctxt "shortcut window"
 msgid "Show Keyboard Shortcuts"
-msgstr "Diskwedhes Kesunyansow Bysowek"
+msgstr "Diskwedhes Kesunyansow Vysowek"
 
 #: data/resources/shortcuts-dialog.ui:57
 msgctxt "shortcut window"
@@ -115,7 +115,7 @@ msgstr "Kywtya"
 #: data/resources/shortcuts-dialog.ui:71
 msgctxt "shortcut window"
 msgid "Navigate Images"
-msgstr "Viajya tredh Skeusennow"
+msgstr "Viajya yntra Skeusennow"
 
 #: data/resources/shortcuts-dialog.ui:75 data/resources/shortcuts-dialog.ui:89
 msgctxt "shortcut window"
@@ -125,17 +125,17 @@ msgstr "Skeusen Nessa"
 #: data/resources/shortcuts-dialog.ui:82 data/resources/shortcuts-dialog.ui:96
 msgctxt "shortcut window"
 msgid "Previous Image"
-msgstr "Skeusen Kyns"
+msgstr "Skeusen Gyns"
 
 #: data/resources/shortcuts-dialog.ui:102
 msgctxt "shortcut window"
 msgid "First Image"
-msgstr "Skeusen Kynsa"
+msgstr "Skeusen Gynsa"
 
 #: data/resources/shortcuts-dialog.ui:108
 msgctxt "shortcut window"
 msgid "Last Image"
-msgstr "Skeusen Diwettha"
+msgstr "Skeusen Dhiwettha"
 
 #: data/resources/shortcuts-dialog.ui:116
 msgctxt "shortcut window"
@@ -232,12 +232,12 @@ msgstr "Dewis Teythiennow Skeusen"
 #: data/resources/shortcuts-dialog.ui:218
 msgctxt "shortcut window"
 msgid "Show Main Menu"
-msgstr "Diskwedhes Rol Chif"
+msgstr "Diskwedhes Pennrol"
 
 #: data/resources/shortcuts-dialog.ui:226
 msgctxt "shortcut window"
 msgid "Editing"
-msgstr "Golegi"
+msgstr "Ow Kolegi"
 
 #: data/resources/shortcuts-dialog.ui:229
 msgctxt "shortcut window"
@@ -285,7 +285,7 @@ msgstr "Gwirbryntyans © 2020–2024 Christopher Davis et al."
 
 #: src/file_model.rs:211
 msgid "Could not list other files in directory."
-msgstr "Ny yllir rolya restrennow aral yn restrenva."
+msgstr "Ny yllir rolya restrennow erel yn restrenva."
 
 #. Translators: Display of the f-number <https://en.wikipedia.org/wiki/F-number>. {} will be replaced with the number
 #: src/metadata.rs:256
@@ -341,7 +341,7 @@ msgstr "Ny yllir daskor skeusen dhyworth atalgist"
 
 #: src/widgets/drag_overlay.ui:15
 msgid "Drop Image to View"
-msgstr "Droppya Skeusen rag Gweles"
+msgstr "Droppyewgh Skeusen rag Gweles"
 
 #: src/widgets/edit/crop.rs:363
 msgid "Failed to Edit Image"
@@ -466,7 +466,7 @@ msgstr "Ny yllir sawya skeusen."
 
 #: src/widgets/edit_window.rs:344
 msgid "Editing Image"
-msgstr "Ow Golegi Skeusen"
+msgstr "Ow Kolegi Skeusen"
 
 #: src/widgets/edit_window.rs:361
 msgid "Failed to edit image."
@@ -494,7 +494,7 @@ msgstr "_Sawya Avel…"
 
 #: src/widgets/edit_window.ui:100
 msgid "Keep original and create a new file"
-msgstr "Gwitha mammfurv ha gul restren nowydh"
+msgstr "Gwitha mammfurv ha gwruthyl restren nowydh"
 
 #: src/widgets/edit_window.ui:120
 msgid "_Replace Original"
@@ -502,15 +502,15 @@ msgstr "_Aslea Mammfurv"
 
 #: src/widgets/edit_window.ui:128
 msgid "Original image will be moved to the trash"
-msgstr "Skeusen gwreydhek a wra bos gwayas dhe'n atalgist"
+msgstr "Skeusen gwreydhek a vydh gwayys dhe'n atalgist"
 
 #: src/widgets/error_details.rs:80
 msgid ""
 "The following error occurred. If you think this is an issue with the "
 "program, please include this information when you report the error."
 msgstr ""
-"Yma an error a sew. Mar krysowgh kudyn gans an towlen yw hemma, synsi an "
-"kedhlow ma mar pleg pan ow terivas an error."
+"Yth esa an error a sew. Mar grysowgh hemm yw kudyn gans an dowlen, synsewgh "
+"an kedhlow ma mar pleg pan ow terivas an error."
 
 #: src/widgets/error_details.ui:4
 msgid "Error Details"
@@ -522,9 +522,9 @@ msgid ""
 "image. Please include this information when you report an error. If "
 "possible, please also provide the image that causes the issue."
 msgstr ""
-"An kargell skeusen a dherivas an pyth a sew pan owth assaya karga po golegi "
-"an skeusen. Synsi an kedhlow ma mar pleg pan ow terivas error. Mars yw "
-"possybyl, provia an skeusen ynwedh mar pleg."
+"An kargell skeusen a dherivas an pyth a sew pan owth assaya dhe garga po "
+"golegi an skeusen. Synsewgh an kedhlow ma mar pleg pan ow terivas error. "
+"Mars yw possybyl, proviewgh an skeusen ynwedh mar pleg."
 
 #: src/widgets/error_details.ui:24
 msgid "Error Message"
@@ -545,12 +545,12 @@ msgid ""
 "compatibility version “{}” is not installed."
 msgstr ""
 "Nyns eus kargellow skeusen kavadow. Martesen an fardel “glycin-loaders” gans "
-"versyon kesplegadewder “{}” nyns yw leys."
+"versyon kesplegadewder “{}” nag yw leys."
 
 #: src/widgets/image_page.rs:243
 #, rust-format
 msgid "The image format “{} ({})” is known but not installed."
-msgstr "An furvas skeusen “{} ({})” yw koth mes an leys."
+msgstr "An furvas skeusen “{} ({})” yw koth mes nag yw leys."
 
 #: src/widgets/image_page.rs:251
 #, rust-format
@@ -568,7 +568,7 @@ msgstr "Ny yllir karga restren skeusen: {}"
 
 #: src/widgets/image_page.rs:272
 msgid "Either the image file is corrupted or it contains unsupported elements."
-msgstr "Po an skeusen yw legrys po synsi darnow anskoodhys."
+msgstr "Po an skeusen yw legrys po hi a syns darnow anskoodhys."
 
 #: src/widgets/image_page.ui:6 src/widgets/image_window.ui:16
 msgid "_Open With…"
@@ -596,7 +596,7 @@ msgstr "Ny Yllir Karga Skeusen"
 
 #: src/widgets/image_page.ui:71
 msgid "More _Information"
-msgstr "_Kedhlow Moy"
+msgstr "Moy _Kedhlow"
 
 #: src/widgets/image_page.ui:81
 msgid "_Reload"
@@ -614,7 +614,7 @@ msgstr "Rosella A-dhyghow"
 #. an image has been set as background.
 #: src/widgets/image_view.rs:866
 msgid "Set as background."
-msgstr "Settya avel kilva."
+msgstr "Settys avel kilva."
 
 #: src/widgets/image_view.rs:872
 msgid "Could not set background."
@@ -622,7 +622,7 @@ msgstr "Ny yllir settya kilva."
 
 #: src/widgets/image_view.ui:26
 msgid "Previous Image"
-msgstr "Skeusen Kyns"
+msgstr "Skeusen Gyns"
 
 #: src/widgets/image_view.ui:36
 msgid "Next Image"
@@ -652,52 +652,52 @@ msgstr "Nivel A-vusur"
 msgid "Zoom to Specified Level"
 msgstr "Moghhe/Lehe dhe Nivel Ragnotys"
 
-#: src/widgets/image_window.rs:528
+#: src/widgets/image_window.rs:510
 msgid "Supported image formats"
 msgstr "Furvasow skeusen skoodhys"
 
-#: src/widgets/image_window.rs:534
+#: src/widgets/image_window.rs:516
 msgid "All files"
 msgstr "Oll restrennow"
 
-#: src/widgets/image_window.rs:541
+#: src/widgets/image_window.rs:523
 msgid "Open Image"
 msgstr "Ygeri Skeusen"
 
-#: src/widgets/image_window.rs:633
+#: src/widgets/image_window.rs:615
 msgid "Image copied to clipboard"
 msgstr "Skeusen kopys war astel glypp"
 
-#: src/widgets/image_window.rs:654
+#: src/widgets/image_window.rs:636
 msgid "Image moved to trash"
-msgstr "Skeusen gwayas dhe atalgist"
+msgstr "Skeusen gwayys dhe atalgist"
 
-#: src/widgets/image_window.rs:655
+#: src/widgets/image_window.rs:637
 msgid "Undo"
 msgstr "Digelmi"
 
-#: src/widgets/image_window.rs:685
+#: src/widgets/image_window.rs:667
 msgid "Failed to move image to trash"
 msgstr "Ny yllir gwaya skeusen dhe atalgist"
 
-#: src/widgets/image_window.rs:709
+#: src/widgets/image_window.rs:691
 msgid "Permanently Delete Image?"
 msgstr "Dilea Skeusen yn Andileadow?"
 
-#: src/widgets/image_window.rs:711
+#: src/widgets/image_window.rs:693
 #, rust-format
 msgid "After deleting the image “{}” it will be permanently lost."
-msgstr "Wosa ow tilea an skeusen “{}” kellys yw andileadow yw."
+msgstr "Wosa ow tilea an skeusen “{}” hi fydh kellys andileadow yw."
 
-#: src/widgets/image_window.rs:719
+#: src/widgets/image_window.rs:701
 msgid "Cancel"
 msgstr "Hedhi"
 
-#: src/widgets/image_window.rs:720
+#: src/widgets/image_window.rs:702
 msgid "Delete"
 msgstr "Dilea"
 
-#: src/widgets/image_window.rs:731
+#: src/widgets/image_window.rs:713
 msgid "Failed to delete image"
 msgstr "Ny yllir dilea skeusen"
 
@@ -715,7 +715,7 @@ msgstr "_Gweres"
 
 #: src/widgets/image_window.ui:50
 msgid "_Keyboard Shortcuts"
-msgstr "_Kesunyansow Bysowek"
+msgstr "_Kesunyansow Vysowek"
 
 #: src/widgets/image_window.ui:54
 msgid "_About Image Viewer"
@@ -727,7 +727,7 @@ msgstr "Dewis Leunskrin"
 
 #: src/widgets/image_window.ui:93
 msgid "Main Menu"
-msgstr "Rol Chif"
+msgstr "Pennrol"
 
 #: src/widgets/image_window.ui:125
 msgid "Image Properties"
@@ -743,7 +743,7 @@ msgstr "Gweles ha Golegi Skeusennow"
 
 #: src/widgets/image_window.ui:221
 msgid "Drag and drop images here"
-msgstr "Drayla ha droppya skeusennow omma"
+msgstr "Draylewgh ha droppyewgh skeusennow omma"
 
 #: src/widgets/image_window.ui:225
 msgid "_Open Files…"
@@ -825,11 +825,11 @@ msgstr "_Tuedhder"
 
 #: src/widgets/print.ui:72
 msgid "Portrait Page Orientation"
-msgstr "Tuedhder Folden Plommwedhek"
+msgstr "Tuedhder Folen Vlommwedhek"
 
 #: src/widgets/print.ui:80
 msgid "Landscape Page Orientation"
-msgstr "Tuedhder Folden Gorwelyek"
+msgstr "Tuedhder Folen Worwelyek"
 
 #: src/widgets/print.ui:89
 msgid "_Alignment"
@@ -841,7 +841,7 @@ msgstr "Emlow"
 
 #: src/widgets/print.ui:111
 msgid "Margin Units"
-msgstr "Unsys Amal"
+msgstr "Unses Emlow"
 
 #: src/widgets/print.ui:128
 msgid "_Horizontal"
@@ -857,7 +857,7 @@ msgstr "Braster Skeusen"
 
 #: src/widgets/print.ui:145
 msgid "Image Size Units"
-msgstr "Unsys Braster Skeusen"
+msgstr "Unses Braster Skeusen"
 
 #: src/widgets/print.ui:163
 msgid "_Fill Space"
@@ -900,7 +900,7 @@ msgstr "Restrenva"
 
 #: src/widgets/properties_view.ui:28
 msgid "Open Containing Folder"
-msgstr "Ygeri Restrenva Kar"
+msgstr "Ygeri Restrenva Ow Synsi"
 
 #: src/widgets/properties_view.ui:41
 msgid "URI"
@@ -963,6 +963,6 @@ msgstr "Hirder Fog"
 msgid "Maker, Model"
 msgstr "Gwrier, Eghen"
 
-#: src/widgets/window.rs:206
+#: src/widgets/window.rs:225
 msgid "Show Details"
 msgstr "Diskwedhes Manylyon"
