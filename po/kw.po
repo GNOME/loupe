@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
 "POT-Creation-Date: 2026-04-27 11:32+0000\n"
-"PO-Revision-Date: 2026-05-22 22:10+0100\n"
+"PO-Revision-Date: 2026-05-29 17:43+0100\n"
 "Last-Translator: Flynn Peck <cirilla@tuta.io>\n"
 "Language-Team: kw\n"
 "Language: kw\n"
@@ -100,7 +100,7 @@ msgstr "Ygeri Gweres"
 #: data/resources/shortcuts-dialog.ui:51
 msgctxt "shortcut window"
 msgid "Show Keyboard Shortcuts"
-msgstr "Diskwedhes Kesunyansow Vysowek"
+msgstr "Diskwedhes Kesunyansow Bysowek"
 
 #: data/resources/shortcuts-dialog.ui:57
 msgctxt "shortcut window"
@@ -509,12 +509,12 @@ msgid ""
 "The following error occurred. If you think this is an issue with the "
 "program, please include this information when you report the error."
 msgstr ""
-"Yth esa an error a sew. Mar grysowgh hemm yw kudyn gans an dowlen, synsewgh "
-"an kedhlow ma mar pleg pan ow terivas an error."
+"Yth esa an kamm a sew. Mar krysowgh hemm yw kudyn gans an dowlen, synsewgh "
+"an kedhlow ma mar pleg pan ow terivas an kamm."
 
 #: src/widgets/error_details.ui:4
 msgid "Error Details"
-msgstr "Manylyon Error"
+msgstr "Manylyon Kamm"
 
 #: src/widgets/error_details.ui:19
 msgid ""
@@ -523,16 +523,16 @@ msgid ""
 "possible, please also provide the image that causes the issue."
 msgstr ""
 "An kargell skeusen a dherivas an pyth a sew pan owth assaya dhe garga po "
-"golegi an skeusen. Synsewgh an kedhlow ma mar pleg pan ow terivas error. "
-"Mars yw possybyl, proviewgh an skeusen ynwedh mar pleg."
+"golegi an skeusen. Synsewgh an kedhlow ma mar pleg pan ow terivas kamm. Mars "
+"yw possybyl, proviewgh an skeusen ynwedh mar pleg."
 
 #: src/widgets/error_details.ui:24
 msgid "Error Message"
-msgstr "Messach Error"
+msgstr "Messach Kamm"
 
 #: src/widgets/error_details.ui:28
 msgid "Copy Error Message"
-msgstr "Kopia Messach Error"
+msgstr "Kopia Messach Kamm"
 
 #: src/widgets/error_details.ui:68
 msgid "Report _Issue"
@@ -550,7 +550,7 @@ msgstr ""
 #: src/widgets/image_page.rs:243
 #, rust-format
 msgid "The image format “{} ({})” is known but not installed."
-msgstr "An furvas skeusen “{} ({})” yw koth mes nag yw leys."
+msgstr "An furvas skeusen “{} ({})” yw aswonys mes nag yw leys."
 
 #: src/widgets/image_page.rs:251
 #, rust-format
@@ -687,7 +687,7 @@ msgstr "Dilea Skeusen yn Andileadow?"
 #: src/widgets/image_window.rs:693
 #, rust-format
 msgid "After deleting the image “{}” it will be permanently lost."
-msgstr "Wosa ow tilea an skeusen “{}” hi fydh kellys andileadow yw."
+msgstr "Wosa ow tilea an skeusen “{}” hi vydh kellys yn andileadow."
 
 #: src/widgets/image_window.rs:701
 msgid "Cancel"
@@ -715,7 +715,7 @@ msgstr "_Gweres"
 
 #: src/widgets/image_window.ui:50
 msgid "_Keyboard Shortcuts"
-msgstr "_Kesunyansow Vysowek"
+msgstr "_Kesunyansow Bysowek"
 
 #: src/widgets/image_window.ui:54
 msgid "_About Image Viewer"
@@ -825,7 +825,7 @@ msgstr "_Tuedhder"
 
 #: src/widgets/print.ui:72
 msgid "Portrait Page Orientation"
-msgstr "Tuedhder Folen Vlommwedhek"
+msgstr "Tuedhder Folen Blommwedhek"
 
 #: src/widgets/print.ui:80
 msgid "Landscape Page Orientation"
