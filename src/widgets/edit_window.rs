@@ -85,7 +85,9 @@ mod imp {
                 glib::spawn_future_local(glib::clone!(
                     #[weak]
                     obj,
-                    async move { obj.imp().save_overwrite().await }
+                    async move {
+                        let _ = obj.imp().save_overwrite().await;
+                    }
                 ));
             });
 
@@ -244,7 +246,7 @@ mod imp {
             }
         }
 
-        pub(super) async fn save_overwrite(&self) {
+        pub(super) async fn save_overwrite(&self) -> Result<(), ()> {
             let obj = self.obj();
             self.save.popdown();
 
@@ -269,9 +271,11 @@ mod imp {
                     old_cancellable.cancel();
                 }
 
+                tracing::debug!("Saving changes …");
                 let written = self
                     .save(original_file.clone(), tmp_file.clone(), cancellable.clone())
                     .await;
+                tracing::debug!("Image written: {written}");
 
                 if written {
                     tracing::debug!("Moving image to trash '{}'", original_file.uri());
@@ -284,14 +288,14 @@ mod imp {
                     if trash_result.is_err() {
                         // Canceled
                         tracing::debug!("Trashing image canceled");
-                        return;
+                        return Err(());
                     } else if let Ok(Err(err)) = trash_result {
                         obj.window_show_error(
                                     &gettext("Failed to save image."),
                                     &format!("Failed to move image {current_path:?} to trash and therefore couldn't save image: {err}"),
                                     ErrorType::General,
                                 );
-                        return;
+                        return Err(());
                     }
 
                     tracing::debug!("Moving '{}' to '{}'", tmp_file.uri(), original_file.uri());
@@ -310,7 +314,7 @@ mod imp {
                     if move_result.is_err() {
                         // Canceled
                         tracing::debug!("Moving image canceled");
-                        return;
+                        return Err(());
                     } else if let Ok(Err(err)) = move_result {
                         obj.window_show_error(
                                         &gettext("Failed to save image."),
@@ -319,12 +323,14 @@ mod imp {
                                         ),
                                         ErrorType::General,
                                     );
-                        return;
+                        return Err(());
                     }
 
                     obj.window_inspect(|w| w.show_specific_image(original_file));
                 }
             }
+
+            Ok(())
         }
 
         #[must_use]
@@ -527,8 +533,11 @@ impl LpEditWindow {
                 "close" => glib::Propagation::Stop,
                 "discard" => glib::Propagation::Proceed,
                 "save" => {
-                    self.imp().save_overwrite().await;
-                    glib::Propagation::Proceed
+                    if self.imp().save_overwrite().await.is_ok() {
+                        glib::Propagation::Proceed
+                    } else {
+                        glib::Propagation::Stop
+                    }
                 }
                 res => {
                     tracing::error!("Invalid dialog result: {res}");
