@@ -163,7 +163,7 @@ impl LpApplication {
                                     glib::MainContext::default().spawn_local(async move {
                                         let res =
                                             dialog_clone.choose_future(Some(&win_clone)).await;
-                                        println!("User response: {}", res);
+
                                         match res.as_str() {
                                             "cancel" => {}
                                             "discard" => {
