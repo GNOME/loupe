@@ -129,6 +129,11 @@ mod imp {
             // and keeps the others usable
             gtk::WindowGroup::new().add_window(&*obj);
 
+            obj.connect_close_request(|win| {
+                win.imp().close_request();
+                glib::Propagation::Stop
+            });
+
             glib::timeout_add_local_once(
                 std::time::Duration::from_millis(SHOW_WINDOW_AFTER),
                 glib::clone!(
@@ -151,6 +156,22 @@ mod imp {
     impl WindowImpl for LpWindow {}
     impl ApplicationWindowImpl for LpWindow {}
     impl AdwApplicationWindowImpl for LpWindow {}
+
+    impl LpWindow {
+        pub fn close_request(&self) {
+            let obj = self.obj().to_owned();
+            glib::MainContext::default().spawn_local(async move {
+                if let Some(edit_window) = obj.edit_window() {
+                    if matches!(edit_window.ensure_saved().await, glib::Propagation::Proceed) {
+                        obj.destroy();
+                    }
+                } else {
+                    // Without editing window, we can always close
+                    obj.destroy();
+                }
+            });
+        }
+    }
 }
 
 glib::wrapper! {

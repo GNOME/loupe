@@ -20,7 +20,6 @@
 //
 // SPDX-License-Identifier: GPL-3.0-or-later
 
-use crate::util::gettext::*;
 use adw::prelude::*;
 use adw::subclass::prelude::*;
 
@@ -135,53 +134,9 @@ impl LpApplication {
                 .build(),
             gio::ActionEntryBuilder::new("quit")
                 .activate(|app: &Self, _, _| {
-                    if let Some(win) = app.active_window() {
-                        if let Some(lp_window) = win.downcast_ref::<LpWindow>() {
-                            if let Some(edit_window) = lp_window.edit_window() {
-                                if edit_window.has_unsaved_changes() {
-                                    let dialog = adw::AlertDialog::new(
-                                        Some(&gettext("Unsaved Changes")),
-                                        Some(&gettext(
-                                            "Changes which are not lost will be permanently lost",
-                                        )),
-                                    );
-
-                                    dialog.add_response("cancel", &gettext("Cancel"));
-                                    dialog.add_response("discard", &gettext("Discard"));
-                                    dialog.add_response("save", &gettext("Save"));
-
-                                    let app_clone = app.clone();
-                                    let win_clone = win.clone();
-                                    let edit_window_clone = edit_window.clone();
-                                    let dialog_clone = dialog.clone();
-
-                                    dialog.set_response_appearance(
-                                        "discard",
-                                        adw::ResponseAppearance::Destructive,
-                                    );
-
-                                    glib::MainContext::default().spawn_local(async move {
-                                        let res =
-                                            dialog_clone.choose_future(Some(&win_clone)).await;
-
-                                        match res.as_str() {
-                                            "cancel" => {}
-                                            "discard" => {
-                                                app_clone.quit();
-                                            }
-                                            "save" => {
-                                                edit_window_clone
-                                                    .save_as_and_quit(app_clone.clone());
-                                            }
-                                            _ => {}
-                                        }
-                                    });
-
-                                    return;
-                                }
-                            }
-                        }
-                        app.quit();
+                    // Give all windows the chance to handle close-request
+                    for win in app.windows() {
+                        win.close();
                     }
                 })
                 .build(),

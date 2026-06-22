@@ -25,7 +25,6 @@ use glycin::Operations;
 
 use super::LpImage;
 use super::edit::LpEditCrop;
-use crate::LpApplication;
 use crate::deps::*;
 use crate::util::ErrorType;
 use crate::util::gettext::*;
@@ -490,19 +489,6 @@ impl LpEditWindow {
         self.imp().is_save_sensitive()
     }
 
-    pub fn save_as_and_quit(&self, app: LpApplication) {
-        glib::spawn_future_local(glib::clone!(
-            #[weak(rename_to=win)]
-            self,
-            #[strong]
-            app,
-            async move {
-                win.imp().save_overwrite().await;
-                app.quit()
-            }
-        ));
-    }
-
     pub fn add_operation(&self, operation: glycin::Operation) {
         let imp = self.imp();
 
@@ -516,5 +502,41 @@ impl LpEditWindow {
         operations.push(operation);
 
         self.set_operations(Some(Arc::new(Operations::new(operations))));
+    }
+
+    /// Returns if the window should proceed with closing
+    pub async fn ensure_saved(&self) -> glib::Propagation {
+        if self.has_unsaved_changes() {
+            let dialog = adw::AlertDialog::new(
+                Some(&gettext("Unsaved Changes")),
+                Some(&gettext(
+                    "Changes which are not lost will be permanently lost",
+                )),
+            );
+
+            dialog.add_response("cancel", &gettext("Cancel"));
+            dialog.add_response("discard", &gettext("Discard"));
+            dialog.add_response("save", &gettext("Save"));
+
+            dialog.set_response_appearance("discard", adw::ResponseAppearance::Destructive);
+
+            let res = dialog.choose_future(Some(self)).await;
+
+            match res.as_str() {
+                "cancel" => glib::Propagation::Stop,
+                "close" => glib::Propagation::Stop,
+                "discard" => glib::Propagation::Proceed,
+                "save" => {
+                    self.imp().save_overwrite().await;
+                    glib::Propagation::Proceed
+                }
+                res => {
+                    tracing::error!("Invalid dialog result: {res}");
+                    glib::Propagation::Stop
+                }
+            }
+        } else {
+            glib::Propagation::Proceed
+        }
     }
 }
