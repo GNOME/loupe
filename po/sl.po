@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2026-01-30 12:47+0000\n"
-"PO-Revision-Date: 2026-01-30 18:21+0100\n"
+"POT-Creation-Date: 2026-06-22 19:07+0000\n"
+"PO-Revision-Date: 2026-06-22 22:35+0200\n"
 "Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
 "Language-Team: Slovenian <gnome-si@googlegroups.com>\n"
 "Language: sl\n"
@@ -23,7 +23,7 @@ msgstr ""
 "X-Poedit-SourceCharset: ISO-8859-1\n"
 
 #: data/org.gnome.Loupe.desktop.in.in:2 data/org.gnome.Loupe.metainfo.xml.in.in:6
-#: src/about.rs:32 src/widgets/image_window.rs:897
+#: src/about.rs:32 src/widgets/image_window.rs:880
 msgid "Image Viewer"
 msgstr "Pregledovalnik slik"
 
@@ -53,6 +53,18 @@ msgid ""
 msgstr ""
 "Raziščite slike, si oglejte njihove metapodatke in jih hitro uredite z "
 "obrezovanjem, vrtenjem ali obračanjem."
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:28
+msgid "Main Window"
+msgstr "Glavno okno"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:32
+msgid "Crop Tool"
+msgstr "Orodje Obreži"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:36
+msgid "Image Properties Panel"
+msgstr "Pult Lastnosti slike"
 
 #: data/resources/shortcuts-dialog.ui:6
 msgctxt "shortcut window"
@@ -450,7 +462,7 @@ msgid "Crop Selection"
 msgstr "Obreži izbor"
 
 #. Translators: Filename suffix, {} is replaced by a number
-#: src/widgets/edit_window.rs:195
+#: src/widgets/edit_window.rs:198
 #, rust-format
 msgid " (Edited)"
 msgid_plural " (Edited {})"
@@ -459,25 +471,49 @@ msgstr[1] " (spremenjeno, {})"
 msgstr[2] " (spremenjeno, {})"
 msgstr[3] " (spremenjeno, {})"
 
-#: src/widgets/edit_window.rs:289 src/widgets/edit_window.rs:315
+#: src/widgets/edit_window.rs:294 src/widgets/edit_window.rs:320
 msgid "Failed to save image."
 msgstr "Ni bilo mogoče shraniti slike."
 
-#: src/widgets/edit_window.rs:343
+#: src/widgets/edit_window.rs:350
 msgid "Editing Image"
 msgstr "Urejanje slike"
 
-#: src/widgets/edit_window.rs:360
+#: src/widgets/edit_window.rs:367
 msgid "Failed to edit image."
 msgstr "Urejanje slike ni uspelo."
 
-#: src/widgets/edit_window.rs:370 src/widgets/edit_window.rs:393
+#: src/widgets/edit_window.rs:377 src/widgets/edit_window.rs:400
 msgid "Failed to Save Image"
 msgstr "Shranjevanje slike ni uspelo"
 
-#: src/widgets/edit_window.rs:376
+#: src/widgets/edit_window.rs:383
 msgid "Saving Image"
 msgstr "Shranjevanje slike"
+
+#: src/widgets/edit_window.rs:517
+msgid "Save Changes?"
+msgstr "Ali želite shraniti spremembe?"
+
+#: src/widgets/edit_window.rs:519
+msgid ""
+"There are unsaved image editing changes. Closing without saving will permanently "
+"lose these modifications."
+msgstr ""
+"Nekatere spremembe urejanja slike niso shranjene. Če ga zaprete brez "
+"shranjevanja, boste trajno izgubili te spremembe."
+
+#: src/widgets/edit_window.rs:523 src/widgets/image_window.rs:701
+msgid "Cancel"
+msgstr "Prekliči"
+
+#: src/widgets/edit_window.rs:524
+msgid "Discard"
+msgstr "Zavrzi"
+
+#: src/widgets/edit_window.rs:525
+msgid "Save"
+msgstr "Shrani"
 
 #: src/widgets/edit_window.ui:64
 msgid "_Cancel"
@@ -651,52 +687,48 @@ msgstr "Raven povečave po meri"
 msgid "Zoom to Specified Level"
 msgstr "Povečava na določeno raven"
 
-#: src/widgets/image_window.rs:527
+#: src/widgets/image_window.rs:510
 msgid "Supported image formats"
 msgstr "Podprte vrste slik"
 
-#: src/widgets/image_window.rs:533
+#: src/widgets/image_window.rs:516
 msgid "All files"
 msgstr "Vse datoteke"
 
-#: src/widgets/image_window.rs:540
+#: src/widgets/image_window.rs:523
 msgid "Open Image"
 msgstr "Odpri sliko"
 
-#: src/widgets/image_window.rs:632
+#: src/widgets/image_window.rs:615
 msgid "Image copied to clipboard"
 msgstr "Slika, kopirana v odložišče"
 
-#: src/widgets/image_window.rs:653
+#: src/widgets/image_window.rs:636
 msgid "Image moved to trash"
 msgstr "Slika, premaknjena v smeti"
 
-#: src/widgets/image_window.rs:654
+#: src/widgets/image_window.rs:637
 msgid "Undo"
 msgstr "Razveljavi"
 
-#: src/widgets/image_window.rs:684
+#: src/widgets/image_window.rs:667
 msgid "Failed to move image to trash"
 msgstr "Premikanje slike v smeti je spodletelo"
 
-#: src/widgets/image_window.rs:708
+#: src/widgets/image_window.rs:691
 msgid "Permanently Delete Image?"
 msgstr "Ali želite sliko trajno izbrisati?"
 
-#: src/widgets/image_window.rs:710
+#: src/widgets/image_window.rs:693
 #, rust-format
 msgid "After deleting the image “{}” it will be permanently lost."
 msgstr "Po brisanju slike »{}« ni mogoče več povrniti."
 
-#: src/widgets/image_window.rs:718
-msgid "Cancel"
-msgstr "Prekliči"
-
-#: src/widgets/image_window.rs:719
+#: src/widgets/image_window.rs:702
 msgid "Delete"
 msgstr "Izbriši"
 
-#: src/widgets/image_window.rs:730
+#: src/widgets/image_window.rs:713
 msgid "Failed to delete image"
 msgstr "Brisanje slike je spodletelo"
 
@@ -962,6 +994,6 @@ msgstr "Goriščna razdalja"
 msgid "Maker, Model"
 msgstr "Izdelovalec, model"
 
-#: src/widgets/window.rs:206
+#: src/widgets/window.rs:253
 msgid "Show Details"
 msgstr "Pokaži podrobnosti"
