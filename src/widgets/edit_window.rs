@@ -508,9 +508,9 @@ impl LpEditWindow {
     pub async fn ensure_saved(&self) -> glib::Propagation {
         if self.has_unsaved_changes() {
             let dialog = adw::AlertDialog::new(
-                Some(&gettext("Unsaved Changes")),
+                Some(&gettext("Save Changes?")),
                 Some(&gettext(
-                    "Changes which are not lost will be permanently lost",
+                    "There are unsaved image editing changes. Closing without saving will permanently lose these modifications.",
                 )),
             );
 
