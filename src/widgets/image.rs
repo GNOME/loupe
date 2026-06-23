@@ -253,8 +253,8 @@ mod imp {
 
         /// Ticks callback for animated image formats
         pub(super) tick_callback: RefCell<Option<gtk::TickCallbackId>>,
-        /// Frame block time for currently shown frame
-        pub(super) last_animated_frame: Cell<i64>,
+        /// Adjusted frame clock time for when the current frame was shown
+        pub(super) last_animated_frame: Cell<Option<i64>>,
 
         /// Gesture, zoom or rotate, used for the duration of the gesture
         pub(super) locked_gestured: Cell<Option<Gesture>>,

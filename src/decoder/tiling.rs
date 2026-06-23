@@ -649,22 +649,24 @@ impl SharedFrameBuffer {
         tiling.unwrap()
     }
 
-    /// Return true if the next frame should be shown and removes the outdated
-    /// frame
-    pub fn frame_timeout(&self, elapsed: Duration) -> bool {
+    /// Remove current frame if frame delay elapsed
+    ///
+    /// Returns the amount of time the frame is shown 'too late'
+    pub fn frame_timeout(&self, elapsed: Duration) -> Option<Duration> {
         let images = &self.buffer.load().images;
 
         // Only move to next image if there is one buffered
         if images.len() > 1
-            && images
-                .front()
-                .is_some_and(|next_frame| elapsed >= next_frame.delay)
+            && let Some(next_frame) = images.front()
+            && elapsed >= next_frame.delay
         {
+            let delay = elapsed - next_frame.delay;
             self.next_frame();
-            return true;
+            let delay = delay.min(next_frame.delay);
+            return Some(delay);
         }
 
-        false
+        None
     }
 
     pub fn next_frame(&self) {

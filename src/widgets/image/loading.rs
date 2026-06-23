@@ -160,17 +160,26 @@ impl imp::LpImage {
 
         // Do not animate if not visible
         if !obj.is_mapped() {
+            self.last_animated_frame.set(None);
             return glib::ControlFlow::Continue;
         }
 
-        let elapsed = clock.frame_time() - self.last_animated_frame.get();
-        let duration = std::time::Duration::from_micros(elapsed as u64);
+        let duration = if let Some(last_animated_frame) = self.last_animated_frame.get() {
+            let elapsed = clock.frame_time() - last_animated_frame;
+            std::time::Duration::from_micros(elapsed as u64)
+        } else {
+            self.last_animated_frame.set(Some(clock.frame_time()));
+            std::time::Duration::ZERO
+        };
 
         // Check if it's time to show the next frame
-        if self.frame_buffer.frame_timeout(duration) {
+        if let Some(delay) = self.frame_buffer.frame_timeout(duration) {
             // Just draw since frame_timeout updated to new frame
             obj.queue_draw();
-            self.last_animated_frame.set(clock.frame_time());
+            // Adjust the time when the frame was shown by how much anwanted delay we
+            // accumulated
+            self.last_animated_frame
+                .set(Some(clock.frame_time() - delay.as_micros() as i64));
             if let Some(decoder) = self.decoder.borrow().as_ref() {
                 // Decode new frame and load it into buffer
                 decoder.fill_frame_buffer();
