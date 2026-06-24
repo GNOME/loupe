@@ -279,6 +279,7 @@ mod imp {
 
                 if written {
                     tracing::debug!("Moving image to trash '{}'", original_file.uri());
+                    self.set_saving_status(Some(gettext("Moving Original to Trash")));
                     let trash_result = gio::CancellableFuture::new(
                         original_file.trash_future(glib::Priority::DEFAULT),
                         cancellable.clone(),
@@ -288,6 +289,7 @@ mod imp {
                     if trash_result.is_err() {
                         // Canceled
                         tracing::debug!("Trashing image canceled");
+                        self.set_saving_status(None);
                         return Err(());
                     } else if let Ok(Err(err)) = trash_result {
                         obj.window_show_error(
@@ -295,10 +297,12 @@ mod imp {
                                     &format!("Failed to move image {current_path:?} to trash and therefore couldn't save image: {err}"),
                                     ErrorType::General,
                                 );
+                        self.set_saving_status(None);
                         return Err(());
                     }
 
                     tracing::debug!("Moving '{}' to '{}'", tmp_file.uri(), original_file.uri());
+                    self.set_saving_status(Some(gettext("Finalizing Save Operation")));
                     let move_result = gio::CancellableFuture::new(
                         tmp_file
                             .move_future(
@@ -314,6 +318,7 @@ mod imp {
                     if move_result.is_err() {
                         // Canceled
                         tracing::debug!("Moving image canceled");
+                        self.set_saving_status(None);
                         return Err(());
                     } else if let Ok(Err(err)) = move_result {
                         obj.window_show_error(
@@ -323,6 +328,7 @@ mod imp {
                                         ),
                                         ErrorType::General,
                                     );
+                        self.set_saving_status(None);
                         return Err(());
                     }
 
