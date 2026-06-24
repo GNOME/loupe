@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2026-01-30 12:47+0000\n"
-"PO-Revision-Date: 2026-01-30 15:46+0100\n"
+"POT-Creation-Date: 2026-06-23 20:57+0000\n"
+"PO-Revision-Date: 2026-06-24 10:53+0200\n"
 "Last-Translator: Antonio Marin <gnmer.6qxyg@slmail.me>\n"
 "Language-Team: Romanian <gnomero-list@lists.sourceforge.net>\n"
 "Language: ro\n"
@@ -18,11 +18,17 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
 "20)) ? 1 : 2);\n"
-"X-Generator: Gtranslator 48.0\n"
+"X-Generator: Gtranslator 50.0\n"
+"X-DL-VCS-Web: https://gitlab.gnome.org/GNOME/loupe\n"
+"X-DL-Lang: ro\n"
+"X-DL-Module: loupe\n"
+"X-DL-Branch: main\n"
+"X-DL-Domain: po\n"
+"X-DL-State: Translating\n"
 
 #: data/org.gnome.Loupe.desktop.in.in:2
 #: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:32
-#: src/widgets/image_window.rs:897
+#: src/widgets/image_window.rs:880
 msgid "Image Viewer"
 msgstr "Imagini"
 
@@ -51,6 +57,18 @@ msgid ""
 msgstr ""
 "Explorează imagini, vizualizează metadatele lor și efectuează rapid "
 "modificări prin decupare, rotire sau oglindire."
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:28
+msgid "Main Window"
+msgstr "Fereastra principală"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:32
+msgid "Crop Tool"
+msgstr "Decupare"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:36
+msgid "Image Properties Panel"
+msgstr "Panoul cu proprietățile imaginii"
 
 #: data/resources/shortcuts-dialog.ui:6
 msgctxt "shortcut window"
@@ -450,32 +468,57 @@ msgid "Crop Selection"
 msgstr "Taie selecția"
 
 #. Translators: Filename suffix, {} is replaced by a number
-#: src/widgets/edit_window.rs:195
+#: src/widgets/edit_window.rs:198
+#, rust-format
 msgid " (Edited)"
 msgid_plural " (Edited {})"
 msgstr[0] " (modificată)"
 msgstr[1] " ({} modificate)"
 msgstr[2] " ({} modificate)"
 
-#: src/widgets/edit_window.rs:289 src/widgets/edit_window.rs:315
+#: src/widgets/edit_window.rs:294 src/widgets/edit_window.rs:320
 msgid "Failed to save image."
 msgstr "Nu s-a putut salva imaginea."
 
-#: src/widgets/edit_window.rs:343
+#: src/widgets/edit_window.rs:350
 msgid "Editing Image"
 msgstr "Modificare imagine"
 
-#: src/widgets/edit_window.rs:360
+#: src/widgets/edit_window.rs:367
 msgid "Failed to edit image."
 msgstr "Nu s-a putut modifica imaginea."
 
-#: src/widgets/edit_window.rs:370 src/widgets/edit_window.rs:393
+#: src/widgets/edit_window.rs:377 src/widgets/edit_window.rs:400
 msgid "Failed to Save Image"
 msgstr "Nu s-a putut salva imaginea"
 
-#: src/widgets/edit_window.rs:376
+#: src/widgets/edit_window.rs:383
 msgid "Saving Image"
 msgstr "Salvare imagini"
+
+#: src/widgets/edit_window.rs:517
+msgid "Save Changes?"
+msgstr "Se salvează modificările?"
+
+#: src/widgets/edit_window.rs:519
+msgid ""
+"There are unsaved image editing changes. Closing without saving will "
+"permanently lose these modifications."
+msgstr ""
+"Există modificări nesalvate ale imaginii. Închizând fără a le salva, acestea "
+"vor fi pierdute definitiv."
+
+#: src/widgets/edit_window.rs:523 src/widgets/image_window.rs:701
+msgid "Cancel"
+msgstr "Anulează"
+
+#: src/widgets/edit_window.rs:524
+msgid "Discard"
+msgstr "Nu salva"
+
+#: src/widgets/edit_window.rs:525
+msgid "Save"
+msgstr "Salvează"
 
 #: src/widgets/edit_window.ui:64
 msgid "_Cancel"
@@ -536,6 +579,7 @@ msgid "Report _Issue"
 msgstr "Raportează _problema"
 
 #: src/widgets/image_page.rs:225
+#, rust-format
 msgid ""
 "No image loaders available. Maybe the “glycin-loaders” package with "
 "compatibility version “{}” is not installed."
@@ -544,10 +588,12 @@ msgstr ""
 "versiunea compatibilă „{}” a pachetului „glycin-loaders”."
 
 #: src/widgets/image_page.rs:243
+#, rust-format
 msgid "The image format “{} ({})” is known but not installed."
 msgstr "Formatul de imagine „{} ({})” este cunoscut, dar nu e instalat."
 
 #: src/widgets/image_page.rs:251
+#, rust-format
 msgid "Unknown image format “{} ({}).”"
 msgstr "Format necunoscut de imagine „{} ({})”."
 
@@ -556,6 +602,7 @@ msgid "There is not enough free memory available to load this image."
 msgstr "Nu există suficientă memorie liberă pentru a încărca această imagine."
 
 #: src/widgets/image_page.rs:267
+#, rust-format
 msgid "Failed to load image file: {}"
 msgstr "Nu s-a putut încărca fișierul: {}"
 
@@ -646,51 +693,48 @@ msgstr "Nivel personalizat de mărire"
 msgid "Zoom to Specified Level"
 msgstr "Mărește la un nivel specific"
 
-#: src/widgets/image_window.rs:527
+#: src/widgets/image_window.rs:510
 msgid "Supported image formats"
 msgstr "Formate de imagine acceptate"
 
-#: src/widgets/image_window.rs:533
+#: src/widgets/image_window.rs:516
 msgid "All files"
 msgstr "Toate fișierele"
 
-#: src/widgets/image_window.rs:540
+#: src/widgets/image_window.rs:523
 msgid "Open Image"
 msgstr "Deschide imaginea"
 
-#: src/widgets/image_window.rs:632
+#: src/widgets/image_window.rs:615
 msgid "Image copied to clipboard"
 msgstr "Imagine copiată"
 
-#: src/widgets/image_window.rs:653
+#: src/widgets/image_window.rs:636
 msgid "Image moved to trash"
 msgstr "Imagine mutată în gunoi"
 
-#: src/widgets/image_window.rs:654
+#: src/widgets/image_window.rs:637
 msgid "Undo"
 msgstr "Refă"
 
-#: src/widgets/image_window.rs:684
+#: src/widgets/image_window.rs:667
 msgid "Failed to move image to trash"
 msgstr "Nu s-a putut muta imaginea în gunoi"
 
-#: src/widgets/image_window.rs:708
+#: src/widgets/image_window.rs:691
 msgid "Permanently Delete Image?"
 msgstr "Să fie ștearsă definitiv imaginea?"
 
-#: src/widgets/image_window.rs:710
+#: src/widgets/image_window.rs:693
+#, rust-format
 msgid "After deleting the image “{}” it will be permanently lost."
 msgstr "După ștergerea imaginii „{}” ea va fi pierdută definitiv."
 
-#: src/widgets/image_window.rs:718
-msgid "Cancel"
-msgstr "Anulează"
-
-#: src/widgets/image_window.rs:719
+#: src/widgets/image_window.rs:702
 msgid "Delete"
 msgstr "Șterge"
 
-#: src/widgets/image_window.rs:730
+#: src/widgets/image_window.rs:713
 msgid "Failed to delete image"
 msgstr "Nu s-a putut șterge imaginea"
 
@@ -779,6 +823,7 @@ msgstr "px"
 
 #. Translators: {} is a placeholder for the filename
 #: src/widgets/print.rs:364
+#, rust-format
 msgid "Print “{}”"
 msgstr "Tipărește „{}”"
 
@@ -955,6 +1000,6 @@ msgstr "Distanță focală"
 msgid "Maker, Model"
 msgstr "Fabricant, model"
 
-#: src/widgets/window.rs:206
+#: src/widgets/window.rs:253
 msgid "Show Details"
 msgstr "Arată detalii"
