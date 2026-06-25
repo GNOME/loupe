@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2026-06-22 19:07+0000\n"
-"PO-Revision-Date: 2026-06-22 22:35+0200\n"
+"POT-Creation-Date: 2026-06-24 19:03+0000\n"
+"PO-Revision-Date: 2026-06-25 06:30+0200\n"
 "Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
 "Language-Team: Slovenian <gnome-si@googlegroups.com>\n"
 "Language: sl\n"
@@ -471,31 +471,39 @@ msgstr[1] " (spremenjeno, {})"
 msgstr[2] " (spremenjeno, {})"
 msgstr[3] " (spremenjeno, {})"
 
-#: src/widgets/edit_window.rs:294 src/widgets/edit_window.rs:320
+#: src/widgets/edit_window.rs:282
+msgid "Moving Original to Trash"
+msgstr "Premikanje izvirnika v koš"
+
+#: src/widgets/edit_window.rs:296 src/widgets/edit_window.rs:325
 msgid "Failed to save image."
 msgstr "Ni bilo mogoče shraniti slike."
 
-#: src/widgets/edit_window.rs:350
+#: src/widgets/edit_window.rs:305
+msgid "Finalizing Save Operation"
+msgstr "Dokončanje operacije shranjevanja"
+
+#: src/widgets/edit_window.rs:356
 msgid "Editing Image"
 msgstr "Urejanje slike"
 
-#: src/widgets/edit_window.rs:367
+#: src/widgets/edit_window.rs:373
 msgid "Failed to edit image."
 msgstr "Urejanje slike ni uspelo."
 
-#: src/widgets/edit_window.rs:377 src/widgets/edit_window.rs:400
+#: src/widgets/edit_window.rs:383 src/widgets/edit_window.rs:406
 msgid "Failed to Save Image"
 msgstr "Shranjevanje slike ni uspelo"
 
-#: src/widgets/edit_window.rs:383
+#: src/widgets/edit_window.rs:389
 msgid "Saving Image"
 msgstr "Shranjevanje slike"
 
-#: src/widgets/edit_window.rs:517
+#: src/widgets/edit_window.rs:523
 msgid "Save Changes?"
 msgstr "Ali želite shraniti spremembe?"
 
-#: src/widgets/edit_window.rs:519
+#: src/widgets/edit_window.rs:525
 msgid ""
 "There are unsaved image editing changes. Closing without saving will permanently "
 "lose these modifications."
@@ -503,15 +511,15 @@ msgstr ""
 "Nekatere spremembe urejanja slike niso shranjene. Če ga zaprete brez "
 "shranjevanja, boste trajno izgubili te spremembe."
 
-#: src/widgets/edit_window.rs:523 src/widgets/image_window.rs:701
+#: src/widgets/edit_window.rs:529 src/widgets/image_window.rs:701
 msgid "Cancel"
 msgstr "Prekliči"
 
-#: src/widgets/edit_window.rs:524
+#: src/widgets/edit_window.rs:530
 msgid "Discard"
 msgstr "Zavrzi"
 
-#: src/widgets/edit_window.rs:525
+#: src/widgets/edit_window.rs:531
 msgid "Save"
 msgstr "Shrani"
 
