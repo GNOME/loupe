@@ -1276,9 +1276,9 @@ dependencies = [
 
 [[package]]
 name = "gufo-exif"
-version = "0.5.0-alpha"
+version = "0.5.0-alpha.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "e6a31aca18913da24cf6aaf0d3ffd905608463ffb75d0af42c2f0bf3afc7b987"
+checksum = "1597401629a6778cbea663e6af6680fbcd07ab243cc8eee9bc5ef5d2c9e5eab8"
 dependencies = [
  "chrono",
  "gufo-common",

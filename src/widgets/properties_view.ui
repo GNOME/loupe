@@ -155,6 +155,26 @@
                   </object>
                 </child>
                 <child>
+                  <object class="AdwActionRow" id="creator">
+                    <property name="title" translatable="yes">Creator</property>
+                    <property name="subtitle-selectable">True</property>
+                    <property name="use-markup">False</property>
+                    <style>
+                      <class name="property" />
+                    </style>
+                  </object>
+                </child>
+                <child>
+                  <object class="AdwActionRow" id="rights">
+                    <property name="title" translatable="yes">Copyright</property>
+                    <property name="subtitle-selectable">True</property>
+                    <property name="use-markup">False</property>
+                    <style>
+                      <class name="property" />
+                    </style>
+                  </object>
+                </child>
+                <child>
                   <object class="AdwActionRow" id="user_comment">
                     <property name="title" translatable="yes">Comment</property>
                     <property name="subtitle-selectable">True</property>
@@ -207,6 +227,26 @@
                 <child>
                   <object class="AdwActionRow" id="maker_model">
                     <property name="title" translatable="yes">Maker, Model</property>
+                    <property name="subtitle-selectable">True</property>
+                    <property name="use-markup">False</property>
+                    <style>
+                      <class name="property" />
+                    </style>
+                  </object>
+                </child>
+                <child>
+                  <object class="AdwActionRow" id="lens">
+                    <property name="title" translatable="yes">Lens</property>
+                    <property name="subtitle-selectable">True</property>
+                    <property name="use-markup">False</property>
+                    <style>
+                      <class name="property" />
+                    </style>
+                  </object>
+                </child>
+                <child>
+                  <object class="AdwActionRow" id="software">
+                    <property name="title" translatable="yes">Software</property>
                     <property name="subtitle-selectable">True</property>
                     <property name="use-markup">False</property>
                     <style>

@@ -72,6 +72,10 @@ mod imp {
         #[template_child]
         originally_created: TemplateChild<adw::ActionRow>,
         #[template_child]
+        creator: TemplateChild<adw::ActionRow>,
+        #[template_child]
+        rights: TemplateChild<adw::ActionRow>,
+        #[template_child]
         user_comment: TemplateChild<adw::ActionRow>,
         #[template_child]
         aperture: TemplateChild<adw::ActionRow>,
@@ -83,6 +87,10 @@ mod imp {
         focal_length: TemplateChild<adw::ActionRow>,
         #[template_child]
         maker_model: TemplateChild<adw::ActionRow>,
+        #[template_child]
+        lens: TemplateChild<adw::ActionRow>,
+        #[template_child]
+        software: TemplateChild<adw::ActionRow>,
     }
 
     #[glib::object_subclass]
@@ -227,12 +235,16 @@ mod imp {
             let has_details = [
                 Self::update_row(&self.location, metadata.gps_location_place()),
                 Self::update_row(&self.originally_created, metadata.originally_created()),
+                Self::update_row(&self.creator, metadata.creator()),
+                Self::update_row(&self.rights, metadata.rights()),
                 Self::update_row(&self.user_comment, metadata.user_comment()),
                 Self::update_row(&self.aperture, metadata.f_number()),
                 Self::update_row(&self.exposure, metadata.exposure_time()),
                 Self::update_row(&self.iso, metadata.iso()),
                 Self::update_row(&self.focal_length, metadata.focal_length()),
                 Self::update_row(&self.maker_model, metadata.maker_model()),
+                Self::update_row(&self.lens, metadata.lens()),
+                Self::update_row(&self.software, metadata.software()),
             ]
             .iter()
             .any(|x| *x);

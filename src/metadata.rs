@@ -20,6 +20,7 @@
 
 mod file;
 
+use std::collections::BTreeMap;
 use std::path::PathBuf;
 use std::str::FromStr;
 
@@ -61,12 +62,23 @@ impl Metadata {
         }
     }
 
+    fn set_key_value(&mut self, key_value: BTreeMap<String, String>) {
+        let result = self.metadata.add_key_value(key_value);
+
+        if let Err(err) = &result {
+            tracing::warn!("Failed to add key-value data: {err}");
+        }
+    }
+
     pub fn set_image_info(&mut self, image_info: ImageDetails) {
         if let Some(exif_raw) = image_info.metadata_exif() {
             self.set_exif_bytes(exif_raw.to_owned());
         }
-        if let Some(exif_xmp) = image_info.metadata_xmp() {
-            self.set_xmp_bytes(exif_xmp.to_owned());
+        if let Some(xmp_raw) = image_info.metadata_xmp() {
+            self.set_xmp_bytes(xmp_raw.to_owned());
+        }
+        if let Some(key_value) = image_info.metadata_key_value() {
+            self.set_key_value(key_value.to_owned());
         }
         self.image_info = Some(image_info);
     }
@@ -307,6 +319,56 @@ impl Metadata {
 
     pub fn maker(&self) -> Option<String> {
         self.metadata.make()
+    }
+
+    pub fn camera_owner_name(&self) -> Option<String> {
+        self.metadata.camera_owner_name()
+    }
+
+    pub fn creator(&self) -> Option<String> {
+        self.metadata.creator()
+    }
+
+    pub fn lens(&self) -> Option<String> {
+        if let Some(lens) = self.metadata.lens_specification()
+            && lens.min_f_number_max_focal_length.numerator > 0
+            && lens.min_f_number_max_focal_length.denominator > 0
+        {
+            let mut s = if lens.min_focal_length == lens.max_focal_length {
+                format!("{}\u{202F}mm", lens.min_focal_length.as_f32())
+            } else {
+                format!(
+                    "{}–{}\u{202F}mm",
+                    lens.min_focal_length.as_f32(),
+                    lens.max_focal_length.as_f32()
+                )
+            };
+
+            if lens.min_f_number_min_focal_length == lens.min_f_number_max_focal_length {
+                s.push_str(&format!(
+                    " \u{192}\u{2215}{}",
+                    lens.min_f_number_min_focal_length.as_f32()
+                ));
+            } else {
+                s.push_str(&format!(
+                    " \u{192}\u{2215}{}–{}",
+                    lens.min_f_number_min_focal_length.as_f32(),
+                    lens.min_f_number_max_focal_length.as_f32()
+                ));
+            }
+
+            Some(s)
+        } else {
+            self.metadata.lens_model()
+        }
+    }
+
+    pub fn rights(&self) -> Option<String> {
+        self.metadata.rights()
+    }
+
+    pub fn software(&self) -> Option<String> {
+        self.metadata.software()
     }
 
     pub fn gps_location(&self) -> Option<gufo::common::geography::Location> {
