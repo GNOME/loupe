@@ -43,7 +43,11 @@ impl Drop for Glycin {
 }
 
 impl Glycin {
-    pub fn new(image: glycin::Image, updater: UpdateSender, tiles: Arc<SharedFrameBuffer>) -> Self {
+    pub fn new(
+        mut image: glycin::Image,
+        updater: UpdateSender,
+        tiles: Arc<SharedFrameBuffer>,
+    ) -> Self {
         let cancellable = image.cancellable();
 
         let (next_frame_send, next_frame_recv) = async_channel::bounded(2);

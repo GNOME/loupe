@@ -62,19 +62,11 @@ impl Metadata {
     }
 
     pub fn set_image_info(&mut self, image_info: ImageDetails) {
-        if let Some(exif_raw) = image_info
-            .metadata_exif()
-            .as_ref()
-            .and_then(|x| x.get_full().ok())
-        {
-            self.set_exif_bytes(exif_raw);
+        if let Some(exif_raw) = image_info.metadata_exif() {
+            self.set_exif_bytes(exif_raw.to_owned());
         }
-        if let Some(exif_xmp) = image_info
-            .metadata_xmp()
-            .as_ref()
-            .and_then(|x| x.get_full().ok())
-        {
-            self.set_xmp_bytes(exif_xmp);
+        if let Some(exif_xmp) = image_info.metadata_xmp() {
+            self.set_xmp_bytes(exif_xmp.to_owned());
         }
         self.image_info = Some(image_info);
     }
@@ -261,8 +253,8 @@ impl Metadata {
     }
 
     pub fn exposure_time(&self) -> Option<String> {
-        if let Some((num, denom)) = self.metadata.exposure_time() {
-            let speed = num as f64 / denom as f64;
+        if let Some(exposure_time) = self.metadata.exposure_time() {
+            let speed = exposure_time.as_f64();
             if speed <= 0.5 {
                 let exposure = format!("{:.0}", 1. / speed);
                 // Translators: Fractional exposure time (photography) in seconds
@@ -288,7 +280,7 @@ impl Metadata {
     pub fn focal_length(&self) -> Option<String> {
         self.metadata
             .focal_length()
-            .map(|focal_length| gettext_f(r"{}\u{202F}mm", [focal_length.to_string()]))
+            .map(|focal_length| gettext_f(r"{}\u{202F}mm", [focal_length.as_f32().to_string()]))
     }
 
     /// Combined maker and model info

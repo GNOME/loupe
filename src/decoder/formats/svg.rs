@@ -61,7 +61,11 @@ impl Drop for Svg {
 }
 
 impl Svg {
-    pub fn new(image: glycin::Image, updater: UpdateSender, tiles: Arc<SharedFrameBuffer>) -> Self {
+    pub fn new(
+        mut image: glycin::Image,
+        updater: UpdateSender,
+        tiles: Arc<SharedFrameBuffer>,
+    ) -> Self {
         let current_request: Arc<std::sync::RwLock<Request>> = Default::default();
         let request_store = current_request.clone();
         let cancellable = image.cancellable();
@@ -187,7 +191,7 @@ impl Svg {
         #[allow(unused_mut)]
         let loader = glycin::Loader::new(file.clone());
 
-        let image = loader.load().await?;
+        let mut image = loader.load().await?;
         let frame_request = glycin::FrameRequest::new().scale(width as u32, height as u32);
         let frame = image.specific_frame(frame_request).await?;
 

@@ -65,15 +65,15 @@ pub enum DecoderUpdate {
 #[derive(Debug, Clone)]
 pub enum DecoderError {
     /// Image format not supported or unknown
-    UnsupportedFormat(String, glycin::ErrorCtx),
+    UnsupportedFormat(String, glycin::Error),
     /// No glycin-loaders installed
-    NoLoadersConfigured(glycin::ErrorCtx),
+    NoLoadersConfigured(glycin::Error),
     /// Memory limit exceeded
-    OutOfMemory(glycin::ErrorCtx),
+    OutOfMemory(glycin::Error),
     /// Failed to load image
-    ImageSource(glib::Error, glycin::ErrorCtx),
+    ImageSource(glib::Error, glycin::Error),
 
-    Generic(glycin::ErrorCtx),
+    Generic(glycin::Error),
 }
 
 impl UpdateSender {
@@ -90,13 +90,13 @@ impl UpdateSender {
     /// Send occurring errors to renderer
     pub fn spawn_error_handled<F>(&self, f: F) -> glib::JoinHandle<()>
     where
-        F: std::future::Future<Output = Result<(), glycin::ErrorCtx>> + Send + 'static,
+        F: std::future::Future<Output = Result<(), glycin::Error>> + Send + 'static,
     {
         let update_sender = self.clone();
         glib::spawn_future(async move {
             let update_sender = update_sender.clone();
 
-            let result: Result<(), glycin::ErrorCtx> = f.await;
+            let result: Result<(), glycin::Error> = f.await;
 
             if let Err(err) = result {
                 update_sender.send_error(err);
@@ -104,7 +104,7 @@ impl UpdateSender {
         })
     }
 
-    pub fn send_error(&self, err: glycin::ErrorCtx) {
+    pub fn send_error(&self, err: glycin::Error) {
         if let Some(mime_type) = err.unsupported_format() {
             let mut metadata = Metadata::default();
             metadata.set_mime_type(mime_type.clone());
@@ -115,14 +115,13 @@ impl UpdateSender {
             ))));
         } else if err.is_out_of_memory() {
             self.send(DecoderUpdate::Error(Some(DecoderError::OutOfMemory(err))));
-        } else if matches!(err.error(), glycin::Error::NoLoadersConfigured(_)) {
+        } else if err.has_no_processor_configured() {
             self.send(DecoderUpdate::Error(Some(
                 DecoderError::NoLoadersConfigured(err),
             )));
-        } else if let glycin::Error::ImageSource(glib_err) = err.error() {
+        } else if let Some(glib_err) = err.failed_image_source() {
             self.send(DecoderUpdate::Error(Some(DecoderError::ImageSource(
-                glib_err.clone(),
-                err,
+                glib_err, err,
             ))));
         } else {
             self.send(DecoderUpdate::Error(Some(DecoderError::Generic(err))));

@@ -364,7 +364,7 @@ mod imp {
                     Err(err) => Err(err),
                 };
                 match result {
-                    Err(err) if matches!(err.error(), glycin::Error::Canceled(_)) => {
+                    Err(err) if err.is_cancelled() => {
                         tracing::debug!("Computing edited image canceled");
                     }
                     Err(err) => {
@@ -377,41 +377,32 @@ mod imp {
                     }
                     Ok(edit) => {
                         tracing::debug!("Saving edited image to '{}'", new_file.uri());
-                        match edit.data().get() {
-                            Err(err) => {
-                                obj.window_show_error(
-                                    &gettext("Failed to Save Image"),
-                                    &format!("Failed to get binary data: {err}"),
-                                    ErrorType::General,
-                                );
-                            }
-                            Ok(data) => {
-                                self.set_saving_status(Some(gettext("Saving Image")));
+                        self.set_saving_status(Some(gettext("Saving Image")));
 
-                                let save_result = gio::CancellableFuture::new(
-                                    new_file.replace_contents_future(
-                                        data,
-                                        None,
-                                        true,
-                                        gio::FileCreateFlags::NONE,
-                                    ),
-                                    cancellable,
-                                )
-                                .await;
+                        // TODO: Clone might be avoidable
+                        let data = edit.data().to_vec();
+                        let save_result = gio::CancellableFuture::new(
+                            new_file.replace_contents_future(
+                                data,
+                                None,
+                                true,
+                                gio::FileCreateFlags::NONE,
+                            ),
+                            cancellable,
+                        )
+                        .await;
 
-                                if save_result.is_err() {
-                                    tracing::debug!("Saving image canceled");
-                                } else if let Ok(Err(err)) = save_result {
-                                    obj.window_show_error(
-                                        &gettext("Failed to Save Image"),
-                                        &format!("Failed to write file:\n\n{err:?}"),
-                                        ErrorType::General,
-                                    );
-                                } else {
-                                    tracing::debug!("Image saved");
-                                    return true;
-                                }
-                            }
+                        if save_result.is_err() {
+                            tracing::debug!("Saving image canceled");
+                        } else if let Ok(Err(err)) = save_result {
+                            obj.window_show_error(
+                                &gettext("Failed to Save Image"),
+                                &format!("Failed to write file:\n\n{err:?}"),
+                                ErrorType::General,
+                            );
+                        } else {
+                            tracing::debug!("Image saved");
+                            return true;
                         }
                     }
                 }
