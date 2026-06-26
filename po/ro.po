@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2026-06-24 19:03+0000\n"
-"PO-Revision-Date: 2026-06-25 10:42+0200\n"
+"POT-Creation-Date: 2026-06-25 20:14+0000\n"
+"PO-Revision-Date: 2026-06-26 10:38+0200\n"
 "Last-Translator: Antonio Marin <gnmer.6qxyg@slmail.me>\n"
 "Language-Team: Romanian <gnomero-list@lists.sourceforge.net>\n"
 "Language: ro\n"
@@ -303,41 +303,41 @@ msgid "Could not list other files in directory."
 msgstr "Nu s-a putut afișa lista fișierelor din dosar."
 
 #. Translators: Display of the f-number <https://en.wikipedia.org/wiki/F-number>. {} will be replaced with the number
-#: src/metadata.rs:256
+#: src/metadata.rs:260
 msgid "\\u{192}\\u{2215}{}"
 msgstr "\\u{192}\\u{2215}{}"
 
 #. Translators: Fractional exposure time (photography) in seconds
-#: src/metadata.rs:269
+#: src/metadata.rs:273
 msgid "1\\u{2215}{}\\u{202F}s"
 msgstr "1\\u{2215}{}\\u{202F}s"
 
 #. Translators: Exposure time (photography) in seconds
-#: src/metadata.rs:277
+#: src/metadata.rs:281
 msgid "{}\\u{202F}s"
 msgstr "{}\\u{202F}s"
 
-#: src/metadata.rs:291
+#: src/metadata.rs:295
 msgid "{}\\u{202F}mm"
 msgstr "{}\\u{202F}mm"
 
 #. Translators: short for "north" in GPS coordinate
-#: src/metadata.rs:331
+#: src/metadata.rs:385
 msgid "N"
 msgstr "N"
 
 #. Translators: short for "south" in GPS coordinate
-#: src/metadata.rs:335
+#: src/metadata.rs:389
 msgid "S"
 msgstr "S"
 
 #. Translators: short for "east" in GPS coordinate
-#: src/metadata.rs:344
+#: src/metadata.rs:398
 msgid "E"
 msgstr "E"
 
 #. Translators: short for "west" in GPS coordinate
-#: src/metadata.rs:348
+#: src/metadata.rs:402
 msgid "W"
 msgstr "V"
 
@@ -496,19 +496,19 @@ msgstr "Se modifică imaginea"
 msgid "Failed to edit image."
 msgstr "Nu s-a putut modifica imaginea."
 
-#: src/widgets/edit_window.rs:383 src/widgets/edit_window.rs:406
-msgid "Failed to Save Image"
-msgstr "Nu s-a putut salva imaginea"
-
-#: src/widgets/edit_window.rs:389
+#: src/widgets/edit_window.rs:380
 msgid "Saving Image"
 msgstr "Se salvează imaginea"
 
-#: src/widgets/edit_window.rs:523
+#: src/widgets/edit_window.rs:399
+msgid "Failed to Save Image"
+msgstr "Nu s-a putut salva imaginea"
+
+#: src/widgets/edit_window.rs:514
 msgid "Save Changes?"
 msgstr "Se salvează modificările?"
 
-#: src/widgets/edit_window.rs:525
+#: src/widgets/edit_window.rs:516
 msgid ""
 "There are unsaved image editing changes. Closing without saving will "
 "permanently lose these modifications."
@@ -516,15 +516,15 @@ msgstr ""
 "Există modificări nesalvate ale imaginii. Închizând fără a le salva, acestea "
 "vor fi pierdute definitiv."
 
-#: src/widgets/edit_window.rs:529 src/widgets/image_window.rs:701
+#: src/widgets/edit_window.rs:520 src/widgets/image_window.rs:701
 msgid "Cancel"
 msgstr "Anulează"
 
-#: src/widgets/edit_window.rs:530
+#: src/widgets/edit_window.rs:521
 msgid "Discard"
 msgstr "Nu salva"
 
-#: src/widgets/edit_window.rs:531
+#: src/widgets/edit_window.rs:522
 msgid "Save"
 msgstr "Salvează"
 
@@ -912,30 +912,30 @@ msgstr "_Umple spațiul"
 msgid "H_eight"
 msgstr "Înălțim_e"
 
-#: src/widgets/properties_view.rs:258
+#: src/widgets/properties_view.rs:270
 msgid "Unknown"
 msgstr "Necunoscut"
 
 #. Translators: Addition of image being transparent to format name
-#: src/widgets/properties_view.rs:262
+#: src/widgets/properties_view.rs:274
 msgid ", transparent"
 msgstr ", transparent"
 
 #. Translators: Addition of image being grayscale to format name
-#: src/widgets/properties_view.rs:267
+#: src/widgets/properties_view.rs:279
 msgid ", grayscale"
 msgstr ", scară de gri"
 
 #. Translators: Addition of bit size to format name
-#: src/widgets/properties_view.rs:272
+#: src/widgets/properties_view.rs:284
 msgid ", {}\\u{202F}bit"
 msgstr ", {}\\u{202F}bit"
 
-#: src/widgets/properties_view.rs:290
+#: src/widgets/properties_view.rs:302
 msgid "{}\\u{202F}\\u{D7}\\u{202F}{}"
 msgstr "{}\\u{202F}\\u{D7}\\u{202F}{}"
 
-#: src/widgets/properties_view.rs:326
+#: src/widgets/properties_view.rs:338
 msgid "Image Coordinates Copied"
 msgstr "Coordonatele imaginii copiate"
 
@@ -985,28 +985,44 @@ msgid "Originally Created"
 msgstr "Data creării"
 
 #: src/widgets/properties_view.ui:159
+msgid "Creator"
+msgstr "Creator"
+
+#: src/widgets/properties_view.ui:169
+msgid "Copyright"
+msgstr "Drepturi de autor"
+
+#: src/widgets/properties_view.ui:179
 msgid "Comment"
 msgstr "Comentariu"
 
-#: src/widgets/properties_view.ui:169
+#: src/widgets/properties_view.ui:189
 msgid "Aperture"
 msgstr "Apertură"
 
-#: src/widgets/properties_view.ui:179
+#: src/widgets/properties_view.ui:199
 msgid "Exposure"
 msgstr "Expunere"
 
-#: src/widgets/properties_view.ui:189
+#: src/widgets/properties_view.ui:209
 msgid "ISO"
 msgstr "ISO"
 
-#: src/widgets/properties_view.ui:199
+#: src/widgets/properties_view.ui:219
 msgid "Focal Length"
 msgstr "Distanță focală"
 
-#: src/widgets/properties_view.ui:209
+#: src/widgets/properties_view.ui:229
 msgid "Maker, Model"
 msgstr "Fabricant, model"
+
+#: src/widgets/properties_view.ui:239
+msgid "Lens"
+msgstr "Obiectiv"
+
+#: src/widgets/properties_view.ui:249
+msgid "Software"
+msgstr "Aplicația"
 
 #: src/widgets/window.rs:253
 msgid "Show Details"
