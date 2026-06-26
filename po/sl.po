@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2026-06-24 19:03+0000\n"
-"PO-Revision-Date: 2026-06-25 06:30+0200\n"
+"POT-Creation-Date: 2026-06-25 20:14+0000\n"
+"PO-Revision-Date: 2026-06-26 18:21+0200\n"
 "Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
 "Language-Team: Slovenian <gnome-si@googlegroups.com>\n"
 "Language: sl\n"
@@ -297,41 +297,41 @@ msgid "Could not list other files in directory."
 msgstr "Drugih datotek v mapi ni mogoče izpisati."
 
 #. Translators: Display of the f-number <https://en.wikipedia.org/wiki/F-number>. {} will be replaced with the number
-#: src/metadata.rs:256
+#: src/metadata.rs:260
 msgid "\\u{192}\\u{2215}{}"
 msgstr "\\u{192}\\u{2215}{}"
 
 #. Translators: Fractional exposure time (photography) in seconds
-#: src/metadata.rs:269
+#: src/metadata.rs:273
 msgid "1\\u{2215}{}\\u{202F}s"
 msgstr "1\\u{2215}{}\\u{202F} s"
 
 #. Translators: Exposure time (photography) in seconds
-#: src/metadata.rs:277
+#: src/metadata.rs:281
 msgid "{}\\u{202F}s"
 msgstr "{}\\u{202F} s"
 
-#: src/metadata.rs:291
+#: src/metadata.rs:295
 msgid "{}\\u{202F}mm"
 msgstr "{}\\u{202F} mm"
 
 #. Translators: short for "north" in GPS coordinate
-#: src/metadata.rs:331
+#: src/metadata.rs:385
 msgid "N"
 msgstr "S"
 
 #. Translators: short for "south" in GPS coordinate
-#: src/metadata.rs:335
+#: src/metadata.rs:389
 msgid "S"
 msgstr "J"
 
 #. Translators: short for "east" in GPS coordinate
-#: src/metadata.rs:344
+#: src/metadata.rs:398
 msgid "E"
 msgstr "V"
 
 #. Translators: short for "west" in GPS coordinate
-#: src/metadata.rs:348
+#: src/metadata.rs:402
 msgid "W"
 msgstr "Z"
 
@@ -491,19 +491,19 @@ msgstr "Urejanje slike"
 msgid "Failed to edit image."
 msgstr "Urejanje slike ni uspelo."
 
-#: src/widgets/edit_window.rs:383 src/widgets/edit_window.rs:406
-msgid "Failed to Save Image"
-msgstr "Shranjevanje slike ni uspelo"
-
-#: src/widgets/edit_window.rs:389
+#: src/widgets/edit_window.rs:380
 msgid "Saving Image"
 msgstr "Shranjevanje slike"
 
-#: src/widgets/edit_window.rs:523
+#: src/widgets/edit_window.rs:399
+msgid "Failed to Save Image"
+msgstr "Shranjevanje slike ni uspelo"
+
+#: src/widgets/edit_window.rs:514
 msgid "Save Changes?"
 msgstr "Ali želite shraniti spremembe?"
 
-#: src/widgets/edit_window.rs:525
+#: src/widgets/edit_window.rs:516
 msgid ""
 "There are unsaved image editing changes. Closing without saving will permanently "
 "lose these modifications."
@@ -511,15 +511,15 @@ msgstr ""
 "Nekatere spremembe urejanja slike niso shranjene. Če ga zaprete brez "
 "shranjevanja, boste trajno izgubili te spremembe."
 
-#: src/widgets/edit_window.rs:529 src/widgets/image_window.rs:701
+#: src/widgets/edit_window.rs:520 src/widgets/image_window.rs:701
 msgid "Cancel"
 msgstr "Prekliči"
 
-#: src/widgets/edit_window.rs:530
+#: src/widgets/edit_window.rs:521
 msgid "Discard"
 msgstr "Zavrzi"
 
-#: src/widgets/edit_window.rs:531
+#: src/widgets/edit_window.rs:522
 msgid "Save"
 msgstr "Shrani"
 
@@ -906,30 +906,30 @@ msgstr "_Zapolni prostor"
 msgid "H_eight"
 msgstr "_Višina"
 
-#: src/widgets/properties_view.rs:258
+#: src/widgets/properties_view.rs:270
 msgid "Unknown"
 msgstr "Neznano"
 
 #. Translators: Addition of image being transparent to format name
-#: src/widgets/properties_view.rs:262
+#: src/widgets/properties_view.rs:274
 msgid ", transparent"
 msgstr ", prosojno"
 
 #. Translators: Addition of image being grayscale to format name
-#: src/widgets/properties_view.rs:267
+#: src/widgets/properties_view.rs:279
 msgid ", grayscale"
 msgstr ", sivinsko"
 
 #. Translators: Addition of bit size to format name
-#: src/widgets/properties_view.rs:272
+#: src/widgets/properties_view.rs:284
 msgid ", {}\\u{202F}bit"
 msgstr ", {}\\u{202F} bit"
 
-#: src/widgets/properties_view.rs:290
+#: src/widgets/properties_view.rs:302
 msgid "{}\\u{202F}\\u{D7}\\u{202F}{}"
 msgstr "{}\\u{202F}\\u{D7}\\u{202F}{}"
 
-#: src/widgets/properties_view.rs:326
+#: src/widgets/properties_view.rs:338
 msgid "Image Coordinates Copied"
 msgstr "Koordinate slike so kopirane"
 
@@ -979,28 +979,44 @@ msgid "Originally Created"
 msgstr "Prvotno ustvarjeno"
 
 #: src/widgets/properties_view.ui:159
+msgid "Creator"
+msgstr "Ustvarjalec"
+
+#: src/widgets/properties_view.ui:169
+msgid "Copyright"
+msgstr "Avtorske pravice"
+
+#: src/widgets/properties_view.ui:179
 msgid "Comment"
 msgstr "Komentar"
 
-#: src/widgets/properties_view.ui:169
+#: src/widgets/properties_view.ui:189
 msgid "Aperture"
 msgstr "Zaslonka"
 
-#: src/widgets/properties_view.ui:179
+#: src/widgets/properties_view.ui:199
 msgid "Exposure"
 msgstr "Osvetlitev"
 
-#: src/widgets/properties_view.ui:189
+#: src/widgets/properties_view.ui:209
 msgid "ISO"
 msgstr "ISO"
 
-#: src/widgets/properties_view.ui:199
+#: src/widgets/properties_view.ui:219
 msgid "Focal Length"
 msgstr "Goriščna razdalja"
 
-#: src/widgets/properties_view.ui:209
+#: src/widgets/properties_view.ui:229
 msgid "Maker, Model"
 msgstr "Izdelovalec, model"
+
+#: src/widgets/properties_view.ui:239
+msgid "Lens"
+msgstr "Objektiv"
+
+#: src/widgets/properties_view.ui:249
+msgid "Software"
+msgstr "Programska oprema"
 
 #: src/widgets/window.rs:253
 msgid "Show Details"
