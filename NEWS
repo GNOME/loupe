@@ -1,3 +1,14 @@
+## 51.alpha (2026-06-29)
+
+### Added
+
+- Show creator, copyright information, camera lens, and used software in image metadata.
+
+### Fixed
+
+- Don't accumulate delays during animations. !596
+- Don't keep showing saving overlay after error. !597
+
 ## 50.0 (2026-03-13)
 
 ### Changed

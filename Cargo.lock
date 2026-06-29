@@ -1708,7 +1708,7 @@ checksum = "0ceec5bc11778974d1bcb055b18002eba7f4b3518b6a0081b3af5f21666da9ad"
 
 [[package]]
 name = "loupe"
-version = "50.0.0"
+version = "51.0.0-alpha"
 dependencies = [
  "anyhow",
  "arc-swap",

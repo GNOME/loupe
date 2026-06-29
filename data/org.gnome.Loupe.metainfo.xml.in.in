@@ -71,6 +71,11 @@
   </categories>
 
   <releases>
+    <release version="51.alpha" date="2026-06-29">
+      <description>
+        <p>Loupe now presents more metadata, like the creator and copyright information, as well as camera lens information and information about the used software.</p>
+      </description>
+    </release>
     <release version="50.0" date="2026-03-13">
       <description>
         <p>Added support for the JPEG 2000, XBM, and XPM image formats. The app now also provides better error messages if an image file can't be read.</p>
