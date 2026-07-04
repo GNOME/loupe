@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2026-01-30 22:01+0000\n"
+"POT-Creation-Date: 2026-06-29 11:34+0000\n"
 "PO-Revision-Date: 2026-02-01 22:26+0100\n"
 "Last-Translator: Jordi Mas i Hernàndez, <jmas@softcatala.org>\n"
 "Language-Team: Catalan <gnome@llistes.softcatala.org>\n"
@@ -20,7 +20,7 @@ msgstr ""
 
 #: data/org.gnome.Loupe.desktop.in.in:2
 #: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:32
-#: src/widgets/image_window.rs:897
+#: src/widgets/image_window.rs:879
 msgid "Image Viewer"
 msgstr "Visualitzador d'imatges"
 
@@ -49,6 +49,22 @@ msgid ""
 msgstr ""
 "Exploreu les imatges, visualitzeu les seves metadades i realitzeu edicions "
 "ràpides escapçant-les, rotant-les o girant-les."
+#: data/org.gnome.Loupe.metainfo.xml.in.in:28
+#, fuzzy
+#| msgctxt "shortcut window"
+#| msgid "New Window"
+msgid "Main Window"
+msgstr "Finestra nova"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:32
+msgid "Crop Tool"
+msgstr ""
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:36
+#, fuzzy
+#| msgid "Image Properties"
+msgid "Image Properties Panel"
+msgstr "Propietats de la imatge"
 
 #: data/resources/shortcuts-dialog.ui:6
 msgctxt "shortcut window"
@@ -283,41 +299,41 @@ msgid "Could not list other files in directory."
 msgstr "No s'han pogut llistar altres fitxers al directori."
 
 #. Translators: Display of the f-number <https://en.wikipedia.org/wiki/F-number>. {} will be replaced with the number
-#: src/metadata.rs:256
+#: src/metadata.rs:260
 msgid "\\u{192}\\u{2215}{}"
 msgstr "\\u{192}\\u{2215}{}"
 
 #. Translators: Fractional exposure time (photography) in seconds
-#: src/metadata.rs:269
+#: src/metadata.rs:273
 msgid "1\\u{2215}{}\\u{202F}s"
 msgstr "1\\u{2215}{}\\u{202F}s"
 
 #. Translators: Exposure time (photography) in seconds
-#: src/metadata.rs:277
+#: src/metadata.rs:281
 msgid "{}\\u{202F}s"
 msgstr "{}\\u{202F}s"
 
-#: src/metadata.rs:291
+#: src/metadata.rs:295
 msgid "{}\\u{202F}mm"
 msgstr "{}\\u{202F}mm"
 
 #. Translators: short for "north" in GPS coordinate
-#: src/metadata.rs:331
+#: src/metadata.rs:385
 msgid "N"
 msgstr "N"
 
 #. Translators: short for "south" in GPS coordinate
-#: src/metadata.rs:335
+#: src/metadata.rs:389
 msgid "S"
 msgstr "S"
 
 #. Translators: short for "east" in GPS coordinate
-#: src/metadata.rs:344
+#: src/metadata.rs:398
 msgid "E"
 msgstr "E"
 
 #. Translators: short for "west" in GPS coordinate
-#: src/metadata.rs:348
+#: src/metadata.rs:402
 msgid "W"
 msgstr "O"
 
@@ -448,31 +464,67 @@ msgid "Crop Selection"
 msgstr "Retalla la selecció"
 
 #. Translators: Filename suffix, {} is replaced by a number
-#: src/widgets/edit_window.rs:195
+#: src/widgets/edit_window.rs:199
+#, rust-format
 msgid " (Edited)"
 msgid_plural " (Edited {})"
 msgstr[0] " (editat)"
 msgstr[1] " (editats {})"
 
-#: src/widgets/edit_window.rs:289 src/widgets/edit_window.rs:315
+#: src/widgets/edit_window.rs:283
+#, fuzzy
+#| msgctxt "shortcut window"
+#| msgid "Move Image to Trash"
+msgid "Moving Original to Trash"
+msgstr "Mou la imatge a la paperera"
+
+#: src/widgets/edit_window.rs:297 src/widgets/edit_window.rs:326
 msgid "Failed to save image."
 msgstr "No s'ha pogut desar la imatge."
 
-#: src/widgets/edit_window.rs:343
+#: src/widgets/edit_window.rs:306
+msgid "Finalizing Save Operation"
+msgstr ""
+
+#: src/widgets/edit_window.rs:357
 msgid "Editing Image"
 msgstr "S'està editant la imatge"
 
-#: src/widgets/edit_window.rs:360
+#: src/widgets/edit_window.rs:374
 msgid "Failed to edit image."
 msgstr "No s'ha pogut editar la imatge."
 
-#: src/widgets/edit_window.rs:370 src/widgets/edit_window.rs:393
+#: src/widgets/edit_window.rs:381
+msgid "Saving Image"
+msgstr "S'està desant la imatge"
+
+#: src/widgets/edit_window.rs:400
 msgid "Failed to Save Image"
 msgstr "No s'ha pogut desar la imatge"
 
-#: src/widgets/edit_window.rs:376
-msgid "Saving Image"
-msgstr "S'està desant la imatge"
+#: src/widgets/edit_window.rs:515
+msgid "Save Changes?"
+msgstr ""
+
+#: src/widgets/edit_window.rs:517
+msgid ""
+"There are unsaved image editing changes. Closing without saving will "
+"permanently lose these modifications."
+msgstr ""
+
+#: src/widgets/edit_window.rs:521 src/widgets/image_window.rs:700
+msgid "Cancel"
+msgstr "Cancel·la"
+
+#: src/widgets/edit_window.rs:522
+msgid "Discard"
+msgstr ""
+
+#: src/widgets/edit_window.rs:523
+#, fuzzy
+#| msgid "_Save"
+msgid "Save"
+msgstr "_Desa"
 
 #: src/widgets/edit_window.ui:64
 msgid "_Cancel"
@@ -533,6 +585,7 @@ msgid "Report _Issue"
 msgstr "_Informa d'un problema"
 
 #: src/widgets/image_page.rs:225
+#, rust-format
 msgid ""
 "No image loaders available. Maybe the “glycin-loaders” package with "
 "compatibility version “{}” is not installed."
@@ -541,10 +594,12 @@ msgstr ""
 "loaders» amb la versió de compatibilitat «{}» no està instal·lat."
 
 #: src/widgets/image_page.rs:243
+#, rust-format
 msgid "The image format “{} ({})” is known but not installed."
 msgstr "El format d'imatge «{} ({})» és conegut, però no es troba instal·lat."
 
 #: src/widgets/image_page.rs:251
+#, rust-format
 msgid "Unknown image format “{} ({}).”"
 msgstr "Format d'imatge desconegut «{} ({})»."
 
@@ -553,6 +608,7 @@ msgid "There is not enough free memory available to load this image."
 msgstr "No hi ha prou memòria disponible per carregar aquesta imatge."
 
 #: src/widgets/image_page.rs:267
+#, rust-format
 msgid "Failed to load image file: {}"
 msgstr "No s'ha pogut carregar el fitxer d'imatge: {}"
 
@@ -643,51 +699,48 @@ msgstr "Nivell d'ampliació personalitzat"
 msgid "Zoom to Specified Level"
 msgstr "Amplia a un nivell especificat"
 
-#: src/widgets/image_window.rs:527
+#: src/widgets/image_window.rs:509
 msgid "Supported image formats"
 msgstr "Formats d'imatge admesos"
 
-#: src/widgets/image_window.rs:533
+#: src/widgets/image_window.rs:515
 msgid "All files"
 msgstr "Tots els fitxers"
 
-#: src/widgets/image_window.rs:540
+#: src/widgets/image_window.rs:522
 msgid "Open Image"
 msgstr "Obre una imatge"
 
-#: src/widgets/image_window.rs:632
+#: src/widgets/image_window.rs:614
 msgid "Image copied to clipboard"
 msgstr "Imatge copiada al porta-retalls"
 
-#: src/widgets/image_window.rs:653
+#: src/widgets/image_window.rs:635
 msgid "Image moved to trash"
 msgstr "S'ha mogut la imatge a la paperera"
 
-#: src/widgets/image_window.rs:654
+#: src/widgets/image_window.rs:636
 msgid "Undo"
 msgstr "Desfés"
 
-#: src/widgets/image_window.rs:684
+#: src/widgets/image_window.rs:666
 msgid "Failed to move image to trash"
 msgstr "No s'ha pogut moure la imatge a la paperera"
 
-#: src/widgets/image_window.rs:708
+#: src/widgets/image_window.rs:690
 msgid "Permanently Delete Image?"
 msgstr "Voleu suprimir permanentment la imatge?"
 
-#: src/widgets/image_window.rs:710
+#: src/widgets/image_window.rs:692
+#, rust-format
 msgid "After deleting the image “{}” it will be permanently lost."
 msgstr "La imatge «{}» es perdrà permanentment un cop sigui suprimida."
 
-#: src/widgets/image_window.rs:718
-msgid "Cancel"
-msgstr "Cancel·la"
-
-#: src/widgets/image_window.rs:719
+#: src/widgets/image_window.rs:701
 msgid "Delete"
 msgstr "Suprimeix"
 
-#: src/widgets/image_window.rs:730
+#: src/widgets/image_window.rs:712
 msgid "Failed to delete image"
 msgstr "No s'ha pogut suprimir la imatge"
 
@@ -776,6 +829,7 @@ msgstr "px"
 
 #. Translators: {} is a placeholder for the filename
 #: src/widgets/print.rs:364
+#, rust-format
 msgid "Print “{}”"
 msgstr "_Imprimeix «{}»"
 
@@ -818,7 +872,7 @@ msgstr "Orientació de la pàgina vertical"
 
 #: src/widgets/print.ui:80
 msgid "Landscape Page Orientation"
-msgstr "Orientació vertical de la pàgina"
+msgstr "Orientació horitzontal de la pàgina"
 
 #: src/widgets/print.ui:89
 msgid "_Alignment"
@@ -856,30 +910,30 @@ msgstr "_Omple l'espai"
 msgid "H_eight"
 msgstr "_Alçada"
 
-#: src/widgets/properties_view.rs:258
+#: src/widgets/properties_view.rs:270
 msgid "Unknown"
 msgstr "Desconegut"
 
 #. Translators: Addition of image being transparent to format name
-#: src/widgets/properties_view.rs:262
+#: src/widgets/properties_view.rs:274
 msgid ", transparent"
 msgstr ", transparent"
 
 #. Translators: Addition of image being grayscale to format name
-#: src/widgets/properties_view.rs:267
+#: src/widgets/properties_view.rs:279
 msgid ", grayscale"
 msgstr ", escala de grisos"
 
 #. Translators: Addition of bit size to format name
-#: src/widgets/properties_view.rs:272
+#: src/widgets/properties_view.rs:284
 msgid ", {}\\u{202F}bit"
 msgstr ",{}\\u{202F}bit"
 
-#: src/widgets/properties_view.rs:290
+#: src/widgets/properties_view.rs:302
 msgid "{}\\u{202F}\\u{D7}\\u{202F}{}"
 msgstr "{}\\u{202F}\\u{D7}\\u{202F}{}"
 
-#: src/widgets/properties_view.rs:326
+#: src/widgets/properties_view.rs:338
 msgid "Image Coordinates Copied"
 msgstr "S'han copiat les coordenades de la imatge"
 
@@ -929,30 +983,46 @@ msgid "Originally Created"
 msgstr "Creat originalment"
 
 #: src/widgets/properties_view.ui:159
+msgid "Creator"
+msgstr ""
+
+#: src/widgets/properties_view.ui:169
+msgid "Copyright"
+msgstr ""
+
+#: src/widgets/properties_view.ui:179
 msgid "Comment"
 msgstr "Comentari"
 
-#: src/widgets/properties_view.ui:169
+#: src/widgets/properties_view.ui:189
 msgid "Aperture"
 msgstr "Obertura"
 
-#: src/widgets/properties_view.ui:179
+#: src/widgets/properties_view.ui:199
 msgid "Exposure"
 msgstr "Exposició"
 
-#: src/widgets/properties_view.ui:189
+#: src/widgets/properties_view.ui:209
 msgid "ISO"
 msgstr "ISO"
 
-#: src/widgets/properties_view.ui:199
+#: src/widgets/properties_view.ui:219
 msgid "Focal Length"
 msgstr "Longitud focal"
 
-#: src/widgets/properties_view.ui:209
+#: src/widgets/properties_view.ui:229
 msgid "Maker, Model"
 msgstr "Fabricant, model"
 
-#: src/widgets/window.rs:206
+#: src/widgets/properties_view.ui:239
+msgid "Lens"
+msgstr ""
+
+#: src/widgets/properties_view.ui:249
+msgid "Software"
+msgstr ""
+
+#: src/widgets/window.rs:254
 msgid "Show Details"
 msgstr "Mostra els detalls"
 
