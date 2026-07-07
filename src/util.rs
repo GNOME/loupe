@@ -277,7 +277,7 @@ pub fn locale_uses_inch() -> bool {
             .and_then(|x| x.get(0..2))
         && (locale == b"US" || locale == b"LR")
     {
-        dbg!(true)
+        true
     } else {
         false
     }

@@ -6,9 +6,9 @@ rust-version = "1.93"
 license = "GPL-3.0-or-later"
 
 [patch.crates-io]
-glycin = { git = "https://gitlab.gnome.org/GNOME/glycin.git", rev = "32083724ee730fb6b35b6382fb8af7b6ab1f2992" }
-gufo = { git = "https://github.com/gufo-rs/gufo.git" }
-gufo-common = { git = "https://github.com/gufo-rs/gufo.git" }
+glycin = { git = "https://gitlab.gnome.org/GNOME/glycin.git", rev = "882965515fc0de4f00f52318f2c35098a76855c9" }
+gufo = { git = "https://github.com/gufo-rs/gufo.git", rev = "25ae7f4d68532314fe8b43b0f27360b952d5a0b6" }
+gufo-common = { git = "https://github.com/gufo-rs/gufo.git", rev = "25ae7f4d68532314fe8b43b0f27360b952d5a0b6" }
 
 [profile.release]
 lto = true
@@ -16,6 +16,9 @@ codegen-units = 1
 
 [features]
 x11 = ["ashpd/gtk4_x11"]
+
+[lints.clippy]
+dbg_macro = "warn"
 
 [dependencies]
 adw = { package = "libadwaita", version = "0.9.0", features = ["v1_8"] }
@@ -43,6 +46,7 @@ gvdb-macros = "0.1.6"
 indexmap = "2.0.0"
 libc = "0.2.158"
 libgweather = "4.8.0"
+moxcms = "0.8.1"
 strum = { version = "0.28.0", features = ["derive"] }
 thiserror = "2.0.3"
 tracing = "0.1.44"

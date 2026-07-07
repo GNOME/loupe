@@ -97,6 +97,10 @@ mod imp {
         lens: TemplateChild<adw::ActionRow>,
         #[template_child]
         software: TemplateChild<adw::ActionRow>,
+        #[template_child]
+        icc_profile: TemplateChild<adw::ActionRow>,
+        #[template_child]
+        cicp: TemplateChild<adw::ActionRow>,
     }
 
     #[glib::object_subclass]
@@ -253,6 +257,8 @@ mod imp {
                 Self::update_row(&self.maker_model, metadata.maker_model()),
                 Self::update_row(&self.lens, metadata.lens()),
                 Self::update_row(&self.software, metadata.software()),
+                Self::update_row(&self.icc_profile, metadata.icc_profile_description()),
+                Self::update_row(&self.cicp, metadata.cicp_description()),
             ]
             .iter()
             .any(|x| *x);

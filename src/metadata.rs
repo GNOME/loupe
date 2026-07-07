@@ -28,6 +28,7 @@ use chrono::prelude::*;
 pub use file::FileInfo;
 use glib::TimeZone;
 use glycin::{Frame, FrameDetails, ImageDetails, MemoryFormat};
+use gufo::common::cicp;
 use gufo::common::datetime::DateTime;
 use gufo::common::orientation::Orientation;
 use gufo::common::physical_dimension;
@@ -44,6 +45,8 @@ pub struct Metadata {
     image_info: Option<glycin::ImageDetails>,
     frame_info: Option<FrameDetails>,
     memory_format: Option<MemoryFormat>,
+    icc_profile: Option<moxcms::ColorProfile>,
+    cicp: Option<cicp::Cicp>,
 }
 
 impl Metadata {
@@ -87,6 +90,17 @@ impl Metadata {
     pub fn set_frame_metadata(&mut self, frame: &Frame) {
         self.frame_info = Some(frame.details().clone());
         self.memory_format = Some(frame.memory_format());
+        if let Some(iccp) = frame.details().color_icc_profile() {
+            match moxcms::ColorProfile::new_from_slice(iccp) {
+                Err(err) => {
+                    tracing::warn!("Couldn't parse color profile: {err}");
+                }
+                Ok(profile) => {
+                    self.icc_profile = Some(profile);
+                }
+            }
+        }
+        self.cicp = frame.details().color_cicp();
     }
 
     pub fn set_file_info(&mut self, file_info: FileInfo) {
@@ -115,6 +129,12 @@ impl Metadata {
         }
         if self.memory_format.is_none() {
             self.memory_format = other.memory_format;
+        }
+        if self.icc_profile.is_none() {
+            self.icc_profile = other.icc_profile;
+        }
+        if self.cicp.is_none() {
+            self.cicp = other.cicp;
         }
     }
 
@@ -434,5 +454,87 @@ impl Metadata {
 
     pub fn physical_size(&self) -> Option<physical_dimension::PhysicalSize> {
         self.frame_info.as_ref().and_then(|x| x.physical_size())
+    }
+
+    pub fn icc_profile_description(&self) -> Option<String> {
+        if self.prefer_cicp() && self.cicp.is_some() {
+            return None;
+        }
+
+        if let Some(icc_profile) = &self.icc_profile {
+            icc_profile.description.as_ref().and_then(Self::icc_string)
+        } else {
+            None
+        }
+    }
+
+    fn icc_string(text: &moxcms::ProfileText) -> Option<String> {
+        let s = match text {
+            moxcms::ProfileText::Description(desc) => Some(desc.unicode_string.clone()),
+            moxcms::ProfileText::Localizable(local) => local.first().map(|x| x.value.clone()),
+            moxcms::ProfileText::PlainString(s) => Some(s.to_owned()),
+        };
+
+        if let Some(s) = s {
+            let s = s.trim().replace('\0', "");
+            if s.is_empty() { None } else { Some(s) }
+        } else {
+            None
+        }
+    }
+
+    pub fn cicp_description(&self) -> Option<String> {
+        if !self.prefer_cicp() && self.icc_profile.is_some() {
+            return None;
+        }
+
+        if let Some(cicp) = self.cicp {
+            let primaries = match cicp.color_primaries {
+                cicp::ColorPrimaries::DciP3 => gettext("DCI P3"),
+                cicp::ColorPrimaries::DisplayP3 => gettext("Display P3"),
+                cicp::ColorPrimaries::Rec2020 => gettext("Rec.2020"),
+                cicp::ColorPrimaries::Srgb => gettext("sRGB"),
+                cicp::ColorPrimaries::Unspecified => gettext("Unspecified"),
+                cicp::ColorPrimaries::Unknown(n) => gettext_f("Unknown ({})", [n.to_string()]),
+                _ => String::new(),
+            };
+
+            let coefficients = match cicp.matrix_coefficients {
+                cicp::MatrixCoefficients::Identity => None,
+                cicp::MatrixCoefficients::ICtCp => Some(gettext("ICtCp")),
+                cicp::MatrixCoefficients::Unspecified => Some(gettext("Unspecified")),
+                cicp::MatrixCoefficients::Unknown(n) => {
+                    Some(gettext_f("Unknown ({})", [n.to_string()]))
+                }
+                _ => None,
+            };
+
+            let transfer = match cicp.transfer_characteristics {
+                cicp::TransferCharacteristics::Dci => gettext("DCI"),
+                cicp::TransferCharacteristics::Pq => gettext("PQ"),
+                cicp::TransferCharacteristics::Gamma24 => gettext("Gamma 2.4"),
+                cicp::TransferCharacteristics::Unknown(n) => {
+                    gettext_f("Unknown ({})", [n.to_string()])
+                }
+                _ => String::new(),
+            };
+
+            if let Some(coefficients) = coefficients {
+                Some(format!("{primaries}, {transfer}, {coefficients}"))
+            } else {
+                Some(format!("{primaries}, {transfer}"))
+            }
+        } else {
+            None
+        }
+    }
+
+    pub fn prefer_cicp(&self) -> bool {
+        !matches!(
+            self.frame_info
+                .as_ref()
+                .map(|x| x.color_profile_preference()),
+            Some(glycin::ColorProfilePreference::IccProfile)
+        )
     }
 }

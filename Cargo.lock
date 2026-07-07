@@ -946,8 +946,8 @@ dependencies = [
 
 [[package]]
 name = "glycin"
-version = "4.0.0-alpha.1"
-source = "git+https://gitlab.gnome.org/GNOME/glycin.git?rev=32083724ee730fb6b35b6382fb8af7b6ab1f2992#32083724ee730fb6b35b6382fb8af7b6ab1f2992"
+version = "4.0.0-alpha.7"
+source = "git+https://gitlab.gnome.org/GNOME/glycin.git?rev=882965515fc0de4f00f52318f2c35098a76855c9#882965515fc0de4f00f52318f2c35098a76855c9"
 dependencies = [
  "glycin-builtin",
  "glycin-external",
@@ -955,8 +955,8 @@ dependencies = [
 
 [[package]]
 name = "glycin-builtin"
-version = "4.0.0-alpha.1"
-source = "git+https://gitlab.gnome.org/GNOME/glycin.git?rev=32083724ee730fb6b35b6382fb8af7b6ab1f2992#32083724ee730fb6b35b6382fb8af7b6ab1f2992"
+version = "4.0.0-alpha.7"
+source = "git+https://gitlab.gnome.org/GNOME/glycin.git?rev=882965515fc0de4f00f52318f2c35098a76855c9#882965515fc0de4f00f52318f2c35098a76855c9"
 dependencies = [
  "glycin-core",
 ]
@@ -964,7 +964,7 @@ dependencies = [
 [[package]]
 name = "glycin-common"
 version = "2.0.0-alpha.1"
-source = "git+https://gitlab.gnome.org/GNOME/glycin.git?rev=32083724ee730fb6b35b6382fb8af7b6ab1f2992#32083724ee730fb6b35b6382fb8af7b6ab1f2992"
+source = "git+https://gitlab.gnome.org/GNOME/glycin.git?rev=882965515fc0de4f00f52318f2c35098a76855c9#882965515fc0de4f00f52318f2c35098a76855c9"
 dependencies = [
  "bitflags 2.13.0",
  "gufo-common",
@@ -981,8 +981,8 @@ dependencies = [
 
 [[package]]
 name = "glycin-core"
-version = "4.0.0-alpha.1"
-source = "git+https://gitlab.gnome.org/GNOME/glycin.git?rev=32083724ee730fb6b35b6382fb8af7b6ab1f2992#32083724ee730fb6b35b6382fb8af7b6ab1f2992"
+version = "4.0.0-alpha.7"
+source = "git+https://gitlab.gnome.org/GNOME/glycin.git?rev=882965515fc0de4f00f52318f2c35098a76855c9#882965515fc0de4f00f52318f2c35098a76855c9"
 dependencies = [
  "async-fs",
  "async-global-executor",
@@ -1019,16 +1019,16 @@ dependencies = [
 
 [[package]]
 name = "glycin-external"
-version = "4.0.0-alpha.1"
-source = "git+https://gitlab.gnome.org/GNOME/glycin.git?rev=32083724ee730fb6b35b6382fb8af7b6ab1f2992#32083724ee730fb6b35b6382fb8af7b6ab1f2992"
+version = "4.0.0-alpha.7"
+source = "git+https://gitlab.gnome.org/GNOME/glycin.git?rev=882965515fc0de4f00f52318f2c35098a76855c9#882965515fc0de4f00f52318f2c35098a76855c9"
 dependencies = [
  "glycin-core",
 ]
 
 [[package]]
 name = "glycin-image-rs"
-version = "2.2.0-alpha.6"
-source = "git+https://gitlab.gnome.org/GNOME/glycin.git?rev=32083724ee730fb6b35b6382fb8af7b6ab1f2992#32083724ee730fb6b35b6382fb8af7b6ab1f2992"
+version = "2.2.0-alpha.7"
+source = "git+https://gitlab.gnome.org/GNOME/glycin.git?rev=882965515fc0de4f00f52318f2c35098a76855c9#882965515fc0de4f00f52318f2c35098a76855c9"
 dependencies = [
  "bytemuck",
  "exr",
@@ -1050,7 +1050,7 @@ dependencies = [
 [[package]]
 name = "glycin-utils"
 version = "5.0.0-alpha.1"
-source = "git+https://gitlab.gnome.org/GNOME/glycin.git?rev=32083724ee730fb6b35b6382fb8af7b6ab1f2992#32083724ee730fb6b35b6382fb8af7b6ab1f2992"
+source = "git+https://gitlab.gnome.org/GNOME/glycin.git?rev=882965515fc0de4f00f52318f2c35098a76855c9#882965515fc0de4f00f52318f2c35098a76855c9"
 dependencies = [
  "async-lock",
  "bitflags 2.13.0",
@@ -1196,7 +1196,7 @@ dependencies = [
 [[package]]
 name = "gufo"
 version = "0.5.0-alpha.4"
-source = "git+https://github.com/gufo-rs/gufo.git#2079c478a108141d4507e93d2d74360b353f5d83"
+source = "git+https://github.com/gufo-rs/gufo.git?rev=25ae7f4d68532314fe8b43b0f27360b952d5a0b6#25ae7f4d68532314fe8b43b0f27360b952d5a0b6"
 dependencies = [
  "chrono",
  "gufo-common",
@@ -1213,7 +1213,7 @@ dependencies = [
 [[package]]
 name = "gufo-common"
 version = "2.0.0-alpha.2"
-source = "git+https://github.com/gufo-rs/gufo.git#2079c478a108141d4507e93d2d74360b353f5d83"
+source = "git+https://github.com/gufo-rs/gufo.git?rev=25ae7f4d68532314fe8b43b0f27360b952d5a0b6#25ae7f4d68532314fe8b43b0f27360b952d5a0b6"
 dependencies = [
  "chrono",
  "paste",
@@ -1239,7 +1239,7 @@ dependencies = [
 [[package]]
 name = "gufo-exif"
 version = "0.5.0-alpha.4"
-source = "git+https://github.com/gufo-rs/gufo.git#2079c478a108141d4507e93d2d74360b353f5d83"
+source = "git+https://github.com/gufo-rs/gufo.git?rev=25ae7f4d68532314fe8b43b0f27360b952d5a0b6#25ae7f4d68532314fe8b43b0f27360b952d5a0b6"
 dependencies = [
  "chrono",
  "gufo-common",
@@ -1267,7 +1267,7 @@ dependencies = [
 [[package]]
 name = "gufo-jpeg"
 version = "0.5.0-alpha.4"
-source = "git+https://github.com/gufo-rs/gufo.git#2079c478a108141d4507e93d2d74360b353f5d83"
+source = "git+https://github.com/gufo-rs/gufo.git?rev=25ae7f4d68532314fe8b43b0f27360b952d5a0b6#25ae7f4d68532314fe8b43b0f27360b952d5a0b6"
 dependencies = [
  "gufo-common",
  "indexmap",
@@ -1279,7 +1279,7 @@ dependencies = [
 [[package]]
 name = "gufo-png"
 version = "0.5.0-alpha.4"
-source = "git+https://github.com/gufo-rs/gufo.git#2079c478a108141d4507e93d2d74360b353f5d83"
+source = "git+https://github.com/gufo-rs/gufo.git?rev=25ae7f4d68532314fe8b43b0f27360b952d5a0b6#25ae7f4d68532314fe8b43b0f27360b952d5a0b6"
 dependencies = [
  "crc32fast",
  "encoding_rs",
@@ -1292,7 +1292,7 @@ dependencies = [
 [[package]]
 name = "gufo-tiff"
 version = "0.5.0-alpha.4"
-source = "git+https://github.com/gufo-rs/gufo.git#2079c478a108141d4507e93d2d74360b353f5d83"
+source = "git+https://github.com/gufo-rs/gufo.git?rev=25ae7f4d68532314fe8b43b0f27360b952d5a0b6#25ae7f4d68532314fe8b43b0f27360b952d5a0b6"
 dependencies = [
  "gufo-common",
  "thiserror",
@@ -1301,7 +1301,7 @@ dependencies = [
 [[package]]
 name = "gufo-webp"
 version = "0.5.0-alpha.4"
-source = "git+https://github.com/gufo-rs/gufo.git#2079c478a108141d4507e93d2d74360b353f5d83"
+source = "git+https://github.com/gufo-rs/gufo.git?rev=25ae7f4d68532314fe8b43b0f27360b952d5a0b6#25ae7f4d68532314fe8b43b0f27360b952d5a0b6"
 dependencies = [
  "gufo-common",
  "thiserror",
@@ -1310,7 +1310,7 @@ dependencies = [
 [[package]]
 name = "gufo-xmp"
 version = "0.5.0-alpha.4"
-source = "git+https://github.com/gufo-rs/gufo.git#2079c478a108141d4507e93d2d74360b353f5d83"
+source = "git+https://github.com/gufo-rs/gufo.git?rev=25ae7f4d68532314fe8b43b0f27360b952d5a0b6#25ae7f4d68532314fe8b43b0f27360b952d5a0b6"
 dependencies = [
  "chrono",
  "gufo-common",
@@ -1653,6 +1653,7 @@ dependencies = [
  "libadwaita",
  "libc",
  "libgweather",
+ "moxcms",
  "strum",
  "thiserror",
  "tracing",
