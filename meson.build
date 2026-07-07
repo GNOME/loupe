@@ -15,7 +15,6 @@ dependency('gtk4', version: '>=4.16.0')
 dependency('libadwaita-1', version: '>=1.8.0')
 dependency('gweather4', version: '>=4.0.0')
 # Required by glycin crate
-dependency('lcms2', version: '>=2.12.0')
 dependency('libseccomp', version: '>= 2.5.0')
 
 # Optional dependencies

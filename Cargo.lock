@@ -49,7 +49,7 @@ dependencies = [
  "futures-util",
  "gdk4-wayland",
  "gdk4-x11",
- "getrandom 0.4.3",
+ "getrandom",
  "glib",
  "gtk4",
  "serde",
@@ -309,8 +309,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "e228eec9be7c17ccb640b59b36a5cd805ea2a564a4c5e162c2f659fea30d3b96"
 dependencies = [
  "find-msvc-tools",
- "jobserver",
- "libc",
  "shlex",
 ]
 
@@ -442,12 +440,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "dunce"
-version = "1.0.5"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "92773504d58c093f6de2459af4af33faa518c13451eb8f2b5698ed3d36e7c813"
-
-[[package]]
 name = "either"
 version = "1.16.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -557,6 +549,7 @@ dependencies = [
  "half",
  "lebe",
  "miniz_oxide 0.8.9",
+ "rayon-core",
  "smallvec",
  "zune-inflate",
 ]
@@ -613,33 +606,6 @@ dependencies = [
  "crc32fast",
  "miniz_oxide 0.8.9",
 ]
-
-[[package]]
-name = "foreign-types"
-version = "0.5.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "d737d9aa519fb7b749cbc3b962edcf310a8dd1f4b67c91c4f83975dbdd17d965"
-dependencies = [
- "foreign-types-macros",
- "foreign-types-shared",
-]
-
-[[package]]
-name = "foreign-types-macros"
-version = "0.2.3"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "1a5c6c585bc94aaf2c7b51dd4c2ba22680844aba4c687be581871a6f518c5742"
-dependencies = [
- "proc-macro2",
- "quote",
- "syn",
-]
-
-[[package]]
-name = "foreign-types-shared"
-version = "0.3.1"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "aa9a19cbb55df58761df49b23516a86d432839add4af60fc256da840f66ed35b"
 
 [[package]]
 name = "futures-channel"
@@ -841,25 +807,13 @@ dependencies = [
 
 [[package]]
 name = "getrandom"
-version = "0.3.4"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "899def5c37c4fd7b2664648c28120ecec138e4d395b459e5ca34f9cce2dd77fd"
-dependencies = [
- "cfg-if",
- "libc",
- "r-efi 5.3.0",
- "wasip2",
-]
-
-[[package]]
-name = "getrandom"
 version = "0.4.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "300e883d756b2e4ec94e02791f39b04b522276138852cfc41d9fb7e904106099"
 dependencies = [
  "cfg-if",
  "libc",
- "r-efi 6.0.0",
+ "r-efi",
 ]
 
 [[package]]
@@ -993,8 +947,7 @@ dependencies = [
 [[package]]
 name = "glycin"
 version = "4.0.0-alpha"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "ab0d95230ccbc60d168eca33984e3ee2c75d75bb844eb11eb97907eaffc92886"
+source = "git+https://gitlab.gnome.org/GNOME/glycin.git#2b0f1b1e217ce17ebe45aecdda7096ed4eea8343"
 dependencies = [
  "glycin-builtin",
  "glycin-external",
@@ -1003,8 +956,7 @@ dependencies = [
 [[package]]
 name = "glycin-builtin"
 version = "4.0.0-alpha"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "5c5a3cd8219bdee0cd16a26c3728c075604a2a293b211c4e95d0eb2eb55fbe7e"
+source = "git+https://gitlab.gnome.org/GNOME/glycin.git#2b0f1b1e217ce17ebe45aecdda7096ed4eea8343"
 dependencies = [
  "glycin-core",
 ]
@@ -1012,8 +964,7 @@ dependencies = [
 [[package]]
 name = "glycin-common"
 version = "2.0.0-alpha"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "daf97898ba7a2356b941983ab1ef5634f2e1567eb290fe801bde60da185e2085"
+source = "git+https://gitlab.gnome.org/GNOME/glycin.git#2b0f1b1e217ce17ebe45aecdda7096ed4eea8343"
 dependencies = [
  "bitflags 2.13.0",
  "gufo-common",
@@ -1031,8 +982,7 @@ dependencies = [
 [[package]]
 name = "glycin-core"
 version = "4.0.0-alpha"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "c624b4182686e793e8dd897108b972d66814d925e66a5acefde25d8faaab1b77"
+source = "git+https://gitlab.gnome.org/GNOME/glycin.git#2b0f1b1e217ce17ebe45aecdda7096ed4eea8343"
 dependencies = [
  "async-fs",
  "async-global-executor",
@@ -1040,6 +990,7 @@ dependencies = [
  "async-lock",
  "async-task",
  "blocking",
+ "bytemuck",
  "futures-channel",
  "futures-lite",
  "futures-timer",
@@ -1053,10 +1004,10 @@ dependencies = [
  "glycin-utils",
  "gufo-common",
  "gufo-exif",
- "lcms2",
- "lcms2-sys",
+ "half",
  "libc",
  "libseccomp",
+ "moxcms",
  "nix",
  "static_assertions",
  "thiserror",
@@ -1068,8 +1019,7 @@ dependencies = [
 [[package]]
 name = "glycin-external"
 version = "4.0.0-alpha"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "60368043c6a9d7ffc234d93a410ffc8af46b5e8bf1c3a0fffeb62d9440b2e587"
+source = "git+https://gitlab.gnome.org/GNOME/glycin.git#2b0f1b1e217ce17ebe45aecdda7096ed4eea8343"
 dependencies = [
  "glycin-core",
 ]
@@ -1077,9 +1027,9 @@ dependencies = [
 [[package]]
 name = "glycin-image-rs"
 version = "2.2.0-alpha"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "c9ea3f09d2ae3a76aa548982abfbef05156007d822a3020ae9d9172b5ccc1793"
+source = "git+https://gitlab.gnome.org/GNOME/glycin.git#2b0f1b1e217ce17ebe45aecdda7096ed4eea8343"
 dependencies = [
+ "exr",
  "glycin-utils",
  "gufo",
  "gufo-common",
@@ -1090,14 +1040,14 @@ dependencies = [
  "image-extras",
  "jpeg-encoder",
  "log",
+ "moxcms",
  "zune-jpeg",
 ]
 
 [[package]]
 name = "glycin-utils"
 version = "5.0.0-alpha"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "8c0c35adeb97c0e2324cc6c1a65b65bf8abf3ecea5bfc238d476bdee67a7ea4d"
+source = "git+https://gitlab.gnome.org/GNOME/glycin.git#2b0f1b1e217ce17ebe45aecdda7096ed4eea8343"
 dependencies = [
  "async-lock",
  "bitflags 2.13.0",
@@ -1251,7 +1201,6 @@ dependencies = [
  "gufo-exif",
  "gufo-jpeg",
  "gufo-png",
- "gufo-svg",
  "gufo-tiff",
  "gufo-webp",
  "gufo-xmp",
@@ -1312,18 +1261,6 @@ dependencies = [
  "hex",
  "miniz_oxide 0.9.1",
  "thiserror",
-]
-
-[[package]]
-name = "gufo-svg"
-version = "0.5.0-alpha"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "c4d74e7f2578608f76c0eff9c517dabf6a7fa8769b1af36ad994d70ec01d5deb"
-dependencies = [
- "gufo-common",
- "memchr",
- "thiserror",
- "xml",
 ]
 
 [[package]]
@@ -1532,16 +1469,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "jobserver"
-version = "0.1.34"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "9afb3de4395d6b3e67a780b6de64b51c978ecf11cb9a462c66be7d4ca9039d33"
-dependencies = [
- "getrandom 0.3.4",
- "libc",
-]
-
-[[package]]
 name = "jpeg-encoder"
 version = "0.7.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1563,29 +1490,6 @@ name = "lazy_static"
 version = "1.5.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "bbd2bcb4c963f2ddae06a2efc7e9f3591312473c50c6685e1f298068316e66fe"
-
-[[package]]
-name = "lcms2"
-version = "6.1.1"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "b75877b724685dd49310bdbadbf973fc69b1d01992a6d4a861b928fc3943f87b"
-dependencies = [
- "bytemuck",
- "foreign-types",
- "lcms2-sys",
-]
-
-[[package]]
-name = "lcms2-sys"
-version = "4.0.7"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "264db0b78119c5a37d78bb41fb355daab29b3b29430b53cd92e3da51f0ab06cc"
-dependencies = [
- "cc",
- "dunce",
- "libc",
- "pkg-config",
-]
 
 [[package]]
 name = "lebe"
@@ -2098,12 +2002,6 @@ dependencies = [
 
 [[package]]
 name = "r-efi"
-version = "5.3.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "69cdb34c158ceb288df11e18b4bd39de994f6657d83847bdffdbd7f346754b0f"
-
-[[package]]
-name = "r-efi"
 version = "6.0.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "f8dcc9c7d52a811697d2151c701e0d08956f92b0e24136cf4cf27b57a6a0d9bf"
@@ -2395,7 +2293,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "32497e9a4c7b38532efcdebeef879707aa9f794296a4f0244f6f69e9bc8574bd"
 dependencies = [
  "fastrand",
- "getrandom 0.4.3",
+ "getrandom",
  "once_cell",
  "rustix",
  "windows-sys",
@@ -2566,7 +2464,7 @@ version = "1.23.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "bf80a72845275afea99e7f2b434723d3bc7e38470fcd1c7ed39a599c73319a53"
 dependencies = [
- "getrandom 0.4.3",
+ "getrandom",
  "js-sys",
  "serde_core",
  "wasm-bindgen",
@@ -2592,15 +2490,6 @@ checksum = "29790946404f91d9c5d06f9874efddea1dc06c5efe94541a7d6863108e3a5e4b"
 dependencies = [
  "same-file",
  "winapi-util",
-]
-
-[[package]]
-name = "wasip2"
-version = "1.0.4+wasi-0.2.12"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "b67efb37e106e55ce722a510d6b5f9c17f083e5fc79afc2badeb12cc313d9487"
-dependencies = [
- "wit-bindgen",
 ]
 
 [[package]]
@@ -2708,12 +2597,6 @@ checksum = "0592e1c9d151f854e6fd382574c3a0855250e1d9b2f99d9281c6e6391af352f1"
 dependencies = [
  "memchr",
 ]
-
-[[package]]
-name = "wit-bindgen"
-version = "0.57.1"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "1ebf944e87a7c253233ad6766e082e3cd714b5d03812acc24c318f549614536e"
 
 [[package]]
 name = "x11-dl"
