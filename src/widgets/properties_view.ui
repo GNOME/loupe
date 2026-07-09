@@ -62,6 +62,26 @@
                   </object>
                 </child>
                 <child>
+                  <object class="AdwActionRow" id="physical_size">
+                    <property name="title" translatable="yes">Physical Size</property>
+                    <property name="subtitle-selectable">True</property>
+                    <property name="use-markup">False</property>
+                    <style>
+                      <class name="property" />
+                    </style>
+                  </object>
+                </child>
+                <child>
+                  <object class="AdwActionRow" id="pixel_density">
+                    <property name="title" translatable="yes">Resolution</property>
+                    <property name="subtitle-selectable">True</property>
+                    <property name="use-markup">False</property>
+                    <style>
+                      <class name="property" />
+                    </style>
+                  </object>
+                </child>
+                <child>
                   <object class="AdwActionRow" id="image_format">
                     <property name="title" translatable="yes">Image Format</property>
                     <property name="subtitle-selectable">True</property>

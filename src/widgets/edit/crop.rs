@@ -254,14 +254,14 @@ mod imp {
 
         fn apply_rotate_cw(&self) {
             self.apply_crop();
-            self.add_operation(Operation::Rotate(gufo_common::orientation::Rotation::_270));
+            self.add_operation(Operation::Rotate(gufo::common::orientation::Rotation::_270));
 
             self.reset_selection();
         }
 
         fn apply_rotate_ccw(&self) {
             self.apply_crop();
-            self.add_operation(Operation::Rotate(gufo_common::orientation::Rotation::_90));
+            self.add_operation(Operation::Rotate(gufo::common::orientation::Rotation::_90));
 
             self.reset_selection();
         }

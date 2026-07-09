@@ -201,6 +201,8 @@ impl Unit {
 }
 
 mod imp {
+    use crate::util;
+
     use super::*;
 
     #[derive(Debug, Default, CompositeTemplate, Properties)]
@@ -388,13 +390,7 @@ mod imp {
                 .set_value(size_unit.round(obj.original_size().0 * obj.width_unit_factor()));
 
             // Default to inch for USA and Liberia
-            if let Some(unit_locale) = getlocale(gettextrs::LocaleCategory::LcMeasurement)
-                && let Some(locale) = unit_locale
-                    .split(|x| *x == b'_')
-                    .nth(1)
-                    .and_then(|x| x.get(0..2))
-                && (locale == b"US" || locale == b"LR")
-            {
+            if util::locale_uses_inch() {
                 imp.margin_unit.set_selected(Unit::Inch as u32);
                 imp.size_unit.set_selected(Unit::Inch as u32);
             }
@@ -525,13 +521,22 @@ impl LpPrint {
 
     pub fn original_size(&self) -> (f64, f64) {
         let image = self.image();
+        let (x_pixels, y_pixels) = image.image_size();
         let metadata = image.metadata();
-        if let Some((w, h)) = metadata.dimensions_inch() {
+
+        if let Some(physical_size) = metadata.physical_size().map(|x| x.dpi()).or_else(|| {
+            metadata
+                .pixel_density()
+                .map(|x| x.physical_size(x_pixels as u32, y_pixels as u32))
+        }) {
             let dpi = self.dpi();
 
-            ((w * dpi).round(), (h * dpi).round())
+            (
+                (physical_size.x.value() * dpi).round(),
+                (physical_size.y.value() * dpi).round(),
+            )
         } else {
-            let (w, h) = self.image().image_size();
+            let (w, h) = image.image_size();
 
             (w as f64, h as f64)
         }
@@ -966,17 +971,5 @@ impl LpPrint {
         cairo_surface.finish_output_stream().map_err(|x| x.error)?;
 
         Ok(())
-    }
-}
-
-// TODO: Upstream to gettext if possible
-pub fn getlocale(category: gettextrs::LocaleCategory) -> Option<Vec<u8>> {
-    unsafe {
-        let ret = gettext_sys::setlocale(category as i32, std::ptr::null());
-        if ret.is_null() {
-            None
-        } else {
-            Some(std::ffi::CStr::from_ptr(ret).to_bytes().to_owned())
-        }
     }
 }

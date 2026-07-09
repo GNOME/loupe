@@ -267,3 +267,30 @@ pub enum ErrorType {
     Loader,
     General,
 }
+
+pub fn locale_uses_inch() -> bool {
+    // Use inch for USA and Liberia
+    if let Some(unit_locale) = getlocale(gettextrs::LocaleCategory::LcMeasurement)
+        && let Some(locale) = unit_locale
+            .split(|x| *x == b'_')
+            .nth(1)
+            .and_then(|x| x.get(0..2))
+        && (locale == b"US" || locale == b"LR")
+    {
+        dbg!(true)
+    } else {
+        false
+    }
+}
+
+// TODO: Upstream to gettext if possible
+fn getlocale(category: gettextrs::LocaleCategory) -> Option<Vec<u8>> {
+    unsafe {
+        let ret = gettext_sys::setlocale(category as i32, std::ptr::null());
+        if ret.is_null() {
+            None
+        } else {
+            Some(std::ffi::CStr::from_ptr(ret).to_bytes().to_owned())
+        }
+    }
+}

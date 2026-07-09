@@ -17,7 +17,7 @@
 
 use glycin::{Operation, Operations};
 use gtk::prelude::*;
-use gufo_common::orientation::Rotation;
+use gufo::common::orientation::Rotation;
 
 use crate::deps::*;
 
@@ -145,7 +145,7 @@ impl OperationsSnapshot {
 
     fn rotate(
         &mut self,
-        rotation: gufo_common::orientation::Rotation,
+        rotation: gufo::common::orientation::Rotation,
     ) -> Result<(), OperationError> {
         let snapshot = gtk::Snapshot::new();
 

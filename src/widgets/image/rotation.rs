@@ -104,8 +104,8 @@ impl LpImage {
             zoom_animation.play();
         }
 
-        if let Ok(r) = gufo_common::orientation::Rotation::try_from(angle)
-            && r != gufo_common::orientation::Rotation::_0
+        if let Ok(r) = gufo::common::orientation::Rotation::try_from(angle)
+            && r != gufo::common::orientation::Rotation::_0
         {
             tracing::debug!("Editing image to rotate by {r:?}");
             let operation = glycin::Operation::Rotate(r);

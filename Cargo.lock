@@ -946,8 +946,8 @@ dependencies = [
 
 [[package]]
 name = "glycin"
-version = "4.0.0-alpha"
-source = "git+https://gitlab.gnome.org/GNOME/glycin.git#2b0f1b1e217ce17ebe45aecdda7096ed4eea8343"
+version = "4.0.0-alpha.1"
+source = "git+https://gitlab.gnome.org/GNOME/glycin.git?rev=32083724ee730fb6b35b6382fb8af7b6ab1f2992#32083724ee730fb6b35b6382fb8af7b6ab1f2992"
 dependencies = [
  "glycin-builtin",
  "glycin-external",
@@ -955,16 +955,16 @@ dependencies = [
 
 [[package]]
 name = "glycin-builtin"
-version = "4.0.0-alpha"
-source = "git+https://gitlab.gnome.org/GNOME/glycin.git#2b0f1b1e217ce17ebe45aecdda7096ed4eea8343"
+version = "4.0.0-alpha.1"
+source = "git+https://gitlab.gnome.org/GNOME/glycin.git?rev=32083724ee730fb6b35b6382fb8af7b6ab1f2992#32083724ee730fb6b35b6382fb8af7b6ab1f2992"
 dependencies = [
  "glycin-core",
 ]
 
 [[package]]
 name = "glycin-common"
-version = "2.0.0-alpha"
-source = "git+https://gitlab.gnome.org/GNOME/glycin.git#2b0f1b1e217ce17ebe45aecdda7096ed4eea8343"
+version = "2.0.0-alpha.1"
+source = "git+https://gitlab.gnome.org/GNOME/glycin.git?rev=32083724ee730fb6b35b6382fb8af7b6ab1f2992#32083724ee730fb6b35b6382fb8af7b6ab1f2992"
 dependencies = [
  "bitflags 2.13.0",
  "gufo-common",
@@ -981,8 +981,8 @@ dependencies = [
 
 [[package]]
 name = "glycin-core"
-version = "4.0.0-alpha"
-source = "git+https://gitlab.gnome.org/GNOME/glycin.git#2b0f1b1e217ce17ebe45aecdda7096ed4eea8343"
+version = "4.0.0-alpha.1"
+source = "git+https://gitlab.gnome.org/GNOME/glycin.git?rev=32083724ee730fb6b35b6382fb8af7b6ab1f2992#32083724ee730fb6b35b6382fb8af7b6ab1f2992"
 dependencies = [
  "async-fs",
  "async-global-executor",
@@ -1002,8 +1002,9 @@ dependencies = [
  "glycin-common",
  "glycin-image-rs",
  "glycin-utils",
+ "gufo",
  "gufo-common",
- "gufo-exif",
+ "gufo-exif 0.5.0-alpha.3 (registry+https://github.com/rust-lang/crates.io-index)",
  "half",
  "libc",
  "libseccomp",
@@ -1018,36 +1019,38 @@ dependencies = [
 
 [[package]]
 name = "glycin-external"
-version = "4.0.0-alpha"
-source = "git+https://gitlab.gnome.org/GNOME/glycin.git#2b0f1b1e217ce17ebe45aecdda7096ed4eea8343"
+version = "4.0.0-alpha.1"
+source = "git+https://gitlab.gnome.org/GNOME/glycin.git?rev=32083724ee730fb6b35b6382fb8af7b6ab1f2992#32083724ee730fb6b35b6382fb8af7b6ab1f2992"
 dependencies = [
  "glycin-core",
 ]
 
 [[package]]
 name = "glycin-image-rs"
-version = "2.2.0-alpha"
-source = "git+https://gitlab.gnome.org/GNOME/glycin.git#2b0f1b1e217ce17ebe45aecdda7096ed4eea8343"
+version = "2.2.0-alpha.6"
+source = "git+https://gitlab.gnome.org/GNOME/glycin.git?rev=32083724ee730fb6b35b6382fb8af7b6ab1f2992#32083724ee730fb6b35b6382fb8af7b6ab1f2992"
 dependencies = [
+ "bytemuck",
  "exr",
  "glycin-utils",
  "gufo",
  "gufo-common",
- "gufo-exif",
- "gufo-jpeg",
+ "gufo-exif 0.5.0-alpha.3 (registry+https://github.com/rust-lang/crates.io-index)",
+ "gufo-jpeg 0.5.0-alpha.2",
  "hayro-jpeg2000",
  "image",
  "image-extras",
  "jpeg-encoder",
  "log",
  "moxcms",
+ "tiff",
  "zune-jpeg",
 ]
 
 [[package]]
 name = "glycin-utils"
-version = "5.0.0-alpha"
-source = "git+https://gitlab.gnome.org/GNOME/glycin.git#2b0f1b1e217ce17ebe45aecdda7096ed4eea8343"
+version = "5.0.0-alpha.1"
+source = "git+https://gitlab.gnome.org/GNOME/glycin.git?rev=32083724ee730fb6b35b6382fb8af7b6ab1f2992#32083724ee730fb6b35b6382fb8af7b6ab1f2992"
 dependencies = [
  "async-lock",
  "bitflags 2.13.0",
@@ -1192,14 +1195,13 @@ dependencies = [
 
 [[package]]
 name = "gufo"
-version = "0.5.0-alpha"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "d97d857a79df06e10cd669541ed0a42d471a45a5201ce99535baf99b18c4129a"
+version = "0.5.0-alpha.3"
+source = "git+https://github.com/gufo-rs/gufo.git?rev=ac92bd426543bc33b36b6cbc8443455b6a882581#ac92bd426543bc33b36b6cbc8443455b6a882581"
 dependencies = [
  "chrono",
  "gufo-common",
- "gufo-exif",
- "gufo-jpeg",
+ "gufo-exif 0.5.0-alpha.3 (git+https://github.com/gufo-rs/gufo.git?rev=ac92bd426543bc33b36b6cbc8443455b6a882581)",
+ "gufo-jpeg 0.5.0-alpha.3",
  "gufo-png",
  "gufo-tiff",
  "gufo-webp",
@@ -1210,9 +1212,8 @@ dependencies = [
 
 [[package]]
 name = "gufo-common"
-version = "2.0.0-alpha"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "970e26402b2750cf3fbbf49116dca9fc010c939013125623c94da632f1ba76e8"
+version = "2.0.0-alpha.2"
+source = "git+https://github.com/gufo-rs/gufo.git?rev=ac92bd426543bc33b36b6cbc8443455b6a882581#ac92bd426543bc33b36b6cbc8443455b6a882581"
 dependencies = [
  "chrono",
  "paste",
@@ -1223,9 +1224,22 @@ dependencies = [
 
 [[package]]
 name = "gufo-exif"
-version = "0.5.0-alpha.1"
+version = "0.5.0-alpha.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "1597401629a6778cbea663e6af6680fbcd07ab243cc8eee9bc5ef5d2c9e5eab8"
+checksum = "e68d453f54f396ca43664463e3fa93de6ece835e113dd63f694349d669382821"
+dependencies = [
+ "gufo-common",
+ "indexmap",
+ "ouroboros",
+ "thiserror",
+ "tracing",
+ "zerocopy",
+]
+
+[[package]]
+name = "gufo-exif"
+version = "0.5.0-alpha.3"
+source = "git+https://github.com/gufo-rs/gufo.git?rev=ac92bd426543bc33b36b6cbc8443455b6a882581#ac92bd426543bc33b36b6cbc8443455b6a882581"
 dependencies = [
  "chrono",
  "gufo-common",
@@ -1238,22 +1252,34 @@ dependencies = [
 
 [[package]]
 name = "gufo-jpeg"
-version = "0.5.0-alpha"
+version = "0.5.0-alpha.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "004fec8f321842386ba7decc6ee03dde7ed35f29c3586861a5c708cca1e4259b"
+checksum = "fa46d802b33586d3a1fd412b3fbb2b10ffbcde5aecbe5fddb4d61c827a001b9e"
 dependencies = [
  "gufo-common",
  "indexmap",
  "jpeg-encoder",
  "thiserror",
  "tracing",
+ "zerocopy",
+]
+
+[[package]]
+name = "gufo-jpeg"
+version = "0.5.0-alpha.3"
+source = "git+https://github.com/gufo-rs/gufo.git?rev=ac92bd426543bc33b36b6cbc8443455b6a882581#ac92bd426543bc33b36b6cbc8443455b6a882581"
+dependencies = [
+ "gufo-common",
+ "indexmap",
+ "thiserror",
+ "tracing",
+ "zerocopy",
 ]
 
 [[package]]
 name = "gufo-png"
-version = "0.5.0-alpha"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "810e7750b869abb84c6162ad01a240f388a924d2d469ae30a0c2c11a28e81813"
+version = "0.5.0-alpha.3"
+source = "git+https://github.com/gufo-rs/gufo.git?rev=ac92bd426543bc33b36b6cbc8443455b6a882581#ac92bd426543bc33b36b6cbc8443455b6a882581"
 dependencies = [
  "crc32fast",
  "encoding_rs",
@@ -1265,9 +1291,8 @@ dependencies = [
 
 [[package]]
 name = "gufo-tiff"
-version = "0.5.0-alpha"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "0a937aa0a245c9602aa9ed4857b6fc8f184cc43cf91e18d982c74c698e20afd5"
+version = "0.5.0-alpha.3"
+source = "git+https://github.com/gufo-rs/gufo.git?rev=ac92bd426543bc33b36b6cbc8443455b6a882581#ac92bd426543bc33b36b6cbc8443455b6a882581"
 dependencies = [
  "gufo-common",
  "thiserror",
@@ -1275,9 +1300,8 @@ dependencies = [
 
 [[package]]
 name = "gufo-webp"
-version = "0.5.0-alpha"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "662c18ba5eef44d65c1694ebede033783ab5b48eb81366c1625deaaf75c47a18"
+version = "0.5.0-alpha.3"
+source = "git+https://github.com/gufo-rs/gufo.git?rev=ac92bd426543bc33b36b6cbc8443455b6a882581#ac92bd426543bc33b36b6cbc8443455b6a882581"
 dependencies = [
  "gufo-common",
  "thiserror",
@@ -1285,9 +1309,8 @@ dependencies = [
 
 [[package]]
 name = "gufo-xmp"
-version = "0.5.0-alpha"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "ea3cc4abbf29cddc6ffc1a4473eec79f11cf742bc113f9bd319ca1d7fcedfc39"
+version = "0.5.0-alpha.3"
+source = "git+https://github.com/gufo-rs/gufo.git?rev=ac92bd426543bc33b36b6cbc8443455b6a882581#ac92bd426543bc33b36b6cbc8443455b6a882581"
 dependencies = [
  "chrono",
  "gufo-common",
@@ -1625,7 +1648,6 @@ dependencies = [
  "glycin",
  "gtk4",
  "gufo",
- "gufo-common",
  "gvdb-macros",
  "indexmap",
  "libadwaita",

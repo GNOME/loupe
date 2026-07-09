@@ -34,6 +34,8 @@ use crate::widgets::image::LpImage;
 const FALLBACK: &str = "–";
 
 mod imp {
+    use gufo::common::physical_dimension::PhysicalDimensionUnit;
+
     use super::*;
 
     #[derive(Debug, Default, CompositeTemplate, Properties)]
@@ -53,6 +55,10 @@ mod imp {
 
         #[template_child]
         image_size: TemplateChild<adw::ActionRow>,
+        #[template_child]
+        physical_size: TemplateChild<adw::ActionRow>,
+        #[template_child]
+        pixel_density: TemplateChild<adw::ActionRow>,
         #[template_child]
         image_format: TemplateChild<adw::ActionRow>,
         #[template_child]
@@ -219,6 +225,8 @@ mod imp {
 
             // Image info
             Self::update_row(&self.image_size, self.image_size());
+            Self::update_row(&self.physical_size, self.physical_size());
+            Self::update_row(&self.pixel_density, self.pixel_density());
             Self::update_row(&self.image_format, self.format_name());
             Self::update_row(&self.file_size, metadata.file_size());
 
@@ -289,28 +297,111 @@ mod imp {
 
         fn image_size(&self) -> Option<String> {
             let obj = self.obj();
+            let image = obj.image()?;
+            let physical_size = image.metadata().physical_size();
 
-            if let Some(image) = obj.image() {
-                match image.metadata().dimensions_text() {
-                    Some(string) => Some(string.to_string()),
-                    _ => {
-                        let (width, height) = image.image_size();
-                        if width > 0 && height > 0 {
-                            Some(
-                                // Translators: Image "<width> x <height>"
-                                gettext_f(
-                                    r"{}\u{202F}\u{D7}\u{202F}{}",
-                                    [width.to_string(), height.to_string()],
-                                ),
-                            )
-                        } else {
-                            None
-                        }
-                    }
+            if physical_size.is_none() {
+                let (width, height) = image.image_size();
+                if width > 0 && height > 0 {
+                    Some(
+                        // Translators: Image "<width> x <height>"
+                        gettext_f(
+                            r"{}\u{202F}\u{D7}\u{202F}{}",
+                            [width.to_string(), height.to_string()],
+                        ),
+                    )
+                } else {
+                    None
                 }
             } else {
                 None
             }
+        }
+
+        fn physical_size(&self) -> Option<String> {
+            let obj = self.obj();
+            let image = obj.image()?;
+            let (width, height) = image.image_size();
+            let metadata = image.metadata();
+
+            let default_unit = if util::locale_uses_inch() {
+                PhysicalDimensionUnit::Inch
+            } else {
+                PhysicalDimensionUnit::Centimeter
+            };
+
+            let physical_size = metadata.physical_size().or_else(|| {
+                metadata.pixel_density().map(|x| {
+                    x.physical_size(width as u32, height as u32)
+                        .convert(default_unit)
+                })
+            })?;
+
+            const ROUND: f64 = 100.;
+            let x = (physical_size.x.value() * ROUND).round() / ROUND;
+            let y = (physical_size.y.value() * ROUND).round() / ROUND;
+
+            let unit = |x| {
+                match x {
+                    PhysicalDimensionUnit::Centimeter => {
+                        // Translators: Shorthand for centimeter
+                        gettext("\u{202F}cm")
+                    }
+                    PhysicalDimensionUnit::Inch => {
+                        // Translators: Shorthand for inch
+                        gettext("\u{2033}")
+                    }
+                    PhysicalDimensionUnit::Meter => {
+                        // Translators: Shorthand for meter
+                        gettext("\u{202F}m")
+                    }
+                    PhysicalDimensionUnit::Millimeter => {
+                        // Translators: Shorthand for millimeter
+                        gettext("\u{202F}mm")
+                    }
+                    PhysicalDimensionUnit::Pica => {
+                        // Translators: Shorthand for pica (unit)
+                        gettext("\u{202F}pc")
+                    }
+                    PhysicalDimensionUnit::Point => {
+                        // Translators: Shorthand for pica (unit)
+                        gettext("\u{202F}pt")
+                    }
+                    x => x.shorthand().to_string(),
+                }
+            };
+
+            let x_unit = unit(physical_size.x.unit());
+            let y_unit = unit(physical_size.y.unit());
+
+            Some(
+                // Translators: Image "<width> x <height>"
+                gettext_f(
+                    r"{}{}\u{202F}\u{D7}\u{202F}{}{}",
+                    [x.to_string(), x_unit, y.to_string(), y_unit],
+                ),
+            )
+        }
+
+        fn pixel_density(&self) -> Option<String> {
+            let obj = self.obj();
+            let image = obj.image()?;
+            let metadata = image.metadata();
+            let pixel_density = metadata.pixel_density()?.dpi();
+
+            const ROUND: f64 = 10.;
+            let x = (pixel_density.x().value() * ROUND).round() / ROUND;
+            let y = (pixel_density.y().value() * ROUND).round() / ROUND;
+
+            Some(if x == y {
+                gettext_f(r"{}\u{202F}DPI", [x.to_string()])
+            } else {
+                // Translators: Image "<x-resolution> x <y-resolution>"
+                gettext_f(
+                    r"{}\u{202F}DPI\u{202F}\u{D7}\u{202F}{}\u{202F}DPI",
+                    [x.to_string(), y.to_string()],
+                )
+            })
         }
 
         fn file(&self) -> Option<gio::File> {

@@ -30,6 +30,7 @@ use glib::TimeZone;
 use glycin::{Frame, FrameDetails, ImageDetails, MemoryFormat};
 use gufo::common::datetime::DateTime;
 use gufo::common::orientation::Orientation;
+use gufo::common::physical_dimension;
 
 use crate::deps::*;
 use crate::util;
@@ -167,16 +168,6 @@ impl Metadata {
         } else {
             self.metadata.orientation().unwrap_or(Orientation::Id)
         }
-    }
-
-    pub fn dimensions_inch(&self) -> Option<(f64, f64)> {
-        self.image_info.as_ref().and_then(|x| x.dimensions_inch())
-    }
-
-    pub fn dimensions_text(&self) -> Option<String> {
-        self.image_info
-            .as_ref()
-            .and_then(|x| x.info_dimensions_text().map(|x| x.to_string()))
     }
 
     pub fn file_name(&self) -> Option<String> {
@@ -435,5 +426,13 @@ impl Metadata {
         } else {
             None
         }
+    }
+
+    pub fn pixel_density(&self) -> Option<physical_dimension::PixelDensity> {
+        self.frame_info.as_ref().and_then(|x| x.pixel_density())
+    }
+
+    pub fn physical_size(&self) -> Option<physical_dimension::PhysicalSize> {
+        self.frame_info.as_ref().and_then(|x| x.physical_size())
     }
 }

@@ -53,7 +53,7 @@ use adw::prelude::*;
 use adw::subclass::prelude::*;
 use glib::subclass::Signal;
 use glib::{Properties, SignalGroup};
-use gufo_common::orientation::Orientation;
+use gufo::common::orientation::Orientation;
 
 use crate::decoder::tiling::SharedFrameBuffer;
 use crate::decoder::{self, Decoder, DecoderUpdate, tiling};
