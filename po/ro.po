@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2026-06-25 20:14+0000\n"
-"PO-Revision-Date: 2026-06-26 10:38+0200\n"
+"POT-Creation-Date: 2026-07-09 20:54+0000\n"
+"PO-Revision-Date: 2026-07-10 10:39+0200\n"
 "Last-Translator: Antonio Marin <gnmer.6qxyg@slmail.me>\n"
 "Language-Team: Romanian <gnomero-list@lists.sourceforge.net>\n"
 "Language: ro\n"
@@ -28,7 +28,7 @@ msgstr ""
 
 #: data/org.gnome.Loupe.desktop.in.in:2
 #: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:32
-#: src/widgets/image_window.rs:880
+#: src/widgets/image_window.rs:879
 msgid "Image Viewer"
 msgstr "Imagini"
 
@@ -303,41 +303,41 @@ msgid "Could not list other files in directory."
 msgstr "Nu s-a putut afișa lista fișierelor din dosar."
 
 #. Translators: Display of the f-number <https://en.wikipedia.org/wiki/F-number>. {} will be replaced with the number
-#: src/metadata.rs:260
+#: src/metadata.rs:251
 msgid "\\u{192}\\u{2215}{}"
 msgstr "\\u{192}\\u{2215}{}"
 
 #. Translators: Fractional exposure time (photography) in seconds
-#: src/metadata.rs:273
+#: src/metadata.rs:264
 msgid "1\\u{2215}{}\\u{202F}s"
 msgstr "1\\u{2215}{}\\u{202F}s"
 
 #. Translators: Exposure time (photography) in seconds
-#: src/metadata.rs:281
+#: src/metadata.rs:272
 msgid "{}\\u{202F}s"
 msgstr "{}\\u{202F}s"
 
-#: src/metadata.rs:295
+#: src/metadata.rs:286
 msgid "{}\\u{202F}mm"
 msgstr "{}\\u{202F}mm"
 
 #. Translators: short for "north" in GPS coordinate
-#: src/metadata.rs:385
+#: src/metadata.rs:376
 msgid "N"
 msgstr "N"
 
 #. Translators: short for "south" in GPS coordinate
-#: src/metadata.rs:389
+#: src/metadata.rs:380
 msgid "S"
 msgstr "S"
 
 #. Translators: short for "east" in GPS coordinate
-#: src/metadata.rs:398
+#: src/metadata.rs:389
 msgid "E"
 msgstr "E"
 
 #. Translators: short for "west" in GPS coordinate
-#: src/metadata.rs:402
+#: src/metadata.rs:393
 msgid "W"
 msgstr "V"
 
@@ -468,7 +468,7 @@ msgid "Crop Selection"
 msgstr "Taie selecția"
 
 #. Translators: Filename suffix, {} is replaced by a number
-#: src/widgets/edit_window.rs:198
+#: src/widgets/edit_window.rs:199
 #, rust-format
 msgid " (Edited)"
 msgid_plural " (Edited {})"
@@ -476,39 +476,39 @@ msgstr[0] " (modificată)"
 msgstr[1] " ({} modificate)"
 msgstr[2] " ({} modificate)"
 
-#: src/widgets/edit_window.rs:282
+#: src/widgets/edit_window.rs:283
 msgid "Moving Original to Trash"
 msgstr "Se mută originalul în coșul de gunoi"
 
-#: src/widgets/edit_window.rs:296 src/widgets/edit_window.rs:325
+#: src/widgets/edit_window.rs:297 src/widgets/edit_window.rs:326
 msgid "Failed to save image."
 msgstr "Nu s-a putut salva imaginea."
 
-#: src/widgets/edit_window.rs:305
+#: src/widgets/edit_window.rs:306
 msgid "Finalizing Save Operation"
 msgstr "Se finalizează operația de salvare"
 
-#: src/widgets/edit_window.rs:356
+#: src/widgets/edit_window.rs:357
 msgid "Editing Image"
 msgstr "Se modifică imaginea"
 
-#: src/widgets/edit_window.rs:373
+#: src/widgets/edit_window.rs:374
 msgid "Failed to edit image."
 msgstr "Nu s-a putut modifica imaginea."
 
-#: src/widgets/edit_window.rs:380
+#: src/widgets/edit_window.rs:381
 msgid "Saving Image"
 msgstr "Se salvează imaginea"
 
-#: src/widgets/edit_window.rs:399
+#: src/widgets/edit_window.rs:400
 msgid "Failed to Save Image"
 msgstr "Nu s-a putut salva imaginea"
 
-#: src/widgets/edit_window.rs:514
+#: src/widgets/edit_window.rs:515
 msgid "Save Changes?"
 msgstr "Se salvează modificările?"
 
-#: src/widgets/edit_window.rs:516
+#: src/widgets/edit_window.rs:517
 msgid ""
 "There are unsaved image editing changes. Closing without saving will "
 "permanently lose these modifications."
@@ -516,15 +516,15 @@ msgstr ""
 "Există modificări nesalvate ale imaginii. Închizând fără a le salva, acestea "
 "vor fi pierdute definitiv."
 
-#: src/widgets/edit_window.rs:520 src/widgets/image_window.rs:701
+#: src/widgets/edit_window.rs:521 src/widgets/image_window.rs:700
 msgid "Cancel"
 msgstr "Anulează"
 
-#: src/widgets/edit_window.rs:521
+#: src/widgets/edit_window.rs:522
 msgid "Discard"
 msgstr "Nu salva"
 
-#: src/widgets/edit_window.rs:522
+#: src/widgets/edit_window.rs:523
 msgid "Save"
 msgstr "Salvează"
 
@@ -701,48 +701,48 @@ msgstr "Nivel personalizat de mărire"
 msgid "Zoom to Specified Level"
 msgstr "Mărește la un nivel specific"
 
-#: src/widgets/image_window.rs:510
+#: src/widgets/image_window.rs:509
 msgid "Supported image formats"
 msgstr "Formate de imagine acceptate"
 
-#: src/widgets/image_window.rs:516
+#: src/widgets/image_window.rs:515
 msgid "All files"
 msgstr "Toate fișierele"
 
-#: src/widgets/image_window.rs:523
+#: src/widgets/image_window.rs:522
 msgid "Open Image"
 msgstr "Deschide imaginea"
 
-#: src/widgets/image_window.rs:615
+#: src/widgets/image_window.rs:614
 msgid "Image copied to clipboard"
 msgstr "Imagine copiată"
 
-#: src/widgets/image_window.rs:636
+#: src/widgets/image_window.rs:635
 msgid "Image moved to trash"
 msgstr "Imagine mutată în gunoi"
 
-#: src/widgets/image_window.rs:637
+#: src/widgets/image_window.rs:636
 msgid "Undo"
 msgstr "Refă"
 
-#: src/widgets/image_window.rs:667
+#: src/widgets/image_window.rs:666
 msgid "Failed to move image to trash"
 msgstr "Nu s-a putut muta imaginea în gunoi"
 
-#: src/widgets/image_window.rs:691
+#: src/widgets/image_window.rs:690
 msgid "Permanently Delete Image?"
 msgstr "Să fie ștearsă definitiv imaginea?"
 
-#: src/widgets/image_window.rs:693
+#: src/widgets/image_window.rs:692
 #, rust-format
 msgid "After deleting the image “{}” it will be permanently lost."
 msgstr "După ștergerea imaginii „{}” ea va fi pierdută definitiv."
 
-#: src/widgets/image_window.rs:702
+#: src/widgets/image_window.rs:701
 msgid "Delete"
 msgstr "Șterge"
 
-#: src/widgets/image_window.rs:713
+#: src/widgets/image_window.rs:712
 msgid "Failed to delete image"
 msgstr "Nu s-a putut șterge imaginea"
 
@@ -830,24 +830,24 @@ msgid "px"
 msgstr "px"
 
 #. Translators: {} is a placeholder for the filename
-#: src/widgets/print.rs:364
+#: src/widgets/print.rs:366
 #, rust-format
 msgid "Print “{}”"
 msgstr "Tipărește „{}”"
 
-#: src/widgets/print.rs:477
+#: src/widgets/print.rs:473
 msgid "Continue…"
 msgstr "Continuă…"
 
-#: src/widgets/print.rs:478
+#: src/widgets/print.rs:474
 msgid "Print Image"
 msgstr "Tipărește imaginea"
 
-#: src/widgets/print.rs:797
+#: src/widgets/print.rs:802
 msgid "_Scale"
 msgstr "_Scara"
 
-#: src/widgets/print.rs:800
+#: src/widgets/print.rs:805
 msgid "_Width"
 msgstr "_Lățime"
 
@@ -902,7 +902,7 @@ msgstr "Mărimea imaginii"
 
 #: src/widgets/print.ui:145
 msgid "Image Size Units"
-msgstr "Unitățile mărimii imaginii"
+msgstr "Unități de măsură"
 
 #: src/widgets/print.ui:163
 msgid "_Fill Space"
@@ -912,30 +912,72 @@ msgstr "_Umple spațiul"
 msgid "H_eight"
 msgstr "Înălțim_e"
 
-#: src/widgets/properties_view.rs:270
+#: src/widgets/properties_view.rs:278
 msgid "Unknown"
 msgstr "Necunoscut"
 
 #. Translators: Addition of image being transparent to format name
-#: src/widgets/properties_view.rs:274
+#: src/widgets/properties_view.rs:282
 msgid ", transparent"
 msgstr ", transparent"
 
 #. Translators: Addition of image being grayscale to format name
-#: src/widgets/properties_view.rs:279
+#: src/widgets/properties_view.rs:287
 msgid ", grayscale"
 msgstr ", scară de gri"
 
 #. Translators: Addition of bit size to format name
-#: src/widgets/properties_view.rs:284
+#: src/widgets/properties_view.rs:292
 msgid ", {}\\u{202F}bit"
 msgstr ", {}\\u{202F}bit"
 
-#: src/widgets/properties_view.rs:302
+#: src/widgets/properties_view.rs:309
 msgid "{}\\u{202F}\\u{D7}\\u{202F}{}"
 msgstr "{}\\u{202F}\\u{D7}\\u{202F}{}"
 
-#: src/widgets/properties_view.rs:338
+#. Translators: Shorthand for centimeter
+#: src/widgets/properties_view.rs:348
+msgid " cm"
+msgstr " cm"
+
+#. Translators: Shorthand for inch
+#: src/widgets/properties_view.rs:352
+msgid "″"
+msgstr "″"
+
+#. Translators: Shorthand for meter
+#: src/widgets/properties_view.rs:356
+msgid " m"
+msgstr " m"
+
+#. Translators: Shorthand for millimeter
+#: src/widgets/properties_view.rs:360
+msgid " mm"
+msgstr " mm"
+
+#. Translators: Shorthand for pica (unit)
+#: src/widgets/properties_view.rs:364
+msgid " pc"
+msgstr " pc"
+
+#. Translators: Shorthand for pica (unit)
+#: src/widgets/properties_view.rs:368
+msgid " pt"
+msgstr " pt"
+
+#: src/widgets/properties_view.rs:380
+msgid "{}{}\\u{202F}\\u{D7}\\u{202F}{}{}"
+msgstr "{}{}\\u{202F}\\u{D7}\\u{202F}{}{}"
+
+#: src/widgets/properties_view.rs:397
+msgid "{}\\u{202F}DPI"
+msgstr "{}\\u{202F}DPI"
+
+#: src/widgets/properties_view.rs:401
+msgid "{}\\u{202F}DPI\\u{202F}\\u{D7}\\u{202F}{}\\u{202F}DPI"
+msgstr "{}\\u{202F}DPI\\u{202F}\\u{D7}\\u{202F}{}\\u{202F}DPI"
+
+#: src/widgets/properties_view.rs:429
 msgid "Image Coordinates Copied"
 msgstr "Coordonatele imaginii copiate"
 
@@ -952,78 +994,86 @@ msgid "URI"
 msgstr "URI"
 
 #: src/widgets/properties_view.ui:66
-msgid "Image Format"
-msgstr "Format imagine"
+msgid "Physical Size"
+msgstr "Dimensiuni"
 
 #: src/widgets/properties_view.ui:76
-msgid "File Size"
-msgstr "Mărime fișier"
+msgid "Resolution"
+msgstr "Rezoluția"
 
-#: src/widgets/properties_view.ui:90
+#: src/widgets/properties_view.ui:86
+msgid "Image Format"
+msgstr "Formatul imaginii"
+
+#: src/widgets/properties_view.ui:96
+msgid "File Size"
+msgstr "Mărimea fișierului"
+
+#: src/widgets/properties_view.ui:110
 msgid "File Created"
 msgstr "Fișier creat"
 
-#: src/widgets/properties_view.ui:100
+#: src/widgets/properties_view.ui:120
 msgid "File Modified"
 msgstr "Fișier modificat"
 
 #. Translators: This is a label for GPS coordinates
-#: src/widgets/properties_view.ui:114
+#: src/widgets/properties_view.ui:134
 msgid "Location"
 msgstr "Locul"
 
-#: src/widgets/properties_view.ui:125
+#: src/widgets/properties_view.ui:145
 msgid "Copy Coordinates"
 msgstr "Copiază coordonatele"
 
-#: src/widgets/properties_view.ui:136
+#: src/widgets/properties_view.ui:156
 msgid "Open Location"
 msgstr "Deschide locul"
 
-#: src/widgets/properties_view.ui:149
+#: src/widgets/properties_view.ui:169
 msgid "Originally Created"
 msgstr "Data creării"
 
-#: src/widgets/properties_view.ui:159
+#: src/widgets/properties_view.ui:179
 msgid "Creator"
 msgstr "Creator"
 
-#: src/widgets/properties_view.ui:169
+#: src/widgets/properties_view.ui:189
 msgid "Copyright"
 msgstr "Drepturi de autor"
 
-#: src/widgets/properties_view.ui:179
+#: src/widgets/properties_view.ui:199
 msgid "Comment"
 msgstr "Comentariu"
 
-#: src/widgets/properties_view.ui:189
+#: src/widgets/properties_view.ui:209
 msgid "Aperture"
 msgstr "Apertură"
 
-#: src/widgets/properties_view.ui:199
+#: src/widgets/properties_view.ui:219
 msgid "Exposure"
 msgstr "Expunere"
 
-#: src/widgets/properties_view.ui:209
+#: src/widgets/properties_view.ui:229
 msgid "ISO"
 msgstr "ISO"
 
-#: src/widgets/properties_view.ui:219
+#: src/widgets/properties_view.ui:239
 msgid "Focal Length"
 msgstr "Distanță focală"
 
-#: src/widgets/properties_view.ui:229
+#: src/widgets/properties_view.ui:249
 msgid "Maker, Model"
 msgstr "Fabricant, model"
 
-#: src/widgets/properties_view.ui:239
+#: src/widgets/properties_view.ui:259
 msgid "Lens"
 msgstr "Obiectiv"
 
-#: src/widgets/properties_view.ui:249
+#: src/widgets/properties_view.ui:269
 msgid "Software"
 msgstr "Aplicația"
 
-#: src/widgets/window.rs:253
+#: src/widgets/window.rs:254
 msgid "Show Details"
 msgstr "Arată detalii"
