@@ -7,8 +7,8 @@ license = "GPL-3.0-or-later"
 
 [patch.crates-io]
 glycin = { git = "https://gitlab.gnome.org/GNOME/glycin.git", rev = "32083724ee730fb6b35b6382fb8af7b6ab1f2992" }
-gufo = { git = "https://github.com/gufo-rs/gufo.git", rev = "ac92bd426543bc33b36b6cbc8443455b6a882581" }
-gufo-common = { git = "https://github.com/gufo-rs/gufo.git", rev = "ac92bd426543bc33b36b6cbc8443455b6a882581" }
+gufo = { git = "https://github.com/gufo-rs/gufo.git" }
+gufo-common = { git = "https://github.com/gufo-rs/gufo.git" }
 
 [profile.release]
 lto = true
