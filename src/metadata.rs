@@ -297,7 +297,11 @@ impl Metadata {
     }
 
     pub fn iso(&self) -> Option<String> {
-        self.metadata.iso_speed_rating().map(|iso| iso.to_string())
+        if let Some(speed_rating) = self.metadata.iso_speed_rating() {
+            Some(gettext_f("ISO\u{202F}{}", [speed_rating.to_string()]))
+        } else {
+            None
+        }
     }
 
     pub fn focal_length(&self) -> Option<String> {

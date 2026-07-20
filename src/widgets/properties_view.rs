@@ -84,17 +84,17 @@ mod imp {
         #[template_child]
         user_comment: TemplateChild<adw::ActionRow>,
         #[template_child]
-        aperture: TemplateChild<adw::ActionRow>,
+        aperture: TemplateChild<gtk::Label>,
         #[template_child]
-        exposure: TemplateChild<adw::ActionRow>,
+        exposure: TemplateChild<gtk::Label>,
         #[template_child]
-        iso: TemplateChild<adw::ActionRow>,
+        iso: TemplateChild<gtk::Label>,
         #[template_child]
-        focal_length: TemplateChild<adw::ActionRow>,
+        focal_length: TemplateChild<gtk::Label>,
         #[template_child]
-        maker_model: TemplateChild<adw::ActionRow>,
+        maker_model: TemplateChild<gtk::Label>,
         #[template_child]
-        lens: TemplateChild<adw::ActionRow>,
+        lens: TemplateChild<gtk::Label>,
         #[template_child]
         software: TemplateChild<adw::ActionRow>,
         #[template_child]
@@ -243,6 +243,17 @@ mod imp {
             .any(|x| x);
             self.dates.set_visible(has_dates);
 
+            let has_image = [
+                Self::update_label(&self.maker_model, metadata.maker_model()),
+                Self::update_label(&self.lens, metadata.lens()),
+                Self::update_label(&self.iso, metadata.iso()),
+                Self::update_label(&self.aperture, metadata.f_number()),
+                Self::update_label(&self.exposure, metadata.exposure_time()),
+                Self::update_label(&self.focal_length, metadata.focal_length()),
+            ]
+            .iter()
+            .any(|x| *x);
+
             // Details (EXIF)
             let has_details = [
                 Self::update_row(&self.location, metadata.gps_location_place()),
@@ -250,12 +261,6 @@ mod imp {
                 Self::update_row(&self.creator, metadata.creator()),
                 Self::update_row(&self.rights, metadata.rights()),
                 Self::update_row(&self.user_comment, metadata.user_comment()),
-                Self::update_row(&self.aperture, metadata.f_number()),
-                Self::update_row(&self.exposure, metadata.exposure_time()),
-                Self::update_row(&self.iso, metadata.iso()),
-                Self::update_row(&self.focal_length, metadata.focal_length()),
-                Self::update_row(&self.maker_model, metadata.maker_model()),
-                Self::update_row(&self.lens, metadata.lens()),
                 Self::update_row(&self.software, metadata.software()),
                 Self::update_row(&self.icc_profile, metadata.icc_profile_description()),
                 Self::update_row(&self.cicp, metadata.cicp_description()),
@@ -273,6 +278,18 @@ mod imp {
             } else {
                 row.set_subtitle(FALLBACK);
                 row.set_visible(false);
+                false
+            }
+        }
+
+        fn update_label(label: &gtk::Label, value: Option<impl AsRef<str>>) -> bool {
+            if let Some(value) = value {
+                label.set_label(value.as_ref());
+                label.set_visible(true);
+                true
+            } else {
+                label.set_label(FALLBACK);
+                label.set_visible(false);
                 false
             }
         }

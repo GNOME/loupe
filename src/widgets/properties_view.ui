@@ -104,25 +104,96 @@
               </object>
             </child>
             <child>
-              <object class="AdwPreferencesGroup" id="dates">
+              <object class="AdwPreferencesGroup" id="image">
                 <child>
-                  <object class="AdwActionRow" id="file_created">
-                    <property name="title" translatable="yes">File Created</property>
-                    <property name="subtitle-selectable">True</property>
-                    <property name="use-markup">False</property>
+                  <object class="GtkListBox">
+                    <property name="selection-mode">none</property>
                     <style>
-                      <class name="property" />
+                      <class name="boxed-list"/>
                     </style>
-                  </object>
-                </child>
-                <child>
-                  <object class="AdwActionRow" id="file_modified">
-                    <property name="title" translatable="yes">File Modified</property>
-                    <property name="subtitle-selectable">True</property>
-                    <property name="use-markup">False</property>
-                    <style>
-                      <class name="property" />
-                    </style>
+                    <child>
+                      <object class="GtkListBoxRow">
+                        <child>
+                          <object class="GtkGrid">
+                            <property name="column-homogeneous">true</property>
+                            <child>
+                              <object class="GtkLabel" id="maker_model">
+                                <layout>
+                                  <property name="row">0</property>
+                                  <property name="column">0</property>
+                                  <property name="column-span">3</property>
+                                </layout>
+                                <property name="xalign">0</property>
+                                <style>
+                                  <class name="vertical"/>
+                                </style>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkLabel" id="lens">
+                                <layout>
+                                  <property name="row">1</property>
+                                  <property name="column">0</property>
+                                  <property name="column-span">3</property>
+                                </layout>
+                                <property name="xalign">0</property>
+                                <style>
+                                  <class name="vertical"/>
+                                </style>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkLabel" id="iso">
+                                <layout>
+                                  <property name="row">2</property>
+                                  <property name="column">0</property>
+                                </layout>
+                                <style>
+                                  <class name="vertical"/>
+                                  <class name="caption-heading"/>
+                                </style>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkLabel" id="focal_length">
+                                <layout>
+                                  <property name="row">2</property>
+                                  <property name="column">1</property>
+                                </layout>
+                                <style>
+                                  <class name="vertical"/>
+                                  <class name="caption-heading"/>
+                                </style>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkLabel" id="aperture">
+                                <layout>
+                                  <property name="row">2</property>
+                                  <property name="column">2</property>
+                                </layout>
+                                <style>
+                                  <class name="vertical"/>
+                                  <class name="caption-heading"/>
+                                </style>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkLabel" id="exposure">
+                                <layout>
+                                  <property name="row">3</property>
+                                  <property name="column">0</property>
+                                </layout>
+                                <style>
+                                  <class name="vertical"/>
+                                  <class name="caption-heading"/>
+                                </style>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
                   </object>
                 </child>
               </object>
@@ -205,66 +276,6 @@
                   </object>
                 </child>
                 <child>
-                  <object class="AdwActionRow" id="aperture">
-                    <property name="title" translatable="yes">Aperture</property>
-                    <property name="subtitle-selectable">True</property>
-                    <property name="use-markup">False</property>
-                    <style>
-                      <class name="property" />
-                    </style>
-                  </object>
-                </child>
-                <child>
-                  <object class="AdwActionRow" id="exposure">
-                    <property name="title" translatable="yes">Exposure</property>
-                    <property name="subtitle-selectable">True</property>
-                    <property name="use-markup">False</property>
-                    <style>
-                      <class name="property" />
-                    </style>
-                  </object>
-                </child>
-                <child>
-                  <object class="AdwActionRow" id="iso">
-                    <property name="title" translatable="yes">ISO</property>
-                    <property name="subtitle-selectable">True</property>
-                    <property name="use-markup">False</property>
-                    <style>
-                      <class name="property" />
-                    </style>
-                  </object>
-                </child>
-                <child>
-                  <object class="AdwActionRow" id="focal_length">
-                    <property name="title" translatable="yes">Focal Length</property>
-                    <property name="subtitle-selectable">True</property>
-                    <property name="use-markup">False</property>
-                    <style>
-                      <class name="property" />
-                    </style>
-                  </object>
-                </child>
-                <child>
-                  <object class="AdwActionRow" id="maker_model">
-                    <property name="title" translatable="yes">Maker, Model</property>
-                    <property name="subtitle-selectable">True</property>
-                    <property name="use-markup">False</property>
-                    <style>
-                      <class name="property" />
-                    </style>
-                  </object>
-                </child>
-                <child>
-                  <object class="AdwActionRow" id="lens">
-                    <property name="title" translatable="yes">Lens</property>
-                    <property name="subtitle-selectable">True</property>
-                    <property name="use-markup">False</property>
-                    <style>
-                      <class name="property" />
-                    </style>
-                  </object>
-                </child>
-                <child>
                   <object class="AdwActionRow" id="software">
                     <property name="title" translatable="yes">Software</property>
                     <property name="subtitle-selectable">True</property>
@@ -287,6 +298,30 @@
                 <child>
                   <object class="AdwActionRow" id="cicp">
                     <property name="title" translatable="yes">CICP</property>
+                    <property name="subtitle-selectable">True</property>
+                    <property name="use-markup">False</property>
+                    <style>
+                      <class name="property" />
+                    </style>
+                  </object>
+                </child>
+              </object>
+            </child>
+            <child>
+              <object class="AdwPreferencesGroup" id="dates">
+                <child>
+                  <object class="AdwActionRow" id="file_created">
+                    <property name="title" translatable="yes">File Created</property>
+                    <property name="subtitle-selectable">True</property>
+                    <property name="use-markup">False</property>
+                    <style>
+                      <class name="property" />
+                    </style>
+                  </object>
+                </child>
+                <child>
+                  <object class="AdwActionRow" id="file_modified">
+                    <property name="title" translatable="yes">File Modified</property>
                     <property name="subtitle-selectable">True</property>
                     <property name="use-markup">False</property>
                     <style>

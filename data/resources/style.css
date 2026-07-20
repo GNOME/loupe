@@ -117,3 +117,7 @@ menubutton.suggested-action button {
   padding-left: 17px;
   padding-right: 17px;
 }
+
+label.vertical {
+  padding: 3px 6px;
+}
