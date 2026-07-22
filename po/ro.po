@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2026-07-09 20:54+0000\n"
-"PO-Revision-Date: 2026-07-10 10:39+0200\n"
+"POT-Creation-Date: 2026-07-20 19:42+0000\n"
+"PO-Revision-Date: 2026-07-22 16:17+0200\n"
 "Last-Translator: Antonio Marin <gnmer.6qxyg@slmail.me>\n"
 "Language-Team: Romanian <gnomero-list@lists.sourceforge.net>\n"
 "Language: ro\n"
@@ -46,7 +46,8 @@ msgid "Show the image properties sidebar"
 msgstr "Arată panoul lateral cu proprietățile imaginii"
 
 #. developer_name tag deprecated with Appstream 1.0
-#: data/org.gnome.Loupe.metainfo.xml.in.in:8 src/about.rs:35
+#: data/org.gnome.Loupe.metainfo.xml.in.in:8
+#: data/org.gnome.Loupe.metainfo.xml.in.in:10 src/about.rs:35
 msgid "The GNOME Project"
 msgstr "Proiectul GNOME"
 
@@ -303,43 +304,84 @@ msgid "Could not list other files in directory."
 msgstr "Nu s-a putut afișa lista fișierelor din dosar."
 
 #. Translators: Display of the f-number <https://en.wikipedia.org/wiki/F-number>. {} will be replaced with the number
-#: src/metadata.rs:251
+#: src/metadata.rs:271
 msgid "\\u{192}\\u{2215}{}"
 msgstr "\\u{192}\\u{2215}{}"
 
 #. Translators: Fractional exposure time (photography) in seconds
-#: src/metadata.rs:264
+#: src/metadata.rs:284
 msgid "1\\u{2215}{}\\u{202F}s"
 msgstr "1\\u{2215}{}\\u{202F}s"
 
 #. Translators: Exposure time (photography) in seconds
-#: src/metadata.rs:272
+#: src/metadata.rs:292
 msgid "{}\\u{202F}s"
 msgstr "{}\\u{202F}s"
 
-#: src/metadata.rs:286
+#: src/metadata.rs:306
 msgid "{}\\u{202F}mm"
 msgstr "{}\\u{202F}mm"
 
 #. Translators: short for "north" in GPS coordinate
-#: src/metadata.rs:376
+#: src/metadata.rs:396
 msgid "N"
 msgstr "N"
 
 #. Translators: short for "south" in GPS coordinate
-#: src/metadata.rs:380
+#: src/metadata.rs:400
 msgid "S"
 msgstr "S"
 
 #. Translators: short for "east" in GPS coordinate
-#: src/metadata.rs:389
+#: src/metadata.rs:409
 msgid "E"
 msgstr "E"
 
 #. Translators: short for "west" in GPS coordinate
-#: src/metadata.rs:393
+#: src/metadata.rs:413
 msgid "W"
 msgstr "V"
+
+#: src/metadata.rs:493
+msgid "DCI P3"
+msgstr "DCI P3"
+
+#: src/metadata.rs:494
+msgid "Display P3"
+msgstr "Display P3"
+
+#: src/metadata.rs:495
+msgid "Rec.2020"
+msgstr "Rec.2020"
+
+#: src/metadata.rs:496
+msgid "sRGB"
+msgstr "sRGB"
+
+#: src/metadata.rs:497 src/metadata.rs:505
+msgid "Unspecified"
+msgstr "Nespecificat"
+
+#: src/metadata.rs:498 src/metadata.rs:507 src/metadata.rs:517
+#, rust-format
+msgid "Unknown ({})"
+msgstr "Necunoscut ({})"
+
+#: src/metadata.rs:504
+msgid "ICtCp"
+msgstr "ICtCp"
+
+#: src/metadata.rs:513
+msgid "DCI"
+msgstr "DCI"
+
+#: src/metadata.rs:514
+msgid "PQ"
+msgstr "PQ"
+
+#: src/metadata.rs:515
+msgid "Gamma 2.4"
+msgstr "Gamma 2.4"
 
 #. / Returns localized date + time format
 #. Translators: This is the date and time format we use in metadata output etc.
@@ -912,72 +954,72 @@ msgstr "_Umple spațiul"
 msgid "H_eight"
 msgstr "Înălțim_e"
 
-#: src/widgets/properties_view.rs:278
+#: src/widgets/properties_view.rs:284
 msgid "Unknown"
 msgstr "Necunoscut"
 
 #. Translators: Addition of image being transparent to format name
-#: src/widgets/properties_view.rs:282
+#: src/widgets/properties_view.rs:288
 msgid ", transparent"
 msgstr ", transparent"
 
 #. Translators: Addition of image being grayscale to format name
-#: src/widgets/properties_view.rs:287
+#: src/widgets/properties_view.rs:293
 msgid ", grayscale"
 msgstr ", scară de gri"
 
 #. Translators: Addition of bit size to format name
-#: src/widgets/properties_view.rs:292
+#: src/widgets/properties_view.rs:298
 msgid ", {}\\u{202F}bit"
 msgstr ", {}\\u{202F}bit"
 
-#: src/widgets/properties_view.rs:309
+#: src/widgets/properties_view.rs:315
 msgid "{}\\u{202F}\\u{D7}\\u{202F}{}"
 msgstr "{}\\u{202F}\\u{D7}\\u{202F}{}"
 
 #. Translators: Shorthand for centimeter
-#: src/widgets/properties_view.rs:348
+#: src/widgets/properties_view.rs:354
 msgid " cm"
 msgstr " cm"
 
 #. Translators: Shorthand for inch
-#: src/widgets/properties_view.rs:352
+#: src/widgets/properties_view.rs:358
 msgid "″"
 msgstr "″"
 
 #. Translators: Shorthand for meter
-#: src/widgets/properties_view.rs:356
+#: src/widgets/properties_view.rs:362
 msgid " m"
 msgstr " m"
 
 #. Translators: Shorthand for millimeter
-#: src/widgets/properties_view.rs:360
+#: src/widgets/properties_view.rs:366
 msgid " mm"
 msgstr " mm"
 
 #. Translators: Shorthand for pica (unit)
-#: src/widgets/properties_view.rs:364
+#: src/widgets/properties_view.rs:370
 msgid " pc"
 msgstr " pc"
 
 #. Translators: Shorthand for pica (unit)
-#: src/widgets/properties_view.rs:368
+#: src/widgets/properties_view.rs:374
 msgid " pt"
 msgstr " pt"
 
-#: src/widgets/properties_view.rs:380
+#: src/widgets/properties_view.rs:386
 msgid "{}{}\\u{202F}\\u{D7}\\u{202F}{}{}"
 msgstr "{}{}\\u{202F}\\u{D7}\\u{202F}{}{}"
 
-#: src/widgets/properties_view.rs:397
+#: src/widgets/properties_view.rs:403
 msgid "{}\\u{202F}DPI"
 msgstr "{}\\u{202F}DPI"
 
-#: src/widgets/properties_view.rs:401
+#: src/widgets/properties_view.rs:407
 msgid "{}\\u{202F}DPI\\u{202F}\\u{D7}\\u{202F}{}\\u{202F}DPI"
 msgstr "{}\\u{202F}DPI\\u{202F}\\u{D7}\\u{202F}{}\\u{202F}DPI"
 
-#: src/widgets/properties_view.rs:429
+#: src/widgets/properties_view.rs:435
 msgid "Image Coordinates Copied"
 msgstr "Coordonatele imaginii copiate"
 
@@ -1073,6 +1115,14 @@ msgstr "Obiectiv"
 #: src/widgets/properties_view.ui:269
 msgid "Software"
 msgstr "Aplicația"
+
+#: src/widgets/properties_view.ui:279
+msgid "ICC Profile"
+msgstr "Profil ICC"
+
+#: src/widgets/properties_view.ui:289
+msgid "CICP"
+msgstr "CICP"
 
 #: src/widgets/window.rs:254
 msgid "Show Details"
