@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: po_gvfs-oc\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
 "POT-Creation-Date: 2026-07-20 19:42+0000\n"
-"PO-Revision-Date: 2026-07-26 12:49+0200\n"
+"PO-Revision-Date: 2026-07-30 19:17+0200\n"
 "Last-Translator: Quentin PAGÈS\n"
 "Language-Team: Tot En Òc\n"
 "Language: oc\n"
@@ -1101,9 +1101,8 @@ msgid "Maker, Model"
 msgstr "Fabricant, modèl"
 
 #: src/widgets/properties_view.ui:259
-#, fuzzy
 msgid "Lens"
-msgstr "Lens"
+msgstr "Objectiu"
 
 #: src/widgets/properties_view.ui:269
 msgid "Software"
