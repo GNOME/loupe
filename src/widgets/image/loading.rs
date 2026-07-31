@@ -302,7 +302,7 @@ impl imp::LpImage {
                 .editor(&mime_type.as_str().into())
             && LpEditWindow::REQUIRED_OPERATIONS
                 .iter()
-                .all(|x| supported_formats.operations.contains(x))
+                .all(|x| supported_formats.operations().contains(x))
         {
             self.editable.set(true);
             obj.notify_editable();
