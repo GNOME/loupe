@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2026-04-27 11:32+0000\n"
-"PO-Revision-Date: 2026-05-13 22:24+0300\n"
+"POT-Creation-Date: 2026-07-31 11:53+0000\n"
+"PO-Revision-Date: 2026-08-01 16:13+0300\n"
 "Last-Translator: Yuras Shumovich <shumovichy@gmail.com>\n"
 "Language-Team: Belarusian <i18n-bel-gnome@googlegroups.com>\n"
 "Language: be\n"
@@ -17,18 +17,18 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 3.8\n"
+"X-Generator: Poedit 3.9\n"
 
 #: data/org.gnome.Loupe.desktop.in.in:2
 #: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:32
-#: src/widgets/image_window.rs:880
+#: src/widgets/image_window.rs:879
 msgid "Image Viewer"
-msgstr "Праглядальнік выяў"
+msgstr "Праглядальнік відарысаў"
 
 #: data/org.gnome.Loupe.desktop.in.in:3
 #: data/org.gnome.Loupe.metainfo.xml.in.in:13
 msgid "View and edit images"
-msgstr "Прагляд і змяненне выяў"
+msgstr "Прагляд і змяненне відарысаў"
 
 #: data/org.gnome.Loupe.desktop.in.in:11
 msgid "Picture;Graphics;Loupe;"
@@ -36,10 +36,11 @@ msgstr "Picture;Graphics;Loupe;Выява;Відарыс;Малюнак;Граф
 
 #: data/org.gnome.Loupe.gschema.xml.in:6
 msgid "Show the image properties sidebar"
-msgstr "Паказаць бакавую панэль з уласцівасцямі выявы"
+msgstr "Паказаць бакавую панэль з уласцівасцямі відарыса"
 
 #. developer_name tag deprecated with Appstream 1.0
-#: data/org.gnome.Loupe.metainfo.xml.in.in:8 src/about.rs:35
+#: data/org.gnome.Loupe.metainfo.xml.in.in:8
+#: data/org.gnome.Loupe.metainfo.xml.in.in:10 src/about.rs:35
 msgid "The GNOME Project"
 msgstr "Праект GNOME"
 
@@ -48,8 +49,20 @@ msgid ""
 "Explore images, view their metadata, and make quick edits by cropping, "
 "rotating, or flipping them."
 msgstr ""
-"Агляд выяў, прагляд метаданых, хуткае рэдагаванне (абразанне, паварот, "
+"Агляд відарысаў, прагляд метаданых, хуткае рэдагаванне (абразанне, паварот, "
 "адлюстраванне)."
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:28
+msgid "Main Window"
+msgstr "Галоўнае акно"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:32
+msgid "Crop Tool"
+msgstr "Абразанне"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:36
+msgid "Image Properties Panel"
+msgstr "Панэль уласцівасцей відарыса"
 
 #: data/resources/shortcuts-dialog.ui:6
 msgctxt "shortcut window"
@@ -59,22 +72,22 @@ msgstr "Агульныя спалучэнні клавіш"
 #: data/resources/shortcuts-dialog.ui:9
 msgctxt "shortcut window"
 msgid "Copy Image or Selected Text to Clipboard"
-msgstr "Скапіяваць выяву або вылучаны тэкст у буфер абмену"
+msgstr "Скапіяваць відарыс або вылучаны тэкст у буфер абмену"
 
 #: data/resources/shortcuts-dialog.ui:15
 msgctxt "shortcut window"
 msgid "Move Image to Trash"
-msgstr "Перамясціць выяву ў сметніцу"
+msgstr "Перамясціць відарыс у сметніцу"
 
 #: data/resources/shortcuts-dialog.ui:21
 msgctxt "shortcut window"
 msgid "Permanently Delete Image"
-msgstr "Выдаліць выяву незваротна"
+msgstr "Выдаліць відарыс незваротна"
 
 #: data/resources/shortcuts-dialog.ui:27
 msgctxt "shortcut window"
 msgid "Open Image with Other App"
-msgstr "Адкрыць выяву праз іншую праграму"
+msgstr "Адкрыць відарыс праз іншую праграму"
 
 #: data/resources/shortcuts-dialog.ui:33
 msgctxt "shortcut window"
@@ -109,7 +122,7 @@ msgstr "Выйсці"
 #: data/resources/shortcuts-dialog.ui:71
 msgctxt "shortcut window"
 msgid "Navigate Images"
-msgstr "Пераходы да выяў"
+msgstr "Пераходы да відарысаў"
 
 #: data/resources/shortcuts-dialog.ui:75 data/resources/shortcuts-dialog.ui:89
 msgctxt "shortcut window"
@@ -124,17 +137,17 @@ msgstr "Папярэдняя выява"
 #: data/resources/shortcuts-dialog.ui:102
 msgctxt "shortcut window"
 msgid "First Image"
-msgstr "Да першай выявы"
+msgstr "Да першага відарыса"
 
 #: data/resources/shortcuts-dialog.ui:108
 msgctxt "shortcut window"
 msgid "Last Image"
-msgstr "Да апошняй выявы"
+msgstr "Да апошняга відарыса"
 
 #: data/resources/shortcuts-dialog.ui:116
 msgctxt "shortcut window"
 msgid "Rotate Image"
-msgstr "Паварот выявы"
+msgstr "Паварот відарыса"
 
 #: data/resources/shortcuts-dialog.ui:119
 #: data/resources/shortcuts-dialog.ui:253
@@ -221,7 +234,7 @@ msgstr "Выйсці з поўнаэкраннага рэжыму"
 #: data/resources/shortcuts-dialog.ui:212
 msgctxt "shortcut window"
 msgid "Toggle Image Properties"
-msgstr "Уласцівасці выявы"
+msgstr "Уласцівасці відарыса"
 
 #: data/resources/shortcuts-dialog.ui:218
 msgctxt "shortcut window"
@@ -282,43 +295,84 @@ msgid "Could not list other files in directory."
 msgstr "Не ўдалося скласці спіс іншых файлаў у каталогу."
 
 #. Translators: Display of the f-number <https://en.wikipedia.org/wiki/F-number>. {} will be replaced with the number
-#: src/metadata.rs:256
+#: src/metadata.rs:271
 msgid "\\u{192}\\u{2215}{}"
 msgstr "\\u{192}\\u{2215}{}"
 
 #. Translators: Fractional exposure time (photography) in seconds
-#: src/metadata.rs:269
+#: src/metadata.rs:284
 msgid "1\\u{2215}{}\\u{202F}s"
 msgstr "1\\u{2215}{}\\u{202F}с"
 
 #. Translators: Exposure time (photography) in seconds
-#: src/metadata.rs:277
+#: src/metadata.rs:292
 msgid "{}\\u{202F}s"
 msgstr "{}\\u{202F}с"
 
-#: src/metadata.rs:291
+#: src/metadata.rs:306
 msgid "{}\\u{202F}mm"
 msgstr "{}\\u{202F}мм"
 
 #. Translators: short for "north" in GPS coordinate
-#: src/metadata.rs:331
+#: src/metadata.rs:396
 msgid "N"
 msgstr "Пн"
 
 #. Translators: short for "south" in GPS coordinate
-#: src/metadata.rs:335
+#: src/metadata.rs:400
 msgid "S"
 msgstr "Пд"
 
 #. Translators: short for "east" in GPS coordinate
-#: src/metadata.rs:344
+#: src/metadata.rs:409
 msgid "E"
 msgstr "У"
 
 #. Translators: short for "west" in GPS coordinate
-#: src/metadata.rs:348
+#: src/metadata.rs:413
 msgid "W"
 msgstr "З"
+
+#: src/metadata.rs:493
+msgid "DCI P3"
+msgstr "DCI P3"
+
+#: src/metadata.rs:494
+msgid "Display P3"
+msgstr "Display P3"
+
+#: src/metadata.rs:495
+msgid "Rec.2020"
+msgstr "Rec.2020"
+
+#: src/metadata.rs:496
+msgid "sRGB"
+msgstr "sRGB"
+
+#: src/metadata.rs:497 src/metadata.rs:505
+msgid "Unspecified"
+msgstr "Не вызначана"
+
+#: src/metadata.rs:498 src/metadata.rs:507 src/metadata.rs:517
+#, rust-format
+msgid "Unknown ({})"
+msgstr "Невядома ({})"
+
+#: src/metadata.rs:504
+msgid "ICtCp"
+msgstr "ICtCp"
+
+#: src/metadata.rs:513
+msgid "DCI"
+msgstr "DCI"
+
+#: src/metadata.rs:514
+msgid "PQ"
+msgstr "PQ"
+
+#: src/metadata.rs:515
+msgid "Gamma 2.4"
+msgstr "Gamma 2.4"
 
 #. / Returns localized date + time format
 #. Translators: This is the date and time format we use in metadata output etc.
@@ -331,15 +385,15 @@ msgstr "%x %X"
 
 #: src/util.rs:182
 msgid "Failed to restore image from trash"
-msgstr "Не ўдалося аднавіць выяву са сметніцы"
+msgstr "Не ўдалося аднавіць відарыс са сметніцы"
 
 #: src/widgets/drag_overlay.ui:15
 msgid "Drop Image to View"
-msgstr "Перацягніце выяву на вобласць прагляду"
+msgstr "Перацягніце відарыс на вобласць прагляду"
 
 #: src/widgets/edit/crop.rs:363
 msgid "Failed to Edit Image"
-msgstr "Не ўдалося адрэдагаваць выяву"
+msgstr "Не ўдалося адрэдагаваць відарыс"
 
 #: src/widgets/edit/crop.ui:6
 msgid "Free"
@@ -447,7 +501,7 @@ msgid "Crop Selection"
 msgstr "Абрэзаць вылучанае"
 
 #. Translators: Filename suffix, {} is replaced by a number
-#: src/widgets/edit_window.rs:196
+#: src/widgets/edit_window.rs:199
 #, rust-format
 msgid " (Edited)"
 msgid_plural " (Edited {})"
@@ -455,25 +509,57 @@ msgstr[0] " (зменены {})"
 msgstr[1] " (зменена {})"
 msgstr[2] " (зменена {})"
 
-#: src/widgets/edit_window.rs:290 src/widgets/edit_window.rs:316
+#: src/widgets/edit_window.rs:283
+msgid "Moving Original to Trash"
+msgstr "Перамясціць зыходны відарыс у сметніцу"
+
+#: src/widgets/edit_window.rs:297 src/widgets/edit_window.rs:326
 msgid "Failed to save image."
-msgstr "Не ўдалося захаваць выяву."
+msgstr "Не ўдалося захаваць відарыс."
 
-#: src/widgets/edit_window.rs:344
+#: src/widgets/edit_window.rs:306
+msgid "Finalizing Save Operation"
+msgstr "Завяршэнне аперацыі захавання"
+
+#: src/widgets/edit_window.rs:357
 msgid "Editing Image"
-msgstr "Рэдагаванне выявы"
+msgstr "Рэдагаванне відарыса"
 
-#: src/widgets/edit_window.rs:361
+#: src/widgets/edit_window.rs:374
 msgid "Failed to edit image."
-msgstr "Не ўдалося адрэдагаваць выяву."
+msgstr "Не ўдалося адрэдагаваць відарыс."
 
-#: src/widgets/edit_window.rs:371 src/widgets/edit_window.rs:394
-msgid "Failed to Save Image"
-msgstr "Не ўдалося захаваць выяву"
-
-#: src/widgets/edit_window.rs:377
+#: src/widgets/edit_window.rs:381
 msgid "Saving Image"
-msgstr "Захаванне выявы"
+msgstr "Захаванне відарыса"
+
+#: src/widgets/edit_window.rs:400
+msgid "Failed to Save Image"
+msgstr "Не ўдалося захаваць відарыс"
+
+#: src/widgets/edit_window.rs:515
+msgid "Save Changes?"
+msgstr "Захаваць змены?"
+
+#: src/widgets/edit_window.rs:517
+msgid ""
+"There are unsaved image editing changes. Closing without saving will "
+"permanently lose these modifications."
+msgstr ""
+"Маюцца незахаваныя змены. Калі закрыць відарыс без захавання, змены будуць "
+"незваротна страчаны."
+
+#: src/widgets/edit_window.rs:521 src/widgets/image_window.rs:700
+msgid "Cancel"
+msgstr "Скасаваць"
+
+#: src/widgets/edit_window.rs:522
+msgid "Discard"
+msgstr "Не захоўваць"
+
+#: src/widgets/edit_window.rs:523
+msgid "Save"
+msgstr "Захаваць"
 
 #: src/widgets/edit_window.ui:64
 msgid "_Cancel"
@@ -518,9 +604,9 @@ msgid ""
 "image. Please include this information when you report an error. If "
 "possible, please also provide the image that causes the issue."
 msgstr ""
-"Падчас загрузкі выявы сродак загрузкі выяў паведаміў наступную інфармацыю. "
-"Уключыце яе ў справаздачу, калі будзеце паведамляць аб праблеме. Калі "
-"магчыма, дадайце і выяву, якая выклікае праблему."
+"Падчас загрузкі відарыса сродак загрузкі відарысаў паведаміў наступную "
+"інфармацыю. Уключыце яе ў справаздачу, калі будзеце паведамляць аб праблеме. "
+"Калі магчыма, дадайце і відарыс, які выклікае праблему."
 
 #: src/widgets/error_details.ui:24
 msgid "Error Message"
@@ -540,32 +626,32 @@ msgid ""
 "No image loaders available. Maybe the “glycin-loaders” package with "
 "compatibility version “{}” is not installed."
 msgstr ""
-"Адсутнічаюць сродкі загрузкі выяў. Магчыма не ўсталяваны пакет «glycin-"
+"Адсутнічаюць сродкі загрузкі відарысаў. Магчыма не ўсталяваны пакет «glycin-"
 "loaders» сумяшчальнай версіі «{}» ."
 
 #: src/widgets/image_page.rs:243
 #, rust-format
 msgid "The image format “{} ({})” is known but not installed."
-msgstr "Фармат выявы «{} ({})» вядомы, але не ўсталяваны."
+msgstr "Фармат відарыса «{} ({})» вядомы, але не ўсталяваны."
 
 #: src/widgets/image_page.rs:251
 #, rust-format
 msgid "Unknown image format “{} ({}).”"
-msgstr "Невядомы фармат выявы «{} ({}).»"
+msgstr "Невядомы фармат відарыса «{} ({}).»"
 
 #: src/widgets/image_page.rs:260
 msgid "There is not enough free memory available to load this image."
-msgstr "Недастаткова свабоднай памяці, каб загрузіць выяву."
+msgstr "Недастаткова свабоднай памяці, каб загрузіць відарыс."
 
 #: src/widgets/image_page.rs:267
 #, rust-format
 msgid "Failed to load image file: {}"
-msgstr "Не ўдалося загрузіць выяву: {}"
+msgstr "Не ўдалося загрузіць відарыс: {}"
 
 #: src/widgets/image_page.rs:272
 msgid "Either the image file is corrupted or it contains unsupported elements."
 msgstr ""
-"Файл выявы пашкоджаны або ўтрымлівае элементы, якія не падтрымліваюцца."
+"Файл відарыса пашкоджаны або ўтрымлівае элементы, якія не падтрымліваюцца."
 
 #: src/widgets/image_page.ui:6 src/widgets/image_window.ui:16
 msgid "_Open With…"
@@ -589,7 +675,7 @@ msgstr "_Скапіяваць"
 
 #: src/widgets/image_page.ui:63
 msgid "Could not Load Image"
-msgstr "Не ўдалося загрузіць выяву"
+msgstr "Не ўдалося загрузіць відарыс"
 
 #: src/widgets/image_page.ui:71
 msgid "More _Information"
@@ -649,54 +735,50 @@ msgstr "Уласны ўзровень маштабавання"
 msgid "Zoom to Specified Level"
 msgstr "Маштабаваць да вызначанага ўзроўню"
 
-#: src/widgets/image_window.rs:510
+#: src/widgets/image_window.rs:509
 msgid "Supported image formats"
-msgstr "Вядомыя фарматы выяў"
+msgstr "Вядомыя фарматы відарысаў"
 
-#: src/widgets/image_window.rs:516
+#: src/widgets/image_window.rs:515
 msgid "All files"
 msgstr "Усе файлы"
 
-#: src/widgets/image_window.rs:523
+#: src/widgets/image_window.rs:522
 msgid "Open Image"
-msgstr "Адкрыць выяву"
+msgstr "Адкрыць відарыс"
 
-#: src/widgets/image_window.rs:615
+#: src/widgets/image_window.rs:614
 msgid "Image copied to clipboard"
-msgstr "Выява скапіявана ў буфер абмену"
+msgstr "Відарыс скапіяваны ў буфер абмену"
+
+#: src/widgets/image_window.rs:635
+msgid "Image moved to trash"
+msgstr "Відарыс перамешчаны ў сметніцу"
 
 #: src/widgets/image_window.rs:636
-msgid "Image moved to trash"
-msgstr "Выява перамешчана ў сметніцу"
-
-#: src/widgets/image_window.rs:637
 msgid "Undo"
 msgstr "Адрабіць"
 
-#: src/widgets/image_window.rs:667
+#: src/widgets/image_window.rs:666
 msgid "Failed to move image to trash"
-msgstr "Не ўдалося перамясціць выяву ў сметніцу"
+msgstr "Не ўдалося перамясціць відарыс у сметніцу"
 
-#: src/widgets/image_window.rs:691
+#: src/widgets/image_window.rs:690
 msgid "Permanently Delete Image?"
-msgstr "Выдаліць выяву незваротна?"
+msgstr "Выдаліць відарыс незваротна?"
 
-#: src/widgets/image_window.rs:693
+#: src/widgets/image_window.rs:692
 #, rust-format
 msgid "After deleting the image “{}” it will be permanently lost."
-msgstr "Пры выдаленні выявы «{}», яна будзе страчана назаўсёды."
+msgstr "Пры выдаленні відарыса «{}», ён будзе незваротна страчаны."
 
 #: src/widgets/image_window.rs:701
-msgid "Cancel"
-msgstr "Скасаваць"
-
-#: src/widgets/image_window.rs:702
 msgid "Delete"
 msgstr "Выдаліць"
 
-#: src/widgets/image_window.rs:713
+#: src/widgets/image_window.rs:712
 msgid "Failed to delete image"
-msgstr "Не ўдалося выдаліць выяву"
+msgstr "Не ўдалося выдаліць відарыс"
 
 #: src/widgets/image_window.ui:6
 msgid "_New Window"
@@ -728,19 +810,19 @@ msgstr "Галоўнае меню"
 
 #: src/widgets/image_window.ui:125
 msgid "Image Properties"
-msgstr "Уласцівасці выявы"
+msgstr "Уласцівасці відарыса"
 
 #: src/widgets/image_window.ui:132
 msgid "Edit Image"
-msgstr "Рэдагаваць выяву"
+msgstr "Рэдагаваць відарыс"
 
 #: src/widgets/image_window.ui:220
 msgid "View and Edit Images"
-msgstr "Прагляд і змяненне выяў"
+msgstr "Прагляд і змяненне відарысаў"
 
 #: src/widgets/image_window.ui:221
 msgid "Drag and drop images here"
-msgstr "Перацягніце выявы сюды"
+msgstr "Перацягніце відарысы сюды"
 
 #: src/widgets/image_window.ui:225
 msgid "_Open Files…"
@@ -782,24 +864,24 @@ msgid "px"
 msgstr "пікселі"
 
 #. Translators: {} is a placeholder for the filename
-#: src/widgets/print.rs:364
+#: src/widgets/print.rs:366
 #, rust-format
 msgid "Print “{}”"
 msgstr "Друк «{}»"
 
-#: src/widgets/print.rs:477
+#: src/widgets/print.rs:473
 msgid "Continue…"
 msgstr "Працягнуць…"
 
-#: src/widgets/print.rs:478
+#: src/widgets/print.rs:474
 msgid "Print Image"
-msgstr "Друк выявы"
+msgstr "Друк відарыса"
 
-#: src/widgets/print.rs:797
+#: src/widgets/print.rs:802
 msgid "_Scale"
 msgstr "_Маштаб"
 
-#: src/widgets/print.rs:800
+#: src/widgets/print.rs:805
 msgid "_Width"
 msgstr "_Шырыня"
 
@@ -850,11 +932,11 @@ msgstr "_Вертыкальны"
 
 #: src/widgets/print.ui:142 src/widgets/properties_view.ui:56
 msgid "Image Size"
-msgstr "Памер выявы"
+msgstr "Памер відарыса"
 
 #: src/widgets/print.ui:145
 msgid "Image Size Units"
-msgstr "Адзінкі памеру выявы"
+msgstr "Адзінкі памеру відарыса"
 
 #: src/widgets/print.ui:163
 msgid "_Fill Space"
@@ -864,32 +946,77 @@ msgstr "Запаўненне _прасторы"
 msgid "H_eight"
 msgstr "В_ышыня"
 
-#: src/widgets/properties_view.rs:258
+#: src/widgets/properties_view.rs:284
 msgid "Unknown"
 msgstr "Невядома"
 
 #. Translators: Addition of image being transparent to format name
-#: src/widgets/properties_view.rs:262
+#: src/widgets/properties_view.rs:288
 msgid ", transparent"
 msgstr ", празрыстасць"
 
 #. Translators: Addition of image being grayscale to format name
-#: src/widgets/properties_view.rs:267
+#: src/widgets/properties_view.rs:293
 msgid ", grayscale"
 msgstr ", градацыі шэрага"
 
 #. Translators: Addition of bit size to format name
-#: src/widgets/properties_view.rs:272
+#: src/widgets/properties_view.rs:298
 msgid ", {}\\u{202F}bit"
 msgstr ", {}\\u{202F}біт"
 
-#: src/widgets/properties_view.rs:290
+#: src/widgets/properties_view.rs:315
 msgid "{}\\u{202F}\\u{D7}\\u{202F}{}"
 msgstr "{}\\u{202F}\\u{D7}\\u{202F}{}"
 
-#: src/widgets/properties_view.rs:326
+#. Translators: Shorthand for centimeter
+#: src/widgets/properties_view.rs:354
+msgid " cm"
+msgstr "см"
+
+#. Translators: Shorthand for inch
+#: src/widgets/properties_view.rs:358
+msgid "″"
+msgstr "″"
+
+#. Translators: Shorthand for meter
+#: src/widgets/properties_view.rs:362
+msgid " m"
+msgstr "м"
+
+#. Translators: Shorthand for millimeter
+#: src/widgets/properties_view.rs:366
+msgid " mm"
+msgstr "мм"
+
+#. Translators: Shorthand for pica (unit)
+#: src/widgets/properties_view.rs:370
+msgid " pc"
+msgstr "пк"
+
+#. Translators: Shorthand for pica (unit)
+#: src/widgets/properties_view.rs:374
+msgid " pt"
+msgstr "пт"
+
+#: src/widgets/properties_view.rs:386
+#| msgid "{}\\u{202F}\\u{D7}\\u{202F}{}"
+msgid "{}{}\\u{202F}\\u{D7}\\u{202F}{}{}"
+msgstr "{}{}\\u{202F}\\u{D7}\\u{202F}{}{}"
+
+#: src/widgets/properties_view.rs:403
+#| msgid "{}\\u{202F}s"
+msgid "{}\\u{202F}DPI"
+msgstr "{}\\u{202F}DPI"
+
+#: src/widgets/properties_view.rs:407
+#| msgid "{}\\u{202F}\\u{D7}\\u{202F}{}"
+msgid "{}\\u{202F}DPI\\u{202F}\\u{D7}\\u{202F}{}\\u{202F}DPI"
+msgstr "{}\\u{202F}DPI\\u{202F}\\u{D7}\\u{202F}{}\\u{202F}DPI"
+
+#: src/widgets/properties_view.rs:435
 msgid "Image Coordinates Copied"
-msgstr "Каардынаты выявы скапіяваны"
+msgstr "Каардынаты відарыса скапіяваны"
 
 #: src/widgets/properties_view.ui:20
 msgid "Folder"
@@ -904,64 +1031,96 @@ msgid "URI"
 msgstr "URI"
 
 #: src/widgets/properties_view.ui:66
-msgid "Image Format"
-msgstr "Фармат выявы"
+msgid "Physical Size"
+msgstr "Фізічны памер"
 
 #: src/widgets/properties_view.ui:76
+msgid "Resolution"
+msgstr "Раздзяляльнасць"
+
+#: src/widgets/properties_view.ui:86
+msgid "Image Format"
+msgstr "Фармат відарыса"
+
+#: src/widgets/properties_view.ui:96
 msgid "File Size"
 msgstr "Памер файла"
 
-#: src/widgets/properties_view.ui:90
+#: src/widgets/properties_view.ui:110
 msgid "File Created"
 msgstr "Файл створаны"
 
-#: src/widgets/properties_view.ui:100
+#: src/widgets/properties_view.ui:120
 msgid "File Modified"
 msgstr "Файл зменены"
 
 # gps каардынаты, дзе зроблена фота
 #. Translators: This is a label for GPS coordinates
-#: src/widgets/properties_view.ui:114
+#: src/widgets/properties_view.ui:134
 msgid "Location"
 msgstr "Месцазнаходжанне"
 
-#: src/widgets/properties_view.ui:125
+#: src/widgets/properties_view.ui:145
 msgid "Copy Coordinates"
 msgstr "Скапіяваць каардынаты"
 
-#: src/widgets/properties_view.ui:136
+#: src/widgets/properties_view.ui:156
 msgid "Open Location"
 msgstr "Адкрыць месцазнаходжанне"
 
-#: src/widgets/properties_view.ui:149
+#: src/widgets/properties_view.ui:169
 msgid "Originally Created"
 msgstr "Першапачаткова створана"
 
-#: src/widgets/properties_view.ui:159
+#: src/widgets/properties_view.ui:179
+msgid "Creator"
+msgstr "Стваральнік"
+
+#: src/widgets/properties_view.ui:189
+msgid "Copyright"
+msgstr "Аўтарскае права"
+
+#: src/widgets/properties_view.ui:199
 msgid "Comment"
 msgstr "Каментарый"
 
-#: src/widgets/properties_view.ui:169
+#: src/widgets/properties_view.ui:209
 msgid "Aperture"
 msgstr "Дыяфрагма"
 
-#: src/widgets/properties_view.ui:179
+#: src/widgets/properties_view.ui:219
 msgid "Exposure"
 msgstr "Экспазіцыя"
 
-#: src/widgets/properties_view.ui:189
+#: src/widgets/properties_view.ui:229
 msgid "ISO"
 msgstr "ISO"
 
-#: src/widgets/properties_view.ui:199
+#: src/widgets/properties_view.ui:239
 msgid "Focal Length"
 msgstr "Фокусная адлегласць"
 
-#: src/widgets/properties_view.ui:209
+#: src/widgets/properties_view.ui:249
 msgid "Maker, Model"
 msgstr "Вытворца, мадэль"
 
-#: src/widgets/window.rs:225
+#: src/widgets/properties_view.ui:259
+msgid "Lens"
+msgstr "Аб'ектыў"
+
+#: src/widgets/properties_view.ui:269
+msgid "Software"
+msgstr "Прагр. забеспячэнне"
+
+#: src/widgets/properties_view.ui:279
+msgid "ICC Profile"
+msgstr "Профіль ICC"
+
+#: src/widgets/properties_view.ui:289
+msgid "CICP"
+msgstr "CICP"
+
+#: src/widgets/window.rs:254
 msgid "Show Details"
 msgstr "Паказаць падрабязнасці"
 
@@ -983,9 +1142,6 @@ msgstr "Паказаць падрабязнасці"
 #~ msgctxt "shortcut window"
 #~ msgid "Gestures"
 #~ msgstr "Жэсты"
-
-#~ msgid "{} %"
-#~ msgstr "{} %"
 
 #~ msgid "Copy to Clipboard"
 #~ msgstr "Скапіяваць у буфер абмену"
