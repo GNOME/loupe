@@ -6,8 +6,8 @@
 msgid ""
 msgstr "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2026-01-30 22:01+0000\n"
-"PO-Revision-Date: 2026-02-16 18:54+0000\n"
+"POT-Creation-Date: 2026-07-31 11:53+0000\n"
+"PO-Revision-Date: 2026-08-02 18:54+0000\n"
 "Last-Translator: Asier Saratsua Garmendia <asiersarasua@ni.eus>\n"
 "Language-Team: Basque <librezale@librezale.eus>\n"
 "Language: eu\n"
@@ -18,13 +18,12 @@ msgstr "Project-Id-Version: Loupe main\n"
 
 #: data/org.gnome.Loupe.desktop.in.in:2
 #: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:32
-#: src/widgets/image_window.rs:897
+#: src/widgets/image_window.rs:879
 msgid "Image Viewer"
 msgstr "Irudi-ikustailea"
 
 #: data/org.gnome.Loupe.desktop.in.in:3
 #: data/org.gnome.Loupe.metainfo.xml.in.in:13
-#| msgid "View images"
 msgid "View and edit images"
 msgstr "Ikusi eta editatu irudiak"
 
@@ -37,7 +36,8 @@ msgid "Show the image properties sidebar"
 msgstr "Erakutsi irudiaren propietateen alboko barran"
 
 #. developer_name tag deprecated with Appstream 1.0
-#: data/org.gnome.Loupe.metainfo.xml.in.in:8 src/about.rs:35
+#: data/org.gnome.Loupe.metainfo.xml.in.in:8
+#: data/org.gnome.Loupe.metainfo.xml.in.in:10 src/about.rs:35
 msgid "The GNOME Project"
 msgstr "GNOME proiektua"
 
@@ -46,6 +46,18 @@ msgid ""
 "Explore images, view their metadata, and make quick edits by cropping, "
 "rotating, or flipping them."
 msgstr "Arakatu irudiak, ikusi bere metadatuak eta egin aldaketa azkarrak: moztu, biratu, irauli."
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:28
+msgid "Main Window"
+msgstr "Leiho nagusia"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:32
+msgid "Crop Tool"
+msgstr "Mozte-tresna"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:36
+msgid "Image Properties Panel"
+msgstr "Irudi-propietateen panela"
 
 #: data/resources/shortcuts-dialog.ui:6
 msgctxt "shortcut window"
@@ -278,43 +290,84 @@ msgid "Could not list other files in directory."
 msgstr "Ezin dira direktorioko beste fitxategiak zerrendatu."
 
 #. Translators: Display of the f-number <https://en.wikipedia.org/wiki/F-number>. {} will be replaced with the number
-#: src/metadata.rs:256
+#: src/metadata.rs:271
 msgid "\\u{192}\\u{2215}{}"
 msgstr "\\u{192}\\u{2215}{}"
 
 #. Translators: Fractional exposure time (photography) in seconds
-#: src/metadata.rs:269
+#: src/metadata.rs:284
 msgid "1\\u{2215}{}\\u{202F}s"
 msgstr "1\\u{2215}{}\\u{202F}s"
 
 #. Translators: Exposure time (photography) in seconds
-#: src/metadata.rs:277
+#: src/metadata.rs:292
 msgid "{}\\u{202F}s"
 msgstr "{}\\u{202F}s"
 
-#: src/metadata.rs:291
+#: src/metadata.rs:306
 msgid "{}\\u{202F}mm"
 msgstr "{}\\u{202F}mm"
 
 #. Translators: short for "north" in GPS coordinate
-#: src/metadata.rs:331
+#: src/metadata.rs:396
 msgid "N"
 msgstr "I"
 
 #. Translators: short for "south" in GPS coordinate
-#: src/metadata.rs:335
+#: src/metadata.rs:400
 msgid "S"
 msgstr "I"
 
 #. Translators: short for "east" in GPS coordinate
-#: src/metadata.rs:344
+#: src/metadata.rs:409
 msgid "E"
 msgstr "E"
 
 #. Translators: short for "west" in GPS coordinate
-#: src/metadata.rs:348
+#: src/metadata.rs:413
 msgid "W"
 msgstr "A"
+
+#: src/metadata.rs:493
+msgid "DCI P3"
+msgstr "DCI P3"
+
+#: src/metadata.rs:494
+msgid "Display P3"
+msgstr "Display P3"
+
+#: src/metadata.rs:495
+msgid "Rec.2020"
+msgstr "Rec.2020"
+
+#: src/metadata.rs:496
+msgid "sRGB"
+msgstr "sRGB"
+
+#: src/metadata.rs:497 src/metadata.rs:505
+msgid "Unspecified"
+msgstr "Zehaztu gabea"
+
+#: src/metadata.rs:498 src/metadata.rs:507 src/metadata.rs:517
+#, rust-format
+msgid "Unknown ({})"
+msgstr "Ezezaguna ({})"
+
+#: src/metadata.rs:504
+msgid "ICtCp"
+msgstr "ICtCp"
+
+#: src/metadata.rs:513
+msgid "DCI"
+msgstr "DCI"
+
+#: src/metadata.rs:514
+msgid "PQ"
+msgstr "PQ"
+
+#: src/metadata.rs:515
+msgid "Gamma 2.4"
+msgstr "Gamma 2.4"
 
 #. / Returns localized date + time format
 #. Translators: This is the date and time format we use in metadata output etc.
@@ -443,32 +496,62 @@ msgid "Crop Selection"
 msgstr "Moztu hautapena"
 
 #. Translators: Filename suffix, {} is replaced by a number
-#: src/widgets/edit_window.rs:195
+#: src/widgets/edit_window.rs:199
 #, rust-format
 msgid " (Edited)"
 msgid_plural " (Edited {})"
 msgstr[0] " (Editatua)"
 msgstr[1] " (Editatua {})"
 
-#: src/widgets/edit_window.rs:289 src/widgets/edit_window.rs:315
+#: src/widgets/edit_window.rs:283
+msgid "Moving Original to Trash"
+msgstr "Eraman jatorrizkoa zakarrontzira"
+
+#: src/widgets/edit_window.rs:297 src/widgets/edit_window.rs:326
 msgid "Failed to save image."
 msgstr "Huts egin du irudia gordetzeak."
 
-#: src/widgets/edit_window.rs:343
+#: src/widgets/edit_window.rs:306
+msgid "Finalizing Save Operation"
+msgstr "Gordetze-eragiketa amaitzen"
+
+#: src/widgets/edit_window.rs:357
 msgid "Editing Image"
 msgstr "Irudia editatzen"
 
-#: src/widgets/edit_window.rs:360
+#: src/widgets/edit_window.rs:374
 msgid "Failed to edit image."
 msgstr "Huts egin du irudia editatzeak."
 
-#: src/widgets/edit_window.rs:370 src/widgets/edit_window.rs:393
+#: src/widgets/edit_window.rs:381
+msgid "Saving Image"
+msgstr "Irudia gordetzen"
+
+#: src/widgets/edit_window.rs:400
 msgid "Failed to Save Image"
 msgstr "Huts egin du irudia gordetzeak"
 
-#: src/widgets/edit_window.rs:376
-msgid "Saving Image"
-msgstr "Irudia gordetzen"
+#: src/widgets/edit_window.rs:515
+msgid "Save Changes?"
+msgstr "Gorde aldaketak?"
+
+#: src/widgets/edit_window.rs:517
+msgid ""
+"There are unsaved image editing changes. Closing without saving will "
+"permanently lose these modifications."
+msgstr "Gorde gabeko edizio-aldaketak daude irudian. Gorde gabe ixten bada, aldaketa horiek betiko galduko dira."
+
+#: src/widgets/edit_window.rs:521 src/widgets/image_window.rs:700
+msgid "Cancel"
+msgstr "Utzi"
+
+#: src/widgets/edit_window.rs:522
+msgid "Discard"
+msgstr "Baztertu"
+
+#: src/widgets/edit_window.rs:523
+msgid "Save"
+msgstr "Gorde"
 
 #: src/widgets/edit_window.ui:64
 msgid "_Cancel"
@@ -498,7 +581,7 @@ msgstr "Jatorrizko irudia zakarrontzira botako da"
 msgid ""
 "The following error occurred. If you think this is an issue with the "
 "program, please include this information when you report the error."
-msgstr "Errore bat gertatu da. Programak duen akats bat dela uste baduzu, sartu informazio hau errorea jakinarazten duzunean."
+msgstr "Erroreak gertatu dira. Programaren arazo bat dela uste baduzu, erantsi informazio hau errorea jakinarazten duzunean."
 
 #: src/widgets/error_details.ui:4
 msgid "Error Details"
@@ -509,7 +592,7 @@ msgid ""
 "The image loader reported the following when trying to load or edit the "
 "image. Please include this information when you report an error. If "
 "possible, please also provide the image that causes the issue."
-msgstr "Irudi-kargatzaileak hurrengo mezua eman du irudia kargatzean. Sartu informazio hori errorea jakinarazten duzunean. Posible bada, bidali arazoa sortu duen irudia ere."
+msgstr "Irudi-kargatzaileak honakoa jakinarazi du irudia kargatzean edo editatzean: Erantsi informazio hau akats bat jakinaraztean. Posible bada, gehitu arazoa sortu duen irudia ere."
 
 #: src/widgets/error_details.ui:24
 msgid "Error Message"
@@ -528,7 +611,7 @@ msgstr "Jakinarazi _arazoa"
 msgid ""
 "No image loaders available. Maybe the “glycin-loaders” package with "
 "compatibility version “{}” is not installed."
-msgstr "Ez dago irudi-kargatzailerik erabilgarri. Agian ez dago instalatuta “glycin-loaders” paketea “{}” bateragarritasun-bertsioarekin."
+msgstr "Ez dago irudi-kargatzailerik erabilgarri. Agian “{}” bateragarritasun-bertsioko “glycin-loaders” paketea ez dago instalatuta."
 
 #: src/widgets/image_page.rs:243
 #, rust-format
@@ -546,7 +629,6 @@ msgstr "EEz dago nahikoa memoriarik irudia kargatzeko."
 
 #: src/widgets/image_page.rs:267
 #, rust-format
-#| msgid "Failed to read image file information"
 msgid "Failed to load image file: {}"
 msgstr "Huts egin du irudi-fitxategia kargatzeak: {}"
 
@@ -636,52 +718,48 @@ msgstr "Zoomaren maila pertsonalizatua"
 msgid "Zoom to Specified Level"
 msgstr "Zooma zehaztutako mailan"
 
-#: src/widgets/image_window.rs:527
+#: src/widgets/image_window.rs:509
 msgid "Supported image formats"
 msgstr "Onartutako irudi-formatuak"
 
-#: src/widgets/image_window.rs:533
+#: src/widgets/image_window.rs:515
 msgid "All files"
 msgstr "Fitxategi denak"
 
-#: src/widgets/image_window.rs:540
+#: src/widgets/image_window.rs:522
 msgid "Open Image"
 msgstr "Ireki irudia"
 
-#: src/widgets/image_window.rs:632
+#: src/widgets/image_window.rs:614
 msgid "Image copied to clipboard"
 msgstr "Irudia arbelean kopiatu da"
 
-#: src/widgets/image_window.rs:653
+#: src/widgets/image_window.rs:635
 msgid "Image moved to trash"
 msgstr "Irudia zakarrontzira eraman da"
 
-#: src/widgets/image_window.rs:654
+#: src/widgets/image_window.rs:636
 msgid "Undo"
 msgstr "Desegin"
 
-#: src/widgets/image_window.rs:684
+#: src/widgets/image_window.rs:666
 msgid "Failed to move image to trash"
 msgstr "Huts egin du irudia zakarrontzira botatzeak"
 
-#: src/widgets/image_window.rs:708
+#: src/widgets/image_window.rs:690
 msgid "Permanently Delete Image?"
 msgstr "Irudia betiko ezabatu?"
 
-#: src/widgets/image_window.rs:710
+#: src/widgets/image_window.rs:692
 #, rust-format
 msgid "After deleting the image “{}” it will be permanently lost."
 msgstr "“{}” irudia ezabatzean, betiko galduko da."
 
-#: src/widgets/image_window.rs:718
-msgid "Cancel"
-msgstr "Utzi"
-
-#: src/widgets/image_window.rs:719
+#: src/widgets/image_window.rs:701
 msgid "Delete"
 msgstr "Ezabatu"
 
-#: src/widgets/image_window.rs:730
+#: src/widgets/image_window.rs:712
 msgid "Failed to delete image"
 msgstr "Huts egin du irudia ezabatzeak"
 
@@ -722,7 +800,6 @@ msgid "Edit Image"
 msgstr "Editatu irudia"
 
 #: src/widgets/image_window.ui:220
-#| msgid "View Images"
 msgid "View and Edit Images"
 msgstr "Ikusi eta editatu irudiak"
 
@@ -770,24 +847,24 @@ msgid "px"
 msgstr "px"
 
 #. Translators: {} is a placeholder for the filename
-#: src/widgets/print.rs:364
+#: src/widgets/print.rs:366
 #, rust-format
 msgid "Print “{}”"
 msgstr "Inprimatu “{}”"
 
-#: src/widgets/print.rs:477
+#: src/widgets/print.rs:473
 msgid "Continue…"
 msgstr "Jarraitu…"
 
-#: src/widgets/print.rs:478
+#: src/widgets/print.rs:474
 msgid "Print Image"
 msgstr "Inprimatu irudia"
 
-#: src/widgets/print.rs:797
+#: src/widgets/print.rs:802
 msgid "_Scale"
 msgstr "_Eskala"
 
-#: src/widgets/print.rs:800
+#: src/widgets/print.rs:805
 msgid "_Width"
 msgstr "_Zabalera"
 
@@ -852,30 +929,72 @@ msgstr "Bete e_spazioa"
 msgid "H_eight"
 msgstr "_Altuera"
 
-#: src/widgets/properties_view.rs:258
+#: src/widgets/properties_view.rs:284
 msgid "Unknown"
 msgstr "Ezezaguna"
 
 #. Translators: Addition of image being transparent to format name
-#: src/widgets/properties_view.rs:262
+#: src/widgets/properties_view.rs:288
 msgid ", transparent"
 msgstr ", gardena"
 
 #. Translators: Addition of image being grayscale to format name
-#: src/widgets/properties_view.rs:267
+#: src/widgets/properties_view.rs:293
 msgid ", grayscale"
 msgstr ", gris-eskala"
 
 #. Translators: Addition of bit size to format name
-#: src/widgets/properties_view.rs:272
+#: src/widgets/properties_view.rs:298
 msgid ", {}\\u{202F}bit"
 msgstr ", {}\\u{202F}bit"
 
-#: src/widgets/properties_view.rs:290
+#: src/widgets/properties_view.rs:315
 msgid "{}\\u{202F}\\u{D7}\\u{202F}{}"
 msgstr "{}\\u{202F}\\u{D7}\\u{202F}{}"
 
-#: src/widgets/properties_view.rs:326
+#. Translators: Shorthand for centimeter
+#: src/widgets/properties_view.rs:354
+msgid " cm"
+msgstr " cm"
+
+#. Translators: Shorthand for inch
+#: src/widgets/properties_view.rs:358
+msgid "″"
+msgstr "″"
+
+#. Translators: Shorthand for meter
+#: src/widgets/properties_view.rs:362
+msgid " m"
+msgstr " m"
+
+#. Translators: Shorthand for millimeter
+#: src/widgets/properties_view.rs:366
+msgid " mm"
+msgstr " mm"
+
+#. Translators: Shorthand for pica (unit)
+#: src/widgets/properties_view.rs:370
+msgid " pc"
+msgstr " pc"
+
+#. Translators: Shorthand for pica (unit)
+#: src/widgets/properties_view.rs:374
+msgid " pt"
+msgstr " pt"
+
+#: src/widgets/properties_view.rs:386
+msgid "{}{}\\u{202F}\\u{D7}\\u{202F}{}{}"
+msgstr "{}{}\\u{202F}\\u{D7}\\u{202F}{}{}"
+
+#: src/widgets/properties_view.rs:403
+msgid "{}\\u{202F}DPI"
+msgstr "{}\\u{202F}DPI"
+
+#: src/widgets/properties_view.rs:407
+msgid "{}\\u{202F}DPI\\u{202F}\\u{D7}\\u{202F}{}\\u{202F}DPI"
+msgstr "{}\\u{202F}DPI\\u{202F}\\u{D7}\\u{202F}{}\\u{202F}DPI"
+
+#: src/widgets/properties_view.rs:435
 msgid "Image Coordinates Copied"
 msgstr "Irudi-koordenatuak kopiatu dira"
 
@@ -892,63 +1011,95 @@ msgid "URI"
 msgstr "URIa"
 
 #: src/widgets/properties_view.ui:66
+msgid "Physical Size"
+msgstr "Tamaina fisikoa"
+
+#: src/widgets/properties_view.ui:76
+msgid "Resolution"
+msgstr "Bereizmena"
+
+#: src/widgets/properties_view.ui:86
 msgid "Image Format"
 msgstr "Irudiaren formatua"
 
-#: src/widgets/properties_view.ui:76
+#: src/widgets/properties_view.ui:96
 msgid "File Size"
 msgstr "Fitxategiaren tamaina"
 
-#: src/widgets/properties_view.ui:90
+#: src/widgets/properties_view.ui:110
 msgid "File Created"
 msgstr "Sorrera-data"
 
-#: src/widgets/properties_view.ui:100
+#: src/widgets/properties_view.ui:120
 msgid "File Modified"
 msgstr "Aldaketa-data"
 
 #. Translators: This is a label for GPS coordinates
-#: src/widgets/properties_view.ui:114
+#: src/widgets/properties_view.ui:134
 msgid "Location"
 msgstr "Kokalekua"
 
-#: src/widgets/properties_view.ui:125
+#: src/widgets/properties_view.ui:145
 msgid "Copy Coordinates"
 msgstr "Kopiatu koordenatuak"
 
-#: src/widgets/properties_view.ui:136
+#: src/widgets/properties_view.ui:156
 msgid "Open Location"
 msgstr "Ireki kokalekua"
 
-#: src/widgets/properties_view.ui:149
+#: src/widgets/properties_view.ui:169
 msgid "Originally Created"
 msgstr "Jatorrizko sorrera"
 
-#: src/widgets/properties_view.ui:159
+#: src/widgets/properties_view.ui:179
+msgid "Creator"
+msgstr "Sortzailea"
+
+#: src/widgets/properties_view.ui:189
+msgid "Copyright"
+msgstr "Copyright-a"
+
+#: src/widgets/properties_view.ui:199
 msgid "Comment"
 msgstr "Iruzkina"
 
-#: src/widgets/properties_view.ui:169
+#: src/widgets/properties_view.ui:209
 msgid "Aperture"
 msgstr "Irekiera"
 
-#: src/widgets/properties_view.ui:179
+#: src/widgets/properties_view.ui:219
 msgid "Exposure"
 msgstr "Esposizioa"
 
-#: src/widgets/properties_view.ui:189
+#: src/widgets/properties_view.ui:229
 msgid "ISO"
 msgstr "ISOa"
 
-#: src/widgets/properties_view.ui:199
+#: src/widgets/properties_view.ui:239
 msgid "Focal Length"
 msgstr "Fokuaren luzera"
 
-#: src/widgets/properties_view.ui:209
+#: src/widgets/properties_view.ui:249
 msgid "Maker, Model"
 msgstr "Fabrikatzailea, eredua"
 
-#: src/widgets/window.rs:206
+#: src/widgets/properties_view.ui:259
+msgid "Lens"
+msgstr "Lentea"
+
+#: src/widgets/properties_view.ui:269
+msgid "Software"
+msgstr "Softwarea"
+
+#: src/widgets/properties_view.ui:279
+msgid "ICC Profile"
+msgstr "ICC profila"
+
+#: src/widgets/properties_view.ui:289
+msgid "CICP"
+msgstr "CICP"
+
+#: src/widgets/window.rs:254
 msgid "Show Details"
 msgstr "Erakutsi xehetasunak"
 
@@ -970,9 +1121,6 @@ msgstr "Erakutsi xehetasunak"
 #~ msgctxt "shortcut window"
 #~ msgid "Gestures"
 #~ msgstr "Keinuak"
-
-#~ msgid "{} %"
-#~ msgstr "{} %"
 
 #~ msgid "Copy to Clipboard"
 #~ msgstr "Kopiatu arbelean"
