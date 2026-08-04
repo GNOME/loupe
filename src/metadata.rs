@@ -512,7 +512,7 @@ impl Metadata {
             let transfer = match cicp.transfer_characteristics {
                 cicp::TransferCharacteristics::Dci => gettext("DCI"),
                 cicp::TransferCharacteristics::Pq => gettext("PQ"),
-                cicp::TransferCharacteristics::Gamma24 => gettext("Gamma 2.4"),
+                cicp::TransferCharacteristics::Srgb => gettext("Gamma 2.4"),
                 cicp::TransferCharacteristics::Unknown(n) => {
                     gettext_f("Unknown ({})", [n.to_string()])
                 }

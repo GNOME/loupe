@@ -14,7 +14,7 @@
         "--socket=wayland",
         "--device=dri",
         "--filesystem=host",
-        "--env=RUST_BACKTRACE=1",
+        "--env=RUST_BACKTRACE=full",
         "--env=RUST_LOG=debug",
         "--talk-name=org.gtk.vfs.*",
         "--filesystem=xdg-run/gvfs",
@@ -107,7 +107,7 @@
                 {
                     "type": "git",
                     "url": "https://gitlab.gnome.org/GNOME/glycin.git",
-                    "commit": "32083724ee730fb6b35b6382fb8af7b6ab1f2992"
+                    "commit": "b918acf0e6f9da4c051cad809f3c147678a93ab9"
                 }
             ]
         },
