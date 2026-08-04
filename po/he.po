@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2026-07-20 19:42+0000\n"
-"PO-Revision-Date: 2026-07-30 13:09+0300\n"
+"POT-Creation-Date: 2026-07-31 11:53+0000\n"
+"PO-Revision-Date: 2026-08-04 17:13+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <yoseforb@gmail.com>\n"
 "Language: he\n"
@@ -549,6 +549,8 @@ msgid ""
 "There are unsaved image editing changes. Closing without saving will "
 "permanently lose these modifications."
 msgstr ""
+"יש שינויי עריכה בתמונה שלא נשמרו. סגירה ללא שמירה תגרום לאובדן של השינויים "
+"האלה לצמיתות."
 
 #: src/widgets/edit_window.rs:521 src/widgets/image_window.rs:700
 msgid "Cancel"
@@ -982,7 +984,6 @@ msgstr "″"
 
 #. Translators: Shorthand for meter
 #: src/widgets/properties_view.rs:362
-#| msgid "{} %"
 msgid " m"
 msgstr " מ׳"
 
@@ -1002,17 +1003,14 @@ msgid " pt"
 msgstr "נק׳"
 
 #: src/widgets/properties_view.rs:386
-#| msgid "{}\\u{202F}\\u{D7}\\u{202F}{}"
 msgid "{}{}\\u{202F}\\u{D7}\\u{202F}{}{}"
 msgstr "{}{}\\u{202F}\\u{D7}\\u{202F}{}{}"
 
 #: src/widgets/properties_view.rs:403
-#| msgid "{}\\u{202F}s"
 msgid "{}\\u{202F}DPI"
 msgstr "{}\\u{202F}נק׳ לאינץ׳"
 
 #: src/widgets/properties_view.rs:407
-#| msgid "{}\\u{202F}\\u{D7}\\u{202F}{}"
 msgid "{}\\u{202F}DPI\\u{202F}\\u{D7}\\u{202F}{}\\u{202F}DPI"
 msgstr "{}\\u{202F}נק׳ לאינץ׳\\u{202F}\\u{D7}\\u{202F}{}\\u{202F}נק׳ לאינץ׳"
 
