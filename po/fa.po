@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
 "POT-Creation-Date: 2026-01-01 21:17+0000\n"
-"PO-Revision-Date: 2026-01-02 12:02+0330\n"
+"PO-Revision-Date: 2026-08-06 02:16+0330\n"
 "Last-Translator: Danial Behzadi <dani.behzi@ubuntu.com>\n"
 "Language-Team: Persian <fa@li.org>\n"
 "Language: fa\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n==0 || n==1);\n"
-"X-Generator: Poedit 3.8\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Poedit 3.9\n"
 
 #: data/org.gnome.Loupe.desktop.in.in:2 data/org.gnome.Loupe.metainfo.xml.in.in:6
 #: src/about.rs:32 src/widgets/image_window.rs:874
@@ -465,6 +465,7 @@ msgstr "برش گزینش"
 #. Translators: Filename suffix
 #. Translators: Filename suffix, {} is replaced by a number
 #: src/widgets/edit_window.rs:196 src/widgets/edit_window.rs:199
+#, rust-format
 msgid " (Edited)"
 msgid_plural " (Edited {})"
 msgstr[0] " (ویراسته)"
@@ -549,6 +550,7 @@ msgid "Report _Issue"
 msgstr "گزارش _مشکل"
 
 #: src/widgets/image_page.rs:227
+#, rust-format
 msgid ""
 "No image loaders available. Maybe the “glycin-loaders” package with "
 "compatibility version “{}” is not installed."
@@ -557,10 +559,12 @@ msgstr ""
 "نصب شده."
 
 #: src/widgets/image_page.rs:242
+#, rust-format
 msgid "The image format “{} ({})” is known but not installed."
 msgstr "قالب تصویر «{} ({})» شناخته شده، ولی نصب نشده است."
 
 #: src/widgets/image_page.rs:249
+#, rust-format
 msgid "Unknown image format “{} ({}).”"
 msgstr "قالب تصویر ناشناختهٔ «{} ({}).»"
 
@@ -687,6 +691,7 @@ msgid "Permanently Delete Image?"
 msgstr "حذف همیشگی تصویر؟"
 
 #: src/widgets/image_window.rs:687
+#, rust-format
 msgid "After deleting the image “{}” it will be permanently lost."
 msgstr "پس از حذف تصویر «{}» برای همیشه از دست خواهد رفت."
 
@@ -787,6 +792,7 @@ msgstr "تد"
 
 #. Translators: {} is a placeholder for the filename
 #: src/widgets/print.rs:361
+#, rust-format
 msgid "Print “{}”"
 msgstr "چاپ «{}»"
 
