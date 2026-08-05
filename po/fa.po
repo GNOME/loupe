@@ -7,19 +7,19 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2026-04-27 11:32+0000\n"
-"PO-Revision-Date: 2026-05-01 14:33+0330\n"
+"POT-Creation-Date: 2026-08-04 11:40+0000\n"
+"PO-Revision-Date: 2026-08-06 01:38+0330\n"
 "Last-Translator: Danial Behzadi <dani.behzi@ubuntu.com>\n"
 "Language-Team: Persian <fa@li.org>\n"
 "Language: fa\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n==0 || n==1);\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: Poedit 3.9\n"
 
 #: data/org.gnome.Loupe.desktop.in.in:2 data/org.gnome.Loupe.metainfo.xml.in.in:6
-#: src/about.rs:32 src/widgets/image_window.rs:880
+#: src/about.rs:32 src/widgets/image_window.rs:879
 msgid "Image Viewer"
 msgstr "نمایشگر تصویر"
 
@@ -36,7 +36,8 @@ msgid "Show the image properties sidebar"
 msgstr "نمایش نوار کناری ویژگی‌های تصویر"
 
 #. developer_name tag deprecated with Appstream 1.0
-#: data/org.gnome.Loupe.metainfo.xml.in.in:8 src/about.rs:35
+#: data/org.gnome.Loupe.metainfo.xml.in.in:8
+#: data/org.gnome.Loupe.metainfo.xml.in.in:10 src/about.rs:35
 msgid "The GNOME Project"
 msgstr "پروژهٔ گنوم"
 
@@ -45,6 +46,18 @@ msgid ""
 "Explore images, view their metadata, and make quick edits by cropping, "
 "rotating, or flipping them."
 msgstr "کشف تصویرها، دیدن فراداده‌ها و ویرایش سریع با بریدن، چرخاندن و برگرداندن."
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:28
+msgid "Main Window"
+msgstr "پنجرهٔ اصلی"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:32
+msgid "Crop Tool"
+msgstr "ابزار برش"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:36
+msgid "Image Properties Panel"
+msgstr "تابلوی ویژگی‌های تصویر"
 
 #: data/resources/shortcuts-dialog.ui:6
 msgctxt "shortcut window"
@@ -275,43 +288,84 @@ msgid "Could not list other files in directory."
 msgstr "نمی‌توان دیگر پرونده‌ها در شاخه را سیاهه کرد."
 
 #. Translators: Display of the f-number <https://en.wikipedia.org/wiki/F-number>. {} will be replaced with the number
-#: src/metadata.rs:256
+#: src/metadata.rs:271
 msgid "\\u{192}\\u{2215}{}"
 msgstr "\\u{192}\\u{2215}{}"
 
 #. Translators: Fractional exposure time (photography) in seconds
-#: src/metadata.rs:269
+#: src/metadata.rs:284
 msgid "1\\u{2215}{}\\u{202F}s"
 msgstr "1\\u{2215}{}\\u{202F}ث"
 
 #. Translators: Exposure time (photography) in seconds
-#: src/metadata.rs:277
+#: src/metadata.rs:292
 msgid "{}\\u{202F}s"
 msgstr "{}\\u{202F}ث"
 
-#: src/metadata.rs:291
+#: src/metadata.rs:306
 msgid "{}\\u{202F}mm"
 msgstr "{}\\u{202F}م‌م"
 
 #. Translators: short for "north" in GPS coordinate
-#: src/metadata.rs:331
+#: src/metadata.rs:396
 msgid "N"
 msgstr "شم"
 
 #. Translators: short for "south" in GPS coordinate
-#: src/metadata.rs:335
+#: src/metadata.rs:400
 msgid "S"
 msgstr "جن"
 
 #. Translators: short for "east" in GPS coordinate
-#: src/metadata.rs:344
+#: src/metadata.rs:409
 msgid "E"
 msgstr "شر"
 
 #. Translators: short for "west" in GPS coordinate
-#: src/metadata.rs:348
+#: src/metadata.rs:413
 msgid "W"
 msgstr "غر"
+
+#: src/metadata.rs:493
+msgid "DCI P3"
+msgstr "DCI P3"
+
+#: src/metadata.rs:494
+msgid "Display P3"
+msgstr "نمایش P3"
+
+#: src/metadata.rs:495
+msgid "Rec.2020"
+msgstr "Rec.2020"
+
+#: src/metadata.rs:496
+msgid "sRGB"
+msgstr "sRGB"
+
+#: src/metadata.rs:497 src/metadata.rs:505
+msgid "Unspecified"
+msgstr "نامشخّص"
+
+#: src/metadata.rs:498 src/metadata.rs:507 src/metadata.rs:517
+#, rust-format
+msgid "Unknown ({})"
+msgstr "ناشناخته ({})"
+
+#: src/metadata.rs:504
+msgid "ICtCp"
+msgstr "ICtCp"
+
+#: src/metadata.rs:513
+msgid "DCI"
+msgstr "DCI"
+
+#: src/metadata.rs:514
+msgid "PQ"
+msgstr "PQ"
+
+#: src/metadata.rs:515
+msgid "Gamma 2.4"
+msgstr "گاما ۲٫۴"
 
 #. / Returns localized date + time format
 #. Translators: This is the date and time format we use in metadata output etc.
@@ -440,31 +494,64 @@ msgid "Crop Selection"
 msgstr "برش گزینش"
 
 #. Translators: Filename suffix, {} is replaced by a number
-#: src/widgets/edit_window.rs:196
+#: src/widgets/edit_window.rs:199
+#, rust-format
 msgid " (Edited)"
 msgid_plural " (Edited {})"
 msgstr[0] " (ویراسته)"
 msgstr[1] " ({} ویراسته)"
 
-#: src/widgets/edit_window.rs:290 src/widgets/edit_window.rs:316
+#: src/widgets/edit_window.rs:283
+msgid "Moving Original to Trash"
+msgstr "انداختن اصلی به زباله‌دان"
+
+#: src/widgets/edit_window.rs:297 src/widgets/edit_window.rs:326
 msgid "Failed to save image."
 msgstr "شکست در ذخیرهٔ تصویر."
 
-#: src/widgets/edit_window.rs:344
+#: src/widgets/edit_window.rs:306
+msgid "Finalizing Save Operation"
+msgstr "پایان دادن عملیات ذخیره"
+
+#: src/widgets/edit_window.rs:357
 msgid "Editing Image"
 msgstr "ویراستن تصویر"
 
-#: src/widgets/edit_window.rs:361
+#: src/widgets/edit_window.rs:374
 msgid "Failed to edit image."
 msgstr "شکست در ویرایش تصویر."
 
-#: src/widgets/edit_window.rs:371 src/widgets/edit_window.rs:394
+#: src/widgets/edit_window.rs:381
+msgid "Saving Image"
+msgstr "ذخیره کردن تصویر"
+
+#: src/widgets/edit_window.rs:400
 msgid "Failed to Save Image"
 msgstr "شکست در ذخیرهٔ تصویر"
 
-#: src/widgets/edit_window.rs:377
-msgid "Saving Image"
-msgstr "ذخیره کردن تصویر"
+#: src/widgets/edit_window.rs:515
+msgid "Save Changes?"
+msgstr "ذخیرهٔ تغییرات؟"
+
+#: src/widgets/edit_window.rs:517
+msgid ""
+"There are unsaved image editing changes. Closing without saving will "
+"permanently lose these modifications."
+msgstr ""
+"تغییرات ویرایش تصویر ذخیره نشده‌ای وجود دارد. بستن بدون ذخیره، این تغییرات را "
+"برای همیشه از بین خواهد برد."
+
+#: src/widgets/edit_window.rs:521 src/widgets/image_window.rs:700
+msgid "Cancel"
+msgstr "لغو"
+
+#: src/widgets/edit_window.rs:522
+msgid "Discard"
+msgstr "دور انداختن"
+
+#: src/widgets/edit_window.rs:523
+msgid "Save"
+msgstr "ذخیره"
 
 #: src/widgets/edit_window.ui:64
 msgid "_Cancel"
@@ -525,6 +612,7 @@ msgid "Report _Issue"
 msgstr "گزارش _مشکل"
 
 #: src/widgets/image_page.rs:225
+#, rust-format
 msgid ""
 "No image loaders available. Maybe the “glycin-loaders” package with "
 "compatibility version “{}” is not installed."
@@ -533,10 +621,12 @@ msgstr ""
 "نصب شده."
 
 #: src/widgets/image_page.rs:243
+#, rust-format
 msgid "The image format “{} ({})” is known but not installed."
 msgstr "قالب تصویر «{} ({})» شناخته شده، ولی نصب نشده است."
 
 #: src/widgets/image_page.rs:251
+#, rust-format
 msgid "Unknown image format “{} ({}).”"
 msgstr "قالب تصویر ناشناختهٔ «{} ({}).»"
 
@@ -545,6 +635,7 @@ msgid "There is not enough free memory available to load this image."
 msgstr "حافظهٔ آزاد کافی برای بار کردن این عکس وجود ندارد."
 
 #: src/widgets/image_page.rs:267
+#, rust-format
 msgid "Failed to load image file: {}"
 msgstr "شکست در بار کردن پروندهٔ تصویر: {}"
 
@@ -634,51 +725,48 @@ msgstr "سطح‌های بزرگنمایی سفارشی"
 msgid "Zoom to Specified Level"
 msgstr "بزرگنمایی به سطح مشخّص"
 
-#: src/widgets/image_window.rs:510
+#: src/widgets/image_window.rs:509
 msgid "Supported image formats"
 msgstr "قالب‌های تصویر پشتیبانی‌شده"
 
-#: src/widgets/image_window.rs:516
+#: src/widgets/image_window.rs:515
 msgid "All files"
 msgstr "تمام پرونده‌ها"
 
-#: src/widgets/image_window.rs:523
+#: src/widgets/image_window.rs:522
 msgid "Open Image"
 msgstr "گشودن تصویر"
 
-#: src/widgets/image_window.rs:615
+#: src/widgets/image_window.rs:614
 msgid "Image copied to clipboard"
 msgstr "تصویر در تخته‌گیره رونوشت شد"
 
-#: src/widgets/image_window.rs:636
+#: src/widgets/image_window.rs:635
 msgid "Image moved to trash"
 msgstr "تصویر به زباله‌دان جابه‌جا شد"
 
-#: src/widgets/image_window.rs:637
+#: src/widgets/image_window.rs:636
 msgid "Undo"
 msgstr "برگردان"
 
-#: src/widgets/image_window.rs:667
+#: src/widgets/image_window.rs:666
 msgid "Failed to move image to trash"
 msgstr "شکست در جابه‌جایی تصویر به زباله‌دان"
 
-#: src/widgets/image_window.rs:691
+#: src/widgets/image_window.rs:690
 msgid "Permanently Delete Image?"
 msgstr "حذف همیشگی تصویر؟"
 
-#: src/widgets/image_window.rs:693
+#: src/widgets/image_window.rs:692
+#, rust-format
 msgid "After deleting the image “{}” it will be permanently lost."
 msgstr "پس از حذف تصویر «{}» برای همیشه از دست خواهد رفت."
 
 #: src/widgets/image_window.rs:701
-msgid "Cancel"
-msgstr "لغو"
-
-#: src/widgets/image_window.rs:702
 msgid "Delete"
 msgstr "حذف"
 
-#: src/widgets/image_window.rs:713
+#: src/widgets/image_window.rs:712
 msgid "Failed to delete image"
 msgstr "شکست در حذف تصویر"
 
@@ -766,23 +854,24 @@ msgid "px"
 msgstr "تد"
 
 #. Translators: {} is a placeholder for the filename
-#: src/widgets/print.rs:364
+#: src/widgets/print.rs:366
+#, rust-format
 msgid "Print “{}”"
 msgstr "چاپ «{}»"
 
-#: src/widgets/print.rs:477
+#: src/widgets/print.rs:473
 msgid "Continue…"
 msgstr "ادامه…"
 
-#: src/widgets/print.rs:478
+#: src/widgets/print.rs:474
 msgid "Print Image"
 msgstr "چاپ تصویر"
 
-#: src/widgets/print.rs:797
+#: src/widgets/print.rs:802
 msgid "_Scale"
 msgstr "_مقیاس کردن"
 
-#: src/widgets/print.rs:800
+#: src/widgets/print.rs:805
 msgid "_Width"
 msgstr "_پهنا"
 
@@ -847,30 +936,72 @@ msgstr "_پُر کردن فضا"
 msgid "H_eight"
 msgstr "_درازا"
 
-#: src/widgets/properties_view.rs:258
+#: src/widgets/properties_view.rs:284
 msgid "Unknown"
 msgstr "ناشناخته"
 
 #. Translators: Addition of image being transparent to format name
-#: src/widgets/properties_view.rs:262
+#: src/widgets/properties_view.rs:288
 msgid ", transparent"
 msgstr "، شفّاف"
 
 #. Translators: Addition of image being grayscale to format name
-#: src/widgets/properties_view.rs:267
+#: src/widgets/properties_view.rs:293
 msgid ", grayscale"
 msgstr "، طیف خاکستری"
 
 #. Translators: Addition of bit size to format name
-#: src/widgets/properties_view.rs:272
+#: src/widgets/properties_view.rs:298
 msgid ", {}\\u{202F}bit"
 msgstr "، {}\\u{202F}بیتی"
 
-#: src/widgets/properties_view.rs:290
+#: src/widgets/properties_view.rs:315
 msgid "{}\\u{202F}\\u{D7}\\u{202F}{}"
 msgstr "{}\\u{202F}\\u{D7}\\u{202F}{}"
 
-#: src/widgets/properties_view.rs:326
+#. Translators: Shorthand for centimeter
+#: src/widgets/properties_view.rs:354
+msgid " cm"
+msgstr " س‌م"
+
+#. Translators: Shorthand for inch
+#: src/widgets/properties_view.rs:358
+msgid "″"
+msgstr "″"
+
+#. Translators: Shorthand for meter
+#: src/widgets/properties_view.rs:362
+msgid " m"
+msgstr " م"
+
+#. Translators: Shorthand for millimeter
+#: src/widgets/properties_view.rs:366
+msgid " mm"
+msgstr " م‌م"
+
+#. Translators: Shorthand for pica (unit)
+#: src/widgets/properties_view.rs:370
+msgid " pc"
+msgstr " پیکا"
+
+#. Translators: Shorthand for pica (unit)
+#: src/widgets/properties_view.rs:374
+msgid " pt"
+msgstr " نقطه"
+
+#: src/widgets/properties_view.rs:386
+msgid "{}{}\\u{202F}\\u{D7}\\u{202F}{}{}"
+msgstr "{}{}\\u{202F}\\u{D7}\\u{202F}{}{}"
+
+#: src/widgets/properties_view.rs:403
+msgid "{}\\u{202F}DPI"
+msgstr "{}\\u{202F}DPI"
+
+#: src/widgets/properties_view.rs:407
+msgid "{}\\u{202F}DPI\\u{202F}\\u{D7}\\u{202F}{}\\u{202F}DPI"
+msgstr "{}\\u{202F}DPI\\u{202F}\\u{D7}\\u{202F}{}\\u{202F}DPI"
+
+#: src/widgets/properties_view.rs:435
 msgid "Image Coordinates Copied"
 msgstr "مختصات تصویر رونوشت شد"
 
@@ -887,63 +1018,95 @@ msgid "URI"
 msgstr "نشانی"
 
 #: src/widgets/properties_view.ui:66
+msgid "Physical Size"
+msgstr "اندازهٔ فیزیکی"
+
+#: src/widgets/properties_view.ui:76
+msgid "Resolution"
+msgstr "تفکیک‌پذیری"
+
+#: src/widgets/properties_view.ui:86
 msgid "Image Format"
 msgstr "قالب تصویر"
 
-#: src/widgets/properties_view.ui:76
+#: src/widgets/properties_view.ui:96
 msgid "File Size"
 msgstr "اندازهٔ پرونده"
 
-#: src/widgets/properties_view.ui:90
+#: src/widgets/properties_view.ui:110
 msgid "File Created"
 msgstr "ایجاد پرونده"
 
-#: src/widgets/properties_view.ui:100
+#: src/widgets/properties_view.ui:120
 msgid "File Modified"
 msgstr "دستکاری پرونده"
 
 #. Translators: This is a label for GPS coordinates
-#: src/widgets/properties_view.ui:114
+#: src/widgets/properties_view.ui:134
 msgid "Location"
 msgstr "مکان"
 
-#: src/widgets/properties_view.ui:125
+#: src/widgets/properties_view.ui:145
 msgid "Copy Coordinates"
 msgstr "رونوشت از مختصات"
 
-#: src/widgets/properties_view.ui:136
+#: src/widgets/properties_view.ui:156
 msgid "Open Location"
 msgstr "گشودن مکان"
 
-#: src/widgets/properties_view.ui:149
+#: src/widgets/properties_view.ui:169
 msgid "Originally Created"
 msgstr "ایجاد اصلی"
 
-#: src/widgets/properties_view.ui:159
+#: src/widgets/properties_view.ui:179
+msgid "Creator"
+msgstr "ایجادکننده"
+
+#: src/widgets/properties_view.ui:189
+msgid "Copyright"
+msgstr "حق رونوشت"
+
+#: src/widgets/properties_view.ui:199
 msgid "Comment"
 msgstr "نظر"
 
-#: src/widgets/properties_view.ui:169
+#: src/widgets/properties_view.ui:209
 msgid "Aperture"
 msgstr "دیافراگم"
 
-#: src/widgets/properties_view.ui:179
+#: src/widgets/properties_view.ui:219
 msgid "Exposure"
 msgstr "نوردهی"
 
-#: src/widgets/properties_view.ui:189
+#: src/widgets/properties_view.ui:229
 msgid "ISO"
 msgstr "ایزو"
 
-#: src/widgets/properties_view.ui:199
+#: src/widgets/properties_view.ui:239
 msgid "Focal Length"
 msgstr "فاصلهٔ کانونی"
 
-#: src/widgets/properties_view.ui:209
+#: src/widgets/properties_view.ui:249
 msgid "Maker, Model"
 msgstr "سازنده، مدل"
 
-#: src/widgets/window.rs:225
+#: src/widgets/properties_view.ui:259
+msgid "Lens"
+msgstr "لنز"
+
+#: src/widgets/properties_view.ui:269
+msgid "Software"
+msgstr "نرم‌افزار"
+
+#: src/widgets/properties_view.ui:279
+msgid "ICC Profile"
+msgstr "نماگر ICC"
+
+#: src/widgets/properties_view.ui:289
+msgid "CICP"
+msgstr "CICP"
+
+#: src/widgets/window.rs:254
 msgid "Show Details"
 msgstr "نمایش جزییات"
 
@@ -965,9 +1128,6 @@ msgstr "نمایش جزییات"
 #~ msgctxt "shortcut window"
 #~ msgid "Gestures"
 #~ msgstr "حرکت‌ها"
-
-#~ msgid "{} %"
-#~ msgstr "{} %"
 
 #~ msgid "Copy to Clipboard"
 #~ msgstr "رونوشت در تخته‌گیره"
