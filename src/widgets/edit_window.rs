@@ -57,6 +57,8 @@ mod imp {
         original_image: OnceCell<LpImage>,
         #[property(get, construct_only)]
         pub edit_crop: OnceCell<LpEditCrop>,
+        #[property(get, construct_only)]
+        pub has_unsaved_changes: Cell<bool>,
 
         /// Whether the original file can be trashed
         pub(super) can_trash: Cell<bool>,
@@ -165,13 +167,19 @@ mod imp {
     impl BinImpl for LpEditWindow {}
 
     impl LpEditWindow {
+        /// Close editing view
         fn cancel(&self) {
-            let obj = self.obj();
+            let obj = self.obj().to_owned();
 
             if let Some(cancellable) = obj.imp().save_cancellable.replace(None) {
                 cancellable.cancel();
             }
-            obj.window_inspect(|w| w.show_image());
+
+            glib::spawn_future_local(async move {
+                if obj.ensure_saved().await == glib::Propagation::Proceed {
+                    obj.window_inspect(|w| w.show_image());
+                }
+            });
         }
 
         async fn save_copy(&self) {
@@ -240,6 +248,7 @@ mod imp {
                             .save(current_file, new_file.clone(), cancellable.clone())
                             .await
                         {
+                            self.has_unsaved_changes.replace(false);
                             obj.window_inspect(|w| w.show_specific_image(new_file));
                         }
                     }
@@ -333,6 +342,7 @@ mod imp {
                         return Err(());
                     }
 
+                    self.has_unsaved_changes.replace(false);
                     obj.window_inspect(|w| w.show_specific_image(original_file));
                 }
             }
@@ -450,6 +460,11 @@ mod imp {
 
         pub fn update_save_state(&self, force_disabled: bool) {
             let obj = self.obj();
+
+            if !force_disabled {
+                self.has_unsaved_changes.replace(self.is_save_sensitive());
+            }
+
             let enabled = self.is_save_sensitive() && !force_disabled;
 
             self.save.set_sensitive(enabled);
@@ -489,10 +504,6 @@ impl LpEditWindow {
         imp.update_save_state(false);
     }
 
-    pub fn has_unsaved_changes(&self) -> bool {
-        self.imp().is_save_sensitive()
-    }
-
     pub fn add_operation(&self, operation: glycin::Operation) {
         let imp = self.imp();
 
@@ -529,7 +540,10 @@ impl LpEditWindow {
             match res.as_str() {
                 "cancel" => glib::Propagation::Stop,
                 "close" => glib::Propagation::Stop,
-                "discard" => glib::Propagation::Proceed,
+                "discard" => {
+                    self.imp().has_unsaved_changes.replace(false);
+                    glib::Propagation::Proceed
+                }
                 "save" => {
                     if self.imp().save_overwrite().await.is_ok() {
                         glib::Propagation::Proceed
