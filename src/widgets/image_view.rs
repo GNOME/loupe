@@ -610,6 +610,10 @@ impl LpImageView {
         let existing = sliding_view.pages();
         let target = self.model().files_around(current_file, BUFFER);
 
+        let Ok(target) = target else {
+            return;
+        };
+
         // remove old pages
         for (uri, page) in &existing {
             if !target.contains_key(uri) {

@@ -128,7 +128,7 @@ mod imp {
                 obj,
                 move |_| {
                     if obj.image().is_loaded() {
-                        tracing::debug!("Showing image");
+                        tracing::debug!("Revealing image");
                         obj.imp()
                             .stack
                             .set_visible_child(&*obj.imp().image_stack_page);

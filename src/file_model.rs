@@ -316,22 +316,30 @@ impl LpFileModel {
     }
 
     /// Returns `n` elements before and after given file
-    pub fn files_around(&self, file: &gio::File, n: usize) -> IndexMap<GString, gio::File> {
+    pub fn files_around(
+        &self,
+        file: &gio::File,
+        n: usize,
+    ) -> Result<IndexMap<GString, gio::File>, ()> {
         let Some(index) = self.index_of(file) else {
-            tracing::error!("URI not in model: {}", file.uri());
-            return IndexMap::new();
+            // This can happen when the file is deleted the moment the view moves to it.
+            // This frequently happens when the "Replace original" function is used in
+            // editing.
+            tracing::info!("URI not in model: {}", file.uri());
+            return Err(());
         };
 
         let reduce = n.saturating_sub(index);
 
-        self.imp()
+        Ok(self
+            .imp()
             .files
             .borrow()
             .iter()
             .skip(index.saturating_sub(n))
             .take(2 * n + 1 - reduce)
             .map(|(k, v)| (k.clone(), v.file.clone()))
-            .collect()
+            .collect())
     }
 
     /// Return first file

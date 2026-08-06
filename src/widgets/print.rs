@@ -201,9 +201,8 @@ impl Unit {
 }
 
 mod imp {
-    use crate::util;
-
     use super::*;
+    use crate::util;
 
     #[derive(Debug, Default, CompositeTemplate, Properties)]
     #[template(file = "print.ui")]

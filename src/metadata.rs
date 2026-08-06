@@ -28,10 +28,9 @@ use chrono::prelude::*;
 pub use file::FileInfo;
 use glib::TimeZone;
 use glycin::{Frame, FrameDetails, ImageDetails, MemoryFormat};
-use gufo::common::cicp;
 use gufo::common::datetime::DateTime;
 use gufo::common::orientation::Orientation;
-use gufo::common::physical_dimension;
+use gufo::common::{cicp, physical_dimension};
 
 use crate::deps::*;
 use crate::util;
