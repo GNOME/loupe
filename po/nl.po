@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2026-03-13 14:05+0000\n"
-"PO-Revision-Date: 2026-04-19 11:25+0200\n"
+"POT-Creation-Date: 2026-08-06 11:47+0000\n"
+"PO-Revision-Date: 2026-08-09 17:29+0200\n"
 "Last-Translator: Nathan Follens <nfollens@gnome.org>\n"
 "Language-Team: GNOME-NL https://matrix.to/#/#nl:gnome.org\n"
 "Language: nl\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.8\n"
+"X-Generator: Poedit 3.9\n"
 "X-DL-VCS-Web: https://gitlab.gnome.org/GNOME/loupe\n"
 "X-DL-Lang: nl\n"
 "X-DL-Module: loupe\n"
@@ -28,7 +28,7 @@ msgstr ""
 "X-DL-State: Translating\n"
 
 #: data/org.gnome.Loupe.desktop.in.in:2 data/org.gnome.Loupe.metainfo.xml.in.in:6
-#: src/about.rs:32 src/widgets/image_window.rs:898
+#: src/about.rs:32 src/widgets/image_window.rs:879
 msgid "Image Viewer"
 msgstr "Afbeeldingsweergave"
 
@@ -45,7 +45,8 @@ msgid "Show the image properties sidebar"
 msgstr "Zijbalk met afbeeldingseigenschappen weergeven"
 
 #. developer_name tag deprecated with Appstream 1.0
-#: data/org.gnome.Loupe.metainfo.xml.in.in:8 src/about.rs:35
+#: data/org.gnome.Loupe.metainfo.xml.in.in:8
+#: data/org.gnome.Loupe.metainfo.xml.in.in:10 src/about.rs:35
 msgid "The GNOME Project"
 msgstr "Het GNOME-project"
 
@@ -56,6 +57,18 @@ msgid ""
 msgstr ""
 "Blader door afbeeldingen, bekijk hun metadata en maak snelle bewerkingen door ze "
 "bij te snijden, te draaien of te spiegelen."
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:28
+msgid "Main Window"
+msgstr "Hoofdvenster"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:32
+msgid "Crop Tool"
+msgstr "Bijsnijdhulpmiddel"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:36
+msgid "Image Properties Panel"
+msgstr "Paneel met afbeeldingsinfo"
 
 #: data/resources/shortcuts-dialog.ui:6
 msgctxt "shortcut window"
@@ -280,7 +293,7 @@ msgstr ""
 "Nathan Follens <nfollens@gnome.org>\n"
 "Dick Groskamp <dikgro@yahoo.co.uk>\n"
 "Kynan De Keyser <keyskynan@gmail.com>\n"
-"Meer info over GNOME-NL https://nl.gnome.org\""
+"Meer info over GNOME-NL https://nl.gnome.org"
 
 #: src/about.rs:46
 msgid "Copyright © 2020–2024 Christopher Davis et al."
@@ -291,43 +304,85 @@ msgid "Could not list other files in directory."
 msgstr "Kon andere bestanden in map niet oplijsten."
 
 #. Translators: Display of the f-number <https://en.wikipedia.org/wiki/F-number>. {} will be replaced with the number
-#: src/metadata.rs:256
+#: src/metadata.rs:270
 msgid "\\u{192}\\u{2215}{}"
 msgstr "\\u{192}\\u{2215}{}"
 
 #. Translators: Fractional exposure time (photography) in seconds
-#: src/metadata.rs:269
+#: src/metadata.rs:283
 msgid "1\\u{2215}{}\\u{202F}s"
 msgstr "1\\u{2215}{}\\u{202F}s"
 
 #. Translators: Exposure time (photography) in seconds
-#: src/metadata.rs:277
+#: src/metadata.rs:291
 msgid "{}\\u{202F}s"
 msgstr "{}\\u{202F}s"
 
-#: src/metadata.rs:291
+#: src/metadata.rs:305
 msgid "{}\\u{202F}mm"
 msgstr "{}\\u{202F}mm"
 
 #. Translators: short for "north" in GPS coordinate
-#: src/metadata.rs:331
+#: src/metadata.rs:395
 msgid "N"
 msgstr "N"
 
 #. Translators: short for "south" in GPS coordinate
-#: src/metadata.rs:335
+#: src/metadata.rs:399
 msgid "S"
 msgstr "Z"
 
 #. Translators: short for "east" in GPS coordinate
-#: src/metadata.rs:344
+#: src/metadata.rs:408
 msgid "E"
 msgstr "O"
 
 #. Translators: short for "west" in GPS coordinate
-#: src/metadata.rs:348
+#: src/metadata.rs:412
 msgid "W"
 msgstr "W"
+
+#: src/metadata.rs:492
+msgid "DCI P3"
+msgstr "DCI P3"
+
+#: src/metadata.rs:493
+msgid "Display P3"
+msgstr "Display P3"
+
+#: src/metadata.rs:494
+msgid "Rec.2020"
+msgstr "Rec.2020"
+
+#: src/metadata.rs:495
+msgid "sRGB"
+msgstr "sRGB"
+
+#: src/metadata.rs:496 src/metadata.rs:504
+msgid "Unspecified"
+msgstr "Niet opgegeven"
+
+#: src/metadata.rs:497 src/metadata.rs:506 src/metadata.rs:516
+#, rust-format
+#| msgid "Unknown"
+msgid "Unknown ({})"
+msgstr "Onbekend ({})"
+
+#: src/metadata.rs:503
+msgid "ICtCp"
+msgstr "ICtCp"
+
+#: src/metadata.rs:512
+msgid "DCI"
+msgstr "DCI"
+
+#: src/metadata.rs:513
+msgid "PQ"
+msgstr "PQ"
+
+#: src/metadata.rs:514
+msgid "Gamma 2.4"
+msgstr "Gamma 2.4"
 
 #. / Returns localized date + time format
 #. Translators: This is the date and time format we use in metadata output etc.
@@ -456,32 +511,64 @@ msgid "Crop Selection"
 msgstr "Selectie bijsnijden"
 
 #. Translators: Filename suffix, {} is replaced by a number
-#: src/widgets/edit_window.rs:196
+#: src/widgets/edit_window.rs:207
 #, rust-format
 msgid " (Edited)"
 msgid_plural " (Edited {})"
 msgstr[0] " (bewerkt)"
 msgstr[1] " (bewerkt {})"
 
-#: src/widgets/edit_window.rs:290 src/widgets/edit_window.rs:316
+#: src/widgets/edit_window.rs:292
+msgid "Moving Original to Trash"
+msgstr "Oorspronkelijke afbeelding verplaatsen naar prullenbak"
+
+#: src/widgets/edit_window.rs:306 src/widgets/edit_window.rs:335
 msgid "Failed to save image."
 msgstr "Opslaan van afbeelding mislukt."
 
-#: src/widgets/edit_window.rs:344
+#: src/widgets/edit_window.rs:315
+msgid "Finalizing Save Operation"
+msgstr "Opslagoperatie wordt voltooid"
+
+#: src/widgets/edit_window.rs:367
 msgid "Editing Image"
 msgstr "Afbeelding bewerken"
 
-#: src/widgets/edit_window.rs:361
+#: src/widgets/edit_window.rs:384
 msgid "Failed to edit image."
 msgstr "Kon afbeelding niet bewerken."
 
-#: src/widgets/edit_window.rs:371 src/widgets/edit_window.rs:394
+#: src/widgets/edit_window.rs:391
+msgid "Saving Image"
+msgstr "Afbeelding wordt opgeslagen"
+
+#: src/widgets/edit_window.rs:410
 msgid "Failed to Save Image"
 msgstr "Kon afbeelding niet opslaan"
 
-#: src/widgets/edit_window.rs:377
-msgid "Saving Image"
-msgstr "Afbeelding wordt opgeslagen"
+#: src/widgets/edit_window.rs:526
+msgid "Save Changes?"
+msgstr "Wijzigingen opslaan?"
+
+#: src/widgets/edit_window.rs:528
+msgid ""
+"There are unsaved image editing changes. Closing without saving will permanently "
+"lose these modifications."
+msgstr ""
+"Er zijn niet-opgeslagen bewerkingen aan de afbeelding. Als u afsluit onder op te "
+"slaat, gaan deze bewerkingen definitief verloren."
+
+#: src/widgets/edit_window.rs:532 src/widgets/image_window.rs:700
+msgid "Cancel"
+msgstr "Annuleren"
+
+#: src/widgets/edit_window.rs:533
+msgid "Discard"
+msgstr "Verwerpen"
+
+#: src/widgets/edit_window.rs:534
+msgid "Save"
+msgstr "Opslaan"
 
 #: src/widgets/edit_window.ui:64
 msgid "_Cancel"
@@ -617,11 +704,11 @@ msgstr "Rechtsom draaien"
 
 #. Translators: This is a toast notification, informing the user that
 #. an image has been set as background.
-#: src/widgets/image_view.rs:866
+#: src/widgets/image_view.rs:870
 msgid "Set as background."
 msgstr "Ingesteld als achtergrond."
 
-#: src/widgets/image_view.rs:872
+#: src/widgets/image_view.rs:876
 msgid "Could not set background."
 msgstr "Kon achtergrond niet instellen."
 
@@ -657,52 +744,48 @@ msgstr "Aangepast zoomniveau"
 msgid "Zoom to Specified Level"
 msgstr "Zoom naar het gespecificeerde niveau"
 
-#: src/widgets/image_window.rs:528
+#: src/widgets/image_window.rs:509
 msgid "Supported image formats"
 msgstr "Ondersteunde afbeeldingsindelingen"
 
-#: src/widgets/image_window.rs:534
+#: src/widgets/image_window.rs:515
 msgid "All files"
 msgstr "Alle bestanden"
 
-#: src/widgets/image_window.rs:541
+#: src/widgets/image_window.rs:522
 msgid "Open Image"
 msgstr "Afbeelding openen"
 
-#: src/widgets/image_window.rs:633
+#: src/widgets/image_window.rs:614
 msgid "Image copied to clipboard"
 msgstr "Afbeelding gekopieerd naar klembord"
 
-#: src/widgets/image_window.rs:654
+#: src/widgets/image_window.rs:635
 msgid "Image moved to trash"
 msgstr "Afbeelding verplaatst naar prullenbak"
 
-#: src/widgets/image_window.rs:655
+#: src/widgets/image_window.rs:636
 msgid "Undo"
 msgstr "Ongedaan maken"
 
-#: src/widgets/image_window.rs:685
+#: src/widgets/image_window.rs:666
 msgid "Failed to move image to trash"
 msgstr "Kon afbeelding niet verplaatsen naar prullenbak"
 
-#: src/widgets/image_window.rs:709
+#: src/widgets/image_window.rs:690
 msgid "Permanently Delete Image?"
 msgstr "Afbeelding voorgoed verwijderen?"
 
-#: src/widgets/image_window.rs:711
+#: src/widgets/image_window.rs:692
 #, rust-format
 msgid "After deleting the image “{}” it will be permanently lost."
 msgstr "Wanneer u de afbeelding ‘{}’ verwijdert, zal deze voorgoed verloren gaan."
 
-#: src/widgets/image_window.rs:719
-msgid "Cancel"
-msgstr "Annuleren"
-
-#: src/widgets/image_window.rs:720
+#: src/widgets/image_window.rs:701
 msgid "Delete"
 msgstr "Verwijderen"
 
-#: src/widgets/image_window.rs:731
+#: src/widgets/image_window.rs:712
 msgid "Failed to delete image"
 msgstr "Kon afbeelding niet verwijderen"
 
@@ -790,24 +873,24 @@ msgid "px"
 msgstr "px"
 
 #. Translators: {} is a placeholder for the filename
-#: src/widgets/print.rs:364
+#: src/widgets/print.rs:365
 #, rust-format
 msgid "Print “{}”"
 msgstr "‘{}’ afdrukken"
 
-#: src/widgets/print.rs:477
+#: src/widgets/print.rs:472
 msgid "Continue…"
 msgstr "Doorgaan…"
 
-#: src/widgets/print.rs:478
+#: src/widgets/print.rs:473
 msgid "Print Image"
 msgstr "Afbeelding afdrukken"
 
-#: src/widgets/print.rs:797
+#: src/widgets/print.rs:801
 msgid "_Scale"
 msgstr "_Schalen"
 
-#: src/widgets/print.rs:800
+#: src/widgets/print.rs:804
 msgid "_Width"
 msgstr "_Breedte"
 
@@ -872,30 +955,76 @@ msgstr "Ruimte _vullen"
 msgid "H_eight"
 msgstr "H_oogte"
 
-#: src/widgets/properties_view.rs:258
+#: src/widgets/properties_view.rs:284
 msgid "Unknown"
 msgstr "Onbekend"
 
 #. Translators: Addition of image being transparent to format name
-#: src/widgets/properties_view.rs:262
+#: src/widgets/properties_view.rs:288
 msgid ", transparent"
 msgstr ", transparant"
 
 #. Translators: Addition of image being grayscale to format name
-#: src/widgets/properties_view.rs:267
+#: src/widgets/properties_view.rs:293
 msgid ", grayscale"
 msgstr ", grijstinten"
 
 #. Translators: Addition of bit size to format name
-#: src/widgets/properties_view.rs:272
+#: src/widgets/properties_view.rs:298
 msgid ", {}\\u{202F}bit"
 msgstr ", {}\\u{202F}bits"
 
-#: src/widgets/properties_view.rs:290
+#: src/widgets/properties_view.rs:315
 msgid "{}\\u{202F}\\u{D7}\\u{202F}{}"
 msgstr "{}\\u{202F}\\u{D7}\\u{202F}{}"
 
-#: src/widgets/properties_view.rs:326
+#. Translators: Shorthand for centimeter
+#: src/widgets/properties_view.rs:354
+msgid " cm"
+msgstr " cm"
+
+#. Translators: Shorthand for inch
+#: src/widgets/properties_view.rs:358
+msgid "″"
+msgstr "″"
+
+#. Translators: Shorthand for meter
+#: src/widgets/properties_view.rs:362
+#| msgid "{} %"
+msgid " m"
+msgstr " m"
+
+#. Translators: Shorthand for millimeter
+#: src/widgets/properties_view.rs:366
+msgid " mm"
+msgstr " mm"
+
+#. Translators: Shorthand for pica (unit)
+#: src/widgets/properties_view.rs:370
+msgid " pc"
+msgstr " pc"
+
+#. Translators: Shorthand for pica (unit)
+#: src/widgets/properties_view.rs:374
+msgid " pt"
+msgstr " pt"
+
+#: src/widgets/properties_view.rs:386
+#| msgid "{}\\u{202F}\\u{D7}\\u{202F}{}"
+msgid "{}{}\\u{202F}\\u{D7}\\u{202F}{}{}"
+msgstr "{}{}\\u{202F}\\u{D7}\\u{202F}{}{}"
+
+#: src/widgets/properties_view.rs:403
+#| msgid "{}\\u{202F}s"
+msgid "{}\\u{202F}DPI"
+msgstr "{}\\u{202F}DPI"
+
+#: src/widgets/properties_view.rs:407
+#| msgid "{}\\u{202F}\\u{D7}\\u{202F}{}"
+msgid "{}\\u{202F}DPI\\u{202F}\\u{D7}\\u{202F}{}\\u{202F}DPI"
+msgstr "{}\\u{202F}DPI\\u{202F}\\u{D7}\\u{202F}{}\\u{202F}DPI"
+
+#: src/widgets/properties_view.rs:435
 msgid "Image Coordinates Copied"
 msgstr "Afbeeldingscoördinaten gekopieerd"
 
@@ -912,63 +1041,95 @@ msgid "URI"
 msgstr "URI"
 
 #: src/widgets/properties_view.ui:66
+msgid "Physical Size"
+msgstr "Fysieke grootte"
+
+#: src/widgets/properties_view.ui:76
+msgid "Resolution"
+msgstr "Resolutie"
+
+#: src/widgets/properties_view.ui:86
 msgid "Image Format"
 msgstr "Afbeeldingsindeling"
 
-#: src/widgets/properties_view.ui:76
+#: src/widgets/properties_view.ui:96
 msgid "File Size"
 msgstr "Bestandsgrootte"
 
-#: src/widgets/properties_view.ui:90
+#: src/widgets/properties_view.ui:110
 msgid "File Created"
 msgstr "Bestand aangemaakt"
 
-#: src/widgets/properties_view.ui:100
+#: src/widgets/properties_view.ui:120
 msgid "File Modified"
 msgstr "Bestand gewijzigd"
 
 #. Translators: This is a label for GPS coordinates
-#: src/widgets/properties_view.ui:114
+#: src/widgets/properties_view.ui:134
 msgid "Location"
 msgstr "Locatie"
 
-#: src/widgets/properties_view.ui:125
+#: src/widgets/properties_view.ui:145
 msgid "Copy Coordinates"
 msgstr "Coördinaten kopiëren"
 
-#: src/widgets/properties_view.ui:136
+#: src/widgets/properties_view.ui:156
 msgid "Open Location"
 msgstr "Locatie openen"
 
-#: src/widgets/properties_view.ui:149
+#: src/widgets/properties_view.ui:169
 msgid "Originally Created"
 msgstr "Origineel aangemaakt"
 
-#: src/widgets/properties_view.ui:159
+#: src/widgets/properties_view.ui:179
+msgid "Creator"
+msgstr "Maker"
+
+#: src/widgets/properties_view.ui:189
+msgid "Copyright"
+msgstr "Copyright"
+
+#: src/widgets/properties_view.ui:199
 msgid "Comment"
 msgstr "Opmerking"
 
-#: src/widgets/properties_view.ui:169
+#: src/widgets/properties_view.ui:209
 msgid "Aperture"
 msgstr "Diafragma"
 
-#: src/widgets/properties_view.ui:179
+#: src/widgets/properties_view.ui:219
 msgid "Exposure"
 msgstr "Belichting"
 
-#: src/widgets/properties_view.ui:189
+#: src/widgets/properties_view.ui:229
 msgid "ISO"
 msgstr "ISO"
 
-#: src/widgets/properties_view.ui:199
+#: src/widgets/properties_view.ui:239
 msgid "Focal Length"
 msgstr "Brandpuntsafstand"
 
-#: src/widgets/properties_view.ui:209
+#: src/widgets/properties_view.ui:249
 msgid "Maker, Model"
 msgstr "Ontwikkelaar, Model"
 
-#: src/widgets/window.rs:206
+#: src/widgets/properties_view.ui:259
+msgid "Lens"
+msgstr "Lens"
+
+#: src/widgets/properties_view.ui:269
+msgid "Software"
+msgstr "Software"
+
+#: src/widgets/properties_view.ui:279
+msgid "ICC Profile"
+msgstr "ICC-profiel"
+
+#: src/widgets/properties_view.ui:289
+msgid "CICP"
+msgstr "CICP"
+
+#: src/widgets/window.rs:254
 msgid "Show Details"
 msgstr "Details weergeven"
 
@@ -991,9 +1152,6 @@ msgstr "Details weergeven"
 #~ msgctxt "shortcut window"
 #~ msgid "Gestures"
 #~ msgstr "Gebaren"
-
-#~ msgid "{} %"
-#~ msgstr "{} %"
 
 #~ msgid "Copy to Clipboard"
 #~ msgstr "Kopiëren naar klembord"
