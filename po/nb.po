@@ -2,15 +2,16 @@
 # Copyright (C) 2023 loupe's COPYRIGHT HOLDER
 # This file is distributed under the same license as the loupe package.
 # Brage Fuglseth <bragefuglseth@gnome.org>, 2023.
+# Kjartan Maraas <kmaraas@gnome.org>, 2026
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2026-04-27 11:32+0000\n"
-"PO-Revision-Date: 2026-06-07 19:36+0200\n"
-"Last-Translator: Brage <bragefuglseth@gnome.org>\n"
-"Language-Team: Norwegian Bokmål <nb@li.org>\n"
+"POT-Creation-Date: 2026-08-06 11:47+0000\n"
+"PO-Revision-Date: 2026-08-10 14:45+0200\n"
+"Last-Translator: Kjartan Maraas <kmaraas@gnome.org>\n"
+"Language-Team: Norwegian Bokmål <i18n-nb@lister.ping.uio.no>\n"
 "Language: nb\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,7 +21,7 @@ msgstr ""
 
 #: data/org.gnome.Loupe.desktop.in.in:2
 #: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:32
-#: src/widgets/image_window.rs:880
+#: src/widgets/image_window.rs:879
 msgid "Image Viewer"
 msgstr "Bildevisning"
 
@@ -38,7 +39,8 @@ msgid "Show the image properties sidebar"
 msgstr "Vis bildeegenskaper"
 
 #. developer_name tag deprecated with Appstream 1.0
-#: data/org.gnome.Loupe.metainfo.xml.in.in:8 src/about.rs:35
+#: data/org.gnome.Loupe.metainfo.xml.in.in:8
+#: data/org.gnome.Loupe.metainfo.xml.in.in:10 src/about.rs:35
 msgid "The GNOME Project"
 msgstr "GNOME"
 
@@ -49,6 +51,18 @@ msgid ""
 msgstr ""
 "Utforsk bilder, vis metadata og gjør enkle redigeringsoppgaver som klipping, "
 "rotering eller vending."
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:28
+msgid "Main Window"
+msgstr "Hovedvindu"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:32
+msgid "Crop Tool"
+msgstr "Beskjæringsverktøy"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:36
+msgid "Image Properties Panel"
+msgstr "Bildeegenskaper"
 
 #: data/resources/shortcuts-dialog.ui:6
 msgctxt "shortcut window"
@@ -270,7 +284,9 @@ msgstr "Bruk beskjæring"
 #. Translators: Replace "translator-credits" with your names, one name per line
 #: src/about.rs:45
 msgid "translator-credits"
-msgstr "Brage Fuglseth https://bragefuglseth.dev"
+msgstr ""
+"Brage Fuglseth https://bragefuglseth.dev\n"
+"Kjartan Maraas <kmaraas@gnome.org>"
 
 #: src/about.rs:46
 msgid "Copyright © 2020–2024 Christopher Davis et al."
@@ -281,43 +297,84 @@ msgid "Could not list other files in directory."
 msgstr "Opplisting av andre filer mislyktes."
 
 #. Translators: Display of the f-number <https://en.wikipedia.org/wiki/F-number>. {} will be replaced with the number
-#: src/metadata.rs:256
+#: src/metadata.rs:270
 msgid "\\u{192}\\u{2215}{}"
 msgstr "\\u{192}\\u{2215}{}"
 
 #. Translators: Fractional exposure time (photography) in seconds
-#: src/metadata.rs:269
+#: src/metadata.rs:283
 msgid "1\\u{2215}{}\\u{202F}s"
 msgstr "1\\u{2215}{}u{202F} s"
 
 #. Translators: Exposure time (photography) in seconds
-#: src/metadata.rs:277
+#: src/metadata.rs:291
 msgid "{}\\u{202F}s"
 msgstr "{}\\u{202F} s"
 
-#: src/metadata.rs:291
+#: src/metadata.rs:305
 msgid "{}\\u{202F}mm"
 msgstr "{}\\u{202F} mm"
 
 #. Translators: short for "north" in GPS coordinate
-#: src/metadata.rs:331
+#: src/metadata.rs:395
 msgid "N"
 msgstr "N"
 
 #. Translators: short for "south" in GPS coordinate
-#: src/metadata.rs:335
+#: src/metadata.rs:399
 msgid "S"
 msgstr "S"
 
 #. Translators: short for "east" in GPS coordinate
-#: src/metadata.rs:344
+#: src/metadata.rs:408
 msgid "E"
 msgstr "Ø"
 
 #. Translators: short for "west" in GPS coordinate
-#: src/metadata.rs:348
+#: src/metadata.rs:412
 msgid "W"
 msgstr "V"
+
+#: src/metadata.rs:492
+msgid "DCI P3"
+msgstr "DCI P3"
+
+#: src/metadata.rs:493
+msgid "Display P3"
+msgstr ""
+
+#: src/metadata.rs:494
+msgid "Rec.2020"
+msgstr ""
+
+#: src/metadata.rs:495
+msgid "sRGB"
+msgstr "sRGB"
+
+#: src/metadata.rs:496 src/metadata.rs:504
+msgid "Unspecified"
+msgstr "Uspesifisert"
+
+#: src/metadata.rs:497 src/metadata.rs:506 src/metadata.rs:516
+#, rust-format
+msgid "Unknown ({})"
+msgstr "Ukjent ({})"
+
+#: src/metadata.rs:503
+msgid "ICtCp"
+msgstr "ICtCp"
+
+#: src/metadata.rs:512
+msgid "DCI"
+msgstr "DCI"
+
+#: src/metadata.rs:513
+msgid "PQ"
+msgstr "PQ"
+
+#: src/metadata.rs:514
+msgid "Gamma 2.4"
+msgstr "Gamma 2.4"
 
 #. / Returns localized date + time format
 #. Translators: This is the date and time format we use in metadata output etc.
@@ -446,32 +503,62 @@ msgid "Crop Selection"
 msgstr "Beskjær"
 
 #. Translators: Filename suffix, {} is replaced by a number
-#: src/widgets/edit_window.rs:196
+#: src/widgets/edit_window.rs:207
 #, rust-format
 msgid " (Edited)"
 msgid_plural " (Edited {})"
 msgstr[0] " (redigert)"
 msgstr[1] " (redigert {})"
 
-#: src/widgets/edit_window.rs:290 src/widgets/edit_window.rs:316
+#: src/widgets/edit_window.rs:292
+msgid "Moving Original to Trash"
+msgstr "Flytt original til papirkurv"
+
+#: src/widgets/edit_window.rs:306 src/widgets/edit_window.rs:335
 msgid "Failed to save image."
 msgstr "Lagring av bilde mislyktes."
 
-#: src/widgets/edit_window.rs:344
+#: src/widgets/edit_window.rs:315
+msgid "Finalizing Save Operation"
+msgstr ""
+
+#: src/widgets/edit_window.rs:367
 msgid "Editing Image"
 msgstr "Redigerer bilde"
 
-#: src/widgets/edit_window.rs:361
+#: src/widgets/edit_window.rs:384
 msgid "Failed to edit image."
 msgstr "Redigering av bilde mislyktes."
 
-#: src/widgets/edit_window.rs:371 src/widgets/edit_window.rs:394
+#: src/widgets/edit_window.rs:391
+msgid "Saving Image"
+msgstr "Lagrer bilde"
+
+#: src/widgets/edit_window.rs:410
 msgid "Failed to Save Image"
 msgstr "Lagring av bildet mislyktes"
 
-#: src/widgets/edit_window.rs:377
-msgid "Saving Image"
-msgstr "Lagrer bilde"
+#: src/widgets/edit_window.rs:526
+msgid "Save Changes?"
+msgstr ""
+
+#: src/widgets/edit_window.rs:528
+msgid ""
+"There are unsaved image editing changes. Closing without saving will "
+"permanently lose these modifications."
+msgstr ""
+
+#: src/widgets/edit_window.rs:532 src/widgets/image_window.rs:700
+msgid "Cancel"
+msgstr "Avbryt"
+
+#: src/widgets/edit_window.rs:533
+msgid "Discard"
+msgstr "Forkast"
+
+#: src/widgets/edit_window.rs:534
+msgid "Save"
+msgstr "Lagre"
 
 #: src/widgets/edit_window.ui:64
 msgid "_Cancel"
@@ -483,7 +570,7 @@ msgstr "_Lagre"
 
 #: src/widgets/edit_window.ui:92
 msgid "_Save As…"
-msgstr "_Lagre som…"
+msgstr "_Lagre som …"
 
 #: src/widgets/edit_window.ui:100
 msgid "Keep original and create a new file"
@@ -605,11 +692,11 @@ msgstr "Roter mot høyre"
 
 #. Translators: This is a toast notification, informing the user that
 #. an image has been set as background.
-#: src/widgets/image_view.rs:866
+#: src/widgets/image_view.rs:870
 msgid "Set as background."
 msgstr "Bruk som bakgrunn."
 
-#: src/widgets/image_view.rs:872
+#: src/widgets/image_view.rs:876
 msgid "Could not set background."
 msgstr "Endring av bakgrunn mislyktes."
 
@@ -645,52 +732,48 @@ msgstr "Tilpasset skalering"
 msgid "Zoom to Specified Level"
 msgstr "Skaler til angitt størrelse"
 
-#: src/widgets/image_window.rs:510
+#: src/widgets/image_window.rs:509
 msgid "Supported image formats"
 msgstr "Støttede bildeformater"
 
-#: src/widgets/image_window.rs:516
+#: src/widgets/image_window.rs:515
 msgid "All files"
 msgstr "Alle filer"
 
-#: src/widgets/image_window.rs:523
+#: src/widgets/image_window.rs:522
 msgid "Open Image"
 msgstr "Åpne bilde"
 
-#: src/widgets/image_window.rs:615
+#: src/widgets/image_window.rs:614
 msgid "Image copied to clipboard"
 msgstr "Bilde kopiert til utklippstavlen"
 
-#: src/widgets/image_window.rs:636
+#: src/widgets/image_window.rs:635
 msgid "Image moved to trash"
 msgstr "Bilde flyttet til papirkurven"
 
-#: src/widgets/image_window.rs:637
+#: src/widgets/image_window.rs:636
 msgid "Undo"
 msgstr "Angre"
 
-#: src/widgets/image_window.rs:667
+#: src/widgets/image_window.rs:666
 msgid "Failed to move image to trash"
 msgstr "Kunne ikke flytte bilde til papirkurven"
 
-#: src/widgets/image_window.rs:691
+#: src/widgets/image_window.rs:690
 msgid "Permanently Delete Image?"
 msgstr "Slette bilde permanent?"
 
-#: src/widgets/image_window.rs:693
+#: src/widgets/image_window.rs:692
 #, rust-format
 msgid "After deleting the image “{}” it will be permanently lost."
 msgstr "«{}» vil forsvinne for alltid."
 
 #: src/widgets/image_window.rs:701
-msgid "Cancel"
-msgstr "Avbryt"
-
-#: src/widgets/image_window.rs:702
 msgid "Delete"
 msgstr "Slett"
 
-#: src/widgets/image_window.rs:713
+#: src/widgets/image_window.rs:712
 msgid "Failed to delete image"
 msgstr "Sletting av bilde mislyktes"
 
@@ -778,24 +861,24 @@ msgid "px"
 msgstr "px"
 
 #. Translators: {} is a placeholder for the filename
-#: src/widgets/print.rs:364
+#: src/widgets/print.rs:365
 #, rust-format
 msgid "Print “{}”"
 msgstr "Skriv ut «{}»"
 
-#: src/widgets/print.rs:477
+#: src/widgets/print.rs:472
 msgid "Continue…"
 msgstr "Fortsett…"
 
-#: src/widgets/print.rs:478
+#: src/widgets/print.rs:473
 msgid "Print Image"
 msgstr "Skriv ut bilde"
 
-#: src/widgets/print.rs:797
+#: src/widgets/print.rs:801
 msgid "_Scale"
 msgstr "_Skalering"
 
-#: src/widgets/print.rs:800
+#: src/widgets/print.rs:804
 msgid "_Width"
 msgstr "_Bredde"
 
@@ -860,30 +943,74 @@ msgstr "_Dekk område"
 msgid "H_eight"
 msgstr "_Høyde"
 
-#: src/widgets/properties_view.rs:258
+#: src/widgets/properties_view.rs:284
 msgid "Unknown"
 msgstr "Ukjent"
 
 #. Translators: Addition of image being transparent to format name
-#: src/widgets/properties_view.rs:262
+#: src/widgets/properties_view.rs:288
 msgid ", transparent"
 msgstr ", gjennomsiktig"
 
 #. Translators: Addition of image being grayscale to format name
-#: src/widgets/properties_view.rs:267
+#: src/widgets/properties_view.rs:293
 msgid ", grayscale"
 msgstr ", svart-hvitt"
 
 #. Translators: Addition of bit size to format name
-#: src/widgets/properties_view.rs:272
+#: src/widgets/properties_view.rs:298
 msgid ", {}\\u{202F}bit"
 msgstr ", {}\\u{202F}bit"
 
-#: src/widgets/properties_view.rs:290
+#: src/widgets/properties_view.rs:315
 msgid "{}\\u{202F}\\u{D7}\\u{202F}{}"
 msgstr "{}\\u{202F}\\u{D7}\\u{202F}{}"
 
-#: src/widgets/properties_view.rs:326
+#. Translators: Shorthand for centimeter
+#: src/widgets/properties_view.rs:354
+msgid " cm"
+msgstr ""
+
+#. Translators: Shorthand for inch
+#: src/widgets/properties_view.rs:358
+msgid "″"
+msgstr ""
+
+#. Translators: Shorthand for meter
+#: src/widgets/properties_view.rs:362
+msgid " m"
+msgstr ""
+
+#. Translators: Shorthand for millimeter
+#: src/widgets/properties_view.rs:366
+msgid " mm"
+msgstr ""
+
+#. Translators: Shorthand for pica (unit)
+#: src/widgets/properties_view.rs:370
+msgid " pc"
+msgstr ""
+
+#. Translators: Shorthand for pica (unit)
+#: src/widgets/properties_view.rs:374
+msgid " pt"
+msgstr ""
+
+#: src/widgets/properties_view.rs:386
+msgid "{}{}\\u{202F}\\u{D7}\\u{202F}{}{}"
+msgstr "{}{}\\u{202F}\\u{D7}\\u{202F}{}{}"
+
+#: src/widgets/properties_view.rs:403
+msgid "{}\\u{202F}DPI"
+msgstr "{}\\u{202F}DPI"
+
+#: src/widgets/properties_view.rs:407
+#, fuzzy
+#| msgid "{}\\u{202F}\\u{D7}\\u{202F}{}"
+msgid "{}\\u{202F}DPI\\u{202F}\\u{D7}\\u{202F}{}\\u{202F}DPI"
+msgstr "{}\\u{202F}\\u{D7}\\u{202F}{}"
+
+#: src/widgets/properties_view.rs:435
 msgid "Image Coordinates Copied"
 msgstr "Bildekoordinater kopiert"
 
@@ -900,62 +1027,94 @@ msgid "URI"
 msgstr "Adresse"
 
 #: src/widgets/properties_view.ui:66
+msgid "Physical Size"
+msgstr "Fysisk størrelse"
+
+#: src/widgets/properties_view.ui:76
+msgid "Resolution"
+msgstr "Oppløsning"
+
+#: src/widgets/properties_view.ui:86
 msgid "Image Format"
 msgstr "Bildeformat"
 
-#: src/widgets/properties_view.ui:76
+#: src/widgets/properties_view.ui:96
 msgid "File Size"
 msgstr "Størrelse"
 
-#: src/widgets/properties_view.ui:90
+#: src/widgets/properties_view.ui:110
 msgid "File Created"
 msgstr "Opprettet"
 
-#: src/widgets/properties_view.ui:100
+#: src/widgets/properties_view.ui:120
 msgid "File Modified"
 msgstr "Endret"
 
 #. Translators: This is a label for GPS coordinates
-#: src/widgets/properties_view.ui:114
+#: src/widgets/properties_view.ui:134
 msgid "Location"
 msgstr "Plassering"
 
-#: src/widgets/properties_view.ui:125
+#: src/widgets/properties_view.ui:145
 msgid "Copy Coordinates"
 msgstr "Kopier koordinater"
 
-#: src/widgets/properties_view.ui:136
+#: src/widgets/properties_view.ui:156
 msgid "Open Location"
 msgstr "Åpne plassering"
 
-#: src/widgets/properties_view.ui:149
+#: src/widgets/properties_view.ui:169
 msgid "Originally Created"
 msgstr "Opprinnelig opprettet"
 
-#: src/widgets/properties_view.ui:159
+#: src/widgets/properties_view.ui:179
+msgid "Creator"
+msgstr "Laget av"
+
+#: src/widgets/properties_view.ui:189
+msgid "Copyright"
+msgstr "Opphavsrett"
+
+#: src/widgets/properties_view.ui:199
 msgid "Comment"
 msgstr "Kommentar"
 
-#: src/widgets/properties_view.ui:169
+#: src/widgets/properties_view.ui:209
 msgid "Aperture"
 msgstr "Blenderverdi"
 
-#: src/widgets/properties_view.ui:179
+#: src/widgets/properties_view.ui:219
 msgid "Exposure"
 msgstr "Lukkerhastighet"
 
-#: src/widgets/properties_view.ui:189
+#: src/widgets/properties_view.ui:229
 msgid "ISO"
 msgstr "ISO"
 
-#: src/widgets/properties_view.ui:199
+#: src/widgets/properties_view.ui:239
 msgid "Focal Length"
 msgstr "Brennvidde"
 
-#: src/widgets/properties_view.ui:209
+#: src/widgets/properties_view.ui:249
 msgid "Maker, Model"
 msgstr "Produsent og modell"
 
-#: src/widgets/window.rs:225
+#: src/widgets/properties_view.ui:259
+msgid "Lens"
+msgstr "Linse"
+
+#: src/widgets/properties_view.ui:269
+msgid "Software"
+msgstr "Programvare"
+
+#: src/widgets/properties_view.ui:279
+msgid "ICC Profile"
+msgstr "ICC-profil"
+
+#: src/widgets/properties_view.ui:289
+msgid "CICP"
+msgstr "CICP"
+
+#: src/widgets/window.rs:254
 msgid "Show Details"
 msgstr "Vis informasjon"
