@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
 "POT-Creation-Date: 2026-08-06 11:47+0000\n"
-"PO-Revision-Date: 2026-08-10 14:45+0200\n"
+"PO-Revision-Date: 2026-08-24 20:45+0200\n"
 "Last-Translator: Kjartan Maraas <kmaraas@gnome.org>\n"
 "Language-Team: Norwegian Bokmål <i18n-nb@lister.ping.uio.no>\n"
 "Language: nb\n"
@@ -520,7 +520,7 @@ msgstr "Lagring av bilde mislyktes."
 
 #: src/widgets/edit_window.rs:315
 msgid "Finalizing Save Operation"
-msgstr ""
+msgstr "Avslutter lagringsoperasjon"
 
 #: src/widgets/edit_window.rs:367
 msgid "Editing Image"
@@ -540,13 +540,13 @@ msgstr "Lagring av bildet mislyktes"
 
 #: src/widgets/edit_window.rs:526
 msgid "Save Changes?"
-msgstr ""
+msgstr "Lagre endringer?"
 
 #: src/widgets/edit_window.rs:528
 msgid ""
 "There are unsaved image editing changes. Closing without saving will "
 "permanently lose these modifications."
-msgstr ""
+msgstr "Det finnes endringer på bildet som ikke er lagret. Hvis du lukker uten å lagre vil du miste disse endringene."
 
 #: src/widgets/edit_window.rs:532 src/widgets/image_window.rs:700
 msgid "Cancel"
@@ -969,32 +969,32 @@ msgstr "{}\\u{202F}\\u{D7}\\u{202F}{}"
 #. Translators: Shorthand for centimeter
 #: src/widgets/properties_view.rs:354
 msgid " cm"
-msgstr ""
+msgstr " cm"
 
 #. Translators: Shorthand for inch
 #: src/widgets/properties_view.rs:358
 msgid "″"
-msgstr ""
+msgstr "«"
 
 #. Translators: Shorthand for meter
 #: src/widgets/properties_view.rs:362
 msgid " m"
-msgstr ""
+msgstr " m"
 
 #. Translators: Shorthand for millimeter
 #: src/widgets/properties_view.rs:366
 msgid " mm"
-msgstr ""
+msgstr " mm"
 
 #. Translators: Shorthand for pica (unit)
 #: src/widgets/properties_view.rs:370
 msgid " pc"
-msgstr ""
+msgstr " pc"
 
 #. Translators: Shorthand for pica (unit)
 #: src/widgets/properties_view.rs:374
 msgid " pt"
-msgstr ""
+msgstr " pt"
 
 #: src/widgets/properties_view.rs:386
 msgid "{}{}\\u{202F}\\u{D7}\\u{202F}{}{}"
@@ -1005,10 +1005,8 @@ msgid "{}\\u{202F}DPI"
 msgstr "{}\\u{202F}DPI"
 
 #: src/widgets/properties_view.rs:407
-#, fuzzy
-#| msgid "{}\\u{202F}\\u{D7}\\u{202F}{}"
 msgid "{}\\u{202F}DPI\\u{202F}\\u{D7}\\u{202F}{}\\u{202F}DPI"
-msgstr "{}\\u{202F}\\u{D7}\\u{202F}{}"
+msgstr "{}\\u{202F}DPI\\u{202F}\\u{D7}\\u{202F}{}\\u{202F}DPI"
 
 #: src/widgets/properties_view.rs:435
 msgid "Image Coordinates Copied"
