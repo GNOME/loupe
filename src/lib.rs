@@ -102,7 +102,9 @@ pub fn main() -> glib::ExitCode {
 
     tracing::debug!("Logger initialized");
 
-    setlocale(LocaleCategory::LcAll, "");
+    unsafe {
+        setlocale(LocaleCategory::LcAll, "");
+    }
     bindtextdomain("loupe", config::LOCALEDIR).unwrap();
     textdomain("loupe").unwrap();
 
