@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2026-01-30 22:01+0000\n"
-"PO-Revision-Date: 2026-02-12 22:47+0200\n"
+"POT-Creation-Date: 2026-08-26 16:17+0000\n"
+"PO-Revision-Date: 2026-08-27 22:15+0300\n"
 "Last-Translator: Aurimas Černius <aurimas.cernius@mailo.com>\n"
 "Language-Team: Lithuanian <gnome-lt@lists.akl.lt>\n"
 "Language: lt\n"
@@ -17,11 +17,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "(n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 3.8\n"
+"X-Generator: Poedit 3.9\n"
 
 #: data/org.gnome.Loupe.desktop.in.in:2
 #: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:32
-#: src/widgets/image_window.rs:897
+#: src/widgets/image_window.rs:879
 msgid "Image Viewer"
 msgstr "Paveikslėlių žiūryklė"
 
@@ -39,7 +39,8 @@ msgid "Show the image properties sidebar"
 msgstr "Rodyti paveikslėlio savybes šoninėje juostoje"
 
 #. developer_name tag deprecated with Appstream 1.0
-#: data/org.gnome.Loupe.metainfo.xml.in.in:8 src/about.rs:35
+#: data/org.gnome.Loupe.metainfo.xml.in.in:8
+#: data/org.gnome.Loupe.metainfo.xml.in.in:10 src/about.rs:35
 msgid "The GNOME Project"
 msgstr "GNOME projektas"
 
@@ -50,6 +51,18 @@ msgid ""
 msgstr ""
 "Naršykite paveikslėlius, matykite jų meta-duomenis bei atlikite greitus "
 "pakeitimus apkirpdami, pasukdami ar apversdami juos."
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:28
+msgid "Main Window"
+msgstr "Pagrindinis langas"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:32
+msgid "Crop Tool"
+msgstr "Apkirpimo įrankis"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:36
+msgid "Image Properties Panel"
+msgstr "Paveikslėlio savybių skydelis"
 
 #: data/resources/shortcuts-dialog.ui:6
 msgctxt "shortcut window"
@@ -282,43 +295,84 @@ msgid "Could not list other files in directory."
 msgstr "Nepavyko išvardinti kitų aplanko failų."
 
 #. Translators: Display of the f-number <https://en.wikipedia.org/wiki/F-number>. {} will be replaced with the number
-#: src/metadata.rs:256
+#: src/metadata.rs:270
 msgid "\\u{192}\\u{2215}{}"
 msgstr "\\u{192}\\u{2215}{}"
 
 #. Translators: Fractional exposure time (photography) in seconds
-#: src/metadata.rs:269
+#: src/metadata.rs:283
 msgid "1\\u{2215}{}\\u{202F}s"
 msgstr "1\\u{2215}{}\\u{202F}s"
 
 #. Translators: Exposure time (photography) in seconds
-#: src/metadata.rs:277
+#: src/metadata.rs:291
 msgid "{}\\u{202F}s"
 msgstr "{}\\u{202F}s"
 
-#: src/metadata.rs:291
+#: src/metadata.rs:305
 msgid "{}\\u{202F}mm"
 msgstr "{}\\u{202F}mm"
 
 #. Translators: short for "north" in GPS coordinate
-#: src/metadata.rs:331
+#: src/metadata.rs:395
 msgid "N"
 msgstr "Š"
 
 #. Translators: short for "south" in GPS coordinate
-#: src/metadata.rs:335
+#: src/metadata.rs:399
 msgid "S"
 msgstr "P"
 
 #. Translators: short for "east" in GPS coordinate
-#: src/metadata.rs:344
+#: src/metadata.rs:408
 msgid "E"
 msgstr "R"
 
 #. Translators: short for "west" in GPS coordinate
-#: src/metadata.rs:348
+#: src/metadata.rs:412
 msgid "W"
 msgstr "V"
+
+#: src/metadata.rs:492
+msgid "DCI P3"
+msgstr "DCI P3"
+
+#: src/metadata.rs:493
+msgid "Display P3"
+msgstr "Vaizduoklis P3"
+
+#: src/metadata.rs:494
+msgid "Rec.2020"
+msgstr "Rec.2020"
+
+#: src/metadata.rs:495
+msgid "sRGB"
+msgstr "sRGB"
+
+#: src/metadata.rs:496 src/metadata.rs:504
+msgid "Unspecified"
+msgstr "Nenurodyta"
+
+#: src/metadata.rs:497 src/metadata.rs:506 src/metadata.rs:516
+#, rust-format
+msgid "Unknown ({})"
+msgstr "Nežinoma ({})"
+
+#: src/metadata.rs:503
+msgid "ICtCp"
+msgstr "ICtCp"
+
+#: src/metadata.rs:512
+msgid "DCI"
+msgstr "DCI"
+
+#: src/metadata.rs:513
+msgid "PQ"
+msgstr "PQ"
+
+#: src/metadata.rs:514
+msgid "Gamma 2.4"
+msgstr "Gamma 2.4"
 
 #. / Returns localized date + time format
 #. Translators: This is the date and time format we use in metadata output etc.
@@ -447,7 +501,7 @@ msgid "Crop Selection"
 msgstr "Apkirpti žymėjimą"
 
 #. Translators: Filename suffix, {} is replaced by a number
-#: src/widgets/edit_window.rs:195
+#: src/widgets/edit_window.rs:207
 #, rust-format
 msgid " (Edited)"
 msgid_plural " (Edited {})"
@@ -455,25 +509,57 @@ msgstr[0] " (Pakeista {})"
 msgstr[1] " (Pakeista {})"
 msgstr[2] " (Pakeista {})"
 
-#: src/widgets/edit_window.rs:289 src/widgets/edit_window.rs:315
+#: src/widgets/edit_window.rs:292
+msgid "Moving Original to Trash"
+msgstr "Perkelti originalą į šiukšlinę"
+
+#: src/widgets/edit_window.rs:306 src/widgets/edit_window.rs:335
 msgid "Failed to save image."
 msgstr "Nepavyko įrašyti paveikslėlio."
 
-#: src/widgets/edit_window.rs:343
+#: src/widgets/edit_window.rs:315
+msgid "Finalizing Save Operation"
+msgstr "Baigiamas įrašymo veiksmas"
+
+#: src/widgets/edit_window.rs:367
 msgid "Editing Image"
 msgstr "Redaguojamas paveikslėlis"
 
-#: src/widgets/edit_window.rs:360
+#: src/widgets/edit_window.rs:384
 msgid "Failed to edit image."
 msgstr "Nepavyko redaguoti paveikslėlio."
 
-#: src/widgets/edit_window.rs:370 src/widgets/edit_window.rs:393
+#: src/widgets/edit_window.rs:391
+msgid "Saving Image"
+msgstr "Įrašomas paveikslėlis"
+
+#: src/widgets/edit_window.rs:410
 msgid "Failed to Save Image"
 msgstr "Nepavyko įrašyti paveikslėlio"
 
-#: src/widgets/edit_window.rs:376
-msgid "Saving Image"
-msgstr "Įrašomas paveikslėlis"
+#: src/widgets/edit_window.rs:526
+msgid "Save Changes?"
+msgstr "Įrašyti pakeitimus?"
+
+#: src/widgets/edit_window.rs:528
+msgid ""
+"There are unsaved image editing changes. Closing without saving will "
+"permanently lose these modifications."
+msgstr ""
+"Yra neįrašytų paveikslėlio redagavimų. Užvėrus neįrašant šie pakeitimai bus "
+"negrįžtamai prarasti."
+
+#: src/widgets/edit_window.rs:532 src/widgets/image_window.rs:700
+msgid "Cancel"
+msgstr "Atsisakyti"
+
+#: src/widgets/edit_window.rs:533
+msgid "Discard"
+msgstr "Atmesti"
+
+#: src/widgets/edit_window.rs:534
+msgid "Save"
+msgstr "Įrašyti"
 
 #: src/widgets/edit_window.ui:64
 msgid "_Cancel"
@@ -607,11 +693,11 @@ msgstr "Pasukti į dešinę"
 
 #. Translators: This is a toast notification, informing the user that
 #. an image has been set as background.
-#: src/widgets/image_view.rs:866
+#: src/widgets/image_view.rs:870
 msgid "Set as background."
 msgstr "Nustatyti kaip foną."
 
-#: src/widgets/image_view.rs:872
+#: src/widgets/image_view.rs:876
 msgid "Could not set background."
 msgstr "Nepavyko nustatyti fono."
 
@@ -647,52 +733,48 @@ msgstr "Pasirinktinis mastelis"
 msgid "Zoom to Specified Level"
 msgstr "Tam tikro lygio mastelis"
 
-#: src/widgets/image_window.rs:527
+#: src/widgets/image_window.rs:509
 msgid "Supported image formats"
 msgstr "Palaikomi paveikslėlių formatai"
 
-#: src/widgets/image_window.rs:533
+#: src/widgets/image_window.rs:515
 msgid "All files"
 msgstr "Visi failai"
 
-#: src/widgets/image_window.rs:540
+#: src/widgets/image_window.rs:522
 msgid "Open Image"
 msgstr "Atverti paveikslėlį"
 
-#: src/widgets/image_window.rs:632
+#: src/widgets/image_window.rs:614
 msgid "Image copied to clipboard"
 msgstr "Paveikslėlis nukopijuotas į iškarpinę"
 
-#: src/widgets/image_window.rs:653
+#: src/widgets/image_window.rs:635
 msgid "Image moved to trash"
 msgstr "Paveikslėlis perkeltas į šiukšlinę"
 
-#: src/widgets/image_window.rs:654
+#: src/widgets/image_window.rs:636
 msgid "Undo"
 msgstr "Atšaukti"
 
-#: src/widgets/image_window.rs:684
+#: src/widgets/image_window.rs:666
 msgid "Failed to move image to trash"
 msgstr "Nepavyko perkelti paveikslėlio į šiukšlinę"
 
-#: src/widgets/image_window.rs:708
+#: src/widgets/image_window.rs:690
 msgid "Permanently Delete Image?"
 msgstr "Negrįžtamai ištrinti paveikslėlį?"
 
-#: src/widgets/image_window.rs:710
+#: src/widgets/image_window.rs:692
 #, rust-format
 msgid "After deleting the image “{}” it will be permanently lost."
 msgstr "Ištrynus paveikslėlį „{}“, jis bus negrįžtamai prarastas."
 
-#: src/widgets/image_window.rs:718
-msgid "Cancel"
-msgstr "Atsisakyti"
-
-#: src/widgets/image_window.rs:719
+#: src/widgets/image_window.rs:701
 msgid "Delete"
 msgstr "Ištrinti"
 
-#: src/widgets/image_window.rs:730
+#: src/widgets/image_window.rs:712
 msgid "Failed to delete image"
 msgstr "Nepavyko ištrinti paveikslėlio"
 
@@ -780,24 +862,24 @@ msgid "px"
 msgstr "piks"
 
 #. Translators: {} is a placeholder for the filename
-#: src/widgets/print.rs:364
+#: src/widgets/print.rs:365
 #, rust-format
 msgid "Print “{}”"
 msgstr "Spausdinti „{}“"
 
-#: src/widgets/print.rs:477
+#: src/widgets/print.rs:472
 msgid "Continue…"
 msgstr "Tęsti…"
 
-#: src/widgets/print.rs:478
+#: src/widgets/print.rs:473
 msgid "Print Image"
 msgstr "Spausdinti paveikslėlį"
 
-#: src/widgets/print.rs:797
+#: src/widgets/print.rs:801
 msgid "_Scale"
 msgstr "_Mastelis"
 
-#: src/widgets/print.rs:800
+#: src/widgets/print.rs:804
 msgid "_Width"
 msgstr "_Plotis"
 
@@ -862,30 +944,72 @@ msgstr "Užpildyti _erdvę"
 msgid "H_eight"
 msgstr "_Aukštis"
 
-#: src/widgets/properties_view.rs:258
+#: src/widgets/properties_view.rs:284
 msgid "Unknown"
 msgstr "Nežinoma"
 
 #. Translators: Addition of image being transparent to format name
-#: src/widgets/properties_view.rs:262
+#: src/widgets/properties_view.rs:288
 msgid ", transparent"
 msgstr ", permatoma"
 
 #. Translators: Addition of image being grayscale to format name
-#: src/widgets/properties_view.rs:267
+#: src/widgets/properties_view.rs:293
 msgid ", grayscale"
 msgstr ", pilkos skalės"
 
 #. Translators: Addition of bit size to format name
-#: src/widgets/properties_view.rs:272
+#: src/widgets/properties_view.rs:298
 msgid ", {}\\u{202F}bit"
 msgstr ", {}\\u{202F}bit"
 
-#: src/widgets/properties_view.rs:290
+#: src/widgets/properties_view.rs:315
 msgid "{}\\u{202F}\\u{D7}\\u{202F}{}"
 msgstr "{}\\u{202F}\\u{D7}\\u{202F}{}"
 
-#: src/widgets/properties_view.rs:326
+#. Translators: Shorthand for centimeter
+#: src/widgets/properties_view.rs:354
+msgid " cm"
+msgstr "cm"
+
+#. Translators: Shorthand for inch
+#: src/widgets/properties_view.rs:358
+msgid "″"
+msgstr "″"
+
+#. Translators: Shorthand for meter
+#: src/widgets/properties_view.rs:362
+msgid " m"
+msgstr " m"
+
+#. Translators: Shorthand for millimeter
+#: src/widgets/properties_view.rs:366
+msgid " mm"
+msgstr " mm"
+
+#. Translators: Shorthand for pica (unit)
+#: src/widgets/properties_view.rs:370
+msgid " pc"
+msgstr " pc"
+
+#. Translators: Shorthand for pica (unit)
+#: src/widgets/properties_view.rs:374
+msgid " pt"
+msgstr " tšk"
+
+#: src/widgets/properties_view.rs:386
+msgid "{}{}\\u{202F}\\u{D7}\\u{202F}{}{}"
+msgstr "{}{}\\u{202F}\\u{D7}\\u{202F}{}{}"
+
+#: src/widgets/properties_view.rs:403
+msgid "{}\\u{202F}DPI"
+msgstr "{}\\u{202F}DPI"
+
+#: src/widgets/properties_view.rs:407
+msgid "{}\\u{202F}DPI\\u{202F}\\u{D7}\\u{202F}{}\\u{202F}DPI"
+msgstr "{}\\u{202F}DPI\\u{202F}\\u{D7}\\u{202F}{}\\u{202F}DPI"
+
+#: src/widgets/properties_view.rs:435
 msgid "Image Coordinates Copied"
 msgstr "Paveikslėlio koordinatės nukopijuotos"
 
@@ -902,63 +1026,95 @@ msgid "URI"
 msgstr "URI"
 
 #: src/widgets/properties_view.ui:66
+msgid "Physical Size"
+msgstr "Fizinis dydis"
+
+#: src/widgets/properties_view.ui:76
+msgid "Resolution"
+msgstr "Raiška"
+
+#: src/widgets/properties_view.ui:86
 msgid "Image Format"
 msgstr "Paveikslėlio formatas"
 
-#: src/widgets/properties_view.ui:76
+#: src/widgets/properties_view.ui:96
 msgid "File Size"
 msgstr "Failo dydis"
 
-#: src/widgets/properties_view.ui:90
+#: src/widgets/properties_view.ui:110
 msgid "File Created"
 msgstr "Failas sukurtas"
 
-#: src/widgets/properties_view.ui:100
+#: src/widgets/properties_view.ui:120
 msgid "File Modified"
 msgstr "Failas pakeistas"
 
 #. Translators: This is a label for GPS coordinates
-#: src/widgets/properties_view.ui:114
+#: src/widgets/properties_view.ui:134
 msgid "Location"
 msgstr "Vieta"
 
-#: src/widgets/properties_view.ui:125
+#: src/widgets/properties_view.ui:145
 msgid "Copy Coordinates"
 msgstr "Kopijuoti koordinates"
 
-#: src/widgets/properties_view.ui:136
+#: src/widgets/properties_view.ui:156
 msgid "Open Location"
 msgstr "Atverti vietą"
 
-#: src/widgets/properties_view.ui:149
+#: src/widgets/properties_view.ui:169
 msgid "Originally Created"
 msgstr "Sukurtas"
 
-#: src/widgets/properties_view.ui:159
+#: src/widgets/properties_view.ui:179
+msgid "Creator"
+msgstr "Sukūrė"
+
+#: src/widgets/properties_view.ui:189
+msgid "Copyright"
+msgstr "Autorių teisės"
+
+#: src/widgets/properties_view.ui:199
 msgid "Comment"
 msgstr "Komentaras"
 
-#: src/widgets/properties_view.ui:169
+#: src/widgets/properties_view.ui:209
 msgid "Aperture"
 msgstr "Diafragma"
 
-#: src/widgets/properties_view.ui:179
+#: src/widgets/properties_view.ui:219
 msgid "Exposure"
 msgstr "Išlaikymas"
 
-#: src/widgets/properties_view.ui:189
+#: src/widgets/properties_view.ui:229
 msgid "ISO"
 msgstr "ISO"
 
-#: src/widgets/properties_view.ui:199
+#: src/widgets/properties_view.ui:239
 msgid "Focal Length"
 msgstr "Židinio nuotolis"
 
-#: src/widgets/properties_view.ui:209
+#: src/widgets/properties_view.ui:249
 msgid "Maker, Model"
 msgstr "Gamintojas, modelis"
 
-#: src/widgets/window.rs:206
+#: src/widgets/properties_view.ui:259
+msgid "Lens"
+msgstr "Lęšis"
+
+#: src/widgets/properties_view.ui:269
+msgid "Software"
+msgstr "Programinė įranga"
+
+#: src/widgets/properties_view.ui:279
+msgid "ICC Profile"
+msgstr "ICC profilis"
+
+#: src/widgets/properties_view.ui:289
+msgid "CICP"
+msgstr "CICP"
+
+#: src/widgets/window.rs:254
 msgid "Show Details"
 msgstr "Rodyti detales"
 
@@ -980,9 +1136,6 @@ msgstr "Rodyti detales"
 #~ msgctxt "shortcut window"
 #~ msgid "Gestures"
 #~ msgstr "Gestai"
-
-#~ msgid "{} %"
-#~ msgstr "{} %"
 
 #~ msgid "Copy to Clipboard"
 #~ msgstr "Kopijuoti į iškarpinę"
