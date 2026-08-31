@@ -76,6 +76,7 @@ test(
     '--',
     '--test-threads=1',
   ],
+  env: cargo_env,
   is_parallel: false,
   timeout: 1800,
 )
