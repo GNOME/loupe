@@ -71,7 +71,7 @@
   </categories>
 
   <releases>
-    <release version="51.beta" date="2026-07-31">
+    <release version="51.rc" date="2026-09-01">
       <description>
         <p>Loupe now presents more metadata, like the creator and copyright information, the images color profile, as well as camera lens information and information about the used software.</p>
       </description>

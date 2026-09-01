@@ -1,3 +1,10 @@
+## 51.rc (2026-09-01)
+
+### Fixed
+
+- After editing a file and pressing cancel, ask for saving the image instead of waiting for closing the global window.
+- After editing a file, unsaved changes were still reported after using the "Save as…" feature.
+
 ## 51.beta (2026-07-31)
 
 ### Added
