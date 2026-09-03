@@ -1,23 +1,29 @@
 # Norwegian Bokmål translation for loupe.
 # Copyright (C) 2023 loupe's COPYRIGHT HOLDER
 # This file is distributed under the same license as the loupe package.
-# Brage Fuglseth <bragefuglseth@gnome.org>, 2023.
 # Kjartan Maraas <kmaraas@gnome.org>, 2026
+# Brage Fuglseth <bragefuglseth@gnome.org>, 2023-2026.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2026-08-06 11:47+0000\n"
-"PO-Revision-Date: 2026-08-24 20:45+0200\n"
-"Last-Translator: Kjartan Maraas <kmaraas@gnome.org>\n"
-"Language-Team: Norwegian Bokmål <i18n-nb@lister.ping.uio.no>\n"
+"POT-Creation-Date: 2026-09-01 12:44+0000\n"
+"PO-Revision-Date: 2026-09-03 23:15+0200\n"
+"Last-Translator: Brage Fuglseth <bragefuglseth@gnome.org>\n"
+"Language-Team: Norwegian Bokmål\n"
 "Language: nb\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.9\n"
+"X-Generator: Gtranslator 50.0\n"
+"X-DL-VCS-Web: https://gitlab.gnome.org/GNOME/loupe\n"
+"X-DL-Lang: nb\n"
+"X-DL-Module: loupe\n"
+"X-DL-Branch: main\n"
+"X-DL-Domain: po\n"
+"X-DL-State: None\n"
 
 #: data/org.gnome.Loupe.desktop.in.in:2
 #: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:32
@@ -304,7 +310,7 @@ msgstr "\\u{192}\\u{2215}{}"
 #. Translators: Fractional exposure time (photography) in seconds
 #: src/metadata.rs:283
 msgid "1\\u{2215}{}\\u{202F}s"
-msgstr "1\\u{2215}{}u{202F} s"
+msgstr "1\\u{2215}{}u\\{202F} s"
 
 #. Translators: Exposure time (photography) in seconds
 #: src/metadata.rs:291
@@ -341,11 +347,11 @@ msgstr "DCI P3"
 
 #: src/metadata.rs:493
 msgid "Display P3"
-msgstr ""
+msgstr "Display P3"
 
 #: src/metadata.rs:494
 msgid "Rec.2020"
-msgstr ""
+msgstr "Rec.2020"
 
 #: src/metadata.rs:495
 msgid "sRGB"
@@ -546,7 +552,9 @@ msgstr "Lagre endringer?"
 msgid ""
 "There are unsaved image editing changes. Closing without saving will "
 "permanently lose these modifications."
-msgstr "Det finnes endringer på bildet som ikke er lagret. Hvis du lukker uten å lagre vil du miste disse endringene."
+msgstr ""
+"Det finnes endringer på bildet som ikke er lagret. Hvis du lukker uten å "
+"lagre vil du miste disse endringene."
 
 #: src/widgets/edit_window.rs:532 src/widgets/image_window.rs:700
 msgid "Cancel"
