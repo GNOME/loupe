@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
 "POT-Creation-Date: 2026-09-01 12:44+0000\n"
-"PO-Revision-Date: 2026-09-03 23:15+0200\n"
+"PO-Revision-Date: 2026-09-03 23:18+0200\n"
 "Last-Translator: Brage Fuglseth <bragefuglseth@gnome.org>\n"
 "Language-Team: Norwegian Bokmål\n"
 "Language: nb\n"
@@ -310,7 +310,7 @@ msgstr "\\u{192}\\u{2215}{}"
 #. Translators: Fractional exposure time (photography) in seconds
 #: src/metadata.rs:283
 msgid "1\\u{2215}{}\\u{202F}s"
-msgstr "1\\u{2215}{}u\\{202F} s"
+msgstr "1\\u{2215}{}u\\{202F}s"
 
 #. Translators: Exposure time (photography) in seconds
 #: src/metadata.rs:291
