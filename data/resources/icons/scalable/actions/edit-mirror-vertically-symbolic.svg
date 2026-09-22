@@ -1,2 +1,21 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" height="16px" viewBox="0 0 16 16" width="16px"><path d="m 12 3.984375 c -0.003906 -0.261719 -0.113281 -0.515625 -0.300781 -0.703125 l -3 -2.917969 c -0.390625 -0.3749998 -1.007813 -0.3749998 -1.394531 0 l -3 2.917969 c -0.398438 0.386719 -0.40625 1.019531 -0.019532 1.414062 c 0.382813 0.398438 1.015625 0.40625 1.414063 0.019532 l 1.300781 -1.265625 v 9.183593 l -1.300781 -1.269531 c -0.398438 -0.382812 -1.03125 -0.375 -1.414063 0.019531 c -0.386718 0.398438 -0.378906 1.03125 0.019532 1.414063 l 3 2.917969 c 0.386718 0.378906 1.003906 0.378906 1.394531 0 l 3 -2.917969 c 0.1875 -0.183594 0.296875 -0.4375 0.300781 -0.703125 c 0.003906 -0.261719 -0.097656 -0.519531 -0.28125 -0.710938 c -0.386719 -0.394531 -1.019531 -0.402343 -1.414062 -0.019531 l -1.304688 1.269531 v -9.183593 l 1.304688 1.265625 c 0.394531 0.386718 1.027343 0.378906 1.414062 -0.019532 c 0.183594 -0.1875 0.285156 -0.445312 0.28125 -0.710937 z m 0 0" fill="#222222" fill-rule="evenodd"/></svg>
+<svg gpa:rendering="symbolic" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:gpa="https://www.gtk.org/grappa" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" width="16" height="16" gpa:version="1" gpa:state="0" gpa:state-names="outline empty">
+<path d="M 8.00000095 15 L 7.99999952 0.999999881 M 4 11 L 8.00000095 15 L 12 11 M 12 5 L 7.99999952 0.999999881 L 3.99999976 4.99999952" id="path4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="rgb(0,0,0)" fill="none" gpa:stroke="foreground" class="foreground-stroke transparent-fill" gpa:states="outline" gpa:stroke-minwidth="25%" gpa:stroke-maxwidth="150%" >
+    </path>
+  <metadata>
+    <rdf:RDF>
+      <cc:Work>
+        <cc:license rdf:resource="https://creativecommons.org/publicdomain/zero/1.0/"></cc:license>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>object-flip-vertical arrow mirror</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>Jakub Steiner</dc:title>
+          </cc:Agent>
+        </dc:creator>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+</svg>
