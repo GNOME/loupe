@@ -1,63 +1,65 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg height="16px" viewBox="0 0 16 16" width="16px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <filter id="a" height="100%" width="100%" x="0%" y="0%">
-        <feColorMatrix in="SourceGraphic" type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 1 0"/>
-    </filter>
-    <mask id="b">
-        <g filter="url(#a)">
-            <rect fill-opacity="0.768678" height="16" width="16"/>
-        </g>
-    </mask>
-    <linearGradient id="c" gradientTransform="matrix(0 1.428571 -1.428571 0 427.285702 12.714302)" gradientUnits="userSpaceOnUse" x1="24" x2="38" y1="238" y2="238">
-        <stop offset="0" stop-color="#ffffff"/>
-        <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
-    </linearGradient>
-    <clipPath id="d">
-        <rect height="152" width="192"/>
-    </clipPath>
-    <mask id="e">
-        <g filter="url(#a)">
-            <rect fill-opacity="0.154" height="16" width="16"/>
-        </g>
-    </mask>
-    <clipPath id="f">
-        <rect height="152" width="192"/>
-    </clipPath>
-    <mask id="g">
-        <g filter="url(#a)">
-            <rect fill-opacity="0.154" height="16" width="16"/>
-        </g>
-    </mask>
-    <clipPath id="h">
-        <rect height="152" width="192"/>
-    </clipPath>
-    <mask id="i">
-        <g filter="url(#a)">
-            <rect fill-opacity="0.35" height="16" width="16"/>
-        </g>
-    </mask>
-    <radialGradient id="j" cx="-72" cy="190" gradientTransform="matrix(-1 0 0 1 -12 -123.882362)" gradientUnits="userSpaceOnUse" r="29.937637">
-        <stop offset="0" stop-color="#ffffff"/>
-        <stop offset="0.271152" stop-color="#ffffff" stop-opacity="0.866667"/>
-        <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
-    </radialGradient>
-    <clipPath id="k">
-        <rect height="152" width="192"/>
-    </clipPath>
-    <g clip-path="url(#d)" mask="url(#b)" transform="matrix(1 0 0 1 -168 -16)">
-        <path d="m 93 67 c -5.523438 0 -10 -4.476562 -10 -10 s 4.476562 -10 10 -10 s 10 4.476562 10 10 s -4.476562 10 -10 10 z m 0 0" fill="url(#c)"/>
-    </g>
-    <g clip-path="url(#f)" mask="url(#e)" transform="matrix(1 0 0 1 -168 -16)">
-        <path d="m 11.890625 268.550308 l 15.457031 -15.457031" fill="none" stroke="#ffffff" stroke-linecap="round" stroke-width="1.63784" transform="matrix(1 0 0 1 2 -137.882339)"/>
-    </g>
-    <g clip-path="url(#h)" mask="url(#g)" transform="matrix(1 0 0 1 -168 -16)">
-        <path d="m -170.584656 386.756477 l 16 -16" fill="none" stroke="#ffffff" stroke-linecap="round" stroke-width="2" transform="matrix(1 0 0 1 183.584656 -255.63929)"/>
-    </g>
-    <g clip-path="url(#k)" mask="url(#i)" transform="matrix(1 0 0 1 -168 -16)">
-        <path d="m 30.0625 88.179688 c 0 16.535156 13.402344 29.9375 29.9375 29.9375 s 29.9375 -13.402344 29.9375 -29.9375 c 0 -16.535157 -13.402344 -29.9375 -29.9375 -29.9375 s -29.9375 13.402343 -29.9375 29.9375 z m 0 0" fill="url(#j)"/>
-    </g>
-    <g fill="#241f31">
-        <path d="m 13 1 c 1.644531 0 3 1.355469 3 3 v 8 c 0 1.644531 -1.355469 3 -3 3 h -6.5 c 2.066406 0 3.957031 -1.160156 4.898438 -3 h 1.601562 c 0.570312 0 1 -0.429688 1 -1 v -7 c 0 -0.570312 -0.429688 -1 -1 -1 h -8 c -0.570312 0 -1 0.429688 -1 1 v 0.605469 c -0.796875 0.40625 -1.484375 1 -2 1.730469 v -2.335938 c 0 -1.644531 1.355469 -3 3 -3 z m 0 0"/>
-        <path d="m 6.5 5 c 2.484375 0 4.5 2.015625 4.5 4.5 s -2.015625 4.5 -4.5 4.5 c -0.847656 0 -1.675781 -0.242188 -2.394531 -0.695312 l -2.398438 2.402343 c -0.390625 0.390625 -1.023437 0.390625 -1.414062 0 c -0.3906252 -0.390625 -0.3906252 -1.023437 0 -1.414062 l 2.398437 -2.398438 c -0.449218 -0.71875 -0.691406 -1.546875 -0.691406 -2.394531 c 0 -2.484375 2.015625 -4.5 4.5 -4.5 z m 0 2 c -1.382812 0 -2.5 1.121094 -2.5 2.5 s 1.117188 2.5 2.5 2.5 c 1.378906 0 2.5 -1.121094 2.5 -2.5 s -1.121094 -2.5 -2.5 -2.5 z m 0 0"/>
-    </g>
+<svg
+        xmlns='http://www.w3.org/2000/svg'
+        xmlns:svg='http://www.w3.org/2000/svg'
+        xmlns:rdf='http://www.w3.org/1999/02/22-rdf-syntax-ns#'
+        xmlns:cc='http://creativecommons.org/ns#'
+        xmlns:dc='http://purl.org/dc/elements/1.1/'
+        xmlns:gpa='https://www.gtk.org/grappa'
+        gpa:version='1'
+        gpa:state-names='outline empty'
+        gpa:state='0'
+        id='svg1'
+        width='16'
+        height='16'
+        xml:space='preserve'>
+  <metadata>
+    <rdf:RDF>
+      <cc:Work>
+        <cc:license
+                rdf:resource='https://creativecommons.org/publicdomain/zero/1.0/'/>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>Jakub Steiner</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>loupe image viewer document photo</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <title>folder-loupe</title>
+  <path
+          id='rounded'
+          style=''
+          fill='none'
+          fill-opacity='1'
+          fill-rule='nonzero'
+          stroke='url(#gpa:foreground) rgb(0,0,0)'
+          stroke-opacity='1'
+          stroke-width='2'
+          stroke-linecap='round'
+          stroke-linejoin='round'
+          stroke-miterlimit='4'
+          d='M 15 6 L 15 4 C 15 2.34315, 13.6569 1, 12 1 L 4 1 C 2.34315 1, 1 2.34315, 1 4 L 1 12 C 1 13.6569, 2.34315 15, 4 15 L 6 15 M 13 13 L 15 15 M 13.779 11 C 13.779 12.6569, 12.4359 14, 10.779 14 C 9.12217 14, 7.77903 12.6569, 7.77903 11 C 7.77903 9.34315, 9.12217 8, 10.779 8 C 12.4359 8, 13.779 9.34315, 13.779 11 Z'
+          gpa:stroke-minwidth='25%'
+          gpa:stroke-maxwidth='150%'>
+  </path>
+  <path
+          id='inner'
+          style=''
+          fill='none'
+          fill-rule='nonzero'
+          stroke='url(#gpa:foreground) rgb(0,0,0)'
+          stroke-opacity='1'
+          stroke-width='1'
+          stroke-linecap='round'
+          stroke-linejoin='round'
+          stroke-miterlimit='4'
+          d='M 5 11.488 L 4.25407 11.488 C 3.83114 11.488, 3.49066 11.1475, 3.49066 10.7246 L 3.49066 4.25139 C 3.49066 3.82846, 3.83114 3.48798, 4.25407 3.48798 L 11.7272 3.48798 C 12.1502 3.48798, 12.4907 3.82846, 12.4907 4.25139 L 12.4907 5.50244'
+          gpa:stroke-minwidth='25%'
+          gpa:stroke-maxwidth='150%'>
+  </path>
 </svg>
