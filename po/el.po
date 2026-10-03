@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2026-01-30 22:01+0000\n"
+"POT-Creation-Date: 2026-09-09 12:06+0000\n"
 "PO-Revision-Date: 2026-02-07 21:48+0200\n"
 "Last-Translator: Efstathios Iosifidis <eiosifidis@gmail.com>\n"
 "Language-Team: Greek <gnome-el-list@gnome.org>\n"
@@ -26,7 +26,7 @@ msgstr ""
 
 #: data/org.gnome.Loupe.desktop.in.in:2
 #: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:32
-#: src/widgets/image_window.rs:897
+#: src/widgets/image_window.rs:879
 msgid "Image Viewer"
 msgstr "Πρόγραμμα προβολής εικόνων"
 
@@ -44,7 +44,8 @@ msgid "Show the image properties sidebar"
 msgstr "Προβολή πλευρικής στήλης των ιδιοτήτων της εικόνας"
 
 #. developer_name tag deprecated with Appstream 1.0
-#: data/org.gnome.Loupe.metainfo.xml.in.in:8 src/about.rs:35
+#: data/org.gnome.Loupe.metainfo.xml.in.in:8
+#: data/org.gnome.Loupe.metainfo.xml.in.in:10 src/about.rs:35
 msgid "The GNOME Project"
 msgstr "Το έργο GNOME"
 
@@ -55,6 +56,21 @@ msgid ""
 msgstr ""
 "Εξερευνήστε εικόνες, δείτε τα μεταδεδομένα τους και κάντε γρήγορες "
 "επεξεργασίες, όπως περικοπή, περιστροφή ή αναστροφή."
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:28
+#| msgctxt "shortcut window"
+#| msgid "New Window"
+msgid "Main Window"
+msgstr "Κύριο παράθυρο"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:32
+msgid "Crop Tool"
+msgstr "Εργαλείο περικοπής"
+
+#: data/org.gnome.Loupe.metainfo.xml.in.in:36
+#| msgid "Image Properties"
+msgid "Image Properties Panel"
+msgstr "Πίνακας ιδιοτήτων εικόνας"
 
 #: data/resources/shortcuts-dialog.ui:6
 msgctxt "shortcut window"
@@ -293,43 +309,85 @@ msgid "Could not list other files in directory."
 msgstr "Δεν ήταν δυνατή η λήψη λίστας με τα άλλα αρχεία στον κατάλογο."
 
 #. Translators: Display of the f-number <https://en.wikipedia.org/wiki/F-number>. {} will be replaced with the number
-#: src/metadata.rs:256
+#: src/metadata.rs:270
 msgid "\\u{192}\\u{2215}{}"
 msgstr "\\u{192}\\u{2215}{}"
 
 #. Translators: Fractional exposure time (photography) in seconds
-#: src/metadata.rs:269
+#: src/metadata.rs:283
 msgid "1\\u{2215}{}\\u{202F}s"
 msgstr "1\\u{2215}{}\\u{202F}s"
 
 #. Translators: Exposure time (photography) in seconds
-#: src/metadata.rs:277
+#: src/metadata.rs:291
 msgid "{}\\u{202F}s"
 msgstr "{}\\u{202F}s"
 
-#: src/metadata.rs:291
+#: src/metadata.rs:305
 msgid "{}\\u{202F}mm"
 msgstr "{}\\u{202F}mm"
 
 #. Translators: short for "north" in GPS coordinate
-#: src/metadata.rs:331
+#: src/metadata.rs:395
 msgid "N"
 msgstr "Β"
 
 #. Translators: short for "south" in GPS coordinate
-#: src/metadata.rs:335
+#: src/metadata.rs:399
 msgid "S"
 msgstr "Ν"
 
 #. Translators: short for "east" in GPS coordinate
-#: src/metadata.rs:344
+#: src/metadata.rs:408
 msgid "E"
 msgstr "Α"
 
 #. Translators: short for "west" in GPS coordinate
-#: src/metadata.rs:348
+#: src/metadata.rs:412
 msgid "W"
 msgstr "Δ"
+
+#: src/metadata.rs:492
+msgid "DCI P3"
+msgstr "DCI P3"
+
+#: src/metadata.rs:493
+msgid "Display P3"
+msgstr "Display P3"
+
+#: src/metadata.rs:494
+msgid "Rec.2020"
+msgstr "Rec.2020"
+
+#: src/metadata.rs:495
+msgid "sRGB"
+msgstr "sRGB"
+
+#: src/metadata.rs:496 src/metadata.rs:504
+msgid "Unspecified"
+msgstr "Ακαθόριστο"
+
+#: src/metadata.rs:497 src/metadata.rs:506 src/metadata.rs:516
+#, rust-format
+#| msgid "Unknown"
+msgid "Unknown ({})"
+msgstr "Άγνωστο ({})"
+
+#: src/metadata.rs:503
+msgid "ICtCp"
+msgstr "ICtCp"
+
+#: src/metadata.rs:512
+msgid "DCI"
+msgstr "DCI"
+
+#: src/metadata.rs:513
+msgid "PQ"
+msgstr "PQ"
+
+#: src/metadata.rs:514
+msgid "Gamma 2.4"
+msgstr "Gamma 2.4"
 
 #. / Returns localized date + time format
 #. Translators: This is the date and time format we use in metadata output etc.
@@ -458,31 +516,67 @@ msgid "Crop Selection"
 msgstr "Περικοπή επιλογής"
 
 #. Translators: Filename suffix, {} is replaced by a number
-#: src/widgets/edit_window.rs:195
+#: src/widgets/edit_window.rs:207
+#, rust-format
 msgid " (Edited)"
 msgid_plural " (Edited {})"
 msgstr[0] " (επεξεργασμένο)"
 msgstr[1] " (επεξεργασμένο {})"
 
-#: src/widgets/edit_window.rs:289 src/widgets/edit_window.rs:315
+#: src/widgets/edit_window.rs:292
+#| msgctxt "shortcut window"
+#| msgid "Move Image to Trash"
+msgid "Moving Original to Trash"
+msgstr "Μετακίνηση αρχικού στα απορρίμματα"
+
+#: src/widgets/edit_window.rs:306 src/widgets/edit_window.rs:335
 msgid "Failed to save image."
 msgstr "Αποτυχία αποθήκευσης εικόνας."
 
-#: src/widgets/edit_window.rs:343
+#: src/widgets/edit_window.rs:315
+msgid "Finalizing Save Operation"
+msgstr "Ολοκλήρωση της λειτουργίας αποθήκευσης"
+
+#: src/widgets/edit_window.rs:367
 msgid "Editing Image"
 msgstr "Επεξεργασία εικόνας"
 
-#: src/widgets/edit_window.rs:360
+#: src/widgets/edit_window.rs:384
 msgid "Failed to edit image."
 msgstr "Αποτυχία επεξεργασίας εικόνας."
 
-#: src/widgets/edit_window.rs:370 src/widgets/edit_window.rs:393
+#: src/widgets/edit_window.rs:391
+msgid "Saving Image"
+msgstr "Αποθήκευση εικόνας"
+
+#: src/widgets/edit_window.rs:410
 msgid "Failed to Save Image"
 msgstr "Αποτυχία αποθήκευσης εικόνας"
 
-#: src/widgets/edit_window.rs:376
-msgid "Saving Image"
-msgstr "Αποθήκευση εικόνας"
+#: src/widgets/edit_window.rs:526
+msgid "Save Changes?"
+msgstr "Αποθήκευση αλλαγών;"
+
+#: src/widgets/edit_window.rs:528
+msgid ""
+"There are unsaved image editing changes. Closing without saving will "
+"permanently lose these modifications."
+msgstr ""
+"Υπάρχουν μη αποθηκευμένες αλλαγές επεξεργασίας της εικόνας. Το κλείσιμο χωρίς "
+"αποθήκευση θα οδηγήσει σε οριστική απώλεια αυτών των τροποποιήσεων."
+
+#: src/widgets/edit_window.rs:532 src/widgets/image_window.rs:700
+msgid "Cancel"
+msgstr "Ακύρωση"
+
+#: src/widgets/edit_window.rs:533
+msgid "Discard"
+msgstr "Απόρριψη"
+
+#: src/widgets/edit_window.rs:534
+#| msgid "_Save"
+msgid "Save"
+msgstr "Αποθήκευση"
 
 #: src/widgets/edit_window.ui:64
 msgid "_Cancel"
@@ -545,6 +639,7 @@ msgid "Report _Issue"
 msgstr "Αναφορά _Σφάλματος"
 
 #: src/widgets/image_page.rs:225
+#, rust-format
 msgid ""
 "No image loaders available. Maybe the “glycin-loaders” package with "
 "compatibility version “{}” is not installed."
@@ -553,10 +648,12 @@ msgstr ""
 "πακέτο «glycin-loaders» με έκδοση συμβατότητας «{}»."
 
 #: src/widgets/image_page.rs:243
+#, rust-format
 msgid "The image format “{} ({})” is known but not installed."
 msgstr "Ο τύπος εικόνας «{} ({})» είναι γνωστός αλλά δεν έχει εγκατασταθεί."
 
 #: src/widgets/image_page.rs:251
+#, rust-format
 msgid "Unknown image format “{} ({}).”"
 msgstr "Άγνωστος τύπος εικόνας «{} ({})»."
 
@@ -565,6 +662,7 @@ msgid "There is not enough free memory available to load this image."
 msgstr "Δεν υπάρχει αρκετή ελεύθερη μνήμη για να φορτωθεί αυτή η εικόνα."
 
 #: src/widgets/image_page.rs:267
+#, rust-format
 msgid "Failed to load image file: {}"
 msgstr "Αποτυχία φόρτωσης αρχείου εικόνας: {}"
 
@@ -616,11 +714,11 @@ msgstr "Περιστροφή δεξιά"
 
 #. Translators: This is a toast notification, informing the user that
 #. an image has been set as background.
-#: src/widgets/image_view.rs:866
+#: src/widgets/image_view.rs:870
 msgid "Set as background."
 msgstr "Ορισμός ως παρασκήνιο."
 
-#: src/widgets/image_view.rs:872
+#: src/widgets/image_view.rs:876
 msgid "Could not set background."
 msgstr "Αδυναμία ορισμού ως παρασκήνιο."
 
@@ -656,51 +754,48 @@ msgstr "Προσαρμοσμένο επίπεδο ζουμ"
 msgid "Zoom to Specified Level"
 msgstr "Ζουμ στο καθορισμένο επίπεδο"
 
-#: src/widgets/image_window.rs:527
+#: src/widgets/image_window.rs:509
 msgid "Supported image formats"
 msgstr "Υποστηριζόμενες μορφές εικόνας"
 
-#: src/widgets/image_window.rs:533
+#: src/widgets/image_window.rs:515
 msgid "All files"
 msgstr "Όλα τα αρχεία"
 
-#: src/widgets/image_window.rs:540
+#: src/widgets/image_window.rs:522
 msgid "Open Image"
 msgstr "Άνοιγμα εικόνας"
 
-#: src/widgets/image_window.rs:632
+#: src/widgets/image_window.rs:614
 msgid "Image copied to clipboard"
 msgstr "Η εικόνα αντιγράφηκε στο πρόχειρο"
 
-#: src/widgets/image_window.rs:653
+#: src/widgets/image_window.rs:635
 msgid "Image moved to trash"
 msgstr "Η εικόνα μετακινήθηκε στον κάδο απορριμμάτων"
 
-#: src/widgets/image_window.rs:654
+#: src/widgets/image_window.rs:636
 msgid "Undo"
 msgstr "Αναίρεση"
 
-#: src/widgets/image_window.rs:684
+#: src/widgets/image_window.rs:666
 msgid "Failed to move image to trash"
 msgstr "Αποτυχία μετακίνησης της εικόνας στον κάδο απορριμμάτων"
 
-#: src/widgets/image_window.rs:708
+#: src/widgets/image_window.rs:690
 msgid "Permanently Delete Image?"
 msgstr "Οριστική διαγραφή εικόνας;"
 
-#: src/widgets/image_window.rs:710
+#: src/widgets/image_window.rs:692
+#, rust-format
 msgid "After deleting the image “{}” it will be permanently lost."
 msgstr "Μετά τη διαγραφή της εικόνας \"{}\" θα χαθεί οριστικά."
 
-#: src/widgets/image_window.rs:718
-msgid "Cancel"
-msgstr "Ακύρωση"
-
-#: src/widgets/image_window.rs:719
+#: src/widgets/image_window.rs:701
 msgid "Delete"
 msgstr "Διαγραφή"
 
-#: src/widgets/image_window.rs:730
+#: src/widgets/image_window.rs:712
 msgid "Failed to delete image"
 msgstr "Αποτυχία διαγραφής εικόνας"
 
@@ -788,23 +883,24 @@ msgid "px"
 msgstr "px"
 
 #. Translators: {} is a placeholder for the filename
-#: src/widgets/print.rs:364
+#: src/widgets/print.rs:365
+#, rust-format
 msgid "Print “{}”"
 msgstr "Εκτύπωση “{}”"
 
-#: src/widgets/print.rs:477
+#: src/widgets/print.rs:472
 msgid "Continue…"
 msgstr "Συνέχεια…"
 
-#: src/widgets/print.rs:478
+#: src/widgets/print.rs:473
 msgid "Print Image"
 msgstr "Εκτύπωση εικόνας"
 
-#: src/widgets/print.rs:797
+#: src/widgets/print.rs:801
 msgid "_Scale"
 msgstr "_Κλίμακα"
 
-#: src/widgets/print.rs:800
+#: src/widgets/print.rs:804
 msgid "_Width"
 msgstr "_Πλάτος"
 
@@ -869,30 +965,76 @@ msgstr "_Γέμισμα χώρου"
 msgid "H_eight"
 msgstr "Ύ_ψος"
 
-#: src/widgets/properties_view.rs:258
+#: src/widgets/properties_view.rs:284
 msgid "Unknown"
 msgstr "Άγνωστο"
 
 #. Translators: Addition of image being transparent to format name
-#: src/widgets/properties_view.rs:262
+#: src/widgets/properties_view.rs:288
 msgid ", transparent"
 msgstr ", διαφανές"
 
 #. Translators: Addition of image being grayscale to format name
-#: src/widgets/properties_view.rs:267
+#: src/widgets/properties_view.rs:293
 msgid ", grayscale"
 msgstr ", κλίμακα του γκρι"
 
 #. Translators: Addition of bit size to format name
-#: src/widgets/properties_view.rs:272
+#: src/widgets/properties_view.rs:298
 msgid ", {}\\u{202F}bit"
 msgstr ", {}\\u{202F}bit"
 
-#: src/widgets/properties_view.rs:290
+#: src/widgets/properties_view.rs:315
 msgid "{}\\u{202F}\\u{D7}\\u{202F}{}"
 msgstr "{}\\u{202F}\\u{D7}\\u{202F}{}"
 
-#: src/widgets/properties_view.rs:326
+#. Translators: Shorthand for centimeter
+#: src/widgets/properties_view.rs:354
+msgid " cm"
+msgstr " εκ."
+
+#. Translators: Shorthand for inch
+#: src/widgets/properties_view.rs:358
+msgid "″"
+msgstr "″"
+
+#. Translators: Shorthand for meter
+#: src/widgets/properties_view.rs:362
+#| msgid "{} %"
+msgid " m"
+msgstr " μ."
+
+#. Translators: Shorthand for millimeter
+#: src/widgets/properties_view.rs:366
+msgid " mm"
+msgstr " χιλ."
+
+#. Translators: Shorthand for pica (unit)
+#: src/widgets/properties_view.rs:370
+msgid " pc"
+msgstr " pc"
+
+#. Translators: Shorthand for pica (unit)
+#: src/widgets/properties_view.rs:374
+msgid " pt"
+msgstr " pt"
+
+#: src/widgets/properties_view.rs:386
+#| msgid "{}\\u{202F}\\u{D7}\\u{202F}{}"
+msgid "{}{}\\u{202F}\\u{D7}\\u{202F}{}{}"
+msgstr "{}{}\\u{202F}\\u{D7}\\u{202F}{}{}"
+
+#: src/widgets/properties_view.rs:403
+#| msgid "{}\\u{202F}s"
+msgid "{}\\u{202F}DPI"
+msgstr "{}\\u{202F}DPI"
+
+#: src/widgets/properties_view.rs:407
+#| msgid "{}\\u{202F}\\u{D7}\\u{202F}{}"
+msgid "{}\\u{202F}DPI\\u{202F}\\u{D7}\\u{202F}{}\\u{202F}DPI"
+msgstr "{}\\u{202F}DPI\\u{202F}\\u{D7}\\u{202F}{}\\u{202F}DPI"
+
+#: src/widgets/properties_view.rs:435
 msgid "Image Coordinates Copied"
 msgstr "Οι συντεταγμένες της εικόνας αντιγράφηκαν"
 
@@ -909,63 +1051,96 @@ msgid "URI"
 msgstr "URI"
 
 #: src/widgets/properties_view.ui:66
+#| msgid "File Size"
+msgid "Physical Size"
+msgstr "Φυσικό μέγεθος"
+
+#: src/widgets/properties_view.ui:76
+msgid "Resolution"
+msgstr "Ανάλυση"
+
+#: src/widgets/properties_view.ui:86
 msgid "Image Format"
 msgstr "Μορφή εικόνας"
 
-#: src/widgets/properties_view.ui:76
+#: src/widgets/properties_view.ui:96
 msgid "File Size"
 msgstr "Μέγεθος αρχείου"
 
-#: src/widgets/properties_view.ui:90
+#: src/widgets/properties_view.ui:110
 msgid "File Created"
 msgstr "Δημιουργήθηκε αρχείο"
 
-#: src/widgets/properties_view.ui:100
+#: src/widgets/properties_view.ui:120
 msgid "File Modified"
 msgstr "Τροποποίηση αρχείου"
 
 #. Translators: This is a label for GPS coordinates
-#: src/widgets/properties_view.ui:114
+#: src/widgets/properties_view.ui:134
 msgid "Location"
 msgstr "Τοποθεσία"
 
-#: src/widgets/properties_view.ui:125
+#: src/widgets/properties_view.ui:145
 msgid "Copy Coordinates"
 msgstr "Αντιγραφή συντεταγμένων"
 
-#: src/widgets/properties_view.ui:136
+#: src/widgets/properties_view.ui:156
 msgid "Open Location"
 msgstr "Άνοιγμα τοποθεσίας"
 
-#: src/widgets/properties_view.ui:149
+#: src/widgets/properties_view.ui:169
 msgid "Originally Created"
 msgstr "Αρχική δημιουργία"
 
-#: src/widgets/properties_view.ui:159
+#: src/widgets/properties_view.ui:179
+msgid "Creator"
+msgstr ""
+
+#: src/widgets/properties_view.ui:189
+msgid "Copyright"
+msgstr ""
+
+#: src/widgets/properties_view.ui:199
 msgid "Comment"
 msgstr "Σχόλιο"
 
-#: src/widgets/properties_view.ui:169
+#: src/widgets/properties_view.ui:209
 msgid "Aperture"
 msgstr "Διάφραγμα"
 
-#: src/widgets/properties_view.ui:179
+#: src/widgets/properties_view.ui:219
 msgid "Exposure"
 msgstr "Έκθεση"
 
-#: src/widgets/properties_view.ui:189
+#: src/widgets/properties_view.ui:229
 msgid "ISO"
 msgstr "ISO"
 
-#: src/widgets/properties_view.ui:199
+#: src/widgets/properties_view.ui:239
 msgid "Focal Length"
 msgstr "Εστιακό μήκος"
 
-#: src/widgets/properties_view.ui:209
+#: src/widgets/properties_view.ui:249
 msgid "Maker, Model"
 msgstr "Κατασκευαστής, Μοντέλο"
 
-#: src/widgets/window.rs:206
+#: src/widgets/properties_view.ui:259
+msgid "Lens"
+msgstr ""
+
+#: src/widgets/properties_view.ui:269
+msgid "Software"
+msgstr ""
+
+#: src/widgets/properties_view.ui:279
+msgid "ICC Profile"
+msgstr ""
+
+#: src/widgets/properties_view.ui:289
+msgid "CICP"
+msgstr ""
+
+#: src/widgets/window.rs:254
 msgid "Show Details"
 msgstr "Προβολή λεπτομερειών"
 
@@ -988,9 +1163,6 @@ msgstr "Προβολή λεπτομερειών"
 #~ msgctxt "shortcut window"
 #~ msgid "Gestures"
 #~ msgstr "Xειρονομίες"
-
-#~ msgid "{} %"
-#~ msgstr "{} %"
 
 #~ msgid "Copy to Clipboard"
 #~ msgstr "Αντιγραφή στο πρόχειρο"
