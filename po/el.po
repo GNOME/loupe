@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
 "POT-Creation-Date: 2026-09-09 12:06+0000\n"
-"PO-Revision-Date: 2026-02-07 21:48+0200\n"
+"PO-Revision-Date: 2026-10-03 14:23+0300\n"
 "Last-Translator: Efstathios Iosifidis <eiosifidis@gmail.com>\n"
 "Language-Team: Greek <gnome-el-list@gnome.org>\n"
 "Language: el\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.4.2\n"
+"X-Generator: Poedit 3.9\n"
 "X-DL-Lang: el\n"
 "X-DL-Module: loupe\n"
 "X-DL-Branch: main\n"
@@ -58,8 +58,6 @@ msgstr ""
 "επεξεργασίες, όπως περικοπή, περιστροφή ή αναστροφή."
 
 #: data/org.gnome.Loupe.metainfo.xml.in.in:28
-#| msgctxt "shortcut window"
-#| msgid "New Window"
 msgid "Main Window"
 msgstr "Κύριο παράθυρο"
 
@@ -68,7 +66,6 @@ msgid "Crop Tool"
 msgstr "Εργαλείο περικοπής"
 
 #: data/org.gnome.Loupe.metainfo.xml.in.in:36
-#| msgid "Image Properties"
 msgid "Image Properties Panel"
 msgstr "Πίνακας ιδιοτήτων εικόνας"
 
@@ -369,7 +366,6 @@ msgstr "Ακαθόριστο"
 
 #: src/metadata.rs:497 src/metadata.rs:506 src/metadata.rs:516
 #, rust-format
-#| msgid "Unknown"
 msgid "Unknown ({})"
 msgstr "Άγνωστο ({})"
 
@@ -524,8 +520,6 @@ msgstr[0] " (επεξεργασμένο)"
 msgstr[1] " (επεξεργασμένο {})"
 
 #: src/widgets/edit_window.rs:292
-#| msgctxt "shortcut window"
-#| msgid "Move Image to Trash"
 msgid "Moving Original to Trash"
 msgstr "Μετακίνηση αρχικού στα απορρίμματα"
 
@@ -562,8 +556,8 @@ msgid ""
 "There are unsaved image editing changes. Closing without saving will "
 "permanently lose these modifications."
 msgstr ""
-"Υπάρχουν μη αποθηκευμένες αλλαγές επεξεργασίας της εικόνας. Το κλείσιμο χωρίς "
-"αποθήκευση θα οδηγήσει σε οριστική απώλεια αυτών των τροποποιήσεων."
+"Υπάρχουν μη αποθηκευμένες αλλαγές επεξεργασίας της εικόνας. Το κλείσιμο "
+"χωρίς αποθήκευση θα οδηγήσει σε οριστική απώλεια αυτών των τροποποιήσεων."
 
 #: src/widgets/edit_window.rs:532 src/widgets/image_window.rs:700
 msgid "Cancel"
@@ -574,7 +568,6 @@ msgid "Discard"
 msgstr "Απόρριψη"
 
 #: src/widgets/edit_window.rs:534
-#| msgid "_Save"
 msgid "Save"
 msgstr "Αποθήκευση"
 
@@ -990,8 +983,8 @@ msgstr "{}\\u{202F}\\u{D7}\\u{202F}{}"
 
 #. Translators: Shorthand for centimeter
 #: src/widgets/properties_view.rs:354
-msgid " cm"
-msgstr " εκ."
+msgid " cm"
+msgstr " εκ"
 
 #. Translators: Shorthand for inch
 #: src/widgets/properties_view.rs:358
@@ -1000,37 +993,33 @@ msgstr "″"
 
 #. Translators: Shorthand for meter
 #: src/widgets/properties_view.rs:362
-#| msgid "{} %"
-msgid " m"
-msgstr " μ."
+msgid " m"
+msgstr " m"
 
 #. Translators: Shorthand for millimeter
 #: src/widgets/properties_view.rs:366
-msgid " mm"
-msgstr " χιλ."
+msgid " mm"
+msgstr " mm"
 
 #. Translators: Shorthand for pica (unit)
 #: src/widgets/properties_view.rs:370
-msgid " pc"
-msgstr " pc"
+msgid " pc"
+msgstr " pc"
 
 #. Translators: Shorthand for pica (unit)
 #: src/widgets/properties_view.rs:374
-msgid " pt"
-msgstr " pt"
+msgid " pt"
+msgstr " pt"
 
 #: src/widgets/properties_view.rs:386
-#| msgid "{}\\u{202F}\\u{D7}\\u{202F}{}"
 msgid "{}{}\\u{202F}\\u{D7}\\u{202F}{}{}"
 msgstr "{}{}\\u{202F}\\u{D7}\\u{202F}{}{}"
 
 #: src/widgets/properties_view.rs:403
-#| msgid "{}\\u{202F}s"
 msgid "{}\\u{202F}DPI"
 msgstr "{}\\u{202F}DPI"
 
 #: src/widgets/properties_view.rs:407
-#| msgid "{}\\u{202F}\\u{D7}\\u{202F}{}"
 msgid "{}\\u{202F}DPI\\u{202F}\\u{D7}\\u{202F}{}\\u{202F}DPI"
 msgstr "{}\\u{202F}DPI\\u{202F}\\u{D7}\\u{202F}{}\\u{202F}DPI"
 
@@ -1051,7 +1040,6 @@ msgid "URI"
 msgstr "URI"
 
 #: src/widgets/properties_view.ui:66
-#| msgid "File Size"
 msgid "Physical Size"
 msgstr "Φυσικό μέγεθος"
 
@@ -1094,11 +1082,11 @@ msgstr "Αρχική δημιουργία"
 
 #: src/widgets/properties_view.ui:179
 msgid "Creator"
-msgstr ""
+msgstr "Δημιουργός"
 
 #: src/widgets/properties_view.ui:189
 msgid "Copyright"
-msgstr ""
+msgstr "Πνευματικά δικαιώματα"
 
 #: src/widgets/properties_view.ui:199
 msgid "Comment"
@@ -1126,23 +1114,39 @@ msgstr "Κατασκευαστής, Μοντέλο"
 
 #: src/widgets/properties_view.ui:259
 msgid "Lens"
-msgstr ""
+msgstr "Φακοί"
 
 #: src/widgets/properties_view.ui:269
 msgid "Software"
-msgstr ""
+msgstr "Λογισμικό"
 
 #: src/widgets/properties_view.ui:279
 msgid "ICC Profile"
-msgstr ""
+msgstr "Προφίλ ICC"
 
 #: src/widgets/properties_view.ui:289
 msgid "CICP"
-msgstr ""
+msgstr "CICP"
 
 #: src/widgets/window.rs:254
 msgid "Show Details"
 msgstr "Προβολή λεπτομερειών"
+
+#~ msgid " cm"
+#~ msgstr " εκ."
+
+#~| msgid "{} %"
+#~ msgid " m"
+#~ msgstr " μ."
+
+#~ msgid " mm"
+#~ msgstr " χιλ."
+
+#~ msgid " pc"
+#~ msgstr " pc"
+
+#~ msgid " pt"
+#~ msgstr " pt"
 
 #~ msgid "Browse through your images and inspect their metadata with:"
 #~ msgstr ""
