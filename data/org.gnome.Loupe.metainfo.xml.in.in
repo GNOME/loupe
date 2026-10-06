@@ -15,7 +15,7 @@
     <p>Explore images, view their metadata, and make quick edits by cropping, rotating, or flipping them.</p>
   </description>
   <url type="homepage">https://apps.gnome.org/Loupe/</url>
-  <url type="bugtracker">https://gitlab.gnome.org/GNOME/loupe/issues</url>
+  <url type="bugtracker">https://gitlab.gnome.org/GNOME/loupe/-/work_items</url>
   <url type="translate">https://l10n.gnome.org/module/loupe/</url>
   <url type="donation">https://www.gnome.org/donate/</url>
   <url type="vcs-browser">https://gitlab.gnome.org/GNOME/loupe</url>
