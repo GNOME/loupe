@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
 "POT-Creation-Date: 2026-09-09 12:06+0000\n"
-"PO-Revision-Date: 2026-10-13 15:45+0100\n"
+"PO-Revision-Date: 2026-10-18 18:25+0100\n"
 "Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>\n"
 "Language-Team: Portuguese <pt@li.org>\n"
 "Language: pt\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.4.2\n"
+"X-Generator: Poedit 3.9\n"
 
 #: data/org.gnome.Loupe.desktop.in.in:2
 #: data/org.gnome.Loupe.metainfo.xml.in.in:6 src/about.rs:32
@@ -249,12 +249,12 @@ msgstr "A editar"
 #: data/resources/shortcuts-dialog.ui:229
 msgctxt "shortcut window"
 msgid "Open Editing View"
-msgstr "Abrir Vista de edição"
+msgstr "Abrir vista de edição"
 
 #: data/resources/shortcuts-dialog.ui:235
 msgctxt "shortcut window"
 msgid "Replace Original"
-msgstr "Substituir Original"
+msgstr "Substituir original"
 
 #: data/resources/shortcuts-dialog.ui:241
 msgctxt "shortcut window"
@@ -269,7 +269,7 @@ msgstr "Cancelar"
 #: data/resources/shortcuts-dialog.ui:265
 msgctxt "shortcut window"
 msgid "Mirror Horizontally"
-msgstr "Espelhar na Horizontal"
+msgstr "Espelhar horizontalmente"
 
 #: data/resources/shortcuts-dialog.ui:271
 msgctxt "shortcut window"
@@ -426,7 +426,7 @@ msgstr "16:9"
 
 #: src/widgets/edit/crop.ui:77 src/widgets/edit/crop.ui:364
 msgid "Aspect Ratio"
-msgstr "Rácio Visual"
+msgstr "Proporção"
 
 #: src/widgets/edit/crop.ui:91
 msgid "_Free"
@@ -458,11 +458,11 @@ msgstr "_16:9"
 
 #: src/widgets/edit/crop.ui:231 src/widgets/edit/crop.ui:377
 msgid "Orientation Landscape"
-msgstr "Orientação Paisagem"
+msgstr "Orientação horizontal"
 
 #: src/widgets/edit/crop.ui:240 src/widgets/edit/crop.ui:389
 msgid "Orientation Portrait"
-msgstr "Orientação Retrato"
+msgstr "Orientação vertical"
 
 #: src/widgets/edit/crop.ui:252 src/widgets/image_page.ui:15
 #: src/widgets/image_window.ui:25
@@ -483,7 +483,7 @@ msgstr "Virar"
 
 #: src/widgets/edit/crop.ui:287 src/widgets/edit/crop.ui:415
 msgid "Mirror Horizontally"
-msgstr "Espelhar na Horizontal"
+msgstr "Espelhar horizontalmente"
 
 #: src/widgets/edit/crop.ui:294
 msgid "Mirror Vertically"
@@ -514,7 +514,7 @@ msgstr "Mover o original para o lixo"
 
 #: src/widgets/edit_window.rs:306 src/widgets/edit_window.rs:335
 msgid "Failed to save image."
-msgstr "Falha ao guardar a imagem."
+msgstr "Erro ao guardar a imagem."
 
 #: src/widgets/edit_window.rs:315
 msgid "Finalizing Save Operation"
@@ -534,7 +534,7 @@ msgstr "Guardar imagem"
 
 #: src/widgets/edit_window.rs:410
 msgid "Failed to Save Image"
-msgstr "Falha ao guardar a imagem"
+msgstr "Erro ao guardar a imagem"
 
 #: src/widgets/edit_window.rs:526
 msgid "Save Changes?"
@@ -715,7 +715,7 @@ msgstr "Aumentar"
 
 #: src/widgets/image_view.ui:92
 msgid "Toggle Zoom"
-msgstr "Ligar a Ampliação"
+msgstr "Ligar a ampliação"
 
 #: src/widgets/image_view.ui:100
 msgid "Zoom to Specific Level"
@@ -799,7 +799,7 @@ msgstr "Alternar para o modo de ecrã inteiro"
 
 #: src/widgets/image_window.ui:93
 msgid "Main Menu"
-msgstr "Menu Principal"
+msgstr "Menu principal"
 
 #: src/widgets/image_window.ui:125
 msgid "Image Properties"
@@ -811,7 +811,7 @@ msgstr "Editar imagem"
 
 #: src/widgets/image_window.ui:220
 msgid "View and Edit Images"
-msgstr "Ver e Editar Imagens"
+msgstr "Ver e editar imagens"
 
 #: src/widgets/image_window.ui:221
 msgid "Drag and drop images here"
@@ -973,7 +973,6 @@ msgstr "″"
 
 #. Translators: Shorthand for meter
 #: src/widgets/properties_view.rs:362
-#| msgid "{} %"
 msgid " m"
 msgstr " m"
 
@@ -993,17 +992,14 @@ msgid " pt"
 msgstr " pt"
 
 #: src/widgets/properties_view.rs:386
-#| msgid "{}\\u{202F}\\u{D7}\\u{202F}{}"
 msgid "{}{}\\u{202F}\\u{D7}\\u{202F}{}{}"
 msgstr "{}{}\\u{202F}\\u{D7}\\u{202F}{}{}"
 
 #: src/widgets/properties_view.rs:403
-#| msgid "{}\\u{202F}s"
 msgid "{}\\u{202F}DPI"
 msgstr "{}\\u{202F}DPI"
 
 #: src/widgets/properties_view.rs:407
-#| msgid "{}\\u{202F}\\u{D7}\\u{202F}{}"
 msgid "{}\\u{202F}DPI\\u{202F}\\u{D7}\\u{202F}{}\\u{202F}DPI"
 msgstr "{}\\u{202F}DPI\\u{202F}\\u{D7}\\u{202F}{}\\u{202F}DPI"
 
