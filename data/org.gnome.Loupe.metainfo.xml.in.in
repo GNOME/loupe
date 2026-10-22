@@ -71,7 +71,12 @@
   </categories>
 
   <releases>
-    <release version="51.rc" date="2026-09-01">
+    <release version="51.1" date="2026-10-23">
+      <description>
+        <p>Multiple problems with printing images have been fixed, including wrong scaling of images and app hangs when printing.</p>
+      </description>
+    </release>
+    <release version="51.0" date="2026-09-09">
       <description>
         <p>Loupe now presents more metadata, like the creator and copyright information, the images color profile, as well as camera lens information and information about the used software.</p>
       </description>
