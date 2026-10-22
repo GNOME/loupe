@@ -521,24 +521,7 @@ impl LpPrint {
     pub fn original_size(&self) -> (f64, f64) {
         let image = self.image();
         let (x_pixels, y_pixels) = image.image_size();
-        let metadata = image.metadata();
-
-        if let Some(physical_size) = metadata.physical_size().map(|x| x.dpi()).or_else(|| {
-            metadata
-                .pixel_density()
-                .map(|x| x.physical_size(x_pixels as u32, y_pixels as u32))
-        }) {
-            let dpi = self.dpi();
-
-            (
-                (physical_size.x.value() * dpi).round(),
-                (physical_size.y.value() * dpi).round(),
-            )
-        } else {
-            let (w, h) = image.image_size();
-
-            (w as f64, h as f64)
-        }
+        (x_pixels as f64, y_pixels as f64)
     }
 
     pub fn print_settings(&self) -> gtk::PrintSettings {
