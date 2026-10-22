@@ -283,19 +283,27 @@ mod imp {
 
             let mut format = metadata.format_name().unwrap_or(gettext("Unknown"));
 
+            // Translators: Concatenation of attributes like "transparent, grayscale"
+            let list_cocatenation = gettext(", ");
+
             if metadata.alpha_channel().unwrap_or(false) {
-                // Translators: Addition of image being transparent to format name
-                format.push_str(&gettext(", transparent"));
+                format.push_str(&format!(
+                    "{list_cocatenation}{}",
+                    // Translators: Addition of image being transparent to format name
+                    gettext("transparent")
+                ));
             }
 
-            if metadata.grayscale().unwrap_or(false) {
-                // Translators: Addition of image being grayscale to format name
-                format.push_str(&gettext(", grayscale"));
+            if let Some(color_model) = metadata.color_model() {
+                format.push_str(&format!("{list_cocatenation}{color_model}"));
             }
 
             if let Some(bit_depth) = metadata.bit_depth() {
-                // Translators: Addition of bit size to format name
-                format.push_str(&gettext_f(r", {}\u{202F}bit", [bit_depth.to_string()]));
+                format.push_str(&format!(
+                    "{list_cocatenation}{}",
+                    // Translators: Addition of bit size to format name
+                    gettext_f(r"{}\u{202F}bit", [bit_depth.to_string()])
+                ));
             }
 
             Some(format)

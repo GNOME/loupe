@@ -27,6 +27,7 @@ use std::str::FromStr;
 use chrono::prelude::*;
 pub use file::FileInfo;
 use glib::TimeZone;
+use glycin::common::ColorModel;
 use glycin::{Frame, FrameDetails, ImageDetails, MemoryFormat};
 use gufo::common::datetime::DateTime;
 use gufo::common::orientation::Orientation;
@@ -154,8 +155,27 @@ impl Metadata {
             .and_then(|x| x.info_alpha_channel())
     }
 
-    pub fn grayscale(&self) -> Option<bool> {
-        self.frame_info.as_ref().and_then(|x| x.info_grayscale())
+    /// Color model like CMYK or grayscake
+    ///
+    /// Returns `None` for RGB
+    pub fn color_model(&self) -> Option<String> {
+        if let Some(original_memory_format) =
+            self.frame_info.as_ref().map(|x| x.original_memory_format())
+        {
+            match original_memory_format.color_model() {
+                ColorModel::Cmyk => {
+                    // Translators: Color model CMYK, often not translated
+                    Some(gettext("CMYK"))
+                }
+                ColorModel::G => {
+                    // Translators: Color model grayscale
+                    Some(gettext("grayscale"))
+                }
+                _ => None,
+            }
+        } else {
+            None
+        }
     }
 
     pub fn bit_depth(&self) -> Option<u8> {

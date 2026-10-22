@@ -31,7 +31,9 @@ chrono = { version = "0.4.38", default-features = false, features = ["std"] }
 gettext-rs = { version = "0.8.0", features = ["gettext-system"] }
 gettext-sys = { version = "0.27.0", features = ["gettext-system"] }
 gio = { version = "0.22.0", features = ["v2_74"] }
-glycin = { version = "4.0.0", features = ["gdk4"] }
+glycin = { version = "5.0.0-alpha", features = [
+    "gdk4",
+], git = "https://gitlab.gnome.org/GNOME/glycin.git", rev = "4abfe13666139adc160ba744d97f20244a73d0a9" }
 gtk = { package = "gtk4", version = "0.11.0", features = [
     "v4_14",
     "xml_validation",
