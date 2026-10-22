@@ -120,8 +120,8 @@
             ],
             "sources": [
                 {
-                    "type": "git",
-                    "url": "https://gitlab.gnome.org/GNOME/loupe.git"
+                    "type": "dir",
+                    "path": "../.."
                 }
             ]
         }
