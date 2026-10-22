@@ -21,8 +21,7 @@ flatpak:
   extends: ".flatpak@x86_64"
   interruptible: true
   variables:
-     # We are running tests manually
-    RUN_TESTS: "0"
+    RUN_TESTS: "1"
     CONFIG_OPTS: "-Dprofile=release -Dapp_id_suffix=.Devel"
 
 flatpak@aarch64:
@@ -30,7 +29,7 @@ flatpak@aarch64:
   allow_failure: true
   interruptible: true
   variables:
-    RUN_TESTS: "0"
+    RUN_TESTS: "1"
     CONFIG_OPTS: "-Dprofile=release -Dapp_id_suffix=.Devel"
 
 cargo-fmt:
@@ -59,7 +58,6 @@ cargo-doc:
     # Print the date, since appstream depends on local timezone
     - date && date -u
 
-    - rewrite-flatpak-manifest ${MANIFEST_PATH} ${FLATPAK_MODULE} ${CONFIG_OPTS}
     - flatpak-builder --user --disable-rofiles-fuse --force-clean --keep-build-dirs --stop-at=${FLATPAK_MODULE} flatpak_app ${MANIFEST_PATH}
     - flatpak build-finish --socket=x11 --share=network flatpak_app
     - >
@@ -84,7 +82,6 @@ cargo-clippy:
     # Print the date, since appstream depends on local timezone
     - date && date -u
 
-    - rewrite-flatpak-manifest ${MANIFEST_PATH} ${FLATPAK_MODULE} ${CONFIG_OPTS}
     - flatpak-builder --user --disable-rofiles-fuse --force-clean --keep-build-dirs --stop-at=${FLATPAK_MODULE} flatpak_app ${MANIFEST_PATH}
     - flatpak build-finish --socket=x11 --share=network flatpak_app
     - >
@@ -106,7 +103,6 @@ cargo-test:
     # Print the date, since appstream depends on local timezone
     - date && date -u
 
-    - rewrite-flatpak-manifest ${MANIFEST_PATH} ${FLATPAK_MODULE} ${CONFIG_OPTS}
     - flatpak-builder --user --disable-rofiles-fuse --force-clean --keep-build-dirs --stop-at=${FLATPAK_MODULE} flatpak_app ${MANIFEST_PATH}
     - flatpak build-finish --socket=x11 --share=network flatpak_app
     - >
