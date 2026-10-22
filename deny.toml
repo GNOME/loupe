@@ -4,6 +4,13 @@ yanked = "deny"
 ignore = [
     # Crate `paste` is no longer maintained
     "RUSTSEC-2024-0436",
+    # Old zbus crates
+    "RUSTSEC-2026-0370",
+    "RUSTSEC-2026-0371",
+    "RUSTSEC-2026-0372",
+    # quick-xml allocation: not used for external data
+    "RUSTSEC-2026-0194",
+    "RUSTSEC-2026-0195",
 ]
 
 [licenses]
