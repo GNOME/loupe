@@ -953,13 +953,17 @@ impl LpPrint {
             .unwrap()
         };
 
-        let paper_width = self.page_setup().paper_width(gtk::Unit::Inch) * self.dpi();
-        let paper_height = self.page_setup().paper_height(gtk::Unit::Inch) * self.dpi();
+        // Dimensions in points
+        let paper_width = self.page_setup().paper_width(gtk::Unit::Points);
+        let paper_height = self.page_setup().paper_height(gtk::Unit::Points);
 
         let cairo_surface =
             cairo::PdfSurface::for_stream(paper_width, paper_height, output_stream.into_write())?;
 
         let cairo_context = cairo::Context::new(&cairo_surface)?;
+
+        // Scale image on surface according to DPI
+        cairo_context.scale(72. / self.dpi(), 72. / self.dpi());
 
         let margin_left = self.effective_margin_left();
         let margin_top = self.effective_margin_top();
