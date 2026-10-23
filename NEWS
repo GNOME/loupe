@@ -1,3 +1,10 @@
+## 51.1 (2026-10-23)
+
+### Fixed
+
+- print: Some images with physical dimensions attached could be printed in the wrong size and not properly positioned on the page.
+- print: The PDF that's sent to the printer did report the wrong physical dimensions. This could potentially cause issues with some printers.
+
 ## 51.0 (2026-09-09)
 
 ## 51.rc (2026-09-01)
