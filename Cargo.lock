@@ -946,9 +946,9 @@ dependencies = [
 
 [[package]]
 name = "glycin"
-version = "4.0.0"
+version = "4.0.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "dc9bb9cfa3d4db9eab0e2394f0e60fe4071fd31affd1704f2ecccc6bdd24c7b9"
+checksum = "4435b4e3908ef32618d2fdf34cf0991a08420ac89c1a8d2cb2add9b5c8f6037a"
 dependencies = [
  "glycin-builtin",
  "glycin-external",
@@ -956,9 +956,9 @@ dependencies = [
 
 [[package]]
 name = "glycin-builtin"
-version = "4.0.0"
+version = "4.0.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "b801b326426a0ccb61899174b0a08c2316defd323cfe78be9aa6232a2efdfeac"
+checksum = "a9cf6195ad19ef47059e55025d8ff8ec17297f1a862bd22a4027548f460e4000"
 dependencies = [
  "glycin-core",
 ]
@@ -984,9 +984,9 @@ dependencies = [
 
 [[package]]
 name = "glycin-core"
-version = "4.0.0"
+version = "4.0.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "9466e4f18a53312faee414ea85813d6674d4cb5badad059365c4882984b40201"
+checksum = "8cea8c1b76aca49c3eb34e1dc0362718fc4a92a7dd57caa8443471aa0c19ddd4"
 dependencies = [
  "async-fs",
  "async-global-executor",
@@ -1023,9 +1023,9 @@ dependencies = [
 
 [[package]]
 name = "glycin-external"
-version = "4.0.0"
+version = "4.0.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "a7d335778b14437e1339d703afd1ce69e61df8ab5420882b4b7821b9a2ca9d4a"
+checksum = "c1a55b63037ad6e3738f0a9a75e1b1ba1654c91761f67576fba9545335375507"
 dependencies = [
  "glycin-core",
 ]
@@ -1202,9 +1202,9 @@ dependencies = [
 
 [[package]]
 name = "gufo"
-version = "0.5.0"
+version = "0.5.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "6a16d7faeeb03e2925ac6b0f40630b15b1992d08c50add402f35fde495e44f64"
+checksum = "ce5dedcdb354f15280779ccfe04957c81bb15a0026b3d394dac9488689dad010"
 dependencies = [
  "chrono",
  "gufo-common",
@@ -1233,9 +1233,9 @@ dependencies = [
 
 [[package]]
 name = "gufo-exif"
-version = "0.5.0"
+version = "0.5.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "e99100988e312c22c6f209663b289e727db3918d06fbcbbc2315149457b42b75"
+checksum = "4b334a76d1df73308ef010af6a5870b7fe0f175bd66c79dc8564ac3116781f69"
 dependencies = [
  "chrono",
  "gufo-common",
