@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2026-07-20 19:42+0000\n"
-"PO-Revision-Date: 2026-07-22 17:41+0200\n"
+"POT-Creation-Date: 2026-10-29 13:41+0000\n"
+"PO-Revision-Date: 2026-10-29 15:41+0100\n"
 "Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
 "Language-Team: Slovenian <gnome-si@googlegroups.com>\n"
 "Language: sl\n"
@@ -297,85 +297,96 @@ msgstr "Avtorske pravice © 2020–2024 Christopher Davis in sodelavci"
 msgid "Could not list other files in directory."
 msgstr "Drugih datotek v mapi ni mogoče izpisati."
 
+#. Translators: Color model CMYK, often not translated
+#: src/metadata.rs:168
+msgid "CMYK"
+msgstr "CMYK"
+
+#. Translators: Color model grayscale
+#: src/metadata.rs:172
+msgid "grayscale"
+msgstr "sivinsko"
+
 #. Translators: Display of the f-number <https://en.wikipedia.org/wiki/F-number>. {} will be replaced with the number
-#: src/metadata.rs:271
+#: src/metadata.rs:290
 msgid "\\u{192}\\u{2215}{}"
 msgstr "\\u{192}\\u{2215}{}"
 
 #. Translators: Fractional exposure time (photography) in seconds
-#: src/metadata.rs:284
+#: src/metadata.rs:303
 msgid "1\\u{2215}{}\\u{202F}s"
 msgstr "1\\u{2215}{}\\u{202F} s"
 
 #. Translators: Exposure time (photography) in seconds
-#: src/metadata.rs:292
+#: src/metadata.rs:311
 msgid "{}\\u{202F}s"
 msgstr "{}\\u{202F} s"
 
-#: src/metadata.rs:306
+#: src/metadata.rs:325
 msgid "{}\\u{202F}mm"
 msgstr "{}\\u{202F} mm"
 
 #. Translators: short for "north" in GPS coordinate
-#: src/metadata.rs:396
+#: src/metadata.rs:415
 msgid "N"
 msgstr "S"
 
 #. Translators: short for "south" in GPS coordinate
-#: src/metadata.rs:400
+#: src/metadata.rs:419
 msgid "S"
 msgstr "J"
 
 #. Translators: short for "east" in GPS coordinate
-#: src/metadata.rs:409
+#: src/metadata.rs:428
 msgid "E"
 msgstr "V"
 
 #. Translators: short for "west" in GPS coordinate
-#: src/metadata.rs:413
+#: src/metadata.rs:432
 msgid "W"
 msgstr "Z"
 
-#: src/metadata.rs:493
-msgid "DCI P3"
-msgstr "DCI P3"
-
-#: src/metadata.rs:494
+#: src/metadata.rs:513 src/metadata.rs:526
 msgid "Display P3"
 msgstr "Zaslon P3"
 
-#: src/metadata.rs:495
-msgid "Rec.2020"
-msgstr "Rec.2020"
-
-#: src/metadata.rs:496
+#: src/metadata.rs:516 src/metadata.rs:528
 msgid "sRGB"
 msgstr "sRGB"
 
-#: src/metadata.rs:497 src/metadata.rs:505
+#: src/metadata.rs:519 src/metadata.rs:525
+msgid "DCI P3"
+msgstr "DCI P3"
+
+#: src/metadata.rs:527
+msgid "Rec.2020"
+msgstr "Rec.2020"
+
+#: src/metadata.rs:529 src/metadata.rs:537
 msgid "Unspecified"
 msgstr "Nedoločeno"
 
-#: src/metadata.rs:498 src/metadata.rs:507 src/metadata.rs:517
+#: src/metadata.rs:530 src/metadata.rs:539 src/metadata.rs:549
 #, rust-format
 msgid "Unknown ({})"
 msgstr "Neznano ({})"
 
-#: src/metadata.rs:504
+#: src/metadata.rs:536
 msgid "ICtCp"
 msgstr "ICtCp"
 
-#: src/metadata.rs:513
-msgid "DCI"
-msgstr "DCI"
+#: src/metadata.rs:545
+#| msgid "Gamma 2.4"
+msgid "DCI (Gamma 2.6)"
+msgstr "DCI (gama 2,6)"
 
-#: src/metadata.rs:514
+#: src/metadata.rs:546
 msgid "PQ"
 msgstr "PQ"
 
-#: src/metadata.rs:515
-msgid "Gamma 2.4"
-msgstr "Gama 2,4"
+#: src/metadata.rs:547
+msgid "sRGB (Piecewise Gamma 2.4)"
+msgstr "sRGB (piecewise/komadna gama 2,4)"
 
 #. / Returns localized date + time format
 #. Translators: This is the date and time format we use in metadata output etc.
@@ -504,7 +515,7 @@ msgid "Crop Selection"
 msgstr "Obreži izbor"
 
 #. Translators: Filename suffix, {} is replaced by a number
-#: src/widgets/edit_window.rs:199
+#: src/widgets/edit_window.rs:207
 #, rust-format
 msgid " (Edited)"
 msgid_plural " (Edited {})"
@@ -513,39 +524,39 @@ msgstr[1] " (spremenjeno, {})"
 msgstr[2] " (spremenjeno, {})"
 msgstr[3] " (spremenjeno, {})"
 
-#: src/widgets/edit_window.rs:283
+#: src/widgets/edit_window.rs:292
 msgid "Moving Original to Trash"
 msgstr "Premikanje izvirnika v koš"
 
-#: src/widgets/edit_window.rs:297 src/widgets/edit_window.rs:326
+#: src/widgets/edit_window.rs:306 src/widgets/edit_window.rs:335
 msgid "Failed to save image."
 msgstr "Ni bilo mogoče shraniti slike."
 
-#: src/widgets/edit_window.rs:306
+#: src/widgets/edit_window.rs:315
 msgid "Finalizing Save Operation"
 msgstr "Dokončanje operacije shranjevanja"
 
-#: src/widgets/edit_window.rs:357
+#: src/widgets/edit_window.rs:367
 msgid "Editing Image"
 msgstr "Urejanje slike"
 
-#: src/widgets/edit_window.rs:374
+#: src/widgets/edit_window.rs:384
 msgid "Failed to edit image."
 msgstr "Urejanje slike ni uspelo."
 
-#: src/widgets/edit_window.rs:381
+#: src/widgets/edit_window.rs:391
 msgid "Saving Image"
 msgstr "Shranjevanje slike"
 
-#: src/widgets/edit_window.rs:400
+#: src/widgets/edit_window.rs:410
 msgid "Failed to Save Image"
 msgstr "Shranjevanje slike ni uspelo"
 
-#: src/widgets/edit_window.rs:515
+#: src/widgets/edit_window.rs:526
 msgid "Save Changes?"
 msgstr "Ali želite shraniti spremembe?"
 
-#: src/widgets/edit_window.rs:517
+#: src/widgets/edit_window.rs:528
 msgid ""
 "There are unsaved image editing changes. Closing without saving will permanently "
 "lose these modifications."
@@ -553,15 +564,15 @@ msgstr ""
 "Nekatere spremembe urejanja slike niso shranjene. Če ga zaprete brez "
 "shranjevanja, boste trajno izgubili te spremembe."
 
-#: src/widgets/edit_window.rs:521 src/widgets/image_window.rs:700
+#: src/widgets/edit_window.rs:532 src/widgets/image_window.rs:700
 msgid "Cancel"
 msgstr "Prekliči"
 
-#: src/widgets/edit_window.rs:522
+#: src/widgets/edit_window.rs:533
 msgid "Discard"
 msgstr "Zavrzi"
 
-#: src/widgets/edit_window.rs:523
+#: src/widgets/edit_window.rs:534
 msgid "Save"
 msgstr "Shrani"
 
@@ -697,11 +708,11 @@ msgstr "Zavrti v desno"
 
 #. Translators: This is a toast notification, informing the user that
 #. an image has been set as background.
-#: src/widgets/image_view.rs:866
+#: src/widgets/image_view.rs:870
 msgid "Set as background."
 msgstr "Nastavi kot sliko ozadja."
 
-#: src/widgets/image_view.rs:872
+#: src/widgets/image_view.rs:876
 msgid "Could not set background."
 msgstr "Ozadja ni bilo mogoče nastaviti."
 
@@ -866,24 +877,24 @@ msgid "px"
 msgstr "sl. točk"
 
 #. Translators: {} is a placeholder for the filename
-#: src/widgets/print.rs:366
+#: src/widgets/print.rs:365
 #, rust-format
 msgid "Print “{}”"
 msgstr "Natisni »{}«"
 
-#: src/widgets/print.rs:473
+#: src/widgets/print.rs:472
 msgid "Continue…"
 msgstr "Nadaljuj …"
 
-#: src/widgets/print.rs:474
+#: src/widgets/print.rs:473
 msgid "Print Image"
 msgstr "Natisni sliko"
 
-#: src/widgets/print.rs:802
+#: src/widgets/print.rs:784
 msgid "_Scale"
 msgstr "_Merilo"
 
-#: src/widgets/print.rs:805
+#: src/widgets/print.rs:787
 msgid "_Width"
 msgstr "_Širina"
 
@@ -952,68 +963,68 @@ msgstr "_Višina"
 msgid "Unknown"
 msgstr "Neznano"
 
-#. Translators: Addition of image being transparent to format name
-#: src/widgets/properties_view.rs:288
-msgid ", transparent"
-msgstr ", prosojno"
+#. Translators: Concatenation of attributes like "transparent, grayscale"
+#: src/widgets/properties_view.rs:287
+msgid ", "
+msgstr ", "
 
-#. Translators: Addition of image being grayscale to format name
+#. Translators: Addition of image being transparent to format name
 #: src/widgets/properties_view.rs:293
-msgid ", grayscale"
-msgstr ", sivinsko"
+msgid "transparent"
+msgstr "prosojno"
 
 #. Translators: Addition of bit size to format name
-#: src/widgets/properties_view.rs:298
-msgid ", {}\\u{202F}bit"
-msgstr ", {}\\u{202F} bit"
+#: src/widgets/properties_view.rs:305
+msgid "{}\\u{202F}bit"
+msgstr ", {}\\u{202F}-bitno"
 
-#: src/widgets/properties_view.rs:315
+#: src/widgets/properties_view.rs:323
 msgid "{}\\u{202F}\\u{D7}\\u{202F}{}"
 msgstr "{}\\u{202F}\\u{D7}\\u{202F}{}"
 
 #. Translators: Shorthand for centimeter
-#: src/widgets/properties_view.rs:354
+#: src/widgets/properties_view.rs:362
 msgid " cm"
 msgstr "cm"
 
 #. Translators: Shorthand for inch
-#: src/widgets/properties_view.rs:358
+#: src/widgets/properties_view.rs:366
 msgid "″"
 msgstr "″"
 
 #. Translators: Shorthand for meter
-#: src/widgets/properties_view.rs:362
+#: src/widgets/properties_view.rs:370
 msgid " m"
 msgstr " m"
 
 #. Translators: Shorthand for millimeter
-#: src/widgets/properties_view.rs:366
+#: src/widgets/properties_view.rs:374
 msgid " mm"
 msgstr " mm"
 
 #. Translators: Shorthand for pica (unit)
-#: src/widgets/properties_view.rs:370
+#: src/widgets/properties_view.rs:378
 msgid " pc"
 msgstr " pc"
 
 #. Translators: Shorthand for pica (unit)
-#: src/widgets/properties_view.rs:374
+#: src/widgets/properties_view.rs:382
 msgid " pt"
 msgstr "tč"
 
-#: src/widgets/properties_view.rs:386
+#: src/widgets/properties_view.rs:394
 msgid "{}{}\\u{202F}\\u{D7}\\u{202F}{}{}"
 msgstr "{}{}\\u{202F}\\u{D7}\\u{202F}{}{}"
 
-#: src/widgets/properties_view.rs:403
+#: src/widgets/properties_view.rs:411
 msgid "{}\\u{202F}DPI"
 msgstr "{}\\u{202F} DPI"
 
-#: src/widgets/properties_view.rs:407
+#: src/widgets/properties_view.rs:415
 msgid "{}\\u{202F}DPI\\u{202F}\\u{D7}\\u{202F}{}\\u{202F}DPI"
 msgstr "{}\\u{202F} DPI\\u{202F}\\u{D7}\\u{202F}{}\\u{202F} DPI"
 
-#: src/widgets/properties_view.rs:435
+#: src/widgets/properties_view.rs:443
 msgid "Image Coordinates Copied"
 msgstr "Koordinate slike so kopirane"
 
