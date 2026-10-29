@@ -95,23 +95,6 @@
             ]
         },
         {
-            "name": "glycin-loaders",
-            "buildsystem": "meson",
-            "config-opts": [
-                "-Dloaders=glycin-image-rs",
-                "-Dlibglycin=false",
-                "-Dlibglycin-gtk4=false",
-                "-Dglycin-thumbnailer=false"
-            ],
-            "sources": [
-                {
-                    "type": "git",
-                    "url": "https://gitlab.gnome.org/GNOME/glycin.git",
-                    "commit": "bdde03d098291f3d5dad5458c30818d727612423"
-                }
-            ]
-        },
-        {
             "name": "loupe",
             "buildsystem": "meson",
             "config-opts": [
