@@ -11,7 +11,7 @@ project(
 i18n = import('i18n')
 gnome = import('gnome')
 
-dependency('gtk4', version: '>=4.16.0')
+dependency('gtk4', version: '>=4.24.0')
 dependency('libadwaita-1', version: '>=1.8.0')
 dependency('gweather4', version: '>=4.0.0')
 # Required by glycin crate

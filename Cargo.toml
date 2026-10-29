@@ -35,7 +35,7 @@ glycin = { version = "5.0.0-alpha", features = [
     "gdk4",
 ], git = "https://gitlab.gnome.org/GNOME/glycin.git", rev = "a83c48d7506d2f02c573e0d686d62b6d4f2f77e9" }
 gtk = { package = "gtk4", version = "0.11.0", features = [
-    "v4_14",
+    "v4_24",
     "xml_validation",
 ] }
 gufo = { version = "0.5.0", features = ["chrono"] }

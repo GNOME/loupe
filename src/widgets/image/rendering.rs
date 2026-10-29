@@ -18,6 +18,7 @@
 use tiling::FrameBuffer;
 
 use super::*;
+use gtk::gsk;
 
 impl WidgetImpl for imp::LpImage {
     // called when the widget size might have changed
@@ -93,6 +94,15 @@ impl WidgetImpl for imp::LpImage {
         // Operations on snapshots are coordinate transformations
         // It might help to read the following code from bottom to top
         snapshot.save();
+
+        // Align image rendering with physical display pixels to reproduce image
+        // exactly at 100% zoom
+        snapshot.set_snap(gsk::RectSnap::new(
+            gsk::SnapDirection::Round,
+            gsk::SnapDirection::Round,
+            gsk::SnapDirection::Round,
+            gsk::SnapDirection::Round,
+        ));
 
         // Add background
         snapshot.append_color(
