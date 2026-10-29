@@ -508,6 +508,19 @@ impl Metadata {
         }
 
         if let Some(cicp) = self.cicp {
+            match (cicp.color_primaries, cicp.transfer_characteristics) {
+                (cicp::ColorPrimaries::DisplayP3, cicp::TransferCharacteristics::Srgb) => {
+                    return Some(gettext("Display P3"));
+                }
+                (cicp::ColorPrimaries::Srgb, cicp::TransferCharacteristics::Srgb) => {
+                    return Some(gettext("sRGB"));
+                }
+                (cicp::ColorPrimaries::DciP3, cicp::TransferCharacteristics::Dci) => {
+                    return Some(gettext("DCI P3"));
+                }
+                _ => {}
+            }
+
             let primaries = match cicp.color_primaries {
                 cicp::ColorPrimaries::DciP3 => gettext("DCI P3"),
                 cicp::ColorPrimaries::DisplayP3 => gettext("Display P3"),
@@ -529,9 +542,9 @@ impl Metadata {
             };
 
             let transfer = match cicp.transfer_characteristics {
-                cicp::TransferCharacteristics::Dci => gettext("DCI"),
+                cicp::TransferCharacteristics::Dci => gettext("DCI (Gamma 2.6)"),
                 cicp::TransferCharacteristics::Pq => gettext("PQ"),
-                cicp::TransferCharacteristics::Srgb => gettext("Gamma 2.4"),
+                cicp::TransferCharacteristics::Srgb => gettext("sRGB (Piecewise Gamma 2.4)"),
                 cicp::TransferCharacteristics::Unknown(n) => {
                     gettext_f("Unknown ({})", [n.to_string()])
                 }
