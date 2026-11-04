@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: loupe\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2026-08-06 11:47+0000\n"
+"POT-Creation-Date: 2026-10-29 18:47+0000\n"
 "PO-Revision-Date: 2026-08-19 14:24+0200\n"
 "Last-Translator: Marcel Mrówka <micro.mail88@gmail.com>\n"
 "Language-Team: Polish <https://l10n.gnome.org/teams/pl/>\n"
@@ -18,8 +18,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
-"|| n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Generator: Gtranslator 50.0\n"
 
 #: data/org.gnome.Loupe.desktop.in.in:2
@@ -303,89 +302,102 @@ msgstr "Copyright © 2020–2024 Christopher Davis i inni"
 msgid "Could not list other files in directory."
 msgstr "Nie można wyświetlić listy pozostałych plików w katalogu."
 
-#. Translators: Display of the f-number <https://en.wikipedia.org/wiki/F-number>. {} will be replaced with the number
-#: src/metadata.rs:270
+#. Translators: Color model CMYK, often not translated
+#: src/metadata.rs:168
+msgid "CMYK"
+msgstr "CMYK"
+
+#. Translators: Color model grayscale
+#: src/metadata.rs:172
+msgid "grayscale"
+msgstr "skala szarości"
+
+#. Translators: Display of the f-number
+#. <https://en.wikipedia.org/wiki/F-number>. {} will be replaced with the
+#. number
+#: src/metadata.rs:290
 msgid "\\u{192}\\u{2215}{}"
 msgstr "\\u{192}\\u{2215}{}"
 
 #. Translators: Fractional exposure time (photography) in seconds
-#: src/metadata.rs:283
+#: src/metadata.rs:303
 msgid "1\\u{2215}{}\\u{202F}s"
 msgstr "1\\u{2215}{}\\u{202F}s"
 
 #. Translators: Exposure time (photography) in seconds
-#: src/metadata.rs:291
+#: src/metadata.rs:311
 msgid "{}\\u{202F}s"
 msgstr "{}\\u{202F}s"
 
-#: src/metadata.rs:305
+#: src/metadata.rs:325
 msgid "{}\\u{202F}mm"
 msgstr "{}\\u{202F}mm"
 
 #. Translators: short for "north" in GPS coordinate
-#: src/metadata.rs:395
+#: src/metadata.rs:415
 msgid "N"
 msgstr "N"
 
 #. Translators: short for "south" in GPS coordinate
-#: src/metadata.rs:399
+#: src/metadata.rs:419
 msgid "S"
 msgstr "S"
 
 #. Translators: short for "east" in GPS coordinate
-#: src/metadata.rs:408
+#: src/metadata.rs:428
 msgid "E"
 msgstr "E"
 
 #. Translators: short for "west" in GPS coordinate
-#: src/metadata.rs:412
+#: src/metadata.rs:432
 msgid "W"
 msgstr "W"
 
-#: src/metadata.rs:492
-msgid "DCI P3"
-msgstr "DCI P3"
-
-#: src/metadata.rs:493
+#: src/metadata.rs:513 src/metadata.rs:526
 msgid "Display P3"
 msgstr "Display P3"
 
-#: src/metadata.rs:494
-msgid "Rec.2020"
-msgstr "Rec.2020"
-
-#: src/metadata.rs:495
+#: src/metadata.rs:516 src/metadata.rs:528
 msgid "sRGB"
 msgstr "sRGB"
 
-#: src/metadata.rs:496 src/metadata.rs:504
+#: src/metadata.rs:519 src/metadata.rs:525
+msgid "DCI P3"
+msgstr "DCI P3"
+
+#: src/metadata.rs:527
+msgid "Rec.2020"
+msgstr "Rec.2020"
+
+#: src/metadata.rs:529 src/metadata.rs:537
 msgid "Unspecified"
 msgstr "Nieokreślony"
 
-#: src/metadata.rs:497 src/metadata.rs:506 src/metadata.rs:516
+#: src/metadata.rs:530 src/metadata.rs:539 src/metadata.rs:549
 #, rust-format
 msgid "Unknown ({})"
 msgstr "Nieznany ({})"
 
-#: src/metadata.rs:503
+#: src/metadata.rs:536
 msgid "ICtCp"
 msgstr "ICtCp"
 
-#: src/metadata.rs:512
-msgid "DCI"
-msgstr "DCI"
+#: src/metadata.rs:545
+msgid "DCI (Gamma 2.6)"
+msgstr "DCI (Gamma 2.6)"
 
-#: src/metadata.rs:513
+#: src/metadata.rs:546
 msgid "PQ"
 msgstr "PQ"
 
-#: src/metadata.rs:514
-msgid "Gamma 2.4"
-msgstr "Gamma 2.4"
+#: src/metadata.rs:547
+msgid "sRGB (Piecewise Gamma 2.4)"
+msgstr "sRGB (odcinkowa Gamma 2.4)"
 
 #. / Returns localized date + time format
 #. Translators: This is the date and time format we use in metadata output etc.
-#. The format has to follow <https://docs.gtk.org/glib/method.DateTime.format.html>
+#. The format has to follow
+#. <https://docs.gtk.org/glib/method.DateTime.format.html>
 #. The default is already translated. Don't change if you are not sure what to
 #. use.
 #: src/util.rs:39
@@ -596,8 +608,8 @@ msgstr "Oryginalny obraz zostanie przeniesiony do kosza"
 
 #: src/widgets/error_details.rs:80
 msgid ""
-"The following error occurred. If you think this is an issue with the "
-"program, please include this information when you report the error."
+"The following error occurred. If you think this is an issue with the program,"
+" please include this information when you report the error."
 msgstr ""
 "Wystąpił poniższy błąd. Jeśli to może być problem z programem, proszę "
 "dołączyć te informacje podczas zgłaszania błędu."
@@ -609,8 +621,8 @@ msgstr "Informacje o błędzie"
 #: src/widgets/error_details.ui:19
 msgid ""
 "The image loader reported the following when trying to load or edit the "
-"image. Please include this information when you report an error. If "
-"possible, please also provide the image that causes the issue."
+"image. Please include this information when you report an error. If possible,"
+" please also provide the image that causes the issue."
 msgstr ""
 "Mechanizm wczytywania obrazów zgłosił poniższe informacje podczas próby "
 "wczytania lub modyfikacji obrazu. Proszę je dołączyć podczas zgłaszania "
@@ -884,11 +896,11 @@ msgstr "Kontynuuj…"
 msgid "Print Image"
 msgstr "Wydrukuj obraz"
 
-#: src/widgets/print.rs:801
+#: src/widgets/print.rs:784
 msgid "_Scale"
 msgstr "_Powiększenie"
 
-#: src/widgets/print.rs:804
+#: src/widgets/print.rs:787
 msgid "_Width"
 msgstr "_Szerokość"
 
@@ -957,68 +969,68 @@ msgstr "Wy_sokość"
 msgid "Unknown"
 msgstr "Nieznany"
 
-#. Translators: Addition of image being transparent to format name
-#: src/widgets/properties_view.rs:288
-msgid ", transparent"
-msgstr ", przezroczysty"
+#. Translators: Concatenation of attributes like "transparent, grayscale"
+#: src/widgets/properties_view.rs:287
+msgid ", "
+msgstr ", "
 
-#. Translators: Addition of image being grayscale to format name
+#. Translators: Addition of image being transparent to format name
 #: src/widgets/properties_view.rs:293
-msgid ", grayscale"
-msgstr ", skala szarości"
+msgid "transparent"
+msgstr "przezroczysty"
 
 #. Translators: Addition of bit size to format name
-#: src/widgets/properties_view.rs:298
-msgid ", {}\\u{202F}bit"
-msgstr ", {}\\u{202F}bit"
+#: src/widgets/properties_view.rs:305
+msgid "{}\\u{202F}bit"
+msgstr "{}\\u{202F}bit"
 
-#: src/widgets/properties_view.rs:315
+#: src/widgets/properties_view.rs:323
 msgid "{}\\u{202F}\\u{D7}\\u{202F}{}"
 msgstr "{}\\u{202F}\\u{D7}\\u{202F}{}"
 
 #. Translators: Shorthand for centimeter
-#: src/widgets/properties_view.rs:354
+#: src/widgets/properties_view.rs:362
 msgid " cm"
 msgstr " cm"
 
 #. Translators: Shorthand for inch
-#: src/widgets/properties_view.rs:358
+#: src/widgets/properties_view.rs:366
 msgid "″"
 msgstr "″"
 
 #. Translators: Shorthand for meter
-#: src/widgets/properties_view.rs:362
+#: src/widgets/properties_view.rs:370
 msgid " m"
 msgstr " m"
 
 #. Translators: Shorthand for millimeter
-#: src/widgets/properties_view.rs:366
+#: src/widgets/properties_view.rs:374
 msgid " mm"
 msgstr " mm"
 
 #. Translators: Shorthand for pica (unit)
-#: src/widgets/properties_view.rs:370
+#: src/widgets/properties_view.rs:378
 msgid " pc"
 msgstr " pc"
 
 #. Translators: Shorthand for pica (unit)
-#: src/widgets/properties_view.rs:374
+#: src/widgets/properties_view.rs:382
 msgid " pt"
 msgstr " pt"
 
-#: src/widgets/properties_view.rs:386
+#: src/widgets/properties_view.rs:394
 msgid "{}{}\\u{202F}\\u{D7}\\u{202F}{}{}"
 msgstr "{}{}\\u{202F}\\u{D7}\\u{202F}{}{}"
 
-#: src/widgets/properties_view.rs:403
+#: src/widgets/properties_view.rs:411
 msgid "{}\\u{202F}DPI"
 msgstr "{}\\u{202F}DPI"
 
-#: src/widgets/properties_view.rs:407
+#: src/widgets/properties_view.rs:415
 msgid "{}\\u{202F}DPI\\u{202F}\\u{D7}\\u{202F}{}\\u{202F}DPI"
 msgstr "{}\\u{202F}DPI\\u{202F}\\u{D7}\\u{202F}{}\\u{202F}DPI"
 
-#: src/widgets/properties_view.rs:435
+#: src/widgets/properties_view.rs:443
 msgid "Image Coordinates Copied"
 msgstr "Skopiowano współrzędne obrazu"
 
