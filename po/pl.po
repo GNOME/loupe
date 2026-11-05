@@ -5,20 +5,22 @@
 # Aviary.pl <community-poland@mozilla.org>, 2023-2025.
 # Daniel <wbcwknvstb@proton.me>, 2026.
 # Marcel Mrówka <micro.mail88@gmail.com>, 2026.
+# Tomasz Bojanowski <tomasz@bojanowski.me>, 2026.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: loupe\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
 "POT-Creation-Date: 2026-10-22 20:30+0000\n"
-"PO-Revision-Date: 2026-08-19 14:24+0200\n"
-"Last-Translator: Marcel Mrówka <micro.mail88@gmail.com>\n"
+"PO-Revision-Date: 2026-11-05 20:15+0100\n"
+"Last-Translator: Tomasz Bojanowski <tomasz@bojanowski.me>\n"
 "Language-Team: Polish <https://l10n.gnome.org/teams/pl/>\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
+"|| n%100>=20) ? 1 : 2);\n"
 "X-Generator: Gtranslator 50.0\n"
 
 #: data/org.gnome.Loupe.desktop.in.in:2
@@ -62,7 +64,7 @@ msgstr "Główne okno"
 
 #: data/org.gnome.Loupe.metainfo.xml.in.in:32
 msgid "Crop Tool"
-msgstr "Narzędzie kadrowania"
+msgstr "Narzędzie przycinania"
 
 #: data/org.gnome.Loupe.metainfo.xml.in.in:36
 msgid "Image Properties Panel"
@@ -283,7 +285,7 @@ msgstr "Odwrócenie pionowo"
 #: data/resources/shortcuts-dialog.ui:277
 msgctxt "shortcut window"
 msgid "Apply Crop"
-msgstr "Zastosowanie kadrowania"
+msgstr "Zastosowanie przycinania"
 
 #. Translators: Replace "translator-credits" with your names, one name per line
 #: src/about.rs:45
@@ -292,7 +294,8 @@ msgstr ""
 "Piotr Drąg <piotrdrag@gmail.com>, 2023-2025\n"
 "Aviary.pl <community-poland@mozilla.org>, 2023-2025\n"
 "Daniel <wbcwknvstb@proton.me>, 2026\n"
-"Marcel Mrówka <micro.mail88@gmail.com>, 2026"
+"Marcel Mrówka <micro.mail88@gmail.com>, 2026\n"
+"Tomasz Bojanowski <tomasz@bojanowski.me>, 2026"
 
 #: src/about.rs:46
 msgid "Copyright © 2020–2024 Christopher Davis et al."
@@ -302,9 +305,7 @@ msgstr "Copyright © 2020–2024 Christopher Davis i inni"
 msgid "Could not list other files in directory."
 msgstr "Nie można wyświetlić listy pozostałych plików w katalogu."
 
-#. Translators: Display of the f-number
-#. <https://en.wikipedia.org/wiki/F-number>. {} will be replaced with the
-#. number
+#. Translators: Display of the f-number <https://en.wikipedia.org/wiki/F-number>. {} will be replaced with the number
 #: src/metadata.rs:270
 msgid "\\u{192}\\u{2215}{}"
 msgstr "\\u{192}\\u{2215}{}"
@@ -386,8 +387,7 @@ msgstr "Gamma 2.4"
 
 #. / Returns localized date + time format
 #. Translators: This is the date and time format we use in metadata output etc.
-#. The format has to follow
-#. <https://docs.gtk.org/glib/method.DateTime.format.html>
+#. The format has to follow <https://docs.gtk.org/glib/method.DateTime.format.html>
 #. The default is already translated. Don't change if you are not sure what to
 #. use.
 #: src/util.rs:39
@@ -509,7 +509,7 @@ msgstr "Cofnij zmiany w tym widoku"
 
 #: src/widgets/edit/crop_selection.ui:46
 msgid "Crop Selection"
-msgstr "Wybór kadrowania"
+msgstr "Przytnij zaznaczenie"
 
 #. Translators: Filename suffix, {} is replaced by a number
 #: src/widgets/edit_window.rs:207
@@ -598,8 +598,8 @@ msgstr "Oryginalny obraz zostanie przeniesiony do kosza"
 
 #: src/widgets/error_details.rs:80
 msgid ""
-"The following error occurred. If you think this is an issue with the program,"
-" please include this information when you report the error."
+"The following error occurred. If you think this is an issue with the "
+"program, please include this information when you report the error."
 msgstr ""
 "Wystąpił poniższy błąd. Jeśli to może być problem z programem, proszę "
 "dołączyć te informacje podczas zgłaszania błędu."
@@ -611,8 +611,8 @@ msgstr "Informacje o błędzie"
 #: src/widgets/error_details.ui:19
 msgid ""
 "The image loader reported the following when trying to load or edit the "
-"image. Please include this information when you report an error. If possible,"
-" please also provide the image that causes the issue."
+"image. Please include this information when you report an error. If "
+"possible, please also provide the image that causes the issue."
 msgstr ""
 "Mechanizm wczytywania obrazów zgłosił poniższe informacje podczas próby "
 "wczytania lub modyfikacji obrazu. Proszę je dołączyć podczas zgłaszania "
