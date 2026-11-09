@@ -946,9 +946,9 @@ dependencies = [
 
 [[package]]
 name = "glycin"
-version = "4.0.4"
+version = "4.0.5"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "4435b4e3908ef32618d2fdf34cf0991a08420ac89c1a8d2cb2add9b5c8f6037a"
+checksum = "7e5b54873fd0e4ea8fe447e4f2b8c670c485862b5d9d0d624dcc886bb3a89ecd"
 dependencies = [
  "glycin-builtin",
  "glycin-external",
@@ -956,9 +956,9 @@ dependencies = [
 
 [[package]]
 name = "glycin-builtin"
-version = "4.0.4"
+version = "4.0.5"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "a9cf6195ad19ef47059e55025d8ff8ec17297f1a862bd22a4027548f460e4000"
+checksum = "c47ae9011448c83bfa8841543c41d3c3dd20759096a1b565e366fd39d54029f3"
 dependencies = [
  "glycin-core",
 ]
@@ -984,9 +984,9 @@ dependencies = [
 
 [[package]]
 name = "glycin-core"
-version = "4.0.4"
+version = "4.0.5"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "8cea8c1b76aca49c3eb34e1dc0362718fc4a92a7dd57caa8443471aa0c19ddd4"
+checksum = "fdade20eb67ac75b5c306a99c594155e1096ea7aa536741f64158afa1ffdeb36"
 dependencies = [
  "async-fs",
  "async-global-executor",
@@ -1023,9 +1023,9 @@ dependencies = [
 
 [[package]]
 name = "glycin-external"
-version = "4.0.4"
+version = "4.0.5"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "c1a55b63037ad6e3738f0a9a75e1b1ba1654c91761f67576fba9545335375507"
+checksum = "2c9b985c8fe1d1c2cdc91566faa52f5d3226506201a4121580ae8cfcb71992e5"
 dependencies = [
  "glycin-core",
 ]
@@ -1233,9 +1233,9 @@ dependencies = [
 
 [[package]]
 name = "gufo-exif"
-version = "0.5.4"
+version = "0.5.5"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "4b334a76d1df73308ef010af6a5870b7fe0f175bd66c79dc8564ac3116781f69"
+checksum = "b7a91a52ac6ea8d25e0752b1f3552d7a8252dcdf0b0b8154d1118d5e2582129c"
 dependencies = [
  "chrono",
  "gufo-common",
@@ -1637,7 +1637,7 @@ checksum = "f9f8bd3e56ce4dfc153cf470fffbfa98c7620958b312ca5c3a4b8d5181fd13c6"
 
 [[package]]
 name = "loupe"
-version = "51.1.0"
+version = "51.2.0"
 dependencies = [
  "anyhow",
  "arc-swap",
