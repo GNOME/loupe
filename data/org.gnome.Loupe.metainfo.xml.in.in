@@ -71,6 +71,11 @@
   </categories>
 
   <releases>
+    <release version="51.2" date="2026-11-09">
+      <description>
+        <p>Fix issues with loading metadata from some images.</p>
+      </description>
+    </release>
     <release version="51.1" date="2026-10-23">
       <description>
         <p>Multiple problems with printing images have been fixed, including wrong scaling of images and app hangs when printing.</p>
