@@ -3,14 +3,14 @@
 # This file is distributed under the same license as the Loupe package.
 #
 # Sabri Ünal <yakushabb@gmail.com>, 2023-2026.
-# Emin Tufan Çetin <etcetin@gmail.com>, 2023-2026.
 # Akın Birdal <reend21@protonmail.com>, 2026.
+# Emin Tufan Çetin <etcetin@gmail.com>, 2023-2026.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Loupe main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/loupe/-/issues\n"
-"POT-Creation-Date: 2026-08-06 11:47+0000\n"
+"POT-Creation-Date: 2026-11-09 16:29+0000\n"
 "PO-Revision-Date: 2026-08-06 15:11+0300\n"
 "Last-Translator: Akın Birdal <reend21@protonmail.com>\n"
 "Language-Team: Turkish <takim@gnome.org.tr>\n"
@@ -301,85 +301,95 @@ msgstr "Telif Hakkı © 2020–2024 Christopher Davis ve ark."
 msgid "Could not list other files in directory."
 msgstr "Dizindeki diğer dosyalar listelenemedi."
 
+#. Translators: Color model CMYK, often not translated
+#: src/metadata.rs:168
+msgid "CMYK"
+msgstr "CMYK"
+
+#. Translators: Color model grayscale
+#: src/metadata.rs:172
+msgid "grayscale"
+msgstr "gri tonlama"
+
 #. Translators: Display of the f-number <https://en.wikipedia.org/wiki/F-number>. {} will be replaced with the number
-#: src/metadata.rs:270
+#: src/metadata.rs:290
 msgid "\\u{192}\\u{2215}{}"
 msgstr "\\u{192}\\u{2215}{}"
 
 #. Translators: Fractional exposure time (photography) in seconds
-#: src/metadata.rs:283
+#: src/metadata.rs:303
 msgid "1\\u{2215}{}\\u{202F}s"
 msgstr "1\\u{2215}{}\\u{202F}sn"
 
 #. Translators: Exposure time (photography) in seconds
-#: src/metadata.rs:291
+#: src/metadata.rs:311
 msgid "{}\\u{202F}s"
 msgstr "{}\\u{202F}sn"
 
-#: src/metadata.rs:305
+#: src/metadata.rs:325
 msgid "{}\\u{202F}mm"
 msgstr "{}\\u{202F}mm"
 
 #. Translators: short for "north" in GPS coordinate
-#: src/metadata.rs:395
+#: src/metadata.rs:415
 msgid "N"
 msgstr "K"
 
 #. Translators: short for "south" in GPS coordinate
-#: src/metadata.rs:399
+#: src/metadata.rs:419
 msgid "S"
 msgstr "G"
 
 #. Translators: short for "east" in GPS coordinate
-#: src/metadata.rs:408
+#: src/metadata.rs:428
 msgid "E"
 msgstr "D"
 
 #. Translators: short for "west" in GPS coordinate
-#: src/metadata.rs:412
+#: src/metadata.rs:432
 msgid "W"
 msgstr "B"
 
-#: src/metadata.rs:492
-msgid "DCI P3"
-msgstr "DCI P3"
-
-#: src/metadata.rs:493
+#: src/metadata.rs:513 src/metadata.rs:526
 msgid "Display P3"
 msgstr "Display P3"
 
-#: src/metadata.rs:494
-msgid "Rec.2020"
-msgstr "Rec.2020"
-
-#: src/metadata.rs:495
+#: src/metadata.rs:516 src/metadata.rs:528
 msgid "sRGB"
 msgstr "sRGB"
 
-#: src/metadata.rs:496 src/metadata.rs:504
+#: src/metadata.rs:519 src/metadata.rs:525
+msgid "DCI P3"
+msgstr "DCI P3"
+
+#: src/metadata.rs:527
+msgid "Rec.2020"
+msgstr "Rec.2020"
+
+#: src/metadata.rs:529 src/metadata.rs:537
 msgid "Unspecified"
 msgstr "Belirtilmemiş"
 
-#: src/metadata.rs:497 src/metadata.rs:506 src/metadata.rs:516
+#: src/metadata.rs:530 src/metadata.rs:539 src/metadata.rs:549
 #, rust-format
 msgid "Unknown ({})"
 msgstr "Bilinmeyen ({})"
 
-#: src/metadata.rs:503
+#: src/metadata.rs:536
 msgid "ICtCp"
 msgstr "ICtCp"
 
-#: src/metadata.rs:512
-msgid "DCI"
-msgstr "DCI"
+#: src/metadata.rs:545
+msgid "DCI (Gamma 2.6)"
+msgstr "DCI (Gamma 2.6)"
 
-#: src/metadata.rs:513
+#: src/metadata.rs:546
 msgid "PQ"
 msgstr "PQ"
 
-#: src/metadata.rs:514
-msgid "Gamma 2.4"
-msgstr "Gamma 2.4"
+#: src/metadata.rs:547
+msgid "sRGB (Piecewise Gamma 2.4)"
+msgstr "sRGB (Piecewise Gamma 2.4)"
 
 #. / Returns localized date + time format
 #. Translators: This is the date and time format we use in metadata output etc.
@@ -880,11 +890,11 @@ msgstr "Sürdür…"
 msgid "Print Image"
 msgstr "Resim Yazdır"
 
-#: src/widgets/print.rs:801
+#: src/widgets/print.rs:784
 msgid "_Scale"
 msgstr "_Ölçekle"
 
-#: src/widgets/print.rs:804
+#: src/widgets/print.rs:787
 msgid "_Width"
 msgstr "_Genişlik"
 
@@ -953,68 +963,68 @@ msgstr "_Yükseklik"
 msgid "Unknown"
 msgstr "Bilinmeyen"
 
-#. Translators: Addition of image being transparent to format name
-#: src/widgets/properties_view.rs:288
-msgid ", transparent"
-msgstr ", saydam"
+#. Translators: Concatenation of attributes like "transparent, grayscale"
+#: src/widgets/properties_view.rs:287
+msgid ", "
+msgstr ", "
 
-#. Translators: Addition of image being grayscale to format name
+#. Translators: Addition of image being transparent to format name
 #: src/widgets/properties_view.rs:293
-msgid ", grayscale"
-msgstr ", gri tonlama"
+msgid "transparent"
+msgstr "saydam"
 
 #. Translators: Addition of bit size to format name
-#: src/widgets/properties_view.rs:298
-msgid ", {}\\u{202F}bit"
-msgstr ", {}\\u{202F}bit"
+#: src/widgets/properties_view.rs:305
+msgid "{}\\u{202F}bit"
+msgstr "{}\\u{202F}bit"
 
-#: src/widgets/properties_view.rs:315
+#: src/widgets/properties_view.rs:323
 msgid "{}\\u{202F}\\u{D7}\\u{202F}{}"
 msgstr "{}\\u{202F}\\u{D7}\\u{202F}{}"
 
 #. Translators: Shorthand for centimeter
-#: src/widgets/properties_view.rs:354
+#: src/widgets/properties_view.rs:362
 msgid " cm"
 msgstr " cm"
 
 #. Translators: Shorthand for inch
-#: src/widgets/properties_view.rs:358
+#: src/widgets/properties_view.rs:366
 msgid "″"
 msgstr "″"
 
 #. Translators: Shorthand for meter
-#: src/widgets/properties_view.rs:362
+#: src/widgets/properties_view.rs:370
 msgid " m"
 msgstr " m"
 
 #. Translators: Shorthand for millimeter
-#: src/widgets/properties_view.rs:366
+#: src/widgets/properties_view.rs:374
 msgid " mm"
 msgstr " mm"
 
 #. Translators: Shorthand for pica (unit)
-#: src/widgets/properties_view.rs:370
+#: src/widgets/properties_view.rs:378
 msgid " pc"
 msgstr " pc"
 
 #. Translators: Shorthand for pica (unit)
-#: src/widgets/properties_view.rs:374
+#: src/widgets/properties_view.rs:382
 msgid " pt"
 msgstr " pt"
 
-#: src/widgets/properties_view.rs:386
+#: src/widgets/properties_view.rs:394
 msgid "{}{}\\u{202F}\\u{D7}\\u{202F}{}{}"
 msgstr "{}{}\\u{202F}\\u{D7}\\u{202F}{}{}"
 
-#: src/widgets/properties_view.rs:403
+#: src/widgets/properties_view.rs:411
 msgid "{}\\u{202F}DPI"
 msgstr "{}\\u{202F}DPI"
 
-#: src/widgets/properties_view.rs:407
+#: src/widgets/properties_view.rs:415
 msgid "{}\\u{202F}DPI\\u{202F}\\u{D7}\\u{202F}{}\\u{202F}DPI"
 msgstr "{}\\u{202F}DPI\\u{202F}\\u{D7}\\u{202F}{}\\u{202F}DPI"
 
-#: src/widgets/properties_view.rs:435
+#: src/widgets/properties_view.rs:443
 msgid "Image Coordinates Copied"
 msgstr "Resim Koordinatları Kopyalandı"
 
@@ -1122,22 +1132,3 @@ msgstr "CICP"
 #: src/widgets/window.rs:254
 msgid "Show Details"
 msgstr "Ayrıntıları Göster"
-
-#~ msgid "Browse through your images and inspect their metadata with:"
-#~ msgstr "Resimlerinize göz atın ve üst verilerini şunlarla inceleyin:"
-
-#~ msgid "Fast GPU accelerated image rendering"
-#~ msgstr "Hızlı, GPU hızlandırmalı resim sahneleme"
-
-#~ msgid "Tiled rendering for vector graphics"
-#~ msgstr "Vektör grafikler için bölünmüş sahneleme"
-
-#~ msgid "Extendable and sandboxed image decoding"
-#~ msgstr "Genişletilebilir ve yalıtılmış resim çözme"
-
-#~ msgid "Accessible presentation of the most important metadata."
-#~ msgstr "Çoğu önemli üst verinin erişilebilir gösterimi."
-
-#~ msgctxt "shortcut window"
-#~ msgid "Gestures"
-#~ msgstr "Hareketler"
