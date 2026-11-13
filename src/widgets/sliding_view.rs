@@ -242,7 +242,8 @@ mod imp {
         fn size_allocate(&self, width: i32, height: i32, _baseline: i32) {
             let obj = self.obj();
 
-            // Unparent deleted children if not in animation that might contain them
+            // Unparent deleted children if not in animation that might contain
+            // them
             if matches!(
                 *self.position_tracking.borrow(),
                 PositionTracking::Position(_)
@@ -275,7 +276,8 @@ mod imp {
                 }
 
                 if !page.scrolled_window().is_mapped() {
-                    // SVG needs to know a widget size before rendering something in LpImage
+                    // SVG needs to know a widget size before rendering
+                    // something in LpImage
                     page.scrolled_window().allocate(width, height, 0, None);
                 }
             }
@@ -507,7 +509,8 @@ impl LpSlidingView {
         let current_index = self.current_index();
 
         if let Some(index) = self.index_of(page) {
-            // Only unparent if far enough away to not be involved in delete animation
+            // Only unparent if far enough away to not be involved in delete
+            // animation
             if current_index.is_some_and(|x| x.abs_diff(index) as isize > 1) {
                 page.unparent();
             }
@@ -619,8 +622,8 @@ impl LpSlidingView {
 
             *self.imp().position_tracking.borrow_mut() =
                 PositionTracking::StackedCards(StackedCards::new(prev_page, backward));
-            // Set current page here as well, to make sure it's set when animation completes
-            // for disabled animations
+            // Set current page here as well, to make sure it's set when
+            // animation completes for disabled animations
             self.set_current_page(Some(page));
             animation.play();
         }

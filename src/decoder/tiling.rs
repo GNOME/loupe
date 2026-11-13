@@ -69,7 +69,8 @@ pub fn round(r: &graphene::Rect) -> graphene::Rect {
 impl Tile {
     pub fn area(&self) -> graphene::Rect {
         let bleed = self.bleed as f32;
-        // The texture is rendered slightly larger such that bleed can be cut away
+        // The texture is rendered slightly larger such that bleed can be cut
+        // away
         self.area_with_bleed().inset_r(bleed, bleed)
     }
 
@@ -98,7 +99,8 @@ impl Tile {
         output_zoom: f64,
         options: &RenderOptions,
     ) {
-        // Multiply by scale factor to get the image scaled to `zoom` in physical pixels
+        // Multiply by scale factor to get the image scaled to `zoom` in
+        // physical pixels
         let zoom = output_zoom as f32 * options.scaling as f32 / self.zoom();
         let area = round(&self.area().scale(zoom, zoom));
         let area_with_bleed = round(&self.area_with_bleed().scale(zoom, zoom));
@@ -356,7 +358,8 @@ impl TiledImage {
         let stored_tiles = self.iter_rendering_priority(zoom);
 
         for (zoom_level, tile_layer) in stored_tiles {
-            // This should always be tiled since "Simple" would be in total-zoom-out layer
+            // This should always be tiled since "Simple" would be in
+            // total-zoom-out layer
             if let Covering::Tiling(tiling) = tile_layer.covering {
                 let tiles = &tile_layer.tiles;
                 let tile_zoom = level_to_zoom(*zoom_level);
@@ -373,7 +376,8 @@ impl TiledImage {
                         .area
                         .scale(1. / tile_zoom as f32, 1. / tile_zoom as f32);
 
-                    // Determine if tile of this zoom level has overlap with a missing tile
+                    // Determine if tile of this zoom level has overlap with a
+                    // missing tile
                     let mut intersections = missing_tiles
                         .iter()
                         .filter(|missing| tile_instruction.area.is_intersected(missing))

@@ -32,10 +32,10 @@ use crate::util::gettext::*;
 
 /// Returns localized date + time format
 pub fn datetime_fmt(datetime: &glib::DateTime) -> Option<String> {
-    // Translators: This is the date and time format we use in metadata output etc.
-    // The format has to follow <https://docs.gtk.org/glib/method.DateTime.format.html>
-    // The default is already translated. Don't change if you are not sure what to
-    // use.
+    // Translators: This is the date and time format we use in metadata output
+    // etc. The format has to follow <https://docs.gtk.org/glib/method.DateTime.format.html>
+    // The default is already translated. Don't change if you are not sure what
+    // to use.
     let datetime_format = gettext("%x %X");
 
     let local_datetime = datetime.to_local();

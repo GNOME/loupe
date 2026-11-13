@@ -15,10 +15,10 @@
 //
 // SPDX-License-Identifier: GPL-3.0-or-later
 
+use gtk::gsk;
 use tiling::FrameBuffer;
 
 use super::*;
-use gtk::gsk;
 
 impl WidgetImpl for imp::LpImage {
     // called when the widget size might have changed
@@ -81,7 +81,8 @@ impl WidgetImpl for imp::LpImage {
             // Uses mipmaps to avoid moiré patterns
             gsk::ScalingFilter::Trilinear
         } else {
-            // Show pixels when zooming in because making images blurry looks worse
+            // Show pixels when zooming in because making images blurry looks
+            // worse
             gsk::ScalingFilter::Nearest
         };
 
@@ -273,7 +274,8 @@ impl imp::LpImage {
 
         // Center image in coordinates.
         // Needed for rotating around the center of the image, and
-        // mirroring the image does not put it to a completely different position.
+        // mirroring the image does not put it to a completely different
+        // position.
         snapshot.translate(&graphene::Point::new(
             -self.round_f32(untransformed_width as f32 * zoom as f32 / 2.),
             -self.round_f32(untransformed_height as f32 * zoom as f32 / 2.),
@@ -297,7 +299,8 @@ impl imp::LpImage {
         let frame_buffer = self.frame_buffer.load_full();
 
         if frame_buffer.is_empty() {
-            // Fallback to previous buffer to show previous image until new one is available
+            // Fallback to previous buffer to show previous image until new one
+            // is available
             self.previous_frame_buffer.load_full()
         } else {
             frame_buffer
@@ -372,8 +375,8 @@ impl LpImage {
 
         // Centering in widget when no scrolling (black bars around image)
         //
-        // Round to pixel values to not have a half pixel offset to physical pixels
-        // The offset would leading to a blurry output
+        // Round to pixel values to not have a half pixel offset to physical
+        // pixels The offset would leading to a blurry output
         imp.round_f64(f64::max((widget_width - display_width) / 2.0, 0.))
     }
 

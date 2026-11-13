@@ -48,7 +48,8 @@ impl Entry {
         let mut sort = VecDeque::new();
         let mut frac_file = file.clone();
 
-        // Use already available info for the filename as performance optimization
+        // Use already available info for the filename as performance
+        // optimization
         let mut available_file_info = info.map(Ok);
 
         // Determine sort order for all path/uri segments one by one
@@ -73,10 +74,11 @@ impl Entry {
                 match file_info {
                     Ok(parent) => {
                         let key = glib::FilenameCollationKey::from(parent.display_name());
-                        // Using this cache since each file info query can take noticable time (1 ms
-                        // on local SMB). Only cache keys resulting from queries in this function
-                        // since these will be path segments that can be (and are likely to) be
-                        // repeated.
+                        // Using this cache since each file info query can take
+                        // noticable time (1 ms on local SMB). Only cache keys
+                        // resulting from queries in this function since these
+                        // will be path segments that can be (and are likely to)
+                        // be repeated.
                         collation_key_cache.insert(uri, key.clone());
                         key
                     }
@@ -221,10 +223,11 @@ impl LpFileModel {
                 }
                 Ok(mut info) => {
                     if let Some(info) = info.pop() {
-                        // GVfs smb does not provide a CONTENT_TYPE if the content type is
-                        // ambiguous. This happens for png/apng. Since we
-                        // only need to know if something is probably an
-                        // image, we can use the FAST_CONTENT_TYPE in these cases.
+                        // GVfs smb does not provide a CONTENT_TYPE if the
+                        // content type is ambiguous. This happens for png/apng.
+                        // Since we only need to know if something is probably
+                        // an image, we can use the FAST_CONTENT_TYPE in these
+                        // cases.
                         let content_type =
                             info.attribute_string(gio::FILE_ATTRIBUTE_STANDARD_FAST_CONTENT_TYPE);
 
@@ -238,8 +241,9 @@ impl LpFileModel {
                                     false
                                 };
 
-                            // Filter out non-images types. The final decision if images are
-                            // supported/kept will later be done by glycin when starting to load the
+                            // Filter out non-images types. The final decision
+                            // if images are supported/kept will later be done
+                            // by glycin when starting to load the
                             // images. Usually by inspecting the magic bytes.
                             if content_type.starts_with("image/") && !hidden {
                                 let file = directory.child(info.name());
@@ -256,8 +260,8 @@ impl LpFileModel {
         }
 
         {
-            // Here we use a nested scope so that the mutable borrow only lasts as long as
-            // we need it
+            // Here we use a nested scope so that the mutable borrow only lasts
+            // as long as we need it
 
             let mut files = self.imp().files.borrow_mut();
             for (uri, file) in files.iter() {
@@ -320,13 +324,13 @@ impl LpFileModel {
         &self,
         file: &gio::File,
         n: usize,
-    ) -> Result<IndexMap<GString, gio::File>, ()> {
+    ) -> Result<IndexMap<GString, gio::File>, FileNotFoundError> {
         let Some(index) = self.index_of(file) else {
-            // This can happen when the file is deleted the moment the view moves to it.
-            // This frequently happens when the "Replace original" function is used in
-            // editing.
+            // This can happen when the file is deleted the moment the view
+            // moves to it. This frequently happens when the "Replace original"
+            // function is used in editing.
             tracing::info!("URI not in model: {}", file.uri());
-            return Err(());
+            return Err(FileNotFoundError);
         };
 
         let reduce = n.saturating_sub(index);
@@ -509,3 +513,14 @@ pub enum FileEvent {
     Removed(String),
     Moved(String, String),
 }
+
+#[derive(Debug)]
+pub struct FileNotFoundError;
+
+impl std::fmt::Display for FileNotFoundError {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        f.write_str("File not found")
+    }
+}
+
+impl std::error::Error for FileNotFoundError {}

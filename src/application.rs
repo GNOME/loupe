@@ -126,9 +126,9 @@ impl LpApplication {
     }
 
     pub fn setup_actions(&self) {
-        // gio::ActionEntryBuilder allows us to build and store an action on an object
-        // that implements gio::ActionMap. Here we build the application's actions and
-        // add them with add_action_entries().
+        // gio::ActionEntryBuilder allows us to build and store an action on an
+        // object that implements gio::ActionMap. Here we build the
+        // application's actions and add them with add_action_entries().
         let actions = [
             gio::ActionEntryBuilder::new("help")
                 .activate(|app: &Self, _, _| app.show_help())

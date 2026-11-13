@@ -74,10 +74,11 @@ impl imp::LpImage {
         tracing::trace!("Configure best fit");
         // calculate new zoom value for best fit
         if self.obj().is_best_fit() {
-            // LpImage can get measured during pinch zoom gesture, when scrollbars appear
-            // that are not overlayed (accessibility option.) This causes the best-fit to
-            // change. Don't change the zoom level in this case since we are in the gesture
-            // that will change the zoom level anyway.
+            // LpImage can get measured during pinch zoom gesture, when
+            // scrollbars appear that are not overlayed (accessibility option.)
+            // This causes the best-fit to change. Don't change the zoom level
+            // in this case since we are in the gesture that will change the
+            // zoom level anyway.
             if self.locked_gestured.get().is_none() {
                 let best_fit_level = self.zoom_level_best_fit();
                 self.zoom.set(best_fit_level);
@@ -107,15 +108,17 @@ impl imp::LpImage {
             // block zooming out entirely
             1.0
         } else if width < height {
-            // Prevent the rendered size from going below SMALLEST_RENDERED_PIXEL_SIZE
+            // Prevent the rendered size from going below
+            // SMALLEST_RENDERED_PIXEL_SIZE
             SMALLEST_RENDERED_PIXEL_SIZE / (width as f64)
         } else {
             SMALLEST_RENDERED_PIXEL_SIZE / (height as f64)
         };
 
         if matches!(self.obj().fit_mode(), FitMode::ExactVolatile) {
-            // Allow zoom menu to allways function. We are allowing this since disabling the
-            // zoom menu entries would probably be more complicated.
+            // Allow zoom menu to allways function. We are allowing this since
+            // disabling the zoom menu entries would probably be more
+            // complicated.
             f64::min(zoom_level, LOWEST_MENU_ZOOM_LEVEL)
         } else {
             zoom_level
@@ -199,7 +202,8 @@ impl imp::LpImage {
             if self.zoom_cursor_target.get().is_some() {
                 cur
             } else {
-                // Use center of widget for cursor since `img_pos` is locked in on center
+                // Use center of widget for cursor since `img_pos` is locked in
+                // on center
                 (self.widget_width() / 2., self.widget_height() / 2.)
             }
         } else {
@@ -304,8 +308,8 @@ impl imp::LpImage {
             if force_cursor_center {
                 self.zoom_cursor_target.set(None);
             } else {
-                // Set new point in image that should remain under the cursor while zooming if
-                // there isn't one already
+                // Set new point in image that should remain under the cursor
+                // while zooming if there isn't one already
                 if self.zoom_cursor_target.get().is_none() {
                     let img_pos: Option<(f64, f64)> = self
                         .pointer_position

@@ -165,8 +165,8 @@ mod imp {
                 #[weak]
                 obj,
                 move |_, n_press, _, _| {
-                    // TODO: We can't claim the gesture here, right? Otherwise we suppress the
-                    // double-click
+                    // TODO: We can't claim the gesture here, right? Otherwise
+                    // we suppress the double-click
                     if n_press == 1 {
                         tracing::trace!("General 1 click event");
                         obj.on_click();
@@ -228,9 +228,9 @@ mod imp {
             current_image_signals.connect_closure(
                 "notify::best-fit",
                 false,
-                // `closure_local!` is similar to `clone`, but you use `@watch` instead of clone.
-                // `@watch` means that this signal will be disconnected when the watched object
-                // is dropped.
+                // `closure_local!` is similar to `clone`, but you use `@watch`
+                // instead of clone. `@watch` means that this signal will be
+                // disconnected when the watched object is dropped.
                 glib::closure_local!(
                     #[watch]
                     obj,
@@ -352,10 +352,12 @@ mod imp {
                     obj,
                     move |button| {
                         if button.is_active() {
-                            // Show overlay controls when zoom popover in them gets opened
+                            // Show overlay controls when zoom popover in them
+                            // gets opened
                             obj.show_controls();
                         } else {
-                            // Schedule hide overlay controls when zoom popover gets closed
+                            // Schedule hide overlay controls when zoom popover
+                            // gets closed
                             obj.schedule_hide_controls();
                         }
                     }
@@ -386,10 +388,12 @@ mod imp {
                 #[upgrade_or]
                 false,
                 move |_drop_target, drop| {
-                    // Only accept drops from external sources or different windows
+                    // Only accept drops from external sources or different
+                    // windows
                     let different_source = drop.drag().is_none()
                         || drop.drag() != obj.image_view().drag_source().drag();
-                    // We have to do this manually since we are overwriting the default handler
+                    // We have to do this manually since we are overwriting the
+                    // default handler
                     let correct_format = drop.formats().contains_type(gdk::FileList::static_type());
 
                     different_source && correct_format
@@ -406,15 +410,16 @@ mod imp {
                 #[upgrade_or]
                 false,
                 move |_, value, _, _| {
-                    // Here we use a GValue, which is a dynamic object that can hold different
-                    // types, e.g. strings, numbers, or in this case objects. In
-                    // order to get the GdkFileList from the GValue, we need to
-                    // use the `get()` method.
+                    // Here we use a GValue, which is a dynamic object that can
+                    // hold different types, e.g. strings, numbers, or in this
+                    // case objects. In order to get the GdkFileList from the
+                    // GValue, we need to use the `get()` method.
                     //
-                    // We've added type annotations here, and written it as `let list: gdk::FileList
-                    // = ...`, but you might also see places where type
-                    // arguments are used. This line could have been written as
-                    // `let list = value.get::<gdk::FileList>().unwrap()`.
+                    // We've added type annotations here, and written it as `let
+                    // list: gdk::FileList = ...`, but you might also see places
+                    // where type arguments are used. This line could have been
+                    // written as `let list =
+                    // value.get::<gdk::FileList>().unwrap()`.
                     let files = match value.get::<gdk::FileList>() {
                         Ok(list) => list.files(),
                         Err(err) => {
@@ -776,8 +781,8 @@ impl LpImageWindow {
             .zoom_menu_button()
             .set_sensitive(enabled_shown);
 
-        // Actions that are available if there is an current image, even if it's not
-        // shown
+        // Actions that are available if there is an current image, even if it's
+        // not shown
         const ACTIONS_CURRENT: &[Action] = &[
             Action::OpenWith,
             Action::CopyImage,
@@ -858,8 +863,8 @@ impl LpImageWindow {
     /// update the "show-properties" setting.
     fn on_properties_button_toggled(&self) {
         let imp = self.imp();
-        // When no image is shown, we skip this update as the sidebar should always be
-        // hidden. This can happen when deleting a picture.
+        // When no image is shown, we skip this update as the sidebar should
+        // always be hidden. This can happen when deleting a picture.
         if imp.image_view.current_page().is_none() {
             return;
         }
@@ -958,8 +963,9 @@ impl LpImageWindow {
         // Only change status if active window
         if window.is_active() {
             if window.visible_dialog().is_some() || !self.is_mapped() {
-                // If AdwDialog is visible, remove global accels that are for the main window
-                // Same for this not being visible, so potentially editing view is open
+                // If AdwDialog is visible, remove global accels that are for
+                // the main window Same for this not being visible, so
+                // potentially editing view is open
                 ActionPartGlobal::remove_accels(&application);
             } else {
                 // Add accels if viewing main window
@@ -990,7 +996,8 @@ impl LpImageWindow {
             .set_extend_content_to_top_edge(self.is_content_extended_to_top());
 
         let style = if !self.is_showing_image() || self.is_content_extended_to_top() {
-            // Flat headerbar for empty state and fullscreen without properties enabled
+            // Flat headerbar for empty state and fullscreen without properties
+            // enabled
             adw::ToolbarStyle::Flat
         } else {
             // Use the border variant of raised to avoid shadows over images

@@ -217,7 +217,8 @@ mod imp {
                 .and_then(|x| x.parent())
                 .and_then(|p| util::get_file_display_name(&gio::File::for_path(p)));
             let has_folder = Self::update_row(&self.folder, parent);
-            // The portal only supports opening folders of files that have a path
+            // The portal only supports opening folders of files that have a
+            // path
             obj.action_set_enabled("properties.open-folder", file.path().is_some());
             // Only show URI if now folder available
             let uri = if !has_folder {
@@ -283,13 +284,15 @@ mod imp {
 
             let mut format = metadata.format_name().unwrap_or(gettext("Unknown"));
 
-            // Translators: Concatenation of attributes like "transparent, grayscale"
+            // Translators: Concatenation of attributes like "transparent,
+            // grayscale"
             let list_cocatenation = gettext(", ");
 
             if metadata.alpha_channel().unwrap_or(false) {
                 format.push_str(&format!(
                     "{list_cocatenation}{}",
-                    // Translators: Addition of image being transparent to format name
+                    // Translators: Addition of image being transparent to
+                    // format name
                     gettext("transparent")
                 ));
             }

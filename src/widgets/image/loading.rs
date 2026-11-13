@@ -176,8 +176,8 @@ impl imp::LpImage {
         if let Some(delay) = self.frame_buffer.frame_timeout(duration) {
             // Just draw since frame_timeout updated to new frame
             obj.queue_draw();
-            // Adjust the time when the frame was shown by how much anwanted delay we
-            // accumulated
+            // Adjust the time when the frame was shown by how much anwanted
+            // delay we accumulated
             self.last_animated_frame
                 .set(Some(clock.frame_time() - delay.as_micros() as i64));
             if let Some(decoder) = self.decoder.borrow().as_ref() {
@@ -236,9 +236,11 @@ impl imp::LpImage {
                         let old_file = file_a.clone();
                         glib::spawn_future_local(async move {
                             if obj.is_error() {
-                                // Tmp files might be renamed quickly after creation. In this case
-                                // the original load fails, because the filename is already invalid.
-                                // Therefore reload on name change loading caused an error.
+                                // Tmp files might be renamed quickly after
+                                // creation. In this case the original load
+                                // fails, because the filename is already
+                                // invalid. Therefore reload on name change
+                                // loading caused an error.
                                 obj.load(&file).await;
                             } else {
                                 obj.imp().set_file_changed(&old_file, &file).await;

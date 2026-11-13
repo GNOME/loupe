@@ -236,8 +236,8 @@ mod imp {
                     if let Some(image) = obj.current_image() {
                         let imp = obj.imp();
 
-                        // Only make submit button sensitive if entry value is tifferent from
-                        // current zoom value
+                        // Only make submit button sensitive if entry value is
+                        // tifferent from current zoom value
                         let sensitive = if let Some(value) = obj.zoom_value_f64() {
                             let a = (value * 10_000.).round() / 10_000.;
                             let b = (image.zoom_target() * 10_000.).round() / 10_000.;
@@ -326,7 +326,8 @@ mod imp {
                         || gesture.device().map(|x| x.source())
                             == Some(gdk::InputSource::Touchscreen)
                     {
-                        // Do scrolling if scrollable and no drag and drop on touchscreen
+                        // Do scrolling if scrollable and no drag and drop on
+                        // touchscreen
                         gesture.set_state(gtk::EventSequenceState::Denied);
                         None
                     } else {
@@ -865,8 +866,8 @@ impl LpImageView {
             .and_then(|req| req.response())
         {
             Ok(_) => self.window_show_toast(
-                // Translators: This is a toast notification, informing the user that
-                // an image has been set as background.
+                // Translators: This is a toast notification, informing the user
+                // that an image has been set as background.
                 &gettext("Set as background."),
                 adw::ToastPriority::High,
             ),

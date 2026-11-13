@@ -312,8 +312,8 @@ mod imp {
                         .start_point()
                         .and_then(|(x, y)| obj.pick(x, y, gtk::PickFlags::DEFAULT));
 
-                    // Lookup if the start-point of the gesture is above a drag handle widget and
-                    // what corner/edge it is
+                    // Lookup if the start-point of the gesture is above a drag
+                    // handle widget and what corner/edge it is
                     if let Some(handle) = hovered_widget
                         .as_ref()
                         .and_then(|x| drag_handles.get(x).copied())
@@ -357,8 +357,8 @@ mod imp {
                         let coord = (x, y);
 
                         let new_area = if let Some(aspect_ratio) = imp.aspect_ratio() {
-                            // Width for height an vice versa is only needed if corner is dragged
-                            // and both dimensions change
+                            // Width for height an vice versa is only needed if
+                            // corner is dragged and both dimensions change
                             if resize.handle.h_edge().is_none() {
                                 imp.new_crop_area_aspect_ratio(&resize, true, coord, aspect_ratio)
                             } else if resize.handle.v_edge().is_none() {

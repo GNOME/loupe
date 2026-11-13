@@ -299,7 +299,8 @@ impl Metadata {
             let speed = exposure_time.as_f64();
             if speed <= 0.5 {
                 let exposure = format!("{:.0}", 1. / speed);
-                // Translators: Fractional exposure time (photography) in seconds
+                // Translators: Fractional exposure time (photography) in
+                // seconds
                 Some(gettext_f(r"1\u{2215}{}\u{202F}s", [exposure]))
             } else {
                 let exposure = if speed < 5. {
@@ -331,7 +332,8 @@ impl Metadata {
             if let Some(maker) = self.maker() {
                 // This is to avoid doubling the maker name
                 // Canon for example also puts "Canon" in the model as well
-                // NIKON sometimes puts "NIKON" in model and "NIKON CORPORATION" in maker
+                // NIKON sometimes puts "NIKON" in model and "NIKON CORPORATION"
+                // in maker
                 if model.split_whitespace().next() != maker.split_whitespace().next() {
                     model = format!("{maker} {model}");
                 }

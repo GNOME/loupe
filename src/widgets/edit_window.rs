@@ -203,7 +203,8 @@ mod imp {
                             let mut new_path = path.clone();
                             let mut new_filename = basename.to_os_string();
 
-                            // Translators: Filename suffix, {} is replaced by a number
+                            // Translators: Filename suffix, {} is replaced by a
+                            // number
                             new_filename.push(ngettext(" (Edited)", " (Edited {})", i));
 
                             if let Some(ext) = path.extension() {

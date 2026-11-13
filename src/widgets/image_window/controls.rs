@@ -152,9 +152,10 @@ impl LpImageWindow {
     pub fn on_motion(&self, pointer_position: (f64, f64)) {
         let imp = self.imp();
 
-        // Check if position really changed since swipe gesture sends change event with
-        // same position. Also, don't connect this to "leave" because swipe also
-        // sends fake "leave" events when the widget under the cursor changes.
+        // Check if position really changed since swipe gesture sends change
+        // event with same position. Also, don't connect this to "leave" because
+        // swipe also sends fake "leave" events when the widget under the cursor
+        // changes.
         if imp.pointer_position.get() == pointer_position {
             return;
         }

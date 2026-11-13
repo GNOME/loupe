@@ -369,7 +369,8 @@ mod imp {
         fn dispose(&self) {
             tracing::debug!("Disposing LpImage");
 
-            // remove target from zoom animation because it's property of this object
+            // remove target from zoom animation because it's property of this
+            // object
             self.rotation_animation()
                 .set_target(&adw::CallbackAnimationTarget::new(|_| {}));
             self.zoom_animation()

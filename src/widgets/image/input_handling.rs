@@ -82,7 +82,8 @@ impl imp::LpImage {
                 if event.current_event_device().map(|x| x.source())
                     == Some(gdk::InputSource::Touchpad)
                 {
-                    // Touchpads do zoom via gestures, expect when Ctrl key is pressed
+                    // Touchpads do zoom via gestures, expect when Ctrl key is
+                    // pressed
                     if !state.contains(gdk::ModifierType::CONTROL_MASK) {
                         // propagate event to scrolled window
                         return glib::Propagation::Proceed;
@@ -97,9 +98,10 @@ impl imp::LpImage {
                     }
                 }
 
-                // Use exponential scaling since zoom is always multiplicative with the existing
-                // value This is the right thing since `exp(n/2)^2 == exp(n)`
-                // (two small steps are the same as one larger step)
+                // Use exponential scaling since zoom is always multiplicative
+                // with the existing value This is the right thing since
+                // `exp(n/2)^2 == exp(n)` (two small steps are the same as one
+                // larger step)
                 let (zoom_factor, animated) = match event.unit() {
                     gdk::ScrollUnit::Wheel => (
                         f64::exp(-y * f64::ln(ZOOM_FACTOR_SCROLL_WHEEL)),
@@ -247,8 +249,9 @@ impl imp::LpImage {
                     return;
                 }
 
-                // Correct angle by the the angle at the moment of passing the threshold.
-                // This stops the rotation from suddenly jumping when passing the threshold.
+                // Correct angle by the the angle at the moment of passing the
+                // threshold. This stops the rotation from suddenly jumping when
+                // passing the threshold.
                 let correction =
                     if let Some(Gesture::Rotate(correction)) = obj.imp().locked_gestured.get() {
                         correction
@@ -344,7 +347,8 @@ impl imp::LpImage {
                 {
                     obj.zoom_to(imp.zoom_level_best_fit_for_rotation(rotation_target));
                 } else {
-                    // rubberband if over highest zoom level and sets `zoom_target`
+                    // rubberband if over highest zoom level and sets
+                    // `zoom_target`
                     obj.zoom_to(obj.zoom());
                 };
 
