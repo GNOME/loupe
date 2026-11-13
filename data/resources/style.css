@@ -19,6 +19,13 @@
   margin: 18px;
 }
 
+/* Busy images behind a translucent background make the icons hard to see */
+@media (prefers-contrast: more) {
+  .osd-box {
+    background-color: var(--popover-bg-color);
+  }
+}
+
 .always-show-scrollbars .osd-box {
   margin-bottom: 42px;
 }
