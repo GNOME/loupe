@@ -425,8 +425,7 @@
                     <property name="halign">end</property>
                     <property name="hexpand">true</property>
                     <child>
-                      <object class="GtkButton">
-                        <property name="label" translatable="yes">_Reset</property>
+                      <object class="GtkButton" id="reset-button">
                         <property name="use-underline">true</property>
                         <property name="tooltip-text" translatable="yes">Undo Changes in this View</property>
                         <property name="action-name">edit-crop.reset</property>
@@ -434,6 +433,14 @@
                         <style>
                           <class name="flat" />
                         </style>
+                        <child>
+                          <object class="GtkLabel">
+                            <property name="label" translatable="yes">_Reset</property>
+                            <property name="use-underline">true</property>
+                            <property name="mnemonic-widget">reset-button</property>
+                            <property name="ellipsize">end</property>
+                          </object>
+                        </child>
                       </object>
                     </child>
                   </object>
