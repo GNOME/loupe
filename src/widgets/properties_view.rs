@@ -32,6 +32,7 @@ use crate::util::{self};
 use crate::widgets::image::LpImage;
 
 const FALLBACK: &str = "–";
+const SHOW_MAX_CHARS: usize = 200;
 
 mod imp {
     use gufo::common::physical_dimension::PhysicalDimensionUnit;
@@ -267,7 +268,14 @@ mod imp {
 
         fn update_row(row: &adw::ActionRow, value: Option<impl AsRef<str>>) -> bool {
             if let Some(value) = value {
-                row.set_subtitle(value.as_ref());
+                let s = value.as_ref();
+                let truncated = &s[..s.floor_char_boundary(SHOW_MAX_CHARS)];
+                if s.len() == truncated.len() {
+                    row.set_subtitle(truncated);
+                } else {
+                    let ellipsised = format!("{truncated}…");
+                    row.set_subtitle(&ellipsised);
+                }
                 row.set_visible(true);
                 true
             } else {
